@@ -15,11 +15,11 @@ const Footer = () => {
   ];
 
   const services = [
-    "Local Rides",
-    "Airport Transfer",
-    "Outstation Trips",
-    "Corporate Travel",
-    "Wedding Cars"
+    // { name: "Local Rides", href: "/services/local-rides" },
+    { name: "Airport Transfer", href: "/" },
+    { name: "Outstation Trips", href: "/tempo-traveller" },
+    // { name: "Corporate Travel", href: "/services/corporate" },
+    { name: "Wedding Cars", href: "/" }
   ];
 
   const cities = [
@@ -32,7 +32,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-gray-300">
-  
+
 
       {/* Top Section */}
       <div className="border-b border-gray-800">
@@ -63,7 +63,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
-                    <Link 
+                    <Link
                       href={link.href}
                       className="flex items-center text-sm hover:text-[#FACF2D] transition-colors duration-300 group"
                     >
@@ -80,17 +80,18 @@ const Footer = () => {
               <h3 className="text-white text-start font-semibold mb-6">Our Services</h3>
               <ul className="space-y-3">
                 {services.map((service) => (
-                  <li 
-                    key={service}
-                    className="flex items-center text-sm hover:text-[#FACF2D] cursor-pointer transition-colors duration-300"
-                  >
-                    <Clock className="w-4 h-4 mr-2 text-[#FACF2D]" />
-                    {service}
+                  <li key={service.name}>
+                    <Link
+                      href={service.href}
+                      className="flex items-center text-sm hover:text-[#FACF2D] transition-colors duration-300 group"
+                    >
+                      <Clock className="w-4 h-4 mr-2 text-[#FACF2D] group-hover:rotate-12 transition-transform" />
+                      {service.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
-
             {/* Contact Info */}
             <div className="space-y-6">
               <h3 className="text-white text-start font-semibold">Contact Us</h3>
