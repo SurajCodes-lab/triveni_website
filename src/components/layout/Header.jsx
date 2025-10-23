@@ -35,6 +35,8 @@ const Header = () => {
                   alt="Company Logo"
                   width={64}
                   height={64}
+                  quality={100}
+                  priority
                   className="h-16 w-auto hover:opacity-90 transition-opacity"
                 />
               </Link>
