@@ -238,25 +238,25 @@ const CoverageSection = ({ details, cityName }) => {
       bgColor: "bg-green-50",
       borderColor: "border-green-200",
       iconColor: "text-green-600",
-      data: details.coverage?.fullCoverage || [`${cityName} City Center`, `${cityName} Airport`, `${cityName} Railway Station`]
+      data: details?.coverage?.fullCoverage || [`${cityName} City Center`, `${cityName} Airport`, `${cityName} Railway Station`]
     },
     {
-      title: "Pickup Locations", 
+      title: "Pickup Locations",
       icon: AlertTriangle,
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       iconColor: "text-blue-600",
-      data: details.coverage?.limitedCoverage || [`${cityName} Hotels`, `${cityName} Mall`, `${cityName} Bus Stand`]
+      data: details?.coverage?.limitedCoverage || [`${cityName} Hotels`, `${cityName} Mall`, `${cityName} Bus Stand`]
     },
     {
       title: "Tourist Destinations",
       icon: MapPin,
-      bgColor: "bg-purple-50", 
+      bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
       iconColor: "text-purple-600",
-      data: details.coverage?.restricted || [`${cityName} Temples`, `${cityName} Museums`, `${cityName} Parks`]
+      data: details?.coverage?.restricted || [`${cityName} Temples`, `${cityName} Museums`, `${cityName} Parks`]
     }
-  ], [details.coverage, cityName]);
+  ], [details?.coverage, cityName]);
 
   return (
     <section className="space-y-4">
