@@ -144,19 +144,19 @@ const serviceHighlights = [
     title: services[0]?.title || "Vehicles",
     description: services[0]?.description || "Wide range of comfortable and reliable vehicles",
     icon: Car,
-    whatsappMessage: `Hi! I am interested in booking ${services[0]?.title.toLowerCase() || 'vehicle rental'} service. Can you provide more details about rates and availability?`
+    whatsappMessage: `Hi! I am interested in booking ${services[0]?.title?.toLowerCase() || 'vehicle rental'} service. Can you provide more details about rates and availability?`
   },
   {
     title: services[1]?.title || "Tour Guide",
     description: services[1]?.description || "Expert guides for an enriching experience",
     icon: Users,
-    whatsappMessage: `Hi! I am interested in ${services[1]?.title.toLowerCase() || 'tour guide'} services. Can you help me with pricing and available options?`
+    whatsappMessage: `Hi! I am interested in ${services[1]?.title?.toLowerCase() || 'tour guide'} services. Can you help me with pricing and available options?`
   },
   {
     title: services[2]?.title || "Tour Packages",
     description: services[2]?.description || "Curated experiences for every traveler",
     icon: Award,
-    whatsappMessage: `Hi! I am interested in your ${services[2]?.title.toLowerCase() || 'tour packages'}. Can you share available travel experiences and pricing details?`
+    whatsappMessage: `Hi! I am interested in your ${services[2]?.title?.toLowerCase() || 'tour packages'}. Can you share available travel experiences and pricing details?`
   },
   {
     title: "Airport Transfer",
@@ -271,13 +271,13 @@ export default function OptimizedHomePage() {
   const handleServiceInquiry = useCallback((service) => {
     trackEvent('service_inquiry_click', {
       event_category: 'conversion',
-      event_label: service.title.toLowerCase().replace(' ', '_'),
-      service_type: service.title,
+      event_label: service.title?.toLowerCase().replace(' ', '_') || 'unknown_service',
+      service_type: service.title || 'Unknown Service',
       button_location: 'service_highlights',
       contact_method: 'whatsapp'
     });
-    
-    const message = encodeURIComponent(service.whatsappMessage);
+
+    const message = encodeURIComponent(service.whatsappMessage || 'Hi! I am interested in your services.');
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappURL, '_blank');
   }, [trackEvent]);
@@ -286,8 +286,8 @@ export default function OptimizedHomePage() {
   const handleFeatureHover = useCallback((featureTitle) => {
     trackEvent('feature_hover', {
       event_category: 'engagement',
-      event_label: featureTitle.toLowerCase().replace(' ', '_'),
-      feature_name: featureTitle
+      event_label: featureTitle?.toLowerCase().replace(' ', '_') || 'unknown_feature',
+      feature_name: featureTitle || 'Unknown Feature'
     });
   }, [trackEvent]);
 

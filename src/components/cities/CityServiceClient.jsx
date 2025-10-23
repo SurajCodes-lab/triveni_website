@@ -516,7 +516,7 @@ export default function CityServiceClient({
     "@type": "TaxiService",
     "name": `Triveni Cabs ${formattedCityName}`,
     "description": `Professional taxi service in ${formattedCityName} offering outstation cabs, airport transfers, local taxi booking with 24/7 availability, GPS tracking and verified drivers. Best rates guaranteed.`,
-    "url": `https://trivenicabs.in/${formattedCityName.toLowerCase()}`,
+    "url": `https://trivenicabs.in/${formattedCityName?.toLowerCase() || ''}`,
     "telephone": `+91${phoneNumber}`,
     "priceRange": "₹₹",
     "address": {

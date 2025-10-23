@@ -9,6 +9,7 @@ import { phoneNumber } from "@/utilis/data";
 
 // Helper function to create route slug
 function createRouteSlug(cityName, destination) {
+  if (!cityName || !destination) return '';
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
@@ -46,10 +47,11 @@ const CityRoutes = ({ cityName }) => {
   // Memoized vehicle filtering functions
   const getFilteredVehicles = useCallback((prices) => {
     if (!prices) return [];
-    
+
     if (activeTab === 'oneWay') {
-      return prices.filter(price => 
-        !price.vehicle.toLowerCase().includes('bus') && 
+      return prices.filter(price =>
+        price.vehicle &&
+        !price.vehicle.toLowerCase().includes('bus') &&
         !price.vehicle.toLowerCase().includes('tempo')
       );
     }
@@ -58,9 +60,11 @@ const CityRoutes = ({ cityName }) => {
 
   const getRoundTripOnlyVehicles = useCallback((prices) => {
     if (!prices) return [];
-    return prices.filter(price => 
-      price.vehicle.toLowerCase().includes('bus') || 
-      price.vehicle.toLowerCase().includes('tempo')
+    return prices.filter(price =>
+      price.vehicle && (
+        price.vehicle.toLowerCase().includes('bus') ||
+        price.vehicle.toLowerCase().includes('tempo')
+      )
     );
   }, []);
 

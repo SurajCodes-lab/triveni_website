@@ -21,6 +21,7 @@ function parseRouteSlug(slug) {
 }
 
 export function createRouteSlug(cityName, destination) {
+  if (!cityName || !destination) return '';
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 

@@ -13,6 +13,7 @@ import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
 
 // Helper function to create route slug
 function createRouteSlug(cityName, destination) {
+  if (!cityName || !destination) return '';
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
@@ -52,14 +53,17 @@ export default function RouteClientContent({
 
     const filtered = activeTab === 'oneWay'
       ? route.prices.filter(price =>
+        price.vehicle &&
         !price.vehicle.toLowerCase().includes('bus') &&
         !price.vehicle.toLowerCase().includes('tempo')
       )
       : route.prices;
 
     const roundTripOnly = route.prices.filter(price =>
-      price.vehicle.toLowerCase().includes('bus') ||
-      price.vehicle.toLowerCase().includes('tempo')
+      price.vehicle && (
+        price.vehicle.toLowerCase().includes('bus') ||
+        price.vehicle.toLowerCase().includes('tempo')
+      )
     );
 
     return { filteredVehicles: filtered, roundTripOnlyVehicles: roundTripOnly };
