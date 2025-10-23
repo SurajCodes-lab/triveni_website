@@ -8,6 +8,7 @@ import CitiesSection from "../cities/CitiesSection";
 import TourPackage from "./TourPackage";
 import CarRentalSection from "../trip/carRent/CarRentalSection";
 import { motion } from "framer-motion";
+import TaxiServiceGrid from "../cities/TaxiServiceGrid";
 
 const ServicesSection = () => {
   return (
@@ -79,7 +80,7 @@ const ServicesSection = () => {
       </motion.div>
       
       {/* Cities Section Component */}
-      <CitiesSection />
+      <TaxiServiceGrid />
     </>
   );
 };

@@ -16,7 +16,7 @@ const Footer = () => {
 
   const services = [
     // { name: "Local Rides", href: "/services/local-rides" },
-    { name: "Airport Transfer", href: "/" },
+    { name: "Airport Transfer", href: "/airport-service" },
     { name: "Outstation Trips", href: "/tempo-traveller" },
     // { name: "Corporate Travel", href: "/services/corporate" },
     { name: "Wedding Cars", href: "/" }
