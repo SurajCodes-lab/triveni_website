@@ -77,18 +77,14 @@ const WeddingHero = () => {
           </p>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
               <div className="text-3xl font-bold text-[#FACF2D]">5000+</div>
               <div className="text-sm text-gray-600">Vehicles</div>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
               <div className="text-3xl font-bold text-pink-600">10000+</div>
-              <div className="text-sm text-gray-600">Weddings</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <div className="text-3xl font-bold text-purple-600">4.9★</div>
-              <div className="text-sm text-gray-600">Rating</div>
+              <div className="text-sm text-gray-600">Happy Couples</div>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
               <div className="text-3xl font-bold text-green-600">24/7</div>
@@ -131,211 +127,250 @@ const WeddingHero = () => {
   );
 };
 
-// Wedding Car Collection Section
+// Our Wedding Car Collection Section
 const WeddingCarCollection = () => {
-  const carCategories = [
-    {
-      title: "Luxury Cars",
-      subtitle: "For Royal Entry",
-      icon: Crown,
-      gradient: "from-yellow-400 to-orange-500",
-      cars: ["BMW 5 Series", "Audi A6", "Mercedes E-Class", "Jaguar XF"],
-      image: "/images/car/car1.png",
-      price: "₹6,000 - ₹15,000/day"
-    },
-    {
-      title: "Premium Sedans",
-      subtitle: "Elegant & Comfortable",
-      icon: Car,
-      gradient: "from-blue-400 to-purple-500",
-      cars: ["Honda City", "Maruti Ciaz", "Hyundai Verna", "Toyota Etios"],
-      image: "/images/car/car1.png",
-      price: "₹2,000 - ₹5,000/day"
-    },
-    {
-      title: "Premium SUVs",
-      subtitle: "Spacious & Stylish",
-      icon: Users,
-      gradient: "from-green-400 to-teal-500",
-      cars: ["Toyota Fortuner", "Innova Crysta", "Mahindra Scorpio", "MG Hector"],
-      image: "/images/car/car1.png",
-      price: "₹3,500 - ₹9,000/day"
-    },
-    {
-      title: "Tempo Travellers",
-      subtitle: "For Baraat & Guests",
-      icon: Users,
-      gradient: "from-pink-400 to-red-500",
-      cars: ["9 Seater AC", "12 Seater AC", "17 Seater AC", "26 Seater AC"],
-      image: "/images/car/car1.png",
-      price: "₹5,500 - ₹15,000/day"
-    },
-    {
-      title: "Vintage Cars",
-      subtitle: "Classic Elegance",
-      icon: Crown,
-      gradient: "from-purple-400 to-pink-500",
-      cars: ["Classic Ambassador", "Vintage Rolls Royce", "Heritage Cars"],
-      image: "/images/car/car1.png",
-      price: "On Request"
-    },
-    {
-      title: "Luxury Buses",
-      subtitle: "Large Group Travel",
-      icon: Users,
-      gradient: "from-indigo-400 to-blue-500",
-      cars: ["35 Seater AC Bus", "45 Seater AC Bus", "55 Seater AC Bus"],
-      image: "/images/car/car1.png",
-      price: "₹18,000 - ₹30,000/day"
-    }
-  ];
-
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-white via-pink-50/30 to-purple-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-pink-100 text-pink-600 px-4 py-2 rounded-full mb-4">
-            <Car className="w-5 h-5" />
-            <span className="font-semibold">Our Premium Fleet</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 px-6 py-2 rounded-full mb-4 shadow-sm">
+            <Heart className="w-5 h-5" />
+            <span className="font-semibold">Our Wedding Car Collection</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Choose Your <span className="text-[#FACF2D]">Dream Wedding Car</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
+            Choose from our exclusive fleet to make your big day memorable
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            From luxury sedans to vintage classics, we have the perfect vehicle for every wedding moment
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {carCategories.map((category, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
-            >
-              {/* Gradient Header */}
-              <div className={`bg-gradient-to-r ${category.gradient} p-6 text-white relative overflow-hidden`}>
-                <div className="absolute top-0 right-0 opacity-10">
-                  <category.icon className="w-32 h-32" />
-                </div>
-                <div className="relative z-10">
-                  <category.icon className="w-10 h-10 mb-3" />
-                  <h3 className="text-2xl font-bold mb-1">{category.title}</h3>
-                  <p className="text-sm opacity-90">{category.subtitle}</p>
+        <div className="space-y-8">
+          {/* Luxury Cars */}
+          <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-pink-100 hover:border-pink-300 transition-all">
+            <div className="flex flex-col lg:flex-row gap-8 items-center">
+              <div className="lg:w-1/3">
+                <div className="relative h-64 w-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/car/luxury.jpeg"
+                    alt="Luxury Cars"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
-
-              {/* Car Image */}
-              <div className="relative h-48 bg-gray-100">
-                <Image
-                  src={category.image}
-                  alt={category.title}
-                  fill
-                  className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Details */}
-              <div className="p-6">
-                <ul className="space-y-2 mb-4">
-                  {category.cars.map((car, i) => (
-                    <li key={i} className="flex items-center text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                      <span className="text-sm">{car}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="border-t pt-4">
-                  <div className="text-sm text-gray-600 mb-1">Starting from</div>
-                  <div className="text-xl font-bold text-[#FACF2D]">{category.price}</div>
+              <div className="lg:w-2/3">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-4xl">🚘</div>
+                  <h3 className="text-3xl font-bold text-gray-800">Luxury Cars</h3>
                 </div>
+                <p className="text-xl text-gray-600 mb-4 font-medium">BMW, Audi, Mercedes, Jaguar</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Make a grand entrance on your special day with our premium luxury car fleet. Perfect for the bride and groom, these vehicles combine elegance, comfort, and style to create unforgettable memories.
+                </p>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Premium Sedans */}
+          <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-100 hover:border-purple-300 transition-all">
+            <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
+              <div className="lg:w-1/3">
+                <div className="relative h-64 w-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/car/sedan.jpeg"
+                    alt="Premium Sedans"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-4xl">🚖</div>
+                  <h3 className="text-3xl font-bold text-gray-800">Premium Sedans</h3>
+                </div>
+                <p className="text-xl text-gray-600 mb-4 font-medium">Honda City, Ciaz, Verna</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Elegant and comfortable sedans perfect for family members and close relatives. These well-maintained vehicles ensure a smooth and stylish ride throughout your wedding celebrations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Premium SUVs */}
+          <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-yellow-100 hover:border-yellow-300 transition-all">
+            <div className="flex flex-col lg:flex-row gap-8 items-center">
+              <div className="lg:w-1/3">
+                <div className="relative h-64 w-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/car/suv.jpeg"
+                    alt="Premium SUVs"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-4xl">🚙</div>
+                  <h3 className="text-3xl font-bold text-gray-800">Premium SUVs</h3>
+                </div>
+                <p className="text-xl text-gray-600 mb-4 font-medium">Toyota Fortuner, Innova Crysta, Scorpio</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Spacious and powerful SUVs ideal for transporting families and VIP guests. With ample luggage space and comfortable seating, these vehicles are perfect for long-distance wedding travel.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tempo Travellers */}
+          <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-pink-100 hover:border-pink-300 transition-all">
+            <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
+              <div className="lg:w-1/3">
+                <div className="relative h-64 w-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/car/tempo_traveller.jpeg"
+                    alt="Tempo Travellers"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-4xl">🚌</div>
+                  <h3 className="text-3xl font-bold text-gray-800">Tempo Travellers</h3>
+                </div>
+                <p className="text-xl text-gray-600 mb-4 font-medium">9–26 Seater AC/Non-AC options for baraat & guests</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Perfect for baraat parties and group transportation! Our tempo travellers come with music systems, comfortable seating, and can be decorated as per your theme. Available in various seating capacities to accommodate your entire wedding party.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Vintage Cars */}
+          <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-100 hover:border-purple-300 transition-all">
+            <div className="flex flex-col lg:flex-row gap-8 items-center">
+              <div className="lg:w-1/3">
+                <div className="relative h-64 w-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/car/luxury.jpeg"
+                    alt="Vintage Cars"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-4xl">🏰</div>
+                  <h3 className="text-3xl font-bold text-gray-800">Vintage Cars</h3>
+                </div>
+                <p className="text-xl text-gray-600 mb-4 font-medium">On Request - For royal entry</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Add a touch of timeless elegance to your wedding with our exclusive vintage car collection. These classic beauties are perfect for creating that royal and majestic entrance you've always dreamed of.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-// Why Choose Us Section
+// Why Choose Triveni Cabs for Wedding Travel Section
 const WhyChooseUs = () => {
   const features = [
     {
-      icon: Shield,
-      title: "Professional Chauffeurs",
-      description: "Uniformed, well-trained, and courteous drivers for your special day",
-      color: "blue"
+      icon: Car,
+      title: "5000+ Cars, SUVs & Tempo Travellers across India",
+      description: "Extensive fleet covering luxury cars, premium sedans, SUVs, and tempo travellers to meet all your wedding transportation needs",
+      gradient: "from-pink-500 to-rose-500"
+    },
+    {
+      icon: UserCheck,
+      title: "Professional & uniformed chauffeurs",
+      description: "Experienced, courteous, and well-groomed drivers dedicated to making your journey comfortable and memorable",
+      gradient: "from-purple-500 to-indigo-500"
     },
     {
       icon: Sparkles,
-      title: "Car Decoration",
-      description: "Beautiful floral and theme-based decoration services available",
-      color: "pink"
+      title: "Vehicles decorated for wedding functions",
+      description: "Beautiful floral decorations and custom themes available on request to match your wedding aesthetic perfectly",
+      gradient: "from-pink-400 to-red-400"
     },
     {
       icon: Clock,
-      title: "Timely Service",
-      description: "Guaranteed on-time pickup and drop for all wedding events",
-      color: "green"
-    },
-    {
-      icon: Star,
-      title: "Top Rated Service",
-      description: "4.9★ rating with 10,000+ satisfied wedding couples",
-      color: "yellow"
-    },
-    {
-      icon: Shield,
-      title: "GPS Tracking",
-      description: "Live tracking for safety and real-time location updates",
-      color: "purple"
+      title: "Timely pick-up & drop for baraat & guests",
+      description: "Guaranteed punctual service ensuring your baraat and guests arrive on time for every ceremony",
+      gradient: "from-green-500 to-emerald-500"
     },
     {
       icon: CreditCard,
-      title: "Transparent Pricing",
-      description: "No hidden charges, all-inclusive wedding car packages",
-      color: "indigo"
+      title: "Affordable packages for luxury cars & tempo travellers",
+      description: "Competitive pricing with transparent rates and no hidden charges, making luxury accessible for every wedding",
+      gradient: "from-yellow-500 to-orange-500"
+    },
+    {
+      icon: Zap,
+      title: "Customized wedding travel solutions",
+      description: "Flexible packages tailored to your specific requirements, from single-day bookings to multi-day wedding celebrations",
+      gradient: "from-blue-500 to-cyan-500"
     }
   ];
 
-  const colorMap = {
-    blue: "from-blue-400 to-blue-600",
-    pink: "from-pink-400 to-pink-600",
-    green: "from-green-400 to-green-600",
-    yellow: "from-yellow-400 to-yellow-600",
-    purple: "from-purple-400 to-purple-600",
-    indigo: "from-indigo-400 to-indigo-600"
-  };
-
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-yellow-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 relative overflow-hidden">
+      {/* Decorative Hearts */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+        <Heart className="absolute top-10 left-10 w-20 h-20 text-pink-400 animate-float" />
+        <Heart className="absolute top-40 right-20 w-16 h-16 text-red-400 animate-float-delayed" />
+        <Heart className="absolute bottom-20 left-1/4 w-12 h-12 text-pink-300 animate-float" />
+        <Heart className="absolute bottom-40 right-1/3 w-14 h-14 text-rose-400 animate-float-delayed" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-600 px-4 py-2 rounded-full mb-4">
-            <Award className="w-5 h-5" />
-            <span className="font-semibold">Why Choose Triveni Cabs</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-100 to-purple-100 text-pink-700 px-6 py-3 rounded-full mb-6 shadow-md">
+            <Heart className="w-6 h-6 animate-pulse" />
+            <span className="font-bold text-lg">Why Choose Triveni Cabs for Wedding Travel?</span>
+            <Heart className="w-6 h-6 animate-pulse" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Making Weddings <span className="text-[#FACF2D]">Memorable Since 2010</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
+            Making Your Wedding Journey Extraordinary
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Trusted by thousands of couples for their special day
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            From luxurious bridal entries to comfortable baraat transportation, we ensure every moment of your wedding travel is perfect and stress-free
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="group bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 border-2 border-pink-100 hover:border-pink-300"
             >
-              <div className={`w-16 h-16 bg-gradient-to-r ${colorMap[feature.color]} rounded-2xl flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform`}>
+              <div className={`w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform`}>
                 <feature.icon className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <div className="flex items-start gap-2 mb-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-1" />
+                <h3 className="text-xl font-bold text-gray-800 leading-tight">{feature.title}</h3>
+              </div>
+              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </div>
           ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-3 bg-white rounded-2xl px-8 py-4 shadow-lg">
+            <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+            <span className="text-lg font-semibold text-gray-800">
+              Trusted by <span className="text-[#FACF2D]">10,000+</span> happy couples across India
+            </span>
+            <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+          </div>
         </div>
       </div>
     </section>
@@ -584,71 +619,6 @@ const PricingPackages = () => {
   );
 };
 
-// Testimonials Section
-const Testimonials = () => {
-  const testimonials = [
-    {
-      name: "Priya & Rahul",
-      location: "Delhi",
-      rating: 5,
-      text: "Triveni Cabs made our wedding day so special! The BMW was beautifully decorated and the chauffeur was very professional. Highly recommended!",
-      date: "December 2024"
-    },
-    {
-      name: "Anjali & Vikram",
-      location: "Jaipur",
-      rating: 5,
-      text: "Excellent service for our baraat! The tempo traveller was spacious and comfortable. All our guests were very happy with the arrangements.",
-      date: "November 2024"
-    },
-    {
-      name: "Neha & Aditya",
-      location: "Chandigarh",
-      rating: 5,
-      text: "From booking to service, everything was perfect. The vintage car for bride's entry was absolutely stunning. Thank you Triveni Cabs!",
-      date: "October 2024"
-    }
-  ];
-
-  return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-pink-100 text-pink-600 px-4 py-2 rounded-full mb-4">
-            <Heart className="w-5 h-5" />
-            <span className="font-semibold">Happy Couples</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            What Our <span className="text-[#FACF2D]">Customers Say</span>
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Real reviews from real couples who trusted us for their big day
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4 leading-relaxed">"{testimonial.text}"</p>
-              <div className="border-t border-gray-200 pt-4">
-                <div className="font-bold text-gray-900">{testimonial.name}</div>
-                <div className="text-sm text-gray-600">{testimonial.location} • {testimonial.date}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // FAQ Section
 const FAQ = () => {
@@ -786,12 +756,7 @@ export default function WeddingPageClient() {
     "url": "https://trivenicabs.in/wedding",
     "telephone": `+91${phoneNumber}`,
     "priceRange": "₹₹₹",
-    "areaServed": ["Delhi", "Chandigarh", "Jaipur", "Agra", "Haridwar", "Rishikesh"],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000"
-    }
+    "areaServed": ["Delhi", "Chandigarh", "Jaipur", "Agra", "Haridwar", "Rishikesh"]
   };
 
   return (
@@ -808,7 +773,6 @@ export default function WeddingPageClient() {
         <WeddingServices />
         <ServiceAreas />
         <PricingPackages />
-        <Testimonials />
         <FAQ />
         <FinalCTA />
       </div>
