@@ -105,6 +105,7 @@ const CityRoutes = ({ cityName }) => {
 
   // Memoized routes to display
   const routesToDisplay = useMemo(() => {
+    if (!routes || !Array.isArray(routes)) return [];
     const maxRoutes = showAllRoutes ? routes.length : 6;
     return routes.slice(0, maxRoutes);
   }, [routes, showAllRoutes]);
@@ -181,7 +182,7 @@ const CityRoutes = ({ cityName }) => {
             Additional vehicles for round trips:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {vehicles.slice(0, 2).map((vehicle, idx) => (
+            {(vehicles || []).slice(0, 2).map((vehicle, idx) => (
               <div key={idx} className="flex items-center gap-2 text-sm">
                 <div className="relative w-6 h-4 rounded overflow-hidden bg-white flex-shrink-0">
                   <Image
@@ -258,10 +259,10 @@ const CityRoutes = ({ cityName }) => {
       {/* Routes Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {routesToDisplay.map((route, index) => {
-          const filteredVehicles = getFilteredVehicles(route.prices);
-          const roundTripOnlyVehicles = getRoundTripOnlyVehicles(route.prices);
+          const filteredVehicles = getFilteredVehicles(route.prices) || [];
+          const roundTripOnlyVehicles = getRoundTripOnlyVehicles(route.prices) || [];
           const isExpanded = expandedRoutes[index];
-          const vehiclesToShow = isExpanded ? filteredVehicles : filteredVehicles.slice(0, 2);
+          const vehiclesToShow = isExpanded ? filteredVehicles : (filteredVehicles || []).slice(0, 2);
 
           return (
             <article key={index} className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 hover:shadow-lg transition-all duration-300">

@@ -320,7 +320,7 @@ const TouristSpotsSection = ({ citySpots, formattedCityName }) => {
     }
   ], [formattedCityName]);
 
-  const spotsToDisplay = citySpots.length > 0 ? citySpots.slice(0, 6) : defaultSpots;
+  const spotsToDisplay = (citySpots && citySpots.length > 0) ? citySpots.slice(0, 6) : defaultSpots;
 
   const generateTouristSpotsStructuredData = () => ({
     "@context": "https://schema.org",
@@ -471,7 +471,7 @@ export default function CityServiceClient({
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": `Taxi Services in ${formattedCityName}`,
-      "itemListElement": vehiclesServices.slice(0, 5).map((vehicle, index) => ({
+      "itemListElement": (vehiclesServices || []).slice(0, 5).map((vehicle, index) => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
@@ -522,7 +522,7 @@ export default function CityServiceClient({
                 </header>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                  {vehiclesServices.slice(0, 6).map((vehicle, index) => (
+                  {(vehiclesServices || []).slice(0, 6).map((vehicle, index) => (
                     <VehicleCard
                       key={`${vehicle.type}-${index}`}
                       vehicle={vehicle}
