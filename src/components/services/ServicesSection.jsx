@@ -8,13 +8,14 @@ import CitiesSection from "../cities/CitiesSection";
 import TourPackage from "./TourPackage";
 import CarRentalSection from "../trip/carRent/CarRentalSection";
 import { motion } from "framer-motion";
-import TaxiServiceGrid from "../cities/TaxiServiceGrid";
+import TaxiServiceGrid from "../cities/Taxiservicegrid";
 
 const ServicesSection = () => {
   return (
     <>
       {/* Tour Package Component */}
       <TourPackage />
+      
       
       {/* all services */}
       <section className="py-8 md:py-16 bg-gradient-to-b from-white to-[#FFFCD1]">
