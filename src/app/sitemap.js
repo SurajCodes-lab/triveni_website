@@ -59,6 +59,12 @@ export default function sitemap() {
       changeFrequency: 'yearly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/wedding`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
 
     // Tour Packages
     {

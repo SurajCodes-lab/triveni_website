@@ -19,7 +19,7 @@ const Footer = () => {
     { name: "Airport Transfer", href: "/airport-service" },
     { name: "Outstation Trips", href: "/tempo-traveller" },
     // { name: "Corporate Travel", href: "/services/corporate" },
-    { name: "Wedding Cars", href: "/" }
+    { name: "Wedding Cars", href: "/wedding" }
   ];
 
   const cities = [
