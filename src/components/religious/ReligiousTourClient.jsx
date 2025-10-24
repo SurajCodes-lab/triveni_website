@@ -648,7 +648,7 @@ const ReligiousTourClient = ({ tour }) => {
                   Call {phoneNumber}
                 </a>
                 <a
-                  href={`https://wa.me/${phoneNumber}?text=Hi, I want to book ${tour.title}. Please share package details.`}
+                  href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent(`Hi, I want to book ${tour.title}. Please share package details.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 shadow-2xl hover:scale-105 transition-transform duration-300"
