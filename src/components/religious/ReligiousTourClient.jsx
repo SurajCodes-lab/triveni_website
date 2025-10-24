@@ -65,7 +65,7 @@ const ReligiousTourClient = ({ tour }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 relative overflow-hidden">
       {/* Hero Section - Stunning Redesign */}
-      <section ref={heroRef} className="relative min-h-[100svh] md:min-h-screen flex items-center justify-center overflow-hidden py-8 md:py-0">
+      <section ref={heroRef} className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-0">
         {/* Multi-layered Animated Background */}
         <motion.div
           style={{ scale }}
@@ -409,21 +409,15 @@ const ReligiousTourClient = ({ tour }) => {
                 </span>
               </motion.a>
 
-              <motion.a
+              <a
                 href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent(`Hi, I'm interested in ${tour.title}. Please share details and packages.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 text-white px-8 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-2 shadow-2xl"
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: '#16a34a',
-                  boxShadow: '0 20px 60px rgba(34, 197, 94, 0.5)'
-                }}
-                whileTap={{ scale: 0.95 }}
+                className="bg-green-500 hover:bg-green-600 text-white px-8 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-2 shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 <BsWhatsapp className="w-5 h-5" />
                 WhatsApp Inquiry
-              </motion.a>
+              </a>
             </motion.div>
           </motion.div>
         </motion.div>
