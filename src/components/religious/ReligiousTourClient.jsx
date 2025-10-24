@@ -16,6 +16,7 @@ const ReligiousTourClient = ({ tour }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
   const heroRef = useRef(null);
 
   const { scrollY } = useScroll();
@@ -27,8 +28,17 @@ const ReligiousTourClient = ({ tour }) => {
   useEffect(() => {
     setIsVisible(true);
 
-    // Generate particles on client side only to avoid hydration mismatch
-    setParticles(Array.from({ length: 20 }, (_, i) => ({
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Generate fewer particles on mobile
+    const particleCount = window.innerWidth < 768 ? 5 : 20;
+    setParticles(Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       delay: Math.random() * 5,
       duration: 10 + Math.random() * 10,
@@ -38,19 +48,24 @@ const ReligiousTourClient = ({ tour }) => {
     })));
 
     const handleMouseMove = (e) => {
+      // Disable mouse parallax on mobile
+      if (window.innerWidth < 768) return;
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
       setMousePosition({ x, y });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 relative overflow-hidden">
       {/* Hero Section - Stunning Redesign */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[100svh] md:min-h-screen flex items-center justify-center overflow-hidden py-8 md:py-0">
         {/* Multi-layered Animated Background */}
         <motion.div
           style={{ scale }}
@@ -127,10 +142,10 @@ const ReligiousTourClient = ({ tour }) => {
           </div>
         )}
 
-        {/* Floating 3D Spiritual Icons */}
+        {/* Floating 3D Spiritual Icons - Hidden on mobile */}
         <motion.div
           style={{ x: mousePosition.x, y: mousePosition.y }}
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none hidden md:block"
         >
           {/* OM Symbol */}
           <motion.div
@@ -271,7 +286,7 @@ const ReligiousTourClient = ({ tour }) => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+            className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-10 lg:p-12 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
           >
             {/* Animated Border Glow */}
             <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-r from-amber-400 via-sky-500 to-indigo-500 opacity-20 blur-xl animate-pulse" />
@@ -281,30 +296,30 @@ const ReligiousTourClient = ({ tour }) => {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/90 to-yellow-500/90 backdrop-blur-xl border border-white/30 rounded-full px-8 py-4 mb-8 shadow-2xl"
+              className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-amber-500/90 to-yellow-500/90 backdrop-blur-xl border border-white/30 rounded-full px-4 py-2 md:px-8 md:py-4 mb-4 md:mb-8 shadow-2xl"
             >
               <motion.div
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               >
-                <Sun className="w-6 h-6 text-white" />
+                <Sun className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </motion.div>
-              <span className="text-white font-bold text-lg">{tour.subtitle}</span>
+              <span className="text-white font-bold text-base md:text-lg">{tour.subtitle}</span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <Mountain className="w-6 h-6 text-white" />
+                <Mountain className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </motion.div>
             </motion.div>
 
             {/* Main Title with Stagger Animation */}
-            <div className="mb-4">
+            <div className="mb-2 md:mb-4">
               <motion.h1
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-3 leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-2 md:mb-3 leading-tight"
               >
                 <span className="inline-block bg-gradient-to-r from-amber-100 via-yellow-100 to-amber-200 bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(245,158,11,0.5)]">
                   {tour.title.split('–')[0].trim()}
@@ -315,7 +330,7 @@ const ReligiousTourClient = ({ tour }) => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-white/95 drop-shadow-lg"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white/95 drop-shadow-lg"
               >
                 {tour.title.split('–')[1]}
               </motion.div>
@@ -326,18 +341,18 @@ const ReligiousTourClient = ({ tour }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="text-lg md:text-xl lg:text-2xl text-amber-50 font-light mb-6 italic drop-shadow-lg max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-amber-50 font-light mb-4 md:mb-6 italic drop-shadow-lg max-w-3xl mx-auto"
             >
               <span className="inline-flex items-center gap-2">
-                <Heart className="w-6 h-6 text-rose-300 animate-pulse" />
+                <Heart className="w-5 h-5 md:w-6 md:h-6 text-rose-300 animate-pulse" />
                 {tour.tagline}
-                <Heart className="w-6 h-6 text-rose-300 animate-pulse" />
+                <Heart className="w-5 h-5 md:w-6 md:h-6 text-rose-300 animate-pulse" />
               </span>
             </motion.p>
 
             {/* Stats Bar */}
             <motion.div
-              className="flex flex-wrap justify-center gap-3 md:gap-6 mb-8"
+              className="flex flex-wrap justify-center gap-2 md:gap-3 lg:gap-6 mb-4 md:mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.8 }}
