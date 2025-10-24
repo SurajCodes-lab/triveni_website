@@ -38,7 +38,7 @@ export default function ReligiousToursPage() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Experience divine blessings with our carefully curated pilgrimage tours. Travel in comfort and devotion to India's most sacred destinations.
+            Experience divine blessings with our carefully curated pilgrimage tours. Travel in comfort and devotion to India&apos;s most sacred destinations.
           </p>
         </div>
       </section>
