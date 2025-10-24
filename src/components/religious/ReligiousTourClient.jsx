@@ -65,7 +65,7 @@ const ReligiousTourClient = ({ tour }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 relative overflow-hidden">
       {/* Hero Section - Stunning Redesign */}
-      <section ref={heroRef} className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-0">
+      <section ref={heroRef} className="relative min-h-[75vh] md:min-h-screen flex items-center justify-center overflow-hidden py-8 md:py-0">
         {/* Multi-layered Animated Background */}
         <motion.div
           style={{ scale }}
@@ -279,14 +279,14 @@ const ReligiousTourClient = ({ tour }) => {
         {/* Hero Content with Glass Morphism */}
         <motion.div
           style={{ opacity }}
-          className="relative z-10 max-w-7xl mx-auto px-4 text-center"
+          className="relative z-20 max-w-7xl mx-auto px-4 text-center pointer-events-none"
         >
           {/* Glassy Container */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-10 lg:p-12 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+            className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl md:rounded-[3rem] p-4 sm:p-6 md:p-10 lg:p-12 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] pointer-events-auto"
           >
             {/* Animated Border Glow */}
             <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-r from-amber-400 via-sky-500 to-indigo-500 opacity-20 blur-xl animate-pulse" />
@@ -383,7 +383,7 @@ const ReligiousTourClient = ({ tour }) => {
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 justify-center"
+              className="relative z-20 flex flex-col sm:flex-row gap-3 justify-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 0.8 }}
@@ -409,13 +409,14 @@ const ReligiousTourClient = ({ tour }) => {
                 </span>
               </motion.a>
 
-              <a
-                href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent(`Hi, I'm interested in ${tour.title}. Please share details and packages.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-3.5 rounded-full font-bold text-base flex items-center justify-center gap-2 shadow-2xl hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
-              >
-                <BsWhatsapp className="w-5 h-5" />
+               <a
+                  href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent(`Hi, I want to book ${tour.title}. Please share package details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-20 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 shadow-[0_8px_32px_rgba(34,197,94,0.4)] hover:shadow-[0_12px_40px_rgba(34,197,94,0.6)] hover:scale-105 transition-all duration-300 active:scale-95 cursor-pointer touch-manipulation"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                >
+                <BsWhatsapp className="w-6 h-6" />
                 WhatsApp Inquiry
               </a>
             </motion.div>
