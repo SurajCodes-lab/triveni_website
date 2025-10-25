@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 export default function AirportServicePage() {
   const [formData, setFormData] = useState({
-    tripType: 'one-way',
     pickup: '',
     destination: '',
     pickupDate: '',
@@ -19,7 +18,7 @@ export default function AirportServicePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // WhatsApp message
-    const message = `*New Airport Transfer Booking*\n\nTrip Type: ${formData.tripType}\nPickup: ${formData.pickup}\nDestination: ${formData.destination}\nDate: ${formData.pickupDate}\nTime: ${formData.pickupTime}\nPassengers: ${formData.passengers}\nVehicle: ${formData.vehicleType}\nFlight Details: ${formData.flightDetails || 'N/A'}\nSpecial Requests: ${formData.specialRequests || 'N/A'}`;
+    const message = `*New Airport Transfer Booking*\n\nPickup: ${formData.pickup}\nDestination: ${formData.destination}\nDate: ${formData.pickupDate}\nTime: ${formData.pickupTime}\nPassengers: ${formData.passengers}\nVehicle: ${formData.vehicleType}\nFlight Details: ${formData.flightDetails || 'N/A'}\nSpecial Requests: ${formData.specialRequests || 'N/A'}`;
     
     const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -61,37 +60,6 @@ export default function AirportServicePage() {
             </h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Trip Type */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  Trip Type
-                </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <label className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-xl cursor-pointer transition-all hover:shadow-md border-2 border-transparent has-[:checked]:border-purple-600 has-[:checked]:bg-gradient-to-r has-[:checked]:from-purple-600 has-[:checked]:to-indigo-600 has-[:checked]:text-white">
-                    <input 
-                      type="radio" 
-                      name="tripType" 
-                      value="one-way" 
-                      checked={formData.tripType === 'one-way'}
-                      onChange={handleChange}
-                      className="w-4 h-4" 
-                    />
-                    <span className="font-medium">One Way</span>
-                  </label>
-                  <label className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-xl cursor-pointer transition-all hover:shadow-md border-2 border-transparent has-[:checked]:border-purple-600 has-[:checked]:bg-gradient-to-r has-[:checked]:from-purple-600 has-[:checked]:to-indigo-600 has-[:checked]:text-white">
-                    <input 
-                      type="radio" 
-                      name="tripType" 
-                      value="round-trip"
-                      checked={formData.tripType === 'round-trip'}
-                      onChange={handleChange}
-                      className="w-4 h-4" 
-                    />
-                    <span className="font-medium">Round Trip</span>
-                  </label>
-                </div>
-              </div>
-
               {/* Pickup & Destination */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
