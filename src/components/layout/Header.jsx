@@ -26,18 +26,18 @@ const Header = () => {
     <div className="sticky top-0 z-50 w-full">
       <header className="bg-[#FACF2D] shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/">
                 <Image
-                  src="/images/logo/logo3.jpg"
+                  src="/images/logo/logo2.webp"
                   alt="Company Logo"
-                  width={64}
-                  height={64}
+                  width={80}
+                  height={80}
                   quality={100}
                   priority
-                  className="h-16 w-auto hover:opacity-90 transition-opacity"
+                  className="h-20 w-auto hover:opacity-90 transition-opacity"
                 />
               </Link>
             </div>

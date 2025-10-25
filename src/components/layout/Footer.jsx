@@ -40,7 +40,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="space-y-6 flex items-center flex-col">
-              <Image src="/images/logo/logo3.jpg" alt="Logo" width={48} height={48} className="h-12 w-auto" />
+              <Image src="/images/logo/logo2.webp" alt="Logo" width={64} height={64} quality={100} className="h-16 w-auto" />
               <p className="text-sm text-start leading-relaxed">
                 Your trusted travel partner providing premium transportation services across India since 2015.
               </p>
