@@ -214,27 +214,39 @@ export default function OptimizedHomePage() {
           
           // Track scroll engagement (once per session)
           if (!hasTrackedScroll && window.scrollY > 100) {
-            trackEvent('homepage_scroll_engagement', {
+            trackEvent('scroll_engagement', {
               event_category: 'engagement',
-              scroll_depth: Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100)
+              scroll_depth: window.scrollY
             });
             hasTrackedScroll = true;
           }
         });
         ticking = true;
       }
-
-      // Track scroll depth every 25%
+      
+      // Track scroll depth at 25%, 50%, 75%, 100%
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
-        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        if (scrollPercent >= 25 && scrollPercent % 25 === 0) {
-          trackEvent('scroll_depth', {
-            event_category: 'engagement',
-            scroll_depth: scrollPercent
-          });
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (window.scrollY / scrollHeight) * 100;
+        
+        if (scrollPercent > 25 && !window.scrollTracked25) {
+          trackEvent('scroll_depth_25', { event_category: 'engagement', scroll_percentage: 25 });
+          window.scrollTracked25 = true;
         }
-      }, 100);
+        if (scrollPercent > 50 && !window.scrollTracked50) {
+          trackEvent('scroll_depth_50', { event_category: 'engagement', scroll_percentage: 50 });
+          window.scrollTracked50 = true;
+        }
+        if (scrollPercent > 75 && !window.scrollTracked75) {
+          trackEvent('scroll_depth_75', { event_category: 'engagement', scroll_percentage: 75 });
+          window.scrollTracked75 = true;
+        }
+        if (scrollPercent >= 98 && !window.scrollTracked100) {
+          trackEvent('scroll_depth_100', { event_category: 'engagement', scroll_percentage: 100 });
+          window.scrollTracked100 = true;
+        }
+      }, 150);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -325,13 +337,13 @@ export default function OptimizedHomePage() {
         <meta property="og:title" content="🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs | Starting ₹11/km" />
         <meta property="og:description" content={`✅ Book sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'}, tempo traveller online. Delhi, Mumbai, Manali tours. Professional drivers, competitive rates.`} />
         <meta property="og:url" content="https://www.trivenicabs.in" />
-        <meta property="og:image" content="https://www.trivenicabs.in/images/home/banner3.jpg" />
+        <meta property="og:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Car Rental & Tour Packages India | Triveni Cabs" />
         <meta name="twitter:description" content={`Book sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'} online. Professional service, competitive rates.`} />
-        <meta name="twitter:image" content="https://www.trivenicabs.in/images/home/banner3.jpg" />
+        <meta name="twitter:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.jpg" />
         
         {/* Structured Data */}
         <script 
@@ -346,40 +358,76 @@ export default function OptimizedHomePage() {
         transition={{ duration: 0.8 }}
         className="relative"
       >
-        {/* Hero Section */}
+        {/* Hero Section - FIXED VERSION */}
         <section className="relative h-screen overflow-hidden" aria-labelledby="hero-heading">
-          {/* Gradient Overlay */}
+          {/* Darker Gradient Overlay for Better Text Contrast */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80 z-10"
+            className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
           />
 
-          {/* Hero Image */}
+          {/* Hero Image - FIXED: Using object-cover instead of object-contain */}
           <div className="relative w-full h-full">
+            {/* Mobile Image */}
             <Image
-              src="/images/home/banner3.jpg"
+              src="/images/home/Triveni_Cabs_Mobile.png"
               alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
-              className="hero-banner object-cover"
+              className="hero-banner object-cover object-center block md:hidden"
               fill
               priority
               sizes="100vw"
               quality={85}
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+Sh6gqrR9/"
               onLoad={() => {
                 trackEvent('hero_image_loaded', {
                   event_category: 'performance',
-                  loading_time: performance.now()
+                  loading_time: performance.now(),
+                  device: 'mobile'
+                });
+              }}
+            />
+
+            {/* Tablet Image */}
+            <Image
+              src="/images/home/Triveni_Cabs_Tablet.png"
+              alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
+              className="hero-banner object-cover object-center hidden md:block lg:hidden"
+              fill
+              priority
+              sizes="100vw"
+              quality={85}
+              onLoad={() => {
+                trackEvent('hero_image_loaded', {
+                  event_category: 'performance',
+                  loading_time: performance.now(),
+                  device: 'tablet'
+                });
+              }}
+            />
+
+            {/* Desktop Image */}
+            <Image
+              src="/images/home/Triveni_Cabs_Desktop.jpg"
+              alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
+              className="hero-banner object-cover object-center hidden lg:block"
+              fill
+              priority
+              sizes="100vw"
+              quality={85}
+              onLoad={() => {
+                trackEvent('hero_image_loaded', {
+                  event_category: 'performance',
+                  loading_time: performance.now(),
+                  device: 'desktop'
                 });
               }}
             />
           </div>
 
-          {/* Hero Content */}
+          {/* Hero Content - IMPROVED TEXT VISIBILITY */}
           <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center text-white z-20 px-4"
+            className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4"
             variants={staggerContainer}
             initial="initial"
             animate="animate"
@@ -387,6 +435,11 @@ export default function OptimizedHomePage() {
             <motion.h1 
               id="hero-heading"
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center leading-tight"
+              style={{
+                color: '#FACF2D',
+                textShadow: '2px 2px 8px rgba(0,0,0,0.8), -1px -1px 2px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.6)',
+                WebkitTextStroke: '1px rgba(0,0,0,0.3)'
+              }}
               variants={{
                 initial: { y: 50, opacity: 0 },
                 animate: { y: 0, opacity: 1, transition: { delay: 0.5, duration: 0.8 } }
@@ -396,7 +449,12 @@ export default function OptimizedHomePage() {
             </motion.h1>
             
             <motion.p 
-              className="text-lg md:text-xl text-center max-w-4xl mb-8 leading-relaxed"
+              className="text-lg md:text-xl text-center max-w-4xl mb-8 leading-relaxed font-semibold"
+              style={{
+                color: '#FFFFFF',
+                textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7)',
+                WebkitTextStroke: '0.5px rgba(0,0,0,0.4)'
+              }}
               variants={{
                 initial: { y: 30, opacity: 0 },
                 animate: { y: 0, opacity: 1, transition: { delay: 0.7, duration: 0.8 } }
@@ -413,7 +471,7 @@ export default function OptimizedHomePage() {
               }}
             >
               <motion.button
-                className="px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:bg-[#FACF2D] transition-all duration-300 shadow-lg"
+                className="px-8 py-4 bg-[#FACF2D] text-black rounded-full text-lg font-bold hover:bg-[#ffd84d] transition-all duration-300 shadow-2xl border-2 border-black/20"
                 variants={scaleOnHover}
                 whileHover="hover"
                 whileTap="tap"
@@ -424,7 +482,7 @@ export default function OptimizedHomePage() {
               </motion.button>
               
               <motion.button
-                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full text-lg font-semibold hover:bg-white hover:text-black transition-all duration-300"
+                className="px-8 py-4 bg-white/95 border-2 border-white text-black rounded-full text-lg font-bold hover:bg-[#FACF2D] hover:border-[#FACF2D] transition-all duration-300 shadow-2xl"
                 variants={scaleOnHover}
                 whileHover="hover"
                 whileTap="tap"
@@ -443,7 +501,7 @@ export default function OptimizedHomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
-            <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-6 h-10 border-2 border-white/80 rounded-full flex justify-center shadow-lg">
               <motion.div
                 className="w-1 h-3 bg-white rounded-full mt-2"
                 animate={{ y: [0, 12, 0] }}
