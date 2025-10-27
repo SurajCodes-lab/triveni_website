@@ -64,7 +64,23 @@ export async function generateMetadata({ params }) {
   return {
     title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | Book Online`,
     description: `Book tempo traveller from ${originFormatted} to ${destinationFormatted}. Comfortable AC vehicles, professional drivers, competitive rates. Available 24/7 online booking.`,
-    keywords: `tempo traveller ${origin} to ${destination}, ${origin} ${destination} tempo booking, group travel ${origin} ${destination}`,
+    keywords: [
+      `tempo traveller ${origin} to ${destination}`,
+      `${origin} to ${destination} tempo traveller booking`,
+      `${origin} to ${destination} tempo traveller price`,
+      `tempo traveller on rent ${origin} to ${destination}`,
+      `12 seater tempo traveller ${origin} to ${destination}`,
+      `17 seater tempo traveller ${origin} to ${destination}`,
+      `book tempo traveller ${origin} to ${destination}`,
+      `${origin} to ${destination} tempo traveller fare`,
+      `tempo traveller hire ${origin} to ${destination}`,
+      `${origin} ${destination} tempo traveller`,
+      `${origin} to ${destination} group travel`,
+      `tempo traveller rental ${origin} to ${destination}`,
+      `ac tempo traveller ${origin} to ${destination}`,
+      `luxury tempo traveller ${origin} to ${destination}`,
+      `${origin} to ${destination} outstation tempo traveller`
+    ].join(', '),
     openGraph: {
       title: `${originFormatted} to ${destinationFormatted} Tempo Traveller`,
       description: `Premium tempo traveller service from ${originFormatted} to ${destinationFormatted}. Book now for comfortable group travel.`,
