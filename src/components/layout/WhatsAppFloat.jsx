@@ -3,47 +3,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
+import { trackWhatsAppClick, trackHover, trackEvent } from '@/utilis/analytics';
 
 const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
   const handleClick = () => {
-    // Track the WhatsApp float button click in Google Analytics
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'whatsapp_float_click', {
-        'event_category': 'engagement',
-        'event_label': 'floating_whatsapp_button',
-        'button_location': 'floating_bottom_right',
-        'contact_method': 'whatsapp',
-        'phone_number': phoneNumber,
-        'value': 1
-      });
-    }
-    
+    // Track the WhatsApp float button click using centralized tracking
+    trackWhatsAppClick('floating_button', '', 'floating_whatsapp_widget');
+
     // Open WhatsApp
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
   };
 
-  // Track when the component becomes visible (optional)
+  // Track when the component becomes visible
   const handleVisibilityChange = () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'whatsapp_float_visible', {
-        'event_category': 'engagement',
-        'event_label': 'floating_whatsapp_visibility',
-        'button_location': 'floating_bottom_right',
-        'value': 1
-      });
-    }
+    trackEvent('whatsapp_widget_visible', {
+      event_category: 'engagement',
+      event_label: 'floating_whatsapp_loaded',
+      widget_location: 'bottom_right'
+    });
   };
 
-  // Track hover interactions (optional)
-  const handleHover = () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'whatsapp_float_hover', {
-        'event_category': 'engagement',
-        'event_label': 'floating_whatsapp_hover',
-        'button_location': 'floating_bottom_right',
-        'value': 1
-      });
-    }
+  // Track hover interactions
+  const handleHoverStart = () => {
+    trackHover('whatsapp_float_button', 'bottom_right');
   };
   
   return (
@@ -63,7 +45,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
         className="relative"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onHoverStart={handleHover} // Track hover events
+        onHoverStart={handleHoverStart} // Track hover events
       >
         {/* Ripple effect */}
         <motion.div

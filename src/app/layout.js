@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import PageTracker from "@/components/analytics/PageTracker";
 import "@/styles/globals.css";
 import { Analytics } from '@vercel/analytics/react';
 
@@ -363,6 +364,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased">
+        <PageTracker />
         <div className="App min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow" role="main">

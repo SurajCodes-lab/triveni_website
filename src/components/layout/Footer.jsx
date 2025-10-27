@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ChevronRight } from "lucide-react";
+import { trackNavigation, trackSocialClick, trackPhoneCall, trackButtonClick } from "@/utilis/analytics";
 
 const Footer = () => {
   const quickLinks = [
@@ -30,6 +31,22 @@ const Footer = () => {
     "Hyderabad"
   ];
 
+  const handleFooterLinkClick = (linkName, href) => {
+    trackNavigation(linkName, href, 'footer');
+  };
+
+  const handleSocialClick = (platform) => {
+    trackSocialClick(platform, 'footer');
+  };
+
+  const handlePhoneClick = () => {
+    trackPhoneCall('footer', '7668570551');
+  };
+
+  const handleEmailClick = () => {
+    trackButtonClick('email_contact', 'footer', 'mailto:cabstriveni@gmail.com');
+  };
+
   return (
     <footer className="bg-black text-gray-300">
 
@@ -45,13 +62,25 @@ const Footer = () => {
                 Your trusted travel partner providing premium transportation services across India since 2015.
               </p>
               <div className="flex items-center justify-center space-x-4">
-                <button className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300 group">
+                <button
+                  className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300 group"
+                  onClick={() => handleSocialClick('facebook')}
+                  aria-label="Facebook"
+                >
                   <Facebook className="w-5 h-5 text-black" />
                 </button>
-                <button className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300">
+                <button
+                  className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300"
+                  onClick={() => handleSocialClick('instagram')}
+                  aria-label="Instagram"
+                >
                   <Instagram className="w-5 h-5 text-black" />
                 </button>
-                <button className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300">
+                <button
+                  className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300"
+                  onClick={() => handleSocialClick('twitter')}
+                  aria-label="Twitter"
+                >
                   <Twitter className="w-5 h-5 text-black" />
                 </button>
               </div>
@@ -66,6 +95,7 @@ const Footer = () => {
                     <Link
                       href={link.href}
                       className="flex items-center text-sm hover:text-[#FACF2D] transition-colors duration-300 group"
+                      onClick={() => handleFooterLinkClick(link.name, link.href)}
                     >
                       <ChevronRight className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
                       {link.name}
@@ -84,6 +114,7 @@ const Footer = () => {
                     <Link
                       href={service.href}
                       className="flex items-center text-sm hover:text-[#FACF2D] transition-colors duration-300 group"
+                      onClick={() => handleFooterLinkClick(service.name, service.href)}
                     >
                       <Clock className="w-4 h-4 mr-2 text-[#FACF2D] group-hover:rotate-12 transition-transform" />
                       {service.name}
@@ -96,22 +127,30 @@ const Footer = () => {
             <div className="space-y-6">
               <h3 className="text-white text-start font-semibold">Contact Us</h3>
               <div>
-                <div className="flex items-center space-x-3 mb-4 hover:text-[#FACF2D] transition-colors duration-300">
+                <a
+                  href="tel:+917668570551"
+                  onClick={handlePhoneClick}
+                  className="flex items-center space-x-3 mb-4 hover:text-[#FACF2D] transition-colors duration-300 cursor-pointer"
+                >
                   <div className="bg-[#FACF2D] p-2 rounded-full">
                     <Phone className="w-4 h-4 text-black" />
                   </div>
                   <div>
                     <p>+91 76685 70551</p>
                   </div>
-                </div>
-                <div className="flex items-center mb-4 space-x-3 hover:text-[#FACF2D] transition-colors duration-300">
+                </a>
+                <a
+                  href="mailto:cabstriveni@gmail.com"
+                  onClick={handleEmailClick}
+                  className="flex items-center mb-4 space-x-3 hover:text-[#FACF2D] transition-colors duration-300 cursor-pointer"
+                >
                   <div className="bg-[#FACF2D] p-2 rounded-full">
                     <Mail className="w-4 h-4 text-black" />
                   </div>
                   <div className="text-sm text-start">
                     <p>cabstriveni@gmail.com</p>
                   </div>
-                </div>
+                </a>
                 <div className="flex items-center space-x-3 hover:text-[#FACF2D] transition-colors duration-300">
                   <div className="bg-[#FACF2D] p-2 rounded-full">
                     <MapPin className="w-4 h-4 text-black" />
@@ -133,10 +172,18 @@ const Footer = () => {
             © 2024 Triveni Cabs. All rights reserved.
           </p>
           <div className="flex space-x-8">
-            <Link href="/cancellation-and-refund-policy" className="text-sm hover:text-[#FACF2D] transition-colors duration-300">
+            <Link
+              href="/cancellation-and-refund-policy"
+              className="text-sm hover:text-[#FACF2D] transition-colors duration-300"
+              onClick={() => handleFooterLinkClick('Refund & Cancellation Policy', '/cancellation-and-refund-policy')}
+            >
               Refund & Cancellation Policy
             </Link>
-            <Link href="/terms-and-conditions" className="text-sm hover:text-[#FACF2D] transition-colors duration-300">
+            <Link
+              href="/terms-and-conditions"
+              className="text-sm hover:text-[#FACF2D] transition-colors duration-300"
+              onClick={() => handleFooterLinkClick('Terms of Service', '/terms-and-conditions')}
+            >
               Terms of Service
             </Link>
           </div>

@@ -1,9 +1,14 @@
 'use client';
 
 import { Phone, ArrowRight } from 'lucide-react';
+import { trackPhoneCall } from '@/utilis/analytics';
 
-export default function CallNowButton({ phoneNumber }) {
+export default function CallNowButton({ phoneNumber, location = 'unknown' }) {
   const handleClick = () => {
+    // Track phone call conversion
+    trackPhoneCall(location, phoneNumber);
+
+    // Open phone dialer
     window.open(`tel:+91${phoneNumber}`, '_blank');
   };
 

@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Send } from 'lucide-react';
+import { trackFormSubmission, trackFormInteraction, trackError } from '@/utilis/analytics';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,10 +12,19 @@ export default function ContactForm() {
     subject: '',
     message: ''
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const formStarted = useRef(false);
+
+  // Track form start on first interaction
+  useEffect(() => {
+    if (!formStarted.current && Object.values(formData).some(val => val !== '')) {
+      trackFormInteraction('contact_form', 'started');
+      formStarted.current = true;
+    }
+  }, [formData]);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,32 +32,57 @@ export default function ContactForm() {
       ...prev,
       [name]: value
     }));
+
+    // Track field interaction
+    if (value && value.trim() !== '') {
+      trackFormInteraction('contact_form', 'field_filled', name);
+    }
   };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    
+
+    // Track form submission attempt
+    trackFormInteraction('contact_form', 'submit_attempted');
+
     // Basic validation
     if (!formData.firstName || !formData.email || !formData.message) {
-      setError('Please fill out all required fields');
+      const errorMsg = 'Please fill out all required fields';
+      setError(errorMsg);
       setLoading(false);
+
+      // Track validation error
+      trackFormInteraction('contact_form', 'validation_error', 'required_fields');
+      trackError('form_validation', errorMsg, 'contact_form');
       return;
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      setError('Please enter a valid email address');
+      const errorMsg = 'Please enter a valid email address';
+      setError(errorMsg);
       setLoading(false);
+
+      // Track email validation error
+      trackFormInteraction('contact_form', 'validation_error', 'email_format');
+      trackError('form_validation', errorMsg, 'contact_form_email');
       return;
     }
-    
+
     // Simulate form submission - replace with actual implementation later
     setTimeout(() => {
       console.log('Form submitted:', formData);
-      
+
+      // Track successful form submission (CONVERSION EVENT)
+      trackFormSubmission('contact_form', {
+        subject: formData.subject || 'general_inquiry',
+        has_last_name: !!formData.lastName,
+        message_length: formData.message.length
+      });
+
       // Reset form
       setFormData({
         firstName: '',
@@ -56,10 +91,11 @@ export default function ContactForm() {
         subject: '',
         message: ''
       });
-      
+
       setSuccess(true);
       setLoading(false);
-      
+      formStarted.current = false;
+
       // Hide success message after 5 seconds
       setTimeout(() => {
         setSuccess(false);
