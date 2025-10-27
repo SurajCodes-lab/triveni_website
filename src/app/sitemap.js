@@ -1,10 +1,18 @@
-// src/app/sitemap.js - Replace your existing sitemap.js with this
+// src/app/sitemap.js - Complete sitemap with all routes
 
 import { cities } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
+import { getAllTourSlugs } from "@/utilis/religiousTourData";
+import { tempoRoutes } from "@/utilis/tempoTravellerData";
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+}
+
+function createTempoRouteSlug(originCity, destinationName) {
+  const origin = originCity.toLowerCase().replace(/\s+/g, '-');
+  const destination = destinationName.toLowerCase().replace(/\s+/g, '-');
+  return `${origin}-to-${destination}`;
 }
 
 const allCityRoutes = {
@@ -173,7 +181,92 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+
+    // Additional Service Pages
+    {
+      url: `${baseUrl}/tourist-spots`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/airport-service`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    // Religious Tours Main Page
+    {
+      url: `${baseUrl}/religious-tours`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+
+    // Tempo Traveller Main Page
+    {
+      url: `${baseUrl}/tempo-traveller`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    // Policy Pages
+    {
+      url: `${baseUrl}/terms-and-conditions`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/cancellation-and-refund-policy`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
   ];
+
+  // Add Religious Tour Detail Pages (Dynamic)
+  const religiousTourSlugs = getAllTourSlugs();
+  religiousTourSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/religious-tours/${slug}`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // Add ALL Tempo Traveller Routes (60+ routes)
+  Object.keys(tempoRoutes).forEach(originCity => {
+    const routes = tempoRoutes[originCity];
+    routes.forEach(route => {
+      const routeSlug = createTempoRouteSlug(originCity, route.name);
+      urls.push({
+        url: `${baseUrl}/tempo-traveller/${routeSlug}`,
+        lastModified: new Date('2025-07-19'),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      });
+    });
+  });
+
+  // Add Tourist Attractions by City
+  const touristAttractionCities = [
+    'delhi', 'agra', 'jaipur', 'udaipur', 'haridwar', 'rishikesh',
+    'shimla', 'manali', 'amritsar', 'lucknow', 'varanasi', 'jodhpur',
+    'ayodhya', 'ahmedabad'
+  ];
+
+  touristAttractionCities.forEach(city => {
+    urls.push({
+      url: `${baseUrl}/tourist-attractions/${city}`,
+      lastModified: new Date('2025-07-19'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  });
 
   // Add ALL city pages (not just 4)
   cities.forEach(city => {
