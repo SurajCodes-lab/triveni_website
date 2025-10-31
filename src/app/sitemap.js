@@ -28,43 +28,43 @@ export default function sitemap() {
     // Main Pages
     {
       url: baseUrl,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/destinations`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/car-rental`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tour-guide`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
     },
@@ -78,37 +78,37 @@ export default function sitemap() {
     // Tour Packages
     {
       url: `${baseUrl}/tour-package/manali-tour-from-mumbai`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tour-package/chardham-yatra-package`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tour-package/shimla-from-mumbai`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tour-package/rajasthan-tour`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tour-package/kashmir-tour`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tour-package/punjab-tour`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -116,37 +116,37 @@ export default function sitemap() {
     // Booking Pages
     {
       url: `${baseUrl}/tour-package/manali-tour-from-mumbai/book`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.64,
     },
     {
       url: `${baseUrl}/tour-package/chardham-yatra-package/book`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.64,
     },
     {
       url: `${baseUrl}/tour-package/shimla-from-mumbai/book`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.64,
     },
     {
       url: `${baseUrl}/tour-package/rajasthan-tour/book`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.64,
     },
     {
       url: `${baseUrl}/tour-package/kashmir-tour/book`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.64,
     },
     {
       url: `${baseUrl}/tour-package/punjab-tour/book`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.64,
     },
@@ -154,31 +154,31 @@ export default function sitemap() {
     // Vehicle Categories
     {
       url: `${baseUrl}/vehicles/sedan`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/vehicles/suv`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/vehicles/tempo-traveller`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/vehicles/luxury-bus`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/vehicles/bus`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -186,13 +186,13 @@ export default function sitemap() {
     // Additional Service Pages
     {
       url: `${baseUrl}/tourist-spots`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/airport-service`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -200,7 +200,7 @@ export default function sitemap() {
     // Religious Tours Main Page
     {
       url: `${baseUrl}/religious-tours`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
@@ -208,7 +208,7 @@ export default function sitemap() {
     // Tempo Traveller Main Page
     {
       url: `${baseUrl}/tempo-traveller`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -216,13 +216,13 @@ export default function sitemap() {
     // Policy Pages
     {
       url: `${baseUrl}/terms-and-conditions`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/cancellation-and-refund-policy`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.5,
     },
@@ -251,7 +251,7 @@ export default function sitemap() {
   religiousTourSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/religious-tours/${slug}`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     });
@@ -264,7 +264,7 @@ export default function sitemap() {
       const routeSlug = createTempoRouteSlug(originCity, route.name);
       urls.push({
         url: `${baseUrl}/tempo-traveller/${routeSlug}`,
-        lastModified: new Date('2025-07-19'),
+        lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
       });
@@ -281,7 +281,7 @@ export default function sitemap() {
   touristAttractionCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/tourist-attractions/${city}`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     });
@@ -294,7 +294,7 @@ export default function sitemap() {
     const cityName = city.name.toLowerCase();
     urls.push({
       url: `${baseUrl}/${cityName}`,
-      lastModified: new Date('2025-07-19'),
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     });
@@ -317,7 +317,7 @@ export default function sitemap() {
           const routeSlug = createRouteSlug(cityName, route.destination);
           urls.push({
             url: `${baseUrl}/${routeSlug}`,
-            lastModified: new Date('2025-07-19'),
+            lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.64,
           });

@@ -910,14 +910,15 @@ export default function RouteClientContent({
           </section>
         </main>
 
+        {/* Enhanced SEO Section - Indexed but not visible */}
         <section className="sr-only" aria-hidden="true">
-          <h2>Complete Keyword Index for {formattedCityName} to {formattedDestination}</h2>
+          <h2>Complete Keyword Directory for {formattedCityName} to {formattedDestination} Taxi Service 2025</h2>
           <div itemScope itemType="https://schema.org/Service">
             <meta itemProp="serviceType" content="Taxi Service" />
             <meta itemProp="provider" content="Triveni Cabs" />
             <meta itemProp="areaServed" content={`${formattedCityName}, ${formattedDestination}`} />
 
-            {/* Keyword Cloud */}
+            {/* Primary Keywords */}
             <ul>
               {allPageKeywords.map((keyword, index) => (
                 <li key={index}>
@@ -926,49 +927,98 @@ export default function RouteClientContent({
               ))}
             </ul>
 
-            {/* Additional semantic content */}
-            <p>
-              Professional taxi service from {formattedCityName} to {formattedDestination} with verified drivers,
-              GPS tracking, transparent pricing, 24x7 availability, clean AC vehicles, instant booking,
-              safe journey, comfortable ride, affordable rates, premium service, luxury cars, economy options,
-              one way taxi, round trip cab, outstation booking, intercity travel, highway service,
-              airport transfer, railway pickup, hotel drop, corporate booking, wedding cars, group travel,
-              family tours, couple packages, honeymoon trips, adventure tours, sightseeing cabs,
-              local tours, city tours, heritage visits, pilgrimage trips, religious tours, temple visits,
-              spiritual journeys, nature tours, wildlife trips, photography tours, food tours,
-              shopping trips, cultural tours, business travel, meeting cabs, conference transport,
-              event cabs, party pickup, night service, early morning, late night, weekend bookings,
-              holiday service, festival cabs, seasonal offers, discount fares, special rates,
-              promotional prices, package deals, bulk booking, advance reservation, instant confirmation,
-              online booking, mobile app, digital payment, cashless transaction, UPI payment,
-              card payment, wallet payment, secure payment, encrypted transaction, safe booking,
-              verified payment, instant refund, flexible cancellation, customer support,
-              24/7 helpline, emergency assistance, breakdown support, roadside help,
-              technical support, complaint resolution, feedback system, rating reviews,
-              customer testimonials, verified reviews, authentic feedback, real experiences,
-              trusted service, reliable company, reputed brand, licensed operator, registered company,
-              insured vehicles, legal documentation, proper permits, valid licenses,
-              certified drivers, trained chauffeurs, experienced drivers, professional service,
-              courteous behavior, polite drivers, helpful staff, friendly service,
-              customer satisfaction, quality assurance, premium standards, superior service,
-              excellent quality, outstanding performance, exceptional service, remarkable experience,
-              memorable journey, comfortable travel, smooth ride, safe journey, secure trip,
-              protected travel, insured journey, guaranteed safety, assured security,
-              GPS tracking, live monitoring, real-time updates, continuous tracking,
-              journey recording, trip logging, panic button, SOS alert, emergency help,
-              distress signal, safety alarm, security feature, protection enabled,
-              CCTV camera, video recording, footage saved, monitored service, supervised journey,
-              clean vehicles, sanitized cars, disinfected interior, hygienic environment,
-              fresh air, neat cars, tidy interior, organized service, well maintained,
-              regular service, frequent checks, daily inspection, weekly testing, monthly certification,
-              valid fitness, current permit, updated insurance, renewed license, active registration,
-              spacious cars, roomy interior, ample space, generous room, wide seating,
-              comfortable seats, cushioned interior, padded seats, plush seating, luxury comfort,
-              premium amenities, deluxe features, upscale service, high-end quality, top-class standards,
-              first-rate service, superior quality, excellent standards, best service, top quality,
-              leading company, number one service, premier cab, elite taxi, exclusive service,
-              VIP treatment, executive service, business class, first class, premium category.
-            </p>
+            {/* Enhanced Long-tail Keywords */}
+            <article>
+              <h3>Popular Taxi Booking Searches</h3>
+              <p>
+                <strong>Best taxi from {formattedCityName} to {formattedDestination}</strong> |
+                <strong>cheap cab {formattedCityName} to {formattedDestination}</strong> |
+                <strong>online cab booking {formattedCityName} {formattedDestination}</strong> |
+                <strong>taxi fare {formattedCityName} to {formattedDestination}</strong> |
+                <strong>one way taxi {formattedCityName} to {formattedDestination}</strong> |
+                <strong>round trip cab {formattedCityName} to {formattedDestination}</strong> |
+                <strong>AC cab {formattedCityName} to {formattedDestination}</strong> |
+                <strong>sedan taxi {formattedCityName} to {formattedDestination}</strong> |
+                <strong>SUV cab {formattedCityName} to {formattedDestination}</strong> |
+                <strong>tempo traveller {formattedCityName} to {formattedDestination}</strong> |
+                <strong>24x7 cab service {formattedCityName}</strong> |
+                <strong>outstation taxi from {formattedCityName}</strong> |
+                <strong>airport taxi {formattedCityName}</strong> |
+                <strong>railway station cab {formattedCityName}</strong> |
+                book taxi online {formattedCityName} to {formattedDestination} |
+                hire cab for {formattedDestination} |
+                rent car {formattedCityName} |
+                cheapest taxi to {formattedDestination} |
+                luxury cab service |
+                budget taxi booking |
+                verified driver cab |
+                GPS tracked taxi |
+                safe taxi service |
+                comfortable cab ride |
+                instant taxi booking |
+                advance cab reservation |
+                same day taxi service |
+                emergency cab {formattedCityName} |
+                night taxi service |
+                early morning cab |
+                weekend taxi booking |
+                holiday cab service |
+                festival season taxi |
+                wedding car rental |
+                corporate cab booking |
+                group travel taxi |
+                family tour cab.
+              </p>
+
+              <p>
+                Professional taxi service from {formattedCityName} to {formattedDestination} with verified drivers,
+                GPS tracking, transparent pricing, 24x7 availability, clean AC vehicles, instant booking,
+                safe journey, comfortable ride, affordable rates, premium service, luxury cars, economy options,
+                one way taxi, round trip cab, outstation booking, intercity travel, highway service,
+                airport transfer, railway pickup, hotel drop, corporate booking, wedding cars, group travel,
+                family tours, couple packages, honeymoon trips, adventure tours, sightseeing cabs,
+                local tours, city tours, heritage visits, pilgrimage trips, religious tours, temple visits,
+                spiritual journeys, nature tours, wildlife trips, photography tours, food tours,
+                shopping trips, cultural tours, business travel, meeting cabs, conference transport,
+                event cabs, party pickup, night service, early morning, late night, weekend bookings,
+                holiday service, festival cabs, seasonal offers, discount fares, special rates,
+                promotional prices, package deals, bulk booking, advance reservation, instant confirmation,
+                online booking, mobile app, digital payment, cashless transaction, UPI payment,
+                card payment, wallet payment, secure payment, encrypted transaction, safe booking,
+                verified payment, instant refund, flexible cancellation, customer support,
+                24/7 helpline, emergency assistance, breakdown support, roadside help,
+                technical support, complaint resolution, feedback system, rating reviews,
+                customer testimonials, verified reviews, authentic feedback, real experiences,
+                trusted service, reliable company, reputed brand, licensed operator, registered company,
+                insured vehicles, legal documentation, proper permits, valid licenses,
+                certified drivers, trained chauffeurs, experienced drivers, professional service,
+                courteous behavior, polite drivers, helpful staff, friendly service,
+                customer satisfaction, quality assurance, premium standards, superior service,
+                excellent quality, outstanding performance, exceptional service, remarkable experience,
+                memorable journey, comfortable travel, smooth ride, safe journey, secure trip,
+                protected travel, insured journey, guaranteed safety, assured security,
+                GPS tracking, live monitoring, real-time updates, continuous tracking,
+                journey recording, trip logging, panic button, SOS alert, emergency help,
+                distress signal, safety alarm, security feature, protection enabled,
+                CCTV camera, video recording, footage saved, monitored service, supervised journey,
+                clean vehicles, sanitized cars, disinfected interior, hygienic environment,
+                fresh air, neat cars, tidy interior, organized service, well maintained,
+                regular service, frequent checks, daily inspection, weekly testing, monthly certification,
+                valid fitness, current permit, updated insurance, renewed license, active registration,
+                spacious cars, roomy interior, ample space, generous room, wide seating,
+                comfortable seats, cushioned interior, padded seats, plush seating, luxury comfort,
+                premium amenities, deluxe features, upscale service, high-end quality, top-class standards,
+                first-rate service, superior quality, excellent standards, best service, top quality,
+                leading company, number one service, premier cab, elite taxi, exclusive service,
+                VIP treatment, executive service, business class, first class, premium category.
+                How to book taxi from {formattedCityName} to {formattedDestination}?
+                What is cheapest cab fare? Is one way available? Best time to travel?
+                Distance and duration? Driver experience? Vehicle options? Payment methods?
+                Cancellation policy? Refund process? Safety measures? Child seats available?
+                Pet friendly taxi? Luggage capacity? Rest stops? Food during journey?
+                Toll charges included? Parking fees? Driver accommodation? Multiple day booking?
+              </p>
+            </article>
           </div>
         </section>
         {/* Enhanced Footer CTA */}
