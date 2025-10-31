@@ -147,9 +147,9 @@ const TaxiServiceGrid = () => {
         <p className="text-yellow-500 text-sm font-medium mb-2">
           India's Leading Taxi Service Network
         </p>
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
           Book Online Taxi in 14+ Cities Across India
-        </h1>
+        </h2>
         <p className="text-gray-600 max-w-3xl mx-auto text-sm md:text-base">
           Reliable 24/7 outstation taxi booking with professional drivers, GPS tracking, and competitive<br className="hidden md:block" />
           rates. Available in major cities including Delhi, Mumbai, Bangalore, Chennai and more.

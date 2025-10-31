@@ -4,6 +4,7 @@ import { cities } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
 import { tempoRoutes } from "@/utilis/tempoTravellerData";
+import { blogPosts } from "@/utilis/blog";
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -225,7 +226,25 @@ export default function sitemap() {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+
+    // Blog Main Page
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ];
+
+  // Add Blog Posts (Dynamic)
+  blogPosts.forEach(post => {
+    urls.push({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
 
   // Add Religious Tour Detail Pages (Dynamic)
   const religiousTourSlugs = getAllTourSlugs();

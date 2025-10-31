@@ -21,11 +21,11 @@ const ServicesSection = () => {
       <section className="py-8 md:py-16 bg-gradient-to-b from-white to-[#FFFCD1]">
         <div className="max-w-7xl mx-auto px-4">
           <header className="text-center mb-8 md:mb-12">
-            <h3 id="all-services-heading" className="text-2xl md:text-3xl font-semibold mb-4">
-              Complete Taxi Services - All Transportation Solutions
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              From local city rides to long-distance travel, we provide comprehensive taxi and cab booking services across India
+            <h2 id="all-services-heading" className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+              Complete Taxi Services - Affordable Car Rental & Transportation Solutions
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              From local city rides to long-distance travel, we provide comprehensive taxi and cab booking services across India. Sedan, SUV, Tempo Traveller available 24/7.
             </p>
           </header>
           
@@ -40,9 +40,9 @@ const ServicesSection = () => {
                   <div className="p-2 bg-yellow-100 rounded-lg">
                     {service.icon}
                   </div>
-                  <h4 className="text-lg md:text-xl font-semibold ml-3">
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold ml-3">
                     {service.title} - Taxi Service
-                  </h4>
+                  </h3>
                 </header>
                 
                 <p className="text-gray-600 text-sm md:text-base mb-4">

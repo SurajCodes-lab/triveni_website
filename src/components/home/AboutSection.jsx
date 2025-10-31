@@ -13,15 +13,18 @@ const AboutSection = () => {
       aria-labelledby="about-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header - Changed from H2 to H3 */}
+        {/* Section Header - Optimized for SEO */}
         <header className="text-center mb-16 md:mb-20">
-          <h3 
+          <h2
             id="about-heading"
-            className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight hover:text-[#FACF2D] transition-colors duration-300"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight hover:text-[#FACF2D] transition-colors duration-300"
           >
-            About Triveni Cabs - Your Reliable Transportation Partner
-          </h3>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#FACF2D] to-yellow-500 mx-auto rounded-full"></div>
+            About Triveni Cabs - Best Taxi Service & Car Rental in India
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mt-4">
+            Professional car rental and taxi service provider with competitive rates, verified drivers, and 24/7 support across 50+ cities
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#FACF2D] to-yellow-500 mx-auto rounded-full mt-6"></div>
         </header>
 
         {/* Main Content Area */}
@@ -29,9 +32,9 @@ const AboutSection = () => {
           {/* Content Column */}
           <article className="space-y-8">
             <header>
-              <h4 className="text-xl md:text-2xl font-bold text-yellow-800 mb-6 tracking-tight hover:text-black transition-colors duration-300">
-                Professional Taxi Service Across India
-              </h4>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-yellow-800 mb-6 tracking-tight hover:text-black transition-colors duration-300">
+                Professional Taxi Service Across India - Affordable Car Rental
+              </h3>
             </header>
             
             <div className="prose prose-lg max-w-none">
@@ -88,17 +91,17 @@ const AboutSection = () => {
           </aside>
         </div>
 
-        {/* Features Section - Changed heading structure */}
+        {/* Features Section - Optimized for SEO */}
         <section aria-labelledby="features-heading">
           <header className="text-center mb-12">
-            <h4 
+            <h3
               id="features-heading"
-              className="text-xl md:text-2xl font-bold text-gray-900 mb-4"
+              className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-4"
             >
-              Why Choose Our Taxi Service
-            </h4>
+              Why Choose Triveni Cabs - Best Taxi & Car Rental Service
+            </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover what makes Triveni Cabs your ideal cab booking partner
+              Professional drivers, competitive rates, 24/7 support, and verified vehicles make us your ideal cab booking partner
             </p>
           </header>
 
@@ -115,9 +118,9 @@ const AboutSection = () => {
                       aria-hidden="true"
                     />
                   </div>
-                  <h5 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#FACF2D] transition-colors duration-300">
+                  <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#FACF2D] transition-colors duration-300">
                     {feature.title}
-                  </h5>
+                  </h4>
                 </header>
                 
                 <p className="text-base text-gray-600 text-center leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
@@ -128,9 +131,8 @@ const AboutSection = () => {
           </div>
         </section>
 
-        {/* Stats section - Changed to H5 */}
-        <section className="mt-20 text-center" aria-labelledby="stats-heading">
-          <h5 id="stats-heading" className="sr-only">Our Service Statistics</h5>
+        {/* Stats section - SEO Optimized */}
+        <section className="mt-20 text-center" aria-label="Our Service Statistics">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="stat-item">
               <div className="text-3xl md:text-4xl font-bold text-[#FACF2D] mb-2">1000+</div>
