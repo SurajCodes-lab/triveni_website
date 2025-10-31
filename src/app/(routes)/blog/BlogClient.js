@@ -294,7 +294,7 @@ export default function BlogClient() {
             <header>
               <motion.h1
                 id="blog-hero-heading"
-                className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-tight"
+                className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-tight px-2"
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 0.4, duration: 1, type: "spring", stiffness: 100 }}
@@ -307,9 +307,9 @@ export default function BlogClient() {
                   Triveni Cabs
                 </motion.span>
 
-                {/* FLOATING 3D "Travel Blog" with Typing Animation */}
+                {/* FLOATING 3D "Travel Blog" with Typing Animation - FIXED OVERFLOW */}
                 <motion.span
-                  className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400"
+                  className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 overflow-visible whitespace-nowrap min-h-[1.2em]"
                   animate={{
                     y: [0, -20, 0],
                     rotateX: [0, 5, 0, -5, 0],

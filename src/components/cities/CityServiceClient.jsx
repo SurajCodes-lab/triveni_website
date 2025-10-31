@@ -13,7 +13,7 @@ import { phoneNumber } from "@/utilis/data";
 import CityRoutes from "@/components/cities/CityRoutes";
 import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
 
-// SEO-Enhanced Hero Banner Component
+// COMPLETELY REDESIGNED MODERN HERO BANNER
 const HeroBanner = ({ formattedCityName }) => {
   const generateHeroStructuredData = () => ({
     "@context": "https://schema.org",
@@ -45,87 +45,190 @@ const HeroBanner = ({ formattedCityName }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateHeroStructuredData()) }}
       />
       <section
-        className="relative bg-cover bg-center bg-no-repeat py-16 md:py-32"
+        className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: "url('/images/about/about_banner.jpg')",
         }}
         itemScope
         itemType="https://schema.org/TaxiService"
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* SEO-Enhanced Breadcrumb */}
+        {/* Dark Gradient Overlay on Image */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+
+        {/* Animated Gradient Accent Layers on top */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.4) 0%, transparent 50%)',
+            animation: 'gradientMove 10s ease-in-out infinite'
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            background: 'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
+            animation: 'gradientMove 8s ease-in-out infinite reverse'
+          }}
+        />
+
+        {/* Floating Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-2xl opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `float ${10 + Math.random() * 20}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            >
+              {['🚕', '🏙️', '⭐', '🎯', '📍', '🚗'][i % 6]}
+            </div>
+          ))}
+        </div>
+
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
+          {/* Modern Breadcrumb */}
           <nav className="mb-6" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-1 md:space-x-3 text-sm" itemScope itemType="https://schema.org/BreadcrumbList">
+            <ol className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20" itemScope itemType="https://schema.org/BreadcrumbList">
               <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <Link href="/" className="text-white hover:text-yellow-400 transition-colors" itemProp="item">
+                <Link href="/" className="text-white hover:text-[#FACF2D] transition-colors text-sm font-medium" itemProp="item">
                   <span itemProp="name">Home</span>
                 </Link>
                 <meta itemProp="position" content="1" />
               </li>
-              <ChevronRight className="w-4 h-4 mx-2 text-white" />
-              <li className="text-yellow-400 font-medium" aria-current="page" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+              <ChevronRight className="w-4 h-4 text-white/60" />
+              <li className="text-[#FACF2D] font-semibold text-sm" aria-current="page" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                 <span itemProp="name">Taxi Service {formattedCityName}</span>
                 <meta itemProp="position" content="2" />
               </li>
             </ol>
           </nav>
-        </div>
-          {/* SEO-Optimized Hero Content */}
+
+          {/* Hero Content */}
           <div className="max-w-4xl">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight" itemProp="name">
-              Best Taxi Service in <span className="text-yellow-400">{formattedCityName}</span> | 24/7 Cab Booking
+            {/* Animated Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-5 py-2.5 rounded-full mb-4 border-2 border-[#FACF2D]/40 shadow-xl">
+              <MapPin className="w-5 h-5 text-[#FACF2D]" />
+              <span className="font-bold text-white text-sm">Best Taxi Service 2025</span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight" itemProp="name">
+              Best Taxi Service in{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400">
+                {formattedCityName}
+              </span>
+              <br />
+              <span className="text-2xl md:text-3xl lg:text-4xl text-white/90">
+                24/7 Cab Booking Available
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-6 leading-relaxed" itemProp="description">
-              Book professional outstation taxi in {formattedCityName} with verified drivers, GPS tracking, clean AC vehicles.
-              Available 24/7 for airport transfers, local tours, wedding cars at best rates. Instant confirmation guaranteed.
+
+            <p className="text-base md:text-lg lg:text-xl text-white/95 mb-8 max-w-3xl leading-relaxed font-light" itemProp="description">
+              ✅ Verified Drivers • ✅ GPS Tracking • ✅ Clean AC Vehicles<br className="hidden md:block" />
+              ✅ Airport Transfer • ✅ Outstation Tours • ✅ Instant Booking
             </p>
 
-            {/* Key Features for SEO */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-sm">
-              <div className="text-center text-white">
-                <Clock className="w-6 h-6 mx-auto mb-1 text-yellow-400" />
-                <span>24/7 Taxi Service</span>
+            {/* Modern Info Pills */}
+            <div className="flex flex-wrap gap-3 mb-8">
+              <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
+                <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                  <Clock className="w-5 h-5 text-black" />
+                </div>
+                <div>
+                  <div className="text-xs text-white/70 font-medium">Available</div>
+                  <div className="font-bold">24/7 Service</div>
+                </div>
               </div>
-              <div className="text-center text-white">
-                <Shield className="w-6 h-6 mx-auto mb-1 text-yellow-400" />
-                <span>GPS Tracking</span>
+
+              <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
+                <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                  <Shield className="w-5 h-5 text-black" />
+                </div>
+                <div>
+                  <div className="text-xs text-white/70 font-medium">Safety</div>
+                  <div className="font-bold">GPS Tracking</div>
+                </div>
               </div>
-              <div className="text-center text-white">
-                <Car className="w-6 h-6 mx-auto mb-1 text-yellow-400" />
-                <span>Clean AC Vehicles</span>
-              </div>
-              <div className="text-center text-white">
-                <Star className="w-6 h-6 mx-auto mb-1 text-yellow-400" />
-                <span>4.8★ Rated</span>
+
+              <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
+                <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                  <Star className="w-5 h-5 text-black" />
+                </div>
+                <div>
+                  <div className="text-xs text-white/70 font-medium">Rating</div>
+                  <div className="font-bold">4.8 ⭐</div>
+                </div>
               </div>
             </div>
 
+            {/* Modern CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href={`tel:+91${phoneNumber}`}
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400"
+                className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
                 aria-label={`Call taxi service in ${formattedCityName} at ${phoneNumber}`}
                 itemProp="telephone"
               >
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now - {phoneNumber}
+                <Phone className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
+                <span>Call Now - {phoneNumber}</span>
               </a>
 
               <a
                 href={`https://wa.me/${phoneNumber}?text=Hi, I need taxi service in ${formattedCityName}. Please share rates and availability.`}
-                className="bg-black hover:bg-yellow-400 hover:text-black text-white px-6 py-3 rounded-lg flex items-center justify-center transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-black"
+                className="group bg-white text-black hover:bg-[#FACF2D] px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
                 aria-label={`WhatsApp taxi booking in ${formattedCityName}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <BsWhatsapp className="w-5 h-5 mr-2" />
-                WhatsApp Booking
+                <BsWhatsapp className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" />
+                <span>WhatsApp Booking</span>
               </a>
             </div>
-      </div>
 
-      </section >
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-white/20">
+              <div className="flex items-center text-white/90">
+                <CheckCircle className="w-5 h-5 mr-2 text-[#FACF2D]" />
+                <span className="text-sm font-medium">Verified Drivers</span>
+              </div>
+              <div className="flex items-center text-white/90">
+                <Shield className="w-5 h-5 mr-2 text-[#FACF2D]" />
+                <span className="text-sm font-medium">Safe Journey</span>
+              </div>
+              <div className="flex items-center text-white/90">
+                <Users className="w-5 h-5 mr-2 text-[#FACF2D]" />
+                <span className="text-sm font-medium">1000+ Happy Customers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Wave */}
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+          <svg viewBox="0 0 1440 120" fill="none" className="w-full h-auto">
+            <path
+              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+
+        {/* CSS Animations */}
+        <style jsx>{`
+          @keyframes gradientMove {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+          }
+          @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.4; }
+          }
+        `}</style>
+      </section>
     </>
   );
 };

@@ -266,97 +266,197 @@ export default function RouteClientContent({
       />
 
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-        {/* Hero Section - Enhanced with more semantic HTML */}
-        <header
-          className="relative bg-cover bg-center bg-no-repeat py-20 md:py-32"
-          style={{
-            backgroundImage: "url('/images/about/about_banner.jpg')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Breadcrumb */}
+        {/* COMPLETELY REDESIGNED MODERN HERO SECTION */}
+        <header className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden">
+          {/* Animated Gradient Background - Similar to Blog */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+            {/* Animated Gradient Layers */}
+            <div
+              className="absolute inset-0 opacity-70"
+              style={{
+                background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
+                animation: 'gradientMove 10s ease-in-out infinite'
+              }}
+            />
+            <div
+              className="absolute inset-0 opacity-60"
+              style={{
+                background: 'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
+                animation: 'gradientMove 8s ease-in-out infinite reverse'
+              }}
+            />
+          </div>
+
+          {/* Floating Icons/Particles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute text-2xl opacity-20"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animation: `float ${10 + Math.random() * 20}s ease-in-out infinite`,
+                  animationDelay: `${Math.random() * 5}s`
+                }}
+              >
+                {['🚗', '🛣️', '⭐', '🎯', '📍'][i % 5]}
+              </div>
+            ))}
+          </div>
+
+          {/* Main Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
+            {/* Breadcrumb - Modernized */}
             <nav className="mb-6" aria-label="Breadcrumb">
-              <ol className="inline-flex items-center space-x-1 md:space-x-3 text-sm">
+              <ol className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                   <Link
                     href="/"
-                    className="text-white hover:text-yellow-400 transition-colors"
+                    className="text-white hover:text-[#FACF2D] transition-colors text-sm font-medium"
                     itemProp="item"
                   >
                     <span itemProp="name">Home</span>
                   </Link>
                   <meta itemProp="position" content="1" />
                 </li>
-                <ChevronRight className="w-4 h-4 mx-1 text-white" />
+                <ChevronRight className="w-4 h-4 text-white/60" />
                 <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                   <Link
                     href={`/${cityName}`}
-                    className="text-white hover:text-yellow-400 transition-colors"
+                    className="text-white hover:text-[#FACF2D] transition-colors text-sm font-medium"
                     itemProp="item"
                   >
-                    <span itemProp="name">{formattedCityName} Cabs</span>
+                    <span itemProp="name">{formattedCityName}</span>
                   </Link>
                   <meta itemProp="position" content="2" />
                 </li>
-                <ChevronRight className="w-4 h-4 mx-1 text-white" />
-                <li className="text-yellow-400 font-medium" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <ChevronRight className="w-4 h-4 text-white/60" />
+                <li className="text-[#FACF2D] font-semibold text-sm" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
                   <span itemProp="name">{formattedDestination}</span>
                   <meta itemProp="position" content="3" />
                 </li>
               </ol>
             </nav>
 
-            {/* Hero Content */}
+            {/* Hero Content - Modernized */}
             <div className="max-w-4xl">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                Book {formattedCityName} to {formattedDestination} <span className="text-yellow-400">Cab Service</span> - Starting ₹{startingPrice.replace('₹', '')}
+              {/* Animated Badge */}
+              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-5 py-2.5 rounded-full mb-4 border-2 border-[#FACF2D]/40 shadow-xl">
+                <MapPin className="w-5 h-5 text-[#FACF2D]" />
+                <span className="font-bold text-white text-sm">Premium Cab Service 2025</span>
+              </div>
+
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight">
+                {formattedCityName} to{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400">
+                  {formattedDestination}
+                </span>
+                <br />
+                <span className="text-2xl md:text-3xl lg:text-4xl text-white/90">
+                  Cab Service - Starting {startingPrice}
+                </span>
               </h1>
 
-              <p className="text-lg md:text-xl text-white mb-6 max-w-3xl leading-relaxed">
-                Reliable and affordable taxi booking from {formattedCityName} to {formattedDestination} with professional drivers,
-                clean AC vehicles, and transparent pricing. Book one-way or round-trip cabs online. 24/7 customer support available.
+              <p className="text-base md:text-lg lg:text-xl text-white/95 mb-8 max-w-3xl leading-relaxed font-light">
+                ✅ Professional Drivers • ✅ Clean AC Vehicles • ✅ Transparent Pricing<br className="hidden md:block" />
+                ✅ GPS Tracking • ✅ 24/7 Support • ✅ Instant Booking
               </p>
 
-              {/* Key Info Pills */}
-              <div className="flex flex-wrap gap-3 md:gap-4 mb-8">
-                <div className="flex items-center bg-white/15 backdrop-blur-sm px-3 md:px-4 py-2 rounded-full text-white text-sm md:text-base">
-                  <Car className="w-4 h-4 md:w-5 md:h-5 mr-2 text-yellow-400" />
-                  <span itemProp="distance">~{route.distance || estimatedDistance}</span>
+              {/* Modernized Info Pills with Animation */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
+                  <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                    <MapPin className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-white/70 font-medium">Distance</div>
+                    <div className="font-bold" itemProp="distance">{route.distance || estimatedDistance}</div>
+                  </div>
                 </div>
-                <div className="flex items-center bg-white/15 backdrop-blur-sm px-3 md:px-4 py-2 rounded-full text-white text-sm md:text-base">
-                  <Clock className="w-4 h-4 md:w-5 md:h-5 mr-2 text-yellow-400" />
-                  <span itemProp="duration">~{route.time || estimatedTime}</span>
+
+                <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
+                  <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                    <Clock className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-white/70 font-medium">Duration</div>
+                    <div className="font-bold" itemProp="duration">{route.time || estimatedTime}</div>
+                  </div>
                 </div>
-                <div className="flex items-center bg-white/15 backdrop-blur-sm px-3 md:px-4 py-2 rounded-full text-white text-sm md:text-base">
-                  <Star className="w-4 h-4 md:w-5 md:h-5 mr-2 text-yellow-400" />
-                  <span itemProp="aggregateRating">4.8★ Rated Service</span>
+
+                <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
+                  <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
+                    <Star className="w-5 h-5 text-black" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-white/70 font-medium">Rating</div>
+                    <div className="font-bold" itemProp="aggregateRating">4.8 ⭐</div>
+                  </div>
                 </div>
               </div>
 
-              {/* CTA Buttons */}
+              {/* Modernized CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleCallNow}
-                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex items-center justify-center transition-all transform hover:scale-105 font-medium"
+                  className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
                   aria-label={`Call ${phoneNumber} to book taxi from ${formattedCityName} to ${formattedDestination}`}
                   itemProp="telephone"
                 >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call Now - {phoneNumber}
+                  <Phone className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
+                  <span>Call Now - {phoneNumber}</span>
                 </button>
 
                 <button
                   onClick={handleWhatsApp}
-                  className="bg-black hover:bg-yellow-400 hover:text-black text-white px-6 py-3 rounded-lg flex items-center justify-center transition-all transform hover:scale-105 font-medium"
+                  className="group bg-white text-black hover:bg-[#FACF2D] px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
                   aria-label={`WhatsApp booking for ${formattedCityName} to ${formattedDestination} cab service`}
                 >
-                  <BsWhatsapp className="w-5 h-5 mr-2" />
-                  WhatsApp Booking
+                  <BsWhatsapp className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" />
+                  <span>WhatsApp Booking</span>
                 </button>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-white/20">
+                <div className="flex items-center text-white/90">
+                  <CheckCircle className="w-5 h-5 mr-2 text-[#FACF2D]" />
+                  <span className="text-sm font-medium">Verified Drivers</span>
+                </div>
+                <div className="flex items-center text-white/90">
+                  <Shield className="w-5 h-5 mr-2 text-[#FACF2D]" />
+                  <span className="text-sm font-medium">Safe Journey</span>
+                </div>
+                <div className="flex items-center text-white/90">
+                  <Award className="w-5 h-5 mr-2 text-[#FACF2D]" />
+                  <span className="text-sm font-medium">1000+ Happy Customers</span>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Decorative Wave at Bottom */}
+          <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+            <svg viewBox="0 0 1440 120" fill="none" className="w-full h-auto">
+              <path
+                d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+
+          {/* CSS Animations */}
+          <style jsx>{`
+            @keyframes gradientMove {
+              0%, 100% { transform: translate(0, 0); }
+              50% { transform: translate(50px, 50px); }
+            }
+            @keyframes float {
+              0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+              50% { transform: translateY(-30px) rotate(180deg); opacity: 0.4; }
+            }
+          `}</style>
         </header>
 
         {/* Main Content */}
