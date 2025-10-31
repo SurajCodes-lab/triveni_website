@@ -93,8 +93,8 @@ export default function BlogPage() {
         {/* Hero Section - COMPLETELY REDESIGNED */}
         <motion.section
           ref={heroRef}
-          style={{ opacity: heroOpacity, scale: heroScale, height: 'calc(100vh - 80px)' }}
-          className="relative flex items-center justify-center overflow-hidden"
+          style={{ opacity: heroOpacity, scale: heroScale }}
+          className="relative min-h-[85vh] md:h-[calc(100vh-80px)] flex items-start md:items-center justify-center overflow-hidden pt-4 md:pt-0"
           aria-labelledby="blog-hero-heading"
         >
           {/* Animated Gradient Background - NO IMAGE */}
@@ -290,7 +290,7 @@ export default function BlogPage() {
             ))}
           </div>
 
-          <div className="relative z-20 max-w-7xl mx-auto px-4 py-4">
+          <div className="relative z-20 max-w-7xl mx-auto px-4 py-0 md:py-4">
             {/* Hero Content */}
             <div className="text-center max-w-6xl mx-auto">
               {/* Animated Badge with 3D Effect */}
@@ -308,7 +308,7 @@ export default function BlogPage() {
                   rotateY: 10,
                   rotateX: 5,
                 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-6 py-2.5 rounded-full mb-4 border-2 border-[#FACF2D]/50 shadow-2xl"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-6 py-2.5 rounded-full mb-3 md:mb-4 border-2 border-[#FACF2D]/50 shadow-2xl"
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 <motion.div
