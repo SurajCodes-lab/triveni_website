@@ -266,26 +266,31 @@ export default function RouteClientContent({
       />
 
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-        {/* COMPLETELY REDESIGNED MODERN HERO SECTION */}
-        <header className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden">
-          {/* Animated Gradient Background - Similar to Blog */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-            {/* Animated Gradient Layers */}
-            <div
-              className="absolute inset-0 opacity-70"
-              style={{
-                background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                animation: 'gradientMove 10s ease-in-out infinite'
-              }}
-            />
-            <div
-              className="absolute inset-0 opacity-60"
-              style={{
-                background: 'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                animation: 'gradientMove 8s ease-in-out infinite reverse'
-              }}
-            />
-          </div>
+        {/* MODERN HERO SECTION WITH BACKGROUND IMAGE */}
+        <header
+          className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/about/about_banner.jpg')",
+          }}
+        >
+          {/* Dark Gradient Overlay on Image */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+
+          {/* Animated Gradient Accent Layers */}
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.4) 0%, transparent 50%)',
+              animation: 'gradientMove 10s ease-in-out infinite'
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              background: 'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
+              animation: 'gradientMove 8s ease-in-out infinite reverse'
+            }}
+          />
 
           {/* Floating Icons/Particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
