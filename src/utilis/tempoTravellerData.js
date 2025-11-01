@@ -6,7 +6,7 @@ export const tempoFleet = [
     outstationRate: "₹23/km",
     localRate: "₹6,000-7,500/Day",
     features: ["Comfortable Pushback Seats", "AC", "Music System", "Charging Points"],
-    image: "/images/tempo/12-seater.png",
+    image: "/images/tempo/12_seater.jpg",
     color: "from-blue-500 to-blue-600"
   },
   {
@@ -16,7 +16,7 @@ export const tempoFleet = [
     outstationRate: "₹25/km",
     localRate: "₹7,500-8,500/Day",
     features: ["Spacious Seating", "Air-conditioned", "Ample Luggage Space", "GPS Tracking"],
-    image: "/images/tempo/16-seater.png",
+    image: "/images/tempo/16_seater.jpg",
     color: "from-green-500 to-green-600"
   },
   {
@@ -26,7 +26,7 @@ export const tempoFleet = [
     outstationRate: "₹26/km",
     localRate: "₹9,000-10,500/Day",
     features: ["Luxury Pushback Seats", "Music System", "Charging Points", "Premium Interiors"],
-    image: "/images/tempo/17-seater.png",
+    image: "/images/tempo/17_seater.jpg",
     color: "from-purple-500 to-purple-600",
     popular: true
   },
@@ -37,7 +37,7 @@ export const tempoFleet = [
     outstationRate: "₹27/km",
     localRate: "₹9,000-10,000/Day",
     features: ["LED TV", "Music System", "AC", "Ample Luggage Space"],
-    image: "/images/tempo/20-seater.png",
+    image: "/images/tempo/20_seater.jpg",
     color: "from-orange-500 to-orange-600"
   },
   {
@@ -47,7 +47,7 @@ export const tempoFleet = [
     outstationRate: "₹26/km",
     localRate: "₹10,000-11,000/Day",
     features: ["Super Luxury Interiors", "Recliner Seats", "Premium Comfort", "Entertainment System"],
-    image: "/images/tempo/26-seater.png",
+    image: "/images/tempo/26_seater.jpg",
     color: "from-yellow-500 to-yellow-600",
     premium: true
   }
