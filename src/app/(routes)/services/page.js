@@ -697,7 +697,7 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {cities.map((city, index) => (
-              <Link key={index} href={`/cities/${city.name.toLowerCase()}`}>
+              <Link key={index} href={`/${city.name.toLowerCase()}`}>
                 <div className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border-2 border-yellow-100 hover:border-amber-300 overflow-hidden cursor-pointer">
                   {/* Gradient Background on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
