@@ -113,7 +113,7 @@ export default function ServicesPage() {
           >
             <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#FACF2D] to-amber-400 rounded-full px-8 py-3 mb-3 shadow-lg">
               <Crown className="w-6 h-6 text-gray-800" />
-              <span className="text-gray-800 font-bold text-sm md:text-base tracking-wide">INDIA'S TRUSTED TRAVEL PARTNER</span>
+              <span className="text-gray-800 font-bold text-sm md:text-base tracking-wide">INDIA&apos;S TRUSTED TRAVEL PARTNER</span>
               <Sparkles className="w-6 h-6 text-gray-800" />
             </div>
           </motion.div>
@@ -350,7 +350,7 @@ export default function ServicesPage() {
               Complete Travel Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From luxury vehicles to curated experiences, we've got everything for your perfect journey
+              From luxury vehicles to curated experiences, we&apos;ve got everything for your perfect journey
             </p>
           </div>
 
@@ -734,7 +734,7 @@ export default function ServicesPage() {
 
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-6">
-              Don't see your city? We operate in 50+ cities across India!
+              Don&apos;t see your city? We operate in 50+ cities across India!
             </p>
             <Link href="https://wa.me/917668570551?text=Hello!%20I%20don%27t%20see%20my%20city%20in%20your%20list.%20Do%20you%20provide%20service%20in%20my%20area%3F" target="_blank">
               <button className="px-8 py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center gap-2 mx-auto">
