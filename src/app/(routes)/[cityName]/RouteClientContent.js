@@ -83,13 +83,13 @@ export default function RouteClientContent({
   // Optimized vehicle image mapping
   const getVehicleImage = useCallback((vehicleType) => {
     const imageMap = {
-      'Sedan': '/images/car/car1.png',
-      'SUV Ertiga': '/images/car/car2.png',
-      'SUV Innova': '/images/car/car2.png',
-      'Tempo Traveller': '/images/car/tempo_traveller.jpeg',
-      'Bus': '/images/car/luxury_bus.jpeg'
+      'Sedan': '/images/car/car1.webp',
+      'SUV Ertiga': '/images/car/car2.webp',
+      'SUV Innova': '/images/car/car2.webp',
+      'Tempo Traveller': '/images/car/tempo_traveller.webp',
+      'Bus': '/images/car/luxury_bus.webp'
     };
-    return imageMap[vehicleType] || '/images/car/car1.png';
+    return imageMap[vehicleType] || '/images/car/car1.webp';
   }, []);
 
   // Get vehicle capacity
@@ -267,48 +267,29 @@ export default function RouteClientContent({
 
       <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
         {/* MODERN HERO SECTION WITH BACKGROUND IMAGE */}
-        <header
-          className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/about/about_banner.jpg')",
-          }}
-        >
+        <header className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden">
+          {/* Optimized Background Image */}
+          <Image
+            src="/images/about/about_banner.webp"
+            alt={`${formattedCityName} to ${formattedDestination} cab service background`}
+            fill
+            priority
+            quality={85}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
           {/* Dark Gradient Overlay on Image */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
 
-          {/* Animated Gradient Accent Layers */}
+          {/* Animated Gradient Accent Layer */}
           <div
-            className="absolute inset-0 opacity-30"
+            className="absolute inset-0 opacity-25"
             style={{
-              background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.4) 0%, transparent 50%)',
+              background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
               animation: 'gradientMove 10s ease-in-out infinite'
             }}
           />
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              background: 'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
-              animation: 'gradientMove 8s ease-in-out infinite reverse'
-            }}
-          />
 
-          {/* Floating Icons/Particles */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute text-2xl opacity-20"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animation: `float ${10 + Math.random() * 20}s ease-in-out infinite`,
-                  animationDelay: `${Math.random() * 5}s`
-                }}
-              >
-                {['🚗', '🛣️', '⭐', '🎯', '📍'][i % 5]}
-              </div>
-            ))}
-          </div>
 
           {/* Main Content */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
@@ -450,18 +431,6 @@ export default function RouteClientContent({
               />
             </svg>
           </div>
-
-          {/* CSS Animations */}
-          <style jsx>{`
-            @keyframes gradientMove {
-              0%, 100% { transform: translate(0, 0); }
-              50% { transform: translate(50px, 50px); }
-            }
-            @keyframes float {
-              0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-              50% { transform: translateY(-30px) rotate(180deg); opacity: 0.4; }
-            }
-          `}</style>
         </header>
 
         {/* Main Content */}
@@ -670,7 +639,7 @@ export default function RouteClientContent({
                     <article className="bg-gray-50 border border-gray-200 rounded-xl p-6" itemScope itemType="https://schema.org/Product">
                       <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
                         <Image
-                          src="/images/car/car1.png"
+                          src="/images/car/car1.webp"
                           alt={`Sedan taxi booking ${formattedCityName} to ${formattedDestination} - AC cab service`}
                           fill
                           className="object-contain p-2"
@@ -702,7 +671,7 @@ export default function RouteClientContent({
                     <article className="bg-gray-50 border border-gray-200 rounded-xl p-6" itemScope itemType="https://schema.org/Product">
                       <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
                         <Image
-                          src="/images/car/car2.png"
+                          src="/images/car/car2.webp"
                           alt={`SUV taxi booking ${formattedCityName} to ${formattedDestination} - spacious AC cab service`}
                           fill
                           className="object-contain p-2"
@@ -1015,117 +984,6 @@ export default function RouteClientContent({
           </section>
         </main>
 
-        {/* Enhanced SEO Section - Indexed but not visible */}
-        <section className="sr-only" aria-hidden="true">
-          <h2>Complete Keyword Directory for {formattedCityName} to {formattedDestination} Taxi Service 2025</h2>
-          <div itemScope itemType="https://schema.org/Service">
-            <meta itemProp="serviceType" content="Taxi Service" />
-            <meta itemProp="provider" content="Triveni Cabs" />
-            <meta itemProp="areaServed" content={`${formattedCityName}, ${formattedDestination}`} />
-
-            {/* Primary Keywords */}
-            <ul>
-              {allPageKeywords.map((keyword, index) => (
-                <li key={index}>
-                  <span itemProp="keywords">{keyword}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Enhanced Long-tail Keywords */}
-            <article>
-              <h3>Popular Taxi Booking Searches</h3>
-              <p>
-                <strong>Best taxi from {formattedCityName} to {formattedDestination}</strong> |
-                <strong>cheap cab {formattedCityName} to {formattedDestination}</strong> |
-                <strong>online cab booking {formattedCityName} {formattedDestination}</strong> |
-                <strong>taxi fare {formattedCityName} to {formattedDestination}</strong> |
-                <strong>one way taxi {formattedCityName} to {formattedDestination}</strong> |
-                <strong>round trip cab {formattedCityName} to {formattedDestination}</strong> |
-                <strong>AC cab {formattedCityName} to {formattedDestination}</strong> |
-                <strong>sedan taxi {formattedCityName} to {formattedDestination}</strong> |
-                <strong>SUV cab {formattedCityName} to {formattedDestination}</strong> |
-                <strong>tempo traveller {formattedCityName} to {formattedDestination}</strong> |
-                <strong>24x7 cab service {formattedCityName}</strong> |
-                <strong>outstation taxi from {formattedCityName}</strong> |
-                <strong>airport taxi {formattedCityName}</strong> |
-                <strong>railway station cab {formattedCityName}</strong> |
-                book taxi online {formattedCityName} to {formattedDestination} |
-                hire cab for {formattedDestination} |
-                rent car {formattedCityName} |
-                cheapest taxi to {formattedDestination} |
-                luxury cab service |
-                budget taxi booking |
-                verified driver cab |
-                GPS tracked taxi |
-                safe taxi service |
-                comfortable cab ride |
-                instant taxi booking |
-                advance cab reservation |
-                same day taxi service |
-                emergency cab {formattedCityName} |
-                night taxi service |
-                early morning cab |
-                weekend taxi booking |
-                holiday cab service |
-                festival season taxi |
-                wedding car rental |
-                corporate cab booking |
-                group travel taxi |
-                family tour cab.
-              </p>
-
-              <p>
-                Professional taxi service from {formattedCityName} to {formattedDestination} with verified drivers,
-                GPS tracking, transparent pricing, 24x7 availability, clean AC vehicles, instant booking,
-                safe journey, comfortable ride, affordable rates, premium service, luxury cars, economy options,
-                one way taxi, round trip cab, outstation booking, intercity travel, highway service,
-                airport transfer, railway pickup, hotel drop, corporate booking, wedding cars, group travel,
-                family tours, couple packages, honeymoon trips, adventure tours, sightseeing cabs,
-                local tours, city tours, heritage visits, pilgrimage trips, religious tours, temple visits,
-                spiritual journeys, nature tours, wildlife trips, photography tours, food tours,
-                shopping trips, cultural tours, business travel, meeting cabs, conference transport,
-                event cabs, party pickup, night service, early morning, late night, weekend bookings,
-                holiday service, festival cabs, seasonal offers, discount fares, special rates,
-                promotional prices, package deals, bulk booking, advance reservation, instant confirmation,
-                online booking, mobile app, digital payment, cashless transaction, UPI payment,
-                card payment, wallet payment, secure payment, encrypted transaction, safe booking,
-                verified payment, instant refund, flexible cancellation, customer support,
-                24/7 helpline, emergency assistance, breakdown support, roadside help,
-                technical support, complaint resolution, feedback system, rating reviews,
-                customer testimonials, verified reviews, authentic feedback, real experiences,
-                trusted service, reliable company, reputed brand, licensed operator, registered company,
-                insured vehicles, legal documentation, proper permits, valid licenses,
-                certified drivers, trained chauffeurs, experienced drivers, professional service,
-                courteous behavior, polite drivers, helpful staff, friendly service,
-                customer satisfaction, quality assurance, premium standards, superior service,
-                excellent quality, outstanding performance, exceptional service, remarkable experience,
-                memorable journey, comfortable travel, smooth ride, safe journey, secure trip,
-                protected travel, insured journey, guaranteed safety, assured security,
-                GPS tracking, live monitoring, real-time updates, continuous tracking,
-                journey recording, trip logging, panic button, SOS alert, emergency help,
-                distress signal, safety alarm, security feature, protection enabled,
-                CCTV camera, video recording, footage saved, monitored service, supervised journey,
-                clean vehicles, sanitized cars, disinfected interior, hygienic environment,
-                fresh air, neat cars, tidy interior, organized service, well maintained,
-                regular service, frequent checks, daily inspection, weekly testing, monthly certification,
-                valid fitness, current permit, updated insurance, renewed license, active registration,
-                spacious cars, roomy interior, ample space, generous room, wide seating,
-                comfortable seats, cushioned interior, padded seats, plush seating, luxury comfort,
-                premium amenities, deluxe features, upscale service, high-end quality, top-class standards,
-                first-rate service, superior quality, excellent standards, best service, top quality,
-                leading company, number one service, premier cab, elite taxi, exclusive service,
-                VIP treatment, executive service, business class, first class, premium category.
-                How to book taxi from {formattedCityName} to {formattedDestination}?
-                What is cheapest cab fare? Is one way available? Best time to travel?
-                Distance and duration? Driver experience? Vehicle options? Payment methods?
-                Cancellation policy? Refund process? Safety measures? Child seats available?
-                Pet friendly taxi? Luggage capacity? Rest stops? Food during journey?
-                Toll charges included? Parking fees? Driver accommodation? Multiple day booking?
-              </p>
-            </article>
-          </div>
-        </section>
         {/* Enhanced Footer CTA */}
         <section className="bg-gray-900 text-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

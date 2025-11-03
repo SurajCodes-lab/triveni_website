@@ -1,17 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { trackWhatsAppClick, trackHover, trackEvent } from '@/utilis/analytics';
 
 const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   const handleClick = () => {
     // Track the WhatsApp float button click using centralized tracking
     trackWhatsAppClick('floating_button', '', 'floating_whatsapp_widget');
 
     // Open WhatsApp
-    window.open(`https://wa.me/${phoneNumber}`, '_blank');
+    window.open(`https://wa.me/${phoneNumber}`, '_blank', 'noopener,noreferrer');
   };
 
   // Track when the component becomes visible
@@ -30,28 +32,34 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
   
   return (
     <motion.div
-      className="fixed bottom-8 right-8 z-50"
+      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{
-        type: "spring", 
+        type: "spring",
         stiffness: 260,
         damping: 20,
         duration: 1
       }}
-      onAnimationComplete={handleVisibilityChange} // Track when animation completes
+      onAnimationComplete={handleVisibilityChange}
+      // Reduce motion for users who prefer it
+      style={{
+        '@media (prefers-reduced-motion: reduce)': {
+          transition: 'none'
+        }
+      }}
     >
       <motion.div
         className="relative"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onHoverStart={handleHoverStart} // Track hover events
+        onHoverStart={handleHoverStart}
       >
-        {/* Ripple effect */}
+        {/* Ripple effect - disabled for reduced motion */}
         <motion.div
           className="absolute inset-0 rounded-full bg-green-500 opacity-20"
           initial={{ scale: 1 }}
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
             opacity: [0.2, 0.1, 0.2]
           }}
@@ -60,24 +68,34 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
+          aria-hidden="true"
         />
-        
+
         {/* Main button */}
         <button
           onClick={handleClick}
-          className="relative bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center group transition-all duration-300"
-          aria-label="Contact us on WhatsApp"
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          className="relative bg-green-500 hover:bg-green-600 text-white min-w-[56px] min-h-[56px] p-4 rounded-full shadow-lg flex items-center justify-center group transition-all duration-300 focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2"
+          aria-label="Chat with us on WhatsApp - opens in new window"
+          title="Chat with us on WhatsApp"
         >
-          <MessageCircle size={28} className="group-hover:rotate-12 transition-transform duration-300" />
-          
-          {/* Tooltip */}
-          <motion.span
-            className="absolute right-full mr-4 bg-black text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
-            initial={{ x: 20 }}
-            animate={{ x: 0 }}
+          <MessageCircle
+            size={28}
+            className="group-hover:rotate-12 transition-transform duration-300"
+            aria-hidden="true"
+          />
+
+          {/* Tooltip - visible on both hover and focus */}
+          <span
+            className={`absolute right-full mr-4 bg-black text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg transition-all duration-300 ${
+              isFocused ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'
+            }`}
+            role="tooltip"
+            aria-hidden="true"
           >
             Chat with us on WhatsApp
-          </motion.span>
+          </span>
         </button>
       </motion.div>
     </motion.div>

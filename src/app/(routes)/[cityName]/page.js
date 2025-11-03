@@ -92,7 +92,7 @@ export async function generateMetadata({ params }) {
         url: `https://trivenicabs.in/${cityName}`,
         siteName: 'Triveni Cabs - Premium Taxi Service India',
         images: [{
-          url: 'https://trivenicabs.in/images/car/car1.png',
+          url: 'https://trivenicabs.in/images/car/car1.webp',
           width: 1200,
           height: 630,
           alt: `${formattedCityName} to ${formattedDestination} cab service - Professional taxi booking`
@@ -102,7 +102,7 @@ export async function generateMetadata({ params }) {
         card: 'summary_large_image',
         title: `${formattedCityName} to ${formattedDestination} Cab Service - Starting ${startingPrice}`,
         description: `Book reliable taxi from ${formattedCityName} to ${formattedDestination}. Professional drivers, AC vehicles, 24x7 service.`,
-        images: ['https://trivenicabs.in/images/car/car1.png'],
+        images: ['https://trivenicabs.in/images/car/car1.webp'],
         creator: '@TriveniCabs',
         site: '@TriveniCabs',
       },
@@ -169,7 +169,7 @@ export async function generateMetadata({ params }) {
         url: `https://trivenicabs.in/${cityName}`,
         siteName: 'Triveni Cabs - Premium Taxi Service India',
         images: [{
-          url: 'https://trivenicabs.in/images/car/car2.png',
+          url: 'https://trivenicabs.in/images/car/car2.webp',
           width: 1200,
           height: 630,
           alt: `Professional taxi service in ${formattedCityName} - Triveni Cabs`
@@ -179,7 +179,7 @@ export async function generateMetadata({ params }) {
         card: 'summary_large_image',
         title: `Best Taxi Service in ${formattedCityName} | Triveni Cabs`,
         description: `Professional taxi service in ${formattedCityName}. Outstation trips, local tours, airport transfers. Book now!`,
-        images: ['https://trivenicabs.in/images/car/car2.png'],
+        images: ['https://trivenicabs.in/images/car/car2.webp'],
         creator: '@TriveniCabs',
         site: '@TriveniCabs',
       },

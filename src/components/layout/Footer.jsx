@@ -48,118 +48,123 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-gray-300">
-
-
+    <footer className="bg-black text-gray-300" role="contentinfo">
       {/* Top Section */}
       <div className="border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="space-y-6 flex items-center flex-col">
-              <Image src="/images/logo/logo2.webp" alt="Logo" width={64} height={64} quality={100} className="h-16 w-auto" />
-              <p className="text-sm text-start leading-relaxed">
+              <Image src="/images/logo/logo2.webp" alt="Triveni Cabs Logo" width={64} height={64} quality={100} className="h-16 w-auto" />
+              <p className="text-sm text-start leading-relaxed text-gray-200">
                 Your trusted travel partner providing premium transportation services across India since 2015.
               </p>
-              <div className="flex items-center justify-center space-x-4">
-                <button
-                  className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300 group"
+              <div className="flex items-center justify-center space-x-4" role="group" aria-label="Social media links">
+                <a
+                  href="https://facebook.com/trivenicabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 min-w-[48px] min-h-[48px] bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300 group flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   onClick={() => handleSocialClick('facebook')}
-                  aria-label="Facebook"
+                  aria-label="Visit our Facebook page (opens in new tab)"
                 >
-                  <Facebook className="w-5 h-5 text-black" />
-                </button>
-                <button
-                  className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300"
+                  <Facebook className="w-5 h-5 text-black" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://instagram.com/trivenicabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 min-w-[48px] min-h-[48px] bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300 flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   onClick={() => handleSocialClick('instagram')}
-                  aria-label="Instagram"
+                  aria-label="Visit our Instagram page (opens in new tab)"
                 >
-                  <Instagram className="w-5 h-5 text-black" />
-                </button>
-                <button
-                  className="p-2 bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300"
+                  <Instagram className="w-5 h-5 text-black" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://twitter.com/trivenicabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 min-w-[48px] min-h-[48px] bg-[#FACF2D] rounded-full hover:bg-white transition-colors duration-300 flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   onClick={() => handleSocialClick('twitter')}
-                  aria-label="Twitter"
+                  aria-label="Visit our Twitter page (opens in new tab)"
                 >
-                  <Twitter className="w-5 h-5 text-black" />
-                </button>
+                  <Twitter className="w-5 h-5 text-black" aria-hidden="true" />
+                </a>
               </div>
             </div>
 
             {/* Quick Links */}
-            <div className="md:ps-5">
+            <nav className="md:ps-5" aria-label="Footer quick links">
               <h3 className="text-white text-start font-semibold mb-6">Quick Links</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="flex items-center text-sm hover:text-[#FACF2D] transition-colors duration-300 group"
+                      className="flex items-center text-sm text-gray-200 hover:text-[#FACF2D] transition-colors duration-300 group py-2 min-h-[48px] rounded-md focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                       onClick={() => handleFooterLinkClick(link.name, link.href)}
                     >
-                      <ChevronRight className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
             {/* Services */}
-            <div>
+            <nav aria-label="Footer services links">
               <h3 className="text-white text-start font-semibold mb-6">Our Services</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {services.map((service) => (
                   <li key={service.name}>
                     <Link
                       href={service.href}
-                      className="flex items-center text-sm hover:text-[#FACF2D] transition-colors duration-300 group"
+                      className="flex items-center text-sm text-gray-200 hover:text-[#FACF2D] transition-colors duration-300 group py-2 min-h-[48px] rounded-md focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                       onClick={() => handleFooterLinkClick(service.name, service.href)}
                     >
-                      <Clock className="w-4 h-4 mr-2 text-[#FACF2D] group-hover:rotate-12 transition-transform" />
+                      <Clock className="w-4 h-4 mr-2 text-[#FACF2D] group-hover:rotate-12 transition-transform" aria-hidden="true" />
                       {service.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
             {/* Contact Info */}
             <div className="space-y-6">
               <h3 className="text-white text-start font-semibold">Contact Us</h3>
-              <div>
+              <address className="not-italic">
                 <a
                   href="tel:+917668570551"
                   onClick={handlePhoneClick}
-                  className="flex items-center space-x-3 mb-4 hover:text-[#FACF2D] transition-colors duration-300 cursor-pointer"
+                  className="flex items-center space-x-3 mb-4 hover:text-[#FACF2D] transition-colors duration-300 py-2 rounded-md focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black min-h-[48px]"
+                  aria-label="Call us at +91 76685 70551"
                 >
-                  <div className="bg-[#FACF2D] p-2 rounded-full">
+                  <div className="bg-[#FACF2D] p-2 rounded-full flex items-center justify-center min-w-[32px] min-h-[32px]" aria-hidden="true">
                     <Phone className="w-4 h-4 text-black" />
                   </div>
-                  <div>
-                    <p>+91 76685 70551</p>
-                  </div>
+                  <span className="text-gray-200 text-sm">+91 76685 70551</span>
                 </a>
                 <a
                   href="mailto:cabstriveni@gmail.com"
                   onClick={handleEmailClick}
-                  className="flex items-center mb-4 space-x-3 hover:text-[#FACF2D] transition-colors duration-300 cursor-pointer"
+                  className="flex items-center mb-4 space-x-3 hover:text-[#FACF2D] transition-colors duration-300 py-2 rounded-md focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black min-h-[48px]"
+                  aria-label="Email us at cabstriveni@gmail.com"
                 >
-                  <div className="bg-[#FACF2D] p-2 rounded-full">
+                  <div className="bg-[#FACF2D] p-2 rounded-full flex items-center justify-center min-w-[32px] min-h-[32px]" aria-hidden="true">
                     <Mail className="w-4 h-4 text-black" />
                   </div>
-                  <div className="text-sm text-start">
-                    <p>cabstriveni@gmail.com</p>
-                  </div>
+                  <span className="text-sm text-start text-gray-200">cabstriveni@gmail.com</span>
                 </a>
-                <div className="flex items-center space-x-3 hover:text-[#FACF2D] transition-colors duration-300">
-                  <div className="bg-[#FACF2D] p-2 rounded-full">
+                <div className="flex items-start space-x-3 text-gray-200 py-2">
+                  <div className="bg-[#FACF2D] p-2 rounded-full flex items-center justify-center min-w-[32px] min-h-[32px] mt-1" aria-hidden="true">
                     <MapPin className="w-4 h-4 text-black" />
                   </div>
-                  <div className="text-start text-sm">
-                    <p>366, Dandupura, near Tajganj, Agra, 282006</p>
-                  </div>
+                  <span className="text-start text-sm">
+                    366, Dandupura, near Tajganj, Agra, Uttar Pradesh 282006, India
+                  </span>
                 </div>
-              </div>
+              </address>
             </div>
           </div>
         </div>
@@ -167,26 +172,26 @@ const Footer = () => {
 
       {/* Bottom Section */}
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm mb-4 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-200 text-center md:text-left">
             © 2024 Triveni Cabs. All rights reserved.
           </p>
-          <div className="flex space-x-8">
+          <nav className="flex flex-col sm:flex-row gap-4 sm:gap-8" aria-label="Footer legal links">
             <Link
               href="/cancellation-and-refund-policy"
-              className="text-sm hover:text-[#FACF2D] transition-colors duration-300"
+              className="text-sm text-gray-200 hover:text-[#FACF2D] transition-colors duration-300 py-2 px-2 rounded-md focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black text-center min-h-[44px] flex items-center justify-center"
               onClick={() => handleFooterLinkClick('Refund & Cancellation Policy', '/cancellation-and-refund-policy')}
             >
               Refund & Cancellation Policy
             </Link>
             <Link
               href="/terms-and-conditions"
-              className="text-sm hover:text-[#FACF2D] transition-colors duration-300"
+              className="text-sm text-gray-200 hover:text-[#FACF2D] transition-colors duration-300 py-2 px-2 rounded-md focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black text-center min-h-[44px] flex items-center justify-center"
               onClick={() => handleFooterLinkClick('Terms of Service', '/terms-and-conditions')}
             >
               Terms of Service
             </Link>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

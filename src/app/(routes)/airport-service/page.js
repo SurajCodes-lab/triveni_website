@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "Triveni Cabs",
     images: [
       {
-        url: "/images/about/about_banner.jpg",
+        url: "/images/about/about_banner.webp",
         width: 1200,
         height: 630,
         alt: "Triveni Cabs Airport Transfer Service"

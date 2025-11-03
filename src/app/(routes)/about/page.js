@@ -131,7 +131,7 @@ export default function AboutPage() {
     "name": "Triveni Cabs",
     "description": "Professional cab service provider offering online taxi booking, outstation tours, airport transfers, and car rental across India. Book affordable cabs with 24/7 service.",
     "url": "https://trivenicabs.com",
-    "logo": "https://trivenicabs.com/logo.png",
+    "logo": "https://trivenicabs.com/logo.webp",
     "telephone": "+917668570551",
     "email": "info@trivenicabs.com",
     "address": {
@@ -224,7 +224,7 @@ export default function AboutPage() {
           className="relative bg-cover bg-center bg-no-repeat py-28"
           aria-labelledby="hero-heading"
           style={{
-            backgroundImage: "url('/images/about/about_banner.jpg')",
+            backgroundImage: "url('/images/about/about_banner.webp')",
           }}
         >
           <div className="absolute inset-0 bg-black/40" aria-hidden="true"></div>
@@ -320,7 +320,7 @@ export default function AboutPage() {
             
             <div className="overflow-hidden rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-500">
               <Image
-                src="/images/about/about_banner.jpg"
+                src="/images/about/about_banner.webp"
                 alt="Triveni Cabs - Best cab service in India with professional drivers and modern fleet for online taxi booking"
                 width={600}
                 height={400}

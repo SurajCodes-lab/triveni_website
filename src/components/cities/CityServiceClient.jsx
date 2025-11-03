@@ -28,7 +28,7 @@ const HeroBanner = ({ formattedCityName }) => {
     },
     "openingHours": "Mo-Su 00:00-23:59",
     "priceRange": "₹₹",
-    "image": "/images/about/about_banner.jpg",
+    "image": "/images/about/about_banner.webp",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
@@ -47,7 +47,7 @@ const HeroBanner = ({ formattedCityName }) => {
       <section
         className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/about/about_banner.jpg')",
+          backgroundImage: "url('/images/about/about_banner.webp')",
         }}
         itemScope
         itemType="https://schema.org/TaxiService"
@@ -242,7 +242,7 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
     "@type": "Product",
     "name": `${vehicle.type} Taxi ${cityName}`,
     "description": `Book ${vehicle.type} taxi in ${cityName}. ${vehicle.seating} seater AC vehicle with GPS tracking, music system and professional driver. Best rates guaranteed.`,
-    "image": vehicle.image || "/images/car/car1.png",
+    "image": vehicle.image || "/images/car/car1.webp",
     "brand": {
       "@type": "Brand",
       "name": "Triveni Cabs"
@@ -271,14 +271,14 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
         {/* Enhanced Vehicle Image */}
         <div className="relative h-40 md:h-48 bg-gray-100">
           <Image
-            src={vehicle.image || "/images/car/car1.png"}
+            src={vehicle.image || "/images/car/car1.webp"}
             alt={`${vehicle.type} taxi service ${cityName} - ${vehicle.seating} seater AC cab with GPS tracking and professional driver - Book online now`}
             fill
             className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => {
-              e.target.src = "/images/car/car1.png";
+              e.target.src = "/images/car/car1.webp";
             }}
             itemProp="image"
             loading={index < 3 ? "eager" : "lazy"}
@@ -456,17 +456,17 @@ const TouristSpotsSection = ({ citySpots, formattedCityName }) => {
   const defaultSpots = useMemo(() => [
     {
       name: `${formattedCityName} City Tour`,
-      image: "/images/about/about_banner.jpg",
+      image: "/images/about/about_banner.webp",
       description: `Full day sightseeing tour of ${formattedCityName} covering major attractions, historical sites and cultural landmarks with comfortable taxi service. Book AC cab with professional driver.`
     },
     {
       name: `${formattedCityName} Airport Transfer`,
-      image: "/images/about/about_banner.jpg",
+      image: "/images/about/about_banner.webp",
       description: `Reliable airport pickup and drop service in ${formattedCityName} with on-time guarantee, professional drivers, and GPS tracking. 24/7 availability for all terminals.`
     },
     {
       name: `${formattedCityName} Shopping Tour`,
-      image: "/images/about/about_banner.jpg",
+      image: "/images/about/about_banner.webp",
       description: `Visit popular markets and shopping centers in ${formattedCityName} with convenient taxi service, local guidance, and comfortable AC vehicles. Best shopping destinations covered.`
     }
   ], [formattedCityName]);
@@ -516,14 +516,14 @@ const TouristSpotsSection = ({ citySpots, formattedCityName }) => {
             >
               <div className="relative w-full h-40 md:h-48 bg-gray-100">
                 <Image
-                  src={spot.image || "/images/about/about_banner.jpg"}
+                  src={spot.image || "/images/about/about_banner.webp"}
                   alt={`${spot.name} - Top tourist attraction in ${formattedCityName} accessible by taxi service - Book cab tour online`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                   loading="lazy"
                   onError={(e) => {
-                    e.target.src = "/images/about/about_banner.jpg";
+                    e.target.src = "/images/about/about_banner.webp";
                   }}
                   itemProp="image"
                 />

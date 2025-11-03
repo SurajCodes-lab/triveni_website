@@ -23,7 +23,7 @@ const WeddingHero = () => {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50">
-        <div className="absolute inset-0 bg-[url('/images/about/about_banner.jpg')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-[url('/images/about/about_banner.webp')] bg-cover bg-center opacity-10"></div>
       </div>
 
       {/* Floating Elements */}
@@ -149,7 +149,7 @@ const WeddingCarCollection = () => {
               <div className="lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/luxury.jpeg"
+                    src="/images/car/luxury.webp"
                     alt="Luxury Cars"
                     fill
                     className="object-cover"
@@ -175,7 +175,7 @@ const WeddingCarCollection = () => {
               <div className="lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/sedan.jpeg"
+                    src="/images/car/sedan.webp"
                     alt="Premium Sedans"
                     fill
                     className="object-cover"
@@ -201,7 +201,7 @@ const WeddingCarCollection = () => {
               <div className="lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/suv.jpeg"
+                    src="/images/car/suv.webp"
                     alt="Premium SUVs"
                     fill
                     className="object-cover"
@@ -227,7 +227,7 @@ const WeddingCarCollection = () => {
               <div className="lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/tempo_traveller.jpeg"
+                    src="/images/car/tempo_traveller.webp"
                     alt="Tempo Travellers"
                     fill
                     className="object-cover"
@@ -253,7 +253,7 @@ const WeddingCarCollection = () => {
               <div className="lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/luxury.jpeg"
+                    src="/images/car/luxury.webp"
                     alt="Vintage Cars"
                     fill
                     className="object-cover"

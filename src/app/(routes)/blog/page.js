@@ -201,7 +201,7 @@ export default function BlogPage() {
       "url": "https://trivenicabs.in",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://trivenicabs.in/logo.png",
+        "url": "https://trivenicabs.in/logo.webp",
         "width": 250,
         "height": 60
       },
@@ -234,7 +234,7 @@ export default function BlogPage() {
         "name": "Triveni Cabs",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://trivenicabs.in/logo.png"
+          "url": "https://trivenicabs.in/logo.webp"
         }
       },
       "url": `https://trivenicabs.in/blog/${post.slug}`,

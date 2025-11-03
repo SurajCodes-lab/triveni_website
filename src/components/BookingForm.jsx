@@ -24,6 +24,7 @@ const BookingForm = ({ slug, packageInfo }) => {
       address: "",
     },
   });
+  const [errors, setErrors] = useState({});
 
   const addPassenger = () => {
     setFormData((prev) => ({
@@ -179,29 +180,33 @@ const BookingForm = ({ slug, packageInfo }) => {
           </div>
 
           {/* Progress Steps */}
-          <div className="px-8 py-6 border-b">
-            <div className="flex justify-between items-center">
+          <nav className="px-8 py-6 border-b" aria-label="Booking progress">
+            <ol className="flex justify-between items-center" role="list">
               {steps.map((step, index) => (
-                <div key={index} className="flex items-center">
-                  <motion.div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      currentStep >= step.number
-                        ? "bg-[#FACF2D] text-black"
-                        : "bg-gray-200 text-gray-500"
-                    }`}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {currentStep > step.number ? (
-                      <Check className="w-6 h-6" />
-                    ) : (
-                      step.number
-                    )}
-                  </motion.div>
-                  <span className="ml-3 font-medium hidden sm:block">
-                    {step.title}
-                  </span>
+                <li key={index} className="flex items-center">
+                  <div className="flex items-center">
+                    <motion.div
+                      className={`min-w-[48px] min-h-[48px] w-12 h-12 rounded-full flex items-center justify-center font-semibold ${
+                        currentStep >= step.number
+                          ? "bg-[#FACF2D] text-black"
+                          : "bg-gray-200 text-gray-500"
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      aria-current={currentStep === step.number ? "step" : undefined}
+                      aria-label={`Step ${step.number}: ${step.title}${currentStep > step.number ? " (completed)" : currentStep === step.number ? " (current)" : ""}`}
+                    >
+                      {currentStep > step.number ? (
+                        <Check className="w-6 h-6" aria-hidden="true" />
+                      ) : (
+                        step.number
+                      )}
+                    </motion.div>
+                    <span className="ml-3 font-medium hidden sm:block text-gray-900">
+                      {step.title}
+                    </span>
+                  </div>
                   {index < steps.length - 1 && (
-                    <div className="w-16 sm:w-32 h-1 mx-4 bg-gray-200">
+                    <div className="w-16 sm:w-32 h-1 mx-4 bg-gray-200" aria-hidden="true">
                       <motion.div
                         className="h-full bg-[#FACF2D]"
                         initial={{ width: 0 }}
@@ -212,64 +217,81 @@ const BookingForm = ({ slug, packageInfo }) => {
                       />
                     </div>
                   )}
-                </div>
+                </li>
               ))}
-            </div>
-          </div>
+            </ol>
+          </nav>
 
           {/* Form Content */}
           <div className="p-8">
             {currentStep === 1 && (
               // Passenger Details Step
-              <motion.div {...fadeInUp} className="space-y-6">
-                <p className="text-2xl font-semibold mb-6">
+              <motion.div {...fadeInUp} className="space-y-6" role="region" aria-label="Passenger details form">
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">
                   Passenger Details
-                </p>
+                </h2>
                 {formData.passengers.map((passenger, index) => (
                   <motion.div
                     key={index}
-                    className="bg-gray-50 p-6 rounded-xl relative"
+                    className="bg-gray-50 p-6 rounded-xl relative border border-gray-200"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <h3 className="text-lg font-medium mb-4">
+                    <h3 className="text-lg font-semibold mb-4 text-gray-900">
                       Passenger {index + 1}
                     </h3>
                     <div className="grid sm:grid-cols-3 gap-6">
                       <div>
-                        <label className="block text-sm text-start font-medium mb-2">
-                          Full Name *
+                        <label
+                          htmlFor={`passenger-${index}-name`}
+                          className="block text-sm text-start font-semibold mb-2 text-gray-900"
+                        >
+                          Full Name <span className="text-red-600" aria-label="required">*</span>
                         </label>
                         <input
                           type="text"
-                          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FACF2D]"
+                          id={`passenger-${index}-name`}
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FACF2D] focus:outline-none focus:border-transparent"
                           value={passenger.name}
                           onChange={(e) =>
                             updatePassenger(index, "name", e.target.value)
                           }
                           required
+                          aria-required="true"
+                          placeholder="Enter full name"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm text-start font-medium mb-2">
-                          Age
+                        <label
+                          htmlFor={`passenger-${index}-age`}
+                          className="block text-sm text-start font-semibold mb-2 text-gray-900"
+                        >
+                          Age <span className="text-gray-500 text-xs">(optional)</span>
                         </label>
                         <input
                           type="number"
-                          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FACF2D]"
+                          id={`passenger-${index}-age`}
+                          min="1"
+                          max="120"
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FACF2D] focus:outline-none focus:border-transparent"
                           value={passenger.age}
                           onChange={(e) =>
                             updatePassenger(index, "age", e.target.value)
                           }
+                          placeholder="Age"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm text-start font-medium mb-2">
-                          Gender
+                        <label
+                          htmlFor={`passenger-${index}-gender`}
+                          className="block text-sm text-start font-semibold mb-2 text-gray-900"
+                        >
+                          Gender <span className="text-gray-500 text-xs">(optional)</span>
                         </label>
                         <select
-                          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FACF2D]"
+                          id={`passenger-${index}-gender`}
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FACF2D] focus:outline-none focus:border-transparent"
                           value={passenger.gender}
                           onChange={(e) =>
                             updatePassenger(index, "gender", e.target.value)
@@ -285,7 +307,8 @@ const BookingForm = ({ slug, packageInfo }) => {
                     {formData.passengers.length > 1 && (
                       <button
                         onClick={() => removePassenger(index)}
-                        className="absolute top-4 right-4 text-red-500 hover:text-red-700"
+                        className="absolute top-4 right-4 text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded-md transition-colors font-medium min-h-[44px] focus-visible:ring-2 focus-visible:ring-red-500"
+                        aria-label={`Remove passenger ${index + 1}`}
                       >
                         Remove
                       </button>
@@ -294,8 +317,9 @@ const BookingForm = ({ slug, packageInfo }) => {
                 ))}
                 <motion.button
                   onClick={addPassenger}
-                  className="text-[#FACF2D] font-medium hover:text-black transition-colors"
+                  className="text-[#FACF2D] font-semibold hover:text-black hover:underline transition-all py-3 px-4 rounded-md min-h-[48px] focus-visible:ring-2 focus-visible:ring-[#FACF2D]"
                   whileHover={{ scale: 1.02 }}
+                  aria-label="Add another passenger"
                 >
                   + Add Another Passenger
                 </motion.button>

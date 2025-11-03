@@ -1,10 +1,19 @@
 import { Suspense } from 'react';
+import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import PageTracker from "@/components/analytics/PageTracker";
 import "@/styles/globals.css";
 import { Analytics } from '@vercel/analytics/react';
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#FACF2D',
+}
 
 export const metadata = {
   title: {
@@ -79,10 +88,12 @@ export const metadata = {
   },
   manifest: '/site.webmanifest',
   other: {
-    'theme-color': '#FACF2D',
     'msapplication-TileColor': '#FACF2D',
     'apple-mobile-web-app-title': 'Triveni Cabs',
     'application-name': 'Triveni Cabs',
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
   },
 }
 
@@ -90,49 +101,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-IN">
       <head>
-        {/* Resource Hints for Performance */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-
-        {/* Google Analytics */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                    page_path: window.location.pathname,
-                  });
-                `,
-              }}
-            />
-          </>
-        )}
-
-        {/* Google Ads (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17336319883"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17336319883');
-            `,
-          }}
-        />
         
         {/* Enhanced Structured Data for Local Business */}
         <script
@@ -144,9 +112,9 @@ export default function RootLayout({ children }) {
               "name": "Triveni Cabs",
               "alternateName": "Triveni Car Rental Services",
               "image": [
-                "https://www.trivenicabs.in/images/logo.png",
-                "https://www.trivenicabs.in/images/car/sedan.jpeg",
-                "https://www.trivenicabs.in/images/car/suv.jpeg"
+                "https://www.trivenicabs.in/images/logo.webp",
+                "https://www.trivenicabs.in/images/car/sedan.webp",
+                "https://www.trivenicabs.in/images/car/suv.webp"
               ],
               "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
               "url": "https://www.trivenicabs.in",
@@ -371,12 +339,46 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased">
+        {/* Optimized Google Analytics - Deferred Loading */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              strategy="lazyOnload"
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <Script strategy="lazyOnload" id="ga-init">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Optimized Google Ads - Deferred Loading */}
+        <Script
+          strategy="lazyOnload"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17336319883"
+        />
+        <Script strategy="lazyOnload" id="gads-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17336319883');
+          `}
+        </Script>
+
         <Suspense fallback={null}>
           <PageTracker />
         </Suspense>
         <div className="App min-h-screen flex flex-col">
           <Header />
-          <main className="flex-grow" role="main">
+          <main id="main-content" className="flex-grow" role="main">
             {children}
           </main>
           <WhatsAppFloat phoneNumber="7668570551" />

@@ -77,7 +77,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/packages/chardham.jpg"
+      hero: "/images/packages/chardham.webp"
     },
 
     pricing: {

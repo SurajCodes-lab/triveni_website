@@ -15,7 +15,7 @@ export default function DestinationsPage() {
       <div className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/about/about_banner.jpg"
+            src="/images/about/about_banner.webp"
             alt="Destinations Hero"
             className="w-full h-full object-cover"
           />

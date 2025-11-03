@@ -27,13 +27,13 @@ const CityRoutes = ({ cityName }) => {
   // Memoize vehicle image mapping
   const getVehicleImage = useCallback((vehicleType) => {
     const vehicleImageMap = {
-      'Sedan': '/images/car/car1.png',
-      'SUV Ertiga': '/images/car/car2.png', 
-      'SUV Innova': '/images/car/car2.png',
-      'Tempo Traveller': '/images/car/tempo_traveller.jpeg',
-      'Bus': '/images/car/luxury_bus.jpeg'
+      'Sedan': '/images/car/car1.webp',
+      'SUV Ertiga': '/images/car/car2.webp', 
+      'SUV Innova': '/images/car/car2.webp',
+      'Tempo Traveller': '/images/car/tempo_traveller.webp',
+      'Bus': '/images/car/luxury_bus.webp'
     };
-    return vehicleImageMap[vehicleType] || '/images/car/car1.png';
+    return vehicleImageMap[vehicleType] || '/images/car/car1.webp';
   }, []);
 
   // Optimized WhatsApp handler

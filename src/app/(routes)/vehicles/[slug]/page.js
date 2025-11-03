@@ -137,7 +137,7 @@ const VehicleSlugPage = () => {
         "@type": "Organization",
         "name": "Triveni Cabs",
         "url": "https://trivenicabs.com",
-        "logo": "https://trivenicabs.com/logo.png",
+        "logo": "https://trivenicabs.com/logo.webp",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+91-7668570551",

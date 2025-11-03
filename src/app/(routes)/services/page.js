@@ -45,7 +45,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/about/about_banner.jpg')" }}
+            style={{ backgroundImage: "url('/images/about/about_banner.webp')" }}
           />
           {/* Light Gradient Overlay - Yellow Theme */}
           <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/95 via-amber-50/95 to-orange-50/95"></div>
@@ -469,7 +469,7 @@ export default function ServicesPage() {
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('/images/about/about_banner.jpg')] bg-cover bg-center opacity-30"></div>
+                    <div className="absolute inset-0 bg-[url('/images/about/about_banner.webp')] bg-cover bg-center opacity-30"></div>
                     <div className="relative text-center text-gray-800 p-6">
                       <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                         <Car className="w-12 h-12" />
@@ -516,7 +516,7 @@ export default function ServicesPage() {
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-amber-400 via-[#FACF2D] to-orange-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('/images/about/about_banner.jpg')] bg-cover bg-center opacity-20"></div>
+                    <div className="absolute inset-0 bg-[url('/images/about/about_banner.webp')] bg-cover bg-center opacity-20"></div>
                     <div className="relative text-center text-gray-800 p-6">
                       <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                         <Heart className="w-12 h-12" />

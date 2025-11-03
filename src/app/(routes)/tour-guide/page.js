@@ -228,7 +228,7 @@ Please confirm my booking. Thank you!`;
         <nav
           className="relative bg-cover bg-center bg-no-repeat text-sm text-gray-600 py-24 md:py-28 animate-fadeIn"
           style={{
-            backgroundImage: "url('/images/about/about_banner.jpg')",
+            backgroundImage: "url('/images/about/about_banner.webp')",
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>

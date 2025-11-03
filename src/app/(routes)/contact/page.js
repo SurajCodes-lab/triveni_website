@@ -445,7 +445,7 @@ export default function Contact() {
       >
         <div className="absolute inset-0">
           <Image
-            src="/images/about/about_banner.jpg"
+            src="/images/about/about_banner.webp"
             alt="Contact Triveni Cabs - Professional taxi service"
             fill
             priority

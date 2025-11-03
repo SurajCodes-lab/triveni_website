@@ -27,7 +27,7 @@ const HeroBanner = ({ formattedCityName }) => {
     },
     "openingHours": "Mo-Su 00:00-23:59",
     "priceRange": "₹₹",
-    "image": "/images/about/about_banner.jpg"
+    "image": "/images/about/about_banner.webp"
   });
 
   return (
@@ -39,7 +39,7 @@ const HeroBanner = ({ formattedCityName }) => {
       <section
         className="relative bg-cover bg-center bg-no-repeat py-16 md:py-32"
         style={{
-          backgroundImage: "url('/images/about/about_banner.jpg')",
+          backgroundImage: "url('/images/about/about_banner.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -126,7 +126,7 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
     "@type": "Product",
     "name": `${vehicle.type} Taxi Service ${cityName}`,
     "description": `Book ${vehicle.type} taxi in ${cityName}. ${vehicle.seating} seater vehicle with AC, GPS tracking and professional driver.`,
-    "image": vehicle.image || "/images/car/car1.png",
+    "image": vehicle.image || "/images/car/car1.webp",
     "brand": {
       "@type": "Brand",
       "name": "Triveni Cabs"
@@ -149,14 +149,14 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
         {/* Enhanced Vehicle Image */}
         <div className="relative h-40 md:h-48 bg-gray-100">
           <Image
-            src={vehicle.image || "/images/car/car1.png"}
+            src={vehicle.image || "/images/car/car1.webp"}
             alt={`${vehicle.type} taxi available for booking in ${cityName} - ${vehicle.seating} seater vehicle`}
             fill
             className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => {
-              e.target.src = "/images/car/car1.png";
+              e.target.src = "/images/car/car1.webp";
             }}
             itemProp="image"
           />
@@ -305,17 +305,17 @@ const TouristSpotsSection = ({ citySpots, formattedCityName }) => {
   const defaultSpots = useMemo(() => [
     {
       name: `${formattedCityName} City Tour`,
-      image: "/images/about/about_banner.jpg",
+      image: "/images/about/about_banner.webp",
       description: `Full day sightseeing tour of ${formattedCityName} covering major attractions, historical sites and cultural landmarks with comfortable taxi service`
     },
     {
       name: `${formattedCityName} Airport Transfer`,
-      image: "/images/about/about_banner.jpg", 
+      image: "/images/about/about_banner.webp", 
       description: `Reliable airport pickup and drop service in ${formattedCityName} with on-time guarantee and professional drivers`
     },
     {
       name: `${formattedCityName} Shopping Tour`,
-      image: "/images/about/about_banner.jpg",
+      image: "/images/about/about_banner.webp",
       description: `Visit popular markets and shopping centers in ${formattedCityName} with convenient taxi service and local guidance`
     }
   ], [formattedCityName]);
@@ -360,14 +360,14 @@ const TouristSpotsSection = ({ citySpots, formattedCityName }) => {
             >
               <div className="relative w-full h-40 md:h-48 bg-gray-100">
                 <Image
-                  src={spot.image || "/images/about/about_banner.jpg"}
+                  src={spot.image || "/images/about/about_banner.webp"}
                   alt={`${spot.name} - Tourist attraction in ${formattedCityName} accessible by taxi service`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                   loading="lazy"
                   onError={(e) => {
-                    e.target.src = "/images/about/about_banner.jpg";
+                    e.target.src = "/images/about/about_banner.webp";
                   }}
                   itemProp="image"
                 />

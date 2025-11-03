@@ -80,7 +80,7 @@ const AboutSection = () => {
             <div className="relative transform hover:scale-105 transition-transform duration-500">
               <div className="absolute inset-0 bg-gradient-to-r from-[#FACF2D] to-yellow-500 rounded-xl opacity-20 blur-lg"></div>
               <Image
-                src="/images/about/about_banner.jpg"
+                src="/images/about/about_banner.webp"
                 alt="Triveni Cabs - Professional taxi service with comfortable vehicles and experienced drivers"
                 width={600}
                 height={400}

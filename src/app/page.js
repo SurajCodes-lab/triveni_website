@@ -337,13 +337,13 @@ export default function OptimizedHomePage() {
         <meta property="og:title" content="🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs | Starting ₹11/km" />
         <meta property="og:description" content={`✅ Book sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'}, tempo traveller online. Delhi, Mumbai, Manali tours. Professional drivers, competitive rates.`} />
         <meta property="og:url" content="https://www.trivenicabs.in" />
-        <meta property="og:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.jpg" />
+        <meta property="og:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.webp" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Car Rental & Tour Packages India | Triveni Cabs" />
         <meta name="twitter:description" content={`Book sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'} online. Professional service, competitive rates.`} />
-        <meta name="twitter:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.jpg" />
+        <meta name="twitter:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.webp" />
         
         {/* Structured Data */}
         <script 
@@ -372,7 +372,7 @@ export default function OptimizedHomePage() {
           <div className="relative w-full h-full">
             {/* Mobile Image */}
             <Image
-              src="/images/home/Triveni_Cabs_Mobile.png"
+              src="/images/home/Triveni_Cabs_Mobile.webp"
               alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
               className="hero-banner object-cover object-center block md:hidden"
               fill
@@ -390,7 +390,7 @@ export default function OptimizedHomePage() {
 
             {/* Tablet Image */}
             <Image
-              src="/images/home/Triveni_Cabs_Tablet.png"
+              src="/images/home/Triveni_Cabs_Tablet.webp"
               alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
               className="hero-banner object-cover object-center hidden md:block lg:hidden"
               fill
@@ -408,7 +408,7 @@ export default function OptimizedHomePage() {
 
             {/* Desktop Image */}
             <Image
-              src="/images/home/Triveni_Cabs_Desktop.jpg"
+              src="/images/home/Triveni_Cabs_Desktop.webp"
               alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
               className="hero-banner object-cover object-center hidden lg:block"
               fill
