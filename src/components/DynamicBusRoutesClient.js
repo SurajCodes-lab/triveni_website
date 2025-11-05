@@ -5,8 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle,
-  ArrowRight, Route, Award, TrendingUp, IndianRupee
+  ArrowRight, Route, Award, TrendingUp, IndianRupee, Sparkles, Info, DollarSign, Navigation
 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import { additionalInfo } from '@/utilis/busRoutesData';
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet } = data;
@@ -21,108 +24,195 @@ export default function DynamicBusRoutesClient({ data }) {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-black via-gray-900 to-black py-24 overflow-hidden">
-        {/* Hero Banner Image */}
+      {/* Hero Section - Ultra Modern */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative min-h-[80vh] md:h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Animated Background with Parallax */}
         <div className="absolute inset-0">
           <Image
             src="/images/bus/hero_section_image.png"
             alt={`${origin} to ${destination} Bus Service`}
             fill
-            className="object-cover opacity-30"
+            className="object-cover brightness-50"
             priority
             onError={(e) => {
               e.target.style.display = 'none';
             }}
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
         </div>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80"></div>
+        {/* Animated Gradient Orbs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FACF2D]/30 to-orange-500/30 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"
+        />
 
-        <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center">
-            {/* Route Badge */}
-            <div className="inline-flex items-center bg-[#FACF2D] px-6 py-3 rounded-full text-black mb-6 font-bold">
-              <Route className="w-5 h-5 mr-2" />
-              Premium Bus Route
-            </div>
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-            {/* Route Title */}
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              {origin} <span className="text-[#FACF2D]">to</span> {destination}
-            </h1>
+          {/* Badge */}
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+            className="inline-flex items-center gap-1 sm:gap-2 bg-[#FACF2D]/20 backdrop-blur-md border border-[#FACF2D]/30 px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-full mb-4 sm:mb-6 md:mb-8 shadow-xl"
+          >
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#FACF2D]" />
+            <span className="text-[#FACF2D] font-bold text-xs sm:text-sm tracking-wider">✨ PREMIUM BUS ROUTE ✨</span>
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#FACF2D]" />
+          </motion.div>
 
-            {/* Route Stats */}
-            <div className="flex flex-wrap justify-center gap-6 mb-10">
-              {routeData.distance && (
-                <div className="bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl text-white flex items-center border border-white/20">
-                  <MapPin className="w-6 h-6 mr-3 text-[#FACF2D]" />
-                  <div className="text-left">
-                    <div className="text-xs text-gray-300">Distance</div>
-                    <div className="text-xl font-bold">{routeData.distance}</div>
-                  </div>
-                </div>
-              )}
-
-              {routeData.duration && (
-                <div className="bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl text-white flex items-center border border-white/20">
-                  <Clock className="w-6 h-6 mr-3 text-[#FACF2D]" />
-                  <div className="text-left">
-                    <div className="text-xs text-gray-300">Duration</div>
-                    <div className="text-xl font-bold">{routeData.duration}</div>
-                  </div>
-                </div>
-              )}
-
-              <div className="bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl text-white flex items-center border border-white/20">
-                <Bus className="w-6 h-6 mr-3 text-[#FACF2D]" />
-                <div className="text-left">
-                  <div className="text-xs text-gray-300">Available Buses</div>
-                  <div className="text-xl font-bold">{fleet.length} Options</div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="tel:+917668570551"
-                className="bg-[#FACF2D] text-black px-10 py-5 rounded-lg font-bold text-lg hover:bg-yellow-500 transition-all duration-300 flex items-center shadow-lg"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call: +91 76685 70551
-              </a>
-
-              <a
-                href="https://wa.me/917668570551"
-                className="bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-lg font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp Us
-              </a>
-            </div>
+          {/* Main Title with TypeAnimation */}
+          <div className="mb-6 md:mb-8 overflow-hidden px-4">
+            <motion.h1
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-3 md:mb-4"
+            >
+              🚌 {origin} <span className="text-[#FACF2D]">to</span> {destination}
+            </motion.h1>
+            <motion.h2
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
+            >
+              <TypeAnimation
+                sequence={[
+                  '✨ Comfortable Journey',
+                  2500,
+                  '💎 Luxury Experience',
+                  2500,
+                  '🛡️ Safe Travel',
+                  2500,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
+            </motion.h2>
           </div>
+
+          {/* Route Stats - Cute Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 md:mb-10 px-4"
+          >
+            {routeData.distance && (
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white/10 backdrop-blur-md px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl text-white flex items-center border-2 border-white/20 hover:border-[#FACF2D]/50 transition-all"
+              >
+                <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#FACF2D]" />
+                <div className="text-left">
+                  <div className="text-xs text-gray-300 font-semibold">Distance</div>
+                  <div className="text-sm md:text-base font-black">{routeData.distance}</div>
+                </div>
+              </motion.div>
+            )}
+
+            {routeData.duration && (
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white/10 backdrop-blur-md px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl text-white flex items-center border-2 border-white/20 hover:border-[#FACF2D]/50 transition-all"
+              >
+                <Clock className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#FACF2D]" />
+                <div className="text-left">
+                  <div className="text-xs text-gray-300 font-semibold">Duration</div>
+                  <div className="text-sm md:text-base font-black">{routeData.duration}</div>
+                </div>
+              </motion.div>
+            )}
+
+            <motion.div
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="bg-white/10 backdrop-blur-md px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl text-white flex items-center border-2 border-white/20 hover:border-[#FACF2D]/50 transition-all"
+            >
+              <Bus className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#FACF2D]" />
+              <div className="text-left">
+                <div className="text-xs text-gray-300 font-semibold">Available</div>
+                <div className="text-sm md:text-base font-black">{fleet.length} Buses</div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4"
+          >
+            <motion.a
+              href="tel:+917668570551"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative bg-[#FACF2D] text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl text-center"
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+                <span className="hidden sm:inline">📞 Call: +91 76685 70551</span>
+                <span className="sm:hidden">📞 Call Now</span>
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.a>
+
+            <motion.a
+              href="https://wa.me/917668570551"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg hover:bg-white/20 transition-all duration-300 shadow-2xl text-center"
+            >
+              <span className="flex items-center justify-center">
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+                💬 WhatsApp Us
+              </span>
+            </motion.a>
+          </motion.div>
         </div>
-      </div>
+      </motion.section>
 
       {/* Available Buses Section */}
-      <div className="py-20 bg-gray-50">
+      <div className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center bg-[#FACF2D]/10 px-4 py-2 rounded-full text-black font-semibold text-sm mb-4">
-              <Bus className="w-4 h-4 mr-2" />
-              Available Buses
+          <div className="text-center mb-8 md:mb-12">
+            <div className="inline-flex items-center bg-[#FACF2D]/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-black font-semibold text-xs md:text-sm mb-3 md:mb-4">
+              <Bus className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+              🚌 Available Buses
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Choose Your Bus
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
+              🎯 Choose Your Perfect Bus
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Select from our premium fleet for your journey from {origin} to {destination}
+            <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
+              <strong>Select from our premium fleet</strong> for your journey from {origin} to {destination}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {fleet.map((bus, index) => (
               <div
                 key={bus.id}
@@ -135,69 +225,69 @@ export default function DynamicBusRoutesClient({ data }) {
                 {bus.premium && (
                   <div className="absolute top-4 right-4 z-10 bg-[#FACF2D] text-black px-4 py-1 rounded-full text-xs font-bold flex items-center shadow-lg">
                     <Award className="w-3 h-3 mr-1" />
-                    Premium
+                    ⭐ Premium
                   </div>
                 )}
                 {bus.luxury && (
                   <div className="absolute top-4 right-4 z-10 bg-black text-[#FACF2D] px-4 py-1 rounded-full text-xs font-bold flex items-center shadow-lg">
                     <Star className="w-3 h-3 mr-1" />
-                    Luxury
+                    💎 Luxury
                   </div>
                 )}
 
                 {/* Bus Image */}
-                <div className="relative h-56 overflow-hidden bg-gray-100">
+                <div className="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-gray-100">
                   <Image
                     src={bus.image}
                     alt={bus.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-lg flex items-center shadow-lg">
-                    <Users className="w-4 h-4 mr-2 text-black" />
-                    <span className="font-bold text-black">{bus.capacity}</span>
+                  <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center shadow-lg">
+                    <Users className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2 text-black" />
+                    <span className="font-bold text-sm md:text-base text-black">{bus.capacity}</span>
                   </div>
                 </div>
 
                 {/* Bus Details */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{bus.name}</h3>
+                <div className="p-4 md:p-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">{bus.name}</h3>
 
                   {/* Pricing */}
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg">
-                      <span className="text-gray-600 font-medium flex items-center">
-                        <Route className="w-4 h-4 mr-2" />
+                  <div className="space-y-2 md:space-y-3 mb-3 md:mb-4">
+                    <div className="flex items-center justify-between bg-gray-50 px-3 md:px-4 py-2 md:py-3 rounded-lg">
+                      <span className="text-gray-600 font-medium flex items-center text-sm md:text-base">
+                        <Route className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
                         Per KM
                       </span>
-                      <span className="text-black font-bold">{bus.ratePerKm}</span>
+                      <span className="text-black font-bold text-sm md:text-base">{bus.ratePerKm}</span>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#FACF2D]/10 px-4 py-3 rounded-lg">
-                      <span className="text-gray-700 font-medium flex items-center">
-                        <Clock className="w-4 h-4 mr-2" />
+                    <div className="flex items-center justify-between bg-[#FACF2D]/10 px-3 md:px-4 py-2 md:py-3 rounded-lg">
+                      <span className="text-gray-700 font-medium flex items-center text-sm md:text-base">
+                        <Clock className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
                         Minimum
                       </span>
-                      <span className="text-black font-bold">{bus.minimumCharge}</span>
+                      <span className="text-black font-bold text-sm md:text-base">{bus.minimumCharge}</span>
                     </div>
 
-                    <div className="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg">
-                      <span className="text-gray-600 font-medium">Driver Allowance</span>
-                      <span className="text-black font-bold">{bus.driverAllowance}</span>
+                    <div className="flex items-center justify-between bg-gray-50 px-3 md:px-4 py-2 md:py-3 rounded-lg">
+                      <span className="text-gray-600 font-medium text-sm md:text-base">Driver Allowance</span>
+                      <span className="text-black font-bold text-sm md:text-base">{bus.driverAllowance}</span>
                     </div>
                   </div>
 
                   {/* Ideal For */}
-                  <div className="bg-gray-50 px-4 py-3 rounded-lg mb-4">
-                    <p className="text-sm text-gray-700 font-medium">
+                  <div className="bg-gray-50 px-3 md:px-4 py-2 md:py-3 rounded-lg mb-3 md:mb-4">
+                    <p className="text-xs md:text-sm text-gray-700 font-medium">
                       <span className="font-bold text-black">Ideal for:</span> {bus.idealFor}
                     </p>
                   </div>
 
                   {/* Features */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
                     {bus.features.map((feature, idx) => (
-                      <span key={idx} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium flex items-center">
+                      <span key={idx} className="bg-gray-100 text-gray-700 px-2 md:px-3 py-1 rounded-full text-xs font-medium flex items-center">
                         <CheckCircle className="w-3 h-3 mr-1 text-green-600" />
                         {feature}
                       </span>
@@ -210,10 +300,10 @@ export default function DynamicBusRoutesClient({ data }) {
                       setSelectedBus(bus);
                       window.location.href = `tel:+917668570551`;
                     }}
-                    className="w-full bg-black text-[#FACF2D] py-4 rounded-lg font-bold hover:bg-gray-900 transition-all duration-300 flex items-center justify-center group-hover:shadow-lg"
+                    className="w-full bg-black text-[#FACF2D] py-3 md:py-4 rounded-lg font-bold text-sm md:text-base hover:bg-gray-900 transition-all duration-300 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-[#FACF2D]/20"
                   >
-                    Book Now
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    📞 Book Now
+                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
@@ -224,32 +314,32 @@ export default function DynamicBusRoutesClient({ data }) {
 
       {/* Local Sightseeing Section */}
       {localSightseeing.length > 0 && (
-        <div className="py-20 bg-white">
+        <div className="py-12 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center bg-[#FACF2D]/10 px-4 py-2 rounded-full text-black font-semibold text-sm mb-4">
-                <MapPin className="w-4 h-4 mr-2" />
-                Tourist Attractions
+            <div className="text-center mb-8 md:mb-12">
+              <div className="inline-flex items-center bg-[#FACF2D]/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-black font-semibold text-xs md:text-sm mb-3 md:mb-4">
+                <MapPin className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                📍 Tourist Attractions
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Places to Visit in <span className="text-[#FACF2D]">{destination}</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
+                🏛️ Places to Visit in <span className="text-[#FACF2D]">{destination}</span>
               </h2>
-              <p className="text-xl text-gray-600">
-                Explore popular tourist destinations in {destination}
+              <p className="text-base md:text-lg lg:text-xl text-gray-600 px-4">
+                <strong>Explore popular tourist destinations</strong> in {destination}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-4">
               {localSightseeing.map((place, index) => (
                 <div
                   key={index}
                   style={{
                     animationDelay: `${index * 50}ms`
                   }}
-                  className={`bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 hover:border-[#FACF2D] rounded-xl p-6 text-center transition-all duration-300 hover:shadow-lg cursor-pointer ${mounted ? 'animate-fade-in' : 'opacity-0'}`}
+                  className={`group bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 hover:border-[#FACF2D] rounded-xl p-3 sm:p-4 md:p-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer ${mounted ? 'animate-fade-in' : 'opacity-0'}`}
                 >
-                  <MapPin className="w-8 h-8 mx-auto mb-3 text-[#FACF2D]" />
-                  <h3 className="font-bold text-gray-900">{place}</h3>
+                  <MapPin className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 md:mb-3 text-[#FACF2D] group-hover:scale-110 transition-transform" />
+                  <h3 className="font-bold text-sm sm:text-base text-gray-900 group-hover:text-[#FACF2D] transition-colors">{place}</h3>
                 </div>
               ))}
             </div>
@@ -258,33 +348,36 @@ export default function DynamicBusRoutesClient({ data }) {
       )}
 
       {/* Why Book with Us */}
-      <div className="py-20 bg-gray-50">
+      <div className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Book with <span className="text-[#FACF2D]">Us?</span>
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
+              🏆 Why Book with <span className="text-[#FACF2D]">Us?</span>
             </h2>
+            <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
+              <strong>Your trusted travel partner</strong> for safe and comfortable bus journeys
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
-              { icon: Shield, title: 'Safe Travel', description: 'GPS tracking & sanitized vehicles' },
-              { icon: Star, title: 'Expert Drivers', description: 'Professional & experienced' },
-              { icon: TrendingUp, title: 'Best Prices', description: 'Transparent pricing, no hidden charges' },
-              { icon: Clock, title: '24/7 Support', description: 'Always available for you' }
+              { icon: Shield, title: '🛡️ Safe Travel', description: 'GPS tracking & sanitized vehicles' },
+              { icon: Star, title: '⭐ Expert Drivers', description: 'Professional & experienced' },
+              { icon: TrendingUp, title: '💰 Best Prices', description: 'Transparent pricing, no hidden charges' },
+              { icon: Clock, title: '🕐 24/7 Support', description: 'Always available for you' }
             ].map((feature, index) => (
               <div
                 key={index}
                 style={{
                   animationDelay: `${index * 100}ms`
                 }}
-                className={`bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-[#FACF2D] text-center ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}
+                className={`bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-[#FACF2D] text-center ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}
               >
-                <div className="bg-[#FACF2D] w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-7 h-7 text-black" />
+                <div className="bg-[#FACF2D] w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
+                  <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-black" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-sm md:text-base text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -292,35 +385,36 @@ export default function DynamicBusRoutesClient({ data }) {
       </div>
 
       {/* Sticky Bottom CTA */}
-      <div className="sticky bottom-0 left-0 right-0 bg-white border-t-4 border-[#FACF2D] shadow-2xl z-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
-          <div>
-            <p className="text-sm text-gray-600">Ready to travel?</p>
-            <p className="text-xl font-bold text-gray-900">{origin} → {destination}</p>
+      <div className="sticky bottom-0 left-0 right-0 bg-white border-t-4 border-[#FACF2D] shadow-2xl z-50 py-2 sm:py-3 md:py-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-2 sm:gap-3 md:gap-4">
+          <div className="hidden sm:block">
+            <p className="text-xs md:text-sm text-gray-600">🚀 Ready to travel?</p>
+            <p className="text-sm md:text-xl font-bold text-gray-900">{origin} → {destination}</p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
             <a
               href="tel:+917668570551"
-              className="bg-[#FACF2D] text-black px-8 py-3 rounded-lg font-bold flex items-center shadow-lg hover:bg-yellow-500 transition-all duration-300"
+              className="flex-1 sm:flex-none bg-[#FACF2D] text-black px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-lg font-bold text-xs sm:text-sm md:text-base flex items-center justify-center shadow-lg hover:bg-yellow-500 transition-all duration-300"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now
+              <Phone className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">📞 Call Now</span>
+              <span className="sm:hidden">📞 Call</span>
             </a>
 
             <a
               href="https://wa.me/917668570551"
-              className="bg-black text-[#FACF2D] px-8 py-3 rounded-lg font-bold flex items-center shadow-lg hover:bg-gray-900 transition-all duration-300"
+              className="flex-1 sm:flex-none bg-black text-[#FACF2D] px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-lg font-bold text-xs sm:text-sm md:text-base flex items-center justify-center shadow-lg hover:bg-gray-900 transition-all duration-300"
             >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp
+              <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" />
+              💬 WhatsApp
             </a>
           </div>
         </div>
       </div>
 
       {/* Add padding at bottom to prevent content from being hidden by sticky CTA */}
-      <div className="h-20"></div>
+      <div className="h-16 sm:h-20"></div>
 
       {/* CSS Animations */}
       <style jsx>{`
