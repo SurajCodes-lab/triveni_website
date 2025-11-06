@@ -38,7 +38,7 @@ export default function DestinationsPage() {
         </div>
         <div className="relative h-full mx-auto px-4 flex flex-col justify-center">
           <h1 className="text-3xl max-sm:text-[25px] md:text-4xl tracking-[0.06rem] font-bold text-white mb-6 animate-fade-in">
-            India Like You've Never Seen Before
+            India Like You&apos;ve Never Seen Before
           </h1>
           <p className="text-xl max-sm:text-[15px] text-center text-gray-200 tracking-[0.06rem] mb-8">
             50+ handpicked destinations waiting to steal your heart. From snow-capped peaks to sun-kissed beaches!

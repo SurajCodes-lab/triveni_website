@@ -251,7 +251,7 @@ export default function AboutClient() {
             
             <header>
               <h1 id="hero-heading" className="text-4xl tracking-wide md:text-5xl font-bold text-white mb-4">
-                Your Journey, Our Passion - India's Most Trusted Cab Service
+                Your Journey, Our Passion - India&apos;s Most Trusted Cab Service
               </h1>
               <p className="text-lg text-gray-200 max-w-3xl leading-relaxed">
                 <strong>Professional taxi booking service</strong> offering <strong>online cab booking</strong>, 
@@ -382,7 +382,7 @@ export default function AboutClient() {
           <section className="mb-20 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-12">
             <header className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Every Mile, Every Destination - We've Got You Covered
+                Every Mile, Every Destination - We&apos;ve Got You Covered
               </h2>
               <p className="text-gray-700 leading-relaxed max-w-4xl mx-auto mb-6">
                 <strong>Triveni Cabs</strong> offers comprehensive <strong>taxi services in India</strong> including 
@@ -478,7 +478,7 @@ export default function AboutClient() {
           <section className="bg-yellow-600 rounded-2xl p-12 text-center text-white" aria-labelledby="cta-heading">
             <header className="mb-8">
               <h2 id="cta-heading" className="text-3xl font-bold mb-4">
-                Your Adventure Awaits - Let's Get Moving!
+                Your Adventure Awaits - Let&apos;s Get Moving!
               </h2>
               <p className="text-xl opacity-90">
                 Experience India s best cab booking service. Get instant confirmation, affordable rates, and 24/7 support!

@@ -43,7 +43,7 @@ export default function ReligiousToursPage() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Discover inner peace through blessed pilgrimage tours. Experience divine darshan with comfort, devotion & expert guidance to India's holiest destinations.
+            Discover inner peace through blessed pilgrimage tours. Experience divine darshan with comfort, devotion & expert guidance to India&apos;s holiest destinations.
           </p>
         </div>
       </section>
