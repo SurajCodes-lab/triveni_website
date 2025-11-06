@@ -59,8 +59,8 @@ export async function generateMetadata({ params }) {
   const destinationFormatted = formatCityName(destination);
 
   return {
-    title: `${originFormatted} to ${destinationFormatted} Bus | Luxury Coaches & Mini Buses`,
-    description: `Book bus from ${originFormatted} to ${destinationFormatted}. 22 to 56 seater luxury coaches, AC buses, professional drivers, competitive rates. Available 24/7 online booking.`,
+    title: `Big Group? No Problem! ${originFormatted} to ${destinationFormatted} Luxury Bus 22-56 Seater | Book Now & Save 20%`,
+    description: `🚌 Roll in comfort from ${originFormatted} to ${destinationFormatted}! Luxury Volvo & AC buses (22-56 seater) with reclining seats, entertainment & AC. Perfect for corporate events, weddings, pilgrimages & tours. 1000+ groups trusted us. Professional drivers, GPS tracking, on-time guarantee. Book online in 60 seconds & get instant confirmation + 20% discount!`,
     keywords: [
       `bus ${origin} to ${destination}`,
       `${origin} to ${destination} bus booking`,
@@ -76,13 +76,33 @@ export async function generateMetadata({ params }) {
       `bus rental ${origin} to ${destination}`,
       `ac bus ${origin} to ${destination}`,
       `mini bus ${origin} to ${destination}`,
-      `${origin} to ${destination} outstation bus`
+      `${origin} to ${destination} outstation bus`,
+      `22 seater bus ${origin} to ${destination}`,
+      `32 seater bus ${origin} to ${destination}`,
+      `45 seater bus ${origin} to ${destination}`,
+      `56 seater bus ${origin} to ${destination}`,
+      `corporate bus ${origin} to ${destination}`,
+      `wedding bus ${origin} to ${destination}`,
+      `pilgrimage bus ${origin} to ${destination}`,
+      `school bus hire ${origin} to ${destination}`,
+      `cheap bus ${origin} to ${destination}`,
+      `best bus service ${origin} to ${destination}`
     ].join(', '),
+    alternates: {
+      canonical: `https://trivenicabs.in/bus-routes/${route}`
+    },
     openGraph: {
-      title: `${originFormatted} to ${destinationFormatted} Bus Service`,
-      description: `Premium bus service from ${originFormatted} to ${destinationFormatted}. Book now for comfortable group travel.`,
-      url: `/bus-routes/${route}`,
+      title: `Big Groups Travel Better! ${originFormatted} to ${destinationFormatted} Luxury Bus`,
+      description: `🚌 22-56 seater Volvo & AC buses | Reclining seats • Entertainment • GPS tracking. 1000+ groups trusted us. Book now & save 20%!`,
+      url: `https://trivenicabs.in/bus-routes/${route}`,
       type: 'website',
+      locale: 'en_IN',
+      siteName: 'Triveni Cabs',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
+      description: `🚌 Volvo comfort • AC • Entertainment. Perfect for corporate, weddings & tours. Book now!`
     }
   };
 }

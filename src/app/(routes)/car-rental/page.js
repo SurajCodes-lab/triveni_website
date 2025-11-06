@@ -7,9 +7,24 @@ import Others from "./components/others";
 import CarRentalSection from "./components/carRentalSection";
 
 export const metadata = {
-  title: 'Car Rental Services | Rent Your Dream Car',
-  description: 'Choose from our premium fleet of standard and luxury vehicles. Easy booking, flexible rental options, and 24/7 customer support.',
-  keywords: 'car rental, luxury cars, standard cars, bus rental, tempo traveller',
+  title: 'Drive Your Dreams! Premium Car Rental Services | Luxury & Economy Cars - Triveni Cabs',
+  description: 'From budget-friendly sedans to luxurious SUVs - find your perfect ride! Flexible daily/weekly rentals, professional chauffeurs, zero hidden charges. Book sedans, SUVs, luxury cars across India. Self-drive & chauffeur options available. Your journey, your style!',
+  keywords: 'car rental India, rent a car, luxury car rental, sedan rental, SUV rental, self drive cars, car hire with driver, wedding car rental, corporate car rental, monthly car rental, airport car rental, budget car rental, premium car rental, chauffeur driven cars, long term car rental',
+  alternates: {
+    canonical: 'https://trivenicabs.in/car-rental'
+  },
+  openGraph: {
+    title: 'Drive Your Dreams! Luxury & Budget Car Rentals',
+    description: '🚗 Sedans • SUVs • Luxury Cars | Self-drive & Chauffeur options | Zero hidden charges. Book your perfect ride today!',
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'Triveni Cabs'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Drive Your Dreams! Premium Car Rentals',
+    description: '🚗 Budget to Luxury • Daily/Monthly • Self-drive or Chauffeur. Find your perfect ride!'
+  }
 };
 
 export default function CarRentalPage() {
@@ -42,7 +57,7 @@ export default function CarRentalPage() {
             </li>
           </ol>
           <h1 className="text-2xl md:text-3xl font-bold text-white mt-6 md:mt-8">
-            Rent Your Dream Car, Drive in Comfort.
+            Drive Your Dreams - Luxury Meets Affordability
           </h1>
         </div>
       </nav>

@@ -5,18 +5,23 @@ import { religiousTours } from '@/utilis/religiousTourData';
 import { Calendar, MapPin, Star, ChevronRight, Sparkles } from 'lucide-react';
 
 export const metadata = {
-  title: 'Religious Tour Packages | Spiritual Yatra Services | Triveni Cabs',
-  description: 'Embark on divine journeys with Triveni Cabs. Explore Char Dham Yatra, pilgrimage tours, and spiritual destinations across India with comfort and safety.',
-  keywords: 'religious tours, pilgrimage packages, char dham yatra, spiritual tours, temple tours, religious travel india, pilgrimage services',
+  title: 'Find Inner Peace: Divine Pilgrimage Tours | Char Dham Yatra & More | Triveni Cabs',
+  description: '🙏 Sacred journeys that touch your soul! Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more. Comfortable AC transport, experienced drivers, affordable packages. From temple darshan to spiritual retreats - your blessed journey begins here. Customized pilgrimage tours across India!',
+  keywords: 'char dham yatra, religious tour packages, pilgrimage tours India, vaishno devi tour, golden temple tour, tirupati tour, temple tour packages, spiritual yatra, hindu pilgrimage, religious travel, sacred destinations India, dharmic tourism, spiritual journey, temple darshan, pilgrimage cab service',
   alternates: {
     canonical: 'https://trivenicabs.in/religious-tours'
   },
   openGraph: {
-    title: 'Religious Tour Packages | Spiritual Yatra | Triveni Cabs',
-    description: 'Divine journeys to sacred destinations across India',
+    title: 'Find Inner Peace: Divine Pilgrimage & Religious Tours',
+    description: '🙏 Char Dham • Vaishno Devi • Golden Temple | Blessed journeys with comfort & devotion',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Divine Pilgrimage Tours | Sacred Journeys',
+    description: '🙏 Expert-guided temple tours • Comfortable travel • Affordable packages. Your spiritual journey awaits!'
   }
 };
 
@@ -34,11 +39,11 @@ export default function ReligiousToursPage() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-purple-600 to-yellow-600 bg-clip-text text-transparent">
-            Religious Tour Packages
+            Sacred Journeys Begin Here
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Experience divine blessings with our carefully curated pilgrimage tours. Travel in comfort and devotion to India&apos;s most sacred destinations.
+            Discover inner peace through blessed pilgrimage tours. Experience divine darshan with comfort, devotion & expert guidance to India's holiest destinations.
           </p>
         </div>
       </section>

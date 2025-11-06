@@ -304,7 +304,7 @@ export default function BlogClient() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  Triveni Cabs
+                  India Uncovered
                 </motion.span>
 
                 {/* FLOATING 3D "Travel Blog" with Typing Animation - FIXED OVERFLOW */}
@@ -329,13 +329,13 @@ export default function BlogClient() {
                   {mounted && (
                     <TypeAnimation
                       sequence={[
-                        'Travel Blog',
+                        'Where Stories Come Alive',
                         3000,
-                        'Adventure Awaits',
+                        'Hidden Gems Revealed',
                         2000,
-                        'Explore India',
+                        'Epic Adventures Begin',
                         2000,
-                        'Travel Blog',
+                        'Your Journey Starts Here',
                         2000,
                       ]}
                       wrapper="span"

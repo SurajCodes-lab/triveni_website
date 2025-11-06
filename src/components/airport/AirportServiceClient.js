@@ -36,10 +36,10 @@ export default function AirportServiceClient() {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-6xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-            Reliable Airport Transfer Services
+            Fly Worry-Free, We'll Get You There!
           </h1>
           <p className="text-xl md:text-2xl text-purple-100 mb-2">
-            🛫 Start & End Your Journey in Comfort
+            ✈️ Your Stress-Free Airport Transfer Starts Here
           </p>
           <p className="text-lg text-purple-200 max-w-3xl mx-auto">
             Traveling to or from the airport should be stress-free, timely, and comfortable.
@@ -54,7 +54,7 @@ export default function AirportServiceClient() {
         <div className="container mx-auto max-w-4xl">
           <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-6 md:p-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-              Book Your Airport Transfer
+              Reserve Your Ride in 60 Seconds
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">

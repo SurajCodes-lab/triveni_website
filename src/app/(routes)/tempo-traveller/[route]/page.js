@@ -62,8 +62,8 @@ export async function generateMetadata({ params }) {
   const destinationFormatted = formatCityName(destination);
 
   return {
-    title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | Book Online`,
-    description: `Book tempo traveller from ${originFormatted} to ${destinationFormatted}. Comfortable AC vehicles, professional drivers, competitive rates. Available 24/7 online booking.`,
+    title: `Family Trip? Perfect! ${originFormatted} to ${destinationFormatted} Tempo Traveller 12-17 Seater | Instant Booking`,
+    description: `👨‍👩‍👧‍👦 Travel together from ${originFormatted} to ${destinationFormatted}! Spacious AC tempo travellers (12-17 seater) with pushback seats, music system & ample luggage space. Perfect for families, corporate teams & pilgrimage groups. 2500+ happy families served. Professional drivers, GPS tracking, clean sanitized vehicles. Book in 30 seconds & travel stress-free!`,
     keywords: [
       `tempo traveller ${origin} to ${destination}`,
       `${origin} to ${destination} tempo traveller booking`,
@@ -79,13 +79,29 @@ export async function generateMetadata({ params }) {
       `tempo traveller rental ${origin} to ${destination}`,
       `ac tempo traveller ${origin} to ${destination}`,
       `luxury tempo traveller ${origin} to ${destination}`,
-      `${origin} to ${destination} outstation tempo traveller`
+      `${origin} to ${destination} outstation tempo traveller`,
+      `family tempo traveller ${origin} to ${destination}`,
+      `corporate tempo traveller ${origin} to ${destination}`,
+      `pilgrimage tempo traveller ${origin} to ${destination}`,
+      `cheap tempo traveller ${origin} to ${destination}`,
+      `best tempo traveller ${origin} to ${destination}`,
+      `tempo traveller with driver ${origin} to ${destination}`
     ].join(', '),
+    alternates: {
+      canonical: `https://trivenicabs.in/tempo-traveller/${route}`
+    },
     openGraph: {
-      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller`,
-      description: `Premium tempo traveller service from ${originFormatted} to ${destinationFormatted}. Book now for comfortable group travel.`,
-      url: `/tempo-traveller/${route}`,
+      title: `Travel Together! ${originFormatted} to ${destinationFormatted} Tempo Traveller 12-17 Seater`,
+      description: `👨‍👩‍👧‍👦 Spacious • Comfortable • Affordable | Pushback seats • Music • AC. 2500+ families chose us. Book your group ride now!`,
+      url: `https://trivenicabs.in/tempo-traveller/${route}`,
       type: 'website',
+      locale: 'en_IN',
+      siteName: 'Triveni Cabs',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | 12-17 Seater`,
+      description: `Perfect for families & groups! AC • Pushback seats • Music. Book your comfortable ride now!`
     }
   };
 }

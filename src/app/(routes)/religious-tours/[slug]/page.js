@@ -20,13 +20,20 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // Extract tour name for conversion-focused titles
+  const tourName = tour.title.split('–')[0].trim();
+  const startingPrice = tour.pricing?.starting || 'Contact for pricing';
+
   return {
-    title: `${tour.title} | Religious Tour Packages | Triveni Cabs`,
-    description: tour.description,
+    title: `Seek Blessings & Inner Peace! ${tourName} Tour Package | ${startingPrice} | Book Your Divine Journey`,
+    description: `🙏 Experience spiritual awakening with ${tourName}! ${tour.description} Expert guides, comfortable AC transport, hassle-free darshan. 3000+ pilgrims blessed. Customize your sacred journey. ${tour.duration} package with accommodation, meals & sightseeing. Book now for divine blessings & peaceful travel!`,
     keywords: tour.keywords.join(', '),
+    alternates: {
+      canonical: `https://trivenicabs.in/religious-tours/${params.slug}`
+    },
     openGraph: {
-      title: tour.title,
-      description: tour.description,
+      title: `Find Inner Peace: ${tourName} Tour Package | Triveni Cabs`,
+      description: `🙏 ${tour.duration} spiritual journey | Expert guides • Comfortable travel • Hassle-free darshan. 3000+ blessed pilgrims. Book your divine journey today!`,
       type: 'website',
       locale: 'en_IN',
       siteName: 'Triveni Cabs',
@@ -35,19 +42,28 @@ export async function generateMetadata({ params }) {
           url: tour.images.hero,
           width: 1200,
           height: 630,
-          alt: tour.title,
+          alt: `${tourName} pilgrimage tour package with Triveni Cabs`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: tour.title,
-      description: tour.description,
+      title: `${tourName} Divine Tour | ${startingPrice}`,
+      description: `🙏 Spiritual journey with comfort • Expert guidance • Hassle-free darshan. Book your blessed journey!`,
       images: [tour.images.hero],
     },
-    alternates: {
-      canonical: `https://trivenicabs.in/religious-tours/${params.slug}`
-    }
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
   };
 }
 

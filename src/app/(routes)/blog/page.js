@@ -3,8 +3,8 @@ import { blogPosts } from '@/utilis/blog';
 
 // SEO Metadata for Blog Page
 export const metadata = {
-  title: 'Travel Blog India 2025 - Expert Tips, Destination Guides & Travel Stories | Triveni Cabs',
-  description: 'Discover the best travel blog for India tours. Get expert travel tips, destination guides, budget travel advice, road trip ideas, and insider secrets for exploring India. Updated 2025 travel stories, itineraries & practical guides.',
+  title: 'India Uncovered: Travel Tales That Inspire Wanderlust | Triveni Cabs 2025',
+  description: '🌏 Your passport to incredible India starts here! Explore hidden gems, budget hacks, jaw-dropping destinations & insider secrets. From Himalayan peaks to coastal paradises - real stories, practical tips & itineraries that actually work. Join 500+ readers discovering India differently!',
   keywords: [
     // Primary Keywords
     'travel blog India',
@@ -139,8 +139,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Best Travel Blog India 2025 - Expert Tips & Destination Guides | Triveni Cabs',
-    description: 'Explore India with expert travel guides, insider tips, and practical advice. Budget travel, luxury tours, road trips, and cultural experiences. Your complete India travel resource.',
+    title: 'India Uncovered: Travel Tales That Inspire Wanderlust | 2025',
+    description: 'From hidden Himalayan villages to secret beaches - discover India through authentic stories, money-saving tips & bucket-list itineraries. Your adventure awaits!',
     type: 'website',
     locale: 'en_IN',
     url: 'https://trivenicabs.in/blog',
@@ -156,8 +156,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'India Travel Blog 2025 - Expert Tips & Destination Guides',
-    description: 'Discover expert travel tips, destination guides, and insider secrets for exploring India. Budget travel, road trips, cultural tours, and more.',
+    title: 'India Uncovered: Travel Tales That Inspire 🌏',
+    description: '✨ Hidden gems 💰 Budget hacks 🏔️ Epic adventures. Real stories from incredible India that'll make you pack your bags today!',
     images: ['https://trivenicabs.in/images/blog/travel-blog-twitter.jpg'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs',

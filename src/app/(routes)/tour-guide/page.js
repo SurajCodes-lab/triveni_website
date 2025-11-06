@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { ChevronRight, Phone, MapPin } from 'lucide-react';
 import { BsWhatsapp } from 'react-icons/bs';
 import Link from 'next/link';
-import Head from 'next/head';
 
 // Define constants
 const availableLocations = [
@@ -105,120 +104,72 @@ Please confirm my booking. Thank you!`;
 
   return (
     <>
-      {/* SEO Meta Tags */}
-      <Head>
-        {/* Primary Meta Tags */}
-        <title>Professional Tour Guide Booking | Multi-Language Guides in Delhi, Agra, Jaipur & More</title>
-        <meta name="title" content="Professional Tour Guide Booking | Multi-Language Guides in Delhi, Agra, Jaipur & More" />
-        <meta name="description" content="Book experienced tour guides in 14+ Indian cities. Multi-language guides available in English, Hindi, French, Spanish, German & Chinese. Starting from ₹1200. Expert local guides for heritage sites, cultural tours & sightseeing." />
-        <meta name="keywords" content="tour guide booking, professional tour guide, local tour guide, Delhi tour guide, Agra tour guide, Jaipur tour guide, Golden Triangle tour guide, Rajasthan tour guide, multi language tour guide, English speaking guide, heritage tour guide, private tour guide, certified tour guide, Shimla tour guide, Manali tour guide" />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="English" />
-        <meta name="author" content="Your Company Name" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourwebsite.com/tour-guide" />
-        <meta property="og:title" content="Professional Tour Guide Booking | Multi-Language Guides in Delhi, Agra, Jaipur & More" />
-        <meta property="og:description" content="Book experienced tour guides in 14+ Indian cities. Multi-language guides available in English, Hindi, French, Spanish, German & Chinese. Starting from ₹1200." />
-        <meta property="og:image" content="https://yourwebsite.com/images/tour-guide-og-image.jpg" />
-        <meta property="og:locale" content="en_IN" />
-        <meta property="og:site_name" content="Your Company Name" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://yourwebsite.com/tour-guide" />
-        <meta property="twitter:title" content="Professional Tour Guide Booking | Multi-Language Guides in Delhi, Agra, Jaipur & More" />
-        <meta property="twitter:description" content="Book experienced tour guides in 14+ Indian cities. Multi-language guides available in English, Hindi, French, Spanish, German & Chinese. Starting from ₹1200." />
-        <meta property="twitter:image" content="https://yourwebsite.com/images/tour-guide-twitter-image.jpg" />
-
-        {/* Additional SEO Tags */}
-        <meta name="geo.region" content="IN" />
-        <meta name="geo.placename" content="India" />
-        <meta name="geo.position" content="28.6139;77.2090" />
-        <meta name="ICBM" content="28.6139, 77.2090" />
-
-        {/* Schema.org markup for Google */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "TouristInformationCenter",
-              "name": "Professional Tour Guide Services",
-              "description": "Book experienced tour guides in 14+ Indian cities. Multi-language guides available.",
-              "url": "https://yourwebsite.com/tour-guide",
-              "telephone": "+91-7668570551",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "366, Dandupura, near Tajganj",
-                "addressLocality": "Agra",
-                "addressRegion": "Uttar Pradesh",
-                "postalCode": "282006",
-                "addressCountry": "India"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "27.1767",
-                "longitude": "78.0081"
-              },
-              "areaServed": [
-                "Delhi", "Agra", "Jaipur", "Shimla", "Manali", "Haridwar", 
-                "Chandigarh", "Amritsar", "Dehradun", "Rishikesh", 
-                "Jodhpur", "Udaipur", "Ayodhya", "Ahmedabad"
-              ],
-              "serviceType": [
-                "Tour Guide Services", "Heritage Tours", "Cultural Tours", 
-                "Sightseeing Tours", "Multi-language Guide Services"
-              ],
-              "priceRange": "₹1200-₹2500",
-              "availableLanguage": [
-                "English", "Hindi", "French", "Spanish", "German", "Chinese"
-              ],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Tour Guide Services",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "English Speaking Tour Guide",
-                      "description": "Professional English speaking tour guide for heritage & cultural sites"
-                    },
-                    "price": "1500",
-                    "priceCurrency": "INR"
+      {/* Schema.org markup for Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TouristInformationCenter",
+            "name": "Professional Tour Guide Services - Triveni Cabs",
+            "description": "Book experienced tour guides in 14+ Indian cities. Multi-language guides available in 6 languages.",
+            "url": "https://trivenicabs.in/tour-guide",
+            "telephone": "+91-7668570551",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "366, Dandupura, near Tajganj",
+              "addressLocality": "Agra",
+              "addressRegion": "Uttar Pradesh",
+              "postalCode": "282006",
+              "addressCountry": "India"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "27.1767",
+              "longitude": "78.0081"
+            },
+            "areaServed": [
+              "Delhi", "Agra", "Jaipur", "Shimla", "Manali", "Haridwar",
+              "Chandigarh", "Amritsar", "Dehradun", "Rishikesh",
+              "Jodhpur", "Udaipur", "Ayodhya", "Ahmedabad"
+            ],
+            "serviceType": [
+              "Tour Guide Services", "Heritage Tours", "Cultural Tours",
+              "Sightseeing Tours", "Multi-language Guide Services"
+            ],
+            "priceRange": "₹1200-₹2500",
+            "availableLanguage": [
+              "English", "Hindi", "French", "Spanish", "German", "Chinese"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Tour Guide Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "English Speaking Tour Guide",
+                    "description": "Professional English speaking tour guide for heritage & cultural sites"
                   },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Hindi Tour Guide",
-                      "description": "Professional Hindi speaking local tour guide"
-                    },
-                    "price": "1200",
-                    "priceCurrency": "INR"
-                  }
-                ]
-              }
-            })
-          }}
-        />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://yourwebsite.com/tour-guide" />
-
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </Head>
+                  "price": "1500",
+                  "priceCurrency": "INR"
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Hindi Tour Guide",
+                    "description": "Professional Hindi speaking local tour guide"
+                  },
+                  "price": "1200",
+                  "priceCurrency": "INR"
+                }
+              ]
+            }
+          })
+        }}
+      />
 
       {/* Inject animation styles */}
       <style jsx global>{animationStyles}</style>

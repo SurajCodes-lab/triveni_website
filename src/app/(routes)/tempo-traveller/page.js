@@ -4,9 +4,24 @@ import { tempoFleet, tempoRoutes } from '@/utilis/tempoTravellerData';
 import TempoMainClient from '@/components/TempoMainClient';
 
 export const metadata = {
-  title: 'Tempo Traveller Service | Premium Group Travel',
-  description: 'Book premium tempo travellers for comfortable group travel across India. Professional drivers, AC vehicles, competitive rates.',
-  keywords: 'tempo traveller, group travel, India tour, AC vehicles, professional drivers'
+  title: 'Travel Together, Celebrate Forever! Tempo Traveller Hire 12-17 Seater | Triveni Cabs',
+  description: '👨‍👩‍👧‍👦 Perfect for family trips & group adventures! Spacious AC tempo travellers (12-17 seater) with pushback seats, entertainment & luggage space. Delhi to Manali, Shimla, Agra & beyond. Corporate tours, family vacations, pilgrimages made easy. Book your comfort ride!',
+  keywords: 'tempo traveller on rent, 12 seater tempo traveller, 17 seater tempo traveller, tempo traveller hire, group travel India, family tour package, corporate travel, pilgrimage tour, Delhi to Manali tempo traveller, luxury tempo traveller, AC tempo traveller, tempo traveller with driver, outstation tempo traveller',
+  alternates: {
+    canonical: 'https://trivenicabs.in/tempo-traveller'
+  },
+  openGraph: {
+    title: 'Travel Together! 12-17 Seater Tempo Traveller Hire',
+    description: '👨‍👩‍👧‍👦 Spacious • Comfortable • Affordable | Perfect for family & group travel across India',
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'Triveni Cabs'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Group Travel Made Easy! Tempo Traveller Hire',
+    description: '12-17 seater • AC • Pushback seats • Entertainment. Your group adventure starts here!'
+  }
 };
 
 export default function TempoTravellerPage() {
