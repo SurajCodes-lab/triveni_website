@@ -413,7 +413,7 @@ Please confirm my booking. Thank you!`;
             <h2 className="text-4xl md:text-5xl font-black mb-4">
               Start Your <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Adventure Today</span>
             </h2>
-            <p className="text-xl text-gray-600">Fill the form below and we'll connect you with the perfect guide</p>
+            <p className="text-xl text-gray-600">{`Fill the form below and we'll connect you with the perfect guide`}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
