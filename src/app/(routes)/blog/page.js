@@ -157,7 +157,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'India Uncovered: Travel Tales That Inspire 🌏',
-    description: '✨ Hidden gems 💰 Budget hacks 🏔️ Epic adventures. Real stories from incredible India that'll make you pack your bags today!',
+    description: '✨ Hidden gems 💰 Budget hacks 🏔️ Epic adventures. Real stories from incredible India that will make you pack your bags today!',
     images: ['https://trivenicabs.in/images/blog/travel-blog-twitter.jpg'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs',
