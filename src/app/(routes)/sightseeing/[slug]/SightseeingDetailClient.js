@@ -66,7 +66,7 @@ export default function SightseeingDetailClient({ tour }) {
       {/* Hero Section with Parallax */}
       <motion.section
         style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative h-[60vh] md:h-[70vh] flex items-end overflow-hidden"
+        className="relative h-[60vh] sm:h-[65vh] md:h-[70vh] flex items-end overflow-hidden"
       >
         {/* Hero Background */}
         <div className="absolute inset-0">
@@ -145,52 +145,52 @@ export default function SightseeingDetailClient({ tour }) {
 
         {/* Hero Content */}
         <div className="relative z-10 w-full bg-gradient-to-t from-black/60 to-transparent">
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold">
+              <div className="flex items-center flex-wrap gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <span className="px-3 sm:px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-semibold">
                   {tour.category}
                 </span>
                 {tour.difficulty && (
-                  <span className="px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold">
+                  <span className="px-3 sm:px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-semibold">
                     {tour.difficulty}
                   </span>
                 )}
                 {tour.reviews && (
-                  <div className="flex items-center gap-1 px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold">
-                    <StarIconSolid className="w-4 h-4 text-yellow-400" />
+                  <div className="flex items-center gap-1 px-3 sm:px-4 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs sm:text-sm font-semibold">
+                    <StarIconSolid className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
                     {tour.reviews.averageRating} ({tour.reviews.totalReviews})
                   </div>
                 )}
               </div>
 
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight">
                 {tour.name}
               </h1>
 
-              <p className="text-lg md:text-xl text-blue-100 max-w-3xl">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 max-w-3xl">
                 {tour.shortDescription}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-6">
+              <div className="mt-4 sm:mt-6 flex flex-wrap gap-3 sm:gap-4 md:gap-6">
                 <div className="flex items-center gap-2 text-white">
-                  <ClockIcon className="w-6 h-6" />
-                  <span className="font-semibold">{tour.duration}</span>
+                  <ClockIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span className="font-semibold text-sm sm:text-base">{tour.duration}</span>
                 </div>
                 {tour.groupSize && (
                   <div className="flex items-center gap-2 text-white">
-                    <UserGroupIcon className="w-6 h-6" />
-                    <span className="font-semibold">{tour.groupSize}</span>
+                    <UserGroupIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="font-semibold text-sm sm:text-base">{tour.groupSize}</span>
                   </div>
                 )}
                 {tour.languages && (
                   <div className="flex items-center gap-2 text-white">
-                    <GlobeAltIcon className="w-6 h-6" />
-                    <span className="font-semibold">{tour.languages.join(', ')}</span>
+                    <GlobeAltIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="font-semibold text-sm sm:text-base">{tour.languages.slice(0, 2).join(', ')}{tour.languages.length > 2 && '...'}</span>
                   </div>
                 )}
               </div>
@@ -201,35 +201,35 @@ export default function SightseeingDetailClient({ tour }) {
 
       {/* Sticky Booking Bar */}
       <div className="sticky top-0 z-40 bg-white shadow-lg border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-6">
-              <div>
-                <div className="flex items-center gap-1 text-3xl font-bold text-indigo-600">
-                  <CurrencyRupeeIcon className="w-8 h-8" />
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center sm:justify-start">
+              <div className="text-center sm:text-left">
+                <div className="flex items-center gap-1 text-2xl sm:text-3xl font-bold text-indigo-600">
+                  <CurrencyRupeeIcon className="w-6 h-6 sm:w-8 sm:h-8" />
                   {tour.price.carRental.toLocaleString()}
                 </div>
-                <div className="text-sm text-gray-500">Per car rental</div>
+                <div className="text-xs sm:text-sm text-gray-500">Per car rental</div>
               </div>
               {tour.price.withGuide && (
-                <div className="border-l pl-6">
-                  <div className="flex items-center gap-1 text-2xl font-bold text-purple-600">
-                    <CurrencyRupeeIcon className="w-7 h-7" />
+                <div className="border-l pl-4 sm:pl-6 text-center sm:text-left">
+                  <div className="flex items-center gap-1 text-xl sm:text-2xl font-bold text-purple-600">
+                    <CurrencyRupeeIcon className="w-5 h-5 sm:w-7 sm:h-7" />
                     {tour.price.withGuide.toLocaleString()}
                   </div>
-                  <div className="text-sm text-gray-500">With guide</div>
+                  <div className="text-xs sm:text-sm text-gray-500">With guide</div>
                 </div>
               )}
             </div>
 
-            <div className="flex gap-3">
-              <a href="tel:+917668570551">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+              <a href="tel:+917668570551" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-gray-100 text-gray-900 rounded-xl font-semibold hover:bg-gray-200 transition-colors flex items-center gap-2"
+                  className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gray-100 text-gray-900 rounded-xl font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
                 >
-                  <PhoneIcon className="w-5 h-5" />
+                  <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   Call Now
                 </motion.button>
               </a>
@@ -237,7 +237,7 @@ export default function SightseeingDetailClient({ tour }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBooking}
-                className="px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
+                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
               >
                 Book via WhatsApp
               </motion.button>
@@ -268,9 +268,9 @@ export default function SightseeingDetailClient({ tour }) {
       </div>
 
       {/* Content Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section className="py-8 sm:py-10 md:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Overview Tab */}
@@ -281,17 +281,17 @@ export default function SightseeingDetailClient({ tour }) {
                   className="space-y-8"
                 >
                   {/* Description */}
-                  <div className="bg-white rounded-2xl p-8 shadow-lg">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">About This Tour</h2>
-                    <p className="text-gray-700 leading-relaxed text-lg">
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">About This Tour</h2>
+                    <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
                       {tour.fullDescription}
                     </p>
                   </div>
 
                   {/* Highlights */}
                   {tour.highlights && (
-                    <div className="bg-white rounded-2xl p-8 shadow-lg">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6">Tour Highlights</h2>
+                    <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Tour Highlights</h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {tour.highlights.map((highlight, index) => (
                           <motion.div
@@ -501,7 +501,7 @@ export default function SightseeingDetailClient({ tour }) {
                     <div className="bg-white rounded-2xl p-8 shadow-lg">
                       <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                         <CheckCircleIcon className="w-8 h-8 text-green-600" />
-                        What's Included
+                        What&apos;s Included
                       </h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {tour.inclusions.map((item, index) => (
@@ -519,7 +519,7 @@ export default function SightseeingDetailClient({ tour }) {
                     <div className="bg-white rounded-2xl p-8 shadow-lg">
                       <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                         <XCircleIcon className="w-8 h-8 text-red-600" />
-                        What's Not Included
+                        What&apos;s Not Included
                       </h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {tour.exclusions.map((item, index) => (

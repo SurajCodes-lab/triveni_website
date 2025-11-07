@@ -96,7 +96,7 @@ export default function SightseeingMainClient({ data }) {
       {/* Hero Section with Parallax */}
       <motion.section
         style={{ opacity, scale }}
-        className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden"
+        className="relative h-[85vh] sm:h-[75vh] md:h-[85vh] flex items-center justify-center overflow-hidden"
       >
         {/* Hero Background Image */}
         <div className="absolute inset-0">
@@ -131,23 +131,23 @@ export default function SightseeingMainClient({ data }) {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, type: "spring" }}
-            className="inline-block mb-6"
+            className="inline-block mb-4 sm:mb-6"
           >
-            <SparklesIcon className="w-16 h-16 mx-auto text-yellow-300" />
+            <SparklesIcon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto text-yellow-300" />
           </motion.div>
 
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2"
           >
-            Discover India's
+            Discover India&apos;s
             <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300">
               Hidden Treasures
             </span>
@@ -157,25 +157,25 @@ export default function SightseeingMainClient({ data }) {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto px-2"
           >
-            Expertly curated sightseeing tours across India's most breathtaking destinations
+            Expertly curated sightseeing tours across India&apos;s most breathtaking destinations
           </motion.p>
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4"
           >
-            <Link href="#tours" className="group">
-              <button className="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+            <Link href="#tours" className="group w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
                 Explore Tours
                 <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
-            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer">
-              <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                 Book via WhatsApp
               </button>
             </a>
@@ -186,7 +186,7 @@ export default function SightseeingMainClient({ data }) {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-12 grid grid-cols-3 gap-6 max-w-2xl mx-auto"
+            className="mt-8 sm:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto px-2"
           >
             {[
               { number: "20+", label: "Destinations" },
@@ -194,8 +194,8 @@ export default function SightseeingMainClient({ data }) {
               { number: "4.8★", label: "Rating" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">{stat.number}</div>
-                <div className="text-sm md:text-base text-blue-100 mt-1">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">{stat.number}</div>
+                <div className="text-xs sm:text-sm md:text-base text-blue-100 mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -219,26 +219,26 @@ export default function SightseeingMainClient({ data }) {
 
       {/* Search and Filter Section */}
       <section className="sticky top-0 z-40 bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div className="container mx-auto px-4 py-3 sm:py-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center justify-between">
             {/* Search Bar */}
-            <div className="relative flex-1 max-w-md w-full">
-              <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <div className="relative flex-1 max-w-full sm:max-w-md w-full">
+              <MagnifyingGlassIcon className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search tours, destinations..."
+                placeholder="Search tours..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none transition-all"
+                className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 outline-none transition-all"
               />
             </div>
 
             {/* Filter Button */}
             <button
               onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors"
+              className="flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors whitespace-nowrap"
             >
-              <FunnelIcon className="w-5 h-5" />
+              <FunnelIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               Filters
             </button>
           </div>
@@ -277,18 +277,18 @@ export default function SightseeingMainClient({ data }) {
 
       {/* Featured Tours Section */}
       {data.featuredTours.length > 0 && (
-        <section id="tours" className="py-20">
-          <div className="container mx-auto px-4">
+        <section id="tours" className="py-12 sm:py-16 md:py-20">
+          <div className="container mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-10 md:mb-12"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
                 Featured Tours
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                 Our most popular and highly-rated sightseeing experiences
               </p>
             </motion.div>
@@ -317,18 +317,18 @@ export default function SightseeingMainClient({ data }) {
       )}
 
       {/* All Tours Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
               All Sightseeing Tours
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               {filteredTours.length} {filteredTours.length === 1 ? 'tour' : 'tours'} available
             </p>
           </motion.div>
@@ -365,20 +365,20 @@ export default function SightseeingMainClient({ data }) {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
               Why Choose Our Tours?
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
                 icon: UserGroupIcon,
@@ -420,24 +420,24 @@ export default function SightseeingMainClient({ data }) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
               Ready to Start Your Adventure?
             </h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-blue-100 max-w-2xl mx-auto px-4">
               Book your perfect sightseeing tour today and create memories that last a lifetime
             </p>
-            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
               >
                 Book Now via WhatsApp
               </motion.button>
