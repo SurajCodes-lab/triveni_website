@@ -143,6 +143,54 @@ export const busRoutes = {
     { name: "Leh Ladakh", type: "Adventure", distance: "1050 km", duration: "20-24 hours" },
     { name: "Ayodhya", type: "Spiritual", distance: "636 km", duration: "10-11 hours" },
   ],
+  Jaipur: [
+    { name: "Delhi", type: "Heritage", distance: "280 km", duration: "5-6 hours" },
+    { name: "Agra", type: "Heritage", distance: "240 km", duration: "4-5 hours" },
+    { name: "Udaipur", type: "Heritage", distance: "395 km", duration: "6-7 hours" },
+    { name: "Jaisalmer", type: "Heritage", distance: "565 km", duration: "9-10 hours" },
+    { name: "Jodhpur", type: "Heritage", distance: "335 km", duration: "5-6 hours" },
+    { name: "Mount Abu", type: "Hill Station", distance: "490 km", duration: "8-9 hours" },
+    { name: "Pushkar", type: "Spiritual", distance: "145 km", duration: "2-3 hours" },
+    { name: "Ranthambore", type: "Wildlife", distance: "180 km", duration: "3-4 hours" },
+    { name: "Ajmer", type: "Spiritual", distance: "135 km", duration: "2-3 hours" },
+    { name: "Bharatpur", type: "Wildlife", distance: "185 km", duration: "3-4 hours" },
+  ],
+  Agra: [
+    { name: "Delhi", type: "Heritage", distance: "233 km", duration: "3-4 hours" },
+    { name: "Jaipur", type: "Heritage", distance: "240 km", duration: "4-5 hours" },
+    { name: "Mathura Vrindavan", type: "Spiritual", distance: "58 km", duration: "1-2 hours" },
+    { name: "Lucknow", type: "Heritage", distance: "335 km", duration: "5-6 hours" },
+    { name: "Ayodhya", type: "Spiritual", distance: "530 km", duration: "8-9 hours" },
+    { name: "Varanasi", type: "Spiritual", distance: "610 km", duration: "10-11 hours" },
+    { name: "Prayagraj", type: "Spiritual", distance: "435 km", duration: "7-8 hours" },
+    { name: "Gaya", type: "Spiritual", distance: "740 km", duration: "12-13 hours" },
+    { name: "Bharatpur", type: "Wildlife", distance: "55 km", duration: "1 hour" },
+    { name: "Fatehpur Sikri", type: "Heritage", distance: "40 km", duration: "1 hour" },
+  ],
+  Haridwar: [
+    { name: "Rishikesh", type: "Spiritual", distance: "25 km", duration: "1 hour" },
+    { name: "Kedarnath", type: "Spiritual", distance: "250 km", duration: "8-9 hours" },
+    { name: "Badrinath", type: "Spiritual", distance: "315 km", duration: "10-11 hours" },
+    { name: "Gangotri", type: "Spiritual", distance: "270 km", duration: "9-10 hours" },
+    { name: "Yamunotri", type: "Spiritual", distance: "230 km", duration: "8-9 hours" },
+    { name: "Mussoorie", type: "Hill Station", distance: "90 km", duration: "2-3 hours" },
+    { name: "Auli", type: "Hill Station", distance: "280 km", duration: "9-10 hours" },
+    { name: "Chopta", type: "Hill Station", distance: "220 km", duration: "7-8 hours" },
+    { name: "Delhi", type: "Spiritual", distance: "220 km", duration: "5-6 hours" },
+    { name: "Dehradun", type: "Hill Station", distance: "55 km", duration: "1-2 hours" },
+  ],
+  Chandigarh: [
+    { name: "Manali", type: "Hill Station", distance: "310 km", duration: "8-9 hours" },
+    { name: "Shimla", type: "Hill Station", distance: "115 km", duration: "3-4 hours" },
+    { name: "Kullu Manali", type: "Hill Station", distance: "310 km", duration: "8-9 hours" },
+    { name: "Kasol", type: "Adventure", distance: "300 km", duration: "8-9 hours" },
+    { name: "Dharamshala", type: "Hill Station", distance: "240 km", duration: "6-7 hours" },
+    { name: "Dalhousie", type: "Hill Station", distance: "320 km", duration: "8-9 hours" },
+    { name: "McLeod Ganj", type: "Hill Station", distance: "245 km", duration: "6-7 hours" },
+    { name: "Spiti Valley", type: "Adventure", distance: "420 km", duration: "12-13 hours" },
+    { name: "Leh Ladakh", type: "Adventure", distance: "725 km", duration: "18-20 hours" },
+    { name: "Amritsar", type: "Spiritual", distance: "230 km", duration: "5-6 hours" },
+  ],
 }
 
 // Detailed route information for Delhi to Agra
@@ -1223,6 +1271,2166 @@ export const delhiToAyodhyaRoute = {
     "Attend evening aarti at Saryu River",
     "Respect religious sentiments",
     "Try local Awadhi cuisine"
+  ]
+};
+
+// Detailed route information for Jaipur to Delhi
+export const jaipurToDelhiRoute = {
+  route: "jaipur-to-delhi",
+  origin: "Jaipur",
+  destination: "Delhi",
+  distance: "280 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 48 (Jaipur-Delhi Highway)",
+  description: "Travel from Jaipur, the Pink City, to Delhi, India's capital city. This well-maintained highway connects two of North India's most important heritage destinations, offering a comfortable journey through Rajasthan's landscape.",
+  highlights: [
+    "Well-maintained NH 48 highway",
+    "Multiple rest stops and dhabas",
+    "Scenic Aravalli range views",
+    "Fast connectivity between capitals",
+    "Cultural transition experience"
+  ],
+  bestTimeToVisit: "October to March (Winter season)",
+  attractions: [
+    {
+      name: "India Gate",
+      timings: "Open 24 hours",
+      entryFee: "Free entry",
+      description: "Iconic war memorial in the heart of Delhi"
+    },
+    {
+      name: "Red Fort",
+      timings: "9:30 AM to 4:30 PM (Closed on Mondays)",
+      entryFee: "₹50 for Indians, ₹600 for foreigners",
+      description: "UNESCO World Heritage Mughal fort"
+    },
+    {
+      name: "Qutub Minar",
+      timings: "7:00 AM to 5:00 PM",
+      entryFee: "₹40 for Indians, ₹600 for foreigners",
+      description: "World's tallest brick minaret"
+    },
+    {
+      name: "Lotus Temple",
+      timings: "9:00 AM to 5:30 PM (Closed on Mondays)",
+      entryFee: "Free entry",
+      description: "Bahai House of Worship"
+    }
+  ],
+  travelTips: [
+    "Start early to avoid toll plaza traffic",
+    "Delhi metro connectivity is excellent",
+    "Carry valid ID for monument entries",
+    "Try Delhi street food at Chandni Chowk",
+    "Book accommodation near metro stations",
+    "Use public transport in Delhi"
+  ]
+};
+
+// Detailed route information for Jaipur to Agra
+export const jaipurToAgraRoute = {
+  route: "jaipur-to-agra",
+  origin: "Jaipur",
+  destination: "Agra",
+  distance: "240 km",
+  duration: "4-5 hours",
+  type: "Heritage",
+  highway: "NH 21 via Bharatpur",
+  description: "Journey from the Pink City to the city of the Taj Mahal. This route connects two UNESCO World Heritage cities, passing through rural Rajasthan and offering glimpses of local life.",
+  highlights: [
+    "Connects two heritage cities",
+    "Passes through Bharatpur region",
+    "Bird sanctuary en route",
+    "Golden Triangle circuit",
+    "Rural Rajasthan experience"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Taj Mahal",
+      timings: "Sunrise to Sunset (Closed on Fridays)",
+      entryFee: "₹50 for Indians, ₹1100 for foreigners",
+      description: "One of the Seven Wonders of the World"
+    },
+    {
+      name: "Agra Fort",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹650 for foreigners",
+      description: "Massive red sandstone fort complex"
+    },
+    {
+      name: "Fatehpur Sikri",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹610 for foreigners",
+      description: "Abandoned Mughal capital"
+    },
+    {
+      name: "Itmad-ud-Daulah",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹30 for Indians, ₹310 for foreigners",
+      description: "Baby Taj - marble mausoleum"
+    }
+  ],
+  travelTips: [
+    "Complete Golden Triangle circuit",
+    "Book Taj Mahal tickets online",
+    "Visit Taj at sunrise for best views",
+    "Avoid Fridays (Taj is closed)",
+    "Try Agra's famous petha sweet",
+    "Hire authorized guides at monuments"
+  ]
+};
+
+// Detailed route information for Jaipur to Udaipur
+export const jaipurToUdaipurRoute = {
+  route: "jaipur-to-udaipur",
+  origin: "Jaipur",
+  destination: "Udaipur",
+  distance: "395 km",
+  duration: "6-7 hours",
+  type: "Heritage",
+  highway: "NH 58 and NH 76",
+  description: "Travel from the Pink City to the City of Lakes. This scenic route takes you through the Aravalli hills, showcasing Rajasthan's diverse landscape and connecting two of its most romantic royal destinations.",
+  highlights: [
+    "Scenic Aravalli mountain route",
+    "Beautiful lakeside destination",
+    "Royal heritage experience",
+    "Romantic palace stays",
+    "Traditional Rajasthani culture"
+  ],
+  bestTimeToVisit: "September to March",
+  attractions: [
+    {
+      name: "City Palace Udaipur",
+      timings: "9:30 AM to 5:30 PM",
+      entryFee: "₹300 for Indians, ₹600 for foreigners",
+      description: "Magnificent palace overlooking Lake Pichola"
+    },
+    {
+      name: "Lake Pichola",
+      timings: "Open all day",
+      entryFee: "Boat ride: ₹400-₹1000",
+      description: "Scenic lake with island palaces"
+    },
+    {
+      name: "Jag Mandir",
+      timings: "10:00 AM to 6:00 PM",
+      entryFee: "₹450 for Indians, ₹900 for foreigners",
+      description: "Island palace on Lake Pichola"
+    },
+    {
+      name: "Saheliyon Ki Bari",
+      timings: "9:00 AM to 7:00 PM",
+      entryFee: "₹25 for Indians, ₹100 for foreigners",
+      description: "Garden of maidens with fountains"
+    }
+  ],
+  travelTips: [
+    "Book hotel near City Palace",
+    "Take sunset boat ride on Lake Pichola",
+    "Visit Monsoon Palace for panoramic views",
+    "Try traditional Rajasthani thali",
+    "Shop at local handicraft markets",
+    "Attend cultural shows at hotels"
+  ]
+};
+
+// Detailed route information for Jaipur to Jaisalmer
+export const jaipurToJaisalmerRoute = {
+  route: "jaipur-to-jaisalmer",
+  origin: "Jaipur",
+  destination: "Jaisalmer",
+  distance: "565 km",
+  duration: "9-10 hours",
+  type: "Heritage",
+  highway: "NH 62 and NH 125",
+  description: "Journey to the Golden City in the heart of the Thar Desert. This long but rewarding route takes you from the Pink City through gradually changing landscapes into the stunning desert terrain.",
+  highlights: [
+    "Desert landscape transformation",
+    "Golden sandstone architecture",
+    "Camel safari destination",
+    "Star-studded desert nights",
+    "Living fort experience"
+  ],
+  bestTimeToVisit: "October to February",
+  attractions: [
+    {
+      name: "Jaisalmer Fort",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹250 for foreigners",
+      description: "Living fort with inhabitants"
+    },
+    {
+      name: "Patwon Ki Haveli",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹200 for foreigners",
+      description: "Five interconnected ornate havelis"
+    },
+    {
+      name: "Sam Sand Dunes",
+      timings: "Best at sunrise and sunset",
+      entryFee: "Camel safari: ₹500-₹1500",
+      description: "Iconic desert dunes experience"
+    },
+    {
+      name: "Gadisar Lake",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Scenic artificial lake with temples"
+    }
+  ],
+  travelTips: [
+    "Prefer overnight journey or break at Jodhpur",
+    "Book desert camp in advance",
+    "Carry sunscreen and light clothes",
+    "Don't miss desert sunset",
+    "Try local Rajasthani cuisine",
+    "Shop for handicrafts in fort"
+  ]
+};
+
+// Detailed route information for Jaipur to Jodhpur
+export const jaipurToJodhpurRoute = {
+  route: "jaipur-to-jodhpur",
+  origin: "Jaipur",
+  destination: "Jodhpur",
+  distance: "335 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 62",
+  description: "Connect two of Rajasthan's most vibrant cities - from the Pink City to the Blue City. Experience the transition through rural Rajasthan and arrive at the magnificent Mehrangarh Fort.",
+  highlights: [
+    "Pink to Blue city journey",
+    "Magnificent fort destination",
+    "Desert landscape views",
+    "Royal heritage sites",
+    "Vibrant local markets"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Mehrangarh Fort",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹100 for Indians, ₹600 for foreigners",
+      description: "Massive fort with museum"
+    },
+    {
+      name: "Jaswant Thada",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹30 for Indians, ₹50 for foreigners",
+      description: "White marble memorial"
+    },
+    {
+      name: "Umaid Bhawan Palace",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹30 for Indians, ₹100 for foreigners",
+      description: "Art Deco palace with museum"
+    },
+    {
+      name: "Clock Tower Market",
+      timings: "10:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Vibrant bazaar for shopping"
+    }
+  ],
+  travelTips: [
+    "Start early to explore Jodhpur same day",
+    "Visit Mehrangarh Fort in morning",
+    "Try famous Makhania lassi",
+    "Explore blue houses in old city",
+    "Shop for handicrafts and textiles",
+    "Book heritage hotel for experience"
+  ]
+};
+
+// Detailed route information for Jaipur to Mount Abu
+export const jaipurToMountAbuRoute = {
+  route: "jaipur-to-mount-abu",
+  origin: "Jaipur",
+  destination: "Mount Abu",
+  distance: "490 km",
+  duration: "8-9 hours",
+  type: "Hill Station",
+  highway: "NH 48 and NH 27",
+  description: "Escape from Jaipur to Rajasthan's only hill station. This journey takes you from the desert landscape to cool mountain air, lush greenery, and the stunning Dilwara Temples.",
+  highlights: [
+    "Desert to hills transformation",
+    "Cool mountain climate",
+    "Stunning Dilwara marble temples",
+    "Nakki Lake attractions",
+    "Scenic viewpoints"
+  ],
+  bestTimeToVisit: "All year round, especially March to June and September to December",
+  attractions: [
+    {
+      name: "Dilwara Temples",
+      timings: "12:00 PM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Exquisite Jain marble temples"
+    },
+    {
+      name: "Nakki Lake",
+      timings: "Open all day",
+      entryFee: "Boating: ₹100-₹300",
+      description: "Sacred artificial lake"
+    },
+    {
+      name: "Sunset Point",
+      timings: "Best at sunset",
+      entryFee: "₹10 per person",
+      description: "Panoramic sunset views"
+    },
+    {
+      name: "Guru Shikhar",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Highest point in Aravalli range"
+    }
+  ],
+  travelTips: [
+    "Carry light woolens",
+    "Remove leather items before temple visit",
+    "Book accommodation in advance",
+    "Try local Gujarati cuisine",
+    "Enjoy boating at Nakki Lake",
+    "Visit sunset point for views"
+  ]
+};
+
+// Detailed route information for Jaipur to Pushkar
+export const jaipurToPushkarRoute = {
+  route: "jaipur-to-pushkar",
+  origin: "Jaipur",
+  destination: "Pushkar",
+  distance: "145 km",
+  duration: "2-3 hours",
+  type: "Spiritual",
+  highway: "NH 58",
+  description: "A short spiritual journey from Jaipur to the holy city of Pushkar, famous for its sacred lake, Brahma Temple, and vibrant camel fair. Perfect for a day trip or weekend getaway.",
+  highlights: [
+    "Sacred Pushkar Lake",
+    "Only Brahma Temple in world",
+    "Famous Pushkar Camel Fair",
+    "Spiritual atmosphere",
+    "Colorful local markets"
+  ],
+  bestTimeToVisit: "October to March, November for Pushkar Fair",
+  attractions: [
+    {
+      name: "Pushkar Lake",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Sacred lake with 52 ghats"
+    },
+    {
+      name: "Brahma Temple",
+      timings: "6:00 AM to 1:30 PM, 3:00 PM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Rare temple dedicated to Lord Brahma"
+    },
+    {
+      name: "Savitri Temple",
+      timings: "5:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Hilltop temple with panoramic views"
+    },
+    {
+      name: "Pushkar Bazaar",
+      timings: "9:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Colorful market for handicrafts"
+    }
+  ],
+  travelTips: [
+    "Perfect for day trip from Jaipur",
+    "Dress modestly for temples",
+    "Take holy dip at Pushkar Lake",
+    "Visit during camel fair (November)",
+    "Try vegetarian Rajasthani food",
+    "Shop for handicrafts and jewelry"
+  ]
+};
+
+// Detailed route information for Jaipur to Ranthambore
+export const jaipurToRanthamboreRoute = {
+  route: "jaipur-to-ranthambore",
+  origin: "Jaipur",
+  destination: "Ranthambore",
+  distance: "180 km",
+  duration: "3-4 hours",
+  type: "Wildlife",
+  highway: "NH 52",
+  description: "Journey from Jaipur to one of India's premier tiger reserves. Ranthambore National Park offers excellent wildlife viewing opportunities with its population of Bengal tigers and diverse fauna.",
+  highlights: [
+    "Premier tiger reserve",
+    "Historic Ranthambore Fort",
+    "Diverse wildlife spotting",
+    "Jungle safari experience",
+    "Ancient ruins in jungle"
+  ],
+  bestTimeToVisit: "October to April (Park closed July-September)",
+  attractions: [
+    {
+      name: "Ranthambore National Park",
+      timings: "6:00 AM to 10:00 AM, 2:30 PM to 6:00 PM",
+      entryFee: "₹1500-₹3500 (including safari)",
+      description: "Famous tiger reserve"
+    },
+    {
+      name: "Ranthambore Fort",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "Included in park entry",
+      description: "UNESCO World Heritage fort in jungle"
+    },
+    {
+      name: "Padam Talao",
+      timings: "During safari hours",
+      entryFee: "Included in safari",
+      description: "Largest lake in park, tiger hotspot"
+    },
+    {
+      name: "Trinetra Ganesh Temple",
+      timings: "6:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Ancient temple inside fort"
+    }
+  ],
+  travelTips: [
+    "Book safari permits in advance online",
+    "Morning safaris better for sightings",
+    "Wear neutral colors",
+    "Carry binoculars and camera",
+    "Stay in jungle resorts",
+    "Winter offers best visibility"
+  ]
+};
+
+// Detailed route information for Jaipur to Ajmer
+export const jaipurToAjmerRoute = {
+  route: "jaipur-to-ajmer",
+  origin: "Jaipur",
+  destination: "Ajmer",
+  distance: "135 km",
+  duration: "2-3 hours",
+  type: "Spiritual",
+  highway: "NH 58",
+  description: "A short pilgrimage from Jaipur to Ajmer, home to the famous Ajmer Sharif Dargah. This spiritual destination attracts millions of devotees from all faiths throughout the year.",
+  highlights: [
+    "Famous Ajmer Sharif Dargah",
+    "Sufi spiritual center",
+    "Ana Sagar Lake",
+    "Historic architecture",
+    "Multi-faith pilgrimage site"
+  ],
+  bestTimeToVisit: "October to March, Urs festival in Rajab month",
+  attractions: [
+    {
+      name: "Ajmer Sharif Dargah",
+      timings: "4:00 AM to 10:00 PM",
+      entryFee: "Free entry",
+      description: "Shrine of Sufi saint Moinuddin Chishti"
+    },
+    {
+      name: "Ana Sagar Lake",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Artificial lake with marble pavilions"
+    },
+    {
+      name: "Adhai Din Ka Jhonpra",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "₹25 for Indians",
+      description: "Indo-Islamic architecture mosque"
+    },
+    {
+      name: "Nareli Jain Temple",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Modern marble Jain temple complex"
+    }
+  ],
+  travelTips: [
+    "Cover head before entering dargah",
+    "Combine with Pushkar visit (11 km away)",
+    "Try traditional sweets at dargah",
+    "Respect religious sentiments",
+    "Visit Ana Sagar in evening",
+    "Shop at Dargah Bazaar"
+  ]
+};
+
+// Detailed route information for Jaipur to Bharatpur
+export const jaipurToBharatpurRoute = {
+  route: "jaipur-to-bharatpur",
+  origin: "Jaipur",
+  destination: "Bharatpur",
+  distance: "185 km",
+  duration: "3-4 hours",
+  type: "Wildlife",
+  highway: "NH 21",
+  description: "Travel from Jaipur to Bharatpur, home to the world-famous Keoladeo National Park. This UNESCO World Heritage site is a paradise for bird watchers and nature enthusiasts.",
+  highlights: [
+    "UNESCO World Heritage bird sanctuary",
+    "400+ bird species",
+    "Wetland ecosystem",
+    "Heritage Bharatpur Fort",
+    "Birdwatching paradise"
+  ],
+  bestTimeToVisit: "October to March (Migratory bird season)",
+  attractions: [
+    {
+      name: "Keoladeo National Park",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹75 for Indians, ₹500 for foreigners",
+      description: "Famous bird sanctuary and wetland"
+    },
+    {
+      name: "Bharatpur Palace & Museum",
+      timings: "10:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians",
+      description: "Historic palace with museum"
+    },
+    {
+      name: "Lohagarh Fort",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹25 for Indians",
+      description: "Iron Fort with massive structure"
+    },
+    {
+      name: "Ganga Mandir",
+      timings: "6:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Beautiful temple with South Indian architecture"
+    }
+  ],
+  travelTips: [
+    "Visit early morning for bird watching",
+    "Hire cycle rickshaw in park",
+    "Carry binoculars and camera",
+    "Winter brings Siberian birds",
+    "Combine with Agra trip (55 km away)",
+    "Book forest lodge inside park"
+  ]
+};
+
+// Detailed route information for Agra to Delhi
+export const agraToDelhiRoute = {
+  route: "agra-to-delhi",
+  origin: "Agra",
+  destination: "Delhi",
+  distance: "233 km",
+  duration: "3-4 hours",
+  type: "Heritage",
+  highway: "Yamuna Expressway",
+  description: "Travel from the city of the Taj Mahal to India's capital. The Yamuna Expressway offers one of the fastest and smoothest highway experiences, connecting two major tourist destinations.",
+  highlights: [
+    "Fastest route via Yamuna Expressway",
+    "6-lane expressway with excellent views",
+    "Smooth and comfortable journey",
+    "Well-maintained rest areas",
+    "Connects two heritage cities"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "India Gate",
+      timings: "Open 24 hours",
+      entryFee: "Free entry",
+      description: "Iconic war memorial"
+    },
+    {
+      name: "Red Fort",
+      timings: "9:30 AM to 4:30 PM (Closed on Mondays)",
+      entryFee: "₹50 for Indians, ₹600 for foreigners",
+      description: "UNESCO World Heritage Mughal fort"
+    },
+    {
+      name: "Qutub Minar",
+      timings: "7:00 AM to 5:00 PM",
+      entryFee: "₹40 for Indians, ₹600 for foreigners",
+      description: "Tallest brick minaret in the world"
+    },
+    {
+      name: "Humayun's Tomb",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹40 for Indians, ₹600 for foreigners",
+      description: "Precursor to Taj Mahal architecture"
+    }
+  ],
+  travelTips: [
+    "Start early to avoid Delhi traffic",
+    "Use Delhi Metro for local travel",
+    "Visit historical monuments in Old Delhi",
+    "Try street food at Chandni Chowk",
+    "Book hotels near metro connectivity",
+    "Carry valid ID for all attractions"
+  ]
+};
+
+// Detailed route information for Agra to Jaipur
+export const agraToJaipurRoute = {
+  route: "agra-to-jaipur",
+  origin: "Agra",
+  destination: "Jaipur",
+  distance: "240 km",
+  duration: "4-5 hours",
+  type: "Heritage",
+  highway: "NH 21 via Bharatpur",
+  description: "Complete the famous Golden Triangle circuit from Agra to Jaipur. This route connects two royal cities, offering views of rural Rajasthan and the opportunity to visit Bharatpur Bird Sanctuary en route.",
+  highlights: [
+    "Golden Triangle circuit completion",
+    "Bharatpur Bird Sanctuary en route",
+    "Rural Rajasthan landscape",
+    "Pink City destination",
+    "Royal heritage experience"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Amber Fort",
+      timings: "8:00 AM to 5:30 PM",
+      entryFee: "₹100 for Indians, ₹500 for foreigners",
+      description: "Magnificent hilltop fort"
+    },
+    {
+      name: "City Palace",
+      timings: "9:00 AM to 7:00 PM",
+      entryFee: "₹200 for Indians, ₹700 for foreigners",
+      description: "Royal residence with museums"
+    },
+    {
+      name: "Hawa Mahal",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians, ₹200 for foreigners",
+      description: "Iconic Palace of Winds"
+    },
+    {
+      name: "Jantar Mantar",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians, ₹200 for foreigners",
+      description: "UNESCO astronomical observatory"
+    }
+  ],
+  travelTips: [
+    "Complete Golden Triangle tour",
+    "Stop at Bharatpur for bird watching",
+    "Try Rajasthani thali in Jaipur",
+    "Shop at Johari Bazaar",
+    "Book heritage hotel for experience",
+    "Visit forts in morning hours"
+  ]
+};
+
+// Detailed route information for Agra to Mathura Vrindavan
+export const agraToMathuraVrindavanRoute = {
+  route: "agra-to-mathura-vrindavan",
+  origin: "Agra",
+  destination: "Mathura Vrindavan",
+  distance: "58 km",
+  duration: "1-2 hours",
+  type: "Spiritual",
+  highway: "NH 44",
+  description: "A short spiritual journey from Agra to the birthplace of Lord Krishna. Mathura and Vrindavan are twin holy cities on the banks of the Yamuna, attracting millions of devotees annually.",
+  highlights: [
+    "Birthplace of Lord Krishna",
+    "Ancient temples and ghats",
+    "Yamuna River aarti",
+    "Spiritual atmosphere",
+    "Perfect day trip from Agra"
+  ],
+  bestTimeToVisit: "October to March, Janmashtami and Holi festivals",
+  attractions: [
+    {
+      name: "Krishna Janmabhoomi Temple",
+      timings: "5:30 AM to 12:00 PM, 4:00 PM to 9:30 PM",
+      entryFee: "Free entry",
+      description: "Birthplace of Lord Krishna"
+    },
+    {
+      name: "Banke Bihari Temple",
+      timings: "7:45 AM to 12:00 PM, 5:30 PM to 9:30 PM",
+      entryFee: "Free entry",
+      description: "Famous Krishna temple in Vrindavan"
+    },
+    {
+      name: "ISKCON Vrindavan",
+      timings: "4:30 AM to 1:00 PM, 4:00 PM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Grand temple with Krishna Balaram deities"
+    },
+    {
+      name: "Vishram Ghat",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Sacred bathing ghat on Yamuna"
+    }
+  ],
+  travelTips: [
+    "Perfect for day trip from Agra",
+    "Dress modestly for temples",
+    "Attend evening aarti at ghats",
+    "Try famous Mathura peda sweets",
+    "Avoid carrying leather items",
+    "Visit during Holi for unique experience"
+  ]
+};
+
+// Detailed route information for Agra to Lucknow
+export const agraToLucknowRoute = {
+  route: "agra-to-lucknow",
+  origin: "Agra",
+  destination: "Lucknow",
+  distance: "335 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 19 (Agra-Lucknow Expressway)",
+  description: "Journey to Lucknow, the City of Nawabs, known for its rich cultural heritage, Mughal and Awadhi architecture, and world-famous cuisine. The expressway ensures a fast and comfortable journey.",
+  highlights: [
+    "Agra-Lucknow Expressway route",
+    "City of Nawabs destination",
+    "Awadhi cuisine capital",
+    "Mughal architecture",
+    "Cultural heritage experience"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Bara Imambara",
+      timings: "6:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians, ₹500 for foreigners",
+      description: "Architectural marvel with Bhool Bhulaiya maze"
+    },
+    {
+      name: "Chota Imambara",
+      timings: "6:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians",
+      description: "Beautiful Indo-Islamic monument"
+    },
+    {
+      name: "Rumi Darwaza",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Iconic gateway of Lucknow"
+    },
+    {
+      name: "British Residency",
+      timings: "9:00 AM to 5:30 PM",
+      entryFee: "₹25 for Indians",
+      description: "Historical ruins from 1857 uprising"
+    }
+  ],
+  travelTips: [
+    "Must try Tunday Kababi",
+    "Visit Hazratganj for shopping",
+    "Experience Lucknowi chikankari",
+    "Try famous Awadhi biryani",
+    "Attend evening sound & light show",
+    "Book hotels in Hazratganj area"
+  ]
+};
+
+// Detailed route information for Agra to Ayodhya
+export const agraToAyodhyaRoute = {
+  route: "agra-to-ayodhya",
+  origin: "Agra",
+  destination: "Ayodhya",
+  distance: "530 km",
+  duration: "8-9 hours",
+  type: "Spiritual",
+  highway: "NH 19 and NH 27",
+  description: "A spiritual pilgrimage from Agra to Ayodhya, the birthplace of Lord Rama. This ancient holy city has been a major pilgrimage destination for Hindus for millennia.",
+  highlights: [
+    "Birthplace of Lord Rama",
+    "Ram Janmabhoomi Temple",
+    "Ancient pilgrimage city",
+    "Saryu River ghats",
+    "Ramayana heritage sites"
+  ],
+  bestTimeToVisit: "October to March, Ram Navami in April",
+  attractions: [
+    {
+      name: "Ram Janmabhoomi Temple",
+      timings: "6:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Sacred birthplace of Lord Rama"
+    },
+    {
+      name: "Hanuman Garhi",
+      timings: "5:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Important Hanuman temple on hilltop"
+    },
+    {
+      name: "Kanak Bhawan",
+      timings: "6:00 AM to 11:30 AM, 3:00 PM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Temple dedicated to Rama and Sita"
+    },
+    {
+      name: "Saryu River Ghat",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Sacred river ghats for holy dip"
+    }
+  ],
+  travelTips: [
+    "Book accommodation in advance",
+    "Carry valid ID for security",
+    "Dress modestly for temples",
+    "Attend evening Saryu aarti",
+    "Try local Awadhi cuisine",
+    "Respect religious sentiments"
+  ]
+};
+
+// Detailed route information for Agra to Varanasi
+export const agraToVaranasiRoute = {
+  route: "agra-to-varanasi",
+  origin: "Agra",
+  destination: "Varanasi",
+  distance: "610 km",
+  duration: "10-11 hours",
+  type: "Spiritual",
+  highway: "NH 19 and NH 2",
+  description: "Journey to Varanasi, one of the world's oldest living cities and the spiritual capital of India. Experience the mesmerizing Ganga Aarti and the ancient ghats along the holy Ganges.",
+  highlights: [
+    "Oldest living city",
+    "Sacred Ganges ghats",
+    "Mesmerizing Ganga Aarti",
+    "Spiritual capital of India",
+    "Kashi Vishwanath Temple"
+  ],
+  bestTimeToVisit: "October to March, Dev Deepawali in November",
+  attractions: [
+    {
+      name: "Kashi Vishwanath Temple",
+      timings: "3:00 AM to 11:00 PM",
+      entryFee: "Free entry",
+      description: "One of 12 Jyotirlingas, most sacred Shiva temple"
+    },
+    {
+      name: "Dashashwamedh Ghat",
+      timings: "Open all day, Aarti at 7:00 PM",
+      entryFee: "Free entry",
+      description: "Main ghat for evening Ganga Aarti"
+    },
+    {
+      name: "Sarnath",
+      timings: "Sunrise to sunset",
+      entryFee: "₹25 for Indians",
+      description: "Buddhist pilgrimage site where Buddha preached"
+    },
+    {
+      name: "Assi Ghat",
+      timings: "Open all day, Morning aarti at 6:00 AM",
+      entryFee: "Free entry",
+      description: "Popular ghat for morning rituals"
+    }
+  ],
+  travelTips: [
+    "Take overnight journey for comfort",
+    "Attend Ganga Aarti at Dashashwamedh",
+    "Take early morning boat ride",
+    "Visit Sarnath Buddhist site",
+    "Try Banarasi paan and lassi",
+    "Book hotel near ghats"
+  ]
+};
+
+// Detailed route information for Agra to Prayagraj
+export const agraToPrayagrajRoute = {
+  route: "agra-to-prayagraj",
+  origin: "Agra",
+  destination: "Prayagraj",
+  distance: "435 km",
+  duration: "7-8 hours",
+  type: "Spiritual",
+  highway: "NH 19 and NH 2",
+  description: "Travel to Prayagraj (formerly Allahabad), the city of Sangam where three holy rivers meet. Famous for the Kumbh Mela, it's one of Hinduism's most sacred pilgrimage destinations.",
+  highlights: [
+    "Triveni Sangam confluence",
+    "Kumbh Mela host city",
+    "Three sacred rivers meet",
+    "Ancient pilgrimage site",
+    "Rich colonial history"
+  ],
+  bestTimeToVisit: "October to March, Kumbh Mela every 12 years, Magh Mela annually",
+  attractions: [
+    {
+      name: "Triveni Sangam",
+      timings: "Open all day",
+      entryFee: "Boat ride: ₹100-₹500",
+      description: "Confluence of Ganga, Yamuna, and Saraswati"
+    },
+    {
+      name: "Allahabad Fort",
+      timings: "9:00 AM to 5:00 PM (Limited access)",
+      entryFee: "₹25 for Indians",
+      description: "Akbar's fort on Sangam banks"
+    },
+    {
+      name: "Anand Bhawan",
+      timings: "9:30 AM to 5:00 PM (Closed on Mondays)",
+      entryFee: "₹50 for Indians",
+      description: "Nehru family ancestral home museum"
+    },
+    {
+      name: "Khusro Bagh",
+      timings: "7:00 AM to 5:30 PM",
+      entryFee: "₹10 per person",
+      description: "Mughal garden with tombs"
+    }
+  ],
+  travelTips: [
+    "Take holy dip at Sangam",
+    "Hire boat for Sangam visit",
+    "Visit during Magh Mela",
+    "Try local chaat and sweets",
+    "Book hotels in Civil Lines",
+    "Respect pilgrimage sentiments"
+  ]
+};
+
+// Detailed route information for Agra to Gaya
+export const agraToGayaRoute = {
+  route: "agra-to-gaya",
+  origin: "Agra",
+  destination: "Gaya",
+  distance: "740 km",
+  duration: "12-13 hours",
+  type: "Spiritual",
+  highway: "NH 19 and NH 83",
+  description: "A long spiritual journey to Gaya, one of the most sacred Buddhist and Hindu pilgrimage sites. Home to the Mahabodhi Temple in Bodh Gaya where Buddha attained enlightenment.",
+  highlights: [
+    "Mahabodhi Temple UNESCO site",
+    "Buddha's enlightenment place",
+    "Buddhist circuit destination",
+    "Hindu pilgrimage for rituals",
+    "Ancient Bodhi Tree"
+  ],
+  bestTimeToVisit: "October to March, Buddha Purnima in May",
+  attractions: [
+    {
+      name: "Mahabodhi Temple",
+      timings: "5:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "UNESCO World Heritage Buddhist temple"
+    },
+    {
+      name: "Bodhi Tree",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Sacred tree where Buddha attained enlightenment"
+    },
+    {
+      name: "Vishnupad Temple",
+      timings: "6:00 AM to 12:00 PM, 5:00 PM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Hindu temple with Vishnu's footprint"
+    },
+    {
+      name: "Great Buddha Statue",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "80-feet tall Buddha statue"
+    }
+  ],
+  travelTips: [
+    "Prefer overnight bus journey",
+    "Combine with Varanasi trip",
+    "Visit early morning for peace",
+    "Dress modestly for temples",
+    "Join meditation sessions",
+    "Try Tibetan monastery food"
+  ]
+};
+
+// Detailed route information for Agra to Bharatpur
+export const agraToBharatpurRoute = {
+  route: "agra-to-bharatpur",
+  origin: "Agra",
+  destination: "Bharatpur",
+  distance: "55 km",
+  duration: "1 hour",
+  type: "Wildlife",
+  highway: "NH 21",
+  description: "A short trip from Agra to the Keoladeo National Park in Bharatpur, a UNESCO World Heritage bird sanctuary. Perfect for nature lovers and bird watchers, especially during the winter migratory season.",
+  highlights: [
+    "UNESCO World Heritage bird sanctuary",
+    "400+ bird species",
+    "Perfect day trip from Agra",
+    "Wetland ecosystem",
+    "Heritage Lohagarh Fort"
+  ],
+  bestTimeToVisit: "October to March (Migratory bird season)",
+  attractions: [
+    {
+      name: "Keoladeo National Park",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹75 for Indians, ₹500 for foreigners",
+      description: "World-famous bird sanctuary"
+    },
+    {
+      name: "Bharatpur Palace Museum",
+      timings: "10:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians",
+      description: "Historic palace with artifacts"
+    },
+    {
+      name: "Lohagarh Fort",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹25 for Indians",
+      description: "Iron Fort with unique architecture"
+    },
+    {
+      name: "Ganga Mandir",
+      timings: "6:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Beautiful South Indian style temple"
+    }
+  ],
+  travelTips: [
+    "Ideal day trip from Agra",
+    "Visit early morning for birds",
+    "Hire cycle rickshaw in park",
+    "Carry binoculars and camera",
+    "Winter best for Siberian birds",
+    "Combine with Agra sightseeing"
+  ]
+};
+
+// Detailed route information for Agra to Fatehpur Sikri
+export const agraToFatehpurSikriRoute = {
+  route: "agra-to-fatehpur-sikri",
+  origin: "Agra",
+  destination: "Fatehpur Sikri",
+  distance: "40 km",
+  duration: "1 hour",
+  type: "Heritage",
+  highway: "State Highway",
+  description: "A short excursion from Agra to Fatehpur Sikri, the abandoned Mughal capital built by Emperor Akbar. This UNESCO World Heritage site showcases stunning Indo-Islamic architecture.",
+  highlights: [
+    "UNESCO World Heritage Site",
+    "Abandoned Mughal capital",
+    "Perfect half-day trip",
+    "Indo-Islamic architecture",
+    "Buland Darwaza gateway"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Buland Darwaza",
+      timings: "Sunrise to sunset",
+      entryFee: "₹50 for Indians, ₹610 for foreigners",
+      description: "Magnificent 54-meter high gateway"
+    },
+    {
+      name: "Jama Masjid",
+      timings: "Sunrise to sunset",
+      entryFee: "Included in entry ticket",
+      description: "Grand mosque within the complex"
+    },
+    {
+      name: "Panch Mahal",
+      timings: "Sunrise to sunset",
+      entryFee: "Included in entry ticket",
+      description: "Five-story palatial structure"
+    },
+    {
+      name: "Tomb of Salim Chishti",
+      timings: "Sunrise to sunset",
+      entryFee: "Free entry",
+      description: "White marble shrine of Sufi saint"
+    }
+  ],
+  travelTips: [
+    "Perfect half-day trip from Agra",
+    "Combine with Agra sightseeing",
+    "Visit in morning hours",
+    "Wear comfortable walking shoes",
+    "Hire authorized guide",
+    "Carry water and sunscreen"
+  ]
+};
+
+// Detailed route information for Haridwar to Rishikesh
+export const haridwarToRishikeshRoute = {
+  route: "haridwar-to-rishikesh",
+  origin: "Haridwar",
+  destination: "Rishikesh",
+  distance: "25 km",
+  duration: "1 hour",
+  type: "Spiritual",
+  highway: "NH 58",
+  description: "A short spiritual journey between two of India's most sacred cities along the Ganges. Haridwar and Rishikesh together form the gateway to the Char Dham pilgrimage and Himalayan adventures.",
+  highlights: [
+    "Twin holy cities on Ganges",
+    "Yoga capital destination",
+    "Adventure sports hub",
+    "River rafting opportunities",
+    "Spiritual and adventure combo"
+  ],
+  bestTimeToVisit: "February to May, September to November",
+  attractions: [
+    {
+      name: "Laxman Jhula",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Iconic suspension bridge over Ganges"
+    },
+    {
+      name: "Ram Jhula",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Another famous suspension bridge"
+    },
+    {
+      name: "Triveni Ghat",
+      timings: "Open all day, Aarti at 6:00 PM",
+      entryFee: "Free entry",
+      description: "Evening Ganga Aarti location"
+    },
+    {
+      name: "Beatles Ashram",
+      timings: "10:00 AM to 4:00 PM",
+      entryFee: "₹150 for Indians, ₹600 for foreigners",
+      description: "Historic ashram with graffiti art"
+    }
+  ],
+  travelTips: [
+    "Combine both cities in one trip",
+    "Try river rafting in Rishikesh",
+    "Attend Ganga Aarti in both cities",
+    "Book yoga classes in advance",
+    "No alcohol or meat in Rishikesh",
+    "Visit riverside cafes near Laxman Jhula"
+  ]
+};
+
+// Detailed route information for Haridwar to Kedarnath
+export const haridwarToKedarnathRoute = {
+  route: "haridwar-to-kedarnath",
+  origin: "Haridwar",
+  destination: "Kedarnath",
+  distance: "250 km",
+  duration: "8-9 hours to Gaurikund",
+  type: "Spiritual",
+  highway: "NH 58 and State Highway",
+  description: "Sacred pilgrimage to Kedarnath, one of the Char Dham and 12 Jyotirlingas. The journey takes you to Gaurikund, from where a 16 km trek or helicopter ride leads to the ancient Kedarnath Temple.",
+  highlights: [
+    "Char Dham pilgrimage destination",
+    "One of 12 Jyotirlingas",
+    "Himalayan temple trek",
+    "Scenic mountain journey",
+    "Sacred Shiva temple"
+  ],
+  bestTimeToVisit: "May to June, September to October (Temple open April-November)",
+  attractions: [
+    {
+      name: "Kedarnath Temple",
+      timings: "4:00 AM to 9:00 PM (during season)",
+      entryFee: "Free entry",
+      description: "Ancient Jyotirlinga temple at 3,583m"
+    },
+    {
+      name: "Gaurikund",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Hot water springs and trek starting point"
+    },
+    {
+      name: "Sonprayag",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Confluence of rivers and vehicle point"
+    },
+    {
+      name: "Triyuginarayan Temple",
+      timings: "6:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Ancient temple with eternal flame"
+    }
+  ],
+  travelTips: [
+    "Book helicopter tickets in advance",
+    "Register online before pilgrimage",
+    "Carry warm clothes and raincoat",
+    "Trek is 16 km from Gaurikund",
+    "Hire ponies or palanquins if needed",
+    "Check weather before travel"
+  ]
+};
+
+// Detailed route information for Haridwar to Badrinath
+export const haridwarToBadrinathRoute = {
+  route: "haridwar-to-badrinath",
+  origin: "Haridwar",
+  destination: "Badrinath",
+  distance: "315 km",
+  duration: "10-11 hours",
+  type: "Spiritual",
+  highway: "NH 58",
+  description: "Pilgrimage to Badrinath, one of the holiest Char Dham sites dedicated to Lord Vishnu. Located at 3,300m in the Garhwal Himalayas, it's accessible via the scenic Badrinath Highway.",
+  highlights: [
+    "Char Dham pilgrimage site",
+    "Sacred Vishnu temple",
+    "Himalayan mountain views",
+    "Alaknanda River route",
+    "Mana village nearby"
+  ],
+  bestTimeToVisit: "May to June, September to October (Temple open April-November)",
+  attractions: [
+    {
+      name: "Badrinath Temple",
+      timings: "4:30 AM to 1:00 PM, 4:00 PM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Sacred Vishnu temple in Himalayas"
+    },
+    {
+      name: "Mana Village",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Last Indian village near Tibet border"
+    },
+    {
+      name: "Tapt Kund",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Natural hot water spring for holy bath"
+    },
+    {
+      name: "Vasudhara Falls",
+      timings: "Daylight hours",
+      entryFee: "Free entry",
+      description: "Sacred waterfall, 6 km trek from Mana"
+    }
+  ],
+  travelTips: [
+    "Acclimatize at intermediate stops",
+    "Carry oxygen cylinders for altitude",
+    "Book accommodation in advance",
+    "Visit Mana village and Vasudhara Falls",
+    "Take holy bath in Tapt Kund",
+    "Check road conditions before travel"
+  ]
+};
+
+// Detailed route information for Haridwar to Gangotri
+export const haridwarToGangotriRoute = {
+  route: "haridwar-to-gangotri",
+  origin: "Haridwar",
+  destination: "Gangotri",
+  distance: "270 km",
+  duration: "9-10 hours",
+  type: "Spiritual",
+  highway: "NH 58 and State Highway",
+  description: "Journey to Gangotri, the origin of the holy Ganges and one of the Char Dham sites. The temple sits at 3,100m, offering breathtaking views and a deeply spiritual experience.",
+  highlights: [
+    "Char Dham pilgrimage",
+    "Origin of River Ganges",
+    "Himalayan valley views",
+    "Gaumukh glacier trek base",
+    "Sacred Bhagirathi River"
+  ],
+  bestTimeToVisit: "May to June, September to October (Temple open April-November)",
+  attractions: [
+    {
+      name: "Gangotri Temple",
+      timings: "6:00 AM to 2:00 PM, 3:00 PM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Temple at origin of Ganges"
+    },
+    {
+      name: "Gaumukh Glacier",
+      timings: "Multi-day trek",
+      entryFee: "Trekking permit required",
+      description: "Source of Ganges, 18 km trek"
+    },
+    {
+      name: "Pandava Gufa",
+      timings: "Daylight hours",
+      entryFee: "Free entry",
+      description: "Cave where Pandavas meditated"
+    },
+    {
+      name: "Surya Kund",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Hot water spring near temple"
+    }
+  ],
+  travelTips: [
+    "Carry warm clothes year-round",
+    "Overnight stay recommended",
+    "Trek to Gaumukh needs permit",
+    "Book hotels in Gangotri or Uttarkashi",
+    "Road may close in winter",
+    "Hire local guides for treks"
+  ]
+};
+
+// Detailed route information for Haridwar to Yamunotri
+export const haridwarToYamunotriRoute = {
+  route: "haridwar-to-yamunotri",
+  origin: "Haridwar",
+  destination: "Yamunotri",
+  distance: "230 km",
+  duration: "8-9 hours to Janki Chatti",
+  type: "Spiritual",
+  highway: "NH 58 and State Highway",
+  description: "Pilgrimage to Yamunotri, the source of River Yamuna and one of Char Dham sites. The journey ends at Janki Chatti, from where a 6 km trek leads to the temple at 3,293m altitude.",
+  highlights: [
+    "Char Dham pilgrimage",
+    "Source of River Yamuna",
+    "Himalayan trek destination",
+    "Hot water springs",
+    "Scenic mountain route"
+  ],
+  bestTimeToVisit: "May to June, September to October (Temple open April-November)",
+  attractions: [
+    {
+      name: "Yamunotri Temple",
+      timings: "6:00 AM to 8:00 PM (during season)",
+      entryFee: "Free entry",
+      description: "Temple at source of Yamuna"
+    },
+    {
+      name: "Surya Kund",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Hot water spring for cooking prasad"
+    },
+    {
+      name: "Divya Shila",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Sacred rock pillar worshipped before temple"
+    },
+    {
+      name: "Janki Chatti",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Base for trek with hot springs"
+    }
+  ],
+  travelTips: [
+    "Trek is 6 km from Janki Chatti",
+    "Ponies and palanquins available",
+    "Carry warm clothes and raincoat",
+    "Book accommodation in advance",
+    "Start trek early morning",
+    "Check weather and road conditions"
+  ]
+};
+
+// Detailed route information for Haridwar to Mussoorie
+export const haridwarToMussoorieRoute = {
+  route: "haridwar-to-mussoorie",
+  origin: "Haridwar",
+  destination: "Mussoorie",
+  distance: "90 km",
+  duration: "2-3 hours",
+  type: "Hill Station",
+  highway: "State Highway via Dehradun",
+  description: "Escape to Mussoorie, the Queen of Hills, from the spiritual city of Haridwar. This short journey takes you from the plains to the cool mountain air and colonial charm of Mussoorie.",
+  highlights: [
+    "Queen of Hills destination",
+    "Colonial-era architecture",
+    "Pleasant mountain climate",
+    "Mall Road shopping",
+    "Scenic viewpoints"
+  ],
+  bestTimeToVisit: "April to June, September to November",
+  attractions: [
+    {
+      name: "Kempty Falls",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "₹50 per person",
+      description: "Popular waterfall with activities"
+    },
+    {
+      name: "Gun Hill",
+      timings: "8:00 AM to 8:00 PM",
+      entryFee: "Cable car: ₹150 return",
+      description: "Second highest point with views"
+    },
+    {
+      name: "Mall Road",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Famous shopping and dining street"
+    },
+    {
+      name: "Lal Tibba",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Highest point with snow views"
+    }
+  ],
+  travelTips: [
+    "Perfect weekend getaway",
+    "Book Mall Road side hotels",
+    "Try momos and local cafes",
+    "Take cable car to Gun Hill",
+    "Avoid monsoon season",
+    "Carry light woolens"
+  ]
+};
+
+// Detailed route information for Haridwar to Auli
+export const haridwarToAuliRoute = {
+  route: "haridwar-to-auli",
+  origin: "Haridwar",
+  destination: "Auli",
+  distance: "280 km",
+  duration: "9-10 hours",
+  type: "Hill Station",
+  highway: "NH 58 and State Highway",
+  description: "Journey to Auli, India's premier skiing destination, offering breathtaking views of Nanda Devi and other Himalayan peaks. A paradise for winter sports enthusiasts and nature lovers.",
+  highlights: [
+    "Premier skiing destination",
+    "Nanda Devi peak views",
+    "Cable car (ropeway) ride",
+    "Winter sports hub",
+    "Himalayan panoramic views"
+  ],
+  bestTimeToVisit: "December to February for skiing, April to June for views",
+  attractions: [
+    {
+      name: "Auli Ski Resort",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "Skiing: ₹500-₹3000",
+      description: "Premier skiing slopes with equipment rental"
+    },
+    {
+      name: "Auli Ropeway",
+      timings: "8:00 AM to 5:00 PM",
+      entryFee: "₹1000 return",
+      description: "Asia's longest cable car from Joshimath"
+    },
+    {
+      name: "Gurso Bugyal",
+      timings: "Daylight hours",
+      entryFee: "Free entry",
+      description: "Alpine meadow, 3 km trek from Auli"
+    },
+    {
+      name: "Chenab Lake",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Artificial lake with snow views"
+    }
+  ],
+  travelTips: [
+    "Book ski equipment in advance",
+    "Carry heavy winter clothes",
+    "Stay at GMVN or private resorts",
+    "Take ropeway from Joshimath",
+    "Visit Joshimath temples",
+    "Check snow conditions before travel"
+  ]
+};
+
+// Detailed route information for Haridwar to Chopta
+export const haridwarToChoptaRoute = {
+  route: "haridwar-to-chopta",
+  origin: "Haridwar",
+  destination: "Chopta",
+  distance: "220 km",
+  duration: "7-8 hours",
+  type: "Hill Station",
+  highway: "NH 58 and State Highway",
+  description: "Discover Chopta, the Mini Switzerland of India, known for its meadows, alpine forests, and as the base for Tungnath temple trek. Perfect for nature lovers and trekkers.",
+  highlights: [
+    "Mini Switzerland of India",
+    "Tungnath temple trek base",
+    "Alpine meadows",
+    "Chandrashila peak access",
+    "Pristine natural beauty"
+  ],
+  bestTimeToVisit: "April to June, September to November",
+  attractions: [
+    {
+      name: "Tungnath Temple",
+      timings: "6:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Highest Shiva temple, 3.5 km trek"
+    },
+    {
+      name: "Chandrashila Peak",
+      timings: "Daylight hours",
+      entryFee: "Free entry",
+      description: "Summit trek from Tungnath, panoramic views"
+    },
+    {
+      name: "Deoria Tal",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Lake with Chaukhamba reflection, 3 km trek"
+    },
+    {
+      name: "Chopta Meadows",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Beautiful alpine meadows for camping"
+    }
+  ],
+  travelTips: [
+    "Carry trekking gear and warm clothes",
+    "Camp in Chopta meadows",
+    "Trek to Tungnath and Chandrashila",
+    "Visit Deoria Tal for sunrise",
+    "Book camps or GMVN lodge",
+    "Limited mobile connectivity"
+  ]
+};
+
+// Detailed route information for Haridwar to Delhi
+export const haridwarToDelhiRoute = {
+  route: "haridwar-to-delhi",
+  origin: "Haridwar",
+  destination: "Delhi",
+  distance: "220 km",
+  duration: "5-6 hours",
+  type: "Spiritual",
+  highway: "NH 334 and NH 58",
+  description: "Return journey from the holy city of Haridwar to Delhi. This well-connected route offers smooth highway travel, making it easy to combine spiritual pilgrimage with capital city exploration.",
+  highlights: [
+    "Well-maintained highways",
+    "Smooth return journey",
+    "Multiple rest stops",
+    "Easy connectivity",
+    "Pilgrimage to capital route"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "India Gate",
+      timings: "Open 24 hours",
+      entryFee: "Free entry",
+      description: "Iconic war memorial"
+    },
+    {
+      name: "Akshardham Temple",
+      timings: "9:30 AM to 6:30 PM (Closed on Mondays)",
+      entryFee: "Free entry",
+      description: "Magnificent Hindu temple complex"
+    },
+    {
+      name: "Lotus Temple",
+      timings: "9:00 AM to 5:30 PM (Closed on Mondays)",
+      entryFee: "Free entry",
+      description: "Bahai House of Worship"
+    },
+    {
+      name: "Connaught Place",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Shopping and dining hub"
+    }
+  ],
+  travelTips: [
+    "Start early to avoid traffic",
+    "Use Delhi Metro for local travel",
+    "Visit Akshardham if time permits",
+    "Book hotels near metro stations",
+    "Try Delhi street food",
+    "Carry valid ID for attractions"
+  ]
+};
+
+// Detailed route information for Haridwar to Dehradun
+export const haridwarToDehradunRoute = {
+  route: "haridwar-to-dehradun",
+  origin: "Haridwar",
+  destination: "Dehradun",
+  distance: "55 km",
+  duration: "1-2 hours",
+  type: "Hill Station",
+  highway: "State Highway",
+  description: "A short scenic drive from Haridwar to Dehradun, the capital of Uttarakhand. Perfect for combining pilgrimage with hill station exploration, and as a gateway to Mussoorie.",
+  highlights: [
+    "Short scenic drive",
+    "Capital city destination",
+    "Pleasant year-round climate",
+    "Gateway to Mussoorie",
+    "Educational and cultural hub"
+  ],
+  bestTimeToVisit: "March to June, September to November",
+  attractions: [
+    {
+      name: "Robber's Cave",
+      timings: "8:00 AM to 5:00 PM",
+      entryFee: "₹25 per person",
+      description: "Natural cave with stream"
+    },
+    {
+      name: "Sahastradhara",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "₹35 for Indians",
+      description: "Therapeutic sulphur springs"
+    },
+    {
+      name: "Mindrolling Monastery",
+      timings: "9:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Beautiful Tibetan Buddhist monastery"
+    },
+    {
+      name: "Forest Research Institute",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹100 for Indians",
+      description: "Colonial architecture with museums"
+    }
+  ],
+  travelTips: [
+    "Ideal for day trip combination",
+    "Use as base for Mussoorie visit",
+    "Try Garhwali cuisine",
+    "Visit Paltan Bazaar for shopping",
+    "Carry light jacket",
+    "Combine with Haridwar pilgrimage"
+  ]
+};
+
+// Detailed route information for Chandigarh to Manali
+export const chandigarhToManaliRoute = {
+  route: "chandigarh-to-manali",
+  origin: "Chandigarh",
+  destination: "Manali",
+  distance: "310 km",
+  duration: "8-9 hours",
+  type: "Hill Station",
+  highway: "NH 205 and NH 3",
+  description: "Journey from the planned city of Chandigarh to the scenic hill station of Manali. This popular route takes you through Kullu Valley, offering breathtaking mountain views and adventure opportunities.",
+  highlights: [
+    "Kullu Valley scenic route",
+    "Snow-capped mountain views",
+    "Adventure sports destination",
+    "Ancient Hadimba Temple",
+    "Solang Valley activities"
+  ],
+  bestTimeToVisit: "October to February for snow, March to June for pleasant weather",
+  attractions: [
+    {
+      name: "Hadimba Temple",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Ancient temple in cedar forest"
+    },
+    {
+      name: "Solang Valley",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "Activities: ₹500-₹3000",
+      description: "Adventure sports and skiing hub"
+    },
+    {
+      name: "Rohtang Pass",
+      timings: "9:00 AM to 5:00 PM (May-November)",
+      entryFee: "NGT permit: ₹500",
+      description: "High mountain pass with snow"
+    },
+    {
+      name: "Old Manali",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Backpacker village with cafes"
+    }
+  ],
+  travelTips: [
+    "Book Rohtang Pass permit in advance",
+    "Carry warm clothes even in summer",
+    "Try river rafting in Kullu",
+    "Stay in Old Manali for cafes",
+    "Pre-book hotels during peak season",
+    "Check road conditions before travel"
+  ]
+};
+
+// Detailed route information for Chandigarh to Shimla
+export const chandigarhToShimlaRoute = {
+  route: "chandigarh-to-shimla",
+  origin: "Chandigarh",
+  destination: "Shimla",
+  distance: "115 km",
+  duration: "3-4 hours",
+  type: "Hill Station",
+  highway: "NH 5",
+  description: "Short and scenic journey from Chandigarh to Shimla, the Queen of Hills. This well-maintained highway offers a comfortable ride to the former summer capital of British India.",
+  highlights: [
+    "Quick weekend getaway",
+    "Colonial architecture",
+    "Famous Mall Road",
+    "Scenic mountain views",
+    "Pleasant climate year-round"
+  ],
+  bestTimeToVisit: "October to February for snow, March to June for pleasant weather",
+  attractions: [
+    {
+      name: "The Ridge",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Open space with mountain views"
+    },
+    {
+      name: "Mall Road",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Famous shopping street"
+    },
+    {
+      name: "Jakhu Temple",
+      timings: "7:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Hilltop temple with giant Hanuman statue"
+    },
+    {
+      name: "Christ Church",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Historic Neo-Gothic church"
+    }
+  ],
+  travelTips: [
+    "Perfect weekend trip from Chandigarh",
+    "Book Mall Road side hotels",
+    "Walk on Ridge and Mall Road",
+    "Try toy train from Kalka",
+    "Carry light woolens",
+    "Avoid long weekends for less crowd"
+  ]
+};
+
+// Detailed route information for Chandigarh to Kullu Manali
+export const chandigarhToKulluManaliRoute = {
+  route: "chandigarh-to-kullu-manali",
+  origin: "Chandigarh",
+  destination: "Kullu Manali",
+  distance: "310 km",
+  duration: "8-9 hours",
+  type: "Hill Station",
+  highway: "NH 205 and NH 3",
+  description: "Explore the beautiful Kullu Valley and Manali together. This route takes you through apple orchards, riverside views, and offers both cultural heritage and adventure activities.",
+  highlights: [
+    "Beautiful Kullu Valley",
+    "Beas River scenic route",
+    "Apple orchards views",
+    "Adventure and heritage combo",
+    "Riverside camping options"
+  ],
+  bestTimeToVisit: "March to June, October to February",
+  attractions: [
+    {
+      name: "Bijli Mahadev Temple",
+      timings: "6:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Temple with valley views, trek required"
+    },
+    {
+      name: "Great Himalayan National Park",
+      timings: "Daylight hours",
+      entryFee: "₹50 for Indians",
+      description: "UNESCO World Heritage biodiversity park"
+    },
+    {
+      name: "Raghunath Temple Kullu",
+      timings: "6:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Lord Rama temple in Kullu town"
+    },
+    {
+      name: "Manikaran Sahib",
+      timings: "4:00 AM to 10:00 PM",
+      entryFee: "Free entry",
+      description: "Gurudwara with hot springs"
+    }
+  ],
+  travelTips: [
+    "Stop at Kullu for local culture",
+    "Visit Manikaran hot springs",
+    "Try river rafting on Beas",
+    "Buy local woolens and shawls",
+    "Taste Kullu trout fish",
+    "Camp by riverside in Kasol"
+  ]
+};
+
+// Detailed route information for Chandigarh to Kasol
+export const chandigarhToKasolRoute = {
+  route: "chandigarh-to-kasol",
+  origin: "Chandigarh",
+  destination: "Kasol",
+  distance: "300 km",
+  duration: "8-9 hours",
+  type: "Adventure",
+  highway: "NH 205 and NH 3",
+  description: "Journey to Kasol, the Mini Israel of India, nestled in Parvati Valley. Popular among backpackers, trekkers, and nature enthusiasts for its serene beauty and hippie culture.",
+  highlights: [
+    "Mini Israel of India",
+    "Parvati Valley destination",
+    "Trekking paradise",
+    "Backpacker haven",
+    "Israeli cafe culture"
+  ],
+  bestTimeToVisit: "April to June, September to November",
+  attractions: [
+    {
+      name: "Chalal Village",
+      timings: "Daylight hours",
+      entryFee: "Free entry",
+      description: "Scenic village, short trek from Kasol"
+    },
+    {
+      name: "Manikaran Sahib",
+      timings: "4:00 AM to 10:00 PM",
+      entryFee: "Free entry",
+      description: "Holy gurudwara with hot springs"
+    },
+    {
+      name: "Kheerganga Trek",
+      timings: "Multi-day trek",
+      entryFee: "₹50 forest entry",
+      description: "Popular trek with hot water springs"
+    },
+    {
+      name: "Tosh Village",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Beautiful mountain village"
+    }
+  ],
+  travelTips: [
+    "Carry cash, limited ATMs",
+    "Book riverside guesthouses",
+    "Try Israeli and local cuisine",
+    "Trek to Kheerganga or Tosh",
+    "Respect local culture",
+    "Pack trekking gear"
+  ]
+};
+
+// Detailed route information for Chandigarh to Dharamshala
+export const chandigarhToDharamshalaRoute = {
+  route: "chandigarh-to-dharamshala",
+  origin: "Chandigarh",
+  destination: "Dharamshala",
+  distance: "240 km",
+  duration: "6-7 hours",
+  type: "Hill Station",
+  highway: "NH 205 and NH 154",
+  description: "Travel to Dharamshala, the residence of His Holiness the Dalai Lama and center of Tibetan culture in India. Nestled in the Dhauladhar ranges, it offers spirituality and natural beauty.",
+  highlights: [
+    "Home of Dalai Lama",
+    "Tibetan culture hub",
+    "Beautiful monasteries",
+    "Dhauladhar mountain views",
+    "Cricket stadium altitude"
+  ],
+  bestTimeToVisit: "March to June, September to November",
+  attractions: [
+    {
+      name: "Dalai Lama Temple",
+      timings: "5:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "His Holiness's residence complex"
+    },
+    {
+      name: "Bhagsu Waterfall",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Popular waterfall near McLeodganj"
+    },
+    {
+      name: "Triund Trek",
+      timings: "Daylight hours",
+      entryFee: "₹50 forest entry",
+      description: "Popular day/overnight trek"
+    },
+    {
+      name: "Norbulingka Institute",
+      timings: "9:00 AM to 5:30 PM",
+      entryFee: "₹50 per person",
+      description: "Tibetan arts and culture center"
+    }
+  ],
+  travelTips: [
+    "Stay in McLeodganj area",
+    "Visit Tibetan Museum",
+    "Try Tibetan momos and thukpa",
+    "Trek to Triund for sunrise",
+    "Respect monastery timings",
+    "Carry warm clothes"
+  ]
+};
+
+// Detailed route information for Chandigarh to Dalhousie
+export const chandigarhToDalhousieRoute = {
+  route: "chandigarh-to-dalhousie",
+  origin: "Chandigarh",
+  destination: "Dalhousie",
+  distance: "320 km",
+  duration: "8-9 hours",
+  type: "Hill Station",
+  highway: "NH 205 and NH 154",
+  description: "Journey to Dalhousie, a charming hill station spread across five hills with colonial architecture and pristine natural beauty. Perfect for a peaceful retreat in the Himalayas.",
+  highlights: [
+    "Colonial-era charm",
+    "Dense pine forests",
+    "Victorian architecture",
+    "Khajjiar Mini Switzerland",
+    "Peaceful environment"
+  ],
+  bestTimeToVisit: "April to June, September to November",
+  attractions: [
+    {
+      name: "Khajjiar",
+      timings: "Open all day",
+      entryFee: "Activities: ₹200-₹500",
+      description: "Mini Switzerland with meadows"
+    },
+    {
+      name: "St. John's Church",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Victorian-era church"
+    },
+    {
+      name: "Dainkund Peak",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Highest peak with views"
+    },
+    {
+      name: "Kalatop Wildlife Sanctuary",
+      timings: "7:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians",
+      description: "Dense forest with wildlife"
+    }
+  ],
+  travelTips: [
+    "Must visit Khajjiar",
+    "Book heritage hotels",
+    "Walk on Mall Road",
+    "Try Himachali cuisine",
+    "Carry warm clothes",
+    "Visit in off-season for peace"
+  ]
+};
+
+// Detailed route information for Chandigarh to McLeod Ganj
+export const chandigarhToMcLeodGanjRoute = {
+  route: "chandigarh-to-mcleod-ganj",
+  origin: "Chandigarh",
+  destination: "McLeod Ganj",
+  distance: "245 km",
+  duration: "6-7 hours",
+  type: "Hill Station",
+  highway: "NH 205 and NH 154",
+  description: "Visit McLeod Ganj, the Little Lhasa of India, known for its Tibetan community, monasteries, and stunning mountain views. A perfect blend of spirituality and natural beauty.",
+  highlights: [
+    "Little Lhasa of India",
+    "Tibetan refugee settlement",
+    "Buddhist monasteries",
+    "Backpacker culture",
+    "Trekking trails"
+  ],
+  bestTimeToVisit: "March to June, September to November",
+  attractions: [
+    {
+      name: "Tsuglagkhang Complex",
+      timings: "5:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Dalai Lama's temple complex"
+    },
+    {
+      name: "Bhagsunag Temple & Waterfall",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Ancient temple with waterfall"
+    },
+    {
+      name: "Triund Trek",
+      timings: "Daylight hours",
+      entryFee: "₹50 forest entry",
+      description: "9 km trek with camping"
+    },
+    {
+      name: "Tibetan Museum",
+      timings: "9:00 AM to 5:00 PM (Closed Sundays)",
+      entryFee: "Free entry",
+      description: "Tibetan history and culture"
+    }
+  ],
+  travelTips: [
+    "Explore Tibetan markets",
+    "Try authentic Tibetan food",
+    "Book trek to Triund in advance",
+    "Visit monasteries early morning",
+    "Attend teachings if available",
+    "Carry rain gear and woolens"
+  ]
+};
+
+// Detailed route information for Chandigarh to Spiti Valley
+export const chandigarhToSpitiValleyRoute = {
+  route: "chandigarh-to-spiti-valley",
+  origin: "Chandigarh",
+  destination: "Spiti Valley",
+  distance: "420 km",
+  duration: "12-13 hours to Kaza",
+  type: "Adventure",
+  highway: "NH 205, NH 5, and State Highway",
+  description: "Adventure to Spiti Valley, the Cold Desert Mountain Valley, known for its stark landscapes, ancient monasteries, and unique Indo-Tibetan culture. A true Himalayan adventure.",
+  highlights: [
+    "Cold desert landscape",
+    "Ancient Buddhist monasteries",
+    "Chandratal Lake access",
+    "Indo-Tibetan culture",
+    "High altitude adventure"
+  ],
+  bestTimeToVisit: "May to October (Roads open)",
+  attractions: [
+    {
+      name: "Key Monastery",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "Free entry, donations welcome",
+      description: "1000-year-old monastery"
+    },
+    {
+      name: "Chandratal Lake",
+      timings: "Open all day",
+      entryFee: "₹50 camping fee",
+      description: "Moon Lake at 4,300m"
+    },
+    {
+      name: "Kibber Village",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "One of highest inhabited villages"
+    },
+    {
+      name: "Pin Valley National Park",
+      timings: "Daylight hours",
+      entryFee: "₹50 for Indians",
+      description: "Snow leopard habitat"
+    }
+  ],
+  travelTips: [
+    "Acclimatize properly at altitude",
+    "Carry warm clothes and medicines",
+    "Book homestays in advance",
+    "Limited mobile connectivity",
+    "Carry sufficient cash",
+    "Respect local culture and monasteries"
+  ]
+};
+
+// Detailed route information for Chandigarh to Leh Ladakh
+export const chandigarhToLehLadakhRoute = {
+  route: "chandigarh-to-leh-ladakh",
+  origin: "Chandigarh",
+  destination: "Leh Ladakh",
+  distance: "725 km",
+  duration: "18-20 hours (2-day journey)",
+  type: "Adventure",
+  highway: "NH 205, NH 3 (Manali-Leh Highway)",
+  description: "Epic journey to Leh Ladakh via the legendary Manali-Leh Highway. This adventure route crosses high mountain passes and offers unparalleled Himalayan landscapes.",
+  highlights: [
+    "Legendary Manali-Leh Highway",
+    "World's highest motorable passes",
+    "Dramatic mountain landscapes",
+    "Buddhist monasteries",
+    "Pangong Lake access"
+  ],
+  bestTimeToVisit: "June to September (Road open)",
+  attractions: [
+    {
+      name: "Pangong Lake",
+      timings: "Open all day",
+      entryFee: "₹300 per person + vehicle charges",
+      description: "Stunning blue high-altitude lake"
+    },
+    {
+      name: "Nubra Valley",
+      timings: "Open all day",
+      entryFee: "₹400 permit per person",
+      description: "Cold desert with sand dunes"
+    },
+    {
+      name: "Khardung La",
+      timings: "7:00 AM to 5:00 PM",
+      entryFee: "Free entry",
+      description: "One of world's highest passes"
+    },
+    {
+      name: "Thiksey Monastery",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "₹30 per person",
+      description: "Beautiful Buddhist monastery"
+    }
+  ],
+  travelTips: [
+    "Mandatory 2-day journey with overnight halt",
+    "Acclimatize in Leh for 48 hours",
+    "Carry oxygen, warm clothes, medicines",
+    "Get Inner Line Permits in advance",
+    "Book accommodations ahead",
+    "Check road conditions and weather"
+  ]
+};
+
+// Detailed route information for Chandigarh to Amritsar
+export const chandigarhToAmritsarRoute = {
+  route: "chandigarh-to-amritsar",
+  origin: "Chandigarh",
+  destination: "Amritsar",
+  distance: "230 km",
+  duration: "5-6 hours",
+  type: "Spiritual",
+  highway: "NH 44",
+  description: "Journey to Amritsar, the spiritual and cultural center of Sikhism, home to the magnificent Golden Temple. A perfect combination of spirituality, history, and Punjabi culture.",
+  highlights: [
+    "Golden Temple visit",
+    "Wagah Border ceremony",
+    "Rich Sikh heritage",
+    "Jallianwala Bagh history",
+    "Authentic Punjabi cuisine"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Golden Temple (Harmandir Sahib)",
+      timings: "Open 24 hours",
+      entryFee: "Free entry",
+      description: "Holiest Sikh shrine, stunning architecture"
+    },
+    {
+      name: "Wagah Border",
+      timings: "Ceremony at 4:15 PM (winter), 5:15 PM (summer)",
+      entryFee: "Free entry",
+      description: "India-Pakistan border ceremony"
+    },
+    {
+      name: "Jallianwala Bagh",
+      timings: "6:30 AM to 7:30 PM",
+      entryFee: "Free entry",
+      description: "Historic memorial garden"
+    },
+    {
+      name: "Partition Museum",
+      timings: "10:00 AM to 6:00 PM (Closed Mondays)",
+      entryFee: "₹20 for Indians",
+      description: "Museum on India-Pakistan partition"
+    }
+  ],
+  travelTips: [
+    "Visit Golden Temple early morning",
+    "Try langar (community kitchen)",
+    "Book Wagah Border seats in advance",
+    "Taste Amritsari kulcha and lassi",
+    "Cover head at Golden Temple",
+    "Shop at Hall Bazaar"
   ]
 };
 
