@@ -146,7 +146,7 @@ const WeddingCarCollection = () => {
           {/* Luxury Cars */}
           <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-pink-100 hover:border-pink-300 transition-all">
             <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="lg:w-1/3">
+              <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
                     src="/images/car/luxury.webp"
@@ -172,7 +172,7 @@ const WeddingCarCollection = () => {
           {/* Premium Sedans */}
           <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-100 hover:border-purple-300 transition-all">
             <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
-              <div className="lg:w-1/3">
+              <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
                     src="/images/car/sedan.webp"
@@ -198,7 +198,7 @@ const WeddingCarCollection = () => {
           {/* Premium SUVs */}
           <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-yellow-100 hover:border-yellow-300 transition-all">
             <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="lg:w-1/3">
+              <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
                     src="/images/car/suv.webp"
@@ -224,7 +224,7 @@ const WeddingCarCollection = () => {
           {/* Tempo Travellers */}
           <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-pink-100 hover:border-pink-300 transition-all">
             <div className="flex flex-col lg:flex-row-reverse gap-8 items-center">
-              <div className="lg:w-1/3">
+              <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
                     src="/images/car/tempo_traveller.webp"
@@ -250,7 +250,7 @@ const WeddingCarCollection = () => {
           {/* Vintage Cars */}
           <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-100 hover:border-purple-300 transition-all">
             <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="lg:w-1/3">
+              <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
                     src="/images/car/luxury.webp"
