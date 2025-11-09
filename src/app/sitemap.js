@@ -5,6 +5,7 @@ import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
 import { tempoRoutes } from "@/utilis/tempoTravellerData";
 import { blogPosts } from "@/utilis/blog";
+import { busRoutes } from "@/utilis/busRoutesData";
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -267,6 +268,28 @@ export default function sitemap() {
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.7,
+      });
+    });
+  });
+
+  // Add Bus Routes Main Page
+  urls.push({
+    url: `${baseUrl}/bus-routes`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  });
+
+  // Add ALL Bus Routes (100+ routes)
+  Object.keys(busRoutes).forEach(originCity => {
+    const routes = busRoutes[originCity];
+    routes.forEach(route => {
+      const routeSlug = `${originCity.toLowerCase().replace(/\s+/g, '-')}-to-${route.name.toLowerCase().replace(/\s+/g, '-')}`;
+      urls.push({
+        url: `${baseUrl}/bus-routes/${routeSlug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
       });
     });
   });

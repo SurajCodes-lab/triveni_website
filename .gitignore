@@ -44,3 +44,14 @@ yarn-error.log*
 # Typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code internal files
+.claude/
+
+# Node modules
+node_modules/
+
+# Generated keyword data (keep only enhanced versions)
+bus-routes-keywords.csv
+bus-routes-keywords-full.json
+bus-routes-keywords-summary.json
