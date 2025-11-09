@@ -142,6 +142,12 @@ export const busRoutes = {
     { name: "Dalhousie", type: "Hill Station", distance: "560 km", duration: "11-12 hours" },
     { name: "Leh Ladakh", type: "Adventure", distance: "1050 km", duration: "20-24 hours" },
     { name: "Ayodhya", type: "Spiritual", distance: "636 km", duration: "10-11 hours" },
+    { name: "Kullu Manali", type: "Hill Station", distance: "540 km", duration: "12-14 hours" },
+    { name: "Bir Billing", type: "Adventure", distance: "475 km", duration: "10-11 hours" },
+    { name: "Solang Valley", type: "Hill Station", distance: "555 km", duration: "13-14 hours" },
+    { name: "Spiti Valley", type: "Adventure", distance: "670 km", duration: "18-20 hours" },
+    { name: "Ranikhet", type: "Hill Station", distance: "360 km", duration: "8-9 hours" },
+    { name: "Amritsar", type: "Spiritual", distance: "450 km", duration: "8-9 hours" },
   ],
   Jaipur: [
     { name: "Delhi", type: "Heritage", distance: "280 km", duration: "5-6 hours" },
@@ -178,6 +184,8 @@ export const busRoutes = {
     { name: "Chopta", type: "Hill Station", distance: "220 km", duration: "7-8 hours" },
     { name: "Delhi", type: "Spiritual", distance: "220 km", duration: "5-6 hours" },
     { name: "Dehradun", type: "Hill Station", distance: "55 km", duration: "1-2 hours" },
+    { name: "Ranikhet", type: "Hill Station", distance: "240 km", duration: "6-7 hours" },
+    { name: "Nainital", type: "Hill Station", distance: "200 km", duration: "5-6 hours" },
   ],
   Chandigarh: [
     { name: "Manali", type: "Hill Station", distance: "310 km", duration: "8-9 hours" },
@@ -190,6 +198,23 @@ export const busRoutes = {
     { name: "Spiti Valley", type: "Adventure", distance: "420 km", duration: "12-13 hours" },
     { name: "Leh Ladakh", type: "Adventure", distance: "725 km", duration: "18-20 hours" },
     { name: "Amritsar", type: "Spiritual", distance: "230 km", duration: "5-6 hours" },
+    { name: "Kaza", type: "Adventure", distance: "420 km", duration: "12-13 hours" },
+  ],
+  Udaipur: [
+    { name: "Jodhpur", type: "Heritage", distance: "260 km", duration: "5-6 hours" },
+    { name: "Jaisalmer", type: "Heritage", distance: "470 km", duration: "8-9 hours" },
+    { name: "Mount Abu", type: "Hill Station", distance: "165 km", duration: "3-4 hours" },
+  ],
+  Jodhpur: [
+    { name: "Jaisalmer", type: "Heritage", distance: "285 km", duration: "5-6 hours" },
+    { name: "Udaipur", type: "Heritage", distance: "260 km", duration: "5-6 hours" },
+    { name: "Mount Abu", type: "Hill Station", distance: "265 km", duration: "5-6 hours" },
+  ],
+  Jaisalmer: [
+    { name: "Bikaner", type: "Heritage", distance: "330 km", duration: "6-7 hours" },
+    { name: "Udaipur", type: "Heritage", distance: "470 km", duration: "8-9 hours" },
+    { name: "Jodhpur", type: "Heritage", distance: "285 km", duration: "5-6 hours" },
+    { name: "Delhi", type: "Heritage", distance: "800 km", duration: "13-14 hours" },
   ],
 }
 
@@ -3429,6 +3454,1032 @@ export const chandigarhToAmritsarRoute = {
     "Try langar (community kitchen)",
     "Book Wagah Border seats in advance",
     "Taste Amritsari kulcha and lassi",
+    "Cover head at Golden Temple",
+    "Shop at Hall Bazaar"
+  ]
+};
+
+// Detailed route information for Udaipur to Jodhpur
+export const udaipurToJodhpurRoute = {
+  route: "udaipur-to-jodhpur",
+  origin: "Udaipur",
+  destination: "Jodhpur",
+  distance: "260 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 62",
+  description: "Journey from the City of Lakes to the Blue City. This scenic Rajasthan route connects two majestic cities, each with its own unique character, royal heritage, and stunning forts.",
+  highlights: [
+    "Two royal cities connection",
+    "Aravalli range views",
+    "Desert landscape transition",
+    "Magnificent forts",
+    "Rich Rajasthani culture"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Mehrangarh Fort",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹100 for Indians, ₹600 for foreigners",
+      description: "One of India's largest forts"
+    },
+    {
+      name: "Jaswant Thada",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹30 for Indians, ₹50 for foreigners",
+      description: "White marble memorial"
+    },
+    {
+      name: "Umaid Bhawan Palace",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹30 for Indians, ₹100 for foreigners",
+      description: "Art Deco palace with museum"
+    },
+    {
+      name: "Clock Tower Market",
+      timings: "10:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Vibrant local market"
+    }
+  ],
+  travelTips: [
+    "Start early from Udaipur",
+    "Visit Mehrangarh Fort first",
+    "Try famous Makhania lassi",
+    "Explore blue houses in old city",
+    "Shop for textiles and handicrafts",
+    "Book heritage hotel in Jodhpur"
+  ]
+};
+
+// Detailed route information for Udaipur to Jaisalmer
+export const udaipurToJaisalmerRoute = {
+  route: "udaipur-to-jaisalmer",
+  origin: "Udaipur",
+  destination: "Jaisalmer",
+  distance: "470 km",
+  duration: "8-9 hours",
+  type: "Heritage",
+  highway: "NH 62 and NH 125",
+  description: "Epic journey from the City of Lakes through the Aravalli hills to the Golden City in the Thar Desert. Experience the dramatic landscape transformation from lakes to desert.",
+  highlights: [
+    "Lakes to desert journey",
+    "Dramatic landscape change",
+    "Golden sandstone architecture",
+    "Desert safari destination",
+    "Living fort experience"
+  ],
+  bestTimeToVisit: "October to February",
+  attractions: [
+    {
+      name: "Jaisalmer Fort",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹250 for foreigners",
+      description: "Living fort with inhabitants"
+    },
+    {
+      name: "Patwon Ki Haveli",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹200 for foreigners",
+      description: "Cluster of five havelis"
+    },
+    {
+      name: "Sam Sand Dunes",
+      timings: "Best at sunrise and sunset",
+      entryFee: "Camel safari: ₹500-₹1500",
+      description: "Desert safari experience"
+    },
+    {
+      name: "Gadisar Lake",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Historic artificial lake"
+    }
+  ],
+  travelTips: [
+    "Break journey at Jodhpur if needed",
+    "Book desert camp in advance",
+    "Carry sunscreen and light clothes",
+    "Don't miss sunset at sand dunes",
+    "Try local Rajasthani food",
+    "Shop for handicrafts in fort"
+  ]
+};
+
+// Detailed route information for Udaipur to Mount Abu
+export const udaipurToMountAbuRoute = {
+  route: "udaipur-to-mount-abu",
+  origin: "Udaipur",
+  destination: "Mount Abu",
+  distance: "165 km",
+  duration: "3-4 hours",
+  type: "Hill Station",
+  highway: "NH 27",
+  description: "Short scenic journey from the City of Lakes to Rajasthan's only hill station. Escape the desert heat and enjoy cool mountain air, lush greenery, and the magnificent Dilwara Temples.",
+  highlights: [
+    "Quick hill station escape",
+    "Cool mountain climate",
+    "Stunning Dilwara Temples",
+    "Nakki Lake boating",
+    "Scenic viewpoints"
+  ],
+  bestTimeToVisit: "All year round, especially March to June",
+  attractions: [
+    {
+      name: "Dilwara Temples",
+      timings: "12:00 PM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Exquisite Jain marble temples"
+    },
+    {
+      name: "Nakki Lake",
+      timings: "Open all day",
+      entryFee: "Boating: ₹100-₹300",
+      description: "Sacred lake with boating"
+    },
+    {
+      name: "Sunset Point",
+      timings: "Best at sunset",
+      entryFee: "₹10 per person",
+      description: "Panoramic sunset views"
+    },
+    {
+      name: "Guru Shikhar",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Highest peak in Aravalli"
+    }
+  ],
+  travelTips: [
+    "Perfect weekend trip from Udaipur",
+    "Carry light woolens",
+    "Remove leather before temple visit",
+    "Try Gujarati cuisine",
+    "Enjoy boating at Nakki Lake",
+    "Visit sunset point for views"
+  ]
+};
+
+// Detailed route information for Jodhpur to Jaisalmer
+export const jodhpurToJaisalmerRoute = {
+  route: "jodhpur-to-jaisalmer",
+  origin: "Jodhpur",
+  destination: "Jaisalmer",
+  distance: "285 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 125",
+  description: "Travel from the Blue City to the Golden City through the heart of the Thar Desert. This route showcases Rajasthan's desert beauty and connects two of its most iconic heritage cities.",
+  highlights: [
+    "Blue to Golden city journey",
+    "Thar Desert landscape",
+    "Desert villages en route",
+    "Camel safari destination",
+    "Sand dunes experience"
+  ],
+  bestTimeToVisit: "October to February",
+  attractions: [
+    {
+      name: "Jaisalmer Fort",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹250 for foreigners",
+      description: "Massive living fort"
+    },
+    {
+      name: "Patwon Ki Haveli",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "₹50 for Indians, ₹200 for foreigners",
+      description: "Five ornate merchant havelis"
+    },
+    {
+      name: "Sam Sand Dunes",
+      timings: "Best at sunrise and sunset",
+      entryFee: "Camel safari: ₹500-₹1500",
+      description: "Iconic desert dunes"
+    },
+    {
+      name: "Salim Singh Ki Haveli",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "₹50 per person",
+      description: "Haveli with unique peacock brackets"
+    }
+  ],
+  travelTips: [
+    "Start early to explore Jaisalmer",
+    "Book desert camp in advance",
+    "Carry water and sunscreen",
+    "Visit sand dunes at sunset",
+    "Try local Rajasthani cuisine",
+    "Explore fort streets on foot"
+  ]
+};
+
+// Detailed route information for Jodhpur to Udaipur
+export const jodhpurToUdaipurRoute = {
+  route: "jodhpur-to-udaipur",
+  origin: "Jodhpur",
+  destination: "Udaipur",
+  distance: "260 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 62",
+  description: "Journey from the Blue City to the City of Lakes. Travel through the Aravalli hills from desert landscapes to the romantic lakeside setting of Udaipur.",
+  highlights: [
+    "Desert to lakes transition",
+    "Aravalli mountain views",
+    "Romantic lakeside destination",
+    "Royal palaces",
+    "Cultural heritage experience"
+  ],
+  bestTimeToVisit: "September to March",
+  attractions: [
+    {
+      name: "City Palace Udaipur",
+      timings: "9:30 AM to 5:30 PM",
+      entryFee: "₹300 for Indians, ₹600 for foreigners",
+      description: "Magnificent palace complex"
+    },
+    {
+      name: "Lake Pichola",
+      timings: "Open all day",
+      entryFee: "Boat ride: ₹400-₹1000",
+      description: "Scenic lake with island palaces"
+    },
+    {
+      name: "Jag Mandir",
+      timings: "10:00 AM to 6:00 PM",
+      entryFee: "₹450 for Indians, ₹900 for foreigners",
+      description: "Island palace on lake"
+    },
+    {
+      name: "Saheliyon Ki Bari",
+      timings: "9:00 AM to 7:00 PM",
+      entryFee: "₹25 for Indians, ₹100 for foreigners",
+      description: "Garden with fountains"
+    }
+  ],
+  travelTips: [
+    "Book hotel near City Palace",
+    "Take sunset boat ride on Lake Pichola",
+    "Visit Monsoon Palace for views",
+    "Try traditional Rajasthani thali",
+    "Shop at local markets",
+    "Attend cultural shows at hotels"
+  ]
+};
+
+// Detailed route information for Jodhpur to Mount Abu
+export const jodhpurToMountAbuRoute = {
+  route: "jodhpur-to-mount-abu",
+  origin: "Jodhpur",
+  destination: "Mount Abu",
+  distance: "265 km",
+  duration: "5-6 hours",
+  type: "Hill Station",
+  highway: "NH 62 and NH 27",
+  description: "Escape from the Blue City to Rajasthan's only hill station. Experience the transition from desert plains to cool mountain air and lush greenery.",
+  highlights: [
+    "Desert to hills escape",
+    "Rajasthan's only hill station",
+    "Dilwara marble temples",
+    "Cool climate retreat",
+    "Scenic mountain views"
+  ],
+  bestTimeToVisit: "All year round, March to June for relief from heat",
+  attractions: [
+    {
+      name: "Dilwara Temples",
+      timings: "12:00 PM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Stunning Jain temples with marble work"
+    },
+    {
+      name: "Nakki Lake",
+      timings: "Open all day",
+      entryFee: "Boating: ₹100-₹300",
+      description: "Artificial lake with boating"
+    },
+    {
+      name: "Sunset Point",
+      timings: "Best at sunset",
+      entryFee: "₹10 per person",
+      description: "Popular viewpoint"
+    },
+    {
+      name: "Guru Shikhar",
+      timings: "6:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Highest point in Aravalli range"
+    }
+  ],
+  travelTips: [
+    "Carry woolens even in summer",
+    "Remove leather items before temple visit",
+    "Book accommodation in advance",
+    "Try Gujarati cuisine",
+    "Enjoy boating at Nakki Lake",
+    "Visit viewpoints for panoramic views"
+  ]
+};
+
+// Detailed route information for Jaisalmer to Bikaner
+export const jaisalmerToBikanerRoute = {
+  route: "jaisalmer-to-bikaner",
+  origin: "Jaisalmer",
+  destination: "Bikaner",
+  distance: "330 km",
+  duration: "6-7 hours",
+  type: "Heritage",
+  highway: "NH 62",
+  description: "Journey through the Thar Desert from the Golden City to Bikaner, known for its magnificent forts, palaces, and the famous Karni Mata Temple. Experience authentic desert Rajasthan.",
+  highlights: [
+    "Desert route through Thar",
+    "Magnificent Junagarh Fort",
+    "Famous Karni Mata Temple",
+    "Camel breeding farm",
+    "Authentic Rajasthani culture"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Junagarh Fort",
+      timings: "10:00 AM to 5:30 PM",
+      entryFee: "₹50 for Indians, ₹300 for foreigners",
+      description: "Unconquered fort with museums"
+    },
+    {
+      name: "Karni Mata Temple (Rat Temple)",
+      timings: "6:00 AM to 10:00 PM",
+      entryFee: "Free entry",
+      description: "Famous temple with sacred rats"
+    },
+    {
+      name: "Lalgarh Palace",
+      timings: "10:00 AM to 5:00 PM",
+      entryFee: "₹50 for Indians, ₹100 for foreigners",
+      description: "Red sandstone palace with museum"
+    },
+    {
+      name: "National Camel Research Centre",
+      timings: "2:00 PM to 5:00 PM",
+      entryFee: "₹30 per person",
+      description: "Asia's largest camel farm"
+    }
+  ],
+  travelTips: [
+    "Visit Karni Mata Temple in morning",
+    "Try famous Bikaneri bhujia",
+    "Explore Junagarh Fort thoroughly",
+    "Visit camel farm in evening",
+    "Shop for leather items",
+    "Taste local Rajasthani snacks"
+  ]
+};
+
+// Detailed route information for Jaisalmer to Udaipur
+export const jaisalmerToUdaipurRoute = {
+  route: "jaisalmer-to-udaipur",
+  origin: "Jaisalmer",
+  destination: "Udaipur",
+  distance: "470 km",
+  duration: "8-9 hours",
+  type: "Heritage",
+  highway: "NH 125 and NH 62",
+  description: "Epic journey from the Golden City in the Thar Desert to the romantic City of Lakes. Experience the dramatic transformation from desert to the Aravalli hills and serene lakes.",
+  highlights: [
+    "Desert to lakes journey",
+    "Dramatic landscape change",
+    "Romantic lakeside city",
+    "Royal palace complex",
+    "Boat ride experiences"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "City Palace Udaipur",
+      timings: "9:30 AM to 5:30 PM",
+      entryFee: "₹300 for Indians, ₹600 for foreigners",
+      description: "Palace complex on Lake Pichola"
+    },
+    {
+      name: "Lake Pichola",
+      timings: "Open all day",
+      entryFee: "Boat ride: ₹400-₹1000",
+      description: "Beautiful lake with palaces"
+    },
+    {
+      name: "Jag Mandir",
+      timings: "10:00 AM to 6:00 PM",
+      entryFee: "₹450 for Indians, ₹900 for foreigners",
+      description: "Island palace destination"
+    },
+    {
+      name: "Fateh Sagar Lake",
+      timings: "Open all day",
+      entryFee: "Boating: ₹200-₹400",
+      description: "Lake with island gardens"
+    }
+  ],
+  travelTips: [
+    "Break journey at Jodhpur",
+    "Book hotel near City Palace",
+    "Take sunset boat ride",
+    "Visit Monsoon Palace",
+    "Try Rajasthani thali",
+    "Shop at local markets"
+  ]
+};
+
+// Detailed route information for Jaisalmer to Jodhpur
+export const jaisalmerToJodhpurRoute = {
+  route: "jaisalmer-to-jodhpur",
+  origin: "Jaisalmer",
+  destination: "Jodhpur",
+  distance: "285 km",
+  duration: "5-6 hours",
+  type: "Heritage",
+  highway: "NH 125",
+  description: "Travel from the Golden City to the Blue City through the Thar Desert. Connect two of Rajasthan's most iconic cities, each with its unique charm and magnificent forts.",
+  highlights: [
+    "Golden to Blue city route",
+    "Thar Desert views",
+    "Majestic Mehrangarh Fort",
+    "Blue houses exploration",
+    "Local market experiences"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Mehrangarh Fort",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹100 for Indians, ₹600 for foreigners",
+      description: "Massive fort with museum"
+    },
+    {
+      name: "Jaswant Thada",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹30 for Indians, ₹50 for foreigners",
+      description: "White marble cenotaph"
+    },
+    {
+      name: "Umaid Bhawan Palace",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "₹30 for Indians, ₹100 for foreigners",
+      description: "Art Deco palace"
+    },
+    {
+      name: "Clock Tower & Sardar Market",
+      timings: "10:00 AM to 9:00 PM",
+      entryFee: "Free entry",
+      description: "Vibrant local bazaar"
+    }
+  ],
+  travelTips: [
+    "Start early from Jaisalmer",
+    "Visit Mehrangarh Fort first",
+    "Try Makhania lassi",
+    "Explore blue houses area",
+    "Shop for textiles",
+    "Book heritage hotel"
+  ]
+};
+
+// Detailed route information for Jaisalmer to Delhi
+export const jaisalmerToDelhiRoute = {
+  route: "jaisalmer-to-delhi",
+  origin: "Jaisalmer",
+  destination: "Delhi",
+  distance: "800 km",
+  duration: "13-14 hours",
+  type: "Heritage",
+  highway: "NH 62 and NH 48",
+  description: "Long journey from the Golden City in the Thar Desert to India's capital. This extensive route rewards you with the transition from desert landscapes to the bustling metropolis.",
+  highlights: [
+    "Desert to capital journey",
+    "Long-distance highway travel",
+    "Landscape transformation",
+    "Capital city destination",
+    "Heritage to modern transition"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "India Gate",
+      timings: "Open 24 hours",
+      entryFee: "Free entry",
+      description: "Iconic war memorial"
+    },
+    {
+      name: "Red Fort",
+      timings: "9:30 AM to 4:30 PM (Closed Mondays)",
+      entryFee: "₹50 for Indians, ₹600 for foreigners",
+      description: "UNESCO World Heritage fort"
+    },
+    {
+      name: "Qutub Minar",
+      timings: "7:00 AM to 5:00 PM",
+      entryFee: "₹40 for Indians, ₹600 for foreigners",
+      description: "Tallest brick minaret"
+    },
+    {
+      name: "Lotus Temple",
+      timings: "9:00 AM to 5:30 PM (Closed Mondays)",
+      entryFee: "Free entry",
+      description: "Bahai House of Worship"
+    }
+  ],
+  travelTips: [
+    "Prefer overnight bus journey",
+    "Carry snacks and water",
+    "Use Delhi Metro for local travel",
+    "Visit monuments in Old Delhi",
+    "Try street food at Chandni Chowk",
+    "Book hotel near metro station"
+  ]
+};
+
+// Detailed route information for Delhi to Kullu Manali
+export const delhiToKulluManaliRoute = {
+  route: "delhi-to-kullu-manali",
+  origin: "Delhi",
+  destination: "Kullu Manali",
+  distance: "540 km",
+  duration: "12-14 hours",
+  type: "Hill Station",
+  highway: "NH 44",
+  description: "Journey from India's capital to the beautiful Kullu Valley and Manali. This scenic route takes you through mountains, apple orchards, and riverside views, offering both cultural heritage and adventure.",
+  highlights: [
+    "Kullu Valley exploration",
+    "Beas River scenic route",
+    "Apple orchards and pine forests",
+    "Adventure sports destination",
+    "Ancient temples and culture"
+  ],
+  bestTimeToVisit: "March to June, October to February",
+  attractions: [
+    {
+      name: "Hadimba Temple",
+      timings: "8:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Ancient temple in cedar forest"
+    },
+    {
+      name: "Bijli Mahadev Temple",
+      timings: "6:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Temple with valley views in Kullu"
+    },
+    {
+      name: "Solang Valley",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "Activities: ₹500-₹3000",
+      description: "Adventure sports hub"
+    },
+    {
+      name: "Manikaran Sahib",
+      timings: "4:00 AM to 10:00 PM",
+      entryFee: "Free entry",
+      description: "Holy gurudwara with hot springs"
+    }
+  ],
+  travelTips: [
+    "Take overnight bus for comfort",
+    "Stop at Kullu for local culture",
+    "Visit Manikaran hot springs",
+    "Try river rafting on Beas",
+    "Buy local woolens and shawls",
+    "Pre-book Rohtang Pass permit"
+  ]
+};
+
+// Detailed route information for Delhi to Bir Billing
+export const delhiToBirBillingRoute = {
+  route: "delhi-to-bir-billing",
+  origin: "Delhi",
+  destination: "Bir Billing",
+  distance: "475 km",
+  duration: "10-11 hours",
+  type: "Adventure",
+  highway: "NH 44 and NH 154",
+  description: "Adventure to Bir Billing, the paragliding capital of India. Located in the Kangra Valley, this destination offers world-class paragliding opportunities and serene Tibetan culture.",
+  highlights: [
+    "Paragliding capital of India",
+    "World-class paragliding site",
+    "Tibetan monasteries",
+    "Scenic Kangra Valley",
+    "Adventure sports hub"
+  ],
+  bestTimeToVisit: "September to November, March to May for paragliding",
+  attractions: [
+    {
+      name: "Billing Paragliding Site",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "Paragliding: ₹2500-₹3500",
+      description: "World's second-best paragliding site"
+    },
+    {
+      name: "Chokling Monastery",
+      timings: "6:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Beautiful Tibetan monastery"
+    },
+    {
+      name: "Deer Park Institute",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "Free entry",
+      description: "Buddhist study and meditation center"
+    },
+    {
+      name: "Bir Tea Factory",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "Free entry",
+      description: "Learn about tea processing"
+    }
+  ],
+  travelTips: [
+    "Book paragliding in advance",
+    "Carry warm clothes and trekking shoes",
+    "Stay in Bir village homestays",
+    "Visit cafes with mountain views",
+    "Try Tibetan cuisine",
+    "Check weather for paragliding"
+  ]
+};
+
+// Detailed route information for Delhi to Solang Valley
+export const delhiToSolangValleyRoute = {
+  route: "delhi-to-solang-valley",
+  origin: "Delhi",
+  destination: "Solang Valley",
+  distance: "555 km",
+  duration: "13-14 hours",
+  type: "Hill Station",
+  highway: "NH 44",
+  description: "Journey to Solang Valley near Manali, a paradise for adventure enthusiasts. Famous for skiing, paragliding, and zorbing, it offers year-round activities and stunning Himalayan views.",
+  highlights: [
+    "Adventure sports paradise",
+    "Skiing in winter",
+    "Paragliding and zorbing",
+    "Cable car rides",
+    "Snow-capped mountain views"
+  ],
+  bestTimeToVisit: "December to February for skiing, March to June for activities",
+  attractions: [
+    {
+      name: "Solang Valley Ski Resort",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "Activities: ₹500-₹3000",
+      description: "Skiing and snow activities"
+    },
+    {
+      name: "Solang Ropeway",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "₹700-₹1000 return",
+      description: "Cable car to mountain top"
+    },
+    {
+      name: "Anjani Mahadev Temple",
+      timings: "6:00 AM to 7:00 PM",
+      entryFee: "Free entry",
+      description: "Trek to hilltop temple"
+    },
+    {
+      name: "Adventure Activity Zone",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "Per activity: ₹300-₹1500",
+      description: "Paragliding, zorbing, ATVs"
+    }
+  ],
+  travelTips: [
+    "Take overnight bus to Manali",
+    "Book ski equipment in advance",
+    "Carry heavy winter clothes",
+    "Try multiple adventure activities",
+    "Visit Rohtang Pass if open",
+    "Stay in Manali for accommodation"
+  ]
+};
+
+// Detailed route information for Delhi to Spiti Valley
+export const delhiToSpitiValleyRoute = {
+  route: "delhi-to-spiti-valley",
+  origin: "Delhi",
+  destination: "Spiti Valley",
+  distance: "670 km",
+  duration: "18-20 hours to Kaza",
+  type: "Adventure",
+  highway: "NH 44, NH 5, and State Highway",
+  description: "Epic adventure to Spiti Valley, the Cold Desert Mountain Valley. Known for its stark landscapes, ancient monasteries, and unique Indo-Tibetan culture at high altitude.",
+  highlights: [
+    "Cold desert landscape",
+    "Ancient Buddhist monasteries",
+    "High altitude villages",
+    "Chandratal Lake access",
+    "Indo-Tibetan culture"
+  ],
+  bestTimeToVisit: "May to October (Roads open)",
+  attractions: [
+    {
+      name: "Key Monastery",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "Free entry, donations welcome",
+      description: "1000-year-old monastery"
+    },
+    {
+      name: "Chandratal Lake",
+      timings: "Open all day",
+      entryFee: "₹50 camping fee",
+      description: "Moon Lake at 4,300m altitude"
+    },
+    {
+      name: "Kibber Village",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "One of highest inhabited villages"
+    },
+    {
+      name: "Pin Valley National Park",
+      timings: "Daylight hours",
+      entryFee: "₹50 for Indians",
+      description: "Snow leopard habitat"
+    }
+  ],
+  travelTips: [
+    "Mandatory 2-day journey",
+    "Acclimatize properly at altitude",
+    "Carry warm clothes and medicines",
+    "Book homestays in advance",
+    "Limited mobile connectivity",
+    "Respect local monasteries"
+  ]
+};
+
+// Detailed route information for Chandigarh to Kaza
+export const chandigarhToKazaRoute = {
+  route: "chandigarh-to-kaza",
+  origin: "Chandigarh",
+  destination: "Kaza",
+  distance: "420 km",
+  duration: "12-13 hours",
+  type: "Adventure",
+  highway: "NH 205, NH 5, and State Highway",
+  description: "Adventure journey from Chandigarh to Kaza, the administrative center of Spiti Valley. This high-altitude destination offers ancient monasteries, stark landscapes, and unique Tibetan culture.",
+  highlights: [
+    "Spiti Valley headquarters",
+    "Ancient Buddhist monasteries",
+    "High altitude desert",
+    "Fossil discoveries",
+    "Traditional Spiti culture"
+  ],
+  bestTimeToVisit: "May to October (Roads open)",
+  attractions: [
+    {
+      name: "Key Monastery",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "Free entry, donations welcome",
+      description: "Largest monastery in Spiti"
+    },
+    {
+      name: "Komic Village",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Highest motorable village with monastery"
+    },
+    {
+      name: "Langza Buddha Statue",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Village with fossil hunting"
+    },
+    {
+      name: "Hikkim Post Office",
+      timings: "9:00 AM to 5:00 PM",
+      entryFee: "Free entry",
+      description: "World's highest post office"
+    }
+  ],
+  travelTips: [
+    "Acclimatize before high altitude",
+    "Carry oxygen and medicines",
+    "Book homestays in villages",
+    "Minimal mobile connectivity",
+    "Carry sufficient cash",
+    "Respect Buddhist culture"
+  ]
+};
+
+// Detailed route information for Haridwar to Ranikhet
+export const haridwarToRanikhetRoute = {
+  route: "haridwar-to-ranikhet",
+  origin: "Haridwar",
+  destination: "Ranikhet",
+  distance: "240 km",
+  duration: "6-7 hours",
+  type: "Hill Station",
+  highway: "NH 109 and State Highway",
+  description: "Journey from the holy city to the peaceful cantonment town of Ranikhet. Known for its pine forests, golf course, and Himalayan views, it offers a serene escape from tourist crowds.",
+  highlights: [
+    "Peaceful cantonment town",
+    "Dense pine and oak forests",
+    "Himalayan peak views",
+    "Kumaon Regiment center",
+    "Golf course at altitude"
+  ],
+  bestTimeToVisit: "All year round, especially April to June and September to November",
+  attractions: [
+    {
+      name: "Chaubatia Gardens",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "₹50 per person",
+      description: "Apple orchards with mountain views"
+    },
+    {
+      name: "Jhula Devi Temple",
+      timings: "6:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Ancient temple with bells"
+    },
+    {
+      name: "Ranikhet Golf Course",
+      timings: "7:00 AM to 6:00 PM",
+      entryFee: "₹500-₹1000",
+      description: "Asia's highest golf course"
+    },
+    {
+      name: "Kumaon Regimental Museum",
+      timings: "9:00 AM to 5:00 PM (Closed Mondays)",
+      entryFee: "₹20 per person",
+      description: "Military heritage museum"
+    }
+  ],
+  travelTips: [
+    "Peaceful alternative to crowded hill stations",
+    "Walk through pine forests",
+    "Visit apple orchards in season",
+    "Carry warm clothes",
+    "Limited commercialization",
+    "Respect cantonment rules"
+  ]
+};
+
+// Detailed route information for Haridwar to Nainital
+export const haridwarToNainitalRoute = {
+  route: "haridwar-to-nainital",
+  origin: "Haridwar",
+  destination: "Nainital",
+  distance: "200 km",
+  duration: "5-6 hours",
+  type: "Hill Station",
+  highway: "NH 109",
+  description: "Travel from the spiritual city to the Lake District of India. Nainital's beautiful Naini Lake, pleasant weather, and Victorian-era charm make it a perfect hill station retreat.",
+  highlights: [
+    "Beautiful Naini Lake",
+    "Lake District of India",
+    "Boating activities",
+    "Scenic viewpoints",
+    "Colonial architecture"
+  ],
+  bestTimeToVisit: "March to June, September to November",
+  attractions: [
+    {
+      name: "Naini Lake",
+      timings: "Open all day",
+      entryFee: "Boating: ₹150-₹300",
+      description: "Pear-shaped lake in town center"
+    },
+    {
+      name: "Naina Devi Temple",
+      timings: "6:00 AM to 10:00 PM",
+      entryFee: "Free entry",
+      description: "Sacred temple on lake shore"
+    },
+    {
+      name: "Snow View Point",
+      timings: "10:00 AM to 5:00 PM",
+      entryFee: "Cable car: ₹300 return",
+      description: "Panoramic Himalayan views"
+    },
+    {
+      name: "Tiffin Top",
+      timings: "Open all day",
+      entryFee: "Free entry",
+      description: "Scenic viewpoint with trek"
+    }
+  ],
+  travelTips: [
+    "Pre-book hotels near Mall Road",
+    "Enjoy boating in Naini Lake",
+    "Walk around the lake",
+    "Try local Kumaoni cuisine",
+    "Visit nearby Bhimtal",
+    "Carry warm clothes"
+  ]
+};
+
+// Detailed route information for Delhi to Ranikhet
+export const delhiToRanikhetRoute = {
+  route: "delhi-to-ranikhet",
+  origin: "Delhi",
+  destination: "Ranikhet",
+  distance: "360 km",
+  duration: "8-9 hours",
+  type: "Hill Station",
+  highway: "NH 9 and NH 109",
+  description: "Journey to Ranikhet, a serene cantonment town known for its tranquility, dense forests, and panoramic Himalayan views. Perfect for those seeking peace away from commercialized tourist spots.",
+  highlights: [
+    "Serene cantonment town",
+    "Pine and deodar forests",
+    "Himalayan panoramic views",
+    "Golf course destination",
+    "Peaceful environment"
+  ],
+  bestTimeToVisit: "All year round, April to June and September to November ideal",
+  attractions: [
+    {
+      name: "Chaubatia Gardens",
+      timings: "7:00 AM to 7:00 PM",
+      entryFee: "₹50 per person",
+      description: "Fruit orchards with views"
+    },
+    {
+      name: "Jhula Devi Temple",
+      timings: "6:00 AM to 8:00 PM",
+      entryFee: "Free entry",
+      description: "Temple with thousands of bells"
+    },
+    {
+      name: "Ranikhet Golf Course",
+      timings: "7:00 AM to 6:00 PM",
+      entryFee: "₹500-₹1000",
+      description: "High-altitude golf course"
+    },
+    {
+      name: "Kumaon Regimental Museum",
+      timings: "9:00 AM to 5:00 PM (Closed Mondays)",
+      entryFee: "₹20 per person",
+      description: "Military history museum"
+    }
+  ],
+  travelTips: [
+    "Book cantonment area hotels",
+    "Walk through forest trails",
+    "Visit apple orchards",
+    "Carry woolens year-round",
+    "Respect military area rules",
+    "Limited nightlife and commercialization"
+  ]
+};
+
+// Detailed route information for Delhi to Amritsar
+export const delhiToAmritsarRoute = {
+  route: "delhi-to-amritsar",
+  origin: "Delhi",
+  destination: "Amritsar",
+  distance: "450 km",
+  duration: "8-9 hours",
+  type: "Spiritual",
+  highway: "NH 44",
+  description: "Journey to Amritsar, the spiritual and cultural heart of Sikhism. Home to the magnificent Golden Temple, this city offers rich history, the Wagah Border ceremony, and authentic Punjabi culture.",
+  highlights: [
+    "Sacred Golden Temple",
+    "Wagah Border ceremony",
+    "Jallianwala Bagh history",
+    "Rich Punjabi culture",
+    "Authentic Punjabi cuisine"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "Golden Temple (Harmandir Sahib)",
+      timings: "Open 24 hours",
+      entryFee: "Free entry",
+      description: "Holiest Sikh shrine"
+    },
+    {
+      name: "Wagah Border",
+      timings: "Ceremony at 4:15 PM (winter), 5:15 PM (summer)",
+      entryFee: "Free entry",
+      description: "India-Pakistan border retreat ceremony"
+    },
+    {
+      name: "Jallianwala Bagh",
+      timings: "6:30 AM to 7:30 PM",
+      entryFee: "Free entry",
+      description: "Historic memorial garden"
+    },
+    {
+      name: "Partition Museum",
+      timings: "10:00 AM to 6:00 PM (Closed Mondays)",
+      entryFee: "₹20 for Indians",
+      description: "Museum on 1947 partition"
+    }
+  ],
+  travelTips: [
+    "Visit Golden Temple early morning",
+    "Experience community langar",
+    "Book Wagah Border seats online",
+    "Try Amritsari kulcha and lassi",
     "Cover head at Golden Temple",
     "Shop at Hall Bazaar"
   ]
