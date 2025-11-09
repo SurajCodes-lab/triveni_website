@@ -279,19 +279,20 @@ const Header = () => {
                 Contact
               </Link>
               <Link
-                href="/car-rental"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
-                onClick={() => { handleNavClick('Rent Car', '/car-rental', 'mobile_menu'); toggleMenu(); }}
-              >
-                Rent Car
-              </Link>
-              <Link
                 href="/bus-routes"
                 className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
                 onClick={() => { handleNavClick('Bus Routes', '/bus-routes', 'mobile_menu'); toggleMenu(); }}
               >
                 Bus Routes
               </Link>
+              <Link
+                href="/tour-guide"
+                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                onClick={() => { handleNavClick('Tour Guide', '/tour-guide', 'mobile_menu'); toggleMenu(); }}
+              >
+                Tour Guide
+              </Link>
+              
 
               {/* Vehicles Section */}
               
