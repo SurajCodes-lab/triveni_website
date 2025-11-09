@@ -216,6 +216,9 @@ export const busRoutes = {
     { name: "Jodhpur", type: "Heritage", distance: "285 km", duration: "5-6 hours" },
     { name: "Delhi", type: "Heritage", distance: "800 km", duration: "13-14 hours" },
   ],
+  Ahmedabad: [
+    { name: "Udaipur", type: "Heritage", distance: "260 km", duration: "4-5 hours" },
+  ],
 }
 
 // Detailed route information for Delhi to Agra
@@ -4482,6 +4485,60 @@ export const delhiToAmritsarRoute = {
     "Try Amritsari kulcha and lassi",
     "Cover head at Golden Temple",
     "Shop at Hall Bazaar"
+  ]
+};
+
+// Detailed route information for Ahmedabad to Udaipur
+export const ahmedabadToUdaipurRoute = {
+  route: "ahmedabad-to-udaipur",
+  origin: "Ahmedabad",
+  destination: "Udaipur",
+  distance: "260 km",
+  duration: "4-5 hours",
+  type: "Heritage",
+  highway: "NH 48",
+  description: "Travel from Gujarat's vibrant commercial capital to Rajasthan's romantic City of Lakes. This scenic journey takes you through the Aravalli hills, connecting two culturally rich cities with magnificent palaces, lakes, and heritage sites.",
+  highlights: [
+    "Well-maintained NH 48 highway",
+    "Scenic Aravalli mountain views",
+    "Cultural transition from Gujarat to Rajasthan",
+    "City of Lakes destination",
+    "Royal Mewar heritage"
+  ],
+  bestTimeToVisit: "October to March",
+  attractions: [
+    {
+      name: "City Palace",
+      timings: "9:30 AM to 5:30 PM",
+      entryFee: "₹300 for Indians, ₹600 for foreigners",
+      description: "Stunning palace complex overlooking Lake Pichola"
+    },
+    {
+      name: "Lake Pichola",
+      timings: "Boat rides 10:00 AM to 5:00 PM",
+      entryFee: "₹400-₹1,500 for boat rides",
+      description: "Iconic lake with Jag Mandir and Lake Palace"
+    },
+    {
+      name: "Jag Mandir Palace",
+      timings: "10:00 AM to 6:00 PM",
+      entryFee: "₹350 for Indians, ₹750 for foreigners",
+      description: "Beautiful island palace on Lake Pichola"
+    },
+    {
+      name: "Sajjangarh Palace (Monsoon Palace)",
+      timings: "9:00 AM to 6:00 PM",
+      entryFee: "₹80 for Indians, ₹300 for foreigners",
+      description: "Hilltop palace with panoramic city views"
+    }
+  ],
+  travelTips: [
+    "Start early morning to reach Udaipur by afternoon",
+    "Carry water and snacks for the journey",
+    "Best sunset views from Sajjangarh Palace",
+    "Book boat rides in advance during peak season",
+    "Try traditional Rajasthani thali in Udaipur",
+    "Visit lakeside restaurants for romantic dining"
   ]
 };
 
