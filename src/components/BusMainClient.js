@@ -133,7 +133,7 @@ export default function BusMainClient({ data }) {
         {/* Hero Section - Ultra Modern */}
         <motion.section
           ref={heroRef}
-          className="relative h-screen flex items-center justify-center overflow-hidden"
+          className="relative py-12 md:py-16 flex items-center justify-center overflow-hidden"
         >
           {/* Animated Background with Parallax */}
           <div className="absolute inset-0 hero-image">
@@ -263,7 +263,7 @@ export default function BusMainClient({ data }) {
         </motion.section>
 
         {/* Fleet Section - 3D Cards */}
-        <section ref={fleetSectionRef} className="py-32 bg-white relative overflow-hidden">
+        <section ref={fleetSectionRef} className="pt-12 pb-32 bg-white relative overflow-hidden">
 
           {/* Background Decoration */}
           <div className="absolute top-0 left-0 w-full h-full opacity-5">

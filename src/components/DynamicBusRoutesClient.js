@@ -28,7 +28,7 @@ export default function DynamicBusRoutesClient({ data }) {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative min-h-[80vh] md:h-screen flex items-center justify-center overflow-hidden"
+        className="relative py-12 md:py-16 flex items-center justify-center overflow-hidden"
       >
         {/* Animated Background with Parallax */}
         <div className="absolute inset-0">
@@ -197,7 +197,7 @@ export default function DynamicBusRoutesClient({ data }) {
       </motion.section>
 
       {/* Available Buses Section */}
-      <div className="py-12 md:py-20 bg-gray-50">
+      <div className="pt-8 md:pt-12 pb-12 md:pb-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <div className="inline-flex items-center bg-[#FACF2D]/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-black font-semibold text-xs md:text-sm mb-3 md:mb-4">
