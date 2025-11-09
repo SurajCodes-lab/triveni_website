@@ -176,11 +176,11 @@ const Header = () => {
                Tempo Traveller
               </Link>
               <Link
-                href="/car-rental"
+                href="/bus-routes"
                 className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-                onClick={() => handleNavClick('Rent Car', '/car-rental')}
+                onClick={() => handleNavClick('Bus Routes', '/bus-routes')}
               >
-                Rent Car
+                Bus
               </Link>
               <Link
                 href="/tour-guide"
@@ -214,13 +214,7 @@ const Header = () => {
                   +91 76685 70551
                 </div>
               </a>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="bg-black text-white rounded-full px-6 py-2.5 text-sm hover:bg-gray-800 transition-all duration-300 min-h-[44px] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#FACF2D]"
-                aria-label="Login to your account"
-              >
-                Login
-              </button>
+              
             </div>
           </div>
         </div>
@@ -292,38 +286,15 @@ const Header = () => {
                 Rent Car
               </Link>
               <Link
-                href="/tour-guide"
+                href="/bus-routes"
                 className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
-                onClick={() => { handleNavClick('Tour Guide', '/tour-guide', 'mobile_menu'); toggleMenu(); }}
+                onClick={() => { handleNavClick('Bus Routes', '/bus-routes', 'mobile_menu'); toggleMenu(); }}
               >
-                Tour Guide
+                Bus Routes
               </Link>
 
               {/* Vehicles Section */}
-              <div className="py-2 pt-3 border-t border-gray-200">
-                <h3 className="text-xs font-bold text-gray-600 uppercase tracking-wider px-3 mb-1">Vehicles</h3>
-                <div className="space-y-1">
-                  {vehiclesServices.map((vehicle) => (
-                    <Link
-                      key={vehicle.type}
-                      href={`/vehicle-details/${vehicle.type
-                        .toLowerCase()
-                        .replace(/ /g, "-")}`}
-                      className="text-gray-700 hover:bg-yellow-100 hover:text-black pl-5 text-sm py-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
-                      onClick={() => {
-                        handleNavClick(
-                          vehicle.type,
-                          `/vehicle-details/${vehicle.type.toLowerCase().replace(/ /g, "-")}`,
-                          'mobile_menu_vehicles'
-                        );
-                        toggleMenu();
-                      }}
-                    >
-                      {vehicle.type}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              
             </nav>
             {/* <button
               onClick={handleLogin}
