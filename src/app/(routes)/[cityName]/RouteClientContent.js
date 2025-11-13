@@ -271,7 +271,7 @@ export default function RouteClientContent({
           {/* Optimized Background Image */}
           <Image
             src="/images/about/about_banner.webp"
-            alt={`${formattedCityName} to ${formattedDestination} cab service background`}
+            alt={`${formattedCityName} to ${formattedDestination} cab service - Book online taxi booking - Best car rental service - One way and round trip available`}
             fill
             priority
             quality={85}
@@ -439,11 +439,11 @@ export default function RouteClientContent({
           {/* Enhanced Service Highlights Section */}
           <section className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8" itemScope itemType="https://schema.org/Service">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
-              Why Choose Our {formattedCityName} to {formattedDestination} Taxi Service?
+              Why Choose Our {formattedCityName} to {formattedDestination} Taxi Service? | Best Cab Booking Online
             </h2>
             <p className="text-gray-600 text-center mb-6 max-w-3xl mx-auto">
-              Experience premium cab service with verified drivers, transparent pricing, and 24/7 customer support.
-              Book your {formattedCityName} to {formattedDestination} taxi with confidence.
+              Experience premium {formattedCityName} to {formattedDestination} cab service with verified professional drivers, transparent pricing, GPS enabled vehicles, and 24/7 customer support.
+              Book your affordable {formattedCityName} to {formattedDestination} taxi online with instant confirmation. We offer one way cab, round trip taxi, and outstation car rental service with best rates.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -451,32 +451,32 @@ export default function RouteClientContent({
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">Safe & Secure Journey</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">Verified drivers with valid licenses, GPS tracking, 24/7 support, and emergency assistance</p>
+                <h3 className="font-semibold text-lg mb-2" itemProp="name">Safe & Secure {formattedCityName} to {formattedDestination} Cab</h3>
+                <p className="text-gray-600 text-sm" itemProp="description">Professional verified drivers with valid licenses, real-time GPS tracking, 24x7 customer support, emergency assistance, and sanitized AC vehicles for safe taxi journey from {formattedCityName} to {formattedDestination}</p>
               </div>
 
               <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CreditCard className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">Transparent Pricing</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">No hidden charges, fixed rates, advance booking confirmation, multiple payment options</p>
+                <h3 className="font-semibold text-lg mb-2" itemProp="name">Transparent {formattedCityName} to {formattedDestination} Cab Fare</h3>
+                <p className="text-gray-600 text-sm" itemProp="description">No hidden charges for {formattedCityName} to {formattedDestination} taxi booking, fixed competitive rates, instant online booking confirmation, multiple payment options (cash, card, UPI), and affordable one way cab fare starting {startingPrice}</p>
               </div>
 
               <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
                 <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Car className="w-8 h-8 text-yellow-600" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">Premium Fleet</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">Well-maintained AC vehicles, clean interiors, comfortable seating, spacious luggage space</p>
+                <h3 className="font-semibold text-lg mb-2" itemProp="name">Premium {formattedCityName} to {formattedDestination} Car Rental Fleet</h3>
+                <p className="text-gray-600 text-sm" itemProp="description">Well-maintained AC Sedan, SUV, Innova, Ertiga, Tempo Traveller for {formattedCityName} to {formattedDestination} journey. Clean sanitized interiors, comfortable seating, spacious luggage space, and latest model vehicles with experienced chauffeur</p>
               </div>
 
               <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Headphones className="w-8 h-8 text-purple-600" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">24/7 Customer Support</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">Round-the-clock booking assistance, live tracking, instant support via call/WhatsApp</p>
+                <h3 className="font-semibold text-lg mb-2" itemProp="name">24x7 {formattedCityName} to {formattedDestination} Taxi Booking Support</h3>
+                <p className="text-gray-600 text-sm" itemProp="description">Round-the-clock online taxi booking assistance for {formattedCityName} to {formattedDestination}, live GPS tracking, instant customer support via call/WhatsApp, easy cab cancellation, and quick refund process</p>
               </div>
             </div>
           </section>
@@ -485,30 +485,30 @@ export default function RouteClientContent({
           <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 mb-8">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                {formattedCityName} to {formattedDestination} Cab Booking Benefits
+                {formattedCityName} to {formattedDestination} Cab Booking Benefits | Online Car Rental Service
               </h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
-                Experience hassle-free travel with our premium taxi service. Professional drivers, competitive rates, and reliable service for your {formattedCityName} to {formattedDestination} journey.
+                Experience hassle-free {formattedCityName} to {formattedDestination} travel with our premium outstation taxi service. Book affordable one way cab, round trip taxi, or drop service with professional experienced drivers, competitive lowest rates, and reliable 24x7 car rental service for your {formattedCityName} to {formattedDestination} journey. Best taxi booking online with instant confirmation and multiple vehicle options.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <Navigation className="w-8 h-8 text-blue-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">GPS Tracked Journey</h3>
-                <p className="text-gray-600 text-sm">Real-time location sharing and route optimization for fastest and safest travel from {formattedCityName} to {formattedDestination}.</p>
+                <h3 className="font-semibold text-lg mb-2">GPS Tracked {formattedCityName} to {formattedDestination} Taxi</h3>
+                <p className="text-gray-600 text-sm">Real-time GPS location sharing and smart route optimization for fastest and safest outstation taxi travel from {formattedCityName} to {formattedDestination}. Track your cab online throughout the journey with live updates.</p>
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <Award className="w-8 h-8 text-green-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Experienced Drivers</h3>
-                <p className="text-gray-600 text-sm">Professional chauffeurs with extensive knowledge of {formattedCityName}-{formattedDestination} route and traffic patterns.</p>
+                <h3 className="font-semibold text-lg mb-2">Experienced Professional Drivers for {formattedCityName} to {formattedDestination}</h3>
+                <p className="text-gray-600 text-sm">Verified professional chauffeurs with 5+ years experience and extensive knowledge of {formattedCityName} to {formattedDestination} highway route, traffic patterns, and best stopover points for comfortable long distance taxi journey.</p>
               </div>
 
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <Clock className="w-8 h-8 text-yellow-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Punctual Service</h3>
-                <p className="text-gray-600 text-sm">On-time pickup and drop service ensuring you reach {formattedDestination} as per your schedule.</p>
+                <h3 className="font-semibold text-lg mb-2">Punctual {formattedCityName} to {formattedDestination} Cab Service</h3>
+                <p className="text-gray-600 text-sm">Always on-time doorstep pickup and drop taxi service ensuring you reach {formattedDestination} from {formattedCityName} as per your schedule. Book advance or last minute same day cab with guaranteed punctuality.</p>
               </div>
             </div>
           </section>
@@ -518,10 +518,10 @@ export default function RouteClientContent({
             <header className="bg-gray-50 px-6 py-4 border-b flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                  {formattedCityName} to {formattedDestination} Cab Fare & Vehicle Options
+                  {formattedCityName} to {formattedDestination} Cab Fare & Vehicle Options | One Way & Round Trip Taxi Rates
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Choose from our fleet of AC cabs including Sedan, SUV, Tempo Traveller. All prices include fuel, driver, and taxes.
+                  Choose from our fleet of AC cabs including affordable Sedan, comfortable SUV, spacious Innova, Ertiga, and large Tempo Traveller for {formattedCityName} to {formattedDestination} taxi booking. All prices include fuel charges, driver allowance, toll taxes, and parking. Best one way cab fare and round trip taxi package deals available.
                 </p>
               </div>
 
@@ -572,7 +572,7 @@ export default function RouteClientContent({
                       <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
                         <Image
                           src={getVehicleImage(price.vehicle)}
-                          alt={`${price.vehicle} taxi for ${formattedCityName} to ${formattedDestination} cab service - Book online`}
+                          alt={`${price.vehicle} taxi for ${formattedCityName} to ${formattedDestination} - AC cab service - Online booking - Affordable rates - Professional driver - One way and round trip available`}
                           fill
                           className="object-contain p-2"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -640,7 +640,7 @@ export default function RouteClientContent({
                       <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
                         <Image
                           src="/images/car/car1.webp"
-                          alt={`Sedan taxi booking ${formattedCityName} to ${formattedDestination} - AC cab service`}
+                          alt={`Sedan taxi booking ${formattedCityName} to ${formattedDestination} - AC cab service - Swift Dzire - Honda City - Best 4 seater car rental - Cheap taxi fare - Online booking available`}
                           fill
                           className="object-contain p-2"
                           sizes="(max-width: 768px) 100vw, 33vw"
@@ -672,7 +672,7 @@ export default function RouteClientContent({
                       <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
                         <Image
                           src="/images/car/car2.webp"
-                          alt={`SUV taxi booking ${formattedCityName} to ${formattedDestination} - spacious AC cab service`}
+                          alt={`SUV taxi booking ${formattedCityName} to ${formattedDestination} - Spacious AC cab service - Innova - Ertiga - 6-7 seater car rental - Best family taxi - Comfortable outstation cab`}
                           fill
                           className="object-contain p-2"
                           sizes="(max-width: 768px) 100vw, 33vw"
@@ -723,7 +723,7 @@ export default function RouteClientContent({
                               <div className="relative w-12 h-8 rounded overflow-hidden bg-gray-50 flex-shrink-0">
                                 <Image
                                   src={getVehicleImage(vehicle.vehicle)}
-                                  alt={`${vehicle.vehicle} for ${formattedCityName} to ${formattedDestination} group booking`}
+                                  alt={`${vehicle.vehicle} for ${formattedCityName} to ${formattedDestination} group booking - Tempo Traveller - Bus rental - Large vehicle hire - Family tour cab`}
                                   fill
                                   className="object-contain"
                                   sizes="48px"
@@ -815,7 +815,7 @@ export default function RouteClientContent({
           {/* FAQ Section */}
           <section className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {formattedCityName} to {formattedDestination} Cab Booking - Frequently Asked Questions
+              {formattedCityName} to {formattedDestination} Cab Booking - FAQs | Online Taxi Service Queries
             </h2>
 
             <div className="space-y-4">
@@ -825,9 +825,9 @@ export default function RouteClientContent({
                 </summary>
                 <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                   <div itemProp="text">
-                    Taxi fare from {formattedCityName} to {formattedDestination} starts from {startingPrice} for one-way trips.
-                    The exact cost depends on vehicle type (Sedan ₹12/km, SUV ₹16/km, Tempo Traveller for groups) and trip type (one-way or round-trip).
-                    All prices include fuel, driver allowance, toll charges, and applicable taxes. Round-trip bookings often offer better value with package deals.
+                    Taxi fare from {formattedCityName} to {formattedDestination} starts from {startingPrice} for affordable one-way cab trips.
+                    The exact cost depends on vehicle type (Sedan ₹12/km, SUV Innova ₹16/km, Ertiga ₹15/km, Tempo Traveller for large groups) and trip type (one-way drop or round-trip package).
+                    All {formattedCityName} to {formattedDestination} cab prices include fuel charges, professional driver allowance, highway toll charges, parking fees, and applicable GST taxes. Round-trip taxi bookings often offer better value with special package deals and discounts. Book online for best rates.
                   </div>
                 </div>
               </details>
