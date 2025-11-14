@@ -3,7 +3,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle, ArrowRight, Route, Navigation, Calendar, Info, ChevronLeft, MapIcon, Compass, Camera, Award, CreditCard, Headphones } from 'lucide-react';
+import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle, ArrowRight, Route, Navigation, Calendar, Info, ChevronLeft, MapIcon, Compass, Camera, Award, CreditCard, Headphones, MapPinned } from 'lucide-react';
+import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 
 export default function DynamicTempoRoutesClient({ data }) {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
@@ -669,6 +670,96 @@ export default function DynamicTempoRoutesClient({ data }) {
             </div>
           )}
         </div>
+
+        {/* Tourist Attractions Section - For Destination City */}
+        {(() => {
+          const attractions = getAttractionsForCity(destination);
+          if (attractions.length > 0) {
+            return (
+              <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8">
+                <div className="text-center mb-8">
+                  <div className="flex items-center justify-center mb-4">
+                    <MapPinned className="w-10 h-10 text-blue-600" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Must-Visit Tourist Attractions in {destination}
+                  </h2>
+                  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Make the most of your {origin} to {destination} trip! Explore these amazing attractions with our comfortable tempo traveller service.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  {attractions.map((attraction, index) => (
+                    <div
+                      key={index}
+                      className="bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 overflow-hidden"
+                    >
+                      <div className={`h-2 bg-gradient-to-r ${
+                        attraction.type === 'Heritage' ? 'from-yellow-400 to-yellow-600' :
+                        attraction.type === 'Spiritual' ? 'from-purple-400 to-purple-600' :
+                        attraction.type === 'Adventure' ? 'from-orange-400 to-orange-600' :
+                        attraction.type === 'Royal' ? 'from-red-400 to-red-600' :
+                        attraction.type === 'Scenic' ? 'from-green-400 to-green-600' :
+                        'from-blue-400 to-blue-600'
+                      }`}></div>
+
+                      <div className="p-6">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-lg font-bold text-gray-900 leading-tight flex-1">
+                            {attraction.name}
+                          </h3>
+                          <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+                            attraction.type === 'Heritage' ? 'bg-yellow-100 text-yellow-800' :
+                            attraction.type === 'Spiritual' ? 'bg-purple-100 text-purple-800' :
+                            attraction.type === 'Adventure' ? 'bg-orange-100 text-orange-800' :
+                            attraction.type === 'Royal' ? 'bg-red-100 text-red-800' :
+                            attraction.type === 'Scenic' ? 'bg-green-100 text-green-800' :
+                            'bg-blue-100 text-blue-800'
+                          }`}>
+                            {attraction.type}
+                          </span>
+                        </div>
+
+                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                          {attraction.description}
+                        </p>
+
+                        <div className="space-y-2">
+                          <p className="text-xs font-semibold text-gray-700 mb-1">Highlights:</p>
+                          <div className="flex flex-wrap gap-2">
+                            {attraction.highlights.slice(0, 3).map((highlight, idx) => (
+                              <span
+                                key={idx}
+                                className="inline-flex items-center text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                              >
+                                <CheckCircle className="w-3 h-3 mr-1 text-green-500" />
+                                {highlight}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* View All Attractions Link */}
+                <div className="text-center">
+                  <Link
+                    href={`/tourist-attractions/${destination.toLowerCase()}`}
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  >
+                    <Compass className="w-5 h-5" />
+                    View Complete {destination} Attractions Guide
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+            );
+          }
+          return null;
+        })()}
 
         {/* Related Routes Section - Internal Linking */}
         <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 md:p-8 mb-8">

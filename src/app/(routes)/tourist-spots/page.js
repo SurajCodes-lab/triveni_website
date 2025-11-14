@@ -150,6 +150,23 @@ function TouristSpotsContent() {
               </div>
             ))}
           </div>
+
+          {/* Link to detailed tourist attractions page */}
+          {['delhi', 'agra', 'jaipur', 'shimla', 'manali', 'amritsar'].includes(cityName.toLowerCase()) && (
+            <div className="mt-8 text-center">
+              <Link
+                href={`/tourist-attractions/${cityName.toLowerCase()}`}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all transform hover:scale-105 shadow-md"
+              >
+                <LocateIcon className="w-5 h-5" />
+                View Complete {cityName} Attractions Guide
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+              <p className="text-gray-600 text-sm mt-3">
+                Discover detailed information about all major tourist attractions in {cityName}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Vehicle Services Section */}
