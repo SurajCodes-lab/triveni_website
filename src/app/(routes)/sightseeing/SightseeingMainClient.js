@@ -465,11 +465,11 @@ function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverV
         >
           {/* Tour Image */}
           <div className="relative h-64 overflow-hidden bg-gray-200">
-            {/* Display actual image for Jaipur tour, gradient for others */}
-            {tour.slug === 'jaipur-full-day-city-tour' ? (
+            {/* Display actual image if heroImage exists, gradient for others */}
+            {tour.heroImage ? (
               <>
                 <Image
-                  src="/images/sightseeing/jaipur_hero_section_image.jpg"
+                  src={tour.heroImage}
                   alt={tour.name}
                   fill
                   className="object-cover"
@@ -537,9 +537,9 @@ function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverV
               <div>
                 <div className="flex items-center gap-1 text-2xl font-bold text-indigo-600">
                   <CurrencyRupeeIcon className="w-6 h-6" />
-                  {tour.price.carRental.toLocaleString()}
+                  {tour.price.sedan?.toLocaleString()}
                 </div>
-                <div className="text-xs text-gray-500">Starting price</div>
+                <div className="text-xs text-gray-500">Starting price (Sedan)</div>
               </div>
               <ChevronRightIcon className="w-6 h-6 text-gray-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
             </div>

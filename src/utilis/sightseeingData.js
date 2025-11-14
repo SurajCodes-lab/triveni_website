@@ -368,7 +368,13 @@ export const sightseeingTours = {
       category: "Hill Station & Adventure",
       heroImage: "/images/sightseeing/shimla_hero_section.jpg",
       heroImagePrompt: "Stunning panoramic view of Shimla town from Jakhoo Temple, colonial buildings nestled in pine-covered hills, dramatic Himalayan ranges in background, golden sunset light, misty valleys, iconic toy train track visible, scenic mountain landscape, HDR photography",
-      images: [],
+      images: [
+        "/images/sightseeing/jakhoo_temple.jpg",
+        "/images/sightseeing/christ church shimla.jpg",
+        "/images/sightseeing/Mall road shimla.jpg",
+        "/images/sightseeing/the ridge shimla.jpg",
+        "/images/sightseeing/kurif_adventure_park.jpg"
+      ],
       additionalImages: [
         "Mall Road Shimla at evening with colonial buildings, street lights glowing, tourists strolling, cafes and shops, Victorian architecture, festive atmosphere",
         "Christ Church in snow with neo-Gothic architecture, stained glass windows, snow-covered pine trees, winter wonderland, iconic Shimla landmark",
@@ -440,9 +446,15 @@ export const sightseeingTours = {
       bestTimeToVisit: "April-June for adventure sports, December-February for snow",
       difficulty: "Moderate",
       category: "Adventure & Nature",
-      heroImage: "/images/sightseeing/manali_hero_section.jpg",
+      heroImage: "/images/sightseeing/Manali_hero_section.jpg",
       heroImagePrompt: "Spectacular aerial view of Solang Valley Manali with snow-capped mountains, paragliders in sky, colorful parachutes, lush green meadows (summer) or white snow (winter), adventure activities happening below, dramatic Himalayan landscape, action photography, vibrant colors",
-      images: [],
+      images: [
+        "/images/sightseeing/Hidmba_temple.jpg",
+        "/images/sightseeing/Old_Manali.jpg",
+        "/images/sightseeing/vashisht manali hot springs.jpg",
+        "/images/sightseeing/Rohtang Pass.jpg",
+        "/images/sightseeing/Paragliding_solang_valley.jpg"
+      ],
       additionalImages: [
         "Hidimba Temple ancient wooden architecture surrounded by tall deodar cedar trees, pagoda-style roof, intricate carvings, forest setting, mystical atmosphere",
         "Paragliding over Solang Valley with stunning mountain views, adventure seekers in air, valley below, snow peaks, adrenaline rush moment",
@@ -517,9 +529,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "September-April",
       difficulty: "Easy",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/haridwar_hero_section.jpg",
+      heroImage: "/images/sightseeing/Haridwar_hero_section.jpg",
       heroImagePrompt: "Magical evening Ganga Aarti at Har Ki Pauri Haridwar, hundreds of oil lamps floating on Ganges, priests performing ritual with fire, devotees gathered, golden light reflections on water, spiritual atmosphere, long exposure photography, divine ambiance, HDR",
-      images: [],
+      images: [
+        "/images/sightseeing/Laxman Jhula.jpg"
+      ],
       additionalImages: [
         "Laxman Jhula suspension bridge over Ganga river with mountains in background, pedestrians crossing, turquoise water, iconic Rishikesh landmark",
         "Mansa Devi Temple on hilltop with cable car, panoramic view of Haridwar city and Ganges, colorful temple architecture, devotees",

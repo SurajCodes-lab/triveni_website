@@ -70,11 +70,11 @@ export default function SightseeingDetailClient({ tour }) {
       >
         {/* Hero Background */}
         <div className="absolute inset-0">
-          {/* Use real image for Jaipur tour, gradient for others */}
-          {tour.slug === 'jaipur-full-day-city-tour' ? (
+          {/* Use real image if heroImage exists, gradient for others */}
+          {tour.heroImage ? (
             <>
               <Image
-                src="/images/sightseeing/jaipur_hero_section_image.jpg"
+                src={tour.heroImage}
                 alt={tour.name}
                 fill
                 priority
@@ -314,120 +314,32 @@ export default function SightseeingDetailClient({ tour }) {
                     </div>
                   )}
 
-                  {/* Photo Gallery - Only for Jaipur tour */}
-                  {tour.slug === 'jaipur-full-day-city-tour' && (
+                  {/* Photo Gallery - Show for any tour with images */}
+                  {tour.images && tour.images.length > 0 && (
                     <div className="bg-white rounded-2xl p-8 shadow-lg">
                       <h2 className="text-3xl font-bold text-gray-900 mb-6">Tour Gallery</h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Amber Fort */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.1 }}
-                          whileHover={{ scale: 1.02 }}
-                          className="relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow"
-                        >
-                          <Image
-                            src="/images/sightseeing/amber_fort.jpg"
-                            alt="Amber Fort - Jaipur"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-bold text-lg drop-shadow-lg">Amber Fort</h3>
-                            <p className="text-white/90 text-sm drop-shadow">Majestic hilltop fortress</p>
-                          </div>
-                        </motion.div>
-
-                        {/* City Palace */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.2 }}
-                          whileHover={{ scale: 1.02 }}
-                          className="relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow"
-                        >
-                          <Image
-                            src="/images/sightseeing/city_palace.jpg"
-                            alt="City Palace - Jaipur"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-bold text-lg drop-shadow-lg">City Palace</h3>
-                            <p className="text-white/90 text-sm drop-shadow">Royal residence with museums</p>
-                          </div>
-                        </motion.div>
-
-                        {/* Jantar Mantar */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.3 }}
-                          whileHover={{ scale: 1.02 }}
-                          className="relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow"
-                        >
-                          <Image
-                            src="/images/sightseeing/jantar_mantar.jpg"
-                            alt="Jantar Mantar - Jaipur"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-bold text-lg drop-shadow-lg">Jantar Mantar</h3>
-                            <p className="text-white/90 text-sm drop-shadow">Ancient astronomical observatory</p>
-                          </div>
-                        </motion.div>
-
-                        {/* Johari Bazaar */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.4 }}
-                          whileHover={{ scale: 1.02 }}
-                          className="relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow"
-                        >
-                          <Image
-                            src="/images/sightseeing/Johari_bazar.jpg"
-                            alt="Johari Bazaar - Jaipur"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-bold text-lg drop-shadow-lg">Johari Bazaar</h3>
-                            <p className="text-white/90 text-sm drop-shadow">Vibrant local market</p>
-                          </div>
-                        </motion.div>
-
-                        {/* Jal Mahal - Full Width */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.5 }}
-                          whileHover={{ scale: 1.02 }}
-                          className="relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow md:col-span-2"
-                        >
-                          <Image
-                            src="/images/sightseeing/Jal_Mahal.jpg"
-                            alt="Jal Mahal - Jaipur"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 100vw"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-bold text-xl drop-shadow-lg">Jal Mahal</h3>
-                            <p className="text-white/90 drop-shadow">Stunning water palace in Man Sagar Lake</p>
-                          </div>
-                        </motion.div>
+                        {tour.images.map((image, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                            whileHover={{ scale: 1.02 }}
+                            className={`relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow ${
+                              index === tour.images.length - 1 && tour.images.length % 2 !== 0 ? 'md:col-span-2' : ''
+                            }`}
+                          >
+                            <Image
+                              src={image}
+                              alt={`${tour.name} - Gallery Image ${index + 1}`}
+                              fill
+                              className="object-cover"
+                              sizes={index === tour.images.length - 1 && tour.images.length % 2 !== 0 ? "(max-width: 768px) 100vw, 100vw" : "(max-width: 768px) 100vw, 50vw"}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                          </motion.div>
+                        ))}
                       </div>
                     </div>
                   )}
