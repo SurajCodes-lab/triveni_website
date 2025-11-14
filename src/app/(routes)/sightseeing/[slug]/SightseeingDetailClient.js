@@ -203,23 +203,28 @@ export default function SightseeingDetailClient({ tour }) {
       <div className="sticky top-0 z-40 bg-white shadow-lg border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-            <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto justify-center sm:justify-start overflow-x-auto">
               <div className="text-center sm:text-left">
-                <div className="flex items-center gap-1 text-2xl sm:text-3xl font-bold text-indigo-600">
-                  <CurrencyRupeeIcon className="w-6 h-6 sm:w-8 sm:h-8" />
-                  {tour.price.carRental.toLocaleString()}
+                <div className="flex items-center gap-1 text-xl sm:text-2xl font-bold text-indigo-600">
+                  <CurrencyRupeeIcon className="w-5 h-5 sm:w-7 sm:h-7" />
+                  {tour.price.sedan?.toLocaleString()}
                 </div>
-                <div className="text-xs sm:text-sm text-gray-500">Per car rental</div>
+                <div className="text-xs sm:text-sm text-gray-500">Sedan</div>
               </div>
-              {tour.price.withGuide && (
-                <div className="border-l pl-4 sm:pl-6 text-center sm:text-left">
-                  <div className="flex items-center gap-1 text-xl sm:text-2xl font-bold text-purple-600">
-                    <CurrencyRupeeIcon className="w-5 h-5 sm:w-7 sm:h-7" />
-                    {tour.price.withGuide.toLocaleString()}
-                  </div>
-                  <div className="text-xs sm:text-sm text-gray-500">With guide</div>
+              <div className="border-l pl-3 sm:pl-4 text-center sm:text-left">
+                <div className="flex items-center gap-1 text-xl sm:text-2xl font-bold text-purple-600">
+                  <CurrencyRupeeIcon className="w-5 h-5 sm:w-7 sm:h-7" />
+                  {tour.price.suv?.toLocaleString()}
                 </div>
-              )}
+                <div className="text-xs sm:text-sm text-gray-500">SUV</div>
+              </div>
+              <div className="border-l pl-3 sm:pl-4 text-center sm:text-left">
+                <div className="flex items-center gap-1 text-xl sm:text-2xl font-bold text-green-600">
+                  <CurrencyRupeeIcon className="w-5 h-5 sm:w-7 sm:h-7" />
+                  {tour.price.tempoTraveller?.toLocaleString()}
+                </div>
+                <div className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Tempo</div>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
@@ -576,24 +581,30 @@ export default function SightseeingDetailClient({ tour }) {
                 >
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Book This Tour</h3>
 
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-3 mb-6">
                     <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl">
-                      <div className="text-sm text-gray-600 mb-1">Car Rental Only</div>
-                      <div className="flex items-center gap-1 text-3xl font-bold text-indigo-600">
-                        <CurrencyRupeeIcon className="w-8 h-8" />
-                        {tour.price.carRental.toLocaleString()}
+                      <div className="text-sm text-gray-600 mb-1">Sedan</div>
+                      <div className="flex items-center gap-1 text-2xl font-bold text-indigo-600">
+                        <CurrencyRupeeIcon className="w-7 h-7" />
+                        {tour.price.sedan?.toLocaleString()}
                       </div>
                     </div>
 
-                    {tour.price.withGuide && (
-                      <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
-                        <div className="text-sm text-gray-600 mb-1">With Professional Guide</div>
-                        <div className="flex items-center gap-1 text-3xl font-bold text-purple-600">
-                          <CurrencyRupeeIcon className="w-8 h-8" />
-                          {tour.price.withGuide.toLocaleString()}
-                        </div>
+                    <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+                      <div className="text-sm text-gray-600 mb-1">SUV</div>
+                      <div className="flex items-center gap-1 text-2xl font-bold text-purple-600">
+                        <CurrencyRupeeIcon className="w-7 h-7" />
+                        {tour.price.suv?.toLocaleString()}
                       </div>
-                    )}
+                    </div>
+
+                    <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
+                      <div className="text-sm text-gray-600 mb-1">Tempo Traveller</div>
+                      <div className="flex items-center gap-1 text-2xl font-bold text-green-600">
+                        <CurrencyRupeeIcon className="w-7 h-7" />
+                        {tour.price.tempoTraveller?.toLocaleString()}
+                      </div>
+                    </div>
                   </div>
 
                   <motion.button
