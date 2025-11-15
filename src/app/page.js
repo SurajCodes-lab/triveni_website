@@ -111,7 +111,7 @@ export default function HomePage() {
         />
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center -mt-12 md:-mt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center -mt-[88px] md:-mt-20">
           {/* Top Badge */}
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
