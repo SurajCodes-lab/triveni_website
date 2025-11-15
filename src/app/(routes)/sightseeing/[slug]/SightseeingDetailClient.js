@@ -314,33 +314,22 @@ export default function SightseeingDetailClient({ tour }) {
                     </div>
                   )}
 
-                  {/* Photo Gallery - Show for any tour with images */}
-                  {tour.images && tour.images.length > 0 && (
+                  {/* Featured Place Image */}
+                  {tour.heroImage && (
                     <div className="bg-white rounded-2xl p-8 shadow-lg">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6">Tour Gallery</h2>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {tour.images.map((image, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
-                            className={`relative h-64 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow ${
-                              index === tour.images.length - 1 && tour.images.length % 2 !== 0 ? 'md:col-span-2' : ''
-                            }`}
-                          >
-                            <Image
-                              src={image}
-                              alt={`${tour.name} - Gallery Image ${index + 1}`}
-                              fill
-                              className="object-cover"
-                              sizes={index === tour.images.length - 1 && tour.images.length % 2 !== 0 ? "(max-width: 768px) 100vw, 100vw" : "(max-width: 768px) 100vw, 50vw"}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          </motion.div>
-                        ))}
+                      <h2 className="text-3xl font-bold text-gray-900 mb-6">{tour.name}</h2>
+                      <div className="relative h-96 rounded-xl overflow-hidden shadow-xl">
+                        <Image
+                          src={tour.heroImage}
+                          alt={tour.name}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 66vw"
+                        />
                       </div>
+                      <p className="mt-4 text-gray-700 text-lg leading-relaxed">
+                        {tour.shortDescription}
+                      </p>
                     </div>
                   )}
 
