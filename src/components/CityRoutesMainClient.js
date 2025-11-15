@@ -182,10 +182,10 @@ export default function CityRoutesMainClient({ data }) {
               src="/images/citypage_hero_section_image.jpg"
               alt="Premium Taxi Services - Cars, Tempo Travellers & Buses"
               fill
-              className="object-cover brightness-110"
+              className="object-cover brightness-90"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40" />
           </div>
 
           {/* Animated Gradient Orbs */}
