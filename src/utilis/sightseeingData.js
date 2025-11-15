@@ -4320,6 +4320,102 @@ export const sightseeingTours = {
       groupSize: "1-15 persons",
       accessibility: "Partially wheelchair accessible"
     }
+  ],
+
+  jaisalmer: [
+    {
+      id: 53,
+      name: "Jaisalmer Golden City Tour",
+      slug: "jaisalmer-golden-city-tour",
+      shortDescription: "Explore the Golden Fort, magnificent havelis, Sam Sand Dunes, and desert culture",
+      fullDescription: "Discover the enchanting Golden City of Jaisalmer with its living fort, ornate havelis, and mesmerizing desert landscapes. Visit the magnificent Jaisalmer Fort (Sonar Qila), explore the intricately carved Patwon Ki Haveli, Salim Singh Ki Haveli, and Nathmal Ki Haveli. Witness sunset at Gadisar Lake, explore the mysterious Kuldhara abandoned village, and experience the Thar Desert at Sam Sand Dunes with camel safari and cultural performances. This comprehensive tour captures the essence of desert heritage and Rajasthani culture.",
+      duration: "Full Day (10-12 hours)",
+      price: {
+        sedan: 2800,
+        suv: 3500,
+        tempoTraveller: 9000,
+        currency: "INR"
+      },
+      highlights: [
+        "Jaisalmer Fort - Living fort with golden sandstone architecture",
+        "Patwon Ki Haveli - Five interconnected havelis with intricate carvings",
+        "Sam Sand Dunes - Desert safari and cultural performances",
+        "Gadisar Lake - Sunset views with temples and cenotaphs",
+        "Salim Singh Ki Haveli - Unique peacock-shaped roof",
+        "Kuldhara Village - Abandoned ghost village mystery",
+        "Nathmal Ki Haveli - Stunning facades and miniature paintings",
+        "Jain Temples - Exquisite architecture inside the fort"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "08:30 AM", activity: "Jaisalmer Fort exploration", duration: "2.5 hours", description: "Living fort with palaces, Jain temples, shops, and residential area" },
+        { time: "11:00 AM", activity: "Jain Temples inside fort", duration: "45 mins", description: "Seven interconnected temples with intricate carvings" },
+        { time: "11:45 AM", activity: "Patwon Ki Haveli", duration: "1 hour", description: "Largest haveli complex with museum and architecture" },
+        { time: "12:45 PM", activity: "Salim Singh Ki Haveli", duration: "45 mins", description: "Unique architecture with peacock-shaped roof" },
+        { time: "01:30 PM", activity: "Lunch break", duration: "1 hour", description: "Traditional Rajasthani cuisine" },
+        { time: "02:30 PM", activity: "Nathmal Ki Haveli", duration: "45 mins", description: "Beautiful facades and elephant carvings" },
+        { time: "03:15 PM", activity: "Gadisar Lake", duration: "1 hour", description: "Artificial lake with temples, ghats, and boating" },
+        { time: "04:15 PM", activity: "Kuldhara Abandoned Village", duration: "1 hour", description: "Mysterious ghost village (18 km from city)" },
+        { time: "05:15 PM", activity: "Sam Sand Dunes", duration: "3 hours", description: "Camel safari, sunset, cultural dance and music, dinner" },
+        { time: "08:15 PM", activity: "Return to hotel", duration: "45 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Jaisalmer Fort palace entry (₹250-500)",
+        "Haveli entry tickets (₹50-100 each)",
+        "Jain Temples entry (₹100-200)",
+        "Camel safari charges (₹500-800 per person)",
+        "Sam Sand Dunes cultural program and dinner (₹800-1500 per person)",
+        "Gadisar Lake boating (₹100-200)",
+        "Tour guide (₹1500 extra)",
+        "Lunch and personal expenses",
+        "Camera fees at monuments"
+      ],
+      bestTimeToVisit: "October to March (pleasant winter weather), avoid summer heat (April-June)",
+      difficulty: "Easy to Moderate",
+      category: "Heritage & Desert Culture",
+      heroImage: "/images/sightseeing/jaisalmer_hero_section.jpg",
+      heroImagePrompt: "Majestic Jaisalmer Fort (Golden Fort/Sonar Qila) rising from Thar Desert, honey-golden sandstone architecture glowing in sunset light, massive fortification walls, bastions and gates, desert city panorama, blue sky, architectural photography, dramatic golden hour, ultra-detailed, 8k quality",
+      images: [
+        "/images/sightseeing/jaisalmer_fort.jpg",
+        "/images/sightseeing/patwon_ki_haveli.jpg",
+        "/images/sightseeing/sam_sand_dunes.jpg",
+        "/images/sightseeing/gadisar_lake.jpg",
+        "/images/sightseeing/salim_singh_haveli.jpg"
+      ],
+      additionalImages: [
+        "Jaisalmer Fort interior with narrow lanes, golden sandstone buildings, local shops, people living inside fort, living fort atmosphere, traditional architecture, morning light",
+        "Patwon Ki Haveli intricate facade with jharokhas (balconies), detailed stone carvings, five-story structure, ornate architecture, golden sandstone, craftsmanship marvel",
+        "Sam Sand Dunes camel safari at sunset, tourists on decorated camels, rippled sand dunes, Thar Desert landscape, golden sky, desert adventure, traditional experience",
+        "Gadisar Lake at sunset with ornate gateway (Tilon Ki Pol), temples and cenotaphs reflection in water, migratory birds, peaceful atmosphere, golden hour photography",
+        "Salim Singh Ki Haveli unique arched roof shaped like peacock, blue cupola, distinctive architecture, historical mansion, old Jaisalmer character",
+        "Kuldhara abandoned village ruins, ghost town mystery, empty houses and streets, Paliwal Brahmins heritage site, haunted village legends, historical site",
+        "Jain Temples inside fort with intricate marble carvings, dilwara-style architecture, ornate pillars, religious artwork, spiritual atmosphere, detailed craftsmanship",
+        "Desert cultural performance at Sam Sand Dunes, Kalbeliya dancers, folk music, bonfire, evening entertainment, Rajasthani culture, vibrant costumes"
+      ],
+      tips: [
+        "Start early to avoid midday desert heat",
+        "Wear comfortable walking shoes for fort exploration",
+        "Carry sunscreen, sunglasses, and hat for desert visit",
+        "Book camel safari and cultural program in advance during peak season",
+        "Fort is a living monument - respect local residents' privacy",
+        "Evening at Sam Sand Dunes can be cold in winter - carry light jacket",
+        "Photography is allowed but respect signs where restricted",
+        "Try local specialties like dal baati churma and ker sangri",
+        "Bargain at shops inside fort and havelis",
+        "Kuldhara visit optional if short on time - can skip to reach Sam dunes earlier"
+      ],
+      reviews: { averageRating: 4.7, totalReviews: 2456 },
+      coordinates: { latitude: 26.9157, longitude: 70.9083 },
+      groupSize: "1-15 persons",
+      accessibility: "Limited wheelchair access (narrow fort lanes, sandy dunes)"
+    }
   ]
 };
 
