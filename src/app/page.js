@@ -1,722 +1,1135 @@
-'use client';
+"use client";
 
-import { useEffect, useCallback, useMemo } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useCallback } from "react";
 import { motion } from "framer-motion";
-import Head from "next/head";
-import Link from "next/link";
-import { 
-  Star, 
-  Shield, 
-  Clock, 
-  Users, 
-  MapPin, 
-  Phone, 
-  Car, 
+import { TypeAnimation } from 'react-type-animation';
+import Marquee from "react-fast-marquee";
+import {
+  Star,
+  Shield,
+  Clock,
+  Users,
+  MapPin,
+  Phone,
+  Car,
   Award,
-  ChevronRight,
-  CheckCircle,
+  ArrowRight,
+  Heart,
+  Sparkles,
+  Crown,
+  ThumbsUp,
+  Gauge,
+  Bus,
+  Plane,
+  Camera,
+  Map,
+  Package,
+  Navigation,
+  Route,
+  CheckCircle2,
   Zap,
-  Globe
+  TrendingUp
 } from "lucide-react";
+import Link from "next/link";
+import { phoneNumber } from "@/utilis/data";
 
-// Import data from data.js
-import { features, services, vehiclesServices, tourPackages, phoneNumber, cities } from "@/utilis/data";
-
-// Import your existing components
-import AboutSection from "@/components/home/AboutSection";
-import ServicesSection from "@/components/services/ServicesSection";
-
-// Animation variants optimized for performance
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
-
-const scaleOnHover = {
-  hover: { scale: 1.05, transition: { duration: 0.2 } },
-  tap: { scale: 0.95 }
-};
-
-// SEO-optimized structured data using real data
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "TravelAgency",
-  "name": "Triveni Cabs",
-  "description": "Best car rental, taxi service and tour packages in India 2025. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
-  "url": "https://www.trivenicabs.in",
-  "telephone": `+91-${phoneNumber}`,
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "IN"
-  },
-  "serviceArea": {
-    "@type": "Country",
-    "name": "India"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Car Rental and Tour Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Sedan Car Rental",
-          "description": `4 passenger sedan rental starting ${vehiclesServices[0]?.perKm || '₹11/km'}`
-        },
-        "price": "11",
-        "priceCurrency": "INR"
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "SUV Car Rental",
-          "description": `6-7 passenger SUV rental starting ${vehiclesServices[1]?.perKm || '₹15/km'}`
-        },
-        "price": "15",
-        "priceCurrency": "INR"
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Tempo Traveller Rental",
-          "description": `12-26 passenger tempo traveller starting ${vehiclesServices[2]?.perKm || '₹24/km'}`
-        },
-        "price": "24",
-        "priceCurrency": "INR"
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Tour Packages",
-          "description": `Manali tour ${tourPackages[0]?.price || '₹9,999'}, Kashmir tour ${tourPackages[4]?.price || '₹16,999'}`
-        }
-      }
-    ]
-  }
-};
-
-// Key features using data from data.js
-const keyFeatures = [
-  {
-    icon: Car,
-    title: features[0]?.title || "Quality Fleet",
-    description: features[0]?.description || "Modern, well-maintained vehicles for your comfort and safety",
-    color: "text-blue-500"
-  },
-  {
-    icon: Clock,
-    title: features[1]?.title || "24/7 Service",
-    description: features[1]?.description || "Round-the-clock availability for all your travel needs",
-    color: "text-green-500"
-  },
-  {
-    icon: MapPin,
-    title: features[2]?.title || "Wide Coverage",
-    description: features[2]?.description || "Serving major cities and tourist destinations nationwide",
-    color: "text-yellow-500"
-  },
-  {
-    icon: Phone,
-    title: features[3]?.title || "Easy Booking",
-    description: features[3]?.description || "Quick and hassle-free reservation process",
-    color: "text-purple-500"
-  }
-];
-
-// Service highlights using data from services
-const serviceHighlights = [
-  {
-    title: services[0]?.title || "Vehicles",
-    description: services[0]?.description || "Wide range of comfortable and reliable vehicles",
-    icon: Car,
-    whatsappMessage: `Hi! I am interested in booking ${services[0]?.title?.toLowerCase() || 'vehicle rental'} service. Can you provide more details about rates and availability?`
-  },
-  {
-    title: services[1]?.title || "Tour Guide",
-    description: services[1]?.description || "Expert guides for an enriching experience",
-    icon: Users,
-    whatsappMessage: `Hi! I am interested in ${services[1]?.title?.toLowerCase() || 'tour guide'} services. Can you help me with pricing and available options?`
-  },
-  {
-    title: services[2]?.title || "Tour Packages",
-    description: services[2]?.description || "Curated experiences for every traveler",
-    icon: Award,
-    whatsappMessage: `Hi! I am interested in your ${services[2]?.title?.toLowerCase() || 'tour packages'}. Can you share available travel experiences and pricing details?`
-  },
-  {
-    title: "Airport Transfer",
-    description: "Reliable airport pickup & drop services",
-    icon: Zap,
-    whatsappMessage: "Hi! I need airport transfer service. Can you provide details about pickup/drop services and rates?"
-  }
-];
-
-// Homepage component
-export default function OptimizedHomePage() {
-  const router = useRouter();
-
-  // Analytics tracking functions
-  const trackEvent = useCallback((eventName, parameters = {}) => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', eventName, {
-        event_category: 'homepage_interaction',
-        page_location: window.location.href,
-        page_title: document.title,
-        ...parameters
-      });
-    }
-  }, []);
-
-  // Track page view
-  useEffect(() => {
-    trackEvent('homepage_view', {
-      event_category: 'page_view',
-      page_type: 'homepage'
-    });
-  }, [trackEvent]);
-
-  // Memoized parallax function
-  const parallaxScroll = useCallback(() => {
-    const banner = document.querySelector(".hero-banner");
-    if (banner) {
-      const scrolled = window.scrollY;
-      const rate = scrolled * 0.3;
-      banner.style.transform = `translate3d(0, ${rate}px, 0)`;
-    }
-  }, []);
-
-  // Optimized scroll handler with scroll tracking
-  useEffect(() => {
-    let ticking = false;
-    let scrollTimeout;
-    let hasTrackedScroll = false;
-    
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          parallaxScroll();
-          ticking = false;
-          
-          // Track scroll engagement (once per session)
-          if (!hasTrackedScroll && window.scrollY > 100) {
-            trackEvent('scroll_engagement', {
-              event_category: 'engagement',
-              scroll_depth: window.scrollY
-            });
-            hasTrackedScroll = true;
-          }
-        });
-        ticking = true;
-      }
-      
-      // Track scroll depth at 25%, 50%, 75%, 100%
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (window.scrollY / scrollHeight) * 100;
-        
-        if (scrollPercent > 25 && !window.scrollTracked25) {
-          trackEvent('scroll_depth_25', { event_category: 'engagement', scroll_percentage: 25 });
-          window.scrollTracked25 = true;
-        }
-        if (scrollPercent > 50 && !window.scrollTracked50) {
-          trackEvent('scroll_depth_50', { event_category: 'engagement', scroll_percentage: 50 });
-          window.scrollTracked50 = true;
-        }
-        if (scrollPercent > 75 && !window.scrollTracked75) {
-          trackEvent('scroll_depth_75', { event_category: 'engagement', scroll_percentage: 75 });
-          window.scrollTracked75 = true;
-        }
-        if (scrollPercent >= 98 && !window.scrollTracked100) {
-          trackEvent('scroll_depth_100', { event_category: 'engagement', scroll_percentage: 100 });
-          window.scrollTracked100 = true;
-        }
-      }, 150);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(scrollTimeout);
-    };
-  }, [parallaxScroll, trackEvent]);
-
-  // Memoized event handlers with analytics
-  const handleExploreClick = useCallback(() => {
-    trackEvent('explore_services_click', {
-      event_category: 'navigation',
-      event_label: 'hero_explore_button',
-      button_location: 'hero_section'
-    });
-    router.push("/services");
-  }, [router, trackEvent]);
-
-  const handleBookNowClick = useCallback((location = 'hero') => {
-    trackEvent('book_now_click', {
-      event_category: 'conversion',
-      event_label: `${location}_book_now`,
-      button_location: location,
-      contact_method: 'whatsapp'
-    });
-    
-    const message = encodeURIComponent("Hi! I am interested in booking a taxi service. Can you help me with the details?");
+export default function HomePage() {
+  const handleBookNowClick = useCallback((serviceName = '') => {
+    const message = serviceName
+      ? encodeURIComponent(`Hi! I am interested in your ${serviceName} service. Can you provide more details?`)
+      : encodeURIComponent("Hi! I am interested in booking a taxi service. Can you help me with the details?");
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappURL, '_blank');
-  }, [trackEvent]);
-
-  // WhatsApp service inquiry handler with analytics
-  const handleServiceInquiry = useCallback((service) => {
-    trackEvent('service_inquiry_click', {
-      event_category: 'conversion',
-      event_label: service.title?.toLowerCase().replace(' ', '_') || 'unknown_service',
-      service_type: service.title || 'Unknown Service',
-      button_location: 'service_highlights',
-      contact_method: 'whatsapp'
-    });
-
-    const message = encodeURIComponent(service.whatsappMessage || 'Hi! I am interested in your services.');
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappURL, '_blank');
-  }, [trackEvent]);
-
-  // Track feature card interactions
-  const handleFeatureHover = useCallback((featureTitle) => {
-    trackEvent('feature_hover', {
-      event_category: 'engagement',
-      event_label: featureTitle?.toLowerCase().replace(' ', '_') || 'unknown_feature',
-      feature_name: featureTitle || 'Unknown Feature'
-    });
-  }, [trackEvent]);
-
-  // Track CTA interactions
-  const handleCTAClick = useCallback(() => {
-    trackEvent('cta_book_now_click', {
-      event_category: 'conversion',
-      event_label: 'bottom_cta_button',
-      button_location: 'final_cta_section',
-      contact_method: 'whatsapp'
-    });
-    handleBookNowClick('cta_section');
-  }, [trackEvent, handleBookNowClick]);
-
-  // Memoized structured data script
-  const structuredDataScript = useMemo(() => 
-    JSON.stringify(structuredData), []);
+  }, []);
 
   return (
-    <>
-      {/* SEO Head */}
-      <Head>
-        <title>Best Car Rental & Tour Packages 2025 | Triveni Cabs | Professional Taxi Service | Book Now | 24/7 Available</title>
-        <meta 
-          name="description" 
-          content={`Book car rental, taxi, tour packages with Triveni Cabs. Sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'}, Tempo Traveller ${vehiclesServices[2]?.perKm || '₹24/km'}. Delhi, Mumbai, Agra, Manali tours. Professional drivers, AC vehicles, 24/7 support. Safe, secure & affordable cab booking.`}
-        />
-        <meta name="keywords" content="taxi service, cab booking, outstation taxi, airport transfer, local taxi, car rental, India taxi, online cab booking, car rental, taxi service, tour packages, cheap car rental, best taxi service 2025, Delhi car rental, Mumbai taxi, Agra tour, Jaipur taxi, Manali tour package, Kashmir tour, Rajasthan tour, Chardham Yatra, sedan rental, SUV hire, tempo traveller booking, luxury bus rental, outstation taxi, local taxi, airport transfer, wedding car rental, corporate travel, AC vehicle booking, professional drivers, 24x7 support, online booking, instant booking, same day booking, vehicle rental India, travel services, verified drivers, GPS tracking, safe travel, reliable transport, competitive rates, transparent pricing, Triveni Cabs" />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Triveni Cabs" />
-        <link rel="canonical" href="https://www.trivenicabs.in" />
-        
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs | Starting ₹11/km" />
-        <meta property="og:description" content={`✅ Book sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'}, tempo traveller online. Delhi, Mumbai, Manali tours. Professional drivers, competitive rates.`} />
-        <meta property="og:url" content="https://www.trivenicabs.in" />
-        <meta property="og:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.webp" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Car Rental & Tour Packages India | Triveni Cabs" />
-        <meta name="twitter:description" content={`Book sedan ${vehiclesServices[0]?.perKm || '₹11/km'}, SUV ${vehiclesServices[1]?.perKm || '₹15/km'} online. Professional service, competitive rates.`} />
-        <meta name="twitter:image" content="https://www.trivenicabs.in/images/home/Triveni_Cabs_Desktop.webp" />
-        
-        {/* Structured Data */}
-        <script 
-          type="application/ld+json" 
-          dangerouslySetInnerHTML={{ __html: structuredDataScript }}
-        />
-      </Head>
+    <div className="min-h-screen bg-white overflow-hidden">
 
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative"
-      >
-        {/* Hero Section - FIXED VERSION */}
-        <section className="relative h-screen overflow-hidden" aria-labelledby="hero-heading">
-          {/* Darker Gradient Overlay for Better Text Contrast */}
+      {/* HERO SECTION */}
+      <motion.section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8 md:pt-0 md:pb-4">
+        {/* Background Image with Enhanced Visibility */}
+        <div className="absolute inset-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-110"
+            style={{
+              backgroundImage: "url('/images/HERO_SECTION_MAIN_PAGE.jpg')",
+              filter: "brightness(1.1) contrast(1.1)"
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/40 via-transparent to-transparent"></div>
+        </div>
+
+        {/* Animated Orbs - Enhanced & Mobile Optimized */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            opacity: { duration: 0.5 },
+            x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+            scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
+          }}
+          className="absolute top-20 left-5 md:left-10 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            x: [0, -40, 0],
+            y: [0, 60, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            opacity: { duration: 0.5, delay: 0.2 },
+            x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
+            y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
+            scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }}
+          className="absolute top-40 right-5 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-br from-orange-400/50 to-pink-400/50 rounded-full blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            x: [0, 30, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            opacity: { duration: 0.5, delay: 0.4 },
+            x: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 },
+            y: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 },
+            scale: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }
+          }}
+          className="absolute bottom-40 left-1/2 w-40 h-40 md:w-72 md:h-72 bg-gradient-to-br from-blue-400/40 to-purple-400/40 rounded-full blur-3xl"
+        />
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center mt-0 md:-mt-20">
+          {/* Top Badge */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 z-10"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+            className="mb-4 md:mb-3"
+          >
+            <div className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-[#FACF2D] to-amber-400 rounded-full px-4 py-2 md:px-8 md:py-3 shadow-lg">
+              <Crown className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
+              <span className="text-gray-800 font-bold text-xs md:text-base tracking-wide">INDIA&apos;S #1 TRAVEL PARTNER</span>
+              <Sparkles className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
+            </div>
+          </motion.div>
+
+          {/* Main Headline with Typing Effect */}
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-4 md:mb-6"
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 leading-tight tracking-tight drop-shadow-2xl px-2">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="block text-white drop-shadow-lg"
+              >
+                Your Journey,
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="block bg-gradient-to-r from-yellow-300 via-[#FACF2D] to-orange-400 bg-clip-text text-transparent drop-shadow-2xl"
+                style={{ WebkitTextStroke: '0.5px rgba(255,255,255,0.3)' }}
+              >
+                <TypeAnimation
+                  sequence={[
+                    'Our Passion',
+                    2500,
+                    'Our Priority',
+                    2500,
+                    'Our Promise',
+                    2500,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
+              </motion.span>
+            </h1>
+          </motion.div>
+
+          {/* Subheadline */}
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white mb-6 max-w-4xl mx-auto leading-relaxed font-semibold drop-shadow-lg bg-black/20 backdrop-blur-sm px-3 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl border border-white/20"
+          >
+            <span className="hidden sm:inline">✨ Wedding Cars • ✈️ Airport Transfers • 🗺️ Tour Packages • 🚐 Tempo Traveller • 👨‍🏫 Expert Guides • 🌍 500+ Destinations</span>
+            <span className="sm:hidden">✨ Weddings • ✈️ Airports • 🗺️ Tours • 🚐 Tempo • 👨‍🏫 Guides • 🌍 500+ Destinations</span>
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-6 px-4"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleBookNowClick()}
+              className="group relative w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-xl overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2 md:gap-3">
+                Get Free Quote
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+                </motion.div>
+              </span>
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleBookNowClick()}
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all"
+            >
+              <Phone className="w-5 h-5 md:w-6 md:h-6" />
+              <span className="truncate">Call: {phoneNumber}</span>
+            </motion.button>
+          </motion.div>
+
+          {/* Trust Indicators */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-          />
-
-          {/* Hero Image - FIXED: Using object-cover instead of object-contain */}
-          <div className="relative w-full h-full">
-            {/* Mobile Image */}
-            <Image
-              src="/images/home/Triveni_Cabs_Mobile.webp"
-              alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
-              className="hero-banner object-cover object-center block md:hidden"
-              fill
-              priority
-              sizes="100vw"
-              quality={85}
-              onLoad={() => {
-                trackEvent('hero_image_loaded', {
-                  event_category: 'performance',
-                  loading_time: performance.now(),
-                  device: 'mobile'
-                });
-              }}
-            />
-
-            {/* Tablet Image */}
-            <Image
-              src="/images/home/Triveni_Cabs_Tablet.webp"
-              alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
-              className="hero-banner object-cover object-center hidden md:block lg:hidden"
-              fill
-              priority
-              sizes="100vw"
-              quality={85}
-              onLoad={() => {
-                trackEvent('hero_image_loaded', {
-                  event_category: 'performance',
-                  loading_time: performance.now(),
-                  device: 'tablet'
-                });
-              }}
-            />
-
-            {/* Desktop Image */}
-            <Image
-              src="/images/home/Triveni_Cabs_Desktop.webp"
-              alt="Best car rental and taxi service - Professional drivers with luxury vehicles across India"
-              className="hero-banner object-cover object-center hidden lg:block"
-              fill
-              priority
-              sizes="100vw"
-              quality={85}
-              onLoad={() => {
-                trackEvent('hero_image_loaded', {
-                  event_category: 'performance',
-                  loading_time: performance.now(),
-                  device: 'desktop'
-                });
-              }}
-            />
-          </div>
-
-          {/* Hero Content - IMPROVED TEXT VISIBILITY */}
-          <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4"
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
+            transition={{ delay: 1.4 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto px-4"
           >
-            <motion.h1 
-              id="hero-heading"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center leading-tight"
-              style={{
-                color: '#FACF2D',
-                textShadow: '2px 2px 8px rgba(0,0,0,0.8), -1px -1px 2px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.6)',
-                WebkitTextStroke: '1px rgba(0,0,0,0.3)'
-              }}
-              variants={{
-                initial: { y: 50, opacity: 0 },
-                animate: { y: 0, opacity: 1, transition: { delay: 0.5, duration: 0.8 } }
-              }}
-            >
-              🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-center max-w-4xl mb-8 leading-relaxed font-semibold"
-              style={{
-                color: '#FFFFFF',
-                textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7)',
-                WebkitTextStroke: '0.5px rgba(0,0,0,0.4)'
-              }}
-              variants={{
-                initial: { y: 30, opacity: 0 },
-                animate: { y: 0, opacity: 1, transition: { delay: 0.7, duration: 0.8 } }
-              }}
-            >
-              ✅ Sedan {vehiclesServices[0]?.perKm || '₹11/km'} ✅ SUV {vehiclesServices[1]?.perKm || '₹15/km'} ✅ Professional Drivers ✅ 24/7 Support
-            </motion.p>
-            
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              variants={{
-                initial: { y: 30, opacity: 0 },
-                animate: { y: 0, opacity: 1, transition: { delay: 0.9, duration: 0.8 } }
-              }}
-            >
-              <motion.button
-                className="px-8 py-4 bg-[#FACF2D] text-black rounded-full text-lg font-bold hover:bg-[#ffd84d] transition-all duration-300 shadow-2xl border-2 border-black/20"
-                variants={scaleOnHover}
-                whileHover="hover"
-                whileTap="tap"
-                onClick={() => handleBookNowClick('hero')}
-                aria-label="Get free quote for taxi service via WhatsApp"
-              >
-                📞 Free Quote Now
-              </motion.button>
-              
-              <motion.button
-                className="px-8 py-4 bg-white/95 border-2 border-white text-black rounded-full text-lg font-bold hover:bg-[#FACF2D] hover:border-[#FACF2D] transition-all duration-300 shadow-2xl"
-                variants={scaleOnHover}
-                whileHover="hover"
-                whileTap="tap"
-                onClick={handleExploreClick}
-                aria-label="Explore our taxi services"
-              >
-                🚘 Explore Services
-              </motion.button>
-            </motion.div>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-          >
-            <div className="w-6 h-10 border-2 border-white/80 rounded-full flex justify-center shadow-lg">
+            {[
+              { icon: Shield, text: "100% Verified", gradient: "from-[#FACF2D] to-amber-500" },
+              { icon: Gauge, text: "Instant Booking", gradient: "from-amber-400 to-orange-500" },
+              { icon: ThumbsUp, text: "10K+ Reviews", gradient: "from-orange-400 to-amber-600" },
+              { icon: Award, text: "Best Rated", gradient: "from-yellow-400 to-amber-500" }
+            ].map((item, index) => (
               <motion.div
-                className="w-1 h-3 bg-white rounded-full mt-2"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                key={index}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 1.6 + index * 0.1, type: "spring", stiffness: 200 }}
+                whileHover={{ scale: 1.05, y: -3 }}
+                className="relative group cursor-pointer"
+              >
+                <div className="bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-xl md:rounded-2xl p-2 md:p-3 hover:border-amber-300 hover:shadow-xl transition-all shadow-md">
+                  <div className={`inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br ${item.gradient} rounded-lg md:rounded-xl mb-1 md:mb-2 shadow-md`}>
+                    <item.icon className="w-4 h-4 md:w-5 md:h-5 text-gray-800" />
+                  </div>
+                  <p className="text-gray-800 font-bold text-xs md:text-sm">{item.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-gray-800 text-sm font-semibold">Scroll Down</span>
+            <div className="w-8 h-14 border-3 border-amber-400 rounded-full flex items-start justify-center p-2">
+              <motion.div
+                animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-4 bg-amber-600 rounded-full"
               />
             </div>
-          </motion.div>
-        </section>
+          </div>
+        </motion.div>
+      </motion.section>
 
-        {/* Key Features Section */}
-        <motion.section
-          className="py-16 bg-white"
-          initial="initial"
-          whileInView="animate"
-          variants={fadeInUp}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="features-heading"
-          onViewportEnter={() => {
-            trackEvent('features_section_view', {
-              event_category: 'section_view',
-              section_name: 'key_features'
-            });
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 id="features-heading" className="text-2xl md:text-3xl font-bold mb-4">
-                🏆 Why Choose Our Car Rental & Taxi Services?
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                <strong>Best car rental rates in India!</strong> Professional service with competitive pricing across {cities.length}+ cities
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {keyFeatures.map((feature, index) => (
+      {/* WEDDING SERVICES SECTION */}
+      <section className="py-20 bg-gradient-to-b from-white via-pink-50/30 to-rose-50/30 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-pink-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-40 h-40 bg-rose-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Image/Visual */}
+            <div className="relative">
+              <div className="relative">
                 <motion.div
-                  key={index}
-                  className="text-center p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
-                  variants={{
-                    initial: { opacity: 0, y: 30 },
-                    animate: { opacity: 1, y: 0, transition: { delay: index * 0.1 } }
-                  }}
-                  onHoverStart={() => handleFeatureHover(feature.title)}
+                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"
+                />
+
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100 hover:shadow-3xl hover:border-amber-300 cursor-pointer"
                 >
-                  <div className={`inline-flex items-center justify-center w-16 h-16 ${feature.color} bg-gray-100 rounded-full mb-4`}>
-                    <feature.icon className="w-8 h-8" />
+                  <div className="aspect-video bg-gradient-to-br from-amber-400 via-[#FACF2D] to-orange-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/wedding_section.jpg')] bg-cover bg-center opacity-50 transition-opacity duration-300 hover:opacity-60"></div>
+                    <div className="relative text-center text-gray-800 p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Heart className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Wedding Services</h3>
+                      <p className="text-gray-700">Make Your Day Special</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-yellow-50 rounded-xl">
+                      <div className="text-2xl font-bold text-amber-600">BMW</div>
+                      <div className="text-xs text-gray-600">Luxury Cars</div>
+                    </div>
+                    <div className="text-center p-3 bg-amber-50 rounded-xl">
+                      <div className="text-2xl font-bold text-amber-600">Audi</div>
+                      <div className="text-xs text-gray-600">Premium</div>
+                    </div>
+                    <div className="text-center p-3 bg-orange-50 rounded-xl">
+                      <div className="text-2xl font-bold text-orange-600">Benz</div>
+                      <div className="text-xs text-gray-600">Royal</div>
+                    </div>
+                  </div>
                 </motion.div>
-              ))}
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-100 to-amber-100 text-amber-800 px-4 md:px-6 py-2 rounded-full mb-4 md:mb-6 shadow-sm">
+                <Heart className="w-4 h-4 md:w-5 md:h-5" />
+                <span className="font-semibold text-sm md:text-base">Make Your Day Memorable</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Royal Wedding Car Rental Services
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Luxury wedding cars and tempo travellers for your special day. From BMW, Audi, Mercedes to vintage cars - make your wedding entrance unforgettable!
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Car, title: "Luxury Cars", desc: "BMW, Audi, Mercedes" },
+                  { icon: Heart, title: "Car Decoration", desc: "Beautiful floral decor" },
+                  { icon: Users, title: "Baraat Service", desc: "Tempo traveller 9-26" },
+                  { icon: Crown, title: "Professional", desc: "Chauffeur driven" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                <Link href="/wedding" className="w-full sm:w-auto">
+                  <button className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Explore Wedding Cars
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Wedding Car Service')}
+                  className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                  Quick Call
+                </button>
+              </div>
             </div>
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        {/* Service Highlights */}
-        <motion.section
-          className="py-16 bg-gradient-to-b from-gray-50 to-white"
-          initial="initial"
-          whileInView="animate"
-          variants={fadeInUp}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="services-heading"
-          onViewportEnter={() => {
-            trackEvent('service_highlights_view', {
-              event_category: 'section_view',
-              section_name: 'service_highlights'
-            });
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 id="services-heading" className="text-2xl md:text-3xl font-bold mb-4">
-                🚗 Our Premium Car Rental & Tour Services
+      {/* AIRPORT SERVICES SECTION */}
+      <section className="py-20 bg-gradient-to-b from-blue-50/30 via-sky-50/30 to-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-sky-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-100 to-amber-100 text-amber-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+                <Clock className="w-5 h-5" />
+                <span className="font-semibold">24/7 Airport Transfer</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Reliable Airport Transfer Services
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                <strong>Complete transportation solutions:</strong> From sedan {vehiclesServices[0]?.perKm || '₹11/km'} to luxury tours {tourPackages[0]?.price || '₹9,999'}
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Professional airport pickup and drop services across all major airports. On-time, comfortable, and hassle-free transfers for your journey.
               </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {serviceHighlights.map((service, index) => (
-                <motion.div
-                  key={index}
-                  className="group cursor-pointer"
-                  onClick={() => handleServiceInquiry(service)}
-                  onHoverStart={() => {
-                    trackEvent('service_card_hover', {
-                      event_category: 'engagement',
-                      service_type: service.title,
-                      card_index: index
-                    });
-                  }}
-                >
-                  <motion.div
-                    className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2"
-                    variants={{
-                      initial: { opacity: 0, y: 30 },
-                      animate: { opacity: 1, y: 0, transition: { delay: index * 0.1 } }
-                    }}
-                  >
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#FACF2D] rounded-full mb-4 group-hover:scale-110 transition-transform">
-                      <service.icon className="w-6 h-6 text-black" />
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Clock, title: "24/7 Available", desc: "Round the clock service" },
+                  { icon: Shield, title: "Safe & Secure", desc: "Verified drivers" },
+                  { icon: Phone, title: "Live Tracking", desc: "Real-time updates" },
+                  { icon: Car, title: "All Airports", desc: "50+ airports covered" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-[#FACF2D] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <div className="flex items-center text-[#FACF2D] font-medium">
-                      <span>Learn More</span>
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/airport-service">
+                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Book Airport Transfer
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Airport Transfer')}
+                  className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Quick Call
+                </button>
+              </div>
+            </div>
+
+            {/* Right Image/Visual */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"
+                />
+
+                <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
+                  <div className="aspect-video bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/airport_section.jpg')] bg-cover bg-center opacity-50"></div>
+                    <div className="relative text-center text-gray-800 p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Plane className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Airport Transfers</h3>
+                      <p className="text-gray-700">Professional & Punctual</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-yellow-50 rounded-xl">
+                      <div className="text-2xl font-bold text-amber-600">50+</div>
+                      <div className="text-xs text-gray-600">Airports</div>
+                    </div>
+                    <div className="text-center p-3 bg-amber-50 rounded-xl">
+                      <div className="text-2xl font-bold text-amber-600">24/7</div>
+                      <div className="text-xs text-gray-600">Service</div>
+                    </div>
+                    <div className="text-center p-3 bg-orange-50 rounded-xl">
+                      <div className="text-2xl font-bold text-orange-600">5000+</div>
+                      <div className="text-xs text-gray-600">Transfers</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BUS ROUTES SECTION */}
+      <section className="py-20 bg-gradient-to-b from-white via-green-50/30 to-emerald-50/30 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-green-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-40 h-40 bg-emerald-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Image */}
+            <div className="relative">
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-green-200/40 to-emerald-200/40 rounded-full blur-3xl"
+                />
+
+                <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
+                  <div className="aspect-video bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/bus/hero_section_image.png')] bg-cover bg-center opacity-50"></div>
+                    <div className="relative text-center text-white p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Bus className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Bus Routes</h3>
+                      <p className="text-white">Luxury Group Travel</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-green-50 rounded-xl">
+                      <div className="text-2xl font-bold text-green-600">22-56</div>
+                      <div className="text-xs text-gray-600">Seater</div>
+                    </div>
+                    <div className="text-center p-3 bg-emerald-50 rounded-xl">
+                      <div className="text-2xl font-bold text-emerald-600">Volvo</div>
+                      <div className="text-xs text-gray-600">AC Buses</div>
+                    </div>
+                    <div className="text-center p-3 bg-teal-50 rounded-xl">
+                      <div className="text-2xl font-bold text-teal-600">GPS</div>
+                      <div className="text-xs text-gray-600">Tracking</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+                <Bus className="w-5 h-5" />
+                <span className="font-semibold">Luxury Bus Rentals</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Premium Bus Routes for Groups
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Luxury buses for large groups (22-56 seater). Perfect for corporate events, family trips, and group tours. Volvo & AC buses with entertainment systems.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Bus, title: "Volvo & AC", desc: "Premium buses" },
+                  { icon: Users, title: "22-56 Seater", desc: "Group capacity" },
+                  { icon: Star, title: "Entertainment", desc: "Music system" },
+                  { icon: Navigation, title: "GPS Tracking", desc: "Live location" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/bus-routes">
+                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    View Bus Routes
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Bus Rental')}
+                  className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Quick Call
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUTSTATION ROUTES SECTION */}
+      <section className="py-20 bg-gradient-to-b from-purple-50/30 via-violet-50/30 to-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-purple-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-violet-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-violet-100 text-purple-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+                <Route className="w-5 h-5" />
+                <span className="font-semibold">500+ Destinations</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Outstation Taxi Routes Across India
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Book outstation cabs to 500+ destinations across India. Delhi to Agra, Jaipur, Shimla, Manali & more. One-way & round trips with transparent pricing.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Map, title: "500+ Routes", desc: "All destinations" },
+                  { icon: Car, title: "One-way Trips", desc: "Flexible booking" },
+                  { icon: Shield, title: "GPS Tracking", desc: "Safe journey" },
+                  { icon: Award, title: "Best Rates", desc: "Transparent pricing" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/routes">
+                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    View All Routes
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Outstation Cab')}
+                  className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Quick Call
+                </button>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-purple-200/40 to-violet-200/40 rounded-full blur-3xl"
+                />
+
+                <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
+                  <div className="aspect-video bg-gradient-to-br from-purple-400 via-violet-400 to-indigo-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/citypage_hero_section_image.jpg')] bg-cover bg-center opacity-50"></div>
+                    <div className="relative text-center text-white p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Map className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Outstation Routes</h3>
+                      <p className="text-white">500+ Destinations</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-purple-50 rounded-xl">
+                      <div className="text-2xl font-bold text-purple-600">500+</div>
+                      <div className="text-xs text-gray-600">Routes</div>
+                    </div>
+                    <div className="text-center p-3 bg-violet-50 rounded-xl">
+                      <div className="text-2xl font-bold text-violet-600">24/7</div>
+                      <div className="text-xs text-gray-600">Booking</div>
+                    </div>
+                    <div className="text-center p-3 bg-indigo-50 rounded-xl">
+                      <div className="text-2xl font-bold text-indigo-600">GPS</div>
+                      <div className="text-xs text-gray-600">Tracking</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TOUR PACKAGES SECTION */}
+      <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-orange-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-40 h-40 bg-amber-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Image */}
+            <div className="relative">
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-orange-200/40 to-amber-200/40 rounded-full blur-3xl"
+                />
+
+                <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
+                  <div className="aspect-video bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/sightseeing/Sightseeingpage_hero_section_image.jpg')] bg-cover bg-center opacity-50"></div>
+                    <div className="relative text-center text-gray-800 p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Package className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Tour Packages</h3>
+                      <p className="text-gray-700">Curated Experiences</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-orange-50 rounded-xl">
+                      <div className="text-2xl font-bold text-orange-600">50+</div>
+                      <div className="text-xs text-gray-600">Packages</div>
+                    </div>
+                    <div className="text-center p-3 bg-amber-50 rounded-xl">
+                      <div className="text-2xl font-bold text-amber-600">Golden</div>
+                      <div className="text-xs text-gray-600">Triangle</div>
+                    </div>
+                    <div className="text-center p-3 bg-yellow-50 rounded-xl">
+                      <div className="text-2xl font-bold text-yellow-600">Custom</div>
+                      <div className="text-xs text-gray-600">Tours</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-amber-100 text-orange-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+                <Package className="w-5 h-5" />
+                <span className="font-semibold">Curated Experiences</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Tour Packages Across India
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Curated travel experiences across North India. Golden Triangle tours, hill stations, pilgrimage tours & custom itineraries. Complete travel solutions.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: MapPin, title: "Golden Triangle", desc: "Delhi-Agra-Jaipur" },
+                  { icon: Package, title: "Hill Stations", desc: "Shimla, Manali" },
+                  { icon: Heart, title: "Pilgrimage", desc: "Spiritual tours" },
+                  { icon: Star, title: "Custom Tours", desc: "Your itinerary" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/services">
+                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    View Tour Packages
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Tour Package')}
+                  className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Quick Call
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TEMPO TRAVELLER SECTION */}
+      <section className="py-20 bg-gradient-to-b from-indigo-50/30 via-blue-50/30 to-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+                <Users className="w-5 h-5" />
+                <span className="font-semibold">Group Travel Solutions</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Tempo Traveller Rentals
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Perfect for group travel (12-26 seater). AC vehicles with pushback seats. Ideal for family trips, corporate tours, and group outings.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Users, title: "12-26 Seater", desc: "Group capacity" },
+                  { icon: Car, title: "AC Vehicles", desc: "Comfortable ride" },
+                  { icon: Heart, title: "Family Friendly", desc: "Spacious interiors" },
+                  { icon: Award, title: "Corporate Tours", desc: "Professional service" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/tempo-traveller">
+                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    View Tempo Fleet
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Tempo Traveller')}
+                  className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Quick Call
+                </button>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-3xl"
+                />
+
+                <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
+                  <div className="aspect-video bg-gradient-to-br from-blue-400 via-indigo-400 to-violet-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/tempo_section.jpg')] bg-cover bg-center opacity-50"></div>
+                    <div className="relative text-center text-white p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Users className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Tempo Traveller</h3>
+                      <p className="text-white">Group Travel Made Easy</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-blue-50 rounded-xl">
+                      <div className="text-2xl font-bold text-blue-600">12-26</div>
+                      <div className="text-xs text-gray-600">Seater</div>
+                    </div>
+                    <div className="text-center p-3 bg-indigo-50 rounded-xl">
+                      <div className="text-2xl font-bold text-indigo-600">AC</div>
+                      <div className="text-xs text-gray-600">Comfort</div>
+                    </div>
+                    <div className="text-center p-3 bg-violet-50 rounded-xl">
+                      <div className="text-2xl font-bold text-violet-600">GPS</div>
+                      <div className="text-xs text-gray-600">Tracking</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TOUR GUIDE SECTION */}
+      <section className="py-20 bg-gradient-to-b from-white via-teal-50/30 to-cyan-50/30 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-teal-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-cyan-300/20 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Image */}
+            <div className="relative">
+              <div className="relative">
+                <motion.div
+                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-teal-200/40 to-cyan-200/40 rounded-full blur-3xl"
+                />
+
+                <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
+                  <div className="aspect-video bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/images/tour-guide.jpg')] bg-cover bg-center opacity-50"></div>
+                    <div className="relative text-center text-white p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Camera className="w-12 h-12" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2">Tour Guides</h3>
+                      <p className="text-white">Expert Local Guides</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-3 bg-teal-50 rounded-xl">
+                      <div className="text-2xl font-bold text-teal-600">14+</div>
+                      <div className="text-xs text-gray-600">Cities</div>
+                    </div>
+                    <div className="text-center p-3 bg-cyan-50 rounded-xl">
+                      <div className="text-2xl font-bold text-cyan-600">6</div>
+                      <div className="text-xs text-gray-600">Languages</div>
+                    </div>
+                    <div className="text-center p-3 bg-blue-50 rounded-xl">
+                      <div className="text-2xl font-bold text-blue-600">100+</div>
+                      <div className="text-xs text-gray-600">Guides</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-100 to-cyan-100 text-teal-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+                <Camera className="w-5 h-5" />
+                <span className="font-semibold">Expert Local Guides</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+                Professional Tour Guide Services
+              </h2>
+
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
+                Expert guides in 14+ cities, 6 languages. Certified guides, multi-language support, cultural insights & personalized tours. Make your journey memorable!
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Award, title: "Certified Guides", desc: "Licensed professionals" },
+                  { icon: MapPin, title: "14+ Cities", desc: "Pan India coverage" },
+                  { icon: Camera, title: "Cultural Insights", desc: "Local expertise" },
+                  { icon: Star, title: "6 Languages", desc: "Multi-lingual" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-amber-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-lg flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-gray-800" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-xs text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/tour-guide">
+                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Book Tour Guide
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleBookNowClick('Tour Guide')}
+                  className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Quick Call
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CITIES WE SERVE SECTION */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm"
+            >
+              <MapPin className="w-5 h-5" />
+              <span className="font-semibold">We Are Available Across India</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+            >
+              Serving 14+ Premium Cities
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-base md:text-lg lg:text-xl text-gray-700 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4"
+            >
+              From bustling metros to serene hill stations, we provide reliable taxi services across major cities in North India
+            </motion.p>
+          </div>
+
+          {/* Cities Marquee */}
+          <div className="mb-8">
+            <Marquee gradient={false} speed={40} pauseOnHover={true}>
+              {['Delhi', 'Agra', 'Jaipur', 'Haridwar', 'Chandigarh', 'Shimla', 'Manali'].map((city, index) => (
+                <Link href={`/${city.toLowerCase()}`} key={index}>
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="mx-2 md:mx-4 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-4 md:p-6 border-2 border-transparent hover:border-blue-400 min-w-[160px] md:min-w-[200px] cursor-pointer"
+                  >
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mb-2 md:mb-3 shadow-lg">
+                        <MapPin className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                      </div>
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-1">{city}</h3>
+                      <p className="text-xs md:text-sm text-gray-600">Cab Service</p>
+                      <div className="mt-1 md:mt-2 flex items-center gap-1 text-green-600">
+                        <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4" />
+                        <span className="text-xs font-semibold">Available</span>
+                      </div>
                     </div>
                   </motion.div>
-                </motion.div>
+                </Link>
               ))}
-            </div>
+            </Marquee>
           </div>
-        </motion.section>
 
-        {/* About Section */}
-        <motion.section
-          initial="initial"
-          whileInView="animate"
-          variants={fadeInUp}
-          viewport={{ once: true, margin: "-100px" }}
-          onViewportEnter={() => {
-            trackEvent('about_section_view', {
-              event_category: 'section_view',
-              section_name: 'about_section'
-            });
-          }}
-        >
-          <AboutSection />
-        </motion.section>
+          {/* Second Row - Reverse Direction */}
+          <div className="mb-12">
+            <Marquee gradient={false} speed={40} direction="right" pauseOnHover={true}>
+              {['Amritsar', 'Dehradun', 'Rishikesh', 'Jodhpur', 'Udaipur', 'Ayodhya', 'Ahmedabad'].map((city, index) => (
+                <Link href={`/${city.toLowerCase()}`} key={index}>
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="mx-2 md:mx-4 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-4 md:p-6 border-2 border-transparent hover:border-purple-400 min-w-[160px] md:min-w-[200px] cursor-pointer"
+                  >
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mb-2 md:mb-3 shadow-lg">
+                        <Car className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                      </div>
+                      <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-1">{city}</h3>
+                      <p className="text-xs md:text-sm text-gray-600">Taxi Service</p>
+                      <div className="mt-1 md:mt-2 flex items-center gap-1 text-green-600">
+                        <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4" />
+                        <span className="text-xs font-semibold">Available</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </Marquee>
+          </div>
 
-        {/* Services Section */}
-        <motion.section
-          initial="initial"
-          whileInView="animate"
-          variants={fadeInUp}
-          viewport={{ once: true, margin: "-100px" }}
-          onViewportEnter={() => {
-            trackEvent('services_section_view', {
-              event_category: 'section_view',
-              section_name: 'services_section'
-            });
-          }}
-        >
-          <ServicesSection />
-        </motion.section>
-
-        {/* Final CTA Section */}
-        <motion.section
-          className="bg-gradient-to-r from-[#FACF2D] to-yellow-400 py-16"
-          initial="initial"
-          whileInView="animate"
-          variants={fadeInUp}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="cta-heading"
-          onViewportEnter={() => {
-            trackEvent('final_cta_view', {
-              event_category: 'section_view',
-              section_name: 'final_cta'
-            });
-          }}
-        >
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 id="cta-heading" className="text-2xl md:text-3xl font-bold mb-6 text-black">
-              🚀 Book Car Rental & Tour Packages Today - Get Free Quote!
-            </h2>
-            <p className="text-lg text-gray-800 mb-8 max-w-3xl mx-auto">
-              <strong>Best rates guaranteed!</strong> Sedan {vehiclesServices[0]?.perKm || '₹11/km'}, SUV {vehiclesServices[1]?.perKm || '₹15/km'}, Tempo {vehiclesServices[2]?.perKm || '₹24/km'}. Professional drivers, AC vehicles, competitive prices. Available 24/7 across India.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <motion.button 
-                className="bg-black text-white rounded-lg py-4 px-8 text-lg font-semibold hover:bg-gray-800 transition-all duration-300 shadow-lg flex items-center gap-2"
-                variants={scaleOnHover}
-                whileHover="hover"
-                whileTap="tap"
-                onClick={handleCTAClick}
-                aria-label="Book taxi service now via WhatsApp"
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {[
+              { icon: MapPin, number: "14+", label: "Cities Covered", color: "from-blue-500 to-cyan-500" },
+              { icon: Route, number: "500+", label: "Routes Available", color: "from-purple-500 to-pink-500" },
+              { icon: Users, number: "10K+", label: "Happy Customers", color: "from-green-500 to-emerald-500" },
+              { icon: Zap, number: "24/7", label: "Service Available", color: "from-orange-500 to-red-500" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg text-center border-2 border-gray-100 hover:border-gray-200 transition-all"
               >
-                <Phone className="w-5 h-5" />
-                📱 Call/WhatsApp: {phoneNumber}
-              </motion.button>
-              
-              <motion.div className="flex items-center text-black font-medium">
-                <CheckCircle className="w-5 h-5 mr-2" />
-                <span>✅ Free Quotes • No Hidden Charges</span>
+                <div className={`w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 shadow-lg`}>
+                  <stat.icon className="w-5 h-5 md:w-7 md:h-7 text-white" />
+                </div>
+                <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
+                <div className="text-xs md:text-sm text-gray-600">{stat.label}</div>
               </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 relative overflow-hidden">
+        <div className="relative z-10 max-w-5xl mx-auto px-4">
+          <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-2 border-amber-200">
+            <div className="text-center mb-6 md:mb-10">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-100 to-amber-100 text-amber-800 px-4 md:px-6 py-2 rounded-full mb-4 md:mb-6 shadow-sm">
+                <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
+                <span className="font-semibold text-sm md:text-base">Get Started Today</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent px-4">
+                Ready to Start Your Journey?
+              </h2>
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4">
+                Book now and experience the best travel services in India. Professional drivers, premium vehicles, and 24/7 support guaranteed!
+              </p>
             </div>
-            
-            <div className="mt-8 flex flex-wrap justify-center items-center gap-8 text-black/80">
-              <div className="flex items-center">
-                <Shield className="w-5 h-5 mr-2" />
-                <span>✅ Verified Drivers</span>
-              </div>
-              <div className="flex items-center">
-                <Clock className="w-5 h-5 mr-2" />
-                <span>✅ 24/7 Support</span>
-              </div>
-              <div className="flex items-center">
-                <Car className="w-5 h-5 mr-2" />
-                <span>✅ {cities.length}+ Cities</span>
-              </div>
-              <div className="flex items-center">
-                <Star className="w-5 h-5 mr-2" />
-                <span>✅ Professional Service</span>
-              </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-6 md:mb-8">
+              <button
+                onClick={() => handleBookNowClick()}
+                className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-base md:text-lg rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3 group"
+              >
+                Get Free Quote
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={() => handleBookNowClick()}
+                className="px-8 md:px-10 py-4 md:py-5 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-base md:text-lg rounded-full hover:bg-amber-50 hover:border-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3"
+              >
+                <Phone className="w-5 h-5 md:w-6 md:h-6" />
+                <span className="truncate">Call: {phoneNumber}</span>
+              </button>
+            </div>
+
+            <div className="text-center px-4">
+              <p className="text-sm md:text-base text-gray-600 font-semibold flex items-center justify-center gap-2">
+                <Shield className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
+                <span>Available 24/7 for bookings and inquiries</span>
+              </p>
             </div>
           </div>
-        </motion.section>
-      </motion.main>
-    </>
+        </div>
+      </section>
+    </div>
   );
 }
