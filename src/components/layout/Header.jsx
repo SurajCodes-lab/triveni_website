@@ -121,7 +121,7 @@ const Header = () => {
         Skip to main content
       </a>
       <div className="sticky top-0 z-50 w-full">
-        <header className="bg-[#FACF2D] shadow-sm">
+        <header className="bg-[#FACF2D] shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
@@ -223,7 +223,7 @@ const Header = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300"
+          className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 transition-opacity duration-300"
           onClick={toggleMenu}
           role="dialog"
           aria-modal="true"
@@ -232,71 +232,107 @@ const Header = () => {
           <div
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="bg-white w-64 h-full shadow-md p-4 relative animate-slide-in-left"
+            className="bg-gradient-to-br from-gray-900 via-gray-800 to-black w-80 h-full shadow-2xl p-6 relative animate-slide-in-left border-r-4 border-[#FACF2D]"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
-              className="text-black focus:outline-none absolute top-2 right-2 p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors focus-visible:ring-2 focus-visible:ring-black"
+              className="text-[#FACF2D] focus:outline-none absolute top-4 right-4 p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-gray-800 hover:bg-[#FACF2D] hover:text-black transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#FACF2D] shadow-lg border-2 border-[#FACF2D]"
               onClick={toggleMenu}
               aria-label="Close menu"
             >
               <X className="h-6 w-6" />
             </button>
-            <nav className="flex mt-10 flex-col space-y-1" role="navigation" aria-label="Mobile navigation">
+
+            {/* Menu Header with Logo */}
+            <div className="mb-8 mt-2">
+              <div className="flex items-center gap-3 mb-4">
+                <Image
+                  src="/images/logo/logo2.webp"
+                  alt="Triveni Cabs"
+                  width={60}
+                  height={60}
+                  className="rounded-lg"
+                />
+                <div>
+                  <h2 className="text-xl font-bold text-white">Triveni Cabs</h2>
+                  <p className="text-xs text-[#FACF2D]">Your Travel Partner</p>
+                </div>
+              </div>
+              <div className="h-1 w-full bg-gradient-to-r from-[#FACF2D] via-amber-400 to-transparent rounded-full"></div>
+            </div>
+
+            <nav className="flex flex-col space-y-1" role="navigation" aria-label="Mobile navigation">
               <Link
                 href="/"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('Home', '/', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('About', '/about', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 About
               </Link>
               <Link
                 href="/services"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('Services', '/services', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Services
               </Link>
               <Link
                 href="/tempo-traveller"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('Tempo Traveller', '/tempo-traveller', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Tempo Traveller
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('Contact', '/contact', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Contact
               </Link>
               <Link
                 href="/bus-routes"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('Bus Routes', '/bus-routes', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Bus Routes
               </Link>
               <Link
                 href="/tour-guide"
-                className="text-gray-900 hover:bg-yellow-100 hover:text-black font-semibold py-3 px-3 min-h-[48px] flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-black"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
                 onClick={() => { handleNavClick('Tour Guide', '/tour-guide', 'mobile_menu'); toggleMenu(); }}
               >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Tour Guide
               </Link>
-              
-
-              {/* Vehicles Section */}
-              
             </nav>
+
+            {/* Contact Section in Mobile Menu */}
+            <div className="mt-8 pt-6 border-t border-gray-700">
+              <a
+                href="tel:+917668570551"
+                onClick={handlePhoneClick}
+                className="flex items-center justify-center gap-3 bg-gradient-to-r from-[#FACF2D] to-amber-400 text-black font-bold py-4 px-6 rounded-full hover:shadow-xl hover:shadow-[#FACF2D]/30 transition-all duration-300 transform hover:scale-105"
+              >
+                <Phone className="w-5 h-5" />
+                <span>+91 76685 70551</span>
+              </a>
+              <p className="text-center text-gray-400 text-xs mt-4">Available 24/7</p>
+            </div>
             {/* <button
               onClick={handleLogin}
               className="bg-black mt-10 text-white rounded-full px-10 py-2 text-xs tracking-[0.06rem] hover:bg-gray-800 hover:text-[#FACF2D] transition-all duration-300"

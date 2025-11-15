@@ -46,7 +46,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white overflow-hidden">
 
       {/* HERO SECTION */}
-      <motion.section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-8 md:pt-0 md:pb-4">
+      <motion.section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-2 pb-8 md:pt-0 md:pb-4">
         {/* Background Image with Enhanced Visibility */}
         <div className="absolute inset-0">
           <div
@@ -111,7 +111,7 @@ export default function HomePage() {
         />
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center mt-0 md:-mt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center -mt-12 md:-mt-20">
           {/* Top Badge */}
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
@@ -286,12 +286,12 @@ export default function HomePage() {
                 >
                   <div className="aspect-video bg-gradient-to-br from-amber-400 via-[#FACF2D] to-orange-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/wedding_section.jpg')] bg-cover bg-center opacity-50 transition-opacity duration-300 hover:opacity-60"></div>
-                    <div className="relative text-center text-gray-800 p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Heart className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Heart className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Wedding Services</h3>
-                      <p className="text-gray-700">Make Your Day Special</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Wedding Services</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>Make Your Day Special</p>
                     </div>
                   </div>
 
@@ -437,12 +437,12 @@ export default function HomePage() {
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/airport_section.jpg')] bg-cover bg-center opacity-50"></div>
-                    <div className="relative text-center text-gray-800 p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Plane className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Plane className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Airport Transfers</h3>
-                      <p className="text-gray-700">Professional & Punctual</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Airport Transfers</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>Professional & Punctual</p>
                     </div>
                   </div>
 
@@ -486,12 +486,12 @@ export default function HomePage() {
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/bus/hero_section_image.png')] bg-cover bg-center opacity-50"></div>
-                    <div className="relative text-center text-white p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Bus className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Bus className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Bus Routes</h3>
-                      <p className="text-white">Luxury Group Travel</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Bus Routes</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>Luxury Group Travel</p>
                     </div>
                   </div>
 
@@ -637,12 +637,12 @@ export default function HomePage() {
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-purple-400 via-violet-400 to-indigo-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/citypage_hero_section_image.jpg')] bg-cover bg-center opacity-50"></div>
-                    <div className="relative text-center text-white p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Map className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Map className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Outstation Routes</h3>
-                      <p className="text-white">500+ Destinations</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Outstation Routes</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>500+ Destinations</p>
                     </div>
                   </div>
 
@@ -686,12 +686,12 @@ export default function HomePage() {
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/sightseeing/Sightseeingpage_hero_section_image.jpg')] bg-cover bg-center opacity-50"></div>
-                    <div className="relative text-center text-gray-800 p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Package className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Package className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Tour Packages</h3>
-                      <p className="text-gray-700">Curated Experiences</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Tour Packages</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>Curated Experiences</p>
                     </div>
                   </div>
 
@@ -837,12 +837,12 @@ export default function HomePage() {
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-blue-400 via-indigo-400 to-violet-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/tempo_section.jpg')] bg-cover bg-center opacity-50"></div>
-                    <div className="relative text-center text-white p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Users className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Users className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Tempo Traveller</h3>
-                      <p className="text-white">Group Travel Made Easy</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Tempo Traveller</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>Group Travel Made Easy</p>
                     </div>
                   </div>
 
@@ -886,12 +886,12 @@ export default function HomePage() {
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('/images/tour-guide.jpg')] bg-cover bg-center opacity-50"></div>
-                    <div className="relative text-center text-white p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Camera className="w-12 h-12" />
+                    <div className="relative text-center p-4 md:p-6">
+                      <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+                        <Camera className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-2">Tour Guides</h3>
-                      <p className="text-white">Expert Local Guides</p>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>Tour Guides</h3>
+                      <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>Expert Local Guides</p>
                     </div>
                   </div>
 
