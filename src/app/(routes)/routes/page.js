@@ -21,7 +21,7 @@ export const metadata = {
     siteName: 'Triveni Cabs',
     images: [
       {
-        url: 'https://trivenicabs.in/images/car/car1.webp',
+        url: 'https://trivenicabs.in/images/citypage_hero_section_image.jpg',
         width: 1200,
         height: 630,
         alt: 'Outstation Taxi Routes - Triveni Cabs',
@@ -32,7 +32,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Explore 500+ Taxi Routes Across India | Triveni Cabs',
     description: '🚗 Professional outstation cab service. Delhi • Jaipur • Agra • Shimla • Manali. Book online now!',
-    images: ['https://trivenicabs.in/images/car/car1.webp']
+    images: ['https://trivenicabs.in/images/citypage_hero_section_image.jpg']
   },
   robots: {
     index: true,

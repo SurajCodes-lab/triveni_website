@@ -53,20 +53,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/Delhi_hero_section.jpg",
-      heroImagePrompt: "Stunning wide-angle shot of Red Fort (Lal Qila) in Delhi at golden hour, massive red sandstone walls, main gate with tourists, Indian flag flying, dramatic sky, architectural photography, vibrant colors, ultra-detailed, 8k quality",
       images: [
         "/images/sightseeing/Akshardham_Temple.jpg",
         "/images/sightseeing/India_Gate.jpg",
         "/images/sightseeing/Lotus Temple.jpg",
         "/images/sightseeing/Humayun's_Tomb.jpg",
         "/images/sightseeing/Outub_Minar.jpg"
-      ],
-      additionalImages: [
-        "Akshardham Temple at night with illuminated intricate carvings, musical fountain show, reflection in water, grand architecture, HDR photography",
-        "India Gate war memorial at sunset with eternal flame, manicured lawns, people gathered, patriotic atmosphere, warm golden light",
-        "Lotus Temple (Bahá'í House) exterior with blooming lotus petals design, white marble, blue sky, serene gardens, architectural marvel, symmetrical composition",
-        "Humayun's Tomb with Mughal architecture, red sandstone and white marble, Persian-style Charbagh garden, UNESCO World Heritage Site, symmetrical composition",
-        "Qutub Minar towering 73 meters high, red sandstone minaret, intricate carvings, Iron Pillar, ancient ruins, UNESCO heritage site, dramatic angle"
       ],
       tips: [
         "Start early to avoid Delhi traffic",
@@ -131,15 +123,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station & Lakes",
       heroImage: "/images/sightseeing/nainital_hero_section.jpg",
-      heroImagePrompt: "Stunning aerial view of Naini Lake in Nainital, pear-shaped emerald lake surrounded by seven hills, colorful buildings on hillsides, boats on water, Naina Devi Temple visible, snow-capped Himalayas in background, misty mountains, Queen of Lakes, scenic hill station panorama, golden hour lighting",
       images: [],
-      additionalImages: [
-        "Naini Lake at sunset with boating, reflection of hills in calm water, colorful paddle boats, Mall Road lights glowing, romantic evening atmosphere",
-        "Snow View Point cable car ropeway ascending with Nainital town and lake view below, aerial tramway, tourists enjoying ride, panoramic Himalayan peaks",
-        "Naina Peak (Cheena Peak) summit view with prayer flags, trekkers at highest point, 360-degree Himalayan vista, dense forest trail, adventure trekking",
-        "Mall Road Nainital bustling with tourists, colonial-era buildings, cafes and restaurants, shopping, horse rides, vibrant hill station life",
-        "Naina Devi Temple on lake shore, devotees, spiritual site, colorful flags, ancient Shakti Peetha, religious significance"
-      ],
       tips: [
         "Book hotels in advance during peak season",
         "Carry warm clothes even in summer (evenings are cold)",
@@ -203,15 +187,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station",
       heroImage: "/images/sightseeing/mussoorie_delhi_hero.jpg",
-      heroImagePrompt: "Beautiful panoramic view of Mussoorie hill station, Mall Road with colonial buildings on hillside, Doon Valley visible far below, Himalayan ranges in background, misty mountains, Queen of Hills landscape, cable car to Gun Hill visible, lush green slopes, evening lights glowing, romantic hill town atmosphere",
       images: [],
-      additionalImages: [
-        "Kempty Falls cascading down with tourists bathing and enjoying, multi-tiered waterfall, lush greenery, changing rooms, popular tourist attraction, refreshing water",
-        "Gun Hill ropeway cable car ascending over Mussoorie town, aerial view of valley, tourists inside gondola, second highest peak, panoramic vista",
-        "Mall Road Mussoorie bustling with tourists, shops, cafes, colonial architecture, street vendors, horse rides, vibrant hill station atmosphere",
-        "Lal Tibba highest point with vintage telescope, snow-capped Himalayan peaks view, prayer flags, observation deck, clear mountain scenery",
-        "Company Garden with colorful flowers, boating lake, fountains, families picnicking, well-maintained municipal garden, leisure spot"
-      ],
       tips: [
         "Avoid weekends and holidays for less crowds",
         "Parking on Mall Road restricted, walk from designated areas",
@@ -275,15 +251,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Wildlife & Nature",
       heroImage: "/images/sightseeing/corbett_hero_section.jpg",
-      heroImagePrompt: "Majestic Bengal tiger walking on forest path in Jim Corbett National Park, dense sal forest, dappled sunlight through trees, wildlife photography, powerful predator in natural habitat, India's tiger reserve, dramatic wildlife moment, photographic safari, 8k quality",
       images: [],
-      additionalImages: [
-        "Jeep safari in Corbett with tourists viewing wildlife, open-top safari vehicle on jungle track, elephants in background, adventure tourism, guided forest safari",
-        "Garjiya Devi Temple perched on large rock in middle of Kosi River, devotees crossing, spiritual site, scenic river landscape, unique temple location",
-        "Corbett Falls hidden in dense forest, waterfall cascading over rocks, lush greenery, trekking path, peaceful natural setting, monsoon beauty",
-        "Asian elephant herd at Ramganga River in Corbett, wildlife drinking water, tusker leading, natural wildlife behavior, conservation success",
-        "Luxury jungle resort in Corbett with machaan (watchtower), swimming pool, mountain view, eco-tourism accommodation, nature getaway"
-      ],
       tips: [
         "Book safari permits well in advance (limited slots)",
         "Morning safaris have better tiger sighting chances",
@@ -348,15 +316,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/mathura_vrindavan_hero.jpg",
-      heroImagePrompt: "Magnificent Prem Mandir Vrindavan illuminated at night, white marble temple glowing with colorful lights, Krishna-Radha sculptures, musical fountain show, devotees gathered, divine architecture, spiritual grandeur, HDR photography, 8k quality",
       images: [],
-      additionalImages: [
-        "Banke Bihari Temple crowded with devotees, colorful decorations, priests, Krishna deity darshan, spiritual fervor, traditional Vaishnav worship, bhajan singing",
-        "Krishna Janmabhoomi Temple complex, birthplace shrine, devotees praying, spiritual significance, ancient holy site, pilgrimage destination",
-        "Vishram Ghat evening Aarti on Yamuna River, oil lamps, priests performing ritual, devotees gathered, spiritual ceremony, holy river banks",
-        "ISKCON Vrindavan temple with ornate architecture, beautiful gardens, Krishna Balaram deities, international devotees, peaceful atmosphere",
-        "Govardhan Hill parikrama path with pilgrims, sacred hill lifted by Krishna, religious significance, devotees walking barefoot, spiritual journey"
-      ],
       tips: [
         "Remove shoes and leather items before entering temples",
         "Banke Bihari darshan can take 1-2 hours in queue",
@@ -417,15 +377,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Heritage & Adventure",
       heroImage: "/images/sightseeing/neemrana_fort_hero.jpg",
-      heroImagePrompt: "Magnificent Neemrana Fort Palace perched on hill, 15th century multi-tiered heritage fort, Rajput architecture, arched windows and balconies, Aravalli hills landscape, zip lines visible between towers, majestic heritage property, dramatic hill fort panorama, golden evening light, architectural photography",
       images: [],
-      additionalImages: [
-        "Neemrana Fort zip-lining adventure with person zipping between fort towers, adrenaline rush, heritage adventure, safety equipment, unique experience",
-        "Fort palace courtyard with traditional Rajasthani architecture, arches, hanging gardens, heritage hotel ambiance, royal setting",
-        "Ancient step-well (baori) near Neemrana with geometric steps descending, intricate architecture, water conservation heritage, historical engineering",
-        "Fort panoramic view from terrace with Aravalli ranges, infinity pool, heritage luxury, sunset dining setup, romantic ambiance",
-        "Heritage room interior with antique furniture, traditional decor, royal bedroom, period architecture, luxury heritage stay"
-      ],
       tips: [
         "Wear comfortable shoes for fort walking",
         "Book zip-lining in advance",
@@ -486,15 +438,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Wildlife & Heritage",
       heroImage: "/images/sightseeing/sariska_alwar_hero.jpg",
-      heroImagePrompt: "Bengal tiger in Sariska Tiger Reserve walking through dry deciduous forest, majestic predator, Aravalli hills landscape, wildlife photography, safari moment, natural habitat, conservation reserve, dramatic wildlife encounter, morning light filtering through trees",
       images: [],
-      additionalImages: [
-        "Jeep safari in Sariska with tourists spotting wildlife, open gypsy vehicle on forest track, deer crossing, adventure tourism, guided nature tour",
-        "Alwar City Palace complex with Indo-Islamic architecture, ornate balconies, royal courtyards, museum artifacts, heritage building",
-        "Siliserh Lake with palace hotel on shore, Aravalli hills reflection in water, boating, scenic royal retreat, tranquil setting",
-        "Bala Quila fort atop hill overlooking Alwar city, massive walls, historic fortification, panoramic valley view, sunset photography",
-        "Leopard resting on tree branch in Sariska, spotted predator, wildlife sighting, big cat conservation, forest ecosystem"
-      ],
       tips: [
         "Early morning safari has best animal sighting chances",
         "Book safari permits in advance",
@@ -558,15 +502,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/kasauli_hero.jpg",
-      heroImagePrompt: "Peaceful Kasauli Mall Road with colonial-era buildings, pine and deodar trees lining path, mist rolling through mountains, tourists walking, Victorian architecture, serene hill station atmosphere, Himalayan foothills, tranquil morning scene, golden light through trees",
       images: [],
-      additionalImages: [
-        "Monkey Point (Hanuman Temple) at highest peak of Kasauli, red temple structure, panoramic Himalayan views, devotees, prayer flags, summit viewpoint",
-        "Christ Church Kasauli Gothic architecture with stained glass windows, colonial heritage, Sunday service, peaceful church compound, historical landmark",
-        "Gilbert Trail forest path through dense pine and oak trees, nature walk, bird watching, trekking trail, lush greenery, peaceful hiking",
-        "Sunset Point Kasauli with valley view turning golden, Sutlej river visible far below, mountains silhouette, romantic sunset spot, bench viewpoint",
-        "Kasauli Brewery oldest distillery in India, colonial-era building, heritage site, Solan beer production, architectural landmark"
-      ],
       tips: [
         "Kasauli is vehicle-restricted, walking required on Mall Road",
         "Carry comfortable walking shoes for trails",
@@ -631,15 +567,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/lansdowne_hero.jpg",
-      heroImagePrompt: "Serene Bhulla Lake in Lansdowne surrounded by oak and pine forests, paddle boats on calm water, misty mountains in background, peaceful hill station, cantonment town atmosphere, natural beauty, morning fog over lake, tranquil landscape photography",
       images: [],
-      additionalImages: [
-        "Tip-n-Top viewpoint with panoramic Himalayan snow peaks vista, observation deck, tourists enjoying view, Garhwal ranges, clear mountain scenery",
-        "St. Mary's Church Lansdowne colonial-era architecture, white church building, pine trees surrounding, Sunday service, cantonment heritage",
-        "War Memorial dedicated to Garhwal Rifles, military history, eternal flame, patriotic tribute, well-maintained memorial garden",
-        "Tarkeshwar Mahadev Temple ancient Shiva shrine in dense deodar forest, religious significance, peaceful temple complex, devotees",
-        "Oak forest walking trail in Lansdowne, nature walk, bird watching, peaceful trekking, untouched natural beauty, morning mist"
-      ],
       tips: [
         "Very peaceful and less commercialized than other hill stations",
         "Limited restaurant options, hotel meals recommended",
@@ -713,15 +641,7 @@ export const sightseeingTours = {
       difficulty: "Moderate (crowded, intense experience)",
       category: "Spiritual & Cultural",
       heroImage: "/images/sightseeing/varanasi_hero.jpg",
-      heroImagePrompt: "Magical Ganga Aarti at Dashashwamedh Ghat Varanasi, priests in saffron robes holding massive brass lamps with fire, hundreds of devotees gathered, Ganges River flowing, boats with oil lamps floating, spiritual grandeur, evening divine ceremony, smoke and incense, long exposure photography, 8k quality",
       images: [],
-      additionalImages: [
-        "Sunrise boat ride on Ganges with ancient ghats in background, morning mist, people bathing in holy river, temples on shore, rowing boats, spiritual awakening, golden light",
-        "Kashi Vishwanath Temple golden spire (shikhara), devotees queuing for darshan, ancient Jyotirlinga temple, spiritual significance, crowded pilgrimage site",
-        "Sarnath Dhamek Stupa where Buddha gave first sermon, Buddhist pilgrims, deer park, ancient ruins, serene meditation site, archaeological importance",
-        "Manikarnika burning ghat with cremation pyres, cycle of life and death, spiritual perspective, sacred ground, eternal flames, Hindu funeral rites",
-        "Assi Ghat morning yoga and aarti, cultural hub, tourists and locals, boat rides, vibrant ghat life, spiritual activities, riverside scene"
-      ],
       tips: [
         "Hire a knowledgeable guide to understand cultural significance",
         "Dress modestly, especially at temples and ghats",
@@ -736,6 +656,388 @@ export const sightseeingTours = {
       coordinates: { latitude: 25.3176, longitude: 82.9739 },
       groupSize: "1-15 persons",
       accessibility: "Not wheelchair accessible (narrow lanes, ghats with steps)"
+    },
+
+    {
+      id: 72,
+      name: "Delhi to Khatu Shyam Temple Pilgrimage",
+      slug: "delhi-to-khatu-shyam-temple-pilgrimage",
+      shortDescription: "Divine day trip from Delhi to Rajasthan's miraculous Khatu Shyam Ji temple",
+      fullDescription: "Experience a soul-enriching pilgrimage from Delhi to the sacred Khatu Shyam Ji temple, covering 280 km through Delhi-Rajasthan heartland. Dedicated to Barbarika (Khatu Shyam), a devotee of Lord Krishna, this temple is renowned for wish fulfillment and divine blessings. The unique black stone deity with captivating eyes attracts millions of devotees annually. Perfect for a spiritual day trip or overnight journey, this pilgrimage offers deep religious significance combined with Rajasthani cultural experience.",
+      duration: "Full Day (12-14 hours including 6 hrs travel time) or 2 Days recommended",
+      price: {
+        sedan: 5600,
+        suv: 6500,
+        tempoTraveller: 9500,
+        currency: "INR"
+      },
+      highlights: [
+        "Khatu Shyam Ji Temple - Sacred shrine with miraculous wish-fulfilling deity",
+        "Shyam Kund - Holy water tank for ritual purification",
+        "Pracheen Mandir - Ancient temple with historical significance",
+        "Gopinath Ji Temple - Adjacent shrine dedicated to Lord Krishna",
+        "Shyam Bagh - Peaceful garden for meditation and reflection",
+        "Aarti ceremony - Divine worship with bhajans and devotional atmosphere",
+        "Khatu Shyam prasad - Famous peda and traditional sweets"
+      ],
+      itinerary: [
+        { time: "04:00 AM", activity: "Pick up from Delhi hotel/residence", duration: "30 mins", description: "Very early morning departure to maximize temple time" },
+        { time: "04:30 AM", activity: "Drive to Khatu Shyam", duration: "6 hours", description: "280 km journey via NH48 through Rewari, Sikar route" },
+        { time: "10:30 AM", activity: "Arrival and Shyam Kund visit", duration: "45 mins", description: "Optional holy bath and purification" },
+        { time: "11:15 AM", activity: "Khatu Shyam Ji Temple darshan", duration: "3 hours", description: "Queue for main deity darshan, attend midday aarti" },
+        { time: "02:15 PM", activity: "Lunch and prasad", duration: "1 hour", description: "Traditional Rajasthani vegetarian meal and temple prasad" },
+        { time: "03:15 PM", activity: "Pracheen Mandir and Gopinath Ji Temple", duration: "1 hour", description: "Visit adjacent temples and shrines" },
+        { time: "04:15 PM", activity: "Shyam Bagh and shopping", duration: "1 hour", description: "Garden visit, buy prasad, souvenirs, religious items" },
+        { time: "05:15 PM", activity: "Return drive to Delhi", duration: "6 hours", description: "Evening return journey" },
+        { time: "11:15 PM", activity: "Drop off at Delhi hotel/residence", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with route knowledge and rest stops",
+        "Parking charges and toll taxes (Delhi-Rajasthan route)",
+        "Bottled water throughout the journey",
+        "All applicable taxes and service charges"
+      ],
+      exclusions: [
+        "Temple offerings and donations (as per devotion)",
+        "Lunch and meals (₹300-500 per person)",
+        "Prasad purchases (₹100-500)",
+        "VIP darshan pass (₹100-500 if opted)",
+        "Overnight accommodation (₹1500-3000 if 2-day trip opted)",
+        "Shopping expenses for religious items and souvenirs",
+        "Personal expenses and snacks"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather for long drive). Phalgun Mela (Feb-Mar) is most auspicious but extremely crowded. Avoid summer (May-June) due to desert heat.",
+      difficulty: "Moderate (long drive, temple queues, minimal walking)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/delhi_khatu_shyam_hero.jpg",
+      images: [
+        "/images/sightseeing/khatu_shyam_temple.jpg",
+        "/images/sightseeing/khatu_shyam_deity.jpg",
+        "/images/sightseeing/shyam_kund.jpg",
+        "/images/sightseeing/khatu_aarti_ceremony.jpg",
+        "/images/sightseeing/khatu_crowd_devotees.jpg"
+      ],
+      tips: [
+        "VERY early start (4 AM) essential to reach before massive queues form",
+        "Consider 2-day trip with overnight stay in Khatu Shyam for relaxed experience",
+        "Dress modestly - traditional Indian wear strongly preferred",
+        "Carry valid ID proof - sometimes required at temple entry",
+        "Remove shoes at temple entrance - wear comfortable socks",
+        "Darshan queues 2-5 hours on weekends - weekdays recommended",
+        "VIP darshan controversial - regular queue gives better spiritual experience",
+        "Phalgun Mela (Feb-Mar) attracts 3-4 million devotees - book months in advance",
+        "Saturday, Sunday, and new moon days extremely crowded",
+        "Aarti timings: Morning 4-5 AM (Mangla), Midday 12 PM, Evening 7-8 PM",
+        "Photography prohibited inside main sanctum",
+        "Famous Khatu Shyam peda prasad - buy from authorized temple shops only",
+        "Carry sufficient cash - ATMs limited, card facilities minimal",
+        "Highway driving - multiple rest stops available en route",
+        "Fuel up in Delhi or Rewari - limited options near temple town",
+        "Shyam Kund holy bath recommended before temple visit",
+        "Temple security strict during peak times - follow all protocols",
+        "Distance: Delhi to Khatu Shyam 280 km, approximately 5.5-6 hours drive"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 3845 },
+      coordinates: { latitude: 27.6017, longitude: 74.9784 },
+      groupSize: "1-15 persons",
+      accessibility: "Wheelchair accessible but very challenging during crowded periods, long drive not ideal for elderly"
+    },
+
+    {
+      id: 77,
+      name: "Golden Triangle Tour - 3 Days (Delhi-Agra-Jaipur)",
+      slug: "golden-triangle-tour-3-days",
+      shortDescription: "Classic 3-day circuit covering India's most iconic destinations - Delhi, Agra, and Jaipur",
+      fullDescription: "Experience India's most famous tourist circuit - the Golden Triangle - covering Delhi's Mughal and modern heritage, Agra's magnificent Taj Mahal and fort, and Jaipur's royal palaces and forts. This compact 3-day tour takes you through three distinct cities showcasing India's rich history, stunning architecture, and vibrant culture. Perfect for first-time visitors wanting to see India's highlights in a short timeframe. The tour covers approximately 900-1000 km through well-maintained highways connecting the three iconic cities.",
+      duration: "3 Days / 2 Nights (900-1000 km total)",
+      price: {
+        sedan: 11250,
+        suv: 18500,
+        tempoTraveller: 30000,
+        tempoTraveller17: 35500,
+        currency: "INR",
+        extraKm: "Sedan ₹12/km, SUV ₹16/km, Tempo ₹20-24/km"
+      },
+      highlights: [
+        "Delhi - Red Fort, Qutub Minar, India Gate, Lotus Temple, Akshardham",
+        "Agra - Taj Mahal sunrise, Agra Fort, Mehtab Bagh sunset view",
+        "Fatehpur Sikri - Abandoned Mughal city en route to Jaipur",
+        "Jaipur - Amber Fort, City Palace, Hawa Mahal, Jantar Mantar",
+        "Three UNESCO World Heritage Sites in one tour",
+        "900-1000 km scenic drive through North India",
+        "Complete cultural immersion in three distinct cities"
+      ],
+      itinerary: [
+        { time: "Day 1 - 09:00 AM", activity: "Delhi Full Day City Tour", duration: "Full Day", description: "Red Fort, Jama Masjid, India Gate, Qutub Minar, Humayun's Tomb, Lotus Temple, drive past Parliament" },
+        { time: "Day 1 - 07:00 PM", activity: "Overnight in Delhi", duration: "Overnight", description: "Rest at hotel" },
+        { time: "Day 2 - 06:00 AM", activity: "Drive to Agra", duration: "3.5 hours", description: "210 km via Yamuna Expressway" },
+        { time: "Day 2 - 09:30 AM", activity: "Taj Mahal visit", duration: "2.5 hours", description: "Sunrise at Taj Mahal, one of Seven Wonders" },
+        { time: "Day 2 - 12:00 PM", activity: "Agra Fort exploration", duration: "1.5 hours", description: "Massive red sandstone Mughal fort" },
+        { time: "Day 2 - 01:30 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "Day 2 - 02:30 PM", activity: "Drive to Jaipur via Fatehpur Sikri", duration: "5 hours", description: "240 km with Fatehpur Sikri stop" },
+        { time: "Day 2 - 03:00 PM", activity: "Fatehpur Sikri visit", duration: "1.5 hours", description: "Abandoned Mughal capital" },
+        { time: "Day 2 - 07:30 PM", activity: "Arrive Jaipur, overnight", duration: "Overnight" },
+        { time: "Day 3 - 08:00 AM", activity: "Amber Fort visit", duration: "2.5 hours", description: "Majestic fort with elephant ride option" },
+        { time: "Day 3 - 10:30 AM", activity: "Jal Mahal photo stop", duration: "20 mins", description: "Water palace in Man Sagar Lake" },
+        { time: "Day 3 - 11:00 AM", activity: "City Palace complex", duration: "1.5 hours", description: "Royal residence and museums" },
+        { time: "Day 3 - 12:30 PM", activity: "Jantar Mantar", duration: "45 mins", description: "Astronomical observatory" },
+        { time: "Day 3 - 01:15 PM", activity: "Hawa Mahal photo stop", duration: "30 mins", description: "Palace of Winds" },
+        { time: "Day 3 - 02:00 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "Day 3 - 03:00 PM", activity: "Drive back to Delhi", duration: "5 hours", description: "270 km return journey" },
+        { time: "Day 3 - 08:00 PM", activity: "Drop off at Delhi", duration: "End of tour" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with driver's food & accommodation",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Toll + Parking + State Tax (Actual charges to be paid by client)",
+        "Hotel accommodation for clients (₹2000-6000 per night per room)",
+        "Monument entry tickets (Client pays - approximately ₹2500-3500 per person total)",
+        "Taj Mahal entry (₹1050 for foreigners, ₹50 for Indians)",
+        "All meals and refreshments for clients",
+        "Tour guide fees (₹1500-2000 per city if required)",
+        "Elephant ride at Amber Fort (₹1100-1400)",
+        "Camera fees at monuments",
+        "Personal expenses and shopping",
+        "Extra kilometers beyond 900-1000 km (₹12/km Sedan, ₹16/km SUV, ₹20-24/km Tempo)"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather). Avoid summer (April-June) due to extreme heat in all three cities.",
+      difficulty: "Easy to Moderate (involves extensive walking at monuments, long drives)",
+      category: "Heritage & Culture - Multi-City Circuit",
+      heroImage: "/images/sightseeing/golden_triangle_hero.jpg",
+      images: [
+        "/images/sightseeing/taj_mahal_golden_triangle.jpg",
+        "/images/sightseeing/amber_fort_jaipur.jpg",
+        "/images/sightseeing/red_fort_delhi.jpg",
+        "/images/sightseeing/fatehpur_sikri.jpg",
+        "/images/sightseeing/hawa_mahal_golden_triangle.jpg"
+      ],
+      tips: [
+        "Book hotels in advance near main attractions for convenience",
+        "Taj Mahal closed on Fridays - plan accordingly",
+        "Start Day 1 early to cover all Delhi attractions",
+        "Sunrise visit to Taj Mahal highly recommended - start by 6 AM",
+        "Yamuna Expressway toll ₹400-500 (Delhi-Agra), faster than old highway",
+        "Fatehpur Sikri adds 1.5 hours to Agra-Jaipur drive but worth it",
+        "Hire guides at each major monument for better understanding (₹1500-2000 per city)",
+        "Wear comfortable shoes - extensive walking at all sites",
+        "Carry sunscreen, hat, and water bottle",
+        "Photography free at most places except inside Taj Mahal main chamber",
+        "Try local cuisines - Mughlai in Delhi/Agra, Rajasthani in Jaipur",
+        "Shopping: Delhi (handicrafts), Agra (marble inlay), Jaipur (jewelry, textiles)",
+        "Total distance: ~900-1000 km over 3 days",
+        "Budget approximately ₹8000-15000 per person for hotels, food & monument tickets",
+        "Consider extending to 4-5 days for more relaxed pace"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 8456 },
+      coordinates: { latitude: 28.6139, longitude: 77.2090 },
+      groupSize: "1-17 persons (depending on vehicle type)",
+      accessibility: "Partially wheelchair accessible (many monuments have stairs and uneven terrain)"
+    },
+
+    {
+      id: 78,
+      name: "Golden Triangle Tour - 4 Days (Delhi-Agra-Jaipur Extended)",
+      slug: "golden-triangle-tour-4-days",
+      shortDescription: "Relaxed 4-day Golden Triangle experience with more time at each destination",
+      fullDescription: "Enjoy a more leisurely exploration of India's Golden Triangle with this 4-day itinerary covering Delhi, Agra, and Jaipur. Unlike the rushed 3-day tour, this version allows more time at each city to explore hidden gems, enjoy cultural experiences, and truly absorb the atmosphere. Visit all major monuments plus additional attractions like Jaipur's Albert Hall Museum, Agra's Mehtab Bagh sunset view, and Delhi's Chandni Chowk markets. Perfect for travelers who want comprehensive coverage without the rush, covering approximately 1200 km with comfortable pacing.",
+      duration: "4 Days / 3 Nights (1200 km total)",
+      price: {
+        sedan: 14250,
+        suv: 22250,
+        tempoTraveller: 41500,
+        tempoTraveller17: 45000,
+        currency: "INR",
+        extraKm: "Sedan ₹12/km, SUV ₹16/km, Tempo ₹20-24/km"
+      },
+      highlights: [
+        "Delhi - Extended exploration including Chandni Chowk, Akshardham Temple",
+        "Agra - Taj Mahal at sunrise and sunset from Mehtab Bagh",
+        "Agra Fort and Baby Taj (Itmad-ud-Daulah)",
+        "Fatehpur Sikri - Complete exploration of abandoned Mughal city",
+        "Jaipur - Amber Fort, Nahargarh Fort sunset, City Palace, Albert Hall",
+        "More time for shopping and cultural experiences",
+        "Relaxed pace with extra exploration time"
+      ],
+      itinerary: [
+        { time: "Day 1 - 09:00 AM", activity: "Old Delhi exploration", duration: "3 hours", description: "Red Fort, Jama Masjid, Chandni Chowk rickshaw ride" },
+        { time: "Day 1 - 12:00 PM", activity: "Raj Ghat and Humayun's Tomb", duration: "2 hours" },
+        { time: "Day 1 - 02:00 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "Day 1 - 03:00 PM", activity: "New Delhi - India Gate, Qutub Minar", duration: "3 hours" },
+        { time: "Day 1 - 06:00 PM", activity: "Lotus Temple or Akshardham", duration: "2 hours" },
+        { time: "Day 1 - 08:00 PM", activity: "Overnight Delhi", duration: "Overnight" },
+        { time: "Day 2 - 06:00 AM", activity: "Drive to Agra", duration: "3.5 hours", description: "210 km via Yamuna Expressway" },
+        { time: "Day 2 - 09:30 AM", activity: "Taj Mahal sunrise visit", duration: "3 hours", description: "Extended time at Taj Mahal" },
+        { time: "Day 2 - 12:30 PM", activity: "Agra Fort", duration: "2 hours" },
+        { time: "Day 2 - 02:30 PM", activity: "Lunch and rest", duration: "2 hours" },
+        { time: "Day 2 - 04:30 PM", activity: "Itmad-ud-Daulah (Baby Taj)", duration: "1 hour" },
+        { time: "Day 2 - 05:30 PM", activity: "Mehtab Bagh - Taj sunset view", duration: "1.5 hours" },
+        { time: "Day 2 - 07:00 PM", activity: "Overnight Agra", duration: "Overnight" },
+        { time: "Day 3 - 08:00 AM", activity: "Drive to Jaipur via Fatehpur Sikri", duration: "5.5 hours", description: "240 km with extended Fatehpur stop" },
+        { time: "Day 3 - 09:30 AM", activity: "Fatehpur Sikri complete tour", duration: "2.5 hours", description: "Buland Darwaza, Jama Masjid, Panch Mahal" },
+        { time: "Day 3 - 02:00 PM", activity: "Arrive Jaipur, lunch and check-in", duration: "2 hours" },
+        { time: "Day 3 - 04:00 PM", activity: "City Palace and Jantar Mantar", duration: "2.5 hours" },
+        { time: "Day 3 - 06:30 PM", activity: "Hawa Mahal photo stop and shopping", duration: "1.5 hours" },
+        { time: "Day 3 - 08:00 PM", activity: "Overnight Jaipur", duration: "Overnight" },
+        { time: "Day 4 - 08:00 AM", activity: "Amber Fort with elephant ride", duration: "3 hours" },
+        { time: "Day 4 - 11:00 AM", activity: "Jaigarh Fort or Nahargarh Fort", duration: "1.5 hours" },
+        { time: "Day 4 - 12:30 PM", activity: "Jal Mahal photo stop", duration: "20 mins" },
+        { time: "Day 4 - 01:00 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "Day 4 - 02:00 PM", activity: "Albert Hall Museum and shopping", duration: "2 hours" },
+        { time: "Day 4 - 04:00 PM", activity: "Drive back to Delhi", duration: "5 hours", description: "270 km return" },
+        { time: "Day 4 - 09:00 PM", activity: "Drop off Delhi", duration: "End of tour" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with driver's food & accommodation",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Toll + Parking + State Tax (Actual charges to be paid by client)",
+        "Hotel accommodation for clients (₹2000-6000 per night, 3 nights total)",
+        "Monument entry tickets (Client pays - approximately ₹3000-4500 per person total)",
+        "All meals and refreshments for clients",
+        "Tour guide fees (₹1500-2000 per city if required)",
+        "Elephant ride at Amber Fort (₹1100-1400)",
+        "Camera fees at monuments",
+        "Personal expenses and shopping",
+        "Extra kilometers beyond 1200 km (₹12/km Sedan, ₹16/km SUV, ₹20-24/km Tempo)"
+      ],
+      bestTimeToVisit: "October to March. Best months are November and February for comfortable weather.",
+      difficulty: "Easy to Moderate (more relaxed pace than 3-day tour)",
+      category: "Heritage & Culture - Multi-City Circuit",
+      heroImage: "/images/sightseeing/golden_triangle_extended_hero.jpg",
+      images: [
+        "/images/sightseeing/taj_mahal_sunrise.jpg",
+        "/images/sightseeing/amber_fort_elephant.jpg",
+        "/images/sightseeing/fatehpur_sikri_buland_darwaza.jpg",
+        "/images/sightseeing/mehtab_bagh_taj_sunset.jpg",
+        "/images/sightseeing/jaipur_city_palace.jpg"
+      ],
+      tips: [
+        "4-day tour allows for more relaxed exploration - recommended over 3-day",
+        "Book heritage hotels for authentic royal experience in Jaipur",
+        "Day 2 in Agra allows both sunrise and sunset Taj views - magical!",
+        "Mehtab Bagh offers best Taj Mahal sunset photos across Yamuna River",
+        "Baby Taj (Itmad-ud-Daulah) is less crowded, beautiful marble work",
+        "Rickshaw ride in Chandni Chowk is must-do Delhi experience",
+        "Nahargarh Fort has best sunset views over Jaipur city",
+        "Albert Hall Museum beautiful at night when lit up",
+        "Extra day allows for shopping without rush - bargain well!",
+        "Try cultural dinner with folk dance in Jaipur (Chokhi Dhani village resort)",
+        "Book Akshardham evening show - spectacular musical fountain",
+        "Hire different guides in each city for varied perspectives",
+        "Total distance: ~1200 km over 4 days",
+        "Budget approximately ₹10000-20000 per person for hotels, food & monuments",
+        "This pace is ideal for families with children or elderly travelers"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 6234 },
+      coordinates: { latitude: 28.6139, longitude: 77.2090 },
+      groupSize: "1-17 persons (depending on vehicle type)",
+      accessibility: "Partially wheelchair accessible"
+    },
+
+    {
+      id: 79,
+      name: "Golden Triangle Tour - 5 Days (Delhi-Agra-Jaipur Premium)",
+      slug: "golden-triangle-tour-5-days",
+      shortDescription: "Comprehensive 5-day premium Golden Triangle with extended experiences and cultural immersion",
+      fullDescription: "The ultimate Golden Triangle experience designed for travelers who want to see everything at a comfortable pace with additional cultural experiences. This 5-day premium tour covers Delhi, Agra, and Jaipur with extra time for shopping, cultural shows, optional day trips (like Pushkar from Jaipur or Mathura-Vrindavan from Agra), and hidden gems often missed in shorter tours. Includes visits to local markets, traditional craft workshops, cultural performances, and ample photography time. Covering approximately 1500 km, this tour transforms from sightseeing into a true cultural immersion experience.",
+      duration: "5 Days / 4 Nights (1500 km total)",
+      price: {
+        sedan: 17250,
+        suv: 26750,
+        tempoTraveller: 51500,
+        tempoTraveller17: 55000,
+        currency: "INR",
+        extraKm: "Sedan ₹12/km, SUV ₹16/km, Tempo ₹20-24/km"
+      },
+      highlights: [
+        "Delhi - Complete exploration including hidden gems and local experiences",
+        "Agra - Multiple Taj Mahal visits, all major and minor monuments",
+        "Optional Mathura-Vrindavan day trip from Agra",
+        "Fatehpur Sikri and Abhaneri Stepwell en route",
+        "Jaipur - All major forts, palaces, and cultural experiences",
+        "Optional Pushkar day trip or extended Jaipur exploration",
+        "Cultural shows, craft workshops, local market visits",
+        "Photography time at all locations, no rushing"
+      ],
+      itinerary: [
+        { time: "Day 1 - Full Day", activity: "Delhi Comprehensive Tour", duration: "Full Day", description: "Red Fort, Jama Masjid, Chandni Chowk, Raj Ghat, India Gate, Qutub Minar, Humayun's Tomb, Lotus Temple, Akshardham" },
+        { time: "Day 1 - Evening", activity: "Overnight Delhi", duration: "Overnight" },
+        { time: "Day 2 - Morning", activity: "Drive to Agra (210 km)", duration: "3.5 hours" },
+        { time: "Day 2 - Late Morning", activity: "Taj Mahal visit", duration: "3 hours", description: "Extended exploration" },
+        { time: "Day 2 - Afternoon", activity: "Agra Fort", duration: "2 hours" },
+        { time: "Day 2 - Evening", activity: "Mehtab Bagh sunset", duration: "1.5 hours" },
+        { time: "Day 2 - Night", activity: "Overnight Agra", duration: "Overnight" },
+        { time: "Day 3 - Option A", activity: "Mathura-Vrindavan day trip", duration: "Full Day", description: "Krishna temples, ghats (120 km round trip)" },
+        { time: "Day 3 - Option B", activity: "Extended Agra exploration", duration: "Full Day", description: "Baby Taj, Sikandra, local markets, marble inlay workshop" },
+        { time: "Day 3 - Evening", activity: "Overnight Agra", duration: "Overnight" },
+        { time: "Day 4 - Morning", activity: "Drive to Jaipur via Fatehpur Sikri", duration: "6 hours", description: "With Abhaneri Stepwell stop (300 km)" },
+        { time: "Day 4 - Afternoon", activity: "Arrive Jaipur, City Palace & Jantar Mantar", duration: "3 hours" },
+        { time: "Day 4 - Evening", activity: "Hawa Mahal and local bazaars", duration: "2 hours" },
+        { time: "Day 4 - Night", activity: "Cultural dinner with folk show", duration: "Overnight" },
+        { time: "Day 5 - Morning", activity: "Amber Fort with elephant ride", duration: "3 hours" },
+        { time: "Day 5 - Late Morning", activity: "Jaigarh & Nahargarh Forts", duration: "2 hours" },
+        { time: "Day 5 - Option A", activity: "Pushkar day trip (280 km round trip)", duration: "5-6 hours", description: "Brahma Temple, Pushkar Lake, camel fair (if Nov)" },
+        { time: "Day 5 - Option B", activity: "Extended Jaipur", duration: "Afternoon", description: "Albert Hall, shopping, Galtaji Temple" },
+        { time: "Day 5 - Evening", activity: "Drive back to Delhi (270 km)", duration: "5 hours" },
+        { time: "Day 5 - Night", activity: "Drop off Delhi", duration: "End of tour" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with driver's food & accommodation",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Toll + Parking + State Tax (Actual charges to be paid by client)",
+        "Hotel accommodation for clients (₹2000-6000 per night, 4 nights total)",
+        "Monument entry tickets (Client pays - approximately ₹4000-6000 per person total)",
+        "All meals and refreshments for clients",
+        "Tour guide fees (₹1500-2000 per city if required)",
+        "Elephant ride at Amber Fort (₹1100-1400)",
+        "Cultural shows and folk performances (₹500-1500 per show)",
+        "Craft workshop visits",
+        "Camera fees at monuments",
+        "Personal expenses and shopping",
+        "Extra kilometers beyond 1500 km (₹12/km Sedan, ₹16/km SUV, ₹20-24/km Tempo)"
+      ],
+      bestTimeToVisit: "October to March. November is ideal for Pushkar Camel Fair (if included).",
+      difficulty: "Easy (most relaxed pace, suitable for all ages)",
+      category: "Heritage, Culture & Premium Experience - Multi-City Circuit",
+      heroImage: "/images/sightseeing/golden_triangle_premium_hero.jpg",
+      images: [
+        "/images/sightseeing/taj_mahal_multiple_views.jpg",
+        "/images/sightseeing/jaipur_forts_collection.jpg",
+        "/images/sightseeing/vrindavan_temples.jpg",
+        "/images/sightseeing/abhaneri_stepwell.jpg",
+        "/images/sightseeing/cultural_performance_rajasthan.jpg"
+      ],
+      tips: [
+        "5-day tour is THE best way to experience Golden Triangle - highly recommended",
+        "Book luxury heritage hotels for authentic experience worth the price",
+        "Day 3 options: Mathura-Vrindavan for spiritual experience OR craft workshops in Agra",
+        "Abhaneri Stepwell (Chand Baori) is spectacular photography spot - lesser known",
+        "Pushkar option on Day 5 adds spiritual dimension, especially during November fair",
+        "Attend traditional Rajasthani dinner show (Chokhi Dhani) - worth the experience",
+        "Visit marble inlay workshop in Agra to see artisans creating Taj-style art",
+        "Block print and blue pottery workshops in Jaipur - great for souvenirs",
+        "Photography tips: Taj at sunrise, Mehtab Bagh at sunset, Nahargarh Fort for Jaipur sunset",
+        "Shopping: Delhi (textiles, handicrafts), Agra (marble), Jaipur (jewelry, gems, textiles)",
+        "Try local cuisines: Karim's in Delhi, Petha in Agra, Dal Baati Churma in Jaipur",
+        "Hire professional guide for at least 2 days for deep cultural understanding",
+        "Visit Galtaji (Monkey Temple) in Jaipur early morning - stunning and less crowded",
+        "Total distance: ~1500 km over 5 days with optional day trips",
+        "Budget approximately ₹12000-25000 per person for hotels, food, monuments & activities",
+        "This tour pace perfect for photography enthusiasts and culture lovers"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 4567 },
+      coordinates: { latitude: 28.6139, longitude: 77.2090 },
+      groupSize: "1-17 persons (depending on vehicle type)",
+      accessibility: "Partially wheelchair accessible (extra time allows for accessible route planning)"
     }
   ],
 
@@ -791,20 +1093,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/jaipur_hero_section_image.jpg",
-      heroImagePrompt: "Stunning wide-angle hero shot of Hawa Mahal (Palace of Winds) at sunrise in Jaipur, intricate pink sandstone facade with 953 windows, bustling street below with traditional rickshaws, vibrant colors, architectural photography, ultra-detailed, 8k quality",
       images: [
         "/images/sightseeing/amber_fort.jpg",
         "/images/sightseeing/city_palace.jpg",
         "/images/sightseeing/jantar_mantar.jpg",
         "/images/sightseeing/Johari_bazar.jpg",
         "/images/sightseeing/Jal_Mahal.jpg"
-      ],
-      additionalImages: [
-        "Interior of Sheesh Mahal (Mirror Palace) at Amber Fort with intricate mirror work and colorful glass, dramatic lighting creating magical reflections",
-        "City Palace courtyard with royal peacock gate, traditional Rajasthani architecture, colorful walls, tourists in background",
-        "Jantar Mantar astronomical instruments at sunset, geometric structures casting dramatic shadows, ancient scientific marvel",
-        "Vibrant Johari Bazaar market scene with colorful textiles, jewelry shops, local vendors, busy street life in Jaipur",
-        "Jal Mahal water palace floating in Man Sagar Lake with mountain backdrop, reflection in water, serene sunset ambiance"
       ],
       tips: [
         "Wear comfortable walking shoes as there's considerable walking",
@@ -871,15 +1165,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station & Temples",
       heroImage: "/images/sightseeing/mount_abu_hero.jpg",
-      heroImagePrompt: "Stunning Dilwara Jain Temples Mount Abu with intricate white marble carvings, detailed pillars and domes, architectural masterpiece, spiritual atmosphere, morning light filtering through marble, ultra-detailed craftsmanship, 8k quality",
       images: [],
-      additionalImages: [
-        "Nakki Lake Mount Abu with boats, surrounding hills, heart-shaped lake, Toad Rock visible, tourists boating, serene atmosphere, sunset glow",
-        "Sunset Point panoramic view of valleys and mountains turning golden, tourists gathered, romantic sunset, colorful sky, Aravalli ranges",
-        "Guru Shikhar highest peak in Rajasthan with temple at summit, panoramic 360-degree views, mountain scenery, pilgrims climbing steps",
-        "Achalgarh Fort ancient structure with stone walls, historical architecture, Mandakini Tank, scenic mountain views",
-        "Peace Park Japanese-style garden with Buddha statues, manicured lawns, peaceful meditation spot, Mount Abu greenery"
-      ],
       tips: [
         "Dilwara Temples open 12:00-6:00 PM (leather items not allowed)",
         "Carry warm clothes (evenings can be cold)",
@@ -941,15 +1227,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Wildlife & Adventure",
       heroImage: "/images/sightseeing/ranthambore_hero.jpg",
-      heroImagePrompt: "Majestic Royal Bengal Tiger walking on forest path in Ranthambore National Park, golden light filtering through trees, wild natural habitat, powerful wildlife photography, alert tiger expression, jungle background, dramatic wildlife shot, 8k quality",
       images: [],
-      additionalImages: [
-        "Ranthambore Fort on hilltop inside national park, ancient ruins with fortification walls, panoramic jungle views, UNESCO heritage site, historical architecture",
-        "Safari jeep with tourists spotting tiger in Ranthambore, open gypsy vehicle, excited travelers with cameras, jungle safari experience, adventure tourism",
-        "Padam Talao lake with Jogi Mahal palace reflection, peaceful water body, deer drinking at shore, scenic landscape in Ranthambore",
-        "Leopard resting on tree branch in Ranthambore, wildlife diversity, spotted cat, natural behavior, wildlife photography opportunity",
-        "Ganesh Temple inside Ranthambore Fort, ancient Hindu shrine, pilgrimage site, stone architecture, devotees visiting"
-      ],
       tips: [
         "Safari booking required in advance (online booking recommended)",
         "Early morning safari has better tiger sighting chances",
@@ -1015,15 +1293,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Heritage",
       heroImage: "/images/sightseeing/ajmer_pushkar_hero.jpg",
-      heroImagePrompt: "Stunning aerial view of Pushkar Lake with 52 white ghats, golden hour lighting, Brahma Temple visible, surrounding hills, holy city panorama, pilgrims bathing, colorful buildings around lake, spiritual atmosphere, vibrant colors, 8k quality",
       images: [],
-      additionalImages: [
-        "Ajmer Sharif Dargah white marble shrine with green dome, devotees gathered, qawwali singers performing, Sufi atmosphere, spiritual pilgrimage, incense smoke",
-        "Brahma Temple Pushkar with red spire, unique Hindu architecture, only Brahma temple in world, devotees offering prayers, religious significance",
-        "Pushkar Lake ghats during aarti ceremony, oil lamps floating, pilgrims bathing in holy water, temple bells ringing, sacred atmosphere, evening rituals",
-        "Savitri Temple on hilltop with ropeway, panoramic view of Pushkar town and lake below, sunset views, temple complex, scenic landscape",
-        "Colorful Pushkar bazaar with handicrafts, silver jewelry, textiles, vibrant street market, local vendors, traditional Rajasthani items, shopping experience"
-      ],
       tips: [
         "Dress modestly for religious sites (cover head at Dargah)",
         "Remove shoes before entering temples and shrine",
@@ -1088,15 +1358,7 @@ export const sightseeingTours = {
       difficulty: "Moderate (considerable walking in fort)",
       category: "Heritage & History",
       heroImage: "/images/sightseeing/chittorgarh_hero.jpg",
-      heroImagePrompt: "Majestic Vijay Stambh (Victory Tower) at Chittorgarh Fort rising 37 meters high, intricate stone carvings on nine storeys, panoramic view of massive fort complex, historical architecture, dramatic sky, UNESCO heritage site, Rajput glory, wide-angle shot, 8k quality",
       images: [],
-      additionalImages: [
-        "Rani Padmini Palace reflected in lotus pool, elegant three-storey structure, historic water palace, legendary queen's residence, romantic architecture, fort complex",
-        "Kirti Stambh Tower of Fame with Jain sculptures, ancient monument dedicated to Adinath, intricate stone work, religious significance, historical landmark",
-        "Meera Temple white structure dedicated to saint-poet Meerabai, devotional atmosphere, pilgrims offering prayers, Indo-Aryan architecture",
-        "Gaumukh Reservoir with sacred water flowing from cow-mouth shaped rock, ancient water source, pilgrimage site, natural spring in fort",
-        "Panoramic aerial view of massive Chittorgarh Fort spread over 700 acres on hilltop, largest fort complex in India, fortification walls, multiple palaces and temples"
-      ],
       tips: [
         "Hire a guide to understand rich history and legends",
         "Wear comfortable walking shoes (fort covers huge area)",
@@ -1166,15 +1428,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Desert Culture",
       heroImage: "/images/sightseeing/bikaner_hero.jpg",
-      heroImagePrompt: "Magnificent Junagarh Fort Bikaner with red sandstone and marble architecture, ornate balconies and windows, intricate carvings, desert fort complex, blue sky, Rajput architectural marvel, grand facade, wide-angle photography, 8k quality",
       images: [],
-      additionalImages: [
-        "Karni Mata Rat Temple interior with thousands of sacred rats, devotees feeding rats, unique religious site, silver gates, spiritual atmosphere",
-        "Lallgarh Palace red sandstone structure with Indo-Saracenic architecture, beautiful lattice work, royal residence turned heritage hotel, manicured gardens",
-        "National Camel Research Center with camels and handlers, camel breeding farm, unique tourist attraction, desert animals, camel ride opportunity",
-        "Rampuria Havelis ornate facade with intricate stone carvings, red sandstone merchant houses, traditional Rajasthani architecture, historic quarter",
-        "Anup Mahal inside Junagarh Fort with gold leaf paintings, mirror work, royal durbar hall, red and gold interiors, opulent palace chamber"
-      ],
       tips: [
         "Remove shoes at Karni Mata Temple (rats are sacred)",
         "Wear socks at rat temple for hygiene",
@@ -1188,6 +1442,89 @@ export const sightseeingTours = {
       coordinates: { latitude: 28.0229, longitude: 73.3119 },
       groupSize: "1-15 persons",
       accessibility: "Partially wheelchair accessible"
+    },
+
+    {
+      id: 71,
+      name: "Jaipur to Khatu Shyam Temple Pilgrimage",
+      slug: "jaipur-to-khatu-shyam-temple-pilgrimage",
+      shortDescription: "Sacred journey to the revered Khatu Shyam Ji temple, dedicated to Barbarika",
+      fullDescription: "Embark on a spiritual pilgrimage from Jaipur to the famous Khatu Shyam Ji temple, one of the most sacred shrines in Rajasthan dedicated to Lord Krishna's devotee Barbarika (Khatu Shyam). Located 180 km from Jaipur in Sikar district, this temple attracts millions of devotees annually. The deity is believed to fulfill wishes and is especially worshipped during Phalgun Mela. Experience the divine atmosphere, attend aarti ceremonies, and witness the unique black stone idol with its captivating eyes.",
+      duration: "Full Day (8-10 hours including 4 hrs travel time)",
+      price: {
+        sedan: 3600,
+        suv: 4200,
+        tempoTraveller: 6000,
+        currency: "INR"
+      },
+      highlights: [
+        "Khatu Shyam Ji Temple - Sacred shrine with miraculous black stone deity",
+        "Shyam Kund - Holy water tank with spiritual significance",
+        "Pracheen Mandir - Ancient temple near main shrine",
+        "Gopinath Ji Temple - Adjacent temple worth visiting",
+        "Shyam Bagh - Peaceful garden for meditation",
+        "Local prasad - Famous peda and other offerings",
+        "Aarti ceremony - Divine worship experience"
+      ],
+      itinerary: [
+        { time: "06:00 AM", activity: "Pick up from Jaipur hotel", duration: "30 mins", description: "Early morning departure for darshan" },
+        { time: "06:30 AM", activity: "Drive to Khatu Shyam", duration: "4 hours", description: "180 km journey via NH52 through Sikar" },
+        { time: "10:30 AM", activity: "Shyam Kund holy bath (optional)", duration: "30 mins", description: "Sacred water tank purification" },
+        { time: "11:00 AM", activity: "Khatu Shyam Ji Temple darshan", duration: "2.5 hours", description: "Queue for main deity darshan, attend aarti if timing aligns" },
+        { time: "01:30 PM", activity: "Lunch and prasad", duration: "1 hour", description: "Local vegetarian meal and temple prasad" },
+        { time: "02:30 PM", activity: "Pracheen Mandir visit", duration: "30 mins", description: "Ancient temple near main shrine" },
+        { time: "03:00 PM", activity: "Gopinath Ji Temple", duration: "30 mins", description: "Adjacent temple visit" },
+        { time: "03:30 PM", activity: "Shyam Bagh visit and shopping", duration: "1 hour", description: "Peaceful garden and buy prasad/souvenirs" },
+        { time: "04:30 PM", activity: "Return drive to Jaipur", duration: "4 hours" },
+        { time: "08:30 PM", activity: "Drop off at Jaipur hotel", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Temple offerings and donations (as per devotion)",
+        "Lunch and meals (₹200-400 per person)",
+        "Prasad purchases (₹100-500)",
+        "VIP darshan pass (₹100-500 if opted to skip queue)",
+        "Shopping expenses for souvenirs",
+        "Personal expenses"
+      ],
+      bestTimeToVisit: "Year-round. Phalgun Mela (Feb-Mar) is most auspicious but extremely crowded. Avoid peak summer (May-June) heat.",
+      difficulty: "Easy (temple visits, minimal walking)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/khatu_shyam_hero.jpg",
+      images: [
+        "/images/sightseeing/khatu_shyam_temple.jpg",
+        "/images/sightseeing/khatu_shyam_deity.jpg",
+        "/images/sightseeing/shyam_kund.jpg",
+        "/images/sightseeing/khatu_aarti.jpg",
+        "/images/sightseeing/khatu_crowd.jpg"
+      ],
+      tips: [
+        "Start very early (5-6 AM) to reach before darshan queues get long",
+        "Dress modestly - traditional Indian wear preferred",
+        "Remove shoes before temple entrance, wear socks for comfort",
+        "Darshan queues can be 2-4 hours during weekends and festivals - plan accordingly",
+        "VIP darshan passes available but controversial - regular queue recommended for spiritual experience",
+        "Phalgun Mela (Feb-Mar) attracts millions - book accommodation months in advance",
+        "Saturday and Sunday are extremely crowded - prefer weekdays",
+        "Aarti timings: Morning 4-5 AM, Evening 7-8 PM (varies seasonally)",
+        "Photography not allowed inside main sanctum",
+        "Khatu Shyam prasad (especially peda) is famous - buy from authorized shops",
+        "Carry cash for offerings - limited ATM/card facilities",
+        "Shyam Kund water considered sacred - many devotees take bath",
+        "Mobile phones allowed but maintain decorum",
+        "Temple has strict security during peak times",
+        "Distance: Jaipur to Khatu Shyam 180 km, approximately 4 hours drive"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 4567 },
+      coordinates: { latitude: 27.6017, longitude: 74.9784 },
+      groupSize: "1-15 persons",
+      accessibility: "Wheelchair accessible but can be challenging during crowded periods"
     }
   ],
 
@@ -1241,20 +1578,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/Agra_Hero_section.jpg",
-      heroImagePrompt: "Iconic Taj Mahal at sunrise, white marble mausoleum glowing in golden morning light, perfect reflection in front pool, manicured Mughal gardens, cypress trees framing, clear blue sky, breathtaking symmetry, professional architectural photography, 8k ultra-detailed",
       images: [
         "/images/sightseeing/agra_fort.jpg",
         "/images/sightseeing/Fathepur_shikiri.jpg",
         "/images/sightseeing/Mehtab_Bagh.jpg",
         "/images/sightseeing/Diwan_i_kHAS.jpg",
         "/images/sightseeing/agra_fort.jpg"
-      ],
-      additionalImages: [
-        "Agra Fort massive red sandstone walls and gates, Mughal architecture, dramatic sky, tourists exploring, wide-angle shot, historical grandeur",
-        "Fatehpur Sikri Buland Darwaza (tallest gateway in world), massive stone archway, intricate carvings, people for scale, majestic perspective",
-        "Taj Mahal intricate marble inlay work close-up, precious stones, floral patterns, detailed craftsmanship, macro photography",
-        "Mehtab Bagh garden with Taj Mahal view across Yamuna river at sunset, orange sky, serene atmosphere, romantic setting",
-        "Diwan-i-Khas (Hall of Private Audience) in Agra Fort, ornate pillars, Mughal architecture details, soft indoor lighting"
       ],
       tips: [
         "Taj Mahal closed on Fridays",
@@ -1321,18 +1650,11 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Wildlife & Nature",
       heroImage: "/images/sightseeing/Bharatpur_hero_section.jpg",
-      heroImagePrompt: "Stunning view of Keoladeo Ghana National Park Bharatpur with painted storks nesting on trees, wetlands with lily pads, migratory birds flying, lush green landscape, cycle rickshaw on pathway, early morning golden light, wildlife photography, vibrant colors, HDR",
       images: [
         "/images/sightseeing/keoladeo_birds.jpg",
         "/images/sightseeing/bharatpur_sanctuary.jpg",
         "/images/sightseeing/lohagarh_fort.jpg",
         "/images/sightseeing/bird_watching.jpg"
-      ],
-      additionalImages: [
-        "Painted storks and herons nesting on trees in Keoladeo sanctuary, colorful plumage, wetland background, natural habitat, bird photography",
-        "Cycle rickshaw safari through Bharatpur bird sanctuary, narrow pathway, dense trees, tourists with binoculars, peaceful nature experience",
-        "Lohagarh Fort (Iron Fort) Bharatpur with massive gates, bastions, moat, historic architecture, blue sky",
-        "Siberian cranes at Keoladeo wetlands, white birds wading in water, reflection, winter migratory birds, rare species"
       ],
       tips: [
         "Best time for bird watching: early morning (6-9 AM)",
@@ -1400,18 +1722,11 @@ export const sightseeingTours = {
       difficulty: "Moderate (involves walking and stairs)",
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/Fatehpur_Sikri_hero_section.jpg",
-      heroImagePrompt: "Majestic Buland Darwaza (Gate of Victory) at Fatehpur Sikri, towering red sandstone gateway, intricate Islamic calligraphy, people walking up steps for scale, dramatic architectural perspective, blue sky, UNESCO World Heritage Site, golden hour photography, HDR",
       images: [
         "/images/sightseeing/buland_darwaza.jpg",
         "/images/sightseeing/panch_mahal.jpg",
         "/images/sightseeing/salim_chishti_tomb.jpg",
         "/images/sightseeing/jodha_bai_palace.jpg"
-      ],
-      additionalImages: [
-        "Buland Darwaza massive gateway from below, red sandstone, Persian inscriptions, stairs leading up, monumental architecture",
-        "Panch Mahal five-storied palace with 176 columns, symmetrical design, open pavilions, sunset lighting, architectural marvel",
-        "Salim Chishti Tomb with white marble, intricate jali work (lattice screens), pilgrims tying threads, peaceful courtyard",
-        "Diwan-i-Khas central ornate pillar with carved brackets, Akbar's discussion hall, Indo-Persian architecture"
       ],
       tips: [
         "Wear comfortable shoes - lots of walking involved",
@@ -1484,18 +1799,11 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Mathura_Vrindavan_hero_section.jpg",
-      heroImagePrompt: "Spectacular view of Banke Bihari Temple Vrindavan with devotees, colorful decorations, bells, Krishna deity in background, evening aarti atmosphere, vibrant colors, spiritual energy, traditional architecture, devotional photography, HDR",
       images: [
         "/images/sightseeing/krishna_janmabhoomi.jpg",
         "/images/sightseeing/banke_bihari_temple.jpg",
         "/images/sightseeing/prem_mandir.jpg",
         "/images/sightseeing/vishram_ghat.jpg"
-      ],
-      additionalImages: [
-        "Krishna Janmabhoomi temple complex, birthplace shrine, devotees in queue, religious atmosphere, traditional architecture",
-        "Banke Bihari Temple crowded with devotees, colorful flowers, bells, priests, intense devotional energy",
-        "Prem Mandir illuminated at night, white marble temple, colorful lights, musical fountain, spectacular view",
-        "Vishram Ghat on Yamuna river with devotees bathing, temple spires, boats, evening aarti, spiritual ambiance"
       ],
       tips: [
         "Dress modestly - no shorts or sleeveless in temples",
@@ -1565,18 +1873,11 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Modern Architecture & Gardens",
       heroImage: "/images/sightseeing/Chandigarh_hero_section.jpg",
-      heroImagePrompt: "Beautiful Rock Garden Chandigarh with unique sculptures made from waste materials, colorful recycled art installations, waterfalls, narrow pathways, artistic creativity, vibrant colors, wide-angle photography, detailed textures",
       images: [
         "/images/sightseeing/sukhana_lake.jpg",
         "/images/sightseeing/capitol_complex.jpeg",
         "/images/sightseeing/Zakir_hUSSAIN_ROSE_Garden.jpg",
         "/images/sightseeing/sukhana_lake.jpg"
-      ],
-      additionalImages: [
-        "Sukhna Lake at sunrise with mirror-like reflection, boats, joggers on promenade, Shivalik hills in background, peaceful morning atmosphere",
-        "Capitol Complex Open Hand Monument by Le Corbusier, modern architecture, geometric design, blue sky, minimalist composition",
-        "Zakir Hussain Rose Garden in full bloom, thousands of rose varieties, colorful flower beds, manicured lawns, spring photography",
-        "Sector 17 Plaza modern shopping complex, fountains, urban landscape, evening lights, people walking, contemporary city life"
       ],
       tips: [
         "Rose Garden best in February-March",
@@ -1642,18 +1943,11 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/Kasauli_hero_section.jpg",
-      heroImagePrompt: "Scenic view of Kasauli hill station with colonial Christ Church, pine forests, mountain ranges in background, misty morning atmosphere, peaceful small town charm, Victorian architecture, winding roads, HDR photography",
       images: [
         "/images/sightseeing/kasauli_christ_church.jpg",
         "/images/sightseeing/kasauli_monkey_point.jpg",
         "/images/sightseeing/kasauli_mall_road.jpg",
         "/images/sightseeing/kasauli_sunset.jpg"
-      ],
-      additionalImages: [
-        "Christ Church Kasauli with Gothic architecture, red brick walls, stained glass windows, surrounded by pine trees, historic colonial building",
-        "Monkey Point Kasauli with Hanuman temple, prayer flags, panoramic Himalayan valley views, tourists at viewpoint, dramatic sky",
-        "Kasauli Mall Road with colonial-era buildings, quiet street, local shops, pine trees lining road, peaceful atmosphere",
-        "Sunset from Kasauli viewpoint with golden light over mountains, silhouettes of trees, valley below, colorful sky"
       ],
       tips: [
         "Kasauli is a vehicle-free zone in many areas, be prepared to walk",
@@ -1724,18 +2018,11 @@ export const sightseeingTours = {
       difficulty: "Moderate",
       category: "Spiritual & Culture",
       heroImage: "/images/sightseeing/Dharamshala_hero_section.jpg",
-      heroImagePrompt: "Stunning panoramic view of McLeod Ganj Dharamshala with Dalai Lama Temple complex, colorful Tibetan prayer flags, snow-capped Dhauladhar mountain ranges in background, Tibetan monks walking, vibrant cultural atmosphere, golden hour lighting, HDR photography",
       images: [
         "/images/sightseeing/dalai_lama_temple.jpg",
         "/images/sightseeing/mcleod_ganj.jpg",
         "/images/sightseeing/bhagsunag_waterfall.jpg",
         "/images/sightseeing/namgyal_monastery.jpg"
-      ],
-      additionalImages: [
-        "Dalai Lama Temple with golden roof, colorful Tibetan prayer flags, devotees circumambulating, peaceful courtyard, mountain backdrop",
-        "McLeod Ganj main square with Tibetan restaurants, colorful shops, monks in maroon robes, bustling market, Himalayan culture",
-        "Bhagsunag Waterfall cascading down rocks, trekkers enjoying, lush green surroundings, natural pool, mountain scenery",
-        "Namgyal Monastery with large prayer wheels, monks in discussion, Tibetan architecture, spiritual atmosphere, colorful decorations"
       ],
       tips: [
         "Respect Tibetan culture and Buddhism - remove shoes at temples",
@@ -1807,18 +2094,11 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/Dalhousie_hero_section.jpg",
-      heroImagePrompt: "Breathtaking panoramic view of Khajjiar meadow with lush green grass, grazing horses, dense pine forests surrounding, snow-capped mountains in distance, Khajjiar Lake visible, blue sky with clouds, mini Switzerland of India, landscape photography, vibrant colors, HDR",
       images: [
         "/images/sightseeing/khajjiar_meadow.jpg",
         "/images/sightseeing/dalhousie_st_johns.jpg",
         "/images/sightseeing/panchpula_waterfall.jpg",
         "/images/sightseeing/dainkund_peak.jpg"
-      ],
-      additionalImages: [
-        "Khajjiar meadow with green carpet-like grass, Khajjiar Lake, colorful flowers, horses grazing, pine trees, mountain backdrop, tourists enjoying",
-        "St. John's Church Dalhousie with Victorian Gothic architecture, stone building, beautiful stained glass, pine trees around, historic landmark",
-        "Panchpula waterfall cascading over rocks, lush greenery, colonial-era bridge, stream flowing, peaceful nature spot",
-        "Dainkund Peak viewpoint with 360-degree valley views, winding road, deodar forests, Himalayan ranges, dramatic sky"
       ],
       tips: [
         "Khajjiar is 22 km from Dalhousie - keep time for travel",
@@ -1888,18 +2168,11 @@ export const sightseeingTours = {
       difficulty: "Moderate (includes short treks)",
       category: "Adventure & Backpacking",
       heroImage: "/images/sightseeing/Kasol_hero_section.jpg",
-      heroImagePrompt: "Stunning view of Kasol village along Parvati River with crystal clear turquoise water, pine-covered mountains, wooden cafes, colorful prayer flags, backpackers, hippie vibe, sunny day, dramatic Himalayan peaks in background, landscape photography, HDR",
       images: [
         "/images/sightseeing/kasol_village.jpg",
         "/images/sightseeing/manikaran_sahib.jpg",
         "/images/sightseeing/parvati_river.jpg",
         "/images/sightseeing/chalal_trek.jpg"
-      ],
-      additionalImages: [
-        "Kasol main market with Israeli cafes, colorful shops, backpackers, mountain backdrop, relaxed atmosphere, Parvati River flowing nearby",
-        "Manikaran Sahib Gurudwara with hot springs, steam rising, devotees bathing, golden dome, pilgrims, spiritual atmosphere",
-        "Parvati River with crystal clear turquoise water, smooth rocks, pine trees, mountains, trekkers by riverside, pristine nature",
-        "Chalal village with wooden houses, narrow trail, bridge over stream, pine forests, peaceful hamlet, mountain views"
       ],
       tips: [
         "Kasol is cash-only for most places - carry enough cash",
@@ -1985,18 +2258,11 @@ export const sightseeingTours = {
       difficulty: "Challenging (high altitude, rough roads)",
       category: "Adventure & Extreme",
       heroImage: "/images/sightseeing/Spiti_Valley_hero_section.jpg",
-      heroImagePrompt: "Breathtaking panoramic view of Spiti Valley with Key Monastery perched on hilltop, barren cold desert mountains, winding Spiti River, snow-capped peaks, prayer flags, dramatic Himalayan landscape, golden hour lighting, ultra-wide angle, epic scale, HDR photography",
       images: [
         "/images/sightseeing/key_monastery.jpg",
         "/images/sightseeing/chandratal_lake.jpg",
         "/images/sightseeing/langza_village.jpg",
         "/images/sightseeing/spiti_valley_landscape.jpg"
-      ],
-      additionalImages: [
-        "Key Monastery on hilltop with white-washed buildings, prayer flags, Spiti Valley below, barren mountains, blue sky, largest monastery in Spiti",
-        "Chandratal Lake (Moon Lake) with crystal clear blue water, surrounding brown mountains, camping tents, reflection, pristine high-altitude beauty at 14,100 ft",
-        "Langza village with giant Buddha statue, traditional stone houses, fossil-rich mountains, panoramic valley views, remote Himalayan settlement",
-        "Spiti Valley cold desert landscape with winding roads, barren mountains, deep gorges, turquoise Spiti River, dramatic terrain, adventure photography"
       ],
       tips: [
         "ESSENTIAL: Acclimatization is crucial - don't rush, stay hydrated",
@@ -2068,20 +2334,12 @@ export const sightseeingTours = {
       difficulty: "Moderate",
       category: "Hill Station & Adventure",
       heroImage: "/images/sightseeing/shimla_hero_section.jpg",
-      heroImagePrompt: "Stunning panoramic view of Shimla town from Jakhoo Temple, colonial buildings nestled in pine-covered hills, dramatic Himalayan ranges in background, golden sunset light, misty valleys, iconic toy train track visible, scenic mountain landscape, HDR photography",
       images: [
         "/images/sightseeing/jakhoo_temple.jpg",
         "/images/sightseeing/christ church shimla.jpg",
         "/images/sightseeing/Mall road shimla.jpg",
         "/images/sightseeing/the ridge shimla.jpg",
         "/images/sightseeing/kurif_adventure_park.jpg"
-      ],
-      additionalImages: [
-        "Mall Road Shimla at evening with colonial buildings, street lights glowing, tourists strolling, cafes and shops, Victorian architecture, festive atmosphere",
-        "Christ Church in snow with neo-Gothic architecture, stained glass windows, snow-covered pine trees, winter wonderland, iconic Shimla landmark",
-        "Kufri adventure park with horse riding, snow activities, Himalayan backdrop, tourists enjoying, colorful traditional Himachali attire",
-        "Jakhoo Temple towering Hanuman statue (108 feet tall), orange colored, overlooking Shimla valley, devotees, dramatic sky",
-        "The Ridge Shimla with open square, Tudor-style library building, mountain views, clear blue sky, people gathering"
       ],
       tips: [
         "Carry woolens even in summer",
@@ -2150,20 +2408,12 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Hill Station & Adventure",
       heroImage: "/images/sightseeing/kufri_chail_hero.jpg",
-      heroImagePrompt: "Spectacular panoramic view of Chail cricket ground, world's highest cricket ground at 2444m altitude, surrounded by dense deodar and pine forests, snow-capped Himalayan peaks in background, pristine green pitch, colonial pavilion, dramatic mountain landscape, golden hour lighting, ultra-detailed, 8k",
       images: [
         "/images/sightseeing/mahasu_peak_kufri.jpg",
         "/images/sightseeing/chail_cricket_ground.jpg",
         "/images/sightseeing/chail_palace.jpg",
         "/images/sightseeing/kali_tibba_temple.jpg",
         "/images/sightseeing/kurif_adventure_park.jpg"
-      ],
-      additionalImages: [
-        "Mahasu Peak Kufri with tourists at summit, 360-degree Himalayan panorama, Kedarnath and Badrinath ranges visible, prayer flags fluttering, snow-covered peaks, trekking scene",
-        "Kufri Fun World amusement park with zip-lining action, colorful adventure activities, bungee ejection tower, tourists enjoying, pine forest backdrop, adventure photography",
-        "Chail cricket ground aerial view, highest cricket ground in world, perfectly manicured pitch, surrounded by thick forests, mountain amphitheater setting, unique sports venue",
-        "Chail Palace heritage building with Indo-British architecture, 1891 construction, royal residence turned hotel, colonial pillars and arches, mountain backdrop, historic grandeur",
-        "Kali Ka Tibba temple on hilltop, colorful shrine dedicated to Kali Devi, devotees offering prayers, panoramic Chail valley views, sacred atmosphere, traditional Himachali architecture"
       ],
       tips: [
         "Kufri to Chail is 45 km - plan for full day trip",
@@ -2232,20 +2482,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Nature & Relaxation",
       heroImage: "/images/sightseeing/naldehra_golf_hero.jpg",
-      heroImagePrompt: "Stunning aerial view of Naldehra Golf Course with lush green fairways, surrounded by dense pine and deodar forests, dramatic Himalayan mountain backdrop, golfers on course, misty valleys, colonial-era clubhouse visible, pristine natural setting, 8k photography",
       images: [
         "/images/sightseeing/naldehra_golf_course.jpg",
         "/images/sightseeing/craignano_nature_park.jpg",
         "/images/sightseeing/mashobra_orchards.jpg",
         "/images/sightseeing/tattapani_springs.jpg",
         "/images/sightseeing/deodar_forests.jpg"
-      ],
-      additionalImages: [
-        "Naldehra Golf Course close-up with golfers playing, 9-hole course designed by Lord Curzon, pristine green surrounded by cedar trees, mountain views, British colonial heritage, peaceful sports setting",
-        "Craignano Nature Park forest trails with tall deodar trees, sunlight filtering through canopy, nature lovers hiking, Himalayan valley views in distance, serene atmosphere, eco-tourism",
-        "Mashobra apple orchards in full bloom with red apples hanging from trees, fruit picking activity, local farmers, traditional Himachali orchard, fresh produce, agricultural tourism",
-        "Tattapani hot springs natural pools with steam rising, Sutlej river flowing nearby, therapeutic bathing, local visitors relaxing, natural spa experience, mountain backdrop",
-        "Scenic mountain drive through pine forests with winding roads, lush greenery, valley views, peaceful Himachal Pradesh landscape, road trip photography"
       ],
       tips: [
         "Naldehra is 22 km from Shimla - about 50 minutes drive",
@@ -2326,20 +2568,12 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Road Trip & Hill Station",
       heroImage: "/images/sightseeing/shimla_manali_route_hero.jpg",
-      heroImagePrompt: "Breathtaking aerial view of winding mountain highway from Shimla to Manali, Kullu Valley with Beas River flowing through lush green valley, snow-capped Himalayan peaks, pine forests, dramatic mountain roads, scenic road trip, golden hour, ultra-wide landscape photography, 8k",
       images: [
         "/images/sightseeing/pandoh_dam.jpg",
         "/images/sightseeing/kullu_valley_beas.jpg",
         "/images/sightseeing/naggar_castle.jpg",
         "/images/sightseeing/Paragliding_solang_valley.jpg",
         "/images/sightseeing/Hidmba_temple.jpg"
-      ],
-      additionalImages: [
-        "Pandoh Dam reservoir with turquoise water, concrete dam structure, surrounding mountains, hydroelectric project, engineering marvel, scenic mountain lake",
-        "Kullu Valley panorama with Beas River flowing, lush green valley floor, traditional Himachali villages, terraced fields, snow peaks in distance, paradise for nature lovers",
-        "Naggar Castle ancient stone fortress from 15th century, traditional wooden and stone architecture, now heritage hotel, mountain backdrop, historical site",
-        "Raghunath Temple Kullu with traditional Himachali architecture, devotees gathered, important pilgrimage site, colorful religious festival atmosphere",
-        "Scenic mountain drive on Shimla-Manali highway with vehicles on winding roads, pine forests both sides, valley views, adventure road trip, Himalayan journey"
       ],
       tips: [
         "Start early from Shimla (by 8 AM) to reach Manali with daylight",
@@ -2409,20 +2643,12 @@ export const sightseeingTours = {
       difficulty: "Moderate",
       category: "Adventure & Nature",
       heroImage: "/images/sightseeing/Manali_hero_section.jpg",
-      heroImagePrompt: "Spectacular aerial view of Solang Valley Manali with snow-capped mountains, paragliders in sky, colorful parachutes, lush green meadows (summer) or white snow (winter), adventure activities happening below, dramatic Himalayan landscape, action photography, vibrant colors",
       images: [
         "/images/sightseeing/Hidmba_temple.jpg",
         "/images/sightseeing/Old_Manali.jpg",
         "/images/sightseeing/vashisht manali hot springs.jpg",
         "/images/sightseeing/Rohtang Pass.jpg",
         "/images/sightseeing/Paragliding_solang_valley.jpg"
-      ],
-      additionalImages: [
-        "Hidimba Temple ancient wooden architecture surrounded by tall deodar cedar trees, pagoda-style roof, intricate carvings, forest setting, mystical atmosphere",
-        "Paragliding over Solang Valley with stunning mountain views, adventure seekers in air, valley below, snow peaks, adrenaline rush moment",
-        "Old Manali riverside cafes with mountain backdrop, bohemian vibe, travelers relaxing, wooden structures, peaceful Beas River flowing",
-        "Vashisht hot water springs natural pool, stone architecture, steam rising, temple in background, therapeutic bathing scene",
-        "Rohtang Pass snow landscape with tourists playing in snow, prayer flags, winding mountain roads, adventure vehicles, breathtaking panorama"
       ],
       tips: [
         "Book Solang activities early morning",
@@ -2496,20 +2722,12 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging",
       category: "Adventure & High Altitude",
       heroImage: "/images/sightseeing/rohtang_pass_hero.jpg",
-      heroImagePrompt: "Spectacular panoramic view of Rohtang Pass at 13,050 feet, snow-covered Himalayan peaks stretching to horizon, colorful prayer flags fluttering, tourists in snow gear, adventure vehicles on mountain road, pristine white snow, dramatic azure sky, breathtaking high-altitude landscape, wide-angle photography, 8k",
       images: [
         "/images/sightseeing/Rohtang Pass.jpg",
         "/images/sightseeing/atal_tunnel.jpg",
         "/images/sightseeing/Paragliding_solang_valley.jpg",
         "/images/sightseeing/rahala_falls.jpg",
         "/images/sightseeing/gulaba_snow.jpg"
-      ],
-      additionalImages: [
-        "Rohtang Pass summit with tourists playing in deep snow, skiing and snowboarding action, 360-degree Himalayan panorama, snow-covered peaks, adventure activities, high altitude thrill",
-        "Atal Tunnel interior with vehicles driving through illuminated 9km tunnel, engineering marvel under Rohtang, modern infrastructure, strategic mountain passage",
-        "Solang Valley paragliding with tandem flight over green meadows, snow peaks backdrop, colorful parachutes in sky, adventure sports, aerial views, adrenaline rush",
-        "Rahala Falls cascading down rocky mountains, glacial water flow, surrounded by pine trees, scenic stopover, nature photography, pristine Himalayan waterfall",
-        "Gulaba snow point with families enjoying snow, sledding activities, mountain backdrop, winter wonderland, accessible snow experience before Rohtang"
       ],
       tips: [
         "Rohtang Pass permit MANDATORY - book online 2-3 days in advance (limited daily quota)",
@@ -2586,20 +2804,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Culture",
       heroImage: "/images/sightseeing/manikaran_hero.jpg",
-      heroImagePrompt: "Stunning view of Manikaran Sahib Gurudwara with golden dome reflecting in Parvati River, steam rising from natural hot springs, surrounded by dramatic Himalayan mountains, pilgrims gathering, spiritual atmosphere, mist and clouds, sacred Sikh shrine, architectural beauty, Parvati Valley landscape, HDR photography, 8k",
       images: [
         "/images/sightseeing/manikaran_gurudwara.jpg",
         "/images/sightseeing/manikaran_hot_springs.jpg",
         "/images/sightseeing/raghunath_temple_kullu.jpg",
         "/images/sightseeing/parvati_valley.jpg",
         "/images/sightseeing/kullu_shawls.jpg"
-      ],
-      additionalImages: [
-        "Manikaran Sahib Gurudwara interior with devotees, golden decorations, holy book, steam from hot springs visible, pilgrims praying, Sikh religious significance, spiritual ambiance",
-        "Natural hot springs at Manikaran with boiling water emerging from earth at 90°C, people bathing in therapeutic pools, steam rising, healing waters, geothermal wonder",
-        "Raghunath Temple Kullu with traditional Himachali architecture, wooden carvings, devotees gathered for darshan, cultural significance, colorful religious festival decorations",
-        "Parvati Valley scenic panorama with emerald river flowing through gorge, pine forests on slopes, snow peaks towering above, traditional villages, pristine Himalayan beauty",
-        "Kullu shawl market with colorful handwoven shawls displayed, traditional Himachali caps, local artisans, authentic handicrafts, shopping experience, cultural heritage"
       ],
       tips: [
         "Manikaran is 80 km from Manali - about 3 hours drive each way",
@@ -2676,20 +2886,12 @@ export const sightseeingTours = {
       difficulty: "Moderate (includes 4-5 km trek)",
       category: "Backpacking & Trekking",
       heroImage: "/images/sightseeing/kasol_tosh_hero.jpg",
-      heroImagePrompt: "Breathtaking aerial view of Tosh village perched on mountainside at 2400m, traditional wooden houses scattered on slopes, lush green Parvati Valley below, snow-capped peaks in background, terraced fields, pine forests, mountain streams, peaceful Himalayan hamlet, dramatic landscape, golden hour light, 8k photography",
       images: [
         "/images/sightseeing/kasol_riverside.jpg",
         "/images/sightseeing/tosh_village.jpg",
         "/images/sightseeing/parvati_valley.jpg",
         "/images/sightseeing/kasol_cafes.jpg",
         "/images/sightseeing/tosh_trek.jpg"
-      ],
-      additionalImages: [
-        "Kasol riverside with colorful cafes, travelers relaxing, Parvati River flowing, mountain backdrop, Israeli flags, bohemian atmosphere, backpacker paradise, peaceful vibe",
-        "Tosh village traditional wooden houses on steep mountain slope, terraced fields, snow peaks towering above, local Himachali architecture, remote mountain settlement, stunning location",
-        "Evergreen Cafe Kasol interior with travelers, cozy ambiance, Israeli menu, wooden decor, backpackers gathering, famous hangout spot, cultural melting pot",
-        "Tosh trek trail through dense pine forests, mountain streams, trekkers with backpacks, scenic path, prayer flags, adventure trekking, moderate difficulty hike",
-        "Parvati River crystal clear turquoise water flowing over rocks, surrounded by pine trees, camping spots on banks, nature's serenity, pristine mountain river"
       ],
       tips: [
         "Kasol to Tosh requires trek - wear comfortable trekking shoes",
@@ -2764,16 +2966,8 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Haridwar_hero_section.jpg",
-      heroImagePrompt: "Magical evening Ganga Aarti at Har Ki Pauri Haridwar, hundreds of oil lamps floating on Ganges, priests performing ritual with fire, devotees gathered, golden light reflections on water, spiritual atmosphere, long exposure photography, divine ambiance, HDR",
       images: [
         "/images/sightseeing/Mansa_Devi_Temple.jpg"
-      ],
-      additionalImages: [
-        "Har Ki Pauri sacred ghat crowded with devotees taking holy dip, Ganges flowing, temple in background, spiritual bathing scene, pilgrimage atmosphere",
-        "Mansa Devi Temple on hilltop with cable car, panoramic view of Haridwar city and Ganges, colorful temple architecture, devotees praying",
-        "Chandi Devi Temple accessible by ropeway, goddess shrine on mountain, cable car ascending, devotees gathered, scenic hilltop location",
-        "Ganga Aarti ceremony close-up with priests in orange robes holding multi-tiered brass lamps, fire ritual, smoke rising, evening devotion",
-        "Bharat Mata Mandir unique multi-story temple with relief map of India, nationalist shrine, architectural uniqueness, cultural landmark"
       ],
       tips: [
         "Ganga Aarti timing varies with sunset (usually 6-7 PM)",
@@ -2879,14 +3073,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/haridwar_rishikesh_hero.jpg",
-      heroImagePrompt: "Stunning Laxman Jhula suspension bridge over turquoise Ganges River, mountains in background, temples on banks, devotees crossing, spiritual Rishikesh landscape, golden hour lighting, iconic landmark, peaceful atmosphere",
       images: [],
-      additionalImages: [
-        "Har Ki Pauri Ganga Aarti with hundreds of lamps, priests performing ritual, devotees gathered, golden reflections on Ganges, mesmerizing spiritual ceremony",
-        "Laxman Jhula suspension bridge panoramic view, Ganges flowing below, Rishikesh landscape, people crossing, spiritual gateway, mountain backdrop",
-        "Triveni Ghat evening Aarti, peaceful ceremony, oil lamps floating, serene atmosphere, ashrams visible, intimate spiritual experience",
-        "Ram Jhula bridge connecting ashrams, suspension cables, Ganges river, temples on banks, yoga centers, spiritual Rishikesh"
-      ],
       tips: [
         "Start early to cover both cities comfortably",
         "Ganga Aarti at Har Ki Pauri is the highlight - don't miss",
@@ -2993,14 +3180,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/haridwar_mussoorie_hero.jpg",
-      heroImagePrompt: "Stunning split view showing Har Ki Pauri ghat with Ganga Aarti in foreground and Mussoorie hill station with Kempty Falls in background, spiritual meets nature, golden temple lights and green mountains, dramatic composition, day trip concept, Uttarakhand tourism",
       images: [],
-      additionalImages: [
-        "Mussoorie Mall Road bustling with tourists, colonial-era buildings, shops and cafes, horse rides, vibrant hill station atmosphere, Himalayan backdrop, pedestrian street",
-        "Kempty Falls wide angle with natural pool, tourists bathing, cascading water, surrounding green mountains, popular waterfall destination, summer attraction",
-        "Gun Hill cable car ascending with valley views, aerial ropeway, Mussoorie town spread below, Himalayan peaks visible, adventure activity, scenic ride",
-        "Company Garden flower beds in bloom, colorful arrangements, artificial lake with boats, families enjoying, peaceful garden setting, Mussoorie attraction"
-      ],
       tips: [
         "Start very early (6 AM) to maximize sightseeing time",
         "Carry warm clothes as Mussoorie is cooler than Haridwar",
@@ -3117,15 +3297,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (Naina Peak trek is moderate)",
       category: "Spiritual & Hill Station",
       heroImage: "/images/sightseeing/haridwar_nainital_hero.jpg",
-      heroImagePrompt: "Stunning composite image showing Har Ki Pauri Ganga Aarti with oil lamps in foreground and beautiful Naini Lake surrounded by hills in background, spiritual meets serene nature, sacred Ganges and emerald lake, dual destination beauty, Uttarakhand tourism, dramatic lighting",
       images: [],
-      additionalImages: [
-        "Mansa Devi Temple hilltop view with cable car station, devotees visiting, panoramic Haridwar cityscape below, Ganges river visible, spiritual pilgrimage site, ropeway gondolas",
-        "Naini Lake reflection photograph, mirror-like water surface, colorful hillside buildings reflected, boats symmetrically mirrored, serene morning atmosphere, perfect stillness, iconic Nainital beauty",
-        "Naina Peak trail through rhododendron forest, red flowers blooming, trekkers ascending path, dappled forest light, birdsong atmosphere, nature trek, Himalayan flora",
-        "Cave Garden underground illumination, stalactites and rock formations, colored lights, visitors exploring passages, natural geological wonder, mysterious ambiance",
-        "Mall Road Nainital evening scene, lake on one side, shops and restaurants on other, tourists walking, horse rides, vibrant hill station life, festive atmosphere"
-      ],
       tips: [
         "Book Nainital hotels in advance during peak season (April-June)",
         "Carry warm clothes even in summer, nights are cold",
@@ -3195,15 +3367,7 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging",
       category: "Adventure & Spiritual",
       heroImage: "/images/sightseeing/rishikesh_hero_section.jpg",
-      heroImagePrompt: "Adrenaline-packed river rafting action shot in Ganga rapids Rishikesh, raft full of adventurers paddling through white water, splashes everywhere, mountains and forests on riverside, dynamic action photography, bright sunny day, excitement captured",
       images: [],
-      additionalImages: [
-        "Bungee jumping platform India's highest, jumper mid-air with mountain valley below, adventure sports, thrilling moment, safety gear visible",
-        "Beatles Ashram graffiti walls with psychedelic art, colorful murals, abandoned meditation cells, artistic expression, unique cultural site",
-        "Laxman Jhula at blue hour with lights reflecting in Ganga, pedestrians crossing, temples lit up, magical evening atmosphere",
-        "Neelkanth Mahadev Temple in lush mountains, devotees, Shiva lingam, peaceful forest setting, spiritual energy",
-        "Rishikesh riverside cafes, travelers relaxing, mountain views, cultural melting pot, backpacker vibe, sunset colors"
-      ],
       tips: [
         "Book rafting and bungee in advance",
         "Carry quick-dry clothes for rafting",
@@ -3215,6 +3379,96 @@ export const sightseeingTours = {
       coordinates: { latitude: 30.0869, longitude: 78.2676 },
       groupSize: "1-15 persons",
       accessibility: "Not accessible for wheelchair users"
+    },
+
+    {
+      id: 76,
+      name: "Rishikesh to Auli Himalayan Ski Resort (2 Days)",
+      slug: "rishikesh-to-auli-2-days",
+      shortDescription: "Journey from Yoga Capital to India's premier ski destination with stunning Himalayan views",
+      fullDescription: "Experience an unforgettable 2-day journey from spiritual Rishikesh to the breathtaking Auli ski resort, one of Asia's best skiing destinations. Day 1 features the scenic mountain drive through Devprayag, Srinagar, and Joshimath with stops at confluence points and temples. Day 2 explores Auli's snow-covered slopes via Asia's longest cable car, offering panoramic views of Nanda Devi, Kamet, and Mana Parbat peaks. Perfect for adventure seekers, nature lovers, and those wanting to experience Himalayan grandeur. Winter brings world-class skiing, while summer offers lush meadows and trekking.",
+      duration: "2 Days / 1 Night",
+      price: {
+        sedan: 5600,
+        suv: 6500,
+        tempoTraveller: 9500,
+        currency: "INR"
+      },
+      highlights: [
+        "Auli Cable Car - Asia's longest ropeway with spectacular Himalayan views",
+        "Skiing & Snowboarding - World-class winter sports facilities (Dec-Feb)",
+        "Nanda Devi Views - Panoramic vistas of India's second highest peak",
+        "Gurso Bugyal - Scenic meadow trek with 360-degree mountain views",
+        "Joshimath - Ancient temple town and gateway to Badrinath",
+        "Devprayag - Sacred confluence of Alaknanda and Bhagirathi rivers",
+        "Artificial Lake - High-altitude lake with reflection views",
+        "Chattrakund Lake - Pristine mountain lake surrounded by oak forests"
+      ],
+      itinerary: [
+        { time: "Day 1 - 07:00 AM", activity: "Pickup from Rishikesh hotel", duration: "30 mins", description: "Early morning departure for mountain journey" },
+        { time: "Day 1 - 07:30 AM", activity: "Drive via Devprayag", duration: "2 hours", description: "Visit confluence of Alaknanda-Bhagirathi rivers" },
+        { time: "Day 1 - 09:30 AM", activity: "Devprayag Sangam visit", duration: "30 mins", description: "Sacred confluence point photography" },
+        { time: "Day 1 - 10:00 AM", activity: "Continue drive to Joshimath via Srinagar", duration: "5 hours", description: "Scenic mountain roads, lunch break en route" },
+        { time: "Day 1 - 03:00 PM", activity: "Arrival Joshimath, hotel check-in", duration: "1 hour", description: "Rest and acclimatization" },
+        { time: "Day 1 - 04:00 PM", activity: "Joshimath town exploration", duration: "2 hours", description: "Narsingh Temple, local market, mountain views" },
+        { time: "Day 1 - 06:00 PM", activity: "Dinner and overnight at Joshimath/Auli", duration: "Overnight", description: "Hotel near Auli ropeway" },
+        { time: "Day 2 - 07:00 AM", activity: "Breakfast and checkout", duration: "1 hour" },
+        { time: "Day 2 - 08:00 AM", activity: "Auli Cable Car ride", duration: "30 mins", description: "Asia's longest ropeway, stunning Himalayan panorama" },
+        { time: "Day 2 - 08:30 AM", activity: "Auli slopes exploration", duration: "4 hours", description: "Skiing (winter), meadow walks (summer), artificial lake, panoramic views" },
+        { time: "Day 2 - 12:30 PM", activity: "Gurso Bugyal trek (optional)", duration: "2 hours", description: "3 km scenic meadow trek, 360-degree mountain views" },
+        { time: "Day 2 - 02:30 PM", activity: "Lunch at Auli/Joshimath", duration: "1 hour" },
+        { time: "Day 2 - 03:30 PM", activity: "Return cable car and drive back to Rishikesh", duration: "8 hours", description: "Scenic return journey through mountains" },
+        { time: "Day 2 - 11:30 PM", activity: "Drop off at Rishikesh hotel", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel for entire journey (Sedan/SUV/Tempo Traveller)",
+        "Experienced mountain driver familiar with Himalayan roads",
+        "Parking charges and toll taxes",
+        "Bottled water throughout the tour",
+        "All applicable taxes and service charges"
+      ],
+      exclusions: [
+        "Hotel accommodation in Joshimath/Auli (₹2000-6000 per night)",
+        "All meals and refreshments (₹1200-2000 per day per person)",
+        "Auli cable car tickets (₹1000-1500 round trip)",
+        "Skiing equipment rental (₹1500-3000 per day in winter season)",
+        "Skiing instructor fees (₹1500-2500 per session)",
+        "Chair lift tickets at Auli (₹500-800)",
+        "Gurso Bugyal trek guide (₹800-1200 if required)",
+        "Personal expenses and adventure activities"
+      ],
+      bestTimeToVisit: "December to February for skiing and snow. April to June for pleasant weather and meadows. Avoid monsoon (July-September) due to landslide risks.",
+      difficulty: "Moderate to Challenging (long mountain drives, high altitude 2500-3000m, winter snow conditions)",
+      category: "Adventure, Nature & Hill Station",
+      heroImage: "/images/sightseeing/rishikesh_auli_hero.jpg",
+      images: [
+        "/images/sightseeing/auli_cable_car.jpg",
+        "/images/sightseeing/auli_skiing.jpg",
+        "/images/sightseeing/auli_nanda_devi_view.jpg",
+        "/images/sightseeing/gurso_bugyal.jpg",
+        "/images/sightseeing/auli_meadows.jpg"
+      ],
+      tips: [
+        "Road journey is long and winding - prone to motion sickness should take precautions",
+        "High altitude (2500-3000m) - acclimatize properly, avoid sudden exertion",
+        "Winter (Dec-Feb): Carry heavy woollens, skiing gear can be rented at Auli",
+        "Summer (Apr-Jun): Carry light jacket for evenings, meadows are lush green",
+        "Book accommodation in advance, especially during skiing season (Dec-Feb)",
+        "Auli cable car timings: Usually 8 AM - 5 PM, check before planning",
+        "Skiing lessons available for beginners - recommended to book instructor",
+        "Road can close due to snow/landslides - check conditions before travel",
+        "Limited ATMs after Joshimath - carry sufficient cash",
+        "Mobile network unreliable in mountains - inform family beforehand",
+        "Devprayag confluence photography best in morning light",
+        "Gurso Bugyal trek is moderate, 3 km but at altitude - take it slow",
+        "Stay near ropeway station in Joshimath for Day 2 convenience",
+        "If visiting in winter, confirm skiing facilities operational",
+        "Distance: Rishikesh to Joshimath 250 km (8-9 hours), Joshimath to Auli 16 km (cable car or road)"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 2145 },
+      coordinates: { latitude: 30.5377, longitude: 79.5730 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible (mountain terrain, cable car, high altitude, skiing activities)"
     }
   ],
 
@@ -3271,15 +3525,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station",
       heroImage: "/images/sightseeing/dehradun_hero_section.jpg",
-      heroImagePrompt: "Beautiful panoramic view of Mussoorie Mall Road at sunset, colonial buildings, cafes and shops lit up, tourists strolling, mountain town atmosphere, Doon Valley visible below, string lights glowing, Queen of Hills landscape, warm evening ambiance",
       images: [],
-      additionalImages: [
-        "Gun Hill Mussoorie top viewpoint with telescope, Himalayan snow peaks visible, ropeway cable cars, tourists enjoying, dramatic mountain scenery",
-        "Kempty Falls cascading water with tourists bathing and enjoying, lush green surroundings, multi-tiered waterfall, popular tourist spot",
-        "Forest Research Institute Dehradun colonial architecture, Greco-Roman style building, red brick structure, sprawling lawns, impressive facade",
-        "Robber's Cave natural rock formation with stream flowing through, people wading in water, cool cave atmosphere, geological wonder",
-        "Lal Tibba highest point with snow-capped Himalayan range view, prayer flags, viewing binoculars, panoramic landscape"
-      ],
       tips: [
         "Mussoorie can be crowded on weekends",
         "Carry light jacket even in summer",
@@ -3380,14 +3626,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Hill Station",
       heroImage: "/images/sightseeing/dehradun_mussoorie_same_day_hero.jpg",
-      heroImagePrompt: "Stunning Mussoorie Mall Road panoramic view at golden hour, colonial buildings with cafes, tourists strolling, Doon Valley visible below, mountain town charm, string lights beginning to glow, Queen of Hills landscape, vibrant atmosphere",
       images: [],
-      additionalImages: [
-        "Kempty Falls cascading water with families enjoying, natural pools, lush greenery, popular attraction, refreshing mountain waterfall",
-        "Lal Tibba highest viewpoint with snow-capped Himalayas visible, telescopes, prayer flags, panoramic 360-degree views, dramatic landscape",
-        "Gun Hill cable car aerial view, ropeway suspended over valley, Mussoorie town below, thrilling ride experience, mountain scenery",
-        "Mall Road Mussoorie evening scene, lit-up shops and cafes, pedestrians shopping, colonial architecture, vibrant hill station life"
-      ],
       tips: [
         "Start early to avoid crowds at Kempty Falls",
         "Carry light jacket even in summer months",
@@ -3488,14 +3727,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (temple trek requires fitness)",
       category: "Hill Station",
       heroImage: "/images/sightseeing/dehradun_dhanaulti_hero.jpg",
-      heroImagePrompt: "Beautiful Dhanaulti Eco Park with dense deodar forest, sunlight streaming through tall trees, wooden walking path, peaceful mountain atmosphere, mist in background, serene nature sanctuary, pristine environment",
       images: [],
-      additionalImages: [
-        "Dhanaulti Eco Park Amber section dense pine forest, wooden bridge, walking trail, peaceful green sanctuary, family tourists enjoying",
-        "Surkanda Devi Temple hilltop with 360-degree Himalayan views, prayer flags, pilgrims, sacred atmosphere, panoramic landscape",
-        "Potato Farm terraced agricultural fields, green crops, mountain backdrop, agritourism, rural Uttarakhand landscape",
-        "Tehri Dam reservoir with turquoise waters, surrounding mountains, calm atmosphere, scenic beauty, popular viewpoint"
-      ],
       tips: [
         "Surkanda Temple trek requires moderate fitness - wear comfortable shoes",
         "Carry warm clothes as Dhanaulti is cooler than Dehradun",
@@ -3604,14 +3836,7 @@ export const sightseeingTours = {
       difficulty: "Moderate (requires acclimatization to altitude)",
       category: "Adventure & Nature",
       heroImage: "/images/sightseeing/dehradun_auli_hero.jpg",
-      heroImagePrompt: "Spectacular Auli ski slopes with skiers in action, pristine white snow, cable car ropeway visible, majestic Himalayan peaks including Nanda Devi in background, winter sports paradise, adventure tourism, dramatic mountain landscape",
       images: [],
-      additionalImages: [
-        "Auli ski slopes panoramic view, professional skiers, snow-covered mountains, cable car, winter wonderland, adventure sports destination",
-        "Auli ropeway cable car suspended over valley, Himalayan peaks visible, aerial views, longest ropeway Asia, breathtaking scenery",
-        "Gorson Bugyal alpine meadow with Nanda Devi peak, vast grassland, trekkers, panoramic Himalayan views, high-altitude beauty",
-        "Joshimath market and town, local shops, mountain backdrop, gateway to Auli, cultural experience, Himalayan settlement"
-      ],
       tips: [
         "Book Auli accommodation well in advance during ski season",
         "Carry warm winter clothing even in spring/summer",
@@ -3679,15 +3904,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Patriotic",
       heroImage: "/images/sightseeing/amritsar_hero_section.jpg",
-      heroImagePrompt: "Stunning Golden Temple Amritsar (Harmandir Sahib) illuminated at night, golden dome reflecting in sacred Amrit Sarovar pool, pilgrims walking on white marble causeway, spiritual ambiance, perfect symmetry, long exposure photography, divine golden glow, 8k quality",
       images: [],
-      additionalImages: [
-        "Wagah Border ceremony with BSF soldiers in ceremonial dress performing high-kicks, crowds cheering with Indian flags, patriotic atmosphere, sunset timing, energetic scene",
-        "Jallianwala Bagh memorial with bullet marks on walls, narrow entrance, martyrs' well, eternal flame, emotional historical site, solemn atmosphere",
-        "Golden Temple daytime view with pilgrims bathing in Amrit Sarovar, marble walkways, golden architecture, Sikh devotees, spiritual cleansing",
-        "Langar hall Golden Temple with volunteers serving free food, large community kitchen, people sitting in rows, Sikh tradition of service",
-        "Partition Museum displays with vintage photographs, emotional artifacts, personal belongings, historical documentation, moving experience"
-      ],
       tips: [
         "Cover head at Golden Temple (scarves available)",
         "Remove shoes and wash feet before entering",
@@ -3748,14 +3965,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Patriotic & Cultural",
       heroImage: "/images/sightseeing/wagah_border_hero.jpg",
-      heroImagePrompt: "Dramatic Wagah Border ceremony with BSF soldiers in khaki uniform performing high-kick march, crowds waving Indian flags, patriotic atmosphere, sunset golden light, Indo-Pak border gate visible, energetic parade, national pride, iconic moment, wide angle shot",
       images: [],
-      additionalImages: [
-        "Wagah Border BSF soldiers marching with aggressive footwork, ceremonial parade, crowds cheering, Indian tricolor flags waving, patriotic energy",
-        "Flag lowering ceremony at sunset, BSF and Pakistan Rangers simultaneously lowering flags, border gates, solemn moment, national anthems",
-        "Wagah Border spectator stands packed with crowds, people waving flags, patriotic songs playing, enthusiastic atmosphere, family entertainment",
-        "BSF soldier in full ceremonial dress with tall fan-like headgear, handlebar mustache, perfect posture, pride and discipline, iconic image"
-      ],
       tips: [
         "Reach by 3:30 PM for good seating",
         "Carry valid ID proof for entry",
@@ -3821,15 +4031,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Spiritual",
       heroImage: "/images/sightseeing/amritsar_heritage_hero.jpg",
-      heroImagePrompt: "Golden Temple Amritsar daytime view with pilgrims walking on white marble causeway, golden Harmandir Sahib reflected in sacred pool, blue sky, spiritual ambiance, Sikh devotees, peaceful atmosphere, architectural splendor, symmetrical composition",
       images: [],
-      additionalImages: [
-        "Jallianwala Bagh memorial entrance narrow lane, bullet holes in walls, martyrs well, emotional historical site, freedom struggle monument, solemn atmosphere",
-        "Partition Museum interior with vintage photographs, personal belongings, emotional artifacts, stories of 1947, historical documentation, moving exhibits",
-        "Durgiana Temple golden dome architecture, Hindu temple complex, sacred pond, devotees, similar to Golden Temple style, religious harmony",
-        "Maharaja Ranjit Singh Museum displays with Sikh empire weapons, armor, paintings, historical artifacts, Punjab heritage, royal collection",
-        "Ram Bagh Gardens Mughal style landscaping, fountains, summer palace museum, historical garden, Ranjit Singh legacy, peaceful greenery"
-      ],
       tips: [
         "Cover head at Golden Temple and remove shoes",
         "Photography allowed but respectful behavior required",
@@ -3898,15 +4100,7 @@ export const sightseeingTours = {
       difficulty: "Moderate",
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/jodhpur_hero_section.jpg",
-      heroImagePrompt: "Breathtaking view of Mehrangarh Fort towering over Jodhpur Blue City, massive red sandstone fortress walls on hilltop, hundreds of blue-painted houses below, golden sunset light, dramatic desert landscape, architectural marvel, ultra-wide angle, HDR photography",
       images: [],
-      additionalImages: [
-        "Blue City Jodhpur aerial view with blue-painted houses, narrow winding streets, Mehrangarh Fort looming above, unique urban landscape, vibrant blue color",
-        "Jaswant Thada white marble cenotaph with intricate lattice work, serene setting, lake reflection, royal memorial, peaceful atmosphere",
-        "Mehrangarh Fort interior courtyard with colorful stained glass windows, ornate Rajput palaces, intricate carvings, royal grandeur",
-        "Clock Tower Jodhpur bustling Sardar Market with spices, textiles, vegetables, busy street life, colorful traditional Rajasthani culture",
-        "Umaid Bhawan Palace exterior art deco architecture, sandstone building, luxury heritage hotel, manicured lawns, royal splendor"
-      ],
       tips: [
         "Fort has steep climbs, wear comfortable shoes",
         "Blue City best explored in morning light",
@@ -3980,15 +4174,7 @@ export const sightseeingTours = {
       difficulty: "Moderate",
       category: "Heritage & Romance",
       heroImage: "/images/sightseeing/jodhpur_udaipur_hero.jpg",
-      heroImagePrompt: "Split panoramic view showing Mehrangarh Fort towering over Jodhpur Blue City on left side and Udaipur City Palace with Lake Pichola on right side, dramatic composition, royal Rajasthan journey, golden sunset light, architectural marvels, blue houses and romantic lakes, epic travel route",
       images: [],
-      additionalImages: [
-        "Mehrangarh Fort massive walls and ramparts, Jodhpur Blue City spread below, desert landscape, imposing fortress, architectural marvel",
-        "Blue City Jodhpur aerial view with blue-painted houses, narrow winding streets, vibrant blue color scheme, unique urban landscape",
-        "Ranakpur Jain Temple interior with 1444 intricately carved marble pillars, each unique design, sunlight filtering through, architectural masterpiece",
-        "City Palace Udaipur overlooking Lake Pichola, white palace complex, colorful courtyards, Jag Mandir island visible, romantic setting",
-        "Lake Pichola sunset boat ride with City Palace illuminated, Aravalli hills backdrop, romantic atmosphere, serene waters"
-      ],
       tips: [
         "Book Jodhpur hotel near old city for convenience",
         "Early start on Day 2 recommended for leisurely pace",
@@ -4059,15 +4245,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Romance",
       heroImage: "/images/sightseeing/udaipur_hero_section.jpg",
-      heroImagePrompt: "Magical evening view of City Palace Udaipur and Lake Pichola, white palace complex illuminated, Jag Mandir island palace lit up, Lake Palace hotel, reflections in calm water, colorful sunset sky, romantic atmosphere, long exposure, dreamy landscape, 8k ultra-detailed",
       images: [],
-      additionalImages: [
-        "City Palace interior with colorful glass mosaic peacock courtyard (Mor Chowk), intricate mirror work, vibrant Rajasthani art, royal opulence",
-        "Lake Pichola boat ride view with City Palace on shore, Aravalli hills backdrop, traditional wooden boat, romantic sunset, serene waters",
-        "Jag Mandir island palace white marble building on Lake Pichola, domed structures, gardens, tourist boat approaching, scenic island",
-        "Saheliyon Ki Bari fountains and pools, lotus pool, marble elephants, lush gardens, maidens' garden, peaceful retreat",
-        "Fateh Sagar Lake with Nehru Park island, tourist boats, mountain backdrop, ropeway visible, popular leisure spot, azure waters"
-      ],
       tips: [
         "Book boat ride in advance during peak season",
         "City Palace opens at 9:30 AM",
@@ -4142,15 +4320,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Hill Station & Heritage",
       heroImage: "/images/sightseeing/udaipur_mount_abu_hero.jpg",
-      heroImagePrompt: "Stunning split view showing Udaipur City Palace and Lake Pichola with boats on left, Mount Abu Dilwara Temple marble architecture and Nakki Lake on right, contrasting lakes and mountains, romantic journey, Rajasthan beauty, golden light, architectural marvels",
       images: [],
-      additionalImages: [
-        "City Palace Udaipur colorful peacock courtyard Mor Chowk, intricate mirror work, vibrant glass mosaics, royal opulence, architectural detail",
-        "Lake Pichola boat approaching Jag Mandir island palace, white marble building, City Palace in background, romantic setting, serene waters",
-        "Dilwara Temples intricate marble ceiling carvings, lotus flower designs, delicate pillars, architectural masterpiece, white marble artistry, stunning detail",
-        "Nakki Lake Mount Abu with Toad Rock formation, paddleboats on water, hills surrounding, peaceful hill station atmosphere, families enjoying",
-        "Sunset Point Mount Abu panoramic view of Aravalli ranges, valley below turning golden, dramatic sky colors, tourists watching, breathtaking vista"
-      ],
       tips: [
         "Book Udaipur hotel near City Palace for Day 1 convenience",
         "Dilwara Temples: No photography inside, shoes not allowed, open 12-6 PM",
@@ -4165,6 +4335,84 @@ export const sightseeingTours = {
       coordinates: { latitude: 24.5854, longitude: 73.7125 },
       groupSize: "1-15 persons",
       accessibility: "Partially wheelchair accessible, hilly terrain in Mount Abu"
+    },
+    {
+      id: 64,
+      name: "Udaipur to Kumbhalgarh Fort Excursion",
+      slug: "udaipur-kumbhalgarh-fort-excursion",
+      shortDescription: "Visit the Great Wall of India and majestic Kumbhalgarh Fort, UNESCO World Heritage Site",
+      fullDescription: "Discover the magnificent Kumbhalgarh Fort, a UNESCO World Heritage Site and birthplace of Maharana Pratap. Famous for having the second longest continuous wall in the world after the Great Wall of China, this hilltop fortress offers breathtaking views of the Aravalli ranges. Explore the massive fort complex with 360 temples, palaces, and gardens. Perfect day trip from Udaipur showcasing Rajputana grandeur and architectural brilliance.",
+      duration: "Full Day (8-10 hours with 85 km each way)",
+      price: {
+        sedan: 1700,
+        suv: 2000,
+        tempoTraveller: 3000,
+        currency: "INR"
+      },
+      highlights: [
+        "Kumbhalgarh Fort - UNESCO World Heritage Site with 36 km wall",
+        "Badal Mahal - Cloud Palace with panoramic views",
+        "360 Temples - Hindu and Jain temples within fort complex",
+        "Light & Sound Show - Evening spectacular (if opted)",
+        "Kumbhalgarh Wildlife Sanctuary - Leopards and wildlife spotting",
+        "Birth Place of Maharana Pratap",
+        "Scenic drive through Aravalli hills"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from Udaipur hotel", duration: "30 mins" },
+        { time: "08:30 AM", activity: "Drive to Kumbhalgarh", duration: "2 hours", description: "85 km scenic route through Aravalli hills" },
+        { time: "10:30 AM", activity: "Kumbhalgarh Fort exploration begins", duration: "3.5 hours", description: "Main fort, Badal Mahal, temples, ramparts walk" },
+        { time: "11:00 AM", activity: "Badal Mahal (Cloud Palace)", duration: "1 hour", description: "Stunning 360-degree views of surroundings" },
+        { time: "12:00 PM", activity: "Fort temples and palace complex", duration: "1.5 hours", description: "Explore ancient temples, Maharana Pratap birthplace" },
+        { time: "01:30 PM", activity: "Lunch at fort-view restaurant", duration: "1 hour", description: "Local Rajasthani cuisine with views" },
+        { time: "02:30 PM", activity: "Fort wall walk and photography", duration: "1.5 hours", description: "Walk on the massive ramparts, photo opportunities" },
+        { time: "04:00 PM", activity: "Kumbhalgarh Wildlife Sanctuary (optional)", duration: "1 hour", description: "Nature walk or jeep safari" },
+        { time: "05:00 PM", activity: "Return journey to Udaipur", duration: "2 hours" },
+        { time: "07:00 PM", activity: "Drop off at Udaipur hotel", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Kumbhalgarh Fort entry (₹200 for Indians, ₹600 for foreigners)",
+        "Camera fee (₹50-100)",
+        "Light & Sound Show (₹200-300, if opted)",
+        "Wildlife sanctuary jeep safari (₹800-1500 if opted)",
+        "Lunch and meals (₹400-800 per person)",
+        "Tour guide (₹800-1000)",
+        "Personal expenses"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather), avoid summer heat",
+      difficulty: "Moderate (fort has stairs and steep slopes)",
+      category: "Heritage & Adventure",
+      heroImage: "/images/sightseeing/kumbhalgarh_hero_section.jpg",
+      images: [
+        "/images/sightseeing/kumbhalgarh_fort.jpg",
+        "/images/sightseeing/badal_mahal.jpg",
+        "/images/sightseeing/fort_wall.jpg",
+        "/images/sightseeing/fort_temples.jpg",
+        "/images/sightseeing/aravalli_views.jpg"
+      ],
+      tips: [
+        "Wear comfortable walking shoes as fort requires extensive walking",
+        "Carry sunscreen, hat, and water for fort exploration",
+        "Best views from Badal Mahal in morning light",
+        "Fort opens at 9 AM, try to reach early to avoid crowds",
+        "Light & Sound Show at 6:45 PM (Hindi) and 7:45 PM (English) in season",
+        "Fort is at 1100m altitude - weather cooler than Udaipur",
+        "Allow 3-4 hours minimum to explore fort properly",
+        "Wildlife sanctuary best visited early morning or late afternoon",
+        "Photography unrestricted - great spot for panoramic shots",
+        "Distance from Udaipur: 85 km, 2 hours drive"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 2967 },
+      coordinates: { latitude: 25.1529, longitude: 73.5857 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible (steep climbs and stairs)"
     }
   ],
 
@@ -4221,15 +4469,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/ayodhya_hero_section.jpg",
-      heroImagePrompt: "Grand aerial view of new Ram Mandir Ayodhya, magnificent temple architecture with multiple shikhars (spires), pink sandstone construction, thousands of devotees, Saryu River in background, holy city landscape, divine atmosphere, architectural grandeur, golden hour lighting, 8k resolution",
       images: [],
-      additionalImages: [
-        "Hanuman Garhi fortress temple with orange flag, devotees climbing 70 steps, sunset lighting, powerful Hanuman deity, spiritual energy",
-        "Saryu River ghat evening Aarti with oil lamps floating, priests performing ritual, devotees gathered, holy Saryu flowing, divine ceremony",
-        "Kanak Bhawan temple with golden crowns, Ram and Sita idols, ornate decorations, devotees offering prayers, intimate darshan",
-        "Ram Janmabhoomi temple complex interior with devotees, security arrangements, new architecture, spiritual gathering, pilgrimage site",
-        "Ayodhya skyline with temples and ghats along Saryu River, sunset reflection, ancient holy city, spiritual destination panorama"
-      ],
       tips: [
         "Security is strict at Ram Janmabhoomi, carry valid ID",
         "No phones/cameras inside Ram temple",
@@ -4242,6 +4482,87 @@ export const sightseeingTours = {
       coordinates: { latitude: 26.7922, longitude: 82.1998 },
       groupSize: "1-15 persons",
       accessibility: "Partially wheelchair accessible"
+    },
+
+    {
+      id: 73,
+      name: "Ayodhya Local Darshan - Ram Janmabhoomi Focus",
+      slug: "ayodhya-local-ram-janmabhoomi-darshan",
+      shortDescription: "Compact local tour focused on Ram Janmabhoomi temple complex and nearby sacred sites",
+      fullDescription: "Experience a focused local darshan tour of Ayodhya centered around the newly inaugurated Ram Janmabhoomi temple and immediate sacred sites within 10 km radius. Perfect for devotees with limited time who want to prioritize Ram Mandir visit without extensive travel. This compact tour covers the essential spiritual landmarks of Lord Ram's birthplace with efficient local transportation and knowledgeable guidance.",
+      duration: "4-5 hours (Local sightseeing)",
+      price: {
+        sedan: 400,
+        suv: 500,
+        tempoTraveller: 800,
+        currency: "INR"
+      },
+      highlights: [
+        "Ram Janmabhoomi Temple - Newly inaugurated Ram Mandir, main attraction",
+        "Hanuman Garhi - 70-step fortress temple, must-visit before Ram temple",
+        "Kanak Bhawan - Beautiful temple with golden crowns of Ram-Sita",
+        "Saryu Ghat - Sacred riverfront for holy dip",
+        "Dashrath Mahal - Ancestral palace of Lord Ram",
+        "Sita Rasoi - Sacred kitchen of Goddess Sita",
+        "Ramkot - Historic fortification area"
+      ],
+      itinerary: [
+        { time: "Flexible Start", activity: "Pick up from Ayodhya hotel/station", duration: "15 mins", description: "Local pickup within Ayodhya" },
+        { time: "+0:15", activity: "Hanuman Garhi temple", duration: "45 mins", description: "Climb 70 steps for darshan, traditionally visited before Ram temple" },
+        { time: "+1:00", activity: "Ram Janmabhoomi temple complex", duration: "2 hours", description: "Main darshan at Ram Mandir, security check, queue time varies" },
+        { time: "+3:00", activity: "Kanak Bhawan temple", duration: "30 mins", description: "Beautiful temple with gold crown offerings" },
+        { time: "+3:30", activity: "Dashrath Mahal and Sita ki Rasoi", duration: "45 mins", description: "Historical palace and sacred kitchen visit" },
+        { time: "+4:15", activity: "Saryu Ghat visit", duration: "30 mins", description: "Sacred river view, optional holy dip" },
+        { time: "+4:45", activity: "Ramkot area (if time permits)", duration: "30 mins", description: "Ancient fort area exploration" },
+        { time: "+5:00", activity: "Drop off at hotel/station", duration: "15 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Local driver familiar with temple routes",
+        "Parking charges at temples",
+        "Bottled water",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Temple offerings and donations (optional, as per devotion)",
+        "VIP darshan passes if required to skip queues",
+        "Meals and refreshments",
+        "Tour guide (₹500-800 for local guide recommended)",
+        "Personal expenses",
+        "Aarti ceremony attendance (not included in regular tour)"
+      ],
+      bestTimeToVisit: "Year-round. October to March for pleasant weather. Avoid Ram Navami and Diwali unless you want to experience massive crowds.",
+      difficulty: "Easy to Moderate (Hanuman Garhi has 70 steps, other temples accessible)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/ayodhya_local_hero.jpg",
+      images: [
+        "/images/sightseeing/ram_janmabhoomi_main.jpg",
+        "/images/sightseeing/hanuman_garhi_ayodhya.jpg",
+        "/images/sightseeing/kanak_bhawan_temple.jpg",
+        "/images/sightseeing/saryu_ghat.jpg",
+        "/images/sightseeing/ayodhya_temples_local.jpg"
+      ],
+      tips: [
+        "Visit Hanuman Garhi FIRST before Ram Janmabhoomi - it's the tradition",
+        "Ram Janmabhoomi security is very strict - carry valid government ID",
+        "No mobile phones or cameras inside Ram Mandir - deposit at security counter",
+        "Dress modestly - shoulders and knees must be covered",
+        "Remove shoes at temple entrances - wear socks for comfort on hot surfaces",
+        "Queue time at Ram Janmabhoomi: 1-3 hours on weekdays, 3-5 hours on weekends",
+        "Start early morning (7-8 AM) to avoid peak crowds",
+        "VIP darshan passes available (₹100-300) but regular queue recommended for devotees",
+        "Photography allowed in temple premises but NOT inside main sanctum",
+        "Keep cash for offerings - digital payments not everywhere",
+        "Saryu Ghat best visited early morning or evening for peaceful atmosphere",
+        "Many temples close 12-4 PM for afternoon break - plan accordingly",
+        "Weekdays much less crowded than weekends",
+        "If attending evening aarti at Saryu Ghat, add 1.5 hours to tour",
+        "Local distance: All sites within 10 km radius, easy local transport"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 5234 },
+      coordinates: { latitude: 26.7922, longitude: 82.1998 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (Hanuman Garhi not accessible due to 70 steps, other temples mostly accessible)"
     }
   ],
 
@@ -4298,15 +4619,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Modern",
       heroImage: "/images/sightseeing/ahmedabad_hero_section.jpg",
-      heroImagePrompt: "Stunning Adalaj Stepwell aerial view showing 5-story octagonal structure, intricate Indo-Islamic carvings, geometric patterns, people descending steps, architectural marvel, natural lighting from above, detailed stonework, symmetrical composition, HDR photography, 8k quality",
       images: [],
-      additionalImages: [
-        "Sabarmati Ashram Gandhi's living quarters (Hriday Kunj), simple room with spinning wheel, historical artifacts, peaceful courtyard, freedom struggle memorabilia",
-        "Sidi Saiyyed Mosque famous Tree of Life jali window, intricate stone lattice work, natural light filtering through, architectural masterpiece, delicate carving",
-        "Jama Masjid Ahmedabad yellow sandstone Indo-Saracenic architecture, 260 pillars, courtyard with ablution pool, morning prayers, peaceful atmosphere",
-        "Kankaria Lake circular lake with attractions, toy train, hot air balloon, evening lights, families enjoying, urban entertainment hub",
-        "Old Ahmedabad pol (traditional neighborhood) narrow lanes, wooden havelis, traditional Gujarat architecture, local life, heritage area, cultural preservation"
-      ],
       tips: [
         "Old city best explored in morning to avoid heat",
         "Try authentic Gujarati thali",
@@ -4319,6 +4632,189 @@ export const sightseeingTours = {
       coordinates: { latitude: 23.0225, longitude: 72.5714 },
       groupSize: "1-15 persons",
       accessibility: "Partially wheelchair accessible"
+    },
+
+    {
+      id: 74,
+      name: "Ahmedabad to Junagadh Wildlife & Heritage (2 Days)",
+      slug: "ahmedabad-to-junagadh-2-days",
+      shortDescription: "Explore Gir National Park, ancient Junagadh Fort, and Girnar mountain temples",
+      fullDescription: "Embark on an enriching 2-day journey from Ahmedabad to Junagadh, the historic capital at the foot of Mount Girnar. Day 1 features the drive to Junagadh with visits to the magnificent Uparkot Fort, ancient Buddhist caves, and Mahabat Maqbara. Day 2 explores the sacred Girnar mountain with its 10,000 steps leading to Jain and Hindu temples, or optional visit to nearby Gir National Park for Asiatic lion safari. This tour combines spiritual significance, historical grandeur, and wildlife adventure.",
+      duration: "2 Days / 1 Night",
+      price: {
+        sedan: 6600,
+        suv: 7500,
+        tempoTraveller: 11000,
+        currency: "INR"
+      },
+      highlights: [
+        "Uparkot Fort - 2300-year-old fortress with incredible history",
+        "Mahabat Maqbara - Stunning Indo-Islamic mausoleum architecture",
+        "Girnar Mountain - Sacred 10,000-step pilgrimage to ancient temples",
+        "Buddhist Caves - Ancient rock-cut caves near fort",
+        "Adi-Kadi Vav - Ancient stepwells within Uparkot Fort",
+        "Gir National Park - Optional Asiatic lion safari nearby",
+        "Damodar Kund - Sacred water tank with temples"
+      ],
+      itinerary: [
+        { time: "Day 1 - 07:00 AM", activity: "Pickup from Ahmedabad", duration: "30 mins", description: "Early morning departure" },
+        { time: "Day 1 - 07:30 AM", activity: "Drive to Junagadh", duration: "5 hours", description: "330 km journey via NH27" },
+        { time: "Day 1 - 12:30 PM", activity: "Hotel check-in and lunch", duration: "1.5 hours", description: "Rest and traditional Gujarati meal" },
+        { time: "Day 1 - 02:00 PM", activity: "Uparkot Fort exploration", duration: "2.5 hours", description: "Ancient fort, cannons, Adi-Kadi Vav stepwells, Navghan Kuwo" },
+        { time: "Day 1 - 04:30 PM", activity: "Buddhist Caves visit", duration: "1 hour", description: "Ancient rock-cut caves near fort" },
+        { time: "Day 1 - 05:30 PM", activity: "Mahabat Maqbara", duration: "1 hour", description: "Stunning mausoleum with intricate architecture" },
+        { time: "Day 1 - 06:30 PM", activity: "Damodar Kund evening visit", duration: "1 hour", description: "Sacred tank with temples" },
+        { time: "Day 1 - 07:30 PM", activity: "Dinner and overnight at hotel", duration: "Overnight" },
+        { time: "Day 2 - 05:00 AM", activity: "Girnar Mountain pilgrimage (optional)", duration: "7 hours", description: "Climb 10,000 steps to Jain and Hindu temples at summit OR Gir safari" },
+        { time: "Day 2 - 12:00 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "Day 2 - 01:00 PM", activity: "Return drive to Ahmedabad", duration: "5 hours" },
+        { time: "Day 2 - 06:00 PM", activity: "Drop off at Ahmedabad", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel for entire journey (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with accommodation",
+        "Parking charges and toll taxes",
+        "Bottled water throughout the tour",
+        "All applicable taxes and service charges"
+      ],
+      exclusions: [
+        "Hotel accommodation in Junagadh (₹1500-4000 per night)",
+        "All meals and refreshments (₹1000-1500 per day per person)",
+        "Uparkot Fort entry (₹25 for Indians, ₹300 for foreigners)",
+        "Girnar ropeway (₹400-800 if opted instead of climbing)",
+        "Gir National Park safari (₹2500-4000 if opted instead of Girnar)",
+        "Tour guide (₹1500-2000 for 2 days)",
+        "Personal expenses and temple donations"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather). Girnar pilgrimage best during Kartik Purnima (Nov). Avoid summer (April-June) heat.",
+      difficulty: "Moderate to Challenging (Girnar climb is strenuous, 10,000 steps over 5-7 hours)",
+      category: "Heritage, Spiritual & Wildlife",
+      heroImage: "/images/sightseeing/junagadh_hero.jpg",
+      images: [
+        "/images/sightseeing/uparkot_fort.jpg",
+        "/images/sightseeing/mahabat_maqbara.jpg",
+        "/images/sightseeing/girnar_mountain.jpg",
+        "/images/sightseeing/girnar_temples.jpg",
+        "/images/sightseeing/junagadh_heritage.jpg"
+      ],
+      tips: [
+        "Girnar climb is VERY strenuous - 10,000 steps (16 km round trip), 5-7 hours",
+        "Start Girnar ascent by 5-6 AM to avoid heat and complete before afternoon",
+        "Ropeway available for part of Girnar climb (₹400-800) but still requires walking",
+        "Palanquin services available for elderly/disabled on Girnar (₹2000-5000)",
+        "Alternatively, skip Girnar and visit Gir National Park for lion safari",
+        "Gir safari requires advance booking, best done early morning",
+        "Uparkot Fort has deep stepwells - watch your step, use flashlight",
+        "Mahabat Maqbara best photographed in golden hour (late afternoon)",
+        "Junagadh is predominantly vegetarian - limited non-veg options",
+        "Wear comfortable trekking shoes if attempting Girnar climb",
+        "Carry walking stick, water, snacks for Girnar - shops available on route",
+        "Girnar has Jain temples (no leather allowed) and Hindu shrines",
+        "Book Junagadh hotel near Girnar base for Day 2 convenience",
+        "Distance: Ahmedabad to Junagadh 330 km, approximately 5 hours drive"
+      ],
+      reviews: { averageRating: 4.7, totalReviews: 1654 },
+      coordinates: { latitude: 21.5222, longitude: 70.4579 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible (fort and Girnar have extensive stairs)"
+    },
+
+    {
+      id: 75,
+      name: "Ahmedabad to Somnath + Diu Island (3 Days)",
+      slug: "ahmedabad-to-somnath-diu-3-days",
+      shortDescription: "Sacred Somnath Temple pilgrimage combined with Portuguese beach paradise Diu",
+      fullDescription: "Experience the perfect blend of spirituality and beach relaxation on this comprehensive 3-day tour from Ahmedabad. Day 1 features the journey to sacred Somnath, one of the 12 Jyotirlinga temples, with its stunning oceanfront location and powerful spiritual atmosphere. Day 2 explores Diu island's Portuguese colonial heritage, pristine beaches, and relaxed coastal vibe. Day 3 offers more beach time or Gir safari before returning. This tour uniquely combines India's holiest temple with one of its most charming beach destinations.",
+      duration: "3 Days / 2 Nights",
+      price: {
+        sedan: 8500,
+        suv: 9600,
+        tempoTraveller: 14000,
+        currency: "INR"
+      },
+      highlights: [
+        "Somnath Temple - First of 12 Jyotirlinga, oceanfront Shiva temple",
+        "Somnath Sound & Light Show - Temple history narrated by Amitabh Bachchan",
+        "Diu Fort - Portuguese fortress with ocean views",
+        "Diu Beaches - Nagoa, Ghoghla, Jallandhar pristine coastlines",
+        "St. Paul's Church - Baroque Portuguese architecture",
+        "Naida Caves - Natural rock formations perfect for photography",
+        "Gir National Park - Optional Asiatic lion safari",
+        "Triveni Sangam - Confluence of three rivers at Somnath"
+      ],
+      itinerary: [
+        { time: "Day 1 - 06:00 AM", activity: "Pickup from Ahmedabad", duration: "30 mins" },
+        { time: "Day 1 - 06:30 AM", activity: "Drive to Somnath", duration: "7 hours", description: "400 km journey via Rajkot route" },
+        { time: "Day 1 - 01:30 PM", activity: "Hotel check-in and lunch", duration: "1.5 hours" },
+        { time: "Day 1 - 03:00 PM", activity: "Somnath Temple darshan", duration: "2 hours", description: "Sacred Jyotirlinga, oceanfront temple" },
+        { time: "Day 1 - 05:00 PM", activity: "Triveni Sangam and beach", duration: "1.5 hours", description: "River confluence and sunset" },
+        { time: "Day 1 - 06:30 PM", activity: "Somnath Temple evening aarti", duration: "1 hour" },
+        { time: "Day 1 - 07:30 PM", activity: "Sound & Light Show", duration: "1 hour", description: "Temple history narration" },
+        { time: "Day 1 - 08:30 PM", activity: "Dinner and overnight", duration: "Overnight" },
+        { time: "Day 2 - 08:00 AM", activity: "Breakfast and checkout", duration: "1 hour" },
+        { time: "Day 2 - 09:00 AM", activity: "Drive to Diu", duration: "1.5 hours", description: "90 km coastal drive" },
+        { time: "Day 2 - 10:30 AM", activity: "Diu Fort exploration", duration: "2 hours", description: "Portuguese fortress, cannons, ocean views" },
+        { time: "Day 2 - 12:30 PM", activity: "Lunch and hotel check-in Diu", duration: "1.5 hours" },
+        { time: "Day 2 - 02:00 PM", activity: "Nagoa Beach relaxation", duration: "2 hours", description: "Swimming, water sports, beach activities" },
+        { time: "Day 2 - 04:00 PM", activity: "St. Paul's Church and Naida Caves", duration: "1.5 hours" },
+        { time: "Day 2 - 05:30 PM", activity: "Jallandhar Beach sunset", duration: "1.5 hours" },
+        { time: "Day 2 - 07:00 PM", activity: "Diu town seafood dinner", duration: "1.5 hours", description: "Diu is non-veg zone unlike Gujarat" },
+        { time: "Day 2 - 08:30 PM", activity: "Overnight at Diu", duration: "Overnight" },
+        { time: "Day 3 - 08:00 AM", activity: "Breakfast and leisure", duration: "1 hour" },
+        { time: "Day 3 - 09:00 AM", activity: "Ghoghla Beach or Gir Safari (optional)", duration: "3 hours" },
+        { time: "Day 3 - 12:00 PM", activity: "Checkout and lunch", duration: "1 hour" },
+        { time: "Day 3 - 01:00 PM", activity: "Return drive to Ahmedabad", duration: "7 hours" },
+        { time: "Day 3 - 08:00 PM", activity: "Drop off at Ahmedabad", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel for entire journey (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with accommodation",
+        "Parking charges and toll taxes",
+        "Bottled water throughout the tour",
+        "All applicable taxes and service charges"
+      ],
+      exclusions: [
+        "Hotel accommodation (₹1500-5000 per night in Somnath, ₹2000-6000 in Diu)",
+        "All meals and refreshments (₹1500-2500 per day per person)",
+        "Somnath Sound & Light Show tickets (₹50-100)",
+        "Water sports at Diu beaches (₹500-2000)",
+        "Gir National Park safari (₹2500-4000 if opted on Day 3)",
+        "Diu Fort entry (₹20)",
+        "Tour guide (₹2000-3000 for 3 days)",
+        "Personal expenses and shopping"
+      ],
+      bestTimeToVisit: "October to March (pleasant beach weather). Avoid monsoon (June-September). Mahashivratri at Somnath is special but very crowded.",
+      difficulty: "Easy (mostly temple visits and beach relaxation)",
+      category: "Spiritual, Beach & Heritage",
+      heroImage: "/images/sightseeing/somnath_diu_hero.jpg",
+      images: [
+        "/images/sightseeing/somnath_temple.jpg",
+        "/images/sightseeing/somnath_oceanfront.jpg",
+        "/images/sightseeing/diu_fort.jpg",
+        "/images/sightseeing/nagoa_beach_diu.jpg",
+        "/images/sightseeing/st_paul_church_diu.jpg"
+      ],
+      tips: [
+        "Book Somnath hotel near temple for easy aarti and show access",
+        "Sound & Light Show at Somnath is excellent - highly recommended (₹50-100)",
+        "Somnath Temple: Remove shoes, leather items not allowed",
+        "Photography inside Somnath temple prohibited",
+        "Evening aarti at Somnath very powerful - don't miss it",
+        "Diu allows alcohol unlike dry Gujarat - liquor available legally",
+        "Diu has non-vegetarian food unlike vegetarian Gujarat",
+        "Nagoa Beach best for swimming, water sports available",
+        "Rent scooters/bikes in Diu for easy island exploration (₹300-500/day)",
+        "Diu Fort has stunning sunset views - plan accordingly",
+        "Try fresh seafood at Diu beach shacks",
+        "Carry beachwear, sunscreen, swimming gear for Diu",
+        "Gir safari requires advance booking - plan on Day 3 morning if interested",
+        "Diu is small - can be explored in 1-1.5 days comfortably",
+        "Distance: Ahmedabad to Somnath 400 km (7 hrs), Somnath to Diu 90 km (1.5 hrs)"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 2876 },
+      coordinates: { latitude: 20.8880, longitude: 70.4014 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (temple and fort challenging, beaches accessible)"
     }
   ],
 
@@ -4381,23 +4877,12 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Heritage & Desert Culture",
       heroImage: "/images/sightseeing/jaisalmer_hero_section.jpg",
-      heroImagePrompt: "Majestic Jaisalmer Fort (Golden Fort/Sonar Qila) rising from Thar Desert, honey-golden sandstone architecture glowing in sunset light, massive fortification walls, bastions and gates, desert city panorama, blue sky, architectural photography, dramatic golden hour, ultra-detailed, 8k quality",
       images: [
         "/images/sightseeing/jaisalmer_fort.jpg",
         "/images/sightseeing/patwon_ki_haveli.jpg",
         "/images/sightseeing/sam_sand_dunes.jpg",
         "/images/sightseeing/gadisar_lake.jpg",
         "/images/sightseeing/salim_singh_haveli.jpg"
-      ],
-      additionalImages: [
-        "Jaisalmer Fort interior with narrow lanes, golden sandstone buildings, local shops, people living inside fort, living fort atmosphere, traditional architecture, morning light",
-        "Patwon Ki Haveli intricate facade with jharokhas (balconies), detailed stone carvings, five-story structure, ornate architecture, golden sandstone, craftsmanship marvel",
-        "Sam Sand Dunes camel safari at sunset, tourists on decorated camels, rippled sand dunes, Thar Desert landscape, golden sky, desert adventure, traditional experience",
-        "Gadisar Lake at sunset with ornate gateway (Tilon Ki Pol), temples and cenotaphs reflection in water, migratory birds, peaceful atmosphere, golden hour photography",
-        "Salim Singh Ki Haveli unique arched roof shaped like peacock, blue cupola, distinctive architecture, historical mansion, old Jaisalmer character",
-        "Kuldhara abandoned village ruins, ghost town mystery, empty houses and streets, Paliwal Brahmins heritage site, haunted village legends, historical site",
-        "Jain Temples inside fort with intricate marble carvings, dilwara-style architecture, ornate pillars, religious artwork, spiritual atmosphere, detailed craftsmanship",
-        "Desert cultural performance at Sam Sand Dunes, Kalbeliya dancers, folk music, bonfire, evening entertainment, Rajasthani culture, vibrant costumes"
       ],
       tips: [
         "Start early to avoid midday desert heat",
@@ -4415,6 +4900,1350 @@ export const sightseeingTours = {
       coordinates: { latitude: 26.9157, longitude: 70.9083 },
       groupSize: "1-15 persons",
       accessibility: "Limited wheelchair access (narrow fort lanes, sandy dunes)"
+    }
+  ],
+
+  kashmir: [
+    {
+      id: 54,
+      name: "Srinagar City Tour - Dal Lake & Mughal Gardens",
+      slug: "srinagar-dal-lake-mughal-gardens-tour",
+      shortDescription: "Experience the Venice of the East with Dal Lake, Shikara rides, Mughal Gardens, and houseboat stays",
+      fullDescription: "Immerse yourself in the enchanting beauty of Srinagar, the summer capital of Jammu & Kashmir. Glide across the iconic Dal Lake on a traditional Shikara, explore magnificent Mughal Gardens including Shalimar Bagh and Nishat Bagh, visit the historic Shankaracharya Temple with panoramic city views, and experience the unique charm of staying on a traditional houseboat. This tour showcases Srinagar's rich Mughal heritage, serene lakes with floating gardens, and the warm Kashmiri hospitality.",
+      duration: "1-2 Days",
+      price: {
+        sedan: 3500,
+        suv: 4200,
+        tempoTraveller: 6500,
+        currency: "INR"
+      },
+      highlights: [
+        "Dal Lake - Shikara ride on the iconic lake with floating gardens and vegetable markets",
+        "Shalimar Bagh - The 'Crown of Srinagar', 17th-century Mughal garden with terraces",
+        "Nishat Bagh - 'Garden of Bliss' with 12 terraces representing zodiac signs",
+        "Chashme Shahi - Royal spring garden with natural water source",
+        "Houseboat Experience - Stay on traditional wooden houseboats on Dal Lake",
+        "Shankaracharya Temple - Ancient hilltop temple with 360° views of Srinagar",
+        "Pari Mahal - Historic 'Palace of Fairies' with stunning evening views",
+        "Hazratbal Shrine - Beautiful white marble mosque on Dal Lake shores"
+      ],
+      itinerary: [
+        { time: "Day 1 - 09:00 AM", activity: "Pick up from Srinagar hotel/airport", duration: "30 mins" },
+        { time: "Day 1 - 09:30 AM", activity: "Dal Lake Shikara ride", duration: "2 hours", description: "Explore floating gardens, vegetable market, and enjoy serene waters" },
+        { time: "Day 1 - 11:30 AM", activity: "Visit Shalimar Bagh - The Crown of Srinagar", duration: "1 hour", description: "Built by Emperor Jahangir in 1619, stunning terraced garden" },
+        { time: "Day 1 - 12:30 PM", activity: "Nishat Bagh - Garden of Bliss", duration: "1 hour", description: "12 terraced garden with Dal Lake backdrop and Zabarwan mountains" },
+        { time: "Day 1 - 01:30 PM", activity: "Lunch break", duration: "1 hour", description: "Try authentic Kashmiri Wazwan cuisine" },
+        { time: "Day 1 - 02:30 PM", activity: "Chashme Shahi Royal Spring Garden", duration: "45 mins", description: "Smallest but most elegant Mughal garden with natural spring" },
+        { time: "Day 1 - 03:15 PM", activity: "Pari Mahal - Palace of Fairies", duration: "45 mins", description: "Seven-terraced garden overlooking Dal Lake" },
+        { time: "Day 1 - 04:00 PM", activity: "Shankaracharya Temple visit", duration: "1 hour", description: "Ancient temple at hilltop with panoramic views of Srinagar" },
+        { time: "Day 1 - 05:00 PM", activity: "Boulevard Road and Local Market visit", duration: "1.5 hours", description: "Shopping for Pashmina shawls, saffron, dry fruits, and handicrafts" },
+        { time: "Day 1 - 06:30 PM", activity: "Check-in at Houseboat or return to hotel", duration: "30 mins" },
+        { time: "Day 2 - 09:00 AM", activity: "Optional: Hazratbal Shrine visit", duration: "1 hour", description: "Beautiful mosque housing relic of Prophet Muhammad" },
+        { time: "Day 2 - 10:00 AM", activity: "Nigeen Lake visit and leisure time", duration: "2 hours", description: "Quieter alternative to Dal Lake for boating" },
+        { time: "Day 2 - 12:00 PM", activity: "Drop at hotel/airport", duration: "Departure" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Shikara ride on Dal Lake (₹500-1000 per hour)",
+        "Mughal Gardens entry fees (₹50-100 per garden)",
+        "Houseboat accommodation (₹2000-8000 per night)",
+        "Hotel accommodation if not staying on houseboat",
+        "Meals and refreshments (₹800-1500 per day)",
+        "Tour guide (₹1500-2000 per day)",
+        "Shopping and personal expenses",
+        "Shankaracharya Temple pony ride (₹200-300 optional)"
+      ],
+      bestTimeToVisit: "March to October for pleasant weather and blooming gardens, December to February for snow",
+      difficulty: "Easy",
+      category: "Heritage & Nature",
+      heroImage: "/images/sightseeing/srinagar_hero_section.jpg",
+      images: [
+        "/images/sightseeing/dal_lake.jpg",
+        "/images/sightseeing/shalimar_bagh.jpg",
+        "/images/sightseeing/nishat_bagh.jpg",
+        "/images/sightseeing/mughal_gardens.jpg",
+        "/images/sightseeing/pari_mahal.jpg"
+      ],
+      tips: [
+        "Book Shikara rides early morning for best experience and photography",
+        "Mughal Gardens are best visited in spring (April-May) when flowers are in full bloom",
+        "Houseboat stays offer unique experience - book in advance during peak season",
+        "Try authentic Kashmiri Kahwa (green tea with saffron and almonds)",
+        "Bargain at local markets - initial prices are often 2-3x actual value",
+        "Carry warm clothing as evenings can be cool even in summer",
+        "Respect local customs and dress modestly, especially at religious sites",
+        "Don't miss sunset views from Boulevard Road along Dal Lake",
+        "Mobile connectivity is generally good in Srinagar city"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 2847 },
+      coordinates: { latitude: 34.0837, longitude: 74.7973 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially accessible (Shankaracharya Temple has steep stairs)"
+    },
+
+    {
+      id: 65,
+      name: "Gulmarg Gondola & Skiing Adventure",
+      slug: "gulmarg-gondola-skiing-tour",
+      shortDescription: "Asia's highest cable car ride to Apharwat Peak with skiing, snowboarding, and meadow exploration",
+      fullDescription: "Experience the thrill of Asia's highest and longest cable car system in Gulmarg, the 'Meadow of Flowers'. Take the famous Gulmarg Gondola in two phases - first to Kongdoori Station at 2,650m, then to Apharwat Peak at 3,979m for breathtaking Himalayan views. In winter, enjoy world-class skiing and snowboarding on pristine slopes. In summer, explore lush green meadows, take pony rides, and enjoy the cool mountain climate. This adventure tour is perfect for both thrill-seekers and nature lovers.",
+      duration: "1 Day (Full Day Trip)",
+      price: {
+        sedan: 4000,
+        suv: 4800,
+        tempoTraveller: 7000,
+        currency: "INR"
+      },
+      highlights: [
+        "Gulmarg Gondola - Asia's highest cable car with two phases to 3,979m",
+        "Apharwat Peak - Stunning 360° views of Himalayan peaks including Nanga Parbat",
+        "Skiing & Snowboarding - World-class winter sports on pristine slopes (Dec-March)",
+        "St. Mary's Church - Historic British-era stone church from 1902",
+        "Alpather Lake - High-altitude glacial lake (summer trekking destination)",
+        "Golf Course - One of the world's highest golf courses at 2,650m",
+        "Meadow Exploration - Lush green meadows with colorful wildflowers (summer)",
+        "Sledging & Snow Activities - Fun snow play for families (winter)"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from Srinagar hotel", duration: "2 hours drive", description: "52 km scenic drive through pine forests to Gulmarg" },
+        { time: "09:00 AM", activity: "Arrive at Gulmarg, refreshments", duration: "30 mins" },
+        { time: "09:30 AM", activity: "Gulmarg Gondola Phase 1 to Kongdoori", duration: "15 mins ride", description: "Cable car ride to 2,650m elevation with stunning views" },
+        { time: "10:00 AM", activity: "Kongdoori Station - Explore and activities", duration: "1.5 hours", description: "Enjoy views, short hikes, photography, pony rides available" },
+        { time: "11:30 AM", activity: "Gulmarg Gondola Phase 2 to Apharwat Peak", duration: "15 mins ride", description: "Ascend to 3,979m for spectacular Himalayan panorama" },
+        { time: "12:00 PM", activity: "Apharwat Peak exploration", duration: "2 hours", description: "Skiing/snowboarding (winter), trekking (summer), photography, snow play" },
+        { time: "02:00 PM", activity: "Descend via Gondola and lunch break", duration: "1.5 hours", description: "Return to Gulmarg base, lunch at local restaurant" },
+        { time: "03:30 PM", activity: "Gulmarg local sightseeing", duration: "1.5 hours", description: "St. Mary's Church, Maharani Temple, Golf Course, meadow walk" },
+        { time: "05:00 PM", activity: "Return drive to Srinagar", duration: "2 hours" },
+        { time: "07:00 PM", activity: "Drop at Srinagar hotel", duration: "Arrival" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver familiar with mountain roads",
+        "Parking charges at Gulmarg",
+        "Toll taxes and environmental fees",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Gulmarg Gondola tickets - Phase 1 (₹810) + Phase 2 (₹1010) = ₹1820 per person",
+        "Tatkal Gondola tickets if advance booking unavailable (₹1110 + ₹1310)",
+        "Skiing equipment rental (₹1000-2500 per day with instructor)",
+        "Snowboarding gear and lessons (₹1500-3000)",
+        "Ski instructor fees (₹1500-2500 per session)",
+        "Pony rides at Kongdoori (₹500-800)",
+        "Sledging and snow activities (₹300-500)",
+        "Meals and refreshments (₹800-1200)",
+        "Tour guide (₹1500)",
+        "Warm clothing rental (₹300-500 if needed)"
+      ],
+      bestTimeToVisit: "December to March for skiing and snow activities, April to October for meadows and trekking",
+      difficulty: "Easy to Moderate (high altitude acclimatization needed)",
+      category: "Adventure & Nature",
+      heroImage: "/images/sightseeing/gulmarg_hero_section.jpg",
+      images: [
+        "/images/sightseeing/gulmarg_gondola.jpg",
+        "/images/sightseeing/apharwat_peak.jpg",
+        "/images/sightseeing/gulmarg_skiing.jpg",
+        "/images/sightseeing/gulmarg_meadows.jpg",
+        "/images/sightseeing/st_marys_church.jpg"
+      ],
+      tips: [
+        "Book Gondola tickets online in advance - they sell out quickly in peak season",
+        "Tatkal tickets available at 5 PM daily for next day (limited quantity)",
+        "Gondola operates 8:30 AM to 5:30 PM - arrive early to avoid long queues",
+        "Phase 2 may close due to bad weather - check conditions before going",
+        "Wear warm layers even in summer - temperature drops significantly at higher altitudes",
+        "Carry sunglasses and sunscreen - sun is very strong at high altitude",
+        "For skiing, hire instructor if you're a beginner - slopes can be challenging",
+        "Cash only at most places - ATMs available but may not always work",
+        "Carry altitude sickness medication if you're sensitive to heights",
+        "Best photography during early morning and late afternoon golden hours",
+        "In winter, SUV highly recommended over sedan for snow-covered roads"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 4521 },
+      coordinates: { latitude: 34.0484, longitude: 74.3805 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible due to cable car and high altitude terrain"
+    },
+
+    {
+      id: 66,
+      name: "Pahalgam Valley Tour - Betaab & Aru Valleys",
+      slug: "pahalgam-betaab-aru-valley-tour",
+      shortDescription: "Explore the scenic Betaab Valley and Aru Valley with pristine meadows, Lidder River, and Bollywood film locations",
+      fullDescription: "Discover the breathtaking beauty of Pahalgam, known as the 'Valley of Shepherds'. Journey through lush green meadows, crystal-clear streams, and pine forests as you visit the famous Betaab Valley (named after the Bollywood film) and the picturesque Aru Valley. Experience the gushing Lidder River, explore charming villages, and enjoy activities like pony rides, trekking, and riverside picnics. This tour offers a perfect escape into nature with stunning mountain backdrops and tranquil valleys.",
+      duration: "1-2 Days",
+      price: {
+        sedan: 3800,
+        suv: 4500,
+        tempoTraveller: 6800,
+        currency: "INR"
+      },
+      highlights: [
+        "Betaab Valley - Scenic meadow named after Bollywood film, surrounded by snow-capped peaks",
+        "Aru Valley - Pristine village and base camp for Kolahoi Glacier treks",
+        "Lidder River - Crystal-clear glacier-fed river perfect for riverside walks and picnics",
+        "Baisaran Valley - 'Mini Switzerland' with lush meadows accessible via short trek",
+        "Chandanwari - Starting point for Amarnath Yatra, snow point even in summer",
+        "Pahalgam Market - Local shopping for handicrafts and Kashmiri souvenirs",
+        "Pine Forests - Dense coniferous forests with nature trails",
+        "Photography Paradise - Bollywood and countless films shot in these valleys"
+      ],
+      itinerary: [
+        { time: "Day 1 - 07:00 AM", activity: "Pick up from Srinagar hotel", duration: "2.5 hours drive", description: "95 km scenic drive through saffron fields and mountain roads" },
+        { time: "Day 1 - 09:30 AM", activity: "Arrive Pahalgam, register for Union Cab", duration: "30 mins", description: "Mandatory union cab booking for valley visits" },
+        { time: "Day 1 - 10:00 AM", activity: "Betaab Valley visit", duration: "2 hours", description: "Explore lush green meadows, snow peaks backdrop, river streams" },
+        { time: "Day 1 - 12:00 PM", activity: "Aru Valley exploration", duration: "2.5 hours", description: "Visit scenic village, meadows, Lidder River, pony rides available" },
+        { time: "Day 1 - 02:30 PM", activity: "Lunch at local restaurant", duration: "1 hour", description: "Try trout fish and Kashmiri cuisine" },
+        { time: "Day 1 - 03:30 PM", activity: "Lidder River walk and Baisaran option", duration: "2 hours", description: "Riverside stroll or pony ride to Baisaran 'Mini Switzerland'" },
+        { time: "Day 1 - 05:30 PM", activity: "Pahalgam market visit", duration: "1 hour", description: "Shopping and evening leisure" },
+        { time: "Day 1 - 06:30 PM", activity: "Option: Overnight stay or return to Srinagar", duration: "2.5 hours if returning" },
+        { time: "Day 2 - 09:00 AM", activity: "Optional: Chandanwari visit", duration: "3 hours", description: "16 km from Pahalgam, snow point and Amarnath Yatra base" },
+        { time: "Day 2 - 12:00 PM", activity: "Return to Srinagar", duration: "2.5 hours drive" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller) from Srinagar to Pahalgam",
+        "Experienced driver with route knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Union cab charges for Betaab and Aru Valley (₹1500-2500 mandatory)",
+        "Betaab Valley entry fee (₹100 per person)",
+        "Aru Valley entry fee (₹50 per person)",
+        "Pony rides to Baisaran or within valleys (₹500-1500)",
+        "Chandanwari union cab charges (₹1000-1500 additional)",
+        "Accommodation in Pahalgam if staying overnight (₹2500-6000)",
+        "Meals and refreshments (₹800-1500 per day)",
+        "River rafting in Lidder River (₹500-1000, seasonal)",
+        "Tour guide (₹1500 per day)",
+        "Personal expenses and shopping"
+      ],
+      bestTimeToVisit: "April to October for pleasant weather and green meadows, December to February for snow",
+      difficulty: "Easy",
+      category: "Nature & Scenic Beauty",
+      heroImage: "/images/sightseeing/pahalgam_hero_section.jpg",
+      images: [
+        "/images/sightseeing/betaab_valley.jpg",
+        "/images/sightseeing/aru_valley.jpg",
+        "/images/sightseeing/pahalgam_valley.jpg",
+        "/images/sightseeing/lidder_river.jpg",
+        "/images/sightseeing/baisaran_valley.jpg"
+      ],
+      tips: [
+        "Union cabs are mandatory for Betaab and Aru Valley - own vehicles not allowed",
+        "Book union cabs early in morning to avoid long queues, especially on weekends",
+        "2-3 days recommended to explore all valleys comfortably without rushing",
+        "Pony rides available but negotiate prices in advance - standard rates apply",
+        "Wear comfortable walking shoes for valley exploration and riverside walks",
+        "Best photography in early morning when meadows have morning mist",
+        "Try fresh trout fish at local restaurants - Pahalgam is famous for it",
+        "Carry cash - ATMs available but not always reliable",
+        "Mobile connectivity can be patchy in valleys",
+        "River rafting available in summer months when water levels are ideal",
+        "Don't miss Baisaran Valley - short pony ride but spectacular views",
+        "Respect local environment - don't litter in pristine valleys"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 3654 },
+      coordinates: { latitude: 34.0161, longitude: 75.3150 },
+      groupSize: "1-15 persons",
+      accessibility: "Limited accessibility due to mandatory union cabs and valley terrain"
+    },
+
+    {
+      id: 67,
+      name: "Sonamarg Excursion - Thajiwas Glacier & Golden Meadow",
+      slug: "sonamarg-thajiwas-glacier-tour",
+      shortDescription: "Journey to the 'Meadow of Gold' with spectacular Thajiwas Glacier, alpine meadows, and Himalayan views",
+      fullDescription: "Experience the pristine beauty of Sonamarg, aptly named 'Meadow of Gold' for its golden-flowered meadows. This full-day excursion takes you to the magnificent Thajiwas Glacier at 9,186 feet, surrounded by snow-capped peaks, conifer forests, and frozen lakes. Trek or take a pony ride through lush meadows to reach the glacier, enjoy snow activities year-round, and marvel at the dramatic landscapes where Bollywood films have been shot. Sonamarg serves as the gateway to Ladakh and offers some of Kashmir's most spectacular mountain scenery.",
+      duration: "1 Day (Full Day Trip)",
+      price: {
+        sedan: 4200,
+        suv: 5000,
+        tempoTraveller: 7500,
+        currency: "INR"
+      },
+      highlights: [
+        "Thajiwas Glacier - Majestic glacier at 9,186 ft with year-round snow",
+        "Meadow of Gold - Spectacular alpine meadows with golden wildflowers",
+        "Sindh River - Crystal-clear glacial river flowing through the valley",
+        "Trekking & Pony Rides - Scenic 3-4 km trek through meadows to glacier",
+        "Snow Activities - Sledging, snowball fights, snow photography year-round",
+        "Himalayan Views - Panoramic vistas of snow-capped peaks and glaciers",
+        "Baltal Valley - Amarnath Yatra base camp with stunning landscapes",
+        "Nilagrad River - Holy red water stream with medicinal properties"
+      ],
+      itinerary: [
+        { time: "06:30 AM", activity: "Pick up from Srinagar hotel", duration: "2.5-3 hours drive", description: "80 km drive via Ganderbal to Sonamarg at 2,800m altitude" },
+        { time: "09:30 AM", activity: "Arrive Sonamarg, breakfast/refreshments", duration: "30 mins" },
+        { time: "10:00 AM", activity: "Start trek/pony ride to Thajiwas Glacier", duration: "1.5 hours", description: "3-4 km moderate trek through meadows and streams, pony available" },
+        { time: "11:30 AM", activity: "Thajiwas Glacier exploration", duration: "2-2.5 hours", description: "Snow activities, photography, sledging, glacier views, short hikes" },
+        { time: "02:00 PM", activity: "Return trek to Sonamarg base", duration: "1 hour", description: "Downhill walk through scenic meadows" },
+        { time: "03:00 PM", activity: "Lunch at Sonamarg", duration: "1 hour", description: "Try local cuisine at roadside dhabas" },
+        { time: "04:00 PM", activity: "Sonamarg meadow exploration", duration: "1 hour", description: "Walk along Sindh River, visit Nilagrad River confluence, photography" },
+        { time: "05:00 PM", activity: "Optional: Baltal Valley visit", duration: "30 mins", description: "Quick stop at Amarnath base camp (15 km further)" },
+        { time: "05:30 PM", activity: "Return drive to Srinagar", duration: "2.5-3 hours" },
+        { time: "08:00 PM", activity: "Drop at Srinagar hotel", duration: "Arrival" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver familiar with mountain routes",
+        "Parking charges at Sonamarg",
+        "Toll taxes and environmental fees",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Thajiwas Glacier entry/environmental fee (₹50-100 per person)",
+        "Pony ride to Thajiwas Glacier (₹800-1200 one way, ₹1500-2000 return)",
+        "Local taxi/jeep from Sonamarg to glacier base (₹500-800 optional)",
+        "Sledging and snow activity charges (₹200-500)",
+        "Meals and refreshments (₹600-1000)",
+        "Tour guide (₹1500)",
+        "Warm clothing rental if needed (₹300-500)",
+        "Photography charges at some spots (₹50-100)",
+        "Personal expenses and tips"
+      ],
+      bestTimeToVisit: "April to October (glacier accessible), May-June for golden meadows, July-August for lush greenery",
+      difficulty: "Moderate (3-4 km trek at high altitude)",
+      category: "Adventure & Nature",
+      heroImage: "/images/sightseeing/sonamarg_hero_section.jpg",
+      images: [
+        "/images/sightseeing/thajiwas_glacier.jpg",
+        "/images/sightseeing/sonamarg_meadows.jpg",
+        "/images/sightseeing/sindh_river.jpg",
+        "/images/sightseeing/sonamarg_valley.jpg",
+        "/images/sightseeing/baltal_valley.jpg"
+      ],
+      tips: [
+        "Start early from Srinagar to have maximum time at Thajiwas Glacier",
+        "Trek is moderate but at high altitude - take it slow and acclimatize",
+        "Pony rides recommended for elderly, children, or those not comfortable trekking",
+        "Glacier trek closes December to February due to heavy snowfall - plan accordingly",
+        "Carry warm clothing even in summer - temperature drops near glacier",
+        "Wear good trekking shoes with grip - path can be slippery near glacier",
+        "Sonamarg route closes in winter (Dec-March) - check road conditions before planning",
+        "Bring sunglasses and sunscreen - high altitude sun is very strong",
+        "Limited food options available - mostly roadside dhabas serving basic meals",
+        "No ATMs at Sonamarg - carry sufficient cash from Srinagar",
+        "Mobile network is available but can be unreliable",
+        "Best photography during morning when sun illuminates the glacier",
+        "Visit Nilagrad River - locals believe the red water has healing properties",
+        "If visiting in May-June, don't miss the golden wildflower meadows"
+      ],
+      reviews: { averageRating: 4.7, totalReviews: 2943 },
+      coordinates: { latitude: 34.3000, longitude: 75.2900 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible due to trekking terrain and high altitude"
+    },
+
+    {
+      id: 68,
+      name: "Kashmir Valley Complete Tour - Srinagar, Gulmarg & Pahalgam",
+      slug: "kashmir-valley-complete-tour",
+      shortDescription: "Experience the best of Kashmir in one complete package - Dal Lake, Gondola, valleys, and Mughal Gardens",
+      fullDescription: "Discover the complete beauty of Kashmir Valley in this comprehensive 3-4 day tour covering all major attractions. Start with Srinagar's iconic Dal Lake and Mughal Gardens, experience the thrill of Gulmarg's Gondola and skiing, and explore Pahalgam's pristine Betaab and Aru valleys. This all-inclusive package offers the perfect blend of heritage, adventure, and natural beauty, making it ideal for first-time visitors who want to see the best of Kashmir without missing any highlights.",
+      duration: "3-4 Days",
+      price: {
+        sedan: 12000,
+        suv: 15000,
+        tempoTraveller: 25000,
+        currency: "INR"
+      },
+      highlights: [
+        "Dal Lake - Shikara ride on iconic lake with floating gardens",
+        "Mughal Gardens - Shalimar Bagh, Nishat Bagh, and Chashme Shahi",
+        "Gulmarg Gondola - Asia's highest cable car to Apharwat Peak",
+        "Skiing & Snowboarding - World-class winter sports (seasonal)",
+        "Betaab Valley - Bollywood filming location with stunning meadows",
+        "Aru Valley - Pristine village and trekking base camp",
+        "Lidder River - Crystal-clear glacier-fed river",
+        "Shankaracharya Temple - Panoramic views of Srinagar",
+        "Pari Mahal - Historic monument with evening views",
+        "Local Markets - Pashmina, saffron, and handicrafts shopping"
+      ],
+      itinerary: [
+        { time: "Day 1 Morning", activity: "Arrival in Srinagar, hotel/houseboat check-in", duration: "1 hour" },
+        { time: "Day 1 - 10:00 AM", activity: "Dal Lake Shikara ride", duration: "2 hours", description: "Explore floating gardens and vegetable markets" },
+        { time: "Day 1 - 12:00 PM", activity: "Mughal Gardens - Shalimar and Nishat Bagh", duration: "2.5 hours", description: "Visit the Crown of Srinagar and Garden of Bliss" },
+        { time: "Day 1 - 02:30 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "Day 1 - 03:30 PM", activity: "Shankaracharya Temple and Pari Mahal", duration: "2 hours", description: "Panoramic city views and historic monuments" },
+        { time: "Day 1 Evening", activity: "Boulevard Road and local market shopping", duration: "1.5 hours" },
+        { time: "Day 2 - 07:00 AM", activity: "Drive to Gulmarg", duration: "2 hours", description: "52 km scenic drive through pine forests" },
+        { time: "Day 2 - 09:30 AM", activity: "Gulmarg Gondola Phase 1 & 2", duration: "4 hours", description: "Cable car to Kongdoori and Apharwat Peak" },
+        { time: "Day 2 - 01:30 PM", activity: "Lunch and local sightseeing", duration: "1.5 hours", description: "St. Mary's Church, Golf Course, meadows" },
+        { time: "Day 2 - 03:00 PM", activity: "Skiing/snow activities or meadow walk", duration: "2 hours", description: "Winter sports or nature exploration based on season" },
+        { time: "Day 2 - 05:00 PM", activity: "Return to Srinagar", duration: "2 hours" },
+        { time: "Day 3 - 07:00 AM", activity: "Drive to Pahalgam", duration: "2.5 hours", description: "95 km through saffron fields and mountains" },
+        { time: "Day 3 - 10:00 AM", activity: "Betaab Valley visit", duration: "2 hours", description: "Explore lush meadows and snow-capped peaks" },
+        { time: "Day 3 - 12:00 PM", activity: "Aru Valley exploration", duration: "2.5 hours", description: "Village, meadows, and Lidder River" },
+        { time: "Day 3 - 02:30 PM", activity: "Lunch at Pahalgam", duration: "1 hour" },
+        { time: "Day 3 - 03:30 PM", activity: "Lidder River walk or Baisaran Valley", duration: "2 hours", description: "Riverside stroll or Mini Switzerland visit" },
+        { time: "Day 3 - 05:30 PM", activity: "Return to Srinagar", duration: "2.5 hours" },
+        { time: "Day 4 Optional", activity: "Additional sightseeing or departure", duration: "Flexible", description: "Sonamarg excursion, Nigeen Lake, or airport drop" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel for entire tour (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with accommodation and meals",
+        "All parking charges and toll taxes",
+        "Bottled water during the tour",
+        "Airport/hotel pickup and drop",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Accommodation (₹3000-8000 per night for 3 nights)",
+        "Shikara ride on Dal Lake (₹500-1000 per hour)",
+        "Mughal Gardens entry fees (₹50-100 per garden)",
+        "Gulmarg Gondola tickets (₹1820 per person for both phases)",
+        "Union cab charges in Pahalgam (₹1500-2500 mandatory)",
+        "Betaab Valley entry (₹100) and Aru Valley entry (₹50)",
+        "All meals and refreshments (₹2500-4000 for 3-4 days)",
+        "Skiing equipment and instructor (₹1500-3000 per day)",
+        "Pony rides and optional activities (₹500-1500)",
+        "Tour guide if required (₹1500-2000 per day)",
+        "Personal expenses and shopping"
+      ],
+      bestTimeToVisit: "April to October for pleasant weather, December to February for snow and skiing",
+      difficulty: "Easy to Moderate",
+      category: "Complete Package Tour",
+      heroImage: "/images/sightseeing/kashmir_valley_hero_section.jpg",
+      images: [
+        "/images/sightseeing/dal_lake.jpg",
+        "/images/sightseeing/gulmarg_gondola.jpg",
+        "/images/sightseeing/pahalgam_valley.jpg",
+        "/images/sightseeing/mughal_gardens.jpg",
+        "/images/sightseeing/betaab_valley.jpg",
+        "/images/sightseeing/aru_valley.jpg"
+      ],
+      tips: [
+        "This package covers all major Kashmir attractions efficiently in 3-4 days",
+        "Book Gondola tickets in advance online - sell out quickly in peak season",
+        "Union cabs mandatory in Pahalgam - factor in additional costs",
+        "Stay on houseboat in Srinagar for authentic Kashmiri experience",
+        "Start early each day to maximize sightseeing and avoid crowds",
+        "Carry warm clothing even in summer - evenings can be cool",
+        "Keep permits and IDs handy for security checkpoints",
+        "Try authentic Kashmiri cuisine - Wazwan, Rogan Josh, and Kahwa",
+        "Bargain at local markets - initial prices often 2-3x actual value",
+        "Mobile connectivity can be limited in valleys",
+        "Best photography during golden hours - early morning and late afternoon",
+        "In winter, SUV highly recommended over sedan for snow-covered roads",
+        "Allow buffer time in itinerary for weather delays or road conditions"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 4521 },
+      coordinates: { latitude: 34.0837, longitude: 74.7973 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially accessible (some locations have stairs and rough terrain)"
+    }
+  ],
+
+  ladakh: [
+    {
+      id: 55,
+      name: "Leh-Ladakh Adventure Expedition",
+      slug: "leh-ladakh-adventure-expedition",
+      shortDescription: "Epic journey through high-altitude passes, pristine lakes, and ancient monasteries in the Himalayas",
+      fullDescription: "Embark on an unforgettable adventure to Leh-Ladakh, the land of high passes. Experience the surreal beauty of Pangong Lake, explore the unique landscape of Nubra Valley with its sand dunes and double-humped camels, cross the world's highest motorable pass Khardung La, and discover ancient Buddhist monasteries. This tour offers breathtaking mountain scenery, rich Tibetan Buddhist culture, and thrilling high-altitude experiences.",
+      duration: "4-5 Days",
+      price: {
+        sedan: 20000,
+        suv: 24000,
+        tempoTraveller: 35000,
+        currency: "INR"
+      },
+      highlights: [
+        "Pangong Lake - Stunning blue lake at 14,000 ft changing colors through the day",
+        "Nubra Valley - High-altitude desert with sand dunes and Bactrian camels",
+        "Khardung La - World's highest motorable pass at 17,582 ft",
+        "Diskit Monastery - Ancient monastery with 106 ft Maitreya Buddha statue",
+        "Thiksey Monastery - Magnificent 12-story monastery complex",
+        "Shanti Stupa - White-domed peace pagoda with panoramic views",
+        "Magnetic Hill - Mysterious gravity-defying road phenomenon"
+      ],
+      itinerary: [
+        { time: "Day 1", activity: "Acclimatization day in Leh - local sightseeing", duration: "Full day", description: "Hall of Fame, Shanti Stupa, Leh Palace, local market" },
+        { time: "Day 2 Morning", activity: "Drive to Nubra Valley via Khardung La", duration: "5-6 hours", description: "Cross world's highest motorable pass, 120 km journey" },
+        { time: "Day 2 Afternoon", activity: "Nubra Valley exploration - Diskit Monastery, sand dunes", duration: "3 hours", description: "Visit Maitreya Buddha, camel safari option" },
+        { time: "Day 2 Evening", activity: "Overnight in Nubra (Hunder/Diskit)", duration: "Overnight" },
+        { time: "Day 3 Morning", activity: "Return to Leh via Khardung La", duration: "5-6 hours", description: "Stop at viewpoints and photo points" },
+        { time: "Day 3 Afternoon", activity: "Visit Thiksey and Hemis Monastery", duration: "3 hours", description: "Explore ancient Buddhist monasteries on Leh-Manali highway" },
+        { time: "Day 4 Early Morning", activity: "Drive to Pangong Lake", duration: "5 hours", description: "160 km via Chang La pass (17,590 ft)" },
+        { time: "Day 4 Afternoon", activity: "Pangong Lake leisure time", duration: "4 hours", description: "Enjoy the mesmerizing blue waters and mountain backdrop" },
+        { time: "Day 4 Evening", activity: "Overnight camping/hotel near Pangong", duration: "Overnight" },
+        { time: "Day 5 Morning", activity: "Sunrise at Pangong and return to Leh", duration: "5 hours", description: "Return via same route with photo stops" },
+        { time: "Day 5 Afternoon", activity: "Visit Shey Palace and Rancho School", duration: "2 hours" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver familiar with high-altitude routes",
+        "Parking charges and environmental fees",
+        "Inner Line Permits for restricted areas",
+        "Bottled water and oxygen cylinders for emergency",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Accommodation (₹2000-6000 per night)",
+        "Monastery entry fees (₹30-100 each)",
+        "Camel safari in Nubra (₹500-800)",
+        "Meals and personal expenses",
+        "Inner Line Permit processing (₹400-600 per person)",
+        "Travel insurance (highly recommended)",
+        "Oxygen cylinders for personal use (₹500-1000)",
+        "Tour guide (₹2500 per day)"
+      ],
+      bestTimeToVisit: "May to September (roads open, pleasant weather), avoid winter when passes are closed",
+      difficulty: "Moderate to Challenging (high altitude)",
+      category: "Adventure & Nature",
+      heroImage: "/images/sightseeing/ladakh_hero_section.jpg",
+      images: [
+        "/images/sightseeing/pangong_lake.jpg",
+        "/images/sightseeing/nubra_valley.jpg",
+        "/images/sightseeing/khardung_la.jpg",
+        "/images/sightseeing/thiksey_monastery.jpg",
+        "/images/sightseeing/diskit_monastery.jpg"
+      ],
+      tips: [
+        "Acclimatize properly in Leh for at least 24 hours before starting the tour",
+        "Carry altitude sickness medication (Diamox) and consult doctor before trip",
+        "Keep oxygen cylinders handy for emergencies",
+        "Roads can be rough - SUV highly recommended over sedan",
+        "Limited mobile connectivity in Nubra and Pangong",
+        "Carry sufficient cash as ATMs are scarce beyond Leh",
+        "Dress in layers as temperature varies greatly",
+        "Inner Line Permits required - arrange in advance",
+        "Respect monastery timings and photography restrictions",
+        "Stay hydrated but avoid alcohol to prevent altitude sickness"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 5234 },
+      coordinates: { latitude: 34.1526, longitude: 77.5771 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible due to high altitude and rough terrain"
+    }
+  ],
+
+  lucknow: [
+    {
+      id: 56,
+      name: "Lucknow Heritage City Tour",
+      slug: "lucknow-heritage-city-tour",
+      shortDescription: "Experience the City of Nawabs with magnificent monuments, rich culture, and authentic Awadhi cuisine",
+      fullDescription: "Discover the architectural splendor and cultural richness of Lucknow, the capital of Uttar Pradesh. Explore the grandeur of Bara Imambara and its famous Bhool Bhulaiya maze, visit the elegant British Residency, admire the Rumi Darwaza gateway, and experience the bustling Hazratganj market. This tour showcases Lucknow's Nawabi heritage, Indo-Islamic architecture, and renowned hospitality.",
+      duration: "1-2 Days (Full Day Tour)",
+      price: {
+        sedan: 3500,
+        suv: 4200,
+        tempoTraveller: 6500,
+        currency: "INR"
+      },
+      highlights: [
+        "Bara Imambara - Architectural marvel with the famous Bhool Bhulaiya labyrinth",
+        "Rumi Darwaza - Magnificent 60-foot gateway, symbol of Lucknow",
+        "Chota Imambara - Ornate palace with beautiful chandeliers",
+        "British Residency - Historic ruins from the 1857 uprising",
+        "Hazratganj - Premier shopping and cultural hub",
+        "Ambedkar Park - Modern memorial with grand architecture",
+        "Tunday Kababi - Legendary Awadhi cuisine experience"
+      ],
+      itinerary: [
+        { time: "09:00 AM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "09:30 AM", activity: "Bara Imambara and Bhool Bhulaiya", duration: "2 hours", description: "Explore the architectural wonder and navigate the maze" },
+        { time: "11:30 AM", activity: "Rumi Darwaza and Clock Tower", duration: "30 mins", description: "Photo stop at iconic monuments" },
+        { time: "12:00 PM", activity: "Chota Imambara (Hussainabad Imambara)", duration: "1 hour", description: "Visit the ornate palace and tombs" },
+        { time: "01:00 PM", activity: "Lunch break - Authentic Awadhi cuisine", duration: "1.5 hours", description: "Try famous Tunday Kababi or local restaurants" },
+        { time: "02:30 PM", activity: "British Residency", duration: "1.5 hours", description: "Explore historical ruins and museum" },
+        { time: "04:00 PM", activity: "Ambedkar Memorial Park", duration: "1 hour", description: "Modern architecture and landscaped gardens" },
+        { time: "05:00 PM", activity: "Hazratganj shopping and market visit", duration: "1.5 hours", description: "Chikankari shopping and colonial architecture" },
+        { time: "06:30 PM", activity: "Return to hotel", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Monument entry tickets (₹200-500 per person total)",
+        "Lunch and meals (₹500-1000 per person)",
+        "Chikankari shopping expenses",
+        "Tour guide (₹1000 extra)",
+        "Camera fees at some monuments (₹25-100)",
+        "Personal expenses"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather), avoid summer heat (April-June)",
+      difficulty: "Easy",
+      category: "Heritage & Culture",
+      heroImage: "/images/sightseeing/lucknow_hero_section.jpg",
+      images: [
+        "/images/sightseeing/bara_imambara.jpg",
+        "/images/sightseeing/rumi_darwaza.jpg",
+        "/images/sightseeing/chota_imambara.jpg",
+        "/images/sightseeing/british_residency.jpg",
+        "/images/sightseeing/hazratganj.jpg"
+      ],
+      tips: [
+        "Wear comfortable shoes for Bhool Bhulaiya exploration",
+        "Best to visit Bara Imambara early to avoid crowds",
+        "Don't miss authentic Awadhi cuisine - kebabs, biryani, and kulfi",
+        "Hazratganj best visited in evening for shopping",
+        "Hire a local guide for better historical insights",
+        "Photography allowed in most places except inside tombs",
+        "Dress modestly when visiting religious monuments",
+        "Try famous Lucknowi paan at Hazratganj"
+      ],
+      reviews: { averageRating: 4.6, totalReviews: 2156 },
+      coordinates: { latitude: 26.8467, longitude: 80.9462 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (Bhool Bhulaiya not accessible)"
+    },
+
+    {
+      id: 69,
+      name: "Lucknow to Ayodhya Religious Tour",
+      slug: "lucknow-to-ayodhya-religious-tour",
+      shortDescription: "Journey from the City of Nawabs to Lord Ram's sacred birthplace",
+      fullDescription: "Experience a spiritual journey from Lucknow to Ayodhya, covering 135 km through the heartland of Uttar Pradesh. Visit the newly inaugurated Ram Mandir at Ram Janmabhoomi, explore sacred temples including Hanuman Garhi, Kanak Bhawan, and witness the divine Saryu River Aarti. This tour offers a perfect blend of Nawabi heritage and ancient spiritual significance, ideal for devotees and cultural enthusiasts alike.",
+      duration: "Full Day (8-10 hours including 3 hrs travel time)",
+      price: {
+        sedan: 2700,
+        suv: 3200,
+        tempoTraveller: 4500,
+        currency: "INR"
+      },
+      highlights: [
+        "Ram Janmabhoomi - Newly inaugurated Ram Mandir temple complex",
+        "Hanuman Garhi - 70-step fortress temple dedicated to Lord Hanuman",
+        "Kanak Bhawan - Beautiful temple of Ram and Sita with golden crowns",
+        "Saryu River Aarti - Evening spiritual ceremony on sacred riverbanks",
+        "Dashrath Mahal - Ancestral palace of Lord Ram",
+        "Sita Rasoi - Kitchen of Goddess Sita",
+        "Ramkot - Historic fortification area"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from Lucknow hotel", duration: "30 mins", description: "Early morning departure" },
+        { time: "07:30 AM", activity: "Drive to Ayodhya", duration: "3 hours", description: "135 km scenic drive through UP countryside" },
+        { time: "10:30 AM", activity: "Ram Janmabhoomi temple complex", duration: "2.5 hours", description: "Darshan at Ram Mandir, security check required" },
+        { time: "01:00 PM", activity: "Lunch break at local restaurant", duration: "1 hour", description: "Traditional vegetarian North Indian meal" },
+        { time: "02:00 PM", activity: "Hanuman Garhi temple", duration: "1 hour", description: "Climb 70 steps to the fortress temple" },
+        { time: "03:00 PM", activity: "Kanak Bhawan temple", duration: "45 mins", description: "Temple with gold crown offerings" },
+        { time: "03:45 PM", activity: "Dashrath Mahal and Sita ki Rasoi", duration: "1 hour", description: "Historical palace and sacred kitchen" },
+        { time: "04:45 PM", activity: "Ramkot and other temples", duration: "1 hour", description: "Nageshwarnath Temple and fort area" },
+        { time: "05:45 PM", activity: "Saryu River Ghat visit", duration: "1.5 hours", description: "Witness evening Ganga Aarti ceremony" },
+        { time: "07:15 PM", activity: "Return drive to Lucknow", duration: "3 hours" },
+        { time: "10:15 PM", activity: "Drop off at Lucknow hotel", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with route knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Lunch and meals (₹300-500 per person)",
+        "Temple offerings and donations (optional)",
+        "Tour guide (₹1200-1500 if required)",
+        "Personal expenses and shopping",
+        "Any additional activities not mentioned"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather), avoid summer heat. Ram Navami and Diwali are special but extremely crowded.",
+      difficulty: "Easy to Moderate (involves temple visits and stairs at Hanuman Garhi)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/lucknow_ayodhya_hero.jpg",
+      images: [
+        "/images/sightseeing/ram_janmabhoomi_temple.jpg",
+        "/images/sightseeing/hanuman_garhi.jpg",
+        "/images/sightseeing/kanak_bhawan.jpg",
+        "/images/sightseeing/saryu_aarti.jpg",
+        "/images/sightseeing/ayodhya_temples.jpg"
+      ],
+      tips: [
+        "Carry valid government ID - security is very strict at Ram Janmabhoomi",
+        "No mobile phones or cameras allowed inside Ram Mandir - deposit at security",
+        "Dress modestly - cover shoulders and knees at all temples",
+        "Remove shoes at temple entrances, wear socks for comfort",
+        "Start early to cover all attractions and avoid crowds",
+        "Book well in advance during festive seasons (Ram Navami, Diwali)",
+        "Stay hydrated - carry water bottles",
+        "Respect religious sentiments and follow temple protocols",
+        "Photography restricted in many temples - check before clicking",
+        "Try local prasad but ensure hygiene standards",
+        "Keep some cash for temple donations and local purchases",
+        "Distance: Lucknow to Ayodhya 135 km, approximately 3 hours drive"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 1876 },
+      coordinates: { latitude: 26.7922, longitude: 82.1998 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (Hanuman Garhi has 70 steps, other temples mostly accessible)"
+    },
+
+    {
+      id: 70,
+      name: "Lucknow to Prayagraj (Allahabad) Religious Tour",
+      slug: "lucknow-to-prayagraj-religious-tour",
+      shortDescription: "Sacred journey to Triveni Sangam, the confluence of three holy rivers",
+      fullDescription: "Embark on a spiritual journey from Lucknow to Prayagraj (formerly Allahabad), one of Hinduism's holiest cities. Experience the sacred Triveni Sangam where Ganga, Yamuna, and mythical Saraswati rivers converge. Visit historic temples, Anand Bhawan (Nehru family residence), and the massive Allahabad Fort. This 200 km journey offers deep spiritual significance, historical heritage, and the unique experience of bathing at the holy confluence.",
+      duration: "Full Day (10-12 hours including 4 hrs travel time)",
+      price: {
+        sedan: 4000,
+        suv: 4800,
+        tempoTraveller: 6500,
+        currency: "INR"
+      },
+      highlights: [
+        "Triveni Sangam - Holy confluence of Ganga, Yamuna, and Saraswati rivers",
+        "Boat ride at Sangam - Traditional boat experience to the meeting point",
+        "Allahabad Fort - Magnificent Mughal fortress with Akshay Vat tree",
+        "Anand Bhawan - Nehru family ancestral home and museum",
+        "Hanuman Mandir - Temple with reclining Hanuman idol",
+        "Alopi Devi Temple - Unique Shakti Peetha without idol",
+        "Khusro Bagh - Mughal garden with royal tombs",
+        "All Saints Cathedral - Gothic architecture landmark"
+      ],
+      itinerary: [
+        { time: "06:00 AM", activity: "Pick up from Lucknow hotel", duration: "30 mins", description: "Early morning departure for full day tour" },
+        { time: "06:30 AM", activity: "Drive to Prayagraj", duration: "4 hours", description: "200 km journey via NH27" },
+        { time: "10:30 AM", activity: "Triveni Sangam boat ride", duration: "2 hours", description: "Sacred bath at confluence, boat to meeting point of rivers" },
+        { time: "12:30 PM", activity: "Hanuman Mandir visit", duration: "45 mins", description: "Famous reclining Hanuman temple near Sangam" },
+        { time: "01:15 PM", activity: "Lunch break", duration: "1 hour", description: "Local restaurant near riverfront" },
+        { time: "02:15 PM", activity: "Allahabad Fort (exterior)", duration: "45 mins", description: "View from outside, entry restricted" },
+        { time: "03:00 PM", activity: "Anand Bhawan Museum", duration: "1.5 hours", description: "Nehru family residence, Independence movement history" },
+        { time: "04:30 PM", activity: "Alopi Devi Temple", duration: "45 mins", description: "Unique Shakti Peetha temple" },
+        { time: "05:15 PM", activity: "Khusro Bagh", duration: "45 mins", description: "Mughal garden with beautiful tombs" },
+        { time: "06:00 PM", activity: "All Saints Cathedral (exterior)", duration: "30 mins", description: "Photo stop at Gothic church" },
+        { time: "06:30 PM", activity: "Return drive to Lucknow", duration: "4 hours" },
+        { time: "10:30 PM", activity: "Drop off at Lucknow hotel", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water throughout the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Boat ride at Triveni Sangam (₹100-500 depending on boat type)",
+        "Anand Bhawan entry fee (₹20-100)",
+        "Lunch and meals (₹400-700 per person)",
+        "Temple offerings and donations",
+        "Tour guide (₹1500-2000 recommended)",
+        "Personal expenses and photography charges"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather). Avoid Kumbh Mela period unless you want to experience the massive gathering.",
+      difficulty: "Easy (minimal walking, mostly temple visits and boat ride)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/prayagraj_sangam_hero.jpg",
+      images: [
+        "/images/sightseeing/triveni_sangam.jpg",
+        "/images/sightseeing/sangam_boat_ride.jpg",
+        "/images/sightseeing/allahabad_fort.jpg",
+        "/images/sightseeing/anand_bhawan.jpg",
+        "/images/sightseeing/hanuman_mandir_prayagraj.jpg"
+      ],
+      tips: [
+        "Start very early (6 AM) to make the most of the day and avoid traffic",
+        "Carry extra clothes if you plan to take holy bath at Sangam",
+        "Boat ride prices vary - negotiate before boarding",
+        "Waterproof bag for valuables during boat ride",
+        "Sangam water can be cold - prepare accordingly",
+        "During Kumbh Mela (every 12 years), advance booking essential and prices higher",
+        "Anand Bhawan closed on Mondays",
+        "Allahabad Fort interior access restricted - can only view from outside",
+        "Try local chaat and snacks at Civil Lines area",
+        "Keep small denominations for temple donations",
+        "Photography allowed at most places except inside temples",
+        "Respect religious sentiments at Sangam - very sacred for Hindus",
+        "Distance: Lucknow to Prayagraj 200 km, approximately 4 hours drive"
+      ],
+      reviews: { averageRating: 4.7, totalReviews: 2234 },
+      coordinates: { latitude: 25.4358, longitude: 81.8463 },
+      groupSize: "1-15 persons",
+      accessibility: "Mostly wheelchair accessible except boat ride at Sangam"
+    }
+  ],
+
+  jammu: [
+    {
+      id: 57,
+      name: "Vaishno Devi Pilgrimage Tour",
+      slug: "vaishno-devi-pilgrimage-tour",
+      shortDescription: "Sacred journey to the revered Vaishno Devi shrine in the Trikuta Mountains",
+      fullDescription: "Undertake the spiritual journey to Mata Vaishno Devi, one of the holiest Hindu shrines located in the Trikuta Mountains. This pilgrimage tour covers transportation from Jammu to Katra base camp, where devotees begin the 12 km trek to the sacred cave shrine. Experience the divine atmosphere and witness the faith of millions of pilgrims who visit this revered temple annually.",
+      duration: "1 Day (Base to Base from Katra)",
+      price: {
+        sedan: 3200,
+        suv: 3800,
+        tempoTraveller: 6000,
+        currency: "INR"
+      },
+      highlights: [
+        "Vaishno Devi Temple - Sacred cave shrine of Mata Rani",
+        "Bhairavnath Temple - Complementary shrine post darshan",
+        "Ardhkuwari Cave - Important stopover on the pilgrimage path",
+        "Scenic trek through Trikuta Mountains",
+        "Katra market - Religious items and local handicrafts",
+        "Bhairo Ghati - Cable car option available"
+      ],
+      itinerary: [
+        { time: "04:00 AM", activity: "Pick up from Jammu hotel/railway station", duration: "1.5 hours" },
+        { time: "05:30 AM", activity: "Arrive at Katra base camp", duration: "30 mins", description: "Registration and preparation for trek" },
+        { time: "06:00 AM", activity: "Begin trek to Vaishno Devi (on foot/pony/helicopter)", duration: "6-8 hours", description: "12 km uphill trek with rest stops" },
+        { time: "12:00 PM", activity: "Darshan at holy cave", duration: "2 hours", description: "Includes waiting time in queue" },
+        { time: "02:00 PM", activity: "Optional Bhairavnath Temple visit", duration: "1.5 hours", description: "2.5 km further uphill" },
+        { time: "03:30 PM", activity: "Descent to Katra", duration: "4-5 hours", description: "Return journey" },
+        { time: "08:00 PM", activity: "Return to Jammu", duration: "1.5 hours" },
+        { time: "09:30 PM", activity: "Drop at hotel/railway station", duration: "Drop off" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with route knowledge",
+        "Parking charges at Katra",
+        "Bottled water",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Yatra slip/registration (Free but mandatory)",
+        "Pony/palanquin charges (₹800-2000 one way)",
+        "Helicopter charges (₹2000-3000 one way)",
+        "Battery car from Banganga to Bhawan (₹100-150)",
+        "Prasad and offerings",
+        "Meals (₹500-1000)",
+        "Cloakroom/luggage charges (₹20-50)",
+        "Bhairavnath Temple visit",
+        "Porter charges if needed"
+      ],
+      bestTimeToVisit: "September to March (pleasant weather), can be crowded during Navratri",
+      difficulty: "Moderate (12 km trek uphill)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/vaishno_devi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/vaishno_devi_temple.jpg",
+        "/images/sightseeing/katra_base.jpg",
+        "/images/sightseeing/bhairavnath_temple.jpg",
+        "/images/sightseeing/ardhkuwari_cave.jpg",
+        "/images/sightseeing/trikuta_mountains.jpg"
+      ],
+      tips: [
+        "Start early morning to avoid crowds and complete journey in daylight",
+        "Wear comfortable trekking shoes and carry walking stick",
+        "Carry valid ID proof for yatra registration (mandatory)",
+        "Travel light - cloakroom facilities available at base",
+        "Book helicopter in advance during peak season",
+        "Stay hydrated and take breaks during trek",
+        "Weather can change quickly - carry light jacket",
+        "Mobile connectivity available throughout the trek",
+        "Bhairavnath darshan considered important after Mata darshan",
+        "Respect queue system and maintain sanctity of shrine"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 8932 },
+      coordinates: { latitude: 33.0311, longitude: 74.9500 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible (trek required), palanquin services available"
+    }
+  ],
+
+  bodhgaya: [
+    {
+      id: 58,
+      name: "Bodh Gaya - Nalanda Buddhist Circuit",
+      slug: "bodh-gaya-nalanda-buddhist-circuit",
+      shortDescription: "Explore Buddhism's holiest sites including Mahabodhi Temple and ancient Nalanda University",
+      fullDescription: "Journey through the Buddhist heartland visiting Bodh Gaya where Buddha attained enlightenment under the Bodhi Tree, and the ancient ruins of Nalanda University, one of the world's first residential universities. This spiritual and historical tour takes you through UNESCO World Heritage Sites, international monasteries, and archaeological wonders that showcase the rich Buddhist heritage of Bihar.",
+      duration: "1-2 Days",
+      price: {
+        sedan: 4500,
+        suv: 5200,
+        tempoTraveller: 8000,
+        currency: "INR"
+      },
+      highlights: [
+        "Mahabodhi Temple - UNESCO World Heritage Site where Buddha attained enlightenment",
+        "Bodhi Tree - Sacred fig tree, descendant of original tree",
+        "Nalanda University Ruins - Ancient seat of learning from 5th century",
+        "Great Buddha Statue - 80 ft tall statue in meditation pose",
+        "International Monasteries - Thai, Tibetan, Japanese, and Bhutanese temples",
+        "Nalanda Archaeological Museum - Ancient artifacts and sculptures",
+        "Sujata Stupa - Site where Sujata offered food to Buddha"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from Gaya hotel/railway station", duration: "30 mins" },
+        { time: "07:30 AM", activity: "Drive to Bodh Gaya", duration: "30 mins", description: "17 km from Gaya" },
+        { time: "08:00 AM", activity: "Mahabodhi Temple complex visit", duration: "2.5 hours", description: "Main temple, Bodhi Tree, meditation, Vajrasana seat" },
+        { time: "10:30 AM", activity: "Great Buddha Statue", duration: "45 mins", description: "Meditation park with 80 ft statue" },
+        { time: "11:15 AM", activity: "International Monasteries tour", duration: "2 hours", description: "Thai, Japanese, Tibetan, Bhutanese temples" },
+        { time: "01:15 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "02:15 PM", activity: "Drive to Nalanda", duration: "1.5 hours", description: "90 km from Bodh Gaya" },
+        { time: "03:45 PM", activity: "Nalanda University Ruins", duration: "2 hours", description: "Explore ancient university, monasteries, temples" },
+        { time: "05:45 PM", activity: "Nalanda Archaeological Museum", duration: "1 hour", description: "Buddha statues, manuscripts, artifacts" },
+        { time: "06:45 PM", activity: "Return to Gaya", duration: "2 hours" },
+        { time: "08:45 PM", activity: "Drop at hotel/railway station", duration: "Drop off" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with knowledge of Buddhist sites",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Mahabodhi Temple donation (optional)",
+        "Nalanda entry fee (₹25 Indians, ₹300 foreigners)",
+        "Nalanda Museum entry (₹25)",
+        "Monastery donations (optional)",
+        "Meals (₹500-800 per person)",
+        "Tour guide specializing in Buddhist history (₹1500)",
+        "Camera fees at some locations (₹25-100)",
+        "Personal expenses and offerings"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather), avoid monsoon and summer heat",
+      difficulty: "Easy",
+      category: "Spiritual & Heritage",
+      heroImage: "/images/sightseeing/bodhgaya_hero_section.jpg",
+      images: [
+        "/images/sightseeing/mahabodhi_temple.jpg",
+        "/images/sightseeing/bodhi_tree.jpg",
+        "/images/sightseeing/nalanda_ruins.jpg",
+        "/images/sightseeing/great_buddha_statue.jpg",
+        "/images/sightseeing/thai_monastery.jpg"
+      ],
+      tips: [
+        "Dress modestly - shoulders and knees covered at religious sites",
+        "Remove shoes before entering Mahabodhi Temple complex",
+        "Early morning visit to Bodhi Tree offers peaceful meditation time",
+        "Hire a guide for better understanding of Buddhist history",
+        "Photography allowed but respect meditation areas",
+        "Nalanda best visited in morning or late afternoon to avoid heat",
+        "Try Tibetan and Thai cuisine at monastery cafes",
+        "Carry cash as card facilities limited",
+        "Respect the sanctity of prayer and meditation zones",
+        "Best time for photos at Mahabodhi is early morning or evening"
+      ],
+      reviews: { averageRating: 4.7, totalReviews: 3421 },
+      coordinates: { latitude: 24.6958, longitude: 84.9914 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (Mahabodhi complex accessible, Nalanda ruins challenging)"
+    }
+  ],
+
+  uttarakhand: [
+    {
+      id: 59,
+      name: "Char Dham Yatra Complete Circuit",
+      slug: "char-dham-yatra-complete-circuit",
+      shortDescription: "Sacred pilgrimage to four holy shrines - Yamunotri, Gangotri, Kedarnath, and Badrinath",
+      fullDescription: "Embark on the most revered Hindu pilgrimage covering the Char Dham (four abodes) in the Garhwal Himalayas. Visit Yamunotri (source of Yamuna), Gangotri (origin of Ganges), Kedarnath (Jyotirlinga of Lord Shiva), and Badrinath (abode of Lord Vishnu). This comprehensive spiritual journey takes you through stunning mountain landscapes, ancient temples, and sacred rivers while offering divine blessings and inner peace.",
+      duration: "9-10 Days",
+      price: {
+        sedan: 35000,
+        suv: 40000,
+        tempoTraveller: 70000,
+        currency: "INR"
+      },
+      highlights: [
+        "Yamunotri Temple - Source of sacred Yamuna River at 10,804 ft",
+        "Gangotri Temple - Origin of holy Ganges at 10,200 ft",
+        "Kedarnath Temple - One of 12 Jyotirlingas at 11,755 ft",
+        "Badrinath Temple - Sacred Vishnu shrine at 10,170 ft",
+        "Gaumukh - Snout of Gangotri Glacier (optional trek)",
+        "Panch Prayag - Five sacred river confluences",
+        "Himalayan landscapes and spiritual atmosphere"
+      ],
+      itinerary: [
+        { time: "Day 1", activity: "Haridwar to Barkot via Mussoorie", duration: "210 km, 7-8 hours", description: "Scenic drive through hills, overnight in Barkot" },
+        { time: "Day 2", activity: "Barkot to Yamunotri temple (trek 6 km) and return", duration: "Full day", description: "Trek to temple, darshan, hot springs, return to Barkot" },
+        { time: "Day 3", activity: "Barkot to Uttarkashi", duration: "100 km, 4-5 hours", description: "Visit Vishwanath Temple, overnight in Uttarkashi" },
+        { time: "Day 4", activity: "Uttarkashi to Gangotri and back", duration: "100 km each way", description: "Visit temple, Ganga aarti, return to Uttarkashi" },
+        { time: "Day 5", activity: "Uttarkashi to Guptkashi via Tehri", duration: "220 km, 8-9 hours", description: "Long scenic drive, overnight in Guptkashi" },
+        { time: "Day 6", activity: "Guptkashi to Kedarnath (trek 18 km) via Gaurikund", duration: "Full day", description: "Drive to Gaurikund, trek/pony/helicopter to Kedarnath, overnight" },
+        { time: "Day 7", activity: "Kedarnath darshan and return to Guptkashi", duration: "Full day", description: "Early morning darshan, trek back, drive to Guptkashi" },
+        { time: "Day 8", activity: "Guptkashi to Badrinath via Joshimath", duration: "190 km, 8 hours", description: "Visit Narsingh Temple, Mana village, overnight in Badrinath" },
+        { time: "Day 9", activity: "Badrinath darshan and sightseeing", duration: "Full day", description: "Temple darshan, Tapt Kund, Mana village, drive to Joshimath/Rudraprayag" },
+        { time: "Day 10", activity: "Return to Haridwar/Rishikesh", duration: "250 km, 8-9 hours", description: "Stopover at Devprayag, return journey" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver familiar with mountain routes",
+        "Parking charges and toll taxes",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Accommodation (₹15,000-30,000 total for 9 nights)",
+        "All meals (₹5,000-8,000 per person total)",
+        "Kedarnath helicopter (₹5,000-8,000 one way if opted)",
+        "Pony/palanquin charges (₹3,000-6,000 for Yamunotri & Kedarnath)",
+        "Temple donations and offerings",
+        "VIP darshan tickets (optional)",
+        "Porter charges for luggage",
+        "Travel insurance (highly recommended)",
+        "Personal expenses"
+      ],
+      bestTimeToVisit: "May to June and September to October (temples open, good weather), closed November to April",
+      difficulty: "Moderate to Challenging (high altitude, trekking required)",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/chardham_hero_section.jpg",
+      images: [
+        "/images/sightseeing/kedarnath_temple.jpg",
+        "/images/sightseeing/badrinath_temple.jpg",
+        "/images/sightseeing/gangotri_temple.jpg",
+        "/images/sightseeing/yamunotri_temple.jpg",
+        "/images/sightseeing/himalayan_landscape.jpg"
+      ],
+      tips: [
+        "Book accommodation well in advance during peak season (May-June)",
+        "Carry warm clothing as temperature drops significantly at night",
+        "Physical fitness important for Yamunotri and Kedarnath treks",
+        "Register online for Char Dham Yatra before starting journey",
+        "Helicopter booking recommended for Kedarnath if fitness is concern",
+        "Carry sufficient cash as ATMs scarce in mountain areas",
+        "Keep medicines for altitude sickness, stomach issues",
+        "Check weather forecast and road conditions before travel",
+        "Respect temple timings and photography restrictions",
+        "Travel light - porter services available but expensive",
+        "Mobile connectivity limited at higher altitudes",
+        "Medical certificate required for senior citizens at some places"
+      ],
+      reviews: { averageRating: 4.8, totalReviews: 6789 },
+      coordinates: { latitude: 30.7333, longitude: 79.0667 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible (treks required), helicopter/pony services available"
+    },
+    {
+      id: 61,
+      name: "Valley of Flowers & Hemkund Sahib Trek",
+      slug: "valley-of-flowers-hemkund-sahib-trek",
+      shortDescription: "UNESCO World Heritage Site with alpine flowers and sacred Sikh shrine at high altitude",
+      fullDescription: "Experience the breathtaking beauty of Valley of Flowers, a UNESCO World Heritage Site renowned for its endemic alpine flowers and diverse flora. Combined with a pilgrimage to Hemkund Sahib, a revered Sikh shrine situated at 15,200 ft beside a glacial lake, this trek offers stunning natural beauty, spiritual significance, and adventure in the Himalayan ranges of Uttarakhand.",
+      duration: "2 Days (From Govindghat)",
+      price: {
+        sedan: 5500,
+        suv: 6500,
+        tempoTraveller: 10000,
+        currency: "INR"
+      },
+      highlights: [
+        "Valley of Flowers - UNESCO site with 300+ species of alpine flowers",
+        "Hemkund Sahib - Sacred Gurudwara at 15,200 ft beside glacial lake",
+        "Ghangaria village - Base camp for both destinations",
+        "Himalayan glaciers and snow-capped peaks",
+        "Rare Himalayan flora including Blue Poppy",
+        "Lakshman Temple near Hemkund Sahib",
+        "Pristine mountain streams and waterfalls"
+      ],
+      itinerary: [
+        { time: "Day 1 Early Morning", activity: "Drive from Rishikesh/Joshimath to Govindghat", duration: "3-4 hours", description: "280 km from Rishikesh, 23 km from Joshimath" },
+        { time: "Day 1 Morning", activity: "Trek from Govindghat to Ghangaria", duration: "4-6 hours", description: "14 km uphill trek, base camp at 10,500 ft" },
+        { time: "Day 1 Afternoon", activity: "Rest and acclimatization in Ghangaria", duration: "Rest", description: "Overnight stay in guesthouse/camp" },
+        { time: "Day 2 Early Morning", activity: "Trek to Hemkund Sahib", duration: "3-4 hours up", description: "6 km steep climb to 15,200 ft" },
+        { time: "Day 2 Morning", activity: "Hemkund Sahib darshan and holy dip", duration: "2 hours", description: "Visit Gurudwara and glacial lake" },
+        { time: "Day 2 Afternoon", activity: "Return to Ghangaria and trek to Valley of Flowers", duration: "4-5 hours", description: "5 km to valley entrance, explore meadows" },
+        { time: "Day 2 Evening", activity: "Return to Ghangaria", duration: "2 hours" },
+        { time: "Day 2 Night", activity: "Trek back to Govindghat and drive to Joshimath", duration: "5-6 hours", description: "14 km trek + 23 km drive" }
+      ],
+      inclusions: [
+        "AC vehicle from Joshimath/Rishikesh to Govindghat and return",
+        "Experienced driver",
+        "Parking charges",
+        "Bottled water for journey",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Valley of Flowers entry fee (₹150 Indians, ₹600 foreigners)",
+        "Hemkund Sahib trek permit (Free)",
+        "Accommodation in Ghangaria (₹800-2000 per night)",
+        "Meals (₹1000-1500 per day)",
+        "Porter charges (₹600-1000 per day)",
+        "Pony/palanquin for trek (₹2000-4000)",
+        "Trekking guide (₹2000 per day)",
+        "Trekking equipment rental",
+        "Travel insurance",
+        "Personal expenses"
+      ],
+      bestTimeToVisit: "July to September (flowers in full bloom), avoid monsoon heavy rains",
+      difficulty: "Moderate to Challenging (high altitude trek)",
+      category: "Adventure & Spiritual",
+      heroImage: "/images/sightseeing/valley_of_flowers_hero.jpg",
+      images: [
+        "/images/sightseeing/valley_of_flowers.jpg",
+        "/images/sightseeing/hemkund_sahib.jpg",
+        "/images/sightseeing/alpine_flowers.jpg",
+        "/images/sightseeing/ghangaria.jpg",
+        "/images/sightseeing/himalayan_peaks.jpg"
+      ],
+      tips: [
+        "Best time to see flowers is late July to mid-August",
+        "Hemkund Sahib opens only June to October (closed in winter)",
+        "Start Hemkund trek very early (4-5 AM) to return same day",
+        "Carry warm clothing - temperature near freezing at Hemkund",
+        "Good fitness level required for high altitude trek",
+        "Book Ghangaria accommodation in advance during peak season",
+        "Carry rain gear as weather can change suddenly",
+        "Acclimatize properly to avoid altitude sickness",
+        "No plastic allowed in Valley of Flowers - carry eco-friendly items",
+        "Limited mobile connectivity in the region",
+        "Holy dip at Hemkund lake optional but water is freezing cold",
+        "Respect the fragile ecosystem - stay on marked trails"
+      ],
+      reviews: { averageRating: 4.9, totalReviews: 4156 },
+      coordinates: { latitude: 30.7268, longitude: 79.6008 },
+      groupSize: "1-15 persons",
+      accessibility: "Not wheelchair accessible (trekking required)"
+    }
+  ],
+
+  prayagraj: [
+    {
+      id: 60,
+      name: "Prayagraj Triveni Sangam & Heritage Tour",
+      slug: "prayagraj-triveni-sangam-heritage-tour",
+      shortDescription: "Experience the sacred confluence of three rivers and explore the city's rich historical heritage",
+      fullDescription: "Visit Prayagraj (formerly Allahabad), one of Hinduism's most sacred cities, home to the Triveni Sangam where three holy rivers meet. Take a boat ride to the confluence point, explore the historic Allahabad Fort, visit Anand Bhawan where India's freedom struggle was nurtured, and witness the spiritual atmosphere of this ancient city. Experience the divine energy that attracts millions during Kumbh Mela.",
+      duration: "1 Day (Full Day Tour)",
+      price: {
+        sedan: 3000,
+        suv: 3500,
+        tempoTraveller: 5500,
+        currency: "INR"
+      },
+      highlights: [
+        "Triveni Sangam - Sacred confluence of Ganga, Yamuna, and mythical Saraswati",
+        "Allahabad Fort - 16th century Mughal fort built by Akbar",
+        "Anand Bhawan - Nehru family ancestral home and museum",
+        "Hanuman Temple - Temple with reclining Hanuman statue",
+        "Akshaya Vat - Sacred immortal banyan tree",
+        "All Saints Cathedral - Gothic architecture masterpiece",
+        "Khusro Bagh - Mughal garden with royal tombs"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from hotel/railway station", duration: "30 mins" },
+        { time: "07:30 AM", activity: "Drive to Triveni Sangam ghat", duration: "30 mins" },
+        { time: "08:00 AM", activity: "Boat ride to Sangam confluence", duration: "1.5 hours", description: "Holy dip and prayers at the meeting point of rivers" },
+        { time: "09:30 AM", activity: "Akshaya Vat and Patalpuri Temple (inside Fort)", duration: "1 hour", description: "Sacred banyan tree and underground temple" },
+        { time: "10:30 AM", activity: "Allahabad Fort (external view)", duration: "30 mins", description: "Mughal architecture, limited internal access" },
+        { time: "11:00 AM", activity: "Hanuman Temple (누워있는 hanuman)", duration: "45 mins", description: "Unique reclining Hanuman idol" },
+        { time: "12:00 PM", activity: "Anand Bhawan and Swaraj Bhawan", duration: "1.5 hours", description: "Nehru family museum and freedom struggle history" },
+        { time: "01:30 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "02:30 PM", activity: "All Saints Cathedral", duration: "45 mins", description: "Gothic architecture and serene atmosphere" },
+        { time: "03:15 PM", activity: "Khusro Bagh", duration: "1 hour", description: "Mughal garden with beautiful tombs" },
+        { time: "04:15 PM", activity: "Chandrashekhar Azad Park", duration: "30 mins", description: "Historic park where freedom fighter sacrificed his life" },
+        { time: "05:00 PM", activity: "Return to hotel/railway station", duration: "30 mins" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Boat ride at Sangam (₹200-500 per person)",
+        "Allahabad Fort entry (₹200, limited access)",
+        "Anand Bhawan entry (₹100 per person)",
+        "Lunch and meals (₹400-700 per person)",
+        "Donations at temples (optional)",
+        "Tour guide (₹1000)",
+        "Camera fees (₹25-50 at some places)",
+        "Personal expenses and offerings"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather), visit during Kumbh Mela for unique experience",
+      difficulty: "Easy",
+      category: "Spiritual & Heritage",
+      heroImage: "/images/sightseeing/prayagraj_hero_section.jpg",
+      images: [
+        "/images/sightseeing/triveni_sangam.jpg",
+        "/images/sightseeing/allahabad_fort.jpg",
+        "/images/sightseeing/anand_bhawan.jpg",
+        "/images/sightseeing/hanuman_temple.jpg",
+        "/images/sightseeing/khusro_bagh.jpg"
+      ],
+      tips: [
+        "Early morning best for Sangam visit and boat ride",
+        "Carry change of clothes if planning holy dip",
+        "Bargain for boat rides - fix price before boarding",
+        "Allahabad Fort has restricted areas due to military use",
+        "Photography not allowed inside Anand Bhawan in some sections",
+        "Try local snacks at Civil Lines area",
+        "During Kumbh Mela, city gets extremely crowded - book in advance",
+        "Dress modestly for religious sites",
+        "Carry ID proof for fort entry",
+        "Best time for photography at Sangam is sunrise or sunset"
+      ],
+      reviews: { averageRating: 4.5, totalReviews: 2789 },
+      coordinates: { latitude: 25.4358, longitude: 81.8463 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (boat ride and fort not accessible)"
+    }
+  ],
+
+  khajjiar: [
+    {
+      id: 62,
+      name: "Khajjiar Mini Switzerland Tour",
+      slug: "khajjiar-mini-switzerland-tour",
+      shortDescription: "Explore the picturesque meadow known as India's Mini Switzerland in Himachal Pradesh",
+      fullDescription: "Discover the enchanting beauty of Khajjiar, often called 'Mini Switzerland of India', a stunning high-altitude meadow surrounded by dense pine and deodar forests. Located near Dalhousie in Himachal Pradesh, this scenic destination offers a perfect blend of natural beauty with its emerald green meadow, small lake, and panoramic Himalayan views. Ideal for nature lovers, honeymooners, and peace seekers.",
+      duration: "1-2 Days",
+      price: {
+        sedan: 4000,
+        suv: 4800,
+        tempoTraveller: 7500,
+        currency: "INR"
+      },
+      highlights: [
+        "Khajjiar Lake - Small saucer-shaped lake in the meadow center",
+        "Khajji Nag Temple - Ancient 12th century temple dedicated to serpent god",
+        "Paragliding - Adventure activity over the scenic meadow",
+        "Horse riding - Explore the vast meadow on horseback",
+        "Kalatop Wildlife Sanctuary - Dense forest with diverse flora and fauna",
+        "Dainkund Peak - Highest peak near Dalhousie with stunning views",
+        "Panchpula - Scenic spot with waterfalls and streams"
+      ],
+      itinerary: [
+        { time: "09:00 AM", activity: "Pick up from Dalhousie hotel", duration: "30 mins" },
+        { time: "09:30 AM", activity: "Drive to Khajjiar", duration: "45 mins", description: "22 km scenic mountain drive" },
+        { time: "10:15 AM", activity: "Khajjiar meadow exploration and lake visit", duration: "2 hours", description: "Walk on the meadow, lake views, photography" },
+        { time: "12:15 PM", activity: "Adventure activities (paragliding/zorbing/horse riding)", duration: "2 hours", description: "Optional activities at additional cost" },
+        { time: "02:15 PM", activity: "Lunch at local restaurant", duration: "1 hour" },
+        { time: "03:15 PM", activity: "Khajji Nag Temple visit", duration: "45 mins", description: "Ancient wooden temple with unique architecture" },
+        { time: "04:00 PM", activity: "Kalatop Wildlife Sanctuary", duration: "1.5 hours", description: "Nature walk through pine forests" },
+        { time: "05:30 PM", activity: "Dainkund Peak (if time permits)", duration: "1 hour", description: "15 km from Khajjiar, panoramic views" },
+        { time: "06:30 PM", activity: "Return to Dalhousie", duration: "1 hour" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with local knowledge",
+        "Parking charges",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Paragliding charges (₹1500-2500 per person)",
+        "Horse riding (₹200-500 for 15-30 mins)",
+        "Zorbing (₹300-500 per roll)",
+        "Kalatop Wildlife Sanctuary entry (₹50-100)",
+        "Lunch and meals (₹500-1000 per person)",
+        "Cable car/ropeway if any (₹200-400)",
+        "Tour guide (₹800-1000)",
+        "Personal expenses and photography charges"
+      ],
+      bestTimeToVisit: "March to June (pleasant weather), December to February (snow experience)",
+      difficulty: "Easy",
+      category: "Hill Station & Nature",
+      heroImage: "/images/sightseeing/khajjiar_hero_section.jpg",
+      images: [
+        "/images/sightseeing/khajjiar_meadow.jpg",
+        "/images/sightseeing/khajjiar_lake.jpg",
+        "/images/sightseeing/khajji_nag_temple.jpg",
+        "/images/sightseeing/kalatop_sanctuary.jpg",
+        "/images/sightseeing/dalhousie_views.jpg"
+      ],
+      tips: [
+        "Best time to visit is early morning when meadow is less crowded",
+        "Carry warm clothing even in summer as weather can be cool",
+        "Wear comfortable shoes for meadow walks",
+        "Paragliding dependent on weather conditions",
+        "Heavy snowfall in winter may make roads difficult",
+        "Try local Himachali cuisine at roadside dhabas",
+        "Photography at meadow best during golden hour",
+        "Horses available for riding around the meadow and lake",
+        "Keep environment clean - avoid littering in meadow",
+        "Combine with Dalhousie sightseeing for complete hill station experience"
+      ],
+      reviews: { averageRating: 4.7, totalReviews: 3567 },
+      coordinates: { latitude: 32.5465, longitude: 76.0493 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (meadow accessible, temple and sanctuary challenging)"
+    }
+  ],
+
+  shekhawati: [
+    {
+      id: 63,
+      name: "Shekhawati Heritage & Haveli Circuit",
+      slug: "shekhawati-heritage-haveli-circuit",
+      shortDescription: "Explore Rajasthan's open-air art gallery with magnificently painted havelis and rich cultural heritage",
+      fullDescription: "Journey through the Shekhawati region of Rajasthan, renowned as the world's largest open-air art gallery. Discover magnificent painted havelis in towns like Mandawa, Nawalgarh, and Fatehpur, showcasing stunning frescoes depicting mythology, historical events, and daily life. This heritage circuit offers a glimpse into the opulent lifestyle of Marwari merchant families and their artistic legacy.",
+      duration: "2-3 Days",
+      price: {
+        sedan: 4500,
+        suv: 5200,
+        tempoTraveller: 8000,
+        currency: "INR"
+      },
+      highlights: [
+        "Mandawa Fort & Havelis - Grand fort and painted merchant mansions",
+        "Nawalgarh Havelis - Podar Haveli Museum and Morarka Haveli",
+        "Fatehpur Havelis - Nadine Le Prince Haveli and Jagannath Singhania Haveli",
+        "Dundlod Fort - Heritage property with beautiful frescoes",
+        "Ramgarh Shekhawati - Chhatris and grand havelis",
+        "Fresco paintings - Intricate artwork on haveli walls",
+        "Rural Rajasthan experience - Traditional villages and culture"
+      ],
+      itinerary: [
+        { time: "Day 1 Morning", activity: "Drive from Jaipur to Mandawa", duration: "4 hours", description: "170 km journey through rural Rajasthan" },
+        { time: "Day 1 Afternoon", activity: "Mandawa Fort and haveli exploration", duration: "3 hours", description: "Gulab Rai Ladia Haveli, Hanuman Prasad Goenka Haveli, Murmuria Haveli" },
+        { time: "Day 1 Evening", activity: "Mandawa market walk and local culture", duration: "2 hours", description: "Overnight in Mandawa heritage hotel" },
+        { time: "Day 2 Morning", activity: "Drive to Nawalgarh", duration: "1 hour", description: "30 km from Mandawa" },
+        { time: "Day 2 Late Morning", activity: "Nawalgarh haveli tour", duration: "3 hours", description: "Podar Haveli Museum, Morarka Haveli, Aath Havelis complex" },
+        { time: "Day 2 Afternoon", activity: "Drive to Fatehpur", duration: "45 mins", description: "25 km from Nawalgarh" },
+        { time: "Day 2 Late Afternoon", activity: "Fatehpur havelis exploration", duration: "2.5 hours", description: "Nadine Le Prince Haveli, Jagannath Singhania Haveli" },
+        { time: "Day 2 Evening", activity: "Overnight in Nawalgarh/Mandawa", duration: "Overnight" },
+        { time: "Day 3 Morning", activity: "Dundlod Fort visit", duration: "2 hours", description: "Heritage property with museum" },
+        { time: "Day 3 Afternoon", activity: "Ramgarh Shekhawati and Chhatris", duration: "2 hours", description: "Grand havelis and cenotaphs" },
+        { time: "Day 3 Evening", activity: "Return to Jaipur", duration: "4 hours", description: "170 km drive back" }
+      ],
+      inclusions: [
+        "AC vehicle with fuel (Sedan/SUV/Tempo Traveller)",
+        "Experienced driver with route knowledge",
+        "Parking charges and toll taxes",
+        "Bottled water during the tour",
+        "All applicable taxes"
+      ],
+      exclusions: [
+        "Accommodation (₹3000-8000 per night in heritage hotels)",
+        "Haveli entry fees (₹50-200 per haveli)",
+        "Podar Haveli Museum entry (₹100)",
+        "Dundlod Fort entry (₹200-300)",
+        "Meals (₹1500-2500 per day per person)",
+        "Tour guide specializing in fresco art (₹1500 per day)",
+        "Camera fees at some havelis (₹50-100)",
+        "Personal expenses"
+      ],
+      bestTimeToVisit: "October to March (pleasant weather), avoid summer heat (April-June)",
+      difficulty: "Easy",
+      category: "Heritage & Culture",
+      heroImage: "/images/sightseeing/shekhawati_hero_section.jpg",
+      images: [
+        "/images/sightseeing/mandawa_fort.jpg",
+        "/images/sightseeing/painted_havelis.jpg",
+        "/images/sightseeing/nawalgarh_frescoes.jpg",
+        "/images/sightseeing/fatehpur_haveli.jpg",
+        "/images/sightseeing/shekhawati_art.jpg"
+      ],
+      tips: [
+        "Stay in heritage havelis for authentic experience",
+        "Hire a local guide to understand fresco symbolism and history",
+        "Many havelis are privately owned - seek permission before entering",
+        "Best light for photography is early morning and late afternoon",
+        "Wear comfortable shoes for extensive walking between havelis",
+        "Some havelis in neglected state - watch for structural safety",
+        "Try local Rajasthani thali at heritage hotels",
+        "Respect privacy of residents in still-inhabited havelis",
+        "Bargain at local markets for handicrafts and textiles",
+        "Carry cash as card facilities limited in smaller towns",
+        "Plan route efficiently to cover maximum havelis",
+        "Some frescoes fading - visit soon to see this heritage"
+      ],
+      reviews: { averageRating: 4.6, totalReviews: 1890 },
+      coordinates: { latitude: 28.0549, longitude: 75.1424 },
+      groupSize: "1-15 persons",
+      accessibility: "Partially wheelchair accessible (some havelis have narrow entrances and stairs)"
     }
   ]
 };
