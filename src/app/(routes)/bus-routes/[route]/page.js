@@ -286,7 +286,7 @@ export async function generateMetadata({ params }) {
       siteName: 'Triveni Cabs',
       images: [
         {
-          url: 'https://trivenicabs.in/images/bus/45_seater.jpeg',
+          url: 'https://trivenicabs.in/images/bus/45_SEATER_BUS.jpg',
           width: 1200,
           height: 630,
           alt: `${originFormatted} to ${destinationFormatted} Bus Service - Triveni Cabs`,
@@ -297,7 +297,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
       description: `🚌 Volvo comfort • AC • Entertainment. Perfect for corporate, weddings & tours. Book now!`,
-      images: ['https://trivenicabs.in/images/bus/45_seater.jpeg']
+      images: ['https://trivenicabs.in/images/bus/45_SEATER_BUS.jpg']
     },
     robots: {
       index: true,

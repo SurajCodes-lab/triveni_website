@@ -10,7 +10,7 @@ export const busFleet = [
     minimumCharge: "₹6,000 (8 hrs / 100 km)",
     idealFor: "Small groups, family trips, airport pick-ups",
     features: ["AC", "Pushback seats", "Music system"],
-    image: "/images/bus/22_seater.jpeg",
+    image: "/images/bus/22_SEATER_BUS.jpg",
     color: "from-blue-500 to-blue-700",
     gradient: "bg-gradient-to-br from-blue-500/10 to-blue-700/10"
   },
@@ -24,7 +24,7 @@ export const busFleet = [
     minimumCharge: "₹6,500 (8 hrs / 100 km)",
     idealFor: "Pilgrimage tours, family outings",
     features: ["AC", "Pushback seats", "Luggage space"],
-    image: "/images/bus/25_seater.jpeg",
+    image: "/images/bus/25_SEATER_BUS.jpg",
     color: "from-green-500 to-green-700",
     gradient: "bg-gradient-to-br from-green-500/10 to-green-700/10"
   },
@@ -38,7 +38,7 @@ export const busFleet = [
     minimumCharge: "₹6,800 (8 hrs / 100 km)",
     idealFor: "Corporate events, school trips",
     features: ["AC", "Mic system", "Curtains"],
-    image: "/images/bus/27_seater.jpeg",
+    image: "/images/bus/27_SEATER_BUS.jpg",
     color: "from-purple-500 to-purple-700",
     gradient: "bg-gradient-to-br from-purple-500/10 to-purple-700/10",
     popular: true
@@ -53,7 +53,7 @@ export const busFleet = [
     minimumCharge: "₹7,500 (8 hrs / 100 km)",
     idealFor: "Wedding guest transfers, group tours",
     features: ["AC", "Music system", "Comfortable recliners"],
-    image: "/images/bus/35_seater.jpeg",
+    image: "/images/bus/35_SEATER_BUS.jpg",
     color: "from-orange-500 to-orange-700",
     gradient: "bg-gradient-to-br from-orange-500/10 to-orange-700/10"
   },
@@ -67,7 +67,7 @@ export const busFleet = [
     minimumCharge: "₹8,000 (8 hrs / 100 km)",
     idealFor: "Large group travel & pilgrimage",
     features: ["AC", "Pushback seats", "PA system"],
-    image: "/images/bus/41_seater.jpeg",
+    image: "/images/bus/41_SEATER_BUS.jpg",
     color: "from-red-500 to-red-700",
     gradient: "bg-gradient-to-br from-red-500/10 to-red-700/10"
   },
@@ -81,7 +81,7 @@ export const busFleet = [
     minimumCharge: "₹9,000 (8 hrs / 100 km)",
     idealFor: "Long routes & corporate tours",
     features: ["Volvo 2×2 pushback seats", "AC", "Luggage rack"],
-    image: "/images/bus/45_seater.jpeg",
+    image: "/images/bus/45_SEATER_BUS.jpg",
     color: "from-indigo-500 to-indigo-700",
     gradient: "bg-gradient-to-br from-indigo-500/10 to-indigo-700/10",
     premium: true
@@ -96,7 +96,7 @@ export const busFleet = [
     minimumCharge: "₹9,500 (8 hrs / 100 km)",
     idealFor: "School trips, large events, group tours",
     features: ["AC", "Music system", "Comfortable seating"],
-    image: "/images/bus/49_seater.jpeg",
+    image: "/images/bus/49_SEATER_BUS.jpg",
     color: "from-teal-500 to-teal-700",
     gradient: "bg-gradient-to-br from-teal-500/10 to-teal-700/10",
     premium: true
@@ -111,7 +111,7 @@ export const busFleet = [
     minimumCharge: "₹10,000 (8 hrs / 100 km)",
     idealFor: "Corporate or Pilgrimage tours, destination weddings",
     features: ["AC", "LED TV", "Luxury recliners", "Wi-Fi (optional)"],
-    image: "/images/bus/56_seater.jpeg",
+    image: "/images/bus/56_SEATER_BUS.jpg",
     color: "from-yellow-500 to-yellow-700",
     gradient: "bg-gradient-to-br from-yellow-500/10 to-yellow-700/10",
     premium: true,
