@@ -26,8 +26,128 @@ export const metadata = {
 };
 
 export default function ReligiousToursPage() {
+  // Religious Tours Service Schema
+  const religiousToursSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Religious Tours and Pilgrimage Services",
+    "name": "Divine Pilgrimage Tours India",
+    "description": "Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more. Comfortable AC transport, experienced drivers, affordable pilgrimage packages across India.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Triveni Cabs",
+      "telephone": "+91-7668570551",
+      "email": "info@trivenicabs.in",
+      "url": "https://trivenicabs.in"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "650",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Religious Tour Packages",
+      "itemListElement": religiousTours.map(tour => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": tour.title,
+          "description": tour.description,
+          "touristType": ["Pilgrims", "Families", "Groups", "Solo Travelers"]
+        },
+        "url": `https://trivenicabs.in/religious-tours/${tour.slug}`
+      }))
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://trivenicabs.in/religious-tours",
+      "servicePhone": "+91-7668570551",
+      "availableLanguage": ["English", "Hindi"]
+    }
+  };
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Religious Tours",
+        "item": "https://trivenicabs.in/religious-tours"
+      }
+    ]
+  };
+
+  // FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What pilgrimage tours do you offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer comprehensive pilgrimage tours including Char Dham Yatra (Kedarnath, Badrinath, Gangotri, Yamunotri), Vaishno Devi, Golden Temple Amritsar, Tirupati Balaji, Haridwar-Rishikesh, Mathura-Vrindavan, and many more sacred destinations across India."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the tours guided?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all our religious tours come with expert guides who are knowledgeable about the spiritual significance, rituals, and history of each pilgrimage site. Guides are available in multiple languages including English and Hindi."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the pilgrimage packages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our packages include comfortable AC transportation, professional drivers, experienced guides, assistance with temple darshan, accommodation recommendations, and complete itinerary planning. Meals and accommodation can be customized based on your preferences."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I customize my pilgrimage tour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! We offer fully customizable pilgrimage tours. You can choose your destinations, duration, accommodation level, and add special requests for pujas or rituals. Contact us to create your personalized spiritual journey."
+        }
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(religiousToursSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-100/50 to-purple-100/50" />
@@ -152,5 +272,6 @@ export default function ReligiousToursPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

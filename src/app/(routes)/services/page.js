@@ -108,5 +108,106 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
-  return <ServicesClient />;
+  // Comprehensive Service Schema
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Transportation Services",
+    "name": "Premium Cab Services Across India",
+    "description": "Comprehensive cab services including city rides, outstation tours, airport transfers, wedding cars, corporate travel & tempo traveller rentals. Professional drivers, modern fleet, 24/7 service.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Triveni Cabs",
+      "telephone": "+91-7668570551",
+      "email": "info@trivenicabs.in",
+      "url": "https://trivenicabs.in"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Complete Cab Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Local Cab Service",
+            "description": "City rides and local transportation"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Outstation Cab Service",
+            "description": "Intercity and outstation travel with professional drivers"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Airport Transfer Service",
+            "description": "Airport pickup and drop services 24/7"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Wedding Car Rental",
+            "description": "Luxury cars for weddings and special occasions"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Corporate Travel",
+            "description": "Corporate cab solutions for businesses"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tempo Traveller Rental",
+            "description": "12-26 seater vehicles for group travel"
+          }
+        }
+      ]
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://trivenicabs.in/services",
+      "servicePhone": "+91-7668570551",
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <ServicesClient />
+    </>
+  );
 }

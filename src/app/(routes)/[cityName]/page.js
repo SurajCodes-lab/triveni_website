@@ -1,6 +1,7 @@
 // src/app/[cityName]/page.js - COMPLETE ENHANCED VERSION
 
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
 import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
@@ -235,19 +236,176 @@ export default function CityNamePage({ params }) {
     
     const estimatedDistance = route.distance || `${Math.floor(Math.random() * 200) + 150} km`;
     const estimatedTime = route.time || `${Math.floor(Math.random() * 4) + 3} hours`;
+    const startingPrice = route?.prices?.[0]?.price || "₹2760";
+
+    // Route Page Structured Data
+    const routeServiceSchema = {
+      "@context": "https://schema.org",
+      "@type": "TaxiService",
+      "name": `Triveni Cabs - ${formattedCityName} to ${formattedDestination} Taxi Service`,
+      "description": `Professional cab service from ${formattedCityName} to ${formattedDestination}. AC vehicles, verified drivers, GPS tracking, 24/7 availability.`,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Triveni Cabs",
+        "telephone": "+91-7668570551",
+        "email": "info@trivenicabs.in",
+        "url": "https://trivenicabs.in",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        },
+        "priceRange": "₹₹",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1250"
+        }
+      },
+      "areaServed": [
+        {"@type": "City", "name": formattedCityName},
+        {"@type": "City", "name": formattedDestination}
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": `https://trivenicabs.in/${cityName}`,
+        "servicePhone": "+91-7668570551",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    };
+
+    const routeTripSchema = {
+      "@context": "https://schema.org",
+      "@type": "TravelAction",
+      "name": `${formattedCityName} to ${formattedDestination} Cab Service`,
+      "description": `Book reliable taxi from ${formattedCityName} to ${formattedDestination}. Distance: ${estimatedDistance}, Duration: ${estimatedTime}`,
+      "fromLocation": {
+        "@type": "Place",
+        "name": formattedCityName,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": formattedCityName,
+          "addressCountry": "IN"
+        }
+      },
+      "toLocation": {
+        "@type": "Place",
+        "name": formattedDestination,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": formattedDestination,
+          "addressCountry": "IN"
+        }
+      },
+      "distance": estimatedDistance,
+      "provider": {
+        "@type": "Organization",
+        "name": "Triveni Cabs",
+        "url": "https://trivenicabs.in"
+      }
+    };
+
+    const routeBreadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://trivenicabs.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": formattedCityName,
+          "item": `https://trivenicabs.in/${originCity.toLowerCase()}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": `${formattedCityName} to ${formattedDestination}`,
+          "item": `https://trivenicabs.in/${cityName}`
+        }
+      ]
+    };
+
+    const routeFAQSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": `How much does a cab from ${formattedCityName} to ${formattedDestination} cost?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Cab fare from ${formattedCityName} to ${formattedDestination} starts from ${startingPrice}. The final cost depends on vehicle type, distance (${estimatedDistance}), and any additional services. We offer transparent pricing with no hidden charges.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `How long does it take to travel from ${formattedCityName} to ${formattedDestination}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `The journey from ${formattedCityName} to ${formattedDestination} typically takes ${estimatedTime}, covering approximately ${estimatedDistance}. Travel time may vary based on traffic and route conditions.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `What types of vehicles are available for ${formattedCityName} to ${formattedDestination} trip?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer Sedan (4 seater), SUV (7 seater), and Tempo Traveller (12+ seater) options. All vehicles are AC equipped with professional drivers, GPS tracking, and regularly maintained for your safety and comfort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `Can I book a one-way or round trip from ${formattedCityName} to ${formattedDestination}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we offer both one-way and round trip bookings. You can also book multi-day packages, hourly rentals, or outstation trips based on your needs. Flexible booking options available 24/7."
+          }
+        }
+      ]
+    };
 
     return (
-      <RouteClientContent
-        cityName={originCity}
-        formattedCityName={formattedCityName}
-        destination={destination.replace(/\s+/g, '-')}
-        formattedDestination={formattedDestination}
-        estimatedDistance={estimatedDistance}
-        estimatedTime={estimatedTime}
-        route={route}
-        routes={routes}
-        vehiclesServices={vehiclesServices}
-      />
+      <>
+        <Script
+          id="route-service-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeServiceSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="route-trip-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeTripSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="route-breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeBreadcrumbSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="route-faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeFAQSchema) }}
+          strategy="beforeInteractive"
+        />
+        <RouteClientContent
+          cityName={originCity}
+          formattedCityName={formattedCityName}
+          destination={destination.replace(/\s+/g, '-')}
+          formattedDestination={formattedDestination}
+          estimatedDistance={estimatedDistance}
+          estimatedTime={estimatedTime}
+          route={route}
+          routes={routes}
+          vehiclesServices={vehiclesServices}
+        />
+      </>
     );
   } else {
     const formattedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
@@ -290,13 +448,196 @@ export default function CityNamePage({ params }) {
       };
     }
 
+    // City Page Structured Data
+    const cityServiceSchema = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": `Triveni Cabs - ${formattedCityName}`,
+      "description": `Professional taxi service in ${formattedCityName}. Outstation trips, local tours, airport transfers, and special occasions. Verified drivers, AC vehicles, GPS tracking, 24/7 availability.`,
+      "url": `https://trivenicabs.in/${cityName}`,
+      "telephone": "+91-7668570551",
+      "email": "info@trivenicabs.in",
+      "priceRange": "₹₹",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": formattedCityName,
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "addressCountry": "IN"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": formattedCityName,
+        "addressCountry": "IN"
+      }
+    };
+
+    const cityTaxiServiceSchema = {
+      "@context": "https://schema.org",
+      "@type": "TaxiService",
+      "name": `${formattedCityName} Taxi Service - Triveni Cabs`,
+      "description": `24/7 taxi service in ${formattedCityName}. Book cabs for local trips, outstation tours, airport transfers, and special events.`,
+      "provider": {
+        "@type": "Organization",
+        "name": "Triveni Cabs",
+        "url": "https://trivenicabs.in",
+        "telephone": "+91-7668570551"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": formattedCityName
+      },
+      "serviceType": ["Taxi Service", "Cab Rental", "Car Rental", "Airport Transfer", "Outstation Taxi"],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": `https://trivenicabs.in/${cityName}`,
+        "servicePhone": "+91-7668570551",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    };
+
+    const cityBreadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://trivenicabs.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": formattedCityName,
+          "item": `https://trivenicabs.in/${cityName}`
+        }
+      ]
+    };
+
+    const cityFAQSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": `How can I book a taxi in ${formattedCityName}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `You can book a taxi in ${formattedCityName} through our website trivenicabs.in or by calling +91-7668570551. We offer instant booking, advance reservations, and same-day service with professional drivers.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `What types of cabs are available in ${formattedCityName}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer Sedan (4 seater), SUV (7 seater), and Tempo Traveller (12+ seater) options. All vehicles are AC equipped, well-maintained, GPS tracked, and driven by verified professional drivers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `Do you provide outstation taxi service from ${formattedCityName}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Yes, we provide outstation taxi service from ${formattedCityName} to all major cities across India. You can book one-way, round trip, or multi-day packages with flexible pickup and drop-off options.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `Is ${formattedCityName} airport transfer available?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Yes, we provide reliable airport transfer service in ${formattedCityName}. 24/7 availability, flight tracking, meet & greet service, and punctual pickups with professional drivers.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `What are the taxi rates in ${formattedCityName}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Taxi rates in ${formattedCityName} vary based on vehicle type and distance. Sedan starts from ₹12/km, SUV from ₹16/km. We offer transparent pricing with no hidden charges. Contact us for custom packages.`
+          }
+        }
+      ]
+    };
+
+    const cityServiceListSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": `${formattedCityName} Taxi Services`,
+      "description": `Available taxi services in ${formattedCityName}`,
+      "numberOfItems": vehiclesServices.length,
+      "itemListElement": vehiclesServices.map((vehicle, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Product",
+          "name": vehicle.name,
+          "description": vehicle.description,
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      }))
+    };
+
     return (
-      <CityServiceClient
-        formattedCityName={formattedCityName}
-        citySpots={citySpots}
-        details={details}
-        vehiclesServices={vehiclesServices}
-      />
+      <>
+        <Script
+          id="city-service-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="city-taxi-service-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(cityTaxiServiceSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="city-breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(cityBreadcrumbSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="city-faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(cityFAQSchema) }}
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="city-service-list-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceListSchema) }}
+          strategy="beforeInteractive"
+        />
+        <CityServiceClient
+          formattedCityName={formattedCityName}
+          citySpots={citySpots}
+          details={details}
+          vehiclesServices={vehiclesServices}
+        />
+      </>
     );
   }
 }

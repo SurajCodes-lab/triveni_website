@@ -194,6 +194,110 @@ export default function SightseeingPage() {
         }}
       />
 
+      {/* Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Sightseeing and Heritage Tour Services",
+            "name": "Premium Sightseeing Tours India",
+            "description": "Expert-guided heritage tours, cultural experiences & architectural marvels across 20+ destinations. Customizable itineraries, professional guides, comfortable transport.",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Triveni Cabs",
+              "telephone": "+91-7668570551",
+              "email": "info@trivenicabs.in",
+              "url": "https://trivenicabs.in"
+            },
+            "areaServed": [
+              {"@type": "City", "name": "Delhi"},
+              {"@type": "City", "name": "Agra"},
+              {"@type": "City", "name": "Jaipur"},
+              {"@type": "City", "name": "Udaipur"},
+              {"@type": "City", "name": "Jodhpur"},
+              {"@type": "City", "name": "Varanasi"},
+              {"@type": "City", "name": "Mumbai"},
+              {"@type": "City", "name": "Goa"}
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "920",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "INR",
+              "lowPrice": "3000",
+              "highPrice": "5000",
+              "offerCount": allTours.length.toString()
+            },
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://trivenicabs.in/sightseeing",
+              "servicePhone": "+91-7668570551",
+              "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Chinese"]
+            }
+          })
+        }}
+      />
+
+      {/* FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What sightseeing destinations do you cover?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We offer sightseeing tours across 20+ destinations including Delhi (Red Fort, Qutub Minar, India Gate), Agra (Taj Mahal, Agra Fort), Jaipur (Amber Fort, City Palace, Hawa Mahal), Udaipur, Jodhpur, Varanasi, Mumbai, Goa, and many more historical and cultural sites across India."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are tour guides included in the sightseeing packages?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, all our sightseeing tours include professional, licensed tour guides who are experts in history, culture, and architecture. Guides are available in multiple languages including English, Hindi, French, Spanish, German, and Chinese."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I customize my sightseeing tour?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely! We offer fully customizable sightseeing tours. You can choose which monuments to visit, duration of each stop, meal preferences, and add special interests like photography, shopping, or local food experiences. Contact us to create your personalized itinerary."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is included in the sightseeing tour package?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our packages include comfortable AC transportation, professional driver, expert tour guide, all vehicle-related expenses (fuel, parking, tolls), and complete itinerary planning. Entrance fees to monuments, meals, and personal expenses are typically not included but can be arranged."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long do the sightseeing tours last?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We offer flexible tour durations from half-day tours (4-5 hours) to full-day tours (8-10 hours) and multi-day packages. The duration can be customized based on your schedule and the number of attractions you wish to visit."
+                }
+              }
+            ]
+          })
+        }}
+      />
+
       <SightseeingMainClient data={pageData} />
     </>
   );
