@@ -31,5 +31,106 @@ export const metadata = {
 };
 
 export default function AirportServicePage() {
-  return <AirportServiceClient />;
+  // Enhanced Service Schema for Airport Transfer
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Airport Transfer Service",
+    "name": "24/7 Premium Airport Taxi Service",
+    "description": "Professional airport transfer service with flight tracking, luggage assistance & on-time guarantee. Serving Delhi, Jaipur, Chandigarh, Shimla & major cities across India.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Triveni Cabs",
+      "telephone": "+91-7668570551",
+      "email": "info@trivenicabs.in",
+      "url": "https://trivenicabs.in"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Delhi"},
+      {"@type": "City", "name": "Jaipur"},
+      {"@type": "City", "name": "Agra"},
+      {"@type": "City", "name": "Chandigarh"},
+      {"@type": "City", "name": "Shimla"},
+      {"@type": "City", "name": "Manali"},
+      {"@type": "City", "name": "Amritsar"},
+      {"@type": "City", "name": "Haridwar"},
+      {"@type": "City", "name": "Rishikesh"},
+      {"@type": "City", "name": "Dehradun"},
+      {"@type": "City", "name": "Jodhpur"},
+      {"@type": "City", "name": "Udaipur"},
+      {"@type": "City", "name": "Ayodhya"}
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "11",
+      "priceCurrency": "INR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "11",
+        "priceCurrency": "INR",
+        "unitText": "per kilometer"
+      },
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2024-01-01"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Airport Transfer Fleet",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Sedan Airport Taxi",
+            "description": "Comfortable sedan for 1-4 passengers"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "SUV Airport Taxi",
+            "description": "Spacious SUV for families and groups"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Tempo Traveller Airport Transfer",
+            "description": "Group transfer for 12-26 passengers"
+          }
+        }
+      ]
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://trivenicabs.in/airport-service",
+      "servicePhone": "+91-7668570551",
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <AirportServiceClient />
+    </>
+  );
 }

@@ -66,5 +66,109 @@ export default function TempoTravellerPage() {
     cities: Object.keys(tempoRoutes)
   };
 
-  return <TempoMainClient data={pageData} />;
+  // Enhanced Service Schema for Tempo Traveller Rental
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Tempo Traveller Rental Service",
+    "name": "Tempo Traveller on Rent - 12 to 26 Seater",
+    "description": "Premium tempo traveller for group travel across India. 12, 16, 17, 20, 26 seater AC vehicles with pushback seats, music system, GPS tracking. Professional drivers, 24/7 booking.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Triveni Cabs",
+      "telephone": "+91-7668570551",
+      "email": "info@trivenicabs.in",
+      "url": "https://trivenicabs.in"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "23",
+      "highPrice": "27",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "INR",
+        "unitText": "per kilometer"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "850",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Tempo Traveller Fleet",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "12 Seater Tempo Traveller",
+            "description": "AC tempo traveller with pushback seats for 12 passengers"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "16 Seater Tempo Traveller",
+            "description": "Spacious AC vehicle for 16 passengers"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "17 Seater Tempo Traveller",
+            "description": "Comfortable AC tempo for group travel"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "20 Seater Tempo Traveller",
+            "description": "Large capacity vehicle for bigger groups"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "26 Seater Tempo Traveller",
+            "description": "Maximum capacity luxury tempo traveller"
+          }
+        }
+      ]
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://trivenicabs.in/tempo-traveller",
+      "servicePhone": "+91-7668570551",
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <TempoMainClient data={pageData} />
+    </>
+  );
 }

@@ -252,22 +252,22 @@ export default function AirportServiceClient() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h4 className="text-xl font-bold text-purple-700 mb-2">🚘 Sedan Cars</h4>
+                <h3 className="text-xl font-bold text-purple-700 mb-2">🚘 Sedan Cars</h3>
                 <p className="text-gray-700 mb-2">Dzire, Etios, Ciaz, Honda City</p>
                 <p className="text-gray-600 text-sm">For budget-friendly & comfortable travel</p>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h4 className="text-xl font-bold text-purple-700 mb-2">🚙 SUVs</h4>
+                <h3 className="text-xl font-bold text-purple-700 mb-2">🚙 SUVs</h3>
                 <p className="text-gray-700 mb-2">Innova Crysta, Ertiga, Fortuner, Scorpio</p>
                 <p className="text-gray-600 text-sm">Spacious & perfect for family travel</p>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h4 className="text-xl font-bold text-purple-700 mb-2">🚌 Tempo Travellers</h4>
+                <h3 className="text-xl font-bold text-purple-700 mb-2">🚌 Tempo Travellers</h3>
                 <p className="text-gray-700 mb-2">9–26 Seater</p>
                 <p className="text-gray-600 text-sm">Ideal for groups, tours, and corporate teams</p>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h4 className="text-xl font-bold text-purple-700 mb-2">🚐 Luxury Cars</h4>
+                <h3 className="text-xl font-bold text-purple-700 mb-2">🚐 Luxury Cars</h3>
                 <p className="text-gray-700 mb-2">Audi, BMW, Mercedes, Jaguar</p>
                 <p className="text-gray-600 text-sm">For premium arrivals & VIP guests</p>
               </div>
@@ -293,7 +293,7 @@ export default function AirportServiceClient() {
                 { title: 'Multiple Cities', desc: 'Delhi, Chandigarh, Jaipur, Agra, Haridwar, Rishikesh, Shimla, Manali, Amritsar, Udaipur' }
               ].map((item, index) => (
                 <div key={index} className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-100 transition-all hover:-translate-y-1 hover:shadow-lg">
-                  <h4 className="text-lg font-bold text-purple-700 mb-2">✔️ {item.title}</h4>
+                  <h3 className="text-lg font-bold text-purple-700 mb-2">✔️ {item.title}</h3>
                   <p className="text-gray-600 text-sm">{item.desc}</p>
                 </div>
               ))}

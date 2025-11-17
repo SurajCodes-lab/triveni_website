@@ -6,6 +6,7 @@ import { getAllTourSlugs } from "@/utilis/religiousTourData";
 import { tempoRoutes } from "@/utilis/tempoTravellerData";
 import { blogPosts } from "@/utilis/blog";
 import { busRoutes } from "@/utilis/busRoutesData";
+import { getAllTours } from "@/utilis/sightseeingData";
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -235,6 +236,22 @@ export default function sitemap() {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+
+    // Sightseeing Main Page
+    {
+      url: `${baseUrl}/sightseeing`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
+    // Routes Main Page
+    {
+      url: `${baseUrl}/routes`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ];
 
   // Add Blog Posts (Dynamic)
@@ -242,6 +259,17 @@ export default function sitemap() {
     urls.push({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.date),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // Add Sightseeing Tour Detail Pages (Dynamic)
+  const allSightseeingTours = getAllTours();
+  allSightseeingTours.forEach(tour => {
+    urls.push({
+      url: `${baseUrl}/sightseeing/${tour.slug}`,
+      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     });

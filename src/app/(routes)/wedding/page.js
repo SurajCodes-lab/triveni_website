@@ -31,5 +31,110 @@ export const metadata = {
 };
 
 export default function WeddingPage() {
-  return <WeddingPageClient />;
+  // Enhanced Service Schema for Wedding Car Rental
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Wedding Car Rental Service",
+    "name": "Luxury Wedding Car Rental",
+    "description": "Premium wedding car rental with BMW, Audi, Mercedes & vintage cars for bride/groom entry. Baraat tempo travellers (12-26 seater), professional chauffeurs, stunning decorations included.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Triveni Cabs",
+      "telephone": "+91-7668570551",
+      "email": "info@trivenicabs.in",
+      "url": "https://trivenicabs.in"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Delhi"},
+      {"@type": "City", "name": "Jaipur"},
+      {"@type": "City", "name": "Agra"},
+      {"@type": "City", "name": "Chandigarh"},
+      {"@type": "City", "name": "Shimla"},
+      {"@type": "City", "name": "Manali"},
+      {"@type": "City", "name": "Amritsar"},
+      {"@type": "City", "name": "Haridwar"},
+      {"@type": "City", "name": "Rishikesh"},
+      {"@type": "City", "name": "Dehradun"},
+      {"@type": "City", "name": "Jodhpur"},
+      {"@type": "City", "name": "Udaipur"},
+      {"@type": "City", "name": "Ayodhya"}
+    ],
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "15000",
+      "highPrice": "50000",
+      "offerCount": "5"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Wedding Car Fleet",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "BMW Wedding Car",
+            "description": "Luxury BMW for bride/groom entry with decoration"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Audi Wedding Car",
+            "description": "Premium Audi for royal wedding entry"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Mercedes Wedding Car",
+            "description": "Elegant Mercedes for special occasions"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Vintage Wedding Car",
+            "description": "Classic vintage car for timeless memories"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Baraat Tempo Traveller",
+            "description": "12-26 seater tempo traveller for wedding guests"
+          }
+        }
+      ]
+    },
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://trivenicabs.in/wedding",
+      "servicePhone": "+91-7668570551",
+      "availableLanguage": ["English", "Hindi"]
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <WeddingPageClient />
+    </>
+  );
 }
