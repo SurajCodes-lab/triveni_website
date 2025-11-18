@@ -1,6 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  Plane,
+  Clock,
+  Shield,
+  Users,
+  MapPin,
+  Car,
+  ChevronRight,
+  CheckCircle,
+  Award,
+  Star,
+  Phone,
+  Calendar,
+  Luggage,
+  TrendingUp
+} from 'lucide-react';
 
 export default function AirportServiceClient() {
   const [formData, setFormData] = useState({
@@ -30,32 +48,188 @@ export default function AirportServiceClient() {
     }));
   };
 
+  // City pages data with links
+  const cityServices = useMemo(() => [
+    { name: 'Delhi', slug: 'delhi', airport: 'Indira Gandhi International Airport (IGI)' },
+    { name: 'Jaipur', slug: 'jaipur', airport: 'Jaipur International Airport' },
+    { name: 'Chandigarh', slug: 'chandigarh', airport: 'Chandigarh International Airport' },
+    { name: 'Agra', slug: 'agra', airport: 'Kheria Airport' },
+    { name: 'Shimla', slug: 'shimla', airport: 'Jubbarhatti Airport' },
+    { name: 'Manali', slug: 'manali', airport: 'Bhuntar Airport' },
+    { name: 'Amritsar', slug: 'amritsar', airport: 'Sri Guru Ram Dass Jee Airport' },
+    { name: 'Dehradun', slug: 'dehradun', airport: 'Jolly Grant Airport' },
+    { name: 'Haridwar', slug: 'haridwar', airport: 'Via Jolly Grant Airport' },
+    { name: 'Rishikesh', slug: 'rishikesh', airport: 'Via Jolly Grant Airport' },
+    { name: 'Udaipur', slug: 'udaipur', airport: 'Maharana Pratap Airport' },
+    { name: 'Ayodhya', slug: 'ayodhya', airport: 'Via Lucknow Airport' }
+  ], []);
+
+  const features = useMemo(() => [
+    {
+      icon: Plane,
+      title: 'Flight Tracking',
+      description: 'Real-time flight monitoring to ensure timely pickups, even if your flight is delayed'
+    },
+    {
+      icon: Clock,
+      title: '24/7 Availability',
+      description: 'Round-the-clock airport taxi service for early morning and late-night flights'
+    },
+    {
+      icon: Shield,
+      title: 'Safe & Secure',
+      description: 'Verified drivers, GPS tracking, and sanitized vehicles for your safety'
+    },
+    {
+      icon: Luggage,
+      title: 'Luggage Assistance',
+      description: 'Professional drivers help with loading and unloading your baggage'
+    },
+    {
+      icon: Award,
+      title: 'Fixed Pricing',
+      description: 'Transparent fares with no surge pricing or hidden charges'
+    },
+    {
+      icon: Users,
+      title: 'All Group Sizes',
+      description: 'From sedans to tempo travellers for individuals and groups'
+    }
+  ], []);
+
+  const whatsappUrl = useCallback(() => {
+    const message = encodeURIComponent("Hi! I need an airport transfer. Can you help?");
+    return `https://wa.me/917668570551?text=${message}`;
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800">
-      {/* Hero Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-            Fly Worry-Free, We&apos;ll Get You There!
-          </h1>
-          <p className="text-xl md:text-2xl text-purple-100 mb-2">
-            ✈️ Your Stress-Free Airport Transfer Starts Here
-          </p>
-          <p className="text-lg text-purple-200 max-w-3xl mx-auto">
-            Traveling to or from the airport should be stress-free, timely, and comfortable.
-            With Triveni Cabs, we provide 24x7 airport transfer services with a wide range of
-            cars, SUVs, and tempo travellers.
-          </p>
+    <div className="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+      {/* Hero Section with Background Image */}
+      <section
+        className="relative bg-cover bg-center bg-no-repeat py-32"
+        style={{
+          backgroundImage: "url('/images/airport_section.jpg')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-black/55"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="inline-flex items-center space-x-1 md:space-x-3">
+              <li className="inline-flex items-center">
+                <Link
+                  href="/"
+                  className="text-white hover:text-yellow-400 transition-colors duration-200"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <div className="flex items-center font-semibold">
+                  <ChevronRight className="w-4 h-4 mx-2 text-white" />
+                  <span className="text-yellow-400 text-xl">Airport Service</span>
+                </div>
+              </li>
+            </ol>
+          </nav>
+
+          <div className="max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Never Miss a Flight Again!
+            </h1>
+            <p className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
+              24/7 Premium Airport Taxi Service Across India
+            </p>
+            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+              Stress-free <strong>airport transfers</strong> with flight tracking, luggage assistance,
+              and on-time guarantee. Serving <strong>Delhi, Jaipur, Chandigarh, Shimla</strong> and beyond.
+              Pre-book now for exclusive rates!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => window.open(whatsappUrl(), '_blank')}
+                className="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-700 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
+              >
+                Book Airport Taxi Now
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </button>
+              <a
+                href="tel:+917668570551"
+                className="bg-white text-gray-900 px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call: +91 7668570551
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="p-6">
+              <TrendingUp className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
+              <div className="text-4xl font-bold text-gray-900 mb-2">10,000+</div>
+              <div className="text-gray-600">Airport Transfers</div>
+            </div>
+            <div className="p-6">
+              <Clock className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
+              <div className="text-4xl font-bold text-gray-900 mb-2">24/7</div>
+              <div className="text-gray-600">Available Service</div>
+            </div>
+            <div className="p-6">
+              <MapPin className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
+              <div className="text-4xl font-bold text-gray-900 mb-2">50+</div>
+              <div className="text-gray-600">Cities Covered</div>
+            </div>
+            <div className="p-6">
+              <Star className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
+              <div className="text-4xl font-bold text-gray-900 mb-2">4.8/5</div>
+              <div className="text-gray-600">Customer Rating</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Choose Triveni Cabs for Airport Transfers?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Experience hassle-free <strong>airport taxi service</strong> with professional drivers,
+              modern fleet, and guaranteed on-time pickups for all major airports across India.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <feature.icon className="w-12 h-12 text-yellow-600 mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Booking Form Section */}
-      <section className="py-8 px-4">
+      <section className="py-16 px-4 bg-white">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl p-6 md:p-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-              Reserve Your Ride in 60 Seconds
+          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl shadow-2xl p-6 md:p-10 border-2 border-yellow-200">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+              Book Your Airport Transfer Now
             </h2>
+            <p className="text-center text-gray-600 mb-8">
+              Fill the form below and we'll confirm your booking instantly via WhatsApp
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -205,156 +379,232 @@ export default function AirportServiceClient() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-lg font-bold py-4 px-8 rounded-full hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 uppercase tracking-wide"
+                className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white text-lg font-bold py-4 px-8 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
+                <Plane className="w-5 h-5 inline mr-2" />
                 Book Your Airport Transfer Now
               </button>
+              <p className="text-center text-sm text-gray-600 mt-4">
+                <Shield className="w-4 h-4 inline mr-1" />
+                Instant confirmation • No payment required • Cancel anytime
+              </p>
             </form>
           </div>
         </div>
       </section>
 
-      {/* Service Cards */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center text-white transition-all hover:-translate-y-2 hover:bg-white/20">
-              <div className="text-5xl mb-4">✈️</div>
-              <h3 className="text-2xl font-bold mb-3">Airport Pickup</h3>
-              <p className="text-purple-100">
-                Punctual pickup service from all airport terminals with flight tracking
-              </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center text-white transition-all hover:-translate-y-2 hover:bg-white/20">
-              <div className="text-5xl mb-4">🏢</div>
-              <h3 className="text-2xl font-bold mb-3">Airport Drop</h3>
-              <p className="text-purple-100">
-                Comfortable and timely drop-off service to ensure you never miss a flight
-              </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 text-center text-white transition-all hover:-translate-y-2 hover:bg-white/20">
-              <div className="text-5xl mb-4">🚗</div>
-              <h3 className="text-2xl font-bold mb-3">24/7 Service</h3>
-              <p className="text-purple-100">
-                Round-the-clock availability for all your airport transportation needs
-              </p>
-            </div>
+      {/* Airport Services by City */}
+      <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Airport Taxi Service by City
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Premium <strong>airport transfer service</strong> available across major Indian cities.
+              Click on your city for detailed information and specialized services.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {cityServices.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/airport-service/${city.slug}`}
+                className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+              >
+                <MapPin className="w-8 h-8 text-yellow-600 mb-3 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{city.name}</h3>
+                <p className="text-sm text-gray-600 mb-3">{city.airport}</p>
+                <div className="flex items-center text-yellow-600 font-semibold text-sm">
+                  View Details
+                  <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Fleet Section */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="bg-white/95 backdrop-blur-lg rounded-3xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8">
-              🚖 Our Airport Transfer Fleet
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Premium Airport Transfer Fleet
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h3 className="text-xl font-bold text-purple-700 mb-2">🚘 Sedan Cars</h3>
-                <p className="text-gray-700 mb-2">Dzire, Etios, Ciaz, Honda City</p>
-                <p className="text-gray-600 text-sm">For budget-friendly & comfortable travel</p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h3 className="text-xl font-bold text-purple-700 mb-2">🚙 SUVs</h3>
-                <p className="text-gray-700 mb-2">Innova Crysta, Ertiga, Fortuner, Scorpio</p>
-                <p className="text-gray-600 text-sm">Spacious & perfect for family travel</p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h3 className="text-xl font-bold text-purple-700 mb-2">🚌 Tempo Travellers</h3>
-                <p className="text-gray-700 mb-2">9–26 Seater</p>
-                <p className="text-gray-600 text-sm">Ideal for groups, tours, and corporate teams</p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-100">
-                <h3 className="text-xl font-bold text-purple-700 mb-2">🚐 Luxury Cars</h3>
-                <p className="text-gray-700 mb-2">Audi, BMW, Mercedes, Jaguar</p>
-                <p className="text-gray-600 text-sm">For premium arrivals & VIP guests</p>
-              </div>
-            </div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Choose from our wide range of well-maintained vehicles for comfortable airport transfers
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="bg-white/95 backdrop-blur-lg rounded-3xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8">
-              🎯 Why Choose Triveni Cabs for Airport Transfers?
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: 'On-time Pickup & Drop', desc: 'No delays, guaranteed punctuality' },
-                { title: '24x7 Availability', desc: 'Day & night service, anytime booking' },
-                { title: 'Experienced Chauffeurs', desc: 'Professional & polite drivers' },
-                { title: 'Clean & Sanitized', desc: 'GPS-enabled vehicles, fully maintained' },
-                { title: 'Fixed Transparent Pricing', desc: 'No hidden charges, upfront costs' },
-                { title: 'Multiple Cities', desc: 'Delhi, Chandigarh, Jaipur, Agra, Haridwar, Rishikesh, Shimla, Manali, Amritsar, Udaipur' }
-              ].map((item, index) => (
-                <div key={index} className="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-100 transition-all hover:-translate-y-1 hover:shadow-lg">
-                  <h3 className="text-lg font-bold text-purple-700 mb-2">✔️ {item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
-                </div>
-              ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200">
+              <Car className="w-12 h-12 text-yellow-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Sedan Cars</h3>
+              <p className="text-gray-700 mb-2">Dzire, Etios, Ciaz</p>
+              <p className="text-gray-600 text-sm">Perfect for 1-4 passengers</p>
+              <p className="text-yellow-600 font-semibold mt-3">₹11/km onwards</p>
+            </div>
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200">
+              <Car className="w-12 h-12 text-yellow-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">SUVs</h3>
+              <p className="text-gray-700 mb-2">Innova, Ertiga, Fortuner</p>
+              <p className="text-gray-600 text-sm">Spacious for 6-7 passengers</p>
+              <p className="text-yellow-600 font-semibold mt-3">₹15/km onwards</p>
+            </div>
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200">
+              <Users className="w-12 h-12 text-yellow-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Tempo Traveller</h3>
+              <p className="text-gray-700 mb-2">12-26 Seater</p>
+              <p className="text-gray-600 text-sm">Ideal for group transfers</p>
+              <p className="text-yellow-600 font-semibold mt-3">₹25/km onwards</p>
+            </div>
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200">
+              <Award className="w-12 h-12 text-yellow-600 mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Luxury Cars</h3>
+              <p className="text-gray-700 mb-2">Audi, BMW, Mercedes</p>
+              <p className="text-gray-600 text-sm">Premium VIP transfers</p>
+              <p className="text-yellow-600 font-semibold mt-3">On Request</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Offered */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="bg-white/95 backdrop-blur-lg rounded-3xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8">
-              📍 Airport Transfer Services We Offer
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Comprehensive Airport Transfer Services
             </h2>
-            <div className="space-y-4">
-              {[
-                { icon: '🛫', title: 'One-way Airport Drop', desc: 'Home/Hotel → Airport' },
-                { icon: '🛬', title: 'Airport Pickup', desc: 'Airport → City/Hotel/Home' },
-                { icon: '🔄', title: 'Round Trip Transfers', desc: 'Airport to City & back' },
-                { icon: '💼', title: 'Corporate Airport Transfers', desc: 'For executives, delegations & events' },
-                { icon: '👥', title: 'Group Transfers', desc: 'With Tempo Travellers & Buses' }
-              ].map((service, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 rounded-xl bg-gradient-to-r from-purple-50 to-indigo-50 border-2 border-purple-100">
-                  <div className="text-4xl">{service.icon}</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-purple-700 mb-1">{service.title}</h4>
-                    <p className="text-gray-600">{service.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              From <strong>airport pickup</strong> to <strong>airport drop</strong>, we cover all your
+              transportation needs with professionalism and reliability
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Plane, title: 'Airport Pickup Service', desc: 'Meet & greet at arrival terminal with flight tracking' },
+              { icon: MapPin, title: 'Airport Drop Service', desc: 'Timely drop-off ensuring you never miss your flight' },
+              { icon: Car, title: 'Round Trip Transfers', desc: 'Complete airport to city and return journey packages' },
+              { icon: Users, title: 'Corporate Transfers', desc: 'Professional airport transfer for business executives' },
+              { icon: Luggage, title: 'Group Airport Transfers', desc: 'Tempo travellers and buses for large groups' },
+              { icon: Clock, title: 'Early Morning/Late Night', desc: '24/7 availability for all flight timings' }
+            ].map((service, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all">
+                <service.icon className="w-10 h-10 text-yellow-600 mb-3" />
+                <h4 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h4>
+                <p className="text-gray-600">{service.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-12 px-4 pb-20">
-        <div className="container mx-auto max-w-4xl">
-          <div className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-3xl p-8 md:p-12 text-center text-white">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">📞 Book Your Airport Cab Now</h3>
-            <p className="text-xl mb-6">✅ Hassle-free booking in just one call</p>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-              <a
-                href="tel:+917668570551"
-                className="bg-white text-purple-700 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all"
-              >
-                📞 Call: +91 7668570551
-              </a>
-              <a
-                href="https://wa.me/917668570551?text=Hi, I want to book an airport transfer"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all"
-              >
-                💬 WhatsApp Us
-              </a>
-            </div>
-            <p className="text-purple-100 mt-6 text-sm">
-              Available 24/7 | Instant Confirmation | Best Rates Guaranteed
+      {/* CTA Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-yellow-600 to-orange-600">
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready for a Hassle-Free Airport Transfer?
+          </h2>
+          <p className="text-xl mb-8 opacity-90">
+            Book now and experience India's most reliable airport taxi service!
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a
+              href="tel:+917668570551"
+              className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Call: +91 7668570551
+            </a>
+            <button
+              onClick={() => window.open(whatsappUrl(), '_blank')}
+              className="bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center"
+            >
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp Us
+            </button>
+          </div>
+          <p className="mt-6 text-sm opacity-90">
+            <CheckCircle className="w-4 h-4 inline mr-1" />
+            Available 24/7 • Instant Confirmation • No Hidden Charges
+          </p>
+        </div>
+      </section>
+
+      {/* Explore More Services - Internal Linking */}
+      <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Complete Travel Solutions Across India
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Beyond airport transfers, we offer comprehensive taxi services for city tours, outstation trips, and sightseeing adventures
             </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Sightseeing Tours */}
+            <Link
+              href="/sightseeing"
+              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all hover:-translate-y-2 group border-2 border-transparent hover:border-green-400"
+            >
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <MapPin className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                Sightseeing Tours
+              </h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Explore India's heritage with expert-guided tours covering Delhi, Agra, Jaipur, and more tourist destinations
+              </p>
+              <div className="flex items-center text-green-600 font-semibold">
+                Discover Tours
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+              </div>
+            </Link>
+
+            {/* City Taxi Services */}
+            <Link
+              href="/delhi"
+              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all hover:-translate-y-2 group border-2 border-transparent hover:border-blue-400"
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Car className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                City Taxi Services
+              </h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                Professional cab services for local tours, outstation trips, and special occasions across major cities
+              </p>
+              <div className="flex items-center text-blue-600 font-semibold">
+                View Cities
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+              </div>
+            </Link>
+
+            {/* Outstation Routes */}
+            <Link
+              href="/routes"
+              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all hover:-translate-y-2 group border-2 border-transparent hover:border-purple-400"
+            >
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Navigation className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                Outstation Routes
+              </h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                One-way and round-trip cab bookings for popular routes like Delhi-Agra, Jaipur-Udaipur, and more
+              </p>
+              <div className="flex items-center text-purple-600 font-semibold">
+                Explore Routes
+                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
