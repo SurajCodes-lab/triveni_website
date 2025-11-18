@@ -20,6 +20,7 @@ import {
   Navigation,
   Home
 } from 'lucide-react';
+import { sightseeingTours } from '@/utilis/sightseeingData';
 
 export default function CityAirportServiceClient({ city, citySlug }) {
   const [formData, setFormData] = useState({
@@ -74,6 +75,13 @@ export default function CityAirportServiceClient({ city, citySlug }) {
     const destSlug = destName.toLowerCase().replace(/\s+/g, '-');
     return `/${citySlug}#${destSlug}`;
   };
+
+  // Get sightseeing tours for this city - filter by city name in slug
+  const cityTours = useMemo(() => {
+    const tours = sightseeingTours[citySlug] || [];
+    // Filter tours where slug starts with the city name
+    return tours.filter(tour => tour.slug.startsWith(citySlug));
+  }, [citySlug]);
 
   const features = useMemo(() => [
     {
@@ -209,9 +217,6 @@ export default function CityAirportServiceClient({ city, citySlug }) {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Popular Destinations from {city.name} Airport
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Pre-book your airport transfer to these popular destinations
-            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {city.popularDestinations.map((dest, index) => {
@@ -245,41 +250,76 @@ export default function CityAirportServiceClient({ city, citySlug }) {
         </div>
       </section>
 
-      {/* Nearby Attractions */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Nearby Tourist Attractions in {city.name}
-            </h2>
-            <p className="text-lg text-gray-600">
-              Visit these popular attractions after your airport transfer
-            </p>
+      {/* Sightseeing Tours in City */}
+      {cityTours.length > 0 && (
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                {city.name} Sightseeing Tours from Airport
+              </h2>
+              <p className="text-lg text-gray-600">
+                Explore top attractions and destinations after your airport transfer
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {cityTours.slice(0, 6).map((tour) => (
+                <Link
+                  key={tour.id}
+                  href={`/sightseeing/${tour.slug}`}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2 group"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <Image
+                      src={tour.heroImage}
+                      alt={tour.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      {tour.duration}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">
+                      {tour.name}
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">
+                      {tour.shortDescription}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-gray-600">
+                        <Star className="w-4 h-4 text-yellow-600 mr-1" />
+                        <span className="text-sm font-semibold">{tour.reviews?.averageRating || '4.8'}</span>
+                        <span className="text-sm ml-1">({tour.reviews?.totalReviews || 0})</span>
+                      </div>
+                      <div className="text-yellow-600 font-bold">
+                        ₹{tour.price?.sedan || tour.price}
+                      </div>
+                    </div>
+                    <div className="flex items-center text-yellow-600 font-semibold text-sm mt-4">
+                      View Tour Details
+                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            {cityTours.length > 6 && (
+              <div className="text-center mt-8">
+                <Link
+                  href={`/sightseeing?city=${citySlug}`}
+                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all"
+                >
+                  <MapPin className="w-5 h-5 mr-2" />
+                  View All {city.name} Tours ({cityTours.length})
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Link>
+              </div>
+            )}
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {city.nearbyAttractions.map((attraction, index) => (
-              <Link
-                key={index}
-                href={`/sightseeing?city=${citySlug}`}
-                className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 text-center hover:shadow-md transition-all hover:-translate-y-1 group"
-              >
-                <Star className="w-6 h-6 text-yellow-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <p className="text-gray-900 font-semibold text-sm">{attraction}</p>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link
-              href={`/sightseeing?city=${citySlug}`}
-              className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all"
-            >
-              <MapPin className="w-5 h-5 mr-2" />
-              Explore All {city.name} Sightseeing Tours
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Popular Routes */}
       <section className="py-16 px-4 bg-gray-50">
@@ -311,16 +351,6 @@ export default function CityAirportServiceClient({ city, citySlug }) {
                 </Link>
               );
             })}
-          </div>
-          <div className="text-center mt-8">
-            <Link
-              href={`/${citySlug}`}
-              className="inline-flex items-center bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transition-all"
-            >
-              <Navigation className="w-5 h-5 mr-2" />
-              View All Routes from {city.name}
-              <ChevronRight className="w-5 h-5 ml-2" />
-            </Link>
           </div>
         </div>
       </section>
