@@ -17,7 +17,8 @@ import {
   Phone,
   Calendar,
   Luggage,
-  TrendingUp
+  TrendingUp,
+  Navigation
 } from 'lucide-react';
 
 export default function AirportServiceClient() {
@@ -228,7 +229,7 @@ export default function AirportServiceClient() {
               Book Your Airport Transfer Now
             </h2>
             <p className="text-center text-gray-600 mb-8">
-              Fill the form below and we'll confirm your booking instantly via WhatsApp
+              Fill the form below and we&apos;ll confirm your booking instantly via WhatsApp
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -507,7 +508,7 @@ export default function AirportServiceClient() {
             Ready for a Hassle-Free Airport Transfer?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Book now and experience India's most reliable airport taxi service!
+            Book now and experience India&apos;s most reliable airport taxi service!
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
@@ -558,7 +559,7 @@ export default function AirportServiceClient() {
                 Sightseeing Tours
               </h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Explore India's heritage with expert-guided tours covering Delhi, Agra, Jaipur, and more tourist destinations
+                Explore India&apos;s heritage with expert-guided tours covering Delhi, Agra, Jaipur, and more tourist destinations
               </p>
               <div className="flex items-center text-green-600 font-semibold">
                 Discover Tours
