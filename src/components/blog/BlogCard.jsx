@@ -1,12 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Calendar, Clock, Eye, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BlogCard({ post, index = 0 }) {
-  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+  const [imageError, setImageError] = useState(false);
+
+  // Safety check - only require essential fields
+  if (!post || !post.slug || !post.title) {
+    console.log('BlogCard: Invalid post', post);
+    return null;
+  }
+
+  const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -20,22 +28,29 @@ export default function BlogCard({ post, index = 0 }) {
       className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group h-full flex flex-col"
     >
       {/* Image */}
-      <Link href={`/blog/${post.slug}`} className="relative h-56 overflow-hidden">
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          className="object-cover group-hover:scale-110 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+      <Link href={`/blog/${post.slug}`} className="relative h-56 overflow-hidden block">
+        {post.image && !imageError ? (
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-6xl">
+            📝
+          </div>
+        )}
         {post.featured && (
           <div className="absolute top-4 left-4 bg-[#FACF2D] text-black px-3 py-1 rounded-full text-sm font-bold">
             ⭐ Featured
           </div>
         )}
-        <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-semibold">
-          {post.category}
-        </div>
+        {post.category && (
+          <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            {post.category}
+          </div>
+        )}
       </Link>
 
       {/* Content */}
@@ -71,16 +86,18 @@ export default function BlogCard({ post, index = 0 }) {
         </p>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {post.tags.slice(0, 3).map((tag, i) => (
-            <span
-              key={i}
-              className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {post.tags.slice(0, 3).map((tag, i) => (
+              <span
+                key={i}
+                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Read More Button */}
         <Link

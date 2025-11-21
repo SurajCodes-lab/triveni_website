@@ -7,6 +7,7 @@ import { tempoRoutes } from "@/utilis/tempoTravellerData";
 import { blogPosts } from "@/utilis/blog";
 import { busRoutes } from "@/utilis/busRoutesData";
 import { getAllTours } from "@/utilis/sightseeingData";
+import { getAllCitySlugs } from "@/utilis/airportCityData";
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -255,14 +256,16 @@ export default function sitemap() {
   ];
 
   // Add Blog Posts (Dynamic)
-  blogPosts.forEach(post => {
-    urls.push({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+  blogPosts
+    .filter(post => post && post.slug && post.date) // Filter out undefined or invalid posts
+    .forEach(post => {
+      urls.push({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.date),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      });
     });
-  });
 
   // Add Sightseeing Tour Detail Pages (Dynamic)
   const allSightseeingTours = getAllTours();
@@ -335,6 +338,17 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
+    });
+  });
+
+  // Add Airport Service City Pages
+  const airportCitySlugs = getAllCitySlugs();
+  airportCitySlugs.forEach(citySlug => {
+    urls.push({
+      url: `${baseUrl}/airport-service/${citySlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     });
   });
 

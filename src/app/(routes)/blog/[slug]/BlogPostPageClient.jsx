@@ -31,7 +31,12 @@ export default function BlogPostPageClient({ post }) {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+  // Safety check: ensure post has required properties
+  if (!post) {
+    return <div>Post not found</div>;
+  }
+
+  const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -426,9 +431,9 @@ export default function BlogPostPageClient({ post }) {
               transition={{ duration: 0.8 }}
             >
               <RelatedPosts
-                currentPostId={post.id}
-                currentCategory={post.category}
-                currentTags={post.tags}
+                currentPostId={post.id || 0}
+                currentCategory={post.category || ''}
+                currentTags={post.tags || []}
               />
             </motion.div>
           </motion.article>

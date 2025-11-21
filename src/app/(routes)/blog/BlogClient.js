@@ -13,6 +13,7 @@ export default function BlogClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [mounted, setMounted] = useState(false);
+  const [featuredImageError, setFeaturedImageError] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
   const gridRef = useRef(null);
@@ -37,19 +38,29 @@ export default function BlogClient() {
   // Filter posts based on search and category
   const filteredPosts = useMemo(() => {
     return blogPosts.filter(post => {
-      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      // Safety check: ensure post exists and has minimum required properties
+      if (!post || !post.title || !post.slug) {
+        return false;
+      }
 
-      const matchesCategory = selectedCategory === 'all' ||
-                             post.category.toLowerCase().replace(' ', '-') === selectedCategory;
+      const postTitle = post.title?.toLowerCase() || '';
+      const postExcerpt = post.excerpt?.toLowerCase() || '';
+      const postTags = post.tags || [];
+      const postCategory = post.category?.toLowerCase().replace(' ', '-') || '';
+
+      const matchesSearch = searchQuery === '' ||
+                           postTitle.includes(searchQuery.toLowerCase()) ||
+                           postExcerpt.includes(searchQuery.toLowerCase()) ||
+                           postTags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      const matchesCategory = selectedCategory === 'all' || postCategory === selectedCategory;
 
       return matchesSearch && matchesCategory;
     });
   }, [searchQuery, selectedCategory]);
 
   // Get featured post
-  const featuredPost = useMemo(() => blogPosts.find(post => post.featured), []);
+  const featuredPost = useMemo(() => blogPosts.find(post => post && post.featured), []);
   const regularPosts = filteredPosts;
 
   return (
@@ -593,11 +604,18 @@ export default function BlogClient() {
                 whileHover={{ scale: 1.05 }}
                 className="relative h-96 md:h-auto overflow-hidden"
               >
-                <img
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  className="w-full h-full object-cover"
-                />
+                {featuredPost.image && !featuredImageError ? (
+                  <img
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover"
+                    onError={() => setFeaturedImageError(true)}
+                  />
+                ) : (
+                  <div className="w-full h-full min-h-96 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-8xl">
+                    📝
+                  </div>
+                )}
                 <motion.div
                   initial={{ x: -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
@@ -668,22 +686,16 @@ export default function BlogClient() {
           >
             {regularPosts.map((post, index) => (
               <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={isGridInView ? {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1
-                } : {}}
+                key={post.id || post.slug || index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  delay: index * 0.1,
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 100
+                  delay: Math.min(index * 0.05, 0.5),
+                  duration: 0.4
                 }}
                 whileHover={{
-                  y: -15,
-                  scale: 1.03,
+                  y: -10,
+                  scale: 1.02,
                   transition: { duration: 0.2 }
                 }}
               >

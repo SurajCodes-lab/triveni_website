@@ -218,7 +218,9 @@ export default function BlogPage() {
         "https://www.instagram.com/trivenicabs"
       ]
     },
-    "blogPost": blogPosts.map(post => ({
+    "blogPost": blogPosts
+      .filter(post => post && post.title && post.excerpt) // Filter out undefined or invalid posts
+      .map(post => ({
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.excerpt,
