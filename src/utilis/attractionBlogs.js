@@ -1247,7 +1247,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ] },
+    ],
     attractionData: { location: "Amritsar, Punjab", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Early morning or evening" }, howToReach: { fromDelhi: "450 km by road", nearestAirport: "Amritsar Airport (11 km)", nearestRailway: "Amritsar Junction (2 km)" }, timeNeeded: "3-4 hours", coordinates: { latitude: 31.6200, longitude: 74.8765 } },
     image: "/images/blog/golden-temple.jpg", date: "2025-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Golden Temple Complete Guide 2025 - Timings, Langar & Tours", metaDescription: "Golden Temple Amritsar complete guide: history, free langar, timings, tours. Experience world's largest community kitchen!",
@@ -2058,7 +2058,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ] },
+    ],
     attractionData: { location: "Hawa Mahal Rd, Badi Choupad, Jaipur", entryFee: { indian: "₹50", foreign: "₹200", children: "Free (below 15)" }, timings: { open: "9:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) for best photos" }, howToReach: { fromJaipur: "City center", nearestAirport: "Jaipur Airport (12 km)", nearestRailway: "Jaipur Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 26.9239, longitude: 75.8267 } },
     image: "/images/blog/hawa-mahal.jpg", date: "2025-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Hawa Mahal Jaipur Guide 2025 - Palace of Winds Timings & Tours", metaDescription: "Hawa Mahal complete guide: 953 windows, iconic pink facade, best photography spots. Book Jaipur city tours!",
@@ -2807,7 +2807,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ] },
+    ],
     attractionData: { location: "Rajpath, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Evening (5-8 PM) when illuminated" }, howToReach: { fromNewDelhi: "3 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "New Delhi Station (3 km)", nearestMetro: "Central Secretariat Metro" }, timeNeeded: "1 hour", coordinates: { latitude: 28.6129, longitude: 77.2295 } },
     image: "/images/blog/india-gate.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "India Gate Delhi Guide 2025 - Timings & Tours", metaDescription: "India Gate Delhi: iconic war memorial, evening illumination, boat rides, street food. Book Delhi city tours!",
@@ -3376,7 +3376,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ] },
+    ],
     attractionData: { location: "Apollo Bandar, Colaba, Mumbai", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "November to February", timeOfDay: "Evening (5-7 PM) for sunset" }, howToReach: { fromMumbaiCentral: "10 km", nearestAirport: "Mumbai Airport (30 km)", nearestRailway: "CST Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 18.9220, longitude: 72.8347 } },
     image: "/images/blog/gateway-of-india.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
     metaTitle: "Gateway of India Mumbai Guide 2025 - Timings & Tours", metaDescription: "Gateway of India Mumbai: iconic monument, Elephanta Caves ferry, sunset views, colonial architecture!",
@@ -4151,8 +4151,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ]
-    },
+    ],
 
     attractionData: {
       location: "The Fort Road, Jodhpur, Rajasthan 342006",
@@ -7275,8 +7274,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ]
-    },
+    ],
 
     attractionData: {
       location: "Cheel ka Teela, Aravalli Hills, Jaipur, Rajasthan",
@@ -8177,8 +8175,7 @@ export const attractionBlogPosts = [
       "restroom facilities",
       "wheelchair accessible",
       "photography allowed"
-    ]
-    },
+    ],
 
     attractionData: {
       location: "Jag Niwas Island, Lake Pichola, Udaipur, Rajasthan",
