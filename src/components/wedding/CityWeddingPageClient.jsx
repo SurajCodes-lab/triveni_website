@@ -654,6 +654,15 @@ const FinalCTA = ({ city }) => {
 
 // Related Services Section - Interlinking
 const RelatedServices = ({ city, citySlug }) => {
+  // Cities that have airport service pages
+  const citiesWithAirportService = [
+    'delhi', 'jaipur', 'chandigarh', 'agra', 'shimla',
+    'manali', 'amritsar', 'dehradun', 'haridwar',
+    'rishikesh', 'udaipur', 'ayodhya'
+  ];
+
+  const hasAirportService = citiesWithAirportService.includes(citySlug);
+
   return (
     <section className="py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -670,7 +679,7 @@ const RelatedServices = ({ city, citySlug }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className={`grid grid-cols-1 ${hasAirportService ? 'md:grid-cols-2' : ''} gap-6 mb-8`}>
           {/* Main City Service Link */}
           <Link
             href={`/${citySlug}`}
@@ -685,7 +694,7 @@ const RelatedServices = ({ city, citySlug }) => {
                   {city.name} Cab Service
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Complete taxi and cab rental services in {city.name}. Outstation trips, local tours, airport transfers, and more.
+                  Complete taxi and cab rental services in {city.name}. Outstation trips, local tours, and more.
                 </p>
                 <div className="flex items-center text-blue-600 font-semibold">
                   Explore All Services
@@ -695,29 +704,31 @@ const RelatedServices = ({ city, citySlug }) => {
             </div>
           </Link>
 
-          {/* Airport Service Link */}
-          <Link
-            href={`/airport-service/${citySlug}`}
-            className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 hover:shadow-xl transform hover:-translate-y-1 transition-all group"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <Navigation className="w-8 h-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {city.name} Airport Transfer
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Reliable airport taxi service in {city.name}. Flight tracking, luggage assistance, on-time pickup & drop.
-                </p>
-                <div className="flex items-center text-purple-600 font-semibold">
-                  Book Airport Taxi
-                  <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+          {/* Airport Service Link - Only if city has airport service */}
+          {hasAirportService && (
+            <Link
+              href={`/airport-service/${citySlug}`}
+              className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 hover:shadow-xl transform hover:-translate-y-1 transition-all group"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <Navigation className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {city.name} Airport Transfer
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    Reliable airport taxi service in {city.name}. Flight tracking, luggage assistance, on-time pickup & drop.
+                  </p>
+                  <div className="flex items-center text-purple-600 font-semibold">
+                    Book Airport Taxi
+                    <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          )}
         </div>
 
         {/* Quick Links */}
@@ -736,12 +747,14 @@ const RelatedServices = ({ city, citySlug }) => {
             >
               {city.name} Local Tours
             </Link>
-            <Link
-              href={`/airport-service/${citySlug}`}
-              className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
-            >
-              {city.name} Airport Taxi
-            </Link>
+            {hasAirportService && (
+              <Link
+                href={`/airport-service/${citySlug}`}
+                className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
+              >
+                {city.name} Airport Taxi
+              </Link>
+            )}
             <Link
               href="/wedding"
               className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
