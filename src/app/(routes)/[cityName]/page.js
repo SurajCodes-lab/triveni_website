@@ -15,6 +15,16 @@ const allCityRoutes = {
   ...basicCityRoutes
 };
 
+// Reserved route names that should NEVER be handled by this dynamic route
+// These are static routes that should be served by their own page.js files
+const RESERVED_ROUTES = [
+  'services', 'about', 'contact', 'blog', 'wedding', 'destinations',
+  'car-rental', 'tour-guide', 'tour-package', 'vehicles', 'tourist-spots',
+  'airport-service', 'religious-tours', 'tempo-traveller', 'terms-and-conditions',
+  'cancellation-and-refund-policy', 'sightseeing', 'routes', 'bus-routes',
+  'tourist-attractions'
+];
+
 function parseRouteSlug(slug) {
   const parts = slug.split('-to-');
   if (parts.length !== 2) return null;
@@ -221,6 +231,13 @@ export async function generateMetadata({ params }) {
 
 export default function CityNamePage({ params }) {
   const { cityName } = params;
+
+  // CRITICAL: Block reserved routes from being handled by this dynamic route
+  // This prevents "/services", "/about", etc. from being caught here
+  if (RESERVED_ROUTES.includes(cityName.toLowerCase())) {
+    notFound();
+  }
+
   const routeData = parseRouteSlug(cityName);
 
   if (routeData) {

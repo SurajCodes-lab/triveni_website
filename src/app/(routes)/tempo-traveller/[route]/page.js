@@ -67,7 +67,7 @@ export async function generateMetadata({ params }) {
     applicationName: 'Triveni Cabs',
     metadataBase: new URL('https://trivenicabs.in'),
     alternates: {
-      canonical: `/tempo-traveller/${route}`,
+      canonical: `https://trivenicabs.in/tempo-traveller/${route}`,
     },
     openGraph: {
       title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | 12-26 Seater AC with Driver | Book Online`,

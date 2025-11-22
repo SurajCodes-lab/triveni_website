@@ -142,7 +142,7 @@ export async function generateMetadata({ params }) {
       images: [packageInfo.image],
     },
     alternates: {
-      canonical: `https://trivenicabs.com/tour-packages/${slug}`
+      canonical: `https://trivenicabs.in/tour-package/${slug}`
     },
     robots: {
       index: true,

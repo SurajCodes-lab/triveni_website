@@ -130,10 +130,10 @@ export default function AboutClient() {
     "@type": "TravelAgency",
     "name": "Triveni Cabs",
     "description": "Professional cab service provider offering online taxi booking, outstation tours, airport transfers, and car rental across India. Book affordable cabs with 24/7 service.",
-    "url": "https://trivenicabs.com",
-    "logo": "https://trivenicabs.com/logo.webp",
+    "url": "https://trivenicabs.in",
+    "logo": "https://trivenicabs.in/logo.webp",
     "telephone": "+917668570551",
-    "email": "info@trivenicabs.com",
+    "email": "info@trivenicabs.in",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Site 2, Industrial, S-65, Loni Rd, Block 9, Mohan Nagar",
@@ -190,13 +190,13 @@ export default function AboutClient() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.com"
+        "item": "https://trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "About Us",
-        "item": "https://trivenicabs.com/about"
+        "item": "https://trivenicabs.in/about"
       }
     ]
   };

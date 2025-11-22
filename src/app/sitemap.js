@@ -39,151 +39,151 @@ export default function sitemap() {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.8,
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/destinations`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/car-rental`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/tour-guide`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.8,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/wedding`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.8,
     },
 
-    // Tour Packages
+    // Tour Packages - HIGH PRIORITY CONTENT PAGES
     {
       url: `${baseUrl}/tour-package/manali-tour-from-mumbai`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/chardham-yatra-package`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/shimla-from-mumbai`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/rajasthan-tour`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/kashmir-tour`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/punjab-tour`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
 
-    // Booking Pages
+    // Booking Pages - CONVERSION PAGES
     {
       url: `${baseUrl}/tour-package/manali-tour-from-mumbai/book`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.64,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/chardham-yatra-package/book`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.64,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/shimla-from-mumbai/book`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.64,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/rajasthan-tour/book`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.64,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/kashmir-tour/book`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.64,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/punjab-tour/book`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.64,
+      priority: 0.85,
     },
 
-    // Vehicle Categories
+    // Vehicle Categories - CONTENT PAGES
     {
       url: `${baseUrl}/vehicles/sedan`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/suv`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/tempo-traveller`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/luxury-bus`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/bus`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
 
     // Additional Service Pages
@@ -191,29 +191,29 @@ export default function sitemap() {
       url: `${baseUrl}/tourist-spots`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.75,
     },
     {
       url: `${baseUrl}/airport-service`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.75,
     },
 
-    // Religious Tours Main Page
+    // Religious Tours Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/religious-tours`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.9,
+      priority: 0.75,
     },
 
-    // Tempo Traveller Main Page - Recently optimized
+    // Tempo Traveller Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/tempo-traveller`,
       lastModified: new Date('2025-01-22'),
       changeFrequency: 'weekly',
-      priority: 0.95,
+      priority: 0.75,
     },
 
     // Policy Pages
@@ -230,32 +230,32 @@ export default function sitemap() {
       priority: 0.5,
     },
 
-    // Blog Main Page
+    // Blog Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.75,
     },
 
-    // Sightseeing Main Page
+    // Sightseeing Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/sightseeing`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.75,
     },
 
-    // Routes Main Page
+    // Routes Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/routes`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.75,
     },
   ];
 
-  // Add Blog Posts (Dynamic)
+  // Add Blog Posts (Dynamic) - CONTENT PAGES
   blogPosts
     .filter(post => post && post.slug && post.date) // Filter out undefined or invalid posts
     .forEach(post => {
@@ -263,33 +263,33 @@ export default function sitemap() {
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(post.date),
         changeFrequency: 'monthly',
-        priority: 0.8,
+        priority: 0.85,
       });
     });
 
-  // Add Sightseeing Tour Detail Pages (Dynamic)
+  // Add Sightseeing Tour Detail Pages (Dynamic) - HIGH PRIORITY CONTENT
   const allSightseeingTours = getAllTours();
   allSightseeingTours.forEach(tour => {
     urls.push({
       url: `${baseUrl}/sightseeing/${tour.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     });
   });
 
-  // Add Religious Tour Detail Pages (Dynamic)
+  // Add Religious Tour Detail Pages (Dynamic) - HIGH PRIORITY CONTENT
   const religiousTourSlugs = getAllTourSlugs();
   religiousTourSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/religious-tours/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     });
   });
 
-  // Add ALL Tempo Traveller Routes (60+ routes) - Recently optimized for SEO
+  // Add ALL Tempo Traveller Routes (60+ routes) - HIGHEST PRIORITY CONTENT PAGES
   const tempoLastModified = new Date('2025-01-22'); // SEO optimization date
   Object.keys(tempoRoutes).forEach(originCity => {
     const routes = tempoRoutes[originCity];
@@ -299,20 +299,20 @@ export default function sitemap() {
         url: `${baseUrl}/tempo-traveller/${routeSlug}`,
         lastModified: tempoLastModified,
         changeFrequency: 'weekly',
-        priority: 0.9, // Increased priority for tempo routes
+        priority: 0.95, // HIGHEST priority - these are conversion pages
       });
     });
   });
 
-  // Add Bus Routes Main Page
+  // Add Bus Routes Main Page - CATEGORY PAGE
   urls.push({
     url: `${baseUrl}/bus-routes`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
-    priority: 0.9,
+    priority: 0.75,
   });
 
-  // Add ALL Bus Routes (100+ routes)
+  // Add ALL Bus Routes (100+ routes) - HIGHEST PRIORITY CONTENT PAGES
   Object.keys(busRoutes).forEach(originCity => {
     const routes = busRoutes[originCity];
     routes.forEach(route => {
@@ -321,12 +321,12 @@ export default function sitemap() {
         url: `${baseUrl}/bus-routes/${routeSlug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly',
-        priority: 0.8,
+        priority: 0.95, // HIGHEST priority - these are conversion pages
       });
     });
   });
 
-  // Add Tourist Attractions by City
+  // Add Tourist Attractions by City - CONTENT PAGES
   const touristAttractionCities = [
     'delhi', 'agra', 'jaipur', 'udaipur', 'haridwar', 'rishikesh',
     'shimla', 'manali', 'amritsar', 'lucknow', 'varanasi', 'jodhpur',
@@ -338,22 +338,22 @@ export default function sitemap() {
       url: `${baseUrl}/tourist-attractions/${city}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.85,
     });
   });
 
-  // Add Airport Service City Pages
+  // Add Airport Service City Pages - HIGH PRIORITY CONTENT
   const airportCitySlugs = getAllCitySlugs();
   airportCitySlugs.forEach(citySlug => {
     urls.push({
       url: `${baseUrl}/airport-service/${citySlug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     });
   });
 
-  // Add ALL city pages (not just 4) - HIGH PRIORITY
+  // Add ALL city pages - HIGHEST PRIORITY CONTENT PAGES
   cities.forEach(city => {
     if (!city || !city.name) return;
 
@@ -362,11 +362,11 @@ export default function sitemap() {
       url: `${baseUrl}/${cityName}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9, // Increased from 0.8
+      priority: 0.95, // HIGHEST priority - main service pages for each city
     });
   });
 
-  // Add ALL route pages with debugging - HIGH PRIORITY
+  // Add ALL city-to-city route pages - HIGHEST PRIORITY CONVERSION PAGES
   cities.forEach(city => {
     if (!city || !city.name) return;
 
@@ -385,7 +385,7 @@ export default function sitemap() {
             url: `${baseUrl}/${routeSlug}`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.85, // Increased from 0.64
+            priority: 0.95, // HIGHEST priority - these are conversion pages
           });
           console.log(`Added route: ${routeSlug}`);
         }
