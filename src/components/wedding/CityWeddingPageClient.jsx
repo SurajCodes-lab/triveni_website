@@ -267,8 +267,13 @@ const PopularVenues = ({ city }) => {
   );
 };
 
-// Nearby Destinations
-const NearbyDestinations = ({ city }) => {
+// Nearby Destinations - Clickable with Interlinking
+const NearbyDestinations = ({ city, citySlug }) => {
+  // Helper function to create route slug
+  const createRouteSlug = (originCity, destinationCity) => {
+    return `${originCity.toLowerCase()}-to-${destinationCity.toLowerCase().replace(/\s+/g, '-')}`;
+  };
+
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -281,26 +286,43 @@ const NearbyDestinations = ({ city }) => {
             From <span className="text-[#FACF2D]">{city.name}</span> To Nearby Cities
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            We also provide wedding car services for destination weddings
+            Book cabs for destination weddings and outstation trips to nearby cities
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {city.nearbyDestinations.map((destination, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all border-2 border-gray-100 hover:border-green-300"
-            >
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Navigation className="w-8 h-8 text-white" />
+          {city.nearbyDestinations.map((destination, index) => {
+            // Create route URL (e.g., /delhi-to-jaipur)
+            const routeUrl = `/${createRouteSlug(city.name, destination.name)}`;
+
+            return (
+              <Link
+                key={index}
+                href={routeUrl}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all border-2 border-gray-100 hover:border-green-300 group"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <Navigation className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{destination.name}</h3>
+                  <p className="text-gray-600 text-sm mb-1">{destination.distance}</p>
+                  <p className="text-[#FACF2D] font-semibold mb-3">{destination.time}</p>
+                  <div className="flex items-center justify-center text-green-600 font-semibold text-sm">
+                    <span>View Route</span>
+                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{destination.name}</h3>
-                <p className="text-gray-600 text-sm mb-1">{destination.distance}</p>
-                <p className="text-[#FACF2D] font-semibold">{destination.time}</p>
-              </div>
-            </div>
-          ))}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Additional Info */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-600 text-sm">
+            Need a cab for a different route? <a href={`https://wa.me/${phoneNumber}?text=Hi, I need a cab from ${city.name} for my wedding. Can you help?`} target="_blank" rel="noopener noreferrer" className="text-green-600 font-semibold underline">Contact us</a> for custom routes!
+          </p>
         </div>
       </div>
     </section>
@@ -318,7 +340,7 @@ const WeddingCarCollection = () => {
             <span className="font-semibold">Our Wedding Car Collection</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
-            Choose from our exclusive fleet
+            Choose from our exclusive fleet to make your big day memorable
           </h2>
         </div>
 
@@ -744,8 +766,8 @@ export default function CityWeddingPageClient({ city, citySlug }) {
       <div className="min-h-screen">
         <CityWeddingHero city={city} />
         <CityOverview city={city} />
-        <PopularCars city={city} />
-        <NearbyDestinations city={city} />
+        <WeddingCarCollection />
+        <NearbyDestinations city={city} citySlug={citySlug} />
         <WhyChooseUs city={city} />
         <FAQ city={city} />
         <RelatedServices city={city} citySlug={citySlug} />

@@ -14,10 +14,10 @@ export const weddingCityData = {
       { name: "JW Marriott", area: "Aerocity" }
     ],
     nearbyDestinations: [
-      { name: "Agra", distance: "230 km", time: "3-4 hours" },
-      { name: "Jaipur", distance: "280 km", time: "5 hours" },
-      { name: "Chandigarh", distance: "250 km", time: "5 hours" },
-      { name: "Haridwar", distance: "220 km", time: "5 hours" }
+      { name: "Agra", distance: "230 km", time: "4-5 hours" },
+      { name: "Jaipur", distance: "280 km", time: "5-6 hours" },
+      { name: "Haridwar", distance: "240 km", time: "4-5 hours" },
+      { name: "Chandigarh", distance: "260 km", time: "4-5 hours" }
     ],
     specialties: [
       "Largest fleet of luxury wedding cars",
@@ -68,9 +68,9 @@ export const weddingCityData = {
       { name: "Hotel Mountview", area: "Sector 10" }
     ],
     nearbyDestinations: [
+      { name: "Delhi", distance: "260 km", time: "4-5 hours" },
       { name: "Shimla", distance: "115 km", time: "3-4 hours" },
       { name: "Manali", distance: "310 km", time: "8 hours" },
-      { name: "Delhi", distance: "250 km", time: "5 hours" },
       { name: "Amritsar", distance: "240 km", time: "5 hours" }
     ],
     specialties: [
@@ -95,10 +95,10 @@ export const weddingCityData = {
       { name: "DoubleTree by Hilton", area: "Taj Nagri Phase II" }
     ],
     nearbyDestinations: [
-      { name: "Delhi", distance: "230 km", time: "3-4 hours" },
-      { name: "Jaipur", distance: "240 km", time: "4 hours" },
-      { name: "Mathura", distance: "55 km", time: "1 hour" },
-      { name: "Vrindavan", distance: "70 km", time: "1.5 hours" }
+      { name: "Delhi", distance: "230 km", time: "4-5 hours" },
+      { name: "Jaipur", distance: "240 km", time: "4-5 hours" },
+      { name: "Haridwar", distance: "400 km", time: "7-8 hours" },
+      { name: "Chandigarh", distance: "420 km", time: "7-8 hours" }
     ],
     specialties: [
       "Taj Mahal wedding photoshoot arrangements",
@@ -122,10 +122,10 @@ export const weddingCityData = {
       { name: "The Oberoi Cecil", area: "Chaura Maidan" }
     ],
     nearbyDestinations: [
+      { name: "Delhi", distance: "350 km", time: "7-8 hours" },
       { name: "Chandigarh", distance: "115 km", time: "3-4 hours" },
-      { name: "Delhi", distance: "350 km", time: "8 hours" },
       { name: "Manali", distance: "250 km", time: "7 hours" },
-      { name: "Kasauli", distance: "77 km", time: "2.5 hours" }
+      { name: "Haridwar", distance: "310 km", time: "7-8 hours" }
     ],
     specialties: [
       "Expert hill-station wedding drivers",
@@ -149,10 +149,7 @@ export const weddingCityData = {
       { name: "Apple Country Resort", area: "Prini" }
     ],
     nearbyDestinations: [
-      { name: "Kullu", distance: "40 km", time: "1.5 hours" },
-      { name: "Chandigarh", distance: "310 km", time: "8 hours" },
-      { name: "Delhi", distance: "540 km", time: "14 hours" },
-      { name: "Shimla", distance: "250 km", time: "7 hours" }
+      { name: "Delhi", distance: "540 km", time: "12-14 hours" }
     ],
     specialties: [
       "Adventure wedding specialists",
@@ -176,10 +173,7 @@ export const weddingCityData = {
       { name: "Ramada Amritsar", area: "Albert Road" }
     ],
     nearbyDestinations: [
-      { name: "Chandigarh", distance: "240 km", time: "5 hours" },
-      { name: "Delhi", distance: "460 km", time: "8 hours" },
-      { name: "Dharamshala", distance: "200 km", time: "4 hours" },
-      { name: "Wagah Border", distance: "30 km", time: "45 mins" }
+      { name: "Delhi", distance: "450 km", time: "8-9 hours" }
     ],
     specialties: [
       "Sikh Anand Karaj wedding experts",
@@ -203,10 +197,7 @@ export const weddingCityData = {
       { name: "Regenta Resort", area: "Dehradun Road" }
     ],
     nearbyDestinations: [
-      { name: "Rishikesh", distance: "25 km", time: "45 mins" },
-      { name: "Dehradun", distance: "60 km", time: "2 hours" },
-      { name: "Delhi", distance: "250 km", time: "5 hours" },
-      { name: "Mussoorie", distance: "95 km", time: "3 hours" }
+      { name: "Delhi", distance: "240 km", time: "4-5 hours" }
     ],
     specialties: [
       "Temple wedding specialists",
@@ -230,10 +221,7 @@ export const weddingCityData = {
       { name: "Atali Ganga", area: "Byasi" }
     ],
     nearbyDestinations: [
-      { name: "Haridwar", distance: "25 km", time: "45 mins" },
-      { name: "Dehradun", distance: "45 km", time: "1 hour" },
-      { name: "Delhi", distance: "240 km", time: "5 hours" },
-      { name: "Mussoorie", distance: "75 km", time: "2.5 hours" }
+      { name: "Delhi", distance: "240 km", time: "5-6 hours" }
     ],
     specialties: [
       "Riverside wedding specialists",
@@ -257,9 +245,6 @@ export const weddingCityData = {
       { name: "The Solitaire", area: "Mussoorie Diversion" }
     ],
     nearbyDestinations: [
-      { name: "Mussoorie", distance: "35 km", time: "1.5 hours" },
-      { name: "Haridwar", distance: "55 km", time: "1.5 hours" },
-      { name: "Rishikesh", distance: "45 km", time: "1 hour" },
       { name: "Delhi", distance: "250 km", time: "5-6 hours" }
     ],
     specialties: [
@@ -284,10 +269,7 @@ export const weddingCityData = {
       { name: "Vivanta Jodhpur", area: "Pal Road" }
     ],
     nearbyDestinations: [
-      { name: "Jaipur", distance: "335 km", time: "5-6 hours" },
-      { name: "Udaipur", distance: "265 km", time: "5 hours" },
-      { name: "Jaisalmer", distance: "285 km", time: "5 hours" },
-      { name: "Mount Abu", distance: "265 km", time: "5 hours" }
+      { name: "Delhi", distance: "620 km", time: "10-12 hours" }
     ],
     specialties: [
       "Royal palace wedding specialists",
@@ -311,10 +293,7 @@ export const weddingCityData = {
       { name: "Trident Udaipur", area: "Haridasji Ki Magri" }
     ],
     nearbyDestinations: [
-      { name: "Jaipur", distance: "395 km", time: "6-7 hours" },
-      { name: "Jodhpur", distance: "265 km", time: "5 hours" },
-      { name: "Mount Abu", distance: "165 km", time: "3 hours" },
-      { name: "Ahmedabad", distance: "265 km", time: "5 hours" }
+      { name: "Delhi", distance: "660 km", time: "11-13 hours" }
     ],
     specialties: [
       "Lake palace wedding specialists",
@@ -338,10 +317,7 @@ export const weddingCityData = {
       { name: "Ramayan Hotel", area: "Civil Lines" }
     ],
     nearbyDestinations: [
-      { name: "Lucknow", distance: "140 km", time: "3 hours" },
-      { name: "Varanasi", distance: "210 km", time: "4 hours" },
-      { name: "Prayagraj", distance: "165 km", time: "3.5 hours" },
-      { name: "Delhi", distance: "635 km", time: "12 hours" }
+      { name: "Delhi", distance: "690 km", time: "12-14 hours" }
     ],
     specialties: [
       "Ram Mandir wedding specialists",
