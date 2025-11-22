@@ -149,8 +149,8 @@ const WeddingCarCollection = () => {
               <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/luxury.webp"
-                    alt="Luxury Cars"
+                    src="/images/wedding/luxury_car.jpg"
+                    alt="Luxury Wedding Cars - BMW, Audi, Mercedes"
                     fill
                     className="object-cover"
                   />
@@ -201,8 +201,8 @@ const WeddingCarCollection = () => {
               <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/suv.webp"
-                    alt="Premium SUVs"
+                    src="/images/wedding/premium_suv.jpg"
+                    alt="Premium SUVs for Wedding - Fortuner, Innova Crysta"
                     fill
                     className="object-cover"
                   />
@@ -253,8 +253,8 @@ const WeddingCarCollection = () => {
               <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/luxury.webp"
-                    alt="Vintage Cars"
+                    src="/images/wedding/vintage_car.jpg"
+                    alt="Vintage Wedding Cars - Classic Royal Entry"
                     fill
                     className="object-cover"
                   />
@@ -453,12 +453,23 @@ const WeddingServices = () => {
   );
 };
 
-// Service Areas Section
+// Service Areas Section - Clickable City Cards
 const ServiceAreas = () => {
-  const cities = [
-    "Delhi", "Chandigarh", "Jaipur", "Agra", "Haridwar", "Rishikesh",
-    "Shimla", "Manali", "Udaipur", "Amritsar", "Dehradun", "Nainital",
-    "Mussoorie", "Jaisalmer", "Jodhpur", "Ajmer", "Pushkar", "Mathura"
+  // Cities with wedding services - matches weddingCityData
+  const weddingCities = [
+    { name: "Delhi", slug: "delhi" },
+    { name: "Jaipur", slug: "jaipur" },
+    { name: "Chandigarh", slug: "chandigarh" },
+    { name: "Agra", slug: "agra" },
+    { name: "Shimla", slug: "shimla" },
+    { name: "Manali", slug: "manali" },
+    { name: "Amritsar", slug: "amritsar" },
+    { name: "Haridwar", slug: "haridwar" },
+    { name: "Rishikesh", slug: "rishikesh" },
+    { name: "Dehradun", slug: "dehradun" },
+    { name: "Jodhpur", slug: "jodhpur" },
+    { name: "Udaipur", slug: "udaipur" },
+    { name: "Ayodhya", slug: "ayodhya" }
   ];
 
   return (
@@ -467,26 +478,47 @@ const ServiceAreas = () => {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-2 rounded-full mb-4">
             <MapPin className="w-5 h-5" />
-            <span className="font-semibold">We Serve Across North India</span>
+            <span className="font-semibold">Wedding Car Rental by City</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Wedding Car Service <span className="text-[#FACF2D]">Locations</span>
+            Book <span className="text-[#FACF2D]">City-Specific</span> Wedding Cars
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
-            Premium wedding transportation services available in all major cities of North India
+          <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-8">
+            Click on your city for detailed wedding car rental services, pricing, popular venues, and exclusive packages.
+            Each city has specialized services tailored to local wedding traditions.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {cities.map((city, index) => (
-            <div
-              key={index}
-              className="bg-white border-2 border-gray-100 rounded-xl p-4 text-center hover:border-[#FACF2D] hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {weddingCities.map((city) => (
+            <Link
+              key={city.slug}
+              href={`/wedding/${city.slug}`}
+              className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border-2 border-pink-100 hover:border-[#FACF2D]"
             >
-              <MapPin className="w-6 h-6 text-[#FACF2D] mx-auto mb-2" />
-              <div className="font-semibold text-gray-800">{city}</div>
-            </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-14 h-14 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <MapPin className="w-7 h-7 text-[#FACF2D]" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{city.name}</h3>
+                <p className="text-sm text-gray-600 mb-3">Wedding Car Rental</p>
+                <div className="flex items-center text-[#FACF2D] font-semibold text-sm">
+                  View Details
+                  <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </Link>
           ))}
+        </div>
+
+        {/* Additional Info */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl px-8 py-4 shadow-md">
+            <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
+            <p className="text-gray-700 font-medium">
+              Can't find your city? <a href={`https://wa.me/${phoneNumber}?text=Hi, I need wedding car rental in my city. Can you help?`} target="_blank" rel="noopener noreferrer" className="text-[#FACF2D] underline font-bold">Contact us</a> for custom solutions!
+            </p>
+          </div>
         </div>
       </div>
     </section>

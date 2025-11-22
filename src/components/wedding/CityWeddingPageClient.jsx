@@ -329,8 +329,8 @@ const WeddingCarCollection = () => {
               <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/luxury.webp"
-                    alt="Luxury Cars"
+                    src="/images/wedding/luxury_car.jpg"
+                    alt="Luxury Wedding Cars - BMW, Audi, Mercedes"
                     fill
                     className="object-cover"
                   />
@@ -381,8 +381,8 @@ const WeddingCarCollection = () => {
               <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/suv.webp"
-                    alt="Premium SUVs"
+                    src="/images/wedding/premium_suv.jpg"
+                    alt="Premium SUVs for Wedding - Fortuner, Innova Crysta"
                     fill
                     className="object-cover"
                   />
@@ -630,6 +630,109 @@ const FinalCTA = ({ city }) => {
   );
 };
 
+// Related Services Section - Interlinking
+const RelatedServices = ({ city, citySlug }) => {
+  return (
+    <section className="py-16 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-6 py-2 rounded-full mb-4 shadow-sm">
+            <Car className="w-5 h-5" />
+            <span className="font-semibold">More Services in {city.name}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            Explore Our Other Services in <span className="text-[#FACF2D]">{city.name}</span>
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Beyond weddings, we offer comprehensive cab services for all your travel needs in {city.name}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* Main City Service Link */}
+          <Link
+            href={`/${citySlug}`}
+            className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-2xl p-8 hover:shadow-xl transform hover:-translate-y-1 transition-all group"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Car className="w-8 h-8 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {city.name} Cab Service
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Complete taxi and cab rental services in {city.name}. Outstation trips, local tours, airport transfers, and more.
+                </p>
+                <div className="flex items-center text-blue-600 font-semibold">
+                  Explore All Services
+                  <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Airport Service Link */}
+          <Link
+            href={`/airport-service/${citySlug}`}
+            className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 hover:shadow-xl transform hover:-translate-y-1 transition-all group"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Navigation className="w-8 h-8 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {city.name} Airport Transfer
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Reliable airport taxi service in {city.name}. Flight tracking, luggage assistance, on-time pickup & drop.
+                </p>
+                <div className="flex items-center text-purple-600 font-semibold">
+                  Book Airport Taxi
+                  <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Quick Links */}
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Quick Links</h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href={`/${citySlug}`}
+              className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
+            >
+              {city.name} Outstation Cabs
+            </Link>
+            <Link
+              href={`/${citySlug}`}
+              className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
+            >
+              {city.name} Local Tours
+            </Link>
+            <Link
+              href={`/airport-service/${citySlug}`}
+              className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
+            >
+              {city.name} Airport Taxi
+            </Link>
+            <Link
+              href="/wedding"
+              className="bg-white px-4 py-2 rounded-lg text-gray-700 hover:bg-[#FACF2D] hover:text-white transition-all shadow-sm"
+            >
+              All Cities Wedding Cars
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Main Component
 export default function CityWeddingPageClient({ city, citySlug }) {
   useEffect(() => {
@@ -642,11 +745,10 @@ export default function CityWeddingPageClient({ city, citySlug }) {
         <CityWeddingHero city={city} />
         <CityOverview city={city} />
         <PopularCars city={city} />
-        <PopularVenues city={city} />
         <NearbyDestinations city={city} />
-        <WeddingCarCollection />
         <WhyChooseUs city={city} />
         <FAQ city={city} />
+        <RelatedServices city={city} citySlug={citySlug} />
         <FinalCTA city={city} />
       </div>
 
