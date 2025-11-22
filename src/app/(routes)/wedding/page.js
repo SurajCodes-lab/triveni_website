@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "Triveni Cabs",
     images: [
       {
-        url: "/images/about/about_banner.webp",
+        url: "/images/wedding_section.jpg",
         width: 1200,
         height: 630,
         alt: "Triveni Cabs Wedding Car Rental Service"
