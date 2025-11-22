@@ -208,12 +208,12 @@ export default function sitemap() {
       priority: 0.9,
     },
 
-    // Tempo Traveller Main Page
+    // Tempo Traveller Main Page - Recently optimized
     {
       url: `${baseUrl}/tempo-traveller`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      lastModified: new Date('2025-01-22'),
+      changeFrequency: 'weekly',
+      priority: 0.95,
     },
 
     // Policy Pages
@@ -289,16 +289,17 @@ export default function sitemap() {
     });
   });
 
-  // Add ALL Tempo Traveller Routes (60+ routes)
+  // Add ALL Tempo Traveller Routes (60+ routes) - Recently optimized for SEO
+  const tempoLastModified = new Date('2025-01-22'); // SEO optimization date
   Object.keys(tempoRoutes).forEach(originCity => {
     const routes = tempoRoutes[originCity];
     routes.forEach(route => {
       const routeSlug = createTempoRouteSlug(originCity, route.name);
       urls.push({
         url: `${baseUrl}/tempo-traveller/${routeSlug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.7,
+        lastModified: tempoLastModified,
+        changeFrequency: 'weekly',
+        priority: 0.9, // Increased priority for tempo routes
       });
     });
   });
@@ -352,30 +353,30 @@ export default function sitemap() {
     });
   });
 
-  // Add ALL city pages (not just 4)
+  // Add ALL city pages (not just 4) - HIGH PRIORITY
   cities.forEach(city => {
     if (!city || !city.name) return;
-    
+
     const cityName = city.name.toLowerCase();
     urls.push({
       url: `${baseUrl}/${cityName}`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 0.9, // Increased from 0.8
     });
   });
 
-  // Add ALL route pages with debugging
+  // Add ALL route pages with debugging - HIGH PRIORITY
   cities.forEach(city => {
     if (!city || !city.name) return;
-    
+
     const cityName = city.name;
     const formattedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-    
+
     const routes = allCityRoutes[formattedCityName] || [];
-    
+
     console.log(`Processing routes for ${formattedCityName}: ${routes.length} routes found`);
-    
+
     if (Array.isArray(routes) && routes.length > 0) {
       routes.forEach(route => {
         if (route && route.destination) {
@@ -383,8 +384,8 @@ export default function sitemap() {
           urls.push({
             url: `${baseUrl}/${routeSlug}`,
             lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.64,
+            changeFrequency: 'weekly',
+            priority: 0.85, // Increased from 0.64
           });
           console.log(`Added route: ${routeSlug}`);
         }

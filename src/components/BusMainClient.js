@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info } from 'lucide-react';
+import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info, HelpCircle, ChevronDown } from 'lucide-react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { useInView as useInViewObserver } from 'react-intersection-observer';
 import { TypeAnimation } from 'react-type-animation';
@@ -21,6 +21,7 @@ export default function BusMainClient({ data }) {
   const [showAllRoutes, setShowAllRoutes] = useState(false);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [openFaq, setOpenFaq] = useState(null);
 
   const { popularRoutes, allRoutes, fleet, cities } = data;
 
@@ -139,7 +140,7 @@ export default function BusMainClient({ data }) {
           <div className="absolute inset-0 hero-image">
             <Image
               src="/images/bus/hero_section_image.png"
-              alt="Premium Bus Services"
+              alt="Luxury bus rental services - 22 to 56 seater AC coaches for group travel across India"
               fill
               className="object-cover brightness-50"
               priority
@@ -180,36 +181,24 @@ export default function BusMainClient({ data }) {
               <Sparkles className="w-5 h-5 text-[#FACF2D]" />
             </motion.div>
 
-            {/* Main Title with TypeAnimation */}
+            {/* Main Title - SEO Optimized H1 */}
             <div className="mb-8 overflow-hidden">
               <motion.h1
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="hero-title text-5xl md:text-7xl font-black text-white leading-tight mb-4"
+                className="hero-title text-4xl md:text-6xl font-black text-white leading-tight mb-4"
               >
-                Travel
+                Luxury Bus Rental Service
               </motion.h1>
-              <motion.h1
+              <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="hero-title text-5xl md:text-7xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
+                className="hero-title text-3xl md:text-5xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
               >
-                <TypeAnimation
-                  sequence={[
-                    'Anywhere',
-                    2500,
-                    'Anytime',
-                    2500,
-                    'Together',
-                    2500,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                  repeat={Infinity}
-                />
-              </motion.h1>
+                22 to 56 Seater Coaches Across India
+              </motion.div>
             </div>
 
             {/* Subtitle */}
@@ -262,6 +251,25 @@ export default function BusMainClient({ data }) {
           </div>
         </motion.section>
 
+        {/* SEO-Rich Introduction Section */}
+        <section className="py-16 bg-white relative overflow-hidden">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                Looking for reliable <strong>bus rental services in India</strong>? Triveni Cabs offers premium <strong>luxury bus hire</strong> from <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>. Perfect for corporate events, weddings, pilgrimage tours, and group travel.
+              </p>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                Book <strong>AC buses</strong> with <strong>professional drivers</strong> for <strong>Delhi, Mumbai, Jaipur</strong>, and all major routes across India. All vehicles feature pushback seats, entertainment systems, GPS tracking, and spacious luggage storage for comfortable long-distance travel.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Fleet Section - 3D Cards */}
         <section ref={fleetSectionRef} className="pt-12 pb-32 bg-white relative overflow-hidden">
 
@@ -290,10 +298,10 @@ export default function BusMainClient({ data }) {
               </motion.div>
 
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Choose Your <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Perfect Ride</span>
+                Our Luxury Bus Fleet <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">22 to 56 Seater Options</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Modern fleet with all sizes - from mini buses to luxury coaches
+                Explore our premium fleet of AC buses from 22 seater mini buses to 56 seater Volvo coaches. All vehicles feature pushback seats, entertainment systems, and GPS tracking for safe group travel across India.
               </p>
             </motion.div>
 
@@ -500,8 +508,11 @@ export default function BusMainClient({ data }) {
               </motion.div>
 
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Explore <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Amazing Destinations</span>
+                Popular Bus Routes <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Across India</span>
               </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                Explore our extensive network of bus routes covering Delhi to Agra, Delhi to Jaipur, Mumbai to Goa, and over 100+ destinations. Book luxury coach services for hill stations, heritage tours, and pilgrimage trips.
+              </p>
 
               {/* Search and Filter */}
               <motion.div
@@ -701,8 +712,11 @@ export default function BusMainClient({ data }) {
               </motion.div>
 
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Your <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Trusted Partner</span>
+                Why Choose Our <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Bus Rental Service</span>
               </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Professional drivers, well-maintained vehicles, and transparent pricing make us India&apos;s trusted bus hire company
+              </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -777,9 +791,9 @@ export default function BusMainClient({ data }) {
                 <span className="text-[#FACF2D] font-bold text-sm tracking-wider">ADDITIONAL INFORMATION</span>
               </motion.div>
               <h2 className="text-3xl md:text-4xl font-black mb-4">
-                Pricing & <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Terms</span>
+                Transparent Bus Hire <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Pricing & Terms</span>
               </h2>
-              <p className="text-lg text-gray-400">Transparent pricing with no hidden charges</p>
+              <p className="text-lg text-gray-400">Clear bus rental rates with no hidden charges - pay only for distance traveled and driver allowance</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -811,6 +825,106 @@ export default function BusMainClient({ data }) {
                   </motion.div>
                   <h3 className="text-base font-black text-[#FACF2D] mb-4 group-hover:text-white transition-colors">{item.label}</h3>
                   <p className="text-sm text-gray-300 leading-relaxed font-medium">{item.value}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - SEO Optimized */}
+        <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 200 }}
+                className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6"
+              >
+                <HelpCircle className="w-5 h-5 text-blue-600" />
+                <span className="text-blue-600 font-bold text-sm tracking-wider">FREQUENTLY ASKED QUESTIONS</span>
+              </motion.div>
+
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+                Bus Rental <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">FAQs</span>
+              </h2>
+              <p className="text-lg text-gray-600">Everything you need to know about our luxury bus hire services</p>
+            </motion.div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  question: "What bus sizes are available for rental?",
+                  answer: "We offer luxury buses from 22 seater to 56 seater, including 22, 25, 27, 32, 35, 41, 45, 49, 52, and 56 seater options. All buses are AC equipped with pushback/reclining seats and entertainment systems."
+                },
+                {
+                  question: "Which cities do you provide bus rental services?",
+                  answer: "We provide luxury bus rental services across India including Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Rishikesh, Shimla, Manali, Amritsar, Udaipur, Jodhpur, Jaisalmer, and many more cities. We cover all major tourist destinations, pilgrimage sites, and commercial hubs."
+                },
+                {
+                  question: "What are the bus rental rates?",
+                  answer: "Bus rental rates start from ₹30/km for 22 seater mini bus and go up to ₹65/km for 56 seater luxury Volvo bus. Rates vary based on bus size, route, duration, and season. Driver allowance is ₹800-1200 per day depending on the vehicle."
+                },
+                {
+                  question: "What amenities are included in the luxury bus?",
+                  answer: "Our luxury buses include AC, pushback/reclining seats, music/entertainment system, luggage space, curtains, reading lights, charging points, and some premium buses have TV, wifi, and washroom facilities. All buses are GPS tracked with professional drivers."
+                },
+                {
+                  question: "Can I book a bus for corporate events and weddings?",
+                  answer: "Yes, we specialize in corporate bus rentals for conferences, team outings, and employee transportation. We also provide wedding buses for guest transfers, baraat, and destination weddings. Customized packages available with flexible booking."
+                },
+                {
+                  question: "How far in advance should I book a bus?",
+                  answer: "We recommend booking at least 7-15 days in advance for popular routes and peak season. However, we also accept same-day and next-day bookings subject to availability. For large groups and special events, advance booking of 1 month is advisable."
+                }
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-gray-100 hover:border-[#FACF2D] transition-all duration-300"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    <h3 className="text-lg font-black text-gray-900 pr-4">
+                      {faq.question}
+                    </h3>
+                    <motion.div
+                      animate={{ rotate: openFaq === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0"
+                    >
+                      <ChevronDown className="w-6 h-6 text-[#FACF2D]" />
+                    </motion.div>
+                  </button>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openFaq === index ? 'auto' : 0,
+                      opacity: openFaq === index ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-8 pb-6">
+                      <p className="text-gray-700 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

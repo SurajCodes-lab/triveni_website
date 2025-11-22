@@ -62,47 +62,51 @@ export async function generateMetadata({ params }) {
   const destinationFormatted = formatCityName(destination);
 
   return {
-    title: `Family Trip? Perfect! ${originFormatted} to ${destinationFormatted} Tempo Traveller 12-17 Seater | Instant Booking`,
-    description: `👨‍👩‍👧‍👦 Travel together from ${originFormatted} to ${destinationFormatted}! Spacious AC tempo travellers (12-17 seater) with pushback seats, music system & ample luggage space. Perfect for families, corporate teams & pilgrimage groups. 2500+ happy families served. Professional drivers, GPS tracking, clean sanitized vehicles. Book in 30 seconds & travel stress-free!`,
-    keywords: [
-      `tempo traveller ${origin} to ${destination}`,
-      `${origin} to ${destination} tempo traveller booking`,
-      `${origin} to ${destination} tempo traveller price`,
-      `tempo traveller on rent ${origin} to ${destination}`,
-      `12 seater tempo traveller ${origin} to ${destination}`,
-      `17 seater tempo traveller ${origin} to ${destination}`,
-      `book tempo traveller ${origin} to ${destination}`,
-      `${origin} to ${destination} tempo traveller fare`,
-      `tempo traveller hire ${origin} to ${destination}`,
-      `${origin} ${destination} tempo traveller`,
-      `${origin} to ${destination} group travel`,
-      `tempo traveller rental ${origin} to ${destination}`,
-      `ac tempo traveller ${origin} to ${destination}`,
-      `luxury tempo traveller ${origin} to ${destination}`,
-      `${origin} to ${destination} outstation tempo traveller`,
-      `family tempo traveller ${origin} to ${destination}`,
-      `corporate tempo traveller ${origin} to ${destination}`,
-      `pilgrimage tempo traveller ${origin} to ${destination}`,
-      `cheap tempo traveller ${origin} to ${destination}`,
-      `best tempo traveller ${origin} to ${destination}`,
-      `tempo traveller with driver ${origin} to ${destination}`
-    ].join(', '),
+    title: `${originFormatted} to ${destinationFormatted} Tempo Traveller on Rent | 12-26 Seater AC ₹23/km | Book Online Triveni Cabs`,
+    description: `Book tempo traveller from ${originFormatted} to ${destinationFormatted}. 12, 17, 20, 26 seater AC tempo traveller with professional driver. Best rates ₹23-27/km all-inclusive. Pushback seats, music system, GPS tracking. Instant booking, 24/7 service. Perfect for family trips, group tours, corporate travel, pilgrimages. 2500+ satisfied customers. Professional drivers with 5+ years experience. Clean sanitized vehicles. Call +91-7668570551 for instant confirmation.`,
+    applicationName: 'Triveni Cabs',
+    metadataBase: new URL('https://trivenicabs.in'),
     alternates: {
-      canonical: `https://trivenicabs.in/tempo-traveller/${route}`
+      canonical: `/tempo-traveller/${route}`,
     },
     openGraph: {
-      title: `Travel Together! ${originFormatted} to ${destinationFormatted} Tempo Traveller 12-17 Seater`,
-      description: `👨‍👩‍👧‍👦 Spacious • Comfortable • Affordable | Pushback seats • Music • AC. 2500+ families chose us. Book your group ride now!`,
+      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | 12-26 Seater AC with Driver | Book Online`,
+      description: `✓ Best Rates ₹23-27/km ✓ Professional Drivers ✓ GPS Tracking ✓ Pushback Seats ✓ Music System ✓ 24/7 Booking ✓ Instant Confirmation | Book tempo traveller from ${originFormatted} to ${destinationFormatted}`,
       url: `https://trivenicabs.in/tempo-traveller/${route}`,
       type: 'website',
       locale: 'en_IN',
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs - Tempo Traveller Rental',
+      images: [
+        {
+          url: '/images/tempo-hero.jpg',
+          width: 1200,
+          height: 630,
+          alt: `${originFormatted} to ${destinationFormatted} Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles - Triveni Cabs`,
+          type: 'image/jpeg',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | 12-17 Seater`,
-      description: `Perfect for families & groups! AC • Pushback seats • Music. Book your comfortable ride now!`
-    }
+      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | AC 12-26 Seater | ₹23/km`,
+      description: `Book tempo traveller on rent | Professional drivers | GPS tracking | Pushback seats | 24/7 service | Call +91-7668570551`,
+      site: '@trivenicabs',
+      images: ['/images/tempo-hero.jpg'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    category: 'Travel & Transportation',
   };
 }
 

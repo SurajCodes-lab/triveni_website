@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle,
-  ArrowRight, Route, Award, TrendingUp, IndianRupee, Sparkles, Info, DollarSign, Navigation
+  ArrowRight, Route, Award, TrendingUp, IndianRupee, Sparkles, Info, DollarSign, Navigation, HelpCircle, ChevronDown
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -16,6 +16,7 @@ export default function DynamicBusRoutesClient({ data }) {
 
   const [selectedBus, setSelectedBus] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
     setMounted(true);
@@ -34,7 +35,7 @@ export default function DynamicBusRoutesClient({ data }) {
         <div className="absolute inset-0">
           <Image
             src="/images/bus/hero_section_image.png"
-            alt={`${origin} to ${destination} Bus Service`}
+            alt={`Luxury bus rental service from ${origin} to ${destination} - 22 to 56 seater AC coaches for group travel`}
             fill
             className="object-cover brightness-50"
             priority
@@ -196,6 +197,29 @@ export default function DynamicBusRoutesClient({ data }) {
         </div>
       </motion.section>
 
+      {/* SEO-Rich Introduction Section */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed mb-4 md:mb-6">
+              Looking for reliable <strong>bus rental services from {origin} to {destination}</strong>? Book our premium <strong>luxury bus hire</strong> service featuring <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>.
+              {routeData.distance && routeData.duration && (
+                <> Covering <strong>{routeData.distance}</strong> in approximately <strong>{routeData.duration}</strong>, </>
+              )}
+              our <strong>AC buses</strong> are perfect for corporate events, weddings, pilgrimage tours, and group travel.
+            </p>
+            <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed">
+              All vehicles feature <strong>pushback seats</strong>, entertainment systems, <strong>GPS tracking</strong>, and spacious luggage storage. Travel with experienced <strong>professional drivers</strong> ensuring safe and comfortable journeys on the <strong>{origin} to {destination} route</strong>.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Available Buses Section */}
       <div className="pt-8 md:pt-12 pb-12 md:pb-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,7 +229,7 @@ export default function DynamicBusRoutesClient({ data }) {
               🚌 Available Buses
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
-              🎯 Choose Your Perfect Bus
+              Luxury Bus Rental Options - <span className="text-[#FACF2D]">{origin} to {destination} Route</span>
             </h2>
             <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
               <strong>Select from our premium fleet</strong> for your journey from {origin} to {destination}
@@ -322,10 +346,10 @@ export default function DynamicBusRoutesClient({ data }) {
                 📍 Tourist Attractions
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
-                🏛️ Places to Visit in <span className="text-[#FACF2D]">{destination}</span>
+                Tourist Attractions in <span className="text-[#FACF2D]">{destination}</span> - Bus Tour Guide
               </h2>
               <p className="text-base md:text-lg lg:text-xl text-gray-600 px-4">
-                <strong>Explore popular tourist destinations</strong> in {destination}
+                <strong>Explore popular sightseeing spots</strong> with our luxury bus tours in {destination}
               </p>
             </div>
 
@@ -352,7 +376,7 @@ export default function DynamicBusRoutesClient({ data }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
-              🏆 Why Book with <span className="text-[#FACF2D]">Us?</span>
+              Why Choose Our <span className="text-[#FACF2D]">{origin} to {destination}</span> Bus Service
             </h2>
             <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
               <strong>Your trusted travel partner</strong> for safe and comfortable bus journeys
@@ -383,6 +407,99 @@ export default function DynamicBusRoutesClient({ data }) {
           </div>
         </div>
       </div>
+
+      {/* FAQ Section - SEO Optimized */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-blue-100 px-4 md:px-6 py-2 md:py-3 rounded-full mb-4 md:mb-6">
+              <HelpCircle className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+              <span className="text-blue-600 font-bold text-xs md:text-sm tracking-wider">FREQUENTLY ASKED QUESTIONS</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+              {origin} to {destination} <span className="text-[#FACF2D]">Bus Rental FAQs</span>
+            </h2>
+            <p className="text-base md:text-lg text-gray-600">Everything you need to know about our bus hire service</p>
+          </motion.div>
+
+          <div className="space-y-3 md:space-y-4">
+            {[
+              {
+                question: `What is the distance from ${origin} to ${destination}?`,
+                answer: routeData.distance !== 'Contact for details'
+                  ? `The distance from ${origin} to ${destination} is approximately ${routeData.distance}. Our luxury buses cover this route comfortably with experienced drivers.`
+                  : `The distance from ${origin} to ${destination} varies based on the route. Please contact us at +91-7668570551 for exact details and the best route options.`
+              },
+              {
+                question: `How long does it take from ${origin} to ${destination} by bus?`,
+                answer: routeData.duration !== 'Contact for details'
+                  ? `The journey from ${origin} to ${destination} takes approximately ${routeData.duration} by luxury bus, depending on traffic and route conditions. We ensure comfortable travel throughout the journey.`
+                  : `The journey time from ${origin} to ${destination} depends on various factors including traffic and route. Please contact us at +91-7668570551 for accurate travel time estimates.`
+              },
+              {
+                question: `What bus sizes are available for ${origin} to ${destination} route?`,
+                answer: `We offer multiple bus sizes for ${origin} to ${destination} route including 22, 25, 27, 32, 35, 41, 45, 49, 52, and 56 seater buses. All buses are AC equipped with pushback seats, entertainment systems, and modern amenities for comfortable group travel.`
+              },
+              {
+                question: `How much does it cost to rent a bus from ${origin} to ${destination}?`,
+                answer: `Bus rental rates from ${origin} to ${destination} start from ₹30/km for 22 seater mini buses and go up to ₹65/km for 56 seater luxury Volvo buses. Final cost depends on bus size, season, and booking duration. Contact us at +91-7668570551 for exact quotes.`
+              },
+              {
+                question: `Can I book a bus online for ${origin} to ${destination}?`,
+                answer: `Yes, you can book a bus online for ${origin} to ${destination} through our website or by calling +91-7668570551. We provide instant confirmation, flexible booking options, and 24/7 customer support for all your bus rental needs.`
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden border-2 border-gray-100 hover:border-[#FACF2D] transition-all duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full px-5 md:px-8 py-4 md:py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
+                >
+                  <h3 className="text-sm md:text-lg font-bold text-gray-900 pr-4">
+                    {faq.question}
+                  </h3>
+                  <motion.div
+                    animate={{ rotate: openFaq === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
+                  >
+                    <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-[#FACF2D]" />
+                  </motion.div>
+                </button>
+
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: openFaq === index ? 'auto' : 0,
+                    opacity: openFaq === index ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 md:px-8 pb-4 md:pb-6">
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Sticky Bottom CTA */}
       <div className="sticky bottom-0 left-0 right-0 bg-white border-t-4 border-[#FACF2D] shadow-2xl z-50 py-2 sm:py-3 md:py-4">

@@ -12,6 +12,7 @@ import { BsWhatsapp } from 'react-icons/bs';
 import { phoneNumber } from "@/utilis/data";
 import CityRoutes from "@/components/cities/CityRoutes";
 import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
+import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 
 // COMPLETELY REDESIGNED MODERN HERO BANNER
 const HeroBanner = ({ formattedCityName }) => {
@@ -596,7 +597,8 @@ export default function CityServiceClient({
   formattedCityName,
   citySpots,
   details,
-  vehiclesServices
+  vehiclesServices,
+  cityLocalInfo
 }) {
   // Get all keywords for hidden SEO section
   const allPageKeywords = useMemo(() =>
@@ -722,6 +724,9 @@ export default function CityServiceClient({
 
               {/* Enhanced Coverage Areas */}
               <CoverageSection details={details} cityName={formattedCityName} />
+
+              {/* City Local Information - Unique content for SEO */}
+              <CityLocalInfoSection cityLocalInfo={cityLocalInfo} cityName={formattedCityName} />
 
               {/* Enhanced Tourist Spots */}
               <TouristSpotsSection

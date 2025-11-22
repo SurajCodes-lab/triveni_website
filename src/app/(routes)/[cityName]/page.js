@@ -5,8 +5,10 @@ import Script from 'next/script';
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
 import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
+import { getCityLocalInfo } from "@/utilis/cityLocalInfo";
 import CityServiceClient from "@/components/cities/CityServiceClient";
 import RouteClientContent from "./RouteClientContent";
+import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 
 const allCityRoutes = {
   ...cityRoutesData,
@@ -599,6 +601,9 @@ export default function CityNamePage({ params }) {
       }))
     };
 
+    // Get city-specific local information
+    const cityLocalInfo = getCityLocalInfo(formattedCityName);
+
     return (
       <>
         <Script
@@ -636,6 +641,7 @@ export default function CityNamePage({ params }) {
           citySpots={citySpots}
           details={details}
           vehiclesServices={vehiclesServices}
+          cityLocalInfo={cityLocalInfo}
         />
       </>
     );
