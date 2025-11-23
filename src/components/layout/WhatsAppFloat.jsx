@@ -33,8 +33,8 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
   return (
     <motion.div
       className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
+      initial={{ scale: 0, opacity: 0, y: 100 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
       transition={{
         type: "spring",
         stiffness: 260,
@@ -42,7 +42,6 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
         duration: 1
       }}
       onAnimationComplete={handleVisibilityChange}
-      // Reduce motion for users who prefer it
       style={{
         '@media (prefers-reduced-motion: reduce)': {
           transition: 'none'
@@ -51,51 +50,161 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
     >
       <motion.div
         className="relative"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onHoverStart={handleHoverStart}
       >
-        {/* Ripple effect - disabled for reduced motion */}
+        {/* Outer pulse rings */}
         <motion.div
-          className="absolute inset-0 rounded-full bg-green-500 opacity-20"
-          initial={{ scale: 1 }}
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+            filter: 'blur(8px)'
+          }}
+          initial={{ scale: 1, opacity: 0.3 }}
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.1, 0.2]
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0, 0.3]
           }}
           transition={{
-            duration: 2,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut"
           }}
           aria-hidden="true"
         />
 
-        {/* Main button */}
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+            filter: 'blur(4px)'
+          }}
+          initial={{ scale: 1, opacity: 0.4 }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.4, 0.1, 0.4]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.3
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Notification ping dot */}
+        <motion.div
+          className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1, 1] }}
+          transition={{
+            duration: 0.5,
+            delay: 1.5
+          }}
+          aria-hidden="true"
+        >
+          <motion.div
+            className="absolute inset-0 rounded-full bg-red-500"
+            animate={{
+              scale: [1, 1.8],
+              opacity: [0.8, 0]
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeOut"
+            }}
+          />
+        </motion.div>
+
+        {/* Main button with gradient and glow */}
         <button
           onClick={handleClick}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="relative bg-green-500 hover:bg-green-600 text-white min-w-[56px] min-h-[56px] p-4 rounded-full shadow-lg flex items-center justify-center group transition-all duration-300 focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2"
+          className="relative overflow-hidden min-w-[64px] min-h-[64px] p-5 rounded-full flex items-center justify-center group transition-all duration-300 focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2"
+          style={{
+            background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+            boxShadow: '0 8px 32px rgba(37, 211, 102, 0.4), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 -2px 8px rgba(0, 0, 0, 0.2), inset 0 2px 8px rgba(255, 255, 255, 0.2)'
+          }}
           aria-label="Chat with us on WhatsApp - opens in new window"
           title="Chat with us on WhatsApp"
         >
-          <MessageCircle
-            size={28}
-            className="group-hover:rotate-12 transition-transform duration-300"
+          {/* Hover gradient overlay */}
+          <motion.div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              background: 'linear-gradient(135deg, #20BA5A 0%, #0F7A6E 100%)'
+            }}
             aria-hidden="true"
           />
 
-          {/* Tooltip - visible on both hover and focus */}
-          <span
-            className={`absolute right-full mr-4 bg-black text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg transition-all duration-300 ${
-              isFocused ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'
+          {/* Shine effect */}
+          <motion.div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100"
+            style={{
+              background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%)',
+              backgroundSize: '200% 200%'
+            }}
+            animate={{
+              backgroundPosition: ['200% 0%', '-200% 0%']
+            }}
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut"
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Icon with enhanced animation */}
+          <motion.div
+            className="relative z-10"
+            animate={{
+              rotate: [0, 0, 12, -12, 0]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 2
+            }}
+          >
+            <MessageCircle
+              size={32}
+              className="text-white drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
+              strokeWidth={2.5}
+              aria-hidden="true"
+            />
+          </motion.div>
+
+          {/* Tooltip with modern styling */}
+          <motion.span
+            className={`absolute right-full mr-5 px-5 py-3 rounded-2xl text-sm font-medium whitespace-nowrap shadow-2xl transition-all duration-300 ${
+              isFocused ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible translate-x-2 group-hover:opacity-100 group-hover:visible group-hover:translate-x-0'
             }`}
+            style={{
+              background: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)',
+              color: '#ffffff',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}
             role="tooltip"
             aria-hidden="true"
           >
-            Chat with us on WhatsApp
-          </span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              Chat with us on WhatsApp
+            </span>
+            {/* Tooltip arrow */}
+            <span
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0"
+              style={{
+                borderTop: '6px solid transparent',
+                borderBottom: '6px solid transparent',
+                borderLeft: '6px solid #111827'
+              }}
+            ></span>
+          </motion.span>
         </button>
       </motion.div>
     </motion.div>
