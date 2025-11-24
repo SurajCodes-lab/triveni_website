@@ -256,42 +256,6 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Breadcrumb Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.trivenicabs.in"
-                },
-                {
-                  "@type": "ListItem", 
-                  "position": 2,
-                  "name": "Services",
-                  "item": "https://www.trivenicabs.in/services"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3, 
-                  "name": "Vehicles",
-                  "item": "https://www.trivenicabs.in/vehicles"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Contact",
-                  "item": "https://www.trivenicabs.in/contact"
-                }
-              ]
-            })
-          }}
-        />
 
         {/* FAQ Structured Data */}
         <script

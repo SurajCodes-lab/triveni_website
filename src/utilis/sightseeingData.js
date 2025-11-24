@@ -995,7 +995,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (Janmashtami and Holi are special)",
       difficulty: "Easy",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/mathura_vrindavan_hero.jpg",
+      heroImage: "/images/sightseeing/mathura_vrindvan_hero_image.png",
       images: [],
       tips: [
         "Remove shoes and leather items before entering temples",
