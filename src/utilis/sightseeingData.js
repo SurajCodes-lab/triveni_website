@@ -995,8 +995,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (Janmashtami and Holi are special)",
       difficulty: "Easy",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/mathura_vrindvan_hero_image.png",
-      images: [],
+      heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
+      images: [
+        "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Govardhan_Hill.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Yamuna_River_Ghat.jpg"
+      ],
       tips: [
         "Remove shoes and leather items before entering temples",
         "Banke Bihari darshan can take 1-2 hours in queue",
@@ -1305,8 +1311,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy to Moderate",
       category: "Heritage & Adventure",
-      heroImage: "/images/sightseeing/neemrana_fort_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Neemrana/Neemrana_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Neemrana/Neemrana_Fort_Palace.jpg",
+        "/images/sightseeing/Neemrana/Neemrana_Zip_Line.jpg",
+        "/images/sightseeing/Neemrana/Baori_Step_Well.jpg"
+      ],
       tips: [
         "Wear comfortable shoes for fort walking",
         "Book zip-lining in advance",
@@ -1518,8 +1528,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (safari best in winter mornings)",
       difficulty: "Easy",
       category: "Wildlife & Heritage",
-      heroImage: "/images/sightseeing/sariska_alwar_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Hero_Section.jpg",
+      images: [
+        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Tiger_Reserve.jpg",
+        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Bala_Quila.jpg",
+        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Siliserh_Lake.jpg"
+      ],
       tips: [
         "Early morning safari has best animal sighting chances",
         "Book safari permits in advance",
@@ -1803,8 +1817,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (summer), September-November (autumn)",
       difficulty: "Easy",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/kasauli_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg",
+      images: [
+        "/images/sightseeing/Kasauli/Kasauli_Christ_Church.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Monkey_Point.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Mall_Road.jpg"
+      ],
       tips: [
         "Kasauli is vehicle-restricted, walking required on Mall Road",
         "Carry comfortable walking shoes for trails",
@@ -2020,8 +2038,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (summer), September-November (autumn)",
       difficulty: "Easy",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/lansdowne_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Lansdowne/lansdowne_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Lansdowne/Bhulla_Lake.jpg",
+        "/images/sightseeing/Lansdowne/St_Marys_Church.jpg",
+        "/images/sightseeing/Lansdowne/Tip_n_Top_Viewpoint.jpg"
+      ],
       tips: [
         "Very peaceful and less commercialized than other hill stations",
         "Limited restaurant options, hotel meals recommended",
@@ -2314,8 +2336,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (avoid summer heat), Dev Deepawali (Nov) is magical",
       difficulty: "Moderate (crowded, intense experience)",
       category: "Spiritual & Cultural",
-      heroImage: "/images/sightseeing/varanasi_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg",
+        "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg"
+      ],
       tips: [
         "Hire a knowledgeable guide to understand cultural significance",
         "Dress modestly, especially at temples and ghats",
@@ -6500,12 +6525,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to June and September to November",
       difficulty: "Easy to Moderate",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/Kasauli_hero_section.jpg",
+      heroImage: "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg",
       images: [
-        "/images/sightseeing/kasauli_christ_church.jpg",
-        "/images/sightseeing/kasauli_monkey_point.jpg",
-        "/images/sightseeing/kasauli_mall_road.jpg",
-        "/images/sightseeing/kasauli_sunset.jpg"
+        "/images/sightseeing/Kasauli/Kasauli_Christ_Church.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Monkey_Point.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Mall_Road.jpg"
       ],
       tips: [
         "Kasauli is a vehicle-free zone in many areas, be prepared to walk",
