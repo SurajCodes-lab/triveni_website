@@ -23,7 +23,9 @@ import {
   ArrowLeftIcon,
   LightBulbIcon,
   GlobeAltIcon,
-  UserIcon
+  UserIcon,
+  WrenchScrewdriverIcon,
+  PencilSquareIcon
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid, BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
@@ -253,16 +255,16 @@ export default function SightseeingDetailClient({ tour }) {
 
       {/* Tabs Navigation */}
       <div className="sticky top-[73px] z-30 bg-white/90 backdrop-blur-lg border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="flex gap-2 overflow-x-auto">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex gap-1 sm:gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-4 font-semibold whitespace-nowrap transition-all ${
+                className={`px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4 font-semibold whitespace-nowrap transition-all text-xs sm:text-sm md:text-base rounded-t-lg ${
                   activeTab === tab.id
-                    ? 'text-indigo-600 border-b-2 border-indigo-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'text-indigo-600 bg-indigo-50 border-b-2 border-indigo-600'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {tab.label}
@@ -293,54 +295,141 @@ export default function SightseeingDetailClient({ tour }) {
                     </p>
                   </div>
 
-                  {/* Highlights */}
+                  {/* Highlights with Images */}
                   {tour.highlights && (
                     <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
                       <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Tour Highlights</h2>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {tour.highlights.map((highlight, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="flex items-start gap-3 p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl"
-                          >
-                            <SparklesIcon className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" />
-                            <span className="text-gray-800 font-medium">{highlight}</span>
-                          </motion.div>
-                        ))}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                        {tour.highlights.map((highlight, index) => {
+                          // Skip if highlight is null or undefined
+                          if (!highlight) return null;
+
+                          const placeName = highlight.split(' - ')[0].trim();
+                          const description = highlight.split(' - ')[1]?.trim() || '';
+                          const imageUrl = tour.images && tour.images[index] ? tour.images[index] : null;
+
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 bg-white"
+                            >
+                              {/* Image Section */}
+                              {imageUrl && (
+                                <div className="relative h-48 w-full overflow-hidden">
+                                  <Image
+                                    src={imageUrl}
+                                    alt={placeName}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                                </div>
+                              )}
+
+                              {/* Content Section */}
+                              <div className={`${imageUrl ? 'absolute bottom-0 left-0 right-0' : ''} p-4`}>
+                                <div className="flex items-start gap-2">
+                                  <SparklesIcon className={`w-5 h-5 flex-shrink-0 mt-1 ${imageUrl ? 'text-yellow-400' : 'text-indigo-600'}`} />
+                                  <div>
+                                    <h3 className={`text-base sm:text-lg font-bold mb-1 ${imageUrl ? 'text-white' : 'text-gray-900'}`}>
+                                      {placeName}
+                                    </h3>
+                                    {description && (
+                                      <p className={`text-xs sm:text-sm ${imageUrl ? 'text-gray-200' : 'text-gray-600'}`}>
+                                        {description}
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </motion.div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
 
-                  {/* Featured Place Image */}
-                  {tour.heroImage && (
-                    <div className="bg-white rounded-2xl p-8 shadow-lg">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6">{tour.name}</h2>
-                      <div className="relative h-96 rounded-xl overflow-hidden shadow-xl">
-                        <Image
-                          src={tour.heroImage}
-                          alt={tour.name}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 66vw"
-                        />
+                  {/* Customization Section */}
+                  <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl p-6 sm:p-8 shadow-lg border-2 border-indigo-200">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="p-3 bg-indigo-600 rounded-xl">
+                          <WrenchScrewdriverIcon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Customization Available</h3>
                       </div>
-                      <p className="mt-4 text-gray-700 text-lg leading-relaxed">
-                        {tour.shortDescription}
-                      </p>
                     </div>
-                  )}
+
+                    <p className="text-base sm:text-lg text-gray-800 mb-4 sm:mb-6 leading-relaxed">
+                      We understand that every traveler has unique preferences. This tour can be fully customized to match your interests, schedule, and requirements.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
+                      <div className="flex items-start gap-3 p-3 sm:p-4 bg-white/80 rounded-xl">
+                        <PencilSquareIcon className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">Modify Itinerary</h4>
+                          <p className="text-xs sm:text-sm text-gray-600">Add, remove, or replace destinations</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3 p-3 sm:p-4 bg-white/80 rounded-xl">
+                        <ClockIcon className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">Flexible Timing</h4>
+                          <p className="text-xs sm:text-sm text-gray-600">Adjust pickup time and duration</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3 p-3 sm:p-4 bg-white/80 rounded-xl">
+                        <UserGroupIcon className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">Group Size</h4>
+                          <p className="text-xs sm:text-sm text-gray-600">Private or group tours available</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3 p-3 sm:p-4 bg-white/80 rounded-xl">
+                        <SparklesIcon className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">Special Requests</h4>
+                          <p className="text-xs sm:text-sm text-gray-600">Photo tours, food tours, or specific interests</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={handleBooking}
+                        className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                      >
+                        <WrenchScrewdriverIcon className="w-5 h-5" />
+                        Customize This Tour
+                      </motion.button>
+                      <a href="tel:+917668570551" className="flex-1">
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white text-indigo-600 border-2 border-indigo-600 rounded-xl font-semibold text-sm sm:text-base hover:bg-indigo-50 transition-all flex items-center justify-center gap-2"
+                        >
+                          <PhoneIcon className="w-5 h-5" />
+                          Call to Discuss
+                        </motion.button>
+                      </a>
+                    </div>
+                  </div>
 
                   {/* Best Time to Visit */}
                   {tour.bestTimeToVisit && (
-                    <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 shadow-lg border border-yellow-200">
+                    <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 sm:p-8 shadow-lg border border-yellow-200">
                       <div className="flex items-center gap-3 mb-4">
-                        <CalendarIcon className="w-8 h-8 text-orange-600" />
-                        <h3 className="text-2xl font-bold text-gray-900">Best Time to Visit</h3>
+                        <CalendarIcon className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600" />
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Best Time to Visit</h3>
                       </div>
-                      <p className="text-gray-800 text-lg font-medium">{tour.bestTimeToVisit}</p>
+                      <p className="text-gray-800 text-base sm:text-lg font-medium">{tour.bestTimeToVisit}</p>
                     </div>
                   )}
                 </motion.div>
@@ -351,42 +440,42 @@ export default function SightseeingDetailClient({ tour }) {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white rounded-2xl p-8 shadow-lg"
+                  className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg"
                 >
-                  <h2 className="text-3xl font-bold text-gray-900 mb-8">Detailed Itinerary</h2>
-                  <div className="space-y-6">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Detailed Itinerary</h2>
+                  <div className="space-y-4 sm:space-y-6">
                     {tour.itinerary.map((item, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex gap-6 group"
+                        className="flex gap-3 sm:gap-4 md:gap-6 group"
                       >
-                        <div className="flex flex-col items-center">
-                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
+                        <div className="flex flex-col items-center flex-shrink-0">
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg text-sm sm:text-base">
                             {index + 1}
                           </div>
                           {index < tour.itinerary.length - 1 && (
-                            <div className="w-1 flex-1 bg-gradient-to-b from-indigo-600 to-purple-600 mt-2 mb-2" />
+                            <div className="w-0.5 sm:w-1 flex-1 bg-gradient-to-b from-indigo-600 to-purple-600 mt-2 mb-2 min-h-[20px]" />
                           )}
                         </div>
-                        <div className="flex-1 pb-8">
-                          <div className="flex items-center gap-3 mb-2">
-                            <span className="text-sm font-semibold text-indigo-600 px-3 py-1 bg-indigo-50 rounded-full">
+                        <div className="flex-1 pb-6 sm:pb-8">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                            <span className="text-xs sm:text-sm font-semibold text-indigo-600 px-2 sm:px-3 py-1 bg-indigo-50 rounded-full w-fit">
                               {item.time}
                             </span>
                             {item.duration && (
-                              <span className="text-sm text-gray-500">
+                              <span className="text-xs sm:text-sm text-gray-500">
                                 ({item.duration})
                               </span>
                             )}
                           </div>
-                          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
                             {item.activity}
                           </h3>
                           {item.description && (
-                            <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{item.description}</p>
                           )}
                         </div>
                       </motion.div>
@@ -400,20 +489,20 @@ export default function SightseeingDetailClient({ tour }) {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="space-y-6"
+                  className="space-y-4 sm:space-y-6"
                 >
                   {/* Inclusions */}
                   {tour.inclusions && (
-                    <div className="bg-white rounded-2xl p-8 shadow-lg">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                        <CheckCircleIcon className="w-8 h-8 text-green-600" />
-                        What&apos;s Included
+                    <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                        <CheckCircleIcon className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0" />
+                        <span>What&apos;s Included</span>
                       </h2>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                         {tour.inclusions.map((item, index) => (
-                          <div key={index} className="flex items-start gap-3 p-4 bg-green-50 rounded-xl">
-                            <CheckCircleIcon className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-800">{item}</span>
+                          <div key={index} className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 bg-green-50 rounded-xl">
+                            <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                            <span className="text-sm sm:text-base text-gray-800">{item}</span>
                           </div>
                         ))}
                       </div>
@@ -422,16 +511,16 @@ export default function SightseeingDetailClient({ tour }) {
 
                   {/* Exclusions */}
                   {tour.exclusions && (
-                    <div className="bg-white rounded-2xl p-8 shadow-lg">
-                      <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                        <XCircleIcon className="w-8 h-8 text-red-600" />
-                        What&apos;s Not Included
+                    <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                        <XCircleIcon className="w-6 h-6 sm:w-8 sm:h-8 text-red-600 flex-shrink-0" />
+                        <span>What&apos;s Not Included</span>
                       </h2>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                         {tour.exclusions.map((item, index) => (
-                          <div key={index} className="flex items-start gap-3 p-4 bg-red-50 rounded-xl">
-                            <XCircleIcon className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-700">{item}</span>
+                          <div key={index} className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 bg-red-50 rounded-xl">
+                            <XCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                            <span className="text-sm sm:text-base text-gray-700">{item}</span>
                           </div>
                         ))}
                       </div>

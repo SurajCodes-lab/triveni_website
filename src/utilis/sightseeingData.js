@@ -52,13 +52,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/Delhi_hero_section.jpg",
+      heroImage: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
       images: [
-        "/images/sightseeing/Akshardham_Temple.jpg",
-        "/images/sightseeing/India_Gate.jpg",
-        "/images/sightseeing/Lotus Temple.jpg",
-        "/images/sightseeing/Humayun's_Tomb.jpg",
-        "/images/sightseeing/Outub_Minar.jpg"
+        null, // Red Fort - no image available
+        "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
+        "/images/sightseeing/Delhi/India_Gate.jpg",
+        "/images/sightseeing/Delhi/Lotus Temple.jpg",
+        "/images/sightseeing/Delhi/Outub_Minar.jpg",
+        "/images/sightseeing/Delhi/Humayun's_Tomb.jpg"
       ],
       tips: [
         "Start early to avoid Delhi traffic",
@@ -227,8 +228,16 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (pleasant), October-November (autumn), December-February (winter/snow)",
       difficulty: "Easy",
       category: "Hill Station & Lakes",
-      heroImage: "/images/sightseeing/nainital_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Nainital/Naini_Lake.jpg",
+        "/images/sightseeing/Nainital/Naina_devi_temple.jpg",
+        "/images/sightseeing/Nainital/Mall_Road_Nainital.jpg",
+        "/images/sightseeing/Nainital/Snow_View_Point.jpg",
+        "/images/sightseeing/Nainital/Naina_Peak.jpg",
+        "/images/sightseeing/Nainital/Bhimtal_Lake.jpg",
+        "/images/sightseeing/Nainital/Naukuchiatal_Lake.jpg"
+      ],
       tips: [
         "Book hotels in advance during peak season",
         "Carry warm clothes even in summer (evenings are cold)",
@@ -443,8 +452,15 @@ export const sightseeingTours = {
       bestTimeToVisit: "April-June (summer), September-November (autumn), December-February (winter/snow)",
       difficulty: "Easy",
       category: "Hill Station",
-      heroImage: "/images/sightseeing/mussoorie_delhi_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mussoorie/Mall_road.jpg",
+        "/images/sightseeing/Mussoorie/Kempty_Falls.jpg",
+        "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
+        "/images/sightseeing/Mussoorie/Lal_tibba.jpg",
+        "/images/sightseeing/Mussoorie/company_garden.jpg",
+        "/images/sightseeing/Mussoorie/Camel_Back_Road.jpg"
+      ],
       tips: [
         "Avoid weekends and holidays for less crowds",
         "Parking on Mall Road restricted, walk from designated areas",
@@ -756,8 +772,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "November-June (park closed mid-June to mid-November)",
       difficulty: "Easy to Moderate",
       category: "Wildlife & Nature",
-      heroImage: "/images/sightseeing/corbett_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Jim_Corbett/Dhikala_Zone.jpg",
+        "/images/sightseeing/Jim_Corbett/Tiger_Safari_Corbett.jpg",
+        "/images/sightseeing/Jim_Corbett/elephant_safari.jpg",
+        "/images/sightseeing/Jim_Corbett/Corbett_Falls.jpg",
+        "/images/sightseeing/Jim_Corbett/Ramganga_River.jpg"
+      ],
       tips: [
         "Book safari permits well in advance (limited slots)",
         "Morning safaris have better tiger sighting chances",
@@ -3642,13 +3664,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/jaipur_hero_section_image.jpg",
+      heroImage: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
       images: [
-        "/images/sightseeing/amber_fort.jpg",
-        "/images/sightseeing/city_palace.jpg",
-        "/images/sightseeing/jantar_mantar.jpg",
-        "/images/sightseeing/Johari_bazar.jpg",
-        "/images/sightseeing/Jal_Mahal.jpg"
+        "/images/sightseeing/Jaipur/amber_fort.jpg",
+        "/images/sightseeing/Jaipur/city_palace.jpg",
+        "/images/sightseeing/Jaipur/jantar_mantar.jpg",
+        "/images/sightseeing/Jaipur/Johari_bazar.jpg",
+        "/images/sightseeing/Jaipur/Jal_Mahal.jpg"
       ],
       tips: [
         "Wear comfortable walking shoes as there's considerable walking",
@@ -5464,13 +5486,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/Agra_Hero_section.jpg",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
       images: [
-        "/images/sightseeing/agra_fort.jpg",
-        "/images/sightseeing/Fathepur_shikiri.jpg",
-        "/images/sightseeing/Mehtab_Bagh.jpg",
-        "/images/sightseeing/Diwan_i_kHAS.jpg",
-        "/images/sightseeing/agra_fort.jpg"
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg"
       ],
       tips: [
         "Taj Mahal closed on Fridays",
@@ -6258,12 +6279,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "Year-round, best in spring for Rose Garden",
       difficulty: "Easy",
       category: "Modern Architecture & Gardens",
-      heroImage: "/images/sightseeing/Chandigarh_hero_section.jpg",
+      heroImage: "/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg",
       images: [
-        "/images/sightseeing/sukhana_lake.jpg",
-        "/images/sightseeing/capitol_complex.jpeg",
-        "/images/sightseeing/Zakir_hUSSAIN_ROSE_Garden.jpg",
-        "/images/sightseeing/sukhana_lake.jpg"
+        "/images/sightseeing/Chandigarh/sukhana_lake.jpg",
+        "/images/sightseeing/Chandigarh/capitol_complex.jpeg",
+        "/images/sightseeing/Chandigarh/Zakir_hUSSAIN_ROSE_Garden.jpg"
       ],
       tips: [
         "Rose Garden best in February-March",
@@ -7769,13 +7789,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "May-June for pleasant weather, December-February for snow",
       difficulty: "Moderate",
       category: "Hill Station & Adventure",
-      heroImage: "/images/sightseeing/shimla_hero_section.jpg",
+      heroImage: "/images/sightseeing/Shimla/shimla_hero_section.jpg",
       images: [
-        "/images/sightseeing/jakhoo_temple.jpg",
-        "/images/sightseeing/christ church shimla.jpg",
-        "/images/sightseeing/Mall road shimla.jpg",
-        "/images/sightseeing/the ridge shimla.jpg",
-        "/images/sightseeing/kurif_adventure_park.jpg"
+        "/images/sightseeing/Shimla/jakhoo_temple.jpg",
+        "/images/sightseeing/Shimla/christ church shimla.jpg",
+        "/images/sightseeing/Shimla/Mall road shimla.jpg",
+        "/images/sightseeing/Shimla/the ridge shimla.jpg",
+        "/images/sightseeing/Shimla/kurif_adventure_park.jpg"
       ],
       tips: [
         "Carry woolens even in summer",

@@ -32,7 +32,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
   
   return (
     <motion.div
-      className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50"
+      className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-50"
       initial={{ scale: 0, opacity: 0, y: 100 }}
       animate={{ scale: 1, opacity: 1, y: 0 }}
       transition={{
@@ -42,28 +42,23 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
         duration: 1
       }}
       onAnimationComplete={handleVisibilityChange}
-      style={{
-        '@media (prefers-reduced-motion: reduce)': {
-          transition: 'none'
-        }
-      }}
     >
       <motion.div
         className="relative"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
         onHoverStart={handleHoverStart}
       >
-        {/* Outer pulse rings */}
+        {/* Outer pulse rings - reduced on mobile */}
         <motion.div
-          className="absolute inset-0 rounded-full"
+          className="absolute inset-0 rounded-full hidden sm:block"
           style={{
             background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-            filter: 'blur(8px)'
+            filter: 'blur(6px)'
           }}
           initial={{ scale: 1, opacity: 0.3 }}
           animate={{
-            scale: [1, 1.3, 1],
+            scale: [1, 1.25, 1],
             opacity: [0.3, 0, 0.3]
           }}
           transition={{
@@ -78,12 +73,12 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
           className="absolute inset-0 rounded-full"
           style={{
             background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-            filter: 'blur(4px)'
+            filter: 'blur(3px)'
           }}
-          initial={{ scale: 1, opacity: 0.4 }}
+          initial={{ scale: 1, opacity: 0.35 }}
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.4, 0.1, 0.4]
+            scale: [1, 1.15, 1],
+            opacity: [0.35, 0.1, 0.35]
           }}
           transition={{
             duration: 2,
@@ -94,9 +89,9 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
           aria-hidden="true"
         />
 
-        {/* Notification ping dot */}
+        {/* Notification ping dot - responsive size */}
         <motion.div
-          className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"
+          className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1, 1] }}
           transition={{
@@ -119,15 +114,15 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
           />
         </motion.div>
 
-        {/* Main button with gradient and glow */}
+        {/* Main button with gradient and glow - responsive sizing */}
         <button
           onClick={handleClick}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="relative overflow-hidden min-w-[64px] min-h-[64px] p-5 rounded-full flex items-center justify-center group transition-all duration-300 focus-visible:ring-4 focus-visible:ring-green-300 focus-visible:ring-offset-2"
+          className="relative overflow-hidden w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center group transition-all duration-300 focus-visible:ring-2 focus-visible:ring-green-300 focus-visible:ring-offset-2"
           style={{
             background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-            boxShadow: '0 8px 32px rgba(37, 211, 102, 0.4), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 -2px 8px rgba(0, 0, 0, 0.2), inset 0 2px 8px rgba(255, 255, 255, 0.2)'
+            boxShadow: '0 4px 20px rgba(37, 211, 102, 0.35), 0 2px 10px rgba(0, 0, 0, 0.15), inset 0 -1px 4px rgba(0, 0, 0, 0.15), inset 0 1px 4px rgba(255, 255, 255, 0.2)'
           }}
           aria-label="Chat with us on WhatsApp - opens in new window"
           title="Chat with us on WhatsApp"
@@ -145,7 +140,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
           <motion.div
             className="absolute inset-0 opacity-0 group-hover:opacity-100"
             style={{
-              background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%)',
+              background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%)',
               backgroundSize: '200% 200%'
             }}
             animate={{
@@ -158,7 +153,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
             aria-hidden="true"
           />
 
-          {/* Icon with enhanced animation */}
+          {/* Icon with enhanced animation - responsive size */}
           <motion.div
             className="relative z-10"
             animate={{
@@ -171,16 +166,15 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
             }}
           >
             <MessageCircle
-              size={32}
-              className="text-white drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
+              className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
               strokeWidth={2.5}
               aria-hidden="true"
             />
           </motion.div>
 
-          {/* Tooltip with modern styling */}
+          {/* Tooltip with modern styling - hidden on mobile */}
           <motion.span
-            className={`absolute right-full mr-5 px-5 py-3 rounded-2xl text-sm font-medium whitespace-nowrap shadow-2xl transition-all duration-300 ${
+            className={`hidden md:block absolute right-full mr-3 lg:mr-4 px-3 py-2 lg:px-4 lg:py-2.5 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap shadow-2xl transition-all duration-300 ${
               isFocused ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible translate-x-2 group-hover:opacity-100 group-hover:visible group-hover:translate-x-0'
             }`}
             style={{
@@ -192,7 +186,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
             aria-hidden="true"
           >
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-green-400 rounded-full animate-pulse"></span>
               Chat with us on WhatsApp
             </span>
             {/* Tooltip arrow */}
