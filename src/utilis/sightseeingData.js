@@ -459,7 +459,7 @@ export const sightseeingTours = {
         "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
         "/images/sightseeing/Mussoorie/Lal_tibba.jpg",
         "/images/sightseeing/Mussoorie/company_garden.jpg",
-        "/images/sightseeing/Mussoorie/Camel_Back_Road.jpg"
+        "/images/sightseeing/Mussoorie/camel_back_road.jpg"
       ],
       tips: [
         "Avoid weekends and holidays for less crowds",
@@ -2339,7 +2339,10 @@ export const sightseeingTours = {
       heroImage: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
       images: [
         "/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg",
-        "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg"
+        "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg",
+        "/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg",
+        "/images/sightseeing/Varanasi/Assi_Ghat.jpg",
+        "/images/sightseeing/Varanasi/Sarnath.jpg"
       ],
       tips: [
         "Hire a knowledgeable guide to understand cultural significance",
@@ -2561,14 +2564,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather for long drive). Phalgun Mela (Feb-Mar) is most auspicious but extremely crowded. Avoid summer (May-June) due to desert heat.",
       difficulty: "Moderate (long drive, temple queues, minimal walking)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/delhi_khatu_shyam_hero.jpg",
-      images: [
-        "/images/sightseeing/khatu_shyam_temple.jpg",
-        "/images/sightseeing/khatu_shyam_deity.jpg",
-        "/images/sightseeing/shyam_kund.jpg",
-        "/images/sightseeing/khatu_aarti_ceremony.jpg",
-        "/images/sightseeing/khatu_crowd_devotees.jpg"
-      ],
+      heroImage: "/images/sightseeing/Khatu_Shyam/khtau_shyam_hero.jpg",
+      images: [],
       tips: [
         "VERY early start (4 AM) essential to reach before massive queues form",
         "Consider 2-day trip with overnight stay in Khatu Shyam for relaxed experience",
@@ -2879,7 +2876,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather). Avoid summer (April-June) due to extreme heat in all three cities.",
       difficulty: "Easy to Moderate (involves extensive walking at monuments, long drives)",
       category: "Heritage & Culture - Multi-City Circuit",
-      heroImage: "/images/sightseeing/golden_triangle_hero.jpg",
+      heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
         "/images/sightseeing/taj_mahal_golden_triangle.jpg",
         "/images/sightseeing/amber_fort_jaipur.jpg",
@@ -3133,7 +3130,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March. Best months are November and February for comfortable weather.",
       difficulty: "Easy to Moderate (more relaxed pace than 3-day tour)",
       category: "Heritage & Culture - Multi-City Circuit",
-      heroImage: "/images/sightseeing/golden_triangle_extended_hero.jpg",
+      heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
         "/images/sightseeing/taj_mahal_sunrise.jpg",
         "/images/sightseeing/amber_fort_elephant.jpg",
@@ -3453,7 +3450,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March. November is ideal for Pushkar Camel Fair (if included).",
       difficulty: "Easy (most relaxed pace, suitable for all ages)",
       category: "Heritage, Culture & Premium Experience - Multi-City Circuit",
-      heroImage: "/images/sightseeing/golden_triangle_premium_hero.jpg",
+      heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
         "/images/sightseeing/taj_mahal_multiple_views.jpg",
         "/images/sightseeing/jaipur_forts_collection.jpg",
@@ -5231,14 +5228,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "Year-round. Phalgun Mela (Feb-Mar) is most auspicious but extremely crowded. Avoid peak summer (May-June) heat.",
       difficulty: "Easy (temple visits, minimal walking)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/khatu_shyam_hero.jpg",
-      images: [
-        "/images/sightseeing/khatu_shyam_temple.jpg",
-        "/images/sightseeing/khatu_shyam_deity.jpg",
-        "/images/sightseeing/shyam_kund.jpg",
-        "/images/sightseeing/khatu_aarti.jpg",
-        "/images/sightseeing/khatu_crowd.jpg"
-      ],
+      heroImage: "/images/sightseeing/Khatu_Shyam/khtau_shyam_hero.jpg",
+      images: [],
       tips: [
         "Start very early (5-6 AM) to reach before darshan queues get long",
         "Dress modestly - traditional Indian wear preferred",
@@ -5754,13 +5745,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (best for migratory birds)",
       difficulty: "Easy",
       category: "Wildlife & Nature",
-      heroImage: "/images/sightseeing/Bharatpur_hero_section.jpg",
-      images: [
-        "/images/sightseeing/keoladeo_birds.jpg",
-        "/images/sightseeing/bharatpur_sanctuary.jpg",
-        "/images/sightseeing/lohagarh_fort.jpg",
-        "/images/sightseeing/bird_watching.jpg"
-      ],
+      heroImage: "/images/sightseeing/Bharatpur/Keoladeo_National_Park _Bharatpur_hero_Section.jpg",
+      images: [],
       tips: [
         "Best time for bird watching: early morning (6-9 AM)",
         "Carry binoculars for better viewing",
@@ -5826,7 +5812,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (cooler weather)",
       difficulty: "Moderate (involves walking and stairs)",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/Fatehpur_Sikri_hero_section.jpg",
+      heroImage: "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
       images: [
         "/images/sightseeing/buland_darwaza.jpg",
         "/images/sightseeing/panch_mahal.jpg",
@@ -6051,7 +6037,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March, Janmashtami festival (Aug-Sep) is special",
       difficulty: "Easy to Moderate",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Mathura_Vrindavan_hero_section.jpg",
+      heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
       images: [
         "/images/sightseeing/krishna_janmabhoomi.jpg",
         "/images/sightseeing/banke_bihari_temple.jpg",
@@ -6820,7 +6806,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to June and September to November",
       difficulty: "Moderate",
       category: "Spiritual & Culture",
-      heroImage: "/images/sightseeing/Dharamshala_hero_section.jpg",
+      heroImage: "/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg",
       images: [
         "/images/sightseeing/dalai_lama_temple.jpg",
         "/images/sightseeing/mcleod_ganj.jpg",
@@ -7045,7 +7031,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to June for pleasant weather, December to February for snow",
       difficulty: "Easy to Moderate",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/Dalhousie_hero_section.jpg",
+      heroImage: "/images/sightseeing/Dalhousie/dalhousie_hero_section.jpg",
       images: [
         "/images/sightseeing/khajjiar_meadow.jpg",
         "/images/sightseeing/dalhousie_st_johns.jpg",
@@ -7319,7 +7305,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to June and September to November (avoid monsoon)",
       difficulty: "Moderate (includes short treks)",
       category: "Adventure & Backpacking",
-      heroImage: "/images/sightseeing/Kasol_hero_section.jpg",
+      heroImage: "/images/sightseeing/Kasol/Kasol_hero_section.jpg",
       images: [
         "/images/sightseeing/kasol_village.jpg",
         "/images/sightseeing/manikaran_sahib.jpg",
@@ -8058,7 +8044,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "November-May for snow activities, March-June for pleasant weather",
       difficulty: "Easy to Moderate",
       category: "Hill Station & Adventure",
-      heroImage: "/images/sightseeing/kufri_chail_hero.jpg",
+      heroImage: "/images/sightseeing/Kufri/kufri_hero_section.jpg",
       images: [
         "/images/sightseeing/mahasu_peak_kufri.jpg",
         "/images/sightseeing/chail_cricket_ground.jpg",
@@ -9586,7 +9572,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June and September-November; avoid monsoon for trekking",
       difficulty: "Moderate (includes 4-5 km trek)",
       category: "Backpacking & Trekking",
-      heroImage: "/images/sightseeing/kasol_tosh_hero.jpg",
+      heroImage: "/images/sightseeing/Kasol/Kasol_hero_section.jpg",
       images: [
         "/images/sightseeing/kasol_riverside.jpg",
         "/images/sightseeing/tosh_village.jpg",
@@ -9861,7 +9847,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "September-April, especially during Kumbh Mela",
       difficulty: "Easy",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Haridwar_hero_section.jpg",
+      heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
       images: [
         "/images/sightseeing/Mansa_Devi_Temple.jpg"
       ],
@@ -10118,7 +10104,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "September-April (avoid monsoon)",
       difficulty: "Easy",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/haridwar_rishikesh_hero.jpg",
+      heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
       images: [],
       tips: [
         "Start early to cover both cities comfortably",
@@ -10425,7 +10411,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (pleasant weather), September-November (autumn), December-February (winter/snow)",
       difficulty: "Easy",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/haridwar_mussoorie_hero.jpg",
+      heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
       images: [],
       tips: [
         "Start very early (6 AM) to maximize sightseeing time",
@@ -10691,7 +10677,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (pleasant weather, flowers blooming), September-November (clear skies, autumn colors), December-February (winter, possible snowfall)",
       difficulty: "Easy to Moderate (Naina Peak trek is moderate)",
       category: "Spiritual & Hill Station",
-      heroImage: "/images/sightseeing/haridwar_nainital_hero.jpg",
+      heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
       images: [],
       tips: [
         "Book Nainital hotels in advance during peak season (April-June)",
@@ -10966,7 +10952,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "September-November, March-May",
       difficulty: "Moderate to Challenging",
       category: "Adventure & Spiritual",
-      heroImage: "/images/sightseeing/rishikesh_hero_section.jpg",
+      heroImage: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
       images: [],
       tips: [
         "Book rafting and bungee in advance",
@@ -11189,7 +11175,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "December to February for skiing and snow. April to June for pleasant weather and meadows. Avoid monsoon (July-September) due to landslide risks.",
       difficulty: "Moderate to Challenging (long mountain drives, high altitude 2500-3000m, winter snow conditions)",
       category: "Adventure, Nature & Hill Station",
-      heroImage: "/images/sightseeing/rishikesh_auli_hero.jpg",
+      heroImage: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
       images: [
         "/images/sightseeing/auli_cable_car.jpg",
         "/images/sightseeing/auli_skiing.jpg",
@@ -11477,7 +11463,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June, September-November",
       difficulty: "Easy",
       category: "Hill Station",
-      heroImage: "/images/sightseeing/dehradun_hero_section.jpg",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
       images: [],
       tips: [
         "Mussoorie can be crowded on weekends",
@@ -11729,7 +11715,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June, September-November",
       difficulty: "Easy",
       category: "Hill Station",
-      heroImage: "/images/sightseeing/dehradun_mussoorie_same_day_hero.jpg",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
       images: [],
       tips: [
         "Start early to avoid crowds at Kempty Falls",
@@ -12030,7 +12016,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June, September-November (December-February for snow)",
       difficulty: "Easy to Moderate (temple trek requires fitness)",
       category: "Hill Station",
-      heroImage: "/images/sightseeing/dehradun_dhanaulti_hero.jpg",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
       images: [],
       tips: [
         "Surkanda Temple trek requires moderate fitness - wear comfortable shoes",
@@ -12287,7 +12273,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "December-February (skiing), March-April (spring), May-June (summer)",
       difficulty: "Moderate (requires acclimatization to altitude)",
       category: "Adventure & Nature",
-      heroImage: "/images/sightseeing/dehradun_auli_hero.jpg",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
       images: [],
       tips: [
         "Book Auli accommodation well in advance during ski season",
@@ -12554,7 +12540,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy",
       category: "Spiritual & Patriotic",
-      heroImage: "/images/sightseeing/amritsar_hero_section.jpg",
+      heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
       images: [],
       tips: [
         "Cover head at Golden Temple (scarves available)",
@@ -12765,7 +12751,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (avoid summer heat)",
       difficulty: "Easy",
       category: "Patriotic & Cultural",
-      heroImage: "/images/sightseeing/wagah_border_hero.jpg",
+      heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
       images: [],
       tips: [
         "Reach by 3:30 PM for good seating",
@@ -13026,7 +13012,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy",
       category: "Heritage & Spiritual",
-      heroImage: "/images/sightseeing/amritsar_heritage_hero.jpg",
+      heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
       images: [],
       tips: [
         "Cover head at Golden Temple and remove shoes",
@@ -14524,7 +14510,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy to Moderate",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/ayodhya_hero_section.jpg",
+      heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
       images: [],
       tips: [
         "Security is strict at Ram Janmabhoomi, carry valid ID",
@@ -14740,7 +14726,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "Year-round. October to March for pleasant weather. Avoid Ram Navami and Diwali unless you want to experience massive crowds.",
       difficulty: "Easy to Moderate (Hanuman Garhi has 70 steps, other temples accessible)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/ayodhya_local_hero.jpg",
+      heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
       images: [
         "/images/sightseeing/ram_janmabhoomi_main.jpg",
         "/images/sightseeing/hanuman_garhi_ayodhya.jpg",
@@ -15021,7 +15007,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "November-February",
       difficulty: "Easy",
       category: "Heritage & Modern",
-      heroImage: "/images/sightseeing/ahmedabad_hero_section.jpg",
+      heroImage: "/images/sightseeing/Ahmedabad/Ahmedabad.jpg",
       images: [],
       tips: [
         "Old city best explored in morning to avoid heat",
@@ -16308,7 +16294,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "December to March for skiing and snow activities, April to October for meadows and trekking",
       difficulty: "Easy to Moderate (high altitude acclimatization needed)",
       category: "Adventure & Nature",
-      heroImage: "/images/sightseeing/gulmarg_hero_section.jpg",
+      heroImage: "/images/sightseeing/Gulmarg/Gulmarg_hero_section.jpg",
       images: [
         "/images/sightseeing/gulmarg_gondola.jpg",
         "/images/sightseeing/apharwat_peak.jpg",
@@ -17866,7 +17852,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat. Ram Navami and Diwali are special but extremely crowded.",
       difficulty: "Easy to Moderate (involves temple visits and stairs at Hanuman Garhi)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/lucknow_ayodhya_hero.jpg",
+      heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
       images: [
         "/images/sightseeing/ram_janmabhoomi_temple.jpg",
         "/images/sightseeing/hanuman_garhi.jpg",
@@ -18667,7 +18653,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid monsoon and summer heat",
       difficulty: "Easy",
       category: "Spiritual & Heritage",
-      heroImage: "/images/sightseeing/bodhgaya_hero_section.jpg",
+      heroImage: "/images/sightseeing/Bodh_Gaya/Bhod_gaya_hero_section.jpg",
       images: [
         "/images/sightseeing/mahabodhi_temple.jpg",
         "/images/sightseeing/bodhi_tree.jpg",
@@ -18895,7 +18881,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "May to June and September to October (temples open, good weather), closed November to April",
       difficulty: "Moderate to Challenging (high altitude, trekking required)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/chardham_hero_section.jpg",
+      heroImage: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
       images: [
         "/images/sightseeing/kedarnath_temple.jpg",
         "/images/sightseeing/badrinath_temple.jpg",
