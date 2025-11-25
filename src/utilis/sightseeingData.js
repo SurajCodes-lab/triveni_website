@@ -3982,8 +3982,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (cool weather)",
       difficulty: "Easy",
       category: "Hill Station & Temples",
-      heroImage: "/images/sightseeing/mount_abu_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mount_Abu/Dilwara_Temple_Interior.jpg",
+        "/images/sightseeing/Mount_Abu/Nakki_Lake.jpg",
+        "/images/sightseeing/Mount_Abu/Sunset_Point_Mount_Abu.jpg",
+        "/images/sightseeing/Mount_Abu/Guru_Shikhar.jpg",
+        "/images/sightseeing/Mount_Abu/Achalgarh_Fort.jpg"
+      ],
       tips: [
         "Dilwara Temples open 12:00-6:00 PM (leather items not allowed)",
         "Carry warm clothes (evenings can be cold)",
@@ -4483,8 +4489,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March, November for Pushkar Camel Fair",
       difficulty: "Easy",
       category: "Spiritual & Heritage",
-      heroImage: "/images/sightseeing/ajmer_pushkar_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Ajmer_Pushkar/Ana_Sagar_Lake_Ajmer.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Brahma_Temple_Pushkar.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Camel_Fair.jpg"
+      ],
       tips: [
         "Dress modestly for religious sites (cover head at Dargah)",
         "Remove shoes before entering temples and shrine",
@@ -4700,8 +4711,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (avoid summer heat)",
       difficulty: "Moderate (considerable walking in fort)",
       category: "Heritage & History",
-      heroImage: "/images/sightseeing/chittorgarh_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Chittorgarh/chittogarh_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Chittorgarh/Vijay_Stambh.jpg",
+        "/images/sightseeing/Chittorgarh/Padmini_Palace.jpg",
+        "/images/sightseeing/Chittorgarh/Kirti_Stambh.jpg",
+        "/images/sightseeing/Chittorgarh/Rana_Kumbha_Palace.jpg"
+      ],
       tips: [
         "Hire a guide to understand rich history and legends",
         "Wear comfortable walking shoes (fort covers huge area)",
@@ -4989,8 +5005,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (desert winters are pleasant)",
       difficulty: "Easy",
       category: "Heritage & Desert Culture",
-      heroImage: "/images/sightseeing/bikaner_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Bikaner/Bikaner_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Bikaner/Junagarh_Fort_Interior.jpg",
+        "/images/sightseeing/Bikaner/Karni_Mata_Temple.jpg",
+        "/images/sightseeing/Bikaner/Bikaner_Camel_Farm.jpg",
+        "/images/sightseeing/Bikaner/Bhandasar_Jain_Temple.jpg"
+      ],
       tips: [
         "Remove shoes at Karni Mata Temple (rats are sacred)",
         "Wear socks at rat temple for hygiene",
@@ -13999,8 +14020,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (Mount Abu pleasant year-round)",
       difficulty: "Easy to Moderate",
       category: "Hill Station & Heritage",
-      heroImage: "/images/sightseeing/udaipur_mount_abu_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mount_Abu/Dilwara_Temple_Interior.jpg",
+        "/images/sightseeing/Mount_Abu/Nakki_Lake.jpg",
+        "/images/sightseeing/Mount_Abu/Sunset_Point_Mount_Abu.jpg",
+        "/images/sightseeing/Mount_Abu/Guru_Shikhar.jpg",
+        "/images/sightseeing/Mount_Abu/Achalgarh_Fort.jpg"
+      ],
       tips: [
         "Book Udaipur hotel near City Palace for Day 1 convenience",
         "Dilwara Temples: No photography inside, shoes not allowed, open 12-6 PM",
