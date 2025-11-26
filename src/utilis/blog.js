@@ -590,7 +590,7 @@ export const travelBlogPosts = [
     `,
     date: "2025-01-08",
     readTime: "15 min read",
-    image: "/images/packages/jaipur.webp",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     category: "Destinations",
     tags: ["Rajasthan", "Road Trip", "Jaipur", "Udaipur", "Jaisalmer"],
     keywords: ["rajasthan road trip", "jaipur udaipur jaisalmer tour", "rajasthan tour package", "jodhpur tourism", "desert safari jaisalmer", "rajasthan travel guide", "best places in rajasthan", "rajasthan itinerary", "golden triangle tour", "rajasthan desert tour", "jaipur to jaisalmer", "udaipur trip", "pushkar travel", "bikaner camel safari", "rajasthan heritage tour", "rajasthan tourism", "jaipur city tour", "amber fort jaipur", "city palace udaipur", "mehrangarh fort jodhpur", "jaisalmer fort", "hawa mahal jaipur", "lake pichola udaipur", "pushkar camel fair", "bikaner rat temple", "rajasthan travel packages", "delhi to jaipur tour", "jaipur to udaipur distance", "udaipur to jodhpur route", "jodhpur to jaisalmer road", "rajasthan car rental", "rajasthan taxi service", "royal rajasthan tour", "rajasthan forts and palaces", "rajasthan culture tour", "rajasthan food tour", "best time to visit rajasthan", "rajasthan winter tour", "rajasthan family tour", "rajasthan honeymoon package", "rajasthan budget travel", "rajasthan luxury tour", "sam sand dunes jaisalmer", "desert camp rajasthan"],
@@ -849,7 +849,7 @@ export const travelBlogPosts = [
     `,
     date: "2025-01-05",
     readTime: "13 min read",
-    image: "/images/packages/nainital.webp",
+    image: "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
     category: "Destinations",
     tags: ["Uttarakhand", "Hill Stations", "Summer Travel", "Nainital", "Mussoorie"],
     keywords: ["uttarakhand hill stations", "best hill stations in uttarakhand", "nainital summer trip", "mussoorie travel guide", "auli summer tourism", "uttarakhand summer vacation", "hill stations near delhi", "ranikhet travel", "almora tourism", "kausani himalayan views", "chopta trekking", "lansdowne weekend trip", "binsar wildlife sanctuary", "uttarakhand tour package", "summer getaway uttarakhand", "uttarakhand tourism", "nainital lake", "mussoorie kempty falls", "auli ropeway", "delhi to nainital", "delhi to mussoorie", "nainital tour package", "mussoorie honeymoon", "hill station in summer", "uttarakhand travel", "places to visit in uttarakhand", "kumaon hills", "garhwal hills", "uttarakhand adventure", "nainital boating", "mussoorie mall road", "ranikhet golf course", "almora kasar devi", "kausani tea gardens", "chopta tungnath trek", "lansdowne bhulla lake", "mukteshwar temple", "binsar zero point", "uttarakhand weekend trip", "family trip uttarakhand", "uttarakhand cab service", "best time to visit uttarakhand", "uttarakhand travel tips"],
@@ -1414,7 +1414,7 @@ export const travelBlogPosts = [
 
     date: "2025-01-20",
     readTime: "18 min read",
-    image: "/images/sightseeing/Taj_Mahal.jpg",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     category: "Travel Tips",
     tags: ["Taj Mahal", "Agra", "Delhi to Agra", "Day Trip", "Golden Triangle", "Travel Guide"],
 

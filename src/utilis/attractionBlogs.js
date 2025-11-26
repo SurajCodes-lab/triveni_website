@@ -187,7 +187,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/taj-mahal.jpg",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     date: "2025-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
@@ -616,7 +616,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/red-fort-delhi.jpg",
+    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
     date: "2025-01-20",
     readTime: "11 min read",
     author: "Triveni Cabs Travel Team",
@@ -960,7 +960,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/amber-fort-jaipur.jpg",
+    image: "/images/sightseeing/Jaipur/amber_fort.jpg",
     date: "2025-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
@@ -1249,7 +1249,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Amritsar, Punjab", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Early morning or evening" }, howToReach: { fromDelhi: "450 km by road", nearestAirport: "Amritsar Airport (11 km)", nearestRailway: "Amritsar Junction (2 km)" }, timeNeeded: "3-4 hours", coordinates: { latitude: 31.6200, longitude: 74.8765 } },
-    image: "/images/blog/golden-temple.jpg", date: "2025-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2025-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Golden Temple Complete Guide 2025 - Timings, Langar & Tours", metaDescription: "Golden Temple Amritsar complete guide: history, free langar, timings, tours. Experience world's largest community kitchen!",
     content: `
       <div class="blog-intro">
@@ -1592,7 +1592,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [{ title: "Red Fort Delhi Complete Guide", slug: "red-fort-delhi-complete-guide-2025" }],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Qutub Minar & 8+ attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Mehrauli, New Delhi", entryFee: { indian: "₹35", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "7:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (7-10 AM)" }, howToReach: { fromNewDelhi: "15 km", nearestAirport: "IGI Airport (12 km)", nearestRailway: "New Delhi Station (15 km)", nearestMetro: "Qutub Minar Metro (Yellow Line)" }, timeNeeded: "1.5-2 hours", coordinates: { latitude: 28.5244, longitude: 77.1855 } },
-    image: "/images/blog/qutub-minar.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/Outub_Minar.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Qutub Minar Delhi Guide 2025 - Timings, Fees & Tours", metaDescription: "Qutub Minar complete guide: world's tallest brick minaret, rust-free iron pillar, UNESCO site. Book Delhi tours!",
     content: `
       <div class="blog-intro">
@@ -2060,7 +2060,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Hawa Mahal Rd, Badi Choupad, Jaipur", entryFee: { indian: "₹50", foreign: "₹200", children: "Free (below 15)" }, timings: { open: "9:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) for best photos" }, howToReach: { fromJaipur: "City center", nearestAirport: "Jaipur Airport (12 km)", nearestRailway: "Jaipur Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 26.9239, longitude: 75.8267 } },
-    image: "/images/blog/hawa-mahal.jpg", date: "2025-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg", date: "2025-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Hawa Mahal Jaipur Guide 2025 - Palace of Winds Timings & Tours", metaDescription: "Hawa Mahal complete guide: 953 windows, iconic pink facade, best photography spots. Book Jaipur city tours!",
     content: `
       <div class="blog-intro">
@@ -2411,7 +2411,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [{ title: "Taj Mahal Complete Guide", slug: "taj-mahal-complete-guide-2025" }],
     primaryCTA: { text: "Book Agra Tour", url: "/sightseeing/agra-same-day-tour", description: "Taj Mahal + Agra Fort", price: "₹3,500", features: ["Hotel Pickup", "Skip-the-line", "Expert Guide"] },
     attractionData: { location: "Agra, Uttar Pradesh", entryFee: { indian: "₹40", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "6:00 AM", close: "6:00 PM", closedOn: "Friday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (6-9 AM)" }, howToReach: { fromDelhi: "233 km", nearestAirport: "Agra Airport (13 km)", nearestRailway: "Agra Cantt (6 km)" }, timeNeeded: "2 hours", coordinates: { latitude: 27.1795, longitude: 78.0211 } },
-    image: "/images/blog/agra-fort.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Agra Fort Guide 2025 - Timings, Fees & Tours", metaDescription: "Agra Fort complete guide: UNESCO site, Mughal fortress with Taj Mahal views. Book Agra day tours!",
     content: `
       <div class="blog-intro">
@@ -2809,7 +2809,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Rajpath, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Evening (5-8 PM) when illuminated" }, howToReach: { fromNewDelhi: "3 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "New Delhi Station (3 km)", nearestMetro: "Central Secretariat Metro" }, timeNeeded: "1 hour", coordinates: { latitude: 28.6129, longitude: 77.2295 } },
-    image: "/images/blog/india-gate.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/India_Gate.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "India Gate Delhi Guide 2025 - Timings & Tours", metaDescription: "India Gate Delhi: iconic war memorial, evening illumination, boat rides, street food. Book Delhi city tours!",
     content: `
       <div class="blog-intro">
@@ -3057,7 +3057,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Lotus Temple & Delhi attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Lotus Temple Rd, Bahapur, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "9:00 AM", close: "5:30 PM", closedOn: "Monday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) or evening (4-5:30 PM)" }, howToReach: { fromNewDelhi: "10 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "Hazrat Nizamuddin (8 km)", nearestMetro: "Kalkaji Mandir Metro" }, timeNeeded: "45 min - 1 hour", coordinates: { latitude: 28.5535, longitude: 77.2588 } },
-    image: "/images/blog/lotus-temple.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Lotus Temple Delhi Guide 2025 - Timings & Tours", metaDescription: "Lotus Temple Delhi: stunning lotus-shaped Bahai Temple, peaceful meditation, modern architecture. Free entry!",
     content: `
       <div class="blog-intro">
@@ -3378,7 +3378,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Apollo Bandar, Colaba, Mumbai", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "November to February", timeOfDay: "Evening (5-7 PM) for sunset" }, howToReach: { fromMumbaiCentral: "10 km", nearestAirport: "Mumbai Airport (30 km)", nearestRailway: "CST Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 18.9220, longitude: 72.8347 } },
-    image: "/images/blog/gateway-of-india.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
+    image: "/images/spots/gateway.webp", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
     metaTitle: "Gateway of India Mumbai Guide 2025 - Timings & Tours", metaDescription: "Gateway of India Mumbai: iconic monument, Elephanta Caves ferry, sunset views, colonial architecture!",
     content: `
       <div class="blog-intro">
@@ -3711,7 +3711,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/city-palace-jaipur.jpg",
+    image: "/images/sightseeing/Jaipur/city_palace.jpg",
     date: "2025-01-20",
     readTime: "12 min",
     author: "Triveni Cabs Travel Team",
@@ -4183,7 +4183,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/mehrangarh-fort.jpg",
+    image: "/images/packages/rajasthan.webp",
     date: "2025-01-20",
     readTime: "13 min",
     author: "Triveni Cabs Travel Team",
@@ -4646,7 +4646,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/chittorgarh-fort.jpg",
+    image: "/images/sightseeing/Chittorgarh/chittogarh_hero_section.jpg",
     date: "2025-01-20",
     readTime: "14 min read",
     author: "Triveni Cabs Travel Team",
@@ -5211,7 +5211,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/jaisalmer-fort.jpg",
+    image: "/images/packages/rajasthan.webp",
     date: "2025-01-20",
     readTime: "13 min read",
     author: "Triveni Cabs Travel Team",
@@ -5779,7 +5779,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/mysore-palace.jpg",
+    image: "/images/packages/rajasthan.webp",
     date: "2025-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
@@ -6362,7 +6362,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/humayuns-tomb.jpg",
+    image: "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
     date: "2025-01-20",
     readTime: "11 min read",
     author: "Triveni Cabs Travel Team",
@@ -6847,7 +6847,7 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/fatehpur-sikri.jpg",
+    image: "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
     date: "2025-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
@@ -7304,8 +7304,8 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/jaigarh-fort.jpg",
-    heroImage: "/images/blog/jaigarh-fort-hero.jpg",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+    heroImage: "/images/sightseeing/Jaipur/amber_fort.jpg",
 
     date: "2025-01-20",
     readTime: "12 min",
@@ -7697,8 +7697,8 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/nahargarh-fort.jpg",
-    heroImage: "/images/blog/nahargarh-fort-hero.jpg",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+    heroImage: "/images/sightseeing/Jaipur/amber_fort.jpg",
 
     date: "2025-01-20",
     readTime: "12 min",
@@ -8204,8 +8204,8 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/blog/lake-palace.jpg",
-    heroImage: "/images/blog/lake-palace-hero.jpg",
+    image: "/images/packages/rajasthan.webp",
+    heroImage: "/images/packages/rajasthan.webp",
 
     date: "2025-01-20",
     readTime: "12 min",
@@ -8670,12 +8670,11 @@ export const attractionBlogPosts = [
       altitude: "3,583 meters (11,755 ft)"
     },
 
-    image: "/images/blog/kedarnath-temple-featured.jpg",
-    heroImage: "/images/blog/kedarnath-temple-hero.jpg",
+    image: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
+    heroImage: "/images/packages/chardham.webp",
     gallery: [
-      "/images/blog/kedarnath-temple-1.jpg",
-      "/images/blog/kedarnath-temple-2.jpg",
-      "/images/blog/kedarnath-temple-3.jpg"
+      "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
+      "/images/packages/chardham.webp"
     ],
 
     content: `
