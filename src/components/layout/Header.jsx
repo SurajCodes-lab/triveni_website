@@ -190,6 +190,13 @@ const Header = () => {
                 Tour Guide
               </Link>
               <Link
+                href="/sightseeing"
+                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={() => handleNavClick('Wanderlust', '/sightseeing')}
+              >
+                Wanderlust
+              </Link>
+              <Link
                 href="/contact"
                 className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                 onClick={() => handleNavClick('Contact', '/contact')}
@@ -318,6 +325,14 @@ const Header = () => {
               >
                 <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
                 Tour Guide
+              </Link>
+              <Link
+                href="/sightseeing"
+                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
+                onClick={() => { handleNavClick('Wanderlust', '/sightseeing', 'mobile_menu'); toggleMenu(); }}
+              >
+                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
+                Wanderlust
               </Link>
             </nav>
 
