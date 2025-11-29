@@ -179,7 +179,7 @@ const TEAM_MEMBERS = [
   },
   {
     name: "Amar Pratap Singh",
-    role: "Tempo Rental",
+    role: "Tempo Travel Rental",
     phone: null,
     icon: Truck,
     gradient: "from-purple-400 to-pink-500"
