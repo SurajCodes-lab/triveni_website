@@ -24,7 +24,12 @@ import {
   CheckCircle2,
   Building2,
   Globe,
-  Zap
+  Zap,
+  User,
+  Bus,
+  Truck,
+  CalendarCheck,
+  Navigation
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -149,6 +154,46 @@ const statsItems = [
   { icon: MapPin, value: "50+", label: "Cities Covered", color: "from-purple-400 to-pink-500" },
   { icon: Headphones, value: "24/7", label: "Support Available", color: "from-green-400 to-emerald-500" }
 ];
+
+const TEAM_MEMBERS = [
+  {
+    name: "Rinku Singh",
+    role: "Manager",
+    phone: "7876285700",
+    icon: User,
+    gradient: "from-amber-400 to-orange-500"
+  },
+  {
+    name: "Harshit Singh",
+    role: "Reservation Counter",
+    phone: null,
+    icon: CalendarCheck,
+    gradient: "from-blue-400 to-cyan-500"
+  },
+  {
+    name: "Mayank Singh",
+    role: "One Way Department",
+    phone: null,
+    icon: Navigation,
+    gradient: "from-green-400 to-emerald-500"
+  },
+  {
+    name: "Amar Pratap Singh",
+    role: "Tempo Rental",
+    phone: null,
+    icon: Truck,
+    gradient: "from-purple-400 to-pink-500"
+  },
+  {
+    name: "Manisha Singh",
+    role: "Bus Rental",
+    phone: null,
+    icon: Bus,
+    gradient: "from-red-400 to-rose-500"
+  }
+];
+
+const OFFICE_ALT_NUMBER = "7830249404";
 
 // Optimized form validation
 const validateForm = (data) => {
@@ -930,8 +975,96 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* SERVICE CITIES SECTION */}
+      {/* TEAM SECTION */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-br from-yellow-200/30 to-amber-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-0 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <AnimatedSection className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+              <Users className="w-5 h-5" />
+              <span className="font-semibold">Our Team</span>
+            </div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+              Meet Our Department Heads
+            </h2>
+
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our dedicated team is here to assist you with all your travel needs. Contact the right department for quick assistance.
+            </p>
+          </AnimatedSection>
+
+          {/* Office Alternative Number */}
+          <AnimatedSection className="mb-12">
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border-2 border-amber-200 max-w-md mx-auto">
+              <div className="flex items-center justify-center gap-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <Phone className="w-7 h-7 text-gray-800" />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm text-gray-600 font-medium">Office Alternative Number</p>
+                  <a
+                    href={`tel:+91${OFFICE_ALT_NUMBER}`}
+                    className="text-2xl font-bold text-gray-800 hover:text-amber-600 transition-colors"
+                  >
+                    +91 {OFFICE_ALT_NUMBER}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+          >
+            {TEAM_MEMBERS.map((member, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300 overflow-hidden"
+              >
+                {/* Gradient Background on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${member.gradient} rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <member.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 mb-1 group-hover:text-amber-700 transition-colors">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm text-amber-600 font-semibold mb-3">
+                    {member.role}
+                  </p>
+                  {member.phone && (
+                    <a
+                      href={`tel:+91${member.phone}`}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+                    >
+                      <Phone className="w-4 h-4" />
+                      Call
+                    </a>
+                  )}
+                </div>
+
+                {/* Decorative Corner */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-amber-100 to-transparent rounded-bl-full opacity-50"></div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVICE CITIES SECTION */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <AnimatedSection className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm">
