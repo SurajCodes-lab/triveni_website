@@ -18,14 +18,21 @@ export default function AdventureLayout({ post, relatedLinks }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 via-orange-50 to-white">
-      {/* Adventure Hero */}
-      <section className="relative min-h-[75vh] flex items-end overflow-hidden">
-        {/* Dynamic background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500">
-          {/* Diagonal stripes */}
-          <div className="absolute inset-0 opacity-10" style={{
-            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)`
-          }} />
+      {/* Adventure Hero with Image */}
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={post.heroImage || post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-red-900/40 via-transparent to-transparent" />
         </div>
 
         {/* Animated elements */}
@@ -43,21 +50,13 @@ export default function AdventureLayout({ post, relatedLinks }) {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-red-100 mb-6"
+            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
           >
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            {post.city && relatedLinks?.cityTours && (
-              <>
-                <Link href={relatedLinks.cityTours} className="hover:text-white transition-colors">
-                  {post.city.charAt(0).toUpperCase() + post.city.slice(1)}
-                </Link>
-                <ChevronRight className="w-4 h-4" />
-              </>
-            )}
-            <span className="text-white">Adventure</span>
+            <span className="text-[#FACF2D] font-semibold">{post.category || 'Adventure'}</span>
           </motion.nav>
 
           {/* Badge */}
@@ -140,25 +139,6 @@ export default function AdventureLayout({ post, relatedLinks }) {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <main className="lg:col-span-8">
-            {/* Featured Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-8 shadow-2xl"
-            >
-              <Image
-                src={post.image || '/images/placeholder-adventure.jpg'}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute bottom-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full flex items-center gap-2">
-                <Waves className="w-4 h-4" />
-                <span className="font-bold">Adventure Awaits!</span>
-              </div>
-            </motion.div>
-
             {/* Gear Checklist */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

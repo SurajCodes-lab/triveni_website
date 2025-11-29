@@ -7,8 +7,8 @@ export const attractionBlogPosts = [
 
   {
     id: 101,
-    slug: "taj-mahal-complete-guide-2025",
-    title: "Taj Mahal Complete Guide 2025 - History, Timings, Entry Fees & Best Tours",
+    slug: "taj-mahal-complete-guide-2026",
+    title: "Taj Mahal Complete Guide 2026 - History, Timings, Entry Fees & Best Tours",
     excerpt: "Discover everything about the Taj Mahal: history, architecture, timings, entry fees, best time to visit & expert tips. Book guided tours with skip-the-line access!",
 
     // NEW: For smart linking and layout selection
@@ -28,7 +28,7 @@ export const attractionBlogPosts = [
       "taj mahal tourism",
       "taj mahal travel guide",
       "taj mahal information",
-      "taj mahal 2025",
+      "taj mahal 2026",
 
       // Location-Based
       "taj mahal in agra",
@@ -137,8 +137,8 @@ export const attractionBlogPosts = [
 
     // Related blog posts
     relatedBlogs: [
-      { title: "Agra Fort Complete Guide 2025", slug: "agra-fort-complete-guide-2025" },
-      { title: "Golden Triangle Complete Guide", slug: "golden-triangle-complete-guide-2025" }
+      { title: "Agra Fort Complete Guide 2026", slug: "agra-fort-complete-guide-2026" },
+      { title: "Golden Triangle Complete Guide", slug: "golden-triangle-complete-guide-2026" }
     ],
 
     // Primary CTA
@@ -193,7 +193,7 @@ export const attractionBlogPosts = [
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 0,
-    metaTitle: "Taj Mahal Complete Guide 2025 - History, Timings, Entry Fees & Tours",
+    metaTitle: "Taj Mahal Complete Guide 2026 - History, Timings, Entry Fees & Tours",
     metaDescription: "Discover everything about Taj Mahal: history, architecture, timings, fees, best time to visit & expert tips. Book guided tours with skip-the-line access!",
 
     content: `
@@ -242,7 +242,7 @@ export const attractionBlogPosts = [
       <h2>Entry Fees & Timings</h2>
       <p>Understanding the entry fees and timings helps you plan your visit better:</p>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹50 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹1,050 per person</li>
@@ -463,8 +463,8 @@ export const attractionBlogPosts = [
       <div class="mt-8">
         <h3 class="text-xl font-bold mb-4">Related Articles</h3>
         <ul class="space-y-2">
-          <li>📖 <a href="/blog/agra-fort-complete-guide-2025" class="text-blue-600 hover:underline">Agra Fort Complete Guide 2025</a></li>
-          <li>📖 <a href="/blog/golden-triangle-complete-guide-2025" class="text-blue-600 hover:underline">Golden Triangle Complete Guide</a></li>
+          <li>📖 <a href="/blog/agra-fort-complete-guide-2026" class="text-blue-600 hover:underline">Agra Fort Complete Guide 2026</a></li>
+          <li>📖 <a href="/blog/golden-triangle-complete-guide-2026" class="text-blue-600 hover:underline">Golden Triangle Complete Guide</a></li>
           <li>📖 <a href="/blog/how-to-visit-taj-mahal-from-delhi" class="text-blue-600 hover:underline">How to Visit Taj Mahal from Delhi</a></li>
         </ul>
       </div>
@@ -477,8 +477,8 @@ export const attractionBlogPosts = [
 
   {
     id: 102,
-    slug: "red-fort-delhi-complete-guide-2025",
-    title: "Red Fort Delhi Complete Guide 2025 - History, Timings, Entry Fees & Tours",
+    slug: "red-fort-delhi-complete-guide-2026",
+    title: "Red Fort Delhi Complete Guide 2026 - History, Timings, Entry Fees & Tours",
     excerpt: "Complete guide to Red Fort (Lal Qila) Delhi: Mughal history, architecture, timings, entry fees, light & sound show. Book guided Delhi tours!",
 
     // Smart linking fields
@@ -568,8 +568,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Qutub Minar Complete Guide 2025", slug: "qutub-minar-complete-guide-2025" },
-      { title: "India Gate Delhi Complete Guide", slug: "india-gate-delhi-complete-guide-2025" }
+      { title: "Qutub Minar Complete Guide 2026", slug: "qutub-minar-complete-guide-2026" },
+      { title: "India Gate Delhi Complete Guide", slug: "india-gate-delhi-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -622,7 +622,7 @@ export const attractionBlogPosts = [
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 0,
-    metaTitle: "Red Fort Delhi Complete Guide 2025 - History, Timings, Entry Fees & Tours",
+    metaTitle: "Red Fort Delhi Complete Guide 2026 - History, Timings, Entry Fees & Tours",
     metaDescription: "Complete guide to Red Fort (Lal Qila) Delhi: Mughal history, architecture, timings, entry fees, light & sound show. Book guided Delhi tours!",
 
     content: `
@@ -676,7 +676,7 @@ export const attractionBlogPosts = [
 
       <h2>Entry Fees & Timings</h2>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹35 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹550 per person</li>
@@ -812,11 +812,11 @@ export const attractionBlogPosts = [
 
   ,
 
-  // 3. Amber Fort Jaipur Complete Guide 2025
+  // 3. Amber Fort Jaipur Complete Guide 2026
   {
     id: 103,
-    slug: "amber-fort-jaipur-complete-guide-2025",
-    title: "Amber Fort Jaipur Complete Guide 2025 - History, Timings, Entry Fees & Best Tours",
+    slug: "amber-fort-jaipur-complete-guide-2026",
+    title: "Amber Fort Jaipur Complete Guide 2026 - History, Timings, Entry Fees & Best Tours",
     excerpt: "Complete guide to Amber Fort (Amer Fort) Jaipur: Mughal-Rajput architecture, history, timings, entry fees, elephant rides & light show. Book guided Jaipur tours!",
 
     city: "jaipur",
@@ -912,8 +912,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Hawa Mahal Jaipur Complete Guide 2025", slug: "hawa-mahal-jaipur-complete-guide-2025" },
-      { title: "City Palace Jaipur Complete Guide", slug: "city-palace-jaipur-complete-guide-2025" }
+      { title: "Hawa Mahal Jaipur Complete Guide 2026", slug: "hawa-mahal-jaipur-complete-guide-2026" },
+      { title: "City Palace Jaipur Complete Guide", slug: "city-palace-jaipur-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -966,7 +966,7 @@ export const attractionBlogPosts = [
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 0,
-    metaTitle: "Amber Fort Jaipur Complete Guide 2025 - History, Timings, Entry Fees & Tours",
+    metaTitle: "Amber Fort Jaipur Complete Guide 2026 - History, Timings, Entry Fees & Tours",
     metaDescription: "Complete guide to Amber Fort (Amer Fort) Jaipur: Mughal-Rajput architecture, history, timings, entry fees, elephant rides & light show. Book guided Jaipur tours!",
 
     content: `
@@ -1011,7 +1011,7 @@ export const attractionBlogPosts = [
       </div>
 
       <h2>Entry Fees & Timings</h2>
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹100 per person (₹200 with audio guide)</li>
         <li><strong>Foreign Tourists:</strong> ₹500 per person (₹550 with audio guide)</li>
@@ -1087,8 +1087,8 @@ export const attractionBlogPosts = [
   // 4. Golden Temple Amritsar - Will add complete version
   {
     id: 104,
-    slug: "golden-temple-amritsar-complete-guide-2025",
-    title: "Golden Temple Amritsar Complete Guide 2025 - History, Timings, Langar & Best Tours",
+    slug: "golden-temple-amritsar-complete-guide-2026",
+    title: "Golden Temple Amritsar Complete Guide 2026 - History, Timings, Langar & Best Tours",
     excerpt: "Complete guide to Golden Temple (Harmandir Sahib) Amritsar: Sikh history, timings, langar experience, volunteering & guided tours!",
 
     city: "amritsar",
@@ -1134,7 +1134,7 @@ export const attractionBlogPosts = [
       "Hotel Pickup",
       "Expert Guide",
       "Langar Experience",
-      "amber fort jaipur complete guide 2025 - history, timings, entry fees & best tours",
+      "amber fort jaipur complete guide 2026 - history, timings, entry fees & best tours",
       "jaipur full day city tour",
       "amber fort jaipur guide",
       "amber fort jaipur blog",
@@ -1155,10 +1155,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit amber",
       "what to see in amber",
       "where to go amber",
@@ -1250,7 +1250,7 @@ export const attractionBlogPosts = [
     ],
     attractionData: { location: "Amritsar, Punjab", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Early morning or evening" }, howToReach: { fromDelhi: "450 km by road", nearestAirport: "Amritsar Airport (11 km)", nearestRailway: "Amritsar Junction (2 km)" }, timeNeeded: "3-4 hours", coordinates: { latitude: 31.6200, longitude: 74.8765 } },
     image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2025-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Golden Temple Complete Guide 2025 - Timings, Langar & Tours", metaDescription: "Golden Temple Amritsar complete guide: history, free langar, timings, tours. Experience world's largest community kitchen!",
+    metaTitle: "Golden Temple Complete Guide 2026 - Timings, Langar & Tours", metaDescription: "Golden Temple Amritsar complete guide: history, free langar, timings, tours. Experience world's largest community kitchen!",
     content: `
       <div class="blog-intro">
         <p>The <strong>Golden Temple (Harmandir Sahib)</strong>, the holiest shrine in Sikhism, stands as a beacon of spirituality, equality, and selfless service. This stunning golden monument in Amritsar welcomes over 100,000 visitors daily from all faiths, completely free of charge, 24 hours a day. Experience the world's largest community kitchen (langar) serving free meals to everyone, regardless of religion, caste, or creed. Our <a href="/sightseeing/amritsar-golden-temple-wagah-border-tour" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple & Wagah Border Tour</a> offers a complete spiritual and cultural experience.</p>
@@ -1299,7 +1299,7 @@ export const attractionBlogPosts = [
       <h2>Entry Fees & Timings</h2>
       <p>One of the most beautiful aspects of the Golden Temple is that it welcomes everyone, always, and absolutely free:</p>
 
-      <h3>Entry Fee (2025)</h3>
+      <h3>Entry Fee (2026)</h3>
       <ul>
         <li><strong>All Visitors:</strong> Completely FREE</li>
         <li><strong>Langar (Free Meal):</strong> FREE for everyone</li>
@@ -1561,7 +1561,7 @@ export const attractionBlogPosts = [
         <ul class="space-y-2">
           <li>📖 <a href="/blog/best-time-to-visit-amritsar" class="text-blue-600 hover:underline">Best Time to Visit Amritsar Complete Guide</a></li>
           <li>📖 <a href="/blog/wagah-border-ceremony-complete-guide" class="text-blue-600 hover:underline">Wagah Border Ceremony Complete Guide</a></li>
-          <li>📖 <a href="/blog/amritsar-travel-guide-2025" class="text-blue-600 hover:underline">Complete Amritsar Travel Guide 2025</a></li>
+          <li>📖 <a href="/blog/amritsar-travel-guide-2026" class="text-blue-600 hover:underline">Complete Amritsar Travel Guide 2026</a></li>
         </ul>
       </div>
 
@@ -1576,8 +1576,8 @@ export const attractionBlogPosts = [
   // 5. Qutub Minar Delhi
   {
     id: 105,
-    slug: "qutub-minar-delhi-complete-guide-2025",
-    title: "Qutub Minar Complete Guide 2025 - History, Timings, Entry Fees & Best Tours",
+    slug: "qutub-minar-delhi-complete-guide-2026",
+    title: "Qutub Minar Complete Guide 2026 - History, Timings, Entry Fees & Best Tours",
     excerpt: "Complete guide to Qutub Minar Delhi: UNESCO World Heritage Site, 72.5m tallest brick minaret, Indo-Islamic architecture, timings, tours!",
 
     city: "delhi",
@@ -1589,11 +1589,11 @@ export const attractionBlogPosts = [
     keywords: ["qutub minar", "qutub minar delhi", "qutub minar history", "qutub minar timings", "qutub minar entry fee", "visit qutub minar", "qutub minar height", "qutub minar unesco", "delhi qutub minar tour", "qutub minar iron pillar", "qutub minar architecture", "qutub minar photography", "qutub minar facts", "qutub minar nearest metro"],
     relatedTours: [{ id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500", duration: "8 hours", description: "Qutub Minar + Red Fort + India Gate" }],
     relatedDestinations: [{ name: "Delhi", slug: "delhi", type: "city", description: "All Delhi tours" }],
-    relatedBlogs: [{ title: "Red Fort Delhi Complete Guide", slug: "red-fort-delhi-complete-guide-2025" }],
+    relatedBlogs: [{ title: "Red Fort Delhi Complete Guide", slug: "red-fort-delhi-complete-guide-2026" }],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Qutub Minar & 8+ attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Mehrauli, New Delhi", entryFee: { indian: "₹35", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "7:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (7-10 AM)" }, howToReach: { fromNewDelhi: "15 km", nearestAirport: "IGI Airport (12 km)", nearestRailway: "New Delhi Station (15 km)", nearestMetro: "Qutub Minar Metro (Yellow Line)" }, timeNeeded: "1.5-2 hours", coordinates: { latitude: 28.5244, longitude: 77.1855 } },
     image: "/images/sightseeing/Delhi/Outub_Minar.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Qutub Minar Delhi Guide 2025 - Timings, Fees & Tours", metaDescription: "Qutub Minar complete guide: world's tallest brick minaret, rust-free iron pillar, UNESCO site. Book Delhi tours!",
+    metaTitle: "Qutub Minar Delhi Guide 2026 - Timings, Fees & Tours", metaDescription: "Qutub Minar complete guide: world's tallest brick minaret, rust-free iron pillar, UNESCO site. Book Delhi tours!",
     content: `
       <div class="blog-intro">
         <p>The <strong>Qutub Minar</strong>, standing tall at 72.5 meters, is the world's tallest brick minaret and an iconic UNESCO World Heritage Site. This magnificent Indo-Islamic architectural masterpiece has witnessed over 800 years of Delhi's history. Explore the mysterious rust-free Iron Pillar, intricate carvings, and stunning courtyard complex. Our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi Full Day City Tour</a> covers Qutub Minar along with 8+ major Delhi attractions.</p>
@@ -1650,7 +1650,7 @@ export const attractionBlogPosts = [
 
       <h2>Entry Fees & Timings</h2>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹35 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹550 per person</li>
@@ -1882,9 +1882,9 @@ export const attractionBlogPosts = [
       <div class="mt-8">
         <h3 class="text-xl font-bold mb-4">Related Articles</h3>
         <ul class="space-y-2">
-          <li>📖 <a href="/blog/red-fort-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Red Fort Delhi Complete Guide 2025</a></li>
-          <li>📖 <a href="/blog/india-gate-delhi-complete-guide-2025" class="text-blue-600 hover:underline">India Gate Delhi Complete Guide</a></li>
-          <li>📖 <a href="/blog/lotus-temple-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Lotus Temple Delhi Complete Guide</a></li>
+          <li>📖 <a href="/blog/red-fort-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Red Fort Delhi Complete Guide 2026</a></li>
+          <li>📖 <a href="/blog/india-gate-delhi-complete-guide-2026" class="text-blue-600 hover:underline">India Gate Delhi Complete Guide</a></li>
+          <li>📖 <a href="/blog/lotus-temple-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Lotus Temple Delhi Complete Guide</a></li>
         </ul>
       </div>
 
@@ -1899,8 +1899,8 @@ export const attractionBlogPosts = [
   // 6. Hawa Mahal Jaipur
   {
     id: 106,
-    slug: "hawa-mahal-jaipur-complete-guide-2025",
-    title: "Hawa Mahal Jaipur Complete Guide 2025 - Palace of Winds, Timings, Entry Fees & Tours",
+    slug: "hawa-mahal-jaipur-complete-guide-2026",
+    title: "Hawa Mahal Jaipur Complete Guide 2026 - Palace of Winds, Timings, Entry Fees & Tours",
     excerpt: "Complete guide to Hawa Mahal (Palace of Winds) Jaipur: iconic pink facade, 953 windows, history, timings, photography tips & tours!",
 
     city: "jaipur",
@@ -1937,7 +1937,7 @@ export const attractionBlogPosts = [
       "city",
       "All Jaipur tours",
       "Amber Fort Jaipur Guide",
-      "amber-fort-jaipur-complete-guide-2025",
+      "amber-fort-jaipur-complete-guide-2026",
       "Book Jaipur Tour",
       "/sightseeing/jaipur-full-day-city-tour",
       "Hawa Mahal & all Jaipur attractions",
@@ -1945,7 +1945,7 @@ export const attractionBlogPosts = [
       "Hotel Pickup",
       "AC Car",
       "Expert Guide",
-      "qutub minar complete guide 2025 - history, timings, entry fees & best tours",
+      "qutub minar complete guide 2026 - history, timings, entry fees & best tours",
       "delhi full day city tour",
       "qutub minar complete guide",
       "qutub minar complete blog",
@@ -1966,10 +1966,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit qutub",
       "what to see in qutub",
       "where to go qutub",
@@ -2061,7 +2061,7 @@ export const attractionBlogPosts = [
     ],
     attractionData: { location: "Hawa Mahal Rd, Badi Choupad, Jaipur", entryFee: { indian: "₹50", foreign: "₹200", children: "Free (below 15)" }, timings: { open: "9:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) for best photos" }, howToReach: { fromJaipur: "City center", nearestAirport: "Jaipur Airport (12 km)", nearestRailway: "Jaipur Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 26.9239, longitude: 75.8267 } },
     image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg", date: "2025-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Hawa Mahal Jaipur Guide 2025 - Palace of Winds Timings & Tours", metaDescription: "Hawa Mahal complete guide: 953 windows, iconic pink facade, best photography spots. Book Jaipur city tours!",
+    metaTitle: "Hawa Mahal Jaipur Guide 2026 - Palace of Winds Timings & Tours", metaDescription: "Hawa Mahal complete guide: 953 windows, iconic pink facade, best photography spots. Book Jaipur city tours!",
     content: `
       <div class="blog-intro">
         <p>The <strong>Hawa Mahal (Palace of Winds)</strong>, with its stunning pink sandstone facade adorned with 953 intricately carved windows, stands as Jaipur's most iconic and photographed landmark. This five-story architectural marvel was built in 1799 by Maharaja Sawai Pratap Singh to allow royal ladies to observe street festivals and everyday life without being seen. If you're planning to visit this magnificent palace, our <a href="/sightseeing/jaipur-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Jaipur city tour</a> offers the perfect experience, covering Hawa Mahal, Amber Fort, City Palace, and more.</p>
@@ -2103,7 +2103,7 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Jaipur Tour Now | ₹2,500</a>
       </div>
 
-      <h2>Entry Fees & Timings 2025</h2>
+      <h2>Entry Fees & Timings 2026</h2>
 
       <h3>Entry Fees:</h3>
       <ul class="list-disc list-inside mb-4">
@@ -2173,7 +2173,7 @@ export const attractionBlogPosts = [
 
       <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 my-6">
         <p class="font-semibold mb-2">🚗 Traveling from Delhi or Agra?</p>
-        <p>Combine your <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">Jaipur visit</a> with our <a href="/blog/golden-triangle-complete-guide-2025" class="text-blue-600 hover:underline">Golden Triangle tour</a> covering Delhi, Agra, and Jaipur. Perfect 3-4 day itinerary!</p>
+        <p>Combine your <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">Jaipur visit</a> with our <a href="/blog/golden-triangle-complete-guide-2026" class="text-blue-600 hover:underline">Golden Triangle tour</a> covering Delhi, Agra, and Jaipur. Perfect 3-4 day itinerary!</p>
       </div>
 
       <h2>Things to See Inside Hawa Mahal</h2>
@@ -2254,7 +2254,7 @@ export const attractionBlogPosts = [
       <p>Hawa Mahal's central location makes it perfect for exploring other Jaipur landmarks:</p>
 
       <ul class="list-disc list-inside mb-4">
-        <li><strong><a href="/blog/city-palace-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">City Palace</a> (500 meters, 5-minute walk):</strong> Magnificent royal residence with museums. Entry: ₹75 (Indian) / ₹300 (Foreign). Must-visit!</li>
+        <li><strong><a href="/blog/city-palace-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">City Palace</a> (500 meters, 5-minute walk):</strong> Magnificent royal residence with museums. Entry: ₹75 (Indian) / ₹300 (Foreign). Must-visit!</li>
         <li><strong>Jantar Mantar (700 meters, 8-minute walk):</strong> UNESCO World Heritage astronomical observatory. Entry: ₹50 (Indian) / ₹200 (Foreign)</li>
         <li><strong>Johari Bazaar (300 meters):</strong> Famous jewelry market, perfect for shopping traditional Rajasthani jewelry</li>
         <li><strong>Bapu Bazaar (1 km):</strong> Textiles, handicrafts, and souvenirs at reasonable prices</li>
@@ -2378,15 +2378,15 @@ export const attractionBlogPosts = [
       <div class="bg-gray-50 p-6 rounded-lg my-6">
         <h3 class="text-xl font-bold mb-4">📖 Related Jaipur Guides:</h3>
         <ul class="space-y-2">
-          <li>🏰 <a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Amber Fort Jaipur Complete Guide 2025</a></li>
-          <li>🏛️ <a href="/blog/city-palace-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">City Palace Jaipur Complete Guide 2025</a></li>
-          <li>🔭 <a href="/blog/jantar-mantar-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Jantar Mantar Observatory Guide</a></li>
-          <li>🌅 <a href="/blog/nahargarh-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Nahargarh Fort Sunset Guide 2025</a></li>
+          <li>🏰 <a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Amber Fort Jaipur Complete Guide 2026</a></li>
+          <li>🏛️ <a href="/blog/city-palace-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">City Palace Jaipur Complete Guide 2026</a></li>
+          <li>🔭 <a href="/blog/jantar-mantar-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Jantar Mantar Observatory Guide</a></li>
+          <li>🌅 <a href="/blog/nahargarh-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Nahargarh Fort Sunset Guide 2026</a></li>
           <li>🗺️ <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">All Jaipur Sightseeing Tours</a></li>
         </ul>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2025 | Entry fees and timings are subject to change. Please verify current information before visiting.</p>
+      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2026 | Entry fees and timings are subject to change. Please verify current information before visiting.</p>
     `
   }
 
@@ -2395,8 +2395,8 @@ export const attractionBlogPosts = [
   // 7. Agra Fort
   {
     id: 107,
-    slug: "agra-fort-complete-guide-2025",
-    title: "Agra Fort Complete Guide 2025 - History, Timings, Entry Fees & Best Tours",
+    slug: "agra-fort-complete-guide-2026",
+    title: "Agra Fort Complete Guide 2026 - History, Timings, Entry Fees & Best Tours",
     excerpt: "Complete guide to Agra Fort: UNESCO World Heritage Site, Mughal fortress, Taj Mahal views, history, timings, tours!",
 
     city: "agra",
@@ -2408,11 +2408,11 @@ export const attractionBlogPosts = [
     keywords: ["agra fort", "agra fort history", "agra fort timings", "agra fort entry fee", "visit agra fort", "agra fort unesco", "agra fort taj mahal view", "mughal fort agra", "agra fort tour", "agra fort architecture", "agra fort facts", "agra fort photography"],
     relatedTours: [{ id: "agra-1", name: "Agra Same Day Tour", slug: "agra-same-day-tour", city: "agra", price: "₹3,500", duration: "12 hours", description: "Taj Mahal + Agra Fort + Fatehpur Sikri" }],
     relatedDestinations: [{ name: "Agra", slug: "agra", type: "city", description: "All Agra tours" }],
-    relatedBlogs: [{ title: "Taj Mahal Complete Guide", slug: "taj-mahal-complete-guide-2025" }],
+    relatedBlogs: [{ title: "Taj Mahal Complete Guide", slug: "taj-mahal-complete-guide-2026" }],
     primaryCTA: { text: "Book Agra Tour", url: "/sightseeing/agra-same-day-tour", description: "Taj Mahal + Agra Fort", price: "₹3,500", features: ["Hotel Pickup", "Skip-the-line", "Expert Guide"] },
     attractionData: { location: "Agra, Uttar Pradesh", entryFee: { indian: "₹40", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "6:00 AM", close: "6:00 PM", closedOn: "Friday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (6-9 AM)" }, howToReach: { fromDelhi: "233 km", nearestAirport: "Agra Airport (13 km)", nearestRailway: "Agra Cantt (6 km)" }, timeNeeded: "2 hours", coordinates: { latitude: 27.1795, longitude: 78.0211 } },
     image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Agra Fort Guide 2025 - Timings, Fees & Tours", metaDescription: "Agra Fort complete guide: UNESCO site, Mughal fortress with Taj Mahal views. Book Agra day tours!",
+    metaTitle: "Agra Fort Guide 2026 - Timings, Fees & Tours", metaDescription: "Agra Fort complete guide: UNESCO site, Mughal fortress with Taj Mahal views. Book Agra day tours!",
     content: `
       <div class="blog-intro">
         <p>The <strong>Agra Fort</strong>, a magnificent UNESCO World Heritage Site, stands as one of India's most impressive Mughal fortresses. This red sandstone marvel served as the main residence of the Mughal emperors for generations and witnessed some of the most pivotal moments in Indian history. From its ramparts, you can enjoy breathtaking views of the Taj Mahal across the Yamuna River. Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> covers both Agra Fort and Taj Mahal with expert guides.</p>
@@ -2472,7 +2472,7 @@ export const attractionBlogPosts = [
 
       <h2>Entry Fees & Timings</h2>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹40 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹550 per person</li>
@@ -2637,9 +2637,9 @@ export const attractionBlogPosts = [
       <div class="mt-8">
         <h3 class="text-xl font-bold mb-4">Related Articles</h3>
         <ul class="space-y-2">
-          <li>📖 <a href="/blog/taj-mahal-complete-guide-2025" class="text-blue-600 hover:underline">Taj Mahal Complete Guide 2025</a></li>
-          <li>📖 <a href="/blog/fatehpur-sikri-complete-guide-2025" class="text-blue-600 hover:underline">Fatehpur Sikri Complete Guide</a></li>
-          <li>📖 <a href="/blog/golden-triangle-complete-guide-2025" class="text-blue-600 hover:underline">Golden Triangle Tour Guide</a></li>
+          <li>📖 <a href="/blog/taj-mahal-complete-guide-2026" class="text-blue-600 hover:underline">Taj Mahal Complete Guide 2026</a></li>
+          <li>📖 <a href="/blog/fatehpur-sikri-complete-guide-2026" class="text-blue-600 hover:underline">Fatehpur Sikri Complete Guide</a></li>
+          <li>📖 <a href="/blog/golden-triangle-complete-guide-2026" class="text-blue-600 hover:underline">Golden Triangle Tour Guide</a></li>
         </ul>
       </div>
     `
@@ -2650,8 +2650,8 @@ export const attractionBlogPosts = [
   // 8. India Gate Delhi
   {
     id: 108,
-    slug: "india-gate-delhi-complete-guide-2025",
-    title: "India Gate Delhi Complete Guide 2025 - History, Timings, Best Visit Times & Tours",
+    slug: "india-gate-delhi-complete-guide-2026",
+    title: "India Gate Delhi Complete Guide 2026 - History, Timings, Best Visit Times & Tours",
     excerpt: "Complete guide to India Gate Delhi: War memorial, history, evening visits, boat rides, food stalls, photography & tours!",
 
     city: "delhi",
@@ -2686,7 +2686,7 @@ export const attractionBlogPosts = [
       "city",
       "All Delhi tours",
       "Red Fort Delhi Guide",
-      "red-fort-delhi-complete-guide-2025",
+      "red-fort-delhi-complete-guide-2026",
       "Book Delhi Tour",
       "/sightseeing/delhi-full-day-city-tour",
       "India Gate & 8+ Delhi attractions",
@@ -2694,7 +2694,7 @@ export const attractionBlogPosts = [
       "Hotel Pickup",
       "AC Car",
       "Expert Guide",
-      "agra fort complete guide 2025 - history, timings, entry fees & best tours",
+      "agra fort complete guide 2026 - history, timings, entry fees & best tours",
       "agra same day tour",
       "agra fort complete guide",
       "agra fort complete blog",
@@ -2715,10 +2715,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit agra",
       "what to see in agra",
       "where to go agra",
@@ -2810,7 +2810,7 @@ export const attractionBlogPosts = [
     ],
     attractionData: { location: "Rajpath, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Evening (5-8 PM) when illuminated" }, howToReach: { fromNewDelhi: "3 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "New Delhi Station (3 km)", nearestMetro: "Central Secretariat Metro" }, timeNeeded: "1 hour", coordinates: { latitude: 28.6129, longitude: 77.2295 } },
     image: "/images/sightseeing/Delhi/India_Gate.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "India Gate Delhi Guide 2025 - Timings & Tours", metaDescription: "India Gate Delhi: iconic war memorial, evening illumination, boat rides, street food. Book Delhi city tours!",
+    metaTitle: "India Gate Delhi Guide 2026 - Timings & Tours", metaDescription: "India Gate Delhi: iconic war memorial, evening illumination, boat rides, street food. Book Delhi city tours!",
     content: `
       <div class="blog-intro">
         <p><strong>India Gate</strong>, Delhi's most iconic landmark, stands majestically at the heart of New Delhi as a tribute to the 90,000 Indian soldiers who sacrificed their lives during World War I and the Afghan Wars. This 42-meter tall war memorial, designed by Sir Edwin Lutyens, has become synonymous with national pride and is a must-visit for every traveler to Delhi. Our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi Full Day City Tour</a> includes India Gate along with 8+ major attractions.</p>
@@ -3028,9 +3028,9 @@ export const attractionBlogPosts = [
       <div class="mt-8">
         <h3 class="text-xl font-bold mb-4">Related Articles</h3>
         <ul class="space-y-2">
-          <li>📖 <a href="/blog/red-fort-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Red Fort Delhi Complete Guide 2025</a></li>
-          <li>📖 <a href="/blog/qutub-minar-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Qutub Minar Complete Guide</a></li>
-          <li>📖 <a href="/blog/lotus-temple-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Lotus Temple Delhi Guide</a></li>
+          <li>📖 <a href="/blog/red-fort-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Red Fort Delhi Complete Guide 2026</a></li>
+          <li>📖 <a href="/blog/qutub-minar-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Qutub Minar Complete Guide</a></li>
+          <li>📖 <a href="/blog/lotus-temple-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Lotus Temple Delhi Guide</a></li>
         </ul>
       </div>
     `
@@ -3041,8 +3041,8 @@ export const attractionBlogPosts = [
   // 9. Lotus Temple Delhi
   {
     id: 109,
-    slug: "lotus-temple-delhi-complete-guide-2025",
-    title: "Lotus Temple Delhi Complete Guide 2025 - Architecture, Timings, Entry & Tours",
+    slug: "lotus-temple-delhi-complete-guide-2026",
+    title: "Lotus Temple Delhi Complete Guide 2026 - Architecture, Timings, Entry & Tours",
     excerpt: "Complete guide to Lotus Temple (Bahai Temple) Delhi: stunning lotus-shaped architecture, meditation, timings, entry & tours!",
 
     city: "delhi",
@@ -3058,7 +3058,7 @@ export const attractionBlogPosts = [
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Lotus Temple & Delhi attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Lotus Temple Rd, Bahapur, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "9:00 AM", close: "5:30 PM", closedOn: "Monday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) or evening (4-5:30 PM)" }, howToReach: { fromNewDelhi: "10 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "Hazrat Nizamuddin (8 km)", nearestMetro: "Kalkaji Mandir Metro" }, timeNeeded: "45 min - 1 hour", coordinates: { latitude: 28.5535, longitude: 77.2588 } },
     image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Lotus Temple Delhi Guide 2025 - Timings & Tours", metaDescription: "Lotus Temple Delhi: stunning lotus-shaped Bahai Temple, peaceful meditation, modern architecture. Free entry!",
+    metaTitle: "Lotus Temple Delhi Guide 2026 - Timings & Tours", metaDescription: "Lotus Temple Delhi: stunning lotus-shaped Bahai Temple, peaceful meditation, modern architecture. Free entry!",
     content: `
       <div class="blog-intro">
         <p>The <strong>Lotus Temple</strong>, one of the most visited buildings in the world, is an architectural masterpiece that welcomes over 10,000 visitors daily. Shaped like a magnificent lotus flower with 27 free-standing marble petals, this Bahai House of Worship in New Delhi is open to people of all faiths, backgrounds, and beliefs. Experience serene meditation and marvel at award-winning architecture. Our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi Full Day City Tour</a> includes Lotus Temple along with other iconic Delhi attractions.</p>
@@ -3222,9 +3222,9 @@ export const attractionBlogPosts = [
       <div class="mt-8">
         <h3 class="text-xl font-bold mb-4">Related Articles</h3>
         <ul class="space-y-2">
-          <li>📖 <a href="/blog/india-gate-delhi-complete-guide-2025" class="text-blue-600 hover:underline">India Gate Delhi Complete Guide</a></li>
-          <li>📖 <a href="/blog/qutub-minar-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Qutub Minar Complete Guide</a></li>
-          <li>📖 <a href="/blog/red-fort-delhi-complete-guide-2025" class="text-blue-600 hover:underline">Red Fort Delhi Guide</a></li>
+          <li>📖 <a href="/blog/india-gate-delhi-complete-guide-2026" class="text-blue-600 hover:underline">India Gate Delhi Complete Guide</a></li>
+          <li>📖 <a href="/blog/qutub-minar-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Qutub Minar Complete Guide</a></li>
+          <li>📖 <a href="/blog/red-fort-delhi-complete-guide-2026" class="text-blue-600 hover:underline">Red Fort Delhi Guide</a></li>
         </ul>
       </div>
     `
@@ -3235,8 +3235,8 @@ export const attractionBlogPosts = [
   // 10. Gateway of India Mumbai
   {
     id: 110,
-    slug: "gateway-of-india-mumbai-complete-guide-2025",
-    title: "Gateway of India Mumbai Complete Guide 2025 - History, Boat Rides, Timings & Tours",
+    slug: "gateway-of-india-mumbai-complete-guide-2026",
+    title: "Gateway of India Mumbai Complete Guide 2026 - History, Boat Rides, Timings & Tours",
     excerpt: "Complete guide to Gateway of India Mumbai: iconic monument, Elephanta Caves boat rides, sunset views, history & tours!",
     category: "Attractions",
     tags: ["Attractions", "Mumbai", "Monuments", "Colonial Architecture", "Sightseeing"],
@@ -3263,7 +3263,7 @@ export const attractionBlogPosts = [
       "Custom Mumbai Tours",
       "Gateway of India",
       "Elephanta Caves",
-      "lotus temple delhi complete guide 2025 - architecture, timings, entry & tours",
+      "lotus temple delhi complete guide 2026 - architecture, timings, entry & tours",
       "delhi full day city tour",
       "lotus temple delhi guide",
       "lotus temple delhi blog",
@@ -3284,10 +3284,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit lotus",
       "what to see in lotus",
       "where to go lotus",
@@ -3379,7 +3379,7 @@ export const attractionBlogPosts = [
     ],
     attractionData: { location: "Apollo Bandar, Colaba, Mumbai", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "November to February", timeOfDay: "Evening (5-7 PM) for sunset" }, howToReach: { fromMumbaiCentral: "10 km", nearestAirport: "Mumbai Airport (30 km)", nearestRailway: "CST Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 18.9220, longitude: 72.8347 } },
     image: "/images/spots/gateway.webp", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
-    metaTitle: "Gateway of India Mumbai Guide 2025 - Timings & Tours", metaDescription: "Gateway of India Mumbai: iconic monument, Elephanta Caves ferry, sunset views, colonial architecture!",
+    metaTitle: "Gateway of India Mumbai Guide 2026 - Timings & Tours", metaDescription: "Gateway of India Mumbai: iconic monument, Elephanta Caves ferry, sunset views, colonial architecture!",
     content: `
       <div class="blog-intro">
         <p>The <strong>Gateway of India</strong>, Mumbai's most iconic landmark, stands majestically overlooking the Arabian Sea at Apollo Bunder. Built to commemorate the visit of King George V and Queen Mary in 1911, this magnificent arch has become the symbolic starting point for visitors exploring India's financial capital. From here, you can take ferries to the UNESCO-listed Elephanta Caves and enjoy spectacular sunsets over the sea.</p>
@@ -3613,9 +3613,9 @@ export const attractionBlogPosts = [
       <div class="mt-8">
         <h3 class="text-xl font-bold mb-4">Related Articles</h3>
         <ul class="space-y-2">
-          <li>📖 <a href="/blog/india-gate-delhi-complete-guide-2025" class="text-blue-600 hover:underline">India Gate Delhi Complete Guide</a></li>
-          <li>📖 <a href="/blog/taj-mahal-complete-guide-2025" class="text-blue-600 hover:underline">Taj Mahal Complete Guide</a></li>
-          <li>📖 <a href="/blog/golden-triangle-complete-guide-2025" class="text-blue-600 hover:underline">Golden Triangle Tour Guide</a></li>
+          <li>📖 <a href="/blog/india-gate-delhi-complete-guide-2026" class="text-blue-600 hover:underline">India Gate Delhi Complete Guide</a></li>
+          <li>📖 <a href="/blog/taj-mahal-complete-guide-2026" class="text-blue-600 hover:underline">Taj Mahal Complete Guide</a></li>
+          <li>📖 <a href="/blog/golden-triangle-complete-guide-2026" class="text-blue-600 hover:underline">Golden Triangle Tour Guide</a></li>
         </ul>
       </div>
     `
@@ -3625,8 +3625,8 @@ export const attractionBlogPosts = [
 
   ,{
     id: 111,
-    slug: "city-palace-jaipur-complete-guide-2025",
-    title: "City Palace Jaipur Complete Guide 2025 - History, Museums, Entry Fees & Tours",
+    slug: "city-palace-jaipur-complete-guide-2026",
+    title: "City Palace Jaipur Complete Guide 2026 - History, Museums, Entry Fees & Tours",
     excerpt: "Explore City Palace Jaipur: royal residence, museums, architecture, timings, entry fees. Book Jaipur city tours with expert guides!",
 
     category: "Attractions",
@@ -3663,8 +3663,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Amber Fort Jaipur Complete Guide 2025", slug: "amber-fort-jaipur-complete-guide-2025" },
-      { title: "Hawa Mahal Jaipur Complete Guide 2025", slug: "hawa-mahal-jaipur-complete-guide-2025" }
+      { title: "Amber Fort Jaipur Complete Guide 2026", slug: "amber-fort-jaipur-complete-guide-2026" },
+      { title: "Hawa Mahal Jaipur Complete Guide 2026", slug: "hawa-mahal-jaipur-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -3718,7 +3718,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "City Palace Jaipur Complete Guide 2025 - Timings, Entry Fees & Tours",
+    metaTitle: "City Palace Jaipur Complete Guide 2026 - Timings, Entry Fees & Tours",
     metaDescription: "City Palace Jaipur: royal residence, museums, Mughal-Rajput architecture, entry fees, timings. Book Jaipur city tours with skip-the-line access!",
 
     content: `
@@ -3776,7 +3776,7 @@ export const attractionBlogPosts = [
       <h2>Entry Fees & Timings</h2>
       <p>Understanding the ticket structure helps plan your visit to City Palace:</p>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹75 (entry to courtyards and museums)</li>
         <li><strong>Foreign Tourists:</strong> ₹300</li>
@@ -3964,8 +3964,8 @@ export const attractionBlogPosts = [
 
       <h3>Related Jaipur Attractions</h3>
       <ul>
-        <li><a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Amber Fort Complete Guide 2025</a></li>
-        <li><a href="/blog/hawa-mahal-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Hawa Mahal Complete Guide 2025</a></li>
+        <li><a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Amber Fort Complete Guide 2026</a></li>
+        <li><a href="/blog/hawa-mahal-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Hawa Mahal Complete Guide 2026</a></li>
         <li><a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">All Jaipur Tours & Packages</a></li>
       </ul>
     `
@@ -3973,8 +3973,8 @@ export const attractionBlogPosts = [
 
   ,{
     id: 112,
-    slug: "mehrangarh-fort-jodhpur-complete-guide-2025",
-    title: "Mehrangarh Fort Jodhpur Complete Guide 2025 - History, Timings, Entry Fees & Tours",
+    slug: "mehrangarh-fort-jodhpur-complete-guide-2026",
+    title: "Mehrangarh Fort Jodhpur Complete Guide 2026 - History, Timings, Entry Fees & Tours",
     excerpt: "Mehrangarh Fort Jodhpur: majestic hilltop fortress, museums, blue city views, zip lining, timings, entry fees. Complete guide to Jodhpur's iconic fort!",
 
     category: "Attractions",
@@ -4038,7 +4038,7 @@ export const attractionBlogPosts = [
       "Expert Local Guides",
       "AC Transportation",
       "Flexible Itineraries",
-      "city palace jaipur complete guide 2025 - history, museums, entry fees & tours",
+      "city palace jaipur complete guide 2026 - history, museums, entry fees & tours",
       "jaipur full day city tour",
       "city palace jaipur guide",
       "city palace jaipur blog",
@@ -4059,10 +4059,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit city",
       "what to see in city",
       "where to go city",
@@ -4190,7 +4190,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Mehrangarh Fort Jodhpur Guide 2025 - Timings, Entry Fees & Tips",
+    metaTitle: "Mehrangarh Fort Jodhpur Guide 2026 - Timings, Entry Fees & Tips",
     metaDescription: "Mehrangarh Fort Jodhpur: massive hilltop fortress, museums, blue city panoramic views, zip lining, entry fees, timings. Complete visitor guide!",
 
     content: `
@@ -4249,7 +4249,7 @@ export const attractionBlogPosts = [
       <h2>Entry Fees & Timings</h2>
       <p>Understanding the ticket structure and timings helps plan your Mehrangarh Fort visit:</p>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹100 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹600 per person</li>
@@ -4480,8 +4480,8 @@ export const attractionBlogPosts = [
 
       <h3>Explore More Rajasthan Forts</h3>
       <ul>
-        <li><a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Amber Fort Jaipur Complete Guide 2025</a></li>
-        <li><a href="/blog/city-palace-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">City Palace Jaipur Complete Guide 2025</a></li>
+        <li><a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Amber Fort Jaipur Complete Guide 2026</a></li>
+        <li><a href="/blog/city-palace-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">City Palace Jaipur Complete Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">All Rajasthan Tours & Packages</a></li>
       </ul>
     `
@@ -4490,8 +4490,8 @@ export const attractionBlogPosts = [
   // Week 2 - ID 113: Chittorgarh Fort
   ,{
     id: 113,
-    slug: "chittorgarh-fort-complete-guide-2025",
-    title: "Chittorgarh Fort Complete Guide 2025 - Largest Fort in India, UNESCO Site, History & Tours",
+    slug: "chittorgarh-fort-complete-guide-2026",
+    title: "Chittorgarh Fort Complete Guide 2026 - Largest Fort in India, UNESCO Site, History & Tours",
     excerpt: "Discover Chittorgarh Fort - India's largest fort complex, UNESCO World Heritage Site, legendary tales of Rajput valor, Rani Padmini Palace, Vijay Stambh & complete visitor guide.",
 
     category: "Attractions",
@@ -4503,7 +4503,7 @@ export const attractionBlogPosts = [
       "chittorgarh fort guide",
       "visit chittorgarh fort",
       "chittorgarh fort tourism",
-      "chittorgarh fort 2025",
+      "chittorgarh fort 2026",
       "chittorgarh",
 
       // Location-Based
@@ -4596,8 +4596,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Mehrangarh Fort Jodhpur Complete Guide 2025", slug: "mehrangarh-fort-jodhpur-complete-guide-2025" },
-      { title: "Amber Fort Jaipur Complete Guide 2025", slug: "amber-fort-jaipur-complete-guide-2025" }
+      { title: "Mehrangarh Fort Jodhpur Complete Guide 2026", slug: "mehrangarh-fort-jodhpur-complete-guide-2026" },
+      { title: "Amber Fort Jaipur Complete Guide 2026", slug: "amber-fort-jaipur-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -4653,7 +4653,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Chittorgarh Fort Guide 2025 - Largest Fort India, UNESCO Site & Tours",
+    metaTitle: "Chittorgarh Fort Guide 2026 - Largest Fort India, UNESCO Site & Tours",
     metaDescription: "Chittorgarh Fort complete guide: India's largest fort complex, UNESCO heritage site, Rani Padmini Palace, Vijay Stambh, timings, entry fees & Rajput history.",
 
     content: `
@@ -4714,7 +4714,7 @@ export const attractionBlogPosts = [
 
       <h2>Entry Fees & Timings</h2>
 
-      <h3>Ticket Prices (2025)</h3>
+      <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Nationals:</strong> ₹40 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹600 per person</li>
@@ -5036,8 +5036,8 @@ export const attractionBlogPosts = [
 
       <h3 class="text-xl font-bold mt-8 mb-4">Explore More Rajasthan Forts:</h3>
       <ul class="space-y-2">
-        <li>→ <a href="/blog/mehrangarh-fort-jodhpur-complete-guide-2025" class="text-blue-600 hover:underline font-semibold">Mehrangarh Fort Jodhpur - Magnificent Blue City Views</a></li>
-        <li>→ <a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline font-semibold">Amber Fort Jaipur - Stunning Hilltop Palace</a></li>
+        <li>→ <a href="/blog/mehrangarh-fort-jodhpur-complete-guide-2026" class="text-blue-600 hover:underline font-semibold">Mehrangarh Fort Jodhpur - Magnificent Blue City Views</a></li>
+        <li>→ <a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline font-semibold">Amber Fort Jaipur - Stunning Hilltop Palace</a></li>
         <li>→ <a href="/sightseeing" class="text-blue-600 hover:underline font-semibold">All Rajasthan Tours & Heritage Packages</a></li>
       </ul>
     `
@@ -5046,8 +5046,8 @@ export const attractionBlogPosts = [
   // Week 2 - ID 114: Jaisalmer Fort
   ,{
     id: 114,
-    slug: "jaisalmer-fort-complete-guide-2025",
-    title: "Jaisalmer Fort Complete Guide 2025 - Living Golden Fort, Havelis, Timings & Desert Tours",
+    slug: "jaisalmer-fort-complete-guide-2026",
+    title: "Jaisalmer Fort Complete Guide 2026 - Living Golden Fort, Havelis, Timings & Desert Tours",
     excerpt: "Explore Jaisalmer Fort - the world's only living fort, golden sandstone architecture, desert views, magnificent havelis, UNESCO heritage site & complete visitor guide.",
 
     category: "Attractions",
@@ -5059,7 +5059,7 @@ export const attractionBlogPosts = [
       "jaisalmer fort guide",
       "visit jaisalmer fort",
       "jaisalmer fort tourism",
-      "jaisalmer fort 2025",
+      "jaisalmer fort 2026",
       "jaisalmer golden fort",
 
       // Unique Identifiers
@@ -5160,8 +5160,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Mehrangarh Fort Jodhpur Complete Guide 2025", slug: "mehrangarh-fort-jodhpur-complete-guide-2025" },
-      { title: "Chittorgarh Fort Complete Guide 2025", slug: "chittorgarh-fort-complete-guide-2025" }
+      { title: "Mehrangarh Fort Jodhpur Complete Guide 2026", slug: "mehrangarh-fort-jodhpur-complete-guide-2026" },
+      { title: "Chittorgarh Fort Complete Guide 2026", slug: "chittorgarh-fort-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -5218,7 +5218,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Jaisalmer Fort Guide 2025 - Living Golden Fort, Havelis & Desert Tours",
+    metaTitle: "Jaisalmer Fort Guide 2026 - Living Golden Fort, Havelis & Desert Tours",
     metaDescription: "Jaisalmer Fort complete guide: world's only living fort, golden sandstone architecture, havelis, Jain temples, timings, entry fees & desert safari tours!",
 
     content: `
@@ -5274,7 +5274,7 @@ export const attractionBlogPosts = [
 
       <h2>Entry Fees & Timings</h2>
 
-      <h3>Fort Complex Entry (2025)</h3>
+      <h3>Fort Complex Entry (2026)</h3>
       <ul>
         <li><strong>Fort Complex:</strong> FREE - You can freely enter and walk around the fort</li>
         <li><strong>Raj Mahal (Royal Palace Museum):</strong> ₹50 Indians, ₹250 Foreigners</li>
@@ -5615,8 +5615,8 @@ export const attractionBlogPosts = [
 
       <h3 class="text-xl font-bold mt-8 mb-4">Explore More Rajasthan Forts:</h3>
       <ul class="space-y-2">
-        <li>→ <a href="/blog/mehrangarh-fort-jodhpur-complete-guide-2025" class="text-blue-600 hover:underline font-semibold">Mehrangarh Fort Jodhpur - Blue City's Majestic Fort</a></li>
-        <li>→ <a href="/blog/chittorgarh-fort-complete-guide-2025" class="text-blue-600 hover:underline font-semibold">Chittorgarh Fort - India's Largest Fort Complex</a></li>
+        <li>→ <a href="/blog/mehrangarh-fort-jodhpur-complete-guide-2026" class="text-blue-600 hover:underline font-semibold">Mehrangarh Fort Jodhpur - Blue City's Majestic Fort</a></li>
+        <li>→ <a href="/blog/chittorgarh-fort-complete-guide-2026" class="text-blue-600 hover:underline font-semibold">Chittorgarh Fort - India's Largest Fort Complex</a></li>
         <li>→ <a href="/sightseeing" class="text-blue-600 hover:underline font-semibold">All Rajasthan Desert & Fort Tours</a></li>
       </ul>
     `
@@ -5625,8 +5625,8 @@ export const attractionBlogPosts = [
   // Week 2 - ID 115: Mysore Palace
   ,{
     id: 115,
-    slug: "mysore-palace-complete-guide-2025",
-    title: "Mysore Palace Complete Guide 2025 - Illumination, Timings, Entry Fees & Tours",
+    slug: "mysore-palace-complete-guide-2026",
+    title: "Mysore Palace Complete Guide 2026 - Illumination, Timings, Entry Fees & Tours",
     excerpt: "Explore Mysore Palace - Indo-Saracenic marvel, Sunday illumination with 100,000 lights, royal heritage, Durbar Hall & complete visitor guide.",
 
     category: "Attractions",
@@ -5638,7 +5638,7 @@ export const attractionBlogPosts = [
       "mysore palace guide",
       "visit mysore palace",
       "mysore palace tourism",
-      "mysore palace 2025",
+      "mysore palace 2026",
       "amba vilas palace",
 
       // Official Names
@@ -5727,7 +5727,7 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Jaisalmer Fort Complete Guide 2025", slug: "jaisalmer-fort-complete-guide-2025" }
+      { title: "Jaisalmer Fort Complete Guide 2026", slug: "jaisalmer-fort-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -5786,7 +5786,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Mysore Palace Guide 2025 - Illumination, Timings, Entry Fees & Tours",
+    metaTitle: "Mysore Palace Guide 2026 - Illumination, Timings, Entry Fees & Tours",
     metaDescription: "Mysore Palace complete guide: Indo-Saracenic architecture, Sunday illumination with 100,000 lights, Durbar Hall, Golden Throne, timings, entry fees & tours!",
 
     content: `
@@ -5848,7 +5848,7 @@ export const attractionBlogPosts = [
         <a href="/sightseeing" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Plan Sunday Visit with Our Tour →</a>
       </div>
 
-      <h2>Entry Fees & Timings (2025)</h2>
+      <h2>Entry Fees & Timings (2026)</h2>
 
       <h3>Entry Fees</h3>
       <ul>
@@ -6202,8 +6202,8 @@ export const attractionBlogPosts = [
   // Week 2 - ID 116: Humayun's Tomb Delhi
   ,{
     id: 116,
-    slug: "humayuns-tomb-delhi-complete-guide-2025",
-    title: "Humayun's Tomb Delhi Complete Guide 2025 - UNESCO, Mughal Architecture & Tours",
+    slug: "humayuns-tomb-delhi-complete-guide-2026",
+    title: "Humayun's Tomb Delhi Complete Guide 2026 - UNESCO, Mughal Architecture & Tours",
     excerpt: "Explore Humayun's Tomb - UNESCO World Heritage Site, first garden-tomb in India, architectural inspiration for Taj Mahal, Persian gardens & complete visitor guide.",
 
     category: "Attractions",
@@ -6308,8 +6308,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Red Fort Delhi Complete Guide 2025", slug: "red-fort-delhi-complete-guide-2025" },
-      { title: "Qutub Minar Complete Guide 2025", slug: "qutub-minar-complete-guide-2025" }
+      { title: "Red Fort Delhi Complete Guide 2026", slug: "red-fort-delhi-complete-guide-2026" },
+      { title: "Qutub Minar Complete Guide 2026", slug: "qutub-minar-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -6369,7 +6369,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Humayun's Tomb Guide 2025 - UNESCO, Mughal Architecture & Tours Delhi",
+    metaTitle: "Humayun's Tomb Guide 2026 - UNESCO, Mughal Architecture & Tours Delhi",
     metaDescription: "Humayun's Tomb complete guide: UNESCO World Heritage Site, first garden-tomb in India, inspiration for Taj Mahal, Persian Charbagh gardens, timings, entry fees & tours!",
 
     content: `
@@ -6434,7 +6434,7 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/delhi-full-day-city-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Photography Tour →</a>
       </div>
 
-      <h2>Entry Fees & Timings (2025)</h2>
+      <h2>Entry Fees & Timings (2026)</h2>
 
       <h3>Entry Fees</h3>
       <ul>
@@ -6739,8 +6739,8 @@ export const attractionBlogPosts = [
 
       <h3 class="text-xl font-bold mt-8 mb-4">Explore More Delhi Monuments:</h3>
       <ul class="space-y-2">
-        <li>→ <a href="/blog/red-fort-delhi-complete-guide-2025" class="text-blue-600 hover:underline font-semibold">Red Fort Delhi - Mughal Power Center</a></li>
-        <li>→ <a href="/blog/qutub-minar-complete-guide-2025" class="text-blue-600 hover:underline font-semibold">Qutub Minar - World's Tallest Brick Minaret</a></li>
+        <li>→ <a href="/blog/red-fort-delhi-complete-guide-2026" class="text-blue-600 hover:underline font-semibold">Red Fort Delhi - Mughal Power Center</a></li>
+        <li>→ <a href="/blog/qutub-minar-complete-guide-2026" class="text-blue-600 hover:underline font-semibold">Qutub Minar - World's Tallest Brick Minaret</a></li>
         <li>→ <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">All Delhi Heritage Tours & Packages</a></li>
       </ul>
     `
@@ -6749,8 +6749,8 @@ export const attractionBlogPosts = [
   // Week 2 - ID 117: Fatehpur Sikri
   ,{
     id: 117,
-    slug: "fatehpur-sikri-complete-guide-2025",
-    title: "Fatehpur Sikri Complete Guide 2025 - UNESCO Ghost City, Buland Darwaza & Tours",
+    slug: "fatehpur-sikri-complete-guide-2026",
+    title: "Fatehpur Sikri Complete Guide 2026 - UNESCO Ghost City, Buland Darwaza & Tours",
     excerpt: "Explore Fatehpur Sikri - UNESCO World Heritage Site, Emperor Akbar's abandoned capital, Buland Darwaza, Panch Mahal & complete visitor guide from Agra.",
 
     category: "Attractions",
@@ -6793,8 +6793,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Taj Mahal Complete Guide 2025", slug: "taj-mahal-complete-guide-2025" },
-      { title: "Agra Fort Complete Guide 2025", slug: "agra-fort-complete-guide-2025" }
+      { title: "Taj Mahal Complete Guide 2026", slug: "taj-mahal-complete-guide-2026" },
+      { title: "Agra Fort Complete Guide 2026", slug: "agra-fort-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -6854,7 +6854,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Fatehpur Sikri Guide 2025 - UNESCO Ghost City, Buland Darwaza & Tours",
+    metaTitle: "Fatehpur Sikri Guide 2026 - UNESCO Ghost City, Buland Darwaza & Tours",
     metaDescription: "Fatehpur Sikri complete guide: UNESCO World Heritage Site, Emperor Akbar's abandoned capital, Buland Darwaza, Panch Mahal, timings, entry fees & Agra tours!",
 
     content: `
@@ -6901,7 +6901,7 @@ export const attractionBlogPosts = [
         <li><strong>Exquisite Craftsmanship:</strong> Red sandstone carvings that appear almost impossible</li>
       </ul>
 
-      <h2>Entry Fees & Timings (2025)</h2>
+      <h2>Entry Fees & Timings (2026)</h2>
 
       <h3>Entry Fees</h3>
       <ul>
@@ -7102,8 +7102,8 @@ export const attractionBlogPosts = [
 
   ,{
     id: 118,
-    slug: "jaigarh-fort-jaipur-complete-guide-2025",
-    title: "Jaigarh Fort Jaipur Complete Guide 2025 - Jaivana Cannon, Timings & Tours",
+    slug: "jaigarh-fort-jaipur-complete-guide-2026",
+    title: "Jaigarh Fort Jaipur Complete Guide 2026 - Jaivana Cannon, Timings & Tours",
     excerpt: "Explore Jaigarh Fort Jaipur - the Victory Fort housing world's largest wheeled cannon Jaivana, connected to Amber Fort with stunning Aravalli views, royal armory & complete visitor guide.",
 
     category: "Attractions",
@@ -7145,12 +7145,12 @@ export const attractionBlogPosts = [
       "city",
       "Pink City of India",
       "/sightseeing/jaipur",
-      "Amber Fort Complete Guide 2025",
-      "amber-fort-jaipur-complete-guide-2025",
-      "Nahargarh Fort Jaipur Guide 2025",
-      "nahargarh-fort-jaipur-complete-guide-2025",
-      "Hawa Mahal Complete Guide 2025",
-      "hawa-mahal-jaipur-complete-guide-2025",
+      "Amber Fort Complete Guide 2026",
+      "amber-fort-jaipur-complete-guide-2026",
+      "Nahargarh Fort Jaipur Guide 2026",
+      "nahargarh-fort-jaipur-complete-guide-2026",
+      "Hawa Mahal Complete Guide 2026",
+      "hawa-mahal-jaipur-complete-guide-2026",
       "Book Jaipur Fort Tour",
       "/sightseeing/jaipur-full-day-city-tour",
       "Visit all three hilltop forts with expert guide & AC transportation",
@@ -7161,7 +7161,7 @@ export const attractionBlogPosts = [
       "Expert English Guide",
       "AC Private Vehicle",
       "Hotel Pickup & Drop",
-      "fatehpur sikri complete guide 2025 - unesco ghost city, buland darwaza & tours",
+      "fatehpur sikri complete guide 2026 - unesco ghost city, buland darwaza & tours",
       "agra same day tour",
       "fatehpur sikri complete guide",
       "fatehpur sikri complete blog",
@@ -7182,10 +7182,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit fatehpur",
       "what to see in fatehpur",
       "where to go fatehpur",
@@ -7313,7 +7313,7 @@ export const attractionBlogPosts = [
     featured: false,
     views: 0,
 
-    metaTitle: "Jaigarh Fort Jaipur Guide 2025 - Jaivana Cannon, Timings, Entry Fee & Tours",
+    metaTitle: "Jaigarh Fort Jaipur Guide 2026 - Jaivana Cannon, Timings, Entry Fee & Tours",
     metaDescription: "Complete guide to Jaigarh Fort Jaipur - home to world's largest wheeled cannon Jaivana, underground tunnels to Amber Fort, royal armory museum & stunning Aravalli views.",
 
     content: `
@@ -7396,7 +7396,7 @@ export const attractionBlogPosts = [
 
       <h2>Jaigarh Fort Entry Fee & Timings</h2>
 
-      <h3>Entry Fee (2025)</h3>
+      <h3>Entry Fee (2026)</h3>
       <ul>
         <li><strong>Indian Nationals:</strong> ₹35 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹85 per person</li>
@@ -7513,8 +7513,8 @@ export const attractionBlogPosts = [
 
       <h2>Nearby Attractions</h2>
       <ul>
-        <li><strong>Amber Fort (2 km):</strong> Magnificent palace-fort - <a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Complete Guide</a></li>
-        <li><strong>Nahargarh Fort (6 km):</strong> Best sunset point in Jaipur - <a href="/blog/nahargarh-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Sunset Guide</a></li>
+        <li><strong>Amber Fort (2 km):</strong> Magnificent palace-fort - <a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Complete Guide</a></li>
+        <li><strong>Nahargarh Fort (6 km):</strong> Best sunset point in Jaipur - <a href="/blog/nahargarh-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Sunset Guide</a></li>
         <li><strong>Panna Meena ka Kund (2 km):</strong> Stunning geometric stepwell</li>
         <li><strong>Anokhi Museum (1 km):</strong> Hand printing textile museum in Amber</li>
         <li><strong>City Palace (13 km):</strong> Royal residence in Jaipur city</li>
@@ -7571,22 +7571,22 @@ export const attractionBlogPosts = [
       <div class="bg-gray-100 p-6 rounded-xl my-8">
         <h3 class="font-bold mb-4">Related Guides:</h3>
         <ul class="space-y-2">
-          <li>🏰 <a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Amber Fort Complete Guide 2025</a></li>
-          <li>🌅 <a href="/blog/nahargarh-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Nahargarh Fort Sunset Guide 2025</a></li>
-          <li>🏛️ <a href="/blog/hawa-mahal-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Hawa Mahal Complete Guide 2025</a></li>
+          <li>🏰 <a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Amber Fort Complete Guide 2026</a></li>
+          <li>🌅 <a href="/blog/nahargarh-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Nahargarh Fort Sunset Guide 2026</a></li>
+          <li>🏛️ <a href="/blog/hawa-mahal-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Hawa Mahal Complete Guide 2026</a></li>
           <li>🗺️ <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">All Jaipur Sightseeing Tours</a></li>
         </ul>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2025 | Entry fees and timings are subject to change. Please verify current information before visiting.</p>
+      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2026 | Entry fees and timings are subject to change. Please verify current information before visiting.</p>
     `
   }
 
   ,{
     id: 119,
-    slug: "nahargarh-fort-jaipur-complete-guide-2025",
-    title: "Nahargarh Fort Jaipur Complete Guide 2025 - Sunset Point, Timings & Tours",
-    excerpt: "Discover Nahargarh Fort Jaipur - the Tiger Fort offering best sunset views of Pink City, Madhavendra Palace, rooftop cafes, night visits & complete visitor guide for 2025.",
+    slug: "nahargarh-fort-jaipur-complete-guide-2026",
+    title: "Nahargarh Fort Jaipur Complete Guide 2026 - Sunset Point, Timings & Tours",
+    excerpt: "Discover Nahargarh Fort Jaipur - the Tiger Fort offering best sunset views of Pink City, Madhavendra Palace, rooftop cafes, night visits & complete visitor guide for 2026.",
 
     category: "Attractions",
     tags: ["Attractions", "Jaipur", "Forts", "Sunset Views", "Rajasthan", "Romance"],
@@ -7641,16 +7641,16 @@ export const attractionBlogPosts = [
 
     relatedBlogs: [
       {
-        title: "Amber Fort Complete Guide 2025",
-        slug: "amber-fort-jaipur-complete-guide-2025"
+        title: "Amber Fort Complete Guide 2026",
+        slug: "amber-fort-jaipur-complete-guide-2026"
       },
       {
-        title: "Jaigarh Fort Jaipur Guide 2025",
-        slug: "jaigarh-fort-jaipur-complete-guide-2025"
+        title: "Jaigarh Fort Jaipur Guide 2026",
+        slug: "jaigarh-fort-jaipur-complete-guide-2026"
       },
       {
-        title: "Hawa Mahal Complete Guide 2025",
-        slug: "hawa-mahal-jaipur-complete-guide-2025"
+        title: "Hawa Mahal Complete Guide 2026",
+        slug: "hawa-mahal-jaipur-complete-guide-2026"
       }
     ],
 
@@ -7706,7 +7706,7 @@ export const attractionBlogPosts = [
     featured: false,
     views: 0,
 
-    metaTitle: "Nahargarh Fort Jaipur Guide 2025 - Sunset Views, Timings, Entry Fee & Tours",
+    metaTitle: "Nahargarh Fort Jaipur Guide 2026 - Sunset Views, Timings, Entry Fee & Tours",
     metaDescription: "Complete guide to Nahargarh Fort Jaipur - best sunset point in Pink City, Madhavendra Palace, rooftop cafes, night timings & how to reach this Tiger Fort.",
 
     content: `
@@ -7795,7 +7795,7 @@ export const attractionBlogPosts = [
 
       <h2>Nahargarh Fort Entry Fee & Timings</h2>
 
-      <h3>Entry Fee (2025)</h3>
+      <h3>Entry Fee (2026)</h3>
       <ul>
         <li><strong>Indian Nationals:</strong> ₹50 per person</li>
         <li><strong>Foreign Tourists:</strong> ₹200 per person</li>
@@ -7934,10 +7934,10 @@ export const attractionBlogPosts = [
 
       <h2>Nearby Attractions</h2>
       <ul>
-        <li><strong>Jaigarh Fort (6 km):</strong> Connected via scenic ridge road - <a href="/blog/jaigarh-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Complete Guide</a></li>
+        <li><strong>Jaigarh Fort (6 km):</strong> Connected via scenic ridge road - <a href="/blog/jaigarh-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Complete Guide</a></li>
         <li><strong>Gaitor Ki Chhatriyan (2 km):</strong> Royal cremation grounds with stunning cenotaphs</li>
         <li><strong>Jal Mahal (4 km):</strong> Water Palace in Man Sagar Lake</li>
-        <li><strong>Amber Fort (16 km):</strong> Most famous Jaipur fort - <a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Complete Guide</a></li>
+        <li><strong>Amber Fort (16 km):</strong> Most famous Jaipur fort - <a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Complete Guide</a></li>
         <li><strong>City Palace (5 km):</strong> Royal residence in Jaipur city center</li>
         <li><strong>Hawa Mahal (5 km):</strong> Iconic Palace of Winds</li>
       </ul>
@@ -7992,21 +7992,21 @@ export const attractionBlogPosts = [
       <div class="bg-gray-100 p-6 rounded-xl my-8">
         <h3 class="font-bold mb-4">Related Guides:</h3>
         <ul class="space-y-2">
-          <li>🏰 <a href="/blog/amber-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Amber Fort Complete Guide 2025</a></li>
-          <li>🏰 <a href="/blog/jaigarh-fort-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Jaigarh Fort & Jaivana Cannon Guide 2025</a></li>
-          <li>🏛️ <a href="/blog/hawa-mahal-jaipur-complete-guide-2025" class="text-blue-600 hover:underline">Hawa Mahal Complete Guide 2025</a></li>
+          <li>🏰 <a href="/blog/amber-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Amber Fort Complete Guide 2026</a></li>
+          <li>🏰 <a href="/blog/jaigarh-fort-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Jaigarh Fort & Jaivana Cannon Guide 2026</a></li>
+          <li>🏛️ <a href="/blog/hawa-mahal-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">Hawa Mahal Complete Guide 2026</a></li>
           <li>🗺️ <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">All Jaipur Sightseeing Tours</a></li>
         </ul>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2025 | Entry fees and timings are subject to change. Please verify current information before visiting.</p>
+      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2026 | Entry fees and timings are subject to change. Please verify current information before visiting.</p>
     `
   }
 
   ,{
     id: 120,
-    slug: "lake-palace-udaipur-complete-guide-2025",
-    title: "Lake Palace Udaipur Complete Guide 2025 - Floating Palace, Heritage Hotel & Tours",
+    slug: "lake-palace-udaipur-complete-guide-2026",
+    title: "Lake Palace Udaipur Complete Guide 2026 - Floating Palace, Heritage Hotel & Tours",
     excerpt: "Discover Lake Palace Udaipur - the iconic floating marble palace on Lake Pichola, now Taj Lake Palace luxury hotel, James Bond filming location, boat rides & complete visitor guide.",
 
     category: "Attractions",
@@ -8048,10 +8048,10 @@ export const attractionBlogPosts = [
       "city",
       "City of Lakes",
       "/sightseeing/udaipur",
-      "City Palace Udaipur Complete Guide 2025",
-      "city-palace-udaipur-complete-guide-2025",
-      "Jag Mandir Udaipur Guide 2025",
-      "jag-mandir-udaipur-complete-guide-2025",
+      "City Palace Udaipur Complete Guide 2026",
+      "city-palace-udaipur-complete-guide-2026",
+      "Jag Mandir Udaipur Guide 2026",
+      "jag-mandir-udaipur-complete-guide-2026",
       "Book Udaipur Lake Tour",
       "/sightseeing/udaipur",
       "Experience Lake Palace views with our comprehensive Udaipur tour including boat ride",
@@ -8062,7 +8062,7 @@ export const attractionBlogPosts = [
       "Jag Mandir Island Tour",
       "Expert Local Guide",
       "AC Private Vehicle",
-      "nahargarh fort jaipur complete guide 2025 - sunset point, timings & tours",
+      "nahargarh fort jaipur complete guide 2026 - sunset point, timings & tours",
       "jaipur full day city tour",
       "nahargarh fort jaipur guide",
       "nahargarh fort jaipur blog",
@@ -8083,10 +8083,10 @@ export const attractionBlogPosts = [
       "tourism advice",
       "traveler guide",
       "visitor information",
-      "tourist guide 2025",
-      "travel blog 2025",
-      "updated guide 2025",
-      "latest information 2025",
+      "tourist guide 2026",
+      "travel blog 2026",
+      "updated guide 2026",
+      "latest information 2026",
       "how to visit nahargarh",
       "what to see in nahargarh",
       "where to go nahargarh",
@@ -8213,7 +8213,7 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Lake Palace Udaipur Guide 2025 - Taj Heritage Hotel, Boat Rides & How to Visit",
+    metaTitle: "Lake Palace Udaipur Guide 2026 - Taj Heritage Hotel, Boat Rides & How to Visit",
     metaDescription: "Complete guide to Lake Palace Udaipur - iconic floating marble palace, Taj luxury hotel, James Bond filming location, boat rides, dining options & photography tips.",
 
     content: `
@@ -8424,7 +8424,7 @@ export const attractionBlogPosts = [
 
       <h2>Nearby Attractions</h2>
       <ul>
-        <li><strong>City Palace (500m):</strong> Massive royal complex - <a href="/blog/city-palace-udaipur-complete-guide-2025" class="text-blue-600 hover:underline">Complete Guide</a></li>
+        <li><strong>City Palace (500m):</strong> Massive royal complex - <a href="/blog/city-palace-udaipur-complete-guide-2026" class="text-blue-600 hover:underline">Complete Guide</a></li>
         <li><strong>Jag Mandir (1 km):</strong> Another island palace, accessible by boat</li>
         <li><strong>Bagore Ki Haveli (300m):</strong> 18th-century mansion with cultural shows</li>
         <li><strong>Jagdish Temple (400m):</strong> 17th-century temple dedicated to Lord Vishnu</li>
@@ -8483,13 +8483,13 @@ export const attractionBlogPosts = [
       <div class="bg-gray-100 p-6 rounded-xl my-8">
         <h3 class="font-bold mb-4">Related Guides:</h3>
         <ul class="space-y-2">
-          <li>🏰 <a href="/blog/city-palace-udaipur-complete-guide-2025" class="text-blue-600 hover:underline">City Palace Udaipur Complete Guide 2025</a></li>
-          <li>🏝️ <a href="/blog/jag-mandir-udaipur-complete-guide-2025" class="text-blue-600 hover:underline">Jag Mandir Island Palace Guide 2025</a></li>
+          <li>🏰 <a href="/blog/city-palace-udaipur-complete-guide-2026" class="text-blue-600 hover:underline">City Palace Udaipur Complete Guide 2026</a></li>
+          <li>🏝️ <a href="/blog/jag-mandir-udaipur-complete-guide-2026" class="text-blue-600 hover:underline">Jag Mandir Island Palace Guide 2026</a></li>
           <li>🗺️ <a href="/sightseeing/udaipur" class="text-blue-600 hover:underline">All Udaipur Sightseeing Tours</a></li>
         </ul>
       </div>
 
-      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2025 | Prices and timings are subject to change. Please verify current information before visiting.</p>
+      <p class="text-center text-sm text-gray-600 mt-8">Last Updated: January 2026 | Prices and timings are subject to change. Please verify current information before visiting.</p>
     `
   }
 
@@ -8497,9 +8497,9 @@ export const attractionBlogPosts = [
 
   ,{
     id: 121,
-    slug: "kedarnath-temple-complete-guide-2025",
-    title: "Kedarnath Temple Complete Guide 2025 - Pilgrimage, Trek, Timings & Tour Packages",
-    excerpt: "Discover Kedarnath Temple - one of 12 Jyotirlingas, sacred Char Dham pilgrimage, trekking route, helicopter services, timings & complete travel guide for 2025.",
+    slug: "kedarnath-temple-complete-guide-2026",
+    title: "Kedarnath Temple Complete Guide 2026 - Pilgrimage, Trek, Timings & Tour Packages",
+    excerpt: "Discover Kedarnath Temple - one of 12 Jyotirlingas, sacred Char Dham pilgrimage, trekking route, helicopter services, timings & complete travel guide for 2026.",
 
     category: "Attractions",
     tags: ["Attractions", "Kedarnath", "Religious Sites", "Temples", "Uttarakhand", "Char Dham", "Pilgrimage", "Trekking"],
@@ -8512,7 +8512,7 @@ export const attractionBlogPosts = [
       "kedarnath pilgrimage",
       "kedarnath temple guide",
       "visit kedarnath",
-      "kedarnath 2025",
+      "kedarnath 2026",
 
       // Location-Based
       "kedarnath uttarakhand",
@@ -8610,18 +8610,18 @@ export const attractionBlogPosts = [
         slug: "badrinath",
         type: "pilgrimage",
         description: "Another Char Dham destination",
-        url: "/blog/badrinath-temple-complete-guide-2025"
+        url: "/blog/badrinath-temple-complete-guide-2026"
       }
     ],
 
     relatedBlogs: [
       {
-        title: "Badrinath Temple Complete Guide 2025",
-        slug: "badrinath-temple-complete-guide-2025"
+        title: "Badrinath Temple Complete Guide 2026",
+        slug: "badrinath-temple-complete-guide-2026"
       },
       {
-        title: "Char Dham Yatra Complete Guide 2025",
-        slug: "char-dham-yatra-complete-guide-2025"
+        title: "Char Dham Yatra Complete Guide 2026",
+        slug: "char-dham-yatra-complete-guide-2026"
       }
     ],
 
@@ -8679,7 +8679,7 @@ export const attractionBlogPosts = [
 
     content: `
       <div class="blog-intro">
-        <p>The <strong>Kedarnath Temple</strong>, perched at 11,755 feet in the Garhwal Himalayas, is one of India's most sacred shrines and part of the prestigious Char Dham pilgrimage. Dedicated to Lord Shiva, this ancient temple attracts lakhs of devotees annually who undertake the challenging 16 km trek or opt for helicopter services. This complete guide covers everything you need for your Kedarnath Yatra 2025.</p>
+        <p>The <strong>Kedarnath Temple</strong>, perched at 11,755 feet in the Garhwal Himalayas, is one of India's most sacred shrines and part of the prestigious Char Dham pilgrimage. Dedicated to Lord Shiva, this ancient temple attracts lakhs of devotees annually who undertake the challenging 16 km trek or opt for helicopter services. This complete guide covers everything you need for your Kedarnath Yatra 2026.</p>
 
         <div class="bg-blue-50 border-l-4 border-blue-600 p-6 my-6">
           <h3 class="text-xl font-bold mb-3">🚁 Skip the Trek - Helicopter Packages Available</h3>
@@ -8716,13 +8716,13 @@ export const attractionBlogPosts = [
         <a href="/sightseeing" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">Book Char Dham Yatra - ₹45,000 →</a>
       </div>
 
-      <h2>Temple Timings & Opening Dates 2025</h2>
+      <h2>Temple Timings & Opening Dates 2026</h2>
 
       <h3>Temple Opening & Closing Dates</h3>
       <p>Kedarnath Temple remains closed during winter due to extreme snow and weather conditions:</p>
       <ul>
-        <li><strong>Opening Date 2025:</strong> Expected late April/early May (exact date announced on Akshaya Tritiya)</li>
-        <li><strong>Closing Date 2025:</strong> Expected early November (on Bhai Dooj/Yama Dwitiya)</li>
+        <li><strong>Opening Date 2026:</strong> Expected late April/early May (exact date announced on Akshaya Tritiya)</li>
+        <li><strong>Closing Date 2026:</strong> Expected early November (on Bhai Dooj/Yama Dwitiya)</li>
         <li><strong>Yatra Season:</strong> Approximately 6 months (May to November)</li>
       </ul>
 
@@ -8966,8 +8966,8 @@ export const attractionBlogPosts = [
 
       <h3 class="mt-6">Related Pilgrimage Guides:</h3>
       <ul>
-        <li><a href="/blog/badrinath-temple-complete-guide-2025" class="text-blue-600 hover:underline">Badrinath Temple Complete Guide 2025</a></li>
-        <li><a href="/blog/char-dham-yatra-complete-guide-2025" class="text-blue-600 hover:underline">Char Dham Yatra Complete Guide 2025</a></li>
+        <li><a href="/blog/badrinath-temple-complete-guide-2026" class="text-blue-600 hover:underline">Badrinath Temple Complete Guide 2026</a></li>
+        <li><a href="/blog/char-dham-yatra-complete-guide-2026" class="text-blue-600 hover:underline">Char Dham Yatra Complete Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Pilgrimage Tour Packages</a></li>
       </ul>
     `,
@@ -8984,16 +8984,16 @@ export const attractionBlogPosts = [
     externalLinks: 0,
     ctaCount: 4,
 
-    metaTitle: "Kedarnath Temple Complete Guide 2025 - Trek, Helicopter, Timings & Yatra Packages",
-    metaDescription: "Kedarnath Temple guide: sacred Jyotirlinga, Char Dham pilgrimage, 16km trek route, helicopter booking, timings, best time to visit & complete yatra planning for 2025."
+    metaTitle: "Kedarnath Temple Complete Guide 2026 - Trek, Helicopter, Timings & Yatra Packages",
+    metaDescription: "Kedarnath Temple guide: sacred Jyotirlinga, Char Dham pilgrimage, 16km trek route, helicopter booking, timings, best time to visit & complete yatra planning for 2026."
   },
 
   // ===== HILL STATION & NATURE DESTINATION BLOGS =====
 
   {
     id: 201,
-    slug: "nainital-complete-guide-2025",
-    title: "Nainital Complete Guide 2025 - Lake District of India, Best Places, Timings & Tour Packages",
+    slug: "nainital-complete-guide-2026",
+    title: "Nainital Complete Guide 2026 - Lake District of India, Best Places, Timings & Tour Packages",
     excerpt: "Discover Nainital, the stunning Lake District of India. Complete guide to Naini Lake, Snow View Point, Mall Road, Bhimtal, Naukuchiatal, best time to visit & tour packages from Delhi.",
 
     city: "nainital",
@@ -9010,7 +9010,7 @@ export const attractionBlogPosts = [
       "visit nainital",
       "nainital tourism",
       "nainital travel guide",
-      "nainital 2025",
+      "nainital 2026",
       "nainital uttarakhand",
       "nainital lake",
       "naini lake",
@@ -9079,8 +9079,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Mussoorie Complete Guide 2025", slug: "mussoorie-complete-guide-2025" },
-      { title: "Jim Corbett Complete Guide 2025", slug: "jim-corbett-complete-guide-2025" }
+      { title: "Mussoorie Complete Guide 2026", slug: "mussoorie-complete-guide-2026" },
+      { title: "Jim Corbett Complete Guide 2026", slug: "jim-corbett-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -9254,8 +9254,8 @@ export const attractionBlogPosts = [
 
       <h3 class="mt-6">Related Destinations:</h3>
       <ul>
-        <li><a href="/blog/mussoorie-complete-guide-2025" class="text-blue-600 hover:underline">Mussoorie Complete Guide 2025</a></li>
-        <li><a href="/blog/jim-corbett-complete-guide-2025" class="text-blue-600 hover:underline">Jim Corbett National Park Guide 2025</a></li>
+        <li><a href="/blog/mussoorie-complete-guide-2026" class="text-blue-600 hover:underline">Mussoorie Complete Guide 2026</a></li>
+        <li><a href="/blog/jim-corbett-complete-guide-2026" class="text-blue-600 hover:underline">Jim Corbett National Park Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
     `,
@@ -9267,14 +9267,14 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Nainital Complete Guide 2025 - Lake District of India, Places to Visit & Tour Packages",
-    metaDescription: "Nainital complete travel guide: Naini Lake, Snow View Point, Mall Road, Bhimtal, Naukuchiatal, best time to visit, how to reach & Delhi to Nainital tour packages 2025."
+    metaTitle: "Nainital Complete Guide 2026 - Lake District of India, Places to Visit & Tour Packages",
+    metaDescription: "Nainital complete travel guide: Naini Lake, Snow View Point, Mall Road, Bhimtal, Naukuchiatal, best time to visit, how to reach & Delhi to Nainital tour packages 2026."
   },
 
   {
     id: 202,
-    slug: "mussoorie-complete-guide-2025",
-    title: "Mussoorie Complete Guide 2025 - Queen of Hills, Best Places, Timings & Tour Packages",
+    slug: "mussoorie-complete-guide-2026",
+    title: "Mussoorie Complete Guide 2026 - Queen of Hills, Best Places, Timings & Tour Packages",
     excerpt: "Discover Mussoorie, the Queen of Hills. Complete guide to Mall Road, Kempty Falls, Gun Hill, Lal Tibba, Company Garden, best time to visit & tour packages from Delhi.",
 
     city: "mussoorie",
@@ -9291,7 +9291,7 @@ export const attractionBlogPosts = [
       "visit mussoorie",
       "mussoorie tourism",
       "mussoorie travel guide",
-      "mussoorie 2025",
+      "mussoorie 2026",
       "queen of hills",
       "mussoorie uttarakhand",
       "mussoorie hill station",
@@ -9351,8 +9351,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Nainital Complete Guide 2025", slug: "nainital-complete-guide-2025" },
-      { title: "Kedarnath Temple Complete Guide 2025", slug: "kedarnath-temple-complete-guide-2025" }
+      { title: "Nainital Complete Guide 2026", slug: "nainital-complete-guide-2026" },
+      { title: "Kedarnath Temple Complete Guide 2026", slug: "kedarnath-temple-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -9532,8 +9532,8 @@ export const attractionBlogPosts = [
 
       <h3 class="mt-6">Related Destinations:</h3>
       <ul>
-        <li><a href="/blog/nainital-complete-guide-2025" class="text-blue-600 hover:underline">Nainital Complete Guide 2025</a></li>
-        <li><a href="/blog/jim-corbett-complete-guide-2025" class="text-blue-600 hover:underline">Jim Corbett National Park Guide 2025</a></li>
+        <li><a href="/blog/nainital-complete-guide-2026" class="text-blue-600 hover:underline">Nainital Complete Guide 2026</a></li>
+        <li><a href="/blog/jim-corbett-complete-guide-2026" class="text-blue-600 hover:underline">Jim Corbett National Park Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
     `,
@@ -9545,14 +9545,14 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Mussoorie Complete Guide 2025 - Queen of Hills, Places to Visit & Tour Packages",
-    metaDescription: "Mussoorie complete travel guide: Mall Road, Kempty Falls, Gun Hill, Lal Tibba, Company Garden, best time to visit, how to reach & Delhi to Mussoorie tour packages 2025."
+    metaTitle: "Mussoorie Complete Guide 2026 - Queen of Hills, Places to Visit & Tour Packages",
+    metaDescription: "Mussoorie complete travel guide: Mall Road, Kempty Falls, Gun Hill, Lal Tibba, Company Garden, best time to visit, how to reach & Delhi to Mussoorie tour packages 2026."
   },
 
   {
     id: 203,
-    slug: "jim-corbett-complete-guide-2025",
-    title: "Jim Corbett National Park Complete Guide 2025 - Tiger Safari, Wildlife, Zones & Tour Packages",
+    slug: "jim-corbett-complete-guide-2026",
+    title: "Jim Corbett National Park Complete Guide 2026 - Tiger Safari, Wildlife, Zones & Tour Packages",
     excerpt: "Discover Jim Corbett National Park, India's oldest wildlife sanctuary. Complete guide to tiger safari, zones, best time, permits, Dhikala, wildlife spotting & tour packages from Delhi.",
 
     city: "corbett",
@@ -9572,7 +9572,7 @@ export const attractionBlogPosts = [
       "visit jim corbett",
       "corbett tourism",
       "corbett travel guide",
-      "corbett 2025",
+      "corbett 2026",
       "corbett uttarakhand",
       "corbett tiger reserve",
       "dhikala zone",
@@ -9628,8 +9628,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Nainital Complete Guide 2025", slug: "nainital-complete-guide-2025" },
-      { title: "Mussoorie Complete Guide 2025", slug: "mussoorie-complete-guide-2025" }
+      { title: "Nainital Complete Guide 2026", slug: "nainital-complete-guide-2026" },
+      { title: "Mussoorie Complete Guide 2026", slug: "mussoorie-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -9825,8 +9825,8 @@ export const attractionBlogPosts = [
 
       <h3 class="mt-6">Related Destinations:</h3>
       <ul>
-        <li><a href="/blog/nainital-complete-guide-2025" class="text-blue-600 hover:underline">Nainital Complete Guide 2025</a></li>
-        <li><a href="/blog/mussoorie-complete-guide-2025" class="text-blue-600 hover:underline">Mussoorie Complete Guide 2025</a></li>
+        <li><a href="/blog/nainital-complete-guide-2026" class="text-blue-600 hover:underline">Nainital Complete Guide 2026</a></li>
+        <li><a href="/blog/mussoorie-complete-guide-2026" class="text-blue-600 hover:underline">Mussoorie Complete Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
     `,
@@ -9838,14 +9838,14 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Jim Corbett National Park Complete Guide 2025 - Tiger Safari, Zones & Tour Packages",
-    metaDescription: "Jim Corbett National Park complete guide: tiger safari, Dhikala, Bijrani, Jhirna zones, wildlife, best time, permit booking & Delhi to Corbett tour packages 2025."
+    metaTitle: "Jim Corbett National Park Complete Guide 2026 - Tiger Safari, Zones & Tour Packages",
+    metaDescription: "Jim Corbett National Park complete guide: tiger safari, Dhikala, Bijrani, Jhirna zones, wildlife, best time, permit booking & Delhi to Corbett tour packages 2026."
   },
 
   {
     id: 204,
-    slug: "mathura-vrindavan-complete-guide-2025",
-    title: "Mathura Vrindavan Complete Guide 2025 - Krishna's Birthplace, Temples, Timings & Tour Packages",
+    slug: "mathura-vrindavan-complete-guide-2026",
+    title: "Mathura Vrindavan Complete Guide 2026 - Krishna's Birthplace, Temples, Timings & Tour Packages",
     excerpt: "Discover Mathura Vrindavan, the sacred land of Lord Krishna. Complete guide to Krishna Janmabhoomi, Banke Bihari Temple, ISKCON, Prem Mandir, Govardhan & spiritual tour packages from Delhi.",
 
     city: "mathura",
@@ -9917,8 +9917,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Taj Mahal Complete Guide 2025", slug: "taj-mahal-complete-guide-2025" },
-      { title: "Varanasi Complete Guide 2025", slug: "varanasi-complete-guide-2025" }
+      { title: "Taj Mahal Complete Guide 2026", slug: "taj-mahal-complete-guide-2026" },
+      { title: "Varanasi Complete Guide 2026", slug: "varanasi-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -10113,8 +10113,8 @@ export const attractionBlogPosts = [
 
       <h3 class="mt-6">Related Destinations:</h3>
       <ul>
-        <li><a href="/blog/varanasi-complete-guide-2025" class="text-blue-600 hover:underline">Varanasi Complete Guide 2025</a></li>
-        <li><a href="/blog/taj-mahal-complete-guide-2025" class="text-blue-600 hover:underline">Taj Mahal Complete Guide 2025</a></li>
+        <li><a href="/blog/varanasi-complete-guide-2026" class="text-blue-600 hover:underline">Varanasi Complete Guide 2026</a></li>
+        <li><a href="/blog/taj-mahal-complete-guide-2026" class="text-blue-600 hover:underline">Taj Mahal Complete Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
     `,
@@ -10126,14 +10126,14 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Mathura Vrindavan Complete Guide 2025 - Krishna Birthplace, Temples & Tour Packages",
-    metaDescription: "Mathura Vrindavan complete guide: Krishna Janmabhoomi, Banke Bihari Temple, ISKCON, Prem Mandir, Govardhan, best time to visit & Delhi tour packages 2025."
+    metaTitle: "Mathura Vrindavan Complete Guide 2026 - Krishna Birthplace, Temples & Tour Packages",
+    metaDescription: "Mathura Vrindavan complete guide: Krishna Janmabhoomi, Banke Bihari Temple, ISKCON, Prem Mandir, Govardhan, best time to visit & Delhi tour packages 2026."
   },
 
   {
     id: 205,
-    slug: "varanasi-complete-guide-2025",
-    title: "Varanasi Complete Guide 2025 - Holy Ganges, Ghats, Temples, Aarti & Tour Packages",
+    slug: "varanasi-complete-guide-2026",
+    title: "Varanasi Complete Guide 2026 - Holy Ganges, Ghats, Temples, Aarti & Tour Packages",
     excerpt: "Discover Varanasi, the spiritual capital of India. Complete guide to Ganga Aarti, ghats, Kashi Vishwanath Temple, Sarnath, boat rides, best time to visit & tour packages from Delhi.",
 
     city: "varanasi",
@@ -10152,7 +10152,7 @@ export const attractionBlogPosts = [
       "visit varanasi",
       "varanasi tourism",
       "varanasi travel guide",
-      "varanasi 2025",
+      "varanasi 2026",
       "varanasi ghats",
       "ganga aarti varanasi",
       "dashashwamedh ghat",
@@ -10205,8 +10205,8 @@ export const attractionBlogPosts = [
     ],
 
     relatedBlogs: [
-      { title: "Mathura Vrindavan Complete Guide 2025", slug: "mathura-vrindavan-complete-guide-2025" },
-      { title: "Kedarnath Temple Complete Guide 2025", slug: "kedarnath-temple-complete-guide-2025" }
+      { title: "Mathura Vrindavan Complete Guide 2026", slug: "mathura-vrindavan-complete-guide-2026" },
+      { title: "Kedarnath Temple Complete Guide 2026", slug: "kedarnath-temple-complete-guide-2026" }
     ],
 
     primaryCTA: {
@@ -10420,8 +10420,8 @@ export const attractionBlogPosts = [
 
       <h3 class="mt-6">Related Destinations:</h3>
       <ul>
-        <li><a href="/blog/mathura-vrindavan-complete-guide-2025" class="text-blue-600 hover:underline">Mathura Vrindavan Complete Guide 2025</a></li>
-        <li><a href="/blog/kedarnath-temple-complete-guide-2025" class="text-blue-600 hover:underline">Kedarnath Temple Complete Guide 2025</a></li>
+        <li><a href="/blog/mathura-vrindavan-complete-guide-2026" class="text-blue-600 hover:underline">Mathura Vrindavan Complete Guide 2026</a></li>
+        <li><a href="/blog/kedarnath-temple-complete-guide-2026" class="text-blue-600 hover:underline">Kedarnath Temple Complete Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
     `,
@@ -10433,8 +10433,8 @@ export const attractionBlogPosts = [
     featured: true,
     views: 0,
 
-    metaTitle: "Varanasi Complete Guide 2025 - Holy Ganges, Ghats, Ganga Aarti & Tour Packages",
-    metaDescription: "Varanasi complete travel guide: Ganga Aarti, ghats, Kashi Vishwanath Temple, sunrise boat ride, Sarnath, best time to visit & Delhi to Varanasi tour packages 2025."
+    metaTitle: "Varanasi Complete Guide 2026 - Holy Ganges, Ghats, Ganga Aarti & Tour Packages",
+    metaDescription: "Varanasi complete travel guide: Ganga Aarti, ghats, Kashi Vishwanath Temple, sunrise boat ride, Sarnath, best time to visit & Delhi to Varanasi tour packages 2026."
   }
 ];
 

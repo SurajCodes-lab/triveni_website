@@ -19,20 +19,23 @@ export default function TempleLayout({ post, relatedLinks }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-white">
-      {/* Spiritual Hero Section */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-        {/* Background with spiritual gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-500">
-          {/* Om pattern overlay */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50' y='60' font-size='40' text-anchor='middle' fill='white'%3E🕉️%3C/text%3E%3C/svg%3E")`,
-              backgroundSize: '100px 100px',
-            }} />
-          </div>
-
+      {/* Spiritual Hero Section with Image */}
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={post.heroImage || post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-900/40 via-transparent to-transparent" />
           {/* Decorative top border */}
-          <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400" />
+          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400" />
         </div>
 
         {/* Floating elements */}
@@ -57,21 +60,13 @@ export default function TempleLayout({ post, relatedLinks }) {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-orange-100 mb-6"
+            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
           >
-            <Link href="/" className="hover:text-yellow-300 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-yellow-300 transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            {post.city && relatedLinks?.cityTours && (
-              <>
-                <Link href={relatedLinks.cityTours} className="hover:text-yellow-300 transition-colors">
-                  {post.city.charAt(0).toUpperCase() + post.city.slice(1)}
-                </Link>
-                <ChevronRight className="w-4 h-4" />
-              </>
-            )}
-            <span className="text-white">Temple & Spiritual</span>
+            <span className="text-[#FACF2D] font-semibold">{post.category || 'Temple & Spiritual'}</span>
           </motion.nav>
 
           {/* Badge */}
@@ -170,27 +165,6 @@ export default function TempleLayout({ post, relatedLinks }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Content Area */}
           <main className="lg:col-span-8">
-            {/* Featured Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-8 shadow-2xl"
-            >
-              <Image
-                src={post.image || '/images/placeholder-temple.jpg'}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-orange-900/50 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-white text-lg font-medium bg-black/30 backdrop-blur-sm px-4 py-2 rounded-lg inline-block">
-                  📿 {post.excerpt?.slice(0, 100)}...
-                </p>
-              </div>
-            </motion.div>
-
             {/* Spiritual Quote Box */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

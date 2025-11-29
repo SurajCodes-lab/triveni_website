@@ -18,16 +18,21 @@ export default function NatureLayout({ post, relatedLinks }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-emerald-50 to-white">
-      {/* Nature Hero Section */}
-      <section className="relative min-h-[75vh] flex items-end overflow-hidden">
-        {/* Background with nature gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 via-green-600 to-teal-500">
-          {/* Mountain silhouette overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 opacity-20">
-            <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
-              <path fill="currentColor" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,128C672,107,768,117,864,144C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
-            </svg>
-          </div>
+      {/* Nature Hero Section with Image */}
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={post.heroImage || post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-transparent to-transparent" />
         </div>
 
         {/* Floating nature elements */}
@@ -52,21 +57,13 @@ export default function NatureLayout({ post, relatedLinks }) {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-green-100 mb-6"
+            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
           >
-            <Link href="/" className="hover:text-yellow-300 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-yellow-300 transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            {post.city && relatedLinks?.cityTours && (
-              <>
-                <Link href={relatedLinks.cityTours} className="hover:text-yellow-300 transition-colors">
-                  {post.city.charAt(0).toUpperCase() + post.city.slice(1)}
-                </Link>
-                <ChevronRight className="w-4 h-4" />
-              </>
-            )}
-            <span className="text-white">Nature & Hills</span>
+            <span className="text-[#FACF2D] font-semibold">{post.category || 'Nature & Hills'}</span>
           </motion.nav>
 
           {/* Badge */}
@@ -153,25 +150,6 @@ export default function NatureLayout({ post, relatedLinks }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Content Area */}
           <main className="lg:col-span-8">
-            {/* Featured Image with Photo Tips */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-8 shadow-2xl"
-            >
-              <Image
-                src={post.image || '/images/placeholder-nature.jpg'}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center gap-2">
-                <Camera className="w-4 h-4" />
-                <span className="text-sm font-medium">Best Photo Spot</span>
-              </div>
-            </motion.div>
-
             {/* Nature Tips Box */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

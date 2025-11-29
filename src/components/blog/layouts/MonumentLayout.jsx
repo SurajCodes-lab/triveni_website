@@ -18,16 +18,21 @@ export default function MonumentLayout({ post, relatedLinks }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white">
-      {/* Monument Hero Section */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-blue-900 to-indigo-900">
-          {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-10" style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }} />
+      {/* Monument Hero Section with Image */}
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={post.heroImage || post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-transparent to-transparent" />
         </div>
 
         {/* Floating elements */}
@@ -36,7 +41,7 @@ export default function MonumentLayout({ post, relatedLinks }) {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute top-24 right-24 hidden lg:block"
         >
-          <Globe className="w-24 h-24 text-blue-400/20" />
+          <Globe className="w-24 h-24 text-white/20" />
         </motion.div>
 
         {/* Hero Content */}
@@ -45,21 +50,13 @@ export default function MonumentLayout({ post, relatedLinks }) {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-blue-200 mb-6"
+            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
           >
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            {post.city && relatedLinks?.cityTours && (
-              <>
-                <Link href={relatedLinks.cityTours} className="hover:text-white transition-colors">
-                  {post.city.charAt(0).toUpperCase() + post.city.slice(1)}
-                </Link>
-                <ChevronRight className="w-4 h-4" />
-              </>
-            )}
-            <span className="text-white">Monument</span>
+            <span className="text-[#FACF2D] font-semibold">{post.category || 'Monument'}</span>
           </motion.nav>
 
           {/* UNESCO Badge */}
@@ -144,21 +141,6 @@ export default function MonumentLayout({ post, relatedLinks }) {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <main className="lg:col-span-8">
-            {/* Featured Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-8 shadow-2xl border-4 border-blue-100"
-            >
-              <Image
-                src={post.image || '/images/placeholder-monument.jpg'}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-
             {/* Historical Timeline Note */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -25,36 +25,21 @@ export default function CityGuideLayout({ post, relatedLinks }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-white">
-      {/* City Hero Section */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-        {/* Background with city vibe */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-pink-600 to-rose-500">
-          {/* City skyline pattern */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 opacity-20">
-            <svg viewBox="0 0 1440 200" className="w-full h-full" fill="currentColor">
-              <rect x="50" y="100" width="40" height="100" />
-              <rect x="100" y="60" width="50" height="140" />
-              <rect x="160" y="80" width="30" height="120" />
-              <rect x="200" y="40" width="60" height="160" />
-              <rect x="280" y="90" width="35" height="110" />
-              <rect x="330" y="50" width="45" height="150" />
-              <rect x="400" y="70" width="55" height="130" />
-              <rect x="480" y="30" width="40" height="170" />
-              <rect x="540" y="80" width="50" height="120" />
-              <rect x="610" y="60" width="35" height="140" />
-              <rect x="670" y="45" width="60" height="155" />
-              <rect x="750" y="85" width="40" height="115" />
-              <rect x="810" y="55" width="55" height="145" />
-              <rect x="890" y="70" width="45" height="130" />
-              <rect x="960" y="40" width="50" height="160" />
-              <rect x="1030" y="90" width="35" height="110" />
-              <rect x="1090" y="60" width="60" height="140" />
-              <rect x="1170" y="50" width="40" height="150" />
-              <rect x="1230" y="75" width="55" height="125" />
-              <rect x="1310" y="65" width="45" height="135" />
-              <rect x="1380" y="85" width="50" height="115" />
-            </svg>
-          </div>
+      {/* City Hero Section with Image */}
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={post.heroImage || post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/40 via-transparent to-transparent" />
         </div>
 
         {/* Floating city elements */}
@@ -72,21 +57,13 @@ export default function CityGuideLayout({ post, relatedLinks }) {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-purple-200 mb-6"
+            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
           >
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            {post.city && relatedLinks?.cityTours && (
-              <>
-                <Link href={relatedLinks.cityTours} className="hover:text-white transition-colors">
-                  {post.city.charAt(0).toUpperCase() + post.city.slice(1)}
-                </Link>
-                <ChevronRight className="w-4 h-4" />
-              </>
-            )}
-            <span className="text-white">City Guide</span>
+            <span className="text-[#FACF2D] font-semibold">{post.category || 'City Guide'}</span>
           </motion.nav>
 
           {/* Badge */}
@@ -162,25 +139,6 @@ export default function CityGuideLayout({ post, relatedLinks }) {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <main className="lg:col-span-8">
-            {/* Featured Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden mb-8 shadow-2xl"
-            >
-              <Image
-                src={post.image || '/images/placeholder-city.jpg'}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute top-4 left-4 bg-purple-600 text-white px-4 py-2 rounded-full flex items-center gap-2">
-                <Camera className="w-4 h-4" />
-                <span className="text-sm font-medium">Explore {post.city}</span>
-              </div>
-            </motion.div>
-
             {/* Quick Navigation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

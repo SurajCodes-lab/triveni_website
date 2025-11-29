@@ -3,14 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
-import { Calendar, Clock, Eye, Tag, Share2, Facebook, Twitter, Linkedin, ArrowLeft, Sparkles, BookOpen, TrendingUp, ChevronRight } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
+import { Calendar, Clock, Eye, Tag, Share2, Facebook, Twitter, Linkedin, ArrowLeft, Sparkles, BookOpen, ChevronRight } from 'lucide-react';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import WhatsAppCTA from '@/components/blog/WhatsAppCTA';
 
 export default function BlogPostPageClient({ post }) {
   const [mounted, setMounted] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
   const contentRef = useRef(null);
   const isContentInView = useInView(contentRef, { once: true, amount: 0.1 });
@@ -22,13 +21,6 @@ export default function BlogPostPageClient({ post }) {
 
   useEffect(() => {
     setMounted(true);
-
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   // Safety check: ensure post has required properties
@@ -57,117 +49,88 @@ export default function BlogPostPageClient({ post }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      {/* Hero Section with Animated Background */}
+      {/* Hero Section with Destination Image */}
       <motion.section
         ref={heroRef}
         style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden"
+        className="relative min-h-[70vh] md:min-h-[85vh] flex items-end overflow-hidden"
       >
-        {/* Animated Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-          {/* Multiple Animated Gradient Layers */}
-          <motion.div
-            animate={{
-              background: [
-                'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 80% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 80%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-              ],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute inset-0"
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={post.heroImage || post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
+          {/* Gradient Overlays for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
+          {/* Animated Color Accent Overlay */}
           <motion.div
             animate={{
               background: [
-                'radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                'radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                'radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
+                'linear-gradient(45deg, rgba(250, 207, 45, 0.1) 0%, transparent 50%)',
+                'linear-gradient(135deg, rgba(250, 207, 45, 0.15) 0%, transparent 50%)',
+                'linear-gradient(45deg, rgba(250, 207, 45, 0.1) 0%, transparent 50%)',
               ],
             }}
             transition={{
               duration: 8,
               repeat: Infinity,
-              ease: "linear"
+              ease: "easeInOut"
             }}
             className="absolute inset-0"
           />
         </div>
 
-        {/* Animated Morphing Blobs */}
+        {/* Floating Particles Effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {mounted && [0, 1, 2].map((i) => (
+          {mounted && [...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 w-64 h-64 md:w-96 md:h-96"
+              className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full bg-[#FACF2D]/40"
               style={{
-                background: i % 2 === 0
-                  ? 'linear-gradient(45deg, #FACF2D, #FFA500)'
-                  : 'linear-gradient(45deg, #8B5CF6, #EC4899)',
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
               }}
               animate={{
-                x: [
-                  Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                  Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                  Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                ],
-                y: [
-                  Math.random() * 400,
-                  Math.random() * 400,
-                  Math.random() * 400,
-                ],
-                scale: [1, 1.5, 1.2, 1],
-                rotate: [0, 180, 360],
+                y: [-20, -100, -20],
+                opacity: [0, 1, 0],
+                scale: [0.5, 1, 0.5],
               }}
               transition={{
-                duration: 20 + i * 5,
+                duration: 4 + Math.random() * 4,
                 repeat: Infinity,
+                delay: Math.random() * 4,
                 ease: "easeInOut",
               }}
             />
           ))}
         </div>
 
-        {/* Cursor Follow Effect */}
-        {mounted && (
-          <motion.div
-            className="absolute w-96 h-96 rounded-full pointer-events-none mix-blend-screen"
-            style={{
-              background: 'radial-gradient(circle, rgba(250,207,45,0.15) 0%, transparent 70%)',
-            }}
-            animate={{
-              x: mousePosition.x - 192,
-              y: mousePosition.y - 192,
-            }}
-            transition={{
-              type: "spring",
-              damping: 30,
-              stiffness: 200,
-            }}
-          />
-        )}
+        {/* Subtle Vignette Effect */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          boxShadow: 'inset 0 0 150px 50px rgba(0,0,0,0.5)'
+        }} />
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-12">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16 md:pb-20">
           {/* Breadcrumb */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-2 text-sm text-white/80 mb-6"
+            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
           >
             <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-white">{post.category}</span>
+            <span className="text-[#FACF2D] font-semibold">{post.category}</span>
           </motion.div>
 
           {/* Featured Badge */}
@@ -181,8 +144,8 @@ export default function BlogPostPageClient({ post }) {
                 damping: 15,
                 delay: 0.3
               }}
-              whileHover={{ scale: 1.1, rotateY: 10 }}
-              className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-6 py-2.5 rounded-full text-sm font-bold mb-6 shadow-2xl"
+              whileHover={{ scale: 1.1 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D] to-yellow-400 text-black px-6 py-2.5 rounded-full text-sm font-bold mb-6 shadow-2xl"
             >
               <motion.span
                 animate={{ rotate: 360 }}
@@ -190,39 +153,53 @@ export default function BlogPostPageClient({ post }) {
               >
                 ⭐
               </motion.span>
-              Featured Article
+              Featured Guide
             </motion.div>
           )}
 
-          {/* Title */}
+          {/* Title with Text Shadow */}
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
-            className="text-3xl md:text-4xl lg:text-6xl font-black text-white mb-6 leading-tight max-w-5xl"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 leading-tight max-w-5xl drop-shadow-2xl"
+            style={{ textShadow: '2px 4px 20px rgba(0,0,0,0.5)' }}
           >
             {post.title}
           </motion.h1>
 
-          {/* Meta Information with Animated Cards */}
+          {/* Excerpt/Description */}
+          {post.excerpt && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl leading-relaxed"
+              style={{ textShadow: '1px 2px 10px rgba(0,0,0,0.5)' }}
+            >
+              {post.excerpt}
+            </motion.p>
+          )}
+
+          {/* Meta Information with Glass Effect */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap items-center gap-4"
+            className="flex flex-wrap items-center gap-3 md:gap-4"
           >
             {[
-              { icon: <Calendar className="w-5 h-5" />, text: formattedDate, color: 'from-blue-500 to-cyan-500' },
-              { icon: <Clock className="w-5 h-5" />, text: post.readTime, color: 'from-purple-500 to-pink-500' },
-              ...(post.views ? [{ icon: <Eye className="w-5 h-5" />, text: `${post.views} views`, color: 'from-green-500 to-emerald-500' }] : []),
+              { icon: <Calendar className="w-4 h-4 md:w-5 md:h-5" />, text: formattedDate, color: 'from-blue-500/90 to-cyan-500/90' },
+              { icon: <Clock className="w-4 h-4 md:w-5 md:h-5" />, text: post.readTime, color: 'from-purple-500/90 to-pink-500/90' },
+              ...(post.views ? [{ icon: <Eye className="w-4 h-4 md:w-5 md:h-5" />, text: `${post.views.toLocaleString()} views`, color: 'from-green-500/90 to-emerald-500/90' }] : []),
             ].map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.7 + index * 0.1, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className={`flex items-center gap-2 bg-gradient-to-r ${item.color} text-white px-4 py-2 rounded-full font-semibold text-sm shadow-xl`}
+                whileHover={{ scale: 1.1, y: -3 }}
+                className={`flex items-center gap-2 bg-gradient-to-r ${item.color} backdrop-blur-md text-white px-4 py-2.5 rounded-full font-semibold text-xs md:text-sm shadow-xl border border-white/20`}
               >
                 {item.icon}
                 <span>{item.text}</span>
@@ -232,10 +209,27 @@ export default function BlogPostPageClient({ post }) {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 1, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full font-bold text-sm shadow-xl"
+              whileHover={{ scale: 1.1 }}
+              className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-5 py-2.5 rounded-full font-bold text-xs md:text-sm shadow-xl"
             >
               {post.category}
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+          >
+            <span className="text-white/60 text-sm font-medium">Scroll to read</span>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2"
+            >
+              <motion.div className="w-1.5 h-1.5 bg-[#FACF2D] rounded-full" />
             </motion.div>
           </motion.div>
         </div>
@@ -300,29 +294,6 @@ export default function BlogPostPageClient({ post }) {
                 </motion.div>
                 Back to Blog
               </Link>
-            </motion.div>
-
-            {/* Featured Image with 3D Effect */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              whileHover={{ scale: 1.02, y: -10 }}
-              className="relative w-full h-[300px] md:h-[500px] rounded-3xl overflow-hidden mb-8 shadow-2xl"
-            >
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-              />
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-              />
             </motion.div>
 
             {/* Share Buttons with Animation */}
