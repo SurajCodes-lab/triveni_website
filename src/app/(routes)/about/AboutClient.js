@@ -393,7 +393,7 @@ export default function AboutClient() {
             <AnimatedSection delay={0.2}>
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-100 to-amber-100 text-amber-800 px-6 py-2 rounded-full mb-6 shadow-sm">
                 <Heart className="w-5 h-5" />
-                <span className="font-semibold">Founder's Message</span>
+                <span className="font-semibold">Founder&apos;s Message</span>
               </div>
 
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent leading-tight">
@@ -411,12 +411,12 @@ export default function AboutClient() {
 
                 <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
                   <p className="text-xl font-semibold text-gray-800 italic">
-                    "If a customer trusts us with their time and safety, we must honour that trust with excellence."
+                    &quot;If a customer trusts us with their time and safety, we must honour that trust with excellence.&quot;
                   </p>
                 </div>
 
                 <p>
-                  <span className="font-bold text-amber-700">Triveni Cabs</span> was created to change that experience. Every vehicle in our fleet, every driver on our platform, and every route we operate reflects this belief. Whether it's a family trip, a work journey, airport pickup, or a weekend getaway, we ensure every detail is handled with care.
+                  <span className="font-bold text-amber-700">Triveni Cabs</span> was created to change that experience. Every vehicle in our fleet, every driver on our platform, and every route we operate reflects this belief. Whether it&apos;s a family trip, a work journey, airport pickup, or a weekend getaway, we ensure every detail is handled with care.
                 </p>
               </div>
             </AnimatedSection>
@@ -497,11 +497,11 @@ export default function AboutClient() {
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
-              Where We're Headed
+              Where We&apos;re Headed
             </h2>
 
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our vision is clear and our commitment is unwavering. Here's what we're building for you.
+              Our vision is clear and our commitment is unwavering. Here&apos;s what we&apos;re building for you.
             </p>
           </AnimatedSection>
 
