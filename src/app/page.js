@@ -183,15 +183,18 @@ export default function HomePage() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-6 px-4"
+            role="group"
+            aria-label="Book taxi service"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleBookNowClick()}
+              aria-label="Book taxi now - Get instant quote for cab services in India"
               className="group relative w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-xl overflow-hidden"
             >
               <span className="relative z-10 flex items-center justify-center gap-2 md:gap-3">
-                Get Free Quote
+                Book Your Ride Now
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -201,15 +204,20 @@ export default function HomePage() {
               </span>
             </motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleBookNowClick()}
-              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all"
+            <Link
+              href={`tel:${phoneNumber}`}
+              aria-label={`Call Triveni Cabs at ${phoneNumber} for instant taxi booking`}
+              className="w-full sm:w-auto"
             >
-              <Phone className="w-5 h-5 md:w-6 md:h-6" />
-              <span className="truncate">Call: {phoneNumber}</span>
-            </motion.button>
+              <motion.span
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all"
+              >
+                <Phone className="w-5 h-5 md:w-6 md:h-6" />
+                <span className="truncate">Call Now: {phoneNumber}</span>
+              </motion.span>
+            </Link>
           </motion.div>
 
           {/* Trust Indicators */}
@@ -347,21 +355,27 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                <Link href="/wedding" className="w-full sm:w-auto">
-                  <button className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    Explore Wedding Cars
+              <nav className="flex flex-col sm:flex-row gap-3 md:gap-4" aria-label="Wedding car booking options">
+                <Link
+                  href="/wedding"
+                  className="w-full sm:w-auto"
+                  aria-label="Explore luxury wedding car rental services - BMW, Audi, Mercedes"
+                  title="Wedding Car Rental Services in India"
+                >
+                  <span className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Explore Wedding Car Rentals
                     <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Wedding Car Service')}
+                  aria-label="Get instant quote for wedding car booking"
                   className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
           </div>
         </div>
@@ -408,21 +422,26 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/airport-service">
-                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    Book Airport Transfer
+              <nav className="flex flex-col sm:flex-row gap-4" aria-label="Airport transfer booking options">
+                <Link
+                  href="/airport-service"
+                  aria-label="Book airport taxi pickup and drop service across India"
+                  title="Airport Transfer Services - 24/7 Pickup & Drop"
+                >
+                  <span className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Book Airport Taxi Now
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Airport Transfer')}
+                  aria-label="Get instant quote for airport pickup and drop"
                   className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
 
             {/* Right Image/Visual */}
@@ -547,21 +566,26 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/bus-routes">
-                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    View Bus Routes
+              <nav className="flex flex-col sm:flex-row gap-4" aria-label="Bus rental booking options">
+                <Link
+                  href="/bus-routes"
+                  aria-label="View luxury bus rental routes - Volvo AC buses for group travel"
+                  title="Bus Rental Services - 22 to 56 Seater Buses"
+                >
+                  <span className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Book Luxury Bus Now
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Bus Rental')}
+                  aria-label="Get instant quote for bus rental services"
                   className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
           </div>
         </div>
@@ -608,21 +632,26 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/routes">
-                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    View All Routes
+              <nav className="flex flex-col sm:flex-row gap-4" aria-label="Outstation cab booking options">
+                <Link
+                  href="/routes"
+                  aria-label="View all outstation taxi routes - Delhi to Agra, Jaipur, Shimla and more"
+                  title="Outstation Cab Routes - 500+ Destinations"
+                >
+                  <span className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Explore 500+ Routes
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Outstation Cab')}
+                  aria-label="Get instant quote for outstation taxi booking"
                   className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
 
             {/* Right Image */}
@@ -747,21 +776,26 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/services">
-                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    View Tour Packages
+              <nav className="flex flex-col sm:flex-row gap-4" aria-label="Tour package booking options">
+                <Link
+                  href="/services"
+                  aria-label="Explore tour packages - Golden Triangle, hill stations, pilgrimage tours"
+                  title="Tour Packages in India - Customized Travel Solutions"
+                >
+                  <span className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Explore Tour Packages
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Tour Package')}
+                  aria-label="Get instant quote for customized tour packages"
                   className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
           </div>
         </div>
@@ -808,21 +842,26 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/tempo-traveller">
-                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    View Tempo Fleet
+              <nav className="flex flex-col sm:flex-row gap-4" aria-label="Tempo traveller booking options">
+                <Link
+                  href="/tempo-traveller"
+                  aria-label="Book tempo traveller on rent - 12 to 26 seater for group travel"
+                  title="Tempo Traveller Rental - AC Vehicles for Groups"
+                >
+                  <span className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Book Tempo Traveller
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Tempo Traveller')}
+                  aria-label="Get instant quote for tempo traveller rental"
                   className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
 
             {/* Right Image */}
@@ -947,21 +986,26 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/tour-guide">
-                  <button className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
-                    Book Tour Guide
+              <nav className="flex flex-col sm:flex-row gap-4" aria-label="Tour guide booking options">
+                <Link
+                  href="/tour-guide"
+                  aria-label="Hire professional tour guide - Certified guides in 14+ cities"
+                  title="Tour Guide Services - Expert Local Guides in India"
+                >
+                  <span className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2">
+                    Hire Expert Tour Guide
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </span>
                 </Link>
                 <button
                   onClick={() => handleBookNowClick('Tour Guide')}
+                  aria-label="Get instant quote for professional tour guide services"
                   className="px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-amber-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Quick Call
+                  Get Free Quote
                 </button>
-              </div>
+              </nav>
             </div>
           </div>
         </div>
@@ -1087,47 +1131,60 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 relative overflow-hidden">
+      <section
+        className="py-12 md:py-20 bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 relative overflow-hidden"
+        aria-labelledby="cta-heading"
+      >
         <div className="relative z-10 max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-2 border-amber-200">
-            <div className="text-center mb-6 md:mb-10">
+          <article className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-2 border-amber-200">
+            <header className="text-center mb-6 md:mb-10">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-100 to-amber-100 text-amber-800 px-4 md:px-6 py-2 rounded-full mb-4 md:mb-6 shadow-sm">
                 <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="font-semibold text-sm md:text-base">Get Started Today</span>
+                <span className="font-semibold text-sm md:text-base">Complete Travel Solutions - Instant Booking</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent px-4">
-                Ready to Start Your Journey?
+              <h2
+                id="cta-heading"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent px-4"
+              >
+                Book Your Travel Service Today
               </h2>
               <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4">
-                Book now and experience the best travel services in India. Professional drivers, premium vehicles, and 24/7 support guaranteed!
+                Join 10,000+ happy customers. Book wedding cars, airport transfers, tempo travellers, luxury buses, tour packages & expert guides. Professional service with 24/7 support across India.
               </p>
-            </div>
+            </header>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-6 md:mb-8">
+            <nav className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-6 md:mb-8" aria-label="Book travel services">
               <button
                 onClick={() => handleBookNowClick()}
+                aria-label="Get free quote for travel services - Wedding cars, airport taxi, tempo traveller, bus rental"
                 className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-base md:text-lg rounded-full hover:from-amber-500 hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3 group"
               >
-                Get Free Quote
+                Get Free Quote Now
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <button
-                onClick={() => handleBookNowClick()}
-                className="px-8 md:px-10 py-4 md:py-5 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-base md:text-lg rounded-full hover:bg-amber-50 hover:border-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3"
+              <Link
+                href={`tel:${phoneNumber}`}
+                aria-label={`Call Triveni for instant booking - Wedding cars, cabs, buses, tours at ${phoneNumber}`}
+                title="Call Triveni - Wedding Cars, Cabs, Buses, Tour Packages"
               >
-                <Phone className="w-5 h-5 md:w-6 md:h-6" />
-                <span className="truncate">Call: {phoneNumber}</span>
-              </button>
-            </div>
+                <span className="px-8 md:px-10 py-4 md:py-5 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-base md:text-lg rounded-full hover:bg-amber-50 hover:border-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3">
+                  <Phone className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="truncate">Call Now: {phoneNumber}</span>
+                </span>
+              </Link>
+            </nav>
 
-            <div className="text-center px-4">
-              <p className="text-sm md:text-base text-gray-600 font-semibold flex items-center justify-center gap-2">
-                <Shield className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                <span>Available 24/7 for bookings and inquiries</span>
+            <footer className="text-center px-4">
+              <p className="text-sm md:text-base text-gray-600 font-semibold flex items-center justify-center gap-2 flex-wrap">
+                <Shield className="w-4 h-4 md:w-5 md:h-5 text-green-600" aria-hidden="true" />
+                <span>Wedding Cars | Airport Transfers | Tempo Traveller | Buses | Tour Packages | Guides</span>
               </p>
-            </div>
-          </div>
+              <p className="text-xs md:text-sm text-gray-500 mt-2">
+                Trusted by 10,000+ customers | Available 24/7 | Instant Booking Confirmation
+              </p>
+            </footer>
+          </article>
         </div>
       </section>
     </div>
