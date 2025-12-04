@@ -362,7 +362,7 @@ export default function TempoMainClient({ data }) {
                 Most Booked <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Destinations</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Explore our most popular tempo traveller routes across India's beautiful destinations
+                Explore our most popular tempo traveller routes across India&apos;s beautiful destinations
               </p>
             </motion.div>
 
