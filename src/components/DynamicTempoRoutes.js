@@ -3,31 +3,45 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle, ArrowRight, Route, Navigation, Calendar, Info, ChevronLeft, MapIcon, Compass, Camera, Award, CreditCard, Headphones, MapPinned } from 'lucide-react';
+import {
+  MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
+  ArrowRight, Route, Navigation, Calendar, Info, ChevronLeft, MapIcon, Compass,
+  Camera, Award, CreditCard, Headphones, MapPinned, Sparkles, Zap, Heart,
+  Mountain, Sun, Wind, ChevronDown, Play, Gift, Crown, Gem
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 
 export default function DynamicTempoRoutesClient({ data }) {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
-  const [showBookingForm, setShowBookingForm] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [openFaq, setOpenFaq] = useState(null);
+  const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
   const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet } = data;
+
+  useEffect(() => {
+    setMounted(true);
+
+    // Auto-rotate features
+    const interval = setInterval(() => {
+      setActiveFeature(prev => (prev + 1) % 4);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Console keyword tracking for Google Search Console
   useEffect(() => {
     const keywords = [
       `tempo traveller ${origin.toLowerCase()} to ${destination.toLowerCase()}`,
       `${origin.toLowerCase()} to ${destination.toLowerCase()} tempo traveller booking`,
-      `${origin.toLowerCase()} ${destination.toLowerCase()} tempo traveller`,
       `book tempo traveller ${origin.toLowerCase()} to ${destination.toLowerCase()}`,
-      `tempo traveller on rent ${origin.toLowerCase()} to ${destination.toLowerCase()}`,
-      `12 seater tempo traveller ${origin.toLowerCase()} to ${destination.toLowerCase()}`,
-      `tempo traveller hire ${origin.toLowerCase()} to ${destination.toLowerCase()}`
     ];
     console.log('🎯 SEO Keywords Active:', keywords.join(', '));
-    console.log('📍 Route:', `${origin} → ${destination}`);
-    console.log('🚐 Service Type:', routeData.type);
-    console.log('⭐ Rating: 4.8/5 | 2500+ Happy Customers');
-  }, [origin, destination, routeData.type]);
+  }, [origin, destination]);
 
   // Enhanced structured data for Google
   const structuredData = useMemo(() => ({
@@ -37,957 +51,1172 @@ export default function DynamicTempoRoutesClient({ data }) {
         "@type": "Service",
         "@id": `https://trivenicabs.in/tempo-traveller/${routeSlug}#service`,
         "name": `${origin} to ${destination} Tempo Traveller Service`,
-        "description": `Book premium tempo traveller from ${origin} to ${destination}. AC vehicles, professional drivers, 12-26 seater options available. Best rates for group travel with comfortable pushback seats.`,
+        "description": `Book premium tempo traveller from ${origin} to ${destination}. AC vehicles, professional drivers, 12-26 seater options available.`,
         "provider": {
           "@type": "Organization",
-          "@id": "https://trivenicabs.in#organization",
           "name": "Triveni Cabs",
-          "url": "https://trivenicabs.in",
-          "telephone": "+917668570551",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IN"
-          }
-        },
-        "areaServed": [
-          { "@type": "Place", "name": origin },
-          { "@type": "Place", "name": destination }
-        ],
-        "serviceType": "Tempo Traveller Rental",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Tempo Traveller Fleet",
-          "itemListElement": fleet.map((vehicle, index) => ({
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": `${vehicle.name} - ${origin} to ${destination}`,
-              "description": `${vehicle.name} with ${vehicle.capacity}`
-            },
-            "price": vehicle.outstationRate.replace(/[^\d]/g, ''),
-            "priceCurrency": "INR"
-          }))
+          "telephone": "+917668570551"
         }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://trivenicabs.in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Tempo Traveller",
-            "item": "https://trivenicabs.in/tempo-traveller"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": `${origin} to ${destination}`,
-            "item": `https://trivenicabs.in/tempo-traveller/${routeSlug}`
-          }
-        ]
-      },
-      {
-        "@type": "Product",
-        "name": `${origin} to ${destination} Tempo Traveller Rental`,
-        "description": `Premium tempo traveller service for group travel from ${origin} to ${destination}. Multiple seating options available.`,
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "INR",
-          "lowPrice": "23",
-          "highPrice": "27",
-          "offerCount": fleet.length
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "2500",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `How much does tempo traveller cost from ${origin} to ${destination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Tempo traveller rates from ${origin} to ${destination} start from ₹23/km for 12-seater vehicles and go up to ₹27/km for larger 20-26 seater vehicles. The final price depends on vehicle type, trip duration, and specific requirements. All prices include fuel, driver charges, and toll taxes.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `What seater tempo traveller is available for ${origin} to ${destination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `We offer 12-seater, 16-seater, 17-seater, 20-seater, and 26-seater Maharaja Edition tempo travellers for ${origin} to ${destination} route. All vehicles are AC equipped with comfortable pushback seats, music system, and charging points.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `How to book tempo traveller from ${origin} to ${destination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `You can book tempo traveller by calling +917668570551 or WhatsApp us with your requirements. Simply provide your travel date, pickup location, destination, and number of passengers. You'll receive instant quote and booking confirmation with driver details.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Is tempo traveller available for one-way from ${origin} to ${destination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes, we provide both one-way and round-trip tempo traveller services from ${origin} to ${destination}. One-way bookings are charged based on actual distance traveled with transparent per kilometer rates.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `What facilities are provided in ${origin} to ${destination} tempo traveller?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Our tempo travellers include pushback seats, air conditioning, music system, charging points, ample luggage space, first aid kit, and GPS tracking. Premium vehicles also feature LED TV and luxury interiors for enhanced comfort during your ${origin} to ${destination} journey.`
-            }
-          }
-        ]
       }
     ]
-  }), [origin, destination, routeSlug, fleet, routeData.type]);
+  }), [origin, destination, routeSlug]);
 
   const getTypeColor = (type) => {
     const colors = {
-      'Hill Station': 'bg-green-100 text-green-800',
-      'Adventure': 'bg-orange-100 text-orange-800',
-      'Spiritual': 'bg-purple-100 text-purple-800',
-      'Heritage': 'bg-yellow-100 text-yellow-800',
-      'Royal': 'bg-red-100 text-red-800',
-      'Metro': 'bg-blue-100 text-blue-800',
-      'Lakes': 'bg-cyan-100 text-cyan-800',
-      'Desert': 'bg-amber-100 text-amber-800',
-      'Blue City': 'bg-indigo-100 text-indigo-800',
-      'Char Dham': 'bg-pink-100 text-pink-800',
-      'Tourism': 'bg-gray-100 text-gray-800',
-      'Commercial': 'bg-slate-100 text-slate-800',
-      'Modern City': 'bg-teal-100 text-teal-800'
+      'Hill Station': 'from-emerald-400 to-teal-600',
+      'Adventure': 'from-orange-400 to-red-600',
+      'Spiritual': 'from-violet-400 to-purple-600',
+      'Heritage': 'from-amber-400 to-yellow-600',
+      'Royal': 'from-rose-400 to-pink-600',
+      'Metro': 'from-blue-400 to-indigo-600',
+      'Tourism': 'from-cyan-400 to-blue-600',
     };
-    return colors[type] || 'bg-gray-100 text-gray-800';
+    return colors[type] || 'from-gray-400 to-gray-600';
   };
 
+  const journeyFeatures = [
+    { icon: Shield, title: 'Safe Journey', subtitle: 'GPS Tracked & Insured', color: 'from-emerald-500 to-green-600' },
+    { icon: Crown, title: 'Royal Comfort', subtitle: 'Pushback Recliner Seats', color: 'from-amber-500 to-yellow-600' },
+    { icon: Zap, title: 'Instant Booking', subtitle: '60 Sec Confirmation', color: 'from-blue-500 to-indigo-600' },
+    { icon: Heart, title: '2500+ Happy Trips', subtitle: '4.8★ Customer Rating', color: 'from-rose-500 to-pink-600' },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-white overflow-hidden">
       {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-black via-gray-900 to-black py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        {/* Hero Background Image */}
+      {/* ============================================ */}
+      {/* HERO SECTION - Ultra Premium Design */}
+      {/* ============================================ */}
+      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background */}
         <div className="absolute inset-0">
           <Image
-            src="/images/tempo-hero.jpg"
-            alt={`${origin} to ${destination} Tempo Traveller - Book AC tempo traveller online - 12 to 26 seater - Best rates - Professional drivers`}
+            src="/images/tempo_hero_section.jpg"
+            alt={`${origin} to ${destination} Tempo Traveller - Premium group travel service`}
             fill
-            className="object-cover opacity-30"
+            className="object-cover"
             priority
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
+            onError={(e) => { e.target.style.display = 'none'; }}
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-purple-900/60 to-black/80" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <div className="mb-6">
+        {/* Floating Animated Orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 80, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-amber-400/10 to-transparent rounded-full"
+        />
+
+        {/* Animated Particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+                y: typeof window !== 'undefined' ? window.innerHeight + 100 : 900,
+                opacity: 0
+              }}
+              animate={{
+                y: -100,
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "linear"
+              }}
+              className="absolute w-1 h-1 bg-amber-400 rounded-full"
+            />
+          ))}
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Back Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute top-4 left-4 md:top-8 md:left-8"
+          >
             <Link
               href="/tempo-traveller"
-              className="inline-flex items-center text-gray-300 hover:text-yellow-400 transition-colors"
+              className="inline-flex items-center gap-2 text-white/70 hover:text-amber-400 transition-colors bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
             >
-              <ChevronLeft className="w-5 h-5 mr-1" />
-              Back to All Routes
+              <ChevronLeft className="w-4 h-4" />
+              <span className="text-sm font-medium">All Routes</span>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="text-center">
-            <div className="flex items-center justify-center mb-6">
-              <span className={`px-4 py-2 rounded-full text-sm font-medium ${getTypeColor(routeData.type)}`}>
-                {routeData.type}
+          {/* Route Type Badge */}
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+            className="inline-flex items-center gap-2 mb-6"
+          >
+            <div className={`bg-gradient-to-r ${getTypeColor(routeData.type)} px-6 py-3 rounded-full shadow-2xl`}>
+              <span className="text-white font-bold text-sm tracking-wider flex items-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                {routeData.type?.toUpperCase() || 'PREMIUM ROUTE'}
+                <Sparkles className="w-4 h-4" />
               </span>
             </div>
+          </motion.div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="text-yellow-400">{origin}</span> to <span className="text-yellow-400">{destination}</span>
-              <br />
-              <span className="text-2xl md:text-3xl text-gray-200">Tempo Traveller on Rent</span>
+          {/* Main Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-6"
+          >
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight">
+              <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
+                {origin}
+              </span>
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="inline-block mx-2 md:mx-4 text-white/50"
+              >
+                →
+              </motion.span>
+              <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
+                {destination}
+              </span>
             </h1>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
-              Premium tempo traveller service from {origin} to {destination}. Book 12-26 seater AC vehicles with professional drivers, comfortable pushback seats, and competitive rates. Perfect for family trips, corporate tours, and group pilgrimages.
-            </p>
 
-            <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-white flex items-center">
-                <Shield className="w-5 h-5 mr-2 text-yellow-400" />
-                Safe & Sanitized Vehicles
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-white flex items-center">
-                <Star className="w-5 h-5 mr-2 text-yellow-400" />
-                4.8★ Rated Service
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-white flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-yellow-400" />
-                24/7 Booking Available
-              </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="text-2xl md:text-4xl font-bold text-white/90"
+            >
+              <TypeAnimation
+                sequence={[
+                  '🚐 Premium Tempo Traveller',
+                  2500,
+                  '👨‍👩‍👧‍👦 Perfect for Groups',
+                  2500,
+                  '✨ Luxury Travel Experience',
+                  2500,
+                  '🛣️ Comfortable Journey',
+                  2500,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Animated Feature Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8"
+          >
+            {journeyFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05, y: -5 }}
+                onClick={() => setActiveFeature(index)}
+                className={`cursor-pointer backdrop-blur-md px-4 md:px-6 py-3 md:py-4 rounded-2xl border-2 transition-all duration-300 ${
+                  activeFeature === index
+                    ? 'bg-white/20 border-amber-400 shadow-lg shadow-amber-400/20'
+                    : 'bg-white/10 border-white/20 hover:border-white/40'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`p-2 rounded-xl bg-gradient-to-br ${feature.color}`}>
+                    <feature.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-white font-bold text-sm md:text-base">{feature.title}</p>
+                    <p className="text-white/60 text-xs">{feature.subtitle}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.a
+              href="tel:+917668570551"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(251, 191, 36, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg overflow-hidden shadow-2xl"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                <Phone className="w-5 h-5 group-hover:animate-bounce" />
+                Call Now: +91 76685 70551
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-amber-300"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.a>
+
+            <motion.a
+              href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${origin} to ${destination}. Please share rates.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg hover:bg-white/20 hover:border-amber-400/50 transition-all duration-300 shadow-2xl"
+            >
+              <span className="flex items-center justify-center gap-3">
+                <MessageCircle className="w-5 h-5 group-hover:animate-pulse" />
+                WhatsApp Booking
+              </span>
+            </motion.a>
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <div className="flex flex-col items-center text-white/50">
+              <span className="text-xs font-medium mb-2">Scroll to Explore</span>
+              <ChevronDown className="w-6 h-6 animate-bounce" />
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
+      {/* ============================================ */}
+      {/* ROUTE INFO SECTION - Clean White Cards */}
+      {/* ============================================ */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-100 to-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+        </div>
 
-        {/* Route Info Card */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{origin} to {destination} Route Information</h2>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Route className="w-6 h-6 text-blue-600 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Route</h3>
-                    <p className="text-gray-600">{origin} → {destination}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <MapIcon className="w-6 h-6 text-green-600 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Destination Type</h3>
-                    <p className="text-gray-600">{routeData.type}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <Calendar className="w-6 h-6 text-purple-600 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Availability</h3>
-                    <p className="text-gray-600">Available all year round for group bookings</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <Info className="w-6 h-6 text-orange-600 mr-3" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Service Status</h3>
-                    <p className={`font-medium ${routeData.exists ? 'text-green-600' : 'text-blue-600'}`}>
-                      {routeData.exists ? 'Popular Route - Instant Booking' : 'Available on Request'}
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-amber-100 px-6 py-3 rounded-full mb-6 border border-amber-200">
+              <Route className="w-5 h-5 text-amber-600" />
+              <span className="text-amber-700 font-bold text-sm tracking-wider">JOURNEY DETAILS</span>
             </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              Your <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Dream Journey</span> Awaits
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Experience the perfect blend of comfort and adventure on your {origin} to {destination} trip
+            </p>
+          </motion.div>
 
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Quick Booking</h2>
-              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Get Instant Quote for {origin} to {destination}</h3>
-                <p className="text-gray-600 mb-6">Call or WhatsApp for immediate booking confirmation and best tempo traveller rates. Our team is available 24/7 to assist you.</p>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            {/* Route Details Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="group"
+            >
+              <div className="relative bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-amber-300 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                {/* Glow Effect */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                  <div className="p-3 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl shadow-lg">
+                    <MapIcon className="w-6 h-6 text-white" />
+                  </div>
+                  Route Information
+                </h3>
 
                 <div className="space-y-4">
-                  <a
+                  <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors border border-blue-100">
+                    <div className="p-3 bg-blue-500 rounded-xl shadow">
+                      <Navigation className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium">Journey Route</p>
+                      <p className="text-gray-900 font-bold text-lg">{origin} → {destination}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl hover:bg-purple-100 transition-colors border border-purple-100">
+                    <div className="p-3 bg-purple-500 rounded-xl shadow">
+                      <Mountain className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium">Destination Type</p>
+                      <p className="text-gray-900 font-bold text-lg">{routeData.type || 'Tourism'}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-2xl hover:bg-green-100 transition-colors border border-green-100">
+                    <div className="p-3 bg-green-500 rounded-xl shadow">
+                      <Calendar className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-sm font-medium">Availability</p>
+                      <p className="text-gray-900 font-bold text-lg">365 Days • 24/7 Booking</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border-2 border-amber-200">
+                    <div className="p-3 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl shadow">
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-amber-600 text-sm font-medium">Status</p>
+                      <p className="text-amber-700 font-bold text-lg">
+                        {routeData.exists ? '⚡ Popular Route - Instant Booking' : '✓ Available on Request'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Quick Booking Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="group"
+            >
+              <div className="relative bg-gradient-to-br from-amber-500 to-orange-500 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden h-full">
+                {/* Animated Background */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute -top-20 -right-20 w-40 h-40 bg-white/20 rounded-full blur-2xl"
+                />
+
+                <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                  <div className="p-3 bg-white/20 backdrop-blur rounded-2xl">
+                    <Gift className="w-6 h-6 text-white" />
+                  </div>
+                  Get Instant Quote
+                </h3>
+
+                <p className="text-white/90 mb-6 text-lg">
+                  Book your {origin} to {destination} tempo traveller now! Our team is available 24/7 for instant confirmation.
+                </p>
+
+                {/* Price Highlight */}
+                <div className="bg-white rounded-2xl p-6 mb-6 shadow-lg">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-gray-600">Starting From</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-black bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">₹23</span>
+                      <span className="text-gray-500">/km</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium border border-green-200">✓ All Inclusive</span>
+                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium border border-blue-200">✓ No Hidden Charges</span>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="space-y-3">
+                  <motion.a
                     href="tel:+917668570551"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all"
                   >
-                    <Phone className="w-5 h-5 mr-3" />
+                    <Phone className="w-5 h-5" />
                     Call: +91-7668570551
-                  </a>
-                  <a
+                  </motion.a>
+
+                  <motion.a
                     href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${origin} to ${destination}. Please share the rates and availability.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full bg-white text-gray-900 font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all border-2 border-white/50"
                   >
-                    <MessageCircle className="w-5 h-5 mr-3" />
+                    <MessageCircle className="w-5 h-5" />
                     WhatsApp Booking
-                  </a>
+                  </motion.a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Why Choose Our Service Section */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
-            Why Choose Our {origin} to {destination} Tempo Traveller Service?
-          </h2>
-          <p className="text-gray-600 text-center mb-6 max-w-3xl mx-auto">
-            Experience premium group travel with our well-maintained AC tempo travellers, verified professional drivers, transparent pricing, and 24/7 customer support for your {origin} to {destination} journey.
-          </p>
+      {/* ============================================ */}
+      {/* FLEET SECTION - Premium Vehicle Showcase */}
+      {/* ============================================ */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 via-orange-400 to-pink-400" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center p-4">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Safe & Secure Travel</h3>
-              <p className="text-gray-600 text-sm">GPS tracked tempo travellers with verified drivers, valid insurance, first aid kit, and regular safety checks for worry-free group travel from {origin} to {destination}.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 px-6 py-3 rounded-full mb-6 border border-amber-200">
+              <Car className="w-5 h-5 text-amber-600" />
+              <span className="text-amber-700 font-bold text-sm tracking-wider">PREMIUM FLEET</span>
             </div>
-
-            <div className="text-center p-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CreditCard className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Transparent Pricing</h3>
-              <p className="text-gray-600 text-sm">No hidden charges for {origin} to {destination} tempo traveller booking. Fixed competitive rates, multiple payment options (cash, UPI, card), and instant booking confirmation.</p>
-            </div>
-
-            <div className="text-center p-4">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Car className="w-8 h-8 text-yellow-600" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Premium Fleet Options</h3>
-              <p className="text-gray-600 text-sm">Well-maintained AC tempo travellers with 12 to 26 seater options, pushback seats, music system, charging points, and ample luggage space for comfortable group journey.</p>
-            </div>
-
-            <div className="text-center p-4">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Headphones className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">24x7 Support</h3>
-              <p className="text-gray-600 text-sm">Round-the-clock booking assistance, live GPS tracking, instant customer support via call/WhatsApp, and dedicated team to handle all your {origin} to {destination} travel needs.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Available Fleet */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 mb-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Available <span className="text-yellow-500">Tempo Travellers</span> for {origin} to {destination}
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              Choose Your <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Perfect Ride</span>
             </h2>
-            <p className="text-lg text-gray-600">
-              Choose the perfect vehicle for your group size and travel comfort. All vehicles feature AC, pushback seats, and professional drivers.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              From intimate family trips to large group adventures - we have the perfect tempo traveller for your {origin} to {destination} journey
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {fleet.map((vehicle) => (
-              <div
+          {/* Fleet Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {fleet.map((vehicle, index) => (
+              <motion.div
                 key={vehicle.id}
-                className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onMouseEnter={() => setHoveredVehicle(vehicle.id)}
+                onMouseLeave={() => setHoveredVehicle(null)}
+                className="group relative"
               >
-                {vehicle.popular && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
-                      POPULAR CHOICE
-                    </span>
-                  </div>
-                )}
+                <div className={`relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border-2 ${
+                  hoveredVehicle === vehicle.id ? 'border-amber-400 -translate-y-2' : 'border-gray-100'
+                }`}>
+                  {/* Badges */}
+                  {vehicle.popular && (
+                    <motion.div
+                      initial={{ x: 100 }}
+                      animate={{ x: 0 }}
+                      className="absolute top-4 right-4 z-20"
+                    >
+                      <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                        <Star className="w-3 h-3" />
+                        MOST POPULAR
+                      </div>
+                    </motion.div>
+                  )}
 
-                {vehicle.premium && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-gradient-to-r from-purple-400 to-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      PREMIUM LUXURY
-                    </span>
-                  </div>
-                )}
+                  {vehicle.premium && (
+                    <motion.div
+                      initial={{ x: 100 }}
+                      animate={{ x: 0 }}
+                      className="absolute top-4 right-4 z-20"
+                    >
+                      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                        <Gem className="w-3 h-3" />
+                        LUXURY
+                      </div>
+                    </motion.div>
+                  )}
 
-                {/* Vehicle Image */}
-                <div className="relative h-48 bg-gray-100">
-                  <Image
-                    src={vehicle.image}
-                    alt={`${vehicle.name} for ${origin} to ${destination} - AC tempo traveller - ${vehicle.capacity} - Book online - Best rates`}
-                    fill
-                    className="object-cover"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      const parent = e.target.parentElement;
-                      parent.className = parent.className.replace('bg-gray-100', `bg-gradient-to-r ${vehicle.color}`);
+                  {/* Vehicle Image */}
+                  <div className="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <Image
+                      src={vehicle.image}
+                      alt={`${vehicle.name} for ${origin} to ${destination} - ${vehicle.capacity}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        const parent = e.target.parentElement;
+                        parent.className = `relative h-56 overflow-hidden bg-gradient-to-r ${vehicle.color || 'from-amber-400 to-orange-500'}`;
+                        if (!parent.querySelector('.fallback-icon')) {
+                          const fallbackDiv = document.createElement('div');
+                          fallbackDiv.className = 'fallback-icon absolute inset-0 flex items-center justify-center';
+                          fallbackDiv.innerHTML = '<svg class="w-20 h-20 text-white/50" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>';
+                          parent.appendChild(fallbackDiv);
+                        }
+                      }}
+                    />
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-                      if (!parent.querySelector('.fallback-icon')) {
-                        const fallbackDiv = document.createElement('div');
-                        fallbackDiv.className = 'fallback-icon absolute inset-0 flex items-center justify-center';
-                        fallbackDiv.innerHTML = '<svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M8 5a1 1 0 100 2h4a1 1 0 100-2H8zM3 7a1 1 0 011-1h1.05L5.5 4.5A2.5 2.5 0 018 2h4a2.5 2.5 0 012.5 2.5L15 6h1a1 1 0 011 1v8a1 1 0 01-1 1h-2a1 1 0 01-1-1v-1H7v1a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/></svg>';
-                        parent.appendChild(fallbackDiv);
-                      }
-                    }}
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-r ${vehicle.color} opacity-20`}></div>
-                </div>
-
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <Car className="w-8 h-8 text-gray-600" />
-                    <div className="flex items-center text-gray-500">
-                      <Users className="w-5 h-5 mr-1" />
-                      <span className="text-sm">{vehicle.capacity}</span>
+                    {/* Capacity Badge */}
+                    <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg">
+                      <Users className="w-4 h-4 text-amber-600" />
+                      <span className="font-bold text-gray-900">{vehicle.capacity}</span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">{vehicle.name}</h3>
-                  <p className="text-gray-600 mb-4">{vehicle.capacity} - Perfect for family and group travel</p>
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{vehicle.name}</h3>
 
-                  <div className="grid grid-cols-1 gap-2 mb-4">
-                    {vehicle.features.map((feature, index) => (
-                      <div key={index} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                    {/* Features Pills */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {vehicle.features.slice(0, 3).map((feature, idx) => (
+                        <span key={idx} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                          <CheckCircle className="w-3 h-3 text-green-500" />
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
 
-                  <div className="bg-gray-50 p-4 rounded-lg mb-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600">Outstation Rate</span>
-                        <span className="font-bold text-gray-900">{vehicle.outstationRate}</span>
+                    {/* Pricing */}
+                    <div className="bg-gradient-to-r from-gray-50 to-amber-50 rounded-2xl p-4 mb-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-gray-600 text-sm">Outstation</span>
+                        <span className="text-xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">{vehicle.outstationRate}</span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600">Local Rate (8hrs/80km)</span>
-                        <span className="text-sm font-medium text-gray-900">{vehicle.localRate}</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600 text-sm">Local (8hrs/80km)</span>
+                        <span className="text-gray-900 font-bold">{vehicle.localRate}</span>
                       </div>
                     </div>
-                  </div>
 
-                  <button
-                    onClick={() => setSelectedVehicle(vehicle)}
-                    className="w-full bg-gradient-to-r from-black to-gray-800 hover:from-yellow-400 hover:to-yellow-500 hover:text-black text-white font-semibold py-3 rounded-lg transition-all duration-300"
-                  >
-                    Book {vehicle.name}
-                  </button>
+                    {/* Book Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setSelectedVehicle(vehicle)}
+                      className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-500 hover:to-orange-500 text-white hover:text-black font-bold py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+                    >
+                      Book {vehicle.name}
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Tempo Traveller Features Section */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-            Tempo Traveller Features & Amenities for {origin} to {destination}
-          </h2>
-
-          <div className="prose max-w-none text-gray-600">
-            <p className="mb-4">
-              Our tempo travellers are specially designed for long-distance group travel from {origin} to {destination}. Each vehicle undergoes regular maintenance and safety checks to ensure a comfortable and secure journey for all passengers.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <Award className="w-8 h-8 text-blue-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Comfort Features</h3>
-                <ul className="text-sm space-y-2">
-                  <li>✓ Pushback recliner seats with cushioned comfort</li>
-                  <li>✓ Individual reading lights and AC vents</li>
-                  <li>✓ Music system with Bluetooth connectivity</li>
-                  <li>✓ LED TV in premium vehicles</li>
-                  <li>✓ Ample legroom and headspace</li>
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <Shield className="w-8 h-8 text-green-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Safety Equipment</h3>
-                <ul className="text-sm space-y-2">
-                  <li>✓ GPS tracking for real-time monitoring</li>
-                  <li>✓ First aid kit with emergency supplies</li>
-                  <li>✓ Fire extinguisher in all vehicles</li>
-                  <li>✓ Valid insurance and permits</li>
-                  <li>✓ Regular vehicle fitness checks</li>
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <Car className="w-8 h-8 text-yellow-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Storage & Extras</h3>
-                <ul className="text-sm space-y-2">
-                  <li>✓ Large luggage carrier on top</li>
-                  <li>✓ Under-seat storage compartments</li>
-                  <li>✓ Mobile charging points for all seats</li>
-                  <li>✓ Water bottle holders</li>
-                  <li>✓ Curtains for privacy and sun protection</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      {/* ============================================ */}
+      {/* WHY CHOOSE US - Animated Feature Grid */}
+      {/* ============================================ */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 relative overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic from-amber-500/10 via-transparent to-amber-500/10"
+          />
         </div>
 
-        {/* Comprehensive FAQ Section */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-            Frequently Asked Questions - {origin} to {destination} Tempo Traveller Booking
-          </h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-amber-400/30">
+              <Award className="w-5 h-5 text-amber-400" />
+              <span className="text-amber-400 font-bold text-sm tracking-wider">WHY TRIVENI CABS</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+              The <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Triveni</span> Difference
+            </h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Experience why thousands choose us for their {origin} to {destination} journey
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Shield,
+                title: 'Safe & Secure',
+                description: 'GPS tracked vehicles with verified drivers, valid insurance & 24/7 monitoring',
+                color: 'from-green-400 to-emerald-500',
+                stat: '100%',
+                statLabel: 'Safe Trips'
+              },
+              {
+                icon: CreditCard,
+                title: 'Transparent Pricing',
+                description: 'No hidden charges, fixed rates, multiple payment options available',
+                color: 'from-blue-400 to-indigo-500',
+                stat: '₹0',
+                statLabel: 'Hidden Fees'
+              },
+              {
+                icon: Car,
+                title: 'Premium Fleet',
+                description: 'Well-maintained AC tempo travellers with pushback seats & music system',
+                color: 'from-amber-400 to-orange-500',
+                stat: '200+',
+                statLabel: 'Premium Fleet'
+              },
+              {
+                icon: Headphones,
+                title: '24/7 Support',
+                description: 'Round-the-clock customer support via call & WhatsApp',
+                color: 'from-purple-400 to-pink-500',
+                stat: '24/7',
+                statLabel: 'Available'
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-amber-400/50 transition-all duration-500 h-full overflow-hidden">
+                  {/* Glow Effect */}
+                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.color} opacity-20 rounded-full blur-3xl group-hover:opacity-40 transition-opacity duration-500`} />
+
+                  {/* Icon */}
+                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6 shadow-lg`}>
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </div>
+
+                  {/* Stat */}
+                  <div className="mb-4">
+                    <span className="text-4xl font-black text-white">{feature.stat}</span>
+                    <span className="text-white/60 text-sm ml-2">{feature.statLabel}</span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                  <p className="text-white/60">{feature.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* AMENITIES SECTION */}
+      {/* ============================================ */}
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              World-Class <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Amenities</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Every tempo traveller comes equipped with premium features for your comfort
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                title: 'Comfort Features',
+                icon: Crown,
+                color: 'from-amber-400 to-yellow-500',
+                items: ['Pushback Recliner Seats', 'Individual AC Vents', 'LED Reading Lights', 'Premium Interiors', 'Ample Legroom']
+              },
+              {
+                title: 'Safety Equipment',
+                icon: Shield,
+                color: 'from-green-400 to-emerald-500',
+                items: ['GPS Live Tracking', 'First Aid Kit', 'Fire Extinguisher', 'Valid Insurance', 'Emergency Contacts']
+              },
+              {
+                title: 'Entertainment & More',
+                icon: Play,
+                color: 'from-blue-400 to-indigo-500',
+                items: ['Music System', 'USB Charging Points', 'Bluetooth Connectivity', 'Large Luggage Space', 'Curtains for Privacy']
+              },
+            ].map((category, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-gray-50 hover:bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-amber-300 hover:shadow-xl transition-all duration-500 h-full">
+                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${category.color} mb-6`}>
+                    <category.icon className="w-8 h-8 text-white" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">{category.title}</h3>
+
+                  <ul className="space-y-3">
+                    {category.items.map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-gray-700">
+                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* FAQ SECTION */}
+      {/* ============================================ */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+              <Info className="w-5 h-5 text-blue-600" />
+              <span className="text-blue-700 font-bold text-sm tracking-wider">FREQUENTLY ASKED</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              Got <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Questions?</span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Everything you need to know about {origin} to {destination} tempo traveller booking
+            </p>
+          </motion.div>
 
           <div className="space-y-4">
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                How much does tempo traveller cost from {origin} to {destination}?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                Tempo traveller rates from {origin} to {destination} start from ₹23/km for 12-seater vehicles and go up to ₹27/km for larger 20-26 seater vehicles. The final price depends on vehicle type (standard or luxury), trip duration, and specific requirements. All prices include fuel costs, driver charges, toll taxes, and parking fees. For round-trip bookings, we offer special package deals with attractive discounts. Book online or call +917668570551 for instant quote.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                What seater tempo traveller is available for {origin} to {destination}?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                We offer multiple seating options for {origin} to {destination} route: 12-seater tempo traveller with comfortable pushback seats, 16-seater with spacious interiors, 17-seater luxury edition (most popular choice), 20-seater with LED TV and premium features, and 26-seater Maharaja Edition with super luxury recliner seats. All vehicles are AC equipped with music system, charging points, and ample luggage space. Choose based on your group size and comfort preferences.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                How to book tempo traveller from {origin} to {destination}?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                Booking tempo traveller from {origin} to {destination} is easy and quick! Call us at +917668570551 or WhatsApp with your travel details including pickup location, destination, travel date and time, number of passengers, and any special requirements. Our team will provide instant quote with vehicle options. Confirm the booking with a small advance payment, and you&apos;ll receive complete booking confirmation with driver details, vehicle number, and contact information via SMS/WhatsApp.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                Is tempo traveller available for one-way from {origin} to {destination}?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                Yes, we provide both one-way drop and round-trip tempo traveller services from {origin} to {destination}. One-way bookings are charged based on actual distance traveled with transparent per kilometer rates. Round-trip bookings include 2-way journey with driver accommodation (if overnight stay required). For one-way drop, minimum charges may apply. We recommend booking in advance for better vehicle availability and rates, especially during peak travel seasons.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                What facilities are provided in {origin} to {destination} tempo traveller?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                Our tempo travellers for {origin} to {destination} journey include: comfortable pushback recliner seats with ample legroom, powerful air conditioning throughout the vehicle, music system with Bluetooth/AUX/USB connectivity, mobile charging points for every seat, ample luggage space with top carrier, first aid kit and fire extinguisher for safety, GPS tracking for real-time monitoring, and clean sanitized interiors. Premium vehicles also feature LED TV, luxury interiors, and extra amenities for enhanced comfort during your trip.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                Are drivers provided with tempo traveller for {origin} to {destination}?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                Yes, all our tempo travellers come with experienced professional drivers who are well-versed with the {origin} to {destination} route. Drivers have valid commercial driving licenses, police verification, and 5+ years of long-distance driving experience. They know the best routes, safe stopover points for refreshments and meals, and handle all aspects of the journey including toll payments and parking. Driver charges, accommodation (for overnight trips), and allowances are included in the quoted price.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                What is the cancellation policy for {origin} to {destination} tempo traveller booking?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                Our cancellation policy is customer-friendly: Cancel 48 hours before travel for 100% refund of advance payment, cancel 24-48 hours before travel for 75% refund, cancel within 24 hours for 50% refund. No refund for same-day cancellations or no-shows. In case of emergencies or unforeseen circumstances, you can reschedule your booking without additional charges (subject to vehicle availability). We recommend taking our cancellation protection for added peace of mind during uncertain travel plans.
-              </div>
-            </details>
-
-            <details className="border border-gray-200 rounded-lg overflow-hidden">
-              <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                What payment methods are accepted for tempo traveller booking?
-              </summary>
-              <div className="p-4 text-gray-600 text-sm leading-relaxed">
-                We accept multiple payment methods for your convenience: Cash payment to driver, UPI payments (Google Pay, PhonePe, Paytm), online bank transfer/NEFT/RTGS, credit and debit cards, and digital wallets. Advance payment of 20-30% is required to confirm booking, with remaining amount payable before or after the trip. We provide proper invoices and receipts for all transactions. For corporate bookings, we also offer credit facilities and monthly billing options.
-              </div>
-            </details>
-          </div>
-        </div>
-
-        {/* Route Guide Content Section */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            Complete {origin} to {destination} Tempo Traveller Travel Guide
-          </h2>
-
-          <div className="prose max-w-none text-gray-600">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Why Choose Tempo Traveller for {origin} to {destination} Journey?
-            </h3>
-            <p className="mb-4">
-              Traveling from {origin} to {destination} in a tempo traveller offers the perfect blend of comfort, affordability, and convenience for group travel. Whether you&apos;re planning a family vacation, corporate outing, pilgrimage tour, or friends trip, our tempo travellers provide spacious seating, ample luggage space, and all modern amenities to make your journey memorable. Unlike regular cars where you need to book multiple vehicles, a tempo traveller keeps your entire group together, making the journey more enjoyable and cost-effective.
-            </p>
-
-            <h3 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-              Best Time to Travel from {origin} to {destination}
-            </h3>
-            <p className="mb-4">
-              The {origin} to {destination} route can be traveled year-round, but certain seasons offer better experiences. {routeData.type === 'Hill Station' && 'For hill station destinations, summer months (April-June) and winter (October-February) are ideal for pleasant weather. Avoid monsoon season due to possible road blockages.'} {routeData.type === 'Spiritual' && 'Spiritual destinations are best visited during festival seasons and fair weather months. Early morning starts are recommended for darshan and peaceful atmosphere.'} We recommend booking tempo travellers in advance during peak tourist seasons, long weekends, and major festivals to ensure availability and better rates.
-            </p>
-
-            <h3 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-              What Makes Our {origin} to {destination} Tempo Traveller Service Special?
-            </h3>
-            <p className="mb-4">
-              With over 10 years of experience in group travel services, we understand what makes a journey truly comfortable. Our tempo travellers are maintained to the highest standards with regular servicing and safety checks. We employ only experienced drivers who are courteous, punctual, and familiar with the {origin} to {destination} route including best stopover points, clean restrooms, good restaurants, and scenic viewpoints. Real-time GPS tracking allows family members to monitor your journey progress. We also provide 24/7 customer support to address any concerns during your trip.
-            </p>
-
-            <h3 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-              Inclusions in {origin} to {destination} Tempo Traveller Package
-            </h3>
-            <p className="mb-4">
-              Our tempo traveller booking includes: well-maintained AC vehicle with your chosen seating capacity, experienced professional driver with route knowledge, all fuel costs for the journey, driver allowances and accommodation (for overnight trips), toll charges and parking fees, state taxes and permits, comprehensive vehicle insurance for passenger safety, and 24/7 customer support throughout your journey. Additional services like guide arrangements, hotel bookings, and customized itinerary planning can be arranged on request.
-            </p>
-          </div>
-        </div>
-
-        {/* Destination Highlights Section */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Explore {destination}</h2>
-              <p className="text-gray-600">Discover amazing attractions and experiences in this {routeData.type?.toLowerCase() || 'destination'}</p>
-            </div>
-          </div>
-
-          {hasTouristSpots ? (
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
-              <div className="flex items-center text-blue-700 mb-2">
-                <MapPin className="w-5 h-5 mr-2" />
-                <span className="font-medium">Popular tourist destination with rich cultural heritage</span>
-              </div>
-              <p className="text-blue-600 text-sm">
-                {destination} offers numerous historical monuments, spiritual sites, and cultural experiences.
-                Our tempo traveller service makes it easy to explore all attractions comfortably with your entire group.
-              </p>
-            </div>
-          ) : (
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4">
-              <div className="flex items-center text-green-700 mb-2">
-                <Star className="w-5 h-5 mr-2" />
-                <span className="font-medium">Beautiful {routeData.type?.toLowerCase() || 'destination'} perfect for group travel</span>
-              </div>
-              <p className="text-green-600 text-sm">
-                Enjoy the scenic journey and natural beauty that {destination} has to offer with comfortable tempo traveller service.
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Tourist Attractions Section - For Destination City */}
-        {(() => {
-          const attractions = getAttractionsForCity(destination);
-          if (attractions.length > 0) {
-            return (
-              <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 mb-8">
-                <div className="text-center mb-8">
-                  <div className="flex items-center justify-center mb-4">
-                    <MapPinned className="w-10 h-10 text-blue-600" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    Must-Visit Tourist Attractions in {destination}
-                  </h2>
-                  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Make the most of your {origin} to {destination} trip! Explore these amazing attractions with our comfortable tempo traveller service.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                  {attractions.map((attraction, index) => (
-                    <div
-                      key={index}
-                      className="bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 overflow-hidden"
+            {[
+              {
+                question: `How much does tempo traveller cost from ${origin} to ${destination}?`,
+                answer: `Tempo traveller rates from ${origin} to ${destination} start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking. Call +917668570551 for instant quote.`
+              },
+              {
+                question: `What seater options are available for ${origin} to ${destination}?`,
+                answer: `We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points.`
+              },
+              {
+                question: `How do I book tempo traveller from ${origin} to ${destination}?`,
+                answer: `Simply call +917668570551 or WhatsApp with your travel date, pickup location, and group size. You'll receive an instant quote with vehicle options. Confirm with a small advance and get driver details via SMS/WhatsApp.`
+              },
+              {
+                question: `Is one-way booking available from ${origin} to ${destination}?`,
+                answer: `Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip includes driver accommodation for overnight stays. Book in advance for best rates.`
+              },
+              {
+                question: `What facilities are included in the tempo traveller?`,
+                answer: `All our tempo travellers include: AC, pushback seats, music system with Bluetooth, USB charging for all seats, GPS tracking, first aid kit, fire extinguisher, ample luggage space, and clean sanitized interiors.`
+              },
+              {
+                question: `Are drivers provided with the tempo traveller?`,
+                answer: `Yes! All bookings include experienced professional drivers with 5+ years experience. They know the ${origin} to ${destination} route well, including best stops for meals. Driver charges and accommodation are included.`
+              },
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+              >
+                <div className={`bg-white rounded-2xl overflow-hidden shadow-md border-2 transition-all duration-300 ${
+                  openFaq === index ? 'border-amber-400 shadow-lg' : 'border-gray-100 hover:border-gray-200'
+                }`}>
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{faq.question}</h3>
+                    <motion.div
+                      animate={{ rotate: openFaq === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0"
                     >
-                      <div className={`h-2 bg-gradient-to-r ${
-                        attraction.type === 'Heritage' ? 'from-yellow-400 to-yellow-600' :
-                        attraction.type === 'Spiritual' ? 'from-purple-400 to-purple-600' :
-                        attraction.type === 'Adventure' ? 'from-orange-400 to-orange-600' :
-                        attraction.type === 'Royal' ? 'from-red-400 to-red-600' :
-                        attraction.type === 'Scenic' ? 'from-green-400 to-green-600' :
-                        'from-blue-400 to-blue-600'
-                      }`}></div>
+                      <ChevronDown className={`w-5 h-5 ${openFaq === index ? 'text-amber-500' : 'text-gray-400'}`} />
+                    </motion.div>
+                  </button>
 
-                      <div className="p-6">
-                        <div className="flex items-start justify-between mb-3">
-                          <h3 className="text-lg font-bold text-gray-900 leading-tight flex-1">
+                  <AnimatePresence>
+                    {openFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="px-6 pb-5 border-t border-gray-100">
+                          <p className="text-gray-600 pt-4 leading-relaxed">{faq.answer}</p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* TOURIST ATTRACTIONS */}
+      {/* ============================================ */}
+      {(() => {
+        const attractions = getAttractionsForCity(destination);
+        if (attractions.length > 0) {
+          return (
+            <section className="py-16 md:py-24 bg-white">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-12 md:mb-16"
+                >
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 px-6 py-3 rounded-full mb-6 border border-purple-200">
+                    <Camera className="w-5 h-5 text-purple-600" />
+                    <span className="text-purple-700 font-bold text-sm tracking-wider">EXPLORE {destination.toUpperCase()}</span>
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+                    Must-Visit <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Attractions</span>
+                  </h2>
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Make the most of your {origin} to {destination} trip with our tempo traveller service
+                  </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {attractions.slice(0, 6).map((attraction, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="group"
+                    >
+                      <div className="bg-gray-50 hover:bg-white rounded-2xl p-6 border-2 border-gray-100 hover:border-purple-300 hover:shadow-xl transition-all duration-500">
+                        <div className="flex items-start justify-between mb-4">
+                          <h3 className="text-lg font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
                             {attraction.name}
                           </h3>
-                          <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
-                            attraction.type === 'Heritage' ? 'bg-yellow-100 text-yellow-800' :
-                            attraction.type === 'Spiritual' ? 'bg-purple-100 text-purple-800' :
-                            attraction.type === 'Adventure' ? 'bg-orange-100 text-orange-800' :
-                            attraction.type === 'Royal' ? 'bg-red-100 text-red-800' :
-                            attraction.type === 'Scenic' ? 'bg-green-100 text-green-800' :
-                            'bg-blue-100 text-blue-800'
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            attraction.type === 'Heritage' ? 'bg-amber-100 text-amber-700' :
+                            attraction.type === 'Spiritual' ? 'bg-purple-100 text-purple-700' :
+                            'bg-blue-100 text-blue-700'
                           }`}>
                             {attraction.type}
                           </span>
                         </div>
-
-                        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                          {attraction.description}
-                        </p>
-
-                        <div className="space-y-2">
-                          <p className="text-xs font-semibold text-gray-700 mb-1">Highlights:</p>
-                          <div className="flex flex-wrap gap-2">
-                            {attraction.highlights.slice(0, 3).map((highlight, idx) => (
-                              <span
-                                key={idx}
-                                className="inline-flex items-center text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
-                              >
-                                <CheckCircle className="w-3 h-3 mr-1 text-green-500" />
-                                {highlight}
-                              </span>
-                            ))}
-                          </div>
+                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{attraction.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {attraction.highlights?.slice(0, 2).map((highlight, idx) => (
+                            <span key={idx} className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">
+                              {highlight}
+                            </span>
+                          ))}
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
-                {/* View All Attractions Link */}
-                <div className="text-center">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="text-center mt-10"
+                >
                   <Link
                     href={`/tourist-attractions/${destination.toLowerCase()}`}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-8 rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all"
                   >
                     <Compass className="w-5 h-5" />
-                    View Complete {destination} Attractions Guide
+                    View All {destination} Attractions
                     <ArrowRight className="w-5 h-5" />
                   </Link>
+                </motion.div>
+              </div>
+            </section>
+          );
+        }
+        return null;
+      })()}
+
+      {/* ============================================ */}
+      {/* RELATED ROUTES */}
+      {/* ============================================ */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Popular Routes from <span className="text-amber-500">{origin}</span>
+            </h2>
+            <p className="text-gray-600">Explore more destinations with our premium tempo traveller service</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { to: 'Manali', type: 'Hill Station', color: 'from-green-400 to-emerald-500' },
+              { to: 'Shimla', type: 'Hill Station', color: 'from-blue-400 to-indigo-500' },
+              { to: 'Jaipur', type: 'Heritage', color: 'from-amber-400 to-orange-500' },
+              { to: 'Agra', type: 'Heritage', color: 'from-rose-400 to-pink-500' },
+              { to: 'Haridwar', type: 'Spiritual', color: 'from-purple-400 to-violet-500' },
+              { to: 'Rishikesh', type: 'Adventure', color: 'from-cyan-400 to-teal-500' },
+              { to: 'Dharamshala', type: 'Hill Station', color: 'from-emerald-400 to-green-500' },
+              { to: 'Amritsar', type: 'Spiritual', color: 'from-yellow-400 to-amber-500' },
+            ].map((route, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <Link
+                  href={`/tempo-traveller/${origin.toLowerCase()}-to-${route.to.toLowerCase()}`}
+                  className="block group"
+                >
+                  <div className="bg-white rounded-2xl p-5 border-2 border-gray-100 hover:border-amber-300 hover:shadow-lg transition-all duration-300">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${route.color} flex items-center justify-center mb-3`}>
+                      <MapPin className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">
+                      {origin} to {route.to}
+                    </h3>
+                    <p className="text-sm text-gray-500">{route.type}</p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-8"
+          >
+            <Link
+              href="/tempo-traveller"
+              className="inline-flex items-center gap-2 text-amber-600 font-bold hover:text-amber-700 transition-colors"
+            >
+              <Route className="w-5 h-5" />
+              View All Tempo Traveller Routes
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* FINAL CTA SECTION */}
+      {/* ============================================ */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900" />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 12, repeat: Infinity, delay: 2 }}
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+              Ready to <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Explore?</span>
+            </h2>
+            <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
+              Book your {origin} to {destination} tempo traveller today and create unforgettable memories with your loved ones!
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="tel:+917668570551"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(251, 191, 36, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3"
+              >
+                <Phone className="w-6 h-6" />
+                Call: +91 76685 70551
+              </motion.a>
+
+              <motion.a
+                href={`https://wa.me/917668570551?text=Hi, I want to book tempo traveller from ${origin} to ${destination}. Please share rates.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl flex items-center justify-center gap-3"
+              >
+                <MessageCircle className="w-6 h-6" />
+                WhatsApp Us
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* VEHICLE BOOKING MODAL */}
+      {/* ============================================ */}
+      <AnimatePresence>
+        {selectedVehicle && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[100]"
+            onClick={() => setSelectedVehicle(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-black text-gray-900">Book {selectedVehicle.name}</h3>
+                <button
+                  onClick={() => setSelectedVehicle(null)}
+                  className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Vehicle Image */}
+              <div className="relative h-40 rounded-2xl overflow-hidden mb-6 bg-gradient-to-r from-amber-400 to-orange-500">
+                <Image
+                  src={selectedVehicle.image}
+                  alt={selectedVehicle.name}
+                  fill
+                  className="object-cover"
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+              </div>
+
+              {/* Details */}
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
+                  <span className="text-gray-600">Route</span>
+                  <span className="font-bold text-gray-900">{origin} → {destination}</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
+                  <span className="text-gray-600">Capacity</span>
+                  <span className="font-bold text-gray-900">{selectedVehicle.capacity}</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-amber-50 rounded-xl border border-amber-200">
+                  <span className="text-amber-700">Outstation Rate</span>
+                  <span className="font-black text-2xl text-amber-600">{selectedVehicle.outstationRate}</span>
                 </div>
               </div>
-            );
-          }
-          return null;
-        })()}
 
-        {/* Related Routes Section - Internal Linking */}
-        <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 md:p-8 mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-            Popular Tempo Traveller Routes from {origin}
-          </h2>
-          <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-            Explore more destinations from {origin} with our premium tempo traveller service. Book comfortable AC vehicles for your next group trip.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <Link
-              href="/tempo-traveller"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <Route className="w-5 h-5 text-blue-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">View All Routes</h3>
-              </div>
-              <p className="text-sm text-gray-600">Browse 100+ routes across India</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/delhi-to-manali"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-green-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Delhi to Manali</h3>
-              </div>
-              <p className="text-sm text-gray-600">Popular adventure destination</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/delhi-to-shimla"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-purple-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Delhi to Shimla</h3>
-              </div>
-              <p className="text-sm text-gray-600">Beautiful hill station getaway</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/delhi-to-jaipur"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-red-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Delhi to Jaipur</h3>
-              </div>
-              <p className="text-sm text-gray-600">Royal heritage tour</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/delhi-to-agra"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-yellow-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Delhi to Agra</h3>
-              </div>
-              <p className="text-sm text-gray-600">Taj Mahal and heritage sites</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/delhi-to-haridwar"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-orange-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Delhi to Haridwar</h3>
-              </div>
-              <p className="text-sm text-gray-600">Spiritual pilgrimage</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/delhi-to-rishikesh"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-cyan-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Delhi to Rishikesh</h3>
-              </div>
-              <p className="text-sm text-gray-600">Yoga and adventure capital</p>
-            </Link>
-
-            <Link
-              href="/tempo-traveller/chandigarh-to-manali"
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200"
-            >
-              <div className="flex items-center mb-2">
-                <MapPin className="w-5 h-5 text-indigo-600 mr-2" />
-                <h3 className="font-semibold text-gray-900">Chandigarh to Manali</h3>
-              </div>
-              <p className="text-sm text-gray-600">Scenic mountain route</p>
-            </Link>
-          </div>
-
-          <div className="text-center mt-6">
-            <Link
-              href="/tempo-traveller"
-              className="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300"
-            >
-              <Route className="w-5 h-5 mr-2" />
-              Explore All Tempo Traveller Routes
-            </Link>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-black via-gray-900 to-black rounded-2xl p-8 md:p-12 text-center text-white mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Travel from <span className="text-yellow-400">{origin}</span> to <span className="text-yellow-400">{destination}</span>?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Book your tempo traveller now for the best rates and professional service. Available 24/7 for instant booking and confirmation.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a
-              href="tel:+917668570551"
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
-            >
-              <Phone className="w-5 h-5 mr-3" />
-              Call Now: +91-7668570551
-            </a>
-            <a
-              href={`https://wa.me/917668570551?text=Hi, I want to book tempo traveller from ${origin} to ${destination}. Please share the quote and availability.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
-            >
-              <MessageCircle className="w-5 h-5 mr-3" />
-              WhatsApp Booking
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Vehicle Selection Modal */}
-      {selectedVehicle && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold text-gray-900">Book {selectedVehicle.name}</h3>
-              <button
-                onClick={() => setSelectedVehicle(null)}
-                className="text-gray-400 hover:text-gray-600 text-3xl leading-none"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="relative h-32 bg-gray-100 rounded-lg mb-6 overflow-hidden">
-              <Image
-                src={selectedVehicle.image}
-                alt={selectedVehicle.name}
-                fill
-                className="object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  const parent = e.target.parentElement;
-                  parent.className = parent.className.replace('bg-gray-100', `bg-gradient-to-r ${selectedVehicle.color}`);
-
-                  if (!parent.querySelector('.modal-fallback-icon')) {
-                    const fallbackDiv = document.createElement('div');
-                    fallbackDiv.className = 'modal-fallback-icon absolute inset-0 flex items-center justify-center';
-                    fallbackDiv.innerHTML = '<svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M8 5a1 1 0 100 2h4a1 1 0 100-2H8zM3 7a1 1 0 011-1h1.05L5.5 4.5A2.5 2.5 0 018 2h4a2.5 2.5 0 012.5 2.5L15 6h1a1 1 0 011 1v8a1 1 0 01-1 1h-2a1 1 0 01-1-1v-1H7v1a1 1 0 01-1 1H4a1 1 0 01-1-1V7z"/></svg>';
-                    parent.appendChild(fallbackDiv);
-                  }
-                }}
-              />
-            </div>
-
-            <div className="space-y-4 mb-6">
-              <div>
-                <span className="text-sm text-gray-600">Route:</span>
-                <p className="font-medium">{origin} to {destination}</p>
-              </div>
-              <div>
-                <span className="text-sm text-gray-600">Vehicle:</span>
-                <p className="font-medium">{selectedVehicle.name} ({selectedVehicle.capacity})</p>
-              </div>
-              <div>
-                <span className="text-sm text-gray-600">Outstation Rate:</span>
-                <p className="font-bold text-lg text-green-600">{selectedVehicle.outstationRate}</p>
-              </div>
-              <div>
-                <span className="text-sm text-gray-600">Local Rate:</span>
-                <p className="font-bold text-lg text-blue-600">{selectedVehicle.localRate}</p>
-              </div>
-
-              <div className="border-t pt-4">
-                <span className="text-sm text-gray-600 block mb-2">Features:</span>
-                <div className="grid grid-cols-1 gap-1">
-                  {selectedVehicle.features.map((feature, index) => (
-                    <div key={index} className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-3 h-3 mr-2 text-green-500 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </div>
+              {/* Features */}
+              <div className="mb-6">
+                <p className="text-sm font-bold text-gray-700 mb-3">Included Features:</p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedVehicle.features.map((feature, idx) => (
+                    <span key={idx} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm flex items-center gap-1">
+                      <CheckCircle className="w-3 h-3" />
+                      {feature}
+                    </span>
                   ))}
                 </div>
               </div>
-            </div>
 
-            <div className="space-y-4">
-              <a
-                href={`tel:+917668570551`}
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-all"
-              >
-                <Phone className="w-5 h-5 mr-3" />
-                Call to Book
-              </a>
-              <a
-                href={`https://wa.me/917668570551?text=Hi, I want to book ${selectedVehicle.name} from ${origin} to ${destination}. Please share the detailed quote with availability.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg flex items-center justify-center transition-all"
-              >
-                <MessageCircle className="w-5 h-5 mr-3" />
-                WhatsApp to Book
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+              {/* CTAs */}
+              <div className="space-y-3">
+                <a
+                  href="tel:+917668570551"
+                  className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call to Book
+                </a>
+                <a
+                  href={`https://wa.me/917668570551?text=Hi, I want to book ${selectedVehicle.name} from ${origin} to ${destination}. Please share quote.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp to Book
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
