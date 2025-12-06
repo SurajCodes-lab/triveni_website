@@ -62,8 +62,9 @@ export default function CityToursPage({ city }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" itemScope itemType="https://schema.org/CollectionPage">
       {/* Hero Section with Parallax - SAME AS MAIN PAGE */}
+      <header>
       <motion.section
         style={{ opacity, scale }}
         className="relative h-[85vh] sm:h-[75vh] md:h-[85vh] flex items-center justify-center overflow-hidden"
@@ -186,9 +187,10 @@ export default function CityToursPage({ city }) {
           </div>
         </motion.div>
       </motion.section>
+      </header>
 
       {/* Tours Grid Section */}
-      <section id="tours" className="py-12 sm:py-16 md:py-20">
+      <section id="tours" className="py-12 sm:py-16 md:py-20" aria-labelledby="city-tours-heading" itemScope itemType="https://schema.org/ItemList">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -196,7 +198,7 @@ export default function CityToursPage({ city }) {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
+            <h2 id="city-tours-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2" itemProp="name">
               All {cityName} Tours
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
@@ -384,6 +386,6 @@ export default function CityToursPage({ city }) {
           </motion.div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
