@@ -1,6 +1,6 @@
 // src/app/tempo-traveller/page.js
 
-import { tempoFleet, tempoRoutes } from '@/utilis/tempoTravellerData';
+import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerData';
 import TempoMainClient from '@/components/TempoMainClient';
 
 export const metadata = {
@@ -74,11 +74,24 @@ export default function TempoTravellerPage() {
     return routes.slice(0, 8);
   };
 
+  // Prepare cities data with route counts
+  const getCitiesWithData = () => {
+    return Object.entries(tempoCities).map(([cityName, cityData]) => {
+      const routes = tempoRoutes[cityName] || [];
+      return {
+        ...cityData,
+        routeCount: routes.length,
+        routes: routes
+      };
+    });
+  };
+
   const pageData = {
     popularRoutes: getPopularRoutes(),
     allRoutes: getAllRoutes(),
     fleet: tempoFleet,
-    cities: Object.keys(tempoRoutes)
+    cities: Object.keys(tempoRoutes),
+    citiesData: getCitiesWithData()
   };
 
   // Enhanced Structured Data with @graph for comprehensive SEO

@@ -1,9 +1,25 @@
 // src/app/tempo-traveller/[route]/page.js
 
-import { tempoFleet, tempoRoutes, localSightseeing } from '@/utilis/tempoTravellerData';
+import { tempoFleet, tempoRoutes, localSightseeing, tempoCities } from '@/utilis/tempoTravellerData';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
+import TempoCityClient from '@/components/TempoCityClient';
+
+// Helper to check if slug is a city
+function isCitySlug(slug) {
+  return Object.values(tempoCities).some(city => city.slug === slug);
+}
+
+// Helper to get city data by slug
+function getCityBySlug(slug) {
+  return Object.entries(tempoCities).find(([_, city]) => city.slug === slug);
+}
 
 export async function generateStaticParams() {
+  // Generate static params for cities
+  const cityParams = Object.values(tempoCities).map(city => ({
+    route: city.slug,
+  }));
+
   // Generate static params for popular routes
   const popularRoutes = [
     'delhi-to-shimla',
@@ -24,16 +40,18 @@ export async function generateStaticParams() {
     'agra-to-jaipur'
   ];
 
-  return popularRoutes.map((route) => ({
+  const routeParams = popularRoutes.map((route) => ({
     route: route,
   }));
+
+  return [...cityParams, ...routeParams];
 }
 
 export async function generateMetadata({ params }) {
   // Await params in Next.js 15
   const resolvedParams = await params;
   const { route } = resolvedParams;
-  
+
   // Add null check
   if (!route) {
     return {
@@ -41,7 +59,62 @@ export async function generateMetadata({ params }) {
       description: 'Book premium tempo travellers for comfortable group travel across India.'
     };
   }
-  
+
+  // Check if it's a city page
+  if (isCitySlug(route)) {
+    const [cityName, cityData] = getCityBySlug(route);
+    const routeCount = tempoRoutes[cityName]?.length || 0;
+
+    return {
+      title: `Tempo Traveller on Rent in ${cityData.name} | 12-26 Seater AC ₹23/km | ${routeCount} Destinations | Triveni Cabs`,
+      description: `Book tempo traveller from ${cityData.name} to ${routeCount}+ destinations. ${cityData.description} 12, 17, 20, 26 seater AC tempo traveller with professional driver. Best rates ₹23-27/km. Popular routes: ${cityData.popularDestinations.join(', ')}. 24/7 booking, instant confirmation. Call +91-7668570551.`,
+      applicationName: 'Triveni Cabs',
+      metadataBase: new URL('https://trivenicabs.in'),
+      alternates: {
+        canonical: `https://trivenicabs.in/tempo-traveller/${route}`,
+      },
+      openGraph: {
+        title: `Tempo Traveller from ${cityData.name} | ${routeCount} Destinations | Book Online`,
+        description: `${cityData.tagline} - Book tempo traveller from ${cityData.name} to ${cityData.popularDestinations.join(', ')} and more. ₹23-27/km all-inclusive.`,
+        url: `https://trivenicabs.in/tempo-traveller/${route}`,
+        type: 'website',
+        locale: 'en_IN',
+        siteName: 'Triveni Cabs - Tempo Traveller Rental',
+        images: [
+          {
+            url: '/images/tempo-hero.jpg',
+            width: 1200,
+            height: 630,
+            alt: `Tempo Traveller on Rent from ${cityData.name} - Triveni Cabs`,
+            type: 'image/jpeg',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `Tempo Traveller from ${cityData.name} | ${routeCount} Destinations | ₹23/km`,
+        description: `${cityData.tagline} | Book tempo traveller to ${cityData.popularDestinations.join(', ')} | Call +91-7668570551`,
+        site: '@trivenicabs',
+        images: ['/images/tempo-hero.jpg'],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        nocache: false,
+        googleBot: {
+          index: true,
+          follow: true,
+          noimageindex: false,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
+      category: 'Travel & Transportation',
+    };
+  }
+
+  // It's a route page
   const routeParts = route.split('-to-');
   if (routeParts.length !== 2) {
     return {
@@ -49,11 +122,11 @@ export async function generateMetadata({ params }) {
       description: 'Book premium tempo travellers for comfortable group travel across India.'
     };
   }
-  
+
   const [origin, destination] = routeParts;
-  
+
   const formatCityName = (city) => {
-    return city.split('-').map(word => 
+    return city.split('-').map(word =>
       word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
   };
@@ -114,7 +187,7 @@ export default async function TempoTravellerRoutePage({ params }) {
   // Await params in Next.js 15
   const resolvedParams = await params;
   const { route } = resolvedParams;
-  
+
   // Add null check and handle invalid routes
   if (!route) {
     return (
@@ -126,7 +199,29 @@ export default async function TempoTravellerRoutePage({ params }) {
       </div>
     );
   }
-  
+
+  // Check if it's a city page
+  if (isCitySlug(route)) {
+    const [cityName, cityData] = getCityBySlug(route);
+    const cityRoutes = tempoRoutes[cityName] || [];
+
+    // Prepare all cities data for "Other Cities" section
+    const allCitiesData = Object.entries(tempoCities).map(([name, data]) => ({
+      ...data,
+      routeCount: tempoRoutes[name]?.length || 0
+    }));
+
+    const pageData = {
+      cityData: cityData,
+      routes: cityRoutes,
+      fleet: tempoFleet,
+      allCities: allCitiesData
+    };
+
+    return <TempoCityClient data={pageData} />;
+  }
+
+  // It's a route page
   const routeParts = route.split('-to-');
   if (routeParts.length !== 2) {
     return (
@@ -138,11 +233,11 @@ export default async function TempoTravellerRoutePage({ params }) {
       </div>
     );
   }
-  
+
   const [origin, destination] = routeParts;
-  
+
   const formatCityName = (city) => {
-    return city.split('-').map(word => 
+    return city.split('-').map(word =>
       word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
   };
@@ -153,7 +248,7 @@ export default async function TempoTravellerRoutePage({ params }) {
   // Find route data on server side
   const findRouteData = (originCity, destinationCity) => {
     if (tempoRoutes[originCity]) {
-      const routeInfo = tempoRoutes[originCity].find(r => 
+      const routeInfo = tempoRoutes[originCity].find(r =>
         r.name.toLowerCase() === destinationCity.toLowerCase()
       );
       if (routeInfo) {
@@ -165,7 +260,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         };
       }
     }
-    
+
     return {
       name: destinationCity,
       type: 'Tourism',
