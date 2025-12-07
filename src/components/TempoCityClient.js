@@ -637,73 +637,140 @@ export default function TempoCityClient({ data }) {
       </section>
 
       {/* ============================================ */}
-      {/* OTHER CITIES */}
+      {/* OTHER CITIES - Beautiful Cards */}
       {/* ============================================ */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full blur-3xl opacity-40 translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-              Explore Other Cities
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-purple-100 px-6 py-3 rounded-full mb-6 border border-indigo-200">
+              <Compass className="w-5 h-5 text-indigo-600" />
+              <span className="text-indigo-700 font-bold text-sm tracking-wider">MORE STARTING POINTS</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+              Explore Other <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Cities</span>
             </h2>
-            <p className="text-gray-600">Book tempo traveller from other starting points</p>
+            <p className="text-lg text-gray-600 max-w-xl mx-auto">
+              Book tempo traveller from other starting points across India
+            </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          {/* Cities Grid - Beautiful Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {data.allCities
               .filter(city => city.slug !== cityData.slug)
               .slice(0, 8)
               .map((city, index) => (
                 <motion.div
                   key={city.slug}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group"
                 >
-                  <Link
-                    href={`/tempo-traveller/${city.slug}`}
-                    className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 px-5 py-3 rounded-full border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md"
-                  >
-                    <span className="text-xl">{city.icon}</span>
-                    <span className="font-medium text-gray-700">{city.name}</span>
-                    <span className="text-xs text-gray-400">({city.routeCount})</span>
+                  <Link href={`/tempo-traveller/${city.slug}`} className="block h-full">
+                    <div className="relative h-full min-h-[180px] md:min-h-[200px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-indigo-200">
+                      {/* Background Image */}
+                      {city.image && (
+                        <Image
+                          src={city.image}
+                          alt={city.name}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          onError={(e) => { e.target.style.display = 'none'; }}
+                        />
+                      )}
+
+                      {/* Dark Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 group-hover:from-black/95 transition-all duration-300" />
+
+                      {/* Colored Tint */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${city.color || 'from-indigo-500 to-purple-600'} opacity-30 mix-blend-overlay`} />
+
+                      {/* Content */}
+                      <div className="relative z-10 h-full p-4 md:p-5 flex flex-col justify-between">
+                        {/* Top - Icon Badge */}
+                        <div className="flex items-start justify-between">
+                          <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white/20 backdrop-blur-md rounded-xl border border-white/30 shadow-lg">
+                            <span className="text-2xl md:text-3xl">{city.icon}</span>
+                          </div>
+                          <div className="bg-white/20 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/30">
+                            <span className="text-xs font-bold text-white">{city.routeCount} routes</span>
+                          </div>
+                        </div>
+
+                        {/* Bottom - City Info */}
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold text-white mb-1" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                            {city.name}
+                          </h3>
+                          <p className="text-xs md:text-sm text-white/80 mb-3 line-clamp-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
+                            {city.tagline || city.state}
+                          </p>
+                          <div className="flex items-center gap-1.5 text-white font-semibold text-sm group-hover:gap-2.5 transition-all">
+                            <span style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>Explore</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Link>
                 </motion.div>
               ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-8"
-          >
-            <Link
-              href="/tempo-traveller"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium transition-colors"
-            >
-              View All 14 Cities
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
         </div>
       </section>
 
       {/* ============================================ */}
       {/* FINAL CTA */}
       {/* ============================================ */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className={`absolute inset-0 bg-gradient-to-br ${cityData.bgGradient}`} />
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Dark Background for better visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900" />
+
+        {/* City-specific gradient overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${cityData.bgGradient} opacity-40`} />
+
+        {/* Animated Orbs */}
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/30 rounded-full blur-3xl"
         />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.25, 0.1] }}
+          transition={{ duration: 12, repeat: Infinity, delay: 2 }}
+          className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl"
+        />
+
+        {/* Floating Particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {mounted && [...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ y: '100vh', x: `${Math.random() * 100}%`, opacity: 0 }}
+              animate={{ y: '-10vh', opacity: [0, 0.5, 0] }}
+              transition={{
+                duration: Math.random() * 10 + 8,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "linear"
+              }}
+              className="absolute w-1.5 h-1.5 bg-amber-400 rounded-full"
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -712,20 +779,45 @@ export default function TempoCityClient({ data }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-6xl mb-6 block">{cityData.icon}</span>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Ready to Explore from <span className={`bg-gradient-to-r ${cityData.color} bg-clip-text text-transparent`}>{cityData.name}</span>?
+            {/* City Icon with glow */}
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+              className="inline-flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-xl rounded-3xl mb-8 border border-white/20 shadow-2xl"
+            >
+              <span className="text-5xl">{cityData.icon}</span>
+            </motion.div>
+
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-amber-400/30"
+            >
+              <Sparkles className="w-5 h-5 text-amber-400" />
+              <span className="text-amber-400 font-bold text-sm tracking-wider">BOOK YOUR JOURNEY TODAY</span>
+            </motion.div>
+
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
+              Ready to Explore from{' '}
+              <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
+                {cityData.name}
+              </span>?
             </h2>
-            <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
               Book your tempo traveller today and experience comfortable group travel with Triveni Cabs!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(255, 255, 255, 0.3)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(251, 191, 36, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-gray-900 px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3"
+                className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3"
               >
                 <Phone className="w-6 h-6" />
                 Call: +91 76685 70551
@@ -743,6 +835,26 @@ export default function TempoCityClient({ data }) {
                 WhatsApp Us
               </motion.a>
             </div>
+
+            {/* Trust badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap justify-center gap-6 mt-12"
+            >
+              {[
+                { icon: Shield, label: 'Safe & Secure' },
+                { icon: Star, label: '4.8 Rating' },
+                { icon: Clock, label: '24/7 Support' },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-2 text-white/70">
+                  <item.icon className="w-5 h-5 text-amber-400" />
+                  <span className="text-sm font-medium">{item.label}</span>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
