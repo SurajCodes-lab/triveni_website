@@ -107,7 +107,7 @@ export async function generateMetadata({ params }) {
   const { slug } = params;
   const packageInfo = tourDetails[slug];
   const content = seoContent[slug];
-  
+
   if (!packageInfo || !content) {
     return {
       title: "Package Not Found | Triveni Cabs",
@@ -173,16 +173,64 @@ export default function TourPackagePage({ params }) {
     return <div className="text-center py-16">Package not found</div>;
   }
 
+  // FAQ Schema generation
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Why choose the ${packageInfo.title}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": content.whyChoose
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What destinations are covered in this tour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": content.destinations
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the package?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `This package includes: ${content.features.join(', ')}.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the duration of this tour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `The tour duration is ${packageInfo.duration}.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I book this tour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can book this tour instantly online or contact us at 7668570551 for assistance."
+        }
+      }
+    ]
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "TourPackage",
+    "@type": "TouristTrip",
     "name": packageInfo.title,
     "description": content.intro,
     "image": packageInfo.image,
     "provider": {
       "@type": "TravelAgency",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.com",
+      "url": "https://trivenicabs.in",
       "telephone": "7668570551",
       "address": {
         "@type": "PostalAddress",
@@ -195,26 +243,14 @@ export default function TourPackagePage({ params }) {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "validFrom": new Date().toISOString(),
-      "url": `https://trivenicabs.com/tour-packages/${slug}`
+      "url": `https://trivenicabs.in/tour-package/${slug}`
     },
     "duration": packageInfo.duration,
-    "startLocation": {
-      "@type": "Place",
-      "name": packageInfo.startingPoint
-    },
-    "endLocation": {
-      "@type": "Place", 
-      "name": packageInfo.destination
-    },
     "itinerary": packageInfo.itinerary.map((item, index) => ({
-      "@type": "Event",
+      "@type": "Place",
       "name": item.title,
       "description": item.details,
-      "position": index + 1
-    })),
-    "includesObject": packageInfo.inclusions.map(inclusion => ({
-      "@type": "Thing",
-      "name": inclusion
+      "url": `https://trivenicabs.in/tour-package/${slug}#day-${index + 1}`
     })),
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -232,9 +268,9 @@ export default function TourPackagePage({ params }) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item,
-      "item": index === content.breadcrumb.length - 1 
-        ? `https://trivenicabs.com/tour-packages/${slug}`
-        : `https://trivenicabs.com/${item.toLowerCase().replace(/ /g, '-')}`
+      "item": index === content.breadcrumb.length - 1
+        ? `https://trivenicabs.in/tour-package/${slug}`
+        : `https://trivenicabs.in/${item.toLowerCase().replace(/ /g, '-')}`
     }))
   };
 
@@ -246,14 +282,28 @@ export default function TourPackagePage({ params }) {
           __html: JSON.stringify(structuredData)
         }}
       />
-      
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema)
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema)
+        }}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbData)
         }}
       />
-      
+
       <div className="bg-white">
         {/* Hero Section */}
         <div className="relative h-[60vh]">
@@ -270,11 +320,11 @@ export default function TourPackagePage({ params }) {
               <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
                 {packageInfo.title}
               </h1>
-              
+
               <p className="text-lg md:text-xl mb-6 max-w-3xl leading-relaxed">
                 {content.intro}
               </p>
-              
+
               <div className="flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
                   <Clock className="w-4 h-4 mr-2" />
@@ -312,7 +362,7 @@ export default function TourPackagePage({ params }) {
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-12">
-              
+
               {/* Main Introduction */}
               <section>
                 <h2 className="text-3xl font-bold mb-6 text-gray-900">
@@ -351,13 +401,13 @@ export default function TourPackagePage({ params }) {
                 <div className="text-gray-700 leading-relaxed space-y-4">
                   <p>{packageInfo.overview}</p>
                   <p>
-                    <strong>Tour Duration:</strong> {packageInfo.duration} | 
-                    <strong className="ml-2">Starting Point:</strong> {packageInfo.startingPoint} | 
+                    <strong>Tour Duration:</strong> {packageInfo.duration} |
+                    <strong className="ml-2">Starting Point:</strong> {packageInfo.startingPoint} |
                     <strong className="ml-2">Destination:</strong> {packageInfo.destination}
                   </p>
                   <p>
-                    <strong>Best Time to Book:</strong> Book this {packageInfo.destination} tour package 
-                    at least 2 weeks in advance for best rates and availability. We offer flexible 
+                    <strong>Best Time to Book:</strong> Book this {packageInfo.destination} tour package
+                    at least 2 weeks in advance for best rates and availability. We offer flexible
                     payment options and instant booking confirmation.
                   </p>
                 </div>
@@ -387,7 +437,7 @@ export default function TourPackagePage({ params }) {
                     Complete {packageInfo.duration} Itinerary - Day by Day Plan
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    Here is the detailed day-wise itinerary for your {packageInfo.destination} tour. 
+                    Here is the detailed day-wise itinerary for your {packageInfo.destination} tour.
                     Each day is carefully planned to ensure you experience the best of {packageInfo.destination}.
                   </p>
                   <ItinerarySection itinerary={packageInfo.itinerary} />
@@ -413,7 +463,7 @@ export default function TourPackagePage({ params }) {
                       </span>
                     </div>
                     <p className="text-gray-600 mb-6">
-                      Stay in comfortable and well-appointed rooms with modern amenities. 
+                      Stay in comfortable and well-appointed rooms with modern amenities.
                       Our selected hotels ensure your comfort throughout the {packageInfo.destination} tour.
                     </p>
                     <div className="grid sm:grid-cols-2 gap-4">
@@ -495,7 +545,7 @@ export default function TourPackagePage({ params }) {
             {/* Sidebar */}
             <div className="md:col-span-1">
               <div className="sticky top-4 space-y-6">
-                
+
                 {/* Main Booking Card */}
                 <div className="bg-white border-2 border-gray-200 p-6 rounded-2xl shadow-lg">
                   <div className="text-center mb-6">
@@ -528,7 +578,7 @@ export default function TourPackagePage({ params }) {
                   </div>
 
                   <BookNowButton slug={slug} packageTitle={packageInfo.title} />
-                  
+
                   <div className="mt-4 text-center text-xs text-gray-500">
                     Instant confirmation • Secure booking
                   </div>
@@ -540,8 +590,8 @@ export default function TourPackagePage({ params }) {
                   <p className="text-sm mb-4 text-blue-100">
                     Speak with our travel experts for personalized recommendations
                   </p>
-                  <a 
-                    href="tel:7668570551" 
+                  <a
+                    href="tel:7668570551"
                     className="flex items-center justify-center bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-blue-50 transition-colors"
                   >
                     <Phone className="w-5 h-5 mr-2" />
