@@ -10435,104 +10435,103 @@ export const attractionBlogPosts = [
 
     metaTitle: "Varanasi Complete Guide 2026 - Holy Ganges, Ghats, Ganga Aarti & Tour Packages",
     metaDescription: "Varanasi complete travel guide: Ganga Aarti, ghats, Kashi Vishwanath Temple, sunrise boat ride, Sarnath, best time to visit & Delhi to Varanasi tour packages 2026."
-  }
   },
-{
-  id: 301,
+  {
+    id: 301,
     slug: "akshardham-temple-delhi-guide-2025",
-      title: "Akshardham Temple Delhi Guide 2025: Timings, Ticket Price & Musical Fountain",
-        excerpt: "Complete guide to Swaminarayan Akshardham Temple, New Delhi. Know about timings, ticket prices, exhibitions, musical fountain show, dress code & rules.",
+    title: "Akshardham Temple Delhi Guide 2025: Timings, Ticket Price & Musical Fountain",
+    excerpt: "Complete guide to Swaminarayan Akshardham Temple, New Delhi. Know about timings, ticket prices, exhibitions, musical fountain show, dress code & rules.",
 
-          city: "delhi",
-            attractionType: "temple",
-              nearbyAttractions: ["lotus-temple", "humayuns-tomb", "india-gate"],
+    city: "delhi",
+    attractionType: "temple",
+    nearbyAttractions: ["lotus-temple", "humayuns-tomb", "india-gate"],
 
-                category: "Attractions",
-                  tags: ["Places to Visit in Delhi", "Akshardham", "Temples", "Spirituality", "Architecture"],
+    category: "Attractions",
+    tags: ["Places to Visit in Delhi", "Akshardham", "Temples", "Spirituality", "Architecture"],
 
-                    keywords: [
-                      "akshardham temple delhi",
-                      "akshardham temple timings",
-                      "akshardham water show price",
-                      "akshardham temple ticket price",
-                      "akshardham dress code",
-                      "swaminarayan akshardham",
-                      "akshardham musical fountain",
-                      "akshardham exhibition",
-                      "how to reach akshardham",
-                      "akshardham nearest metro",
-                      "places to visit in delhi",
-                      "delhi sightseeing",
-                      "akshardham temple history",
-                      "sahaj anand water show",
-                      "akshardham boat ride",
-                      "best time to visit akshardham",
-                      "is photography allowed in akshardham",
-                      "akshardham temple architecture",
-                      "delhi temple tour"
-                    ],
+    keywords: [
+      "akshardham temple delhi",
+      "akshardham temple timings",
+      "akshardham water show price",
+      "akshardham temple ticket price",
+      "akshardham dress code",
+      "swaminarayan akshardham",
+      "akshardham musical fountain",
+      "akshardham exhibition",
+      "how to reach akshardham",
+      "akshardham nearest metro",
+      "places to visit in delhi",
+      "delhi sightseeing",
+      "akshardham temple history",
+      "sahaj anand water show",
+      "akshardham boat ride",
+      "best time to visit akshardham",
+      "is photography allowed in akshardham",
+      "akshardham temple architecture",
+      "delhi temple tour"
+    ],
 
-                      relatedTours: [
-                        { id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500" },
-                        { id: "delhi-3", name: "Delhi Temple Tour", slug: "delhi-temple-tour", city: "delhi", price: "₹2,200" }
-                      ],
+    relatedTours: [
+      { id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500" },
+      { id: "delhi-3", name: "Delhi Temple Tour", slug: "delhi-temple-tour", city: "delhi", price: "₹2,200" }
+    ],
 
-                        relatedDestinations: [
-                          { name: "Delhi", slug: "delhi", type: "city" },
-                          { name: "Mathura", slug: "mathura", type: "city" }
-                        ],
+    relatedDestinations: [
+      { name: "Delhi", slug: "delhi", type: "city" },
+      { name: "Mathura", slug: "mathura", type: "city" }
+    ],
 
-                          relatedBlogs: [
-                            { title: "Lotus Temple Guide", slug: "lotus-temple-delhi-guide" },
-                            { title: "Delhi Sightseeing Guide", slug: "delhi-sightseeing-guide-top-15-places" }
-                          ],
+    relatedBlogs: [
+      { title: "Lotus Temple Guide", slug: "lotus-temple-delhi-guide" },
+      { title: "Delhi Sightseeing Guide", slug: "delhi-sightseeing-guide-top-15-places" }
+    ],
 
-                            primaryCTA: {
-    text: "Book Delhi Temple Tour",
+    primaryCTA: {
+      text: "Book Delhi Temple Tour",
       url: "/sightseeing/delhi-temple-tour",
-        description: "Visit Akshardham, Lotus Temple & more",
-          price: "Starting from ₹2,200"
-  },
+      description: "Visit Akshardham, Lotus Temple & more",
+      price: "Starting from ₹2,200"
+    },
 
-  attractionData: {
-    location: "NH 24, Akshardham Setu, New Delhi, Delhi 110092",
+    attractionData: {
+      location: "NH 24, Akshardham Setu, New Delhi, Delhi 110092",
       entryFee: {
-      temple: "Free",
+        temple: "Free",
         exhibition: "₹250 (Adults), ₹150 (Children)",
-          musicalFountain: "₹90 (Adults), ₹60 (Children)"
-    },
-    timings: {
-      open: "10:00 AM",
+        musicalFountain: "₹90 (Adults), ₹60 (Children)"
+      },
+      timings: {
+        open: "10:00 AM",
         close: "8:00 PM (Entry closes at 6:30 PM)",
-          closedOn: "Monday",
-            musicalFountain: "7:30 PM (vary by season)"
-    },
-    bestTimeToVisit: {
-      season: "October to March",
+        closedOn: "Monday",
+        musicalFountain: "7:30 PM (vary by season)"
+      },
+      bestTimeToVisit: {
+        season: "October to March",
         timeOfDay: "Afternoon (3 PM) to cover exhibitions and stay for evening show"
-    },
-    howToReach: {
-      fromcenter: "10 km from Connaught Place",
+      },
+      howToReach: {
+        fromcenter: "10 km from Connaught Place",
         nearestMetro: "Akshardham Metro Station (Blue Line) - 300m walk",
-          nearestRailway: "Anand Vihar Terminal (5 km) or New Delhi Rly Station (11 km)"
-    },
-    timeNeeded: "4-5 hours (including exhibitions)",
+        nearestRailway: "Anand Vihar Terminal (5 km) or New Delhi Rly Station (11 km)"
+      },
+      timeNeeded: "4-5 hours (including exhibitions)",
       coordinates: {
-      latitude: 28.6127,
+        latitude: 28.6127,
         longitude: 77.2773
-    }
-  },
+      }
+    },
 
-  image: "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
+    image: "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
     date: "2025-01-22",
-      readTime: "12 min read",
-        author: "Triveni Cabs Travel Team",
-          featured: true,
-            views: 850,
-              metaTitle: "Akshardham Temple Delhi Guide 2025: Timings, Shows & Entry Fee",
-                metaDescription: "Plan your visit to Akshardham Temple Delhi. Complete guide on timings, ticket prices, exhibitions, musical fountain show & dress code rules for 2025.",
+    readTime: "12 min read",
+    author: "Triveni Cabs Travel Team",
+    featured: true,
+    views: 850,
+    metaTitle: "Akshardham Temple Delhi Guide 2025: Timings, Shows & Entry Fee",
+    metaDescription: "Plan your visit to Akshardham Temple Delhi. Complete guide on timings, ticket prices, exhibitions, musical fountain show & dress code rules for 2025.",
 
-                  content: `
+    content: `
       <div class="blog-intro">
         <p><strong>Swaminarayan Akshardham</strong> in New Delhi deserves every bit of the hype it gets. Recognized by the Guinness World Records as the <em>World's Largest Comprehensive Hindu Temple</em>, it is a stunning masterpiece of Indian culture, spirituality, and architecture. It's not just a temple; it's an experience that takes you through 10,000 years of Indian history.</p>
         
@@ -10592,101 +10591,101 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/delhi-temple-tour" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">Book Temple Tour - ₹2,200</a>
       </div>
     `
-},
-{
-  id: 302,
+  },
+  {
+    id: 302,
     slug: "qutub-minar-delhi-history-architecture",
-      title: "Qutub Minar Delhi: History, Architecture & Iron Pillar Mystery",
-        excerpt: "Explore the UNESCO World Heritage site of Qutub Minar. Discover the history of the Victory Tower, the mysterious non-rusting Iron Pillar, and the Alai Minar.",
+    title: "Qutub Minar Delhi: History, Architecture & Iron Pillar Mystery",
+    excerpt: "Explore the UNESCO World Heritage site of Qutub Minar. Discover the history of the Victory Tower, the mysterious non-rusting Iron Pillar, and the Alai Minar.",
 
-          city: "delhi",
-            attractionType: "monument",
-              nearbyAttractions: ["mehrauli-archaeological-park", "humayuns-tomb", "lotus-temple"],
+    city: "delhi",
+    attractionType: "monument",
+    nearbyAttractions: ["mehrauli-archaeological-park", "humayuns-tomb", "lotus-temple"],
 
-                category: "Attractions",
-                  tags: ["Delhi", "Historical Monuments", "UNESCO Sites", "Mughal Architecture"],
+    category: "Attractions",
+    tags: ["Delhi", "Historical Monuments", "UNESCO Sites", "Mughal Architecture"],
 
-                    keywords: [
-                      "qutub minar delhi",
-                      "qutub minar height",
-                      "qutub minar history",
-                      "iron pillar delhi mystery",
-                      "who built qutub minar",
-                      "qutub minar timings",
-                      "qutub minar ticket price",
-                      "alai darwaza",
-                      "quwwat ul islam mosque",
-                      "mehrauli archaeological park",
-                      "delhi historical places",
-                      "unesco sites in delhi",
-                      "qutub complex guide",
-                      "best time to visit qutub minar",
-                      "qutub minar photography",
-                      "delhi city tour packages",
-                      "history of qutub minar",
-                      "delhi monuments guide"
-                    ],
+    keywords: [
+      "qutub minar delhi",
+      "qutub minar height",
+      "qutub minar history",
+      "iron pillar delhi mystery",
+      "who built qutub minar",
+      "qutub minar timings",
+      "qutub minar ticket price",
+      "alai darwaza",
+      "quwwat ul islam mosque",
+      "mehrauli archaeological park",
+      "delhi historical places",
+      "unesco sites in delhi",
+      "qutub complex guide",
+      "best time to visit qutub minar",
+      "qutub minar photography",
+      "delhi city tour packages",
+      "history of qutub minar",
+      "delhi monuments guide"
+    ],
 
-                      relatedTours: [
-                        { id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500" },
-                        { id: "delhi-4", name: "Qutub Minar & Historic Delhi", slug: "historic-delhi-tour", city: "delhi", price: "₹1,800" }
-                      ],
+    relatedTours: [
+      { id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500" },
+      { id: "delhi-4", name: "Qutub Minar & Historic Delhi", slug: "historic-delhi-tour", city: "delhi", price: "₹1,800" }
+    ],
 
-                        relatedDestinations: [
-                          { name: "Delhi", slug: "delhi", type: "city" },
-                          { name: "Agra", slug: "agra", type: "city" }
-                        ],
+    relatedDestinations: [
+      { name: "Delhi", slug: "delhi", type: "city" },
+      { name: "Agra", slug: "agra", type: "city" }
+    ],
 
-                          relatedBlogs: [
-                            { title: "Red Fort Guide", slug: "red-fort-delhi-complete-guide-2026" },
-                            { title: "Humayun's Tomb Guide", slug: "humayuns-tomb-delhi-guide" }
-                          ],
+    relatedBlogs: [
+      { title: "Red Fort Guide", slug: "red-fort-delhi-complete-guide-2026" },
+      { title: "Humayun's Tomb Guide", slug: "humayuns-tomb-delhi-guide" }
+    ],
 
-                            primaryCTA: {
-    text: "Book Delhi Sightseeing",
+    primaryCTA: {
+      text: "Book Delhi Sightseeing",
       url: "/sightseeing/delhi-full-day-city-tour",
-        description: "Includes Qutub Minar, Red Fort & India Gate",
-          price: "Starting from ₹2,500"
-  },
+      description: "Includes Qutub Minar, Red Fort & India Gate",
+      price: "Starting from ₹2,500"
+    },
 
-  attractionData: {
-    location: "Seth Sarai, Mehrauli, New Delhi, Delhi 110030",
+    attractionData: {
+      location: "Seth Sarai, Mehrauli, New Delhi, Delhi 110030",
       entryFee: {
-      indian: "₹40",
+        indian: "₹40",
         foreign: "₹600",
-          children: "Free (below 15 years)"
-    },
-    timings: {
-      open: "7:00 AM",
+        children: "Free (below 15 years)"
+      },
+      timings: {
+        open: "7:00 AM",
         close: "9:00 PM",
-          closedOn: "Open all days"
-    },
-    bestTimeToVisit: {
-      season: "October to March",
+        closedOn: "Open all days"
+      },
+      bestTimeToVisit: {
+        season: "October to March",
         timeOfDay: "Early morning (7-9 AM) for empty frames or Sunset for golden hour"
-    },
-    howToReach: {
-      fromcenter: "15 km from Connaught Place",
+      },
+      howToReach: {
+        fromcenter: "15 km from Connaught Place",
         nearestMetro: "Qutub Minar Metro Station (Yellow Line) - 5 min auto ride",
-          nearestRailway: "New Delhi Railway Station (15 km)"
-    },
-    timeNeeded: "1.5 - 2 hours",
+        nearestRailway: "New Delhi Railway Station (15 km)"
+      },
+      timeNeeded: "1.5 - 2 hours",
       coordinates: {
-      latitude: 28.5244,
+        latitude: 28.5244,
         longitude: 77.1855
-    }
-  },
+      }
+    },
 
-  image: "/images/sightseeing/Delhi/Outub_Minar.jpg",
+    image: "/images/sightseeing/Delhi/Outub_Minar.jpg",
     date: "2025-01-23",
-      readTime: "10 min read",
-        author: "Triveni Cabs Travel Team",
-          featured: true,
-            views: 790,
-              metaTitle: "Qutub Minar Delhi Guide: History, Timings & Iron Pillar Mystery",
-                metaDescription: "Visit Qutub Minar, the world's tallest brick minaret. Complete guide on history, Iron Pillar mystery, ticket prices, timings & architecture. Book Delhi tours.",
+    readTime: "10 min read",
+    author: "Triveni Cabs Travel Team",
+    featured: true,
+    views: 790,
+    metaTitle: "Qutub Minar Delhi Guide: History, Timings & Iron Pillar Mystery",
+    metaDescription: "Visit Qutub Minar, the world's tallest brick minaret. Complete guide on history, Iron Pillar mystery, ticket prices, timings & architecture. Book Delhi tours.",
 
-                  content: `
+    content: `
       <div class="blog-intro">
         <p>Soaring 73 meters into the sky, the <strong>Qutub Minar</strong> is the tallest brick minaret in the world and a masterpiece of Indo-Islamic architecture. Built to celebrate Muslim dominance in Delhi after the defeat of Delhi's last Hindu ruler, it marks the beginning of Muslim rule in India. Today, it stands as a UNESCO World Heritage Site in the leafy Mehrauli neighborhood.</p>
         
@@ -10728,101 +10727,101 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/delhi-full-day-city-tour" class="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors">Check Car Rental Rates</a>
       </div>
     `
-},
-{
-  id: 303,
+  },
+  {
+    id: 303,
     slug: "city-palace-jaipur-history-museum-guide",
-      title: "City Palace Jaipur: Royal Museum, History & Entry Fee Guide 2025",
-        excerpt: "Step into the royal residence of the Maharaja of Jaipur. Complete guide to City Palace, Mubarak Mahal, Chandra Mahal, museums, entry fees & timings.",
+    title: "City Palace Jaipur: Royal Museum, History & Entry Fee Guide 2025",
+    excerpt: "Step into the royal residence of the Maharaja of Jaipur. Complete guide to City Palace, Mubarak Mahal, Chandra Mahal, museums, entry fees & timings.",
 
-          city: "jaipur",
-            attractionType: "palace",
-              nearbyAttractions: ["jantar-mantar", "hawa-mahal", "albert-hall-museum"],
+    city: "jaipur",
+    attractionType: "palace",
+    nearbyAttractions: ["jantar-mantar", "hawa-mahal", "albert-hall-museum"],
 
-                category: "Attractions",
-                  tags: ["Jaipur", "Royal Palaces", "History", "Museums", "Rajasthan"],
+    category: "Attractions",
+    tags: ["Jaipur", "Royal Palaces", "History", "Museums", "Rajasthan"],
 
-                    keywords: [
-                      "city palace jaipur",
-                      "city palace entry fee",
-                      "city palace timings",
-                      "chandra mahal jaipur",
-                      "mubarak mahal",
-                      "preetam niwas chowk",
-                      "jaipur royal family residence",
-                      "city palace museum",
-                      "sireh deorhi gate",
-                      "places to visit in jaipur",
-                      "jaipur sightseeing",
-                      "peacock gate jaipur",
-                      "royal grandeur tour",
-                      "history of city palace",
-                      "jaipur tourism",
-                      "city palace ticket price",
-                      "best time to visit city palace"
-                    ],
+    keywords: [
+      "city palace jaipur",
+      "city palace entry fee",
+      "city palace timings",
+      "chandra mahal jaipur",
+      "mubarak mahal",
+      "preetam niwas chowk",
+      "jaipur royal family residence",
+      "city palace museum",
+      "sireh deorhi gate",
+      "places to visit in jaipur",
+      "jaipur sightseeing",
+      "peacock gate jaipur",
+      "royal grandeur tour",
+      "history of city palace",
+      "jaipur tourism",
+      "city palace ticket price",
+      "best time to visit city palace"
+    ],
 
-                      relatedTours: [
-                        { id: "jaipur-1", name: "Jaipur Full Day Sightseeing", slug: "jaipur-full-day-sightseeing", city: "jaipur", price: "₹2,800" },
-                        { id: "jaipur-2", name: "Pink City Heritage Walk", slug: "jaipur-heritage-walk", city: "jaipur", price: "₹1,500" }
-                      ],
+    relatedTours: [
+      { id: "jaipur-1", name: "Jaipur Full Day Sightseeing", slug: "jaipur-full-day-sightseeing", city: "jaipur", price: "₹2,800" },
+      { id: "jaipur-2", name: "Pink City Heritage Walk", slug: "jaipur-heritage-walk", city: "jaipur", price: "₹1,500" }
+    ],
 
-                        relatedDestinations: [
-                          { name: "Jaipur", slug: "jaipur", type: "city" },
-                          { name: "Agra", slug: "agra", type: "city" }
-                        ],
+    relatedDestinations: [
+      { name: "Jaipur", slug: "jaipur", type: "city" },
+      { name: "Agra", slug: "agra", type: "city" }
+    ],
 
-                          relatedBlogs: [
-                            { title: "Hawa Mahal Guide", slug: "hawa-mahal-jaipur-guide" },
-                            { title: "Amber Fort Guide", slug: "amber-fort-jaipur-guide" }
-                          ],
+    relatedBlogs: [
+      { title: "Hawa Mahal Guide", slug: "hawa-mahal-jaipur-guide" },
+      { title: "Amber Fort Guide", slug: "amber-fort-jaipur-guide" }
+    ],
 
-                            primaryCTA: {
-    text: "Book Jaipur City Tour",
+    primaryCTA: {
+      text: "Book Jaipur City Tour",
       url: "/sightseeing/jaipur-full-day-sightseeing",
-        description: "Visit City Palace, Hawa Mahal & Jantar Mantar",
-          price: "Starting from ₹2,800"
-  },
+      description: "Visit City Palace, Hawa Mahal & Jantar Mantar",
+      price: "Starting from ₹2,800"
+    },
 
-  attractionData: {
-    location: "Tulsi Marg, Gangori Bazaar, J.D.A. Market, Pink City, Jaipur, Rajasthan 302002",
+    attractionData: {
+      location: "Tulsi Marg, Gangori Bazaar, J.D.A. Market, Pink City, Jaipur, Rajasthan 302002",
       entryFee: {
-      indian: "₹300",
+        indian: "₹300",
         foreign: "₹700",
-          children: "₹100 (Indian), ₹400 (Foreign)",
-            royalGrandeur: "₹2,000 (Indian), ₹3,500 (Foreign)"
-    },
-    timings: {
-      open: "9:30 AM",
+        children: "₹100 (Indian), ₹400 (Foreign)",
+        royalGrandeur: "₹2,000 (Indian), ₹3,500 (Foreign)"
+      },
+      timings: {
+        open: "9:30 AM",
         close: "5:00 PM (Day Visit), 7:00 PM - 10:00 PM (Night Visit)",
-          closedOn: "Open all days (except Holi)"
-    },
-    bestTimeToVisit: {
-      season: "October to March",
+        closedOn: "Open all days (except Holi)"
+      },
+      bestTimeToVisit: {
+        season: "October to March",
         timeOfDay: "Morning (9:30 AM) to beat the crowds"
-    },
-    howToReach: {
-      fromcenter: "4 km from Jaipur Railway Station",
+      },
+      howToReach: {
+        fromcenter: "4 km from Jaipur Railway Station",
         nearestMetro: "Badi Chaupar Metro Station (Pink Line) - 10 min walk",
-          nearestRailway: "Jaipur Junction (4 km)"
-    },
-    timeNeeded: "2-3 hours",
+        nearestRailway: "Jaipur Junction (4 km)"
+      },
+      timeNeeded: "2-3 hours",
       coordinates: {
-      latitude: 26.9258,
+        latitude: 26.9258,
         longitude: 75.8237
-    }
-  },
+      }
+    },
 
-  image: "/images/sightseeing/Jaipur/city_palace.jpg",
+    image: "/images/sightseeing/Jaipur/city_palace.jpg",
     date: "2025-01-24",
-      readTime: "11 min read",
-        author: "Triveni Cabs Travel Team",
-          featured: true,
-            views: 600,
-              metaTitle: "City Palace Jaipur Guide 2025: Entry Fee, Timings & Museum",
-                metaDescription: "Visit the royal City Palace Jaipur. Complete guide to the museum, Chandra Mahal, Peacock Gate, entry fees & history. Book Jaipur sightseeing tours.",
+    readTime: "11 min read",
+    author: "Triveni Cabs Travel Team",
+    featured: true,
+    views: 600,
+    metaTitle: "City Palace Jaipur Guide 2025: Entry Fee, Timings & Museum",
+    metaDescription: "Visit the royal City Palace Jaipur. Complete guide to the museum, Chandra Mahal, Peacock Gate, entry fees & history. Book Jaipur sightseeing tours.",
 
-                  content: `
+    content: `
       <div class="blog-intro">
         <p>In the heart of the Pink City lies the magnificent <strong>City Palace</strong>, a complex of courtyards, gardens, and buildings that continue to serve as the residence of the royal family of Jaipur. Built by Maharaja Sawai Jai Singh II in 1727, the palace is a striking blend of Rajasthani (Rajput) and Mughal architecture.</p>
         
@@ -10866,103 +10865,103 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/jaipur-full-day-sightseeing" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Royal Tour - ₹2,800</a>
       </div>
     `
-},
-{
-  id: 304,
+  },
+  {
+    id: 304,
     slug: "amber-fort-jaipur-guide",
-      title: "Amber Fort Jaipur: Elephant Ride, History & Sheesh Mahal Guide",
-        excerpt: "The majestic Amber (Amer) Fort is Jaipur's crowning jewel. Discover its history, the stunning Sheesh Mahal, elephant ride details, and light & sound show timings.",
+    title: "Amber Fort Jaipur: Elephant Ride, History & Sheesh Mahal Guide",
+    excerpt: "The majestic Amber (Amer) Fort is Jaipur's crowning jewel. Discover its history, the stunning Sheesh Mahal, elephant ride details, and light & sound show timings.",
 
-          city: "jaipur",
-            attractionType: "fort",
-              nearbyAttractions: ["jaigarh-fort", "nahargarh-fort", "jal-mahal"],
+    city: "jaipur",
+    attractionType: "fort",
+    nearbyAttractions: ["jaigarh-fort", "nahargarh-fort", "jal-mahal"],
 
-                category: "Attractions",
-                  tags: ["Jaipur", "Forts", "UNESCO Sites", "History", "Architecture"],
+    category: "Attractions",
+    tags: ["Jaipur", "Forts", "UNESCO Sites", "History", "Architecture"],
 
-                    keywords: [
-                      "amber fort jaipur",
-                      "amer fort",
-                      "amber fort elephant ride",
-                      "sheesh mahal amber fort",
-                      "amber fort history",
-                      "amber fort light and sound show",
-                      "jaipur forts",
-                      "places to visit in jaipur",
-                      "unesco world heritage site rajasthan",
-                      "maan singh palace",
-                      "ganesh pol amber fort",
-                      "amber fort timings",
-                      "amber fort entry fee",
-                      "jaipur tourism",
-                      "amber fort night view",
-                      "underground tunnel amber fort",
-                      "best time to visit amber fort"
-                    ],
+    keywords: [
+      "amber fort jaipur",
+      "amer fort",
+      "amber fort elephant ride",
+      "sheesh mahal amber fort",
+      "amber fort history",
+      "amber fort light and sound show",
+      "jaipur forts",
+      "places to visit in jaipur",
+      "unesco world heritage site rajasthan",
+      "maan singh palace",
+      "ganesh pol amber fort",
+      "amber fort timings",
+      "amber fort entry fee",
+      "jaipur tourism",
+      "amber fort night view",
+      "underground tunnel amber fort",
+      "best time to visit amber fort"
+    ],
 
-                      relatedTours: [
-                        { id: "jaipur-1", name: "Jaipur Full Day Sightseeing", slug: "jaipur-full-day-sightseeing", city: "jaipur", price: "₹2,800" },
-                        { id: "amber-1", name: "Amber Fort & Nahargarh Sunset", slug: "amber-nahargarh-tour", city: "jaipur", price: "₹2,200" }
-                      ],
+    relatedTours: [
+      { id: "jaipur-1", name: "Jaipur Full Day Sightseeing", slug: "jaipur-full-day-sightseeing", city: "jaipur", price: "₹2,800" },
+      { id: "amber-1", name: "Amber Fort & Nahargarh Sunset", slug: "amber-nahargarh-tour", city: "jaipur", price: "₹2,200" }
+    ],
 
-                        relatedDestinations: [
-                          { name: "Jaipur", slug: "jaipur", type: "city" },
-                          { name: "Delhi", slug: "delhi", type: "city" }
-                        ],
+    relatedDestinations: [
+      { name: "Jaipur", slug: "jaipur", type: "city" },
+      { name: "Delhi", slug: "delhi", type: "city" }
+    ],
 
-                          relatedBlogs: [
-                            { title: "Jaigarh Fort Guide", slug: "jaigarh-fort-jaipur-guide" },
-                            { title: "Nahargarh Fort Guide", slug: "nahargarh-fort-jaipur-guide" }
-                          ],
+    relatedBlogs: [
+      { title: "Jaigarh Fort Guide", slug: "jaigarh-fort-jaipur-guide" },
+      { title: "Nahargarh Fort Guide", slug: "nahargarh-fort-jaipur-guide" }
+    ],
 
-                            primaryCTA: {
-    text: "Book Amber Fort Trip",
+    primaryCTA: {
+      text: "Book Amber Fort Trip",
       url: "/sightseeing/amber-nahargarh-tour",
-        description: "Explore the majestic Amber Fort",
-          price: "Starting from ₹2,200"
-  },
+      description: "Explore the majestic Amber Fort",
+      price: "Starting from ₹2,200"
+    },
 
-  attractionData: {
-    location: "Devisinghpura, Amer, Jaipur, Rajasthan 302001",
+    attractionData: {
+      location: "Devisinghpura, Amer, Jaipur, Rajasthan 302001",
       entryFee: {
-      indian: "₹50",
+        indian: "₹50",
         foreign: "₹550",
-          student: "₹10 (Indian), ₹100 (Foreign)",
-            elephantRide: "₹1100 (per couple)",
-              lightShow: "₹200 (English), ₹100 (Hindi)"
-    },
-    timings: {
-      open: "8:00 AM",
+        student: "₹10 (Indian), ₹100 (Foreign)",
+        elephantRide: "₹1100 (per couple)",
+        lightShow: "₹200 (English), ₹100 (Hindi)"
+      },
+      timings: {
+        open: "8:00 AM",
         close: "5:30 PM (Day), 6:30 PM - 9:15 PM (Night)",
-          closedOn: "Open all days",
-            elephantRide: "7:30 AM - 11:30 AM (Limited rides)"
-    },
-    bestTimeToVisit: {
-      season: "October to March",
+        closedOn: "Open all days",
+        elephantRide: "7:30 AM - 11:30 AM (Limited rides)"
+      },
+      bestTimeToVisit: {
+        season: "October to March",
         timeOfDay: "Early morning (8 AM) for elephant ride or late afternoon"
-    },
-    howToReach: {
-      fromcenter: "11 km from Jaipur City Center",
+      },
+      howToReach: {
+        fromcenter: "11 km from Jaipur City Center",
         nearestMetro: "None nearby, Cab/Auto recommended",
-          nearestRailway: "Jaipur Junction (12 km)"
-    },
-    timeNeeded: "3-4 hours",
+        nearestRailway: "Jaipur Junction (12 km)"
+      },
+      timeNeeded: "3-4 hours",
       coordinates: {
-      latitude: 26.9855,
+        latitude: 26.9855,
         longitude: 75.8513
-    }
-  },
+      }
+    },
 
-  image: "/images/sightseeing/Jaipur/amber_fort.jpg",
+    image: "/images/sightseeing/Jaipur/amber_fort.jpg",
     date: "2025-01-25",
-      readTime: "13 min read",
-        author: "Triveni Cabs Travel Team",
-          featured: true,
-            views: 950,
-              metaTitle: "Amber Fort Jaipur 2025 Guide: Elephant Ride, History & Sheesh Mahal",
-                metaDescription: "Ultimate guide to Amber (Amer) Fort Jaipur. Tips on elephant rides, Sheesh Mahal, secret tunnels, light & sound show, and best photo spots.",
+    readTime: "13 min read",
+    author: "Triveni Cabs Travel Team",
+    featured: true,
+    views: 950,
+    metaTitle: "Amber Fort Jaipur 2025 Guide: Elephant Ride, History & Sheesh Mahal",
+    metaDescription: "Ultimate guide to Amber (Amer) Fort Jaipur. Tips on elephant rides, Sheesh Mahal, secret tunnels, light & sound show, and best photo spots.",
 
-                  content: `
+    content: `
       <div class="blog-intro">
         <p>Perched high on a hill overlooking Maota Lake, <strong>Amber Fort (Amer Fort)</strong> is the most iconic attraction in Jaipur. Built in 1592 by Raja Man Singh I, this UNESCO World Heritage Site is a massive palace complex built from pale yellow and pink sandstone and white marble. It was the capital of the Kachwaha Rajputs before Jaipur was built.</p>
         
@@ -11009,99 +11008,99 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/amber-nahargarh-tour" class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Book Fort Tour - ₹2,200</a>
       </div>
     `
-},
-{
-  id: 305,
+  },
+  {
+    id: 305,
     slug: "agra-fort-history-architecture",
-      title: "Agra Fort Guide: The Walled City of Mughals (Beyond Taj Mahal)",
-        excerpt: "Explore the massive Agra Fort, a UNESCO World Heritage site. Discover Jahangir Mahal, Khas Mahal, and the prison where Shah Jahan gazed at the Taj Mahal.",
+    title: "Agra Fort Guide: The Walled City of Mughals (Beyond Taj Mahal)",
+    excerpt: "Explore the massive Agra Fort, a UNESCO World Heritage site. Discover Jahangir Mahal, Khas Mahal, and the prison where Shah Jahan gazed at the Taj Mahal.",
 
-          city: "agra",
-            attractionType: "fort",
-              nearbyAttractions: ["taj-mahal", "itmad-ud-daulah", "fatehpur-sikri"],
+    city: "agra",
+    attractionType: "fort",
+    nearbyAttractions: ["taj-mahal", "itmad-ud-daulah", "fatehpur-sikri"],
 
-                category: "Attractions",
-                  tags: ["Agra", "Forts", "UNESCO Sites", "Mughal Architecture", "History"],
+    category: "Attractions",
+    tags: ["Agra", "Forts", "UNESCO Sites", "Mughal Architecture", "History"],
 
-                    keywords: [
-                      "agra fort history",
-                      "red fort agra",
-                      "agra fort vs red fort delhi",
-                      "jahangir mahal agra",
-                      "khas mahal",
-                      "musamman burj",
-                      "shah jahan prison",
-                      "agra fort architecture",
-                      "agra fort timings",
-                      "agra fort entry fee",
-                      "places to visit in agra",
-                      "agra sightseeing",
-                      "akbar fort",
-                      "mughal empire history",
-                      "agra fort light and sound show",
-                      "diwan-i-aam agra fort"
-                    ],
+    keywords: [
+      "agra fort history",
+      "red fort agra",
+      "agra fort vs red fort delhi",
+      "jahangir mahal agra",
+      "khas mahal",
+      "musamman burj",
+      "shah jahan prison",
+      "agra fort architecture",
+      "agra fort timings",
+      "agra fort entry fee",
+      "places to visit in agra",
+      "agra sightseeing",
+      "akbar fort",
+      "mughal empire history",
+      "agra fort light and sound show",
+      "diwan-i-aam agra fort"
+    ],
 
-                      relatedTours: [
-                        { id: "agra-1", name: "Agra One Day Tour", slug: "agra-one-day-tour", city: "agra", price: "₹3,500" },
-                        { id: "agra-2", name: "Agra & Fatehpur Sikri", slug: "agra-fatehpur-sikri-tour", city: "agra", price: "₹4,000" }
-                      ],
+    relatedTours: [
+      { id: "agra-1", name: "Agra One Day Tour", slug: "agra-one-day-tour", city: "agra", price: "₹3,500" },
+      { id: "agra-2", name: "Agra & Fatehpur Sikri", slug: "agra-fatehpur-sikri-tour", city: "agra", price: "₹4,000" }
+    ],
 
-                        relatedDestinations: [
-                          { name: "Agra", slug: "agra", type: "city" },
-                          { name: "Delhi", slug: "delhi", type: "city" }
-                        ],
+    relatedDestinations: [
+      { name: "Agra", slug: "agra", type: "city" },
+      { name: "Delhi", slug: "delhi", type: "city" }
+    ],
 
-                          relatedBlogs: [
-                            { title: "Taj Mahal Guide", slug: "taj-mahal-complete-guide-2026" },
-                            { title: "Fatehpur Sikri Guide", slug: "fatehpur-sikri-guide" }
-                          ],
+    relatedBlogs: [
+      { title: "Taj Mahal Guide", slug: "taj-mahal-complete-guide-2026" },
+      { title: "Fatehpur Sikri Guide", slug: "fatehpur-sikri-guide" }
+    ],
 
-                            primaryCTA: {
-    text: "Book Agra Tour",
+    primaryCTA: {
+      text: "Book Agra Tour",
       url: "/sightseeing/agra-one-day-tour",
-        description: "Visit Taj Mahal & Agra Fort",
-          price: "Starting from ₹3,500"
-  },
+      description: "Visit Taj Mahal & Agra Fort",
+      price: "Starting from ₹3,500"
+    },
 
-  attractionData: {
-    location: "Agra Fort, Rakabganj, Agra, Uttar Pradesh 282003",
+    attractionData: {
+      location: "Agra Fort, Rakabganj, Agra, Uttar Pradesh 282003",
       entryFee: {
-      indian: "₹50",
+        indian: "₹50",
         foreign: "₹650",
-          children: "Free (below 15 years)"
-    },
-    timings: {
-      open: "Sunrise",
+        children: "Free (below 15 years)"
+      },
+      timings: {
+        open: "Sunrise",
         close: "Sunset",
-          closedOn: "Open all days"
-    },
-    bestTimeToVisit: {
-      season: "October to March",
+        closedOn: "Open all days"
+      },
+      bestTimeToVisit: {
+        season: "October to March",
         timeOfDay: "Morning to avoid heat, or late afternoon"
-    },
-    howToReach: {
-      fromcenter: "2.5 km from Taj Mahal",
+      },
+      howToReach: {
+        fromcenter: "2.5 km from Taj Mahal",
         nearestMetro: "None",
-          nearestRailway: "Agra Fort Railway Station (Right outside)"
-    },
-    timeNeeded: "2-3 hours",
+        nearestRailway: "Agra Fort Railway Station (Right outside)"
+      },
+      timeNeeded: "2-3 hours",
       coordinates: {
-      latitude: 27.1795,
+        latitude: 27.1795,
         longitude: 78.0211
-    }
-  },
+      }
+    },
 
-  image: "/images/sightseeing/Agra/agra_fort.jpg",
+    image: "/images/sightseeing/Agra/agra_fort.jpg",
     date: "2025-01-26",
-      readTime: "11 min read",
-        author: "Triveni Cabs Travel Team",
-          featured: true,
-            views: 700,
-              metaTitle: "Agra Fort Guide 2025: History, Timings & Shah Jahan's Prison",
-                metaDescription: "Discover Agra Fort, the main residence of Mughal Emperors. Visit Jahangir Mahal, Musamman Burj & see the view of Taj Mahal. Complete travel guide.",
+    readTime: "11 min read",
+    author: "Triveni Cabs Travel Team",
+    featured: true,
+    views: 700,
+    metaTitle: "Agra Fort Guide 2025: History, Timings & Shah Jahan's Prison",
+    metaDescription: "Discover Agra Fort, the main residence of Mughal Emperors. Visit Jahangir Mahal, Musamman Burj & see the view of Taj Mahal. Complete travel guide.",
 
-                  content: `
+    content: `
       <div class="blog-intro">
         <p>While the Taj Mahal steals the spotlight, the <strong>Agra Fort</strong> is where the Mughal Emperors actually lived and ruled. This massive red sandstone fortification is not just a fort; it's a walled city. It was the main residence of the emperors of the Mughal Dynasty until 1638, when the capital was shifted to Delhi.</p>
         
@@ -11145,7 +11144,7 @@ export const attractionBlogPosts = [
         <a href="/sightseeing/agra-one-day-tour" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">Book Agra Package - ₹3,500</a>
       </div>
     `
-}
+  }
 ];
 
 // Helper functions for filtering and retrieving attraction blogs
