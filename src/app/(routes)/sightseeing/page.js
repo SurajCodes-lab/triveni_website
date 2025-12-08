@@ -347,14 +347,14 @@ export default function SightseeingPage() {
               "url": "https://trivenicabs.in"
             },
             "areaServed": [
-              {"@type": "City", "name": "Delhi"},
-              {"@type": "City", "name": "Agra"},
-              {"@type": "City", "name": "Jaipur"},
-              {"@type": "City", "name": "Udaipur"},
-              {"@type": "City", "name": "Jodhpur"},
-              {"@type": "City", "name": "Varanasi"},
-              {"@type": "City", "name": "Mumbai"},
-              {"@type": "City", "name": "Goa"}
+              { "@type": "City", "name": "Delhi" },
+              { "@type": "City", "name": "Agra" },
+              { "@type": "City", "name": "Jaipur" },
+              { "@type": "City", "name": "Udaipur" },
+              { "@type": "City", "name": "Jodhpur" },
+              { "@type": "City", "name": "Varanasi" },
+              { "@type": "City", "name": "Mumbai" },
+              { "@type": "City", "name": "Goa" }
             ],
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -380,58 +380,54 @@ export default function SightseeingPage() {
         }}
       />
 
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What sightseeing destinations do you cover?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We offer sightseeing tours across 20+ destinations including Delhi (Red Fort, Qutub Minar, India Gate), Agra (Taj Mahal, Agra Fort), Jaipur (Amber Fort, City Palace, Hawa Mahal), Udaipur, Jodhpur, Varanasi, Mumbai, Goa, and many more historical and cultural sites across India."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Are tour guides included in the sightseeing packages?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, all our sightseeing tours include professional, licensed tour guides who are experts in history, culture, and architecture. Guides are available in multiple languages including English, Hindi, French, Spanish, German, and Chinese."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I customize my sightseeing tour?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Absolutely! We offer fully customizable sightseeing tours. You can choose which monuments to visit, duration of each stop, meal preferences, and add special interests like photography, shopping, or local food experiences. Contact us to create your personalized itinerary."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What is included in the sightseeing tour package?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Our packages include comfortable AC transportation, professional driver, expert tour guide, all vehicle-related expenses (fuel, parking, tolls), and complete itinerary planning. Entrance fees to monuments, meals, and personal expenses are typically not included but can be arranged."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How long do the sightseeing tours last?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We offer flexible tour durations from half-day tours (4-5 hours) to full-day tours (8-10 hours) and multi-day packages. The duration can be customized based on your schedule and the number of attractions you wish to visit."
-                }
-              }
-            ]
-          })
-        }}
-      />
+      {/* FAQ Data Definition */}
+      {(() => {
+        const faqData = [
+          {
+            question: "What sightseeing destinations do you cover?",
+            answer: "We offer sightseeing tours across 20+ destinations including Delhi (Red Fort, Qutub Minar, India Gate), Agra (Taj Mahal, Agra Fort), Jaipur (Amber Fort, City Palace, Hawa Mahal), Udaipur, Jodhpur, Varanasi, Mumbai, Goa, and many more historical and cultural sites across India."
+          },
+          {
+            question: "Are tour guides included in the sightseeing packages?",
+            answer: "Yes, all our sightseeing tours include professional, licensed tour guides who are experts in history, culture, and architecture. Guides are available in multiple languages including English, Hindi, French, Spanish, German, and Chinese."
+          },
+          {
+            question: "Can I customize my sightseeing tour?",
+            answer: "Absolutely! We offer fully customizable sightseeing tours. You can choose which monuments to visit, duration of each stop, meal preferences, and add special interests like photography, shopping, or local food experiences. Contact us to create your personalized itinerary."
+          },
+          {
+            question: "What is included in the sightseeing tour package?",
+            answer: "Our packages include comfortable AC transportation, professional driver, expert tour guide, all vehicle-related expenses (fuel, parking, tolls), and complete itinerary planning. Entrance fees to monuments, meals, and personal expenses are typically not included but can be arranged."
+          },
+          {
+            question: "How long do the sightseeing tours last?",
+            answer: "We offer flexible tour durations from half-day tours (4-5 hours) to full-day tours (8-10 hours) and multi-day packages. The duration can be customized based on your schedule and the number of attractions you wish to visit."
+          }
+        ];
+
+        const faqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqData.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.answer
+            }
+          }))
+        };
+
+        return (
+          <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <SightseeingMainClient data={pageData} faqData={faqData} />
+          </>
+        );
+      })()}
 
       {/* ItemList Schema for All Tours */}
       <script
@@ -580,14 +576,14 @@ export default function SightseeingPage() {
               "worstRating": "1"
             },
             "areaServed": [
-              {"@type": "City", "name": "Delhi"},
-              {"@type": "City", "name": "Agra"},
-              {"@type": "City", "name": "Jaipur"},
-              {"@type": "City", "name": "Udaipur"},
-              {"@type": "City", "name": "Jodhpur"},
-              {"@type": "City", "name": "Varanasi"},
-              {"@type": "City", "name": "Mumbai"},
-              {"@type": "City", "name": "Goa"}
+              { "@type": "City", "name": "Delhi" },
+              { "@type": "City", "name": "Agra" },
+              { "@type": "City", "name": "Jaipur" },
+              { "@type": "City", "name": "Udaipur" },
+              { "@type": "City", "name": "Jodhpur" },
+              { "@type": "City", "name": "Varanasi" },
+              { "@type": "City", "name": "Mumbai" },
+              { "@type": "City", "name": "Goa" }
             ]
           })
         }}
@@ -703,12 +699,12 @@ export default function SightseeingPage() {
               "name": "Sightseeing Tours in India"
             },
             "mentions": [
-              {"@type": "City", "name": "Delhi"},
-              {"@type": "City", "name": "Agra"},
-              {"@type": "City", "name": "Jaipur"},
-              {"@type": "LandmarksOrHistoricalBuildings", "name": "Taj Mahal"},
-              {"@type": "LandmarksOrHistoricalBuildings", "name": "Red Fort"},
-              {"@type": "LandmarksOrHistoricalBuildings", "name": "Amber Fort"}
+              { "@type": "City", "name": "Delhi" },
+              { "@type": "City", "name": "Agra" },
+              { "@type": "City", "name": "Jaipur" },
+              { "@type": "LandmarksOrHistoricalBuildings", "name": "Taj Mahal" },
+              { "@type": "LandmarksOrHistoricalBuildings", "name": "Red Fort" },
+              { "@type": "LandmarksOrHistoricalBuildings", "name": "Amber Fort" }
             ],
             "speakable": {
               "@type": "SpeakableSpecification",
@@ -766,17 +762,17 @@ export default function SightseeingPage() {
             "name": "Sightseeing Tours Navigation",
             "url": "https://trivenicabs.in/sightseeing",
             "hasPart": [
-              {"@type": "WebPage", "name": "Delhi Tours", "url": "https://trivenicabs.in/sightseeing/delhi"},
-              {"@type": "WebPage", "name": "Agra Tours", "url": "https://trivenicabs.in/sightseeing/agra"},
-              {"@type": "WebPage", "name": "Jaipur Tours", "url": "https://trivenicabs.in/sightseeing/jaipur"},
-              {"@type": "WebPage", "name": "Udaipur Tours", "url": "https://trivenicabs.in/sightseeing/udaipur"},
-              {"@type": "WebPage", "name": "Varanasi Tours", "url": "https://trivenicabs.in/sightseeing/varanasi"}
+              { "@type": "WebPage", "name": "Delhi Tours", "url": "https://trivenicabs.in/sightseeing/delhi" },
+              { "@type": "WebPage", "name": "Agra Tours", "url": "https://trivenicabs.in/sightseeing/agra" },
+              { "@type": "WebPage", "name": "Jaipur Tours", "url": "https://trivenicabs.in/sightseeing/jaipur" },
+              { "@type": "WebPage", "name": "Udaipur Tours", "url": "https://trivenicabs.in/sightseeing/udaipur" },
+              { "@type": "WebPage", "name": "Varanasi Tours", "url": "https://trivenicabs.in/sightseeing/varanasi" }
             ]
           })
         }}
       />
 
-      <SightseeingMainClient data={pageData} />
+
     </>
   );
 }

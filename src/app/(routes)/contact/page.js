@@ -42,5 +42,107 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactClient />;
+  return (
+    <>
+      {/* ContactPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Triveni Cabs",
+            "description": "Get in touch with Triveni Cabs for 24/7 taxi booking support, inquiries, and customer service.",
+            "url": "https://trivenicabs.in/contact",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Triveni Cabs",
+              "telephone": "+91-7668570551",
+              "email": "cabstriveni@gmail.com",
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-7668570551",
+                  "contactType": "customer service",
+                  "areaServed": "IN",
+                  "availableLanguage": ["en", "hi"]
+                }
+              ]
+            }
+          })
+        }}
+      />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://trivenicabs.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact Us",
+                "item": "https://trivenicabs.in/contact"
+              }
+            ]
+          })
+        }}
+      />
+
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Triveni Cabs",
+            "image": "https://trivenicabs.in/logo.png",
+            "telephone": "+91-7668570551",
+            "email": "cabstriveni@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "366, Dandupura, near Tajganj",
+              "addressLocality": "Agra",
+              "addressRegion": "Uttar Pradesh",
+              "postalCode": "282006",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 27.1767,
+              "longitude": 78.0081
+            },
+            "url": "https://trivenicabs.in/contact",
+            "priceRange": "₹₹",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          })
+        }}
+      />
+
+      <ContactClient />
+    </>
+  );
 }

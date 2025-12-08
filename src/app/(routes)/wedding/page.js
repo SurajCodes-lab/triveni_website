@@ -46,19 +46,19 @@ export default function WeddingPage() {
       "url": "https://trivenicabs.in"
     },
     "areaServed": [
-      {"@type": "City", "name": "Delhi"},
-      {"@type": "City", "name": "Jaipur"},
-      {"@type": "City", "name": "Agra"},
-      {"@type": "City", "name": "Chandigarh"},
-      {"@type": "City", "name": "Shimla"},
-      {"@type": "City", "name": "Manali"},
-      {"@type": "City", "name": "Amritsar"},
-      {"@type": "City", "name": "Haridwar"},
-      {"@type": "City", "name": "Rishikesh"},
-      {"@type": "City", "name": "Dehradun"},
-      {"@type": "City", "name": "Jodhpur"},
-      {"@type": "City", "name": "Udaipur"},
-      {"@type": "City", "name": "Ayodhya"}
+      { "@type": "City", "name": "Delhi" },
+      { "@type": "City", "name": "Jaipur" },
+      { "@type": "City", "name": "Agra" },
+      { "@type": "City", "name": "Chandigarh" },
+      { "@type": "City", "name": "Shimla" },
+      { "@type": "City", "name": "Manali" },
+      { "@type": "City", "name": "Amritsar" },
+      { "@type": "City", "name": "Haridwar" },
+      { "@type": "City", "name": "Rishikesh" },
+      { "@type": "City", "name": "Dehradun" },
+      { "@type": "City", "name": "Jodhpur" },
+      { "@type": "City", "name": "Udaipur" },
+      { "@type": "City", "name": "Ayodhya" }
     ],
     "offers": {
       "@type": "AggregateOffer",
@@ -128,13 +128,81 @@ export default function WeddingPage() {
     }
   };
 
+  // FAQ Data for Schema and Client Component
+  const faqs = [
+    {
+      question: "What types of wedding cars do you offer?",
+      answer: "We offer luxury cars (BMW, Audi, Mercedes, Jaguar), premium sedans (City, Ciaz, Verna), SUVs (Fortuner, Innova Crysta), tempo travellers (9-26 seater), vintage cars, and luxury buses."
+    },
+    {
+      question: "Do you provide car decoration services?",
+      answer: "Yes! We provide beautiful floral and theme-based decoration services. You can choose from our standard decoration packages or request custom decorations based on your wedding theme."
+    },
+    {
+      question: "How far in advance should I book?",
+      answer: "We recommend booking at least 2-4 weeks in advance, especially during wedding season (October to March). However, we also accommodate last-minute bookings based on availability."
+    },
+    {
+      question: "What areas do you cover?",
+      answer: "We provide wedding car services across North India including Delhi, Chandigarh, Jaipur, Agra, Haridwar, Rishikesh, Shimla, Manali, Udaipur, Amritsar, and all major cities."
+    },
+    {
+      question: "Are your chauffeurs professional?",
+      answer: "Yes! All our chauffeurs are professional, uniformed, well-trained, and experienced in handling wedding events. They ensure timely and safe transportation."
+    },
+    {
+      question: "Can I customize my wedding package?",
+      answer: "Absolutely! We offer fully customizable packages based on your requirements, budget, number of vehicles needed, duration, and special requests."
+    }
+  ];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Wedding Services",
+        "item": "https://trivenicabs.in/wedding"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <WeddingPageClient />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <WeddingPageClient faqs={faqs} />
     </>
   );
 }

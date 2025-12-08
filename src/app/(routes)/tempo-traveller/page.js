@@ -144,6 +144,60 @@ export default function TempoTravellerPage() {
         ]
       },
       {
+        "@type": "FAQPage",
+        "@id": "https://trivenicabs.in/tempo-traveller#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What seater options are available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does tempo traveller rental cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rates start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater. Local packages (8hrs/80km) range from ₹6,000 to ₹11,000. All prices include fuel, driver, tolls, and parking."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are drivers provided with the rental?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! All tempo travellers come with experienced professional drivers having 5+ years experience, police verification, and valid commercial licenses. Driver charges are included in the price."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which routes are covered?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We cover 100+ routes including Delhi to Manali, Shimla, Jaipur, Agra, Haridwar, Rishikesh, and all major tourist destinations across North India. Custom routes are also available."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book a tempo traveller?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simply call +917668570551 or WhatsApp with your pickup location, destination, travel date, and group size. Get instant quote and confirm with a small advance payment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is one-way booking available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip bookings are generally more economical with package rates."
+            }
+          }
+        ]
+      },
+      {
         "@type": "Service",
         "@id": "https://trivenicabs.in/tempo-traveller#service",
         "serviceType": "Tempo Traveller Rental Service",
@@ -357,7 +411,32 @@ export default function TempoTravellerPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <TempoMainClient data={pageData} />
+      <TempoMainClient data={pageData} faqData={[
+        {
+          question: 'What seater options are available?',
+          answer: 'We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points.'
+        },
+        {
+          question: 'How much does tempo traveller rental cost?',
+          answer: 'Rates start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater. Local packages (8hrs/80km) range from ₹6,000 to ₹11,000. All prices include fuel, driver, tolls, and parking.'
+        },
+        {
+          question: 'Are drivers provided with the rental?',
+          answer: 'Yes! All tempo travellers come with experienced professional drivers having 5+ years experience, police verification, and valid commercial licenses. Driver charges are included in the price.'
+        },
+        {
+          question: 'Which routes are covered?',
+          answer: 'We cover 100+ routes including Delhi to Manali, Shimla, Jaipur, Agra, Haridwar, Rishikesh, and all major tourist destinations across North India. Custom routes are also available.'
+        },
+        {
+          question: 'How do I book a tempo traveller?',
+          answer: 'Simply call +917668570551 or WhatsApp with your pickup location, destination, travel date, and group size. Get instant quote and confirm with a small advance payment.'
+        },
+        {
+          question: 'Is one-way booking available?',
+          answer: 'Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip bookings are generally more economical with package rates.'
+        }
+      ]} />
     </>
   );
 }

@@ -72,7 +72,7 @@ const WeddingHero = () => {
           </p>
 
           <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Luxury Wedding Cars • Premium Baraat Tempo Travellers • Professional Chauffeurs<br/>
+            Luxury Wedding Cars • Premium Baraat Tempo Travellers • Professional Chauffeurs<br />
             BMW | Audi | Mercedes | Vintage Cars | Decorated Vehicles
           </p>
 
@@ -597,9 +597,8 @@ const PricingPackages = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 ${
-                pkg.popular ? 'border-4 border-[#FACF2D] scale-105' : 'border-2 border-gray-100'
-              }`}
+              className={`relative bg-white rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300 ${pkg.popular ? 'border-4 border-[#FACF2D] scale-105' : 'border-2 border-gray-100'
+                }`}
             >
               {pkg.popular && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-[#FACF2D] to-yellow-500 text-white px-4 py-1 text-sm font-bold">
@@ -627,11 +626,10 @@ const PricingPackages = () => {
                   href={`https://wa.me/${phoneNumber}?text=Hi, I'm interested in the ${pkg.name} for my wedding. Please share more details.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`block w-full text-center py-3 rounded-xl font-bold transition-all ${
-                    pkg.popular
+                  className={`block w-full text-center py-3 rounded-xl font-bold transition-all ${pkg.popular
                       ? 'bg-gradient-to-r from-[#FACF2D] to-yellow-500 text-black hover:shadow-lg'
                       : 'bg-black text-white hover:bg-gray-800'
-                  }`}
+                    }`}
                 >
                   Book Now
                 </a>
@@ -642,7 +640,7 @@ const PricingPackages = () => {
 
         <div className="text-center mt-8">
           <p className="text-gray-600">
-            * Prices may vary based on city, decoration requirements, and duration. <br/>
+            * Prices may vary based on city, decoration requirements, and duration. <br />
             Contact us for customized packages for multiple days or special requests.
           </p>
         </div>
@@ -653,33 +651,9 @@ const PricingPackages = () => {
 
 
 // FAQ Section
-const FAQ = () => {
-  const faqs = [
-    {
-      question: "What types of wedding cars do you offer?",
-      answer: "We offer luxury cars (BMW, Audi, Mercedes, Jaguar), premium sedans (City, Ciaz, Verna), SUVs (Fortuner, Innova Crysta), tempo travellers (9-26 seater), vintage cars, and luxury buses."
-    },
-    {
-      question: "Do you provide car decoration services?",
-      answer: "Yes! We provide beautiful floral and theme-based decoration services. You can choose from our standard decoration packages or request custom decorations based on your wedding theme."
-    },
-    {
-      question: "How far in advance should I book?",
-      answer: "We recommend booking at least 2-4 weeks in advance, especially during wedding season (October to March). However, we also accommodate last-minute bookings based on availability."
-    },
-    {
-      question: "What areas do you cover?",
-      answer: "We provide wedding car services across North India including Delhi, Chandigarh, Jaipur, Agra, Haridwar, Rishikesh, Shimla, Manali, Udaipur, Amritsar, and all major cities."
-    },
-    {
-      question: "Are your chauffeurs professional?",
-      answer: "Yes! All our chauffeurs are professional, uniformed, well-trained, and experienced in handling wedding events. They ensure timely and safe transportation."
-    },
-    {
-      question: "Can I customize my wedding package?",
-      answer: "Absolutely! We offer fully customizable packages based on your requirements, budget, number of vehicles needed, duration, and special requests. Contact us to discuss your needs."
-    }
-  ];
+// FAQ Section
+const FAQ = ({ faqs = [] }) => {
+
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
@@ -774,29 +748,14 @@ const FinalCTA = () => {
 };
 
 // Main Component
-export default function WeddingPageClient() {
+export default function WeddingPageClient({ faqs }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Structured Data for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WeddingService",
-    "name": "Triveni Cabs Wedding Car Rental",
-    "description": "Premium wedding car rental and transportation services including luxury cars, tempo travellers for baraat, professional chauffeurs, and car decoration.",
-    "url": "https://trivenicabs.in/wedding",
-    "telephone": `+91${phoneNumber}`,
-    "priceRange": "₹₹₹",
-    "areaServed": ["Delhi", "Chandigarh", "Jaipur", "Agra", "Haridwar", "Rishikesh"]
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+
 
       <div className="min-h-screen">
         <WeddingHero />
@@ -805,7 +764,9 @@ export default function WeddingPageClient() {
         <WeddingServices />
         <ServiceAreas />
         <PricingPackages />
-        <FAQ />
+        <PricingPackages />
+        <FAQ faqs={faqs} />
+        <FinalCTA />
         <FinalCTA />
       </div>
 

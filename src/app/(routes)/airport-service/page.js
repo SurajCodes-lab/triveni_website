@@ -46,19 +46,19 @@ export default function AirportServicePage() {
       "url": "https://trivenicabs.in"
     },
     "areaServed": [
-      {"@type": "City", "name": "Delhi"},
-      {"@type": "City", "name": "Jaipur"},
-      {"@type": "City", "name": "Agra"},
-      {"@type": "City", "name": "Chandigarh"},
-      {"@type": "City", "name": "Shimla"},
-      {"@type": "City", "name": "Manali"},
-      {"@type": "City", "name": "Amritsar"},
-      {"@type": "City", "name": "Haridwar"},
-      {"@type": "City", "name": "Rishikesh"},
-      {"@type": "City", "name": "Dehradun"},
-      {"@type": "City", "name": "Jodhpur"},
-      {"@type": "City", "name": "Udaipur"},
-      {"@type": "City", "name": "Ayodhya"}
+      { "@type": "City", "name": "Delhi" },
+      { "@type": "City", "name": "Jaipur" },
+      { "@type": "City", "name": "Agra" },
+      { "@type": "City", "name": "Chandigarh" },
+      { "@type": "City", "name": "Shimla" },
+      { "@type": "City", "name": "Manali" },
+      { "@type": "City", "name": "Amritsar" },
+      { "@type": "City", "name": "Haridwar" },
+      { "@type": "City", "name": "Rishikesh" },
+      { "@type": "City", "name": "Dehradun" },
+      { "@type": "City", "name": "Jodhpur" },
+      { "@type": "City", "name": "Udaipur" },
+      { "@type": "City", "name": "Ayodhya" }
     ],
     "offers": {
       "@type": "Offer",
@@ -124,13 +124,77 @@ export default function AirportServicePage() {
     }
   };
 
+  // FAQ Data for Schema and Client Component
+  const faqData = [
+    {
+      question: "How do I book an airport taxi with Triveni Cabs?",
+      answer: "You can book easily via our website form, call us at +91-7668570551, or message us on WhatsApp. We offer instant confirmation."
+    },
+    {
+      question: "Do you provide flight tracking?",
+      answer: "Yes, we monitor your flight status in real-time to ensure our driver is there when you arrive, even if your flight is delayed."
+    },
+    {
+      question: "Is there a cancellation fee?",
+      answer: "We have a flexible cancellation policy. Please contact us as soon as possible if your plans change."
+    },
+    {
+      question: "Are the taxi fares fixed?",
+      answer: "Yes, we offer transparent, fixed pricing with no hidden surcharges or surge pricing."
+    },
+    {
+      question: "Can I book a cab for a large group?",
+      answer: "Absolutely! We have a diverse fleet ranging from Sedans and SUVs to Tempo Travellers and buses for large groups."
+    }
+  ];
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Airport Service",
+        "item": "https://trivenicabs.in/airport-service"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <AirportServiceClient />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <AirportServiceClient faqData={faqData} />
     </>
   );
 }

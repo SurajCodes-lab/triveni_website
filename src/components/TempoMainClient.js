@@ -11,7 +11,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 
-export default function TempoMainClient({ data }) {
+export default function TempoMainClient({ data, faqData }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedOrigin, setSelectedOrigin] = useState('');
   const [showAllRoutes, setShowAllRoutes] = useState(false);
@@ -378,9 +378,8 @@ export default function TempoMainClient({ data }) {
                   className={`${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                 >
                   <Link href={`/tempo-traveller/${city.slug}`} className="block group h-full">
-                    <div className={`relative h-full min-h-[200px] ${index === 0 ? 'md:min-h-[420px]' : ''} rounded-3xl overflow-hidden transition-all duration-500 ${
-                      hoveredCity === index ? '-translate-y-2 shadow-2xl shadow-black/30' : 'shadow-lg'
-                    }`}>
+                    <div className={`relative h-full min-h-[200px] ${index === 0 ? 'md:min-h-[420px]' : ''} rounded-3xl overflow-hidden transition-all duration-500 ${hoveredCity === index ? '-translate-y-2 shadow-2xl shadow-black/30' : 'shadow-lg'
+                      }`}>
                       {/* Background Image */}
                       {city.image && (
                         <Image
@@ -500,324 +499,298 @@ export default function TempoMainClient({ data }) {
       {/* ============================================ */}
       {/* FLEET SECTION */}
       {/* ============================================ */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 relative overflow-hidden">
-          {/* Animated Background */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 relative overflow-hidden">
+        {/* Animated Background */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic from-amber-500/10 via-transparent to-amber-500/10"
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic from-amber-500/10 via-transparent to-amber-500/10"
-          />
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-amber-400/30">
+              <Car className="w-5 h-5 text-amber-400" />
+              <span className="text-amber-400 font-bold text-sm tracking-wider">PREMIUM FLEET</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+              Our <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Vehicle Range</span>
+            </h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Choose from our range of well-maintained AC tempo travellers for every group size
+            </p>
+          </motion.div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12 md:mb-16"
-            >
-              <div className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-amber-400/30">
-                <Car className="w-5 h-5 text-amber-400" />
-                <span className="text-amber-400 font-bold text-sm tracking-wider">PREMIUM FLEET</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-                Our <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Vehicle Range</span>
-              </h2>
-              <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                Choose from our range of well-maintained AC tempo travellers for every group size
-              </p>
-            </motion.div>
-
-            {/* Fleet Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {(showAllVehicles ? fleet : fleet.slice(0, 3)).map((vehicle, index) => (
-                <motion.div
-                  key={vehicle.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-500">
-                    {/* Badge */}
-                    {vehicle.popular && (
-                      <div className="absolute top-4 right-4 z-20">
-                        <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1">
-                          <Star className="w-3 h-3" />
-                          POPULAR
-                        </div>
-                      </div>
-                    )}
-                    {vehicle.premium && (
-                      <div className="absolute top-4 right-4 z-20">
-                        <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1">
-                          <Gem className="w-3 h-3" />
-                          PREMIUM
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Vehicle Image */}
-                    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800">
-                      <Image
-                        src={vehicle.image}
-                        alt={vehicle.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl flex items-center gap-2">
-                        <Users className="w-4 h-4 text-amber-600" />
-                        <span className="font-bold text-gray-900">{vehicle.capacity}</span>
+          {/* Fleet Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {(showAllVehicles ? fleet : fleet.slice(0, 3)).map((vehicle, index) => (
+              <motion.div
+                key={vehicle.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-500">
+                  {/* Badge */}
+                  {vehicle.popular && (
+                    <div className="absolute top-4 right-4 z-20">
+                      <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1">
+                        <Star className="w-3 h-3" />
+                        POPULAR
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-4">{vehicle.name}</h3>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {vehicle.features.slice(0, 3).map((feature, idx) => (
-                          <span key={idx} className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-xs flex items-center gap-1">
-                            <CheckCircle className="w-3 h-3 text-green-400" />
-                            {feature}
-                          </span>
-                        ))}
+                  )}
+                  {vehicle.premium && (
+                    <div className="absolute top-4 right-4 z-20">
+                      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1">
+                        <Gem className="w-3 h-3" />
+                        PREMIUM
                       </div>
+                    </div>
+                  )}
 
-                      {/* Pricing */}
-                      <div className="bg-white/5 rounded-2xl p-4 mb-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-white/60 text-sm">Outstation</span>
-                          <span className="text-xl font-black bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{vehicle.outstationRate}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-white/60 text-sm">Local (8hrs/80km)</span>
-                          <span className="text-white font-bold">{vehicle.localRate}</span>
-                        </div>
-                      </div>
-
-                      {/* Book Button */}
-                      <a
-                        href={`https://wa.me/917668570551?text=Hi, I want to book ${vehicle.name}. Please share quote.`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-amber-500/30 transition-all"
-                      >
-                        Book Now
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
+                  {/* Vehicle Image */}
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800">
+                    <Image
+                      src={vehicle.image}
+                      alt={vehicle.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl flex items-center gap-2">
+                      <Users className="w-4 h-4 text-amber-600" />
+                      <span className="font-bold text-gray-900">{vehicle.capacity}</span>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
 
-            {/* View All Button */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center mt-10"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowAllVehicles(!showAllVehicles)}
-                className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-white/20 text-white font-bold py-4 px-8 rounded-full hover:bg-white/20 transition-all"
-              >
-                <Car className="w-5 h-5" />
-                {showAllVehicles ? 'Show Less' : `View All ${fleet.length} Vehicles`}
-              </motion.button>
-            </motion.div>
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-4">{vehicle.name}</h3>
+
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {vehicle.features.slice(0, 3).map((feature, idx) => (
+                        <span key={idx} className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                          <CheckCircle className="w-3 h-3 text-green-400" />
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="bg-white/5 rounded-2xl p-4 mb-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-white/60 text-sm">Outstation</span>
+                        <span className="text-xl font-black bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{vehicle.outstationRate}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white/60 text-sm">Local (8hrs/80km)</span>
+                        <span className="text-white font-bold">{vehicle.localRate}</span>
+                      </div>
+                    </div>
+
+                    {/* Book Button */}
+                    <a
+                      href={`https://wa.me/917668570551?text=Hi, I want to book ${vehicle.name}. Please share quote.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-amber-500/30 transition-all"
+                    >
+                      Book Now
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
+
+          {/* View All Button */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-10"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowAllVehicles(!showAllVehicles)}
+              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-white/20 text-white font-bold py-4 px-8 rounded-full hover:bg-white/20 transition-all"
+            >
+              <Car className="w-5 h-5" />
+              {showAllVehicles ? 'Show Less' : `View All ${fleet.length} Vehicles`}
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* WHY CHOOSE US */}
       {/* ============================================ */}
       <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12 md:mb-16"
-            >
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 px-6 py-3 rounded-full mb-6 border border-green-200">
-                <Award className="w-5 h-5 text-green-600" />
-                <span className="text-green-700 font-bold text-sm tracking-wider">WHY CHOOSE US</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-                The <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Triveni</span> Advantage
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Experience why thousands of travelers choose us for their group journeys
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  icon: Shield,
-                  title: 'Safe & Secure',
-                  description: 'GPS tracked vehicles, verified drivers, valid insurance & 24/7 monitoring',
-                  color: 'from-green-400 to-emerald-500',
-                  stat: '100%',
-                  statLabel: 'Safe Trips'
-                },
-                {
-                  icon: CreditCard,
-                  title: 'Transparent Pricing',
-                  description: 'No hidden charges, fixed per km rates, all-inclusive pricing',
-                  color: 'from-blue-400 to-indigo-500',
-                  stat: '₹0',
-                  statLabel: 'Hidden Fees'
-                },
-                {
-                  icon: Crown,
-                  title: 'Premium Fleet',
-                  description: 'Well-maintained AC vehicles with pushback seats & modern amenities',
-                  color: 'from-amber-400 to-orange-500',
-                  stat: '200+',
-                  statLabel: 'Premium Fleet'
-                },
-                {
-                  icon: Headphones,
-                  title: '24/7 Support',
-                  description: 'Round-the-clock customer support via call & WhatsApp',
-                  color: 'from-purple-400 to-pink-500',
-                  stat: '24/7',
-                  statLabel: 'Available'
-                },
-              ].map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  className="group"
-                >
-                  <div className="bg-gray-50 hover:bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-amber-300 hover:shadow-xl transition-all duration-500 h-full">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6`}>
-                      <feature.icon className="w-8 h-8 text-white" />
-                    </div>
-
-                    <div className="mb-4">
-                      <span className="text-3xl font-black text-gray-900">{feature.stat}</span>
-                      <span className="text-gray-500 text-sm ml-2">{feature.statLabel}</span>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 px-6 py-3 rounded-full mb-6 border border-green-200">
+              <Award className="w-5 h-5 text-green-600" />
+              <span className="text-green-700 font-bold text-sm tracking-wider">WHY CHOOSE US</span>
             </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              The <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Triveni</span> Advantage
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Experience why thousands of travelers choose us for their group journeys
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Shield,
+                title: 'Safe & Secure',
+                description: 'GPS tracked vehicles, verified drivers, valid insurance & 24/7 monitoring',
+                color: 'from-green-400 to-emerald-500',
+                stat: '100%',
+                statLabel: 'Safe Trips'
+              },
+              {
+                icon: CreditCard,
+                title: 'Transparent Pricing',
+                description: 'No hidden charges, fixed per km rates, all-inclusive pricing',
+                color: 'from-blue-400 to-indigo-500',
+                stat: '₹0',
+                statLabel: 'Hidden Fees'
+              },
+              {
+                icon: Crown,
+                title: 'Premium Fleet',
+                description: 'Well-maintained AC vehicles with pushback seats & modern amenities',
+                color: 'from-amber-400 to-orange-500',
+                stat: '200+',
+                statLabel: 'Premium Fleet'
+              },
+              {
+                icon: Headphones,
+                title: '24/7 Support',
+                description: 'Round-the-clock customer support via call & WhatsApp',
+                color: 'from-purple-400 to-pink-500',
+                stat: '24/7',
+                statLabel: 'Available'
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group"
+              >
+                <div className="bg-gray-50 hover:bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-amber-300 hover:shadow-xl transition-all duration-500 h-full">
+                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.color} mb-6`}>
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </div>
+
+                  <div className="mb-4">
+                    <span className="text-3xl font-black text-gray-900">{feature.stat}</span>
+                    <span className="text-gray-500 text-sm ml-2">{feature.statLabel}</span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* FAQ SECTION */}
       {/* ============================================ */}
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12 md:mb-16"
-            >
-              <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
-                <Compass className="w-5 h-5 text-blue-600" />
-                <span className="text-blue-700 font-bold text-sm tracking-wider">FAQ</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-                Frequently Asked <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Questions</span>
-              </h2>
-            </motion.div>
-
-            <div className="space-y-4">
-              {[
-                {
-                  question: 'What seater options are available?',
-                  answer: 'We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points.'
-                },
-                {
-                  question: 'How much does tempo traveller rental cost?',
-                  answer: 'Rates start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater. Local packages (8hrs/80km) range from ₹6,000 to ₹11,000. All prices include fuel, driver, tolls, and parking.'
-                },
-                {
-                  question: 'Are drivers provided with the rental?',
-                  answer: 'Yes! All tempo travellers come with experienced professional drivers having 5+ years experience, police verification, and valid commercial licenses. Driver charges are included in the price.'
-                },
-                {
-                  question: 'Which routes are covered?',
-                  answer: 'We cover 100+ routes including Delhi to Manali, Shimla, Jaipur, Agra, Haridwar, Rishikesh, and all major tourist destinations across North India. Custom routes are also available.'
-                },
-                {
-                  question: 'How do I book a tempo traveller?',
-                  answer: 'Simply call +917668570551 or WhatsApp with your pickup location, destination, travel date, and group size. Get instant quote and confirm with a small advance payment.'
-                },
-                {
-                  question: 'Is one-way booking available?',
-                  answer: 'Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip bookings are generally more economical with package rates.'
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  <div className={`bg-white rounded-2xl overflow-hidden shadow-md border-2 transition-all duration-300 ${
-                    openFaq === index ? 'border-amber-400 shadow-lg' : 'border-gray-100 hover:border-gray-200'
-                  }`}>
-                    <button
-                      onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
-                    >
-                      <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{faq.question}</h3>
-                      <motion.div
-                        animate={{ rotate: openFaq === index ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex-shrink-0"
-                      >
-                        <ChevronDown className={`w-5 h-5 ${openFaq === index ? 'text-amber-500' : 'text-gray-400'}`} />
-                      </motion.div>
-                    </button>
-
-                    <AnimatePresence>
-                      {openFaq === index && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="px-6 pb-5 border-t border-gray-100">
-                            <p className="text-gray-600 pt-4 leading-relaxed">{faq.answer}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-              ))}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6">
+              <Compass className="w-5 h-5 text-blue-600" />
+              <span className="text-blue-700 font-bold text-sm tracking-wider">FAQ</span>
             </div>
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              Frequently Asked <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Questions</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqData?.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+              >
+                <div className={`bg-white rounded-2xl overflow-hidden shadow-md border-2 transition-all duration-300 ${openFaq === index ? 'border-amber-400 shadow-lg' : 'border-gray-100 hover:border-gray-200'
+                  }`}>
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{faq.question}</h3>
+                    <motion.div
+                      animate={{ rotate: openFaq === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0"
+                    >
+                      <ChevronDown className={`w-5 h-5 ${openFaq === index ? 'text-amber-500' : 'text-gray-400'}`} />
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence>
+                    {openFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="px-6 pb-5 border-t border-gray-100">
+                          <p className="text-gray-600 pt-4 leading-relaxed">{faq.answer}</p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* FINAL CTA SECTION */}

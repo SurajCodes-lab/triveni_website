@@ -42,5 +42,64 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutClient />;
+  return (
+    <>
+      {/* AboutPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Triveni Cabs",
+            "description": "Discover the story behind Triveni Cabs, our mission, vision, and commitment to providing safe and reliable transportation across India.",
+            "url": "https://trivenicabs.in/about",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Triveni Cabs",
+              "foundingDate": "2015",
+              "founder": {
+                "@type": "Person",
+                "name": "Pankaj Singh Gaur"
+              },
+              "description": "India's most trusted cab service provider with a fleet of 500+ premium vehicles serving 50+ cities.",
+              "logo": "https://trivenicabs.in/logo.png",
+              "sameAs": [
+                "https://twitter.com/TriveniCabs",
+                "https://www.facebook.com/TriveniCabs",
+                "https://www.instagram.com/trivenicabs"
+              ]
+            }
+          })
+        }}
+      />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://trivenicabs.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://trivenicabs.in/about"
+              }
+            ]
+          })
+        }}
+      />
+
+      <AboutClient />
+    </>
+  );
 }
