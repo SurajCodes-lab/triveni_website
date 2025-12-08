@@ -21,7 +21,7 @@ export const metadata = {
     template: '%s | Triveni Cabs'
   },
   description: 'Book car rental, taxi, tour packages with Triveni Cabs. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Delhi, Mumbai, Agra, Manali tours. Professional drivers, AC vehicles, 24/7 support.',
-  keywords: 'taxi service, car rental, cab booking, outstation taxi, local taxi, reliable transport, Triveni Cabs, car rental, taxi service, tour packages, cab booking, cheap car rental, best taxi service 2025, Delhi car rental, Mumbai taxi, Agra tour, Jaipur taxi, Manali tour package, Kashmir tour, Rajasthan tour, Chardham Yatra, sedan rental, SUV hire, tempo traveller booking, luxury bus rental, outstation taxi, local taxi, airport transfer, wedding car rental, corporate travel, AC vehicle booking, professional drivers, 24x7 support, online booking, instant booking, same day booking, vehicle rental India, travel services, tour guide, sightseeing tours, adventure tours, pilgrimage tours, honeymoon packages, family tours, group booking, verified drivers, GPS tracking, safe travel, reliable transport, competitive rates, transparent pricing, Triveni Cabs',
+  keywords: 'taxi service India, car rental India, outstation cab, local taxi service, airport transfer, Triveni Cabs, luxury car rental, tempo traveller hire, Delhi taxi service, Mumbai car rental, Agra tour packages, Jaipur taxi booking, reliable cab service, 24/7 taxi, online cab booking, corporate car rental, wedding car hire, intercity cab, one way taxi, round trip cab, best taxi service 2025',
   authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
   creator: 'Triveni Cabs Travel Services',
   publisher: 'Triveni Cabs India',
@@ -101,7 +101,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-IN">
       <head>
-        
+
+        {/* WebSite Schema with SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Triveni Cabs",
+              "url": "https://www.trivenicabs.in",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.trivenicabs.in/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+
         {/* Enhanced Structured Data for Local Business */}
         <script
           type="application/ld+json"
@@ -125,7 +143,7 @@ export default function RootLayout({ children }) {
                 "addressCountry": "IN",
                 "addressRegion": "India"
               },
-              
+
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": [
@@ -143,7 +161,7 @@ export default function RootLayout({ children }) {
                   "name": "Delhi"
                 },
                 {
-                  "@type": "State", 
+                  "@type": "State",
                   "name": "Maharashtra"
                 },
                 {
@@ -183,7 +201,7 @@ export default function RootLayout({ children }) {
                   {
                     "@type": "Offer",
                     "itemOffered": {
-                      "@type": "Service", 
+                      "@type": "Service",
                       "name": "SUV Car Rental",
                       "description": "6-7 passenger SUV rental starting ₹15/km"
                     },
@@ -191,7 +209,7 @@ export default function RootLayout({ children }) {
                     "priceCurrency": "INR",
                     "priceSpecification": {
                       "@type": "UnitPriceSpecification",
-                      "price": "15", 
+                      "price": "15",
                       "priceCurrency": "INR",
                       "unitText": "per kilometer"
                     }
@@ -200,7 +218,7 @@ export default function RootLayout({ children }) {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Tempo Traveller Rental", 
+                      "name": "Tempo Traveller Rental",
                       "description": "12-26 passenger tempo traveller starting ₹24/km"
                     },
                     "price": "24",
@@ -208,7 +226,7 @@ export default function RootLayout({ children }) {
                     "priceSpecification": {
                       "@type": "UnitPriceSpecification",
                       "price": "24",
-                      "priceCurrency": "INR", 
+                      "priceCurrency": "INR",
                       "unitText": "per kilometer"
                     }
                   },
@@ -223,7 +241,7 @@ export default function RootLayout({ children }) {
                     "priceCurrency": "INR"
                   },
                   {
-                    "@type": "Offer", 
+                    "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
                       "name": "Kashmir Tour Package",
@@ -236,7 +254,7 @@ export default function RootLayout({ children }) {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Rajasthan Tour Package", 
+                      "name": "Rajasthan Tour Package",
                       "description": "7 Days 6 Nights Rajasthan tour from Jaipur"
                     },
                     "price": "19999",
@@ -251,7 +269,7 @@ export default function RootLayout({ children }) {
                 "bestRating": "5",
                 "worstRating": "1"
               },
-              
+
             })
           }}
         />
@@ -277,7 +295,7 @@ export default function RootLayout({ children }) {
                   "@type": "Question",
                   "name": "Which cities do you serve?",
                   "acceptedAnswer": {
-                    "@type": "Answer", 
+                    "@type": "Answer",
                     "text": "We serve Delhi, Mumbai, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, and many other cities across India for both local and outstation trips."
                   }
                 },
