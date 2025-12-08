@@ -128,8 +128,8 @@ export const travelBlogPosts = [
     views: 1250,
     metaTitle: "10 Best Travel Destinations in North India 2025 | Complete Travel Guide",
     metaDescription: "Explore top 10 destinations in North India for 2025. Expert guide to Manali, Jaipur, Rishikesh, Agra & more. Best time to visit, activities & travel tips.",
-},
-{
+  },
+  {
     id: 2,
     slug: "delhi-to-manali-tempo-traveller-complete-guide-2025",
     title: "Delhi to Manali by Tempo Traveller: Complete Travel Guide 2025",
@@ -258,8 +258,8 @@ export const travelBlogPosts = [
     views: 980,
     metaTitle: "Delhi to Manali Tempo Traveller: Complete Guide 2025 | Book Now",
     metaDescription: "Complete guide for Delhi to Manali journey by tempo traveller. Route options, costs, travel tips & booking information for your perfect mountain trip.",
-},
-{
+  },
+  {
     id: 3,
     slug: "char-dham-yatra-complete-guide-uttarakhand-2025",
     title: "Char Dham Yatra Complete Guide 2025 - Uttarakhand Pilgrimage Tour",
@@ -422,8 +422,8 @@ export const travelBlogPosts = [
     views: 1450,
     metaTitle: "Char Dham Yatra Complete Guide 2025 | Registration, Dates & Packages",
     metaDescription: "Complete Char Dham Yatra 2025 guide - opening dates, registration, itinerary, costs & travel tips. Book your Kedarnath, Badrinath, Gangotri, Yamunotri tour now.",
-},
-{
+  },
+  {
     id: 4,
     slug: "rajasthan-road-trip-complete-guide-2025",
     title: "Perfect Rajasthan Road Trip Guide 2025 - Forts, Palaces & Desert Safari",
@@ -598,8 +598,8 @@ export const travelBlogPosts = [
     views: 1120,
     metaTitle: "Perfect Rajasthan Road Trip Guide 2025 | Complete Itinerary & Costs",
     metaDescription: "Ultimate Rajasthan road trip guide - Jaipur, Udaipur, Jaisalmer, Jodhpur itinerary. Routes, costs, best time & travel tips for your desert adventure.",
-},
-{
+  },
+  {
     id: 5,
     slug: "uttarakhand-best-hill-stations-summer-2025",
     title: "Best Hill Stations in Uttarakhand for Summer 2025 - Beat the Heat",
@@ -859,9 +859,9 @@ export const travelBlogPosts = [
     metaDescription: "Discover top Uttarakhand hill stations for summer 2025. Nainital, Mussoorie, Auli, Ranikhet travel guide with itinerary, costs & booking tips.",
     city: "uttarakhand",
     attractionType: "hill-station",
-},
+  },
 
-,
+  ,
 
   {
     id: 6,
@@ -1499,7 +1499,717 @@ export const travelBlogPosts = [
     views: 0,
     metaTitle: "How to Visit Taj Mahal from Delhi - Complete Guide 2025 | Best Routes, Cost & Tours",
     metaDescription: "Planning Taj Mahal visit from Delhi? Complete guide with best routes, costs (from ₹3,500), timings, tickets & insider tips. Compare train vs car options. Book hassle-free tour now!",
-  }
+  },
+  {
+    id: 6,
+    slug: "golden-triangle-tour-india-itinerary-guide-2025",
+    title: "Golden Triangle Tour India: The Ultimate 7-Day Itinerary & Guide 2025",
+    excerpt: "Planning a Golden Triangle Tour in India? Discover the ultimate 7-day itinerary covering Delhi, Agra, and Jaipur. Explore forts, palaces, the Taj Mahal, and cultural gems with our comprehensive travel guide.",
+
+    relatedTours: [
+      { id: "gt-1", name: "Golden Triangle 3 Days Tour", slug: "golden-triangle-tour-3-days", city: "delhi", price: "₹15,000" },
+      { id: "gt-2", name: "Golden Triangle 4 Days Tour", slug: "golden-triangle-tour-4-days", city: "delhi", price: "₹18,000" },
+      { id: "gt-3", name: "Golden Triangle 6 Days Tour", slug: "golden-triangle-tour-6-days", city: "delhi", price: "₹24,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Delhi", slug: "delhi", type: "city" },
+      { name: "Agra", slug: "agra", type: "city" },
+      { name: "Jaipur", slug: "jaipur", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Golden Triangle Tour",
+      url: "/sightseeing/golden-triangle-tour-4-days",
+      description: "Experience the magic of India's Golden Triangle with our premium tour packages",
+      price: "Starting from ₹15,000"
+    },
+
+    content: `
+      <div class="blog-intro">
+        <p>The <strong>Golden Triangle Tour</strong> is India's most iconic travel circuit, connecting the country's three most historic and culturally rich cities: <strong>Delhi</strong>, <strong>Agra</strong>, and <strong>Jaipur</strong>. On a map, these cities form a triangle, hence the name. For first-time visitors to India, this tour offers a perfect introduction to the country's diverse heritage, showcasing a mesmerizing blend of Mughal grandeur, Rajput valor, and British colonial history.</p>
+        
+        <p>In this comprehensive guide, we will walk you through the ultimate 7-day Golden Triangle itinerary for 2025. From the bustling streets of Old Delhi to the eternal beauty of the Taj Mahal and the royal palaces of Jaipur, get ready for an unforgettable journey.</p>
+
+        <div class="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-xl my-6 border-l-4 border-amber-500">
+            <h3 class="text-xl font-bold mb-3">🌟 Top Pick: Golden Triangle 6 Days Tour</h3>
+            <p class="mb-4">Short on time? Our <strong>6-day package</strong> covers all major highlights with comfortable AC transport and expert guides.</p>
+            <a href="/sightseeing/golden-triangle-tour-6-days" class="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors">View Itinerary & Price →</a>
+        </div>
+      </div>
+
+      <h2>Why Choose the Golden Triangle Tour?</h2>
+      <p>The Golden Triangle is not just a route; it's a kaleidoscope of Indian culture. Here's why it remains the top choice for millions of travelers:</p>
+      <ul>
+        <li><strong>Cultural Diversity:</strong> Experience three distinct cultures in one trip - the cosmopolitan vibe of Delhi, the Mughal heritage of Agra, and the vibrant Rajput traditions of Jaipur.</li>
+        <li><strong>UNESCO World Heritage Sites:</strong> This circuit is packed with UNESCO sites including the Red Fort, Qutub Minar, Humayun's Tomb, Taj Mahal, Agra Fort, Fatehpur Sikri, Amber Fort, and Jantar Mantar.</li>
+        <li><strong>Accessibility:</strong> Connected by excellent highways and expressways (Yamuna Expressway/Delhi-Mumbai Expressway), travel between these cities is smooth and comfortable.</li>
+        <li><strong>Shopping & Cuisine:</strong> From Delhi's street food and Chandni Chowk markets to Agra's petha and marble crafts, and Jaipur's jewelry and Rajasthani thalis, it's a paradise for foodies and shoppers.</li>
+      </ul>
+
+      <h2>The Ultimate 7-Day Itinerary</h2>
+
+      <h3>Day 1: Arrival in Delhi - New Delhi Sightseeing</h3>
+      <p>Welcome to India's capital! Start your tour by exploring <strong>New Delhi</strong>, the city designed by Edwin Lutyens.</p>
+      <ul>
+        <li><strong>India Gate:</strong> Pay tribute at this war memorial dedicated to Indian soldiers. It's a great spot for evening walks.</li>
+        <li><strong>Rashtrapati Bhavan:</strong> Drive past the magnificent President's House and Parliament buildings.</li>
+        <li><strong>Humayun's Tomb:</strong> Visit this UNESCO site, a precursor to the Taj Mahal, known for its stunning garden architecture.</li>
+        <li><strong>Qutub Minar:</strong> Marvel at the world's tallest brick minaret, a UNESCO World Heritage site dating back to the 12th century.</li>
+        <li><strong>Lotus Temple:</strong> End your day with peace at this Bahá'í House of Worship, famous for its flower-like shape.</li>
+      </ul>
+
+      <h3>Day 2: Old Delhi Heritage Walk</h3>
+      <p>Dive into the chaotic charm of <strong>Old Delhi (Shahjahanabad)</strong>.</p>
+      <ul>
+        <li><strong>Red Fort (Lal Qila):</strong> Explore the massive red sandstone fort that was the residence of Mughal emperors for nearly 200 years.</li>
+        <li><strong>Jama Masjid:</strong> Visit India's largest mosque. Climb the minaret for a panoramic view of Old Delhi.</li>
+        <li><strong>Chandni Chowk:</strong> Take a rickshaw ride through these historic narrow lanes. Don't miss the <strong>Paranthe Wali Gali</strong> for delicious stuffed breads.</li>
+        <li><strong>Raj Ghat:</strong> Pay homage to Mahatma Gandhi at his memorial.</li>
+      </ul>
+
+      <h3>Day 3: Delhi to Agra (210 km / 3-4 hours)</h3>
+      <p>Depart for Agra via the high-speed Yamuna Expressway. Check into your hotel and freshen up.</p>
+      <ul>
+        <li><strong>Agra Fort:</strong> Visit this massive fortress where Emperor Shah Jahan was imprisoned by his son Aurangzeb. The fort offers stunning views of the Taj Mahal from the Musamman Burj.</li>
+        <li><strong>Mehtab Bagh:</strong> Head to these gardens across the Yamuna River for a breathtaking sunset view of the Taj Mahal without the crowds.</li>
+        <li><strong>Itmad-ud-Daulah (Baby Taj):</strong> If time permits, visit this exquisite marble tomb which inspired the Taj Mahal's design.</li>
+      </ul>
+
+      <h3>Day 4: The Taj Mahal & Drive to Jaipur via Fatehpur Sikri</h3>
+      <p>Wake up early for the highlight of your trip.</p>
+      <ul>
+        <li><strong>Sunrise at Taj Mahal:</strong> Witness the world's most beautiful monument bathed in the soft golden light of sunrise. The white marble changes colors from pinkish hues to bright white. (Note: Closed on Fridays).</li>
+        <li><strong>Fatehpur Sikri:</strong> En route to Jaipur, stop at this abandoned Mughal city. Explore the <strong>Buland Darwaza</strong> (highest gateway in the world) and the tomb of Salim Chishti.</li>
+        <li><strong>Abhaneri Stepwell (Chand Baori):</strong> A hidden gem on the way, this ancient stepwell is an architectural marvel with 3,500 narrow steps.</li>
+      </ul>
+      <p>Arrive in <strong>Jaipur</strong>, the Pink City, by evening.</p>
+
+      <h3>Day 5: Jaipur Royal Heritage Tour</h3>
+      <p>Experience the grandeur of Rajasthan's capital.</p>
+      <ul>
+        <li><strong>Amber Fort (Amer Fort):</strong> Located on a hilltop, this majestic fort is a classic example of Rajput architecture. Enjoy an elephant ride or jeep ride to the entrance. Don't miss the <strong>Sheesh Mahal</strong> (Mirror Palace).</li>
+        <li><strong>Jal Mahal:</strong> Stop for photos at this Water Palace located in the middle of Man Sagar Lake.</li>
+        <li><strong>City Palace:</strong> Explore the royal residence which houses a museum with royal costumes and armory. The current royal family still lives in a part of the palace.</li>
+        <li><strong>Jantar Mantar:</strong> Visit this UNESCO astronomical observatory featuring the world's largest stone sundial.</li>
+        <li><strong>Hawa Mahal:</strong> The iconic Palace of Winds with its 953 honeycombed windows is best viewed from the street or a rooftop café opposite it.</li>
+      </ul>
+
+      <h3>Day 6: Jaipur Culture & Shopping</h3>
+      <p>Dedicate this day to the vibrant culture of Jaipur.</p>
+      <ul>
+        <li><strong>Albert Hall Museum:</strong> Visit the oldest museum in Rajasthan, known for its Indo-Saracenic architecture.</li>
+        <li><strong>Nahargarh Fort:</strong> Drive up for a panoramic bird's-eye view of the entire city, especially beautiful at sunset.</li>
+        <li><strong>Shopping:</strong> Explore <strong>Johari Bazaar</strong> for jewelry, <strong>Bapu Bazaar</strong> for textiles and mojari shoes, and <strong>Tripolia Bazaar</strong> for lac bangles.</li>
+        <li><strong>Chokhi Dhani:</strong> In the evening, visit this ethnic village resort for a traditional Rajasthani cultural experience with folk dances, camel rides, and authentic Rajasthani thali dinner.</li>
+      </ul>
+
+      <h3>Day 7: Jaipur to Delhi (260 km / 5 hours) - Departure</h3>
+      <p>After a leisurely breakfast, drive back to Delhi. You can be dropped off at the airport or your hotel.</p>
+      <p><em>Optional Extension:</em> If you have more days, consider adding <strong>Ranthambore National Park</strong> for tiger safaris or <strong>Pushkar</strong> to visit the Brahma Temple.</p>
+
+      <h2>Best Time to Visit the Golden Triangle</h2>
+      <p>The best time to book your Golden Triangle tour is during the winter months from <strong>October to March</strong>.</p>
+      <ul>
+        <li><strong>October-November:</strong> Pleasant weather, start of tourist season. Great for festivals like Diwali.</li>
+        <li><strong>December-January:</strong> Cold weather (5°C-20°C), foggy mornings but sunny days. Pack woolens.</li>
+        <li><strong>February-March:</strong> Perfect spring weather. Holi festival in March is a vibrant time to visit (especially in Mathura/Vrindavan or Jaipur).</li>
+        <li><strong>April-June:</strong> Summer season with temperatures soaring to 40°C-45°C. Good for budget travelers as hotel rates drop, but sightseeing can be exhausting.</li>
+        <li><strong>July-September:</strong> Monsoon season. Green landscapes but humidity is high.</li>
+      </ul>
+
+      <h2>Travel Tips for a Seamless Trip</h2>
+      <ul>
+        <li><strong>Dress Code:</strong> India is conservative. Dress modestly when visiting temples and mosques. Cover your shoulders and knees. Carry a scarf.</li>
+        <li><strong>Currency:</strong> Carry some cash (Indian Rupees) for small purchases like water, snacks, and tips. Credit cards are widely accepted in hotels and big shops.</li>
+        <li><strong>Water:</strong> Always drink bottled mineral water to avoid health issues.</li>
+        <li><strong>Traffic:</strong> Traffic in Delhi and Jaipur can be heavy. Start your days early (around 8-9 AM) to maximize sightseeing time.</li>
+        <li><strong>Guides:</strong> Hiring a government-approved guide adds immense value to your visits, especially at forts and palaces where history comes alive through stories.</li>
+        <li><strong>Tipping:</strong> Tipping is discretionary but appreciated. 10% in restaurants and small tips for porters/guides are standard.</li>
+      </ul>
+
+      <h2>Why Book With Triveni Cabs?</h2>
+      <p>We specialize in customizable <strong>Golden Triangle tour packages</strong> that suit every budget and preference. Whether you need a luxury SUV, a comfortable sedan, or a tempo traveller for a family group, we have the perfect vehicle for you.</p>
+      <ul>
+        <li><strong>Experienced Drivers:</strong> Our drivers are well-versed with the Golden Triangle route and can double as basic guides.</li>
+        <li><strong>Transparent Pricing:</strong> No hidden costs. All tolls, taxes, and driver allowances are included.</li>
+        <li><strong>24/7 Support:</strong> We are just a phone call away throughout your journey.</li>
+        <li><strong>Flexibility:</strong> Stop where you want, eat where you like. It's your private tour!</li>
+      </ul>
+
+      <div class="bg-gray-100 p-8 rounded-xl my-8 text-center">
+        <h3 class="text-2xl font-bold mb-4">Ready to Explore India's Golden Triangle?</h3>
+        <p class="mb-6">Don't wait! The land of Maharajas and Mughals is calling. Book your private car rental or complete tour package today.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="/sightseeing/golden-triangle-tour-3-days" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book 3 Days Tour</a>
+            <a href="/sightseeing/golden-triangle-tour-6-days" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors">Book 6 Days Tour</a>
+        </div>
+      </div>
+    `,
+    date: "2025-01-25",
+    readTime: "15 min read",
+    image: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
+    category: "Sightseeing",
+    tags: ["Golden Triangle", "India Tour", "Delhi Agra Jaipur", "Itinerary"],
+    keywords: ["golden triangle tour", "golden triangle india itinerary", "delhi agra jaipur tour package", "7 days golden triangle itinerary", "best time to visit golden triangle", "india travel guide", "golden triangle tour cost", "private car for golden triangle", "golden triangle sightseeing", "golden triangle map", "jaipur sightseeing from delhi", "agra tour from delhi", "golden triangle places to visit", "golden triangle luxury tour", "budget golden triangle tour", "golden triangle with ranthambore", "golden triangle with udaipur", "delhi sightseeing guide", "agra travel guide", "jaipur city tour"],
+    featured: true,
+    views: 850,
+    metaTitle: "Golden Triangle Tour India: Ultimate 7-Day Itinerary 2025 | Delhi Agra Jaipur",
+    metaDescription: "Plan your Golden Triangle Tour (Delhi-Agra-Jaipur) with our ultimate 7-day itinerary for 2025. Discover best places to visit, hotels, costs & travel tips. Book Now!",
+  },
+  {
+    id: 7,
+    slug: "delhi-sightseeing-guide-places-to-visit-2025",
+    title: "Delhi Sightseeing Guide 2025: Top 15 Places to Visit in The Capital",
+    excerpt: "Explore the best of Delhi with our comprehensive 2025 sightseeing guide. From the historic Red Fort to the modern Lotus Temple, discover the top 15 places to visit in India's capital.",
+
+    relatedTours: [
+      { id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500" },
+      { id: "delhi-2", name: "Old Delhi Heritage Walk", slug: "old-delhi-heritage-walk", city: "delhi", price: "₹1,800" },
+      { id: "delhi-3", name: "New Delhi Modern Tour", slug: "new-delhi-modern-tour", city: "delhi", price: "₹2,200" }
+    ],
+
+    relatedDestinations: [
+      { name: "Delhi", slug: "delhi", type: "city" },
+      { name: "Agra", slug: "agra", type: "city" },
+      { name: "Jaipur", slug: "jaipur", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Delhi City Tour",
+      url: "/sightseeing/delhi-full-day-city-tour",
+      description: "Explore Delhi comfortably in our AC cabs with expert drivers",
+      price: "Starting from ₹2,500"
+    },
+
+    content: `
+      <div class="blog-intro">
+        <p><strong>Delhi</strong>, the capital of India, is a city of contrasts. It's a place where time travel is possible—where you can stand amidst the ruins of a 12th-century fort in the morning and shop in a glitzy modern mall in the evening. As a melting pot of cultures, Delhi offers an overwhelming yet fascinating mix of history, food, and modern life.</p>
+        
+        <p>Whether you have one day or a week, this <strong>Delhi Sightseeing Guide for 2025</strong> covers the top 15 places you absolutely cannot miss. We've categorized them into Heritage, Spiritual, and Modern attractions to help you plan your perfect itinerary.</p>
+      </div>
+
+      <h2>Historical Marvels: The Heritage Circuit</h2>
+
+      <h3>1. The Red Fort (Lal Qila)</h3>
+      <p>A UNESCO World Heritage Site, the Red Fort is the jewel of Mughal architecture in Delhi. Built by Shah Jahan in 1648, its massive red sandstone walls enclose a complex of palaces and gardens.</p>
+      <ul>
+        <li><strong>Don't Miss:</strong> The <em>Chhatta Chowk</em> bazaar, the <em>Diwan-i-Aam</em> (Hall of Public Audience), and the Light & Sound Show in the evening.</li>
+        <li><strong>Timings:</strong> 9:30 AM to 4:30 PM (Closed Mondays).</li>
+        <li><strong>Entry Fee:</strong> ₹35 (Indians), ₹500 (Foreigners).</li>
+      </ul>
+
+      <h3>2. Qutub Minar Complex</h3>
+      <p>Standing tall at 73 meters, the Qutub Minar is the highest brick minaret in the world. The complex is a treasure trove of historical monuments.</p>
+      <ul>
+        <li><strong>Highlight:</strong> The mysterious <em>Iron Pillar</em> which has not rusted for over 1,600 years.</li>
+        <li><strong>Photography Tip:</strong> Visit during sunset when the lights turn on, creating a magical atmosphere.</li>
+      </ul>
+
+      <h3>3. Humayun's Tomb</h3>
+      <p>Often called the precursor to the Taj Mahal, this garden tomb is a masterpiece of Persian-inspired Mughal architecture. It was the first garden-tomb on the Indian subcontinent.</p>
+      <ul>
+        <li><strong>Best For:</strong> Photography enthusiasts and history buffs. The symmetry of the gardens (Charbagh) is perfect.</li>
+      </ul>
+
+      <h3>4. India Gate</h3>
+      <p>The 42-meter high War Memorial Arch, dedicated to soldiers who died in World War I. The eternal flame, <em>Amar Jawan Jyoti</em>, burns here day and night (now shifted to the adjacent National War Memorial).</p>
+      <ul>
+        <li><strong>Activity:</strong> Enjoy a picnic on the lawns or an ice cream in the evening. The monument is beautifully lit at night.</li>
+      </ul>
+
+      <h3>5. Jantar Mantar</h3>
+      <p>Built by Maharaja Jai Singh II of Jaipur, this observatory features 13 architectural astronomy instruments. It's a testament to the scientific advancement of 18th-century India.</p>
+
+      <h3>6. Purana Qila (Old Fort)</h3>
+      <p>One of the oldest forts in Delhi, believed to be the site of the ancient city of Indraprastha. The lake here offers boating facilities.</p>
+
+      <h2>Spiritual Sojourn: Temples & Mosques</h2>
+
+      <h3>7. Akshardham Temple</h3>
+      <p>A modern architectural marvel, Akshardham is the world's largest comprehensive Hindu temple. Built from pink sandstone and white marble, it features 20,000 carved deities.</p>
+      <ul>
+        <li><strong>Must See:</strong> The <em>Sahaj Anand Water Show</em> in the evening offers a spectacular display of water, music, and lights.</li>
+        <li><strong>Note:</strong> Mobile phones and cameras are not allowed inside.</li>
+      </ul>
+
+      <h3>8. Lotus Temple</h3>
+      <p>Famous for its flower-like shape, this Bahá'í House of Worship is open to all, regardless of religion. It's a place for silent meditation and reflection.</p>
+
+      <h3>9. Jama Masjid</h3>
+      <p>India's largest mosque, capable of holding 25,000 devotees. The view of Old Delhi from its minaret is chaotic and beautiful.</p>
+      <ul>
+        <li><strong>Food Tip:</strong> Visit the nearby <em>Karim's</em> or <em>Al-Jawahar</em> for legendary Mughal cuisine.</li>
+      </ul>
+
+      <h3>10. Gurudwara Bangla Sahib</h3>
+      <p>One of the most prominent Sikh gurdwaras in Delhi, known for its golden dome and healing water (Sarovar). Don't miss the <em>Langar</em> (community kitchen) which feeds thousands daily for free.</p>
+
+      <h2>Modern Delhi & Shopping</h2>
+
+      <h3>11. Chandni Chowk</h3>
+      <p>The heart of Old Delhi. It's crowded, noisy, and chaotic—but absolutely essential. Shop for wedding lehengas, spices, and electronics.</p>
+
+      <h3>12. Connaught Place (CP)</h3>
+      <p>The colonial heart of New Delhi. A huge white circle of Georgian-style buildings filled with restaurants, bars, and brand showrooms. Don't miss the underground <em>Palika Bazaar</em>.</p>
+
+      <h3>13. Dilli Haat</h3>
+      <p>An open-air food plaza and craft bazaar. It offers a kaleidoscope of colorful Indian crafts and cuisines from different states.</p>
+
+      <h3>14. National Museum</h3>
+      <p>For history lovers, this is a must-visit. It holds over 200,000 artworks spanning 5,000 years of Indian history.</p>
+
+      <h3>15. Lodhi Gardens</h3>
+      <p>A favorite spot for Delhiites for morning walks. Dotted with tombs of the Sayyid and Lodi rulers, it's a beautiful blend of history and nature.</p>
+
+      <h2>How to Plan Your Delhi Tour?</h2>
+      <p>Delhi is huge, and traffic can be unpredictable. Here is a suggested 2-day plan:</p>
+
+      <h3>Day 1: Heritage & Old Delhi</h3>
+      <p>Red Fort ➔ Jama Masjid ➔ Chandni Chowk (Lunch) ➔ Raj Ghat ➔ Akshardham Temple (Evening).</p>
+
+      <h3>Day 2: New Delhi & Culture</h3>
+      <p>Qutub Minar ➔ Lotus Temple ➔ Humayun's Tomb ➔ India Gate ➔ Connaught Place/Dilli Haat (Dinner).</p>
+
+      <h2>Getting Around Delhi</h2>
+      <ul>
+        <li><strong>Metro:</strong> The Delhi Metro is world-class, clean, and connects almost every part of the city.</li>
+        <li><strong>Private Cab:</strong> For a hassle-free experience, especially in summer, hiring a private AC cab for the full day is recommended. Triveni Cabs offers <strong>8 Hours / 80 Km</strong> packages starting at just ₹2,500.</li>
+        <li><strong>Auto Rickshaws:</strong> Good for short distances, but always negotiate the fare or ask for the meter.</li>
+      </ul>
+
+      <h2>Best Time to Visit Delhi</h2>
+      <p><strong>October to March</strong> is the best time. The weather is pleasant. <strong>December and January</strong> can be quite cold (5-7°C). Avoid <strong>May-June</strong> (extreme heat) and <strong>July-August</strong> (monsoon) if possible.</p>
+
+      <div class="bg-blue-50 p-6 rounded-lg border border-blue-200 my-8">
+        <h3 class="text-xl font-bold mb-3">🚗 Book Your Delhi Sightseeing Cab</h3>
+        <p class="mb-4">Why struggle with metro crowds? Book a private car with driver for a comfortable tour of Delhi.</p>
+        <ul class="list-disc list-inside mb-4 text-gray-700">
+            <li>Swift/Dzire (4 Seater): ₹2,500</li>
+            <li>Innova Crysta (7 Seater): ₹3,500</li>
+            <li>Tempo Traveller (12 Seater): ₹5,500</li>
+        </ul>
+        <a href="/sightseeing/delhi-full-day-city-tour" class="inline-block bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700 transition-colors">Book Now</a>
+      </div>
+    `,
+    date: "2025-01-22",
+    readTime: "12 min read",
+    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    category: "Sightseeing",
+    tags: ["Delhi", "Sightseeing", "Travel Guide", "Capital City"],
+    keywords: ["delhi sightseeing", "places to visit in delhi", "delhi city tour", "delhi tourism", "red fort delhi", "qutub minar", "lotus temple", "india gate", "akshardham temple", "old delhi tour", "new delhi tourist places", "delhi darshan", "delhi travel guide", "things to do in delhi", "delhi one day tour", "best time to visit delhi", "delhi heritage walk", "shopping in delhi", "chandni chowk market", "humayun tomb"],
+    featured: true,
+    views: 1100,
+    metaTitle: "Delhi Sightseeing Guide 2025: Top 15 Places to Visit | Complete Itinerary",
+    metaDescription: "Discover the top 15 places to visit in Delhi with our 2025 sightseeing guide. Explore Red Fort, Qutub Minar, Akshardham & more. Plan your Delhi tour now!",
+  },
+  {
+    id: 8,
+    slug: "jaipur-city-tour-pink-city-guide-2025",
+    title: "Jaipur City Tour Guide 2025: Exploring the Royal Pink City",
+    excerpt: "Experience the royal grandeur of Jaipur. From the majestic Amber Fort to the iconic Hawa Mahal, our complete 2025 guide covers the best places to visit, eat, and shop in the Pink City.",
+
+    relatedTours: [
+      { id: "jaipur-1", name: "Jaipur Full Day Sightseeing", slug: "jaipur-full-day-sightseeing", city: "jaipur", price: "₹2,500" },
+      { id: "jaipur-2", name: "Jaipur Night Tour", slug: "jaipur-night-tour", city: "jaipur", price: "₹2,000" },
+      { id: "jaipur-3", name: "Jaipur Forts Tour", slug: "jaipur-forts-tour", city: "jaipur", price: "₹2,800" }
+    ],
+
+    relatedDestinations: [
+      { name: "Jaipur", slug: "jaipur", type: "city" },
+      { name: "Delhi", slug: "delhi", type: "city" },
+      { name: "Ajmer", slug: "ajmer", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Jaipur Sightseeing Cab",
+      url: "/sightseeing/jaipur-full-day-sightseeing",
+      description: "Explore Jaipur's forts and palaces in comfort",
+      price: "Starting from ₹2,500"
+    },
+
+    content: `
+      <div class="blog-intro">
+        <p><strong>Jaipur</strong>, the first planned city of India, is a treasure trove of royal heritage. Famously known as the <strong>Pink City</strong> due to the terracotta-pink color of its old city buildings, Jaipur is part of the famous Golden Triangle tourist circuit. It was founded in 1727 by Maharaja Sawai Jai Singh II.</p>
+        
+        <p>With its broad avenues, massive forts, opulent palaces, and vibrant bazaars, Jaipur offers a glimpse into the lifestyle of the Rajput kings. In this **2025 Jaipur City Guide**, we will take you through the must-visit attractions, hidden gems, and culinary delights of this royal city.</p>
+      </div>
+
+      <h2>The Magnificent Forts of Jaipur</h2>
+
+      <h3>1. Amber Fort (Amer Fort)</h3>
+      <p>Located 11 km from Jaipur, this UNESCO World Heritage Site is the crown jewel of Jaipur tourism. Perched high on a hill, it overlooks Maota Lake.</p>
+      <ul>
+        <li><strong>Architecture:</strong> A stunning fusion of Hindu and Mughal styles built in red sandstone and marble.</li>
+        <li><strong>Must See:</strong>
+            <ul>
+                <li><em>Sheesh Mahal (Mirror Palace):</em> The walls and ceiling are embedded with thousands of mirror pieces. A single candle can illuminate the entire hall.</li>
+                <li><em>Ganesh Pol:</em> An intricately painted gateway.</li>
+            </ul>
+        </li>
+        <li><strong>Experience:</strong> Take an elephant ride up the hill in the morning or a jeep ride. Don't miss the Light & Sound show in the evening.</li>
+      </ul>
+
+      <h3>2. Nahargarh Fort</h3>
+      <p>Standing on the edge of the Aravalli Hills, Nahargarh (Abode of Tigers) offers the best panoramic views of Jaipur city. It was the built as a defense ring around the city.</p>
+      <ul>
+        <li><strong>Best Time:</strong> Visit during sunset. The view of the city lighting up is mesmerizing.</li>
+        <li><strong>Pop Culture:</strong> Famous for being a shooting location for the movie <em>Rang De Basanti</em>.</li>
+      </ul>
+
+      <h3>3. Jaigarh Fort</h3>
+      <p>Known as the Victory Fort, it houses the <strong>Jaivana Cannon</strong>, which was once the world's largest cannon on wheels. It acts as a protector of Amber Fort and offers rugged military architecture.</p>
+
+      <h2>Royal Palaces & Monuments</h2>
+
+      <h3>4. City Palace</h3>
+      <p>Located in the heart of the old city, the City Palace is a sprawling complex of courtyards, gardens, and buildings. It is still the residence of the Jaipur royal family.</p>
+      <ul>
+        <li><strong>Highlights:</strong>
+            <ul>
+                <li><em>Mubarak Mahal:</em> Textile museum.</li>
+                <li><em>Pritam Niwas Chowk:</em> Four small gates representing four seasons (Peacock Gate is the most famous).</li>
+            </ul>
+        </li>
+      </ul>
+
+      <h3>5. Hawa Mahal (Palace of Winds)</h3>
+      <p>The most iconic landmark of Jaipur. Built in 1799, this five-story pink sandstone structure resembles a honeycomb.</p>
+      <ul>
+        <li><strong>Fun Fact:</strong> It has 953 small windows (Jharokhas) designed to allow royal ladies to observe street festivals without being seen.</li>
+        <li><strong>Tip:</strong> The structure is best admired from the outside. For the best photo, go to the Wind View Cafe across the street.</li>
+      </ul>
+
+      <h3>6. Jantar Mantar</h3>
+      <p>A UNESCO World Heritage site, this astronomical observatory features the world's largest stone sundial, the <em>Vrihat Samrat Yantra</em>, which measures time to an accuracy of 2 seconds.</p>
+
+      <h3>7. Jal Mahal (Water Palace)</h3>
+      <p>Floating in the middle of Man Sagar Lake, this palace is a visual delight. While entry inside the palace is currently restricted, the promenade offers a beautiful view, especially in the evenings.</p>
+
+      <h2>Spiritual Jaipur</h2>
+      <ul>
+        <li><strong>Birla Mandir:</strong> A stunning white marble temple dedicated to Lord Vishnu and Goddess Laxmi. Visit in the evening to see it illuminated.</li>
+        <li><strong>Galtaji (Monkey Temple):</strong> An ancient Hindu pilgrimage site with natural springs and 7 holy kunds (water tanks). It's famous for its large tribe of monkeys.</li>
+        <li><strong>Govind Dev Ji Temple:</strong> Located within the City Palace complex, dedicated to Lord Krishna. The morning and evening aartis are very spiritual.</li>
+      </ul>
+
+      <h2>Shopping in Jaipur: A Shopper's Paradise</h2>
+      <p>Jaipur is world-famous for its handicrafts. Here's what to buy and where:</p>
+      <ul>
+        <li><strong>Johari Bazaar:</strong> Famous for Kundan and Meenakari jewelry, and gemstones.</li>
+        <li><strong>Bapu Bazaar:</strong> Best for Mojari shoes, camel leather items, and textiles.</li>
+        <li><strong>Tripolia Bazaar:</strong> Known for Lac bangles and brassware.</li>
+        <li><strong>Chandpole Bazaar:</strong> For marble sculptures and handicrafts.</li>
+        <li><strong>Blue Pottery:</strong> Look for distinct blue-glazed pottery items, a specialty of Jaipur.</li>
+      </ul>
+
+      <h2>What to Eat in Jaipur?</h2>
+      <p>Rajasthani cuisine is rich and spicy. Don't leave without trying:</p>
+      <ul>
+        <li><strong>Dal Baati Churma:</strong> The signature dish of Rajasthan.</li>
+        <li><strong>Laal Maas:</strong> A fiery red meat curry.</li>
+        <li><strong>Ghevar:</strong> A disc-shaped sweet cake made of flour and sugar syrup.</li>
+        <li><strong>Pyaaz Kachori:</strong> A spicy deep-fried snack filled with onions. Best at <em>Rawat Mishtan Bhandar</em>.</li>
+        <li><strong>Lassi:</strong> Try the thick, creamy lassi at <em>Lassiwala</em> on MI Road.</li>
+      </ul>
+
+      <h2>2 Days in Jaipur: Perfect Itinerary</h2>
+
+      <h3>Day 1: Castles & Culture</h3>
+      <p>Amber Fort (Morning) ➔ Jaigarh Fort ➔ Jal Mahal (Photo stop) ➔ Hawa Mahal ➔ Jantar Mantar ➔ City Palace ➔ Johari Bazaar (Evening shopping).</p>
+
+      <h3>Day 2: Views & Vibes</h3>
+      <p>Albert Hall Museum ➔ Patrika Gate (Instagram spot) ➔ Birla Mandir ➔ Nahargarh Fort (Sunset) ➔ Chokhi Dhani (Dinner & Culture).</p>
+
+      <h2>Best Time to Visit</h2>
+      <p><strong>October to March</strong> is the ideal time. The weather is cool and pleasant (10°C - 25°C). Avoid summers (April-June) as temperatures can touch 45°C.</p>
+
+      <h2>Getting Around</h2>
+      <p>Jaipur's attractions are spread out. The Amber Fort is 11km from the City Palace. The best way to explore is by hiring a <strong>private cab for the day</strong>.</p>
+      
+      <div class="bg-pink-50 p-6 rounded-lg border border-pink-200 my-8">
+        <h3 class="text-xl font-bold mb-3 text-pink-700">👑 Explore Jaipur Like a Royal</h3>
+        <p class="mb-4">Book a comfortable AC sedan or SUV with Triveni Cabs for a hassle-free sightseeing experience.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>✅ Hotel Pickup & Drop</div>
+            <div>✅ Expert Driver-Guide</div>
+            <div>✅ Flexible Itinerary</div>
+            <div>✅ No Parking/Toll Hassles</div>
+        </div>
+        <a href="/sightseeing/jaipur-full-day-sightseeing" class="inline-block bg-pink-600 text-white px-6 py-2 rounded font-semibold hover:bg-pink-700 transition-colors">Check Jaipur Cab Rates</a>
+      </div>
+    `,
+    date: "2025-01-20",
+    readTime: "14 min read",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+    category: "Sightseeing",
+    tags: ["Jaipur", "Pink City", "Rajasthan", "Forts"],
+    keywords: ["jaipur sightseeing", "jaipur city tour", "amber fort jaipur", "hawa mahal", "city palace jaipur", "places to visit in jaipur", "jaipur tour guide", "things to do in jaipur", "jaipur tourism", "chokhi dhani jaipur", "shopping in jaipur", "best time to visit jaipur", "jaipur itinerary 2 days", "jal mahal jaipur", "nahargarh fort sunset", "jaipur photo spots", "patrika gate", "albert hall museum", "jaipur food guide", "rajasthani cuisine"],
+    featured: true,
+    views: 920,
+    metaTitle: "Jaipur City Tour 2025: Complete Sightseeing Guide | Pink City Itinerary",
+    metaDescription: "Explore the best of Jaipur with our 2025 City Tour Guide. Visit Amber Fort, Hawa Mahal, City Palace & more. Find best itinerary, food & shopping tips.",
+  },
+  {
+    id: 9,
+    slug: "agra-travel-guide-beyond-taj-mahal-2025",
+    title: "Agra Travel Guide 2025: Beyond the Taj Mahal - Forts, Tombs & Food",
+    excerpt: "Think Agra is just about the Taj Mahal? Think again! Explore Agra Fort, Mehtab Bagh, Fatehpur Sikri, and the vibrant food streets of Agra with our complete 2025 travel guide.",
+
+    relatedTours: [
+      { id: "agra-1", name: "Agra One Day Tour", slug: "agra-one-day-tour", city: "agra", price: "₹3,500" },
+      { id: "agra-2", name: "Agra & Fatehpur Sikri Tour", slug: "agra-fatehpur-sikri-tour", city: "agra", price: "₹4,000" },
+      { id: "agra-3", name: "Sunrise Taj Mahal Tour", slug: "sunrise-taj-mahal-tour", city: "agra", price: "₹3,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Agra", slug: "agra", type: "city" },
+      { name: "Mathura", slug: "mathura", type: "city" },
+      { name: "Delhi", slug: "delhi", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Agra Sightseeing",
+      url: "/sightseeing/agra-one-day-tour",
+      description: "Visit Taj Mahal & Agra Fort with expert guides",
+      price: "Starting from ₹3,500"
+    },
+
+    content: `
+      <div class="blog-intro">
+        <p><strong>Agra</strong>, the former capital of the Mughal Empire, is home to the world's most famous monument of love, the <strong>Taj Mahal</strong>. Every year, millions of tourists flock to Agra just to see the Taj. But is that all Agra has to offer?</p>
+        
+        <p>Absolutely not! Agra is a city steeped in history, architecture, and culture. From massive red sandstone forts to exquisite baby marble tombs and abandoned ghost cities, there is so much more to explore. In this <strong>Agra Travel Guide 2025</strong>, we take you beyond the Taj Mahal to discover the hidden gems of this historic city.</p>
+      </div>
+
+      <h2>The Must-Visit Monuments</h2>
+
+      <h3>1. The Taj Mahal</h3>
+      <p>Okay, we can't ignore the elephant in the room. The Taj Mahal is breathtaking. Built by Emperor Shah Jahan for his favorite wife Mumtaz Mahal, it took 22 years to complete.</p>
+      <ul>
+        <li><strong>Pro Tip:</strong> Visit at sunrise. The crowds are thinner, and the soft light turns the white marble into a pearly pink. It's magical.</li>
+        <li><strong>Closed:</strong> Fridays.</li>
+      </ul>
+
+      <h3>2. Agra Fort (Red Fort of Agra)</h3>
+      <p>Often overshadowed by the Taj, the Agra Fort is arguably more impressive in scale. This UNESCO World Heritage site was the main residence of the emperors of the Mughal Dynasty until 1638.</p>
+      <ul>
+        <li><strong>Must See:</strong>
+            <ul>
+                <li><em>Jahangir Mahal:</em> A blend of Hindu and Central Asian architecture.</li>
+                <li><em>Khas Mahal:</em> The white marble palace.</li>
+                <li><em>Musamman Burj:</em> The octagonal tower where Shah Jahan was imprisoned, gazing at the Taj Mahal for the last 8 years of his life.</li>
+            </ul>
+        </li>
+      </ul>
+
+      <h3>3. Itmad-ud-Daulah (Baby Taj)</h3>
+      <p>This exquisite tomb is often called the "Draft of the Taj Mahal". Built by Empress Nur Jahan for her father, it is the first Mughal structure made entirely of marble.</p>
+      <ul>
+        <li><strong>Why Visit:</strong> It's peaceful, less crowded, and the intricate marble inlay work (Pietra Dura) is even more delicate than the Taj Mahal's.</li>
+      </ul>
+
+      <h3>4. Mehtab Bagh (Moonlight Garden)</h3>
+      <p>Located across the Yamuna River, perfectly aligned with the Taj Mahal. It was the last of eleven Mughal-built gardens along the Yamuna.</p>
+      <ul>
+        <li><strong>Best View:</strong> This is the best spot for a sunset photo of the Taj Mahal. You get a perfect reflection in the river if the water level is high enough.</li>
+      </ul>
+
+      <h3>5. Fatehpur Sikri</h3>
+      <p>Located 40km from Agra, this "City of Victory" was the capital of the Mughal Empire for just 10 years before being abandoned due to water scarcity.</p>
+      <ul>
+        <li><strong>Highlights:</strong>
+            <ul>
+                <li><em>Buland Darwaza:</em> The highest gateway in the world (54 meters).</li>
+                <li><em>Jama Masjid:</em> One of the largest mosques in India.</li>
+                <li><em>Tomb of Salim Chishti:</em> Devotees tie threads on the marble screens asking for blessings.</li>
+            </ul>
+        </li>
+      </ul>
+
+      <h2>Agra for Foodies: What to Eat?</h2>
+      <p>Mughlai cuisine dominates Agra. It's rich, creamy, and meaty.</p>
+      <ul>
+        <li><strong>Petha:</strong> Agra is famous for this sweet made from ash gourd. Try the <em>Panchi Petha</em> brand. Flavors range from plain (Angoori) to chocolate and paan.</li>
+        <li><strong>Bedai & Jalebi:</strong> The classic Agra breakfast. Bedai is a fried, puffy bread served with spicy potato curry, followed by hot, sweet jalebis.</li>
+        <li><strong>Parathas:</strong> Head to <em>Rambabu Paratha Bhandar</em> for massive, deep-fried stuffed parathas.</li>
+        <li><strong>Mughlai Curry:</strong> Try Chicken Korma or Mutton Rogan Josh at <em>Pinch of Spice</em> or <em>Mama Chicken</em>.</li>
+      </ul>
+
+      <h2>Shopping in Agra</h2>
+      <ul>
+        <li><strong>Marble Inlay Work:</strong> Agra is the best place to buy marble coasters, table tops, and replicas of the Taj Mahal. Ensure you buy from government-emporiums to get real marble, not soapstone.</li>
+        <li><strong>Leather Goods:</strong> Agra is a major hub for leather. Sadar Bazaar is great for shoes, belts, and bags.</li>
+        <li><strong>Rugs & Carpets:</strong> Traditional Mughal designs are still woven here.</li>
+      </ul>
+
+      <h2>One Day in Agra: The Perfect Plan</h2>
+      <p><strong>06:00 AM:</strong> Sunrise at Taj Mahal.<br>
+      <strong>09:00 AM:</strong> Breakfast (Bedai Jalebi).<br>
+      <strong>10:30 AM:</strong> Agra Fort.<br>
+      <strong>01:00 PM:</strong> Lunch (Mughlai Feast).<br>
+      <strong>02:30 PM:</strong> Itmad-ud-Daulah (Baby Taj).<br>
+      <strong>04:30 PM:</strong> Mehtab Bagh for Sunset.<br>
+      <strong>07:00 PM:</strong> Kalakriti Cultural Centre for "Mohabbat-the-Taj" show (Optional).</p>
+
+      <h2>Best Time to Visit</h2>
+      <p><strong>October to March</strong>. Winters are pleasant. Avoid summer afternoons. <strong>Taj Mahotsav</strong> (Feb) is a 10-day cultural festival which is a great time to be there.</p>
+
+      <h2>Getting Around</h2>
+      <p>Agra has a lot of "touts" and aggressive rickshaw drivers. The most stress-free way to explore is to hire a <strong>pre-booked private cab</strong>. This ensures you go exactly where you want without being forced into expensive commission-based shops.</p>
+      
+      <div class="bg-red-50 p-6 rounded-lg border border-red-200 my-8">
+        <h3 class="text-xl font-bold mb-3 text-red-800">🚗 Seamless Agra Sightseeing</h3>
+        <p class="mb-4">Don't let the heat and crowds ruin your experience. Travel in AC comfort with Triveni Cabs.</p>
+        <ul class="list-disc list-inside mb-4 text-gray-700">
+            <li>Pickup from Railway Station/Hotel</li>
+            <li>English Speaking Drivers</li>
+            <li>Transparent Rates</li>
+        </ul>
+        <a href="/sightseeing/agra-one-day-tour" class="inline-block bg-red-700 text-white px-6 py-2 rounded font-semibold hover:bg-red-800 transition-colors">View Agra Tour Packages</a>
+      </div>
+    `,
+    date: "2025-01-18",
+    readTime: "11 min read",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+    category: "Sightseeing",
+    tags: ["Agra", "Taj Mahal", "Mughal History", "Food Guide"],
+    keywords: ["agra sightseeing", "places to visit in agra", "agra fort history", "fatehpur sikri tour", "baby taj agra", "mehtab bagh sunset", "agra street food", "shopping in agra", "best time to visit agra", "agra city tour", "taj mahal sunrise", "agra tour package", "delhi to agra one day tour", "agra travel guide", "mughal heritage walk", "petha agra", "agra leather market", "taj mahotsav", "agra itinerary 1 day"],
+    featured: true,
+    views: 1300,
+    metaTitle: "Agra Travel Guide 2025: Beyond Taj Mahal | Forts, Food & Itinerary",
+    metaDescription: "Discover Agra beyond the Taj Mahal. Complete 2025 travel guide to Agra Fort, Fatehpur Sikri, Baby Taj, best street food & shopping spots.",
+  },
+  {
+    id: 10,
+    slug: "jim-corbett-safari-guide-2025",
+    title: "Jim Corbett Safari Guide 2025: Tigers, Zones, and Luxury Resorts",
+    excerpt: "Planning a wildlife adventure? Read our ultimate 2025 guide to Jim Corbett National Park. Know about best safari zones, booking tips, best time to visit and luxury stay options.",
+
+    relatedTours: [
+      { id: "corbett-1", name: "Jim Corbett Weekend Tour", slug: "jim-corbett-weekend-tour", city: "ramnagar", price: "₹6,500" },
+      { id: "corbett-2", name: "Corbett Jungle Safari", slug: "corbett-jungle-safari", city: "ramnagar", price: "₹4,500" },
+      { id: "nainital-1", name: "Nainital & Corbett Tour", slug: "nainital-corbett-tour", city: "nainital", price: "₹12,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Jim Corbett", slug: "jim-corbett", type: "wildlife" },
+      { name: "Nainital", slug: "nainital", type: "hill-station" },
+      { name: "Delhi", slug: "delhi", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Corbett Trip",
+      url: "/sightseeing/jim-corbett-weekend-tour",
+      description: "Wildlife safari packages with resort stay",
+      price: "Starting from ₹4,500"
+    },
+
+    content: `
+      <div class="blog-intro">
+        <p>The roar of the Bengal Tiger, the rustle of dry leaves, and the pristine wilderness of the foothills of the Himalayas—welcome to <strong>Jim Corbett National Park</strong>. Established in 1936 as Hailey National Park, it is India's oldest national park and the birthplace of Project Tiger.</p>
+        
+        <p>Spanning over 520 sq km, Corbett is a haven for wildlife lovers, photographers, and nature seekers. Whether you want to spot the majestic tiger, enjoy bird watching, or simply relax by the Kosi River, this <strong>Jim Corbett Safari Guide 2025</strong> serves as your ultimate handbook.</p>
+      </div>
+
+      <h2>Understanding Safari Zones in Corbett</h2>
+      <p>Corbett is divided into several zones, each offering a unique experience. Choosing the right zone is critical for a good sighting.</p>
+
+      <h3>1. Dhikala Zone</h3>
+      <p>The most popular and largest zone. The landscape consists of vast grasslands (Chaurs) and riverbeds.</p>
+      <ul>
+        <li><strong>Best For:</strong> Tiger sightings and elephants.</li>
+        <li><strong>Entry:</strong> Dhangarhi Gate.</li>
+        <li><strong>Stay:</strong> You can stay inside the forest rest house (FRH) here, which is a lifetime experience.</li>
+        <li><strong>Open:</strong> 15th November to 15th June.</li>
+      </ul>
+
+      <h3>2. Bijrani Zone</h3>
+      <p>Known for its diverse vegetation and high probability of tiger sightings during the day.</p>
+      <ul>
+        <li><strong>Landscape:</strong> Dense Sal forests and grasslands.</li>
+        <li><strong>Entry:</strong> Amanda Gate.</li>
+        <li><strong>Open:</strong> 15th October to 30th June.</li>
+      </ul>
+
+      <h3>3. Jhirna Zone</h3>
+      <p>A round-the-year tourism zone. It is famous for bear sightings along with tigers.</p>
+      <ul>
+        <li><strong>Best For:</strong> Sloth bears and wild boars.</li>
+        <li><strong>Open:</strong> All year round (subject to weather).</li>
+      </ul>
+
+      <h3>4. Dhela Zone</h3>
+      <p>A relatively new eco-tourism zone, also open throughout the year.</p>
+
+      <h3>5. Durga Devi Zone</h3>
+      <p>Located on the north-eastern boundary, this hilly zone is a birdwatcher's paradise.</p>
+      <ul>
+        <li><strong>Best For:</strong> Birds and Mahseer fishing.</li>
+      </ul>
+
+      <h2>Types of Safaris</h2>
+      <ul>
+        <li><strong>Jeep Safari:</strong> The most common way to explore. Open 4x4 Gypsies take you deep into the jungle. Max 6 persons per jeep.</li>
+        <li><strong>Canter Safari:</strong> Only available in Dhikala zone. It's a 16-seater open bus. Good for larger groups.</li>
+        <li><strong>Elephant Safari:</strong> (Subject to government bans/regulations) Exploring the jungle on an elephant's back offers a unique vantage point.</li>
+      </ul>
+
+      <h2>Beyond the Safari: Things to Do</h2>
+      <ul>
+        <li><strong>Corbett Waterfall:</strong> A scenic waterfall surrounded by dense teak forests. Perfect for a picnic (no swimming allowed).</li>
+        <li><strong>Garjia Devi Temple:</strong> A sacred temple located on a large rock in the middle of the Kosi River.</li>
+        <li><strong>River Rafting:</strong> Available in the Kosi River during monsoon season (July-Sept).</li>
+        <li><strong>Corbett Museum:</strong> Located at Kaladhungi, it's the heritage bungalow of Jim Corbett himself. It displays his personal belongings, letters, and old maps.</li>
+      </ul>
+
+      <h2>Where to Stay? Luxury in the Wild</h2>
+      <p>Corbett has some of India's finest jungle resorts.</p>
+      <ul>
+        <li><strong>Luxury:</strong> <em>Taj Corbett Resort & Spa</em>, <em>Paatlidun Safari Lodge</em>, <em>Namah Resort</em>.</li>
+        <li><strong>Mid-Range:</strong> <em>Corbett The Baagh</em>, <em>De Coracao</em>.</li>
+        <li><strong>Budget:</strong> Many homestays and smaller hotels in Ramnagar town.</li>
+      </ul>
+
+      <h2>How to Reach Jim Corbett?</h2>
+      <ul>
+        <li><strong>By Road:</strong> Ramnagar is well connected by road. Delhi to Ramnagar is approx 260 km (5-6 hours drive).</li>
+        <li><strong>By Train:</strong> Ramnagar (RMR) is the nearest railway station. The <em>Ranikhet Express</em> from Delhi is a convenient overnight train.</li>
+        <li><strong>By Cab:</strong> The most comfortable option. Book a reliable outstation cab from Delhi with Triveni Cabs for a smooth journey.</li>
+      </ul>
+
+      <h2>Best Time to Visit</h2>
+      <ul>
+        <li><strong>Winter (Nov-Feb):</strong> Best for bird watching and pleasant weather. Mornings are very cold (sub-zero sometimes).</li>
+        <li><strong>Summer (March-June):</strong> Best for Tiger sightings as animals come out to water bodies. Hot days (up to 40°C).</li>
+        <li><strong>Monsoon (July-Sept):</strong> Park is mostly closed (except Jhirna/Dhela). Good for nature lovers who enjoy greenery.</li>
+      </ul>
+
+      <h2>Travel Tips</h2>
+      <ul>
+        <li><strong>Book in Advance:</strong> Safaris (especially Dhikala) get booked months in advance. Plan early.</li>
+        <li><strong>ID Proof:</strong> Carry the same original ID proof used for booking.</li>
+        <li><strong>Clothing:</strong> Wear earth colors (khaki, olive, brown). Avoid bright colors. Wear layers in winter.</li>
+        <li><strong>Silence:</strong> Maintain silence in the jungle to increase chances of sightings.</li>
+      </ul>
+
+      <div class="bg-green-50 p-6 rounded-lg border border-green-200 my-8">
+        <h3 class="text-xl font-bold mb-3 text-green-800">🐅 Plan Your Jungle Adventure</h3>
+        <p class="mb-4">From Delhi pickup to resort booking and safari permits, we handle it all.</p>
+        <a href="/sightseeing/jim-corbett-weekend-tour" class="inline-block bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition-colors">Book Corbett Package</a>
+      </div>
+    `,
+    date: "2025-01-15",
+    readTime: "13 min read",
+    image: "/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg",
+    category: "WildLife",
+    tags: ["Jim Corbett", "Wildlife", "Tiger Safari", "Nature"],
+    keywords: ["jim corbett national park", "jim corbett safari booking", "dhikala zone", "best time to visit jim corbett", "tiger sighting in corbett", "jungle safari india", "resorts in jim corbett", "delhi to jim corbett cab", "jim corbett packages", "wildlife photography india", "bijrani zone", "jhirna zone", "corbett waterfall", "garjia devi temple", "jeep safari booking", "canter safari dhikala", "ramnagar to corbett", "project tiger", "corbett itinerary 3 days"],
+    featured: true,
+    views: 1450,
+    metaTitle: "Jim Corbett Safari Guide 2025: Zones, Booking & Best Time to Visit",
+    metaDescription: "Ultimate guide to Jim Corbett National Park 2025. Best safari zones, tiger sighting tips, resort guide & travel tips. Plan your wildlife adventure now!",
+  },
 ]
 
 // All blog posts combined (Travel + Attractions)
@@ -1520,5 +2230,4 @@ export const blogCategories = [
   { name: "Destinations", slug: "destinations", count: blogPosts.filter(post => post && post.category === "Destinations").length },
   { name: "Travel Tips", slug: "travel-tips", count: blogPosts.filter(post => post && post.category === "Travel Tips").length },
   { name: "Pilgrimage", slug: "pilgrimage", count: blogPosts.filter(post => post && post.category === "Pilgrimage").length },
-  { name: "Attractions", slug: "attractions", count: blogPosts.filter(post => post && post.category === "Attractions").length },
 ];
