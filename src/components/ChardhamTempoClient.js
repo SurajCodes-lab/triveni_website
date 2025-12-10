@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
     MapPin, Calendar, Users, Star, Shield, Phone, MessageCircle,
-    ChevronDown, CheckCircle, Navigation, Clock, Sun, Mountain, Sparkles
+    ChevronDown, CheckCircle, Navigation, Clock, Sun, Mountain, Sparkles, Plane, User
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -187,6 +187,9 @@ export default function ChardhamTempoClient({ data }) {
             {/* ============================================ */}
             {/* INTRO & WHY CHOOSE US */}
             {/* ============================================ */}
+            {/* ============================================ */}
+            {/* INTRO & WHY CHOOSE US */}
+            {/* ============================================ */}
             <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
@@ -206,26 +209,37 @@ export default function ChardhamTempoClient({ data }) {
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                            {whyChoose?.map((item, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    viewport={{ once: true }}
-                                    className="bg-stone-50 p-6 rounded-2xl border border-stone-100 hover:border-orange-200 transition-colors"
-                                >
-                                    <div className="flex gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                            <CheckCircle className="w-6 h-6 text-orange-600" />
+                            {whyChoose?.map((item, idx) => {
+                                // Dynamic Icon Logic
+                                let Icon = CheckCircle;
+                                const titleLower = item.title.toLowerCase();
+                                if (titleLower.includes('airport')) Icon = Plane;
+                                else if (titleLower.includes('safety') || titleLower.includes('verified')) Icon = Shield;
+                                else if (titleLower.includes('time') || titleLower.includes('24/7')) Icon = Clock;
+                                else if (titleLower.includes('comfort') || titleLower.includes('seats')) Icon = User;
+                                else if (titleLower.includes('expert') || titleLower.includes('guide')) Icon = Star;
+
+                                return (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        viewport={{ once: true }}
+                                        className="bg-white p-6 rounded-r-xl border-l-4 border-l-orange-500 shadow-lg hover:shadow-xl transition-all border-y border-r border-stone-100 group"
+                                    >
+                                        <div className="flex gap-4 items-start">
+                                            <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500 transition-colors">
+                                                <Icon className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-lg text-stone-900 mb-1">{item.title}</h4>
+                                                <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h4 className="font-bold text-lg text-stone-900 mb-1">{item.title}</h4>
-                                            <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
+                                    </motion.div>
+                                );
+                            })}
                         </div>
                     </motion.div>
 
