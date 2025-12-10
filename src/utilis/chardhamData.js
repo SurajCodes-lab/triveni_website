@@ -42,7 +42,7 @@ export const chardhamRoutes = [
         seoTitle: 'Delhi to Chardham Yatra Tempo Traveller | 9-26 Seater Package 2026',
         seoDesc: 'Book Delhi to Chardham Yatra Tempo Traveller. 12 Days package for Yamunotri, Gangotri, Kedarnath, Badrinath. Starting ₹65k. Experienced hill drivers.',
         images: {
-            hero: '/images/chardham/chardham-yatra-delhi-hero.jpg',
+            hero: '/images/chardham/chardham-yatra-delhi-hero.png',
             map: '/images/chardham/route-map-delhi.jpg'
         },
         pickupDrop: {
@@ -90,7 +90,7 @@ export const chardhamRoutes = [
         seoTitle: 'Haridwar to Chardham Yatra Tempo Traveller Rental | Best Rates 2026',
         seoDesc: 'Hire Tempo Traveller for Chardham Yatra from Haridwar. 10 Days Package. 12/17/26 Seater options. Local experienced drivers. Book now!',
         images: {
-            hero: '/images/chardham/chardham-haridwar-hero.jpg',
+            hero: '/images/chardham/chardham-haridwar-hero.png',
             map: '/images/chardham/route-map-haridwar.jpg'
         },
         pickupDrop: {
@@ -136,7 +136,7 @@ export const chardhamRoutes = [
         seoTitle: 'Dehradun to Chardham Yatra Tempo Traveller | Jolly Grant Airport Pickup',
         seoDesc: 'Book Dehradun to Chardham Yatra Tempo Traveller. 11 Days Tour. Pickup from Jolly Grant Airport. 12/16/20 Seater AC Tempo available.',
         images: {
-            hero: '/images/chardham/chardham-dehradun-hero.jpg',
+            hero: '/images/chardham/chardham-dehradun-hero.png',
             map: '/images/chardham/route-map-dehradun.jpg'
         },
         pickupDrop: {
@@ -180,7 +180,7 @@ export const chardhamRoutes = [
         seoTitle: 'Rishikesh to Chardham Yatra Tempo Traveller | 10 Days Package',
         seoDesc: 'Rent Tempo Traveller from Rishikesh for Chardham Yatra. 10 Days complete package. Experienced drivers. AC/Non-AC options available.',
         images: {
-            hero: '/images/chardham/chardham-rishikesh-hero.jpg',
+            hero: '/images/chardham/chardham-rishikesh-hero.png',
             map: '/images/chardham/route-map-rishikesh.jpg'
         },
         pickupDrop: {
@@ -220,7 +220,7 @@ export const chardhamRoutes = [
         seoTitle: 'Delhi to Kedarnath Tempo Traveller | 12 Seater AC Rental',
         seoDesc: 'Book Tempo Traveller from Delhi to Kedarnath. 6 Days Tour. Best price for 12, 16, 20 seater. Safe drivers for hill driving.',
         images: {
-            hero: '/images/chardham/kedarnath-hero.jpg',
+            hero: '/images/chardham/kedarnath-hero.png',
             map: '/images/chardham/kedarnath-map.jpg'
         },
         pickupDrop: {
@@ -256,7 +256,7 @@ export const chardhamRoutes = [
         seoTitle: 'Haridwar to Kedarnath Tempo Traveller | 4 Days Package',
         seoDesc: 'Haridwar to Kedarnath Tempo Traveller fare. 4 days quick tour package. Book 12 seater tempo for Kedarnath Yatra.',
         images: {
-            hero: '/images/chardham/haridwar-kedarnath-hero.jpg',
+            hero: '/images/chardham/haridwar-kedarnath-hero.png',
             map: '/images/chardham/haridwar-kedarnath-map.jpg'
         },
         pickupDrop: {
@@ -296,7 +296,7 @@ export const chardhamRoutes = [
         seoTitle: 'Delhi to Do Dham Yatra Tempo Traveller | Kedarnath Badrinath Package',
         seoDesc: 'Do Dham Yatra Tempo Traveller from Delhi. Package for Kedarnath and Badrinath. 8 Days tour. 12/17/26 Seater available.',
         images: {
-            hero: '/images/chardham/do-dham-delhi-hero.jpg',
+            hero: '/images/chardham/kedarnath-hero.png',
             map: '/images/chardham/do-dham-map.jpg'
         },
         pickupDrop: { pickup: ['Delhi'], drop: ['Delhi'] }
@@ -331,7 +331,7 @@ export const chardhamRoutes = [
         seoTitle: 'Haridwar to Do Dham Yatra Tempo Traveller | Kedarnath & Badrinath',
         seoDesc: 'Book Tempo Traveller for Do Dham Yatra from Haridwar. 6 Days package. Best rates for Kedarnath Badrinath tour.',
         images: {
-            hero: '/images/chardham/do-dham-haridwar-hero.jpg',
+            hero: '/images/chardham/haridwar-kedarnath-hero.png',
             map: '/images/chardham/do-dham-map.jpg'
         },
         pickupDrop: { pickup: ['Haridwar'], drop: ['Haridwar'] }
@@ -366,7 +366,7 @@ export const chardhamRoutes = [
         seoTitle: 'Dehradun to Do Dham Yatra Tempo Traveller | Jolly Grant To Kedarnath Badrinath',
         seoDesc: 'Rent Tempo Traveller from Dehradun for Do Dham Yatra. Airport pickup included. 12/17 seater AC tempo traveller.',
         images: {
-            hero: '/images/chardham/do-dham-dehradun-hero.jpg',
+            hero: '/images/chardham/chardham-dehradun-hero.png',
             map: '/images/chardham/do-dham-map.jpg'
         },
         pickupDrop: { pickup: ['Dehradun'], drop: ['Dehradun'] }
@@ -402,7 +402,7 @@ export const chardhamRoutes = [
         seoTitle: 'Delhi to Gangotri Yamunotri Tempo Traveller | Do Dham Package',
         seoDesc: 'Delhi to Gangotri Yamunotri Do Dham Yatra by Tempo Traveller. 7 Days Package. Best fares for 12/17 seater tempo.',
         images: {
-            hero: '/images/chardham/gangotri-yamunotri-hero.jpg',
+            hero: '/images/chardham/chardham-rishikesh-hero.png',
             map: '/images/chardham/gangotri-yamunotri-map.jpg'
         },
         pickupDrop: { pickup: ['Delhi'], drop: ['Delhi'] }

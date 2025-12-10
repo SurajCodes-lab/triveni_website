@@ -73,7 +73,7 @@ export const tempoCities = {
     landmark: 'Har Ki Pauri',
     region: 'Uttarakhand',
     state: 'Uttarakhand',
-    image: '/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg',
+    image: '/images/chardham/chardham-haridwar-hero.png',
     color: 'from-orange-500 via-amber-500 to-yellow-500',
     bgGradient: 'from-orange-900/90 via-amber-900/80 to-yellow-900/90',
     accentColor: 'orange',
@@ -89,7 +89,7 @@ export const tempoCities = {
     landmark: 'Laxman Jhula',
     region: 'Uttarakhand',
     state: 'Uttarakhand',
-    image: '/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg',
+    image: '/images/chardham/chardham-rishikesh-hero.png',
     color: 'from-teal-500 via-cyan-500 to-blue-500',
     bgGradient: 'from-teal-900/90 via-cyan-900/80 to-blue-900/90',
     accentColor: 'teal',
@@ -105,7 +105,7 @@ export const tempoCities = {
     landmark: 'Robber\'s Cave',
     region: 'Uttarakhand',
     state: 'Uttarakhand',
-    image: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg',
+    image: '/images/chardham/chardham-dehradun-hero.png',
     color: 'from-green-500 via-emerald-500 to-teal-500',
     bgGradient: 'from-green-900/90 via-emerald-900/80 to-teal-900/90',
     accentColor: 'green',
@@ -382,59 +382,59 @@ export const tempoRoutes = {
 // Local sightseeing data for each destination city
 export const localSightseeing = {
   Shimla: [
-    "Mall Road", "Ridge Road", "Christ Church", "Jakhu Temple", 
+    "Mall Road", "Ridge Road", "Christ Church", "Jakhu Temple",
     "Kufri", "Chail", "Naldehra", "Mashobra"
   ],
   Manali: [
-    "Hadimba Temple", "Solang Valley", "Rohtang Pass", "Old Manali", 
+    "Hadimba Temple", "Solang Valley", "Rohtang Pass", "Old Manali",
     "Vashisht Hot Springs", "Jogini Falls", "Manu Temple"
   ],
   Dharamshala: [
-    "McLeod Ganj", "Dalai Lama Temple", "Bhagsu Waterfall", 
+    "McLeod Ganj", "Dalai Lama Temple", "Bhagsu Waterfall",
     "Triund Trek", "Norbulingka Institute", "St. John Church"
   ],
   Amritsar: [
-    "Golden Temple", "Wagah Border", "Jallianwala Bagh", 
+    "Golden Temple", "Wagah Border", "Jallianwala Bagh",
     "Partition Museum", "Gobindgarh Fort", "Ram Tirath"
   ],
   Haridwar: [
-    "Har Ki Pauri", "Mansa Devi Temple", "Chandi Devi Temple", 
+    "Har Ki Pauri", "Mansa Devi Temple", "Chandi Devi Temple",
     "Maya Devi Temple", "Bharat Mata Mandir", "Patanjali Yogpeeth"
   ],
   Rishikesh: [
-    "Laxman Jhula", "Ram Jhula", "Beatles Ashram", "Triveni Ghat", 
+    "Laxman Jhula", "Ram Jhula", "Beatles Ashram", "Triveni Ghat",
     "Parmarth Niketan", "Neelkanth Mahadev", "Kunjapuri Temple"
   ],
   Jaipur: [
-    "Amber Fort", "Hawa Mahal", "City Palace", "Jantar Mantar", 
+    "Amber Fort", "Hawa Mahal", "City Palace", "Jantar Mantar",
     "Nahargarh Fort", "Jaigarh Fort", "Albert Hall Museum"
   ],
   Agra: [
-    "Taj Mahal", "Agra Fort", "Fatehpur Sikri", "Mehtab Bagh", 
+    "Taj Mahal", "Agra Fort", "Fatehpur Sikri", "Mehtab Bagh",
     "Itmad-ud-Daulah", "Sikandra", "Agra Bear Rescue"
   ],
   Delhi: [
-    "Red Fort", "India Gate", "Qutub Minar", "Lotus Temple", 
+    "Red Fort", "India Gate", "Qutub Minar", "Lotus Temple",
     "Akshardham", "Humayun's Tomb", "Connaught Place"
   ],
   Udaipur: [
-    "City Palace", "Lake Pichola", "Jag Mandir", "Fateh Sagar Lake", 
+    "City Palace", "Lake Pichola", "Jag Mandir", "Fateh Sagar Lake",
     "Saheliyon Ki Bari", "Jagdish Temple", "Monsoon Palace"
   ],
   Jodhpur: [
-    "Mehrangarh Fort", "Umaid Bhawan Palace", "Jaswant Thada", 
+    "Mehrangarh Fort", "Umaid Bhawan Palace", "Jaswant Thada",
     "Clock Tower", "Mandore Gardens", "Rao Jodha Desert Rock Park"
   ],
   Varanasi: [
-    "Kashi Vishwanath Temple", "Dashashwamedh Ghat", "Sarnath", 
+    "Kashi Vishwanath Temple", "Dashashwamedh Ghat", "Sarnath",
     "Assi Ghat", "Manikarnika Ghat", "BHU Campus", "Ramnagar Fort"
   ],
   Lucknow: [
-    "Bara Imambara", "Chota Imambara", "Rumi Darwaza", 
+    "Bara Imambara", "Chota Imambara", "Rumi Darwaza",
     "British Residency", "Hazratganj", "Ambedkar Park"
   ],
   Ayodhya: [
-    "Ram Janmabhoomi", "Hanuman Garhi", "Kanak Bhawan", 
+    "Ram Janmabhoomi", "Hanuman Garhi", "Kanak Bhawan",
     "Dashrath Mahal", "Sita ki Rasoi", "Ramkot"
   ]
 };
