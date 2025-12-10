@@ -1,8 +1,20 @@
 // src/app/tempo-traveller/[route]/page.js
 
 import { tempoFleet, tempoRoutes, localSightseeing, tempoCities } from '@/utilis/tempoTravellerData';
+import { chardhamRoutes } from '@/utilis/chardhamData';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import TempoCityClient from '@/components/TempoCityClient';
+import ChardhamTempoClient from '@/components/ChardhamTempoClient';
+
+// Helper to check if slug is a Chardham route
+function isChardhamSlug(slug) {
+  return chardhamRoutes.some(route => route.slug === slug);
+}
+
+// Helper to get Chardham data by slug
+function getChardhamBySlug(slug) {
+  return chardhamRoutes.find(route => route.slug === slug);
+}
 
 // Helper to check if slug is a city
 function isCitySlug(slug) {
@@ -44,7 +56,11 @@ export async function generateStaticParams() {
     route: route,
   }));
 
-  return [...cityParams, ...routeParams];
+  const chardhamParams = chardhamRoutes.map(route => ({
+    route: route.slug
+  }));
+
+  return [...cityParams, ...routeParams, ...chardhamParams];
 }
 
 export async function generateMetadata({ params }) {
@@ -57,6 +73,38 @@ export async function generateMetadata({ params }) {
     return {
       title: 'Tempo Traveller Service | Premium Group Travel',
       description: 'Book premium tempo travellers for comfortable group travel across India.'
+    };
+  }
+
+  // Check if it's a Chardham page
+  if (isChardhamSlug(route)) {
+    const chardhamData = getChardhamBySlug(route);
+    return {
+      title: chardhamData.seoTitle,
+      description: chardhamData.seoDesc,
+      applicationName: 'Triveni Cabs',
+      metadataBase: new URL('https://trivenicabs.in'),
+      alternates: {
+        canonical: `https://trivenicabs.in/tempo-traveller/${route}`,
+      },
+      openGraph: {
+        title: chardhamData.seoTitle,
+        description: chardhamData.seoDesc,
+        url: `https://trivenicabs.in/tempo-traveller/${route}`,
+        type: 'website',
+        locale: 'en_IN',
+        siteName: 'Triveni Cabs - Chardham Yatra',
+        images: [
+          {
+            url: chardhamData.images?.hero || '/images/tempo-hero.jpg',
+            width: 1200,
+            height: 630,
+            alt: chardhamData.title,
+            type: 'image/jpeg',
+          },
+        ],
+      },
+      category: 'Travel & Spiritual',
     };
   }
 
@@ -198,6 +246,12 @@ export default async function TempoTravellerRoutePage({ params }) {
         </div>
       </div>
     );
+  }
+
+  // Check if it's a Chardham page
+  if (isChardhamSlug(route)) {
+    const chardhamData = getChardhamBySlug(route);
+    return <ChardhamTempoClient data={chardhamData} />;
   }
 
   // Check if it's a city page

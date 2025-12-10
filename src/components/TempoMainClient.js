@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import ChardhamShowcase from './ChardhamShowcase';
 
 export default function TempoMainClient({ data, faqData }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -495,6 +496,11 @@ export default function TempoMainClient({ data, faqData }) {
         </section>
       )}
 
+
+      {/* ============================================ */}
+      {/* CHARDHAM SHOWCASE - SPECIAL */}
+      {/* ============================================ */}
+      <ChardhamShowcase />
 
       {/* ============================================ */}
       {/* FLEET SECTION */}
