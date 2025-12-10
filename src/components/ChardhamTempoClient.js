@@ -29,7 +29,7 @@ export default function ChardhamTempoClient({ data }) {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src={images.hero}
+                        src={images?.hero || '/images/tempo_hero_section.jpg'}
                         alt={`${title} - Triveni Cabs`}
                         fill
                         className="object-cover"
@@ -188,76 +188,47 @@ export default function ChardhamTempoClient({ data }) {
             {/* INTRO & WHY CHOOSE US */}
             {/* ============================================ */}
             <section className="py-16 md:py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-                        {/* Text Content */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="h-0.5 w-10 bg-orange-500"></div>
-                                <span className="text-orange-600 font-bold uppercase tracking-wider text-sm">Sacred Journey</span>
-                            </div>
-                            <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-6 font-serif">
-                                Why Choose Triveni for your <span className="text-orange-600">Pilgrimage?</span>
-                            </h2>
-                            <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                                {intro}
-                            </p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1 rounded-full bg-orange-50 border border-orange-100">
+                            <span className="text-orange-600 font-bold uppercase tracking-wider text-xs">Sacred Journey</span>
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-6 font-serif">
+                            Why Choose Triveni for your <span className="text-orange-600">Pilgrimage?</span>
+                        </h2>
+                        <p className="text-lg text-stone-600 leading-relaxed mb-12 max-w-2xl mx-auto">
+                            {intro}
+                        </p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                {whyChoose.map((item, idx) => (
-                                    <div key={idx} className="flex gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0">
-                                            <CheckCircle className="w-6 h-6 text-orange-500" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                            {whyChoose?.map((item, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="bg-stone-50 p-6 rounded-2xl border border-stone-100 hover:border-orange-200 transition-colors"
+                                >
+                                    <div className="flex gap-4">
+                                        <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                                            <CheckCircle className="w-6 h-6 text-orange-600" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-stone-900">{item.title}</h4>
-                                            <p className="text-sm text-stone-500">{item.desc}</p>
+                                            <h4 className="font-bold text-lg text-stone-900 mb-1">{item.title}</h4>
+                                            <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
-                        </motion.div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
 
-                        {/* Visual/Image Grid */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            className="relative"
-                        >
-                            <div className="absolute -inset-4 bg-orange-100 rounded-full blur-3xl opacity-30"></div>
-                            <div className="relative grid grid-cols-2 gap-4">
-                                <div className="space-y-4 translate-y-8">
-                                    <div className="h-48 md:h-64 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-                                        <Image src="/images/chardham/kedarnath.jpg" alt="Kedarnath" width={400} height={600} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                                            onError={(e) => e.target.style.background = '#f5f5f4'} />
-                                    </div>
-                                    <div className="h-32 md:h-40 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-                                        <Image src="/images/chardham/badrinath.jpg" alt="Badrinath" width={400} height={400} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                                            onError={(e) => e.target.style.background = '#f5f5f4'} />
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <div className="h-32 md:h-40 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-                                        <Image src="/images/chardham/gangotri.jpg" alt="Gangotri" width={400} height={400} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                                            onError={(e) => e.target.style.background = '#f5f5f4'} />
-                                    </div>
-                                    <div className="h-48 md:h-64 rounded-2xl bg-orange-500 overflow-hidden shadow-lg border-2 border-white flex items-center justify-center">
-                                        <div className="text-center text-white p-4">
-                                            <div className="text-4xl font-bold mb-2">2500+</div>
-                                            <div className="text-sm">Happy Pilgrims</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                    </div>
                 </div>
             </section>
 
@@ -273,7 +244,7 @@ export default function ChardhamTempoClient({ data }) {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {packages.map((pkg, idx) => (
+                        {packages?.map((pkg, idx) => (
                             <motion.div
                                 key={idx}
                                 whileHover={{ y: -10 }}
@@ -310,8 +281,8 @@ export default function ChardhamTempoClient({ data }) {
                                 <Link
                                     href={`https://wa.me/917668570551?text=I want to book ${pkg.type} Package for ${title} at ${pkg.price}`}
                                     className={`block w-full py-4 rounded-xl font-bold text-center transition-all ${idx === 1
-                                            ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/30'
-                                            : 'bg-stone-100 text-stone-900 hover:bg-stone-200'
+                                        ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg shadow-orange-500/30'
+                                        : 'bg-stone-100 text-stone-900 hover:bg-stone-200'
                                         }`}
                                 >
                                     Select Package
@@ -333,7 +304,7 @@ export default function ChardhamTempoClient({ data }) {
                     </div>
 
                     <div className="relative border-l-2 border-orange-200 ml-4 md:ml-0 space-y-12">
-                        {itinerary.map((day, idx) => (
+                        {itinerary?.map((day, idx) => (
                             <div key={idx} className="relative pl-8 md:pl-12">
                                 <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-white"></div>
                                 <div className="flex flex-col md:flex-row gap-4 md:gap-8">
