@@ -298,26 +298,14 @@ export const tempoRoutes = {
     { name: "Shimla", type: "Hill Station" },
     { name: "Manali", type: "Adventure" },
     { name: "Dharamshala", type: "Spiritual" },
-    { name: "Dalhousie", type: "Hill Station" },
-    { name: "Amritsar", type: "Heritage" },
-    { name: "Delhi", type: "Metro" },
-    { name: "Jaipur", type: "Royal" }
-  ],
-  Jaipur: [
-    { name: "Delhi", type: "Metro" },
-    { name: "Agra", type: "Heritage" },
+    { name: "Shimla", type: "Hill Station" },
+    { name: "Manali", type: "Adventure" },
+    { name: "Nainital", type: "Hill Station" },
+    { name: "Corbett", type: "Wildlife" },
+    { name: "Ayodhya", type: "Spiritual" },
+    { name: "Varanasi", type: "Spiritual" },
     { name: "Udaipur", type: "Lakes" },
-    { name: "Jodhpur", type: "Blue City" },
-    { name: "Jaisalmer", type: "Desert" },
-    { name: "Ajmer", type: "Spiritual" },
-    { name: "Pushkar", type: "Spiritual" }
-  ],
-  Agra: [
-    { name: "Delhi", type: "Metro" },
-    { name: "Jaipur", type: "Royal" },
-    { name: "Mathura", type: "Spiritual" },
-    { name: "Vrindavan", type: "Spiritual" },
-    { name: "Gwalior", type: "Heritage" }
+    { name: "Mount Abu", type: "Hill Station" }
   ],
   Haridwar: [
     { name: "Badrinath", type: "Char Dham" },
