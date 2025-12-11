@@ -5,7 +5,7 @@ export const chardhamRoutes = [
         origin: 'Delhi',
         destination: 'Chardham Yatra',
         duration: '11 Nights / 12 Days',
-        type: 'Chot',
+        type: 'Char',
         description: 'Embark on the divine Delhi to Chardham Yatra by Tempo Traveller. Complete pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath with comfort and luxury.',
         intro: 'Embark on a voyage of spiritual liberation with our **Delhi to Chardham Yatra Tempo Traveller** service. The Chardham Yatra—comprising Yamunotri, Gangotri, Kedarnath, and Badrinath—is not just a journey; it is a quest for *Moksha*. Starting from the capital city, we ensure your pilgrimage is comfortable, safe, and memorable.',
         whyChoose: [
@@ -56,7 +56,7 @@ export const chardhamRoutes = [
         origin: 'Haridwar',
         destination: 'Chardham Yatra',
         duration: '9 Nights / 10 Days',
-        type: 'Chot',
+        type: 'Char',
         description: 'Start your Chardham Yatra from the holy city of Haridwar. 10 Days spiritual journey covering all 4 Dhams.',
         intro: 'Begin your sacred journey from the Gateway to Gods, Haridwar. Our **Haridwar to Chardham Yatra Tempo Traveller** service offers a seamless transition from the plains to the mighty Himalayas. Validated for safety and comfort, our fleet is your best companion for this divine expedition.',
         whyChoose: [
@@ -104,7 +104,7 @@ export const chardhamRoutes = [
         origin: 'Dehradun',
         destination: 'Chardham Yatra',
         duration: '10 Nights / 11 Days',
-        type: 'Chot',
+        type: 'Char',
         description: 'Direct Chardham Yatra from Dehradun Airport or City. Convenient for flight travelers. 11 Days comprehensive tour.',
         intro: 'Arriving by air? Our **Dehradun to Chardham Yatra Tempo Traveller** service is the perfect choice. Skip the drive from Delhi and start fresh from the Himalayan foothills. We provide prompt airport pickups and comfortable vehicles for the winding roads ahead.',
         whyChoose: [
@@ -150,7 +150,7 @@ export const chardhamRoutes = [
         origin: 'Rishikesh',
         destination: 'Chardham Yatra',
         duration: '9 Nights / 10 Days',
-        type: 'Chot',
+        type: 'Char',
         description: 'Chardham Yatra starting from the Yoga Capital. 10 Days spiritual circuit covering 4 Dhams.',
         intro: 'Combine yoga and spirituality with our **Rishikesh to Chardham Yatra Tempo Traveller**. Start from the banks of the Ganges and ascend to the glacial origins. Our service ensures a peaceful and meditative journey through the Devbhoomi.',
         whyChoose: [
