@@ -323,7 +323,7 @@ export const tempoRoutes = {
     { name: "Jaipur", type: "Royal" },
     { name: "Mathura", type: "Spiritual" },
     { name: "Vrindavan", type: "Spiritual" },
-    { name: "Gwalior", type: "Heritage" }
+    { name: "Gwalior", type: "Heritage" },
     { name: "Mount Abu", type: "Hill Station" }
   ],
   Haridwar: [
