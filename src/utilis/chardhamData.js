@@ -15,9 +15,11 @@ export const chardhamRoutes = [
             { title: '24/7 Support', desc: 'Dedicated team monitoring your Yatra round the clock.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹65,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹85,000' },
-            { type: 'Luxury', vehicle: '26 Seater', price: '₹1,10,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹84,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹96,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹1,02,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹1,14,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹1,32,000' }
         ],
         itinerary: [
             { day: 1, title: 'Delhi to Haridwar', desc: 'Pickup from Delhi. Drive to Haridwar. Evening Ganga Aarti at Har Ki Pauri.' },
@@ -66,9 +68,11 @@ export const chardhamRoutes = [
             { title: 'Transparent Pricing', desc: 'No hidden costs for parking or tolls.' }
         ],
         packages: [
-            { type: 'Economy', vehicle: '12 Seater', price: '₹55,000' },
-            { type: 'Premium', vehicle: '17 Seater', price: '₹75,000' },
-            { type: 'Royal', vehicle: '26 Seater', price: '₹95,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹70,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹80,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹85,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹95,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹1,10,000' }
         ],
         itinerary: [
             { day: 1, title: 'Haridwar to Barkot', desc: 'Early morning start towards Barkot. Night stay.' },
@@ -113,8 +117,11 @@ export const chardhamRoutes = [
             { title: 'Verified Drivers', desc: 'Police verified, non-alcoholic drivers.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹60,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹80,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹77,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹88,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹93,500' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹1,04,500' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹1,21,000' }
         ],
         itinerary: [
             { day: 1, title: 'Dehradun to Barkot', desc: 'Pickup and drive to Barkot via Mussoorie.' },
@@ -158,8 +165,11 @@ export const chardhamRoutes = [
             { title: 'Adventure Ready', desc: 'Vehicles suitable for rough Himalayan terrain.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹55,000' },
-            { type: 'Luxury', vehicle: '17 Seater', price: '₹75,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹70,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹80,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹85,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹95,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹1,10,000' }
         ],
         itinerary: [
             { day: 1, title: 'Rishikesh to Barkot', desc: 'Drive to Barkot.' },
@@ -202,8 +212,11 @@ export const chardhamRoutes = [
             { title: 'Halts for Biometric', desc: 'Assistance with registration stops.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹35,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹45,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹42,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹48,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹51,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹57,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹66,000' }
         ],
         itinerary: [
             { day: 1, title: 'Delhi to Haridwar', desc: 'Drive and stay.' },
@@ -242,8 +255,11 @@ export const chardhamRoutes = [
             { title: 'Budget Friendly', desc: 'Economical packages from Haridwar.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹25,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹32,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹28,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹32,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹34,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹38,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹44,000' }
         ],
         itinerary: [
             { day: 1, title: 'Haridwar to Guptkashi', desc: 'Early morning drive.' },
@@ -278,8 +294,11 @@ export const chardhamRoutes = [
             { title: 'Balanced Itinerary', desc: 'Not too rushed, not too long.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹48,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹60,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹56,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹64,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹68,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹76,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹88,000' }
         ],
         itinerary: [
             { day: 1, title: 'Delhi to Haridwar', desc: 'Stay at Haridwar.' },
@@ -315,8 +334,11 @@ export const chardhamRoutes = [
             { title: 'Station Pickup', desc: 'Easy pickup from train station.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹38,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹48,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹42,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹48,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹51,000' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹57,000' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹66,000' }
         ],
         itinerary: [
             { day: 1, title: 'Haridwar to Guptkashi', desc: 'Drive.' },
@@ -349,8 +371,11 @@ export const chardhamRoutes = [
             { title: 'Airport Convenience', desc: 'Start Yatra right after landing.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹42,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹55,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹49,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹56,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹59,500' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹66,500' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹77,000' }
         ],
         itinerary: [
             { day: 1, title: 'Dehradun to Guptkashi', desc: 'Drive.' },
@@ -385,8 +410,11 @@ export const chardhamRoutes = [
             { title: 'Scenic Route', desc: 'Beautiful drive through Uttarkashi.' }
         ],
         packages: [
-            { type: 'Standard', vehicle: '12 Seater', price: '₹45,000' },
-            { type: 'Deluxe', vehicle: '17 Seater', price: '₹58,000' }
+            { type: 'Standard', vehicle: '12 Seater', price: '₹49,000' },
+            { type: 'Deluxe', vehicle: '16 Seater', price: '₹56,000' },
+            { type: 'Super Deluxe', vehicle: '17 Seater', price: '₹59,500' },
+            { type: 'Luxury', vehicle: '20 Seater', price: '₹66,500' },
+            { type: 'Maharaja', vehicle: '26 Seater', price: '₹77,000' }
         ],
         itinerary: [
             { day: 1, title: 'Delhi to Haridwar', desc: 'Drive.' },
