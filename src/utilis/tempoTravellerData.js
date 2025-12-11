@@ -298,6 +298,14 @@ export const tempoRoutes = {
     { name: "Shimla", type: "Hill Station" },
     { name: "Manali", type: "Adventure" },
     { name: "Dharamshala", type: "Spiritual" },
+    { name: "Dalhousie", type: "Hill Station" },
+    { name: "Amritsar", type: "Heritage" },
+    { name: "Delhi", type: "Metro" },
+    { name: "Jaipur", type: "Royal" }
+  ],
+  Jaipur: [
+    { name: "Delhi", type: "Metro" },
+    { name: "Agra", type: "Heritage" },
     { name: "Shimla", type: "Hill Station" },
     { name: "Manali", type: "Adventure" },
     { name: "Nainital", type: "Hill Station" },
@@ -305,15 +313,26 @@ export const tempoRoutes = {
     { name: "Ayodhya", type: "Spiritual" },
     { name: "Varanasi", type: "Spiritual" },
     { name: "Udaipur", type: "Lakes" },
+    { name: "Jodhpur", type: "Blue City" },
+    { name: "Jaisalmer", type: "Desert" },
+    { name: "Ajmer", type: "Spiritual" },
+    { name: "Pushkar", type: "Spiritual" }
+  ],
+  Agra: [
+    { name: "Delhi", type: "Metro" },
+    { name: "Jaipur", type: "Royal" },
+    { name: "Mathura", type: "Spiritual" },
+    { name: "Vrindavan", type: "Spiritual" },
+    { name: "Gwalior", type: "Heritage" }
     { name: "Mount Abu", type: "Hill Station" }
   ],
   Haridwar: [
     { name: "Badrinath", type: "Char Dham" },
-    { name: "Kedarnath", type: "Char Dham" },
-    { name: "Yamunotri", type: "Char Dham" },
-    { name: "Gangotri", type: "Char Dham" },
-    { name: "Rishikesh", type: "Spiritual" }
-  ],
+  { name: "Kedarnath", type: "Char Dham" },
+  { name: "Yamunotri", type: "Char Dham" },
+  { name: "Gangotri", type: "Char Dham" },
+  { name: "Rishikesh", type: "Spiritual" }
+],
   Rishikesh: [
     { name: "Auli", type: "Adventure" },
     { name: "Chopta", type: "Adventure" },
@@ -321,50 +340,50 @@ export const tempoRoutes = {
     { name: "Badrinath", type: "Char Dham" },
     { name: "Kedarnath", type: "Char Dham" }
   ],
-  Dehradun: [
-    { name: "Mussoorie", type: "Hill Station" },
-    { name: "Badrinath", type: "Char Dham" },
-    { name: "Kedarnath", type: "Char Dham" },
-    { name: "Yamunotri", type: "Char Dham" },
-    { name: "Gangotri", type: "Char Dham" }
-  ],
-  Amritsar: [
-    { name: "Vaishno Devi Katra", type: "Spiritual" },
-    { name: "Delhi", type: "Metro" },
-    { name: "Chandigarh", type: "Modern City" }
-  ],
-  Lucknow: [
-    { name: "Varanasi", type: "Spiritual" },
-    { name: "Ayodhya", type: "Spiritual" },
-    { name: "Delhi", type: "Metro" },
-    { name: "Agra", type: "Heritage" }
-  ],
-  Varanasi: [
-    { name: "Prayagraj", type: "Spiritual" },
-    { name: "Ayodhya", type: "Spiritual" },
-    { name: "Lucknow", type: "Heritage" }
-  ],
-  Udaipur: [
-    { name: "Mount Abu", type: "Hill Station" },
-    { name: "Ahmedabad", type: "Commercial" },
-    { name: "Jodhpur", type: "Blue City" },
-    { name: "Jaipur", type: "Royal" }
-  ],
-  Jodhpur: [
-    { name: "Jaisalmer", type: "Desert" },
-    { name: "Udaipur", type: "Lakes" },
-    { name: "Jaipur", type: "Royal" }
-  ],
-  Ajmer: [
-    { name: "Pushkar", type: "Spiritual" },
-    { name: "Jaipur", type: "Royal" },
-    { name: "Udaipur", type: "Lakes" }
-  ],
-  Pushkar: [
-    { name: "Ajmer", type: "Spiritual" },
-    { name: "Udaipur", type: "Lakes" },
-    { name: "Jaipur", type: "Royal" }
-  ]
+    Dehradun: [
+      { name: "Mussoorie", type: "Hill Station" },
+      { name: "Badrinath", type: "Char Dham" },
+      { name: "Kedarnath", type: "Char Dham" },
+      { name: "Yamunotri", type: "Char Dham" },
+      { name: "Gangotri", type: "Char Dham" }
+    ],
+      Amritsar: [
+        { name: "Vaishno Devi Katra", type: "Spiritual" },
+        { name: "Delhi", type: "Metro" },
+        { name: "Chandigarh", type: "Modern City" }
+      ],
+        Lucknow: [
+          { name: "Varanasi", type: "Spiritual" },
+          { name: "Ayodhya", type: "Spiritual" },
+          { name: "Delhi", type: "Metro" },
+          { name: "Agra", type: "Heritage" }
+        ],
+          Varanasi: [
+            { name: "Prayagraj", type: "Spiritual" },
+            { name: "Ayodhya", type: "Spiritual" },
+            { name: "Lucknow", type: "Heritage" }
+          ],
+            Udaipur: [
+              { name: "Mount Abu", type: "Hill Station" },
+              { name: "Ahmedabad", type: "Commercial" },
+              { name: "Jodhpur", type: "Blue City" },
+              { name: "Jaipur", type: "Royal" }
+            ],
+              Jodhpur: [
+                { name: "Jaisalmer", type: "Desert" },
+                { name: "Udaipur", type: "Lakes" },
+                { name: "Jaipur", type: "Royal" }
+              ],
+                Ajmer: [
+                  { name: "Pushkar", type: "Spiritual" },
+                  { name: "Jaipur", type: "Royal" },
+                  { name: "Udaipur", type: "Lakes" }
+                ],
+                  Pushkar: [
+                    { name: "Ajmer", type: "Spiritual" },
+                    { name: "Udaipur", type: "Lakes" },
+                    { name: "Jaipur", type: "Royal" }
+                  ]
 };
 
 // Local sightseeing data for each destination city
