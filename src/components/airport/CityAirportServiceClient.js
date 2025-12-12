@@ -38,7 +38,28 @@ export default function CityAirportServiceClient({ city, citySlug }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const message = `*${city.name} Airport Transfer Booking*\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nPickup: ${formData.pickupLocation}\nDrop: ${formData.dropLocation}\nDate: ${formData.pickupDate}\nTime: ${formData.pickupTime}\nPassengers: ${formData.passengers}\nVehicle: ${formData.vehicleType}\nFlight: ${formData.flightNumber || 'N/A'}`;
+    const message =
+      `🚖 *${city.name} Airport Transfer Booking*\n\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `📞 *Phone:* ${formData.phone}\n` +
+      `📧 *Email:* ${formData.email || 'Not provided'}\n\n` +
+      `📍 *Pickup:* ${formData.pickupLocation}\n` +
+      `✈️ *Drop:* ${formData.dropLocation}\n` +
+      `📅 *Date:* ${formData.pickupDate}\n` +
+      `🕐 *Time:* ${formData.pickupTime}\n` +
+      `👥 *Passengers:* ${formData.passengers}\n` +
+      `🚗 *Vehicle:* ${formData.vehicleType}\n` +
+      `✈️ *Flight Number:* ${formData.flightNumber || 'Not provided'}\n\n` +
+      `*Airport:* ${city.airport} (${city.airportCode})\n` +
+      `*Distance:* ${city.distance}\n\n` +
+      `*Services Included:*\n` +
+      `✓ Real-time flight tracking\n` +
+      `✓ Professional chauffeur\n` +
+      `✓ Meet & greet at ${city.airport}\n` +
+      `✓ Luggage assistance\n` +
+      `✓ On-time guarantee\n` +
+      `✓ Fixed rates - No hidden charges\n\n` +
+      `Please confirm availability and share the fare for ${city.name} airport transfer. Thank you!`;
 
     const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -154,13 +175,13 @@ export default function CityAirportServiceClient({ city, citySlug }) {
               {city.airportCode} Airport Transfer
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              {city.name} Airport Taxi Service
+              {city.name} Airport Taxi Service - Book {city.airport} Cab in 60 Seconds
             </h1>
-            <p className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
-              24/7 Premium Cab Service from {city.airport}
-            </p>
+            <h2 className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
+              24/7 Premium {city.name} Airport Transfer | Flight Tracking + On-Time Guarantee
+            </h2>
             <p className="text-lg md:text-xl text-gray-200 mb-6 leading-relaxed">
-              {city.description}
+              {city.description} <strong>Pre-book now</strong> for guaranteed rates starting ₹11/km!
             </p>
             <div className="flex flex-wrap gap-4 mb-6">
               <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center">
@@ -185,7 +206,7 @@ export default function CityAirportServiceClient({ city, citySlug }) {
                 className="bg-white text-gray-900 px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
               >
                 <Calendar className="w-5 h-5 mr-2" />
-                Book Now
+                Book {city.name} Airport Taxi Now
               </a>
             </div>
           </div>
@@ -215,8 +236,11 @@ export default function CityAirportServiceClient({ city, citySlug }) {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Popular Destinations from {city.name} Airport
+              Popular Destinations from {city.name} Airport ({city.airportCode})
             </h2>
+            <p className="text-lg text-gray-600">
+              Book <strong>{city.name} airport taxi</strong> to these popular destinations with guaranteed on-time pickup
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {city.popularDestinations.map((dest, index) => {

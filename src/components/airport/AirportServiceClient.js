@@ -37,7 +37,24 @@ export default function AirportServiceClient({ faqData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const message = `*New Airport Transfer Booking*\n\nPickup: ${formData.pickup}\nDestination: ${formData.destination}\nDate: ${formData.pickupDate}\nTime: ${formData.pickupTime}\nPassengers: ${formData.passengers}\nVehicle: ${formData.vehicleType}\nFlight Details: ${formData.flightDetails || 'N/A'}\nSpecial Requests: ${formData.specialRequests || 'N/A'}`;
+    const message =
+      `🚖 *Airport Transfer Booking Request*\n\n` +
+      `📍 *Pickup Location:* ${formData.pickup}\n` +
+      `✈️ *Destination Airport:* ${formData.destination}\n` +
+      `📅 *Date:* ${formData.pickupDate}\n` +
+      `🕐 *Time:* ${formData.pickupTime}\n` +
+      `👥 *Passengers:* ${formData.passengers}\n` +
+      `🚗 *Vehicle Type:* ${formData.vehicleType}\n` +
+      `✈️ *Flight Details:* ${formData.flightDetails || 'Not provided'}\n` +
+      `📝 *Special Requests:* ${formData.specialRequests || 'None'}\n\n` +
+      `*Services Included:*\n` +
+      `✓ Real-time flight tracking\n` +
+      `✓ Professional chauffeur\n` +
+      `✓ Meet & greet at arrival\n` +
+      `✓ Luggage assistance\n` +
+      `✓ On-time guarantee\n` +
+      `✓ Fixed rates - No surge pricing\n\n` +
+      `Please confirm availability and share the fare. Thank you!`;
 
     const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -101,7 +118,15 @@ export default function AirportServiceClient({ faqData }) {
   ], []);
 
   const whatsappUrl = useCallback(() => {
-    const message = encodeURIComponent("Hi! I need an airport transfer. Can you help?");
+    const message = encodeURIComponent(
+      "🚖 *Airport Transfer Booking Request*\n\n" +
+      "I need a reliable airport taxi with:\n" +
+      "✓ Real-time flight tracking\n" +
+      "✓ Professional chauffeur\n" +
+      "✓ On-time pickup guarantee\n" +
+      "✓ Luggage assistance\n\n" +
+      "Please share rates and confirm availability. Thank you!"
+    );
     return `https://wa.me/917668570551?text=${message}`;
   }, []);
 
@@ -138,22 +163,23 @@ export default function AirportServiceClient({ faqData }) {
 
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Never Miss a Flight Again!
+              Book Airport Taxi in 60 Seconds - Never Miss Your Flight!
             </h1>
-            <p className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
-              24/7 Premium Airport Taxi Service Across India
-            </p>
+            <h2 className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
+              24/7 Premium Airport Transfer Service | Flight Tracking + On-Time Guarantee
+            </h2>
             <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-              Stress-free <strong>airport transfers</strong> with flight tracking, luggage assistance,
-              and on-time guarantee. Serving <strong>Delhi, Jaipur, Chandigarh, Shimla</strong> and beyond.
-              Pre-book now for exclusive rates!
+              India's most trusted <strong>airport taxi service</strong> with real-time <strong>flight tracking</strong>,
+              professional drivers, and <strong>luggage assistance</strong>. Serving <strong>Delhi IGI, Jaipur,
+                Chandigarh, Shimla</strong> and 50+ cities. <strong>Zero cancellation fee</strong> • Fixed rates •
+              Instant confirmation!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => window.open(whatsappUrl(), '_blank')}
                 className="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-700 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
               >
-                Book Airport Taxi Now
+                Book Airport Taxi Now - Instant Confirmation ✓
                 <ChevronRight className="w-5 h-5 ml-2" />
               </button>
               <a
@@ -201,11 +227,12 @@ export default function AirportServiceClient({ faqData }) {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Triveni Cabs for Airport Transfers?
+              Why Choose Our Airport Taxi Service? Premium Features Included
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Experience hassle-free <strong>airport taxi service</strong> with professional drivers,
-              modern fleet, and guaranteed on-time pickups for all major airports across India.
+              Experience India's best <strong>airport transfer service</strong> with <strong>real-time flight tracking</strong>,
+              professional chauffeurs, modern fleet, and guaranteed on-time pickups for all major airports including
+              <strong> Delhi IGI, Jaipur, Chandigarh, Shimla</strong> and 50+ cities.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -228,10 +255,10 @@ export default function AirportServiceClient({ faqData }) {
         <div className="container mx-auto max-w-4xl">
           <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl shadow-2xl p-6 md:p-10 border-2 border-yellow-200">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
-              Book Your Airport Transfer Now
+              Book Your Airport Transfer in 60 Seconds - Get Instant Quote!
             </h2>
             <p className="text-center text-gray-600 mb-8">
-              Fill the form below and we&apos;ll confirm your booking instantly via WhatsApp
+              Fill the form below and we'll confirm your <strong>airport taxi booking</strong> instantly via WhatsApp with guaranteed rates
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -401,11 +428,12 @@ export default function AirportServiceClient({ faqData }) {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Airport Taxi Service by City
+              Airport Taxi Service by City - 50+ Locations Across India
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Premium <strong>airport transfer service</strong> available across major Indian cities.
-              Click on your city for detailed information and specialized services.
+              24/7 <strong>airport cab service</strong> available across major cities. Book <strong>Delhi airport taxi</strong>,
+              <strong>Jaipur airport cab</strong>, <strong>Chandigarh airport transfer</strong> and more.
+              Click on your city for instant booking and specialized airport transfer services.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

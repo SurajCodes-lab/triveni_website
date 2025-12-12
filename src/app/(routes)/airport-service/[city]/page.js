@@ -15,15 +15,15 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${city.name} Airport Taxi Service 24/7 | Book ${city.airport} Cab - Triveni Cabs`,
-    description: city.description,
+    title: `🚖 ${city.name} Airport Taxi 24/7 | Book ${city.airport} Cab in 60 Seconds | ₹11/km`,
+    description: `Book ${city.name} airport taxi instantly! ✓ ${city.airport} pickup/drop ✓ Real-time flight tracking ✓ Meet & greet ✓ Luggage assistance ✓ Zero cancellation fee. Serving ${city.popularDestinations?.map(d => d.name).join(', ')}. Pre-book for guaranteed rates starting ₹11/km!`,
     keywords: city.keywords,
     alternates: {
       canonical: `https://trivenicabs.in/airport-service/${params.city}`
     },
     openGraph: {
-      title: `${city.name} Airport Taxi | 24/7 ${city.airport} Cab Service`,
-      description: city.description,
+      title: `🚖 ${city.name} Airport Taxi Service | ${city.airport} Cab Booking 24/7`,
+      description: `Instant ${city.name} airport transfer! ✓ ${city.airport} pickup/drop ✓ Flight tracking ✓ Professional drivers ✓ Fixed rates. Book now for stress-free airport taxi service!`,
       type: "website",
       locale: "en_IN",
       siteName: "Triveni Cabs",
@@ -32,14 +32,14 @@ export async function generateMetadata({ params }) {
           url: "/images/airport_section.jpg",
           width: 1200,
           height: 630,
-          alt: `${city.name} Airport Taxi Service`
+          alt: `${city.name} Airport Taxi Service - ${city.airport} Transfer`
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: `${city.name} Airport Taxi 24/7 | ${city.airport} Cab`,
-      description: `Book reliable ${city.name} airport transfer. Flight tracking, luggage help, on-time pickup. Pre-book now!`
+      title: `🚖 ${city.name} Airport Taxi | ${city.airport} Cab 24/7`,
+      description: `Book ${city.name} airport transfer in 60 sec! ✈️ Flight tracking ✈️ Meet & greet ✈️ Luggage help. Pre-book now!`
     },
     robots: {
       index: true,
