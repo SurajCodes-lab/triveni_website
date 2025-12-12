@@ -169,7 +169,7 @@ export default function AirportServiceClient({ faqData }) {
               24/7 Premium Airport Transfer Service | Flight Tracking + On-Time Guarantee
             </h2>
             <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-              India's most trusted <strong>airport taxi service</strong> with real-time <strong>flight tracking</strong>,
+              India&apos;s most trusted <strong>airport taxi service</strong> with real-time <strong>flight tracking</strong>,
               professional drivers, and <strong>luggage assistance</strong>. Serving <strong>Delhi IGI, Jaipur,
                 Chandigarh, Shimla</strong> and 50+ cities. <strong>Zero cancellation fee</strong> • Fixed rates •
               Instant confirmation!
@@ -230,7 +230,7 @@ export default function AirportServiceClient({ faqData }) {
               Why Choose Our Airport Taxi Service? Premium Features Included
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Experience India's best <strong>airport transfer service</strong> with <strong>real-time flight tracking</strong>,
+              Experience India&apos;s best <strong>airport transfer service</strong> with <strong>real-time flight tracking</strong>,
               professional chauffeurs, modern fleet, and guaranteed on-time pickups for all major airports including
               <strong> Delhi IGI, Jaipur, Chandigarh, Shimla</strong> and 50+ cities.
             </p>
@@ -258,7 +258,7 @@ export default function AirportServiceClient({ faqData }) {
               Book Your Airport Transfer in 60 Seconds - Get Instant Quote!
             </h2>
             <p className="text-center text-gray-600 mb-8">
-              Fill the form below and we'll confirm your <strong>airport taxi booking</strong> instantly via WhatsApp with guaranteed rates
+              Fill the form below and we&apos;ll confirm your <strong>airport taxi booking</strong> instantly via WhatsApp with guaranteed rates
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
