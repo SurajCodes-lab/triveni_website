@@ -5,11 +5,31 @@ import BusMainClient from '@/components/BusMainClient';
 import Script from 'next/script';
 
 export const metadata = {
+  metadataBase: new URL('https://trivenicabs.in'),
   title: 'Big Groups, Bigger Adventures! Luxury Bus Hire 22-56 Seater | Triveni Cabs',
   description: '🚌 Roll in style with luxury coaches! From 22 to 56 seater Volvo & AC buses perfect for corporate events, weddings, school tours & pilgrimages. Reclining seats, entertainment, spacious luggage. Delhi to anywhere in India. Your group, our comfort commitment!',
-  keywords: "luxury bus hire, bus rental, 22 seater bus, 25 seater bus, 27 seater bus, 35 seater luxury bus, 41 seater coach, 45 seater volvo, 56 seater bus, bus rental delhi, corporate bus rental, wedding bus hire, pilgrimage bus service, volvo bus rental india, tempo traveller rental, group travel bus, ac bus hire, luxury coach rental, delhi to agra bus, delhi to jaipur bus, bus for outings, bus for events, bus rental rates, luxury bus booking",
   alternates: {
     canonical: 'https://trivenicabs.in/bus-routes'
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FACF2D' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }
+  ],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Triveni Cabs Bus Rental'
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true
   },
   openGraph: {
     title: 'Big Groups, Bigger Adventures! Luxury Bus Hire 22-56 Seater | Triveni Cabs',
@@ -49,6 +69,14 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs - Bus Rental Services' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs India',
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'geo.region': 'IN-DL',
+    'geo.placename': 'Delhi',
+    'geo.position': '28.6139;77.2090',
+    'ICBM': '28.6139, 77.2090',
+  }
 };
 
 export default function BusRoutesPage() {
@@ -244,6 +272,87 @@ export default function BusRoutesPage() {
           "@type": "Answer",
           "text": "We recommend booking at least 7-15 days in advance for popular routes and peak season. However, we also accept same-day and next-day bookings subject to availability. For large groups and special events, advance booking of 1 month is advisable."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the cancellation policy for bus bookings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cancellations made 48 hours before the trip receive full refund. Cancellations within 24-48 hours receive 50% refund. No refund for cancellations within 24 hours of trip. Terms may vary for peak season and special events."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are night charges applicable for bus rentals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, night charges apply for travel between 10 PM to 6 AM. Driver allowance increases by ₹200-300 for overnight journeys. Multi-day trips include driver accommodation and meals as per standard industry practice."
+        }
+      }
+    ]
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Triveni Cabs",
+    "url": "https://trivenicabs.in",
+    "logo": "https://trivenicabs.in/logo.png",
+    "description": "Premium bus rental and cab services across India. Luxury buses from 22 to 56 seater for corporate events, weddings, tours, and group travel.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-7668570551",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["en", "hi"],
+      "contactOption": "TollFree"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN",
+      "addressRegion": "Delhi"
+    },
+    "sameAs": [
+      "https://facebook.com/trivenicabs",
+      "https://twitter.com/trivenicabs",
+      "https://instagram.com/trivenicabs"
+    ]
+  };
+
+  const howToBookSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Book a Luxury Bus Rental with Triveni Cabs",
+    "description": "Simple 4-step process to book luxury buses from 22 to 56 seater for group travel across India",
+    "totalTime": "PT5M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Select Your Bus Size",
+        "text": "Choose from our fleet of 22, 25, 27, 32, 35, 41, 45, 49, 52, or 56 seater luxury buses based on your group size and requirements.",
+        "image": "https://trivenicabs.in/images/bus/fleet.png"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Contact Us",
+        "text": "Call +91-7668570551 or WhatsApp us for instant booking. Our team is available 24/7 to assist you.",
+        "image": "https://trivenicabs.in/images/contact.png"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Provide Travel Details",
+        "text": "Share your travel date, pickup location, destination, number of passengers, and any special requirements.",
+        "image": "https://trivenicabs.in/images/booking.png"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Get Instant Confirmation",
+        "text": "Receive booking confirmation with bus details, driver information, and trip itinerary via SMS and email.",
+        "image": "https://trivenicabs.in/images/confirmation.png"
       }
     ]
   };
@@ -272,6 +381,18 @@ export default function BusRoutesPage() {
         id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        strategy="beforeInteractive"
+      />
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        strategy="beforeInteractive"
+      />
+      <Script
+        id="howto-book-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToBookSchema) }}
         strategy="beforeInteractive"
       />
       <BusMainClient data={pageData} />

@@ -168,6 +168,7 @@ export default function DynamicBusRoutesClient({ data }) {
               whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
               whileTap={{ scale: 0.95 }}
               className="group relative bg-[#FACF2D] text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl text-center"
+              aria-label={`Call Triveni Cabs for ${origin} to ${destination} bus booking`}
             >
               <span className="relative z-10 flex items-center justify-center">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
@@ -187,6 +188,7 @@ export default function DynamicBusRoutesClient({ data }) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg hover:bg-white/20 transition-all duration-300 shadow-2xl text-center"
+              aria-label={`Contact Triveni Cabs on WhatsApp for ${origin} to ${destination} bus booking`}
             >
               <span className="flex items-center justify-center">
                 <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
@@ -266,6 +268,7 @@ export default function DynamicBusRoutesClient({ data }) {
                     alt={bus.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                   <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center shadow-lg">
                     <Users className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2 text-black" />

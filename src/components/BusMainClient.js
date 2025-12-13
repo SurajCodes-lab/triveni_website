@@ -223,6 +223,7 @@ export default function BusMainClient({ data }) {
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
                 className="group relative bg-[#FACF2D] text-black px-10 py-5 rounded-full font-bold text-lg overflow-hidden"
+                aria-label="Call Triveni Cabs at +91 76685 70551 for bus booking"
               >
                 <span className="relative z-10 flex items-center">
                   <Phone className="w-5 h-5 mr-2" />
@@ -241,6 +242,7 @@ export default function BusMainClient({ data }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300"
+                aria-label="Contact Triveni Cabs on WhatsApp for bus booking"
               >
                 <span className="flex items-center">
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -318,11 +320,10 @@ export default function BusMainClient({ data }) {
                   onClick={() => setActiveFilter(filter)}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`px-8 py-4 rounded-full font-bold text-sm tracking-wider transition-all duration-300 ${
-                    activeFilter === filter
-                      ? 'bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black shadow-xl shadow-[#FACF2D]/30'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-8 py-4 rounded-full font-bold text-sm tracking-wider transition-all duration-300 ${activeFilter === filter
+                    ? 'bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black shadow-xl shadow-[#FACF2D]/30'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {filter.toUpperCase()}
                 </motion.button>
@@ -369,6 +370,7 @@ export default function BusMainClient({ data }) {
                           alt={bus.name}
                           fill
                           className="object-cover"
+                          loading="lazy"
                         />
                       </motion.div>
 

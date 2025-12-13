@@ -53,10 +53,31 @@ export async function generateMetadata({ params }) {
   const destinationFormatted = formatCityName(destination);
 
   return {
+    metadataBase: new URL('https://trivenicabs.in'),
     title: `Big Group? No Problem! ${originFormatted} to ${destinationFormatted} Luxury Bus 22-56 Seater | Book Now & Save 20%`,
     description: `🚌 Roll in comfort from ${originFormatted} to ${destinationFormatted}! Luxury Volvo & AC buses (22-56 seater) with reclining seats, entertainment & AC. Perfect for corporate events, weddings, pilgrimages & tours. 1000+ groups trusted us. Professional drivers, GPS tracking, on-time guarantee. Book online in 60 seconds & get instant confirmation + 20% discount!`,
     alternates: {
       canonical: `https://trivenicabs.in/bus-routes/${route}`
+    },
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 5,
+      userScalable: true,
+    },
+    themeColor: [
+      { media: '(prefers-color-scheme: light)', color: '#FACF2D' },
+      { media: '(prefers-color-scheme: dark)', color: '#000000' }
+    ],
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'black-translucent',
+      title: `${originFormatted} to ${destinationFormatted} Bus`
+    },
+    formatDetection: {
+      telephone: true,
+      email: true,
+      address: true
     },
     openGraph: {
       title: `Big Groups Travel Better! ${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
@@ -96,6 +117,14 @@ export async function generateMetadata({ params }) {
     authors: [{ name: 'Triveni Cabs - Bus Rental Services' }],
     creator: 'Triveni Cabs',
     publisher: 'Triveni Cabs India',
+    other: {
+      'mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-capable': 'yes',
+      'geo.region': 'IN-DL',
+      'geo.placename': originFormatted,
+      'geo.position': '28.6139;77.2090',
+      'ICBM': '28.6139, 77.2090',
+    }
   };
 }
 
@@ -329,6 +358,64 @@ export default async function BusRoutePage({ params }) {
           "@type": "Answer",
           "text": `Yes, you can book a bus online for ${originFormatted} to ${destinationFormatted} through our website or by calling +91-7668570551. We provide instant confirmation and flexible booking options.`
         }
+      },
+      {
+        "@type": "Question",
+        "name": `What amenities are included in the bus from ${originFormatted} to ${destinationFormatted}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `All buses on ${originFormatted} to ${destinationFormatted} route include AC, pushback/reclining seats, entertainment system, GPS tracking, charging points, reading lights, and spacious luggage storage. Premium buses offer additional amenities like WiFi and washroom.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Is advance booking required for ${originFormatted} to ${destinationFormatted} bus?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `We recommend booking 7-15 days in advance for ${originFormatted} to ${destinationFormatted} route, especially during peak season. However, same-day and next-day bookings are also accepted subject to availability.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What is the cancellation policy for ${originFormatted} to ${destinationFormatted} bus booking?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Cancellations made 48+ hours before departure receive full refund. 24-48 hours cancellations receive 50% refund. No refund for cancellations within 24 hours. Terms may vary during peak season.`
+        }
+      }
+    ]
+  };
+
+  const howToBookSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to Book a Bus from ${originFormatted} to ${destinationFormatted}`,
+    "description": `Step-by-step guide to book luxury bus rental service from ${originFormatted} to ${destinationFormatted}`,
+    "totalTime": "PT5M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Select Your Bus",
+        "text": `Choose from 22 to 56 seater buses for your ${originFormatted} to ${destinationFormatted} journey based on group size`
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Call or WhatsApp",
+        "text": "Contact us at +91-7668570551 or WhatsApp for instant booking confirmation"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Confirm Details",
+        "text": `Provide travel date, pickup location in ${originFormatted}, and passenger count`
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Get Confirmation",
+        "text": "Receive instant booking confirmation with driver details and trip information"
       }
     ]
   };
@@ -357,6 +444,12 @@ export default async function BusRoutePage({ params }) {
         id="faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        strategy="beforeInteractive"
+      />
+      <Script
+        id="howto-book-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToBookSchema) }}
         strategy="beforeInteractive"
       />
       <DynamicBusRoutesClient data={pageData} />
