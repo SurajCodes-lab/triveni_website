@@ -2880,7 +2880,7 @@ export const sightseeingTours = {
       images: [
         "/images/sightseeing/taj_mahal_golden_triangle.jpg",
         "/images/sightseeing/amber_fort_jaipur.jpg",
-        "/images/sightseeing/red_fort_delhi.jpg",
+        "/images/sightseeing/red_fort.jpg",
         "/images/sightseeing/fatehpur_sikri.jpg",
         "/images/sightseeing/hawa_mahal_golden_triangle.jpg"
       ],
@@ -3136,6 +3136,7 @@ export const sightseeingTours = {
         "/images/sightseeing/amber_fort_elephant.jpg",
         "/images/sightseeing/fatehpur_sikri_buland_darwaza.jpg",
         "/images/sightseeing/mehtab_bagh_taj_sunset.jpg",
+        "/images/sightseeing/Jal_Mahal.jpg",
         "/images/sightseeing/jaipur_city_palace.jpg"
       ],
       tips: [

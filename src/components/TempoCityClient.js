@@ -35,6 +35,10 @@ export default function TempoCityClient({ data }) {
       'Blue City': 'from-blue-500 to-indigo-600',
       'Modern City': 'from-slate-400 to-gray-600',
       'Commercial': 'from-zinc-400 to-gray-600',
+      'Circuit': 'from-indigo-400 to-purple-600',
+      'Wildlife': 'from-green-400 to-emerald-700',
+      'Long Road': 'from-slate-500 to-stone-700',
+      'Local': 'from-cyan-400 to-sky-600',
       'Char Dham': 'from-orange-500 to-red-600',
       'Tourism': 'from-gray-400 to-gray-600',
     };
@@ -54,6 +58,10 @@ export default function TempoCityClient({ data }) {
       'Blue City': 'bg-blue-100 text-blue-700 border-blue-200',
       'Modern City': 'bg-slate-100 text-slate-700 border-slate-200',
       'Commercial': 'bg-zinc-100 text-zinc-700 border-zinc-200',
+      'Circuit': 'bg-indigo-100 text-indigo-700 border-indigo-200',
+      'Wildlife': 'bg-green-100 text-green-700 border-green-200',
+      'Long Road': 'bg-stone-100 text-stone-700 border-stone-200',
+      'Local': 'bg-cyan-100 text-cyan-700 border-cyan-200',
       'Char Dham': 'bg-orange-100 text-orange-700 border-orange-200',
       'Tourism': 'bg-gray-100 text-gray-700 border-gray-200',
     };
@@ -73,6 +81,10 @@ export default function TempoCityClient({ data }) {
       'Blue City': '🔵',
       'Modern City': '🏙️',
       'Commercial': '🏢',
+      'Circuit': '🔄',
+      'Wildlife': '🐅',
+      'Long Road': '🛣️',
+      'Local': '🏙️',
       'Char Dham': '⛰️',
       'Tourism': '📍',
     };
@@ -341,9 +353,8 @@ export default function TempoCityClient({ data }) {
                   onMouseLeave={() => setHoveredRoute(null)}
                 >
                   <Link href={`/tempo-traveller/${routeSlug}`} className="block group">
-                    <div className={`relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 ${
-                      hoveredRoute === index ? 'border-amber-400 -translate-y-2' : 'border-gray-100'
-                    }`}>
+                    <div className={`relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 ${hoveredRoute === index ? 'border-amber-400 -translate-y-2' : 'border-gray-100'
+                      }`}>
                       {/* Gradient Top Bar */}
                       <div className={`h-2 bg-gradient-to-r ${getTypeColor(route.type)}`} />
 
