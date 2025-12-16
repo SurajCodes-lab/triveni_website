@@ -17,10 +17,23 @@ export default function DynamicTempoRoutesClient({ data }) {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [mounted, setMounted] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
-  const [openFaq, setOpenFaq] = useState(null);
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
   const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet } = data;
+
+  // Helper function to format multi-city destinations with commas for display
+  const formatDestinationForDisplay = (dest) => {
+    // Check if destination has multiple cities (more than 2 words)
+    const cities = dest.trim().split(/\s+/);
+    if (cities.length > 2) {
+      // Join with commas for better readability: "Shimla Manali Kullu Kasol" → "Shimla, Manali, Kullu, Kasol"
+      return cities.join(', ');
+    }
+    return dest;
+  };
+
+  // For display in UI (with commas)
+  const displayDestination = formatDestinationForDisplay(destination);
 
   useEffect(() => {
     setMounted(true);
@@ -212,7 +225,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                 →
               </motion.span>
               <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
-                {destination}
+                {displayDestination}
               </span>
             </h1>
 
@@ -386,7 +399,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                     </div>
                     <div>
                       <p className="text-gray-500 text-sm font-medium">Journey Route</p>
-                      <p className="text-gray-900 font-bold text-lg">{origin} → {destination}</p>
+                      <p className="text-gray-900 font-bold text-lg">{origin} → {displayDestination}</p>
                     </div>
                   </div>
 
@@ -817,7 +830,7 @@ export default function DynamicTempoRoutesClient({ data }) {
       {/* FAQ SECTION */}
       {/* ============================================ */}
       <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -837,22 +850,22 @@ export default function DynamicTempoRoutesClient({ data }) {
             </p>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                question: `How much does tempo traveller cost from ${origin} to ${destination}?`,
-                answer: `Tempo traveller rates from ${origin} to ${destination} start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking. Call +917668570551 for instant quote.`
+                question: `How much does tempo traveller cost from ${origin} to ${displayDestination}?`,
+                answer: `Tempo traveller rates from ${origin} to ${displayDestination} start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking. Call +917668570551 for instant quote.`
               },
               {
-                question: `What seater options are available for ${origin} to ${destination}?`,
+                question: `What seater options are available for ${origin} to ${displayDestination}?`,
                 answer: `We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points.`
               },
               {
-                question: `How do I book tempo traveller from ${origin} to ${destination}?`,
+                question: `How do I book tempo traveller from ${origin} to ${displayDestination}?`,
                 answer: `Simply call +917668570551 or WhatsApp with your travel date, pickup location, and group size. You'll receive an instant quote with vehicle options. Confirm with a small advance and get driver details via SMS/WhatsApp.`
               },
               {
-                question: `Is one-way booking available from ${origin} to ${destination}?`,
+                question: `Is one-way booking available from ${origin} to ${displayDestination}?`,
                 answer: `Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip includes driver accommodation for overnight stays. Book in advance for best rates.`
               },
               {
@@ -861,7 +874,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               },
               {
                 question: `Are drivers provided with the tempo traveller?`,
-                answer: `Yes! All bookings include experienced professional drivers with 5+ years experience. They know the ${origin} to ${destination} route well, including best stops for meals. Driver charges and accommodation are included.`
+                answer: `Yes! All bookings include experienced professional drivers with 5+ years experience. They know the ${origin} to ${displayDestination} route well, including best stops for meals. Driver charges and accommodation are included.`
               },
             ].map((faq, index) => (
               <motion.div
@@ -871,37 +884,16 @@ export default function DynamicTempoRoutesClient({ data }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <div className={`bg-white rounded-2xl overflow-hidden shadow-md border-2 transition-all duration-300 ${
-                  openFaq === index ? 'border-amber-400 shadow-lg' : 'border-gray-100 hover:border-gray-200'
-                }`}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
-                  >
-                    <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{faq.question}</h3>
-                    <motion.div
-                      animate={{ rotate: openFaq === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex-shrink-0"
-                    >
-                      <ChevronDown className={`w-5 h-5 ${openFaq === index ? 'text-amber-500' : 'text-gray-400'}`} />
-                    </motion.div>
-                  </button>
-
-                  <AnimatePresence>
-                    {openFaq === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="px-6 pb-5 border-t border-gray-100">
-                          <p className="text-gray-600 pt-4 leading-relaxed">{faq.answer}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                <div className="bg-white rounded-2xl p-6 shadow-md border-2 border-gray-100 hover:border-amber-300 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
+                      Q
+                    </div>
+                    <h3 className="text-base md:text-lg font-bold text-gray-900 leading-tight">{faq.question}</h3>
+                  </div>
+                  <div className="pl-11">
+                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -1169,7 +1161,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
                   <span className="text-gray-600">Route</span>
-                  <span className="font-bold text-gray-900">{origin} → {destination}</span>
+                  <span className="font-bold text-gray-900">{origin} → {displayDestination}</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
                   <span className="text-gray-600">Capacity</span>

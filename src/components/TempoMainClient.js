@@ -18,7 +18,6 @@ export default function TempoMainClient({ data, faqData }) {
   const [showAllRoutes, setShowAllRoutes] = useState(false);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
   const [hoveredRoute, setHoveredRoute] = useState(null);
   const [hoveredCity, setHoveredCity] = useState(null);
 
@@ -735,7 +734,7 @@ export default function TempoMainClient({ data, faqData }) {
       {/* FAQ SECTION */}
       {/* ============================================ */}
       <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -752,7 +751,7 @@ export default function TempoMainClient({ data, faqData }) {
             </h2>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {faqData?.map((faq, index) => (
               <motion.div
                 key={index}
@@ -761,36 +760,16 @@ export default function TempoMainClient({ data, faqData }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <div className={`bg-white rounded-2xl overflow-hidden shadow-md border-2 transition-all duration-300 ${openFaq === index ? 'border-amber-400 shadow-lg' : 'border-gray-100 hover:border-gray-200'
-                  }`}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
-                  >
-                    <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{faq.question}</h3>
-                    <motion.div
-                      animate={{ rotate: openFaq === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex-shrink-0"
-                    >
-                      <ChevronDown className={`w-5 h-5 ${openFaq === index ? 'text-amber-500' : 'text-gray-400'}`} />
-                    </motion.div>
-                  </button>
-
-                  <AnimatePresence>
-                    {openFaq === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="px-6 pb-5 border-t border-gray-100">
-                          <p className="text-gray-600 pt-4 leading-relaxed">{faq.answer}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                <div className="bg-white rounded-2xl p-6 shadow-md border-2 border-gray-100 hover:border-amber-300 hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
+                      Q
+                    </div>
+                    <h3 className="text-base md:text-lg font-bold text-gray-900 leading-tight">{faq.question}</h3>
+                  </div>
+                  <div className="pl-11">
+                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}

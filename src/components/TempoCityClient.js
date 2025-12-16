@@ -12,7 +12,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function TempoCityClient({ data }) {
   const [mounted, setMounted] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
   const [hoveredRoute, setHoveredRoute] = useState(null);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
 
@@ -43,6 +42,17 @@ export default function TempoCityClient({ data }) {
       'Tourism': 'from-gray-400 to-gray-600',
     };
     return colors[type] || 'from-gray-400 to-gray-600';
+  };
+
+  // Helper function to format multi-city destinations with commas for display
+  const formatDestinationForDisplay = (dest) => {
+    // Check if destination has multiple cities (more than 2 words)
+    const cities = dest.trim().split(/\s+/);
+    if (cities.length > 2) {
+      // Join with commas for better readability: "Shimla Manali Kullu Kasol" → "Shimla, Manali, Kullu, Kasol"
+      return cities.join(', ');
+    }
+    return dest;
   };
 
   const getTypeBadgeColor = (type) => {
@@ -385,7 +395,7 @@ export default function TempoCityClient({ data }) {
                               <div className="w-3 h-3 rounded-full bg-red-500 ring-4 ring-red-500/20" />
                             </div>
                           </div>
-                          <h3 className="text-2xl font-black text-gray-900">{route.name}</h3>
+                          <h3 className="text-2xl font-black text-gray-900">{formatDestinationForDisplay(route.name)}</h3>
                         </div>
                       </div>
 
