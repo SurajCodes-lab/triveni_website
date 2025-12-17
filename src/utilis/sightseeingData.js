@@ -54,7 +54,7 @@ export const sightseeingTours = {
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
       images: [
-        null, // Red Fort - no image available
+        "/images/sightseeing/Delhi/red_fort.jpg",
         "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
         "/images/sightseeing/Delhi/India_Gate.jpg",
         "/images/sightseeing/Delhi/Lotus Temple.jpg",
@@ -5008,7 +5008,11 @@ export const sightseeingTours = {
         "/images/sightseeing/Bikaner/Junagarh_Fort_Interior.jpg",
         "/images/sightseeing/Bikaner/Karni_Mata_Temple.jpg",
         "/images/sightseeing/Bikaner/Bikaner_Camel_Farm.jpg",
-        "/images/sightseeing/Bikaner/Bhandasar_Jain_Temple.jpg"
+        "/images/sightseeing/Bikaner/Bhandasar_Jain_Temple.jpg",
+        "/images/sightseeing/Bikaner/Junagarh Fort.jpg",
+        "/images/sightseeing/Bikaner/Karni Mata Temple.jpg",
+        "/images/sightseeing/Bikaner/Lallgarh Palace.jpg",
+        "/images/sightseeing/Bikaner/Rampuria Havelis.jpg"
       ],
       tips: [
         "Remove shoes at Karni Mata Temple (rats are sacred)",
@@ -7546,12 +7550,15 @@ export const sightseeingTours = {
       bestTimeToVisit: "June to September only (roads closed rest of year)",
       difficulty: "Challenging (high altitude, rough roads)",
       category: "Adventure & Extreme",
-      heroImage: "/images/sightseeing/Spiti_Valley_hero_section.jpg",
-      images: [
-        "/images/sightseeing/key_monastery.jpg",
-        "/images/sightseeing/chandratal_lake.jpg",
-        "/images/sightseeing/langza_village.jpg",
-        "/images/sightseeing/spiti_valley_landscape.jpg"
+      heroImage: "/images/sightseeing/Spiti_Valley/Key Monastery (Kye Gompa) in Spiti Valley.jpg",
+      images: ["/images/sightseeing/Spiti_Valley/Key Monastery (Kye Gompa) in Spiti Valley.jpg",
+        "/images/sightseeing/Spiti_Valley/Chandratal Lake (Moon Lake) is a stunning, crescent-shaped high-altitude lake in the Spiti Valley, Himachal Pradesh, India.jpg",
+        "/images/sightseeing/Spiti_Valley/Kaza Town_Capital of Spiti Valley.jpg",
+        "/images/sightseeing/Spiti_Valley/Kibber Village_One of world's highest villages.jpg",
+        "/images/sightseeing/Spiti_Valley/Tabo Monastery.jpg",
+        "/images/sightseeing/Spiti_Valley/Pin Valley National Park.jpg",
+        "/images/sightseeing/Spiti_Valley/Kunzum Pass.jpg",
+        "/images/sightseeing/Spiti_Valley/langza.jpeg"
       ],
       tips: [
         "ESSENTIAL: Acclimatization is crucial - don't rush, stay hydrated",
@@ -7827,7 +7834,12 @@ export const sightseeingTours = {
         "/images/sightseeing/Shimla/christ church shimla.jpg",
         "/images/sightseeing/Shimla/Mall road shimla.jpg",
         "/images/sightseeing/Shimla/the ridge shimla.jpg",
-        "/images/sightseeing/Shimla/kurif_adventure_park.jpg"
+        "/images/sightseeing/Shimla/kurif_adventure_park.jpg",
+        "/images/sightseeing/Shimla/Naldehra Golf Course_Historic 9-hole course designed by Lord Curzon.jpg",
+        "/images/sightseeing/Shimla/Mashobra Apple Orchards.jpg",
+        "/images/sightseeing/Shimla/Tattapani Hot Spring.jpg",
+        "/images/sightseeing/Shimla/Peaceful nature trails and valley views.jpg",
+        "/images/sightseeing/Shimla/Scenic mountain drives through pine and deodar forests.jpg"
       ],
       tips: [
         "Carry woolens even in summer",
@@ -8046,12 +8058,8 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate",
       category: "Hill Station & Adventure",
       heroImage: "/images/sightseeing/Kufri/kufri_hero_section.jpg",
-      images: [
-        "/images/sightseeing/mahasu_peak_kufri.jpg",
-        "/images/sightseeing/chail_cricket_ground.jpg",
-        "/images/sightseeing/chail_palace.jpg",
-        "/images/sightseeing/kali_tibba_temple.jpg",
-        "/images/sightseeing/kurif_adventure_park.jpg"
+      images: ["/images/sightseeing/Shimla/Peaceful nature trails and valley views.jpg",
+        "/images/sightseeing/Shimla/Scenic mountain drives through pine and deodar forests.jpg"
       ],
       tips: [
         "Kufri to Chail is 45 km - plan for full day trip",
@@ -8320,13 +8328,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June for golf and orchards, September-November for autumn colors",
       difficulty: "Easy",
       category: "Nature & Relaxation",
-      heroImage: "/images/sightseeing/naldehra_golf_hero.jpg",
+      heroImage: "/images/sightseeing/Shimla/Naldehra Golf Course_Historic 9-hole course designed by Lord Curzon.jpg",
       images: [
-        "/images/sightseeing/naldehra_golf_course.jpg",
-        "/images/sightseeing/craignano_nature_park.jpg",
-        "/images/sightseeing/mashobra_orchards.jpg",
-        "/images/sightseeing/tattapani_springs.jpg",
-        "/images/sightseeing/deodar_forests.jpg"
+        "/images/sightseeing/Shimla/Naldehra Golf Course_Historic 9-hole course designed by Lord Curzon.jpg",
+        "/images/sightseeing/Shimla/Mashobra Apple Orchards.jpg",
+        "/images/sightseeing/Shimla/Tattapani Hot Spring.jpg"
       ],
       tips: [
         "Naldehra is 22 km from Shimla - about 50 minutes drive",
@@ -8558,14 +8564,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June for pleasant weather, December-February for snow experience",
       difficulty: "Easy to Moderate",
       category: "Road Trip & Hill Station",
-      heroImage: "/images/sightseeing/shimla_manali_route_hero.jpg",
-      images: [
-        "/images/sightseeing/pandoh_dam.jpg",
-        "/images/sightseeing/kullu_valley_beas.jpg",
-        "/images/sightseeing/naggar_castle.jpg",
-        "/images/sightseeing/Paragliding_solang_valley.jpg",
-        "/images/sightseeing/Hidmba_temple.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Start early from Shimla (by 8 AM) to reach Manali with daylight",
         "Road conditions good but winding - carry motion sickness medicine",
@@ -8833,13 +8833,22 @@ export const sightseeingTours = {
       bestTimeToVisit: "April-June for adventure sports, December-February for snow",
       difficulty: "Moderate",
       category: "Adventure & Nature",
-      heroImage: "/images/sightseeing/Manali_hero_section.jpg",
-      images: [
-        "/images/sightseeing/Hidmba_temple.jpg",
-        "/images/sightseeing/Old_Manali.jpg",
-        "/images/sightseeing/vashisht manali hot springs.jpg",
-        "/images/sightseeing/Rohtang Pass.jpg",
-        "/images/sightseeing/Paragliding_solang_valley.jpg"
+      heroImage: "/images/sightseeing/Manali/Solang Valley.jpg",
+      images: ["/images/sightseeing/Manali/Solang Valley.jpg",
+        "/images/sightseeing/Manali/Hidimba Temple.jpg",
+        "/images/sightseeing/Manali/Old Manali.jpg",
+        "/images/sightseeing/Manali/Vashisht , manali.jpg",
+        "/images/sightseeing/Manali/Rohtang Pass_13,050 ft elevation with panoramic Himalayan views.jpg",
+        "/images/sightseeing/Manali/Gulaba_Snow point with adventure activities.jpg",
+        "/images/sightseeing/Manali/Solang Valley_Paragliding, zorbing, skiing, ropeway.jpg",
+        "/images/sightseeing/Manali/Snow activities_Skiing, snowboarding, sledding at Rohtang.jpg",
+        "/images/sightseeing/Manali/Atal tunnel ,.jpg",
+        "/images/sightseeing/Manali/Kullu Valley.jpg",
+        "/images/sightseeing/Manali/nagar castle.jpeg",
+        "/images/sightseeing/Manali/Nehru Kund_Natural spring named after Pt. Jawaharlal Nehru.jpg",
+        "/images/sightseeing/Manali/Pandoh Dam.jpg",
+        "/images/sightseeing/Manali/Rahala Falls.jpg",
+        "/images/sightseeing/Manali/Scenic 250 km mountain drive from Shimla to Manali.jpg"
       ],
       tips: [
         "Book Solang activities early morning",
@@ -9063,13 +9072,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "May-November (Rohtang Pass closed December-April due to heavy snowfall)",
       difficulty: "Moderate to Challenging",
       category: "Adventure & High Altitude",
-      heroImage: "/images/sightseeing/rohtang_pass_hero.jpg",
-      images: [
-        "/images/sightseeing/Rohtang Pass.jpg",
-        "/images/sightseeing/atal_tunnel.jpg",
-        "/images/sightseeing/Paragliding_solang_valley.jpg",
-        "/images/sightseeing/rahala_falls.jpg",
-        "/images/sightseeing/gulaba_snow.jpg"
+      heroImage: "/images/sightseeing/Manali/Rohtang Pass_13,050 ft elevation with panoramic Himalayan views.jpg",
+      images: ["/images/sightseeing/Manali/Rohtang Pass_13,050 ft elevation with panoramic Himalayan views.jpg",
+        "/images/sightseeing/Manali/Atal tunnel ,.jpg",
+        "/images/sightseeing/Manali/Gulaba_Snow point with adventure activities.jpg",
+        "/images/sightseeing/Manali/Snow activities_Skiing, snowboarding, sledding at Rohtang.jpg",
+        "/images/sightseeing/Manali/Rahala Falls.jpg"
       ],
       tips: [
         "Rohtang Pass permit MANDATORY - book online 2-3 days in advance (limited daily quota)",
@@ -9341,13 +9349,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June and September-November for pleasant weather, avoid monsoon (July-August)",
       difficulty: "Easy",
       category: "Spiritual & Culture",
-      heroImage: "/images/sightseeing/manikaran_hero.jpg",
-      images: [
-        "/images/sightseeing/manikaran_gurudwara.jpg",
-        "/images/sightseeing/manikaran_hot_springs.jpg",
-        "/images/sightseeing/raghunath_temple_kullu.jpg",
-        "/images/sightseeing/parvati_valley.jpg",
-        "/images/sightseeing/kullu_shawls.jpg"
+      heroImage: "/images/sightseeing/Manali/Kullu Valley.jpg",
+      images: ["/images/sightseeing/Manali/Kullu Valley.jpg",
+        "/images/sightseeing/Manali/Pandoh Dam.jpg",
+        "/images/sightseeing/Manali/Nehru Kund_Natural spring named after Pt. Jawaharlal Nehru.jpg",
+        "/images/sightseeing/Manali/Scenic 250 km mountain drive from Shimla to Manali.jpg"
       ],
       tips: [
         "Manikaran is 80 km from Manali - about 3 hours drive each way",
@@ -9574,12 +9580,8 @@ export const sightseeingTours = {
       difficulty: "Moderate (includes 4-5 km trek)",
       category: "Backpacking & Trekking",
       heroImage: "/images/sightseeing/Kasol/Kasol_hero_section.jpg",
-      images: [
-        "/images/sightseeing/kasol_riverside.jpg",
-        "/images/sightseeing/tosh_village.jpg",
-        "/images/sightseeing/parvati_valley.jpg",
-        "/images/sightseeing/kasol_cafes.jpg",
-        "/images/sightseeing/tosh_trek.jpg"
+      images: ["/images/sightseeing/Manali/nagar castle.jpeg",
+        "/images/sightseeing/Manali/Old Manali.jpg"
       ],
       tips: [
         "Kasol to Tosh requires trek - wear comfortable trekking shoes",
@@ -9849,9 +9851,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
-      images: [
-        "/images/sightseeing/Mansa_Devi_Temple.jpg"
-      ],
+      images: [],
       tips: [
         "Ganga Aarti timing varies with sunset (usually 6-7 PM)",
         "Arrive 30 mins early for Aarti to get good spot",
@@ -11177,13 +11177,7 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging (long mountain drives, high altitude 2500-3000m, winter snow conditions)",
       category: "Adventure, Nature & Hill Station",
       heroImage: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
-      images: [
-        "/images/sightseeing/auli_cable_car.jpg",
-        "/images/sightseeing/auli_skiing.jpg",
-        "/images/sightseeing/auli_nanda_devi_view.jpg",
-        "/images/sightseeing/gurso_bugyal.jpg",
-        "/images/sightseeing/auli_meadows.jpg"
-      ],
+      images: [],
       tips: [
         "Road journey is long and winding - prone to motion sickness should take precautions",
         "High altitude (2500-3000m) - acclimatize properly, avoid sudden exertion",
@@ -13228,8 +13222,16 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Moderate",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/jodhpur_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+      images: [
+        "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+        "/images/sightseeing/Jodhpur/Blue City_Iconic blue-painted houses in jodhpur.jpg",
+        "/images/sightseeing/Jodhpur/Umaid Bhawan Palace.jpg",
+        "/images/sightseeing/Jodhpur/Jaswant Thada.jpg",
+        "/images/sightseeing/Jodhpur/Clock Tower _Bustling Sardar Market in Jodhpur.jpg",
+        "/images/sightseeing/Jodhpur/Mandore Gardens jodhpur.jpg",
+        "/images/sightseeing/Jodhpur/Padam Talao Lake.jpg"
+      ],
       tips: [
         "Fort has steep climbs, wear comfortable shoes",
         "Blue City best explored in morning light",
@@ -13507,7 +13509,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Moderate",
       category: "Heritage & Romance",
-      heroImage: "/images/sightseeing/jodhpur_udaipur_hero.jpg",
+      heroImage: "",
       images: [],
       tips: [
         "Book Jodhpur hotel near old city for convenience",
@@ -13727,7 +13729,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy",
       category: "Heritage & Romance",
-      heroImage: "/images/sightseeing/udaipur_hero_section.jpg",
+      heroImage: "",
       images: [],
       tips: [
         "Book boat ride in advance during peak season",
@@ -14231,14 +14233,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat",
       difficulty: "Moderate (fort has stairs and steep slopes)",
       category: "Heritage & Adventure",
-      heroImage: "/images/sightseeing/kumbhalgarh_hero_section.jpg",
-      images: [
-        "/images/sightseeing/kumbhalgarh_fort.jpg",
-        "/images/sightseeing/badal_mahal.jpg",
-        "/images/sightseeing/fort_wall.jpg",
-        "/images/sightseeing/fort_temples.jpg",
-        "/images/sightseeing/aravalli_views.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Wear comfortable walking shoes as fort requires extensive walking",
         "Carry sunscreen, hat, and water for fort exploration",
@@ -14728,13 +14724,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (Hanuman Garhi has 70 steps, other temples accessible)",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
-      images: [
-        "/images/sightseeing/ram_janmabhoomi_main.jpg",
-        "/images/sightseeing/hanuman_garhi_ayodhya.jpg",
-        "/images/sightseeing/kanak_bhawan_temple.jpg",
-        "/images/sightseeing/saryu_ghat.jpg",
-        "/images/sightseeing/ayodhya_temples_local.jpg"
-      ],
+      images: [],
       tips: [
         "Visit Hanuman Garhi FIRST before Ram Janmabhoomi - it's the tradition",
         "Ram Janmabhoomi security is very strict - carry valid government ID",
@@ -15009,7 +14999,9 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Heritage & Modern",
       heroImage: "/images/sightseeing/Ahmedabad/Ahmedabad.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Ahmedabad/Uparkot Fort , Ahemdabad.jpg"
+      ],
       tips: [
         "Old city best explored in morning to avoid heat",
         "Try authentic Gujarati thali",
@@ -15229,14 +15221,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather). Girnar pilgrimage best during Kartik Purnima (Nov). Avoid summer (April-June) heat.",
       difficulty: "Moderate to Challenging (Girnar climb is strenuous, 10,000 steps over 5-7 hours)",
       category: "Heritage, Spiritual & Wildlife",
-      heroImage: "/images/sightseeing/junagadh_hero.jpg",
-      images: [
-        "/images/sightseeing/uparkot_fort.jpg",
-        "/images/sightseeing/mahabat_maqbara.jpg",
-        "/images/sightseeing/girnar_mountain.jpg",
-        "/images/sightseeing/girnar_temples.jpg",
-        "/images/sightseeing/junagadh_heritage.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Girnar climb is VERY strenuous - 10,000 steps (16 km round trip), 5-7 hours",
         "Start Girnar ascent by 5-6 AM to avoid heat and complete before afternoon",
@@ -15536,14 +15522,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant beach weather). Avoid monsoon (June-September). Mahashivratri at Somnath is special but very crowded.",
       difficulty: "Easy (mostly temple visits and beach relaxation)",
       category: "Spiritual, Beach & Heritage",
-      heroImage: "/images/sightseeing/somnath_diu_hero.jpg",
-      images: [
-        "/images/sightseeing/somnath_temple.jpg",
-        "/images/sightseeing/somnath_oceanfront.jpg",
-        "/images/sightseeing/diu_fort.jpg",
-        "/images/sightseeing/nagoa_beach_diu.jpg",
-        "/images/sightseeing/st_paul_church_diu.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Book Somnath hotel near temple for easy aarti and show access",
         "Sound & Light Show at Somnath is excellent - highly recommended (₹50-100)",
@@ -15773,14 +15753,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant winter weather), avoid summer heat (April-June)",
       difficulty: "Easy to Moderate",
       category: "Heritage & Desert Culture",
-      heroImage: "/images/sightseeing/jaisalmer_hero_section.jpg",
-      images: [
-        "/images/sightseeing/jaisalmer_fort.jpg",
-        "/images/sightseeing/patwon_ki_haveli.jpg",
-        "/images/sightseeing/sam_sand_dunes.jpg",
-        "/images/sightseeing/gadisar_lake.jpg",
-        "/images/sightseeing/salim_singh_haveli.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Start early to avoid midday desert heat",
         "Wear comfortable walking shoes for fort exploration",
@@ -16064,14 +16038,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to October for pleasant weather and blooming gardens, December to February for snow",
       difficulty: "Easy",
       category: "Heritage & Nature",
-      heroImage: "/images/sightseeing/srinagar_hero_section.jpg",
-      images: [
-        "/images/sightseeing/dal_lake.jpg",
-        "/images/sightseeing/shalimar_bagh.jpg",
-        "/images/sightseeing/nishat_bagh.jpg",
-        "/images/sightseeing/mughal_gardens.jpg",
-        "/images/sightseeing/pari_mahal.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Book Shikara rides early morning for best experience and photography",
         "Mughal Gardens are best visited in spring (April-May) when flowers are in full bloom",
@@ -16296,13 +16264,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (high altitude acclimatization needed)",
       category: "Adventure & Nature",
       heroImage: "/images/sightseeing/Gulmarg/Gulmarg_hero_section.jpg",
-      images: [
-        "/images/sightseeing/gulmarg_gondola.jpg",
-        "/images/sightseeing/apharwat_peak.jpg",
-        "/images/sightseeing/gulmarg_skiing.jpg",
-        "/images/sightseeing/gulmarg_meadows.jpg",
-        "/images/sightseeing/st_marys_church.jpg"
-      ],
+      images: [],
       tips: [
         "Book Gondola tickets online in advance - they sell out quickly in peak season",
         "Tatkal tickets available at 5 PM daily for next day (limited quantity)",
@@ -16575,14 +16537,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "April to October for pleasant weather and green meadows, December to February for snow",
       difficulty: "Easy",
       category: "Nature & Scenic Beauty",
-      heroImage: "/images/sightseeing/pahalgam_hero_section.jpg",
-      images: [
-        "/images/sightseeing/betaab_valley.jpg",
-        "/images/sightseeing/aru_valley.jpg",
-        "/images/sightseeing/pahalgam_valley.jpg",
-        "/images/sightseeing/lidder_river.jpg",
-        "/images/sightseeing/baisaran_valley.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Union cabs are mandatory for Betaab and Aru Valley - own vehicles not allowed",
         "Book union cabs early in morning to avoid long queues, especially on weekends",
@@ -16809,14 +16765,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "April to October (glacier accessible), May-June for golden meadows, July-August for lush greenery",
       difficulty: "Moderate (3-4 km trek at high altitude)",
       category: "Adventure & Nature",
-      heroImage: "/images/sightseeing/sonamarg_hero_section.jpg",
-      images: [
-        "/images/sightseeing/thajiwas_glacier.jpg",
-        "/images/sightseeing/sonamarg_meadows.jpg",
-        "/images/sightseeing/sindh_river.jpg",
-        "/images/sightseeing/sonamarg_valley.jpg",
-        "/images/sightseeing/baltal_valley.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Start early from Srinagar to have maximum time at Thajiwas Glacier",
         "Trek is moderate but at high altitude - take it slow and acclimatize",
@@ -17104,15 +17054,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "April to October for pleasant weather, December to February for snow and skiing",
       difficulty: "Easy to Moderate",
       category: "Complete Package Tour",
-      heroImage: "/images/sightseeing/kashmir_valley_hero_section.jpg",
-      images: [
-        "/images/sightseeing/dal_lake.jpg",
-        "/images/sightseeing/gulmarg_gondola.jpg",
-        "/images/sightseeing/pahalgam_valley.jpg",
-        "/images/sightseeing/mughal_gardens.jpg",
-        "/images/sightseeing/betaab_valley.jpg",
-        "/images/sightseeing/aru_valley.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "This package covers all major Kashmir attractions efficiently in 3-4 days",
         "Book Gondola tickets in advance online - sell out quickly in peak season",
@@ -17341,14 +17284,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "May to September (roads open, pleasant weather), avoid winter when passes are closed",
       difficulty: "Moderate to Challenging (high altitude)",
       category: "Adventure & Nature",
-      heroImage: "/images/sightseeing/ladakh_hero_section.jpg",
-      images: [
-        "/images/sightseeing/pangong_lake.jpg",
-        "/images/sightseeing/nubra_valley.jpg",
-        "/images/sightseeing/khardung_la.jpg",
-        "/images/sightseeing/thiksey_monastery.jpg",
-        "/images/sightseeing/diskit_monastery.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Acclimatize properly in Leh for at least 24 hours before starting the tour",
         "Carry altitude sickness medication (Diamox) and consult doctor before trip",
@@ -17629,14 +17566,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat (April-June)",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/lucknow_hero_section.jpg",
-      images: [
-        "/images/sightseeing/bara_imambara.jpg",
-        "/images/sightseeing/rumi_darwaza.jpg",
-        "/images/sightseeing/chota_imambara.jpg",
-        "/images/sightseeing/british_residency.jpg",
-        "/images/sightseeing/hazratganj.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Wear comfortable shoes for Bhool Bhulaiya exploration",
         "Best to visit Bara Imambara early to avoid crowds",
@@ -17854,13 +17785,7 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (involves temple visits and stairs at Hanuman Garhi)",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
-      images: [
-        "/images/sightseeing/ram_janmabhoomi_temple.jpg",
-        "/images/sightseeing/hanuman_garhi.jpg",
-        "/images/sightseeing/kanak_bhawan.jpg",
-        "/images/sightseeing/saryu_aarti.jpg",
-        "/images/sightseeing/ayodhya_temples.jpg"
-      ],
+      images: [],
       tips: [
         "Carry valid government ID - security is very strict at Ram Janmabhoomi",
         "No mobile phones or cameras allowed inside Ram Mandir - deposit at security",
@@ -18133,14 +18058,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather). Avoid Kumbh Mela period unless you want to experience the massive gathering.",
       difficulty: "Easy (minimal walking, mostly temple visits and boat ride)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/prayagraj_sangam_hero.jpg",
-      images: [
-        "/images/sightseeing/triveni_sangam.jpg",
-        "/images/sightseeing/sangam_boat_ride.jpg",
-        "/images/sightseeing/allahabad_fort.jpg",
-        "/images/sightseeing/anand_bhawan.jpg",
-        "/images/sightseeing/hanuman_mandir_prayagraj.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Start very early (6 AM) to make the most of the day and avoid traffic",
         "Carry extra clothes if you plan to take holy bath at Sangam",
@@ -18366,14 +18285,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "September to March (pleasant weather), can be crowded during Navratri",
       difficulty: "Moderate (12 km trek uphill)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/vaishno_devi_hero_section.jpg",
-      images: [
-        "/images/sightseeing/vaishno_devi_temple.jpg",
-        "/images/sightseeing/katra_base.jpg",
-        "/images/sightseeing/bhairavnath_temple.jpg",
-        "/images/sightseeing/ardhkuwari_cave.jpg",
-        "/images/sightseeing/trikuta_mountains.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Start early morning to avoid crowds and complete journey in daylight",
         "Wear comfortable trekking shoes and carry walking stick",
@@ -18655,13 +18568,7 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Heritage",
       heroImage: "/images/sightseeing/Bodh_Gaya/Bhod_gaya_hero_section.jpg",
-      images: [
-        "/images/sightseeing/mahabodhi_temple.jpg",
-        "/images/sightseeing/bodhi_tree.jpg",
-        "/images/sightseeing/nalanda_ruins.jpg",
-        "/images/sightseeing/great_buddha_statue.jpg",
-        "/images/sightseeing/thai_monastery.jpg"
-      ],
+      images: [],
       tips: [
         "Dress modestly - shoulders and knees covered at religious sites",
         "Remove shoes before entering Mahabodhi Temple complex",
@@ -18883,13 +18790,7 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging (high altitude, trekking required)",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
-      images: [
-        "/images/sightseeing/kedarnath_temple.jpg",
-        "/images/sightseeing/badrinath_temple.jpg",
-        "/images/sightseeing/gangotri_temple.jpg",
-        "/images/sightseeing/yamunotri_temple.jpg",
-        "/images/sightseeing/himalayan_landscape.jpg"
-      ],
+      images: [],
       tips: [
         "Book accommodation well in advance during peak season (May-June)",
         "Carry warm clothing as temperature drops significantly at night",
@@ -19173,14 +19074,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "July to September (flowers in full bloom), avoid monsoon heavy rains",
       difficulty: "Moderate to Challenging (high altitude trek)",
       category: "Adventure & Spiritual",
-      heroImage: "/images/sightseeing/valley_of_flowers_hero.jpg",
-      images: [
-        "/images/sightseeing/valley_of_flowers.jpg",
-        "/images/sightseeing/hemkund_sahib.jpg",
-        "/images/sightseeing/alpine_flowers.jpg",
-        "/images/sightseeing/ghangaria.jpg",
-        "/images/sightseeing/himalayan_peaks.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Best time to see flowers is late July to mid-August",
         "Hemkund Sahib opens only June to October (closed in winter)",
@@ -19405,14 +19300,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), visit during Kumbh Mela for unique experience",
       difficulty: "Easy",
       category: "Spiritual & Heritage",
-      heroImage: "/images/sightseeing/prayagraj_hero_section.jpg",
-      images: [
-        "/images/sightseeing/triveni_sangam.jpg",
-        "/images/sightseeing/allahabad_fort.jpg",
-        "/images/sightseeing/anand_bhawan.jpg",
-        "/images/sightseeing/hanuman_temple.jpg",
-        "/images/sightseeing/khusro_bagh.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Early morning best for Sangam visit and boat ride",
         "Carry change of clothes if planning holy dip",
@@ -19696,14 +19585,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to June (pleasant weather), December to February (snow experience)",
       difficulty: "Easy",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/khajjiar_hero_section.jpg",
-      images: [
-        "/images/sightseeing/khajjiar_meadow.jpg",
-        "/images/sightseeing/khajjiar_lake.jpg",
-        "/images/sightseeing/khajji_nag_temple.jpg",
-        "/images/sightseeing/kalatop_sanctuary.jpg",
-        "/images/sightseeing/dalhousie_views.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Best time to visit is early morning when meadow is less crowded",
         "Carry warm clothing even in summer as weather can be cool",
@@ -19928,14 +19811,8 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat (April-June)",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "/images/sightseeing/shekhawati_hero_section.jpg",
-      images: [
-        "/images/sightseeing/mandawa_fort.jpg",
-        "/images/sightseeing/painted_havelis.jpg",
-        "/images/sightseeing/nawalgarh_frescoes.jpg",
-        "/images/sightseeing/fatehpur_haveli.jpg",
-        "/images/sightseeing/shekhawati_art.jpg"
-      ],
+      heroImage: "",
+      images: [],
       tips: [
         "Stay in heritage havelis for authentic experience",
         "Hire a local guide to understand fresco symbolism and history",
