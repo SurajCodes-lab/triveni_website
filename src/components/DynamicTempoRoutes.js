@@ -56,20 +56,105 @@ export default function DynamicTempoRoutesClient({ data }) {
     console.log('🎯 SEO Keywords Active:', keywords.join(', '));
   }, [origin, destination]);
 
-  // Enhanced structured data for Google
+  // Enhanced structured data for Google - Comprehensive SEO
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
         "@id": `https://trivenicabs.in/tempo-traveller/${routeSlug}#service`,
-        "name": `${origin} to ${destination} Tempo Traveller Service`,
-        "description": `Book premium tempo traveller from ${origin} to ${destination}. AC vehicles, professional drivers, 12-26 seater options available.`,
+        "serviceType": "Tempo Traveller Rental",
+        "name": `${origin} to ${destination} Tempo Traveller on Rent`,
+        "alternateName": [
+          `${origin} to ${destination} Tempo Traveller Booking`,
+          `Tempo Traveller from ${origin} to ${destination}`,
+          `${origin} ${destination} Tempo Traveller Hire`
+        ],
+        "description": `Book 12, 17, 20, 26 seater AC tempo traveller from ${origin} to ${destination}. Professional drivers, pushback seats, GPS tracking, music system. Best rates starting ₹23/km. Call +917668570551 for instant booking.`,
         "provider": {
-          "@type": "Organization",
+          "@type": "LocalBusiness",
           "name": "Triveni Cabs",
-          "telephone": "+917668570551"
+          "telephone": "+917668570551",
+          "email": "info@trivenicabs.in",
+          "url": "https://trivenicabs.in",
+          "image": "https://trivenicabs.in/images/logo.webp",
+          "priceRange": "₹₹",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IN"
+          }
+        },
+        "areaServed": [
+          { "@type": "City", "name": origin },
+          { "@type": "City", "name": destination }
+        ],
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "INR",
+          "lowPrice": "23",
+          "highPrice": "27",
+          "offerCount": "5",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "23-27",
+            "priceCurrency": "INR",
+            "unitText": "per kilometer"
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "2500",
+          "bestRating": "5"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": `${origin} to ${destination} Tempo Traveller Options`,
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "12 Seater Tempo Traveller" }, "price": "23", "priceCurrency": "INR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "17 Seater Tempo Traveller" }, "price": "25", "priceCurrency": "INR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "20 Seater Tempo Traveller" }, "price": "26", "priceCurrency": "INR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "26 Seater Maharaja Tempo" }, "price": "27", "priceCurrency": "INR" }
+          ]
         }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trivenicabs.in" },
+          { "@type": "ListItem", "position": 2, "name": "Tempo Traveller", "item": "https://trivenicabs.in/tempo-traveller" },
+          { "@type": "ListItem", "position": 3, "name": `${origin} to ${destination}`, "item": `https://trivenicabs.in/tempo-traveller/${routeSlug}` }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `How much does tempo traveller cost from ${origin} to ${destination}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Tempo traveller rates from ${origin} to ${destination} start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `What seater options are available for ${origin} to ${destination}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `How do I book tempo traveller from ${origin} to ${destination}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Call +917668570551 or WhatsApp with your travel date, pickup location, and group size. Get instant quote and confirm with small advance payment."
+            }
+          }
+        ]
       }
     ]
   }), [origin, destination, routeSlug]);
@@ -364,10 +449,10 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-amber-700 font-bold text-sm tracking-wider">JOURNEY DETAILS</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              Your <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Dream Journey</span> Awaits
+              {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Tempo Traveller</span> Journey
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience the perfect blend of comfort and adventure on your {origin} to {destination} trip
+              Book tempo traveller from {origin} to {destination} with complete route details, distance, travel time and best pricing
             </p>
           </motion.div>
 
@@ -531,10 +616,10 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-amber-700 font-bold text-sm tracking-wider">PREMIUM FLEET</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              Choose Your <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Perfect Ride</span>
+              {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Tempo Traveller Fleet</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From intimate family trips to large group adventures - we have the perfect tempo traveller for your {origin} to {destination} journey
+              Choose from 12, 17, 20, 26 seater AC tempo traveller for your {origin} to {destination} trip - pushback seats, music system included
             </p>
           </motion.div>
 
@@ -680,10 +765,10 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-amber-400 font-bold text-sm tracking-wider">WHY TRIVENI CABS</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-              The <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Triveni</span> Difference
+              Why Book {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Tempo Traveller</span>
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto">
-              Experience why thousands choose us for their {origin} to {destination} journey
+              Best tempo traveller service for {origin} to {destination} - safe drivers, GPS tracking, 24/7 support, transparent pricing
             </p>
           </motion.div>
 
@@ -768,10 +853,10 @@ export default function DynamicTempoRoutesClient({ data }) {
             className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              World-Class <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Amenities</span>
+              {origin} to {displayDestination} Tempo Traveller <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Amenities</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Every tempo traveller comes equipped with premium features for your comfort
+              AC tempo traveller with pushback seats, music system, GPS tracking, charging points for {origin} to {destination} journey
             </p>
           </motion.div>
 
@@ -843,10 +928,10 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-blue-700 font-bold text-sm tracking-wider">FREQUENTLY ASKED</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              Got <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Questions?</span>
+              {origin} to {displayDestination} Tempo Traveller <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">FAQ</span>
             </h2>
             <p className="text-lg text-gray-600">
-              Everything you need to know about {origin} to {destination} tempo traveller booking
+              Common questions about {origin} to {destination} tempo traveller booking, price, seating and more
             </p>
           </motion.div>
 
@@ -922,10 +1007,10 @@ export default function DynamicTempoRoutesClient({ data }) {
                     <span className="text-purple-700 font-bold text-sm tracking-wider">EXPLORE {destination.toUpperCase()}</span>
                   </div>
                   <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-                    Must-Visit <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Attractions</span>
+                    {destination} Tourist <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Attractions</span> by Tempo Traveller
                   </h2>
                   <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Make the most of your {origin} to {destination} trip with our tempo traveller service
+                    Top places to visit in {destination} during your {origin} to {destination} tempo traveller trip
                   </p>
                 </motion.div>
 
@@ -1000,9 +1085,9 @@ export default function DynamicTempoRoutesClient({ data }) {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Popular Routes from <span className="text-amber-500">{origin}</span>
+              More Tempo Traveller Routes from <span className="text-amber-500">{origin}</span>
             </h2>
-            <p className="text-gray-600">Explore more destinations with our premium tempo traveller service</p>
+            <p className="text-gray-600">Book tempo traveller from {origin} to Manali, Shimla, Jaipur, Haridwar and more destinations</p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -1084,10 +1169,10 @@ export default function DynamicTempoRoutesClient({ data }) {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
-              Ready to <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Explore?</span>
+              Book {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Tempo Traveller</span>
             </h2>
             <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-              Book your {origin} to {destination} tempo traveller today and create unforgettable memories with your loved ones!
+              Call now to book {origin} to {destination} tempo traveller at best price - 12, 17, 20, 26 seater AC available!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

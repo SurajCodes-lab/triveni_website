@@ -2210,6 +2210,1388 @@ export const travelBlogPosts = [
     metaTitle: "Jim Corbett Safari Guide 2025: Zones, Booking & Best Time to Visit",
     metaDescription: "Ultimate guide to Jim Corbett National Park 2025. Best safari zones, tiger sighting tips, resort guide & travel tips. Plan your wildlife adventure now!",
   },
+
+  // ============================================
+  // NEW BLOGS - DECEMBER 2025 (High Traffic SEO)
+  // ============================================
+
+  {
+    id: 101,
+    slug: "ayodhya-ram-mandir-complete-travel-guide-2026",
+    title: "Ayodhya Ram Mandir Complete Travel Guide 2026: How to Visit, Best Time, Darshan Timings & Tips",
+    excerpt: "Planning to visit the magnificent Ram Mandir in Ayodhya? Complete guide covering darshan timings, how to reach, best hotels, nearby attractions, and insider tips for a spiritual journey in 2026.",
+
+    relatedTours: [
+      { id: "ayodhya-1", name: "Ayodhya Ram Mandir Tour from Lucknow", slug: "lucknow-to-ayodhya", city: "lucknow", price: "₹4,500" },
+      { id: "ayodhya-2", name: "Ayodhya Varanasi Prayagraj Tour", slug: "ayodhya-varanasi-prayagraj", city: "lucknow", price: "₹18,000" },
+      { id: "ayodhya-3", name: "Delhi to Ayodhya Tour Package", slug: "delhi-to-ayodhya", city: "delhi", price: "₹22,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Ayodhya", slug: "ayodhya", type: "city" },
+      { name: "Varanasi", slug: "varanasi", type: "city" },
+      { name: "Lucknow", slug: "lucknow", type: "city" },
+      { name: "Prayagraj", slug: "prayagraj", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Ayodhya Tour Package",
+      url: "/religious-tours",
+      description: "Visit Ram Mandir with comfortable transport and expert guidance",
+      price: "Starting from ₹4,500"
+    },
+
+    content: \`
+      <p>The grand <strong>Ram Mandir in Ayodhya</strong> stands as one of India's most magnificent temples and a testament to centuries of devotion. Since its historic consecration in January 2024, millions of devotees from across the globe have visited this sacred site to seek Lord Ram's blessings. If you're planning your pilgrimage to <a href="/sightseeing/ayodhya" class="text-blue-600 hover:underline font-semibold">Ayodhya</a> in 2026, this comprehensive guide covers everything you need to know.</p>
+
+      <div class="my-6 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+        <p class="font-semibold text-amber-800">🙏 Planning Tip: Book your <a href="/tempo-traveller/delhi-to-ayodhya-ram-mandir-tour" class="text-blue-600 hover:underline">Delhi to Ayodhya tempo traveller</a> in advance, especially during peak festival seasons when demand is extremely high.</p>
+      </div>
+
+      <h2>Ram Mandir Ayodhya: A Brief Overview</h2>
+      <p>The Shri Ram Janmabhoomi Temple is built at the sacred birthplace of Lord Ram. The temple spans an impressive 2.7 acres, with the main structure rising to 161 feet. Built in the traditional Nagara style of North Indian temple architecture, the three-story temple is constructed entirely of sandstone and marble, without using any iron or steel.</p>
+
+      <h3>Key Features of Ram Mandir:</h3>
+      <ul>
+        <li><strong>Height:</strong> 161 feet (49 meters) - tallest Hindu temple in the world</li>
+        <li><strong>Area:</strong> Built on 70 acres of land</li>
+        <li><strong>Sanctum:</strong> Houses the idol of Ram Lalla (infant Lord Ram)</li>
+        <li><strong>Architecture:</strong> Nagara style with 392 pillars and 44 doors</li>
+        <li><strong>Material:</strong> Pink Bansi Paharpur sandstone from Rajasthan</li>
+      </ul>
+
+      <h2>How to Reach Ayodhya</h2>
+      <p>Ayodhya is well-connected by road, rail, and air. Here are your options:</p>
+
+      <h3>By Air</h3>
+      <p>The newly inaugurated <strong>Maharishi Valmiki International Airport (Ayodhya)</strong> operates flights from major cities including Delhi, Mumbai, Ahmedabad, and Bangalore. The airport is just 10 km from Ram Mandir.</p>
+
+      <h3>By Train</h3>
+      <p>Ayodhya Junction (AY) and Ayodhya Cantt are the main railway stations. Direct trains connect from:</p>
+      <ul>
+        <li>Delhi - Ayodhya Express, Humsafar Express (10-12 hours)</li>
+        <li>Mumbai - Lokmanya Tilak Express (24 hours)</li>
+        <li>Lucknow - Multiple trains (3 hours)</li>
+        <li>Varanasi - Several daily trains (4-5 hours)</li>
+      </ul>
+
+      <h3>By Road - Recommended for Comfort</h3>
+      <p>For the most comfortable and flexible travel experience, we recommend hiring a <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller</a> or cab. This allows you to travel at your own pace and combine Ayodhya with other spiritual destinations.</p>
+
+      <div class="my-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+        <h4 class="font-bold text-blue-800 mb-2">Popular Road Routes to Ayodhya:</h4>
+        <ul class="text-blue-700">
+          <li>• <a href="/tempo-traveller/delhi-to-ayodhya-ram-mandir-tour" class="hover:underline">Delhi to Ayodhya</a> - 630 km (10-12 hours via Lucknow)</li>
+          <li>• <a href="/tempo-traveller/lucknow-to-ayodhya" class="hover:underline">Lucknow to Ayodhya</a> - 135 km (3 hours)</li>
+          <li>• <a href="/tempo-traveller/varanasi-to-ayodhya" class="hover:underline">Varanasi to Ayodhya</a> - 200 km (4-5 hours)</li>
+          <li>• <a href="/tempo-traveller/jaipur-to-ayodhya" class="hover:underline">Jaipur to Ayodhya</a> - 650 km (10-12 hours)</li>
+        </ul>
+      </div>
+
+      <h2>Ram Mandir Darshan Timings 2026</h2>
+      <p>The temple is open for darshan throughout the day with specific timings:</p>
+
+      <table class="w-full my-4 border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-orange-100">
+            <th class="border border-gray-300 p-2">Session</th>
+            <th class="border border-gray-300 p-2">Timing</th>
+            <th class="border border-gray-300 p-2">Ritual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2">Morning Aarti</td>
+            <td class="border border-gray-300 p-2">6:00 AM</td>
+            <td class="border border-gray-300 p-2">Mangala Aarti</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">General Darshan</td>
+            <td class="border border-gray-300 p-2">7:00 AM - 11:00 AM</td>
+            <td class="border border-gray-300 p-2">Open Darshan</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Bhog Aarti</td>
+            <td class="border border-gray-300 p-2">12:00 PM</td>
+            <td class="border border-gray-300 p-2">Raj Bhog Aarti</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Afternoon Darshan</td>
+            <td class="border border-gray-300 p-2">2:00 PM - 7:00 PM</td>
+            <td class="border border-gray-300 p-2">Open Darshan</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Evening Aarti</td>
+            <td class="border border-gray-300 p-2">7:00 PM</td>
+            <td class="border border-gray-300 p-2">Sandhya Aarti</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Night Aarti</td>
+            <td class="border border-gray-300 p-2">9:00 PM</td>
+            <td class="border border-gray-300 p-2">Shayan Aarti</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Pro Tip:</strong> For the most peaceful darshan experience, visit on weekdays during early morning (7-8 AM) or late afternoon (5-6 PM). Avoid weekends and major festivals if you prefer shorter queues.</p>
+
+      <h2>Best Time to Visit Ayodhya</h2>
+      <p>Ayodhya can be visited year-round, but certain times offer better experiences:</p>
+
+      <h3>October to March (Peak Season) ⭐ Recommended</h3>
+      <p>Pleasant weather with temperatures between 10°C to 25°C. Perfect for temple visits and exploring the city. This period includes:</p>
+      <ul>
+        <li><strong>Diwali (Oct/Nov):</strong> Grand celebrations with stunning illuminations</li>
+        <li><strong>Ram Navami (Mar/Apr):</strong> Lord Ram's birthday - biggest celebration</li>
+        <li><strong>Kartik Purnima:</strong> Special religious significance</li>
+      </ul>
+
+      <h3>April to June (Summer)</h3>
+      <p>Hot weather (35-45°C). Visit early mornings or evenings. Fewer crowds but challenging conditions.</p>
+
+      <h3>July to September (Monsoon)</h3>
+      <p>Moderate crowds, occasional rain. The Saryu River banks become picturesque during this time.</p>
+
+      <h2>Other Must-Visit Places in Ayodhya</h2>
+      <p>While Ram Mandir is the primary attraction, Ayodhya offers several other spiritual sites worth exploring:</p>
+
+      <h3>1. Hanuman Garhi</h3>
+      <p>A 10th-century temple dedicated to Lord Hanuman, located on a hilltop with 76 steps. It's believed that Hanuman guards Ayodhya from this point. <strong>Distance from Ram Mandir:</strong> 600 meters</p>
+
+      <h3>2. Kanak Bhawan</h3>
+      <p>An ornate palace-temple where Lord Ram and Sita reside as king and queen. Known for its beautiful architecture and golden images. <strong>Distance:</strong> 500 meters</p>
+
+      <h3>3. Saryu River Ghats</h3>
+      <p>Take a holy dip in the sacred Saryu River at Ram Ki Paidi ghat. The evening aarti at the ghats is a mesmerizing experience. <strong>Distance:</strong> 1 km</p>
+
+      <h3>4. Dashrath Mahal</h3>
+      <p>The palace of King Dashrath, father of Lord Ram. A place of historical and mythological significance. <strong>Distance:</strong> 800 meters</p>
+
+      <h3>5. Nageshwarnath Temple</h3>
+      <p>An ancient Shiva temple believed to be established by Kush, son of Lord Ram. <strong>Distance:</strong> 1.2 km</p>
+
+      <h2>Combine Ayodhya with These Destinations</h2>
+      <p>Make the most of your trip by visiting nearby spiritual cities. Our <a href="/religious-tours" class="text-blue-600 hover:underline font-semibold">religious tour packages</a> offer perfect combinations:</p>
+
+      <div class="grid md:grid-cols-2 gap-4 my-6">
+        <div class="p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg border border-orange-200">
+          <h4 class="font-bold text-orange-800">🕉️ Ayodhya + Varanasi (3 Days)</h4>
+          <p class="text-sm text-gray-700">Visit Ram Mandir and experience the spiritual energy of <a href="/sightseeing/varanasi" class="text-blue-600 hover:underline">Varanasi's ghats</a> and Kashi Vishwanath Temple.</p>
+          <p class="font-semibold mt-2">Starting: ₹12,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+          <h4 class="font-bold text-blue-800">🙏 Ayodhya + Prayagraj + Varanasi (5 Days)</h4>
+          <p class="text-sm text-gray-700">Complete spiritual circuit covering Triveni Sangam at <a href="/sightseeing/prayagraj" class="text-blue-600 hover:underline">Prayagraj</a>.</p>
+          <p class="font-semibold mt-2">Starting: ₹18,000 per person</p>
+        </div>
+      </div>
+
+      <h2>Where to Stay in Ayodhya</h2>
+      <p>Ayodhya has seen rapid hotel development since the Ram Mandir inauguration. Options range from budget dharamshalas to luxury hotels:</p>
+
+      <h3>Luxury Hotels (₹5,000+/night)</h3>
+      <ul>
+        <li>Ramada by Wyndham Ayodhya</li>
+        <li>Sarovar Premiere Ayodhya</li>
+        <li>Hotel Ramprastha</li>
+      </ul>
+
+      <h3>Mid-Range Hotels (₹2,000-5,000/night)</h3>
+      <ul>
+        <li>Hotel Krishna Palace</li>
+        <li>Hotel Raghunandan</li>
+        <li>A P Palace</li>
+      </ul>
+
+      <h3>Budget & Dharamshalas (₹500-2,000/night)</h3>
+      <ul>
+        <li>Birla Dharamshala</li>
+        <li>Ram Sevak Dharamshala</li>
+        <li>Various trust-run accommodations</li>
+      </ul>
+
+      <p><strong>Booking Tip:</strong> Reserve accommodations 2-3 weeks in advance, especially during festivals. Hotels near Ram Ki Paidi offer the best location.</p>
+
+      <h2>What to Eat in Ayodhya</h2>
+      <p>Ayodhya is known for its satvik (pure vegetarian) cuisine:</p>
+      <ul>
+        <li><strong>Laddoo Prasad:</strong> Temple offering, a must-have</li>
+        <li><strong>Kheer:</strong> Rice pudding served at many temples</li>
+        <li><strong>Poori-Sabzi:</strong> Popular breakfast option</li>
+        <li><strong>Chole-Bhature:</strong> Street food favorite</li>
+        <li><strong>Lassi & Thandai:</strong> Refreshing local drinks</li>
+      </ul>
+
+      <h2>Essential Tips for Ram Mandir Visit</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Dress Code:</strong> Wear modest, traditional attire. Avoid shorts, sleeveless tops.</li>
+        <li><strong>Mobile Phones:</strong> Allowed but photography inside sanctum is prohibited.</li>
+        <li><strong>Security:</strong> Be prepared for thorough security checks. Arrive 1 hour early.</li>
+        <li><strong>Footwear:</strong> Free locker facility available outside temple premises.</li>
+        <li><strong>Prasad:</strong> Available at designated counters after darshan.</li>
+        <li><strong>Queue Management:</strong> VIP darshan available through official booking. Regular queues can take 2-4 hours during peak times.</li>
+        <li><strong>Best Days:</strong> Tuesdays and Saturdays are considered auspicious.</li>
+        <li><strong>Avoid:</strong> Weekends, Ram Navami, Diwali if you prefer shorter queues.</li>
+      </ol>
+
+      <h2>How to Book Your Ayodhya Trip</h2>
+      <p>For a hassle-free spiritual journey, book your transportation with us. We offer:</p>
+      <ul>
+        <li>✅ <a href="/tempo-traveller" class="text-blue-600 hover:underline">Tempo Travellers (12-26 seater)</a> for group pilgrimages</li>
+        <li>✅ <a href="/vehicles/suv" class="text-blue-600 hover:underline">SUVs</a> for family trips</li>
+        <li>✅ <a href="/vehicles/sedan" class="text-blue-600 hover:underline">Sedans</a> for couples</li>
+        <li>✅ Experienced drivers who know the best routes and local areas</li>
+        <li>✅ Flexible itineraries with stops at all major temples</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-orange-100 to-amber-100 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">🙏 Ready for Your Ayodhya Pilgrimage?</h3>
+        <p class="mb-4 text-gray-700">Book your comfortable and safe transportation to Ayodhya. We handle the journey; you focus on the darshan.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/religious-tours" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">View Religious Tours →</a>
+          <a href="/tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Is online booking required for Ram Mandir darshan?</h3>
+      <p>Online booking is available but not mandatory. Walk-in darshan is allowed, though online booking helps reduce waiting time during peak hours.</p>
+
+      <h3>How much time is needed for complete Ayodhya darshan?</h3>
+      <p>Plan for 1 full day minimum. Ram Mandir darshan takes 2-4 hours depending on crowd. Add another half day for other temples.</p>
+
+      <h3>Is Ayodhya safe for solo travelers?</h3>
+      <p>Yes, Ayodhya is very safe with heavy police presence and CCTV coverage throughout the city. Solo travelers, including women, can visit comfortably.</p>
+
+      <h3>What is the nearest airport to Ayodhya?</h3>
+      <p>Maharishi Valmiki International Airport (Ayodhya) is just 10 km from Ram Mandir. Lucknow Airport is an alternative, 140 km away.</p>
+
+      <h3>Can I visit Ayodhya and Varanasi together?</h3>
+      <p>Absolutely! Many pilgrims combine both cities. <a href="/tempo-traveller/varanasi-to-ayodhya" class="text-blue-600 hover:underline">Book our Varanasi-Ayodhya package</a> for a complete spiritual experience.</p>
+    \`,
+    date: "2025-12-20",
+    readTime: "15 min read",
+    image: "/images/sightseeing/Ayodhya/ayodhya_hero_section.jpg",
+    category: "Pilgrimage",
+    tags: ["Ayodhya", "Ram Mandir", "Pilgrimage", "Religious Tourism", "Uttar Pradesh"],
+    keywords: ["ayodhya ram mandir", "ram mandir darshan", "how to reach ayodhya", "ayodhya travel guide 2026", "ram mandir timings", "ayodhya trip", "ayodhya tour package", "delhi to ayodhya", "lucknow to ayodhya", "ram janmabhoomi", "ayodhya temples", "best time to visit ayodhya", "ayodhya hotels", "ram mandir online booking", "ayodhya darshan", "ayodhya pilgrimage", "ayodhya yatra", "ram mandir architecture", "ayodhya nearby places", "varanasi ayodhya tour", "ayodhya prayagraj tour", "ayodhya religious tour", "tempo traveller ayodhya"],
+    featured: true,
+    views: 0,
+    metaTitle: "Ayodhya Ram Mandir Complete Travel Guide 2026 | Darshan Timings, How to Reach & Tips",
+    metaDescription: "Complete Ayodhya Ram Mandir travel guide 2026. Darshan timings, how to reach, best time to visit, nearby temples, hotels & travel tips. Plan your pilgrimage now!"
+  },
+
+  {
+    id: 102,
+    slug: "varanasi-spiritual-tour-complete-guide-2026",
+    title: "Varanasi Complete Travel Guide 2026: Ghats, Temples, Ganga Aarti & Spiritual Experience",
+    excerpt: "Discover the oldest living city in the world. Complete guide to Varanasi covering famous ghats, ancient temples, mesmerizing Ganga Aarti, local food, and how to plan your spiritual journey in 2026.",
+
+    relatedTours: [
+      { id: "varanasi-1", name: "Varanasi Full Day Tour", slug: "varanasi-full-day-tour", city: "varanasi", price: "₹2,500" },
+      { id: "varanasi-2", name: "Varanasi Ayodhya Prayagraj Tour", slug: "varanasi-ayodhya-prayagraj", city: "varanasi", price: "₹18,000" },
+      { id: "varanasi-3", name: "Delhi to Varanasi Tour", slug: "delhi-to-varanasi", city: "delhi", price: "₹24,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Varanasi", slug: "varanasi", type: "city" },
+      { name: "Ayodhya", slug: "ayodhya", type: "city" },
+      { name: "Prayagraj", slug: "prayagraj", type: "city" },
+      { name: "Sarnath", slug: "sarnath", type: "attraction" }
+    ],
+
+    primaryCTA: {
+      text: "Book Varanasi Tour Package",
+      url: "/sightseeing/varanasi",
+      description: "Experience the spiritual capital of India with guided tours",
+      price: "Starting from ₹2,500"
+    },
+
+    content: \`
+      <p><strong>Varanasi</strong>, also known as <em>Kashi</em> or <em>Banaras</em>, is the spiritual capital of India and one of the oldest continuously inhabited cities in the world. Standing on the banks of the holy <strong>Ganga River</strong>, this ancient city has been a center of learning, culture, and spirituality for over 3,000 years. If you're planning to experience the mystical energy of <a href="/sightseeing/varanasi" class="text-blue-600 hover:underline font-semibold">Varanasi</a> in 2026, this comprehensive guide covers everything from famous ghats to hidden gems.</p>
+
+      <div class="my-6 p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg">
+        <p class="font-semibold text-orange-800">🕉️ Spiritual Insight: Hindus believe that dying in Varanasi and being cremated on the banks of the Ganga leads to moksha (liberation from the cycle of rebirth). This makes Varanasi one of the holiest places in Hinduism.</p>
+      </div>
+
+      <h2>Why Visit Varanasi?</h2>
+      <p>Varanasi is unlike any other city in the world. Here's what makes it special:</p>
+      <ul>
+        <li><strong>Spiritual Energy:</strong> Feel the palpable spiritual vibration at every corner</li>
+        <li><strong>Ancient Temples:</strong> Over 23,000 temples including Kashi Vishwanath</li>
+        <li><strong>Ganga Ghats:</strong> 88 ghats with morning rituals and evening aarti</li>
+        <li><strong>Cultural Heritage:</strong> Classical music, silk weaving, Sanskrit learning</li>
+        <li><strong>Buddhist Connection:</strong> Sarnath, where Buddha gave his first sermon</li>
+      </ul>
+
+      <h2>How to Reach Varanasi</h2>
+
+      <h3>By Air</h3>
+      <p><strong>Lal Bahadur Shastri International Airport (VNS)</strong> is 26 km from the city center. Direct flights connect from Delhi, Mumbai, Bangalore, Kolkata, and other major cities.</p>
+
+      <h3>By Train</h3>
+      <p>Varanasi Junction (BSB) and Varanasi City (BCY) are well-connected to all major Indian cities. Some popular trains:</p>
+      <ul>
+        <li>Delhi - Shiv Ganga Express, Kashi Vishwanath Express (12-14 hours)</li>
+        <li>Mumbai - Mahanagari Express (24 hours)</li>
+        <li>Kolkata - Vibhuti Express (12 hours)</li>
+      </ul>
+
+      <h3>By Road</h3>
+      <p>For comfortable group travel, our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller service</a> is ideal:</p>
+
+      <div class="my-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+        <h4 class="font-bold text-blue-800 mb-2">Popular Routes to Varanasi:</h4>
+        <ul class="text-blue-700">
+          <li>• <a href="/tempo-traveller/delhi-to-varanasi-ayodhya-prayagraj-gaya" class="hover:underline">Delhi to Varanasi</a> - 820 km (12-14 hours)</li>
+          <li>• <a href="/tempo-traveller/lucknow-to-varanasi" class="hover:underline">Lucknow to Varanasi</a> - 320 km (6-7 hours)</li>
+          <li>• <a href="/tempo-traveller/varanasi-to-ayodhya" class="hover:underline">Ayodhya to Varanasi</a> - 200 km (4-5 hours)</li>
+          <li>• <a href="/tempo-traveller/jaipur-to-varanasi" class="hover:underline">Jaipur to Varanasi</a> - 690 km (11-12 hours)</li>
+        </ul>
+      </div>
+
+      <h2>Famous Ghats of Varanasi</h2>
+      <p>The ghats are the soul of Varanasi. Here are the most significant ones:</p>
+
+      <h3>1. Dashashwamedh Ghat ⭐ Most Famous</h3>
+      <p>The main ghat where the spectacular <strong>Ganga Aarti</strong> takes place every evening at 7 PM. According to legend, Lord Brahma performed the Dashashwamedh sacrifice here. The aarti ceremony with fire, incense, and chanting is an unforgettable experience.</p>
+      <p><strong>Best Time:</strong> Evening (6:00 PM onwards for aarti)</p>
+
+      <h3>2. Manikarnika Ghat</h3>
+      <p>The primary cremation ghat of Varanasi. The funeral pyres burn 24/7, and it's believed that being cremated here guarantees moksha. Visitors can observe from a respectful distance. Photography is prohibited.</p>
+
+      <h3>3. Assi Ghat</h3>
+      <p>Where the River Assi meets the Ganga. Popular with travelers, students, and spiritual seekers. Morning yoga sessions and evening aarti make it special. Many cafes and guesthouses nearby.</p>
+
+      <h3>4. Harishchandra Ghat</h3>
+      <p>The oldest cremation ghat, named after the legendary King Harishchandra who worked here as a servant to pay his debts. Quieter than Manikarnika.</p>
+
+      <h3>5. Tulsi Ghat</h3>
+      <p>Named after the poet-saint Tulsidas who wrote the Ramcharitmanas here. Hosts the famous Ram Leela during Navratri.</p>
+
+      <h3>6. Man Mandir Ghat</h3>
+      <p>Features a magnificent astronomical observatory built by Maharaja Jai Singh II of Jaipur in 1710.</p>
+
+      <h2>Major Temples in Varanasi</h2>
+
+      <h3>1. Kashi Vishwanath Temple (Golden Temple)</h3>
+      <p>One of the 12 Jyotirlingas of Lord Shiva. The temple's spire is covered with 800 kg of pure gold. After the Kashi Vishwanath Corridor development, the temple complex now offers a grand experience.</p>
+      <p><strong>Darshan Timings:</strong> 3:00 AM - 11:00 PM (with breaks)</p>
+      <p><strong>Pro Tip:</strong> Book online for faster darshan. Early morning (4-5 AM) is the best time.</p>
+
+      <h3>2. Sankat Mochan Temple</h3>
+      <p>Dedicated to Lord Hanuman, this temple is famous for its morning and evening aarti. The laddu prasad is legendary.</p>
+
+      <h3>3. Durga Temple (Monkey Temple)</h3>
+      <p>A stunning red temple dedicated to Goddess Durga. Known for the many monkeys in the premises - keep belongings secure!</p>
+
+      <h3>4. Tulsi Manas Temple</h3>
+      <p>A white marble temple at the site where Tulsidas wrote the Ramcharitmanas. The walls feature verses from the epic.</p>
+
+      <h3>5. Bharat Mata Temple</h3>
+      <p>Unique temple dedicated to Mother India, featuring a relief map of undivided India carved in marble.</p>
+
+      <h2>Sarnath: Buddha's First Sermon</h2>
+      <p>Just 10 km from Varanasi, <a href="/sightseeing/sarnath" class="text-blue-600 hover:underline font-semibold">Sarnath</a> is where Buddha delivered his first sermon after attaining enlightenment. Must-visit sites include:</p>
+      <ul>
+        <li><strong>Dhamek Stupa:</strong> 43-meter tall stupa marking the sermon spot</li>
+        <li><strong>Ashoka Pillar:</strong> Famous lion capital (now India's national emblem)</li>
+        <li><strong>Sarnath Museum:</strong> Houses ancient Buddhist artifacts</li>
+        <li><strong>Mulagandha Kuti Vihar:</strong> Modern Buddhist temple with beautiful frescoes</li>
+      </ul>
+
+      <h2>Varanasi Ganga Aarti: A Must-Experience</h2>
+      <p>The evening Ganga Aarti at Dashashwamedh Ghat is the highlight of any Varanasi visit. Here's what to expect:</p>
+
+      <h3>Timing & Duration</h3>
+      <ul>
+        <li><strong>Summer:</strong> 7:00 PM - 7:45 PM</li>
+        <li><strong>Winter:</strong> 6:30 PM - 7:15 PM</li>
+        <li><strong>Duration:</strong> 45-60 minutes</li>
+      </ul>
+
+      <h3>Best Viewing Spots</h3>
+      <ul>
+        <li><strong>Ghat Steps:</strong> Free but crowded. Arrive by 5:30 PM for good spots</li>
+        <li><strong>Boat:</strong> Best view! Book a boat ride (₹100-200 per person) for a front-row seat on the water</li>
+        <li><strong>Rooftop Restaurants:</strong> Several cafes offer aarti views with dinner</li>
+      </ul>
+
+      <h2>Best Time to Visit Varanasi</h2>
+
+      <h3>October to March ⭐ Best Season</h3>
+      <p>Pleasant weather (10-25°C), perfect for exploring ghats and temples. Peak tourist season with:</p>
+      <ul>
+        <li><strong>Dev Deepawali (Nov):</strong> Ghats illuminated with millions of diyas</li>
+        <li><strong>Ganga Mahotsav (Nov):</strong> 5-day cultural festival</li>
+        <li><strong>Maha Shivratri (Feb/Mar):</strong> Grand celebrations at Kashi Vishwanath</li>
+      </ul>
+
+      <h3>April to June</h3>
+      <p>Hot (35-45°C) but less crowded. Early morning and evening visits recommended.</p>
+
+      <h3>July to September</h3>
+      <p>Monsoon season. The Ganga swells, some ghats may flood. Unique experience for adventurous travelers.</p>
+
+      <h2>Combine Varanasi with These Destinations</h2>
+      <p>Create a complete spiritual circuit with our <a href="/religious-tours" class="text-blue-600 hover:underline font-semibold">religious tour packages</a>:</p>
+
+      <div class="grid md:grid-cols-2 gap-4 my-6">
+        <div class="p-4 bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg border border-orange-200">
+          <h4 class="font-bold text-orange-800">🙏 Varanasi + Ayodhya (3 Days)</h4>
+          <p class="text-sm text-gray-700">Combine Kashi Vishwanath with <a href="/sightseeing/ayodhya" class="text-blue-600 hover:underline">Ram Mandir darshan</a>.</p>
+          <p class="font-semibold mt-2">Starting: ₹15,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+          <h4 class="font-bold text-blue-800">🕉️ Varanasi + Prayagraj + Ayodhya (5 Days)</h4>
+          <p class="text-sm text-gray-700">Complete UP spiritual circuit with Triveni Sangam.</p>
+          <p class="font-semibold mt-2">Starting: ₹22,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg border border-green-200">
+          <h4 class="font-bold text-green-800">☸️ Varanasi + Bodhgaya (4 Days)</h4>
+          <p class="text-sm text-gray-700">Hindu-Buddhist pilgrimage covering Sarnath and Mahabodhi Temple.</p>
+          <p class="font-semibold mt-2">Starting: ₹18,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+          <h4 class="font-bold text-purple-800">🛕 Complete UP Darshan (7 Days)</h4>
+          <p class="text-sm text-gray-700">Varanasi + Ayodhya + Prayagraj + Chitrakoot + Lucknow</p>
+          <p class="font-semibold mt-2">Starting: ₹35,000 per person</p>
+        </div>
+      </div>
+
+      <h2>What to Eat in Varanasi</h2>
+      <p>Varanasi is a vegetarian food paradise! Must-try dishes:</p>
+
+      <h3>Street Food</h3>
+      <ul>
+        <li><strong>Kachori Sabzi:</strong> Crispy fried bread with spicy curry (breakfast staple)</li>
+        <li><strong>Tamatar Chaat:</strong> Tangy tomato-based chaat unique to Varanasi</li>
+        <li><strong>Malaiyyo:</strong> Fluffy milk foam dessert (winter specialty)</li>
+        <li><strong>Banarasi Paan:</strong> Iconic betel leaf preparation</li>
+        <li><strong>Lassi at Blue Lassi:</strong> Famous flavored lassi shop near Manikarnika</li>
+      </ul>
+
+      <h3>Restaurants</h3>
+      <ul>
+        <li><strong>Kashi Chat Bhandar:</strong> Best chaat in the city</li>
+        <li><strong>Deena Chaat:</strong> Historic chaat shop since 1962</li>
+        <li><strong>Baati Chokha:</strong> Authentic Bihari-UP cuisine</li>
+      </ul>
+
+      <h2>Shopping in Varanasi</h2>
+      <ul>
+        <li><strong>Banarasi Silk Sarees:</strong> World-famous handwoven silk sarees</li>
+        <li><strong>Rudraksha Beads:</strong> Holy prayer beads from Nepal</li>
+        <li><strong>Brass Items:</strong> Traditional utensils and décor</li>
+        <li><strong>Wooden Toys:</strong> Traditional lacquered toys</li>
+        <li><strong>Musical Instruments:</strong> Tabla, sitar from historic shops</li>
+      </ul>
+      <p><strong>Best Markets:</strong> Vishwanath Gali, Thatheri Bazaar, Godowlia Market</p>
+
+      <h2>Where to Stay in Varanasi</h2>
+
+      <h3>Heritage Stays (₹8,000+/night)</h3>
+      <ul>
+        <li>BrijRama Palace - Heritage haveli on Darbhanga Ghat</li>
+        <li>Taj Nadesar Palace</li>
+        <li>Suryauday Haveli</li>
+      </ul>
+
+      <h3>Mid-Range Hotels (₹2,500-8,000/night)</h3>
+      <ul>
+        <li>Hotel Surya, Kaiser Palace</li>
+        <li>Radisson Hotel Varanasi</li>
+        <li>Ramada Plaza</li>
+      </ul>
+
+      <h3>Budget Guesthouses (₹500-2,500/night)</h3>
+      <ul>
+        <li>Stops Hostel Varanasi</li>
+        <li>Ganpati Guest House (on Meer Ghat)</li>
+        <li>Shiva Guest House</li>
+      </ul>
+
+      <h2>Essential Tips for Varanasi</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Boat Ride:</strong> Book a sunrise boat ride (5:30-7:00 AM) to see morning rituals</li>
+        <li><strong>Dress Modestly:</strong> Cover shoulders and knees for temple visits</li>
+        <li><strong>Cremation Ghats:</strong> Be respectful, don't take photos without permission</li>
+        <li><strong>Touts:</strong> Be firm with guides and boatmen trying to overcharge</li>
+        <li><strong>Get Lost:</strong> The best experiences are in the narrow galis - explore!</li>
+        <li><strong>Sunrise & Sunset:</strong> Both are magical on the ghats - don't miss either</li>
+        <li><strong>Time Needed:</strong> Minimum 2 full days, ideally 3-4 days</li>
+      </ol>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-orange-100 to-amber-100 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">🙏 Experience the Spiritual Energy of Kashi</h3>
+        <p class="mb-4 text-gray-700">Let us handle your journey to the oldest city in the world. Comfortable transport, experienced drivers, and customizable itineraries.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/sightseeing/varanasi" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">View Varanasi Tours →</a>
+          <a href="/tempo-traveller/delhi-to-varanasi-ayodhya-prayagraj-gaya" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Delhi to Varanasi Tempo →</a>
+        </div>
+      </div>
+    \`,
+    date: "2025-12-20",
+    readTime: "18 min read",
+    image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
+    category: "Pilgrimage",
+    tags: ["Varanasi", "Kashi", "Ganga", "Spiritual", "Ghats", "Temples"],
+    keywords: ["varanasi travel guide", "varanasi tour", "kashi vishwanath temple", "ganga aarti varanasi", "varanasi ghats", "dashashwamedh ghat", "best time to visit varanasi", "varanasi temples", "sarnath", "varanasi trip", "banaras", "varanasi 2026", "varanasi itinerary", "varanasi boat ride", "varanasi spiritual tour", "varanasi ayodhya tour", "delhi to varanasi", "varanasi food", "varanasi shopping", "manikarnika ghat", "assi ghat varanasi"],
+    featured: true,
+    views: 0,
+    metaTitle: "Varanasi Complete Travel Guide 2026 | Ghats, Temples, Ganga Aarti & Tips",
+    metaDescription: "Complete Varanasi travel guide 2026. Famous ghats, Kashi Vishwanath Temple, Ganga Aarti timings, best time to visit, food & hotels. Plan your spiritual journey!"
+  },
+
+  {
+    id: 103,
+    slug: "best-group-trip-destinations-tempo-traveller-india-2026",
+    title: "15 Best Group Trip Destinations in India 2026: Perfect for Tempo Traveller Travel",
+    excerpt: "Planning a group trip with friends, family, or colleagues? Discover the 15 best destinations in India perfect for tempo traveller travel - from hill stations to beaches, spiritual sites to adventure spots.",
+
+    relatedTours: [
+      { id: "tempo-1", name: "Delhi to Manali Tempo Traveller", slug: "delhi-to-manali", city: "delhi", price: "₹25,000" },
+      { id: "tempo-2", name: "Delhi to Jaipur Tempo Traveller", slug: "delhi-to-jaipur", city: "delhi", price: "₹12,000" },
+      { id: "tempo-3", name: "Delhi to Rishikesh Tempo Traveller", slug: "delhi-to-rishikesh", city: "delhi", price: "₹10,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Manali", slug: "manali", type: "city" },
+      { name: "Jaipur", slug: "jaipur", type: "city" },
+      { name: "Rishikesh", slug: "rishikesh", type: "city" },
+      { name: "Udaipur", slug: "udaipur", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Tempo Traveller",
+      url: "/tempo-traveller",
+      description: "Comfortable 12-26 seater tempo travellers for your group trip",
+      price: "Starting from ₹23/km"
+    },
+
+    content: \`
+      <p>There's something magical about group trips - the shared laughter, inside jokes, bonding moments, and memories that last a lifetime. Whether you're planning a trip with college friends, a family reunion, a bachelor/bachelorette trip, or a corporate outing, choosing the right destination and transport makes all the difference. A <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller</a> offers the perfect solution - everyone travels together, with ample space for luggage, and the journey becomes part of the adventure!</p>
+
+      <div class="my-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+        <p class="font-semibold text-blue-800">🚐 Why Tempo Traveller for Group Trips?</p>
+        <ul class="mt-2 text-blue-700">
+          <li>✓ Travel together - no splitting into multiple cars</li>
+          <li>✓ Cost-effective - split fare among 12-26 people</li>
+          <li>✓ Comfortable - AC, pushback seats, music system</li>
+          <li>✓ Flexible - stop anywhere, change plans on the go</li>
+          <li>✓ Luggage space - ample room for everyone's bags</li>
+        </ul>
+      </div>
+
+      <h2>Top 15 Group Trip Destinations in India</h2>
+
+      <h3>1. Manali, Himachal Pradesh ⭐ #1 Choice</h3>
+      <p><a href="/sightseeing/manali" class="text-blue-600 hover:underline font-semibold">Manali</a> tops every group trip wishlist for good reason. Snow-capped mountains, adventure activities, cozy cafes, and vibrant nightlife make it perfect for friends and families alike.</p>
+
+      <h4>Why Groups Love Manali:</h4>
+      <ul>
+        <li>Adventure activities for everyone - paragliding, skiing, zorbing</li>
+        <li>Solang Valley snow point - perfect group photos</li>
+        <li>Cafes in Old Manali for evening hangouts</li>
+        <li>Rohtang Pass/Atal Tunnel for scenic drives</li>
+        <li>Budget-friendly stay options for large groups</li>
+      </ul>
+      <p><strong>Best For:</strong> Friends, College Groups, Adventure Lovers</p>
+      <p><strong>Ideal Duration:</strong> 4-5 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-manali" class="text-blue-600 hover:underline">Book Delhi to Manali Tempo Traveller</a> | <a href="/tempo-traveller/chandigarh-to-manali" class="text-blue-600 hover:underline">Chandigarh to Manali</a></p>
+
+      <h3>2. Jaipur, Rajasthan - Royal Group Experience</h3>
+      <p>The <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Pink City</a> offers a perfect blend of history, culture, and luxury. Group photos at majestic forts, shopping sprees at colorful markets, and royal dining experiences await!</p>
+
+      <h4>Group Highlights:</h4>
+      <ul>
+        <li>Amber Fort elephant/jeep rides together</li>
+        <li>Traditional Rajasthani dinner at Chokhi Dhani</li>
+        <li>Shopping at Johari Bazaar and Bapu Bazaar</li>
+        <li>Nahargarh Fort sunset views</li>
+        <li>Stay at heritage havelis</li>
+      </ul>
+      <p><strong>Best For:</strong> Families, Corporate Outings, Heritage Lovers</p>
+      <p><strong>Ideal Duration:</strong> 2-3 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-jaipur" class="text-blue-600 hover:underline">Book Delhi to Jaipur Tempo Traveller</a></p>
+
+      <h3>3. Rishikesh, Uttarakhand - Adventure Capital</h3>
+      <p><a href="/sightseeing/rishikesh" class="text-blue-600 hover:underline font-semibold">Rishikesh</a> is the ultimate destination for adventure-seeking groups. White water rafting, bungee jumping, camping by the Ganga - every activity is better with friends!</p>
+
+      <h4>Group Activities:</h4>
+      <ul>
+        <li>River rafting (16 km stretch recommended for groups)</li>
+        <li>Bungee jumping, flying fox, giant swing</li>
+        <li>Beach camping with bonfires</li>
+        <li>Beatles Ashram exploration</li>
+        <li>Evening Ganga Aarti at Triveni Ghat</li>
+      </ul>
+      <p><strong>Best For:</strong> Friends, Bachelor Parties, Adventure Groups</p>
+      <p><strong>Ideal Duration:</strong> 2-3 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-rishikesh" class="text-blue-600 hover:underline">Book Delhi to Rishikesh Tempo Traveller</a></p>
+
+      <h3>4. Goa - Beach Party Paradise</h3>
+      <p>No list of group destinations is complete without Goa! Beaches, nightlife, water sports, and that laid-back vibe make it perfect for friend groups and bachelor/bachelorette trips.</p>
+
+      <h4>Group Must-Dos:</h4>
+      <ul>
+        <li>Beach hopping - Baga, Calangute, Anjuna, Palolem</li>
+        <li>Nightclubs and beach shacks</li>
+        <li>Water sports - banana boats, parasailing, jet skiing</li>
+        <li>Rent bikes/scooters and explore together</li>
+        <li>Dudhsagar Falls day trip</li>
+      </ul>
+      <p><strong>Best For:</strong> Friends, Bachelor/Bachelorette Parties</p>
+      <p><strong>Ideal Duration:</strong> 4-5 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-goa-corporate-trips" class="text-blue-600 hover:underline">Book Delhi to Goa Tempo Traveller</a></p>
+
+      <h3>5. Udaipur, Rajasthan - Romantic Lake City</h3>
+      <p><a href="/sightseeing/udaipur" class="text-blue-600 hover:underline font-semibold">Udaipur</a>'s stunning lakes, palaces, and romantic ambiance make it ideal for couple groups and family reunions.</p>
+
+      <h4>Group Activities:</h4>
+      <ul>
+        <li>Lake Pichola boat ride at sunset</li>
+        <li>City Palace group tour</li>
+        <li>Rooftop dining with lake views</li>
+        <li>Day trip to Chittorgarh Fort</li>
+        <li>Cultural shows and puppet shows</li>
+      </ul>
+      <p><strong>Best For:</strong> Couples, Families, Photography Groups</p>
+      <p><strong>Ideal Duration:</strong> 2-3 Days</p>
+      <p>📍 <a href="/tempo-traveller/jaipur-to-udaipur-mount-abu" class="text-blue-600 hover:underline">Book Jaipur to Udaipur Tempo Traveller</a></p>
+
+      <h3>6. Shimla-Manali Circuit - Classic Hill Station Combo</h3>
+      <p>Why choose one when you can have both? The <a href="/tempo-traveller/delhi-to-shimla-manali-kullu-kasol" class="text-blue-600 hover:underline font-semibold">Shimla-Manali circuit</a> is perfect for groups wanting diverse experiences.</p>
+
+      <h4>Circuit Highlights:</h4>
+      <ul>
+        <li>Shimla - Mall Road, Ridge, Kufri</li>
+        <li>Kullu - River rafting, Manikaran hot springs</li>
+        <li>Kasol - Hippie vibes, Israeli cafes</li>
+        <li>Manali - Snow, adventure, nightlife</li>
+      </ul>
+      <p><strong>Best For:</strong> All Groups</p>
+      <p><strong>Ideal Duration:</strong> 6-7 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-shimla-manali-kullu-kasol" class="text-blue-600 hover:underline">Book Delhi to Shimla Manali Tempo</a></p>
+
+      <h3>7. Rajasthan Circuit - Jaipur, Jodhpur, Jaisalmer</h3>
+      <p>The complete <a href="/tempo-traveller/delhi-to-jaipur-jodhpur-jaisalmer" class="text-blue-600 hover:underline font-semibold">Rajasthan circuit</a> offers royal experiences at every stop. Perfect for groups wanting a cultural immersion.</p>
+
+      <h4>Circuit Highlights:</h4>
+      <ul>
+        <li>Jaipur - Forts, palaces, shopping</li>
+        <li>Jodhpur - Mehrangarh Fort, blue city walk</li>
+        <li>Jaisalmer - Desert safari, camping under stars</li>
+        <li>Sam Sand Dunes camel safari as a group</li>
+      </ul>
+      <p><strong>Best For:</strong> Families, Photography Groups, Heritage Lovers</p>
+      <p><strong>Ideal Duration:</strong> 6-7 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-jaipur-jodhpur-jaisalmer" class="text-blue-600 hover:underline">Book Rajasthan Circuit Tempo</a></p>
+
+      <h3>8. Amritsar - Spiritual & Cultural Experience</h3>
+      <p><a href="/sightseeing/amritsar" class="text-blue-600 hover:underline font-semibold">Amritsar</a> offers powerful group experiences - the Golden Temple's langar, Wagah Border ceremony, and incredible Punjabi food!</p>
+
+      <h4>Group Highlights:</h4>
+      <ul>
+        <li>Golden Temple night visit - magical experience</li>
+        <li>Langar (community kitchen) - feed 50,000 daily</li>
+        <li>Wagah Border parade - goosebump-inducing</li>
+        <li>Jallianwala Bagh historical walk</li>
+        <li>Punjabi food trail together</li>
+      </ul>
+      <p><strong>Best For:</strong> Families, Spiritual Groups, Food Lovers</p>
+      <p><strong>Ideal Duration:</strong> 2 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-amritsar-golden-temple-wagah-border" class="text-blue-600 hover:underline">Book Delhi to Amritsar Tempo</a></p>
+
+      <h3>9. Jim Corbett National Park - Wildlife Adventure</h3>
+      <p>India's oldest national park offers exciting <a href="/sightseeing/jim-corbett" class="text-blue-600 hover:underline font-semibold">jungle safaris</a> perfect for groups. Spotting tigers together creates unforgettable memories!</p>
+
+      <h4>Group Activities:</h4>
+      <ul>
+        <li>Jeep safari in Bijrani/Dhikala zones</li>
+        <li>Stay at jungle resorts with group activities</li>
+        <li>Nature walks and bird watching</li>
+        <li>River rafting in Kosi River</li>
+        <li>Bonfire nights with wildlife stories</li>
+      </ul>
+      <p><strong>Best For:</strong> Families, Nature Lovers, Corporate Retreats</p>
+      <p><strong>Ideal Duration:</strong> 2-3 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-nainital-bhimtal-jim-corbett" class="text-blue-600 hover:underline">Book Delhi to Corbett Tempo</a></p>
+
+      <h3>10. Haridwar-Rishikesh - Spiritual Retreat</h3>
+      <p>Combine spirituality with adventure in this <a href="/tempo-traveller/delhi-to-haridwar-rishikesh-dehradun-mussoorie" class="text-blue-600 hover:underline font-semibold">classic circuit</a>. Perfect for groups seeking meaningful experiences.</p>
+
+      <h4>Group Highlights:</h4>
+      <ul>
+        <li>Ganga Aarti at Har Ki Pauri</li>
+        <li>River rafting in Rishikesh</li>
+        <li>Yoga/meditation sessions</li>
+        <li>Temple visits and spiritual talks</li>
+        <li>Lakshman Jhula sunset walks</li>
+      </ul>
+      <p><strong>Best For:</strong> Families, Spiritual Groups, Wellness Retreats</p>
+      <p><strong>Ideal Duration:</strong> 3-4 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-haridwar-rishikesh-dehradun-mussoorie" class="text-blue-600 hover:underline">Book Delhi to Haridwar Rishikesh Tempo</a></p>
+
+      <h3>11. Agra & Mathura-Vrindavan Circuit</h3>
+      <p>Combine Taj Mahal with the spiritual energy of <a href="/tempo-traveller/delhi-to-agra-mathura-vrindavan" class="text-blue-600 hover:underline font-semibold">Krishna's birthplace</a>. Great for family groups with mixed interests.</p>
+      <p><strong>Best For:</strong> Families, Religious Groups</p>
+      <p><strong>Ideal Duration:</strong> 2-3 Days</p>
+
+      <h3>12. Nainital & Bhimtal - Lake District</h3>
+      <p>Peaceful <a href="/sightseeing/nainital" class="text-blue-600 hover:underline font-semibold">hill stations</a> perfect for family groups and friend getaways. Boating, cable car rides, and scenic drives await.</p>
+      <p><strong>Best For:</strong> Families, Senior Citizen Groups</p>
+      <p><strong>Ideal Duration:</strong> 3-4 Days</p>
+      <p>📍 <a href="/tempo-traveller/delhi-to-nainital-bhimtal-jim-corbett" class="text-blue-600 hover:underline">Book Delhi to Nainital Tempo</a></p>
+
+      <h3>13. Dharamshala & Dalhousie - Offbeat Himachal</h3>
+      <p>Less crowded than Shimla-Manali, <a href="/tempo-traveller/delhi-to-dharamshala" class="text-blue-600 hover:underline font-semibold">Dharamshala</a> offers Tibetan culture, while Dalhousie has colonial charm.</p>
+      <p><strong>Best For:</strong> Peace Seekers, Offbeat Travelers</p>
+      <p><strong>Ideal Duration:</strong> 4-5 Days</p>
+      <p>📍 <a href="/tempo-traveller/chandigarh-to-dharamshala-dalhousie-khajjiar" class="text-blue-600 hover:underline">Book Dharamshala Dalhousie Tempo</a></p>
+
+      <h3>14. Kasol & Kheerganga - Backpacker Paradise</h3>
+      <p><a href="/tempo-traveller/delhi-to-kasol-kheerganga-manikaran" class="text-blue-600 hover:underline font-semibold">Kasol</a> is the ultimate destination for young friend groups. Trekking, camping, hot springs, and chill vibes.</p>
+      <p><strong>Best For:</strong> Young Friends, Trekkers, Backpackers</p>
+      <p><strong>Ideal Duration:</strong> 3-4 Days</p>
+
+      <h3>15. Varanasi & Ayodhya - Spiritual Circuit</h3>
+      <p>For groups seeking spiritual experiences, the <a href="/tempo-traveller/delhi-to-varanasi-ayodhya-prayagraj-gaya" class="text-blue-600 hover:underline font-semibold">Varanasi-Ayodhya circuit</a> offers profound experiences. Ram Mandir, Ganga Aarti, ancient temples.</p>
+      <p><strong>Best For:</strong> Families, Senior Citizens, Religious Groups</p>
+      <p><strong>Ideal Duration:</strong> 4-5 Days</p>
+
+      <h2>Tempo Traveller Booking Guide</h2>
+      <p>Choose the right tempo for your group size:</p>
+
+      <table class="w-full my-4 border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-blue-100">
+            <th class="border border-gray-300 p-2">Type</th>
+            <th class="border border-gray-300 p-2">Capacity</th>
+            <th class="border border-gray-300 p-2">Best For</th>
+            <th class="border border-gray-300 p-2">Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2">12 Seater</td>
+            <td class="border border-gray-300 p-2">10-12 persons</td>
+            <td class="border border-gray-300 p-2">Small families, friend groups</td>
+            <td class="border border-gray-300 p-2">₹23/km</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">17 Seater</td>
+            <td class="border border-gray-300 p-2">14-17 persons</td>
+            <td class="border border-gray-300 p-2">Medium groups, weddings</td>
+            <td class="border border-gray-300 p-2">₹26/km</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">20 Seater</td>
+            <td class="border border-gray-300 p-2">18-20 persons</td>
+            <td class="border border-gray-300 p-2">Large families, corporate</td>
+            <td class="border border-gray-300 p-2">₹27/km</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">26 Seater Maharaja</td>
+            <td class="border border-gray-300 p-2">22-26 persons</td>
+            <td class="border border-gray-300 p-2">Large groups, luxury travel</td>
+            <td class="border border-gray-300 p-2">₹28/km</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">🚐 Ready to Plan Your Group Trip?</h3>
+        <p class="mb-4 text-gray-700">Book a comfortable tempo traveller for your next adventure. AC vehicles, experienced drivers, flexible itineraries.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">View All Tempo Routes →</a>
+          <a href="/contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors">Get Custom Quote →</a>
+        </div>
+      </div>
+    \`,
+    date: "2025-12-20",
+    readTime: "16 min read",
+    image: "/images/tempo/17_seater.jpg",
+    category: "Travel Tips",
+    tags: ["Group Travel", "Tempo Traveller", "Friends Trip", "Family Trip", "Road Trip"],
+    keywords: ["group trip destinations india", "tempo traveller trip", "friends trip india", "best places for group travel", "family trip india", "tempo traveller booking", "group tour packages", "road trip india", "bachelor trip india", "corporate outing india", "group travel 2026", "tempo traveller rental", "12 seater tempo", "17 seater tempo", "manali group trip", "goa group trip", "rajasthan group trip"],
+    featured: true,
+    views: 0,
+    metaTitle: "15 Best Group Trip Destinations India 2026 | Tempo Traveller Travel Guide",
+    metaDescription: "Discover 15 best destinations for group trips in India 2026. Perfect for tempo traveller travel - Manali, Goa, Jaipur, Rishikesh & more. Plan your group adventure!"
+  },
+
+  {
+    id: 104,
+    slug: "wedding-car-rental-india-complete-guide-2026",
+    title: "Wedding Car Rental in India 2026: Complete Guide to Luxury Cars, Baraat Tempo & Booking Tips",
+    excerpt: "Planning your dream wedding? Complete guide to wedding car rental in India - from luxury BMW, Audi, Mercedes for bride/groom entry to decorated baraat tempo travellers. City-wise prices, booking tips & more.",
+
+    relatedTours: [
+      { id: "wedding-1", name: "Delhi Wedding Car Rental", slug: "wedding/delhi", city: "delhi", price: "₹8,000/day" },
+      { id: "wedding-2", name: "Jaipur Wedding Car Rental", slug: "wedding/jaipur", city: "jaipur", price: "₹7,000/day" },
+      { id: "wedding-3", name: "Wedding Tempo Traveller Delhi", slug: "tempo-traveller", city: "delhi", price: "₹10,000/day" }
+    ],
+
+    relatedDestinations: [
+      { name: "Delhi Wedding Cars", slug: "wedding/delhi", type: "service" },
+      { name: "Jaipur Wedding Cars", slug: "wedding/jaipur", type: "service" },
+      { name: "Udaipur Wedding Cars", slug: "wedding/udaipur", type: "service" }
+    ],
+
+    primaryCTA: {
+      text: "Book Wedding Cars",
+      url: "/wedding",
+      description: "Luxury cars and tempo travellers for your special day",
+      price: "Starting from ₹7,000/day"
+    },
+
+    content: \`
+      <p>Your wedding day is one of the most special moments of your life, and every detail matters - including how you arrive! Whether you dream of a grand bridal entry in a <strong>white Mercedes</strong>, a groom's arrival in a <strong>decorated BMW</strong>, or a lively <strong>baraat procession with tempo travellers</strong>, choosing the right wedding transportation sets the tone for your celebration. This comprehensive guide covers everything about <a href="/wedding" class="text-blue-600 hover:underline font-semibold">wedding car rental in India</a> for 2026.</p>
+
+      <div class="my-6 p-4 bg-pink-50 border-l-4 border-pink-500 rounded-r-lg">
+        <p class="font-semibold text-pink-800">💍 Pro Tip: Book your wedding vehicles at least 2-3 months in advance, especially during peak wedding season (November-February). Popular luxury cars get booked quickly!</p>
+      </div>
+
+      <h2>Types of Wedding Vehicles</h2>
+
+      <h3>1. Luxury Sedans - Bride & Groom Entry</h3>
+      <p>Make a statement with premium luxury cars:</p>
+
+      <h4>Most Popular Choices:</h4>
+      <ul>
+        <li><strong>Mercedes E-Class / S-Class:</strong> Timeless elegance, perfect for traditional weddings</li>
+        <li><strong>BMW 5 Series / 7 Series:</strong> Sporty luxury, popular among young couples</li>
+        <li><strong>Audi A6 / A8:</strong> Modern sophistication with tech-forward appeal</li>
+        <li><strong>Jaguar XF / XJ:</strong> British elegance, distinctive styling</li>
+        <li><strong>Rolls Royce / Bentley:</strong> Ultimate luxury for destination weddings</li>
+      </ul>
+
+      <table class="w-full my-4 border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-pink-100">
+            <th class="border border-gray-300 p-2">Car Model</th>
+            <th class="border border-gray-300 p-2">Day Rate</th>
+            <th class="border border-gray-300 p-2">Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2">Mercedes E-Class</td>
+            <td class="border border-gray-300 p-2">₹15,000-20,000</td>
+            <td class="border border-gray-300 p-2">Bride/Groom Entry</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">BMW 5 Series</td>
+            <td class="border border-gray-300 p-2">₹12,000-18,000</td>
+            <td class="border border-gray-300 p-2">Groom Entry</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Audi A6</td>
+            <td class="border border-gray-300 p-2">₹12,000-16,000</td>
+            <td class="border border-gray-300 p-2">Both</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">Rolls Royce</td>
+            <td class="border border-gray-300 p-2">₹50,000-1,00,000</td>
+            <td class="border border-gray-300 p-2">Luxury Weddings</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2. Luxury SUVs - Family & VIP Transport</h3>
+      <p>Perfect for transporting parents, in-laws, and VIP guests:</p>
+      <ul>
+        <li><strong>Toyota Fortuner:</strong> Reliable, spacious, popular choice (₹8,000-12,000/day)</li>
+        <li><strong>Mercedes GLS:</strong> Premium 7-seater luxury (₹25,000-35,000/day)</li>
+        <li><strong>Audi Q7:</strong> Elegant family transport (₹20,000-28,000/day)</li>
+        <li><strong>Range Rover:</strong> Ultimate statement vehicle (₹40,000-60,000/day)</li>
+      </ul>
+
+      <h3>3. Baraat Tempo Travellers - The Life of the Party!</h3>
+      <p>No Indian wedding is complete without a grand baraat! Our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">decorated tempo travellers</a> come equipped with:</p>
+      <ul>
+        <li>✓ Professional DJ system with speakers</li>
+        <li>✓ LED lights and decorations</li>
+        <li>✓ AC for guest comfort</li>
+        <li>✓ Space for 12-26 baraatis</li>
+        <li>✓ Pushback seats for dancing</li>
+      </ul>
+
+      <table class="w-full my-4 border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-blue-100">
+            <th class="border border-gray-300 p-2">Tempo Type</th>
+            <th class="border border-gray-300 p-2">Capacity</th>
+            <th class="border border-gray-300 p-2">Wedding Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2">12 Seater with DJ</td>
+            <td class="border border-gray-300 p-2">10-12 baraatis</td>
+            <td class="border border-gray-300 p-2">₹8,000-10,000/day</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">17 Seater with DJ</td>
+            <td class="border border-gray-300 p-2">14-17 baraatis</td>
+            <td class="border border-gray-300 p-2">₹10,000-12,000/day</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">26 Seater Maharaja</td>
+            <td class="border border-gray-300 p-2">22-26 baraatis</td>
+            <td class="border border-gray-300 p-2">₹12,000-15,000/day</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>4. Vintage & Classic Cars</h3>
+      <p>For couples wanting a royal, old-world charm:</p>
+      <ul>
+        <li><strong>Vintage Rolls Royce:</strong> 1930s-1960s models (₹25,000-50,000/day)</li>
+        <li><strong>Classic Mercedes:</strong> Timeless elegance (₹15,000-30,000/day)</li>
+        <li><strong>Vintage Ambassador:</strong> Desi charm with modern comfort (₹8,000-12,000/day)</li>
+        <li><strong>Classic Fiat/Contessa:</strong> Retro vibes (₹6,000-10,000/day)</li>
+      </ul>
+
+      <h2>Wedding Car Rental by City</h2>
+
+      <h3>Delhi NCR Wedding Cars</h3>
+      <p><a href="/wedding/delhi" class="text-blue-600 hover:underline font-semibold">Delhi</a> offers the largest selection of luxury wedding cars in India. Whether your venue is in South Delhi, Gurgaon, Noida, or Faridabad, we've got you covered.</p>
+      <ul>
+        <li>Largest fleet of BMW, Mercedes, Audi</li>
+        <li>Same-day availability for last-minute bookings</li>
+        <li>Multi-city wedding coordination</li>
+        <li>Price Range: ₹8,000 - ₹50,000/day</li>
+      </ul>
+
+      <h3>Jaipur Wedding Cars - Royal Rajasthani Style</h3>
+      <p><a href="/wedding/jaipur" class="text-blue-600 hover:underline font-semibold">Jaipur</a> weddings deserve royal transportation! Palace wedding specialists with traditional Rajasthani decorations.</p>
+      <ul>
+        <li>Heritage palace wedding experts</li>
+        <li>Vintage car collection for royal entries</li>
+        <li>Traditional baraat arrangements</li>
+        <li>Price Range: ₹7,000 - ₹45,000/day</li>
+      </ul>
+
+      <h3>Udaipur Wedding Cars - Lake Palace Romance</h3>
+      <p><a href="/wedding/udaipur" class="text-blue-600 hover:underline font-semibold">Udaipur</a> destination weddings require special transportation. Boat coordination, lakeside venue access, and luxury fleet available.</p>
+      <ul>
+        <li>Lake palace wedding specialists</li>
+        <li>Royal vintage car fleet</li>
+        <li>Boat + car combo packages</li>
+        <li>Price Range: ₹9,000 - ₹55,000/day</li>
+      </ul>
+
+      <h3>Other Popular Wedding Destinations</h3>
+      <div class="grid md:grid-cols-2 gap-4 my-4">
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <h4 class="font-bold"><a href="/wedding/chandigarh" class="text-blue-600 hover:underline">Chandigarh</a></h4>
+          <p class="text-sm">Punjabi wedding specialists, baraat with DJ tempo</p>
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <h4 class="font-bold"><a href="/wedding/amritsar" class="text-blue-600 hover:underline">Amritsar</a></h4>
+          <p class="text-sm">Sikh wedding experts, Golden Temple coordination</p>
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <h4 class="font-bold"><a href="/wedding/shimla" class="text-blue-600 hover:underline">Shimla</a></h4>
+          <p class="text-sm">Hill station wedding specialists, 4x4 vehicles</p>
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <h4 class="font-bold"><a href="/wedding/jodhpur" class="text-blue-600 hover:underline">Jodhpur</a></h4>
+          <p class="text-sm">Fort wedding specialists, heritage vehicles</p>
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <h4 class="font-bold"><a href="/wedding/agra" class="text-blue-600 hover:underline">Agra</a></h4>
+          <p class="text-sm">Taj Mahal photoshoot cars, heritage options</p>
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <h4 class="font-bold"><a href="/wedding/haridwar" class="text-blue-600 hover:underline">Haridwar</a></h4>
+          <p class="text-sm">Temple wedding specialists, spiritual ceremonies</p>
+        </div>
+      </div>
+
+      <h2>Wedding Car Decoration Options</h2>
+      <p>Transform any car into a wedding chariot with our decoration services:</p>
+
+      <h3>Standard Decoration (₹2,000-3,000)</h3>
+      <ul>
+        <li>Fresh flower garlands</li>
+        <li>Ribbon and bow accents</li>
+        <li>Just Married signs</li>
+      </ul>
+
+      <h3>Premium Decoration (₹4,000-6,000)</h3>
+      <ul>
+        <li>Rose petals and marigold arrangements</li>
+        <li>Heart-shaped flower arrangements</li>
+        <li>Coordinated color themes</li>
+        <li>LED fairy lights</li>
+      </ul>
+
+      <h3>Royal Decoration (₹8,000-12,000)</h3>
+      <ul>
+        <li>Exotic flower arrangements (orchids, lilies)</li>
+        <li>Full car coverage with flowers</li>
+        <li>Custom monograms and signage</li>
+        <li>Red carpet service</li>
+      </ul>
+
+      <h2>Multi-Day Wedding Packages</h2>
+      <p>Indian weddings span multiple days. Our packages cover all events:</p>
+
+      <h3>3-Day Wedding Package</h3>
+      <ul>
+        <li>Day 1: Mehendi & Sangeet - 2 SUVs for family transport</li>
+        <li>Day 2: Haldi - Decorated vehicle for bride/groom</li>
+        <li>Day 3: Wedding Day - Luxury car + Baraat tempo + Guest transport</li>
+        <li><strong>Package Price:</strong> Starting ₹45,000</li>
+      </ul>
+
+      <h3>5-Day Wedding Package</h3>
+      <ul>
+        <li>Engagement, Mehendi, Sangeet, Haldi, Wedding, Reception</li>
+        <li>Complete fleet management</li>
+        <li>Airport pickup for guests</li>
+        <li>Coordination across multiple venues</li>
+        <li><strong>Package Price:</strong> Starting ₹85,000</li>
+      </ul>
+
+      <h2>Booking Tips for Wedding Cars</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Book Early:</strong> 2-3 months in advance, especially for peak season (Nov-Feb)</li>
+        <li><strong>Visit & Inspect:</strong> See the actual car before booking, check AC, interiors</li>
+        <li><strong>Confirm Decorations:</strong> Discuss decoration style, colors, and additional costs</li>
+        <li><strong>Check Backup:</strong> Ensure the provider has backup vehicles</li>
+        <li><strong>Clarify Timings:</strong> Define pickup/drop times clearly to avoid extra charges</li>
+        <li><strong>Get Everything in Writing:</strong> Vehicle model, decoration, timings, driver details</li>
+        <li><strong>Coordinate with Venue:</strong> Ensure the venue allows the specific vehicle for entry</li>
+        <li><strong>Plan for Traffic:</strong> Account for wedding season traffic, especially in Delhi/Mumbai</li>
+      </ol>
+
+      <h2>Why Choose Triveni Cabs for Your Wedding?</h2>
+      <ul>
+        <li>✅ Largest fleet of luxury and decorated vehicles</li>
+        <li>✅ Professional, uniformed chauffeurs</li>
+        <li>✅ On-time guarantee with backup vehicles</li>
+        <li>✅ Transparent pricing, no hidden costs</li>
+        <li>✅ Multi-city wedding coordination</li>
+        <li>✅ 24/7 customer support during your wedding</li>
+        <li>✅ Red carpet service available</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-pink-100 to-rose-100 border-l-4 border-pink-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">💍 Make Your Grand Entry Unforgettable!</h3>
+        <p class="mb-4 text-gray-700">Book luxury wedding cars and baraat tempo travellers for your special day. We make your wedding transportation perfect!</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/wedding" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-700 transition-colors">View Wedding Cars →</a>
+          <a href="/contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Get Wedding Quote →</a>
+        </div>
+      </div>
+    \`,
+    date: "2025-12-20",
+    readTime: "14 min read",
+    image: "/images/wedding_section.jpg",
+    category: "Wedding",
+    tags: ["Wedding", "Luxury Cars", "Baraat", "Marriage", "Wedding Transport"],
+    keywords: ["wedding car rental", "wedding car booking", "bridal car", "groom car", "baraat tempo traveller", "luxury wedding car", "BMW wedding car", "Mercedes wedding car", "Audi wedding car", "decorated wedding car", "wedding car decoration", "wedding car price", "baraat car", "wedding car delhi", "wedding car jaipur", "wedding car rental india 2026", "vintage wedding car", "wedding tempo", "shaadi car rental"],
+    featured: true,
+    views: 0,
+    metaTitle: "Wedding Car Rental India 2026 | Luxury BMW, Audi, Mercedes & Baraat Tempo",
+    metaDescription: "Complete guide to wedding car rental in India 2026. Book luxury BMW, Audi, Mercedes for bride/groom entry & decorated baraat tempo travellers. City-wise prices & tips!"
+  },
+
+  {
+    id: 105,
+    slug: "udaipur-romantic-getaway-complete-guide-2026",
+    title: "Udaipur Complete Travel Guide 2026: City of Lakes, Royal Palaces & Romantic Experiences",
+    excerpt: "Discover why Udaipur is called the most romantic city in India! Complete guide to the City of Lakes - lake palaces, heritage hotels, sunset boat rides, local food, and planning your perfect Udaipur trip.",
+
+    relatedTours: [
+      { id: "udaipur-1", name: "Udaipur Full Day Tour", slug: "udaipur-full-day-tour", city: "udaipur", price: "₹2,500" },
+      { id: "udaipur-2", name: "Udaipur Mount Abu Tour", slug: "udaipur-mount-abu", city: "udaipur", price: "₹12,000" },
+      { id: "udaipur-3", name: "Rajasthan Complete Tour", slug: "rajasthan-complete-tour", city: "jaipur", price: "₹35,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Udaipur", slug: "udaipur", type: "city" },
+      { name: "Mount Abu", slug: "mount-abu", type: "city" },
+      { name: "Jodhpur", slug: "jodhpur", type: "city" },
+      { name: "Jaipur", slug: "jaipur", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Udaipur Tour",
+      url: "/sightseeing/udaipur",
+      description: "Experience the Venice of the East with our curated tours",
+      price: "Starting from ₹2,500"
+    },
+
+    content: \`
+      <p><strong>Udaipur</strong>, fondly called the <em>Venice of the East</em> and <em>City of Lakes</em>, is arguably India's most romantic destination. Nestled in the Aravalli Hills of <a href="/sightseeing/rajasthan" class="text-blue-600 hover:underline font-semibold">Rajasthan</a>, this enchanting city captivates visitors with its shimmering lakes, magnificent palaces, and old-world charm. Whether you're planning a honeymoon, anniversary trip, or a heritage holiday, <a href="/sightseeing/udaipur" class="text-blue-600 hover:underline font-semibold">Udaipur</a> promises an unforgettable experience in 2026.</p>
+
+      <div class="my-6 p-4 bg-cyan-50 border-l-4 border-cyan-500 rounded-r-lg">
+        <p class="font-semibold text-cyan-800">💝 Romance Tip: Book a sunset boat ride on Lake Pichola followed by rooftop dinner overlooking the Lake Palace. This is consistently rated as one of India's most romantic experiences!</p>
+      </div>
+
+      <h2>Why Udaipur is Special</h2>
+      <p>Udaipur stands apart from other Rajasthani cities for several reasons:</p>
+      <ul>
+        <li><strong>Lake Setting:</strong> Five interconnected lakes create a magical landscape</li>
+        <li><strong>Palace Architecture:</strong> The City Palace is Rajasthan's largest palace complex</li>
+        <li><strong>Romantic Ambiance:</strong> Voted "Best City in the World" by Travel + Leisure</li>
+        <li><strong>James Bond Connection:</strong> Featured in Octopussy (1983)</li>
+        <li><strong>Living Heritage:</strong> The royal family still resides in part of the palace</li>
+      </ul>
+
+      <h2>How to Reach Udaipur</h2>
+
+      <h3>By Air</h3>
+      <p><strong>Maharana Pratap Airport (UDR)</strong> is 22 km from the city center. Direct flights connect from Delhi, Mumbai, Jaipur, and Bangalore.</p>
+
+      <h3>By Train</h3>
+      <p>Udaipur City Railway Station is well-connected:</p>
+      <ul>
+        <li>Delhi - Mewar Express, Chetak Express (12-14 hours)</li>
+        <li>Jaipur - Direct trains (6-7 hours)</li>
+        <li>Mumbai - Direct trains (14-16 hours)</li>
+      </ul>
+
+      <h3>By Road - Best for Rajasthan Circuit</h3>
+      <p>Udaipur is perfect for a Rajasthan road trip. Our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller services</a> offer comfortable group travel:</p>
+
+      <div class="my-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+        <h4 class="font-bold text-blue-800 mb-2">Popular Routes to Udaipur:</h4>
+        <ul class="text-blue-700">
+          <li>• <a href="/tempo-traveller/jaipur-to-udaipur-mount-abu" class="hover:underline">Jaipur to Udaipur</a> - 395 km (6-7 hours)</li>
+          <li>• <a href="/tempo-traveller/jodhpur-to-udaipur-mount-abu" class="hover:underline">Jodhpur to Udaipur</a> - 250 km (4-5 hours)</li>
+          <li>• <a href="/tempo-traveller/ahmedabad-to-udaipur-mount-abu" class="hover:underline">Ahmedabad to Udaipur</a> - 260 km (4-5 hours)</li>
+          <li>• <a href="/tempo-traveller/delhi-to-udaipur-mount-abu-chittorgarh" class="hover:underline">Delhi to Udaipur</a> - 660 km (10-12 hours)</li>
+        </ul>
+      </div>
+
+      <h2>Top Places to Visit in Udaipur</h2>
+
+      <h3>1. City Palace ⭐ Must Visit</h3>
+      <p>Rajasthan's largest palace complex, overlooking Lake Pichola. Built over 400 years by successive Maharanas, it's a fusion of Rajasthani and Mughal architecture.</p>
+      <ul>
+        <li><strong>Highlights:</strong> Crystal Gallery, Mor Chowk (Peacock Courtyard), Zenana Mahal</li>
+        <li><strong>Timings:</strong> 9:30 AM - 5:30 PM</li>
+        <li><strong>Entry:</strong> ₹300 for Indians, ₹700 for Crystal Gallery</li>
+        <li><strong>Time Needed:</strong> 2-3 hours</li>
+      </ul>
+
+      <h3>2. Lake Pichola - Heart of Udaipur</h3>
+      <p>The soul of Udaipur! This artificial lake hosts two island palaces and offers stunning sunset views.</p>
+      <ul>
+        <li><strong>Boat Ride:</strong> ₹400-800 per person (1 hour)</li>
+        <li><strong>Best Time:</strong> Sunset (5-7 PM)</li>
+        <li><strong>Islands:</strong> Jag Mandir, Jag Niwas (Lake Palace Hotel)</li>
+      </ul>
+
+      <h3>3. Jag Mandir Palace</h3>
+      <p>The "Island of Romance" on Lake Pichola. The palace influenced Shah Jahan's design of the Taj Mahal!</p>
+      <ul>
+        <li><strong>Access:</strong> Boat from City Palace jetty</li>
+        <li><strong>Highlights:</strong> Gul Mahal, elephant statues, gardens</li>
+        <li><strong>Restaurant:</strong> Darikhana offers romantic dining</li>
+      </ul>
+
+      <h3>4. Monsoon Palace (Sajjangarh)</h3>
+      <p>A hilltop palace offering panoramic views of Udaipur and surrounding lakes. Best at sunset!</p>
+      <ul>
+        <li><strong>Location:</strong> 5 km from city center</li>
+        <li><strong>Entry:</strong> ₹80 for Indians + vehicle charges</li>
+        <li><strong>Best Time:</strong> 4-6 PM for sunset views</li>
+      </ul>
+
+      <h3>5. Fateh Sagar Lake</h3>
+      <p>A beautiful lake with three islands, including Nehru Park. Popular with locals for evening walks.</p>
+      <ul>
+        <li><strong>Boat Ride:</strong> ₹200-300 per person</li>
+        <li><strong>Nehru Park:</strong> Accessible by boat, has a restaurant</li>
+        <li><strong>Solar Observatory:</strong> On an island, open to visitors</li>
+      </ul>
+
+      <h3>6. Jagdish Temple</h3>
+      <p>A 17th-century Vishnu temple in the heart of the old city. The Indo-Aryan architecture is stunning.</p>
+      <ul>
+        <li><strong>Timings:</strong> 5:00 AM - 2:00 PM, 4:00 PM - 10:00 PM</li>
+        <li><strong>Entry:</strong> Free</li>
+        <li><strong>Note:</strong> Dress modestly, remove shoes</li>
+      </ul>
+
+      <h3>7. Saheliyon Ki Bari (Garden of Maidens)</h3>
+      <p>A beautiful ornamental garden with fountains, built for 48 royal women attendants.</p>
+      <ul>
+        <li><strong>Timings:</strong> 9:00 AM - 7:00 PM</li>
+        <li><strong>Entry:</strong> ₹50 for Indians</li>
+        <li><strong>Best Feature:</strong> Lotus pool, marble elephants</li>
+      </ul>
+
+      <h3>8. Bagore Ki Haveli</h3>
+      <p>An 18th-century haveli on Gangaur Ghat showcasing aristocratic Mewari lifestyle.</p>
+      <ul>
+        <li><strong>Evening Show:</strong> Dharohar folk dance (7:00 PM daily)</li>
+        <li><strong>Entry:</strong> ₹60 museum, ₹150 for dance show</li>
+        <li><strong>Must See:</strong> World's largest turban, puppet shows</li>
+      </ul>
+
+      <h2>Day Trips from Udaipur</h2>
+
+      <h3>Chittorgarh Fort (112 km)</h3>
+      <p>India's largest fort, a UNESCO World Heritage Site. The tales of Rani Padmini's valor are legendary.</p>
+      <p><strong>Time Needed:</strong> Full day trip</p>
+
+      <h3>Kumbhalgarh Fort (84 km)</h3>
+      <p>The "Great Wall of India" with the world's second-longest wall after China. Birthplace of Maharana Pratap.</p>
+      <p><strong>Time Needed:</strong> Half day trip</p>
+
+      <h3>Ranakpur Jain Temples (90 km)</h3>
+      <p>Stunning 15th-century marble temple with 1,444 uniquely carved pillars.</p>
+      <p><strong>Time Needed:</strong> Half day trip</p>
+
+      <h3>Mount Abu (165 km)</h3>
+      <p>Rajasthan's only hill station. Can be combined with Udaipur for a 3-4 day trip.</p>
+      <p>📍 <a href="/tempo-traveller/udaipur-to-mount-abu" class="text-blue-600 hover:underline">Book Udaipur to Mount Abu Tempo</a></p>
+
+      <h2>Best Time to Visit Udaipur</h2>
+
+      <h3>October to March ⭐ Best Season</h3>
+      <p>Pleasant weather (12-28°C), perfect for sightseeing and outdoor activities. Peak tourist season.</p>
+      <ul>
+        <li><strong>Diwali (Oct/Nov):</strong> City illuminated beautifully</li>
+        <li><strong>Shilpgram Festival (Dec):</strong> Craft and culture festival</li>
+        <li><strong>Mewar Festival (Mar/Apr):</strong> Celebrates spring</li>
+      </ul>
+
+      <h3>April to June</h3>
+      <p>Hot (35-42°C) but fewer tourists. Lower hotel rates. Visit early mornings and evenings.</p>
+
+      <h3>July to September</h3>
+      <p>Monsoon transforms Udaipur! Lakes overflow, greenery everywhere. The most photogenic time, but some outdoor activities may be affected.</p>
+
+      <h2>Romantic Experiences in Udaipur</h2>
+
+      <ol class="list-decimal pl-6 space-y-3">
+        <li>
+          <strong>Sunset Boat Ride on Lake Pichola</strong>
+          <p>Watch the sun set behind the Aravalli hills as palace lights come on. Pure magic!</p>
+        </li>
+        <li>
+          <strong>Rooftop Dinner Overlooking Lake Palace</strong>
+          <p>Restaurants like Ambrai, Upre, and Raas offer stunning views with Rajasthani cuisine.</p>
+        </li>
+        <li>
+          <strong>Stay at a Heritage Hotel</strong>
+          <p>Experience royal living at Taj Lake Palace, The Leela Palace, or Oberoi Udaivilas.</p>
+        </li>
+        <li>
+          <strong>Horse Cart Ride Through Old City</strong>
+          <p>Explore narrow lanes of the old city in a traditional horse-drawn carriage.</p>
+        </li>
+        <li>
+          <strong>Couples Spa at a Palace Hotel</strong>
+          <p>Many heritage hotels offer traditional Ayurvedic couples treatments.</p>
+        </li>
+      </ol>
+
+      <h2>Where to Stay in Udaipur</h2>
+
+      <h3>Ultra Luxury (₹30,000+/night)</h3>
+      <ul>
+        <li><strong>Taj Lake Palace:</strong> Floating palace on Lake Pichola - bucket list stay!</li>
+        <li><strong>The Oberoi Udaivilas:</strong> Consistently ranked among world's best hotels</li>
+        <li><strong>The Leela Palace:</strong> 80 acres of luxury on Lake Pichola</li>
+      </ul>
+
+      <h3>Heritage Boutique (₹8,000-25,000/night)</h3>
+      <ul>
+        <li>Raas Udaipur, Amet Haveli, Fateh Prakash Palace</li>
+      </ul>
+
+      <h3>Mid-Range (₹3,000-8,000/night)</h3>
+      <ul>
+        <li>Hotel Lakend, Udai Kothi, Jaiwana Haveli</li>
+      </ul>
+
+      <h3>Budget (₹1,000-3,000/night)</h3>
+      <ul>
+        <li>Nukkad Guest House, Poonam Haveli, Jagat Niwas</li>
+      </ul>
+
+      <h2>What to Eat in Udaipur</h2>
+      <ul>
+        <li><strong>Dal Baati Churma:</strong> Rajasthani signature dish, must try!</li>
+        <li><strong>Gatte Ki Sabzi:</strong> Gram flour dumplings in curry</li>
+        <li><strong>Laal Maas:</strong> Fiery mutton curry (for non-vegetarians)</li>
+        <li><strong>Mawa Kachori:</strong> Sweet stuffed pastry</li>
+        <li><strong>Kulfi Falooda:</strong> At Jagdish Chowk</li>
+      </ul>
+
+      <h3>Best Restaurants</h3>
+      <ul>
+        <li><strong>Ambrai:</strong> Lakeside dining with palace views</li>
+        <li><strong>Upre by 1559 AD:</strong> Rooftop fine dining</li>
+        <li><strong>Savage Garden:</strong> Continental with lake views</li>
+        <li><strong>Natraj Dining Hall:</strong> Authentic Rajasthani thali</li>
+      </ul>
+
+      <h2>Combine Udaipur with These Destinations</h2>
+
+      <div class="grid md:grid-cols-2 gap-4 my-6">
+        <div class="p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg border border-pink-200">
+          <h4 class="font-bold text-pink-800">🏰 Udaipur + Jodhpur + Jaisalmer (6 Days)</h4>
+          <p class="text-sm text-gray-700">Complete Royal Rajasthan experience with desert safari.</p>
+          <p class="font-semibold mt-2"><a href="/tempo-traveller/udaipur-to-jodhpur-jaisalmer" class="text-blue-600 hover:underline">Book Tempo →</a></p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg border border-cyan-200">
+          <h4 class="font-bold text-cyan-800">⛰️ Udaipur + Mount Abu (4 Days)</h4>
+          <p class="text-sm text-gray-700">Lakes + Hills combo, perfect honeymoon circuit.</p>
+          <p class="font-semibold mt-2"><a href="/tempo-traveller/udaipur-to-mount-abu" class="text-blue-600 hover:underline">Book Tempo →</a></p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg border border-amber-200">
+          <h4 class="font-bold text-amber-800">🏛️ Udaipur + Chittorgarh + Kumbhalgarh (4 Days)</h4>
+          <p class="text-sm text-gray-700">Heritage fort circuit for history lovers.</p>
+          <p class="font-semibold mt-2">Starting: ₹18,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg border border-purple-200">
+          <h4 class="font-bold text-purple-800">👑 Complete Rajasthan (10 Days)</h4>
+          <p class="text-sm text-gray-700"><a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">Jaipur</a> + Jodhpur + Jaisalmer + Udaipur</p>
+          <p class="font-semibold mt-2">Starting: ₹45,000 per person</p>
+        </div>
+      </div>
+
+      <h2>Udaipur for Destination Weddings</h2>
+      <p>Udaipur is India's top destination wedding location. <a href="/wedding/udaipur" class="text-blue-600 hover:underline font-semibold">Our wedding car services</a> in Udaipur include:</p>
+      <ul>
+        <li>Lake palace wedding coordination</li>
+        <li>Royal vintage car fleet</li>
+        <li>Boat wedding arrangements</li>
+        <li>Multi-venue guest transportation</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-cyan-100 to-blue-100 border-l-4 border-cyan-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">💙 Experience the Magic of Udaipur!</h3>
+        <p class="mb-4 text-gray-700">Book your trip to the City of Lakes. Comfortable transport, expert guides, and customizable itineraries for your perfect Udaipur experience.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/sightseeing/udaipur" class="inline-block bg-cyan-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-cyan-700 transition-colors">View Udaipur Tours →</a>
+          <a href="/tempo-traveller/jaipur-to-udaipur-mount-abu" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Jaipur to Udaipur Tempo →</a>
+        </div>
+      </div>
+    \`,
+    date: "2025-12-20",
+    readTime: "17 min read",
+    image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
+    category: "Destinations",
+    tags: ["Udaipur", "Rajasthan", "Romantic", "Lakes", "Palaces", "Honeymoon"],
+    keywords: ["udaipur travel guide", "udaipur tourism", "city of lakes", "udaipur palaces", "lake pichola", "udaipur honeymoon", "udaipur romantic trip", "udaipur city palace", "jag mandir", "udaipur hotels", "udaipur itinerary", "udaipur 2026", "best time to visit udaipur", "udaipur restaurants", "udaipur boat ride", "udaipur destination wedding", "rajasthan tour udaipur", "delhi to udaipur", "jaipur to udaipur"],
+    featured: true,
+    views: 0,
+    metaTitle: "Udaipur Complete Travel Guide 2026 | City of Lakes, Palaces & Romantic Getaway",
+    metaDescription: "Complete Udaipur travel guide 2026. Explore Lake Pichola, City Palace, romantic experiences, best hotels & restaurants. Plan your perfect Udaipur trip!"
+  },
 ]
 
 // All blog posts combined (Travel + Attractions)

@@ -6,6 +6,66 @@ import TempoMainClient from '@/components/TempoMainClient';
 export const metadata = {
   title: 'Tempo Traveller on Rent India | 12-26 Seater AC ₹23/km | Delhi Manali Shimla Jaipur | Book Online',
   description: 'Book tempo traveller on rent for group travel across India. 12, 16, 17, 20, 26 seater AC tempo traveller with driver. Best rates ₹23-27/km all-inclusive. Popular routes: Delhi to Manali, Delhi to Shimla, Delhi to Haridwar, Delhi to Rishikesh, Delhi to Jaipur, Delhi to Agra, Chandigarh to Manali. 100+ destinations covered. Pushback seats, music system, GPS tracking. Professional drivers, 24/7 booking, instant confirmation. Perfect for family trips, corporate tours, pilgrimages, weddings.',
+  keywords: [
+    // Primary Keywords
+    'tempo traveller on rent',
+    'tempo traveller hire',
+    'tempo traveller booking',
+    'tempo traveller rental India',
+    'book tempo traveller online',
+    // Seater Variations
+    '12 seater tempo traveller on rent',
+    '16 seater tempo traveller rental',
+    '17 seater tempo traveller hire',
+    '20 seater tempo traveller booking',
+    '26 seater maharaja tempo traveller',
+    // Feature Keywords
+    'AC tempo traveller on rent',
+    'luxury tempo traveller rental',
+    'tempo traveller with driver',
+    'tempo traveller with pushback seats',
+    'tempo traveller with music system',
+    // Route Keywords
+    'Delhi to Manali tempo traveller',
+    'Delhi to Shimla tempo traveller',
+    'Delhi to Jaipur tempo traveller',
+    'Delhi to Haridwar tempo traveller',
+    'Delhi to Rishikesh tempo traveller',
+    'Chandigarh to Manali tempo traveller',
+    'Delhi to Agra tempo traveller',
+    // Use Case Keywords
+    'tempo traveller for family trip',
+    'tempo traveller for wedding',
+    'tempo traveller for pilgrimage',
+    'tempo traveller for corporate tour',
+    'tempo traveller for group travel',
+    'tempo traveller for outstation',
+    // Chardham Keywords
+    'Chardham Yatra tempo traveller',
+    'Kedarnath tempo traveller',
+    'Badrinath tempo traveller',
+    'Do Dham Yatra tempo',
+    // Price Keywords
+    'tempo traveller price per km',
+    'tempo traveller rate',
+    'tempo traveller fare',
+    'cheap tempo traveller rental',
+    'best tempo traveller service',
+    // Local Keywords
+    'tempo traveller near me',
+    'tempo traveller Delhi NCR',
+    'tempo traveller Chandigarh',
+    'tempo traveller Jaipur',
+    // Hindi Transliterated
+    'tempo traveller kiraye par',
+    'tempo traveller booking kaise kare',
+    // Long-tail Keywords
+    'best tempo traveller for hill station',
+    'tempo traveller for Manali trip from Delhi',
+    'affordable tempo traveller rental India',
+    '17 seater AC tempo traveller Delhi',
+    'tempo traveller 2025 booking'
+  ].join(', '),
   applicationName: 'Triveni Cabs',
   metadataBase: new URL('https://trivenicabs.in'),
   alternates: {

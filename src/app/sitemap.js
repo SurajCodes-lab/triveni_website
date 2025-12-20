@@ -8,6 +8,7 @@ import { blogPosts } from "@/utilis/blog";
 import { busRoutes } from "@/utilis/busRoutesData";
 import { getAllTours } from "@/utilis/sightseeingData";
 import { getAllCitySlugs } from "@/utilis/airportCityData";
+import { getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -211,7 +212,7 @@ export default function sitemap() {
     // Tempo Traveller Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/tempo-traveller`,
-      lastModified: new Date('2025-01-22'),
+      lastModified: new Date('2025-12-20'),
       changeFrequency: 'weekly',
       priority: 0.75,
     },
@@ -233,7 +234,7 @@ export default function sitemap() {
     // Blog Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: new Date('2025-12-20'),
       changeFrequency: 'weekly',
       priority: 0.75,
     },
@@ -256,12 +257,13 @@ export default function sitemap() {
   ];
 
   // Add Blog Posts (Dynamic) - CONTENT PAGES
+  const blogLastModified = new Date('2025-12-20'); // Blog content updated
   blogPosts
     .filter(post => post && post.slug && post.date) // Filter out undefined or invalid posts
     .forEach(post => {
       urls.push({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
+        lastModified: blogLastModified,
         changeFrequency: 'monthly',
         priority: 0.85,
       });
@@ -289,8 +291,19 @@ export default function sitemap() {
     });
   });
 
+  // Add Wedding City Pages - HIGH PRIORITY CONTENT
+  const weddingCitySlugs = getAllWeddingCitySlugs();
+  weddingCitySlugs.forEach(citySlug => {
+    urls.push({
+      url: `${baseUrl}/wedding/${citySlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    });
+  });
+
   // Add ALL Tempo Traveller Routes (60+ routes) - HIGHEST PRIORITY CONTENT PAGES
-  const tempoLastModified = new Date('2025-01-22'); // SEO optimization date
+  const tempoLastModified = new Date('2025-12-20'); // SEO optimization date
   Object.keys(tempoRoutes).forEach(originCity => {
     const routes = tempoRoutes[originCity];
     routes.forEach(route => {
