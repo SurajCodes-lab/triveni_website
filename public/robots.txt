@@ -1,6 +1,23 @@
+# Triveni Cabs - Robots.txt
+# https://trivenicabs.in
+
+# Allow all legitimate crawlers
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /*.json$
+
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bingbot specific rules
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
 
 # Block spam/unwanted bots
 User-agent: AhrefsBot
@@ -12,4 +29,11 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-Sitemap: https://www.trivenicabs.in/sitemap.xml
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://trivenicabs.in/sitemap.xml

@@ -30,7 +30,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.trivenicabs.in'),
+  metadataBase: new URL('https://trivenicabs.in'),
   alternates: {
     canonical: '/',
     languages: {
@@ -41,7 +41,7 @@ export const metadata = {
   openGraph: {
     title: '🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs | Starting ₹11/km',
     description: '✅ Book sedan, SUV, tempo traveller, luxury bus online. Delhi, Mumbai, Agra, Manali tours. Professional drivers, AC vehicles, competitive rates. Call 7668570551',
-    url: 'https://www.trivenicabs.in',
+    url: 'https://trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
       {
@@ -101,6 +101,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-IN">
       <head>
+        {/* Resource Hints for Performance */}
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* WebSite Schema with SearchAction */}
         <script
@@ -110,10 +118,10 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Triveni Cabs",
-              "url": "https://www.trivenicabs.in",
+              "url": "https://trivenicabs.in",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.trivenicabs.in/search?q={search_term_string}",
+                "target": "https://trivenicabs.in/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -130,12 +138,12 @@ export default function RootLayout({ children }) {
               "name": "Triveni Cabs",
               "alternateName": "Triveni Car Rental Services",
               "image": [
-                "https://www.trivenicabs.in/images/logo.webp",
-                "https://www.trivenicabs.in/images/car/sedan.webp",
-                "https://www.trivenicabs.in/images/car/suv.webp"
+                "https://trivenicabs.in/images/logo.webp",
+                "https://trivenicabs.in/images/car/sedan.webp",
+                "https://trivenicabs.in/images/car/suv.webp"
               ],
               "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
-              "url": "https://www.trivenicabs.in",
+              "url": "https://trivenicabs.in",
               "telephone": "+91-7668570551",
               "email": "info@trivenicabs.in",
               "address": {
@@ -262,20 +270,12 @@ export default function RootLayout({ children }) {
                   }
                 ]
               },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "500",
-                "bestRating": "5",
-                "worstRating": "1"
-              },
-
             })
           }}
         />
 
 
-        {/* FAQ Structured Data */}
+        {/* FAQ Structured Data - Expanded for Better SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -313,6 +313,54 @@ export default function RootLayout({ children }) {
                   "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "We offer tour packages to Manali (₹9,999), Kashmir (₹16,999), Rajasthan (₹19,999), Chardham Yatra (₹24,999), and other popular destinations with accommodation and sightseeing included."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is the price for Agra to Delhi cab?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Agra to Delhi cab fare starts at ₹2,500 for sedan (one-way). The distance is approximately 230 km. We offer both one-way and round-trip options with experienced drivers."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I book a tempo traveller?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can book a tempo traveller (12-26 seater) online or call 7668570551. Rates start at ₹24/km with minimum 250km/day. We offer AC vehicles with push-back seats for group travel."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you provide airport pickup and drop service?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide 24/7 airport transfer services at all major airports including Delhi IGI, Mumbai, Jaipur, Lucknow, and Chandigarh. Our drivers track flight timings for timely pickup."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What payment methods do you accept?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We accept Cash, UPI (Google Pay, PhonePe, Paytm), Credit Cards, Debit Cards, and Bank Transfer. Partial advance payment is required for bookings."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is driver accommodation included in outstation trips?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Driver accommodation is the customer's responsibility for overnight trips. Alternatively, you can pay ₹300/night as driver allowance, and we arrange their stay separately."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I book a one-way taxi?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we offer one-way taxi services on popular routes like Delhi-Agra, Delhi-Jaipur, Delhi-Chandigarh, and more. One-way fares are calculated at per km rates without return charges."
                   }
                 }
               ]

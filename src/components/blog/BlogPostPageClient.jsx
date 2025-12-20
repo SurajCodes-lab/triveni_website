@@ -22,6 +22,67 @@ const layoutComponents = {
   AdventureLayout,
 };
 
+// Generate BlogPosting Schema
+function generateBlogPostingSchema(post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.metaDescription || post.excerpt,
+    "image": post.image || "https://trivenicabs.in/images/og-image.jpg",
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+      "@type": "Organization",
+      "name": "Triveni Cabs",
+      "url": "https://trivenicabs.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Triveni Cabs",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://trivenicabs.in/images/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://trivenicabs.in/blog/${post.slug}`
+    },
+    "keywords": post.tags?.join(', ') || '',
+    "articleSection": post.category || "Travel",
+    "wordCount": post.content?.split(/\s+/).length || 1000
+  };
+}
+
+// Generate BreadcrumbList Schema
+function generateBreadcrumbSchema(post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://trivenicabs.in/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://trivenicabs.in/blog/${post.slug}`
+      }
+    ]
+  };
+}
+
 export default function BlogPostPageClient({ post }) {
   // Safety check
   if (!post) {
@@ -84,5 +145,23 @@ export default function BlogPostPageClient({ post }) {
   // Get the layout component
   const LayoutComponent = layoutComponents[layoutName] || MonumentLayout;
 
-  return <LayoutComponent post={post} relatedLinks={relatedLinks} />;
+  return (
+    <>
+      {/* BlogPosting Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBlogPostingSchema(post))
+        }}
+      />
+      {/* BreadcrumbList Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema(post))
+        }}
+      />
+      <LayoutComponent post={post} relatedLinks={relatedLinks} />
+    </>
+  );
 }
