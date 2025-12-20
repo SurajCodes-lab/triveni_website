@@ -2,6 +2,7 @@
 import { destinations, phoneNumber } from '@/utilis/data';
 import ClientDestinationTabs from './client-components';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'India Like Never Before! Handpicked Destinations & Tour Packages | Triveni Cabs',
@@ -213,13 +214,13 @@ export default function DestinationsPage() {
             >
               Explore Now
             </a>
-            <a
+            <Link
               href="/services"
               className="px-8 py-3 bg-white/10 max-sm:text-sm max-sm:px-4 max-sm:py-2.5 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm min-h-[44px] flex items-center"
               aria-label="View tour packages"
             >
               View Packages
-            </a>
+            </Link>
           </div>
         </div>
       </section>
