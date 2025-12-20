@@ -6,23 +6,57 @@ import { Calendar, MapPin, Star, ChevronRight, Sparkles } from 'lucide-react';
 
 export const metadata = {
   title: 'Find Inner Peace: Divine Pilgrimage Tours | Char Dham Yatra & More | Triveni Cabs',
-  description: '🙏 Sacred journeys that touch your soul! Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more. Comfortable AC transport, experienced drivers, affordable packages. From temple darshan to spiritual retreats - your blessed journey begins here. Customized pilgrimage tours across India!',
-  keywords: 'char dham yatra, religious tour packages, pilgrimage tours India, vaishno devi tour, golden temple tour, tirupati tour, temple tour packages, spiritual yatra, hindu pilgrimage, religious travel, sacred destinations India, dharmic tourism, spiritual journey, temple darshan, pilgrimage cab service',
+  description: 'Sacred journeys that touch your soul! Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more. Comfortable AC transport, experienced drivers, affordable packages. From temple darshan to spiritual retreats - your blessed journey begins here. Customized pilgrimage tours across India!',
+  keywords: 'char dham yatra, religious tour packages, pilgrimage tours India, vaishno devi tour, golden temple tour, tirupati tour, temple tour packages, spiritual yatra, hindu pilgrimage, religious travel, sacred destinations India, dharmic tourism, spiritual journey, temple darshan, pilgrimage cab service, do dham yatra, kedarnath badrinath tour, haridwar rishikesh tour, mathura vrindavan tour',
+  authors: [{ name: 'Triveni Cabs' }],
+  creator: 'Triveni Cabs',
+  publisher: 'Triveni Cabs',
+  metadataBase: new URL('https://trivenicabs.in'),
   alternates: {
-    canonical: 'https://trivenicabs.in/religious-tours'
+    canonical: '/religious-tours',
+    languages: {
+      'en-IN': '/religious-tours',
+      'hi-IN': '/religious-tours',
+    },
   },
   openGraph: {
-    title: 'Find Inner Peace: Divine Pilgrimage & Religious Tours',
-    description: '🙏 Char Dham • Vaishno Devi • Golden Temple | Blessed journeys with comfort & devotion',
+    title: 'Find Inner Peace: Divine Pilgrimage & Religious Tours | Triveni Cabs',
+    description: 'Char Dham, Vaishno Devi, Golden Temple - Blessed journeys with comfort & devotion. Expert-guided temple tours across India.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs'
+    url: 'https://trivenicabs.in/religious-tours',
+    siteName: 'Triveni Cabs',
+    images: [
+      {
+        url: '/images/religious/chardham-hero.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Divine Pilgrimage Tours - Char Dham Yatra by Triveni Cabs'
+      }
+    ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Divine Pilgrimage Tours | Sacred Journeys',
-    description: '🙏 Expert-guided temple tours • Comfortable travel • Affordable packages. Your spiritual journey awaits!'
-  }
+    title: 'Divine Pilgrimage Tours | Sacred Journeys | Triveni Cabs',
+    description: 'Expert-guided temple tours, comfortable travel, affordable packages. Your spiritual journey awaits!',
+    creator: '@TriveniCabs',
+    site: '@TriveniCabs',
+    images: ['/images/religious/chardham-hero.jpg']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  category: 'Religious Tourism',
 };
 
 export default function ReligiousToursPage() {
@@ -149,7 +183,7 @@ export default function ReligiousToursPage() {
       />
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-20 px-4 overflow-hidden" aria-label="Religious Tours Hero">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-100/50 to-purple-100/50" />
 
         <div className="relative z-10 max-w-7xl mx-auto text-center">
