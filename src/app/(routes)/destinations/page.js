@@ -11,7 +11,7 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/destinations',
     languages: {
@@ -24,7 +24,7 @@ export const metadata = {
     description: 'Mountains, Beaches, Heritage & Culture - Exclusive tour packages to unforgettable places across India',
     type: 'website',
     locale: 'en_IN',
-    url: 'https://trivenicabs.in/destinations',
+    url: 'https://www.trivenicabs.in/destinations',
     siteName: 'Triveni Cabs',
     images: [
       {
@@ -69,13 +69,13 @@ export default function DestinationsPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Destinations",
-        "item": "https://trivenicabs.in/destinations"
+        "item": "https://www.trivenicabs.in/destinations"
       }
     ]
   };
@@ -86,26 +86,26 @@ export default function DestinationsPage() {
     "@type": "CollectionPage",
     "name": "India Travel Destinations - Triveni Cabs",
     "description": "Explore 50+ handpicked destinations across India with exclusive tour packages. From Himalayan adventures to coastal retreats.",
-    "url": "https://trivenicabs.in/destinations",
+    "url": "https://www.trivenicabs.in/destinations",
     "mainEntity": {
       "@type": "ItemList",
       "name": "Popular India Destinations",
       "numberOfItems": 50,
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Delhi", "url": "https://trivenicabs.in/delhi"},
-        {"@type": "ListItem", "position": 2, "name": "Agra", "url": "https://trivenicabs.in/agra"},
-        {"@type": "ListItem", "position": 3, "name": "Jaipur", "url": "https://trivenicabs.in/jaipur"},
-        {"@type": "ListItem", "position": 4, "name": "Shimla", "url": "https://trivenicabs.in/shimla"},
-        {"@type": "ListItem", "position": 5, "name": "Manali", "url": "https://trivenicabs.in/manali"},
-        {"@type": "ListItem", "position": 6, "name": "Kashmir", "url": "https://trivenicabs.in/kashmir"},
-        {"@type": "ListItem", "position": 7, "name": "Goa", "url": "https://trivenicabs.in/goa"},
-        {"@type": "ListItem", "position": 8, "name": "Kerala", "url": "https://trivenicabs.in/kerala"}
+        {"@type": "ListItem", "position": 1, "name": "Delhi", "url": "https://www.trivenicabs.in/delhi"},
+        {"@type": "ListItem", "position": 2, "name": "Agra", "url": "https://www.trivenicabs.in/agra"},
+        {"@type": "ListItem", "position": 3, "name": "Jaipur", "url": "https://www.trivenicabs.in/jaipur"},
+        {"@type": "ListItem", "position": 4, "name": "Shimla", "url": "https://www.trivenicabs.in/shimla"},
+        {"@type": "ListItem", "position": 5, "name": "Manali", "url": "https://www.trivenicabs.in/manali"},
+        {"@type": "ListItem", "position": 6, "name": "Kashmir", "url": "https://www.trivenicabs.in/kashmir"},
+        {"@type": "ListItem", "position": 7, "name": "Goa", "url": "https://www.trivenicabs.in/goa"},
+        {"@type": "ListItem", "position": 8, "name": "Kerala", "url": "https://www.trivenicabs.in/kerala"}
       ]
     },
     "provider": {
       "@type": "Organization",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     }
   };
 
@@ -115,7 +115,7 @@ export default function DestinationsPage() {
     "@type": "TravelAgency",
     "name": "Triveni Cabs - Tour Packages",
     "description": "Premium tour packages and destination travel services across India",
-    "url": "https://trivenicabs.in/destinations",
+    "url": "https://www.trivenicabs.in/destinations",
     "telephone": "+91-7668570551",
     "priceRange": "$$",
     "areaServed": {

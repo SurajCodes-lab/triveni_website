@@ -28,35 +28,35 @@ const VehicleSlugPage = () => {
         title: `Book Sedan Car Rental Online India | AC Sedan Taxi Hire | Triveni Cabs`,
         description: `Rent AC sedan cars for outstation trips in India. Professional sedan taxi service with driver at ₹11/km. Book sedan car rental for Delhi, Mumbai, Bangalore, Chennai, Hyderabad travel.`,
         keywords: `sedan car rental india, sedan taxi booking online, ac sedan hire with driver, sedan car rental delhi mumbai, outstation sedan booking, airport sedan transfer, sedan taxi service india, sedan car hire rates, book sedan online india, sedan rental for wedding`,
-        canonical: `https://trivenicabs.in/vehicles/sedan`,
+        canonical: `https://www.trivenicabs.in/vehicles/sedan`,
         breadcrumbTitle: "Sedan Car Rental Service"
       },
       'suv': {
         title: `SUV Car Rental India | 6-7 Seater SUV Hire | Innova Ertiga Booking`,
         description: `Book 6-7 seater SUV cars for family trips across India. Innova, Ertiga SUV rental with professional driver. Best rates for group travel, hill station tours, family outings.`,
         keywords: `suv rental india, 7 seater car hire, innova car rental, ertiga booking online, family suv rental, group travel suv, suv hire with driver, innova crysta rental, suv taxi service india, hill station suv booking`,
-        canonical: `https://trivenicabs.in/vehicles/suv`,
+        canonical: `https://www.trivenicabs.in/vehicles/suv`,
         breadcrumbTitle: "SUV Car Rental Service"
       },
       'tempo-traveller': {
         title: `Tempo Traveller Rental India | 12-26 Seater AC Tempo Hire | Group Travel`,
         description: `Book 12-26 seater tempo traveller for group tours in India. AC tempo traveller rental with experienced driver. Perfect for pilgrimage trips, corporate tours, wedding parties, school excursions.`,
         keywords: `tempo traveller rental india, 12 seater tempo hire, group travel vehicle, pilgrimage tempo booking, wedding tempo traveller, corporate tour vehicle, ac tempo traveller hire, tempo rental delhi mumbai, school trip tempo booking, group tour vehicle rental`,
-        canonical: `https://trivenicabs.in/vehicles/tempo-traveller`,
+        canonical: `https://www.trivenicabs.in/vehicles/tempo-traveller`,
         breadcrumbTitle: "Tempo Traveller Rental Service"
       },
       'luxury-bus': {
         title: `Luxury Bus Rental India | 35-55 Seater AC Bus Hire | Corporate Group Travel`,
         description: `Rent luxury AC buses for large group travel in India. 35-55 seater premium buses with modern amenities. Ideal for corporate events, luxury tours, large wedding parties.`,
         keywords: `luxury bus rental india, ac bus hire, corporate bus booking, large group travel bus, premium bus rental, luxury tour bus, wedding bus rental, 45 seater bus hire, corporate event transport, luxury bus service india`,
-        canonical: `https://trivenicabs.in/vehicles/luxury-bus`,
+        canonical: `https://www.trivenicabs.in/vehicles/luxury-bus`,
         breadcrumbTitle: "Luxury Bus Rental Service"
       },
       'bus': {
         title: `Bus Rental India | AC Bus Hire | 28-35 Seater Group Transport`,
         description: `Book AC buses for group travel across India. 28-35 seater bus rental with professional driver. Affordable rates for school trips, corporate outings, religious tours, group excursions.`,
         keywords: `bus rental india, ac bus booking, group transport bus, school bus rental, corporate bus hire, religious tour bus, group travel bus, bus hire with driver, affordable bus rental, tourist bus service india`,
-        canonical: `https://trivenicabs.in/vehicles/bus`,
+        canonical: `https://www.trivenicabs.in/vehicles/bus`,
         breadcrumbTitle: "Bus Rental Service"
       }
     };

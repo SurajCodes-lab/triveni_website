@@ -207,7 +207,7 @@ export const metadata = {
     'which tour package to choose'
   ].join(', '),
   alternates: {
-    canonical: 'https://trivenicabs.in/sightseeing'
+    canonical: 'https://www.trivenicabs.in/sightseeing'
   },
   openGraph: {
     title: 'Premium Sightseeing Tours India | Expert-Curated Heritage & Cultural Day Tours',
@@ -215,7 +215,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs',
-    url: 'https://trivenicabs.in/sightseeing',
+    url: 'https://www.trivenicabs.in/sightseeing',
     images: [
       {
         url: '/images/sightseeing-hero.jpg',
@@ -225,7 +225,7 @@ export const metadata = {
       }
     ],
     article: {
-      publisher: 'https://trivenicabs.in',
+      publisher: 'https://www.trivenicabs.in',
       modifiedTime: new Date().toISOString()
     }
   },
@@ -279,12 +279,12 @@ export default function SightseeingPage() {
             "@type": "TouristTrip",
             "name": "Premium Sightseeing Tours - Triveni Cabs",
             "description": "Expert-curated sightseeing tours across India covering heritage sites, cultural landmarks, and architectural marvels with professional guides and comfortable transportation.",
-            "url": "https://trivenicabs.in/sightseeing",
+            "url": "https://www.trivenicabs.in/sightseeing",
             "provider": {
               "@type": "TravelAgency",
               "name": "Triveni Cabs",
               "telephone": "+91-7668570551",
-              "url": "https://trivenicabs.in"
+              "url": "https://www.trivenicabs.in"
             },
             "touristType": [
               "Families",
@@ -298,7 +298,7 @@ export default function SightseeingPage() {
               "@type": "Trip",
               "name": tour.name,
               "description": tour.shortDescription,
-              "url": `https://trivenicabs.in/sightseeing/${tour.slug}`
+              "url": `https://www.trivenicabs.in/sightseeing/${tour.slug}`
             }))
           })
         }}
@@ -316,13 +316,13 @@ export default function SightseeingPage() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://trivenicabs.in"
+                "item": "https://www.trivenicabs.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Sightseeing Tours",
-                "item": "https://trivenicabs.in/sightseeing"
+                "item": "https://www.trivenicabs.in/sightseeing"
               }
             ]
           })
@@ -344,7 +344,7 @@ export default function SightseeingPage() {
               "name": "Triveni Cabs",
               "telephone": "+91-7668570551",
               "email": "info@trivenicabs.in",
-              "url": "https://trivenicabs.in"
+              "url": "https://www.trivenicabs.in"
             },
             "areaServed": [
               { "@type": "City", "name": "Delhi" },
@@ -372,7 +372,7 @@ export default function SightseeingPage() {
             },
             "availableChannel": {
               "@type": "ServiceChannel",
-              "serviceUrl": "https://trivenicabs.in/sightseeing",
+              "serviceUrl": "https://www.trivenicabs.in/sightseeing",
               "servicePhone": "+91-7668570551",
               "availableLanguage": ["English", "Hindi", "French", "Spanish", "German", "Chinese"]
             }
@@ -454,7 +454,7 @@ export default function SightseeingPage() {
                 "item": {
                   "@type": "TouristTrip",
                   "name": tour.name,
-                  "url": `https://trivenicabs.in/sightseeing/${tour.slug}`,
+                  "url": `https://www.trivenicabs.in/sightseeing/${tour.slug}`,
                   "description": tour.shortDescription,
                   "image": tour.heroImage || `/images/tours/${tour.slug}.jpg`,
                   "offers": {
@@ -485,8 +485,8 @@ export default function SightseeingPage() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Triveni Cabs",
-            "url": "https://trivenicabs.in",
-            "logo": "https://trivenicabs.in/logo.png",
+            "url": "https://www.trivenicabs.in",
+            "logo": "https://www.trivenicabs.in/logo.png",
             "description": "Premium cab and tour services in India offering airport transfers, outstation rides, and heritage sightseeing tours",
             "contactPoint": [
               {
@@ -535,7 +535,7 @@ export default function SightseeingPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Triveni Cabs - Sightseeing Tours",
-            "image": "https://trivenicabs.in/logo.png",
+            "image": "https://www.trivenicabs.in/logo.png",
             "description": "Premier sightseeing and heritage tour operator in India offering expert-guided cultural tours, monument visits, and customizable day trips across 20+ destinations",
             "address": {
               "@type": "PostalAddress",
@@ -550,7 +550,7 @@ export default function SightseeingPage() {
               "latitude": 27.1767,
               "longitude": 78.0081
             },
-            "url": "https://trivenicabs.in/sightseeing",
+            "url": "https://www.trivenicabs.in/sightseeing",
             "telephone": "+91-7668570551",
             "email": "info@trivenicabs.in",
             "priceRange": "₹₹",
@@ -598,7 +598,7 @@ export default function SightseeingPage() {
             "@type": "CollectionPage",
             "name": "Premium Sightseeing Tours India",
             "description": "Browse our complete collection of expert-guided sightseeing tours across India's most iconic destinations",
-            "url": "https://trivenicabs.in/sightseeing",
+            "url": "https://www.trivenicabs.in/sightseeing",
             "breadcrumb": {
               "@type": "BreadcrumbList",
               "itemListElement": [
@@ -606,7 +606,7 @@ export default function SightseeingPage() {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://trivenicabs.in"
+                  "item": "https://www.trivenicabs.in"
                 },
                 {
                   "@type": "ListItem",
@@ -644,14 +644,14 @@ export default function SightseeingPage() {
                 "position": 1,
                 "name": "Choose Your Tour",
                 "text": "Browse our collection of 20+ sightseeing tours across India and select the one that matches your interests - heritage tours, cultural experiences, or day trips.",
-                "url": "https://trivenicabs.in/sightseeing"
+                "url": "https://www.trivenicabs.in/sightseeing"
               },
               {
                 "@type": "HowToStep",
                 "position": 2,
                 "name": "Select Vehicle Type",
                 "text": "Choose your preferred vehicle - Sedan (up to 4 passengers), SUV (up to 6 passengers), or Tempo Traveller (up to 12 passengers) based on your group size.",
-                "url": "https://trivenicabs.in/sightseeing"
+                "url": "https://www.trivenicabs.in/sightseeing"
               },
               {
                 "@type": "HowToStep",
@@ -665,14 +665,14 @@ export default function SightseeingPage() {
                 "position": 4,
                 "name": "Customize If Needed",
                 "text": "Let us know if you want to modify the itinerary, add special requests, or need multilingual guides. We customize every tour to your preferences.",
-                "url": "https://trivenicabs.in/sightseeing"
+                "url": "https://www.trivenicabs.in/sightseeing"
               },
               {
                 "@type": "HowToStep",
                 "position": 5,
                 "name": "Confirm and Pay",
                 "text": "Receive instant confirmation with tour details. Flexible payment options available. No hidden charges.",
-                "url": "https://trivenicabs.in/sightseeing"
+                "url": "https://www.trivenicabs.in/sightseeing"
               }
             ]
           })
@@ -688,11 +688,11 @@ export default function SightseeingPage() {
             "@type": "WebPage",
             "name": "Premium Sightseeing Tours India | Triveni Cabs",
             "description": "Expert-curated sightseeing tours across India. Visit Taj Mahal, Jaipur forts, Delhi monuments & more with professional guides and comfortable transport.",
-            "url": "https://trivenicabs.in/sightseeing",
+            "url": "https://www.trivenicabs.in/sightseeing",
             "isPartOf": {
               "@type": "WebSite",
               "name": "Triveni Cabs",
-              "url": "https://trivenicabs.in"
+              "url": "https://www.trivenicabs.in"
             },
             "about": {
               "@type": "Thing",
@@ -741,7 +741,7 @@ export default function SightseeingPage() {
                 "price": lowestPrice,
                 "priceCurrency": "INR",
                 "availability": "https://schema.org/InStock",
-                "url": `https://trivenicabs.in/sightseeing/${tour.slug}`,
+                "url": `https://www.trivenicabs.in/sightseeing/${tour.slug}`,
                 "seller": {
                   "@type": "Organization",
                   "name": "Triveni Cabs"
@@ -760,13 +760,13 @@ export default function SightseeingPage() {
             "@context": "https://schema.org",
             "@type": "SiteNavigationElement",
             "name": "Sightseeing Tours Navigation",
-            "url": "https://trivenicabs.in/sightseeing",
+            "url": "https://www.trivenicabs.in/sightseeing",
             "hasPart": [
-              { "@type": "WebPage", "name": "Delhi Tours", "url": "https://trivenicabs.in/sightseeing/delhi" },
-              { "@type": "WebPage", "name": "Agra Tours", "url": "https://trivenicabs.in/sightseeing/agra" },
-              { "@type": "WebPage", "name": "Jaipur Tours", "url": "https://trivenicabs.in/sightseeing/jaipur" },
-              { "@type": "WebPage", "name": "Udaipur Tours", "url": "https://trivenicabs.in/sightseeing/udaipur" },
-              { "@type": "WebPage", "name": "Varanasi Tours", "url": "https://trivenicabs.in/sightseeing/varanasi" }
+              { "@type": "WebPage", "name": "Delhi Tours", "url": "https://www.trivenicabs.in/sightseeing/delhi" },
+              { "@type": "WebPage", "name": "Agra Tours", "url": "https://www.trivenicabs.in/sightseeing/agra" },
+              { "@type": "WebPage", "name": "Jaipur Tours", "url": "https://www.trivenicabs.in/sightseeing/jaipur" },
+              { "@type": "WebPage", "name": "Udaipur Tours", "url": "https://www.trivenicabs.in/sightseeing/udaipur" },
+              { "@type": "WebPage", "name": "Varanasi Tours", "url": "https://www.trivenicabs.in/sightseeing/varanasi" }
             ]
           })
         }}

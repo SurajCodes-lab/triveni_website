@@ -545,7 +545,7 @@ const VehicleDetails = ({ slug }) => {
         <meta name="twitter:title" content={currentSEO.title} />
         <meta name="twitter:description" content={currentSEO.description} />
         <meta name="twitter:image" content={selectedVehicles.image} />
-        <link rel="canonical" href={`https://trivenicabs.in/vehicles/${slug}`} />
+        <link rel="canonical" href={`https://www.trivenicabs.in/vehicles/${slug}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(generateSchema()) }}

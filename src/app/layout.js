@@ -30,7 +30,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/',
     languages: {
@@ -41,7 +41,7 @@ export const metadata = {
   openGraph: {
     title: '🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs | Starting ₹11/km',
     description: '✅ Book sedan, SUV, tempo traveller, luxury bus online. Delhi, Mumbai, Agra, Manali tours. Professional drivers, AC vehicles, competitive rates. Call 7668570551',
-    url: 'https://trivenicabs.in',
+    url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
       {
@@ -118,10 +118,10 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Triveni Cabs",
-              "url": "https://trivenicabs.in",
+              "url": "https://www.trivenicabs.in",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://trivenicabs.in/search?q={search_term_string}",
+                "target": "https://www.trivenicabs.in/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -138,12 +138,12 @@ export default function RootLayout({ children }) {
               "name": "Triveni Cabs",
               "alternateName": "Triveni Car Rental Services",
               "image": [
-                "https://trivenicabs.in/images/logo.webp",
-                "https://trivenicabs.in/images/car/sedan.webp",
-                "https://trivenicabs.in/images/car/suv.webp"
+                "https://www.trivenicabs.in/images/logo.webp",
+                "https://www.trivenicabs.in/images/car/sedan.webp",
+                "https://www.trivenicabs.in/images/car/suv.webp"
               ],
               "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
-              "url": "https://trivenicabs.in",
+              "url": "https://www.trivenicabs.in",
               "telephone": "+91-7668570551",
               "email": "info@trivenicabs.in",
               "address": {

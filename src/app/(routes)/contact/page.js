@@ -5,7 +5,7 @@ export const metadata = {
   description: "Contact Triveni Cabs for reliable taxi booking across India. 24/7 customer support, instant WhatsApp booking, and quick response times. Call us at any time for outstation, local, or airport transfers.",
   keywords: "contact Triveni Cabs, taxi booking support, cab service contact, 24/7 taxi support, WhatsApp cab booking, Agra taxi contact, India cab service contact, emergency taxi support, reliable cab customer service",
   alternates: {
-    canonical: "https://trivenicabs.in/contact"
+    canonical: "https://www.trivenicabs.in/contact"
   },
   openGraph: {
     title: "Contact Us | Triveni Cabs - 24/7 Customer Support",
@@ -53,7 +53,7 @@ export default function ContactPage() {
             "@type": "ContactPage",
             "name": "Contact Triveni Cabs",
             "description": "Get in touch with Triveni Cabs for 24/7 taxi booking support, inquiries, and customer service.",
-            "url": "https://trivenicabs.in/contact",
+            "url": "https://www.trivenicabs.in/contact",
             "mainEntity": {
               "@type": "Organization",
               "name": "Triveni Cabs",
@@ -85,13 +85,13 @@ export default function ContactPage() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://trivenicabs.in"
+                "item": "https://www.trivenicabs.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Contact Us",
-                "item": "https://trivenicabs.in/contact"
+                "item": "https://www.trivenicabs.in/contact"
               }
             ]
           })
@@ -106,7 +106,7 @@ export default function ContactPage() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Triveni Cabs",
-            "image": "https://trivenicabs.in/logo.png",
+            "image": "https://www.trivenicabs.in/logo.png",
             "telephone": "+91-7668570551",
             "email": "cabstriveni@gmail.com",
             "address": {
@@ -122,7 +122,7 @@ export default function ContactPage() {
               "latitude": 27.1767,
               "longitude": 78.0081
             },
-            "url": "https://trivenicabs.in/contact",
+            "url": "https://www.trivenicabs.in/contact",
             "priceRange": "₹₹",
             "openingHoursSpecification": {
               "@type": "OpeningHoursSpecification",

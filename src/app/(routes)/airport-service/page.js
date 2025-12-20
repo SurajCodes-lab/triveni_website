@@ -6,7 +6,7 @@ export const metadata = {
   description: "Book India's #1 airport taxi service instantly! ✓ Real-time flight tracking ✓ Professional chauffeurs ✓ Zero cancellation fee ✓ Guaranteed on-time pickup ✓ Luggage assistance. Serving 50+ cities including Delhi IGI, Jaipur, Chandigarh. Pre-book now & save 15%! Starting ₹11/km.",
   keywords: "airport taxi, airport cab service, airport transfer, airport pickup, airport drop, airport cab booking, 24x7 airport cab, cheap airport taxi, airport taxi service, airport transfer service, best airport taxi near me, reliable airport cab, instant airport taxi booking, airport taxi booking online, pre book airport taxi, advance airport cab booking, airport taxi delhi, delhi airport cab service, delhi to airport taxi, indira gandhi airport taxi, IGI airport taxi, delhi airport transfer, airport pickup delhi, delhi airport drop, delhi airport cab booking, cheap airport taxi delhi, 24x7 airport cab delhi, best airport taxi delhi, affordable airport cab delhi, delhi airport taxi booking, delhi airport pickup service, delhi airport drop service, new delhi airport taxi, IGI terminal 3 taxi, IGI terminal 1 taxi, IGI terminal 2 taxi, delhi airport to city taxi, delhi airport to noida taxi, delhi airport to gurgaon cab, delhi airport to faridabad taxi, airport taxi jaipur, jaipur airport cab service, jaipur to airport taxi, jaipur international airport taxi, jaipur airport transfer, airport pickup jaipur, jaipur airport drop, jaipur airport cab booking, sanganer airport taxi, cheap airport taxi jaipur, jaipur airport to city taxi, best airport cab jaipur, jaipur airport pickup service, airport taxi agra, agra airport cab service, agra to delhi airport taxi, kheria airport taxi agra, agra airport transfer, airport pickup agra, agra to airport cab, agra airport drop service, agra to jaipur airport taxi, airport taxi chandigarh, chandigarh airport cab, chandigarh international airport taxi, airport transfer chandigarh, airport pickup chandigarh, chandigarh airport drop, mohali airport taxi, chandigarh airport cab booking, cheap airport taxi chandigarh, chandigarh airport to city taxi, best airport cab chandigarh, airport taxi shimla, shimla airport cab service, shimla to chandigarh airport taxi, shimla to delhi airport taxi, shimla airport transfer, jubbarhatti airport taxi, shimla to airport cab, shimla airport pickup, airport taxi manali, manali to kullu airport taxi, manali to chandigarh airport taxi, manali to delhi airport taxi, bhuntar airport to manali taxi, manali airport transfer, kullu airport taxi manali, manali airport cab service, kullu manali airport taxi, bhuntar to manali taxi, airport taxi amritsar, amritsar airport cab service, sri guru ram dass airport taxi, amritsar international airport taxi, amritsar airport transfer, airport pickup amritsar, amritsar airport drop, golden temple to airport taxi, amritsar airport cab booking, cheap airport taxi amritsar, best airport cab amritsar, airport taxi haridwar, haridwar to delhi airport taxi, haridwar to dehradun airport taxi, jolly grant airport to haridwar, haridwar airport transfer, haridwar airport cab service, haridwar to airport cab, haridwar airport pickup, airport taxi rishikesh, rishikesh to delhi airport taxi, rishikesh to dehradun airport taxi, jolly grant airport to rishikesh, rishikesh airport transfer, rishikesh airport cab service, rishikesh to airport cab, rishikesh airport pickup, airport taxi dehradun, dehradun airport cab service, jolly grant airport taxi, dehradun to delhi airport taxi, dehradun airport transfer, airport pickup dehradun, dehradun airport drop, dehradun to airport cab, jolly grant to dehradun taxi, cheap airport taxi dehradun, airport taxi jodhpur, jodhpur airport cab service, jodhpur airport transfer, jodhpur to jaipur airport taxi, airport pickup jodhpur, jodhpur airport drop, jodhpur to airport cab, jodhpur airport taxi booking, airport taxi udaipur, udaipur airport cab service, maharana pratap airport taxi, udaipur airport transfer, airport pickup udaipur, udaipur airport drop, udaipur to jaipur airport taxi, udaipur to airport cab, udaipur airport cab booking, airport taxi ayodhya, ayodhya to lucknow airport taxi, ayodhya to delhi airport taxi, ayodhya airport transfer, airport pickup ayodhya, ram mandir to airport taxi, ayodhya airport cab service, ayodhya to airport cab, one way airport taxi, round trip airport taxi, airport taxi near me, airport cab near me, luxury airport taxi, premium airport cab, sedan airport taxi, SUV airport taxi, innova airport taxi, tempo traveller airport transfer, corporate airport transfer, group airport transfer, family airport taxi, early morning airport taxi, late night airport cab, midnight airport taxi, airport to hotel taxi, hotel to airport taxi, airport to home taxi, home to airport cab, airport shuttle service, airport taxi fare, airport cab charges, airport taxi rate, airport transfer cost, how to book airport taxi, airport taxi contact number, airport cab customer care, airport transfer with flight tracking, meet and greet airport service, airport taxi with luggage assistance, safe airport transfer, verified airport drivers, sanitized airport cabs, GPS tracked airport taxi, fixed fare airport cab, no surge pricing airport taxi, instant confirmation airport booking",
   alternates: {
-    canonical: "https://trivenicabs.in/airport-service"
+    canonical: "https://www.trivenicabs.in/airport-service"
   },
   openGraph: {
     title: "🚖 Book Airport Taxi in 60 Seconds | Flight Tracking + On-Time Guarantee | Triveni Cabs",
@@ -55,7 +55,7 @@ export default function AirportServicePage() {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     "areaServed": [
       { "@type": "City", "name": "Delhi" },
@@ -124,7 +124,7 @@ export default function AirportServicePage() {
     },
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": "https://trivenicabs.in/airport-service",
+      "serviceUrl": "https://www.trivenicabs.in/airport-service",
       "servicePhone": "+91-7668570551",
       "availableLanguage": ["English", "Hindi"]
     },
@@ -149,28 +149,28 @@ export default function AirportServicePage() {
         "position": 1,
         "name": "Choose Your Service",
         "text": "Select airport pickup or drop service and choose your preferred vehicle type (Sedan, SUV, or Tempo Traveller)",
-        "url": "https://trivenicabs.in/airport-service#booking-form"
+        "url": "https://www.trivenicabs.in/airport-service#booking-form"
       },
       {
         "@type": "HowToStep",
         "position": 2,
         "name": "Enter Journey Details",
         "text": "Provide pickup location, destination airport, date, time, and number of passengers. Add flight details for tracking.",
-        "url": "https://trivenicabs.in/airport-service#booking-form"
+        "url": "https://www.trivenicabs.in/airport-service#booking-form"
       },
       {
         "@type": "HowToStep",
         "position": 3,
         "name": "Get Instant Confirmation",
         "text": "Submit your booking via WhatsApp and receive instant confirmation with driver details and fare quote",
-        "url": "https://trivenicabs.in/airport-service#booking-form"
+        "url": "https://www.trivenicabs.in/airport-service#booking-form"
       },
       {
         "@type": "HowToStep",
         "position": 4,
         "name": "Enjoy Hassle-Free Transfer",
         "text": "Our professional driver will track your flight, meet you at arrival, assist with luggage, and ensure on-time transfer",
-        "url": "https://trivenicabs.in/airport-service"
+        "url": "https://www.trivenicabs.in/airport-service"
       }
     ]
   };
@@ -207,13 +207,13 @@ export default function AirportServicePage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Airport Service",
-        "item": "https://trivenicabs.in/airport-service"
+        "item": "https://www.trivenicabs.in/airport-service"
       }
     ]
   };

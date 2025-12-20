@@ -529,7 +529,7 @@ export default function TermsClient() {
                   <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href="https://trivenicabs.in"
+                    href="https://www.trivenicabs.in"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/30 transition-all duration-300 block"

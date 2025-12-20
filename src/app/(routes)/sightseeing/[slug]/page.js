@@ -271,12 +271,12 @@ export async function generateMetadata({ params }) {
         `ultimate ${cityName} guide`
       ].filter(Boolean).join(', '),
       alternates: {
-        canonical: `https://trivenicabs.in/sightseeing/${slug}`
+        canonical: `https://www.trivenicabs.in/sightseeing/${slug}`
       },
       openGraph: {
         title: `${cityName} Sightseeing Tours | Best Tour Packages 2025`,
         description: `${tours.length}+ expert-guided tours in ${cityName}. Heritage sites, cultural experiences & day trips. Book now!`,
-        url: `https://trivenicabs.in/sightseeing/${slug}`,
+        url: `https://www.trivenicabs.in/sightseeing/${slug}`,
         type: 'website',
         locale: 'en_IN',
         siteName: 'Triveni Cabs',
@@ -450,12 +450,12 @@ export async function generateMetadata({ params }) {
       'authentic experience'
     ].filter(Boolean).join(', '),
     alternates: {
-      canonical: `https://trivenicabs.in/sightseeing/${slug}`
+      canonical: `https://www.trivenicabs.in/sightseeing/${slug}`
     },
     openGraph: {
       title: `${tour.name} | Premium Guided Sightseeing Tour`,
       description: `${tour.shortDescription} | ${tour.duration} | From ₹${lowestPrice} | Expert guides | Customizable`,
-      url: `https://trivenicabs.in/sightseeing/${slug}`,
+      url: `https://www.trivenicabs.in/sightseeing/${slug}`,
       type: 'website',
       locale: 'en_IN',
       siteName: 'Triveni Cabs',
@@ -534,13 +534,13 @@ export default async function SightseeingDetailPage({ params }) {
               "@type": "TouristDestination",
               "name": `${cityName} - Tourist Destination`,
               "description": `Explore ${cityName} with our premium sightseeing tours. ${cityTours.length}+ expert-guided tours covering heritage sites, cultural landmarks, and hidden gems.`,
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "touristType": ["Cultural Tourism", "Heritage Tourism", "Adventure Tourism", "Family Tourism"],
               "includesAttraction": cityTours.slice(0, 5).map(tour => ({
                 "@type": "TouristAttraction",
                 "name": tour.name,
                 "description": tour.shortDescription,
-                "url": `https://trivenicabs.in/sightseeing/${tour.slug}`
+                "url": `https://www.trivenicabs.in/sightseeing/${tour.slug}`
               }))
             })
           }}
@@ -558,19 +558,19 @@ export default async function SightseeingDetailPage({ params }) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://trivenicabs.in"
+                  "item": "https://www.trivenicabs.in"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Sightseeing Tours",
-                  "item": "https://trivenicabs.in/sightseeing"
+                  "item": "https://www.trivenicabs.in/sightseeing"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
                   "name": `${cityName} Tours`,
-                  "item": `https://trivenicabs.in/sightseeing/${slug}`
+                  "item": `https://www.trivenicabs.in/sightseeing/${slug}`
                 }
               ]
             })
@@ -594,7 +594,7 @@ export default async function SightseeingDetailPage({ params }) {
                   "@type": "TouristTrip",
                   "name": tour.name,
                   "description": tour.shortDescription,
-                  "url": `https://trivenicabs.in/sightseeing/${tour.slug}`,
+                  "url": `https://www.trivenicabs.in/sightseeing/${tour.slug}`,
                   "offers": {
                     "@type": "Offer",
                     "price": tour.price.sedan || tour.price.suv,
@@ -628,7 +628,7 @@ export default async function SightseeingDetailPage({ params }) {
                 "@type": "TravelAgency",
                 "name": "Triveni Cabs",
                 "telephone": "+91-7668570551",
-                "url": "https://trivenicabs.in"
+                "url": "https://www.trivenicabs.in"
               },
               "areaServed": {
                 "@type": "City",
@@ -643,7 +643,7 @@ export default async function SightseeingDetailPage({ params }) {
               },
               "availableChannel": {
                 "@type": "ServiceChannel",
-                "serviceUrl": `https://trivenicabs.in/sightseeing/${slug}`,
+                "serviceUrl": `https://www.trivenicabs.in/sightseeing/${slug}`,
                 "servicePhone": "+91-7668570551"
               }
             })
@@ -704,11 +704,11 @@ export default async function SightseeingDetailPage({ params }) {
               "@type": "CollectionPage",
               "name": `${cityName} Sightseeing Tours Collection`,
               "description": `Browse all ${cityTours.length} sightseeing tours available in ${cityName}`,
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "isPartOf": {
                 "@type": "WebSite",
                 "name": "Triveni Cabs",
-                "url": "https://trivenicabs.in"
+                "url": "https://www.trivenicabs.in"
               },
               "about": {
                 "@type": "City",
@@ -755,7 +755,7 @@ export default async function SightseeingDetailPage({ params }) {
             "@type": "TouristTrip",
             "name": tour.name,
             "description": tour.fullDescription,
-            "url": `https://trivenicabs.in/sightseeing/${slug}`,
+            "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
             "image": {
               "@type": "ImageObject",
               "url": tour.heroImage || `/images/tours/${slug}.jpg`,
@@ -775,7 +775,7 @@ export default async function SightseeingDetailPage({ params }) {
               "name": "Triveni Cabs",
               "telephone": "+91-7668570551",
               "email": "info@trivenicabs.in",
-              "url": "https://trivenicabs.in",
+              "url": "https://www.trivenicabs.in",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "366, Dandupura, near Tajganj",
@@ -792,7 +792,7 @@ export default async function SightseeingDetailPage({ params }) {
               "highPrice": highestPrice,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "validFrom": new Date().toISOString(),
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
               "seller": {
@@ -804,7 +804,7 @@ export default async function SightseeingDetailPage({ params }) {
               "price": lowestPrice,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "validFrom": new Date().toISOString(),
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
             },
@@ -850,19 +850,19 @@ export default async function SightseeingDetailPage({ params }) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://trivenicabs.in"
+                "item": "https://www.trivenicabs.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Sightseeing Tours",
-                "item": "https://trivenicabs.in/sightseeing"
+                "item": "https://www.trivenicabs.in/sightseeing"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": tour.name,
-                "item": `https://trivenicabs.in/sightseeing/${slug}`
+                "item": `https://www.trivenicabs.in/sightseeing/${slug}`
               }
             ]
           })
@@ -933,7 +933,7 @@ export default async function SightseeingDetailPage({ params }) {
                 "longitude": tour.coordinates.longitude
               },
               "image": tour.heroImage || `/images/tours/${slug}.jpg`,
-              "url": `https://trivenicabs.in/sightseeing/${slug}`
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`
             })
           }}
         />
@@ -947,8 +947,8 @@ export default async function SightseeingDetailPage({ params }) {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Triveni Cabs",
-            "url": "https://trivenicabs.in",
-            "logo": "https://trivenicabs.in/logo.png",
+            "url": "https://www.trivenicabs.in",
+            "logo": "https://www.trivenicabs.in/logo.png",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+91-7668570551",
@@ -985,7 +985,7 @@ export default async function SightseeingDetailPage({ params }) {
               "highPrice": highestPrice,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
               "offerCount": prices.length
             } : {
@@ -993,7 +993,7 @@ export default async function SightseeingDetailPage({ params }) {
               "price": lowestPrice,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
             },
             ...(tour.reviews && {
@@ -1025,7 +1025,7 @@ export default async function SightseeingDetailPage({ params }) {
               "@type": "TravelAgency",
               "name": "Triveni Cabs",
               "telephone": "+91-7668570551",
-              "url": "https://trivenicabs.in"
+              "url": "https://www.trivenicabs.in"
             },
             "object": {
               "@type": "TouristTrip",
@@ -1143,7 +1143,7 @@ export default async function SightseeingDetailPage({ params }) {
             "organizer": {
               "@type": "Organization",
               "name": "Triveni Cabs",
-              "url": "https://trivenicabs.in"
+              "url": "https://www.trivenicabs.in"
             },
             "performer": {
               "@type": "Organization",
@@ -1151,7 +1151,7 @@ export default async function SightseeingDetailPage({ params }) {
             },
             "offers": {
               "@type": "Offer",
-              "url": `https://trivenicabs.in/sightseeing/${slug}`,
+              "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "price": lowestPrice,
               "priceCurrency": "INR",
               "availability": "https://schema.org/InStock",

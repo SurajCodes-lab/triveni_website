@@ -158,7 +158,7 @@ export const metadata = {
     'top tour guide services'
   ].join(', '),
   alternates: {
-    canonical: 'https://trivenicabs.in/tour-guide'
+    canonical: 'https://www.trivenicabs.in/tour-guide'
   },
   openGraph: {
     title: 'Expert Tour Guides in India | Certified Multi-Language Local Guides',
@@ -166,7 +166,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs',
-    url: 'https://trivenicabs.in/tour-guide',
+    url: 'https://www.trivenicabs.in/tour-guide',
     images: [
       {
         url: '/images/tour-guide.jpg',
@@ -216,9 +216,9 @@ export default function TourGuidePage() {
             "@type": "TouristInformationCenter",
             "name": "Professional Tour Guide Services - Triveni Cabs",
             "description": "Book experienced, certified tour guides in 14+ Indian cities. Multi-language guides available in 6 languages including English, Hindi, French, Spanish, German, and Chinese.",
-            "url": "https://trivenicabs.in/tour-guide",
+            "url": "https://www.trivenicabs.in/tour-guide",
             "telephone": "+91-7668570551",
-            "image": "https://trivenicabs.in/images/tour-guide.jpg",
+            "image": "https://www.trivenicabs.in/images/tour-guide.jpg",
             "priceRange": "₹1200-₹2500",
             "address": {
               "@type": "PostalAddress",
@@ -478,13 +478,13 @@ export default function TourGuidePage() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://trivenicabs.in"
+                "item": "https://www.trivenicabs.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Tour Guide Services",
-                "item": "https://trivenicabs.in/tour-guide"
+                "item": "https://www.trivenicabs.in/tour-guide"
               }
             ]
           })

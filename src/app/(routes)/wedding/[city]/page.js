@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
     description: city.description,
     keywords: city.keywords,
     alternates: {
-      canonical: `https://trivenicabs.in/wedding/${params.city}`
+      canonical: `https://www.trivenicabs.in/wedding/${params.city}`
     },
     openGraph: {
       title: `💍 ${city.name} Wedding Car Rental | Luxury BMW • Audi • Mercedes | Baraat Tempo Traveller`,
@@ -83,14 +83,14 @@ export default function CityWeddingPage({ params }) {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in",
+      "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": city.name,
         "addressCountry": "IN"
       },
       "priceRange": city.priceRange,
-      "image": "https://trivenicabs.in/images/wedding_section.jpg"
+      "image": "https://www.trivenicabs.in/images/wedding_section.jpg"
     },
     "areaServed": {
       "@type": "City",
@@ -113,7 +113,7 @@ export default function CityWeddingPage({ params }) {
     },
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": `https://trivenicabs.in/wedding/${params.city}`,
+      "serviceUrl": `https://www.trivenicabs.in/wedding/${params.city}`,
       "servicePhone": "+91-7668570551",
       "availableLanguage": ["English", "Hindi"]
     }
@@ -128,19 +128,19 @@ export default function CityWeddingPage({ params }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Wedding Services",
-        "item": "https://trivenicabs.in/wedding"
+        "item": "https://www.trivenicabs.in/wedding"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": `${city.name} Wedding Car Rental`,
-        "item": `https://trivenicabs.in/wedding/${params.city}`
+        "item": `https://www.trivenicabs.in/wedding/${params.city}`
       }
     ]
   };
@@ -165,11 +165,11 @@ export default function CityWeddingPage({ params }) {
     "organizer": {
       "@type": "Organization",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://trivenicabs.in/wedding/${params.city}`,
+      "url": `https://www.trivenicabs.in/wedding/${params.city}`,
       "price": city.priceRange,
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
@@ -183,7 +183,7 @@ export default function CityWeddingPage({ params }) {
     "@type": "Product",
     "name": `${city.name} Wedding Car Rental Services`,
     "description": city.description,
-    "image": "https://trivenicabs.in/images/wedding_section.jpg",
+    "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
     "brand": {
       "@type": "Brand",
       "name": "Triveni Cabs"
@@ -266,7 +266,7 @@ export default function CityWeddingPage({ params }) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": `Triveni Cabs - ${city.name} Wedding Car Rental`,
-    "image": "https://trivenicabs.in/images/wedding_section.jpg",
+    "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
     "telephone": "+91-7668570551",
     "email": "info@trivenicabs.in",
     "address": {
@@ -278,7 +278,7 @@ export default function CityWeddingPage({ params }) {
       "@type": "GeoCoordinates",
       "addressCountry": "IN"
     },
-    "url": `https://trivenicabs.in/wedding/${params.city}`,
+    "url": `https://www.trivenicabs.in/wedding/${params.city}`,
     "priceRange": city.priceRange,
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",

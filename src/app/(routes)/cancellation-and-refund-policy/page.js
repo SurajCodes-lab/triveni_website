@@ -5,7 +5,7 @@ export const metadata = {
   description: "Learn about Triveni Cabs cancellation and refund policy. Fair, transparent, and customer-friendly terms. Full refund for 7+ days advance cancellation, 50% for 3-6 days, no refund within 72 hours.",
   keywords: "Triveni Cabs cancellation policy, taxi refund policy, cab booking cancellation, travel refund terms, cab service cancellation, taxi cancellation charges, refund process India",
   alternates: {
-    canonical: "https://trivenicabs.in/cancellation-and-refund-policy"
+    canonical: "https://www.trivenicabs.in/cancellation-and-refund-policy"
   },
   openGraph: {
     title: "Cancellation & Refund Policy | Triveni Cabs",

@@ -67,14 +67,14 @@ export const metadata = {
     'tempo traveller 2025 booking'
   ].join(', '),
   applicationName: 'Triveni Cabs',
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/tempo-traveller',
   },
   openGraph: {
     title: 'Tempo Traveller on Rent India | 12-26 Seater AC with Driver | Book Online 24/7',
     description: '✓ Delhi to Manali ✓ Delhi to Shimla ✓ Delhi to Jaipur ✓ 100+ Routes | ₹23-27/km | GPS Tracking | Professional Drivers | 4.8★ Rating | Instant Confirmation',
-    url: 'https://trivenicabs.in/tempo-traveller',
+    url: 'https://www.trivenicabs.in/tempo-traveller',
     siteName: 'Triveni Cabs - Tempo Traveller Rental Service',
     type: 'website',
     locale: 'en_IN',
@@ -160,26 +160,26 @@ export default function TempoTravellerPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://trivenicabs.in/tempo-traveller#webpage",
-        "url": "https://trivenicabs.in/tempo-traveller",
+        "@id": "https://www.trivenicabs.in/tempo-traveller#webpage",
+        "url": "https://www.trivenicabs.in/tempo-traveller",
         "name": "Tempo Traveller on Rent India | 12-26 Seater AC with Driver",
         "description": "Book tempo traveller on rent for group travel across India. 12, 16, 17, 20, 26 seater AC tempo traveller with professional drivers. Popular routes: Delhi to Manali, Delhi to Shimla, Delhi to Jaipur. Best rates ₹23-27/km all-inclusive.",
         "inLanguage": "en-IN",
         "isPartOf": {
-          "@id": "https://trivenicabs.in#website"
+          "@id": "https://www.trivenicabs.in#website"
         },
         "breadcrumb": {
-          "@id": "https://trivenicabs.in/tempo-traveller#breadcrumb"
+          "@id": "https://www.trivenicabs.in/tempo-traveller#breadcrumb"
         },
         "potentialAction": {
           "@type": "ReadAction",
-          "target": ["https://trivenicabs.in/tempo-traveller"]
+          "target": ["https://www.trivenicabs.in/tempo-traveller"]
         },
         "datePublished": "2024-01-15T00:00:00+05:30",
         "dateModified": new Date().toISOString(),
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://trivenicabs.in/images/tempo-hero.jpg",
+          "url": "https://www.trivenicabs.in/images/tempo-hero.jpg",
           "width": 1200,
           "height": 630,
           "caption": "Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles - Triveni Cabs"
@@ -187,25 +187,25 @@ export default function TempoTravellerPage() {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://trivenicabs.in/tempo-traveller#breadcrumb",
+        "@id": "https://www.trivenicabs.in/tempo-traveller#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://trivenicabs.in"
+            "item": "https://www.trivenicabs.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Tempo Traveller on Rent",
-            "item": "https://trivenicabs.in/tempo-traveller"
+            "item": "https://www.trivenicabs.in/tempo-traveller"
           }
         ]
       },
       {
         "@type": "FAQPage",
-        "@id": "https://trivenicabs.in/tempo-traveller#faq",
+        "@id": "https://www.trivenicabs.in/tempo-traveller#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -259,18 +259,18 @@ export default function TempoTravellerPage() {
       },
       {
         "@type": "Service",
-        "@id": "https://trivenicabs.in/tempo-traveller#service",
+        "@id": "https://www.trivenicabs.in/tempo-traveller#service",
         "serviceType": "Tempo Traveller Rental Service",
         "name": "Tempo Traveller on Rent India - 12 to 26 Seater AC Vehicles with Driver",
         "description": "Premium tempo traveller rental service for group travel across India. Book 12, 16, 17, 20, 26 seater AC tempo travellers with professional drivers for outstation tours, family trips, corporate events, pilgrimages, and weddings. All-inclusive pricing from ₹23-27/km covering Delhi to Manali, Delhi to Shimla, Delhi to Jaipur, Chandigarh to Manali and 100+ more routes.",
         "provider": {
           "@type": "LocalBusiness",
-          "@id": "https://trivenicabs.in#organization",
+          "@id": "https://www.trivenicabs.in#organization",
           "name": "Triveni Cabs",
-          "image": "https://trivenicabs.in/images/logo.png",
+          "image": "https://www.trivenicabs.in/images/logo.png",
           "telephone": "+91-7668570551",
           "email": "info@trivenicabs.in",
-          "url": "https://trivenicabs.in",
+          "url": "https://www.trivenicabs.in",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "IN",
@@ -335,7 +335,7 @@ export default function TempoTravellerPage() {
             "unitText": "per kilometer"
           },
           "availability": "https://schema.org/InStock",
-          "url": "https://trivenicabs.in/tempo-traveller",
+          "url": "https://www.trivenicabs.in/tempo-traveller",
           "validFrom": new Date().toISOString()
         },
         "aggregateRating": {
@@ -355,7 +355,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "12 Seater Tempo Traveller on Rent",
                 "description": "AC tempo traveller with pushback seats, music system, GPS tracking for 12 passengers. Ideal for small family groups and corporate teams.",
-                "image": "https://trivenicabs.in/images/12-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/12-seater-tempo.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -376,7 +376,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "17 Seater Tempo Traveller on Rent",
                 "description": "Luxury AC tempo traveller with pushback recliner seats, music system, charging points for 17 passengers. Most popular choice for group travel.",
-                "image": "https://trivenicabs.in/images/17-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/17-seater-tempo.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -397,7 +397,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "20 Seater Tempo Traveller on Rent",
                 "description": "Spacious AC tempo with LED TV, music system, pushback seats for 20 passengers. Perfect for large group tours and wedding parties.",
-                "image": "https://trivenicabs.in/images/20-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/20-seater-tempo.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -418,7 +418,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "26 Seater Tempo Traveller Maharaja on Rent",
                 "description": "Premium luxury Maharaja tempo traveller with super deluxe recliner seats, LED TV, powerful AC for 26 passengers. Top choice for comfort travel.",
-                "image": "https://trivenicabs.in/images/26-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/26-seater-tempo.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -437,7 +437,7 @@ export default function TempoTravellerPage() {
         },
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://trivenicabs.in/tempo-traveller",
+          "serviceUrl": "https://www.trivenicabs.in/tempo-traveller",
           "servicePhone": "+91-7668570551",
           "availableLanguage": ["English", "Hindi", "Punjabi"]
         },
@@ -447,7 +447,7 @@ export default function TempoTravellerPage() {
           "opens": "00:00",
           "closes": "23:59"
         },
-        "termsOfService": "https://trivenicabs.in/terms-and-conditions",
+        "termsOfService": "https://www.trivenicabs.in/terms-and-conditions",
         "knowsAbout": [
           "Tempo Traveller Rental",
           "Group Travel India",

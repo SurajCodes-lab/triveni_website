@@ -53,11 +53,11 @@ export async function generateMetadata({ params }) {
   const destinationFormatted = formatCityName(destination);
 
   return {
-    metadataBase: new URL('https://trivenicabs.in'),
+    metadataBase: new URL('https://www.trivenicabs.in'),
     title: `Big Group? No Problem! ${originFormatted} to ${destinationFormatted} Luxury Bus 22-56 Seater | Book Now & Save 20%`,
     description: `🚌 Roll in comfort from ${originFormatted} to ${destinationFormatted}! Luxury Volvo & AC buses (22-56 seater) with reclining seats, entertainment & AC. Perfect for corporate events, weddings, pilgrimages & tours. 1000+ groups trusted us. Professional drivers, GPS tracking, on-time guarantee. Book online in 60 seconds & get instant confirmation + 20% discount!`,
     alternates: {
-      canonical: `https://trivenicabs.in/bus-routes/${route}`
+      canonical: `https://www.trivenicabs.in/bus-routes/${route}`
     },
     viewport: {
       width: 'device-width',
@@ -82,13 +82,13 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `Big Groups Travel Better! ${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
       description: `🚌 22-56 seater Volvo & AC buses | Reclining seats • Entertainment • GPS tracking. 1000+ groups trusted us. Book now & save 20%!`,
-      url: `https://trivenicabs.in/bus-routes/${route}`,
+      url: `https://www.trivenicabs.in/bus-routes/${route}`,
       type: 'website',
       locale: 'en_IN',
       siteName: 'Triveni Cabs',
       images: [
         {
-          url: 'https://trivenicabs.in/images/bus/hero_section_image.png',
+          url: 'https://www.trivenicabs.in/images/bus/hero_section_image.png',
           width: 1200,
           height: 630,
           alt: `${originFormatted} to ${destinationFormatted} Bus Service - Triveni Cabs`,
@@ -99,7 +99,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: `${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
       description: `🚌 Volvo comfort • AC • Entertainment. Perfect for corporate, weddings & tours. Book now!`,
-      images: ['https://trivenicabs.in/images/bus/hero_section_image.png']
+      images: ['https://www.trivenicabs.in/images/bus/hero_section_image.png']
     },
     robots: {
       index: true,
@@ -245,7 +245,7 @@ export default async function BusRoutePage({ params }) {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     ...(routeData.distance !== 'Contact for details' && { "distance": routeData.distance }),
     ...(routeData.duration !== 'Contact for details' && { "duration": routeData.duration })
@@ -271,7 +271,7 @@ export default async function BusRoutePage({ params }) {
         "unitText": "per kilometer"
       },
       "availability": "https://schema.org/InStock",
-      "url": `https://trivenicabs.in/bus-routes/${route}`,
+      "url": `https://www.trivenicabs.in/bus-routes/${route}`,
       "seller": {
         "@type": "Organization",
         "name": "Triveni Cabs"
@@ -294,19 +294,19 @@ export default async function BusRoutePage({ params }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Bus Routes",
-        "item": "https://trivenicabs.in/bus-routes"
+        "item": "https://www.trivenicabs.in/bus-routes"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": `${originFormatted} to ${destinationFormatted}`,
-        "item": `https://trivenicabs.in/bus-routes/${route}`
+        "item": `https://www.trivenicabs.in/bus-routes/${route}`
       }
     ]
   };

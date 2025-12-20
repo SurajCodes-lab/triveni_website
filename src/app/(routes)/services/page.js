@@ -67,7 +67,7 @@ export const metadata = {
     'local sightseeing packages'
   ].join(', '),
   alternates: {
-    canonical: 'https://trivenicabs.in/services'
+    canonical: 'https://www.trivenicabs.in/services'
   },
   openGraph: {
     title: 'Premium Cab Services Across India | Triveni Cabs',
@@ -75,7 +75,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs',
-    url: 'https://trivenicabs.in/services',
+    url: 'https://www.trivenicabs.in/services',
     images: [
       {
         url: '/images/about/about_banner.webp',
@@ -120,7 +120,7 @@ export default function ServicesPage() {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     "areaServed": {
       "@type": "Country",
@@ -189,7 +189,7 @@ export default function ServicesPage() {
     },
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": "https://trivenicabs.in/services",
+      "serviceUrl": "https://www.trivenicabs.in/services",
       "servicePhone": "+91-7668570551",
       "availableLanguage": ["English", "Hindi"]
     },

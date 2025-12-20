@@ -130,7 +130,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/blog',
     languages: {
@@ -143,11 +143,11 @@ export const metadata = {
     description: 'From hidden Himalayan villages to secret beaches - discover India through authentic stories, money-saving tips & bucket-list itineraries. Your adventure awaits!',
     type: 'website',
     locale: 'en_IN',
-    url: 'https://trivenicabs.in/blog',
+    url: 'https://www.trivenicabs.in/blog',
     siteName: 'Triveni Cabs - India Travel Blog',
     images: [
       {
-        url: 'https://trivenicabs.in/images/blog/travel-blog-india.jpg',
+        url: 'https://www.trivenicabs.in/images/blog/travel-blog-india.jpg',
         width: 1200,
         height: 630,
         alt: 'Triveni Cabs Travel Blog - Expert India Travel Tips and Destination Guides',
@@ -158,7 +158,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'India Uncovered: Travel Tales That Inspire 🌏',
     description: '✨ Hidden gems 💰 Budget hacks 🏔️ Epic adventures. Real stories from incredible India that will make you pack your bags today!',
-    images: ['https://trivenicabs.in/images/blog/travel-blog-twitter.jpg'],
+    images: ['https://www.trivenicabs.in/images/blog/travel-blog-twitter.jpg'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs',
   },
@@ -178,7 +178,7 @@ export const metadata = {
   category: 'Travel',
   classification: 'Travel Blog',
   other: {
-    'article:publisher': 'https://trivenicabs.in',
+    'article:publisher': 'https://www.trivenicabs.in',
     'article:section': 'Travel',
     'og:type': 'blog',
     'rating': '4.9',
@@ -193,15 +193,15 @@ export default function BlogPage() {
     "@type": "Blog",
     "name": "Triveni Cabs Travel Blog - India Tourism & Travel Guides",
     "description": "Expert travel tips, destination guides, and insider secrets for traveling across India. Get the best advice for planning your perfect trip with comprehensive travel guides, budget tips, and local insights.",
-    "url": "https://trivenicabs.in/blog",
+    "url": "https://www.trivenicabs.in/blog",
     "inLanguage": "en-IN",
     "publisher": {
       "@type": "Organization",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.in",
+      "url": "https://www.trivenicabs.in",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://trivenicabs.in/logo.webp",
+        "url": "https://www.trivenicabs.in/logo.webp",
         "width": 250,
         "height": 60
       },
@@ -236,13 +236,13 @@ export default function BlogPage() {
         "name": "Triveni Cabs",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://trivenicabs.in/logo.webp"
+          "url": "https://www.trivenicabs.in/logo.webp"
         }
       },
-      "url": `https://trivenicabs.in/blog/${post.slug}`,
+      "url": `https://www.trivenicabs.in/blog/${post.slug}`,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://trivenicabs.in/blog/${post.slug}`
+        "@id": `https://www.trivenicabs.in/blog/${post.slug}`
       },
       "keywords": post.tags?.join(', ') || "travel India, tourism, destination guide",
       "articleSection": post.category || "Travel",
@@ -267,13 +267,13 @@ export default function BlogPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Travel Blog",
-        "item": "https://trivenicabs.in/blog"
+        "item": "https://www.trivenicabs.in/blog"
       }
     ]
   };
@@ -282,12 +282,12 @@ export default function BlogPage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Triveni Cabs Travel Blog",
-    "url": "https://trivenicabs.in/blog",
+    "url": "https://www.trivenicabs.in/blog",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://trivenicabs.in/blog?search={search_term_string}"
+        "urlTemplate": "https://www.trivenicabs.in/blog?search={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }

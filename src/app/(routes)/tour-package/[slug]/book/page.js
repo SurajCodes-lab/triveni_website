@@ -138,7 +138,7 @@ export async function generateMetadata({ params }) {
       images: [packageInfo.image],
     },
     alternates: {
-      canonical: `https://trivenicabs.in/tour-package/${slug}/book`
+      canonical: `https://www.trivenicabs.in/tour-package/${slug}/book`
     },
     robots: {
       index: true,
@@ -253,7 +253,7 @@ export default function BookingPage({ params }) {
     "@type": "WebPage",
     "name": `Book ${packageInfo.title}`,
     "description": content.intro,
-    "url": `https://trivenicabs.in/tour-package/${slug}/book`,
+    "url": `https://www.trivenicabs.in/tour-package/${slug}/book`,
     "mainEntity": {
       "@type": "TourPackage",
       "name": packageInfo.title,
@@ -261,7 +261,7 @@ export default function BookingPage({ params }) {
       "provider": {
         "@type": "TravelAgency",
         "name": "Triveni Cabs",
-        "url": "https://trivenicabs.in",
+        "url": "https://www.trivenicabs.in",
         "telephone": "7668570551",
         "email": "info@trivenicabs.in"
       },
@@ -271,7 +271,7 @@ export default function BookingPage({ params }) {
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
         "validFrom": new Date().toISOString(),
-        "url": `https://trivenicabs.in/tour-package/${slug}/book`
+        "url": `https://www.trivenicabs.in/tour-package/${slug}/book`
       }
     },
     "breadcrumb": {
@@ -281,25 +281,25 @@ export default function BookingPage({ params }) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://trivenicabs.in"
+          "item": "https://www.trivenicabs.in"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Tour Packages",
-          "item": "https://trivenicabs.in/tour-package"
+          "item": "https://www.trivenicabs.in/tour-package"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": packageInfo.title,
-          "item": `https://trivenicabs.in/tour-package/${slug}`
+          "item": `https://www.trivenicabs.in/tour-package/${slug}`
         },
         {
           "@type": "ListItem",
           "position": 4,
           "name": "Book Now",
-          "item": `https://trivenicabs.in/tour-package/${slug}/book`
+          "item": `https://www.trivenicabs.in/tour-package/${slug}/book`
         }
       ]
     },
@@ -307,7 +307,7 @@ export default function BookingPage({ params }) {
       "@type": "ReserveAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": `https://trivenicabs.in/tour-package/${slug}/book`,
+        "urlTemplate": `https://www.trivenicabs.in/tour-package/${slug}/book`,
         "actionPlatform": [
           "http://schema.org/DesktopWebPlatform",
           "http://schema.org/MobileWebPlatform"

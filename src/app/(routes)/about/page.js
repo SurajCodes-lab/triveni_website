@@ -7,7 +7,7 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: "/about",
     languages: {
@@ -20,7 +20,7 @@ export const metadata = {
     description: "Discover Triveni Cabs - 500+ premium vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable, and affordable travel across India with transparent pricing and 24/7 support.",
     type: "website",
     locale: "en_IN",
-    url: "https://trivenicabs.in/about",
+    url: "https://www.trivenicabs.in/about",
     siteName: "Triveni Cabs",
     images: [
       {
@@ -62,10 +62,10 @@ export default function AboutPage() {
     "@type": "Organization",
     "name": "Triveni Cabs",
     "alternateName": "Triveni Cabs India",
-    "url": "https://trivenicabs.in",
+    "url": "https://www.trivenicabs.in",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://trivenicabs.in/logo.png",
+      "url": "https://www.trivenicabs.in/logo.png",
       "width": 250,
       "height": 60
     },
@@ -147,16 +147,16 @@ export default function AboutPage() {
     "@type": "AboutPage",
     "name": "About Triveni Cabs",
     "description": "Discover the story behind Triveni Cabs, our mission, vision, and commitment to providing safe and reliable transportation across India.",
-    "url": "https://trivenicabs.in/about",
+    "url": "https://www.trivenicabs.in/about",
     "mainEntity": {
-      "@id": "https://trivenicabs.in/#organization"
+      "@id": "https://www.trivenicabs.in/#organization"
     },
     "inLanguage": "en-IN",
     "dateModified": new Date().toISOString(),
     "isPartOf": {
       "@type": "WebSite",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     }
   };
 
@@ -169,13 +169,13 @@ export default function AboutPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "About Us",
-        "item": "https://trivenicabs.in/about"
+        "item": "https://www.trivenicabs.in/about"
       }
     ]
   };

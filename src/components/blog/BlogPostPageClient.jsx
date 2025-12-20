@@ -29,25 +29,25 @@ function generateBlogPostingSchema(post) {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.metaDescription || post.excerpt,
-    "image": post.image || "https://trivenicabs.in/images/og-image.jpg",
+    "image": post.image || "https://www.trivenicabs.in/images/og-image.jpg",
     "datePublished": post.date,
     "dateModified": post.date,
     "author": {
       "@type": "Organization",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Triveni Cabs",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://trivenicabs.in/images/logo.webp"
+        "url": "https://www.trivenicabs.in/images/logo.webp"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://trivenicabs.in/blog/${post.slug}`
+      "@id": `https://www.trivenicabs.in/blog/${post.slug}`
     },
     "keywords": post.tags?.join(', ') || '',
     "articleSection": post.category || "Travel",
@@ -65,19 +65,19 @@ function generateBreadcrumbSchema(post) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://trivenicabs.in/blog"
+        "item": "https://www.trivenicabs.in/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://trivenicabs.in/blog/${post.slug}`
+        "item": `https://www.trivenicabs.in/blog/${post.slug}`
       }
     ]
   };

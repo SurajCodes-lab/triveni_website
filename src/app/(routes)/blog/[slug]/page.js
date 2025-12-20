@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
       images: post.image ? [post.image] : [],
     },
     alternates: {
-      canonical: `https://trivenicabs.in/blog/${post.slug}`,
+      canonical: `https://www.trivenicabs.in/blog/${post.slug}`,
     },
   };
 }

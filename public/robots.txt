@@ -1,5 +1,5 @@
 # Triveni Cabs - Robots.txt
-# https://trivenicabs.in
+# https://www.trivenicabs.in
 
 # Allow all legitimate crawlers
 User-agent: *
@@ -36,4 +36,4 @@ User-agent: PetalBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://trivenicabs.in/sitemap.xml
+Sitemap: https://www.trivenicabs.in/sitemap.xml

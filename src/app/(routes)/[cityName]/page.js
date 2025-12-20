@@ -96,16 +96,16 @@ export async function generateMetadata({ params }) {
         address: false,
         telephone: false,
       },
-      metadataBase: new URL('https://trivenicabs.in'),
+      metadataBase: new URL('https://www.trivenicabs.in'),
       openGraph: {
         title: `${formattedCityName} to ${formattedDestination} Taxi Service | Book Online at ${startingPrice} | Triveni Cabs`,
         description: `Professional cab service from ${formattedCityName} to ${formattedDestination}. AC vehicles, verified drivers, GPS tracking, transparent pricing. Book your taxi now!`,
         type: 'website',
         locale: 'en_IN',
-        url: `https://trivenicabs.in/${cityName}`,
+        url: `https://www.trivenicabs.in/${cityName}`,
         siteName: 'Triveni Cabs - Premium Taxi Service India',
         images: [{
-          url: 'https://trivenicabs.in/images/car/car1.webp',
+          url: 'https://www.trivenicabs.in/images/car/car1.webp',
           width: 1200,
           height: 630,
           alt: `${formattedCityName} to ${formattedDestination} cab service - Professional taxi booking`
@@ -115,15 +115,15 @@ export async function generateMetadata({ params }) {
         card: 'summary_large_image',
         title: `${formattedCityName} to ${formattedDestination} Cab Service - Starting ${startingPrice}`,
         description: `Book reliable taxi from ${formattedCityName} to ${formattedDestination}. Professional drivers, AC vehicles, 24x7 service.`,
-        images: ['https://trivenicabs.in/images/car/car1.webp'],
+        images: ['https://www.trivenicabs.in/images/car/car1.webp'],
         creator: '@TriveniCabs',
         site: '@TriveniCabs',
       },
       alternates: {
-        canonical: `https://trivenicabs.in/${cityName}`,
+        canonical: `https://www.trivenicabs.in/${cityName}`,
         languages: {
-          'en-IN': `https://trivenicabs.in/${cityName}`,
-          'hi-IN': `https://trivenicabs.in/${cityName}`,
+          'en-IN': `https://www.trivenicabs.in/${cityName}`,
+          'hi-IN': `https://www.trivenicabs.in/${cityName}`,
         },
       },
       robots: {
@@ -173,16 +173,16 @@ export async function generateMetadata({ params }) {
         address: false,
         telephone: false,
       },
-      metadataBase: new URL('https://trivenicabs.in'),
+      metadataBase: new URL('https://www.trivenicabs.in'),
       openGraph: {
         title: `Best Taxi Service in ${formattedCityName} | Professional Cab Booking - Triveni Cabs`,
         description: `Reliable taxi service in ${formattedCityName}. Book cabs for outstation, local trips, and special occasions. Professional drivers, transparent pricing, 24x7 service.`,
         type: 'website',
         locale: 'en_IN',
-        url: `https://trivenicabs.in/${cityName}`,
+        url: `https://www.trivenicabs.in/${cityName}`,
         siteName: 'Triveni Cabs - Premium Taxi Service India',
         images: [{
-          url: 'https://trivenicabs.in/images/car/car2.webp',
+          url: 'https://www.trivenicabs.in/images/car/car2.webp',
           width: 1200,
           height: 630,
           alt: `Professional taxi service in ${formattedCityName} - Triveni Cabs`
@@ -192,15 +192,15 @@ export async function generateMetadata({ params }) {
         card: 'summary_large_image',
         title: `Best Taxi Service in ${formattedCityName} | Triveni Cabs`,
         description: `Professional taxi service in ${formattedCityName}. Outstation trips, local tours, airport transfers. Book now!`,
-        images: ['https://trivenicabs.in/images/car/car2.webp'],
+        images: ['https://www.trivenicabs.in/images/car/car2.webp'],
         creator: '@TriveniCabs',
         site: '@TriveniCabs',
       },
       alternates: {
-        canonical: `https://trivenicabs.in/${cityName}`,
+        canonical: `https://www.trivenicabs.in/${cityName}`,
         languages: {
-          'en-IN': `https://trivenicabs.in/${cityName}`,
-          'hi-IN': `https://trivenicabs.in/${cityName}`,
+          'en-IN': `https://www.trivenicabs.in/${cityName}`,
+          'hi-IN': `https://www.trivenicabs.in/${cityName}`,
         },
       },
       robots: {
@@ -268,7 +268,7 @@ export default function CityNamePage({ params }) {
         "name": "Triveni Cabs",
         "telephone": "+91-7668570551",
         "email": "info@trivenicabs.in",
-        "url": "https://trivenicabs.in",
+        "url": "https://www.trivenicabs.in",
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "IN"
@@ -286,7 +286,7 @@ export default function CityNamePage({ params }) {
       ],
       "availableChannel": {
         "@type": "ServiceChannel",
-        "serviceUrl": `https://trivenicabs.in/${cityName}`,
+        "serviceUrl": `https://www.trivenicabs.in/${cityName}`,
         "servicePhone": "+91-7668570551",
         "availableLanguage": ["English", "Hindi"]
       }
@@ -319,7 +319,7 @@ export default function CityNamePage({ params }) {
       "provider": {
         "@type": "Organization",
         "name": "Triveni Cabs",
-        "url": "https://trivenicabs.in"
+        "url": "https://www.trivenicabs.in"
       }
     };
 
@@ -331,19 +331,19 @@ export default function CityNamePage({ params }) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://trivenicabs.in"
+          "item": "https://www.trivenicabs.in"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": formattedCityName,
-          "item": `https://trivenicabs.in/${originCity.toLowerCase()}`
+          "item": `https://www.trivenicabs.in/${originCity.toLowerCase()}`
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": `${formattedCityName} to ${formattedDestination}`,
-          "item": `https://trivenicabs.in/${cityName}`
+          "item": `https://www.trivenicabs.in/${cityName}`
         }
       ]
     };
@@ -473,7 +473,7 @@ export default function CityNamePage({ params }) {
       "@type": "LocalBusiness",
       "name": `Triveni Cabs - ${formattedCityName}`,
       "description": `Professional taxi service in ${formattedCityName}. Outstation trips, local tours, airport transfers, and special occasions. Verified drivers, AC vehicles, GPS tracking, 24/7 availability.`,
-      "url": `https://trivenicabs.in/${cityName}`,
+      "url": `https://www.trivenicabs.in/${cityName}`,
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
       "priceRange": "₹₹",
@@ -514,7 +514,7 @@ export default function CityNamePage({ params }) {
       "provider": {
         "@type": "Organization",
         "name": "Triveni Cabs",
-        "url": "https://trivenicabs.in",
+        "url": "https://www.trivenicabs.in",
         "telephone": "+91-7668570551"
       },
       "areaServed": {
@@ -524,7 +524,7 @@ export default function CityNamePage({ params }) {
       "serviceType": ["Taxi Service", "Cab Rental", "Car Rental", "Airport Transfer", "Outstation Taxi"],
       "availableChannel": {
         "@type": "ServiceChannel",
-        "serviceUrl": `https://trivenicabs.in/${cityName}`,
+        "serviceUrl": `https://www.trivenicabs.in/${cityName}`,
         "servicePhone": "+91-7668570551",
         "availableLanguage": ["English", "Hindi"]
       }
@@ -538,13 +538,13 @@ export default function CityNamePage({ params }) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://trivenicabs.in"
+          "item": "https://www.trivenicabs.in"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": formattedCityName,
-          "item": `https://trivenicabs.in/${cityName}`
+          "item": `https://www.trivenicabs.in/${cityName}`
         }
       ]
     };

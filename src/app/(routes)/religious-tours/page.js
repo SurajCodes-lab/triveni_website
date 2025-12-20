@@ -11,7 +11,7 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/religious-tours',
     languages: {
@@ -24,7 +24,7 @@ export const metadata = {
     description: 'Char Dham, Vaishno Devi, Golden Temple - Blessed journeys with comfort & devotion. Expert-guided temple tours across India.',
     type: 'website',
     locale: 'en_IN',
-    url: 'https://trivenicabs.in/religious-tours',
+    url: 'https://www.trivenicabs.in/religious-tours',
     siteName: 'Triveni Cabs',
     images: [
       {
@@ -72,7 +72,7 @@ export default function ReligiousToursPage() {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     "areaServed": {
       "@type": "Country",
@@ -96,12 +96,12 @@ export default function ReligiousToursPage() {
           "description": tour.description,
           "touristType": ["Pilgrims", "Families", "Groups", "Solo Travelers"]
         },
-        "url": `https://trivenicabs.in/religious-tours/${tour.slug}`
+        "url": `https://www.trivenicabs.in/religious-tours/${tour.slug}`
       }))
     },
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": "https://trivenicabs.in/religious-tours",
+      "serviceUrl": "https://www.trivenicabs.in/religious-tours",
       "servicePhone": "+91-7668570551",
       "availableLanguage": ["English", "Hindi"]
     }
@@ -116,13 +116,13 @@ export default function ReligiousToursPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Religious Tours",
-        "item": "https://trivenicabs.in/religious-tours"
+        "item": "https://www.trivenicabs.in/religious-tours"
       }
     ]
   };

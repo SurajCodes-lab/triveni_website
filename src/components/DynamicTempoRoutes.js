@@ -62,7 +62,7 @@ export default function DynamicTempoRoutesClient({ data }) {
     "@graph": [
       {
         "@type": "Service",
-        "@id": `https://trivenicabs.in/tempo-traveller/${routeSlug}#service`,
+        "@id": `https://www.trivenicabs.in/tempo-traveller/${routeSlug}#service`,
         "serviceType": "Tempo Traveller Rental",
         "name": `${origin} to ${destination} Tempo Traveller on Rent`,
         "alternateName": [
@@ -76,8 +76,8 @@ export default function DynamicTempoRoutesClient({ data }) {
           "name": "Triveni Cabs",
           "telephone": "+917668570551",
           "email": "info@trivenicabs.in",
-          "url": "https://trivenicabs.in",
-          "image": "https://trivenicabs.in/images/logo.webp",
+          "url": "https://www.trivenicabs.in",
+          "image": "https://www.trivenicabs.in/images/logo.webp",
           "priceRange": "₹₹",
           "address": {
             "@type": "PostalAddress",
@@ -122,9 +122,9 @@ export default function DynamicTempoRoutesClient({ data }) {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://trivenicabs.in" },
-          { "@type": "ListItem", "position": 2, "name": "Tempo Traveller", "item": "https://trivenicabs.in/tempo-traveller" },
-          { "@type": "ListItem", "position": 3, "name": `${origin} to ${destination}`, "item": `https://trivenicabs.in/tempo-traveller/${routeSlug}` }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+          { "@type": "ListItem", "position": 2, "name": "Tempo Traveller", "item": "https://www.trivenicabs.in/tempo-traveller" },
+          { "@type": "ListItem", "position": 3, "name": `${origin} to ${destination}`, "item": `https://www.trivenicabs.in/tempo-traveller/${routeSlug}` }
         ]
       },
       {

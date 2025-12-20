@@ -5,7 +5,7 @@ export const metadata = {
   description: "Read Triveni Cabs terms and conditions for taxi booking services. Clear policies on booking, payments, vehicle responsibilities, customer guidelines, and more.",
   keywords: "Triveni Cabs terms, taxi booking terms, cab service conditions, travel terms India, taxi service agreement, cab booking policy, customer responsibilities taxi",
   alternates: {
-    canonical: "https://trivenicabs.in/terms-and-conditions"
+    canonical: "https://www.trivenicabs.in/terms-and-conditions"
   },
   openGraph: {
     title: "Terms & Conditions | Triveni Cabs",

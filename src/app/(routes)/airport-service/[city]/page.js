@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
     description: `Book ${city.name} airport taxi instantly! ✓ ${city.airport} pickup/drop ✓ Real-time flight tracking ✓ Meet & greet ✓ Luggage assistance ✓ Zero cancellation fee. Serving ${city.popularDestinations?.map(d => d.name).join(', ')}. Pre-book for guaranteed rates starting ₹11/km!`,
     keywords: city.keywords,
     alternates: {
-      canonical: `https://trivenicabs.in/airport-service/${params.city}`
+      canonical: `https://www.trivenicabs.in/airport-service/${params.city}`
     },
     openGraph: {
       title: `🚖 ${city.name} Airport Taxi Service | ${city.airport} Cab Booking 24/7`,
@@ -83,7 +83,7 @@ export default function CityAirportPage({ params }) {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in"
+      "url": "https://www.trivenicabs.in"
     },
     "areaServed": {
       "@type": "City",
@@ -125,19 +125,19 @@ export default function CityAirportPage({ params }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Airport Service",
-        "item": "https://trivenicabs.in/airport-service"
+        "item": "https://www.trivenicabs.in/airport-service"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": `${city.name} Airport Taxi`,
-        "item": `https://trivenicabs.in/airport-service/${params.city}`
+        "item": `https://www.trivenicabs.in/airport-service/${params.city}`
       }
     ]
   };

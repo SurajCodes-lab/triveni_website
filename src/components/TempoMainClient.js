@@ -33,7 +33,7 @@ export default function TempoMainClient({ data, faqData }) {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://trivenicabs.in/tempo-traveller#service",
+        "@id": "https://www.trivenicabs.in/tempo-traveller#service",
         "name": "Tempo Traveller Rental Service",
         "description": "Premium tempo traveller rental service across India. Book 12-26 seater AC vehicles with professional drivers.",
         "provider": {

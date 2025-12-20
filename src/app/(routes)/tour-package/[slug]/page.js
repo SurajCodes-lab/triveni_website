@@ -142,7 +142,7 @@ export async function generateMetadata({ params }) {
       images: [packageInfo.image],
     },
     alternates: {
-      canonical: `https://trivenicabs.in/tour-package/${slug}`
+      canonical: `https://www.trivenicabs.in/tour-package/${slug}`
     },
     robots: {
       index: true,
@@ -230,7 +230,7 @@ export default function TourPackagePage({ params }) {
     "provider": {
       "@type": "TravelAgency",
       "name": "Triveni Cabs",
-      "url": "https://trivenicabs.in",
+      "url": "https://www.trivenicabs.in",
       "telephone": "7668570551",
       "address": {
         "@type": "PostalAddress",
@@ -243,14 +243,14 @@ export default function TourPackagePage({ params }) {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "validFrom": new Date().toISOString(),
-      "url": `https://trivenicabs.in/tour-package/${slug}`
+      "url": `https://www.trivenicabs.in/tour-package/${slug}`
     },
     "duration": packageInfo.duration,
     "itinerary": packageInfo.itinerary.map((item, index) => ({
       "@type": "Place",
       "name": item.title,
       "description": item.details,
-      "url": `https://trivenicabs.in/tour-package/${slug}#day-${index + 1}`
+      "url": `https://www.trivenicabs.in/tour-package/${slug}#day-${index + 1}`
     })),
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -269,8 +269,8 @@ export default function TourPackagePage({ params }) {
       "position": index + 1,
       "name": item,
       "item": index === content.breadcrumb.length - 1
-        ? `https://trivenicabs.in/tour-package/${slug}`
-        : `https://trivenicabs.in/${item.toLowerCase().replace(/ /g, '-')}`
+        ? `https://www.trivenicabs.in/tour-package/${slug}`
+        : `https://www.trivenicabs.in/${item.toLowerCase().replace(/ /g, '-')}`
     }))
   };
 

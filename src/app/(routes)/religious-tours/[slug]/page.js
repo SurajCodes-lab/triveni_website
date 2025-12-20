@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
     description: `🙏 Experience spiritual awakening with ${tourName}! ${tour.description} Expert guides, comfortable AC transport, hassle-free darshan. 3000+ pilgrims blessed. Customize your sacred journey. ${tour.duration} package with accommodation, meals & sightseeing. Book now for divine blessings & peaceful travel!`,
     keywords: tour.keywords.join(', '),
     alternates: {
-      canonical: `https://trivenicabs.in/religious-tours/${params.slug}`
+      canonical: `https://www.trivenicabs.in/religious-tours/${params.slug}`
     },
     openGraph: {
       title: `Find Inner Peace: ${tourName} Tour Package | Triveni Cabs`,

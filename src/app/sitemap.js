@@ -26,7 +26,7 @@ const allCityRoutes = {
 };
 
 export default function sitemap() {
-  const baseUrl = 'https://trivenicabs.in';
+  const baseUrl = 'https://www.trivenicabs.in';
   
   const urls = [
     // Main Pages

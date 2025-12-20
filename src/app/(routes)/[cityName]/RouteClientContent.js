@@ -126,14 +126,14 @@ export default function RouteClientContent({
     "@graph": [
       {
         "@type": "Service",
-        "@id": `https://trivenicabs.in/${createRouteSlug(cityName, destination)}#service`,
+        "@id": `https://www.trivenicabs.in/${createRouteSlug(cityName, destination)}#service`,
         "name": `${formattedCityName} to ${formattedDestination} Cab Service`,
         "description": `Book reliable taxi service from ${formattedCityName} to ${formattedDestination}. Professional drivers, AC vehicles, transparent pricing starting from ${startingPrice}. 24/7 booking available.`,
         "provider": {
           "@type": "Organization",
-          "@id": "https://trivenicabs.in",
+          "@id": "https://www.trivenicabs.in",
           "name": "Triveni Cabs",
-          "url": "https://trivenicabs.in",
+          "url": "https://www.trivenicabs.in",
           "telephone": `+91${phoneNumber}`,
           "address": {
             "@type": "PostalAddress",
@@ -176,9 +176,9 @@ export default function RouteClientContent({
       },
       {
         "@type": "Organization",
-        "@id": "https://trivenicabs.in",
+        "@id": "https://www.trivenicabs.in",
         "name": "Triveni Cabs",
-        "url": "https://trivenicabs.in",
+        "url": "https://www.trivenicabs.in",
         "telephone": `+91${phoneNumber}`,
         "address": {
           "@type": "PostalAddress",
@@ -205,19 +205,19 @@ export default function RouteClientContent({
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://trivenicabs.in"
+            "item": "https://www.trivenicabs.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": `${formattedCityName} Cabs`,
-            "item": `https://trivenicabs.in/${cityName}`
+            "item": `https://www.trivenicabs.in/${cityName}`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": `${formattedCityName} to ${formattedDestination}`,
-            "item": `https://trivenicabs.in/${createRouteSlug(cityName, destination)}`
+            "item": `https://www.trivenicabs.in/${createRouteSlug(cityName, destination)}`
           }
         ]
       },

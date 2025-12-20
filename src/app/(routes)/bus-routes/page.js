@@ -5,11 +5,11 @@ import BusMainClient from '@/components/BusMainClient';
 import Script from 'next/script';
 
 export const metadata = {
-  metadataBase: new URL('https://trivenicabs.in'),
+  metadataBase: new URL('https://www.trivenicabs.in'),
   title: 'Big Groups, Bigger Adventures! Luxury Bus Hire 22-56 Seater | Triveni Cabs',
   description: '🚌 Roll in style with luxury coaches! From 22 to 56 seater Volvo & AC buses perfect for corporate events, weddings, school tours & pilgrimages. Reclining seats, entertainment, spacious luggage. Delhi to anywhere in India. Your group, our comfort commitment!',
   alternates: {
-    canonical: 'https://trivenicabs.in/bus-routes'
+    canonical: 'https://www.trivenicabs.in/bus-routes'
   },
   viewport: {
     width: 'device-width',
@@ -34,13 +34,13 @@ export const metadata = {
   openGraph: {
     title: 'Big Groups, Bigger Adventures! Luxury Bus Hire 22-56 Seater | Triveni Cabs',
     description: '🚌 22-56 seater Volvo & AC buses | Corporate • Weddings • Tours • Perfect for large groups. GPS tracking, professional drivers, reclining seats, entertainment systems. Book now!',
-    url: 'https://trivenicabs.in/bus-routes',
+    url: 'https://www.trivenicabs.in/bus-routes',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs',
     images: [
       {
-        url: 'https://trivenicabs.in/images/bus/hero_section_image.png',
+        url: 'https://www.trivenicabs.in/images/bus/hero_section_image.png',
         width: 1200,
         height: 630,
         alt: 'Luxury Bus Rental Services - Triveni Cabs',
@@ -51,7 +51,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Luxury Bus Hire for Groups | 22-56 Seater | Triveni Cabs',
     description: '🚌 Volvo comfort • Reclining seats • Entertainment. Big groups travel better together! Book online now.',
-    images: ['https://trivenicabs.in/images/bus/hero_section_image.png']
+    images: ['https://www.trivenicabs.in/images/bus/hero_section_image.png']
   },
   robots: {
     index: true,
@@ -122,7 +122,7 @@ export default function BusRoutesPage() {
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "info@trivenicabs.in",
-      "url": "https://trivenicabs.in",
+      "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "IN"
@@ -183,13 +183,13 @@ export default function BusRoutesPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://trivenicabs.in"
+        "item": "https://www.trivenicabs.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Bus Routes",
-        "item": "https://trivenicabs.in/bus-routes"
+        "item": "https://www.trivenicabs.in/bus-routes"
       }
     ]
   };
@@ -296,8 +296,8 @@ export default function BusRoutesPage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Triveni Cabs",
-    "url": "https://trivenicabs.in",
-    "logo": "https://trivenicabs.in/logo.png",
+    "url": "https://www.trivenicabs.in",
+    "logo": "https://www.trivenicabs.in/logo.png",
     "description": "Premium bus rental and cab services across India. Luxury buses from 22 to 56 seater for corporate events, weddings, tours, and group travel.",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -331,28 +331,28 @@ export default function BusRoutesPage() {
         "position": 1,
         "name": "Select Your Bus Size",
         "text": "Choose from our fleet of 22, 25, 27, 32, 35, 41, 45, 49, 52, or 56 seater luxury buses based on your group size and requirements.",
-        "image": "https://trivenicabs.in/images/bus/fleet.png"
+        "image": "https://www.trivenicabs.in/images/bus/fleet.png"
       },
       {
         "@type": "HowToStep",
         "position": 2,
         "name": "Contact Us",
         "text": "Call +91-7668570551 or WhatsApp us for instant booking. Our team is available 24/7 to assist you.",
-        "image": "https://trivenicabs.in/images/contact.png"
+        "image": "https://www.trivenicabs.in/images/contact.png"
       },
       {
         "@type": "HowToStep",
         "position": 3,
         "name": "Provide Travel Details",
         "text": "Share your travel date, pickup location, destination, number of passengers, and any special requirements.",
-        "image": "https://trivenicabs.in/images/booking.png"
+        "image": "https://www.trivenicabs.in/images/booking.png"
       },
       {
         "@type": "HowToStep",
         "position": 4,
         "name": "Get Instant Confirmation",
         "text": "Receive booking confirmation with bus details, driver information, and trip itinerary via SMS and email.",
-        "image": "https://trivenicabs.in/images/confirmation.png"
+        "image": "https://www.trivenicabs.in/images/confirmation.png"
       }
     ]
   };
