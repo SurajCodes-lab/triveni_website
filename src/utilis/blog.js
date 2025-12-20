@@ -2241,7 +2241,7 @@ export const travelBlogPosts = [
       price: "Starting from ₹4,500"
     },
 
-    content: \`
+    content: `
       <p>The grand <strong>Ram Mandir in Ayodhya</strong> stands as one of India's most magnificent temples and a testament to centuries of devotion. Since its historic consecration in January 2024, millions of devotees from across the globe have visited this sacred site to seek Lord Ram's blessings. If you're planning your pilgrimage to <a href="/sightseeing/ayodhya" class="text-blue-600 hover:underline font-semibold">Ayodhya</a> in 2026, this comprehensive guide covers everything you need to know.</p>
 
       <div class="my-6 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
@@ -2469,7 +2469,7 @@ export const travelBlogPosts = [
 
       <h3>Can I visit Ayodhya and Varanasi together?</h3>
       <p>Absolutely! Many pilgrims combine both cities. <a href="/tempo-traveller/varanasi-to-ayodhya" class="text-blue-600 hover:underline">Book our Varanasi-Ayodhya package</a> for a complete spiritual experience.</p>
-    \`,
+    `,
     date: "2025-12-20",
     readTime: "15 min read",
     image: "/images/sightseeing/Ayodhya/ayodhya_hero_section.jpg",
@@ -2508,7 +2508,7 @@ export const travelBlogPosts = [
       price: "Starting from ₹2,500"
     },
 
-    content: \`
+    content: `
       <p><strong>Varanasi</strong>, also known as <em>Kashi</em> or <em>Banaras</em>, is the spiritual capital of India and one of the oldest continuously inhabited cities in the world. Standing on the banks of the holy <strong>Ganga River</strong>, this ancient city has been a center of learning, culture, and spirituality for over 3,000 years. If you're planning to experience the mystical energy of <a href="/sightseeing/varanasi" class="text-blue-600 hover:underline font-semibold">Varanasi</a> in 2026, this comprehensive guide covers everything from famous ghats to hidden gems.</p>
 
       <div class="my-6 p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg">
@@ -2731,7 +2731,7 @@ export const travelBlogPosts = [
           <a href="/tempo-traveller/delhi-to-varanasi-ayodhya-prayagraj-gaya" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Delhi to Varanasi Tempo →</a>
         </div>
       </div>
-    \`,
+    `,
     date: "2025-12-20",
     readTime: "18 min read",
     image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
@@ -2770,7 +2770,7 @@ export const travelBlogPosts = [
       price: "Starting from ₹23/km"
     },
 
-    content: \`
+    content: `
       <p>There's something magical about group trips - the shared laughter, inside jokes, bonding moments, and memories that last a lifetime. Whether you're planning a trip with college friends, a family reunion, a bachelor/bachelorette trip, or a corporate outing, choosing the right destination and transport makes all the difference. A <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller</a> offers the perfect solution - everyone travels together, with ample space for luggage, and the journey becomes part of the adventure!</p>
 
       <div class="my-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
@@ -3009,7 +3009,7 @@ export const travelBlogPosts = [
           <a href="/contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors">Get Custom Quote →</a>
         </div>
       </div>
-    \`,
+    `,
     date: "2025-12-20",
     readTime: "16 min read",
     image: "/images/tempo/17_seater.jpg",
@@ -3047,7 +3047,7 @@ export const travelBlogPosts = [
       price: "Starting from ₹7,000/day"
     },
 
-    content: \`
+    content: `
       <p>Your wedding day is one of the most special moments of your life, and every detail matters - including how you arrive! Whether you dream of a grand bridal entry in a <strong>white Mercedes</strong>, a groom's arrival in a <strong>decorated BMW</strong>, or a lively <strong>baraat procession with tempo travellers</strong>, choosing the right wedding transportation sets the tone for your celebration. This comprehensive guide covers everything about <a href="/wedding" class="text-blue-600 hover:underline font-semibold">wedding car rental in India</a> for 2026.</p>
 
       <div class="my-6 p-4 bg-pink-50 border-l-4 border-pink-500 rounded-r-lg">
@@ -3289,7 +3289,7 @@ export const travelBlogPosts = [
           <a href="/contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Get Wedding Quote →</a>
         </div>
       </div>
-    \`,
+    `,
     date: "2025-12-20",
     readTime: "14 min read",
     image: "/images/wedding_section.jpg",
@@ -3328,7 +3328,7 @@ export const travelBlogPosts = [
       price: "Starting from ₹2,500"
     },
 
-    content: \`
+    content: `
       <p><strong>Udaipur</strong>, fondly called the <em>Venice of the East</em> and <em>City of Lakes</em>, is arguably India's most romantic destination. Nestled in the Aravalli Hills of <a href="/sightseeing/rajasthan" class="text-blue-600 hover:underline font-semibold">Rajasthan</a>, this enchanting city captivates visitors with its shimmering lakes, magnificent palaces, and old-world charm. Whether you're planning a honeymoon, anniversary trip, or a heritage holiday, <a href="/sightseeing/udaipur" class="text-blue-600 hover:underline font-semibold">Udaipur</a> promises an unforgettable experience in 2026.</p>
 
       <div class="my-6 p-4 bg-cyan-50 border-l-4 border-cyan-500 rounded-r-lg">
@@ -3580,7 +3580,7 @@ export const travelBlogPosts = [
           <a href="/tempo-traveller/jaipur-to-udaipur-mount-abu" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Jaipur to Udaipur Tempo →</a>
         </div>
       </div>
-    \`,
+    `,
     date: "2025-12-20",
     readTime: "17 min read",
     image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
