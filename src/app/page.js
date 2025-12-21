@@ -1,9 +1,20 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
-import { TypeAnimation } from 'react-type-animation';
-import Marquee from "react-fast-marquee";
+import dynamic from 'next/dynamic';
+import { useShouldReduceMotion } from "@/hooks/useIsMobile";
+
+// Dynamically import heavy components - only load on desktop
+const TypeAnimation = dynamic(
+  () => import('react-type-animation').then(mod => mod.TypeAnimation),
+  { ssr: false, loading: () => <span>Our Passion</span> }
+);
+
+const Marquee = dynamic(
+  () => import('react-fast-marquee'),
+  { ssr: false, loading: () => null }
+);
 import {
   Star,
   Shield,
@@ -34,6 +45,8 @@ import Link from "next/link";
 import { phoneNumber } from "@/utilis/data";
 
 export default function HomePage() {
+  const shouldReduceMotion = useShouldReduceMotion();
+
   const handleBookNowClick = useCallback((serviceName = '') => {
     const message = serviceName
       ? encodeURIComponent(`Hi! I am interested in your ${serviceName} service. Can you provide more details?`)
@@ -41,6 +54,10 @@ export default function HomePage() {
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappURL, '_blank');
   }, []);
+
+  // Disable animations on mobile for better performance
+  const noAnimation = { initial: {}, animate: {}, transition: {} };
+  const getAnimation = (animProps) => shouldReduceMotion ? noAnimation : animProps;
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -60,55 +77,66 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/40 via-transparent to-transparent"></div>
         </div>
 
-        {/* Animated Orbs - Enhanced & Mobile Optimized */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            opacity: { duration: 0.5 },
-            x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="absolute top-20 left-5 md:left-10 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            x: [0, -40, 0],
-            y: [0, 60, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            opacity: { duration: 0.5, delay: 0.2 },
-            x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          className="absolute top-40 right-5 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-br from-orange-400/50 to-pink-400/50 rounded-full blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            opacity: { duration: 0.5, delay: 0.4 },
-            x: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 },
-            y: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 },
-            scale: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }
-          }}
-          className="absolute bottom-40 left-1/2 w-40 h-40 md:w-72 md:h-72 bg-gradient-to-br from-blue-400/40 to-purple-400/40 rounded-full blur-3xl"
-        />
+        {/* Animated Orbs - Only show on desktop for performance */}
+        {!shouldReduceMotion && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                x: [0, 50, 0],
+                y: [0, 30, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                opacity: { duration: 0.5 },
+                x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+                scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="absolute top-20 left-5 md:left-10 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full blur-3xl"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                x: [0, -40, 0],
+                y: [0, 60, 0],
+                scale: [1, 1.3, 1],
+              }}
+              transition={{
+                opacity: { duration: 0.5, delay: 0.2 },
+                x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }
+              }}
+              className="absolute top-40 right-5 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-br from-orange-400/50 to-pink-400/50 rounded-full blur-3xl"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                x: [0, 30, 0],
+                y: [0, -30, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                opacity: { duration: 0.5, delay: 0.4 },
+                x: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 },
+                y: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 },
+                scale: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }
+              }}
+              className="absolute bottom-40 left-1/2 w-40 h-40 md:w-72 md:h-72 bg-gradient-to-br from-blue-400/40 to-purple-400/40 rounded-full blur-3xl"
+            />
+          </>
+        )}
+        {/* Static orbs for mobile - no animation */}
+        {shouldReduceMotion && (
+          <>
+            <div className="absolute top-20 left-5 md:left-10 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-yellow-400/60 to-amber-500/60 rounded-full blur-3xl" />
+            <div className="absolute top-40 right-5 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-br from-orange-400/50 to-pink-400/50 rounded-full blur-3xl" />
+          </>
+        )}
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center -mt-[88px] md:-mt-20">
@@ -252,23 +280,25 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-gray-800 text-sm font-semibold">Scroll Down</span>
-            <div className="w-8 h-14 border-3 border-amber-400 rounded-full flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-4 bg-amber-600 rounded-full"
-              />
+        {/* Scroll Indicator - hidden on mobile for performance */}
+        {!shouldReduceMotion && (
+          <motion.div
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden md:block"
+          >
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-gray-800 text-sm font-semibold">Scroll Down</span>
+              <div className="w-8 h-14 border-3 border-amber-400 rounded-full flex items-start justify-center p-2">
+                <motion.div
+                  animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-2 h-4 bg-amber-600 rounded-full"
+                />
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </motion.section>
 
       {/* WEDDING SERVICES SECTION */}
@@ -281,11 +311,15 @@ export default function HomePage() {
             {/* Left Image/Visual */}
             <div className="relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion ? (
+                  <motion.div
+                    animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"
+                  />
+                ) : (
+                  <div className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl" />
+                )}
 
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
@@ -447,11 +481,13 @@ export default function HomePage() {
             {/* Right Image/Visual */}
             <div className="order-1 lg:order-2 relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion && (
+                  <motion.div
+                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"
+                  />
+                )}
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-[#FACF2D] to-amber-500 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -496,11 +532,13 @@ export default function HomePage() {
             {/* Left Image */}
             <div className="relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-green-200/40 to-emerald-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion && (
+                  <motion.div
+                    animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-green-200/40 to-emerald-200/40 rounded-full blur-3xl"
+                  />
+                )}
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -657,11 +695,13 @@ export default function HomePage() {
             {/* Right Image */}
             <div className="order-1 lg:order-2 relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-purple-200/40 to-violet-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion && (
+                  <motion.div
+                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-purple-200/40 to-violet-200/40 rounded-full blur-3xl"
+                  />
+                )}
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-purple-400 via-violet-400 to-indigo-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -706,11 +746,13 @@ export default function HomePage() {
             {/* Left Image */}
             <div className="relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-orange-200/40 to-amber-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion && (
+                  <motion.div
+                    animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-orange-200/40 to-amber-200/40 rounded-full blur-3xl"
+                  />
+                )}
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -867,11 +909,13 @@ export default function HomePage() {
             {/* Right Image */}
             <div className="order-1 lg:order-2 relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion && (
+                  <motion.div
+                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -right-10 w-72 h-72 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-3xl"
+                  />
+                )}
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-blue-400 via-indigo-400 to-violet-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
@@ -916,11 +960,13 @@ export default function HomePage() {
             {/* Left Image */}
             <div className="relative">
               <div className="relative">
-                <motion.div
-                  animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-teal-200/40 to-cyan-200/40 rounded-full blur-3xl"
-                />
+                {!shouldReduceMotion && (
+                  <motion.div
+                    animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-teal-200/40 to-cyan-200/40 rounded-full blur-3xl"
+                  />
+                )}
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   <div className="aspect-video bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center relative overflow-hidden">
