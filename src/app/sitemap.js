@@ -212,7 +212,7 @@ export default function sitemap() {
     // Tempo Traveller Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/tempo-traveller`,
-      lastModified: new Date('2025-12-20'),
+      lastModified: new Date('2026-12-20'),
       changeFrequency: 'weekly',
       priority: 0.75,
     },
@@ -234,7 +234,7 @@ export default function sitemap() {
     // Blog Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date('2025-12-20'),
+      lastModified: new Date('2026-12-20'),
       changeFrequency: 'weekly',
       priority: 0.75,
     },
@@ -257,7 +257,7 @@ export default function sitemap() {
   ];
 
   // Add Blog Posts (Dynamic) - CONTENT PAGES
-  const blogLastModified = new Date('2025-12-20'); // Blog content updated
+  const blogLastModified = new Date('2026-12-20'); // Blog content updated
   blogPosts
     .filter(post => post && post.slug && post.date) // Filter out undefined or invalid posts
     .forEach(post => {
@@ -303,7 +303,7 @@ export default function sitemap() {
   });
 
   // Add ALL Tempo Traveller Routes (60+ routes) - HIGHEST PRIORITY CONTENT PAGES
-  const tempoLastModified = new Date('2025-12-20'); // SEO optimization date
+  const tempoLastModified = new Date('2026-12-20'); // SEO optimization date
   Object.keys(tempoRoutes).forEach(originCity => {
     const routes = tempoRoutes[originCity];
     routes.forEach(route => {

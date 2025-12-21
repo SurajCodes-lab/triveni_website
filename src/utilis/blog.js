@@ -5,9 +5,9 @@ import { attractionBlogPosts } from './attractionBlogs';
 export const travelBlogPosts = [
   {
     id: 1,
-    slug: "10-best-travel-destinations-north-india-2025",
-    title: "10 Best Travel Destinations in North India 2025 - Complete Guide",
-    excerpt: "Discover the most stunning destinations in North India for 2025. From Himalayan peaks to royal palaces, find your perfect getaway with our expert travel guide.",
+    slug: "10-best-travel-destinations-north-india-2026",
+    title: "10 Best Travel Destinations in North India 2026 - Complete Guide",
+    excerpt: "Discover the most stunning destinations in North India for 2026. From Himalayan peaks to royal palaces, find your perfect getaway with our expert travel guide.",
 
     // NEW: Related tour pages for automatic linking
     relatedTours: [
@@ -34,12 +34,12 @@ export const travelBlogPosts = [
     },
 
     content: `
-      <p>Planning your 2025 travel to North India? You're in for an incredible journey! From the snow-capped Himalayas to the golden deserts of Rajasthan, North India offers diverse experiences that will leave you spellbound. <a href="/sightseeing" class="text-blue-600 hover:underline font-semibold">Explore our curated sightseeing tours</a> to make the most of your adventure.</p>
+      <p>Planning your 2026 travel to North India? You're in for an incredible journey! From the snow-capped Himalayas to the golden deserts of Rajasthan, North India offers diverse experiences that will leave you spellbound. <a href="/sightseeing" class="text-blue-600 hover:underline font-semibold">Explore our curated sightseeing tours</a> to make the most of your adventure.</p>
 
       <h2>1. Manali - The Adventure Capital</h2>
       <p><a href="/sightseeing/manali" class="text-blue-600 hover:underline font-semibold">Manali</a> tops our list as the ultimate destination for adventure seekers and nature lovers. Nestled in the Kullu Valley, this hill station offers breathtaking views, thrilling activities, and serene landscapes.</p>
 
-      <h3>Why Visit Manali in 2025?</h3>
+      <h3>Why Visit Manali in 2026?</h3>
       <ul>
         <li>Rohtang Pass adventures and snow activities</li>
         <li>Solang Valley paragliding and skiing</li>
@@ -118,21 +118,21 @@ export const travelBlogPosts = [
         <a href="/sightseeing" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md">Explore All Tour Packages →</a>
       </div>
     `,
-    date: "2025-01-15",
+    date: "2026-01-15",
     readTime: "8 min read",
     image: "/images/packages/manali.webp",
     category: "Destinations",
     tags: ["North India", "Travel Guide", "Tourism", "Hill Stations"],
-    keywords: ["north india travel destinations", "manali tourism", "jaipur travel guide", "rishikesh adventure", "taj mahal agra", "shimla hill station", "best places to visit north india", "north india tour packages", "himalayan destinations", "rajasthan tourism", "udaipur city of lakes", "amritsar golden temple", "varanasi spiritual tour", "dharamshala mcleodganj", "nainital lake district", "north india tourist places", "places to visit in north india", "north india travel guide 2025", "best tourist destinations north india", "north india sightseeing", "north india vacation spots", "top 10 places north india", "north india holiday destinations", "north india trip planning", "north india itinerary", "north india tourism guide", "famous places in north india", "north india honeymoon destinations", "family trip north india", "north india adventure tourism", "north india cultural tour", "north india pilgrimage sites", "north india weekend getaway", "delhi to manali tour", "delhi to jaipur tour", "rishikesh yoga retreat", "north india travel tips", "best time to visit north india", "north india travel cost", "north india package tour"],
+    keywords: ["north india travel destinations", "manali tourism", "jaipur travel guide", "rishikesh adventure", "taj mahal agra", "shimla hill station", "best places to visit north india", "north india tour packages", "himalayan destinations", "rajasthan tourism", "udaipur city of lakes", "amritsar golden temple", "varanasi spiritual tour", "dharamshala mcleodganj", "nainital lake district", "north india tourist places", "places to visit in north india", "north india travel guide 2026", "best tourist destinations north india", "north india sightseeing", "north india vacation spots", "top 10 places north india", "north india holiday destinations", "north india trip planning", "north india itinerary", "north india tourism guide", "famous places in north india", "north india honeymoon destinations", "family trip north india", "north india adventure tourism", "north india cultural tour", "north india pilgrimage sites", "north india weekend getaway", "delhi to manali tour", "delhi to jaipur tour", "rishikesh yoga retreat", "north india travel tips", "best time to visit north india", "north india travel cost", "north india package tour"],
     featured: true,
     views: 1250,
-    metaTitle: "10 Best Travel Destinations in North India 2025 | Complete Travel Guide",
-    metaDescription: "Explore top 10 destinations in North India for 2025. Expert guide to Manali, Jaipur, Rishikesh, Agra & more. Best time to visit, activities & travel tips.",
+    metaTitle: "10 Best Travel Destinations in North India 2026 | Complete Travel Guide",
+    metaDescription: "Explore top 10 destinations in North India for 2026. Expert guide to Manali, Jaipur, Rishikesh, Agra & more. Best time to visit, activities & travel tips.",
   },
   {
     id: 2,
-    slug: "delhi-to-manali-tempo-traveller-complete-guide-2025",
-    title: "Delhi to Manali by Tempo Traveller: Complete Travel Guide 2025",
+    slug: "delhi-to-manali-tempo-traveller-complete-guide-2026",
+    title: "Delhi to Manali by Tempo Traveller: Complete Travel Guide 2026",
     excerpt: "Planning a Delhi to Manali trip? Discover the best routes, travel tips, and why hiring a tempo traveller is perfect for your group journey to the mountains.",
 
     // NEW: Related tour pages
@@ -248,7 +248,7 @@ export const travelBlogPosts = [
       <h2>Book Your Delhi to Manali Tempo Traveller Today</h2>
       <p>Planning a group trip to Manali? Our comfortable and affordable tempo traveller service ensures a smooth and memorable journey. Contact us for customized packages and special group discounts!</p>
     `,
-    date: "2025-01-12",
+    date: "2026-01-12",
     readTime: "10 min read",
     image: "/images/packages/manali.webp",
     category: "Travel Tips",
@@ -256,14 +256,14 @@ export const travelBlogPosts = [
     keywords: ["delhi to manali tempo traveller", "tempo traveller rental delhi", "delhi manali road trip", "tempo traveller booking", "group travel manali", "delhi to manali by road", "tempo traveller price delhi manali", "12 seater tempo traveller", "17 seater tempo traveller", "delhi manali route", "manali group tour", "chandigarh to manali", "best route delhi to manali", "tempo traveller on rent", "manali trip from delhi", "tempo traveller hire delhi", "ac tempo traveller delhi manali", "luxury tempo traveller booking", "delhi to manali distance", "delhi to manali travel time", "tempo traveller rates", "group tour manali", "delhi to kullu manali", "tempo traveller service delhi", "manali tour package by tempo traveller", "delhi to manali cab service", "tempo traveller with driver", "delhi manali highway", "murthal to manali route", "karnal to chandigarh route", "chandigarh to kullu distance", "manali taxi service", "group vehicle rental", "tourist tempo traveller", "family trip to manali", "friends trip manali", "corporate trip manali", "tempo traveller cost per km", "delhi to manali travel guide", "manali road trip tips"],
     featured: true,
     views: 980,
-    metaTitle: "Delhi to Manali Tempo Traveller: Complete Guide 2025 | Book Now",
+    metaTitle: "Delhi to Manali Tempo Traveller: Complete Guide 2026 | Book Now",
     metaDescription: "Complete guide for Delhi to Manali journey by tempo traveller. Route options, costs, travel tips & booking information for your perfect mountain trip.",
   },
   {
     id: 3,
-    slug: "char-dham-yatra-complete-guide-uttarakhand-2025",
-    title: "Char Dham Yatra Complete Guide 2025 - Uttarakhand Pilgrimage Tour",
-    excerpt: "Complete guide to Char Dham Yatra 2025 - Yamunotri, Gangotri, Kedarnath & Badrinath. Registration, best time, route, costs & travel tips for your spiritual journey.",
+    slug: "char-dham-yatra-complete-guide-uttarakhand-2026",
+    title: "Char Dham Yatra Complete Guide 2026 - Uttarakhand Pilgrimage Tour",
+    excerpt: "Complete guide to Char Dham Yatra 2026 - Yamunotri, Gangotri, Kedarnath & Badrinath. Registration, best time, route, costs & travel tips for your spiritual journey.",
 
     // NEW: Related tour pages
     relatedTours: [
@@ -282,7 +282,7 @@ export const travelBlogPosts = [
 
     // NEW: Primary CTA
     primaryCTA: {
-      text: "Book Char Dham Yatra 2025",
+      text: "Book Char Dham Yatra 2026",
       url: "/sightseeing/char-dham-yatra",
       description: "Complete Char Dham pilgrimage package with comfortable transport and expert guidance",
       price: "Starting from ₹45,000"
@@ -309,13 +309,13 @@ export const travelBlogPosts = [
       <p><strong>Altitude:</strong> 3,300 meters | <strong>Accessible:</strong> By road</p>
       <p>Set between Nar and Narayan mountain ranges, Badrinath is one of the four Dhams of India. The natural hot springs here are believed to have medicinal properties.</p>
 
-      <h2>Char Dham Yatra 2025 Opening & Closing Dates</h2>
+      <h2>Char Dham Yatra 2026 Opening & Closing Dates</h2>
       <p><strong>Opening Dates (Tentative):</strong></p>
       <ul>
-        <li>Yamunotri: April 28, 2025</li>
-        <li>Gangotri: April 29, 2025</li>
-        <li>Kedarnath: May 2, 2025</li>
-        <li>Badrinath: May 3, 2025</li>
+        <li>Yamunotri: April 28, 2026</li>
+        <li>Gangotri: April 29, 2026</li>
+        <li>Kedarnath: May 2, 2026</li>
+        <li>Badrinath: May 3, 2026</li>
       </ul>
       <p><strong>Closing Dates:</strong> November (Diwali week)</p>
       <p>*Dates may vary, always check official website before planning</p>
@@ -357,7 +357,7 @@ export const travelBlogPosts = [
       <h3>Day 10: Rudraprayag to Haridwar (165 km)</h3>
       <p>Return journey, stop at Devprayag (confluence), reach Haridwar</p>
 
-      <h2>Char Dham Yatra Registration 2025</h2>
+      <h2>Char Dham Yatra Registration 2026</h2>
       <p>Online registration is mandatory through the official Uttarakhand government portal:</p>
       <ul>
         <li>Visit: registrationandtouristcare.uk.gov.in</li>
@@ -409,25 +409,25 @@ export const travelBlogPosts = [
         <li>Affordable packages with no hidden costs</li>
       </ul>
 
-      <h2>Book Your Char Dham Yatra 2025</h2>
+      <h2>Book Your Char Dham Yatra 2026</h2>
       <p>Embark on this sacred journey with complete peace of mind. Our professional services ensure your pilgrimage is safe, comfortable, and spiritually fulfilling. Contact us for customized Char Dham packages!</p>
     `,
-    date: "2025-01-10",
+    date: "2026-01-10",
     readTime: "12 min read",
     image: "/images/packages/chardham.webp",
     category: "Pilgrimage",
     tags: ["Char Dham", "Pilgrimage", "Uttarakhand", "Kedarnath", "Badrinath"],
-    keywords: ["char dham yatra 2025", "char dham yatra package", "kedarnath badrinath yatra", "uttarakhand pilgrimage", "char dham registration", "yamunotri gangotri tour", "char dham opening dates 2025", "char dham yatra cost", "kedarnath helicopter booking", "badrinath yatra", "char dham taxi service", "haridwar to char dham", "do dham yatra", "char dham itinerary", "uttarakhand temple tour", "char dham yatra booking", "four dham yatra", "chota char dham", "kedarnath trek", "badrinath temple", "yamunotri temple", "gangotri temple", "char dham yatra by car", "char dham package from delhi", "char dham tour operator", "kedarnath yatra 2025", "badrinath yatra 2025", "char dham registration online", "char dham yatra guide", "best time for char dham", "char dham yatra tips", "kedarnath helicopter fare", "badrinath darshan", "haridwar to kedarnath", "rishikesh to badrinath", "char dham route map", "uttarakhand religious tour", "char dham pilgrimage package", "gangotri yamunotri package", "char dham travel agency", "char dham accommodation", "gaurikund to kedarnath", "mana village badrinath"],
+    keywords: ["char dham yatra 2026", "char dham yatra package", "kedarnath badrinath yatra", "uttarakhand pilgrimage", "char dham registration", "yamunotri gangotri tour", "char dham opening dates 2026", "char dham yatra cost", "kedarnath helicopter booking", "badrinath yatra", "char dham taxi service", "haridwar to char dham", "do dham yatra", "char dham itinerary", "uttarakhand temple tour", "char dham yatra booking", "four dham yatra", "chota char dham", "kedarnath trek", "badrinath temple", "yamunotri temple", "gangotri temple", "char dham yatra by car", "char dham package from delhi", "char dham tour operator", "kedarnath yatra 2026", "badrinath yatra 2026", "char dham registration online", "char dham yatra guide", "best time for char dham", "char dham yatra tips", "kedarnath helicopter fare", "badrinath darshan", "haridwar to kedarnath", "rishikesh to badrinath", "char dham route map", "uttarakhand religious tour", "char dham pilgrimage package", "gangotri yamunotri package", "char dham travel agency", "char dham accommodation", "gaurikund to kedarnath", "mana village badrinath"],
     featured: true,
     views: 1450,
-    metaTitle: "Char Dham Yatra Complete Guide 2025 | Registration, Dates & Packages",
-    metaDescription: "Complete Char Dham Yatra 2025 guide - opening dates, registration, itinerary, costs & travel tips. Book your Kedarnath, Badrinath, Gangotri, Yamunotri tour now.",
+    metaTitle: "Char Dham Yatra Complete Guide 2026 | Registration, Dates & Packages",
+    metaDescription: "Complete Char Dham Yatra 2026 guide - opening dates, registration, itinerary, costs & travel tips. Book your Kedarnath, Badrinath, Gangotri, Yamunotri tour now.",
   },
   {
     id: 4,
-    slug: "rajasthan-road-trip-complete-guide-2025",
-    title: "Perfect Rajasthan Road Trip Guide 2025 - Forts, Palaces & Desert Safari",
-    excerpt: "Plan your ultimate Rajasthan road trip in 2025. Explore Jaipur, Udaipur, Jaisalmer, Jodhpur & more. Complete route, costs, best time & travel tips.",
+    slug: "rajasthan-road-trip-complete-guide-2026",
+    title: "Perfect Rajasthan Road Trip Guide 2026 - Forts, Palaces & Desert Safari",
+    excerpt: "Plan your ultimate Rajasthan road trip in 2026. Explore Jaipur, Udaipur, Jaisalmer, Jodhpur & more. Complete route, costs, best time & travel tips.",
     content: `
       <p>Rajasthan, the land of kings, offers one of India's most spectacular road trip experiences. From magnificent forts and opulent palaces to golden deserts and colorful bazaars, a Rajasthan road trip is a journey through India's royal heritage and vibrant culture.</p>
 
@@ -588,7 +588,7 @@ export const travelBlogPosts = [
       <h2>Book Your Rajasthan Road Trip Today</h2>
       <p>Ready to explore the royal state of Rajasthan? Whether it's the forts of Jaipur, lakes of Udaipur, or deserts of Jaisalmer, we make your road trip comfortable and unforgettable. Contact us for customized Rajasthan tour packages!</p>
     `,
-    date: "2025-01-08",
+    date: "2026-01-08",
     readTime: "15 min read",
     image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     category: "Destinations",
@@ -596,14 +596,14 @@ export const travelBlogPosts = [
     keywords: ["rajasthan road trip", "jaipur udaipur jaisalmer tour", "rajasthan tour package", "jodhpur tourism", "desert safari jaisalmer", "rajasthan travel guide", "best places in rajasthan", "rajasthan itinerary", "golden triangle tour", "rajasthan desert tour", "jaipur to jaisalmer", "udaipur trip", "pushkar travel", "bikaner camel safari", "rajasthan heritage tour", "rajasthan tourism", "jaipur city tour", "amber fort jaipur", "city palace udaipur", "mehrangarh fort jodhpur", "jaisalmer fort", "hawa mahal jaipur", "lake pichola udaipur", "pushkar camel fair", "bikaner rat temple", "rajasthan travel packages", "delhi to jaipur tour", "jaipur to udaipur distance", "udaipur to jodhpur route", "jodhpur to jaisalmer road", "rajasthan car rental", "rajasthan taxi service", "royal rajasthan tour", "rajasthan forts and palaces", "rajasthan culture tour", "rajasthan food tour", "best time to visit rajasthan", "rajasthan winter tour", "rajasthan family tour", "rajasthan honeymoon package", "rajasthan budget travel", "rajasthan luxury tour", "sam sand dunes jaisalmer", "desert camp rajasthan"],
     featured: true,
     views: 1120,
-    metaTitle: "Perfect Rajasthan Road Trip Guide 2025 | Complete Itinerary & Costs",
+    metaTitle: "Perfect Rajasthan Road Trip Guide 2026 | Complete Itinerary & Costs",
     metaDescription: "Ultimate Rajasthan road trip guide - Jaipur, Udaipur, Jaisalmer, Jodhpur itinerary. Routes, costs, best time & travel tips for your desert adventure.",
   },
   {
     id: 5,
-    slug: "uttarakhand-best-hill-stations-summer-2025",
-    title: "Best Hill Stations in Uttarakhand for Summer 2025 - Beat the Heat",
-    excerpt: "Discover Uttarakhand's best hill stations for summer 2025. From Nainital to Auli, find your perfect mountain escape with our complete travel guide.",
+    slug: "uttarakhand-best-hill-stations-summer-2026",
+    title: "Best Hill Stations in Uttarakhand for Summer 2026 - Beat the Heat",
+    excerpt: "Discover Uttarakhand's best hill stations for summer 2026. From Nainital to Auli, find your perfect mountain escape with our complete travel guide.",
     content: `
       <p>Uttarakhand, nestled in the lap of the Himalayas, is home to some of India's most beautiful hill stations. As summer approaches, these mountain retreats offer the perfect escape from scorching plains with pleasant weather, stunning views, and refreshing mountain air.</p>
 
@@ -847,7 +847,7 @@ export const travelBlogPosts = [
       <h2>Book Your Uttarakhand Summer Escape Now</h2>
       <p>Beat the summer heat in the beautiful mountains of Uttarakhand! Whether you want adventure, peace, or family fun, we make your hill station trip comfortable and memorable. Contact us for customized Uttarakhand tour packages!</p>
     `,
-    date: "2025-01-05",
+    date: "2026-01-05",
     readTime: "13 min read",
     image: "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
     category: "Destinations",
@@ -855,8 +855,8 @@ export const travelBlogPosts = [
     keywords: ["uttarakhand hill stations", "best hill stations in uttarakhand", "nainital summer trip", "mussoorie travel guide", "auli summer tourism", "uttarakhand summer vacation", "hill stations near delhi", "ranikhet travel", "almora tourism", "kausani himalayan views", "chopta trekking", "lansdowne weekend trip", "binsar wildlife sanctuary", "uttarakhand tour package", "summer getaway uttarakhand", "uttarakhand tourism", "nainital lake", "mussoorie kempty falls", "auli ropeway", "delhi to nainital", "delhi to mussoorie", "nainital tour package", "mussoorie honeymoon", "hill station in summer", "uttarakhand travel", "places to visit in uttarakhand", "kumaon hills", "garhwal hills", "uttarakhand adventure", "nainital boating", "mussoorie mall road", "ranikhet golf course", "almora kasar devi", "kausani tea gardens", "chopta tungnath trek", "lansdowne bhulla lake", "mukteshwar temple", "binsar zero point", "uttarakhand weekend trip", "family trip uttarakhand", "uttarakhand cab service", "best time to visit uttarakhand", "uttarakhand travel tips"],
     featured: false,
     views: 850,
-    metaTitle: "Best Hill Stations in Uttarakhand for Summer 2025 | Complete Guide",
-    metaDescription: "Discover top Uttarakhand hill stations for summer 2025. Nainital, Mussoorie, Auli, Ranikhet travel guide with itinerary, costs & booking tips.",
+    metaTitle: "Best Hill Stations in Uttarakhand for Summer 2026 | Complete Guide",
+    metaDescription: "Discover top Uttarakhand hill stations for summer 2026. Nainital, Mussoorie, Auli, Ranikhet travel guide with itinerary, costs & booking tips.",
     city: "uttarakhand",
     attractionType: "hill-station",
   },
@@ -866,8 +866,8 @@ export const travelBlogPosts = [
   {
     id: 6,
     slug: "how-to-visit-taj-mahal-from-delhi-complete-guide",
-    title: "How to Visit Taj Mahal from Delhi - Complete Guide 2025",
-    excerpt: "Planning to visit the Taj Mahal from Delhi? Discover the best routes, costs, timings, and hassle-free tour options. Complete guide with insider tips for 2025.",
+    title: "How to Visit Taj Mahal from Delhi - Complete Guide 2026",
+    excerpt: "Planning to visit the Taj Mahal from Delhi? Discover the best routes, costs, timings, and hassle-free tour options. Complete guide with insider tips for 2026.",
 
     // Smart linking to ALL related tours
     relatedTours: [
@@ -895,7 +895,7 @@ export const travelBlogPosts = [
     // Related blog posts (will link to these)
     relatedBlogs: [
       { title: "Best Time to Visit Taj Mahal", slug: "best-time-visit-taj-mahal" },
-      { title: "Agra Complete Travel Guide", slug: "agra-travel-guide-2025" },
+      { title: "Agra Complete Travel Guide", slug: "agra-travel-guide-2026" },
       { title: "Golden Triangle Tour Guide", slug: "golden-triangle-complete-guide" },
     ],
 
@@ -1117,7 +1117,7 @@ export const travelBlogPosts = [
 
       <p><a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-bold">View complete pricing details →</a></p>
 
-      <h2>Taj Mahal Entry Tickets & Timings 2025</h2>
+      <h2>Taj Mahal Entry Tickets & Timings 2026</h2>
 
       <h3>Entry Tickets</h3>
       <ul>
@@ -1393,7 +1393,7 @@ export const travelBlogPosts = [
       <ul>
         <li><a href="/sightseeing/jaipur" class="text-blue-600 hover:underline">Jaipur City Tours</a> - Pink City palaces and forts</li>
         <li><a href="/sightseeing/delhi" class="text-blue-600 hover:underline">Delhi Sightseeing Tours</a> - Explore the capital city</li>
-        <li><a href="/blog/10-best-travel-destinations-north-india-2025" class="text-blue-600 hover:underline">Top 10 North India Destinations</a> - Complete guide</li>
+        <li><a href="/blog/10-best-travel-destinations-north-india-2026" class="text-blue-600 hover:underline">Top 10 North India Destinations</a> - Complete guide</li>
       </ul>
 
       <h2>Contact Us</h2>
@@ -1412,7 +1412,7 @@ export const travelBlogPosts = [
       </div>
     `,
 
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "18 min read",
     image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     category: "Travel Tips",
@@ -1492,18 +1492,18 @@ export const travelBlogPosts = [
       "taj mahal complete guide",
       "agra travel guide",
       "visiting taj mahal tips",
-      "taj mahal visit guide 2025"
+      "taj mahal visit guide 2026"
     ],
 
     featured: true,
     views: 0,
-    metaTitle: "How to Visit Taj Mahal from Delhi - Complete Guide 2025 | Best Routes, Cost & Tours",
+    metaTitle: "How to Visit Taj Mahal from Delhi - Complete Guide 2026 | Best Routes, Cost & Tours",
     metaDescription: "Planning Taj Mahal visit from Delhi? Complete guide with best routes, costs (from ₹3,500), timings, tickets & insider tips. Compare train vs car options. Book hassle-free tour now!",
   },
   {
     id: 6,
-    slug: "golden-triangle-tour-india-itinerary-guide-2025",
-    title: "Golden Triangle Tour India: The Ultimate 7-Day Itinerary & Guide 2025",
+    slug: "golden-triangle-tour-india-itinerary-guide-2026",
+    title: "Golden Triangle Tour India: The Ultimate 7-Day Itinerary & Guide 2026",
     excerpt: "Planning a Golden Triangle Tour in India? Discover the ultimate 7-day itinerary covering Delhi, Agra, and Jaipur. Explore forts, palaces, the Taj Mahal, and cultural gems with our comprehensive travel guide.",
 
     relatedTours: [
@@ -1529,7 +1529,7 @@ export const travelBlogPosts = [
       <div class="blog-intro">
         <p>The <strong>Golden Triangle Tour</strong> is India's most iconic travel circuit, connecting the country's three most historic and culturally rich cities: <strong>Delhi</strong>, <strong>Agra</strong>, and <strong>Jaipur</strong>. On a map, these cities form a triangle, hence the name. For first-time visitors to India, this tour offers a perfect introduction to the country's diverse heritage, showcasing a mesmerizing blend of Mughal grandeur, Rajput valor, and British colonial history.</p>
         
-        <p>In this comprehensive guide, we will walk you through the ultimate 7-day Golden Triangle itinerary for 2025. From the bustling streets of Old Delhi to the eternal beauty of the Taj Mahal and the royal palaces of Jaipur, get ready for an unforgettable journey.</p>
+        <p>In this comprehensive guide, we will walk you through the ultimate 7-day Golden Triangle itinerary for 2026. From the bustling streets of Old Delhi to the eternal beauty of the Taj Mahal and the royal palaces of Jaipur, get ready for an unforgettable journey.</p>
 
         <div class="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-xl my-6 border-l-4 border-amber-500">
             <h3 class="text-xl font-bold mb-3">🌟 Top Pick: Golden Triangle 6 Days Tour</h3>
@@ -1646,7 +1646,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2025-01-25",
+    date: "2026-01-25",
     readTime: "15 min read",
     image: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
     category: "Sightseeing",
@@ -1654,14 +1654,14 @@ export const travelBlogPosts = [
     keywords: ["golden triangle tour", "golden triangle india itinerary", "delhi agra jaipur tour package", "7 days golden triangle itinerary", "best time to visit golden triangle", "india travel guide", "golden triangle tour cost", "private car for golden triangle", "golden triangle sightseeing", "golden triangle map", "jaipur sightseeing from delhi", "agra tour from delhi", "golden triangle places to visit", "golden triangle luxury tour", "budget golden triangle tour", "golden triangle with ranthambore", "golden triangle with udaipur", "delhi sightseeing guide", "agra travel guide", "jaipur city tour"],
     featured: true,
     views: 850,
-    metaTitle: "Golden Triangle Tour India: Ultimate 7-Day Itinerary 2025 | Delhi Agra Jaipur",
-    metaDescription: "Plan your Golden Triangle Tour (Delhi-Agra-Jaipur) with our ultimate 7-day itinerary for 2025. Discover best places to visit, hotels, costs & travel tips. Book Now!",
+    metaTitle: "Golden Triangle Tour India: Ultimate 7-Day Itinerary 2026 | Delhi Agra Jaipur",
+    metaDescription: "Plan your Golden Triangle Tour (Delhi-Agra-Jaipur) with our ultimate 7-day itinerary for 2026. Discover best places to visit, hotels, costs & travel tips. Book Now!",
   },
   {
     id: 7,
-    slug: "delhi-sightseeing-guide-places-to-visit-2025",
-    title: "Delhi Sightseeing Guide 2025: Top 15 Places to Visit in The Capital",
-    excerpt: "Explore the best of Delhi with our comprehensive 2025 sightseeing guide. From the historic Red Fort to the modern Lotus Temple, discover the top 15 places to visit in India's capital.",
+    slug: "delhi-sightseeing-guide-places-to-visit-2026",
+    title: "Delhi Sightseeing Guide 2026: Top 15 Places to Visit in The Capital",
+    excerpt: "Explore the best of Delhi with our comprehensive 2026 sightseeing guide. From the historic Red Fort to the modern Lotus Temple, discover the top 15 places to visit in India's capital.",
 
     relatedTours: [
       { id: "delhi-1", name: "Delhi Full Day City Tour", slug: "delhi-full-day-city-tour", city: "delhi", price: "₹2,500" },
@@ -1686,7 +1686,7 @@ export const travelBlogPosts = [
       <div class="blog-intro">
         <p><strong>Delhi</strong>, the capital of India, is a city of contrasts. It's a place where time travel is possible—where you can stand amidst the ruins of a 12th-century fort in the morning and shop in a glitzy modern mall in the evening. As a melting pot of cultures, Delhi offers an overwhelming yet fascinating mix of history, food, and modern life.</p>
         
-        <p>Whether you have one day or a week, this <strong>Delhi Sightseeing Guide for 2025</strong> covers the top 15 places you absolutely cannot miss. We've categorized them into Heritage, Spiritual, and Modern attractions to help you plan your perfect itinerary.</p>
+        <p>Whether you have one day or a week, this <strong>Delhi Sightseeing Guide for 2026</strong> covers the top 15 places you absolutely cannot miss. We've categorized them into Heritage, Spiritual, and Modern attractions to help you plan your perfect itinerary.</p>
       </div>
 
       <h2>Historical Marvels: The Heritage Circuit</h2>
@@ -1792,7 +1792,7 @@ export const travelBlogPosts = [
         <a href="/sightseeing/delhi-full-day-city-tour" class="inline-block bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700 transition-colors">Book Now</a>
       </div>
     `,
-    date: "2025-01-22",
+    date: "2026-01-22",
     readTime: "12 min read",
     image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
     category: "Sightseeing",
@@ -1800,14 +1800,14 @@ export const travelBlogPosts = [
     keywords: ["delhi sightseeing", "places to visit in delhi", "delhi city tour", "delhi tourism", "red fort delhi", "qutub minar", "lotus temple", "india gate", "akshardham temple", "old delhi tour", "new delhi tourist places", "delhi darshan", "delhi travel guide", "things to do in delhi", "delhi one day tour", "best time to visit delhi", "delhi heritage walk", "shopping in delhi", "chandni chowk market", "humayun tomb"],
     featured: true,
     views: 1100,
-    metaTitle: "Delhi Sightseeing Guide 2025: Top 15 Places to Visit | Complete Itinerary",
-    metaDescription: "Discover the top 15 places to visit in Delhi with our 2025 sightseeing guide. Explore Red Fort, Qutub Minar, Akshardham & more. Plan your Delhi tour now!",
+    metaTitle: "Delhi Sightseeing Guide 2026: Top 15 Places to Visit | Complete Itinerary",
+    metaDescription: "Discover the top 15 places to visit in Delhi with our 2026 sightseeing guide. Explore Red Fort, Qutub Minar, Akshardham & more. Plan your Delhi tour now!",
   },
   {
     id: 8,
-    slug: "jaipur-city-tour-pink-city-guide-2025",
-    title: "Jaipur City Tour Guide 2025: Exploring the Royal Pink City",
-    excerpt: "Experience the royal grandeur of Jaipur. From the majestic Amber Fort to the iconic Hawa Mahal, our complete 2025 guide covers the best places to visit, eat, and shop in the Pink City.",
+    slug: "jaipur-city-tour-pink-city-guide-2026",
+    title: "Jaipur City Tour Guide 2026: Exploring the Royal Pink City",
+    excerpt: "Experience the royal grandeur of Jaipur. From the majestic Amber Fort to the iconic Hawa Mahal, our complete 2026 guide covers the best places to visit, eat, and shop in the Pink City.",
 
     relatedTours: [
       { id: "jaipur-1", name: "Jaipur Full Day Sightseeing", slug: "jaipur-full-day-sightseeing", city: "jaipur", price: "₹2,500" },
@@ -1832,7 +1832,7 @@ export const travelBlogPosts = [
       <div class="blog-intro">
         <p><strong>Jaipur</strong>, the first planned city of India, is a treasure trove of royal heritage. Famously known as the <strong>Pink City</strong> due to the terracotta-pink color of its old city buildings, Jaipur is part of the famous Golden Triangle tourist circuit. It was founded in 1727 by Maharaja Sawai Jai Singh II.</p>
         
-        <p>With its broad avenues, massive forts, opulent palaces, and vibrant bazaars, Jaipur offers a glimpse into the lifestyle of the Rajput kings. In this **2025 Jaipur City Guide**, we will take you through the must-visit attractions, hidden gems, and culinary delights of this royal city.</p>
+        <p>With its broad avenues, massive forts, opulent palaces, and vibrant bazaars, Jaipur offers a glimpse into the lifestyle of the Rajput kings. In this **2026 Jaipur City Guide**, we will take you through the must-visit attractions, hidden gems, and culinary delights of this royal city.</p>
       </div>
 
       <h2>The Magnificent Forts of Jaipur</h2>
@@ -1939,7 +1939,7 @@ export const travelBlogPosts = [
         <a href="/sightseeing/jaipur-full-day-sightseeing" class="inline-block bg-pink-600 text-white px-6 py-2 rounded font-semibold hover:bg-pink-700 transition-colors">Check Jaipur Cab Rates</a>
       </div>
     `,
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "14 min read",
     image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     category: "Sightseeing",
@@ -1947,14 +1947,14 @@ export const travelBlogPosts = [
     keywords: ["jaipur sightseeing", "jaipur city tour", "amber fort jaipur", "hawa mahal", "city palace jaipur", "places to visit in jaipur", "jaipur tour guide", "things to do in jaipur", "jaipur tourism", "chokhi dhani jaipur", "shopping in jaipur", "best time to visit jaipur", "jaipur itinerary 2 days", "jal mahal jaipur", "nahargarh fort sunset", "jaipur photo spots", "patrika gate", "albert hall museum", "jaipur food guide", "rajasthani cuisine"],
     featured: true,
     views: 920,
-    metaTitle: "Jaipur City Tour 2025: Complete Sightseeing Guide | Pink City Itinerary",
-    metaDescription: "Explore the best of Jaipur with our 2025 City Tour Guide. Visit Amber Fort, Hawa Mahal, City Palace & more. Find best itinerary, food & shopping tips.",
+    metaTitle: "Jaipur City Tour 2026: Complete Sightseeing Guide | Pink City Itinerary",
+    metaDescription: "Explore the best of Jaipur with our 2026 City Tour Guide. Visit Amber Fort, Hawa Mahal, City Palace & more. Find best itinerary, food & shopping tips.",
   },
   {
     id: 9,
-    slug: "agra-travel-guide-beyond-taj-mahal-2025",
-    title: "Agra Travel Guide 2025: Beyond the Taj Mahal - Forts, Tombs & Food",
-    excerpt: "Think Agra is just about the Taj Mahal? Think again! Explore Agra Fort, Mehtab Bagh, Fatehpur Sikri, and the vibrant food streets of Agra with our complete 2025 travel guide.",
+    slug: "agra-travel-guide-beyond-taj-mahal-2026",
+    title: "Agra Travel Guide 2026: Beyond the Taj Mahal - Forts, Tombs & Food",
+    excerpt: "Think Agra is just about the Taj Mahal? Think again! Explore Agra Fort, Mehtab Bagh, Fatehpur Sikri, and the vibrant food streets of Agra with our complete 2026 travel guide.",
 
     relatedTours: [
       { id: "agra-1", name: "Agra One Day Tour", slug: "agra-one-day-tour", city: "agra", price: "₹3,500" },
@@ -1979,7 +1979,7 @@ export const travelBlogPosts = [
       <div class="blog-intro">
         <p><strong>Agra</strong>, the former capital of the Mughal Empire, is home to the world's most famous monument of love, the <strong>Taj Mahal</strong>. Every year, millions of tourists flock to Agra just to see the Taj. But is that all Agra has to offer?</p>
         
-        <p>Absolutely not! Agra is a city steeped in history, architecture, and culture. From massive red sandstone forts to exquisite baby marble tombs and abandoned ghost cities, there is so much more to explore. In this <strong>Agra Travel Guide 2025</strong>, we take you beyond the Taj Mahal to discover the hidden gems of this historic city.</p>
+        <p>Absolutely not! Agra is a city steeped in history, architecture, and culture. From massive red sandstone forts to exquisite baby marble tombs and abandoned ghost cities, there is so much more to explore. In this <strong>Agra Travel Guide 2026</strong>, we take you beyond the Taj Mahal to discover the hidden gems of this historic city.</p>
       </div>
 
       <h2>The Must-Visit Monuments</h2>
@@ -2069,7 +2069,7 @@ export const travelBlogPosts = [
         <a href="/sightseeing/agra-one-day-tour" class="inline-block bg-red-700 text-white px-6 py-2 rounded font-semibold hover:bg-red-800 transition-colors">View Agra Tour Packages</a>
       </div>
     `,
-    date: "2025-01-18",
+    date: "2026-01-18",
     readTime: "11 min read",
     image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     category: "Sightseeing",
@@ -2077,14 +2077,14 @@ export const travelBlogPosts = [
     keywords: ["agra sightseeing", "places to visit in agra", "agra fort history", "fatehpur sikri tour", "baby taj agra", "mehtab bagh sunset", "agra street food", "shopping in agra", "best time to visit agra", "agra city tour", "taj mahal sunrise", "agra tour package", "delhi to agra one day tour", "agra travel guide", "mughal heritage walk", "petha agra", "agra leather market", "taj mahotsav", "agra itinerary 1 day"],
     featured: true,
     views: 1300,
-    metaTitle: "Agra Travel Guide 2025: Beyond Taj Mahal | Forts, Food & Itinerary",
-    metaDescription: "Discover Agra beyond the Taj Mahal. Complete 2025 travel guide to Agra Fort, Fatehpur Sikri, Baby Taj, best street food & shopping spots.",
+    metaTitle: "Agra Travel Guide 2026: Beyond Taj Mahal | Forts, Food & Itinerary",
+    metaDescription: "Discover Agra beyond the Taj Mahal. Complete 2026 travel guide to Agra Fort, Fatehpur Sikri, Baby Taj, best street food & shopping spots.",
   },
   {
     id: 10,
-    slug: "jim-corbett-safari-guide-2025",
-    title: "Jim Corbett Safari Guide 2025: Tigers, Zones, and Luxury Resorts",
-    excerpt: "Planning a wildlife adventure? Read our ultimate 2025 guide to Jim Corbett National Park. Know about best safari zones, booking tips, best time to visit and luxury stay options.",
+    slug: "jim-corbett-safari-guide-2026",
+    title: "Jim Corbett Safari Guide 2026: Tigers, Zones, and Luxury Resorts",
+    excerpt: "Planning a wildlife adventure? Read our ultimate 2026 guide to Jim Corbett National Park. Know about best safari zones, booking tips, best time to visit and luxury stay options.",
 
     relatedTours: [
       { id: "corbett-1", name: "Jim Corbett Weekend Tour", slug: "jim-corbett-weekend-tour", city: "ramnagar", price: "₹6,500" },
@@ -2109,7 +2109,7 @@ export const travelBlogPosts = [
       <div class="blog-intro">
         <p>The roar of the Bengal Tiger, the rustle of dry leaves, and the pristine wilderness of the foothills of the Himalayas—welcome to <strong>Jim Corbett National Park</strong>. Established in 1936 as Hailey National Park, it is India's oldest national park and the birthplace of Project Tiger.</p>
         
-        <p>Spanning over 520 sq km, Corbett is a haven for wildlife lovers, photographers, and nature seekers. Whether you want to spot the majestic tiger, enjoy bird watching, or simply relax by the Kosi River, this <strong>Jim Corbett Safari Guide 2025</strong> serves as your ultimate handbook.</p>
+        <p>Spanning over 520 sq km, Corbett is a haven for wildlife lovers, photographers, and nature seekers. Whether you want to spot the majestic tiger, enjoy bird watching, or simply relax by the Kosi River, this <strong>Jim Corbett Safari Guide 2026</strong> serves as your ultimate handbook.</p>
       </div>
 
       <h2>Understanding Safari Zones in Corbett</h2>
@@ -2199,7 +2199,7 @@ export const travelBlogPosts = [
         <a href="/sightseeing/jim-corbett-weekend-tour" class="inline-block bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition-colors">Book Corbett Package</a>
       </div>
     `,
-    date: "2025-01-15",
+    date: "2026-01-15",
     readTime: "13 min read",
     image: "/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg",
     category: "WildLife",
@@ -2207,12 +2207,12 @@ export const travelBlogPosts = [
     keywords: ["jim corbett national park", "jim corbett safari booking", "dhikala zone", "best time to visit jim corbett", "tiger sighting in corbett", "jungle safari india", "resorts in jim corbett", "delhi to jim corbett cab", "jim corbett packages", "wildlife photography india", "bijrani zone", "jhirna zone", "corbett waterfall", "garjia devi temple", "jeep safari booking", "canter safari dhikala", "ramnagar to corbett", "project tiger", "corbett itinerary 3 days"],
     featured: true,
     views: 1450,
-    metaTitle: "Jim Corbett Safari Guide 2025: Zones, Booking & Best Time to Visit",
-    metaDescription: "Ultimate guide to Jim Corbett National Park 2025. Best safari zones, tiger sighting tips, resort guide & travel tips. Plan your wildlife adventure now!",
+    metaTitle: "Jim Corbett Safari Guide 2026: Zones, Booking & Best Time to Visit",
+    metaDescription: "Ultimate guide to Jim Corbett National Park 2026. Best safari zones, tiger sighting tips, resort guide & travel tips. Plan your wildlife adventure now!",
   },
 
   // ============================================
-  // NEW BLOGS - DECEMBER 2025 (High Traffic SEO)
+  // NEW BLOGS - DECEMBER 2026 (High Traffic SEO)
   // ============================================
 
   {
@@ -2470,7 +2470,7 @@ export const travelBlogPosts = [
       <h3>Can I visit Ayodhya and Varanasi together?</h3>
       <p>Absolutely! Many pilgrims combine both cities. <a href="/tempo-traveller/varanasi-to-ayodhya" class="text-blue-600 hover:underline">Book our Varanasi-Ayodhya package</a> for a complete spiritual experience.</p>
     `,
-    date: "2025-12-20",
+    date: "2026-12-20",
     readTime: "15 min read",
     image: "/images/sightseeing/Ayodhya/ayodhya_hero_section.jpg",
     category: "Pilgrimage",
@@ -2732,7 +2732,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2025-12-20",
+    date: "2026-12-20",
     readTime: "18 min read",
     image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
     category: "Pilgrimage",
@@ -3010,7 +3010,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2025-12-20",
+    date: "2026-12-20",
     readTime: "16 min read",
     image: "/images/tempo/17_seater.jpg",
     category: "Travel Tips",
@@ -3290,7 +3290,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2025-12-20",
+    date: "2026-12-20",
     readTime: "14 min read",
     image: "/images/wedding_section.jpg",
     category: "Wedding",
@@ -3581,7 +3581,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2025-12-20",
+    date: "2026-12-20",
     readTime: "17 min read",
     image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
     category: "Destinations",

@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
     const tours = getToursByCity(slug);
 
     return {
-      title: `${cityName} Sightseeing Tours 2025 | Best ${cityName} Tour Packages | Book Now`,
+      title: `${cityName} Sightseeing Tours 2026 | Best ${cityName} Tour Packages | Book Now`,
       description: `Discover ${tours.length}+ amazing sightseeing tours in ${cityName}. Expert-guided heritage tours, cultural experiences & day trips. Best prices guaranteed. Book your ${cityName} tour now!`,
       keywords: [
         // Primary Keywords
@@ -124,8 +124,8 @@ export async function generateMetadata({ params }) {
         `quick ${cityName} tour`,
 
         // Time & Season Keywords
-        `${cityName} tour 2025`,
-        `${cityName} sightseeing 2025`,
+        `${cityName} tour 2026`,
+        `${cityName} sightseeing 2026`,
         `best time to visit ${cityName}`,
         `${cityName} summer tour`,
         `${cityName} winter tour`,
@@ -266,7 +266,7 @@ export async function generateMetadata({ params }) {
         `${cityName} travel tips`,
         `${cityName} tourist information`,
         `${cityName} visitor guide`,
-        `${cityName} travel guide 2025`,
+        `${cityName} travel guide 2026`,
         `complete ${cityName} guide`,
         `ultimate ${cityName} guide`
       ].filter(Boolean).join(', '),
@@ -274,7 +274,7 @@ export async function generateMetadata({ params }) {
         canonical: `https://www.trivenicabs.in/sightseeing/${slug}`
       },
       openGraph: {
-        title: `${cityName} Sightseeing Tours | Best Tour Packages 2025`,
+        title: `${cityName} Sightseeing Tours | Best Tour Packages 2026`,
         description: `${tours.length}+ expert-guided tours in ${cityName}. Heritage sites, cultural experiences & day trips. Book now!`,
         url: `https://www.trivenicabs.in/sightseeing/${slug}`,
         type: 'website',

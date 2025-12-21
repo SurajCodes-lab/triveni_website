@@ -17,11 +17,11 @@ export const viewport = {
 
 export const metadata = {
   title: {
-    default: 'Triveni Cabs - Reliable Taxi & Car Rental Services',
+    default: 'Car Rental & Taxi Service India | Book Online ₹11/km | Triveni Cabs 2026',
     template: '%s | Triveni Cabs'
   },
-  description: 'Book car rental, taxi, tour packages with Triveni Cabs. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Delhi, Mumbai, Agra, Manali tours. Professional drivers, AC vehicles, 24/7 support.',
-  keywords: 'taxi service India, car rental India, outstation cab, local taxi service, airport transfer, Triveni Cabs, luxury car rental, tempo traveller hire, Delhi taxi service, Mumbai car rental, Agra tour packages, Jaipur taxi booking, reliable cab service, 24/7 taxi, online cab booking, corporate car rental, wedding car hire, intercity cab, one way taxi, round trip cab, best taxi service 2025',
+  description: 'Book trusted car rental & taxi service across India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Serving Delhi, Agra, Jaipur, Manali & 50+ cities. 24/7 instant booking available. Call 7668570551!',
+  keywords: 'taxi service India 2026, car rental India, outstation cab booking online, local taxi service near me, airport transfer Delhi, Triveni Cabs booking, luxury car rental India, tempo traveller hire Delhi, Delhi taxi service 24/7, Agra tour packages, Jaipur taxi booking online, reliable cab service India, 24/7 taxi booking, online cab booking India, corporate car rental Delhi, wedding car hire, intercity cab service, one way taxi Delhi Agra, round trip cab booking, best taxi service 2026, cheap car rental India, book cab online now, taxi near me, outstation taxi booking, cab service near me',
   authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
   creator: 'Triveni Cabs Travel Services',
   publisher: 'Triveni Cabs India',
@@ -39,8 +39,8 @@ export const metadata = {
     }
   },
   openGraph: {
-    title: '🚗 Best Car Rental & Tour Packages 2025 | Triveni Cabs | Starting ₹11/km',
-    description: '✅ Book sedan, SUV, tempo traveller, luxury bus online. Delhi, Mumbai, Agra, Manali tours. Professional drivers, AC vehicles, competitive rates. Call 7668570551',
+    title: 'Car Rental & Taxi Service India 2026 | Book Online ₹11/km | Triveni Cabs',
+    description: 'Book trusted car rental across India - Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. Delhi, Agra, Jaipur, Manali tours. Professional drivers, AC vehicles. Call 7668570551 for instant booking!',
     url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
@@ -48,7 +48,7 @@ export const metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Triveni Cabs - Best Car Rental & Tour Packages India 2025',
+        alt: 'Triveni Cabs - Best Car Rental & Tour Packages India 2026',
       },
     ],
     locale: 'en_IN',
@@ -56,8 +56,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Car Rental & Tour Packages India | Triveni Cabs',
-    description: 'Book sedan ₹11/km, SUV ₹15/km, tempo traveller online. Delhi, Mumbai, Manali tours. Professional service, competitive rates.',
+    title: 'Car Rental & Taxi Service India 2026 | Book ₹11/km | Triveni Cabs',
+    description: 'Book sedan ₹11/km, SUV ₹15/km, tempo traveller ₹24/km across India. Delhi, Agra, Jaipur, Manali tours. 24/7 booking. Call 7668570551!',
     images: ['/images/twitter-image.jpg'],
     creator: '@trivenicabs',
   },

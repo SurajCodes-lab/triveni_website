@@ -330,7 +330,7 @@ export default function RouteClientContent({
               {/* Animated Badge */}
               <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-5 py-2.5 rounded-full mb-4 border-2 border-[#FACF2D]/40 shadow-xl">
                 <MapPin className="w-5 h-5 text-[#FACF2D]" />
-                <span className="font-bold text-white text-sm">Premium Cab Service 2025</span>
+                <span className="font-bold text-white text-sm">Premium Cab Service 2026</span>
               </div>
 
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight">

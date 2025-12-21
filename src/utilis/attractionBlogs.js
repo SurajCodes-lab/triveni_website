@@ -188,7 +188,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -617,7 +617,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "11 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -961,7 +961,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Jaipur/amber_fort.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -1249,7 +1249,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Amritsar, Punjab", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Early morning or evening" }, howToReach: { fromDelhi: "450 km by road", nearestAirport: "Amritsar Airport (11 km)", nearestRailway: "Amritsar Junction (2 km)" }, timeNeeded: "3-4 hours", coordinates: { latitude: 31.6200, longitude: 74.8765 } },
-    image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2025-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2026-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Golden Temple Complete Guide 2026 - Timings, Langar & Tours", metaDescription: "Golden Temple Amritsar complete guide: history, free langar, timings, tours. Experience world's largest community kitchen!",
     content: `
       <div class="blog-intro">
@@ -1592,7 +1592,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [{ title: "Red Fort Delhi Complete Guide", slug: "red-fort-delhi-complete-guide-2026" }],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Qutub Minar & 8+ attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Mehrauli, New Delhi", entryFee: { indian: "₹35", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "7:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (7-10 AM)" }, howToReach: { fromNewDelhi: "15 km", nearestAirport: "IGI Airport (12 km)", nearestRailway: "New Delhi Station (15 km)", nearestMetro: "Qutub Minar Metro (Yellow Line)" }, timeNeeded: "1.5-2 hours", coordinates: { latitude: 28.5244, longitude: 77.1855 } },
-    image: "/images/sightseeing/Delhi/Outub_Minar.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/Outub_Minar.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Qutub Minar Delhi Guide 2026 - Timings, Fees & Tours", metaDescription: "Qutub Minar complete guide: world's tallest brick minaret, rust-free iron pillar, UNESCO site. Book Delhi tours!",
     content: `
       <div class="blog-intro">
@@ -2060,7 +2060,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Hawa Mahal Rd, Badi Choupad, Jaipur", entryFee: { indian: "₹50", foreign: "₹200", children: "Free (below 15)" }, timings: { open: "9:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) for best photos" }, howToReach: { fromJaipur: "City center", nearestAirport: "Jaipur Airport (12 km)", nearestRailway: "Jaipur Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 26.9239, longitude: 75.8267 } },
-    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg", date: "2025-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg", date: "2026-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Hawa Mahal Jaipur Guide 2026 - Palace of Winds Timings & Tours", metaDescription: "Hawa Mahal complete guide: 953 windows, iconic pink facade, best photography spots. Book Jaipur city tours!",
     content: `
       <div class="blog-intro">
@@ -2411,7 +2411,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [{ title: "Taj Mahal Complete Guide", slug: "taj-mahal-complete-guide-2026" }],
     primaryCTA: { text: "Book Agra Tour", url: "/sightseeing/agra-same-day-tour", description: "Taj Mahal + Agra Fort", price: "₹3,500", features: ["Hotel Pickup", "Skip-the-line", "Expert Guide"] },
     attractionData: { location: "Agra, Uttar Pradesh", entryFee: { indian: "₹40", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "6:00 AM", close: "6:00 PM", closedOn: "Friday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (6-9 AM)" }, howToReach: { fromDelhi: "233 km", nearestAirport: "Agra Airport (13 km)", nearestRailway: "Agra Cantt (6 km)" }, timeNeeded: "2 hours", coordinates: { latitude: 27.1795, longitude: 78.0211 } },
-    image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2025-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Agra Fort Guide 2026 - Timings, Fees & Tours", metaDescription: "Agra Fort complete guide: UNESCO site, Mughal fortress with Taj Mahal views. Book Agra day tours!",
     content: `
       <div class="blog-intro">
@@ -2809,7 +2809,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Rajpath, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Evening (5-8 PM) when illuminated" }, howToReach: { fromNewDelhi: "3 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "New Delhi Station (3 km)", nearestMetro: "Central Secretariat Metro" }, timeNeeded: "1 hour", coordinates: { latitude: 28.6129, longitude: 77.2295 } },
-    image: "/images/sightseeing/Delhi/India_Gate.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/India_Gate.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "India Gate Delhi Guide 2026 - Timings & Tours", metaDescription: "India Gate Delhi: iconic war memorial, evening illumination, boat rides, street food. Book Delhi city tours!",
     content: `
       <div class="blog-intro">
@@ -3057,7 +3057,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Lotus Temple & Delhi attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Lotus Temple Rd, Bahapur, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "9:00 AM", close: "5:30 PM", closedOn: "Monday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) or evening (4-5:30 PM)" }, howToReach: { fromNewDelhi: "10 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "Hazrat Nizamuddin (8 km)", nearestMetro: "Kalkaji Mandir Metro" }, timeNeeded: "45 min - 1 hour", coordinates: { latitude: 28.5535, longitude: 77.2588 } },
-    image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Lotus Temple Delhi Guide 2026 - Timings & Tours", metaDescription: "Lotus Temple Delhi: stunning lotus-shaped Bahai Temple, peaceful meditation, modern architecture. Free entry!",
     content: `
       <div class="blog-intro">
@@ -3378,7 +3378,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Apollo Bandar, Colaba, Mumbai", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "November to February", timeOfDay: "Evening (5-7 PM) for sunset" }, howToReach: { fromMumbaiCentral: "10 km", nearestAirport: "Mumbai Airport (30 km)", nearestRailway: "CST Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 18.9220, longitude: 72.8347 } },
-    image: "/images/spots/gateway.webp", date: "2025-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
+    image: "/images/spots/gateway.webp", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
     metaTitle: "Gateway of India Mumbai Guide 2026 - Timings & Tours", metaDescription: "Gateway of India Mumbai: iconic monument, Elephanta Caves ferry, sunset views, colonial architecture!",
     content: `
       <div class="blog-intro">
@@ -3712,7 +3712,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Jaipur/city_palace.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -4184,7 +4184,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/packages/rajasthan.webp",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "13 min",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -4647,7 +4647,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Chittorgarh/chittogarh_hero_section.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "14 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -5212,7 +5212,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/packages/rajasthan.webp",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "13 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -5780,7 +5780,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/packages/rajasthan.webp",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -6363,7 +6363,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "11 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -6848,7 +6848,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -7307,7 +7307,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     heroImage: "/images/sightseeing/Jaipur/amber_fort.jpg",
 
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min",
     author: "Triveni Cabs Travel Team",
     featured: false,
@@ -7700,7 +7700,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     heroImage: "/images/sightseeing/Jaipur/amber_fort.jpg",
 
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min",
     author: "Triveni Cabs Travel Team",
     featured: false,
@@ -8207,7 +8207,7 @@ export const attractionBlogPosts = [
     image: "/images/packages/rajasthan.webp",
     heroImage: "/images/packages/rajasthan.webp",
 
-    date: "2025-01-20",
+    date: "2026-01-20",
     readTime: "12 min",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -8972,8 +8972,8 @@ export const attractionBlogPosts = [
       </ul>
     `,
 
-    date: "2025-01-20",
-    dateModified: "2025-01-20",
+    date: "2026-01-20",
+    dateModified: "2026-01-20",
     readTime: "15 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -9260,8 +9260,8 @@ export const attractionBlogPosts = [
       </ul>
     `,
 
-    date: "2025-01-20",
-    dateModified: "2025-01-20",
+    date: "2026-01-20",
+    dateModified: "2026-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -9538,8 +9538,8 @@ export const attractionBlogPosts = [
       </ul>
     `,
 
-    date: "2025-01-20",
-    dateModified: "2025-01-20",
+    date: "2026-01-20",
+    dateModified: "2026-01-20",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -9831,8 +9831,8 @@ export const attractionBlogPosts = [
       </ul>
     `,
 
-    date: "2025-01-20",
-    dateModified: "2025-01-20",
+    date: "2026-01-20",
+    dateModified: "2026-01-20",
     readTime: "14 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -10119,8 +10119,8 @@ export const attractionBlogPosts = [
       </ul>
     `,
 
-    date: "2025-01-20",
-    dateModified: "2025-01-20",
+    date: "2026-01-20",
+    dateModified: "2026-01-20",
     readTime: "14 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -10426,8 +10426,8 @@ export const attractionBlogPosts = [
       </ul>
     `,
 
-    date: "2025-01-20",
-    dateModified: "2025-01-20",
+    date: "2026-01-20",
+    dateModified: "2026-01-20",
     readTime: "15 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -10438,8 +10438,8 @@ export const attractionBlogPosts = [
   },
   {
     id: 301,
-    slug: "akshardham-temple-delhi-guide-2025",
-    title: "Akshardham Temple Delhi Guide 2025: Timings, Ticket Price & Musical Fountain",
+    slug: "akshardham-temple-delhi-guide-2026",
+    title: "Akshardham Temple Delhi Guide 2026: Timings, Ticket Price & Musical Fountain",
     excerpt: "Complete guide to Swaminarayan Akshardham Temple, New Delhi. Know about timings, ticket prices, exhibitions, musical fountain show, dress code & rules.",
 
     city: "delhi",
@@ -10523,13 +10523,13 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
-    date: "2025-01-22",
+    date: "2026-01-22",
     readTime: "12 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 850,
-    metaTitle: "Akshardham Temple Delhi Guide 2025: Timings, Shows & Entry Fee",
-    metaDescription: "Plan your visit to Akshardham Temple Delhi. Complete guide on timings, ticket prices, exhibitions, musical fountain show & dress code rules for 2025.",
+    metaTitle: "Akshardham Temple Delhi Guide 2026: Timings, Shows & Entry Fee",
+    metaDescription: "Plan your visit to Akshardham Temple Delhi. Complete guide on timings, ticket prices, exhibitions, musical fountain show & dress code rules for 2026.",
 
     content: `
       <div class="blog-intro">
@@ -10677,7 +10677,7 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Delhi/Outub_Minar.jpg",
-    date: "2025-01-23",
+    date: "2026-01-23",
     readTime: "10 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
@@ -10731,7 +10731,7 @@ export const attractionBlogPosts = [
   {
     id: 303,
     slug: "city-palace-jaipur-history-museum-guide",
-    title: "City Palace Jaipur: Royal Museum, History & Entry Fee Guide 2025",
+    title: "City Palace Jaipur: Royal Museum, History & Entry Fee Guide 2026",
     excerpt: "Step into the royal residence of the Maharaja of Jaipur. Complete guide to City Palace, Mubarak Mahal, Chandra Mahal, museums, entry fees & timings.",
 
     city: "jaipur",
@@ -10813,12 +10813,12 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Jaipur/city_palace.jpg",
-    date: "2025-01-24",
+    date: "2026-01-24",
     readTime: "11 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 600,
-    metaTitle: "City Palace Jaipur Guide 2025: Entry Fee, Timings & Museum",
+    metaTitle: "City Palace Jaipur Guide 2026: Entry Fee, Timings & Museum",
     metaDescription: "Visit the royal City Palace Jaipur. Complete guide to the museum, Chandra Mahal, Peacock Gate, entry fees & history. Book Jaipur sightseeing tours.",
 
     content: `
@@ -10953,12 +10953,12 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Jaipur/amber_fort.jpg",
-    date: "2025-01-25",
+    date: "2026-01-25",
     readTime: "13 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 950,
-    metaTitle: "Amber Fort Jaipur 2025 Guide: Elephant Ride, History & Sheesh Mahal",
+    metaTitle: "Amber Fort Jaipur 2026 Guide: Elephant Ride, History & Sheesh Mahal",
     metaDescription: "Ultimate guide to Amber (Amer) Fort Jaipur. Tips on elephant rides, Sheesh Mahal, secret tunnels, light & sound show, and best photo spots.",
 
     content: `
@@ -11092,12 +11092,12 @@ export const attractionBlogPosts = [
     },
 
     image: "/images/sightseeing/Agra/agra_fort.jpg",
-    date: "2025-01-26",
+    date: "2026-01-26",
     readTime: "11 min read",
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 700,
-    metaTitle: "Agra Fort Guide 2025: History, Timings & Shah Jahan's Prison",
+    metaTitle: "Agra Fort Guide 2026: History, Timings & Shah Jahan's Prison",
     metaDescription: "Discover Agra Fort, the main residence of Mughal Emperors. Visit Jahangir Mahal, Musamman Burj & see the view of Taj Mahal. Complete travel guide.",
 
     content: `

@@ -3,12 +3,12 @@ import { blogPosts } from '@/utilis/blog';
 
 // SEO Metadata for Blog Page
 export const metadata = {
-  title: 'India Uncovered: Travel Tales That Inspire Wanderlust | Triveni Cabs 2025',
+  title: 'India Uncovered: Travel Tales That Inspire Wanderlust | Triveni Cabs 2026',
   description: '🌏 Your passport to incredible India starts here! Explore hidden gems, budget hacks, jaw-dropping destinations & insider secrets. From Himalayan peaks to coastal paradises - real stories, practical tips & itineraries that actually work. Join 500+ readers discovering India differently!',
   keywords: [
     // Primary Keywords
     'travel blog India',
-    'India travel tips 2025',
+    'India travel tips 2026',
     'destination guides India',
     'travel advice India',
     'tourism blog India',
@@ -48,7 +48,7 @@ export const metadata = {
     'best time to visit India',
     'monsoon travel India',
     'winter destinations India',
-    'summer travel India 2025',
+    'summer travel India 2026',
     'Indian festivals travel',
 
     // Activity Keywords
@@ -70,11 +70,11 @@ export const metadata = {
     'road safety tips',
 
     // Long-tail Keywords
-    'best places to visit in India 2025',
+    'best places to visit in India 2026',
     'how to plan India trip',
     'India travel itinerary',
     'cheap travel in India',
-    'India tourism guide 2025',
+    'India tourism guide 2026',
     'travel stories from India',
     'India sightseeing tips',
     'local travel India',
@@ -139,7 +139,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'India Uncovered: Travel Tales That Inspire Wanderlust | 2025',
+    title: 'India Uncovered: Travel Tales That Inspire Wanderlust | 2026',
     description: 'From hidden Himalayan villages to secret beaches - discover India through authentic stories, money-saving tips & bucket-list itineraries. Your adventure awaits!',
     type: 'website',
     locale: 'en_IN',

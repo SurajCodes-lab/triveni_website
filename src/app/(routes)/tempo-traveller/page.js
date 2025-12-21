@@ -4,8 +4,8 @@ import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerDat
 import TempoMainClient from '@/components/TempoMainClient';
 
 export const metadata = {
-  title: 'Tempo Traveller on Rent India | 12-26 Seater AC ₹23/km | Delhi Manali Shimla Jaipur | Book Online',
-  description: 'Book tempo traveller on rent for group travel across India. 12, 16, 17, 20, 26 seater AC tempo traveller with driver. Best rates ₹23-27/km all-inclusive. Popular routes: Delhi to Manali, Delhi to Shimla, Delhi to Haridwar, Delhi to Rishikesh, Delhi to Jaipur, Delhi to Agra, Chandigarh to Manali. 100+ destinations covered. Pushback seats, music system, GPS tracking. Professional drivers, 24/7 booking, instant confirmation. Perfect for family trips, corporate tours, pilgrimages, weddings.',
+  title: 'Tempo Traveller on Rent 2026 | 12-26 Seater AC ₹23/km | Book Online India',
+  description: 'Book tempo traveller on rent across India. 12, 16, 17, 20, 26 seater AC tempo with driver. ₹23-27/km all-inclusive. Delhi to Manali, Shimla, Jaipur, Haridwar routes. Pushback seats, GPS tracking, 24/7 booking. Call 7668570551!',
   keywords: [
     // Primary Keywords
     'tempo traveller on rent',
@@ -64,7 +64,7 @@ export const metadata = {
     'tempo traveller for Manali trip from Delhi',
     'affordable tempo traveller rental India',
     '17 seater AC tempo traveller Delhi',
-    'tempo traveller 2025 booking'
+    'tempo traveller 2026 booking'
   ].join(', '),
   applicationName: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -72,8 +72,8 @@ export const metadata = {
     canonical: '/tempo-traveller',
   },
   openGraph: {
-    title: 'Tempo Traveller on Rent India | 12-26 Seater AC with Driver | Book Online 24/7',
-    description: '✓ Delhi to Manali ✓ Delhi to Shimla ✓ Delhi to Jaipur ✓ 100+ Routes | ₹23-27/km | GPS Tracking | Professional Drivers | 4.8★ Rating | Instant Confirmation',
+    title: 'Tempo Traveller on Rent 2026 | 12-26 Seater AC ₹23/km | Book Online',
+    description: 'Book tempo traveller Delhi to Manali, Shimla, Jaipur & 100+ routes. ₹23-27/km all-inclusive. GPS tracking, professional drivers. Call 7668570551!',
     url: 'https://www.trivenicabs.in/tempo-traveller',
     siteName: 'Triveni Cabs - Tempo Traveller Rental Service',
     type: 'website',
@@ -90,8 +90,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tempo Traveller on Rent India | 12-26 Seater AC | Delhi Manali Shimla Jaipur Routes',
-    description: '✓ 100+ Routes Across India ✓ Professional Drivers ✓ GPS Tracking ✓ ₹23-27/km All-Inclusive ✓ 24/7 Booking | Book tempo traveller rental service',
+    title: 'Tempo Traveller on Rent 2026 | 12-26 Seater ₹23/km | Triveni Cabs',
+    description: 'Book tempo traveller across India. 100+ routes, professional drivers, GPS tracking, ₹23-27/km all-inclusive. Call 7668570551!',
     site: '@trivenicabs',
     images: ['/images/tempo-hero.jpg'],
   },

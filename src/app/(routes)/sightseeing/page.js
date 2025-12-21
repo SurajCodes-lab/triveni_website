@@ -4,8 +4,8 @@ import SightseeingMainClient from './SightseeingMainClient';
 import { getAllTours, tourCategories, featuredTours } from '@/utilis/sightseeingData';
 
 export const metadata = {
-  title: 'Premium Sightseeing Tours India | Expert-Curated Heritage & Cultural Day Tours | Book Professional Guided City Tours',
-  description: 'Discover India\'s wonders with premium sightseeing tours across 20+ destinations. Expert-guided heritage tours, cultural experiences & architectural marvels. Visit Taj Mahal, Jaipur forts, Delhi monuments & more. Customizable itineraries, professional guides, comfortable transport. Book now - Best rates guaranteed!',
+  title: 'Sightseeing Tours India 2026 | Heritage & Cultural Day Tours | Book Online',
+  description: 'Book sightseeing tours across 20+ Indian destinations. Expert-guided heritage tours - Taj Mahal, Jaipur forts, Delhi monuments. Customizable itineraries, professional guides. Call 7668570551 for instant booking!',
   keywords: [
     // Primary Keywords (High Volume)
     'sightseeing tours India',
