@@ -16,11 +16,11 @@ const Footer = () => {
   ];
 
   const services = [
-    // { name: "Local Rides", href: "/services/local-rides" },
     { name: "Airport Transfer", href: "/airport-service" },
-    { name: "Outstation Trips", href: "/tempo-traveller" },
-    // { name: "Corporate Travel", href: "/services/corporate" },
-    { name: "Wedding Cars", href: "/wedding" }
+    { name: "Tempo Traveller", href: "/tempo-traveller" },
+    { name: "Wedding Cars", href: "/wedding" },
+    { name: "Religious Tours", href: "/religious-tours" },
+    { name: "Bus Routes", href: "/bus-routes" }
   ];
 
   const cities = [
@@ -182,7 +182,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
             <p className="text-sm text-gray-300 text-center md:text-left">
-              © 2024 Triveni Cabs. All rights reserved.
+              © {new Date().getFullYear()} Triveni Cabs. All rights reserved.
             </p>
             <p className="text-xs text-gray-500 text-center md:text-left">
               Made with ❤️ in India

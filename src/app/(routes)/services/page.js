@@ -108,6 +108,82 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
+  // Breadcrumb Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.trivenicabs.in/services"
+      }
+    ]
+  };
+
+  // FAQ Schema for Services Page
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What cab services does Triveni Cabs offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Triveni Cabs offers a comprehensive range of services including local city rides, outstation cab service, airport transfers, wedding car rentals, corporate travel solutions, tempo traveller rentals (12-26 seater), and luxury bus services (22-56 seater). All services are available 24/7 with professional drivers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the rates for different vehicle types?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our rates are transparent and competitive: Sedan starts at ₹11/km, SUV at ₹15/km, Tempo Traveller at ₹24/km. Luxury buses and wedding cars have customized packages. All rates include professional driver, AC, and GPS tracking. No hidden charges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide airport pickup and drop services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide 24/7 airport transfer services at all major airports across India including Delhi IGI, Mumbai, Jaipur, Lucknow, Chandigarh, and more. Our drivers track flight timings for timely pickup, and we offer meet & greet services."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I book a cab for a wedding or special event?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! We offer premium wedding car rentals including luxury brands like BMW, Audi, and Mercedes. We also provide Baraat services with tempo travellers (9-26 seater), car decoration, and professional chauffeurs. Book in advance for best availability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the booking process for Triveni Cabs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Booking is simple! You can book online through our website, call us at 7668570551, or send a WhatsApp message. Provide your pickup location, destination, date, time, and vehicle preference. We confirm your booking instantly with driver details."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer one-way and round trip options?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer flexible booking options including one-way trips, round trips, multi-day packages, and hourly rentals. One-way fares are calculated at per km rates without return charges on popular routes like Delhi-Agra, Delhi-Jaipur, and more."
+        }
+      }
+    ]
+  };
+
   // Comprehensive Service Schema
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -203,6 +279,14 @@ export default function ServicesPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
