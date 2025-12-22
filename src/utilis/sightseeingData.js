@@ -4200,8 +4200,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to June (park closed July-September monsoon)",
       difficulty: "Easy",
       category: "Wildlife & Adventure",
-      heroImage: "/images/sightseeing/ranthambore_hero.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Ranthambore/Rathambore day safari.jpg",
+      images: [
+        { src: "/images/sightseeing/Ranthambore/Rathambore day safari.jpg", alt: "Ranthambore Day Safari", caption: "Tiger Safari Experience" },
+        { src: "/images/sightseeing/Ranthambore/Rathambore day safari (1).jpg", alt: "Ranthambore Wildlife Safari", caption: "Wildlife Spotting Adventure" },
+        { src: "/images/sightseeing/Ranthambore/Ranthambore Fort.jpg", alt: "Ranthambore Fort", caption: "Historic Ranthambore Fort" },
+        { src: "/images/sightseeing/Ranthambore/Wildlife Photography.jpg", alt: "Wildlife Photography", caption: "Wildlife Photography Opportunities" },
+        { src: "/images/sightseeing/Ranthambore/Bird Watching_Over 300 species of birds.jpg", alt: "Bird Watching", caption: "Over 300 Species of Birds" }
+      ],
       tips: [
         "Safari booking required in advance (online booking recommended)",
         "Early morning safari has better tiger sighting chances",
