@@ -1,6 +1,9 @@
 // src/app/sightseeing/[slug]/page.js
 
 import { getTourBySlug, getAllTours, getToursByCity, getCitiesWithTours } from '@/utilis/sightseeingData';
+
+// ISR - Revalidate every hour (3600 seconds) for fresh content
+export const revalidate = 3600;
 import SightseeingDetailClient from './SightseeingDetailClient';
 import CityToursPage from './CityToursPage';
 import { notFound } from 'next/navigation';

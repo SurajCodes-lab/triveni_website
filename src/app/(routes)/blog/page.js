@@ -1,6 +1,9 @@
 import BlogClient from './BlogClient';
 import { blogPosts } from '@/utilis/blog';
 
+// ISR - Revalidate every hour (3600 seconds)
+export const revalidate = 3600;
+
 // SEO Metadata for Blog Page
 export const metadata = {
   title: 'India Uncovered: Travel Tales That Inspire Wanderlust | Triveni Cabs 2026',
