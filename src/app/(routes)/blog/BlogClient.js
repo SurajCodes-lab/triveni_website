@@ -1,820 +1,446 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { Search, Filter, TrendingUp, BookOpen, ChevronRight, Sparkles, Globe, Map, Compass } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
+import { ArrowRight, MapPin, Clock, Calendar, Star, Compass, Plane, Camera, Mountain } from 'lucide-react';
 import BlogCard from '@/components/blog/BlogCard';
 import WhatsAppCTA from '@/components/blog/WhatsAppCTA';
-import { blogPosts, blogCategories } from '@/utilis/blog';
+import { blogPosts } from '@/utilis/blog';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BlogClient() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [mounted, setMounted] = useState(false);
-  const [featuredImageError, setFeaturedImageError] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
   const gridRef = useRef(null);
-  const isGridInView = useInView(gridRef, { once: true, amount: 0.2 });
+  const isGridInView = useInView(gridRef, { once: true, amount: 0.1 });
 
   const { scrollY } = useScroll();
   const smoothScrollY = useSpring(scrollY, { stiffness: 100, damping: 30 });
-  const heroOpacity = useTransform(smoothScrollY, [0, 300], [1, 0]);
-  const heroScale = useTransform(smoothScrollY, [0, 300], [1, 0.95]);
+  const heroY = useTransform(smoothScrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(smoothScrollY, [0, 400], [1, 0]);
 
   useEffect(() => {
     setMounted(true);
-
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Filter posts based on search and category
-  const filteredPosts = useMemo(() => {
-    return blogPosts.filter(post => {
-      // Safety check: ensure post exists and has minimum required properties
-      if (!post || !post.title || !post.slug) {
-        return false;
-      }
+  // Get featured post and regular posts
+  const featuredPost = blogPosts.find(post => post && post.featured);
+  const latestPosts = blogPosts.filter(post => post && post.title && post.slug).slice(0, 6);
+  const allPosts = blogPosts.filter(post => post && post.title && post.slug);
 
-      const postTitle = post.title?.toLowerCase() || '';
-      const postExcerpt = post.excerpt?.toLowerCase() || '';
-      const postTags = post.tags || [];
-      const postCategory = post.category?.toLowerCase().replace(' ', '-') || '';
+  // Category colors for tags
+  const categoryColors = {
+    'travel-tips': 'from-blue-500 to-cyan-500',
+    'destination-guides': 'from-emerald-500 to-teal-500',
+    'road-trips': 'from-orange-500 to-amber-500',
+    'adventure': 'from-purple-500 to-pink-500',
+    'culture': 'from-rose-500 to-red-500',
+    'default': 'from-indigo-500 to-violet-500'
+  };
 
-      const matchesSearch = searchQuery === '' ||
-                           postTitle.includes(searchQuery.toLowerCase()) ||
-                           postExcerpt.includes(searchQuery.toLowerCase()) ||
-                           postTags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-
-      const matchesCategory = selectedCategory === 'all' || postCategory === selectedCategory;
-
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchQuery, selectedCategory]);
-
-  // Get featured post
-  const featuredPost = useMemo(() => blogPosts.find(post => post && post.featured), []);
-  const regularPosts = filteredPosts;
+  const getCategoryColor = (category) => {
+    const slug = category?.toLowerCase().replace(' ', '-') || 'default';
+    return categoryColors[slug] || categoryColors.default;
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      {/* Hero Section - COMPLETELY REDESIGNED */}
+    <div className="min-h-screen bg-white overflow-hidden">
+      {/* Hero Section - Clean Modern Design */}
       <motion.section
         ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[85vh] md:h-[calc(100vh-80px)] flex items-start md:items-center justify-center overflow-hidden pt-4 md:pt-0"
-        aria-labelledby="blog-hero-heading"
+        style={{ y: heroY, opacity: heroOpacity }}
+        className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden"
       >
-        {/* Animated Gradient Background - NO IMAGE */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-          {/* Multiple Animated Gradient Layers */}
-          <motion.div
-            animate={{
-              background: [
-                'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 80% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 80%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.3) 0%, transparent 50%)',
-              ],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute inset-0"
-          />
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900">
+          {/* Animated Gradient Orbs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
-          <motion.div
-            animate={{
-              background: [
-                'radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                'radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-                'radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%)',
-              ],
+          {/* Subtle Grid Pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: '50px 50px'
             }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute inset-0"
-          />
-
-          <motion.div
-            animate={{
-              background: [
-                'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 30% 70%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 70% 30%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
-                'radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
-              ],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute inset-0"
           />
         </div>
 
-        {/* Animated Morphing Blobs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {mounted && [0, 1, 2, 3, 4].map((i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 w-64 h-64 md:w-96 md:h-96"
-              style={{
-                background: i % 2 === 0
-                  ? 'linear-gradient(45deg, #FACF2D, #FFA500)'
-                  : 'linear-gradient(45deg, #8B5CF6, #EC4899)',
-              }}
-              animate={{
-                x: [
-                  Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                  Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                  Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                ],
-                y: [
-                  Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                  Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                  Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                ],
-                scale: [1, 1.5, 1.2, 1],
-                rotate: [0, 180, 360],
-              }}
-              transition={{
-                duration: 20 + i * 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Floating Particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {mounted && [...Array(30)].map((_, i) => {
-            const randomX = Math.random() * 100;
-            const randomDelay = Math.random() * 5;
-            const randomDuration = 10 + Math.random() * 20;
-            const icons = ['✈️', '🗺️', '🏔️', '🚗', '📸', '🎒', '🌍', '🗼', '🏖️', '🎫', '⭐', '🌟', '💫', '🎯', '🧳'];
-
-            return (
+        {/* Floating Icons */}
+        {mounted && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[
+              { Icon: Compass, x: '10%', y: '20%', delay: 0 },
+              { Icon: Plane, x: '85%', y: '25%', delay: 0.5 },
+              { Icon: Camera, x: '15%', y: '70%', delay: 1 },
+              { Icon: Mountain, x: '80%', y: '65%', delay: 1.5 },
+              { Icon: MapPin, x: '50%', y: '15%', delay: 0.8 },
+              { Icon: Star, x: '90%', y: '45%', delay: 1.2 },
+            ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{
-                  y: (typeof window !== 'undefined' ? window.innerHeight : 1000) + 100,
-                  x: `${randomX}%`,
-                  opacity: 0,
-                  rotate: 0,
-                  scale: 0.5,
-                }}
+                className="absolute text-white/10"
+                style={{ left: item.x, top: item.y }}
+                initial={{ opacity: 0, scale: 0 }}
                 animate={{
-                  y: -100,
-                  opacity: [0, 1, 1, 0],
-                  rotate: 360,
-                  scale: [0.5, 1, 0.8, 0.5],
+                  opacity: 1,
+                  scale: 1,
+                  y: [0, -20, 0],
                 }}
                 transition={{
-                  duration: randomDuration,
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: randomDelay,
+                  opacity: { delay: item.delay, duration: 0.5 },
+                  scale: { delay: item.delay, duration: 0.5 },
+                  y: { delay: item.delay, duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="absolute text-2xl md:text-4xl"
               >
-                {icons[i % icons.length]}
+                <item.Icon className="w-8 h-8 md:w-12 md:h-12" />
               </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Cursor Follow Effect */}
-        {mounted && (
-          <motion.div
-            className="absolute w-96 h-96 rounded-full pointer-events-none mix-blend-screen"
-            style={{
-              background: 'radial-gradient(circle, rgba(250,207,45,0.15) 0%, transparent 70%)',
-            }}
-            animate={{
-              x: mousePosition.x - 192,
-              y: mousePosition.y - 192,
-            }}
-            transition={{
-              type: "spring",
-              damping: 30,
-              stiffness: 200,
-            }}
-          />
+            ))}
+          </div>
         )}
 
-        {/* Floating Icons Across Full Hero Section */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-10">
-          {mounted && [
-            // Far Left Side
-            { icon: <Map className="w-10 h-10 md:w-12 md:h-12" />, x: '3%', y: '15%', delay: 0 },
-            { icon: <Globe className="w-9 h-9 md:w-11 md:h-11" />, x: '7%', y: '55%', delay: 1.8 },
-            { icon: <BookOpen className="w-8 h-8 md:w-10 md:h-10" />, x: '12%', y: '75%', delay: 2.5 },
-
-            // Left-Center
-            { icon: <Compass className="w-9 h-9 md:w-11 md:h-11" />, x: '20%', y: '25%', delay: 1.2 },
-            { icon: <Sparkles className="w-7 h-7 md:w-9 md:h-9" />, x: '25%', y: '65%', delay: 3 },
-
-            // Center
-            { icon: <TrendingUp className="w-8 h-8 md:w-10 md:h-10" />, x: '45%', y: '10%', delay: 0.8 },
-            { icon: <Globe className="w-7 h-7 md:w-9 md:h-9" />, x: '50%', y: '80%', delay: 2.2 },
-
-            // Right-Center
-            { icon: <Map className="w-8 h-8 md:w-10 md:h-10" />, x: '70%', y: '30%', delay: 1.5 },
-            { icon: <BookOpen className="w-9 h-9 md:w-11 md:h-11" />, x: '75%', y: '70%', delay: 2.8 },
-
-            // Far Right Side
-            { icon: <Compass className="w-10 h-10 md:w-12 md:h-12" />, x: '85%', y: '20%', delay: 1 },
-            { icon: <Sparkles className="w-8 h-8 md:w-10 md:h-10" />, x: '90%', y: '50%', delay: 2 },
-            { icon: <TrendingUp className="w-9 h-9 md:w-11 md:h-11" />, x: '94%', y: '75%', delay: 3.2 },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-[#FACF2D]/25"
-              style={{ left: item.x, top: item.y }}
-              animate={{
-                y: [0, -15, 0],
-                rotate: [0, 360],
-                scale: [1, 1.1, 1],
-                opacity: [0.25, 0.45, 0.25],
-              }}
-              transition={{
-                duration: 8 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: item.delay,
-              }}
-            >
-              {item.icon}
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="relative z-20 max-w-7xl mx-auto px-4 py-0 md:py-4">
-          {/* Hero Content */}
-          <div className="text-center max-w-6xl mx-auto">
-            {/* Animated Badge with 3D Effect */}
-            <motion.div
-              initial={{ scale: 0, rotateX: -180 }}
-              animate={{ scale: 1, rotateX: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 15,
-                delay: 0.2
-              }}
-              whileHover={{
-                scale: 1.1,
-                rotateY: 10,
-                rotateX: 5,
-              }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-6 py-2.5 rounded-full mb-3 md:mb-4 border-2 border-[#FACF2D]/50 shadow-2xl"
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles className="w-5 h-5 text-[#FACF2D]" />
-              </motion.div>
-              <span className="font-bold text-white text-sm md:text-base">Travel Insights & Expert Guides</span>
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                <Globe className="w-5 h-5 text-[#FACF2D]" />
-              </motion.div>
-            </motion.div>
-
-            {/* Main Heading */}
-            <header>
-              <motion.h1
-                id="blog-hero-heading"
-                className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-tight px-2"
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.4, duration: 1, type: "spring", stiffness: 100 }}
-              >
-                <motion.span
-                  className="block"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  India Uncovered
-                </motion.span>
-
-                {/* FLOATING 3D "Travel Blog" with Typing Animation - FIXED OVERFLOW */}
-                <motion.span
-                  className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 overflow-visible whitespace-nowrap min-h-[1.2em]"
-                  animate={{
-                    y: [0, -20, 0],
-                    rotateX: [0, 5, 0, -5, 0],
-                    rotateY: [0, 3, 0, -3, 0],
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    textShadow: '0 10px 30px rgba(250, 207, 45, 0.5)',
-                  }}
-                >
-                  {mounted && (
-                    <TypeAnimation
-                      sequence={[
-                        'Where Stories Come Alive',
-                        3000,
-                        'Hidden Gems Revealed',
-                        2000,
-                        'Epic Adventures Begin',
-                        2000,
-                        'Your Journey Starts Here',
-                        2000,
-                      ]}
-                      wrapper="span"
-                      speed={50}
-                      repeat={Infinity}
-                    />
-                  )}
-                </motion.span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-                className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 leading-relaxed font-light"
-              >
-                <motion.span
-                  animate={{
-                    textShadow: [
-                      '0 0 20px rgba(250,207,45,0.5)',
-                      '0 0 40px rgba(250,207,45,0.8)',
-                      '0 0 20px rgba(250,207,45,0.5)',
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="font-bold"
-                >
-                  Expert travel tips
-                </motion.span>
-                , destination guides, and insider secrets to help you plan the{' '}
-                <motion.span
-                  animate={{
-                    textShadow: [
-                      '0 0 20px rgba(250,207,45,0.5)',
-                      '0 0 40px rgba(250,207,45,0.8)',
-                      '0 0 20px rgba(250,207,45,0.5)',
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-                  className="font-bold text-[#FACF2D]"
-                >
-                  perfect Indian adventure
-                </motion.span>
-              </motion.p>
-            </header>
-
-            {/* Animated Stats with 3D Cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6"
-            >
-              {[
-                { icon: '📝', label: `${blogPosts.length} Articles`, color: 'from-blue-500 via-blue-600 to-cyan-500', rotate: -5 },
-                { icon: '🌍', label: 'Travel Guides', color: 'from-green-500 via-green-600 to-emerald-500', rotate: 3 },
-                { icon: '💡', label: 'Expert Tips', color: 'from-purple-500 via-purple-600 to-pink-500', rotate: -3 },
-                { icon: '⭐', label: '5-Star Rated', color: 'from-orange-500 via-orange-600 to-red-500', rotate: 5 },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ scale: 0, rotate: stat.rotate - 180, opacity: 0 }}
-                  animate={{ scale: 1, rotate: stat.rotate, opacity: 1 }}
-                  transition={{
-                    delay: 1.4 + index * 0.1,
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 10
-                  }}
-                  whileHover={{
-                    scale: 1.15,
-                    rotate: 0,
-                    y: -10,
-                    boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-                  }}
-                  className={`bg-gradient-to-br ${stat.color} px-4 md:px-6 py-2 md:py-3 rounded-xl text-white font-bold text-xs md:text-sm shadow-2xl cursor-pointer`}
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
-                  <motion.span
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                    className="text-lg md:text-xl mr-1 inline-block"
-                  >
-                    {stat.icon}
-                  </motion.span>
-                  {stat.label}
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Enhanced Search Bar with Glow Effect */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 1.8, duration: 0.8, type: "spring" }}
-              className="max-w-2xl mx-auto"
-            >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="relative group"
-              >
-                <motion.div
-                  animate={{
-                    boxShadow: [
-                      '0 0 30px rgba(250,207,45,0.3)',
-                      '0 0 60px rgba(250,207,45,0.6)',
-                      '0 0 30px rgba(250,207,45,0.3)',
-                    ],
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="relative bg-white/95 backdrop-blur-xl rounded-full shadow-2xl"
-                >
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Search className="absolute left-5 md:left-6 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10 group-hover:text-[#FACF2D] transition-colors" />
-                  </motion.div>
-                  <input
-                    type="text"
-                    placeholder="Search destinations, travel tips, guides..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="relative w-full pl-12 md:pl-14 pr-6 py-3 md:py-4 rounded-full border-3 border-transparent focus:border-[#FACF2D] focus:outline-none text-sm md:text-base font-medium transition-all duration-300 bg-transparent"
-                    aria-label="Search blog posts"
-                  />
-                </motion.div>
-              </motion.div>
-              <motion.p
-                animate={{
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-xs md:text-sm mt-2 font-bold"
-                style={{
-                  background: 'linear-gradient(90deg, #FACF2D, #FFA500, #FACF2D)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  textShadow: '0 2px 10px rgba(250, 207, 45, 0.5)',
-                }}
-              >
-                🎯 Discover travel stories, practical guides & money-saving tips
-              </motion.p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Animated Wave Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-          <motion.svg
-            viewBox="0 0 1440 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, delay: 2 }}
-          >
-            <motion.path
-              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-              fill="rgb(249, 250, 251)"
-              animate={{
-                d: [
-                  "M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z",
-                  "M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z",
-                  "M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z",
-                ],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.svg>
-        </div>
-      </motion.section>
-
-      {/* Category Filter with Enhanced Animations */}
-      <motion.section
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2.2 }}
-        className="bg-white/80 backdrop-blur-lg border-b sticky top-0 z-50 shadow-lg"
-      >
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-4 overflow-x-auto scrollbar-hide">
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <Filter className="w-6 h-6 text-gray-600 flex-shrink-0" />
-            </motion.div>
-
-            <AnimatePresence mode="wait">
-              {blogCategories.map((category, index) => (
-                <motion.button
-                  key={category.slug}
-                  onClick={() => setSelectedCategory(category.slug)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{
-                    scale: 1.1,
-                    y: -5,
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-8 py-3 rounded-full font-bold whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
-                    selectedCategory === category.slug
-                      ? 'bg-gradient-to-r from-[#FACF2D] to-yellow-500 text-black shadow-xl'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {category.name} ({category.count})
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Main Content */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Featured Post with 3D Tilt */}
-        {featuredPost && selectedCategory === 'all' && searchQuery === '' && (
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-16"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/20"
+          >
+            <span className="w-2 h-2 bg-[#FACF2D] rounded-full animate-pulse" />
+            <span className="text-white/90 text-sm font-medium">Travel Stories & Guides</span>
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          >
+            Discover India&apos;s
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400">
+              Hidden Treasures
+            </span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed"
+          >
+            Expert travel guides, insider tips, and unforgettable stories
+            to inspire your next Indian adventure
+          </motion.p>
+
+          {/* Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap justify-center gap-8 md:gap-12"
+          >
+            {[
+              { number: `${allPosts.length}+`, label: 'Articles' },
+              { number: '50+', label: 'Destinations' },
+              { number: '10K+', label: 'Readers' },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-[#FACF2D]">{stat.number}</div>
+                <div className="text-sm text-white/60 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-3 mb-8"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
             >
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <TrendingUp className="w-8 h-8 text-[#FACF2D]" />
-              </motion.div>
-              <h2 className="text-3xl font-bold">Featured Article</h2>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.02, y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="grid md:grid-cols-2 gap-8 bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-[#FACF2D]/20"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="relative h-96 md:h-auto overflow-hidden"
-              >
-                {featuredPost.image && !featuredImageError ? (
-                  <img
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover"
-                    onError={() => setFeaturedImageError(true)}
-                  />
-                ) : (
-                  <div className="w-full h-full min-h-96 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-8xl">
-                    📝
-                  </div>
-                )}
-                <motion.div
-                  initial={{ x: -100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="absolute top-6 left-6 bg-[#FACF2D] text-black px-6 py-3 rounded-full font-black text-lg shadow-xl"
-                >
-                  ⭐ Featured
-                </motion.div>
-              </motion.div>
-
-              <div className="p-10 flex flex-col justify-center">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold inline-block w-fit mb-6"
-                >
-                  {featuredPost.category}
-                </motion.div>
-
-                <Link href={`/blog/${featuredPost.slug}`}>
-                  <motion.h3
-                    whileHover={{ x: 10, color: '#FACF2D' }}
-                    className="text-4xl font-black mb-6 transition-colors"
-                  >
-                    {featuredPost.title}
-                  </motion.h3>
-                </Link>
-
-                <p className="text-gray-600 mb-8 text-xl leading-relaxed">
-                  {featuredPost.excerpt}
-                </p>
-
-                <div className="flex items-center gap-4 text-base text-gray-500 mb-8 font-medium">
-                  <span>{featuredPost.readTime}</span>
-                  <span>•</span>
-                  <span>{new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                </div>
-
-                <Link href={`/blog/${featuredPost.slug}`}>
-                  <motion.button
-                    whileHover={{ scale: 1.05, x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-[#FACF2D] to-yellow-500 text-black px-10 py-4 rounded-full font-black hover:shadow-2xl transition-all duration-300 text-lg"
-                  >
-                    Read Full Article →
-                  </motion.button>
-                </Link>
-              </div>
+              <motion.div className="w-1.5 h-3 bg-[#FACF2D] rounded-full" />
             </motion.div>
           </motion.div>
-        )}
+        </div>
+      </motion.section>
 
-        {/* Blog Posts Grid with Stagger Animation */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-8"
-        >
-          <h2 className="text-3xl font-bold mb-8">
-            {searchQuery ? `Search Results (${filteredPosts.length})` : 'Latest Articles'}
-          </h2>
-        </motion.div>
+      {/* Featured Article Section */}
+      {featuredPost && (
+        <section className="py-16 md:py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-10"
+            >
+              <div className="w-1 h-8 bg-gradient-to-b from-[#FACF2D] to-orange-500 rounded-full" />
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Featured Story</h2>
+            </motion.div>
 
-        {filteredPosts.length > 0 ? (
+            {/* Featured Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Link href={`/blog/${featuredPost.slug}`}>
+                <div className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                  <div className="grid md:grid-cols-2 gap-0">
+                    {/* Image Side */}
+                    <div className="relative h-72 md:h-[450px] overflow-hidden">
+                      {featuredPost.image ? (
+                        <img
+                          src={featuredPost.image}
+                          alt={featuredPost.title}
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                          <Camera className="w-20 h-20 text-white/50" />
+                        </div>
+                      )}
+
+                      {/* Featured Badge */}
+                      <div className="absolute top-6 left-6">
+                        <span className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                          <Star className="w-4 h-4" />
+                          Featured
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content Side */}
+                    <div className="p-8 md:p-12 flex flex-col justify-center">
+                      {/* Category */}
+                      <span className={`inline-flex w-fit px-4 py-1.5 rounded-full text-white text-sm font-medium bg-gradient-to-r ${getCategoryColor(featuredPost.category)} mb-6`}>
+                        {featuredPost.category}
+                      </span>
+
+                      {/* Title */}
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors leading-tight">
+                        {featuredPost.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="text-gray-600 text-lg leading-relaxed mb-6 line-clamp-3">
+                        {featuredPost.excerpt}
+                      </p>
+
+                      {/* Meta Info */}
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="w-4 h-4" />
+                          {new Date(featuredPost.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Clock className="w-4 h-4" />
+                          {featuredPost.readTime}
+                        </span>
+                      </div>
+
+                      {/* CTA Button */}
+                      <div className="flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-4 transition-all">
+                        Read Full Story
+                        <ArrowRight className="w-5 h-5" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest Articles Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-4">
+              Latest Articles
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Fresh Stories to Inspire You
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Dive into our newest travel guides, tips, and adventures from across India
+            </p>
+          </motion.div>
+
+          {/* Blog Grid */}
           <motion.div
             ref={gridRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {regularPosts.map((post, index) => (
+            {allPosts.map((post, index) => (
               <motion.div
                 key={post.id || post.slug || index}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{
-                  delay: Math.min(index * 0.05, 0.5),
+                  delay: Math.min(index * 0.05, 0.3),
                   duration: 0.4
                 }}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
               >
-                <BlogCard post={post} index={index} />
+                <Link href={`/blog/${post.slug}`}>
+                  <article className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-transparent hover:shadow-xl transition-all duration-300">
+                    {/* Image */}
+                    <div className="relative h-56 overflow-hidden">
+                      {post.image ? (
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                          <Camera className="w-12 h-12 text-gray-400" />
+                        </div>
+                      )}
+
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-medium bg-gradient-to-r ${getCategoryColor(post.category)}`}>
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      {/* Meta */}
+                      <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" />
+                          {new Date(post.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric'
+                          })}
+                        </span>
+                        <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" />
+                          {post.readTime}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                        {post.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="text-gray-600 text-sm line-clamp-2 mb-4">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Read More Link */}
+                      <div className="flex items-center gap-1 text-indigo-600 text-sm font-medium group-hover:gap-2 transition-all">
+                        Read article
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </article>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
-        ) : (
+        </div>
+      </section>
+
+      {/* WhatsApp CTA */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.div
-              animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-gray-400 text-8xl mb-6"
-            >
-              🔍
-            </motion.div>
-            <h3 className="text-3xl font-bold text-gray-700 mb-4">No articles found</h3>
-            <p className="text-gray-600 mb-8 text-lg">
-              Try adjusting your search or browse all categories
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => {
-                setSearchQuery('');
-                setSelectedCategory('all');
-              }}
-              className="bg-[#FACF2D] text-black px-10 py-4 rounded-full font-bold hover:bg-yellow-500 transition-all shadow-xl"
-            >
-              Clear Filters
-            </motion.button>
+            <WhatsAppCTA
+              message="Hi! I read your blog and I'm interested in planning a trip. Can you help me?"
+              buttonText="Plan Your Trip with Us"
+              variant="primary"
+            />
           </motion.div>
-        )}
+        </div>
+      </section>
 
-        {/* WhatsApp CTA with Animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <WhatsAppCTA
-            message="Hi! I read your blog and I'm interested in planning a trip. Can you help me?"
-            buttonText="Plan Your Trip with Us"
-            variant="primary"
-          />
-        </motion.div>
+      {/* Final CTA Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FACF2D]/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl" />
+        </div>
 
-        {/* Bottom CTA with Parallax Effect */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          whileHover={{ scale: 1.02 }}
-          className="relative bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 rounded-3xl p-12 md:p-16 text-white text-center mt-16 overflow-hidden shadow-2xl"
-        >
-          {/* Animated Background Elements */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{ duration: 20, repeat: Infinity }}
-            className="absolute top-0 right-0 w-64 h-64 bg-[#FACF2D]/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              rotate: [0, -180, -360],
-            }}
-            transition={{ duration: 15, repeat: Infinity }}
-            className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"
-          />
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Ready for Your Next
+              <span className="block text-[#FACF2D] mt-2">Adventure?</span>
+            </h2>
 
-          <div className="relative z-10">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black mb-6"
-            >
-              Ready to Start Your Adventure?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light"
-            >
-              Book comfortable vehicles for your next journey. Professional drivers, competitive rates, 24/7 support.
-            </motion.p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <p className="text-lg text-white/70 mb-10 max-w-2xl mx-auto">
+              Let us help you plan the perfect trip. Comfortable vehicles, professional drivers,
+              and 24/7 support for an unforgettable journey.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/services">
                 <motion.button
-                  whileHover={{ scale: 1.1, rotate: 2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[#FACF2D] text-black px-10 py-5 rounded-full font-black hover:bg-yellow-500 transition-all duration-300 text-lg shadow-2xl"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center gap-2 bg-[#FACF2D] text-black px-8 py-4 rounded-full font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/25"
                 >
-                  View Our Services
+                  Explore Services
+                  <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </Link>
+
               <Link href="/contact">
                 <motion.button
-                  whileHover={{ scale: 1.1, rotate: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-black px-10 py-5 rounded-full font-black hover:bg-gray-100 transition-all duration-300 text-lg shadow-2xl"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all border border-white/20"
                 >
                   Contact Us
                 </motion.button>
               </Link>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

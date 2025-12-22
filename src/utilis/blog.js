@@ -1,5 +1,7 @@
 // Import attraction blog posts
 import { attractionBlogPosts } from './attractionBlogs';
+// Import sightseeing blog posts
+import { sightseeingBlogPosts } from './sightseeingBlogs';
 
 // Travel Blog Posts Data
 export const travelBlogPosts = [
@@ -1501,7 +1503,7 @@ export const travelBlogPosts = [
     metaDescription: "Planning Taj Mahal visit from Delhi? Complete guide with best routes, costs (from ₹3,500), timings, tickets & insider tips. Compare train vs car options. Book hassle-free tour now!",
   },
   {
-    id: 6,
+    id: 7,
     slug: "golden-triangle-tour-india-itinerary-guide-2026",
     title: "Golden Triangle Tour India: The Ultimate 7-Day Itinerary & Guide 2026",
     excerpt: "Planning a Golden Triangle Tour in India? Discover the ultimate 7-day itinerary covering Delhi, Agra, and Jaipur. Explore forts, palaces, the Taj Mahal, and cultural gems with our comprehensive travel guide.",
@@ -1658,7 +1660,7 @@ export const travelBlogPosts = [
     metaDescription: "Plan your Golden Triangle Tour (Delhi-Agra-Jaipur) with our ultimate 7-day itinerary for 2026. Discover best places to visit, hotels, costs & travel tips. Book Now!",
   },
   {
-    id: 7,
+    id: 13,
     slug: "delhi-sightseeing-guide-places-to-visit-2026",
     title: "Delhi Sightseeing Guide 2026: Top 15 Places to Visit in The Capital",
     excerpt: "Explore the best of Delhi with our comprehensive 2026 sightseeing guide. From the historic Red Fort to the modern Lotus Temple, discover the top 15 places to visit in India's capital.",
@@ -1804,7 +1806,7 @@ export const travelBlogPosts = [
     metaDescription: "Discover the top 15 places to visit in Delhi with our 2026 sightseeing guide. Explore Red Fort, Qutub Minar, Akshardham & more. Plan your Delhi tour now!",
   },
   {
-    id: 8,
+    id: 14,
     slug: "jaipur-city-tour-pink-city-guide-2026",
     title: "Jaipur City Tour Guide 2026: Exploring the Royal Pink City",
     excerpt: "Experience the royal grandeur of Jaipur. From the majestic Amber Fort to the iconic Hawa Mahal, our complete 2026 guide covers the best places to visit, eat, and shop in the Pink City.",
@@ -1951,7 +1953,7 @@ export const travelBlogPosts = [
     metaDescription: "Explore the best of Jaipur with our 2026 City Tour Guide. Visit Amber Fort, Hawa Mahal, City Palace & more. Find best itinerary, food & shopping tips.",
   },
   {
-    id: 9,
+    id: 15,
     slug: "agra-travel-guide-beyond-taj-mahal-2026",
     title: "Agra Travel Guide 2026: Beyond the Taj Mahal - Forts, Tombs & Food",
     excerpt: "Think Agra is just about the Taj Mahal? Think again! Explore Agra Fort, Mehtab Bagh, Fatehpur Sikri, and the vibrant food streets of Agra with our complete 2026 travel guide.",
@@ -2081,7 +2083,7 @@ export const travelBlogPosts = [
     metaDescription: "Discover Agra beyond the Taj Mahal. Complete 2026 travel guide to Agra Fort, Fatehpur Sikri, Baby Taj, best street food & shopping spots.",
   },
   {
-    id: 10,
+    id: 16,
     slug: "jim-corbett-safari-guide-2026",
     title: "Jim Corbett Safari Guide 2026: Tigers, Zones, and Luxury Resorts",
     excerpt: "Planning a wildlife adventure? Read our ultimate 2026 guide to Jim Corbett National Park. Know about best safari zones, booking tips, best time to visit and luxury stay options.",
@@ -2216,7 +2218,7 @@ export const travelBlogPosts = [
   // ============================================
 
   {
-    id: 101,
+    id: 8,
     slug: "ayodhya-ram-mandir-complete-travel-guide-2026",
     title: "Ayodhya Ram Mandir Complete Travel Guide 2026: How to Visit, Best Time, Darshan Timings & Tips",
     excerpt: "Planning to visit the magnificent Ram Mandir in Ayodhya? Complete guide covering darshan timings, how to reach, best hotels, nearby attractions, and insider tips for a spiritual journey in 2026.",
@@ -2483,7 +2485,7 @@ export const travelBlogPosts = [
   },
 
   {
-    id: 102,
+    id: 9,
     slug: "varanasi-spiritual-tour-complete-guide-2026",
     title: "Varanasi Complete Travel Guide 2026: Ghats, Temples, Ganga Aarti & Spiritual Experience",
     excerpt: "Discover the oldest living city in the world. Complete guide to Varanasi covering famous ghats, ancient temples, mesmerizing Ganga Aarti, local food, and how to plan your spiritual journey in 2026.",
@@ -2745,7 +2747,7 @@ export const travelBlogPosts = [
   },
 
   {
-    id: 103,
+    id: 10,
     slug: "best-group-trip-destinations-tempo-traveller-india-2026",
     title: "15 Best Group Trip Destinations in India 2026: Perfect for Tempo Traveller Travel",
     excerpt: "Planning a group trip with friends, family, or colleagues? Discover the 15 best destinations in India perfect for tempo traveller travel - from hill stations to beaches, spiritual sites to adventure spots.",
@@ -3023,7 +3025,7 @@ export const travelBlogPosts = [
   },
 
   {
-    id: 104,
+    id: 11,
     slug: "wedding-car-rental-india-complete-guide-2026",
     title: "Wedding Car Rental in India 2026: Complete Guide to Luxury Cars, Baraat Tempo & Booking Tips",
     excerpt: "Planning your dream wedding? Complete guide to wedding car rental in India - from luxury BMW, Audi, Mercedes for bride/groom entry to decorated baraat tempo travellers. City-wise prices, booking tips & more.",
@@ -3303,7 +3305,7 @@ export const travelBlogPosts = [
   },
 
   {
-    id: 105,
+    id: 12,
     slug: "udaipur-romantic-getaway-complete-guide-2026",
     title: "Udaipur Complete Travel Guide 2026: City of Lakes, Royal Palaces & Romantic Experiences",
     excerpt: "Discover why Udaipur is called the most romantic city in India! Complete guide to the City of Lakes - lake palaces, heritage hotels, sunset boat rides, local food, and planning your perfect Udaipur trip.",
@@ -3594,15 +3596,17 @@ export const travelBlogPosts = [
   },
 ]
 
-// All blog posts combined (Travel + Attractions)
+// All blog posts combined (Travel + Attractions + Sightseeing)
 export const blogPosts = [
   ...travelBlogPosts,
-  ...attractionBlogPosts
+  ...attractionBlogPosts,
+  ...sightseeingBlogPosts
 ];
 
 // Helper functions to filter blogs
 export const getTravelBlogs = () => travelBlogPosts;
 export const getAttractionBlogs = () => attractionBlogPosts;
+export const getSightseeingBlogs = () => sightseeingBlogPosts;
 export const getBlogBySlug = (slug) => blogPosts.find(post => post.slug === slug);
 export const getBlogsByCategory = (category) => blogPosts.filter(post => post.category === category);
 
