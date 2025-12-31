@@ -190,6 +190,13 @@ const Footer = () => {
           </div>
           <nav className="flex flex-col sm:flex-row gap-4 sm:gap-6" aria-label="Footer legal links">
             <Link
+              href="/privacy-policy"
+              className="text-sm text-gray-300 hover:text-[#FACF2D] hover:bg-gray-800/50 transition-all duration-300 py-2 px-4 rounded-lg focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black text-center min-h-[44px] flex items-center justify-center"
+              onClick={() => handleFooterLinkClick('Privacy Policy', '/privacy-policy')}
+            >
+              Privacy Policy
+            </Link>
+            <Link
               href="/cancellation-and-refund-policy"
               className="text-sm text-gray-300 hover:text-[#FACF2D] hover:bg-gray-800/50 transition-all duration-300 py-2 px-4 rounded-lg focus-visible:ring-2 focus-visible:ring-[#FACF2D] focus-visible:ring-offset-2 focus-visible:ring-offset-black text-center min-h-[44px] flex items-center justify-center"
               onClick={() => handleFooterLinkClick('Refund & Cancellation Policy', '/cancellation-and-refund-policy')}

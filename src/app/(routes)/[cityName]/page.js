@@ -158,7 +158,7 @@ export async function generateMetadata({ params }) {
     // Get ALL keywords for this city
     const allKeywords = getAllKeywordsForPage(formattedCityName);
 
-    const enhancedCityTitle = `Taxi Service in ${formattedCityName} 2026 | 24x7 Cab Booking | Car Rental & Outstation Tours`;
+    const enhancedCityTitle = `Taxi Service in ${formattedCityName} | 24x7 Cab Booking | Car Rental & Outstation Tours`;
     const enhancedCityDescription = `Book trusted taxi service in ${formattedCityName} for outstation trips, local tours, airport transfers & wedding car rentals. Professional verified drivers, AC vehicles, GPS tracking, 24/7 availability, transparent pricing. Safe & affordable cab service. Call 7668570551!`;
 
     return {
@@ -175,7 +175,7 @@ export async function generateMetadata({ params }) {
       },
       metadataBase: new URL('https://www.trivenicabs.in'),
       openGraph: {
-        title: `Taxi Service in ${formattedCityName} 2026 | Cab Booking Online | Triveni Cabs`,
+        title: `Taxi Service in ${formattedCityName} | Cab Booking Online | Triveni Cabs`,
         description: `Book taxi in ${formattedCityName} for outstation, local trips & airport transfers. Professional drivers, AC vehicles, 24x7 service. Call 7668570551!`,
         type: 'website',
         locale: 'en_IN',
@@ -190,7 +190,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `Taxi Service ${formattedCityName} 2026 | Book Online | Triveni Cabs`,
+        title: `Taxi Service ${formattedCityName} | Book Online | Triveni Cabs`,
         description: `Book taxi in ${formattedCityName} - Outstation, local tours, airport transfers. 24x7 service. Call 7668570551!`,
         images: ['https://www.trivenicabs.in/images/car/car2.webp'],
         creator: '@TriveniCabs',

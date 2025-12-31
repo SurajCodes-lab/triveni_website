@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 import {
@@ -621,10 +622,12 @@ export default function ServicesPage() {
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                  <img
+                  <Image
                     src={tempo.image}
-                    alt={tempo.type}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    alt={`${tempo.type} - Tempo traveller rental service by Triveni Cabs`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1 shadow-lg">
                     <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
@@ -770,10 +773,12 @@ export default function ServicesPage() {
               >
                 {/* Image */}
                 <div className="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                  <img
+                  <Image
                     src={vehicle.image}
-                    alt={vehicle.type}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    alt={`${vehicle.type} - Car rental service by Triveni Cabs`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-1 shadow-lg">
                     <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />

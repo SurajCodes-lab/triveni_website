@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import {
@@ -605,14 +606,16 @@ const VehicleDetails = ({ slug }) => {
           >
             {/* Vehicle Image Gallery */}
             <div className="relative h-96">
-              <img
+              <Image
                 src={
                   selectedVehicles.gallery?.[currentImageIndex] ||
                   selectedVehicles.image
                 }
-                alt={`${selectedVehicles.type} rental service - View ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover"
-                itemProp="image"
+                alt={`${selectedVehicles.type} rental service - View ${currentImageIndex + 1} - Triveni Cabs`}
+                fill
+                sizes="(max-width: 768px) 100vw, 80vw"
+                className="object-cover"
+                priority
               />
 
               {/* Gallery Navigation */}
@@ -676,16 +679,18 @@ const VehicleDetails = ({ slug }) => {
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`flex-shrink-0 rounded-lg overflow-hidden ${currentImageIndex === index
+                      className={`flex-shrink-0 rounded-lg overflow-hidden relative w-[15rem] h-[9rem] ${currentImageIndex === index
                         ? "ring-2 ring-yellow-400"
                         : ""
                         }`}
                       aria-label={`View ${selectedVehicles.type} image ${index + 1}`}
                     >
-                      <img
+                      <Image
                         src={image}
-                        alt={`${selectedVehicles.type} view ${index + 1}`}
-                        className="w-[15rem] h-[9rem] object-cover"
+                        alt={`${selectedVehicles.type} view ${index + 1} - Triveni Cabs rental`}
+                        fill
+                        sizes="240px"
+                        className="object-cover"
                       />
                     </button>
                   ))}

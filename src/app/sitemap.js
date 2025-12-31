@@ -212,31 +212,37 @@ export default function sitemap() {
     // Tempo Traveller Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/tempo-traveller`,
-      lastModified: new Date('2026-12-20'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.75,
     },
 
     // Policy Pages
     {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
       url: `${baseUrl}/terms-and-conditions`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.5,
+      priority: 0.4,
     },
     {
       url: `${baseUrl}/cancellation-and-refund-policy`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.5,
+      priority: 0.4,
     },
 
     // Blog Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date('2026-12-20'),
+      lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.75,
+      priority: 0.7,
     },
 
     // Sightseeing Main Page - CATEGORY PAGE
@@ -257,15 +263,14 @@ export default function sitemap() {
   ];
 
   // Add Blog Posts (Dynamic) - CONTENT PAGES
-  const blogLastModified = new Date('2026-12-20'); // Blog content updated
   blogPosts
     .filter(post => post && post.slug && post.date) // Filter out undefined or invalid posts
     .forEach(post => {
       urls.push({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: blogLastModified,
+        lastModified: post.date ? new Date(post.date) : new Date(),
         changeFrequency: 'monthly',
-        priority: 0.85,
+        priority: 0.7,
       });
     });
 
@@ -302,17 +307,16 @@ export default function sitemap() {
     });
   });
 
-  // Add ALL Tempo Traveller Routes (60+ routes) - HIGHEST PRIORITY CONTENT PAGES
-  const tempoLastModified = new Date('2026-12-20'); // SEO optimization date
+  // Add ALL Tempo Traveller Routes (60+ routes) - HIGH PRIORITY CONTENT PAGES
   Object.keys(tempoRoutes).forEach(originCity => {
     const routes = tempoRoutes[originCity];
     routes.forEach(route => {
       const routeSlug = createTempoRouteSlug(originCity, route.name);
       urls.push({
         url: `${baseUrl}/tempo-traveller/${routeSlug}`,
-        lastModified: tempoLastModified,
+        lastModified: new Date(),
         changeFrequency: 'weekly',
-        priority: 0.95, // HIGHEST priority - these are conversion pages
+        priority: 0.8,
       });
     });
   });
@@ -325,7 +329,7 @@ export default function sitemap() {
     priority: 0.75,
   });
 
-  // Add ALL Bus Routes (100+ routes) - HIGHEST PRIORITY CONTENT PAGES
+  // Add ALL Bus Routes (100+ routes) - HIGH PRIORITY CONTENT PAGES
   Object.keys(busRoutes).forEach(originCity => {
     const routes = busRoutes[originCity];
     routes.forEach(route => {
@@ -334,7 +338,7 @@ export default function sitemap() {
         url: `${baseUrl}/bus-routes/${routeSlug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly',
-        priority: 0.95, // HIGHEST priority - these are conversion pages
+        priority: 0.8,
       });
     });
   });
@@ -366,7 +370,7 @@ export default function sitemap() {
     });
   });
 
-  // Add ALL city pages - HIGHEST PRIORITY CONTENT PAGES
+  // Add ALL city pages - HIGH PRIORITY CONTENT PAGES
   cities.forEach(city => {
     if (!city || !city.name) return;
 
@@ -375,11 +379,11 @@ export default function sitemap() {
       url: `${baseUrl}/${cityName}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.95, // HIGHEST priority - main service pages for each city
+      priority: 0.85,
     });
   });
 
-  // Add ALL city-to-city route pages - HIGHEST PRIORITY CONVERSION PAGES
+  // Add ALL city-to-city route pages - HIGH PRIORITY CONVERSION PAGES
   cities.forEach(city => {
     if (!city || !city.name) return;
 
@@ -387,8 +391,6 @@ export default function sitemap() {
     const formattedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
     const routes = allCityRoutes[formattedCityName] || [];
-
-    console.log(`Processing routes for ${formattedCityName}: ${routes.length} routes found`);
 
     if (Array.isArray(routes) && routes.length > 0) {
       routes.forEach(route => {
@@ -398,14 +400,12 @@ export default function sitemap() {
             url: `${baseUrl}/${routeSlug}`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.95, // HIGHEST priority - these are conversion pages
+            priority: 0.8,
           });
-          console.log(`Added route: ${routeSlug}`);
         }
       });
     }
   });
 
-  console.log(`Generated sitemap with ${urls.length} URLs`);
   return urls;
 }

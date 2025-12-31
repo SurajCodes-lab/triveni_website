@@ -5,6 +5,37 @@ import BlogPostPageClient from '@/components/blog/BlogPostPageClient';
 // ISR - Revalidate every hour (3600 seconds)
 export const revalidate = 3600;
 
+// Generate Article Schema for SEO
+function generateArticleSchema(post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt || post.metaDescription,
+    "image": post.image ? `https://www.trivenicabs.in${post.image}` : "https://www.trivenicabs.in/images/og-image.jpg",
+    "datePublished": post.date,
+    "dateModified": post.dateModified || post.date,
+    "author": {
+      "@type": "Organization",
+      "name": "Triveni Cabs",
+      "url": "https://www.trivenicabs.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Triveni Cabs",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.trivenicabs.in/images/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.trivenicabs.in/blog/${post.slug}`
+    },
+    "keywords": post.tags?.join(', ') || post.category
+  };
+}
+
 // Generate static params for all blog posts
 export async function generateStaticParams() {
   return blogPosts
@@ -57,5 +88,16 @@ export default async function BlogPostPage({ params }) {
     notFound();
   }
 
-  return <BlogPostPageClient post={post} />;
+  const articleSchema = generateArticleSchema(post);
+
+  return (
+    <>
+      {/* Article Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <BlogPostPageClient post={post} />
+    </>
+  );
 }

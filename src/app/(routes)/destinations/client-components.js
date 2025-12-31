@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { ArrowRight, Heart, Star } from 'lucide-react';
 import { destinations, phoneNumber } from '@/utilis/data';
 
@@ -45,10 +46,12 @@ export default function ClientDestinationTabs() {
                   className="group rounded-2xl overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="relative h-80 overflow-hidden">
-                    <img
+                    <Image
                       src={dest.heroImage}
-                      alt={dest.city}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      alt={`${dest.city} - Premium taxi service and tour packages by Triveni Cabs`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute bottom-6 left-6 right-6">
@@ -92,10 +95,12 @@ export default function ClientDestinationTabs() {
                     className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <div className="relative h-48 overflow-hidden">
-                      <img
+                      <Image
                         src={pkg.image}
-                        alt={pkg.name}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        alt={`${pkg.name} - Tour package in ${dest.city} by Triveni Cabs`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transform group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full backdrop-blur-sm">
                         <span className="text-yellow-600 font-semibold">{pkg.duration}</span>
@@ -141,10 +146,12 @@ export default function ClientDestinationTabs() {
                       className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       <div className="relative h-48 overflow-hidden">
-                        <img
+                        <Image
                           src={spot.image}
-                          alt={spot.name}
-                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                          alt={`${spot.name} - Popular tourist attraction in ${dest.city}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
                       </div>
                       <div className="p-6">

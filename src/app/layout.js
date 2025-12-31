@@ -17,7 +17,7 @@ export const viewport = {
 
 export const metadata = {
   title: {
-    default: 'Car Rental & Taxi Service India | Book Online ₹11/km | Triveni Cabs 2026',
+    default: 'Car Rental & Taxi Service India | Book Online ₹11/km | Triveni Cabs',
     template: '%s | Triveni Cabs'
   },
   description: 'Book trusted car rental & taxi service across India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Serving Delhi, Agra, Jaipur, Manali & 50+ cities. 24/7 instant booking available. Call 7668570551!',
@@ -35,20 +35,19 @@ export const metadata = {
     canonical: '/',
     languages: {
       'en-IN': '/',
-      'hi-IN': '/',
     }
   },
   openGraph: {
-    title: 'Car Rental & Taxi Service India 2026 | Book Online ₹11/km | Triveni Cabs',
+    title: 'Car Rental & Taxi Service India | Book Online ₹11/km | Triveni Cabs',
     description: 'Book trusted car rental across India - Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. Delhi, Agra, Jaipur, Manali tours. Professional drivers, AC vehicles. Call 7668570551 for instant booking!',
     url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/HERO_SECTION_MAIN_PAGE.jpg',
         width: 1200,
         height: 630,
-        alt: 'Triveni Cabs - Best Car Rental & Tour Packages India 2026',
+        alt: 'Triveni Cabs - Best Car Rental & Tour Packages India',
       },
     ],
     locale: 'en_IN',
@@ -56,9 +55,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Car Rental & Taxi Service India 2026 | Book ₹11/km | Triveni Cabs',
+    title: 'Car Rental & Taxi Service India | Book ₹11/km | Triveni Cabs',
     description: 'Book sedan ₹11/km, SUV ₹15/km, tempo traveller ₹24/km across India. Delhi, Agra, Jaipur, Manali tours. 24/7 booking. Call 7668570551!',
-    images: ['/images/twitter-image.jpg'],
+    images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
   },
   robots: {

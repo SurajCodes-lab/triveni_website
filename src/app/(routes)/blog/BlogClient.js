@@ -204,10 +204,12 @@ export default function BlogClient() {
                     {/* Image Side */}
                     <div className="relative h-72 md:h-[450px] overflow-hidden">
                       {featuredPost.image ? (
-                        <img
+                        <Image
                           src={featuredPost.image}
-                          alt={featuredPost.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          alt={`${featuredPost.title} - Travel guide by Triveni Cabs`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
@@ -313,10 +315,12 @@ export default function BlogClient() {
                     {/* Image */}
                     <div className="relative h-56 overflow-hidden">
                       {post.image ? (
-                        <img
+                        <Image
                           src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                          alt={`${post.title} - Travel blog by Triveni Cabs`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transform group-hover:scale-110 transition-transform duration-500"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">

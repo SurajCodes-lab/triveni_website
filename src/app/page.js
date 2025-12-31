@@ -3,7 +3,7 @@ import { phoneNumber } from "@/utilis/data";
 
 // Company info - hardcoded since not exported from data.js
 const companyName = "Triveni Cabs";
-const companyEmail = "info@trivenicabs.com";
+const companyEmail = "info@trivenicabs.in";
 const companyAddress = "New Delhi";
 const companyCity = "Delhi";
 const companyState = "Delhi";
@@ -49,7 +49,7 @@ export const metadata = {
     images: ["/images/HERO_SECTION_MAIN_PAGE.jpg"]
   },
   alternates: {
-    canonical: "https://www.trivenicabs.com"
+    canonical: "https://www.trivenicabs.in"
   },
   robots: {
     index: true,
@@ -69,10 +69,10 @@ function generateStructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://www.trivenicabs.com/#organization",
+    "@id": "https://www.trivenicabs.in/#organization",
     name: companyName || "Triveni Cabs",
     description: "India's leading taxi and travel service provider offering wedding car rentals, airport transfers, tempo traveller, tour packages, and professional tour guides across 500+ destinations.",
-    url: "https://www.trivenicabs.com",
+    url: "https://www.trivenicabs.in",
     telephone: phoneNumber,
     email: companyEmail,
     address: {
@@ -88,7 +88,7 @@ function generateStructuredData() {
       latitude: "28.6139",
       longitude: "77.2090"
     },
-    image: "https://www.trivenicabs.com/images/HERO_SECTION_MAIN_PAGE.jpg",
+    image: "https://www.trivenicabs.in/images/HERO_SECTION_MAIN_PAGE.jpg",
     priceRange: "$$",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -113,18 +113,18 @@ function generateStructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://www.trivenicabs.com/#website",
-    url: "https://www.trivenicabs.com",
+    "@id": "https://www.trivenicabs.in/#website",
+    url: "https://www.trivenicabs.in",
     name: "Triveni Cabs",
     description: "India's #1 Travel Partner - Book taxi services, wedding cars, airport transfers, tour packages & more",
     publisher: {
-      "@id": "https://www.trivenicabs.com/#organization"
+      "@id": "https://www.trivenicabs.in/#organization"
     },
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://www.trivenicabs.com/search?q={search_term_string}"
+        urlTemplate: "https://www.trivenicabs.in/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -141,8 +141,8 @@ function generateStructuredData() {
           "@type": "Service",
           name: "Wedding Car Rental",
           description: "Luxury wedding cars including BMW, Audi, Mercedes with professional chauffeurs and car decoration",
-          url: "https://www.trivenicabs.com/wedding",
-          provider: { "@id": "https://www.trivenicabs.com/#organization" }
+          url: "https://www.trivenicabs.in/wedding",
+          provider: { "@id": "https://www.trivenicabs.in/#organization" }
         }
       },
       {
@@ -152,8 +152,8 @@ function generateStructuredData() {
           "@type": "Service",
           name: "Airport Transfer Service",
           description: "24/7 airport pickup and drop service across 50+ airports in India",
-          url: "https://www.trivenicabs.com/airport-service",
-          provider: { "@id": "https://www.trivenicabs.com/#organization" }
+          url: "https://www.trivenicabs.in/airport-service",
+          provider: { "@id": "https://www.trivenicabs.in/#organization" }
         }
       },
       {
@@ -163,8 +163,8 @@ function generateStructuredData() {
           "@type": "Service",
           name: "Tempo Traveller Rental",
           description: "12-26 seater AC tempo travellers for group travel, family trips, and corporate tours",
-          url: "https://www.trivenicabs.com/tempo-traveller",
-          provider: { "@id": "https://www.trivenicabs.com/#organization" }
+          url: "https://www.trivenicabs.in/tempo-traveller",
+          provider: { "@id": "https://www.trivenicabs.in/#organization" }
         }
       },
       {
@@ -174,8 +174,8 @@ function generateStructuredData() {
           "@type": "Service",
           name: "Bus Rental Service",
           description: "22-56 seater Volvo AC buses for large groups, corporate events, and tour operators",
-          url: "https://www.trivenicabs.com/bus-routes",
-          provider: { "@id": "https://www.trivenicabs.com/#organization" }
+          url: "https://www.trivenicabs.in/bus-routes",
+          provider: { "@id": "https://www.trivenicabs.in/#organization" }
         }
       },
       {
@@ -185,8 +185,8 @@ function generateStructuredData() {
           "@type": "Service",
           name: "Tour Packages",
           description: "Curated tour packages including Golden Triangle, hill stations, and pilgrimage tours",
-          url: "https://www.trivenicabs.com/services",
-          provider: { "@id": "https://www.trivenicabs.com/#organization" }
+          url: "https://www.trivenicabs.in/services",
+          provider: { "@id": "https://www.trivenicabs.in/#organization" }
         }
       },
       {
@@ -196,8 +196,8 @@ function generateStructuredData() {
           "@type": "Service",
           name: "Professional Tour Guides",
           description: "Certified tour guides in 14+ cities, available in 6 languages",
-          url: "https://www.trivenicabs.com/tour-guide",
-          provider: { "@id": "https://www.trivenicabs.com/#organization" }
+          url: "https://www.trivenicabs.in/tour-guide",
+          provider: { "@id": "https://www.trivenicabs.in/#organization" }
         }
       }
     ]
@@ -242,7 +242,8 @@ function generateStructuredData() {
     ]
   };
 
-  return [organizationSchema, websiteSchema, servicesSchema, faqSchema];
+  // Note: LocalBusiness schema is already in layout.js - only returning unique schemas here
+  return [websiteSchema, servicesSchema, faqSchema];
 }
 
 export default function HomePage() {

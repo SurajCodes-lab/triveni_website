@@ -115,11 +115,13 @@ Please provide more information and booking details.`;
                     role="listitem"
                   >
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:-translate-y-2 transition-all duration-300">
-                      <div className="relative">
-                        <img
+                      <div className="relative h-40 md:h-48">
+                        <Image
                           src={pkg.image}
                           alt={`${pkg.title} - Tour package with taxi service included`}
-                          className="w-full h-40 md:h-48 object-cover"
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover"
                         />
                         <div className="absolute top-2 md:top-4 right-2 md:right-4 bg-[#FACF2D] text-black px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-semibold">
                           {pkg.category}
