@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Shield, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 
 // Animation variants
@@ -64,17 +64,12 @@ export default function PrivacyClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6">
-              <Shield className="w-4 h-4 text-yellow-400" />
-              <span className="text-gray-300 text-sm">Legal Document</span>
-            </div>
-
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Privacy Policy
             </h1>
 
             <p className="text-gray-400 text-sm">
-              Effective Date: January 2025 | Last Updated: January 2025
+              Effective Date: January 2026 | Last Updated: January 2026
             </p>
           </motion.div>
         </div>
@@ -137,14 +132,6 @@ export default function PrivacyClient() {
               </ul>
             </SubSection>
 
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
-              <p className="text-green-800 text-sm">
-                <strong>Information We Do Not Collect:</strong> Our website does not automatically collect
-                IP addresses, device identifiers, browser information, location data, or browsing behavior.
-                We do not use cookies, tracking pixels, or analytics tools. No backend database stores
-                visitor information.
-              </p>
-            </div>
           </Section>
 
           {/* Section 2 */}
@@ -268,7 +255,7 @@ export default function PrivacyClient() {
             </div>
 
             <p className="mt-4 text-sm text-gray-600">
-              To exercise any of these rights, please contact us using the details provided in Section 10 below.
+              To exercise any of these rights, please contact us using the details provided in Section 9 below.
             </p>
           </Section>
 
@@ -291,23 +278,7 @@ export default function PrivacyClient() {
           </Section>
 
           {/* Section 8 */}
-          <Section number="8" title="Technical Information">
-            <p>
-              For transparency regarding our website infrastructure:
-            </p>
-
-            <ul className="list-disc pl-5 space-y-2 mt-4">
-              <li>Our website is built using Next.js framework and deployed as a static website</li>
-              <li>No user authentication or account management systems are implemented</li>
-              <li>No cookies are used for tracking or advertising purposes</li>
-              <li>No server-side databases collect or store visitor information</li>
-              <li>No analytics or tracking scripts monitor user behavior</li>
-              <li>All pages are pre-rendered and served as static HTML files</li>
-            </ul>
-          </Section>
-
-          {/* Section 9 */}
-          <Section number="9" title="Policy Updates">
+          <Section number="8" title="Policy Updates">
             <p>
               We reserve the right to modify this Privacy Policy at any time. Changes will be reflected
               on this page with an updated &quot;Last Updated&quot; date. As we do not collect email addresses
@@ -320,8 +291,8 @@ export default function PrivacyClient() {
             </p>
           </Section>
 
-          {/* Section 10 - Contact */}
-          <Section number="10" title="Contact Information">
+          {/* Section 9 - Contact */}
+          <Section number="9" title="Contact Information">
             <p>
               For questions, concerns, or requests regarding this Privacy Policy or our data practices,
               please contact us through the following channels:
