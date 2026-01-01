@@ -88,7 +88,7 @@ export default function PrivacyClient() {
             </p>
 
             <p className="text-blue-200 mt-6 text-sm">
-              Last Updated: January 2025
+              Last Updated: January 2026
             </p>
           </motion.div>
         </div>
