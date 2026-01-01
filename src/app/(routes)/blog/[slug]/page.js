@@ -36,6 +36,34 @@ function generateArticleSchema(post) {
   };
 }
 
+// Generate BreadcrumbList Schema for SEO
+function generateBreadcrumbSchema(post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.trivenicabs.in/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://www.trivenicabs.in/blog/${post.slug}`
+      }
+    ]
+  };
+}
+
 // Generate static params for all blog posts
 export async function generateStaticParams() {
   return blogPosts
@@ -89,6 +117,7 @@ export default async function BlogPostPage({ params }) {
   }
 
   const articleSchema = generateArticleSchema(post);
+  const breadcrumbSchema = generateBreadcrumbSchema(post);
 
   return (
     <>
@@ -96,6 +125,11 @@ export default async function BlogPostPage({ params }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {/* Breadcrumb Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <BlogPostPageClient post={post} />
     </>

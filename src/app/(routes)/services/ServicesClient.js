@@ -828,6 +828,65 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Quick Links Section - Internal Cross-Links for SEO */}
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Explore Our Services
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Find the perfect solution for your travel needs
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <Link href="/vehicles" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 hover:border-amber-300 transition-all text-center">
+              <Car className="w-8 h-8 mx-auto mb-2 text-amber-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold text-gray-700 group-hover:text-amber-600">All Vehicles</span>
+            </Link>
+            <Link href="/vehicles/sedan" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 hover:border-amber-300 transition-all text-center">
+              <Car className="w-8 h-8 mx-auto mb-2 text-blue-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold text-gray-700 group-hover:text-amber-600">Sedan Rental</span>
+            </Link>
+            <Link href="/vehicles/suv" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 hover:border-amber-300 transition-all text-center">
+              <Car className="w-8 h-8 mx-auto mb-2 text-green-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold text-gray-700 group-hover:text-amber-600">SUV Rental</span>
+            </Link>
+            <Link href="/tempo-traveller" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 hover:border-amber-300 transition-all text-center">
+              <Users className="w-8 h-8 mx-auto mb-2 text-purple-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold text-gray-700 group-hover:text-amber-600">Tempo Traveller</span>
+            </Link>
+            <Link href="/bus-routes" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 hover:border-amber-300 transition-all text-center">
+              <Users className="w-8 h-8 mx-auto mb-2 text-red-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold text-gray-700 group-hover:text-amber-600">Bus Rental</span>
+            </Link>
+            <Link href="/airport-service" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 hover:border-amber-300 transition-all text-center">
+              <Navigation className="w-8 h-8 mx-auto mb-2 text-cyan-500 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-semibold text-gray-700 group-hover:text-amber-600">Airport Transfer</span>
+            </Link>
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/sedan-vs-suv" className="text-amber-600 hover:text-amber-700 hover:underline font-medium text-sm">
+              Sedan vs SUV: Which to Choose?
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/tempo-vs-bus" className="text-amber-600 hover:text-amber-700 hover:underline font-medium text-sm">
+              Tempo vs Bus: Group Travel Guide
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/wedding" className="text-amber-600 hover:text-amber-700 hover:underline font-medium text-sm">
+              Wedding Car Services
+            </Link>
+            <span className="text-gray-300">|</span>
+            <Link href="/sightseeing" className="text-amber-600 hover:text-amber-700 hover:underline font-medium text-sm">
+              Sightseeing Tours
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 relative overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto px-4">

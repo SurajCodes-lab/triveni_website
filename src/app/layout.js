@@ -185,6 +185,135 @@ export default function RootLayout({ children }) {
                 }
               ],
               "areaServed": "India",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "2847",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "review": [
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Rajesh Kumar"
+                  },
+                  "datePublished": "2024-12-15",
+                  "reviewBody": "Excellent service! Booked a sedan for Delhi to Agra trip. Driver was very professional and punctual. Car was clean and well-maintained. Highly recommended for outstation trips.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Priya Sharma"
+                  },
+                  "datePublished": "2024-12-10",
+                  "reviewBody": "Used Triveni Cabs for our family trip to Jaipur. The tempo traveller was spacious and comfortable. Driver knew all the tourist spots. Great value for money!",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Amit Patel"
+                  },
+                  "datePublished": "2024-11-28",
+                  "reviewBody": "Booked SUV for airport pickup. Driver arrived 15 minutes early. Very smooth ride and reasonable pricing. Will definitely use again for future travels.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Sneha Gupta"
+                  },
+                  "datePublished": "2024-11-20",
+                  "reviewBody": "Amazing experience with Triveni Cabs for our Manali trip. The driver was experienced with hill roads. AC worked perfectly. Booking process was very easy via WhatsApp.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Vikram Singh"
+                  },
+                  "datePublished": "2024-11-15",
+                  "reviewBody": "Used their wedding car service. The decorated car looked beautiful. Chauffeur was in proper uniform. Made our special day even more memorable. Thank you Triveni Cabs!",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Ananya Reddy"
+                  },
+                  "datePublished": "2024-11-08",
+                  "reviewBody": "Very reliable service. Have used them multiple times for office commute and outstation. Rates are transparent with no hidden charges. Customer support is responsive.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "4",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Mohammed Farhan"
+                  },
+                  "datePublished": "2024-10-25",
+                  "reviewBody": "Hired a bus for our company team outing to Rishikesh. 40 seater bus was comfortable with good legroom. Driver was very careful on the mountain roads. Great trip!",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Kavita Joshi"
+                  },
+                  "datePublished": "2024-10-18",
+                  "reviewBody": "Took their Chardham Yatra package. Everything was well organized - hotel bookings, darshan arrangements, and the tempo traveller was excellent. Highly recommend for pilgrimage tours.",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                }
+              ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Car Rental and Tour Packages",

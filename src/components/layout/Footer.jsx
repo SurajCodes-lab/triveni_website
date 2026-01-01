@@ -11,7 +11,8 @@ const Footer = () => {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
-    // { name: "Tour Packages", href: "/packages" },
+    { name: "Our Vehicles", href: "/vehicles" },
+    { name: "Destinations", href: "/destinations" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -20,7 +21,17 @@ const Footer = () => {
     { name: "Tempo Traveller", href: "/tempo-traveller" },
     { name: "Wedding Cars", href: "/wedding" },
     { name: "Religious Tours", href: "/religious-tours" },
-    { name: "Bus Routes", href: "/bus-routes" }
+    { name: "Bus Routes", href: "/bus-routes" },
+    { name: "Sightseeing Tours", href: "/sightseeing" }
+  ];
+
+  const vehicleLinks = [
+    { name: "Sedan", href: "/vehicles/sedan" },
+    { name: "SUV", href: "/vehicles/suv" },
+    { name: "Tempo Traveller", href: "/vehicles/tempo-traveller" },
+    { name: "Bus", href: "/vehicles/bus" },
+    { name: "Sedan vs SUV", href: "/sedan-vs-suv" },
+    { name: "Tempo vs Bus", href: "/tempo-vs-bus" }
   ];
 
   const cities = [
@@ -132,6 +143,21 @@ const Footer = () => {
                     >
                       <Clock className="w-4 h-4 mr-2 text-[#FACF2D] group-hover:rotate-12 transition-transform" aria-hidden="true" />
                       {service.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {/* Vehicles Sub-section */}
+              <h4 className="text-gray-400 text-start font-semibold mt-6 mb-3 text-sm">Vehicles</h4>
+              <ul className="flex flex-wrap gap-2">
+                {vehicleLinks.map((vehicle) => (
+                  <li key={vehicle.name}>
+                    <Link
+                      href={vehicle.href}
+                      className="text-xs text-gray-400 hover:text-[#FACF2D] transition-colors px-2 py-1 bg-gray-800/30 rounded hover:bg-gray-800/50"
+                      onClick={() => handleFooterLinkClick(vehicle.name, vehicle.href)}
+                    >
+                      {vehicle.name}
                     </Link>
                   </li>
                 ))}

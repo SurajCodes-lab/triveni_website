@@ -39,23 +39,23 @@ const VehicleSlugPage = () => {
         breadcrumbTitle: "SUV Car Rental Service"
       },
       'tempo-traveller': {
-        title: `Tempo Traveller Rental India | 12-26 Seater AC Tempo Hire | Group Travel`,
-        description: `Book 12-26 seater tempo traveller for group tours in India. AC tempo traveller rental with experienced driver. Perfect for pilgrimage trips, corporate tours, wedding parties, school excursions.`,
-        keywords: `tempo traveller rental india, 12 seater tempo hire, group travel vehicle, pilgrimage tempo booking, wedding tempo traveller, corporate tour vehicle, ac tempo traveller hire, tempo rental delhi mumbai, school trip tempo booking, group tour vehicle rental`,
+        title: `Tempo Traveller Rental India | 12-26 Seater | ₹23/km Onwards | Triveni Cabs`,
+        description: `Book 12, 16, 17, 20 & 26 seater tempo traveller for group tours. AC tempo with pushback seats, GPS tracking from ₹23/km. Perfect for pilgrimage, weddings, corporate tours.`,
+        keywords: `tempo traveller rental india, 12 seater tempo hire, 17 seater tempo traveller, 20 seater luxury tempo, 26 seater maharaja tempo, group travel vehicle, pilgrimage tempo booking, wedding tempo traveller, corporate tour vehicle`,
         canonical: `https://www.trivenicabs.in/vehicles/tempo-traveller`,
         breadcrumbTitle: "Tempo Traveller Rental Service"
       },
       'luxury-bus': {
-        title: `Luxury Bus Rental India | 35-55 Seater AC Bus Hire | Corporate Group Travel`,
-        description: `Rent luxury AC buses for large group travel in India. 35-55 seater premium buses with modern amenities. Ideal for corporate events, luxury tours, large wedding parties.`,
-        keywords: `luxury bus rental india, ac bus hire, corporate bus booking, large group travel bus, premium bus rental, luxury tour bus, wedding bus rental, 45 seater bus hire, corporate event transport, luxury bus service india`,
+        title: `Luxury Bus Rental India | Volvo 35-56 Seater | ₹45/km | Triveni Cabs`,
+        description: `Rent luxury Volvo & BharatBenz buses (35-56 seater) with LED TV, recliners, washroom, Wi-Fi. Premium coaches from ₹45/km for corporate events, destination weddings, luxury tours.`,
+        keywords: `luxury bus rental india, volvo bus hire, bharatbenz coach, 45 seater luxury bus, 49 seater volvo, 56 seater premium bus, corporate bus rental, wedding luxury bus, destination wedding transport`,
         canonical: `https://www.trivenicabs.in/vehicles/luxury-bus`,
         breadcrumbTitle: "Luxury Bus Rental Service"
       },
       'bus': {
-        title: `Bus Rental India | AC Bus Hire | 28-35 Seater Group Transport`,
-        description: `Book AC buses for group travel across India. 28-35 seater bus rental with professional driver. Affordable rates for school trips, corporate outings, religious tours, group excursions.`,
-        keywords: `bus rental india, ac bus booking, group transport bus, school bus rental, corporate bus hire, religious tour bus, group travel bus, bus hire with driver, affordable bus rental, tourist bus service india`,
+        title: `Bus Rental India | 22-41 Seater AC Bus | ₹30/km | Triveni Cabs`,
+        description: `Book 22, 25, 27, 35 & 41 seater AC buses for group travel. Affordable rates from ₹30/km for school trips, corporate outings, pilgrimage, wedding guest transfers across India.`,
+        keywords: `bus rental india, 22 seater mini bus, 25 seater bus hire, 27 seater coach, 35 seater bus rental, 41 seater bus, school bus rental, corporate bus hire, pilgrimage bus booking, wedding guest transport`,
         canonical: `https://www.trivenicabs.in/vehicles/bus`,
         breadcrumbTitle: "Bus Rental Service"
       }
@@ -83,7 +83,7 @@ const VehicleSlugPage = () => {
         "brand": {
           "@type": "Brand",
           "name": "Triveni Cabs",
-          "url": "https://trivenicabs.com"
+          "url": "https://www.trivenicabs.in"
         },
         "category": "Vehicle Rental Service",
         "offers": {
@@ -117,13 +117,13 @@ const VehicleSlugPage = () => {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://trivenicabs.com"
+            "item": "https://www.trivenicabs.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Vehicles",
-            "item": "https://trivenicabs.com/vehicles"
+            "item": "https://www.trivenicabs.in/vehicles"
           },
           {
             "@type": "ListItem",
@@ -136,8 +136,8 @@ const VehicleSlugPage = () => {
       "provider": {
         "@type": "Organization",
         "name": "Triveni Cabs",
-        "url": "https://trivenicabs.com",
-        "logo": "https://trivenicabs.com/logo.webp",
+        "url": "https://www.trivenicabs.in",
+        "logo": "https://www.trivenicabs.in/images/logo.webp",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+91-7668570551",
@@ -211,7 +211,7 @@ const VehicleSlugPage = () => {
         <meta property="og:url" content={seoData.canonical} />
         <meta property="og:title" content={seoData.title} />
         <meta property="og:description" content={seoData.description} />
-        <meta property="og:image" content={vehicleData.image || "https://trivenicabs.com/images/default-vehicle.jpg"} />
+        <meta property="og:image" content={vehicleData.image || "https://www.trivenicabs.in/images/HERO_SECTION_MAIN_PAGE.jpg"} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Triveni Cabs" />
@@ -222,7 +222,7 @@ const VehicleSlugPage = () => {
         <meta property="twitter:url" content={seoData.canonical} />
         <meta property="twitter:title" content={seoData.title} />
         <meta property="twitter:description" content={seoData.description} />
-        <meta property="twitter:image" content={vehicleData.image || "https://trivenicabs.com/images/default-vehicle.jpg"} />
+        <meta property="twitter:image" content={vehicleData.image || "https://www.trivenicabs.in/images/HERO_SECTION_MAIN_PAGE.jpg"} />
         
         {/* Additional SEO Meta Tags */}
         <meta name="author" content="Triveni Cabs" />
@@ -281,7 +281,7 @@ const VehicleSlugPage = () => {
               "@type": "LocalBusiness",
               "name": "Triveni Cabs",
               "description": "Professional car rental and taxi service across India",
-              "url": "https://trivenicabs.com",
+              "url": "https://www.trivenicabs.in",
               "telephone": "+91-7668570551",
               "priceRange": "₹₹",
               "areaServed": {

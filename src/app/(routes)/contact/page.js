@@ -142,6 +142,59 @@ export default function ContactPage() {
         }}
       />
 
+      {/* FAQ Schema for Contact Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How can I book a cab with Triveni Cabs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can book a cab through multiple channels: Call us at +91-7668570551, WhatsApp us for instant booking, fill out the contact form on our website, or email us at cabstriveni@gmail.com. We are available 24/7 for bookings."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are your customer support hours?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Triveni Cabs provides 24/7 customer support. Our booking hotline and WhatsApp are available round the clock. Office hours for in-person visits are 9:00 AM to 6:00 PM, but phone and online support is always available."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which cities does Triveni Cabs operate in?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We operate across 50+ cities in India including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, Dehradun, Rishikesh, Haridwar, Jodhpur, Udaipur, Ayodhya, Ahmedabad, and many more. We also provide intercity and outstation services."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How quickly can I get a cab after booking?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For immediate requirements, we can arrange a cab within 30-60 minutes depending on your location. For scheduled trips, we recommend booking at least 4-6 hours in advance. For outstation trips, please book 24 hours ahead for best availability."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What payment methods do you accept?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We accept multiple payment methods including cash, UPI (Google Pay, PhonePe, Paytm), bank transfers, and online payments. For corporate clients, we also offer credit facilities."
+                }
+              }
+            ]
+          })
+        }}
+      />
+
       <ContactClient />
     </>
   );

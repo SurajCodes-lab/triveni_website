@@ -67,6 +67,12 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/vehicles`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
@@ -77,6 +83,20 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+
+    // Comparison Pages - DECISION HELPER CONTENT
+    {
+      url: `${baseUrl}/sedan-vs-suv`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/tempo-vs-bus`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.75,
     },
 
     // Tour Packages - HIGH PRIORITY CONTENT PAGES

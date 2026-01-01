@@ -197,6 +197,13 @@ const Header = () => {
                 Wanderlust
               </Link>
               <Link
+                href="/destinations"
+                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={() => handleNavClick('Destinations', '/destinations')}
+              >
+                Destinations
+              </Link>
+              <Link
                 href="/contact"
                 className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                 onClick={() => handleNavClick('Contact', '/contact')}

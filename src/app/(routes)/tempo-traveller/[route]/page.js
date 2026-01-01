@@ -344,5 +344,39 @@ export default async function TempoTravellerRoutePage({ params }) {
     fleet: tempoFleet
   };
 
-  return <DynamicTempoRoutesClient data={pageData} />;
+  // BreadcrumbList schema for SEO
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tempo Traveller",
+        "item": "https://www.trivenicabs.in/tempo-traveller"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": `${originFormatted} to ${destinationFormatted}`,
+        "item": `https://www.trivenicabs.in/tempo-traveller/${route}`
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <DynamicTempoRoutesClient data={pageData} />
+    </>
+  );
 }

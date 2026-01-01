@@ -68,33 +68,33 @@ const VehicleDetails = ({ slug }) => {
       }
     },
     "tempo-traveller": {
-      title: "Tempo Traveller Rental India | 12-26 Seater | Book Online",
-      description: "Book 12-26 seater tempo traveller for group travel in India. AC tempo traveller rental with driver. Best rates for pilgrimage, wedding, corporate tours.",
-      keywords: "tempo traveller rental india, 12 seater tempo traveller, group travel india, tempo traveller hire delhi, pilgrimage tour vehicle",
+      title: "Tempo Traveller Rental India | 12-26 Seater | ₹23/km Onwards",
+      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group travel in India. AC tempo traveller with pushback seats, GPS tracking. Best rates from ₹23/km for pilgrimage, wedding, corporate tours.",
+      keywords: "tempo traveller rental india, 12 seater tempo traveller, 17 seater tempo, 20 seater luxury tempo, 26 seater maharaja tempo, group travel india, tempo traveller hire delhi, pilgrimage tour vehicle",
       schema: {
         vehicleType: "Tempo Traveller",
         seatingCapacity: "12-26 passengers",
-        priceRange: "₹24-35/km"
+        priceRange: "₹23-27/km"
       }
     },
     "luxury-bus": {
-      title: "Luxury Bus Rental India | 35-55 Seater AC Bus Hire",
-      description: "Rent luxury AC buses for large group travel in India. 35-55 seater buses with modern amenities. Perfect for corporate events, weddings, tours.",
-      keywords: "luxury bus rental india, ac bus hire, large group travel bus, corporate bus rental, wedding bus booking, tourist bus rental",
+      title: "Luxury Bus Rental India | Volvo 35-56 Seater | Premium Coaches",
+      description: "Rent luxury Volvo & BharatBenz buses (35-56 seater) for premium group travel. LED TV, recliners, washroom, Wi-Fi. Perfect for corporate events, destination weddings, luxury tours from ₹45/km.",
+      keywords: "luxury bus rental india, volvo bus hire, bharatbenz coach rental, 45 seater luxury bus, 56 seater premium bus, corporate bus rental, wedding luxury bus, tourist bus rental",
       schema: {
         vehicleType: "Luxury Bus",
-        seatingCapacity: "35-55 passengers",
-        priceRange: "₹35-55/km"
+        seatingCapacity: "35-56 passengers",
+        priceRange: "₹45-65/km"
       }
     },
     bus: {
-      title: "Bus Rental India | AC Bus Hire for Group Travel | Best Rates",
-      description: "Book AC buses for group travel in India. 28-35 seater bus rental with driver. Affordable rates for school trips, corporate outings, tourism.",
-      keywords: "bus rental india, ac bus booking, group travel bus, school bus rental, corporate bus hire, tourist bus service",
+      title: "Bus Rental India | 22-41 Seater AC Bus | ₹30/km Onwards",
+      description: "Book 22, 25, 27, 35 & 41 seater AC buses for group travel. Affordable rates from ₹30/km for school trips, corporate outings, pilgrimage, wedding guest transfers.",
+      keywords: "bus rental india, 22 seater mini bus, 27 seater coach, 35 seater bus hire, 41 seater bus rental, group travel bus, school bus rental, corporate bus hire, pilgrimage bus booking",
       schema: {
         vehicleType: "Bus",
-        seatingCapacity: "28-35 passengers",
-        priceRange: "₹35-45/km"
+        seatingCapacity: "22-41 passengers",
+        priceRange: "₹30-45/km"
       }
     }
   };
@@ -107,23 +107,25 @@ const VehicleDetails = ({ slug }) => {
 
   const seatingOptions = {
     "tempo-traveller": [
-      { seats: 12, priceMultiplier: 1, popular: true },
-      { seats: 16, priceMultiplier: 1.2, popular: false },
-      { seats: 20, priceMultiplier: 1.4, popular: false },
-      { seats: 26, priceMultiplier: 1.6, popular: true },
+      { seats: 12, priceMultiplier: 1, popular: false, rate: "₹23/km", localRate: "₹6,000-7,500/Day" },
+      { seats: 16, priceMultiplier: 1.09, popular: false, rate: "₹25/km", localRate: "₹7,500-8,500/Day" },
+      { seats: 17, priceMultiplier: 1.13, popular: true, rate: "₹26/km", localRate: "₹9,000-10,500/Day" },
+      { seats: 20, priceMultiplier: 1.17, popular: false, rate: "₹27/km", localRate: "₹9,000-10,000/Day" },
+      { seats: 26, priceMultiplier: 1.13, popular: true, rate: "₹26/km", localRate: "₹10,000-11,000/Day", premium: true },
     ],
     bus: [
-      { seats: 28, priceMultiplier: 1, popular: false },
-      { seats: 32, priceMultiplier: 1.1, popular: true },
-      { seats: 35, priceMultiplier: 1.15, popular: false },
-      { seats: 40, priceMultiplier: 1.25, popular: false },
+      { seats: 22, priceMultiplier: 1, popular: false, rate: "₹30-35/km", minCharge: "₹6,000/day" },
+      { seats: 25, priceMultiplier: 1.07, popular: false, rate: "₹32-36/km", minCharge: "₹6,500/day" },
+      { seats: 27, priceMultiplier: 1.13, popular: true, rate: "₹34-38/km", minCharge: "₹6,800/day" },
+      { seats: 35, priceMultiplier: 1.2, popular: false, rate: "₹36-40/km", minCharge: "₹7,500/day" },
+      { seats: 41, priceMultiplier: 1.33, popular: false, rate: "₹40-45/km", minCharge: "₹8,000/day" },
     ],
     "luxury-bus": [
-      { seats: 35, priceMultiplier: 1, popular: false },
-      { seats: 40, priceMultiplier: 1.15, popular: true },
-      { seats: 45, priceMultiplier: 1.25, popular: false },
-      { seats: 49, priceMultiplier: 1.3, popular: false },
-      { seats: 55, priceMultiplier: 1.45, popular: true },
+      { seats: 35, priceMultiplier: 1, popular: false, rate: "₹36-40/km", minCharge: "₹7,500/day" },
+      { seats: 41, priceMultiplier: 1.11, popular: false, rate: "₹40-45/km", minCharge: "₹8,000/day" },
+      { seats: 45, priceMultiplier: 1.22, popular: true, rate: "₹45-50/km", minCharge: "₹9,000/day", premium: true },
+      { seats: 49, priceMultiplier: 1.33, popular: false, rate: "₹48-55/km", minCharge: "₹9,500/day", premium: true },
+      { seats: 56, priceMultiplier: 1.44, popular: true, rate: "₹55-65/km", minCharge: "₹10,000/day", luxury: true },
     ],
   };
 
