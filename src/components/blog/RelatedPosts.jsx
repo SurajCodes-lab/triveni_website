@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Clock } from 'lucide-react';
 import { blogPosts } from '@/utilis/blog';
 
@@ -18,11 +19,14 @@ function RelatedPostCard({ post }) {
       <article className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
         <div className="relative h-48 overflow-hidden">
           {post.image && !imageError ? (
-            <img
+            <Image
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
               onError={() => setImageError(true)}
+              loading="lazy"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-4xl">
@@ -30,7 +34,7 @@ function RelatedPostCard({ post }) {
             </div>
           )}
           {post.category && (
-            <div className="absolute top-3 right-3 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            <div className="absolute top-3 right-3 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
               {post.category}
             </div>
           )}
