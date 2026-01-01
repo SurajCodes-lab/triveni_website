@@ -2,33 +2,19 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  Shield,
-  Lock,
-  Eye,
-  Database,
-  UserCheck,
-  Phone,
-  Mail,
-  FileText,
-  CheckCircle2,
-  AlertTriangle,
-  Globe,
-  Smartphone
-} from "lucide-react";
+import { Shield, Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
-import { phoneNumber } from "@/utilis/data";
 
 // Animation variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
 // Animated Section Component
 const AnimatedSection = ({ children, className = "" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -43,221 +29,343 @@ const AnimatedSection = ({ children, className = "" }) => {
   );
 };
 
-// Policy Section Component
-const PolicySection = ({ icon: Icon, title, children, iconColor = "text-blue-600" }) => (
+// Section Component
+const Section = ({ number, title, children }) => (
   <AnimatedSection className="mb-10">
-    <div className="flex items-start gap-4 mb-4">
-      <div className={`p-3 rounded-xl bg-gray-100 ${iconColor}`}>
-        <Icon className="w-6 h-6" />
-      </div>
-      <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
-    </div>
-    <div className="ml-16 text-gray-600 space-y-4">
+    <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+      {number}. {title}
+    </h2>
+    <div className="text-gray-700 leading-relaxed space-y-4">
       {children}
     </div>
   </AnimatedSection>
 );
 
+// Sub-section Component
+const SubSection = ({ letter, title, children }) => (
+  <div className="mb-4">
+    <h3 className="text-base font-medium text-gray-800 mb-2">
+      {letter}) {title}
+    </h3>
+    <div className="text-gray-600 pl-4">
+      {children}
+    </div>
+  </div>
+);
+
 export default function PrivacyClient() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-indigo-400 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+    <div className="min-h-screen bg-white">
+      {/* Header Section */}
+      <section className="bg-gradient-to-b from-gray-900 to-gray-800 py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Shield className="w-5 h-5 text-blue-300" />
-              <span className="text-blue-100 text-sm font-medium">Your Privacy Matters</span>
+            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6">
+              <Shield className="w-4 h-4 text-yellow-400" />
+              <span className="text-gray-300 text-sm">Legal Document</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Privacy Policy
             </h1>
 
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              We are committed to protecting your privacy and ensuring the security of your personal information.
-            </p>
-
-            <p className="text-blue-200 mt-6 text-sm">
-              Last Updated: January 2026
+            <p className="text-gray-400 text-sm">
+              Effective Date: January 2025 | Last Updated: January 2025
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-16 px-4">
+      <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
 
           {/* Introduction */}
-          <AnimatedSection className="mb-12">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Triveni Cabs (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) operates the website trivenicabs.in and provides taxi, car rental, and tour services across India. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services.
-            </p>
-          </AnimatedSection>
-
-          {/* Information We Collect */}
-          <PolicySection icon={Database} title="Information We Collect" iconColor="text-blue-600">
-            <p>We collect information that you provide directly to us, including:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Personal Information:</strong> Name, phone number, email address when you make a booking or inquiry</li>
-              <li><strong>Booking Details:</strong> Pickup/drop locations, travel dates, vehicle preferences</li>
-              <li><strong>Payment Information:</strong> Transaction details (we do not store credit card numbers)</li>
-              <li><strong>Communication Data:</strong> Messages and feedback you send us via WhatsApp, phone, or email</li>
-            </ul>
-            <p className="mt-4">We may also automatically collect:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Device information and browser type</li>
-              <li>IP address and approximate location</li>
-              <li>Pages visited and time spent on our website</li>
-              <li>Referral sources</li>
-            </ul>
-          </PolicySection>
-
-          {/* How We Use Your Information */}
-          <PolicySection icon={Eye} title="How We Use Your Information" iconColor="text-green-600">
-            <p>We use the information we collect to:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Process and confirm your bookings</li>
-              <li>Communicate with you about your trips and services</li>
-              <li>Send booking confirmations and trip reminders</li>
-              <li>Provide customer support and respond to inquiries</li>
-              <li>Improve our services and website functionality</li>
-              <li>Send promotional offers (only with your consent)</li>
-              <li>Comply with legal obligations</li>
-            </ul>
-          </PolicySection>
-
-          {/* Information Sharing */}
-          <PolicySection icon={UserCheck} title="Information Sharing" iconColor="text-purple-600">
-            <p>We may share your information with:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Drivers and Partners:</strong> To fulfill your booking (name, phone, pickup/drop locations)</li>
-              <li><strong>Payment Processors:</strong> To process secure payments</li>
-              <li><strong>Service Providers:</strong> Who assist in operating our business</li>
-              <li><strong>Legal Authorities:</strong> When required by law or to protect our rights</li>
-            </ul>
-            <p className="mt-4 font-medium text-gray-800">
-              We do NOT sell your personal information to third parties.
-            </p>
-          </PolicySection>
-
-          {/* Data Security */}
-          <PolicySection icon={Lock} title="Data Security" iconColor="text-red-600">
-            <p>
-              We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>SSL encryption for data transmission</li>
-              <li>Secure server infrastructure</li>
-              <li>Limited access to personal data by employees</li>
-              <li>Regular security assessments</li>
-            </ul>
-          </PolicySection>
-
-          {/* Your Rights */}
-          <PolicySection icon={CheckCircle2} title="Your Rights" iconColor="text-teal-600">
-            <p>You have the right to:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Access:</strong> Request a copy of your personal data</li>
-              <li><strong>Correction:</strong> Request correction of inaccurate data</li>
-              <li><strong>Deletion:</strong> Request deletion of your data (subject to legal requirements)</li>
-              <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
-              <li><strong>Portability:</strong> Request your data in a portable format</li>
-            </ul>
-            <p className="mt-4">
-              To exercise these rights, contact us at <a href="mailto:info@trivenicabs.in" className="text-blue-600 hover:underline">info@trivenicabs.in</a>
-            </p>
-          </PolicySection>
-
-          {/* Cookies */}
-          <PolicySection icon={Globe} title="Cookies and Tracking" iconColor="text-orange-600">
-            <p>
-              Our website uses cookies and similar technologies to enhance your experience. These include:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Essential Cookies:</strong> Required for website functionality</li>
-              <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
-              <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements</li>
-            </ul>
-            <p className="mt-4">
-              You can control cookies through your browser settings. Disabling certain cookies may affect website functionality.
-            </p>
-          </PolicySection>
-
-          {/* Third-Party Services */}
-          <PolicySection icon={Smartphone} title="Third-Party Services" iconColor="text-indigo-600">
-            <p>
-              Our website may contain links to third-party websites and services. We use the following third-party services:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Google Analytics (website analytics)</li>
-              <li>WhatsApp Business (customer communication)</li>
-              <li>Payment gateways (secure transactions)</li>
-            </ul>
-            <p className="mt-4">
-              These services have their own privacy policies. We encourage you to review them.
-            </p>
-          </PolicySection>
-
-          {/* Updates to Policy */}
-          <PolicySection icon={FileText} title="Changes to This Policy" iconColor="text-gray-600">
-            <p>
-              We may update this Privacy Policy from time to time. The updated version will be indicated by an updated &quot;Last Updated&quot; date. We encourage you to review this Privacy Policy periodically.
-            </p>
-          </PolicySection>
-
-          {/* Contact Section */}
-          <AnimatedSection>
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 mt-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <AlertTriangle className="w-6 h-6 text-blue-600" />
-                Contact Us About Privacy
-              </h2>
-              <p className="text-gray-600 mb-6">
-                If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:
+          <AnimatedSection className="mb-10">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
+              <p className="text-gray-700 leading-relaxed">
+                This Privacy Policy describes how <strong>Triveni Cabs</strong> (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;)
+                collects, uses, and protects information when you use our website <strong>trivenicabs.in</strong> and
+                our taxi, car rental, and tour services operating across India. By using our services, you agree
+                to the collection and use of information in accordance with this policy.
               </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <a
-                  href={`tel:${phoneNumber}`}
-                  className="flex items-center gap-3 p-4 bg-white rounded-xl hover:shadow-md transition-shadow"
-                >
-                  <Phone className="w-5 h-5 text-blue-600" />
-                  <span className="text-gray-700">{phoneNumber}</span>
-                </a>
-                <a
-                  href="mailto:info@trivenicabs.in"
-                  className="flex items-center gap-3 p-4 bg-white rounded-xl hover:shadow-md transition-shadow"
-                >
-                  <Mail className="w-5 h-5 text-blue-600" />
-                  <span className="text-gray-700">info@trivenicabs.in</span>
-                </a>
-              </div>
+            </div>
+
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8">
+              <p className="text-blue-900 text-sm font-medium">
+                Disclosure: Our website is a static informational platform. We do not operate user accounts,
+                login systems, or automated data collection mechanisms. Personal information is collected
+                only when you voluntarily contact us for service inquiries.
+              </p>
             </div>
           </AnimatedSection>
 
-          {/* Related Links */}
-          <AnimatedSection className="mt-12">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Related Policies</h3>
-            <div className="flex flex-wrap gap-4">
+          {/* Section 1 */}
+          <Section number="1" title="Information We Collect">
+            <p>
+              We collect information that you voluntarily provide when contacting us for booking inquiries
+              or service-related communications. The categories of information we may collect include:
+            </p>
+
+            <SubSection letter="a" title="Personal Identification Information">
+              <ul className="list-disc pl-5 space-y-1 text-sm">
+                <li>Full name as provided during booking</li>
+                <li>Contact telephone number</li>
+                <li>Email address (if provided)</li>
+              </ul>
+            </SubSection>
+
+            <SubSection letter="b" title="Booking and Travel Information">
+              <ul className="list-disc pl-5 space-y-1 text-sm">
+                <li>Pickup and drop-off locations</li>
+                <li>Travel dates and times</li>
+                <li>Vehicle type preferences</li>
+                <li>Number of passengers</li>
+                <li>Special requirements or requests</li>
+              </ul>
+            </SubSection>
+
+            <SubSection letter="c" title="Communication Records">
+              <ul className="list-disc pl-5 space-y-1 text-sm">
+                <li>WhatsApp messages and conversations</li>
+                <li>Phone call records (as maintained by telecom providers)</li>
+                <li>Email correspondence</li>
+              </ul>
+            </SubSection>
+
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+              <p className="text-green-800 text-sm">
+                <strong>Information We Do Not Collect:</strong> Our website does not automatically collect
+                IP addresses, device identifiers, browser information, location data, or browsing behavior.
+                We do not use cookies, tracking pixels, or analytics tools. No backend database stores
+                visitor information.
+              </p>
+            </div>
+          </Section>
+
+          {/* Section 2 */}
+          <Section number="2" title="Methods of Information Collection">
+            <p>
+              We collect personal information exclusively through direct communication channels initiated by you:
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-4 mt-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">Telephone</p>
+                <p className="text-sm text-gray-600">+91 76685 70551</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">WhatsApp</p>
+                <p className="text-sm text-gray-600">+91 76685 70551</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">Email</p>
+                <p className="text-sm text-gray-600">cabstriveni@gmail.com</p>
+              </div>
+            </div>
+
+            <p className="mt-4 text-sm text-gray-600">
+              Our website does not feature contact forms, user registration portals, or any automated
+              data submission mechanisms.
+            </p>
+          </Section>
+
+          {/* Section 3 */}
+          <Section number="3" title="Purpose of Information Use">
+            <p>
+              The information you provide is used exclusively for the following legitimate business purposes:
+            </p>
+
+            <ul className="list-disc pl-5 space-y-2 mt-4">
+              <li>Processing and confirming your vehicle booking requests</li>
+              <li>Communicating essential trip details including driver information, vehicle registration, and pickup schedules</li>
+              <li>Providing customer support before, during, and after your journey</li>
+              <li>Sending booking confirmations and trip updates via WhatsApp or SMS</li>
+              <li>Addressing queries, complaints, or feedback</li>
+              <li>Maintaining booking records for operational and accounting purposes</li>
+            </ul>
+
+            <p className="mt-4 font-medium text-gray-800">
+              We do not use your information for unsolicited marketing communications, promotional
+              campaigns, or any purpose unrelated to the services you have requested.
+            </p>
+          </Section>
+
+          {/* Section 4 */}
+          <Section number="4" title="Information Sharing and Disclosure">
+            <p>
+              We share your personal information only to the extent necessary for fulfilling your booking:
+            </p>
+
+            <SubSection letter="a" title="Service Fulfillment">
+              <ul className="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Assigned Drivers:</strong> Your name, contact number, and pickup/drop locations are shared with the driver assigned to your trip</li>
+                <li><strong>Partner Operators:</strong> For certain routes or vehicle categories, booking details may be shared with our trusted partner cab operators</li>
+              </ul>
+            </SubSection>
+
+            <SubSection letter="b" title="Legal Requirements">
+              <p className="text-sm">
+                We may disclose information if required by law, court order, or governmental authority,
+                or to protect our legal rights and safety of our customers and employees.
+              </p>
+            </SubSection>
+
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mt-4">
+              <p className="text-amber-800 text-sm font-medium">
+                We do not sell, rent, trade, or otherwise transfer your personal information to third
+                parties for marketing, advertising, or any commercial purposes unrelated to our services.
+              </p>
+            </div>
+          </Section>
+
+          {/* Section 5 */}
+          <Section number="5" title="Data Storage and Security">
+            <p>
+              As a traditional cab service business, we implement the following data handling practices:
+            </p>
+
+            <ul className="list-disc pl-5 space-y-2 mt-4">
+              <li>Booking records are maintained in our internal operational systems</li>
+              <li>WhatsApp communications are stored on WhatsApp servers in accordance with their privacy policy</li>
+              <li>Telephone records are maintained by respective telecom service providers</li>
+              <li>We do not store credit card, debit card, or banking information (payments are typically processed via cash, UPI, or bank transfer)</li>
+            </ul>
+
+            <p className="mt-4">
+              <strong>Website Security:</strong> Our website employs HTTPS protocol with SSL/TLS encryption
+              to ensure secure data transmission during browsing.
+            </p>
+          </Section>
+
+          {/* Section 6 */}
+          <Section number="6" title="Your Rights">
+            <p>
+              You have the following rights regarding your personal information:
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              <div className="border border-gray-200 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">Right to Access</p>
+                <p className="text-sm text-gray-600">Request information about data we hold concerning you</p>
+              </div>
+              <div className="border border-gray-200 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">Right to Rectification</p>
+                <p className="text-sm text-gray-600">Request correction of inaccurate or incomplete information</p>
+              </div>
+              <div className="border border-gray-200 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">Right to Erasure</p>
+                <p className="text-sm text-gray-600">Request deletion of your personal data from our records</p>
+              </div>
+              <div className="border border-gray-200 p-4 rounded-lg">
+                <p className="font-medium text-gray-900 mb-1">Right to Object</p>
+                <p className="text-sm text-gray-600">Opt out of receiving any communications from us</p>
+              </div>
+            </div>
+
+            <p className="mt-4 text-sm text-gray-600">
+              To exercise any of these rights, please contact us using the details provided in Section 10 below.
+            </p>
+          </Section>
+
+          {/* Section 7 */}
+          <Section number="7" title="Third-Party Links and Services">
+            <p>
+              Our website may contain links or references to third-party platforms:
+            </p>
+
+            <ul className="list-disc pl-5 space-y-2 mt-4">
+              <li><strong>WhatsApp:</strong> Click-to-chat functionality redirects to WhatsApp, governed by Meta&apos;s privacy policy</li>
+              <li><strong>Google Maps:</strong> Location references may open in Google Maps, governed by Google&apos;s privacy policy</li>
+              <li><strong>Telephone Dialer:</strong> Click-to-call links activate your device&apos;s native dialer application</li>
+            </ul>
+
+            <p className="mt-4 text-sm text-gray-600">
+              We are not responsible for the privacy practices of third-party services. We encourage
+              you to review their respective privacy policies before use.
+            </p>
+          </Section>
+
+          {/* Section 8 */}
+          <Section number="8" title="Technical Information">
+            <p>
+              For transparency regarding our website infrastructure:
+            </p>
+
+            <ul className="list-disc pl-5 space-y-2 mt-4">
+              <li>Our website is built using Next.js framework and deployed as a static website</li>
+              <li>No user authentication or account management systems are implemented</li>
+              <li>No cookies are used for tracking or advertising purposes</li>
+              <li>No server-side databases collect or store visitor information</li>
+              <li>No analytics or tracking scripts monitor user behavior</li>
+              <li>All pages are pre-rendered and served as static HTML files</li>
+            </ul>
+          </Section>
+
+          {/* Section 9 */}
+          <Section number="9" title="Policy Updates">
+            <p>
+              We reserve the right to modify this Privacy Policy at any time. Changes will be reflected
+              on this page with an updated &quot;Last Updated&quot; date. As we do not collect email addresses
+              through our website, we cannot provide direct notification of policy changes. We recommend
+              reviewing this policy periodically.
+            </p>
+
+            <p className="mt-4 text-sm text-gray-600">
+              Continued use of our services after any modifications constitutes acceptance of the updated policy.
+            </p>
+          </Section>
+
+          {/* Section 10 - Contact */}
+          <Section number="10" title="Contact Information">
+            <p>
+              For questions, concerns, or requests regarding this Privacy Policy or our data practices,
+              please contact us through the following channels:
+            </p>
+
+            <div className="bg-gray-50 rounded-lg p-6 mt-6">
+              <h3 className="font-semibold text-gray-900 mb-4">Triveni Cabs</h3>
+
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-gray-500" />
+                  <a href="tel:+917668570551" className="text-gray-700 hover:text-blue-600">
+                    +91 76685 70551
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-gray-500" />
+                  <a href="mailto:cabstriveni@gmail.com" className="text-gray-700 hover:text-blue-600">
+                    cabstriveni@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-gray-500 mt-0.5" />
+                  <span className="text-gray-700">
+                    366, Dandupura, near Tajganj, Agra, Uttar Pradesh 282006, India
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* Related Documents */}
+          <AnimatedSection className="mt-12 pt-8 border-t border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Related Legal Documents</h3>
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/terms-and-conditions"
-                className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
               >
                 Terms & Conditions
               </Link>
               <Link
                 href="/cancellation-and-refund-policy"
-                className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
               >
                 Cancellation & Refund Policy
               </Link>
