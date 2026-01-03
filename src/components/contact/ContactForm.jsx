@@ -3,6 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Send } from 'lucide-react';
 import { trackFormSubmission, trackFormInteraction, trackError } from '@/utilis/analytics';
+import Button from '@/components/ui/Button';
+import { cn } from '@/utilis/cn';
+
+// Consistent input styling
+const inputClasses = "w-full px-4 py-3 border rounded-input bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-fast min-h-[48px]";
+const labelClasses = "block text-body-sm text-gray-900 text-start font-semibold mb-2";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -126,7 +132,7 @@ export default function ContactForm() {
         <div
           role="alert"
           aria-live="assertive"
-          className="mb-4 p-4 bg-red-50 border-l-4 border-red-600 text-red-800 text-sm rounded-md"
+          className="mb-4 p-4 bg-error-light/10 border-l-4 border-error text-error-dark text-body-sm rounded-card"
         >
           <strong className="font-semibold">Error: </strong>
           {error}
@@ -138,7 +144,7 @@ export default function ContactForm() {
         <div
           role="alert"
           aria-live="polite"
-          className="mb-4 p-4 bg-green-50 border-l-4 border-green-600 text-green-800 text-sm rounded-md"
+          className="mb-4 p-4 bg-success-light/10 border-l-4 border-success text-success-dark text-body-sm rounded-card"
         >
           <strong className="font-semibold">Success! </strong>
           Thank you for your message! We'll get back to you shortly.
@@ -149,11 +155,8 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* First Name Field */}
           <div>
-            <label
-              className="block text-sm text-start text-gray-900 font-semibold mb-2"
-              htmlFor="firstName"
-            >
-              First Name <span className="text-red-600" aria-label="required">*</span>
+            <label className={labelClasses} htmlFor="firstName">
+              First Name <span className="text-error" aria-label="required">*</span>
             </label>
             <input
               type="text"
@@ -165,13 +168,11 @@ export default function ContactForm() {
               aria-required="true"
               aria-invalid={!!fieldErrors.firstName}
               aria-describedby={fieldErrors.firstName ? "firstName-error" : undefined}
-              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition duration-200 ${
-                fieldErrors.firstName ? 'border-red-500 bg-red-50' : 'border-gray-300'
-              }`}
+              className={cn(inputClasses, fieldErrors.firstName ? 'border-error bg-error-light/10' : 'border-gray-300')}
               placeholder="John"
             />
             {fieldErrors.firstName && (
-              <p id="firstName-error" className="mt-1 text-sm text-red-600" role="alert">
+              <p id="firstName-error" className="mt-1.5 text-body-sm text-error" role="alert">
                 {fieldErrors.firstName}
               </p>
             )}
@@ -179,11 +180,8 @@ export default function ContactForm() {
 
           {/* Last Name Field */}
           <div>
-            <label
-              className="block text-sm text-gray-900 text-start font-semibold mb-2"
-              htmlFor="lastName"
-            >
-              Last Name <span className="text-gray-500 text-xs">(optional)</span>
+            <label className={labelClasses} htmlFor="lastName">
+              Last Name <span className="text-content-muted text-body-xs">(optional)</span>
             </label>
             <input
               type="text"
@@ -191,18 +189,16 @@ export default function ContactForm() {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition duration-200"
+              className={cn(inputClasses, 'border-gray-300')}
               placeholder="Doe"
             />
           </div>
         </div>
+
         {/* Email Field */}
         <div>
-          <label
-            className="block text-sm text-gray-900 text-start font-semibold mb-2"
-            htmlFor="email"
-          >
-            Email Address <span className="text-red-600" aria-label="required">*</span>
+          <label className={labelClasses} htmlFor="email">
+            Email Address <span className="text-error" aria-label="required">*</span>
           </label>
           <input
             type="email"
@@ -214,13 +210,11 @@ export default function ContactForm() {
             aria-required="true"
             aria-invalid={!!fieldErrors.email}
             aria-describedby={fieldErrors.email ? "email-error" : undefined}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition duration-200 ${
-              fieldErrors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
-            }`}
+            className={cn(inputClasses, fieldErrors.email ? 'border-error bg-error-light/10' : 'border-gray-300')}
             placeholder="john@example.com"
           />
           {fieldErrors.email && (
-            <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+            <p id="email-error" className="mt-1.5 text-body-sm text-error" role="alert">
               {fieldErrors.email}
             </p>
           )}
@@ -228,11 +222,8 @@ export default function ContactForm() {
 
         {/* Subject Field */}
         <div>
-          <label
-            className="block text-sm text-gray-900 text-start font-semibold mb-2"
-            htmlFor="subject"
-          >
-            Subject <span className="text-gray-500 text-xs">(optional)</span>
+          <label className={labelClasses} htmlFor="subject">
+            Subject <span className="text-content-muted text-body-xs">(optional)</span>
           </label>
           <input
             type="text"
@@ -240,18 +231,15 @@ export default function ContactForm() {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition duration-200"
+            className={cn(inputClasses, 'border-gray-300')}
             placeholder="How can we help?"
           />
         </div>
 
         {/* Message Field */}
         <div>
-          <label
-            className="block text-sm text-gray-900 text-start font-semibold mb-2"
-            htmlFor="message"
-          >
-            Message <span className="text-red-600" aria-label="required">*</span>
+          <label className={labelClasses} htmlFor="message">
+            Message <span className="text-error" aria-label="required">*</span>
           </label>
           <textarea
             id="message"
@@ -263,27 +251,27 @@ export default function ContactForm() {
             aria-required="true"
             aria-invalid={!!fieldErrors.message}
             aria-describedby={fieldErrors.message ? "message-error" : undefined}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition duration-200 resize-y min-h-[120px] ${
-              fieldErrors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
-            }`}
+            className={cn(inputClasses, 'resize-y min-h-[120px]', fieldErrors.message ? 'border-error bg-error-light/10' : 'border-gray-300')}
             placeholder="Your message... (minimum 10 characters)"
           />
           {fieldErrors.message && (
-            <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
+            <p id="message-error" className="mt-1.5 text-body-sm text-error" role="alert">
               {fieldErrors.message}
             </p>
           )}
         </div>
-        <button
+
+        <Button
           type="submit"
-          disabled={loading}
-          aria-busy={loading}
-          aria-label={loading ? 'Sending message, please wait' : 'Send message'}
-          className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center space-x-2 group disabled:opacity-70 disabled:cursor-not-allowed min-h-[56px] focus-visible:ring-4 focus-visible:ring-yellow-300 focus-visible:ring-offset-2"
+          variant="primary"
+          size="lg"
+          fullWidth
+          loading={loading}
+          rightIcon={Send}
+          ariaLabel={loading ? 'Sending message, please wait' : 'Send message'}
         >
-          <span>{loading ? 'Sending...' : 'Send Message'}</span>
-          <Send className="w-5 h-5 transform group-hover:translate-x-1 transition duration-300" aria-hidden="true" />
-        </button>
+          {loading ? 'Sending...' : 'Send Message'}
+        </Button>
       </form>
     </>
   );

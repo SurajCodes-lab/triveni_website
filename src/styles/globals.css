@@ -86,6 +86,53 @@ body {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
   }
+
+  /* ====================================
+   * DESIGN SYSTEM UTILITY CLASSES
+   * ==================================== */
+
+  /* Container utility */
+  .container-section {
+    @apply max-w-container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section padding utility */
+  .section-padding {
+    @apply py-section-sm md:py-section-md lg:py-section-lg;
+  }
+
+  /* Card base utility */
+  .card-base {
+    @apply bg-white rounded-card-lg shadow-card hover:shadow-card-hover transition-all duration-normal;
+  }
+
+  /* Feature icon container */
+  .icon-circle {
+    @apply w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-primary;
+  }
+
+  .icon-circle-sm {
+    @apply w-12 h-12 bg-primary rounded-full flex items-center justify-center;
+  }
+
+  /* Text truncation */
+  .text-truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  /* Link hover effect */
+  .link-hover {
+    @apply text-content-secondary hover:text-primary transition-colors duration-fast;
+  }
+
+  /* Button icon spacing */
+  .btn-icon-left {
+    @apply mr-2;
+  }
+
+  .btn-icon-right {
+    @apply ml-2;
+  }
 }
 
 /* Performance-optimized animations */

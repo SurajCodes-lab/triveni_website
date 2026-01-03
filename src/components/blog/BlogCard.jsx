@@ -26,7 +26,7 @@ export default function BlogCard({ post, index = 0 }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group h-full flex flex-col"
+      className="bg-white rounded-card-lg shadow-card overflow-hidden hover:shadow-card-hover transition-all duration-normal group h-full flex flex-col"
     >
       {/* Image - Using Next.js Image for SEO & Performance */}
       <Link href={`/blog/${post.slug}`} className="relative h-56 overflow-hidden block">
@@ -36,22 +36,22 @@ export default function BlogCard({ post, index = 0 }) {
             alt={post.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            className="object-cover group-hover:scale-110 transition-transform duration-slow"
             onError={() => setImageError(true)}
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-6xl">
+          <div className="w-full h-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-6xl">
             📝
           </div>
         )}
         {post.featured && (
-          <div className="absolute top-4 left-4 bg-[#FACF2D] text-black px-3 py-1 rounded-full text-sm font-bold z-10">
+          <div className="absolute top-4 left-4 bg-primary text-black px-3 py-1 rounded-badge text-label-sm font-bold z-10">
             Featured
           </div>
         )}
         {post.category && (
-          <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
+          <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-badge text-label-sm z-10">
             {post.category}
           </div>
         )}
@@ -60,18 +60,18 @@ export default function BlogCard({ post, index = 0 }) {
       {/* Content */}
       <div className="p-6 flex-1 flex flex-col">
         {/* Meta Info */}
-        <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+        <div className="flex items-center flex-wrap gap-4 text-body-sm text-content-secondary mb-3">
           <span className="flex items-center gap-1">
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-4 h-4 flex-shrink-0" />
             {formattedDate}
           </span>
           <span className="flex items-center gap-1">
-            <Clock className="w-4 h-4" />
+            <Clock className="w-4 h-4 flex-shrink-0" />
             {post.readTime}
           </span>
           {post.views && (
             <span className="flex items-center gap-1">
-              <Eye className="w-4 h-4" />
+              <Eye className="w-4 h-4 flex-shrink-0" />
               {post.views}
             </span>
           )}
@@ -79,13 +79,13 @@ export default function BlogCard({ post, index = 0 }) {
 
         {/* Title */}
         <Link href={`/blog/${post.slug}`}>
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#FACF2D] transition-colors line-clamp-2">
+          <h2 className="text-heading-sm md:text-heading-md font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-normal line-clamp-2">
             {post.title}
           </h2>
         </Link>
 
         {/* Excerpt */}
-        <p className="text-gray-600 mb-4 line-clamp-3 flex-1">
+        <p className="text-body-md text-content-secondary mb-4 line-clamp-3 flex-1">
           {post.excerpt}
         </p>
 
@@ -95,7 +95,7 @@ export default function BlogCard({ post, index = 0 }) {
             {post.tags.slice(0, 3).map((tag, i) => (
               <span
                 key={i}
-                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium"
+                className="bg-gray-100 text-content-secondary px-3 py-1 rounded-badge text-label-sm"
               >
                 {tag}
               </span>
@@ -106,10 +106,10 @@ export default function BlogCard({ post, index = 0 }) {
         {/* Read More Button */}
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-2 text-[#FACF2D] font-semibold hover:gap-3 transition-all duration-300 mt-auto"
+          className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-normal mt-auto group/link"
         >
           Read Full Article
-          <ArrowRight className="w-5 h-5" />
+          <ArrowRight className="w-5 h-5 group-hover/link:translate-x-1 transition-transform duration-normal" />
         </Link>
       </div>
     </motion.article>

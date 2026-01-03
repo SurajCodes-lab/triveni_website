@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { vehiclesServices } from "@/utilis/data";
 import { trackNavigation, trackButtonClick, trackPhoneCall, trackModal } from "@/utilis/analytics";
+import { cn } from "@/utilis/cn";
 
 // You'll need to import the AuthModal component
 // import AuthModal from "@/components/Auth/AuthModal";
@@ -120,9 +121,9 @@ const Header = () => {
       <a href="#main-content" className="skip-to-main">
         Skip to main content
       </a>
-      <div className="sticky top-0 z-50 w-full">
-        <header className="bg-[#FACF2D] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="sticky top-0 z-sticky w-full">
+        <header className="bg-primary shadow-lg">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
@@ -147,7 +148,7 @@ const Header = () => {
             <div className="md:hidden">
               <button
                 ref={hamburgerButtonRef}
-                className="text-black focus:outline-none p-3 -mr-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md hover:bg-yellow-500 transition-colors focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                className="text-black focus:outline-none p-3 -mr-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-button hover:bg-primary-dark transition-colors duration-normal focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                 onClick={toggleMenu}
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={menuOpen}
@@ -162,54 +163,27 @@ const Header = () => {
             </div>
 
             {/* Navigation Links */}
-            <nav className="hidden md:flex items-center space-x-6" role="navigation" aria-label="Main navigation">
-              <Link href="/" className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2" onClick={() => handleNavClick('Home', '/')}>
-                Home
-              </Link>
-              <Link href="/about" className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2" onClick={() => handleNavClick('About', '/about')}>
-                About
-              </Link>
-              <Link href="/services" className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2" onClick={() => handleNavClick('Services', '/services')}>
-                Services
-              </Link>
-              <Link href="/tempo-traveller" className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2" onClick={() => handleNavClick('Tempo Traveller', '/tempo-traveller')}>
-               Tempo Traveller
-              </Link>
-              <Link
-                href="/bus-routes"
-                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-                onClick={() => handleNavClick('Bus Routes', '/bus-routes')}
-              >
-                Bus
-              </Link>
-              <Link
-                href="/tour-guide"
-                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-                onClick={() => handleNavClick('Tour Guide', '/tour-guide')}
-              >
-                Tour Guide
-              </Link>
-              <Link
-                href="/sightseeing"
-                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-                onClick={() => handleNavClick('Wanderlust', '/sightseeing')}
-              >
-                Wanderlust
-              </Link>
-              <Link
-                href="/destinations"
-                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-                onClick={() => handleNavClick('Destinations', '/destinations')}
-              >
-                Destinations
-              </Link>
-              <Link
-                href="/contact"
-                className="font-bold text-gray-900 hover:text-black hover:underline underline-offset-4 px-2 py-1 rounded transition-all focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
-                onClick={() => handleNavClick('Contact', '/contact')}
-              >
-                Contact
-              </Link>
+            <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" role="navigation" aria-label="Main navigation">
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/about', label: 'About' },
+                { href: '/services', label: 'Services' },
+                { href: '/tempo-traveller', label: 'Tempo Traveller' },
+                { href: '/bus-routes', label: 'Bus' },
+                { href: '/tour-guide', label: 'Tour Guide' },
+                { href: '/sightseeing', label: 'Wanderlust' },
+                { href: '/destinations', label: 'Destinations' },
+                { href: '/contact', label: 'Contact' },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-label-md text-gray-900 hover:text-black hover:bg-primary-dark/20 px-3 py-2 rounded-button transition-all duration-normal focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                  onClick={() => handleNavClick(link.label, link.href)}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
             {/* Phone Number & Login */}
@@ -237,7 +211,7 @@ const Header = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-modal-backdrop transition-opacity duration-normal"
           onClick={toggleMenu}
           role="dialog"
           aria-modal="true"
@@ -246,12 +220,12 @@ const Header = () => {
           <div
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="bg-gradient-to-br from-gray-900 via-gray-800 to-black w-80 h-full shadow-2xl p-6 relative animate-slide-in-left border-r-4 border-[#FACF2D]"
+            className="bg-gradient-to-br from-gray-900 via-gray-800 to-black w-80 h-full shadow-modal p-6 relative animate-slide-in-left border-r-4 border-primary"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
-              className="text-[#FACF2D] focus:outline-none absolute top-4 right-4 p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-gray-800 hover:bg-[#FACF2D] hover:text-black transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#FACF2D] shadow-lg border-2 border-[#FACF2D]"
+              className="text-primary focus:outline-none absolute top-4 right-4 p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary hover:text-black transition-all duration-normal focus-visible:ring-2 focus-visible:ring-primary shadow-lg border-2 border-primary"
               onClick={toggleMenu}
               aria-label="Close menu"
             >
@@ -266,81 +240,37 @@ const Header = () => {
                   alt="Triveni Cabs"
                   width={60}
                   height={60}
-                  className="rounded-lg"
+                  className="rounded-card"
                 />
                 <div>
-                  <h2 className="text-xl font-bold text-white">Triveni Cabs</h2>
-                  <p className="text-xs text-[#FACF2D]">Your Travel Partner</p>
+                  <h2 className="text-heading-sm text-white">Triveni Cabs</h2>
+                  <p className="text-body-xs text-primary">Your Travel Partner</p>
                 </div>
               </div>
-              <div className="h-1 w-full bg-gradient-to-r from-[#FACF2D] via-amber-400 to-transparent rounded-full"></div>
+              <div className="h-1 w-full bg-gradient-to-r from-primary via-primary-dark to-transparent rounded-full"></div>
             </div>
 
             <nav className="flex flex-col space-y-1" role="navigation" aria-label="Mobile navigation">
-              <Link
-                href="/"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Home', '/', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('About', '/about', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                About
-              </Link>
-              <Link
-                href="/services"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Services', '/services', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Services
-              </Link>
-              <Link
-                href="/tempo-traveller"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Tempo Traveller', '/tempo-traveller', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Tempo Traveller
-              </Link>
-              <Link
-                href="/contact"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Contact', '/contact', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Contact
-              </Link>
-              <Link
-                href="/bus-routes"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Bus Routes', '/bus-routes', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Bus Routes
-              </Link>
-              <Link
-                href="/tour-guide"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Tour Guide', '/tour-guide', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Tour Guide
-              </Link>
-              <Link
-                href="/sightseeing"
-                className="text-gray-200 hover:bg-[#FACF2D] hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-[#FACF2D] hover:shadow-lg hover:shadow-[#FACF2D]/20 focus-visible:ring-2 focus-visible:ring-[#FACF2D] group"
-                onClick={() => { handleNavClick('Wanderlust', '/sightseeing', 'mobile_menu'); toggleMenu(); }}
-              >
-                <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
-                Wanderlust
-              </Link>
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/about', label: 'About' },
+                { href: '/services', label: 'Services' },
+                { href: '/tempo-traveller', label: 'Tempo Traveller' },
+                { href: '/contact', label: 'Contact' },
+                { href: '/bus-routes', label: 'Bus Routes' },
+                { href: '/tour-guide', label: 'Tour Guide' },
+                { href: '/sightseeing', label: 'Wanderlust' },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-gray-200 hover:bg-primary hover:text-black font-semibold py-4 px-4 min-h-[48px] flex items-center rounded-card transition-all duration-normal border-l-4 border-transparent hover:border-primary hover:shadow-primary focus-visible:ring-2 focus-visible:ring-primary group"
+                  onClick={() => { handleNavClick(link.label, link.href, 'mobile_menu'); toggleMenu(); }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-gray-600 group-hover:bg-black mr-3 transition-colors"></span>
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
             {/* Contact Section in Mobile Menu */}
@@ -348,19 +278,13 @@ const Header = () => {
               <a
                 href="tel:+917668570551"
                 onClick={handlePhoneClick}
-                className="flex items-center justify-center gap-3 bg-gradient-to-r from-[#FACF2D] to-amber-400 text-black font-bold py-4 px-6 rounded-full hover:shadow-xl hover:shadow-[#FACF2D]/30 transition-all duration-300 transform hover:scale-105"
+                className="flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-primary-dark text-black font-bold py-4 px-6 rounded-badge hover:shadow-primary-lg transition-all duration-normal transform hover:scale-105"
               >
                 <Phone className="w-5 h-5" />
                 <span>+91 76685 70551</span>
               </a>
-              <p className="text-center text-gray-400 text-xs mt-4">Available 24/7</p>
+              <p className="text-center text-content-muted text-body-xs mt-4">Available 24/7</p>
             </div>
-            {/* <button
-              onClick={handleLogin}
-              className="bg-black mt-10 text-white rounded-full px-10 py-2 text-xs tracking-[0.06rem] hover:bg-gray-800 hover:text-[#FACF2D] transition-all duration-300"
-            >
-              Login
-            </button> */}
           </div>
         </div>
       )}
