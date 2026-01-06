@@ -29,7 +29,7 @@ const HeroBanner = ({ formattedCityName }) => {
     },
     "openingHours": "Mo-Su 00:00-23:59",
     "priceRange": "₹₹",
-    "image": "/images/about/about_banner.webp",
+    "image": "https://www.trivenicabs.in/images/about/about_banner.webp",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
@@ -243,7 +243,7 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
     "@type": "Product",
     "name": `${vehicle.type} Taxi ${cityName}`,
     "description": `Book ${vehicle.type} taxi in ${cityName}. ${vehicle.seating} seater AC vehicle with GPS tracking, music system and professional driver. Best rates guaranteed.`,
-    "image": vehicle.image || "/images/car/car1.webp",
+    "image": vehicle.image?.startsWith('http') ? vehicle.image : `https://www.trivenicabs.in${vehicle.image || "/images/car/car1.webp"}`,
     "brand": {
       "@type": "Brand",
       "name": "Triveni Cabs"

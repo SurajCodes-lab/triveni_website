@@ -151,6 +151,7 @@ export default function CityWeddingPage({ params }) {
     "@type": "Event",
     "name": `${city.name} Wedding Car Rental Services`,
     "description": `Professional wedding car rental services in ${city.name} including luxury cars, baraat tempo travellers, and decorated vehicles for all wedding ceremonies.`,
+    "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {

@@ -761,9 +761,9 @@ export default async function SightseeingDetailPage({ params }) {
             "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
             "image": {
               "@type": "ImageObject",
-              "url": tour.heroImage || `/images/tours/${slug}.jpg`,
+              "url": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
               "caption": tour.name,
-              "contentUrl": tour.heroImage || `/images/tours/${slug}.jpg`
+              "contentUrl": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`
             },
             "touristType": [
               "Families",
@@ -935,7 +935,7 @@ export default async function SightseeingDetailPage({ params }) {
                 "latitude": tour.coordinates.latitude,
                 "longitude": tour.coordinates.longitude
               },
-              "image": tour.heroImage || `/images/tours/${slug}.jpg`,
+              "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
               "url": `https://www.trivenicabs.in/sightseeing/${slug}`
             })
           }}
@@ -977,7 +977,7 @@ export default async function SightseeingDetailPage({ params }) {
             "@type": "Product",
             "name": tour.name,
             "description": tour.fullDescription,
-            "image": tour.heroImage || `/images/tours/${slug}.jpg`,
+            "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
             "brand": {
               "@type": "Brand",
               "name": "Triveni Cabs"
@@ -1130,7 +1130,7 @@ export default async function SightseeingDetailPage({ params }) {
             "@type": "Event",
             "name": tour.name,
             "description": tour.shortDescription,
-            "image": tour.heroImage || `/images/tours/${slug}.jpg`,
+            "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
             "startDate": new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
             "endDate": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
             "eventStatus": "https://schema.org/EventScheduled",
@@ -1174,7 +1174,7 @@ export default async function SightseeingDetailPage({ params }) {
               "@type": "VideoObject",
               "name": `${tour.name} - Tour Preview`,
               "description": tour.shortDescription,
-              "thumbnailUrl": tour.heroImage || `/images/tours/${slug}.jpg`,
+              "thumbnailUrl": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
               "uploadDate": new Date().toISOString(),
               "contentUrl": tour.videoUrl,
               "embedUrl": tour.videoUrl

@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // URL Handling - Ensure consistent canonical URLs (no trailing slashes)
+  trailingSlash: false,
+
   // Image Optimization
   images: {
     formats: ['image/avif', 'image/webp'],
