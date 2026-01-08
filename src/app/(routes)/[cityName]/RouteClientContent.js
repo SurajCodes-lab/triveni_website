@@ -86,7 +86,7 @@ export default function RouteClientContent({
       'Sedan': '/images/car/car1.webp',
       'SUV Ertiga': '/images/car/car2.webp',
       'SUV Innova': '/images/car/car2.webp',
-      'Tempo Traveller': '/images/car/tempo_traveller.webp',
+      'Tempo Traveller': '/images/tempo/17_seater.jpg',
       'Bus': '/images/car/luxury_bus.webp'
     };
     return imageMap[vehicleType] || '/images/car/car1.webp';

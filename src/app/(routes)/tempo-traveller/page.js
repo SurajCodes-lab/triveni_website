@@ -80,7 +80,7 @@ export const metadata = {
     locale: 'en_IN',
     images: [
       {
-        url: '/images/tempo-hero.jpg',
+        url: '/images/tempo_hero_section.jpg',
         width: 1200,
         height: 630,
         alt: 'Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles with Professional Drivers - Triveni Cabs India',
@@ -93,7 +93,7 @@ export const metadata = {
     title: 'Tempo Traveller on Rent 2026 | 12-26 Seater ₹23/km | Triveni Cabs',
     description: 'Book tempo traveller across India. 100+ routes, professional drivers, GPS tracking, ₹23-27/km all-inclusive. Call 7668570551!',
     site: '@trivenicabs',
-    images: ['/images/tempo-hero.jpg'],
+    images: ['/images/tempo_hero_section.jpg'],
   },
   robots: {
     index: true,
@@ -179,7 +179,7 @@ export default function TempoTravellerPage() {
         "dateModified": new Date().toISOString(),
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://www.trivenicabs.in/images/tempo-hero.jpg",
+          "url": "https://www.trivenicabs.in/images/tempo_hero_section.jpg",
           "width": 1200,
           "height": 630,
           "caption": "Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles - Triveni Cabs"
@@ -355,7 +355,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "12 Seater Tempo Traveller on Rent",
                 "description": "AC tempo traveller with pushback seats, music system, GPS tracking for 12 passengers. Ideal for small family groups and corporate teams.",
-                "image": "https://www.trivenicabs.in/images/12-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/tempo/12_seater.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -376,7 +376,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "17 Seater Tempo Traveller on Rent",
                 "description": "Luxury AC tempo traveller with pushback recliner seats, music system, charging points for 17 passengers. Most popular choice for group travel.",
-                "image": "https://www.trivenicabs.in/images/17-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/tempo/17_seater.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -397,7 +397,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "20 Seater Tempo Traveller on Rent",
                 "description": "Spacious AC tempo with LED TV, music system, pushback seats for 20 passengers. Perfect for large group tours and wedding parties.",
-                "image": "https://www.trivenicabs.in/images/20-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/tempo/20_seater.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"
@@ -418,7 +418,7 @@ export default function TempoTravellerPage() {
                 "@type": "Product",
                 "name": "26 Seater Tempo Traveller Maharaja on Rent",
                 "description": "Premium luxury Maharaja tempo traveller with super deluxe recliner seats, LED TV, powerful AC for 26 passengers. Top choice for comfort travel.",
-                "image": "https://www.trivenicabs.in/images/26-seater-tempo.jpg",
+                "image": "https://www.trivenicabs.in/images/tempo/26_seater.jpg",
                 "brand": {
                   "@type": "Brand",
                   "name": "Force Motors"

@@ -502,7 +502,7 @@ import {
     },
     {
       type: "Tempo Traveller",
-      image: "/images/car/tempo_traveller.webp",
+      image: "/images/tempo/17_seater.jpg",
       seating: "12-26 passengers",
       perKm: "₹24/km",
       rating: "4.7",
@@ -1981,7 +1981,7 @@ import {
   export const tempoTravellers = [
     {
       type: "Tempo Traveller - 12",
-      image: "/images/car/tempo_traveller.webp",
+      image: "/images/tempo/12_seater.jpg",
       seating: "12",
       perDay: "₹5,500",
       minDays: "1",
@@ -1992,7 +1992,7 @@ import {
     },
     {
       type: "Tempo Traveller - 16",
-      image: "/images/car/tempo-front.webp",
+      image: "/images/tempo/16_seater.jpg",
       seating: "16",
       perDay: "₹6,000",
       minDays: "1",
@@ -2003,7 +2003,7 @@ import {
     },
     {
       type: "Tempo Traveller - 20",
-      image: "/images/car/tempo-side.webp",
+      image: "/images/tempo/20_seater.jpg",
       seating: "20",
       perDay: "₹6,500",
       minDays: "1",
@@ -2014,7 +2014,7 @@ import {
     },
     {
       type: "Tempo Traveller - 26",
-      image: "/images/car/tempo-side2.webp",
+      image: "/images/tempo/26_seater.jpg",
       seating: "26",
       perDay: "₹7,500",
       minDays: "1",

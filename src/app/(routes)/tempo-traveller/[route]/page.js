@@ -96,7 +96,7 @@ export async function generateMetadata({ params }) {
         siteName: 'Triveni Cabs - Chardham Yatra',
         images: [
           {
-            url: chardhamData.images?.hero || '/images/tempo-hero.jpg',
+            url: chardhamData.images?.hero || '/images/tempo_hero_section.jpg',
             width: 1200,
             height: 630,
             alt: chardhamData.title,
@@ -130,7 +130,7 @@ export async function generateMetadata({ params }) {
         siteName: 'Triveni Cabs - Tempo Traveller Rental',
         images: [
           {
-            url: '/images/tempo-hero.jpg',
+            url: '/images/tempo_hero_section.jpg',
             width: 1200,
             height: 630,
             alt: `Tempo Traveller on Rent from ${cityData.name} - Triveni Cabs`,
@@ -143,7 +143,7 @@ export async function generateMetadata({ params }) {
         title: `Tempo Traveller from ${cityData.name} | ${routeCount} Destinations | ₹23/km`,
         description: `${cityData.tagline} | Book tempo traveller to ${cityData.popularDestinations.join(', ')} | Call +91-7668570551`,
         site: '@trivenicabs',
-        images: ['/images/tempo-hero.jpg'],
+        images: ['/images/tempo_hero_section.jpg'],
       },
       robots: {
         index: true,
@@ -199,7 +199,7 @@ export async function generateMetadata({ params }) {
       siteName: 'Triveni Cabs - Tempo Traveller Rental',
       images: [
         {
-          url: '/images/tempo-hero.jpg',
+          url: '/images/tempo_hero_section.jpg',
           width: 1200,
           height: 630,
           alt: `${originFormatted} to ${destinationFormatted} Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles - Triveni Cabs`,
@@ -212,7 +212,7 @@ export async function generateMetadata({ params }) {
       title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | AC 12-26 Seater | ₹23/km`,
       description: `Book tempo traveller on rent | Professional drivers | GPS tracking | Pushback seats | 24/7 service | Call +91-7668570551`,
       site: '@trivenicabs',
-      images: ['/images/tempo-hero.jpg'],
+      images: ['/images/tempo_hero_section.jpg'],
     },
     robots: {
       index: true,

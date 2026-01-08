@@ -227,7 +227,7 @@ const WeddingCarCollection = () => {
               <div className="w-full lg:w-1/3">
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden">
                   <Image
-                    src="/images/car/tempo_traveller.webp"
+                    src="/images/tempo/17_seater.jpg"
                     alt="Tempo Travellers"
                     fill
                     className="object-cover"

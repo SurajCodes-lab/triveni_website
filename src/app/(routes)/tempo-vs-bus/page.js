@@ -22,7 +22,7 @@ export const metadata = {
 const comparisonData = {
   tempo: {
     name: "Tempo Traveller",
-    image: "/images/car/tempo.webp",
+    image: "/images/tempo/17_seater.jpg",
     price: "₹22/km",
     capacity: "12-26 Passengers",
     luggage: "Ample Boot Space",
