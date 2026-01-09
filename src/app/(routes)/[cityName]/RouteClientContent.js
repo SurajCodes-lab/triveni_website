@@ -1,17 +1,72 @@
 'use client';
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head";
-import { Phone, MapPin, Car, ChevronRight, Users, ArrowRight, Clock, Info, Star, Shield, CheckCircle, Navigation, CreditCard, Headphones, Award } from "lucide-react";
+import {
+  Phone, MapPin, Car, ChevronRight, Users, ArrowRight, Clock,
+  Star, Shield, CheckCircle, Navigation, CreditCard, Headphones,
+  Award, Sparkles, Route, Fuel, Calendar, Zap, Gift,
+  ChevronDown, Play, BadgeCheck, Timer, Gauge, Wifi, Music,
+  Snowflake, MapPinned, CircleDot, TrendingUp
+} from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import { phoneNumber } from "@/utilis/data";
 import { getRouteOffices } from "@/utilis/officeLocations";
 import OfficeLocations from "@/components/cities/OfficeLocations";
-import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Helper function to create route slug
+// City hero images
+const cityHeroData = {
+  'Delhi': { image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg', icon: '🏛️', accent: '#4F46E5' },
+  'Jaipur': { image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', icon: '🏰', accent: '#DB2777' },
+  'Chandigarh': { image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', icon: '🌳', accent: '#059669' },
+  'Agra': { image: '/images/sightseeing/Agra/Agra_Hero_section.jpg', icon: '🕌', accent: '#D97706' },
+  'Shimla': { image: '/images/sightseeing/Shimla/shimla_hero_section.jpg', icon: '🏔️', accent: '#0891B2' },
+  'Dehradun': { image: '/images/chardham/chardham-dehradun-hero.png', icon: '🌲', accent: '#16A34A' },
+  'Rishikesh': { image: '/images/chardham/chardham-rishikesh-hero.png', icon: '🧘', accent: '#0D9488' },
+  'Haridwar': { image: '/images/chardham/chardham-haridwar-hero.png', icon: '🙏', accent: '#EA580C' },
+  'Manali': { image: '/images/packages/manali.webp', icon: '⛷️', accent: '#2563EB' },
+  'Amritsar': { image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg', icon: '🛕', accent: '#CA8A04' },
+  'Jodhpur': { image: '/images/packages/rajasthan.webp', icon: '🏯', accent: '#4F46E5' },
+  'Udaipur': { image: '/images/packages/rajasthan.webp', icon: '🚣', accent: '#7C3AED' },
+  'Ayodhya': { image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png', icon: '🛕', accent: '#DC2626' },
+  'Ahmedabad': { image: '/images/destinations/delhi.webp', icon: '🏛️', accent: '#B91C1C' }
+};
+
+// Vehicle image mapping
+const vehicleImageMap = {
+  'Sedan': '/images/car/car1.webp',
+  'SUV Ertiga': '/images/car/car2.webp',
+  'SUV Innova': '/images/car/car2.webp',
+  '12 Seater Tempo': '/images/tempo/12_seater.jpg',
+  '16 Seater Tempo': '/images/tempo/16_seater.jpg',
+  '17 Seater Tempo': '/images/tempo/17_seater.jpg',
+  '20 Seater Tempo': '/images/tempo/20_seater.jpg',
+  '26 Seater Maharaja': '/images/tempo/26_seater.jpg',
+  'Tempo Traveller': '/images/tempo/17_seater.jpg',
+  '22 Seater Mini Bus': '/images/bus/22_SEATER_BUS.jpg',
+  '25 Seater Mini Bus': '/images/bus/25_SEATER_BUS.jpg',
+  '27 Seater Coach': '/images/bus/27_SEATER_BUS.jpg',
+  '35 Seater Coach': '/images/bus/35_SEATER_BUS.jpg',
+  '41 Seater Bus': '/images/bus/41_SEATER_BUS.jpg',
+  '45 Seater Luxury Bus': '/images/bus/45_SEATER_BUS.jpg',
+  '52 Seater Bus': '/images/bus/49_SEATER_BUS.jpg',
+  '56 Seater Volvo Bus': '/images/bus/56_SEATER_BUS.jpg'
+};
+
+const vehicleCapacityMap = {
+  'Sedan': { seats: '4', bags: '2', icon: Car },
+  'SUV Ertiga': { seats: '6', bags: '3', icon: Car },
+  'SUV Innova': { seats: '7', bags: '4', icon: Car },
+  '12 Seater Tempo': { seats: '12', bags: '12', icon: Users },
+  '16 Seater Tempo': { seats: '16', bags: '16', icon: Users },
+  '17 Seater Tempo': { seats: '17', bags: '17', icon: Users },
+  '20 Seater Tempo': { seats: '20', bags: '20', icon: Users },
+  '26 Seater Maharaja': { seats: '26', bags: '26', icon: Users },
+  'Tempo Traveller': { seats: '17', bags: '17', icon: Users }
+};
+
 function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
   return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -28,1002 +83,973 @@ export default function RouteClientContent({
   routes,
   vehiclesServices
 }) {
-  const [activeTab, setActiveTab] = useState('oneWay');
-  const [vehiclePricingType, setVehiclePricingType] = useState({});
+  const [tripType, setTripType] = useState('oneWay');
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [expandedFaq, setExpandedFaq] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
-  // Memoize office locations
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const routeOffices = useMemo(() =>
     getRouteOffices(formattedCityName, formattedDestination),
     [formattedCityName, formattedDestination]
   );
 
-  // Optimized handlers
   const handleCallNow = useCallback(() => {
     window.open(`tel:+91${phoneNumber}`, '_blank');
   }, []);
 
   const handleWhatsApp = useCallback(() => {
-    const message = `Hi, I want to book a cab from ${formattedCityName} to ${formattedDestination}. Please share pricing and availability.`;
+    const message = `Hi, I want to book a ${tripType === 'roundTrip' ? 'round trip' : 'one-way'} cab from ${formattedCityName} to ${formattedDestination}. Please share pricing and availability.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-  }, [formattedCityName, formattedDestination]);
+  }, [formattedCityName, formattedDestination, tripType]);
 
-  // Memoized vehicle filtering
-  const { filteredVehicles, roundTripOnlyVehicles } = useMemo(() => {
-    if (!route.prices) return { filteredVehicles: [], roundTripOnlyVehicles: [] };
+  const cityData = cityHeroData[formattedCityName] || {
+    image: '/images/about/about_banner.webp',
+    icon: '📍',
+    accent: '#FACF2D'
+  };
 
-    const filtered = activeTab === 'oneWay'
-      ? route.prices.filter(price =>
-        price.vehicle &&
-        !price.vehicle.toLowerCase().includes('bus') &&
-        !price.vehicle.toLowerCase().includes('tempo')
-      )
-      : route.prices;
+  // Filter vehicles based on trip type
+  const filteredVehicles = useMemo(() => {
+    if (!route?.prices) return [];
+    if (tripType === 'oneWay') {
+      return route.prices.filter(p =>
+        p.vehicle &&
+        !p.vehicle.toLowerCase().includes('bus') &&
+        !p.vehicle.toLowerCase().includes('tempo')
+      );
+    }
+    return route.prices;
+  }, [route?.prices, tripType]);
 
-    const roundTripOnly = route.prices.filter(price =>
-      price.vehicle && (
-        price.vehicle.toLowerCase().includes('bus') ||
-        price.vehicle.toLowerCase().includes('tempo')
+  const tempoAndBusVehicles = useMemo(() => {
+    if (!route?.prices) return [];
+    return route.prices.filter(p =>
+      p.vehicle && (
+        p.vehicle.toLowerCase().includes('bus') ||
+        p.vehicle.toLowerCase().includes('tempo')
       )
     );
+  }, [route?.prices]);
 
-    return { filteredVehicles: filtered, roundTripOnlyVehicles: roundTripOnly };
-  }, [route.prices, activeTab]);
-
-  // Memoized starting price
   const startingPrice = useMemo(() => {
-    if (!filteredVehicles.length) return "₹2760";
-
+    if (!filteredVehicles.length) return "2,760";
     const prices = filteredVehicles.map(p => {
-      const price = activeTab === 'oneWay' ? p.price : p.roundTrip;
-      return parseInt(price.replace('₹', '').replace(',', ''));
+      const price = tripType === 'oneWay' ? p.price : p.roundTrip;
+      return parseInt(price?.replace('₹', '').replace(',', '') || '0');
     });
-    return `₹${Math.min(...prices).toLocaleString()}`;
-  }, [filteredVehicles, activeTab]);
+    return Math.min(...prices).toLocaleString();
+  }, [filteredVehicles, tripType]);
 
-  // Optimized vehicle image mapping
-  const getVehicleImage = useCallback((vehicleType) => {
-    const imageMap = {
-      'Sedan': '/images/car/car1.webp',
-      'SUV Ertiga': '/images/car/car2.webp',
-      'SUV Innova': '/images/car/car2.webp',
-      'Tempo Traveller': '/images/tempo/17_seater.jpg',
-      'Bus': '/images/car/luxury_bus.webp'
-    };
-    return imageMap[vehicleType] || '/images/car/car1.webp';
-  }, []);
-
-  // Get vehicle capacity
-  const getVehicleCapacity = useCallback((vehicleType) => {
-    const capacityMap = {
-      'Sedan': '4 passengers',
-      'SUV Ertiga': '6 passengers',
-      'SUV Innova': '7 passengers',
-      'Tempo Traveller': '25 passengers',
-      'Bus': '35 passengers'
-    };
-    return capacityMap[vehicleType] || '4-6 passengers';
-  }, []);
-
-  const toggleVehiclePricing = useCallback((vehicleIndex) => {
-    setVehiclePricingType(prev => ({
-      ...prev,
-      [vehicleIndex]: prev[vehicleIndex] === 'roundTrip' ? 'oneWay' : 'roundTrip'
-    }));
-  }, []);
-
-  const getVehiclePricingType = useCallback((vehicleIndex) => {
-    return vehiclePricingType[vehicleIndex] || activeTab;
-  }, [vehiclePricingType, activeTab]);
-
-  const handleTabChange = useCallback((newTab) => {
-    setActiveTab(newTab);
-    setVehiclePricingType({});
-  }, []);
-
-  // Enhanced SEO structured data with multiple schemas
-  const structuredData = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        "@id": `https://www.trivenicabs.in/${createRouteSlug(cityName, destination)}#service`,
-        "name": `${formattedCityName} to ${formattedDestination} Cab Service`,
-        "description": `Book reliable taxi service from ${formattedCityName} to ${formattedDestination}. Professional drivers, AC vehicles, transparent pricing starting from ${startingPrice}. 24/7 booking available.`,
-        "provider": {
-          "@type": "Organization",
-          "@id": "https://www.trivenicabs.in",
-          "name": "Triveni Cabs",
-          "url": "https://www.trivenicabs.in",
-          "telephone": `+91${phoneNumber}`,
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IN"
-          }
-        },
-        "areaServed": [
-          {
-            "@type": "Place",
-            "name": formattedCityName
-          },
-          {
-            "@type": "Place",
-            "name": formattedDestination
-          }
-        ],
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "INR",
-          "price": startingPrice.replace('₹', '').replace(',', ''),
-          "description": `Cab fare from ${formattedCityName} to ${formattedDestination}`,
-          "availability": "https://schema.org/InStock",
-          "validFrom": new Date().toISOString()
-        },
-        "serviceType": "Transportation",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Vehicle Types",
-          "itemListElement": filteredVehicles.map((vehicle, index) => ({
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": `${vehicle.vehicle} - ${formattedCityName} to ${formattedDestination}`,
-              "description": `${vehicle.vehicle} cab service with ${getVehicleCapacity(vehicle.vehicle)}`
-            },
-            "price": vehicle.price?.replace('₹', '').replace(',', '') || "0",
-            "priceCurrency": "INR"
-          }))
-        }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.trivenicabs.in",
-        "name": "Triveni Cabs",
-        "url": "https://www.trivenicabs.in",
-        "telephone": `+91${phoneNumber}`,
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": `+91${phoneNumber}`,
-          "contactType": "customer service",
-          "availableLanguage": ["English", "Hindi"]
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "1250",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.trivenicabs.in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": `${formattedCityName} Cabs`,
-            "item": `https://www.trivenicabs.in/${cityName}`
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": `${formattedCityName} to ${formattedDestination}`,
-            "item": `https://www.trivenicabs.in/${createRouteSlug(cityName, destination)}`
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `How much does a taxi cost from ${formattedCityName} to ${formattedDestination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Taxi fare from ${formattedCityName} to ${formattedDestination} starts from ${startingPrice} for one-way trips. The exact cost depends on vehicle type and trip duration. All prices include fuel, driver charges, and applicable taxes.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `How long does it take from ${formattedCityName} to ${formattedDestination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `The journey from ${formattedCityName} to ${formattedDestination} takes approximately ${route.time || estimatedTime} covering ${route.distance || estimatedDistance}. Travel time may vary based on traffic and weather conditions.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Is one-way cab booking available from ${formattedCityName} to ${formattedDestination}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes, we provide one-way taxi service from ${formattedCityName} to ${formattedDestination} with no return charges. Book Sedan, SUV, or larger vehicles for comfortable travel with transparent pricing.`
-            }
-          }
-        ]
-      }
-    ]
-  }), [formattedCityName, formattedDestination, startingPrice, filteredVehicles, route, cityName, destination]);
-  const allPageKeywords = useMemo(() =>
-    getAllKeywordsForPage(formattedCityName, formattedDestination),
-    [formattedCityName, formattedDestination]
-  );
+  const faqs = [
+    {
+      q: `What is the taxi fare from ${formattedCityName} to ${formattedDestination}?`,
+      a: `The cab fare starts from ₹${startingPrice} for a sedan. SUV rates start from ₹${parseInt(startingPrice.replace(',', '')) + 600}. All prices include fuel, driver charges, and applicable taxes. Toll and parking charges are extra.`
+    },
+    {
+      q: `How long does it take to travel from ${formattedCityName} to ${formattedDestination}?`,
+      a: `The journey takes approximately ${route.time || estimatedTime}, covering a distance of ${route.distance || estimatedDistance}. Travel time may vary based on traffic, weather, and road conditions.`
+    },
+    {
+      q: `Is one-way cab available from ${formattedCityName} to ${formattedDestination}?`,
+      a: `Yes! We offer affordable one-way cab service. You only pay for the distance traveled without any return charges. Sedans and SUVs are available for one-way booking.`
+    },
+    {
+      q: `What vehicles are available for this route?`,
+      a: `We offer Sedan (4 seater), SUV Ertiga (6 seater), SUV Innova (7 seater), Tempo Traveller (12-26 seater), and Buses (22-56 seater). All vehicles are AC, GPS-enabled, and well-maintained.`
+    },
+    {
+      q: `How do I book a cab from ${formattedCityName} to ${formattedDestination}?`,
+      a: `Simply call us at ${phoneNumber} or WhatsApp for instant booking. Share your pickup location, date, time, and number of passengers. You'll receive immediate confirmation with driver details.`
+    },
+    {
+      q: `What is included in the fare?`,
+      a: `Our fare includes vehicle rental, fuel charges, driver allowance, GST, and basic insurance. Toll taxes, parking fees, and state permits are charged extra as per actuals.`
+    }
+  ];
 
   return (
-    <>
-      {/* Enhanced Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+    <div className="min-h-screen bg-[#FAFAFA]">
 
-      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-        {/* MODERN HERO SECTION WITH BACKGROUND IMAGE */}
-        <header className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden">
-          {/* Optimized Background Image */}
-          <Image
-            src="/images/about/about_banner.webp"
-            alt={`${formattedCityName} to ${formattedDestination} cab service - Book online taxi booking - Best car rental service - One way and round trip available`}
-            fill
-            priority
-            quality={85}
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          {/* Dark Gradient Overlay on Image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+      {/* ==================== HERO SECTION - BENTO STYLE ==================== */}
+      <section className="relative min-h-[100svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
 
-          {/* Animated Gradient Accent Layer */}
-          <div
-            className="absolute inset-0 opacity-25"
-            style={{
-              background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
-              animation: 'gradientMove 10s ease-in-out infinite'
-            }}
-          />
+        {/* Gradient Orbs */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#FACF2D]/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2" />
 
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 md:pt-8 md:pb-28">
 
-          {/* Main Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
-            {/* Breadcrumb - Modernized */}
-            <nav className="mb-6" aria-label="Breadcrumb">
-              <ol className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                  <Link
-                    href="/"
-                    className="text-white hover:text-[#FACF2D] transition-colors text-sm font-medium"
-                    itemProp="item"
-                  >
-                    <span itemProp="name">Home</span>
-                  </Link>
-                  <meta itemProp="position" content="1" />
-                </li>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                  <Link
-                    href={`/${cityName}`}
-                    className="text-white hover:text-[#FACF2D] transition-colors text-sm font-medium"
-                    itemProp="item"
-                  >
-                    <span itemProp="name">{formattedCityName}</span>
-                  </Link>
-                  <meta itemProp="position" content="2" />
-                </li>
-                <ChevronRight className="w-4 h-4 text-white/60" />
-                <li className="text-[#FACF2D] font-semibold text-sm" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                  <span itemProp="name">{formattedDestination}</span>
-                  <meta itemProp="position" content="3" />
-                </li>
-              </ol>
-            </nav>
+          {/* Breadcrumb */}
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <ol className="flex items-center gap-2 text-sm">
+              <li>
+                <Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/40" />
+              <li>
+                <Link href={`/${cityName}`} className="text-white/60 hover:text-white transition-colors">{formattedCityName}</Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/40" />
+              <li className="text-[#FACF2D] font-medium">{formattedDestination}</li>
+            </ol>
+          </motion.nav>
 
-            {/* Hero Content - Modernized */}
-            <div className="max-w-4xl">
-              {/* Animated Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-5 py-2.5 rounded-full mb-4 border-2 border-[#FACF2D]/40 shadow-xl">
-                <MapPin className="w-5 h-5 text-[#FACF2D]" />
-                <span className="font-bold text-white text-sm">Premium Cab Service 2026</span>
-              </div>
+          {/* BENTO GRID HERO */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
 
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight">
-                {formattedCityName} to{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400">
+            {/* Main Content Card - Left Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-7 xl:col-span-8"
+            >
+              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 md:p-10 border border-white/10 h-full">
+
+                {/* Route Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#FACF2D] px-4 py-2 rounded-full mb-6">
+                  <Route className="w-4 h-4 text-black" />
+                  <span className="text-black font-bold text-sm">OUTSTATION TAXI</span>
+                </div>
+
+                {/* Main Title */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
+                  {formattedCityName}
+                  <span className="text-[#FACF2D]"> to </span>
                   {formattedDestination}
-                </span>
-                <br />
-                <span className="text-2xl md:text-3xl lg:text-4xl text-white/90">
-                  Cab Service - Starting {startingPrice}
-                </span>
-              </h1>
+                </h1>
 
-              <p className="text-base md:text-lg lg:text-xl text-white/95 mb-8 max-w-3xl leading-relaxed font-light">
-                ✅ Professional Drivers • ✅ Clean AC Vehicles • ✅ Transparent Pricing<br className="hidden md:block" />
-                ✅ GPS Tracking • ✅ 24/7 Support • ✅ Instant Booking
-              </p>
-
-              {/* Modernized Info Pills with Animation */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
-                  <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                    <MapPin className="w-5 h-5 text-black" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-white/70 font-medium">Distance</div>
-                    <div className="font-bold" itemProp="distance">{route.distance || estimatedDistance}</div>
-                  </div>
-                </div>
-
-                <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
-                  <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                    <Clock className="w-5 h-5 text-black" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-white/70 font-medium">Duration</div>
-                    <div className="font-bold" itemProp="duration">{route.time || estimatedTime}</div>
-                  </div>
-                </div>
-
-                <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
-                  <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                    <Star className="w-5 h-5 text-black" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-white/70 font-medium">Rating</div>
-                    <div className="font-bold" itemProp="aggregateRating">4.8 ⭐</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Modernized CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={handleCallNow}
-                  className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
-                  aria-label={`Call ${phoneNumber} to book taxi from ${formattedCityName} to ${formattedDestination}`}
-                  itemProp="telephone"
-                >
-                  <Phone className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
-                  <span>Call Now - {phoneNumber}</span>
-                </button>
-
-                <button
-                  onClick={handleWhatsApp}
-                  className="group bg-white text-black hover:bg-[#FACF2D] px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
-                  aria-label={`WhatsApp booking for ${formattedCityName} to ${formattedDestination} cab service`}
-                >
-                  <BsWhatsapp className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" />
-                  <span>WhatsApp Booking</span>
-                </button>
-              </div>
-
-              {/* Trust Badges */}
-              <div className="flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-white/20">
-                <div className="flex items-center text-white/90">
-                  <CheckCircle className="w-5 h-5 mr-2 text-[#FACF2D]" />
-                  <span className="text-sm font-medium">Verified Drivers</span>
-                </div>
-                <div className="flex items-center text-white/90">
-                  <Shield className="w-5 h-5 mr-2 text-[#FACF2D]" />
-                  <span className="text-sm font-medium">Safe Journey</span>
-                </div>
-                <div className="flex items-center text-white/90">
-                  <Award className="w-5 h-5 mr-2 text-[#FACF2D]" />
-                  <span className="text-sm font-medium">1000+ Happy Customers</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Decorative Wave at Bottom */}
-          <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-            <svg viewBox="0 0 1440 120" fill="none" className="w-full h-auto">
-              <path
-                d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-        </header>
-
-        {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-
-          {/* Enhanced Service Highlights Section */}
-          <section className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8" itemScope itemType="https://schema.org/Service">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
-              Why Choose Our Taxi Service?
-            </h2>
-            <p className="text-gray-600 text-center mb-6 max-w-3xl mx-auto">
-              Experience premium cab service from {formattedCityName} to {formattedDestination} with verified professional drivers, transparent pricing, GPS enabled vehicles, and 24/7 customer support.
-              Book your taxi online with instant confirmation. We offer one way, round trip, and outstation car rental services at competitive rates.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">Safe & Secure Travel</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">Professional verified drivers with valid licenses, real-time GPS tracking, 24x7 customer support, emergency assistance, and sanitized AC vehicles for your safe journey</p>
-              </div>
-
-              <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CreditCard className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">Transparent Pricing</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">No hidden charges, fixed competitive rates, instant booking confirmation, multiple payment options (cash, card, UPI), and affordable fares starting {startingPrice}</p>
-              </div>
-
-              <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Car className="w-8 h-8 text-yellow-600" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">Premium Vehicle Fleet</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">Well-maintained AC Sedan, SUV, Innova, Ertiga, Tempo Traveller vehicles. Clean sanitized interiors, comfortable seating, spacious luggage space, and latest models with experienced chauffeurs</p>
-              </div>
-
-              <div className="text-center p-4" itemScope itemType="https://schema.org/ServiceFeature">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Headphones className="w-8 h-8 text-purple-600" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2" itemProp="name">24x7 Booking Support</h3>
-                <p className="text-gray-600 text-sm" itemProp="description">Round-the-clock assistance, live GPS tracking, instant customer support via call/WhatsApp, easy cancellation, and quick refund process</p>
-              </div>
-            </div>
-          </section>
-
-          {/* Enhanced Key Benefits Section */}
-          <section className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 md:p-8 mb-8">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Key Benefits of Our Service
-              </h2>
-              <p className="text-gray-600 max-w-3xl mx-auto">
-                Experience hassle-free travel with our premium outstation taxi service. Book affordable one way or round trip packages with professional experienced drivers, competitive rates, and reliable 24x7 car rental service. Get instant confirmation and choose from multiple vehicle options.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <Navigation className="w-8 h-8 text-blue-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">GPS Tracked Vehicles</h3>
-                <p className="text-gray-600 text-sm">Real-time GPS location sharing and smart route optimization for the fastest and safest journey. Track your cab online throughout the trip with live updates and estimated arrival times.</p>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <Award className="w-8 h-8 text-green-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Experienced Professional Drivers</h3>
-                <p className="text-gray-600 text-sm">Verified professional chauffeurs with 5+ years experience and extensive knowledge of highway routes, traffic patterns, and best stopover points for a comfortable long distance journey.</p>
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-sm">
-                <Clock className="w-8 h-8 text-yellow-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Punctual Service</h3>
-                <p className="text-gray-600 text-sm">Always on-time doorstep pickup and drop service ensuring you reach your destination as per schedule. Book in advance or last minute with guaranteed punctuality.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* Enhanced Vehicle Pricing Section with better SEO structure */}
-          <section className="bg-white rounded-xl shadow-lg overflow-hidden mb-8" itemScope itemType="https://schema.org/Offer">
-            <header className="bg-gray-50 px-6 py-4 border-b flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
-                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                  Vehicle Options & Pricing
-                </h2>
-                <p className="text-gray-600 text-sm">
-                  Choose from our fleet of AC vehicles including affordable Sedan, comfortable SUV, spacious Innova, Ertiga, and large Tempo Traveller. All prices include fuel charges, driver allowance, toll taxes, and parking. One way and round trip packages available.
+                <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
+                  Book reliable cab service with professional drivers, AC vehicles, and transparent pricing.
                 </p>
-              </div>
 
-              {/* Trip Type Toggle */}
-              <div className="flex bg-gray-100 rounded-lg p-1" role="tablist">
-                <button
-                  onClick={() => handleTabChange('oneWay')}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'oneWay'
-                    ? 'bg-white text-black shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  role="tab"
-                  aria-selected={activeTab === 'oneWay'}
-                  aria-label="One way cab booking"
-                >
-                  One Way
-                </button>
-                <button
-                  onClick={() => handleTabChange('roundTrip')}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'roundTrip'
-                    ? 'bg-white text-black shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  role="tab"
-                  aria-selected={activeTab === 'roundTrip'}
-                  aria-label="Round trip cab booking"
-                >
-                  Round Trip
-                </button>
-              </div>
-            </header>
-
-            <div className="p-6">
-              {/* Enhanced Vehicle Cards with microdata */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {filteredVehicles.length > 0 ? filteredVehicles.map((price, index) => {
-                  const currentPricingType = getVehiclePricingType(index);
-                  const isRoundTrip = currentPricingType === 'roundTrip';
-
-                  return (
-                    <article
-                      key={index}
-                      className="bg-gray-50 border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
-                      itemScope
-                      itemType="https://schema.org/Product"
-                    >
-                      {/* Enhanced Vehicle Image with better alt text */}
-                      <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
-                        <Image
-                          src={getVehicleImage(price.vehicle)}
-                          alt={`${price.vehicle} taxi for ${formattedCityName} to ${formattedDestination} - AC cab service - Online booking - Affordable rates - Professional driver - One way and round trip available`}
-                          fill
-                          className="object-contain p-2"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          priority={index < 3}
-                          itemProp="image"
-                        />
+                {/* Quick Stats Row */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  <div className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                        <Navigation className="w-5 h-5 text-white" />
                       </div>
-
-                      {/* Enhanced Vehicle Info */}
-                      <div className="text-center">
-                        <h3 className="font-bold text-lg mb-2" itemProp="name">
-                          {price.vehicle} - {formattedCityName} to {formattedDestination}
-                        </h3>
-
-                        <div className="text-gray-600 text-sm flex items-center justify-center mb-4" itemProp="description">
-                          <Users className="w-4 h-4 mr-1" />
-                          {price.capacity || getVehicleCapacity(price.vehicle)} • AC • Professional Driver
-                        </div>
-
-                        {/* Enhanced Round Trip Toggle */}
-                        <div className="flex items-center justify-center mb-4">
-                          <label className="flex items-center cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={isRoundTrip}
-                              onChange={() => toggleVehiclePricing(index)}
-                              className="sr-only"
-                              aria-label={`Toggle round trip for ${price.vehicle}`}
-                            />
-                            <div className="relative">
-                              <div className={`block w-10 h-6 rounded-full transition-colors ${isRoundTrip ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
-                              <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${isRoundTrip ? 'translate-x-4' : ''}`}></div>
-                            </div>
-                            <span className="ml-2 text-sm text-gray-600">Round Trip Booking</span>
-                          </label>
-                        </div>
-
-                        {/* Enhanced Price with microdata */}
-                        <div className="mb-6" itemProp="offers" itemScope itemType="https://schema.org/Offer">
-                          <div className={`text-2xl md:text-3xl font-bold ${isRoundTrip ? 'text-blue-600' : 'text-green-600'}`}>
-                            <span itemProp="price">{isRoundTrip ? price.roundTrip : price.price}</span>
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            <span itemProp="description">{isRoundTrip ? 'Round Trip Fare' : 'One Way Fare'}</span>
-                          </div>
-                          <meta itemProp="priceCurrency" content="INR" />
-                          <meta itemProp="availability" content="https://schema.org/InStock" />
-                        </div>
-
-                        {/* Enhanced Book Button */}
-                        <button
-                          onClick={handleWhatsApp}
-                          className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-colors"
-                          aria-label={`Book ${price.vehicle} cab from ${formattedCityName} to ${formattedDestination}`}
-                        >
-                          Book {price.vehicle} Now
-                        </button>
+                      <div>
+                        <p className="text-white font-bold text-lg">{route.distance || estimatedDistance}</p>
+                        <p className="text-white/50 text-xs">Distance</p>
                       </div>
-                    </article>
-                  );
-                }) : (
-                  // Fallback vehicles
-                  <>
-                    <article className="bg-gray-50 border border-gray-200 rounded-xl p-6" itemScope itemType="https://schema.org/Product">
-                      <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
-                        <Image
-                          src="/images/car/car1.webp"
-                          alt={`Sedan taxi booking ${formattedCityName} to ${formattedDestination} - AC cab service - Swift Dzire - Honda City - Best 4 seater car rental - Cheap taxi fare - Online booking available`}
-                          fill
-                          className="object-contain p-2"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          priority
-                          itemProp="image"
-                        />
-                      </div>
-                      <div className="text-center">
-                        <h3 className="font-bold text-lg mb-2" itemProp="name">Sedan Cab - {formattedCityName} to {formattedDestination}</h3>
-                        <div className="text-gray-600 text-sm flex items-center justify-center mb-4" itemProp="description">
-                          <Users className="w-4 h-4 mr-1" />
-                          4 passengers • AC • Professional Driver
-                        </div>
-                        <div className="text-2xl font-bold text-green-600 mb-6" itemProp="offers" itemScope itemType="https://schema.org/Offer">
-                          <span itemProp="price">₹12/km</span>
-                          <meta itemProp="priceCurrency" content="INR" />
-                        </div>
-                        <button
-                          onClick={handleWhatsApp}
-                          className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-colors"
-                          aria-label={`Book Sedan cab from ${formattedCityName} to ${formattedDestination}`}
-                        >
-                          Book Sedan Cab
-                        </button>
-                      </div>
-                    </article>
+                    </div>
+                  </div>
 
-                    <article className="bg-gray-50 border border-gray-200 rounded-xl p-6" itemScope itemType="https://schema.org/Product">
-                      <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden bg-white">
-                        <Image
-                          src="/images/car/car2.webp"
-                          alt={`SUV taxi booking ${formattedCityName} to ${formattedDestination} - Spacious AC cab service - Innova - Ertiga - 6-7 seater car rental - Best family taxi - Comfortable outstation cab`}
-                          fill
-                          className="object-contain p-2"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          itemProp="image"
-                        />
+                  <div className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                        <Timer className="w-5 h-5 text-white" />
                       </div>
-                      <div className="text-center">
-                        <h3 className="font-bold text-lg mb-2" itemProp="name">SUV Cab - {formattedCityName} to {formattedDestination}</h3>
-                        <div className="text-gray-600 text-sm flex items-center justify-center mb-4" itemProp="description">
-                          <Users className="w-4 h-4 mr-1" />
-                          6-7 passengers • AC • Professional Driver
-                        </div>
-                        <div className="text-2xl font-bold text-green-600 mb-6" itemProp="offers" itemScope itemType="https://schema.org/Offer">
-                          <span itemProp="price">₹16/km</span>
-                          <meta itemProp="priceCurrency" content="INR" />
-                        </div>
-                        <button
-                          onClick={handleWhatsApp}
-                          className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-colors"
-                          aria-label={`Book SUV cab from ${formattedCityName} to ${formattedDestination}`}
-                        >
-                          Book SUV Cab
-                        </button>
+                      <div>
+                        <p className="text-white font-bold text-lg">{route.time || estimatedTime}</p>
+                        <p className="text-white/50 text-xs">Duration</p>
                       </div>
-                    </article>
-                  </>
-                )}
-              </div>
+                    </div>
+                  </div>
 
-              {/* Enhanced Round Trip Only Vehicles Info */}
-              {activeTab === 'oneWay' && roundTripOnlyVehicles.length > 0 && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <div className="flex items-start gap-3">
-                    <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-lg font-semibold text-blue-900 mb-2">
-                        Group Travel Options - {formattedCityName} to {formattedDestination}
-                      </h3>
-                      <p className="text-blue-700 mb-4 text-sm">
-                        For family groups and corporate travel, book our Tempo Travellers and Luxury Buses exclusively for round-trip journeys.
-                        Perfect for {formattedCityName} to {formattedDestination} group tours and family outings.
-                      </p>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {roundTripOnlyVehicles.slice(0, 2).map((vehicle, index) => (
-                          <div key={index} className="bg-white rounded-lg p-3 border border-blue-200">
-                            <div className="flex items-center gap-3">
-                              <div className="relative w-12 h-8 rounded overflow-hidden bg-gray-50 flex-shrink-0">
-                                <Image
-                                  src={getVehicleImage(vehicle.vehicle)}
-                                  alt={`${vehicle.vehicle} for ${formattedCityName} to ${formattedDestination} group booking - Tempo Traveller - Bus rental - Large vehicle hire - Family tour cab`}
-                                  fill
-                                  className="object-contain"
-                                  sizes="48px"
-                                />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <h4 className="font-medium text-gray-900 text-sm truncate">{vehicle.vehicle} - Round Trip</h4>
-                                <div className="text-xs text-gray-600 flex items-center">
-                                  <Users className="w-3 h-3 mr-1" />
-                                  {vehicle.capacity || getVehicleCapacity(vehicle.vehicle)}
-                                </div>
-                                <div className="text-sm font-medium text-blue-600">
-                                  {vehicle.roundTrip}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                  <div className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+                        <Star className="w-5 h-5 text-white" fill="white" />
                       </div>
-
-                      <p className="text-sm text-blue-600 font-medium mt-3">
-                        💡 Switch to Round Trip to see all vehicle options for {formattedCityName} to {formattedDestination}!
-                      </p>
+                      <div>
+                        <p className="text-white font-bold text-lg">4.9</p>
+                        <p className="text-white/50 text-xs">Rating</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              )}
-            </div>
-          </section>
 
-          {/* Enhanced Route Information Section */}
-          <section className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              {formattedCityName} to {formattedDestination} Route Information
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    onClick={handleCallNow}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
+                  >
+                    <Phone className="w-5 h-5" />
+                    Call Now
+                  </motion.button>
+
+                  <motion.button
+                    onClick={handleWhatsApp}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 border border-white/20 transition-colors"
+                  >
+                    <BsWhatsapp className="w-5 h-5" />
+                    WhatsApp
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Side Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
+            >
+              {/* Price Card */}
+              <div className="bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 md:p-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
+
+                <div className="relative z-10">
+                  <p className="text-black/60 font-medium mb-1">Starting from</p>
+                  <div className="flex items-baseline gap-1 mb-4">
+                    <span className="text-black text-5xl md:text-6xl font-black">₹{startingPrice}</span>
+                    <span className="text-black/60 font-medium">/{tripType === 'roundTrip' ? 'round trip' : 'one way'}</span>
+                  </div>
+
+                  {/* Trip Type Toggle */}
+                  <div className="bg-black/10 rounded-xl p-1 flex gap-1">
+                    <button
+                      onClick={() => setTripType('oneWay')}
+                      className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all ${
+                        tripType === 'oneWay'
+                          ? 'bg-black text-[#FACF2D]'
+                          : 'text-black/70 hover:text-black'
+                      }`}
+                    >
+                      One Way
+                    </button>
+                    <button
+                      onClick={() => setTripType('roundTrip')}
+                      className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all ${
+                        tripType === 'roundTrip'
+                          ? 'bg-black text-[#FACF2D]'
+                          : 'text-black/70 hover:text-black'
+                      }`}
+                    >
+                      Round Trip
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Route Visual Card */}
+              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10 flex-1">
+                <div className="flex items-start gap-4">
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-lg">
+                      {cityData.icon}
+                    </div>
+                    <div className="w-0.5 h-16 bg-gradient-to-b from-emerald-500 to-blue-500 my-2" />
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-lg">
+                      📍
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="mb-6">
+                      <p className="text-white/50 text-xs font-medium mb-1">PICKUP</p>
+                      <p className="text-white font-bold text-lg">{formattedCityName}</p>
+                    </div>
+                    <div>
+                      <p className="text-white/50 text-xs font-medium mb-1">DROP</p>
+                      <p className="text-white font-bold text-lg">{formattedDestination}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-white/50">Estimated journey</span>
+                    <span className="text-white font-bold">{route.time || estimatedTime}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Trust Badges - Below Bento */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10"
+          >
+            {[
+              { icon: BadgeCheck, label: 'Verified Drivers' },
+              { icon: Shield, label: 'GPS Tracking' },
+              { icon: Award, label: 'Best Price' },
+              { icon: Headphones, label: '24/7 Support' }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 text-white/70">
+                <item.icon className="w-5 h-5 text-[#FACF2D]" />
+                <span className="text-sm font-medium">{item.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ==================== VEHICLE SELECTION SECTION ==================== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
+              <Car className="w-4 h-4" />
+              <span className="text-sm font-bold">CHOOSE YOUR RIDE</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Select Your Vehicle
             </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              All vehicles include AC, GPS tracking, professional driver, and complimentary water bottles
+            </p>
+          </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <MapPin className="w-8 h-8 text-red-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Distance & Duration</h3>
-                <p className="text-gray-600 mb-2">
-                  <strong>Distance:</strong> ~{route.distance || estimatedDistance}
-                </p>
-                <p className="text-gray-600 mb-2">
-                  <strong>Travel Time:</strong> ~{route.time || estimatedTime}
-                </p>
-                <p className="text-sm text-gray-500">
-                  Actual time may vary based on traffic conditions and weather.
-                </p>
+          {/* Vehicle Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {filteredVehicles.length > 0 ? filteredVehicles.map((vehicle, index) => {
+              const vehicleInfo = vehicleCapacityMap[vehicle.vehicle] || { seats: '4', bags: '2', icon: Car };
+              const isSelected = selectedVehicle === index;
+              const currentPrice = tripType === 'oneWay' ? vehicle.price : vehicle.roundTrip;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => setSelectedVehicle(isSelected ? null : index)}
+                  className={`relative bg-white rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                    isSelected
+                      ? 'ring-2 ring-[#FACF2D] shadow-xl shadow-[#FACF2D]/10'
+                      : 'border border-slate-200 hover:border-slate-300 hover:shadow-lg'
+                  }`}
+                >
+                  {/* Selection Indicator */}
+                  {isSelected && (
+                    <div className="absolute top-4 right-4 z-20 w-8 h-8 bg-[#FACF2D] rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-black" />
+                    </div>
+                  )}
+
+                  {/* Image */}
+                  <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-50">
+                    <Image
+                      src={vehicleImageMap[vehicle.vehicle] || '/images/car/car1.webp'}
+                      alt={`${vehicle.vehicle} cab from ${formattedCityName} to ${formattedDestination}`}
+                      fill
+                      className="object-contain p-4"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900">{vehicle.vehicle}</h3>
+                        <div className="flex items-center gap-3 mt-1 text-sm text-slate-500">
+                          <span className="flex items-center gap-1">
+                            <Users className="w-4 h-4" />
+                            {vehicleInfo.seats} Seats
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Snowflake className="w-4 h-4" />
+                            AC
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg">
+                        <Star className="w-4 h-4" fill="currentColor" />
+                        <span className="font-bold text-sm">4.9</span>
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {['GPS', 'Music', 'Charger'].map((f, i) => (
+                        <span key={i} className="bg-slate-100 text-slate-600 px-3 py-1 rounded-lg text-xs font-medium">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Price & CTA */}
+                    <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                      <div>
+                        <p className="text-sm text-slate-500">
+                          {tripType === 'roundTrip' ? 'Round Trip' : 'One Way'}
+                        </p>
+                        <p className="text-2xl font-black text-slate-900">{currentPrice}</p>
+                      </div>
+                      <motion.button
+                        onClick={(e) => { e.stopPropagation(); handleWhatsApp(); }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="bg-slate-900 hover:bg-[#FACF2D] text-white hover:text-black px-6 py-3 rounded-xl font-bold text-sm transition-colors"
+                      >
+                        Book Now
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            }) : (
+              // Fallback vehicles
+              [
+                { name: 'Sedan', price: '₹12/km', seats: '4', image: '/images/car/car1.webp' },
+                { name: 'SUV Ertiga', price: '₹15/km', seats: '6', image: '/images/car/car2.webp' },
+                { name: 'SUV Innova', price: '₹18/km', seats: '7', image: '/images/car/car2.webp' }
+              ].map((v, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-50">
+                    <Image src={v.image} alt={v.name} fill className="object-contain p-4" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{v.name}</h3>
+                    <div className="flex items-center gap-3 mb-4 text-sm text-slate-500">
+                      <span className="flex items-center gap-1"><Users className="w-4 h-4" />{v.seats} Seats</span>
+                      <span className="flex items-center gap-1"><Snowflake className="w-4 h-4" />AC</span>
+                    </div>
+                    <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                      <p className="text-2xl font-black text-slate-900">{v.price}</p>
+                      <button onClick={handleWhatsApp} className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-sm">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))
+            )}
+          </div>
+
+          {/* Group Travel Notice */}
+          {tripType === 'oneWay' && tempoAndBusVehicles.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 border border-blue-100"
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Users className="w-5 h-5 text-blue-600" />
+                    <h3 className="font-bold text-blue-900">Travelling in a Group?</h3>
+                  </div>
+                  <p className="text-blue-700 text-sm">
+                    We have Tempo Travellers (12-26 seater) and Buses (22-56 seater) available for round-trip bookings.
+                    Perfect for family tours, corporate outings, and group pilgrimages.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setTripType('roundTrip')}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors whitespace-nowrap"
+                >
+                  View Group Vehicles
+                </button>
               </div>
+            </motion.div>
+          )}
+        </div>
+      </section>
 
-              <div className="bg-gray-50 rounded-lg p-6">
-                <Car className="w-8 h-8 text-blue-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Best Travel Times</h3>
-                <p className="text-gray-600 mb-2">
-                  <strong>Fastest:</strong> Early morning (5-7 AM)
+
+      {/* ==================== WHY CHOOSE US - BENTO GRID ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Why Book With Us?
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Trusted by 50,000+ customers for reliable outstation taxi service
+            </p>
+          </motion.div>
+
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            {/* Large Card - Safety */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">100% Safe & Secure Journey</h3>
+                <p className="text-white/80 text-lg mb-6 max-w-xl">
+                  All our drivers are police-verified with 5+ years of experience.
+                  Real-time GPS tracking, SOS button, and 24/7 monitoring for your safety.
                 </p>
-                <p className="text-gray-600 mb-2">
-                  <strong>Comfortable:</strong> Late morning (10 AM-12 PM)
-                </p>
-                <p className="text-sm text-gray-500">
-                  Book advance for preferred departure times.
-                </p>
+                <div className="flex flex-wrap gap-3">
+                  {['Verified Drivers', 'GPS Tracking', 'Live Trip Sharing', 'SOS Support'].map((item, i) => (
+                    <span key={i} className="bg-white/20 px-4 py-2 rounded-full text-sm font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
+            </motion.div>
 
-              <div className="bg-gray-50 rounded-lg p-6">
-                <Shield className="w-8 h-8 text-green-600 mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Safety Features</h3>
-                <p className="text-gray-600 mb-2">
-                  <strong>✓</strong> GPS tracking enabled
-                </p>
-                <p className="text-gray-600 mb-2">
-                  <strong>✓</strong> Verified driver details
-                </p>
-                <p className="text-sm text-gray-500">
-                  Your safety is our top priority for {formattedCityName} to {formattedDestination} travel.
-                </p>
+            {/* Pricing Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200"
+            >
+              <div className="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5">
+                <CreditCard className="w-7 h-7 text-amber-600" />
               </div>
-            </div>
-          </section>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Transparent Pricing</h3>
+              <p className="text-slate-600 mb-4">
+                No hidden charges. Pay per km with clear breakdown of toll, parking, and taxes.
+              </p>
+              <div className="flex items-center gap-2 text-emerald-600 font-medium">
+                <CheckCircle className="w-5 h-5" />
+                <span>Fixed rates guaranteed</span>
+              </div>
+            </motion.div>
 
-          {/* Office Locations */}
+            {/* Fleet Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200"
+            >
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5">
+                <Car className="w-7 h-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Premium Fleet</h3>
+              <p className="text-slate-600 mb-4">
+                Well-maintained AC vehicles from Sedan to 56-seater buses. Clean and sanitized.
+              </p>
+              <div className="flex items-center gap-2 text-emerald-600 font-medium">
+                <CheckCircle className="w-5 h-5" />
+                <span>Regular maintenance</span>
+              </div>
+            </motion.div>
+
+            {/* Support Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-slate-900 rounded-3xl p-6 md:p-8 text-white"
+            >
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-5">
+                <Headphones className="w-7 h-7 text-[#FACF2D]" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">24/7 Customer Support</h3>
+              <p className="text-white/70 mb-4">
+                Round-the-clock assistance via call and WhatsApp. We are always here to help.
+              </p>
+              <a href={`tel:+91${phoneNumber}`} className="text-[#FACF2D] font-bold text-lg">
+                {phoneNumber}
+              </a>
+            </motion.div>
+
+            {/* Experience Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-6 md:p-8 text-white"
+            >
+              <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
+                <Award className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">50,000+ Happy Trips</h3>
+              <p className="text-white/80 mb-4">
+                Trusted by families, corporates, and tour operators across India.
+              </p>
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map(i => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" />
+                ))}
+                <span className="ml-2 font-bold">4.9/5</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== ROUTE INFORMATION ==================== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              {formattedCityName} to {formattedDestination} Route Guide
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Everything you need to know about your journey
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            {/* Route Details */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-slate-50 rounded-3xl p-6 md:p-8"
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <Route className="w-5 h-5 text-[#FACF2D]" />
+                Route Details
+              </h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-3 border-b border-slate-200">
+                  <span className="text-slate-600">Distance</span>
+                  <span className="font-bold text-slate-900">{route.distance || estimatedDistance}</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-slate-200">
+                  <span className="text-slate-600">Duration</span>
+                  <span className="font-bold text-slate-900">{route.time || estimatedTime}</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-slate-200">
+                  <span className="text-slate-600">Best Route</span>
+                  <span className="font-bold text-slate-900">NH48 Highway</span>
+                </div>
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-slate-600">Road Condition</span>
+                  <span className="font-bold text-emerald-600">Excellent</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Best Travel Times */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-slate-50 rounded-3xl p-6 md:p-8"
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <Clock className="w-5 h-5 text-[#FACF2D]" />
+                Best Travel Times
+              </h3>
+              <div className="space-y-4">
+                <div className="bg-white rounded-2xl p-4 border border-slate-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-bold text-slate-900">Early Morning</span>
+                    <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs font-bold">Fastest</span>
+                  </div>
+                  <p className="text-slate-600 text-sm">5:00 AM - 7:00 AM</p>
+                </div>
+                <div className="bg-white rounded-2xl p-4 border border-slate-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-bold text-slate-900">Late Morning</span>
+                    <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">Comfortable</span>
+                  </div>
+                  <p className="text-slate-600 text-sm">10:00 AM - 12:00 PM</p>
+                </div>
+                <div className="bg-white rounded-2xl p-4 border border-slate-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-bold text-slate-900">Evening</span>
+                    <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded text-xs font-bold">Traffic</span>
+                  </div>
+                  <p className="text-slate-600 text-sm">5:00 PM - 8:00 PM</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* What's Included */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-slate-50 rounded-3xl p-6 md:p-8"
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <Gift className="w-5 h-5 text-[#FACF2D]" />
+                What&apos;s Included
+              </h3>
+              <div className="space-y-3">
+                {[
+                  { icon: Fuel, label: 'Fuel charges' },
+                  { icon: Users, label: 'Professional driver' },
+                  { icon: Snowflake, label: 'Air conditioning' },
+                  { icon: MapPin, label: 'GPS navigation' },
+                  { icon: Shield, label: 'Insurance coverage' },
+                  { icon: Headphones, label: '24/7 support' }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-white rounded-xl p-3 border border-slate-200">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
+                      <item.icon className="w-4 h-4 text-emerald-600" />
+                    </div>
+                    <span className="text-slate-700 font-medium">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== FAQ SECTION ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-slate-600 text-lg">
+              Quick answers to common questions about {formattedCityName} to {formattedDestination} taxi service
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === index ? -1 : index)}
+                  className="w-full bg-white rounded-2xl p-5 md:p-6 text-left border border-slate-200 hover:border-slate-300 transition-colors"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="font-bold text-slate-900 text-lg pr-4">{faq.q}</h3>
+                    <ChevronDown className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${expandedFaq === index ? 'rotate-180' : ''}`} />
+                  </div>
+                  <AnimatePresence>
+                    {expandedFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <p className="text-slate-600 mt-4 leading-relaxed">{faq.a}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== OFFICE LOCATIONS ==================== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <OfficeLocations
             originCity={formattedCityName}
             destinationCity={formattedDestination}
             offices={routeOffices}
           />
+        </div>
+      </section>
 
-          {/* FAQ Section */}
-          <section className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions
-            </h2>
 
-            <div className="space-y-4">
-              <details className="border border-gray-200 rounded-lg overflow-hidden" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                  <span itemProp="name">How much does a taxi cost from {formattedCityName} to {formattedDestination}?</span>
-                </summary>
-                <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <div itemProp="text">
-                    Taxi fare starts from {startingPrice} for one-way trips.
-                    The exact cost depends on vehicle type (Sedan ₹12/km, SUV Innova ₹16/km, Ertiga ₹15/km, Tempo Traveller for large groups) and trip type.
-                    All prices include fuel charges, driver allowance, toll charges, parking fees, and applicable taxes. Round-trip bookings often offer better value with special package deals and discounts.
-                  </div>
-                </div>
-              </details>
+      {/* ==================== RELATED ROUTES ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-              <details className="border border-gray-200 rounded-lg overflow-hidden" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                  <span itemProp="name">How long does it take to travel from {formattedCityName} to {formattedDestination}?</span>
-                </summary>
-                <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <div itemProp="text">
-                    The journey from {formattedCityName} to {formattedDestination} typically takes {route.time || estimatedTime}
-                    {' '}covering approximately {route.distance || estimatedDistance}. Travel time may vary based on traffic conditions,
-                    weather, route taken, and number of stops. Our drivers choose the fastest and safest route for your comfort.
-                    Early morning departures (5-7 AM) usually have the shortest travel time due to lighter traffic.
-                  </div>
-                </div>
-              </details>
-
-              <details className="border border-gray-200 rounded-lg overflow-hidden" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                  <span itemProp="name">Can I book a one-way cab from {formattedCityName} to {formattedDestination}?</span>
-                </summary>
-                <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <div itemProp="text">
-                    Yes, we provide one-way taxi service from {formattedCityName} to {formattedDestination}.
-                    You only pay for the actual distance traveled without any return charges. Sedans, SUVs, and Innova are available
-                    for one-way bookings. For better value on longer trips, consider our round-trip packages.
-                    One-way bookings are perfect for airport transfers, business meetings, or when you have different return arrangements.
-                  </div>
-                </div>
-              </details>
-
-              <details className="border border-gray-200 rounded-lg overflow-hidden" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                  <span itemProp="name">What safety measures do you follow for {formattedCityName} to {formattedDestination} trips?</span>
-                </summary>
-                <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <div itemProp="text">
-                    We ensure passenger safety through verified drivers with valid licenses and police verification,
-                    GPS-enabled vehicles for real-time tracking, regular vehicle maintenance and fitness certificates,
-                    24/7 customer support and emergency assistance, sanitized vehicles following health protocols,
-                    and insurance coverage for all passengers. All drivers follow traffic safety guidelines and are trained for long-distance travel.
-                  </div>
-                </div>
-              </details>
-
-              <details className="border border-gray-200 rounded-lg overflow-hidden" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                  <span itemProp="name">How to book {formattedCityName} to {formattedDestination} cab online?</span>
-                </summary>
-                <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <div itemProp="text">
-                    Booking {formattedCityName} to {formattedDestination} cab is easy! Call us at {phoneNumber} for instant booking or
-                    WhatsApp us with your travel details. Provide pickup location, destination, date, time, and passenger count.
-                    You can also book online through our website with advance payment options. Confirmation with driver details
-                    will be shared via SMS/WhatsApp. We accept cash, UPI, card payments, and online transfers.
-                  </div>
-                </div>
-              </details>
-
-              <details className="border border-gray-200 rounded-lg overflow-hidden" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                <summary className="bg-gray-50 p-4 font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                  <span itemProp="name">What is included in {formattedCityName} to {formattedDestination} cab fare?</span>
-                </summary>
-                <div className="p-4 text-gray-600 text-sm leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                  <div itemProp="text">
-                    Our {formattedCityName} to {formattedDestination} cab fare includes: fuel costs, professional driver charges,
-                    vehicle maintenance, insurance coverage, toll charges (where applicable), taxes, and 24/7 customer support.
-                    No hidden charges or extra fees. AC is complementary, and we provide water bottles for long journeys.
-                    Driver accommodation for overnight stays (if required) is included in round-trip packages.
-                  </div>
-                </div>
-              </details>
-            </div>
-          </section>
-
-          {/* Enhanced Content Section for SEO */}
-          <section className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Complete Guide to {formattedCityName} to {formattedDestination} Taxi Service
-            </h2>
-
-            <div className="prose max-w-none text-gray-600">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Why Choose Professional Cab Service for {formattedCityName} to {formattedDestination}?
-              </h3>
-              <p className="mb-4">
-                Traveling from {formattedCityName} to {formattedDestination} requires reliable transportation, and our professional taxi service
-                ensures a comfortable, safe, and punctual journey. With experienced drivers familiar with the {formattedCityName}-{formattedDestination}
-                route, you can relax and enjoy the scenic journey while we handle the driving.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-                Vehicle Options for Every Travel Need
-              </h3>
-              <p className="mb-4">
-                Whether you are traveling solo, with family, or in a group, we have the perfect vehicle for your {formattedCityName} to {formattedDestination}
-                journey. Our fleet includes comfortable Sedans for 4 passengers, spacious SUVs (Ertiga/Innova) for 6-7 passengers, and Tempo Travellers
-                for larger groups up to 25 passengers. All vehicles are well-maintained, air-conditioned, and equipped with safety features.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-                Transparent Pricing Policy
-              </h3>
-              <p className="mb-4">
-                Our {formattedCityName} to {formattedDestination} cab fare is completely transparent with no hidden charges. The quoted price includes
-                fuel, driver charges, toll fees, taxes, and vehicle maintenance. We offer competitive rates starting from {startingPrice} for one-way
-                trips and special package deals for round-trip bookings. Payment can be made via cash, UPI, cards, or online transfer.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-                Booking Process Made Simple
-              </h3>
-              <p className="mb-4">
-                Booking your {formattedCityName} to {formattedDestination} taxi is hassle-free. Simply call {phoneNumber} or WhatsApp us with your
-                travel details including pickup location, destination, date, time, and number of passengers. We provide instant confirmation with
-                driver details, vehicle information, and contact numbers. Our customer support team is available 24/7 to assist with your booking.
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10"
+          >
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2">
+                More Routes from {formattedCityName}
+              </h2>
+              <p className="text-slate-600">
+                Explore other popular destinations
               </p>
             </div>
-          </section>
+            <Link
+              href={`/${cityName}`}
+              className="inline-flex items-center gap-2 text-[#FACF2D] hover:text-amber-600 font-bold transition-colors"
+            >
+              View all routes
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
 
-          {/* Enhanced Related Routes Section with Better Internal Linking */}
-          <section className="bg-white rounded-xl shadow-lg p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-              Popular Cab Routes from {formattedCityName}
-            </h2>
-            <p className="text-gray-600 mb-4">
-              Explore other popular taxi destinations from {formattedCityName}. Book reliable cab service to these cities with professional drivers and transparent pricing.
-            </p>
-
-            {/* Link back to city page */}
-            <div className="mb-6">
-              <Link
-                href={`/${cityName}`}
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium text-sm"
-              >
-                <MapPin className="w-4 h-4" />
-                View all taxi services in {formattedCityName}
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {routes
-                .filter(r => r.destination !== formattedDestination)
-                .slice(0, 12)
-                .map((routeItem, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {routes
+              .filter(r => r.destination !== formattedDestination)
+              .slice(0, 8)
+              .map((routeItem, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
                   <Link
-                    key={index}
                     href={`/${createRouteSlug(cityName, routeItem.destination)}`}
-                    className="p-4 border border-gray-200 rounded-lg hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 flex items-center justify-between group"
-                    title={`Book cab from ${formattedCityName} to ${routeItem.destination} - Starting ₹${routeItem.startingPrice || '2500'}`}
+                    className="block bg-white rounded-2xl p-5 border border-slate-200 hover:border-[#FACF2D] hover:shadow-lg transition-all group"
                   >
-                    <div className="flex-1 min-w-0">
-                      <div className="font-medium group-hover:text-yellow-700 text-sm truncate">
-                        {formattedCityName} to {routeItem.destination}
-                      </div>
-                      <div className="text-xs text-gray-600 mt-1">
-                        {routeItem.distance} • {routeItem.time}
-                      </div>
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="font-bold text-slate-900 group-hover:text-[#FACF2D] transition-colors">
+                        {routeItem.destination}
+                      </h3>
+                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#FACF2D] group-hover:translate-x-1 transition-all" />
                     </div>
-                    <ArrowRight className="w-4 h-4 text-yellow-500 flex-shrink-0 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <div className="flex items-center gap-4 text-sm text-slate-500">
+                      <span className="flex items-center gap-1">
+                        <Navigation className="w-3.5 h-3.5" />
+                        {routeItem.distance}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" />
+                        {routeItem.time}
+                      </span>
+                    </div>
                   </Link>
-                ))}
-            </div>
-          </section>
-        </main>
-
-        {/* Enhanced Footer CTA */}
-        <section className="bg-gray-900 text-white py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Book Your {formattedCityName} to {formattedDestination} Cab?
-            </h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Join thousands of satisfied customers who trust our reliable taxi service.
-              Book now for instant confirmation and enjoy a comfortable journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={handleCallNow}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg flex items-center justify-center transition-all font-medium"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call {phoneNumber}
-              </button>
-              <button
-                onClick={handleWhatsApp}
-                className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-3 rounded-lg flex items-center justify-center transition-all font-medium"
-              >
-                <BsWhatsapp className="w-5 h-5 mr-2" />
-                WhatsApp Booking
-              </button>
-            </div>
+                </motion.div>
+              ))}
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+
+
+      {/* ==================== STICKY CTA FOOTER ==================== */}
+      <section className="py-16 md:py-24 bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+              Ready to Book Your <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> Trip?
+            </h2>
+            <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+              Get instant confirmation. Professional drivers. Best price guaranteed. Available 24/7.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                onClick={handleCallNow}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
+              >
+                <Phone className="w-6 h-6" />
+                Call {phoneNumber}
+              </motion.button>
+
+              <motion.button
+                onClick={handleWhatsApp}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors"
+              >
+                <BsWhatsapp className="w-6 h-6" />
+                WhatsApp Us
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ==================== FLOATING MOBILE CTA ==================== */}
+      {mounted && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 p-4 md:hidden shadow-lg"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex-1">
+              <p className="text-xs text-slate-500">Starting from</p>
+              <p className="text-xl font-black text-slate-900">₹{startingPrice}</p>
+            </div>
+            <button
+              onClick={handleCallNow}
+              className="bg-[#FACF2D] text-black px-5 py-3 rounded-xl font-bold flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              Call
+            </button>
+            <button
+              onClick={handleWhatsApp}
+              className="bg-slate-900 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2"
+            >
+              <BsWhatsapp className="w-4 h-4" />
+              Book
+            </button>
+          </div>
+        </motion.div>
+      )}
+
+    </div>
   );
 }

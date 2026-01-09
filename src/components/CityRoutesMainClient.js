@@ -1,837 +1,974 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Sparkles, DollarSign, Info, Bus } from 'lucide-react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { useInView as useInViewObserver } from 'react-intersection-observer';
-import { TypeAnimation } from 'react-type-animation';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  MapPin, Users, Star, Phone, CheckCircle, ArrowRight, Sparkles,
+  Shield, Clock, ChevronDown, ChevronRight, Heart, Car, Navigation,
+  Award, MapPinned, Bus, Route, CreditCard, Headphones, Snowflake,
+  Search, Filter, X, BadgeCheck, Timer
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BsWhatsapp } from 'react-icons/bs';
+import { HiOutlineMail } from 'react-icons/hi';
+import { phoneNumber, emailAddress } from '@/utilis/data';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// All 14 cities data
+const cityData = {
+  'Delhi': {
+    image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    tagline: 'Gateway to North India',
+    icon: '🏛️',
+    highlights: ['Agra', 'Jaipur', 'Manali', 'Shimla']
+  },
+  'Jaipur': {
+    image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+    tagline: 'The Pink City',
+    icon: '🏰',
+    highlights: ['Udaipur', 'Jodhpur', 'Delhi']
+  },
+  'Chandigarh': {
+    image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
+    tagline: 'The City Beautiful',
+    icon: '🌳',
+    highlights: ['Shimla', 'Manali', 'Kasol']
+  },
+  'Agra': {
+    image: '/images/sightseeing/Agra/Agra_Hero_section.jpg',
+    tagline: 'Home of Taj Mahal',
+    icon: '🕌',
+    highlights: ['Delhi', 'Jaipur', 'Mathura']
+  },
+  'Shimla': {
+    image: '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+    tagline: 'Queen of Hills',
+    icon: '🏔️',
+    highlights: ['Manali', 'Kufri', 'Chandigarh']
+  },
+  'Dehradun': {
+    image: '/images/chardham/chardham-dehradun-hero.png',
+    tagline: 'Gateway to Uttarakhand',
+    icon: '🌲',
+    highlights: ['Mussoorie', 'Rishikesh', 'Haridwar']
+  },
+  'Rishikesh': {
+    image: '/images/chardham/chardham-rishikesh-hero.png',
+    tagline: 'Yoga Capital',
+    icon: '🧘',
+    highlights: ['Haridwar', 'Badrinath', 'Kedarnath']
+  },
+  'Haridwar': {
+    image: '/images/chardham/chardham-haridwar-hero.png',
+    tagline: 'Gateway to Gods',
+    icon: '🙏',
+    highlights: ['Rishikesh', 'Kedarnath', 'Badrinath']
+  },
+  'Manali': {
+    image: '/images/packages/manali.webp',
+    tagline: 'Adventure Paradise',
+    icon: '⛷️',
+    highlights: ['Leh', 'Rohtang', 'Shimla']
+  },
+  'Amritsar': {
+    image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg',
+    tagline: 'Golden Temple City',
+    icon: '🛕',
+    highlights: ['Wagah', 'Delhi', 'Chandigarh']
+  },
+  'Jodhpur': {
+    image: '/images/packages/rajasthan.webp',
+    tagline: 'The Blue City',
+    icon: '🏯',
+    highlights: ['Jaisalmer', 'Udaipur', 'Jaipur']
+  },
+  'Udaipur': {
+    image: '/images/packages/rajasthan.webp',
+    tagline: 'City of Lakes',
+    icon: '🚣',
+    highlights: ['Mount Abu', 'Jodhpur', 'Jaipur']
+  },
+  'Ayodhya': {
+    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png',
+    tagline: 'Ram Janmabhoomi',
+    icon: '🛕',
+    highlights: ['Varanasi', 'Lucknow', 'Prayagraj']
+  },
+  'Ahmedabad': {
+    image: '/images/destinations/delhi.webp',
+    tagline: 'Heritage City',
+    icon: '🏛️',
+    highlights: ['Dwarka', 'Somnath', 'Kutch']
+  }
+};
 
-const whyChooseUs = [
+// Service features
+const serviceFeatures = [
   {
-    title: "Professional Drivers",
-    description: "Experienced, verified, and courteous drivers who prioritize your safety and comfort throughout the journey."
+    icon: Shield,
+    title: "Verified Drivers",
+    description: "Police-verified with 5+ years experience. GPS tracking on every trip.",
+    gradient: "from-emerald-500 to-emerald-600"
   },
   {
-    title: "24/7 Availability",
-    description: "Round-the-clock service for all your travel needs. Book anytime, travel anytime with instant confirmation."
-  },
-  {
+    icon: CreditCard,
     title: "Transparent Pricing",
-    description: "No hidden charges. Pay exactly what you see with our honest and competitive pricing structure."
+    description: "No hidden charges. Pay per km with clear breakdown.",
+    gradient: "from-blue-500 to-blue-600"
   },
   {
-    title: "GPS Tracking",
-    description: "Real-time vehicle tracking for enhanced safety. Share your trip with loved ones for peace of mind."
+    icon: Clock,
+    title: "24/7 Available",
+    description: "Book anytime, travel anytime. Round-the-clock support.",
+    gradient: "from-violet-500 to-violet-600"
   },
   {
-    title: "Well-Maintained Fleet",
-    description: "Regular maintenance and sanitization of all vehicles. Travel in clean, comfortable, and safe cabs."
+    icon: Car,
+    title: "Premium Fleet",
+    description: "Sedan to 56-seater buses. AC, sanitized & GPS-enabled.",
+    gradient: "from-amber-500 to-amber-600"
   },
   {
-    title: "Easy Booking",
-    description: "Simple online booking process. Book in seconds via phone, WhatsApp, or our website."
+    icon: Navigation,
+    title: "500+ Routes",
+    description: "All tourist spots, pilgrimage sites & hill stations.",
+    gradient: "from-rose-500 to-rose-600"
+  },
+  {
+    icon: Award,
+    title: "4.9 Rating",
+    description: "50,000+ happy customers. Trusted by families & corporates.",
+    gradient: "from-yellow-500 to-yellow-600"
   }
 ];
 
+// Popular routes
+const popularRoutes = [
+  { from: "Delhi", to: "Agra", distance: "230 km", time: "4 hrs", price: "2,760" },
+  { from: "Delhi", to: "Jaipur", distance: "280 km", time: "5 hrs", price: "3,360" },
+  { from: "Delhi", to: "Manali", distance: "540 km", time: "12 hrs", price: "6,480" },
+  { from: "Delhi", to: "Shimla", distance: "350 km", time: "7 hrs", price: "4,200" },
+  { from: "Delhi", to: "Haridwar", distance: "240 km", time: "5 hrs", price: "2,880" },
+  { from: "Delhi", to: "Rishikesh", distance: "240 km", time: "5 hrs", price: "2,880" },
+  { from: "Chandigarh", to: "Manali", distance: "310 km", time: "7 hrs", price: "3,720" },
+  { from: "Chandigarh", to: "Shimla", distance: "120 km", time: "3 hrs", price: "1,440" },
+  { from: "Jaipur", to: "Udaipur", distance: "395 km", time: "6 hrs", price: "4,740" },
+  { from: "Jaipur", to: "Jodhpur", distance: "340 km", time: "5 hrs", price: "4,080" },
+  { from: "Agra", to: "Jaipur", distance: "240 km", time: "4 hrs", price: "2,880" },
+  { from: "Shimla", to: "Manali", distance: "250 km", time: "6 hrs", price: "3,000" },
+];
+
+// Vehicle types
+const vehicleTypes = [
+  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/car1.webp', rating: '4.9', category: 'car' },
+  { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/car2.webp', rating: '4.8', category: 'car' },
+  { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/car2.webp', rating: '4.9', category: 'car' },
+  { type: '12 Seater Tempo', seats: '12', price: '₹20/km', image: '/images/tempo/12_seater.jpg', rating: '4.8', category: 'tempo' },
+  { type: '17 Seater Tempo', seats: '17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8', category: 'tempo' },
+  { type: '26 Seater Maharaja', seats: '26', price: '₹28/km', image: '/images/tempo/26_seater.jpg', rating: '4.9', category: 'tempo' },
+  { type: '27 Seater Bus', seats: '27', price: '₹30/km', image: '/images/bus/27_SEATER_BUS.jpg', rating: '4.7', category: 'bus' },
+  { type: '45 Seater Bus', seats: '45', price: '₹40/km', image: '/images/bus/45_SEATER_BUS.jpg', rating: '4.8', category: 'bus' }
+];
+
 export default function CityRoutesMainClient({ data }) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedOrigin, setSelectedOrigin] = useState('');
-  const [showAllRoutes, setShowAllRoutes] = useState(false);
-  const [showAllVehicles, setShowAllVehicles] = useState(false);
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [mounted, setMounted] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
 
-  const { popularRoutes, allRoutes, cities, vehicles } = data;
+  const { allRoutes, cities } = data;
 
-  const heroRef = useRef(null);
-  const vehiclesSectionRef = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const scaleProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-
-  const [vehiclesRef, vehiclesInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
-  const [routesRef, routesInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
-  const [featuresRef, featuresInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
-
-  // GSAP Animations
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const ctx = gsap.context(() => {
-      // Hero elements animation
-      gsap.from('.hero-badge', {
-        scale: 0,
-        rotation: -180,
-        duration: 0.8,
-        ease: 'back.out(1.7)'
-      });
-
-      gsap.from('.hero-title', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out'
-      });
-
-      // Parallax effect for hero image
-      gsap.to('.hero-image', {
-        y: '20%',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-
-      // Vehicle cards stagger animation
-      gsap.from('.vehicle-card', {
-        scrollTrigger: {
-          trigger: vehiclesSectionRef.current,
-          start: 'top 80%'
-        },
-        y: 100,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out'
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
+    setMounted(true);
   }, []);
 
-  const getOriginCities = () => {
-    return cities.sort();
+  const handleCallClick = () => {
+    window.open(`tel:+91${phoneNumber}`, '_blank');
   };
 
-  const getFilteredRoutes = () => {
-    let routes = selectedOrigin
-      ? allRoutes.filter(route => route.origin === selectedOrigin)
-      : allRoutes;
-
-    if (searchTerm) {
-      routes = routes.filter(route =>
-        route.origin.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        route.destination.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    return routes;
+  const handleWhatsAppClick = () => {
+    window.open(`https://wa.me/${phoneNumber}?text=Hi, I need outstation taxi booking`, '_blank');
   };
 
-  const getFilteredVehicles = () => {
-    if (activeFilter === 'all') return vehicles;
-    if (activeFilter === 'car') return vehicles.filter(v => v.type === 'Sedan' || v.type === 'SUV');
-    if (activeFilter === 'tempo') return vehicles.filter(v => v.type === 'Tempo Traveller');
-    if (activeFilter === 'bus') return vehicles.filter(v => v.type === 'Bus' || v.type === 'Luxury Bus');
-    return vehicles;
+  const handleEmailClick = () => {
+    window.location.href = `mailto:${emailAddress}?subject=Outstation Taxi Booking Inquiry&body=Hi, I would like to inquire about outstation taxi booking.`;
   };
 
-  const getVehicleIcon = (type) => {
-    if (type === 'Bus' || type === 'Luxury Bus') return <Bus className="w-5 h-5 text-[#FACF2D]" />;
-    return <Car className="w-5 h-5 text-[#FACF2D]" />;
+  // Get cities with route counts
+  const citiesWithData = useMemo(() => {
+    return cities.map(city => {
+      const routeCount = allRoutes.filter(r => r.origin === city).length;
+      const info = cityData[city] || {
+        image: '/images/destinations/delhi.webp',
+        tagline: 'Explore Routes',
+        icon: '📍',
+        highlights: []
+      };
+      return { name: city, routeCount, ...info };
+    });
+  }, [cities, allRoutes]);
+
+  // Filter vehicles
+  const filteredVehicles = useMemo(() => {
+    if (activeTab === 'all') return vehicleTypes;
+    return vehicleTypes.filter(v => v.category === activeTab);
+  }, [activeTab]);
+
+  // Filter cities by search (case-insensitive)
+  const filteredCities = useMemo(() => {
+    if (!searchQuery) return citiesWithData;
+    const query = searchQuery.toLowerCase().trim();
+    return citiesWithData.filter(city =>
+      city.name.toLowerCase().includes(query) ||
+      city.tagline.toLowerCase().includes(query)
+    );
+  }, [citiesWithData, searchQuery]);
+
+  // Search suggestions for autocomplete
+  const searchSuggestions = useMemo(() => {
+    if (!searchQuery || searchQuery.length < 1) return [];
+    const query = searchQuery.toLowerCase().trim();
+    return citiesWithData.filter(city =>
+      city.name.toLowerCase().includes(query) ||
+      city.tagline.toLowerCase().includes(query)
+    ).slice(0, 5); // Show max 5 suggestions
+  }, [citiesWithData, searchQuery]);
+
+  // Check if city is available
+  const isCityNotFound = searchQuery.trim().length > 0 && filteredCities.length === 0;
+
+  // Handle city selection from suggestions
+  const handleCitySelect = (cityName) => {
+    setSearchQuery('');
+    setShowSuggestions(false);
+    window.location.href = `/${cityName.toLowerCase()}`;
   };
-
-  const getVehicleColor = (type) => {
-    const colors = {
-      'Sedan': 'from-blue-500 to-blue-600',
-      'SUV': 'from-green-500 to-green-600',
-      'Tempo Traveller': 'from-purple-500 to-purple-600',
-      'Luxury Bus': 'from-orange-500 to-orange-600',
-      'Bus': 'from-indigo-500 to-indigo-600'
-    };
-    return colors[type] || 'from-gray-500 to-gray-600';
-  };
-
-  const getRouteTypeColor = (tags) => {
-    if (!tags || tags.length === 0) return 'bg-gray-500/10 text-gray-700 border-gray-500/20';
-    const tag = tags[0].toLowerCase();
-
-    if (tag.includes('heritage') || tag.includes('unesco')) return 'bg-amber-500/10 text-amber-700 border-amber-500/20';
-    if (tag.includes('spiritual') || tag.includes('temple') || tag.includes('holy')) return 'bg-purple-500/10 text-purple-700 border-purple-500/20';
-    if (tag.includes('hill') || tag.includes('mountain')) return 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20';
-    if (tag.includes('royal') || tag.includes('palace')) return 'bg-rose-500/10 text-rose-700 border-rose-500/20';
-    if (tag.includes('adventure')) return 'bg-orange-500/10 text-orange-700 border-orange-500/20';
-
-    return 'bg-blue-500/10 text-blue-700 border-blue-500/20';
-  };
-
-  const displayedRoutes = showAllRoutes ? getFilteredRoutes() : getFilteredRoutes().slice(0, 12);
-  const displayedVehicles = showAllVehicles ? getFilteredVehicles() : getFilteredVehicles().slice(0, 6);
 
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <div className="min-h-screen bg-[#FAFAFA]">
 
-        {/* Hero Section - Ultra Modern */}
-        <motion.section
-          ref={heroRef}
-          className="relative py-12 md:py-16 flex items-center justify-center overflow-hidden"
-        >
-          {/* Animated Background with Parallax */}
-          <div className="absolute inset-0 hero-image">
-            <Image
-              src="/images/citypage_hero_section_image.jpg"
-              alt="Premium Taxi Services - Cars, Tempo Travellers & Buses"
-              fill
-              className="object-cover brightness-90"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40" />
-          </div>
-
-          {/* Animated Gradient Orbs */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FACF2D]/30 to-orange-500/30 rounded-full blur-3xl"
+      {/* ==================== HERO SECTION ==================== */}
+      <section className="relative min-h-[100svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/citypage_hero_section_image.jpg"
+            alt="Outstation Taxi Service India"
+            fill
+            priority
+            className="object-cover opacity-40"
+            sizes="100vw"
           />
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.4, 0.2]
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"
-          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950/90" />
+        </div>
 
-          {/* Hero Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
 
-            {/* Badge */}
+        {/* Gradient Orbs */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#FACF2D]/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 md:pt-8 md:pb-28">
+
+          {/* Breadcrumb */}
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <ol className="flex items-center gap-2 text-sm">
+              <li>
+                <Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/40" />
+              <li className="text-[#FACF2D] font-medium">All Routes</li>
+            </ol>
+          </motion.nav>
+
+          {/* BENTO GRID HERO */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+
+            {/* Main Content - Left */}
             <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-              className="hero-badge inline-flex items-center gap-2 bg-[#FACF2D]/20 backdrop-blur-md border border-[#FACF2D]/30 px-6 py-3 rounded-full mb-8"
-            >
-              <Sparkles className="w-5 h-5 text-[#FACF2D]" />
-              <span className="text-[#FACF2D] font-bold text-sm tracking-wider">PREMIUM CAB • TEMPO • BUS SERVICES</span>
-              <Sparkles className="w-5 h-5 text-[#FACF2D]" />
-            </motion.div>
-
-            {/* Main Title with TypeAnimation */}
-            <div className="mb-8 overflow-hidden">
-              <motion.h1
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="hero-title text-5xl md:text-7xl font-black text-white leading-tight mb-4"
-              >
-                Your Journey,
-              </motion.h1>
-              <motion.h1
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="hero-title text-5xl md:text-7xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
-              >
-                <TypeAnimation
-                  sequence={[
-                    'Our Priority',
-                    2500,
-                    'Our Passion',
-                    2500,
-                    'Our Promise',
-                    2500,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                  repeat={Infinity}
-                />
-              </motion.h1>
-            </div>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
-            >
-              Explore India with Cars, Tempo Travellers, and Luxury Buses. Professional drivers, comfortable rides, and affordable rates for all destinations.
-            </motion.p>
-
-            {/* CTA Buttons with Magnetic Effect */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-wrap gap-4 justify-center"
-            >
-              <motion.a
-                href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative bg-[#FACF2D] text-black px-10 py-5 rounded-full font-bold text-lg overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call: +91 76685 70551
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-
-              <motion.a
-                href="https://wa.me/917668570551"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300"
-              >
-                <span className="flex items-center">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  WhatsApp Us
-                </span>
-              </motion.a>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Vehicles Section - 3D Cards */}
-        <section ref={vehiclesSectionRef} className="pt-12 pb-32 bg-white relative overflow-hidden">
-
-          {/* Background Decoration */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-5">
-            <div className="absolute top-20 right-0 w-96 h-96 bg-[#FACF2D] rounded-full blur-3xl" />
-          </div>
-
-          <div ref={vehiclesRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={vehiclesInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-20"
+              className="lg:col-span-7 xl:col-span-8"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={vehiclesInView ? { scale: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-[#FACF2D]/10 px-6 py-3 rounded-full mb-6"
-              >
-                <Car className="w-5 h-5 text-[#FACF2D]" />
-                <span className="text-[#FACF2D] font-bold text-sm tracking-wider">OUR PREMIUM FLEET</span>
-              </motion.div>
+              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 md:p-10 border border-white/10 h-full">
 
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Choose Your <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Perfect Vehicle</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Cars, Tempo Travellers & Buses - Well-maintained fleet with professional drivers
-              </p>
-            </motion.div>
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#FACF2D] px-4 py-2 rounded-full mb-6">
+                  <Sparkles className="w-4 h-4 text-black" />
+                  <span className="text-black font-bold text-sm">INDIA'S MOST TRUSTED TAXI SERVICE</span>
+                </div>
 
-            {/* Filter Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={vehiclesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap justify-center gap-4 mb-16"
-            >
-              {[
-                { id: 'all', label: 'All Vehicles', icon: Car },
-                { id: 'car', label: 'Cars', icon: Car },
-                { id: 'tempo', label: 'Tempo', icon: Users },
-                { id: 'bus', label: 'Buses', icon: Bus }
-              ].map((filter, idx) => (
-                <motion.button
-                  key={filter.id}
-                  onClick={() => setActiveFilter(filter.id)}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-8 py-4 rounded-full font-bold text-sm tracking-wider transition-all duration-300 flex items-center gap-2 ${
-                    activeFilter === filter.id
-                      ? 'bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black shadow-xl shadow-[#FACF2D]/30'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  <filter.icon className="w-4 h-4" />
-                  {filter.label}
-                </motion.button>
-              ))}
-            </motion.div>
+                {/* Main Title */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
+                  Outstation Taxi to
+                  <span className="block text-[#FACF2D]">500+ Destinations</span>
+                </h1>
 
-            {/* Vehicles Grid with Cute 3D Effect */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {displayedVehicles.map((vehicle, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={vehiclesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="vehicle-card group relative"
-                >
-                  <motion.div
-                    whileHover={{ y: -12, scale: 1.02 }}
-                    transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="bg-gradient-to-br from-white via-white to-orange-50/30 rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_rgba(250,207,45,0.3)] border-4 border-orange-100/50 relative"
+                <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
+                  Professional cab service from Delhi, Jaipur, Chandigarh, Agra & 14+ cities.
+                  Sedan, SUV, Innova, Tempo Traveller & Buses.
+                </p>
+
+                {/* Quick Stats */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {[
+                    { icon: MapPin, value: '14', label: 'Cities' },
+                    { icon: Route, value: '500+', label: 'Routes' },
+                    { icon: Star, value: '4.9', label: 'Rating' },
+                    { icon: Users, value: '50K+', label: 'Trips' }
+                  ].map((stat, i) => (
+                    <div key={i} className="bg-white/10 backdrop-blur-xl px-4 py-2.5 rounded-xl border border-white/10">
+                      <div className="flex items-center gap-2">
+                        <stat.icon className="w-4 h-4 text-[#FACF2D]" fill={stat.label === 'Rating' ? 'currentColor' : 'none'} />
+                        <span className="text-white font-bold">{stat.value}</span>
+                        <span className="text-white/50 text-sm">{stat.label}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
+                  <motion.button
+                    onClick={handleCallClick}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-6 py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 shadow-lg shadow-[#FACF2D]/25 transition-colors"
                   >
-                    {/* Badge with cute styling */}
-                    <div className="absolute top-4 right-4 z-20">
-                      <motion.div
-                        whileHover={{ scale: 1.15, rotate: 10 }}
-                        className={`bg-gradient-to-r ${getVehicleColor(vehicle.type)} text-white px-5 py-2.5 rounded-full text-xs font-black flex items-center gap-1.5 shadow-xl`}
-                      >
-                        <Star className="w-4 h-4" fill="white" />
-                        {vehicle.rating} ⭐
-                      </motion.div>
-                    </div>
+                    <Phone className="w-5 h-5" />
+                    Call Now
+                  </motion.button>
 
-                    {/* Image with cute styling */}
-                    <div className="relative h-56 overflow-hidden rounded-t-[1.75rem]">
-                      <motion.div
-                        whileHover={{ scale: 1.08, rotate: 1 }}
-                        transition={{ duration: 0.6 }}
-                        className="w-full h-full"
-                      >
-                        <Image
-                          src={vehicle.image}
-                          alt={vehicle.type}
-                          fill
-                          className="object-cover"
-                        />
-                      </motion.div>
+                  <motion.button
+                    onClick={handleWhatsAppClick}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-6 py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 border border-white/20 transition-colors"
+                  >
+                    <BsWhatsapp className="w-5 h-5" />
+                    WhatsApp
+                  </motion.button>
 
-                      {/* Soft Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <motion.button
+                    onClick={handleEmailClick}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-6 py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 border border-white/20 transition-colors"
+                  >
+                    <HiOutlineMail className="w-5 h-5" />
+                    Email
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
 
-                      {/* Cute Capacity Badge */}
-                      <motion.div
-                        whileHover={{ scale: 1.15, rotate: -3 }}
-                        className="absolute bottom-4 left-4 bg-gradient-to-r from-[#FACF2D] to-orange-400 text-white backdrop-blur-md px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl border-2 border-white/50"
-                      >
-                        <Users className="w-5 h-5" />
-                        <span className="font-black text-base">{vehicle.seating}</span>
-                      </motion.div>
-                    </div>
-
-                    {/* Content with cute styling */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-black text-gray-900 mb-4 group-hover:text-[#FACF2D] transition-colors duration-300">
-                        {vehicle.type}
-                      </h3>
-
-                      {/* Cute Pricing Card */}
-                      <div className="mb-6">
-                        <motion.div
-                          whileHover={{ scale: 1.03, x: 5 }}
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl border-2 border-orange-100 shadow-md hover:shadow-lg transition-all duration-300"
-                        >
-                          <span className="text-xs font-bold text-gray-700 flex items-center gap-2">
-                            <Route className="w-4 h-4 text-orange-500" />
-                            Per KM
-                          </span>
-                          <span className="text-base font-black text-orange-600">{vehicle.perKm}</span>
-                        </motion.div>
-                      </div>
-
-                      {/* Features with cute badges */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {vehicle.facilities.slice(0, 3).map((feature, idx) => (
-                          <motion.span
-                            key={idx}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-700 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 hover:border-green-400 hover:shadow-lg transition-all duration-300"
-                          >
-                            <CheckCircle className="w-3 h-3" fill="currentColor" />
-                            {feature}
-                          </motion.span>
-                        ))}
-                      </div>
-
-                      {/* Cute CTA Button */}
-                      <Link href="/contact">
-                        <motion.button
-                          whileHover={{ scale: 1.05, y: -3 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black py-4 rounded-2xl font-black text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300"
-                        >
-                          BOOK NOW
-                          <motion.div
-                            animate={{ x: [0, 8, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <ArrowRight className="w-5 h-5" />
-                          </motion.div>
-                        </motion.button>
-                      </Link>
-                    </div>
-
-                    {/* Cute Sparkle Effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#FACF2D]/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Show More Button */}
-            {!showAllVehicles && getFilteredVehicles().length > 6 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={vehiclesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-center mt-16"
-              >
-                <motion.button
-                  onClick={() => setShowAllVehicles(true)}
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(250, 207, 45, 0.3)" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-12 py-5 rounded-full font-bold text-lg inline-flex items-center gap-3"
-                >
-                  VIEW ALL VEHICLES
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
-            )}
-          </div>
-        </section>
-
-        {/* Routes Section */}
-        <section ref={routesRef} className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            {/* Section Header */}
+            {/* Right Side - Search & Quick Links */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={routesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-20"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={routesInView ? { scale: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-purple-100 px-6 py-3 rounded-full mb-6"
-              >
-                <Navigation className="w-5 h-5 text-purple-600" />
-                <span className="text-purple-600 font-bold text-sm tracking-wider">POPULAR ROUTES</span>
-              </motion.div>
-
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Explore <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Top Destinations</span>
-              </h2>
-
-              {/* Search and Filter */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={routesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 mt-12"
-              >
-                <div className="flex-1 relative group">
-                  <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-[#FACF2D] transition-colors" />
+              {/* Search Card */}
+              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10">
+                <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                  <Search className="w-5 h-5 text-[#FACF2D]" />
+                  Find Your City
+                </h3>
+                <div className="relative">
                   <input
                     type="text"
-                    placeholder="Search your destination..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-14 pr-6 py-5 rounded-2xl border-2 border-gray-200 focus:border-[#FACF2D] focus:outline-none text-gray-900 font-semibold bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    placeholder="Search cities..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#FACF2D]/50 transition-colors"
                   />
-                </div>
-                <div className="relative sm:w-64 group">
-                  <Filter className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-[#FACF2D] transition-colors" />
-                  <select
-                    value={selectedOrigin}
-                    onChange={(e) => setSelectedOrigin(e.target.value)}
-                    className="w-full pl-14 pr-6 py-5 rounded-2xl border-2 border-gray-200 focus:border-[#FACF2D] focus:outline-none text-gray-900 font-semibold appearance-none bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  >
-                    <option value="">All Cities</option>
-                    {getOriginCities().map(city => (
-                      <option key={city} value={city}>{city}</option>
-                    ))}
-                  </select>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Unique Routes Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {displayedRoutes.map((route, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={routesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  <Link href={`/${route.slug}`}>
-                    <motion.div
-                      whileHover={{ y: -15, scale: 1.03 }}
-                      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                      className="group relative bg-white rounded-[1.5rem] p-7 shadow-2xl hover:shadow-[0_25px_50px_rgba(250,207,45,0.35)] border-3 overflow-hidden cursor-pointer h-full"
-                      style={{
-                        borderImage: 'linear-gradient(135deg, rgba(250,207,45,0.3), rgba(255,165,0,0.3)) 1'
-                      }}
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
                     >
-                      {/* Animated Background Gradient */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{
-                          background: `linear-gradient(135deg, rgba(250,207,45,0.1), transparent)`
-                        }}
-                      />
+                      <X className="w-5 h-5" />
+                    </button>
+                  )}
+                </div>
 
-                      {/* Decorative Corner Element */}
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#FACF2D]/10 to-transparent rounded-bl-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                      <div className="relative z-10">
-                        {/* Origin with Icon */}
-                        <div className="flex items-start mb-4">
-                          <motion.div
-                            whileHover={{ scale: 1.2, rotate: 20 }}
-                            className="bg-gradient-to-br from-[#FACF2D] to-orange-400 p-2.5 rounded-2xl mr-3 shadow-lg"
-                          >
-                            <MapPin className="w-5 h-5 text-white" fill="white" />
-                          </motion.div>
-                          <div>
-                            <p className="text-xs text-gray-500 font-semibold mb-1">FROM</p>
-                            <h3 className="font-black text-base text-gray-900 group-hover:text-[#FACF2D] transition-colors">{route.origin}</h3>
-                          </div>
-                        </div>
-
-                        {/* Arrow Connector */}
-                        <div className="flex items-center mb-4 ml-2">
-                          <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="flex items-center"
-                          >
-                            <div className="h-0.5 w-8 bg-gradient-to-r from-[#FACF2D] to-orange-400 mr-2" />
-                            <ArrowRight className="w-5 h-5 text-orange-500 group-hover:text-[#FACF2D] transition-colors" />
-                          </motion.div>
-                        </div>
-
-                        {/* Destination */}
-                        <div className="mb-5 ml-2">
-                          <p className="text-xs text-gray-500 font-semibold mb-1">TO</p>
-                          <span className="font-black text-base text-gray-800 group-hover:text-orange-600 transition-colors">{route.destination}</span>
-                        </div>
-
-                        {/* Tags Badge */}
-                        {route.tags && route.tags.length > 0 && (
-                          <motion.div
-                            whileHover={{ scale: 1.05, x: 3 }}
-                            className={`inline-flex items-center px-4 py-2 rounded-xl text-xs font-black mb-5 border-2 shadow-md ${getRouteTypeColor(route.tags)}`}
-                          >
-                            <Sparkles className="w-3 h-3 mr-1.5" />
-                            {route.tags[0]}
-                          </motion.div>
-                        )}
-
-                        {/* Info Cards */}
-                        <div className="space-y-2 mb-5">
-                          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100">
-                            <span className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                              <Route className="w-4 h-4 text-blue-500" />
-                              Distance
-                            </span>
-                            <span className="text-sm font-black text-blue-600">{route.distance}</span>
-                          </div>
-                          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
-                            <span className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                              <Clock className="w-4 h-4 text-green-500" />
-                              Duration
-                            </span>
-                            <span className="text-sm font-black text-green-600">{route.time}</span>
-                          </div>
-                          {route.price && (
-                            <div className="flex items-center justify-between p-3 bg-gradient-to-r from-[#FACF2D]/20 to-orange-50 rounded-xl border border-[#FACF2D]/30">
-                              <span className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                                <DollarSign className="w-4 h-4 text-[#FACF2D]" />
-                                Starting
-                              </span>
-                              <span className="text-sm font-black text-orange-600">{route.price}</span>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* CTA with gradient */}
-                        <motion.div
-                          whileHover={{ scale: 1.05 }}
-                          className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black font-black text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg group-hover:shadow-xl transition-all"
-                        >
-                          Explore Route
-                          <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <ArrowRight className="w-4 h-4" />
-                          </motion.div>
-                        </motion.div>
-                      </div>
-
-                      {/* Shine effect on hover */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                      </div>
-                    </motion.div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Show More Routes */}
-            {!showAllRoutes && getFilteredRoutes().length > 12 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={routesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-center mt-16"
-              >
-                <motion.button
-                  onClick={() => setShowAllRoutes(true)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-black text-[#FACF2D] px-12 py-5 rounded-full font-bold text-lg inline-flex items-center gap-3 hover:bg-gray-900 transition-colors duration-300"
-                >
-                  VIEW ALL ROUTES
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
-            )}
-          </div>
-        </section>
-
-        {/* Why Choose Us - Premium Design */}
-        <section ref={featuresRef} className="py-32 bg-white relative overflow-hidden">
-
-          {/* Background Decoration */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-20"
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={featuresInView ? { scale: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-green-100 px-6 py-3 rounded-full mb-6"
-              >
-                <BadgeCheck className="w-5 h-5 text-green-600" />
-                <span className="text-green-600 font-bold text-sm tracking-wider">WHY CHOOSE US</span>
-              </motion.div>
-
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
-                Your <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Trusted Partner</span>
-              </h2>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {whyChooseUs.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl border border-gray-100 hover:border-[#FACF2D] transition-all duration-300 relative overflow-hidden"
-                >
-                  {/* Background Gradient on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FACF2D]/0 to-orange-500/0 group-hover:from-[#FACF2D]/10 group-hover:to-orange-500/10 transition-all duration-500" />
-
-                  <div className="relative z-10">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className="w-16 h-16 bg-gradient-to-br from-[#FACF2D] to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                {/* Quick city links */}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {['Delhi', 'Jaipur', 'Chandigarh', 'Shimla'].map((city) => (
+                    <Link
+                      key={city}
+                      href={`/${city.toLowerCase()}`}
+                      className="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                     >
-                      <TrendingUp className="w-8 h-8 text-white" />
-                    </motion.div>
+                      {city}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-                    <h3 className="text-lg font-black text-gray-900 mb-4 group-hover:text-[#FACF2D] transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
+              {/* Contact Card */}
+              <div className="bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 relative overflow-hidden flex-1">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
+
+                <div className="relative z-10">
+                  <h3 className="text-black font-bold text-lg mb-2">Quick Booking</h3>
+                  <p className="text-black/70 text-sm mb-4">Get instant fare estimate</p>
+
+                  <div className="space-y-3">
+                    <a
+                      href={`tel:+91${phoneNumber}`}
+                      className="flex items-center gap-3 bg-black text-[#FACF2D] px-4 py-3 rounded-xl font-bold text-sm hover:bg-black/90 transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      {phoneNumber}
+                    </a>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="w-full flex items-center justify-center gap-3 bg-white/90 text-black px-4 py-3 rounded-xl font-bold text-sm hover:bg-white transition-colors"
+                    >
+                      <BsWhatsapp className="w-4 h-4" />
+                      WhatsApp
+                    </button>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
-        </section>
 
-        {/* Final CTA - Unique Design */}
-        <section className="relative py-32 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-orange-500 overflow-hidden">
-
-          {/* Animated Background Pattern */}
+          {/* Trust Badges */}
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 opacity-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10"
           >
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(circle at 20px 20px, black 2px, transparent 0)',
-              backgroundSize: '40px 40px'
-            }} />
+            {[
+              { icon: BadgeCheck, label: 'Verified Drivers' },
+              { icon: Shield, label: 'GPS Tracking' },
+              { icon: Award, label: 'Best Price' },
+              { icon: Headphones, label: '24/7 Support' }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 text-white/70">
+                <item.icon className="w-5 h-5 text-[#FACF2D]" />
+                <span className="text-sm font-medium">{item.label}</span>
+              </div>
+            ))}
           </motion.div>
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          {/* Scroll indicator */}
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="mt-10 flex flex-col items-center text-white/50 cursor-pointer"
+            onClick={() => document.getElementById('cities-section')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <span className="text-xs font-medium mb-2">Explore All Cities</span>
+            <ChevronDown className="w-6 h-6" />
+          </motion.div>
+        </div>
+      </section>
 
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 200 }}
+
+      {/* ==================== ROUTE MARQUEE ==================== */}
+      <section className="bg-slate-900 py-4 overflow-hidden border-y border-slate-800">
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" } }}
+        >
+          {[...popularRoutes, ...popularRoutes].map((route, idx) => (
+            <Link
+              key={idx}
+              href={`/${route.from.toLowerCase()}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
+              className="flex items-center mx-6 flex-shrink-0 hover:scale-105 transition-transform group"
             >
-              <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
-                Ready to Start Your Journey?
-              </h2>
-              <p className="text-lg text-gray-800 mb-12 font-semibold">
-                Book your cab, tempo, or bus now and experience premium travel with Triveni Cabs
-              </p>
+              <span className="font-bold text-white whitespace-nowrap">{route.from}</span>
+              <ArrowRight className="w-4 h-4 mx-2 text-[#FACF2D] flex-shrink-0" />
+              <span className="font-bold text-white whitespace-nowrap">{route.to}</span>
+              <span className="ml-3 bg-[#FACF2D] px-3 py-1 rounded-full text-black text-sm font-bold whitespace-nowrap">
+                ₹{route.price}
+              </span>
+            </Link>
+          ))}
+        </motion.div>
+      </section>
+
+
+      {/* ==================== ALL CITIES SECTION ==================== */}
+      <section id="cities-section" className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
+              <MapPin className="w-4 h-4" />
+              <span className="text-sm font-bold">14 MAJOR CITIES</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Select Your Departure City
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Book reliable outstation cabs from any of our service cities with transparent pricing
+            </p>
+          </motion.div>
+
+          {/* Cities Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {filteredCities.map((city, index) => {
+              const isLarge = index === 0 || index === 5;
+
+              return (
+                <motion.div
+                  key={city.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className={isLarge ? 'md:col-span-2 md:row-span-2' : ''}
+                >
+                  <Link href={`/${city.name.toLowerCase()}`} className="block group h-full">
+                    <div className={`relative overflow-hidden rounded-3xl h-full ${
+                      isLarge ? 'min-h-[300px] md:min-h-[400px]' : 'min-h-[180px] md:min-h-[200px]'
+                    }`}>
+                      {/* Image */}
+                      <Image
+                        src={city.image}
+                        alt={`${city.name} Taxi Service`}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 group-hover:from-black/80 transition-all" />
+
+                      {/* Glow Effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#FACF2D]/20 to-transparent" />
+
+                      {/* Content */}
+                      <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
+                        {/* Top */}
+                        <div className="flex justify-between items-start">
+                          <span className={`${isLarge ? 'text-4xl' : 'text-2xl'}`}>{city.icon}</span>
+                          <div className="bg-[#FACF2D] text-black px-3 py-1 rounded-full">
+                            <span className="font-bold text-xs">{city.routeCount} Routes</span>
+                          </div>
+                        </div>
+
+                        {/* Bottom */}
+                        <div>
+                          <h3 className={`font-black text-white group-hover:text-[#FACF2D] transition-colors ${
+                            isLarge ? 'text-3xl md:text-4xl mb-2' : 'text-xl md:text-2xl mb-1'
+                          }`}>
+                            {city.name}
+                          </h3>
+                          <p className={`text-white/80 font-medium ${isLarge ? 'text-base mb-3' : 'text-sm'}`}>
+                            {city.tagline}
+                          </p>
+
+                          {/* Popular Routes for large cards */}
+                          {isLarge && city.highlights && (
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {city.highlights.slice(0, 3).map((route, idx) => (
+                                <span key={idx} className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
+                                  → {route}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+
+                          <div className="flex items-center gap-2 text-[#FACF2D] font-bold text-sm">
+                            <span>View Routes</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Border */}
+                      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#FACF2D]/50 transition-colors" />
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== VEHICLE FLEET ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
+              <Car className="w-4 h-4" />
+              <span className="text-sm font-bold">OUR FLEET</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Choose Your Vehicle
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              From 4-seater sedans to 56-seater luxury buses. AC, GPS-enabled & well-maintained.
+            </p>
+          </motion.div>
+
+          {/* Vehicle Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3 mb-10"
+          >
+            {[
+              { id: 'all', label: 'All', icon: Sparkles },
+              { id: 'car', label: 'Cars & SUVs', icon: Car },
+              { id: 'tempo', label: 'Tempo Traveller', icon: Users },
+              { id: 'bus', label: 'Buses', icon: Bus }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all ${
+                  activeTab === tab.id
+                    ? 'bg-slate-900 text-[#FACF2D]'
+                    : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            ))}
+          </motion.div>
+
+          {/* Vehicle Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filteredVehicles.map((vehicle, index) => (
+              <motion.div
+                key={vehicle.type}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-slate-300 transition-all group"
+              >
+                {/* Image */}
+                <div className="relative h-44 bg-gradient-to-br from-slate-100 to-slate-50">
+                  <Image
+                    src={vehicle.image}
+                    alt={vehicle.type}
+                    fill
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Rating Badge */}
+                  <div className="absolute top-4 right-4 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <Star className="w-3.5 h-3.5" fill="currentColor" />
+                    <span className="font-bold text-sm">{vehicle.rating}</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900">{vehicle.type}</h3>
+                      <div className="flex items-center gap-2 mt-1 text-sm text-slate-500">
+                        <span className="flex items-center gap-1">
+                          <Users className="w-3.5 h-3.5" />
+                          {vehicle.seats}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Snowflake className="w-3.5 h-3.5" />
+                          AC
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Price & CTA */}
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <div>
+                      <p className="text-xs text-slate-500">From</p>
+                      <p className="text-xl font-black text-slate-900">{vehicle.price}</p>
+                    </div>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="bg-slate-900 hover:bg-[#FACF2D] text-white hover:text-black px-5 py-2.5 rounded-xl font-bold text-sm transition-colors"
+                    >
+                      Book
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== WHY CHOOSE US ==================== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Why Triveni Cabs?
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Trusted by 50,000+ customers for reliable outstation taxi service
+            </p>
+          </motion.div>
+
+          {/* Features Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            {/* Large Card - Safety */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">100% Safe & Secure Journey</h3>
+                <p className="text-white/80 text-lg mb-6 max-w-xl">
+                  All drivers police-verified with 5+ years experience.
+                  Real-time GPS tracking and 24/7 monitoring.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {['Verified Drivers', 'GPS Tracking', 'Live Sharing', 'SOS Support'].map((item, i) => (
+                    <span key={i} className="bg-white/20 px-4 py-2 rounded-full text-sm font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
-            <div className="flex flex-wrap justify-center gap-6">
-              <motion.a
-                href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-black text-[#FACF2D] px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
+            {/* Other Features */}
+            {serviceFeatures.slice(1, 3).map((feature, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 + idx * 0.1 }}
+                className="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-200"
+              >
+                <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-5`}>
+                  <feature.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{feature.title}</h3>
+                <p className="text-slate-600">{feature.description}</p>
+              </motion.div>
+            ))}
+
+            {/* Support Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-slate-900 rounded-3xl p-6 md:p-8 text-white"
+            >
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-5">
+                <Headphones className="w-7 h-7 text-[#FACF2D]" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">24/7 Support</h3>
+              <p className="text-white/70 mb-4">Round-the-clock assistance via call and WhatsApp.</p>
+              <a href={`tel:+91${phoneNumber}`} className="text-[#FACF2D] font-bold text-lg">
+                {phoneNumber}
+              </a>
+            </motion.div>
+
+            {/* Rating Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-6 md:p-8 text-white"
+            >
+              <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
+                <Award className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">50,000+ Happy Trips</h3>
+              <p className="text-white/80 mb-4">Trusted by families, corporates & tour operators.</p>
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map(i => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" />
+                ))}
+                <span className="ml-2 font-bold">4.9/5</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== POPULAR ROUTES TABLE ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Popular Routes & Fares
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Indicative one-way fares for sedan. SUV, Innova, Tempo & Bus rates on request.
+            </p>
+          </motion.div>
+
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+            {/* Header */}
+            <div className="grid grid-cols-4 md:grid-cols-5 bg-slate-900 text-white font-bold text-sm">
+              <div className="p-4 col-span-2">Route</div>
+              <div className="p-4 hidden md:block">Distance</div>
+              <div className="p-4">Duration</div>
+              <div className="p-4">Fare</div>
+            </div>
+
+            {/* Rows */}
+            {popularRoutes.map((route, idx) => (
+              <Link
+                key={idx}
+                href={`/${route.from.toLowerCase()}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.03 }}
+                  className={`grid grid-cols-4 md:grid-cols-5 items-center ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'} hover:bg-[#FACF2D]/10 transition-colors cursor-pointer group border-b border-slate-100 last:border-0`}
+                >
+                  <div className="p-4 col-span-2 font-semibold text-slate-900 group-hover:text-[#D4A017]">
+                    {route.from}
+                    <ArrowRight className="w-4 h-4 inline mx-2 text-[#FACF2D]" />
+                    {route.to}
+                  </div>
+                  <div className="p-4 text-slate-600 hidden md:block">{route.distance}</div>
+                  <div className="p-4 text-slate-600">{route.time}</div>
+                  <div className="p-4 font-black text-[#FACF2D] text-lg">₹{route.price}</div>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+
+          <p className="text-center text-slate-500 text-sm mt-6">
+            * Prices are indicative for sedan. Final fare depends on actual distance. Toll, parking & state tax extra.
+          </p>
+        </div>
+      </section>
+
+
+      {/* ==================== FINAL CTA ==================== */}
+      <section className="py-16 md:py-24 bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+              Ready to Book Your <span className="text-[#FACF2D]">Outstation Trip</span>?
+            </h2>
+            <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+              Get instant confirmation. Professional drivers. Best price guaranteed. Available 24/7.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                onClick={handleCallClick}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
               >
                 <Phone className="w-6 h-6" />
-                CALL: +91 76685 70551
-              </motion.a>
+                Call {phoneNumber}
+              </motion.button>
 
-              <motion.a
-                href="https://wa.me/917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-black px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
+              <motion.button
+                onClick={handleWhatsAppClick}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors"
               >
-                <MessageCircle className="w-6 h-6" />
-                WHATSAPP US
-              </motion.a>
+                <BsWhatsapp className="w-6 h-6" />
+                WhatsApp Us
+              </motion.button>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ==================== FLOATING MOBILE CTA ==================== */}
+      {mounted && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 p-4 md:hidden shadow-lg"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex-1">
+              <p className="text-xs text-slate-500">Outstation Taxi</p>
+              <p className="text-lg font-black text-slate-900">From ₹12/km</p>
+            </div>
+            <button
+              onClick={handleCallClick}
+              className="bg-[#FACF2D] text-black px-5 py-3 rounded-xl font-bold flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              Call
+            </button>
+            <button
+              onClick={handleWhatsAppClick}
+              className="bg-slate-900 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2"
+            >
+              <BsWhatsapp className="w-4 h-4" />
+              Book
+            </button>
           </div>
-        </section>
-      </div>
-    </>
+        </motion.div>
+      )}
+
+    </div>
   );
 }

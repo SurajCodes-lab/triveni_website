@@ -2,597 +2,172 @@
 
 import { useEffect, useMemo, useCallback, useState } from "react";
 import {
-  MapPin, Phone, Car, X, Clock, Shield, AlertTriangle, CheckCircle,
-  MapIcon, Users, ChevronRight, LocateIcon, Star, ShieldCheck,
-  Menu, Wifi, Coffee, Navigation
+  MapPin, Phone, Car, Clock, Shield, CheckCircle,
+  Users, ChevronRight, Star, ArrowRight, Sparkles,
+  CreditCard, Headphones, Award, Heart, Navigation,
+  Bus, ChevronDown, Route, Fuel, Gift, BadgeCheck,
+  Timer, Snowflake, Search, Filter, X, Play
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsWhatsapp } from 'react-icons/bs';
 import { phoneNumber } from "@/utilis/data";
 import CityRoutes from "@/components/cities/CityRoutes";
-import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
+import { motion, AnimatePresence } from "framer-motion";
 
-// COMPLETELY REDESIGNED MODERN HERO BANNER
-const HeroBanner = ({ formattedCityName }) => {
-  const generateHeroStructuredData = () => ({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `Triveni Cabs ${formattedCityName}`,
-    "description": `Professional taxi service in ${formattedCityName} for outstation trips, airport transfers, local tours and wedding car rentals. 24/7 service with GPS tracking.`,
-    "telephone": `+91${phoneNumber}`,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": formattedCityName,
-      "addressCountry": "IN"
-    },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "priceRange": "₹₹",
-    "image": "https://www.trivenicabs.in/images/about/about_banner.webp",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  });
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateHeroStructuredData()) }}
-      />
-      <section
-        className="relative min-h-[75vh] md:min-h-[85vh] flex items-center overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/about/about_banner.webp')",
-        }}
-        itemScope
-        itemType="https://schema.org/TaxiService"
-      >
-        {/* Dark Gradient Overlay on Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
-
-        {/* Animated Gradient Accent Layers on top */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: 'radial-gradient(circle at 20% 50%, rgba(250, 207, 45, 0.4) 0%, transparent 50%)',
-            animation: 'gradientMove 10s ease-in-out infinite'
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)',
-            animation: 'gradientMove 8s ease-in-out infinite reverse'
-          }}
-        />
-
-        {/* Floating Icons */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute text-2xl opacity-20"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `float ${10 + Math.random() * 20}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            >
-              {['🚕', '🏙️', '⭐', '🎯', '📍', '🚗'][i % 6]}
-            </div>
-          ))}
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8">
-          {/* Modern Breadcrumb */}
-          <nav className="mb-6" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20" itemScope itemType="https://schema.org/BreadcrumbList">
-              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <Link href="/" className="text-white hover:text-[#FACF2D] transition-colors text-sm font-medium" itemProp="item">
-                  <span itemProp="name">Home</span>
-                </Link>
-                <meta itemProp="position" content="1" />
-              </li>
-              <ChevronRight className="w-4 h-4 text-white/60" />
-              <li className="text-[#FACF2D] font-semibold text-sm" aria-current="page" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <span itemProp="name">Taxi Service {formattedCityName}</span>
-                <meta itemProp="position" content="2" />
-              </li>
-            </ol>
-          </nav>
-
-          {/* Hero Content */}
-          <div className="max-w-4xl">
-            {/* Animated Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-5 py-2.5 rounded-full mb-4 border-2 border-[#FACF2D]/40 shadow-xl">
-              <MapPin className="w-5 h-5 text-[#FACF2D]" />
-              <span className="font-bold text-white text-sm">Best Taxi Service 2026</span>
-            </div>
-
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight" itemProp="name">
-              Best Taxi Service in{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400">
-                {formattedCityName}
-              </span>
-              <br />
-              <span className="text-2xl md:text-3xl lg:text-4xl text-white/90">
-                24/7 Cab Booking Available
-              </span>
-            </h1>
-
-            <p className="text-base md:text-lg lg:text-xl text-white/95 mb-8 max-w-3xl leading-relaxed font-light" itemProp="description">
-              ✅ Verified Drivers • ✅ GPS Tracking • ✅ Clean AC Vehicles<br className="hidden md:block" />
-              ✅ Airport Transfer • ✅ Outstation Tours • ✅ Instant Booking
-            </p>
-
-            {/* Modern Info Pills */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
-                <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                  <Clock className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <div className="text-xs text-white/70 font-medium">Available</div>
-                  <div className="font-bold">24/7 Service</div>
-                </div>
-              </div>
-
-              <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
-                <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                  <Shield className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <div className="text-xs text-white/70 font-medium">Safety</div>
-                  <div className="font-bold">GPS Tracking</div>
-                </div>
-              </div>
-
-              <div className="group flex items-center bg-white/20 backdrop-blur-md px-4 py-3 rounded-xl text-white border border-white/30 hover:bg-white/30 transition-all hover:scale-105 cursor-pointer shadow-lg">
-                <div className="w-10 h-10 bg-[#FACF2D] rounded-full flex items-center justify-center mr-3 group-hover:rotate-12 transition-transform">
-                  <Star className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <div className="text-xs text-white/70 font-medium">Rating</div>
-                  <div className="font-bold">4.8 ⭐</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Modern CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={`tel:+91${phoneNumber}`}
-                className="group bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
-                aria-label={`Call taxi service in ${formattedCityName} at ${phoneNumber}`}
-                itemProp="telephone"
-              >
-                <Phone className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
-                <span>Call Now - {phoneNumber}</span>
-              </a>
-
-              <a
-                href={`https://wa.me/${phoneNumber}?text=Hi, I need taxi service in ${formattedCityName}. Please share rates and availability.`}
-                className="group bg-white text-black hover:bg-[#FACF2D] px-8 py-4 rounded-xl flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-2xl font-bold text-lg"
-                aria-label={`WhatsApp taxi booking in ${formattedCityName}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <BsWhatsapp className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" />
-                <span>WhatsApp Booking</span>
-              </a>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-6 mt-8 pt-8 border-t border-white/20">
-              <div className="flex items-center text-white/90">
-                <CheckCircle className="w-5 h-5 mr-2 text-[#FACF2D]" />
-                <span className="text-sm font-medium">Verified Drivers</span>
-              </div>
-              <div className="flex items-center text-white/90">
-                <Shield className="w-5 h-5 mr-2 text-[#FACF2D]" />
-                <span className="text-sm font-medium">Safe Journey</span>
-              </div>
-              <div className="flex items-center text-white/90">
-                <Users className="w-5 h-5 mr-2 text-[#FACF2D]" />
-                <span className="text-sm font-medium">1000+ Happy Customers</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Decorative Wave */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-          <svg viewBox="0 0 1440 120" fill="none" className="w-full h-auto">
-            <path
-              d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-
-        {/* CSS Animations */}
-        <style jsx>{`
-          @keyframes gradientMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 50px); }
-          }
-          @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.4; }
-          }
-        `}</style>
-      </section>
-    </>
-  );
+// City data with images
+const cityHeroData = {
+  'Delhi': {
+    image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    tagline: 'Gateway to North India',
+    icon: '🏛️',
+    gradient: 'from-blue-600 to-indigo-700',
+    highlights: ['Agra', 'Jaipur', 'Manali', 'Shimla']
+  },
+  'Jaipur': {
+    image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+    tagline: 'The Pink City',
+    icon: '🏰',
+    gradient: 'from-pink-500 to-rose-600',
+    highlights: ['Udaipur', 'Jodhpur', 'Delhi', 'Agra']
+  },
+  'Chandigarh': {
+    image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
+    tagline: 'The City Beautiful',
+    icon: '🌳',
+    gradient: 'from-emerald-500 to-teal-600',
+    highlights: ['Shimla', 'Manali', 'Kasol', 'Delhi']
+  },
+  'Agra': {
+    image: '/images/sightseeing/Agra/Agra_Hero_section.jpg',
+    tagline: 'Home of Taj Mahal',
+    icon: '🕌',
+    gradient: 'from-amber-500 to-orange-600',
+    highlights: ['Delhi', 'Jaipur', 'Mathura', 'Vrindavan']
+  },
+  'Shimla': {
+    image: '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+    tagline: 'Queen of Hills',
+    icon: '🏔️',
+    gradient: 'from-cyan-500 to-blue-600',
+    highlights: ['Manali', 'Kufri', 'Chandigarh', 'Delhi']
+  },
+  'Dehradun': {
+    image: '/images/chardham/chardham-dehradun-hero.png',
+    tagline: 'Gateway to Uttarakhand',
+    icon: '🌲',
+    gradient: 'from-green-500 to-emerald-600',
+    highlights: ['Mussoorie', 'Rishikesh', 'Haridwar', 'Delhi']
+  },
+  'Rishikesh': {
+    image: '/images/chardham/chardham-rishikesh-hero.png',
+    tagline: 'Yoga Capital of World',
+    icon: '🧘',
+    gradient: 'from-teal-500 to-cyan-600',
+    highlights: ['Haridwar', 'Badrinath', 'Kedarnath', 'Delhi']
+  },
+  'Haridwar': {
+    image: '/images/chardham/chardham-haridwar-hero.png',
+    tagline: 'Gateway to Gods',
+    icon: '🙏',
+    gradient: 'from-orange-500 to-amber-600',
+    highlights: ['Rishikesh', 'Kedarnath', 'Badrinath', 'Delhi']
+  },
+  'Manali': {
+    image: '/images/packages/manali.webp',
+    tagline: 'Adventure Paradise',
+    icon: '⛷️',
+    gradient: 'from-sky-500 to-indigo-600',
+    highlights: ['Leh', 'Rohtang', 'Shimla', 'Delhi']
+  },
+  'Amritsar': {
+    image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg',
+    tagline: 'Golden Temple City',
+    icon: '🛕',
+    gradient: 'from-yellow-500 to-orange-500',
+    highlights: ['Wagah', 'Delhi', 'Chandigarh', 'Jammu']
+  },
+  'Jodhpur': {
+    image: '/images/packages/rajasthan.webp',
+    tagline: 'The Blue City',
+    icon: '🏯',
+    gradient: 'from-blue-500 to-indigo-600',
+    highlights: ['Jaisalmer', 'Udaipur', 'Jaipur', 'Delhi']
+  },
+  'Udaipur': {
+    image: '/images/packages/rajasthan.webp',
+    tagline: 'City of Lakes',
+    icon: '🚣',
+    gradient: 'from-violet-500 to-purple-600',
+    highlights: ['Mount Abu', 'Jodhpur', 'Jaipur', 'Delhi']
+  },
+  'Ayodhya': {
+    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png',
+    tagline: 'Ram Janmabhoomi',
+    icon: '🛕',
+    gradient: 'from-orange-500 to-red-600',
+    highlights: ['Varanasi', 'Lucknow', 'Prayagraj', 'Delhi']
+  },
+  'Ahmedabad': {
+    image: '/images/destinations/delhi.webp',
+    tagline: 'Heritage City of Gujarat',
+    icon: '🏛️',
+    gradient: 'from-red-500 to-orange-600',
+    highlights: ['Dwarka', 'Somnath', 'Kutch', 'Mumbai']
+  }
 };
 
-// SEO-Enhanced Vehicle Card Component
-const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+// Service features
+const serviceFeatures = [
+  {
+    icon: Shield,
+    title: "Verified & Safe Drivers",
+    description: "Police-verified drivers with 5+ years experience. GPS tracking on every trip.",
+    color: "bg-emerald-500"
+  },
+  {
+    icon: CreditCard,
+    title: "Transparent Pricing",
+    description: "No hidden charges. Pay per km rates with toll & parking included.",
+    color: "bg-blue-500"
+  },
+  {
+    icon: Clock,
+    title: "24/7 Booking",
+    description: "Book anytime. Round-the-clock customer support via call and WhatsApp.",
+    color: "bg-violet-500"
+  },
+  {
+    icon: Car,
+    title: "Wide Fleet Options",
+    description: "Sedan, SUV, Innova, Tempo Traveller, Bus - vehicle for every need.",
+    color: "bg-amber-500"
+  },
+  {
+    icon: Navigation,
+    title: "500+ Destinations",
+    description: "All major tourist spots, pilgrimage sites, and hill stations covered.",
+    color: "bg-rose-500"
+  },
+  {
+    icon: Award,
+    title: "4.9 Rating",
+    description: "50,000+ happy customers. Trusted by families and corporates.",
+    color: "bg-yellow-500"
+  }
+];
 
-  const generateVehicleStructuredData = () => ({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": `${vehicle.type} Taxi ${cityName}`,
-    "description": `Book ${vehicle.type} taxi in ${cityName}. ${vehicle.seating} seater AC vehicle with GPS tracking, music system and professional driver. Best rates guaranteed.`,
-    "image": vehicle.image?.startsWith('http') ? vehicle.image : `https://www.trivenicabs.in${vehicle.image || "/images/car/car1.webp"}`,
-    "brand": {
-      "@type": "Brand",
-      "name": "Triveni Cabs"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": vehicle.perKm?.replace('₹', '').replace('/km', '') || "12",
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/InStock",
-      "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": vehicle.rating || "4.5",
-      "reviewCount": vehicle.reviews || "500"
-    }
-  });
+// Vehicle data
+const vehicleTypes = [
+  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/car1.webp', rating: '4.9' },
+  { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/car2.webp', rating: '4.8' },
+  { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/car2.webp', rating: '4.9' },
+  { type: 'Tempo Traveller', seats: '12-17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
+  { type: 'Mini Bus', seats: '22-27', price: '₹28/km', image: '/images/bus/25_SEATER_BUS.jpg', rating: '4.7' },
+  { type: 'Luxury Bus', seats: '35-56', price: '₹35/km', image: '/images/bus/45_SEATER_BUS.jpg', rating: '4.8' }
+];
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateVehicleStructuredData()) }}
-      />
-      <article className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col" itemScope itemType="https://schema.org/Product">
-        {/* Enhanced Vehicle Image */}
-        <div className="relative h-40 md:h-48 bg-gray-100">
-          <Image
-            src={vehicle.image || "/images/car/car1.webp"}
-            alt={`${vehicle.type} taxi service ${cityName} - ${vehicle.seating} seater AC cab with GPS tracking and professional driver - Book online now`}
-            fill
-            className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            onLoad={() => setImageLoaded(true)}
-            onError={(e) => {
-              e.target.src = "/images/car/car1.webp";
-            }}
-            itemProp="image"
-            loading={index < 3 ? "eager" : "lazy"}
-            priority={index < 3}
-          />
-          {!imageLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Car className="w-8 h-8 text-gray-400 animate-pulse" />
-            </div>
-          )}
-
-          {/* Enhanced Rating Badge */}
-          <div className="absolute bottom-3 left-3 bg-black/80 rounded-full py-1 px-3 text-white flex items-center text-sm" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
-            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400 mr-1" />
-            <span itemProp="ratingValue">{vehicle.rating || "4.5"}</span>
-            <span className="text-xs ml-1 hidden sm:inline">(<span itemProp="reviewCount">{vehicle.reviews || "500"}</span>+)</span>
-            <meta itemProp="bestRating" content="5" />
-            <meta itemProp="worstRating" content="1" />
-          </div>
-        </div>
-
-        {/* Enhanced Card Content */}
-        <div className="p-4 flex-1 flex flex-col">
-          {/* SEO-Optimized Header */}
-          <header className="flex justify-between items-start mb-3">
-            <h3 className="font-bold text-lg leading-tight" itemProp="name">
-              {vehicle.type} Taxi {cityName}
-            </h3>
-            <div className="bg-gray-100 px-2 py-1 rounded-full text-sm flex items-center ml-2">
-              <Users className="w-3 h-3 mr-1" />
-              <span className="text-xs">{vehicle.seating}</span>
-            </div>
-          </header>
-
-          {/* Enhanced Pricing Grid with Schema */}
-          <div className="grid grid-cols-2 gap-2 mb-4 text-sm" itemProp="offers" itemScope itemType="https://schema.org/Offer">
-            <div className="bg-gray-50 p-2 rounded">
-              <p className="text-gray-500 text-xs">Per KM Rate</p>
-              <p className="font-semibold">
-                <span itemProp="price">{vehicle.perKm?.replace('₹', '').replace('/km', '') || "12"}</span>
-                <span className="text-xs">/km</span>
-              </p>
-              <meta itemProp="priceCurrency" content="INR" />
-              <meta itemProp="availability" content="https://schema.org/InStock" />
-            </div>
-            <div className="bg-gray-50 p-2 rounded">
-              <p className="text-gray-500 text-xs">Driver Charges</p>
-              <p className="font-semibold text-xs">{vehicle.driverCharges || "₹500/day"}</p>
-            </div>
-          </div>
-
-          {/* Enhanced Features Section */}
-          <div className="mb-4 flex-1">
-            <h4 className="text-sm font-semibold mb-2 flex items-center">
-              <ShieldCheck className="w-3 h-3 text-yellow-500 mr-1" />
-              Features
-            </h4>
-            <ul className="flex flex-wrap gap-1">
-              {(vehicle.facilities || ['AC', 'GPS Tracking', 'Music System', 'Clean Interior']).slice(0, 4).map((feature, i) => (
-                <li key={i} className="bg-gray-100 text-xs px-2 py-1 rounded-full">
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Enhanced Book Button */}
-          <button
-            onClick={onBookNow}
-            className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-yellow-400 hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-black"
-            aria-label={`Book ${vehicle.type} taxi in ${cityName} - Best rates with instant confirmation`}
-          >
-            Book {vehicle.type} Now
-          </button>
-        </div>
-      </article>
-    </>
-  );
-};
-
-// Enhanced Coverage Section with Better SEO
-const CoverageSection = ({ details, cityName }) => {
-  const coverageAreas = useMemo(() => [
-    {
-      title: `Full Taxi Service Areas in ${cityName}`,
-      icon: CheckCircle,
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200",
-      iconColor: "text-green-600",
-      data: details?.coverage?.fullCoverage || [`${cityName} City Center`, `${cityName} Airport`, `${cityName} Railway Station`]
-    },
-    {
-      title: `Pickup Locations - ${cityName} Taxi`,
-      icon: AlertTriangle,
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
-      iconColor: "text-blue-600",
-      data: details?.coverage?.limitedCoverage || [`${cityName} Hotels`, `${cityName} Mall`, `${cityName} Bus Stand`]
-    },
-    {
-      title: `Tourist Destinations - ${cityName} Cab`,
-      icon: MapPin,
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200",
-      iconColor: "text-purple-600",
-      data: details?.coverage?.restricted || [`${cityName} Temples`, `${cityName} Museums`, `${cityName} Parks`]
-    }
-  ], [details?.coverage, cityName]);
-
-  const generateCoverageStructuredData = () => ({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Taxi Service",
-    "provider": {
-      "@type": "Organization",
-      "name": "Triveni Cabs"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": cityName
-    }
-  });
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateCoverageStructuredData()) }}
-      />
-      <section className="space-y-4" itemScope itemType="https://schema.org/Service">
-        <header>
-          <h2 className="text-xl md:text-2xl font-semibold flex items-center gap-2 mb-2">
-            <MapIcon className="w-5 h-5 text-yellow-500" />
-            Taxi Service Coverage in {cityName} - All Major Areas
-          </h2>
-          <p className="text-gray-600 text-sm">
-            We provide comprehensive taxi service coverage across {cityName} with doorstep pickup from airport,
-            railway station, hotels, and all major locations. 24/7 availability guaranteed.
-          </p>
-        </header>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {coverageAreas.map((area, index) => (
-            <div key={index} className={`${area.bgColor} border ${area.borderColor} p-4 rounded-lg`}>
-              <h3 className="font-medium flex items-center gap-2 mb-3">
-                <area.icon className={`w-4 h-4 ${area.iconColor}`} />
-                {area.title}
-              </h3>
-              {area.data.length > 0 ? (
-                <ul className="space-y-1">
-                  {area.data.slice(0, 4).map((item, i) => (
-                    <li key={i} className="text-sm text-gray-700 flex items-center">
-                      <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></div>
-                      {item}
-                    </li>
-                  ))}
-                  {area.data.length > 4 && (
-                    <li className="text-xs text-gray-500 italic">
-                      +{area.data.length - 4} more locations in {cityName}
-                    </li>
-                  )}
-                </ul>
-              ) : (
-                <p className="text-sm text-gray-500">Available on request for {cityName}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-};
-
-// Enhanced Tourist Spots Section
-const TouristSpotsSection = ({ citySpots, formattedCityName }) => {
-  const defaultSpots = useMemo(() => [
-    {
-      name: `${formattedCityName} City Tour`,
-      image: "/images/about/about_banner.webp",
-      description: `Full day sightseeing tour of ${formattedCityName} covering major attractions, historical sites and cultural landmarks with comfortable taxi service. Book AC cab with professional driver.`
-    },
-    {
-      name: `${formattedCityName} Airport Transfer`,
-      image: "/images/about/about_banner.webp",
-      description: `Reliable airport pickup and drop service in ${formattedCityName} with on-time guarantee, professional drivers, and GPS tracking. 24/7 availability for all terminals.`
-    },
-    {
-      name: `${formattedCityName} Shopping Tour`,
-      image: "/images/about/about_banner.webp",
-      description: `Visit popular markets and shopping centers in ${formattedCityName} with convenient taxi service, local guidance, and comfortable AC vehicles. Best shopping destinations covered.`
-    }
-  ], [formattedCityName]);
-
-  const spotsToDisplay = (citySpots && citySpots.length > 0) ? citySpots.slice(0, 6) : defaultSpots;
-
-  const generateTouristSpotsStructuredData = () => ({
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": `Tourist Places in ${formattedCityName}`,
-    "description": `Popular tourist destinations and attractions in ${formattedCityName} accessible by taxi service`,
-    "itemListElement": spotsToDisplay.map((spot, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "TouristAttraction",
-        "name": spot.name,
-        "description": spot.description
-      }
-    }))
-  });
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateTouristSpotsStructuredData()) }}
-      />
-      <section className="space-y-4">
-        <header>
-          <h2 className="text-xl md:text-2xl font-semibold flex items-center gap-2 mb-2">
-            <LocateIcon className="w-5 h-5 text-yellow-500" />
-            Top Tourist Places in {formattedCityName} - Book Taxi Tour
-          </h2>
-          <p className="text-gray-600 text-sm">
-            Book taxi service to explore popular tourist destinations and attractions in {formattedCityName}.
-            Professional drivers with local knowledge, comfortable AC vehicles, flexible tour packages available.
-          </p>
-        </header>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {spotsToDisplay.map((spot, index) => (
-            <article
-              key={spot.name || index}
-              className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
-              itemScope
-              itemType="https://schema.org/TouristAttraction"
-            >
-              <div className="relative w-full h-40 md:h-48 bg-gray-100">
-                <Image
-                  src={spot.image || "/images/about/about_banner.webp"}
-                  alt={`${spot.name} - Top tourist attraction in ${formattedCityName} accessible by taxi service - Book cab tour online`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.target.src = "/images/about/about_banner.webp";
-                  }}
-                  itemProp="image"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold mb-2 leading-tight" itemProp="name">
-                  {spot.name}
-                </h3>
-                <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed" itemProp="description">
-                  {spot.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-};
-
-// Enhanced Quick Info Section
-const QuickInfoSection = ({ formattedCityName, details }) => {
-  const infoCards = useMemo(() => [
-    {
-      icon: Clock,
-      title: "24/7 Taxi Service",
-      value: "Always Available",
-      description: `Round-the-clock taxi booking in ${formattedCityName}`,
-      schema: "openingHours"
-    },
-    {
-      icon: Shield,
-      title: "Safe & Secure Ride",
-      value: "GPS Tracking",
-      description: "Live tracking and verified drivers",
-      schema: "safetyFeature"
-    },
-    {
-      icon: Car,
-      title: "Multi Vehicle Options",
-      value: "5+ Options",
-      description: "Sedan to luxury buses available",
-      schema: "vehicleType"
-    },
-    {
-      icon: Star,
-      title: "Top Rated Service",
-      value: "4.8/5 Rating",
-      description: "Excellent customer satisfaction",
-      schema: "aggregateRating"
-    }
-  ], [formattedCityName]);
-
-  return (
-    <section className="grid grid-cols-2 lg:grid-cols-4 gap-4" aria-label="Service highlights" itemScope itemType="https://schema.org/TaxiService">
-      {infoCards.map((card, index) => (
-        <div key={index} className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-          <card.icon className="w-8 h-8 text-yellow-500 mx-auto mb-2" aria-hidden="true" />
-          <div className="font-bold text-lg mb-1 text-gray-900">{card.value}</div>
-          <div className="text-sm font-medium text-gray-700 mb-1">{card.title}</div>
-          <div className="text-xs text-gray-500">{card.description}</div>
-        </div>
-      ))}
-    </section>
-  );
-};
-
-// Main Enhanced Component
 export default function CityServiceClient({
   formattedCityName,
   citySpots,
@@ -600,255 +175,772 @@ export default function CityServiceClient({
   vehiclesServices,
   cityLocalInfo
 }) {
-  // Get all keywords for hidden SEO section
-  const allPageKeywords = useMemo(() =>
-    getAllKeywordsForPage(formattedCityName),
-    [formattedCityName]
-  );
+  const [mounted, setMounted] = useState(false);
+  const [activeVehicleTab, setActiveVehicleTab] = useState('all');
+  const [expandedFaq, setExpandedFaq] = useState(0);
 
-  // Optimized handlers with better tracking
-  const handleCallNow = useCallback(() => {
-    window.open(`tel:+91${phoneNumber}`, '_blank');
-  }, []);
+  const cityData = cityHeroData[formattedCityName] || {
+    image: '/images/about/about_banner.webp',
+    tagline: 'Premium Taxi Service',
+    icon: '📍',
+    gradient: 'from-slate-600 to-slate-700',
+    highlights: ['Delhi', 'Jaipur', 'Agra']
+  };
 
   const handleWhatsAppClick = useCallback(() => {
-    const message = `Hi, I'm looking for reliable taxi service in ${formattedCityName}. Please share your best rates, vehicle options and availability for outstation trips.`;
+    const message = `Hi, I need taxi service from ${formattedCityName}. Please share rates and availability.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   }, [formattedCityName]);
 
-  // Enhanced SEO structured data for the main page
-  const generateMainStructuredData = () => ({
-    "@context": "https://schema.org",
-    "@type": "TaxiService",
-    "name": `Triveni Cabs ${formattedCityName}`,
-    "description": `Professional taxi service in ${formattedCityName} offering outstation cabs, airport transfers, local taxi booking with 24/7 availability, GPS tracking and verified drivers. Best rates guaranteed.`,
-    "url": `https://trivenicabs.in/${formattedCityName?.toLowerCase() || ''}`,
-    "telephone": `+91${phoneNumber}`,
-    "priceRange": "₹₹",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": formattedCityName,
-      "addressCountry": "IN"
-    },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "serviceArea": {
-      "@type": "City",
-      "name": formattedCityName
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250",
-      "bestRating": "5"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": `Taxi Services in ${formattedCityName}`,
-      "itemListElement": (vehiclesServices || []).slice(0, 5).map((vehicle, index) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": `${vehicle.type} Taxi Service ${formattedCityName}`,
-          "description": `${vehicle.type} taxi booking in ${formattedCityName} with AC, GPS and professional driver`
-        }
-      }))
-    }
-  });
+  const handleCallClick = useCallback(() => {
+    window.open(`tel:+91${phoneNumber}`, '_blank');
+  }, []);
 
-  // Scroll to top on mount
   useEffect(() => {
+    setMounted(true);
     window.scrollTo(0, 0);
   }, []);
 
+  // Filter vehicles
+  const filteredVehicles = useMemo(() => {
+    if (activeVehicleTab === 'all') return vehicleTypes;
+    if (activeVehicleTab === 'car') return vehicleTypes.filter(v =>
+      v.type.toLowerCase().includes('sedan') || v.type.toLowerCase().includes('suv')
+    );
+    if (activeVehicleTab === 'tempo') return vehicleTypes.filter(v =>
+      v.type.toLowerCase().includes('tempo')
+    );
+    if (activeVehicleTab === 'bus') return vehicleTypes.filter(v =>
+      v.type.toLowerCase().includes('bus')
+    );
+    return vehicleTypes;
+  }, [activeVehicleTab]);
+
+  const faqs = [
+    {
+      q: `How to book a taxi in ${formattedCityName}?`,
+      a: `Simply call us at ${phoneNumber} or WhatsApp for instant booking. Share your pickup location, destination, date, time, and number of passengers. You'll receive immediate confirmation with driver details.`
+    },
+    {
+      q: `What are the taxi rates in ${formattedCityName}?`,
+      a: `Our rates start from Rs.12/km for sedans. Price includes fuel, driver, and basic charges. Toll and parking extra. No hidden charges. Get instant fare estimate on call.`
+    },
+    {
+      q: `Is one-way taxi available from ${formattedCityName}?`,
+      a: `Yes! We offer one-way taxi service from ${formattedCityName} to all major cities. Pay only for the distance traveled without any return charges.`
+    },
+    {
+      q: `What vehicles are available in ${formattedCityName}?`,
+      a: `We have Sedan (4 seater), SUV Ertiga (6 seater), Innova (7 seater), Tempo Traveller (12-26 seater), and Buses (22-56 seater). All AC with GPS.`
+    },
+    {
+      q: `Do you provide airport transfer in ${formattedCityName}?`,
+      a: `Yes, we provide reliable airport pickup and drop service in ${formattedCityName}. 24/7 availability with flight tracking. Meet and greet service available.`
+    }
+  ];
+
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateMainStructuredData()) }}
-      />
+    <div className="min-h-screen bg-[#FAFAFA]">
 
-      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-        {/* Enhanced Hero Banner */}
-        <HeroBanner formattedCityName={formattedCityName} />
+      {/* ==================== HERO SECTION ==================== */}
+      <section className="relative min-h-[100svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={cityData.image}
+            alt={`Taxi Service in ${formattedCityName}`}
+            fill
+            priority
+            className="object-cover opacity-40"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950/90" />
+        </div>
 
-        {/* Main Content Container */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 md:-mt-20 relative z-10">
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="p-4 md:p-6 lg:p-8 space-y-8 md:space-y-12">
+        {/* Subtle Pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
 
-              {/* Enhanced Quick Info Cards */}
-              <QuickInfoSection formattedCityName={formattedCityName} details={details} />
+        {/* Gradient Orbs */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#FACF2D]/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2" />
 
-              {/* City Routes Section */}
-              <CityRoutes cityName={formattedCityName} />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 md:pt-8 md:pb-28">
 
-              {/* Enhanced Vehicle Services Section */}
-              <section className="space-y-6" itemScope itemType="https://schema.org/ItemList">
-                <header>
-                  <h2 className="text-xl md:text-2xl font-semibold flex items-center gap-2 mb-2" itemProp="name">
-                    <Car className="w-5 h-5 text-yellow-500" />
-                    Best Taxi Fleet in {formattedCityName} - Book AC Cab Online
-                  </h2>
-                  <p className="text-gray-600" itemProp="description">
-                    Choose from our premium collection of well-maintained vehicles with professional drivers for your {formattedCityName} taxi booking.
-                    All vehicles include GPS tracking, AC, music system and clean interiors. Best rates guaranteed.
-                  </p>
-                </header>
+          {/* Breadcrumb */}
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <ol className="flex items-center gap-2 text-sm">
+              <li>
+                <Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/40" />
+              <li className="text-[#FACF2D] font-medium">{formattedCityName}</li>
+            </ol>
+          </motion.nav>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                  {(vehiclesServices || []).slice(0, 6).map((vehicle, index) => (
-                    <VehicleCard
-                      key={`${vehicle.type}-${index}`}
-                      vehicle={vehicle}
-                      index={index}
-                      cityName={formattedCityName}
-                      onBookNow={handleWhatsAppClick}
-                    />
+          {/* BENTO GRID HERO */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+
+            {/* Main Content - Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-7 xl:col-span-8"
+            >
+              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 md:p-10 border border-white/10 h-full">
+
+                {/* Badge */}
+                <div className="inline-flex items-center gap-3 mb-6">
+                  <span className="text-4xl">{cityData.icon}</span>
+                  <div className="bg-[#FACF2D] px-4 py-2 rounded-full">
+                    <span className="text-black font-bold text-sm">{cityData.tagline.toUpperCase()}</span>
+                  </div>
+                </div>
+
+                {/* Main Title */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
+                  Taxi Service in
+                  <span className="block text-[#FACF2D]">{formattedCityName}</span>
+                </h1>
+
+                <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
+                  Book reliable outstation & local taxi service with professional drivers, AC vehicles, and transparent pricing.
+                </p>
+
+                {/* Quick Stats */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {[
+                    { icon: MapPin, value: '500+', label: 'Routes' },
+                    { icon: Star, value: '4.9', label: 'Rating' },
+                    { icon: Users, value: '50K+', label: 'Trips' }
+                  ].map((stat, i) => (
+                    <div key={i} className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${
+                          i === 0 ? 'from-blue-500 to-blue-600' :
+                          i === 1 ? 'from-amber-500 to-orange-500' :
+                          'from-emerald-500 to-emerald-600'
+                        } flex items-center justify-center`}>
+                          <stat.icon className="w-5 h-5 text-white" fill={i === 1 ? 'white' : 'none'} />
+                        </div>
+                        <div>
+                          <p className="text-white font-bold text-lg">{stat.value}</p>
+                          <p className="text-white/50 text-xs">{stat.label}</p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
 
-                {/* Additional vehicle info */}
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-4 h-4 text-blue-600" />
-                    <span className="font-medium text-blue-900">All {formattedCityName} taxi vehicles include:</span>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm text-blue-700">
-                    <div>✓ GPS Live Tracking</div>
-                    <div>✓ AC & Music System</div>
-                    <div>✓ First Aid Kit</div>
-                    <div>✓ Clean Sanitized Interior</div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Enhanced Coverage Areas */}
-              <CoverageSection details={details} cityName={formattedCityName} />
-
-              {/* City Local Information - Unique content for SEO */}
-              <CityLocalInfoSection cityLocalInfo={cityLocalInfo} cityName={formattedCityName} />
-
-              {/* Enhanced Tourist Spots */}
-              <TouristSpotsSection
-                citySpots={citySpots} formattedCityName={formattedCityName}
-              />
-
-              {/* Enhanced FAQ Section with Schema */}
-              <section className="space-y-4" itemScope itemType="https://schema.org/FAQPage">
-                <header>
-                  <h2 className="text-xl md:text-2xl font-semibold">
-                    Frequently Asked Questions - Taxi Service {formattedCityName}
-                  </h2>
-                  <p className="text-gray-600 text-sm mt-2">
-                    Common questions about taxi booking, rates, and services in {formattedCityName}
-                  </p>
-                </header>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                    <h3 className="font-semibold mb-2" itemProp="name">How to book taxi in {formattedCityName}?</h3>
-                    <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                      <p className="text-sm text-gray-600" itemProp="text">
-                        Call us at {phoneNumber} or WhatsApp for instant taxi booking in {formattedCityName}.
-                        We provide 24/7 service with immediate confirmation, verified drivers, GPS tracking and clean AC vehicles.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                    <h3 className="font-semibold mb-2" itemProp="name">What are taxi rates in {formattedCityName}?</h3>
-                    <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                      <p className="text-sm text-gray-600" itemProp="text">
-                        Our taxi rates start from ₹12/km with transparent pricing and no hidden charges.
-                        Outstation trips from {formattedCityName} include driver charges, fuel, and toll. Best rates guaranteed.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                    <h3 className="font-semibold mb-2" itemProp="name">Are taxi services available 24/7 in {formattedCityName}?</h3>
-                    <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                      <p className="text-sm text-gray-600" itemProp="text">
-                        Yes, we provide 24/7 taxi service in {formattedCityName} for airport transfers, railway pickups,
-                        outstation trips and local tours. Book anytime with instant confirmation.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-                    <h3 className="font-semibold mb-2" itemProp="name">What vehicles are available for taxi booking in {formattedCityName}?</h3>
-                    <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-                      <p className="text-sm text-gray-600" itemProp="text">
-                        We offer Sedan (4 seater), SUV Ertiga (6 seater), SUV Innova (7 seater), Tempo Traveller (up to 25 seater)
-                        and luxury buses. All vehicles have AC, GPS tracking and professional drivers.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Hidden Keywords Section for SEO */}
-              <section className="sr-only" aria-hidden="true">
-                <h2>Complete Keyword Index for {formattedCityName} Taxi Service</h2>
-                <div itemScope itemType="https://schema.org/Service">
-                  <meta itemProp="serviceType" content="Taxi Service" />
-                  <meta itemProp="provider" content="Triveni Cabs" />
-                  <meta itemProp="areaServed" content={formattedCityName} />
-
-                  <ul>
-                    {allPageKeywords.map((keyword, index) => (
-                      <li key={index}>
-                        <span itemProp="keywords">{keyword}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p>
-                    Professional taxi service in {formattedCityName} with verified drivers, GPS tracking,
-                    transparent pricing, 24x7 availability, clean AC vehicles, instant booking, safe journey,
-                    comfortable ride, affordable rates, premium service, luxury cars, economy options, one way taxi,
-                    round trip cab, outstation booking, intercity travel, airport transfer, railway pickup,
-                    hotel drop, corporate booking, wedding cars, group travel, family tours, tourist cab service,
-                    sightseeing taxi tour, heritage tour cab, local tours, city tours, business travel taxi,
-                    executive cab service, emergency taxi service, late night taxi service, early morning cab,
-                    weekend taxi booking, holiday cab service, festival taxi service, best cab service,
-                    reliable taxi company, trusted taxi brand, licensed taxi operator, insured vehicles,
-                    certified drivers, trained chauffeurs, courteous drivers, polite taxi service,
-                    customer satisfaction, quality assured service, spacious cars, comfortable seats,
-                    well maintained taxi, sanitized vehicles, safe taxi travel, secure cab service.
-                  </p>
-                </div>
-              </section>
-
-              {/* Enhanced Contact CTA Section */}
-              <section className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 md:p-8 text-center border">
-                <h2 className="text-xl md:text-2xl font-bold mb-4">
-                  Book Your {formattedCityName} Taxi Now - Best Rates Guaranteed
-                </h2>
-                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                  Get instant taxi booking confirmation in {formattedCityName} with professional drivers,
-                  GPS tracking, clean AC vehicles and 24/7 customer support. Call now for best outstation taxi rates.
-                  One-way and round-trip options available.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    onClick={handleCallNow}
-                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400"
-                    aria-label={`Call for taxi booking in ${formattedCityName} at ${phoneNumber}`}
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    onClick={handleCallClick}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
                   >
-                    <Phone className="w-5 h-5 mr-2" />
-                    Call {phoneNumber}
-                  </button>
-                  <button
+                    <Phone className="w-5 h-5" />
+                    Call Now
+                  </motion.button>
+
+                  <motion.button
                     onClick={handleWhatsAppClick}
-                    className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-black"
-                    aria-label={`WhatsApp taxi booking in ${formattedCityName}`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 border border-white/20 transition-colors"
                   >
-                    <BsWhatsapp className="w-5 h-5 mr-2" />
-                    WhatsApp Booking
-                  </button>
+                    <BsWhatsapp className="w-5 h-5" />
+                    WhatsApp
+                  </motion.button>
                 </div>
-              </section>
+              </div>
+            </motion.div>
+
+            {/* Right Side Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
+            >
+              {/* Popular Routes Card */}
+              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10">
+                <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                  <Route className="w-5 h-5 text-[#FACF2D]" />
+                  Popular Routes
+                </h3>
+                <div className="space-y-3">
+                  {cityData.highlights.map((dest, i) => (
+                    <Link
+                      key={i}
+                      href={`/${formattedCityName.toLowerCase()}-to-${dest.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-3 transition-colors group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center text-xs font-bold text-black">
+                          {dest.charAt(0)}
+                        </div>
+                        <span className="text-white font-medium">{formattedCityName} to {dest}</span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-white/40 group-hover:text-[#FACF2D] group-hover:translate-x-1 transition-all" />
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  href="#routes"
+                  className="mt-4 flex items-center justify-center gap-2 text-[#FACF2D] font-bold text-sm hover:gap-3 transition-all"
+                >
+                  View all routes
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Quick Booking Card */}
+              <div className="bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 relative overflow-hidden flex-1">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
+
+                <div className="relative z-10">
+                  <h3 className="text-black font-bold text-lg mb-2">Quick Booking</h3>
+                  <p className="text-black/70 text-sm mb-4">Get instant fare estimate</p>
+
+                  <div className="space-y-3">
+                    <a
+                      href={`tel:+91${phoneNumber}`}
+                      className="flex items-center gap-3 bg-black text-[#FACF2D] px-4 py-3 rounded-xl font-bold text-sm hover:bg-black/90 transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      {phoneNumber}
+                    </a>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="w-full flex items-center justify-center gap-3 bg-white/90 text-black px-4 py-3 rounded-xl font-bold text-sm hover:bg-white transition-colors"
+                    >
+                      <BsWhatsapp className="w-4 h-4" />
+                      WhatsApp
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Trust Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10"
+          >
+            {[
+              { icon: BadgeCheck, label: 'Verified Drivers' },
+              { icon: Shield, label: 'GPS Tracking' },
+              { icon: Award, label: 'Best Price' },
+              { icon: Headphones, label: '24/7 Support' }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 text-white/70">
+                <item.icon className="w-5 h-5 text-[#FACF2D]" />
+                <span className="text-sm font-medium">{item.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ==================== ROUTES SECTION ==================== */}
+      <section id="routes" className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
+              <Route className="w-4 h-4" />
+              <span className="text-sm font-bold">OUTSTATION ROUTES</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Popular Routes from {formattedCityName}
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Book one-way or round-trip taxi to all major cities with transparent pricing
+            </p>
+          </motion.div>
+
+          <CityRoutes cityName={formattedCityName} />
+        </div>
+      </section>
+
+
+      {/* ==================== VEHICLE FLEET SECTION ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
+              <Car className="w-4 h-4" />
+              <span className="text-sm font-bold">OUR FLEET</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Choose Your Vehicle
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              From sedans to luxury buses - we have the perfect vehicle for your journey
+            </p>
+          </motion.div>
+
+          {/* Vehicle Filter Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3 mb-10"
+          >
+            {[
+              { id: 'all', label: 'All', icon: Sparkles },
+              { id: 'car', label: 'Cars & SUVs', icon: Car },
+              { id: 'tempo', label: 'Tempo Traveller', icon: Users },
+              { id: 'bus', label: 'Buses', icon: Bus }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveVehicleTab(tab.id)}
+                className={`px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all ${
+                  activeVehicleTab === tab.id
+                    ? 'bg-slate-900 text-[#FACF2D]'
+                    : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300'
+                }`}
+              >
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            ))}
+          </motion.div>
+
+          {/* Vehicle Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredVehicles.map((vehicle, index) => (
+              <motion.div
+                key={vehicle.type}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-slate-300 transition-all group"
+              >
+                {/* Image */}
+                <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-50">
+                  <Image
+                    src={vehicle.image}
+                    alt={`${vehicle.type} taxi in ${formattedCityName}`}
+                    fill
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Rating Badge */}
+                  <div className="absolute top-4 right-4 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg flex items-center gap-1">
+                    <Star className="w-3.5 h-3.5" fill="currentColor" />
+                    <span className="font-bold text-sm">{vehicle.rating}</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900">{vehicle.type}</h3>
+                      <div className="flex items-center gap-3 mt-1 text-sm text-slate-500">
+                        <span className="flex items-center gap-1">
+                          <Users className="w-4 h-4" />
+                          {vehicle.seats} Seats
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Snowflake className="w-4 h-4" />
+                          AC
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Features */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {['GPS', 'Music', 'Charger'].map((f, i) => (
+                      <span key={i} className="bg-slate-100 text-slate-600 px-3 py-1 rounded-lg text-xs font-medium">
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Price & CTA */}
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <div>
+                      <p className="text-sm text-slate-500">Starting from</p>
+                      <p className="text-2xl font-black text-slate-900">{vehicle.price}</p>
+                    </div>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="bg-slate-900 hover:bg-[#FACF2D] text-white hover:text-black px-6 py-3 rounded-xl font-bold text-sm transition-colors"
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== WHY CHOOSE US - BENTO GRID ==================== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Why Triveni Cabs in {formattedCityName}?
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Trusted by 50,000+ customers for reliable taxi service
+            </p>
+          </motion.div>
+
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            {/* Large Card - Safety */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="lg:col-span-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                  <Shield className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">100% Safe & Secure Journey</h3>
+                <p className="text-white/80 text-lg mb-6 max-w-xl">
+                  All our drivers are police-verified with 5+ years of experience.
+                  Real-time GPS tracking and 24/7 monitoring for your safety.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {['Verified Drivers', 'GPS Tracking', 'Live Sharing', 'SOS Support'].map((item, i) => (
+                    <span key={i} className="bg-white/20 px-4 py-2 rounded-full text-sm font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Pricing Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-200"
+            >
+              <div className="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5">
+                <CreditCard className="w-7 h-7 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Transparent Pricing</h3>
+              <p className="text-slate-600 mb-4">
+                No hidden charges. Clear breakdown of fare, toll, and taxes.
+              </p>
+              <div className="flex items-center gap-2 text-emerald-600 font-medium">
+                <CheckCircle className="w-5 h-5" />
+                <span>Fixed rates guaranteed</span>
+              </div>
+            </motion.div>
+
+            {/* Fleet Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-200"
+            >
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5">
+                <Car className="w-7 h-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Premium Fleet</h3>
+              <p className="text-slate-600 mb-4">
+                AC vehicles from Sedan to 56-seater buses. Clean and sanitized.
+              </p>
+              <div className="flex items-center gap-2 text-emerald-600 font-medium">
+                <CheckCircle className="w-5 h-5" />
+                <span>Regular maintenance</span>
+              </div>
+            </motion.div>
+
+            {/* Support Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-slate-900 rounded-3xl p-6 md:p-8 text-white"
+            >
+              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-5">
+                <Headphones className="w-7 h-7 text-[#FACF2D]" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">24/7 Customer Support</h3>
+              <p className="text-white/70 mb-4">
+                Round-the-clock assistance via call and WhatsApp.
+              </p>
+              <a href={`tel:+91${phoneNumber}`} className="text-[#FACF2D] font-bold text-lg">
+                {phoneNumber}
+              </a>
+            </motion.div>
+
+            {/* Experience Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-6 md:p-8 text-white"
+            >
+              <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
+                <Award className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">50,000+ Happy Trips</h3>
+              <p className="text-white/80 mb-4">
+                Trusted by families, corporates, and tour operators.
+              </p>
+              <div className="flex items-center gap-1">
+                {[1,2,3,4,5].map(i => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" />
+                ))}
+                <span className="ml-2 font-bold">4.9/5</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== TOURIST SPOTS ==================== */}
+      {citySpots && citySpots.length > 0 && (
+        <section className="py-16 md:py-24 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm font-bold">EXPLORE</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+                Places to Visit in {formattedCityName}
+              </h2>
+              <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+                Explore top tourist destinations with our reliable taxi service
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {citySpots.slice(0, 6).map((spot, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-slate-100"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={spot.image || '/images/about/about_banner.webp'}
+                      alt={spot.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{spot.name}</h3>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-slate-600 text-sm line-clamp-2 mb-4">{spot.description}</p>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="text-[#FACF2D] font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
+                    >
+                      Book taxi visit
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </main>
-      </div>
-    </>
+        </section>
+      )}
+
+
+      {/* ==================== CITY LOCAL INFO ==================== */}
+      {cityLocalInfo && (
+        <section className="py-16 md:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CityLocalInfoSection cityLocalInfo={cityLocalInfo} cityName={formattedCityName} />
+          </div>
+        </section>
+      )}
+
+
+      {/* ==================== FAQ SECTION ==================== */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-slate-600 text-lg">
+              Quick answers about taxi service in {formattedCityName}
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === index ? -1 : index)}
+                  className="w-full bg-white rounded-2xl p-5 md:p-6 text-left border border-slate-200 hover:border-slate-300 transition-colors"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="font-bold text-slate-900 text-lg pr-4">{faq.q}</h3>
+                    <ChevronDown className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${expandedFaq === index ? 'rotate-180' : ''}`} />
+                  </div>
+                  <AnimatePresence>
+                    {expandedFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <p className="text-slate-600 mt-4 leading-relaxed">{faq.a}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ==================== FINAL CTA ==================== */}
+      <section className="py-16 md:py-24 bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+              Ready to Book Your <span className="text-[#FACF2D]">{formattedCityName}</span> Taxi?
+            </h2>
+            <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+              Get instant confirmation. Professional drivers. Best price guaranteed. Available 24/7.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                onClick={handleCallClick}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
+              >
+                <Phone className="w-6 h-6" />
+                Call {phoneNumber}
+              </motion.button>
+
+              <motion.button
+                onClick={handleWhatsAppClick}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors"
+              >
+                <BsWhatsapp className="w-6 h-6" />
+                WhatsApp Us
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ==================== FLOATING MOBILE CTA ==================== */}
+      {mounted && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 p-4 md:hidden shadow-lg"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex-1">
+              <p className="text-xs text-slate-500">Taxi in {formattedCityName}</p>
+              <p className="text-lg font-black text-slate-900">From ₹12/km</p>
+            </div>
+            <button
+              onClick={handleCallClick}
+              className="bg-[#FACF2D] text-black px-5 py-3 rounded-xl font-bold flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4" />
+              Call
+            </button>
+            <button
+              onClick={handleWhatsAppClick}
+              className="bg-slate-900 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2"
+            >
+              <BsWhatsapp className="w-4 h-4" />
+              Book
+            </button>
+          </div>
+        </motion.div>
+      )}
+
+    </div>
   );
 }

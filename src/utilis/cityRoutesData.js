@@ -10,8 +10,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2760", roundTrip: "₹5520" },
         { vehicle: "SUV Ertiga", price: "₹3450", roundTrip: "₹6900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4140", roundTrip: "₹8280", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8050", roundTrip: "₹16100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹12650", roundTrip: "₹25300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5290", roundTrip: "₹10580", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5980", roundTrip: "₹11960", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6210", roundTrip: "₹12420", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5980", roundTrip: "₹11960", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7360", roundTrip: "₹14720", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹7820", roundTrip: "₹15640", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8280", roundTrip: "₹16560", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹8740", roundTrip: "₹17480", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10350", roundTrip: "₹20700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹11960", roundTrip: "₹23920", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13340", roundTrip: "₹26680", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹14950", roundTrip: "₹29900", capacity: "56 guests" }
       ]
     },
     {
@@ -24,8 +35,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3360", roundTrip: "₹6720" },
         { vehicle: "SUV Ertiga", price: "₹4200", roundTrip: "₹8400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5040", roundTrip: "₹10080", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹9800", roundTrip: "₹19600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹15400", roundTrip: "₹30800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6440", roundTrip: "₹12880", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7000", roundTrip: "₹14000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7280", roundTrip: "₹14560", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7560", roundTrip: "₹15120", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7280", roundTrip: "₹14560", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8960", roundTrip: "₹17920", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹9520", roundTrip: "₹19040", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10080", roundTrip: "₹20160", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹10640", roundTrip: "₹21280", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹12600", roundTrip: "₹25200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹14560", roundTrip: "₹29120", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹16240", roundTrip: "₹32480", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹18200", roundTrip: "₹36400", capacity: "56 guests" }
       ]
     },
     {
@@ -38,8 +60,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2880", roundTrip: "₹5760" },
         { vehicle: "SUV Ertiga", price: "₹3600", roundTrip: "₹7200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4320", roundTrip: "₹8640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8400", roundTrip: "₹16800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13200", roundTrip: "₹26400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5520", roundTrip: "₹11040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
       ]
     },
     {
@@ -52,8 +85,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3120", roundTrip: "₹6240" },
         { vehicle: "SUV Ertiga", price: "₹3900", roundTrip: "₹7800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4680", roundTrip: "₹9360", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹9100", roundTrip: "₹18200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹14300", roundTrip: "₹28600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5980", roundTrip: "₹11960", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6500", roundTrip: "₹13000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6760", roundTrip: "₹13520", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7020", roundTrip: "₹14040", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6760", roundTrip: "₹13520", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8320", roundTrip: "₹16640", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8840", roundTrip: "₹17680", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹9360", roundTrip: "₹18720", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9880", roundTrip: "₹19760", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹11700", roundTrip: "₹23400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹13520", roundTrip: "₹27040", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹15080", roundTrip: "₹30160", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹16900", roundTrip: "₹33800", capacity: "56 guests" }
       ]
     },
     {
@@ -66,8 +110,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4200", roundTrip: "₹8400" },
         { vehicle: "SUV Ertiga", price: "₹5250", roundTrip: "₹10500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹6300", roundTrip: "₹12600", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹12250", roundTrip: "₹24500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹19250", roundTrip: "₹38500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹8050", roundTrip: "₹16100", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹8750", roundTrip: "₹17500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹9100", roundTrip: "₹18200", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹9450", roundTrip: "₹18900", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹9100", roundTrip: "₹18200", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹11200", roundTrip: "₹22400", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹11900", roundTrip: "₹23800", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹12600", roundTrip: "₹25200", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹13300", roundTrip: "₹26600", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹15750", roundTrip: "₹31500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹18200", roundTrip: "₹36400", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹20300", roundTrip: "₹40600", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹22750", roundTrip: "₹45500", capacity: "56 guests" }
       ]
     },
     {
@@ -80,8 +135,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹6480", roundTrip: "₹12960" },
         { vehicle: "SUV Ertiga", price: "₹8100", roundTrip: "₹16200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹9720", roundTrip: "₹19440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹18900", roundTrip: "₹37800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹29700", roundTrip: "₹59400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹13500", roundTrip: "₹27000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹14040", roundTrip: "₹28080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹14580", roundTrip: "₹29160", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹14040", roundTrip: "₹28080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹17280", roundTrip: "₹34560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹18360", roundTrip: "₹36720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹19440", roundTrip: "₹38880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹20520", roundTrip: "₹41040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹24300", roundTrip: "₹48600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹28080", roundTrip: "₹56160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹31320", roundTrip: "₹62640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹35100", roundTrip: "₹70200", capacity: "56 guests" }
       ]
     },
     {
@@ -94,8 +160,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5400", roundTrip: "₹10800" },
         { vehicle: "SUV Ertiga", price: "₹6750", roundTrip: "₹13500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8100", roundTrip: "₹16200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹15750", roundTrip: "₹31500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹24750", roundTrip: "₹49500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10350", roundTrip: "₹20700", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11250", roundTrip: "₹22500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11700", roundTrip: "₹23400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12150", roundTrip: "₹24300", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11700", roundTrip: "₹23400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14400", roundTrip: "₹28800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15300", roundTrip: "₹30600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16200", roundTrip: "₹32400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17100", roundTrip: "₹34200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20250", roundTrip: "₹40500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23400", roundTrip: "₹46800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26100", roundTrip: "₹52200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29250", roundTrip: "₹58500", capacity: "56 guests" }
       ]
     },
     {
@@ -108,8 +185,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3000", roundTrip: "₹6000" },
         { vehicle: "SUV Ertiga", price: "₹3750", roundTrip: "₹7500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4500", roundTrip: "₹9000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8750", roundTrip: "₹17500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13750", roundTrip: "₹27500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6250", roundTrip: "₹12500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6500", roundTrip: "₹13000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6750", roundTrip: "₹13500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6500", roundTrip: "₹13000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8000", roundTrip: "₹16000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8500", roundTrip: "₹17000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹9000", roundTrip: "₹18000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9500", roundTrip: "₹19000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹11250", roundTrip: "₹22500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹13000", roundTrip: "₹26000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹14500", roundTrip: "₹29000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹16250", roundTrip: "₹32500", capacity: "56 guests" }
       ]
     },
     {
@@ -122,8 +210,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2880", roundTrip: "₹5760" },
         { vehicle: "SUV Ertiga", price: "₹3600", roundTrip: "₹7200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4320", roundTrip: "₹8640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8400", roundTrip: "₹16800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13200", roundTrip: "₹26400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5520", roundTrip: "₹11040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
       ]
     },
     {
@@ -136,8 +235,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7440", roundTrip: "₹14880" },
         { vehicle: "SUV Ertiga", price: "₹9300", roundTrip: "₹18600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11160", roundTrip: "₹22320", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹21700", roundTrip: "₹43400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34100", roundTrip: "₹68200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14260", roundTrip: "₹28520", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15500", roundTrip: "₹31000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16120", roundTrip: "₹32240", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹16740", roundTrip: "₹33480", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16120", roundTrip: "₹32240", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹19840", roundTrip: "₹39680", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21080", roundTrip: "₹42160", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22320", roundTrip: "₹44640", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23560", roundTrip: "₹47120", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹27900", roundTrip: "₹55800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32240", roundTrip: "₹64480", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹35960", roundTrip: "₹71920", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40300", roundTrip: "₹80600", capacity: "56 guests" }
       ]
     },
     {
@@ -150,8 +260,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7920", roundTrip: "₹15840" },
         { vehicle: "SUV Ertiga", price: "₹9900", roundTrip: "₹19800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11880", roundTrip: "₹23760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹23100", roundTrip: "₹46200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹36300", roundTrip: "₹72600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹15180", roundTrip: "₹30360", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹16500", roundTrip: "₹33000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹17160", roundTrip: "₹34320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17820", roundTrip: "₹35640", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹17160", roundTrip: "₹34320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹21120", roundTrip: "₹42240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹22440", roundTrip: "₹44880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹23760", roundTrip: "₹47520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹25080", roundTrip: "₹50160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹29700", roundTrip: "₹59400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹34320", roundTrip: "₹68640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹38280", roundTrip: "₹76560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹42900", roundTrip: "₹85800", capacity: "56 guests" }
       ]
     },
     {
@@ -164,8 +285,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹8280", roundTrip: "₹16560" },
         { vehicle: "SUV Ertiga", price: "₹10350", roundTrip: "₹20700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹12420", roundTrip: "₹24840", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹24150", roundTrip: "₹48300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹37950", roundTrip: "₹75900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹15870", roundTrip: "₹31740", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹17250", roundTrip: "₹34500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹17940", roundTrip: "₹35880", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹18630", roundTrip: "₹37260", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹17940", roundTrip: "₹35880", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹22080", roundTrip: "₹44160", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹23460", roundTrip: "₹46920", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹24840", roundTrip: "₹49680", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹26220", roundTrip: "₹52440", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹31050", roundTrip: "₹62100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹35880", roundTrip: "₹71760", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹40020", roundTrip: "₹80040", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹44850", roundTrip: "₹89700", capacity: "56 guests" }
       ]
     },
     {
@@ -178,8 +310,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹11400", roundTrip: "₹22800" },
         { vehicle: "SUV Ertiga", price: "₹14250", roundTrip: "₹28500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹17100", roundTrip: "₹34200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹33250", roundTrip: "₹66500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹52250", roundTrip: "₹104500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹21850", roundTrip: "₹43700", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹23750", roundTrip: "₹47500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹24700", roundTrip: "₹49400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹25650", roundTrip: "₹51300", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹24700", roundTrip: "₹49400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹30400", roundTrip: "₹60800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹32300", roundTrip: "₹64600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹34200", roundTrip: "₹68400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹36100", roundTrip: "₹72200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹42750", roundTrip: "₹85500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹49400", roundTrip: "₹98800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹55100", roundTrip: "₹110200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹61750", roundTrip: "₹123500", capacity: "56 guests" }
       ]
     }
   ],
@@ -195,8 +338,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3480", roundTrip: "₹6960" },
         { vehicle: "SUV Ertiga", price: "₹4350", roundTrip: "₹8700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5220", roundTrip: "₹10440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹10150", roundTrip: "₹20300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹15950", roundTrip: "₹31900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6670", roundTrip: "₹13340", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7250", roundTrip: "₹14500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7540", roundTrip: "₹15080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7830", roundTrip: "₹15660", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7540", roundTrip: "₹15080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9280", roundTrip: "₹18560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹9860", roundTrip: "₹19720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10440", roundTrip: "₹20880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11020", roundTrip: "₹22040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13050", roundTrip: "₹26100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹15080", roundTrip: "₹30160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹16820", roundTrip: "₹33640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹18850", roundTrip: "₹37700", capacity: "56 guests" }
       ]
     },
     {
@@ -209,8 +363,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2880", roundTrip: "₹5760" },
         { vehicle: "SUV Ertiga", price: "₹3600", roundTrip: "₹7200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4320", roundTrip: "₹8640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8400", roundTrip: "₹16800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13200", roundTrip: "₹26400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5520", roundTrip: "₹11040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
       ]
     },
     {
@@ -223,8 +388,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5160", roundTrip: "₹10320" },
         { vehicle: "SUV Ertiga", price: "₹6450", roundTrip: "₹12900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7740", roundTrip: "₹15480", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹15050", roundTrip: "₹30100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹23650", roundTrip: "₹47300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9890", roundTrip: "₹19780", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10750", roundTrip: "₹21500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11180", roundTrip: "₹22360", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11610", roundTrip: "₹23220", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11180", roundTrip: "₹22360", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹13760", roundTrip: "₹27520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹14620", roundTrip: "₹29240", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹15480", roundTrip: "₹30960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹16340", roundTrip: "₹32680", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹19350", roundTrip: "₹38700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹22360", roundTrip: "₹44720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹24940", roundTrip: "₹49880", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹27950", roundTrip: "₹55900", capacity: "56 guests" }
       ]
     },
     {
@@ -237,8 +413,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹6240", roundTrip: "₹12480" },
         { vehicle: "SUV Ertiga", price: "₹7800", roundTrip: "₹15600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹9360", roundTrip: "₹18720", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹18200", roundTrip: "₹36400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹28600", roundTrip: "₹57200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹13000", roundTrip: "₹26000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹13520", roundTrip: "₹27040", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹14040", roundTrip: "₹28080", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹13520", roundTrip: "₹27040", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹16640", roundTrip: "₹33280", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹17680", roundTrip: "₹35360", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹18720", roundTrip: "₹37440", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹19760", roundTrip: "₹39520", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹23400", roundTrip: "₹46800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹27040", roundTrip: "₹54080", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹30160", roundTrip: "₹60320", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹33800", roundTrip: "₹67600", capacity: "56 guests" }
       ]
     },
     {
@@ -251,8 +438,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹6960", roundTrip: "₹13920" },
         { vehicle: "SUV Ertiga", price: "₹8700", roundTrip: "₹17400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹10440", roundTrip: "₹20880", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹20300", roundTrip: "₹40600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹31900", roundTrip: "₹63800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹13340", roundTrip: "₹26680", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹14500", roundTrip: "₹29000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹15080", roundTrip: "₹30160", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹15660", roundTrip: "₹31320", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹15080", roundTrip: "₹30160", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹18560", roundTrip: "₹37120", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹19720", roundTrip: "₹39440", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹20880", roundTrip: "₹41760", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹22040", roundTrip: "₹44080", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹26100", roundTrip: "₹52200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹30160", roundTrip: "₹60320", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹33640", roundTrip: "₹67280", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹37700", roundTrip: "₹75400", capacity: "56 guests" }
       ]
     },
     {
@@ -265,8 +463,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹9000", roundTrip: "₹18000" },
         { vehicle: "SUV Ertiga", price: "₹11250", roundTrip: "₹22500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹13500", roundTrip: "₹27000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹26250", roundTrip: "₹52500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹41250", roundTrip: "₹82500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹17250", roundTrip: "₹34500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹18750", roundTrip: "₹37500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹19500", roundTrip: "₹39000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹20250", roundTrip: "₹40500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹19500", roundTrip: "₹39000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹24000", roundTrip: "₹48000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹25500", roundTrip: "₹51000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹27000", roundTrip: "₹54000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹28500", roundTrip: "₹57000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹33750", roundTrip: "₹67500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹39000", roundTrip: "₹78000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹43500", roundTrip: "₹87000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹48750", roundTrip: "₹97500", capacity: "56 guests" }
       ]
     },
     {
@@ -279,8 +488,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7560", roundTrip: "₹15120" },
         { vehicle: "SUV Ertiga", price: "₹9450", roundTrip: "₹18900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11340", roundTrip: "₹22680", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹22050", roundTrip: "₹44100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34650", roundTrip: "₹69300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14490", roundTrip: "₹28980", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15750", roundTrip: "₹31500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16380", roundTrip: "₹32760", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17010", roundTrip: "₹34020", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16380", roundTrip: "₹32760", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹20160", roundTrip: "₹40320", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21420", roundTrip: "₹42840", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22680", roundTrip: "₹45360", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23940", roundTrip: "₹47880", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹28350", roundTrip: "₹56700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32760", roundTrip: "₹65520", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹36540", roundTrip: "₹73080", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40950", roundTrip: "₹81900", capacity: "56 guests" }
       ]
     },
     {
@@ -293,8 +513,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5520", roundTrip: "₹11040" },
         { vehicle: "SUV Ertiga", price: "₹6900", roundTrip: "₹13800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8280", roundTrip: "₹16560", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹16100", roundTrip: "₹32200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹25300", roundTrip: "₹50600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10580", roundTrip: "₹21160", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11500", roundTrip: "₹23000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11960", roundTrip: "₹23920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14720", roundTrip: "₹29440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15640", roundTrip: "₹31280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16560", roundTrip: "₹33120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17480", roundTrip: "₹34960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20700", roundTrip: "₹41400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23920", roundTrip: "₹47840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26680", roundTrip: "₹53360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29900", roundTrip: "₹59800", capacity: "56 guests" }
       ]
     },
     {
@@ -307,8 +538,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5280", roundTrip: "₹10560" },
         { vehicle: "SUV Ertiga", price: "₹6600", roundTrip: "₹13200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7920", roundTrip: "₹15840", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹15400", roundTrip: "₹30800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹24200", roundTrip: "₹48400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10120", roundTrip: "₹20240", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11000", roundTrip: "₹22000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11440", roundTrip: "₹22880", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11880", roundTrip: "₹23760", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11440", roundTrip: "₹22880", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14080", roundTrip: "₹28160", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹14960", roundTrip: "₹29920", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹15840", roundTrip: "₹31680", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹16720", roundTrip: "₹33440", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹19800", roundTrip: "₹39600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹22880", roundTrip: "₹45760", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹25520", roundTrip: "₹51040", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹28600", roundTrip: "₹57200", capacity: "56 guests" }
       ]
     },
     {
@@ -321,8 +563,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4080", roundTrip: "₹8160" },
         { vehicle: "SUV Ertiga", price: "₹5100", roundTrip: "₹10200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹6120", roundTrip: "₹12240", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹11900", roundTrip: "₹23800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹18700", roundTrip: "₹37400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹7820", roundTrip: "₹15640", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹8500", roundTrip: "₹17000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹8840", roundTrip: "₹17680", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹9180", roundTrip: "₹18360", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹8840", roundTrip: "₹17680", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹10880", roundTrip: "₹21760", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹11560", roundTrip: "₹23120", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹12240", roundTrip: "₹24480", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹12920", roundTrip: "₹25840", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹15300", roundTrip: "₹30600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹17680", roundTrip: "₹35360", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹19720", roundTrip: "₹39440", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹22100", roundTrip: "₹44200", capacity: "56 guests" }
       ]
     },
     {
@@ -335,8 +588,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4560", roundTrip: "₹9120" },
         { vehicle: "SUV Ertiga", price: "₹5700", roundTrip: "₹11400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹6840", roundTrip: "₹13680", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹13300", roundTrip: "₹26600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹20900", roundTrip: "₹41800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹8740", roundTrip: "₹17480", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹9500", roundTrip: "₹19000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹9880", roundTrip: "₹19760", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹10260", roundTrip: "₹20520", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹9880", roundTrip: "₹19760", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹12160", roundTrip: "₹24320", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹12920", roundTrip: "₹25840", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹13680", roundTrip: "₹27360", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹14440", roundTrip: "₹28880", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹17100", roundTrip: "₹34200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹19760", roundTrip: "₹39520", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹22040", roundTrip: "₹44080", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹24700", roundTrip: "₹49400", capacity: "56 guests" }
       ]
     },
     {
@@ -349,8 +613,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7560", roundTrip: "₹15120" },
         { vehicle: "SUV Ertiga", price: "₹9450", roundTrip: "₹18900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11340", roundTrip: "₹22680", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹22050", roundTrip: "₹44100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34650", roundTrip: "₹69300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14490", roundTrip: "₹28980", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15750", roundTrip: "₹31500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16380", roundTrip: "₹32760", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17010", roundTrip: "₹34020", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16380", roundTrip: "₹32760", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹20160", roundTrip: "₹40320", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21420", roundTrip: "₹42840", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22680", roundTrip: "₹45360", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23940", roundTrip: "₹47880", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹28350", roundTrip: "₹56700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32760", roundTrip: "₹65520", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹36540", roundTrip: "₹73080", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40950", roundTrip: "₹81900", capacity: "56 guests" }
       ]
     },
     {
@@ -363,8 +638,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7800", roundTrip: "₹15600" },
         { vehicle: "SUV Ertiga", price: "₹9750", roundTrip: "₹19500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11700", roundTrip: "₹23400", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹22750", roundTrip: "₹45500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹35750", roundTrip: "₹71500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14950", roundTrip: "₹29900", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹16250", roundTrip: "₹32500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16900", roundTrip: "₹33800", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17550", roundTrip: "₹35100", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16900", roundTrip: "₹33800", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹20800", roundTrip: "₹41600", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹22100", roundTrip: "₹44200", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹23400", roundTrip: "₹46800", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹24700", roundTrip: "₹49400", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹29250", roundTrip: "₹58500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹33800", roundTrip: "₹67600", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹37700", roundTrip: "₹75400", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹42250", roundTrip: "₹84500", capacity: "56 guests" }
       ]
     }
   ],
@@ -380,8 +666,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3000", roundTrip: "₹6000" },
         { vehicle: "SUV Ertiga", price: "₹3750", roundTrip: "₹7500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4500", roundTrip: "₹9000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8750", roundTrip: "₹17500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13750", roundTrip: "₹27500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6250", roundTrip: "₹12500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6500", roundTrip: "₹13000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6750", roundTrip: "₹13500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6500", roundTrip: "₹13000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8000", roundTrip: "₹16000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8500", roundTrip: "₹17000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹9000", roundTrip: "₹18000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9500", roundTrip: "₹19000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹11250", roundTrip: "₹22500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹13000", roundTrip: "₹26000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹14500", roundTrip: "₹29000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹16250", roundTrip: "₹32500", capacity: "56 guests" }
       ]
     },
     {
@@ -394,8 +691,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4920", roundTrip: "₹9840" },
         { vehicle: "SUV Ertiga", price: "₹6150", roundTrip: "₹12300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7380", roundTrip: "₹14760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹14350", roundTrip: "₹28700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹22550", roundTrip: "₹45100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9430", roundTrip: "₹18860", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10250", roundTrip: "₹20500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹10660", roundTrip: "₹21320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11070", roundTrip: "₹22140", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹10660", roundTrip: "₹21320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹13120", roundTrip: "₹26240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹13940", roundTrip: "₹27880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹14760", roundTrip: "₹29520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹15580", roundTrip: "₹31160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹18450", roundTrip: "₹36900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹21320", roundTrip: "₹42640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹23780", roundTrip: "₹47560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹26650", roundTrip: "₹53300", capacity: "56 guests" }
       ]
     },
     {
@@ -408,8 +716,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹6240", roundTrip: "₹12480" },
         { vehicle: "SUV Ertiga", price: "₹7800", roundTrip: "₹15600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹9360", roundTrip: "₹18720", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹18200", roundTrip: "₹36400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹28600", roundTrip: "₹57200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹13000", roundTrip: "₹26000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹13520", roundTrip: "₹27040", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹14040", roundTrip: "₹28080", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹13520", roundTrip: "₹27040", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹16640", roundTrip: "₹33280", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹17680", roundTrip: "₹35360", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹18720", roundTrip: "₹37440", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹19760", roundTrip: "₹39520", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹23400", roundTrip: "₹46800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹27040", roundTrip: "₹54080", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹30160", roundTrip: "₹60320", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹33800", roundTrip: "₹67600", capacity: "56 guests" }
       ]
     },
     {
@@ -422,8 +741,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2280", roundTrip: "₹4560" },
         { vehicle: "SUV Ertiga", price: "₹2850", roundTrip: "₹5700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3420", roundTrip: "₹6840", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹6650", roundTrip: "₹13300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹10450", roundTrip: "₹20900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4370", roundTrip: "₹8740", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹4750", roundTrip: "₹9500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹4940", roundTrip: "₹9880", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5130", roundTrip: "₹10260", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹4940", roundTrip: "₹9880", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹6080", roundTrip: "₹12160", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6460", roundTrip: "₹12920", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹6840", roundTrip: "₹13680", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹7220", roundTrip: "₹14440", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹8550", roundTrip: "₹17100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹9880", roundTrip: "₹19760", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹11020", roundTrip: "₹22040", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹12350", roundTrip: "₹24700", capacity: "56 guests" }
       ]
     },
     {
@@ -436,8 +766,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹1440", roundTrip: "₹2880" },
         { vehicle: "SUV Ertiga", price: "₹1800", roundTrip: "₹3600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹2160", roundTrip: "₹4320", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹4200", roundTrip: "₹8400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹6600", roundTrip: "₹13200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹2760", roundTrip: "₹5520", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹3000", roundTrip: "₹6000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹3120", roundTrip: "₹6240", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹3240", roundTrip: "₹6480", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹3120", roundTrip: "₹6240", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹3840", roundTrip: "₹7680", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹4080", roundTrip: "₹8160", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹4320", roundTrip: "₹8640", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹4560", roundTrip: "₹9120", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹5400", roundTrip: "₹10800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹6240", roundTrip: "₹12480", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹6960", roundTrip: "₹13920", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹7800", roundTrip: "₹15600", capacity: "56 guests" }
       ]
     },
     {
@@ -450,8 +791,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3720", roundTrip: "₹7440" },
         { vehicle: "SUV Ertiga", price: "₹4650", roundTrip: "₹9300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5580", roundTrip: "₹11160", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹10850", roundTrip: "₹21700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹17050", roundTrip: "₹34100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹7130", roundTrip: "₹14260", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7750", roundTrip: "₹15500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹8060", roundTrip: "₹16120", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹8370", roundTrip: "₹16740", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹8060", roundTrip: "₹16120", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9920", roundTrip: "₹19840", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹10540", roundTrip: "₹21080", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹11160", roundTrip: "₹22320", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11780", roundTrip: "₹23560", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13950", roundTrip: "₹27900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹16120", roundTrip: "₹32240", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹17980", roundTrip: "₹35960", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹20150", roundTrip: "₹40300", capacity: "56 guests" }
       ]
     },
     {
@@ -464,8 +816,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2760", roundTrip: "₹5520" },
         { vehicle: "SUV Ertiga", price: "₹3450", roundTrip: "₹6900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4140", roundTrip: "₹8280", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8050", roundTrip: "₹16100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹12650", roundTrip: "₹25300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5290", roundTrip: "₹10580", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5980", roundTrip: "₹11960", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6210", roundTrip: "₹12420", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5980", roundTrip: "₹11960", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7360", roundTrip: "₹14720", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹7820", roundTrip: "₹15640", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8280", roundTrip: "₹16560", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹8740", roundTrip: "₹17480", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10350", roundTrip: "₹20700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹11960", roundTrip: "₹23920", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13340", roundTrip: "₹26680", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹14950", roundTrip: "₹29900", capacity: "56 guests" }
       ]
     },
     {
@@ -478,8 +841,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2040", roundTrip: "₹4080" },
         { vehicle: "SUV Ertiga", price: "₹2550", roundTrip: "₹5100", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3060", roundTrip: "₹6120", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹5950", roundTrip: "₹11900", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹9350", roundTrip: "₹18700", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹3910", roundTrip: "₹7820", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹4250", roundTrip: "₹8500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹4420", roundTrip: "₹8840", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹4590", roundTrip: "₹9180", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹4420", roundTrip: "₹8840", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹5440", roundTrip: "₹10880", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹5780", roundTrip: "₹11560", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹6120", roundTrip: "₹12240", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹6460", roundTrip: "₹12920", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹7650", roundTrip: "₹15300", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹8840", roundTrip: "₹17680", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹9860", roundTrip: "₹19720", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹11050", roundTrip: "₹22100", capacity: "56 guests" }
       ]
     },
     {
@@ -492,8 +866,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2400", roundTrip: "₹4800" },
         { vehicle: "SUV Ertiga", price: "₹3000", roundTrip: "₹6000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3600", roundTrip: "₹7200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹7000", roundTrip: "₹14000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹11000", roundTrip: "₹22000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4600", roundTrip: "₹9200", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5000", roundTrip: "₹10000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5200", roundTrip: "₹10400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5400", roundTrip: "₹10800", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5200", roundTrip: "₹10400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹6400", roundTrip: "₹12800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6800", roundTrip: "₹13600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹7200", roundTrip: "₹14400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹7600", roundTrip: "₹15200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹9000", roundTrip: "₹18000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹10400", roundTrip: "₹20800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹11600", roundTrip: "₹23200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹13000", roundTrip: "₹26000", capacity: "56 guests" }
       ]
     },
     {
@@ -506,8 +891,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7680", roundTrip: "₹15360" },
         { vehicle: "SUV Ertiga", price: "₹9600", roundTrip: "₹19200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11520", roundTrip: "₹23040", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹22400", roundTrip: "₹44800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹35200", roundTrip: "₹70400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14720", roundTrip: "₹29440", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹16000", roundTrip: "₹32000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16640", roundTrip: "₹33280", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17280", roundTrip: "₹34560", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16640", roundTrip: "₹33280", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹20480", roundTrip: "₹40960", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21760", roundTrip: "₹43520", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹23040", roundTrip: "₹46080", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹24320", roundTrip: "₹48640", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹28800", roundTrip: "₹57600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹33280", roundTrip: "₹66560", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹37120", roundTrip: "₹74240", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹41600", roundTrip: "₹83200", capacity: "56 guests" }
       ]
     },
     {
@@ -520,8 +916,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹8160", roundTrip: "₹16320" },
         { vehicle: "SUV Ertiga", price: "₹10200", roundTrip: "₹20400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹12240", roundTrip: "₹24480", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹23800", roundTrip: "₹47600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹37400", roundTrip: "₹74800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹15640", roundTrip: "₹31280", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹17000", roundTrip: "₹34000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹17680", roundTrip: "₹35360", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹18360", roundTrip: "₹36720", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹17680", roundTrip: "₹35360", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹21760", roundTrip: "₹43520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹23120", roundTrip: "₹46240", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹24480", roundTrip: "₹48960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹25840", roundTrip: "₹51680", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹30600", roundTrip: "₹61200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹35360", roundTrip: "₹70720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹39440", roundTrip: "₹78880", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹44200", roundTrip: "₹88400", capacity: "56 guests" }
       ]
     },
     {
@@ -534,8 +941,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹9480", roundTrip: "₹18960" },
         { vehicle: "SUV Ertiga", price: "₹11850", roundTrip: "₹23700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹14220", roundTrip: "₹28440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹27650", roundTrip: "₹55300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹43450", roundTrip: "₹86900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹18170", roundTrip: "₹36340", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹19750", roundTrip: "₹39500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹20540", roundTrip: "₹41080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹21330", roundTrip: "₹42660", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹20540", roundTrip: "₹41080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹25280", roundTrip: "₹50560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹26860", roundTrip: "₹53720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹28440", roundTrip: "₹56880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹30020", roundTrip: "₹60040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹35550", roundTrip: "₹71100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹41080", roundTrip: "₹82160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹45820", roundTrip: "₹91640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹51350", roundTrip: "₹102700", capacity: "56 guests" }
       ]
     },
     {
@@ -548,8 +966,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹11400", roundTrip: "₹22800" },
         { vehicle: "SUV Ertiga", price: "₹14250", roundTrip: "₹28500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹17100", roundTrip: "₹34200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹33250", roundTrip: "₹66500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹52250", roundTrip: "₹104500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹21850", roundTrip: "₹43700", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹23750", roundTrip: "₹47500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹24700", roundTrip: "₹49400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹25650", roundTrip: "₹51300", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹24700", roundTrip: "₹49400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹30400", roundTrip: "₹60800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹32300", roundTrip: "₹64600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹34200", roundTrip: "₹68400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹36100", roundTrip: "₹72200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹42750", roundTrip: "₹85500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹49400", roundTrip: "₹98800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹55100", roundTrip: "₹110200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹61750", roundTrip: "₹123500", capacity: "56 guests" }
       ]
     }
   ],
@@ -565,8 +994,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2760", roundTrip: "₹5520" },
         { vehicle: "SUV Ertiga", price: "₹3450", roundTrip: "₹6900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4140", roundTrip: "₹8280", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8050", roundTrip: "₹16100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹12650", roundTrip: "₹25300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5290", roundTrip: "₹10580", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5980", roundTrip: "₹11960", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6210", roundTrip: "₹12420", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5980", roundTrip: "₹11960", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7360", roundTrip: "₹14720", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹7820", roundTrip: "₹15640", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8280", roundTrip: "₹16560", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹8740", roundTrip: "₹17480", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10350", roundTrip: "₹20700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹11960", roundTrip: "₹23920", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13340", roundTrip: "₹26680", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹14950", roundTrip: "₹29900", capacity: "56 guests" }
       ]
     },
     {
@@ -579,8 +1019,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2880", roundTrip: "₹5760" },
         { vehicle: "SUV Ertiga", price: "₹3600", roundTrip: "₹7200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4320", roundTrip: "₹8640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8400", roundTrip: "₹16800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13200", roundTrip: "₹26400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5520", roundTrip: "₹11040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
       ]
     },
     {
@@ -593,8 +1044,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3360", roundTrip: "₹6720" },
         { vehicle: "SUV Ertiga", price: "₹4200", roundTrip: "₹8400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5040", roundTrip: "₹10080", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹9800", roundTrip: "₹19600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹15400", roundTrip: "₹30800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6440", roundTrip: "₹12880", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7000", roundTrip: "₹14000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7280", roundTrip: "₹14560", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7560", roundTrip: "₹15120", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7280", roundTrip: "₹14560", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8960", roundTrip: "₹17920", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹9520", roundTrip: "₹19040", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10080", roundTrip: "₹20160", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹10640", roundTrip: "₹21280", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹12600", roundTrip: "₹25200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹14560", roundTrip: "₹29120", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹16240", roundTrip: "₹32480", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹18200", roundTrip: "₹36400", capacity: "56 guests" }
       ]
     },
     {
@@ -607,8 +1069,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4920", roundTrip: "₹9840" },
         { vehicle: "SUV Ertiga", price: "₹6150", roundTrip: "₹12300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7380", roundTrip: "₹14760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹14350", roundTrip: "₹28700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹22550", roundTrip: "₹45100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9430", roundTrip: "₹18860", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10250", roundTrip: "₹20500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹10660", roundTrip: "₹21320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11070", roundTrip: "₹22140", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹10660", roundTrip: "₹21320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹13120", roundTrip: "₹26240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹13940", roundTrip: "₹27880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹14760", roundTrip: "₹29520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹15580", roundTrip: "₹31160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹18450", roundTrip: "₹36900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹21320", roundTrip: "₹42640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹23780", roundTrip: "₹47560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹26650", roundTrip: "₹53300", capacity: "56 guests" }
       ]
     },
     {
@@ -621,8 +1094,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5520", roundTrip: "₹11040" },
         { vehicle: "SUV Ertiga", price: "₹6900", roundTrip: "₹13800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8280", roundTrip: "₹16560", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹16100", roundTrip: "₹32200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹25300", roundTrip: "₹50600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10580", roundTrip: "₹21160", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11500", roundTrip: "₹23000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11960", roundTrip: "₹23920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14720", roundTrip: "₹29440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15640", roundTrip: "₹31280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16560", roundTrip: "₹33120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17480", roundTrip: "₹34960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20700", roundTrip: "₹41400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23920", roundTrip: "₹47840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26680", roundTrip: "₹53360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29900", roundTrip: "₹59800", capacity: "56 guests" }
       ]
     },
     {
@@ -635,8 +1119,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7560", roundTrip: "₹15120" },
         { vehicle: "SUV Ertiga", price: "₹9450", roundTrip: "₹18900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11340", roundTrip: "₹22680", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹22050", roundTrip: "₹44100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34650", roundTrip: "₹69300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14490", roundTrip: "₹28980", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15750", roundTrip: "₹31500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16380", roundTrip: "₹32760", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17010", roundTrip: "₹34020", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16380", roundTrip: "₹32760", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹20160", roundTrip: "₹40320", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21420", roundTrip: "₹42840", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22680", roundTrip: "₹45360", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23940", roundTrip: "₹47880", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹28350", roundTrip: "₹56700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32760", roundTrip: "₹65520", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹36540", roundTrip: "₹73080", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40950", roundTrip: "₹81900", capacity: "56 guests" }
       ]
     },
     {
@@ -649,8 +1144,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7440", roundTrip: "₹14880" },
         { vehicle: "SUV Ertiga", price: "₹9300", roundTrip: "₹18600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11160", roundTrip: "₹22320", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹21700", roundTrip: "₹43400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34100", roundTrip: "₹68200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14260", roundTrip: "₹28520", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15500", roundTrip: "₹31000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16120", roundTrip: "₹32240", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹16740", roundTrip: "₹33480", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16120", roundTrip: "₹32240", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹19840", roundTrip: "₹39680", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21080", roundTrip: "₹42160", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22320", roundTrip: "₹44640", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23560", roundTrip: "₹47120", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹27900", roundTrip: "₹55800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32240", roundTrip: "₹64480", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹35960", roundTrip: "₹71920", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40300", roundTrip: "₹80600", capacity: "56 guests" }
       ]
     },
     {
@@ -663,8 +1169,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3600", roundTrip: "₹7200" },
         { vehicle: "SUV Ertiga", price: "₹4500", roundTrip: "₹9000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5400", roundTrip: "₹10800", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹10500", roundTrip: "₹21000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹16500", roundTrip: "₹33000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6900", roundTrip: "₹13800", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7500", roundTrip: "₹15000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7800", roundTrip: "₹15600", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹8100", roundTrip: "₹16200", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7800", roundTrip: "₹15600", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9600", roundTrip: "₹19200", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹10200", roundTrip: "₹20400", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10800", roundTrip: "₹21600", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11400", roundTrip: "₹22800", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13500", roundTrip: "₹27000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹15600", roundTrip: "₹31200", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹17400", roundTrip: "₹34800", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹19500", roundTrip: "₹39000", capacity: "56 guests" }
       ]
     },
     {
@@ -677,8 +1194,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3480", roundTrip: "₹6960" },
         { vehicle: "SUV Ertiga", price: "₹4350", roundTrip: "₹8700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5220", roundTrip: "₹10440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹10150", roundTrip: "₹20300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹15950", roundTrip: "₹31900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6670", roundTrip: "₹13340", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7250", roundTrip: "₹14500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7540", roundTrip: "₹15080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7830", roundTrip: "₹15660", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7540", roundTrip: "₹15080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9280", roundTrip: "₹18560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹9860", roundTrip: "₹19720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10440", roundTrip: "₹20880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11020", roundTrip: "₹22040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13050", roundTrip: "₹26100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹15080", roundTrip: "₹30160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹16820", roundTrip: "₹33640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹18850", roundTrip: "₹37700", capacity: "56 guests" }
       ]
     },
     {
@@ -691,8 +1219,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5040", roundTrip: "₹10080" },
         { vehicle: "SUV Ertiga", price: "₹6300", roundTrip: "₹12600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7560", roundTrip: "₹15120", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹14700", roundTrip: "₹29400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹23100", roundTrip: "₹46200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9660", roundTrip: "₹19320", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10500", roundTrip: "₹21000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹10920", roundTrip: "₹21840", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11340", roundTrip: "₹22680", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹10920", roundTrip: "₹21840", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹13440", roundTrip: "₹26880", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹14280", roundTrip: "₹28560", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹15120", roundTrip: "₹30240", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹15960", roundTrip: "₹31920", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹18900", roundTrip: "₹37800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹21840", roundTrip: "₹43680", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹24360", roundTrip: "₹48720", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹27300", roundTrip: "₹54600", capacity: "56 guests" }
       ]
     },
     {
@@ -705,8 +1244,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5520", roundTrip: "₹11040" },
         { vehicle: "SUV Ertiga", price: "₹6900", roundTrip: "₹13800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8280", roundTrip: "₹16560", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹16100", roundTrip: "₹32200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹25300", roundTrip: "₹50600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10580", roundTrip: "₹21160", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11500", roundTrip: "₹23000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11960", roundTrip: "₹23920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14720", roundTrip: "₹29440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15640", roundTrip: "₹31280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16560", roundTrip: "₹33120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17480", roundTrip: "₹34960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20700", roundTrip: "₹41400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23920", roundTrip: "₹47840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26680", roundTrip: "₹53360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29900", roundTrip: "₹59800", capacity: "56 guests" }
       ]
     },
     {
@@ -719,8 +1269,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5880", roundTrip: "₹11760" },
         { vehicle: "SUV Ertiga", price: "₹7350", roundTrip: "₹14700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8820", roundTrip: "₹17640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹17150", roundTrip: "₹34300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹26950", roundTrip: "₹53900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹11270", roundTrip: "₹22540", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹12250", roundTrip: "₹24500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹12740", roundTrip: "₹25480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹13230", roundTrip: "₹26460", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹12740", roundTrip: "₹25480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹15680", roundTrip: "₹31360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹16660", roundTrip: "₹33320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹17640", roundTrip: "₹35280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹18620", roundTrip: "₹37240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹22050", roundTrip: "₹44100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹25480", roundTrip: "₹50960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹28420", roundTrip: "₹56840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹31850", roundTrip: "₹63700", capacity: "56 guests" }
       ]
     },
     {
@@ -733,8 +1294,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹9000", roundTrip: "₹18000" },
         { vehicle: "SUV Ertiga", price: "₹11250", roundTrip: "₹22500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹13500", roundTrip: "₹27000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹26250", roundTrip: "₹52500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹41250", roundTrip: "₹82500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹17250", roundTrip: "₹34500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹18750", roundTrip: "₹37500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹19500", roundTrip: "₹39000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹20250", roundTrip: "₹40500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹19500", roundTrip: "₹39000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹24000", roundTrip: "₹48000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹25500", roundTrip: "₹51000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹27000", roundTrip: "₹54000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹28500", roundTrip: "₹57000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹33750", roundTrip: "₹67500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹39000", roundTrip: "₹78000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹43500", roundTrip: "₹87000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹48750", roundTrip: "₹97500", capacity: "56 guests" }
       ]
     }
   ],
@@ -750,8 +1322,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4320", roundTrip: "₹8640" },
         { vehicle: "SUV Ertiga", price: "₹5400", roundTrip: "₹10800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹6480", roundTrip: "₹12960", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹12600", roundTrip: "₹25200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹19800", roundTrip: "₹39600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹8280", roundTrip: "₹16560", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹9000", roundTrip: "₹18000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹9360", roundTrip: "₹18720", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹9720", roundTrip: "₹19440", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹9360", roundTrip: "₹18720", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹11520", roundTrip: "₹23040", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹12240", roundTrip: "₹24480", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹12960", roundTrip: "₹25920", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹13680", roundTrip: "₹27360", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹16200", roundTrip: "₹32400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹18720", roundTrip: "₹37440", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹20880", roundTrip: "₹41760", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹23400", roundTrip: "₹46800", capacity: "56 guests" }
       ]
     },
     {
@@ -764,8 +1347,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5520", roundTrip: "₹11040" },
         { vehicle: "SUV Ertiga", price: "₹6900", roundTrip: "₹13800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8280", roundTrip: "₹16560", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹16100", roundTrip: "₹32200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹25300", roundTrip: "₹50600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10580", roundTrip: "₹21160", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11500", roundTrip: "₹23000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11960", roundTrip: "₹23920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14720", roundTrip: "₹29440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15640", roundTrip: "₹31280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16560", roundTrip: "₹33120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17480", roundTrip: "₹34960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20700", roundTrip: "₹41400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23920", roundTrip: "₹47840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26680", roundTrip: "₹53360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29900", roundTrip: "₹59800", capacity: "56 guests" }
       ]
     },
     {
@@ -778,8 +1372,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹6960", roundTrip: "₹13920" },
         { vehicle: "SUV Ertiga", price: "₹8700", roundTrip: "₹17400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹10440", roundTrip: "₹20880", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹20300", roundTrip: "₹40600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹31900", roundTrip: "₹63800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹13340", roundTrip: "₹26680", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹14500", roundTrip: "₹29000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹15080", roundTrip: "₹30160", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹15660", roundTrip: "₹31320", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹15080", roundTrip: "₹30160", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹18560", roundTrip: "₹37120", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹19720", roundTrip: "₹39440", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹20880", roundTrip: "₹41760", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹22040", roundTrip: "₹44080", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹26100", roundTrip: "₹52200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹30160", roundTrip: "₹60320", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹33640", roundTrip: "₹67280", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹37700", roundTrip: "₹75400", capacity: "56 guests" }
       ]
     },
     {
@@ -792,8 +1397,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2520", roundTrip: "₹5040" },
         { vehicle: "SUV Ertiga", price: "₹3150", roundTrip: "₹6300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3780", roundTrip: "₹7560", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹7350", roundTrip: "₹14700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹11550", roundTrip: "₹23100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4830", roundTrip: "₹9660", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5250", roundTrip: "₹10500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5460", roundTrip: "₹10920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5670", roundTrip: "₹11340", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5460", roundTrip: "₹10920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹6720", roundTrip: "₹13440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹7140", roundTrip: "₹14280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹7560", roundTrip: "₹15120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹7980", roundTrip: "₹15960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹9450", roundTrip: "₹18900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹10920", roundTrip: "₹21840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹12180", roundTrip: "₹24360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹13650", roundTrip: "₹27300", capacity: "56 guests" }
       ]
     },
     {
@@ -806,8 +1422,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹1440", roundTrip: "₹2880" },
         { vehicle: "SUV Ertiga", price: "₹1800", roundTrip: "₹3600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹2160", roundTrip: "₹4320", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹4200", roundTrip: "₹8400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹6600", roundTrip: "₹13200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹2760", roundTrip: "₹5520", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹3000", roundTrip: "₹6000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹3120", roundTrip: "₹6240", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹3240", roundTrip: "₹6480", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹3120", roundTrip: "₹6240", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹3840", roundTrip: "₹7680", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹4080", roundTrip: "₹8160", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹4320", roundTrip: "₹8640", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹4560", roundTrip: "₹9120", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹5400", roundTrip: "₹10800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹6240", roundTrip: "₹12480", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹6960", roundTrip: "₹13920", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹7800", roundTrip: "₹15600", capacity: "56 guests" }
       ]
     },
     {
@@ -820,8 +1447,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3000", roundTrip: "₹6000" },
         { vehicle: "SUV Ertiga", price: "₹3750", roundTrip: "₹7500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4500", roundTrip: "₹9000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8750", roundTrip: "₹17500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13750", roundTrip: "₹27500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6250", roundTrip: "₹12500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6500", roundTrip: "₹13000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6750", roundTrip: "₹13500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6500", roundTrip: "₹13000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8000", roundTrip: "₹16000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8500", roundTrip: "₹17000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹9000", roundTrip: "₹18000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9500", roundTrip: "₹19000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹11250", roundTrip: "₹22500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹13000", roundTrip: "₹26000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹14500", roundTrip: "₹29000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹16250", roundTrip: "₹32500", capacity: "56 guests" }
       ]
     },
     {
@@ -834,8 +1472,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4200", roundTrip: "₹8400" },
         { vehicle: "SUV Ertiga", price: "₹5250", roundTrip: "₹10500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹6300", roundTrip: "₹12600", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹12250", roundTrip: "₹24500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹19250", roundTrip: "₹38500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹8050", roundTrip: "₹16100", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹8750", roundTrip: "₹17500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹9100", roundTrip: "₹18200", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹9450", roundTrip: "₹18900", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹9100", roundTrip: "₹18200", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹11200", roundTrip: "₹22400", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹11900", roundTrip: "₹23800", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹12600", roundTrip: "₹25200", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹13300", roundTrip: "₹26600", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹15750", roundTrip: "₹31500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹18200", roundTrip: "₹36400", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹20300", roundTrip: "₹40600", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹22750", roundTrip: "₹45500", capacity: "56 guests" }
       ]
     },
     {
@@ -848,8 +1497,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2160", roundTrip: "₹4320" },
         { vehicle: "SUV Ertiga", price: "₹2700", roundTrip: "₹5400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3240", roundTrip: "₹6480", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹6300", roundTrip: "₹12600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹9900", roundTrip: "₹19800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4140", roundTrip: "₹8280", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹4500", roundTrip: "₹9000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹4680", roundTrip: "₹9360", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹4860", roundTrip: "₹9720", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹4680", roundTrip: "₹9360", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹5760", roundTrip: "₹11520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6120", roundTrip: "₹12240", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹6480", roundTrip: "₹12960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹6840", roundTrip: "₹13680", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹8100", roundTrip: "₹16200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹9360", roundTrip: "₹18720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹10440", roundTrip: "₹20880", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹11700", roundTrip: "₹23400", capacity: "56 guests" }
       ]
     },
     {
@@ -862,8 +1522,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2400", roundTrip: "₹4800" },
         { vehicle: "SUV Ertiga", price: "₹3000", roundTrip: "₹6000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3600", roundTrip: "₹7200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹7000", roundTrip: "₹14000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹11000", roundTrip: "₹22000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4600", roundTrip: "₹9200", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5000", roundTrip: "₹10000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5200", roundTrip: "₹10400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5400", roundTrip: "₹10800", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5200", roundTrip: "₹10400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹6400", roundTrip: "₹12800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6800", roundTrip: "₹13600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹7200", roundTrip: "₹14400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹7600", roundTrip: "₹15200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹9000", roundTrip: "₹18000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹10400", roundTrip: "₹20800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹11600", roundTrip: "₹23200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹13000", roundTrip: "₹26000", capacity: "56 guests" }
       ]
     },
     {
@@ -876,8 +1547,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹8400", roundTrip: "₹16800" },
         { vehicle: "SUV Ertiga", price: "₹10500", roundTrip: "₹21000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹12600", roundTrip: "₹25200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹24500", roundTrip: "₹49000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹38500", roundTrip: "₹77000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹16100", roundTrip: "₹32200", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹17500", roundTrip: "₹35000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹18200", roundTrip: "₹36400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹18900", roundTrip: "₹37800", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹18200", roundTrip: "₹36400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹22400", roundTrip: "₹44800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹23800", roundTrip: "₹47600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹25200", roundTrip: "₹50400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹26600", roundTrip: "₹53200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹31500", roundTrip: "₹63000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹36400", roundTrip: "₹72800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹40600", roundTrip: "₹81200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹45500", roundTrip: "₹91000", capacity: "56 guests" }
       ]
     },
     {
@@ -890,8 +1572,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹8880", roundTrip: "₹17760" },
         { vehicle: "SUV Ertiga", price: "₹11100", roundTrip: "₹22200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹13320", roundTrip: "₹26640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹25900", roundTrip: "₹51800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹40700", roundTrip: "₹81400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹17020", roundTrip: "₹34040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹18500", roundTrip: "₹37000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹19240", roundTrip: "₹38480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹19980", roundTrip: "₹39960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹19240", roundTrip: "₹38480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹23680", roundTrip: "₹47360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹25160", roundTrip: "₹50320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹26640", roundTrip: "₹53280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹28120", roundTrip: "₹56240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹33300", roundTrip: "₹66600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹38480", roundTrip: "₹76960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹42920", roundTrip: "₹85840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹48100", roundTrip: "₹96200", capacity: "56 guests" }
       ]
     },
     {
@@ -904,8 +1597,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹10200", roundTrip: "₹20400" },
         { vehicle: "SUV Ertiga", price: "₹12750", roundTrip: "₹25500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹15300", roundTrip: "₹30600", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹29750", roundTrip: "₹59500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹46750", roundTrip: "₹93500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹19550", roundTrip: "₹39100", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹21250", roundTrip: "₹42500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹22100", roundTrip: "₹44200", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹22950", roundTrip: "₹45900", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹22100", roundTrip: "₹44200", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹27200", roundTrip: "₹54400", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹28900", roundTrip: "₹57800", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹30600", roundTrip: "₹61200", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹32300", roundTrip: "₹64600", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹38250", roundTrip: "₹76500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹44200", roundTrip: "₹88400", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹49300", roundTrip: "₹98600", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹55250", roundTrip: "₹110500", capacity: "56 guests" }
       ]
     },
     {
@@ -918,8 +1622,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹12120", roundTrip: "₹24240" },
         { vehicle: "SUV Ertiga", price: "₹15150", roundTrip: "₹30300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹18180", roundTrip: "₹36360", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹35350", roundTrip: "₹70700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹55550", roundTrip: "₹111100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹23230", roundTrip: "₹46460", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹25250", roundTrip: "₹50500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹26260", roundTrip: "₹52520", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹27270", roundTrip: "₹54540", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹26260", roundTrip: "₹52520", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹32320", roundTrip: "₹64640", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹34340", roundTrip: "₹68680", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹36360", roundTrip: "₹72720", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹38380", roundTrip: "₹76760", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹45450", roundTrip: "₹90900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹52520", roundTrip: "₹105040", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹58580", roundTrip: "₹117160", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹65650", roundTrip: "₹131300", capacity: "56 guests" }
       ]
     }
   ],
@@ -935,8 +1650,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3000", roundTrip: "₹6000" },
         { vehicle: "SUV Ertiga", price: "₹3750", roundTrip: "₹7500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4500", roundTrip: "₹9000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8750", roundTrip: "₹17500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13750", roundTrip: "₹27500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6250", roundTrip: "₹12500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6500", roundTrip: "₹13000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6750", roundTrip: "₹13500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6500", roundTrip: "₹13000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8000", roundTrip: "₹16000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8500", roundTrip: "₹17000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹9000", roundTrip: "₹18000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9500", roundTrip: "₹19000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹11250", roundTrip: "₹22500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹13000", roundTrip: "₹26000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹14500", roundTrip: "₹29000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹16250", roundTrip: "₹32500", capacity: "56 guests" }
       ]
     },
     {
@@ -949,8 +1675,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3600", roundTrip: "₹7200" },
         { vehicle: "SUV Ertiga", price: "₹4500", roundTrip: "₹9000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5400", roundTrip: "₹10800", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹10500", roundTrip: "₹21000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹16500", roundTrip: "₹33000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6900", roundTrip: "₹13800", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7500", roundTrip: "₹15000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7800", roundTrip: "₹15600", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹8100", roundTrip: "₹16200", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7800", roundTrip: "₹15600", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9600", roundTrip: "₹19200", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹10200", roundTrip: "₹20400", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10800", roundTrip: "₹21600", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11400", roundTrip: "₹22800", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13500", roundTrip: "₹27000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹15600", roundTrip: "₹31200", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹17400", roundTrip: "₹34800", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹19500", roundTrip: "₹39000", capacity: "56 guests" }
       ]
     },
     {
@@ -963,8 +1700,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5520", roundTrip: "₹11040" },
         { vehicle: "SUV Ertiga", price: "₹6900", roundTrip: "₹13800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8280", roundTrip: "₹16560", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹16100", roundTrip: "₹32200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹25300", roundTrip: "₹50600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10580", roundTrip: "₹21160", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11500", roundTrip: "₹23000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11960", roundTrip: "₹23920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14720", roundTrip: "₹29440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15640", roundTrip: "₹31280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16560", roundTrip: "₹33120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17480", roundTrip: "₹34960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20700", roundTrip: "₹41400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23920", roundTrip: "₹47840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26680", roundTrip: "₹53360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29900", roundTrip: "₹59800", capacity: "56 guests" }
       ]
     },
     {
@@ -977,8 +1725,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹660", roundTrip: "₹1320" },
         { vehicle: "SUV Ertiga", price: "₹825", roundTrip: "₹1650", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹990", roundTrip: "₹1980", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹1925", roundTrip: "₹3850", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹3025", roundTrip: "₹6050", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹1265", roundTrip: "₹2530", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹1375", roundTrip: "₹2750", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹1430", roundTrip: "₹2860", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹1485", roundTrip: "₹2970", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹1430", roundTrip: "₹2860", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹1760", roundTrip: "₹3520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹1870", roundTrip: "₹3740", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹1980", roundTrip: "₹3960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹2090", roundTrip: "₹4180", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹2475", roundTrip: "₹4950", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹2860", roundTrip: "₹5720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹3190", roundTrip: "₹6380", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹3575", roundTrip: "₹7150", capacity: "56 guests" }
       ]
     },
     {
@@ -991,8 +1750,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2040", roundTrip: "₹4080" },
         { vehicle: "SUV Ertiga", price: "₹2550", roundTrip: "₹5100", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3060", roundTrip: "₹6120", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹5950", roundTrip: "₹11900", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹9350", roundTrip: "₹18700", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹3910", roundTrip: "₹7820", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹4250", roundTrip: "₹8500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹4420", roundTrip: "₹8840", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹4590", roundTrip: "₹9180", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹4420", roundTrip: "₹8840", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹5440", roundTrip: "₹10880", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹5780", roundTrip: "₹11560", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹6120", roundTrip: "₹12240", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹6460", roundTrip: "₹12920", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹7650", roundTrip: "₹15300", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹8840", roundTrip: "₹17680", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹9860", roundTrip: "₹19720", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹11050", roundTrip: "₹22100", capacity: "56 guests" }
       ]
     },
     {
@@ -1005,8 +1775,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2160", roundTrip: "₹4320" },
         { vehicle: "SUV Ertiga", price: "₹2700", roundTrip: "₹5400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3240", roundTrip: "₹6480", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹6300", roundTrip: "₹12600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹9900", roundTrip: "₹19800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4140", roundTrip: "₹8280", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹4500", roundTrip: "₹9000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹4680", roundTrip: "₹9360", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹4860", roundTrip: "₹9720", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹4680", roundTrip: "₹9360", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹5760", roundTrip: "₹11520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6120", roundTrip: "₹12240", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹6480", roundTrip: "₹12960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹6840", roundTrip: "₹13680", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹8100", roundTrip: "₹16200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹9360", roundTrip: "₹18720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹10440", roundTrip: "₹20880", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹11700", roundTrip: "₹23400", capacity: "56 guests" }
       ]
     },
     {
@@ -1019,8 +1800,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5160", roundTrip: "₹10320" },
         { vehicle: "SUV Ertiga", price: "₹6450", roundTrip: "₹12900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7740", roundTrip: "₹15480", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹15050", roundTrip: "₹30100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹23650", roundTrip: "₹47300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9890", roundTrip: "₹19780", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10750", roundTrip: "₹21500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11180", roundTrip: "₹22360", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11610", roundTrip: "₹23220", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11180", roundTrip: "₹22360", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹13760", roundTrip: "₹27520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹14620", roundTrip: "₹29240", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹15480", roundTrip: "₹30960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹16340", roundTrip: "₹32680", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹19350", roundTrip: "₹38700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹22360", roundTrip: "₹44720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹24940", roundTrip: "₹49880", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹27950", roundTrip: "₹55900", capacity: "56 guests" }
       ]
     },
     {
@@ -1033,8 +1825,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4800", roundTrip: "₹9600" },
         { vehicle: "SUV Ertiga", price: "₹6000", roundTrip: "₹12000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7200", roundTrip: "₹14400", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹14000", roundTrip: "₹28000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹22000", roundTrip: "₹44000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9200", roundTrip: "₹18400", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10000", roundTrip: "₹20000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹10400", roundTrip: "₹20800", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹10800", roundTrip: "₹21600", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹10400", roundTrip: "₹20800", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹12800", roundTrip: "₹25600", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹13600", roundTrip: "₹27200", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹14400", roundTrip: "₹28800", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹15200", roundTrip: "₹30400", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹18000", roundTrip: "₹36000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹20800", roundTrip: "₹41600", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹23200", roundTrip: "₹46400", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹26000", roundTrip: "₹52000", capacity: "56 guests" }
       ]
     },
     {
@@ -1047,8 +1850,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹480", roundTrip: "₹960" },
         { vehicle: "SUV Ertiga", price: "₹600", roundTrip: "₹1200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹720", roundTrip: "₹1440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹1400", roundTrip: "₹2800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹2200", roundTrip: "₹4400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹920", roundTrip: "₹1840", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹1000", roundTrip: "₹2000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹1040", roundTrip: "₹2080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹1080", roundTrip: "₹2160", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹1040", roundTrip: "₹2080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹1280", roundTrip: "₹2560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹1360", roundTrip: "₹2720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹1440", roundTrip: "₹2880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹1520", roundTrip: "₹3040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹1800", roundTrip: "₹3600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹2080", roundTrip: "₹4160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹2320", roundTrip: "₹4640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹2600", roundTrip: "₹5200", capacity: "56 guests" }
       ]
     },
     {
@@ -1061,8 +1875,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7440", roundTrip: "₹14880" },
         { vehicle: "SUV Ertiga", price: "₹9300", roundTrip: "₹18600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11160", roundTrip: "₹22320", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹21700", roundTrip: "₹43400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34100", roundTrip: "₹68200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14260", roundTrip: "₹28520", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15500", roundTrip: "₹31000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16120", roundTrip: "₹32240", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹16740", roundTrip: "₹33480", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16120", roundTrip: "₹32240", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹19840", roundTrip: "₹39680", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21080", roundTrip: "₹42160", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22320", roundTrip: "₹44640", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23560", roundTrip: "₹47120", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹27900", roundTrip: "₹55800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32240", roundTrip: "₹64480", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹35960", roundTrip: "₹71920", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40300", roundTrip: "₹80600", capacity: "56 guests" }
       ]
     },
     {
@@ -1075,8 +1900,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7920", roundTrip: "₹15840" },
         { vehicle: "SUV Ertiga", price: "₹9900", roundTrip: "₹19800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11880", roundTrip: "₹23760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹23100", roundTrip: "₹46200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹36300", roundTrip: "₹72600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹15180", roundTrip: "₹30360", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹16500", roundTrip: "₹33000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹17160", roundTrip: "₹34320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17820", roundTrip: "₹35640", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹17160", roundTrip: "₹34320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹21120", roundTrip: "₹42240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹22440", roundTrip: "₹44880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹23760", roundTrip: "₹47520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹25080", roundTrip: "₹50160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹29700", roundTrip: "₹59400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹34320", roundTrip: "₹68640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹38280", roundTrip: "₹76560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹42900", roundTrip: "₹85800", capacity: "56 guests" }
       ]
     },
     {
@@ -1089,8 +1925,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹9000", roundTrip: "₹18000" },
         { vehicle: "SUV Ertiga", price: "₹11250", roundTrip: "₹22500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹13500", roundTrip: "₹27000", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹26250", roundTrip: "₹52500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹41250", roundTrip: "₹82500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹17250", roundTrip: "₹34500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹18750", roundTrip: "₹37500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹19500", roundTrip: "₹39000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹20250", roundTrip: "₹40500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹19500", roundTrip: "₹39000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹24000", roundTrip: "₹48000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹25500", roundTrip: "₹51000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹27000", roundTrip: "₹54000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹28500", roundTrip: "₹57000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹33750", roundTrip: "₹67500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹39000", roundTrip: "₹78000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹43500", roundTrip: "₹87000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹48750", roundTrip: "₹97500", capacity: "56 guests" }
       ]
     },
     {
@@ -1103,8 +1950,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹11160", roundTrip: "₹22320" },
         { vehicle: "SUV Ertiga", price: "₹13950", roundTrip: "₹27900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹16740", roundTrip: "₹33480", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹32550", roundTrip: "₹65100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹51150", roundTrip: "₹102300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹21390", roundTrip: "₹42780", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹23250", roundTrip: "₹46500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹24180", roundTrip: "₹48360", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹25110", roundTrip: "₹50220", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹24180", roundTrip: "₹48360", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹29760", roundTrip: "₹59520", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹31620", roundTrip: "₹63240", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹33480", roundTrip: "₹66960", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹35340", roundTrip: "₹70680", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹41850", roundTrip: "₹83700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹48360", roundTrip: "₹96720", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹53940", roundTrip: "₹107880", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹60450", roundTrip: "₹120900", capacity: "56 guests" }
       ]
     }
   ],
@@ -1120,8 +1978,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2880", roundTrip: "₹5760" },
         { vehicle: "SUV Ertiga", price: "₹3600", roundTrip: "₹7200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4320", roundTrip: "₹8640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8400", roundTrip: "₹16800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13200", roundTrip: "₹26400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5520", roundTrip: "₹11040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
       ]
     },
     {
@@ -1134,8 +2003,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹3480", roundTrip: "₹6960" },
         { vehicle: "SUV Ertiga", price: "₹4350", roundTrip: "₹8700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹5220", roundTrip: "₹10440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹10150", roundTrip: "₹20300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹15950", roundTrip: "₹31900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹6670", roundTrip: "₹13340", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7250", roundTrip: "₹14500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7540", roundTrip: "₹15080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7830", roundTrip: "₹15660", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7540", roundTrip: "₹15080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9280", roundTrip: "₹18560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹9860", roundTrip: "₹19720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10440", roundTrip: "₹20880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11020", roundTrip: "₹22040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13050", roundTrip: "₹26100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹15080", roundTrip: "₹30160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹16820", roundTrip: "₹33640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹18850", roundTrip: "₹37700", capacity: "56 guests" }
       ]
     },
     {
@@ -1148,8 +2028,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹5280", roundTrip: "₹10560" },
         { vehicle: "SUV Ertiga", price: "₹6600", roundTrip: "₹13200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7920", roundTrip: "₹15840", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹15400", roundTrip: "₹30800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹24200", roundTrip: "₹48400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10120", roundTrip: "₹20240", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11000", roundTrip: "₹22000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11440", roundTrip: "₹22880", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11880", roundTrip: "₹23760", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11440", roundTrip: "₹22880", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14080", roundTrip: "₹28160", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹14960", roundTrip: "₹29920", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹15840", roundTrip: "₹31680", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹16720", roundTrip: "₹33440", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹19800", roundTrip: "₹39600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹22880", roundTrip: "₹45760", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹25520", roundTrip: "₹51040", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹28600", roundTrip: "₹57200", capacity: "56 guests" }
       ]
     },
     {
@@ -1162,8 +2053,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹300", roundTrip: "₹600" },
         { vehicle: "SUV Ertiga", price: "₹375", roundTrip: "₹750", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹450", roundTrip: "₹900", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹875", roundTrip: "₹1750", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹1375", roundTrip: "₹2750", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹575", roundTrip: "₹1150", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹625", roundTrip: "₹1250", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹650", roundTrip: "₹1300", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹675", roundTrip: "₹1350", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹650", roundTrip: "₹1300", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹800", roundTrip: "₹1600", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹850", roundTrip: "₹1700", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹900", roundTrip: "₹1800", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹950", roundTrip: "₹1900", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹1125", roundTrip: "₹2250", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹1300", roundTrip: "₹2600", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹1450", roundTrip: "₹2900", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹1625", roundTrip: "₹3250", capacity: "56 guests" }
       ]
     },
     {
@@ -1176,8 +2078,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2400", roundTrip: "₹4800" },
         { vehicle: "SUV Ertiga", price: "₹3000", roundTrip: "₹6000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3600", roundTrip: "₹7200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹7000", roundTrip: "₹14000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹11000", roundTrip: "₹22000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4600", roundTrip: "₹9200", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5000", roundTrip: "₹10000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5200", roundTrip: "₹10400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5400", roundTrip: "₹10800", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5200", roundTrip: "₹10400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹6400", roundTrip: "₹12800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6800", roundTrip: "₹13600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹7200", roundTrip: "₹14400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹7600", roundTrip: "₹15200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹9000", roundTrip: "₹18000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹10400", roundTrip: "₹20800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹11600", roundTrip: "₹23200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹13000", roundTrip: "₹26000", capacity: "56 guests" }
       ]
     },
     {
@@ -1190,8 +2103,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹2400", roundTrip: "₹4800" },
         { vehicle: "SUV Ertiga", price: "₹3000", roundTrip: "₹6000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹3600", roundTrip: "₹7200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹7000", roundTrip: "₹14000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹11000", roundTrip: "₹22000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹4600", roundTrip: "₹9200", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5000", roundTrip: "₹10000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5200", roundTrip: "₹10400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5400", roundTrip: "₹10800", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5200", roundTrip: "₹10400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹6400", roundTrip: "₹12800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹6800", roundTrip: "₹13600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹7200", roundTrip: "₹14400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹7600", roundTrip: "₹15200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹9000", roundTrip: "₹18000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹10400", roundTrip: "₹20800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹11600", roundTrip: "₹23200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹13000", roundTrip: "₹26000", capacity: "56 guests" }
       ]
     },
     {
@@ -1204,8 +2128,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4920", roundTrip: "₹9840" },
         { vehicle: "SUV Ertiga", price: "₹6150", roundTrip: "₹12300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹7380", roundTrip: "₹14760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹14350", roundTrip: "₹28700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹22550", roundTrip: "₹45100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹9430", roundTrip: "₹18860", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10250", roundTrip: "₹20500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹10660", roundTrip: "₹21320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹11070", roundTrip: "₹22140", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹10660", roundTrip: "₹21320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹13120", roundTrip: "₹26240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹13940", roundTrip: "₹27880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹14760", roundTrip: "₹29520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹15580", roundTrip: "₹31160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹18450", roundTrip: "₹36900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹21320", roundTrip: "₹42640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹23780", roundTrip: "₹47560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹26650", roundTrip: "₹53300", capacity: "56 guests" }
       ]
     },
     {
@@ -1218,8 +2153,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹4560", roundTrip: "₹9120" },
         { vehicle: "SUV Ertiga", price: "₹5700", roundTrip: "₹11400", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹6840", roundTrip: "₹13680", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹13300", roundTrip: "₹26600", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹20900", roundTrip: "₹41800", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹8740", roundTrip: "₹17480", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹9500", roundTrip: "₹19000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹9880", roundTrip: "₹19760", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹10260", roundTrip: "₹20520", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹9880", roundTrip: "₹19760", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹12160", roundTrip: "₹24320", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹12920", roundTrip: "₹25840", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹13680", roundTrip: "₹27360", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹14440", roundTrip: "₹28880", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹17100", roundTrip: "₹34200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹19760", roundTrip: "₹39520", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹22040", roundTrip: "₹44080", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹24700", roundTrip: "₹49400", capacity: "56 guests" }
       ]
     },
     {
@@ -1232,8 +2178,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹480", roundTrip: "₹960" },
         { vehicle: "SUV Ertiga", price: "₹600", roundTrip: "₹1200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹720", roundTrip: "₹1440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹1400", roundTrip: "₹2800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹2200", roundTrip: "₹4400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹920", roundTrip: "₹1840", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹1000", roundTrip: "₹2000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹1040", roundTrip: "₹2080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹1080", roundTrip: "₹2160", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹1040", roundTrip: "₹2080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹1280", roundTrip: "₹2560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹1360", roundTrip: "₹2720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹1440", roundTrip: "₹2880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹1520", roundTrip: "₹3040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹1800", roundTrip: "₹3600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹2080", roundTrip: "₹4160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹2320", roundTrip: "₹4640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹2600", roundTrip: "₹5200", capacity: "56 guests" }
       ]
     },
     {
@@ -1246,8 +2203,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7200", roundTrip: "₹14400" },
         { vehicle: "SUV Ertiga", price: "₹9000", roundTrip: "₹18000", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹10800", roundTrip: "₹21600", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹21000", roundTrip: "₹42000", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹33000", roundTrip: "₹66000", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹13800", roundTrip: "₹27600", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15000", roundTrip: "₹30000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹15600", roundTrip: "₹31200", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹16200", roundTrip: "₹32400", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹15600", roundTrip: "₹31200", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹19200", roundTrip: "₹38400", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹20400", roundTrip: "₹40800", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹21600", roundTrip: "₹43200", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹22800", roundTrip: "₹45600", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹27000", roundTrip: "₹54000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹31200", roundTrip: "₹62400", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹34800", roundTrip: "₹69600", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹39000", roundTrip: "₹78000", capacity: "56 guests" }
       ]
     },
     {
@@ -1260,8 +2228,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹7680", roundTrip: "₹15360" },
         { vehicle: "SUV Ertiga", price: "₹9600", roundTrip: "₹19200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11520", roundTrip: "₹23040", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹22400", roundTrip: "₹44800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹35200", roundTrip: "₹70400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14720", roundTrip: "₹29440", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹16000", roundTrip: "₹32000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16640", roundTrip: "₹33280", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17280", roundTrip: "₹34560", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16640", roundTrip: "₹33280", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹20480", roundTrip: "₹40960", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21760", roundTrip: "₹43520", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹23040", roundTrip: "₹46080", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹24320", roundTrip: "₹48640", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹28800", roundTrip: "₹57600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹33280", roundTrip: "₹66560", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹37120", roundTrip: "₹74240", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹41600", roundTrip: "₹83200", capacity: "56 guests" }
       ]
     },
     {
@@ -1274,8 +2253,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹8760", roundTrip: "₹17520" },
         { vehicle: "SUV Ertiga", price: "₹10950", roundTrip: "₹21900", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹13140", roundTrip: "₹26280", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹25550", roundTrip: "₹51100", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹40150", roundTrip: "₹80300", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹16790", roundTrip: "₹33580", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹18250", roundTrip: "₹36500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹18980", roundTrip: "₹37960", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹19710", roundTrip: "₹39420", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹18980", roundTrip: "₹37960", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹23360", roundTrip: "₹46720", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹24820", roundTrip: "₹49640", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹26280", roundTrip: "₹52560", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹27740", roundTrip: "₹55480", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹32850", roundTrip: "₹65700", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹37960", roundTrip: "₹75920", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹42340", roundTrip: "₹84680", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹47450", roundTrip: "₹94900", capacity: "56 guests" }
       ]
     },
     {
@@ -1288,8 +2278,19 @@ export const cityRoutesData = {
         { vehicle: "Sedan", price: "₹10920", roundTrip: "₹21840" },
         { vehicle: "SUV Ertiga", price: "₹13650", roundTrip: "₹27300", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹16380", roundTrip: "₹32760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹31850", roundTrip: "₹63700", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹50050", roundTrip: "₹100100", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹20930", roundTrip: "₹41860", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹22750", roundTrip: "₹45500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹23660", roundTrip: "₹47320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹24570", roundTrip: "₹49140", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹23660", roundTrip: "₹47320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹29120", roundTrip: "₹58240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹30940", roundTrip: "₹61880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹32760", roundTrip: "₹65520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹34580", roundTrip: "₹69160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹40950", roundTrip: "₹81900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹47320", roundTrip: "₹94640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹52780", roundTrip: "₹105560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹59150", roundTrip: "₹118300", capacity: "56 guests" }
       ]
     }
   ]
@@ -1308,8 +2309,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹2880", roundTrip: "₹5760" },
         { vehicle: "SUV Ertiga", price: "₹3600", roundTrip: "₹7200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹4320", roundTrip: "₹8640", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹8400", roundTrip: "₹16800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹13200", roundTrip: "₹26400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹5520", roundTrip: "₹11040", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
       ]
     }
   ],
@@ -1325,8 +2337,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹6480", roundTrip: "₹12960" },
         { vehicle: "SUV Ertiga", price: "₹8100", roundTrip: "₹16200", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹9720", roundTrip: "₹19440", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹18900", roundTrip: "₹37800", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹29700", roundTrip: "₹59400", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹13500", roundTrip: "₹27000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹14040", roundTrip: "₹28080", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹14580", roundTrip: "₹29160", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹14040", roundTrip: "₹28080", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹17280", roundTrip: "₹34560", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹18360", roundTrip: "₹36720", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹19440", roundTrip: "₹38880", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹20520", roundTrip: "₹41040", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹24300", roundTrip: "₹48600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹28080", roundTrip: "₹56160", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹31320", roundTrip: "₹62640", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹35100", roundTrip: "₹70200", capacity: "56 guests" }
       ]
     }
   ],
@@ -1342,8 +2365,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹5400", roundTrip: "₹10800" },
         { vehicle: "SUV Ertiga", price: "₹6750", roundTrip: "₹13500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹8100", roundTrip: "₹16200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹15750", roundTrip: "₹31500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹24750", roundTrip: "₹49500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹10350", roundTrip: "₹20700", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11250", roundTrip: "₹22500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11700", roundTrip: "₹23400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12150", roundTrip: "₹24300", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11700", roundTrip: "₹23400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14400", roundTrip: "₹28800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15300", roundTrip: "₹30600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16200", roundTrip: "₹32400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17100", roundTrip: "₹34200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20250", roundTrip: "₹40500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23400", roundTrip: "₹46800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26100", roundTrip: "₹52200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29250", roundTrip: "₹58500", capacity: "56 guests" }
       ]
     }
   ],
@@ -1359,8 +2393,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹7440", roundTrip: "₹14880" },
         { vehicle: "SUV Ertiga", price: "₹9300", roundTrip: "₹18600", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11160", roundTrip: "₹22320", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹21700", roundTrip: "₹43400", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹34100", roundTrip: "₹68200", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹14260", roundTrip: "₹28520", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹15500", roundTrip: "₹31000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹16120", roundTrip: "₹32240", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹16740", roundTrip: "₹33480", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹16120", roundTrip: "₹32240", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹19840", roundTrip: "₹39680", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹21080", roundTrip: "₹42160", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹22320", roundTrip: "₹44640", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹23560", roundTrip: "₹47120", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹27900", roundTrip: "₹55800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹32240", roundTrip: "₹64480", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹35960", roundTrip: "₹71920", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹40300", roundTrip: "₹80600", capacity: "56 guests" }
       ]
     }
   ],
@@ -1376,8 +2421,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹7920", roundTrip: "₹15840" },
         { vehicle: "SUV Ertiga", price: "₹9900", roundTrip: "₹19800", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹11880", roundTrip: "₹23760", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹23100", roundTrip: "₹46200", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹36300", roundTrip: "₹72600", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹15180", roundTrip: "₹30360", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹16500", roundTrip: "₹33000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹17160", roundTrip: "₹34320", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹17820", roundTrip: "₹35640", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹17160", roundTrip: "₹34320", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹21120", roundTrip: "₹42240", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹22440", roundTrip: "₹44880", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹23760", roundTrip: "₹47520", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹25080", roundTrip: "₹50160", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹29700", roundTrip: "₹59400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹34320", roundTrip: "₹68640", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹38280", roundTrip: "₹76560", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹42900", roundTrip: "₹85800", capacity: "56 guests" }
       ]
     }
   ],
@@ -1393,8 +2449,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹8280", roundTrip: "₹16560" },
         { vehicle: "SUV Ertiga", price: "₹10350", roundTrip: "₹20700", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹12420", roundTrip: "₹24840", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹24150", roundTrip: "₹48300", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹37950", roundTrip: "₹75900", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹15870", roundTrip: "₹31740", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹17250", roundTrip: "₹34500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹17940", roundTrip: "₹35880", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹18630", roundTrip: "₹37260", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹17940", roundTrip: "₹35880", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹22080", roundTrip: "₹44160", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹23460", roundTrip: "₹46920", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹24840", roundTrip: "₹49680", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹26220", roundTrip: "₹52440", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹31050", roundTrip: "₹62100", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹35880", roundTrip: "₹71760", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹40020", roundTrip: "₹80040", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹44850", roundTrip: "₹89700", capacity: "56 guests" }
       ]
     }
   ],
@@ -1410,8 +2477,19 @@ export const basicCityRoutes = {
         { vehicle: "Sedan", price: "₹11400", roundTrip: "₹22800" },
         { vehicle: "SUV Ertiga", price: "₹14250", roundTrip: "₹28500", capacity: "6 guests" },
         { vehicle: "SUV Innova", price: "₹17100", roundTrip: "₹34200", capacity: "7 guests" },
-        { vehicle: "Tempo Traveller", price: "₹33250", roundTrip: "₹66500", capacity: "25 guests" },
-        { vehicle: "Bus", price: "₹52250", roundTrip: "₹104500", capacity: "35 guests" }
+        { vehicle: "12 Seater Tempo", price: "₹21850", roundTrip: "₹43700", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹23750", roundTrip: "₹47500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹24700", roundTrip: "₹49400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹25650", roundTrip: "₹51300", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹24700", roundTrip: "₹49400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹30400", roundTrip: "₹60800", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹32300", roundTrip: "₹64600", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹34200", roundTrip: "₹68400", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹36100", roundTrip: "₹72200", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹42750", roundTrip: "₹85500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹49400", roundTrip: "₹98800", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹55100", roundTrip: "₹110200", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹61750", roundTrip: "₹123500", capacity: "56 guests" }
       ]
     }
   ]

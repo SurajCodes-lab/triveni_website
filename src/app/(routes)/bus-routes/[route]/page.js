@@ -4,6 +4,18 @@ import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute } from '@/utili
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
 import Script from 'next/script';
 
+// Viewport export (moved from metadata for Next.js 15 compatibility)
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FACF2D' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' }
+  ],
+};
+
 export async function generateStaticParams() {
   // Generate static params for ALL 80 routes from busRoutes data
   const allRoutes = [];
@@ -59,16 +71,6 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://www.trivenicabs.in/bus-routes/${route}`
     },
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 5,
-      userScalable: true,
-    },
-    themeColor: [
-      { media: '(prefers-color-scheme: light)', color: '#FACF2D' },
-      { media: '(prefers-color-scheme: dark)', color: '#000000' }
-    ],
     appleWebApp: {
       capable: true,
       statusBarStyle: 'black-translucent',

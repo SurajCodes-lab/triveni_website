@@ -33216,6 +33216,9 @@ export const whyChooseUs = [
   }
 ];
 
+// Local Sightseeing data for bus routes (placeholder - can be expanded)
+export const localSightseeing = {};
+
 // Additional Information - Pricing & Terms
 export const additionalInfo = {
   outstationTrips: {

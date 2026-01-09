@@ -2142,4 +2142,5 @@ import {
   ];
   
   export const phoneNumber = "7668570551";
+export const emailAddress = "info@trivenicabs.in";
   

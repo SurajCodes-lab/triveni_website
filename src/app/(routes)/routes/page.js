@@ -2,6 +2,8 @@
 
 import { cityRoutesData, basicCityRoutes } from '@/utilis/cityRoutesData';
 import { vehiclesServices } from '@/utilis/data';
+import { tempoFleet } from '@/utilis/tempoTravellerData';
+import { busFleet } from '@/utilis/busRoutesData';
 import CityRoutesMainClient from '@/components/CityRoutesMainClient';
 import Script from 'next/script';
 
@@ -94,7 +96,9 @@ export default function RoutesPage() {
     popularRoutes: getPopularRoutes(),
     allRoutes: getAllRoutes(),
     cities: Object.keys(allCityRoutes).sort(),
-    vehicles: vehiclesServices
+    vehicles: vehiclesServices,
+    tempoFleet: tempoFleet,
+    busFleet: busFleet
   };
 
   // JSON-LD Structured Data for Taxi Service
