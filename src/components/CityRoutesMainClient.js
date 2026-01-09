@@ -391,19 +391,97 @@ export default function CityRoutesMainClient({ data }) {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Search cities..."
+                    placeholder="Type city name..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setShowSuggestions(true);
+                    }}
+                    onFocus={() => {
+                      setSearchFocused(true);
+                      setShowSuggestions(true);
+                    }}
+                    onBlur={() => {
+                      setSearchFocused(false);
+                      // Delay hiding suggestions to allow click
+                      setTimeout(() => setShowSuggestions(false), 200);
+                    }}
                     className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#FACF2D]/50 transition-colors"
                   />
                   {searchQuery && (
                     <button
-                      onClick={() => setSearchQuery('')}
+                      onClick={() => {
+                        setSearchQuery('');
+                        setShowSuggestions(false);
+                      }}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
                     >
                       <X className="w-5 h-5" />
                     </button>
                   )}
+
+                  {/* Autocomplete Dropdown */}
+                  <AnimatePresence>
+                    {showSuggestions && searchQuery.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-xl rounded-xl border border-white/20 overflow-hidden z-50 shadow-2xl"
+                      >
+                        {searchSuggestions.length > 0 ? (
+                          searchSuggestions.map((city, index) => (
+                            <button
+                              key={city.name}
+                              onClick={() => handleCitySelect(city.name)}
+                              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-[#FACF2D]/20 transition-colors text-left border-b border-white/10 last:border-0"
+                            >
+                              <span className="text-xl">{city.icon}</span>
+                              <div className="flex-1">
+                                <p className="text-white font-semibold">{city.name}</p>
+                                <p className="text-white/50 text-xs">{city.tagline} • {city.routeCount} routes</p>
+                              </div>
+                              <ArrowRight className="w-4 h-4 text-[#FACF2D]" />
+                            </button>
+                          ))
+                        ) : (
+                          /* City Not Found - Show Contact Options with Positive Message */
+                          <div className="p-4">
+                            <div className="text-center mb-4">
+                              <div className="w-12 h-12 bg-[#FACF2D] rounded-full flex items-center justify-center mx-auto mb-3">
+                                <Sparkles className="w-6 h-6 text-black" />
+                              </div>
+                              <p className="text-white font-semibold mb-1">We&apos;d love to serve &quot;{searchQuery}&quot;!</p>
+                              <p className="text-white/70 text-sm">Not listed yet? No worries — contact us for custom routes!</p>
+                            </div>
+                            <div className="space-y-2">
+                              <a
+                                href={`tel:+91${phoneNumber}`}
+                                className="w-full flex items-center justify-center gap-2 bg-[#FACF2D] text-black px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-yellow-400 transition-colors"
+                              >
+                                <Phone className="w-4 h-4" />
+                                Call Now
+                              </a>
+                              <button
+                                onClick={handleWhatsAppClick}
+                                className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-green-700 transition-colors"
+                              >
+                                <BsWhatsapp className="w-4 h-4" />
+                                WhatsApp Us
+                              </button>
+                              <button
+                                onClick={handleEmailClick}
+                                className="w-full flex items-center justify-center gap-2 bg-white/10 text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-white/20 transition-colors border border-white/20"
+                              >
+                                <HiOutlineMail className="w-4 h-4" />
+                                Email for Custom Booking
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Quick city links */}
@@ -428,20 +506,27 @@ export default function CityRoutesMainClient({ data }) {
                   <h3 className="text-black font-bold text-lg mb-2">Quick Booking</h3>
                   <p className="text-black/70 text-sm mb-4">Get instant fare estimate</p>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <a
                       href={`tel:+91${phoneNumber}`}
-                      className="flex items-center gap-3 bg-black text-[#FACF2D] px-4 py-3 rounded-xl font-bold text-sm hover:bg-black/90 transition-colors"
+                      className="flex items-center gap-3 bg-black text-[#FACF2D] px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-black/90 transition-colors"
                     >
                       <Phone className="w-4 h-4" />
                       {phoneNumber}
                     </a>
                     <button
                       onClick={handleWhatsAppClick}
-                      className="w-full flex items-center justify-center gap-3 bg-white/90 text-black px-4 py-3 rounded-xl font-bold text-sm hover:bg-white transition-colors"
+                      className="w-full flex items-center justify-center gap-3 bg-white/90 text-black px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-white transition-colors"
                     >
                       <BsWhatsapp className="w-4 h-4" />
                       WhatsApp
+                    </button>
+                    <button
+                      onClick={handleEmailClick}
+                      className="w-full flex items-center justify-center gap-3 bg-black/10 text-black px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-black/20 transition-colors"
+                    >
+                      <HiOutlineMail className="w-4 h-4" />
+                      Email Us
                     </button>
                   </div>
                 </div>
@@ -532,84 +617,161 @@ export default function CityRoutesMainClient({ data }) {
           </motion.div>
 
           {/* Cities Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {filteredCities.map((city, index) => {
-              const isLarge = index === 0 || index === 5;
+          {filteredCities.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {filteredCities.map((city, index) => {
+                const isLarge = index === 0 || index === 5;
 
-              return (
-                <motion.div
-                  key={city.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className={isLarge ? 'md:col-span-2 md:row-span-2' : ''}
-                >
-                  <Link href={`/${city.name.toLowerCase()}`} className="block group h-full">
-                    <div className={`relative overflow-hidden rounded-3xl h-full ${
-                      isLarge ? 'min-h-[300px] md:min-h-[400px]' : 'min-h-[180px] md:min-h-[200px]'
-                    }`}>
-                      {/* Image */}
-                      <Image
-                        src={city.image}
-                        alt={`${city.name} Taxi Service`}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
+                return (
+                  <motion.div
+                    key={city.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className={isLarge ? 'md:col-span-2 md:row-span-2' : ''}
+                  >
+                    <Link href={`/${city.name.toLowerCase()}`} className="block group h-full">
+                      <div className={`relative overflow-hidden rounded-3xl h-full ${
+                        isLarge ? 'min-h-[300px] md:min-h-[400px]' : 'min-h-[180px] md:min-h-[200px]'
+                      }`}>
+                        {/* Image */}
+                        <Image
+                          src={city.image}
+                          alt={`${city.name} Taxi Service`}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
 
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 group-hover:from-black/80 transition-all" />
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 group-hover:from-black/80 transition-all" />
 
-                      {/* Glow Effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#FACF2D]/20 to-transparent" />
+                        {/* Glow Effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#FACF2D]/20 to-transparent" />
 
-                      {/* Content */}
-                      <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
-                        {/* Top */}
-                        <div className="flex justify-between items-start">
-                          <span className={`${isLarge ? 'text-4xl' : 'text-2xl'}`}>{city.icon}</span>
-                          <div className="bg-[#FACF2D] text-black px-3 py-1 rounded-full">
-                            <span className="font-bold text-xs">{city.routeCount} Routes</span>
-                          </div>
-                        </div>
-
-                        {/* Bottom */}
-                        <div>
-                          <h3 className={`font-black text-white group-hover:text-[#FACF2D] transition-colors ${
-                            isLarge ? 'text-3xl md:text-4xl mb-2' : 'text-xl md:text-2xl mb-1'
-                          }`}>
-                            {city.name}
-                          </h3>
-                          <p className={`text-white/80 font-medium ${isLarge ? 'text-base mb-3' : 'text-sm'}`}>
-                            {city.tagline}
-                          </p>
-
-                          {/* Popular Routes for large cards */}
-                          {isLarge && city.highlights && (
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              {city.highlights.slice(0, 3).map((route, idx) => (
-                                <span key={idx} className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
-                                  → {route}
-                                </span>
-                              ))}
+                        {/* Content */}
+                        <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
+                          {/* Top */}
+                          <div className="flex justify-between items-start">
+                            <span className={`${isLarge ? 'text-4xl' : 'text-2xl'}`}>{city.icon}</span>
+                            <div className="bg-[#FACF2D] text-black px-3 py-1 rounded-full">
+                              <span className="font-bold text-xs">{city.routeCount} Routes</span>
                             </div>
-                          )}
+                          </div>
 
-                          <div className="flex items-center gap-2 text-[#FACF2D] font-bold text-sm">
-                            <span>View Routes</span>
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                          {/* Bottom */}
+                          <div>
+                            <h3 className={`font-black text-white group-hover:text-[#FACF2D] transition-colors ${
+                              isLarge ? 'text-3xl md:text-4xl mb-2' : 'text-xl md:text-2xl mb-1'
+                            }`}>
+                              {city.name}
+                            </h3>
+                            <p className={`text-white/80 font-medium ${isLarge ? 'text-base mb-3' : 'text-sm'}`}>
+                              {city.tagline}
+                            </p>
+
+                            {/* Popular Routes for large cards */}
+                            {isLarge && city.highlights && (
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                {city.highlights.slice(0, 3).map((route, idx) => (
+                                  <span key={idx} className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
+                                    → {route}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+
+                            <div className="flex items-center gap-2 text-[#FACF2D] font-bold text-sm">
+                              <span>View Routes</span>
+                              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Border */}
-                      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#FACF2D]/50 transition-colors" />
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
+                        {/* Border */}
+                        <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#FACF2D]/50 transition-colors" />
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          ) : (
+            /* City Not Found - Full Width Message with Positive Messaging */
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-gradient-to-br from-amber-50 to-yellow-50 rounded-3xl p-8 md:p-12 text-center border border-amber-200"
+            >
+              <div className="max-w-lg mx-auto">
+                <div className="w-20 h-20 bg-[#FACF2D] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-200">
+                  <Sparkles className="w-10 h-10 text-black" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3">
+                  We&apos;d Love to Serve You in &quot;{searchQuery}&quot;!
+                </h3>
+                <p className="text-slate-700 mb-2 text-lg font-medium">
+                  This route isn&apos;t listed yet, but we&apos;re always happy to help!
+                </p>
+                <p className="text-slate-600 mb-8">
+                  We&apos;re continuously expanding our network to serve you better. Contact us now — we may still be able to arrange your trip to <strong>{searchQuery}</strong> or suggest the best alternative routes!
+                </p>
+
+                <div className="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-amber-100">
+                  <p className="text-slate-800 font-bold mb-4 flex items-center justify-center gap-2">
+                    <Headphones className="w-5 h-5 text-[#FACF2D]" />
+                    Get in Touch — We&apos;re Here to Help!
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <a
+                      href={`tel:+91${phoneNumber}`}
+                      className="flex items-center justify-center gap-2 bg-[#FACF2D] text-black px-5 py-3.5 rounded-xl font-bold hover:bg-yellow-400 transition-colors shadow-sm"
+                    >
+                      <Phone className="w-5 h-5" />
+                      Call Now
+                    </a>
+                    <button
+                      onClick={handleWhatsAppClick}
+                      className="flex items-center justify-center gap-2 bg-green-600 text-white px-5 py-3.5 rounded-xl font-bold hover:bg-green-700 transition-colors shadow-sm"
+                    >
+                      <BsWhatsapp className="w-5 h-5" />
+                      WhatsApp
+                    </button>
+                  </div>
+                  <button
+                    onClick={handleEmailClick}
+                    className="w-full mt-3 flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-slate-800 transition-colors"
+                  >
+                    <HiOutlineMail className="w-5 h-5" />
+                    Email Us for Custom Booking
+                  </button>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-3 text-sm text-slate-600 mb-6">
+                  <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-slate-200">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    24/7 Support
+                  </span>
+                  <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-slate-200">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Custom Routes Available
+                  </span>
+                  <span className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-slate-200">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Best Price Guaranteed
+                  </span>
+                </div>
+
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="text-slate-600 hover:text-slate-900 font-medium flex items-center gap-2 mx-auto transition-colors"
+                >
+                  <ArrowRight className="w-4 h-4 rotate-180" />
+                  Browse All Available Cities
+                </button>
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 
