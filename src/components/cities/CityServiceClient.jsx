@@ -115,6 +115,97 @@ const cityHeroData = {
     icon: '🏛️',
     gradient: 'from-red-500 to-orange-600',
     highlights: ['Dwarka', 'Somnath', 'Kutch', 'Mumbai']
+  },
+  'Varanasi': {
+    image: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
+    tagline: 'Spiritual Capital of India',
+    icon: '🙏',
+    gradient: 'from-orange-500 to-red-600',
+    highlights: ['Sarnath', 'Ayodhya', 'Lucknow', 'Bodhgaya']
+  },
+  'Lucknow': {
+    image: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg',
+    tagline: 'City of Nawabs',
+    icon: '🏛️',
+    gradient: 'from-amber-500 to-yellow-600',
+    highlights: ['Agra', 'Varanasi', 'Ayodhya', 'Delhi']
+  },
+  'Mathura': {
+    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png',
+    tagline: 'Birthplace of Lord Krishna',
+    icon: '🙏',
+    gradient: 'from-blue-500 to-purple-600',
+    highlights: ['Vrindavan', 'Agra', 'Delhi', 'Govardhan']
+  },
+  'Nainital': {
+    image: '/images/sightseeing/Nainital/Nainital_hero_section.jpg',
+    tagline: 'Lake District of India',
+    icon: '🏔️',
+    gradient: 'from-cyan-500 to-blue-600',
+    highlights: ['Bhimtal', 'Jim Corbett', 'Ranikhet', 'Delhi']
+  },
+  'Mussoorie': {
+    image: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg',
+    tagline: 'Queen of the Hills',
+    icon: '⛰️',
+    gradient: 'from-green-500 to-teal-600',
+    highlights: ['Dehradun', 'Haridwar', 'Rishikesh', 'Delhi']
+  },
+  'Jim Corbett': {
+    image: '/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg',
+    tagline: 'Tiger Country',
+    icon: '🐅',
+    gradient: 'from-amber-600 to-green-600',
+    highlights: ['Nainital', 'Ranikhet', 'Haridwar', 'Delhi']
+  },
+  'Pushkar': {
+    image: '/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg',
+    tagline: 'The Holy Lake City',
+    icon: '🙏',
+    gradient: 'from-yellow-500 to-orange-500',
+    highlights: ['Ajmer', 'Jaipur', 'Jodhpur', 'Udaipur']
+  },
+  'Ajmer': {
+    image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg',
+    tagline: 'Dargah Sharif City',
+    icon: '🕌',
+    gradient: 'from-green-600 to-teal-600',
+    highlights: ['Pushkar', 'Jaipur', 'Jodhpur', 'Delhi']
+  },
+  'Mount Abu': {
+    image: '/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg',
+    tagline: 'Oasis in the Desert',
+    icon: '🏔️',
+    gradient: 'from-emerald-500 to-cyan-600',
+    highlights: ['Udaipur', 'Jodhpur', 'Ahmedabad', 'Jaipur']
+  },
+  'Bikaner': {
+    image: '/images/sightseeing/Bikaner/Bikaner_hero_section.jpg',
+    tagline: 'Camel Country',
+    icon: '🐪',
+    gradient: 'from-orange-500 to-amber-600',
+    highlights: ['Jaisalmer', 'Jodhpur', 'Jaipur', 'Delhi']
+  },
+  'Jaisalmer': {
+    image: '/images/sightseeing/Jaisalmer/jaisalmer_hero_section.jpg',
+    tagline: 'The Golden City',
+    icon: '🏰',
+    gradient: 'from-yellow-500 to-amber-600',
+    highlights: ['Jodhpur', 'Bikaner', 'Jaipur', 'Delhi']
+  },
+  'Ranthambore': {
+    image: '/images/sightseeing/Ranthambore/Rathambore day safari.jpg',
+    tagline: 'Kingdom of Tigers',
+    icon: '🐯',
+    gradient: 'from-amber-600 to-orange-600',
+    highlights: ['Jaipur', 'Bharatpur', 'Agra', 'Delhi']
+  },
+  'Dharamshala': {
+    image: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg',
+    tagline: 'Little Tibet of India',
+    icon: '🏔️',
+    gradient: 'from-blue-600 to-indigo-600',
+    highlights: ['McLeodganj', 'Dalhousie', 'Amritsar', 'Chandigarh']
   }
 };
 
