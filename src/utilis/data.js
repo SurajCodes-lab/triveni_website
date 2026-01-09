@@ -1040,6 +1040,84 @@ import {
       coverage: "City + Suburbs",
       popularity: "medium",
     },
+    {
+      name: "Varanasi",
+      region: "North India",
+      coverage: "Holy City Area",
+      popularity: "high",
+    },
+    {
+      name: "Lucknow",
+      region: "North India",
+      coverage: "City of Nawabs",
+      popularity: "high",
+    },
+    {
+      name: "Mathura",
+      region: "North India",
+      coverage: "Krishna Circuit",
+      popularity: "high",
+    },
+    {
+      name: "Nainital",
+      region: "North India",
+      coverage: "Lake District",
+      popularity: "high",
+    },
+    {
+      name: "Mussoorie",
+      region: "North India",
+      coverage: "Queen of Hills",
+      popularity: "high",
+    },
+    {
+      name: "Jim Corbett",
+      region: "North India",
+      coverage: "Wildlife Reserve",
+      popularity: "high",
+    },
+    {
+      name: "Pushkar",
+      region: "North India",
+      coverage: "Holy Lake Area",
+      popularity: "medium",
+    },
+    {
+      name: "Ajmer",
+      region: "North India",
+      coverage: "Dargah Circuit",
+      popularity: "high",
+    },
+    {
+      name: "Mount Abu",
+      region: "North India",
+      coverage: "Hill Station Area",
+      popularity: "medium",
+    },
+    {
+      name: "Bikaner",
+      region: "North India",
+      coverage: "Desert City Area",
+      popularity: "medium",
+    },
+    {
+      name: "Jaisalmer",
+      region: "North India",
+      coverage: "Golden City Area",
+      popularity: "high",
+    },
+    {
+      name: "Ranthambore",
+      region: "North India",
+      coverage: "Tiger Reserve",
+      popularity: "high",
+    },
+    {
+      name: "Dharamshala",
+      region: "North India",
+      coverage: "Tibetan Circuit",
+      popularity: "high",
+    },
   ];
   
   export const cityDetails = {
@@ -2140,7 +2218,6 @@ import {
       facilities: ["Basic Seating", "Standard AC", "Basic Support"]
     }
   ];
-  
-  export const phoneNumber = "7668570551";
+
+export const phoneNumber = "7668570551";
 export const emailAddress = "cabstriveni@gmail.com";
-  
