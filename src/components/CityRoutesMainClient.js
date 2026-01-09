@@ -308,7 +308,7 @@ export default function CityRoutesMainClient({ data }) {
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-[#FACF2D] px-4 py-2 rounded-full mb-6">
                   <Sparkles className="w-4 h-4 text-black" />
-                  <span className="text-black font-bold text-sm">INDIA'S MOST TRUSTED TAXI SERVICE</span>
+                  <span className="text-black font-bold text-sm">INDIA&apos;S MOST TRUSTED TAXI SERVICE</span>
                 </div>
 
                 {/* Main Title */}
