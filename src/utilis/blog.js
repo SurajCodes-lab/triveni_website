@@ -1403,7 +1403,7 @@ export const travelBlogPosts = [
       <ul>
         <li><strong>WhatsApp:</strong> <a href="https://wa.me/917668570551" target="_blank" rel="noopener" class="text-blue-600 hover:underline">+91 76685 70551</a></li>
         <li><strong>Call:</strong> +91 76685 70551</li>
-        <li><strong>Email:</strong> info@trivenicabs.in</li>
+        <li><strong>Email:</strong> cabstriveni@gmail.com</li>
       </ul>
       <p>We respond within minutes! 💬</p>
 

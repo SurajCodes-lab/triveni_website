@@ -267,7 +267,7 @@ export default function CityNamePage({ params }) {
         "@type": "LocalBusiness",
         "name": "Triveni Cabs",
         "telephone": "+91-7668570551",
-        "email": "info@trivenicabs.in",
+        "email": "cabstriveni@gmail.com",
         "url": "https://www.trivenicabs.in",
         "address": {
           "@type": "PostalAddress",
@@ -475,7 +475,7 @@ export default function CityNamePage({ params }) {
       "description": `Professional taxi service in ${formattedCityName}. Outstation trips, local tours, airport transfers, and special occasions. Verified drivers, AC vehicles, GPS tracking, 24/7 availability.`,
       "url": `https://www.trivenicabs.in/${cityName}`,
       "telephone": "+91-7668570551",
-      "email": "info@trivenicabs.in",
+      "email": "cabstriveni@gmail.com",
       "priceRange": "₹₹",
       "address": {
         "@type": "PostalAddress",

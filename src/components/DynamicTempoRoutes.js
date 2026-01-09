@@ -75,7 +75,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           "@type": "LocalBusiness",
           "name": "Triveni Cabs",
           "telephone": "+917668570551",
-          "email": "info@trivenicabs.in",
+          "email": "cabstriveni@gmail.com",
           "url": "https://www.trivenicabs.in",
           "image": "https://www.trivenicabs.in/images/logo.webp",
           "priceRange": "₹₹",

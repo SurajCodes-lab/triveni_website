@@ -121,7 +121,7 @@ export default function BusRoutesPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "email": "info@trivenicabs.in",
+      "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",

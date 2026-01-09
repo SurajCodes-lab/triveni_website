@@ -681,9 +681,9 @@ export default function SightseeingDetailClient({ tour }) {
                       </svg>
                       <span className="font-semibold">WhatsApp Us</span>
                     </a>
-                    <a href="mailto:info@trivenicabs.in" className="flex items-center gap-3 p-3 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
+                    <a href="mailto:cabstriveni@gmail.com" className="flex items-center gap-3 p-3 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
                       <EnvelopeIcon className="w-5 h-5" />
-                      <span className="font-semibold">info@trivenicabs.in</span>
+                      <span className="font-semibold">cabstriveni@gmail.com</span>
                     </a>
                   </div>
                 </div>

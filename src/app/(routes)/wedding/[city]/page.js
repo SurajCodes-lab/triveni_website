@@ -82,7 +82,7 @@ export default function CityWeddingPage({ params }) {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "email": "info@trivenicabs.in",
+      "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
@@ -269,7 +269,7 @@ export default function CityWeddingPage({ params }) {
     "name": `Triveni Cabs - ${city.name} Wedding Car Rental`,
     "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
     "telephone": "+91-7668570551",
-    "email": "info@trivenicabs.in",
+    "email": "cabstriveni@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": city.name,

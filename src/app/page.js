@@ -3,7 +3,7 @@ import { phoneNumber } from "@/utilis/data";
 
 // Company info - hardcoded since not exported from data.js
 const companyName = "Triveni Cabs";
-const companyEmail = "info@trivenicabs.in";
+const companyEmail = "cabstriveni@gmail.com";
 const companyAddress = "New Delhi";
 const companyCity = "Delhi";
 const companyState = "Delhi";

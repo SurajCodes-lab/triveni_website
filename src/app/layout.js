@@ -144,7 +144,7 @@ export default function RootLayout({ children }) {
               "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
               "url": "https://www.trivenicabs.in",
               "telephone": "+91-7668570551",
-              "email": "info@trivenicabs.in",
+              "email": "cabstriveni@gmail.com",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",

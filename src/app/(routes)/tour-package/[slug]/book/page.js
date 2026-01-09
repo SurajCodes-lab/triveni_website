@@ -263,7 +263,7 @@ export default function BookingPage({ params }) {
         "name": "Triveni Cabs",
         "url": "https://www.trivenicabs.in",
         "telephone": "7668570551",
-        "email": "info@trivenicabs.in"
+        "email": "cabstriveni@gmail.com"
       },
       "offers": {
         "@type": "Offer",
