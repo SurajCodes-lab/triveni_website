@@ -2878,11 +2878,11 @@ export const sightseeingTours = {
       category: "Heritage & Culture - Multi-City Circuit",
       heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
-        "/images/sightseeing/taj_mahal_golden_triangle.jpg",
-        "/images/sightseeing/amber_fort_jaipur.jpg",
-        "/images/sightseeing/red_fort.jpg",
-        "/images/sightseeing/fatehpur_sikri.jpg",
-        "/images/sightseeing/hawa_mahal_golden_triangle.jpg"
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Jaipur/amber_fort.jpg",
+        "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Jaipur/city_palace.jpg"
       ],
       tips: [
         "Book hotels in advance near main attractions for convenience",
@@ -3132,12 +3132,12 @@ export const sightseeingTours = {
       category: "Heritage & Culture - Multi-City Circuit",
       heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
-        "/images/sightseeing/taj_mahal_sunrise.jpg",
-        "/images/sightseeing/amber_fort_elephant.jpg",
-        "/images/sightseeing/fatehpur_sikri_buland_darwaza.jpg",
-        "/images/sightseeing/mehtab_bagh_taj_sunset.jpg",
-        "/images/sightseeing/Jal_Mahal.jpg",
-        "/images/sightseeing/jaipur_city_palace.jpg"
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Jaipur/amber_fort.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Jaipur/Jal_Mahal.jpg",
+        "/images/sightseeing/Jaipur/city_palace.jpg"
       ],
       tips: [
         "4-day tour allows for more relaxed exploration - recommended over 3-day",
@@ -3453,11 +3453,11 @@ export const sightseeingTours = {
       category: "Heritage, Culture & Premium Experience - Multi-City Circuit",
       heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
-        "/images/sightseeing/taj_mahal_multiple_views.jpg",
-        "/images/sightseeing/jaipur_forts_collection.jpg",
-        "/images/sightseeing/vrindavan_temples.jpg",
-        "/images/sightseeing/abhaneri_stepwell.jpg",
-        "/images/sightseeing/cultural_performance_rajasthan.jpg"
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
+        "/images/sightseeing/Jaipur/jantar_mantar.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg",
+        "/images/sightseeing/Neemrana/Baori_Step_Well.jpg",
+        "/images/sightseeing/Jaipur/Johari_bazar.jpg"
       ],
       tips: [
         "5-day tour is THE best way to experience Golden Triangle - highly recommended",
@@ -5825,10 +5825,10 @@ export const sightseeingTours = {
       category: "Heritage & Culture",
       heroImage: "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
       images: [
-        "/images/sightseeing/buland_darwaza.jpg",
-        "/images/sightseeing/panch_mahal.jpg",
-        "/images/sightseeing/salim_chishti_tomb.jpg",
-        "/images/sightseeing/jodha_bai_palace.jpg"
+        "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg"
       ],
       tips: [
         "Wear comfortable shoes - lots of walking involved",
@@ -6050,10 +6050,10 @@ export const sightseeingTours = {
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
       images: [
-        "/images/sightseeing/krishna_janmabhoomi.jpg",
-        "/images/sightseeing/banke_bihari_temple.jpg",
-        "/images/sightseeing/prem_mandir.jpg",
-        "/images/sightseeing/vishram_ghat.jpg"
+        "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Yamuna_River_Ghat.jpg"
       ],
       tips: [
         "Dress modestly - no shorts or sleeveless in temples",
@@ -6819,10 +6819,8 @@ export const sightseeingTours = {
       category: "Spiritual & Culture",
       heroImage: "/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg",
       images: [
-        "/images/sightseeing/dalai_lama_temple.jpg",
-        "/images/sightseeing/mcleod_ganj.jpg",
-        "/images/sightseeing/bhagsunag_waterfall.jpg",
-        "/images/sightseeing/namgyal_monastery.jpg"
+        "/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg",
+        "/images/sightseeing/Dharamshala/Craignano Nature Park himachal pradesh.jpg"
       ],
       tips: [
         "Respect Tibetan culture and Buddhism - remove shoes at temples",
@@ -7044,10 +7042,7 @@ export const sightseeingTours = {
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/Dalhousie/dalhousie_hero_section.jpg",
       images: [
-        "/images/sightseeing/khajjiar_meadow.jpg",
-        "/images/sightseeing/dalhousie_st_johns.jpg",
-        "/images/sightseeing/panchpula_waterfall.jpg",
-        "/images/sightseeing/dainkund_peak.jpg"
+        "/images/sightseeing/Dalhousie/dalhousie_hero_section.jpg"
       ],
       tips: [
         "Khajjiar is 22 km from Dalhousie - keep time for travel",
@@ -7318,10 +7313,7 @@ export const sightseeingTours = {
       category: "Adventure & Backpacking",
       heroImage: "/images/sightseeing/Kasol/Kasol_hero_section.jpg",
       images: [
-        "/images/sightseeing/kasol_village.jpg",
-        "/images/sightseeing/manikaran_sahib.jpg",
-        "/images/sightseeing/parvati_river.jpg",
-        "/images/sightseeing/chalal_trek.jpg"
+        "/images/sightseeing/Kasol/Kasol_hero_section.jpg"
       ],
       tips: [
         "Kasol is cash-only for most places - carry enough cash",
@@ -10418,8 +10410,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (pleasant weather), September-November (autumn), December-February (winter/snow)",
       difficulty: "Easy",
       category: "Hill Station & Nature",
-      heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mussoorie/Kempty_Falls.jpg",
+        "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
+        "/images/sightseeing/Mussoorie/Mall_road.jpg",
+        "/images/sightseeing/Mussoorie/company_garden.jpg"
+      ],
       tips: [
         "Start very early (6 AM) to maximize sightseeing time",
         "Carry warm clothes as Mussoorie is cooler than Haridwar",
@@ -10684,8 +10681,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June (pleasant weather, flowers blooming), September-November (clear skies, autumn colors), December-February (winter, possible snowfall)",
       difficulty: "Easy to Moderate (Naina Peak trek is moderate)",
       category: "Spiritual & Hill Station",
-      heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Nainital/Naini_Lake.jpg",
+        "/images/sightseeing/Nainital/Snow_View_Point.jpg",
+        "/images/sightseeing/Nainital/Mall_Road_Nainital.jpg",
+        "/images/sightseeing/Nainital/Naina_devi_temple.jpg"
+      ],
       tips: [
         "Book Nainital hotels in advance during peak season (April-June)",
         "Carry warm clothes even in summer, nights are cold",
@@ -11464,8 +11466,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June, September-November",
       difficulty: "Easy",
       category: "Hill Station",
-      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
+        "/images/sightseeing/Mussoorie/Kempty_Falls.jpg",
+        "/images/sightseeing/Mussoorie/Mall_road.jpg",
+        "/images/sightseeing/Mussoorie/Lal_tibba.jpg"
+      ],
       tips: [
         "Mussoorie can be crowded on weekends",
         "Carry light jacket even in summer",
@@ -11716,8 +11723,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June, September-November",
       difficulty: "Easy",
       category: "Hill Station",
-      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mussoorie/Kempty_Falls.jpg",
+        "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
+        "/images/sightseeing/Mussoorie/Mall_road.jpg",
+        "/images/sightseeing/Mussoorie/Lal_tibba.jpg",
+        "/images/sightseeing/Mussoorie/company_garden.jpg"
+      ],
       tips: [
         "Start early to avoid crowds at Kempty Falls",
         "Carry light jacket even in summer months",
