@@ -4,6 +4,7 @@ import { cities } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
 import { tempoRoutes } from "@/utilis/tempoTravellerData";
+import { chardhamRoutes } from "@/utilis/chardhamData";
 import { blogPosts } from "@/utilis/blog";
 import { busRoutes } from "@/utilis/busRoutesData";
 import { getAllTours } from "@/utilis/sightseeingData";
@@ -221,20 +222,20 @@ export default function sitemap() {
       priority: 0.75,
     },
 
-    // Religious Tours Main Page - CATEGORY PAGE
+    // Religious Tours Main Page - HIGH PRIORITY CATEGORY PAGE
     {
       url: `${baseUrl}/religious-tours`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
 
-    // Tempo Traveller Main Page - CATEGORY PAGE
+    // Tempo Traveller Main Page - HIGH PRIORITY CATEGORY PAGE
     {
       url: `${baseUrl}/tempo-traveller`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.75,
+      priority: 0.85,
     },
 
     // Policy Pages
@@ -305,14 +306,14 @@ export default function sitemap() {
     });
   });
 
-  // Add Religious Tour Detail Pages (Dynamic) - HIGH PRIORITY CONTENT
+  // Add Religious Tour Detail Pages (Dynamic) - HIGHEST PRIORITY PILGRIMAGE CONTENT
   const religiousTourSlugs = getAllTourSlugs();
   religiousTourSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/religious-tours/${slug}`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
+      changeFrequency: 'weekly',
+      priority: 0.95,
     });
   });
 
@@ -324,6 +325,16 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
+    });
+  });
+
+  // Add Chardham Yatra Routes - HIGHEST PRIORITY PILGRIMAGE CONTENT
+  chardhamRoutes.forEach(route => {
+    urls.push({
+      url: `${baseUrl}/tempo-traveller/${route.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
     });
   });
 

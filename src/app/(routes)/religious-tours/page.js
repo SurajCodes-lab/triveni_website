@@ -1,72 +1,62 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { religiousTours } from '@/utilis/religiousTourData';
-import { Calendar, MapPin, Star, ChevronRight, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, Star, ChevronRight, Phone, Shield, Clock, Users, Heart } from 'lucide-react';
 
 export const metadata = {
-  title: 'Find Inner Peace: Divine Pilgrimage Tours | Char Dham Yatra & More | Triveni Cabs',
-  description: 'Sacred journeys that touch your soul! Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more. Comfortable AC transport, experienced drivers, affordable packages. From temple darshan to spiritual retreats - your blessed journey begins here. Customized pilgrimage tours across India!',
-  keywords: 'char dham yatra, religious tour packages, pilgrimage tours India, vaishno devi tour, golden temple tour, tirupati tour, temple tour packages, spiritual yatra, hindu pilgrimage, religious travel, sacred destinations India, dharmic tourism, spiritual journey, temple darshan, pilgrimage cab service, do dham yatra, kedarnath badrinath tour, haridwar rishikesh tour, mathura vrindavan tour',
+  title: 'Pilgrimage Tours India | Char Dham, Vaishno Devi Packages',
+  description: 'Book pilgrimage tours with AC transport. Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati packages. Expert guides, comfortable travel. Call 7668570551.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/religious-tours',
-    languages: {
-      'en-IN': '/religious-tours',
-      'hi-IN': '/religious-tours',
-    },
   },
   openGraph: {
-    title: 'Find Inner Peace: Divine Pilgrimage & Religious Tours | Triveni Cabs',
-    description: 'Char Dham, Vaishno Devi, Golden Temple - Blessed journeys with comfort & devotion. Expert-guided temple tours across India.',
+    title: 'Pilgrimage Tours India | Char Dham, Vaishno Devi Packages',
+    description: 'Book pilgrimage tours with AC transport. Expert guides, comfortable travel across India.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/religious-tours',
     siteName: 'Triveni Cabs',
     images: [
       {
-        url: '/images/religious/chardham-hero.jpg',
+        url: '/images/sightseeing/Char_Dham/Chardham_hero_section.jpg',
         width: 1200,
         height: 630,
-        alt: 'Divine Pilgrimage Tours - Char Dham Yatra by Triveni Cabs'
+        alt: 'Pilgrimage Tours India - Char Dham Yatra'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Divine Pilgrimage Tours | Sacred Journeys | Triveni Cabs',
-    description: 'Expert-guided temple tours, comfortable travel, affordable packages. Your spiritual journey awaits!',
-    creator: '@TriveniCabs',
-    site: '@TriveniCabs',
-    images: ['/images/religious/chardham-hero.jpg']
+    title: 'Pilgrimage Tours India | Char Dham, Vaishno Devi',
+    description: 'Expert-guided temple tours with AC transport. Call 7668570551.',
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ['/images/sightseeing/Char_Dham/Chardham_hero_section.jpg']
   },
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
-  category: 'Religious Tourism',
 };
 
 export default function ReligiousToursPage() {
-  // Religious Tours Service Schema
+  // Schema markup
   const religiousToursSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Religious Tours and Pilgrimage Services",
     "name": "Divine Pilgrimage Tours India",
-    "description": "Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more. Comfortable AC transport, experienced drivers, affordable pilgrimage packages across India.",
+    "description": "Expert-guided Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati & more.",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
@@ -74,238 +64,264 @@ export default function ReligiousToursPage() {
       "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in"
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "India"
-    },
+    "areaServed": { "@type": "Country", "name": "India" },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
       "reviewCount": "650",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Religious Tour Packages",
-      "itemListElement": religiousTours.map(tour => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "TouristTrip",
-          "name": tour.title,
-          "description": tour.description,
-          "touristType": ["Pilgrims", "Families", "Groups", "Solo Travelers"]
-        },
-        "url": `https://www.trivenicabs.in/religious-tours/${tour.slug}`
-      }))
-    },
-    "availableChannel": {
-      "@type": "ServiceChannel",
-      "serviceUrl": "https://www.trivenicabs.in/religious-tours",
-      "servicePhone": "+91-7668570551",
-      "availableLanguage": ["English", "Hindi"]
+      "bestRating": "5"
     }
   };
 
-  // Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.trivenicabs.in"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Religious Tours",
-        "item": "https://www.trivenicabs.in/religious-tours"
-      }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+      { "@type": "ListItem", "position": 2, "name": "Religious Tours", "item": "https://www.trivenicabs.in/religious-tours" }
     ]
   };
 
-  // FAQ Schema
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What pilgrimage tours do you offer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We offer comprehensive pilgrimage tours including Char Dham Yatra (Kedarnath, Badrinath, Gangotri, Yamunotri), Vaishno Devi, Golden Temple Amritsar, Tirupati Balaji, Haridwar-Rishikesh, Mathura-Vrindavan, and many more sacred destinations across India."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are the tours guided?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, all our religious tours come with expert guides who are knowledgeable about the spiritual significance, rituals, and history of each pilgrimage site. Guides are available in multiple languages including English and Hindi."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is included in the pilgrimage packages?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Our packages include comfortable AC transportation, professional drivers, experienced guides, assistance with temple darshan, accommodation recommendations, and complete itinerary planning. Meals and accommodation can be customized based on your preferences."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I customize my pilgrimage tour?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely! We offer fully customizable pilgrimage tours. You can choose your destinations, duration, accommodation level, and add special requests for pujas or rituals. Contact us to create your personalized spiritual journey."
-        }
-      }
-    ]
-  };
+  const trustFeatures = [
+    { icon: Shield, title: "Safe Travel", desc: "Verified drivers & sanitized vehicles" },
+    { icon: Clock, title: "24/7 Support", desc: "Round-the-clock assistance" },
+    { icon: Users, title: "3000+ Pilgrims", desc: "Happy travelers blessed" },
+    { icon: Heart, title: "Hassle-free", desc: "Complete darshan assistance" }
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(religiousToursSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-purple-50 to-blue-50">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden" aria-label="Religious Tours Hero">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-100/50 to-purple-100/50" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(religiousToursSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-xl border border-white/50 rounded-full px-6 py-3 mb-6 shadow-lg">
-            <Sparkles className="w-5 h-5 text-orange-600" />
-            <span className="text-orange-800 font-semibold">Spiritual Journeys</span>
+      <div className="min-h-screen bg-stone-50">
+        {/* Hero Section with Full Background */}
+        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/sightseeing/Char_Dham/Chardham_hero_section.jpg"
+              alt="Sacred Pilgrimage Tours"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-stone-900/90" />
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-purple-600 to-yellow-600 bg-clip-text text-transparent">
-            Sacred Journeys Begin Here
-          </h1>
+          {/* Decorative Elements */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
 
-          <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Discover inner peace through blessed pilgrimage tours. Experience divine darshan with comfort, devotion & expert guidance to India&apos;s holiest destinations.
-          </p>
-        </div>
-      </section>
+          {/* Hero Content */}
+          <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-md px-6 py-2 rounded-full mb-8 border border-orange-400/30">
+              <span className="text-orange-200 font-semibold text-sm tracking-wider uppercase">Divine Pilgrimage Tours 2026</span>
+            </div>
 
-      {/* Tours Grid */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {religiousTours.map((tour) => (
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Begin Your <span className="text-transparent bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text">Sacred Journey</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
+              Experience divine blessings with comfortable travel. Char Dham, Vaishno Devi, Kashi & more holy destinations.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                key={tour.id}
-                href={`/religious-tours/${tour.slug}`}
-                className="group"
+                href="tel:+917668570551"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-orange-500/30 hover:scale-105 transition-all"
               >
-                <div className="bg-white/40 backdrop-blur-2xl border border-white/50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                  {/* Image */}
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={tour.images.hero}
-                      alt={tour.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <Phone className="w-5 h-5" />
+                Call Now: 7668570551
+              </Link>
+              <Link
+                href="https://wa.me/917668570551?text=I want to book a pilgrimage tour"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold text-lg border border-white/30 hover:bg-white/20 transition-all"
+              >
+                WhatsApp Inquiry
+              </Link>
+            </div>
+          </div>
 
-                    {/* Badges */}
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      {tour.featured && (
-                        <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                          Featured
-                        </span>
-                      )}
-                      {tour.popular && (
-                        <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-white" />
-                          Popular
-                        </span>
-                      )}
+          {/* Stats Bar */}
+          <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-xl border-t border-white/10">
+            <div className="max-w-6xl mx-auto px-4 py-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {trustFeatures.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-3 text-white/90">
+                    <div className="p-2 bg-orange-500/20 rounded-lg">
+                      <feature.icon className="w-5 h-5 text-orange-400" />
                     </div>
-
-                    {/* Title Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-2xl font-bold text-white mb-1">
-                        {tour.title.split('–')[0].trim()}
-                      </h3>
-                      <p className="text-orange-200 text-sm">{tour.subtitle}</p>
+                    <div>
+                      <div className="font-bold text-sm">{feature.title}</div>
+                      <div className="text-xs text-gray-400">{feature.desc}</div>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <p className="text-gray-700 mb-4 line-clamp-2">
-                      {tour.description}
-                    </p>
+        {/* Section Header */}
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
+              Popular Pilgrimage Packages
+            </h2>
+            <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+              Choose from our carefully curated spiritual journeys with AC transport, experienced drivers, and complete darshan assistance
+            </p>
+          </div>
+        </section>
 
-                    {/* Info */}
-                    <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{tour.duration}</span>
+        {/* Tours Grid - Premium Cards */}
+        <section className="pb-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {religiousTours.map((tour) => (
+                <Link
+                  key={tour.id}
+                  href={`/religious-tours/${tour.slug}`}
+                  className="group block"
+                >
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-stone-100 hover:border-orange-200 h-full flex flex-col">
+                    {/* Image Container */}
+                    <div className="relative h-56 overflow-hidden">
+                      <Image
+                        src={tour.images.hero}
+                        alt={tour.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                      {/* Badges */}
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        {tour.featured && (
+                          <span className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            Featured
+                          </span>
+                        )}
+                        {tour.popular && (
+                          <span className="bg-white/90 text-orange-600 px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                            <Star className="w-3 h-3 fill-orange-500" />
+                            Popular
+                          </span>
+                        )}
                       </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>{tour.highlights.length} Sites</span>
+
+                      {/* Duration Badge */}
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          {tour.duration}
+                        </span>
+                      </div>
+
+                      {/* Title on Image */}
+                      <div className="absolute bottom-0 left-0 right-0 p-5">
+                        <div className="text-orange-300 text-sm font-medium mb-1">{tour.subtitle}</div>
+                        <h3 className="text-xl font-bold text-white leading-tight">
+                          {tour.title.split('–')[0].trim()}
+                        </h3>
                       </div>
                     </div>
 
-                    {/* Price & CTA */}
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-sm text-gray-600">Starting from</div>
-                        <div className="text-2xl font-bold text-orange-600">
-                          {tour.pricing.starting}
+                    {/* Content */}
+                    <div className="p-5 flex-1 flex flex-col">
+                      <p className="text-stone-600 text-sm mb-4 line-clamp-2 flex-1">
+                        {tour.description}
+                      </p>
+
+                      {/* Highlights */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {tour.highlights.slice(0, 3).map((highlight, idx) => (
+                          <span key={idx} className="text-xs bg-orange-50 text-orange-700 px-2 py-1 rounded-full">
+                            {highlight.name}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Price & CTA */}
+                      <div className="flex items-center justify-between pt-4 border-t border-stone-100">
+                        <div>
+                          <div className="text-xs text-stone-500 uppercase tracking-wider">Starting from</div>
+                          <div className="text-2xl font-bold text-orange-600">
+                            {tour.pricing.starting}
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-full font-semibold text-sm flex items-center gap-1.5 group-hover:shadow-lg group-hover:shadow-orange-500/25 transition-all">
+                          Book Now
+                          <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
-                      <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 group-hover:shadow-lg transition-shadow">
-                        View Details
-                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white/40 backdrop-blur-2xl border border-white/50 rounded-3xl p-12 shadow-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        {/* Why Choose Us Section */}
+        <section className="py-20 px-4 bg-gradient-to-br from-orange-600 to-amber-600">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Why Travel With Triveni Cabs?
+              </h2>
+              <p className="text-orange-100 text-lg max-w-2xl mx-auto">
+                Your comfort and spiritual experience is our priority
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: "🚗", title: "AC Vehicles", desc: "Clean, sanitized & comfortable transport" },
+                { icon: "👨‍✈️", title: "Expert Drivers", desc: "Experienced with pilgrimage routes" },
+                { icon: "💰", title: "Transparent Pricing", desc: "No hidden charges, all-inclusive" },
+                { icon: "🙏", title: "Darshan Assistance", desc: "Help with temple registration & VIP entry" }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all">
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-orange-100 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 px-4 bg-stone-900">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Need a Custom Pilgrimage Package?
             </h2>
-            <p className="text-gray-600 mb-8 text-lg">
-              Contact us to create a personalized spiritual journey tailored to your needs
+            <p className="text-stone-400 mb-8 text-lg">
+              Contact us to create a personalized spiritual journey for your family or group
             </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
-            >
-              Get in Touch
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="tel:+917668570551"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-all"
+              >
+                <Phone className="w-5 h-5" />
+                Call: +91 7668570551
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-stone-100 transition-all"
+              >
+                Send Inquiry
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </>
   );
 }

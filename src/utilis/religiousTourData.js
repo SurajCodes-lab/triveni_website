@@ -77,7 +77,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/packages/chardham.webp"
+      hero: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg"
     },
 
     pricing: {
@@ -196,7 +196,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/packages/haridwar-rishikesh.jpg"
+      hero: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg"
     },
 
     pricing: {
@@ -327,7 +327,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/packages/vaishno-devi.jpg"
+      hero: "/images/chardham/chardham-yatra-delhi-hero.png"
     },
 
     pricing: {
@@ -468,7 +468,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/packages/kashi-vishwanath.jpg"
+      hero: "/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg"
     },
 
     pricing: {
@@ -610,7 +610,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/packages/mathura-vrindavan.jpg"
+      hero: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png"
     },
 
     pricing: {

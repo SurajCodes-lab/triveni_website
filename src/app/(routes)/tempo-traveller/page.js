@@ -4,78 +4,23 @@ import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerDat
 import TempoMainClient from '@/components/TempoMainClient';
 
 export const metadata = {
-  title: 'Tempo Traveller on Rent 2026 | 12-26 Seater AC ₹23/km | Book Online India',
-  description: 'Book tempo traveller on rent across India. 12, 16, 17, 20, 26 seater AC tempo with driver. ₹23-27/km all-inclusive. Delhi to Manali, Shimla, Jaipur, Haridwar routes. Pushback seats, GPS tracking, 24/7 booking. Call 7668570551!',
-  keywords: [
-    // Primary Keywords
-    'tempo traveller on rent',
-    'tempo traveller hire',
-    'tempo traveller booking',
-    'tempo traveller rental India',
-    'book tempo traveller online',
-    // Seater Variations
-    '12 seater tempo traveller on rent',
-    '16 seater tempo traveller rental',
-    '17 seater tempo traveller hire',
-    '20 seater tempo traveller booking',
-    '26 seater maharaja tempo traveller',
-    // Feature Keywords
-    'AC tempo traveller on rent',
-    'luxury tempo traveller rental',
-    'tempo traveller with driver',
-    'tempo traveller with pushback seats',
-    'tempo traveller with music system',
-    // Route Keywords
-    'Delhi to Manali tempo traveller',
-    'Delhi to Shimla tempo traveller',
-    'Delhi to Jaipur tempo traveller',
-    'Delhi to Haridwar tempo traveller',
-    'Delhi to Rishikesh tempo traveller',
-    'Chandigarh to Manali tempo traveller',
-    'Delhi to Agra tempo traveller',
-    // Use Case Keywords
-    'tempo traveller for family trip',
-    'tempo traveller for wedding',
-    'tempo traveller for pilgrimage',
-    'tempo traveller for corporate tour',
-    'tempo traveller for group travel',
-    'tempo traveller for outstation',
-    // Chardham Keywords
-    'Chardham Yatra tempo traveller',
-    'Kedarnath tempo traveller',
-    'Badrinath tempo traveller',
-    'Do Dham Yatra tempo',
-    // Price Keywords
-    'tempo traveller price per km',
-    'tempo traveller rate',
-    'tempo traveller fare',
-    'cheap tempo traveller rental',
-    'best tempo traveller service',
-    // Local Keywords
-    'tempo traveller near me',
-    'tempo traveller Delhi NCR',
-    'tempo traveller Chandigarh',
-    'tempo traveller Jaipur',
-    // Hindi Transliterated
-    'tempo traveller kiraye par',
-    'tempo traveller booking kaise kare',
-    // Long-tail Keywords
-    'best tempo traveller for hill station',
-    'tempo traveller for Manali trip from Delhi',
-    'affordable tempo traveller rental India',
-    '17 seater AC tempo traveller Delhi',
-    'tempo traveller 2026 booking'
-  ].join(', '),
+  // Title under 60 chars per Google guidelines
+  title: 'Tempo Traveller on Rent | 12-26 Seater AC from ₹23/km',
+  // Description under 160 chars, unique and descriptive
+  description: 'Book tempo traveller on rent across India. 12-26 seater AC with driver. ₹23-27/km all-inclusive. Delhi, Manali, Shimla, Jaipur routes. Call 7668570551.',
+  authors: [{ name: 'Triveni Cabs' }],
+  creator: 'Triveni Cabs',
+  publisher: 'Triveni Cabs',
   applicationName: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/tempo-traveller',
   },
   openGraph: {
-    title: 'Tempo Traveller on Rent 2026 | 12-26 Seater AC ₹23/km | Book Online',
-    description: 'Book tempo traveller Delhi to Manali, Shimla, Jaipur & 100+ routes. ₹23-27/km all-inclusive. GPS tracking, professional drivers. Call 7668570551!',
+    title: 'Tempo Traveller on Rent | 12-26 Seater AC from ₹23/km',
+    description: 'Book tempo traveller for group travel. Delhi to Manali, Shimla, Jaipur. 100+ routes, professional drivers, GPS tracking.',
     url: 'https://www.trivenicabs.in/tempo-traveller',
-    siteName: 'Triveni Cabs - Tempo Traveller Rental Service',
+    siteName: 'Triveni Cabs',
     type: 'website',
     locale: 'en_IN',
     images: [
@@ -90,8 +35,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tempo Traveller on Rent 2026 | 12-26 Seater ₹23/km | Triveni Cabs',
-    description: 'Book tempo traveller across India. 100+ routes, professional drivers, GPS tracking, ₹23-27/km all-inclusive. Call 7668570551!',
+    title: 'Tempo Traveller on Rent | 12-26 Seater from ₹23/km',
+    description: 'Book tempo traveller across India. 100+ routes, professional drivers, GPS tracking. Call 7668570551.',
     site: '@trivenicabs',
     images: ['/images/tempo_hero_section.jpg'],
   },

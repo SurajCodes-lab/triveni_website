@@ -10,9 +10,10 @@ export async function generateStaticParams() {
   }));
 }
 
-// Generate metadata for SEO
+// Generate metadata for SEO - per Google guidelines
 export async function generateMetadata({ params }) {
-  const tour = getTourBySlug(params.slug);
+  const resolvedParams = await params;
+  const tour = getTourBySlug(resolvedParams.slug);
 
   if (!tour) {
     return {
@@ -20,20 +21,26 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Extract tour name for conversion-focused titles
+  // Extract tour name for concise titles (under 60 chars per Google guidelines)
   const tourName = tour.title.split('–')[0].trim();
-  const startingPrice = tour.pricing?.starting || 'Contact for pricing';
+  const startingPrice = tour.pricing?.starting || 'Contact';
+
+  // Concise title under 60 characters
+  const pageTitle = `${tourName} Package | ${startingPrice} | Book Now`;
+
+  // Description under 160 characters
+  const pageDescription = `Book ${tourName} package. ${tour.duration} with AC transport, expert guides. Comfortable darshan experience. Call 7668570551.`;
 
   return {
-    title: `Seek Blessings & Inner Peace! ${tourName} Tour Package | ${startingPrice} | Book Your Divine Journey`,
-    description: `🙏 Experience spiritual awakening with ${tourName}! ${tour.description} Expert guides, comfortable AC transport, hassle-free darshan. 3000+ pilgrims blessed. Customize your sacred journey. ${tour.duration} package with accommodation, meals & sightseeing. Book now for divine blessings & peaceful travel!`,
-    keywords: tour.keywords.join(', '),
+    title: pageTitle,
+    description: pageDescription,
+    authors: [{ name: 'Triveni Cabs' }],
     alternates: {
-      canonical: `https://www.trivenicabs.in/religious-tours/${params.slug}`
+      canonical: `https://www.trivenicabs.in/religious-tours/${resolvedParams.slug}`
     },
     openGraph: {
-      title: `Find Inner Peace: ${tourName} Tour Package | Triveni Cabs`,
-      description: `🙏 ${tour.duration} spiritual journey | Expert guides • Comfortable travel • Hassle-free darshan. 3000+ blessed pilgrims. Book your divine journey today!`,
+      title: `${tourName} | ${tour.duration} Tour Package`,
+      description: pageDescription,
       type: 'website',
       locale: 'en_IN',
       siteName: 'Triveni Cabs',
@@ -42,24 +49,23 @@ export async function generateMetadata({ params }) {
           url: tour.images.hero,
           width: 1200,
           height: 630,
-          alt: `${tourName} pilgrimage tour package with Triveni Cabs`,
+          alt: `${tourName} pilgrimage tour`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${tourName} Divine Tour | ${startingPrice}`,
-      description: `🙏 Spiritual journey with comfort • Expert guidance • Hassle-free darshan. Book your blessed journey!`,
+      title: pageTitle,
+      description: `${tour.duration} pilgrimage package. Book now. Call 7668570551.`,
+      site: '@trivenicabs',
       images: [tour.images.hero],
     },
     robots: {
       index: true,
       follow: true,
-      nocache: false,
       googleBot: {
         index: true,
         follow: true,
-        'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
@@ -67,8 +73,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function ReligiousTourPage({ params }) {
-  const tour = getTourBySlug(params.slug);
+export default async function ReligiousTourPage({ params }) {
+  const resolvedParams = await params;
+  const tour = getTourBySlug(resolvedParams.slug);
 
   if (!tour) {
     notFound();
@@ -125,7 +132,7 @@ export default function ReligiousTourPage({ params }) {
         "@type": "ListItem",
         "position": 3,
         "name": tour.title,
-        "item": `https://www.trivenicabs.in/religious-tours/${params.slug}`
+        "item": `https://www.trivenicabs.in/religious-tours/${resolvedParams.slug}`
       }
     ]
   };

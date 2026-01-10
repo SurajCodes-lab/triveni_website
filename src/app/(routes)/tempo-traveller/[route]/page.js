@@ -79,32 +79,60 @@ export async function generateMetadata({ params }) {
   // Check if it's a Chardham page
   if (isChardhamSlug(route)) {
     const chardhamData = getChardhamBySlug(route);
+    const startingPrice = chardhamData.packages?.[0]?.price || '₹70,000';
+
+    // Concise title (under 60 chars) per Google guidelines
+    const pageTitle = `${chardhamData.origin} to Chardham Yatra Tempo | ${startingPrice}`;
+
+    // Meta description under 160 chars, unique and descriptive
+    const pageDescription = `Book ${chardhamData.origin} to Chardham Yatra by tempo traveller. ${chardhamData.duration} package covering Kedarnath, Badrinath, Gangotri, Yamunotri. AC vehicles, experienced drivers.`;
+
     return {
-      title: chardhamData.seoTitle,
-      description: chardhamData.seoDesc,
+      title: pageTitle,
+      description: pageDescription,
       applicationName: 'Triveni Cabs',
+      authors: [{ name: 'Triveni Cabs' }],
+      creator: 'Triveni Cabs',
+      publisher: 'Triveni Cabs',
       metadataBase: new URL('https://www.trivenicabs.in'),
       alternates: {
         canonical: `https://www.trivenicabs.in/tempo-traveller/${route}`,
       },
       openGraph: {
-        title: chardhamData.seoTitle,
-        description: chardhamData.seoDesc,
+        title: `${chardhamData.title} | Book Online`,
+        description: pageDescription,
         url: `https://www.trivenicabs.in/tempo-traveller/${route}`,
         type: 'website',
         locale: 'en_IN',
-        siteName: 'Triveni Cabs - Chardham Yatra',
+        siteName: 'Triveni Cabs',
         images: [
           {
             url: chardhamData.images?.hero || '/images/tempo_hero_section.jpg',
             width: 1200,
             height: 630,
-            alt: chardhamData.title,
+            alt: `${chardhamData.title} - Tempo Traveller Service`,
             type: 'image/jpeg',
           },
         ],
       },
-      category: 'Travel & Spiritual',
+      twitter: {
+        card: 'summary_large_image',
+        title: pageTitle,
+        description: `${chardhamData.duration} pilgrimage package. AC tempo with driver. Call +91-7668570551`,
+        site: '@trivenicabs',
+        images: [chardhamData.images?.hero || '/images/tempo_hero_section.jpg'],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
+      category: 'Travel',
     };
   }
 
@@ -251,7 +279,100 @@ export default async function TempoTravellerRoutePage({ params }) {
   // Check if it's a Chardham page
   if (isChardhamSlug(route)) {
     const chardhamData = getChardhamBySlug(route);
-    return <ChardhamTempoClient data={chardhamData} />;
+    const startingPrice = chardhamData.packages?.[0]?.price || '₹70,000';
+
+    // Service schema for pilgrimage transport - per Google guidelines
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Pilgrimage Transport Service",
+      "name": `${chardhamData.title} by Tempo Traveller`,
+      "description": chardhamData.description,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Triveni Cabs",
+        "telephone": "+91-7668570551",
+        "email": "cabstriveni@gmail.com",
+        "url": "https://www.trivenicabs.in",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Delhi",
+          "addressRegion": "Delhi",
+          "addressCountry": "IN"
+        },
+        "priceRange": "₹₹"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Uttarakhand"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": startingPrice.replace('₹', '').replace(',', ''),
+        "priceCurrency": "INR",
+        "offerCount": chardhamData.packages?.length || 5
+      }
+    };
+
+    // BreadcrumbList schema
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.trivenicabs.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tempo Traveller",
+          "item": "https://www.trivenicabs.in/tempo-traveller"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": chardhamData.title,
+          "item": `https://www.trivenicabs.in/tempo-traveller/${route}`
+        }
+      ]
+    };
+
+    // FAQPage schema - only if FAQs exist (per Google guidelines)
+    const faqSchema = chardhamData.faqs && chardhamData.faqs.length > 0 ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": chardhamData.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    } : null;
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        {faqSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          />
+        )}
+        <ChardhamTempoClient data={chardhamData} />
+      </>
+    );
   }
 
   // Check if it's a city page

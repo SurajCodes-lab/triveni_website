@@ -285,138 +285,260 @@ export const travelBlogPosts = [
     // NEW: Primary CTA
     primaryCTA: {
       text: "Book Char Dham Yatra 2026",
-      url: "/sightseeing/char-dham-yatra",
+      url: "/religious-tours/char-dham-yatra",
       description: "Complete Char Dham pilgrimage package with comfortable transport and expert guidance",
       price: "Starting from ₹45,000"
     },
 
     content: `
-      <p>The Char Dham Yatra is one of the most sacred pilgrimages in Hinduism, taking devotees through four holy shrines nestled in the majestic Himalayas of Uttarakhand. This spiritual journey to Yamunotri, Gangotri, Kedarnath, and Badrinath promises divine blessings and breathtaking natural beauty.</p>
+      <p>The <strong>Char Dham Yatra</strong> is one of the most sacred pilgrimages in Hinduism, taking devotees through four holy shrines nestled in the majestic Himalayas of Uttarakhand. This spiritual journey to Yamunotri, Gangotri, Kedarnath, and Badrinath promises divine blessings and breathtaking natural beauty. Every Hindu aspires to complete this pilgrimage at least once in their lifetime, as it is believed to wash away all sins and lead the soul towards <em>Moksha</em> (salvation).</p>
 
-      <h2>The Four Sacred Shrines</h2>
+      <p>Planning to embark on this divine journey in 2026? <a href="/religious-tours/char-dham-yatra" class="text-orange-600 hover:underline font-semibold">Explore our complete Char Dham Yatra packages</a> with experienced drivers and comfortable vehicles designed for the challenging mountain terrain.</p>
+
+      <div class="my-6 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-xl font-bold mb-2 text-gray-800">Looking for Group Travel?</h3>
+        <p class="mb-3 text-gray-700">For families and groups, our <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">Delhi to Chardham Yatra by Tempo Traveller</a> is the most comfortable and economical option. 12-26 seater AC tempo with pushback seats, starting from ₹84,000.</p>
+        <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">View Tempo Traveller Packages →</a>
+      </div>
+
+      <h2>The Four Sacred Shrines of Char Dham</h2>
+      <p>The Char Dham circuit comprises four ancient temples, each dedicated to different deities and holding immense spiritual significance in Hindu mythology. Let's explore each sacred destination in detail:</p>
 
       <h3>1. Yamunotri - Source of River Yamuna</h3>
-      <p><strong>Altitude:</strong> 3,293 meters | <strong>Trek:</strong> 6 km from Janki Chatti</p>
-      <p>Dedicated to Goddess Yamuna, this temple marks the beginning of the Char Dham circuit. The natural hot springs at Janki Chatti are perfect for taking a holy dip.</p>
+      <p><strong>Altitude:</strong> 3,293 meters | <strong>Trek:</strong> 6 km from Janki Chatti | <strong>Deity:</strong> Goddess Yamuna</p>
+      <p>Yamunotri marks the <strong>first stop</strong> of the Char Dham circuit and is the source of the sacred River Yamuna. The temple is dedicated to Goddess Yamuna, the daughter of Sun God (Surya) and sister of Yama (God of Death). According to Hindu mythology, bathing in the Yamuna cleanses one of all sins.</p>
+      <p>The trek to Yamunotri is considered moderate difficulty. Pilgrims must trek 6 km from Janki Chatti through beautiful alpine meadows and dense forests. The natural hot water springs at <strong>Surya Kund</strong> (where devotees cook rice and potatoes as prasad) and <strong>Gauri Kund</strong> are major attractions.</p>
+      <p><strong>Darshan Timings:</strong> 6:00 AM to 8:00 PM (Summer), 7:00 AM to 6:00 PM (Winter)</p>
 
       <h3>2. Gangotri - Origin of River Ganga</h3>
-      <p><strong>Altitude:</strong> 3,100 meters | <strong>Accessible:</strong> By road</p>
-      <p>Where the holy Ganges descended to earth. The temple overlooks the roaring Bhagirathi River, offering a serene spiritual atmosphere.</p>
+      <p><strong>Altitude:</strong> 3,100 meters | <strong>Accessible:</strong> By road | <strong>Deity:</strong> Goddess Ganga</p>
+      <p>Gangotri is the <strong>second Dham</strong> and marks the spot where the holy River Ganga is believed to have descended to earth. The 18th-century temple, built by Gorkha General Amar Singh Thapa, stands majestically overlooking the roaring Bhagirathi River.</p>
+      <p>The spiritual atmosphere here is unparalleled. The sound of temple bells, the chanting of mantras, and the sight of the glacier-fed Bhagirathi create an ethereal experience. Pilgrims take a holy dip in the freezing waters, believed to purify the soul.</p>
+      <p>For the adventurous, a 19 km trek leads to <strong>Gaumukh</strong> - the actual source of the Ganges at the snout of the Gangotri Glacier. This trek requires special permits.</p>
+      <p><strong>Darshan Timings:</strong> 6:15 AM to 2:00 PM, 3:00 PM to 9:30 PM</p>
 
       <h3>3. Kedarnath - Abode of Lord Shiva</h3>
-      <p><strong>Altitude:</strong> 3,583 meters | <strong>Trek:</strong> 16 km from Gaurikund or helicopter available</p>
-      <p>One of the 12 Jyotirlingas, Kedarnath is the most challenging yet rewarding pilgrimage site. The temple stands magnificently against snow-capped peaks.</p>
+      <p><strong>Altitude:</strong> 3,583 meters | <strong>Trek:</strong> 18-20 km from Gaurikund | <strong>Deity:</strong> Lord Shiva (Jyotirlinga)</p>
+      <p>Kedarnath is the <strong>most challenging</strong> and spiritually significant of all four Dhams. Home to one of the 12 Jyotirlingas of Lord Shiva, the ancient stone temple has survived earthquakes, floods, and avalanches for over 1,200 years.</p>
+      <p>The trek from Gaurikund is demanding - 18-20 km uphill through rugged terrain. However, pilgrims can opt for ponies (₹3,000-4,000), palkis (₹8,000-12,000), or <strong>helicopter services</strong> (₹7,000-8,000 one way from Phata).</p>
+      <p>The temple architecture is remarkable - built with massive grey stone slabs without any cement or mortar. Behind the temple stands the majestic <strong>Kedarnath peak</strong> (6,940m), adding to the divine ambiance.</p>
+      <p><strong>Darshan Timings:</strong> 4:00 AM to 12:00 PM, 5:00 PM to 9:00 PM</p>
+
+      <p class="my-4"><a href="/religious-tours" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Explore All Pilgrimage Tours →</a></p>
 
       <h3>4. Badrinath - Temple of Lord Vishnu</h3>
-      <p><strong>Altitude:</strong> 3,300 meters | <strong>Accessible:</strong> By road</p>
-      <p>Set between Nar and Narayan mountain ranges, Badrinath is one of the four Dhams of India. The natural hot springs here are believed to have medicinal properties.</p>
+      <p><strong>Altitude:</strong> 3,300 meters | <strong>Accessible:</strong> By road | <strong>Deity:</strong> Lord Vishnu (Badri Narayan)</p>
+      <p>Badrinath is the <strong>final and most important Dham</strong>, dedicated to Lord Vishnu in his form as Badri Narayan. Set between the majestic Nar and Narayan mountain ranges, the colorful temple is one of the 108 Divya Desams (holy abodes of Lord Vishnu).</p>
+      <p>The temple was established by Adi Shankaracharya in the 8th century. The hot water spring <strong>Tapt Kund</strong> (where devotees bathe before darshan) has natural sulphur content with medicinal properties.</p>
+      <p>Don't miss visiting <strong>Mana Village</strong> - the last Indian village before the Tibet border. Here you can see the <strong>Vyas Gufa</strong> (cave where Ved Vyas composed Mahabharata), <strong>Bhim Pul</strong> (a natural stone bridge), and the source of <strong>Saraswati River</strong>.</p>
+      <p><strong>Darshan Timings:</strong> 4:30 AM to 1:00 PM, 4:00 PM to 9:00 PM</p>
 
       <h2>Char Dham Yatra 2026 Opening & Closing Dates</h2>
+      <p>The Char Dham temples open on auspicious dates determined by the Hindu calendar and close before winter sets in. Here are the expected dates for 2026:</p>
       <p><strong>Opening Dates (Tentative):</strong></p>
       <ul>
-        <li>Yamunotri: April 28, 2026</li>
-        <li>Gangotri: April 29, 2026</li>
-        <li>Kedarnath: May 2, 2026</li>
-        <li>Badrinath: May 3, 2026</li>
+        <li><strong>Yamunotri:</strong> April 28, 2026 (Akshaya Tritiya)</li>
+        <li><strong>Gangotri:</strong> April 29, 2026</li>
+        <li><strong>Kedarnath:</strong> May 2, 2026 (determined by priests)</li>
+        <li><strong>Badrinath:</strong> May 3, 2026</li>
       </ul>
-      <p><strong>Closing Dates:</strong> November (Diwali week)</p>
-      <p>*Dates may vary, always check official website before planning</p>
+      <p><strong>Closing Dates:</strong> November 2026 (around Diwali week, exact dates announced later)</p>
+      <p><em>*Dates may vary based on weather conditions and religious calendar. Always verify from official sources before planning.</em></p>
 
       <h2>Best Time for Char Dham Yatra</h2>
-      <p><strong>May to June:</strong> Most popular, pleasant weather, all routes open</p>
-      <p><strong>September to October:</strong> Post-monsoon, less crowded, clear mountain views</p>
-      <p><strong>Avoid:</strong> July-August (monsoon - risk of landslides)</p>
+      <p>Choosing the right time for your Char Dham pilgrimage is crucial for a safe and comfortable journey:</p>
+      <p><strong>May to June (Peak Season):</strong></p>
+      <ul>
+        <li>Most popular time - pleasant weather with clear skies</li>
+        <li>All routes fully operational after winter</li>
+        <li>Temperature: 15°C to 25°C during day</li>
+        <li>Expect crowds - book accommodation and <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline">tempo traveller</a> in advance</li>
+      </ul>
+      <p><strong>September to October (Post-Monsoon):</strong></p>
+      <ul>
+        <li>Less crowded, better for peaceful darshan</li>
+        <li>Crystal clear mountain views after monsoon</li>
+        <li>Lush green valleys and waterfalls</li>
+        <li>Temperature: 10°C to 20°C</li>
+      </ul>
+      <p><strong>Avoid July-August:</strong> Heavy monsoon rains cause landslides and road blockages. Many routes become dangerous during this period.</p>
 
-      <h2>Complete Char Dham Yatra Itinerary</h2>
+      <h2>Complete Char Dham Yatra Itinerary (10-12 Days)</h2>
+      <p>Here's a detailed day-by-day itinerary for your Char Dham pilgrimage. For groups, we recommend our <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">Delhi to Chardham Tempo Traveller package</a> which covers 1,200+ km comfortably:</p>
 
-      <h3>Day 1: Haridwar to Barkot (210 km)</h3>
-      <p>Start journey from Haridwar, visit Kempty Falls in Mussoorie, reach Barkot by evening</p>
+      <h3>Day 1: Delhi/Haridwar to Barkot (210 km | 7-8 hours)</h3>
+      <p>Start early from Delhi (or Haridwar if staying overnight). Drive through Rishikesh and ascend to Mussoorie. Stop at <strong>Kempty Falls</strong> for refreshments. Continue through scenic mountain roads to Barkot. Evening at leisure, overnight stay.</p>
 
-      <h3>Day 2: Barkot to Yamunotri to Barkot</h3>
-      <p>Drive to Janki Chatti, trek to Yamunotri, darshan, return to Barkot</p>
+      <h3>Day 2: Barkot to Yamunotri to Barkot (Trek Day)</h3>
+      <p>Early morning drive to <strong>Janki Chatti</strong> (45 km). Begin 6 km trek to Yamunotri (ponies/palkis available). Visit Surya Kund, take holy bath in Yamuna, darshan at Yamunotri Temple. Return trek and drive back to Barkot.</p>
 
-      <h3>Day 3: Barkot to Uttarkashi (100 km)</h3>
-      <p>Journey to Uttarkashi, visit Vishwanath Temple, night stay</p>
+      <h3>Day 3: Barkot to Uttarkashi (100 km | 4 hours)</h3>
+      <p>Scenic drive to Uttarkashi along the Bhagirathi River. Visit the ancient <strong>Kashi Vishwanath Temple</strong> and <strong>Shakti Temple</strong>. Evening at leisure to explore the town. Overnight stay.</p>
 
-      <h3>Day 4: Uttarkashi to Gangotri to Uttarkashi</h3>
-      <p>Drive to Gangotri, holy dip in Ganga, darshan, return</p>
+      <h3>Day 4: Uttarkashi to Gangotri to Uttarkashi (200 km round trip)</h3>
+      <p>Early morning drive to Gangotri through breathtaking landscapes. Visit Gangotri Temple, take holy dip in Bhagirathi. Optional visit to nearby attractions like Gauri Kund and Kedar Ganga Sangam. Return to Uttarkashi.</p>
 
-      <h3>Day 5: Uttarkashi to Guptkashi (220 km)</h3>
-      <p>Long drive through scenic routes, rest for Kedarnath trek</p>
+      <h3>Day 5: Uttarkashi to Guptkashi (220 km | 8-9 hours)</h3>
+      <p>Long but scenic drive through Tehri Dam, Srinagar, and Rudraprayag. Visit Vishwanath Temple at Guptkashi. Rest well for the challenging Kedarnath trek next day.</p>
 
-      <h3>Day 6: Guptkashi to Kedarnath</h3>
-      <p>Drive to Gaurikund, trek/helicopter to Kedarnath, darshan, overnight stay</p>
+      <h3>Day 6: Guptkashi to Kedarnath (Trek/Helicopter)</h3>
+      <p>Drive to Sonprayag (30 km), then to Gaurikund (5 km shared jeep). Begin 18-20 km trek (or take helicopter from Phata/Guptkashi). Reach Kedarnath by evening. Attend the mesmerizing evening <strong>Aarti</strong>. Overnight at Kedarnath.</p>
 
       <h3>Day 7: Kedarnath to Guptkashi</h3>
-      <p>Morning darshan, trek back to Gaurikund, drive to Guptkashi</p>
+      <p>Early morning darshan at Kedarnath Temple. Visit Adi Shankaracharya Samadhi behind the temple. Begin return trek to Gaurikund. Drive back to Guptkashi for overnight stay.</p>
 
-      <h3>Day 8: Guptkashi to Badrinath (190 km)</h3>
-      <p>Journey via Joshimath, visit Mana Village, darshan in evening</p>
+      <h3>Day 8: Guptkashi to Badrinath (200 km | 7-8 hours)</h3>
+      <p>Drive via Joshimath (visit Narsingh Temple) to Badrinath. Take holy bath at <strong>Tapt Kund</strong> hot springs. Evening Aarti at Badrinath Temple. Overnight stay.</p>
 
-      <h3>Day 9: Badrinath to Rudraprayag (160 km)</h3>
-      <p>Morning darshan, visit Tapt Kund, drive back via scenic route</p>
+      <h3>Day 9: Badrinath Sightseeing and Return to Rudraprayag (160 km)</h3>
+      <p>Early morning darshan. Visit <strong>Mana Village</strong> - Vyas Gufa, Bhim Pul, Saraswati River origin, and Ganesh Gufa. Drive back to Rudraprayag via scenic route.</p>
 
-      <h3>Day 10: Rudraprayag to Haridwar (165 km)</h3>
-      <p>Return journey, stop at Devprayag (confluence), reach Haridwar</p>
+      <h3>Day 10: Rudraprayag to Haridwar/Rishikesh (165 km | 5-6 hours)</h3>
+      <p>Return journey via Devprayag (confluence of Alaknanda and Bhagirathi forming the Ganga). Reach Haridwar/Rishikesh by afternoon. Optional Ganga Aarti at Har Ki Pauri.</p>
+
+      <h3>Day 11-12: Haridwar to Delhi (220 km | 5-6 hours)</h3>
+      <p>Morning drive to Delhi. Drop at airport, railway station, or home. Your divine Char Dham Yatra concludes with blessings from all four Dhams.</p>
 
       <h2>Char Dham Yatra Registration 2026</h2>
-      <p>Online registration is mandatory through the official Uttarakhand government portal:</p>
+      <p><strong>Online registration is mandatory</strong> for all pilgrims undertaking the Char Dham Yatra. The Uttarakhand government has implemented a biometric registration system for safety and crowd management.</p>
+      <h3>Registration Process:</h3>
       <ul>
-        <li>Visit: registrationandtouristcare.uk.gov.in</li>
-        <li>Required documents: Aadhaar card, medical certificate (for Kedarnath trek)</li>
-        <li>Register at least 3 days before journey</li>
-        <li>Carry printed registration confirmation</li>
+        <li><strong>Website:</strong> registrationandtouristcare.uk.gov.in</li>
+        <li><strong>Required Documents:</strong> Aadhaar card (mandatory), passport-size photo</li>
+        <li><strong>Medical Certificate:</strong> Required for pilgrims above 50 years for Kedarnath trek</li>
+        <li><strong>Registration Timing:</strong> Complete at least 3 days before your journey</li>
+        <li><strong>Carry:</strong> Printed registration slip (QR code) during the entire yatra</li>
       </ul>
+      <p>Our team assists with the registration process when you book our <a href="/religious-tours/char-dham-yatra" class="text-orange-600 hover:underline">Char Dham Yatra packages</a>.</p>
 
-      <h2>Char Dham Yatra Package Cost</h2>
-      <p><strong>By Sedan (4 seater):</strong> ₹45,000 - ₹55,000</p>
-      <p><strong>By SUV (7 seater):</strong> ₹65,000 - ₹75,000</p>
-      <p><strong>By Tempo Traveller (12 seater):</strong> ₹95,000 - ₹1,20,000</p>
-      <p>*Includes vehicle, driver, fuel, tolls, parking. Excludes accommodation, food, helicopter (if opted)</p>
+      <h2>Transportation Options for Char Dham Yatra</h2>
+      <p>Choosing the right vehicle is crucial for a comfortable Char Dham pilgrimage, as the journey covers 1,000+ km through challenging mountain terrain.</p>
 
-      <h2>Helicopter Services</h2>
-      <p>For Kedarnath:</p>
+      <h3>By Tempo Traveller (Best for Groups)</h3>
+      <p>For families and groups of 9-26 people, <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">tempo traveller</a> is the most comfortable and economical option:</p>
       <ul>
-        <li><strong>Phata to Kedarnath:</strong> ₹3,000 - ₹7,000 per person (one way)</li>
+        <li><strong>12 Seater Tempo:</strong> ₹84,000 - ₹95,000 (Standard AC)</li>
+        <li><strong>17 Seater Tempo:</strong> ₹1,02,000 - ₹1,10,000 (Deluxe)</li>
+        <li><strong>26 Seater Maharaja:</strong> ₹1,32,000+ (Luxury with pushback seats)</li>
+      </ul>
+      <p>Benefits: Pushback recliner seats, ample luggage space, roof carrier, GPS tracking, experienced hill drivers.</p>
+      <p class="mt-3"><a href="/tempo-traveller" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">View All Tempo Traveller Options →</a></p>
+
+      <h3>By Car (For Small Families)</h3>
+      <ul>
+        <li><strong>Sedan (Swift Dzire, Etios):</strong> ₹45,000 - ₹55,000</li>
+        <li><strong>SUV (Innova, Ertiga):</strong> ₹65,000 - ₹80,000</li>
+        <li><strong>Premium SUV (Innova Crysta, Fortuner):</strong> ₹90,000+</li>
+      </ul>
+      <p><em>*All prices include vehicle, driver, fuel, tolls, parking, state permits. Excludes accommodation, food, helicopter.</em></p>
+
+      <h2>Kedarnath Helicopter Services</h2>
+      <p>For those who cannot undertake the 18-20 km trek, helicopter services are a blessing:</p>
+      <ul>
+        <li><strong>Phata to Kedarnath:</strong> ₹5,500 - ₹7,500 per person (one way)</li>
         <li><strong>Guptkashi to Kedarnath:</strong> ₹8,000 - ₹12,000 per person (return)</li>
-        <li>Book in advance during peak season</li>
+        <li><strong>Operators:</strong> Pawan Hans, UTair, Himalayan Heli Services</li>
+        <li><strong>Booking:</strong> Book online 1-2 months in advance during peak season</li>
       </ul>
 
-      <h2>Essential Packing List</h2>
+      <h2>Accommodation During Char Dham Yatra</h2>
+      <p>Accommodation options range from budget dharamshalas to comfortable hotels:</p>
       <ul>
-        <li><strong>Documents:</strong> ID proof, registration, medical certificate</li>
-        <li><strong>Clothing:</strong> Warm jackets, rain gear, comfortable trekking shoes</li>
-        <li><strong>Medicines:</strong> Altitude sickness tablets, first aid, personal medications</li>
-        <li><strong>Essentials:</strong> Water bottle, energy bars, torch, power bank</li>
-        <li><strong>Religious items:</strong> Puja materials if needed</li>
+        <li><strong>Dharamshalas:</strong> ₹200-500 per night (basic, shared facilities)</li>
+        <li><strong>Budget Hotels:</strong> ₹800-1,500 per night</li>
+        <li><strong>Mid-Range Hotels:</strong> ₹2,000-3,500 per night</li>
+        <li><strong>Premium Hotels:</strong> ₹5,000+ per night (available in Badrinath, Guptkashi)</li>
       </ul>
+      <p>At Kedarnath, only basic accommodations (dharamshalas and tents) are available. Book in advance during peak season.</p>
 
-      <h2>Health & Safety Tips</h2>
+      <h2>Essential Packing List for Char Dham Yatra</h2>
+      <h3>Documents (Mandatory):</h3>
       <ul>
-        <li>Acclimatize properly, especially for Kedarnath</li>
-        <li>Stay hydrated throughout the journey</li>
-        <li>Avoid alcohol and smoking in high altitudes</li>
-        <li>Senior citizens and children should consult doctors</li>
-        <li>Keep emergency contacts handy</li>
-        <li>Respect local customs and environment</li>
+        <li>Original Aadhaar card + 2 photocopies</li>
+        <li>Char Dham registration slip (printed)</li>
+        <li>Medical fitness certificate (if above 50 years)</li>
+        <li>Helicopter booking confirmation (if applicable)</li>
       </ul>
-
-      <h2>Why Choose Our Char Dham Services?</h2>
+      <h3>Clothing:</h3>
       <ul>
-        <li>Experienced drivers familiar with mountain roads</li>
-        <li>Comfortable AC vehicles for long journeys</li>
-        <li>Flexible itineraries to suit your pace</li>
-        <li>24/7 support throughout the yatra</li>
-        <li>Help with registration and helicopter booking</li>
-        <li>Affordable packages with no hidden costs</li>
+        <li>Heavy woolen jackets/thermals (temperatures drop to 5°C at night)</li>
+        <li>Rain jacket/poncho (essential during monsoon edges)</li>
+        <li>Comfortable trekking shoes with good grip</li>
+        <li>Multiple pairs of warm socks</li>
+        <li>Woolen cap, gloves, and muffler</li>
+      </ul>
+      <h3>Medicines & Health:</h3>
+      <ul>
+        <li>Altitude sickness tablets (Diamox - consult doctor)</li>
+        <li>Pain relievers, fever medicine</li>
+        <li>First aid kit with bandages</li>
+        <li>Personal medications</li>
+        <li>Hand sanitizer, masks</li>
+      </ul>
+      <h3>Essentials:</h3>
+      <ul>
+        <li>2-3 water bottles (refill at stops)</li>
+        <li>Energy bars, dry fruits, chocolates</li>
+        <li>Torch/headlamp with extra batteries</li>
+        <li>Power bank (20,000 mAh recommended)</li>
+        <li>Trekking pole (helpful for Kedarnath trek)</li>
       </ul>
 
-      <h2>Book Your Char Dham Yatra 2026</h2>
-      <p>Embark on this sacred journey with complete peace of mind. Our professional services ensure your pilgrimage is safe, comfortable, and spiritually fulfilling. Contact us for customized Char Dham packages!</p>
+      <h2>Health & Safety Tips for Char Dham Yatra</h2>
+      <ul>
+        <li><strong>Acclimatize gradually:</strong> Spend time at lower altitudes before Kedarnath trek</li>
+        <li><strong>Stay hydrated:</strong> Drink 3-4 liters of water daily to prevent altitude sickness</li>
+        <li><strong>Avoid alcohol and smoking:</strong> These worsen altitude sickness symptoms</li>
+        <li><strong>Walk slowly:</strong> Don't rush during treks, take frequent breaks</li>
+        <li><strong>Listen to your body:</strong> If experiencing severe headache, nausea, or breathlessness, descend immediately</li>
+        <li><strong>Senior citizens:</strong> Must carry medical fitness certificate and consider helicopter for Kedarnath</li>
+        <li><strong>Emergency contacts:</strong> Save local emergency numbers and our 24/7 support line</li>
+      </ul>
+
+      <h2>Why Choose Triveni Cabs for Char Dham Yatra?</h2>
+      <ul>
+        <li><strong>10+ Years Experience:</strong> We've been serving pilgrims on Char Dham routes since 2014</li>
+        <li><strong>Expert Hill Drivers:</strong> Our drivers know every hairpin turn, shortcut, and safe halt point</li>
+        <li><strong>Comfortable Vehicles:</strong> Well-maintained AC tempo travellers with pushback seats for long mountain journeys</li>
+        <li><strong>Complete Assistance:</strong> Help with registration, helicopter booking, and accommodation</li>
+        <li><strong>24/7 Support:</strong> Dedicated helpline throughout your yatra</li>
+        <li><strong>Transparent Pricing:</strong> No hidden charges - all tolls, parking, permits included</li>
+        <li><strong>Safety First:</strong> GPS-tracked vehicles, daily sanitization, first aid kits, oxygen cylinders</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Ready to Begin Your Spiritual Journey?</h3>
+        <p class="mb-4 text-gray-700">Book your Char Dham Yatra 2026 with Triveni Cabs. Choose from sedan, SUV, or tempo traveller options. Experienced drivers, comfortable vehicles, and complete pilgrimage assistance.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/religious-tours/char-dham-yatra" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">View Char Dham Packages →</a>
+          <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
+        </div>
+      </div>
+
+      <h2>Related Pilgrimage Tours</h2>
+      <p>If you're interested in spiritual journeys, explore our other <a href="/religious-tours" class="text-orange-600 hover:underline font-semibold">pilgrimage tour packages</a>:</p>
+      <ul>
+        <li><a href="/religious-tours/haridwar-rishikesh-ganga-darshan" class="text-blue-600 hover:underline">Haridwar Rishikesh Ganga Darshan</a> - 2 days spiritual getaway</li>
+        <li><a href="/sightseeing/varanasi" class="text-blue-600 hover:underline">Varanasi Kashi Vishwanath Tour</a> - Ancient city of Lord Shiva</li>
+        <li><a href="/sightseeing/ayodhya" class="text-blue-600 hover:underline">Ayodhya Ram Mandir Tour</a> - Visit the grand Ram Mandir</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>1. How many days are required for Char Dham Yatra?</h3>
+      <p>A complete Char Dham Yatra requires 10-12 days from Delhi or 9-10 days from Haridwar. This allows comfortable travel with adequate rest.</p>
+
+      <h3>2. What is the total cost of Char Dham Yatra?</h3>
+      <p>Budget estimate: ₹25,000-35,000 per person (including transport share, budget accommodation, food). Premium estimate: ₹50,000-70,000 per person with good hotels.</p>
+
+      <h3>3. Is Char Dham Yatra safe for senior citizens?</h3>
+      <p>Yes, with proper precautions. Seniors should get medical clearance, opt for helicopter for Kedarnath, and travel in comfortable vehicles like our tempo travellers.</p>
+
+      <h3>4. Can I do Char Dham Yatra by public transport?</h3>
+      <p>While possible, it's not recommended due to multiple connections and waiting times. Private vehicles or our <a href="/tempo-traveller" class="text-orange-600 hover:underline">tempo traveller packages</a> offer convenience and comfort.</p>
     `,
     date: "2026-01-10",
-    readTime: "12 min read",
-    image: "/images/packages/chardham.webp",
+    readTime: "18 min read",
+    image: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
     category: "Pilgrimage",
     tags: ["Char Dham", "Pilgrimage", "Uttarakhand", "Kedarnath", "Badrinath"],
     keywords: ["char dham yatra 2026", "char dham yatra package", "kedarnath badrinath yatra", "uttarakhand pilgrimage", "char dham registration", "yamunotri gangotri tour", "char dham opening dates 2026", "char dham yatra cost", "kedarnath helicopter booking", "badrinath yatra", "char dham taxi service", "haridwar to char dham", "do dham yatra", "char dham itinerary", "uttarakhand temple tour", "char dham yatra booking", "four dham yatra", "chota char dham", "kedarnath trek", "badrinath temple", "yamunotri temple", "gangotri temple", "char dham yatra by car", "char dham package from delhi", "char dham tour operator", "kedarnath yatra 2026", "badrinath yatra 2026", "char dham registration online", "char dham yatra guide", "best time for char dham", "char dham yatra tips", "kedarnath helicopter fare", "badrinath darshan", "haridwar to kedarnath", "rishikesh to badrinath", "char dham route map", "uttarakhand religious tour", "char dham pilgrimage package", "gangotri yamunotri package", "char dham travel agency", "char dham accommodation", "gaurikund to kedarnath", "mana village badrinath"],
@@ -3593,6 +3715,1172 @@ export const travelBlogPosts = [
     views: 0,
     metaTitle: "Udaipur Complete Travel Guide 2026 | City of Lakes, Palaces & Romantic Getaway",
     metaDescription: "Complete Udaipur travel guide 2026. Explore Lake Pichola, City Palace, romantic experiences, best hotels & restaurants. Plan your perfect Udaipur trip!"
+  },
+  {
+    id: 17,
+    slug: "delhi-to-chardham-tempo-traveller-complete-guide-2026",
+    title: "Delhi to Chardham by Tempo Traveller: Complete Group Travel Guide 2026",
+    excerpt: "Planning Char Dham Yatra with family or group? Complete guide to Delhi-Chardham tempo traveller journey - routes, costs, best 12-26 seater options & booking tips.",
+
+    relatedTours: [
+      { id: "chardham-tempo", name: "Delhi to Chardham Tempo Traveller", slug: "delhi-to-chardham-yatra-tempo-traveller", city: "delhi", price: "₹84,000" },
+      { id: "chardham", name: "Char Dham Yatra Package", slug: "char-dham-yatra", city: "delhi", price: "₹45,000" },
+      { id: "dodham", name: "Do Dham Yatra", slug: "do-dham-yatra", city: "haridwar", price: "₹28,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Kedarnath", slug: "kedarnath", type: "attraction" },
+      { name: "Badrinath", slug: "badrinath", type: "attraction" },
+      { name: "Haridwar", slug: "haridwar", type: "city" },
+      { name: "Rishikesh", slug: "rishikesh", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Chardham Tempo Traveller",
+      url: "/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller",
+      description: "Comfortable 12-26 seater AC tempo with pushback seats for your Char Dham pilgrimage",
+      price: "Starting from ₹84,000"
+    },
+
+    content: `
+      <p>The <strong>Char Dham Yatra</strong> is one of the most sacred pilgrimages in Hinduism, covering four holy shrines - Yamunotri, Gangotri, Kedarnath, and Badrinath - nestled in the majestic Uttarakhand Himalayas. When traveling with family or a group, a <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">tempo traveller from Delhi to Chardham</a> is the most comfortable, safe, and economical choice for this 1,200+ km spiritual journey.</p>
+
+      <p>In this comprehensive guide, we cover everything you need to know about undertaking the Char Dham Yatra by tempo traveller - from choosing the right vehicle to route planning, costs, and essential tips for a smooth pilgrimage.</p>
+
+      <div class="my-6 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-xl font-bold mb-2 text-gray-800">Quick Booking</h3>
+        <p class="mb-3 text-gray-700">12-26 seater AC tempo travellers with pushback seats, experienced hill drivers, and complete yatra assistance.</p>
+        <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Chardham Tempo Traveller →</a>
+      </div>
+
+      <h2>Why Choose Tempo Traveller for Char Dham Yatra?</h2>
+      <p>The Char Dham circuit involves driving through challenging mountain terrain - narrow roads, hairpin bends, high altitudes, and unpredictable weather. Here's why tempo traveller is the preferred choice for groups:</p>
+
+      <h3>1. Comfort During Long Mountain Journeys</h3>
+      <ul>
+        <li><strong>Pushback Recliner Seats:</strong> Essential for 8-10 hour mountain drives</li>
+        <li><strong>Ample Legroom:</strong> Stretch your legs on long journeys</li>
+        <li><strong>AC Comfort:</strong> Climate control throughout the journey</li>
+        <li><strong>Large Windows:</strong> Enjoy panoramic Himalayan views</li>
+      </ul>
+
+      <h3>2. Cost-Effective Group Travel</h3>
+      <p>When you divide the cost among group members, tempo traveller becomes the most economical option:</p>
+      <ul>
+        <li><strong>12-Seater:</strong> ₹84,000 total = ₹7,000 per person (12 members)</li>
+        <li><strong>17-Seater:</strong> ₹1,02,000 total = ₹6,000 per person (17 members)</li>
+        <li><strong>26-Seater Maharaja:</strong> ₹1,32,000 total = ₹5,100 per person (26 members)</li>
+      </ul>
+      <p>Compare this to individual car rentals (₹45,000-80,000 per car) or train+taxi combinations!</p>
+
+      <h3>3. Safety in Mountain Terrain</h3>
+      <ul>
+        <li><strong>Experienced Hill Drivers:</strong> Our drivers know every curve of the Uttarakhand mountain roads</li>
+        <li><strong>Well-Maintained Vehicles:</strong> Regular servicing, new tires, reliable brakes</li>
+        <li><strong>GPS Tracking:</strong> Real-time location monitoring for safety</li>
+        <li><strong>Emergency Equipment:</strong> First aid kit, oxygen cylinders, emergency tools</li>
+      </ul>
+
+      <h3>4. Convenience & Flexibility</h3>
+      <ul>
+        <li><strong>Door-to-Door Service:</strong> Pickup from Delhi, drop back to Delhi</li>
+        <li><strong>Luggage Space:</strong> Ample boot and roof carrier space</li>
+        <li><strong>Flexible Stops:</strong> Photo stops, meals, rest breaks as needed</li>
+        <li><strong>Group Bonding:</strong> Travel together, share experiences</li>
+      </ul>
+
+      <h2>Tempo Traveller Options for Chardham Yatra</h2>
+      <p>Choose the right vehicle based on your group size. <a href="/tempo-traveller" class="text-orange-600 hover:underline font-semibold">View all tempo traveller options</a>:</p>
+
+      <h3>12-Seater Tempo Traveller (Standard AC)</h3>
+      <ul>
+        <li><strong>Best For:</strong> 8-10 passengers (comfort travel) or up to 12 (full capacity)</li>
+        <li><strong>Features:</strong> AC, pushback seats, LCD screen, charging points</li>
+        <li><strong>Chardham Package:</strong> ₹84,000 - ₹95,000 (10-12 days)</li>
+        <li><strong>Per Person Cost:</strong> ₹7,000 - ₹8,000 (with 12 members)</li>
+      </ul>
+
+      <h3>17-Seater Tempo Traveller (Deluxe)</h3>
+      <ul>
+        <li><strong>Best For:</strong> 12-15 passengers (comfort) or up to 17 (full capacity)</li>
+        <li><strong>Features:</strong> Deluxe AC, extra legroom, luggage carrier</li>
+        <li><strong>Chardham Package:</strong> ₹1,02,000 - ₹1,10,000 (10-12 days)</li>
+        <li><strong>Per Person Cost:</strong> ₹6,000 - ₹6,500 (with 17 members)</li>
+      </ul>
+
+      <h3>26-Seater Maharaja Tempo (Luxury)</h3>
+      <ul>
+        <li><strong>Best For:</strong> Large family groups, office pilgrimages</li>
+        <li><strong>Features:</strong> Maharaja pushback seats, premium AC, entertainment system</li>
+        <li><strong>Chardham Package:</strong> ₹1,32,000 - ₹1,50,000 (10-12 days)</li>
+        <li><strong>Per Person Cost:</strong> ₹5,100 - ₹5,800 (with 26 members)</li>
+      </ul>
+
+      <p class="my-4"><a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Get Chardham Tempo Quote →</a></p>
+
+      <h2>Delhi to Chardham Route & Distance</h2>
+      <p>The complete Char Dham circuit from Delhi covers approximately <strong>1,200-1,400 km</strong> depending on the exact route taken. Here's the day-wise distance breakdown:</p>
+
+      <table class="w-full border-collapse border border-gray-300 my-4">
+        <tr class="bg-orange-100">
+          <th class="border border-gray-300 p-2 text-left">Day</th>
+          <th class="border border-gray-300 p-2 text-left">Route</th>
+          <th class="border border-gray-300 p-2 text-left">Distance</th>
+          <th class="border border-gray-300 p-2 text-left">Duration</th>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Day 1</td>
+          <td class="border border-gray-300 p-2">Delhi → Haridwar → Barkot</td>
+          <td class="border border-gray-300 p-2">320 km</td>
+          <td class="border border-gray-300 p-2">9-10 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Day 2</td>
+          <td class="border border-gray-300 p-2">Barkot → Janki Chatti → Yamunotri → Barkot</td>
+          <td class="border border-gray-300 p-2">90 km + 6 km trek</td>
+          <td class="border border-gray-300 p-2">Full day</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Day 3</td>
+          <td class="border border-gray-300 p-2">Barkot → Uttarkashi</td>
+          <td class="border border-gray-300 p-2">100 km</td>
+          <td class="border border-gray-300 p-2">4-5 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Day 4</td>
+          <td class="border border-gray-300 p-2">Uttarkashi → Gangotri → Uttarkashi</td>
+          <td class="border border-gray-300 p-2">200 km (round trip)</td>
+          <td class="border border-gray-300 p-2">7-8 hours</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Day 5</td>
+          <td class="border border-gray-300 p-2">Uttarkashi → Guptkashi</td>
+          <td class="border border-gray-300 p-2">220 km</td>
+          <td class="border border-gray-300 p-2">8-9 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Day 6</td>
+          <td class="border border-gray-300 p-2">Guptkashi → Kedarnath (Trek/Heli)</td>
+          <td class="border border-gray-300 p-2">30 km + 18 km trek</td>
+          <td class="border border-gray-300 p-2">Full day</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Day 7</td>
+          <td class="border border-gray-300 p-2">Kedarnath → Guptkashi</td>
+          <td class="border border-gray-300 p-2">Return trek</td>
+          <td class="border border-gray-300 p-2">Full day</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Day 8</td>
+          <td class="border border-gray-300 p-2">Guptkashi → Badrinath</td>
+          <td class="border border-gray-300 p-2">200 km</td>
+          <td class="border border-gray-300 p-2">7-8 hours</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Day 9</td>
+          <td class="border border-gray-300 p-2">Badrinath + Mana Village → Rudraprayag</td>
+          <td class="border border-gray-300 p-2">160 km</td>
+          <td class="border border-gray-300 p-2">5-6 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Day 10</td>
+          <td class="border border-gray-300 p-2">Rudraprayag → Rishikesh → Delhi</td>
+          <td class="border border-gray-300 p-2">380 km</td>
+          <td class="border border-gray-300 p-2">10-11 hours</td>
+        </tr>
+      </table>
+
+      <p><strong>Total Road Distance:</strong> ~1,200-1,400 km (tempo traveller portion)</p>
+      <p><strong>Trek Distances:</strong> Yamunotri (6 km each way), Kedarnath (18-20 km each way)</p>
+
+      <h2>Complete Itinerary: Delhi to Chardham by Tempo Traveller</h2>
+      <p>Here's a detailed day-by-day itinerary for your <a href="/religious-tours/char-dham-yatra" class="text-orange-600 hover:underline font-semibold">Char Dham Yatra</a> from Delhi:</p>
+
+      <h3>Day 1: Delhi to Barkot (320 km | 9-10 hours)</h3>
+      <p>Early morning departure from Delhi (5:00-6:00 AM recommended). Your tempo traveller will pick you up from your preferred location. Drive via Meerut, Muzaffarnagar to Haridwar. Stop for breakfast at famous Murthal dhabas. Continue through Rishikesh and ascend to the mountains via Mussoorie bypass. Stop at Kempty Falls for refreshments. Reach Barkot by evening. Overnight stay at Barkot.</p>
+      <p><strong>Highlights:</strong> Scenic views of Garhwal Himalayas, Kempty Falls photo stop</p>
+
+      <h3>Day 2: Barkot to Yamunotri to Barkot (Trek Day)</h3>
+      <p>Early morning drive to Janki Chatti (45 km, 2 hours). The tempo traveller will wait at Janki Chatti parking. Begin your 6 km trek to Yamunotri Temple (ponies and palkis available for elderly). Visit Surya Kund hot springs, take holy bath, darshan at Yamunotri Temple. Return trek to Janki Chatti. Drive back to Barkot for overnight stay.</p>
+      <p><strong>Trek Options:</strong> Walk (6-7 hours round trip), Pony (₹3,000-3,500), Palki (₹5,000-6,000)</p>
+
+      <h3>Day 3: Barkot to Uttarkashi (100 km | 4-5 hours)</h3>
+      <p>After breakfast, scenic drive along the Yamuna and later Bhagirathi River to Uttarkashi. Visit the ancient Kashi Vishwanath Temple and Shakti Temple. Evening free for rest and exploration. Overnight at Uttarkashi.</p>
+      <p><strong>Highlights:</strong> Riverside drive, ancient temples</p>
+
+      <h3>Day 4: Uttarkashi to Gangotri to Uttarkashi (200 km round trip)</h3>
+      <p>Early morning departure for Gangotri (100 km, 4 hours). The drive offers some of the most spectacular Himalayan views. Visit Gangotri Temple, take holy dip in the freezing Bhagirathi River. Explore Surya Kund and nearby attractions. Return to Uttarkashi for overnight stay.</p>
+      <p><strong>Road Condition:</strong> Well-maintained but narrow at places, experienced drivers essential</p>
+
+      <h3>Day 5: Uttarkashi to Guptkashi (220 km | 8-9 hours)</h3>
+      <p>Long but scenic drive through Tehri Dam (photo stop), New Tehri town, Srinagar, Rudraprayag, and Agastmuni. Reach Guptkashi by evening. Visit the Vishwanath Temple (replica of Kashi Vishwanath). Rest well for the challenging Kedarnath trek next day.</p>
+      <p><strong>Important:</strong> This is the longest driving day - our tempo's comfortable seats make a difference!</p>
+
+      <h3>Day 6: Guptkashi to Kedarnath (Trek/Helicopter)</h3>
+      <p>Drive to Sonprayag (30 km) where tempo traveller parks. Take shared jeep to Gaurikund (5 km). Begin the 18-20 km trek to Kedarnath (or take helicopter from Phata/Guptkashi for elderly). Reach Kedarnath by evening. Attend the mesmerizing evening Aarti at the ancient temple. Overnight at Kedarnath (basic accommodation/tents).</p>
+      <p><strong>Helicopter Option:</strong> ₹5,500-8,000 per person (book in advance during peak season)</p>
+
+      <h3>Day 7: Kedarnath to Guptkashi</h3>
+      <p>Early morning darshan at Kedarnath Temple (one of the 12 Jyotirlingas). Visit Adi Shankaracharya Samadhi behind the temple. Begin return trek to Gaurikund. Jeep to Sonprayag where your tempo traveller awaits. Drive to Guptkashi for overnight stay.</p>
+      <p><strong>Tip:</strong> Start darshan by 4:00 AM for shortest queues</p>
+
+      <h3>Day 8: Guptkashi to Badrinath (200 km | 7-8 hours)</h3>
+      <p>Drive via Chopta, Chamoli, and Joshimath to Badrinath. Stop at Joshimath for Narsingh Temple visit. Reach Badrinath by afternoon. Take holy bath at Tapt Kund hot springs. Evening Aarti at Badrinath Temple (final and most important Dham). Overnight at Badrinath.</p>
+      <p><strong>Highlight:</strong> The colorful Badrinath Temple against snow-capped peaks</p>
+
+      <h3>Day 9: Badrinath Sightseeing + Return to Rudraprayag (160 km)</h3>
+      <p>Early morning darshan at Badrinath. Visit Mana Village - last Indian village before Tibet border. See Vyas Gufa, Bhim Pul, Saraswati River origin, Ganesh Gufa. Drive back to Rudraprayag via scenic route. Overnight stay.</p>
+      <p><strong>Must-See at Mana:</strong> Vyas Gufa where Mahabharata was written</p>
+
+      <h3>Day 10: Rudraprayag to Delhi (380 km | 10-11 hours)</h3>
+      <p>Early start for the return journey. Drive via Devprayag (stop for Alaknanda-Bhagirathi Sangam photo), Rishikesh, Haridwar to Delhi. Reach Delhi by late evening. Drop at your preferred location - airport, railway station, or home.</p>
+      <p><strong>Your divine Char Dham Yatra concludes!</strong></p>
+
+      <h2>Tempo Traveller Pricing: Delhi to Chardham</h2>
+      <p>Complete package prices for <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">Delhi to Chardham by tempo traveller</a> (10-12 days):</p>
+
+      <table class="w-full border-collapse border border-gray-300 my-4">
+        <tr class="bg-orange-100">
+          <th class="border border-gray-300 p-2 text-left">Vehicle Type</th>
+          <th class="border border-gray-300 p-2 text-left">Package Cost</th>
+          <th class="border border-gray-300 p-2 text-left">Per Person (Full)</th>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">12-Seater Standard AC</td>
+          <td class="border border-gray-300 p-2">₹84,000 - ₹95,000</td>
+          <td class="border border-gray-300 p-2">₹7,000 - ₹8,000</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">17-Seater Deluxe AC</td>
+          <td class="border border-gray-300 p-2">₹1,02,000 - ₹1,10,000</td>
+          <td class="border border-gray-300 p-2">₹6,000 - ₹6,500</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">26-Seater Maharaja</td>
+          <td class="border border-gray-300 p-2">₹1,32,000 - ₹1,50,000</td>
+          <td class="border border-gray-300 p-2">₹5,100 - ₹5,800</td>
+        </tr>
+      </table>
+
+      <h3>What's Included:</h3>
+      <ul>
+        <li>AC tempo traveller with pushback seats</li>
+        <li>Experienced hill driver (knows Chardham routes)</li>
+        <li>All fuel costs</li>
+        <li>Driver allowance (food & stay)</li>
+        <li>All tolls and parking charges</li>
+        <li>State permits and road taxes</li>
+        <li>Night halt charges</li>
+        <li>GPS tracking</li>
+        <li>First aid kit & oxygen cylinder</li>
+      </ul>
+
+      <h3>Not Included:</h3>
+      <ul>
+        <li>Passenger accommodation and food</li>
+        <li>Helicopter charges for Kedarnath</li>
+        <li>Pony/Palki/Porter charges for treks</li>
+        <li>Temple donation and puja expenses</li>
+        <li>Personal expenses</li>
+      </ul>
+
+      <h2>Best Time for Delhi to Chardham Trip</h2>
+      <p>The Char Dham temples are open from late April/early May to November (before winter snow). Best periods:</p>
+
+      <h3>May to June (Peak Season)</h3>
+      <ul>
+        <li>Pleasant weather (15-25°C daytime)</li>
+        <li>All routes fully operational</li>
+        <li>Heavy crowds - book tempo traveller 2-3 weeks in advance</li>
+        <li>Higher accommodation costs</li>
+      </ul>
+
+      <h3>September to October (Recommended)</h3>
+      <ul>
+        <li>Post-monsoon clear skies - best mountain views</li>
+        <li>Moderate crowds</li>
+        <li>Lush green valleys</li>
+        <li>Comfortable weather</li>
+      </ul>
+
+      <h3>Avoid July-August</h3>
+      <ul>
+        <li>Heavy monsoon rains</li>
+        <li>Frequent landslides and road blockages</li>
+        <li>Dangerous driving conditions</li>
+      </ul>
+
+      <h2>Essential Tips for Group Yatra by Tempo Traveller</h2>
+
+      <h3>Before Booking:</h3>
+      <ul>
+        <li>Confirm group size and book appropriate vehicle</li>
+        <li>Complete <a href="https://registrationandtouristcare.uk.gov.in" target="_blank" rel="noopener" class="text-blue-600 hover:underline">online Char Dham registration</a> for all members</li>
+        <li>Get medical certificates for members above 50 years</li>
+        <li>Book helicopter for Kedarnath (for elderly) well in advance</li>
+      </ul>
+
+      <h3>Packing Essentials:</h3>
+      <ul>
+        <li>Heavy woolens (temperatures drop to 5°C at night)</li>
+        <li>Rain jacket/poncho</li>
+        <li>Comfortable trekking shoes</li>
+        <li>Personal medications + first aid</li>
+        <li>Altitude sickness tablets (consult doctor)</li>
+        <li>Power banks (20,000 mAh)</li>
+        <li>Snacks, dry fruits, water bottles</li>
+      </ul>
+
+      <h3>During the Journey:</h3>
+      <ul>
+        <li>Start early each day (5-6 AM) to avoid traffic</li>
+        <li>Stay hydrated - drink 3-4 liters water daily</li>
+        <li>Avoid alcohol and smoking (worsens altitude sickness)</li>
+        <li>Take breaks every 2-3 hours</li>
+        <li>Keep Aadhaar cards and registration slips handy</li>
+      </ul>
+
+      <h2>Why Book with Triveni Cabs?</h2>
+      <p>We've been serving pilgrims on the Char Dham route for over 10 years. Here's why families trust us:</p>
+      <ul>
+        <li><strong>Experienced Hill Drivers:</strong> Our drivers know every hairpin turn of Uttarakhand</li>
+        <li><strong>Well-Maintained Fleet:</strong> Regular servicing, new tires, reliable AC</li>
+        <li><strong>Complete Assistance:</strong> Help with registration, helicopter booking, accommodation</li>
+        <li><strong>24/7 Support:</strong> Dedicated helpline throughout your yatra</li>
+        <li><strong>Transparent Pricing:</strong> No hidden charges</li>
+        <li><strong>Safety Equipment:</strong> GPS tracking, oxygen cylinders, first aid</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Ready for Your Group Char Dham Yatra?</h3>
+        <p class="mb-4 text-gray-700">Book your tempo traveller for the most comfortable Char Dham pilgrimage experience. 12-26 seater options available.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">Book Tempo Traveller →</a>
+          <a href="/religious-tours/char-dham-yatra" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">View Char Dham Packages →</a>
+          <a href="tel:+917668570551" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors">Call: 7668570551 →</a>
+        </div>
+      </div>
+
+      <h2>Related Pilgrimage Tours</h2>
+      <p>Explore more <a href="/religious-tours" class="text-orange-600 hover:underline font-semibold">pilgrimage packages</a>:</p>
+      <ul>
+        <li><a href="/blog/char-dham-yatra-complete-guide-uttarakhand-2026" class="text-blue-600 hover:underline">Char Dham Yatra Complete Guide 2026</a></li>
+        <li><a href="/blog/kedarnath-yatra-complete-guide-2026" class="text-blue-600 hover:underline">Kedarnath Yatra Complete Guide</a></li>
+        <li><a href="/blog/do-dham-yatra-kedarnath-badrinath-guide-2026" class="text-blue-600 hover:underline">Do Dham Yatra (Kedarnath-Badrinath)</a></li>
+        <li><a href="/religious-tours/haridwar-rishikesh-ganga-darshan" class="text-blue-600 hover:underline">Haridwar Rishikesh Tour</a></li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>1. How many days are needed for Delhi to Chardham by tempo traveller?</h3>
+      <p>A comfortable Delhi to Chardham trip requires 10-12 days. This allows adequate rest and proper darshan at all four Dhams without rushing.</p>
+
+      <h3>2. What is the best tempo traveller for Chardham Yatra?</h3>
+      <p>For groups of 10-12, a 12-seater tempo with pushback seats is ideal. For larger groups (15-20), go for 17-seater. For office pilgrimages (20+), book our 26-seater Maharaja tempo.</p>
+
+      <h3>3. Is tempo traveller safe for mountain roads?</h3>
+      <p>Yes, our tempo travellers are specifically suited for mountain terrain with proper hill braking systems, experienced drivers, and regular maintenance. We've safely transported thousands of pilgrims.</p>
+
+      <h3>4. Can elderly people travel by tempo traveller to Chardham?</h3>
+      <p>Yes, the comfortable pushback seats and AC make it ideal for elderly. However, for Kedarnath trek, we recommend helicopter booking for those who cannot walk 18 km.</p>
+
+      <h3>5. Do you provide pickup from Delhi airport?</h3>
+      <p>Yes, we provide pickup from Delhi airport, railway station, or any location within Delhi NCR at no extra charge.</p>
+    `,
+    date: "2026-01-10",
+    readTime: "22 min read",
+    image: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
+    category: "Pilgrimage",
+    tags: ["Char Dham", "Tempo Traveller", "Delhi", "Pilgrimage", "Group Travel", "Uttarakhand"],
+    keywords: ["delhi to chardham tempo traveller", "chardham yatra by tempo", "delhi chardham tempo", "12 seater tempo for chardham", "tempo traveller chardham package", "group travel chardham", "delhi to char dham by tempo", "chardham tempo booking", "char dham yatra group package", "tempo hire for chardham", "delhi to kedarnath tempo", "chardham pilgrimage tempo", "family chardham yatra", "affordable chardham travel", "tempo traveller uttarakhand", "delhi chardham taxi service", "chardham yatra 2026 tempo", "best tempo for hills", "chardham group package", "delhi to badrinath tempo"],
+    featured: true,
+    views: 0,
+    metaTitle: "Delhi to Chardham by Tempo Traveller 2026 | Group Travel Guide & Booking",
+    metaDescription: "Complete guide to Delhi-Chardham Yatra by tempo traveller. 12-26 seater options, routes, costs (₹84,000+), itinerary & booking tips for group pilgrimage."
+  },
+  {
+    id: 18,
+    slug: "kedarnath-yatra-complete-guide-2026",
+    title: "Kedarnath Yatra Complete Guide 2026: Trek, Helicopter & Travel Tips",
+    excerpt: "Planning Kedarnath Yatra 2026? Complete guide covering trek routes, helicopter booking, best time, accommodation, packing list & essential tips for this sacred pilgrimage.",
+
+    relatedTours: [
+      { id: "chardham", name: "Char Dham Yatra Package", slug: "char-dham-yatra", city: "delhi", price: "₹45,000" },
+      { id: "dodham", name: "Do Dham Yatra (Kedarnath-Badrinath)", slug: "do-dham-yatra", city: "haridwar", price: "₹28,000" },
+      { id: "chardham-tempo", name: "Delhi to Chardham Tempo Traveller", slug: "delhi-to-chardham-yatra-tempo-traveller", city: "delhi", price: "₹84,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Kedarnath", slug: "kedarnath", type: "attraction" },
+      { name: "Badrinath", slug: "badrinath", type: "attraction" },
+      { name: "Haridwar", slug: "haridwar", type: "city" },
+      { name: "Rishikesh", slug: "rishikesh", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Kedarnath Yatra Package",
+      url: "/religious-tours/char-dham-yatra",
+      description: "Complete Kedarnath pilgrimage with comfortable transport and trek assistance",
+      price: "Starting from ₹25,000"
+    },
+
+    content: `
+      <p><strong>Kedarnath</strong> is one of the most sacred and spiritually powerful pilgrimage destinations in India. Home to one of the 12 Jyotirlingas of Lord Shiva, this ancient temple at 3,583 meters (11,755 ft) altitude attracts lakhs of devotees every year. The temple has stood for over 1,200 years, surviving earthquakes, floods, and avalanches - a testament to divine protection.</p>
+
+      <p>Planning your Kedarnath Yatra 2026? This comprehensive guide covers everything - from trek routes and helicopter options to accommodation, packing list, and essential safety tips. Whether you're undertaking the challenging 18 km trek or opting for helicopter, this guide will help you plan a smooth, blessed pilgrimage.</p>
+
+      <div class="my-6 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-xl font-bold mb-2 text-gray-800">Book Your Kedarnath Yatra</h3>
+        <p class="mb-3 text-gray-700">Complete pilgrimage packages including transport, accommodation assistance, and helicopter booking support.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/religious-tours/char-dham-yatra" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Kedarnath Packages →</a>
+          <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
+        </div>
+      </div>
+
+      <h2>About Kedarnath Temple</h2>
+      <p>The Kedarnath Temple is believed to have been built by the Pandavas and later renovated by Adi Shankaracharya in the 8th century. The temple is part of the <a href="/religious-tours/char-dham-yatra" class="text-orange-600 hover:underline font-semibold">Char Dham Yatra</a> - the four most sacred pilgrimage sites of Uttarakhand, and is also one of the Panch Kedar temples.</p>
+
+      <h3>Temple Details:</h3>
+      <ul>
+        <li><strong>Altitude:</strong> 3,583 meters (11,755 feet)</li>
+        <li><strong>Deity:</strong> Lord Shiva (Jyotirlinga - Sadashiva form)</li>
+        <li><strong>Built:</strong> Over 1,200 years ago</li>
+        <li><strong>Architecture:</strong> Large grey stone slabs without mortar</li>
+        <li><strong>Behind Temple:</strong> Adi Shankaracharya Samadhi</li>
+        <li><strong>Backdrop:</strong> Majestic Kedarnath Peak (6,940m)</li>
+      </ul>
+
+      <h3>Spiritual Significance</h3>
+      <p>According to legend, after the Mahabharata war, the Pandavas sought Lord Shiva to absolve their sins of killing their own kin. Shiva, unwilling to forgive them, took the form of a bull (Nandi) and hid in the Garhwal Himalayas. When discovered, he dove into the ground. His hump emerged at Kedarnath, arms at Tungnath, face at Rudranath, navel at Madhyamaheshwar, and hair at Kalpeshwar - together forming the Panch Kedar.</p>
+
+      <h2>Kedarnath 2026 Opening & Closing Dates</h2>
+      <p>The temple opens on an auspicious date in April/May (usually on Akshaya Tritiya or as determined by priests) and closes before winter in November:</p>
+      <ul>
+        <li><strong>Expected Opening:</strong> May 2, 2026 (tentative)</li>
+        <li><strong>Expected Closing:</strong> November 2026 (around Diwali/Bhai Dooj)</li>
+      </ul>
+      <p><em>*Exact dates are announced by the temple committee. Always verify before travel.</em></p>
+
+      <h2>How to Reach Kedarnath</h2>
+      <p>Kedarnath is accessible only by trek, helicopter, or pony/palki from Gaurikund. Here's how to get there:</p>
+
+      <h3>Step 1: Reach Gaurikund</h3>
+      <p><strong>From Delhi (480 km to Gaurikund):</strong></p>
+      <ul>
+        <li><strong>By Tempo Traveller:</strong> Most comfortable for groups. <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">Book Delhi to Kedarnath tempo</a> - full package available.</li>
+        <li><strong>By Car/SUV:</strong> Private taxi from Delhi to Sonprayag (450 km, 12-14 hours), then shared jeep to Gaurikund</li>
+        <li><strong>By Bus:</strong> Delhi → Haridwar → Sonprayag (UPSRTC/GMOU buses)</li>
+      </ul>
+
+      <p><strong>From Haridwar (240 km to Gaurikund):</strong></p>
+      <ul>
+        <li>Route: Haridwar → Rishikesh → Devprayag → Rudraprayag → Guptkashi → Sonprayag → Gaurikund</li>
+        <li>Duration: 8-10 hours by car</li>
+      </ul>
+
+      <p><strong>From Rishikesh (220 km to Gaurikund):</strong></p>
+      <ul>
+        <li>Direct buses and taxis available from Rishikesh bus stand</li>
+        <li>Duration: 7-9 hours</li>
+      </ul>
+
+      <h3>Step 2: Gaurikund to Kedarnath (Choose Your Option)</h3>
+
+      <h4>Option 1: Trek (18-20 km)</h4>
+      <p>The traditional trek from Gaurikund to Kedarnath is a challenging but spiritually rewarding experience:</p>
+      <ul>
+        <li><strong>Distance:</strong> 18-20 km (one way)</li>
+        <li><strong>Duration:</strong> 7-9 hours uphill (trek), 5-6 hours downhill</li>
+        <li><strong>Difficulty:</strong> Moderate to challenging</li>
+        <li><strong>Terrain:</strong> Well-paved path, steep at places</li>
+        <li><strong>Rest Points:</strong> Rambara (7 km), Lincholi (11 km), Base Camp (14 km)</li>
+      </ul>
+      <p><strong>Trek Route Breakdown:</strong></p>
+      <ol>
+        <li><strong>Gaurikund to Jungle Chatti (4 km):</strong> Gradual ascent through forest</li>
+        <li><strong>Jungle Chatti to Rambara (3 km):</strong> Steeper climb, tea shops available</li>
+        <li><strong>Rambara to Lincholi (4 km):</strong> Challenging section, beautiful views</li>
+        <li><strong>Lincholi to Base Camp (3 km):</strong> Relatively easier stretch</li>
+        <li><strong>Base Camp to Kedarnath (4 km):</strong> Final push, temple visible from here</li>
+      </ol>
+
+      <h4>Option 2: Helicopter (5-10 minutes)</h4>
+      <p>For those who cannot trek, helicopter services operate from multiple helipads:</p>
+      <ul>
+        <li><strong>Phata to Kedarnath:</strong> ₹5,500-7,500 per person (one way)</li>
+        <li><strong>Guptkashi to Kedarnath:</strong> ₹8,000-12,000 per person (return)</li>
+        <li><strong>Sirsi to Kedarnath:</strong> ₹6,000-8,000 per person (one way)</li>
+      </ul>
+      <p><strong>Helicopter Operators:</strong> Pawan Hans, UTair, Himalayan Heli Services, Arrow Aircraft</p>
+      <p><strong>Booking:</strong> Book online 1-2 months in advance during peak season at irctchelitourism.com or operator websites</p>
+      <p><em>Note: Helicopter services are weather-dependent. Keep backup days in your itinerary.</em></p>
+
+      <h4>Option 3: Pony/Palki/Basket (18-20 km)</h4>
+      <p>For those who prefer not to trek but helicopter isn't available:</p>
+      <ul>
+        <li><strong>Pony:</strong> ₹3,000-4,500 (one way)</li>
+        <li><strong>Palki (Doli):</strong> ₹8,000-15,000 (one way, 4 carriers)</li>
+        <li><strong>Kandi (Basket):</strong> ₹6,000-10,000 (one way, carried by 1 person)</li>
+      </ul>
+      <p><strong>Booking:</strong> Available at Gaurikund GMVN counter or through porters directly</p>
+
+      <h2>Best Time to Visit Kedarnath</h2>
+      <p>The temple is open from May to November. Best periods:</p>
+
+      <h3>May to June (Peak Season)</h3>
+      <ul>
+        <li>Weather: Pleasant (10-20°C daytime), clear skies</li>
+        <li>Crowds: Very heavy, especially weekends</li>
+        <li>Book helicopter 1-2 months in advance</li>
+        <li>Accommodation fills up quickly</li>
+      </ul>
+
+      <h3>September to October (Recommended)</h3>
+      <ul>
+        <li>Post-monsoon clear views of snow peaks</li>
+        <li>Moderate crowds compared to May-June</li>
+        <li>Lush green valleys, beautiful scenery</li>
+        <li>Comfortable trekking weather</li>
+      </ul>
+
+      <h3>Avoid July-August</h3>
+      <ul>
+        <li>Heavy monsoon rains</li>
+        <li>Landslides common on trek route</li>
+        <li>Helicopter services frequently cancelled</li>
+        <li>Risk of flash floods</li>
+      </ul>
+
+      <h2>Kedarnath Darshan Timings</h2>
+      <ul>
+        <li><strong>Morning Darshan:</strong> 4:00 AM to 12:00 PM</li>
+        <li><strong>Evening Darshan:</strong> 5:00 PM to 9:00 PM</li>
+        <li><strong>Abhishek:</strong> 4:00 AM to 7:00 PM (₹1,100-5,100)</li>
+        <li><strong>Rudrabhishek:</strong> ₹3,100-11,000 (advance booking recommended)</li>
+      </ul>
+      <p><strong>VIP Darshan:</strong> Available through official portal, priority entry with shorter queue</p>
+
+      <h2>Accommodation in Kedarnath</h2>
+      <p>Accommodation at Kedarnath is limited and basic. Options include:</p>
+
+      <h3>GMVN Guest House</h3>
+      <ul>
+        <li>Government-run, reliable option</li>
+        <li>Rates: ₹800-2,000 per bed</li>
+        <li>Book online at gmvn.in during peak season</li>
+      </ul>
+
+      <h3>Private Dharamshalas/Lodges</h3>
+      <ul>
+        <li>Basic rooms with shared facilities</li>
+        <li>Rates: ₹500-1,500 per bed</li>
+        <li>No advance booking, first-come basis</li>
+      </ul>
+
+      <h3>Tented Camps</h3>
+      <ul>
+        <li>Available near the temple</li>
+        <li>Rates: ₹1,000-3,000 per person (includes dinner, breakfast)</li>
+        <li>More comfortable than dharamshalas</li>
+      </ul>
+
+      <p><strong>Tip:</strong> Most pilgrims stay at Guptkashi or Sonprayag (more comfortable hotels) and do the Kedarnath trek as a 2-day trip.</p>
+
+      <h2>Kedarnath Trek Preparation</h2>
+      <p>The 18 km trek is demanding. Here's how to prepare:</p>
+
+      <h3>Physical Fitness</h3>
+      <ul>
+        <li>Start walking/jogging daily 1-2 months before</li>
+        <li>Practice stair climbing with backpack</li>
+        <li>Build stamina gradually</li>
+        <li>Medical checkup if you have health conditions</li>
+      </ul>
+
+      <h3>Packing Checklist</h3>
+      <p><strong>Essential Clothing:</strong></p>
+      <ul>
+        <li>Heavy woolen jacket/down jacket (temperature can drop to 5°C)</li>
+        <li>Thermal innerwear</li>
+        <li>Rain jacket/poncho (essential)</li>
+        <li>Multiple layers for easy temperature adjustment</li>
+        <li>Woolen cap, gloves, muffler</li>
+        <li>Trekking shoes with good grip (broken in before trip)</li>
+        <li>Extra pairs of socks</li>
+      </ul>
+
+      <p><strong>Health & Safety:</strong></p>
+      <ul>
+        <li>Altitude sickness tablets (Diamox - consult doctor)</li>
+        <li>Pain relief (Combiflam, Crocin)</li>
+        <li>Muscle pain spray/cream (Volini, Moov)</li>
+        <li>ORS packets for hydration</li>
+        <li>Personal prescription medicines</li>
+        <li>Small first aid kit</li>
+        <li>Sunscreen (high altitude sun is intense)</li>
+      </ul>
+
+      <p><strong>Essentials:</strong></p>
+      <ul>
+        <li>Trekking pole (highly recommended)</li>
+        <li>Small backpack (30L max)</li>
+        <li>2-3 water bottles (refill at stops)</li>
+        <li>Energy bars, dry fruits, chocolates</li>
+        <li>Torch/headlamp with extra batteries</li>
+        <li>Power bank (20,000 mAh)</li>
+        <li>Aadhaar card (mandatory)</li>
+        <li>Registration slip (printed)</li>
+        <li>Cash (ATMs not available at Kedarnath)</li>
+      </ul>
+
+      <h2>Safety Tips for Kedarnath Yatra</h2>
+      <ul>
+        <li><strong>Acclimatize:</strong> Spend a day at lower altitude (Guptkashi) before trek</li>
+        <li><strong>Start Early:</strong> Begin trek by 5-6 AM to reach before dark</li>
+        <li><strong>Stay Hydrated:</strong> Drink water regularly, don't wait until thirsty</li>
+        <li><strong>Walk Slowly:</strong> Maintain steady pace, don't rush</li>
+        <li><strong>Take Breaks:</strong> Rest every 30-45 minutes</li>
+        <li><strong>Watch Weather:</strong> If conditions worsen, seek shelter</li>
+        <li><strong>Avoid Alcohol:</strong> Worsens altitude sickness</li>
+        <li><strong>Emergency:</strong> Memorize SDRF helpline: 9557444444</li>
+      </ul>
+
+      <h2>Kedarnath Yatra Registration</h2>
+      <p>Online registration is <strong>mandatory</strong> for Kedarnath pilgrimage:</p>
+      <ol>
+        <li>Visit: <a href="https://registrationandtouristcare.uk.gov.in" target="_blank" rel="noopener" class="text-blue-600 hover:underline">registrationandtouristcare.uk.gov.in</a></li>
+        <li>Create account with mobile number</li>
+        <li>Fill pilgrim details, upload photo, Aadhaar</li>
+        <li>Complete registration at least 3 days before travel</li>
+        <li>Download and print QR code registration slip</li>
+        <li>Carry slip during entire yatra</li>
+      </ol>
+
+      <h2>Kedarnath Yatra Cost Estimate</h2>
+      <p>Budget estimate for Kedarnath pilgrimage from Delhi (per person):</p>
+
+      <h3>Budget Trip (₹15,000-20,000)</h3>
+      <ul>
+        <li>Transport: Share tempo/bus (₹4,000-6,000)</li>
+        <li>Accommodation: Dharamshalas (₹3,000-4,000 for 4-5 nights)</li>
+        <li>Food: Basic meals (₹2,000-3,000)</li>
+        <li>Trek: Walk both ways (₹0)</li>
+        <li>Miscellaneous: ₹2,000</li>
+      </ul>
+
+      <h3>Comfortable Trip (₹25,000-35,000)</h3>
+      <ul>
+        <li>Transport: Private car share or <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline">tempo traveller</a> (₹7,000-10,000 per person)</li>
+        <li>Accommodation: Budget hotels (₹6,000-8,000)</li>
+        <li>Food: Regular meals (₹4,000-5,000)</li>
+        <li>Trek: Pony one way (₹3,000-4,000)</li>
+        <li>Miscellaneous: ₹3,000</li>
+      </ul>
+
+      <h3>Premium Trip (₹40,000-60,000)</h3>
+      <ul>
+        <li>Transport: Private SUV/premium tempo (₹12,000-15,000)</li>
+        <li>Accommodation: Good hotels (₹12,000-15,000)</li>
+        <li>Food: Quality restaurants (₹6,000-8,000)</li>
+        <li>Helicopter: Both ways (₹12,000-16,000)</li>
+        <li>Miscellaneous: ₹5,000</li>
+      </ul>
+
+      <h2>Combine Kedarnath with Other Destinations</h2>
+      <p>Most pilgrims combine Kedarnath with other sacred sites. Popular combinations:</p>
+
+      <div class="grid md:grid-cols-2 gap-4 my-6">
+        <div class="p-4 bg-gradient-to-r from-orange-50 to-amber-50 rounded-lg border border-orange-200">
+          <h4 class="font-bold text-orange-800">Do Dham Yatra (5-6 Days)</h4>
+          <p class="text-sm text-gray-700">Kedarnath + Badrinath - the most popular combination. <a href="/blog/do-dham-yatra-kedarnath-badrinath-guide-2026" class="text-blue-600 hover:underline">Read Do Dham Guide →</a></p>
+          <p class="font-semibold mt-2">Starting: ₹28,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+          <h4 class="font-bold text-blue-800">Char Dham Yatra (10-12 Days)</h4>
+          <p class="text-sm text-gray-700">Complete pilgrimage - Yamunotri, Gangotri, Kedarnath, Badrinath. <a href="/blog/char-dham-yatra-complete-guide-uttarakhand-2026" class="text-blue-600 hover:underline">Read Guide →</a></p>
+          <p class="font-semibold mt-2">Starting: ₹45,000 per person</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg border border-green-200">
+          <h4 class="font-bold text-green-800">Panch Kedar (12-15 Days)</h4>
+          <p class="text-sm text-gray-700">Five Shiva temples - Kedarnath, Tungnath, Rudranath, Madhyamaheshwar, Kalpeshwar</p>
+          <p class="font-semibold mt-2">For advanced trekkers</p>
+        </div>
+        <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+          <h4 class="font-bold text-purple-800">Kedarnath + Tungnath (5-6 Days)</h4>
+          <p class="text-sm text-gray-700">Two Jyotirlingas with Chandrashila peak (world's highest Shiva temple)</p>
+          <p class="font-semibold mt-2">Starting: ₹22,000 per person</p>
+        </div>
+      </div>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Plan Your Kedarnath Yatra 2026</h3>
+        <p class="mb-4 text-gray-700">Book your Kedarnath pilgrimage with comfortable transport, experienced drivers, and complete assistance.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/religious-tours/char-dham-yatra" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">View Kedarnath Packages →</a>
+          <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
+          <a href="tel:+917668570551" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors">Call: 7668570551 →</a>
+        </div>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>1. How difficult is the Kedarnath trek?</h3>
+      <p>The trek is considered moderate to challenging. It's 18-20 km uphill with altitude gain of 1,400 meters. With proper preparation and slow pace, most healthy adults can complete it.</p>
+
+      <h3>2. Can elderly people visit Kedarnath?</h3>
+      <p>Yes, with helicopter or palki services. We recommend helicopter for those above 60 or with health conditions. Book in advance during peak season.</p>
+
+      <h3>3. Is Kedarnath open in monsoon?</h3>
+      <p>Technically yes, but not recommended. Heavy rains cause landslides, and helicopter services are frequently cancelled. July-August should be avoided.</p>
+
+      <h3>4. How many days needed for Kedarnath only?</h3>
+      <p>Minimum 4-5 days from Delhi: Day 1 - Delhi to Guptkashi, Day 2 - Kedarnath trek, Day 3 - Darshan & return, Day 4 - Guptkashi to Delhi. Add 1 buffer day for weather delays.</p>
+
+      <h3>5. Is mobile network available at Kedarnath?</h3>
+      <p>BSNL has the best coverage. Jio and Airtel work intermittently. Wi-Fi available at some dharamshalas for additional charge.</p>
+
+      <h3>6. What if helicopter is cancelled due to weather?</h3>
+      <p>You'll need to trek or wait for weather to clear. Keep 1-2 buffer days in your itinerary. Refunds are provided for cancelled bookings.</p>
+    `,
+    date: "2026-01-10",
+    readTime: "20 min read",
+    image: "/images/chardham/kedarnath-hero.png",
+    category: "Pilgrimage",
+    tags: ["Kedarnath", "Pilgrimage", "Trek", "Shiva", "Uttarakhand", "Jyotirlinga"],
+    keywords: ["kedarnath yatra 2026", "kedarnath trek", "kedarnath helicopter booking", "kedarnath temple", "kedarnath guide", "how to reach kedarnath", "kedarnath from delhi", "kedarnath yatra cost", "kedarnath trek difficulty", "kedarnath opening date 2026", "gaurikund to kedarnath", "kedarnath darshan", "kedarnath accommodation", "kedarnath weather", "kedarnath pony booking", "kedarnath pilgrimage", "kedarnath travel guide", "best time kedarnath", "kedarnath registration", "jyotirlinga kedarnath", "kedarnath dham", "sonprayag to kedarnath", "kedarnath helicopter price", "kedarnath trek route", "kedarnath tips"],
+    featured: true,
+    views: 0,
+    metaTitle: "Kedarnath Yatra Complete Guide 2026 | Trek, Helicopter Booking & Tips",
+    metaDescription: "Complete Kedarnath Yatra 2026 guide - trek route, helicopter booking, best time, costs & tips. Plan your pilgrimage to one of the 12 Jyotirlingas of Lord Shiva."
+  },
+  {
+    id: 19,
+    slug: "do-dham-yatra-kedarnath-badrinath-guide-2026",
+    title: "Do Dham Yatra 2026: Complete Kedarnath-Badrinath Pilgrimage Guide",
+    excerpt: "Planning Do Dham Yatra (Kedarnath-Badrinath)? Complete guide with itinerary, costs, best time, transport options & tips for this popular 5-6 day pilgrimage.",
+
+    relatedTours: [
+      { id: "dodham", name: "Do Dham Yatra Package", slug: "do-dham-yatra", city: "haridwar", price: "₹28,000" },
+      { id: "chardham", name: "Char Dham Yatra Package", slug: "char-dham-yatra", city: "delhi", price: "₹45,000" },
+      { id: "chardham-tempo", name: "Delhi to Chardham Tempo Traveller", slug: "delhi-to-chardham-yatra-tempo-traveller", city: "delhi", price: "₹84,000" }
+    ],
+
+    relatedDestinations: [
+      { name: "Kedarnath", slug: "kedarnath", type: "attraction" },
+      { name: "Badrinath", slug: "badrinath", type: "attraction" },
+      { name: "Haridwar", slug: "haridwar", type: "city" },
+      { name: "Rishikesh", slug: "rishikesh", type: "city" }
+    ],
+
+    primaryCTA: {
+      text: "Book Do Dham Yatra Package",
+      url: "/religious-tours/char-dham-yatra",
+      description: "Complete Kedarnath-Badrinath pilgrimage with transport and assistance",
+      price: "Starting from ₹28,000"
+    },
+
+    content: `
+      <p>The <strong>Do Dham Yatra</strong> (Two Dham Pilgrimage) covering Kedarnath and Badrinath is the most popular short pilgrimage in Uttarakhand. In just 5-6 days, devotees can seek blessings from both Lord Shiva (Kedarnath) and Lord Vishnu (Badrinath) - two of the holiest Hindu temples in India. This yatra is perfect for those who don't have 10-12 days for the complete <a href="/blog/char-dham-yatra-complete-guide-uttarakhand-2026" class="text-orange-600 hover:underline font-semibold">Char Dham Yatra</a> but want maximum spiritual benefit in limited time.</p>
+
+      <p>In this comprehensive guide, we cover everything you need to know about Do Dham Yatra 2026 - from detailed itinerary and transport options to costs, best time, and essential tips.</p>
+
+      <div class="my-6 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-xl font-bold mb-2 text-gray-800">Book Your Do Dham Yatra</h3>
+        <p class="mb-3 text-gray-700">Complete Kedarnath-Badrinath pilgrimage packages with comfortable transport and complete assistance.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/religious-tours/char-dham-yatra" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Do Dham Packages →</a>
+          <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
+        </div>
+      </div>
+
+      <h2>What is Do Dham Yatra?</h2>
+      <p>Do Dham Yatra refers to the pilgrimage covering two of the four Char Dham temples:</p>
+      <ul>
+        <li><strong>Kedarnath:</strong> One of 12 Jyotirlingas of Lord Shiva at 3,583m altitude</li>
+        <li><strong>Badrinath:</strong> One of 108 Divya Desams of Lord Vishnu at 3,300m altitude</li>
+      </ul>
+      <p>Both temples are located in the Garhwal Himalayas of Uttarakhand and can be conveniently covered in a single trip. This yatra is considered highly auspicious as it covers both the abodes of Shiva and Vishnu.</p>
+
+      <h2>Do Dham vs Char Dham - Which to Choose?</h2>
+      <table class="w-full border-collapse border border-gray-300 my-4">
+        <tr class="bg-orange-100">
+          <th class="border border-gray-300 p-2 text-left">Aspect</th>
+          <th class="border border-gray-300 p-2 text-left">Do Dham</th>
+          <th class="border border-gray-300 p-2 text-left">Char Dham</th>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Duration</td>
+          <td class="border border-gray-300 p-2">5-6 days</td>
+          <td class="border border-gray-300 p-2">10-12 days</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Temples</td>
+          <td class="border border-gray-300 p-2">Kedarnath, Badrinath</td>
+          <td class="border border-gray-300 p-2">Yamunotri, Gangotri, Kedarnath, Badrinath</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Distance (from Delhi)</td>
+          <td class="border border-gray-300 p-2">~800 km</td>
+          <td class="border border-gray-300 p-2">~1,400 km</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Cost (per person)</td>
+          <td class="border border-gray-300 p-2">₹20,000-35,000</td>
+          <td class="border border-gray-300 p-2">₹40,000-70,000</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Physical Demand</td>
+          <td class="border border-gray-300 p-2">Moderate (1 major trek)</td>
+          <td class="border border-gray-300 p-2">High (2 treks)</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Best For</td>
+          <td class="border border-gray-300 p-2">Limited time, elderly</td>
+          <td class="border border-gray-300 p-2">Complete pilgrimage seekers</td>
+        </tr>
+      </table>
+
+      <h2>Do Dham Yatra 2026 Opening Dates</h2>
+      <ul>
+        <li><strong>Kedarnath Opening:</strong> May 2, 2026 (tentative)</li>
+        <li><strong>Badrinath Opening:</strong> May 3, 2026 (tentative)</li>
+        <li><strong>Closing:</strong> November 2026 (around Diwali)</li>
+      </ul>
+      <p><em>*Exact dates announced by temple committee. Verify before travel.</em></p>
+
+      <h2>Do Dham Yatra Itinerary (5-6 Days)</h2>
+      <p>Here's a detailed day-by-day itinerary. For group travel, consider our <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">tempo traveller packages</a> for maximum comfort.</p>
+
+      <h3>Day 1: Delhi/Haridwar to Guptkashi (220 km from Haridwar | 8-9 hours)</h3>
+      <p><strong>From Delhi:</strong> Early morning departure (4:00-5:00 AM). Drive via Meerut, Muzaffarnagar to Haridwar (5 hours). Continue to Guptkashi via Rishikesh, Devprayag, Rudraprayag. Stop at Devprayag to witness the confluence of Alaknanda and Bhagirathi rivers forming the holy Ganga.</p>
+      <p><strong>From Haridwar:</strong> Morning departure. Drive through scenic mountain roads along the Alaknanda River.</p>
+      <p><strong>Overnight:</strong> Guptkashi (multiple hotel options available)</p>
+      <p><strong>Evening:</strong> Visit Vishwanath Temple at Guptkashi. Rest well for the Kedarnath trek tomorrow.</p>
+
+      <h3>Day 2: Guptkashi to Kedarnath (Trek/Helicopter)</h3>
+      <p><strong>By Trek:</strong></p>
+      <ol>
+        <li>Early morning drive to Sonprayag (30 km, 1 hour)</li>
+        <li>Shared jeep to Gaurikund (5 km)</li>
+        <li>Begin 18-20 km trek to Kedarnath (7-9 hours)</li>
+        <li>Reach Kedarnath by evening</li>
+        <li>Attend evening Aarti at the temple</li>
+      </ol>
+      <p><strong>By Helicopter:</strong></p>
+      <ol>
+        <li>Morning drive to Phata/Guptkashi helipad</li>
+        <li>5-10 minute helicopter ride to Kedarnath</li>
+        <li>Full day for darshan and temple exploration</li>
+        <li>Evening Aarti</li>
+      </ol>
+      <p><strong>Overnight:</strong> Kedarnath (basic dharamshalas/tents)</p>
+      <p><strong>Trek Options:</strong> Walk, Pony (₹3,000-4,500), Palki (₹8,000-15,000)</p>
+
+      <h3>Day 3: Kedarnath Darshan & Return to Guptkashi</h3>
+      <p><strong>Morning:</strong></p>
+      <ul>
+        <li>Early morning darshan at Kedarnath Temple (opens 4:00 AM)</li>
+        <li>Visit Adi Shankaracharya Samadhi behind the temple</li>
+        <li>Explore Bhairav Temple and surrounding area</li>
+      </ul>
+      <p><strong>Afternoon:</strong></p>
+      <ul>
+        <li>Begin return journey (trek or helicopter)</li>
+        <li>Reach Gaurikund, then jeep to Sonprayag</li>
+        <li>Your vehicle awaits at Sonprayag</li>
+      </ul>
+      <p><strong>Evening:</strong> Drive to Guptkashi for overnight stay</p>
+      <p><em>Note: If helicopter return delayed due to weather, you may need to trek down.</em></p>
+
+      <h3>Day 4: Guptkashi to Badrinath (200 km | 7-8 hours)</h3>
+      <p><strong>Morning:</strong> Depart for Badrinath via Chopta, Chamoli</p>
+      <p><strong>Enroute:</strong> Stop at Joshimath for Narsingh Temple darshan (one of the four cardinal Shankaracharya Mathas)</p>
+      <p><strong>Afternoon:</strong> Reach Badrinath. Check into hotel. Take holy bath at Tapt Kund hot springs (mandatory before darshan).</p>
+      <p><strong>Evening:</strong> Evening Aarti at Badrinath Temple - a mesmerizing experience!</p>
+      <p><strong>Overnight:</strong> Badrinath (good hotels available)</p>
+
+      <h3>Day 5: Badrinath Darshan & Return Journey</h3>
+      <p><strong>Early Morning:</strong></p>
+      <ul>
+        <li>Morning darshan at Badrinath Temple (opens 4:30 AM)</li>
+        <li>Abhishek/special puja if desired</li>
+      </ul>
+      <p><strong>Post-Darshan:</strong></p>
+      <ul>
+        <li>Visit <strong>Mana Village</strong> - last Indian village before Tibet</li>
+        <li>Vyas Gufa - cave where Ved Vyas wrote Mahabharata</li>
+        <li>Bhim Pul - natural rock bridge over Saraswati River</li>
+        <li>Saraswati River origin point</li>
+        <li>Ganesh Gufa</li>
+      </ul>
+      <p><strong>Afternoon:</strong> Begin return journey. Drive to Rudraprayag/Srinagar for overnight stay (160-180 km, 5-6 hours).</p>
+      <p><strong>Overnight:</strong> Rudraprayag or Srinagar</p>
+
+      <h3>Day 6: Rudraprayag to Haridwar/Delhi</h3>
+      <p><strong>Option A - End at Haridwar (165 km | 5-6 hours):</strong></p>
+      <ul>
+        <li>Morning departure</li>
+        <li>Stop at Devprayag for photos</li>
+        <li>Reach Haridwar by afternoon</li>
+        <li>Optional: Evening Ganga Aarti at Har Ki Pauri</li>
+        <li>Onward travel to Delhi by train/bus</li>
+      </ul>
+      <p><strong>Option B - End at Delhi (380 km | 9-10 hours):</strong></p>
+      <ul>
+        <li>Early morning departure</li>
+        <li>Drive via Rishikesh, Haridwar to Delhi</li>
+        <li>Reach Delhi by evening</li>
+        <li>Drop at airport/station/home</li>
+      </ul>
+
+      <h2>Do Dham Yatra Route Map & Distances</h2>
+      <table class="w-full border-collapse border border-gray-300 my-4">
+        <tr class="bg-orange-100">
+          <th class="border border-gray-300 p-2 text-left">Route Segment</th>
+          <th class="border border-gray-300 p-2 text-left">Distance</th>
+          <th class="border border-gray-300 p-2 text-left">Time</th>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Delhi to Haridwar</td>
+          <td class="border border-gray-300 p-2">220 km</td>
+          <td class="border border-gray-300 p-2">5-6 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Haridwar to Guptkashi</td>
+          <td class="border border-gray-300 p-2">220 km</td>
+          <td class="border border-gray-300 p-2">8-9 hours</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Guptkashi to Gaurikund</td>
+          <td class="border border-gray-300 p-2">35 km</td>
+          <td class="border border-gray-300 p-2">1.5 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Gaurikund to Kedarnath</td>
+          <td class="border border-gray-300 p-2">18-20 km trek</td>
+          <td class="border border-gray-300 p-2">7-9 hours</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Guptkashi to Badrinath</td>
+          <td class="border border-gray-300 p-2">200 km</td>
+          <td class="border border-gray-300 p-2">7-8 hours</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border border-gray-300 p-2">Badrinath to Rudraprayag</td>
+          <td class="border border-gray-300 p-2">160 km</td>
+          <td class="border border-gray-300 p-2">5-6 hours</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 p-2">Rudraprayag to Haridwar</td>
+          <td class="border border-gray-300 p-2">165 km</td>
+          <td class="border border-gray-300 p-2">5-6 hours</td>
+        </tr>
+      </table>
+      <p><strong>Total Road Distance (Delhi round trip):</strong> ~800-850 km</p>
+      <p><strong>Trek Distance:</strong> 36-40 km (Kedarnath return)</p>
+
+      <h2>Transport Options for Do Dham Yatra</h2>
+
+      <h3>By Tempo Traveller (Best for Groups)</h3>
+      <p>For families and groups, <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="text-orange-600 hover:underline font-semibold">tempo traveller</a> offers the best combination of comfort and value:</p>
+      <ul>
+        <li><strong>12-Seater:</strong> ₹45,000-55,000 (5-6 days) = ₹3,750-4,600/person</li>
+        <li><strong>17-Seater:</strong> ₹55,000-65,000 (5-6 days) = ₹3,200-3,800/person</li>
+        <li><strong>26-Seater:</strong> ₹70,000-85,000 (5-6 days) = ₹2,700-3,300/person</li>
+      </ul>
+      <p><strong>Includes:</strong> AC vehicle, driver, fuel, tolls, parking, permits, driver stay</p>
+
+      <h3>By Private Car/SUV</h3>
+      <ul>
+        <li><strong>Sedan (Dzire/Etios):</strong> ₹30,000-38,000 (5-6 days)</li>
+        <li><strong>SUV (Innova/Ertiga):</strong> ₹42,000-52,000 (5-6 days)</li>
+        <li><strong>Premium (Innova Crysta):</strong> ₹55,000-65,000 (5-6 days)</li>
+      </ul>
+
+      <h3>By Public Transport</h3>
+      <ul>
+        <li>Delhi to Haridwar: Train (₹200-500) or Bus (₹400-600)</li>
+        <li>Haridwar to Sonprayag: GMOU bus (₹400-500)</li>
+        <li>Shared jeeps between locations</li>
+        <li>Not recommended - multiple connections, waiting times, uncomfortable</li>
+      </ul>
+
+      <h2>Do Dham Yatra Cost Breakdown</h2>
+      <p>Estimated cost per person (from Delhi):</p>
+
+      <h3>Budget (₹18,000-25,000)</h3>
+      <ul>
+        <li>Transport share: ₹5,000-7,000</li>
+        <li>Hotels/Dharamshalas: ₹3,000-4,000 (5 nights)</li>
+        <li>Food: ₹2,000-3,000</li>
+        <li>Trek: Walk (free)</li>
+        <li>Miscellaneous: ₹2,000</li>
+      </ul>
+
+      <h3>Standard (₹28,000-40,000)</h3>
+      <ul>
+        <li>Transport share (tempo): ₹6,000-8,000</li>
+        <li>Good hotels: ₹5,000-7,000 (5 nights)</li>
+        <li>Food: ₹4,000-5,000</li>
+        <li>Pony (one way): ₹3,000-4,000</li>
+        <li>Miscellaneous: ₹3,000</li>
+      </ul>
+
+      <h3>Premium (₹45,000-60,000)</h3>
+      <ul>
+        <li>Private SUV/premium tempo share: ₹10,000-12,000</li>
+        <li>Best hotels: ₹10,000-12,000 (5 nights)</li>
+        <li>Quality meals: ₹6,000-7,000</li>
+        <li>Helicopter (both ways): ₹12,000-16,000</li>
+        <li>Miscellaneous: ₹5,000</li>
+      </ul>
+
+      <h2>Best Time for Do Dham Yatra</h2>
+
+      <h3>May to June (Peak Season)</h3>
+      <ul>
+        <li>Best weather: 15-25°C daytime, 5-10°C night</li>
+        <li>Heavy crowds, especially weekends</li>
+        <li>Book everything 2-4 weeks in advance</li>
+        <li>Higher prices</li>
+      </ul>
+
+      <h3>September to October (Recommended)</h3>
+      <ul>
+        <li>Post-monsoon clear skies</li>
+        <li>Best mountain views</li>
+        <li>Moderate crowds</li>
+        <li>Pleasant trekking weather</li>
+        <li>Lush green valleys</li>
+      </ul>
+
+      <h3>Avoid: July-August</h3>
+      <ul>
+        <li>Heavy monsoon</li>
+        <li>Frequent landslides</li>
+        <li>Road blockages common</li>
+        <li>Helicopter often cancelled</li>
+      </ul>
+
+      <h2>Do Dham Yatra Registration</h2>
+      <p>Online registration is <strong>mandatory</strong> for both Kedarnath and Badrinath:</p>
+      <ol>
+        <li>Visit: <a href="https://registrationandtouristcare.uk.gov.in" target="_blank" rel="noopener" class="text-blue-600 hover:underline">registrationandtouristcare.uk.gov.in</a></li>
+        <li>Register each family member separately</li>
+        <li>Upload Aadhaar card and photo</li>
+        <li>Complete 3 days before travel</li>
+        <li>Print registration slip with QR code</li>
+        <li>Carry during entire yatra</li>
+      </ol>
+
+      <h2>Packing List for Do Dham Yatra</h2>
+      <p><strong>Documents:</strong></p>
+      <ul>
+        <li>Aadhaar card (original + 2 copies)</li>
+        <li>Registration slip (printed)</li>
+        <li>Helicopter booking confirmation (if applicable)</li>
+        <li>Medical certificate (if above 50 years)</li>
+      </ul>
+      <p><strong>Clothing:</strong></p>
+      <ul>
+        <li>Heavy woolen jacket/down jacket</li>
+        <li>Thermals/warm innerwear</li>
+        <li>Rain jacket/poncho (essential)</li>
+        <li>Trekking shoes with good grip</li>
+        <li>Woolen cap, gloves, muffler</li>
+        <li>Multiple socks pairs</li>
+      </ul>
+      <p><strong>Health:</strong></p>
+      <ul>
+        <li>Altitude sickness tablets (consult doctor)</li>
+        <li>Pain relievers</li>
+        <li>First aid kit</li>
+        <li>Personal medications</li>
+        <li>ORS packets</li>
+        <li>Muscle pain spray</li>
+      </ul>
+      <p><strong>Essentials:</strong></p>
+      <ul>
+        <li>Trekking pole</li>
+        <li>Backpack (30L)</li>
+        <li>Water bottles (2-3)</li>
+        <li>Energy snacks, dry fruits</li>
+        <li>Torch/headlamp</li>
+        <li>Power bank (20,000 mAh)</li>
+        <li>Cash (ATMs limited)</li>
+      </ul>
+
+      <h2>Do Dham Temples: Spiritual Significance</h2>
+
+      <h3>Kedarnath Temple</h3>
+      <ul>
+        <li><strong>Deity:</strong> Lord Shiva (Jyotirlinga - Sadashiva form)</li>
+        <li><strong>Altitude:</strong> 3,583 meters</li>
+        <li><strong>Legend:</strong> Pandavas built it seeking Shiva's forgiveness</li>
+        <li><strong>Architecture:</strong> 1,200+ year old stone structure without mortar</li>
+        <li><strong>Behind Temple:</strong> Adi Shankaracharya's Samadhi</li>
+        <li><strong>Darshan:</strong> 4 AM - 12 PM, 5 PM - 9 PM</li>
+      </ul>
+
+      <h3>Badrinath Temple</h3>
+      <ul>
+        <li><strong>Deity:</strong> Lord Vishnu (Badri Narayan form)</li>
+        <li><strong>Altitude:</strong> 3,300 meters</li>
+        <li><strong>Legend:</strong> Established by Adi Shankaracharya</li>
+        <li><strong>Architecture:</strong> Colorful temple between Nar-Narayan peaks</li>
+        <li><strong>Tapt Kund:</strong> Hot spring for purification before darshan</li>
+        <li><strong>Darshan:</strong> 4:30 AM - 1 PM, 4 PM - 9 PM</li>
+      </ul>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Ready for Your Do Dham Yatra?</h3>
+        <p class="mb-4 text-gray-700">Book your Kedarnath-Badrinath pilgrimage with comfortable transport and complete assistance.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/religious-tours/char-dham-yatra" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">View Do Dham Packages →</a>
+          <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
+          <a href="tel:+917668570551" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors">Call: 7668570551 →</a>
+        </div>
+      </div>
+
+      <h2>Related Pilgrimage Guides</h2>
+      <ul>
+        <li><a href="/blog/char-dham-yatra-complete-guide-uttarakhand-2026" class="text-blue-600 hover:underline">Char Dham Yatra Complete Guide 2026</a></li>
+        <li><a href="/blog/kedarnath-yatra-complete-guide-2026" class="text-blue-600 hover:underline">Kedarnath Yatra Complete Guide</a></li>
+        <li><a href="/blog/delhi-to-chardham-tempo-traveller-complete-guide-2026" class="text-blue-600 hover:underline">Delhi to Chardham by Tempo Traveller</a></li>
+        <li><a href="/religious-tours" class="text-blue-600 hover:underline">All Pilgrimage Tours</a></li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>1. How many days needed for Do Dham Yatra?</h3>
+      <p>Minimum 5-6 days from Delhi or Haridwar. This allows comfortable travel with proper darshan at both temples. Add 1-2 buffer days during peak season for weather delays.</p>
+
+      <h3>2. Which is better - Kedarnath first or Badrinath first?</h3>
+      <p>Kedarnath first is recommended. The challenging trek is better done when you're fresh. Also, if weather delays occur at Kedarnath, you have flexibility to adjust Badrinath timings.</p>
+
+      <h3>3. Can elderly people do Do Dham Yatra?</h3>
+      <p>Yes, with proper planning. Use helicopter for Kedarnath (book in advance) and hire ponies for any walking. Badrinath is easily accessible by road. Consult doctor before travel.</p>
+
+      <h3>4. Is Do Dham Yatra possible in one helicopter day?</h3>
+      <p>No, that's not practical. Both temples require separate days for proper darshan. Rushing defeats the spiritual purpose of the pilgrimage.</p>
+
+      <h3>5. What's the difference between Do Dham and Chota Char Dham?</h3>
+      <p>Do Dham specifically refers to Kedarnath + Badrinath. Chota Char Dham is another term for Uttarakhand's Char Dham (vs Bada Char Dham which includes Dwarka, Puri, Badrinath, Rameswaram).</p>
+
+      <h3>6. Can I extend Do Dham to include Yamunotri-Gangotri?</h3>
+      <p>Yes! You can extend to full <a href="/blog/char-dham-yatra-complete-guide-uttarakhand-2026" class="text-orange-600 hover:underline">Char Dham Yatra</a> by adding 4-5 more days for Yamunotri and Gangotri.</p>
+    `,
+    date: "2026-01-10",
+    readTime: "18 min read",
+    image: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
+    category: "Pilgrimage",
+    tags: ["Do Dham", "Kedarnath", "Badrinath", "Pilgrimage", "Uttarakhand", "Shiva", "Vishnu"],
+    keywords: ["do dham yatra", "kedarnath badrinath yatra", "do dham yatra 2026", "kedarnath badrinath tour", "do dham package", "2 dham yatra", "kedarnath badrinath itinerary", "do dham yatra cost", "two dham yatra", "do dham from delhi", "do dham from haridwar", "kedarnath badrinath by helicopter", "do dham yatra guide", "do dham pilgrimage", "kedarnath badrinath trip", "do dham tour package", "best time do dham", "do dham registration", "do dham route", "kedarnath badrinath distance", "do dham yatra 5 days", "short char dham"],
+    featured: true,
+    views: 0,
+    metaTitle: "Do Dham Yatra 2026: Complete Kedarnath-Badrinath Guide | Itinerary & Costs",
+    metaDescription: "Complete Do Dham Yatra guide 2026 - Kedarnath & Badrinath pilgrimage in 5-6 days. Itinerary, costs, transport options, trek/helicopter tips. Book your package now!"
   },
 ]
 

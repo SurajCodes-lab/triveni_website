@@ -6,13 +6,13 @@ export const chardhamRoutes = [
         destination: 'Chardham Yatra',
         duration: '11 Nights / 12 Days',
         type: 'Char',
-        description: 'Embark on the divine Delhi to Chardham Yatra by Tempo Traveller. Complete pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath with comfort and luxury.',
-        intro: 'Embark on a voyage of spiritual liberation with our **Delhi to Chardham Yatra Tempo Traveller** service. The Chardham Yatra—comprising Yamunotri, Gangotri, Kedarnath, and Badrinath—is not just a journey; it is a quest for *Moksha*. Starting from the capital city, we ensure your pilgrimage is comfortable, safe, and memorable.',
+        description: 'Book Delhi to Chardham Yatra by AC Tempo Traveller 2026. Complete 12-day pilgrimage covering Yamunotri, Gangotri, Kedarnath, and Badrinath with experienced hill drivers. Starting from ₹84,000 for groups of 12-26 pilgrims. Includes Ganga Aarti at Haridwar, Mana Village visit, and all darshan assistance.',
+        intro: 'Experience the most sacred pilgrimage in Hinduism with our **Delhi to Chardham Yatra Tempo Traveller** service. The Chardham circuit—Yamunotri (source of Yamuna), Gangotri (origin of Ganga), Kedarnath (Jyotirlinga of Lord Shiva), and Badrinath (abode of Lord Vishnu)—is believed to wash away all sins and grant Moksha. Our 12-day package from Delhi covers 1,200+ km through the majestic Garhwal Himalayas with comfortable AC tempo travellers, experienced drivers who know every hairpin turn, and 24/7 on-trip support.',
         whyChoose: [
-            { title: 'Spiritual Expertise', desc: 'Drivers experienced with Yatra routes and rituals.' },
-            { title: 'Premium Comfort', desc: 'Pushback seats and ample legroom for long mountain journeys.' },
-            { title: 'Safety First', desc: 'Daily vehicle sanitization and skilled hill drivers.' },
-            { title: '24/7 Support', desc: 'Dedicated team monitoring your Yatra round the clock.' }
+            { title: 'Spiritual Expertise', desc: 'Drivers experienced with Chardham routes, temple timings, and yatra rituals for 10+ years.' },
+            { title: 'Premium Comfort', desc: 'Pushback recliner seats, ample legroom, and AC for comfortable 8-10 hour mountain drives.' },
+            { title: 'Safety First', desc: 'GPS-tracked vehicles, daily sanitization, first aid kit, oxygen cylinder, and skilled hill drivers.' },
+            { title: '24/7 Support', desc: 'Dedicated helpline monitoring your Yatra. Emergency assistance within 30 minutes.' }
         ],
         packages: [
             { type: 'Standard', vehicle: '12 Seater', price: '₹84,000' },
@@ -22,27 +22,30 @@ export const chardhamRoutes = [
             { type: 'Maharaja', vehicle: '26 Seater', price: '₹1,32,000' }
         ],
         itinerary: [
-            { day: 1, title: 'Delhi to Haridwar', desc: 'Pickup from Delhi. Drive to Haridwar. Evening Ganga Aarti at Har Ki Pauri.' },
-            { day: 2, title: 'Haridwar to Barkot', desc: 'Drive to Barkot via Mussoorie. Kempty Falls visit.' },
-            { day: 3, title: 'Barkot - Yamunotri - Barkot', desc: 'Trek to Yamunotri Dham. Darshan and return to Barkot.' },
-            { day: 4, title: 'Barkot to Uttarkashi', desc: 'Drive to Uttarkashi. Visit Kashi Vishwanath Temple.' },
-            { day: 5, title: 'Uttarkashi - Gangotri - Uttarkashi', desc: 'Day excursion to Gangotri Dham. Holy dip in Ganges.' },
-            { day: 6, title: 'Uttarkashi to Guptkashi', desc: 'Scenic drive to Guptkashi. View of Mandakini river.' },
-            { day: 7, title: 'Guptkashi to Kedarnath', desc: 'Trek/Helicopter to Kedarnath. Evening Aarti.' },
-            { day: 8, title: 'Kedarnath to Guptkashi', desc: 'Morning Darshan. Trek down and return to Guptkashi.' },
-            { day: 9, title: 'Guptkashi to Badrinath', desc: 'Drive to Badrinath via Joshimath. Tapt Kund bath.' },
-            { day: 10, title: 'Badrinath to Rudraprayag', desc: 'Morning Mana Village tour. Drive to Rudraprayag.' },
-            { day: 11, title: 'Rudraprayag to Haridwar', desc: 'Drive back to Haridwar/Rishikesh.' },
-            { day: 12, title: 'Haridwar to Delhi', desc: 'Morning drive to Delhi. Drop at Airport/Station.' }
+            { day: 1, title: 'Delhi to Haridwar (220 km)', desc: 'Early morning pickup from Delhi Airport/Station/Home. Drive via Meerut Expressway to Haridwar (5-6 hrs). Evening attend the famous Ganga Aarti at Har Ki Pauri. Overnight in Haridwar.' },
+            { day: 2, title: 'Haridwar to Barkot (200 km)', desc: 'After breakfast, drive to Barkot via scenic Mussoorie. Stop at Kempty Falls for refreshments. Reach Barkot by evening. Overnight stay.' },
+            { day: 3, title: 'Barkot - Yamunotri - Barkot', desc: 'Drive to Janki Chatti (45 km). Trek 6 km to Yamunotri Dham (ponies/palkis available). Take holy dip in Surya Kund. Darshan at Yamunotri Temple. Return trek and drive back to Barkot.' },
+            { day: 4, title: 'Barkot to Uttarkashi (100 km)', desc: 'Morning drive to Uttarkashi via Dharasu. Visit ancient Kashi Vishwanath Temple and Shakti Temple. Overnight in Uttarkashi.' },
+            { day: 5, title: 'Uttarkashi - Gangotri - Uttarkashi (200 km)', desc: 'Day excursion to Gangotri Dham. Darshan at Gangotri Temple, origin of River Ganga. Holy bath in Bhagirathi River. Visit Gaumukh view point. Return to Uttarkashi.' },
+            { day: 6, title: 'Uttarkashi to Guptkashi (220 km)', desc: 'Long scenic drive through Tehri Dam, Srinagar, Rudraprayag to Guptkashi. Visit Ardhnarishwar Temple. Overnight stay with view of Mandakini river.' },
+            { day: 7, title: 'Guptkashi to Kedarnath', desc: 'Drive to Sonprayag (30 km). Trek 20 km or helicopter to Kedarnath (3,583m altitude). Evening Aarti at Kedarnath Temple - one of 12 Jyotirlingas. Overnight at Kedarnath.' },
+            { day: 8, title: 'Kedarnath to Guptkashi', desc: 'Early morning darshan at Kedarnath Temple. Visit Adi Shankaracharya Samadhi. Trek down to Gaurikund. Drive back to Guptkashi. Rest and overnight.' },
+            { day: 9, title: 'Guptkashi to Badrinath (200 km)', desc: 'Drive via Joshimath and Vishnuprayag to Badrinath. Holy bath at Tapt Kund hot spring. Evening Aarti at Badrinath Temple. Overnight at Badrinath.' },
+            { day: 10, title: 'Badrinath to Rudraprayag (160 km)', desc: 'Morning darshan. Visit Mana Village (last Indian village). See Vyas Gufa, Bhim Pul, Saraswati River origin. Drive back to Rudraprayag. Overnight stay.' },
+            { day: 11, title: 'Rudraprayag to Haridwar (165 km)', desc: 'Drive back to Haridwar via Devprayag (confluence of Alaknanda-Bhagirathi). Evening free for shopping or Ganga Aarti. Overnight in Haridwar.' },
+            { day: 12, title: 'Haridwar to Delhi (220 km)', desc: 'After breakfast, drive to Delhi (5-6 hrs). Drop at Airport/Railway Station/Home. Tour ends with divine blessings.' }
         ],
-        features: ['AC & Non-AC Options', 'Pushback Seats', 'Music System', 'First Aid Kit', 'Carrier for Luggage', 'Charging Points'],
+        features: ['AC & Non-AC Options', 'Pushback Recliner Seats', 'Music System & DVD Player', 'First Aid Kit & Oxygen Cylinder', 'Roof Carrier for Luggage', 'Mobile Charging Points', 'GPS Tracking'],
         faqs: [
-            { question: 'What is the best time for Chardham Yatra from Delhi?', answer: 'May to June and September to October are ideal.' },
-            { question: 'Is registration required for Chardham Yatra?', answer: 'Yes, biometric registration is mandatory for all pilgrims.' },
-            { question: 'How much luggage can we carry?', answer: 'We recommend 1 medium bag per person as space is limited in hills.' }
+            { question: 'What is the best time for Chardham Yatra from Delhi?', answer: 'The Chardham temples open from late April/May to early November. Best months are May-June (before monsoon) and September-October (after monsoon). Avoid July-August due to heavy rainfall and landslides.' },
+            { question: 'Is registration required for Chardham Yatra 2026?', answer: 'Yes, biometric registration is mandatory for all pilgrims at Haridwar, Rishikesh, or Sonprayag. Carry Aadhaar card. We assist with registration process.' },
+            { question: 'How much luggage can we carry?', answer: 'Recommended 1 medium bag (15-20 kg) per person. Additional luggage can be stored in roof carrier. Pack light woolens, rain gear, and comfortable trekking shoes.' },
+            { question: 'Is Kedarnath trek difficult for senior citizens?', answer: 'The 20 km Kedarnath trek is strenuous. Pony (₹3000-4000), Palki (₹8000-12000), or Helicopter (₹7000-8000 one way) options available for seniors.' },
+            { question: 'What is included in the tempo traveller package price?', answer: 'Price includes vehicle with driver, fuel, toll taxes, parking charges, driver allowance, and all state permits. Food, accommodation, entry tickets, and helicopter are extra.' },
+            { question: 'Can we customize the Chardham Yatra itinerary?', answer: 'Yes, we offer customized packages. Add Hemkund Sahib, Rishikesh stay, or extend Badrinath visit. Contact us for personalized itinerary.' }
         ],
-        seoTitle: 'Delhi to Chardham Yatra Tempo Traveller | 9-26 Seater Package 2026',
-        seoDesc: 'Book Delhi to Chardham Yatra Tempo Traveller. 12 Days package for Yamunotri, Gangotri, Kedarnath, Badrinath. Starting ₹65k. Experienced hill drivers.',
+        seoTitle: 'Delhi to Chardham Yatra Tempo Traveller 2026 | 12 Day Package ₹84,000',
+        seoDesc: 'Book Delhi to Chardham Yatra by AC Tempo Traveller. 12-day pilgrimage to Yamunotri, Gangotri, Kedarnath, Badrinath. 12-26 seater options. Experienced hill drivers. Call 7668570551.',
         images: {
             hero: '/images/chardham/chardham-yatra-delhi-hero.png',
             map: '/images/chardham/route-map-delhi.jpg'
