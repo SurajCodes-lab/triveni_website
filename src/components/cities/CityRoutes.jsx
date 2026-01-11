@@ -3,376 +3,339 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, MapPin, Eye, Car, Users, Info, ArrowRight, Phone } from 'lucide-react';
+import {
+  Clock, MapPin, Car, Users, ArrowRight, Phone, Star,
+  Sparkles, Navigation, ChevronRight, Zap, Shield, MapPinned
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
 import { phoneNumber } from "@/utilis/data";
+import { BsWhatsapp } from 'react-icons/bs';
 
-// Helper function to create route slug - handles multi-word city names
+// Helper function to create route slug
 function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
   return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
+// Destination images/icons mapping
+const destinationIcons = {
+  'Delhi': '🏛️', 'Agra': '🕌', 'Jaipur': '🏰', 'Manali': '🏔️', 'Shimla': '❄️',
+  'Haridwar': '🙏', 'Rishikesh': '🧘', 'Varanasi': '🪔', 'Udaipur': '🚣', 'Jodhpur': '🏯',
+  'Dharamshala': '⛰️', 'Amritsar': '🛕', 'Kasauli': '🌲', 'Kasol': '🏕️', 'Mussoorie': '🌄',
+  'Nainital': '🏞️', 'Jim Corbett': '🐅', 'Dehradun': '🌳', 'Chandigarh': '🌳',
+  'default': '📍'
+};
+
 const CityRoutes = ({ cityName }) => {
   const [activeTab, setActiveTab] = useState('oneWay');
-  const [expandedRoutes, setExpandedRoutes] = useState({});
-  const [showAllRoutes, setShowAllRoutes] = useState(false);
+  const [hoveredRoute, setHoveredRoute] = useState(null);
+  const [showAllRoutes, setShowAllRoutes] = useState(true); // Show all routes by default
 
-  // Memoize routes data
-  const routes = useMemo(() => 
-    cityRoutesData[cityName] || defaultRoutes[cityName] || [], 
+  const routes = useMemo(() =>
+    cityRoutesData[cityName] || defaultRoutes[cityName] || [],
     [cityName]
   );
 
-  // Memoize vehicle image mapping
-  const getVehicleImage = useCallback((vehicleType) => {
-    const vehicleImageMap = {
-      'Sedan': '/images/car/car1.webp',
-      'SUV Ertiga': '/images/car/car2.webp', 
-      'SUV Innova': '/images/car/car2.webp',
-      'Tempo Traveller': '/images/tempo/17_seater.jpg',
-      'Bus': '/images/car/luxury_bus.webp'
-    };
-    return vehicleImageMap[vehicleType] || '/images/car/car1.webp';
-  }, []);
-
-  // Optimized WhatsApp handler
-  const handleBookNow = useCallback((destination = '') => {
-    const message = destination 
-      ? `Hi, I want to book a cab from ${cityName} to ${destination}. Please share pricing and availability.`
-      : `Hi, I want to book a cab from ${cityName}. Please share pricing and availability.`;
+  const handleWhatsApp = useCallback((destination) => {
+    const message = `Hi, I want to book a ${activeTab === 'roundTrip' ? 'round trip' : 'one-way'} cab from ${cityName} to ${destination}. Please share pricing.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-  }, [cityName]);
+  }, [cityName, activeTab]);
 
-  // Memoized vehicle filtering functions
-  const getFilteredVehicles = useCallback((prices) => {
-    if (!prices) return [];
-
-    if (activeTab === 'oneWay') {
-      return prices.filter(price =>
-        price.vehicle &&
-        !price.vehicle.toLowerCase().includes('bus') &&
-        !price.vehicle.toLowerCase().includes('tempo')
-      );
-    }
-    return prices;
-  }, [activeTab]);
-
-  const getRoundTripOnlyVehicles = useCallback((prices) => {
-    if (!prices) return [];
-    return prices.filter(price =>
-      price.vehicle && (
-        price.vehicle.toLowerCase().includes('bus') ||
-        price.vehicle.toLowerCase().includes('tempo')
-      )
-    );
-  }, []);
-
-  // Memoized starting price calculation
   const getStartingPrice = useCallback((route) => {
-    const filteredPrices = getFilteredVehicles(route.prices);
-    if (!filteredPrices || filteredPrices.length === 0) return "₹2760";
-    
-    const lowestPrice = Math.min(...filteredPrices.map(p => {
+    if (!route.prices || route.prices.length === 0) return "2,760";
+    const carPrices = route.prices.filter(p =>
+      p.vehicle && (p.vehicle.includes('Sedan') || p.vehicle.includes('SUV'))
+    );
+    const prices = carPrices.length > 0 ? carPrices : route.prices;
+    const lowestPrice = Math.min(...prices.map(p => {
       const price = activeTab === 'oneWay' ? p.price : p.roundTrip;
       return parseInt(price.replace('₹', '').replace(',', ''));
     }));
-    return `₹${lowestPrice.toLocaleString()}`;
-  }, [activeTab, getFilteredVehicles]);
+    return lowestPrice.toLocaleString();
+  }, [activeTab]);
 
-  // Optimized toggle functions
-  const toggleVehicleOptions = useCallback((index) => {
-    setExpandedRoutes(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  }, []);
-
-  const toggleShowAllRoutes = useCallback(() => {
-    setShowAllRoutes(prev => !prev);
-  }, []);
-
-  // Memoized route heading generator - consistent format for all routes
-  const getRouteHeading = useCallback((cityName, destination, index) => {
-    return `${cityName} to ${destination}`;
-  }, []);
-
-  // Memoized routes to display
   const routesToDisplay = useMemo(() => {
     if (!routes || !Array.isArray(routes)) return [];
-    const maxRoutes = showAllRoutes ? routes.length : 6;
-    return routes.slice(0, maxRoutes);
+    return showAllRoutes ? routes : routes.slice(0, 8);
   }, [routes, showAllRoutes]);
 
-  // Empty state component
-  const EmptyState = () => (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 text-center">
-      <div className="mb-4">
-        <Car className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">
-          No routes available for {cityName}
-        </h3>
-        <p className="text-gray-500 text-sm mb-4">
-          Contact us for custom routes and competitive pricing for your travel needs.
-        </p>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        <button
-          onClick={() => handleBookNow()}
-          className="bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
-        >
-          <Phone className="w-4 h-4" />
-          Call {phoneNumber}
-        </button>
-        <Link
-          href="/contact"
-          className="bg-black text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-        >
-          Contact Us
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-    </div>
-  );
-
-  // Vehicle list component
-  const VehicleList = ({ vehicles, isExpanded, routeIndex, destination }) => (
-    <div className="space-y-2">
-      {vehicles.map((price, priceIndex) => (
-        <div key={priceIndex} className="flex justify-between items-center py-1">
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            <Car className="w-3 h-3 md:w-4 md:h-4 text-gray-500 flex-shrink-0" />
-            <span className="text-sm font-medium truncate">{price.vehicle}</span>
-            {price.capacity && (
-              <span className="text-xs text-gray-500 hidden sm:inline">
-                ({price.capacity})
-              </span>
-            )}
-          </div>
-          <div className="font-semibold text-sm md:text-base">
-            {activeTab === 'oneWay' ? price.price : price.roundTrip}
-          </div>
-        </div>
-      ))}
-      
-      {vehicles.length > 2 && (
-        <button
-          className="w-full text-center text-xs md:text-sm text-gray-500 hover:text-gray-700 transition-colors py-1"
-          onClick={() => toggleVehicleOptions(routeIndex)}
-        >
-          {isExpanded ? 'Show less ˄' : `Show ${vehicles.length - 2} more ˅`}
-        </button>
-      )}
-    </div>
-  );
-
-  // Round trip only vehicles info
-  const RoundTripInfo = ({ vehicles, destination }) => (
-    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4">
-      <div className="flex items-start gap-2">
-        <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-        <div className="flex-1 min-w-0">
-          <p className="text-sm text-blue-700 font-medium mb-2">
-            Additional vehicles for round trips:
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {(vehicles || []).slice(0, 2).map((vehicle, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-sm">
-                <div className="relative w-6 h-4 rounded overflow-hidden bg-white flex-shrink-0">
-                  <Image
-                    src={getVehicleImage(vehicle.vehicle)}
-                    alt={vehicle.vehicle}
-                    fill
-                    className="object-contain"
-                    sizes="24px"
-                  />
-                </div>
-                <span className="font-medium text-blue-800 truncate">
-                  {vehicle.vehicle}
-                </span>
-                <span className="text-blue-600 text-xs">
-                  {vehicle.roundTrip}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-blue-600 mt-2">
-            💡 Switch to "Round Trip" to book these options!
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+  const getDestinationIcon = (destination) => {
+    return destinationIcons[destination] || destinationIcons['default'];
+  };
 
   if (!routes || routes.length === 0) {
     return (
-      <div className="space-y-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <h2 className="text-xl md:text-2xl font-bold">
-            Popular Routes from {cityName}
-          </h2>
+      <div className="py-12">
+        <div className="text-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Navigation className="w-10 h-10 text-slate-400" />
+          </div>
+          <h3 className="text-xl font-bold text-slate-700 mb-2">No Routes Available</h3>
+          <p className="text-slate-500 mb-6">Contact us for custom routes from {cityName}</p>
+          <a
+            href={`tel:${phoneNumber}`}
+            className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-6 py-3 rounded-full font-bold hover:bg-yellow-400 transition-all"
+          >
+            <Phone className="w-5 h-5" />
+            Call Now
+          </a>
         </div>
-        <EmptyState />
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <h2 className="text-xl md:text-2xl font-bold">
-          Popular Routes from {cityName}
-        </h2>
-        
-        {/* Tab Toggle */}
-        <div className="flex bg-gray-100 rounded-lg p-1 w-full md:w-auto">
+    <section className="py-12 md:py-16">
+      {/* Section Header */}
+      <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4"
+        >
+          <Sparkles className="w-4 h-4 text-[#D4A017]" />
+          <span className="text-sm font-semibold text-[#D4A017]">POPULAR DESTINATIONS</span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-3xl md:text-4xl font-black text-slate-900 mb-4"
+        >
+          Routes from <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{cityName}</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-slate-600 max-w-2xl mx-auto mb-8"
+        >
+          Book premium cabs to {routes.length}+ destinations with transparent pricing
+        </motion.p>
+
+        {/* Trip Type Toggle */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="inline-flex bg-slate-100 p-1.5 rounded-2xl"
+        >
           <button
             onClick={() => setActiveTab('oneWay')}
-            className={`flex-1 md:flex-none px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
               activeTab === 'oneWay'
-                ? 'bg-white text-black shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white text-slate-900 shadow-lg shadow-slate-200/50'
+                : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             One Way
           </button>
           <button
             onClick={() => setActiveTab('roundTrip')}
-            className={`flex-1 md:flex-none px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
               activeTab === 'roundTrip'
-                ? 'bg-white text-black shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white text-slate-900 shadow-lg shadow-slate-200/50'
+                : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             Round Trip
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Routes Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-        {routesToDisplay.map((route, index) => {
-          const filteredVehicles = getFilteredVehicles(route.prices) || [];
-          const roundTripOnlyVehicles = getRoundTripOnlyVehicles(route.prices) || [];
-          const isExpanded = expandedRoutes[index];
-          const vehiclesToShow = isExpanded ? filteredVehicles : (filteredVehicles || []).slice(0, 2);
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+        {routesToDisplay.map((route, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.05 }}
+            onMouseEnter={() => setHoveredRoute(index)}
+            onMouseLeave={() => setHoveredRoute(null)}
+            className="group relative"
+          >
+            <div className={`relative bg-white rounded-2xl border-2 overflow-hidden transition-all duration-500 ${
+              hoveredRoute === index
+                ? 'border-[#FACF2D] shadow-2xl shadow-[#FACF2D]/20 -translate-y-2'
+                : 'border-slate-100 shadow-lg hover:shadow-xl'
+            }`}>
 
-          return (
-            <article key={index} className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 hover:shadow-lg transition-all duration-300">
-              {/* Route Header */}
-              <header className="flex justify-between items-start mb-4">
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg md:text-xl font-bold mb-2 leading-tight">
-                    {getRouteHeading(cityName, route.destination, index)}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-2 md:gap-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                      <span>{route.distance}</span>
+              {/* Top Gradient Bar */}
+              <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+
+              {/* Card Content */}
+              <div className="p-5">
+                {/* Destination Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 ${
+                      hoveredRoute === index
+                        ? 'bg-[#FACF2D] scale-110'
+                        : 'bg-slate-100'
+                    }`}>
+                      {getDestinationIcon(route.destination)}
                     </div>
-                    {route.time && (
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                        <span>{route.time}</span>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-lg leading-tight">
+                        {route.destination}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-1">
+                        <div className="flex items-center gap-1 text-slate-500 text-xs">
+                          <MapPin className="w-3 h-3" />
+                          <span>{route.distance}</span>
+                        </div>
+                        <span className="text-slate-300">•</span>
+                        <div className="flex items-center gap-1 text-slate-500 text-xs">
+                          <Clock className="w-3 h-3" />
+                          <span>{route.time}</span>
+                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
-                
-                <div className="text-right ml-4 flex-shrink-0">
-                  <div className="text-xs md:text-sm text-gray-500">Starting from</div>
-                  <div className="text-lg md:text-2xl font-bold text-green-600">
-                    {getStartingPrice(route)}
+
+                {/* Tags */}
+                {route.tags && route.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {route.tags.slice(0, 2).map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 bg-slate-50 text-slate-600 text-xs rounded-full border border-slate-100"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Price Section */}
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-xl p-4 mb-4">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="text-xs text-slate-500 mb-1">Starting from</p>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-2xl font-black text-slate-900">₹{getStartingPrice(route)}</span>
+                        <span className="text-xs text-slate-400">/{activeTab === 'roundTrip' ? 'round trip' : 'one way'}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                      <Zap className="w-3 h-3" />
+                      <span className="text-xs font-semibold">Best Price</span>
+                    </div>
                   </div>
                 </div>
-              </header>
 
-              {/* Description */}
-              <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                {route.description}
-              </p>
-
-              {/* Tags */}
-              {route.tags && (
-                <div className="flex flex-wrap gap-1 md:gap-2 mb-4">
-                  {route.tags.slice(0, 3).map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {route.tags.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                      +{route.tags.length - 3}
-                    </span>
-                  )}
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  <Link
+                    href={`/${createRouteSlug(cityName, route.destination)}`}
+                    className="flex-1 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  >
+                    View Details
+                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                  <button
+                    onClick={() => handleWhatsApp(route.destination)}
+                    className="w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-105"
+                    title="Book via WhatsApp"
+                  >
+                    <BsWhatsapp className="w-5 h-5" />
+                  </button>
                 </div>
-              )}
-
-              {/* Vehicle Options */}
-              {filteredVehicles.length > 0 && (
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center">
-                    <Users className="w-4 h-4 mr-1" />
-                    Available Vehicles
-                  </h4>
-                  <VehicleList 
-                    vehicles={vehiclesToShow}
-                    isExpanded={isExpanded}
-                    routeIndex={index}
-                    destination={route.destination}
-                  />
-                </div>
-              )}
-
-              {/* Round Trip Only Vehicles */}
-              {activeTab === 'oneWay' && roundTripOnlyVehicles.length > 0 && (
-                <div className="mb-4">
-                  <RoundTripInfo 
-                    vehicles={roundTripOnlyVehicles}
-                    destination={route.destination}
-                  />
-                </div>
-              )}
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
-                <Link
-                  href={`/${createRouteSlug(cityName, route.destination)}`}
-                  className="flex-1 bg-black text-white py-2 md:py-3 px-4 rounded-lg text-center text-sm font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-                >
-                  <Eye className="w-4 h-4" />
-                  View Details
-                </Link>
-                <button
-                  onClick={() => handleBookNow(route.destination)}
-                  className="flex-1 bg-green-600 text-white py-2 md:py-3 px-4 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  Book Now
-                </button>
               </div>
-            </article>
-          );
-        })}
+
+              {/* Hover Shine Effect */}
+              <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700 ${
+                hoveredRoute === index ? 'translate-x-full' : ''
+              }`} />
+            </div>
+          </motion.div>
+        ))}
       </div>
 
-      {/* Show More/Less Button */}
-      {routes.length > 6 && (
-        <div className="text-center">
+      {/* Show More Button */}
+      {routes.length > 8 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-10"
+        >
           <button
-            onClick={toggleShowAllRoutes}
-            className="bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors flex items-center gap-2 mx-auto"
+            onClick={() => setShowAllRoutes(!showAllRoutes)}
+            className="group inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:shadow-xl"
           >
-            {showAllRoutes ? 'Show Less Routes' : `Show ${routes.length - 6} More Routes`}
-            <ArrowRight className={`w-4 h-4 transition-transform ${showAllRoutes ? 'rotate-180' : ''}`} />
+            {showAllRoutes ? (
+              <>
+                Show Less Routes
+                <ArrowRight className="w-5 h-5 rotate-[-90deg] group-hover:-translate-y-1 transition-transform" />
+              </>
+            ) : (
+              <>
+                Show All {routes.length} Routes
+                <ArrowRight className="w-5 h-5 rotate-90 group-hover:translate-y-1 transition-transform" />
+              </>
+            )}
           </button>
-        </div>
+        </motion.div>
       )}
-    </div>
+
+      {/* Bottom CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-12 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 md:p-10 text-center relative overflow-hidden"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-40 h-40 bg-[#FACF2D] rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-60 h-60 bg-[#FACF2D] rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Shield className="w-5 h-5 text-[#FACF2D]" />
+            <span className="text-[#FACF2D] font-semibold text-sm">TRUSTED BY 50,000+ TRAVELERS</span>
+          </div>
+
+          <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
+            Can't find your destination?
+          </h3>
+          <p className="text-slate-400 mb-6 max-w-lg mx-auto">
+            We cover 500+ routes across India. Call us for custom routes and special packages!
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`tel:${phoneNumber}`}
+              className="inline-flex items-center justify-center gap-2 bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg shadow-[#FACF2D]/25"
+            >
+              <Phone className="w-5 h-5" />
+              Call {phoneNumber}
+            </a>
+            <a
+              href={`https://wa.me/${phoneNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 border border-white/20"
+            >
+              <BsWhatsapp className="w-5 h-5" />
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 };
 
