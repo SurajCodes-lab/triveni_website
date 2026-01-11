@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useCallback } from 'react';
-import { MapPin, Phone, Clock, Navigation, Mail } from 'lucide-react';
+import { MapPin, Phone, Clock, Navigation, Mail, Sparkles, Building2, CheckCircle, ArrowRight } from 'lucide-react';
 import { BsWhatsapp } from 'react-icons/bs';
+import { motion } from 'framer-motion';
 
-const OfficeCard = ({ office, cityName, isOrigin = false }) => {
-  // Optimized handlers with useCallback
+const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
   const handleCall = useCallback(() => {
     window.open(`tel:+91${office.contact.phone}`, '_blank');
   }, [office.contact.phone]);
@@ -20,12 +20,11 @@ const OfficeCard = ({ office, cityName, isOrigin = false }) => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
   }, [office.fullAddress]);
 
-  // Generate structured data for each office
   const generateOfficeStructuredData = () => ({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": office.name,
-    "description": `Taxi service office in ${cityName} for cab booking, outstation trips and local tours. Professional drivers and verified vehicles available.`,
+    "description": `Taxi service office in ${cityName} for cab booking, outstation trips and local tours.`,
     "telephone": `+91${office.contact.phone}`,
     "address": {
       "@type": "PostalAddress",
@@ -44,149 +43,148 @@ const OfficeCard = ({ office, cityName, isOrigin = false }) => {
 
   return (
     <>
-      <script 
-        type="application/ld+json" 
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateOfficeStructuredData()) }}
       />
-      <article 
-        className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
-        itemScope 
+      <motion.article
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        className="group h-full"
+        itemScope
         itemType="https://schema.org/LocalBusiness"
       >
-        {/* Header */}
-        <header className="flex flex-col sm:flex-row justify-between items-start gap-3 mb-4">
-          <div className="flex-1">
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 leading-tight" itemProp="name">
-              {office.name}
-            </h3>
-            <div className="flex items-center gap-2">
-              <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                isOrigin 
-                  ? 'bg-blue-100 text-blue-700 border border-blue-200' 
-                  : 'bg-green-100 text-green-700 border border-green-200'
+        <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full flex flex-col">
+          {/* Top Gradient Bar */}
+          <div className={`h-1.5 bg-gradient-to-r ${isOrigin ? 'from-blue-400 via-blue-500 to-blue-600' : 'from-green-400 via-emerald-400 to-green-500'}`} />
+
+          <div className="p-6 flex-1 flex flex-col">
+            {/* Header */}
+            <div className="flex items-start gap-4 mb-5">
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
+                isOrigin
+                  ? 'bg-gradient-to-br from-blue-100 to-blue-50 group-hover:bg-blue-500'
+                  : 'bg-gradient-to-br from-green-100 to-emerald-50 group-hover:bg-green-500'
               }`}>
-                {isOrigin ? '📍 Pickup Office - Taxi Booking' : '🎯 Drop Office - Taxi Service'}
-              </span>
+                <Building2 className={`w-7 h-7 transition-colors ${isOrigin ? 'text-blue-600 group-hover:text-white' : 'text-green-600 group-hover:text-white'}`} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-bold text-slate-900 mb-2 leading-tight" itemProp="name">
+                  {office.name}
+                </h3>
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full ${
+                  isOrigin
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'bg-green-100 text-green-700'
+                }`}>
+                  {isOrigin ? '📍 Pickup Office' : '🎯 Drop Office'}
+                </span>
+              </div>
             </div>
-          </div>
-          
-          {/* Contact Info - Mobile Optimized */}
-          <div className="text-right flex-shrink-0">
-            <div className="text-xs text-gray-500">Contact for Cab Booking</div>
-            <div className="font-semibold text-sm md:text-base" itemProp="telephone">
-              +91-{office.contact.phone}
-            </div>
-          </div>
-        </header>
 
-        {/* Address Section - Flexible Layout */}
-        <div className="mb-4 flex-1" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-          <div className="flex items-start gap-3 mb-3">
-            <MapPin className="w-4 h-4 text-gray-500 mt-1 flex-shrink-0" />
-            <div className="flex-1 min-w-0">
-              <p className="text-gray-700 font-medium text-sm md:text-base leading-relaxed" itemProp="streetAddress">
-                {office.address}
-              </p>
-              <p className="text-sm text-gray-500 mt-1">
-                <span itemProp="addressLocality">{cityName}</span>, <span itemProp="postalCode">{office.pincode}</span>
-                <meta itemProp="addressCountry" content="IN" />
-              </p>
-            </div>
-          </div>
-          
-          {office.landmark && (
-            <div className="ml-7 mb-3">
-              <p className="text-sm text-gray-600">
-                <span className="font-medium">Landmark:</span> {office.landmark}
-              </p>
-            </div>
-          )}
+            {/* Address */}
+            <div className="flex-1" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+              <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl p-4 mb-4">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#D4A017] mt-0.5 flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="text-slate-700 font-medium text-sm leading-relaxed" itemProp="streetAddress">
+                      {office.address}
+                    </p>
+                    <p className="text-sm text-slate-500 mt-1">
+                      <span itemProp="addressLocality">{cityName}</span> - <span itemProp="postalCode">{office.pincode}</span>
+                      <meta itemProp="addressCountry" content="IN" />
+                    </p>
+                    {office.landmark && (
+                      <p className="text-sm text-slate-500 mt-1">
+                        <span className="font-medium">Landmark:</span> {office.landmark}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-          {/* Operating Hours */}
-          <div className="flex items-center gap-2 text-sm text-gray-600 ml-7" itemProp="openingHours">
-            <Clock className="w-4 h-4 flex-shrink-0" />
-            <span className="font-medium text-green-600">{office.timings}</span>
+              {/* Timing & Contact */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50/50 rounded-xl p-3 border border-green-100">
+                  <div className="flex items-center gap-2" itemProp="openingHours">
+                    <Clock className="w-4 h-4 text-green-600" />
+                    <span className="text-sm font-bold text-green-700">{office.timings}</span>
+                  </div>
+                </div>
+                <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl p-3 border border-slate-100">
+                  <div className="flex items-center gap-2" itemProp="telephone">
+                    <Phone className="w-4 h-4 text-slate-600" />
+                    <span className="text-sm font-bold text-slate-700">+91-{office.contact.phone}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-2">
+                <motion.button
+                  onClick={handleCall}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-[#FACF2D] text-black py-3 px-4 rounded-xl text-sm font-bold hover:bg-yellow-400 transition-colors flex items-center justify-center gap-2"
+                  aria-label={`Call taxi office at ${office.contact.phone}`}
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Now
+                </motion.button>
+
+                <motion.button
+                  onClick={handleWhatsApp}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-green-500 text-white py-3 px-4 rounded-xl text-sm font-bold hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
+                  aria-label={`WhatsApp taxi office in ${cityName}`}
+                >
+                  <BsWhatsapp className="w-4 h-4" />
+                  WhatsApp
+                </motion.button>
+              </div>
+
+              <motion.button
+                onClick={handleGetDirections}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full bg-slate-900 text-white py-3 px-4 rounded-xl text-sm font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
+                aria-label={`Get directions to taxi office in ${cityName}`}
+              >
+                <Navigation className="w-4 h-4" />
+                Get Directions
+                <ArrowRight className="w-4 h-4" />
+              </motion.button>
+            </div>
           </div>
+
+          {/* Shine effect on hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
         </div>
-
-        {/* Action Buttons - Mobile Optimized */}
-        <footer className="space-y-2">
-          {/* Primary Actions */}
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={handleCall}
-              className="bg-green-600 text-white py-2.5 px-3 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
-              aria-label={`Call taxi office at ${office.contact.phone} for cab booking in ${cityName}`}
-            >
-              <Phone className="w-4 h-4" />
-              Call Now
-            </button>
-            
-            <button
-              onClick={handleWhatsApp}
-              className="bg-black text-white py-2.5 px-3 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-              aria-label={`WhatsApp taxi office for instant cab booking in ${cityName}`}
-            >
-              <BsWhatsapp className="w-4 h-4" />
-              WhatsApp
-            </button>
-          </div>
-
-          {/* Secondary Action */}
-          <button
-            onClick={handleGetDirections}
-            className="w-full bg-gray-100 text-gray-700 py-2.5 px-3 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
-            aria-label={`Get directions to taxi office in ${cityName}`}
-          >
-            <Navigation className="w-4 h-4" />
-            Get Directions
-          </button>
-        </footer>
-      </article>
+      </motion.article>
     </>
   );
 };
 
 const OfficeLocations = ({ originCity, destinationCity, offices }) => {
-  // Don't render if no offices found
   if (!offices || (!offices.origin && !offices.destination)) {
     return null;
   }
 
   const benefits = [
-    {
-      icon: "🤝",
-      text: "Personal taxi booking assistance",
-      color: "text-blue-600"
-    },
-    {
-      icon: "💰", 
-      text: "Transparent cab fare discussion",
-      color: "text-green-600"
-    },
-    {
-      icon: "🚗",
-      text: "Vehicle inspection available", 
-      color: "text-yellow-600"
-    },
-    {
-      icon: "🗺️",
-      text: "Custom outstation tour planning",
-      color: "text-purple-600"
-    },
-    {
-      icon: "🚨",
-      text: "24/7 emergency taxi support",
-      color: "text-red-600"
-    },
-    {
-      icon: "📍",
-      text: "Local area taxi expertise",
-      color: "text-indigo-600"
-    }
+    { icon: "🤝", text: "Personal taxi booking assistance" },
+    { icon: "💰", text: "Transparent cab fare discussion" },
+    { icon: "🚗", text: "Vehicle inspection available" },
+    { icon: "🗺️", text: "Custom outstation tour planning" },
+    { icon: "🚨", text: "24/7 emergency taxi support" },
+    { icon: "📍", text: "Local area taxi expertise" }
   ];
 
-  // Generate structured data for office locations section
   const generateOfficeListStructuredData = () => ({
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -200,10 +198,7 @@ const OfficeLocations = ({ originCity, destinationCity, offices }) => {
         "item": {
           "@type": "LocalBusiness",
           "name": offices.origin.name,
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": originCity
-          }
+          "address": { "@type": "PostalAddress", "addressLocality": originCity }
         }
       },
       offices.destination && {
@@ -212,10 +207,7 @@ const OfficeLocations = ({ originCity, destinationCity, offices }) => {
         "item": {
           "@type": "LocalBusiness",
           "name": offices.destination.name,
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": destinationCity
-          }
+          "address": { "@type": "PostalAddress", "addressLocality": destinationCity }
         }
       }
     ].filter(Boolean)
@@ -223,78 +215,99 @@ const OfficeLocations = ({ originCity, destinationCity, offices }) => {
 
   return (
     <>
-      <script 
-        type="application/ld+json" 
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateOfficeListStructuredData()) }}
       />
-      <section className="space-y-6" aria-labelledby="office-locations-heading">
+      <section className="space-y-8" aria-labelledby="office-locations-heading">
         {/* Header */}
-        <header>
-          <h2 id="office-locations-heading" className="text-xl md:text-2xl font-semibold mb-2">
-            Our Taxi Booking Offices - {originCity} & {destinationCity}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
+            <Building2 className="w-4 h-4 text-[#D4A017]" />
+            <span className="text-sm font-semibold text-[#D4A017]">OUR OFFICES</span>
+          </div>
+          <h2 id="office-locations-heading" className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+            Visit Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">Booking Offices</span>
           </h2>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            Visit our offices for hassle-free taxi booking, transparent cab fares and reliable service. 
-            Our experienced team is ready to assist you with personalized travel solutions for {originCity} to {destinationCity} trips.
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Get personalized assistance for your {originCity} to {destinationCity} trip at our local offices
           </p>
-        </header>
-        
+        </motion.div>
+
         {/* Office Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-          {/* Origin Office */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {offices.origin && (
-            <OfficeCard 
-              office={offices.origin} 
+            <OfficeCard
+              office={offices.origin}
               cityName={originCity}
               isOrigin={true}
+              index={0}
             />
           )}
-          
-          {/* Destination Office */}
           {offices.destination && (
-            <OfficeCard 
-              office={offices.destination} 
+            <OfficeCard
+              office={offices.destination}
               cityName={destinationCity}
               isOrigin={false}
+              index={1}
             />
           )}
         </div>
-        
-        {/* Benefits Section - Enhanced */}
-        <aside className="bg-gradient-to-r from-blue-50 via-green-50 to-yellow-50 rounded-xl p-4 md:p-6 border border-gray-200">
-          <header className="mb-4">
-            <h3 className="font-semibold text-lg md:text-xl text-gray-800 mb-2">
-              Why Visit Our Taxi Booking Offices?
-            </h3>
-            <p className="text-sm text-gray-600">
-              Get personalized cab service and expert guidance for your {originCity} to {destinationCity} travel needs
-            </p>
-          </header>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-            {benefits.map((benefit, index) => (
-              <div 
-                key={index} 
-                className="flex items-center gap-3 bg-white/70 backdrop-blur-sm p-3 rounded-lg border border-white/50 hover:bg-white/90 transition-all duration-200"
-              >
-                <span className="text-lg flex-shrink-0" role="img" aria-hidden="true">
-                  {benefit.icon}
-                </span>
-                <span className={`text-sm font-medium ${benefit.color} leading-tight`}>
-                  {benefit.text}
-                </span>
-              </div>
-            ))}
-          </div>
 
-          {/* Additional Info */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <p className="text-xs text-gray-500 text-center">
-              💡 <strong>Pro Tip:</strong> Visit our offices to get exclusive taxi deals, best cab fares and 
-              personalized travel recommendations from our local experts for {originCity} to {destinationCity} trips
-            </p>
+        {/* Benefits Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-40 h-40 bg-[#FACF2D] rounded-full blur-3xl" />
+              <div className="absolute bottom-0 right-0 w-60 h-60 bg-[#FACF2D] rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#FACF2D] flex items-center justify-center">
+                  <Sparkles className="w-6 h-6 text-black" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Why Visit Our Offices?</h3>
+                  <p className="text-white/60 text-sm">Get personalized taxi booking assistance</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {benefits.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:bg-white/20 transition-all"
+                  >
+                    <span className="text-2xl">{benefit.icon}</span>
+                    <span className="text-white text-sm font-medium">{benefit.text}</span>
+                    <CheckCircle className="w-4 h-4 text-[#FACF2D] ml-auto flex-shrink-0" />
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <p className="text-white/50 text-sm text-center">
+                  💡 <span className="font-medium text-[#FACF2D]">Pro Tip:</span> Visit our offices for exclusive deals and personalized travel recommendations
+                </p>
+              </div>
+            </div>
           </div>
-        </aside>
+        </motion.div>
       </section>
     </>
   );

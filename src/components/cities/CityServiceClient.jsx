@@ -552,24 +552,6 @@ export default function CityServiceClient({
       {/* ==================== ROUTES SECTION ==================== */}
       <section id="routes" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
-              <Route className="w-4 h-4" />
-              <span className="text-sm font-bold">OUTSTATION ROUTES</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Popular Routes from {formattedCityName}
-            </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Book one-way or round-trip taxi to all major cities with transparent pricing
-            </p>
-          </motion.div>
-
           <CityRoutes cityName={formattedCityName} />
         </div>
       </section>

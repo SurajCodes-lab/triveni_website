@@ -95,6 +95,7 @@ export default function RouteClientContent({
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [expandedFaq, setExpandedFaq] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
   useEffect(() => {
     setMounted(true);
@@ -444,10 +445,10 @@ export default function RouteClientContent({
             </p>
           </motion.div>
 
-          {/* Vehicle Grid */}
+          {/* Vehicle Grid - Modern Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {filteredVehicles.length > 0 ? filteredVehicles.map((vehicle, index) => {
-              // Extract seats from vehicle name if not in map (e.g., "27 Seater Coach" -> 27)
+              // Extract seats from vehicle name if not in map
               const getDefaultVehicleInfo = (name) => {
                 const match = name.match(/(\d+)\s*seater/i);
                 if (match) {
@@ -459,6 +460,7 @@ export default function RouteClientContent({
               };
               const vehicleInfo = vehicleCapacityMap[vehicle.vehicle] || getDefaultVehicleInfo(vehicle.vehicle);
               const isSelected = selectedVehicle === index;
+              const isHovered = hoveredVehicle === index;
               const currentPrice = tripType === 'oneWay' ? vehicle.price : vehicle.roundTrip;
 
               return (
@@ -467,111 +469,168 @@ export default function RouteClientContent({
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.05 }}
+                  onMouseEnter={() => setHoveredVehicle(index)}
+                  onMouseLeave={() => setHoveredVehicle(null)}
                   onClick={() => setSelectedVehicle(isSelected ? null : index)}
-                  className={`relative bg-white rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
-                    isSelected
-                      ? 'ring-2 ring-[#FACF2D] shadow-xl shadow-[#FACF2D]/10'
-                      : 'border border-slate-200 hover:border-slate-300 hover:shadow-lg'
-                  }`}
+                  className="group relative cursor-pointer"
                 >
-                  {/* Selection Indicator */}
-                  {isSelected && (
-                    <div className="absolute top-4 right-4 z-20 w-8 h-8 bg-[#FACF2D] rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 text-black" />
-                    </div>
-                  )}
+                  <div className={`relative bg-white rounded-2xl border-2 overflow-hidden transition-all duration-500 ${
+                    isSelected
+                      ? 'border-[#FACF2D] shadow-2xl shadow-[#FACF2D]/30 -translate-y-2'
+                      : isHovered
+                        ? 'border-[#FACF2D] shadow-2xl shadow-[#FACF2D]/20 -translate-y-2'
+                        : 'border-slate-100 shadow-lg hover:shadow-xl'
+                  }`}>
 
-                  {/* Image */}
-                  <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-50">
-                    <Image
-                      src={vehicleImageMap[vehicle.vehicle] || '/images/car/car1.webp'}
-                      alt={`${vehicle.vehicle} cab from ${formattedCityName} to ${formattedDestination}`}
-                      fill
-                      className="object-contain p-4"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
+                    {/* Top Gradient Bar */}
+                    <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-slate-900">{vehicle.vehicle}</h3>
-                        <div className="flex items-center gap-3 mt-1 text-sm text-slate-500">
-                          <span className="flex items-center gap-1">
-                            <Users className="w-4 h-4" />
-                            {vehicleInfo.seats} Seats
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Snowflake className="w-4 h-4" />
-                            AC
-                          </span>
+                    {/* Selection Badge */}
+                    {isSelected && (
+                      <div className="absolute top-6 right-4 z-20">
+                        <div className="bg-[#FACF2D] text-black px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+                          <CheckCircle className="w-4 h-4" />
+                          <span className="text-xs font-bold">Selected</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg">
-                        <Star className="w-4 h-4" fill="currentColor" />
-                        <span className="font-bold text-sm">4.9</span>
+                    )}
+
+                    {/* Best Value Badge for first vehicle */}
+                    {index === 0 && !isSelected && (
+                      <div className="absolute top-6 right-4 z-20">
+                        <div className="bg-green-500 text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
+                          <Zap className="w-3 h-3" />
+                          <span className="text-xs font-bold">Best Value</span>
+                        </div>
                       </div>
+                    )}
+
+                    {/* Image Section */}
+                    <div className="relative h-52 bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden">
+                      <Image
+                        src={vehicleImageMap[vehicle.vehicle] || '/images/car/car1.webp'}
+                        alt={`${vehicle.vehicle} cab`}
+                        fill
+                        className={`object-contain p-6 transition-transform duration-500 ${isHovered ? 'scale-110' : ''}`}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      {/* Subtle gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
                     </div>
 
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {['GPS', 'Music', 'Charger'].map((f, i) => (
-                        <span key={i} className="bg-slate-100 text-slate-600 px-3 py-1 rounded-lg text-xs font-medium">
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Price & CTA */}
-                    <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                      <div>
-                        <p className="text-sm text-slate-500">
-                          {tripType === 'roundTrip' ? 'Round Trip' : 'One Way'}
-                        </p>
-                        <p className="text-2xl font-black text-slate-900">{currentPrice}</p>
+                    {/* Content */}
+                    <div className="p-5">
+                      {/* Vehicle Name & Rating */}
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="text-xl font-black text-slate-900">{vehicle.vehicle}</h3>
+                          <div className="flex items-center gap-3 mt-1">
+                            <span className="flex items-center gap-1 text-slate-500 text-sm">
+                              <Users className="w-4 h-4" />
+                              {vehicleInfo.seats} Seats
+                            </span>
+                            <span className="text-slate-300">•</span>
+                            <span className="flex items-center gap-1 text-slate-500 text-sm">
+                              <Snowflake className="w-4 h-4" />
+                              AC
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-lg border border-amber-200">
+                          <Star className="w-3.5 h-3.5" fill="currentColor" />
+                          <span className="font-bold text-sm">4.9</span>
+                        </div>
                       </div>
+
+                      {/* Features */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {[
+                          { icon: '📍', text: 'GPS' },
+                          { icon: '🎵', text: 'Music' },
+                          { icon: '🔌', text: 'Charger' },
+                          { icon: '💧', text: 'Water' }
+                        ].map((f, i) => (
+                          <span key={i} className="bg-slate-50 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-100 flex items-center gap-1">
+                            <span>{f.icon}</span>
+                            {f.text}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Price Section */}
+                      <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-xl p-4 mb-4">
+                        <div className="flex items-end justify-between">
+                          <div>
+                            <p className="text-xs text-slate-500 mb-1">
+                              {tripType === 'roundTrip' ? 'Round Trip' : 'One Way'} Price
+                            </p>
+                            <div className="flex items-baseline gap-1">
+                              <span className="text-3xl font-black text-slate-900">{currentPrice}</span>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xs text-slate-400">Includes</p>
+                            <p className="text-xs text-green-600 font-semibold">Driver + Fuel + AC</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* CTA Button */}
                       <motion.button
                         onClick={(e) => { e.stopPropagation(); handleWhatsApp(); }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-slate-900 hover:bg-[#FACF2D] text-white hover:text-black px-6 py-3 rounded-xl font-bold text-sm transition-colors"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
+                          isSelected || isHovered
+                            ? 'bg-[#FACF2D] text-black shadow-lg shadow-[#FACF2D]/25'
+                            : 'bg-slate-900 text-white hover:bg-slate-800'
+                        }`}
                       >
-                        Book Now
+                        <BsWhatsapp className="w-4 h-4" />
+                        Book on WhatsApp
                       </motion.button>
                     </div>
+
+                    {/* Shine Effect on Hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full transition-transform duration-700 pointer-events-none ${
+                      isHovered ? 'translate-x-full' : ''
+                    }`} />
                   </div>
                 </motion.div>
               );
             }) : (
-              // Fallback vehicles
+              // Fallback vehicles with same modern style
               [
-                { name: 'Sedan', price: '₹12/km', seats: '4', image: '/images/car/car1.webp' },
-                { name: 'SUV Ertiga', price: '₹15/km', seats: '6', image: '/images/car/car2.webp' },
-                { name: 'SUV Innova', price: '₹18/km', seats: '7', image: '/images/car/car2.webp' }
+                { name: 'Sedan', price: '₹2,760', seats: '4', image: '/images/car/car1.webp' },
+                { name: 'SUV Ertiga', price: '₹3,450', seats: '6', image: '/images/car/car2.webp' },
+                { name: 'SUV Innova', price: '₹4,140', seats: '7', image: '/images/car/car2.webp' }
               ].map((v, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                  transition={{ delay: i * 0.05 }}
+                  className="group relative"
                 >
-                  <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-50">
-                    <Image src={v.image} alt={v.name} fill className="object-contain p-4" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{v.name}</h3>
-                    <div className="flex items-center gap-3 mb-4 text-sm text-slate-500">
-                      <span className="flex items-center gap-1"><Users className="w-4 h-4" />{v.seats} Seats</span>
-                      <span className="flex items-center gap-1"><Snowflake className="w-4 h-4" />AC</span>
+                  <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden shadow-lg hover:shadow-2xl hover:border-[#FACF2D] hover:-translate-y-2 transition-all duration-500">
+                    <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+                    <div className="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100">
+                      <Image src={v.image} alt={v.name} fill className="object-contain p-6 group-hover:scale-110 transition-transform duration-500" />
                     </div>
-                    <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                      <p className="text-2xl font-black text-slate-900">{v.price}</p>
-                      <button onClick={handleWhatsApp} className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-sm">
-                        Book Now
+                    <div className="p-5">
+                      <h3 className="text-xl font-black text-slate-900 mb-2">{v.name}</h3>
+                      <div className="flex items-center gap-3 mb-4 text-sm text-slate-500">
+                        <span className="flex items-center gap-1"><Users className="w-4 h-4" />{v.seats} Seats</span>
+                        <span className="flex items-center gap-1"><Snowflake className="w-4 h-4" />AC</span>
+                      </div>
+                      <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                        <p className="text-3xl font-black text-slate-900">{v.price}</p>
+                      </div>
+                      <button onClick={handleWhatsApp} className="w-full bg-slate-900 hover:bg-[#FACF2D] text-white hover:text-black py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+                        <BsWhatsapp className="w-4 h-4" />
+                        Book on WhatsApp
                       </button>
                     </div>
                   </div>
@@ -759,8 +818,12 @@ export default function RouteClientContent({
             viewport={{ once: true }}
             className="text-center mb-12"
           >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
+              <Route className="w-4 h-4 text-[#D4A017]" />
+              <span className="text-sm font-semibold text-[#D4A017]">ROUTE GUIDE</span>
+            </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              {formattedCityName} to {formattedDestination} Route Guide
+              {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Everything you need to know about your journey
@@ -774,28 +837,38 @@ export default function RouteClientContent({
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-slate-50 rounded-3xl p-6 md:p-8"
+              className="group"
             >
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Route className="w-5 h-5 text-[#FACF2D]" />
-                Route Details
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                  <span className="text-slate-600">Distance</span>
-                  <span className="font-bold text-slate-900">{route.distance || estimatedDistance}</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                  <span className="text-slate-600">Duration</span>
-                  <span className="font-bold text-slate-900">{route.time || estimatedTime}</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                  <span className="text-slate-600">Best Route</span>
-                  <span className="font-bold text-slate-900">NH48 Highway</span>
-                </div>
-                <div className="flex justify-between items-center py-3">
-                  <span className="text-slate-600">Road Condition</span>
-                  <span className="font-bold text-emerald-600">Excellent</span>
+              <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
+                <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FACF2D]/20 to-yellow-100 flex items-center justify-center group-hover:bg-[#FACF2D] transition-colors">
+                      <Route className="w-6 h-6 text-[#D4A017] group-hover:text-black transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900">Route Details</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl px-4">
+                      <span className="text-slate-600">Distance</span>
+                      <span className="font-bold text-slate-900">{route.distance || estimatedDistance}</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl px-4">
+                      <span className="text-slate-600">Duration</span>
+                      <span className="font-bold text-slate-900">{route.time || estimatedTime}</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl px-4">
+                      <span className="text-slate-600">Best Route</span>
+                      <span className="font-bold text-slate-900">NH48 Highway</span>
+                    </div>
+                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-green-50 to-emerald-50/50 rounded-xl px-4">
+                      <span className="text-slate-600">Road Condition</span>
+                      <span className="font-bold text-emerald-600 flex items-center gap-1">
+                        <CheckCircle className="w-4 h-4" />
+                        Excellent
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -806,33 +879,43 @@ export default function RouteClientContent({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-slate-50 rounded-3xl p-6 md:p-8"
+              className="group"
             >
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Clock className="w-5 h-5 text-[#FACF2D]" />
-                Best Travel Times
-              </h3>
-              <div className="space-y-4">
-                <div className="bg-white rounded-2xl p-4 border border-slate-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-slate-900">Early Morning</span>
-                    <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs font-bold">Fastest</span>
+              <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
+                <div className="h-1.5 bg-gradient-to-r from-blue-400 via-sky-400 to-blue-500" />
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-sky-50 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
+                      <Clock className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900">Best Travel Times</h3>
                   </div>
-                  <p className="text-slate-600 text-sm">5:00 AM - 7:00 AM</p>
-                </div>
-                <div className="bg-white rounded-2xl p-4 border border-slate-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-slate-900">Late Morning</span>
-                    <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">Comfortable</span>
+                  <div className="space-y-3">
+                    <div className="bg-gradient-to-r from-emerald-50 to-green-50/50 rounded-xl p-4 border border-emerald-100">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-bold text-slate-900">Early Morning</span>
+                        <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                          <Zap className="w-3 h-3" />
+                          Fastest
+                        </span>
+                      </div>
+                      <p className="text-slate-600 text-sm">5:00 AM - 7:00 AM</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-blue-50 to-sky-50/50 rounded-xl p-4 border border-blue-100">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-bold text-slate-900">Late Morning</span>
+                        <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Comfortable</span>
+                      </div>
+                      <p className="text-slate-600 text-sm">10:00 AM - 12:00 PM</p>
+                    </div>
+                    <div className="bg-gradient-to-r from-amber-50 to-yellow-50/50 rounded-xl p-4 border border-amber-100">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-bold text-slate-900">Evening</span>
+                        <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">Traffic</span>
+                      </div>
+                      <p className="text-slate-600 text-sm">5:00 PM - 8:00 PM</p>
+                    </div>
                   </div>
-                  <p className="text-slate-600 text-sm">10:00 AM - 12:00 PM</p>
-                </div>
-                <div className="bg-white rounded-2xl p-4 border border-slate-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-slate-900">Evening</span>
-                    <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded text-xs font-bold">Traffic</span>
-                  </div>
-                  <p className="text-slate-600 text-sm">5:00 PM - 8:00 PM</p>
                 </div>
               </div>
             </motion.div>
@@ -843,28 +926,36 @@ export default function RouteClientContent({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-slate-50 rounded-3xl p-6 md:p-8"
+              className="group"
             >
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Gift className="w-5 h-5 text-[#FACF2D]" />
-                What&apos;s Included
-              </h3>
-              <div className="space-y-3">
-                {[
-                  { icon: Fuel, label: 'Fuel charges' },
-                  { icon: Users, label: 'Professional driver' },
-                  { icon: Snowflake, label: 'Air conditioning' },
-                  { icon: MapPin, label: 'GPS navigation' },
-                  { icon: Shield, label: 'Insurance coverage' },
-                  { icon: Headphones, label: '24/7 support' }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white rounded-xl p-3 border border-slate-200">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
-                      <item.icon className="w-4 h-4 text-emerald-600" />
+              <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
+                <div className="h-1.5 bg-gradient-to-r from-green-400 via-emerald-400 to-green-500" />
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-100 to-emerald-50 flex items-center justify-center group-hover:bg-green-500 transition-colors">
+                      <Gift className="w-6 h-6 text-green-600 group-hover:text-white transition-colors" />
                     </div>
-                    <span className="text-slate-700 font-medium">{item.label}</span>
+                    <h3 className="text-xl font-bold text-slate-900">What&apos;s Included</h3>
                   </div>
-                ))}
+                  <div className="space-y-3">
+                    {[
+                      { icon: Fuel, label: 'Fuel charges', color: 'emerald' },
+                      { icon: Users, label: 'Professional driver', color: 'blue' },
+                      { icon: Snowflake, label: 'Air conditioning', color: 'sky' },
+                      { icon: MapPin, label: 'GPS navigation', color: 'purple' },
+                      { icon: Shield, label: 'Insurance coverage', color: 'amber' },
+                      { icon: Headphones, label: '24/7 support', color: 'green' }
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl p-3 border border-slate-100 hover:border-green-200 hover:bg-green-50/30 transition-all">
+                        <div className="w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center">
+                          <item.icon className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="text-slate-700 font-medium">{item.label}</span>
+                        <CheckCircle className="w-4 h-4 text-green-500 ml-auto" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -874,7 +965,7 @@ export default function RouteClientContent({
 
       {/* ==================== FAQ SECTION ==================== */}
       <section className="py-16 md:py-24 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -882,44 +973,42 @@ export default function RouteClientContent({
             viewport={{ once: true }}
             className="text-center mb-12"
           >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
+              <Sparkles className="w-4 h-4 text-[#D4A017]" />
+              <span className="text-sm font-semibold text-[#D4A017]">FREQUENTLY ASKED</span>
+            </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Frequently Asked Questions
+              Common Questions
             </h2>
-            <p className="text-slate-600 text-lg">
-              Quick answers to common questions about {formattedCityName} to {formattedDestination} taxi service
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              Everything you need to know about {formattedCityName} to {formattedDestination} taxi service
             </p>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
+                className="group"
               >
-                <button
-                  onClick={() => setExpandedFaq(expandedFaq === index ? -1 : index)}
-                  className="w-full bg-white rounded-2xl p-5 md:p-6 text-left border border-slate-200 hover:border-slate-300 transition-colors"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-bold text-slate-900 text-lg pr-4">{faq.q}</h3>
-                    <ChevronDown className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${expandedFaq === index ? 'rotate-180' : ''}`} />
+                <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
+                  <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+                  <div className="p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FACF2D]/20 to-yellow-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#FACF2D] transition-colors">
+                        <span className="text-lg font-black text-[#D4A017] group-hover:text-black transition-colors">Q</span>
+                      </div>
+                      <h3 className="font-bold text-slate-900 text-lg leading-snug">{faq.q}</h3>
+                    </div>
+                    <div className="pl-14">
+                      <p className="text-slate-600 leading-relaxed">{faq.a}</p>
+                    </div>
                   </div>
-                  <AnimatePresence>
-                    {expandedFaq === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <p className="text-slate-600 mt-4 leading-relaxed">{faq.a}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -947,56 +1036,69 @@ export default function RouteClientContent({
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10"
+            className="text-center mb-10"
           >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-2">
-                More Routes from {formattedCityName}
-              </h2>
-              <p className="text-slate-600">
-                Explore other popular destinations
-              </p>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
+              <Navigation className="w-4 h-4 text-[#D4A017]" />
+              <span className="text-sm font-semibold text-[#D4A017]">EXPLORE MORE</span>
             </div>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3">
+              More Routes from <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedCityName}</span>
+            </h2>
+            <p className="text-slate-600 mb-6">
+              Explore other popular destinations with transparent pricing
+            </p>
             <Link
               href={`/${cityName}`}
-              className="inline-flex items-center gap-2 text-[#FACF2D] hover:text-amber-600 font-bold transition-colors"
+              className="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-800 px-6 py-3 rounded-full font-bold transition-all"
             >
               View all routes
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {routes
               .filter(r => r.destination !== formattedDestination)
               .slice(0, 8)
               .map((routeItem, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
+                  className="group"
                 >
                   <Link
                     href={`/${createRouteSlug(cityName, routeItem.destination)}`}
-                    className="block bg-white rounded-2xl p-5 border border-slate-200 hover:border-[#FACF2D] hover:shadow-lg transition-all group"
+                    className="block relative"
                   >
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-bold text-slate-900 group-hover:text-[#FACF2D] transition-colors">
-                        {routeItem.destination}
-                      </h3>
-                      <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#FACF2D] group-hover:translate-x-1 transition-all" />
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Navigation className="w-3.5 h-3.5" />
-                        {routeItem.distance}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" />
-                        {routeItem.time}
-                      </span>
+                    <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 group-hover:border-[#FACF2D] group-hover:shadow-2xl group-hover:shadow-[#FACF2D]/20 group-hover:-translate-y-2">
+                      <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+                      <div className="p-5">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FACF2D]/20 to-yellow-100 flex items-center justify-center group-hover:bg-[#FACF2D] transition-colors">
+                            <MapPin className="w-5 h-5 text-[#D4A017] group-hover:text-black transition-colors" />
+                          </div>
+                          <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-[#FACF2D] group-hover:translate-x-1 transition-all" />
+                        </div>
+                        <h3 className="font-bold text-slate-900 text-lg mb-3 group-hover:text-[#D4A017] transition-colors">
+                          {routeItem.destination}
+                        </h3>
+                        <div className="flex items-center gap-3 text-sm">
+                          <span className="flex items-center gap-1.5 bg-slate-50 text-slate-600 px-2.5 py-1 rounded-lg">
+                            <Navigation className="w-3.5 h-3.5" />
+                            {routeItem.distance}
+                          </span>
+                          <span className="flex items-center gap-1.5 bg-slate-50 text-slate-600 px-2.5 py-1 rounded-lg">
+                            <Clock className="w-3.5 h-3.5" />
+                            {routeItem.time}
+                          </span>
+                        </div>
+                      </div>
+                      {/* Shine effect on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
                     </div>
                   </Link>
                 </motion.div>

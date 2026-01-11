@@ -318,15 +318,15 @@ export default function CityRoutesMainClient({ data }) {
                 </h1>
 
                 <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
-                  Professional cab service from Delhi, Jaipur, Chandigarh, Agra & 14+ cities.
+                  Professional cab service from Delhi, Jaipur, Chandigarh, Agra & {cities.length}+ cities.
                   Sedan, SUV, Innova, Tempo Traveller & Buses.
                 </p>
 
                 {/* Quick Stats */}
                 <div className="flex flex-wrap gap-3 mb-8">
                   {[
-                    { icon: MapPin, value: '14', label: 'Cities' },
-                    { icon: Route, value: '500+', label: 'Routes' },
+                    { icon: MapPin, value: `${cities.length}+`, label: 'Cities' },
+                    { icon: Route, value: `${allRoutes.length}+`, label: 'Routes' },
                     { icon: Star, value: '4.9', label: 'Rating' },
                     { icon: Users, value: '50K+', label: 'Trips' }
                   ].map((stat, i) => (
