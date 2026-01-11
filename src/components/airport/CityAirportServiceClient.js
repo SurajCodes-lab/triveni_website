@@ -73,10 +73,10 @@ export default function CityAirportServiceClient({ city, citySlug }) {
     }));
   };
 
-  // Helper function to create route slug
+  // Helper function to create route slug - handles multi-word city names
   const createRouteSlug = (cityName, destination) => {
     if (!cityName || !destination) return null;
-    return `/${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+    return `/${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
   };
 
   // Helper function to get route link from destination name

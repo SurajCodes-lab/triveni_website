@@ -75,7 +75,7 @@ export default function RoutesPage() {
               time: dest.time || 'N/A',
               tags: dest.tags || [],
               price: dest.prices?.[0]?.price || null,
-              slug: `${origin.toLowerCase()}-to-${dest.destination.toLowerCase().replace(/\s+/g, '-')}`
+              slug: `${origin.toLowerCase().replace(/\s+/g, '-')}-to-${dest.destination.toLowerCase().replace(/\s+/g, '-')}`
             });
           }
         });

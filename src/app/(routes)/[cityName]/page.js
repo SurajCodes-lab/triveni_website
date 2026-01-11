@@ -28,14 +28,15 @@ const RESERVED_ROUTES = [
 function parseRouteSlug(slug) {
   const parts = slug.split('-to-');
   if (parts.length !== 2) return null;
-  const cityName = parts[0];
+  // Convert hyphens to spaces for both city name and destination
+  const cityName = parts[0].replace(/-/g, ' ');
   const destination = parts[1].replace(/-/g, ' ');
   return { cityName, destination };
 }
 
 export function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
-  return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+  return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
 export async function generateStaticParams() {
@@ -49,10 +50,11 @@ export async function generateStaticParams() {
       console.error("Invalid city object:", city);
       return;
     }
-    const cityName = city.name.toLowerCase();
+    const cityName = city.name.toLowerCase().replace(/\s+/g, '-');
     params.push({ cityName: cityName });
-    const formattedCityName = city.name.charAt(0).toUpperCase() + city.name.slice(1);
-    const routes = allCityRoutes[formattedCityName] || [];
+    // Use original city name from data (already properly formatted)
+    const formattedCityName = city.name;
+    const routes = allCityRoutes[formattedCityName] || defaultRoutes[formattedCityName] || [];
     if (Array.isArray(routes)) {
       routes.forEach(route => {
         if (route && route.destination) {
@@ -72,9 +74,10 @@ export async function generateMetadata({ params }) {
   if (routeData) {
     // ROUTE PAGE METADATA
     const { cityName: originCity, destination } = routeData;
-    const formattedCityName = originCity.charAt(0).toUpperCase() + originCity.slice(1);
+    // Properly capitalize multi-word city names (e.g., "jim corbett" -> "Jim Corbett")
+    const formattedCityName = originCity.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const formattedDestination = destination.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    const routes = allCityRoutes[formattedCityName] || [];
+    const routes = allCityRoutes[formattedCityName] || defaultRoutes[formattedCityName] || [];
     const route = Array.isArray(routes) ? routes.find(r => r && r.destination && r.destination.toLowerCase() === formattedDestination.toLowerCase()) : null;
     const startingPrice = route?.prices?.[0]?.price || "₹2760";
 
@@ -242,13 +245,14 @@ export default function CityNamePage({ params }) {
 
   if (routeData) {
     const { cityName: originCity, destination} = routeData;
-    const formattedCityName = originCity.charAt(0).toUpperCase() + originCity.slice(1);
+    // Properly capitalize multi-word city names (e.g., "jim corbett" -> "Jim Corbett")
+    const formattedCityName = originCity.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const formattedDestination = destination.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     
     const cityExists = cities.some(city => city.name.toLowerCase() === originCity.toLowerCase());
     if (!cityExists) { notFound(); }
     
-    const routes = allCityRoutes[formattedCityName] || defaultRoutes || [];
+    const routes = allCityRoutes[formattedCityName] || defaultRoutes[formattedCityName] || [];
     const route = Array.isArray(routes) ? routes.find(r => r && r.destination && r.destination.toLowerCase() === formattedDestination.toLowerCase()) : null;
     
     if (!route) { notFound(); }
@@ -427,8 +431,9 @@ export default function CityNamePage({ params }) {
       </>
     );
   } else {
-    const formattedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-    const cityExists = cities.some(city => city.name.toLowerCase() === cityName.toLowerCase());
+    // Convert hyphenated URL slug to properly capitalized city name (e.g., "jim-corbett" -> "Jim Corbett")
+    const formattedCityName = cityName.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    const cityExists = cities.some(city => city.name.toLowerCase() === formattedCityName.toLowerCase());
     if (!cityExists) { notFound(); }
     
     const citySpots = touristSpots[formattedCityName] || [];

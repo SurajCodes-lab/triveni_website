@@ -579,7 +579,7 @@ export default function CityRoutesMainClient({ data }) {
           {[...popularRoutes, ...popularRoutes].map((route, idx) => (
             <Link
               key={idx}
-              href={`/${route.from.toLowerCase()}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
+              href={`/${route.from.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
               className="flex items-center mx-6 flex-shrink-0 hover:scale-105 transition-transform group"
             >
               <span className="font-bold text-white whitespace-nowrap">{route.from}</span>
@@ -1031,7 +1031,7 @@ export default function CityRoutesMainClient({ data }) {
             {popularRoutes.map((route, idx) => (
               <Link
                 key={idx}
-                href={`/${route.from.toLowerCase()}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`/${route.from.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}

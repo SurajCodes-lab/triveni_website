@@ -7,10 +7,10 @@ import { Clock, MapPin, Eye, Car, Users, Info, ArrowRight, Phone } from 'lucide-
 import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
 import { phoneNumber } from "@/utilis/data";
 
-// Helper function to create route slug
+// Helper function to create route slug - handles multi-word city names
 function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
-  return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+  return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
 const CityRoutes = ({ cityName }) => {
@@ -92,15 +92,9 @@ const CityRoutes = ({ cityName }) => {
     setShowAllRoutes(prev => !prev);
   }, []);
 
-  // Memoized route heading generator
+  // Memoized route heading generator - consistent format for all routes
   const getRouteHeading = useCallback((cityName, destination, index) => {
-    const headingVariations = [
-      `${cityName} to ${destination}`,
-      `${cityName} → ${destination}`,
-      `${cityName}-${destination} Route`,
-      `Journey to ${destination}`
-    ];
-    return headingVariations[index % headingVariations.length];
+    return `${cityName} to ${destination}`;
   }, []);
 
   // Memoized routes to display

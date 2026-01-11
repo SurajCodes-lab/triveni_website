@@ -269,9 +269,9 @@ const PopularVenues = ({ city }) => {
 
 // Nearby Destinations - Clickable with Interlinking
 const NearbyDestinations = ({ city, citySlug }) => {
-  // Helper function to create route slug
+  // Helper function to create route slug - handles multi-word city names
   const createRouteSlug = (originCity, destinationCity) => {
-    return `${originCity.toLowerCase()}-to-${destinationCity.toLowerCase().replace(/\s+/g, '-')}`;
+    return `${originCity.toLowerCase().replace(/\s+/g, '-')}-to-${destinationCity.toLowerCase().replace(/\s+/g, '-')}`;
   };
 
   return (

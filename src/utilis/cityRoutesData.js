@@ -1730,6 +1730,31 @@ export const cityRoutesData = {
         { vehicle: "52 Seater Bus", price: "₹15660", roundTrip: "₹31320", capacity: "52 guests" },
         { vehicle: "56 Seater Volvo Bus", price: "₹17550", roundTrip: "₹35100", capacity: "56 guests" }
       ]
+    },
+    {
+      destination: "Kasol",
+      distance: "280 km",
+      time: "6-7 hours",
+      description: "Backpacker paradise Kasol from Chandigarh.",
+      tags: ["Parvati Valley", "Trekking", "Hippie Culture"],
+      prices: [
+        { vehicle: "Sedan", price: "₹3360", roundTrip: "₹6720" },
+        { vehicle: "SUV Ertiga", price: "₹4200", roundTrip: "₹8400", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹5040", roundTrip: "₹10080", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹6440", roundTrip: "₹12880", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7000", roundTrip: "₹14000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹7280", roundTrip: "₹14560", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹7560", roundTrip: "₹15120", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹7280", roundTrip: "₹14560", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8960", roundTrip: "₹17920", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹9520", roundTrip: "₹19040", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹10080", roundTrip: "₹20160", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹10640", roundTrip: "₹21280", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹12600", roundTrip: "₹25200", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹14560", roundTrip: "₹29120", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹16240", roundTrip: "₹32480", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹18200", roundTrip: "₹36400", capacity: "56 guests" }
+      ]
     }
   ],
 
@@ -3497,6 +3522,31 @@ export const basicCityRoutes = {
         { vehicle: "45 Seater Luxury Bus", price: "₹32240", roundTrip: "₹64480", capacity: "45 guests" },
         { vehicle: "52 Seater Bus", price: "₹35960", roundTrip: "₹71920", capacity: "52 guests" },
         { vehicle: "56 Seater Volvo Bus", price: "₹40300", roundTrip: "₹80600", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Rishikesh",
+      distance: "25 km",
+      time: "30-45 minutes",
+      description: "Short trip to Yoga Capital of the World from Haridwar.",
+      tags: ["Yoga Capital", "Adventure Sports", "Spiritual"],
+      prices: [
+        { vehicle: "Sedan", price: "₹500", roundTrip: "₹1000" },
+        { vehicle: "SUV Ertiga", price: "₹625", roundTrip: "₹1250", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹750", roundTrip: "₹1500", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹960", roundTrip: "₹1920", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹1040", roundTrip: "₹2080", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹1080", roundTrip: "₹2160", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹1125", roundTrip: "₹2250", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹1080", roundTrip: "₹2160", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹1330", roundTrip: "₹2660", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹1415", roundTrip: "₹2830", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹1500", roundTrip: "₹3000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹1585", roundTrip: "₹3170", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹1875", roundTrip: "₹3750", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹2165", roundTrip: "₹4330", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹2415", roundTrip: "₹4830", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹2710", roundTrip: "₹5420", capacity: "56 guests" }
       ]
     }
   ],

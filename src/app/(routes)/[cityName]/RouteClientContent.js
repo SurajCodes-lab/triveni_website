@@ -69,7 +69,7 @@ const vehicleCapacityMap = {
 
 function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
-  return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+  return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
 export default function RouteClientContent({

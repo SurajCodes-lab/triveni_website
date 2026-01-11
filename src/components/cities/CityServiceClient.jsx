@@ -474,7 +474,7 @@ export default function CityServiceClient({
                   {cityData.highlights.map((dest, i) => (
                     <Link
                       key={i}
-                      href={`/${formattedCityName.toLowerCase()}-to-${dest.toLowerCase().replace(/\s+/g, '-')}`}
+                      href={`/${formattedCityName.toLowerCase().replace(/\s+/g, '-')}-to-${dest.toLowerCase().replace(/\s+/g, '-')}`}
                       className="flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-3 transition-colors group"
                     >
                       <div className="flex items-center gap-3">

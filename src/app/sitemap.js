@@ -12,7 +12,7 @@ import { getAllCitySlugs } from "@/utilis/airportCityData";
 import { getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
 
 function createRouteSlug(cityName, destination) {
-  return `${cityName.toLowerCase()}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+  return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
 function createTempoRouteSlug(originCity, destinationName) {
