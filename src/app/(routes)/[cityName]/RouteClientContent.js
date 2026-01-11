@@ -6,7 +6,7 @@ import Image from "next/image";
 import {
   Phone, MapPin, Car, ChevronRight, Users, ArrowRight, Clock,
   Star, Shield, CheckCircle, Navigation, CreditCard, Headphones,
-  Award, Sparkles, Route, Fuel, Calendar, Zap, Gift,
+  Award, Sparkles, Route, Fuel, Calendar, Zap, Gift, Bus,
   ChevronDown, Play, BadgeCheck, Timer, Gauge, Wifi, Music,
   Snowflake, MapPinned, CircleDot, TrendingUp
 } from "lucide-react";
@@ -56,15 +56,23 @@ const vehicleImageMap = {
 };
 
 const vehicleCapacityMap = {
-  'Sedan': { seats: '4', bags: '2', icon: Car },
-  'SUV Ertiga': { seats: '6', bags: '3', icon: Car },
-  'SUV Innova': { seats: '7', bags: '4', icon: Car },
-  '12 Seater Tempo': { seats: '12', bags: '12', icon: Users },
-  '16 Seater Tempo': { seats: '16', bags: '16', icon: Users },
-  '17 Seater Tempo': { seats: '17', bags: '17', icon: Users },
-  '20 Seater Tempo': { seats: '20', bags: '20', icon: Users },
-  '26 Seater Maharaja': { seats: '26', bags: '26', icon: Users },
-  'Tempo Traveller': { seats: '17', bags: '17', icon: Users }
+  'Sedan': { seats: '4', bags: '2', icon: Car, type: 'car' },
+  'SUV Ertiga': { seats: '6', bags: '3', icon: Car, type: 'car' },
+  'SUV Innova': { seats: '7', bags: '4', icon: Car, type: 'car' },
+  '12 Seater Tempo': { seats: '12', bags: '12', icon: Users, type: 'tempo' },
+  '16 Seater Tempo': { seats: '16', bags: '16', icon: Users, type: 'tempo' },
+  '17 Seater Tempo': { seats: '17', bags: '17', icon: Users, type: 'tempo' },
+  '20 Seater Tempo': { seats: '20', bags: '20', icon: Users, type: 'tempo' },
+  '26 Seater Maharaja': { seats: '26', bags: '26', icon: Users, type: 'tempo' },
+  'Tempo Traveller': { seats: '17', bags: '17', icon: Users, type: 'tempo' },
+  '22 Seater Mini Bus': { seats: '22', bags: '22', icon: Bus, type: 'bus' },
+  '25 Seater Mini Bus': { seats: '25', bags: '25', icon: Bus, type: 'bus' },
+  '27 Seater Coach': { seats: '27', bags: '27', icon: Bus, type: 'bus' },
+  '35 Seater Coach': { seats: '35', bags: '35', icon: Bus, type: 'bus' },
+  '41 Seater Bus': { seats: '41', bags: '41', icon: Bus, type: 'bus' },
+  '45 Seater Luxury Bus': { seats: '45', bags: '45', icon: Bus, type: 'bus' },
+  '52 Seater Bus': { seats: '52', bags: '52', icon: Bus, type: 'bus' },
+  '56 Seater Volvo Bus': { seats: '56', bags: '56', icon: Bus, type: 'bus' }
 };
 
 function createRouteSlug(cityName, destination) {
@@ -112,27 +120,36 @@ export default function RouteClientContent({
     accent: '#FACF2D'
   };
 
-  // Filter vehicles based on trip type
+  // Helper to check if vehicle is a large vehicle (tempo/bus/coach/maharaja)
+  const isLargeVehicle = (vehicleName) => {
+    if (!vehicleName) return false;
+    const name = vehicleName.toLowerCase();
+    return name.includes('bus') ||
+           name.includes('tempo') ||
+           name.includes('coach') ||
+           name.includes('maharaja') ||
+           name.includes('seater');
+  };
+
+  // Helper to check if vehicle is a car (sedan/suv)
+  const isCarVehicle = (vehicleName) => {
+    if (!vehicleName) return false;
+    const name = vehicleName.toLowerCase();
+    return name.includes('sedan') || name.includes('suv') || name.includes('innova') || name.includes('ertiga');
+  };
+
+  // Filter vehicles based on trip type - only show cars for one-way
   const filteredVehicles = useMemo(() => {
     if (!route?.prices) return [];
     if (tripType === 'oneWay') {
-      return route.prices.filter(p =>
-        p.vehicle &&
-        !p.vehicle.toLowerCase().includes('bus') &&
-        !p.vehicle.toLowerCase().includes('tempo')
-      );
+      return route.prices.filter(p => p.vehicle && isCarVehicle(p.vehicle));
     }
     return route.prices;
   }, [route?.prices, tripType]);
 
   const tempoAndBusVehicles = useMemo(() => {
     if (!route?.prices) return [];
-    return route.prices.filter(p =>
-      p.vehicle && (
-        p.vehicle.toLowerCase().includes('bus') ||
-        p.vehicle.toLowerCase().includes('tempo')
-      )
-    );
+    return route.prices.filter(p => p.vehicle && isLargeVehicle(p.vehicle) && !isCarVehicle(p.vehicle));
   }, [route?.prices]);
 
   const startingPrice = useMemo(() => {
@@ -430,7 +447,17 @@ export default function RouteClientContent({
           {/* Vehicle Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {filteredVehicles.length > 0 ? filteredVehicles.map((vehicle, index) => {
-              const vehicleInfo = vehicleCapacityMap[vehicle.vehicle] || { seats: '4', bags: '2', icon: Car };
+              // Extract seats from vehicle name if not in map (e.g., "27 Seater Coach" -> 27)
+              const getDefaultVehicleInfo = (name) => {
+                const match = name.match(/(\d+)\s*seater/i);
+                if (match) {
+                  const seats = match[1];
+                  const isBus = name.toLowerCase().includes('bus') || name.toLowerCase().includes('coach');
+                  return { seats, bags: seats, icon: isBus ? Bus : Users, type: isBus ? 'bus' : 'tempo' };
+                }
+                return { seats: '4', bags: '2', icon: Car, type: 'car' };
+              };
+              const vehicleInfo = vehicleCapacityMap[vehicle.vehicle] || getDefaultVehicleInfo(vehicle.vehicle);
               const isSelected = selectedVehicle === index;
               const currentPrice = tripType === 'oneWay' ? vehicle.price : vehicle.roundTrip;
 
