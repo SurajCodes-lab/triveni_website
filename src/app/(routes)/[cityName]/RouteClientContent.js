@@ -964,8 +964,12 @@ export default function RouteClientContent({
 
 
       {/* ==================== FAQ SECTION ==================== */}
-      <section className="py-16 md:py-24 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FACF2D]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -973,45 +977,81 @@ export default function RouteClientContent({
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
-              <Sparkles className="w-4 h-4 text-[#D4A017]" />
-              <span className="text-sm font-semibold text-[#D4A017]">FREQUENTLY ASKED</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-5 py-2.5 rounded-full mb-6">
+              <Sparkles className="w-5 h-5 text-[#D4A017]" />
+              <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Common Questions
+              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">Questions</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Everything you need to know about {formattedCityName} to {formattedDestination} taxi service
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.08 }}
                 className="group"
               >
-                <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
-                  <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FACF2D]/20 to-yellow-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#FACF2D] transition-colors">
-                        <span className="text-lg font-black text-[#D4A017] group-hover:text-black transition-colors">Q</span>
+                <div className="relative bg-white rounded-3xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-2 h-full">
+                  {/* Gradient accent */}
+                  <div className="h-2 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+
+                  <div className="p-6 md:p-8">
+                    {/* Question */}
+                    <div className="flex items-start gap-4 mb-5">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FACF2D]/30 group-hover:scale-110 transition-transform">
+                        <span className="text-xl font-black text-black">?</span>
                       </div>
-                      <h3 className="font-bold text-slate-900 text-lg leading-snug">{faq.q}</h3>
+                      <h3 className="font-bold text-slate-900 text-lg leading-snug pt-2">{faq.q}</h3>
                     </div>
-                    <div className="pl-14">
-                      <p className="text-slate-600 leading-relaxed">{faq.a}</p>
+
+                    {/* Answer */}
+                    <div className="pl-16">
+                      <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-4 border border-slate-100">
+                        <p className="text-slate-600 leading-relaxed">{faq.a}</p>
+                      </div>
                     </div>
                   </div>
+
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
+          >
+            <p className="text-slate-500 mb-4">Need more help with your {formattedCityName} to {formattedDestination} trip?</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={handleCallNow}
+                className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105"
+              >
+                <Phone className="w-5 h-5" />
+                Call Us Now
+              </button>
+              <button
+                onClick={handleWhatsApp}
+                className="inline-flex items-center justify-center gap-2 bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105"
+              >
+                <BsWhatsapp className="w-5 h-5" />
+                WhatsApp Us
+              </button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
