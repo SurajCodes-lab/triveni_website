@@ -120,12 +120,6 @@ export default async function CorporateCityPage({ params }) {
     "areaServed": {
       "@type": "City",
       "name": cityData.name
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": cityData.stats.companies.replace('+', ''),
-      "bestRating": "5"
     }
   };
 
@@ -200,9 +194,9 @@ export default async function CorporateCityPage({ params }) {
                 {/* Stats */}
                 <div className="flex flex-wrap gap-8 pt-4">
                   {[
-                    { value: cityData.stats.companies, label: 'Companies Trust Us', icon: Building2 },
-                    { value: cityData.stats.dailyTrips, label: 'Daily Trips', icon: Car },
-                    { value: cityData.stats.employees, label: 'Employees Served', icon: Users }
+                    { value: cityData.stats.fleet, label: 'Fleet Vehicles', icon: Car },
+                    { value: '5', label: 'Cities Covered', icon: MapPin },
+                    { value: '24/7', label: 'Support Available', icon: Clock }
                   ].map((stat, idx) => (
                     <div key={idx} className="group">
                       <div className="flex items-center gap-3">
@@ -293,10 +287,10 @@ export default async function CorporateCityPage({ params }) {
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
               {[
-                { icon: Shield, text: 'Background Verified', color: 'text-green-400' },
-                { icon: Clock, text: '99.5% On-Time', color: 'text-cyan-400' },
-                { icon: TrendingUp, text: 'Live GPS Tracking', color: 'text-blue-400' },
-                { icon: Star, text: '4.9/5 Rating', color: 'text-yellow-400' }
+                { icon: Shield, text: 'Verified Drivers', color: 'text-green-400' },
+                { icon: Clock, text: '24/7 Support', color: 'text-cyan-400' },
+                { icon: TrendingUp, text: 'GPS Tracking', color: 'text-blue-400' },
+                { icon: Car, text: 'Well-Maintained Fleet', color: 'text-yellow-400' }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2">
                   <item.icon className={`w-5 h-5 ${item.color}`} />
@@ -576,14 +570,14 @@ export default async function CorporateCityPage({ params }) {
                 </h2>
 
                 <p className="text-xl text-slate-400 mb-10 leading-relaxed">
-                  Join {cityData.stats.companies} companies who trust Triveni Cabs for their transportation needs in {cityData.name}.
+                  Start your corporate transportation partnership with Triveni Cabs in {cityData.name}. Flexible contracts, transparent pricing, and dedicated support.
                 </p>
 
                 <div className="grid grid-cols-3 gap-6">
                   {[
-                    { value: cityData.stats.companies, label: 'Companies' },
-                    { value: cityData.stats.dailyTrips, label: 'Daily Trips' },
-                    { value: '4.9★', label: 'Rating' }
+                    { value: cityData.stats.fleet, label: 'Fleet Vehicles' },
+                    { value: '5', label: 'Cities Served' },
+                    { value: '24/7', label: 'Availability' }
                   ].map((stat, idx) => (
                     <div key={idx} className="text-center">
                       <div className="text-3xl font-black text-white">{stat.value}</div>
@@ -642,7 +636,7 @@ export default async function CorporateCityPage({ params }) {
                   <div className="mt-8 pt-6 border-t border-white/10 text-center">
                     <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
                       <Shield className="w-4 h-4 text-green-400" />
-                      Trusted by {cityData.stats.companies} companies in {cityData.name}
+                      Transparent Pricing • No Hidden Charges
                     </p>
                   </div>
                 </div>

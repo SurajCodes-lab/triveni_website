@@ -20,7 +20,7 @@ export const eventCategories = [
     id: 'mice',
     title: 'MICE Events',
     icon: '🎪',
-    color: 'from-purple-500 to-pink-600',
+    color: 'from-indigo-500 to-violet-600',
     description: 'Meetings, Incentives, Conferences & Exhibitions',
     events: [
       { name: 'Meetings', desc: 'Business meeting transportation' },
@@ -34,7 +34,7 @@ export const eventCategories = [
     id: 'social-events',
     title: 'Social Events',
     icon: '🎉',
-    color: 'from-pink-500 to-rose-600',
+    color: 'from-teal-500 to-cyan-600',
     description: 'Memorable transportation for special occasions',
     events: [
       { name: 'Weddings & Engagements', desc: 'Complete baarat & guest transport' },
@@ -48,7 +48,7 @@ export const eventCategories = [
     id: 'large-gatherings',
     title: 'Large Gatherings',
     icon: '👥',
-    color: 'from-orange-500 to-amber-600',
+    color: 'from-slate-600 to-slate-800',
     description: 'Mass transportation for mega events',
     events: [
       { name: 'Political Rallies', desc: 'Large-scale crowd transport' },
@@ -373,6 +373,322 @@ export const eventFAQs = [
     answer: 'Yes, we provide 24/7 airport pickup coordination for destination events. We track flight arrivals, manage delayed flights, and ensure guests are picked up promptly with name boards and meet-and-greet service.'
   }
 ];
+
+// Event Types for dynamic pages
+export const eventTypes = [
+  {
+    slug: 'wedding-transportation',
+    name: 'Wedding Transport',
+    icon: '💒',
+    title: 'Wedding Guest Transportation Services',
+    tagline: 'Make Your Special Day Stress-Free',
+    description: 'Complete wedding transportation solutions - from baraat arrangements to guest pickups. We handle the logistics so you can focus on celebrating.',
+    metaTitle: 'Wedding Transportation Services | Guest Transport for Weddings | Triveni Cabs',
+    metaDescription: 'Professional wedding transportation in Delhi, Jaipur, Chandigarh. Baraat cars, guest shuttles, decorated vehicles. 500+ fleet. Book now!',
+    keywords: ['wedding transportation', 'wedding car rental', 'baraat car', 'wedding guest transport', 'wedding bus hire', 'decorated wedding car'],
+    heroImage: '/images/events/wedding-transportation.jpg',
+    color: 'from-cyan-500 to-blue-600',
+    features: [
+      { icon: '🚗', title: 'Bridal Car', description: 'Luxury decorated car for the bride\'s grand entry' },
+      { icon: '🎺', title: 'Baraat Vehicles', description: 'Open jeeps, vintage cars for groom\'s procession' },
+      { icon: '🚌', title: 'Guest Shuttles', description: 'Tempo travellers and buses for guest transport' },
+      { icon: '✈️', title: 'Airport Transfers', description: 'Pick outstation guests from airports/stations' },
+      { icon: '🎊', title: 'Event Transfers', description: 'Transport between mehendi, sangeet, wedding venues' },
+      { icon: '👨‍👩‍👧‍👦', title: 'Family Vehicles', description: 'Dedicated cars for immediate family members' }
+    ],
+    packages: [
+      {
+        name: 'Basic Wedding Package',
+        description: 'Essential transportation for small weddings',
+        includes: ['1 Decorated bridal car', '2 Tempo travellers (12 seater)', 'Driver coordination'],
+        price: 'Starting ₹15,000',
+        ideal: 'Intimate weddings (50-100 guests)'
+      },
+      {
+        name: 'Premium Wedding Package',
+        description: 'Complete transport for medium weddings',
+        includes: ['1 Luxury bridal car', '1 Baraat vehicle', '4 Tempo travellers', 'Multi-point pickups', 'Coordinator'],
+        price: 'Starting ₹35,000',
+        ideal: 'Medium weddings (100-300 guests)'
+      },
+      {
+        name: 'Royal Wedding Package',
+        description: 'Full-service transport for grand celebrations',
+        includes: ['Premium bridal car', 'Vintage baraat car', '2 Luxury buses', '6 Tempo travellers', 'Airport transfers', '24/7 coordinator'],
+        price: 'Starting ₹75,000',
+        ideal: 'Grand weddings (300+ guests)'
+      }
+    ],
+    faqs: [
+      { question: 'How early should I book for my wedding?', answer: 'We recommend booking 3-4 weeks in advance, especially during peak season (October-February). For destination weddings, book 1 month ahead.' },
+      { question: 'Can you decorate the wedding cars?', answer: 'Yes! We offer flower decoration for bridal cars and baraat vehicles. Fresh flowers are arranged on the wedding day. Decoration starts from ₹2,000.' },
+      { question: 'Do you provide vintage/classic cars?', answer: 'We can arrange vintage cars like Ambassador on request for baraat. These require advance booking.' },
+      { question: 'How do you handle multiple pickup locations?', answer: 'Share your guest list with addresses, and we create optimized routes. Our coordinator manages timings to ensure all guests reach together.' }
+    ]
+  },
+  {
+    slug: 'corporate-event-transport',
+    name: 'Corporate Events',
+    icon: '🎪',
+    title: 'Corporate Event Transportation',
+    tagline: 'Professional Transport for Business Events',
+    description: 'Seamless transportation for conferences, seminars, product launches, and corporate gatherings. Impress your delegates with punctual, professional service.',
+    metaTitle: 'Corporate Event Transportation | Conference & Seminar Transport | Triveni Cabs',
+    metaDescription: 'Corporate event transportation for conferences, seminars, product launches. Airport transfers, venue shuttles, executive cars. Get quote!',
+    keywords: ['corporate event transport', 'conference transportation', 'seminar bus hire', 'corporate shuttle service', 'event logistics'],
+    heroImage: '/images/events/corporate-event-transport.jpg',
+    color: 'from-blue-500 to-indigo-600',
+    features: [
+      { icon: '✈️', title: 'Airport Transfers', description: 'Meet & greet for delegates arriving by air' },
+      { icon: '🚐', title: 'Venue Shuttles', description: 'Regular shuttles between hotels and venue' },
+      { icon: '🚗', title: 'Executive Cars', description: 'Premium sedans for VIP speakers' },
+      { icon: '🚌', title: 'Delegate Buses', description: 'Comfortable AC buses for large groups' },
+      { icon: '📋', title: 'Manifest Management', description: 'Track all pickups with coordination system' },
+      { icon: '🌙', title: 'Late Night Service', description: 'Post-dinner and networking event drop-offs' }
+    ],
+    packages: [
+      {
+        name: 'Small Conference',
+        description: 'For seminars up to 50 delegates',
+        includes: ['Airport transfers', '2 Shuttle trips/day', '2 Executive cars', 'Coordinator'],
+        price: 'Starting ₹20,000/day',
+        ideal: 'Workshops, training sessions'
+      },
+      {
+        name: 'Medium Conference',
+        description: 'For 50-200 delegates',
+        includes: ['Airport transfers', '4 Shuttle trips/day', '4 Executive cars', '2 Tempo travellers', 'Dedicated coordinator'],
+        price: 'Starting ₹45,000/day',
+        ideal: 'Industry conferences, seminars'
+      },
+      {
+        name: 'Large Conference',
+        description: 'For 200+ delegates',
+        includes: ['All airport transfers', 'Continuous shuttles', '6 Executive cars', '2 Luxury buses', 'On-site coordination'],
+        price: 'Starting ₹85,000/day',
+        ideal: 'National conferences, exhibitions'
+      }
+    ],
+    faqs: [
+      { question: 'Can you provide branded vehicles?', answer: 'Yes, we can arrange temporary branding/signage with your company or event logo. This requires 1 week advance notice.' },
+      { question: 'How do you track delegate pickups?', answer: 'We provide real-time tracking dashboard and regular updates. Each vehicle has GPS tracking.' },
+      { question: 'Do drivers speak English?', answer: 'Yes, for corporate events we assign drivers with basic English. For VIP transfers, better English proficiency available.' },
+      { question: 'Can you handle multi-city events?', answer: 'Absolutely! We operate in Delhi, Jaipur, Chandigarh, Agra, and Dehradun. Can coordinate across multiple cities.' }
+    ]
+  },
+  {
+    slug: 'concert-festival-transport',
+    name: 'Concerts & Festivals',
+    icon: '🎵',
+    title: 'Concert & Festival Transportation',
+    tagline: 'Get Your Crowd There & Back Safely',
+    description: 'Large-scale transportation for music concerts, cultural festivals, and entertainment events. Safe, reliable transport for thousands of attendees.',
+    metaTitle: 'Concert & Festival Transportation | Event Shuttle Services | Triveni Cabs',
+    metaDescription: 'Concert and festival transportation services. Shuttle buses, parking solutions, late-night transport. Handle crowds of any size. Book now!',
+    keywords: ['concert transportation', 'festival shuttle', 'event bus hire', 'music festival transport', 'crowd transport'],
+    heroImage: '/images/events/concert-festival-transport.jpg',
+    color: 'from-indigo-500 to-purple-600',
+    features: [
+      { icon: '🚌', title: 'Shuttle Services', description: 'Regular shuttles from parking and metro stations' },
+      { icon: '🅿️', title: 'Park & Ride', description: 'Remote parking with shuttle to venue' },
+      { icon: '🌙', title: 'Late Night Returns', description: 'Safe transport after late-night shows' },
+      { icon: '👥', title: 'Group Bookings', description: 'Pre-booked transport for fan groups' },
+      { icon: '🎤', title: 'Artist Transport', description: 'Premium vehicles for performers and crew' },
+      { icon: '🔄', title: 'Continuous Loops', description: 'Non-stop shuttle loops during event' }
+    ],
+    packages: [
+      {
+        name: 'Small Event',
+        description: 'For up to 1,000 attendees',
+        includes: ['4 Shuttle buses', 'Continuous loops', '2 Premium cars for artists'],
+        price: 'Starting ₹30,000',
+        ideal: 'Club events, small concerts'
+      },
+      {
+        name: 'Medium Event',
+        description: 'For 1,000-5,000 attendees',
+        includes: ['8 Shuttle buses', 'Park & ride setup', '4 Premium cars', 'Coordination team'],
+        price: 'Starting ₹75,000',
+        ideal: 'Music festivals, large concerts'
+      },
+      {
+        name: 'Large Event',
+        description: 'For 5,000+ attendees',
+        includes: ['15+ Shuttle buses', 'Multiple routes', 'VIP transport', 'Command center', 'Late night service'],
+        price: 'Custom Quote',
+        ideal: 'Major festivals, stadium events'
+      }
+    ],
+    faqs: [
+      { question: 'Can you handle 10,000+ attendees?', answer: 'Yes! We coordinate with partners for large events. Early planning is essential.' },
+      { question: 'How do you manage crowd flow?', answer: 'Designated pickup/drop zones, queue management, and continuous shuttle loops prevent overcrowding.' },
+      { question: 'Do you provide late-night service?', answer: 'Yes, we operate until all attendees are transported. Late-night charges may apply after midnight.' },
+      { question: 'Multi-day festival packages?', answer: 'Absolutely! We offer multi-day packages with consistent service throughout.' }
+    ]
+  },
+  {
+    slug: 'sports-event-transport',
+    name: 'Sports Events',
+    icon: '🏟️',
+    title: 'Sports Event Transportation',
+    tagline: 'Team Travel & Fan Transport Solutions',
+    description: 'Reliable transportation for sports teams, tournaments, and spectators. From local matches to national championships.',
+    metaTitle: 'Sports Event Transportation | Team Bus Hire | Tournament Transport | Triveni Cabs',
+    metaDescription: 'Sports event transportation for teams and spectators. Team buses, fan shuttles, tournament logistics. Book now!',
+    keywords: ['sports team transport', 'team bus hire', 'tournament transportation', 'fan shuttle', 'cricket team bus'],
+    heroImage: '/images/events/sports-event-transport.jpg',
+    color: 'from-green-500 to-emerald-600',
+    features: [
+      { icon: '🚌', title: 'Team Buses', description: 'Comfortable buses with equipment space' },
+      { icon: '🎫', title: 'Fan Shuttles', description: 'Stadium shuttles from key city points' },
+      { icon: '🏆', title: 'Tournament Support', description: 'Multi-day transport for tournaments' },
+      { icon: '🏃', title: 'Athlete Transport', description: 'Timely transport to training and matches' },
+      { icon: '📦', title: 'Equipment Vehicle', description: 'Separate vehicle for sports equipment' },
+      { icon: '🏨', title: 'Hotel Transfers', description: 'Shuttles between team hotel and venue' }
+    ],
+    packages: [
+      {
+        name: 'Single Match',
+        description: 'Transport for one match day',
+        includes: ['Team bus', 'Equipment vehicle', 'Hotel-venue transfers'],
+        price: 'Starting ₹15,000',
+        ideal: 'Local matches, friendly games'
+      },
+      {
+        name: 'Tournament Package',
+        description: 'Multi-day tournament support',
+        includes: ['Dedicated team bus', 'Equipment logistics', 'All venue transfers', 'Flexible scheduling'],
+        price: 'Starting ₹50,000/week',
+        ideal: 'Cricket tournaments, football leagues'
+      },
+      {
+        name: 'League Support',
+        description: 'Season-long transportation partner',
+        includes: ['Dedicated fleet', 'Priority booking', 'Fixed rates', 'Backup vehicles'],
+        price: 'Custom Quote',
+        ideal: 'Professional teams, leagues'
+      }
+    ],
+    faqs: [
+      { question: 'Can buses accommodate sports equipment?', answer: 'Yes, our buses have luggage compartments. For large equipment, we provide separate equipment vehicle.' },
+      { question: 'Early morning transport available?', answer: 'Yes, we operate 24/7. Early morning pickups at standard rates.' },
+      { question: 'Outstation tournaments?', answer: 'We regularly transport teams across North India. Outstation packages include driver stay.' },
+      { question: 'Fan packages for IPL matches?', answer: 'Yes, during IPL we operate special stadium shuttles. Group bookings get discounts.' }
+    ]
+  },
+  {
+    slug: 'religious-event-transport',
+    name: 'Religious Events',
+    icon: '🛕',
+    title: 'Religious Event Transportation',
+    tagline: 'Sacred Journeys Made Comfortable',
+    description: 'Respectful, reliable transportation for religious ceremonies, pilgrimages, and spiritual gatherings. Serving all faiths with dedication.',
+    metaTitle: 'Religious Event Transportation | Pilgrimage Bus Hire | Temple Tour | Triveni Cabs',
+    metaDescription: 'Religious event transportation for pilgrimages, temple visits, spiritual gatherings. Char Dham, temple tours. Book now!',
+    keywords: ['religious event transport', 'pilgrimage bus', 'temple tour', 'char dham yatra', 'religious tour bus'],
+    heroImage: '/images/events/religious-event-transport.jpg',
+    color: 'from-teal-500 to-emerald-600',
+    features: [
+      { icon: '🛕', title: 'Temple Visits', description: 'Day trips to nearby temples and shrines' },
+      { icon: '🚌', title: 'Pilgrimage Tours', description: 'Multi-day yatras to sacred destinations' },
+      { icon: '🙏', title: 'Ceremony Transport', description: 'Guest transport for pujas and functions' },
+      { icon: '👨‍👩‍👧‍👦', title: 'Group Pilgrimages', description: 'Community and sangat group tours' },
+      { icon: '🌅', title: 'Early Morning', description: 'Pre-dawn pickups for morning rituals' },
+      { icon: '♿', title: 'Accessible Vehicles', description: 'Vehicles suitable for elderly passengers' }
+    ],
+    packages: [
+      {
+        name: 'Day Pilgrimage',
+        description: 'Single day temple visit',
+        includes: ['Tempo traveller/bus', 'Multiple pickup points', 'Wait time at temple', 'Return drop'],
+        price: 'Starting ₹6,000',
+        ideal: 'Vrindavan, Haridwar day trips'
+      },
+      {
+        name: 'Weekend Yatra',
+        description: '2-3 day pilgrimage tour',
+        includes: ['AC vehicle', 'Driver stay', 'Flexible itinerary', 'All transfers'],
+        price: 'Starting ₹15,000',
+        ideal: 'Vaishno Devi, Rishikesh trips'
+      },
+      {
+        name: 'Char Dham Package',
+        description: 'Complete Char Dham Yatra support',
+        includes: ['Dedicated vehicle', 'Experienced hill driver', '10-12 day support', 'All permits'],
+        price: 'Starting ₹45,000',
+        ideal: 'Char Dham Yatra groups'
+      }
+    ],
+    faqs: [
+      { question: 'Do drivers know pilgrimage routes?', answer: 'Yes, our drivers are experienced with Char Dham, Vaishno Devi, Vrindavan, and major temples.' },
+      { question: 'Stops for meals and rest?', answer: 'We plan routes with stops at clean, vegetarian restaurants. Specific stops can be requested.' },
+      { question: 'Early morning temple visits?', answer: 'Yes, we provide 24/7 service. Many prefer early morning departures.' },
+      { question: 'Large religious gatherings?', answer: 'Yes, we arrange multiple buses for sangat groups, jagrans, and community events.' }
+    ]
+  },
+  {
+    slug: 'school-college-events',
+    name: 'Educational Events',
+    icon: '🎓',
+    title: 'School & College Event Transportation',
+    tagline: 'Safe Transport for Educational Events',
+    description: 'Trusted transportation for school excursions, college fests, educational tours, and convocations. Safety-first approach for student transport.',
+    metaTitle: 'School & College Event Transportation | Educational Tour Bus | Triveni Cabs',
+    metaDescription: 'Safe transportation for school trips, college fests, educational tours. GPS tracking, verified drivers. Book school bus now!',
+    keywords: ['school bus hire', 'college fest transport', 'educational tour bus', 'school excursion', 'student transportation'],
+    heroImage: '/images/events/school-college-events.jpg',
+    color: 'from-cyan-500 to-blue-600',
+    features: [
+      { icon: '🏫', title: 'School Excursions', description: 'Safe transport for field trips and picnics' },
+      { icon: '🎭', title: 'College Fests', description: 'Shuttle services for cultural & tech fests' },
+      { icon: '🎓', title: 'Convocation', description: 'Guest transport for graduation ceremonies' },
+      { icon: '🏕️', title: 'Educational Tours', description: 'Multi-day historical and science trips' },
+      { icon: '🏆', title: 'Sports Days', description: 'Transport for inter-school sports events' },
+      { icon: '👨‍👩‍👧', title: 'Parent Meetings', description: 'Shuttle for PTM and school events' }
+    ],
+    packages: [
+      {
+        name: 'Day Excursion',
+        description: 'Single day school trip',
+        includes: ['AC bus/tempo traveller', 'Experienced driver', 'School pickup & drop', 'Teacher coordination'],
+        price: 'Starting ₹8,000',
+        ideal: 'Museum visits, local trips'
+      },
+      {
+        name: 'Overnight Trip',
+        description: '2-3 day educational tour',
+        includes: ['Comfortable AC vehicle', 'Driver accommodation', 'Flexible stops', 'Emergency support'],
+        price: 'Starting ₹20,000',
+        ideal: 'Historical tours, nature camps'
+      },
+      {
+        name: 'College Fest Package',
+        description: 'Multi-day fest transport',
+        includes: ['Shuttle service', 'Multiple routes', 'Extended hours', 'Student coordinator'],
+        price: 'Custom Quote',
+        ideal: 'Technical fests, cultural events'
+      }
+    ],
+    faqs: [
+      { question: 'Are drivers verified for student transport?', answer: 'Yes, all drivers undergo thorough background verification. For school trips, we assign experienced drivers.' },
+      { question: 'Can parents track the bus?', answer: 'Yes, we provide GPS tracking links for school authorities and parents.' },
+      { question: 'First-aid kits in vehicles?', answer: 'Yes, all vehicles carry basic first-aid kits. Additional safety measures for school trips.' },
+      { question: 'Teacher communication with driver?', answer: 'We provide driver contact to teacher-in-charge. Our coordination team available 24/7.' }
+    ]
+  }
+];
+
+export const getAllEventTypes = () => {
+  return eventTypes;
+};
+
+export const getEventTypeBySlug = (slug) => {
+  return eventTypes.find(event => event.slug === slug);
+};
+
+export const getAllEventTypeSlugs = () => {
+  return eventTypes.map(event => event.slug);
+};
 
 export const getAllEventCities = () => {
   return Object.values(eventCities);

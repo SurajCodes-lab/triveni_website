@@ -21,9 +21,17 @@ const Footer = () => {
     { name: "Airport Transfer", href: "/airport-service" },
     { name: "Tempo Traveller", href: "/tempo-traveller" },
     { name: "Wedding Cars", href: "/wedding" },
-    { name: "Religious Tours", href: "/religious-tours" },
-    { name: "Bus Routes", href: "/bus-routes" },
+    { name: "Corporate Transport", href: "/corporate-transportation-service" },
+    { name: "Event Transport", href: "/event-transportation-service" },
     { name: "Sightseeing Tours", href: "/sightseeing" }
+  ];
+
+  const eventCities = [
+    { name: "Delhi Events", href: "/event-transportation-service/city/delhi" },
+    { name: "Jaipur Events", href: "/event-transportation-service/city/jaipur" },
+    { name: "Chandigarh Events", href: "/event-transportation-service/city/chandigarh" },
+    { name: "Agra Events", href: "/event-transportation-service/city/agra" },
+    { name: "Dehradun Events", href: "/event-transportation-service/city/dehradun" }
   ];
 
   const vehicleLinks = [
@@ -165,6 +173,21 @@ const Footer = () => {
                       onClick={() => handleFooterLinkClick(vehicle.name, vehicle.href)}
                     >
                       {vehicle.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {/* Event Cities Sub-section */}
+              <h4 className="text-gray-400 text-start font-semibold mt-6 mb-3 text-body-sm">Event Cities</h4>
+              <ul className="flex flex-wrap gap-2">
+                {eventCities.map((city) => (
+                  <li key={city.name}>
+                    <Link
+                      href={city.href}
+                      className="text-body-xs text-gray-400 hover:text-primary transition-colors duration-fast px-2 py-1 bg-gray-800/30 rounded-button hover:bg-gray-800/50"
+                      onClick={() => handleFooterLinkClick(city.name, city.href)}
+                    >
+                      {city.name}
                     </Link>
                   </li>
                 ))}

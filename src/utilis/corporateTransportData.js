@@ -123,9 +123,7 @@ export const corporateCities = {
       { name: 'Aerocity', type: 'Business District' }
     ],
     stats: {
-      companies: '500+',
-      dailyTrips: '1000+',
-      employees: '25000+'
+      fleet: '500+'
     },
     keywords: ['corporate cab service delhi', 'employee transport delhi', 'corporate car rental delhi ncr', 'executive cab delhi', 'office cab service gurgaon', 'corporate transportation noida']
   },
@@ -152,9 +150,7 @@ export const corporateCities = {
       { name: 'Civil Lines', type: 'Commercial Area' }
     ],
     stats: {
-      companies: '100+',
-      dailyTrips: '200+',
-      employees: '5000+'
+      fleet: '500+'
     },
     keywords: ['corporate cab agra', 'business travel agra', 'industrial transport agra', 'executive cab agra', 'corporate car rental agra']
   },
@@ -181,9 +177,7 @@ export const corporateCities = {
       { name: 'Malviya Nagar', type: 'Commercial District' }
     ],
     stats: {
-      companies: '200+',
-      dailyTrips: '400+',
-      employees: '10000+'
+      fleet: '500+'
     },
     keywords: ['corporate cab jaipur', 'IT park transport jaipur', 'employee shuttle jaipur', 'executive cab jaipur', 'mahindra sez transport']
   },
@@ -210,9 +204,7 @@ export const corporateCities = {
       { name: 'Panchkula IT Park', type: 'Tech Zone' }
     ],
     stats: {
-      companies: '150+',
-      dailyTrips: '350+',
-      employees: '8000+'
+      fleet: '500+'
     },
     keywords: ['corporate cab chandigarh', 'IT park transport mohali', 'employee transport chandigarh', 'corporate car rental tricity', 'infosys campus transport']
   },
@@ -239,9 +231,7 @@ export const corporateCities = {
       { name: 'SIDCUL', type: 'Industrial Estate' }
     ],
     stats: {
-      companies: '75+',
-      dailyTrips: '150+',
-      employees: '3500+'
+      fleet: '500+'
     },
     keywords: ['corporate cab dehradun', 'IT park transport dehradun', 'employee transport dehradun', 'corporate car rental dehradun', 'selaqui transport']
   }

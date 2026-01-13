@@ -192,11 +192,31 @@ module.exports = {
           '0%': { opacity: '0', transform: 'scale(0.95)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'spin-slower': {
+          '0%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(0deg)' },
+        },
+        'gradient': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.3s ease-out',
         'fade-in-up': 'fade-in-up 0.4s ease-out',
         'scale-in': 'scale-in 0.2s ease-out',
+        'spin-slow': 'spin-slow 20s linear infinite',
+        'spin-slower': 'spin-slower 25s linear infinite',
+        'gradient': 'gradient 6s ease infinite',
+        'float': 'float 3s ease-in-out infinite',
       },
     },
   },

@@ -168,11 +168,12 @@ const Header = () => {
                 { href: '/', label: 'Home' },
                 { href: '/about', label: 'About' },
                 { href: '/services', label: 'Services' },
+                { href: '/corporate-transportation-service', label: 'Corporate' },
+                { href: '/event-transportation-service', label: 'Events' },
                 { href: '/tempo-traveller', label: 'Tempo Traveller' },
                 { href: '/bus-routes', label: 'Bus' },
                 { href: '/tour-guide', label: 'Tour Guide' },
                 { href: '/sightseeing', label: 'Wanderlust' },
-                { href: '/destinations', label: 'Destinations' },
                 { href: '/contact', label: 'Contact' },
               ].map((link) => (
                 <Link
@@ -255,6 +256,8 @@ const Header = () => {
                 { href: '/', label: 'Home' },
                 { href: '/about', label: 'About' },
                 { href: '/services', label: 'Services' },
+                { href: '/corporate-transportation-service', label: 'Corporate Transport' },
+                { href: '/event-transportation-service', label: 'Event Transport' },
                 { href: '/tempo-traveller', label: 'Tempo Traveller' },
                 { href: '/contact', label: 'Contact' },
                 { href: '/bus-routes', label: 'Bus Routes' },
