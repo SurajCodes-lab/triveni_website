@@ -197,8 +197,8 @@ const TaxiServiceGrid = () => {
       <div className="max-w-7xl mx-auto px-4 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {currentCards.map((card) => (
-            <Link 
-              href={`/${card.city}`}
+            <Link
+              href={`/${card.city.toLowerCase().replace(/\s+/g, '-')}`}
               key={card.id}
               className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-lg transition-shadow duration-200 cursor-pointer block"
             >

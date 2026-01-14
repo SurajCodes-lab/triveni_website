@@ -292,105 +292,108 @@ export default async function EventTypePage({ params }) {
           </div>
         </section>
 
-        {/* Services/Features Section - Premium Bento Grid */}
-        <section className="py-32 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
-          {/* Background Decorations */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-100/50 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
+        {/* Services/Features Section - Beautiful Grid Design */}
+        <section className="py-32 px-4 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+
+          {/* Floating Gradient Orbs */}
+          <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-cyan-200/40 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-200/30 rounded-full blur-[100px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
+            {/* Section Header */}
             <div className="text-center mb-20">
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-30" />
-                <div className="relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
-                  <Building2 className="w-5 h-5 text-white" />
-                  <span className="text-white font-semibold text-sm tracking-wider uppercase">What We Offer</span>
-                </div>
+              <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+                <span className="text-slate-600 font-semibold text-sm tracking-wider uppercase">What We Offer</span>
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
                 Complete {eventType.name}
-                <span className="block text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 bg-clip-text">Solutions</span>
+                <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 bg-clip-text">Solutions</span>
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+
+              <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
                 Everything you need for seamless {eventType.name.toLowerCase()} transportation
               </p>
             </div>
 
-            {/* Bento Grid Layout */}
-            <div className="grid lg:grid-cols-2 gap-8">
+            {/* Features Grid - 3 Column Layout */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {eventType.features.map((feature, idx) => (
                 <div
                   key={idx}
-                  className={`group relative ${idx === 0 ? 'lg:row-span-2' : ''}`}
+                  className="group relative"
                 >
-                  {/* Glow Effect */}
-                  <div className={`absolute inset-0 rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 ${
-                    idx % 4 === 0 ? 'bg-cyan-500' :
-                    idx % 4 === 1 ? 'bg-blue-500' :
-                    idx % 4 === 2 ? 'bg-indigo-500' :
-                    'bg-violet-500'
-                  }`} />
+                  {/* Card */}
+                  <div className="relative bg-white rounded-3xl p-8 h-full border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-cyan-100/50 hover:border-cyan-200 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                    {/* Gradient Corner Accent */}
+                    <div className={`absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500 ${
+                      idx % 6 === 0 ? 'bg-gradient-to-bl from-cyan-500' :
+                      idx % 6 === 1 ? 'bg-gradient-to-bl from-blue-500' :
+                      idx % 6 === 2 ? 'bg-gradient-to-bl from-indigo-500' :
+                      idx % 6 === 3 ? 'bg-gradient-to-bl from-violet-500' :
+                      idx % 6 === 4 ? 'bg-gradient-to-bl from-purple-500' :
+                      'bg-gradient-to-bl from-teal-500'
+                    }`} />
 
-                  <div className={`relative h-full rounded-[2rem] p-10 overflow-hidden transition-all duration-500 group-hover:-translate-y-2 ${
-                    idx === 0
-                      ? 'bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700'
-                      : 'bg-white shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-cyan-200 hover:shadow-2xl'
-                  }`}>
                     {/* Number Badge */}
-                    <div className={`absolute top-8 right-8 w-16 h-16 rounded-2xl flex items-center justify-center border ${
-                      idx === 0
-                        ? 'bg-white/20 backdrop-blur-xl border-white/30'
-                        : 'bg-gradient-to-br from-cyan-500 to-blue-600 border-transparent shadow-lg shadow-cyan-500/30'
+                    <div className="absolute top-6 right-6 w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-blue-600 group-hover:border-transparent transition-all duration-300">
+                      <span className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+
+                    {/* Icon */}
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ${
+                      idx % 6 === 0 ? 'bg-gradient-to-br from-cyan-500 to-cyan-600 shadow-cyan-500/30' :
+                      idx % 6 === 1 ? 'bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-500/30' :
+                      idx % 6 === 2 ? 'bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-indigo-500/30' :
+                      idx % 6 === 3 ? 'bg-gradient-to-br from-violet-500 to-violet-600 shadow-violet-500/30' :
+                      idx % 6 === 4 ? 'bg-gradient-to-br from-purple-500 to-purple-600 shadow-purple-500/30' :
+                      'bg-gradient-to-br from-teal-500 to-teal-600 shadow-teal-500/30'
                     }`}>
-                      <span className="text-3xl font-black text-white">{String(idx + 1).padStart(2, '0')}</span>
+                      {feature.icon}
                     </div>
 
-                    {/* Animated Ring for first card */}
-                    {idx === 0 && (
-                      <>
-                        <div className="absolute -bottom-20 -left-20 w-64 h-64 border-4 border-white/10 rounded-full" />
-                        <div className="absolute -bottom-16 -left-16 w-52 h-52 border-2 border-white/10 rounded-full" />
-                      </>
-                    )}
+                    {/* Content */}
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-800 transition-colors">
+                      {feature.title}
+                    </h3>
 
-                    <div className="relative z-10 h-full flex flex-col">
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6 ${
-                        idx === 0
-                          ? 'bg-white/20 backdrop-blur-sm'
-                          : 'bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/30'
-                      }`}>
-                        {feature.icon}
-                      </div>
+                    <p className="text-slate-500 leading-relaxed mb-6">
+                      {feature.description}
+                    </p>
 
-                      <h3 className={`text-2xl md:text-3xl font-black mb-4 ${
-                        idx === 0 ? 'text-white' : 'text-slate-900'
-                      }`}>
-                        {feature.title}
-                      </h3>
-                      <p className={`text-lg mb-6 ${
-                        idx === 0 ? 'text-white/80' : 'text-slate-500'
-                      }`}>
-                        {feature.description}
-                      </p>
-
-                      {/* Feature highlight box for first card */}
-                      {idx === 0 && (
-                        <div className="mt-auto rounded-2xl p-6 bg-white/10 backdrop-blur-sm border border-white/20">
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-green-500/30">
-                              <CheckCircle2 className="w-5 h-5 text-green-300" />
-                            </div>
-                            <div>
-                              <span className="font-bold text-sm text-green-300">Premium Service</span>
-                              <p className="text-sm text-white/80">Professional drivers, well-maintained vehicles, and dedicated support</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                    {/* Bottom Accent Line */}
+                    <div className={`absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                      idx % 6 === 0 ? 'bg-gradient-to-r from-cyan-500 to-blue-500' :
+                      idx % 6 === 1 ? 'bg-gradient-to-r from-blue-500 to-indigo-500' :
+                      idx % 6 === 2 ? 'bg-gradient-to-r from-indigo-500 to-violet-500' :
+                      idx % 6 === 3 ? 'bg-gradient-to-r from-violet-500 to-purple-500' :
+                      idx % 6 === 4 ? 'bg-gradient-to-r from-purple-500 to-pink-500' :
+                      'bg-gradient-to-r from-teal-500 to-cyan-500'
+                    }`} />
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="mt-16 text-center">
+              <div className="inline-flex items-center gap-4 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-2 pl-8 shadow-xl">
+                <span className="text-white font-medium">Need a custom solution?</span>
+                <Link
+                  href="tel:+917668570551"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Now
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -1057,7 +1057,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                   className="text-center mt-10"
                 >
                   <Link
-                    href={`/tourist-attractions/${destination.toLowerCase()}`}
+                    href={`/tourist-attractions/${destination.toLowerCase().replace(/\s+/g, '-')}`}
                     className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-8 rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all"
                   >
                     <Compass className="w-5 h-5" />
@@ -1109,7 +1109,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <Link
-                  href={`/tempo-traveller/${origin.toLowerCase()}-to-${route.to.toLowerCase()}`}
+                  href={`/tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
                   className="block group"
                 >
                   <div className="bg-white rounded-2xl p-5 border-2 border-gray-100 hover:border-amber-300 hover:shadow-lg transition-all duration-300">

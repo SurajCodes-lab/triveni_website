@@ -243,7 +243,7 @@ export default function CityRoutesMainClient({ data }) {
   const handleCitySelect = (cityName) => {
     setSearchQuery('');
     setShowSuggestions(false);
-    window.location.href = `/${cityName.toLowerCase()}`;
+    window.location.href = `/${cityName.toLowerCase().replace(/\s+/g, '-')}`;
   };
 
   return (
@@ -631,7 +631,7 @@ export default function CityRoutesMainClient({ data }) {
                     transition={{ delay: index * 0.05 }}
                     className={isLarge ? 'md:col-span-2 md:row-span-2' : ''}
                   >
-                    <Link href={`/${city.name.toLowerCase()}`} className="block group h-full">
+                    <Link href={`/${city.name.toLowerCase().replace(/\s+/g, '-')}`} className="block group h-full">
                       <div className={`relative overflow-hidden rounded-3xl h-full ${
                         isLarge ? 'min-h-[300px] md:min-h-[400px]' : 'min-h-[180px] md:min-h-[200px]'
                       }`}>

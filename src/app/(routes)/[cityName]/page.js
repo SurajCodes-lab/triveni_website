@@ -341,7 +341,7 @@ export default function CityNamePage({ params }) {
           "@type": "ListItem",
           "position": 2,
           "name": formattedCityName,
-          "item": `https://www.trivenicabs.in/${originCity.toLowerCase()}`
+          "item": `https://www.trivenicabs.in/${originCity.toLowerCase().replace(/\s+/g, '-')}`
         },
         {
           "@type": "ListItem",
