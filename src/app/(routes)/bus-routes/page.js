@@ -6,8 +6,8 @@ import Script from 'next/script';
 
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
-  title: 'Big Groups, Bigger Adventures! Luxury Bus Hire 22-56 Seater | Triveni Cabs',
-  description: '🚌 Roll in style with luxury coaches! From 22 to 56 seater Volvo & AC buses perfect for corporate events, weddings, school tours & pilgrimages. Reclining seats, entertainment, spacious luggage. Delhi to anywhere in India. Your group, our comfort commitment!',
+  title: 'Luxury Bus Hire 2026 | 22-56 Seater Volvo from ₹35/km | Book Now',
+  description: 'Hire luxury buses from Delhi: 22 seater ₹35/km, 35 seater ₹45/km, 56 seater Volvo ₹55/km. Perfect for weddings, corporate, pilgrimages. AC + entertainment. Call 7668570551.',
   alternates: {
     canonical: 'https://www.trivenicabs.in/bus-routes'
   },

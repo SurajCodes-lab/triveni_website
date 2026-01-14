@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import WeddingPageClient from "@/components/wedding/WeddingPageClient";
 
 export const metadata = {
-  title: "💍 Your Dream Wedding Deserves a Royal Ride! Book Luxury Car in 60 Sec | BMW • Audi • Mercedes | ₹15,000+ | Triveni Cabs",
-  description: "Make memories that last forever! Premium wedding car rental with BMW, Audi, Mercedes & vintage cars for bride/groom entry. Baraat tempo travellers (12-26 seater), professional chauffeurs, stunning decorations included. 500+ couples trusted us. Book your royal ride today & get 15% off!",
+  title: 'Wedding Car Rental 2026 | BMW ₹15K, Audi ₹18K | Delhi NCR & North India',
+  description: 'Book wedding cars: BMW ₹15K, Audi ₹18K, Mercedes ₹20K, Vintage ₹25K. Baraat tempo 12-26 seater ₹8K+. 500+ weddings done. Decoration included. Call 7668570551.',
   keywords: "wedding car rental, bridal car rental, wedding car hire, luxury wedding car, baraat tempo traveller, groom car rental, wedding transportation, BMW wedding car, Audi wedding car, Mercedes wedding car, vintage wedding car, tempo traveller for baraat, decorated wedding car, wedding car booking, shaadi car rental, marriage car rental, wedding bus rental, wedding car rental delhi, wedding car hire delhi, luxury wedding car delhi, bridal car rental delhi, baraat tempo traveller delhi, wedding transportation delhi, decorated wedding car delhi, groom car rental delhi, BMW wedding car delhi, Audi wedding car delhi, Mercedes wedding car delhi, vintage wedding car delhi, wedding car booking delhi, shaadi car rental delhi, best wedding car rental delhi, cheap wedding car delhi, affordable wedding car delhi, luxury wedding car hire delhi, premium wedding car delhi, delhi wedding car with driver, delhi wedding car decoration, delhi baraat car booking, delhi sangeet car rental, delhi mehendi car rental, delhi reception car service, wedding car rental jaipur, wedding car hire jaipur, luxury wedding car jaipur, bridal car rental jaipur, royal wedding car jaipur, baraat tempo traveller jaipur, wedding transportation jaipur, vintage car rental jaipur, destination wedding car jaipur, BMW wedding car jaipur, Audi wedding car jaipur, Mercedes wedding car jaipur, palace wedding car jaipur, best wedding car rental jaipur, cheap wedding car jaipur, affordable wedding car jaipur, jaipur royal wedding transport, jaipur heritage wedding car, pink city wedding car, jaipur palace wedding transport, jaipur baraat car booking, wedding car rental agra, wedding car hire agra, luxury wedding car agra, bridal car rental agra, baraat car rental agra, taj mahal wedding car agra, wedding transportation agra, tempo traveller wedding agra, BMW wedding car agra, vintage wedding car agra, best wedding car rental agra, cheap wedding car agra, agra wedding car with driver, agra taj wedding transport, wedding car rental chandigarh, wedding car hire chandigarh, luxury wedding car chandigarh, bridal car rental chandigarh, baraat car chandigarh, wedding transportation chandigarh, BMW wedding car chandigarh, Audi wedding car chandigarh, tempo traveller wedding chandigarh, vintage car rental chandigarh, best wedding car chandigarh, affordable wedding car chandigarh, punjab wedding car rental, chandigarh baraat booking, wedding car rental shimla, wedding car hire shimla, luxury wedding car shimla, bridal car rental shimla, destination wedding car shimla, hill station wedding car shimla, baraat car shimla, tempo traveller wedding shimla, BMW wedding car shimla, vintage wedding car shimla, shimla destination wedding transport, shimla hill wedding car, queen of hills wedding car, wedding car rental manali, wedding car hire manali, luxury wedding car manali, destination wedding car manali, bridal car rental manali, hill station wedding car manali, baraat car manali, tempo traveller wedding manali, BMW wedding car manali, adventure wedding car manali, manali mountain wedding car, manali snow wedding transport, solang valley wedding car, wedding car rental amritsar, wedding car hire amritsar, luxury wedding car amritsar, bridal car rental amritsar, punjabi wedding car amritsar, baraat car amritsar, wedding transportation amritsar, BMW wedding car amritsar, golden temple wedding car, tempo traveller wedding amritsar, amritsar sikh wedding car, punjabi baraat car rental, amritsar wedding convoy, wedding car rental haridwar, wedding car hire haridwar, luxury wedding car haridwar, bridal car rental haridwar, religious wedding car haridwar, baraat car haridwar, tempo traveller wedding haridwar, destination wedding car haridwar, BMW wedding car haridwar, ganga aarti wedding car, haridwar ghat wedding transport, har ki pauri wedding car, wedding car rental rishikesh, wedding car hire rishikesh, luxury wedding car rishikesh, destination wedding car rishikesh, bridal car rental rishikesh, riverside wedding car rishikesh, yoga town wedding car, adventure wedding car rishikesh, tempo traveller wedding rishikesh, BMW wedding car rishikesh, rishikesh ganga wedding car, lakshman jhula wedding transport, wedding car rental dehradun, wedding car hire dehradun, luxury wedding car dehradun, bridal car rental dehradun, baraat car dehradun, destination wedding car dehradun, tempo traveller wedding dehradun, BMW wedding car dehradun, hill station wedding car dehradun, vintage wedding car dehradun, dehradun uttarakhand wedding car, dehradun hill wedding transport, wedding car rental jodhpur, wedding car hire jodhpur, luxury wedding car jodhpur, royal wedding car jodhpur, bridal car rental jodhpur, rajasthani wedding car jodhpur, destination wedding car jodhpur, palace wedding car jodhpur, vintage car rental jodhpur, BMW wedding car jodhpur, tempo traveller wedding jodhpur, fort wedding car jodhpur, blue city wedding car, mehrangarh wedding transport, jodhpur heritage wedding car, wedding car rental udaipur, wedding car hire udaipur, luxury wedding car udaipur, royal wedding car udaipur, destination wedding car udaipur, lake palace wedding car, bridal car rental udaipur, palace wedding car udaipur, vintage car rental udaipur, BMW wedding car udaipur, rajasthani wedding car udaipur, maharana pratap wedding car, city of lakes wedding car, pichola lake wedding transport, udaipur heritage wedding car, udaipur palace wedding transport, wedding car rental ayodhya, wedding car hire ayodhya, luxury wedding car ayodhya, bridal car rental ayodhya, religious wedding car ayodhya, ram mandir wedding car, baraat car ayodhya, tempo traveller wedding ayodhya, BMW wedding car ayodhya, vintage wedding car ayodhya, ayodhya spiritual wedding car, ayodhya temple wedding transport, book wedding car online, rent wedding car, hire wedding car, wedding car on rent, wedding luxury cars, premium wedding vehicles, wedding convoy rental, wedding guest transport, multi day wedding car rental, weekend wedding car hire, wedding car with chauffeur, chauffeur driven wedding car, wedding car decoration service, flower decorated wedding car, bride entry car, groom entry car, wedding send off car, sangeet function car rental, mehendi ceremony car, reception car rental, pre wedding shoot car rental, destination wedding transport, hill station wedding transport, palace wedding transport, heritage wedding car, royal wedding transport",
   alternates: {
     canonical: "https://www.trivenicabs.in/wedding"
@@ -143,28 +143,36 @@ export default function WeddingPage() {
   // FAQ Data for Schema and Client Component
   const faqs = [
     {
+      question: "How much does a BMW wedding car cost in Delhi?",
+      answer: "BMW wedding car rental in Delhi starts from ₹15,000 for local use (4 hours). This includes professional chauffeur, basic flower decoration, and fuel. Premium decoration packages available from ₹3,000 extra."
+    },
+    {
       question: "What types of wedding cars do you offer?",
-      answer: "We offer luxury cars (BMW, Audi, Mercedes, Jaguar), premium sedans (City, Ciaz, Verna), SUVs (Fortuner, Innova Crysta), tempo travellers (9-26 seater), vintage cars, and luxury buses."
+      answer: "We offer luxury cars (BMW 5-Series ₹15K, Audi A6 ₹18K, Mercedes E-Class ₹20K), vintage cars (₹25K), premium SUVs (Fortuner, Innova ₹8K), and baraat tempo travellers (12-26 seater from ₹8K)."
     },
     {
-      question: "Do you provide car decoration services?",
-      answer: "Yes! We provide beautiful floral and theme-based decoration services. You can choose from our standard decoration packages or request custom decorations based on your wedding theme."
+      question: "Do you provide car decoration for weddings?",
+      answer: "Yes! We provide floral decoration starting from ₹2,000. Options include rose petals, orchids, ribbons, and LED lights. Custom theme-based decorations available on request. Fresh flowers are arranged on the wedding day."
     },
     {
-      question: "How far in advance should I book?",
-      answer: "We recommend booking at least 2-4 weeks in advance, especially during wedding season (October to March). However, we also accommodate last-minute bookings based on availability."
+      question: "How far in advance should I book wedding car?",
+      answer: "Book at least 2-4 weeks in advance, especially during wedding season (October-February). Peak dates like specific muhurat days require 1 month advance booking. Same-week bookings subject to availability."
     },
     {
-      question: "What areas do you cover?",
-      answer: "We provide wedding car services across North India including Delhi, Chandigarh, Jaipur, Agra, Haridwar, Rishikesh, Shimla, Manali, Udaipur, Amritsar, and all major cities."
+      question: "Can I book tempo traveller for baraat?",
+      answer: "Yes! We have 12, 17, 20, and 26 seater tempo travellers perfect for baraat. Starting from ₹8,000 for local use. All AC vehicles with pushback seats, music system, and decorated options available."
     },
     {
-      question: "Are your chauffeurs professional?",
-      answer: "Yes! All our chauffeurs are professional, uniformed, well-trained, and experienced in handling wedding events. They ensure timely and safe transportation."
+      question: "Do you serve destination weddings in Jaipur, Udaipur?",
+      answer: "Yes! We serve destination weddings in Jaipur, Udaipur, Jodhpur, Agra (Taj), and other royal venues. Fleet includes luxury cars, vintage cars, and guest transport vehicles. Contact for special destination wedding packages."
     },
     {
-      question: "Can I customize my wedding package?",
-      answer: "Absolutely! We offer fully customizable packages based on your requirements, budget, number of vehicles needed, duration, and special requests."
+      question: "Is chauffeur included in wedding car rental?",
+      answer: "Yes! All wedding cars come with professional uniformed chauffeurs experienced in handling wedding events. Driver tip, fuel, and parking are included. No hidden charges."
+    },
+    {
+      question: "Can I book multiple cars for different wedding functions?",
+      answer: "Absolutely! We offer multi-function packages covering mehendi, sangeet, wedding, and reception. Get 10-15% discount on package bookings. Custom fleet combinations available for large weddings."
     }
   ];
 

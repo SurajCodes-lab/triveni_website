@@ -11,6 +11,36 @@ import { getAllTours } from "@/utilis/sightseeingData";
 import { getAllCitySlugs } from "@/utilis/airportCityData";
 import { getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
 
+// Corporate and Event slugs for sitemap
+const corporateIndustrySlugs = [
+  'it-companies',
+  'bpo-call-centers',
+  'pharma-companies',
+  'manufacturing',
+  'banks-financial'
+];
+
+const corporateUseCaseSlugs = [
+  'employee-pick-drop',
+  'airport-transfer-corporate',
+  'executive-car-rental',
+  'office-shuttle-service',
+  'monthly-car-rental-corporate'
+];
+
+const corporateCitySlugs = ['delhi', 'agra', 'jaipur', 'chandigarh', 'dehradun'];
+
+const eventTypeSlugs = [
+  'wedding-transportation',
+  'corporate-event-transport',
+  'concert-festival-transport',
+  'sports-event-transport',
+  'religious-event-transport',
+  'school-college-events'
+];
+
+const eventCitySlugs = ['delhi', 'agra', 'jaipur', 'chandigarh', 'dehradun'];
+
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
 }
@@ -258,6 +288,34 @@ export default function sitemap() {
       priority: 0.4,
     },
 
+    // Corporate Transportation Service Pages - HIGH PRIORITY B2B CONTENT
+    {
+      url: `${baseUrl}/corporate-transportation-service`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/corporate-cab-vs-aggregators`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/get-corporate-quote`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    // Event Transportation Service Pages - HIGH PRIORITY CONTENT
+    {
+      url: `${baseUrl}/event-transportation-service`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+
     // Blog Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/blog`,
@@ -436,6 +494,56 @@ export default function sitemap() {
         }
       });
     }
+  });
+
+  // Add Corporate Transportation City Pages - B2B CONTENT
+  corporateCitySlugs.forEach(citySlug => {
+    urls.push({
+      url: `${baseUrl}/corporate-transportation-service/${citySlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // Add Corporate Transportation Industry Pages - B2B CONTENT
+  corporateIndustrySlugs.forEach(industrySlug => {
+    urls.push({
+      url: `${baseUrl}/corporate-transportation-service/industry/${industrySlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // Add Corporate Transportation Use Case Pages - B2B CONTENT
+  corporateUseCaseSlugs.forEach(useCaseSlug => {
+    urls.push({
+      url: `${baseUrl}/corporate-transportation-service/use-case/${useCaseSlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // Add Event Transportation Type Pages - HIGH PRIORITY CONTENT
+  eventTypeSlugs.forEach(eventSlug => {
+    urls.push({
+      url: `${baseUrl}/event-transportation-service/${eventSlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // Add Event Transportation City Pages - HIGH PRIORITY CONTENT
+  eventCitySlugs.forEach(citySlug => {
+    urls.push({
+      url: `${baseUrl}/event-transportation-service/city/${citySlug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
   });
 
   return urls;

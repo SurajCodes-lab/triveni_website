@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import AirportServiceClient from "@/components/airport/AirportServiceClient";
 
 export const metadata = {
-  title: "🚖 Never Miss Your Flight! Book Airport Taxi in 60 Seconds | 24/7 Available | Triveni Cabs",
-  description: "Book India's #1 airport taxi service instantly! ✓ Real-time flight tracking ✓ Professional chauffeurs ✓ Zero cancellation fee ✓ Guaranteed on-time pickup ✓ Luggage assistance. Serving 50+ cities including Delhi IGI, Jaipur, Chandigarh. Pre-book now & save 15%! Starting ₹11/km.",
+  title: 'Airport Taxi 2026 | Delhi IGI from ₹1,500 | Flight Tracking | Book Now',
+  description: 'Book airport taxi: Delhi IGI ₹1,500, Jaipur ₹1,200, Chandigarh ₹1,000. Real-time flight tracking, meet & greet, 24/7 service. 5000+ transfers done. Call 7668570551.',
   keywords: "airport taxi, airport cab service, airport transfer, airport pickup, airport drop, airport cab booking, 24x7 airport cab, cheap airport taxi, airport taxi service, airport transfer service, best airport taxi near me, reliable airport cab, instant airport taxi booking, airport taxi booking online, pre book airport taxi, advance airport cab booking, airport taxi delhi, delhi airport cab service, delhi to airport taxi, indira gandhi airport taxi, IGI airport taxi, delhi airport transfer, airport pickup delhi, delhi airport drop, delhi airport cab booking, cheap airport taxi delhi, 24x7 airport cab delhi, best airport taxi delhi, affordable airport cab delhi, delhi airport taxi booking, delhi airport pickup service, delhi airport drop service, new delhi airport taxi, IGI terminal 3 taxi, IGI terminal 1 taxi, IGI terminal 2 taxi, delhi airport to city taxi, delhi airport to noida taxi, delhi airport to gurgaon cab, delhi airport to faridabad taxi, airport taxi jaipur, jaipur airport cab service, jaipur to airport taxi, jaipur international airport taxi, jaipur airport transfer, airport pickup jaipur, jaipur airport drop, jaipur airport cab booking, sanganer airport taxi, cheap airport taxi jaipur, jaipur airport to city taxi, best airport cab jaipur, jaipur airport pickup service, airport taxi agra, agra airport cab service, agra to delhi airport taxi, kheria airport taxi agra, agra airport transfer, airport pickup agra, agra to airport cab, agra airport drop service, agra to jaipur airport taxi, airport taxi chandigarh, chandigarh airport cab, chandigarh international airport taxi, airport transfer chandigarh, airport pickup chandigarh, chandigarh airport drop, mohali airport taxi, chandigarh airport cab booking, cheap airport taxi chandigarh, chandigarh airport to city taxi, best airport cab chandigarh, airport taxi shimla, shimla airport cab service, shimla to chandigarh airport taxi, shimla to delhi airport taxi, shimla airport transfer, jubbarhatti airport taxi, shimla to airport cab, shimla airport pickup, airport taxi manali, manali to kullu airport taxi, manali to chandigarh airport taxi, manali to delhi airport taxi, bhuntar airport to manali taxi, manali airport transfer, kullu airport taxi manali, manali airport cab service, kullu manali airport taxi, bhuntar to manali taxi, airport taxi amritsar, amritsar airport cab service, sri guru ram dass airport taxi, amritsar international airport taxi, amritsar airport transfer, airport pickup amritsar, amritsar airport drop, golden temple to airport taxi, amritsar airport cab booking, cheap airport taxi amritsar, best airport cab amritsar, airport taxi haridwar, haridwar to delhi airport taxi, haridwar to dehradun airport taxi, jolly grant airport to haridwar, haridwar airport transfer, haridwar airport cab service, haridwar to airport cab, haridwar airport pickup, airport taxi rishikesh, rishikesh to delhi airport taxi, rishikesh to dehradun airport taxi, jolly grant airport to rishikesh, rishikesh airport transfer, rishikesh airport cab service, rishikesh to airport cab, rishikesh airport pickup, airport taxi dehradun, dehradun airport cab service, jolly grant airport taxi, dehradun to delhi airport taxi, dehradun airport transfer, airport pickup dehradun, dehradun airport drop, dehradun to airport cab, jolly grant to dehradun taxi, cheap airport taxi dehradun, airport taxi jodhpur, jodhpur airport cab service, jodhpur airport transfer, jodhpur to jaipur airport taxi, airport pickup jodhpur, jodhpur airport drop, jodhpur to airport cab, jodhpur airport taxi booking, airport taxi udaipur, udaipur airport cab service, maharana pratap airport taxi, udaipur airport transfer, airport pickup udaipur, udaipur airport drop, udaipur to jaipur airport taxi, udaipur to airport cab, udaipur airport cab booking, airport taxi ayodhya, ayodhya to lucknow airport taxi, ayodhya to delhi airport taxi, ayodhya airport transfer, airport pickup ayodhya, ram mandir to airport taxi, ayodhya airport cab service, ayodhya to airport cab, one way airport taxi, round trip airport taxi, airport taxi near me, airport cab near me, luxury airport taxi, premium airport cab, sedan airport taxi, SUV airport taxi, innova airport taxi, tempo traveller airport transfer, corporate airport transfer, group airport transfer, family airport taxi, early morning airport taxi, late night airport cab, midnight airport taxi, airport to hotel taxi, hotel to airport taxi, airport to home taxi, home to airport cab, airport shuttle service, airport taxi fare, airport cab charges, airport taxi rate, airport transfer cost, how to book airport taxi, airport taxi contact number, airport cab customer care, airport transfer with flight tracking, meet and greet airport service, airport taxi with luggage assistance, safe airport transfer, verified airport drivers, sanitized airport cabs, GPS tracked airport taxi, fixed fare airport cab, no surge pricing airport taxi, instant confirmation airport booking",
   alternates: {
     canonical: "https://www.trivenicabs.in/airport-service"
@@ -178,24 +178,36 @@ export default function AirportServicePage() {
   // FAQ Data for Schema and Client Component
   const faqData = [
     {
+      question: "What is the taxi fare from Delhi airport to city center?",
+      answer: "Delhi IGI airport to city center (Connaught Place) starts from ₹800-1,200 depending on vehicle type. Sedan ₹800, SUV ₹1,200. Prices are fixed with no surge pricing."
+    },
+    {
       question: "How do I book an airport taxi with Triveni Cabs?",
-      answer: "You can book easily via our website form, call us at +91-7668570551, or message us on WhatsApp. We offer instant confirmation."
+      answer: "Book via WhatsApp at +91-7668570551, call directly, or use our website. We provide instant confirmation with driver details and exact fare within 2 minutes."
     },
     {
-      question: "Do you provide flight tracking?",
-      answer: "Yes, we monitor your flight status in real-time to ensure our driver is there when you arrive, even if your flight is delayed."
+      question: "Do you provide flight tracking for delayed flights?",
+      answer: "Yes, we track your flight in real-time. If your flight is delayed, your driver will be rescheduled automatically at no extra cost. No waiting charges for flight delays."
     },
     {
-      question: "Is there a cancellation fee?",
-      answer: "We have a flexible cancellation policy. Please contact us as soon as possible if your plans change."
+      question: "Can I book airport taxi for early morning (3-5 AM) flights?",
+      answer: "Yes, we provide 24/7 airport taxi service including early morning and late night flights. Book in advance for guaranteed availability. No extra charges for odd hours."
     },
     {
-      question: "Are the taxi fares fixed?",
-      answer: "Yes, we offer transparent, fixed pricing with no hidden surcharges or surge pricing."
+      question: "What airports do you serve?",
+      answer: "We serve Delhi IGI (T1, T2, T3), Jaipur International, Chandigarh, Amritsar, Dehradun Jolly Grant, Kullu-Manali Bhuntar, Udaipur, Jodhpur, and Lucknow airports."
     },
     {
-      question: "Can I book a cab for a large group?",
-      answer: "Absolutely! We have a diverse fleet ranging from Sedans and SUVs to Tempo Travellers and buses for large groups."
+      question: "Is there meet and greet service at the airport?",
+      answer: "Yes, our driver will wait at the arrival gate with a name board. We provide luggage assistance and guide you to your vehicle. This service is complimentary."
+    },
+    {
+      question: "What vehicles are available for airport transfer?",
+      answer: "We offer Sedan (Swift Dzire, Etios) from ₹11/km, SUV (Innova, Ertiga) from ₹15/km, and Tempo Traveller (12-26 seater) from ₹23/km for group airport transfers."
+    },
+    {
+      question: "How much in advance should I book airport taxi?",
+      answer: "We recommend booking at least 4-6 hours in advance. For early morning flights or peak season, book 24 hours ahead. Same-day bookings subject to availability."
     }
   ];
 

@@ -1,8 +1,8 @@
 import TourGuideClient from './TourGuideClient';
 
 export const metadata = {
-  title: "Expert Tour Guides in India | Multi-Language Certified Local Guides | Book Professional Tour Guide Services",
-  description: "Book certified professional tour guides across 14+ Indian cities. Multi-language expert guides available in English, Hindi, French, Spanish, German & Chinese. Licensed by Ministry of Tourism. Personalized heritage tours, cultural experiences & sightseeing services. Affordable rates starting ₹1200/day. Instant WhatsApp booking available 24/7.",
+  title: 'Tour Guide India 2026 | Licensed Guides from ₹1,200/Day | 14+ Cities',
+  description: 'Hire certified tour guides in Delhi, Agra, Jaipur & 14+ cities. Multi-language (EN/FR/ES/DE). Ministry licensed. ₹1,200-3,000/day. 100+ guides. Book via WhatsApp 7668570551.',
   keywords: [
     // Primary Keywords - High Volume
     'tour guide India',

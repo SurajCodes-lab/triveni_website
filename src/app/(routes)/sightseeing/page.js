@@ -7,8 +7,8 @@ import { getAllTours, tourCategories, featuredTours } from '@/utilis/sightseeing
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Sightseeing Tours India 2026 | Heritage & Cultural Day Tours | Book Online',
-  description: 'Book sightseeing tours across 20+ Indian destinations. Expert-guided heritage tours - Taj Mahal, Jaipur forts, Delhi monuments. Customizable itineraries, professional guides. Call 7668570551 for instant booking!',
+  title: 'Sightseeing Tours India 2026 | Taj Mahal ₹3,500 | Same Day Packages',
+  description: 'Book sightseeing tours from Delhi: Taj Mahal ₹3,500, Jaipur ₹4,500, Golden Triangle ₹12,000. 50+ tours, AC cars, expert guides. 10,000+ happy tourists. Call 7668570551.',
   keywords: [
     // Primary Keywords (High Volume)
     'sightseeing tours India',

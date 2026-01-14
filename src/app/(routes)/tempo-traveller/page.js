@@ -4,10 +4,10 @@ import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerDat
 import TempoMainClient from '@/components/TempoMainClient';
 
 export const metadata = {
-  // Title under 60 chars per Google guidelines
-  title: 'Tempo Traveller on Rent | 12-26 Seater AC from ₹23/km',
-  // Description under 160 chars, unique and descriptive
-  description: 'Book tempo traveller on rent across India. 12-26 seater AC with driver. ₹23-27/km all-inclusive. Delhi, Manali, Shimla, Jaipur routes. Call 7668570551.',
+  // Title under 60 chars per Google guidelines - CTR optimized
+  title: 'Tempo Traveller Rent 2026 | 12-26 Seater ₹23/km | Delhi Routes',
+  // Description under 160 chars, unique and descriptive - CTR optimized
+  description: 'Book tempo traveller from Delhi: Manali ₹18K, Shimla ₹12K, Jaipur ₹10K. 12-26 seater AC with driver. 5000+ trips done. GPS tracking. Call 7668570551.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',

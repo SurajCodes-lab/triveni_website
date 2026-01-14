@@ -109,6 +109,47 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
+        {/* Organization Schema with Logo - For Google Search Results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Triveni Cabs",
+              "alternateName": ["Triveni Car Rental", "Triveni Taxi Service"],
+              "url": "https://www.trivenicabs.in",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.trivenicabs.in/images/logo/logo.webp",
+                "width": 600,
+                "height": 315
+              },
+              "image": "https://www.trivenicabs.in/images/logo/logo.webp",
+              "description": "India's trusted car rental & taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 50+ cities, 24/7 booking.",
+              "telephone": "+91-7668570551",
+              "email": "cabstriveni@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN",
+                "addressRegion": "Delhi NCR"
+              },
+              "sameAs": [
+                "https://www.facebook.com/trivenicabs",
+                "https://www.instagram.com/trivenicabs",
+                "https://twitter.com/trivenicabs"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-7668570551",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi"]
+              }
+            })
+          }}
+        />
+
         {/* WebSite Schema with SearchAction */}
         <script
           type="application/ld+json"
@@ -136,8 +177,9 @@ export default function RootLayout({ children }) {
               "@type": "LocalBusiness",
               "name": "Triveni Cabs",
               "alternateName": "Triveni Car Rental Services",
+              "logo": "https://www.trivenicabs.in/images/logo/logo.webp",
               "image": [
-                "https://www.trivenicabs.in/images/logo.webp",
+                "https://www.trivenicabs.in/images/logo/logo.webp",
                 "https://www.trivenicabs.in/images/car/sedan.webp",
                 "https://www.trivenicabs.in/images/car/suv.webp"
               ],

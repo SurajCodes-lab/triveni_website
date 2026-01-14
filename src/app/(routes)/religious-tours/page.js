@@ -4,8 +4,8 @@ import { religiousTours } from '@/utilis/religiousTourData';
 import { Calendar, MapPin, Star, ChevronRight, Phone, Shield, Clock, Users, Heart } from 'lucide-react';
 
 export const metadata = {
-  title: 'Pilgrimage Tours India | Char Dham, Vaishno Devi Packages',
-  description: 'Book pilgrimage tours with AC transport. Char Dham Yatra, Vaishno Devi, Golden Temple, Tirupati packages. Expert guides, comfortable travel. Call 7668570551.',
+  title: 'Pilgrimage Tours 2026 | Char Dham from ₹45,000 | AC Transport & Guide',
+  description: 'Book pilgrimage tours from Delhi with AC transport. Char Dham Yatra ₹45K, Vaishno Devi ₹8K, Haridwar ₹4K. 3000+ pilgrims served. Expert guides + 24/7 support. Call 7668570551.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -14,8 +14,8 @@ export const metadata = {
     canonical: '/religious-tours',
   },
   openGraph: {
-    title: 'Pilgrimage Tours India | Char Dham, Vaishno Devi Packages',
-    description: 'Book pilgrimage tours with AC transport. Expert guides, comfortable travel across India.',
+    title: 'Pilgrimage Tours 2026 | Char Dham, Vaishno Devi from Delhi | AC Transport',
+    description: 'Book pilgrimage packages with AC transport from Delhi. Char Dham ₹45K, Vaishno Devi ₹8K. 3000+ pilgrims trust us. Expert guides included.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/religious-tours',
@@ -25,14 +25,14 @@ export const metadata = {
         url: '/images/sightseeing/Char_Dham/Chardham_hero_section.jpg',
         width: 1200,
         height: 630,
-        alt: 'Pilgrimage Tours India - Char Dham Yatra'
+        alt: 'Pilgrimage Tours India - Char Dham Yatra 2026'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pilgrimage Tours India | Char Dham, Vaishno Devi',
-    description: 'Expert-guided temple tours with AC transport. Call 7668570551.',
+    title: 'Pilgrimage Tours 2026 | Char Dham ₹45K | AC Transport',
+    description: '3000+ pilgrims served. Char Dham, Vaishno Devi, Haridwar packages with AC transport & expert guides. Book now!',
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Char_Dham/Chardham_hero_section.jpg']
@@ -82,6 +82,55 @@ export default function ReligiousToursPage() {
     ]
   };
 
+  // FAQ Data for Schema
+  const faqData = [
+    {
+      question: "What is the cost of Char Dham Yatra from Delhi?",
+      answer: "Char Dham Yatra package from Delhi starts from ₹45,000 per person for 10-12 days. This includes AC vehicle, experienced hill driver, fuel, tolls, parking, and driver accommodation. Helicopter options available from ₹1.5 lakh."
+    },
+    {
+      question: "How many days are needed for Char Dham Yatra?",
+      answer: "Complete Char Dham Yatra (Yamunotri, Gangotri, Kedarnath, Badrinath) requires 10-12 days. For Do Dham (Kedarnath-Badrinath), 5-6 days are sufficient. We customize duration based on your schedule."
+    },
+    {
+      question: "Is AC vehicle available for pilgrimage tours?",
+      answer: "Yes! All our pilgrimage packages include AC vehicles - Innova Crysta, Ertiga, or Tempo Traveller based on group size. AC works optimally in plains; may be limited in high altitude areas due to thin air."
+    },
+    {
+      question: "Do you provide Vaishno Devi package from Delhi?",
+      answer: "Yes! Vaishno Devi package from Delhi starts from ₹8,000 for 2-3 days. Includes AC transport to Katra, driver stay, toll, and parking. Helicopter booking and pony/palki assistance available on request."
+    },
+    {
+      question: "What is included in pilgrimage tour packages?",
+      answer: "Our packages include AC vehicle, experienced driver familiar with pilgrimage routes, fuel, tolls, parking, driver accommodation and meals. Temple VIP darshan tickets, helicopter bookings, and hotel stays can be added at extra cost."
+    },
+    {
+      question: "Can you arrange group pilgrimage tours?",
+      answer: "Yes! We specialize in group pilgrimages with 12-26 seater tempo travellers and 35-56 seater buses. Group discounts available. We've organized pilgrimages for sangats, family groups, and senior citizen associations."
+    },
+    {
+      question: "What is the best time for Char Dham Yatra?",
+      answer: "Char Dham Yatra season is May to June and September to October. Avoid July-August (heavy monsoon) and November onwards (temples close for winter). We recommend booking 2-3 weeks in advance during peak season."
+    },
+    {
+      question: "Do drivers know the pilgrimage routes well?",
+      answer: "Yes! Our drivers have 5+ years experience on pilgrimage routes. They know road conditions, best halts, local dhabas for vegetarian food, and can assist with temple registration. Many drivers are devotees themselves."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   const trustFeatures = [
     { icon: Shield, title: "Safe Travel", desc: "Verified drivers & sanitized vehicles" },
     { icon: Clock, title: "24/7 Support", desc: "Round-the-clock assistance" },
@@ -93,6 +142,7 @@ export default function ReligiousToursPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(religiousToursSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-stone-50">
         {/* Hero Section with Full Background */}
