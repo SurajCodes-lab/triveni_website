@@ -2,6 +2,8 @@
 import { attractionBlogPosts } from './attractionBlogs';
 // Import sightseeing blog posts
 import { sightseeingBlogPosts } from './sightseeingBlogs';
+// Import corporate transport blog posts
+import { corporateTransportBlogs } from './corporateTransportBlogs';
 
 // Travel Blog Posts Data
 export const travelBlogPosts = [
@@ -4884,17 +4886,19 @@ export const travelBlogPosts = [
   },
 ]
 
-// All blog posts combined (Travel + Attractions + Sightseeing)
+// All blog posts combined (Travel + Attractions + Sightseeing + Corporate Transport)
 export const blogPosts = [
   ...travelBlogPosts,
   ...attractionBlogPosts,
-  ...sightseeingBlogPosts
+  ...sightseeingBlogPosts,
+  ...corporateTransportBlogs
 ];
 
 // Helper functions to filter blogs
 export const getTravelBlogs = () => travelBlogPosts;
 export const getAttractionBlogs = () => attractionBlogPosts;
 export const getSightseeingBlogs = () => sightseeingBlogPosts;
+export const getCorporateTransportBlogs = () => corporateTransportBlogs;
 export const getBlogBySlug = (slug) => blogPosts.find(post => post.slug === slug);
 export const getBlogsByCategory = (category) => blogPosts.filter(post => post.category === category);
 
@@ -4904,4 +4908,6 @@ export const blogCategories = [
   { name: "Destinations", slug: "destinations", count: blogPosts.filter(post => post && post.category === "Destinations").length },
   { name: "Travel Tips", slug: "travel-tips", count: blogPosts.filter(post => post && post.category === "Travel Tips").length },
   { name: "Pilgrimage", slug: "pilgrimage", count: blogPosts.filter(post => post && post.category === "Pilgrimage").length },
+  { name: "Corporate Transportation", slug: "corporate-transportation", count: blogPosts.filter(post => post && post.category === "Corporate Transportation").length },
+  { name: "Event Transportation", slug: "event-transportation", count: blogPosts.filter(post => post && post.category === "Event Transportation").length },
 ];

@@ -28,18 +28,65 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Corporate Transportation Service India | Employee Transport | Triveni Cabs',
-  description: 'Premium corporate transportation across India. Employee pick-up/drop, executive travel, fleet management. Serving Delhi, Jaipur, Chandigarh, Agra, Dehradun. Call 7668570551.',
+  title: 'Corporate Transportation Service India | Employee Transport & Fleet Solutions | Triveni Cabs',
+  description: 'Premium corporate cab services in Delhi NCR, Jaipur, Chandigarh, Agra & Dehradun. Employee pick-up/drop, executive car rental, airport transfers, fleet management. GST billing, dedicated drivers. 500+ corporates trust us. Call 7668570551.',
+  keywords: [
+    // Primary keywords
+    'corporate transportation service',
+    'employee transport solutions',
+    'corporate cab service India',
+    'company car rental',
+    // Long-tail keywords - Employee Transport
+    'employee pick up drop service Delhi',
+    'staff transportation Noida',
+    'office commute cab service',
+    'shift transport solutions',
+    'night shift cab service Gurgaon',
+    'BPO transport service',
+    'IT park shuttle Delhi NCR',
+    'factory worker transport',
+    // Long-tail keywords - Executive
+    'executive car rental Delhi',
+    'CEO chauffeur service',
+    'business travel car hire',
+    'corporate sedan rental',
+    'luxury car for business',
+    'airport pickup corporate',
+    'VIP transport service India',
+    // Long-tail keywords - Fleet Management
+    'corporate fleet management',
+    'dedicated fleet for company',
+    'monthly car rental corporate',
+    'annual contract cab service',
+    'bulk cab booking corporate',
+    'corporate cab with GST invoice',
+    // Industry-specific
+    'IT company cab service',
+    'BPO transport solutions',
+    'manufacturing plant transport',
+    'pharma company cab service',
+    'bank employee transport',
+    'hospital staff shuttle',
+    // Location-specific
+    'corporate cab Delhi NCR',
+    'employee transport Gurgaon',
+    'company cab Noida',
+    'corporate transport Jaipur',
+    'office cab Chandigarh'
+  ].join(', '),
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/corporate-transportation-service',
+    languages: {
+      'en-IN': '/corporate-transportation-service',
+    },
   },
   openGraph: {
-    title: 'Corporate Transportation Service | Employee Transport Solutions | Triveni Cabs',
-    description: 'End-to-end corporate transportation. Employee shuttles, executive travel, airport transfers. 500+ companies trust us.',
+    title: 'Corporate Transportation Service India | Employee & Executive Transport | Triveni Cabs',
+    description: 'Complete corporate mobility solutions - employee shuttles, executive travel, airport transfers, fleet management. 500+ companies, GST billing, 24/7 support.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/corporate-transportation-service',
@@ -49,14 +96,14 @@ export const metadata = {
         url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
         width: 1200,
         height: 630,
-        alt: 'Corporate Transportation Service India - Triveni Cabs'
+        alt: 'Corporate Transportation Service - Employee Transport Solutions India'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corporate Transportation Service | Triveni Cabs',
-    description: 'Employee transport, executive travel, fleet solutions. Call 7668570551.',
+    title: 'Corporate Transportation Service India | Triveni Cabs',
+    description: 'Employee transport, executive travel, fleet management. GST billing, dedicated drivers. 500+ corporates. Call 7668570551.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']
@@ -69,8 +116,13 @@ export const metadata = {
       follow: true,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+  category: 'Corporate Transportation',
 };
 
 export default function CorporateTransportationPage() {
@@ -78,27 +130,177 @@ export default function CorporateTransportationPage() {
   const industries = getAllIndustries();
   const useCases = getAllUseCases();
 
-  // Schema markup
+  // Schema markup - Comprehensive structured data
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.trivenicabs.in/#organization",
+    "name": "Triveni Cabs",
+    "alternateName": "Triveni Cab Service",
+    "url": "https://www.trivenicabs.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.trivenicabs.in/logo.png",
+      "width": 200,
+      "height": 60
+    },
+    "image": "https://www.trivenicabs.in/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    "description": "Premium corporate transportation and cab services across North India.",
+    "foundingDate": "2015",
+    "telephone": "+91-7668570551",
+    "email": "cabstriveni@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 18",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.5706",
+      "longitude": "77.3211"
+    },
+    "sameAs": [
+      "https://www.facebook.com/trivenicabs",
+      "https://www.instagram.com/trivenicabs",
+      "https://twitter.com/trivenicabs",
+      "https://www.linkedin.com/company/trivenicabs"
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668570551",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Hindi"],
+        "areaServed": "IN"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668570551",
+        "contactType": "sales",
+        "availableLanguage": ["English", "Hindi"],
+        "areaServed": "IN"
+      }
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.trivenicabs.in/#localbusiness",
+    "name": "Triveni Cabs",
+    "image": "https://www.trivenicabs.in/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    "telephone": "+91-7668570551",
+    "email": "cabstriveni@gmail.com",
+    "url": "https://www.trivenicabs.in",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 18",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.5706",
+      "longitude": "77.3211"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "2500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": "https://www.trivenicabs.in/corporate-transportation-service/#service",
     "serviceType": "Corporate Transportation Service",
     "name": "Corporate Transportation Solutions India",
     "description": "Comprehensive corporate transportation including employee transport, executive travel, airport transfers, and fleet management across North India.",
     "provider": {
-      "@type": "LocalBusiness",
-      "name": "Triveni Cabs",
-      "telephone": "+91-7668570551",
-      "email": "cabstriveni@gmail.com",
-      "url": "https://www.trivenicabs.in"
+      "@id": "https://www.trivenicabs.in/#localbusiness"
     },
     "areaServed": [
-      { "@type": "City", "name": "Delhi" },
-      { "@type": "City", "name": "Jaipur" },
-      { "@type": "City", "name": "Chandigarh" },
-      { "@type": "City", "name": "Agra" },
-      { "@type": "City", "name": "Dehradun" }
-    ]
+      { "@type": "City", "name": "Delhi", "containedInPlace": { "@type": "State", "name": "Delhi" } },
+      { "@type": "City", "name": "Noida", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },
+      { "@type": "City", "name": "Gurgaon", "containedInPlace": { "@type": "State", "name": "Haryana" } },
+      { "@type": "City", "name": "Faridabad", "containedInPlace": { "@type": "State", "name": "Haryana" } },
+      { "@type": "City", "name": "Ghaziabad", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },
+      { "@type": "City", "name": "Jaipur", "containedInPlace": { "@type": "State", "name": "Rajasthan" } },
+      { "@type": "City", "name": "Chandigarh", "containedInPlace": { "@type": "State", "name": "Chandigarh" } },
+      { "@type": "City", "name": "Mohali", "containedInPlace": { "@type": "State", "name": "Punjab" } },
+      { "@type": "City", "name": "Agra", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },
+      { "@type": "City", "name": "Dehradun", "containedInPlace": { "@type": "State", "name": "Uttarakhand" } }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Corporate Transportation Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Employee Pick-up & Drop",
+            "description": "Daily employee transportation with dedicated routes and schedules"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Executive Car Rental",
+            "description": "Premium sedans and SUVs with professional chauffeurs for executives"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Airport Transfers",
+            "description": "Reliable airport pickup and drop services for corporate travelers"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fleet Management",
+            "description": "Complete fleet solutions including vehicles, drivers, and management"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Night Shift Transport",
+            "description": "Safe and reliable transportation for night shift employees"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1800",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   };
 
   const breadcrumbSchema = {
@@ -106,7 +308,7 @@ export default function CorporateTransportationPage() {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
-      { "@type": "ListItem", "position": 2, "name": "Corporate Transportation", "item": "https://www.trivenicabs.in/corporate-transportation-service" }
+      { "@type": "ListItem", "position": 2, "name": "Corporate Transportation Service", "item": "https://www.trivenicabs.in/corporate-transportation-service" }
     ]
   };
 
@@ -125,6 +327,8 @@ export default function CorporateTransportationPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

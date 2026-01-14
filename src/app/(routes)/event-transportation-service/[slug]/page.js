@@ -55,6 +55,32 @@ export async function generateMetadata({ params }) {
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/event-transportation-service/${slug}`,
       siteName: 'Triveni Cabs',
+      images: [
+        {
+          url: eventType.heroImage || '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+          width: 1200,
+          height: 630,
+          alt: eventType.title
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: eventType.metaTitle,
+      description: eventType.metaDescription,
+      creator: '@trivenicabs',
+      site: '@trivenicabs',
+      images: [eventType.heroImage || '/images/sightseeing/Delhi/Delhi_hero_section.jpg']
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

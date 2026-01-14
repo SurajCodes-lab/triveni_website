@@ -17,19 +17,22 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Corporate Cab Service vs Ola/Uber | Why Dedicated Transport is Better | Triveni Cabs',
-  description: 'Compare dedicated corporate cab services with Ola/Uber for business. Fixed rates, dedicated drivers, GST invoicing, better accountability. Call 7668570551.',
+  title: 'Corporate Cab Service vs Ola/Uber 2024 | Complete Comparison Guide | Triveni Cabs',
+  description: 'In-depth comparison: Dedicated corporate cab service vs Ola/Uber for business. Fixed rates vs surge pricing, dedicated drivers vs random, GST invoicing, accountability. Why 500+ companies switched to dedicated transport. Call 7668570551.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/corporate-cab-vs-aggregators',
+    languages: {
+      'en-IN': '/corporate-cab-vs-aggregators',
+    },
   },
   openGraph: {
-    title: 'Corporate Cab vs Ola/Uber | Dedicated Transport Benefits | Triveni Cabs',
-    description: 'Why leading companies choose dedicated corporate cab services over ride aggregators',
-    type: 'website',
+    title: 'Corporate Cab vs Ola/Uber: Complete 2024 Comparison | Triveni Cabs',
+    description: 'Detailed comparison of dedicated corporate transport vs ride aggregators. Fixed pricing, dedicated drivers, GST compliant invoicing.',
+    type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/corporate-cab-vs-aggregators',
     siteName: 'Triveni Cabs',
@@ -38,15 +41,61 @@ export const metadata = {
         url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
         width: 1200,
         height: 630,
-        alt: 'Corporate Cab vs Aggregators Comparison'
+        alt: 'Corporate Cab vs Ola Uber - Complete Comparison Guide'
       }
-    ]
+    ],
+    publishedTime: '2024-01-01T00:00:00.000Z',
+    modifiedTime: new Date().toISOString(),
+    authors: ['Triveni Cabs'],
+    section: 'Corporate Transportation'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Corporate Cab vs Ola/Uber 2024 | Complete Guide',
+    description: 'Why 500+ companies choose dedicated corporate transport. Fixed rates, dedicated drivers, GST invoicing.',
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
-  keywords: 'corporate cab vs ola uber, dedicated corporate transport, business cab service, company cab service vs aggregators'
+  keywords: [
+    // Primary comparison keywords
+    'corporate cab vs ola uber',
+    'dedicated corporate transport vs aggregators',
+    'ola for business vs corporate cab',
+    'uber for business alternative',
+    // Question-based keywords (great for featured snippets)
+    'why corporate cab better than ola',
+    'is ola good for corporate',
+    'dedicated driver vs ola driver',
+    'corporate cab vs taxi aggregator',
+    // Problem/Solution keywords
+    'ola surge pricing for corporates',
+    'uber cancellation problem corporate',
+    'no GST invoice ola uber',
+    'reliable corporate cab service',
+    // Comparison-specific
+    'ola uber vs dedicated cab comparison',
+    'corporate transport comparison India',
+    'best corporate cab service Delhi',
+    'fixed rate corporate cab',
+    // Decision-making keywords
+    'switch from ola to corporate cab',
+    'corporate cab service benefits',
+    'dedicated fleet vs ola uber',
+    'corporate transport cost comparison'
+  ].join(', '),
+  category: 'Corporate Transportation',
 };
 
 const comparisonData = [
@@ -141,21 +190,69 @@ const whyChooseTriveni = [
 ];
 
 export default function ComparisonPage() {
-  // Schema markup
+  // Schema markup - Comprehensive structured data
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.trivenicabs.in/#organization",
+    "name": "Triveni Cabs",
+    "url": "https://www.trivenicabs.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.trivenicabs.in/logo.png"
+    },
+    "sameAs": [
+      "https://www.facebook.com/trivenicabs",
+      "https://www.instagram.com/trivenicabs",
+      "https://twitter.com/trivenicabs",
+      "https://www.linkedin.com/company/trivenicabs"
+    ]
+  };
+
   const comparisonSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Corporate Cab Service vs Ola/Uber for Business Transport",
-    "description": "Comprehensive comparison of dedicated corporate cab services versus ride aggregators for business transportation needs.",
+    "@id": "https://www.trivenicabs.in/corporate-cab-vs-aggregators/#article",
+    "headline": "Corporate Cab Service vs Ola/Uber for Business Transport: Complete 2024 Comparison",
+    "description": "Comprehensive comparison of dedicated corporate cab services versus ride aggregators (Ola, Uber) for business transportation needs. Covers pricing, reliability, driver quality, and GST compliance.",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.trivenicabs.in/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "datePublished": "2024-01-01T00:00:00+05:30",
+    "dateModified": new Date().toISOString(),
     "author": {
       "@type": "Organization",
-      "name": "Triveni Cabs"
+      "@id": "https://www.trivenicabs.in/#organization"
     },
     "publisher": {
       "@type": "Organization",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
-      "url": "https://www.trivenicabs.in"
-    }
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.trivenicabs.in/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.trivenicabs.in/corporate-cab-vs-aggregators"
+    },
+    "articleSection": "Corporate Transportation",
+    "keywords": "corporate cab vs ola uber, dedicated corporate transport, business cab service, corporate transport comparison",
+    "wordCount": 2500,
+    "about": {
+      "@type": "Thing",
+      "name": "Corporate Transportation Services"
+    },
+    "mentions": [
+      { "@type": "Thing", "name": "Ola" },
+      { "@type": "Thing", "name": "Uber" },
+      { "@type": "Thing", "name": "Corporate Transportation" },
+      { "@type": "Thing", "name": "Employee Transport" }
+    ]
   };
 
   const breadcrumbSchema = {
@@ -163,14 +260,25 @@ export default function ComparisonPage() {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
-      { "@type": "ListItem", "position": 2, "name": "Corporate vs Aggregators", "item": "https://www.trivenicabs.in/corporate-cab-vs-aggregators" }
+      { "@type": "ListItem", "position": 2, "name": "Corporate Transportation", "item": "https://www.trivenicabs.in/corporate-transportation-service" },
+      { "@type": "ListItem", "position": 3, "name": "Corporate Cab vs Aggregators", "item": "https://www.trivenicabs.in/corporate-cab-vs-aggregators" }
     ]
+  };
+
+  // Comparison Table Schema for rich snippets
+  const comparisonTableSchema = {
+    "@context": "https://schema.org",
+    "@type": "Table",
+    "about": "Corporate Cab vs Ola/Uber Comparison",
+    "description": "Feature-by-feature comparison of dedicated corporate cab services versus ride aggregators"
   };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonTableSchema) }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}

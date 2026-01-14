@@ -60,6 +60,32 @@ export async function generateMetadata({ params }) {
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/event-transportation-service/city/${slug}`,
       siteName: 'Triveni Cabs',
+      images: [
+        {
+          url: city.heroImage,
+          width: 1200,
+          height: 630,
+          alt: city.title
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: city.metaTitle,
+      description: city.metaDescription,
+      creator: '@trivenicabs',
+      site: '@trivenicabs',
+      images: [city.heroImage]
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }
@@ -102,10 +128,24 @@ export default async function EventCityPage({ params }) {
     ]
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": eventFAQs.slice(0, 4).map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}

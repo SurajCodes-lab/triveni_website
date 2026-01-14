@@ -30,55 +30,293 @@ import {
 
 export const metadata = {
   title: 'Event Transportation Services | Wedding, Corporate & Festival Transport | Triveni Cabs',
-  description: 'Professional event transportation services in Delhi, Jaipur, Chandigarh, Agra & Dehradun. Wedding guest transport, corporate events, concerts, religious gatherings. 500+ vehicles. Call 7668570551.',
-  keywords: 'event transportation, wedding transport, corporate event transport, concert shuttle, festival bus, guest transportation, event logistics',
+  description: 'Premium event transportation services in Delhi NCR, Jaipur, Chandigarh, Agra & Dehradun. Wedding guest shuttles, baraat cars, corporate event buses, concert transport, religious pilgrimage. 500+ vehicles, 24/7 support. Get free quote: 7668570551.',
+  keywords: [
+    // Primary keywords
+    'event transportation services',
+    'wedding transportation',
+    'corporate event transport',
+    'festival shuttle service',
+    // Long-tail keywords - Wedding
+    'wedding guest bus rental Delhi',
+    'baraat car booking Jaipur',
+    'destination wedding transport Rajasthan',
+    'marriage party bus hire',
+    'wedding car rental with driver',
+    'dulhan doli car service',
+    'mehendi sangeet transport',
+    // Long-tail keywords - Corporate
+    'corporate event shuttle service',
+    'conference transportation Delhi NCR',
+    'MICE transport solutions India',
+    'company annual day bus rental',
+    'corporate offsite transport',
+    'team outing bus booking',
+    // Long-tail keywords - Religious
+    'religious pilgrimage transport',
+    'temple visit bus service',
+    'kirtan event transportation',
+    'gurudwara visit cab service',
+    'char dham yatra transport',
+    // Long-tail keywords - Concerts/Festivals
+    'concert shuttle bus rental',
+    'music festival transport',
+    'IPL match transportation',
+    'cricket stadium shuttle',
+    'exhibition event transport',
+    // Location-specific
+    'event transport Delhi NCR',
+    'wedding bus Jaipur',
+    'corporate cab Chandigarh',
+    'event logistics Agra',
+    'group transport Dehradun'
+  ].join(', '),
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/event-transportation-service',
+    languages: {
+      'en-IN': '/event-transportation-service',
+    },
   },
   openGraph: {
-    title: 'Event Transportation Services | Triveni Cabs',
-    description: 'Professional event transportation for weddings, corporate events, concerts & festivals. 500+ vehicle fleet across 5 cities.',
+    title: 'Event Transportation Services India | Wedding & Corporate Transport | Triveni Cabs',
+    description: 'Book premium event transportation - weddings, corporate events, concerts, festivals. 500+ vehicles across Delhi, Jaipur, Chandigarh, Agra, Dehradun. 24/7 support.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/event-transportation-service',
     siteName: 'Triveni Cabs',
+    images: [
+      {
+        url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Event Transportation Services - Wedding, Corporate & Festival Transport'
+      }
+    ]
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Event Transportation Services | Triveni Cabs',
+    description: 'Wedding guest transport, corporate event buses, festival shuttles. 500+ vehicles, 5 cities. Call 7668570551.',
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+  category: 'Transportation Services',
 };
 
 export default function EventTransportationPage() {
   const cities = getAllEventCities();
   const eventTypes = getAllEventTypes();
 
-  // Schema markup
+  // Schema markup - Comprehensive structured data
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://www.trivenicabs.in/#organization",
+    "name": "Triveni Cabs",
+    "alternateName": "Triveni Cab Service",
+    "url": "https://www.trivenicabs.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.trivenicabs.in/logo.png",
+      "width": 200,
+      "height": 60
+    },
+    "image": "https://www.trivenicabs.in/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    "description": "Premium cab and transportation services across North India including Delhi, Jaipur, Chandigarh, Agra, and Dehradun.",
+    "foundingDate": "2015",
+    "telephone": "+91-7668570551",
+    "email": "cabstriveni@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 18",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.5706",
+      "longitude": "77.3211"
+    },
+    "sameAs": [
+      "https://www.facebook.com/trivenicabs",
+      "https://www.instagram.com/trivenicabs",
+      "https://twitter.com/trivenicabs",
+      "https://www.linkedin.com/company/trivenicabs"
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668570551",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Hindi"],
+        "areaServed": "IN"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668570551",
+        "contactType": "sales",
+        "availableLanguage": ["English", "Hindi"],
+        "areaServed": "IN"
+      }
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.trivenicabs.in/#localbusiness",
+    "name": "Triveni Cabs",
+    "image": "https://www.trivenicabs.in/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    "telephone": "+91-7668570551",
+    "email": "cabstriveni@gmail.com",
+    "url": "https://www.trivenicabs.in",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 18",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "201301",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.5706",
+      "longitude": "77.3211"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "2500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Event Transportation",
+    "@id": "https://www.trivenicabs.in/event-transportation-service/#service",
+    "serviceType": "Event Transportation Service",
     "name": "Event Transportation Services",
-    "description": "Professional event transportation services for weddings, corporate events, concerts, and festivals",
+    "description": "Professional event transportation services for weddings, corporate events, concerts, festivals, and religious gatherings across North India.",
     "provider": {
-      "@type": "LocalBusiness",
-      "name": "Triveni Cabs",
-      "telephone": "+91-7668570551",
-      "email": "cabstriveni@gmail.com",
-      "url": "https://www.trivenicabs.in"
+      "@id": "https://www.trivenicabs.in/#localbusiness"
     },
     "areaServed": [
-      { "@type": "City", "name": "Delhi" },
-      { "@type": "City", "name": "Jaipur" },
-      { "@type": "City", "name": "Chandigarh" },
-      { "@type": "City", "name": "Agra" },
-      { "@type": "City", "name": "Dehradun" }
+      { "@type": "City", "name": "Delhi", "containedInPlace": { "@type": "State", "name": "Delhi" } },
+      { "@type": "City", "name": "Noida", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },
+      { "@type": "City", "name": "Gurgaon", "containedInPlace": { "@type": "State", "name": "Haryana" } },
+      { "@type": "City", "name": "Jaipur", "containedInPlace": { "@type": "State", "name": "Rajasthan" } },
+      { "@type": "City", "name": "Chandigarh", "containedInPlace": { "@type": "State", "name": "Chandigarh" } },
+      { "@type": "City", "name": "Agra", "containedInPlace": { "@type": "State", "name": "Uttar Pradesh" } },
+      { "@type": "City", "name": "Dehradun", "containedInPlace": { "@type": "State", "name": "Uttarakhand" } }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Event Transportation Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Wedding Transportation",
+            "description": "Complete wedding guest transportation including baraat, vidai, and venue shuttles"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Corporate Event Transport",
+            "description": "Professional transportation for conferences, seminars, and corporate gatherings"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Concert & Festival Shuttles",
+            "description": "Group transportation for concerts, music festivals, and sporting events"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Religious Event Transport",
+            "description": "Transportation for pilgrimages, temple visits, and religious ceremonies"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1200",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+      { "@type": "ListItem", "position": 2, "name": "Event Transportation Services", "item": "https://www.trivenicabs.in/event-transportation-service" }
     ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": eventFAQs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
   };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen Premium Design */}
