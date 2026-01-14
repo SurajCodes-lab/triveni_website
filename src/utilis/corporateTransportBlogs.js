@@ -238,7 +238,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2026-01-08",
     readTime: "14 min read",
-    image: "/images/sightseeing/Jaipur/Jaipur_hero_section.jpg",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     category: "Event Transportation",
     tags: ["wedding transportation", "baraat car", "wedding planning", "guest shuttle", "destination wedding"],
     keywords: [
@@ -361,7 +361,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2026-01-06",
     readTime: "13 min read",
-    image: "/images/sightseeing/Noida/Noida_hero_section.jpg",
+    image: "/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg",
     category: "Corporate Transportation",
     tags: ["employee transport", "corporate cab", "office commute", "dedicated drivers", "BPO transport"],
     keywords: [
@@ -495,7 +495,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2026-01-04",
     readTime: "11 min read",
-    image: "/images/sightseeing/Gurgaon/Gurgaon_hero_section.jpg",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     category: "Corporate Transportation",
     tags: ["corporate cab vs ola", "uber for business", "corporate transport comparison", "dedicated cab service", "aggregator alternatives"],
     keywords: [
@@ -629,7 +629,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2026-01-02",
     readTime: "12 min read",
-    image: "/images/sightseeing/Delhi/Delhi_event_section.jpg",
+    image: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
     category: "Event Transportation",
     tags: ["event transportation", "conference transport", "festival shuttle", "corporate event", "event logistics"],
     keywords: [
@@ -755,7 +755,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2025-12-30",
     readTime: "11 min read",
-    image: "/images/sightseeing/Noida/Noida_night_section.jpg",
+    image: "/images/sightseeing/Shimla/shimla_hero_section.jpg",
     category: "Corporate Transportation",
     tags: ["night shift transport", "BPO cab service", "IT company transport", "women safety transport", "24/7 cab service"],
     keywords: [
@@ -868,7 +868,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2025-12-28",
     readTime: "10 min read",
-    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    image: "/images/sightseeing/Delhi/India_Gate.jpg",
     category: "Corporate Transportation",
     tags: ["airport transfer", "executive travel", "corporate pickup", "flight tracking", "business travel"],
     keywords: [
@@ -972,7 +972,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2025-12-25",
     readTime: "11 min read",
-    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    image: "/images/sightseeing/Manali/Solang Valley.jpg",
     category: "Corporate Transportation",
     tags: ["fleet management", "corporate fleet", "vehicle management", "GPS tracking", "driver management"],
     keywords: [
@@ -1073,7 +1073,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2025-12-22",
     readTime: "10 min read",
-    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    image: "/images/sightseeing/Delhi/red_fort.jpg",
     category: "Corporate Transportation",
     tags: ["cost savings", "corporate transport ROI", "transportation budget", "fleet optimization", "GST benefits"],
     keywords: [
@@ -1192,7 +1192,7 @@ export const corporateTransportBlogs = [
     `,
     date: "2025-12-20",
     readTime: "11 min read",
-    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    image: "/images/sightseeing/Agra/Taj_mahal.jpg",
     category: "Corporate Transportation",
     tags: ["corporate cab selection", "transport partner", "vendor evaluation", "fleet quality", "driver standards"],
     keywords: [
