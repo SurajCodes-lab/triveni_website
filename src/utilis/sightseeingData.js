@@ -5539,7 +5539,8 @@ export const sightseeingTours = {
         "/images/sightseeing/Agra/agra_fort.jpg",
         "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
         "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
-        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg"
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
+        "/images/sightseeing/Agra/Itmad-ud-Daulah (Baby Taj).jpg"
       ],
       tips: [
         "Taj Mahal closed on Fridays",
@@ -15019,7 +15020,8 @@ export const sightseeingTours = {
       category: "Heritage & Modern",
       heroImage: "/images/sightseeing/Ahmedabad/Ahmedabad.jpg",
       images: [
-        "/images/sightseeing/Ahmedabad/Uparkot Fort , Ahemdabad.jpg"
+        "/images/sightseeing/Ahmedabad/Uparkot Fort , Ahemdabad.jpg",
+        "/images/sightseeing/Ahmedabad/Sabarmati Ashram.jpg"
       ],
       tips: [
         "Old city best explored in morning to avoid heat",
