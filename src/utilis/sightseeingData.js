@@ -12556,8 +12556,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy",
       category: "Spiritual & Patriotic",
-      heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Amritsar/Golden_Temple.jpg",
+      images: [
+        "/images/sightseeing/Amritsar/Golden_Temple.jpg",
+        "/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg",
+        "/images/sightseeing/Amritsar/Partition_Museum.jpg",
+        "/images/sightseeing/Amritsar/Wagah_Border.jpg"
+      ],
       tips: [
         "Cover head at Golden Temple (scarves available)",
         "Remove shoes and wash feet before entering",
@@ -12767,8 +12772,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (avoid summer heat)",
       difficulty: "Easy",
       category: "Patriotic & Cultural",
-      heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Amritsar/Wagah_Border.jpg",
+      images: [
+        "/images/sightseeing/Amritsar/Golden_Temple.jpg",
+        "/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg",
+        "/images/sightseeing/Amritsar/Partition_Museum.jpg",
+        "/images/sightseeing/Amritsar/Wagah_Border.jpg"
+      ],
       tips: [
         "Reach by 3:30 PM for good seating",
         "Carry valid ID proof for entry",
@@ -13028,8 +13038,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy",
       category: "Heritage & Spiritual",
-      heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Amritsar/Golden_Temple.jpg",
+      images: [
+        "/images/sightseeing/Amritsar/Golden_Temple.jpg",
+        "/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg",
+        "/images/sightseeing/Amritsar/Partition_Museum.jpg",
+        "/images/sightseeing/Amritsar/Wagah_Border.jpg"
+      ],
       tips: [
         "Cover head at Golden Temple and remove shoes",
         "Photography allowed but respectful behavior required",
@@ -14528,8 +14543,10 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy to Moderate",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Ayodhya/Ram_Mandir.jpg",
+      images: [
+        "/images/sightseeing/Ayodhya/Ram_Mandir.jpg"
+      ],
       tips: [
         "Security is strict at Ram Janmabhoomi, carry valid ID",
         "No phones/cameras inside Ram temple",
@@ -14744,8 +14761,10 @@ export const sightseeingTours = {
       bestTimeToVisit: "Year-round. October to March for pleasant weather. Avoid Ram Navami and Diwali unless you want to experience massive crowds.",
       difficulty: "Easy to Moderate (Hanuman Garhi has 70 steps, other temples accessible)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Ayodhya/Ram_Mandir.jpg",
+      images: [
+        "/images/sightseeing/Ayodhya/Ram_Mandir.jpg"
+      ],
       tips: [
         "Visit Hanuman Garhi FIRST before Ram Janmabhoomi - it's the tradition",
         "Ram Janmabhoomi security is very strict - carry valid government ID",
@@ -15019,10 +15038,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "November-February",
       difficulty: "Easy",
       category: "Heritage & Modern",
-      heroImage: "/images/sightseeing/Ahmedabad/Ahmedabad.jpg",
+      heroImage: "/images/sightseeing/Ahmedabad/Sabarmati_Ashram.jpg",
       images: [
-        "/images/sightseeing/Ahmedabad/Uparkot Fort , Ahemdabad.jpg",
-        "/images/sightseeing/Ahmedabad/Sabarmati Ashram.jpg"
+        "/images/sightseeing/Ahmedabad/Sabarmati_Ashram.jpg",
+        "/images/sightseeing/Ahmedabad/Adalaj_Stepwell.jpg",
+        "/images/sightseeing/Ahmedabad/Sidi_Saiyyed_Mosque.jpg",
+        "/images/sightseeing/Ahmedabad/Uparkot_Fort.jpg"
       ],
       tips: [
         "Old city best explored in morning to avoid heat",
@@ -17806,8 +17827,10 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat. Ram Navami and Diwali are special but extremely crowded.",
       difficulty: "Easy to Moderate (involves temple visits and stairs at Hanuman Garhi)",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
-      images: [],
+      heroImage: "/images/sightseeing/Ayodhya/Ram_Mandir.jpg",
+      images: [
+        "/images/sightseeing/Ayodhya/Ram_Mandir.jpg"
+      ],
       tips: [
         "Carry valid government ID - security is very strict at Ram Janmabhoomi",
         "No mobile phones or cameras allowed inside Ram Mandir - deposit at security",
