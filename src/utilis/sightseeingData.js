@@ -5540,7 +5540,8 @@ export const sightseeingTours = {
         "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
         "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
         "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
-        "/images/sightseeing/Agra/Itmad-ud-Daulah (Baby Taj).jpg"
+        "/images/sightseeing/Agra/Baby_Taj.jpg",
+         "/images/sightseeing/Agra/Baby_Taj.jpg"
       ],
       tips: [
         "Taj Mahal closed on Fridays",
