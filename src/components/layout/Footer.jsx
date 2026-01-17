@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ChevronRight } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ChevronRight, Car, MapPinned, Plane, Building2 } from "lucide-react";
 import { trackNavigation, trackSocialClick, trackPhoneCall, trackButtonClick } from "@/utilis/analytics";
 import { cn } from "@/utilis/cn";
 
@@ -13,6 +13,7 @@ const Footer = () => {
     { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Our Vehicles", href: "/vehicles" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -22,7 +23,53 @@ const Footer = () => {
     { name: "Wedding Cars", href: "/wedding" },
     { name: "Corporate Transport", href: "/corporate-transportation-service" },
     { name: "Event Transport", href: "/event-transportation-service" },
-    { name: "Sightseeing Tours", href: "/sightseeing" }
+    { name: "Sightseeing Tours", href: "/sightseeing" },
+    { name: "Religious Tours", href: "/religious-tours" },
+    { name: "Bus Hire", href: "/bus-routes" }
+  ];
+
+  // Popular Routes - High traffic internal links
+  const popularRoutes = [
+    { name: "Delhi to Agra", href: "/delhi-to-agra" },
+    { name: "Delhi to Jaipur", href: "/delhi-to-jaipur" },
+    { name: "Jaipur to Agra", href: "/jaipur-to-agra" },
+    { name: "Delhi to Chandigarh", href: "/delhi-to-chandigarh" },
+    { name: "Delhi to Haridwar", href: "/delhi-to-haridwar" },
+    { name: "Delhi to Shimla", href: "/delhi-to-shimla" },
+    { name: "Delhi to Manali", href: "/delhi-to-manali" },
+    { name: "Chandigarh to Shimla", href: "/chandigarh-to-shimla" },
+    { name: "Chandigarh to Manali", href: "/chandigarh-to-manali" },
+    { name: "Delhi to Amritsar", href: "/delhi-to-amritsar" }
+  ];
+
+  // Popular Cities - Service area links
+  const popularCities = [
+    { name: "Delhi", href: "/delhi" },
+    { name: "Jaipur", href: "/jaipur" },
+    { name: "Agra", href: "/agra" },
+    { name: "Chandigarh", href: "/chandigarh" },
+    { name: "Shimla", href: "/shimla" },
+    { name: "Manali", href: "/manali" },
+    { name: "Amritsar", href: "/amritsar" },
+    { name: "Haridwar", href: "/haridwar" },
+    { name: "Rishikesh", href: "/rishikesh" },
+    { name: "Dehradun", href: "/dehradun" },
+    { name: "Udaipur", href: "/udaipur" },
+    { name: "Varanasi", href: "/varanasi" },
+    { name: "Ahmedabad", href: "/ahmedabad" },
+    { name: "Lucknow", href: "/lucknow" }
+  ];
+
+  // Popular Tours - Sightseeing links
+  const popularTours = [
+    { name: "Delhi City Tour", href: "/sightseeing/delhi-full-day-city-tour" },
+    { name: "Jaipur Full Day Tour", href: "/sightseeing/jaipur-full-day-tour" },
+    { name: "Agra Taj Mahal Tour", href: "/sightseeing/agra-same-day-tour" },
+    { name: "Golden Triangle Tour", href: "/tour-package/golden-triangle" },
+    { name: "Shimla Sightseeing", href: "/sightseeing/shimla-local-sightseeing" },
+    { name: "Manali Local Tour", href: "/sightseeing/manali-local-sightseeing" },
+    { name: "Amritsar Golden Temple", href: "/sightseeing/amritsar-golden-temple-tour" },
+    { name: "Haridwar Rishikesh Tour", href: "/sightseeing/haridwar-rishikesh-tour" }
   ];
 
   const eventCities = [
@@ -40,14 +87,6 @@ const Footer = () => {
     { name: "Bus", href: "/vehicles/bus" },
     { name: "Sedan vs SUV", href: "/sedan-vs-suv" },
     { name: "Tempo vs Bus", href: "/tempo-vs-bus" }
-  ];
-
-  const cities = [
-    "Mumbai",
-    "Delhi",
-    "Bangalore",
-    "Pune",
-    "Hyderabad"
   ];
 
   const handleFooterLinkClick = (linkName, href) => {
@@ -77,6 +116,76 @@ const Footer = () => {
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-dark/5 rounded-full blur-3xl"></div>
+
+      {/* SEO Links Section - Popular Routes, Cities, Tours */}
+      <div className="border-b border-gray-800 relative z-10 bg-gray-900/50">
+        <div className="max-w-container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Popular Routes */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 flex items-center gap-2 text-sm">
+                <Car className="w-4 h-4 text-primary" aria-hidden="true" />
+                Popular Routes
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {popularRoutes.map((route) => (
+                  <li key={route.name}>
+                    <Link
+                      href={route.href}
+                      className="text-body-xs text-gray-400 hover:text-primary transition-colors duration-fast px-2 py-1 bg-gray-800/50 rounded hover:bg-gray-800"
+                      onClick={() => handleFooterLinkClick(route.name, route.href)}
+                    >
+                      {route.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Popular Cities */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 flex items-center gap-2 text-sm">
+                <MapPinned className="w-4 h-4 text-primary" aria-hidden="true" />
+                Service Cities
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {popularCities.map((city) => (
+                  <li key={city.name}>
+                    <Link
+                      href={city.href}
+                      className="text-body-xs text-gray-400 hover:text-primary transition-colors duration-fast px-2 py-1 bg-gray-800/50 rounded hover:bg-gray-800"
+                      onClick={() => handleFooterLinkClick(city.name, city.href)}
+                    >
+                      {city.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Popular Tours */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 flex items-center gap-2 text-sm">
+                <MapPin className="w-4 h-4 text-primary" aria-hidden="true" />
+                Popular Tours
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {popularTours.map((tour) => (
+                  <li key={tour.name}>
+                    <Link
+                      href={tour.href}
+                      className="text-body-xs text-gray-400 hover:text-primary transition-colors duration-fast px-2 py-1 bg-gray-800/50 rounded hover:bg-gray-800"
+                      onClick={() => handleFooterLinkClick(tour.name, tour.href)}
+                    >
+                      {tour.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Top Section */}
       <div className="border-b border-gray-800 relative z-10">

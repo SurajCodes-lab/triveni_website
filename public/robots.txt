@@ -35,5 +35,6 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://www.trivenicabs.in/sitemap.xml
+Sitemap: https://www.trivenicabs.in/sitemap-images.xml

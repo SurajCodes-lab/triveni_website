@@ -12,6 +12,12 @@ import {
 } from 'lucide-react';
 import { BsWhatsapp } from 'react-icons/bs';
 import { phoneNumber } from '@/utilis/data';
+import Link from 'next/link';
+
+// SEO Components
+import { FAQSection } from '@/components/seo/FAQSection';
+import { CrossServiceLinks } from '@/components/seo/RelatedContent';
+import { generateTourFAQs } from '@/lib/seo/faq-generator';
 
 const ReligiousTourClient = ({ tour }) => {
   const [activeDay, setActiveDay] = useState(null);
@@ -47,6 +53,27 @@ const ReligiousTourClient = ({ tour }) => {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center pt-16 md:pt-0">
+          {/* Breadcrumb */}
+          <nav className="mb-6 md:mb-8" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-2 text-sm">
+              <li>
+                <Link href="/" className="text-white/70 hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/50" />
+              <li>
+                <Link href="/religious-tours" className="text-white/70 hover:text-white transition-colors">
+                  Religious Tours
+                </Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/50" />
+              <li className="text-orange-300 font-medium truncate max-w-[150px] md:max-w-none">
+                {tour.title.split('–')[0].trim()}
+              </li>
+            </ol>
+          </nav>
+
           {/* Top Badge */}
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
@@ -496,6 +523,31 @@ const ReligiousTourClient = ({ tour }) => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* SEO: FAQ Section */}
+      <FAQSection
+        faqs={generateTourFAQs({
+          tourName: tour.title.split('–')[0].trim(),
+          city: tour.destinations?.[0] || 'India',
+          duration: tour.duration,
+          price: tour.pricing?.starting || 'Contact for pricing',
+          highlights: tour.highlights?.slice(0, 3).map(h => h.text) || []
+        })}
+        title={`FAQs About ${tour.title.split('–')[0].trim()}`}
+        subtitle="Get answers to common questions about this pilgrimage tour"
+        variant="cards"
+      />
+
+      {/* SEO: Cross Service Links */}
+      <section className="py-12 md:py-16 bg-gradient-to-b from-white to-orange-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <CrossServiceLinks
+            city={tour.destinations?.[0] || 'India'}
+            services={['sightseeing', 'airport', 'wedding']}
+            title="Explore More Services"
+          />
         </div>
       </section>
 

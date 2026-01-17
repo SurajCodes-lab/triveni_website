@@ -74,5 +74,57 @@ export default function TouristAttractionsPage({ params }) {
     attractions: attractions
   };
 
-  return <TouristAttractionsClient data={pageData} />;
+  // BreadcrumbList schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.trivenicabs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tourist Attractions",
+        "item": "https://www.trivenicabs.in/tourist-spots"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": cityName,
+        "item": `https://www.trivenicabs.in/tourist-attractions/${city}`
+      }
+    ]
+  };
+
+  // TouristDestination schema
+  const destinationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": cityName,
+    "description": `Discover ${attractions.length} amazing tourist attractions in ${cityName}. From historical monuments to spiritual sites, explore the best places to visit.`,
+    "touristType": ["Adventure", "Cultural", "Sightseeing"],
+    "containsPlace": attractions.slice(0, 10).map(attraction => ({
+      "@type": "TouristAttraction",
+      "name": attraction.name,
+      "description": attraction.description
+    }))
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }}
+      />
+      <TouristAttractionsClient data={pageData} />
+    </>
+  );
 }

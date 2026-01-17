@@ -29,6 +29,13 @@ import {
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid, BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
+// SEO Components
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import { FAQSection } from '@/components/seo/FAQSection';
+import { RelatedTours, CrossServiceLinks } from '@/components/seo/RelatedContent';
+import { generateTourFAQs } from '@/lib/seo/faq-generator';
+import { getRelatedToursByCity, getNearbyDestinations } from '@/utilis/linkingHelper';
+
 export default function SightseeingDetailClient({ tour }) {
   const [activeTab, setActiveTab] = useState('overview');
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -274,6 +281,19 @@ export default function SightseeingDetailClient({ tour }) {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Visual Breadcrumb */}
+      <div className="container mx-auto px-4 sm:px-6 py-4">
+        <SEOBreadcrumb
+          items={[
+            { name: 'Sightseeing', url: '/sightseeing' },
+            { name: tour.name.split(' ')[0], url: `/sightseeing#${tour.name.split(' ')[0].toLowerCase()}` },
+            { name: tour.name }
+          ]}
+          variant="minimal"
+          showSchema={false}
+        />
       </div>
 
       {/* Content Section */}
@@ -710,6 +730,36 @@ export default function SightseeingDetailClient({ tour }) {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        faqs={generateTourFAQs({
+          tourName: tour.name,
+          city: tour.name.split(' ')[0],
+          duration: tour.duration,
+          price: tour.price?.sedan,
+          highlights: tour.highlights || [],
+          inclusions: tour.inclusions || []
+        })}
+        title={`Frequently Asked Questions about ${tour.name}`}
+        subtitle="Everything you need to know before booking"
+        variant="card"
+        showSchema={true}
+      />
+
+      {/* Related Tours */}
+      <RelatedTours
+        city={tour.name.split(' ')[0]}
+        tours={getRelatedToursByCity(tour.name.split(' ')[0], tour.slug, 4)}
+        currentSlug={tour.slug}
+        title={`More Tours You Might Like`}
+      />
+
+      {/* Cross-Service Links */}
+      <CrossServiceLinks
+        city={tour.name.split(' ')[0]}
+        title={`Other Services in ${tour.name.split(' ')[0]}`}
+      />
 
       {/* Bottom CTA Section */}
       <section className="py-12 sm:py-16 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">

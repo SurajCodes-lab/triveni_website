@@ -16,6 +16,13 @@ import { getRouteOffices } from "@/utilis/officeLocations";
 import OfficeLocations from "@/components/cities/OfficeLocations";
 import { motion, AnimatePresence } from "framer-motion";
 
+// SEO Components
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import { FAQSection } from '@/components/seo/FAQSection';
+import { PopularRoutes, CrossServiceLinks } from '@/components/seo/RelatedContent';
+import { generateRouteFAQs } from '@/lib/seo/faq-generator';
+import { getRelatedRoutes, getServiceCrossLinks } from '@/utilis/linkingHelper';
+
 // City hero images
 const cityHeroData = {
   'Delhi': { image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg', icon: '🏛️', accent: '#4F46E5' },
@@ -1188,6 +1195,34 @@ export default function RouteClientContent({
         </div>
       </section>
 
+      {/* ==================== FAQ SECTION ==================== */}
+      <FAQSection
+        faqs={generateRouteFAQs({
+          origin: formattedCityName,
+          destination: formattedDestination,
+          distance: route?.distance || estimatedDistance,
+          duration: route?.time || estimatedTime,
+          price: startingPrice,
+          vehicles: route?.prices?.map(p => p.vehicle) || []
+        })}
+        title={`Frequently Asked Questions - ${formattedCityName} to ${formattedDestination} Cab`}
+        subtitle="Everything you need to know before booking your trip"
+        variant="card"
+        showSchema={false}
+      />
+
+      {/* ==================== RELATED ROUTES ==================== */}
+      <PopularRoutes
+        city={formattedCityName}
+        routes={getRelatedRoutes(formattedCityName, formattedDestination, 6)}
+        title={`Other Popular Routes from ${formattedCityName}`}
+      />
+
+      {/* ==================== CROSS-SERVICE LINKS ==================== */}
+      <CrossServiceLinks
+        city={formattedCityName}
+        title={`Other Services in ${formattedCityName}`}
+      />
 
       {/* ==================== FLOATING MOBILE CTA ==================== */}
       {mounted && (

@@ -22,6 +22,12 @@ import {
 } from 'lucide-react';
 import { sightseeingTours } from '@/utilis/sightseeingData';
 
+// SEO Components
+import { FAQSection } from '@/components/seo/FAQSection';
+import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
+import { generateAirportFAQs } from '@/lib/seo/faq-generator';
+import { getNearbyDestinations } from '@/utilis/linkingHelper';
+
 export default function CityAirportServiceClient({ city, citySlug }) {
   const [formData, setFormData] = useState({
     name: '',
@@ -594,6 +600,30 @@ export default function CityAirportServiceClient({ city, citySlug }) {
             <CheckCircle className="w-4 h-4 inline mr-1" />
             Available 24/7 • Instant Confirmation • Best Rates Guaranteed
           </p>
+        </div>
+      </section>
+
+      {/* SEO: FAQ Section */}
+      <FAQSection
+        faqs={generateAirportFAQs({
+          city: city.name,
+          airportName: city.airport,
+          price: '11'
+        })}
+        title={`Frequently Asked Questions - ${city.name} Airport Taxi`}
+        subtitle={`Get answers to common questions about ${city.airport} taxi service`}
+        variant="cards"
+      />
+
+      {/* SEO: Nearby Destinations */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <NearbyDestinations
+            currentCity={city.name}
+            destinations={getNearbyDestinations(city.name, 6)}
+            title="Airport Service in Nearby Cities"
+            limit={6}
+          />
         </div>
       </section>
 

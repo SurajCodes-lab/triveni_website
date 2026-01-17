@@ -15,6 +15,13 @@ import {
   CalendarIcon
 } from '@heroicons/react/24/outline';
 
+// SEO Components
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import { FAQSection } from '@/components/seo/FAQSection';
+import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
+import { generateCityFAQs } from '@/lib/seo/faq-generator';
+import { getNearbyDestinations, getServiceCrossLinks } from '@/utilis/linkingHelper';
+
 export default function CityToursPage({ city }) {
   const tours = getToursByCity(city);
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
@@ -189,6 +196,18 @@ export default function CityToursPage({ city }) {
       </motion.section>
       </header>
 
+      {/* Visual Breadcrumb */}
+      <div className="container mx-auto px-4 sm:px-6 py-4">
+        <SEOBreadcrumb
+          items={[
+            { name: 'Sightseeing', url: '/sightseeing' },
+            { name: `${cityName} Tours` }
+          ]}
+          variant="minimal"
+          showSchema={false}
+        />
+      </div>
+
       {/* Tours Grid Section */}
       <section id="tours" className="py-12 sm:py-16 md:py-20" aria-labelledby="city-tours-heading" itemScope itemType="https://schema.org/ItemList">
         <div className="container mx-auto px-4 sm:px-6">
@@ -359,6 +378,32 @@ export default function CityToursPage({ city }) {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        faqs={generateCityFAQs({
+          city: cityName,
+          services: ['Airport Transfer', 'Sightseeing Tours', 'Corporate Transport', 'Wedding Cars'],
+          tours: tours.slice(0, 5)
+        })}
+        title={`Frequently Asked Questions about ${cityName} Tours`}
+        subtitle="Everything you need to know about sightseeing in " + cityName
+        variant="card"
+        showSchema={true}
+      />
+
+      {/* Cross-Service Links */}
+      <CrossServiceLinks
+        city={cityName}
+        title={`Other Services Available in ${cityName}`}
+      />
+
+      {/* Nearby Destinations */}
+      <NearbyDestinations
+        currentCity={cityName}
+        destinations={getNearbyDestinations(city, 6)}
+        title="Explore Nearby Destinations"
+      />
 
       {/* CTA Section - SAME AS MAIN PAGE */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">

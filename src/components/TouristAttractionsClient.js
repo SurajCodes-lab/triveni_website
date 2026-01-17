@@ -1,7 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle, ChevronRight } from 'lucide-react';
+
+// SEO Components
+import { FAQSection } from '@/components/seo/FAQSection';
+import { CrossServiceLinks } from '@/components/seo/RelatedContent';
+import { generateCityFAQs } from '@/lib/seo/faq-generator';
 
 const TouristAttractionsClient = ({ data }) => {
   const [selectedType, setSelectedType] = useState('all');
@@ -65,6 +71,27 @@ const TouristAttractionsClient = ({ data }) => {
         <div className="absolute inset-0 bg-[url('/images/tourist-bg.jpg')] bg-cover bg-center opacity-20"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Visual Breadcrumb */}
+          <nav className="mb-6" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center space-x-2 text-sm bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+              <li>
+                <Link href="/" className="text-white/70 hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/50" />
+              <li>
+                <Link href="/tourist-spots" className="text-white/70 hover:text-white transition-colors">
+                  Tourist Attractions
+                </Link>
+              </li>
+              <ChevronRight className="w-4 h-4 text-white/50" />
+              <li className="text-yellow-400 font-medium">
+                {city}
+              </li>
+            </ol>
+          </nav>
+
           <div className="text-center">
             <div className="flex items-center justify-center mb-6">
               <Camera className="w-12 h-12 text-yellow-400 mr-4" />
@@ -217,6 +244,29 @@ const TouristAttractionsClient = ({ data }) => {
               Call: +91-7668570551
             </button>
           </div>
+        </div>
+
+        {/* SEO: FAQ Section */}
+        <div className="mb-16">
+          <FAQSection
+            faqs={generateCityFAQs({
+              city: city,
+              services: ['sightseeing', 'taxi', 'tempo-traveller'],
+              tours: attractions.slice(0, 5).map(a => a.name)
+            })}
+            title={`Frequently Asked Questions About ${city}`}
+            subtitle={`Get answers to common questions about visiting ${city}`}
+            variant="cards"
+          />
+        </div>
+
+        {/* SEO: Cross Service Links */}
+        <div className="mb-16">
+          <CrossServiceLinks
+            city={city}
+            services={['sightseeing', 'airport', 'wedding', 'corporate']}
+            title={`Our Services in ${city}`}
+          />
         </div>
 
         {/* Quick Contact */}

@@ -16,6 +16,13 @@ import CityRoutes from "@/components/cities/CityRoutes";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 import { motion, AnimatePresence } from "framer-motion";
 
+// SEO Components
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import { FAQSection } from '@/components/seo/FAQSection';
+import { CrossServiceLinks, NearbyDestinations, PopularRoutes } from '@/components/seo/RelatedContent';
+import { generateCityFAQs } from '@/lib/seo/faq-generator';
+import { getNearbyDestinations, getRelatedRoutes, getPopularCities } from '@/utilis/linkingHelper';
+
 // City data with images
 const cityHeroData = {
   'Delhi': {
@@ -977,6 +984,39 @@ export default function CityServiceClient({
               </button>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+
+      {/* ==================== SEO: RELATED CONTENT ==================== */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Cross Service Links */}
+            <CrossServiceLinks
+              city={formattedCityName}
+              services={['airport', 'wedding', 'corporate', 'sightseeing']}
+              title={`Our Services in ${formattedCityName}`}
+            />
+
+            {/* Nearby Destinations */}
+            <NearbyDestinations
+              currentCity={formattedCityName}
+              destinations={getNearbyDestinations(formattedCityName, 6)}
+              title="Explore Nearby Cities"
+              limit={6}
+            />
+          </div>
+
+          {/* Popular Routes */}
+          <div className="mt-12">
+            <PopularRoutes
+              city={formattedCityName}
+              routes={getRelatedRoutes(formattedCityName, null, 8)}
+              title={`Popular Routes from ${formattedCityName}`}
+              limit={8}
+            />
+          </div>
         </div>
       </section>
 
