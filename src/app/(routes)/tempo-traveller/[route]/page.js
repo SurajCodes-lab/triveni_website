@@ -142,8 +142,9 @@ export async function generateMetadata({ params }) {
     const routeCount = tempoRoutes[cityName]?.length || 0;
 
     return {
-      title: `Tempo Traveller on Rent in ${cityData.name} | 12-26 Seater AC ₹23/km | ${routeCount} Destinations | Triveni Cabs`,
-      description: `Book tempo traveller from ${cityData.name} to ${routeCount}+ destinations. ${cityData.description} 12, 17, 20, 26 seater AC tempo traveller with professional driver. Best rates ₹23-27/km. Popular routes: ${cityData.popularDestinations.join(', ')}. 24/7 booking, instant confirmation. Call +91-7668570551.`,
+      // Title under 60 chars, Description under 155 chars
+      title: `Tempo Traveller in ${cityData.name} | 12-26 Seater ₹23/km`,
+      description: `Book tempo traveller in ${cityData.name}. 12-26 seater AC vehicles, ₹23-27/km. ${routeCount}+ routes available. Call 7668570551.`,
       applicationName: 'Triveni Cabs',
       metadataBase: new URL('https://www.trivenicabs.in'),
       alternates: {

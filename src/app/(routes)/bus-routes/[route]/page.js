@@ -66,8 +66,9 @@ export async function generateMetadata({ params }) {
 
   return {
     metadataBase: new URL('https://www.trivenicabs.in'),
-    title: `Big Group? No Problem! ${originFormatted} to ${destinationFormatted} Luxury Bus 22-56 Seater | Book Now & Save 20%`,
-    description: `🚌 Roll in comfort from ${originFormatted} to ${destinationFormatted}! Luxury Volvo & AC buses (22-56 seater) with reclining seats, entertainment & AC. Perfect for corporate events, weddings, pilgrimages & tours. 1000+ groups trusted us. Professional drivers, GPS tracking, on-time guarantee. Book online in 60 seconds & get instant confirmation + 20% discount!`,
+    // Title under 60 chars, Description under 155 chars
+    title: `${originFormatted} to ${destinationFormatted} Bus | 22-56 Seater`,
+    description: `Book ${originFormatted} to ${destinationFormatted} bus. 22-56 seater Volvo & AC buses, reclining seats. Professional drivers. Call 7668570551.`,
     alternates: {
       canonical: `https://www.trivenicabs.in/bus-routes/${route}`
     },

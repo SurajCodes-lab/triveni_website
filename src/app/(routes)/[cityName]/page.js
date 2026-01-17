@@ -84,8 +84,9 @@ export async function generateMetadata({ params }) {
     // Get ALL keywords for this route
     const allKeywords = getAllKeywordsForPage(formattedCityName, formattedDestination);
 
-    const enhancedTitle = `${formattedCityName} to ${formattedDestination} Cab Service | Book Online ${startingPrice} | 24x7 Taxi`;
-    const enhancedDescription = `Book ${formattedCityName} to ${formattedDestination} cab service online. Professional drivers, AC vehicles, GPS tracking, 24/7 availability. Starting from ${startingPrice}. One-way & round trip taxi booking. Call 7668570551 for instant confirmation!`;
+    // Title under 60 chars, Description under 155 chars (Google guidelines)
+    const enhancedTitle = `${formattedCityName} to ${formattedDestination} Cab ${startingPrice} | 24/7 Taxi`;
+    const enhancedDescription = `Book ${formattedCityName} to ${formattedDestination} cab at ${startingPrice}. AC vehicles, verified drivers, 24/7 booking. Call 7668570551.`;
 
     return {
       title: enhancedTitle,

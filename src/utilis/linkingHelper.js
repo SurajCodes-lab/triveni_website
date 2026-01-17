@@ -278,6 +278,9 @@ export function searchRelatedTours(keyword, limit = 4) {
  * @param {number} limit - Max routes to return
  */
 export function getRelatedRoutes(origin, destination = '', limit = 6) {
+  // Null check to prevent toLowerCase errors
+  if (!origin) return [];
+
   const popularDestinations = {
     delhi: ['agra', 'jaipur', 'chandigarh', 'haridwar', 'rishikesh', 'shimla', 'manali', 'amritsar', 'dehradun', 'mathura'],
     jaipur: ['delhi', 'agra', 'udaipur', 'jodhpur', 'ajmer', 'pushkar', 'bikaner', 'mount-abu', 'ranthambore', 'jaisalmer'],
@@ -296,7 +299,7 @@ export function getRelatedRoutes(origin, destination = '', limit = 6) {
   };
 
   const originKey = origin.toLowerCase().replace(/\s+/g, '-');
-  const destKey = destination.toLowerCase().replace(/\s+/g, '-');
+  const destKey = (destination || '').toLowerCase().replace(/\s+/g, '-');
   const destinations = popularDestinations[originKey] || [];
 
   return destinations
@@ -335,6 +338,9 @@ export function getRelatedToursByCity(city, currentSlug = '', limit = 4) {
  * @param {number} limit - Max destinations
  */
 export function getNearbyDestinations(city, limit = 6) {
+  // Null check to prevent toLowerCase errors
+  if (!city) return [];
+
   const nearbyMap = {
     delhi: [
       { name: 'Agra', slug: 'agra', distance: 230, image: '/images/cities/agra.jpg' },
@@ -426,6 +432,9 @@ export function getNearbyDestinations(city, limit = 6) {
  * @param {string} city - City name
  */
 export function getServiceCrossLinks(city) {
+  // Null check to prevent toLowerCase errors
+  if (!city) return [];
+
   const citySlug = city.toLowerCase().replace(/\s+/g, '-');
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
 

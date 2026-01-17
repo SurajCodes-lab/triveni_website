@@ -42,8 +42,9 @@ export async function generateMetadata({ params }) {
     const tours = getToursByCity(slug);
 
     return {
-      title: `${cityName} Sightseeing Tours 2026 | Best ${cityName} Tour Packages | Book Now`,
-      description: `Discover ${tours.length}+ amazing sightseeing tours in ${cityName}. Expert-guided heritage tours, cultural experiences & day trips. Best prices guaranteed. Book your ${cityName} tour now!`,
+      // Title under 60 chars, Description under 155 chars
+      title: `${cityName} Sightseeing Tours | ${tours.length}+ Packages | Book Now`,
+      description: `Discover ${tours.length}+ sightseeing tours in ${cityName}. Heritage tours, day trips. Best prices. Book now!`,
       keywords: [
         // Primary Keywords
         `${cityName} sightseeing`,

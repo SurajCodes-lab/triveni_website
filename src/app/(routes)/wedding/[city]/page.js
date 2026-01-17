@@ -15,15 +15,16 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `💍 ${city.name} Wedding Car Rental | Book BMW, Audi, Mercedes in 60 Sec | ${city.priceRange} | Triveni Cabs`,
-    description: city.description,
+    // Title under 60 chars, no emojis (Google guidelines)
+    title: `${city.name} Wedding Car Rental | BMW, Audi, Mercedes`,
+    description: `Book wedding cars in ${city.name}. BMW, Audi, Mercedes, Baraat tempo. Professional chauffeurs. Call 7668570551.`,
     keywords: city.keywords,
     alternates: {
       canonical: `https://www.trivenicabs.in/wedding/${params.city}`
     },
     openGraph: {
-      title: `💍 ${city.name} Wedding Car Rental | Luxury BMW • Audi • Mercedes | Baraat Tempo Traveller`,
-      description: city.description,
+      title: `${city.name} Wedding Car Rental | Luxury Cars`,
+      description: `Wedding car rental in ${city.name}. BMW, Audi, Mercedes. Baraat tempo traveller. Book now!`,
       type: "website",
       locale: "en_IN",
       siteName: "Triveni Cabs",
@@ -38,8 +39,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `💍 ${city.name} Wedding Car | Book BMW, Audi, Mercedes in 60 Sec`,
-      description: `Book luxury wedding cars in ${city.name}! BMW, Audi, Mercedes for bride/groom entry. Baraat tempo travellers. Professional chauffeurs. Pre-book now & save 15%!`
+      title: `${city.name} Wedding Car | BMW, Audi, Mercedes`,
+      description: `Book luxury wedding cars in ${city.name}. BMW, Audi, Mercedes. Baraat tempo travellers. Book now!`
     },
     robots: {
       index: true,

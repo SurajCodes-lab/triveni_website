@@ -206,29 +206,32 @@ export const CrossServiceLinks = ({
   ...props
 }) => {
   // Default services if none provided
+  const citySlug = city?.toLowerCase().replace(/\s+/g, '-') || '';
+  const cityDisplay = city || 'your city';
+
   const defaultServices = [
     {
       name: 'Airport Transfer',
       icon: 'airport',
-      url: `/airport-service/${city?.toLowerCase().replace(/\s+/g, '-')}`,
-      description: `Airport pickup & drop in ${city}`
+      url: `/airport-service/${citySlug}`,
+      description: `Airport pickup & drop in ${cityDisplay}`
     },
     {
       name: 'Local Sightseeing',
       icon: 'tour',
-      url: `/sightseeing#${city?.toLowerCase()}`,
-      description: `Explore ${city} tourist places`
+      url: `/sightseeing#${citySlug}`,
+      description: `Explore ${cityDisplay} tourist places`
     },
     {
       name: 'Corporate Transport',
       icon: 'corporate',
-      url: `/corporate-transportation-service/${city?.toLowerCase().replace(/\s+/g, '-')}`,
+      url: `/corporate-transportation-service/${citySlug}`,
       description: `Employee shuttle & office cabs`
     },
     {
       name: 'Wedding Cars',
       icon: 'wedding',
-      url: `/wedding/${city?.toLowerCase().replace(/\s+/g, '-')}`,
+      url: `/wedding/${citySlug}`,
       description: `Decorated cars for your special day`
     }
   ];
@@ -425,11 +428,3 @@ const RelatedContent = ({
 };
 
 export default RelatedContent;
-export {
-  RelatedContent,
-  PopularRoutes,
-  RelatedTours,
-  CrossServiceLinks,
-  NearbyDestinations,
-  QuickLinksGrid
-};

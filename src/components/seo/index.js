@@ -3,13 +3,12 @@
  * Import all SEO components from this single entry point
  *
  * Usage:
- * import { SEOBreadcrumb, FAQSection, RelatedContent } from '@/components/seo';
+ * import { SEOBreadcrumb, FAQSection, PopularRoutes } from '@/components/seo';
  */
 
 // Breadcrumb Components
 export {
   default as SEOBreadcrumb,
-  SEOBreadcrumb,
   PageBreadcrumb,
   getBreadcrumbItems
 } from './Breadcrumb';
@@ -17,7 +16,6 @@ export {
 // FAQ Components
 export {
   default as FAQSection,
-  FAQSection,
   InlineFAQ,
   SimpleFAQ
 } from './FAQSection';
@@ -25,7 +23,6 @@ export {
 // Related Content Components
 export {
   default as RelatedContent,
-  RelatedContent,
   PopularRoutes,
   RelatedTours,
   CrossServiceLinks,

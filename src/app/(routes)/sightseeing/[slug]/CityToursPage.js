@@ -387,8 +387,8 @@ export default function CityToursPage({ city }) {
           tours: tours.slice(0, 5)
         })}
         title={`Frequently Asked Questions about ${cityName} Tours`}
-        subtitle="Everything you need to know about sightseeing in " + cityName
-        variant="card"
+        subtitle={`Everything you need to know about sightseeing in ${cityName}`}
+        variant="cards"
         showSchema={true}
       />
 
