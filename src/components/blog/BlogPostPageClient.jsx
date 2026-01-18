@@ -11,8 +11,15 @@ import NatureLayout from './layouts/NatureLayout';
 import MonumentLayout from './layouts/MonumentLayout';
 import CityGuideLayout from './layouts/CityGuideLayout';
 import AdventureLayout from './layouts/AdventureLayout';
+import MagazineLayout from './layouts/MagazineLayout';
+import TimelineLayout from './layouts/TimelineLayout';
+import FullWidthLayout from './layouts/FullWidthLayout';
+import SplitScreenLayout from './layouts/SplitScreenLayout';
 
-// Layout components map
+import MinimalLayout from './layouts/MinimalLayout';
+import ModernCardLayout from './layouts/ModernCardLayout';
+
+// Layout components map - 12 unique designs
 const layoutComponents = {
   FortPalaceLayout,
   TempleLayout,
@@ -20,6 +27,12 @@ const layoutComponents = {
   MonumentLayout,
   CityGuideLayout,
   AdventureLayout,
+  MagazineLayout,
+  TimelineLayout,
+  FullWidthLayout,
+  SplitScreenLayout,
+  MinimalLayout,
+  ModernCardLayout,
 };
 
 // Generate BlogPosting Schema
@@ -98,11 +111,46 @@ export default function BlogPostPageClient({ post }) {
     return getRelatedLinks(post);
   }, [post]);
 
-  // Determine which layout to use
+  // Determine which layout to use - 12 unique designs
   const layoutName = useMemo(() => {
     // First check if post has explicit attractionType
     if (post.attractionType) {
       return getLayoutComponent(post.attractionType);
+    }
+
+    // Check category for layout selection
+    const category = post.category?.toLowerCase() || '';
+
+    // Category-based layout mapping
+    if (category.includes('pilgrimage') || category.includes('religious')) {
+      return 'TempleLayout';
+    }
+    if (category.includes('hill station') || category.includes('nature')) {
+      return 'NatureLayout';
+    }
+    if (category.includes('adventure')) {
+      return 'AdventureLayout';
+    }
+    if (category.includes('city guide') || category.includes('food')) {
+      return 'CityGuideLayout';
+    }
+    if (category.includes('heritage') || category.includes('monument')) {
+      return 'MonumentLayout';
+    }
+    if (category.includes('destinations') || category.includes('travel tips')) {
+      return 'MagazineLayout';
+    }
+    if (category.includes('vehicle guide') || category.includes('tempo') || category.includes('bus')) {
+      return 'FullWidthLayout';
+    }
+    if (category.includes('seasonal')) {
+      return 'TimelineLayout';
+    }
+    if (category.includes('special interest')) {
+      return 'SplitScreenLayout';
+    }
+    if (category.includes('romantic') || category.includes('honeymoon') || category.includes('beach')) {
+      return 'ModernCardLayout';
     }
 
     // Try to detect from tags
@@ -138,9 +186,39 @@ export default function BlogPostPageClient({ post }) {
       return 'MonumentLayout';
     }
 
+    // Magazine style for destination content
+    if (tags.some(t => ['destinations', 'travel tips', 'guide'].includes(t))) {
+      return 'MagazineLayout';
+    }
+
+    // Timeline for historical content
+    if (tags.some(t => ['history', 'ancient', 'seasonal', 'winter', 'summer', 'monsoon'].includes(t))) {
+      return 'TimelineLayout';
+    }
+
+    // Full width for vehicle content
+    if (tags.some(t => ['tempo traveller', 'bus', 'vehicle', 'car rental'].includes(t))) {
+      return 'FullWidthLayout';
+    }
+
+    // Split screen for special content
+    if (tags.some(t => ['special', 'featured', 'premium'].includes(t))) {
+      return 'SplitScreenLayout';
+    }
+
+    // Minimal for tips and guides
+    if (tags.some(t => ['tips', 'how to', 'checklist'].includes(t))) {
+      return 'MinimalLayout';
+    }
+
+    // Modern card for luxury/romantic
+    if (tags.some(t => ['romantic', 'honeymoon', 'luxury', 'resort'].includes(t))) {
+      return 'ModernCardLayout';
+    }
+
     // Default to Monument layout
     return 'MonumentLayout';
-  }, [post.attractionType, post.tags]);
+  }, [post.attractionType, post.tags, post.category]);
 
   // Get the layout component
   const LayoutComponent = layoutComponents[layoutName] || MonumentLayout;
