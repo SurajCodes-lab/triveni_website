@@ -1,6 +1,6 @@
 /**
- * Seasonal & Special Interest Blog Posts - 8 New SEO-Rich Articles
- * Focus: Seasonal travel, photography, food trails, adventure
+ * Seasonal & Special Interest Blog Posts - 6 SEO-Rich Articles
+ * Focus: Seasonal travel, photography, food trails, adventure, festivals
  */
 
 export const seasonalBlogs = [
@@ -8,1525 +8,980 @@ export const seasonalBlogs = [
     id: 'season-1',
     slug: 'monsoon-road-trips-north-india-complete-guide-2026',
     title: 'Monsoon Road Trips in North India: Complete Guide 2026',
-    metaTitle: 'Monsoon Road Trip 2026 | Best Rainy Season Destinations North India',
-    metaDescription: 'Best monsoon road trip destinations in North India. Udaipur, Pachmarhi, Valley of Flowers. Safety tips, booking guide. Embrace the rains!',
-    category: 'seasonal',
-    subcategory: 'monsoon',
-    author: 'Triveni Cabs Travel Expert',
-    publishDate: '2026-01-22',
-    readTime: '12 min read',
-    featured: true,
-    heroImage: '/images/car/sedan.webp',
-    heroAlt: 'Car on monsoon road trip',
-    tags: ['monsoon', 'road trip', 'rainy season', 'waterfalls', 'north india'],
-    keywords: ['monsoon road trip', 'rainy season travel', 'monsoon destinations india', 'july august travel'],
-    content: `
-## Embrace the Monsoon: Why Road Trips in Rains are Magical
-
-While most travelers avoid the monsoon season (July-September), seasoned road trippers know that the rains transform India into a lush, photogenic paradise. Waterfalls roar to life, valleys turn emerald green, roads become ribbons through misty mountains, and crowds disappear. If you're willing to navigate some challenges, monsoon road trips offer experiences impossible in any other season.
-
-### Why Consider Monsoon Travel?
-
-**Visual Spectacle**
-- Waterfalls at full power
-- Lush green landscapes
-- Dramatic cloud formations
-- Rainbow sightings
-- Rivers and lakes brimming
-
-**Fewer Crowds**
-Tourist destinations are 70-80% less crowded, meaning:
-- Lower accommodation prices
-- No queues at attractions
-- More authentic local experiences
-- Better photographs without crowds
-
-**Cooler Temperatures**
-Escaping summer heat without hill station crowds.
-
-**Unique Experiences**
-- Valley of Flowers (blooms only in monsoon)
-- Seasonal waterfalls
-- Fishing and angling opportunities
-- Cultural festivals (Teej, Onam, etc.)
-
----
-
-## Best Monsoon Destinations
-
-### 1. Valley of Flowers, Uttarakhand
-**Best Time:** July-August
-**Why Monsoon:** Over 600 species of flowers bloom ONLY during monsoon!
-**Trek Difficulty:** Moderate (13 km from Govindghat)
-**Transport Tip:** Drive to Govindghat, trek from there
-
-**What to Expect:**
-- UNESCO World Heritage Site
-- Alpine flowers in full bloom
-- Brahmakamal, Blue Poppy, Cobra Lily
-- Hemkund Sahib shrine nearby
-
-**Road Condition:** Challenging beyond Joshimath, landslide prone
-
-### 2. Udaipur, Rajasthan
-**Best Time:** July-September
-**Why Monsoon:** Lakes fill up (often dry in summer), cooler weather
-**Drive from Delhi:** 660 km (10-11 hours)
-
-**Monsoon Magic:**
-- Lake Pichola at full level
-- Lush Aravalli hills
-- Fewer tourists
-- Jaisamand Lake
-- Dramatic palace reflections
-
-**Road Condition:** Generally good, some patches
-
-### 3. Coorg, Karnataka (Extension)
-**Best Time:** August-September
-**Why Monsoon:** Coffee plantations at lush best, misty valleys
-**Ideal For:** Nature lovers, photographers
-
-### 4. Matheran, Maharashtra
-**Best Time:** July-August
-**Why Monsoon:** Toy train experience, waterfalls, no vehicles
-**From Mumbai:** 80 km (2.5 hours to Neral + toy train)
-
-### 5. Pachmarhi, Madhya Pradesh
-**Best Time:** July-September
-**Why Monsoon:** Waterfalls, green satpura hills, cave paintings
-**From Delhi:** 800 km (14-15 hours)
-**From Bhopal:** 200 km (4-5 hours)
-
-**Highlights:**
-- Bee Falls, Duchess Falls
-- Jatashankar caves
-- Dhupgarh (highest point in MP)
-- Colonial architecture
-
-### 6. Meghalaya (Advanced Trip)
-**Best Time:** September (rains reducing)
-**Why Monsoon:** Wettest place on earth at its peak, living root bridges, waterfalls
-**Challenge:** Extremely heavy rains in July-August; September slightly better
-
----
-
-## Safety Tips for Monsoon Driving
-
-### Vehicle Preparation
-- ✅ Good tyre tread (crucial for wet roads)
-- ✅ Working wipers and defogger
-- ✅ Functional headlights and fog lights
-- ✅ Brakes checked recently
-- ✅ Emergency kit with flashlight, first aid
-
-### Driving Techniques
-- Reduce speed significantly on wet roads
-- Maintain longer following distance
-- Avoid puddles that might hide potholes
-- Don't brake suddenly; pump brakes gently
-- Use low beam in rain (high beam reflects)
-- If visibility poor, pull over safely
-
-### Route Planning
-- Check weather forecasts daily
-- Have alternate routes ready
-- Avoid night driving in mountains during monsoon
-- Know location of service stations
-- Keep emergency contacts handy
-
-### Landslide Awareness
-- Check road status before mountain trips
-- Early morning travel better (fewer afternoon rains)
-- If stuck in landslide, wait for official clearance
-- Don't attempt to cross freshly cleared debris immediately
-
----
-
-## Monsoon Road Trip Packing
-
-### Essentials
-- Waterproof jacket/raincoat (not umbrella - impractical in cars)
-- Quick-dry clothes
-- Extra pair of shoes (shoes WILL get wet)
-- Plastic bags for wet clothes
-- Waterproof phone pouch
-- Power bank (charging may be interrupted)
-- Torch with extra batteries
-- Basic medicines including ORS
-
-### For Photography
-- Waterproof camera bag
-- Lens cleaning cloth (constantly needed)
-- Ziplock bags for equipment
-- Tripod with good grip
-
----
-
-## Monsoon Road Trip Packages
-
-### Udaipur Monsoon Special (3 Days)
-**Route:** Delhi → Udaipur → Delhi
-**Distance:** 1,320 km round trip
-
-| Vehicle | Package Rate |
-|---------|--------------|
-| Sedan | ₹18,000 |
-| SUV | ₹24,000 |
-
-**Includes:** Udaipur local sightseeing, driver, fuel, tolls
-
-### Valley of Flowers Trek Support (5 Days)
-**Route:** Delhi → Rishikesh → Govindghat → Return
-**Distance:** 600 km to Govindghat
-
-| Vehicle | Package Rate |
-|---------|--------------|
-| SUV | ₹32,000 |
-| Tempo 12-seater | ₹45,000 |
-
-**Note:** Trek not included; vehicle waits at Govindghat
-
-### Pachmarhi Monsoon Escape (4 Days)
-**Route:** Delhi → Jhansi → Pachmarhi → Delhi
-**Distance:** 1,600 km round trip
-
-| Vehicle | Package Rate |
-|---------|--------------|
-| Sedan | ₹22,000 |
-| SUV | ₹30,000 |
-
----
-
-## FAQs
-
-**Q: Is monsoon road trip safe?**
-A: With proper precautions, yes. Choose reliable vehicles, experienced drivers, and avoid high-risk areas during heavy rain warnings.
-
-**Q: What if trip gets cancelled due to rain?**
-A: We offer flexible rescheduling during monsoon bookings. Travel insurance covering weather disruptions is also recommended.
-
-**Q: Best monsoon destinations without landslide risk?**
-A: Udaipur, Pachmarhi, and plains destinations. Avoid high Himalayan routes (Ladakh, Spiti, Uttarakhand mountains) during peak monsoon.
-
----
-
-## Book Monsoon Adventure
-
-Experience India's green transformation with reliable, monsoon-prepared vehicles.
-
-**Contact:**
-- 📞 Call: 7668570551
-- 💬 WhatsApp: 7668570551
-- 🌐 trivenicabs.in
-
-*Triveni Cabs - Rain or shine, we've got you covered*
-    `,
-    faqs: [
-      { question: 'Is monsoon road trip safe?', answer: 'With proper precautions, yes. Choose reliable vehicles and experienced drivers.' },
-      { question: 'What if trip gets cancelled due to rain?', answer: 'We offer flexible rescheduling during monsoon bookings.' },
-      { question: 'Best monsoon destinations without landslide risk?', answer: 'Udaipur, Pachmarhi, and plains destinations.' }
+    excerpt: 'Best monsoon road trip destinations in North India including Udaipur, Pachmarhi, and Valley of Flowers. Safety tips and booking guide for rainy season travel.',
+    relatedTours: [
+      { id: "udaipur", name: "Delhi to Udaipur Package", slug: "udaipur", city: "delhi", price: "₹18,000" },
+      { id: "rishikesh", name: "Rishikesh-Haridwar Trip", slug: "haridwar-rishikesh", city: "delhi", price: "₹8,500" }
     ],
-    schema: { type: 'Article', articleType: 'TravelGuide' }
+    relatedDestinations: [
+      { name: "Udaipur", slug: "udaipur", type: "city" },
+      { name: "Rishikesh", slug: "rishikesh", type: "city" },
+      { name: "Uttarakhand", slug: "uttarakhand", type: "state" }
+    ],
+    primaryCTA: {
+      text: "Book Monsoon Trip",
+      url: "/contact",
+      description: "Experience India's green transformation",
+      price: "Starting ₹18,000"
+    },
+    content: `<p>While most travelers avoid the <strong>monsoon season</strong> (July-September), seasoned road trippers know that the rains transform India into a lush, photogenic paradise. Waterfalls roar to life, valleys turn emerald green, and crowds disappear. For a memorable <a href="/contact" class="text-blue-600 hover:underline font-semibold">monsoon road trip</a>, you need a reliable vehicle and an adventurous spirit.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Consider Monsoon Travel?</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Visual Spectacle</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Waterfalls at full power</li>
+<li class="ml-4">Lush green landscapes</li>
+<li class="ml-4">Dramatic cloud formations</li>
+<li class="ml-4">Rainbow sightings</li>
+<li class="ml-4">Rivers and lakes brimming</li>
+</ul>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Fewer Crowds</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Tourist destinations are 70-80% less crowded during monsoon, meaning lower accommodation prices, no queues at attractions, and more authentic local experiences. Perfect for photographers who want stunning shots without tourists in frame.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Unique Experiences</h3>
+<p class="text-gray-700 leading-relaxed mb-4">The Valley of Flowers blooms ONLY during monsoon with over 600 species of flowers. Seasonal waterfalls appear, and cultural festivals like Teej and Onam add to the charm.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Best Monsoon Destinations</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Valley of Flowers, Uttarakhand</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> July-August | <strong>Trek Difficulty:</strong> Moderate (13 km from Govindghat)</p>
+<p class="text-gray-700 leading-relaxed mb-4">This UNESCO World Heritage Site features alpine flowers in full bloom including Brahmakamal, Blue Poppy, and Cobra Lily. The <a href="/sightseeing/char-dham-yatra" class="text-blue-600 hover:underline font-semibold">Char Dham route</a> passes nearby, and Hemkund Sahib shrine is accessible from here.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Udaipur, Rajasthan</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> July-September | <strong>From Delhi:</strong> 660 km (10-11 hours)</p>
+<p class="text-gray-700 leading-relaxed mb-4">Unlike summer when lakes are often dry, monsoon fills Lake Pichola and Fateh Sagar to their full glory. The Aravalli hills turn lush green, creating dramatic palace reflections. Our <a href="/sightseeing/udaipur-sightseeing" class="text-blue-600 hover:underline font-semibold">Udaipur sightseeing packages</a> are perfect for monsoon visits.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Pachmarhi, Madhya Pradesh</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> July-September | <strong>From Delhi:</strong> 800 km | <strong>From Bhopal:</strong> 200 km</p>
+<p class="text-gray-700 leading-relaxed mb-4">The "Queen of Satpura" comes alive with waterfalls like Bee Falls and Duchess Falls. Cave paintings, Jatashankar caves, and Dhupgarh (highest point in MP) offer unique experiences.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">4. Meghalaya (Advanced Trip)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> September (rains reducing)</p>
+<p class="text-gray-700 leading-relaxed mb-4">The wettest place on earth at its peak! Living root bridges, spectacular waterfalls, and misty valleys. September offers slightly better conditions than the extremely heavy July-August rains.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Safety Tips for Monsoon Driving</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Vehicle Preparation</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Good tyre tread (crucial for wet roads)</li>
+<li class="ml-4">Working wipers and defogger</li>
+<li class="ml-4">Functional headlights and fog lights</li>
+<li class="ml-4">Brakes checked recently</li>
+<li class="ml-4">Emergency kit with flashlight and first aid</li>
+</ul>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Driving Techniques</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Reduce speed significantly on wet roads. Maintain longer following distance. Avoid puddles that might hide potholes. Use low beam in rain (high beam reflects). If visibility is poor, pull over safely and wait.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Landslide Awareness</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Always check road status before mountain trips. Early morning travel is better (fewer afternoon rains). If stuck in a landslide area, wait for official clearance. Our drivers are trained in monsoon mountain driving through our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller services</a>.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Monsoon Road Trip Packages</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Udaipur Monsoon Special (3 Days)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi → Udaipur → Delhi | <strong>Distance:</strong> 1,320 km round trip</p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Package Rate</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹18,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹24,000</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Includes:</strong> Udaipur local sightseeing, experienced driver, fuel, tolls</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Valley of Flowers Trek Support (5 Days)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi → Rishikesh → Govindghat → Return | <strong>Distance:</strong> 600 km to Govindghat</p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Package Rate</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹32,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹45,000</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Note:</strong> Trek not included; vehicle waits at Govindghat</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Monsoon Packing Essentials</h2>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Waterproof jacket/raincoat (not umbrella - impractical in cars)</li>
+<li class="ml-4">Quick-dry clothes and extra pair of shoes</li>
+<li class="ml-4">Plastic bags for wet clothes</li>
+<li class="ml-4">Waterproof phone pouch and power bank</li>
+<li class="ml-4">Torch with extra batteries</li>
+<li class="ml-4">Basic medicines including ORS</li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is monsoon road trip safe?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">With proper precautions, yes. Choose reliable vehicles, experienced drivers, and avoid high-risk areas during heavy rain warnings. Our drivers are monsoon-trained for mountain routes.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">What if trip gets cancelled due to rain?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">We offer flexible rescheduling during monsoon bookings. Travel insurance covering weather disruptions is also recommended.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Best monsoon destinations without landslide risk?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Udaipur, Pachmarhi, and plains destinations are safest. Avoid high Himalayan routes (Ladakh, Spiti, Uttarakhand mountains) during peak monsoon.</p>
+
+<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
+<h3 class="text-xl font-bold mb-2">Book Your Monsoon Adventure</h3>
+<p class="mb-4">Experience India's green transformation with reliable, monsoon-prepared vehicles.</p>
+<p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
+<a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
+</div>`,
+    date: "2026-01-15",
+    readTime: "12 min read",
+    image: "/images/car/sedan.webp",
+    category: "Seasonal Travel",
+    tags: ["monsoon", "road trip", "rainy season", "waterfalls", "north india", "udaipur", "valley of flowers"],
+    keywords: ["monsoon road trip", "rainy season travel india", "monsoon destinations north india", "july august travel"],
+    featured: true
   },
 
   {
     id: 'season-2',
     slug: 'winter-snow-destinations-north-india-complete-guide-2026',
     title: 'Winter Snow Destinations in North India: Complete Travel Guide 2026',
-    metaTitle: 'Snow Trip 2026 | Best Winter Destinations North India',
-    metaDescription: 'Best snow destinations in North India. Gulmarg, Auli, Solang, Chopta. When to visit, how to reach, snow activities guide. Book winter trip!',
-    category: 'seasonal',
-    subcategory: 'winter',
-    author: 'Triveni Cabs Winter Travel Expert',
-    publishDate: '2026-01-22',
-    readTime: '14 min read',
-    featured: true,
-    heroImage: '/images/packages/manali.webp',
-    heroAlt: 'Snow covered mountains winter trip',
-    tags: ['winter', 'snow', 'skiing', 'gulmarg', 'auli', 'solang'],
-    keywords: ['snow trip india', 'winter destinations', 'snowfall places', 'skiing india'],
-    content: `
-## Chase the Snow: North India's Best Winter Destinations
-
-There's something magical about snow—the silence of a white landscape, the crunch underfoot, the cozy warmth of a bonfire after playing in powder. While India isn't typically associated with winter sports, the Himalayas offer genuine snow experiences from December through March.
-
-### When Does It Snow in India?
-
-**Early Winter (December-January):** Higher altitudes (above 3,000m) like Gulmarg, Auli, Solang, Chopta receive snow
-**Peak Winter (January-February):** Snow reaches lower hill stations like Shimla, Manali, Dalhousie
-**Late Winter (February-March):** Best consolidated snow; spring skiing in high areas
-
-**Note:** Snowfall is never guaranteed. It depends on Western Disturbances (weather systems from Mediterranean). Check forecasts before planning.
-
----
-
-## Top Snow Destinations
-
-### 1. Gulmarg, Kashmir
-**Altitude:** 2,730m base, 4,390m top
-**Snow Period:** December-March
-**Highlights:** Asia's highest and longest cable car (Gulmarg Gondola), world-class skiing
-**From Delhi:** Fly to Srinagar, drive 56 km
-
-**Why Best for Snow:**
-- Reliable heavy snowfall
-- Professional ski slopes
-- Powder snow quality
-- Gondola to ski/view point
-
-**Activities:**
-- Skiing (beginner to advanced)
-- Snowboarding
-- Gondola ride (₹1,600 Phase 1, ₹1,800 Phase 2)
-- Sledging
-- Snowshoeing
-
-### 2. Auli, Uttarakhand
-**Altitude:** 2,500-3,050m
-**Snow Period:** January-March
-**Highlights:** Affordable skiing, Nanda Devi views
-**From Delhi:** 500 km drive (12-14 hours)
-
-**Why Choose:**
-- India's premier ski resort
-- Ski equipment rentals available
-- Cable car from Joshimath
-- Less crowded than Gulmarg
-- More accessible by road
-
-**Activities:**
-- Skiing courses (GMVN)
-- Snow trekking
-- Cable car ride
-- Photography
-
-### 3. Solang Valley, Manali
-**Altitude:** 2,560m
-**Snow Period:** December-February
-**Highlights:** Accessible, multiple activities
-**From Delhi:** 530 km (12-13 hours)
-
-**Why Popular:**
-- Easy access from Manali
-- Variety of activities
-- Atal Tunnel makes journey shorter
-- Budget-friendly options
-
-**Activities:**
-- Skiing
-- Paragliding (even in winter!)
-- Snow scooter rides
-- Zorbing
-- Cable car
-
-### 4. Chopta, Uttarakhand
-**Altitude:** 2,680m
-**Snow Period:** December-February
-**Highlights:** Snow trekking to Tungnath & Chandrashila
-**From Delhi:** 410 km (10-11 hours)
-
-**Why Unique:**
-- Less commercial
-- Stunning snow trek
-- Tungnath Temple under snow
-- Budget camping available
-
-### 5. Shimla & Kufri
-**Altitude:** 2,205m (Shimla), 2,510m (Kufri)
-**Snow Period:** Late December-February (less reliable)
-**From Delhi:** 350 km (8-9 hours)
-
-**Reality Check:** Shimla town rarely gets heavy snow; Kufri more likely. Not guaranteed—plan as "bonus" rather than primary goal.
-
-### 6. Dalhousie & Khajjiar
-**Altitude:** 1,970m
-**Snow Period:** January-February (occasional)
-**From Delhi:** 560 km (11-12 hours)
-
-**Similar to Shimla:** Snow not guaranteed but possible.
-
----
-
-## Winter Road Trip Planning
-
-### Vehicle Considerations
-
-**Snow Chains:**
-- Required for high-altitude routes
-- Our SUVs carry chains for Rohtang, Gulmarg, Auli routes
-- Essential above 3,000m in winter
-
-**Vehicle Choice:**
-- SUV strongly recommended (ground clearance, better traction)
-- 4x4 ideal for areas with heavy snow
-- Tempo travellers need chains
-
-### Route Accessibility
-
-| Destination | Road Status (Winter) | Recommendation |
-|-------------|---------------------|----------------|
-| Gulmarg | Open, may need chains | SUV preferred |
-| Auli | Open, Joshimath route | SUV preferred |
-| Solang | Open (Atal Tunnel) | Any vehicle |
-| Chopta | May close in heavy snow | Check before travel |
-| Rohtang | Closed Nov-May | Atal Tunnel alternative |
-| Ladakh | Closed Nov-May | Flights only |
-
----
-
-## What to Pack for Snow Trip
-
-### Clothing Layers
-
-**Base Layer:**
-- Thermal tops and bottoms
-- Moisture-wicking fabric
-
-**Mid Layer:**
-- Fleece jacket
-- Wool sweater
-
-**Outer Layer:**
-- Waterproof down jacket
-- Snow pants/waterproof trousers
-
-**Accessories:**
-- Woolen cap/beanie (covers ears)
-- Waterproof gloves (2 pairs)
-- Muffler/neck gaiter
-- Snow boots OR sturdy shoes with waterproof cover
-- Woolen socks (multiple pairs)
-
-### Other Essentials
-- Sunscreen (snow reflects UV intensely)
-- Sunglasses (snow blindness is real)
-- Lip balm with SPF
-- Moisturizer (cold air is dry)
-- Hand/toe warmers (optional)
-- Power bank (cold drains batteries)
-
----
-
-## Winter Trip Packages
-
-### Gulmarg Snow Experience (5 Days)
-**Route:** Delhi → Srinagar (flight) → Gulmarg → Srinagar → Delhi
-**Package Includes:** SUV transfers in Kashmir, hotel (3N Gulmarg, 1N Srinagar)
-**Best Time:** January-February
-
-| Package | Per Person (min 4 pax) |
-|---------|------------------------|
-| Budget | ₹18,000 |
-| Comfort | ₹28,000 |
-| Luxury | ₹45,000 |
-
-*Flight extra; gondola tickets extra*
-
-### Auli Skiing Adventure (4 Days by Road)
-**Route:** Delhi → Joshimath → Auli → Delhi
-**Distance:** 1,000 km round trip
-
-| Vehicle | Transport Only | With Hotel |
-|---------|---------------|------------|
-| SUV | ₹28,000 | ₹42,000 (per person, min 4) |
-| Tempo 12-seater | ₹45,000 | ₹35,000 (per person, min 8) |
-
-### Manali-Solang Winter Trip (3 Days)
-**Route:** Delhi → Manali → Solang → Delhi
-**Distance:** 1,060 km round trip
-
-| Vehicle | Transport Only |
-|---------|---------------|
-| Sedan | ₹18,000 |
-| SUV | ₹24,000 |
-| Tempo 12-seater | ₹35,000 |
-
----
-
-## FAQs
-
-**Q: Is snowfall guaranteed?**
-A: Never guaranteed in India. Higher altitudes (Gulmarg, Auli) are more reliable. Lower hill stations (Shimla, Mussoorie) may or may not have snow.
-
-**Q: Best time to see snow?**
-A: January-February for best chances. Fresh snowfall often follows weather reports of "Western Disturbance."
-
-**Q: Can I drive my car in snow?**
-A: Not recommended unless you have experience and appropriate equipment. Our drivers are winter-trained.
-
-**Q: Is it safe for children?**
-A: Yes, with proper clothing. Choose destinations with easier access (Solang, Kufri) over remote ones.
-
----
-
-## Book Your Winter Adventure
-
-Experience the magic of Himalayan winters with safe, reliable, winter-prepared transportation.
-
-**Contact:**
-- 📞 Call: 7668570551
-- 💬 WhatsApp: 7668570551
-- 🌐 trivenicabs.in
-
-*Triveni Cabs - Your winter wonderland awaits*
-    `,
-    faqs: [
-      { question: 'Is snowfall guaranteed?', answer: 'Never guaranteed. Higher altitudes like Gulmarg and Auli are more reliable.' },
-      { question: 'Best time to see snow?', answer: 'January-February for best chances, following Western Disturbance weather patterns.' },
-      { question: 'Can I drive my car in snow?', answer: 'Not recommended without experience and equipment. Our drivers are winter-trained.' }
+    excerpt: 'Best snow destinations in North India including Gulmarg, Auli, Solang, and Chopta. When to visit, how to reach, and snow activities guide with cab booking.',
+    relatedTours: [
+      { id: "manali", name: "Delhi to Manali Package", slug: "manali", city: "delhi", price: "₹18,000" },
+      { id: "shimla", name: "Shimla-Kufri Tour", slug: "shimla-kufri", city: "delhi", price: "₹12,000" }
     ],
-    schema: { type: 'Article', articleType: 'TravelGuide' }
+    relatedDestinations: [
+      { name: "Manali", slug: "manali", type: "city" },
+      { name: "Shimla", slug: "shimla", type: "city" },
+      { name: "Auli", slug: "auli", type: "destination" }
+    ],
+    primaryCTA: {
+      text: "Book Snow Trip",
+      url: "/contact",
+      description: "Experience Himalayan winters",
+      price: "Starting ₹18,000"
+    },
+    content: `<p>There's something magical about snow—the silence of a white landscape, the crunch underfoot, the cozy warmth of a bonfire after playing in powder. The <strong>Himalayas</strong> offer genuine snow experiences from December through March. Book your <a href="/contact" class="text-blue-600 hover:underline font-semibold">winter adventure</a> with reliable transportation.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">When Does It Snow in India?</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Early Winter (December-January):</strong> Higher altitudes (above 3,000m) like Gulmarg, Auli, Solang, Chopta receive snow</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Peak Winter (January-February):</strong> Snow reaches lower hill stations like Shimla, Manali, Dalhousie</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Late Winter (February-March):</strong> Best consolidated snow; spring skiing in high areas</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Important:</strong> Snowfall is never guaranteed. It depends on Western Disturbances. Check forecasts before planning your <a href="/sightseeing/shimla-manali-tour" class="text-blue-600 hover:underline font-semibold">Shimla-Manali trip</a>.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Top Snow Destinations</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Gulmarg, Kashmir</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,730m base, 4,390m top | <strong>Snow Period:</strong> December-March</p>
+<p class="text-gray-700 leading-relaxed mb-4">Home to Asia's highest and longest cable car (Gulmarg Gondola) and world-class skiing. The reliable heavy snowfall produces powder snow quality that rivals international destinations.</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Activities:</strong></p>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Skiing (beginner to advanced)</li>
+<li class="ml-4">Snowboarding</li>
+<li class="ml-4">Gondola ride (₹1,600 Phase 1, ₹1,800 Phase 2)</li>
+<li class="ml-4">Sledging and snowshoeing</li>
+</ul>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> Fly to Srinagar, drive 56 km</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Auli, Uttarakhand</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,500-3,050m | <strong>Snow Period:</strong> January-March | <strong>From Delhi:</strong> 500 km (12-14 hours)</p>
+<p class="text-gray-700 leading-relaxed mb-4">India's premier ski resort with affordable skiing, stunning Nanda Devi views, and cable car from Joshimath. Less crowded than Gulmarg and more accessible by road. Perfect for combining with <a href="/sightseeing/char-dham-yatra" class="text-blue-600 hover:underline font-semibold">Char Dham Yatra</a>.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Solang Valley, Manali</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,560m | <strong>Snow Period:</strong> December-February | <strong>From Delhi:</strong> 530 km (12-13 hours)</p>
+<p class="text-gray-700 leading-relaxed mb-4">Easy access from <a href="/sightseeing/manali-tour" class="text-blue-600 hover:underline font-semibold">Manali</a>, variety of activities, and the Atal Tunnel makes the journey shorter. Budget-friendly options for families.</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Activities:</strong> Skiing, paragliding (even in winter!), snow scooter rides, zorbing, cable car</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">4. Chopta, Uttarakhand</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,680m | <strong>Snow Period:</strong> December-February | <strong>From Delhi:</strong> 410 km (10-11 hours)</p>
+<p class="text-gray-700 leading-relaxed mb-4">Less commercial destination with stunning snow trekking to Tungnath Temple (world's highest Shiva temple) and Chandrashila peak. Budget camping available.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">5. Shimla & Kufri</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,205m (Shimla), 2,510m (Kufri) | <strong>From Delhi:</strong> 350 km (8-9 hours)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Reality Check:</strong> Shimla town rarely gets heavy snow; Kufri is more likely. Not guaranteed—plan as "bonus" rather than primary goal. Book our <a href="/sightseeing/shimla-tour" class="text-blue-600 hover:underline font-semibold">Shimla tour package</a> for the best experience.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Winter Road Trip Planning</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Vehicle Considerations</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow Chains:</strong> Required for high-altitude routes. Our SUVs carry chains for Rohtang, Gulmarg, and Auli routes. Essential above 3,000m in winter.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Vehicle Choice:</strong> SUV strongly recommended (ground clearance, better traction). 4x4 ideal for areas with heavy snow. Our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo travellers</a> are equipped with chains for group trips.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Route Accessibility</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Destination</th><th class="border border-gray-300 px-4 py-2 text-left">Winter Status</th><th class="border border-gray-300 px-4 py-2 text-left">Recommendation</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Gulmarg</td><td class="border border-gray-300 px-4 py-2">Open, may need chains</td><td class="border border-gray-300 px-4 py-2">SUV preferred</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Auli</td><td class="border border-gray-300 px-4 py-2">Open, Joshimath route</td><td class="border border-gray-300 px-4 py-2">SUV preferred</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Solang</td><td class="border border-gray-300 px-4 py-2">Open (Atal Tunnel)</td><td class="border border-gray-300 px-4 py-2">Any vehicle</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Chopta</td><td class="border border-gray-300 px-4 py-2">May close in heavy snow</td><td class="border border-gray-300 px-4 py-2">Check before travel</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Rohtang</td><td class="border border-gray-300 px-4 py-2">Closed Nov-May</td><td class="border border-gray-300 px-4 py-2">Atal Tunnel alternative</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Ladakh</td><td class="border border-gray-300 px-4 py-2">Closed Nov-May</td><td class="border border-gray-300 px-4 py-2">Flights only</td></tr>
+</tbody>
+</table>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">What to Pack for Snow Trip</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Clothing Layers</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Base Layer:</strong> Thermal tops and bottoms, moisture-wicking fabric</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Mid Layer:</strong> Fleece jacket, wool sweater</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Outer Layer:</strong> Waterproof down jacket, snow pants/waterproof trousers</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Accessories</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Woolen cap/beanie (covers ears)</li>
+<li class="ml-4">Waterproof gloves (2 pairs)</li>
+<li class="ml-4">Muffler/neck gaiter</li>
+<li class="ml-4">Snow boots OR sturdy shoes with waterproof cover</li>
+<li class="ml-4">Sunscreen and sunglasses (snow reflects UV intensely)</li>
+<li class="ml-4">Power bank (cold drains batteries faster)</li>
+</ul>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Winter Trip Packages</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Auli Skiing Adventure (4 Days by Road)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi → Joshimath → Auli → Delhi | <strong>Distance:</strong> 1,000 km round trip</p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Transport Only</th><th class="border border-gray-300 px-4 py-2 text-left">With Hotel</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹28,000</td><td class="border border-gray-300 px-4 py-2">₹42,000/person (min 4)</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹45,000</td><td class="border border-gray-300 px-4 py-2">₹35,000/person (min 8)</td></tr>
+</tbody>
+</table>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Manali-Solang Winter Trip (3 Days)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi → Manali → Solang → Delhi | <strong>Distance:</strong> 1,060 km round trip</p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Rate</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹18,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹24,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹35,000</td></tr>
+</tbody>
+</table>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is snowfall guaranteed?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Never guaranteed in India. Higher altitudes (Gulmarg, Auli) are more reliable. Lower hill stations (Shimla, Mussoorie) may or may not have snow.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Best time to see snow?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">January-February for best chances. Fresh snowfall often follows weather reports of "Western Disturbance."</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I drive my car in snow?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Not recommended unless you have experience and appropriate equipment. Our drivers are winter-trained with proper snow chains.</p>
+
+<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
+<h3 class="text-xl font-bold mb-2">Book Your Winter Adventure</h3>
+<p class="mb-4">Experience the magic of Himalayan winters with safe, reliable, winter-prepared transportation.</p>
+<p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
+<a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
+</div>`,
+    date: "2026-01-15",
+    readTime: "14 min read",
+    image: "/images/packages/manali.webp",
+    category: "Seasonal Travel",
+    tags: ["winter", "snow", "skiing", "gulmarg", "auli", "solang", "manali", "shimla"],
+    keywords: ["snow trip india", "winter destinations north india", "snowfall places", "skiing india"],
+    featured: true
   },
 
   {
     id: 'season-3',
     slug: 'photography-tour-rajasthan-heritage-complete-guide-2026',
     title: 'Photography Tour of Rajasthan: Heritage & Culture Capture Guide 2026',
-    metaTitle: 'Rajasthan Photography Tour 2026 | Best Photo Spots Guide',
-    metaDescription: 'Plan Rajasthan photography tour. Best forts, palaces, desert, and portrait locations. Golden hour tips, equipment guide. Book photo tour vehicle!',
-    category: 'special-interest',
-    subcategory: 'photography',
-    author: 'Triveni Cabs Travel Expert',
-    publishDate: '2026-01-22',
-    readTime: '13 min read',
-    featured: true,
-    heroImage: '/images/packages/rajasthan.webp',
-    heroAlt: 'Rajasthan fort photography',
-    tags: ['photography', 'rajasthan', 'heritage', 'portrait', 'architecture', 'desert'],
-    keywords: ['rajasthan photography tour', 'photo spots rajasthan', 'photography trip india', 'heritage photography'],
-    content: `
-## Rajasthan: A Photographer's Paradise
-
-Rajasthan is perhaps India's most photogenic state. Every element seems designed for the camera—magnificent forts silhouetted against orange sunsets, colorful turbans against desert backgrounds, ornate havelis with intricate details, vibrant markets, and faces etched with stories of the desert. Whether you're a professional photographer or an enthusiastic amateur, Rajasthan offers endless frame-worthy moments.
-
-### Why Rajasthan for Photography?
-
-**Architectural Grandeur**
-Forts, palaces, stepwells, havelis—centuries of royal patronage created some of the world's most photogenic architecture.
-
-**Color Explosion**
-Rajasthani culture celebrates color—in clothing, in buildings, in festivals. The visual contrast against the arid landscape is striking.
-
-**Portrait Opportunities**
-Turbaned men, women in bright ghagras, weathered faces of camel herders—Rajasthan offers incredible portrait subjects (with permission!).
-
-**Dramatic Landscapes**
-Desert dunes, mirror-like lakes, rugged hills—diverse landscapes in close proximity.
-
-**Golden Light**
-The desert dust creates magical golden hour light that photographers dream of.
-
----
-
-## Best Photography Locations by City
-
-### Jaipur (The Pink City)
-
-**Sunrise Spots:**
-- Nahargarh Fort (city view)
-- Albert Hall Museum reflection
-- Jal Mahal (misty mornings)
-
-**Golden Hour (Sunset):**
-- Amer Fort (elephant path, main approach)
-- Hawa Mahal from café opposite
-- City Palace from rooftops
-
-**Architectural Details:**
-- Hawa Mahal's windows
-- City Palace doorways
-- Jantar Mantar instruments
-
-**Street Photography:**
-- Johari Bazaar (jewelry market)
-- Bapu Bazaar (textiles)
-- Old City pink streets
-
-### Jodhpur (The Blue City)
-
-**Must-Capture:**
-- Blue houses from Mehrangarh Fort
-- Mehrangarh Fort from Jaswant Thada
-- Step wells (Toorji Ka Jhalra)
-
-**Best Times:**
-- Sunrise: From fort looking at blue city
-- Sunset: From blue city looking at fort
-
-**Hidden Gems:**
-- Clock Tower market chaos
-- Backstreets of blue houses (Brahmpuri)
-- Flying fox over Mehrangarh (if you dare!)
-
-### Udaipur (City of Lakes)
-
-**Iconic Shots:**
-- Lake Palace from shore (dawn)
-- City Palace from boat
-- Jagdish Temple steps
-
-**Reflections:**
-- Lake Pichola morning calm
-- Fateh Sagar at sunset
-- Monsoon lake views
-
-**Romantic Frames:**
-- Rooftop cafes
-- Narrow old city lanes
-- Ghats at evening aarti
-
-### Jaisalmer (The Golden City)
-
-**Fort Photography:**
-- Exterior from Vyas Chhatri (golden hour)
-- Interior narrow lanes
-- Haveli balconies
-
-**Desert Shots:**
-- Sam Sand Dunes (sunrise essential)
-- Camel silhouettes
-- Star trails (minimal light pollution)
-
-**Unique Opportunities:**
-- Kuldhara ghost village
-- Patwon ki Haveli details
-- Desert under moonlight
-
----
-
-## Photography Itinerary (7 Days)
-
-### Day 1: Delhi to Jaipur
-- Afternoon: Arrive Jaipur
-- Sunset: Nahargarh Fort city view
-
-### Day 2: Jaipur Full Day
-- Sunrise: Jal Mahal
-- Morning: Amer Fort (8-11 AM light)
-- Evening: Hawa Mahal, City Palace
-
-### Day 3: Jaipur to Jodhpur
-- Morning: Jantar Mantar, markets
-- Drive to Jodhpur (330 km, 5-6 hrs)
-- Sunset: Mehrangarh from below
-
-### Day 4: Jodhpur Full Day
-- Sunrise: From Mehrangarh
-- Morning: Blue city walk
-- Evening: Clock tower area
-
-### Day 5: Jodhpur to Jaisalmer
-- Drive (285 km, 5 hrs)
-- Afternoon: Fort exploration
-- Sunset: Vyas Chhatri viewpoint
-
-### Day 6: Jaisalmer & Desert
-- Morning: Haveli details
-- Afternoon: Drive to Sam Dunes
-- Sunset & Night: Desert photography, stars
-
-### Day 7: Return Journey
-- Sunrise: Sam Dunes
-- Begin return (or extend trip)
-
----
-
-## Photography Tips for Rajasthan
-
-### Light Timing
-
-**Golden Hour:**
-- Sunrise: 6-7:30 AM (winter) | 5-6:30 AM (summer)
-- Sunset: 5:30-6:30 PM (winter) | 6:30-7:30 PM (summer)
-
-**Blue Hour:**
-- 20-30 minutes before sunrise / after sunset
-- Magical for fort illumination
-
-**Midday:**
-- Harsh light; use for interior shots with window light
-- Good for colorful markets where shadows add drama
-
-### Equipment Recommendations
-
-**Camera:**
-- DSLR or mirrorless with good dynamic range
-- Backup body if professional
-
-**Lenses:**
-- Wide angle (16-35mm) for architecture
-- Standard zoom (24-70mm) for versatility
-- Telephoto (70-200mm) for portraits, details
-- Fast prime (50mm f/1.8) for low light
-
-**Accessories:**
-- Tripod (essential for low light, long exposure)
-- Polarizing filter (reduce glare, enhance sky)
-- ND filters for water smoothing
-- Dust-resistant camera bag
-
-### Portrait Etiquette
-
-- Always ask permission before photographing people
-- A smile and "photo?" gesture works across languages
-- Show them the photo afterward—they love it!
-- Small tips (₹20-50) appreciated but not mandatory
-- Don't photograph anyone who refuses
-
----
-
-## Transportation for Photography Tours
-
-### Why Specialized Vehicle?
-
-Photography tours have unique needs:
-- Flexible timing (sunrise means early departure)
-- Multiple stops
-- Secure equipment storage
-- Waiting time at locations
-
-### Recommended Options
-
-**Solo/Couple Photographer:**
-- SUV with driver who understands photography needs
-- Ample boot space for equipment
-- AC for camera/lens storage
-
-**Photography Group:**
-- Tempo Traveller (12-17 seater)
-- Space for equipment bags
-- Workshop space during travel
-
-### Pricing (7-Day Rajasthan Circuit)
-
-| Vehicle | Rate | Best For |
-|---------|------|----------|
-| Sedan | ₹28,000 | Solo, light equipment |
-| SUV | ₹38,000 | Serious photographer, heavy gear |
-| Tempo 12-seater | ₹55,000 | Photography workshop groups |
-
-**Includes:** All km, driver, fuel, tolls, parking, driver allowance
-
----
-
-## FAQs
-
-**Q: Best season for Rajasthan photography?**
-A: October-February (pleasant weather, festivals, clear light). Avoid May-August (harsh heat, monsoon).
-
-**Q: Do I need permits for photography?**
-A: Personal photography is fine everywhere. Commercial/professional shoots at monuments may require ASI permit.
-
-**Q: Is it safe to carry expensive equipment?**
-A: Yes, but be sensible. Don't flaunt gear unnecessarily. Insure your equipment.
-
----
-
-## Book Photography Tour
-
-Capture Rajasthan's magic with transportation that understands photographer needs.
-
-**Contact:**
-- 📞 Call: 7668570551
-- 💬 WhatsApp: 7668570551
-- 🌐 trivenicabs.in
-
-*Triveni Cabs - Your mobile photography studio*
-    `,
-    faqs: [
-      { question: 'Best season for Rajasthan photography?', answer: 'October-February for pleasant weather, festivals, and clear light.' },
-      { question: 'Do I need permits for photography?', answer: 'Personal photography is fine. Commercial shoots at monuments may require ASI permit.' },
-      { question: 'Is it safe to carry expensive equipment?', answer: 'Yes, but be sensible. Don\'t flaunt gear unnecessarily and insure equipment.' }
+    excerpt: 'Plan your Rajasthan photography tour covering the best forts, palaces, desert, and portrait locations. Golden hour tips, equipment guide, and photo tour vehicle booking.',
+    relatedTours: [
+      { id: "rajasthan", name: "Rajasthan Circuit Tour", slug: "rajasthan-circuit", city: "delhi", price: "₹38,000" },
+      { id: "jaipur", name: "Jaipur Sightseeing", slug: "jaipur", city: "jaipur", price: "₹3,500" }
     ],
-    schema: { type: 'Article', articleType: 'TravelGuide' }
+    relatedDestinations: [
+      { name: "Jaipur", slug: "jaipur", type: "city" },
+      { name: "Jodhpur", slug: "jodhpur", type: "city" },
+      { name: "Udaipur", slug: "udaipur", type: "city" },
+      { name: "Jaisalmer", slug: "jaisalmer", type: "city" }
+    ],
+    primaryCTA: {
+      text: "Book Photography Tour",
+      url: "/sightseeing/rajasthan-tour",
+      description: "Capture Rajasthan's magic",
+      price: "Starting ₹28,000"
+    },
+    content: `<p><strong>Rajasthan</strong> is perhaps India's most photogenic state. Every element seems designed for the camera—magnificent forts silhouetted against orange sunsets, colorful turbans against desert backgrounds, ornate havelis with intricate details. Our <a href="/sightseeing/rajasthan-tour" class="text-blue-600 hover:underline font-semibold">Rajasthan tour packages</a> are perfect for photographers.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Rajasthan for Photography?</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Architectural Grandeur</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Forts, palaces, stepwells, havelis—centuries of royal patronage created some of the world's most photogenic architecture. From <a href="/sightseeing/jaipur-sightseeing" class="text-blue-600 hover:underline font-semibold">Jaipur's pink city</a> to Jodhpur's blue houses, every frame is a masterpiece.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Color Explosion</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Rajasthani culture celebrates color—in clothing, in buildings, in festivals. The visual contrast against the arid landscape is striking and unique to this region.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Golden Light</h3>
+<p class="text-gray-700 leading-relaxed mb-4">The desert dust creates magical golden hour light that photographers dream of. Sunrise and sunset in Rajasthan are spectacular.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Best Photography Locations by City</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Jaipur (The Pink City)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Sunrise Spots:</strong> Nahargarh Fort (city view), Albert Hall Museum reflection, Jal Mahal (misty mornings)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Golden Hour (Sunset):</strong> Amer Fort (elephant path), Hawa Mahal from café opposite, City Palace from rooftops</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Street Photography:</strong> Johari Bazaar (jewelry market), Bapu Bazaar (textiles), Old City pink streets</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Jodhpur (The Blue City)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Must-Capture:</strong> Blue houses from Mehrangarh Fort, Mehrangarh Fort from Jaswant Thada, Toorji Ka Jhalra stepwell</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Best Times:</strong> Sunrise from fort looking at blue city, sunset from blue city looking at fort</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Hidden Gems:</strong> Clock Tower market chaos, backstreets of Brahmpuri</p>
+<p class="text-gray-700 leading-relaxed mb-4">Our <a href="/sightseeing/jodhpur-sightseeing" class="text-blue-600 hover:underline font-semibold">Jodhpur sightseeing tour</a> covers all major photography spots.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Udaipur (City of Lakes)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Iconic Shots:</strong> Lake Palace from shore (dawn), City Palace from boat, Jagdish Temple steps</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Reflections:</strong> Lake Pichola morning calm, Fateh Sagar at sunset, monsoon lake views</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Romantic Frames:</strong> Rooftop cafes, narrow old city lanes, ghats at evening aarti</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Jaisalmer (The Golden City)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Fort Photography:</strong> Exterior from Vyas Chhatri (golden hour), interior narrow lanes, haveli balconies</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Desert Shots:</strong> Sam Sand Dunes (sunrise essential), camel silhouettes, star trails (minimal light pollution)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Unique:</strong> Kuldhara ghost village, Patwon ki Haveli details</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Photography Itinerary (7 Days)</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 1:</strong> Delhi to Jaipur - Afternoon arrival, sunset at Nahargarh Fort city view</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 2:</strong> Jaipur Full Day - Sunrise at Jal Mahal, morning at Amer Fort (8-11 AM light), evening at Hawa Mahal</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 3:</strong> Jaipur to Jodhpur - Morning at Jantar Mantar, drive to Jodhpur (330 km), sunset at Mehrangarh</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 4:</strong> Jodhpur Full Day - Sunrise from Mehrangarh, morning blue city walk, evening Clock Tower</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 5:</strong> Jodhpur to Jaisalmer - Drive (285 km), afternoon fort exploration, sunset at Vyas Chhatri</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 6:</strong> Jaisalmer & Desert - Morning haveli details, afternoon to Sam Dunes, sunset and night desert photography</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 7:</strong> Return Journey - Sunrise at Sam Dunes, begin return or extend trip</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Photography Tips for Rajasthan</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Light Timing</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Golden Hour:</strong> Sunrise 6-7:30 AM (winter) | 5-6:30 AM (summer) | Sunset 5:30-6:30 PM (winter) | 6:30-7:30 PM (summer)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Blue Hour:</strong> 20-30 minutes before sunrise/after sunset - magical for fort illumination</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Equipment Recommendations</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Wide angle (16-35mm) for architecture</li>
+<li class="ml-4">Standard zoom (24-70mm) for versatility</li>
+<li class="ml-4">Telephoto (70-200mm) for portraits and details</li>
+<li class="ml-4">Tripod (essential for low light, long exposure)</li>
+<li class="ml-4">Polarizing filter (reduce glare, enhance sky)</li>
+<li class="ml-4">Dust-resistant camera bag</li>
+</ul>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Portrait Etiquette</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Always ask permission before photographing people. A smile and "photo?" gesture works across languages. Show them the photo afterward—they love it! Small tips (₹20-50) are appreciated but not mandatory.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Transportation for Photography Tours</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Why Specialized Vehicle?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Photography tours have unique needs: flexible timing (sunrise means early departure), multiple stops, secure equipment storage, and waiting time at locations.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Pricing (7-Day Rajasthan Circuit)</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Rate</th><th class="border border-gray-300 px-4 py-2 text-left">Best For</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹28,000</td><td class="border border-gray-300 px-4 py-2">Solo, light equipment</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹38,000</td><td class="border border-gray-300 px-4 py-2">Serious photographer, heavy gear</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹55,000</td><td class="border border-gray-300 px-4 py-2">Photography workshop groups</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Includes:</strong> All km, driver, fuel, tolls, parking, driver allowance</p>
+<p class="text-gray-700 leading-relaxed mb-4">For group photography workshops, consider our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller rentals</a>.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Best season for Rajasthan photography?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">October-February offers pleasant weather, festivals, and clear light. Avoid May-August due to harsh heat and monsoon.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Do I need permits for photography?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Personal photography is fine everywhere. Commercial/professional shoots at monuments may require ASI permit.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is it safe to carry expensive equipment?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Yes, but be sensible. Don't flaunt gear unnecessarily. Insure your equipment before the trip.</p>
+
+<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
+<h3 class="text-xl font-bold mb-2">Book Your Photography Tour</h3>
+<p class="mb-4">Capture Rajasthan's magic with transportation that understands photographer needs.</p>
+<p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
+<a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
+</div>`,
+    date: "2026-01-15",
+    readTime: "13 min read",
+    image: "/images/packages/rajasthan.webp",
+    category: "Special Interest",
+    tags: ["photography", "rajasthan", "heritage", "portrait", "architecture", "desert", "jaipur", "jodhpur"],
+    keywords: ["rajasthan photography tour", "photo spots rajasthan", "photography trip india", "heritage photography"],
+    featured: true
   },
 
   {
     id: 'season-4',
     slug: 'food-trail-north-india-culinary-tour-guide-2026',
     title: 'Food Trail of North India: Complete Culinary Tour Guide 2026',
-    metaTitle: 'North India Food Tour 2026 | Culinary Trail Guide',
-    metaDescription: 'Explore North India food trail. Delhi street food, Lucknow kebabs, Amritsar dhaba, Rajasthan thali. Complete culinary tour guide with cab booking.',
-    category: 'special-interest',
-    subcategory: 'food-tourism',
-    author: 'Triveni Cabs Food Travel Expert',
-    publishDate: '2026-01-22',
-    readTime: '14 min read',
-    featured: true,
-    heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
-    heroAlt: 'North Indian food trail',
-    tags: ['food', 'culinary', 'street food', 'cuisine', 'food tour', 'north india'],
-    keywords: ['food tour india', 'culinary trail', 'north india food', 'street food tour'],
-    content: `
-## The Ultimate North India Food Trail
-
-Indian cuisine is incredibly diverse—each region, city, and sometimes street has its own specialties. A food-focused road trip through North India is a journey through flavors, techniques, and food cultures that have evolved over centuries. From the kebab-wallah of Lucknow to the dhaba owner on highways to the halwai making fresh jalebis at dawn—every meal tells a story.
-
-### Why a Food Road Trip?
-
-**Authentic Experiences**
-The best food is often in places tourists miss—roadside dhabas, small-town specialty shops, family-run establishments.
-
-**Flexibility**
-Unlike food tours by train/flight, a road trip lets you stop wherever food calls—smell something amazing? Pull over!
-
-**Variety**
-Cover multiple cuisines in one trip—Mughlai, Punjabi, Rajasthani, Awadhi, and more.
-
----
-
-## The Ultimate Food Trail Itinerary (8 Days)
-
-### Day 1: Delhi - Street Food Capital
-
-**Morning:**
-- Paranthe Wali Gali, Chandni Chowk (stuffed parathas since 1875)
-- Jalebi at Old Famous Jalebi Wala (fresh from kadhai)
-
-**Lunch:**
-- Karim's near Jama Masjid (Mughlai classics)
-- Try: Mutton Burra, Nahari, Seekh Kebab
-
-**Evening:**
-- Chaat crawl: Natraj Dahi Bhalle, Bikanervala
-- Bengali Market for chaat and sweets
-
-**Night:**
-- Giani's Kulfi Falooda
-- Moolchand Parathewala (late-night institution)
-
-### Day 2: Delhi to Amritsar (450 km)
-
-**Highway Food Stop: Murthal (50 km from Delhi)**
-- Sukhdev Dhaba or Amrik Sukhdev
-- Famous parathas with white butter
-- Best experienced at dawn/breakfast
-
-**Amritsar Evening:**
-- Kesar da Dhaba (dal makhani origin story)
-- Lawrence Road food walk
-- Beera Chicken House
-
-### Day 3: Amritsar - Punjabi Food Heaven
-
-**Morning:**
-- Langar at Golden Temple (world's largest free kitchen)
-- Kanha Sweets for fresh jalebis
-
-**Lunch:**
-- Bharawan da Dhaba (since 1912)
-- Must try: Amritsari Kulcha, Chole, Lassi
-
-**Evening:**
-- Brother's Dhaba (Amritsari Fish)
-- Makhan Fish Corner
-
-**Night:**
-- Gurdas Ram Jalebi Wala
-- Giani Tea Stall kulcha
-
-### Day 4: Amritsar to Chandigarh (230 km)
-
-**Highway Lunch: Moga or Ludhiana**
-- Highway dhabas with sarson ka saag (seasonal)
-
-**Chandigarh Evening:**
-- Sector 17 Golgappa stalls
-- Pal Dhaba (Butter Chicken)
-- Sector 22 pav bhaji
-
-### Day 5: Chandigarh to Lucknow (Via Agra)
-
-**This is a long drive (660 km) - break at Agra**
-
-**Agra Stop:**
-- Petha (Panchhi Petha for authentic sweet)
-- Bedai-Kachori breakfast
-- Mama Chicken for Mughlai
-
-**Lucknow Evening:**
-- Tunday Kababi (legendary galauti kebabs)
-- Prakash Kulfi
-
-### Day 6: Lucknow - Awadhi Cuisine Deep Dive
-
-**Morning:**
-- Rahim's Nahari Kulcha
-- Makkhan Malai (winter only, street vendors)
-
-**Lunch:**
-- Wahid's Biryani OR Idris Biryani
-- Awadhi Biryani differs from Hyderabadi!
-
-**Evening:**
-- Hazratganj walk for street food
-- Royal Cafe kulfi falooda
-- Basket Chaat
-
-**Night:**
-- Lucknow Chaat (different style from Delhi)
-
-### Day 7: Lucknow to Jaipur (580 km)
-
-**Highway Food:**
-- Stop at Agra again or highway dhabas
-
-**Jaipur Evening:**
-- Laxmi Mishtan Bhandar (pyaaz kachori)
-- Rawat Kachori (different style)
-
-### Day 8: Jaipur - Rajasthani Finale
-
-**Morning:**
-- Gopal Ji Ka Makhaniya Lassi
-- Samrat for breakfast
-
-**Lunch:**
-- Traditional Rajasthani Thali at Chokhi Dhani
-- Dal Bati Churma, Gatte ki Sabzi, Ker Sangri
-
-**Evening:**
-- Return to Delhi (280 km)
-- Optional stop at Neemrana
-
----
-
-## Regional Specialty Guide
-
-### Delhi
-| Dish | Where | Price Range |
-|------|-------|-------------|
-| Paranthe | Paranthe Wali Gali | ₹50-100 |
-| Chole Bhature | Sita Ram Diwan Chand | ₹80-120 |
-| Kebabs | Karim's | ₹150-300 |
-| Butter Chicken | Moti Mahal | ₹350-500 |
-| Chaat | Natraj, Bengali Sweet House | ₹50-100 |
-
-### Amritsar
-| Dish | Where | Price Range |
-|------|-------|-------------|
-| Amritsari Kulcha | Bharawan da Dhaba | ₹80-120 |
-| Fish Fry | Makhan Fish Corner | ₹200-350 |
-| Lassi | Ahuja/Gian Chand | ₹50-80 |
-| Langar | Golden Temple | Free |
-
-### Lucknow
-| Dish | Where | Price Range |
-|------|-------|-------------|
-| Galauti Kebab | Tunday Kababi | ₹100-150 |
-| Biryani | Wahid/Idris | ₹150-250 |
-| Basket Chaat | Hazratganj | ₹50-80 |
-| Sheermal | Rahim's | ₹40-60 |
-
-### Jaipur
-| Dish | Where | Price Range |
-|------|-------|-------------|
-| Pyaaz Kachori | Rawat/LMB | ₹30-50 |
-| Thali | Chokhi Dhani | ₹500-800 |
-| Lassi | Lassiwala (MI Road) | ₹40-70 |
-| Dal Bati | Hotel Natraj | ₹200-300 |
-
----
-
-## Food Tour Vehicle Tips
-
-**Why SUV for Food Tours?**
-- Comfortable after heavy meals!
-- AC preserves takeaway sweets
-- Space for food shopping
-- Driver can recommend local spots
-
-**Booking Consideration:**
-- Tell driver about food focus
-- Many drivers know hidden gems
-- Flexible schedule for food stops
-
-### Food Trail Package (8 Days)
-
-| Vehicle | Rate | Includes |
-|---------|------|----------|
-| Sedan | ₹45,000 | All km, fuel, tolls, driver |
-| SUV | ₹58,000 | All km, fuel, tolls, driver |
-
-**Food costs extra!** Budget ₹1,500-3,000/person/day for eating well.
-
----
-
-## FAQs
-
-**Q: Is street food safe to eat?**
-A: Generally yes, at popular/busy stalls. Eat where locals eat. Start with cooked food rather than raw items.
-
-**Q: Vegetarian food available?**
-A: Absolutely! India is vegetarian-friendly. Each region has vegetarian specialties.
-
-**Q: Best season for food tour?**
-A: Winter (October-March) for full range of seasonal dishes and comfortable eating.
-
----
-
-## Book Your Culinary Journey
-
-Eat your way through North India with comfortable transportation between food stops.
-
-**Contact:**
-- 📞 Call: 7668570551
-- 💬 WhatsApp: 7668570551
-- 🌐 trivenicabs.in
-
-*Triveni Cabs - Fueling your food adventures*
-    `,
-    faqs: [
-      { question: 'Is street food safe to eat?', answer: 'Generally yes, at popular/busy stalls. Eat where locals eat and start with cooked items.' },
-      { question: 'Vegetarian food available?', answer: 'Absolutely! India is vegetarian-friendly with regional specialties everywhere.' },
-      { question: 'Best season for food tour?', answer: 'Winter (October-March) for full range of seasonal dishes.' }
+    excerpt: 'Explore the ultimate North India food trail covering Delhi street food, Lucknow kebabs, Amritsar dhaba food, and Rajasthan thali. Complete culinary tour guide with cab booking.',
+    relatedTours: [
+      { id: "delhi", name: "Delhi Food Tour", slug: "delhi-food-walk", city: "delhi", price: "₹2,500" },
+      { id: "amritsar", name: "Amritsar Golden Temple Trip", slug: "amritsar", city: "delhi", price: "₹12,000" }
     ],
-    schema: { type: 'Article', articleType: 'TravelGuide' }
+    relatedDestinations: [
+      { name: "Delhi", slug: "delhi", type: "city" },
+      { name: "Lucknow", slug: "lucknow", type: "city" },
+      { name: "Amritsar", slug: "amritsar", type: "city" },
+      { name: "Jaipur", slug: "jaipur", type: "city" }
+    ],
+    primaryCTA: {
+      text: "Book Food Trail",
+      url: "/contact",
+      description: "Taste North India's best",
+      price: "Starting ₹45,000"
+    },
+    content: `<p>Indian cuisine is incredibly diverse—each region, city, and sometimes street has its own specialties. A <strong>food-focused road trip</strong> through North India is a journey through flavors and techniques that have evolved over centuries. Book your <a href="/contact" class="text-blue-600 hover:underline font-semibold">culinary tour</a> with flexible transportation.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why a Food Road Trip?</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Authentic Experiences:</strong> The best food is often in places tourists miss—roadside dhabas, small-town specialty shops, family-run establishments.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Flexibility:</strong> Unlike food tours by train/flight, a road trip lets you stop wherever food calls—smell something amazing? Pull over!</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Variety:</strong> Cover multiple cuisines in one trip—Mughlai, Punjabi, Rajasthani, Awadhi, and more.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">The Ultimate Food Trail Itinerary (8 Days)</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 1: Delhi - Street Food Capital</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Morning:</strong> Paranthe Wali Gali, Chandni Chowk (stuffed parathas since 1875), Jalebi at Old Famous Jalebi Wala</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Karim's near Jama Masjid (Mughlai classics) - Try Mutton Burra, Nahari, Seekh Kebab</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Chaat crawl at Natraj Dahi Bhalle, Bengali Market</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Night:</strong> Giani's Kulfi Falooda, Moolchand Parathewala</p>
+<p class="text-gray-700 leading-relaxed mb-4">Explore our <a href="/sightseeing/delhi-sightseeing" class="text-blue-600 hover:underline font-semibold">Delhi sightseeing packages</a> that include food walk options.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 2: Delhi to Amritsar (450 km)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Highway Stop - Murthal (50 km from Delhi):</strong> Sukhdev Dhaba or Amrik Sukhdev for famous parathas with white butter (best at dawn/breakfast)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Amritsar Evening:</strong> Kesar da Dhaba (dal makhani origin story), Lawrence Road food walk, Beera Chicken House</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 3: Amritsar - Punjabi Food Heaven</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Morning:</strong> Langar at Golden Temple (world's largest free kitchen), Kanha Sweets for fresh jalebis</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Bharawan da Dhaba (since 1912) - Must try: Amritsari Kulcha, Chole, Lassi</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Brother's Dhaba (Amritsari Fish), Makhan Fish Corner</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Night:</strong> Gurdas Ram Jalebi Wala, Giani Tea Stall kulcha</p>
+<p class="text-gray-700 leading-relaxed mb-4">Book our <a href="/sightseeing/amritsar-golden-temple" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple tour</a> with food exploration.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 4: Amritsar to Chandigarh (230 km)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Highway Lunch:</strong> Moga or Ludhiana dhabas with sarson ka saag (seasonal)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Chandigarh Evening:</strong> Sector 17 golgappa stalls, Pal Dhaba (Butter Chicken), Sector 22 pav bhaji</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 5: Chandigarh to Lucknow (Via Agra)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Long drive (660 km) - break at Agra:</strong> Petha (Panchhi Petha for authentic sweet), Bedai-Kachori breakfast, Mama Chicken for Mughlai</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Lucknow Evening:</strong> Tunday Kababi (legendary galauti kebabs), Prakash Kulfi</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 6: Lucknow - Awadhi Cuisine Deep Dive</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Morning:</strong> Rahim's Nahari Kulcha, Makkhan Malai (winter only, street vendors)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Wahid's Biryani OR Idris Biryani - Awadhi Biryani differs from Hyderabadi!</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Hazratganj walk, Royal Cafe kulfi falooda, Basket Chaat</p>
+<p class="text-gray-700 leading-relaxed mb-4">Our <a href="/sightseeing/lucknow-heritage-tour" class="text-blue-600 hover:underline font-semibold">Lucknow heritage tour</a> includes food exploration.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 7: Lucknow to Jaipur (580 km)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Highway Food:</strong> Stop at Agra again or highway dhabas</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Jaipur Evening:</strong> Laxmi Mishtan Bhandar (pyaaz kachori), Rawat Kachori (different style)</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 8: Jaipur - Rajasthani Finale</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Morning:</strong> Gopal Ji Ka Makhaniya Lassi, Samrat for breakfast</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Traditional Rajasthani Thali at Chokhi Dhani - Dal Bati Churma, Gatte ki Sabzi, Ker Sangri</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Return to Delhi (280 km), optional stop at Neemrana</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Regional Specialty Guide</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Delhi Must-Try</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Dish</th><th class="border border-gray-300 px-4 py-2 text-left">Where</th><th class="border border-gray-300 px-4 py-2 text-left">Price</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Paranthe</td><td class="border border-gray-300 px-4 py-2">Paranthe Wali Gali</td><td class="border border-gray-300 px-4 py-2">₹50-100</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Chole Bhature</td><td class="border border-gray-300 px-4 py-2">Sita Ram Diwan Chand</td><td class="border border-gray-300 px-4 py-2">₹80-120</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Kebabs</td><td class="border border-gray-300 px-4 py-2">Karim's</td><td class="border border-gray-300 px-4 py-2">₹150-300</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Butter Chicken</td><td class="border border-gray-300 px-4 py-2">Moti Mahal</td><td class="border border-gray-300 px-4 py-2">₹350-500</td></tr>
+</tbody>
+</table>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Amritsar Must-Try</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Dish</th><th class="border border-gray-300 px-4 py-2 text-left">Where</th><th class="border border-gray-300 px-4 py-2 text-left">Price</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Amritsari Kulcha</td><td class="border border-gray-300 px-4 py-2">Bharawan da Dhaba</td><td class="border border-gray-300 px-4 py-2">₹80-120</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Fish Fry</td><td class="border border-gray-300 px-4 py-2">Makhan Fish Corner</td><td class="border border-gray-300 px-4 py-2">₹200-350</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Lassi</td><td class="border border-gray-300 px-4 py-2">Ahuja/Gian Chand</td><td class="border border-gray-300 px-4 py-2">₹50-80</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Langar</td><td class="border border-gray-300 px-4 py-2">Golden Temple</td><td class="border border-gray-300 px-4 py-2">Free</td></tr>
+</tbody>
+</table>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Lucknow Must-Try</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Dish</th><th class="border border-gray-300 px-4 py-2 text-left">Where</th><th class="border border-gray-300 px-4 py-2 text-left">Price</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Galauti Kebab</td><td class="border border-gray-300 px-4 py-2">Tunday Kababi</td><td class="border border-gray-300 px-4 py-2">₹100-150</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Biryani</td><td class="border border-gray-300 px-4 py-2">Wahid/Idris</td><td class="border border-gray-300 px-4 py-2">₹150-250</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Basket Chaat</td><td class="border border-gray-300 px-4 py-2">Hazratganj</td><td class="border border-gray-300 px-4 py-2">₹50-80</td></tr>
+</tbody>
+</table>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Food Tour Vehicle Tips</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Why SUV for Food Tours?</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Comfortable after heavy meals!</li>
+<li class="ml-4">AC preserves takeaway sweets</li>
+<li class="ml-4">Space for food shopping</li>
+<li class="ml-4">Driver can recommend local spots</li>
+</ul>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Food Trail Package (8 Days)</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Rate</th><th class="border border-gray-300 px-4 py-2 text-left">Includes</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹45,000</td><td class="border border-gray-300 px-4 py-2">All km, fuel, tolls, driver</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹58,000</td><td class="border border-gray-300 px-4 py-2">All km, fuel, tolls, driver</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Food costs extra!</strong> Budget ₹1,500-3,000/person/day for eating well.</p>
+<p class="text-gray-700 leading-relaxed mb-4">For larger groups, check our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller options</a>.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is street food safe to eat?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Generally yes, at popular/busy stalls. Eat where locals eat. Start with cooked food rather than raw items.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Vegetarian food available?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Absolutely! India is vegetarian-friendly. Each region has amazing vegetarian specialties—dal makhani, chole bhature, rajasthani thali, and more.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Best season for food tour?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Winter (October-March) for full range of seasonal dishes and comfortable eating weather.</p>
+
+<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
+<h3 class="text-xl font-bold mb-2">Book Your Culinary Journey</h3>
+<p class="mb-4">Eat your way through North India with comfortable transportation between food stops.</p>
+<p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
+<a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
+</div>`,
+    date: "2026-01-15",
+    readTime: "14 min read",
+    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    category: "Special Interest",
+    tags: ["food", "culinary", "street food", "cuisine", "food tour", "north india", "delhi", "lucknow", "amritsar"],
+    keywords: ["food tour india", "culinary trail north india", "street food tour", "india food travel"],
+    featured: true
   },
 
   {
     id: 'season-5',
     slug: 'adventure-sports-uttarakhand-himachal-complete-guide-2026',
     title: 'Adventure Sports in Uttarakhand & Himachal: Complete Guide 2026',
-    metaTitle: 'Adventure Sports 2026 | Rafting, Paragliding, Skiing India',
-    metaDescription: 'Adventure sports in Uttarakhand & Himachal. River rafting Rishikesh, paragliding Bir, bungee, skiing. Complete guide with transport booking.',
-    category: 'adventure',
-    subcategory: 'sports',
-    author: 'Triveni Cabs Adventure Expert',
-    publishDate: '2026-01-22',
-    readTime: '13 min read',
-    featured: true,
-    heroImage: '/images/car/tempo-side.webp',
-    heroAlt: 'Adventure sports group transport',
-    tags: ['adventure', 'rafting', 'paragliding', 'bungee', 'skiing', 'uttarakhand', 'himachal'],
-    keywords: ['adventure sports india', 'rafting rishikesh', 'paragliding bir billing', 'bungee jumping'],
-    content: `
-## Himalayas: India's Adventure Sports Playground
-
-The Himalayan states of Uttarakhand and Himachal Pradesh have transformed into adventure sport hubs over the past two decades. From world-class river rafting to Asia's best paragliding, from India's highest bungee to professional skiing—these mountains offer adrenaline experiences that rival international destinations at a fraction of the cost.
-
-### Why the Himalayas for Adventure?
-
-**Diverse Terrain**
-Rivers for rafting, cliffs for jumping, valleys for flying, slopes for skiing—all within accessible distances.
-
-**Professional Infrastructure**
-International-standard operators, trained instructors, safety equipment meeting global norms.
-
-**Affordable**
-Adventure activities cost 50-80% less than similar experiences in Europe or Americas.
-
-**Scenic Settings**
-Your adventure backdrop is snow-capped peaks, pine forests, and sacred rivers—tough to beat anywhere.
-
----
-
-## Top Adventure Activities
-
-### River Rafting - Rishikesh
-
-**India's Rafting Capital**
-
-**Rapids:** Grade III-IV
-**Best Season:** September-November, March-June
-**River:** Ganges
-
-**Stretch Options:**
-| Route | Distance | Time | Rapids | Price |
-|-------|----------|------|--------|-------|
-| Brahmapuri-Rishikesh | 9 km | 1-1.5 hrs | Grade II-III | ₹600-800 |
-| Shivpuri-Rishikesh | 16 km | 2-3 hrs | Grade III-IV | ₹1,000-1,500 |
-| Marine Drive-Rishikesh | 24 km | 3-4 hrs | Grade III-IV | ₹1,500-2,000 |
-| Kaudiyala-Rishikesh | 36 km | 5-6 hrs | Grade IV | ₹2,500-3,000 |
-
-**Added Activities:**
-- Cliff jumping (included in longer trips)
-- Body surfing in calm sections
-- Beach volleyball at camp
-- Camping packages (overnight)
-
-**From Delhi:** 230 km | Sedan: ₹6,500 round trip (same day possible)
-
-### Paragliding - Bir Billing
-
-**World's Second-Best Paragliding Site**
-
-**Location:** Himachal Pradesh
-**Takeoff Altitude:** 2,400m (Billing)
-**Landing:** 1,525m (Bir)
-**Flight Time:** 15-25 minutes
-**Best Season:** March-June, September-November
-
-**Tandem Flight (No Experience Needed):**
-- Price: ₹2,500-3,500
-- Includes pilot, equipment, insurance
-- Photo/video extra (₹500-1,000)
-
-**Paragliding Courses:**
-| Course | Duration | Price |
-|--------|----------|-------|
-| P1-P2 Basic | 7-10 days | ₹25,000-35,000 |
-| P3 Intermediate | 5-7 days | ₹20,000-25,000 |
-
-**From Delhi:** 475 km | Sedan: ₹12,000 one way
-
-### Bungee Jumping - Rishikesh
-
-**India's Highest Bungee Jump**
-
-**Height:** 83 meters
-**Location:** Jumpin Heights, Mohan Chatti (15 km from Rishikesh)
-**Operator:** Jumpin Heights (only certified operator)
-
-**Pricing:**
-| Activity | Price |
-|----------|-------|
-| Bungee Jump | ₹3,550 |
-| Giant Swing | ₹3,550 |
-| Flying Fox | ₹2,050 |
-| Combo (any 2) | ₹5,500 |
-| All 3 | ₹7,500 |
-
-**Requirements:**
-- Age: 12-55 years
-- Weight: 35-110 kg
-- No heart conditions, pregnancy, or recent surgery
-
-**Booking:** Essential in season; walk-in possible off-season
-
-### Skiing - Auli/Gulmarg
-
-*Covered in separate winter destinations blog*
-
-**Quick Summary:**
-- Auli: Better road access, GMVN courses, beginner-friendly
-- Gulmarg: Higher quality snow, advanced slopes, requires flight to Srinagar
-
-### Camping & Trekking
-
-**Popular Options:**
-| Trek/Camp | Duration | Difficulty | Best Season |
-|-----------|----------|------------|-------------|
-| Triund (Dharamshala) | 1-2 days | Easy | Mar-Nov |
-| Kheerganga | 2-3 days | Moderate | Mar-Jun, Sep-Nov |
-| Chandrashila | 2-3 days | Moderate | Mar-Nov |
-| Kedarkantha | 4-6 days | Moderate | Dec-Apr (snow) |
-| Roopkund | 6-8 days | Difficult | May-Jun, Sep-Oct |
-
----
-
-## Adventure Trip Itinerary (5 Days)
-
-### Multi-Activity Adventure Trip
-
-**Day 1: Delhi to Rishikesh**
-- Drive: 230 km (5-6 hours)
-- Evening: Ganga Aarti
-- Night: Camp stay
-
-**Day 2: Rishikesh Adventures**
-- Morning: 16 km rafting (Shivpuri)
-- Afternoon: Bungee/Swing at Jumpin Heights
-- Evening: Cliff jumping at sunset
-- Night: Bonfire at camp
-
-**Day 3: Rishikesh to Bir Billing**
-- Drive: 410 km (10-11 hours)
-- Through scenic Kangra valley
-- Night: Stay in Bir
-
-**Day 4: Paragliding Day**
-- Morning: Tandem paragliding flight
-- Afternoon: Explore Bir village, Tibetan colony
-- Optional: Second flight or try landing course
-- Night: Stay in Bir
-
-**Day 5: Return to Delhi**
-- Morning: Leisure, local exploration
-- Afternoon: Drive back (475 km)
-- Arrive Delhi by night
-
----
-
-## Transportation for Adventure Trips
-
-### Vehicle Considerations
-
-**Why SUV Recommended:**
-- Rough roads to adventure sites
-- Ground clearance needed
-- Space for wet rafting gear
-- Comfortable after physical activities
-
-**Group Options:**
-- Tempo Traveller for 10-14 people
-- Multiple vehicles for larger groups
-
-### Pricing
-
-**Rishikesh Adventure (2 Days):**
-| Vehicle | Rate |
-|---------|------|
-| Sedan | ₹7,500 |
-| SUV | ₹10,000 |
-| Tempo 12-seater | ₹15,000 |
-
-**Bir Billing Trip (3 Days):**
-| Vehicle | Rate |
-|---------|------|
-| Sedan | ₹22,000 |
-| SUV | ₹28,000 |
-
-**Complete 5-Day Adventure Itinerary:**
-| Vehicle | Rate |
-|---------|------|
-| SUV | ₹38,000 |
-| Tempo 12-seater | ₹52,000 |
-
-*Activity costs extra*
-
----
-
-## Safety Tips
-
-### General
-- Book only with certified operators
-- Check equipment before use
-- Follow instructor guidance completely
-- Disclose any medical conditions
-- Don't attempt activities under influence
-
-### Rafting Specific
-- Wear life jacket and helmet always
-- Listen to raft guide commands
-- Hold paddle correctly
-- If you fall out, float feet-first downstream
-
-### Paragliding Specific
-- Run at takeoff when instructed
-- Follow pilot's body position instructions
-- Don't panic at turbulence (normal)
-- Lift legs for landing
-
-### Bungee Specific
-- Don't look down before jumping
-- Keep arms crossed on chest
-- Don't try to grab the cord
-
----
-
-## FAQs
-
-**Q: Can beginners do these activities?**
-A: Yes! Rafting (Grade II-III), tandem paragliding, and bungee are designed for first-timers with professional guidance.
-
-**Q: Are these activities safe?**
-A: With reputed operators, yes. India's adventure tourism is now well-regulated. Ask about operator certification and insurance.
-
-**Q: Best season for multi-adventure trip?**
-A: September-November (post-monsoon) and March-May (pre-monsoon). Rivers have good flow, paragliding conditions optimal.
-
-**Q: Can children participate?**
-A: Rafting: 12+ years. Paragliding: 4+ years (tandem). Bungee: 12+ years with weight limits.
-
----
-
-## Book Your Adventure
-
-Get to adventure spots comfortably and safely with reliable transportation.
-
-**Contact:**
-- 📞 Call: 7668570551
-- 💬 WhatsApp: 7668570551
-- 🌐 trivenicabs.in
-
-*Triveni Cabs - Your adventure awaits*
-    `,
-    faqs: [
-      { question: 'Can beginners do these activities?', answer: 'Yes! Rafting, tandem paragliding, and bungee are designed for first-timers.' },
-      { question: 'Are these activities safe?', answer: 'With reputed operators, yes. Indian adventure tourism is well-regulated now.' },
-      { question: 'Best season for multi-adventure trip?', answer: 'September-November and March-May when rivers flow well and paragliding conditions are optimal.' }
+    excerpt: 'Adventure sports guide for Uttarakhand and Himachal including river rafting in Rishikesh, paragliding in Bir Billing, bungee jumping, and skiing. Complete guide with transport booking.',
+    relatedTours: [
+      { id: "rishikesh", name: "Rishikesh Adventure Package", slug: "rishikesh-adventure", city: "delhi", price: "₹10,000" },
+      { id: "manali", name: "Manali Adventure Trip", slug: "manali-adventure", city: "delhi", price: "₹18,000" }
     ],
-    schema: { type: 'Article', articleType: 'TravelGuide' }
+    relatedDestinations: [
+      { name: "Rishikesh", slug: "rishikesh", type: "city" },
+      { name: "Bir Billing", slug: "bir-billing", type: "destination" },
+      { name: "Manali", slug: "manali", type: "city" }
+    ],
+    primaryCTA: {
+      text: "Book Adventure Trip",
+      url: "/contact",
+      description: "Experience Himalayan adventure",
+      price: "Starting ₹7,500"
+    },
+    content: `<p>The Himalayan states of <strong>Uttarakhand</strong> and <strong>Himachal Pradesh</strong> have transformed into adventure sport hubs. From world-class <a href="/sightseeing/rishikesh-adventure" class="text-blue-600 hover:underline font-semibold">river rafting in Rishikesh</a> to Asia's best paragliding, these mountains offer adrenaline experiences that rival international destinations at a fraction of the cost.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why the Himalayas for Adventure?</h2>
+
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4"><strong>Diverse Terrain:</strong> Rivers for rafting, cliffs for jumping, valleys for flying, slopes for skiing</li>
+<li class="ml-4"><strong>Professional Infrastructure:</strong> International-standard operators, trained instructors, global safety norms</li>
+<li class="ml-4"><strong>Affordable:</strong> Adventure activities cost 50-80% less than similar experiences in Europe or Americas</li>
+<li class="ml-4"><strong>Scenic Settings:</strong> Snow-capped peaks, pine forests, and sacred rivers as backdrop</li>
+</ul>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Top Adventure Activities</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">River Rafting - Rishikesh (India's Rafting Capital)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Rapids:</strong> Grade III-IV | <strong>Best Season:</strong> September-November, March-June | <strong>River:</strong> Ganges</p>
+
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Route</th><th class="border border-gray-300 px-4 py-2 text-left">Distance</th><th class="border border-gray-300 px-4 py-2 text-left">Rapids</th><th class="border border-gray-300 px-4 py-2 text-left">Price</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Brahmapuri-Rishikesh</td><td class="border border-gray-300 px-4 py-2">9 km</td><td class="border border-gray-300 px-4 py-2">Grade II-III</td><td class="border border-gray-300 px-4 py-2">₹600-800</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Shivpuri-Rishikesh</td><td class="border border-gray-300 px-4 py-2">16 km</td><td class="border border-gray-300 px-4 py-2">Grade III-IV</td><td class="border border-gray-300 px-4 py-2">₹1,000-1,500</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Marine Drive-Rishikesh</td><td class="border border-gray-300 px-4 py-2">24 km</td><td class="border border-gray-300 px-4 py-2">Grade III-IV</td><td class="border border-gray-300 px-4 py-2">₹1,500-2,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Kaudiyala-Rishikesh</td><td class="border border-gray-300 px-4 py-2">36 km</td><td class="border border-gray-300 px-4 py-2">Grade IV</td><td class="border border-gray-300 px-4 py-2">₹2,500-3,000</td></tr>
+</tbody>
+</table>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Added Activities:</strong> Cliff jumping, body surfing, beach volleyball, overnight camping packages</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> 230 km | Sedan: ₹6,500 round trip (same day possible)</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Paragliding - Bir Billing (World's Second-Best Site)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Location:</strong> Himachal Pradesh | <strong>Takeoff:</strong> 2,400m (Billing) | <strong>Landing:</strong> 1,525m (Bir)</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Flight Time:</strong> 15-25 minutes | <strong>Best Season:</strong> March-June, September-November</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Tandem Flight (No Experience Needed):</strong> ₹2,500-3,500 including pilot, equipment, insurance</p>
+
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Course</th><th class="border border-gray-300 px-4 py-2 text-left">Duration</th><th class="border border-gray-300 px-4 py-2 text-left">Price</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">P1-P2 Basic</td><td class="border border-gray-300 px-4 py-2">7-10 days</td><td class="border border-gray-300 px-4 py-2">₹25,000-35,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">P3 Intermediate</td><td class="border border-gray-300 px-4 py-2">5-7 days</td><td class="border border-gray-300 px-4 py-2">₹20,000-25,000</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> 475 km | Sedan: ₹12,000 one way</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Bungee Jumping - Rishikesh (India's Highest)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Height:</strong> 83 meters | <strong>Location:</strong> Jumpin Heights, Mohan Chatti (15 km from Rishikesh)</p>
+
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Activity</th><th class="border border-gray-300 px-4 py-2 text-left">Price</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Bungee Jump</td><td class="border border-gray-300 px-4 py-2">₹3,550</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Giant Swing</td><td class="border border-gray-300 px-4 py-2">₹3,550</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Flying Fox</td><td class="border border-gray-300 px-4 py-2">₹2,050</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Combo (any 2)</td><td class="border border-gray-300 px-4 py-2">₹5,500</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">All 3</td><td class="border border-gray-300 px-4 py-2">₹7,500</td></tr>
+</tbody>
+</table>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Requirements:</strong> Age 12-55 years, Weight 35-110 kg, no heart conditions or pregnancy</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Camping & Trekking</h3>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Trek/Camp</th><th class="border border-gray-300 px-4 py-2 text-left">Duration</th><th class="border border-gray-300 px-4 py-2 text-left">Difficulty</th><th class="border border-gray-300 px-4 py-2 text-left">Best Season</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Triund (Dharamshala)</td><td class="border border-gray-300 px-4 py-2">1-2 days</td><td class="border border-gray-300 px-4 py-2">Easy</td><td class="border border-gray-300 px-4 py-2">Mar-Nov</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Kheerganga</td><td class="border border-gray-300 px-4 py-2">2-3 days</td><td class="border border-gray-300 px-4 py-2">Moderate</td><td class="border border-gray-300 px-4 py-2">Mar-Jun, Sep-Nov</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Chandrashila</td><td class="border border-gray-300 px-4 py-2">2-3 days</td><td class="border border-gray-300 px-4 py-2">Moderate</td><td class="border border-gray-300 px-4 py-2">Mar-Nov</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Kedarkantha</td><td class="border border-gray-300 px-4 py-2">4-6 days</td><td class="border border-gray-300 px-4 py-2">Moderate</td><td class="border border-gray-300 px-4 py-2">Dec-Apr (snow)</td></tr>
+</tbody>
+</table>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Adventure Trip Itinerary (5 Days)</h2>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 1:</strong> Delhi to Rishikesh - Drive 230 km (5-6 hours), evening Ganga Aarti, night camp stay</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 2:</strong> Rishikesh Adventures - Morning 16 km rafting (Shivpuri), afternoon bungee/swing at Jumpin Heights, evening cliff jumping, night bonfire</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 3:</strong> Rishikesh to Bir Billing - Drive 410 km (10-11 hours) through scenic Kangra valley, night stay in Bir</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 4:</strong> Paragliding Day - Morning tandem flight, afternoon explore Bir village and Tibetan colony, optional second flight</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Day 5:</strong> Return to Delhi - Morning leisure, afternoon drive back (475 km)</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Transportation for Adventure Trips</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Why SUV Recommended?</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Rough roads to adventure sites</li>
+<li class="ml-4">Ground clearance needed</li>
+<li class="ml-4">Space for wet rafting gear</li>
+<li class="ml-4">Comfortable after physical activities</li>
+</ul>
+<p class="text-gray-700 leading-relaxed mb-4">For groups, our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller service</a> is perfect for 10-14 people.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Pricing</h3>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Rishikesh Adventure (2 Days):</strong></p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Rate</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹7,500</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹10,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹15,000</td></tr>
+</tbody>
+</table>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Complete 5-Day Adventure Itinerary:</strong></p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Rate</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹38,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹52,000</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4"><em>Activity costs extra</em></p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Safety Tips</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">General</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Book only with certified operators</li>
+<li class="ml-4">Check equipment before use</li>
+<li class="ml-4">Follow instructor guidance completely</li>
+<li class="ml-4">Disclose any medical conditions</li>
+<li class="ml-4">Don't attempt activities under influence</li>
+</ul>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Rafting Specific</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Wear life jacket and helmet always. Listen to raft guide commands. If you fall out, float feet-first downstream.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can beginners do these activities?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Yes! Rafting (Grade II-III), tandem paragliding, and bungee are designed for first-timers with professional guidance.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Are these activities safe?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">With reputed operators, yes. India's adventure tourism is now well-regulated. Always ask about operator certification and insurance.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Best season for multi-adventure trip?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">September-November (post-monsoon) and March-May (pre-monsoon) when rivers have good flow and paragliding conditions are optimal.</p>
+
+<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
+<h3 class="text-xl font-bold mb-2">Book Your Adventure</h3>
+<p class="mb-4">Get to adventure spots comfortably and safely with reliable transportation.</p>
+<p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
+<a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
+</div>`,
+    date: "2026-01-15",
+    readTime: "13 min read",
+    image: "/images/car/tempo-side.webp",
+    category: "Adventure",
+    tags: ["adventure", "rafting", "paragliding", "bungee", "skiing", "uttarakhand", "himachal", "rishikesh"],
+    keywords: ["adventure sports india", "rafting rishikesh", "paragliding bir billing", "bungee jumping india"],
+    featured: true
   },
 
   {
     id: 'season-6',
     slug: 'diwali-dussehra-festival-travel-guide-north-india-2026',
     title: 'Diwali & Dussehra Festival Travel Guide: North India 2026',
-    metaTitle: 'Diwali Dussehra Travel 2026 | Festival Season Trip Guide North India',
-    metaDescription: 'Best places to celebrate Diwali and Dussehra in North India. Varanasi, Jaipur, Kullu, Mysore. Festival travel tips, cab booking guide.',
-    category: 'seasonal',
-    subcategory: 'festival',
-    author: 'Triveni Cabs Festival Travel Expert',
-    publishDate: '2026-01-22',
-    readTime: '13 min read',
-    featured: true,
-    heroImage: '/images/sightseeing/Varanasi/Varanasi_hero_section.webp',
-    heroAlt: 'Diwali celebration in Varanasi',
-    tags: ['diwali', 'dussehra', 'festival', 'celebration', 'cultural', 'north india'],
-    keywords: ['diwali travel india', 'dussehra celebration', 'festival travel', 'varanasi diwali', 'kullu dussehra'],
-    content: `
-## Experience India's Greatest Festivals
-
-Dussehra and Diwali—the twin festivals that illuminate India's autumn—offer some of the most spectacular cultural experiences on the planet. While you can celebrate these festivals anywhere in India, certain destinations transform these occasions into extraordinary memories. Traveling to these special places during festival season is a bucket-list experience.
-
-### Why Festival Travel?
-
-**Cultural Immersion**
-Experiencing Diwali in Varanasi or Dussehra in Kullu is fundamentally different from celebrating at home. These destinations have unique traditions dating back centuries.
-
-**Spectacular Celebrations**
-The scale of celebration in certain cities—lakhs of diyas, massive Ravan effigies, ancient rituals—is impossible to replicate elsewhere.
-
-**Perfect Weather**
-October-November offers North India's best weather: pleasant days, cool nights, clear skies.
-
-**Off-Peak Travel**
-While destinations are festive, crowds are often local rather than tourist, offering authentic experiences.
-
----
-
-## Dussehra Destinations
-
-### 1. Kullu Dussehra (Himachal Pradesh)
-**Dates 2026:** October 2-9 (approximately)
-**Uniqueness:** 7-day festival, unlike 1-day elsewhere
-
-**What Makes It Special:**
-- Over 200 village deities gather in Kullu
-- International Dussehra, UNESCO heritage
-- Procession of Raghunath Ji deity
-- Folk dances, music, cultural programs
-- No Ravan burning—focuses on deity worship
-
-**Itinerary Suggestion (4 Days):**
-- Day 1: Delhi to Kullu (500 km, overnight/long drive)
-- Day 2: Main Dussehra procession, Dhaulpur ground celebrations
-- Day 3: Valley exploration, folk performances
-- Day 4: Return journey (or extend to Manali)
-
-**Transport:** SUV or Tempo (groups of 8-12)
-**From Delhi:** ₹24,000-32,000 (round trip, 4 days)
-
-### 2. Mysore Dussehra (Karnataka)
-**Dates 2026:** September 27 - October 6
-**Uniqueness:** Royal heritage celebration
-
-**What Makes It Special:**
-- Illuminated Mysore Palace (100,000 bulbs!)
-- Royal procession with decorated elephants
-- Jamboo Savari—golden howdah procession
-- Cultural performances at palace
-- 10-day state festival
-
-**From Delhi:** Fly to Bangalore, drive to Mysore (140 km)
-
-### 3. Varanasi Dussehra
-**Local Flavor:** Ramleela performances at various ghats
-**Uniqueness:** Month-long Ramleela culminating in Dussehra
-
-### 4. Delhi Dussehra
-**At Ramlila Maidan:** Largest Ravan effigies (100+ feet)
-**At Red Fort:** Traditional celebration attended by dignitaries
-**Convenience:** Multiple Ramlila grounds across city
-
----
-
-## Diwali Destinations
-
-### 1. Varanasi Diwali (Dev Deepawali)
-**Date 2026:** November 15 (Dev Deepawali, 15 days after Diwali)
-**Uniqueness:** A million diyas on 84 ghats
-
-**Why Most Spectacular:**
-- Dev Deepawali (Gods' Diwali) celebrated on Kartik Purnima
-- All 84 ghats illuminated with earthen lamps
-- Ganga Aarti on unprecedented scale
-- Fireworks over the river
-- Boat rides through lamp-lit ghats
-
-**Regular Diwali (November 1, 2026):**
-Also magnificent—temples decorated, ghats lit, evening aarti special
-
-**Itinerary (3 Days):**
-- Day 1: Delhi to Varanasi (800 km drive or flight + car)
-- Day 2: Ghat visits, evening Dev Deepawali celebration
-- Day 3: Morning boat ride, return journey
-
-**Transport:** Sedan or SUV for family
-**From Delhi by Road:** ₹22,000-28,000 (round trip, 3-4 days)
-
-### 2. Jaipur Diwali
-**Why Special:**
-- Nahargarh Fort illumination
-- City Palace celebrations
-- Johari Bazaar transforms into light wonderland
-- Pink City glows golden
-- Traditional Rajasthani sweets and customs
-
-**Combined Trip:** Jaipur (2 nights) + Pushkar (1 night for Kartik Purnima mela)
-
-### 3. Amritsar Diwali (Bandi Chhor Divas)
-**Why Special:**
-- Golden Temple illuminated spectacularly
-- Fireworks at Harmandir Sahib
-- Sikh festival of liberation
-- Combined Hindu-Sikh celebration
-- Langar feeds hundreds of thousands
-
-**From Delhi:** 450 km, ideal weekend trip
-
-### 4. Ayodhya Diwali
-**Why Special:**
-- Birthplace of Lord Ram
-- Saryu River aarti
-- City-wide lamp lighting
-- Growing as major Diwali destination
-
----
-
-## Festival Travel Planning
-
-### Book in Advance
-
-**What Gets Booked Out:**
-- Hotels in Varanasi (Dev Deepawali weekend)
-- Kullu hotels during Dussehra week
-- Transportation for long weekends
-- Flight prices spike 2x-3x
-
-**Booking Timeline:**
-- 2 months ahead: Flights, premium hotels
-- 1 month ahead: Transport, mid-range stays
-- 2 weeks ahead: Last-minute may still find options
-
-### Expect Crowds
-
-**Reality Check:**
-- Festival destinations are CROWDED
-- Traffic jams, parking issues
-- Long queues at popular spots
-- But this is part of the experience!
-
-**Strategy:**
-- Arrive early at major events
-- Use local guides who know shortcuts
-- Accept slower pace
-- Join the celebration, don't fight it
-
-### What to Pack
-
-**Festival Essentials:**
-- Traditional Indian clothes (fitting in enhances experience)
-- Comfortable footwear (lots of walking)
-- Light jacket (October-November evenings cool)
-- Camera with good low-light capability
-- Power bank (phone will die from photos)
-- Cash (small vendors, donations)
-- Wet wipes, hand sanitizer (street food!)
-
----
-
-## Transportation During Festivals
-
-### Why Book Dedicated Transport?
-
-**Public transport challenges:**
-- Trains fully booked months ahead
-- Buses uncomfortable during peak
-- Local taxis unavailable or overpriced
-- No flexibility for event timing
-
-**Our festival packages include:**
-- Vehicle waits while you celebrate
-- Early morning/late night flexibility
-- Multiple location visits
-- Safe return after fireworks
-
-### Festival Season Pricing
-
-**Note:** Festival weeks see 15-25% premium on regular rates due to demand. Book early to lock in rates.
-
-### Package Examples
-
-**Varanasi Dev Deepawali (3 Days):**
-| Vehicle | Regular | Festival |
-|---------|---------|----------|
-| Sedan | ₹22,000 | ₹26,000 |
-| SUV | ₹28,000 | ₹33,000 |
-
-**Kullu Dussehra (4 Days):**
-| Vehicle | Regular | Festival |
-|---------|---------|----------|
-| Sedan | ₹26,000 | ₹30,000 |
-| SUV | ₹32,000 | ₹38,000 |
-| Tempo 12-seater | ₹45,000 | ₹52,000 |
-
-**Jaipur Diwali (3 Days):**
-| Vehicle | Regular | Festival |
-|---------|---------|----------|
-| Sedan | ₹16,000 | ₹19,000 |
-| SUV | ₹21,000 | ₹25,000 |
-
----
-
-## Safety Tips for Festival Travel
-
-### Fireworks Safety
-- Keep safe distance from crackers
-- Protect ears (crowds + fireworks = loud)
-- Watch for falling debris
-- Keep children close
-
-### Crowd Management
-- Establish meeting points if separated
-- Keep phone charged
-- Avoid carrying valuables
-- Follow local instructions
-
-### Food & Health
-- Stay hydrated
-- Eat at busy stalls (higher turnover = fresher food)
-- Carry basic medicines
-- Know nearest hospital location
-
----
-
-## FAQs
-
-**Q: Is festival travel worth the crowds?**
-A: Absolutely! The energy, colors, and experiences during festivals are incomparable. The crowds are part of the celebration.
-
-**Q: Can I do Diwali and Dussehra both in one trip?**
-A: They're 20 days apart. You could do extended trip covering both, or choose one for deeper experience.
-
-**Q: Are children safe during festival crowds?**
-A: Yes, with precautions. Carry children if young, hold hands constantly, avoid most crowded moments.
-
-**Q: What if we miss Dev Deepawali but want Varanasi Diwali?**
-A: Regular Diwali in Varanasi is also special, just not as spectacular as Dev Deepawali. Still worth the trip!
-
----
-
-## Book Your Festival Journey
-
-Experience India's grandest celebrations with reliable transportation. Our drivers know the routes, the parking spots, and the best viewing points.
-
-**Contact:**
-- 📞 Call: 7668570551
-- 💬 WhatsApp: 7668570551
-- 🌐 trivenicabs.in
-
-*Triveni Cabs - Celebrating India's spirit with you*
-    `,
-    faqs: [
-      { question: 'Is festival travel worth the crowds?', answer: 'Absolutely! The energy and experiences during festivals are incomparable.' },
-      { question: 'Can I do Diwali and Dussehra both in one trip?', answer: 'They are 20 days apart. Extended trip or choose one for deeper experience.' },
-      { question: 'Are children safe during festival crowds?', answer: 'Yes, with precautions. Hold hands constantly, avoid most crowded moments.' }
+    excerpt: 'Best places to celebrate Diwali and Dussehra in North India including Varanasi, Jaipur, Kullu, and Amritsar. Festival travel tips and cab booking guide for 2026.',
+    relatedTours: [
+      { id: "varanasi", name: "Varanasi Spiritual Tour", slug: "varanasi", city: "delhi", price: "₹18,000" },
+      { id: "jaipur", name: "Jaipur Festival Tour", slug: "jaipur-diwali", city: "delhi", price: "₹12,000" }
     ],
-    schema: { type: 'Article', articleType: 'TravelGuide' }
+    relatedDestinations: [
+      { name: "Varanasi", slug: "varanasi", type: "city" },
+      { name: "Jaipur", slug: "jaipur", type: "city" },
+      { name: "Kullu", slug: "kullu", type: "city" },
+      { name: "Amritsar", slug: "amritsar", type: "city" }
+    ],
+    primaryCTA: {
+      text: "Book Festival Trip",
+      url: "/contact",
+      description: "Experience India's grandest celebrations",
+      price: "Starting ₹19,000"
+    },
+    content: `<p><strong>Dussehra</strong> and <strong>Diwali</strong>—the twin festivals that illuminate India's autumn—offer some of the most spectacular cultural experiences on the planet. Traveling to special destinations during festival season is a bucket-list experience. Book your <a href="/contact" class="text-blue-600 hover:underline font-semibold">festival travel</a> with reliable transportation.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Festival Travel?</h2>
+
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4"><strong>Cultural Immersion:</strong> Experiencing Diwali in Varanasi or Dussehra in Kullu is fundamentally different from celebrating at home</li>
+<li class="ml-4"><strong>Spectacular Celebrations:</strong> Lakhs of diyas, massive Ravan effigies, ancient rituals at unprecedented scale</li>
+<li class="ml-4"><strong>Perfect Weather:</strong> October-November offers North India's best weather—pleasant days, cool nights, clear skies</li>
+<li class="ml-4"><strong>Authentic Experiences:</strong> Crowds are often local rather than tourist, offering genuine cultural immersion</li>
+</ul>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Dussehra Destinations</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Kullu Dussehra (Himachal Pradesh)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Dates 2026:</strong> October 2-9 (approximately) | <strong>Uniqueness:</strong> 7-day festival, unlike 1-day elsewhere</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>What Makes It Special:</strong></p>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Over 200 village deities gather in Kullu</li>
+<li class="ml-4">International Dussehra, UNESCO heritage</li>
+<li class="ml-4">Procession of Raghunath Ji deity</li>
+<li class="ml-4">Folk dances, music, cultural programs</li>
+<li class="ml-4">No Ravan burning—focuses on deity worship</li>
+</ul>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Itinerary (4 Days):</strong> Delhi to Kullu (500 km), main Dussehra procession, valley exploration, return. Combine with <a href="/sightseeing/manali-tour" class="text-blue-600 hover:underline font-semibold">Manali trip</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Transport:</strong> SUV or Tempo | <strong>From Delhi:</strong> ₹24,000-32,000 (round trip, 4 days)</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Mysore Dussehra (Karnataka)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Dates 2026:</strong> September 27 - October 6 | <strong>Uniqueness:</strong> Royal heritage celebration</p>
+<p class="text-gray-700 leading-relaxed mb-4">Features 100,000 bulb illumination of Mysore Palace, royal procession with decorated elephants, and the famous Jamboo Savari golden howdah procession.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> Fly to Bangalore, drive to Mysore (140 km)</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Delhi Dussehra</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>At Ramlila Maidan:</strong> Largest Ravan effigies (100+ feet) | <strong>At Red Fort:</strong> Traditional celebration attended by dignitaries</p>
+<p class="text-gray-700 leading-relaxed mb-4">Multiple Ramlila grounds across the city make it convenient for visitors. Explore with our <a href="/sightseeing/delhi-sightseeing" class="text-blue-600 hover:underline font-semibold">Delhi sightseeing packages</a>.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Diwali Destinations</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Varanasi Diwali (Dev Deepawali)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Date 2026:</strong> November 15 (Dev Deepawali, 15 days after Diwali) | <strong>Uniqueness:</strong> A million diyas on 84 ghats</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Why Most Spectacular:</strong></p>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Dev Deepawali (Gods' Diwali) celebrated on Kartik Purnima</li>
+<li class="ml-4">All 84 ghats illuminated with earthen lamps</li>
+<li class="ml-4">Ganga Aarti on unprecedented scale</li>
+<li class="ml-4">Fireworks over the river</li>
+<li class="ml-4">Boat rides through lamp-lit ghats</li>
+</ul>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Regular Diwali (November 1, 2026):</strong> Also magnificent—temples decorated, ghats lit, evening aarti special</p>
+<p class="text-gray-700 leading-relaxed mb-4">Book our <a href="/sightseeing/varanasi-tour" class="text-blue-600 hover:underline font-semibold">Varanasi spiritual tour</a> for festival season.</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Itinerary (3 Days):</strong> Delhi to Varanasi (800 km drive or flight + car), ghat visits and Dev Deepawali celebration, morning boat ride and return</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Transport:</strong> Sedan or SUV | <strong>From Delhi by Road:</strong> ₹22,000-28,000 (3-4 days)</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Jaipur Diwali</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Why Special:</strong> Nahargarh Fort illumination, City Palace celebrations, Johari Bazaar transforms into light wonderland, Pink City glows golden</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Combined Trip:</strong> Jaipur (2 nights) + Pushkar (1 night for Kartik Purnima mela)</p>
+<p class="text-gray-700 leading-relaxed mb-4">Experience with our <a href="/sightseeing/jaipur-sightseeing" class="text-blue-600 hover:underline font-semibold">Jaipur sightseeing tour</a>.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Amritsar Diwali (Bandi Chhor Divas)</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Why Special:</strong></p>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Golden Temple illuminated spectacularly</li>
+<li class="ml-4">Fireworks at Harmandir Sahib</li>
+<li class="ml-4">Sikh festival of liberation</li>
+<li class="ml-4">Combined Hindu-Sikh celebration</li>
+<li class="ml-4">Langar feeds hundreds of thousands</li>
+</ul>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> 450 km, ideal weekend trip. Book our <a href="/sightseeing/amritsar-golden-temple" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple tour</a>.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">4. Ayodhya Diwali</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Why Special:</strong> Birthplace of Lord Ram, Saryu River aarti, city-wide lamp lighting. Growing as major Diwali destination especially after Ram Mandir inauguration.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Festival Travel Planning</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Book in Advance</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>What Gets Booked Out:</strong> Hotels in Varanasi (Dev Deepawali weekend), Kullu hotels during Dussehra week, transportation for long weekends, flight prices spike 2x-3x</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Booking Timeline:</strong></p>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">2 months ahead: Flights, premium hotels</li>
+<li class="ml-4">1 month ahead: Transport, mid-range stays</li>
+<li class="ml-4">2 weeks ahead: Last-minute may still find options</li>
+</ul>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Expect Crowds</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Reality Check:</strong> Festival destinations are CROWDED with traffic jams, parking issues, and long queues. But this is part of the experience!</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Strategy:</strong> Arrive early at major events, use local guides who know shortcuts, accept slower pace, join the celebration!</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">What to Pack</h3>
+<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
+<li class="ml-4">Traditional Indian clothes (fitting in enhances experience)</li>
+<li class="ml-4">Comfortable footwear (lots of walking)</li>
+<li class="ml-4">Light jacket (October-November evenings cool)</li>
+<li class="ml-4">Camera with good low-light capability</li>
+<li class="ml-4">Power bank and cash (small vendors, donations)</li>
+</ul>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Transportation During Festivals</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Why Book Dedicated Transport?</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Public transport challenges:</strong> Trains fully booked months ahead, buses uncomfortable during peak, local taxis unavailable or overpriced, no flexibility for event timing</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Our festival packages include:</strong> Vehicle waits while you celebrate, early morning/late night flexibility, multiple location visits, safe return after fireworks</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Festival Season Pricing</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Note:</strong> Festival weeks see 15-25% premium on regular rates due to demand. Book early to lock in rates.</p>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Varanasi Dev Deepawali (3 Days):</strong></p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Regular</th><th class="border border-gray-300 px-4 py-2 text-left">Festival</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹22,000</td><td class="border border-gray-300 px-4 py-2">₹26,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹28,000</td><td class="border border-gray-300 px-4 py-2">₹33,000</td></tr>
+</tbody>
+</table>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Kullu Dussehra (4 Days):</strong></p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Regular</th><th class="border border-gray-300 px-4 py-2 text-left">Festival</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹26,000</td><td class="border border-gray-300 px-4 py-2">₹30,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹32,000</td><td class="border border-gray-300 px-4 py-2">₹38,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹45,000</td><td class="border border-gray-300 px-4 py-2">₹52,000</td></tr>
+</tbody>
+</table>
+
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Jaipur Diwali (3 Days):</strong></p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Regular</th><th class="border border-gray-300 px-4 py-2 text-left">Festival</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹16,000</td><td class="border border-gray-300 px-4 py-2">₹19,000</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹21,000</td><td class="border border-gray-300 px-4 py-2">₹25,000</td></tr>
+</tbody>
+</table>
+
+<p class="text-gray-700 leading-relaxed mb-4">For large groups, our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo traveller service</a> is ideal.</p>
+
+<hr class="my-8 border-gray-200" />
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Safety Tips for Festival Travel</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Fireworks Safety</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Keep safe distance from crackers, protect ears (crowds + fireworks = loud), watch for falling debris, keep children close.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Crowd Management</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Establish meeting points if separated, keep phone charged, avoid carrying valuables, follow local instructions.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is festival travel worth the crowds?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Absolutely! The energy, colors, and experiences during festivals are incomparable. The crowds are part of the celebration atmosphere.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I do Diwali and Dussehra both in one trip?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">They're 20 days apart. You could do an extended trip covering both, or choose one for a deeper experience.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Are children safe during festival crowds?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Yes, with precautions. Carry children if young, hold hands constantly, and avoid the most crowded moments.</p>
+
+<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
+<h3 class="text-xl font-bold mb-2">Book Your Festival Journey</h3>
+<p class="mb-4">Experience India's grandest celebrations with reliable transportation. Our drivers know the routes, parking spots, and best viewing points.</p>
+<p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
+<a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
+</div>`,
+    date: "2026-01-15",
+    readTime: "13 min read",
+    image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
+    category: "Seasonal Travel",
+    tags: ["diwali", "dussehra", "festival", "celebration", "cultural", "north india", "varanasi", "jaipur", "kullu"],
+    keywords: ["diwali travel india", "dussehra celebration", "festival travel 2026", "varanasi diwali", "kullu dussehra"],
+    featured: true
   }
 ];
 

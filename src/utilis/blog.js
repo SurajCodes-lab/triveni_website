@@ -9,6 +9,7 @@ import busBlogs from './expandedBlogs';
 import tempoTravellerBlogs from './tempoTravellerBlogs';
 import additionalSightseeingBlogs from './additionalSightseeingBlogs';
 import seasonalBlogs from './seasonalBlogs';
+// Blog utilities no longer needed - all blogs now in correct format
 
 // Travel Blog Posts Data
 export const travelBlogPosts = [
@@ -4897,7 +4898,7 @@ export const blogPosts = [
   ...attractionBlogPosts,
   ...sightseeingBlogPosts,
   ...corporateTransportBlogs,
-  // New SEO-rich blogs (40 additional)
+  // New SEO-rich blogs (40 additional) - already in correct format with HTML content
   ...busBlogs,
   ...tempoTravellerBlogs,
   ...additionalSightseeingBlogs,
