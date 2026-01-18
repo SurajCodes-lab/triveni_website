@@ -24,14 +24,14 @@ export default function BlogClient() {
 
   // Category icons and colors
   const categoryStyles = {
-    'Destinations': { icon: Compass, color: 'from-emerald-500 to-teal-600' },
-    'Adventure': { icon: Mountain, color: 'from-orange-500 to-red-600' },
-    'Pilgrimage': { icon: Heart, color: 'from-purple-500 to-pink-600' },
-    'Heritage': { icon: Building, color: 'from-amber-500 to-orange-600' },
-    'Hill Station': { icon: Mountain, color: 'from-cyan-500 to-blue-600' },
-    'City Guide': { icon: Building, color: 'from-violet-500 to-purple-600' },
-    'Travel Tips': { icon: Plane, color: 'from-blue-500 to-indigo-600' },
-    'Wildlife': { icon: Camera, color: 'from-green-500 to-emerald-600' },
+    'Destinations': { icon: Compass, color: 'from-teal-500 to-emerald-600' },
+    'Adventure': { icon: Mountain, color: 'from-orange-500 to-amber-600' },
+    'Pilgrimage': { icon: Heart, color: 'from-rose-500 to-red-600' },
+    'Heritage': { icon: Building, color: 'from-amber-500 to-yellow-600' },
+    'Hill Station': { icon: Mountain, color: 'from-sky-500 to-blue-600' },
+    'City Guide': { icon: Building, color: 'from-slate-600 to-gray-700' },
+    'Travel Tips': { icon: Plane, color: 'from-blue-500 to-cyan-600' },
+    'Wildlife': { icon: Camera, color: 'from-green-500 to-lime-600' },
     'default': { icon: Sparkles, color: 'from-gray-500 to-gray-700' }
   };
 
@@ -40,31 +40,30 @@ export default function BlogClient() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section - Unique Wave Design */}
-      <section className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 overflow-hidden">
-        {/* Animated Shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-purple-400/20 rounded-full blur-3xl" />
-          <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-pink-400/10 rounded-full blur-2xl" />
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section with Background Image */}
+      <section className="relative h-[500px] md:h-[550px] overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/images/packages/rajasthan.webp"
+          alt="Travel Blog - Explore India"
+          fill
+          className="object-cover"
+          priority
+        />
 
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
-        <div className="relative max-w-7xl mx-auto px-4 pt-20 pb-32">
+        <div className="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center items-center text-center">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex justify-center mb-6"
+            className="mb-6"
           >
-            <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-medium border border-white/30">
-              <Sparkles className="w-4 h-4" />
+            <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-2.5 rounded-full text-white text-sm font-medium border border-white/20">
+              <Sparkles className="w-4 h-4 text-amber-400" />
               Travel Journal
             </span>
           </motion.div>
@@ -74,16 +73,16 @@ export default function BlogClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-center max-w-4xl mx-auto"
+            className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-              Stories That
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-pink-200 to-white">
-                Inspire Wanderlust
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Discover India&apos;s
+              <span className="block text-amber-400">
+                Hidden Treasures
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-              Explore travel guides, hidden gems, and insider tips to plan your perfect Indian adventure.
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              Travel guides, destination insights, and tips to plan your perfect journey across incredible India.
             </p>
           </motion.div>
 
@@ -92,30 +91,23 @@ export default function BlogClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex justify-center gap-8 mt-10"
+            className="flex justify-center gap-8 md:gap-12 mt-10 bg-white/10 backdrop-blur-md px-8 py-4 rounded-2xl border border-white/20"
           >
             <div className="text-center">
-              <div className="text-3xl font-black text-white">{allPosts.length}+</div>
-              <div className="text-white/60 text-sm">Articles</div>
+              <div className="text-2xl md:text-3xl font-bold text-white">{allPosts.length}+</div>
+              <div className="text-white/70 text-sm">Articles</div>
             </div>
-            <div className="w-px bg-white/20" />
+            <div className="w-px bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl font-black text-white">50+</div>
-              <div className="text-white/60 text-sm">Destinations</div>
+              <div className="text-2xl md:text-3xl font-bold text-white">50+</div>
+              <div className="text-white/70 text-sm">Destinations</div>
             </div>
-            <div className="w-px bg-white/20" />
+            <div className="w-px bg-white/30" />
             <div className="text-center">
-              <div className="text-3xl font-black text-white">{categories.length - 1}</div>
-              <div className="text-white/60 text-sm">Categories</div>
+              <div className="text-2xl md:text-3xl font-bold text-white">{categories.length - 1}</div>
+              <div className="text-white/70 text-sm">Categories</div>
             </div>
           </motion.div>
-        </div>
-
-        {/* Wave SVG */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" className="w-full">
-            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
-          </svg>
         </div>
       </section>
 
