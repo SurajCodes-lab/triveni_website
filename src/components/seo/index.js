@@ -29,3 +29,18 @@ export {
   NearbyDestinations,
   QuickLinksGrid
 } from './RelatedContent';
+
+// AEO Components - Answer Engine Optimization
+export {
+  default as DirectAnswer,
+  DirectAnswerBox,
+  QuickFacts
+} from './DirectAnswer';
+
+// GEO Components - Generative Engine Optimization
+export {
+  default as QuotableStats,
+  InlineStats,
+  StatCard,
+  defaultTriveniStats
+} from './QuotableStats';

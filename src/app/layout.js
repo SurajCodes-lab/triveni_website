@@ -537,6 +537,80 @@ export default function RootLayout({ children }) {
             })
           }}
         />
+
+        {/* HowTo Schema - For "How to Book" Rich Results (AEO) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "name": "How to Book a Cab with Triveni Cabs",
+              "description": "Step-by-step guide to book a reliable taxi with Triveni Cabs. Easy booking, transparent pricing, verified drivers.",
+              "totalTime": "PT5M",
+              "estimatedCost": {
+                "@type": "MonetaryAmount",
+                "currency": "INR",
+                "value": "1500-25000"
+              },
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "position": 1,
+                  "name": "Choose Your Service",
+                  "text": "Select your required service: outstation taxi, local rental, airport transfer, or sightseeing tour. Browse our website or call 7668570551."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 2,
+                  "name": "Select Vehicle Type",
+                  "text": "Choose from Sedan (4 seater, ₹11/km), SUV (6 seater, ₹15/km), or Tempo Traveller (12-17 seater, ₹24/km) based on your group size."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 3,
+                  "name": "Provide Trip Details",
+                  "text": "Enter your pickup location, drop location, date, time, and number of passengers. Mention any special requirements."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 4,
+                  "name": "Get Instant Quote",
+                  "text": "Receive transparent quote with all costs included - base fare, driver allowance, tolls, and taxes. No hidden charges."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 5,
+                  "name": "Confirm Booking",
+                  "text": "Confirm via WhatsApp, phone call (7668570551), or online form. Pay small advance to secure your vehicle."
+                },
+                {
+                  "@type": "HowToStep",
+                  "position": 6,
+                  "name": "Enjoy Your Trip",
+                  "text": "Verified driver arrives 15 minutes before pickup. Enjoy comfortable, hassle-free journey with 24/7 support."
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* Speakable Schema - For Voice Search (AEO) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Triveni Cabs - Car Rental & Taxi Service India",
+              "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": [".direct-answer", ".faq-answer", ".key-info", "article > p:first-of-type"]
+              },
+              "url": "https://www.trivenicabs.in"
+            })
+          }}
+        />
       </head>
       <body className="antialiased">
         {/* Optimized Google Analytics - Deferred Loading */}

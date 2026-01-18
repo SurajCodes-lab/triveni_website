@@ -72,15 +72,28 @@ export {
   getFAQsByPageType
 } from './faq-generator';
 
+// AEO/GEO Generators - Answer Engine & Generative Engine Optimization
+export {
+  generateSpeakableSchema,
+  generateBookingHowToSchema,
+  generateEntityDefinitionSchema,
+  generateQuotableStats,
+  generateDirectAnswerContent,
+  generateCitationBlocks,
+  generateCompleteAEOSchema
+} from './aeo-generators';
+
 // Default export with all modules
 import * as constants from './constants';
 import * as metadataFactory from './metadata-factory';
 import * as schemaGenerators from './schema-generators';
 import * as faqGenerator from './faq-generator';
+import * as aeoGenerators from './aeo-generators';
 
 export default {
   ...constants,
   ...metadataFactory,
   ...schemaGenerators,
-  ...faqGenerator
+  ...faqGenerator,
+  ...aeoGenerators
 };
