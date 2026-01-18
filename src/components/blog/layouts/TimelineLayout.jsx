@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Calendar, Clock, MapPin, History, Scroll,
-  ChevronRight, Phone, ChevronDown, Milestone
+  ChevronRight, Phone, ChevronDown, Milestone, Compass
 } from 'lucide-react';
 
 export default function TimelineLayout({ post, relatedLinks }) {
@@ -285,6 +285,75 @@ export default function TimelineLayout({ post, relatedLinks }) {
           </div>
         </div>
       )}
+
+      {/* Internal Links Section */}
+      <div className="bg-stone-100 py-16">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-stone-800 text-center mb-10">Explore More</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            {relatedLinks?.cityPage && (
+              <Link
+                href={relatedLinks.cityPage}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+              >
+                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
+                  <MapPin className="w-5 h-5 text-amber-600 group-hover:text-white" />
+                </div>
+                <h3 className="font-bold text-stone-800">Explore {post.city}</h3>
+                <p className="text-stone-500 text-sm mt-1">City Guide & Routes</p>
+              </Link>
+            )}
+            {relatedLinks?.airportService && (
+              <Link
+                href={relatedLinks.airportService}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+              >
+                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
+                  <span className="text-xl">✈️</span>
+                </div>
+                <h3 className="font-bold text-stone-800">Airport Transfer</h3>
+                <p className="text-stone-500 text-sm mt-1">Pickup & Drop Service</p>
+              </Link>
+            )}
+            <Link
+              href="/sightseeing"
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+            >
+              <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
+                <Compass className="w-5 h-5 text-amber-600 group-hover:text-white" />
+              </div>
+              <h3 className="font-bold text-stone-800">All Destinations</h3>
+              <p className="text-stone-500 text-sm mt-1">Browse All Tours</p>
+            </Link>
+            <Link
+              href="/blog"
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+            >
+              <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
+                <History className="w-5 h-5 text-amber-600 group-hover:text-white" />
+              </div>
+              <h3 className="font-bold text-stone-800">More Articles</h3>
+              <p className="text-stone-500 text-sm mt-1">Travel Guides & Tips</p>
+            </Link>
+          </div>
+
+          {/* Quick Links */}
+          {relatedLinks?.quickLinks?.length > 0 && (
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {relatedLinks.quickLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-stone-700 hover:bg-amber-50 hover:text-amber-700 transition-colors shadow-sm"
+                >
+                  <span>{link.icon}</span>
+                  <span className="font-medium text-sm">{link.text}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

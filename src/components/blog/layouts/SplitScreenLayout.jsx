@@ -310,6 +310,91 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
               </div>
             </div>
           )}
+
+          {/* Mobile Internal Links */}
+          <div className="mt-8 grid grid-cols-2 gap-3">
+            {relatedLinks?.cityPage && (
+              <Link href={relatedLinks.cityPage} className="bg-slate-800 p-4 rounded-xl text-center">
+                <span className="text-yellow-400 text-lg">📍</span>
+                <p className="text-white text-sm font-medium mt-1">Explore {post.city}</p>
+              </Link>
+            )}
+            {relatedLinks?.airportService && (
+              <Link href={relatedLinks.airportService} className="bg-slate-800 p-4 rounded-xl text-center">
+                <span className="text-yellow-400 text-lg">✈️</span>
+                <p className="text-white text-sm font-medium mt-1">Airport Transfer</p>
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Internal Links Section - Full Width */}
+      <div className="bg-slate-800 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-center text-white/60 text-xs uppercase tracking-widest mb-10">Explore More</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {relatedLinks?.cityPage && (
+              <Link
+                href={relatedLinks.cityPage}
+                className="bg-slate-700/50 p-6 rounded-2xl text-center hover:bg-slate-700 transition-all group border border-slate-600/30"
+              >
+                <div className="w-14 h-14 bg-yellow-400/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-400/20 transition-colors">
+                  <MapPin className="w-6 h-6 text-yellow-400" />
+                </div>
+                <h3 className="font-bold text-white">Explore {post.city}</h3>
+                <p className="text-slate-400 text-sm mt-1">City Guide & Routes</p>
+              </Link>
+            )}
+            {relatedLinks?.airportService && (
+              <Link
+                href={relatedLinks.airportService}
+                className="bg-slate-700/50 p-6 rounded-2xl text-center hover:bg-slate-700 transition-all group border border-slate-600/30"
+              >
+                <div className="w-14 h-14 bg-yellow-400/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-400/20 transition-colors">
+                  <span className="text-2xl">✈️</span>
+                </div>
+                <h3 className="font-bold text-white">Airport Transfer</h3>
+                <p className="text-slate-400 text-sm mt-1">Pickup & Drop</p>
+              </Link>
+            )}
+            <Link
+              href="/sightseeing"
+              className="bg-slate-700/50 p-6 rounded-2xl text-center hover:bg-slate-700 transition-all group border border-slate-600/30"
+            >
+              <div className="w-14 h-14 bg-yellow-400/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-400/20 transition-colors">
+                <Navigation className="w-6 h-6 text-yellow-400" />
+              </div>
+              <h3 className="font-bold text-white">All Destinations</h3>
+              <p className="text-slate-400 text-sm mt-1">Sightseeing Tours</p>
+            </Link>
+            <Link
+              href="/blog"
+              className="bg-slate-700/50 p-6 rounded-2xl text-center hover:bg-slate-700 transition-all group border border-slate-600/30"
+            >
+              <div className="w-14 h-14 bg-yellow-400/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-400/20 transition-colors">
+                <Camera className="w-6 h-6 text-yellow-400" />
+              </div>
+              <h3 className="font-bold text-white">More Articles</h3>
+              <p className="text-slate-400 text-sm mt-1">Travel Guides</p>
+            </Link>
+          </div>
+
+          {/* Quick Links */}
+          {relatedLinks?.quickLinks?.length > 0 && (
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {relatedLinks.quickLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="inline-flex items-center gap-2 bg-slate-700/50 px-5 py-2.5 rounded-full text-slate-300 hover:bg-yellow-400 hover:text-slate-900 transition-colors border border-slate-600/30"
+                >
+                  <span>{link.icon}</span>
+                  <span className="font-medium text-sm">{link.text}</span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

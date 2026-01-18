@@ -290,31 +290,58 @@ export default function FullWidthLayout({ post, relatedLinks }) {
 
       {/* Related Content */}
       <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-10">More to Explore</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/sightseeing" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-              <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                <Eye className="w-7 h-7 text-teal-600 group-hover:text-white" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {relatedLinks?.cityPage && (
+              <Link href={relatedLinks.cityPage} className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
+                <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
+                  <MapPin className="w-6 h-6 text-teal-600 group-hover:text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-1">Explore {post.city}</h3>
+                <p className="text-gray-500 text-sm">City Guide & Routes</p>
+              </Link>
+            )}
+            {relatedLinks?.airportService && (
+              <Link href={relatedLinks.airportService} className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
+                <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
+                  <span className="text-2xl group-hover:scale-110 transition-transform">✈️</span>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-1">Airport Transfer</h3>
+                <p className="text-gray-500 text-sm">Pickup & Drop</p>
+              </Link>
+            )}
+            <Link href="/sightseeing" className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
+                <Eye className="w-6 h-6 text-teal-600 group-hover:text-white" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Sightseeing Tours</h3>
-              <p className="text-gray-500 text-sm">Explore top destinations</p>
+              <h3 className="font-bold text-gray-900 mb-1">Sightseeing Tours</h3>
+              <p className="text-gray-500 text-sm">Explore destinations</p>
             </Link>
-            <Link href="/blog" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-              <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                <Bookmark className="w-7 h-7 text-teal-600 group-hover:text-white" />
+            <Link href="/blog" className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
+                <Bookmark className="w-6 h-6 text-teal-600 group-hover:text-white" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">More Articles</h3>
-              <p className="text-gray-500 text-sm">Read more travel guides</p>
-            </Link>
-            <Link href="/contact" className="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-              <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                <Phone className="w-7 h-7 text-teal-600 group-hover:text-white" />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Contact Us</h3>
-              <p className="text-gray-500 text-sm">Plan your trip today</p>
+              <h3 className="font-bold text-gray-900 mb-1">More Articles</h3>
+              <p className="text-gray-500 text-sm">Travel guides & tips</p>
             </Link>
           </div>
+
+          {/* Quick Links */}
+          {relatedLinks?.quickLinks?.length > 0 && (
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {relatedLinks.quickLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-gray-700 hover:bg-teal-50 hover:text-teal-700 transition-colors shadow-sm"
+                >
+                  <span>{link.icon}</span>
+                  <span className="font-medium text-sm">{link.text}</span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>

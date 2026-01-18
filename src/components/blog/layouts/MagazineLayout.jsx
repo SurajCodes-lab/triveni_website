@@ -276,6 +276,75 @@ export default function MagazineLayout({ post, relatedLinks }) {
           </div>
         </div>
       </div>
+
+      {/* Internal Links Section */}
+      <div className="bg-[#faf9f6] py-16">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 text-center mb-8">Explore More</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {relatedLinks?.cityPage && (
+              <Link
+                href={relatedLinks.cityPage}
+                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all text-center group border border-gray-100"
+              >
+                <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-rose-500 transition-colors">
+                  <MapPin className="w-5 h-5 text-rose-600 group-hover:text-white" />
+                </div>
+                <h3 className="font-semibold text-gray-900 text-sm">Explore {post.city}</h3>
+                <p className="text-gray-500 text-xs mt-1">City Guide</p>
+              </Link>
+            )}
+            {relatedLinks?.airportService && (
+              <Link
+                href={relatedLinks.airportService}
+                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all text-center group border border-gray-100"
+              >
+                <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-rose-500 transition-colors">
+                  <span className="text-xl">✈️</span>
+                </div>
+                <h3 className="font-semibold text-gray-900 text-sm">Airport Transfer</h3>
+                <p className="text-gray-500 text-xs mt-1">Pickup & Drop</p>
+              </Link>
+            )}
+            <Link
+              href="/sightseeing"
+              className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all text-center group border border-gray-100"
+            >
+              <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-rose-500 transition-colors">
+                <span className="text-xl">🗺️</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 text-sm">All Tours</h3>
+              <p className="text-gray-500 text-xs mt-1">Destinations</p>
+            </Link>
+            <Link
+              href="/blog"
+              className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all text-center group border border-gray-100"
+            >
+              <div className="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-rose-500 transition-colors">
+                <BookOpen className="w-5 h-5 text-rose-600 group-hover:text-white" />
+              </div>
+              <h3 className="font-semibold text-gray-900 text-sm">More Articles</h3>
+              <p className="text-gray-500 text-xs mt-1">Travel Guides</p>
+            </Link>
+          </div>
+
+          {/* Quick Links */}
+          {relatedLinks?.quickLinks?.length > 0 && (
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {relatedLinks.quickLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-gray-700 hover:bg-rose-50 hover:text-rose-700 transition-colors shadow-sm border border-gray-100"
+                >
+                  <span>{link.icon}</span>
+                  <span className="font-medium text-sm">{link.text}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
