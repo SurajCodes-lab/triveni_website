@@ -60,16 +60,16 @@ const Footer = () => {
     { name: "Lucknow", href: "/lucknow" }
   ];
 
-  // Popular Tours - Sightseeing links
+  // Popular Tours - Sightseeing links (matching actual slugs from sightseeingData.js)
   const popularTours = [
     { name: "Delhi City Tour", href: "/sightseeing/delhi-full-day-city-tour" },
-    { name: "Jaipur Full Day Tour", href: "/sightseeing/jaipur-full-day-tour" },
-    { name: "Agra Taj Mahal Tour", href: "/sightseeing/agra-same-day-tour" },
-    { name: "Golden Triangle Tour", href: "/tour-package/golden-triangle" },
-    { name: "Shimla Sightseeing", href: "/sightseeing/shimla-local-sightseeing" },
-    { name: "Manali Local Tour", href: "/sightseeing/manali-local-sightseeing" },
-    { name: "Amritsar Golden Temple", href: "/sightseeing/amritsar-golden-temple-tour" },
-    { name: "Haridwar Rishikesh Tour", href: "/sightseeing/haridwar-rishikesh-tour" }
+    { name: "Jaipur Full Day Tour", href: "/sightseeing/jaipur-full-day-city-tour" },
+    { name: "Agra Taj Mahal Tour", href: "/sightseeing/agra-full-day-city-tour" },
+    { name: "Golden Triangle Tour", href: "/sightseeing/golden-triangle-tour-3-days" },
+    { name: "Shimla Kufri Tour", href: "/sightseeing/shimla-kufri-tour" },
+    { name: "Manali Solang Tour", href: "/sightseeing/manali-solang-valley-tour" },
+    { name: "Amritsar Golden Temple", href: "/sightseeing/amritsar-golden-temple-wagah-border-tour" },
+    { name: "Haridwar Rishikesh Tour", href: "/sightseeing/haridwar-rishikesh-same-day" }
   ];
 
   const eventCities = [
