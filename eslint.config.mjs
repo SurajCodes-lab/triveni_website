@@ -12,6 +12,14 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals"),
   {
+    ignores: [
+      "src/utilis/additionalSightseeingBlogs.js",
+      "src/utilis/expandedBlogs.js",
+      "src/utilis/seasonalBlogs.js",
+      "src/utilis/tempoTravellerBlogs.js",
+    ],
+  },
+  {
     rules: {
       "@next/next/no-img-element": "off",
       "react-hooks/exhaustive-deps": "warn",

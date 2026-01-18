@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
-import { ArrowRight, MapPin, Clock, Calendar, Star, Compass, Plane, Camera, Mountain } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Calendar, Compass, Plane, Camera, Mountain, Star } from 'lucide-react';
 import BlogCard from '@/components/blog/BlogCard';
 import WhatsAppCTA from '@/components/blog/WhatsAppCTA';
 import { blogPosts } from '@/utilis/blog';
@@ -24,9 +24,7 @@ export default function BlogClient() {
     setMounted(true);
   }, []);
 
-  // Get featured post and regular posts
-  const featuredPost = blogPosts.find(post => post && post.featured);
-  const latestPosts = blogPosts.filter(post => post && post.title && post.slug).slice(0, 6);
+  // Get all posts
   const allPosts = blogPosts.filter(post => post && post.title && post.slug);
 
   // Category colors for tags
@@ -175,103 +173,6 @@ export default function BlogClient() {
           </motion.div>
         </div>
       </motion.section>
-
-      {/* Featured Article Section */}
-      {featuredPost && (
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4">
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 mb-10"
-            >
-              <div className="w-1 h-8 bg-gradient-to-b from-[#FACF2D] to-orange-500 rounded-full" />
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Featured Story</h2>
-            </motion.div>
-
-            {/* Featured Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <Link href={`/blog/${featuredPost.slug}`}>
-                <div className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <div className="grid md:grid-cols-2 gap-0">
-                    {/* Image Side */}
-                    <div className="relative h-72 md:h-[450px] overflow-hidden">
-                      {featuredPost.image ? (
-                        <Image
-                          src={featuredPost.image}
-                          alt={`${featuredPost.title} - Travel guide by Triveni Cabs`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover transform group-hover:scale-105 transition-transform duration-700"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                          <Camera className="w-20 h-20 text-white/50" />
-                        </div>
-                      )}
-
-                      {/* Featured Badge */}
-                      <div className="absolute top-6 left-6">
-                        <span className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                          <Star className="w-4 h-4" />
-                          Featured
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content Side */}
-                    <div className="p-8 md:p-12 flex flex-col justify-center">
-                      {/* Category */}
-                      <span className={`inline-flex w-fit px-4 py-1.5 rounded-full text-white text-sm font-medium bg-gradient-to-r ${getCategoryColor(featuredPost.category)} mb-6`}>
-                        {featuredPost.category}
-                      </span>
-
-                      {/* Title */}
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors leading-tight">
-                        {featuredPost.title}
-                      </h3>
-
-                      {/* Excerpt */}
-                      <p className="text-gray-600 text-lg leading-relaxed mb-6 line-clamp-3">
-                        {featuredPost.excerpt}
-                      </p>
-
-                      {/* Meta Info */}
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8">
-                        <span className="flex items-center gap-1.5">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(featuredPost.date).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric'
-                          })}
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                          <Clock className="w-4 h-4" />
-                          {featuredPost.readTime}
-                        </span>
-                      </div>
-
-                      {/* CTA Button */}
-                      <div className="flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-4 transition-all">
-                        Read Full Story
-                        <ArrowRight className="w-5 h-5" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-      )}
 
       {/* Latest Articles Section */}
       <section className="py-16 md:py-24 bg-white">
