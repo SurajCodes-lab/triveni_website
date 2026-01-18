@@ -1500,7 +1500,7 @@ Experience the thrill of skiing with the Himalayas as your backdrop. Gather your
     heroAlt: 'Tempo traveller for Nainital weekend trip',
     tags: ['nainital', 'weekend', 'hill station', 'uttarakhand', 'lake', 'tempo traveller'],
     keywords: ['nainital tempo traveller', 'delhi to nainital tempo', 'nainital weekend trip', 'nainital group tour'],
-    content: \`
+    content: `
 ## Nainital: The Perfect Weekend Escape
 
 Nainital, the "Lake District of India," is one of the most accessible hill stations from Delhi. Just 300 km away, this charming town wrapped around the emerald Naini Lake offers the perfect escape from city chaos. For groups of friends, families, or colleagues looking for a quick mountain getaway, a tempo traveller makes the journey as enjoyable as the destination.
@@ -1736,7 +1736,7 @@ Escape to the lakes with your friends! Our comfortable tempo travellers ensure y
 - 🌐 trivenicabs.in/tempo-traveller
 
 *Triveni Cabs - Your weekend adventure partner*
-    \`,
+    `,
     faqs: [
       { question: 'Can tempo enter Nainital town?', answer: 'Yes, but parking is at designated spots. Tempo waits while you explore on foot.' },
       { question: 'Is Friday night departure advisable?', answer: 'Yes, avoid traffic and arrive early. Push-back seats help with sleep.' },
@@ -1761,7 +1761,7 @@ Escape to the lakes with your friends! Our comfortable tempo travellers ensure y
     heroAlt: 'Tempo traveller for Jim Corbett safari',
     tags: ['jim corbett', 'tiger', 'safari', 'wildlife', 'national park', 'uttarakhand'],
     keywords: ['jim corbett tempo traveller', 'corbett safari trip', 'tiger safari delhi', 'wildlife tour india'],
-    content: \`
+    content: `
 ## Jim Corbett: India's First National Park & Tiger Territory
 
 Established in 1936, Jim Corbett National Park is not just India's first national park—it's one of the world's premier tiger reserves. Spread across 1,288 sq km of the Himalayan foothills, this park offers the thrill of spotting the magnificent Royal Bengal Tiger in its natural habitat.
@@ -1969,7 +1969,7 @@ Experience the thrill of India's tiger country with your friends. Our reliable t
 - 🌐 trivenicabs.in/tempo-traveller
 
 *Triveni Cabs - Your gateway to the wild*
-    \`,
+    `,
     faqs: [
       { question: 'Can tempo enter the national park?', answer: 'No. Tempo drops you at gate. Safari is in park vehicles. Tempo waits at resort.' },
       { question: 'What if we don\'t see a tiger?', answer: 'Wildlife sightings are never guaranteed. Enjoy elephants, deer, birds, and pristine nature.' },
@@ -1994,7 +1994,7 @@ Experience the thrill of India's tiger country with your friends. Our reliable t
     heroAlt: 'Tempo traveller Rajasthan tour',
     tags: ['rajasthan', 'heritage', 'jaipur', 'jodhpur', 'udaipur', 'jaisalmer', 'cultural tour'],
     keywords: ['rajasthan tempo traveller', 'rajasthan group tour', 'heritage tour india', 'rajasthan circuit'],
-    content: \`
+    content: `
 ## The Ultimate Rajasthan Heritage Circuit
 
 Rajasthan—the Land of Kings—is a journey through time. Magnificent forts rising from desert sands, ornate palaces reflecting in serene lakes, vibrant bazaars where centuries-old crafts thrive, and a hospitality so warm it turns strangers into family. This 10-day circuit covers the essential Rajasthan experience, from the pink hues of Jaipur to the golden sands of Jaisalmer.
@@ -2209,7 +2209,7 @@ Experience the royal heritage of Rajasthan with your group. Our experienced driv
 - 🌐 trivenicabs.in/tempo-traveller
 
 *Triveni Cabs - Your royal Rajasthan journey awaits*
-    \`,
+    `,
     faqs: [
       { question: 'Is 10 days enough for Rajasthan?', answer: 'For the major circuit, yes. Add 2-4 days for Pushkar, Bikaner, or Mount Abu.' },
       { question: 'Can we modify the itinerary?', answer: 'Absolutely! Add/remove destinations based on interest.' },
@@ -2234,7 +2234,7 @@ Experience the royal heritage of Rajasthan with your group. Our experienced driv
     heroAlt: 'Tempo traveller for bachelor party',
     tags: ['bachelor party', 'bachelorette', 'celebration', 'group trip', 'friends'],
     keywords: ['bachelor party tempo', 'bachelorette trip india', 'pre-wedding trip', 'friends group tour'],
-    content: \`
+    content: `
 ## The Ultimate Pre-Wedding Celebration Trip
 
 The wedding is planned, the venue is booked, and now it's time for that one last epic adventure with your crew before the big day! Bachelor and bachelorette trips have become an essential pre-wedding ritual—a chance to create unforgettable memories with your closest friends.
@@ -2441,7 +2441,7 @@ Give the bride or groom an unforgettable send-off! Our comfortable tempo travell
 - 🌐 trivenicabs.in/tempo-traveller
 
 *Triveni Cabs - Let the pre-wedding party begin!*
-    \`,
+    `,
     faqs: [
       { question: 'Can we play loud music in tempo?', answer: 'Yes! Keep volume considerate in residential areas. Highway = party time!' },
       { question: 'Can driver stay separate from the group?', answer: 'Absolutely. Driver stays separately. Your privacy is maintained.' },
@@ -2466,7 +2466,7 @@ Give the bride or groom an unforgettable send-off! Our comfortable tempo travell
     heroAlt: 'Corporate team tempo traveller outing',
     tags: ['corporate', 'team outing', 'offsite', 'team building', 'company trip'],
     keywords: ['corporate outing tempo', 'team offsite planning', 'company trip vehicle', 'corporate team building'],
-    content: \`
+    content: `
 ## The Complete Guide to Corporate Team Outings
 
 Team outings are no longer just perks—they're essential for employee engagement, team bonding, and organizational culture. A well-planned offsite can boost morale, improve collaboration, and create lasting memories that translate into better workplace relationships.
@@ -2694,7 +2694,7 @@ Make your next team outing memorable and hassle-free. We handle the transport, y
 - 🌐 trivenicabs.in/corporate
 
 *Triveni Cabs - Your corporate mobility partner*
-    \`,
+    `,
     faqs: [
       { question: 'Can we get multiple tempos for large teams?', answer: 'Yes! We arrange 2-4 coordinated vehicles for larger teams.' },
       { question: 'What about GST and corporate billing?', answer: 'Full GST-compliant invoices provided. Direct company billing available.' },
@@ -2719,7 +2719,7 @@ Make your next team outing memorable and hassle-free. We handle the transport, y
     heroAlt: 'Tempo traveller Haridwar Rishikesh tour',
     tags: ['haridwar', 'rishikesh', 'spiritual', 'pilgrimage', 'ganga', 'yoga', 'ashram'],
     keywords: ['haridwar rishikesh tempo', 'spiritual tour tempo traveller', 'ganga aarti trip', 'family pilgrimage'],
-    content: \`
+    content: `
 ## The Sacred Journey: Haridwar & Rishikesh
 
 The twin holy cities of Haridwar and Rishikesh represent the spiritual heart of India. Where the sacred Ganga descends from the Himalayas into the plains at Haridwar, and where sages have meditated for millennia in Rishikesh—these destinations offer divine experiences that touch the soul.
@@ -2976,7 +2976,7 @@ Embark on a soul-cleansing pilgrimage with your family. Our respectful drivers u
 - 🌐 trivenicabs.in/tempo-traveller
 
 *Triveni Cabs - Your spiritual journey companion*
-    \`,
+    `,
     faqs: [
       { question: 'Is the journey suitable for elderly people?', answer: 'Yes, tempo is comfortable for elders with additional stops and cable cars at temples.' },
       { question: 'Can we carry prasad and holy water back?', answer: 'Absolutely! Tempo has ample storage for prasad and holy items.' },

@@ -4,6 +4,11 @@ import { attractionBlogPosts } from './attractionBlogs';
 import { sightseeingBlogPosts } from './sightseeingBlogs';
 // Import corporate transport blog posts
 import { corporateTransportBlogs } from './corporateTransportBlogs';
+// Import new SEO-rich blogs (40 blogs total)
+import busBlogs from './expandedBlogs';
+import tempoTravellerBlogs from './tempoTravellerBlogs';
+import additionalSightseeingBlogs from './additionalSightseeingBlogs';
+import seasonalBlogs from './seasonalBlogs';
 
 // Travel Blog Posts Data
 export const travelBlogPosts = [
@@ -4886,12 +4891,17 @@ export const travelBlogPosts = [
   },
 ]
 
-// All blog posts combined (Travel + Attractions + Sightseeing + Corporate Transport)
+// All blog posts combined (Travel + Attractions + Sightseeing + Corporate Transport + New SEO Blogs)
 export const blogPosts = [
   ...travelBlogPosts,
   ...attractionBlogPosts,
   ...sightseeingBlogPosts,
-  ...corporateTransportBlogs
+  ...corporateTransportBlogs,
+  // New SEO-rich blogs (40 additional)
+  ...busBlogs,
+  ...tempoTravellerBlogs,
+  ...additionalSightseeingBlogs,
+  ...seasonalBlogs
 ];
 
 // Helper functions to filter blogs

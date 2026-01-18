@@ -1325,7 +1325,7 @@ Escape to the peaceful colonial hills with comfortable, reliable transportation.
     heroAlt: 'Chandigarh Rock Garden',
     tags: ['chandigarh', 'city beautiful', 'rock garden', 'sukhna lake', 'le corbusier'],
     keywords: ['chandigarh tour', 'rock garden', 'sukhna lake', 'chandigarh sightseeing', 'city beautiful'],
-    content: \`
+    content: `
 ## Chandigarh: India's First Planned City
 
 Chandigarh stands as a testament to visionary urban planning. Designed by Swiss-French architect Le Corbusier in the 1950s, this "City Beautiful" was India's first planned post-independence city. With its grid-pattern roads, abundant green spaces, and modernist architecture, Chandigarh offers a refreshingly organized urban experience unlike any other Indian city.
@@ -1523,7 +1523,7 @@ Experience India's most beautiful planned city with comfortable transportation.
 - 🌐 trivenicabs.in/sightseeing
 
 *Triveni Cabs - Your gateway to the City Beautiful*
-    \`,
+    `,
     faqs: [
       { question: 'Is Chandigarh worth a dedicated trip?', answer: 'For first-timers, a dedicated 2-day visit is worthwhile. For repeat visitors, a stopover en route to hills works well.' },
       { question: 'Is it safe for solo travelers/women?', answer: 'Chandigarh is consistently rated among India\'s safest cities.' },
@@ -1548,7 +1548,7 @@ Experience India's most beautiful planned city with comfortable transportation.
     heroAlt: 'Rishikesh Ganga Aarti and Ram Jhula',
     tags: ['rishikesh', 'yoga', 'adventure', 'rafting', 'spiritual', 'uttarakhand'],
     keywords: ['rishikesh tour', 'yoga capital india', 'river rafting rishikesh', 'ganga aarti', 'beatles ashram'],
-    content: \`
+    content: `
 ## Rishikesh: Where Spirituality Meets Adventure
 
 Rishikesh is a city of beautiful contradictions. In the morning, you might find yourself in deep meditation at an ancient ashram. By afternoon, you're screaming through Class IV rapids on the Ganges. Evening brings the mesmerizing Ganga Aarti, and night offers organic cafes serving global cuisine. This UNESCO-recognized "Yoga Capital of the World" has something for every type of traveler.
@@ -1774,7 +1774,7 @@ From spiritual retreats to adrenaline adventures, experience Rishikesh with reli
 - 🌐 trivenicabs.in/sightseeing
 
 *Triveni Cabs - Your journey to transformation starts here*
-    \`,
+    `,
     faqs: [
       { question: 'Is Rishikesh safe for solo female travelers?', answer: 'Yes, very safe with large international community and ashram culture.' },
       { question: 'Vegetarian only?', answer: 'Yes, Rishikesh is a vegetarian and alcohol-free city officially.' },
@@ -1799,7 +1799,7 @@ From spiritual retreats to adrenaline adventures, experience Rishikesh with reli
     heroAlt: 'Shimla Mall Road colonial architecture',
     tags: ['shimla', 'hill station', 'colonial', 'mall road', 'himachal', 'toy train'],
     keywords: ['shimla tour', 'mall road shimla', 'kufri snow', 'toy train shimla', 'shimla sightseeing'],
-    content: \`
+    content: `
 ## Shimla: The Queen of Hill Stations
 
 Shimla, once the summer capital of British India, continues to reign as one of North India's most beloved hill destinations. The colonial architecture, pleasant weather, panoramic Himalayan views, and nostalgic charm attract millions annually. From families seeking cool respite to honeymooners looking for romance, Shimla delivers.
@@ -2024,7 +2024,7 @@ Experience the Queen of Hill Stations with comfortable, reliable transportation.
 - 🌐 trivenicabs.in/sightseeing
 
 *Triveni Cabs - Your colonial hill station adventure awaits*
-    \`,
+    `,
     faqs: [
       { question: 'Is Mall Road vehicle-free?', answer: 'Yes, only pedestrians allowed from Scandal Point to the Ridge.' },
       { question: 'Is snow guaranteed in Shimla?', answer: 'No. Kufri has better chances. January-February is best window.' },
@@ -2049,7 +2049,7 @@ Experience the Queen of Hill Stations with comfortable, reliable transportation.
     heroAlt: 'Prem Mandir Vrindavan at night',
     tags: ['mathura', 'vrindavan', 'krishna', 'pilgrimage', 'temples', 'uttar pradesh'],
     keywords: ['mathura vrindavan tour', 'krishna janmabhoomi', 'banke bihari temple', 'prem mandir', 'braj darshan'],
-    content: \`
+    content: `
 ## Mathura-Vrindavan: The Divine Land of Krishna
 
 For devotees of Lord Krishna, Mathura and Vrindavan represent the most sacred pilgrimage in India. Mathura is where Krishna was born, and Vrindavan is where he spent his childhood, playing his divine flute and performing miraculous leelas. Every temple, ghat, and lane in these twin cities echoes with Krishna consciousness, attracting millions of pilgrims annually.
@@ -2282,7 +2282,7 @@ Experience the divine land of Krishna with comfortable, respectful transportatio
 - 🌐 trivenicabs.in/sightseeing
 
 *Triveni Cabs - Your sacred journey partner*
-    \`,
+    `,
     faqs: [
       { question: 'Can we do Mathura-Vrindavan in same day from Delhi?', answer: 'Possible but tiring. Recommend overnight for proper darshan.' },
       { question: 'Best time for Banke Bihari darshan?', answer: 'Early morning (8-9 AM) for less crowd.' },
@@ -2307,7 +2307,7 @@ Experience the divine land of Krishna with comfortable, respectful transportatio
     heroAlt: 'Manali Solang Valley snow adventure',
     tags: ['manali', 'solang valley', 'rohtang pass', 'adventure', 'himachal', 'mountains'],
     keywords: ['manali tour', 'solang valley', 'rohtang pass', 'old manali', 'manali adventure'],
-    content: \`
+    content: `
 ## Manali: The Valley of the Gods
 
 Manali has been drawing travelers for decades with its perfect blend of natural beauty, adventure activities, and laid-back mountain culture. Whether you're seeking snow-capped peaks, adrenaline-pumping activities, or peaceful riverside cafes, Manali delivers. The opening of Atal Tunnel has made it even more accessible and connected it to the mystical Lahaul-Spiti valley.
@@ -2562,7 +2562,7 @@ Experience the magic of Kullu-Manali valley with reliable mountain-experienced t
 - 🌐 trivenicabs.in/sightseeing
 
 *Triveni Cabs - Your Himalayan adventure partner*
-    \`,
+    `,
     faqs: [
       { question: 'Is Rohtang Pass worth the effort?', answer: 'If you\'ve never seen snow/high passes, absolutely yes.' },
       { question: 'Difference between Rohtang and Atal Tunnel trip?', answer: 'Rohtang is high-altitude snow. Atal Tunnel is engineering marvel + Lahaul views.' },
@@ -2587,7 +2587,7 @@ Experience the magic of Kullu-Manali valley with reliable mountain-experienced t
     heroAlt: 'Golden Temple Amritsar illuminated',
     tags: ['amritsar', 'golden temple', 'wagah border', 'punjab', 'sikh pilgrimage'],
     keywords: ['amritsar tour', 'golden temple', 'wagah border ceremony', 'jallianwala bagh', 'punjab tourism'],
-    content: \`
+    content: `
 ## Amritsar: Spirituality, History & Patriotism
 
 Amritsar is an experience that stirs the soul on multiple levels. The Golden Temple's divine beauty and langar tradition showcase humanity's spiritual best. Jallianwala Bagh reminds us of freedom's cost. Wagah Border ceremony ignites patriotic fervor. And through it all, Punjabi hospitality and legendary food make every moment memorable.
@@ -2811,7 +2811,7 @@ Experience spirituality, history, and food in one incredible journey.
 - 🌐 trivenicabs.in/sightseeing
 
 *Triveni Cabs - Your journey to the Golden City*
-    \`,
+    `,
     faqs: [
       { question: 'Can non-Sikhs visit Golden Temple?', answer: 'Absolutely! All faiths welcome. Cover head, remove shoes, and visit with respect.' },
       { question: 'Is Wagah Border ceremony worth the 28 km drive?', answer: 'Yes, it\'s a unique India experience. Patriotic fervor is infectious.' },

@@ -2315,7 +2315,7 @@ Let us handle the logistics while you focus on devotion. Our pilgrimage-experien
       { id: 'tips', title: 'Tips for Tour Organizers' },
       { id: 'faqs', title: 'FAQs' }
     ],
-    content: \`
+    content: `
 ## Why Bus Travel is Ideal for Senior Citizen Groups
 
 As retirement communities, senior associations, and family groups increasingly seek travel experiences for elderly members, bus tours have emerged as the preferred mode of group travel for seniors aged 60+. The combination of comfort, safety, camaraderie, and cost-effectiveness makes bus travel uniquely suited for senior travelers.
@@ -2891,7 +2891,7 @@ Give your senior community the gift of comfortable, safe, and memorable travel e
 - 🌐 Website: trivenicabs.in
 
 *Triveni Cabs - Making travel joyful for every age*
-    \`,
+    `,
     faqs: [
       { question: 'What age qualifies as senior citizen for your tours?', answer: 'We design tours for travelers aged 60+, though we accommodate 55+ groups with appropriate pacing.' },
       { question: 'Can seniors with mobility issues join bus tours?', answer: 'Yes, we accommodate wheelchairs, walking sticks, and slower walkers with appropriate bus selection and pacing.' },
@@ -2943,7 +2943,7 @@ Give your senior community the gift of comfortable, safe, and memorable travel e
       { id: 'tips', title: 'Travel Tips' },
       { id: 'faqs', title: 'FAQs' }
     ],
-    content: \`
+    content: `
 ## Why Choose Bus Travel to Dharamshala?
 
 Dharamshala, the "Little Lhasa" of India, perched in the Kangra Valley of Himachal Pradesh, has become one of North India's most spiritually significant and scenically stunning destinations. Home to His Holiness the Dalai Lama and the Tibetan Government-in-exile, Dharamshala and its upper town McLeodganj attract spiritual seekers, Buddhist pilgrims, backpackers, and nature lovers from around the world.
@@ -3462,7 +3462,7 @@ Experience the serenity of the Himalayas and the profound peace of Tibetan Buddh
 - 🌐 Website: trivenicabs.in
 
 *Triveni Cabs - Your gateway to spiritual Himalayas*
-    \`,
+    `,
     faqs: [
       { question: 'How long is the Delhi to Dharamshala bus journey?', answer: 'The journey takes 10-12 hours. Night journeys arrive by morning, day journeys by evening.' },
       { question: 'Can the bus go to McLeodganj directly?', answer: 'Yes, 35-seater buses navigate McLeodganj easily. Larger buses may drop at lower Dharamshala with short transfer.' },
@@ -3514,7 +3514,7 @@ Experience the serenity of the Himalayas and the profound peace of Tibetan Buddh
       { id: 'tips', title: 'Tips for Organizers' },
       { id: 'faqs', title: 'FAQs' }
     ],
-    content: \`
+    content: `
 ## Why Choose Bus Transport for College Events?
 
 College life peaks during fest season—cultural festivals, tech competitions, sports meets, and inter-college events that bring together students from across the region. Whether you're the organizing college receiving contingents or the participating team heading to another campus, transportation logistics can make or break the experience.
@@ -4064,7 +4064,7 @@ Make your college fest travel memorable, safe, and budget-friendly. Our experien
 *Special student group discounts available!*
 
 *Triveni Cabs - Powering college memories since 2015*
-    \`,
+    `,
     faqs: [
       { question: 'Can we book a one-way bus?', answer: 'Yes, one-way available though round-trip is more economical. One-way includes charge for empty return.' },
       { question: 'What if team size changes after booking?', answer: 'Minor changes are usually absorbed. Significant changes may incur charges or require additional vehicles.' },
@@ -4116,7 +4116,7 @@ Make your college fest travel memorable, safe, and budget-friendly. Our experien
       { id: 'tips', title: 'Wildlife Photography Tips' },
       { id: 'faqs', title: 'FAQs' }
     ],
-    content: \`
+    content: `
 ## Why Choose Bus Travel for Ranthambore Safari?
 
 Ranthambore National Park, one of India's premier tiger reserves, attracts wildlife enthusiasts from around the world. Located in Sawai Madhopur, Rajasthan, this former hunting ground of the Maharajas of Jaipur is now a sanctuary for the majestic Bengal tiger and diverse wildlife.
@@ -4663,7 +4663,7 @@ Experience the thrill of seeing Bengal tigers in their natural habitat. Our wild
 *Book Early - Premium Zones Fill Fast!*
 
 *Triveni Cabs - Bringing you closer to wildlife since 2015*
-    \`,
+    `,
     faqs: [
       { question: 'What are the chances of seeing a tiger?', answer: 'Peak season (Nov-Jan) offers 70-80% sighting probability per safari. Multiple safaris almost guarantee sightings.' },
       { question: 'Is the bus suitable for camera equipment?', answer: 'Yes, our buses have large secure luggage compartments, smooth suspension, and AC to protect equipment.' },

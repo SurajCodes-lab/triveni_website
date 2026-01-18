@@ -1267,7 +1267,7 @@ Get to adventure spots comfortably and safely with reliable transportation.
     heroAlt: 'Diwali celebration in Varanasi',
     tags: ['diwali', 'dussehra', 'festival', 'celebration', 'cultural', 'north india'],
     keywords: ['diwali travel india', 'dussehra celebration', 'festival travel', 'varanasi diwali', 'kullu dussehra'],
-    content: \`
+    content: `
 ## Experience India's Greatest Festivals
 
 Dussehra and Diwali—the twin festivals that illuminate India's autumn—offer some of the most spectacular cultural experiences on the planet. While you can celebrate these festivals anywhere in India, certain destinations transform these occasions into extraordinary memories. Traveling to these special places during festival season is a bucket-list experience.
@@ -1520,7 +1520,7 @@ Experience India's grandest celebrations with reliable transportation. Our drive
 - 🌐 trivenicabs.in
 
 *Triveni Cabs - Celebrating India's spirit with you*
-    \`,
+    `,
     faqs: [
       { question: 'Is festival travel worth the crowds?', answer: 'Absolutely! The energy and experiences during festivals are incomparable.' },
       { question: 'Can I do Diwali and Dussehra both in one trip?', answer: 'They are 20 days apart. Extended trip or choose one for deeper experience.' },
