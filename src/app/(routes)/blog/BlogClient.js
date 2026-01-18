@@ -75,7 +75,7 @@ export default function BlogClient() {
           >
             <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[0.95]">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white">
-                Discover India's
+                Discover India&apos;s
               </span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">
