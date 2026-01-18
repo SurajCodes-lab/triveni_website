@@ -3,7 +3,7 @@
 
 export const corporateTransportBlogs = [
   {
-    id: 101,
+    id: 501,
     slug: "ultimate-guide-corporate-transportation-services-india",
     title: "Ultimate Guide to Corporate Transportation Services in India 2026",
     excerpt: "Discover everything you need to know about corporate transportation services in India. From employee shuttles to executive travel, learn how dedicated corporate cab services can transform your business operations.",
@@ -125,7 +125,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Complete guide to corporate transportation in India. Learn about employee transport, executive car rental, fleet management, and how to choose the right corporate cab partner. Call 7668570551."
   },
   {
-    id: 102,
+    id: 502,
     slug: "wedding-transportation-complete-planning-guide",
     title: "Wedding Transportation: Complete Planning Guide for Your Big Day",
     excerpt: "Plan perfect wedding transportation with our comprehensive guide. From baraat cars to guest shuttles, discover how to manage wedding day logistics for a seamless celebration.",
@@ -257,7 +257,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Plan perfect wedding transportation with our guide. Baraat cars, guest shuttles, destination wedding transport. Professional service across Delhi, Jaipur, Udaipur. Call 7668570551."
   },
   {
-    id: 103,
+    id: 503,
     slug: "employee-transport-solutions-dedicated-services",
     title: "Employee Transport Solutions: Why Companies Are Switching to Dedicated Services",
     excerpt: "Discover why leading companies are moving from aggregators to dedicated employee transport services. Learn about cost benefits, safety improvements, and productivity gains from professional corporate transportation.",
@@ -380,7 +380,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Learn why leading companies prefer dedicated employee transport over aggregators. Cost savings, better safety, GST compliance, and improved employee satisfaction. Call 7668570551."
   },
   {
-    id: 104,
+    id: 504,
     slug: "corporate-cab-vs-ola-uber-detailed-comparison",
     title: "Corporate Cab vs Ola Uber: A Detailed Comparison for Businesses",
     excerpt: "Compare corporate cab services with Ola and Uber for business use. Understand pricing, reliability, safety, GST compliance, and why dedicated corporate transport delivers better value for companies.",
@@ -514,7 +514,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Compare corporate cab services with Ola and Uber for business use. Learn about pricing, reliability, safety, GST compliance, and why dedicated transport saves 15-25%. Call 7668570551."
   },
   {
-    id: 105,
+    id: 505,
     slug: "event-transportation-planning-comprehensive-guide",
     title: "Event Transportation Planning: A Comprehensive Guide for Organizers",
     excerpt: "Master event transportation logistics with our complete guide. From corporate conferences to music festivals, learn how to plan, execute, and manage transportation for any event size.",
@@ -648,7 +648,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Master event transportation with our complete guide. Corporate conferences, festivals, weddings - learn planning, execution, and management. Call 7668570551 for event transport quotes."
   },
   {
-    id: 106,
+    id: 506,
     slug: "night-shift-transport-solutions-it-bpo",
     title: "Night Shift Transport Solutions for IT and BPO Companies",
     excerpt: "Ensure safe and reliable transportation for night shift employees. Learn about specialized solutions for BPO, IT, and 24/7 operations including safety protocols, compliance, and best practices.",
@@ -774,7 +774,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Ensure safe night shift transportation for employees. GPS tracking, verified drivers, security guards, emergency systems. Specialized BPO and IT transport solutions. Call 7668570551."
   },
   {
-    id: 107,
+    id: 507,
     slug: "airport-corporate-transfer-executive-travel-guide",
     title: "Airport Corporate Transfer: Ensuring Punctual Executive Travel",
     excerpt: "Master airport transfers for business executives. Learn about flight tracking, meet-and-greet services, premium vehicles, and how to ensure seamless airport transportation for corporate travelers.",
@@ -887,7 +887,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Ensure punctual executive airport transfers with flight tracking, meet-and-greet, premium vehicles. Professional corporate airport service across India. Call 7668570551."
   },
   {
-    id: 108,
+    id: 508,
     slug: "fleet-management-solutions-modern-businesses",
     title: "Fleet Management Solutions for Modern Businesses",
     excerpt: "Discover comprehensive fleet management for corporate transportation. Learn about vehicle allocation, driver management, GPS tracking, maintenance scheduling, and optimizing your company's transportation fleet.",
@@ -991,7 +991,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Comprehensive fleet management for corporate transportation. Vehicle allocation, driver management, GPS tracking, maintenance scheduling. Call 7668570551."
   },
   {
-    id: 109,
+    id: 509,
     slug: "corporate-transport-cost-savings-strategies",
     title: "How Corporate Transportation Reduces Operational Costs",
     excerpt: "Discover proven strategies for reducing corporate transportation costs. Learn about route optimization, GST benefits, volume discounts, and how dedicated transport delivers 15-25% savings.",
@@ -1092,7 +1092,7 @@ export const corporateTransportBlogs = [
     metaDescription: "Proven strategies for reducing corporate transportation costs by 15-25%. Route optimization, GST benefits, volume discounts. Call 7668570551."
   },
   {
-    id: 110,
+    id: 510,
     slug: "choosing-right-corporate-cab-partner",
     title: "Choosing the Right Corporate Cab Partner: Key Factors to Consider",
     excerpt: "Select the best corporate transportation partner for your business. Evaluate fleet quality, driver standards, technology, pricing, safety protocols, and service reliability.",
