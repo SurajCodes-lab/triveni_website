@@ -15282,8 +15282,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather). Girnar pilgrimage best during Kartik Purnima (Nov). Avoid summer (April-June) heat.",
       difficulty: "Moderate to Challenging (Girnar climb is strenuous, 10,000 steps over 5-7 hours)",
       category: "Heritage, Spiritual & Wildlife",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Junagadh/Uperkot_Fort.jpg",
+      images: [
+        "/images/sightseeing/Junagadh/Uperkot_Fort.jpg",
+        "/images/sightseeing/Junagadh/Girnar_Hill.jpg",
+        "/images/sightseeing/Junagadh/Mahabat_Maqbara.jpg",
+        "/images/sightseeing/Junagadh/Buddhist_Caves.jpg"
+      ],
       tips: [
         "Girnar climb is VERY strenuous - 10,000 steps (16 km round trip), 5-7 hours",
         "Start Girnar ascent by 5-6 AM to avoid heat and complete before afternoon",
@@ -15583,8 +15588,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant beach weather). Avoid monsoon (June-September). Mahashivratri at Somnath is special but very crowded.",
       difficulty: "Easy (mostly temple visits and beach relaxation)",
       category: "Spiritual, Beach & Heritage",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Somnath_Diu/Somnath_Temple.jpg",
+      images: [
+        "/images/sightseeing/Somnath_Diu/Somnath_Temple.jpg",
+        "/images/sightseeing/Somnath_Diu/Diu_Fort.jpg",
+        "/images/sightseeing/Somnath_Diu/Nagoa_Beach.jpg",
+        "/images/sightseeing/Somnath_Diu/Gangeshwar_Temple.jpg"
+      ],
       tips: [
         "Book Somnath hotel near temple for easy aarti and show access",
         "Sound & Light Show at Somnath is excellent - highly recommended (₹50-100)",
@@ -15814,8 +15824,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant winter weather), avoid summer heat (April-June)",
       difficulty: "Easy to Moderate",
       category: "Heritage & Desert Culture",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg",
+      images: [
+        "/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg",
+        "/images/sightseeing/Jaisalmer/Patwon_Ki_Haveli.jpg",
+        "/images/sightseeing/Jaisalmer/Sam_Sand_Dunes.jpg",
+        "/images/sightseeing/Jaisalmer/Gadisar_Lake.jpg",
+        "/images/sightseeing/Jaisalmer/Desert_Safari.jpg"
+      ],
       tips: [
         "Start early to avoid midday desert heat",
         "Wear comfortable walking shoes for fort exploration",
