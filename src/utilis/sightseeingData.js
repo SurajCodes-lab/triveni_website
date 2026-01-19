@@ -10990,7 +10990,12 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging",
       category: "Adventure & Spiritual",
       heroImage: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
+        "/images/sightseeing/Rishikesh/River_Rafting.jpg",
+        "/images/sightseeing/Rishikesh/Ram_Jhula.jpg",
+        "/images/sightseeing/Rishikesh/Triveni_Ghat.jpg"
+      ],
       tips: [
         "Book rafting and bungee in advance",
         "Carry quick-dry clothes for rafting",
@@ -11213,7 +11218,10 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging (long mountain drives, high altitude 2500-3000m, winter snow conditions)",
       category: "Adventure, Nature & Hill Station",
       heroImage: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
+        "/images/sightseeing/Dehradun/Forest_Research_Institute.jpg"
+      ],
       tips: [
         "Road journey is long and winding - prone to motion sickness should take precautions",
         "High altitude (2500-3000m) - acclimatize properly, avoid sudden exertion",
@@ -12059,7 +12067,11 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (temple trek requires fitness)",
       category: "Hill Station",
       heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Dehradun/Robbers_Cave.jpg",
+        "/images/sightseeing/Dehradun/Sahastradhara.jpg",
+        "/images/sightseeing/Dehradun/Mindrolling_Monastery.jpg"
+      ],
       tips: [
         "Surkanda Temple trek requires moderate fitness - wear comfortable shoes",
         "Carry warm clothes as Dhanaulti is cooler than Dehradun",
@@ -12316,7 +12328,10 @@ export const sightseeingTours = {
       difficulty: "Moderate (requires acclimatization to altitude)",
       category: "Adventure & Nature",
       heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Dehradun/Forest_Research_Institute.jpg",
+        "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg"
+      ],
       tips: [
         "Book Auli accommodation well in advance during ski season",
         "Carry warm winter clothing even in spring/summer",
@@ -16369,7 +16384,12 @@ export const sightseeingTours = {
       difficulty: "Easy to Moderate (high altitude acclimatization needed)",
       category: "Adventure & Nature",
       heroImage: "/images/sightseeing/Gulmarg/Gulmarg_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Gulmarg/Gondola_Cable_Car.jpg",
+        "/images/sightseeing/Gulmarg/Skiing_Slopes.jpg",
+        "/images/sightseeing/Gulmarg/Golf_Course.jpg",
+        "/images/sightseeing/Gulmarg/Alpine_Meadows.jpg"
+      ],
       tips: [
         "Book Gondola tickets online in advance - they sell out quickly in peak season",
         "Tatkal tickets available at 5 PM daily for next day (limited quantity)",
@@ -18710,7 +18730,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Heritage",
       heroImage: "/images/sightseeing/Bodh_Gaya/Bhod_gaya_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Bodh_Gaya/Mahabodhi_Temple.jpg",
+        "/images/sightseeing/Bodh_Gaya/Bodhi_Tree.jpg",
+        "/images/sightseeing/Bodh_Gaya/Great_Buddha_Statue.jpg",
+        "/images/sightseeing/Bodh_Gaya/Thai_Monastery.jpg"
+      ],
       tips: [
         "Dress modestly - shoulders and knees covered at religious sites",
         "Remove shoes before entering Mahabodhi Temple complex",
@@ -18932,7 +18957,12 @@ export const sightseeingTours = {
       difficulty: "Moderate to Challenging (high altitude, trekking required)",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Char_Dham/Chardham_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Char_Dham/Badrinath_Temple.jpg",
+        "/images/sightseeing/Char_Dham/Kedarnath_Temple.jpg",
+        "/images/sightseeing/Char_Dham/Gangotri_Temple.jpg",
+        "/images/sightseeing/Char_Dham/Yamunotri_Temple.jpg"
+      ],
       tips: [
         "Book accommodation well in advance during peak season (May-June)",
         "Carry warm clothing as temperature drops significantly at night",
