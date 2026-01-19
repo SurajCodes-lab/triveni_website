@@ -2565,7 +2565,11 @@ export const sightseeingTours = {
       difficulty: "Moderate (long drive, temple queues, minimal walking)",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Khatu_Shyam/khtau_shyam_hero.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Khatu_Shyam/Shyam_Kund.jpg",
+        "/images/sightseeing/Khatu_Shyam/Temple_Interior.avif",
+        "/images/sightseeing/Khatu_Shyam/Temple_Aarti.jpg"
+      ],
       tips: [
         "VERY early start (4 AM) essential to reach before massive queues form",
         "Consider 2-day trip with overnight stay in Khatu Shyam for relaxed experience",
@@ -5240,7 +5244,10 @@ export const sightseeingTours = {
       difficulty: "Easy (temple visits, minimal walking)",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Khatu_Shyam/khtau_shyam_hero.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Khatu_Shyam/Shyam_Kund.jpg",
+        "/images/sightseeing/Khatu_Shyam/Temple_Aarti.jpg"
+      ],
       tips: [
         "Start very early (5-6 AM) to reach before darshan queues get long",
         "Dress modestly - traditional Indian wear preferred",
@@ -5759,7 +5766,11 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Wildlife & Nature",
       heroImage: "/images/sightseeing/Bharatpur/Keoladeo_National_Park _Bharatpur_hero_Section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Bharatpur/Bird_Sanctuary.jpg",
+        "/images/sightseeing/Bharatpur/Migratory_Birds.jpg",
+        "/images/sightseeing/Bharatpur/Lohagarh_Fort.jpg"
+      ],
       tips: [
         "Best time for bird watching: early morning (6-9 AM)",
         "Carry binoculars for better viewing",
@@ -9856,7 +9867,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg",
+        "/images/sightseeing/Haridwar/Ganga_Aarti.jpg",
+        "/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg",
+        "/images/sightseeing/Haridwar/Chandi_Devi_Temple.jpg"
+      ],
       tips: [
         "Ganga Aarti timing varies with sunset (usually 6-7 PM)",
         "Arrive 30 mins early for Aarti to get good spot",
@@ -10111,7 +10127,12 @@ export const sightseeingTours = {
       difficulty: "Easy",
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
-      images: [],
+      images: [
+        "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg",
+        "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
+        "/images/sightseeing/Rishikesh/Ram_Jhula.jpg",
+        "/images/sightseeing/Rishikesh/Beatles_Ashram.jpg"
+      ],
       tips: [
         "Start early to cover both cities comfortably",
         "Ganga Aarti at Har Ki Pauri is the highlight - don't miss",
@@ -16115,8 +16136,15 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to October for pleasant weather and blooming gardens, December to February for snow",
       difficulty: "Easy",
       category: "Heritage & Nature",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Srinagar/Dal_Lake.jpg",
+      images: [
+        "/images/sightseeing/Srinagar/Dal_Lake.jpg",
+        "/images/sightseeing/Srinagar/Dal_Lake_Shikara.jpg",
+        "/images/sightseeing/Srinagar/Shalimar_Bagh.jpg",
+        "/images/sightseeing/Srinagar/Nishat_Bagh.jpg",
+        "/images/sightseeing/Srinagar/Shankaracharya_Temple.jpg",
+        "/images/sightseeing/Srinagar/Hazratbal.jpg"
+      ],
       tips: [
         "Book Shikara rides early morning for best experience and photography",
         "Mughal Gardens are best visited in spring (April-May) when flowers are in full bloom",
@@ -16614,8 +16642,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "April to October for pleasant weather and green meadows, December to February for snow",
       difficulty: "Easy",
       category: "Nature & Scenic Beauty",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Pahalgam/Betaab_Valley.jpg",
+      images: [
+        "/images/sightseeing/Pahalgam/Betaab_Valley.jpg",
+        "/images/sightseeing/Pahalgam/Aru_Valley.jpg",
+        "/images/sightseeing/Pahalgam/Chandanwari.jpg",
+        "/images/sightseeing/Pahalgam/Lidder_River.jpg"
+      ],
       tips: [
         "Union cabs are mandatory for Betaab and Aru Valley - own vehicles not allowed",
         "Book union cabs early in morning to avoid long queues, especially on weekends",
@@ -16842,8 +16875,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "April to October (glacier accessible), May-June for golden meadows, July-August for lush greenery",
       difficulty: "Moderate (3-4 km trek at high altitude)",
       category: "Adventure & Nature",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Sonamarg/Thajiwas_Glacier.jpg",
+      images: [
+        "/images/sightseeing/Sonamarg/Thajiwas_Glacier.jpg",
+        "/images/sightseeing/Sonamarg/Zoji_La_Pass.jpg",
+        "/images/sightseeing/Sonamarg/Krishnasar_Lake.jpg"
+      ],
       tips: [
         "Start early from Srinagar to have maximum time at Thajiwas Glacier",
         "Trek is moderate but at high altitude - take it slow and acclimatize",
@@ -17131,8 +17168,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "April to October for pleasant weather, December to February for snow and skiing",
       difficulty: "Easy to Moderate",
       category: "Complete Package Tour",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg",
+      images: [
+        "/images/sightseeing/Srinagar/Dal_Lake.jpg",
+        "/images/sightseeing/Gulmarg/Gondola_Cable_Car.jpg",
+        "/images/sightseeing/Pahalgam/Betaab_Valley.jpg",
+        "/images/sightseeing/Sonamarg/Thajiwas_Glacier.jpg"
+      ],
       tips: [
         "This package covers all major Kashmir attractions efficiently in 3-4 days",
         "Book Gondola tickets in advance online - sell out quickly in peak season",
@@ -17361,8 +17403,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "May to September (roads open, pleasant weather), avoid winter when passes are closed",
       difficulty: "Moderate to Challenging (high altitude)",
       category: "Adventure & Nature",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Ladakh/Pangong_Lake.jpg",
+      images: [
+        "/images/sightseeing/Ladakh/Pangong_Lake.jpg",
+        "/images/sightseeing/Ladakh/Nubra_Valley.jpg",
+        "/images/sightseeing/Ladakh/Leh_Palace.jpg",
+        "/images/sightseeing/Ladakh/Khardung_La.jpg",
+        "/images/sightseeing/Ladakh/Magnetic_Hill.jpg"
+      ],
       tips: [
         "Acclimatize properly in Leh for at least 24 hours before starting the tour",
         "Carry altitude sickness medication (Diamox) and consult doctor before trip",
@@ -17643,8 +17691,14 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat (April-June)",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Lucknow/Bara_Imambara.jpg",
+      images: [
+        "/images/sightseeing/Lucknow/Bara_Imambara.jpg",
+        "/images/sightseeing/Lucknow/Chota_Imambara.jpg",
+        "/images/sightseeing/Lucknow/Rumi_Darwaza.jpg",
+        "/images/sightseeing/Lucknow/British_Residency.jpg",
+        "/images/sightseeing/Lucknow/Hazratganj.jpg"
+      ],
       tips: [
         "Wear comfortable shoes for Bhool Bhulaiya exploration",
         "Best to visit Bara Imambara early to avoid crowds",
@@ -18137,8 +18191,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather). Avoid Kumbh Mela period unless you want to experience the massive gathering.",
       difficulty: "Easy (minimal walking, mostly temple visits and boat ride)",
       category: "Spiritual & Religious",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Prayagraj/Triveni_Sangam.jpg",
+      images: [
+        "/images/sightseeing/Prayagraj/Triveni_Sangam.jpg",
+        "/images/sightseeing/Prayagraj/Allahabad_Fort.jpg",
+        "/images/sightseeing/Prayagraj/Anand_Bhawan.jpg",
+        "/images/sightseeing/Prayagraj/Khusro_Bagh.jpg"
+      ],
       tips: [
         "Start very early (6 AM) to make the most of the day and avoid traffic",
         "Carry extra clothes if you plan to take holy bath at Sangam",
@@ -18364,8 +18423,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "September to March (pleasant weather), can be crowded during Navratri",
       difficulty: "Moderate (12 km trek uphill)",
       category: "Spiritual & Religious",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Vaishno_Devi/Vaishno_Devi_Temple.jpg",
+      images: [
+        "/images/sightseeing/Vaishno_Devi/Vaishno_Devi_Temple.jpg",
+        "/images/sightseeing/Vaishno_Devi/Ardhkuwari_Cave.avif",
+        "/images/sightseeing/Vaishno_Devi/Bhairavnath_Temple.jpg"
+      ],
       tips: [
         "Start early morning to avoid crowds and complete journey in daylight",
         "Wear comfortable trekking shoes and carry walking stick",
@@ -19153,8 +19216,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "July to September (flowers in full bloom), avoid monsoon heavy rains",
       difficulty: "Moderate to Challenging (high altitude trek)",
       category: "Adventure & Spiritual",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Valley_of_Flowers/Valley_of_Flowers.jpg",
+      images: [
+        "/images/sightseeing/Valley_of_Flowers/Valley_of_Flowers.jpg",
+        "/images/sightseeing/Valley_of_Flowers/Hemkund_Sahib.jpg"
+      ],
       tips: [
         "Best time to see flowers is late July to mid-August",
         "Hemkund Sahib opens only June to October (closed in winter)",
@@ -19379,8 +19445,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), visit during Kumbh Mela for unique experience",
       difficulty: "Easy",
       category: "Spiritual & Heritage",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Prayagraj/Triveni_Sangam.jpg",
+      images: [
+        "/images/sightseeing/Prayagraj/Triveni_Sangam.jpg",
+        "/images/sightseeing/Prayagraj/Allahabad_Fort.jpg",
+        "/images/sightseeing/Prayagraj/Anand_Bhawan.jpg",
+        "/images/sightseeing/Prayagraj/Khusro_Bagh.jpg"
+      ],
       tips: [
         "Early morning best for Sangam visit and boat ride",
         "Carry change of clothes if planning holy dip",
@@ -19664,8 +19735,12 @@ export const sightseeingTours = {
       bestTimeToVisit: "March to June (pleasant weather), December to February (snow experience)",
       difficulty: "Easy",
       category: "Hill Station & Nature",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Khajjiar/Khajjiar_Meadow.jpg",
+      images: [
+        "/images/sightseeing/Khajjiar/Khajjiar_Meadow.jpg",
+        "/images/sightseeing/Khajjiar/Mini_Switzerland_View.jpg",
+        "/images/sightseeing/Dalhousie/Kalatop_Wildlife.jpg"
+      ],
       tips: [
         "Best time to visit is early morning when meadow is less crowded",
         "Carry warm clothing even in summer as weather can be cool",
@@ -19890,8 +19965,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat (April-June)",
       difficulty: "Easy",
       category: "Heritage & Culture",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Shekhawati/Painted_Havelis.jpg",
+      images: [
+        "/images/sightseeing/Shekhawati/Painted_Havelis.jpg",
+        "/images/sightseeing/Shekhawati/Mandawa_Fort.jpg",
+        "/images/sightseeing/Shekhawati/Nawalgarh.jpg",
+        "/images/sightseeing/Shekhawati/Fatehpur_Shekhawati.jpg"
+      ],
       tips: [
         "Stay in heritage havelis for authentic experience",
         "Hire a local guide to understand fresco symbolism and history",
