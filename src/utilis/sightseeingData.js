@@ -8564,8 +8564,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "March-June for pleasant weather, December-February for snow experience",
       difficulty: "Easy to Moderate",
       category: "Road Trip & Hill Station",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Manali/Solang Valley.jpg",
+      images: [
+        "/images/sightseeing/Shimla/Mall road shimla.jpg",
+        "/images/sightseeing/Manali/Kullu Valley.jpg",
+        "/images/sightseeing/Manali/Hidimba Temple.jpg",
+        "/images/sightseeing/Manali/Solang Valley.jpg"
+      ],
       tips: [
         "Start early from Shimla (by 8 AM) to reach Manali with daylight",
         "Road conditions good but winding - carry motion sickness medicine",
@@ -13545,8 +13550,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Moderate",
       category: "Heritage & Romance",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+      images: [
+        "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+        "/images/sightseeing/Jodhpur/Blue City_Iconic blue-painted houses in jodhpur.jpg",
+        "/images/sightseeing/Udaipur/City_Palace.jpg",
+        "/images/sightseeing/Udaipur/Lake_Pichola.jpg"
+      ],
       tips: [
         "Book Jodhpur hotel near old city for convenience",
         "Early start on Day 2 recommended for leisurely pace",
@@ -13765,8 +13775,13 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March",
       difficulty: "Easy",
       category: "Heritage & Romance",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Udaipur/City_Palace.jpg",
+      images: [
+        "/images/sightseeing/Udaipur/City_Palace.jpg",
+        "/images/sightseeing/Udaipur/Lake_Pichola.jpg",
+        "/images/sightseeing/Udaipur/Jag_Mandir.jpg",
+        "/images/sightseeing/Udaipur/Jagdish_Temple.jpg"
+      ],
       tips: [
         "Book boat ride in advance during peak season",
         "City Palace opens at 9:30 AM",
@@ -14269,8 +14284,11 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March (pleasant weather), avoid summer heat",
       difficulty: "Moderate (fort has stairs and steep slopes)",
       category: "Heritage & Adventure",
-      heroImage: "",
-      images: [],
+      heroImage: "/images/sightseeing/Kumbhalgarh/Kumbhalgarh_Fort.jpg",
+      images: [
+        "/images/sightseeing/Kumbhalgarh/Kumbhalgarh_Fort.jpg",
+        "/images/sightseeing/Kumbhalgarh/Wildlife_Sanctuary.jpg"
+      ],
       tips: [
         "Wear comfortable walking shoes as fort requires extensive walking",
         "Carry sunscreen, hat, and water for fort exploration",
