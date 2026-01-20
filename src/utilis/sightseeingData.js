@@ -774,11 +774,12 @@ export const sightseeingTours = {
       category: "Wildlife & Nature",
       heroImage: "/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg",
       images: [
-        "/images/sightseeing/Jim_Corbett/Dhikala_Zone.jpg",
         "/images/sightseeing/Jim_Corbett/Tiger_Safari_Corbett.jpg",
-        "/images/sightseeing/Jim_Corbett/elephant_safari.jpg",
+        "/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg",
+        "/images/sightseeing/Jim_Corbett/Ramganga_River.jpg",
         "/images/sightseeing/Jim_Corbett/Corbett_Falls.jpg",
-        "/images/sightseeing/Jim_Corbett/Ramganga_River.jpg"
+        "/images/sightseeing/Jim_Corbett/Dhikala_Zone.jpg",
+        "/images/sightseeing/Jim_Corbett/elephant_safari.jpg"
       ],
       tips: [
         "Book safari permits well in advance (limited slots)",
@@ -997,11 +998,12 @@ export const sightseeingTours = {
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
       images: [
+        "/images/sightseeing/Mathura_Vrindavan/Krishna_Janmabhoomi.jpg",
         "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg",
         "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg",
+        "/images/sightseeing/Mathura_Vrindavan/Vishram_Ghat.jpg",
         "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg",
-        "/images/sightseeing/Mathura_Vrindavan/Govardhan_Hill.jpg",
-        "/images/sightseeing/Mathura_Vrindavan/Yamuna_River_Ghat.jpg"
+        "/images/sightseeing/Mathura_Vrindavan/Govardhan_Hill.jpg"
       ],
       tips: [
         "Remove shoes and leather items before entering temples",
@@ -1315,7 +1317,10 @@ export const sightseeingTours = {
       images: [
         "/images/sightseeing/Neemrana/Neemrana_Fort_Palace.jpg",
         "/images/sightseeing/Neemrana/Neemrana_Zip_Line.jpg",
-        "/images/sightseeing/Neemrana/Baori_Step_Well.jpg"
+        "/images/sightseeing/Neemrana/Baori_Step_Well.jpg",
+        "/images/sightseeing/Neemrana/Neemrana_Fort_Palace.jpg",
+        "/images/sightseeing/Neemrana/Neemrana_hero_section.jpg",
+        "/images/sightseeing/Neemrana/Neemrana_Fort_Palace.jpg"
       ],
       tips: [
         "Wear comfortable shoes for fort walking",
@@ -1531,8 +1536,11 @@ export const sightseeingTours = {
       heroImage: "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Hero_Section.jpg",
       images: [
         "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Tiger_Reserve.jpg",
+        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Hero_Section.jpg",
+        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Siliserh_Lake.jpg",
         "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Bala_Quila.jpg",
-        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Siliserh_Lake.jpg"
+        "/images/sightseeing/Alwar_Sariska/Great_Wall.jpg",
+        "/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Tiger_Reserve.jpg"
       ],
       tips: [
         "Early morning safari has best animal sighting chances",
@@ -1819,9 +1827,12 @@ export const sightseeingTours = {
       category: "Hill Station & Nature",
       heroImage: "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg",
       images: [
-        "/images/sightseeing/Kasauli/Kasauli_Christ_Church.jpg",
         "/images/sightseeing/Kasauli/Kasauli_Monkey_Point.jpg",
-        "/images/sightseeing/Kasauli/Kasauli_Mall_Road.jpg"
+        "/images/sightseeing/Kasauli/Kasauli_Mall_Road.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Christ_Church.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Mall_Road.jpg",
+        "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg"
       ],
       tips: [
         "Kasauli is vehicle-restricted, walking required on Mall Road",
@@ -2042,7 +2053,10 @@ export const sightseeingTours = {
       images: [
         "/images/sightseeing/Lansdowne/Bhulla_Lake.jpg",
         "/images/sightseeing/Lansdowne/St_Marys_Church.jpg",
-        "/images/sightseeing/Lansdowne/Tip_n_Top_Viewpoint.jpg"
+        "/images/sightseeing/Lansdowne/Tip_n_Top_Viewpoint.jpg",
+        "/images/sightseeing/Lansdowne/lansdowne_hero_section.jpg",
+        "/images/sightseeing/Lansdowne/Tip_n_Top_Viewpoint.jpg",
+        "/images/sightseeing/Lansdowne/Bhulla_Lake.jpg"
       ],
       tips: [
         "Very peaceful and less commercialized than other hill stations",
@@ -2341,8 +2355,9 @@ export const sightseeingTours = {
         "/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg",
         "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg",
         "/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg",
-        "/images/sightseeing/Varanasi/Assi_Ghat.jpg",
-        "/images/sightseeing/Varanasi/Sarnath.jpg"
+        "/images/sightseeing/Varanasi/Sarnath.jpg",
+        "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg",
+        "/images/sightseeing/Varanasi/Assi_Ghat.jpg"
       ],
       tips: [
         "Hire a knowledgeable guide to understand cultural significance",
@@ -2566,8 +2581,12 @@ export const sightseeingTours = {
       category: "Spiritual & Religious",
       heroImage: "/images/sightseeing/Khatu_Shyam/khtau_shyam_hero.jpg",
       images: [
+        "/images/sightseeing/Khatu_Shyam/khtau_shyam_hero.jpg",
         "/images/sightseeing/Khatu_Shyam/Shyam_Kund.jpg",
         "/images/sightseeing/Khatu_Shyam/Temple_Interior.avif",
+        "/images/sightseeing/Khatu_Shyam/Temple_Interior.avif",
+        "/images/sightseeing/Khatu_Shyam/Shyam_Kund.jpg",
+        "/images/sightseeing/Khatu_Shyam/Temple_Aarti.jpg",
         "/images/sightseeing/Khatu_Shyam/Temple_Aarti.jpg"
       ],
       tips: [
@@ -2882,10 +2901,12 @@ export const sightseeingTours = {
       category: "Heritage & Culture - Multi-City Circuit",
       heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
-        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
-        "/images/sightseeing/Jaipur/amber_fort.jpg",
         "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
         "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Jaipur/amber_fort.jpg",
+        "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
+        "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
         "/images/sightseeing/Jaipur/city_palace.jpg"
       ],
       tips: [
@@ -3136,10 +3157,11 @@ export const sightseeingTours = {
       category: "Heritage & Culture - Multi-City Circuit",
       heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
-        "/images/sightseeing/Agra/agra_fort.jpg",
-        "/images/sightseeing/Jaipur/amber_fort.jpg",
-        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Delhi/red_fort.jpg",
         "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Jaipur/amber_fort.jpg",
         "/images/sightseeing/Jaipur/Jal_Mahal.jpg",
         "/images/sightseeing/Jaipur/city_palace.jpg"
       ],
@@ -3457,11 +3479,14 @@ export const sightseeingTours = {
       category: "Heritage, Culture & Premium Experience - Multi-City Circuit",
       heroImage: "/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg",
       images: [
-        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
-        "/images/sightseeing/Jaipur/jantar_mantar.jpg",
+        "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
         "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg",
         "/images/sightseeing/Neemrana/Baori_Step_Well.jpg",
-        "/images/sightseeing/Jaipur/Johari_bazar.jpg"
+        "/images/sightseeing/Jaipur/amber_fort.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg",
+        "/images/sightseeing/Jaipur/Johari_bazar.jpg",
+        "/images/sightseeing/Jaipur/jantar_mantar.jpg"
       ],
       tips: [
         "5-day tour is THE best way to experience Golden Triangle - highly recommended",
@@ -4499,10 +4524,12 @@ export const sightseeingTours = {
       category: "Spiritual & Heritage",
       heroImage: "/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg",
       images: [
-        "/images/sightseeing/Ajmer_Pushkar/Ana_Sagar_Lake_Ajmer.jpg",
-        "/images/sightseeing/Ajmer_Pushkar/Brahma_Temple_Pushkar.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg",
         "/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg",
-        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Camel_Fair.jpg"
+        "/images/sightseeing/Ajmer_Pushkar/Brahma_Temple_Pushkar.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Camel_Fair.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Camel_Fair.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Ana_Sagar_Lake_Ajmer.jpg"
       ],
       tips: [
         "Dress modestly for religious sites (cover head at Dargah)",
@@ -8577,10 +8604,14 @@ export const sightseeingTours = {
       category: "Road Trip & Hill Station",
       heroImage: "/images/sightseeing/Manali/Solang Valley.jpg",
       images: [
-        "/images/sightseeing/Shimla/Mall road shimla.jpg",
+        "/images/sightseeing/Manali/Scenic 250 km mountain drive from Shimla to Manali.jpg",
+        "/images/sightseeing/Manali/Pandoh Dam.jpg",
         "/images/sightseeing/Manali/Kullu Valley.jpg",
+        "/images/sightseeing/Manali/nagar castle.jpeg",
+        "/images/sightseeing/Manali/Solang Valley.jpg",
         "/images/sightseeing/Manali/Hidimba Temple.jpg",
-        "/images/sightseeing/Manali/Solang Valley.jpg"
+        "/images/sightseeing/Manali/Old Manali.jpg",
+        "/images/sightseeing/Manali/Vashisht , manali.jpg"
       ],
       tips: [
         "Start early from Shimla (by 8 AM) to reach Manali with daylight",
@@ -10991,8 +11022,10 @@ export const sightseeingTours = {
       category: "Adventure & Spiritual",
       heroImage: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
       images: [
-        "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
         "/images/sightseeing/Rishikesh/River_Rafting.jpg",
+        "/images/sightseeing/Rishikesh/River_Rafting.jpg",
+        "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
+        "/images/sightseeing/Rishikesh/Beatles_Ashram.jpg",
         "/images/sightseeing/Rishikesh/Ram_Jhula.jpg",
         "/images/sightseeing/Rishikesh/Triveni_Ghat.jpg"
       ],
