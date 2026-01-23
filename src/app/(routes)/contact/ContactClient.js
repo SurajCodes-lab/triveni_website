@@ -766,7 +766,7 @@ export default function ContactClient() {
                       label="Phone Number"
                       name="phone"
                       type="tel"
-                      placeholder="+91 9876543210"
+                      placeholder="+91 7668570551"
                       value={formData.phone}
                       onChange={handleInputChange}
                       error={errors.phone}

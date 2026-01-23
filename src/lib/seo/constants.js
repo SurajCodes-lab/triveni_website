@@ -13,9 +13,9 @@ export const COMPANY_INFO = {
 
   // Contact Information
   phone: {
-    primary: '+91-9876543210',
-    display: '9876543210',
-    whatsapp: '+919876543210'
+    primary: '+91-+91 7668570551',
+    display: '+91 7668570551',
+    whatsapp: '+91+91 7668570551'
   },
   email: {
     primary: 'info@trivenicabs.in',
