@@ -3,6 +3,7 @@ import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
 import PageTracker from "@/components/analytics/PageTracker";
 import "@/styles/globals.css";
 import { Analytics } from '@vercel/analytics/react';
@@ -656,6 +657,12 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <WhatsAppFloat phoneNumber="7668570551" />
+          <ExitIntentPopup
+            discount="10%"
+            couponCode="TRIVENI10"
+            phoneNumber="7668570551"
+            delayMs={8000}
+          />
           <Footer />
         </div>
         <Analytics />
