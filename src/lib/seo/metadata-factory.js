@@ -14,14 +14,14 @@ import {
 
 /**
  * Generate route page metadata (A to B taxi)
- * Title: {Origin} to {Destination} Cab ₹{Price} | 24/7 Taxi
+ * Title: {Origin} to {Destination} Taxi ₹{Price} — Book Online 24/7
  */
 export function generateRouteMetadata({ origin, destination, price, distance, duration, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Cab ₹${price} | 24/7 Taxi`);
+  const title = truncateTitle(`${origin} to ${destination} Taxi ₹${price} — Book Online 24/7`);
   const description = truncateDescription(
-    `Book ${origin} to ${destination} cab at ₹${price}. ${distance}km, ${duration}. ` +
-    `AC sedans, SUVs available 24/7. Safe, reliable taxi service. ` +
-    `Call ${COMPANY_INFO.phone.display}.`
+    `${origin} to ${destination} taxi at just ₹${price}. ${distance}km in ${duration}. ` +
+    `Sedan, SUV, Tempo available. 2800+ happy customers. ` +
+    `Call ${COMPANY_INFO.phone.display} for instant booking!`
   );
 
   return {
@@ -69,14 +69,14 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
 
 /**
  * Generate tour page metadata
- * Title: {TourName} | ₹{Price} | {Duration} | Book Now
+ * Title: {TourName} ₹{Price} ({Duration}) — All Inclusive Tour
  */
 export function generateTourMetadata({ tourName, city, price, duration, slug, description: tourDesc, image }) {
-  const title = truncateTitle(`${tourName} | ₹${price} | ${duration} | Book Now`);
+  const title = truncateTitle(`${tourName} ₹${price} (${duration}) — All Inclusive`);
   const description = truncateDescription(
     tourDesc ||
-    `Book ${tourName} in ${city} at ₹${price}. ${duration} guided tour with AC vehicle. ` +
-    `Explore top attractions with experienced drivers. Call ${COMPANY_INFO.phone.display}.`
+    `${tourName} at just ₹${price}. ${duration} with AC vehicle & expert driver. ` +
+    `4.8★ rated, 2800+ happy customers. Book now: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -125,14 +125,14 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
 
 /**
  * Generate city hub page metadata
- * Title: {City} Taxi Service | From ₹11/km | Triveni Cabs
+ * Title: {City} Taxi ₹{minPrice}/km — 24/7 Online Booking
  */
 export function generateCityHubMetadata({ city, minPrice = 11, services = [], slug }) {
-  const title = truncateTitle(`${city} Taxi Service | From ₹${minPrice}/km | Triveni Cabs`);
-  const serviceList = services.length > 0 ? services.slice(0, 3).join(', ') : 'Airport Transfer, Sightseeing, Outstation';
+  const title = truncateTitle(`${city} Taxi ₹${minPrice}/km — 24/7 Online Booking`);
+  const serviceList = services.length > 0 ? services.slice(0, 3).join(', ') : 'Airport, Local, Outstation';
   const description = truncateDescription(
-    `Best taxi service in ${city} from ₹${minPrice}/km. ${serviceList} & more. ` +
-    `24/7 availability, experienced drivers. Book now! Call ${COMPANY_INFO.phone.display}.`
+    `${city} taxi from just ₹${minPrice}/km. ${serviceList} services. ` +
+    `4.8★ rated, 2800+ customers. Instant booking: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -180,13 +180,13 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
 
 /**
  * Generate airport service page metadata
- * Title: {City} Airport Taxi | ₹{Price} | Flight Tracking
+ * Title: {City} Airport Taxi ₹{Price} — Flight Tracking | 24/7
  */
 export function generateAirportMetadata({ city, airportName, price, slug }) {
-  const title = truncateTitle(`${city} Airport Taxi | ₹${price} | Flight Tracking`);
+  const title = truncateTitle(`${city} Airport Taxi ₹${price} — Flight Tracking | 24/7`);
   const description = truncateDescription(
-    `${city} airport taxi from ₹${price}. ${airportName} pickup/drop with flight tracking. ` +
-    `24/7 service, meet & greet. Pre-book now! Call ${COMPANY_INFO.phone.display}.`
+    `${city} airport taxi from just ₹${price}. ${airportName} pickup/drop with live flight tracking. ` +
+    `Meet & greet, no hidden charges. Book: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -234,10 +234,10 @@ export function generateAirportMetadata({ city, airportName, price, slug }) {
 
 /**
  * Generate blog post metadata
- * Title: {Title} | Travel Guide | Triveni Cabs
+ * Title: {Title} — Travel Guide 2026 | Triveni Cabs
  */
 export function generateBlogMetadata({ title: blogTitle, excerpt, slug, image, author, publishDate, tags = [] }) {
-  const title = truncateTitle(`${blogTitle} | Travel Guide | Triveni Cabs`);
+  const title = truncateTitle(`${blogTitle} — Travel Guide 2026`);
   const description = truncateDescription(excerpt);
 
   return {
@@ -285,11 +285,11 @@ export function generateBlogMetadata({ title: blogTitle, excerpt, slug, image, a
  * Generate corporate service page metadata
  */
 export function generateCorporateMetadata({ city, industry, useCase, slug }) {
-  const contextualPart = industry || useCase || 'Transportation Service';
-  const title = truncateTitle(`${city} Corporate ${contextualPart} | Triveni Cabs`);
+  const contextualPart = industry || useCase || 'Cab Service';
+  const title = truncateTitle(`${city} Corporate ${contextualPart} — Monthly Plans Available`);
   const description = truncateDescription(
-    `Professional corporate transportation in ${city}. ${contextualPart} with dedicated fleet. ` +
-    `Monthly contracts, employee shuttle, executive cabs. Call ${COMPANY_INFO.phone.display}.`
+    `${city} corporate transportation from ₹11/km. ${contextualPart} with dedicated fleet. ` +
+    `Monthly contracts, GPS tracking, 24/7 support. Call ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -334,10 +334,10 @@ export function generateCorporateMetadata({ city, industry, useCase, slug }) {
  * Generate wedding service page metadata
  */
 export function generateWeddingMetadata({ city, slug }) {
-  const title = truncateTitle(`${city} Wedding Car Rental | Bridal Car | Triveni Cabs`);
+  const title = truncateTitle(`${city} Wedding Car ₹4,999/day — Decorated Luxury Cars`);
   const description = truncateDescription(
-    `Luxury wedding car rental in ${city}. Decorated bridal cars, vintage vehicles, ` +
-    `guest transportation. Premium fleet for your special day. Call ${COMPANY_INFO.phone.display}.`
+    `${city} wedding car rental from ₹4,999/day. Decorated bridal cars, luxury fleet, ` +
+    `guest transportation. 500+ weddings served. Book: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -382,11 +382,11 @@ export function generateWeddingMetadata({ city, slug }) {
  * Generate event transportation page metadata
  */
 export function generateEventMetadata({ eventType, city, slug }) {
-  const title = truncateTitle(`${eventType} Transportation ${city ? `in ${city}` : ''} | Triveni Cabs`);
+  const location = city ? `${city}` : 'India';
+  const title = truncateTitle(`${eventType} Transportation ${location} — Group Travel Experts`);
   const description = truncateDescription(
-    `Professional ${eventType.toLowerCase()} transportation ${city ? `in ${city}` : 'across India'}. ` +
-    `Group travel, VIP shuttles, event logistics. All vehicle types available. ` +
-    `Call ${COMPANY_INFO.phone.display}.`
+    `${eventType} transportation in ${location}. Buses, tempos, luxury cars available. ` +
+    `Trusted by 500+ events. Get free quote: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -431,11 +431,10 @@ export function generateEventMetadata({ eventType, city, slug }) {
  * Generate tempo traveller route page metadata
  */
 export function generateTempoMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Tempo Traveller | ${seats} Seater | ₹${price}`);
+  const title = truncateTitle(`${origin} to ${destination} Tempo ₹${price} — ${seats} Seater AC`);
   const description = truncateDescription(
-    `Book ${seats}-seater tempo traveller from ${origin} to ${destination} at ₹${price}. ` +
-    `AC, comfortable, experienced drivers. Group travel made easy. ` +
-    `Call ${COMPANY_INFO.phone.display}.`
+    `${origin} to ${destination} tempo traveller ₹${price}. ${seats}-seater AC with pushback seats. ` +
+    `2800+ happy groups served. Instant booking: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -480,11 +479,10 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
  * Generate bus route page metadata
  */
 export function generateBusMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Bus Hire | ${seats} Seater | ₹${price}`);
+  const title = truncateTitle(`${origin} to ${destination} Bus ₹${price} — ${seats} Seater AC`);
   const description = truncateDescription(
-    `Hire ${seats}-seater bus from ${origin} to ${destination} at ₹${price}. ` +
-    `AC, luxury coaches for groups. Corporate tours, pilgrimages, events. ` +
-    `Call ${COMPANY_INFO.phone.display}.`
+    `${origin} to ${destination} bus hire ₹${price}. ${seats}-seater AC luxury coach. ` +
+    `Ideal for groups, pilgrimages, corporate tours. Book: ${COMPANY_INFO.phone.display}!`
   );
 
   return {

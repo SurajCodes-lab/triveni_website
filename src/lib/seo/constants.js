@@ -13,9 +13,9 @@ export const COMPANY_INFO = {
 
   // Contact Information
   phone: {
-    primary: '+91-+91 7668570551',
+    primary: '+91-7668570551',
     display: '+91 7668570551',
-    whatsapp: '+91+91 7668570551'
+    whatsapp: '+917668570551'
   },
   email: {
     primary: 'info@trivenicabs.in',
@@ -90,36 +90,36 @@ export const PRICING = {
 // Page type configurations for metadata templates
 export const PAGE_TYPES = {
   route: {
-    titleSuffix: '| 24/7 Taxi',
-    keywordPrefix: 'cab, taxi, hire,'
+    titleSuffix: '— Book Online 24/7',
+    keywordPrefix: 'cab, taxi, hire, book online,'
   },
   tour: {
-    titleSuffix: '| Book Now',
-    keywordPrefix: 'tour, sightseeing, travel,'
+    titleSuffix: '— All Inclusive Tour',
+    keywordPrefix: 'tour, sightseeing, travel, book now,'
   },
   cityHub: {
-    titleSuffix: '| Triveni Cabs',
-    keywordPrefix: 'taxi service, cab booking,'
+    titleSuffix: '— 24/7 Online Booking',
+    keywordPrefix: 'taxi service, cab booking, instant,'
   },
   airport: {
-    titleSuffix: '| Flight Tracking',
-    keywordPrefix: 'airport taxi, airport transfer,'
+    titleSuffix: '— Flight Tracking | 24/7',
+    keywordPrefix: 'airport taxi, airport transfer, pickup drop,'
   },
   blog: {
-    titleSuffix: '| Travel Guide | Triveni Cabs',
-    keywordPrefix: 'travel guide, travel tips,'
+    titleSuffix: '— Travel Guide 2026',
+    keywordPrefix: 'travel guide, travel tips, 2026,'
   },
   corporate: {
-    titleSuffix: '| Corporate Taxi',
-    keywordPrefix: 'corporate transport, employee shuttle,'
+    titleSuffix: '— Monthly Plans Available',
+    keywordPrefix: 'corporate transport, employee shuttle, office cab,'
   },
   wedding: {
-    titleSuffix: '| Wedding Cars',
-    keywordPrefix: 'wedding car, bridal car,'
+    titleSuffix: '— Decorated Luxury Cars',
+    keywordPrefix: 'wedding car, bridal car, shaadi car,'
   },
   event: {
-    titleSuffix: '| Event Transport',
-    keywordPrefix: 'event transportation, group travel,'
+    titleSuffix: '— Group Travel Experts',
+    keywordPrefix: 'event transportation, group travel, bus hire,'
   }
 };
 
