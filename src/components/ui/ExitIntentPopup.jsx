@@ -1,126 +1,43 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Phone, MessageCircle, Gift, Clock, Shield } from 'lucide-react';
 
 /**
- * Exit Intent Popup - Captures visitors about to leave
- * Mobile/Tablet Friendly Version
- * - Desktop: Triggers on mouse leave to top
- * - Mobile/Tablet: Triggers after time + scroll up behavior
+ * Popup that shows on page load after a delay
+ * Shows only once per session
  */
 
 const ExitIntentPopup = ({
   discount = '10%',
   couponCode = 'STAY10',
   phoneNumber = '7668570551',
-  delayMs = 10000, // 10 seconds minimum before popup
-  scrollThreshold = 40, // Scroll percentage before enabling
+  delayMs = 3000, // 3 seconds delay before showing
   showOnce = true,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
-  const [isReady, setIsReady] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile/tablet
+  // Show popup after delay (only once per session)
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Check if already shown in this session
-  useEffect(() => {
+    // Check if already shown
     if (showOnce) {
       const shown = sessionStorage.getItem('exitPopupShown');
       if (shown) {
-        setHasShown(true);
+        return;
       }
     }
 
+    // Show popup after delay
     const timer = setTimeout(() => {
-      setIsReady(true);
+      setIsVisible(true);
+      if (showOnce) {
+        sessionStorage.setItem('exitPopupShown', 'true');
+      }
     }, delayMs);
 
     return () => clearTimeout(timer);
   }, [delayMs, showOnce]);
-
-  const showPopup = useCallback(() => {
-    if (hasShown || isVisible) return;
-    setIsVisible(true);
-    setHasShown(true);
-    if (showOnce) {
-      sessionStorage.setItem('exitPopupShown', 'true');
-    }
-  }, [hasShown, isVisible, showOnce]);
-
-  // Desktop: Mouse leave detection
-  const handleMouseLeave = useCallback((e) => {
-    if (!isReady || isMobile) return;
-    if (e.clientY <= 5) {
-      showPopup();
-    }
-  }, [isReady, isMobile, showPopup]);
-
-  // Mobile/Tablet: Back button and scroll detection
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // Desktop - mouse leave
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    // Mobile/Tablet - scroll up intent + time based
-    let lastScrollY = window.scrollY;
-    let scrollUpCount = 0;
-    let hasScrolledEnough = false;
-
-    const handleScroll = () => {
-      if (!isReady || hasShown || isVisible) return;
-
-      const currentScrollY = window.scrollY;
-      const scrollPercentage = (currentScrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-
-      // Mark if user has scrolled enough
-      if (scrollPercentage > scrollThreshold) {
-        hasScrolledEnough = true;
-      }
-
-      // User scrolled enough AND is now scrolling up quickly (exit intent on mobile)
-      if (hasScrolledEnough && currentScrollY < lastScrollY - 50) {
-        scrollUpCount++;
-        if (scrollUpCount >= 2) {
-          showPopup();
-        }
-      } else if (currentScrollY > lastScrollY) {
-        scrollUpCount = 0;
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    // Mobile: Also trigger after extended time on page (30 seconds)
-    const mobileTimer = setTimeout(() => {
-      if (isMobile && isReady && !hasShown && !isVisible) {
-        // Only show if user has interacted (scrolled at least a bit)
-        if (window.scrollY > 200) {
-          showPopup();
-        }
-      }
-    }, 30000);
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(mobileTimer);
-    };
-  }, [handleMouseLeave, isReady, hasShown, isVisible, scrollThreshold, showPopup, isMobile]);
 
   const closePopup = () => {
     setIsVisible(false);
