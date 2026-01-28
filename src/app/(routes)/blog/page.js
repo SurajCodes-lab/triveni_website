@@ -218,7 +218,7 @@ export default function BlogPage() {
       "sameAs": [
         "https://www.facebook.com/trivenicabs",
         "https://twitter.com/trivenicabs",
-        "https://www.instagram.com/trivenicabs"
+        "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
       ]
     },
     "blogPost": blogPosts

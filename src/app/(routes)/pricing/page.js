@@ -298,7 +298,7 @@ export default function PricingPage() {
         <div className="container mx-auto px-3 sm:px-4">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-              What's Included & Excluded
+              What&apos;s Included & Excluded
             </h2>
           </div>
 

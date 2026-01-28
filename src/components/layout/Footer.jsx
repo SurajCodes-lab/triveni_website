@@ -212,7 +212,7 @@ const Footer = () => {
                   <Facebook className="w-5 h-5 text-black" aria-hidden="true" />
                 </a>
                 <a
-                  href="https://instagram.com/trivenicabs"
+                  href="https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={socialIconClasses}

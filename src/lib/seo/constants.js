@@ -41,7 +41,7 @@ export const COMPANY_INFO = {
   // Social Media
   social: {
     facebook: 'https://www.facebook.com/trivenicabs',
-    instagram: 'https://www.instagram.com/trivenicabs',
+    instagram: 'https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo',
     twitter: 'https://twitter.com/TriveniCabs',
     linkedin: 'https://www.linkedin.com/company/triveni-cabs'
   }

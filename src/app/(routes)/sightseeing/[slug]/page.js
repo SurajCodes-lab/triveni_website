@@ -963,7 +963,7 @@ export default async function SightseeingDetailPage({ params }) {
             "sameAs": [
               "https://twitter.com/TriveniCabs",
               "https://www.facebook.com/TriveniCabs",
-              "https://www.instagram.com/trivenicabs"
+              "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
             ]
           })
         }}

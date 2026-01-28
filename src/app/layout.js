@@ -137,7 +137,7 @@ export default function RootLayout({ children }) {
               },
               "sameAs": [
                 "https://www.facebook.com/trivenicabs",
-                "https://www.instagram.com/trivenicabs",
+                "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
                 "https://twitter.com/trivenicabs"
               ],
               "contactPoint": {
