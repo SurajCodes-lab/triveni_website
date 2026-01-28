@@ -13,31 +13,18 @@ const ExitIntentPopup = ({
   discount = '10%',
   couponCode = 'STAY10',
   phoneNumber = '7668570551',
-  delayMs = 3000, // 3 seconds delay before showing
-  showOnce = true,
+  delayMs = 500, // 0.5 second delay (allows page to render first)
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show popup after delay (only once per session)
+  // Show popup after delay on every page load
   useEffect(() => {
-    // Check if already shown
-    if (showOnce) {
-      const shown = sessionStorage.getItem('exitPopupShown');
-      if (shown) {
-        return;
-      }
-    }
-
-    // Show popup after delay
     const timer = setTimeout(() => {
       setIsVisible(true);
-      if (showOnce) {
-        sessionStorage.setItem('exitPopupShown', 'true');
-      }
     }, delayMs);
 
     return () => clearTimeout(timer);
-  }, [delayMs, showOnce]);
+  }, [delayMs]);
 
   const closePopup = () => {
     setIsVisible(false);
