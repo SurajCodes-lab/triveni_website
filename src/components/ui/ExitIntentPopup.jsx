@@ -159,13 +159,13 @@ const ExitIntentPopup = ({
 
           {/* Popup - Mobile First Design */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed inset-x-3 top-1/2 -translate-y-1/2 sm:inset-x-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:w-full md:max-w-md z-[101]"
+            className="fixed inset-0 z-[101] flex items-center justify-center p-3 sm:p-4 pointer-events-none"
           >
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto w-full max-w-md pointer-events-auto">
               {/* Header - Compact on mobile */}
               <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-4 sm:p-6 text-white relative">
                 {/* Close button */}
