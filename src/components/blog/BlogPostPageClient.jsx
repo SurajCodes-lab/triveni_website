@@ -316,7 +316,7 @@ export default function BlogPostPageClient({ post }) {
 
       {/* Related Posts */}
       <div className="max-w-5xl mx-auto px-4">
-        <RelatedPosts currentPost={post} />
+        <RelatedPosts currentPostId={post.id} currentCategory={post.category} currentTags={post.tags} />
       </div>
     </>
   );
