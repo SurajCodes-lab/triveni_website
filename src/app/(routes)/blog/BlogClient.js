@@ -37,6 +37,18 @@ export default function BlogClient() {
 
   const getStyle = (category) => categoryStyles[category] || categoryStyles.default;
 
+  // Map blog categories to relevant service pages
+  const categoryServiceLinks = {
+    'Pilgrimage': { label: 'View Pilgrimage Tours', href: '/religious-tours' },
+    'Heritage': { label: 'View Heritage Sightseeing', href: '/sightseeing' },
+    'Hill Station': { label: 'Book Hill Station Trip', href: '/tempo-traveller' },
+    'Adventure': { label: 'Book Adventure Trip', href: '/tempo-traveller' },
+    'Destinations': { label: 'Explore Sightseeing Tours', href: '/sightseeing' },
+    'City Guide': { label: 'Book City Tour', href: '/sightseeing' },
+    'Wildlife': { label: 'Book Wildlife Safari Trip', href: '/sightseeing' },
+    'Travel Tips': { label: 'View Pricing & Routes', href: '/pricing' },
+  };
+
   if (!mounted) return null;
 
   return (
@@ -140,6 +152,19 @@ export default function BlogClient() {
                 );
               })}
             </div>
+
+            {/* Category → Service link */}
+            {activeCategory !== 'all' && categoryServiceLinks[activeCategory] && (
+              <div className="mt-3 text-center">
+                <Link
+                  href={categoryServiceLinks[activeCategory].href}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors"
+                >
+                  {categoryServiceLinks[activeCategory].label}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

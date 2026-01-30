@@ -879,6 +879,33 @@ export default function TempoCityClient({ data }) {
           </motion.div>
         </div>
       </section>
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Tempo Traveller on Rent in {cityData.name} — Outstation & Local Group Travel
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            Looking for a tempo traveller in {cityData.name}? Triveni Cabs offers 12 to 26 seater AC tempo travellers
+            with professional drivers for outstation trips, local sightseeing, pilgrimages, corporate events, and weddings
+            from {cityData.name}. {cityData.description} Our outstation rates start from <strong>₹23/km</strong> and local
+            day packages from <strong>₹6,000/day</strong>.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Popular routes from {cityData.name} include trips to {cityData.popularDestinations?.join(', ')} and many more.
+            All tempo travellers come equipped with pushback recliner seats, powerful AC, music system, LED screen (in select models),
+            GPS tracking, and ample luggage space. Our drivers are experienced professionals with 5+ years on the road and
+            verified backgrounds.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            With 2500+ completed group trips, a 4.8-star rating, and 24/7 availability, Triveni Cabs is {cityData.name}&apos;s
+            trusted tempo traveller rental service. View all{' '}
+            <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller options and routes</Link>,
+            check our <Link href="/pricing" className="text-blue-600 hover:underline">transparent pricing</Link>, or{' '}
+            <a href="tel:+917668570551" className="text-blue-600 hover:underline">call 7668570551</a> for instant booking.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

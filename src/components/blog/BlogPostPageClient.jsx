@@ -1,8 +1,10 @@
 'use client';
 
 import { useMemo } from 'react';
+import Link from 'next/link';
 import { getRelatedLinks } from '@/utilis/linkingHelper';
 import { getLayoutComponent } from './layouts';
+import RelatedPosts from './RelatedPosts';
 
 // Import all layouts
 import FortPalaceLayout from './layouts/FortPalaceLayout';
@@ -240,6 +242,82 @@ export default function BlogPostPageClient({ post }) {
         }}
       />
       <LayoutComponent post={post} relatedLinks={relatedLinks} />
+
+      {/* Related Service Pages — SEO internal linking based on blog category */}
+      <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
+            Related Services for Your {post.city || post.category || 'Travel'} Trip
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {post.city && (
+              <Link
+                href={`/sightseeing/${post.city.toLowerCase().replace(/\s+/g, '-')}`}
+                className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              >
+                <div className="text-2xl mb-2">🏛️</div>
+                <p className="text-sm font-semibold text-gray-900">{post.city} Sightseeing</p>
+                <p className="text-xs text-gray-500 mt-1">Guided tours</p>
+              </Link>
+            )}
+            <Link
+              href="/tempo-traveller"
+              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+            >
+              <div className="text-2xl mb-2">🚐</div>
+              <p className="text-sm font-semibold text-gray-900">Tempo Traveller</p>
+              <p className="text-xs text-gray-500 mt-1">12–26 seater from ₹23/km</p>
+            </Link>
+            <Link
+              href="/pricing"
+              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+            >
+              <div className="text-2xl mb-2">💰</div>
+              <p className="text-sm font-semibold text-gray-900">View Pricing</p>
+              <p className="text-xs text-gray-500 mt-1">Sedan from ₹11/km</p>
+            </Link>
+            <Link
+              href="/airport-service"
+              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+            >
+              <div className="text-2xl mb-2">✈️</div>
+              <p className="text-sm font-semibold text-gray-900">Airport Transfer</p>
+              <p className="text-xs text-gray-500 mt-1">24/7 pickup & drop</p>
+            </Link>
+            {(post.category === 'Pilgrimage' || post.tags?.some(t => ['temple', 'pilgrimage', 'spiritual'].includes(t))) && (
+              <Link
+                href="/religious-tours"
+                className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              >
+                <div className="text-2xl mb-2">🙏</div>
+                <p className="text-sm font-semibold text-gray-900">Pilgrimage Tours</p>
+                <p className="text-xs text-gray-500 mt-1">Chardham, Vaishno Devi & more</p>
+              </Link>
+            )}
+            <Link
+              href="/wedding"
+              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+            >
+              <div className="text-2xl mb-2">💒</div>
+              <p className="text-sm font-semibold text-gray-900">Wedding Cars</p>
+              <p className="text-xs text-gray-500 mt-1">BMW, Audi, Mercedes</p>
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+            >
+              <div className="text-2xl mb-2">📞</div>
+              <p className="text-sm font-semibold text-gray-900">Contact Us</p>
+              <p className="text-xs text-gray-500 mt-1">Get a free quote</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Posts */}
+      <div className="max-w-5xl mx-auto px-4">
+        <RelatedPosts currentPost={post} />
+      </div>
     </>
   );
 }

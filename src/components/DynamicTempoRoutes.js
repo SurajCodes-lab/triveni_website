@@ -1203,6 +1203,33 @@ export default function DynamicTempoRoutesClient({ data }) {
       </section>
 
       {/* ============================================ */}
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {origin} to {displayDestination} Tempo Traveller — Book AC 12–26 Seater with Driver
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            Book a comfortable AC tempo traveller from {origin} to {displayDestination} with Triveni Cabs. We offer 12-seater,
+            17-seater, 20-seater, and 26-seater Maharaja tempo travellers with professional drivers, GPS tracking, pushback
+            recliner seats, music system, and charging points. Our rates start at just <strong>₹23/km</strong> for a 12-seater —
+            making group travel affordable and comfortable.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Whether you are travelling with family, friends, a corporate team, or for a wedding — our {origin} to {displayDestination} tempo
+            traveller service is available 24/7 with instant booking confirmation. All prices include fuel, driver charges, and
+            vehicle costs. Only toll and state tax are extra. We provide both one-way drop and round-trip packages.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Triveni Cabs has completed 2500+ group trips with a 4.8-star customer rating. Our drivers have 5+ years of
+            commercial driving experience with police verification and valid licences. Browse our full{' '}
+            <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller fleet and routes</Link>,
+            compare <Link href="/pricing" className="text-blue-600 hover:underline">vehicle pricing</Link>, or{' '}
+            <a href="tel:+917668570551" className="text-blue-600 hover:underline">call 7668570551</a> for an instant quote.
+          </p>
+        </div>
+      </section>
+
       {/* VEHICLE BOOKING MODAL */}
       {/* ============================================ */}
       <AnimatePresence>

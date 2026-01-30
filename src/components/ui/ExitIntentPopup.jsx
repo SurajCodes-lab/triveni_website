@@ -1,30 +1,100 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Phone, MessageCircle, Gift, Clock, Shield } from 'lucide-react';
 
 /**
- * Popup that shows on page load after a delay
+ * True Exit Intent Popup
+ * Desktop: Triggers when mouse leaves viewport (moves to top of page)
+ * Mobile: Triggers when user hits back button or scrolls up rapidly
  * Shows only once per session
  */
 
 const ExitIntentPopup = ({
   discount = '10%',
-  couponCode = 'STAY10',
+  couponCode = 'TRIVENI10',
   phoneNumber = '7668570551',
-  delayMs = 500, // 0.5 second delay (allows page to render first)
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [hasTriggered, setHasTriggered] = useState(false);
 
-  // Show popup after delay on every page load
+  const showPopup = useCallback(() => {
+    if (hasTriggered) return;
+    // Check session storage — only show once per session
+    if (typeof window !== 'undefined' && sessionStorage.getItem('exitIntentShown')) return;
+    setIsVisible(true);
+    setHasTriggered(true);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('exitIntentShown', 'true');
+    }
+  }, [hasTriggered]);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, delayMs);
+    if (typeof window === 'undefined') return;
+    // Skip if already shown this session
+    if (sessionStorage.getItem('exitIntentShown')) {
+      setHasTriggered(true);
+      return;
+    }
 
-    return () => clearTimeout(timer);
-  }, [delayMs]);
+    // Minimum time on page before exit intent can trigger (10 seconds)
+    let canTrigger = false;
+    const minTimeTimer = setTimeout(() => {
+      canTrigger = true;
+    }, 10000);
+
+    // === DESKTOP: Mouse leaves viewport from the top ===
+    const handleMouseLeave = (e) => {
+      if (!canTrigger) return;
+      if (e.clientY <= 0) {
+        showPopup();
+      }
+    };
+
+    // === MOBILE: Rapid scroll-up detection ===
+    let lastScrollY = window.scrollY;
+    let lastScrollTime = Date.now();
+
+    const handleScroll = () => {
+      if (!canTrigger) return;
+      const currentY = window.scrollY;
+      const currentTime = Date.now();
+      const timeDelta = currentTime - lastScrollTime;
+      const scrollDelta = lastScrollY - currentY; // positive = scrolling up
+
+      // Rapid scroll up: user scrolled up more than 300px in less than 300ms
+      // and is near the top of the page (within first 200px)
+      if (scrollDelta > 300 && timeDelta < 300 && currentY < 200) {
+        showPopup();
+      }
+
+      lastScrollY = currentY;
+      lastScrollTime = currentTime;
+    };
+
+    // === MOBILE: Back button / popstate detection ===
+    const handlePopState = () => {
+      if (!canTrigger) return;
+      showPopup();
+      // Push state back so user doesn't actually leave
+      window.history.pushState(null, '', window.location.href);
+    };
+
+    // Push an extra history entry so we can catch the back button
+    window.history.pushState(null, '', window.location.href);
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      clearTimeout(minTimeTimer);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [showPopup]);
 
   const closePopup = () => {
     setIsVisible(false);
@@ -70,9 +140,8 @@ const ExitIntentPopup = ({
             className="fixed inset-0 z-[101] flex items-center justify-center p-3 sm:p-4 pointer-events-none"
           >
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto w-full max-w-md pointer-events-auto">
-              {/* Header - Compact on mobile */}
+              {/* Header */}
               <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-4 sm:p-6 text-white relative">
-                {/* Close button */}
                 <button
                   onClick={closePopup}
                   className="absolute top-2 right-2 sm:top-3 sm:right-3 p-2 rounded-full hover:bg-white/20 transition-colors touch-manipulation"
@@ -81,7 +150,6 @@ const ExitIntentPopup = ({
                   <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
 
-                {/* Gift icon - smaller on mobile */}
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                   <Gift className="w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
@@ -94,7 +162,7 @@ const ExitIntentPopup = ({
                 </p>
               </div>
 
-              {/* Content - Touch friendly */}
+              {/* Content */}
               <div className="p-4 sm:p-6">
                 {/* Discount Badge */}
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-dashed border-green-400 rounded-xl p-3 sm:p-4 mb-4 sm:mb-6 text-center">
@@ -111,7 +179,7 @@ const ExitIntentPopup = ({
                   </div>
                 </div>
 
-                {/* Trust signals - stacked on very small screens */}
+                {/* Trust signals */}
                 <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm text-gray-600 flex-wrap">
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4 text-amber-500" />
@@ -123,7 +191,7 @@ const ExitIntentPopup = ({
                   </span>
                 </div>
 
-                {/* CTA Buttons - Large touch targets */}
+                {/* CTA Buttons */}
                 <div className="space-y-3">
                   <button
                     onClick={handleCall}
@@ -142,12 +210,11 @@ const ExitIntentPopup = ({
                   </button>
                 </div>
 
-                {/* No thanks - larger touch target */}
                 <button
                   onClick={closePopup}
                   className="w-full text-center text-gray-400 hover:text-gray-600 text-xs sm:text-sm mt-4 py-3 transition-colors touch-manipulation"
                 >
-                  No thanks, I'll pay full price
+                  No thanks, I&apos;ll pay full price
                 </button>
               </div>
             </div>

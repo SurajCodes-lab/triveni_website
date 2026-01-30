@@ -386,6 +386,35 @@ export default function ChardhamTempoClient({ data }) {
                 </div>
             </section>
 
+            {/* SEO Content Section */}
+            <section className="py-16 px-4 bg-white border-t border-stone-200">
+                <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
+                    <h2 className="text-2xl font-bold text-stone-900 mb-6">
+                        {data.title} by Tempo Traveller — Complete Pilgrimage Package
+                    </h2>
+                    <p className="text-stone-700 leading-relaxed">
+                        Embark on the sacred Chardham Yatra from {data.origin} with Triveni Cabs&apos; premium tempo traveller service.
+                        Our {data.duration} package covers all four holy shrines — Kedarnath, Badrinath, Gangotri, and Yamunotri —
+                        with AC tempo travellers, experienced mountain drivers, and a carefully planned day-wise itinerary for a
+                        comfortable pilgrimage experience.
+                    </p>
+                    <p className="text-stone-700 leading-relaxed">
+                        Our Chardham tempo traveller packages start from{' '}
+                        <strong>{data.packages?.[0]?.price || '₹70,000'}</strong> and include vehicle charges, fuel, driver
+                        allowance, toll, and parking. Choose from 12-seater to 26-seater Maharaja AC tempo travellers with
+                        pushback recliner seats, music system, and GPS tracking — ideal for family groups, senior citizens, and
+                        community pilgrimages.
+                    </p>
+                    <p className="text-stone-700 leading-relaxed">
+                        With 2500+ completed pilgrimages, experienced Uttarakhand road drivers, and 24/7 roadside assistance,
+                        Triveni Cabs ensures a safe and comfortable Chardham Yatra. View our full{' '}
+                        <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller fleet</Link>,
+                        explore <Link href="/religious-tours" className="text-blue-600 hover:underline">other pilgrimage tours</Link>,
+                        or <a href="tel:+917668570551" className="text-blue-600 hover:underline">call 7668570551</a> to book
+                        your Yatra today.
+                    </p>
+                </div>
+            </section>
         </div>
     );
 }

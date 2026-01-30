@@ -835,6 +835,44 @@ export default function TempoMainClient({ data, faqData }) {
         </div>
       </section>
 
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Tempo Traveller on Rent in India — 12 to 26 Seater AC Vehicles with Driver
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            Triveni Cabs is one of India&apos;s most trusted tempo traveller rental services, offering 12-seater, 16-seater, 17-seater,
+            20-seater, and 26-seater Maharaja AC tempo travellers with professional drivers for group travel across North India.
+            Whether you are planning a family trip to <Link href="/tempo-traveller/delhi-to-manali" className="text-blue-600 hover:underline">Manali</Link>,
+            a pilgrimage to <Link href="/tempo-traveller/delhi-to-haridwar" className="text-blue-600 hover:underline">Haridwar</Link> and{' '}
+            <Link href="/tempo-traveller/delhi-to-rishikesh" className="text-blue-600 hover:underline">Rishikesh</Link>,
+            a corporate outing, or a wedding party — our fleet is ready 24/7.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Our outstation tempo traveller rates start at just <strong>₹23 per kilometre</strong> for a 12-seater and go up to ₹27/km for the
+            26-seater Maharaja Edition with super-luxury recliner seats, LED TV, and powerful AC. All prices are all-inclusive — fuel,
+            driver allowance, and vehicle charges are covered. Only toll taxes and state permits are additional.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            We cover 100+ routes from Delhi, Chandigarh, Jaipur, Agra, Haridwar, Rishikesh, Lucknow, Varanasi, and 10+ other cities.
+            Popular routes include Delhi to <Link href="/tempo-traveller/delhi-to-shimla" className="text-blue-600 hover:underline">Shimla</Link>,{' '}
+            Delhi to <Link href="/tempo-traveller/delhi-to-jaipur" className="text-blue-600 hover:underline">Jaipur</Link>,{' '}
+            Delhi to <Link href="/tempo-traveller/delhi-to-agra" className="text-blue-600 hover:underline">Agra</Link>,{' '}
+            and <Link href="/tempo-traveller/chandigarh-to-manali" className="text-blue-600 hover:underline">Chandigarh to Manali</Link>.
+            All vehicles come with GPS tracking, pushback seats, music system, and charging points for a comfortable journey.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            With 2500+ completed trips, a 4.8-star rating, and verified drivers with 5+ years of experience, Triveni Cabs is the
+            preferred choice for group travel. Compare our transparent pricing on the{' '}
+            <Link href="/pricing" className="text-blue-600 hover:underline">pricing page</Link>, or check our{' '}
+            <Link href="/tempo-vs-bus" className="text-blue-600 hover:underline">tempo vs bus comparison</Link> to find the right
+            vehicle for your group size. For instant booking, call{' '}
+            <a href="tel:+917668570551" className="text-blue-600 hover:underline">7668570551</a> or{' '}
+            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline">WhatsApp us</a>.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
