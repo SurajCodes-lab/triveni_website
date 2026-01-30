@@ -735,6 +735,53 @@ export default function HomeClient() {
           </article>
         </div>
       </section>
+
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            Triveni Cabs — India&apos;s Trusted Taxi Service for Outstation, Airport & Wedding Travel
+          </h2>
+          <div className="space-y-4 text-gray-700 text-base leading-relaxed">
+            <p>
+              Triveni Cabs is a leading cab service provider in India, offering reliable and affordable taxi
+              services across 500+ destinations. Whether you need an{' '}
+              <Link href="/airport-service" className="text-blue-600 hover:underline font-medium">airport transfer</Link>,
+              an outstation cab for a weekend getaway, a{' '}
+              <Link href="/tempo-traveller" className="text-blue-600 hover:underline font-medium">tempo traveller for group travel</Link>,
+              or a <Link href="/wedding" className="text-blue-600 hover:underline font-medium">luxury wedding car rental</Link> —
+              we have the right vehicle and the right price for every journey.
+            </p>
+            <p>
+              Our fleet includes AC sedans (Swift Dzire, Toyota Etios) starting at just{' '}
+              <Link href="/pricing" className="text-blue-600 hover:underline font-medium">₹11 per kilometre</Link>,
+              SUVs (Innova, Innova Crysta, Fortuner) from ₹15/km, 12–26 seater tempo travellers from ₹23/km,
+              and 22–56 seater AC buses for large events and corporate travel. All vehicles come with
+              professional, verified drivers, GPS tracking, and 24/7 customer support.
+            </p>
+            <p>
+              We serve major cities including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Rishikesh,
+              Varanasi, Udaipur, and Jodhpur with popular routes like Delhi to Agra, Delhi to Manali,
+              Delhi to Jaipur, and the Golden Triangle circuit. Our{' '}
+              <Link href="/sightseeing" className="text-blue-600 hover:underline font-medium">sightseeing tour packages</Link> include
+              guided visits to the Taj Mahal, Amber Fort, Varanasi Ghats, and 100+ heritage sites.
+            </p>
+            <p>
+              For weddings, we offer luxury car rentals including BMW, Audi, Mercedes-Benz, and Range Rover
+              with professional chauffeurs and full car decoration. Our{' '}
+              <Link href="/corporate-transportation-service" className="text-blue-600 hover:underline font-medium">corporate transportation service</Link> handles
+              employee commutes, client pickups, and offsite events for businesses across India.
+            </p>
+            <p>
+              With 2800+ happy customers, a 4.8-star rating, and transparent pricing with no hidden charges,
+              Triveni Cabs is the preferred choice for families, solo travellers, corporate clients, and tour
+              operators. <Link href="/contact" className="text-blue-600 hover:underline font-medium">Contact us</Link> or{' '}
+              <Link href="/blog" className="text-blue-600 hover:underline font-medium">read our travel blog</Link> for
+              destination guides and trip planning tips.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

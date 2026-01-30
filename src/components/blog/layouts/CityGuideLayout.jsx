@@ -8,6 +8,7 @@ import {
   ChevronRight, Bus, Phone, Map, Hotel, Camera
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function CityGuideLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -168,6 +169,13 @@ export default function CityGuideLayout({ post, relatedLinks }) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read your city guide about ${post.title}. I'd like to explore ${post.city || 'this city'} with a taxi. Can you share tour packages?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* City Tours CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

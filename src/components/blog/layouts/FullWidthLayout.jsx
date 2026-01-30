@@ -8,6 +8,7 @@ import {
   Calendar, Clock, MapPin, ArrowUp, Eye,
   ChevronRight, Phone, Heart, Bookmark
 } from 'lucide-react';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function FullWidthLayout({ post, relatedLinks }) {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -237,6 +238,17 @@ export default function FullWidthLayout({ post, relatedLinks }) {
           </div>
         </section>
       )}
+
+      {/* WhatsApp CTA */}
+      <section className="py-12 px-4">
+        <div className="max-w-3xl mx-auto">
+          <WhatsAppCTA
+            message={`Hi! I just read about ${post.title}. I'm interested in booking a trip to ${post.city || 'this destination'}. Can you share pricing?`}
+            buttonText="Get Free Quote on WhatsApp"
+            variant="primary"
+          />
+        </div>
+      </section>
 
       {/* Tour CTA Section */}
       {relatedLinks?.relatedTours?.length > 0 && (

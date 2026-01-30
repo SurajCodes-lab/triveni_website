@@ -9,6 +9,7 @@ import {
   Heart, ChevronRight, Flame, Phone, Users
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function TempleLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -190,6 +191,13 @@ export default function TempleLayout({ post, relatedLinks }) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I'm interested in a pilgrimage tour to ${post.city || 'this destination'}. Can you help with details?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Pilgrimage Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

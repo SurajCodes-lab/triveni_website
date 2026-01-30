@@ -7,6 +7,7 @@ import {
   Calendar, Clock, MapPin, History, Scroll,
   ChevronRight, Phone, ChevronDown, Milestone, Compass
 } from 'lucide-react';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function TimelineLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -238,6 +239,17 @@ export default function TimelineLayout({ post, relatedLinks }) {
           </div>
         </div>
       </div>
+
+      {/* WhatsApp CTA */}
+      <section className="py-12 px-4 bg-stone-50">
+        <div className="max-w-3xl mx-auto">
+          <WhatsAppCTA
+            message={`Hi! I just read about ${post.title}. I'd like to plan a historical tour to ${post.city || 'this destination'}. Can you help?`}
+            buttonText="Get Free Quote on WhatsApp"
+            variant="primary"
+          />
+        </div>
+      </section>
 
       {/* Book Tour CTA */}
       {relatedLinks?.relatedTours?.length > 0 && (

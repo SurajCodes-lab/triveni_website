@@ -8,6 +8,7 @@ import {
   TreePine, ChevronRight, Camera, Phone, Compass
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function NatureLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -190,6 +191,13 @@ export default function NatureLayout({ post, relatedLinks }) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title} on your blog. I'm interested in booking a trip to ${post.city || 'this destination'}. Can you help with details and pricing?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Hill Station Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

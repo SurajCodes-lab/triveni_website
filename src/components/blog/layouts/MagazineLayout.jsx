@@ -8,6 +8,7 @@ import {
   ChevronRight, Phone, ArrowRight, Quote
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function MagazineLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -219,6 +220,13 @@ export default function MagazineLayout({ post, relatedLinks }) {
                   Call to Book
                 </a>
               </div>
+
+              {/* WhatsApp CTA */}
+              <WhatsAppCTA
+                message={`Hi! I just read about ${post.title}. I'm interested in visiting ${post.city || 'this destination'}. Can you help with a quote?`}
+                buttonText="Get Free Quote on WhatsApp"
+                variant="primary"
+              />
 
               {/* Related Tours */}
               {relatedLinks?.relatedTours?.length > 0 && (

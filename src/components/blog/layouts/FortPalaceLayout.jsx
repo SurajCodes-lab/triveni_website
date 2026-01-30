@@ -9,6 +9,7 @@ import {
   Castle, History, ChevronRight, Star, Phone
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function FortPalaceLayout({ post, relatedLinks }) {
   const [activeTab, setActiveTab] = useState('overview');
@@ -195,6 +196,13 @@ export default function FortPalaceLayout({ post, relatedLinks }) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I want to plan a royal heritage tour to ${post.city || 'this destination'}. Can you help?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Book Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

@@ -9,6 +9,7 @@ import {
   ChevronDown, ChevronUp, Star, Zap, Globe, Heart
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function ModernCardLayout({ post, relatedLinks }) {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -251,6 +252,13 @@ export default function ModernCardLayout({ post, relatedLinks }) {
                 </motion.span>
               ))}
             </div>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I'd love to plan a trip to ${post.city || 'this destination'}. Can you share packages and pricing?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* CTA Card */}
             {relatedLinks?.relatedTours?.length > 0 && (

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Car, Users, Truck, Bus, Shield, Clock, MapPin, Phone, CheckCircle, Star } from 'lucide-react';
 import FareCalculator from '@/components/calculator/FareCalculator';
 import { COMPANY_INFO } from '@/lib/seo/constants';
@@ -367,6 +368,36 @@ export default function PricingPage() {
               WhatsApp Us
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Taxi Rates & Car Rental Pricing in India — Transparent Fares with No Hidden Charges
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            Triveni Cabs offers the most competitive and transparent taxi pricing across India. Our sedan cab
+            rates start at just <strong>₹11 per kilometre</strong> for popular models like Swift Dzire, Toyota Etios, and Honda Amaze —
+            ideal for couples, solo travellers, and small families. Need more space? Our SUV rentals including
+            Toyota Innova and Innova Crysta are available from <strong>₹15/km</strong>, perfect for family road trips and
+            outstation travel across North India.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            For group travel, our <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller fleet</Link> ranges
+            from 12-seater to 26-seater Maharaja models at <strong>₹23–27/km</strong>, making them the most affordable option for
+            pilgrimages, corporate outings, and family reunions. Large groups can book our{' '}
+            <Link href="/bus-routes" className="text-blue-600 hover:underline">AC buses (22–56 seater)</Link> starting
+            at <strong>₹30/km</strong> for events, weddings, and tour operators.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            All our prices include driver allowance, fuel charges, and base fare. Toll and state taxes are
+            additional. Use our <strong>Fare Calculator</strong> above to get instant estimates for popular routes
+            like Delhi to Agra, Delhi to Manali, Delhi to Jaipur, and 50+ more. For custom quotes,{' '}
+            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline">WhatsApp us</a> or
+            call <a href="tel:+917668570551" className="text-blue-600 hover:underline">7668570551</a> for instant booking.
+          </p>
         </div>
       </section>
 

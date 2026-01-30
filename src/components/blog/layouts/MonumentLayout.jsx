@@ -8,6 +8,7 @@ import {
   ChevronRight, Award, Phone, Info
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function MonumentLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -169,6 +170,13 @@ export default function MonumentLayout({ post, relatedLinks }) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I'd like to book a heritage tour to ${post.city || 'this destination'}. Can you share details?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

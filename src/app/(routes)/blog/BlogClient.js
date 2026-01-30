@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Clock, Calendar, Sparkles, MapPin, Compass, Mountain, Building, Heart, Plane, Camera } from 'lucide-react';
+import { ArrowRight, Clock, Calendar, Sparkles, MapPin, Compass, Mountain, Building, Heart, Plane, Camera, Phone, MessageCircle, Star } from 'lucide-react';
 import { blogPosts } from '@/utilis/blog';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -185,38 +185,108 @@ export default function BlogClient() {
 
       {/* CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-br from-gray-900 to-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-white/80 text-sm mb-6">
-              <Plane className="w-4 h-4" />
-              Ready to Travel?
+            <span className="inline-flex items-center gap-2 bg-amber-500/20 px-4 py-2 rounded-full text-amber-400 text-sm font-semibold mb-6">
+              <Star className="w-4 h-4" />
+              4.8 Rating | 2800+ Happy Customers
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Turn These Stories Into Adventures
+              Turn These Stories Into Your Next Adventure
             </h2>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Book comfortable transport with Triveni Cabs and explore India with ease. Professional drivers, AC vehicles, and 24/7 support.
+            <p className="text-gray-300 mb-4 max-w-2xl mx-auto text-lg">
+              Book comfortable AC cabs, tempo travellers, and buses across 500+ routes in India. Professional drivers, transparent pricing, and 24/7 support.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <p className="text-amber-400 font-bold text-xl mb-8">
+              Starting from just ₹11/km
+            </p>
+
+            {/* Quick action buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <a
+                href="https://wa.me/917668570551?text=Hi!%20I%20found%20your%20blog%20and%20I%27m%20interested%20in%20booking%20a%20trip.%20Can%20you%20help%20with%20details%20and%20pricing%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold transition-all hover:scale-105"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp for Free Quote
+              </a>
+              <a
+                href="tel:+917668570551"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold transition-all hover:scale-105"
+              >
+                <Phone className="w-5 h-5" />
+                Call: 7668570551
+              </a>
+            </div>
+
+            {/* Service links */}
+            <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/sightseeing"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg hover:shadow-purple-500/25 transition-all"
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-colors text-sm"
               >
-                Explore Tours
-                <ArrowRight className="w-5 h-5" />
+                Explore Tours <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-white/10 text-white px-8 py-4 rounded-xl font-bold border border-white/20 hover:bg-white/20 transition-colors"
+                href="/pricing"
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-colors text-sm"
               >
-                Contact Us
+                View Pricing <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/tempo-traveller"
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-colors text-sm"
+              >
+                Tempo Traveller <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/airport-service"
+                className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-colors text-sm"
+              >
+                Airport Transfer <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            India Travel Blog — Expert Guides, Destination Tips & Itineraries
+          </h2>
+          <p className="text-gray-700 leading-relaxed">
+            Welcome to the Triveni Cabs travel blog — your go-to resource for planning the perfect trip across India.
+            Whether you are looking for the best hill stations in North India, spiritual pilgrimage routes, heritage
+            sightseeing tours, or adventure destinations, our expert travel guides cover it all. We publish in-depth
+            destination guides for popular cities like <Link href="/sightseeing/agra" className="text-blue-600 hover:underline">Agra</Link>,{' '}
+            <Link href="/sightseeing/jaipur" className="text-blue-600 hover:underline">Jaipur</Link>,{' '}
+            <Link href="/sightseeing/manali" className="text-blue-600 hover:underline">Manali</Link>,{' '}
+            <Link href="/sightseeing/shimla" className="text-blue-600 hover:underline">Shimla</Link>,
+            and many more.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Planning a group trip? Check out our <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller rental</Link> starting
+            at ₹23/km for 12–26 seater AC vehicles. For families and couples, our{' '}
+            <Link href="/pricing" className="text-blue-600 hover:underline">sedan rentals start at just ₹11/km</Link> with
+            professional drivers, transparent pricing, and no hidden charges. We also offer{' '}
+            <Link href="/airport-service" className="text-blue-600 hover:underline">24/7 airport transfer services</Link> across
+            50+ airports and <Link href="/wedding" className="text-blue-600 hover:underline">luxury wedding car rentals</Link> including
+            BMW, Audi, and Mercedes.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            With 2800+ happy customers, a 4.8-star rating, and service across 500+ destinations in India, Triveni Cabs
+            is trusted by solo travellers, families, corporate groups, and wedding planners alike. Browse our travel
+            articles above, or <Link href="/contact" className="text-blue-600 hover:underline">contact us</Link> for
+            a personalized travel plan and free quote.
+          </p>
         </div>
       </section>
     </div>

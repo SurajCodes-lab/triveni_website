@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Clock } from 'lucide-react';
+import { ArrowRight, Clock, Phone, MessageCircle } from 'lucide-react';
 import { blogPosts } from '@/utilis/blog';
+import { phoneNumber } from '@/utilis/data';
 
 function RelatedPostCard({ post }) {
   const [imageError, setImageError] = useState(false);
@@ -85,6 +86,38 @@ export default function RelatedPosts({ currentPostId, currentCategory, currentTa
 
   return (
     <section className="mt-16 pt-16 border-t">
+      {/* Conversion CTA before related posts */}
+      <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 md:p-8 mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+              Ready to Book Your Trip?
+            </h3>
+            <p className="text-gray-600">
+              Get instant quotes, AC vehicles, and 24/7 support. Starting from just ₹11/km.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <a
+              href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent("Hi! I'm interested in booking a trip. Can you help with details and pricing?")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp Us
+            </a>
+            <a
+              href={`tel:+91${phoneNumber}`}
+              className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-xl transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+
       <h2 className="text-3xl font-bold mb-8">Related Articles</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {relatedPosts.map((post) => (

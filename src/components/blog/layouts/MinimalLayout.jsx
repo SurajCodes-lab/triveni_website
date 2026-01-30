@@ -7,6 +7,7 @@ import {
   Calendar, Clock, MapPin, ChevronRight, Phone, ArrowRight
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function MinimalLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -153,6 +154,13 @@ export default function MinimalLayout({ post, relatedLinks }) {
                 ))}
               </div>
             </div>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I'm interested in visiting ${post.city || 'this destination'}. Can you help with transport and pricing?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

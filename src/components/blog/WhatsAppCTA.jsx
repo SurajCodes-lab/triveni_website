@@ -2,6 +2,7 @@
 
 import { MessageCircle, Phone } from 'lucide-react';
 import { phoneNumber } from '@/utilis/data';
+import { trackWhatsAppClick } from '@/utilis/analytics';
 
 export default function WhatsAppCTA({
   message = "Hi! I'm interested in booking a trip. Can you help me with the details?",
@@ -11,6 +12,7 @@ export default function WhatsAppCTA({
 }) {
 
   const handleWhatsAppClick = () => {
+    trackWhatsAppClick(`blog_${variant}`, message, context);
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');

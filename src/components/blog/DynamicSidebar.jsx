@@ -6,6 +6,7 @@ import {
   MapPin, Phone, MessageCircle, Clock, ArrowRight,
   Compass, Star, Tag, BookOpen
 } from 'lucide-react';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const themeColors = {
   amber: {
@@ -79,6 +80,7 @@ export default function DynamicSidebar({ post, relatedLinks, theme = 'blue' }) {
         <div className="space-y-3">
           <a
             href="https://wa.me/917668570551"
+            onClick={() => trackWhatsAppClick('blog_sidebar', '', 'sidebar_booking')}
             className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-xl font-bold transition-colors w-full"
           >
             <MessageCircle className="w-5 h-5" />
@@ -86,6 +88,7 @@ export default function DynamicSidebar({ post, relatedLinks, theme = 'blue' }) {
           </a>
           <a
             href="tel:+917668570551"
+            onClick={() => trackPhoneCall('blog_sidebar', '7668570551')}
             className={`flex items-center justify-center gap-2 ${colors.button} text-white py-3 px-4 rounded-xl font-bold transition-colors w-full`}
           >
             <Phone className="w-5 h-5" />

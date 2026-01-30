@@ -8,6 +8,7 @@ import {
   Calendar, Clock, MapPin, ChevronRight, Phone,
   Star, Camera, Navigation, ArrowRight
 } from 'lucide-react';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function SplitScreenLayout({ post, relatedLinks }) {
   const [activeSection, setActiveSection] = useState(0);
@@ -171,6 +172,13 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
                 ))}
               </div>
             </div>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I'm interested in visiting ${post.city || 'this destination'}. Can you share pricing and packages?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Book Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (

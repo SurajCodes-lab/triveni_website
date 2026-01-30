@@ -8,6 +8,7 @@ import {
   ChevronRight, Phone, Compass, Shield, Backpack
 } from 'lucide-react';
 import DynamicSidebar from '../DynamicSidebar';
+import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function AdventureLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -172,6 +173,13 @@ export default function AdventureLayout({ post, relatedLinks }) {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* WhatsApp CTA */}
+            <WhatsAppCTA
+              message={`Hi! I just read about ${post.title}. I'm interested in an adventure trip to ${post.city || 'this destination'}. Can you help with booking?`}
+              buttonText="Get Free Quote on WhatsApp"
+              variant="primary"
+            />
 
             {/* Adventure Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (
