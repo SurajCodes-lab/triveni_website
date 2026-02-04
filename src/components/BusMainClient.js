@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info, HelpCircle, ChevronDown } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info, HelpCircle, ChevronDown } from '@/components/ui/icons';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { useInView as useInViewObserver } from 'react-intersection-observer';
 import { TypeAnimation } from 'react-type-animation';

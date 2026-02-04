@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle,
   ArrowRight, Route, Award, TrendingUp, IndianRupee, Sparkles, Info, DollarSign, Navigation, HelpCircle, ChevronDown
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 // Import from smaller utility file to reduce bundle size

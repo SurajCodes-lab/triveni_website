@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Phone, MessageCircle, Clock, ArrowRight,
   Compass, Star, Tag, BookOpen
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const themeColors = {

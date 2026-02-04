@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Clock, Phone, MessageCircle } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { ArrowRight, Clock, Phone, MessageCircle } from '@/components/ui/icons';
 import { blogPosts } from '@/utilis/blog';
 import { phoneNumber } from '@/utilis/data';
 
