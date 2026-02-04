@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from "react";
-import { Phone, ChevronDown, Menu, X } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Phone, ChevronDown, Menu, X } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { vehiclesServices } from "@/utilis/data";

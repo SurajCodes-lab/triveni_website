@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ChevronRight, Phone,
   Star, Camera, Navigation, ArrowRight
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function SplitScreenLayout({ post, relatedLinks }) {

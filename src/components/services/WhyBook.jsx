@@ -1,12 +1,13 @@
 import React from "react";
-import { 
-  ShieldCheck, 
-  Clock, 
-  DollarSign, 
-  Award, 
-  MapPin, 
-  PhoneCall 
-} from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import {
+  ShieldCheck,
+  Clock,
+  DollarSign,
+  Award,
+  MapPin,
+  PhoneCall
+} from "@/components/ui/icons";
 
 const WhyBook = () => {
   const reasons = [

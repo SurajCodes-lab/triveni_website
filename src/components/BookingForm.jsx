@@ -156,9 +156,9 @@ const BookingForm = ({ slug, packageInfo }) => {
           <div className="bg-gradient-to-r from-[#FACF2D] to-[#FFE17D] p-8">
             <div className="flex flex-wrap items-center justify-between">
               <div>
-                <h1 className="text-2xl max-sm:text-xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl max-sm:text-xl font-bold text-gray-900 mb-2">
                   {packageInfo.title}
-                </h1>
+                </h2>
                 <div className="flex gap-4 text-gray-700">
                   <div className="flex items-center max-sm:text-sm">
                     <Calendar className="w-4 h-4 mr-2" />
@@ -329,9 +329,9 @@ const BookingForm = ({ slug, packageInfo }) => {
             {currentStep === 2 && (
               // Contact Information Step
               <motion.div {...fadeInUp} className="space-y-6">
-                <p className="text-2xl font-semibold mb-6">
+                <h2 className="text-2xl font-semibold mb-6 text-gray-900">
                   Contact Information
-                </p>
+                </h2>
                 <div className="bg-gray-50 p-6 rounded-xl space-y-6">
                   <div>
                     <label className="block text-sm text-start font-medium mb-2">
@@ -404,9 +404,9 @@ const BookingForm = ({ slug, packageInfo }) => {
 
             {currentStep === 3 && (
               <motion.div {...fadeInUp} className="space-y-6">
-                <p className="text-2xl font-semibold mb-6">
+                <h2 className="text-2xl font-semibold mb-6 text-gray-900">
                   Confirm Your Booking
-                </p>
+                </h2>
                 <div className="bg-gray-50 p-6 rounded-xl space-y-6">
                   <div className="space-y-4">
                     <h3 className="text-lg font-medium">Booking Summary</h3>

@@ -1,6 +1,9 @@
 // src/app/tempo-traveller/[route]/page.js
 
 import { tempoFleet, tempoRoutes, localSightseeing, tempoCities } from '@/utilis/tempoTravellerData';
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import { chardhamRoutes } from '@/utilis/chardhamData';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import TempoCityClient from '@/components/TempoCityClient';

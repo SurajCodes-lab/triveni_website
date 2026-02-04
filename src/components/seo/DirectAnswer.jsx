@@ -12,7 +12,8 @@
  */
 
 import { motion } from 'framer-motion';
-import { CheckCircle, Info, ArrowRight } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { CheckCircle, Info, ArrowRight } from '@/components/ui/icons';
 
 export default function DirectAnswer({
   question,

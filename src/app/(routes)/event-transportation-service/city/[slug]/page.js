@@ -10,6 +10,9 @@ import {
   eventFAQs,
   getAllEventTypes
 } from '@/utilis/eventTransportData';
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import {
   Phone,
   MapPin,

@@ -9,7 +9,8 @@ import { useInView as useInViewObserver } from 'react-intersection-observer';
 import { TypeAnimation } from 'react-type-animation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { additionalInfo, whyChooseUs } from '@/utilis/busRoutesData';
+// Import from smaller utility file to reduce bundle size
+import { additionalInfo, whyChooseUs } from '@/utilis/busUtilsData';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);

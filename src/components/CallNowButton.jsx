@@ -1,6 +1,7 @@
 'use client';
 
-import { Phone, ArrowRight } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Phone, ArrowRight } from '@/components/ui/icons';
 import { trackPhoneCall } from '@/utilis/analytics';
 
 export default function CallNowButton({ phoneNumber, location = 'unknown' }) {

@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { tourDetails } from "@/utilis/data";
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import ItinerarySection from "@/components/ItinerarySection";
 import { Calendar, MapPin, Clock, Users, Car, Star, Coffee, BedDouble, CheckCircle, Phone } from "lucide-react";
 

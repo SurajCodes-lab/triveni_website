@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { ChevronDown } from "@/components/ui/icons";
 import { motion } from "framer-motion";
 
 const ItinerarySection = ({ itinerary }) => {

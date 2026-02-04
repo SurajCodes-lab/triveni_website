@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ChevronRight, Car, MapPinned, Plane, Building2 } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ChevronRight, Car, MapPinned, Plane, Building2 } from "@/components/ui/icons";
 import { trackNavigation, trackSocialClick, trackPhoneCall, trackButtonClick } from "@/utilis/analytics";
 import { cn } from "@/utilis/cn";
 

@@ -803,9 +803,9 @@ const VehicleDetails = ({ slug }) => {
                       </div>
 
                       {/* Key Features */}
-                      <h4 className="text-xl font-semibold mb-4">
+                      <h3 className="text-xl font-semibold mb-4">
                         Key Features & Amenities
-                      </h4>
+                      </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                         {getVehicleFeatures().map((feature, index) => (
                           <motion.div
@@ -824,9 +824,9 @@ const VehicleDetails = ({ slug }) => {
                       {/* Local Sightseeing Packages */}
                       {selectedVehicles.localSightseeing && (
                         <div className="border-t pt-8">
-                          <h4 className="text-xl font-semibold mb-6">
+                          <h3 className="text-xl font-semibold mb-6">
                             Local Sightseeing Packages
-                          </h4>
+                          </h3>
                           <div className="space-y-4">
                             {selectedVehicles.localSightseeing.map((pkg, index) => (
                               <div

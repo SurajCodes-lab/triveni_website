@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin,
   Navigation,
@@ -12,7 +13,7 @@ import {
   MessageCircle,
   Info,
   CheckCircle
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 /**
  * Fare Calculator - Interactive tool for instant fare estimates

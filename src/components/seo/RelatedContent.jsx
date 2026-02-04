@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin,
   Car,
@@ -14,7 +15,7 @@ import {
   ChevronRight,
   Clock,
   IndianRupee
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
 
 /**

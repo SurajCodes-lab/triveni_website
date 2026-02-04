@@ -2,6 +2,9 @@ import { notFound } from 'next/navigation';
 import { getTourBySlug, getAllTourSlugs } from '@/utilis/religiousTourData';
 import ReligiousTourClient from '@/components/religious/ReligiousTourClient';
 
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
+
 // Generate static params for all tours
 export async function generateStaticParams() {
   const slugs = getAllTourSlugs();

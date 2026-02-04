@@ -23,7 +23,14 @@ const WeddingHero = () => {
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50">
-        <div className="absolute inset-0 bg-[url('/images/about/about_banner.webp')] bg-cover bg-center opacity-10"></div>
+        <Image
+          src="/images/about/about_banner.webp"
+          alt="Wedding Car Services Background"
+          fill
+          priority
+          className="object-cover object-center opacity-10"
+          sizes="100vw"
+        />
       </div>
 
       {/* Floating Elements */}

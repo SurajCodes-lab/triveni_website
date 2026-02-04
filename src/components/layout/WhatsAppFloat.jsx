@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { MessageCircle } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackHover, trackEvent } from '@/utilis/analytics';
 
 const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {

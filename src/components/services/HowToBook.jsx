@@ -1,7 +1,8 @@
 'use client';
 
 import React from "react";
-import { SearchCheck, Calendar, CreditCard, Car } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { SearchCheck, Calendar, CreditCard, Car } from "@/components/ui/icons";
 import { SectionHeader } from "@/components/ui/SectionHeading";
 
 /**

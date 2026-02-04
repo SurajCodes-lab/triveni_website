@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ChevronRight } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { ChevronRight } from "@/components/ui/icons";
 import { features } from "../../utilis/data";
 import Link from "next/link";
 import Image from "next/image";

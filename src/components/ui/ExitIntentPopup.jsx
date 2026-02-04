@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Phone, MessageCircle, Gift, Clock, Shield } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { X, Phone, MessageCircle, Gift, Clock, Shield } from '@/components/ui/icons';
 
 /**
  * True Exit Intent Popup

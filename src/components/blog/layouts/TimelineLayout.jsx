@@ -3,10 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, History, Scroll,
   ChevronRight, Phone, ChevronDown, Milestone, Compass
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function TimelineLayout({ post, relatedLinks }) {

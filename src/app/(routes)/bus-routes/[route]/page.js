@@ -1,6 +1,9 @@
 // src/app/bus-routes/[route]/page.js
 
 import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute } from '@/utilis/busRoutesData';
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
 import Script from 'next/script';
 

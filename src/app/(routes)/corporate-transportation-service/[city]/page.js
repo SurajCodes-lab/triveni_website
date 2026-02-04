@@ -9,6 +9,9 @@ import {
   getCorporateCityBySlug,
   getAllCorporateSlugs
 } from '@/utilis/corporateTransportData';
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import {
   Phone,
   MapPin,

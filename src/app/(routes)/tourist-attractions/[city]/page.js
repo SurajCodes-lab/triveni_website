@@ -3,6 +3,9 @@
 import TouristAttractionsClient from '@/components/TouristAttractionsClient';
 import { touristAttractions, getCitiesWithAttractions } from '@/utilis/touristAttractionsData';
 
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   // Generate static params for cities with tourist attractions only
   const cities = getCitiesWithAttractions();

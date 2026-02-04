@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import CityAirportServiceClient from "@/components/airport/CityAirportServiceClient";
 import { getCityData, getAllCitySlugs } from "@/utilis/airportCityData";
 
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
+
 // Generate metadata for each city page
 export async function generateMetadata({ params }) {
   const city = getCityData(params.city);

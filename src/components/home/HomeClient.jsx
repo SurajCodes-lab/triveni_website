@@ -60,6 +60,7 @@ import {
   Zap
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { phoneNumber } from "@/utilis/data";
 
 // Static service section data
@@ -334,7 +335,7 @@ function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
               <item.icon className="w-5 h-5 text-gray-800" />
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+              <h3 className="font-bold text-gray-900 text-sm">{item.title}</h3>
               <p className="text-xs text-gray-600">{item.desc}</p>
             </div>
           </div>
@@ -399,12 +400,13 @@ export default function HomeClient() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-2 pb-8 md:pt-0 md:pb-4">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat brightness-110"
-            style={{
-              backgroundImage: "url('/images/HERO_SECTION_MAIN_PAGE.jpg')",
-              filter: "brightness(1.1) contrast(1.1)"
-            }}
+          <Image
+            src="/images/HERO_SECTION_MAIN_PAGE.jpg"
+            alt="Triveni Cabs - Premium Taxi Service in India"
+            fill
+            priority
+            className="object-cover object-center brightness-110 contrast-110"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/40"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/40 via-transparent to-transparent"></div>

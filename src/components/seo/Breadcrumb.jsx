@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ChevronRight, Home } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { ChevronRight, Home } from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
 import { generateBreadcrumbSchema } from '@/lib/seo/schema-generators';
 import { BASE_URL } from '@/lib/seo/constants';

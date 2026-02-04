@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { ChevronDown, HelpCircle, MessageCircle } from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
 import { generateFAQSchema } from '@/lib/seo/schema-generators';
 import { COMPANY_INFO } from '@/lib/seo/constants';

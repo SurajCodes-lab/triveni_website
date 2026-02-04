@@ -4,10 +4,11 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ChevronRight, Phone, Sparkles,
   ChevronDown, ChevronUp, Star, Zap, Globe, Heart
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import DynamicSidebar from '../DynamicSidebar';
 import WhatsAppCTA from '../WhatsAppCTA';
 

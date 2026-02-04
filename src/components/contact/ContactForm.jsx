@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Send } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Send } from '@/components/ui/icons';
 import { trackFormSubmission, trackFormInteraction, trackError } from '@/utilis/analytics';
 import Button from '@/components/ui/Button';
 import { cn } from '@/utilis/cn';

@@ -169,9 +169,13 @@ export default function AboutClient() {
       >
         {/* Background Image */}
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/about_page_hero_section.jpg')" }}
+          <Image
+            src="/images/about_page_hero_section.jpg"
+            alt="About Triveni Cabs - Your Trusted Travel Partner"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-amber-900/40"></div>
         </div>

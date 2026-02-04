@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, Eye, ArrowRight } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Calendar, Clock, Eye, ArrowRight } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
 
 export default function BlogCard({ post, index = 0 }) {
@@ -39,6 +40,8 @@ export default function BlogCard({ post, index = 0 }) {
             className="object-cover group-hover:scale-110 transition-transform duration-slow"
             onError={() => setImageError(true)}
             loading="lazy"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAYH/8QAHxAAAgICAgMBAAAAAAAAAAAAAQIDBAURACExEkFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEAAAABHgkc7N//Z"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-6xl">

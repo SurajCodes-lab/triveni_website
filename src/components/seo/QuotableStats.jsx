@@ -12,7 +12,8 @@
  */
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Users, Star, Clock, MapPin, Shield, Award, Phone } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { TrendingUp, Users, Star, Clock, MapPin, Shield, Award, Phone } from '@/components/ui/icons';
 
 const iconMap = {
   rating: Star,

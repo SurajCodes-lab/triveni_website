@@ -3,10 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, Building2, Utensils, ShoppingBag,
   ChevronRight, Bus, Phone, Map, Hotel, Camera
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import DynamicSidebar from '../DynamicSidebar';
 import WhatsAppCTA from '../WhatsAppCTA';
 

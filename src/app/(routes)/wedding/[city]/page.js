@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import CityWeddingPageClient from "@/components/wedding/CityWeddingPageClient";
 import { getWeddingCityData, getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
 
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
+
 // Generate metadata for each city page
 export async function generateMetadata({ params }) {
   const city = getWeddingCityData(params.city);

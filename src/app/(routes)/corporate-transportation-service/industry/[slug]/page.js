@@ -5,6 +5,9 @@ import {
   getIndustryBySlug,
   getAllIndustrySlugs
 } from '@/utilis/corporateIndustryData';
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import {
   Phone,
   MapPin,

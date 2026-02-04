@@ -9,7 +9,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { additionalInfo } from '@/utilis/busRoutesData';
+// Import from smaller utility file to reduce bundle size
+import { additionalInfo } from '@/utilis/busUtilsData';
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet } = data;

@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
+// Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ArrowUp, Eye,
   ChevronRight, Phone, Heart, Bookmark
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function FullWidthLayout({ post, relatedLinks }) {

@@ -2,9 +2,13 @@
 
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
+
+// ISR: Revalidate every hour for better SEO and performance
+export const revalidate = 3600;
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
-import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
+// Dynamic import for keywords to reduce initial bundle size (37K+ lines)
+// import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
 import { getCityLocalInfo } from "@/utilis/cityLocalInfo";
 import CityServiceClient from "@/components/cities/CityServiceClient";
 import RouteClientContent from "./RouteClientContent";
@@ -81,7 +85,8 @@ export async function generateMetadata({ params }) {
     const route = Array.isArray(routes) ? routes.find(r => r && r.destination && r.destination.toLowerCase() === formattedDestination.toLowerCase()) : null;
     const startingPrice = route?.prices?.[0]?.price || "₹2760";
 
-    // Get ALL keywords for this route
+    // Get ALL keywords for this route (dynamically imported to reduce bundle)
+    const { getAllKeywordsForPage } = await import("@/utilis/enhancedKeywords");
     const allKeywords = getAllKeywordsForPage(formattedCityName, formattedDestination);
 
     // Title under 60 chars, Description under 155 chars (Google guidelines)
@@ -159,7 +164,8 @@ export async function generateMetadata({ params }) {
     // CITY PAGE METADATA
     const formattedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
-    // Get ALL keywords for this city
+    // Get ALL keywords for this city (dynamically imported to reduce bundle)
+    const { getAllKeywordsForPage } = await import("@/utilis/enhancedKeywords");
     const allKeywords = getAllKeywordsForPage(formattedCityName);
 
     const enhancedCityTitle = `Taxi Service in ${formattedCityName} | 24x7 Cab Booking | Car Rental & Outstation Tours`;
