@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 // Centralized icon imports for better bundle optimization
 import { ChevronRight, Phone, MapPin, Globe, Languages, Award, Users, Star, Sparkles, BookOpen, Compass, Camera, Heart, CheckCircle, BadgeCheck, Clock, Shield, ArrowRight, Navigation } from '@/components/ui/icons';
-import { BsWhatsapp } from 'react-icons/bs';
+import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';

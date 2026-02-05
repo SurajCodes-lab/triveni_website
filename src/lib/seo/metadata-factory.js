@@ -20,7 +20,7 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
   const title = truncateTitle(`${origin} to ${destination} Taxi ₹${price} — Book Online 24/7`);
   const description = truncateDescription(
     `${origin} to ${destination} taxi at just ₹${price}. ${distance}km in ${duration}. ` +
-    `Sedan, SUV, Tempo available. 2800+ happy customers. ` +
+    `Sedan, SUV, Tempo available. 10,000+ happy customers. ` +
     `Call ${COMPANY_INFO.phone.display} for instant booking!`
   );
 
@@ -76,7 +76,7 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
   const description = truncateDescription(
     tourDesc ||
     `${tourName} at just ₹${price}. ${duration} with AC vehicle & expert driver. ` +
-    `4.8★ rated, 2800+ happy customers. Book now: ${COMPANY_INFO.phone.display}!`
+    `4.8★ rated, 10,000+ happy customers. Book now: ${COMPANY_INFO.phone.display}!`
   );
 
   return {
@@ -434,7 +434,7 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
   const title = truncateTitle(`${origin} to ${destination} Tempo ₹${price} — ${seats} Seater AC`);
   const description = truncateDescription(
     `${origin} to ${destination} tempo traveller ₹${price}. ${seats}-seater AC with pushback seats. ` +
-    `2800+ happy groups served. Instant booking: ${COMPANY_INFO.phone.display}!`
+    `10,000+ happy groups served. Instant booking: ${COMPANY_INFO.phone.display}!`
   );
 
   return {

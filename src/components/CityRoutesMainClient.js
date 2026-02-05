@@ -11,8 +11,7 @@ import {
   Search, Filter, X, BadgeCheck, Timer
 } from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BsWhatsapp } from 'react-icons/bs';
-import { HiOutlineMail } from 'react-icons/hi';
+import { WhatsAppIcon as BsWhatsapp, OutlineMailIcon as HiOutlineMail } from '@/components/ui/icons';
 import { phoneNumber, emailAddress } from '@/utilis/data';
 
 // All 14 cities data

@@ -312,8 +312,8 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }}
       />
 
-      {/* Render Client Component */}
-      <BlogClient />
+      {/* Render Client Component - pass posts as props to avoid importing data in client bundle */}
+      <BlogClient posts={blogPosts} />
     </>
   );
 }

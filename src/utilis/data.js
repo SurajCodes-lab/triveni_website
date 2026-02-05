@@ -418,22 +418,22 @@ import {
     {
       icon: Car,
       title: "Quality Fleet",
-      description: "Modern, well-maintained vehicles for your comfort and safety",
+      description: "500+ GPS-tracked, sanitized vehicles including sedans, SUVs, tempo travellers, and luxury cars with verified professional drivers",
     },
     {
       icon: Clock,
       title: "24/7 Service",
-      description: "Round-the-clock availability for all your travel needs",
+      description: "Round-the-clock booking and customer support across 50+ cities, with instant WhatsApp confirmation and real-time driver tracking",
     },
     {
       icon: MapPin,
       title: "Wide Coverage",
-      description: "Serving major cities and tourist destinations nationwide",
+      description: "Serving 500+ routes across North India including Delhi, Agra, Jaipur, Shimla, Manali, Chandigarh, Haridwar, and Rishikesh",
     },
     {
       icon: Phone,
       title: "Easy Booking",
-      description: "Quick and hassle-free reservation process",
+      description: "Book via WhatsApp, phone call, or website in under 2 minutes with transparent pricing starting at just ₹11/km — no hidden charges",
     },
   ];
   
@@ -472,6 +472,7 @@ import {
     {
       type: "Sedan",
       image: "/images/car/car1.webp",
+      imageAlt: "Sedan taxi for hire - comfortable 4-seater AC car with professional driver, ideal for airport transfers and business trips",
       seating: "4 passengers",
       rating: "4.9",
       reviews: "128",
@@ -485,6 +486,7 @@ import {
     {
       type: "SUV",
       image: "/images/car/car2.webp",
+      imageAlt: "SUV rental with driver - spacious 6-7 seater vehicle with extra legroom for family trips, group tours, and long-distance travel",
       seating: "6-7 passengers",
       perKm: "₹15/km",
       rating: "4.8",
@@ -504,6 +506,7 @@ import {
     {
       type: "Tempo Traveller",
       image: "/images/tempo/17_seater.jpg",
+      imageAlt: "AC tempo traveller with pushback seats - 12 to 26 seater options available for pilgrimages, weddings, and group tours",
       seating: "12-26 passengers",
       perKm: "₹24/km",
       rating: "4.7",
@@ -523,6 +526,7 @@ import {
     {
       type: "Luxury Bus",
       image: "/images/car/luxury_bus.webp",
+      imageAlt: "Luxury Volvo AC bus with pushback seats - 30 to 55 seater coach with washroom facility for extended group tours",
       seating: "30-55 passengers",
       perKm: "₹30/km",
       rating: "4.7",
@@ -544,6 +548,7 @@ import {
       type: "Bus",
       image:
         "https://res.cloudinary.com/dnreeobav/image/fetch/c_scale,q_30,w_350,f_auto/l_text:Arial_20_bold:TrucksBuses.com,x_70,y_100,co_rgb:ffffff/https://www.trucksbuses.com/uploads/Ashok%20Leyland%20Lynx%20Smart%2028%20Seater%20Staff%20Bus.jpg",
+      imageAlt: "28-35 seater AC bus for corporate outings and mid-sized group travel with professional driver and entertainment system",
       seating: "28-35 passengers",
       perKm: "₹35/km",
       rating: "4.8",

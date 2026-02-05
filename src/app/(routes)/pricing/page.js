@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Car, Users, Truck, Bus, Shield, Clock, MapPin, Phone, CheckCircle, Star } from '@/components/ui/icons';
 import FareCalculator from '@/components/calculator/FareCalculator';
 import { COMPANY_INFO } from '@/lib/seo/constants';
+import { generatePricingTableSchema, generateSpeakableSchema } from '@/lib/seo/aeo-generators';
 
 export const metadata = {
   title: 'Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Transparent Fares',
@@ -148,7 +149,7 @@ export default function PricingPage() {
               <div className="flex items-center gap-1 text-white/90 text-sm sm:text-base">
                 <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
                 <span className="font-semibold">4.8</span>
-                <span className="text-white/70">• 2800+ Happy Customers</span>
+                <span className="text-white/70">• 10,000+ Happy Customers</span>
               </div>
             </div>
           </div>
@@ -402,7 +403,31 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Schema Markup */}
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.trivenicabs.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Pricing",
+                "item": "https://www.trivenicabs.in/pricing"
+              }
+            ]
+          })
+        }}
+      />
+      {/* Schema Markup - Pricing Table for Featured Snippets */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -419,6 +444,68 @@ export default function PricingPage() {
               "minValue": 250,
               "unitCode": "KM"
             }
+          })
+        }}
+      />
+      {/* Enhanced pricing table schema for table snippet capture */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generatePricingTableSchema())
+        }}
+      />
+      {/* Speakable schema for voice search on pricing page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateSpeakableSchema({
+            url: '/pricing',
+            name: 'Taxi Rates & Pricing',
+            speakableSections: ['.direct-answer', '.key-info', 'h1', 'h2']
+          }))
+        }}
+      />
+      {/* FAQ schema for pricing-related questions */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the taxi rate per km in India?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs: Sedan costs ₹11-14/km, SUV costs ₹14-18/km, Tempo Traveller costs ₹23-27/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the minimum km per day for outstation taxi?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The minimum kilometer requirement for outstation taxi is 250 km per day for sedans, SUVs, and tempo travellers. Luxury Volvo coaches have a minimum of 300 km per day. Unused kilometers are not carried forward."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is included in the taxi fare?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Triveni Cabs fare includes: AC vehicle, experienced driver, fuel charges, driver allowance, GST (5%), and state permits. Toll charges, parking fees, entry fees, and night charges (after 10 PM) are additional."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much does a tempo traveller cost per day?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tempo traveller daily rates: 12-seater costs ₹6,000-7,500/day, 16-seater costs ₹7,500-8,500/day, 17-seater costs ₹9,000-10,500/day, and 26-seater Maharaja costs ₹10,000-11,000/day for local usage."
+                }
+              }
+            ]
           })
         }}
       />

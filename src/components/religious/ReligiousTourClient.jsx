@@ -11,7 +11,7 @@ import {
   Clock, Users, ArrowRight, Route, Camera,
   Sun, MapPinned
 } from '@/components/ui/icons';
-import { BsWhatsapp } from 'react-icons/bs';
+import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from '@/utilis/data';
 import Link from 'next/link';
 

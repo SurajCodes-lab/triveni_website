@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 // Centralized icon imports for better bundle optimization
 import { Send } from '@/components/ui/icons';
 import { trackFormSubmission, trackFormInteraction, trackError } from '@/utilis/analytics';
@@ -25,6 +25,8 @@ export default function ContactForm() {
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
   const formStarted = useRef(false);
+  const analyticsTimerRef = useRef(null);
+  const trackedFieldsRef = useRef(new Set());
 
   // Track form start on first interaction
   useEffect(() => {
@@ -33,7 +35,24 @@ export default function ContactForm() {
       formStarted.current = true;
     }
   }, [formData]);
-  
+
+  // Debounced analytics tracking to avoid blocking input on every keystroke (INP fix)
+  const debouncedTrackField = useCallback((fieldName) => {
+    if (trackedFieldsRef.current.has(fieldName)) return;
+    if (analyticsTimerRef.current) clearTimeout(analyticsTimerRef.current);
+    analyticsTimerRef.current = setTimeout(() => {
+      trackedFieldsRef.current.add(fieldName);
+      trackFormInteraction('contact_form', 'field_filled', fieldName);
+    }, 1000);
+  }, []);
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (analyticsTimerRef.current) clearTimeout(analyticsTimerRef.current);
+    };
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -41,9 +60,9 @@ export default function ContactForm() {
       [name]: value
     }));
 
-    // Track field interaction
+    // Debounced analytics tracking - only fires once per field after typing stops
     if (value && value.trim() !== '') {
-      trackFormInteraction('contact_form', 'field_filled', name);
+      debouncedTrackField(name);
     }
   };
   

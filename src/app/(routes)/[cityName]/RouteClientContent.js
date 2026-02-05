@@ -11,11 +11,15 @@ import {
   ChevronDown, Play, BadgeCheck, Timer, Gauge, Wifi, Music,
   Snowflake, MapPinned, CircleDot, TrendingUp
 } from "@/components/ui/icons";
-import { BsWhatsapp } from "react-icons/bs";
+import { WhatsAppIcon as BsWhatsapp } from "@/components/ui/icons";
 import { phoneNumber } from "@/utilis/data";
 import { getRouteOffices } from "@/utilis/officeLocations";
 import OfficeLocations from "@/components/cities/OfficeLocations";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from 'next/dynamic';
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
@@ -1195,6 +1199,11 @@ export default function RouteClientContent({
           </motion.div>
         </div>
       </section>
+
+      {/* ==================== FARE CALCULATOR ==================== */}
+      <div id="fare-calculator">
+        <FareCalculator variant="full" defaultFrom={formattedCityName} defaultTo={formattedDestination} />
+      </div>
 
       {/* ==================== FAQ SECTION ==================== */}
       <FAQSection

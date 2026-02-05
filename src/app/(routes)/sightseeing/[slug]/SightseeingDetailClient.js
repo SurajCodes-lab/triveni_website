@@ -29,6 +29,11 @@ import {
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid, BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
+import dynamic from 'next/dynamic';
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
+
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
@@ -728,6 +733,19 @@ export default function SightseeingDetailClient({ tour }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Fare Calculator */}
+      <section className="py-12 bg-gray-50" id="fare-calculator">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+              Get an Instant Fare Estimate
+            </h2>
+            <p className="text-gray-600">Calculate the cost for your sightseeing trip</p>
+          </div>
+          <FareCalculator variant="compact" className="max-w-md mx-auto" />
         </div>
       </section>
 

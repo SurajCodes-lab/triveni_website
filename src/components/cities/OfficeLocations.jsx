@@ -3,7 +3,7 @@
 import React, { useCallback } from 'react';
 // Centralized icon imports for better bundle optimization
 import { MapPin, Phone, Clock, Navigation, Mail, Sparkles, Building2, CheckCircle, ArrowRight } from '@/components/ui/icons';
-import { BsWhatsapp } from 'react-icons/bs';
+import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
 
 const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {

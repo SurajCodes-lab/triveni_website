@@ -6,7 +6,7 @@
 export const COMPANY_INFO = {
   name: 'Triveni Cabs',
   legalName: 'Triveni Cabs Private Limited',
-  founder: 'Triveni Cabs Team',
+  founder: 'Pankaj Singh Gaur',
   foundingDate: '2018',
   slogan: 'Your Journey, Our Priority',
   description: 'Premium taxi and cab service provider across North India offering reliable transportation for sightseeing tours, airport transfers, corporate travel, and wedding events.',
@@ -18,24 +18,24 @@ export const COMPANY_INFO = {
     whatsapp: '+917668570551'
   },
   email: {
-    primary: 'info@trivenicabs.in',
-    support: 'support@trivenicabs.in',
-    bookings: 'bookings@trivenicabs.in'
+    primary: 'cabstriveni@gmail.com',
+    support: 'cabstriveni@gmail.com',
+    bookings: 'cabstriveni@gmail.com'
   },
 
-  // Physical Address
+  // Physical Address (Registered Office)
   address: {
-    streetAddress: 'Sector 22',
-    addressLocality: 'Chandigarh',
-    addressRegion: 'Chandigarh',
-    postalCode: '160022',
+    streetAddress: '366, Dandupura, near Tajganj',
+    addressLocality: 'Agra',
+    addressRegion: 'Uttar Pradesh',
+    postalCode: '282006',
     addressCountry: 'IN'
   },
 
   // Geographic Coverage
   geo: {
-    latitude: 30.7333,
-    longitude: 76.7794
+    latitude: 27.1767,
+    longitude: 78.0081
   },
 
   // Social Media
@@ -131,11 +131,20 @@ export const AGGREGATE_RATING = {
   worstRating: 1
 };
 
-// Service areas
+// Service areas - 50+ cities across North India
 export const SERVICE_AREAS = [
   'Delhi', 'Jaipur', 'Agra', 'Chandigarh', 'Amritsar',
   'Dehradun', 'Haridwar', 'Rishikesh', 'Shimla', 'Manali',
-  'Udaipur', 'Jodhpur', 'Ahmedabad', 'Varanasi', 'Lucknow'
+  'Udaipur', 'Jodhpur', 'Ahmedabad', 'Varanasi', 'Lucknow',
+  'Mathura', 'Vrindavan', 'Noida', 'Gurgaon', 'Faridabad',
+  'Ghaziabad', 'Meerut', 'Mussoorie', 'Nainital', 'Jim Corbett',
+  'Dharamshala', 'Dalhousie', 'Kullu', 'Kasol', 'Spiti Valley',
+  'Leh', 'Srinagar', 'Gulmarg', 'Pahalgam', 'Jammu',
+  'Ayodhya', 'Prayagraj', 'Kanpur', 'Bareilly', 'Aligarh',
+  'Jaisalmer', 'Pushkar', 'Mount Abu', 'Ajmer', 'Bikaner',
+  'Ranthambore', 'Alwar', 'Bharatpur', 'Chittorgarh', 'Kota',
+  'Pathankot', 'Jalandhar', 'Ludhiana', 'Patiala', 'Ambala',
+  'Panipat', 'Kurukshetra', 'Karnal', 'Rohtak', 'Hisar'
 ];
 
 // Available vehicle types

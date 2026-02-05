@@ -244,7 +244,35 @@ export function getSEOLinks(city) {
       url: cityInfo.airportUrl,
       priority: 3,
     });
+
+    // Wedding car link
+    links.push({
+      text: `${cityInfo.name} wedding car rental`,
+      url: `/wedding/${cityInfo.slug}`,
+      priority: 4,
+    });
+
+    // Corporate transport link
+    links.push({
+      text: `corporate cab service in ${cityInfo.name}`,
+      url: `/corporate-transportation-service/${cityInfo.slug}`,
+      priority: 4,
+    });
+
+    // City hub page link
+    links.push({
+      text: `${cityInfo.name} taxi service`,
+      url: cityInfo.cityUrl,
+      priority: 2,
+    });
   }
+
+  // Always include key service pages
+  links.push(
+    { text: 'outstation cab booking', url: '/routes', priority: 5 },
+    { text: 'tempo traveller rental', url: '/tempo-traveller', priority: 5 },
+    { text: 'tour packages India', url: '/services', priority: 5 }
+  );
 
   return links;
 }
@@ -474,6 +502,18 @@ export function getServiceCrossLinks(city) {
       icon: 'tempo',
       url: `/tempo-traveller`,
       description: `12-20 seater for group travel`
+    },
+    {
+      name: 'Religious Tours',
+      icon: 'tour',
+      url: `/religious-tours`,
+      description: `Pilgrimage & spiritual tour packages`
+    },
+    {
+      name: 'Tour Guide',
+      icon: 'tour',
+      url: `/tour-guide`,
+      description: `Certified guides in 6 languages`
     }
   ];
 }

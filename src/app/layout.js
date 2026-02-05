@@ -1,12 +1,21 @@
 import { Suspense } from 'react';
+import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
 import PageTracker from "@/components/analytics/PageTracker";
+import ServiceWorkerRegistration from "@/components/pwa/ServiceWorkerRegistration";
 import "@/styles/globals.css";
 import { Analytics } from '@vercel/analytics/react';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '600', '700'],
+  variable: '--font-inter',
+});
 
 export const viewport = {
   width: 'device-width',
@@ -21,7 +30,7 @@ export const metadata = {
     default: 'Triveni Cabs — Taxi ₹11/km | 4.8★ Rated | 24/7 Booking India',
     template: '%s | Triveni Cabs'
   },
-  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 2800+ happy customers, 4.8★ rating. Delhi, Agra, Jaipur, Manali & 50+ cities. Book now: 7668570551!',
+  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.8★ rating. Delhi, Agra, Jaipur, Manali & 50+ cities. Book now: 7668570551!',
   keywords: 'taxi service India 2026, car rental India, outstation cab booking online, local taxi service near me, airport transfer Delhi, Triveni Cabs booking, luxury car rental India, tempo traveller hire Delhi, Delhi taxi service 24/7, Agra tour packages, Jaipur taxi booking online, reliable cab service India, 24/7 taxi booking, online cab booking India, corporate car rental Delhi, wedding car hire, intercity cab service, one way taxi Delhi Agra, round trip cab booking, best taxi service 2026, cheap car rental India, book cab online now, taxi near me, outstation taxi booking, cab service near me',
   authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
   creator: 'Triveni Cabs Travel Services',
@@ -40,7 +49,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Triveni Cabs — Taxi ₹11/km | 4.8★ Rated | 24/7 Booking India',
-    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 2800+ happy customers, 4.8★ rating. Delhi, Agra, Jaipur, Manali & 50+ cities. Book now: 7668570551!',
+    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.8★ rating. Delhi, Agra, Jaipur, Manali & 50+ cities. Book now: 7668570551!',
     url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
@@ -57,7 +66,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Triveni Cabs — Taxi ₹11/km | 4.8★ Rated | 24/7 Booking',
-    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 2800+ happy customers. Book now: 7668570551!',
+    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers. Book now: 7668570551!',
     images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
   },
@@ -99,27 +108,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" className={inter.variable}>
       <head>
-        {/* Google Tag Manager - Head Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WBN5ZTSC');`
-          }}
-        />
-
         {/* Resource Hints for Performance */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//media.istockphoto.com" />
+        <link rel="dns-prefetch" href="//img.freepik.com" />
+        <link rel="dns-prefetch" href="//upload.wikimedia.org" />
+        <link rel="dns-prefetch" href="//stimg.cardekho.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://media.istockphoto.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://img.freepik.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
 
         {/* Organization Schema with Logo - For Google Search Results */}
         <script
@@ -128,6 +129,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": "https://www.trivenicabs.in/#organization",
               "name": "Triveni Cabs",
               "alternateName": ["Triveni Car Rental", "Triveni Taxi Service"],
               "url": "https://www.trivenicabs.in",
@@ -143,8 +145,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               "email": "cabstriveni@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "addressCountry": "IN",
-                "addressRegion": "Delhi NCR"
+                "streetAddress": "366, Dandupura, near Tajganj",
+                "addressLocality": "Agra",
+                "addressRegion": "Uttar Pradesh",
+                "postalCode": "282006",
+                "addressCountry": "IN"
               },
               "sameAs": [
                 "https://www.facebook.com/trivenicabs",
@@ -162,18 +167,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
-        {/* WebSite Schema with SearchAction */}
+        {/* WebSite Schema with enhanced SearchAction for voice search */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": "https://www.trivenicabs.in/#website",
               "name": "Triveni Cabs",
+              "alternateName": ["Triveni Taxi", "Triveni Cab Service"],
               "url": "https://www.trivenicabs.in",
+              "description": "India's trusted taxi service. Book outstation cabs, airport transfers, sightseeing tours, wedding cars, and tempo travellers across 50+ cities.",
+              "inLanguage": ["en-IN", "hi-IN"],
+              "publisher": { "@id": "https://www.trivenicabs.in/#organization" },
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.trivenicabs.in/search?q={search_term_string}",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://www.trivenicabs.in/search?q={search_term_string}"
+                },
                 "query-input": "required name=search_term_string"
               }
             })
@@ -187,6 +200,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
+              "@id": "https://www.trivenicabs.in/#localbusiness",
               "name": "Triveni Cabs",
               "alternateName": "Triveni Car Rental Services",
               "logo": "https://www.trivenicabs.in/images/logo/logo.webp",
@@ -201,10 +215,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               "email": "cabstriveni@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "addressCountry": "IN",
-                "addressRegion": "India"
+                "streetAddress": "366, Dandupura, near Tajganj",
+                "addressLocality": "Agra",
+                "addressRegion": "Uttar Pradesh",
+                "postalCode": "282006",
+                "addressCountry": "IN"
               },
-
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 27.1767,
+                "longitude": 78.0081
+              },
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": [
@@ -218,27 +239,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               "paymentAccepted": "Cash, UPI, Credit Card, Debit Card",
               "serviceArea": [
                 {
-                  "@type": "State",
+                  "@type": "AdministrativeArea",
                   "name": "Delhi"
                 },
                 {
-                  "@type": "State",
-                  "name": "Maharashtra"
-                },
-                {
-                  "@type": "State",
+                  "@type": "AdministrativeArea",
                   "name": "Uttar Pradesh"
                 },
                 {
-                  "@type": "State",
+                  "@type": "AdministrativeArea",
                   "name": "Rajasthan"
                 },
                 {
-                  "@type": "State",
+                  "@type": "AdministrativeArea",
                   "name": "Himachal Pradesh"
+                },
+                {
+                  "@type": "AdministrativeArea",
+                  "name": "Uttarakhand"
+                },
+                {
+                  "@type": "AdministrativeArea",
+                  "name": "Punjab"
+                },
+                {
+                  "@type": "AdministrativeArea",
+                  "name": "Haryana"
                 }
               ],
-              "areaServed": "India",
+              "areaServed": {
+                "@type": "Country",
+                "name": "India"
+              },
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.8",
@@ -607,7 +639,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
-        {/* Speakable Schema - For Voice Search (AEO) */}
+        {/* Speakable Schema - For Voice Search (AEO) - expanded selectors */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -617,14 +649,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               "name": "Triveni Cabs - Car Rental & Taxi Service India",
               "speakable": {
                 "@type": "SpeakableSpecification",
-                "cssSelector": [".direct-answer", ".faq-answer", ".key-info", "article > p:first-of-type"]
+                "cssSelector": [
+                  ".direct-answer",
+                  ".faq-answer",
+                  ".key-info",
+                  ".key-stats",
+                  ".summary-box",
+                  ".inline-stats",
+                  "article > p:first-of-type",
+                  "[data-snippet-type]",
+                  "[data-citation-source]"
+                ]
               },
               "url": "https://www.trivenicabs.in"
             })
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className={`${inter.className} antialiased`}>
         {/* Google Tag Manager (noscript) - For users without JavaScript */}
         <noscript>
           <iframe
@@ -634,6 +676,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
+
+        {/* Google Tag Manager - deferred to not block LCP */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WBN5ZTSC');`
+          }}
+        />
 
         {/* Optimized Google Analytics - Deferred Loading */}
         {process.env.NEXT_PUBLIC_GA_ID && (
@@ -686,6 +741,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <Footer />
         </div>
         <Analytics />
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );

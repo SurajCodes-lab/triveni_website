@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/icons';
 
 export const metadata = {
-  title: 'Corporate Cab Service vs Ola/Uber 2024 | Complete Comparison Guide | Triveni Cabs',
+  title: 'Corporate Cab Service vs Ola/Uber 2026 | Complete Comparison Guide | Triveni Cabs',
   description: 'In-depth comparison: Dedicated corporate cab service vs Ola/Uber for business. Fixed rates vs surge pricing, dedicated drivers vs random, GST invoicing, accountability. Why 500+ companies switched to dedicated transport. Call 7668570551.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',

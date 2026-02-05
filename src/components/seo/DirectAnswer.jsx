@@ -89,8 +89,8 @@ export default function DirectAnswer({
 
       {/* Source Attribution - Builds credibility for AI citation */}
       {source && (
-        <p className="text-sm text-gray-500 italic">
-          {source}
+        <p className="text-sm text-gray-500 italic" data-citation-source="true">
+          <cite>{source}</cite>
         </p>
       )}
 
@@ -122,6 +122,60 @@ export function DirectAnswerBox({ label, value, unit, description }) {
       {description && (
         <div className="text-sm text-gray-600 mt-1">{description}</div>
       )}
+    </div>
+  );
+}
+
+/**
+ * CitationBlock - Structured content block for AI citation
+ * Provides clear, authoritative statements with source attribution
+ * that AI search engines (ChatGPT, Perplexity, Google AI) can cite
+ */
+export function CitationBlock({ title, content, citation, type = 'info' }) {
+  const typeStyles = {
+    info: 'border-l-blue-500 bg-blue-50',
+    authority: 'border-l-indigo-500 bg-indigo-50',
+    pricing: 'border-l-green-500 bg-green-50',
+    route_info: 'border-l-amber-500 bg-amber-50',
+    tour_info: 'border-l-purple-500 bg-purple-50'
+  };
+
+  return (
+    <blockquote
+      className={`border-l-4 rounded-r-lg p-4 mb-4 ${typeStyles[type] || typeStyles.info}`}
+      data-citation-source="true"
+      data-content-type={type}
+    >
+      {title && (
+        <p className="font-semibold text-gray-900 mb-1 text-sm md:text-base">{title}</p>
+      )}
+      <p className="text-gray-700 text-sm md:text-base leading-relaxed">{content}</p>
+      {citation && (
+        <footer className="mt-2">
+          <cite className="text-xs text-gray-500 not-italic">{citation}</cite>
+        </footer>
+      )}
+    </blockquote>
+  );
+}
+
+/**
+ * EntityDefinition - Renders a definition-style content block
+ * Optimized for Google's definition featured snippet
+ */
+export function EntityDefinition({ term, definition, example }) {
+  return (
+    <div
+      className="direct-answer bg-white rounded-lg p-5 border border-gray-200 shadow-sm mb-6"
+      data-snippet-type="definition"
+    >
+      <dt className="font-bold text-gray-900 text-lg mb-2">{term}</dt>
+      <dd className="text-gray-700 leading-relaxed">
+        <p className="key-info mb-2">{definition}</p>
+        {example && (
+          <p className="text-sm text-gray-500 italic">{example}</p>
+        )}
+      </dd>
     </div>
   );
 }

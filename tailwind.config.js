@@ -67,6 +67,13 @@ module.exports = {
       },
 
       // ============================================
+      // FONT FAMILY - Self-hosted Inter via next/font
+      // ============================================
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+      },
+
+      // ============================================
       // TYPOGRAPHY SYSTEM - Responsive Font Sizes
       // ============================================
       fontSize: {

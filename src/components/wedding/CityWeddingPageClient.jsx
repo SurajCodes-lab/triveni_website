@@ -9,8 +9,12 @@ import {
 } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { BsWhatsapp } from 'react-icons/bs';
+import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
+import dynamic from 'next/dynamic';
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 // Hero Section with Animation (Same design as main wedding page)
 const CityWeddingHero = ({ city }) => {
@@ -69,7 +73,7 @@ const CityWeddingHero = ({ city }) => {
           <div className="flex items-center justify-center gap-3 mb-4">
             <MapPin className="w-8 h-8 md:w-10 md:h-10 text-[#FACF2D] animate-bounce" />
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
-              {city.name} Wedding Cars
+              Wedding Car Rental in {city.name}
             </h1>
             <Crown className="w-8 h-8 md:w-10 md:h-10 text-[#FACF2D] animate-bounce" />
           </div>
@@ -792,6 +796,18 @@ export default function CityWeddingPageClient({ city, citySlug }) {
         <NearbyDestinations city={city} citySlug={citySlug} />
         <WhyChooseUs city={city} />
         <FAQ city={city} />
+        {/* Fare Calculator */}
+        <section className="py-12 bg-gradient-to-b from-pink-50/30 to-white" id="fare-calculator">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+                Estimate Your {city.name} Wedding Car Fare
+              </h2>
+              <p className="text-gray-600">Get a quick fare estimate for your wedding day travel</p>
+            </div>
+            <FareCalculator variant="compact" defaultFrom={city.name} className="max-w-md mx-auto" />
+          </div>
+        </section>
         <RelatedServices city={city} citySlug={citySlug} />
         <FinalCTA city={city} />
       </div>

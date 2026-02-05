@@ -143,7 +143,7 @@ const BookingForm = ({ slug, packageInfo }) => {
             </li>
           </ol>
           <h1 className="text-3xl tracking-[0.07rem] md:text-3xl max-sm:text-2xl font-bold text-white mt-8">
-            Book with Ease, Travel with Joy.
+            Book Your Taxi Online — Instant Cab Booking
           </h1>
         </div>
       </nav>

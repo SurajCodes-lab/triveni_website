@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
@@ -30,13 +30,13 @@ export default function SightseeingMainClient({ data, faqData }) {
   // Show all tours (removed filter functionality)
   const filteredTours = data.allTours;
 
-  const toggleFavorite = (tourId) => {
+  const toggleFavorite = useCallback((tourId) => {
     setFavorites(prev =>
       prev.includes(tourId)
         ? prev.filter(id => id !== tourId)
         : [...prev, tourId]
     );
-  };
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -731,8 +731,8 @@ export default function SightseeingMainClient({ data, faqData }) {
   );
 }
 
-// Tour Card Component
-function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverVariants, featured = false }) {
+// Tour Card Component - memoized to prevent re-renders when favorites change for other cards
+const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverVariants, featured = false }) {
   return (
     <motion.article
       variants={itemVariants}
@@ -847,4 +847,4 @@ function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverV
       </button>
     </motion.article>
   );
-}
+});

@@ -9,7 +9,10 @@ import CitiesSection from "../cities/CitiesSection";
 import TourPackage from "./TourPackage";
 import CarRentalSection from "../trip/carRent/CarRentalSection";
 import { motion } from "framer-motion";
-import TaxiServiceGrid from "../cities/Taxiservicegrid";
+import dynamic from 'next/dynamic';
+const TaxiServiceGrid = dynamic(() => import('../cities/Taxiservicegrid'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-xl" />,
+});
 import { SectionHeader } from "@/components/ui/SectionHeading";
 
 const ServicesSection = () => {

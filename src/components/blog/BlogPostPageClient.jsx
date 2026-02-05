@@ -1,40 +1,38 @@
 'use client';
 
 import { useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { getRelatedLinks } from '@/utilis/linkingHelper';
 import { getLayoutComponent } from './layouts';
 import RelatedPosts from './RelatedPosts';
 
-// Import all layouts
-import FortPalaceLayout from './layouts/FortPalaceLayout';
-import TempleLayout from './layouts/TempleLayout';
-import NatureLayout from './layouts/NatureLayout';
-import MonumentLayout from './layouts/MonumentLayout';
-import CityGuideLayout from './layouts/CityGuideLayout';
-import AdventureLayout from './layouts/AdventureLayout';
-import MagazineLayout from './layouts/MagazineLayout';
-import TimelineLayout from './layouts/TimelineLayout';
-import FullWidthLayout from './layouts/FullWidthLayout';
-import SplitScreenLayout from './layouts/SplitScreenLayout';
+// Loading placeholder for blog layouts
+const LayoutLoading = () => (
+  <div className="min-h-screen animate-pulse">
+    <div className="h-64 bg-gray-200" />
+    <div className="max-w-4xl mx-auto p-6 space-y-4">
+      <div className="h-8 bg-gray-200 rounded w-3/4" />
+      <div className="h-4 bg-gray-200 rounded w-full" />
+      <div className="h-4 bg-gray-200 rounded w-5/6" />
+    </div>
+  </div>
+);
 
-import MinimalLayout from './layouts/MinimalLayout';
-import ModernCardLayout from './layouts/ModernCardLayout';
-
-// Layout components map - 12 unique designs
+// Dynamically import layouts - only the needed one is loaded per page
 const layoutComponents = {
-  FortPalaceLayout,
-  TempleLayout,
-  NatureLayout,
-  MonumentLayout,
-  CityGuideLayout,
-  AdventureLayout,
-  MagazineLayout,
-  TimelineLayout,
-  FullWidthLayout,
-  SplitScreenLayout,
-  MinimalLayout,
-  ModernCardLayout,
+  FortPalaceLayout: dynamic(() => import('./layouts/FortPalaceLayout'), { loading: LayoutLoading }),
+  TempleLayout: dynamic(() => import('./layouts/TempleLayout'), { loading: LayoutLoading }),
+  NatureLayout: dynamic(() => import('./layouts/NatureLayout'), { loading: LayoutLoading }),
+  MonumentLayout: dynamic(() => import('./layouts/MonumentLayout'), { loading: LayoutLoading }),
+  CityGuideLayout: dynamic(() => import('./layouts/CityGuideLayout'), { loading: LayoutLoading }),
+  AdventureLayout: dynamic(() => import('./layouts/AdventureLayout'), { loading: LayoutLoading }),
+  MagazineLayout: dynamic(() => import('./layouts/MagazineLayout'), { loading: LayoutLoading }),
+  TimelineLayout: dynamic(() => import('./layouts/TimelineLayout'), { loading: LayoutLoading }),
+  FullWidthLayout: dynamic(() => import('./layouts/FullWidthLayout'), { loading: LayoutLoading }),
+  SplitScreenLayout: dynamic(() => import('./layouts/SplitScreenLayout'), { loading: LayoutLoading }),
+  MinimalLayout: dynamic(() => import('./layouts/MinimalLayout'), { loading: LayoutLoading }),
+  ModernCardLayout: dynamic(() => import('./layouts/ModernCardLayout'), { loading: LayoutLoading }),
 };
 
 // Generate BlogPosting Schema
@@ -222,8 +220,8 @@ export default function BlogPostPageClient({ post }) {
     return 'MonumentLayout';
   }, [post.attractionType, post.tags, post.category]);
 
-  // Get the layout component
-  const LayoutComponent = layoutComponents[layoutName] || MonumentLayout;
+  // Get the layout component (fallback to MonumentLayout via dynamic import)
+  const LayoutComponent = layoutComponents[layoutName] || layoutComponents.MonumentLayout;
 
   return (
     <>

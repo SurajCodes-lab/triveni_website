@@ -11,7 +11,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
 import { phoneNumber } from "@/utilis/data";
-import { BsWhatsapp } from 'react-icons/bs';
+import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 
 // Helper function to create route slug
 function createRouteSlug(cityName, destination) {

@@ -1,14 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import { ArrowRight, Clock, Calendar, Sparkles, MapPin, Compass, Mountain, Building, Heart, Plane, Camera, Phone, MessageCircle, Star } from '@/components/ui/icons';
-import { blogPosts } from '@/utilis/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function BlogClient() {
+export default function BlogClient({ posts }) {
   const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -16,12 +15,12 @@ export default function BlogClient() {
     setMounted(true);
   }, []);
 
-  const allPosts = blogPosts.filter(post => post && post.title && post.slug);
-  const categories = ['all', ...new Set(allPosts.map(p => p.category).filter(Boolean))];
+  const allPosts = useMemo(() => (posts || []).filter(post => post && post.title && post.slug), [posts]);
+  const categories = useMemo(() => ['all', ...new Set(allPosts.map(p => p.category).filter(Boolean))], [allPosts]);
 
-  const filteredPosts = allPosts.filter(post => {
+  const filteredPosts = useMemo(() => allPosts.filter(post => {
     return activeCategory === 'all' || post.category === activeCategory;
-  });
+  }), [allPosts, activeCategory]);
 
   // Category icons and colors
   const categoryStyles = {
@@ -219,7 +218,7 @@ export default function BlogClient() {
           >
             <span className="inline-flex items-center gap-2 bg-amber-500/20 px-4 py-2 rounded-full text-amber-400 text-sm font-semibold mb-6">
               <Star className="w-4 h-4" />
-              4.8 Rating | 2800+ Happy Customers
+              4.8 Rating | 10,000+ Happy Customers
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Turn These Stories Into Your Next Adventure
@@ -308,7 +307,7 @@ export default function BlogClient() {
             BMW, Audi, and Mercedes.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            With 2800+ happy customers, a 4.8-star rating, and service across 500+ destinations in India, Triveni Cabs
+            With 10,000+ happy customers, a 4.8-star rating, and service across 500+ destinations in India, Triveni Cabs
             is trusted by solo travellers, families, corporate groups, and wedding planners alike. Browse our travel
             articles above, or <Link href="/contact" className="text-blue-600 hover:underline">contact us</Link> for
             a personalized travel plan and free quote.

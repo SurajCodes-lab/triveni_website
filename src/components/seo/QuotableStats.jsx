@@ -107,10 +107,13 @@ export default function QuotableStats({
         </div>
 
         {/* Citation Block - For AI to reference */}
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center" data-citation-source="true">
           <p className="text-white/40 text-xs max-w-2xl mx-auto">
-            Statistics based on verified booking data and customer reviews.
-            Triveni Cabs provides transparent, reliable taxi services across North India.
+            <cite>
+              Statistics based on verified booking data and customer reviews.
+              Triveni Cabs provides transparent, reliable taxi services across North India.
+              Last updated: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}.
+            </cite>
           </p>
         </div>
       </div>

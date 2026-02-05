@@ -129,10 +129,10 @@ const AboutSection = () => {
         <section className="mt-20 text-center" aria-label="Our Service Statistics">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '1000+', label: 'Happy Customers' },
+              { value: '10,000+', label: 'Happy Customers' },
               { value: '50+', label: 'Cities Covered' },
               { value: '24/7', label: 'Taxi Service Available' },
-              { value: '5★', label: 'Average Rating' },
+              { value: '4.8★', label: 'Average Rating' },
             ].map((stat, index) => (
               <div key={index} className="stat-item">
                 <div className="text-heading-xl md:text-display-sm font-bold text-primary mb-2">{stat.value}</div>

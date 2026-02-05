@@ -139,6 +139,9 @@ const ExitIntentPopup = ({
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-[101] flex items-center justify-center p-3 sm:p-4 pointer-events-none"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="exit-popup-title"
           >
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto w-full max-w-md pointer-events-auto">
               {/* Header */}
@@ -155,7 +158,7 @@ const ExitIntentPopup = ({
                   <Gift className="w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
 
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-1 sm:mb-2">
+                <h2 id="exit-popup-title" className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-1 sm:mb-2">
                   Wait! Special Offer
                 </h2>
                 <p className="text-center text-white/90 text-sm sm:text-base">

@@ -1,16 +1,20 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, memo } from "react";
 import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 import { useShouldReduceMotion } from "@/hooks/useIsMobile";
+import LazySection from "@/components/ui/LazySection";
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 // Dynamically import heavy components WITH SSR enabled for better initial render
 const TypeAnimation = dynamic(
   () => import('react-type-animation').then(mod => mod.TypeAnimation),
   {
     ssr: true,
-    loading: () => <span className="inline-block min-w-[180px]">Our Passion</span>
+    loading: () => <span className="inline-block min-w-[180px]">Car Rental from u{20B9}11/km</span>
   }
 );
 
@@ -63,6 +67,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { phoneNumber } from "@/utilis/data";
+import { heroBlurDataURL } from "@/utilis/imageUtils";
 
 // Static service section data
 const serviceSections = [
@@ -74,6 +79,7 @@ const serviceSections = [
     badge: { icon: Heart, text: 'Make Your Day Memorable', bgClass: 'from-yellow-100 to-amber-100 text-amber-800' },
     title: 'Royal Wedding Car Rental Services',
     description: 'Luxury wedding cars and tempo travellers for your special day. From BMW, Audi, Mercedes to vintage cars - make your wedding entrance unforgettable!',
+    imageAlt: 'Decorated luxury wedding car with floral arrangement by Triveni Cabs - BMW, Audi, and Mercedes available for wedding rentals across India',
     features: [
       { icon: Car, title: "Luxury Cars", desc: "BMW, Audi, Mercedes" },
       { icon: Heart, title: "Car Decoration", desc: "Beautiful floral decor" },
@@ -101,6 +107,7 @@ const serviceSections = [
     badge: { icon: Clock, text: '24/7 Airport Transfer', bgClass: 'from-yellow-100 to-amber-100 text-amber-800' },
     title: 'Reliable Airport Transfer Services',
     description: 'Professional airport pickup and drop services across all major airports. On-time, comfortable, and hassle-free transfers for your journey.',
+    imageAlt: 'Professional airport transfer taxi service by Triveni Cabs - 24/7 pickup and drop at 50+ airports across India',
     features: [
       { icon: Clock, title: "24/7 Available", desc: "Round the clock service" },
       { icon: Shield, title: "Safe & Secure", desc: "Verified drivers" },
@@ -128,6 +135,7 @@ const serviceSections = [
     badge: { icon: Bus, text: 'Luxury Bus Rentals', bgClass: 'from-green-100 to-emerald-100 text-green-800' },
     title: 'Premium Bus Routes for Groups',
     description: 'Luxury buses for large groups (22-56 seater). Perfect for corporate events, family trips, and group tours. Volvo & AC buses with entertainment systems.',
+    imageAlt: 'Luxury Volvo AC bus rental for group travel - 22 to 56 seater buses available for corporate events and tours',
     features: [
       { icon: Bus, title: "Volvo & AC", desc: "Premium buses" },
       { icon: Users, title: "22-56 Seater", desc: "Group capacity" },
@@ -156,6 +164,7 @@ const serviceSections = [
     badge: { icon: Route, text: '500+ Destinations', bgClass: 'from-purple-100 to-violet-100 text-purple-800' },
     title: 'Outstation Taxi Routes Across India',
     description: 'Book outstation cabs to 500+ destinations across India. Delhi to Agra, Jaipur, Shimla, Manali & more. One-way & round trips with transparent pricing.',
+    imageAlt: 'Outstation cab on a scenic highway in North India - Triveni Cabs serves 500+ routes including Delhi to Agra, Jaipur, Shimla, and Manali',
     features: [
       { icon: Map, title: "500+ Routes", desc: "All destinations" },
       { icon: Car, title: "One-way Trips", desc: "Flexible booking" },
@@ -184,6 +193,7 @@ const serviceSections = [
     badge: { icon: Package, text: 'Curated Experiences', bgClass: 'from-orange-100 to-amber-100 text-orange-800' },
     title: 'Tour Packages Across India',
     description: 'Curated travel experiences across North India. Golden Triangle tours, hill stations, pilgrimage tours & custom itineraries. Complete travel solutions.',
+    imageAlt: 'Sightseeing tour package covering Golden Triangle circuit - Delhi, Agra Taj Mahal, and Jaipur heritage sites with Triveni Cabs',
     features: [
       { icon: MapPin, title: "Golden Triangle", desc: "Delhi-Agra-Jaipur" },
       { icon: Package, title: "Hill Stations", desc: "Shimla, Manali" },
@@ -212,6 +222,7 @@ const serviceSections = [
     badge: { icon: Users, text: 'Group Travel Solutions', bgClass: 'from-blue-100 to-indigo-100 text-blue-800' },
     title: 'Tempo Traveller Rentals',
     description: 'Perfect for group travel (12-26 seater). AC vehicles with pushback seats. Ideal for family trips, corporate tours, and group outings.',
+    imageAlt: 'AC tempo traveller with pushback seats for group travel - 12 to 26 seater options for family trips and pilgrimages',
     features: [
       { icon: Users, title: "12-26 Seater", desc: "Group capacity" },
       { icon: Car, title: "AC Vehicles", desc: "Comfortable ride" },
@@ -240,6 +251,7 @@ const serviceSections = [
     badge: { icon: Camera, text: 'Expert Local Guides', bgClass: 'from-teal-100 to-cyan-100 text-teal-800' },
     title: 'Professional Tour Guide Services',
     description: 'Expert guides in 14+ cities, 6 languages. Certified guides, multi-language support, cultural insights & personalized tours. Make your journey memorable!',
+    imageAlt: 'Professional certified tour guide explaining history at a heritage monument - multilingual guides available in 14+ Indian cities',
     features: [
       { icon: Award, title: "Certified Guides", desc: "Licensed professionals" },
       { icon: MapPin, title: "14+ Cities", desc: "Pan India coverage" },
@@ -262,8 +274,8 @@ const serviceSections = [
   }
 ];
 
-// Service Section Component
-function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
+// Service Section Component - memoized to prevent re-renders when sibling state changes
+const ServiceSection = memo(function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
   const ImageIcon = section.imageIcon;
   const BadgeIcon = section.badge.icon;
   const gradient = section.imageGradient || 'from-amber-400 via-[#FACF2D] to-orange-400';
@@ -288,15 +300,19 @@ function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
           className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100 hover:shadow-3xl hover:border-amber-300 cursor-pointer"
         >
           <div className={`aspect-video bg-gradient-to-br ${gradient} rounded-2xl flex items-center justify-center relative overflow-hidden`}>
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-50 transition-opacity duration-300 hover:opacity-60"
-              style={{ backgroundImage: `url('${section.image}')` }}
-            ></div>
+            <Image
+              src={section.image}
+              alt={section.imageAlt || `${section.imageTitle} - ${section.imageSubtitle}`}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center opacity-50 transition-opacity duration-300 hover:opacity-60"
+              loading="lazy"
+            />
             <div className="relative text-center p-4 md:p-6">
               <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
                 <ImageIcon className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }}>{section.imageTitle}</h3>
+              <p className="text-xl md:text-2xl font-bold mb-1 md:mb-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5)' }} aria-hidden="true">{section.imageTitle}</p>
               <p className="text-sm md:text-base text-white font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.9)' }}>{section.imageSubtitle}</p>
             </div>
           </div>
@@ -336,7 +352,7 @@ function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
               <item.icon className="w-5 h-5 text-gray-800" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 text-sm">{item.title}</h3>
+              <h3 className="font-bold text-gray-900 text-sm" role="presentation">{item.title}</h3>
               <p className="text-xs text-gray-600">{item.desc}</p>
             </div>
           </div>
@@ -362,7 +378,7 @@ function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
   );
 
   return (
-    <section className={`py-20 ${section.bgClass} relative overflow-hidden`}>
+    <section className={`py-20 ${section.bgClass} relative overflow-hidden`} aria-label={`${section.title} - Triveni Cabs`}>
       <div className={`absolute top-10 ${section.isReversed ? 'left-10' : 'right-10'} w-32 h-32 ${section.decorClass1} rounded-full blur-3xl`}></div>
       <div className={`absolute bottom-10 ${section.isReversed ? 'right-10' : 'left-10'} w-40 h-40 ${section.decorClass2} rounded-full blur-3xl`}></div>
       <div className="max-w-7xl mx-auto px-4">
@@ -382,7 +398,7 @@ function ServiceSection({ section, shouldReduceMotion, handleBookNowClick }) {
       </div>
     </section>
   );
-}
+});
 
 export default function HomeClient() {
   const shouldReduceMotion = useShouldReduceMotion();
@@ -398,7 +414,7 @@ export default function HomeClient() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-2 pb-8 md:pt-0 md:pb-4">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-2 pb-8 md:pt-0 md:pb-4" aria-label="Triveni Cabs - Book premium taxi services across India">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -407,7 +423,7 @@ export default function HomeClient() {
             fill
             priority
             placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,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"
+            blurDataURL={heroBlurDataURL}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"
             className="object-cover object-center brightness-110 contrast-110"
             sizes="100vw"
           />
@@ -447,7 +463,7 @@ export default function HomeClient() {
           >
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 leading-tight tracking-tight drop-shadow-2xl px-2">
               <span className="block text-white drop-shadow-lg">
-                Your Journey,
+                Taxi Service India
               </span>
               <span
                 className="block bg-gradient-to-r from-yellow-300 via-[#FACF2D] to-orange-400 bg-clip-text text-transparent drop-shadow-2xl"
@@ -455,11 +471,13 @@ export default function HomeClient() {
               >
                 <TypeAnimation
                   sequence={[
-                    'Our Passion',
+                    'Car Rental from \u20B911/km',
                     2500,
-                    'Our Priority',
+                    'Airport Transfers 24/7',
                     2500,
-                    'Our Promise',
+                    'Wedding Car Hire',
+                    2500,
+                    'Tour Packages India',
                     2500,
                   ]}
                   wrapper="span"
@@ -565,18 +583,28 @@ export default function HomeClient() {
         )}
       </section>
 
-      {/* SERVICE SECTIONS */}
-      {serviceSections.map((section) => (
-        <ServiceSection
-          key={section.id}
-          section={section}
-          shouldReduceMotion={shouldReduceMotion}
-          handleBookNowClick={handleBookNowClick}
-        />
+      {/* SERVICE SECTIONS - lazy loaded below fold to reduce hydration cost */}
+      {serviceSections.map((section, index) => (
+        index < 2 ? (
+          <ServiceSection
+            key={section.id}
+            section={section}
+            shouldReduceMotion={shouldReduceMotion}
+            handleBookNowClick={handleBookNowClick}
+          />
+        ) : (
+          <LazySection key={section.id} minHeight="500px" rootMargin="300px">
+            <ServiceSection
+              section={section}
+              shouldReduceMotion={shouldReduceMotion}
+              handleBookNowClick={handleBookNowClick}
+            />
+          </LazySection>
+        )
       ))}
 
       {/* CITIES WE SERVE SECTION */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden" aria-label="Cities served by Triveni Cabs across India">
         <div className="max-w-7xl mx-auto px-4">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -598,7 +626,7 @@ export default function HomeClient() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
             >
-              Serving 14+ Premium Cities
+              Cab Service Available in 14+ Cities Across India
             </motion.h2>
 
             <motion.p
@@ -694,8 +722,15 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* Fare Calculator Section */}
+      <LazySection minHeight="400px" rootMargin="300px">
+        <div id="fare-calculator">
+          <FareCalculator variant="full" />
+        </div>
+      </LazySection>
+
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 relative overflow-hidden" aria-label="Book your travel service with Triveni Cabs">
         <div className="relative z-10 max-w-5xl mx-auto px-4">
           <article className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-2 border-amber-200">
             <header className="text-center mb-6 md:mb-10">
@@ -742,7 +777,7 @@ export default function HomeClient() {
       </section>
 
       {/* SEO Content Section */}
-      <section className="py-16 px-4 bg-gray-50 border-t border-gray-200">
+      <section className="py-16 px-4 bg-gray-50 border-t border-gray-200" aria-label="About Triveni Cabs taxi services in India">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
             Triveni Cabs — India&apos;s Trusted Taxi Service for Outstation, Airport & Wedding Travel
@@ -765,22 +800,43 @@ export default function HomeClient() {
               professional, verified drivers, GPS tracking, and 24/7 customer support.
             </p>
             <p>
-              We serve major cities including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Rishikesh,
-              Varanasi, Udaipur, and Jodhpur with popular routes like Delhi to Agra, Delhi to Manali,
-              Delhi to Jaipur, and the Golden Triangle circuit. Our{' '}
+              We serve major cities including{' '}
+              <Link href="/delhi" className="text-blue-600 hover:underline font-medium">Delhi</Link>,{' '}
+              <Link href="/agra" className="text-blue-600 hover:underline font-medium">Agra</Link>,{' '}
+              <Link href="/jaipur" className="text-blue-600 hover:underline font-medium">Jaipur</Link>,{' '}
+              <Link href="/chandigarh" className="text-blue-600 hover:underline font-medium">Chandigarh</Link>,{' '}
+              <Link href="/shimla" className="text-blue-600 hover:underline font-medium">Shimla</Link>,{' '}
+              <Link href="/manali" className="text-blue-600 hover:underline font-medium">Manali</Link>, Rishikesh,
+              Varanasi, Udaipur, and Jodhpur with{' '}
+              <Link href="/routes" className="text-blue-600 hover:underline font-medium">popular outstation routes</Link> like
+              Delhi to Agra, Delhi to Manali, Delhi to Jaipur, and the Golden Triangle circuit. Our{' '}
               <Link href="/sightseeing" className="text-blue-600 hover:underline font-medium">sightseeing tour packages</Link> include
-              guided visits to the Taj Mahal, Amber Fort, Varanasi Ghats, and 100+ heritage sites.
+              guided visits to the Taj Mahal, Amber Fort, Varanasi Ghats, and 100+ heritage sites. For spiritual
+              journeys, explore our{' '}
+              <Link href="/religious-tours" className="text-blue-600 hover:underline font-medium">religious tour packages</Link> including
+              Chardham Yatra and pilgrimage tours.
             </p>
             <p>
               For weddings, we offer luxury car rentals including BMW, Audi, Mercedes-Benz, and Range Rover
               with professional chauffeurs and full car decoration. Our{' '}
               <Link href="/corporate-transportation-service" className="text-blue-600 hover:underline font-medium">corporate transportation service</Link> handles
-              employee commutes, client pickups, and offsite events for businesses across India.
+              employee commutes, client pickups, and offsite events for businesses across India. Need group travel?
+              Hire a{' '}
+              <Link href="/bus-routes" className="text-blue-600 hover:underline font-medium">luxury bus (22-56 seater)</Link> for
+              corporate events or family functions. For guided experiences, book a{' '}
+              <Link href="/tour-guide" className="text-blue-600 hover:underline font-medium">professional tour guide</Link> in
+              14+ cities with multi-language support.
             </p>
             <p>
-              With 2800+ happy customers, a 4.8-star rating, and transparent pricing with no hidden charges,
-              Triveni Cabs is the preferred choice for families, solo travellers, corporate clients, and tour
-              operators. <Link href="/contact" className="text-blue-600 hover:underline font-medium">Contact us</Link> or{' '}
+              Planning an{' '}
+              <Link href="/event-transportation-service" className="text-blue-600 hover:underline font-medium">event or conference</Link>?
+              We provide end-to-end transportation for groups of any size. Compare our{' '}
+              <Link href="/vehicles" className="text-blue-600 hover:underline font-medium">vehicle options</Link> to
+              find the right fit. With 10,000+ happy customers, a 4.8-star rating, and transparent pricing with no
+              hidden charges, Triveni Cabs is the preferred choice for families, solo travellers, corporate clients,
+              and tour operators. Founded in 2015 and headquartered in Agra, we have grown from a small local fleet
+              to a pan-India service covering 50+ cities.{' '}
+              <Link href="/contact" className="text-blue-600 hover:underline font-medium">Contact us</Link> or{' '}
               <Link href="/blog" className="text-blue-600 hover:underline font-medium">read our travel blog</Link> for
               destination guides and trip planning tips.
             </p>

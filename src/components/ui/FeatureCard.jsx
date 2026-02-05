@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { memo } from 'react';
 import { cn } from '@/utilis/cn';
 
 /**
@@ -35,7 +35,7 @@ const cardVariants = {
   gradient: 'bg-gradient-to-br from-primary-100 to-primary-200',
 };
 
-const FeatureCard = ({
+const FeatureCard = memo(function FeatureCard({
   icon: Icon,
   title,
   description,
@@ -45,7 +45,7 @@ const FeatureCard = ({
   align = 'center',
   className,
   ...props
-}) => {
+}) {
   const alignClasses = {
     center: 'text-center items-center',
     left: 'text-left items-start',
@@ -102,7 +102,7 @@ const FeatureCard = ({
       </p>
     </article>
   );
-};
+});
 
 /**
  * FeatureGrid - Wrapper for consistent grid layouts

@@ -6,13 +6,11 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/static/
-Disallow: /*.json$
+Disallow: /_next/data/
 
-# Googlebot specific rules
+# Googlebot - no crawl-delay (Google ignores it and it can signal issues)
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 # Bingbot specific rules
 User-agent: Bingbot
@@ -35,6 +33,5 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 
-# Sitemap locations
+# Sitemap location
 Sitemap: https://www.trivenicabs.in/sitemap.xml
-Sitemap: https://www.trivenicabs.in/sitemap-images.xml

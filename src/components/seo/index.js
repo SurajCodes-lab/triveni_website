@@ -34,7 +34,9 @@ export {
 export {
   default as DirectAnswer,
   DirectAnswerBox,
-  QuickFacts
+  QuickFacts,
+  CitationBlock,
+  EntityDefinition
 } from './DirectAnswer';
 
 // GEO Components - Generative Engine Optimization
@@ -44,3 +46,9 @@ export {
   StatCard,
   defaultTriveniStats
 } from './QuotableStats';
+
+// People Also Ask & Voice Search Components
+export {
+  default as PeopleAlsoAsk,
+  VoiceSearchFAQ
+} from './PeopleAlsoAsk';

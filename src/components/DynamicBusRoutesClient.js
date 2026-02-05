@@ -12,6 +12,10 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 // Import from smaller utility file to reduce bundle size
 import { additionalInfo } from '@/utilis/busUtilsData';
+import dynamic from 'next/dynamic';
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet } = data;
@@ -507,6 +511,19 @@ export default function DynamicBusRoutesClient({ data }) {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Fare Calculator */}
+      <section className="py-12 bg-gray-50" id="fare-calculator">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+              Calculate Your {origin} to {destination} Bus Fare
+            </h2>
+            <p className="text-gray-600">Get an instant price estimate for your group trip</p>
+          </div>
+          <FareCalculator variant="compact" defaultFrom={origin} defaultTo={destination} className="max-w-md mx-auto" />
         </div>
       </section>
 

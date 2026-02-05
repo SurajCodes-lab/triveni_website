@@ -1,21 +1,14 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
 import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info, HelpCircle, ChevronDown } from '@/components/ui/icons';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { useInView as useInViewObserver } from 'react-intersection-observer';
-import { TypeAnimation } from 'react-type-animation';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Import from smaller utility file to reduce bundle size
 import { additionalInfo, whyChooseUs } from '@/utilis/busUtilsData';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function BusMainClient({ data }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -36,82 +29,40 @@ export default function BusMainClient({ data }) {
   const [routesRef, routesInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
   const [featuresRef, featuresInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
 
-  // GSAP Animations
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const ctx = gsap.context(() => {
-      // Hero elements animation
-      gsap.from('.hero-badge', {
-        scale: 0,
-        rotation: -180,
-        duration: 0.8,
-        ease: 'back.out(1.7)'
-      });
-
-      gsap.from('.hero-title', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out'
-      });
-
-      // Parallax effect for hero image
-      gsap.to('.hero-image', {
-        y: '20%',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-
-      // Fleet cards stagger animation
-      gsap.from('.fleet-card', {
-        scrollTrigger: {
-          trigger: fleetSectionRef.current,
-          start: 'top 80%'
-        },
-        y: 100,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out'
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const getOriginCities = () => {
+  const originCities = useMemo(() => {
     const origins = [...new Set(allRoutes.map(route => route.origin))];
     return origins.sort();
-  };
+  }, [allRoutes]);
 
-  const getFilteredRoutes = () => {
+  const getOriginCities = useCallback(() => originCities, [originCities]);
+
+  const filteredRoutes = useMemo(() => {
     let routes = selectedOrigin
       ? allRoutes.filter(route => route.origin === selectedOrigin)
       : allRoutes;
 
     if (searchTerm) {
+      const term = searchTerm.toLowerCase();
       routes = routes.filter(route =>
-        route.origin.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        route.destination.toLowerCase().includes(searchTerm.toLowerCase())
+        route.origin.toLowerCase().includes(term) ||
+        route.destination.toLowerCase().includes(term)
       );
     }
 
     return routes;
-  };
+  }, [allRoutes, selectedOrigin, searchTerm]);
 
-  const getFilteredFleet = () => {
+  const getFilteredRoutes = useCallback(() => filteredRoutes, [filteredRoutes]);
+
+  const filteredFleet = useMemo(() => {
     if (activeFilter === 'all') return fleet;
     if (activeFilter === 'premium') return fleet.filter(bus => bus.premium);
     if (activeFilter === 'luxury') return fleet.filter(bus => bus.luxury);
     if (activeFilter === 'standard') return fleet.filter(bus => !bus.premium && !bus.luxury);
     return fleet;
-  };
+  }, [fleet, activeFilter]);
+
+  const getFilteredFleet = useCallback(() => filteredFleet, [filteredFleet]);
 
   const getTypeColor = (type) => {
     const colors = {

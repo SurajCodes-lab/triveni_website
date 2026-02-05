@@ -1,17 +1,18 @@
 import HomeClient from "@/components/home/HomeClient";
 import { phoneNumber } from "@/utilis/data";
+import { generateEntityDefinitionSchema, generateServiceAreaBusinessSchema } from '@/lib/seo/aeo-generators';
 
-// Company info - hardcoded since not exported from data.js
+// Company info - consistent NAP across all pages
 const companyName = "Triveni Cabs";
 const companyEmail = "cabstriveni@gmail.com";
-const companyAddress = "New Delhi";
-const companyCity = "Delhi";
-const companyState = "Delhi";
-const companyZip = "110001";
+const companyAddress = "366, Dandupura, near Tajganj";
+const companyCity = "Agra";
+const companyState = "Uttar Pradesh";
+const companyZip = "282006";
 
 // Server-side metadata for SEO
 export const metadata = {
-  title: "Triveni Cabs - India's #1 Taxi Service | Wedding Cars, Airport Transfers, Tours",
+  title: "Triveni Cabs — Taxi from ₹11/km | 4.8★ Rated | 24/7 India",
   description: "Book reliable taxi services across India. Wedding car rentals (BMW, Audi, Mercedes), airport transfers, tempo traveller, tour packages & expert guides. 24/7 service, 500+ destinations, 10K+ happy customers.",
   keywords: [
     "taxi service india",
@@ -242,8 +243,12 @@ function generateStructuredData() {
     ]
   };
 
-  // Note: LocalBusiness schema is already in layout.js - only returning unique schemas here
-  return [websiteSchema, servicesSchema, faqSchema];
+  // Entity definition and ServiceAreaBusiness for AEO/GEO
+  const entitySchema = generateEntityDefinitionSchema();
+  const serviceAreaSchema = generateServiceAreaBusinessSchema();
+
+  // Note: LocalBusiness and WebSite schemas are already in layout.js - only returning unique schemas here
+  return [servicesSchema, faqSchema, entitySchema, serviceAreaSchema];
 }
 
 export default function HomePage() {

@@ -80,7 +80,13 @@ export {
   generateQuotableStats,
   generateDirectAnswerContent,
   generateCitationBlocks,
-  generateCompleteAEOSchema
+  generateCompleteAEOSchema,
+  generateVoiceOptimizedFAQs,
+  generatePeopleAlsoAsk,
+  generateServiceAreaBusinessSchema,
+  generateDefinitionContent,
+  generatePricingTableSchema,
+  generateLocalServiceEventSchema
 } from './aeo-generators';
 
 // Default export with all modules

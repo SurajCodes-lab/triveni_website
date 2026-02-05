@@ -221,26 +221,36 @@ const FareCalculator = ({
           Quick Fare Calculator
         </h3>
         <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-3">
-          <select
-            value={fromCity}
-            onChange={(e) => { setFromCity(e.target.value); setIsCalculated(false); }}
-            className="w-full p-2.5 border rounded-lg text-sm touch-manipulation"
-          >
-            <option value="">From City</option>
-            {popularCities.map(city => (
-              <option key={city} value={city}>{city}</option>
-            ))}
-          </select>
-          <select
-            value={toCity}
-            onChange={(e) => { setToCity(e.target.value); setIsCalculated(false); }}
-            className="w-full p-2.5 border rounded-lg text-sm touch-manipulation"
-          >
-            <option value="">To City</option>
-            {popularCities.map(city => (
-              <option key={city} value={city}>{city}</option>
-            ))}
-          </select>
+          <div>
+            <label htmlFor="compact-from-city" className="sr-only">From City</label>
+            <select
+              id="compact-from-city"
+              value={fromCity}
+              onChange={(e) => { setFromCity(e.target.value); setIsCalculated(false); }}
+              className="w-full p-2.5 border rounded-lg text-sm touch-manipulation"
+              aria-label="Pickup city"
+            >
+              <option value="">From City</option>
+              {popularCities.map(city => (
+                <option key={city} value={city}>{city}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="compact-to-city" className="sr-only">To City</label>
+            <select
+              id="compact-to-city"
+              value={toCity}
+              onChange={(e) => { setToCity(e.target.value); setIsCalculated(false); }}
+              className="w-full p-2.5 border rounded-lg text-sm touch-manipulation"
+              aria-label="Drop city"
+            >
+              <option value="">To City</option>
+              {popularCities.map(city => (
+                <option key={city} value={city}>{city}</option>
+              ))}
+            </select>
+          </div>
         </div>
         {fareDetails && (
           <div className="bg-amber-50 rounded-lg p-3 text-center">
@@ -283,14 +293,16 @@ const FareCalculator = ({
               {/* Route Selection */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
-                    <MapPin className="w-4 h-4 inline mr-1 text-green-500" />
+                  <label htmlFor="fare-pickup-city" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                    <MapPin className="w-4 h-4 inline mr-1 text-green-500" aria-hidden="true" />
                     Pickup City
                   </label>
                   <select
+                    id="fare-pickup-city"
                     value={fromCity}
                     onChange={(e) => { setFromCity(e.target.value); setIsCalculated(false); }}
                     className="w-full p-3 sm:p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all text-base touch-manipulation"
+                    aria-required="true"
                   >
                     <option value="">Select pickup city</option>
                     {popularCities.map(city => (
@@ -299,14 +311,16 @@ const FareCalculator = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
-                    <Navigation className="w-4 h-4 inline mr-1 text-red-500" />
+                  <label htmlFor="fare-drop-city" className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+                    <Navigation className="w-4 h-4 inline mr-1 text-red-500" aria-hidden="true" />
                     Drop City
                   </label>
                   <select
+                    id="fare-drop-city"
                     value={toCity}
                     onChange={(e) => { setToCity(e.target.value); setIsCalculated(false); }}
                     className="w-full p-3 sm:p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all text-base touch-manipulation"
+                    aria-required="true"
                   >
                     <option value="">Select drop city</option>
                     {popularCities.map(city => (
@@ -318,42 +332,51 @@ const FareCalculator = ({
 
               {/* Trip Type */}
               <div className="mb-4 sm:mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Trip Type</label>
-                <div className="grid grid-cols-2 gap-2 sm:gap-4">
-                  <button
-                    onClick={() => { setTripType('oneway'); setIsCalculated(false); }}
-                    className={`p-3 sm:p-3.5 rounded-xl border-2 transition-all touch-manipulation active:scale-[0.98] ${
-                      tripType === 'oneway'
-                        ? 'border-amber-500 bg-amber-50 text-amber-700'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <span className="font-medium text-sm sm:text-base">One Way</span>
-                  </button>
-                  <button
-                    onClick={() => { setTripType('roundtrip'); setIsCalculated(false); }}
-                    className={`p-3 sm:p-3.5 rounded-xl border-2 transition-all touch-manipulation active:scale-[0.98] ${
-                      tripType === 'roundtrip'
-                        ? 'border-amber-500 bg-amber-50 text-amber-700'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <span className="font-medium text-sm sm:text-base">Round Trip</span>
-                  </button>
-                </div>
+                <fieldset>
+                  <legend className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Trip Type</legend>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4" role="radiogroup" aria-label="Trip type selection">
+                    <button
+                      onClick={() => { setTripType('oneway'); setIsCalculated(false); }}
+                      role="radio"
+                      aria-checked={tripType === 'oneway'}
+                      className={`p-3 sm:p-3.5 rounded-xl border-2 transition-all touch-manipulation active:scale-[0.98] ${
+                        tripType === 'oneway'
+                          ? 'border-amber-500 bg-amber-50 text-amber-700'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <span className="font-medium text-sm sm:text-base">One Way</span>
+                    </button>
+                    <button
+                      onClick={() => { setTripType('roundtrip'); setIsCalculated(false); }}
+                      role="radio"
+                      aria-checked={tripType === 'roundtrip'}
+                      className={`p-3 sm:p-3.5 rounded-xl border-2 transition-all touch-manipulation active:scale-[0.98] ${
+                        tripType === 'roundtrip'
+                          ? 'border-amber-500 bg-amber-50 text-amber-700'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <span className="font-medium text-sm sm:text-base">Round Trip</span>
+                    </button>
+                  </div>
+                </fieldset>
               </div>
 
               {/* Vehicle Selection - Scrollable on mobile */}
-              <div className="mb-4 sm:mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
-                  <Car className="w-4 h-4 inline mr-1" />
+              <div className="mb-4 sm:mb-6" role="group" aria-label="Vehicle selection">
+                <span className="block text-sm font-medium text-gray-700 mb-1.5 sm:mb-2" id="vehicle-selection-label">
+                  <Car className="w-4 h-4 inline mr-1" aria-hidden="true" />
                   Select Vehicle
-                </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3" role="radiogroup" aria-labelledby="vehicle-selection-label">
                   {vehicleTypes.slice(0, 6).map(vehicle => (
                     <button
                       key={vehicle.id}
                       onClick={() => { setSelectedVehicle(vehicle.id); setIsCalculated(false); }}
+                      role="radio"
+                      aria-checked={selectedVehicle === vehicle.id}
+                      aria-label={`${vehicle.name} - ${vehicle.seats} seats - ${vehicle.pricePerKm} rupees per km`}
                       className={`p-3 sm:p-4 rounded-xl border-2 transition-all text-left touch-manipulation active:scale-[0.98] ${
                         selectedVehicle === vehicle.id
                           ? 'border-amber-500 bg-amber-50'
@@ -362,7 +385,7 @@ const FareCalculator = ({
                     >
                       <div className="font-semibold text-gray-900 text-xs sm:text-sm">{vehicle.name}</div>
                       <div className="text-[10px] sm:text-xs text-gray-500 flex items-center gap-1 mt-0.5 sm:mt-1">
-                        <Users className="w-3 h-3" />
+                        <Users className="w-3 h-3" aria-hidden="true" />
                         {vehicle.seats} seats
                       </div>
                       <div className="text-amber-600 font-bold text-sm sm:text-base mt-1">₹{vehicle.pricePerKm}/km</div>
@@ -426,6 +449,9 @@ const FareCalculator = ({
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 className="bg-gradient-to-r from-amber-500 to-orange-500 p-4 sm:p-6 md:p-8 text-white"
+                role="region"
+                aria-live="polite"
+                aria-label="Fare estimate results"
               >
                 <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center">Your Fare Estimate</h3>
 
@@ -463,10 +489,10 @@ const FareCalculator = ({
                 <div className="bg-white/10 rounded-lg p-2.5 sm:p-3 mb-3 sm:mb-4 text-xs sm:text-sm">
                   <div className="font-medium mb-1">Includes:</div>
                   <div className="flex flex-wrap gap-x-3 gap-y-1">
-                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" /> AC Vehicle</span>
-                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Driver</span>
-                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Fuel</span>
-                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" /> GST</span>
+                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" aria-hidden="true" /> AC Vehicle</span>
+                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" aria-hidden="true" /> Driver</span>
+                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" aria-hidden="true" /> Fuel</span>
+                    <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" aria-hidden="true" /> GST</span>
                   </div>
                 </div>
 
@@ -474,16 +500,18 @@ const FareCalculator = ({
                 <div className="grid grid-cols-2 gap-2 sm:gap-3">
                   <button
                     onClick={handleCall}
+                    aria-label="Call now to book this trip"
                     className="flex items-center justify-center gap-1.5 sm:gap-2 bg-white text-amber-600 font-semibold py-3 sm:py-3.5 rounded-xl hover:bg-gray-100 transition-colors touch-manipulation active:scale-[0.98]"
                   >
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
                     <span className="text-sm sm:text-base">Call Now</span>
                   </button>
                   <button
                     onClick={handleWhatsApp}
+                    aria-label="Book this trip via WhatsApp"
                     className="flex items-center justify-center gap-1.5 sm:gap-2 bg-green-600 text-white font-semibold py-3 sm:py-3.5 rounded-xl hover:bg-green-700 transition-colors touch-manipulation active:scale-[0.98]"
                   >
-                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
                     <span className="text-sm sm:text-base">WhatsApp</span>
                   </button>
                 </div>

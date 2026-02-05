@@ -111,7 +111,7 @@ const VehicleServices = () => {
                     <div className="relative">
                       <Image
                         src={vehicle.image}
-                        alt={`${vehicle.type} - Professional taxi service vehicle`}
+                        alt={vehicle.imageAlt || `${vehicle.type} - Professional taxi service vehicle`}
                         width={400}
                         height={224}
                         className="w-full h-56 object-cover"

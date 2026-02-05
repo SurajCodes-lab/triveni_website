@@ -17,19 +17,19 @@ export default function NotFound() {
   ];
 
   const popularRoutes = [
-    { name: 'Delhi to Agra', href: '/delhi/delhi-to-agra-cab' },
-    { name: 'Delhi to Jaipur', href: '/delhi/delhi-to-jaipur-cab' },
-    { name: 'Delhi to Manali', href: '/delhi/delhi-to-manali-cab' },
-    { name: 'Delhi to Shimla', href: '/delhi/delhi-to-shimla-cab' },
-    { name: 'Mumbai to Pune', href: '/mumbai/mumbai-to-pune-cab' },
-    { name: 'Jaipur to Udaipur', href: '/jaipur/jaipur-to-udaipur-cab' },
+    { name: 'Delhi to Agra', href: '/delhi-to-agra' },
+    { name: 'Delhi to Jaipur', href: '/delhi-to-jaipur' },
+    { name: 'Delhi to Manali', href: '/delhi-to-manali' },
+    { name: 'Delhi to Shimla', href: '/delhi-to-shimla' },
+    { name: 'Delhi to Chandigarh', href: '/delhi-to-chandigarh' },
+    { name: 'Jaipur to Udaipur', href: '/jaipur-to-udaipur' },
   ];
 
   const services = [
     { name: 'Outstation Cabs', href: '/services', icon: MapPin },
-    { name: 'Airport Transfer', href: '/airport-taxi-service', icon: MapPin },
-    { name: 'Wedding Cars', href: '/wedding-car-rental', icon: Car },
-    { name: 'Tour Packages', href: '/tour-package', icon: MapPin },
+    { name: 'Airport Transfer', href: '/airport-service', icon: MapPin },
+    { name: 'Wedding Cars', href: '/wedding', icon: Car },
+    { name: 'Tour Packages', href: '/religious-tours', icon: MapPin },
   ];
 
   return (

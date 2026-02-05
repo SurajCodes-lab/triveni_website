@@ -164,7 +164,7 @@ export default function AirportServiceClient({ faqData }) {
 
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Book Airport Taxi in 60 Seconds - Never Miss Your Flight!
+              Airport Taxi Service India — 24/7 Pickup & Drop
             </h1>
             <h2 className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
               24/7 Premium Airport Transfer Service | Flight Tracking + On-Time Guarantee

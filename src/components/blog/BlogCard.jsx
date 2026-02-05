@@ -1,13 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
 import { Calendar, Clock, Eye, ArrowRight } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
+import { blurDataURL } from '@/utilis/imageUtils';
 
-export default function BlogCard({ post, index = 0 }) {
+const BlogCard = memo(function BlogCard({ post, index = 0 }) {
   const [imageError, setImageError] = useState(false);
 
   // Safety check - only require essential fields
@@ -117,4 +118,6 @@ export default function BlogCard({ post, index = 0 }) {
       </div>
     </motion.article>
   );
-}
+});
+
+export default BlogCard;

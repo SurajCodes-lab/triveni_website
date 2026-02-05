@@ -172,7 +172,7 @@ export default function AboutClient() {
         <div className="absolute inset-0">
           <Image
             src="/images/about_page_hero_section.jpg"
-            alt="About Triveni Cabs - Your Trusted Travel Partner"
+            alt="About Triveni Cabs - Founded in 2015, serving 50+ cities across India with 500+ premium vehicles and 10,000+ happy customers"
             fill
             priority
             className="object-cover object-center"
@@ -613,6 +613,88 @@ export default function AboutClient() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* OUR TEAM EXPERTISE SECTION */}
+      <section className="py-20 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden" aria-label="Triveni Cabs team expertise and credentials">
+        <div className="max-w-7xl mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm">
+              <Award className="w-5 h-5" />
+              <span className="font-semibold">Our Team</span>
+            </div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+              Expert Team Behind Every Journey
+            </h2>
+
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our team combines years of travel industry expertise with a passion for customer service, ensuring every ride exceeds expectations.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: GraduationCap,
+                title: "Trained & Verified Drivers",
+                description: "Every driver completes background verification, road safety training, and customer service orientation. We maintain a strict 4.5+ rating standard for all active drivers.",
+                gradient: "from-blue-400 to-cyan-500"
+              },
+              {
+                icon: Route,
+                title: "Route Planning Specialists",
+                description: "Our operations team has mapped 500+ routes across North India with optimized stops, fuel-efficient paths, and real-time traffic monitoring for on-time arrivals.",
+                gradient: "from-purple-400 to-pink-500"
+              },
+              {
+                icon: Headphones,
+                title: "Dedicated Support Team",
+                description: "Hindi and English-speaking customer support available 24/7 via phone, WhatsApp, and email. Average response time under 5 minutes for booking queries.",
+                gradient: "from-green-400 to-emerald-500"
+              }
+            ].map((item, index) => (
+              <AnimatedSection key={index} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -10 }}
+                  className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300 h-full"
+                >
+                  <div className={`w-14 h-14 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <item.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-amber-700 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {/* Trust Signals / Certifications */}
+          <AnimatedSection>
+            <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Credentials & Commitments</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {[
+                  { icon: Shield, text: "Government-registered transport operator" },
+                  { icon: BadgeCheck, text: "All vehicles carry comprehensive insurance" },
+                  { icon: Star, text: "4.8/5 average rating across 10,000+ rides" },
+                  { icon: CheckCircle2, text: "100% background-verified drivers" }
+                ].map((item, index) => (
+                  <div key={index} className="flex flex-col items-center text-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl flex items-center justify-center">
+                      <item.icon className="w-6 h-6 text-amber-600" />
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

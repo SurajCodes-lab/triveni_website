@@ -11,11 +11,15 @@ import {
 } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { BsWhatsapp } from 'react-icons/bs';
+import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import CityRoutes from "@/components/cities/CityRoutes";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from 'next/dynamic';
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
@@ -994,6 +998,11 @@ export default function CityServiceClient({
         </div>
       </section>
 
+
+      {/* ==================== FARE CALCULATOR ==================== */}
+      <div id="fare-calculator">
+        <FareCalculator variant="full" defaultFrom={formattedCityName} />
+      </div>
 
       {/* ==================== SEO: RELATED CONTENT ==================== */}
       <section className="py-16 md:py-20 bg-white">

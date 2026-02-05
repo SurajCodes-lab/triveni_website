@@ -21,7 +21,11 @@ import {
   Navigation,
   Home
 } from '@/components/ui/icons';
-import { sightseeingTours } from '@/utilis/sightseeingData';
+
+import dynamic from 'next/dynamic';
+
+// Dynamically import FareCalculator (client-only, below fold)
+const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 // SEO Components
 import { FAQSection } from '@/components/seo/FAQSection';
@@ -29,7 +33,7 @@ import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedC
 import { generateAirportFAQs } from '@/lib/seo/faq-generator';
 import { getNearbyDestinations } from '@/utilis/linkingHelper';
 
-export default function CityAirportServiceClient({ city, citySlug }) {
+export default function CityAirportServiceClient({ city, citySlug, cityTours = [] }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -103,13 +107,6 @@ export default function CityAirportServiceClient({ city, citySlug }) {
     const destSlug = destName.toLowerCase().replace(/\s+/g, '-');
     return `/${citySlug}#${destSlug}`;
   };
-
-  // Get sightseeing tours for this city - filter by city name in slug
-  const cityTours = useMemo(() => {
-    const tours = sightseeingTours[citySlug] || [];
-    // Filter tours where slug starts with the city name
-    return tours.filter(tour => tour.slug.startsWith(citySlug));
-  }, [citySlug]);
 
   const features = useMemo(() => [
     {
@@ -578,6 +575,19 @@ export default function CityAirportServiceClient({ city, citySlug }) {
               </p>
             </form>
           </div>
+        </div>
+      </section>
+
+      {/* Fare Calculator */}
+      <section className="py-16 px-4 bg-gray-50" id="fare-calculator">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Calculate Your {city.name} Airport Transfer Fare
+            </h2>
+            <p className="text-gray-600 text-lg">Get an instant price estimate for your airport trip</p>
+          </div>
+          <FareCalculator variant="compact" defaultFrom={city.name} className="max-w-md mx-auto" />
         </div>
       </section>
 

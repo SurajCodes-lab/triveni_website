@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CityAirportServiceClient from "@/components/airport/CityAirportServiceClient";
 import { getCityData, getAllCitySlugs } from "@/utilis/airportCityData";
+import { sightseeingTours } from '@/utilis/sightseeingData';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -156,7 +157,11 @@ export default function CityAirportPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <CityAirportServiceClient city={city} citySlug={params.city} />
+      <CityAirportServiceClient
+        city={city}
+        citySlug={params.city}
+        cityTours={(sightseeingTours[params.city] || []).filter(t => t.slug.startsWith(params.city)).slice(0, 6)}
+      />
     </>
   );
 }
