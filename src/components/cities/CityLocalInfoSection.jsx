@@ -1,6 +1,7 @@
 'use client';
 
-import { MapPin, Clock, Calendar, Info, Navigation2, Sparkles, Compass, Star, ChevronRight } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { MapPin, Clock, Calendar, Info, Navigation2, Sparkles, Compass, Star, ChevronRight } from "@/components/ui/icons";
 import { motion } from 'framer-motion';
 
 export default function CityLocalInfoSection({ cityLocalInfo, cityName }) {

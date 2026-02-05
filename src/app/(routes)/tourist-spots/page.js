@@ -4,7 +4,8 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { LocateIcon, ChevronRight, X, Shield, Clock, Car, Users } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { LocateIcon, ChevronRight, X, Shield, Clock, Car, Users } from '@/components/ui/icons';
 
 // Separate component that uses useSearchParams
 function TouristSpotsContent() {

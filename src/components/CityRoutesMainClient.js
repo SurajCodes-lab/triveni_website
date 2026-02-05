@@ -3,12 +3,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Star, Phone, CheckCircle, ArrowRight, Sparkles,
   Shield, Clock, ChevronDown, ChevronRight, Heart, Car, Navigation,
   Award, MapPinned, Bus, Route, CreditCard, Headphones, Snowflake,
   Search, Filter, X, BadgeCheck, Timer
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsWhatsapp } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';

@@ -3,11 +3,12 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Search, Filter, Award, Headphones, CreditCard,
   Compass, Sparkles, Zap, Heart, ChevronDown, Crown, Gem, Play, X, Mountain
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import ChardhamShowcase from './ChardhamShowcase';

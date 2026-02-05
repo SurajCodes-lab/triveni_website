@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
     MapPin, Calendar, Users, Star, Shield, Phone, MessageCircle,
     ChevronDown, CheckCircle, Navigation, Clock, Sun, Mountain, Sparkles, Plane, User
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 

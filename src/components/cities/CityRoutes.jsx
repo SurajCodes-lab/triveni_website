@@ -3,10 +3,11 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   Clock, MapPin, Car, Users, ArrowRight, Phone, Star,
   Sparkles, Navigation, ChevronRight, Zap, Shield, MapPinned
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
 import { phoneNumber } from "@/utilis/data";

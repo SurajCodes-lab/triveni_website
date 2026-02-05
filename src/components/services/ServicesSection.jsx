@@ -1,7 +1,8 @@
 'use client';
 
 import React from "react";
-import { Star } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Star } from "@/components/ui/icons";
 import { services } from "../../utilis/data";
 import VehicleServices from "./VehicleServices";
 import CitiesSection from "../cities/CitiesSection";

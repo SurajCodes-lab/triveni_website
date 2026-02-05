@@ -34,6 +34,7 @@ const Marquee = dynamic(
   }
 );
 
+// Centralized icon imports for better bundle optimization
 import {
   Star,
   Shield,
@@ -58,7 +59,7 @@ import {
   Route,
   CheckCircle2,
   Zap
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { phoneNumber } from "@/utilis/data";

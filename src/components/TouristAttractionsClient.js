@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle, ChevronRight } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle, ChevronRight } from '@/components/ui/icons';
 
 // SEO Components
 import { FAQSection } from '@/components/seo/FAQSection';

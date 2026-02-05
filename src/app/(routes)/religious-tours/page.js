@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { religiousTours } from '@/utilis/religiousTourData';
-import { Calendar, MapPin, Star, ChevronRight, Phone, Shield, Clock, Users, Heart } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Calendar, MapPin, Star, ChevronRight, Phone, Shield, Clock, Users, Heart } from '@/components/ui/icons';
 
 export const metadata = {
   title: 'Pilgrimage Tours 2026 | Char Dham from ₹45,000 | AC Transport & Guide',

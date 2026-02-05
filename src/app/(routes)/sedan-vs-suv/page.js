@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Users, Fuel, Car, Star, Check, X, ArrowRight, Phone } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Users, Fuel, Car, Star, Check, X, ArrowRight, Phone } from "@/components/ui/icons";
 
 export const metadata = {
   title: "Sedan vs SUV: Which Car to Rent? | Complete Comparison Guide | Triveni Cabs",

@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+// Centralized icon imports for better bundle optimization
 import {
   Plane,
   Clock,
@@ -19,7 +20,7 @@ import {
   Luggage,
   TrendingUp,
   Navigation
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 export default function AirportServiceClient({ faqData }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);

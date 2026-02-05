@@ -3,13 +3,14 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   Phone, MapPin, Calendar, Check, Star,
   Mountain, Sparkles, Award, Shield,
   Navigation, ChevronRight, ChevronDown, Heart,
   Clock, Users, ArrowRight, Route, Camera,
   Sun, MapPinned
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { BsWhatsapp } from 'react-icons/bs';
 import { phoneNumber } from '@/utilis/data';
 import Link from 'next/link';

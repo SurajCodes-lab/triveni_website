@@ -8,6 +8,7 @@ import {
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   MapPin,
@@ -23,7 +24,7 @@ import {
   TrendingUp,
   Users,
   Star
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 // Generate static params for all industries
 export async function generateStaticParams() {

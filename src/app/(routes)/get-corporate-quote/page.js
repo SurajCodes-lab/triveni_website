@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   MapPin,
@@ -16,7 +17,7 @@ import {
   Send,
   Mail,
   MessageSquare
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 const industries = [
   'IT / Software Company',

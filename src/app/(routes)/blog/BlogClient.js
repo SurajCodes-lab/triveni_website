@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Clock, Calendar, Sparkles, MapPin, Compass, Mountain, Building, Heart, Plane, Camera, Phone, MessageCircle, Star } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { ArrowRight, Clock, Calendar, Sparkles, MapPin, Compass, Mountain, Building, Heart, Plane, Camera, Phone, MessageCircle, Star } from '@/components/ui/icons';
 import { blogPosts } from '@/utilis/blog';
 import Link from 'next/link';
 import Image from 'next/image';

@@ -8,6 +8,7 @@ import {
 } from '@/utilis/corporateTransportData';
 import { getAllIndustries } from '@/utilis/corporateIndustryData';
 import { getAllUseCases } from '@/utilis/corporateUseCaseData';
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   MapPin,
@@ -25,7 +26,7 @@ import {
   HeadphonesIcon,
   Play,
   Star
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 export const metadata = {
   title: 'Corporate Transportation Service India | Employee Transport & Fleet Solutions | Triveni Cabs',

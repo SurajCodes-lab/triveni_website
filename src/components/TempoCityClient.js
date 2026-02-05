@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Search, Award, Headphones, CreditCard,
   Compass, Sparkles, ChevronDown, Crown, Gem, ArrowLeft, Map, Plane
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function TempoCityClient({ data }) {

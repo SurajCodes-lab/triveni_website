@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Phone, Mail, MapPin } from "@/components/ui/icons";
 import Link from "next/link";
 
 // Animation variants

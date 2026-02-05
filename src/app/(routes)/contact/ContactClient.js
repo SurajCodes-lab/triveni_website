@@ -3,6 +3,7 @@
 import { useRef, useState, useCallback, useMemo, useEffect } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   Mail,
@@ -30,7 +31,7 @@ import {
   Truck,
   CalendarCheck,
   Navigation
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { phoneNumber } from "@/utilis/data";

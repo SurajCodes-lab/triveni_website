@@ -3,12 +3,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Calendar, Info, ChevronLeft, MapIcon, Compass,
   Camera, Award, CreditCard, Headphones, MapPinned, Sparkles, Zap, Heart,
   Mountain, Sun, Wind, ChevronDown, Play, Gift, Crown, Gem
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';

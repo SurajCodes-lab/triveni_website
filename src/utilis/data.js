@@ -1,3 +1,4 @@
+// Centralized icon imports for better bundle optimization
 import {
     Car,
     Clock,
@@ -6,7 +7,7 @@ import {
     Package,
     Phone,
     Users,
-  } from "lucide-react";
+  } from "@/components/ui/icons";
   
   export const tourDetails = {
     "manali-tour-from-mumbai": {

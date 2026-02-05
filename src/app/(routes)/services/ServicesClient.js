@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
+// Centralized icon imports for better bundle optimization
 import {
   Star,
   ChevronRight,
@@ -28,7 +29,7 @@ import {
   Crown,
   CircleDot,
   ThumbsUp
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import { services, features, vehiclesServices, tempoTravellers, cities } from "@/utilis/data";
 

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from "react";
-import { Car, MapPin, Calendar, Clock, Plane, X } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Car, MapPin, Calendar, Clock, Plane, X } from "@/components/ui/icons";
 import BookingTrip from "./BookingTrip";
 import SuccessModal from "./SuccessModal";
 import { vehiclesServices } from "../../utilis/data";

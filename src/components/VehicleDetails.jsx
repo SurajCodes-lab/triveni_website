@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Head from "next/head";
+// Centralized icon imports for better bundle optimization
 import {
   Users,
   Star,
@@ -31,7 +32,7 @@ import {
   Settings,
   ThumbsUp,
   Navigation
-} from "lucide-react";
+} from "@/components/ui/icons";
 
 import { phoneNumber, vehicleDetails } from "../utilis/data";
 

@@ -13,6 +13,7 @@ import {
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   MapPin,
@@ -30,7 +31,7 @@ import {
   Building2,
   Calendar,
   Award
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 export async function generateStaticParams() {
   const slugs = getAllEventSlugs();

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   ChevronRight,
@@ -14,7 +15,7 @@ import {
   TrendingUp,
   DollarSign,
   Headphones
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 export const metadata = {
   title: 'Corporate Cab Service vs Ola/Uber 2024 | Complete Comparison Guide | Triveni Cabs',

@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { tourPackages } from "@/utilis/data";
+// Centralized icon imports for better bundle optimization
 import {
   Calendar,
   ChevronLeft,
   ChevronRight,
   MapPin,
   Star,
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";

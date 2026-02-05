@@ -1,6 +1,7 @@
 'use client';
 
-import { Car, CheckCircle, Clock } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Car, CheckCircle, Clock } from "@/components/ui/icons";
 import React from "react";
 import { SectionHeader } from "@/components/ui/SectionHeading";
 

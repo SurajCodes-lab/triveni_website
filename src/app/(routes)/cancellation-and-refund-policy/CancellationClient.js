@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
+// Centralized icon imports for better bundle optimization
 import {
   RotateCcw,
   Calendar,
@@ -29,7 +30,7 @@ import {
   CheckCircle2,
   FileText,
   Headphones
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { phoneNumber } from "@/utilis/data";

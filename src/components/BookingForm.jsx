@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+// Centralized icon imports for better bundle optimization
 import {
   Calendar,
   Mail,
@@ -11,7 +12,7 @@ import {
   Check,
   PhoneCall,
   MessageCircleMore,
-} from "lucide-react";
+} from "@/components/ui/icons";
 import { motion } from "framer-motion";
 
 const BookingForm = ({ slug, packageInfo }) => {

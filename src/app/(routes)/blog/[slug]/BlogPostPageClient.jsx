@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
-import { Calendar, Clock, Eye, Tag, Share2, Facebook, Twitter, Linkedin, ArrowLeft, Sparkles, BookOpen, ChevronRight } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Calendar, Clock, Eye, Tag, Share2, Facebook, Twitter, Linkedin, ArrowLeft, Sparkles, BookOpen, ChevronRight } from '@/components/ui/icons';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import WhatsAppCTA from '@/components/blog/WhatsAppCTA';
 

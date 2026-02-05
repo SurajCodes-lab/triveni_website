@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Home, Phone, Car, MapPin, ArrowRight, Search } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Home, Phone, Car, MapPin, ArrowRight, Search } from '@/components/ui/icons';
 
 export const metadata = {
   title: 'Page Not Found | Triveni Cabs',

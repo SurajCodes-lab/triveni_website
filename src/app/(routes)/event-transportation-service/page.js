@@ -9,6 +9,7 @@ import {
   getAllEventCities,
   getAllEventTypes
 } from '@/utilis/eventTransportData';
+// Centralized icon imports for better bundle optimization
 import {
   Phone,
   MapPin,
@@ -26,7 +27,7 @@ import {
   TrendingUp,
   Car,
   HelpCircle
-} from 'lucide-react';
+} from '@/components/ui/icons';
 
 export const metadata = {
   title: 'Event Transportation Services | Wedding, Corporate & Festival Transport | Triveni Cabs',

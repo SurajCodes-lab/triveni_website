@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Car, Users, Fuel, Star, ArrowRight, Shield, Clock, Phone } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Car, Users, Fuel, Star, ArrowRight, Shield, Clock, Phone } from "@/components/ui/icons";
 import { vehicleDetails } from "@/utilis/data";
 
 export const metadata = {

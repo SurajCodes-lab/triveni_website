@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Mountain, Flame, MapPin, ArrowRight, Star } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Mountain, Flame, MapPin, ArrowRight, Star } from '@/components/ui/icons';
 import Image from 'next/image';
 import { chardhamRoutes } from '@/utilis/chardhamData';
 

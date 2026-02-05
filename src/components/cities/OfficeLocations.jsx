@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useCallback } from 'react';
-import { MapPin, Phone, Clock, Navigation, Mail, Sparkles, Building2, CheckCircle, ArrowRight } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { MapPin, Phone, Clock, Navigation, Mail, Sparkles, Building2, CheckCircle, ArrowRight } from '@/components/ui/icons';
 import { BsWhatsapp } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 

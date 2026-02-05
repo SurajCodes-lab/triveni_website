@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, PhoneCall, ShieldCheck, Star, Users } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { ChevronLeft, ChevronRight, PhoneCall, ShieldCheck, Star, Users } from "@/components/ui/icons";
 import React, { useState, useEffect } from "react";
 import { phoneNumber } from "../../../utilis/data";
 import Image from "next/image"; // Import Next.js Image component

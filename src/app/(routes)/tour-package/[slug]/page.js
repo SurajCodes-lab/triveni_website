@@ -6,7 +6,8 @@ import { tourDetails } from "@/utilis/data";
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
 import ItinerarySection from "@/components/ItinerarySection";
-import { Calendar, MapPin, Clock, Users, Car, Star, Coffee, BedDouble, CheckCircle, Phone } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Calendar, MapPin, Clock, Users, Car, Star, Coffee, BedDouble, CheckCircle, Phone } from "@/components/ui/icons";
 
 // Import the client components
 import { TrackingProvider, ItineraryWrapper, AccommodationWrapper, BookNowButton } from "./client-components";

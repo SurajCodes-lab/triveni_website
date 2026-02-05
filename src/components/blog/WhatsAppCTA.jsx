@@ -1,6 +1,7 @@
 'use client';
 
-import { MessageCircle, Phone } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { MessageCircle, Phone } from '@/components/ui/icons';
 import { phoneNumber } from '@/utilis/data';
 import { trackWhatsAppClick } from '@/utilis/analytics';
 

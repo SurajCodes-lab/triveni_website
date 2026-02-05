@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Car, Users, Truck, Bus, Shield, Clock, MapPin, Phone, CheckCircle, Star } from 'lucide-react';
+// Centralized icon imports for better bundle optimization
+import { Car, Users, Truck, Bus, Shield, Clock, MapPin, Phone, CheckCircle, Star } from '@/components/ui/icons';
 import FareCalculator from '@/components/calculator/FareCalculator';
 import { COMPANY_INFO } from '@/lib/seo/constants';
 

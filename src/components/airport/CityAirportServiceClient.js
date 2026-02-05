@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+// Centralized icon imports for better bundle optimization
 import {
   Plane,
   Clock,
@@ -19,7 +20,7 @@ import {
   Award,
   Navigation,
   Home
-} from 'lucide-react';
+} from '@/components/ui/icons';
 import { sightseeingTours } from '@/utilis/sightseeingData';
 
 // SEO Components

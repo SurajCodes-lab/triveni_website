@@ -3,13 +3,14 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+// Centralized icon imports for better bundle optimization
 import {
   Phone, MapPin, Car, ChevronRight, Users, ArrowRight, Clock,
   Star, Shield, CheckCircle, Navigation, CreditCard, Headphones,
   Award, Sparkles, Route, Fuel, Calendar, Zap, Gift, Bus,
   ChevronDown, Play, BadgeCheck, Timer, Gauge, Wifi, Music,
   Snowflake, MapPinned, CircleDot, TrendingUp
-} from "lucide-react";
+} from "@/components/ui/icons";
 import { BsWhatsapp } from "react-icons/bs";
 import { phoneNumber } from "@/utilis/data";
 import { getRouteOffices } from "@/utilis/officeLocations";

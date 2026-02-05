@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useMemo, useCallback, useState } from "react";
+// Centralized icon imports for better bundle optimization
 import {
   MapPin, Phone, Car, Clock, Shield, CheckCircle,
   Users, ChevronRight, Star, ArrowRight, Sparkles,
   CreditCard, Headphones, Award, Heart, Navigation,
   Bus, ChevronDown, Route, Fuel, Gift, BadgeCheck,
   Timer, Snowflake, Search, Filter, X, Play
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { BsWhatsapp } from 'react-icons/bs';

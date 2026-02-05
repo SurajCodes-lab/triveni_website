@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from "react";
+// Centralized icon imports for better bundle optimization
 import {
   Heart, Users, Car, Phone, MapPin, Clock, Shield, Star,
   ChevronRight, Sparkles, Music, Camera, Gift, CheckCircle,
   Crown, Award, CreditCard, UserCheck, Zap, Calendar
-} from "lucide-react";
+} from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { BsWhatsapp } from 'react-icons/bs';

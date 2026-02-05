@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Users, Fuel, Car, Check, X, ArrowRight, Phone, MapPin } from "lucide-react";
+// Centralized icon imports for better bundle optimization
+import { Users, Fuel, Car, Check, X, ArrowRight, Phone, MapPin } from "@/components/ui/icons";
 
 export const metadata = {
   title: "Tempo Traveller vs Bus: Which to Rent for Group Travel? | Triveni Cabs",

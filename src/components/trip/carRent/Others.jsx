@@ -1,6 +1,7 @@
 "use client";
 
-import { CheckCircle, PhoneCall } from 'lucide-react'
+// Centralized icon imports for better bundle optimization
+import { CheckCircle, PhoneCall } from '@/components/ui/icons'
 import React from 'react'
 import { phoneNumber } from '../../../utils/data';
 
