@@ -19,6 +19,50 @@ const isGtagAvailable = () => {
 };
 
 /**
+ * Google Ads Conversion Events
+ * These are the event names from Google Ads conversion setup
+ *
+ * To add more conversions:
+ * 1. Go to Google Ads → Goals → Conversions → Summary
+ * 2. Create a new conversion action
+ * 3. Copy the event name (e.g., 'ads_conversion_Contact_Us_1')
+ * 4. Add it below
+ */
+const GOOGLE_ADS_EVENTS = {
+  CONTACT_US: 'ads_conversion_Contact_Us_1',           // Contact form / general inquiry
+  PHONE_CALL: 'ads_conversion_Phone_Call_1',           // Phone call clicks (create in Google Ads)
+  WHATSAPP_CLICK: 'ads_conversion_WhatsApp_Click_1',   // WhatsApp clicks (create in Google Ads)
+  FORM_SUBMISSION: 'ads_conversion_Form_Submit_1',     // Form submissions (create in Google Ads)
+  QUOTE_REQUEST: 'ads_conversion_Quote_Request_1',     // Quote requests (create in Google Ads)
+};
+
+/**
+ * Fire Google Ads Conversion using event name
+ * @param {string} eventName - The event name from Google Ads (e.g., 'ads_conversion_Contact_Us_1')
+ * @param {number} value - Conversion value in INR (optional)
+ */
+const fireGoogleAdsConversion = (eventName, value = 0) => {
+  if (!isGtagAvailable()) return;
+
+  const eventParams = {};
+
+  // Add value if provided
+  if (value > 0) {
+    eventParams.value = value;
+    eventParams.currency = 'INR';
+  }
+
+  window.gtag('event', eventName, eventParams);
+
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🎯 Google Ads Conversion Fired:', {
+      event: eventName,
+      ...eventParams
+    });
+  }
+};
+
+/**
  * Get detailed page context
  * Extracts page URL, path, slug, and other context information
  */
@@ -101,12 +145,16 @@ export const trackConversion = (conversionType, details = {}) => {
  * @param {string} phoneNumber - Phone number being called
  */
 export const trackPhoneCall = (location, phoneNumber = '') => {
+  // Track in GA4
   trackConversion('phone_call', {
     event_label: `call_from_${location}`,
     button_location: location,
     phone_number: phoneNumber,
     contact_method: 'phone_call'
   });
+
+  // Fire Google Ads Conversion
+  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.PHONE_CALL, 300);
 };
 
 /**
@@ -116,6 +164,7 @@ export const trackPhoneCall = (location, phoneNumber = '') => {
  * @param {string} context - Additional context (service type, package name, etc.)
  */
 export const trackWhatsAppClick = (location, message = '', context = '') => {
+  // Track in GA4
   trackConversion('whatsapp_inquiry', {
     event_label: `whatsapp_from_${location}`,
     button_location: location,
@@ -123,6 +172,9 @@ export const trackWhatsAppClick = (location, message = '', context = '') => {
     contact_method: 'whatsapp',
     inquiry_context: context
   });
+
+  // Fire Google Ads Conversion
+  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.WHATSAPP_CLICK, 250);
 };
 
 /**
@@ -147,10 +199,14 @@ export const trackFormSubmission = (formName, formData = {}) => {
   delete sanitizedData.name;
   delete sanitizedData.message;
 
+  // Track in GA4
   trackConversion('form_submission', {
     event_label: `submit_${formName}`,
     ...sanitizedData
   });
+
+  // Fire Google Ads Conversion
+  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.FORM_SUBMISSION, 500);
 };
 
 /**
@@ -419,6 +475,36 @@ export const trackDownload = (fileName, fileType) => {
   });
 };
 
+/**
+ * Track Contact Us conversion (Google Ads)
+ * Use this when user submits contact form, clicks contact button, etc.
+ * @param {string} source - Where the contact action came from
+ * @param {object} details - Additional details
+ */
+export const trackContactUsConversion = (source = 'unknown', details = {}) => {
+  // Track in GA4
+  trackConversion('contact_us', {
+    event_label: `contact_from_${source}`,
+    contact_source: source,
+    ...details
+  });
+
+  // Fire Google Ads Contact Us Conversion
+  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.CONTACT_US, 400);
+};
+
+/**
+ * Manually fire any Google Ads conversion
+ * @param {string} eventName - Event name (use GOOGLE_ADS_EVENTS constants)
+ * @param {number} value - Conversion value
+ */
+export const fireGAdsConversion = (eventName, value = 0) => {
+  fireGoogleAdsConversion(eventName, value);
+};
+
+// Export Google Ads event names for manual use
+export { GOOGLE_ADS_EVENTS };
+
 // Export all tracking functions
 export default {
   trackEvent,
@@ -443,5 +529,8 @@ export default {
   trackError,
   trackPerformance,
   trackVideo,
-  trackDownload
+  trackDownload,
+  trackContactUsConversion,
+  fireGAdsConversion,
+  GOOGLE_ADS_EVENTS
 };
