@@ -29,11 +29,11 @@ const isGtagAvailable = () => {
  * 4. Add it below
  */
 const GOOGLE_ADS_EVENTS = {
-  CONTACT_US: 'ads_conversion_Contact_Us_1',           // Contact form / general inquiry
-  PHONE_CALL: 'ads_conversion_Phone_Call_1',           // Phone call clicks (create in Google Ads)
-  WHATSAPP_CLICK: 'ads_conversion_WhatsApp_Click_1',   // WhatsApp clicks (create in Google Ads)
-  FORM_SUBMISSION: 'ads_conversion_Form_Submit_1',     // Form submissions (create in Google Ads)
-  QUOTE_REQUEST: 'ads_conversion_Quote_Request_1',     // Quote requests (create in Google Ads)
+  PHONE_CALL: 'conversion_phone_call',                 // Phone call clicks
+  WHATSAPP_CLICK: 'conversion_whatsapp_inquiry',       // WhatsApp clicks
+  FORM_SUBMISSION: 'conversion_form_submission',        // Form submissions
+  CONTACT_US: 'conversion_contact_us',                 // Contact form / general inquiry
+  QUOTE_REQUEST: 'conversion_quote_request',           // Quote requests
 };
 
 /**
@@ -145,16 +145,14 @@ export const trackConversion = (conversionType, details = {}) => {
  * @param {string} phoneNumber - Phone number being called
  */
 export const trackPhoneCall = (location, phoneNumber = '') => {
-  // Track in GA4
   trackConversion('phone_call', {
     event_label: `call_from_${location}`,
     button_location: location,
     phone_number: phoneNumber,
-    contact_method: 'phone_call'
+    contact_method: 'phone_call',
+    value: 300,
+    currency: 'INR'
   });
-
-  // Fire Google Ads Conversion
-  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.PHONE_CALL, 300);
 };
 
 /**
@@ -164,17 +162,15 @@ export const trackPhoneCall = (location, phoneNumber = '') => {
  * @param {string} context - Additional context (service type, package name, etc.)
  */
 export const trackWhatsAppClick = (location, message = '', context = '') => {
-  // Track in GA4
   trackConversion('whatsapp_inquiry', {
     event_label: `whatsapp_from_${location}`,
     button_location: location,
     message_type: message ? 'prefilled' : 'empty',
     contact_method: 'whatsapp',
-    inquiry_context: context
+    inquiry_context: context,
+    value: 250,
+    currency: 'INR'
   });
-
-  // Fire Google Ads Conversion
-  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.WHATSAPP_CLICK, 250);
 };
 
 /**
@@ -199,14 +195,12 @@ export const trackFormSubmission = (formName, formData = {}) => {
   delete sanitizedData.name;
   delete sanitizedData.message;
 
-  // Track in GA4
   trackConversion('form_submission', {
     event_label: `submit_${formName}`,
-    ...sanitizedData
+    ...sanitizedData,
+    value: 500,
+    currency: 'INR'
   });
-
-  // Fire Google Ads Conversion
-  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.FORM_SUBMISSION, 500);
 };
 
 /**
@@ -482,15 +476,29 @@ export const trackDownload = (fileName, fileType) => {
  * @param {object} details - Additional details
  */
 export const trackContactUsConversion = (source = 'unknown', details = {}) => {
-  // Track in GA4
   trackConversion('contact_us', {
     event_label: `contact_from_${source}`,
     contact_source: source,
-    ...details
+    ...details,
+    value: 400,
+    currency: 'INR'
   });
+};
 
-  // Fire Google Ads Contact Us Conversion
-  fireGoogleAdsConversion(GOOGLE_ADS_EVENTS.CONTACT_US, 400);
+/**
+ * Track Quote Request conversion
+ * Use this when user requests a quote for any service
+ * @param {string} source - Where the quote was requested from
+ * @param {object} details - Additional details (service type, route, etc.)
+ */
+export const trackQuoteRequest = (source = 'unknown', details = {}) => {
+  trackConversion('quote_request', {
+    event_label: `quote_from_${source}`,
+    quote_source: source,
+    ...details,
+    value: 350,
+    currency: 'INR'
+  });
 };
 
 /**
@@ -531,6 +539,7 @@ export default {
   trackVideo,
   trackDownload,
   trackContactUsConversion,
+  trackQuoteRequest,
   fireGAdsConversion,
   GOOGLE_ADS_EVENTS
 };
