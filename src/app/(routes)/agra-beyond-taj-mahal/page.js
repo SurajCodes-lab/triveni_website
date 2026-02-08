@@ -145,7 +145,7 @@ export default function AgraBeyondTajMahalPage() {
           <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-teal-500/20 backdrop-blur-md px-6 py-2 rounded-full mb-6 border border-teal-400/30">
               <Binoculars className="w-4 h-4 text-teal-300" />
-              <span className="text-teal-200 font-semibold text-sm tracking-[0.15em] uppercase">Explorer's Guide 2026</span>
+              <span className="text-teal-200 font-semibold text-sm tracking-[0.15em] uppercase">Explorer&apos;s Guide 2026</span>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-tight tracking-tight">
               Agra <span className="text-transparent bg-gradient-to-r from-teal-300 via-cyan-300 to-amber-300 bg-clip-text">Beyond</span> Taj Mahal

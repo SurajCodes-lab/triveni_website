@@ -73,7 +73,7 @@ export default function AgraFoodTourPage() {
   ];
 
   const streetFoodItinerary = [
-    { time: "7:00 AM", stop: "Deviram near Jama Masjid", food: "Bedai, Aloo Sabzi & Jalebi", desc: "Start with Agra's iconic breakfast. This 50-year-old shop serves the best bedai in the city. Arrive early for fresh, hot jalebis.", color: "from-orange-500 to-red-500" },
+    { time: "7:00 AM", stop: "Deviram near Jama Masjid", food: "Bedai, Aloo Sabzi & Jalebi", desc: "Start with Agra&apos;s iconic breakfast. This 50-year-old shop serves the best bedai in the city. Arrive early for fresh, hot jalebis.", color: "from-orange-500 to-red-500" },
     { time: "8:30 AM", stop: "Panchi Petha, Noori Gate", food: "Petha Tasting", desc: "Free tasting of 30+ Petha varieties. Buy your favorites. This is the original Panchhi store, not the many imitations.", color: "from-amber-500 to-orange-500" },
     { time: "9:30 AM", stop: "Bhagat Halwai", food: "Dalmoth & Sweets", desc: "Buy fresh Dalmoth and sample traditional Agra sweets like Gajak (winter special) and Rewari.", color: "from-yellow-500 to-amber-500" },
     { time: "11:00 AM", stop: "Sadar Bazaar Area", food: "Chaat & Golgappe", desc: "Try Agra-style chaat -- sweeter and tangier than Delhi. Golgappe, dahi bhalle, and aloo tikki from roadside vendors.", color: "from-red-500 to-pink-500" },
@@ -161,7 +161,7 @@ export default function AgraFoodTourPage() {
                 <div className="absolute top-24 left-0 bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 w-52 transform -rotate-2">
                   <div className="text-2xl mb-1">🫓</div>
                   <div className="text-white font-bold">Bedai-Jalebi</div>
-                  <div className="text-orange-300 text-sm">Agra's iconic breakfast</div>
+                  <div className="text-orange-300 text-sm">Agra&apos;s iconic breakfast</div>
                   <div className="text-white/60 text-xs mt-2">₹30-50/plate</div>
                 </div>
                 <div className="absolute bottom-0 right-16 bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 w-52 transform rotate-1">
