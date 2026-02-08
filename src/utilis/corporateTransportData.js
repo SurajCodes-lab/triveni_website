@@ -234,6 +234,114 @@ export const corporateCities = {
       fleet: '500+'
     },
     keywords: ['corporate cab dehradun', 'IT park transport dehradun', 'employee transport dehradun', 'corporate car rental dehradun', 'selaqui transport']
+  },
+  noida: {
+    name: 'Noida',
+    slug: 'noida',
+    title: 'Corporate Transportation Service in Noida',
+    metaTitle: 'Corporate Cab Service Noida | IT Hub Transport | Triveni Cabs',
+    metaDescription: 'Premium corporate transportation in Noida. Sector 62/63 IT hubs, Film City, Expressway connectivity. Employee pick-up/drop. Call 7668570551.',
+    heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    tagline: 'Noida IT Hub Excellence',
+    subtitle: 'Powering Noida Expressway Corporate Corridor',
+    description: 'Triveni Cabs delivers premium corporate transportation services in Noida, one of India\'s fastest-growing IT and business hubs. From Sector 62 tech parks to Film City, Greater Noida Expressway to Knowledge Park, we ensure your workforce travels with reliability and comfort across the entire Noida region.',
+    highlights: [
+      'Sector 62, 63, 125, 126 IT park shuttles',
+      'Greater Noida Expressway corporate corridor',
+      'Film City and Knowledge Park connectivity',
+      'Noida-Delhi-Gurgaon intercity corporate service'
+    ],
+    businessAreas: [
+      { name: 'Sector 62-63 IT Hub', type: 'Technology Park' },
+      { name: 'Greater Noida Expressway', type: 'Corporate Corridor' },
+      { name: 'Film City', type: 'Media & Tech' },
+      { name: 'Knowledge Park', type: 'Business District' }
+    ],
+    stats: {
+      fleet: '500+'
+    },
+    keywords: ['corporate cab service noida', 'employee transport noida', 'IT hub cab noida', 'office cab service noida', 'corporate car rental noida', 'sector 62 cab service']
+  },
+  gurgaon: {
+    name: 'Gurgaon',
+    slug: 'gurgaon',
+    title: 'Corporate Transportation Service in Gurgaon',
+    metaTitle: 'Corporate Cab Service Gurgaon | Cyber City Transport | Triveni Cabs',
+    metaDescription: 'Premium corporate cab service in Gurgaon. Cyber City, DLF Phase 1-5, Udyog Vihar, Sohna Road coverage. Employee transport. Call 7668570551.',
+    heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    tagline: 'Millennium City Corporate Hub',
+    subtitle: 'Serving Fortune 500 Companies in Gurgaon',
+    description: 'Triveni Cabs provides world-class corporate transportation in Gurgaon, the Millennium City and India\'s leading corporate hub. From DLF Cyber City to Udyog Vihar, Sohna Road to Golf Course Road, we connect Gurgaon\'s top business districts with reliable, professional transport solutions for enterprises of all sizes.',
+    highlights: [
+      'DLF Cyber City and Cyber Hub connectivity',
+      'Udyog Vihar Phase 1-5 industrial transport',
+      'Golf Course Road and Sohna Road corridors',
+      'MG Road and IFFCO Chowk business hubs'
+    ],
+    businessAreas: [
+      { name: 'DLF Cyber City', type: 'IT & Business Hub' },
+      { name: 'Udyog Vihar', type: 'Industrial Estate' },
+      { name: 'Golf Course Road', type: 'Premium Corporate' },
+      { name: 'Sohna Road', type: 'Business Corridor' }
+    ],
+    stats: {
+      fleet: '500+'
+    },
+    keywords: ['corporate cab service gurgaon', 'employee transport gurgaon', 'cyber city cab service', 'DLF corporate cab', 'office cab gurgaon', 'corporate car rental gurgaon']
+  },
+  lucknow: {
+    name: 'Lucknow',
+    slug: 'lucknow',
+    title: 'Corporate Transportation Service in Lucknow',
+    metaTitle: 'Corporate Cab Service Lucknow | State Capital Transport | Triveni Cabs',
+    metaDescription: 'Reliable corporate transportation in Lucknow. Gomti Nagar IT City, government offices, Hazratganj business district. Employee transport. Call 7668570551.',
+    heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    tagline: 'UP State Capital Corporate Hub',
+    subtitle: 'Connecting Lucknow Government & IT Sectors',
+    description: 'Triveni Cabs offers professional corporate transportation services in Lucknow, the state capital of Uttar Pradesh. We serve government offices, IT hubs in Gomti Nagar, corporate houses in Hazratganj, and industrial areas across the city with punctual, reliable employee transport and executive travel services.',
+    highlights: [
+      'Gomti Nagar IT City and tech park shuttles',
+      'Government office and Vidhan Sabha connectivity',
+      'Hazratganj and Aminabad business district service',
+      'Lucknow Airport corporate transfers 24/7'
+    ],
+    businessAreas: [
+      { name: 'Gomti Nagar IT City', type: 'Technology Hub' },
+      { name: 'Hazratganj', type: 'Commercial District' },
+      { name: 'Vibhuti Khand', type: 'Corporate Area' },
+      { name: 'Aliganj Industrial', type: 'Industrial Zone' }
+    ],
+    stats: {
+      fleet: '500+'
+    },
+    keywords: ['corporate cab lucknow', 'employee transport lucknow', 'government vehicle rental lucknow', 'office cab lucknow', 'corporate car rental lucknow', 'gomti nagar cab service']
+  },
+  haridwar: {
+    name: 'Haridwar',
+    slug: 'haridwar',
+    title: 'Corporate Transportation Service in Haridwar',
+    metaTitle: 'Corporate Transport Haridwar | BHEL SIDCUL Cab | Triveni Cabs',
+    metaDescription: 'Corporate cab service in Haridwar. BHEL campus, SIDCUL industrial area, pharma companies. Employee transport and executive travel. Call 7668570551.',
+    heroImage: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
+    tagline: 'Haridwar Industrial Hub Gateway',
+    subtitle: 'Powering BHEL & SIDCUL Workforce Mobility',
+    description: 'Triveni Cabs provides specialized corporate transportation in Haridwar, serving major industrial establishments including BHEL, SIDCUL industrial area, and pharmaceutical companies. Our service connects the holy city\'s industrial belt with reliable employee transport, shift-based operations, and executive travel solutions.',
+    highlights: [
+      'BHEL Haridwar campus employee transport',
+      'SIDCUL Industrial Area full connectivity',
+      'Pharmaceutical company shift-based transport',
+      'Haridwar-Dehradun intercity corporate service'
+    ],
+    businessAreas: [
+      { name: 'BHEL Haridwar', type: 'PSU Campus' },
+      { name: 'SIDCUL Industrial', type: 'Industrial Estate' },
+      { name: 'Pharma Hub', type: 'Pharmaceutical Zone' },
+      { name: 'Roshnabad', type: 'Commercial Area' }
+    ],
+    stats: {
+      fleet: '500+'
+    },
+    keywords: ['corporate transport haridwar', 'BHEL cab service', 'SIDCUL employee transport', 'industrial cab haridwar', 'corporate car rental haridwar', 'pharma company transport haridwar']
   }
 };
 

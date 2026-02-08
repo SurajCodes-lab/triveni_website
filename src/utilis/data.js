@@ -306,7 +306,7 @@ import {
       price: "₹10,999",
       duration: "3 Days 2 Nights",
       image:
-        "https://t3.ftcdn.net/jpg/03/11/74/00/360_F_311740081_PL7ftGHnZL7JMBQpigswigY2xFwSRHJg.jpg",
+        "/images/sightseeing/Amritsar/Golden_Temple.jpg",
       startingPoint: "Delhi",
       destination: "Punjab",
       departureDate: "Monthly",
@@ -348,8 +348,198 @@ import {
         amenities: ["WiFi", "Restaurant", "Local assistance"],
       },
     },
+    "golden-triangle-tour": {
+      title: "Golden Triangle Tour",
+      price: "₹15,000",
+      duration: "4 Days 3 Nights",
+      image: "/images/packages/rajasthan.webp",
+      startingPoint: "Delhi",
+      destination: "Delhi-Agra-Jaipur",
+      departureDate: "Daily",
+      category: "Heritage",
+      overview:
+        "Experience India's most iconic circuit covering Delhi, Agra, and Jaipur. Visit the Taj Mahal, Red Fort, Amber Fort, and other UNESCO World Heritage Sites on this classic Golden Triangle tour.",
+      inclusions: [
+        "AC sedan/SUV with experienced driver",
+        "3-star hotel accommodation for 3 nights",
+        "Breakfast included daily",
+        "All toll, parking, and state taxes",
+        "24/7 on-trip support",
+      ],
+      itinerary: [
+        { day: "Day 1", title: "Delhi Sightseeing", details: "Pickup, visit Red Fort, Qutub Minar, India Gate, Lotus Temple. Overnight Delhi." },
+        { day: "Day 2", title: "Delhi to Agra", details: "Drive to Agra (3-4 hrs). Visit Taj Mahal at sunrise, Agra Fort, Mehtab Bagh. Overnight Agra." },
+        { day: "Day 3", title: "Agra to Jaipur via Fatehpur Sikri", details: "Visit Fatehpur Sikri en route. Arrive Jaipur, explore Hawa Mahal, City Palace. Overnight Jaipur." },
+        { day: "Day 4", title: "Jaipur to Delhi", details: "Visit Amber Fort, Jantar Mantar. Drive back to Delhi. Tour ends." },
+      ],
+      highlights: ["Taj Mahal sunrise visit", "Amber Fort elephant ride", "Fatehpur Sikri ghost city"],
+      accommodation: { name: "Heritage Hotels", rating: "3 Star", amenities: ["WiFi", "Restaurant", "AC Rooms"] },
+    },
+    "delhi-agra-weekend-tour": {
+      title: "Delhi Agra Weekend Tour",
+      price: "₹5,000",
+      duration: "2 Days 1 Night",
+      image: "/images/packages/rajasthan.webp",
+      startingPoint: "Delhi",
+      destination: "Agra",
+      departureDate: "Weekend",
+      category: "Heritage",
+      overview:
+        "Perfect weekend getaway from Delhi to Agra covering the Taj Mahal, Agra Fort, and Fatehpur Sikri. Quick yet comprehensive tour of Mughal heritage.",
+      inclusions: ["AC vehicle with driver", "1 night hotel accommodation", "Breakfast included", "Toll and parking charges", "All taxes"],
+      itinerary: [
+        { day: "Day 1", title: "Delhi to Agra", details: "Early morning drive. Visit Taj Mahal, Agra Fort, Itmad-ud-Daulah. Overnight Agra." },
+        { day: "Day 2", title: "Fatehpur Sikri & Return", details: "Visit Fatehpur Sikri, Mehtab Bagh. Drive back to Delhi." },
+      ],
+      highlights: ["Taj Mahal sunrise", "Agra Fort", "Fatehpur Sikri"],
+      accommodation: { name: "Agra Comfort Inn", rating: "3 Star", amenities: ["WiFi", "Restaurant", "Room Service"] },
+    },
+    "uttarakhand-spiritual-tour": {
+      title: "Uttarakhand Spiritual Tour",
+      price: "₹18,000",
+      duration: "6 Days 5 Nights",
+      image: "/images/packages/chardham.webp",
+      startingPoint: "Delhi",
+      destination: "Uttarakhand",
+      departureDate: "Weekly",
+      category: "Pilgrimage",
+      overview:
+        "A spiritual journey through Uttarakhand's holiest sites including Haridwar, Rishikesh, and the sacred temples of the Himalayas. Experience Ganga Aarti, yoga sessions, and mountain serenity.",
+      inclusions: ["AC vehicle for entire trip", "5 nights hotel accommodation", "Daily breakfast", "All toll, parking, state permits", "Experienced hill driver"],
+      itinerary: [
+        { day: "Day 1", title: "Delhi to Haridwar", details: "Drive to Haridwar. Evening Ganga Aarti at Har Ki Pauri." },
+        { day: "Day 2", title: "Haridwar Temples", details: "Visit Mansa Devi, Chandi Devi, Maya Devi Temple." },
+        { day: "Day 3", title: "Haridwar to Rishikesh", details: "Drive to Rishikesh. Visit Laxman Jhula, Ram Jhula, Beatles Ashram." },
+        { day: "Day 4", title: "Rishikesh Yoga & Temples", details: "Morning yoga session. Visit Neelkanth Mahadev Temple." },
+        { day: "Day 5", title: "Rishikesh to Devprayag", details: "Visit Triveni Ghat. Drive to Devprayag Sangam. Return Rishikesh." },
+        { day: "Day 6", title: "Return to Delhi", details: "Morning aarti. Drive back to Delhi." },
+      ],
+      highlights: ["Ganga Aarti at Har Ki Pauri", "Yoga session in Rishikesh", "Devprayag Sangam"],
+      accommodation: { name: "Riverside Retreat", rating: "3 Star", amenities: ["WiFi", "Restaurant", "River View"] },
+    },
+    "himachal-adventure-tour": {
+      title: "Himachal Adventure Tour",
+      price: "₹20,000",
+      duration: "7 Days 6 Nights",
+      image: "/images/packages/manali.webp",
+      startingPoint: "Delhi",
+      destination: "Himachal Pradesh",
+      departureDate: "Weekly",
+      category: "Adventure",
+      overview:
+        "An action-packed adventure tour covering Shimla, Kullu, and Manali with river rafting, paragliding, skiing, and mountain treks amidst stunning Himalayan landscapes.",
+      inclusions: ["AC vehicle with experienced hill driver", "6 nights hotel accommodation", "Daily breakfast", "River rafting in Kullu (1 session)", "All toll, parking, permits"],
+      itinerary: [
+        { day: "Day 1", title: "Delhi to Shimla", details: "Drive to Shimla. Evening Mall Road walk." },
+        { day: "Day 2", title: "Shimla & Kufri", details: "Visit Jakhu Temple, Kufri adventure activities." },
+        { day: "Day 3", title: "Shimla to Manali", details: "Scenic drive through Kullu Valley. River rafting at Kullu." },
+        { day: "Day 4", title: "Manali Sightseeing", details: "Visit Hadimba Temple, Old Manali, Vashisht Springs." },
+        { day: "Day 5", title: "Solang Valley", details: "Paragliding, zorbing, snow activities at Solang." },
+        { day: "Day 6", title: "Rohtang or Atal Tunnel", details: "Day trip to Rohtang Pass or Atal Tunnel scenic point." },
+        { day: "Day 7", title: "Return to Delhi", details: "Early departure. Drive back to Delhi." },
+      ],
+      highlights: ["River rafting in Kullu", "Paragliding at Solang Valley", "Rohtang Pass snow experience"],
+      accommodation: { name: "Mountain Adventure Lodge", rating: "3 Star", amenities: ["WiFi", "Restaurant", "Mountain View"] },
+    },
+    "varanasi-ayodhya-spiritual": {
+      title: "Varanasi Ayodhya Spiritual Tour",
+      price: "₹15,000",
+      duration: "5 Days 4 Nights",
+      image: "/images/packages/chardham.webp",
+      startingPoint: "Delhi",
+      destination: "Varanasi-Ayodhya",
+      departureDate: "Weekly",
+      category: "Pilgrimage",
+      overview:
+        "A deeply spiritual journey to two of Hinduism's holiest cities. Experience the mystical Ganga Aarti in Varanasi and seek blessings at the Ram Janmabhoomi in Ayodhya.",
+      inclusions: ["AC vehicle with professional driver", "4 nights hotel accommodation", "Daily breakfast", "Boat ride on Ganga (1 session)", "All toll and parking"],
+      itinerary: [
+        { day: "Day 1", title: "Delhi to Varanasi", details: "Fly or drive to Varanasi. Evening Ganga Aarti at Dashashwamedh Ghat." },
+        { day: "Day 2", title: "Varanasi Temples", details: "Early morning boat ride. Visit Kashi Vishwanath, Sankat Mochan Temple." },
+        { day: "Day 3", title: "Sarnath Excursion", details: "Visit Sarnath Buddhist site. Evening ghats walk." },
+        { day: "Day 4", title: "Varanasi to Ayodhya", details: "Drive to Ayodhya. Visit Ram Janmabhoomi, Hanuman Garhi." },
+        { day: "Day 5", title: "Ayodhya & Return", details: "Visit Kanak Bhawan, Sarayu River. Return journey." },
+      ],
+      highlights: ["Ganga Aarti at Dashashwamedh Ghat", "Ram Janmabhoomi darshan", "Sunrise boat ride on Ganga"],
+      accommodation: { name: "Spiritual Stay Hotel", rating: "3 Star", amenities: ["WiFi", "Restaurant", "Temple Proximity"] },
+    },
+    "leh-ladakh-road-trip": {
+      title: "Leh Ladakh Road Trip",
+      price: "₹40,000",
+      duration: "10 Days 9 Nights",
+      image: "/images/packages/kashmir.webp",
+      startingPoint: "Delhi",
+      destination: "Leh-Ladakh",
+      departureDate: "June-September",
+      category: "Adventure",
+      overview:
+        "The ultimate road trip adventure from Delhi to Leh-Ladakh via Manali. Cross the world's highest passes, camp by Pangong Lake, ride through Nubra Valley, and experience the raw beauty of the Himalayas.",
+      inclusions: ["4x4 SUV with experienced Ladakh driver", "9 nights accommodation (hotels + camps)", "Daily breakfast and dinner", "Inner Line Permits", "All toll, fuel, parking"],
+      itinerary: [
+        { day: "Day 1-2", title: "Delhi to Manali", details: "Scenic drive to Manali. Rest and acclimatize." },
+        { day: "Day 3", title: "Manali to Jispa", details: "Cross Rohtang Pass, drive through Lahaul Valley." },
+        { day: "Day 4", title: "Jispa to Leh", details: "Cross Baralacha La, Tanglang La passes. Arrive Leh." },
+        { day: "Day 5", title: "Leh Acclimatization", details: "Visit Leh Palace, Shanti Stupa, Leh Market." },
+        { day: "Day 6", title: "Leh to Nubra Valley", details: "Cross Khardung La. Visit Diskit Monastery, Hunder sand dunes." },
+        { day: "Day 7", title: "Nubra to Pangong Lake", details: "Drive to Pangong Tso via Shyok Route. Overnight lakeside camp." },
+        { day: "Day 8", title: "Pangong to Leh", details: "Morning at Pangong. Return to Leh via Chang La." },
+        { day: "Day 9", title: "Leh Monasteries", details: "Visit Thiksey, Hemis, Shey Palace. Shopping in Leh." },
+        { day: "Day 10", title: "Leh to Delhi", details: "Fly back to Delhi from Leh airport." },
+      ],
+      highlights: ["Pangong Lake camping", "Khardung La pass crossing", "Nubra Valley double-humped camels"],
+      accommodation: { name: "Mountain Camps & Hotels", rating: "Mixed", amenities: ["Meals", "Camping Gear", "Oxygen Supply"] },
+    },
+    "amritsar-dharamshala-dalhousie": {
+      title: "Amritsar Dharamshala Dalhousie Tour",
+      price: "₹18,000",
+      duration: "6 Days 5 Nights",
+      image: "/images/packages/manali.webp",
+      startingPoint: "Delhi",
+      destination: "Punjab-Himachal Circuit",
+      departureDate: "Weekly",
+      category: "Cultural",
+      overview:
+        "A scenic circuit covering the Golden Temple in Amritsar, Tibetan culture in Dharamshala, and colonial charm of Dalhousie with the mini-Switzerland of Khajjiar.",
+      inclusions: ["AC vehicle throughout the trip", "5 nights hotel accommodation", "Daily breakfast", "All toll, parking, permits", "Experienced driver"],
+      itinerary: [
+        { day: "Day 1", title: "Delhi to Amritsar", details: "Drive to Amritsar. Evening Golden Temple visit and langar." },
+        { day: "Day 2", title: "Amritsar Sightseeing", details: "Jallianwala Bagh, Partition Museum. Wagah Border ceremony." },
+        { day: "Day 3", title: "Amritsar to Dharamshala", details: "Drive to Dharamshala. Visit Dalai Lama Temple Complex." },
+        { day: "Day 4", title: "McLeodganj & Triund", details: "Explore McLeodganj cafes, Bhagsu Waterfall, Naddi View Point." },
+        { day: "Day 5", title: "Dharamshala to Dalhousie", details: "Drive to Dalhousie. Visit Khajjiar (Mini Switzerland). Evening Mall Road." },
+        { day: "Day 6", title: "Dalhousie to Delhi", details: "Morning Dainkund Peak trek. Drive back to Delhi." },
+      ],
+      highlights: ["Golden Temple evening darshan", "Khajjiar Mini Switzerland", "Dalai Lama temple complex"],
+      accommodation: { name: "Heritage & Hill Hotels", rating: "3 Star", amenities: ["WiFi", "Restaurant", "Valley View"] },
+    },
+    "spiti-valley-expedition": {
+      title: "Spiti Valley Expedition",
+      price: "₹35,000",
+      duration: "9 Days 8 Nights",
+      image: "/images/packages/manali.webp",
+      startingPoint: "Delhi",
+      destination: "Spiti Valley",
+      departureDate: "June-October",
+      category: "Adventure",
+      overview:
+        "An epic expedition through one of India's most remote and breathtaking regions. Cross high passes, visit ancient monasteries, and experience the stark beauty of the cold desert in Spiti Valley.",
+      inclusions: ["4x4 SUV with hill-experienced driver", "8 nights accommodation (hotels + homestays)", "Daily breakfast and dinner", "All permits and passes", "All toll, fuel, parking"],
+      itinerary: [
+        { day: "Day 1", title: "Delhi to Shimla", details: "Drive to Shimla. Rest and prepare for mountain journey." },
+        { day: "Day 2", title: "Shimla to Sarahan", details: "Visit Bhimakali Temple. Scenic Kinnaur drive." },
+        { day: "Day 3", title: "Sarahan to Chitkul", details: "Drive to Sangla Valley. Visit last Indian village Chitkul." },
+        { day: "Day 4", title: "Chitkul to Tabo", details: "Enter Spiti Valley. Visit Tabo Monastery (1000+ years old)." },
+        { day: "Day 5", title: "Tabo to Kaza", details: "Visit Dhankar Monastery. Explore Kaza town." },
+        { day: "Day 6", title: "Kaza - Key & Kibber", details: "Visit Key Monastery, Kibber village, Chicham Bridge." },
+        { day: "Day 7", title: "Kaza to Chandratal", details: "Drive to Chandratal Lake (Moon Lake). Camp by the lake." },
+        { day: "Day 8", title: "Chandratal to Manali", details: "Cross Kunzum Pass and Rohtang. Arrive Manali." },
+        { day: "Day 9", title: "Manali to Delhi", details: "Drive back to Delhi. Tour ends." },
+      ],
+      highlights: ["Chandratal Lake camping", "Key Monastery visit", "Chitkul - Last Indian village"],
+      accommodation: { name: "Homestays & Camps", rating: "Basic-3 Star", amenities: ["Meals", "Local Guides", "Camping Gear"] },
+    },
   };
-  
+
   export const tourPackages = [
     {
       title: "Manali Tour from Mumbai",
@@ -406,14 +596,94 @@ import {
       price: "₹10,999",
       duration: "3 Days 2 Nights",
       image:
-        "https://media.istockphoto.com/id/478673422/photo/golden-temple-amritsar.jpg?s=612x612&w=0&k=20&c=LvdukkiiqHZmQxOTjf9UPGHcWldxaFLIZc8k2FEFxfM=",
+        "/images/sightseeing/Amritsar/Golden_Temple.jpg",
       startingPoint: "Delhi",
       destination: "Punjab",
       departureDate: "Monthly",
       category: "Cultural",
     },
+    {
+      title: "Golden Triangle Tour",
+      price: "₹15,000",
+      duration: "4 Days 3 Nights",
+      image: "/images/packages/rajasthan.webp",
+      startingPoint: "Delhi",
+      destination: "Delhi-Agra-Jaipur",
+      departureDate: "Daily",
+      category: "Heritage",
+    },
+    {
+      title: "Delhi Agra Weekend Tour",
+      price: "₹5,000",
+      duration: "2 Days 1 Night",
+      image: "/images/packages/rajasthan.webp",
+      startingPoint: "Delhi",
+      destination: "Agra",
+      departureDate: "Weekend",
+      category: "Heritage",
+    },
+    {
+      title: "Uttarakhand Spiritual Tour",
+      price: "₹18,000",
+      duration: "6 Days 5 Nights",
+      image: "/images/packages/chardham.webp",
+      startingPoint: "Delhi",
+      destination: "Uttarakhand",
+      departureDate: "Weekly",
+      category: "Pilgrimage",
+    },
+    {
+      title: "Himachal Adventure Tour",
+      price: "₹20,000",
+      duration: "7 Days 6 Nights",
+      image: "/images/packages/manali.webp",
+      startingPoint: "Delhi",
+      destination: "Himachal Pradesh",
+      departureDate: "Weekly",
+      category: "Adventure",
+    },
+    {
+      title: "Varanasi Ayodhya Spiritual Tour",
+      price: "₹15,000",
+      duration: "5 Days 4 Nights",
+      image: "/images/packages/chardham.webp",
+      startingPoint: "Delhi",
+      destination: "Varanasi-Ayodhya",
+      departureDate: "Weekly",
+      category: "Pilgrimage",
+    },
+    {
+      title: "Leh Ladakh Road Trip",
+      price: "₹40,000",
+      duration: "10 Days 9 Nights",
+      image: "/images/packages/kashmir.webp",
+      startingPoint: "Delhi",
+      destination: "Leh-Ladakh",
+      departureDate: "June-September",
+      category: "Adventure",
+    },
+    {
+      title: "Amritsar Dharamshala Dalhousie Tour",
+      price: "₹18,000",
+      duration: "6 Days 5 Nights",
+      image: "/images/packages/manali.webp",
+      startingPoint: "Delhi",
+      destination: "Punjab-Himachal Circuit",
+      departureDate: "Weekly",
+      category: "Cultural",
+    },
+    {
+      title: "Spiti Valley Expedition",
+      price: "₹35,000",
+      duration: "9 Days 8 Nights",
+      image: "/images/packages/manali.webp",
+      startingPoint: "Delhi",
+      destination: "Spiti Valley",
+      departureDate: "June-October",
+      category: "Adventure",
+    },
   ];
-  
+
   export const features = [
     {
       icon: Car,
@@ -546,8 +816,7 @@ import {
     },
     {
       type: "Bus",
-      image:
-        "https://res.cloudinary.com/dnreeobav/image/fetch/c_scale,q_30,w_350,f_auto/l_text:Arial_20_bold:TrucksBuses.com,x_70,y_100,co_rgb:ffffff/https://www.trucksbuses.com/uploads/Ashok%20Leyland%20Lynx%20Smart%2028%20Seater%20Staff%20Bus.jpg",
+      image: "/images/bus/35_SEATER_BUS.jpg",
       imageAlt: "28-35 seater AC bus for corporate outings and mid-sized group travel with professional driver and entertainment system",
       seating: "28-35 passengers",
       perKm: "₹35/km",
@@ -904,9 +1173,9 @@ import {
       ],
       heroImage: "/images/destinations/mumbai.webp",
       gallery: [
-        "/api/placeholder/400/300",
-        "/api/placeholder/400/300",
-        "/api/placeholder/400/300",
+        "/images/spots/marinedrive.webp",
+        "/images/spots/gateway.webp",
+        "/images/spots/elephanta.webp",
       ],
     },
     {
@@ -919,20 +1188,17 @@ import {
       spots: [
         {
           name: "Red Fort",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Red_Fort_3.jpg/800px-Red_Fort_3.jpg",
+          image: "/images/sightseeing/Delhi/red_fort.jpg",
           description: "Mughal-era fortress",
         },
         {
           name: "Qutub Minar",
-          image:
-            "https://media.gettyimages.com/id/165204592/photo/qutub-minar-delhi-india.jpg?s=612x612&w=0&k=20&c=YvFLPmQmlgCyX7RGZA1VpKctdC6QsChINzLSMDPNI9k=",
+          image: "/images/sightseeing/Delhi/Outub_Minar.jpg",
           description: "UNESCO heritage site",
         },
         {
           name: "India Gate",
-          image:
-            "https://media.gettyimages.com/id/522675372/photo/india-gate-a-national-monument-is-a-massive-red-sandstone-arch-and-the-indian-armys-tomb-of.jpg?s=612x612&w=0&k=20&c=YPBiK0nvpg0XvryE2PEfJp0gpLCXfPjoyQvRPgTQl8A=",
+          image: "/images/sightseeing/Delhi/India_Gate.jpg",
           description: "War memorial",
         },
       ],
@@ -954,9 +1220,9 @@ import {
       ],
       heroImage: "/images/destinations/delhi.webp",
       gallery: [
-        "/api/placeholder/400/300",
-        "/api/placeholder/400/300",
-        "/api/placeholder/400/300",
+        "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Delhi/India_Gate.jpg",
+        "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
       ],
     },
   ];
@@ -1124,8 +1390,86 @@ import {
       coverage: "Tibetan Circuit",
       popularity: "high",
     },
+    {
+      name: "Vrindavan",
+      region: "North India",
+      coverage: "Krishna Circuit",
+      popularity: "high",
+    },
+    {
+      name: "McLeodganj",
+      region: "North India",
+      coverage: "Little Lhasa Area",
+      popularity: "high",
+    },
+    {
+      name: "Kasauli",
+      region: "North India",
+      coverage: "Cantonment Hill Station",
+      popularity: "medium",
+    },
+    {
+      name: "Dalhousie",
+      region: "North India",
+      coverage: "Colonial Hill Station",
+      popularity: "medium",
+    },
+    {
+      name: "Kasol",
+      region: "North India",
+      coverage: "Parvati Valley",
+      popularity: "high",
+    },
+    {
+      name: "Bharatpur",
+      region: "North India",
+      coverage: "Bird Sanctuary Area",
+      popularity: "medium",
+    },
+    {
+      name: "Prayagraj",
+      region: "North India",
+      coverage: "Sangam City",
+      popularity: "high",
+    },
+    {
+      name: "Bodhgaya",
+      region: "East India",
+      coverage: "Buddhist Circuit",
+      popularity: "high",
+    },
+    {
+      name: "Gwalior",
+      region: "Central India",
+      coverage: "Fort City Area",
+      popularity: "medium",
+    },
+    {
+      name: "Srinagar",
+      region: "North India",
+      coverage: "Kashmir Valley",
+      popularity: "high",
+    },
+    {
+      name: "Gulmarg",
+      region: "North India",
+      coverage: "Ski Resort Area",
+      popularity: "high",
+    },
+    {
+      name: "Pahalgam",
+      region: "North India",
+      coverage: "Lidder Valley",
+      popularity: "high",
+    },
+    {
+      name: "Leh Ladakh",
+      region: "North India",
+      coverage: "High Altitude Desert",
+      popularity: "high",
+    },
   ];
-  
+
   export const cityDetails = {
     Delhi: {
       cabs: {
@@ -1586,31 +1930,31 @@ import {
         name: "Red Fort",
         description: "Historic Mughal fortress",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC095mZ7NIvlYwo3mSTY8MSKGit9_dv4FTbw&s",
+          "/images/sightseeing/Delhi/red_fort.jpg",
       },
       {
         name: "Qutub Minar",
         description: "UNESCO World Heritage site",
         image:
-          "https://media.gettyimages.com/id/165204592/photo/qutub-minar-delhi-india.jpg?s=612x612&w=0&k=20&c=YvFLPmQmlgCyX7RGZA1VpKctdC6QsChINzLSMDPNI9k=",
+          "/images/sightseeing/Delhi/Outub_Minar.jpg",
       },
       {
         name: "India Gate",
         description: "War memorial",
         image:
-          "https://media.gettyimages.com/id/522675372/photo/india-gate-a-national-monument-is-a-massive-red-sandstone-arch-and-the-indian-armys-tomb-of.jpg?s=612x612&w=0&k=20&c=YPBiK0nvpg0XvryE2PEfJp0gpLCXfPjoyQvRPgTQl8A=",
+          "/images/sightseeing/Delhi/India_Gate.jpg",
       },
       {
         name: "Humayun's Tomb",
         description: "Magnificent Mughal architecture",
         image:
-          "https://media.istockphoto.com/id/532703419/photo/humayuns-tomb-delhi-india.jpg?s=612x612&w=0&k=20&c=xLOQ5pzw0NJ-TSjhCmDViCygbE92coHOQREtRaYEqyI=",
+          "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
       },
       {
         name: "Lotus Temple",
         description: "Modern architectural marvel",
         image:
-          "https://media.istockphoto.com/id/487221269/photo/night-view-of-lotus-temple.jpg?s=612x612&w=0&k=20&c=Y6GASX6ZR0D2rqi3AeBCn574xhRPOz1ENiWp5dgmAXI=",
+          "/images/sightseeing/Delhi/Lotus Temple.jpg",
       },
     ],
     Agra: [
@@ -1618,25 +1962,25 @@ import {
         name: "Taj Mahal",
         description: "Wonder of the World",
         image:
-          "https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=",
+          "/images/sightseeing/Agra/Taj_mahal.jpg",
       },
       {
         name: "Agra Fort",
         description: "UNESCO World Heritage site",
         image:
-          "https://media.istockphoto.com/id/520840182/photo/red-fort-lal-qila-with-indian-flag-delhi-india.jpg?s=612x612&w=0&k=20&c=pOIkOX7dnJh2zwJhF9HrknY7kwYZtDgOd1n98wkHCKQ=",
+          "/images/sightseeing/Agra/agra_fort.jpg",
       },
       {
         name: "Fatehpur Sikri",
         description: "Ancient city of victory",
         image:
-          "https://media.istockphoto.com/id/827043866/photo/fatehpur-sikri-city.jpg?s=612x612&w=0&k=20&c=yHA0K62z-cCXMkxB2CEshzcisVzmMILqIv-AStGIFso=",
+          "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
       },
       {
         name: "Akbar's Tomb",
         description: "Magnificent Mughal tomb",
         image:
-          "https://media.istockphoto.com/id/1299476939/photo/tomb-of-akbar-the-great-in-sikandra-near-agra-uttar-pradesh-india.jpg?s=612x612&w=0&k=20&c=Vcbf603OxW9MDNrnTJUVegb-D_h0cBBQTTa8rqm-nz4=",
+          "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
       },
     ],
     Jaipur: [
@@ -1644,19 +1988,19 @@ import {
         name: "Hawa Mahal",
         description: "Palace of Winds",
         image:
-          "https://media.istockphoto.com/id/482557081/photo/hawa-mahal-jaipur-india.jpg?s=612x612&w=0&k=20&c=A6qCUjoNH74nXCkB07RNgK3eIt2mun8PgsLPw9dNkVI=",
+          "/images/sightseeing/Jaipur/Jal_Mahal.jpg",
       },
       {
         name: "Amber Fort",
         description: "Historic hilltop fortress",
         image:
-          "https://media.istockphoto.com/id/469788052/photo/amer-fort-near-jaipur.jpg?s=612x612&w=0&k=20&c=Rsd9v_Ix39ce8U9QKo3UnWfEMG1DUq4hnzh3APPi3g8=",
+          "/images/sightseeing/Jaipur/amber_fort.jpg",
       },
       {
         name: "City Palace",
         description: "Royal residence",
         image:
-          "https://media.istockphoto.com/id/1744747131/photo/city-palace-jaipur-india.jpg?s=612x612&w=0&k=20&c=c9wj394FaZJyDw15IuzwHjzWDnExPik5zTvXGCaBOmY=",
+          "/images/sightseeing/Jaipur/city_palace.jpg",
       },
     ],
     Haridwar: [
@@ -1664,13 +2008,13 @@ import {
         name: "Har Ki Pauri",
         description: "Sacred bathing ghat",
         image:
-          "https://media.istockphoto.com/id/1005227506/photo/har-ki-pauri-is-a-famous-ghat-on-the-banks-of-the-ganges-in-haridwar-india.jpg?s=612x612&w=0&k=20&c=QIBBZQaBiMKiR0i6AC-cYStVUTVssiiTu_buVEtFvJw=",
+          "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg",
       },
       {
         name: "Mansa Devi Temple",
         description: "Hill-top temple",
         image:
-          "https://media.istockphoto.com/id/166681127/photo/mansa-devi-temple.jpg?s=612x612&w=is&k=20&c=zoWiaFFOPwUx0yP4uam-Nn9oNb1KO-forpv_rtrPtYE=",
+          "/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg",
       },
     ],
     Chandigarh: [
@@ -1678,13 +2022,13 @@ import {
         name: "Rock Garden",
         description: "Unique sculpture park",
         image:
-          "https://media.istockphoto.com/id/1407956379/photo/corner-of-ornamental-stony-garden-with-various-dwarf-coniferous-shrubs-and-deciduous-bushes.jpg?s=612x612&w=0&k=20&c=AmYgLOr2BgasewJE8lf_9gBKoM9qu0DqkQQ6yrafD6I=",
+          "/images/sightseeing/Chandigarh/Zakir_hUSSAIN_ROSE_Garden.jpg",
       },
       {
         name: "Sukhna Lake",
         description: "Artificial lake",
         image:
-          "https://media.istockphoto.com/id/1203392697/photo/sukhna-lake-chandigarh-at-sunrise.jpg?s=612x612&w=0&k=20&c=rabpQw7KhWTbYm3W9dndtERzvAYAjqVhEM4eJBRGrRQ=",
+          "/images/sightseeing/Chandigarh/sukhana_lake.jpg",
       },
     ],
     Shimla: [
@@ -1692,13 +2036,13 @@ import {
         name: "Mall Road",
         description: "Main street shopping",
         image:
-          "https://media.istockphoto.com/id/943758616/photo/mall-road-shimla.jpg?s=612x612&w=0&k=20&c=rQYc8H5J-D-bWy5LZWy-fCti7S1qzRGaa_gGY8VPuog=",
+          "/images/sightseeing/Shimla/Mall road shimla.jpg",
       },
       {
         name: "Ridge",
         description: "Large open space",
         image:
-          "https://media.istockphoto.com/id/1475906590/photo/the-mall-ridge-road-shimla.jpg?s=612x612&w=0&k=20&c=Kl-9ytoFlBddMBiz6OrM5iRoLLiZ2u4ztrTrJPR4ek8=",
+          "/images/sightseeing/Shimla/the ridge shimla.jpg",
       },
     ],
     Manali: [
@@ -1706,13 +2050,13 @@ import {
         name: "Rohtang Pass",
         description: "Scenic mountain pass",
         image:
-          "https://media.istockphoto.com/id/1442248596/photo/lahaul-valley-in-himalayas-himachal-pradesh-india.jpg?s=612x612&w=0&k=20&c=5zTO8ChI2EXwKjrj4PFPJ3oKV93ydlyjDCymxzjlYZI=",
+          "/images/sightseeing/Manali/Solang Valley.jpg",
       },
       {
         name: "Hadimba Temple",
         description: "Ancient wooden temple",
         image:
-          "https://media.istockphoto.com/id/1334792935/photo/hidimba-devi-or-hadimba-temple-manali.webp?s=612x612&w=0&k=20&c=zE3wvq8_V9tAfsRiG_6rcg8zv8K3czbyI2J5vUAuQa8=",
+          "/images/sightseeing/Manali/Hidimba Temple.jpg",
       },
     ],
     Amritsar: [
@@ -1720,13 +2064,13 @@ import {
         name: "Golden Temple",
         description: "Holiest Sikh shrine",
         image:
-          "https://media.istockphoto.com/id/543179390/photo/golden-temple-the-main-sanctuary-of-sikhs-amritsar-india.jpg?s=612x612&w=0&k=20&c=s4bOWzg0e0ecBBPmuzIEShhrmMWFE16cnYlAZ7Nfdeg=",
+          "/images/sightseeing/Amritsar/Golden_Temple.jpg",
       },
       {
         name: "Jallianwala Bagh",
         description: "Historic memorial",
         image:
-          "https://media.istockphoto.com/id/469924336/photo/jallianwala-bagh-memorial.jpg?s=612x612&w=0&k=20&c=hlliyoRQA8t1Keivqn6vexVcLwFmrY1gZwwpAQsaBpc=",
+          "/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg",
       },
     ],
     Dehradun: [
@@ -1734,13 +2078,13 @@ import {
         name: "Robber's Cave",
         description: "Natural cave formation",
         image:
-          "https://media.istockphoto.com/id/852876558/photo/tranquil-outdoor-fall-scene-in-oklahoma.jpg?s=612x612&w=0&k=20&c=hEc38LFHA90OyGyuPyLYRmUGfj6fbB_Vg28jWhkbrNY=",
+          "/images/sightseeing/Dehradun/Robbers_Cave.jpg",
       },
       {
         name: "Forest Research Institute",
         description: "Colonial architecture",
         image:
-          "https://media.istockphoto.com/id/530805512/photo/forest-research-institute.jpg?s=612x612&w=0&k=20&c=bLPlUbaxDClXc_-xC94IKFu_N9zNusEpUeaIg3n9iKM=",
+          "/images/sightseeing/Dehradun/Forest_Research_Institute.jpg",
       },
     ],
     Rishikesh: [
@@ -1748,13 +2092,13 @@ import {
         name: "Laxman Jhula",
         description: "Iconic suspension bridge",
         image:
-          "https://media.istockphoto.com/id/515802500/photo/bridge-in-rishikesh.jpg?s=612x612&w=0&k=20&c=Nt7T-FN_j1Glci2Y_yU6s-4HrsVF04VS6salIld6N8w=",
+          "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
       },
       {
         name: "Beatles Ashram",
         description: "Historic meditation center",
         image:
-          "https://media.istockphoto.com/id/1096528010/photo/maharishi-mahesh-yogi-ashram-in-rishikesh-northern-india.jpg?s=612x612&w=0&k=20&c=Hk8kIV5ozeggpF9ws4B3AWJbIrqKFwVIRW-lLgzMW5g=",
+          "/images/sightseeing/Rishikesh/Beatles_Ashram.jpg",
       },
     ],
     Jodhpur: [
@@ -1762,13 +2106,13 @@ import {
         name: "Mehrangarh Fort",
         description: "Massive hilltop fort",
         image:
-          "https://media.istockphoto.com/id/805563154/photo/mehrangharh-fort-and-jaswant-thada-mausoleum-in-jodhpur-rajasthan-india.jpg?s=612x612&w=0&k=20&c=5r9UxPkz9mIkfAIFPLyTwqBQyqSO7mcAdQtcqGHOboA=",
+          "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
       },
       {
         name: "Umaid Bhawan Palace",
         description: "Royal residence",
         image:
-          "https://media.istockphoto.com/id/95524495/photo/umaid-bhawan-palace-jodhpur-rajasthan-india.jpg?s=612x612&w=0&k=20&c=HfHIeiDXJfiW-Q2JTzFIOrT8a3wroYecdJeU-nCt8XA=",
+          "/images/sightseeing/Jodhpur/Umaid Bhawan Palace.jpg",
       },
     ],
     Udaipur: [
@@ -1776,13 +2120,13 @@ import {
         name: "City Palace",
         description: "Royal palace complex",
         image:
-          "https://media.istockphoto.com/id/487804438/photo/jaipur-india-chandra-mahal-palace-within-the-city-palace.jpg?s=612x612&w=0&k=20&c=nMPsdxL9iCyKhDFHmh8cE2ItkC8gp7awos6pL_t076s=",
+          "/images/sightseeing/Udaipur/City_Palace.jpg",
       },
       {
         name: "Lake Pichola",
         description: "Artificial freshwater lake",
         image:
-          "https://media.istockphoto.com/id/1343698822/photo/udaipur-city-palace-beside-beautiful-lake-pichola-at-udaipur-rajasthan-india.jpg?s=612x612&w=0&k=20&c=i2Xvwz1tUVGEr3FKLam3jxNiyUSGEZ6e79zDSpoI96M=",
+          "/images/sightseeing/Udaipur/City_Palace.jpg",
       },
     ],
     Ayodhya: [
@@ -1790,13 +2134,13 @@ import {
         name: "Ram Mandir",
         description: "Grand temple complex",
         image:
-          "https://media.istockphoto.com/id/1450230477/photo/on-the-festival-of-deepawali-hindu-people-are-celebrating-deepotsav-in-ayodhya-uttar-pradesh.jpg?s=612x612&w=0&k=20&c=aONYbmPPKoYThK8KD1fSoYi-v-Y0coexCpacm5fEixw=",
+          "/images/sightseeing/Ayodhya/Ram_Mandir.jpg",
       },
       {
         name: "Hanuman Garhi",
         description: "Historic temple",
         image:
-          "https://media.istockphoto.com/id/2156027556/photo/statue-of-hanuman-in-shri-hanuman-garhi-temple.jpg?s=612x612&w=0&k=20&c=F5z2NoGVTnw7cq3Qglv_P4-pQ2__4ahj5ydVhu4nOUc=",
+          "/images/sightseeing/Ayodhya/Hanuman_Garhi.jpg",
       },
     ],
     Ahmedabad: [
@@ -1804,13 +2148,13 @@ import {
         name: "Sabarmati Ashram",
         description: "Gandhi's residence",
         image:
-          "https://media.istockphoto.com/id/2191721128/photo/sabarmati-gandhi-ashram-in-ahmedabad.jpg?s=612x612&w=0&k=20&c=qw9slkQQhuK19Z3uXL6WYIQNZCAGM_Ox7Cp9CNpXXgc=",
+          "/images/sightseeing/Ahmedabad/Sabarmati_Ashram.jpg",
       },
       {
         name: "Adalaj Stepwell",
         description: "Historic water structure",
         image:
-          "https://media.istockphoto.com/id/524006344/photo/adalaj-ki-vav.jpg?s=612x612&w=0&k=20&c=jt06dpxerICexezKYB_tlbuRThAQSdqVlt-xmjpXjkI=",
+          "/images/sightseeing/Ahmedabad/Adalaj_Stepwell.jpg",
       },
     ],
   };
@@ -1821,31 +2165,31 @@ import {
         name: "Red Fort",
         description: "Historic Mughal fortress, symbol of India's independence, featuring red sandstone walls and impressive architecture.",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC095mZ7NIvlYwo3mSTY8MSKGit9_dv4FTbw&s",
+          "/images/sightseeing/Delhi/red_fort.jpg",
       },
       {
         name: "Qutub Minar",
         description: "UNESCO World Heritage site, a 73-meter tall minaret built in 1193 with intricate carvings and verses from the Quran.",
         image:
-          "https://media.gettyimages.com/id/165204592/photo/qutub-minar-delhi-india.jpg?s=612x612&w=0&k=20&c=YvFLPmQmlgCyX7RGZA1VpKctdC6QsChINzLSMDPNI9k=",
+          "/images/sightseeing/Delhi/Outub_Minar.jpg",
       },
       {
         name: "India Gate",
         description: "War memorial built in honor of Indian soldiers who died in World War I, surrounded by lush gardens and fountains.",
         image:
-          "https://media.gettyimages.com/id/522675372/photo/india-gate-a-national-monument-is-a-massive-red-sandstone-arch-and-the-indian-armys-tomb-of.jpg?s=612x612&w=0&k=20&c=YPBiK0nvpg0XvryE2PEfJp0gpLCXfPjoyQvRPgTQl8A=",
+          "/images/sightseeing/Delhi/India_Gate.jpg",
       },
       {
         name: "Humayun's Tomb",
         description: "Magnificent Mughal architecture and a precursor to the Taj Mahal, built in 1570 as the tomb of Emperor Humayun.",
         image:
-          "https://media.istockphoto.com/id/532703419/photo/humayuns-tomb-delhi-india.jpg?s=612x612&w=0&k=20&c=xLOQ5pzw0NJ-TSjhCmDViCygbE92coHOQREtRaYEqyI=",
+          "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
       },
       {
         name: "Lotus Temple",
         description: "Modern architectural marvel and a Bahá'í House of Worship, known for its lotus-shaped design and peaceful ambiance.",
         image:
-          "https://media.istockphoto.com/id/487221269/photo/night-view-of-lotus-temple.jpg?s=612x612&w=0&k=20&c=Y6GASX6ZR0D2rqi3AeBCn574xhRPOz1ENiWp5dgmAXI=",
+          "/images/sightseeing/Delhi/Lotus Temple.jpg",
       },
     ],
     Agra: [
@@ -1853,25 +2197,25 @@ import {
         name: "Taj Mahal",
         description: "Wonder of the World, built by Emperor Shah Jahan in memory of his wife Mumtaz Mahal. Famous for its white marble and symmetry.",
         image:
-          "https://media.istockphoto.com/id/519330110/photo/taj-mahal-agra-india-monument-of-love-in-blue-sky.jpg?s=612x612&w=0&k=20&c=Uma6Q7KduznA6jUKcSquFP1iHHiw8UXcZEYVLONrmaQ=",
+          "/images/sightseeing/Agra/Taj_mahal.jpg",
       },
       {
         name: "Agra Fort",
         description: "Massive 16th-century fortress of red sandstone, housing royal residences, mosques, and audience halls.",
         image:
-          "https://media.istockphoto.com/id/520840182/photo/red-fort-lal-qila-with-indian-flag-delhi-india.jpg?s=612x612&w=0&k=20&c=pOIkOX7dnJh2zwJhF9HrknY7kwYZtDgOd1n98wkHCKQ=",
+          "/images/sightseeing/Agra/agra_fort.jpg",
       },
       {
         name: "Fatehpur Sikri",
         description: "Ancient city built by Emperor Akbar in the 16th century, featuring impressive palaces, mosques, and courtyards.",
         image:
-          "https://media.istockphoto.com/id/827043866/photo/fatehpur-sikri-city.jpg?s=612x612&w=0&k=20&c=yHA0K62z-cCXMkxB2CEshzcisVzmMILqIv-AStGIFso=",
+          "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
       },
       {
         name: "Akbar's Tomb",
         description: "Final resting place of Emperor Akbar, showcasing unique Mughal architectural elements and intricate red sandstone work.",
         image:
-          "https://media.istockphoto.com/id/1299476939/photo/tomb-of-akbar-the-great-in-sikandra-near-agra-uttar-pradesh-india.jpg?s=612x612&w=0&k=20&c=Vcbf603OxW9MDNrnTJUVegb-D_h0cBBQTTa8rqm-nz4=",
+          "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
       },
     ],
     Jaipur: [
@@ -1879,19 +2223,19 @@ import {
         name: "Hawa Mahal",
         description: "Palace of Winds, built in 1799, known for its intricate latticework and 953 small windows designed to allow cool breezes.",
         image:
-          "https://media.istockphoto.com/id/482557081/photo/hawa-mahal-jaipur-india.jpg?s=612x612&w=0&k=20&c=A6qCUjoNH74nXCkB07RNgK3eIt2mun8PgsLPw9dNkVI=",
+          "/images/sightseeing/Jaipur/Jal_Mahal.jpg",
       },
       {
         name: "Amber Fort",
         description: "Majestic hilltop fortress with stunning views of the surrounding hills, featuring large courtyards and a mirror palace.",
         image:
-          "https://media.istockphoto.com/id/469788052/photo/amer-fort-near-jaipur.jpg?s=612x612&w=0&k=20&c=Rsd9v_Ix39ce8U9QKo3UnWfEMG1DUq4hnzh3APPi3g8=",
+          "/images/sightseeing/Jaipur/amber_fort.jpg",
       },
       {
         name: "City Palace",
         description: "Grand royal residence with courtyards, museums, and beautifully decorated gates.",
         image:
-          "https://media.istockphoto.com/id/1744747131/photo/city-palace-jaipur-india.jpg?s=612x612&w=0&k=20&c=c9wj394FaZJyDw15IuzwHjzWDnExPik5zTvXGCaBOmY=",
+          "/images/sightseeing/Jaipur/city_palace.jpg",
       },
     ],
     Chandigarh: [
@@ -1899,13 +2243,13 @@ import {
         name: "Rock Garden",
         description: "Unique sculpture park created from industrial and domestic waste, showcasing creativity and eco-friendly art.",
         image:
-          "https://media.istockphoto.com/id/1407956379/photo/corner-of-ornamental-stony-garden.jpg?s=612x612&w=0&k=20&c=AmYgLOr2BgasewJE8lf_9gBKoM9qu0DqkQQ6yrafD6I=",
+          "/images/sightseeing/Chandigarh/Zakir_hUSSAIN_ROSE_Garden.jpg",
       },
       {
         name: "Sukhna Lake",
         description: "Artificial reservoir surrounded by walking paths and gardens, a popular spot for boating and relaxation.",
         image:
-          "https://media.istockphoto.com/id/1203392697/photo/sukhna-lake-chandigarh-at-sunrise.jpg?s=612x612&w=0&k=20&c=rabpQw7KhWTbYm3W9dndtERzvAYAjqVhEM4eJBRGrRQ=",
+          "/images/sightseeing/Chandigarh/sukhana_lake.jpg",
       },
     ],
     Manali: [
@@ -1913,13 +2257,13 @@ import {
         name: "Rohtang Pass",
         description: "Scenic mountain pass located at 3,978 meters, offering breathtaking views of the Himalayas.",
         image:
-          "https://media.istockphoto.com/id/1442248596/photo/lahaul-valley-in-himalayas.jpg?s=612x612&w=0&k=20&c=5zTO8ChI2EXwKjrj4PFPJ3oKV93ydlyjDCymxzjlYZI=",
+          "/images/sightseeing/Manali/Solang Valley.jpg",
       },
       {
         name: "Hadimba Temple",
         description: "Ancient temple dedicated to Hadimba Devi, known for its unique wooden architecture.",
         image:
-          "https://media.istockphoto.com/id/1334792935/photo/hidimba-devi-or-hadimba-temple.jpg?s=612x612&w=0&k=20&c=zE3wvq8_V9tAfsRiG_6rcg8zv8K3czbyI2J5vUAuQa8=",
+          "/images/sightseeing/Manali/Hidimba Temple.jpg",
       },
     ],
   };
@@ -1928,8 +2272,7 @@ import {
   export const luxuryCars = [
     {
       type: "Audi A6",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRV8aCYNPUmFRgfgzfz2MJeLQyEACmCpfWkg&s",
+      image: "/images/wedding/luxury_car.jpg",
       seating: "4",
       perDay: "₹15,000",
       minDays: "3",
@@ -1946,8 +2289,7 @@ import {
     },
     {
       type: "BMW 5 Series",
-      image:
-        "https://bmw.scene7.com/is/image/BMW/tit_brnze_g68_nlnch_tita_bro_4?wid=3000&hei=3000",
+      image: "/images/wedding/luxury_car.jpg",
       seating: "4",
       perDay: "₹16,000",
       minDays: "3",
@@ -1963,8 +2305,7 @@ import {
     },
     {
       type: "Mercedes E-Class",
-      image:
-        "https://imgd.aeplcdn.com/1920x1080/n/cw/ec/162929/e-class-exterior-right-front-three-quarter-33.jpeg?isig=0&q=80&q=80",
+      image: "/images/wedding/luxury_car.jpg",
       seating: "4",
       perDay: "₹17,000",
       minDays: "3",
@@ -1980,8 +2321,7 @@ import {
     },
     {
       type: "Toyota Fortuner",
-      image:
-        "https://imgd.aeplcdn.com/370x208/n/cw/ec/44709/fortuner-exterior-right-rear-three-quarter.jpeg?q=80",
+      image: "/images/wedding/premium_suv.jpg",
       seating: "7",
       perDay: "₹12,000",
       minDays: "2",
@@ -2000,8 +2340,7 @@ import {
   export const standardCars = [
     {
       type: "Dzire",
-      image:
-        "https://stimg.cardekho.com/images/carexteriorimages/930x620/Maruti/Swift-Dzire-Tour/8863/1717397917382/front-left-side-47.jpg",
+      image: "/images/wedding/luxury_car.jpg",
       seating: "5",
       perDay: "₹2,500",
       minDays: "1",
@@ -2013,8 +2352,7 @@ import {
     },
     {
       type: "Aura",
-      image:
-        "https://stimg.cardekho.com/images/carexteriorimages/630x420/Hyundai/Aura/10126/1694588549389/front-left-side-47.jpg",
+      image: "/images/wedding/luxury_car.jpg",
       seating: "5",
       perDay: "₹3,000",
       minDays: "1",
@@ -2026,8 +2364,7 @@ import {
     },
     {
       type: "Ertiga",
-      image:
-        "https://stimg.cardekho.com/images/carexteriorimages/930x620/Maruti/Ertiga/10293/1697697779799/front-left-side-47.jpg",
+      image: "/images/wedding/premium_suv.jpg",
       seating: "7",
       perDay: "₹4,000",
       minDays: "1",
@@ -2038,8 +2375,7 @@ import {
     },
     {
       type: "KIA Carens",
-      image:
-        "https://www.kia.com/content/dam/kia2/in/en/images/our-vehicles/carens/gallery/exterior/04.png",
+      image: "/images/wedding/premium_suv.jpg",
       seating: "7",
       perDay: "₹4,400",
       minDays: "1",
@@ -2050,8 +2386,7 @@ import {
     },
     {
       type: "Innova Crysta",
-      image:
-        "https://stimg.cardekho.com/images/carexteriorimages/930x620/Toyota/Innova-Crysta/9612/1697698611076/front-left-side-47.jpg",
+      image: "/images/wedding/premium_suv.jpg",
       seating: "7",
       perDay: "₹6,00",
       minDays: "1",
@@ -2112,7 +2447,7 @@ import {
   export const luxuryBuses = [
     {
       type: "Luxury Bus - 35",
-      image: "https://5.imimg.com/data5/AU/DW/MY-3525736/21740577_1735207289822745_777045808454716075_n.jpg",
+      image: "/images/bus/35_SEATER_BUS.jpg",
       seating: "35",
       perDay: "₹18,000",
       minDays: "1",
@@ -2123,7 +2458,7 @@ import {
     },
     {
       type: "Luxury Bus - 40",
-      image: "https://media.istockphoto.com/id/1402780845/photo/caetano-levante.jpg?s=612x612&w=0&k=20&c=WDGvGvRHzbYmw2hciGn688dbtKBzkjCXUDTxytXtYgg=",
+      image: "/images/bus/41_SEATER_BUS.jpg",
       seating: "40",
       perDay: "₹20,000",
       minDays: "1",
@@ -2134,7 +2469,7 @@ import {
     },
     {
       type: "Luxury Bus - 45",
-      image: "https://media.istockphoto.com/id/1189925691/photo/setra-s519hd.jpg?s=612x612&w=0&k=20&c=306VUyVDmK2TY3Qw9xCRtWwranpfgAvXxi25wbe5egs=",
+      image: "/images/bus/45_SEATER_BUS.jpg",
       seating: "45",
       perDay: "₹22,000",
       minDays: "1",
@@ -2145,7 +2480,7 @@ import {
     },
     {
       type: "Luxury Bus - 49",
-      image: "https://media.istockphoto.com/id/124870370/photo/touring-america-ii.jpg?s=612x612&w=0&k=20&c=R4jc_JhLBKnxAc3xqYfT5HNKqGabXOIHIJ6u-7iKrdk=",
+      image: "/images/bus/49_SEATER_BUS.jpg",
       seating: "49",
       perDay: "₹25,000",
       minDays: "1",
@@ -2156,7 +2491,7 @@ import {
     },
     {
       type: "Luxury Bus - 55",
-      image: "https://media.istockphoto.com/id/173002523/photo/sleek-red-bus.jpg?s=612x612&w=0&k=20&c=UNYSvPJwe5ebhpE4fX7q6asyeEPZTznET_gJqCdacHA=",
+      image: "/images/bus/56_SEATER_BUS.jpg",
       seating: "55",
       perDay: "₹28,000",
       minDays: "1",
@@ -2170,7 +2505,7 @@ import {
   export const simpleBuses = [
     {
       type: "Simple Bus - 35",
-      image: "https://res.cloudinary.com/dnreeobav/image/fetch/c_scale,q_30,w_350,f_auto/l_text:Arial_20_bold:TrucksBuses.com,x_70,y_100,co_rgb:ffffff/https://www.trucksbuses.com/uploads/Ashok%20Leyland%20Lynx%20Smart%2028%20Seater%20Staff%20Bus.jpg",
+      image: "/images/bus/35_SEATER_BUS.jpg",
       seating: "35",
       perDay: "₹12,000",
       minDays: "1",
@@ -2181,7 +2516,7 @@ import {
     },
     {
       type: "Simple Bus - 40",
-      image: "https://4.imimg.com/data4/DE/EI/MY-26708523/skyline-school-bus-40.jpg",
+      image: "/images/bus/41_SEATER_BUS.jpg",
       seating: "40",
       perDay: "₹14,000",
       minDays: "1",
@@ -2192,7 +2527,7 @@ import {
     },
     {
       type: "Simple Bus - 45",
-      image: "https://res.cloudinary.com/dnreeobav/image/fetch/c_scale,q_30,w_350,f_auto/l_text:Arial_20_bold:TrucksBuses.com,x_70,y_100,co_rgb:ffffff/https://www.trucksbuses.com/uploads/Ashok%20Leyland%20Lynx%20Smart%2028%20Seater%20Staff%20Bus.jpg",
+      image: "/images/bus/45_SEATER_BUS.jpg",
       seating: "45",
       perDay: "₹16,000",
       minDays: "1",
@@ -2203,7 +2538,7 @@ import {
     },
     {
       type: "Simple Bus - 49",
-      image: "https://media.istockphoto.com/id/1616050163/photo/white-intercity-bus-in-the-parking-lot.jpg?s=612x612&w=0&k=20&c=jcP2YcXzYjFy1A1645zD27Dex54vDkQBjL-5AXVhdas=",
+      image: "/images/bus/49_SEATER_BUS.jpg",
       seating: "49",
       perDay: "₹18,000",
       minDays: "1",
@@ -2214,7 +2549,7 @@ import {
     },
     {
       type: "Simple Bus - 55",
-      image: "https://5.imimg.com/data5/CM/YM/UG/SELLER-46827032/staff-bus-500x500.jpg",
+      image: "/images/bus/56_SEATER_BUS.jpg",
       seating: "55",
       perDay: "₹20,000",
       minDays: "1",

@@ -9,6 +9,7 @@ import {
   getAllEventCities,
   getAllEventTypes
 } from '@/utilis/eventTransportData';
+import { getWeddingPages, getServicePages } from '@/utilis/linkingHelper';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -1003,6 +1004,30 @@ export default function EventTransportationPage() {
                 Call us at +91 7668570551
                 <ArrowRight className="w-5 h-5" />
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Explore Related Services Section */}
+        <section className="py-16 bg-slate-900">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-white mb-8">Wedding Transportation</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {getWeddingPages().map((item, index) => (
+                <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors">{item.title}</h3>
+                  <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Cab Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {getServicePages().map((item, index) => (
+                <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors">{item.title}</h3>
+                  <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

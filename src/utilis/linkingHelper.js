@@ -628,6 +628,145 @@ export function autoLinkCities(content, excludeCities = []) {
   return linkedContent;
 }
 
+// ==================== CONTENT PAGE LINKING ====================
+
+/**
+ * Get related content/guide pages for a city
+ * Used to show new content pages on existing city/sightseeing pages
+ */
+export function getRelatedContent(city) {
+  if (!city) return getGeneralContent();
+
+  const cityKey = city.toLowerCase().replace(/\s+/g, '-');
+
+  const cityContent = {
+    agra: [
+      { title: 'Agra Day Trip from Delhi', url: '/agra-day-trip-from-delhi', description: 'Budget-friendly day trip guide to Agra from Delhi' },
+      { title: 'Agra Food Tour', url: '/agra-food-tour', description: 'Best street food and restaurants in Agra' },
+      { title: 'Agra Shopping Guide', url: '/agra-shopping-guide', description: 'Marble crafts, leather goods and local markets' },
+      { title: 'Agra Travel Guide', url: '/agra-travel-guide', description: 'Complete travel guide for visiting Agra' },
+      { title: 'Beyond the Taj Mahal', url: '/agra-beyond-taj-mahal', description: 'Discover Agra beyond its most famous monument' },
+      { title: 'Same Day Agra Tour from Delhi', url: '/same-day-agra-tour-from-delhi', description: 'See the best of Agra in a single day' },
+      { title: 'Taj Mahal Tour from Delhi', url: '/taj-mahal-tour-from-delhi', description: 'Guided Taj Mahal tour with private car' },
+      { title: 'Private Taj Mahal Tour', url: '/taj-mahal-private-tour-from-delhi', description: 'Premium private tour with dedicated guide' },
+      { title: 'Moonlight Taj Mahal Tour', url: '/moonlight-taj-mahal-tour', description: 'Experience the Taj under moonlight' },
+      { title: 'Sunrise Taj Mahal Tour', url: '/sunrise-taj-mahal-tour-from-delhi', description: 'Watch sunrise at the Taj Mahal' },
+      { title: 'Same Day Taj Mahal Tour', url: '/same-day-taj-mahal-tour', description: 'Quick same-day Taj Mahal visit' },
+      { title: 'Delhi Airport to Agra Taxi', url: '/delhi-airport-to-agra-taxi', description: 'Direct airport transfer to Agra' },
+    ],
+    delhi: [
+      { title: 'Weekend Getaways from Delhi', url: '/weekend-getaways-from-delhi-by-car', description: 'Top road trips and escapes from Delhi' },
+      { title: 'Golden Triangle with Driver', url: '/golden-triangle-english-speaking-driver', description: 'Delhi-Agra-Jaipur with English-speaking driver' },
+      { title: 'Delhi Airport to Agra Taxi', url: '/delhi-airport-to-agra-taxi', description: 'Airport transfer to Agra from Delhi' },
+      { title: 'Taj Mahal Tour from Delhi', url: '/taj-mahal-tour-from-delhi', description: 'Day trip to Taj Mahal from Delhi' },
+      { title: 'Private Taj Mahal Tour', url: '/taj-mahal-private-tour-from-delhi', description: 'Premium private Taj Mahal tour' },
+      { title: 'Sunrise Taj Mahal Tour', url: '/sunrise-taj-mahal-tour-from-delhi', description: 'Early morning Taj Mahal experience' },
+      { title: 'Same Day Agra Tour', url: '/same-day-agra-tour-from-delhi', description: 'Agra sightseeing in a day from Delhi' },
+      { title: 'Agra Day Trip from Delhi', url: '/agra-day-trip-from-delhi', description: 'Budget day trip guide to Agra' },
+      { title: '10-Day North India Road Trip', url: '/10-day-north-india-road-trip', description: 'Epic road trip covering North India' },
+      { title: 'Kashmir Road Trip', url: '/kashmir-road-trip-from-delhi', description: 'Scenic drive from Delhi to Kashmir' },
+      { title: 'Spiti Valley Road Trip', url: '/spiti-valley-road-trip-from-delhi', description: 'High-altitude adventure to Spiti Valley' },
+      { title: 'Ayodhya Tour from Delhi', url: '/ayodhya-ram-mandir-tour-from-delhi', description: 'Visit Ram Mandir from Delhi' },
+    ],
+    jaipur: [
+      { title: 'Weekend Getaways from Jaipur', url: '/weekend-getaways-from-jaipur-by-car', description: 'Best road trips from the Pink City' },
+      { title: '5-Day Rajasthan Road Trip', url: '/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur', description: 'Jaipur-Udaipur-Jodhpur circuit' },
+      { title: 'Rajasthan Desert Circuit', url: '/rajasthan-desert-circuit-tour', description: 'Explore the Thar Desert by car' },
+      { title: 'Golden Triangle Tour', url: '/golden-triangle-english-speaking-driver', description: 'Delhi-Agra-Jaipur classic route' },
+      { title: '10-Day North India Road Trip', url: '/10-day-north-india-road-trip', description: 'Epic road trip covering Rajasthan & more' },
+    ],
+    chandigarh: [
+      { title: 'Weekend Getaways from Chandigarh', url: '/weekend-getaways-from-chandigarh-by-car', description: 'Hill stations and escapes from Chandigarh' },
+      { title: '7-Day Himachal Tour', url: '/7-day-himachal-tour-by-car', description: 'Complete Himachal Pradesh road trip' },
+    ],
+    shimla: [
+      { title: '7-Day Himachal Tour', url: '/7-day-himachal-tour-by-car', description: 'Shimla-Manali road trip itinerary' },
+      { title: 'Weekend Getaways from Chandigarh', url: '/weekend-getaways-from-chandigarh-by-car', description: 'Quick escapes including Shimla' },
+    ],
+    manali: [
+      { title: '7-Day Himachal Tour', url: '/7-day-himachal-tour-by-car', description: 'Complete Himachal road trip via Manali' },
+      { title: 'Spiti Valley Road Trip', url: '/spiti-valley-road-trip-from-delhi', description: 'Manali to Spiti high-altitude adventure' },
+      { title: 'Weekend Getaways from Chandigarh', url: '/weekend-getaways-from-chandigarh-by-car', description: 'Chandigarh to Manali weekend trip' },
+    ],
+    udaipur: [
+      { title: '5-Day Rajasthan Road Trip', url: '/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur', description: 'Udaipur in the Rajasthan circuit' },
+      { title: '10-Day North India Road Trip', url: '/10-day-north-india-road-trip', description: 'Visit Udaipur on a grand road trip' },
+      { title: 'Rajasthan Desert Circuit', url: '/rajasthan-desert-circuit-tour', description: 'Desert tour including Udaipur' },
+    ],
+    jodhpur: [
+      { title: '5-Day Rajasthan Road Trip', url: '/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur', description: 'Jodhpur in the Rajasthan circuit' },
+      { title: '10-Day North India Road Trip', url: '/10-day-north-india-road-trip', description: 'Visit the Blue City on a grand road trip' },
+      { title: 'Rajasthan Desert Circuit', url: '/rajasthan-desert-circuit-tour', description: 'Desert tour including Jodhpur' },
+    ],
+    haridwar: [
+      { title: 'Kanwar Yatra Cab Service', url: '/kanwar-yatra-cab-haridwar', description: 'Reliable transport for Kanwar Yatra' },
+      { title: 'Uttarakhand Spiritual Circuit', url: '/uttarakhand-spiritual-circuit-tour', description: 'Char Dham and spiritual destinations' },
+    ],
+    rishikesh: [
+      { title: 'Uttarakhand Spiritual Circuit', url: '/uttarakhand-spiritual-circuit-tour', description: 'Spiritual tour through Uttarakhand' },
+      { title: 'Kanwar Yatra Cab Service', url: '/kanwar-yatra-cab-haridwar', description: 'Transport for Kanwar Yatra pilgrimage' },
+    ],
+    lucknow: [
+      { title: 'Ayodhya Tour from Lucknow', url: '/ayodhya-ram-mandir-tour-from-lucknow', description: 'Short trip to Ram Mandir from Lucknow' },
+    ],
+    varanasi: [
+      { title: 'Prayagraj Sangam Tour', url: '/prayagraj-sangam-tour', description: 'Visit the sacred Triveni Sangam' },
+      { title: 'Uttarakhand Spiritual Circuit', url: '/uttarakhand-spiritual-circuit-tour', description: 'Extended spiritual tour from Varanasi' },
+    ],
+    ayodhya: [
+      { title: 'Ayodhya Tour from Delhi', url: '/ayodhya-ram-mandir-tour-from-delhi', description: 'Ram Mandir darshan from Delhi' },
+      { title: 'Ayodhya Tour from Agra', url: '/ayodhya-ram-mandir-tour-from-agra', description: 'Ram Mandir darshan from Agra' },
+      { title: 'Ayodhya Tour from Lucknow', url: '/ayodhya-ram-mandir-tour-from-lucknow', description: 'Nearest city tour to Ram Mandir' },
+    ],
+    dehradun: [
+      { title: 'Uttarakhand Spiritual Circuit', url: '/uttarakhand-spiritual-circuit-tour', description: 'Char Dham and temples circuit' },
+      { title: '7-Day Himachal Tour', url: '/7-day-himachal-tour-by-car', description: 'Himachal road trip from Dehradun' },
+    ],
+    amritsar: [
+      { title: 'Weekend Getaways from Chandigarh', url: '/weekend-getaways-from-chandigarh-by-car', description: 'Amritsar as a weekend getaway' },
+    ],
+  };
+
+  return cityContent[cityKey] || getGeneralContent();
+}
+
+/**
+ * Get general content pages (not city-specific)
+ */
+export function getGeneralContent() {
+  return [
+    { title: 'India Road Trip Guide', url: '/india-road-trip-guide-for-tourists', description: 'Everything you need to know about road trips in India' },
+    { title: 'Safe Travel in India', url: '/safe-travel-india-for-tourists', description: 'Safety tips and advice for tourists' },
+    { title: 'Hire a Private Driver', url: '/private-driver-hire-india', description: 'Professional driver services across India' },
+    { title: '10-Day North India Road Trip', url: '/10-day-north-india-road-trip', description: 'Epic multi-city road trip itinerary' },
+    { title: 'Golden Triangle Tour', url: '/golden-triangle-english-speaking-driver', description: 'Delhi-Agra-Jaipur classic route' },
+  ];
+}
+
+/**
+ * Get cab service category pages
+ */
+export function getServicePages() {
+  return [
+    { title: 'One Way Cab', url: '/one-way-cab', description: 'Affordable one-way taxi between cities' },
+    { title: 'Round Trip Cab', url: '/round-trip-cab', description: 'Book return journey cabs at best rates' },
+    { title: 'Outstation Cabs', url: '/outstation-cabs', description: 'Intercity travel with professional drivers' },
+    { title: 'Local Taxi', url: '/local-taxi', description: 'Hourly rental for local city travel' },
+  ];
+}
+
+/**
+ * Get wedding service pages
+ */
+export function getWeddingPages() {
+  return [
+    { title: 'Baraat Tempo Traveller', url: '/wedding/baraat-tempo-traveller', description: 'DJ-equipped vehicles for baraat procession' },
+    { title: 'Car Decoration Packages', url: '/wedding/car-decoration-packages', description: 'Beautiful flower and ribbon car decorations' },
+    { title: 'Wedding Car Collection', url: '/wedding/cars', description: 'Luxury cars for your special day' },
+    { title: 'Doli Car Rental', url: '/wedding/doli-car-rental', description: 'Elegant bridal car service' },
+  ];
+}
+
 // Export default object
 export default {
   getAllCities,
@@ -648,4 +787,9 @@ export default {
   getPopularCities,
   getPopularTours,
   autoLinkCities,
+  // Content page linking
+  getRelatedContent,
+  getGeneralContent,
+  getServicePages,
+  getWeddingPages,
 };

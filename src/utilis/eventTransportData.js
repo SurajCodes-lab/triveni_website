@@ -228,7 +228,7 @@ export const eventCities = {
     title: 'Event Transportation Service in Jaipur',
     metaTitle: 'Event Transportation Jaipur | Royal Wedding Transport | Triveni Cabs',
     metaDescription: 'Royal event transportation in Jaipur. Palace weddings, corporate events, MICE logistics. Experienced in heritage venues. Call 7668570551.',
-    heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+    heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section.jpg',
     tagline: 'Pink City Royal Events',
     subtitle: 'India Premier Wedding & Event Destination',
     description: 'Jaipur, the Pink City, offers unparalleled royal wedding experiences at majestic palaces and heritage hotels. Triveni Cabs brings extensive experience in managing transportation for palace weddings at City Palace, Samode, and Rambagh, along with corporate events at JKK and JECC. Experience royal treatment for your guests.',
@@ -311,6 +311,216 @@ export const eventCities = {
     },
     eventTypes: ['Destination Weddings', 'Corporate Retreats', 'Adventure Events', 'Family Gatherings'],
     keywords: ['event transportation dehradun', 'mussoorie wedding transport', 'corporate retreat dehradun', 'hill station event transport', 'destination wedding uttarakhand']
+  },
+  shimla: {
+    name: 'Shimla',
+    slug: 'shimla',
+    title: 'Event Transportation Service in Shimla',
+    metaTitle: 'Event Transportation Shimla | Hill Station Event Transport | Triveni Cabs',
+    metaDescription: 'Event transportation in Shimla. Hill station weddings, corporate retreats, MICE events. Experienced hill drivers. Call 7668570551.',
+    heroImage: '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+    tagline: 'Queen of Hills Event Destination',
+    subtitle: 'Premium Hill Station Events',
+    description: 'Shimla, the Queen of Hills, offers a stunning colonial setting for destination weddings and corporate retreats. Triveni Cabs provides expert mountain road transportation with experienced drivers for events at luxury resorts, heritage hotels, and scenic outdoor venues.',
+    highlights: [
+      'Destination weddings at Wildflower Hall, Oberoi Cecil',
+      'Corporate retreats at hill resorts',
+      'MICE events at Peterhoff and Clarkes Hotel',
+      'Kufri adventure team building events'
+    ],
+    popularVenues: [
+      { name: 'Wildflower Hall', type: 'Luxury Wedding' },
+      { name: 'Oberoi Cecil', type: 'Heritage Events' },
+      { name: 'Peterhoff Hotel', type: 'Conferences' },
+      { name: 'Kufri Resorts', type: 'Team Building' }
+    ],
+    stats: {
+      eventsHandled: '120+',
+      happyClients: '500+',
+      yearsExperience: '10+'
+    },
+    eventTypes: ['Destination Weddings', 'Corporate Retreats', 'MICE Events', 'Family Gatherings'],
+    keywords: ['event transportation shimla', 'shimla wedding transport', 'corporate retreat shimla', 'hill station event transport shimla', 'mice events shimla']
+  },
+  manali: {
+    name: 'Manali',
+    slug: 'manali',
+    title: 'Event Transportation Service in Manali',
+    metaTitle: 'Event Transportation Manali | Adventure & Destination Events | Triveni Cabs',
+    metaDescription: 'Event transportation in Manali & Kullu Valley. Destination weddings, adventure corporate retreats, team building events. Call 7668570551.',
+    heroImage: '/images/sightseeing/Manali/Manali_hero_section.jpg',
+    tagline: 'Adventure Valley Event Hub',
+    subtitle: 'Mountain Adventure & Celebration Events',
+    description: 'Manali and the Kullu Valley provide a spectacular mountain backdrop for destination weddings and adventure-themed corporate events. Triveni Cabs offers reliable mountain road transportation for events at scenic resorts, apple orchards, and riverside venues.',
+    highlights: [
+      'Destination weddings at Span Resort, The Himalayan',
+      'Adventure team building with rafting and trekking',
+      'Solang Valley outdoor events',
+      'Riverside resort celebrations'
+    ],
+    popularVenues: [
+      { name: 'Span Resort', type: 'Luxury Wedding' },
+      { name: 'The Himalayan', type: 'Corporate Retreats' },
+      { name: 'Solang Valley', type: 'Adventure Events' },
+      { name: 'Apple Country Resort', type: 'Family Gatherings' }
+    ],
+    stats: {
+      eventsHandled: '80+',
+      happyClients: '350+',
+      yearsExperience: '8+'
+    },
+    eventTypes: ['Destination Weddings', 'Adventure Events', 'Corporate Retreats', 'Family Celebrations'],
+    keywords: ['event transportation manali', 'manali wedding transport', 'corporate retreat kullu', 'adventure event manali', 'destination wedding manali']
+  },
+  amritsar: {
+    name: 'Amritsar',
+    slug: 'amritsar',
+    title: 'Event Transportation Service in Amritsar',
+    metaTitle: 'Event Transportation Amritsar | Wedding & Religious Event Transport | Triveni Cabs',
+    metaDescription: 'Event transportation in Amritsar. Punjabi weddings, religious events, corporate gatherings. Golden Temple area specialists. Call 7668570551.',
+    heroImage: '/images/sightseeing/Amritsar/Amristar_hero_section.jpg',
+    tagline: 'Holy City Grand Events',
+    subtitle: 'Punjab Premier Event Destination',
+    description: 'Amritsar, home to the Golden Temple, hosts grand Punjabi weddings, religious congregations, and cultural events. Triveni Cabs provides professional event transportation covering all major venues, marriage palaces, and hotels across the city.',
+    highlights: [
+      'Grand Punjabi weddings at marriage palaces',
+      'Religious event transport near Golden Temple',
+      'Corporate events at Hyatt and Radisson',
+      'Wagah Border ceremony guest transport'
+    ],
+    popularVenues: [
+      { name: 'Hyatt Amritsar', type: 'Corporate Events' },
+      { name: 'Radisson Blu', type: 'Luxury Weddings' },
+      { name: 'Marriage Palaces GT Road', type: 'Traditional Weddings' },
+      { name: 'Golden Temple Area', type: 'Religious Events' }
+    ],
+    stats: {
+      eventsHandled: '180+',
+      happyClients: '700+',
+      yearsExperience: '12+'
+    },
+    eventTypes: ['Punjabi Weddings', 'Religious Events', 'Corporate Gatherings', 'Cultural Events'],
+    keywords: ['event transportation amritsar', 'amritsar wedding transport', 'punjabi wedding car', 'golden temple event transport', 'corporate event amritsar']
+  },
+  haridwar: {
+    name: 'Haridwar',
+    slug: 'haridwar',
+    title: 'Event Transportation Service in Haridwar',
+    metaTitle: 'Event Transportation Haridwar | Religious & Spiritual Event Transport | Triveni Cabs',
+    metaDescription: 'Event transportation in Haridwar. Religious gatherings, Kumbh Mela logistics, spiritual retreats, wedding transport. Call 7668570551.',
+    heroImage: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg',
+    tagline: 'Sacred City Event Logistics',
+    subtitle: 'Spiritual & Religious Event Transport',
+    description: 'Haridwar, one of Hinduism holiest cities, hosts massive religious gatherings, spiritual retreats, and pilgrim events throughout the year. Triveni Cabs specializes in managing transportation for large religious congregations, corporate retreats at ashrams, and wedding events near the sacred Ganges.',
+    highlights: [
+      'Kumbh Mela and Ardh Kumbh transportation',
+      'Religious congregation and satsang transport',
+      'Ashram-based corporate retreat logistics',
+      'Wedding events near ghat areas'
+    ],
+    popularVenues: [
+      { name: 'Har Ki Pauri Area', type: 'Religious Events' },
+      { name: 'Ashram Retreats', type: 'Corporate Spiritual' },
+      { name: 'Haridwar Hotels', type: 'Wedding Events' },
+      { name: 'Rajaji National Park Area', type: 'Team Building' }
+    ],
+    stats: {
+      eventsHandled: '200+',
+      happyClients: '800+',
+      yearsExperience: '15+'
+    },
+    eventTypes: ['Religious Gatherings', 'Spiritual Retreats', 'Pilgrim Transport', 'Weddings'],
+    keywords: ['event transportation haridwar', 'kumbh mela transport', 'religious event haridwar', 'haridwar wedding transport', 'pilgrim bus haridwar']
+  },
+  lucknow: {
+    name: 'Lucknow',
+    slug: 'lucknow',
+    title: 'Event Transportation Service in Lucknow',
+    metaTitle: 'Event Transportation Lucknow | Wedding & Corporate Event Transport | Triveni Cabs',
+    metaDescription: 'Event transportation in Lucknow. Nawabi weddings, corporate conferences, MICE events. City of Nawabs event logistics. Call 7668570551.',
+    heroImage: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg',
+    tagline: 'City of Nawabs Event Excellence',
+    subtitle: 'Premium Event Transport in UP Capital',
+    description: 'Lucknow, the City of Nawabs, hosts elegant weddings, major corporate conferences, and cultural events at world-class venues. Triveni Cabs offers comprehensive event transportation services across the city, covering luxury hotels, convention centers, and heritage venues.',
+    highlights: [
+      'Nawabi-style grand weddings at luxury venues',
+      'Corporate conferences at Taj and Hyatt',
+      'Government event logistics in state capital',
+      'Cultural festival transportation'
+    ],
+    popularVenues: [
+      { name: 'Taj Mahal Lucknow', type: 'Luxury Weddings' },
+      { name: 'Hyatt Regency', type: 'Corporate Events' },
+      { name: 'Indira Gandhi Pratishthan', type: 'Conferences' },
+      { name: 'Lulu Mall Area', type: 'Social Events' }
+    ],
+    stats: {
+      eventsHandled: '250+',
+      happyClients: '1000+',
+      yearsExperience: '12+'
+    },
+    eventTypes: ['Grand Weddings', 'Corporate Events', 'Government Events', 'Cultural Festivals'],
+    keywords: ['event transportation lucknow', 'lucknow wedding transport', 'corporate event lucknow', 'mice transport lucknow', 'wedding car lucknow']
+  },
+  udaipur: {
+    name: 'Udaipur',
+    slug: 'udaipur',
+    title: 'Event Transportation Service in Udaipur',
+    metaTitle: 'Event Transportation Udaipur | Royal Wedding & Lakeside Event Transport | Triveni Cabs',
+    metaDescription: 'Event transportation in Udaipur. Royal palace weddings, lakeside events, corporate retreats. India premier wedding destination. Call 7668570551.',
+    heroImage: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
+    tagline: 'City of Lakes Royal Events',
+    subtitle: 'India Premier Destination Wedding City',
+    description: 'Udaipur, the City of Lakes, is India most sought-after destination wedding location with its stunning palace hotels and lakeside venues. Triveni Cabs provides luxury event transportation for royal weddings at Oberoi Udaivilas, Taj Lake Palace, and other iconic venues.',
+    highlights: [
+      'Royal weddings at Oberoi Udaivilas, Taj Lake Palace',
+      'Lakeside events at Fateh Prakash Palace',
+      'Corporate retreats at heritage hotels',
+      'Guest sightseeing and excursion management'
+    ],
+    popularVenues: [
+      { name: 'Oberoi Udaivilas', type: 'Ultra-Luxury Wedding' },
+      { name: 'Taj Lake Palace', type: 'Royal Events' },
+      { name: 'Fateh Prakash Palace', type: 'Heritage Events' },
+      { name: 'Chunda Palace', type: 'Corporate Retreats' }
+    ],
+    stats: {
+      eventsHandled: '200+',
+      happyClients: '900+',
+      yearsExperience: '13+'
+    },
+    eventTypes: ['Royal Weddings', 'Destination Events', 'Corporate Retreats', 'Lakeside Celebrations'],
+    keywords: ['event transportation udaipur', 'udaipur wedding transport', 'royal wedding udaipur', 'destination wedding udaipur transport', 'lakeside event logistics']
+  },
+  varanasi: {
+    name: 'Varanasi',
+    slug: 'varanasi',
+    title: 'Event Transportation Service in Varanasi',
+    metaTitle: 'Event Transportation Varanasi | Religious & Cultural Event Transport | Triveni Cabs',
+    metaDescription: 'Event transportation in Varanasi. Religious gatherings, cultural festivals, spiritual retreats, wedding guest transport. Call 7668570551.',
+    heroImage: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
+    tagline: 'Spiritual Capital Event Logistics',
+    subtitle: 'Sacred City Event Transportation',
+    description: 'Varanasi, one of the world oldest living cities, hosts major religious gatherings, cultural festivals, and spiritual events year-round. Triveni Cabs provides specialized event transportation navigating the city unique layout, connecting ghats, temples, and modern venues.',
+    highlights: [
+      'Dev Deepawali and Ganga Mahotsav event logistics',
+      'Religious congregation transport near ghats',
+      'Wedding guest transport in heritage city',
+      'Conference and MICE at BHU and modern venues'
+    ],
+    popularVenues: [
+      { name: 'Dashashwamedh Ghat Area', type: 'Religious Events' },
+      { name: 'Ramada Plaza', type: 'Corporate Events' },
+      { name: 'BHU Convention Center', type: 'Conferences' },
+      { name: 'Heritage Hotels', type: 'Destination Weddings' }
+    ],
+    stats: {
+      eventsHandled: '150+',
+      happyClients: '600+',
+      yearsExperience: '10+'
+    },
+    eventTypes: ['Religious Gatherings', 'Cultural Festivals', 'Spiritual Retreats', 'Destination Weddings'],
+    keywords: ['event transportation varanasi', 'varanasi religious event transport', 'ghat event logistics', 'varanasi wedding transport', 'cultural festival varanasi']
   }
 };
 
@@ -386,7 +596,7 @@ export const eventTypes = [
     metaTitle: 'Wedding Transportation Services | Guest Transport for Weddings | Triveni Cabs',
     metaDescription: 'Professional wedding transportation in Delhi, Jaipur, Chandigarh. Baraat cars, guest shuttles, decorated vehicles. 500+ fleet. Book now!',
     keywords: ['wedding transportation', 'wedding car rental', 'baraat car', 'wedding guest transport', 'wedding bus hire', 'decorated wedding car'],
-    heroImage: '/images/events/wedding-transportation.jpg',
+    heroImage: '/images/wedding_section.jpg',
     color: 'from-cyan-500 to-blue-600',
     features: [
       { icon: '🚗', title: 'Bridal Car', description: 'Luxury decorated car for the bride\'s grand entry' },
@@ -436,7 +646,7 @@ export const eventTypes = [
     metaTitle: 'Corporate Event Transportation | Conference & Seminar Transport | Triveni Cabs',
     metaDescription: 'Corporate event transportation for conferences, seminars, product launches. Airport transfers, venue shuttles, executive cars. Get quote!',
     keywords: ['corporate event transport', 'conference transportation', 'seminar bus hire', 'corporate shuttle service', 'event logistics'],
-    heroImage: '/images/events/corporate-event-transport.jpg',
+    heroImage: '/images/citypage_hero_section.jpg',
     color: 'from-blue-500 to-indigo-600',
     features: [
       { icon: '✈️', title: 'Airport Transfers', description: 'Meet & greet for delegates arriving by air' },
@@ -486,7 +696,7 @@ export const eventTypes = [
     metaTitle: 'Concert & Festival Transportation | Event Shuttle Services | Triveni Cabs',
     metaDescription: 'Concert and festival transportation services. Shuttle buses, parking solutions, late-night transport. Handle crowds of any size. Book now!',
     keywords: ['concert transportation', 'festival shuttle', 'event bus hire', 'music festival transport', 'crowd transport'],
-    heroImage: '/images/events/concert-festival-transport.jpg',
+    heroImage: '/images/HERO_SECTION_MAIN_PAGE.jpg',
     color: 'from-indigo-500 to-purple-600',
     features: [
       { icon: '🚌', title: 'Shuttle Services', description: 'Regular shuttles from parking and metro stations' },
@@ -536,7 +746,7 @@ export const eventTypes = [
     metaTitle: 'Sports Event Transportation | Team Bus Hire | Tournament Transport | Triveni Cabs',
     metaDescription: 'Sports event transportation for teams and spectators. Team buses, fan shuttles, tournament logistics. Book now!',
     keywords: ['sports team transport', 'team bus hire', 'tournament transportation', 'fan shuttle', 'cricket team bus'],
-    heroImage: '/images/events/sports-event-transport.jpg',
+    heroImage: '/images/about_page_hero_section.jpg',
     color: 'from-green-500 to-emerald-600',
     features: [
       { icon: '🚌', title: 'Team Buses', description: 'Comfortable buses with equipment space' },
@@ -586,7 +796,7 @@ export const eventTypes = [
     metaTitle: 'Religious Event Transportation | Pilgrimage Bus Hire | Temple Tour | Triveni Cabs',
     metaDescription: 'Religious event transportation for pilgrimages, temple visits, spiritual gatherings. Char Dham, temple tours. Book now!',
     keywords: ['religious event transport', 'pilgrimage bus', 'temple tour', 'char dham yatra', 'religious tour bus'],
-    heroImage: '/images/events/religious-event-transport.jpg',
+    heroImage: '/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg',
     color: 'from-teal-500 to-emerald-600',
     features: [
       { icon: '🛕', title: 'Temple Visits', description: 'Day trips to nearby temples and shrines' },
@@ -636,7 +846,7 @@ export const eventTypes = [
     metaTitle: 'School & College Event Transportation | Educational Tour Bus | Triveni Cabs',
     metaDescription: 'Safe transportation for school trips, college fests, educational tours. GPS tracking, verified drivers. Book school bus now!',
     keywords: ['school bus hire', 'college fest transport', 'educational tour bus', 'school excursion', 'student transportation'],
-    heroImage: '/images/events/school-college-events.jpg',
+    heroImage: '/images/citypage_hero_section.jpg',
     color: 'from-cyan-500 to-blue-600',
     features: [
       { icon: '🏫', title: 'School Excursions', description: 'Safe transport for field trips and picnics' },
@@ -674,6 +884,156 @@ export const eventTypes = [
       { question: 'Can parents track the bus?', answer: 'Yes, we provide GPS tracking links for school authorities and parents.' },
       { question: 'First-aid kits in vehicles?', answer: 'Yes, all vehicles carry basic first-aid kits. Additional safety measures for school trips.' },
       { question: 'Teacher communication with driver?', answer: 'We provide driver contact to teacher-in-charge. Our coordination team available 24/7.' }
+    ]
+  },
+  {
+    slug: 'destination-wedding-transport',
+    name: 'Destination Weddings',
+    icon: '💍',
+    title: 'Destination Wedding Transportation in Rajasthan',
+    tagline: 'Royal Transport for Royal Weddings',
+    description: 'Premium transportation for destination weddings in Rajasthan. From palace venues in Jaipur and Udaipur to desert camps in Jaisalmer, we manage guest logistics for your dream wedding.',
+    metaTitle: 'Destination Wedding Transport Rajasthan | Palace Wedding Logistics | Triveni Cabs',
+    metaDescription: 'Destination wedding transportation in Rajasthan. Palace weddings in Jaipur, Udaipur, Jodhpur. Guest shuttles, airport transfers. Call 7668570551.',
+    keywords: ['destination wedding transport rajasthan', 'palace wedding car hire', 'rajasthan wedding logistics', 'udaipur wedding transport', 'jaipur palace wedding shuttle'],
+    heroImage: '/images/wedding_section.jpg',
+    color: 'from-rose-500 to-pink-600',
+    features: [
+      { icon: '🏰', title: 'Palace Transfers', description: 'Luxury transport to heritage palace venues' },
+      { icon: '✈️', title: 'Guest Arrivals', description: 'Airport and railway station pickup coordination' },
+      { icon: '🚗', title: 'Bridal Entry', description: 'Decorated luxury cars for the bride and groom' },
+      { icon: '🚐', title: 'Guest Shuttles', description: 'Tempo travellers and buses between hotel and venue' },
+      { icon: '🎊', title: 'Multi-Event', description: 'Transport for mehendi, sangeet, wedding, reception' },
+      { icon: '🌅', title: 'Excursions', description: 'Post-wedding guest sightseeing tours' }
+    ],
+    packages: [
+      {
+        name: 'Intimate Destination Wedding',
+        description: 'For up to 100 guests',
+        includes: ['1 Decorated bridal car', '3 Tempo travellers', 'Airport transfers', 'Venue shuttles'],
+        price: 'Starting ₹25,000',
+        ideal: 'Boutique hotel weddings'
+      },
+      {
+        name: 'Grand Palace Wedding',
+        description: 'For 100-500 guests',
+        includes: ['Luxury bridal car', 'Baraat vehicle', '6 Tempo travellers', '2 Buses', 'All airport transfers', 'Dedicated coordinator'],
+        price: 'Starting ₹75,000',
+        ideal: 'Palace and fort weddings'
+      },
+      {
+        name: 'Royal Destination Package',
+        description: 'For 500+ guests',
+        includes: ['Premium fleet', 'Multi-city pickups', '24/7 coordination', 'Guest sightseeing', 'Emergency backup'],
+        price: 'Custom Quote',
+        ideal: 'Multi-day royal celebrations'
+      }
+    ],
+    faqs: [
+      { question: 'Which Rajasthan venues do you serve?', answer: 'We cover all major venues including City Palace Jaipur, Rambagh Palace, Oberoi Udaivilas, Umaid Bhawan Jodhpur, Samode Palace, and many more.' },
+      { question: 'Can you arrange guest sightseeing tours?', answer: 'Yes! We arrange pre/post wedding tours to local attractions like Amber Fort, Lake Pichola, and desert camps.' },
+      { question: 'How do you handle outstation guest arrivals?', answer: 'We track all flight and train arrivals, coordinate pickups with name boards, and manage delays seamlessly.' },
+      { question: 'Do you provide decorated vehicles?', answer: 'Yes, we offer flower decoration, ribbons, and custom branding for bridal cars and baraat vehicles.' }
+    ]
+  },
+  {
+    slug: 'political-rally-transport',
+    name: 'Political Rallies',
+    icon: '📢',
+    title: 'Political Rally Transportation & Bus Rental',
+    tagline: 'Large-Scale Crowd Transport Solutions',
+    description: 'Reliable mass transportation for political rallies, election campaigns, and party events. Large fleet of buses and tempo travellers for crowd movement across cities.',
+    metaTitle: 'Political Rally Bus Rental | Election Campaign Transport | Triveni Cabs',
+    metaDescription: 'Political rally transportation and bus rental services. Large fleet for crowd transport. Campaign buses, rally shuttles. Call 7668570551.',
+    keywords: ['political rally bus rental', 'election campaign transport', 'rally crowd bus', 'political event logistics', 'mass transportation rally'],
+    heroImage: '/images/citypage_hero_section.jpg',
+    color: 'from-orange-500 to-red-600',
+    features: [
+      { icon: '🚌', title: 'Mass Transport', description: 'Large fleet of buses for crowd movement' },
+      { icon: '📍', title: 'Multi-City', description: 'Coordinate transport from multiple districts' },
+      { icon: '🔊', title: 'Campaign Buses', description: 'Equipped buses for roadshow campaigns' },
+      { icon: '⏰', title: 'Flexible Timing', description: 'Early morning to late night operations' },
+      { icon: '🗺️', title: 'Route Planning', description: 'Optimized routes for maximum efficiency' },
+      { icon: '📱', title: 'GPS Tracking', description: 'Real-time tracking of entire fleet' }
+    ],
+    packages: [
+      {
+        name: 'Local Rally',
+        description: 'Single city rally transport',
+        includes: ['5 AC buses', 'Multiple pickup points', 'Coordinator', 'Return transport'],
+        price: 'Starting ₹50,000',
+        ideal: 'City-level rallies, meetings'
+      },
+      {
+        name: 'District Rally',
+        description: 'Multi-town rally transport',
+        includes: ['10+ Buses', 'District-wide pickups', 'Staging coordination', 'Emergency vehicles'],
+        price: 'Starting ₹1,50,000',
+        ideal: 'District-level political events'
+      },
+      {
+        name: 'State-Level Campaign',
+        description: 'Large-scale campaign logistics',
+        includes: ['50+ Vehicles', 'Multi-district coordination', 'Campaign bus', 'Command center', '24/7 support'],
+        price: 'Custom Quote',
+        ideal: 'State elections, major rallies'
+      }
+    ],
+    faqs: [
+      { question: 'How many buses can you provide for a rally?', answer: 'We can arrange 50+ buses and tempo travellers through our network for large political events with advance notice.' },
+      { question: 'Do you provide roadshow campaign buses?', answer: 'Yes, we can arrange open-top buses and decorated campaign vehicles for political roadshows.' },
+      { question: 'Can you handle sudden large requirements?', answer: 'With 48-72 hours notice, we can mobilize a large fleet through our partner network across North India.' },
+      { question: 'Are there any restrictions?', answer: 'We comply with all election commission guidelines and local transport regulations. All vehicles are legally registered and insured.' }
+    ]
+  },
+  {
+    slug: 'exhibition-transport',
+    name: 'Exhibitions & Trade Shows',
+    icon: '🏢',
+    title: 'Exhibition & Trade Show Visitor Shuttle Service',
+    tagline: 'Seamless Visitor Transport for Exhibitions',
+    description: 'Professional shuttle services for trade shows, exhibitions, and expos. Move visitors, exhibitors, and staff efficiently between hotels, airports, and exhibition centers.',
+    metaTitle: 'Exhibition Visitor Shuttle Service | Trade Show Transport | Triveni Cabs',
+    metaDescription: 'Exhibition and trade show shuttle services. Visitor transport, exhibitor logistics. Auto Expo, IITF, trade fairs. Call 7668570551.',
+    keywords: ['exhibition visitor shuttle service', 'trade show transport', 'expo shuttle bus', 'exhibition logistics', 'visitor shuttle hire'],
+    heroImage: '/images/citypage_hero_section.jpg',
+    color: 'from-violet-500 to-purple-600',
+    features: [
+      { icon: '🚐', title: 'Visitor Shuttles', description: 'Regular loops between metro, hotels, and venue' },
+      { icon: '📦', title: 'Exhibitor Logistics', description: 'Transport for booth staff and materials' },
+      { icon: '✈️', title: 'Delegate Pickups', description: 'Airport and station transfers for VIP delegates' },
+      { icon: '🅿️', title: 'Park & Ride', description: 'Remote parking with shuttle to exhibition' },
+      { icon: '🎪', title: 'Multi-Hall Support', description: 'Inter-hall shuttle for large exhibition centers' },
+      { icon: '📋', title: 'Branded Service', description: 'Custom signage and branded shuttles available' }
+    ],
+    packages: [
+      {
+        name: 'Small Exhibition',
+        description: 'Single day, up to 500 visitors',
+        includes: ['3 Shuttle buses', 'Continuous loops', '2 VIP cars', 'Coordinator'],
+        price: 'Starting ₹20,000/day',
+        ideal: 'Local exhibitions, small expos'
+      },
+      {
+        name: 'Medium Trade Show',
+        description: 'Multi-day, up to 5,000 visitors',
+        includes: ['6 Shuttle buses', 'Park & ride', '4 VIP cars', 'Route optimization', 'Coordination team'],
+        price: 'Starting ₹50,000/day',
+        ideal: 'Industry exhibitions, regional fairs'
+      },
+      {
+        name: 'Major Expo',
+        description: 'Multi-day, 5,000+ visitors',
+        includes: ['12+ Buses', 'Multiple routes', 'VIP fleet', 'Command center', 'Branded shuttles', 'Extended hours'],
+        price: 'Custom Quote',
+        ideal: 'Auto Expo, IITF, major trade shows'
+      }
+    ],
+    faqs: [
+      { question: 'Can shuttles be branded with exhibition logo?', answer: 'Yes, we can arrange temporary branding and signage on shuttles with 1 week advance notice.' },
+      { question: 'Do you provide inter-hall shuttles?', answer: 'Yes, for large exhibition centers like Pragati Maidan and IEML, we run inter-hall shuttle services.' },
+      { question: 'How do you handle peak hours?', answer: 'We increase shuttle frequency during opening and closing hours. Additional backup vehicles are on standby.' },
+      { question: 'Multi-day packages available?', answer: 'Yes, we offer discounted rates for multi-day exhibitions with consistent service throughout.' }
     ]
   }
 ];

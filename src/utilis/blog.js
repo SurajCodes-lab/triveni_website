@@ -9,6 +9,8 @@ import busBlogs from './expandedBlogs';
 import tempoTravellerBlogs from './tempoTravellerBlogs';
 import additionalSightseeingBlogs from './additionalSightseeingBlogs';
 import seasonalBlogs from './seasonalBlogs';
+import costBlogs from './costBlogs';
+import newBlogs2026 from './newBlogs2026';
 // Blog utilities no longer needed - all blogs now in correct format
 
 // Travel Blog Posts Data
@@ -4902,7 +4904,10 @@ export const blogPosts = [
   ...busBlogs,
   ...tempoTravellerBlogs,
   ...additionalSightseeingBlogs,
-  ...seasonalBlogs
+  ...seasonalBlogs,
+  ...costBlogs,
+  // Phase 15: 17 new destination, seasonal, and service blogs
+  ...newBlogs2026
 ];
 
 // Helper functions to filter blogs

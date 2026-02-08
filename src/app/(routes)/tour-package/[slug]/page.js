@@ -103,6 +103,126 @@ const seoContent = {
     ],
     destinations: "Visit Golden Temple, Jallianwala Bagh, Wagah Border, Gobindgarh Fort, and local Amritsar markets. Experience Punjabi culture, cuisine, and hospitality in this comprehensive Punjab tour.",
     breadcrumb: ["Home", "Tour Packages", "Cultural Tours", "Punjab Heritage Tour"]
+  },
+  "golden-triangle-tour": {
+    title: "Golden Triangle Tour Package",
+    h1: "Golden Triangle Tour | Delhi Agra Jaipur Package | Best Rates",
+    intro: "India's most popular tourist circuit covering Delhi, Agra, and Jaipur. Visit the Taj Mahal, Red Fort, Amber Fort, and other UNESCO World Heritage Sites in 4 days.",
+    whyChoose: "Our Golden Triangle packages from Delhi offer the perfect introduction to India's rich heritage. Comfortable AC vehicles, experienced drivers, and carefully curated itineraries ensure a memorable journey through three iconic cities.",
+    features: [
+      "Visit 3 UNESCO World Heritage cities in 4 days",
+      "Taj Mahal sunrise visit in Agra",
+      "Amber Fort and City Palace in Jaipur",
+      "Fatehpur Sikri en route stop",
+      "AC vehicle with professional driver throughout"
+    ],
+    destinations: "Explore Delhi (Red Fort, Qutub Minar, India Gate), Agra (Taj Mahal, Agra Fort, Fatehpur Sikri), and Jaipur (Amber Fort, Hawa Mahal, City Palace) in this classic Golden Triangle tour.",
+    breadcrumb: ["Home", "Tour Packages", "Heritage Tours", "Golden Triangle Tour"]
+  },
+  "delhi-agra-weekend-tour": {
+    title: "Delhi Agra Weekend Tour Package",
+    h1: "Delhi to Agra Weekend Tour | Taj Mahal Weekend Getaway",
+    intro: "Perfect 2-day weekend escape from Delhi to Agra. Visit the Taj Mahal, Agra Fort, and Fatehpur Sikri with comfortable transportation and hotel stay.",
+    whyChoose: "Our Delhi-Agra weekend tour is the most popular short trip from Delhi. See the Taj Mahal at sunrise, explore Mughal architecture, and return refreshed. Ideal for couples, families, and solo travelers.",
+    features: [
+      "Taj Mahal sunrise visit",
+      "Agra Fort and Baby Taj sightseeing",
+      "Fatehpur Sikri ghost city exploration",
+      "1 night comfortable hotel stay",
+      "Round-trip AC vehicle from Delhi"
+    ],
+    destinations: "Visit Taj Mahal, Agra Fort, Itmad-ud-Daulah (Baby Taj), Mehtab Bagh, and Fatehpur Sikri in this comprehensive Agra weekend tour from Delhi.",
+    breadcrumb: ["Home", "Tour Packages", "Weekend Tours", "Delhi Agra Weekend"]
+  },
+  "uttarakhand-spiritual-tour": {
+    title: "Uttarakhand Spiritual Tour Package",
+    h1: "Uttarakhand Spiritual Tour | Haridwar Rishikesh Pilgrimage Package",
+    intro: "A 6-day spiritual journey through Uttarakhand covering Haridwar and Rishikesh. Experience Ganga Aarti, yoga sessions, temple visits, and the serenity of the Himalayan foothills.",
+    whyChoose: "Our Uttarakhand spiritual tour packages provide a complete pilgrimage experience with comfortable travel, experienced hill drivers, and visits to the holiest sites along the Ganges. Perfect for families and spiritual seekers.",
+    features: [
+      "Ganga Aarti at Har Ki Pauri, Haridwar",
+      "Yoga session in the Yoga Capital - Rishikesh",
+      "Visit Neelkanth Mahadev and Devprayag Sangam",
+      "Comfortable hill station accommodation",
+      "Experienced Uttarakhand driver"
+    ],
+    destinations: "Visit Haridwar (Har Ki Pauri, Mansa Devi, Chandi Devi), Rishikesh (Laxman Jhula, Beatles Ashram, Neelkanth), and Devprayag Sangam in this spiritual Uttarakhand tour.",
+    breadcrumb: ["Home", "Tour Packages", "Pilgrimage Tours", "Uttarakhand Spiritual Tour"]
+  },
+  "himachal-adventure-tour": {
+    title: "Himachal Adventure Tour Package",
+    h1: "Himachal Pradesh Adventure Tour | Shimla Manali Package with Activities",
+    intro: "A 7-day adventure-packed tour covering Shimla, Kullu, and Manali with river rafting, paragliding, and snow activities amidst stunning Himalayan landscapes.",
+    whyChoose: "Our Himachal adventure packages combine the best of hill station beauty with thrilling activities. River rafting in Kullu, paragliding at Solang Valley, and Rohtang Pass snow experience all in one epic trip.",
+    features: [
+      "River rafting in Kullu included",
+      "Paragliding at Solang Valley",
+      "Rohtang Pass or Atal Tunnel visit",
+      "Shimla colonial heritage sightseeing",
+      "7 days of mountain adventure"
+    ],
+    destinations: "Explore Shimla (Mall Road, Jakhu Temple, Kufri), Kullu (river rafting), and Manali (Hadimba Temple, Solang Valley, Rohtang Pass) in this action-packed Himachal tour.",
+    breadcrumb: ["Home", "Tour Packages", "Adventure Tours", "Himachal Adventure Tour"]
+  },
+  "varanasi-ayodhya-spiritual": {
+    title: "Varanasi Ayodhya Spiritual Tour Package",
+    h1: "Varanasi Ayodhya Tour | Ganga Aarti & Ram Mandir Darshan Package",
+    intro: "A deeply spiritual 5-day journey to Varanasi and Ayodhya. Experience the mystical Ganga Aarti, visit Kashi Vishwanath, and seek blessings at Ram Janmabhoomi.",
+    whyChoose: "Our Varanasi-Ayodhya spiritual package covers two of Hinduism's holiest cities with carefully planned temple visits, boat rides on the Ganga, and comfortable accommodation near sacred sites.",
+    features: [
+      "Ganga Aarti at Dashashwamedh Ghat",
+      "Sunrise boat ride on River Ganga",
+      "Ram Janmabhoomi darshan in Ayodhya",
+      "Sarnath Buddhist site excursion",
+      "Temple-proximity accommodation"
+    ],
+    destinations: "Visit Varanasi (Kashi Vishwanath, Dashashwamedh Ghat, Sarnath) and Ayodhya (Ram Janmabhoomi, Hanuman Garhi, Kanak Bhawan) in this complete spiritual pilgrimage tour.",
+    breadcrumb: ["Home", "Tour Packages", "Pilgrimage Tours", "Varanasi Ayodhya Spiritual"]
+  },
+  "leh-ladakh-road-trip": {
+    title: "Leh Ladakh Road Trip Package",
+    h1: "Leh Ladakh Road Trip from Delhi | Pangong Lake & Nubra Valley Tour",
+    intro: "The ultimate 10-day road trip from Delhi to Leh-Ladakh via Manali. Cross the world's highest passes, camp by Pangong Lake, and explore Nubra Valley's sand dunes.",
+    whyChoose: "Our Leh-Ladakh road trip packages include experienced Ladakh drivers, 4x4 SUVs, all permits, and a carefully planned itinerary with proper acclimatization stops. The adventure of a lifetime awaits.",
+    features: [
+      "Pangong Lake overnight camping",
+      "Khardung La pass crossing (5,359m)",
+      "Nubra Valley with double-humped camels",
+      "Ancient monastery visits",
+      "4x4 SUV with Ladakh-experienced driver"
+    ],
+    destinations: "Explore Manali, Jispa, Leh (Palace, Shanti Stupa), Nubra Valley (Diskit, Hunder), Pangong Lake, Thiksey Monastery, and Hemis Monastery in this epic Ladakh road trip.",
+    breadcrumb: ["Home", "Tour Packages", "Adventure Tours", "Leh Ladakh Road Trip"]
+  },
+  "amritsar-dharamshala-dalhousie": {
+    title: "Amritsar Dharamshala Dalhousie Tour Package",
+    h1: "Amritsar Dharamshala Dalhousie Tour | Punjab Himachal Circuit Package",
+    intro: "A 6-day scenic circuit covering the Golden Temple in Amritsar, Tibetan culture in Dharamshala, and the colonial charm of Dalhousie with mini-Switzerland Khajjiar.",
+    whyChoose: "Our Punjab-Himachal circuit tour combines spiritual, cultural, and hill station experiences. From Golden Temple darshan to Dalai Lama temple to Khajjiar meadows, this diverse tour has something for everyone.",
+    features: [
+      "Golden Temple evening darshan and langar",
+      "Wagah Border ceremony",
+      "Dalai Lama Temple Complex in Dharamshala",
+      "Khajjiar - Mini Switzerland of India",
+      "McLeodganj cafe culture and shopping"
+    ],
+    destinations: "Visit Amritsar (Golden Temple, Wagah Border), Dharamshala (Dalai Lama Temple, McLeodganj), and Dalhousie (Khajjiar, Dainkund Peak) in this diverse Punjab-Himachal tour.",
+    breadcrumb: ["Home", "Tour Packages", "Cultural Tours", "Amritsar Dharamshala Dalhousie"]
+  },
+  "spiti-valley-expedition": {
+    title: "Spiti Valley Expedition Package",
+    h1: "Spiti Valley Tour Package | Chandratal Lake & Key Monastery Expedition",
+    intro: "A 9-day epic expedition through Spiti Valley, one of India's most remote and breathtaking regions. Visit ancient monasteries, camp at Chandratal Lake, and drive through the cold desert.",
+    whyChoose: "Our Spiti Valley expedition is designed for serious adventurers. 4x4 SUV, experienced hill drivers, proper acclimatization, and a route covering Kinnaur, Spiti, and Lahaul ensures a safe and unforgettable journey.",
+    features: [
+      "Chandratal Lake camping experience",
+      "Key Monastery and Kibber village",
+      "Chitkul - India's last inhabited village",
+      "1000-year-old Tabo Monastery",
+      "Kunzum Pass and Rohtang crossing"
+    ],
+    destinations: "Explore Shimla, Sarahan (Bhimakali Temple), Chitkul, Tabo, Kaza, Key Monastery, Kibber, Chandratal Lake, and Manali in this complete Spiti Valley expedition.",
+    breadcrumb: ["Home", "Tour Packages", "Adventure Tours", "Spiti Valley Expedition"]
   }
 };
 

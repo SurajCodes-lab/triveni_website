@@ -328,6 +328,141 @@ export const weddingCityData = {
     ],
     priceRange: "₹7,000 - ₹35,000 per day",
     popularCars: ["BMW 5 Series", "Audi A4", "Innova Crysta", "Tempo Traveller", "Premium Sedan Fleet"]
+  },
+  lucknow: {
+    name: "Lucknow",
+    slug: "lucknow",
+    description: "Nawabi style wedding car rental in Lucknow - City of Nawabs. Premium luxury BMW, Audi, Mercedes for bride/groom entry with Awadhi grandeur. Baraat tempo travellers with DJ, decorated vintage cars, professional chauffeurs. Hazratganj to Gomti Nagar coverage for royal Lucknowi weddings.",
+    keywords: "wedding car rental lucknow, luxury wedding car lucknow, bridal car rental lucknow, nawabi wedding car lucknow, baraat tempo traveller lucknow, wedding car hire lucknow, lucknow wedding car with driver, BMW wedding car lucknow, Audi wedding car lucknow, Mercedes wedding car lucknow, vintage wedding car lucknow, wedding car booking lucknow, decorated wedding car lucknow, lucknow marriage car rental, lucknow shaadi car rental, wedding transportation lucknow, lucknow baraat car booking, lucknow nawabi wedding transport, gomti nagar wedding car, hazratganj wedding car, best wedding car lucknow, affordable wedding car lucknow, lucknow wedding car packages, up wedding car rental lucknow",
+    popularVenues: [
+      { name: "Taj Mahal Lucknow", area: "Vipin Khand" },
+      { name: "Vivanta Lucknow", area: "Gomti Nagar" },
+      { name: "Renaissance Lucknow", area: "Shaheed Path" },
+      { name: "Novotel Lucknow", area: "Gomti Nagar" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "550 km", time: "8-9 hours" },
+      { name: "Agra", distance: "330 km", time: "5-6 hours" },
+      { name: "Varanasi", distance: "320 km", time: "5-6 hours" },
+      { name: "Ayodhya", distance: "140 km", time: "3 hours" }
+    ],
+    specialties: [
+      "Nawabi wedding style specialists",
+      "Awadhi themed car decoration",
+      "Large fleet for grand Lucknowi weddings",
+      "Gomti Nagar and Hazratganj coverage",
+      "Multi-venue wedding coordination"
+    ],
+    priceRange: "₹7,000 - ₹40,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A6", "Mercedes E-Class", "Vintage Ambassador", "Tempo Traveller with DJ"]
+  },
+  varanasi: {
+    name: "Varanasi",
+    slug: "varanasi",
+    description: "Sacred Ganga wedding car rental in Varanasi - Spiritual Capital of India. Premium luxury cars for temple weddings, Ganga Ghat ceremony transportation, baraat tempo travellers. Dashashwamedh Ghat to Sarnath coverage with experienced spiritual wedding drivers.",
+    keywords: "wedding car rental varanasi, luxury wedding car varanasi, ganga wedding car varanasi, temple wedding car varanasi, bridal car rental varanasi, hindu wedding car varanasi, baraat tempo traveller varanasi, wedding car hire varanasi, varanasi wedding car with driver, BMW wedding car varanasi, kashi wedding car, banaras wedding car, ghat wedding car varanasi, sarnath wedding car, dashashwamedh wedding car, decorated wedding car varanasi, best wedding car varanasi, affordable wedding car varanasi, varanasi wedding car packages, holy city wedding car varanasi, varanasi marriage car rental, varanasi shaadi car rental",
+    popularVenues: [
+      { name: "BHU Convention Center", area: "Lanka" },
+      { name: "Hotel Surya", area: "The Mall" },
+      { name: "Radisson Varanasi", area: "The Mall Road" },
+      { name: "Taj Ganges", area: "Nadesar Palace" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "820 km", time: "12-14 hours" },
+      { name: "Lucknow", distance: "320 km", time: "5-6 hours" },
+      { name: "Ayodhya", distance: "210 km", time: "4 hours" },
+      { name: "Prayagraj", distance: "120 km", time: "2-3 hours" }
+    ],
+    specialties: [
+      "Ganga Ghat wedding ceremony specialists",
+      "Temple wedding coordination",
+      "Spiritual wedding transportation experts",
+      "Ghat-side baraat arrangements",
+      "Sarnath destination wedding coverage"
+    ],
+    priceRange: "₹7,000 - ₹35,000 per day",
+    popularCars: ["BMW 3 Series", "Audi A4", "Mercedes C-Class", "Innova Crysta", "Tempo Traveller AC"]
+  },
+  mathura: {
+    name: "Mathura",
+    slug: "mathura",
+    description: "Temple wedding car rental in Mathura - Birthplace of Lord Krishna. Premium cars for religious weddings, Krishna temple ceremony transportation, decorated baraat tempo travellers. Vrindavan to Mathura coverage with devotional wedding specialists.",
+    keywords: "wedding car rental mathura, luxury wedding car mathura, temple wedding car mathura, krishna wedding car mathura, bridal car rental mathura, religious wedding car mathura, baraat tempo traveller mathura, wedding car hire mathura, mathura wedding car with driver, vrindavan wedding car, BMW wedding car mathura, decorated wedding car mathura, mathura marriage car rental, mathura shaadi car rental, krishna temple wedding car, best wedding car mathura, affordable wedding car mathura, mathura wedding car packages, braj wedding car, mathura vrindavan wedding transport",
+    popularVenues: [
+      { name: "Radha Rani Temple", area: "Barsana" },
+      { name: "ISKCON Vrindavan", area: "Vrindavan" },
+      { name: "Hotel Brijwasi Royal", area: "Station Road" },
+      { name: "The Sarovar Premiere", area: "Masani Road" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "180 km", time: "3-4 hours" },
+      { name: "Agra", distance: "60 km", time: "1-2 hours" },
+      { name: "Jaipur", distance: "280 km", time: "5 hours" },
+      { name: "Vrindavan", distance: "15 km", time: "30 mins" }
+    ],
+    specialties: [
+      "Krishna temple wedding specialists",
+      "Vrindavan-Mathura wedding coverage",
+      "Religious ceremony transportation",
+      "Barsana Braj wedding arrangements",
+      "Devotional themed car decoration"
+    ],
+    priceRange: "₹6,000 - ₹30,000 per day",
+    popularCars: ["BMW 3 Series", "Audi A4", "Innova Crysta", "Fortuner", "Tempo Traveller"]
+  },
+  mussoorie: {
+    name: "Mussoorie",
+    slug: "mussoorie",
+    description: "Destination wedding car rental in Mussoorie - Queen of Hills. Luxury SUVs for mountain weddings, decorated 4x4 vehicles, tempo travellers for baraat. Mall Road to Kempty Falls coverage, professional hill drivers, scenic valley wedding specialists.",
+    keywords: "destination wedding car mussoorie, wedding car rental mussoorie, luxury wedding car mussoorie, hill station wedding car mussoorie, bridal car rental mussoorie, mountain wedding car mussoorie, baraat car mussoorie, wedding car hire mussoorie, mussoorie wedding car with driver, SUV wedding car mussoorie, BMW wedding car mussoorie, mall road wedding car mussoorie, kempty falls wedding car, mussoorie to dehradun wedding car, decorated wedding car mussoorie, best wedding car mussoorie, affordable wedding car mussoorie, mussoorie wedding car packages, queen of hills wedding car, mussoorie destination wedding transport, mussoorie hill wedding car",
+    popularVenues: [
+      { name: "JW Marriott Mussoorie", area: "Mall Road" },
+      { name: "Jaypee Residency", area: "Barlowganj" },
+      { name: "Sterling Mussoorie", area: "Library Road" },
+      { name: "Savoy Hotel", area: "Library Bazaar" }
+    ],
+    nearbyDestinations: [
+      { name: "Dehradun", distance: "35 km", time: "1-2 hours" },
+      { name: "Delhi", distance: "290 km", time: "6-7 hours" },
+      { name: "Haridwar", distance: "85 km", time: "2-3 hours" },
+      { name: "Rishikesh", distance: "75 km", time: "2-3 hours" }
+    ],
+    specialties: [
+      "Hill station destination wedding experts",
+      "Mountain terrain 4x4 vehicles",
+      "Valley view wedding coverage",
+      "Scenic route wedding processions",
+      "Weather-adaptive hill wedding planning"
+    ],
+    priceRange: "₹9,000 - ₹45,000 per day",
+    popularCars: ["BMW X5", "Audi Q5", "Fortuner 4x4", "Innova Crysta", "Tempo Traveller Hill Edition"]
+  },
+  nainital: {
+    name: "Nainital",
+    slug: "nainital",
+    description: "Lake destination wedding car rental in Nainital - City of Lakes. Premium SUVs for lakeside weddings, decorated 4x4 vehicles, tempo travellers for baraat. Naini Lake to Bhimtal coverage, professional hill drivers, romantic lake wedding specialists.",
+    keywords: "destination wedding car nainital, wedding car rental nainital, luxury wedding car nainital, lake wedding car nainital, hill station wedding car nainital, bridal car rental nainital, mountain wedding car nainital, baraat car nainital, wedding car hire nainital, nainital wedding car with driver, SUV wedding car nainital, naini lake wedding car, bhimtal wedding car, nainital to delhi wedding car, decorated wedding car nainital, best wedding car nainital, affordable wedding car nainital, nainital wedding car packages, lake city wedding car, nainital destination wedding transport, kumaon wedding car nainital",
+    popularVenues: [
+      { name: "Manu Maharani", area: "Grassland" },
+      { name: "The Naini Retreat", area: "Ayarpatta" },
+      { name: "Shervani Hilltop", area: "Waverly Road" },
+      { name: "The Pavilion", area: "Mall Road" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "310 km", time: "7-8 hours" },
+      { name: "Dehradun", distance: "290 km", time: "7 hours" },
+      { name: "Bhimtal", distance: "22 km", time: "45 mins" },
+      { name: "Ranikhet", distance: "60 km", time: "2 hours" }
+    ],
+    specialties: [
+      "Lakeside destination wedding experts",
+      "Kumaon region wedding coverage",
+      "Mountain terrain 4x4 specialists",
+      "Romantic lake view wedding arrangements",
+      "Multi-day destination wedding packages"
+    ],
+    priceRange: "₹9,000 - ₹45,000 per day",
+    popularCars: ["BMW X3", "Audi Q5", "Fortuner 4x4", "Innova Crysta", "Tempo Traveller Mountain Edition"]
   }
 };
 

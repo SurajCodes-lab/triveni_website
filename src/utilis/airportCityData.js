@@ -277,6 +277,52 @@ export const airportCityData = {
       "Saryu River Ghat",
       "Ram Ki Paidi"
     ]
+  },
+  jodhpur: {
+    name: "Jodhpur",
+    airport: "Jodhpur Airport",
+    airportCode: "JDH",
+    description: "Jodhpur airport taxi service from Jodhpur Airport. Cab booking to Mehrangarh Fort, Umaid Bhawan Palace, city hotels. Blue City airport transfer with reliable service.",
+    keywords: "jodhpur airport taxi, jodhpur airport cab, jodhpur airport pickup, jodhpur airport drop, jodhpur airport transfer, mehrangarh fort airport taxi, jodhpur airport cab booking, jodhpur to jaisalmer airport taxi, jodhpur airport shuttle, best jodhpur airport taxi, jodhpur airport taxi service near me, pre book jodhpur airport cab, jodhpur airport cab fare, jodhpur airport to umaid bhawan taxi, reliable airport taxi jodhpur, jodhpur airport to mehrangarh fort cab, jodhpur airport outstation taxi, jodhpur airport private cab, blue city airport taxi, JDH airport taxi service, jodhpur airport to jaipur cab, jodhpur airport to udaipur taxi",
+    routes: ["Jodhpur to Jaisalmer", "Jodhpur to Jaipur", "Jodhpur to Udaipur", "Jodhpur to Mount Abu"],
+    distance: "5 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Mehrangarh Fort", distance: "8 km", time: "20 mins" },
+      { name: "Umaid Bhawan Palace", distance: "6 km", time: "15 mins" },
+      { name: "Jaisalmer", distance: "285 km", time: "5 hours" },
+      { name: "Jaipur", distance: "335 km", time: "5-6 hours" }
+    ],
+    nearbyAttractions: [
+      "Mehrangarh Fort",
+      "Umaid Bhawan Palace",
+      "Jaswant Thada",
+      "Clock Tower Market",
+      "Mandore Gardens"
+    ]
+  },
+  srinagar: {
+    name: "Srinagar",
+    airport: "Sheikh ul-Alam International Airport",
+    airportCode: "SXR",
+    description: "Srinagar airport taxi service from Sheikh ul-Alam Airport. Cab booking to Dal Lake, houseboats, Gulmarg, Pahalgam, Sonmarg. Kashmir valley airport transfer with experienced drivers.",
+    keywords: "srinagar airport taxi, srinagar airport cab, sheikh ul alam airport taxi, srinagar airport pickup, srinagar airport drop, srinagar airport transfer, dal lake airport taxi, srinagar airport cab booking, srinagar to gulmarg airport taxi, srinagar airport shuttle, best srinagar airport taxi, srinagar airport taxi service near me, pre book srinagar airport cab, srinagar airport cab fare, srinagar airport to dal lake taxi, reliable airport taxi srinagar, srinagar airport to gulmarg cab, srinagar airport to pahalgam taxi, kashmir airport taxi, SXR airport taxi service, srinagar airport to sonmarg cab, srinagar airport houseboat transfer",
+    routes: ["Srinagar to Gulmarg", "Srinagar to Pahalgam", "Srinagar to Sonmarg", "Srinagar to Leh"],
+    distance: "14 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Dal Lake", distance: "17 km", time: "35 mins" },
+      { name: "Mughal Gardens", distance: "20 km", time: "40 mins" },
+      { name: "Gulmarg", distance: "65 km", time: "2 hours" },
+      { name: "Pahalgam", distance: "110 km", time: "3 hours" }
+    ],
+    nearbyAttractions: [
+      "Dal Lake",
+      "Mughal Gardens",
+      "Shankaracharya Temple",
+      "Hazratbal Shrine",
+      "Nigeen Lake"
+    ]
   }
 };
 

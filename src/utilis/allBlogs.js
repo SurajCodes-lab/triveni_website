@@ -21,16 +21,20 @@ import busBlogs from './expandedBlogs';
 import tempoTravellerBlogs from './tempoTravellerBlogs';
 import additionalSightseeingBlogs from './additionalSightseeingBlogs';
 import seasonalBlogs from './seasonalBlogs';
+import costBlogs from './costBlogs';
+import newBlogs2026 from './newBlogs2026';
 
 /**
  * Combined collection of all blogs
- * Total: 40 blogs
+ * Total: 57+ unique SEO-rich articles
  */
 export const allBlogs = [
   ...busBlogs,                    // 10 bus-focused blogs
   ...tempoTravellerBlogs,         // 12 tempo traveller blogs
   ...additionalSightseeingBlogs,  // 12 sightseeing/city guide blogs
-  ...seasonalBlogs                // 6 seasonal/special interest blogs
+  ...seasonalBlogs,               // 6 seasonal/special interest blogs
+  ...costBlogs,                   // 10 cost/fare guide blogs
+  ...newBlogs2026                 // 17 Phase 15 blogs (destination, seasonal, service)
 ];
 
 /**

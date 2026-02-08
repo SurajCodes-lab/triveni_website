@@ -10,6 +10,8 @@ import { busRoutes } from "@/utilis/busRoutesData";
 import { getAllTours } from "@/utilis/sightseeingData";
 import { getAllCitySlugs } from "@/utilis/airportCityData";
 import { getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
+import { getAllWeddingCarModelSlugs } from "@/utilis/weddingCarModels";
+import { getCitiesWithTours } from "@/utilis/sightseeingData";
 
 // Corporate and Event slugs for sitemap
 const corporateIndustrySlugs = [
@@ -17,7 +19,11 @@ const corporateIndustrySlugs = [
   'bpo-call-centers',
   'pharma-companies',
   'manufacturing',
-  'banks-financial'
+  'banks-financial',
+  'hospitals-healthcare',
+  'education-schools',
+  'government-psu',
+  'ecommerce-logistics'
 ];
 
 const corporateUseCaseSlugs = [
@@ -28,7 +34,7 @@ const corporateUseCaseSlugs = [
   'monthly-car-rental-corporate'
 ];
 
-const corporateCitySlugs = ['delhi', 'agra', 'jaipur', 'chandigarh', 'dehradun'];
+const corporateCitySlugs = ['delhi', 'agra', 'jaipur', 'chandigarh', 'dehradun', 'noida', 'gurgaon', 'lucknow', 'haridwar'];
 
 const eventTypeSlugs = [
   'wedding-transportation',
@@ -36,10 +42,13 @@ const eventTypeSlugs = [
   'concert-festival-transport',
   'sports-event-transport',
   'religious-event-transport',
-  'school-college-events'
+  'school-college-events',
+  'destination-wedding-transport',
+  'political-rally-transport',
+  'exhibition-transport'
 ];
 
-const eventCitySlugs = ['delhi', 'agra', 'jaipur', 'chandigarh', 'dehradun'];
+const eventCitySlugs = ['delhi', 'agra', 'jaipur', 'chandigarh', 'dehradun', 'shimla', 'manali', 'amritsar', 'haridwar', 'lucknow', 'udaipur', 'varanasi'];
 
 function createRouteSlug(cityName, destination) {
   return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -333,7 +342,96 @@ export default function sitemap() {
       changeFrequency: 'weekly',
       priority: 0.75,
     },
+
+    // Hub Pages - PHASE 1 HIGH PRIORITY
+    { url: `${baseUrl}/outstation-cabs`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/local-taxi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/one-way-cab`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/round-trip-cab`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/safety`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/reviews`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+
+    // Phase 2: Same Day Agra Tours - HIGH PRIORITY CONTENT
+    { url: `${baseUrl}/same-day-agra-tour-from-delhi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/same-day-taj-mahal-tour`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/taj-mahal-tour-from-delhi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/sunrise-taj-mahal-tour-from-delhi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/moonlight-taj-mahal-tour`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/taj-mahal-private-tour-from-delhi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/agra-day-trip-from-delhi`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/agra-food-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/agra-shopping-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/agra-beyond-taj-mahal`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/agra-travel-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+
+    // Phase 3: Religious/Pilgrimage Standalone Pages
+    { url: `${baseUrl}/ayodhya-ram-mandir-tour-from-delhi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/ayodhya-ram-mandir-tour-from-agra`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/ayodhya-ram-mandir-tour-from-lucknow`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/kanwar-yatra-cab-haridwar`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/prayagraj-sangam-tour`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+
+    // Phase 4: Road Trip Pages - HIGH PRIORITY CONTENT
+    { url: `${baseUrl}/10-day-north-india-road-trip`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/7-day-himachal-tour-by-car`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/kashmir-road-trip-from-delhi`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/spiti-valley-road-trip-from-delhi`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/rajasthan-desert-circuit-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/uttarakhand-spiritual-circuit-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/weekend-getaways-from-delhi-by-car`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/weekend-getaways-from-jaipur-by-car`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/weekend-getaways-from-chandigarh-by-car`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+
+    // Phase 6: International Tourist Pages - HIGH PRIORITY CONTENT
+    { url: `${baseUrl}/private-driver-hire-india`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/golden-triangle-english-speaking-driver`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/safe-travel-india-for-tourists`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/india-road-trip-guide-for-tourists`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/delhi-airport-to-agra-taxi`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+
+    // Phase 8: Wedding Special Service Pages
+    { url: `${baseUrl}/wedding/baraat-tempo-traveller`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/wedding/car-decoration-packages`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/wedding/doli-car-rental`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+
+    // Phase 10: Delhi Airport Terminal Pages
+    { url: `${baseUrl}/airport-service/delhi/igi-terminal-1-domestic`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/airport-service/delhi/igi-terminal-2-domestic`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/airport-service/delhi/igi-terminal-3-international`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
+
+    // Additional Tour Packages (Phase 14 - new)
+    { url: `${baseUrl}/tour-package/golden-triangle-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/delhi-agra-weekend-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/uttarakhand-spiritual-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/himachal-adventure-tour`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/varanasi-ayodhya-spiritual`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/leh-ladakh-road-trip`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/amritsar-dharamshala-dalhousie`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/tour-package/spiti-valley-expedition`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
   ];
+
+  // Add Wedding Car Model Pages (Dynamic) - HIGH PRIORITY CONTENT
+  const weddingCarSlugs = getAllWeddingCarModelSlugs();
+  weddingCarSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/wedding/cars/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // Add Sightseeing City Hub Pages (Dynamic) - HIGH PRIORITY CONTENT
+  const sightseeingCities = getCitiesWithTours();
+  sightseeingCities.forEach(city => {
+    urls.push({
+      url: `${baseUrl}/sightseeing/${city}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
 
   // Add Blog Posts (Dynamic) - CONTENT PAGES
   blogPosts

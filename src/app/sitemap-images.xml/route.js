@@ -75,7 +75,7 @@ function generateImageSitemap() {
     'Rishikesh': '/images/sightseeing/Rishikesh/Rishikesh_Hero_section.jpg',
     'Shimla': '/images/sightseeing/Shimla/Shimla_Hero_section.jpg',
     'Manali': '/images/sightseeing/Manali/Manali_Hero_section.jpg',
-    'Amritsar': '/images/sightseeing/Amritsar/Amritsar_hero_section.jpg',
+    'Amritsar': '/images/sightseeing/Amritsar/Amristar_hero_section.jpg',
     'Lucknow': '/images/sightseeing/Lucknow/lucknow_hero_section.jpg',
     'Varanasi': '/images/sightseeing/Varanasi/Varanasi_Hero_section.jpg',
     'Jodhpur': '/images/sightseeing/Jodhpur/Jodhpur_Hero_section.jpg',

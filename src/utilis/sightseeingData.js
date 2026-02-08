@@ -20264,6 +20264,1310 @@ export const sightseeingTours = {
         "weekday tour"
       ]
     }
+  ],
+
+  // === PHASE 12: NEW SIGHTSEEING TOURS ===
+
+  // Agra Region - Additional Tours (added to separate key to avoid modifying existing agra array)
+  "agra-extra": [
+    {
+      id: 80,
+      name: "Agra Heritage Walk — Behind the Taj",
+      slug: "agra-heritage-walk-tour",
+      shortDescription: "Discover hidden Agra beyond the Taj — Mughal lanes, petha-making workshops, and Kinari Bazaar",
+      fullDescription: "Go beyond the Taj Mahal and explore Agra's living heritage. Walk through narrow Mughal-era lanes, witness traditional petha-making, visit the vibrant Kinari Bazaar, see lesser-known tombs and mosques, and interact with local artisans who continue centuries-old marble inlay (pietra dura) craft.",
+      duration: "4-5 hours",
+      price: { sedan: 1800, suv: 2500, tempoTraveller: 3500, currency: "INR" },
+      highlights: [
+        "Kinari Bazaar - Centuries-old Mughal market",
+        "Petha making workshop - Watch Agra's famous sweet being made",
+        "Jama Masjid - Historic mosque near Agra Fort",
+        "Marble inlay artisan workshop - Pietra dura craft",
+        "Rawli Bazaar - Traditional spice and perfume market",
+        "Hidden Mughal-era tombs and gardens"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "07:20 AM", activity: "Kinari Bazaar heritage walk", duration: "1 hour", description: "Explore the vibrant Mughal-era market" },
+        { time: "08:30 AM", activity: "Jama Masjid visit", duration: "30 mins", description: "Historic mosque built by Shah Jahan" },
+        { time: "09:00 AM", activity: "Petha making workshop", duration: "45 mins", description: "Watch artisans make Agra famous sweet" },
+        { time: "10:00 AM", activity: "Marble inlay artisan visit", duration: "1 hour", description: "See pietra dura craftsmen at work" },
+        { time: "11:00 AM", activity: "Hidden tombs walk", duration: "45 mins", description: "Visit lesser-known Mughal heritage sites" },
+        { time: "12:00 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking and toll charges", "All taxes"],
+      exclusions: ["Walking guide (₹1000 extra)", "Food and beverages", "Shopping expenses", "Entry fees where applicable"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Easy",
+      category: "Heritage & Culture",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Taj_mahal.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg"
+      ],
+      tips: ["Wear comfortable walking shoes", "Carry cash for bazaar shopping", "Best started early morning to avoid heat", "Try fresh petha at the workshop"],
+      reviews: { averageRating: 4.5, totalReviews: 876 },
+      coordinates: { latitude: 27.1767, longitude: 78.0081 },
+      groupSize: "1-10 persons",
+      accessibility: "Moderate - involves walking through narrow lanes",
+      keywords: ["agra heritage walk", "agra walking tour", "agra hidden gems", "agra bazaar tour", "agra food walk", "behind the taj tour", "agra cultural tour"]
+    },
+    {
+      id: 81,
+      name: "Agra Food & Culinary Tour",
+      slug: "agra-food-culinary-tour",
+      shortDescription: "Taste Agra's legendary Mughlai cuisine — petha, bedai, jalebi, kebabs, and street food treasures",
+      fullDescription: "Embark on a delicious culinary journey through Agra's best food streets and iconic eateries. Taste the legendary Agra petha, crispy bedai-jalebi breakfast, mouth-watering Mughlai kebabs, biryani, and chaat. Visit Sadar Bazaar, Chaat Gali, and famous sweet shops that have been serving for generations.",
+      duration: "4-5 hours",
+      price: { sedan: 1500, suv: 2200, tempoTraveller: 3200, currency: "INR" },
+      highlights: [
+        "Panchhi Petha - Famous Agra petha tasting",
+        "Bedai-Jalebi breakfast at local dhaba",
+        "Mughlai kebabs and biryani tasting",
+        "Chaat Gali street food exploration",
+        "Lassi and kulfi at heritage shops",
+        "Sadar Bazaar food walk"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "08:20 AM", activity: "Bedai-Jalebi breakfast", duration: "45 mins", description: "Agra's iconic breakfast at traditional dhaba" },
+        { time: "09:15 AM", activity: "Panchhi Petha visit", duration: "30 mins", description: "Taste varieties of Agra famous sweet" },
+        { time: "10:00 AM", activity: "Chaat Gali exploration", duration: "45 mins", description: "Street food paradise with chaat and snacks" },
+        { time: "11:00 AM", activity: "Mughlai kebab tasting", duration: "45 mins", description: "Visit legendary kebab shops" },
+        { time: "12:00 PM", activity: "Lassi and desserts", duration: "30 mins", description: "Traditional lassi and kulfi" },
+        { time: "12:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Food and beverage costs (₹500-1000 approx)", "Guide fees", "Personal expenses"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Easy",
+      category: "Food & Culture",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Taj_mahal.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Jama_Masjid.jpg",
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg"
+      ],
+      tips: ["Come hungry - there is a lot of food to try", "Carry cash for street food stalls", "Morning tours have fresher food options", "Inform driver of any dietary restrictions"],
+      reviews: { averageRating: 4.6, totalReviews: 654 },
+      coordinates: { latitude: 27.1767, longitude: 78.0081 },
+      groupSize: "1-8 persons",
+      accessibility: "Easy - mostly vehicle-based with short walks",
+      keywords: ["agra food tour", "agra culinary tour", "agra street food", "agra petha tour", "mughlai food agra", "agra food walk", "taste of agra"]
+    },
+    {
+      id: 82,
+      name: "Agra Moonlight Taj Mahal Viewing Tour",
+      slug: "agra-moonlight-taj-mahal",
+      shortDescription: "Experience the ethereal beauty of Taj Mahal under moonlight — limited availability, magical experience",
+      fullDescription: "Witness the Taj Mahal in its most magical form — bathed in moonlight. Available only on full moon nights and two days before and after, this exclusive night viewing offers a surreal experience. The white marble glows under the moon, creating an otherworldly atmosphere. Combined with sunset views from Mehtab Bagh.",
+      duration: "4-5 hours",
+      price: { sedan: 2000, suv: 2800, tempoTraveller: 4000, currency: "INR" },
+      highlights: [
+        "Taj Mahal night viewing under moonlight",
+        "Mehtab Bagh sunset - Taj across Yamuna",
+        "Limited access - only 400 visitors per night",
+        "Ethereal white marble glow under moon",
+        "Photography from exclusive viewpoints",
+        "Magical once-in-a-lifetime experience"
+      ],
+      itinerary: [
+        { time: "04:30 PM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "05:00 PM", activity: "Mehtab Bagh sunset viewing", duration: "1.5 hours", description: "Watch sunset behind Taj Mahal from across Yamuna" },
+        { time: "06:30 PM", activity: "Dinner at local restaurant", duration: "1 hour" },
+        { time: "08:00 PM", activity: "Arrive at Taj Mahal for night viewing", duration: "30 mins", description: "Security check and entry" },
+        { time: "08:30 PM", activity: "Moonlight Taj Mahal viewing", duration: "30 mins", description: "Limited 30-minute viewing slot" },
+        { time: "09:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Taj Mahal night entry ticket (₹510 Indian, ₹750 Foreign)", "Mehtab Bagh entry (₹50)", "Dinner", "Guide fees"],
+      bestTimeToVisit: "Full moon nights (2 days before/after), October-March ideal",
+      difficulty: "Easy",
+      category: "Heritage & Romance",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Taj_mahal.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Agra/Baby_Taj.jpg"
+      ],
+      tips: ["Book night tickets well in advance from ASI website", "Only 400 tickets available per night", "Viewing slot is 30 minutes, plan accordingly", "No tripods allowed, use high ISO for photos", "Check ASI website for moonlight schedule"],
+      reviews: { averageRating: 4.9, totalReviews: 432 },
+      coordinates: { latitude: 27.1751, longitude: 78.0421 },
+      groupSize: "1-8 persons",
+      accessibility: "Easy",
+      keywords: ["taj mahal moonlight", "taj mahal night tour", "agra moonlight tour", "taj mahal full moon", "taj night viewing", "romantic taj tour", "taj mahal evening"]
+    },
+    {
+      id: 83,
+      name: "Agra Shopping & Marble Handicraft Tour",
+      slug: "agra-shopping-handicraft-tour",
+      shortDescription: "Explore Agra's famous marble inlay, leather goods, carpets, and handicraft workshops",
+      fullDescription: "Discover Agra's rich artisan heritage on this shopping and craft tour. Visit marble inlay workshops where craftsmen create intricate pietra dura work using the same techniques used to decorate the Taj Mahal. Explore leather goods at Sadar Bazaar, shop for zardozi embroidery, and visit carpet weaving centers.",
+      duration: "5-6 hours",
+      price: { sedan: 1800, suv: 2500, tempoTraveller: 3500, currency: "INR" },
+      highlights: [
+        "Marble inlay workshop - Live pietra dura demonstration",
+        "Sadar Bazaar - Leather goods and accessories",
+        "Zardozi embroidery artisans",
+        "Carpet weaving center visit",
+        "Mughal-era craft traditions",
+        "Direct-from-artisan prices"
+      ],
+      itinerary: [
+        { time: "09:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "09:30 AM", activity: "Marble inlay workshop", duration: "1.5 hours", description: "Watch artisans create Taj-style pietra dura" },
+        { time: "11:00 AM", activity: "Carpet weaving center", duration: "45 mins", description: "See hand-knotted carpet making" },
+        { time: "12:00 PM", activity: "Zardozi embroidery visit", duration: "45 mins", description: "Gold thread embroidery artisans" },
+        { time: "01:00 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "02:00 PM", activity: "Sadar Bazaar shopping", duration: "1.5 hours", description: "Leather goods, handicrafts, souvenirs" },
+        { time: "03:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Shopping expenses", "Lunch", "Guide fees", "Personal expenses"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Easy",
+      category: "Shopping & Craft",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Taj_mahal.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Diwan_i_kHAS.jpg",
+        "/images/sightseeing/Agra/Jama_Masjid.jpg"
+      ],
+      tips: ["Bargain at bazaars for best prices", "Genuine marble shops give certificate of authenticity", "Avoid touts near Taj area shops", "Ask for live demonstration at marble workshops"],
+      reviews: { averageRating: 4.4, totalReviews: 567 },
+      coordinates: { latitude: 27.1767, longitude: 78.0081 },
+      groupSize: "1-10 persons",
+      accessibility: "Easy",
+      keywords: ["agra shopping tour", "agra marble handicraft", "agra pietra dura", "agra souvenirs", "agra craft tour", "agra artisan workshop", "agra leather market"]
+    },
+    {
+      id: 84,
+      name: "Agra to Chambal River Safari Day Trip",
+      slug: "agra-to-chambal-safari",
+      shortDescription: "Escape to Chambal ravines for gharial, dolphins, and bird-watching on a pristine river safari",
+      fullDescription: "Discover the untouched Chambal River ecosystem, just 70 km from Agra. This national sanctuary is home to critically endangered gharials, Gangetic dolphins, and over 300 bird species. Take a boat safari through dramatic ravines and enjoy a completely different side of the Agra region.",
+      duration: "8-10 hours",
+      price: { sedan: 3500, suv: 4500, tempoTraveller: 6500, currency: "INR" },
+      highlights: [
+        "Chambal River boat safari - 2 hours",
+        "Gharial (fish-eating crocodile) sightings",
+        "Gangetic dolphin spotting",
+        "300+ bird species for birders",
+        "Dramatic Chambal ravine landscapes",
+        "Pristine unpolluted river ecosystem"
+      ],
+      itinerary: [
+        { time: "06:00 AM", activity: "Pick up from Agra hotel", duration: "30 mins" },
+        { time: "06:30 AM", activity: "Drive to Chambal Sanctuary", duration: "2 hours", description: "Scenic drive through Agra countryside" },
+        { time: "08:30 AM", activity: "Chambal River boat safari", duration: "2 hours", description: "Spot gharials, dolphins, and birds" },
+        { time: "10:30 AM", activity: "Ravine viewpoint walk", duration: "1 hour", description: "Explore dramatic ravine landscapes" },
+        { time: "11:30 AM", activity: "Lunch at local eatery", duration: "1 hour" },
+        { time: "12:30 PM", activity: "Visit Bateshwar temples", duration: "1 hour", description: "101 ancient Shiva temples" },
+        { time: "01:30 PM", activity: "Return drive to Agra", duration: "2 hours" },
+        { time: "03:30 PM", activity: "Drop off at hotel", duration: "" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking and toll charges", "All taxes"],
+      exclusions: ["Boat safari ticket (₹500-1500)", "Lunch", "Guide fees", "Camera charges"],
+      bestTimeToVisit: "October to March (winter, best for birds)",
+      difficulty: "Easy-Moderate",
+      category: "Wildlife & Nature",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Taj_mahal.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg"
+      ],
+      tips: ["Carry binoculars for wildlife spotting", "Wear earth-toned clothes", "Best bird watching in early morning", "Sunscreen and hat essential"],
+      reviews: { averageRating: 4.7, totalReviews: 345 },
+      coordinates: { latitude: 26.8500, longitude: 78.2100 },
+      groupSize: "1-10 persons",
+      accessibility: "Moderate - involves boat ride and walking",
+      keywords: ["chambal safari from agra", "agra day trip chambal", "gharial safari agra", "chambal river safari", "agra wildlife tour", "chambal sanctuary tour"]
+    },
+    {
+      id: 85,
+      name: "Agra Photography Tour — Best Taj Angles",
+      slug: "agra-photography-tour",
+      shortDescription: "Capture the Taj Mahal from exclusive vantage points with a photography-focused itinerary",
+      fullDescription: "A tour designed for photography enthusiasts seeking the best angles and lighting for Taj Mahal shots. Visit sunrise and golden hour viewpoints, cross the Yamuna for rooftop angles, explore Mehtab Bagh for reflections, and discover hidden vantage points that most tourists miss.",
+      duration: "6-7 hours",
+      price: { sedan: 2200, suv: 3000, tempoTraveller: 4200, currency: "INR" },
+      highlights: [
+        "Taj Mahal sunrise from main gate",
+        "Mehtab Bagh reflection shots",
+        "Yamuna riverbank angles",
+        "Rooftop viewpoints from Taj Ganj",
+        "Baby Taj for architecture details",
+        "Golden hour evening shots"
+      ],
+      itinerary: [
+        { time: "05:30 AM", activity: "Pick up for sunrise shoot", duration: "20 mins" },
+        { time: "05:50 AM", activity: "Taj Mahal sunrise entry", duration: "2 hours", description: "Golden light on white marble, best photo time" },
+        { time: "08:00 AM", activity: "Yamuna riverbank angles", duration: "45 mins", description: "Unique shots from across the river" },
+        { time: "09:00 AM", activity: "Breakfast break", duration: "30 mins" },
+        { time: "09:30 AM", activity: "Rooftop viewpoint Taj Ganj", duration: "45 mins", description: "Elevated shots from local rooftops" },
+        { time: "10:30 AM", activity: "Itmad-ud-Daulah (Baby Taj)", duration: "1 hour", description: "Intricate detail and architecture photos" },
+        { time: "11:30 AM", activity: "Mehtab Bagh", duration: "1 hour", description: "Classic reflection shot of Taj in Yamuna" },
+        { time: "12:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Monument entry tickets", "Photography guide", "Equipment rental", "Meals"],
+      bestTimeToVisit: "October to March (clearest skies, best light)",
+      difficulty: "Easy",
+      category: "Photography",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Taj_mahal.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Agra/Baby_Taj.jpg",
+        "/images/sightseeing/Agra/agra_fort.jpg"
+      ],
+      tips: ["Arrive before sunrise for best Taj lighting", "Carry wide-angle and telephoto lenses", "Mehtab Bagh gives iconic reflection shot", "Avoid haze by visiting in winter months"],
+      reviews: { averageRating: 4.8, totalReviews: 298 },
+      coordinates: { latitude: 27.1751, longitude: 78.0421 },
+      groupSize: "1-6 persons",
+      accessibility: "Easy",
+      keywords: ["agra photography tour", "taj mahal photo tour", "best taj angles", "agra instagram spots", "taj mahal sunrise photography", "agra camera tour"]
+    },
+    {
+      id: 86,
+      name: "Baby Taj & Mehtab Bagh Sunset Tour",
+      slug: "agra-etmad-mehtab-bagh-tour",
+      shortDescription: "Visit the exquisite Baby Taj and watch a magical sunset behind the Taj Mahal from Mehtab Bagh",
+      fullDescription: "Combine two of Agra's most beautiful but less-crowded attractions in one evening tour. Start with the Itmad-ud-Daulah (Baby Taj), a jewel box of intricate marble inlay work that inspired the Taj Mahal. Then head to Mehtab Bagh for a spectacular sunset view of the Taj Mahal across the Yamuna River.",
+      duration: "3-4 hours",
+      price: { sedan: 1500, suv: 2000, tempoTraveller: 3000, currency: "INR" },
+      highlights: [
+        "Itmad-ud-Daulah - Baby Taj with intricate inlay work",
+        "Mehtab Bagh sunset - Taj Mahal across Yamuna",
+        "Fewer crowds than main Taj complex",
+        "Golden hour photography paradise",
+        "Peaceful Yamuna riverbank walk",
+        "Mughal garden architecture"
+      ],
+      itinerary: [
+        { time: "03:00 PM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "03:20 PM", activity: "Itmad-ud-Daulah visit", duration: "1.5 hours", description: "Explore the exquisite Baby Taj" },
+        { time: "05:00 PM", activity: "Drive to Mehtab Bagh", duration: "20 mins" },
+        { time: "05:20 PM", activity: "Mehtab Bagh sunset viewing", duration: "1.5 hours", description: "Watch sunset behind Taj Mahal" },
+        { time: "07:00 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Entry tickets (₹110 Indian, ₹310 Foreign per site)", "Guide fees", "Personal expenses"],
+      bestTimeToVisit: "October to March (best sunset clarity)",
+      difficulty: "Easy",
+      category: "Heritage & Romance",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Agra/Baby_Taj.jpg",
+        "/images/sightseeing/Agra/Mehtab_Bagh.jpg",
+        "/images/sightseeing/Agra/Fathepur_shikiri.jpg"
+      ],
+      tips: ["Arrive at Mehtab Bagh 45 min before sunset", "Less crowded alternative to main Taj", "Perfect for couples and photographers", "Baby Taj has more intricate inlay than Taj itself"],
+      reviews: { averageRating: 4.7, totalReviews: 512 },
+      coordinates: { latitude: 27.1751, longitude: 78.0421 },
+      groupSize: "1-12 persons",
+      accessibility: "Easy - wheelchair accessible",
+      keywords: ["baby taj tour", "mehtab bagh sunset", "agra sunset tour", "itmad ud daulah tour", "agra evening tour", "taj mahal sunset view", "agra romantic tour"]
+    }
+  ],
+
+  // Delhi Region - Additional Tours
+  "delhi-extra": [
+    {
+      id: 87,
+      name: "Delhi Street Food Tour by Car (Chandni Chowk)",
+      slug: "delhi-street-food-tour",
+      shortDescription: "Taste Old Delhi's legendary street food — paranthe, chaat, jalebi, kebabs, and kulfi in Chandni Chowk",
+      fullDescription: "Dive into the culinary heart of Delhi with a car-based street food tour through Chandni Chowk and beyond. Taste legendary paranthe wali gali parathas, Natraj chaat, Old Famous Jalebi Wala, Al Jawahar kebabs, and Kuremal kulfi. Your driver navigates the chaos while you feast.",
+      duration: "4-5 hours",
+      price: { sedan: 2000, suv: 2800, tempoTraveller: 4000, currency: "INR" },
+      highlights: [
+        "Paranthe Wali Gali - Legendary paratha street",
+        "Natraj Dahi Bhalle - Best chaat in Delhi",
+        "Old Famous Jalebi Wala - Crispy hot jalebis",
+        "Al Jawahar - Mughlai kebabs and biryani",
+        "Kuremal Kulfi - Fruit-stuffed ice cream",
+        "Karim's - Historic Mughal cuisine"
+      ],
+      itinerary: [
+        { time: "10:00 AM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "10:30 AM", activity: "Chandni Chowk arrival", duration: "15 mins" },
+        { time: "10:45 AM", activity: "Paranthe Wali Gali breakfast", duration: "45 mins", description: "Taste stuffed parathas at legendary lane" },
+        { time: "11:30 AM", activity: "Jalebi and chaat tasting", duration: "30 mins", description: "Old Famous Jalebi Wala and Natraj" },
+        { time: "12:00 PM", activity: "Karim's or Al Jawahar kebabs", duration: "45 mins", description: "Mughlai feast near Jama Masjid" },
+        { time: "01:00 PM", activity: "Kuremal Kulfi", duration: "30 mins", description: "Famous fruit kulfi experience" },
+        { time: "01:30 PM", activity: "Connaught Place food stops", duration: "45 mins", description: "Wenger's, Bengali Market chaat" },
+        { time: "02:30 PM", activity: "Drop off at hotel", duration: "30 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver who knows food lanes", "Parking charges", "All taxes"],
+      exclusions: ["Food costs (₹500-1500 approx)", "Walking guide", "Personal expenses"],
+      bestTimeToVisit: "October to March (comfortable weather for street food)",
+      difficulty: "Easy",
+      category: "Food & Culture",
+      heroImage: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Delhi/India_Gate.jpg",
+        "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
+        "/images/sightseeing/Delhi/Outub_Minar.jpg"
+      ],
+      tips: ["Come hungry - portions are generous", "Carry cash for street food vendors", "Morning is best for freshest food", "Avoid Mondays (some shops closed)"],
+      reviews: { averageRating: 4.7, totalReviews: 1234 },
+      coordinates: { latitude: 28.6562, longitude: 77.2310 },
+      groupSize: "1-8 persons",
+      accessibility: "Moderate - involves walking in crowded lanes",
+      keywords: ["delhi street food tour", "chandni chowk food tour", "delhi food walk", "old delhi food tour", "delhi culinary tour", "delhi food by car"]
+    },
+    {
+      id: 88,
+      name: "Delhi Night Tour — Illuminated Monuments",
+      slug: "delhi-night-tour",
+      shortDescription: "See Delhi's iconic monuments beautifully illuminated at night — India Gate, Rashtrapati Bhavan, Qutub Minar",
+      fullDescription: "Experience Delhi in a completely different light — literally. This evening and night tour covers Delhi's most iconic monuments illuminated against the night sky. See the glowing India Gate, floodlit Rashtrapati Bhavan, Qutub Minar lit up, and the stunning Akshardham fountain show.",
+      duration: "4-5 hours",
+      price: { sedan: 2200, suv: 3000, tempoTraveller: 4200, currency: "INR" },
+      highlights: [
+        "India Gate - Beautifully illuminated war memorial",
+        "Rashtrapati Bhavan - Floodlit presidential palace",
+        "Qutub Minar - Lit-up UNESCO monument",
+        "Akshardham fountain show (if available)",
+        "Parliament House night view",
+        "Connaught Place lights and dining"
+      ],
+      itinerary: [
+        { time: "05:00 PM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "05:30 PM", activity: "Akshardham Temple fountain show", duration: "1.5 hours", description: "Musical fountain and light show (if available)" },
+        { time: "07:00 PM", activity: "India Gate illuminated", duration: "30 mins", description: "Photo stop at the glowing war memorial" },
+        { time: "07:30 PM", activity: "Rajpath and Rashtrapati Bhavan", duration: "30 mins", description: "Drive-through floodlit ceremonial boulevard" },
+        { time: "08:00 PM", activity: "Parliament House area", duration: "20 mins", description: "Night view of India's parliament complex" },
+        { time: "08:30 PM", activity: "Dinner at Connaught Place", duration: "1 hour" },
+        { time: "09:30 PM", activity: "Qutub Minar area drive", duration: "30 mins", description: "View the illuminated tower" },
+        { time: "10:00 PM", activity: "Drop off at hotel", duration: "30 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Akshardham entry (free but reservations needed)", "Dinner", "Personal expenses"],
+      bestTimeToVisit: "October to March (clear skies, pleasant evenings)",
+      difficulty: "Easy",
+      category: "City Tour",
+      heroImage: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
+        "/images/sightseeing/Delhi/India_Gate.jpg",
+        "/images/sightseeing/Delhi/Outub_Minar.jpg",
+        "/images/sightseeing/Delhi/Lotus Temple.jpg"
+      ],
+      tips: ["Akshardham closed on Mondays", "Carry camera with night mode", "Book Akshardham fountain show tickets early", "Dress warmly in winter evenings"],
+      reviews: { averageRating: 4.6, totalReviews: 987 },
+      coordinates: { latitude: 28.6139, longitude: 77.2090 },
+      groupSize: "1-12 persons",
+      accessibility: "Easy - mostly vehicle-based",
+      keywords: ["delhi night tour", "delhi illuminated monuments", "delhi evening tour", "delhi night sightseeing", "india gate night", "delhi city lights tour"]
+    },
+    {
+      id: 89,
+      name: "Delhi Spiritual Temple Circuit Tour",
+      slug: "delhi-spiritual-temple-tour",
+      shortDescription: "Visit Delhi's most sacred temples — Akshardham, Lotus Temple, Birla Mandir, ISKCON, and Chhatarpur",
+      fullDescription: "A spiritual journey through Delhi's most significant temples spanning multiple faiths and architectural styles. Visit the magnificent Akshardham, the serene Lotus Temple, historic Birla Mandir, ISKCON Krishna temple, and the sprawling Chhatarpur Temple complex.",
+      duration: "8-9 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Akshardham Temple - World's largest Hindu temple complex",
+        "Lotus Temple - Bahai house of worship, iconic architecture",
+        "Birla Mandir - Laxmi Narayan Temple",
+        "ISKCON Temple - Krishna Balaram worship",
+        "Chhatarpur Temple - Sprawling temple complex",
+        "Gurudwara Bangla Sahib - Sikh spiritual experience"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "07:30 AM", activity: "Gurudwara Bangla Sahib", duration: "1 hour", description: "Morning prayers and langar experience" },
+        { time: "08:30 AM", activity: "Birla Mandir (Laxmi Narayan)", duration: "45 mins", description: "Historic Hindu temple" },
+        { time: "09:30 AM", activity: "ISKCON Temple", duration: "45 mins", description: "Krishna Balaram worship and prasad" },
+        { time: "10:30 AM", activity: "Akshardham Temple", duration: "2 hours", description: "Magnificent temple complex and exhibitions" },
+        { time: "12:30 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "01:30 PM", activity: "Lotus Temple", duration: "1 hour", description: "Peaceful meditation at Bahai temple" },
+        { time: "02:30 PM", activity: "Chhatarpur Temple", duration: "1 hour", description: "One of India's largest temple complexes" },
+        { time: "03:30 PM", activity: "Drop off at hotel", duration: "30 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Temple donations", "Lunch", "Guide fees", "Prasad costs"],
+      bestTimeToVisit: "Year-round (early morning for best temple experience)",
+      difficulty: "Easy",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
+        "/images/sightseeing/Delhi/Lotus Temple.jpg",
+        "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Delhi/India_Gate.jpg"
+      ],
+      tips: ["Akshardham closed on Mondays", "Dress modestly for all temples", "Remove shoes before entering temples", "Free langar (meal) at Bangla Sahib"],
+      reviews: { averageRating: 4.7, totalReviews: 876 },
+      coordinates: { latitude: 28.6139, longitude: 77.2090 },
+      groupSize: "1-15 persons",
+      accessibility: "Mostly wheelchair accessible",
+      keywords: ["delhi temple tour", "delhi spiritual tour", "akshardham tour", "delhi religious tour", "delhi temple circuit", "delhi mandir tour"]
+    },
+    {
+      id: 90,
+      name: "Delhi Shopping Tour — Markets & Malls",
+      slug: "delhi-shopping-tour",
+      shortDescription: "Shop Delhi's best markets — Sarojini Nagar, Dilli Haat, Khan Market, Janpath, and Chandni Chowk",
+      fullDescription: "A shopper's paradise tour covering Delhi's most iconic markets and shopping destinations. From budget street shopping at Sarojini Nagar to premium boutiques at Khan Market, ethnic crafts at Dilli Haat, and traditional goods at Chandni Chowk — this tour covers it all with comfortable car transport.",
+      duration: "7-8 hours",
+      price: { sedan: 2200, suv: 3000, tempoTraveller: 4200, currency: "INR" },
+      highlights: [
+        "Sarojini Nagar - Best budget fashion market",
+        "Dilli Haat - Ethnic crafts from all states",
+        "Khan Market - Premium boutiques and cafes",
+        "Janpath Market - Hippie and bohemian shopping",
+        "Chandni Chowk - Traditional jewelry and textiles",
+        "Select Citywalk - Premium mall experience"
+      ],
+      itinerary: [
+        { time: "10:00 AM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "10:30 AM", activity: "Dilli Haat", duration: "1.5 hours", description: "Ethnic handicrafts from across India" },
+        { time: "12:00 PM", activity: "Sarojini Nagar Market", duration: "1.5 hours", description: "Budget fashion paradise" },
+        { time: "01:30 PM", activity: "Lunch at Khan Market", duration: "1 hour", description: "Premium dining and boutique shopping" },
+        { time: "02:30 PM", activity: "Janpath Market", duration: "1 hour", description: "Bohemian fashion and souvenirs" },
+        { time: "03:30 PM", activity: "Chandni Chowk", duration: "1.5 hours", description: "Traditional textiles, jewelry, spices" },
+        { time: "05:00 PM", activity: "Drop off at hotel", duration: "30 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Dilli Haat entry (₹100)", "Shopping expenses", "Lunch", "Personal expenses"],
+      bestTimeToVisit: "October to March (pleasant weather for market walks)",
+      difficulty: "Easy",
+      category: "Shopping",
+      heroImage: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Delhi/India_Gate.jpg",
+        "/images/sightseeing/Delhi/red_fort.jpg",
+        "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
+        "/images/sightseeing/Delhi/Raj_Ghat.jpg"
+      ],
+      tips: ["Bargain at Sarojini and Janpath for best deals", "Carry cash for street markets", "Khan Market is premium, less bargaining", "Avoid Mondays (some markets closed)"],
+      reviews: { averageRating: 4.5, totalReviews: 765 },
+      coordinates: { latitude: 28.6139, longitude: 77.2090 },
+      groupSize: "1-8 persons",
+      accessibility: "Moderate - involves walking in markets",
+      keywords: ["delhi shopping tour", "delhi market tour", "sarojini nagar tour", "dilli haat tour", "delhi shopping by car", "delhi market guide"]
+    }
+  ],
+
+  // Rajasthan New Tours
+  pushkar: [
+    {
+      id: 91,
+      name: "Pushkar & Ajmer Sharif Same Day Tour",
+      slug: "pushkar-ajmer-same-day",
+      shortDescription: "Visit the sacred Brahma Temple, Pushkar Lake, and Ajmer Sharif Dargah in one enriching day trip",
+      fullDescription: "A spiritual day trip covering two of Rajasthan's most sacred towns. Visit the only Brahma Temple in the world and take a dip in holy Pushkar Lake, then drive to Ajmer for darshan at the world-famous Ajmer Sharif Dargah of Sufi saint Khwaja Moinuddin Chishti. A unique multi-faith spiritual experience.",
+      duration: "10-12 hours",
+      price: { sedan: 3000, suv: 4000, tempoTraveller: 6000, currency: "INR" },
+      highlights: [
+        "Brahma Temple - Only Brahma temple in the world",
+        "Pushkar Lake - Sacred lake with 52 ghats",
+        "Ajmer Sharif Dargah - World-famous Sufi shrine",
+        "Savitri Temple - Hilltop temple with ropeway",
+        "Ana Sagar Lake - Scenic Ajmer lake",
+        "Multi-faith spiritual experience in one day"
+      ],
+      itinerary: [
+        { time: "06:00 AM", activity: "Pick up from Jaipur/local hotel", duration: "30 mins" },
+        { time: "06:30 AM", activity: "Drive to Pushkar", duration: "2.5 hours" },
+        { time: "09:00 AM", activity: "Brahma Temple darshan", duration: "45 mins", description: "World's only temple dedicated to Lord Brahma" },
+        { time: "10:00 AM", activity: "Pushkar Lake ghats", duration: "45 mins", description: "Sacred dip and ghat walk" },
+        { time: "11:00 AM", activity: "Savitri Temple ropeway", duration: "1 hour", description: "Hilltop temple with panoramic views" },
+        { time: "12:00 PM", activity: "Pushkar Bazaar and lunch", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Drive to Ajmer", duration: "30 mins" },
+        { time: "01:30 PM", activity: "Ajmer Sharif Dargah", duration: "1.5 hours", description: "Visit the famous Sufi shrine" },
+        { time: "03:00 PM", activity: "Ana Sagar Lake", duration: "30 mins" },
+        { time: "03:30 PM", activity: "Return journey", duration: "2.5 hours" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking and toll charges", "All taxes"],
+      exclusions: ["Temple offerings and donations", "Lunch", "Ropeway ticket (₹100-200)", "Guide fees"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Easy",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+      images: [
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Brahma_Temple_Pushkar.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Pushkar_Camel_Fair.jpg",
+        "/images/sightseeing/Ajmer_Pushkar/Ana_Sagar_Lake_Ajmer.jpg"
+      ],
+      tips: ["Cover your head at Ajmer Dargah", "Non-veg food restricted in Pushkar", "Buy rose petals for Dargah offering", "Avoid Pushkar Lake touts"],
+      reviews: { averageRating: 4.6, totalReviews: 543 },
+      coordinates: { latitude: 26.4897, longitude: 74.5511 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate",
+      keywords: ["pushkar ajmer tour", "pushkar day trip", "ajmer sharif tour", "brahma temple pushkar", "pushkar same day tour", "ajmer dargah visit"]
+    }
+  ],
+
+  bikaner: [
+    {
+      id: 92,
+      name: "Bikaner Full Day — Junagarh Fort & Camels",
+      slug: "bikaner-full-day-tour",
+      shortDescription: "Explore the unconquered Junagarh Fort, National Camel Research Centre, and Karni Mata Temple",
+      fullDescription: "Discover Bikaner, the camel capital of India. Visit the magnificent Junagarh Fort (never conquered), the unique National Camel Research Centre, the famous Karni Mata Rat Temple at Deshnok, and the ornate Rampuria Havelis. Don't miss Bikaner's legendary bhujia and sweets.",
+      duration: "10-12 hours",
+      price: { sedan: 3000, suv: 4000, tempoTraveller: 6000, currency: "INR" },
+      highlights: [
+        "Junagarh Fort - 37 palaces inside unconquered fort",
+        "National Camel Research Centre - Camel safari and products",
+        "Karni Mata Temple (Deshnok) - Temple of Rats",
+        "Rampuria Havelis - Ornate merchant mansions",
+        "Lalgarh Palace - Red sandstone palace museum",
+        "Bikaneri bhujia and namkeen tasting"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from hotel", duration: "30 mins" },
+        { time: "07:30 AM", activity: "Junagarh Fort", duration: "2 hours", description: "Explore the magnificent fort with 37 palaces" },
+        { time: "09:30 AM", activity: "Rampuria Havelis", duration: "45 mins", description: "Walk through ornate merchant quarter" },
+        { time: "10:30 AM", activity: "Lalgarh Palace Museum", duration: "1 hour", description: "Red sandstone palace and museum" },
+        { time: "11:30 AM", activity: "Bhujia and sweet tasting", duration: "30 mins" },
+        { time: "12:00 PM", activity: "Lunch", duration: "1 hour" },
+        { time: "01:00 PM", activity: "National Camel Research Centre", duration: "1.5 hours", description: "Camel safari and camel milk products" },
+        { time: "02:30 PM", activity: "Drive to Deshnok", duration: "30 mins" },
+        { time: "03:00 PM", activity: "Karni Mata Temple", duration: "45 mins", description: "Unique temple with sacred rats" },
+        { time: "04:00 PM", activity: "Return journey", duration: "30 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Fort entry (₹100-300)", "Camel safari charges", "Lunch", "Guide fees"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Easy",
+      category: "Heritage & Culture",
+      heroImage: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+      images: [
+        "/images/sightseeing/Bikaner/Junagarh_Fort_Interior.jpg",
+        "/images/sightseeing/Bikaner/Karni_Mata_Temple.jpg",
+        "/images/sightseeing/Bikaner/Bikaner_Camel_Farm.jpg",
+        "/images/sightseeing/Bikaner/Lallgarh Palace.jpg",
+        "/images/sightseeing/Bikaner/Rampuria Havelis.jpg"
+      ],
+      tips: ["Remove shoes at Karni Mata temple", "Try camel milk ice cream at research centre", "Junagarh Fort best visited early morning", "Buy authentic bhujia from local shops"],
+      reviews: { averageRating: 4.5, totalReviews: 432 },
+      coordinates: { latitude: 28.0229, longitude: 73.3119 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate",
+      keywords: ["bikaner tour", "junagarh fort tour", "bikaner sightseeing", "karni mata temple", "bikaner camel safari", "bikaner full day tour"]
+    }
+  ],
+
+  "mount-abu": [
+    {
+      id: 93,
+      name: "Mount Abu Hill Station Full Day Tour",
+      slug: "mount-abu-full-day-tour",
+      shortDescription: "Explore Rajasthan's only hill station — Dilwara Temples, Nakki Lake, Guru Shikhar, Sunset Point",
+      fullDescription: "Discover Mount Abu, a green oasis in the Rajasthan desert. Visit the stunning Dilwara Jain Temples with their intricate marble carvings, enjoy boating at Nakki Lake, trek to Guru Shikhar (highest point in Rajasthan), and watch a spectacular sunset from Sunset Point.",
+      duration: "8-10 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Dilwara Jain Temples - Exquisite marble carvings",
+        "Nakki Lake - Boating and scenic walks",
+        "Guru Shikhar - Highest peak in Rajasthan",
+        "Sunset Point - Panoramic sunset views",
+        "Toad Rock - Unique natural formation",
+        "Wildlife Sanctuary - Nature trail"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "08:30 AM", activity: "Dilwara Jain Temples", duration: "1.5 hours", description: "Marvel at intricate marble carvings" },
+        { time: "10:00 AM", activity: "Guru Shikhar", duration: "1 hour", description: "Drive and short walk to Rajasthan's highest point" },
+        { time: "11:00 AM", activity: "Achalgarh Fort", duration: "45 mins", description: "Historic fort ruins" },
+        { time: "12:00 PM", activity: "Lunch", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Nakki Lake boating", duration: "1 hour", description: "Scenic lake surrounded by hills" },
+        { time: "02:00 PM", activity: "Toad Rock and nature walk", duration: "45 mins" },
+        { time: "03:00 PM", activity: "Wildlife Sanctuary visit", duration: "1 hour" },
+        { time: "04:30 PM", activity: "Sunset Point", duration: "1 hour", description: "Watch sunset over Aravalli range" },
+        { time: "05:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Boating charges (₹100-200)", "Entry fees", "Lunch", "Guide fees"],
+      bestTimeToVisit: "October to March (pleasant) and June-August (monsoon green)",
+      difficulty: "Easy-Moderate",
+      category: "Hill Station & Nature",
+      heroImage: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+      images: [
+        "/images/sightseeing/Mount_Abu/Nakki_Lake.jpg",
+        "/images/sightseeing/Mount_Abu/Guru_Shikhar.jpg",
+        "/images/sightseeing/Mount_Abu/Sunset_Point_Mount_Abu.jpg",
+        "/images/sightseeing/Mount_Abu/Achalgarh_Fort.jpg",
+        "/images/sightseeing/Mount_Abu/Dilwara_Temple_Interior.jpg"
+      ],
+      tips: ["No photography inside Dilwara Temples", "Guru Shikhar gets chilly, carry jacket", "Sunset Point gets crowded, arrive early", "Try local Dal Bati Churma"],
+      reviews: { averageRating: 4.6, totalReviews: 398 },
+      coordinates: { latitude: 24.5926, longitude: 72.7156 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate - some walking involved",
+      keywords: ["mount abu tour", "mount abu sightseeing", "dilwara temple tour", "mount abu full day", "rajasthan hill station tour", "mount abu day trip"]
+    }
+  ],
+
+  ranthambore: [
+    {
+      id: 94,
+      name: "Ranthambore Tiger Safari Day Trip",
+      slug: "ranthambore-safari-day-trip",
+      shortDescription: "Experience thrilling tiger safari at Ranthambore National Park with ancient fort backdrop",
+      fullDescription: "A complete day trip to Ranthambore National Park for an unforgettable tiger safari experience. Spot Bengal tigers, leopards, sloth bears, and abundant birdlife against the dramatic backdrop of the 10th-century Ranthambore Fort. Includes morning and afternoon safari options.",
+      duration: "12-14 hours (from Jaipur)",
+      price: { sedan: 4000, suv: 5500, tempoTraveller: 8000, currency: "INR" },
+      highlights: [
+        "Tiger safari - Morning or afternoon jeep safari",
+        "Ranthambore Fort - UNESCO World Heritage Site",
+        "Bengal tiger, leopard, sloth bear sighting chance",
+        "Padam Talao - Lake inside the park",
+        "300+ bird species for bird watchers",
+        "Trinetra Ganesh Temple inside fort"
+      ],
+      itinerary: [
+        { time: "04:00 AM", activity: "Pick up from Jaipur", duration: "30 mins" },
+        { time: "04:30 AM", activity: "Drive to Ranthambore", duration: "3 hours" },
+        { time: "06:30 AM", activity: "Morning safari", duration: "3 hours", description: "Jeep safari through tiger zones" },
+        { time: "10:00 AM", activity: "Breakfast at resort", duration: "1 hour" },
+        { time: "11:00 AM", activity: "Ranthambore Fort visit", duration: "2 hours", description: "UNESCO site with Ganesh temple" },
+        { time: "01:00 PM", activity: "Lunch", duration: "1 hour" },
+        { time: "02:30 PM", activity: "Afternoon safari (optional)", duration: "3 hours", description: "Second safari for more wildlife" },
+        { time: "05:30 PM", activity: "Return drive to Jaipur", duration: "3 hours" }
+      ],
+      inclusions: ["AC vehicle (Jaipur to Ranthambore return)", "Experienced driver", "Parking and toll", "All taxes"],
+      exclusions: ["Safari jeep ticket (₹1500-2500)", "Park entry fee", "Fort entry", "Meals", "Guide fees"],
+      bestTimeToVisit: "October to June (park open), April-June (best tiger sighting)",
+      difficulty: "Easy",
+      category: "Wildlife & Safari",
+      heroImage: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+      images: [
+        "/images/sightseeing/Ranthambore/Rathambore day safari.jpg",
+        "/images/sightseeing/Ranthambore/Ranthambore Fort.jpg",
+        "/images/sightseeing/Ranthambore/Wildlife Photography.jpg",
+        "/images/sightseeing/Ranthambore/Bird Watching_Over 300 species of birds.jpg"
+      ],
+      tips: ["Book safari permits weeks in advance on official portal", "Morning safaris have better tiger sighting", "Carry binoculars and telephoto camera lens", "Wear neutral earth-tone clothing"],
+      reviews: { averageRating: 4.8, totalReviews: 678 },
+      coordinates: { latitude: 26.0173, longitude: 76.5026 },
+      groupSize: "1-6 persons",
+      accessibility: "Easy - vehicle-based safari",
+      keywords: ["ranthambore safari", "ranthambore tiger safari", "ranthambore day trip", "ranthambore from jaipur", "tiger safari rajasthan", "ranthambore tour"]
+    }
+  ],
+
+  chittorgarh: [
+    {
+      id: 95,
+      name: "Chittorgarh Fort Full Day Tour",
+      slug: "chittorgarh-fort-tour",
+      shortDescription: "Explore India's largest fort by area — Chittorgarh, a symbol of Rajput valor and sacrifice",
+      fullDescription: "Visit Chittorgarh Fort, the largest fort in India by area and a UNESCO World Heritage Site. Spread over 700 acres on a hilltop, this magnificent fort witnessed three famous sieges and jauhar (self-immolation). Explore Vijay Stambh, Kirti Stambh, Rana Kumbha Palace, Padmini Palace, and more.",
+      duration: "10-12 hours (from Udaipur)",
+      price: { sedan: 3500, suv: 4500, tempoTraveller: 6500, currency: "INR" },
+      highlights: [
+        "Chittorgarh Fort - UNESCO World Heritage Site, 700 acres",
+        "Vijay Stambh - Tower of Victory, 37m tall",
+        "Kirti Stambh - Tower of Fame, Jain monument",
+        "Rana Kumbha Palace - Birthplace of Maharana Udai Singh",
+        "Padmini Palace - Lake palace of legendary queen",
+        "Meera Temple - Dedicated to poetess-saint Meerabai"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from Udaipur", duration: "30 mins" },
+        { time: "07:30 AM", activity: "Drive to Chittorgarh", duration: "2 hours" },
+        { time: "09:30 AM", activity: "Fort entry and Vijay Stambh", duration: "1 hour", description: "Climb the 37m Tower of Victory" },
+        { time: "10:30 AM", activity: "Rana Kumbha Palace", duration: "45 mins", description: "Explore the ancient royal residence" },
+        { time: "11:15 AM", activity: "Kirti Stambh and Meera Temple", duration: "45 mins" },
+        { time: "12:00 PM", activity: "Padmini Palace", duration: "45 mins", description: "Lake palace with legendary history" },
+        { time: "01:00 PM", activity: "Lunch", duration: "1 hour" },
+        { time: "02:00 PM", activity: "Sound and Light show area", duration: "30 mins" },
+        { time: "02:30 PM", activity: "Return drive to Udaipur", duration: "2 hours" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking and toll", "All taxes"],
+      exclusions: ["Fort entry (₹100-300)", "Lunch", "Guide fees (₹500-1000)"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Moderate - involves climbing and walking",
+      category: "Heritage & Culture",
+      heroImage: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Chittorgarh/Vijay_Stambh.jpg",
+        "/images/sightseeing/Chittorgarh/Padmini_Palace.jpg",
+        "/images/sightseeing/Chittorgarh/Rana_Kumbha_Palace.jpg",
+        "/images/sightseeing/Chittorgarh/Kirti_Stambh.jpg"
+      ],
+      tips: ["Wear comfortable walking shoes - fort is massive", "Carry water as limited shops inside", "Hire a guide for the fascinating history", "Evening sound-light show is excellent"],
+      reviews: { averageRating: 4.7, totalReviews: 456 },
+      coordinates: { latitude: 24.8879, longitude: 74.6460 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate-Difficult - steep climbs",
+      keywords: ["chittorgarh fort tour", "chittorgarh from udaipur", "chittorgarh day trip", "rajput fort tour", "largest fort india", "chittorgarh sightseeing"]
+    }
+  ],
+
+  // Uttarakhand New Tours
+  mussoorie: [
+    {
+      id: 96,
+      name: "Mussoorie Full Day Sightseeing Tour",
+      slug: "mussoorie-full-day-tour",
+      shortDescription: "Explore the Queen of Hills — Gun Hill ropeway, Kempty Falls, Mall Road, Lal Tibba viewpoint",
+      fullDescription: "A complete sightseeing tour of Mussoorie, the Queen of Hills. Ride the ropeway to Gun Hill, visit the cascading Kempty Falls, stroll along the iconic Mall Road, trek to Lal Tibba (highest point), and explore the peaceful Company Garden and Cloud's End.",
+      duration: "8-10 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Gun Hill - Ropeway ride with Himalayan panorama",
+        "Kempty Falls - Popular cascading waterfall",
+        "Mall Road - Shopping, cafes, and colonial charm",
+        "Lal Tibba - Highest point with telescope views",
+        "Company Garden - Botanical garden",
+        "Cloud's End - Peaceful forest retreat"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel/Dehradun", duration: "30 mins" },
+        { time: "08:30 AM", activity: "Kempty Falls", duration: "1 hour", description: "Visit Mussoorie's famous waterfall" },
+        { time: "09:30 AM", activity: "Gun Hill ropeway", duration: "1 hour", description: "Aerial views of Himalayan range" },
+        { time: "10:30 AM", activity: "Lal Tibba viewpoint", duration: "45 mins", description: "Highest point with telescope" },
+        { time: "11:30 AM", activity: "Company Garden", duration: "45 mins" },
+        { time: "12:30 PM", activity: "Mall Road lunch and walk", duration: "1.5 hours", description: "Shop, eat, and stroll the iconic promenade" },
+        { time: "02:00 PM", activity: "Cloud's End", duration: "1 hour", description: "Forest nature walk" },
+        { time: "03:00 PM", activity: "Camel's Back Road walk", duration: "45 mins" },
+        { time: "04:00 PM", activity: "Drop off", duration: "30 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Ropeway ticket (₹100-200)", "Entry fees", "Lunch", "Personal expenses"],
+      bestTimeToVisit: "April to June and September to November",
+      difficulty: "Easy",
+      category: "Hill Station",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Mussoorie/Kempty_Falls.jpg",
+        "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
+        "/images/sightseeing/Mussoorie/Mall_road.jpg",
+        "/images/sightseeing/Mussoorie/Lal_tibba.jpg",
+        "/images/sightseeing/Mussoorie/company_garden.jpg"
+      ],
+      tips: ["Carry warm clothes year-round", "Avoid monsoon (heavy rainfall)", "Try Tibetan momos on Mall Road", "Ropeway queues long on weekends"],
+      reviews: { averageRating: 4.5, totalReviews: 1123 },
+      coordinates: { latitude: 30.4598, longitude: 78.0644 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate",
+      keywords: ["mussoorie tour", "mussoorie sightseeing", "mussoorie full day", "queen of hills tour", "mussoorie day trip", "mussoorie from dehradun"]
+    }
+  ],
+
+  nainital: [
+    {
+      id: 97,
+      name: "Nainital Full Day Lake District Tour",
+      slug: "nainital-full-day-tour",
+      shortDescription: "Explore the Lake District — Naini Lake boating, Snow View ropeway, Mall Road, and scenic viewpoints",
+      fullDescription: "A comprehensive full-day tour of Nainital covering its famous lake, viewpoints, and nearby attractions. Enjoy boating on Naini Lake, ride the ropeway to Snow View Point, visit Naina Devi Temple, explore the Eco Cave Gardens, and stroll along the charming Mall Road.",
+      duration: "8-10 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Naini Lake - Boating in scenic pear-shaped lake",
+        "Snow View Point - Ropeway with Himalayan panorama",
+        "Naina Devi Temple - Sacred Shakti Peetha",
+        "Mall Road - Shopping and lake promenade",
+        "Eco Cave Gardens - Natural rock formations",
+        "Tiffin Top - Panoramic viewpoint"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "08:20 AM", activity: "Naini Lake boating", duration: "1 hour", description: "Row boat or paddle boat on the famous lake" },
+        { time: "09:30 AM", activity: "Snow View Point ropeway", duration: "1 hour", description: "Aerial ropeway with mountain views" },
+        { time: "10:30 AM", activity: "Naina Devi Temple", duration: "30 mins", description: "Sacred temple on lake shore" },
+        { time: "11:00 AM", activity: "Eco Cave Gardens", duration: "45 mins", description: "Natural caves and rock formations" },
+        { time: "12:00 PM", activity: "Mall Road lunch", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Tiffin Top trek", duration: "1.5 hours", description: "Short hike to panoramic viewpoint" },
+        { time: "02:30 PM", activity: "Governor's House (outside view)", duration: "30 mins" },
+        { time: "03:00 PM", activity: "Hanuman Garhi sunset", duration: "1 hour", description: "Temple with sunset views" },
+        { time: "04:00 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Boating charges (₹200-500)", "Ropeway ticket (₹300)", "Entry fees", "Lunch"],
+      bestTimeToVisit: "March to June (summer) and October to November",
+      difficulty: "Easy-Moderate",
+      category: "Hill Station & Lakes",
+      heroImage: "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Nainital/Naini_Lake.jpg",
+        "/images/sightseeing/Nainital/Naina_Peak.jpg",
+        "/images/sightseeing/Nainital/Snow_View_Point.jpg",
+        "/images/sightseeing/Nainital/Mall_Road_Nainital.jpg",
+        "/images/sightseeing/Nainital/Bhimtal_Lake.jpg"
+      ],
+      tips: ["Book hotels in advance during peak season", "Carry warm clothes even in summer", "Try Bal Mithai local sweet", "Tiffin Top requires moderate fitness"],
+      reviews: { averageRating: 4.6, totalReviews: 987 },
+      coordinates: { latitude: 29.3803, longitude: 79.4636 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate",
+      keywords: ["nainital tour", "nainital sightseeing", "nainital full day", "naini lake tour", "nainital day trip", "lake district tour nainital"]
+    }
+  ],
+
+  "jim-corbett": [
+    {
+      id: 98,
+      name: "Jim Corbett Jeep Safari Tour",
+      slug: "corbett-jeep-safari-tour",
+      shortDescription: "Thrilling jeep safari in India's oldest national park — spot tigers, elephants, and 600+ bird species",
+      fullDescription: "Experience the wilderness of Jim Corbett National Park on an exciting jeep safari. India's oldest national park is home to Bengal tigers, Asian elephants, leopards, and over 600 bird species. Choose from different zones for varying wildlife experiences in this stunning Himalayan foothill sanctuary.",
+      duration: "10-12 hours (from Delhi) or 5-6 hours (local)",
+      price: { sedan: 4000, suv: 5500, tempoTraveller: 8000, currency: "INR" },
+      highlights: [
+        "Jeep safari in tiger territory",
+        "Bijrani Zone - Popular for tiger sighting",
+        "Asian elephant herds in their habitat",
+        "600+ bird species for birders",
+        "Corbett Falls scenic waterfall",
+        "Garjia Devi Temple on river rock"
+      ],
+      itinerary: [
+        { time: "05:00 AM", activity: "Pick up from resort/Ramnagar", duration: "20 mins" },
+        { time: "05:30 AM", activity: "Morning jeep safari", duration: "3 hours", description: "Drive through jungle spotting wildlife" },
+        { time: "08:30 AM", activity: "Breakfast at resort", duration: "1 hour" },
+        { time: "09:30 AM", activity: "Corbett Falls visit", duration: "1 hour", description: "Scenic waterfall in forest setting" },
+        { time: "10:30 AM", activity: "Garjia Temple", duration: "30 mins", description: "Temple on river rock" },
+        { time: "11:00 AM", activity: "Corbett Museum", duration: "45 mins", description: "Jim Corbett's house and memorabilia" },
+        { time: "12:00 PM", activity: "Lunch and rest", duration: "1 hour" },
+        { time: "02:30 PM", activity: "Afternoon safari (optional)", duration: "3 hours", description: "Second safari in different zone" }
+      ],
+      inclusions: ["AC vehicle to/from park gate", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Safari jeep entry (₹2000-5000)", "Park permit fee", "Lunch", "Guide fees", "Camera charges"],
+      bestTimeToVisit: "November to June (Bijrani/Jhirna), Nov-May (Dhikala)",
+      difficulty: "Easy",
+      category: "Wildlife & Safari",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Jim_Corbett/Tiger_Safari_Corbett.jpg",
+        "/images/sightseeing/Jim_Corbett/Ramganga_River.jpg",
+        "/images/sightseeing/Jim_Corbett/Corbett_Falls.jpg",
+        "/images/sightseeing/Jim_Corbett/Dhikala_Zone.jpg",
+        "/images/sightseeing/Jim_Corbett/elephant_safari.jpg"
+      ],
+      tips: ["Book safari permits on official website weeks in advance", "Morning safaris have best wildlife activity", "Wear earth-tone clothing for best sightings", "Jhirna zone open year-round"],
+      reviews: { averageRating: 4.7, totalReviews: 876 },
+      coordinates: { latitude: 29.5300, longitude: 78.7747 },
+      groupSize: "1-6 persons",
+      accessibility: "Easy - vehicle-based",
+      keywords: ["jim corbett safari", "corbett jeep safari", "corbett tiger safari", "jim corbett tour", "corbett national park", "wildlife safari uttarakhand"]
+    }
+  ],
+
+  chopta: [
+    {
+      id: 99,
+      name: "Chopta Tungnath Trek from Rishikesh",
+      slug: "chopta-tungnath-trek-tour",
+      shortDescription: "Trek to world's highest Shiva temple at Tungnath and Chandrashila summit for 360-degree Himalayan views",
+      fullDescription: "An adventure and spiritual trek from Rishikesh to Chopta and Tungnath — the world's highest Shiva temple at 3,680m. Continue to Chandrashila summit (4,000m) for breathtaking 360-degree views of Nanda Devi, Trishul, Kedar, and Chaukhamba peaks. The trek is moderate and perfect for beginners.",
+      duration: "2 Days / 1 Night",
+      price: { sedan: 7000, suv: 9000, tempoTraveller: 13000, currency: "INR" },
+      highlights: [
+        "Tungnath Temple - World's highest Shiva temple (3,680m)",
+        "Chandrashila Summit - 360° Himalayan panorama (4,000m)",
+        "Views of Nanda Devi, Trishul, Chaukhamba peaks",
+        "Chopta - Mini Switzerland of Uttarakhand",
+        "Moderate trek suitable for beginners",
+        "Alpine meadows and rhododendron forests"
+      ],
+      itinerary: [
+        { time: "Day 1 - 05:00 AM", activity: "Pick up from Rishikesh", duration: "6 hours drive", description: "Scenic drive via Rudraprayag to Chopta" },
+        { time: "Day 1 - 11:00 AM", activity: "Arrive Chopta, lunch", duration: "1 hour" },
+        { time: "Day 1 - 12:00 PM", activity: "Trek to Tungnath", duration: "3-4 hours", description: "3.5 km trek through rhododendron forests" },
+        { time: "Day 1 - 04:00 PM", activity: "Tungnath Temple darshan", duration: "30 mins" },
+        { time: "Day 1 - Evening", activity: "Camp/guest house near Chopta", duration: "overnight" },
+        { time: "Day 2 - 05:00 AM", activity: "Sunrise trek to Chandrashila", duration: "2 hours", description: "Summit push for sunrise panorama" },
+        { time: "Day 2 - 07:00 AM", activity: "Chandrashila summit views", duration: "1 hour" },
+        { time: "Day 2 - 08:00 AM", activity: "Descend to Chopta", duration: "3 hours" },
+        { time: "Day 2 - 12:00 PM", activity: "Lunch and return drive", duration: "6 hours" }
+      ],
+      inclusions: ["AC vehicle (Rishikesh-Chopta return)", "Experienced hill driver", "Parking and toll", "All taxes and permits"],
+      exclusions: ["Accommodation at Chopta (₹1000-2000)", "Meals", "Trek guide (₹1000-1500)", "Camping gear if camping"],
+      bestTimeToVisit: "April to June (green meadows) and September to November (clear views)",
+      difficulty: "Moderate",
+      category: "Adventure & Trekking",
+      heroImage: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Dehradun/Robbers_Cave.jpg",
+        "/images/sightseeing/Dehradun/Sahastradhara.jpg",
+        "/images/sightseeing/Dehradun/Mindrolling_Monastery.jpg",
+        "/images/sightseeing/Dehradun/Forest_Research_Institute.jpg"
+      ],
+      tips: ["Acclimatize properly before summit push", "Carry warm layers, it is cold at top even in summer", "Start Chandrashila trek before dawn for sunrise", "Trek closed December to March due to snow"],
+      reviews: { averageRating: 4.8, totalReviews: 567 },
+      coordinates: { latitude: 30.4893, longitude: 79.2170 },
+      groupSize: "1-10 persons",
+      accessibility: "Moderate-Difficult - requires trekking fitness",
+      keywords: ["chopta tungnath trek", "tungnath temple trek", "chandrashila trek", "chopta trek from rishikesh", "highest shiva temple trek", "chopta tour"]
+    }
+  ],
+
+  // Himachal/Punjab New Tours
+  "dharamshala-mcleodganj": [
+    {
+      id: 100,
+      name: "Dharamshala & McLeodganj Full Day Tour",
+      slug: "dharamshala-mcleodganj-tour",
+      shortDescription: "Explore Tibetan culture, Dalai Lama temple, Bhagsu Waterfall, cricket stadium, and Naddi viewpoint",
+      fullDescription: "A complete tour of Dharamshala and McLeodganj covering Tibetan heritage, natural beauty, and adventure. Visit the Dalai Lama's temple complex, explore McLeodganj cafes and shops, hike to Bhagsu Waterfall, see the scenic HPCA cricket stadium, and enjoy sunset at Naddi viewpoint.",
+      duration: "8-10 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Tsuglagkhang Complex - Dalai Lama temple and museum",
+        "Bhagsu Waterfall - Scenic cascading waterfall",
+        "HPCA Cricket Stadium - Most scenic cricket ground",
+        "Naddi View Point - Dhauladhar range panorama",
+        "McLeodganj Market - Tibetan crafts and cafes",
+        "Namgyal Monastery - Tibetan Buddhist learning center"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "08:30 AM", activity: "HPCA Cricket Stadium", duration: "30 mins", description: "Photo stop at scenic stadium" },
+        { time: "09:00 AM", activity: "Tsuglagkhang Complex", duration: "1.5 hours", description: "Dalai Lama temple, Tibetan museum" },
+        { time: "10:30 AM", activity: "Namgyal Monastery", duration: "30 mins" },
+        { time: "11:00 AM", activity: "McLeodganj market walk", duration: "1 hour", description: "Tibetan crafts, cafes, and shops" },
+        { time: "12:00 PM", activity: "Lunch at McLeodganj cafe", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Bhagsu Waterfall hike", duration: "1.5 hours", description: "Short hike to scenic waterfall" },
+        { time: "02:30 PM", activity: "St. John's Church", duration: "30 mins" },
+        { time: "03:00 PM", activity: "Dharamkot village", duration: "30 mins" },
+        { time: "04:00 PM", activity: "Naddi View Point sunset", duration: "1 hour", description: "Panoramic Dhauladhar views" },
+        { time: "05:00 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Museum entry (₹50-100)", "Lunch", "Guide fees", "Personal expenses"],
+      bestTimeToVisit: "March to June and September to November",
+      difficulty: "Easy-Moderate",
+      category: "Culture & Nature",
+      heroImage: "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Dharamshala/Dalai_Lama_Temple.jpg",
+        "/images/sightseeing/Dharamshala/McLeod_Ganj.jpg",
+        "/images/sightseeing/Dharamshala/HPCA_Stadium.jpg",
+        "/images/sightseeing/Dharamshala/Bhagsunag_Waterfall.jpg",
+        "/images/sightseeing/Dharamshala/Namgyal_Monastery.webp"
+      ],
+      tips: ["Dalai Lama temple closed on Sundays", "Try Tibetan momos and thukpa", "Carry rain gear", "Bhagsu waterfall hike is rocky, wear good shoes"],
+      reviews: { averageRating: 4.7, totalReviews: 876 },
+      coordinates: { latitude: 32.2190, longitude: 76.3234 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate - some hiking involved",
+      keywords: ["dharamshala tour", "mcleodganj tour", "dharamshala mcleodganj sightseeing", "dalai lama temple tour", "dharamshala day trip", "mcleodganj full day"]
+    }
+  ],
+
+  "dalhousie-khajjiar": [
+    {
+      id: 101,
+      name: "Dalhousie & Khajjiar Mini Switzerland Tour",
+      slug: "dalhousie-khajjiar-tour",
+      shortDescription: "Explore colonial Dalhousie and the stunning Khajjiar meadow — India's Mini Switzerland",
+      fullDescription: "Visit the charming hill station of Dalhousie with its colonial architecture and pine forests, then drive to Khajjiar, famously called Mini Switzerland of India. The lush green meadow surrounded by deodar cedars with a small lake at center creates a European alpine landscape in the Himalayas.",
+      duration: "10-12 hours",
+      price: { sedan: 3000, suv: 4000, tempoTraveller: 6000, currency: "INR" },
+      highlights: [
+        "Khajjiar - Mini Switzerland of India",
+        "Dainkund Peak - Highest point, panoramic views",
+        "Kalatop Wildlife Sanctuary - Forest trail",
+        "St. John's Church - Colonial-era heritage",
+        "Subhash Baoli - Historic spring",
+        "Chamera Lake - Optional boating"
+      ],
+      itinerary: [
+        { time: "07:00 AM", activity: "Pick up from hotel/Pathankot", duration: "30 mins" },
+        { time: "07:30 AM", activity: "Drive to Dalhousie", duration: "2 hours" },
+        { time: "09:30 AM", activity: "Dainkund Peak trek", duration: "1.5 hours", description: "Short trek to highest point" },
+        { time: "11:00 AM", activity: "St. John's Church", duration: "30 mins" },
+        { time: "11:30 AM", activity: "Subhash Baoli", duration: "30 mins" },
+        { time: "12:00 PM", activity: "Lunch in Dalhousie", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Drive to Khajjiar", duration: "30 mins" },
+        { time: "01:30 PM", activity: "Khajjiar exploration", duration: "2 hours", description: "Explore the stunning meadow, optional horse riding" },
+        { time: "03:30 PM", activity: "Kalatop Wildlife Sanctuary", duration: "1 hour", description: "Nature walk through deodar forest" },
+        { time: "04:30 PM", activity: "Return journey", duration: "2 hours" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Horse riding at Khajjiar (₹200-500)", "Lunch", "Entry fees", "Guide fees"],
+      bestTimeToVisit: "March to June (summer) and December to February (snow)",
+      difficulty: "Easy-Moderate",
+      category: "Hill Station & Nature",
+      heroImage: "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Dalhousie/Khajjiar_Meadow.jpg",
+        "/images/sightseeing/Dalhousie/Kalatop_Wildlife.jpg",
+        "/images/sightseeing/Dalhousie/Panchpula_Waterfall.jpg",
+        "/images/sightseeing/Dalhousie/Dainkund_Peak.jpg",
+        "/images/sightseeing/Dalhousie/St_Johns_Church.jpg"
+      ],
+      tips: ["Khajjiar is a UNESCO listed destination", "Carry warm clothes even in summer", "Try local Madra cuisine", "Dainkund Peak gets windy, carry windbreaker"],
+      reviews: { averageRating: 4.6, totalReviews: 567 },
+      coordinates: { latitude: 32.5375, longitude: 75.9700 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate",
+      keywords: ["dalhousie tour", "khajjiar tour", "dalhousie khajjiar day trip", "mini switzerland india", "dalhousie sightseeing", "khajjiar meadow tour"]
+    }
+  ],
+
+  "kasol-kheerganga": [
+    {
+      id: 102,
+      name: "Kasol & Kheerganga Tour from Chandigarh",
+      slug: "kasol-kheerganga-tour",
+      shortDescription: "Explore Kasol's backpacker vibe and trek to Kheerganga hot springs in the Parvati Valley",
+      fullDescription: "A 2-day adventure to the Parvati Valley covering Kasol's unique cafe culture, Manikaran Sahib hot springs, and the famous Kheerganga trek. Soak in natural hot springs at 3,050m altitude after a scenic trek through forests and waterfalls. Perfect for adventure seekers and nature lovers.",
+      duration: "2 Days / 1 Night",
+      price: { sedan: 6000, suv: 8000, tempoTraveller: 12000, currency: "INR" },
+      highlights: [
+        "Kasol - Amsterdam of India, cafe culture",
+        "Kheerganga Trek - Hot springs at 3,050m",
+        "Manikaran Sahib - Hot springs and Gurudwara",
+        "Parvati Valley scenic drive",
+        "Tosh Village - Himalayan hamlet",
+        "River camping by Parvati River"
+      ],
+      itinerary: [
+        { time: "Day 1 - 06:00 AM", activity: "Pick up from Chandigarh", duration: "8 hours drive", description: "Scenic drive through Kullu to Kasol" },
+        { time: "Day 1 - 02:00 PM", activity: "Arrive Kasol, check in", duration: "1 hour" },
+        { time: "Day 1 - 03:00 PM", activity: "Manikaran Sahib visit", duration: "1.5 hours", description: "Hot springs and Gurudwara darshan" },
+        { time: "Day 1 - 05:00 PM", activity: "Kasol market and cafes", duration: "2 hours", description: "Explore cafes and riverside" },
+        { time: "Day 1 - Evening", activity: "Bonfire and overnight stay", duration: "" },
+        { time: "Day 2 - 06:00 AM", activity: "Kheerganga trek start", duration: "5-6 hours up", description: "Trek through forests and waterfalls" },
+        { time: "Day 2 - 12:00 PM", activity: "Kheerganga hot springs", duration: "2 hours", description: "Soak in natural hot springs at summit" },
+        { time: "Day 2 - 02:00 PM", activity: "Descend to Barshaini", duration: "4 hours" },
+        { time: "Day 2 - 06:00 PM", activity: "Return drive (or overnight)", duration: "" }
+      ],
+      inclusions: ["AC vehicle (Chandigarh to Kasol return)", "Experienced driver", "Parking and toll", "All taxes"],
+      exclusions: ["Accommodation (₹500-2000)", "Meals", "Trek guide (₹1000)", "Camping gear", "Personal expenses"],
+      bestTimeToVisit: "March to June and September to November",
+      difficulty: "Moderate-Difficult (Kheerganga trek)",
+      category: "Adventure & Trekking",
+      heroImage: "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Kasol/Kasol_Village.jpg",
+        "/images/sightseeing/Kasol/Parvati_River.jpg",
+        "/images/sightseeing/Kasol/Manikaran_Sahib.jpg",
+        "/images/sightseeing/Kasol/Chalal_Trek.jpg"
+      ],
+      tips: ["Cash only in Kasol - ATMs unreliable", "Wear sturdy trekking shoes for Kheerganga", "Start trek early morning", "Avoid monsoon (July-August) for Kheerganga"],
+      reviews: { averageRating: 4.7, totalReviews: 789 },
+      coordinates: { latitude: 32.0101, longitude: 77.3148 },
+      groupSize: "1-10 persons",
+      accessibility: "Difficult - requires trekking fitness",
+      keywords: ["kasol tour", "kheerganga trek", "kasol kheerganga tour", "parvati valley tour", "kasol from chandigarh", "kasol trip"]
+    }
+  ],
+
+  // UP Spiritual New Tours
+  "varanasi-spiritual": [
+    {
+      id: 103,
+      name: "Varanasi Ganga Aarti Spiritual Tour",
+      slug: "varanasi-ganga-aarti-tour",
+      shortDescription: "Experience the mystical Ganga Aarti, sunrise boat ride, and ancient temple circuit of Kashi",
+      fullDescription: "A deeply spiritual experience in the world's oldest living city. Start with a mesmerizing sunrise boat ride on the Ganges, visit the sacred Kashi Vishwanath Temple, explore ancient ghats, visit Sarnath (where Buddha gave his first sermon), and conclude with the spectacular Dashashwamedh Ghat Ganga Aarti ceremony.",
+      duration: "12-14 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Ganga Aarti at Dashashwamedh Ghat - Spiritual spectacle",
+        "Sunrise boat ride on River Ganga",
+        "Kashi Vishwanath Temple - Jyotirlinga darshan",
+        "Sarnath - Where Buddha preached first sermon",
+        "Ancient ghat walk - Assi to Manikarnika",
+        "Sankat Mochan Hanuman Temple"
+      ],
+      itinerary: [
+        { time: "05:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "05:30 AM", activity: "Sunrise boat ride on Ganga", duration: "1.5 hours", description: "Witness sunrise over ancient ghats" },
+        { time: "07:00 AM", activity: "Ghat walk - Assi to Dashashwamedh", duration: "1 hour", description: "Walk past ancient bathing ghats" },
+        { time: "08:00 AM", activity: "Breakfast", duration: "30 mins" },
+        { time: "08:30 AM", activity: "Kashi Vishwanath Temple", duration: "1.5 hours", description: "Sacred Jyotirlinga darshan" },
+        { time: "10:00 AM", activity: "Sankat Mochan Temple", duration: "30 mins" },
+        { time: "11:00 AM", activity: "BHU campus and Vishwanath Temple", duration: "1 hour" },
+        { time: "12:00 PM", activity: "Lunch", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Drive to Sarnath", duration: "30 mins" },
+        { time: "01:30 PM", activity: "Sarnath Buddhist site", duration: "2 hours", description: "Dhamek Stupa, museum, monasteries" },
+        { time: "04:00 PM", activity: "Return to Varanasi ghats", duration: "30 mins" },
+        { time: "05:00 PM", activity: "Dashashwamedh Ghat Ganga Aarti", duration: "1.5 hours", description: "Grand evening prayer ceremony" },
+        { time: "06:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Boat ride (₹200-500)", "Temple offerings", "Sarnath entry (₹25)", "Lunch", "Guide fees"],
+      bestTimeToVisit: "October to March (pleasant weather)",
+      difficulty: "Easy-Moderate",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg",
+        "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg",
+        "/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg",
+        "/images/sightseeing/Varanasi/Assi_Ghat.jpg",
+        "/images/sightseeing/Varanasi/Sarnath.jpg"
+      ],
+      tips: ["Sunrise boat ride is unmissable", "Dress modestly at temples", "Ganga Aarti starts at sunset, arrive 30 min early for seats", "Try Banarasi paan after the aarti"],
+      reviews: { averageRating: 4.9, totalReviews: 2345 },
+      coordinates: { latitude: 25.3176, longitude: 83.0064 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate - ghat steps involved",
+      keywords: ["varanasi ganga aarti", "varanasi spiritual tour", "varanasi temple tour", "kashi vishwanath tour", "varanasi boat ride", "varanasi sightseeing"]
+    }
+  ],
+
+  "lucknow-heritage": [
+    {
+      id: 104,
+      name: "Lucknow Nawabi Heritage & Food Tour",
+      slug: "lucknow-nawabi-heritage-tour",
+      shortDescription: "Explore Lucknow's Nawabi heritage — Bara Imambara, Rumi Darwaza, and legendary kebabs and biryani",
+      fullDescription: "Discover the refined elegance of Lucknow, the City of Nawabs. Explore the magnificent Bara Imambara and its mysterious labyrinth (Bhool Bhulaiya), pass through the imposing Rumi Darwaza, visit the British Residency, and indulge in Lucknow's legendary Tunday Kebabs and Awadhi biryani.",
+      duration: "8-10 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Bara Imambara - Bhool Bhulaiya labyrinth",
+        "Rumi Darwaza - Imposing Awadhi gateway",
+        "British Residency - 1857 Revolt historical site",
+        "Tunday Kebabi - World-famous galouti kebabs",
+        "Hazratganj - Shopping and heritage walk",
+        "Chota Imambara - Palace of Lights"
+      ],
+      itinerary: [
+        { time: "08:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "08:30 AM", activity: "Bara Imambara", duration: "2 hours", description: "Explore the massive hall and Bhool Bhulaiya maze" },
+        { time: "10:30 AM", activity: "Rumi Darwaza photo stop", duration: "20 mins" },
+        { time: "11:00 AM", activity: "Chota Imambara", duration: "45 mins", description: "The Palace of Lights" },
+        { time: "12:00 PM", activity: "Tunday Kebabi lunch", duration: "1 hour", description: "Legendary galouti kebabs and biryani" },
+        { time: "01:00 PM", activity: "British Residency", duration: "1 hour", description: "1857 Revolt memorial ruins" },
+        { time: "02:00 PM", activity: "Hazratganj walk", duration: "1 hour", description: "Heritage shopping district" },
+        { time: "03:00 PM", activity: "Ambedkar Memorial Park", duration: "30 mins" },
+        { time: "03:30 PM", activity: "Chikankari shopping", duration: "1 hour", description: "Famous Lucknow embroidery" },
+        { time: "04:30 PM", activity: "Drop off at hotel", duration: "20 mins" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Monument entry (₹100-500)", "Lunch", "Shopping expenses", "Guide fees"],
+      bestTimeToVisit: "October to March",
+      difficulty: "Easy",
+      category: "Heritage & Food",
+      heroImage: "/images/sightseeing/Lucknow/Lucknow_hero_section.jpg",
+      images: [
+        "/images/sightseeing/Lucknow/Bara_Imambara.jpg",
+        "/images/sightseeing/Lucknow/Chota_Imambara.jpg",
+        "/images/sightseeing/Lucknow/Rumi_Darwaza.jpg",
+        "/images/sightseeing/Lucknow/British_Residency.jpg",
+        "/images/sightseeing/Lucknow/Hazratganj.jpg"
+      ],
+      tips: ["Bara Imambara labyrinth needs guide to navigate", "Try galawati kebab at Tunday original shop", "Buy authentic chikankari from Hazratganj", "Visit during evening for best Imambara lighting"],
+      reviews: { averageRating: 4.7, totalReviews: 987 },
+      coordinates: { latitude: 26.8467, longitude: 80.9462 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate - some walking and steps",
+      keywords: ["lucknow tour", "lucknow heritage tour", "lucknow food tour", "bara imambara tour", "lucknow nawabi tour", "lucknow sightseeing"]
+    }
+  ],
+
+  "ayodhya-darshan": [
+    {
+      id: 105,
+      name: "Ayodhya Ram Mandir Full Darshan Tour",
+      slug: "ayodhya-ram-mandir-darshan-tour",
+      shortDescription: "Complete Ram Mandir darshan with Hanuman Garhi, Kanak Bhawan, and Sarayu River holy dip",
+      fullDescription: "A comprehensive spiritual tour of Ayodhya, the birthplace of Lord Rama. Visit the magnificent new Ram Janmabhoomi temple, seek blessings at Hanuman Garhi, explore Kanak Bhawan (gifted to Sita by Kaikeyi), take a holy dip in the sacred Sarayu River, and visit other important temples.",
+      duration: "10-12 hours",
+      price: { sedan: 3000, suv: 4000, tempoTraveller: 6000, currency: "INR" },
+      highlights: [
+        "Ram Janmabhoomi Temple - Birthplace of Lord Rama",
+        "Hanuman Garhi - Hilltop Hanuman temple",
+        "Kanak Bhawan - Ornate temple for Ram and Sita",
+        "Sarayu River Ghats - Holy dip",
+        "Nageshwarnath Temple - Ancient Shiva temple",
+        "Dashrath Mahal - King Dashrath's palace"
+      ],
+      itinerary: [
+        { time: "05:00 AM", activity: "Pick up from hotel/Lucknow", duration: "30 mins" },
+        { time: "05:30 AM", activity: "Drive to Ayodhya (if from Lucknow)", duration: "2.5 hours" },
+        { time: "08:00 AM", activity: "Ram Janmabhoomi Temple darshan", duration: "2 hours", description: "Main temple with sacred birthplace" },
+        { time: "10:00 AM", activity: "Hanuman Garhi", duration: "1 hour", description: "Climb to hilltop Hanuman temple" },
+        { time: "11:00 AM", activity: "Kanak Bhawan", duration: "45 mins", description: "Ornate temple with gold crown idols" },
+        { time: "12:00 PM", activity: "Lunch break", duration: "1 hour" },
+        { time: "01:00 PM", activity: "Sarayu River holy dip", duration: "1 hour", description: "Sacred bathing at river ghats" },
+        { time: "02:00 PM", activity: "Dashrath Mahal", duration: "30 mins" },
+        { time: "02:30 PM", activity: "Nageshwarnath Temple", duration: "30 mins" },
+        { time: "03:00 PM", activity: "Return journey", duration: "2.5 hours" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking and toll", "All taxes"],
+      exclusions: ["Temple offerings", "Lunch", "Guide fees", "Personal expenses"],
+      bestTimeToVisit: "October to March, Ram Navami (March-April)",
+      difficulty: "Easy-Moderate",
+      category: "Spiritual & Religious",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Ayodhya/Ram_Mandir.jpg",
+        "/images/sightseeing/Ayodhya/Hanuman_Garhi.jpg",
+        "/images/sightseeing/Ayodhya/Kanak_Bhawan.jpg",
+        "/images/sightseeing/Ayodhya/Saryu_River_Ghat.jpg"
+      ],
+      tips: ["Temple darshan queues long on weekends", "Dress modestly and remove shoes", "Mobile phones not allowed inside main temple", "Visit during Ram Navami for grand celebrations"],
+      reviews: { averageRating: 4.8, totalReviews: 1567 },
+      coordinates: { latitude: 26.7922, longitude: 82.1998 },
+      groupSize: "1-15 persons",
+      accessibility: "Moderate - Hanuman Garhi has steep steps",
+      keywords: ["ayodhya ram mandir tour", "ayodhya darshan", "ram janmabhoomi tour", "ayodhya temple tour", "ayodhya day trip", "ram mandir darshan"]
+    }
+  ],
+
+  "prayagraj-sangam": [
+    {
+      id: 106,
+      name: "Prayagraj Triveni Sangam Spiritual Tour",
+      slug: "prayagraj-sangam-spiritual-tour",
+      shortDescription: "Holy dip at Triveni Sangam where Ganga, Yamuna, and Saraswati meet — plus Anand Bhavan and fort",
+      fullDescription: "A spiritual and cultural tour of Prayagraj (Allahabad), one of Hinduism's holiest cities. Take a sacred boat ride to Triveni Sangam where three holy rivers meet, visit the historic Allahabad Fort, explore Anand Bhavan (Nehru family home), and see the magnificent Khusro Bagh.",
+      duration: "8-10 hours",
+      price: { sedan: 2500, suv: 3500, tempoTraveller: 5000, currency: "INR" },
+      highlights: [
+        "Triveni Sangam - Confluence of Ganga, Yamuna, Saraswati",
+        "Sacred boat ride and holy dip at Sangam",
+        "Allahabad Fort - Mughal era (partial view)",
+        "Anand Bhavan - Nehru family museum",
+        "Khusro Bagh - Mughal garden tombs",
+        "Hanuman Mandir - Reclining Hanuman"
+      ],
+      itinerary: [
+        { time: "06:00 AM", activity: "Pick up from hotel", duration: "20 mins" },
+        { time: "06:30 AM", activity: "Triveni Sangam boat ride", duration: "1.5 hours", description: "Boat to confluence point, holy dip" },
+        { time: "08:00 AM", activity: "Allahabad Fort (outside view)", duration: "30 mins", description: "Akbar era fort, Ashoka Pillar" },
+        { time: "08:30 AM", activity: "Hanuman Mandir", duration: "30 mins", description: "Ancient temple with reclining Hanuman" },
+        { time: "09:00 AM", activity: "Breakfast", duration: "30 mins" },
+        { time: "09:30 AM", activity: "Anand Bhavan", duration: "1 hour", description: "Nehru family home turned museum" },
+        { time: "10:30 AM", activity: "Swaraj Bhawan", duration: "30 mins" },
+        { time: "11:00 AM", activity: "Khusro Bagh", duration: "1 hour", description: "Mughal garden with Jahangir son's tomb" },
+        { time: "12:00 PM", activity: "Chandrasekhar Azad Park", duration: "30 mins" },
+        { time: "12:30 PM", activity: "Local lunch and drop off", duration: "1 hour" }
+      ],
+      inclusions: ["AC vehicle with fuel", "Experienced driver", "Parking charges", "All taxes"],
+      exclusions: ["Boat ride at Sangam (₹100-200)", "Anand Bhavan entry (₹50)", "Lunch", "Puja items"],
+      bestTimeToVisit: "October to March, Magh Mela (January-February)",
+      difficulty: "Easy",
+      category: "Spiritual & Heritage",
+      heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+      images: [
+        "/images/sightseeing/Prayagraj/Triveni_Sangam.jpg",
+        "/images/sightseeing/Prayagraj/Allahabad_Fort.jpg",
+        "/images/sightseeing/Prayagraj/Anand_Bhawan.jpg",
+        "/images/sightseeing/Prayagraj/Khusro_Bagh.jpg"
+      ],
+      tips: ["Reach Sangam early for peaceful dip", "Carry change of clothes for holy dip", "Visit during Magh Mela for extraordinary experience", "Try local chaat near Civil Lines"],
+      reviews: { averageRating: 4.6, totalReviews: 654 },
+      coordinates: { latitude: 25.4358, longitude: 81.8463 },
+      groupSize: "1-12 persons",
+      accessibility: "Moderate - boat and ghat steps",
+      keywords: ["prayagraj tour", "triveni sangam tour", "prayagraj sightseeing", "allahabad tour", "sangam holy dip", "prayagraj spiritual tour"]
+    }
   ]
 };
 
@@ -20288,14 +21592,42 @@ export const getToursByCategory = (category) => {
   return allTours.filter(tour => tour.category === category);
 };
 
-// Get tours by city
-export const getToursByCity = (city) => {
-  return sightseeingTours[city.toLowerCase()] || [];
+// Map from data keys to their parent city slug for grouping
+const cityKeyMap = {
+  'agra-extra': 'agra',
+  'delhi-extra': 'delhi',
+  'dharamshala-mcleodganj': 'dharamshala',
+  'dalhousie-khajjiar': 'dalhousie',
+  'kasol-kheerganga': 'kasol',
+  'varanasi-spiritual': 'varanasi',
+  'lucknow-heritage': 'lucknow',
+  'ayodhya-darshan': 'ayodhya',
+  'prayagraj-sangam': 'prayagraj',
+  'jim-corbett': 'jim-corbett',
+  'mount-abu': 'mount-abu',
 };
 
-// Get cities with sightseeing tours
+// Get tours by city (also checks mapped alias keys)
+export const getToursByCity = (city) => {
+  const normalizedCity = city.toLowerCase();
+  let tours = [];
+  Object.keys(sightseeingTours).forEach(key => {
+    const mappedCity = cityKeyMap[key] || key;
+    if (key === normalizedCity || mappedCity === normalizedCity) {
+      tours.push(...sightseeingTours[key]);
+    }
+  });
+  return tours;
+};
+
+// Get cities with sightseeing tours (unique resolved city slugs)
 export const getCitiesWithTours = () => {
-  return Object.keys(sightseeingTours);
+  const cities = new Set();
+  Object.keys(sightseeingTours).forEach(key => {
+    const resolved = cityKeyMap[key] || key;
+    cities.add(resolved);
+  });
+  return Array.from(cities);
 };
 
 // Featured tours for homepage

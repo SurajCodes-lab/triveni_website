@@ -439,6 +439,338 @@ export const corporateIndustries = {
     ],
 
     keywords: ['bank employee transport', 'BFSI cab service', 'financial services transport', 'executive car for bankers', 'premium corporate cab']
+  },
+
+  'hospitals-healthcare': {
+    id: 'hospitals-healthcare',
+    slug: 'hospitals-healthcare',
+    name: 'Hospitals & Healthcare',
+    title: 'Corporate Transport for Hospitals & Healthcare',
+    metaTitle: 'Hospital Staff Transport | Healthcare Employee Cab Service | Triveni Cabs',
+    metaDescription: 'Reliable transport for hospital staff, doctors, nurses. 24/7 shift-based operations, emergency availability, clean sanitized vehicles. Call 7668570551.',
+    heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    icon: '🏥',
+    color: 'from-red-500 to-pink-500',
+    tagline: 'Reliable Transport for Healthcare Heroes',
+    subtitle: 'Trusted by Leading Hospitals Across North India',
+    description: 'Healthcare never sleeps, and neither does our transport service. Triveni Cabs provides specialized transportation for hospitals, clinics, diagnostic centers, and healthcare companies. We understand the critical nature of healthcare operations with 24/7 availability, sanitized vehicles, and punctual service for all shift timings.',
+
+    challenges: [
+      {
+        title: '24/7 Shift Operations',
+        description: 'Hospitals run round-the-clock with multiple shift changes',
+        solution: 'Dedicated fleet for morning, evening, and night shifts with seamless handovers'
+      },
+      {
+        title: 'Emergency Availability',
+        description: 'Staff may need urgent transport during emergencies',
+        solution: 'On-call vehicles available within 30 minutes for emergency situations'
+      },
+      {
+        title: 'Hygiene Standards',
+        description: 'Healthcare workers require clean, sanitized transport',
+        solution: 'Daily sanitized vehicles with hygiene protocols and clean interiors'
+      },
+      {
+        title: 'Multiple Locations',
+        description: 'Hospital chains have branches across the city',
+        solution: 'Multi-branch connectivity and inter-hospital transfer service'
+      }
+    ],
+
+    serviceCities: [
+      { city: 'Delhi NCR', coverage: 'Complete NCR coverage - AIIMS, Fortis, Max, Medanta & all hospital chains' },
+      { city: 'Jaipur', coverage: 'Full city coverage - SMS Hospital, Fortis, Narayana & all medical facilities' },
+      { city: 'Chandigarh', coverage: 'Tricity coverage - PGI, GMCH & all healthcare locations' },
+      { city: 'Dehradun', coverage: 'Complete coverage - Max, Synergy & all hospital facilities' },
+      { city: 'Agra', coverage: 'Full coverage - SN Medical College, Pushpanjali & all hospitals' }
+    ],
+
+    features: [
+      { icon: '🏥', title: '24/7 Operations', description: 'Round-the-clock transport for all shifts' },
+      { icon: '🧹', title: 'Sanitized Fleet', description: 'Daily cleaned and sanitized vehicles' },
+      { icon: '🚨', title: 'Emergency Ready', description: 'On-call vehicles for urgent needs' },
+      { icon: '⏰', title: 'Punctual Service', description: 'Zero tolerance for delays in healthcare' },
+      { icon: '👩‍⚕️', title: 'Staff Safety', description: 'GPS tracking and women safety protocols' },
+      { icon: '📋', title: 'Compliance Ready', description: 'Documentation for hospital audits' }
+    ],
+
+    fleet: [
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Doctors, specialists', price: '₹12-15/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Medical teams, HODs', price: '₹16-20/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Nursing staff, technicians', price: '₹23-27/km' },
+      { type: 'Bus', capacity: '32-56 pax', useCase: 'Large hospital staff', price: '₹55-85/km' }
+    ],
+
+    faqs: [
+      {
+        question: 'Do you provide 24/7 transport for hospital shift changes?',
+        answer: 'Yes, we operate 24/7 with dedicated fleet for all hospital shifts - morning, afternoon, and night. Our routing is optimized for hospital gate timings and we ensure punctual arrival for every shift change.'
+      },
+      {
+        question: 'Are your vehicles sanitized for healthcare staff?',
+        answer: 'Absolutely. All vehicles serving healthcare clients undergo daily sanitization with medical-grade disinfectants. We maintain hygiene logs and can provide documentation for compliance and hospital audits.'
+      },
+      {
+        question: 'Can you provide emergency transport for hospital staff?',
+        answer: 'Yes, we have on-call vehicles available within 30 minutes for emergency situations. Hospital administrators can contact our 24/7 helpline for urgent staff transport needs.'
+      },
+      {
+        question: 'Do you serve multiple hospital branches in a city?',
+        answer: 'Yes, we provide inter-hospital transfer services for hospital chains with multiple branches. Our fleet covers all major hospitals and medical facilities across our 5-city network.'
+      }
+    ],
+
+    keywords: ['hospital staff transport service', 'healthcare employee cab', 'hospital shift cab', 'doctor transport service', 'nurse pickup drop', 'medical staff transport']
+  },
+
+  'education-schools': {
+    id: 'education-schools',
+    slug: 'education-schools',
+    name: 'Education & Schools',
+    title: 'Corporate Transport for Schools & Education',
+    metaTitle: 'School Staff Transport | Teacher Cab Service | Education Employee | Triveni Cabs',
+    metaDescription: 'Reliable transport for school teachers, college staff, education sector employees. Safe, GPS-tracked vehicles with verified drivers. Call 7668570551.',
+    heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+    icon: '🎓',
+    color: 'from-amber-500 to-orange-500',
+    tagline: 'Safe Transport for Education Excellence',
+    subtitle: 'Trusted by Schools & Universities Across India',
+    description: 'Education institutions need reliable, safe, and punctual transportation for their staff and faculty. Triveni Cabs provides comprehensive transport solutions for schools, colleges, coaching centers, and universities with focus on safety, timeliness, and cost efficiency.',
+
+    challenges: [
+      {
+        title: 'Early Morning Operations',
+        description: 'Schools start early and staff need to arrive before students',
+        solution: 'Early morning fleet with 5:30 AM pickup capability'
+      },
+      {
+        title: 'Female Staff Safety',
+        description: 'Education sector has high percentage of women employees',
+        solution: 'Verified drivers, GPS tracking, women safety protocols, guard service'
+      },
+      {
+        title: 'Multiple Campus Locations',
+        description: 'Education groups operate across multiple campuses',
+        solution: 'Multi-campus connectivity and inter-branch shuttle services'
+      },
+      {
+        title: 'Seasonal Variations',
+        description: 'Transport needs change with exam season, holidays, events',
+        solution: 'Flexible fleet that scales with academic calendar'
+      }
+    ],
+
+    serviceCities: [
+      { city: 'Delhi NCR', coverage: 'Complete NCR coverage - All schools, colleges, universities & coaching centers' },
+      { city: 'Jaipur', coverage: 'Full city coverage - All educational institutions & university campuses' },
+      { city: 'Chandigarh', coverage: 'Tricity coverage - Punjab University, schools & all education hubs' },
+      { city: 'Dehradun', coverage: 'Complete coverage - Boarding schools, UPES, DIT & all institutions' },
+      { city: 'Agra', coverage: 'Full coverage - All schools, colleges & educational institutions' }
+    ],
+
+    features: [
+      { icon: '🌅', title: 'Early Start', description: 'Fleet ready from 5:30 AM daily' },
+      { icon: '👩', title: 'Women Safety', description: 'Verified drivers, GPS, SOS system' },
+      { icon: '🏫', title: 'Campus Connect', description: 'Multi-campus shuttle services' },
+      { icon: '📅', title: 'Calendar Sync', description: 'Fleet scales with academic calendar' },
+      { icon: '💰', title: 'Budget Friendly', description: 'Special education sector pricing' },
+      { icon: '🚗', title: 'Reliable Fleet', description: 'Well-maintained, clean vehicles' }
+    ],
+
+    fleet: [
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Principals, HODs', price: '₹12-15/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior faculty', price: '₹16-20/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Teaching staff groups', price: '₹23-27/km' },
+      { type: 'Bus', capacity: '32-56 pax', useCase: 'Large staff transport', price: '₹55-85/km' }
+    ],
+
+    faqs: [
+      {
+        question: 'Can you provide early morning transport for school staff?',
+        answer: 'Yes, our fleet is operational from 5:30 AM to ensure school teachers and staff arrive well before the first bell. We plan routes with buffer time for punctual arrival.'
+      },
+      {
+        question: 'How do you ensure safety for female teaching staff?',
+        answer: 'We follow strict safety protocols including police-verified drivers, live GPS tracking, SOS buttons in all vehicles, and optional female guard service for early morning and late evening drops.'
+      },
+      {
+        question: 'Do you offer special pricing for educational institutions?',
+        answer: 'Yes, we have special education sector packages with competitive pricing. We understand budget constraints in education and offer flexible monthly and annual contracts.'
+      },
+      {
+        question: 'Can transport be adjusted during exam season and holidays?',
+        answer: 'Absolutely. Our fleet scales with your academic calendar. You can increase vehicles during exam season and scale down during holidays, paying only for what you use.'
+      }
+    ],
+
+    keywords: ['school staff transport service', 'teacher cab service', 'education employee transport', 'school bus rental', 'college staff transport', 'coaching center cab']
+  },
+
+  'government-psu': {
+    id: 'government-psu',
+    slug: 'government-psu',
+    name: 'Government & PSU',
+    title: 'Vehicle Rental for Government & PSU Organizations',
+    metaTitle: 'Government Vehicle Rental | PSU Car Hire | Tender Cab Service | Triveni Cabs',
+    metaDescription: 'Government and PSU vehicle rental service. Tender compliant, GST billing, fleet for official use. Competitive rates for government departments. Call 7668570551.',
+    heroImage: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
+    icon: '🏛️',
+    color: 'from-slate-500 to-zinc-600',
+    tagline: 'Trusted Partner for Government Mobility',
+    subtitle: 'Serving Central & State Government Organizations',
+    description: 'Triveni Cabs provides professional vehicle rental services for government departments, PSUs, and public sector organizations. We are fully compliant with government procurement standards, offer competitive tender pricing, GST-compliant billing, and maintain a large fleet suitable for official duties, VIP movement, and departmental operations.',
+
+    challenges: [
+      {
+        title: 'Tender & Procurement',
+        description: 'Government hiring requires formal procurement process',
+        solution: 'Tender compliant documentation, rate contracts, and formal proposals'
+      },
+      {
+        title: 'VIP Protocol',
+        description: 'Government officials require protocol-compliant transport',
+        solution: 'Trained chauffeurs in protocol, premium vehicles for VIP movement'
+      },
+      {
+        title: 'GST & Billing Compliance',
+        description: 'Government departments need proper GST invoicing',
+        solution: 'Fully GST-compliant billing with proper documentation for audit'
+      },
+      {
+        title: 'Large Fleet Requirements',
+        description: 'Government events and tours need multiple vehicles',
+        solution: '500+ vehicle fleet with buses, tempos, SUVs, and sedans'
+      }
+    ],
+
+    serviceCities: [
+      { city: 'Delhi NCR', coverage: 'Complete coverage - All government offices, ministries, PSU headquarters' },
+      { city: 'Jaipur', coverage: 'Full coverage - Rajasthan government offices, secretariat & all departments' },
+      { city: 'Chandigarh', coverage: 'Tricity coverage - Punjab & Haryana government offices, UT administration' },
+      { city: 'Dehradun', coverage: 'Complete coverage - Uttarakhand government offices, BHEL & PSUs' },
+      { city: 'Agra', coverage: 'Full coverage - District administration, government offices & PSU branches' }
+    ],
+
+    features: [
+      { icon: '📄', title: 'Tender Compliant', description: 'Full documentation for government tenders' },
+      { icon: '🧾', title: 'GST Billing', description: 'Proper GST-compliant invoicing' },
+      { icon: '🎖️', title: 'VIP Protocol', description: 'Trained drivers for official movement' },
+      { icon: '🚗', title: 'Large Fleet', description: '500+ vehicles for any requirement' },
+      { icon: '📊', title: 'Usage Reports', description: 'Detailed monthly duty reports' },
+      { icon: '🔒', title: 'Secure Transport', description: 'Vetted drivers for government duty' }
+    ],
+
+    fleet: [
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Officers, official duty', price: 'As per tender' },
+      { type: 'Premium Sedan', capacity: '4 pax', useCase: 'Senior officials, VIP', price: 'As per tender' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Field visits, inspections', price: 'As per tender' },
+      { type: 'Bus', capacity: '32-56 pax', useCase: 'Department tours, events', price: 'As per tender' }
+    ],
+
+    faqs: [
+      {
+        question: 'Are you registered for government vehicle rental tenders?',
+        answer: 'Yes, we are a registered vendor for government and PSU vehicle rental services. We regularly participate in government tenders and have experience serving central and state government departments.'
+      },
+      {
+        question: 'Do you provide GST-compliant billing for government departments?',
+        answer: 'Absolutely. All our invoicing is fully GST-compliant with proper tax breakdowns, duty slips, and documentation suitable for government audit and reconciliation purposes.'
+      },
+      {
+        question: 'Can you handle VIP movement for senior government officials?',
+        answer: 'Yes, our chauffeurs are trained in VIP protocol and official etiquette. We provide premium vehicles with professional drivers who understand the requirements of government official movement.'
+      },
+      {
+        question: 'Do you offer rate contracts for government organizations?',
+        answer: 'Yes, we offer annual rate contracts with fixed pricing for government departments and PSUs. This simplifies the booking process and ensures budget predictability for the organization.'
+      }
+    ],
+
+    keywords: ['government vehicle rental tender', 'PSU cab service', 'government car hire', 'official vehicle rental', 'government department transport', 'PSU employee cab']
+  },
+
+  'ecommerce-logistics': {
+    id: 'ecommerce-logistics',
+    slug: 'ecommerce-logistics',
+    name: 'E-commerce & Logistics',
+    title: 'Corporate Transport for E-commerce & Logistics',
+    metaTitle: 'E-commerce Employee Transport | Logistics Company Cab | Warehouse Staff | Triveni Cabs',
+    metaDescription: 'Employee transport for e-commerce and logistics companies. Warehouse staff pickup, 24/7 shift coverage, large fleet for peak seasons. Call 7668570551.',
+    heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
+    icon: '📦',
+    color: 'from-yellow-500 to-amber-600',
+    tagline: 'Powering E-commerce Workforce Mobility',
+    subtitle: 'Serving India\'s Largest E-commerce & Logistics Companies',
+    description: 'The e-commerce and logistics industry operates at lightning speed with massive workforce requirements. Triveni Cabs provides scalable employee transportation for warehouses, fulfillment centers, sorting hubs, and corporate offices of e-commerce and logistics companies with special expertise in handling peak season surges.',
+
+    challenges: [
+      {
+        title: 'Peak Season Surges',
+        description: 'Festival and sale seasons require 3-5x transport capacity',
+        solution: 'Rapid fleet scaling with 48-hour surge capacity deployment'
+      },
+      {
+        title: 'Warehouse Locations',
+        description: 'Warehouses are in remote industrial areas outside cities',
+        solution: 'Extensive coverage of industrial belts and warehouse zones'
+      },
+      {
+        title: 'Multiple Shift Operations',
+        description: 'Fulfillment centers run 24/7 with 3+ shifts',
+        solution: 'Dedicated fleet for each shift with seamless 24/7 operations'
+      },
+      {
+        title: 'Large Workforce',
+        description: 'E-commerce warehouses employ thousands of workers',
+        solution: 'Bus fleet for large-scale workforce transport, optimized routing'
+      }
+    ],
+
+    serviceCities: [
+      { city: 'Delhi NCR', coverage: 'Complete coverage - Manesar, Bhiwadi, Greater Noida warehouses & all fulfillment centers' },
+      { city: 'Jaipur', coverage: 'Full coverage - Neemrana, RIICO areas & all logistics hubs' },
+      { city: 'Chandigarh', coverage: 'Tricity & surrounding - All warehouse locations & logistics parks' },
+      { city: 'Dehradun', coverage: 'Complete coverage - SIDCUL, industrial areas & logistics centers' },
+      { city: 'Agra', coverage: 'Full coverage - All industrial estates & warehouse locations' }
+    ],
+
+    features: [
+      { icon: '📈', title: 'Surge Scaling', description: 'Rapid fleet expansion for peak season' },
+      { icon: '🏭', title: 'Warehouse Coverage', description: 'Remote industrial area connectivity' },
+      { icon: '🔄', title: '24/7 Operations', description: 'Round-the-clock shift coverage' },
+      { icon: '🚌', title: 'Bus Fleet', description: 'Large buses for warehouse workers' },
+      { icon: '📍', title: 'GPS Tracking', description: 'Real-time fleet monitoring' },
+      { icon: '💰', title: 'Cost Effective', description: 'Volume-based competitive pricing' }
+    ],
+
+    fleet: [
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, supervisors', price: '₹12-15/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, team leads', price: '₹16-20/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹23-27/km' },
+      { type: 'Bus', capacity: '32-56 pax', useCase: 'Warehouse workers', price: '₹55-85/km' }
+    ],
+
+    faqs: [
+      {
+        question: 'Can you scale fleet rapidly during festival and sale seasons?',
+        answer: 'Yes, we specialize in surge capacity for e-commerce peak seasons. With a fleet of 500+ vehicles, we can deploy additional capacity within 48 hours to handle 3-5x normal requirements during Big Billion Days, Great Indian Festival, and other sale events.'
+      },
+      {
+        question: 'Do you cover remote warehouse and fulfillment center locations?',
+        answer: 'Yes, our fleet covers all major warehouse zones including Manesar, Bhiwadi, Greater Noida, Neemrana, and other industrial areas where e-commerce fulfillment centers are typically located.'
+      },
+      {
+        question: 'How do you handle 24/7 shift operations at fulfillment centers?',
+        answer: 'We have dedicated fleet for each shift with seamless handovers. Our routing is optimized for warehouse gate timings, and we ensure punctual arrival for all shift changes including night shifts.'
+      },
+      {
+        question: 'Can you transport thousands of warehouse workers daily?',
+        answer: 'Absolutely. Our bus fleet of 40+ vehicles combined with tempo travellers can handle large-scale workforce transport. We have experience managing transport for warehouses with 1000+ daily employees.'
+      }
+    ],
+
+    keywords: ['ecommerce employee transport', 'logistics company cab', 'warehouse staff transport', 'fulfillment center cab service', 'Amazon employee transport', 'Flipkart warehouse cab']
   }
 };
 
