@@ -218,10 +218,10 @@ export const CrossServiceLinks = ({
       description: `Airport pickup & drop in ${cityDisplay}`
     },
     {
-      name: 'Local Sightseeing',
-      icon: 'tour',
-      url: `/sightseeing#${citySlug}`,
-      description: `Explore ${cityDisplay} tourist places`
+      name: `${cityDisplay} Cab Service`,
+      icon: 'route',
+      url: `/${citySlug}`,
+      description: `Outstation & local cabs in ${cityDisplay}`
     },
     {
       name: 'Corporate Transport',
@@ -234,6 +234,18 @@ export const CrossServiceLinks = ({
       icon: 'wedding',
       url: `/wedding/${citySlug}`,
       description: `Decorated cars for your special day`
+    },
+    {
+      name: 'Event Transport',
+      icon: 'event',
+      url: `/event-transportation-service/city/${citySlug}`,
+      description: `Group & event transportation`
+    },
+    {
+      name: 'Outstation Cabs',
+      icon: 'route',
+      url: `/outstation-cabs`,
+      description: `Intercity travel with professional drivers`
     }
   ];
 

@@ -476,7 +476,7 @@ export function getServiceCrossLinks(city) {
     {
       name: 'Sightseeing Tours',
       icon: 'tour',
-      url: `/sightseeing#${citySlug}`,
+      url: `/sightseeing/${citySlug}`,
       description: `Explore ${cityName} tourist places`
     },
     {

@@ -1032,7 +1032,6 @@ export default function CityServiceClient({
             {/* Cross Service Links */}
             <CrossServiceLinks
               city={formattedCityName}
-              services={['airport', 'wedding', 'corporate', 'sightseeing']}
               title={`Our Services in ${formattedCityName}`}
             />
 
