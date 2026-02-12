@@ -4,7 +4,6 @@ import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
-import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
 import PageTracker from "@/components/analytics/PageTracker";
 import ServiceWorkerRegistration from "@/components/pwa/ServiceWorkerRegistration";
 import "@/styles/globals.css";
@@ -733,11 +732,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {children}
           </main>
           <WhatsAppFloat phoneNumber="7668570551" />
-          <ExitIntentPopup
-            discount="10%"
-            couponCode="TRIVENI10"
-            phoneNumber="7668570551"
-          />
           <Footer />
         </div>
         <Analytics />

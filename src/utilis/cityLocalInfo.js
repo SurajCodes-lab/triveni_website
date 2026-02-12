@@ -819,6 +819,132 @@ export const cityLocalInfo = {
     ],
     localEvents: "Hemis Festival (June-July), Ladakh Festival (September)",
     nearbyDestinations: ["Nubra Valley (5 hours)", "Pangong Lake (5 hours)", "Manali (via highway, 2 days)"]
+  },
+
+  Noida: {
+    description: "Noida (New Okhla Industrial Development Authority) is a planned city in Uttar Pradesh, part of the Delhi NCR. Known for its IT parks, modern infrastructure, and excellent connectivity via the Noida-Greater Noida Expressway and Metro.",
+    bestTimeToVisit: "October to March (pleasant winter weather)",
+    localAttractions: [
+      "Worlds of Wonder - Amusement and water park",
+      "Okhla Bird Sanctuary - Wetland bird haven",
+      "Botanical Garden - Scenic green space with metro access",
+      "DLF Mall of India - Largest mall in NCR",
+      "Film City - Bollywood and media production hub",
+      "ISKCON Noida - Beautiful Krishna temple"
+    ],
+    travelTips: [
+      "Metro is the fastest way to travel to Delhi",
+      "Yamuna Expressway connects directly to Agra",
+      "Sector 18 is the main commercial and dining hub",
+      "Book cabs early morning for outstation trips"
+    ],
+    localEvents: "Noida International Film Festival, Auto Expo (Greater Noida)",
+    nearbyDestinations: ["Delhi (30 min)", "Agra (3-4 hours)", "Mathura (2-3 hours)"]
+  },
+
+  "Greater Noida": {
+    description: "Greater Noida is a well-planned township in Uttar Pradesh, part of Delhi NCR. Known for the India Expo Mart, Buddh International Circuit (Formula 1), and upcoming Jewar International Airport, it is a rapidly growing hub.",
+    bestTimeToVisit: "October to March (pleasant winter weather)",
+    localAttractions: [
+      "India Expo Mart - Major exhibition center",
+      "Buddh International Circuit - F1 racing venue",
+      "Surajpur Wetland - Bird watching destination",
+      "Shaheed Smarak - War memorial",
+      "Knowledge Park - Educational hub",
+      "Night Safari - Upcoming wildlife attraction"
+    ],
+    travelTips: [
+      "Connected to Noida via Greater Noida Expressway",
+      "Yamuna Expressway provides fast access to Agra",
+      "Jewar Airport area is developing rapidly",
+      "Public transport options are limited, cabs preferred"
+    ],
+    localEvents: "Auto Expo, India International Trade Fair events",
+    nearbyDestinations: ["Noida (30 min)", "Delhi (1 hour)", "Agra (3 hours)"]
+  },
+
+  Gurgaon: {
+    description: "Gurgaon (Gurugram) is a major financial and technology hub in Haryana, part of Delhi NCR. Home to Fortune 500 offices, luxury malls, and vibrant nightlife, it is the corporate capital of North India.",
+    bestTimeToVisit: "October to March (pleasant winter weather)",
+    localAttractions: [
+      "Kingdom of Dreams - Live entertainment and culture",
+      "Cyber Hub - Premium dining and nightlife destination",
+      "Ambience Mall - Luxury shopping complex",
+      "Sultanpur National Park - Bird sanctuary",
+      "Leisure Valley Park - Green recreational space",
+      "Heritage Transport Museum - Vintage vehicles collection"
+    ],
+    travelTips: [
+      "Metro connects Gurgaon to Delhi and IGI Airport",
+      "NH-48 provides direct access to Jaipur",
+      "Book cabs in advance during corporate rush hours",
+      "Cyber City area has heavy traffic during peak hours"
+    ],
+    localEvents: "Gurgaon Utsav, Corporate cultural festivals",
+    nearbyDestinations: ["Delhi (30 min)", "Jaipur (4-5 hours)", "Agra (3-4 hours)"]
+  },
+
+  Faridabad: {
+    description: "Faridabad is the largest city in Haryana and an important industrial hub in Delhi NCR. Known for its manufacturing sector, Surajkund crafts mela, and proximity to the Aravalli hills, it offers a mix of industry and nature.",
+    bestTimeToVisit: "October to March (cool weather ideal for sightseeing)",
+    localAttractions: [
+      "Surajkund - Ancient reservoir with crafts fair",
+      "Badkhal Lake - Scenic lake (seasonal)",
+      "Raja Nahar Singh Palace - Historic Jat palace",
+      "Town Park - Family recreation area",
+      "Aravalli Golf Course - Scenic course in foothills",
+      "Peacock Lake - Nature retreat"
+    ],
+    travelTips: [
+      "Surajkund Mela in February is a must-visit",
+      "Violet Line Metro connects to Delhi",
+      "NH-19 provides direct access to Agra and Mathura",
+      "Old Faridabad has local bazaars worth exploring"
+    ],
+    localEvents: "Surajkund International Crafts Mela (February), Kartik Cultural Mela",
+    nearbyDestinations: ["Delhi (30 min)", "Agra (3-4 hours)", "Mathura (2-3 hours)"]
+  },
+
+  Ghaziabad: {
+    description: "Ghaziabad, known as the Gateway of Uttar Pradesh, is a major industrial and residential city in Delhi NCR. With excellent connectivity via NH-9 and NH-24, it serves as a key transit point for travel to Uttarakhand and eastern UP.",
+    bestTimeToVisit: "October to March (pleasant winter weather)",
+    localAttractions: [
+      "ISKCON Temple - Modern Krishna temple",
+      "Drizzling Land - Water and amusement park",
+      "Swarna Jayanti Park - Large public park",
+      "City Forest - Green belt for nature walks",
+      "Hindon Air Force Station area - Aviation heritage",
+      "Shipra Mall - Shopping and entertainment"
+    ],
+    travelTips: [
+      "Rapid Rail connects to Delhi quickly",
+      "NH-9 is the fastest route to Haridwar and Rishikesh",
+      "Indirapuram and Vaishali are main residential hubs",
+      "Book early morning cabs for hill station trips"
+    ],
+    localEvents: "Ghaziabad Trade Fair, Ganesh Chaturthi celebrations",
+    nearbyDestinations: ["Delhi (30 min)", "Haridwar (4-5 hours)", "Nainital (6 hours)"]
+  },
+
+  Meerut: {
+    description: "Meerut, one of the oldest cities in India, is famous as the birthplace of the 1857 Indian Rebellion. A major educational and sports goods manufacturing hub in western UP, it sits at the gateway to Uttarakhand hill stations.",
+    bestTimeToVisit: "October to March (pleasant winter weather)",
+    localAttractions: [
+      "Augarnath Temple - Ancient Shiva temple",
+      "St. John's Church - Historic colonial church",
+      "Shaheed Smarak - 1857 uprising memorial",
+      "Hastinapur Wildlife Sanctuary - Nature reserve",
+      "Augharnath Mandir - Important religious site",
+      "Gandhi Bagh - Historic public garden"
+    ],
+    travelTips: [
+      "Delhi-Meerut Expressway makes Delhi just 1 hour away",
+      "Gateway to Haridwar, Rishikesh, and Mussoorie",
+      "Famous for sports goods and scissors manufacturing",
+      "Try local Daulat ki Chaat and Gazak sweets"
+    ],
+    localEvents: "1857 Commemoration events, Nauchandi Mela",
+    nearbyDestinations: ["Delhi (1.5 hours)", "Haridwar (3-4 hours)", "Mussoorie (5 hours)"]
   }
 };
 

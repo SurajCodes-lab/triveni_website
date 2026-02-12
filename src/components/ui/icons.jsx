@@ -123,6 +123,7 @@ export {
   ThumbsDown,
   Quote,
   Target,
+  Trophy,
   Gem,
   Gift,
   DollarSign,
@@ -240,6 +241,9 @@ export {
   Scale,
   RotateCcw,
   Languages,
+  TrainFront,
+  CircleParking,
+  Waypoints,
 } from 'lucide-react';
 
 // Custom WhatsApp icon to avoid importing react-icons/bs (~200KB) for a single icon

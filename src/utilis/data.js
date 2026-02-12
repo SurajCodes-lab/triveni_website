@@ -1468,6 +1468,42 @@ import {
       coverage: "High Altitude Desert",
       popularity: "high",
     },
+    {
+      name: "Noida",
+      region: "North India",
+      coverage: "NCR Region",
+      popularity: "high",
+    },
+    {
+      name: "Greater Noida",
+      region: "North India",
+      coverage: "NCR Region",
+      popularity: "medium",
+    },
+    {
+      name: "Gurgaon",
+      region: "North India",
+      coverage: "NCR Region",
+      popularity: "high",
+    },
+    {
+      name: "Faridabad",
+      region: "North India",
+      coverage: "NCR Region",
+      popularity: "medium",
+    },
+    {
+      name: "Ghaziabad",
+      region: "North India",
+      coverage: "NCR Region",
+      popularity: "medium",
+    },
+    {
+      name: "Meerut",
+      region: "North India",
+      coverage: "NCR Extended",
+      popularity: "medium",
+    },
   ];
 
   export const cityDetails = {
@@ -1922,8 +1958,209 @@ import {
         surcharge: "1.3x - 1.6x normal fare",
       },
     },
+    Noida: {
+      cabs: {
+        types: ["Bus", "Sedan", "SUV", "Tempo Traveller", "Luxury Bus"],
+        features: ["AC", "GPS Tracking", "24/7 Support", "Clean Interior"],
+        capacity: "1-6 passengers depending on cab type",
+      },
+      coverage: {
+        fullCoverage: ["Sector 18", "Sector 62", "Film City", "Botanical Garden"],
+        limitedCoverage: ["Greater Noida Expressway", "Yamuna Expressway"],
+        restricted: ["Interstate without permit"],
+      },
+      facilities: {
+        payment: ["Cash", "UPI", "Credit Card", "Corporate Billing"],
+        booking: ["App", "Website", "Phone", "Corporate Desk"],
+        support: "24/7 Customer Service",
+      },
+      safetyFeatures: [
+        "Real-time GPS tracking",
+        "SOS emergency button",
+        "Driver verification",
+        "Regular sanitization",
+      ],
+      popularRoutes: [
+        "Noida - Delhi Airport",
+        "Noida - Agra",
+        "Noida - Haridwar",
+        "Noida - Jaipur",
+      ],
+      peakHours: {
+        morning: "7 AM - 10 AM",
+        evening: "5 PM - 9 PM",
+        surcharge: "1.2x - 1.5x normal fare",
+      },
+    },
+    "Greater Noida": {
+      cabs: {
+        types: ["Bus", "Sedan", "SUV", "Tempo Traveller", "Luxury Bus"],
+        features: ["AC", "GPS Tracking", "24/7 Support", "Clean Interior"],
+        capacity: "1-6 passengers depending on cab type",
+      },
+      coverage: {
+        fullCoverage: ["Pari Chowk", "Knowledge Park", "Alpha", "Beta"],
+        limitedCoverage: ["Yamuna Expressway", "Jewar Airport Area"],
+        restricted: ["Interstate without permit"],
+      },
+      facilities: {
+        payment: ["Cash", "UPI", "Credit Card", "Corporate Billing"],
+        booking: ["App", "Website", "Phone"],
+        support: "24/7 Customer Service",
+      },
+      safetyFeatures: [
+        "Real-time GPS tracking",
+        "SOS emergency button",
+        "Driver verification",
+        "Regular sanitization",
+      ],
+      popularRoutes: [
+        "Greater Noida - Delhi Airport",
+        "Greater Noida - Agra",
+        "Greater Noida - Mathura",
+        "Greater Noida - Noida",
+      ],
+      peakHours: {
+        morning: "7 AM - 10 AM",
+        evening: "5 PM - 9 PM",
+        surcharge: "1.2x - 1.5x normal fare",
+      },
+    },
+    Gurgaon: {
+      cabs: {
+        types: ["Bus", "Sedan", "SUV", "Tempo Traveller", "Luxury Bus"],
+        features: ["AC", "GPS Tracking", "24/7 Support", "Clean Interior"],
+        capacity: "1-6 passengers depending on cab type",
+      },
+      coverage: {
+        fullCoverage: ["Cyber City", "MG Road", "Sohna Road", "Golf Course Road"],
+        limitedCoverage: ["Manesar", "IMT Areas"],
+        restricted: ["Interstate without permit"],
+      },
+      facilities: {
+        payment: ["Cash", "UPI", "Credit Card", "Corporate Billing"],
+        booking: ["App", "Website", "Phone", "Corporate Desk"],
+        support: "24/7 Customer Service",
+      },
+      safetyFeatures: [
+        "Real-time GPS tracking",
+        "SOS emergency button",
+        "Driver verification",
+        "Regular sanitization",
+      ],
+      popularRoutes: [
+        "Gurgaon - Delhi Airport",
+        "Gurgaon - Jaipur",
+        "Gurgaon - Agra",
+        "Gurgaon - Chandigarh",
+      ],
+      peakHours: {
+        morning: "7 AM - 10 AM",
+        evening: "5 PM - 9 PM",
+        surcharge: "1.2x - 1.5x normal fare",
+      },
+    },
+    Faridabad: {
+      cabs: {
+        types: ["Bus", "Sedan", "SUV", "Tempo Traveller", "Luxury Bus"],
+        features: ["AC", "GPS Tracking", "24/7 Support", "Clean Interior"],
+        capacity: "1-6 passengers depending on cab type",
+      },
+      coverage: {
+        fullCoverage: ["Sector 15", "NIT", "Old Faridabad", "Ballabhgarh"],
+        limitedCoverage: ["Industrial Areas", "Palwal Road"],
+        restricted: ["Interstate without permit"],
+      },
+      facilities: {
+        payment: ["Cash", "UPI", "Credit Card"],
+        booking: ["App", "Website", "Phone"],
+        support: "24/7 Customer Support",
+      },
+      safetyFeatures: [
+        "Real-time GPS tracking",
+        "Driver verification",
+        "Regular sanitization",
+      ],
+      popularRoutes: [
+        "Faridabad - Delhi",
+        "Faridabad - Agra",
+        "Faridabad - Mathura",
+        "Faridabad - Jaipur",
+      ],
+      peakHours: {
+        morning: "7 AM - 10 AM",
+        evening: "5 PM - 8 PM",
+        surcharge: "1.2x - 1.4x normal fare",
+      },
+    },
+    Ghaziabad: {
+      cabs: {
+        types: ["Bus", "Sedan", "SUV", "Tempo Traveller", "Luxury Bus"],
+        features: ["AC", "GPS Tracking", "24/7 Support", "Clean Interior"],
+        capacity: "1-6 passengers depending on cab type",
+      },
+      coverage: {
+        fullCoverage: ["Indirapuram", "Vaishali", "Kaushambi", "Raj Nagar"],
+        limitedCoverage: ["Loni", "Modinagar"],
+        restricted: ["Interstate without permit"],
+      },
+      facilities: {
+        payment: ["Cash", "UPI", "Credit Card"],
+        booking: ["App", "Website", "Phone"],
+        support: "24/7 Customer Support",
+      },
+      safetyFeatures: [
+        "Real-time GPS tracking",
+        "Driver verification",
+        "Regular sanitization",
+      ],
+      popularRoutes: [
+        "Ghaziabad - Delhi",
+        "Ghaziabad - Haridwar",
+        "Ghaziabad - Agra",
+        "Ghaziabad - Nainital",
+      ],
+      peakHours: {
+        morning: "7 AM - 10 AM",
+        evening: "5 PM - 9 PM",
+        surcharge: "1.2x - 1.5x normal fare",
+      },
+    },
+    Meerut: {
+      cabs: {
+        types: ["Bus", "Sedan", "SUV", "Tempo Traveller", "Luxury Bus"],
+        features: ["AC", "GPS Tracking", "24/7 Support"],
+        capacity: "1-6 passengers depending on cab type",
+      },
+      coverage: {
+        fullCoverage: ["Cantt Area", "Abu Lane", "Begumpul", "Sadar Bazar"],
+        limitedCoverage: ["Modipuram", "Mawana Road"],
+        restricted: ["Interstate without permit"],
+      },
+      facilities: {
+        payment: ["Cash", "UPI", "Credit Card"],
+        booking: ["App", "Website", "Phone"],
+        support: "24/7 Customer Support",
+      },
+      safetyFeatures: [
+        "Real-time GPS tracking",
+        "Driver verification",
+        "Regular sanitization",
+      ],
+      popularRoutes: [
+        "Meerut - Delhi",
+        "Meerut - Haridwar",
+        "Meerut - Mussoorie",
+        "Meerut - Rishikesh",
+      ],
+      peakHours: {
+        morning: "7 AM - 10 AM",
+        evening: "5 PM - 8 PM",
+        surcharge: "1.1x - 1.3x normal fare",
+      },
+    },
   };
-  
+
   export const touristSpots = {
     Delhi: [
       {
