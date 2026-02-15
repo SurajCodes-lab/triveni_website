@@ -4,7 +4,7 @@ import FriendsTripClient from '@/components/audience/FriendsTripClient';
 const data = friendsTripData['bachelor'];
 
 export const metadata = {
-  title: 'Bachelor Trip North India by Tempo Traveller | Rs 815/Person | 2026',
+  title: 'Bachelor Trip North India by Car | Rs 815/Person | 2026',
   description: 'Book Tempo Traveller for bachelor trip in North India. Rs 815/person. Rishikesh, Manali, Kasol, Jaisalmer. Rafting, bungee, camping. 17-27 seater. Call 7668570551.',
   keywords: 'bachelor trip north india, bachelor party trip, bachelor trip rishikesh, bachelor trip manali, bachelorette trip india, pre wedding trip tempo traveller',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

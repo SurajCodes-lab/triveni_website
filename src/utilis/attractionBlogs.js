@@ -11058,7 +11058,7 @@ export const attractionBlogPosts = [
 
     primaryCTA: {
       text: "Book Agra Tour",
-      url: "/sightseeing/agra-one-day-tour",
+      url: "/sightseeing/agra-full-day-city-tour",
       description: "Visit Taj Mahal & Agra Fort",
       price: "Starting from ₹3,500"
     },
@@ -11141,7 +11141,7 @@ export const attractionBlogPosts = [
              <div>✓ Skip-the-line Tips</div>
              <div>✓ Lunch Stop included</div>
         </div>
-        <a href="/sightseeing/agra-one-day-tour" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">Book Agra Package - ₹3,500</a>
+        <a href="/sightseeing/agra-full-day-city-tour" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">Book Agra Package - ₹3,500</a>
       </div>
     `
   }
