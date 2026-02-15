@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getRouteBySlug, getAllSlugs } from '@/utilis/chardhamYatraData';
 import ChardhamVehicleHubClient from './ChardhamVehicleHubClient';
 import ChardhamRouteClient from './ChardhamRouteClient';
@@ -186,9 +187,9 @@ export default async function ChardhamYatraPage({ params }) {
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Page Not Found</h1>
           <p className="text-stone-400 mb-8">The Char Dham Yatra page you are looking for does not exist.</p>
-          <a href="/chardham-yatra" className="bg-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors">
+          <Link href="/chardham-yatra" className="bg-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors">
             View All Char Dham Options
-          </a>
+          </Link>
         </div>
       </div>
     );
