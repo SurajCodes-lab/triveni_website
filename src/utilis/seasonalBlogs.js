@@ -49,11 +49,11 @@ export const seasonalBlogs = [
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Valley of Flowers, Uttarakhand</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> July-August | <strong>Trek Difficulty:</strong> Moderate (13 km from Govindghat)</p>
-<p class="text-gray-700 leading-relaxed mb-4">This UNESCO World Heritage Site features alpine flowers in full bloom including Brahmakamal, Blue Poppy, and Cobra Lily. The <a href="/sightseeing/char-dham-yatra" class="text-blue-600 hover:underline font-semibold">Char Dham route</a> passes nearby, and Hemkund Sahib shrine is accessible from here.</p>
+<p class="text-gray-700 leading-relaxed mb-4">This UNESCO World Heritage Site features alpine flowers in full bloom including Brahmakamal, Blue Poppy, and Cobra Lily. The <a href="/sightseeing/char-dham-yatra-complete-circuit" class="text-blue-600 hover:underline font-semibold">Char Dham route</a> passes nearby, and Hemkund Sahib shrine is accessible from here.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Udaipur, Rajasthan</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> July-September | <strong>From Delhi:</strong> 660 km (10-11 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4">Unlike summer when lakes are often dry, monsoon fills Lake Pichola and Fateh Sagar to their full glory. The Aravalli hills turn lush green, creating dramatic palace reflections. Our <a href="/sightseeing/udaipur-sightseeing" class="text-blue-600 hover:underline font-semibold">Udaipur sightseeing packages</a> are perfect for monsoon visits.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Unlike summer when lakes are often dry, monsoon fills Lake Pichola and Fateh Sagar to their full glory. The Aravalli hills turn lush green, creating dramatic palace reflections. Our <a href="/sightseeing/udaipur-city-of-lakes-tour" class="text-blue-600 hover:underline font-semibold">Udaipur sightseeing packages</a> are perfect for monsoon visits.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Pachmarhi, Madhya Pradesh</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Best Time:</strong> July-September | <strong>From Delhi:</strong> 800 km | <strong>From Bhopal:</strong> 200 km</p>
@@ -174,7 +174,7 @@ export const seasonalBlogs = [
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Peak Winter (January-February):</strong> Snow reaches lower hill stations like Shimla, Manali, Dalhousie</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Late Winter (February-March):</strong> Best consolidated snow; spring skiing in high areas</p>
 
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Important:</strong> Snowfall is never guaranteed. It depends on Western Disturbances. Check forecasts before planning your <a href="/sightseeing/shimla-manali-tour" class="text-blue-600 hover:underline font-semibold">Shimla-Manali trip</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Important:</strong> Snowfall is never guaranteed. It depends on Western Disturbances. Check forecasts before planning your <a href="/sightseeing/shimla-to-manali-2-days-tour" class="text-blue-600 hover:underline font-semibold">Shimla-Manali trip</a>.</p>
 
 <hr class="my-8 border-gray-200" />
 
@@ -195,11 +195,11 @@ export const seasonalBlogs = [
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Auli, Uttarakhand</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,500-3,050m | <strong>Snow Period:</strong> January-March | <strong>From Delhi:</strong> 500 km (12-14 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4">India's premier ski resort with affordable skiing, stunning Nanda Devi views, and cable car from Joshimath. Less crowded than Gulmarg and more accessible by road. Perfect for combining with <a href="/sightseeing/char-dham-yatra" class="text-blue-600 hover:underline font-semibold">Char Dham Yatra</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4">India's premier ski resort with affordable skiing, stunning Nanda Devi views, and cable car from Joshimath. Less crowded than Gulmarg and more accessible by road. Perfect for combining with <a href="/sightseeing/char-dham-yatra-complete-circuit" class="text-blue-600 hover:underline font-semibold">Char Dham Yatra</a>.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Solang Valley, Manali</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,560m | <strong>Snow Period:</strong> December-February | <strong>From Delhi:</strong> 530 km (12-13 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4">Easy access from <a href="/sightseeing/manali-tour" class="text-blue-600 hover:underline font-semibold">Manali</a>, variety of activities, and the Atal Tunnel makes the journey shorter. Budget-friendly options for families.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Easy access from <a href="/sightseeing/manali-solang-valley-tour" class="text-blue-600 hover:underline font-semibold">Manali</a>, variety of activities, and the Atal Tunnel makes the journey shorter. Budget-friendly options for families.</p>
 
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Activities:</strong> Skiing, paragliding (even in winter!), snow scooter rides, zorbing, cable car</p>
 
@@ -209,7 +209,7 @@ export const seasonalBlogs = [
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">5. Shimla & Kufri</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,205m (Shimla), 2,510m (Kufri) | <strong>From Delhi:</strong> 350 km (8-9 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Reality Check:</strong> Shimla town rarely gets heavy snow; Kufri is more likely. Not guaranteed—plan as "bonus" rather than primary goal. Book our <a href="/sightseeing/shimla-tour" class="text-blue-600 hover:underline font-semibold">Shimla tour package</a> for the best experience.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Reality Check:</strong> Shimla town rarely gets heavy snow; Kufri is more likely. Not guaranteed—plan as "bonus" rather than primary goal. Book our <a href="/sightseeing/shimla-kufri-tour" class="text-blue-600 hover:underline font-semibold">Shimla tour package</a> for the best experience.</p>
 
 <hr class="my-8 border-gray-200" />
 
@@ -319,16 +319,16 @@ export const seasonalBlogs = [
     ],
     primaryCTA: {
       text: "Book Photography Tour",
-      url: "/sightseeing/rajasthan-tour",
+      url: "/tour-package/rajasthan-tour",
       description: "Capture Rajasthan's magic",
       price: "Starting ₹28,000"
     },
-    content: `<p><strong>Rajasthan</strong> is perhaps India's most photogenic state. Every element seems designed for the camera—magnificent forts silhouetted against orange sunsets, colorful turbans against desert backgrounds, ornate havelis with intricate details. Our <a href="/sightseeing/rajasthan-tour" class="text-blue-600 hover:underline font-semibold">Rajasthan tour packages</a> are perfect for photographers.</p>
+    content: `<p><strong>Rajasthan</strong> is perhaps India's most photogenic state. Every element seems designed for the camera—magnificent forts silhouetted against orange sunsets, colorful turbans against desert backgrounds, ornate havelis with intricate details. Our <a href="/tour-package/rajasthan-tour" class="text-blue-600 hover:underline font-semibold">Rajasthan tour packages</a> are perfect for photographers.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Rajasthan for Photography?</h2>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Architectural Grandeur</h3>
-<p class="text-gray-700 leading-relaxed mb-4">Forts, palaces, stepwells, havelis—centuries of royal patronage created some of the world's most photogenic architecture. From <a href="/sightseeing/jaipur-sightseeing" class="text-blue-600 hover:underline font-semibold">Jaipur's pink city</a> to Jodhpur's blue houses, every frame is a masterpiece.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Forts, palaces, stepwells, havelis—centuries of royal patronage created some of the world's most photogenic architecture. From <a href="/sightseeing/jaipur-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Jaipur's pink city</a> to Jodhpur's blue houses, every frame is a masterpiece.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Color Explosion</h3>
 <p class="text-gray-700 leading-relaxed mb-4">Rajasthani culture celebrates color—in clothing, in buildings, in festivals. The visual contrast against the arid landscape is striking and unique to this region.</p>
@@ -349,7 +349,7 @@ export const seasonalBlogs = [
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Must-Capture:</strong> Blue houses from Mehrangarh Fort, Mehrangarh Fort from Jaswant Thada, Toorji Ka Jhalra stepwell</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Best Times:</strong> Sunrise from fort looking at blue city, sunset from blue city looking at fort</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Hidden Gems:</strong> Clock Tower market chaos, backstreets of Brahmpuri</p>
-<p class="text-gray-700 leading-relaxed mb-4">Our <a href="/sightseeing/jodhpur-sightseeing" class="text-blue-600 hover:underline font-semibold">Jodhpur sightseeing tour</a> covers all major photography spots.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Our <a href="/sightseeing/jodhpur-blue-city-tour" class="text-blue-600 hover:underline font-semibold">Jodhpur sightseeing tour</a> covers all major photography spots.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Udaipur (City of Lakes)</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Iconic Shots:</strong> Lake Palace from shore (dawn), City Palace from boat, Jagdish Temple steps</p>
@@ -477,7 +477,7 @@ export const seasonalBlogs = [
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Karim's near Jama Masjid (Mughlai classics) - Try Mutton Burra, Nahari, Seekh Kebab</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Chaat crawl at Natraj Dahi Bhalle, Bengali Market</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Night:</strong> Giani's Kulfi Falooda, Moolchand Parathewala</p>
-<p class="text-gray-700 leading-relaxed mb-4">Explore our <a href="/sightseeing/delhi-sightseeing" class="text-blue-600 hover:underline font-semibold">Delhi sightseeing packages</a> that include food walk options.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Explore our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi sightseeing packages</a> that include food walk options.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 2: Delhi to Amritsar (450 km)</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Highway Stop - Murthal (50 km from Delhi):</strong> Sukhdev Dhaba or Amrik Sukhdev for famous parathas with white butter (best at dawn/breakfast)</p>
@@ -488,7 +488,7 @@ export const seasonalBlogs = [
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Bharawan da Dhaba (since 1912) - Must try: Amritsari Kulcha, Chole, Lassi</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Brother's Dhaba (Amritsari Fish), Makhan Fish Corner</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Night:</strong> Gurdas Ram Jalebi Wala, Giani Tea Stall kulcha</p>
-<p class="text-gray-700 leading-relaxed mb-4">Book our <a href="/sightseeing/amritsar-golden-temple" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple tour</a> with food exploration.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Book our <a href="/sightseeing/amritsar-golden-temple-wagah-border-tour" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple tour</a> with food exploration.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 4: Amritsar to Chandigarh (230 km)</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Highway Lunch:</strong> Moga or Ludhiana dhabas with sarson ka saag (seasonal)</p>
@@ -502,7 +502,7 @@ export const seasonalBlogs = [
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Morning:</strong> Rahim's Nahari Kulcha, Makkhan Malai (winter only, street vendors)</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Lunch:</strong> Wahid's Biryani OR Idris Biryani - Awadhi Biryani differs from Hyderabadi!</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Evening:</strong> Hazratganj walk, Royal Cafe kulfi falooda, Basket Chaat</p>
-<p class="text-gray-700 leading-relaxed mb-4">Our <a href="/sightseeing/lucknow-heritage-tour" class="text-blue-600 hover:underline font-semibold">Lucknow heritage tour</a> includes food exploration.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Our <a href="/sightseeing/lucknow-heritage-city-tour" class="text-blue-600 hover:underline font-semibold">Lucknow heritage tour</a> includes food exploration.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Day 7: Lucknow to Jaipur (580 km)</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Highway Food:</strong> Stop at Agra again or highway dhabas</p>
@@ -618,7 +618,7 @@ export const seasonalBlogs = [
       description: "Experience Himalayan adventure",
       price: "Starting ₹7,500"
     },
-    content: `<p>The Himalayan states of <strong>Uttarakhand</strong> and <strong>Himachal Pradesh</strong> have transformed into adventure sport hubs. From world-class <a href="/sightseeing/rishikesh-adventure" class="text-blue-600 hover:underline font-semibold">river rafting in Rishikesh</a> to Asia's best paragliding, these mountains offer adrenaline experiences that rival international destinations at a fraction of the cost.</p>
+    content: `<p>The Himalayan states of <strong>Uttarakhand</strong> and <strong>Himachal Pradesh</strong> have transformed into adventure sport hubs. From world-class <a href="/sightseeing/rishikesh-adventure-spiritual-tour" class="text-blue-600 hover:underline font-semibold">river rafting in Rishikesh</a> to Asia's best paragliding, these mountains offer adrenaline experiences that rival international destinations at a fraction of the cost.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why the Himalayas for Adventure?</h2>
 
@@ -826,7 +826,7 @@ export const seasonalBlogs = [
 <li class="ml-4">No Ravan burning—focuses on deity worship</li>
 </ul>
 
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Itinerary (4 Days):</strong> Delhi to Kullu (500 km), main Dussehra procession, valley exploration, return. Combine with <a href="/sightseeing/manali-tour" class="text-blue-600 hover:underline font-semibold">Manali trip</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Itinerary (4 Days):</strong> Delhi to Kullu (500 km), main Dussehra procession, valley exploration, return. Combine with <a href="/sightseeing/manali-solang-valley-tour" class="text-blue-600 hover:underline font-semibold">Manali trip</a>.</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Transport:</strong> SUV or Tempo | <strong>From Delhi:</strong> ₹24,000-32,000 (round trip, 4 days)</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Mysore Dussehra (Karnataka)</h3>
@@ -836,7 +836,7 @@ export const seasonalBlogs = [
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Delhi Dussehra</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>At Ramlila Maidan:</strong> Largest Ravan effigies (100+ feet) | <strong>At Red Fort:</strong> Traditional celebration attended by dignitaries</p>
-<p class="text-gray-700 leading-relaxed mb-4">Multiple Ramlila grounds across the city make it convenient for visitors. Explore with our <a href="/sightseeing/delhi-sightseeing" class="text-blue-600 hover:underline font-semibold">Delhi sightseeing packages</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Multiple Ramlila grounds across the city make it convenient for visitors. Explore with our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi sightseeing packages</a>.</p>
 
 <hr class="my-8 border-gray-200" />
 
@@ -855,7 +855,7 @@ export const seasonalBlogs = [
 </ul>
 
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Regular Diwali (November 1, 2026):</strong> Also magnificent—temples decorated, ghats lit, evening aarti special</p>
-<p class="text-gray-700 leading-relaxed mb-4">Book our <a href="/sightseeing/varanasi-tour" class="text-blue-600 hover:underline font-semibold">Varanasi spiritual tour</a> for festival season.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Book our <a href="/sightseeing/varanasi-ganga-aarti-tour" class="text-blue-600 hover:underline font-semibold">Varanasi spiritual tour</a> for festival season.</p>
 
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Itinerary (3 Days):</strong> Delhi to Varanasi (800 km drive or flight + car), ghat visits and Dev Deepawali celebration, morning boat ride and return</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Transport:</strong> Sedan or SUV | <strong>From Delhi by Road:</strong> ₹22,000-28,000 (3-4 days)</p>
@@ -863,7 +863,7 @@ export const seasonalBlogs = [
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Jaipur Diwali</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Why Special:</strong> Nahargarh Fort illumination, City Palace celebrations, Johari Bazaar transforms into light wonderland, Pink City glows golden</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Combined Trip:</strong> Jaipur (2 nights) + Pushkar (1 night for Kartik Purnima mela)</p>
-<p class="text-gray-700 leading-relaxed mb-4">Experience with our <a href="/sightseeing/jaipur-sightseeing" class="text-blue-600 hover:underline font-semibold">Jaipur sightseeing tour</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Experience with our <a href="/sightseeing/jaipur-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Jaipur sightseeing tour</a>.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Amritsar Diwali (Bandi Chhor Divas)</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Why Special:</strong></p>
@@ -874,7 +874,7 @@ export const seasonalBlogs = [
 <li class="ml-4">Combined Hindu-Sikh celebration</li>
 <li class="ml-4">Langar feeds hundreds of thousands</li>
 </ul>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> 450 km, ideal weekend trip. Book our <a href="/sightseeing/amritsar-golden-temple" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple tour</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> 450 km, ideal weekend trip. Book our <a href="/sightseeing/amritsar-golden-temple-wagah-border-tour" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple tour</a>.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">4. Ayodhya Diwali</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Why Special:</strong> Birthplace of Lord Ram, Saryu River aarti, city-wide lamp lighting. Growing as major Diwali destination especially after Ram Mandir inauguration.</p>

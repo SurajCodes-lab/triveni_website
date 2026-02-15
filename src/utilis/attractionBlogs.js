@@ -144,7 +144,7 @@ export const attractionBlogPosts = [
     // Primary CTA
     primaryCTA: {
       text: "Book Same Day Agra Tour",
-      url: "/sightseeing/agra-same-day-tour",
+      url: "/same-day-agra-tour-from-delhi",
       description: "Skip-the-line Taj Mahal tour with expert guide",
       price: "Starting from ₹3,500",
       features: [
@@ -198,12 +198,12 @@ export const attractionBlogPosts = [
 
     content: `
       <div class="blog-intro">
-        <p>The <strong>Taj Mahal</strong>, one of the Seven Wonders of the World, stands as an eternal symbol of love and India's most iconic monument. Built by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, this UNESCO World Heritage Site attracts over 8 million visitors annually. If you're planning to visit this architectural masterpiece, our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Agra day tour</a> offers the best experience with skip-the-line access and expert guides.</p>
+        <p>The <strong>Taj Mahal</strong>, one of the Seven Wonders of the World, stands as an eternal symbol of love and India's most iconic monument. Built by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, this UNESCO World Heritage Site attracts over 8 million visitors annually. If you're planning to visit this architectural masterpiece, our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Agra day tour</a> offers the best experience with skip-the-line access and expert guides.</p>
 
         <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-xl my-6 border-l-4 border-amber-500">
           <h3 class="text-xl font-bold mb-3">Skip the Planning - Book Ready-Made Taj Mahal Tour</h3>
-          <p class="mb-4">Our <a href="/sightseeing/agra-same-day-tour" class="font-bold text-blue-600 hover:underline">Same Day Agra Tour</a> includes hotel pickup, AC car, skip-the-line entry, and expert guide.</p>
-          <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Taj Mahal Tour - ₹3,500 →</a>
+          <p class="mb-4">Our <a href="/same-day-agra-tour-from-delhi" class="font-bold text-blue-600 hover:underline">Same Day Agra Tour</a> includes hotel pickup, AC car, skip-the-line entry, and expert guide.</p>
+          <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Taj Mahal Tour - ₹3,500 →</a>
         </div>
       </div>
 
@@ -228,7 +228,7 @@ export const attractionBlogPosts = [
 
       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8">
         <h3 class="text-2xl font-bold mb-4">💎 Experience Taj Mahal with Expert Guides</h3>
-        <p class="mb-6">Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> includes:</p>
+        <p class="mb-6">Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> includes:</p>
         <ul class="space-y-2 mb-6">
           <li>✓ Skip-the-line fast-track entry tickets</li>
           <li>✓ Professional English-speaking guide</li>
@@ -236,7 +236,7 @@ export const attractionBlogPosts = [
           <li>✓ Photo stops at best locations</li>
           <li>✓ Visit Taj Mahal + Agra Fort + Mehtab Bagh</li>
         </ul>
-        <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour Now | Starting from ₹3,500</a>
+        <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour Now | Starting from ₹3,500</a>
       </div>
 
       <h2>Entry Fees & Timings</h2>
@@ -258,7 +258,7 @@ export const attractionBlogPosts = [
         <li><strong>Night Viewing:</strong> Available on full moon nights (except Fridays and Ramadan)</li>
       </ul>
 
-      <p class="mt-4">💡 <strong>Pro Tip:</strong> Book your <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="text-blue-600 hover:underline">sunrise Taj Mahal tour</a> to avoid crowds and witness the monument in magical morning light!</p>
+      <p class="mt-4">💡 <strong>Pro Tip:</strong> Book your <a href="/sunrise-taj-mahal-tour-from-delhi" class="text-blue-600 hover:underline">sunrise Taj Mahal tour</a> to avoid crowds and witness the monument in magical morning light!</p>
 
       <h2>Best Time to Visit Taj Mahal</h2>
 
@@ -273,12 +273,12 @@ export const attractionBlogPosts = [
         <li><strong>Sunset (4:00-6:30 PM):</strong> Beautiful evening light, romantic atmosphere</li>
       </ul>
 
-      <p>Our <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="text-blue-600 hover:underline font-semibold">sunrise Taj Mahal tour from Delhi</a> ensures you experience the monument at its most beautiful and serene time.</p>
+      <p>Our <a href="/sunrise-taj-mahal-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">sunrise Taj Mahal tour from Delhi</a> ensures you experience the monument at its most beautiful and serene time.</p>
 
       <h2>How to Reach Taj Mahal</h2>
 
       <h3>From Delhi</h3>
-      <p>The most convenient way to visit Taj Mahal from Delhi (233 km away) is by road via the Yamuna Expressway, which takes about 3-4 hours. Skip the hassle of planning - our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Same Day Agra Tour</a> includes comfortable AC car with experienced driver, hotel pickup, and drop-off.</p>
+      <p>The most convenient way to visit Taj Mahal from Delhi (233 km away) is by road via the Yamuna Expressway, which takes about 3-4 hours. Skip the hassle of planning - our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Same Day Agra Tour</a> includes comfortable AC car with experienced driver, hotel pickup, and drop-off.</p>
 
       <h3>By Air</h3>
       <ul>
@@ -315,7 +315,7 @@ export const attractionBlogPosts = [
         <li><strong>Side Pavilions:</strong> Red sandstone guest houses on either side</li>
       </ul>
 
-      <p>Your guide on our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Agra tour</a> will explain the fascinating history and hidden details you might otherwise miss!</p>
+      <p>Your guide on our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Agra tour</a> will explain the fascinating history and hidden details you might otherwise miss!</p>
 
       <h2>Photography Tips</h2>
       <p>Capture the Taj Mahal in all its glory with these expert photography tips:</p>
@@ -367,13 +367,13 @@ export const attractionBlogPosts = [
       <p>Make the most of your Agra visit by exploring these nearby attractions:</p>
 
       <ul>
-        <li><strong>Agra Fort (2.5 km):</strong> Magnificent UNESCO World Heritage Site fort - <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">included in our Agra tour</a></li>
+        <li><strong>Agra Fort (2.5 km):</strong> Magnificent UNESCO World Heritage Site fort - <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">included in our Agra tour</a></li>
         <li><strong>Mehtab Bagh (2 km):</strong> Sunset view of Taj Mahal across Yamuna River</li>
         <li><strong>Itmad-ud-Daulah (Baby Taj) (6 km):</strong> Beautiful marble tomb, precursor to Taj Mahal</li>
         <li><strong>Fatehpur Sikri (40 km):</strong> Abandoned Mughal city, UNESCO site</li>
       </ul>
 
-      <p>Our <a href="/sightseeing/agra-full-day-tour" class="text-blue-600 hover:underline">Agra full-day tour</a> covers all major attractions including Taj Mahal, Agra Fort, and more.</p>
+      <p>Our <a href="/sightseeing/agra-full-day-city-tour" class="text-blue-600 hover:underline">Agra full-day tour</a> covers all major attractions including Taj Mahal, Agra Fort, and more.</p>
 
       <h2>Where to Eat Nearby</h2>
       <p>After exploring the Taj Mahal, try these dining options:</p>
@@ -392,7 +392,7 @@ export const attractionBlogPosts = [
         <li><strong>Budget:</strong> Zostel Agra, Hotel Sidhartha</li>
       </ul>
 
-      <p>However, most visitors prefer our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">same-day Agra tour from Delhi</a> for a hassle-free experience without overnight stays.</p>
+      <p>However, most visitors prefer our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">same-day Agra tour from Delhi</a> for a hassle-free experience without overnight stays.</p>
 
       <h2>Frequently Asked Questions</h2>
 
@@ -403,7 +403,7 @@ export const attractionBlogPosts = [
       <p>Allow 2-3 hours for a complete visit including the gardens, monument, and photography. Our guided tours are perfectly timed for a comprehensive experience.</p>
 
       <h3>Can we buy tickets online for Taj Mahal?</h3>
-      <p>Yes, you can book tickets online at the official ASI website. However, our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">tour packages</a> include skip-the-line tickets, saving you time and hassle.</p>
+      <p>Yes, you can book tickets online at the official ASI website. However, our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">tour packages</a> include skip-the-line tickets, saving you time and hassle.</p>
 
       <h3>What is the entry fee for Taj Mahal?</h3>
       <p>₹50 for Indian citizens, ₹1,050 for foreign tourists, and free for children below 15 years.</p>
@@ -415,7 +415,7 @@ export const attractionBlogPosts = [
       <p>Open from sunrise (around 6:00 AM) to sunset (around 6:30 PM), closed on Fridays.</p>
 
       <h3>How to avoid crowds at Taj Mahal?</h3>
-      <p>Visit during sunrise hours (6-8 AM) or book our <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="text-blue-600 hover:underline">sunrise Taj Mahal tour</a> for the best experience with minimal crowds.</p>
+      <p>Visit during sunrise hours (6-8 AM) or book our <a href="/sunrise-taj-mahal-tour-from-delhi" class="text-blue-600 hover:underline">sunrise Taj Mahal tour</a> for the best experience with minimal crowds.</p>
 
       <h3>Is Taj Mahal wheelchair accessible?</h3>
       <p>Yes, wheelchair access is available, and battery-operated vehicles transport visitors from the entrance gate to the main monument.</p>
@@ -441,11 +441,11 @@ export const attractionBlogPosts = [
         <h4 class="text-xl font-bold mb-4">Popular Tours Featuring Taj Mahal:</h4>
         <div class="space-y-3 mb-6">
           <div class="bg-white/10 p-4 rounded-lg">
-            <a href="/sightseeing/agra-same-day-tour" class="text-white hover:text-yellow-300 font-semibold">Agra Same Day Tour</a>
+            <a href="/same-day-agra-tour-from-delhi" class="text-white hover:text-yellow-300 font-semibold">Agra Same Day Tour</a>
             <span class="text-yellow-300"> - ₹3,500 | 12 hours</span>
           </div>
           <div class="bg-white/10 p-4 rounded-lg">
-            <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="text-white hover:text-yellow-300 font-semibold">Taj Mahal Sunrise Tour from Delhi</a>
+            <a href="/sunrise-taj-mahal-tour-from-delhi" class="text-white hover:text-yellow-300 font-semibold">Taj Mahal Sunrise Tour from Delhi</a>
             <span class="text-yellow-300"> - ₹4,500 | 14 hours</span>
           </div>
           <div class="bg-white/10 p-4 rounded-lg">
@@ -631,8 +631,8 @@ export const attractionBlogPosts = [
 
         <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl my-6 border-l-4 border-red-600">
           <h3 class="text-xl font-bold mb-3">Explore Red Fort with Expert Guide</h3>
-          <p class="mb-4">Our <a href="/sightseeing/old-delhi-heritage-walk" class="font-bold text-blue-600 hover:underline">Old Delhi Heritage Walk</a> covers Red Fort, Jama Masjid, and Chandni Chowk.</p>
-          <a href="/sightseeing/old-delhi-heritage-walk" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Heritage Tour - ₹1,800 →</a>
+          <p class="mb-4">Our <a href="/sightseeing/delhi-full-day-city-tour" class="font-bold text-blue-600 hover:underline">Old Delhi Heritage Walk</a> covers Red Fort, Jama Masjid, and Chandni Chowk.</p>
+          <a href="/sightseeing/delhi-full-day-city-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Heritage Tour - ₹1,800 →</a>
         </div>
       </div>
 
@@ -692,7 +692,7 @@ export const attractionBlogPosts = [
         <li><strong>Light & Sound Show:</strong> Tuesday-Sunday, 7:30 PM (Hindi), 9:00 PM (English)</li>
       </ul>
 
-      <p class="mt-4">💡 <strong>Pro Tip:</strong> Visit early morning to avoid crowds and heat. Our <a href="/sightseeing/old-delhi-heritage-walk" class="text-blue-600 hover:underline">heritage walk</a> starts at 9:30 AM for the best experience!</p>
+      <p class="mt-4">💡 <strong>Pro Tip:</strong> Visit early morning to avoid crowds and heat. Our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline">heritage walk</a> starts at 9:30 AM for the best experience!</p>
 
       <h2>Best Time to Visit Red Fort</h2>
 
@@ -767,7 +767,7 @@ export const attractionBlogPosts = [
       <p>Combine your Red Fort visit with these nearby Old Delhi attractions:</p>
 
       <ul>
-        <li><strong>Jama Masjid (1 km):</strong> India's largest mosque - <a href="/sightseeing/old-delhi-heritage-walk" class="text-blue-600 hover:underline">included in our heritage walk</a></li>
+        <li><strong>Jama Masjid (1 km):</strong> India's largest mosque - <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline">included in our heritage walk</a></li>
         <li><strong>Chandni Chowk (500m):</strong> Historic market and food paradise</li>
         <li><strong>Raj Ghat (3 km):</strong> Mahatma Gandhi's memorial</li>
         <li><strong>Gurudwara Sis Ganj Sahib (1.5 km):</strong> Important Sikh shrine</li>
@@ -800,7 +800,7 @@ export const attractionBlogPosts = [
             <span class="text-yellow-300"> - ₹2,500 | 8 hours</span>
           </div>
           <div class="bg-white/10 p-4 rounded-lg">
-            <a href="/sightseeing/old-delhi-heritage-walk" class="text-white hover:text-yellow-300 font-semibold">Old Delhi Heritage Walk</a>
+            <a href="/sightseeing/delhi-full-day-city-tour" class="text-white hover:text-yellow-300 font-semibold">Old Delhi Heritage Walk</a>
             <span class="text-yellow-300"> - ₹1,800 | 4 hours</span>
           </div>
         </div>
@@ -2409,18 +2409,18 @@ export const attractionBlogPosts = [
     relatedTours: [{ id: "agra-1", name: "Agra Same Day Tour", slug: "agra-same-day-tour", city: "agra", price: "₹3,500", duration: "12 hours", description: "Taj Mahal + Agra Fort + Fatehpur Sikri" }],
     relatedDestinations: [{ name: "Agra", slug: "agra", type: "city", description: "All Agra tours" }],
     relatedBlogs: [{ title: "Taj Mahal Complete Guide", slug: "taj-mahal-complete-guide-2026" }],
-    primaryCTA: { text: "Book Agra Tour", url: "/sightseeing/agra-same-day-tour", description: "Taj Mahal + Agra Fort", price: "₹3,500", features: ["Hotel Pickup", "Skip-the-line", "Expert Guide"] },
+    primaryCTA: { text: "Book Agra Tour", url: "/same-day-agra-tour-from-delhi", description: "Taj Mahal + Agra Fort", price: "₹3,500", features: ["Hotel Pickup", "Skip-the-line", "Expert Guide"] },
     attractionData: { location: "Agra, Uttar Pradesh", entryFee: { indian: "₹40", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "6:00 AM", close: "6:00 PM", closedOn: "Friday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (6-9 AM)" }, howToReach: { fromDelhi: "233 km", nearestAirport: "Agra Airport (13 km)", nearestRailway: "Agra Cantt (6 km)" }, timeNeeded: "2 hours", coordinates: { latitude: 27.1795, longitude: 78.0211 } },
     image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
     metaTitle: "Agra Fort Guide 2026 - Timings, Fees & Tours", metaDescription: "Agra Fort complete guide: UNESCO site, Mughal fortress with Taj Mahal views. Book Agra day tours!",
     content: `
       <div class="blog-intro">
-        <p>The <strong>Agra Fort</strong>, a magnificent UNESCO World Heritage Site, stands as one of India's most impressive Mughal fortresses. This red sandstone marvel served as the main residence of the Mughal emperors for generations and witnessed some of the most pivotal moments in Indian history. From its ramparts, you can enjoy breathtaking views of the Taj Mahal across the Yamuna River. Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> covers both Agra Fort and Taj Mahal with expert guides.</p>
+        <p>The <strong>Agra Fort</strong>, a magnificent UNESCO World Heritage Site, stands as one of India's most impressive Mughal fortresses. This red sandstone marvel served as the main residence of the Mughal emperors for generations and witnessed some of the most pivotal moments in Indian history. From its ramparts, you can enjoy breathtaking views of the Taj Mahal across the Yamuna River. Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> covers both Agra Fort and Taj Mahal with expert guides.</p>
 
         <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl my-6 border-l-4 border-red-600">
           <h3 class="text-xl font-bold mb-3">Experience Agra Fort with Expert Guides</h3>
-          <p class="mb-4">Our <a href="/sightseeing/agra-same-day-tour" class="font-bold text-blue-600 hover:underline">Agra Day Tour</a> includes Taj Mahal, Agra Fort, and Fatehpur Sikri with skip-the-line access.</p>
-          <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour - ₹3,500 →</a>
+          <p class="mb-4">Our <a href="/same-day-agra-tour-from-delhi" class="font-bold text-blue-600 hover:underline">Agra Day Tour</a> includes Taj Mahal, Agra Fort, and Fatehpur Sikri with skip-the-line access.</p>
+          <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour - ₹3,500 →</a>
         </div>
       </div>
 
@@ -2458,7 +2458,7 @@ export const attractionBlogPosts = [
 
       <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl my-8">
         <h3 class="text-2xl font-bold mb-4">🏰 Explore Agra's Mughal Heritage</h3>
-        <p class="mb-6">Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> includes:</p>
+        <p class="mb-6">Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Agra Same Day Tour</a> includes:</p>
         <ul class="space-y-2 mb-6">
           <li>✓ Taj Mahal with sunrise/regular visit options</li>
           <li>✓ Agra Fort complete guided tour</li>
@@ -2467,7 +2467,7 @@ export const attractionBlogPosts = [
           <li>✓ Professional English-speaking guide</li>
           <li>✓ Comfortable AC transportation from Delhi</li>
         </ul>
-        <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour Now | ₹3,500</a>
+        <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour Now | ₹3,500</a>
       </div>
 
       <h2>Entry Fees & Timings</h2>
@@ -2489,7 +2489,7 @@ export const attractionBlogPosts = [
         <li><strong>Best Time to Visit:</strong> Early morning (6-9 AM) for cooler weather and fewer crowds</li>
       </ul>
 
-      <p class="mt-4">💡 <strong>Pro Tip:</strong> Visit Agra Fort in the morning after your Taj Mahal sunrise visit. Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Agra tour</a> is perfectly timed for this!</p>
+      <p class="mt-4">💡 <strong>Pro Tip:</strong> Visit Agra Fort in the morning after your Taj Mahal sunrise visit. Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Agra tour</a> is perfectly timed for this!</p>
 
       <h2>Best Time to Visit Agra Fort</h2>
 
@@ -2506,7 +2506,7 @@ export const attractionBlogPosts = [
       <h2>How to Reach Agra Fort</h2>
 
       <h3>From Delhi</h3>
-      <p>Agra Fort is 233 km from Delhi (3-4 hours by car via Yamuna Expressway). The easiest option is our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Same Day Agra Tour</a> with hotel pickup and comfortable AC transportation.</p>
+      <p>Agra Fort is 233 km from Delhi (3-4 hours by car via Yamuna Expressway). The easiest option is our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Same Day Agra Tour</a> with hotel pickup and comfortable AC transportation.</p>
 
       <h3>By Train</h3>
       <ul>
@@ -2589,7 +2589,7 @@ export const attractionBlogPosts = [
 
       <h2>Nearby Attractions</h2>
       <ul>
-        <li><strong>Taj Mahal (2.5 km):</strong> The iconic monument - <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">included in our tour</a></li>
+        <li><strong>Taj Mahal (2.5 km):</strong> The iconic monument - <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">included in our tour</a></li>
         <li><strong>Mehtab Bagh (6 km):</strong> Sunset view of Taj Mahal</li>
         <li><strong>Itmad-ud-Daulah (5 km):</strong> "Baby Taj" - beautiful marble tomb</li>
         <li><strong>Fatehpur Sikri (40 km):</strong> Abandoned Mughal city - UNESCO site</li>
@@ -2608,7 +2608,7 @@ export const attractionBlogPosts = [
       <p>Yes, Agra Fort is open all days of the week including Fridays (unlike Taj Mahal which is closed on Fridays).</p>
 
       <h3>Which is better to visit first - Taj Mahal or Agra Fort?</h3>
-      <p>Visit Taj Mahal first at sunrise, then Agra Fort mid-morning. This sequence is followed in our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Agra day tour</a>.</p>
+      <p>Visit Taj Mahal first at sunrise, then Agra Fort mid-morning. This sequence is followed in our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Agra day tour</a>.</p>
 
       <h3>Is there an audio guide available?</h3>
       <p>Yes, audio guides are available at the entrance for a small fee. However, a human guide provides much better insights and can answer questions.</p>
@@ -2619,11 +2619,11 @@ export const attractionBlogPosts = [
 
         <div class="space-y-3 mb-6">
           <div class="bg-white/10 p-4 rounded-lg">
-            <a href="/sightseeing/agra-same-day-tour" class="text-white hover:text-yellow-300 font-semibold">Agra Same Day Tour</a>
+            <a href="/same-day-agra-tour-from-delhi" class="text-white hover:text-yellow-300 font-semibold">Agra Same Day Tour</a>
             <span class="text-yellow-300"> - ₹3,500 | 12 hours | Taj Mahal + Agra Fort + Fatehpur Sikri</span>
           </div>
           <div class="bg-white/10 p-4 rounded-lg">
-            <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="text-white hover:text-yellow-300 font-semibold">Taj Mahal Sunrise Tour</a>
+            <a href="/sunrise-taj-mahal-tour-from-delhi" class="text-white hover:text-yellow-300 font-semibold">Taj Mahal Sunrise Tour</a>
             <span class="text-yellow-300"> - ₹4,500 | 14 hours | Early morning magic</span>
           </div>
         </div>
@@ -3014,7 +3014,7 @@ export const attractionBlogPosts = [
             <span class="text-yellow-300"> - ₹2,500 | 8 hours | 9+ Attractions</span>
           </div>
           <div class="bg-white/10 p-4 rounded-lg">
-            <a href="/sightseeing/old-delhi-heritage-walk" class="text-white hover:text-yellow-300 font-semibold">Old Delhi Heritage Walk</a>
+            <a href="/sightseeing/delhi-full-day-city-tour" class="text-white hover:text-yellow-300 font-semibold">Old Delhi Heritage Walk</a>
             <span class="text-yellow-300"> - ₹1,800 | 4 hours | Red Fort + Jama Masjid</span>
           </div>
         </div>
@@ -6799,7 +6799,7 @@ export const attractionBlogPosts = [
 
     primaryCTA: {
       text: "Book Agra Tour with Fatehpur Sikri",
-      url: "/sightseeing/agra-same-day-tour",
+      url: "/same-day-agra-tour-from-delhi",
       description: "Explore Fatehpur Sikri along with Taj Mahal and Agra Fort",
       price: "Starting from ₹3,500",
       features: [
@@ -6861,12 +6861,12 @@ export const attractionBlogPosts = [
       <div class="blog-intro">
         <p><strong>Fatehpur Sikri</strong>, the "City of Victory," stands as one of history's most fascinating abandoned capitals. Built by Emperor Akbar in the 16th century and mysteriously deserted just 14 years later, this UNESCO World Heritage Site remains perfectly preserved, earning it the nickname "Ghost City of India."</p>
 
-        <p>Located just 40 km from Agra, Fatehpur Sikri showcases the finest examples of Mughal architecture, blending Hindu, Islamic, and Persian styles. From the towering Buland Darwaza (world's highest gateway) to the intricate Panch Mahal, every structure tells a story of Akbar's vision of religious harmony. Experience this architectural marvel with our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Agra tours with Fatehpur Sikri</a>.</p>
+        <p>Located just 40 km from Agra, Fatehpur Sikri showcases the finest examples of Mughal architecture, blending Hindu, Islamic, and Persian styles. From the towering Buland Darwaza (world's highest gateway) to the intricate Panch Mahal, every structure tells a story of Akbar's vision of religious harmony. Experience this architectural marvel with our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Agra tours with Fatehpur Sikri</a>.</p>
 
         <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-xl my-6 border-l-4 border-amber-500">
           <h3 class="text-xl font-bold mb-3">🏛️ Explore Akbar's Ghost City</h3>
-          <p class="mb-4">Discover Fatehpur Sikri along with Taj Mahal and Agra Fort. Our <a href="/sightseeing/agra-same-day-tour" class="font-bold text-blue-600 hover:underline">Agra day tour</a> covers all major monuments with expert commentary.</p>
-          <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors">Book Agra Tour with Fatehpur Sikri →</a>
+          <p class="mb-4">Discover Fatehpur Sikri along with Taj Mahal and Agra Fort. Our <a href="/same-day-agra-tour-from-delhi" class="font-bold text-blue-600 hover:underline">Agra day tour</a> covers all major monuments with expert commentary.</p>
+          <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors">Book Agra Tour with Fatehpur Sikri →</a>
         </div>
       </div>
 
@@ -7008,7 +7008,7 @@ export const attractionBlogPosts = [
         <li><strong>Distance:</strong> 40 km, approximately 1 hour</li>
         <li><strong>By Taxi:</strong> ₹800-1,200 (one way), ₹1,500-2,000 (round trip with waiting)</li>
         <li><strong>By Bus:</strong> Regular buses from Agra ISBT (₹40-60)</li>
-        <li><strong>Best Option:</strong> <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Book Agra tour package</a> including Fatehpur Sikri</li>
+        <li><strong>Best Option:</strong> <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Book Agra tour package</a> including Fatehpur Sikri</li>
       </ul>
 
       <h3>From Delhi</h3>
@@ -7058,7 +7058,7 @@ export const attractionBlogPosts = [
       <p><strong>A:</strong> 40 km, approximately 1 hour by road. It's an essential addition to any Agra visit.</p>
 
       <h3>Q2: Can I visit Fatehpur Sikri and Taj Mahal in one day?</h3>
-      <p><strong>A:</strong> Yes! Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Agra day tour</a> covers Taj Mahal, Agra Fort, and Fatehpur Sikri comfortably.</p>
+      <p><strong>A:</strong> Yes! Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Agra day tour</a> covers Taj Mahal, Agra Fort, and Fatehpur Sikri comfortably.</p>
 
       <h3>Q3: Why was Fatehpur Sikri abandoned?</h3>
       <p><strong>A:</strong> Most historians believe water scarcity forced Akbar to abandon the city after just 14 years. Other theories include military necessity and epidemic.</p>
@@ -7091,7 +7091,7 @@ export const attractionBlogPosts = [
         </div>
 
         <div class="text-center">
-          <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-700 transition-colors shadow-lg">
+          <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-700 transition-colors shadow-lg">
             Book Agra Tour with Fatehpur Sikri →
           </a>
           <p class="mt-4 text-sm">Call/WhatsApp: +91-7668570551</p>
@@ -10488,7 +10488,7 @@ export const attractionBlogPosts = [
 
     primaryCTA: {
       text: "Book Delhi Temple Tour",
-      url: "/sightseeing/delhi-temple-tour",
+      url: "/sightseeing/delhi-spiritual-temple-tour",
       description: "Visit Akshardham, Lotus Temple & more",
       price: "Starting from ₹2,200"
     },
@@ -10588,7 +10588,7 @@ export const attractionBlogPosts = [
              <div>✓ Wait time for Light Show</div>
              <div>✓ Local Insights</div>
         </div>
-        <a href="/sightseeing/delhi-temple-tour" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">Book Temple Tour - ₹2,200</a>
+        <a href="/sightseeing/delhi-spiritual-temple-tour" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">Book Temple Tour - ₹2,200</a>
       </div>
     `
   },
@@ -10778,7 +10778,7 @@ export const attractionBlogPosts = [
 
     primaryCTA: {
       text: "Book Jaipur City Tour",
-      url: "/sightseeing/jaipur-full-day-sightseeing",
+      url: "/sightseeing/jaipur-full-day-city-tour",
       description: "Visit City Palace, Hawa Mahal & Jantar Mantar",
       price: "Starting from ₹2,800"
     },
@@ -10862,7 +10862,7 @@ export const attractionBlogPosts = [
       <div class="bg-pink-50 p-8 rounded-xl my-8">
         <h3 class="text-2xl font-bold mb-4 text-pink-800">👑 Experience Royal Jaipur</h3>
         <p class="mb-6">Don't miss a thing in the Pink City. Our full-day tour covers City Palace, Hawa Mahal, Jantar Mantar, and Amber Fort.</p>
-        <a href="/sightseeing/jaipur-full-day-sightseeing" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Royal Tour - ₹2,800</a>
+        <a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Royal Tour - ₹2,800</a>
       </div>
     `
   },
@@ -10916,7 +10916,7 @@ export const attractionBlogPosts = [
 
     primaryCTA: {
       text: "Book Amber Fort Trip",
-      url: "/sightseeing/amber-nahargarh-tour",
+      url: "/sightseeing/jaipur-full-day-city-tour",
       description: "Explore the majestic Amber Fort",
       price: "Starting from ₹2,200"
     },
@@ -11005,7 +11005,7 @@ export const attractionBlogPosts = [
              <div>✓ Visit all 3 Forts</div>
              <div>✓ Shopping Stops</div>
         </div>
-        <a href="/sightseeing/amber-nahargarh-tour" class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Book Fort Tour - ₹2,200</a>
+        <a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Book Fort Tour - ₹2,200</a>
       </div>
     `
   },

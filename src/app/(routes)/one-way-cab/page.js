@@ -31,15 +31,15 @@ export default function OneWayCabPage() {
   const howToSchema = { "@context": "https://schema.org", "@type": "HowTo", "name": "How to Book a One Way Cab", "description": "Easy 4-step process to book a one way cab and save up to 50%", "totalTime": "PT3M", "step": [{ "@type": "HowToStep", "position": 1, "name": "Share Trip Details", "text": "Call or WhatsApp 7668570551 with pickup city, drop city, date, and time." }, { "@type": "HowToStep", "position": 2, "name": "Get Instant Quote", "text": "Receive detailed fare breakdown within 2 minutes." }, { "@type": "HowToStep", "position": 3, "name": "Confirm & Pay", "text": "Pay small advance to lock your ride. Rest payable after trip." }, { "@type": "HowToStep", "position": 4, "name": "Enjoy One-Way Trip", "text": "Verified driver picks you up on time with clean AC vehicle." }] };
 
   const routes = [
-    { from: "Delhi", to: "Agra", km: "230", ow: "₹2,530", rt: "₹5,060", save: "₹2,530", href: "/routes/delhi-to-agra" },
-    { from: "Delhi", to: "Jaipur", km: "280", ow: "₹3,080", rt: "₹6,160", save: "₹3,080", href: "/routes/delhi-to-jaipur" },
-    { from: "Delhi", to: "Chandigarh", km: "250", ow: "₹2,750", rt: "₹5,500", save: "₹2,750", href: "/routes/delhi-to-chandigarh" },
-    { from: "Delhi", to: "Haridwar", km: "230", ow: "₹2,530", rt: "₹5,060", save: "₹2,530", href: "/routes/delhi-to-haridwar" },
-    { from: "Delhi", to: "Shimla", km: "350", ow: "₹3,850", rt: "₹7,700", save: "₹3,850", href: "/routes/delhi-to-shimla" },
-    { from: "Agra", to: "Jaipur", km: "240", ow: "₹2,640", rt: "₹5,280", save: "₹2,640", href: "/routes/agra-to-jaipur" },
-    { from: "Delhi", to: "Manali", km: "540", ow: "₹5,940", rt: "₹11,880", save: "₹5,940", href: "/routes/delhi-to-manali" },
-    { from: "Delhi", to: "Amritsar", km: "450", ow: "₹4,950", rt: "₹9,900", save: "₹4,950", href: "/routes/delhi-to-amritsar" },
-    { from: "Jaipur", to: "Udaipur", km: "395", ow: "₹4,345", rt: "₹8,690", save: "₹4,345", href: "/routes/jaipur-to-udaipur" },
+    { from: "Delhi", to: "Agra", km: "230", ow: "₹2,530", rt: "₹5,060", save: "₹2,530", href: "/delhi-to-agra" },
+    { from: "Delhi", to: "Jaipur", km: "280", ow: "₹3,080", rt: "₹6,160", save: "₹3,080", href: "/delhi-to-jaipur" },
+    { from: "Delhi", to: "Chandigarh", km: "250", ow: "₹2,750", rt: "₹5,500", save: "₹2,750", href: "/delhi-to-chandigarh" },
+    { from: "Delhi", to: "Haridwar", km: "230", ow: "₹2,530", rt: "₹5,060", save: "₹2,530", href: "/delhi-to-haridwar" },
+    { from: "Delhi", to: "Shimla", km: "350", ow: "₹3,850", rt: "₹7,700", save: "₹3,850", href: "/delhi-to-shimla" },
+    { from: "Agra", to: "Jaipur", km: "240", ow: "₹2,640", rt: "₹5,280", save: "₹2,640", href: "/agra-to-jaipur" },
+    { from: "Delhi", to: "Manali", km: "540", ow: "₹5,940", rt: "₹11,880", save: "₹5,940", href: "/delhi-to-manali" },
+    { from: "Delhi", to: "Amritsar", km: "450", ow: "₹4,950", rt: "₹9,900", save: "₹4,950", href: "/delhi-to-amritsar" },
+    { from: "Jaipur", to: "Udaipur", km: "395", ow: "₹4,345", rt: "₹8,690", save: "₹4,345", href: "/jaipur-to-udaipur" },
   ];
 
   return (
@@ -312,16 +312,16 @@ export default function OneWayCabPage() {
               <h2 className="text-sm font-bold text-stone-400 mb-4 tracking-widest uppercase">Popular One-Way Routes</h2>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { l: "Delhi to Agra One-Way", h: "/routes/delhi-to-agra" },
-                  { l: "Delhi to Jaipur One-Way", h: "/routes/delhi-to-jaipur" },
-                  { l: "Delhi to Chandigarh One-Way", h: "/routes/delhi-to-chandigarh" },
-                  { l: "Delhi to Haridwar One-Way", h: "/routes/delhi-to-haridwar" },
-                  { l: "Delhi to Shimla One-Way", h: "/routes/delhi-to-shimla" },
-                  { l: "Delhi to Manali One-Way", h: "/routes/delhi-to-manali" },
-                  { l: "Delhi to Amritsar One-Way", h: "/routes/delhi-to-amritsar" },
-                  { l: "Agra to Jaipur One-Way", h: "/routes/agra-to-jaipur" },
-                  { l: "Jaipur to Udaipur One-Way", h: "/routes/jaipur-to-udaipur" },
-                  { l: "Delhi to Rishikesh One-Way", h: "/routes/delhi-to-rishikesh" },
+                  { l: "Delhi to Agra One-Way", h: "/delhi-to-agra" },
+                  { l: "Delhi to Jaipur One-Way", h: "/delhi-to-jaipur" },
+                  { l: "Delhi to Chandigarh One-Way", h: "/delhi-to-chandigarh" },
+                  { l: "Delhi to Haridwar One-Way", h: "/delhi-to-haridwar" },
+                  { l: "Delhi to Shimla One-Way", h: "/delhi-to-shimla" },
+                  { l: "Delhi to Manali One-Way", h: "/delhi-to-manali" },
+                  { l: "Delhi to Amritsar One-Way", h: "/delhi-to-amritsar" },
+                  { l: "Agra to Jaipur One-Way", h: "/agra-to-jaipur" },
+                  { l: "Jaipur to Udaipur One-Way", h: "/jaipur-to-udaipur" },
+                  { l: "Delhi to Rishikesh One-Way", h: "/delhi-to-rishikesh" },
                 ].map((r, i) => (
                   <Link key={i} href={r.h} className="bg-stone-50 hover:bg-emerald-50 border border-stone-200 hover:border-emerald-300 text-stone-500 hover:text-emerald-700 px-4 py-2 rounded-full text-xs font-medium transition-all">{r.l}</Link>
                 ))}
@@ -350,7 +350,7 @@ export default function OneWayCabPage() {
                 {[
                   { l: "Same Day Agra Tour", h: "/same-day-agra-tour-from-delhi" },
                   { l: "Golden Triangle Tour", h: "/sightseeing/golden-triangle-tour-3-days" },
-                  { l: "Taj Mahal Sunrise Tour", h: "/taj-mahal-sunrise-tour-from-delhi" },
+                  { l: "Taj Mahal Sunrise Tour", h: "/sunrise-taj-mahal-tour-from-delhi" },
                   { l: "Rajasthan Circuit Tour", h: "/sightseeing/rajasthan-tour-from-delhi" },
                   { l: "Weekend Getaways from Delhi", h: "/weekend-getaways-from-delhi-by-car" },
                   { l: "Delhi to Agra Fare Guide", h: "/blog/delhi-to-agra-cab-fare-guide-2026" },

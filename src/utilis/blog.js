@@ -87,7 +87,7 @@ export const travelBlogPosts = [
       </ul>
 
       <h2>4. Agra - Home of the Taj Mahal</h2>
-      <p>No trip to North India is complete without witnessing the eternal beauty of the Taj Mahal in <a href="/sightseeing/agra" class="text-blue-600 hover:underline font-semibold">Agra</a>, one of the Seven Wonders of the World. <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Book our Agra same-day tour</a> for a hassle-free experience including the Taj Mahal, Agra Fort, and more.</p>
+      <p>No trip to North India is complete without witnessing the eternal beauty of the Taj Mahal in <a href="/sightseeing/agra" class="text-blue-600 hover:underline font-semibold">Agra</a>, one of the Seven Wonders of the World. <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Book our Agra same-day tour</a> for a hassle-free experience including the Taj Mahal, Agra Fort, and more.</p>
 
       <h2>5. Shimla - The Queen of Hills</h2>
       <p>Colonial charm meets natural beauty in <a href="/sightseeing/shimla" class="text-blue-600 hover:underline font-semibold">Shimla</a>, perfect for a romantic getaway or family vacation.</p>
@@ -1036,7 +1036,7 @@ export const travelBlogPosts = [
     // Primary CTA for this post
     primaryCTA: {
       text: "Book Same Day Agra Tour",
-      url: "/sightseeing/agra-same-day-tour",
+      url: "/same-day-agra-tour-from-delhi",
       description: "Hassle-free Taj Mahal visit with AC car, driver & guide",
       price: "Starting from ₹3,500",
       features: ["Hotel Pickup", "Skip-the-line Tickets", "Expert Guide", "AC Car"]
@@ -1054,8 +1054,8 @@ export const travelBlogPosts = [
         </ul>
         <div class="cta-box-primary">
           <h3>Skip the Planning - Book Ready-Made Tour</h3>
-          <p>Our <a href="/sightseeing/agra-same-day-tour" class="font-bold text-blue-600">Same Day Agra Tour</a> includes hotel pickup, AC car, driver, and flexible timing.</p>
-          <a href="/sightseeing/agra-same-day-tour" class="cta-button">Book Same Day Agra Tour - ₹3,500 →</a>
+          <p>Our <a href="/same-day-agra-tour-from-delhi" class="font-bold text-blue-600">Same Day Agra Tour</a> includes hotel pickup, AC car, driver, and flexible timing.</p>
+          <a href="/same-day-agra-tour-from-delhi" class="cta-button">Book Same Day Agra Tour - ₹3,500 →</a>
           <p class="text-sm">⭐ 4.8 Rating | 2000+ Happy Customers</p>
         </div>
       </div>
@@ -1102,7 +1102,7 @@ export const travelBlogPosts = [
       </ul>
 
       <h3>Option 3: Private Car Tour (Most Recommended) ⭐</h3>
-      <p>This is the <strong>best option</strong> for comfort, flexibility, and convenience. Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-bold">Same Day Agra Tour by Car</a> is perfect for families, couples, and groups.</p>
+      <p>This is the <strong>best option</strong> for comfort, flexibility, and convenience. Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-bold">Same Day Agra Tour by Car</a> is perfect for families, couples, and groups.</p>
 
       <div class="highlight-box">
         <h4>Why Private Car is Best:</h4>
@@ -1118,7 +1118,7 @@ export const travelBlogPosts = [
 
         <p class="font-bold text-lg mt-4">Cost: Starting ₹3,500 (Sedan for 4 people)</p>
 
-        <a href="/sightseeing/agra-same-day-tour" class="cta-button-inline">
+        <a href="/same-day-agra-tour-from-delhi" class="cta-button-inline">
           Book Same Day Agra Tour Now →
         </a>
       </div>
@@ -1145,7 +1145,7 @@ export const travelBlogPosts = [
       </div>
 
       <h3>Option 5: Overnight Agra Tour</h3>
-      <p>Want to see Taj Mahal at both sunset AND sunrise? Book our <a href="/sightseeing/agra-overnight-tour" class="text-blue-600 hover:underline font-bold">Overnight Agra Tour</a> with hotel accommodation.</p>
+      <p>Want to see Taj Mahal at both sunset AND sunrise? Book our <a href="/sightseeing/agra" class="text-blue-600 hover:underline font-bold">Overnight Agra Tour</a> with hotel accommodation.</p>
 
       <h2>Detailed Same Day Agra Tour Itinerary</h2>
       <p>Our most popular option! Here's what a typical day looks like:</p>
@@ -1192,7 +1192,7 @@ export const travelBlogPosts = [
       <div class="cta-box-mid">
         <h3>This Itinerary Sounds Perfect?</h3>
         <p>Book now and we'll take care of everything!</p>
-        <a href="/sightseeing/agra-same-day-tour" class="cta-button-large">
+        <a href="/same-day-agra-tour-from-delhi" class="cta-button-large">
           Book Same Day Agra Tour - ₹3,500 →
         </a>
         <p class="text-sm mt-2">✅ Free Cancellation | ✅ Instant Confirmation | ✅ 24/7 Support</p>
@@ -1249,7 +1249,7 @@ export const travelBlogPosts = [
       <p><strong>Includes:</strong> AC car with fuel, experienced driver, parking, tolls, all taxes</p>
       <p><strong>Excludes:</strong> Entry tickets (₹1,700 per person), lunch, tour guide (₹1,500 extra)</p>
 
-      <p><a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-bold">View complete pricing details →</a></p>
+      <p><a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-bold">View complete pricing details →</a></p>
 
       <h2>Taj Mahal Entry Tickets & Timings 2026</h2>
 
@@ -1299,7 +1299,7 @@ export const travelBlogPosts = [
         <li><strong>Sunset (4-6 PM):</strong> Golden hour, beautiful but crowded</li>
       </ul>
 
-      <p><strong>Our tip:</strong> Book <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="text-blue-600 hover:underline font-bold">Sunrise Taj Mahal Tour</a> for the best experience!</p>
+      <p><strong>Our tip:</strong> Book <a href="/sunrise-taj-mahal-tour-from-delhi" class="text-blue-600 hover:underline font-bold">Sunrise Taj Mahal Tour</a> for the best experience!</p>
 
       <h2>What to See in Agra Besides Taj Mahal</h2>
 
@@ -1320,7 +1320,7 @@ export const travelBlogPosts = [
       <h3>4. Itmad-ud-Daulah (Baby Taj)</h3>
       <p>Beautiful marble tomb, precursor to Taj Mahal.</p>
 
-      <p><strong>All these included in our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-bold">comprehensive Agra tours</a>!</strong></p>
+      <p><strong>All these included in our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-bold">comprehensive Agra tours</a>!</strong></p>
 
       <h2>Travel Tips for Taj Mahal Visit</h2>
 
@@ -1420,7 +1420,7 @@ export const travelBlogPosts = [
 
         <div class="faq-item">
           <h4>Q: Can I visit Taj Mahal and come back same day?</h4>
-          <p>A: Yes! Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Same Day Agra Tour</a> is perfect for this. You'll be back in Delhi by 9 PM.</p>
+          <p>A: Yes! Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Same Day Agra Tour</a> is perfect for this. You'll be back in Delhi by 9 PM.</p>
         </div>
 
         <div class="faq-item">
@@ -1468,7 +1468,7 @@ export const travelBlogPosts = [
 
       <p>Visiting the Taj Mahal from Delhi is easy with proper planning. Whether you choose train, bus, or private car, make sure to start early to maximize your time at this wonder of the world.</p>
 
-      <p><strong>Our recommendation:</strong> Book our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-bold">Same Day Agra Tour</a> for a hassle-free, comfortable, and memorable experience. We've helped 2000+ travelers visit the Taj Mahal, and we'd love to help you too!</p>
+      <p><strong>Our recommendation:</strong> Book our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-bold">Same Day Agra Tour</a> for a hassle-free, comfortable, and memorable experience. We've helped 2000+ travelers visit the Taj Mahal, and we'd love to help you too!</p>
 
       <div class="cta-box-final">
         <h3>🎉 Special Offer: Book Now & Save!</h3>
@@ -1479,7 +1479,7 @@ export const travelBlogPosts = [
           <li>✅ Skip-the-line assistance at Taj Mahal</li>
           <li>✅ Best price guarantee</li>
         </ul>
-        <a href="/sightseeing/agra-same-day-tour" class="cta-button-xl">
+        <a href="/same-day-agra-tour-from-delhi" class="cta-button-xl">
           Book Same Day Agra Tour - Starting ₹3,500 →
         </a>
         <p class="text-sm mt-3">Or explore all our <a href="/sightseeing/agra" class="text-blue-600 hover:underline">Agra tour options</a></p>
@@ -1490,19 +1490,19 @@ export const travelBlogPosts = [
 
       <div class="related-tours-grid">
         <div class="tour-card">
-          <h4><a href="/sightseeing/agra-sunrise-taj-mahal-tour">Sunrise Taj Mahal Tour</a></h4>
+          <h4><a href="/sunrise-taj-mahal-tour-from-delhi">Sunrise Taj Mahal Tour</a></h4>
           <p>Experience magical sunrise at Taj Mahal. Early morning start from Delhi.</p>
           <p class="price">₹4,500/car</p>
           <p class="duration">14 hours</p>
-          <a href="/sightseeing/agra-sunrise-taj-mahal-tour" class="btn-small">View Details →</a>
+          <a href="/sunrise-taj-mahal-tour-from-delhi" class="btn-small">View Details →</a>
         </div>
 
         <div class="tour-card">
-          <h4><a href="/sightseeing/agra-overnight-tour">Overnight Agra Tour</a></h4>
+          <h4><a href="/sightseeing/agra">Overnight Agra Tour</a></h4>
           <p>Relaxed 2-day tour with sunset + sunrise at Taj Mahal. Includes hotel.</p>
           <p class="price">₹8,000/person</p>
           <p class="duration">2 Days</p>
-          <a href="/sightseeing/agra-overnight-tour" class="btn-small">View Details →</a>
+          <a href="/sightseeing/agra" class="btn-small">View Details →</a>
         </div>
 
         <div class="tour-card">
@@ -1668,7 +1668,7 @@ export const travelBlogPosts = [
         <div class="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-xl my-6 border-l-4 border-amber-500">
             <h3 class="text-xl font-bold mb-3">🌟 Top Pick: Golden Triangle 6 Days Tour</h3>
             <p class="mb-4">Short on time? Our <strong>6-day package</strong> covers all major highlights with comfortable AC transport and expert guides.</p>
-            <a href="/sightseeing/golden-triangle-tour-6-days" class="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors">View Itinerary & Price →</a>
+            <a href="/sightseeing/golden-triangle-tour-5-days" class="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors">View Itinerary & Price →</a>
         </div>
       </div>
 
@@ -1776,7 +1776,7 @@ export const travelBlogPosts = [
         <p class="mb-6">Don't wait! The land of Maharajas and Mughals is calling. Book your private car rental or complete tour package today.</p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a href="/sightseeing/golden-triangle-tour-3-days" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book 3 Days Tour</a>
-            <a href="/sightseeing/golden-triangle-tour-6-days" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors">Book 6 Days Tour</a>
+            <a href="/sightseeing/golden-triangle-tour-5-days" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors">Book 6 Days Tour</a>
         </div>
       </div>
     `,
@@ -1957,7 +1957,7 @@ export const travelBlogPosts = [
 
     primaryCTA: {
       text: "Book Jaipur Sightseeing Cab",
-      url: "/sightseeing/jaipur-full-day-sightseeing",
+      url: "/sightseeing/jaipur-full-day-city-tour",
       description: "Explore Jaipur's forts and palaces in comfort",
       price: "Starting from ₹2,500"
     },
@@ -2070,7 +2070,7 @@ export const travelBlogPosts = [
             <div>✅ Flexible Itinerary</div>
             <div>✅ No Parking/Toll Hassles</div>
         </div>
-        <a href="/sightseeing/jaipur-full-day-sightseeing" class="inline-block bg-pink-600 text-white px-6 py-2 rounded font-semibold hover:bg-pink-700 transition-colors">Check Jaipur Cab Rates</a>
+        <a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-pink-600 text-white px-6 py-2 rounded font-semibold hover:bg-pink-700 transition-colors">Check Jaipur Cab Rates</a>
       </div>
     `,
     date: "2026-01-20",
@@ -2104,7 +2104,7 @@ export const travelBlogPosts = [
 
     primaryCTA: {
       text: "Book Agra Sightseeing",
-      url: "/sightseeing/agra-one-day-tour",
+      url: "/sightseeing/agra-full-day-city-tour",
       description: "Visit Taj Mahal & Agra Fort with expert guides",
       price: "Starting from ₹3,500"
     },
@@ -2200,7 +2200,7 @@ export const travelBlogPosts = [
             <li>English Speaking Drivers</li>
             <li>Transparent Rates</li>
         </ul>
-        <a href="/sightseeing/agra-one-day-tour" class="inline-block bg-red-700 text-white px-6 py-2 rounded font-semibold hover:bg-red-800 transition-colors">View Agra Tour Packages</a>
+        <a href="/sightseeing/agra-full-day-city-tour" class="inline-block bg-red-700 text-white px-6 py-2 rounded font-semibold hover:bg-red-800 transition-colors">View Agra Tour Packages</a>
       </div>
     `,
     date: "2026-01-18",
@@ -2234,7 +2234,7 @@ export const travelBlogPosts = [
 
     primaryCTA: {
       text: "Book Corbett Trip",
-      url: "/sightseeing/jim-corbett-weekend-tour",
+      url: "/sightseeing/delhi-to-jim-corbett-2-days",
       description: "Wildlife safari packages with resort stay",
       price: "Starting from ₹4,500"
     },
@@ -2330,7 +2330,7 @@ export const travelBlogPosts = [
       <div class="bg-green-50 p-6 rounded-lg border border-green-200 my-8">
         <h3 class="text-xl font-bold mb-3 text-green-800">🐅 Plan Your Jungle Adventure</h3>
         <p class="mb-4">From Delhi pickup to resort booking and safari permits, we handle it all.</p>
-        <a href="/sightseeing/jim-corbett-weekend-tour" class="inline-block bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition-colors">Book Corbett Package</a>
+        <a href="/sightseeing/delhi-to-jim-corbett-2-days" class="inline-block bg-green-700 text-white px-6 py-2 rounded font-semibold hover:bg-green-800 transition-colors">Book Corbett Package</a>
       </div>
     `,
     date: "2026-01-15",
@@ -2727,7 +2727,7 @@ export const travelBlogPosts = [
       <p>Unique temple dedicated to Mother India, featuring a relief map of undivided India carved in marble.</p>
 
       <h2>Sarnath: Buddha's First Sermon</h2>
-      <p>Just 10 km from Varanasi, <a href="/sightseeing/sarnath" class="text-blue-600 hover:underline font-semibold">Sarnath</a> is where Buddha delivered his first sermon after attaining enlightenment. Must-visit sites include:</p>
+      <p>Just 10 km from Varanasi, <a href="/sightseeing/varanasi" class="text-blue-600 hover:underline font-semibold">Sarnath</a> is where Buddha delivered his first sermon after attaining enlightenment. Must-visit sites include:</p>
       <ul>
         <li><strong>Dhamek Stupa:</strong> 43-meter tall stupa marking the sermon spot</li>
         <li><strong>Ashoka Pillar:</strong> Famous lion capital (now India's national emblem)</li>
@@ -3039,7 +3039,7 @@ export const travelBlogPosts = [
       <p>📍 <a href="/tempo-traveller/delhi-to-amritsar-golden-temple-wagah-border" class="text-blue-600 hover:underline">Book Delhi to Amritsar Tempo</a></p>
 
       <h3>9. Jim Corbett National Park - Wildlife Adventure</h3>
-      <p>India's oldest national park offers exciting <a href="/sightseeing/jim-corbett" class="text-blue-600 hover:underline font-semibold">jungle safaris</a> perfect for groups. Spotting tigers together creates unforgettable memories!</p>
+      <p>India's oldest national park offers exciting <a href="/sightseeing/corbett-jeep-safari-tour" class="text-blue-600 hover:underline font-semibold">jungle safaris</a> perfect for groups. Spotting tigers together creates unforgettable memories!</p>
 
       <h4>Group Activities:</h4>
       <ul>
@@ -3463,7 +3463,7 @@ export const travelBlogPosts = [
     },
 
     content: `
-      <p><strong>Udaipur</strong>, fondly called the <em>Venice of the East</em> and <em>City of Lakes</em>, is arguably India's most romantic destination. Nestled in the Aravalli Hills of <a href="/sightseeing/rajasthan" class="text-blue-600 hover:underline font-semibold">Rajasthan</a>, this enchanting city captivates visitors with its shimmering lakes, magnificent palaces, and old-world charm. Whether you're planning a honeymoon, anniversary trip, or a heritage holiday, <a href="/sightseeing/udaipur" class="text-blue-600 hover:underline font-semibold">Udaipur</a> promises an unforgettable experience in 2026.</p>
+      <p><strong>Udaipur</strong>, fondly called the <em>Venice of the East</em> and <em>City of Lakes</em>, is arguably India's most romantic destination. Nestled in the Aravalli Hills of <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Rajasthan</a>, this enchanting city captivates visitors with its shimmering lakes, magnificent palaces, and old-world charm. Whether you're planning a honeymoon, anniversary trip, or a heritage holiday, <a href="/sightseeing/udaipur" class="text-blue-600 hover:underline font-semibold">Udaipur</a> promises an unforgettable experience in 2026.</p>
 
       <div class="my-6 p-4 bg-cyan-50 border-l-4 border-cyan-500 rounded-r-lg">
         <p class="font-semibold text-cyan-800">💝 Romance Tip: Book a sunset boat ride on Lake Pichola followed by rooftop dinner overlooking the Lake Palace. This is consistently rated as one of India's most romantic experiences!</p>

@@ -145,15 +145,15 @@ export default function RoundTripCabPage() {
   };
 
   const roundTripRoutes = [
-    { from: "Delhi", to: "Agra", days: "1-2 Days", price: "₹5,500+", highlights: "Taj Mahal, Agra Fort, Fatehpur Sikri", href: "/routes/delhi-to-agra" },
-    { from: "Delhi", to: "Jaipur", days: "2-3 Days", price: "₹6,160+", highlights: "Hawa Mahal, Amber Fort, City Palace", href: "/routes/delhi-to-jaipur" },
-    { from: "Delhi", to: "Shimla", days: "3-4 Days", price: "₹7,700+", highlights: "Mall Road, Ridge, Kufri, Naldehra", href: "/routes/delhi-to-shimla" },
-    { from: "Delhi", to: "Manali", days: "4-5 Days", price: "₹11,880+", highlights: "Solang Valley, Rohtang, Old Manali", href: "/routes/delhi-to-manali" },
-    { from: "Delhi", to: "Haridwar-Rishikesh", days: "2-3 Days", price: "₹5,500+", highlights: "Ganga Aarti, Lakshman Jhula, Rafting", href: "/routes/delhi-to-haridwar" },
-    { from: "Delhi", to: "Amritsar", days: "2-3 Days", price: "₹9,900+", highlights: "Golden Temple, Wagah Border, Jallianwala", href: "/routes/delhi-to-amritsar" },
-    { from: "Jaipur", to: "Udaipur", days: "2-3 Days", price: "₹8,690+", highlights: "Lake Pichola, City Palace, Ranakpur", href: "/routes/jaipur-to-udaipur" },
-    { from: "Delhi", to: "Chandigarh", days: "1-2 Days", price: "₹5,500+", highlights: "Rock Garden, Sukhna Lake, Rose Garden", href: "/routes/delhi-to-chandigarh" },
-    { from: "Agra", to: "Jaipur", days: "2-3 Days", price: "₹5,280+", highlights: "Fatehpur Sikri, Bharatpur, Amber Fort", href: "/routes/agra-to-jaipur" },
+    { from: "Delhi", to: "Agra", days: "1-2 Days", price: "₹5,500+", highlights: "Taj Mahal, Agra Fort, Fatehpur Sikri", href: "/delhi-to-agra" },
+    { from: "Delhi", to: "Jaipur", days: "2-3 Days", price: "₹6,160+", highlights: "Hawa Mahal, Amber Fort, City Palace", href: "/delhi-to-jaipur" },
+    { from: "Delhi", to: "Shimla", days: "3-4 Days", price: "₹7,700+", highlights: "Mall Road, Ridge, Kufri, Naldehra", href: "/delhi-to-shimla" },
+    { from: "Delhi", to: "Manali", days: "4-5 Days", price: "₹11,880+", highlights: "Solang Valley, Rohtang, Old Manali", href: "/delhi-to-manali" },
+    { from: "Delhi", to: "Haridwar-Rishikesh", days: "2-3 Days", price: "₹5,500+", highlights: "Ganga Aarti, Lakshman Jhula, Rafting", href: "/delhi-to-haridwar" },
+    { from: "Delhi", to: "Amritsar", days: "2-3 Days", price: "₹9,900+", highlights: "Golden Temple, Wagah Border, Jallianwala", href: "/delhi-to-amritsar" },
+    { from: "Jaipur", to: "Udaipur", days: "2-3 Days", price: "₹8,690+", highlights: "Lake Pichola, City Palace, Ranakpur", href: "/jaipur-to-udaipur" },
+    { from: "Delhi", to: "Chandigarh", days: "1-2 Days", price: "₹5,500+", highlights: "Rock Garden, Sukhna Lake, Rose Garden", href: "/delhi-to-chandigarh" },
+    { from: "Agra", to: "Jaipur", days: "2-3 Days", price: "₹5,280+", highlights: "Fatehpur Sikri, Bharatpur, Amber Fort", href: "/agra-to-jaipur" },
   ];
 
   const benefits = [
@@ -606,16 +606,16 @@ export default function RoundTripCabPage() {
               <h2 className="text-sm font-bold text-stone-400 mb-4 tracking-widest uppercase">Popular Round Trip Routes</h2>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { l: "Delhi to Agra Round Trip", h: "/routes/delhi-to-agra" },
-                  { l: "Delhi to Jaipur Round Trip", h: "/routes/delhi-to-jaipur" },
-                  { l: "Delhi to Shimla Round Trip", h: "/routes/delhi-to-shimla" },
-                  { l: "Delhi to Manali Round Trip", h: "/routes/delhi-to-manali" },
-                  { l: "Delhi to Chandigarh Round Trip", h: "/routes/delhi-to-chandigarh" },
-                  { l: "Delhi to Haridwar Round Trip", h: "/routes/delhi-to-haridwar" },
-                  { l: "Delhi to Rishikesh Round Trip", h: "/routes/delhi-to-rishikesh" },
-                  { l: "Agra to Jaipur Round Trip", h: "/routes/agra-to-jaipur" },
-                  { l: "Delhi to Amritsar Round Trip", h: "/routes/delhi-to-amritsar" },
-                  { l: "Delhi to Nainital Round Trip", h: "/routes/delhi-to-nainital" },
+                  { l: "Delhi to Agra Round Trip", h: "/delhi-to-agra" },
+                  { l: "Delhi to Jaipur Round Trip", h: "/delhi-to-jaipur" },
+                  { l: "Delhi to Shimla Round Trip", h: "/delhi-to-shimla" },
+                  { l: "Delhi to Manali Round Trip", h: "/delhi-to-manali" },
+                  { l: "Delhi to Chandigarh Round Trip", h: "/delhi-to-chandigarh" },
+                  { l: "Delhi to Haridwar Round Trip", h: "/delhi-to-haridwar" },
+                  { l: "Delhi to Rishikesh Round Trip", h: "/delhi-to-rishikesh" },
+                  { l: "Agra to Jaipur Round Trip", h: "/agra-to-jaipur" },
+                  { l: "Delhi to Amritsar Round Trip", h: "/delhi-to-amritsar" },
+                  { l: "Delhi to Nainital Round Trip", h: "/delhi-to-nainital" },
                 ].map((r, i) => (
                   <Link key={i} href={r.h} className="bg-white rounded-full px-5 py-2.5 text-stone-700 hover:bg-violet-50 hover:text-violet-700 transition-colors text-sm font-medium border border-violet-100/60 hover:border-violet-300">{r.l}</Link>
                 ))}
@@ -649,7 +649,7 @@ export default function RoundTripCabPage() {
                   { l: "Weekend Getaways from Delhi", h: "/weekend-getaways-from-delhi-by-car" },
                   { l: "Mathura Vrindavan Tour", h: "/sightseeing/mathura-vrindavan-tour-from-delhi" },
                   { l: "Delhi Sightseeing Tour", h: "/sightseeing/delhi-sightseeing-tour" },
-                  { l: "Taj Mahal Sunrise Tour", h: "/taj-mahal-sunrise-tour-from-delhi" },
+                  { l: "Taj Mahal Sunrise Tour", h: "/sunrise-taj-mahal-tour-from-delhi" },
                 ].map((t, i) => (
                   <Link key={i} href={t.h} className="bg-white rounded-full px-5 py-2.5 text-stone-700 hover:bg-violet-50 hover:text-violet-700 transition-colors text-sm font-medium border border-violet-100/60 hover:border-violet-300">{t.l}</Link>
                 ))}

@@ -371,78 +371,118 @@ export function getNearbyDestinations(city, limit = 6) {
 
   const nearbyMap = {
     delhi: [
-      { name: 'Agra', slug: 'agra', distance: 230, image: '/images/cities/agra.jpg' },
-      { name: 'Jaipur', slug: 'jaipur', distance: 280, image: '/images/cities/jaipur.jpg' },
-      { name: 'Chandigarh', slug: 'chandigarh', distance: 250, image: '/images/cities/chandigarh.jpg' },
-      { name: 'Haridwar', slug: 'haridwar', distance: 210, image: '/images/cities/haridwar.jpg' },
-      { name: 'Rishikesh', slug: 'rishikesh', distance: 230, image: '/images/cities/rishikesh.jpg' },
-      { name: 'Mathura', slug: 'mathura', distance: 160, image: '/images/cities/mathura.jpg' },
-      { name: 'Vrindavan', slug: 'vrindavan', distance: 165, image: '/images/cities/vrindavan.jpg' },
-      { name: 'Shimla', slug: 'shimla', distance: 350, image: '/images/cities/shimla.jpg' },
+      { name: 'Agra', slug: 'agra', distance: 230, image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 280, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+      { name: 'Chandigarh', slug: 'chandigarh', distance: 250, image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
+      { name: 'Haridwar', slug: 'haridwar', distance: 210, image: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg' },
+      { name: 'Rishikesh', slug: 'rishikesh', distance: 230, image: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg' },
+      { name: 'Mathura', slug: 'mathura', distance: 160, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png' },
+      { name: 'Shimla', slug: 'shimla', distance: 350, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
+      { name: 'Manali', slug: 'manali', distance: 530, image: '/images/sightseeing/Manali/Manali_hero_section.jpg' },
     ],
     jaipur: [
-      { name: 'Delhi', slug: 'delhi', distance: 280, image: '/images/cities/delhi.jpg' },
-      { name: 'Agra', slug: 'agra', distance: 240, image: '/images/cities/agra.jpg' },
-      { name: 'Udaipur', slug: 'udaipur', distance: 400, image: '/images/cities/udaipur.jpg' },
-      { name: 'Jodhpur', slug: 'jodhpur', distance: 340, image: '/images/cities/jodhpur.jpg' },
-      { name: 'Ajmer', slug: 'ajmer', distance: 135, image: '/images/cities/ajmer.jpg' },
-      { name: 'Pushkar', slug: 'pushkar', distance: 150, image: '/images/cities/pushkar.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 280, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Agra', slug: 'agra', distance: 240, image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
+      { name: 'Udaipur', slug: 'udaipur', distance: 400, image: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg' },
+      { name: 'Jodhpur', slug: 'jodhpur', distance: 340, image: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg' },
+      { name: 'Ajmer', slug: 'ajmer', distance: 135, image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg' },
+      { name: 'Jaisalmer', slug: 'jaisalmer', distance: 560, image: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg' },
     ],
     agra: [
-      { name: 'Delhi', slug: 'delhi', distance: 230, image: '/images/cities/delhi.jpg' },
-      { name: 'Jaipur', slug: 'jaipur', distance: 240, image: '/images/cities/jaipur.jpg' },
-      { name: 'Mathura', slug: 'mathura', distance: 58, image: '/images/cities/mathura.jpg' },
-      { name: 'Vrindavan', slug: 'vrindavan', distance: 70, image: '/images/cities/vrindavan.jpg' },
-      { name: 'Fatehpur Sikri', slug: 'fatehpur-sikri', distance: 40, image: '/images/cities/fatehpur-sikri.jpg' },
-      { name: 'Gwalior', slug: 'gwalior', distance: 120, image: '/images/cities/gwalior.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 230, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 240, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+      { name: 'Mathura', slug: 'mathura', distance: 58, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png' },
+      { name: 'Fatehpur Sikri', slug: 'fatehpur-sikri', distance: 40, image: '/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg' },
+      { name: 'Bharatpur', slug: 'bharatpur', distance: 55, image: '/images/sightseeing/Bharatpur/Keoladeo_National_Park _Bharatpur_hero_Section.jpg' },
+      { name: 'Lucknow', slug: 'lucknow', distance: 330, image: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg' },
     ],
     chandigarh: [
-      { name: 'Delhi', slug: 'delhi', distance: 250, image: '/images/cities/delhi.jpg' },
-      { name: 'Shimla', slug: 'shimla', distance: 115, image: '/images/cities/shimla.jpg' },
-      { name: 'Manali', slug: 'manali', distance: 310, image: '/images/cities/manali.jpg' },
-      { name: 'Amritsar', slug: 'amritsar', distance: 230, image: '/images/cities/amritsar.jpg' },
-      { name: 'Kasauli', slug: 'kasauli', distance: 60, image: '/images/cities/kasauli.jpg' },
-      { name: 'Dharamshala', slug: 'dharamshala', distance: 240, image: '/images/cities/dharamshala.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 250, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Shimla', slug: 'shimla', distance: 115, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
+      { name: 'Manali', slug: 'manali', distance: 310, image: '/images/sightseeing/Manali/Manali_hero_section.jpg' },
+      { name: 'Amritsar', slug: 'amritsar', distance: 230, image: '/images/sightseeing/Amritsar/Amristar_hero_section.jpg' },
+      { name: 'Dharamshala', slug: 'dharamshala', distance: 240, image: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg' },
+      { name: 'Kufri', slug: 'kufri', distance: 130, image: '/images/sightseeing/Kufri/kufri_hero_section.jpg' },
     ],
     shimla: [
-      { name: 'Chandigarh', slug: 'chandigarh', distance: 115, image: '/images/cities/chandigarh.jpg' },
-      { name: 'Manali', slug: 'manali', distance: 250, image: '/images/cities/manali.jpg' },
-      { name: 'Delhi', slug: 'delhi', distance: 350, image: '/images/cities/delhi.jpg' },
-      { name: 'Kasauli', slug: 'kasauli', distance: 70, image: '/images/cities/kasauli.jpg' },
-      { name: 'Kufri', slug: 'kufri', distance: 15, image: '/images/cities/kufri.jpg' },
-      { name: 'Dharamshala', slug: 'dharamshala', distance: 235, image: '/images/cities/dharamshala.jpg' },
+      { name: 'Chandigarh', slug: 'chandigarh', distance: 115, image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
+      { name: 'Manali', slug: 'manali', distance: 250, image: '/images/sightseeing/Manali/Manali_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 350, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Kufri', slug: 'kufri', distance: 15, image: '/images/sightseeing/Kufri/kufri_hero_section.jpg' },
+      { name: 'Dharamshala', slug: 'dharamshala', distance: 235, image: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg' },
+      { name: 'Dalhousie', slug: 'dalhousie', distance: 350, image: '/images/sightseeing/Dalhousie/dalhousie_hero_section.jpg' },
     ],
     manali: [
-      { name: 'Shimla', slug: 'shimla', distance: 250, image: '/images/cities/shimla.jpg' },
-      { name: 'Chandigarh', slug: 'chandigarh', distance: 310, image: '/images/cities/chandigarh.jpg' },
-      { name: 'Delhi', slug: 'delhi', distance: 530, image: '/images/cities/delhi.jpg' },
-      { name: 'Kullu', slug: 'kullu', distance: 40, image: '/images/cities/kullu.jpg' },
-      { name: 'Kasol', slug: 'kasol', distance: 80, image: '/images/cities/kasol.jpg' },
-      { name: 'Dharamshala', slug: 'dharamshala', distance: 200, image: '/images/cities/dharamshala.jpg' },
+      { name: 'Shimla', slug: 'shimla', distance: 250, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
+      { name: 'Chandigarh', slug: 'chandigarh', distance: 310, image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 530, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Kasol', slug: 'kasol', distance: 80, image: '/images/sightseeing/Kasol/Kasol_hero_section.jpg' },
+      { name: 'Dharamshala', slug: 'dharamshala', distance: 200, image: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg' },
+      { name: 'Amritsar', slug: 'amritsar', distance: 430, image: '/images/sightseeing/Amritsar/Amristar_hero_section.jpg' },
     ],
     amritsar: [
-      { name: 'Chandigarh', slug: 'chandigarh', distance: 230, image: '/images/cities/chandigarh.jpg' },
-      { name: 'Delhi', slug: 'delhi', distance: 450, image: '/images/cities/delhi.jpg' },
-      { name: 'Dharamshala', slug: 'dharamshala', distance: 200, image: '/images/cities/dharamshala.jpg' },
-      { name: 'McLeodganj', slug: 'mcleodganj', distance: 210, image: '/images/cities/mcleodganj.jpg' },
-      { name: 'Wagah Border', slug: 'wagah-border', distance: 30, image: '/images/cities/wagah.jpg' },
-      { name: 'Pathankot', slug: 'pathankot', distance: 100, image: '/images/cities/pathankot.jpg' },
+      { name: 'Chandigarh', slug: 'chandigarh', distance: 230, image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 450, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Dharamshala', slug: 'dharamshala', distance: 200, image: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg' },
+      { name: 'Shimla', slug: 'shimla', distance: 460, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
+      { name: 'Manali', slug: 'manali', distance: 430, image: '/images/sightseeing/Manali/Manali_hero_section.jpg' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 680, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
     ],
     haridwar: [
-      { name: 'Rishikesh', slug: 'rishikesh', distance: 25, image: '/images/cities/rishikesh.jpg' },
-      { name: 'Dehradun', slug: 'dehradun', distance: 55, image: '/images/cities/dehradun.jpg' },
-      { name: 'Delhi', slug: 'delhi', distance: 210, image: '/images/cities/delhi.jpg' },
-      { name: 'Mussoorie', slug: 'mussoorie', distance: 80, image: '/images/cities/mussoorie.jpg' },
-      { name: 'Nainital', slug: 'nainital', distance: 230, image: '/images/cities/nainital.jpg' },
-      { name: 'Badrinath', slug: 'badrinath', distance: 310, image: '/images/cities/badrinath.jpg' },
+      { name: 'Rishikesh', slug: 'rishikesh', distance: 25, image: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg' },
+      { name: 'Dehradun', slug: 'dehradun', distance: 55, image: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 210, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Mussoorie', slug: 'mussoorie', distance: 80, image: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg' },
+      { name: 'Nainital', slug: 'nainital', distance: 230, image: '/images/sightseeing/Nainital/Nainital_hero_section.jpg' },
+      { name: 'Shimla', slug: 'shimla', distance: 240, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
     ],
     rishikesh: [
-      { name: 'Haridwar', slug: 'haridwar', distance: 25, image: '/images/cities/haridwar.jpg' },
-      { name: 'Dehradun', slug: 'dehradun', distance: 45, image: '/images/cities/dehradun.jpg' },
-      { name: 'Delhi', slug: 'delhi', distance: 230, image: '/images/cities/delhi.jpg' },
-      { name: 'Mussoorie', slug: 'mussoorie', distance: 70, image: '/images/cities/mussoorie.jpg' },
-      { name: 'Badrinath', slug: 'badrinath', distance: 295, image: '/images/cities/badrinath.jpg' },
-      { name: 'Kedarnath', slug: 'kedarnath', distance: 230, image: '/images/cities/kedarnath.jpg' },
+      { name: 'Haridwar', slug: 'haridwar', distance: 25, image: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg' },
+      { name: 'Dehradun', slug: 'dehradun', distance: 45, image: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 230, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Mussoorie', slug: 'mussoorie', distance: 70, image: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg' },
+      { name: 'Nainital', slug: 'nainital', distance: 230, image: '/images/sightseeing/Nainital/Nainital_hero_section.jpg' },
+      { name: 'Manali', slug: 'manali', distance: 530, image: '/images/sightseeing/Manali/Manali_hero_section.jpg' },
+    ],
+    dehradun: [
+      { name: 'Mussoorie', slug: 'mussoorie', distance: 35, image: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg' },
+      { name: 'Rishikesh', slug: 'rishikesh', distance: 45, image: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg' },
+      { name: 'Haridwar', slug: 'haridwar', distance: 55, image: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 260, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Nainital', slug: 'nainital', distance: 280, image: '/images/sightseeing/Nainital/Nainital_hero_section.jpg' },
+      { name: 'Chandigarh', slug: 'chandigarh', distance: 170, image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
+    ],
+    udaipur: [
+      { name: 'Jaipur', slug: 'jaipur', distance: 400, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+      { name: 'Jodhpur', slug: 'jodhpur', distance: 250, image: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg' },
+      { name: 'Kumbhalgarh', slug: 'kumbhalgarh', distance: 85, image: '/images/sightseeing/Kumbhalgarh/Kumbhalgarh_hero_section.jpg' },
+      { name: 'Mount Abu', slug: 'mount-abu', distance: 165, image: '/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg' },
+      { name: 'Chittorgarh', slug: 'chittorgarh', distance: 115, image: '/images/sightseeing/Chittorgarh/chittogarh_hero_section.jpg' },
+      { name: 'Ahmedabad', slug: 'ahmedabad', distance: 260, image: '/images/sightseeing/Ahmedabad/Ahmedabad_hero_section.jpg' },
+    ],
+    varanasi: [
+      { name: 'Prayagraj', slug: 'prayagraj', distance: 120, image: '/images/sightseeing/Prayagraj/Prayagraj_hero_section.jpg' },
+      { name: 'Ayodhya', slug: 'ayodhya', distance: 210, image: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg' },
+      { name: 'Lucknow', slug: 'lucknow', distance: 300, image: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg' },
+      { name: 'Bodh Gaya', slug: 'bodh-gaya', distance: 250, image: '/images/sightseeing/Bodh_Gaya/Bhod_gaya_hero_section.jpg' },
+      { name: 'Agra', slug: 'agra', distance: 605, image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 810, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+    ],
+    lucknow: [
+      { name: 'Ayodhya', slug: 'ayodhya', distance: 135, image: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg' },
+      { name: 'Agra', slug: 'agra', distance: 330, image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
+      { name: 'Varanasi', slug: 'varanasi', distance: 300, image: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg' },
+      { name: 'Prayagraj', slug: 'prayagraj', distance: 200, image: '/images/sightseeing/Prayagraj/Prayagraj_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 500, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 570, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+    ],
+    ahmedabad: [
+      { name: 'Udaipur', slug: 'udaipur', distance: 260, image: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 660, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+      { name: 'Mount Abu', slug: 'mount-abu', distance: 220, image: '/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 940, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+      { name: 'Jodhpur', slug: 'jodhpur', distance: 310, image: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg' },
+      { name: 'Jaisalmer', slug: 'jaisalmer', distance: 570, image: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg' },
     ],
   };
 
@@ -466,7 +506,7 @@ export function getServiceCrossLinks(city) {
   const citySlug = city.toLowerCase().replace(/\s+/g, '-');
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
 
-  return [
+  const services = [
     {
       name: 'Airport Transfer',
       icon: 'airport',
@@ -478,6 +518,18 @@ export function getServiceCrossLinks(city) {
       icon: 'tour',
       url: `/sightseeing/${citySlug}`,
       description: `Explore ${cityName} tourist places`
+    },
+    {
+      name: 'One-Way Cab',
+      icon: 'route',
+      url: `/one-way-cab`,
+      description: `Save 50% — pay single direction only`
+    },
+    {
+      name: 'Round Trip Cab',
+      icon: 'route',
+      url: `/round-trip-cab`,
+      description: `Multi-day trips with same driver`
     },
     {
       name: 'Corporate Transport',
@@ -503,19 +555,33 @@ export function getServiceCrossLinks(city) {
       url: `/tempo-traveller`,
       description: `12-20 seater for group travel`
     },
-    {
-      name: 'Religious Tours',
-      icon: 'tour',
-      url: `/religious-tours`,
-      description: `Pilgrimage & spiritual tour packages`
-    },
-    {
-      name: 'Tour Guide',
-      icon: 'tour',
-      url: `/tour-guide`,
-      description: `Certified guides in 6 languages`
-    }
   ];
+
+  // Add Delhi-specific airport terminal links
+  if (citySlug === 'delhi') {
+    services.push(
+      {
+        name: 'IGI Terminal 1',
+        icon: 'airport',
+        url: `/airport-service/delhi/igi-terminal-1-domestic`,
+        description: `Domestic terminal pickup & drop`
+      },
+      {
+        name: 'IGI Terminal 2',
+        icon: 'airport',
+        url: `/airport-service/delhi/igi-terminal-2-domestic`,
+        description: `Domestic terminal pickup & drop`
+      },
+      {
+        name: 'IGI Terminal 3',
+        icon: 'airport',
+        url: `/airport-service/delhi/igi-terminal-3-international`,
+        description: `International terminal pickup & drop`
+      }
+    );
+  }
+
+  return services;
 }
 
 /**

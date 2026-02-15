@@ -426,7 +426,7 @@ export const tempoTravellerBlogs = [
 
     primaryCTA: {
       text: "Book Agra Day Trip",
-      url: "/sightseeing/agra-same-day-tour",
+      url: "/same-day-agra-tour-from-delhi",
       description: "Same day Taj Mahal experience",
       price: "Starting ₹12,000"
     },
@@ -511,7 +511,7 @@ export const tempoTravellerBlogs = [
       <div class="my-8 p-6 bg-gradient-to-r from-rose-50 to-pink-50 border-l-4 border-rose-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">See the Taj Mahal Today!</h3>
         <p class="mb-4 text-gray-700">Book your Agra same-day tour and witness the monument of eternal love!</p>
-        <a href="/sightseeing/agra-same-day-tour" class="inline-block bg-rose-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-rose-700 transition-colors shadow-md">Book Agra Tour</a>
+        <a href="/same-day-agra-tour-from-delhi" class="inline-block bg-rose-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-rose-700 transition-colors shadow-md">Book Agra Tour</a>
       </div>
 
       <p>Ready for Taj Mahal? <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>
@@ -543,7 +543,7 @@ export const tempoTravellerBlogs = [
 
     primaryCTA: {
       text: "Book Char Dham Tempo",
-      url: "/sightseeing/chardham-yatra-package",
+      url: "/sightseeing/char-dham-yatra-complete-circuit",
       description: "Complete pilgrimage by tempo traveller",
       price: "Starting ₹35,000"
     },
@@ -613,7 +613,7 @@ export const tempoTravellerBlogs = [
       <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Begin Your Spiritual Journey!</h3>
         <p class="mb-4 text-gray-700">Book your Char Dham tempo traveller for a comfortable pilgrimage experience!</p>
-        <a href="/sightseeing/chardham-yatra-package" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-md">Book Char Dham</a>
+        <a href="/sightseeing/char-dham-yatra-complete-circuit" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-md">Book Char Dham</a>
       </div>
 
       <p>Plan your pilgrimage! <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>

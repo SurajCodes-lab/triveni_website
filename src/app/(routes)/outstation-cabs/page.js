@@ -53,18 +53,18 @@ export default function OutstationCabsPage() {
 
   /* ──────── DATA ──────── */
   const popularRoutes = [
-    { from: "Delhi", to: "Agra", distance: "230 km", price: "₹2,530", time: "3.5 hrs", href: "/routes/delhi-to-agra", tag: "Most Booked" },
-    { from: "Delhi", to: "Jaipur", distance: "280 km", price: "₹3,080", time: "5 hrs", href: "/routes/delhi-to-jaipur", tag: "Popular" },
-    { from: "Delhi", to: "Manali", distance: "540 km", price: "₹5,940", time: "12 hrs", href: "/routes/delhi-to-manali", tag: "Scenic" },
-    { from: "Delhi", to: "Shimla", distance: "350 km", price: "₹3,850", time: "7 hrs", href: "/routes/delhi-to-shimla", tag: "Hill Station" },
-    { from: "Delhi", to: "Haridwar", distance: "230 km", price: "₹2,530", time: "5 hrs", href: "/routes/delhi-to-haridwar", tag: "Pilgrimage" },
-    { from: "Delhi", to: "Chandigarh", distance: "250 km", price: "₹2,750", time: "4.5 hrs", href: "/routes/delhi-to-chandigarh", tag: "Business" },
-    { from: "Agra", to: "Jaipur", distance: "240 km", price: "₹2,640", time: "4.5 hrs", href: "/routes/agra-to-jaipur", tag: "Golden Triangle" },
-    { from: "Jaipur", to: "Udaipur", distance: "395 km", price: "₹4,345", time: "6.5 hrs", href: "/routes/jaipur-to-udaipur", tag: "Rajasthan" },
-    { from: "Delhi", to: "Rishikesh", distance: "250 km", price: "₹2,750", time: "6 hrs", href: "/routes/delhi-to-rishikesh", tag: "Adventure" },
-    { from: "Chandigarh", to: "Manali", distance: "310 km", price: "₹3,410", time: "7 hrs", href: "/routes/chandigarh-to-manali", tag: "Hill Road" },
-    { from: "Jaipur", to: "Jodhpur", distance: "340 km", price: "₹3,740", time: "5.5 hrs", href: "/routes/jaipur-to-jodhpur", tag: "Desert" },
-    { from: "Delhi", to: "Amritsar", distance: "450 km", price: "₹4,950", time: "8 hrs", href: "/routes/delhi-to-amritsar", tag: "Heritage" },
+    { from: "Delhi", to: "Agra", distance: "230 km", price: "₹2,530", time: "3.5 hrs", href: "/delhi-to-agra", tag: "Most Booked" },
+    { from: "Delhi", to: "Jaipur", distance: "280 km", price: "₹3,080", time: "5 hrs", href: "/delhi-to-jaipur", tag: "Popular" },
+    { from: "Delhi", to: "Manali", distance: "540 km", price: "₹5,940", time: "12 hrs", href: "/delhi-to-manali", tag: "Scenic" },
+    { from: "Delhi", to: "Shimla", distance: "350 km", price: "₹3,850", time: "7 hrs", href: "/delhi-to-shimla", tag: "Hill Station" },
+    { from: "Delhi", to: "Haridwar", distance: "230 km", price: "₹2,530", time: "5 hrs", href: "/delhi-to-haridwar", tag: "Pilgrimage" },
+    { from: "Delhi", to: "Chandigarh", distance: "250 km", price: "₹2,750", time: "4.5 hrs", href: "/delhi-to-chandigarh", tag: "Business" },
+    { from: "Agra", to: "Jaipur", distance: "240 km", price: "₹2,640", time: "4.5 hrs", href: "/agra-to-jaipur", tag: "Golden Triangle" },
+    { from: "Jaipur", to: "Udaipur", distance: "395 km", price: "₹4,345", time: "6.5 hrs", href: "/jaipur-to-udaipur", tag: "Rajasthan" },
+    { from: "Delhi", to: "Rishikesh", distance: "250 km", price: "₹2,750", time: "6 hrs", href: "/delhi-to-rishikesh", tag: "Adventure" },
+    { from: "Chandigarh", to: "Manali", distance: "310 km", price: "₹3,410", time: "7 hrs", href: "/chandigarh-to-manali", tag: "Hill Road" },
+    { from: "Jaipur", to: "Jodhpur", distance: "340 km", price: "₹3,740", time: "5.5 hrs", href: "/jaipur-to-jodhpur", tag: "Desert" },
+    { from: "Delhi", to: "Amritsar", distance: "450 km", price: "₹4,950", time: "8 hrs", href: "/delhi-to-amritsar", tag: "Heritage" },
   ];
 
   return (
@@ -460,16 +460,16 @@ export default function OutstationCabsPage() {
               <h2 className="text-sm font-bold text-white/30 mb-5 tracking-widest uppercase">Popular Routes</h2>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { l: "Delhi to Agra Cab", h: "/routes/delhi-to-agra" },
-                  { l: "Delhi to Jaipur Cab", h: "/routes/delhi-to-jaipur" },
-                  { l: "Delhi to Shimla Cab", h: "/routes/delhi-to-shimla" },
-                  { l: "Delhi to Manali Cab", h: "/routes/delhi-to-manali" },
-                  { l: "Delhi to Chandigarh Cab", h: "/routes/delhi-to-chandigarh" },
-                  { l: "Delhi to Haridwar Cab", h: "/routes/delhi-to-haridwar" },
-                  { l: "Delhi to Amritsar Cab", h: "/routes/delhi-to-amritsar" },
-                  { l: "Delhi to Rishikesh Cab", h: "/routes/delhi-to-rishikesh" },
-                  { l: "Agra to Jaipur Cab", h: "/routes/agra-to-jaipur" },
-                  { l: "Delhi to Nainital Cab", h: "/routes/delhi-to-nainital" },
+                  { l: "Delhi to Agra Cab", h: "/delhi-to-agra" },
+                  { l: "Delhi to Jaipur Cab", h: "/delhi-to-jaipur" },
+                  { l: "Delhi to Shimla Cab", h: "/delhi-to-shimla" },
+                  { l: "Delhi to Manali Cab", h: "/delhi-to-manali" },
+                  { l: "Delhi to Chandigarh Cab", h: "/delhi-to-chandigarh" },
+                  { l: "Delhi to Haridwar Cab", h: "/delhi-to-haridwar" },
+                  { l: "Delhi to Amritsar Cab", h: "/delhi-to-amritsar" },
+                  { l: "Delhi to Rishikesh Cab", h: "/delhi-to-rishikesh" },
+                  { l: "Agra to Jaipur Cab", h: "/agra-to-jaipur" },
+                  { l: "Delhi to Nainital Cab", h: "/delhi-to-nainital" },
                 ].map((r, i) => (
                   <Link key={i} href={r.h} className="bg-white/[0.03] hover:bg-yellow-500/10 border border-white/[0.05] hover:border-yellow-500/20 text-white/40 hover:text-yellow-400 px-4 py-2 rounded-full text-xs font-medium transition-all">{r.l}</Link>
                 ))}
@@ -504,7 +504,7 @@ export default function OutstationCabsPage() {
                 {[
                   { l: "Golden Triangle Tour 3 Days", h: "/sightseeing/golden-triangle-tour-3-days" },
                   { l: "Same Day Agra Tour", h: "/same-day-agra-tour-from-delhi" },
-                  { l: "Taj Mahal Sunrise Tour", h: "/taj-mahal-sunrise-tour-from-delhi" },
+                  { l: "Taj Mahal Sunrise Tour", h: "/sunrise-taj-mahal-tour-from-delhi" },
                   { l: "Char Dham Yatra", h: "/religious-tours/char-dham-yatra-by-car" },
                   { l: "Rajasthan Circuit Tour", h: "/sightseeing/rajasthan-tour-from-delhi" },
                   { l: "Weekend Getaways from Delhi", h: "/weekend-getaways-from-delhi-by-car" },

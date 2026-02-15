@@ -1216,7 +1216,7 @@ export const sightseeingBlogPosts = [
 
     primaryCTA: {
       text: "Book Kashmir Tour Package",
-      url: "/sightseeing/srinagar-local-sightseeing",
+      url: "/sightseeing/srinagar-dal-lake-mughal-gardens-tour",
       description: "Experience Paradise on Earth with our Kashmir tour packages",
       price: "Starting from ₹4,500"
     },
@@ -1256,7 +1256,7 @@ export const sightseeingBlogPosts = [
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Srinagar - The Heart of Kashmir</h2>
 
-      <p><a href="/sightseeing/srinagar-local-sightseeing" class="text-blue-600 hover:underline font-semibold">Srinagar</a>, the summer capital of Jammu & Kashmir, is where most Kashmir journeys begin and end. This ancient city, sitting at 1,585 meters above sea level, has been the seat of Kashmir's rulers for centuries and continues to captivate visitors with its unique blend of natural beauty and cultural heritage.</p>
+      <p><a href="/sightseeing/srinagar-dal-lake-mughal-gardens-tour" class="text-blue-600 hover:underline font-semibold">Srinagar</a>, the summer capital of Jammu & Kashmir, is where most Kashmir journeys begin and end. This ancient city, sitting at 1,585 meters above sea level, has been the seat of Kashmir's rulers for centuries and continues to captivate visitors with its unique blend of natural beauty and cultural heritage.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Dal Lake - The Crown Jewel</h3>
 
@@ -1285,7 +1285,7 @@ export const sightseeingBlogPosts = [
       <p><strong>Entry Fee:</strong> ₹24 per person (Indians), ₹50 for foreigners</p>
       <p><strong>Best Time:</strong> March-May when tulips and flowers are in full bloom</p>
 
-      <p class="my-4"><a href="/sightseeing/srinagar-local-sightseeing" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">Book Srinagar Sightseeing Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/srinagar-dal-lake-mughal-gardens-tour" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">Book Srinagar Sightseeing Tour</a></p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Other Srinagar Attractions</h3>
 
@@ -1299,7 +1299,7 @@ export const sightseeingBlogPosts = [
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Gulmarg - The Meadow of Flowers</h2>
 
-      <p><a href="/sightseeing/srinagar-gulmarg-sightseeing" class="text-blue-600 hover:underline font-semibold">Gulmarg</a>, located 51 km from Srinagar at an altitude of 2,650 meters, transforms from a flower-carpeted meadow in summer to a world-class ski destination in winter. The name "Gulmarg" literally means "Meadow of Flowers" in Urdu.</p>
+      <p><a href="/sightseeing/gulmarg-gondola-skiing-tour" class="text-blue-600 hover:underline font-semibold">Gulmarg</a>, located 51 km from Srinagar at an altitude of 2,650 meters, transforms from a flower-carpeted meadow in summer to a world-class ski destination in winter. The name "Gulmarg" literally means "Meadow of Flowers" in Urdu.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Gulmarg Gondola - Asia's Highest Cable Car</h3>
 
@@ -1340,11 +1340,11 @@ export const sightseeingBlogPosts = [
         <li><strong>ATV & Sledge Rides:</strong> Available at Kongdori for adventure enthusiasts</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/srinagar-gulmarg-sightseeing" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Gulmarg Day Trip</a></p>
+      <p class="my-4"><a href="/sightseeing/gulmarg-gondola-skiing-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Gulmarg Day Trip</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Pahalgam - Valley of Shepherds</h2>
 
-      <p><a href="/sightseeing/srinagar-pahalgam-sightseeing" class="text-blue-600 hover:underline font-semibold">Pahalgam</a>, located 95 km from Srinagar, is where the Lidder River creates magic with the mountains. This erstwhile shepherd's village has transformed into one of Kashmir's most beloved destinations, serving as the base camp for the annual Amarnath Yatra pilgrimage.</p>
+      <p><a href="/sightseeing/pahalgam-betaab-aru-valley-tour" class="text-blue-600 hover:underline font-semibold">Pahalgam</a>, located 95 km from Srinagar, is where the Lidder River creates magic with the mountains. This erstwhile shepherd's village has transformed into one of Kashmir's most beloved destinations, serving as the base camp for the annual Amarnath Yatra pilgrimage.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Betaab Valley - Bollywood's Favorite</h3>
 
@@ -1372,11 +1372,11 @@ export const sightseeingBlogPosts = [
         <li>Photography opportunities with snow-capped peaks</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/srinagar-pahalgam-sightseeing" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Book Pahalgam Day Trip</a></p>
+      <p class="my-4"><a href="/sightseeing/pahalgam-betaab-aru-valley-tour" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Book Pahalgam Day Trip</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Sonmarg - The Meadow of Gold</h2>
 
-      <p><a href="/sightseeing/srinagar-sonmarg-sightseeing" class="text-blue-600 hover:underline font-semibold">Sonmarg</a>, meaning "Meadow of Gold," lies 80 km from Srinagar on the Srinagar-Leh highway. At 2,800 meters, it's the last major stop before the high-altitude passes to Ladakh. The name comes from the golden hue the meadows acquire when they bloom with wildflowers in summer.</p>
+      <p><a href="/sightseeing/sonamarg-thajiwas-glacier-tour" class="text-blue-600 hover:underline font-semibold">Sonmarg</a>, meaning "Meadow of Gold," lies 80 km from Srinagar on the Srinagar-Leh highway. At 2,800 meters, it's the last major stop before the high-altitude passes to Ladakh. The name comes from the golden hue the meadows acquire when they bloom with wildflowers in summer.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Thajiwas Glacier</h3>
 
@@ -1400,7 +1400,7 @@ export const sightseeingBlogPosts = [
         <li>Vishansar Lake trek: Guided treks available</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/srinagar-sonmarg-sightseeing" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Sonmarg Day Trip</a></p>
+      <p class="my-4"><a href="/sightseeing/sonamarg-thajiwas-glacier-tour" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Sonmarg Day Trip</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time to Visit Kashmir</h2>
 
@@ -1644,7 +1644,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready to Experience Paradise?</h3>
         <p class="mb-6">Book your Kashmir tour package with Triveni Cabs. Comfortable vehicles, experienced drivers who know every turn, and the best rates in the valley.</p>
-        <a href="/sightseeing/srinagar-local-sightseeing" class="inline-block bg-white text-purple-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Explore Kashmir Tour Packages</a>
+        <a href="/sightseeing/srinagar-dal-lake-mughal-gardens-tour" class="inline-block bg-white text-purple-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Explore Kashmir Tour Packages</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -1728,7 +1728,7 @@ export const sightseeingBlogPosts = [
 
     primaryCTA: {
       text: "Book Haridwar Rishikesh Tour",
-      url: "/sightseeing/haridwar-rishikesh-sightseeing",
+      url: "/sightseeing/haridwar-rishikesh-same-day",
       description: "Experience the divine Ganga Aarti and spiritual journey",
       price: "Starting from ₹2,500"
     },
@@ -1743,7 +1743,7 @@ export const sightseeingBlogPosts = [
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Haridwar - Gateway to the Divine</h2>
 
-      <p><a href="/sightseeing/haridwar-local-sightseeing" class="text-blue-600 hover:underline font-semibold">Haridwar</a> is one of the seven holiest places (Sapta Puri) in Hinduism. Every 12 years, it hosts the massive Kumbh Mela, the largest religious gathering on Earth. Even during regular days, the city vibrates with spiritual energy – the constant sound of temple bells, the fragrance of incense, and the sight of devotees taking holy dips in the Ganges.</p>
+      <p><a href="/sightseeing/haridwar-spiritual-tour" class="text-blue-600 hover:underline font-semibold">Haridwar</a> is one of the seven holiest places (Sapta Puri) in Hinduism. Every 12 years, it hosts the massive Kumbh Mela, the largest religious gathering on Earth. Even during regular days, the city vibrates with spiritual energy – the constant sound of temple bells, the fragrance of incense, and the sight of devotees taking holy dips in the Ganges.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Har Ki Pauri - The Footsteps of God</h3>
 
@@ -1786,7 +1786,7 @@ export const sightseeingBlogPosts = [
         <li>Timings: 7:00 AM to 7:00 PM (seasonal variations)</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/haridwar-local-sightseeing" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Haridwar Sightseeing Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/haridwar-spiritual-tour" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Haridwar Sightseeing Tour</a></p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Other Haridwar Attractions</h3>
 
@@ -1799,7 +1799,7 @@ export const sightseeingBlogPosts = [
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Rishikesh - World Capital of Yoga</h2>
 
-      <p><a href="/sightseeing/rishikesh-local-sightseeing" class="text-blue-600 hover:underline font-semibold">Rishikesh</a> has evolved from a pilgrimage town to a global destination for yoga, meditation, and adventure sports. The Beatles put it on the world map when they visited Maharishi Mahesh Yogi's ashram in 1968, and since then, the town has become a magnet for spiritual seekers worldwide.</p>
+      <p><a href="/sightseeing/rishikesh-adventure-spiritual-tour" class="text-blue-600 hover:underline font-semibold">Rishikesh</a> has evolved from a pilgrimage town to a global destination for yoga, meditation, and adventure sports. The Beatles put it on the world map when they visited Maharishi Mahesh Yogi's ashram in 1968, and since then, the town has become a magnet for spiritual seekers worldwide.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Ram Jhula & Lakshman Jhula</h3>
 
@@ -1857,7 +1857,7 @@ export const sightseeingBlogPosts = [
         <li><strong>Best Time for Yoga:</strong> September-November, February-April</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/rishikesh-local-sightseeing" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Book Rishikesh Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/rishikesh-adventure-spiritual-tour" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Book Rishikesh Tour</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Adventure Activities in Rishikesh</h2>
 
@@ -1953,7 +1953,7 @@ export const sightseeingBlogPosts = [
         <p class="mt-4"><strong>Ideal for:</strong> Complete spiritual experience</p>
       </div>
 
-      <p class="my-4"><a href="/sightseeing/haridwar-rishikesh-sightseeing" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Haridwar Rishikesh Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/haridwar-rishikesh-same-day" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Haridwar Rishikesh Tour</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time to Visit</h2>
 
@@ -2138,7 +2138,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-orange-600 to-yellow-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Begin Your Spiritual Journey</h3>
         <p class="mb-6">Book your Haridwar Rishikesh tour with Triveni Cabs. Comfortable travel, experienced drivers, and the flexibility to explore at your own pace.</p>
-        <a href="/sightseeing/haridwar-rishikesh-sightseeing" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Haridwar Rishikesh Tour</a>
+        <a href="/sightseeing/haridwar-rishikesh-same-day" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Haridwar Rishikesh Tour</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -2217,7 +2217,7 @@ export const sightseeingBlogPosts = [
 
     primaryCTA: {
       text: "Book Jaipur City Tour",
-      url: "/sightseeing/jaipur-city-tour",
+      url: "/sightseeing/jaipur-full-day-city-tour",
       description: "Explore the Pink City with our comfortable cab services",
       price: "Starting from ₹3,500"
     },
@@ -2234,7 +2234,7 @@ export const sightseeingBlogPosts = [
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Amber Fort - The Crown Jewel</h3>
 
-      <p><a href="/sightseeing/jaipur-city-tour" class="text-blue-600 hover:underline font-semibold">Amber Fort</a> (or Amer Fort) is Jaipur's most visited attraction and a UNESCO World Heritage Site. This magnificent fort-palace complex, built from red sandstone and marble, sits atop a hill overlooking Maota Lake.</p>
+      <p><a href="/sightseeing/jaipur-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Amber Fort</a> (or Amer Fort) is Jaipur's most visited attraction and a UNESCO World Heritage Site. This magnificent fort-palace complex, built from red sandstone and marble, sits atop a hill overlooking Maota Lake.</p>
 
       <p><strong>Highlights of Amber Fort:</strong></p>
       <ul class="list-disc pl-6 mb-6 space-y-2">
@@ -2289,7 +2289,7 @@ export const sightseeingBlogPosts = [
       <p><strong>Entry Fee:</strong> ₹200 (Indians), ₹700 (Foreigners) for main palace</p>
       <p><strong>Royal Grandeur Tour:</strong> ₹2,500 – includes private areas with royal guide</p>
 
-      <p class="my-4"><a href="/sightseeing/jaipur-city-tour" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Jaipur City Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Jaipur City Tour</a></p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Jantar Mantar - Ancient Observatory</h3>
 
@@ -2364,7 +2364,7 @@ export const sightseeingBlogPosts = [
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Ajmer & Pushkar (135 km)</h3>
 
-      <p><a href="/sightseeing/jaipur-ajmer-pushkar-tour" class="text-blue-600 hover:underline font-semibold">Ajmer and Pushkar</a> make for an excellent day trip from Jaipur. Ajmer houses the famous Dargah Sharif, while Pushkar is known for Brahma Temple and the holy Pushkar Lake.</p>
+      <p><a href="/sightseeing/jaipur-to-ajmer-pushkar-same-day" class="text-blue-600 hover:underline font-semibold">Ajmer and Pushkar</a> make for an excellent day trip from Jaipur. Ajmer houses the famous Dargah Sharif, while Pushkar is known for Brahma Temple and the holy Pushkar Lake.</p>
 
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li><strong>Drive Time:</strong> 2.5 hours one way</li>
@@ -2373,11 +2373,11 @@ export const sightseeingBlogPosts = [
         <li><strong>Best Time:</strong> October-March; Pushkar Camel Fair in November</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/jaipur-ajmer-pushkar-tour" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Ajmer Pushkar Day Trip</a></p>
+      <p class="my-4"><a href="/sightseeing/jaipur-to-ajmer-pushkar-same-day" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Ajmer Pushkar Day Trip</a></p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Ranthambore National Park (160 km)</h3>
 
-      <p><a href="/sightseeing/jaipur-ranthambore-tour" class="text-blue-600 hover:underline font-semibold">Ranthambore</a> is one of India's best tiger reserves. A 2-day trip allows for multiple safari drives to spot the majestic Bengal tigers.</p>
+      <p><a href="/sightseeing/jaipur-to-ranthambore-same-day" class="text-blue-600 hover:underline font-semibold">Ranthambore</a> is one of India's best tiger reserves. A 2-day trip allows for multiple safari drives to spot the majestic Bengal tigers.</p>
 
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li><strong>Drive Time:</strong> 3-3.5 hours</li>
@@ -2599,7 +2599,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-pink-600 to-orange-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready to Explore the Pink City?</h3>
         <p class="mb-6">Book your Jaipur tour with Triveni Cabs. Comfortable vehicles, knowledgeable drivers, and the best rates for exploring Rajasthan's capital.</p>
-        <a href="/sightseeing/jaipur-city-tour" class="inline-block bg-white text-pink-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Jaipur City Tour</a>
+        <a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-white text-pink-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Jaipur City Tour</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -2678,7 +2678,7 @@ export const sightseeingBlogPosts = [
 
     primaryCTA: {
       text: "Book Golden Triangle Tour",
-      url: "/sightseeing/delhi-agra-jaipur-tour",
+      url: "/sightseeing/golden-triangle-tour-3-days",
       description: "Experience India's most iconic destinations in comfort",
       price: "Starting from ₹15,000"
     },
@@ -2716,7 +2716,7 @@ export const sightseeingBlogPosts = [
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Delhi - Where History Lives</h2>
 
-      <p><a href="/sightseeing/delhi-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi</a>, India's capital, is a city of contrasts where ancient monuments stand alongside modern skyscrapers. With over 3,000 years of history, Delhi has been the capital of numerous empires and holds treasures from each era.</p>
+      <p><a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi</a>, India's capital, is a city of contrasts where ancient monuments stand alongside modern skyscrapers. With over 3,000 years of history, Delhi has been the capital of numerous empires and holds treasures from each era.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Must-Visit Places in Delhi</h3>
 
@@ -2731,11 +2731,11 @@ export const sightseeingBlogPosts = [
         <li><strong>Akshardham Temple:</strong> Modern Hindu temple complex with boat ride</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/delhi-city-tour" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">Book Delhi City Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/delhi-full-day-city-tour" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">Book Delhi City Tour</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Agra - Home of the Taj Mahal</h2>
 
-      <p><a href="/sightseeing/agra-taj-mahal-tour" class="text-blue-600 hover:underline font-semibold">Agra</a> is synonymous with the Taj Mahal – one of the New Seven Wonders of the World. But the city offers much more than just this iconic monument of love.</p>
+      <p><a href="/sightseeing/agra-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Agra</a> is synonymous with the Taj Mahal – one of the New Seven Wonders of the World. But the city offers much more than just this iconic monument of love.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Taj Mahal - A Symbol of Eternal Love</h3>
 
@@ -2762,11 +2762,11 @@ export const sightseeingBlogPosts = [
         <li><strong>Sikandra:</strong> Akbar's Tomb – unique blend of Hindu and Islamic architecture</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/agra-taj-mahal-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/agra-full-day-city-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Agra Tour</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Jaipur - The Royal Pink City</h2>
 
-      <p><a href="/sightseeing/jaipur-city-tour" class="text-blue-600 hover:underline font-semibold">Jaipur</a>, the capital of Rajasthan, brings a completely different flavor to the Golden Triangle. Here, you experience the grandeur of Rajput royalty, vibrant markets, and living traditions.</p>
+      <p><a href="/sightseeing/jaipur-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Jaipur</a>, the capital of Rajasthan, brings a completely different flavor to the Golden Triangle. Here, you experience the grandeur of Rajput royalty, vibrant markets, and living traditions.</p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Must-Visit Places in Jaipur</h3>
 
@@ -2780,7 +2780,7 @@ export const sightseeingBlogPosts = [
         <li><strong>Albert Hall Museum:</strong> Indo-Saracenic architecture, rich collections</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/jaipur-city-tour" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Jaipur City Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/jaipur-full-day-city-tour" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors">Book Jaipur City Tour</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Golden Triangle Itineraries</h2>
 
@@ -2908,7 +2908,7 @@ export const sightseeingBlogPosts = [
         <li><strong>Jaipur to Delhi:</strong> ₹500-900 (5-6 hours)</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/delhi-agra-jaipur-tour" class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Book Golden Triangle Package</a></p>
+      <p class="my-4"><a href="/sightseeing/golden-triangle-tour-3-days" class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">Book Golden Triangle Package</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time to Visit</h2>
 
@@ -3064,7 +3064,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-yellow-600 to-orange-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready for Your Golden Triangle Adventure?</h3>
         <p class="mb-6">Book your complete Golden Triangle tour with Triveni Cabs. Comfortable vehicles, experienced drivers, and seamless travel between all three cities.</p>
-        <a href="/sightseeing/delhi-agra-jaipur-tour" class="inline-block bg-white text-yellow-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Golden Triangle Tour</a>
+        <a href="/sightseeing/golden-triangle-tour-3-days" class="inline-block bg-white text-yellow-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Golden Triangle Tour</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -3142,7 +3142,7 @@ export const sightseeingBlogPosts = [
 
     primaryCTA: {
       text: "Book Udaipur City Tour",
-      url: "/sightseeing/udaipur-city-tour",
+      url: "/sightseeing/udaipur-city-of-lakes-tour",
       description: "Experience the romance of the City of Lakes",
       price: "Starting from ₹3,500"
     },
@@ -3204,7 +3204,7 @@ export const sightseeingBlogPosts = [
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">City Palace - The Crown of Udaipur</h3>
 
-      <p><a href="/sightseeing/udaipur-city-tour" class="text-blue-600 hover:underline font-semibold">City Palace</a>, the largest palace complex in Rajasthan, stands majestically on the eastern bank of Lake Pichola. Built over 400 years by 22 successive rulers, it's a fusion of Rajasthani and Mughal architecture.</p>
+      <p><a href="/sightseeing/udaipur-city-of-lakes-tour" class="text-blue-600 hover:underline font-semibold">City Palace</a>, the largest palace complex in Rajasthan, stands majestically on the eastern bank of Lake Pichola. Built over 400 years by 22 successive rulers, it's a fusion of Rajasthani and Mughal architecture.</p>
 
       <p><strong>Highlights of City Palace:</strong></p>
       <ul class="list-disc pl-6 mb-6 space-y-2">
@@ -3250,7 +3250,7 @@ export const sightseeingBlogPosts = [
         <li><strong>Entry:</strong> Included in evening boat ride package (₹800-1000)</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/udaipur-city-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Udaipur City Tour</a></p>
+      <p class="my-4"><a href="/sightseeing/udaipur-city-of-lakes-tour" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Book Udaipur City Tour</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">More Must-Visit Attractions</h2>
 
@@ -3292,7 +3292,7 @@ export const sightseeingBlogPosts = [
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Chittorgarh Fort (115 km)</h3>
 
-      <p><a href="/sightseeing/udaipur-chittorgarh-tour" class="text-blue-600 hover:underline font-semibold">Chittorgarh</a>, the former capital of Mewar, is one of India's largest forts. Its history is filled with tales of valor, sacrifice, and jauhar (self-immolation by Rajput women to avoid capture).</p>
+      <p><a href="/sightseeing/udaipur-kumbhalgarh-fort-excursion" class="text-blue-600 hover:underline font-semibold">Chittorgarh</a>, the former capital of Mewar, is one of India's largest forts. Its history is filled with tales of valor, sacrifice, and jauhar (self-immolation by Rajput women to avoid capture).</p>
 
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li><strong>Drive Time:</strong> 2-2.5 hours</li>
@@ -3301,11 +3301,11 @@ export const sightseeingBlogPosts = [
         <li><strong>Duration:</strong> Full day trip recommended</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/udaipur-chittorgarh-tour" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Chittorgarh Day Trip</a></p>
+      <p class="my-4"><a href="/sightseeing/udaipur-kumbhalgarh-fort-excursion" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">Book Chittorgarh Day Trip</a></p>
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Kumbhalgarh Fort (85 km)</h3>
 
-      <p><a href="/sightseeing/udaipur-kumbhalgarh-tour" class="text-blue-600 hover:underline font-semibold">Kumbhalgarh</a> has the second longest wall in the world after the Great Wall of China! This birthplace of the legendary Maharana Pratap is a UNESCO World Heritage Site.</p>
+      <p><a href="/sightseeing/udaipur-kumbhalgarh-fort-excursion" class="text-blue-600 hover:underline font-semibold">Kumbhalgarh</a> has the second longest wall in the world after the Great Wall of China! This birthplace of the legendary Maharana Pratap is a UNESCO World Heritage Site.</p>
 
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li><strong>Drive Time:</strong> 2 hours</li>
@@ -3327,7 +3327,7 @@ export const sightseeingBlogPosts = [
 
       <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Mount Abu (165 km)</h3>
 
-      <p><a href="/sightseeing/udaipur-mount-abu-tour" class="text-blue-600 hover:underline font-semibold">Mount Abu</a>, Rajasthan's only hill station, offers respite from the desert heat. Famous for its Dilwara Jain Temples with marble carvings that rival even the Taj Mahal.</p>
+      <p><a href="/sightseeing/udaipur-mount-abu-2-days" class="text-blue-600 hover:underline font-semibold">Mount Abu</a>, Rajasthan's only hill station, offers respite from the desert heat. Famous for its Dilwara Jain Temples with marble carvings that rival even the Taj Mahal.</p>
 
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li><strong>Drive Time:</strong> 3-3.5 hours</li>
@@ -3335,7 +3335,7 @@ export const sightseeingBlogPosts = [
         <li><strong>Best as:</strong> Overnight trip (2 days recommended)</li>
       </ul>
 
-      <p class="my-4"><a href="/sightseeing/udaipur-mount-abu-tour" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Book Mount Abu Trip</a></p>
+      <p class="my-4"><a href="/sightseeing/udaipur-mount-abu-2-days" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">Book Mount Abu Trip</a></p>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Romantic Experiences in Udaipur</h2>
 
@@ -3508,7 +3508,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready to Fall in Love with Udaipur?</h3>
         <p class="mb-6">Book your Udaipur tour with Triveni Cabs. Comfortable travel, knowledgeable drivers, and the freedom to explore at your own pace.</p>
-        <a href="/sightseeing/udaipur-city-tour" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Udaipur Tour</a>
+        <a href="/sightseeing/udaipur-city-of-lakes-tour" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Udaipur Tour</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -4048,15 +4048,15 @@ export const sightseeingBlogPosts = [
     ],
 
     relatedDestinations: [
-      { name: "Jaipur", slug: "/sightseeing/jaipur-tour-packages", highlight: "Pink City" },
-      { name: "Udaipur", slug: "/sightseeing/udaipur-tour-packages", highlight: "Lake City" },
-      { name: "Jaisalmer", slug: "/sightseeing/jaisalmer-tour-packages", highlight: "Golden City" },
-      { name: "Ajmer", slug: "/sightseeing/ajmer-tour-packages", highlight: "Dargah" }
+      { name: "Jaipur", slug: "/sightseeing/jaipur", highlight: "Pink City" },
+      { name: "Udaipur", slug: "/sightseeing/udaipur", highlight: "Lake City" },
+      { name: "Jaisalmer", slug: "/sightseeing/jaisalmer-golden-city-tour", highlight: "Golden City" },
+      { name: "Ajmer", slug: "/sightseeing/pushkar-ajmer-same-day", highlight: "Dargah" }
     ],
 
     primaryCTA: {
       text: "Book Jodhpur Tour Package",
-      url: "/sightseeing/jodhpur-tour-packages",
+      url: "/sightseeing/jodhpur",
       description: "Experience the grandeur of the Blue City with our curated tours",
       price: "Starting from ₹2,500"
     },
@@ -4350,7 +4350,7 @@ export const sightseeingBlogPosts = [
           <div>✓ Jodhpur City Tour – ₹2,500</div>
           <div>✓ Jodhpur to Jaisalmer – ₹6,000</div>
         </div>
-        <a href="/sightseeing/jodhpur-tour-packages" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Jodhpur Tour</a>
+        <a href="/sightseeing/jodhpur" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Jodhpur Tour</a>
       </div>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Jodhpur Itineraries</h2>
@@ -4494,7 +4494,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready to Explore the Blue City?</h3>
         <p class="mb-6">Book your Jodhpur tour with Triveni Cabs. Reliable transport, experienced drivers, and memorable journeys through Rajasthan's magnificent Blue City.</p>
-        <a href="/sightseeing/jodhpur-tour-packages" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Jodhpur Tour Now</a>
+        <a href="/sightseeing/jodhpur" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Jodhpur Tour Now</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -4591,15 +4591,15 @@ export const sightseeingBlogPosts = [
     ],
 
     relatedDestinations: [
-      { name: "Varanasi", slug: "/sightseeing/varanasi-tour-packages", highlight: "Kashi Darshan" },
-      { name: "Prayagraj", slug: "/sightseeing/prayagraj-tour-packages", highlight: "Triveni Sangam" },
-      { name: "Mathura Vrindavan", slug: "/sightseeing/mathura-vrindavan-tour", highlight: "Krishna Janmabhoomi" },
-      { name: "Haridwar", slug: "/sightseeing/haridwar-tour-packages", highlight: "Ganga Aarti" }
+      { name: "Varanasi", slug: "/sightseeing/varanasi", highlight: "Kashi Darshan" },
+      { name: "Prayagraj", slug: "/sightseeing/prayagraj-triveni-sangam-heritage-tour", highlight: "Triveni Sangam" },
+      { name: "Mathura Vrindavan", slug: "/sightseeing/delhi-to-mathura-vrindavan-same-day", highlight: "Krishna Janmabhoomi" },
+      { name: "Haridwar", slug: "/sightseeing/haridwar-spiritual-tour", highlight: "Ganga Aarti" }
     ],
 
     primaryCTA: {
       text: "Book Ayodhya Darshan Tour",
-      url: "/sightseeing/ayodhya-tour-packages",
+      url: "/sightseeing/ayodhya",
       description: "Hassle-free pilgrimage to Ram Mandir with comfortable transport",
       price: "Starting from ₹7,500"
     },
@@ -4869,7 +4869,7 @@ export const sightseeingBlogPosts = [
           <div>✓ Ayodhya + Varanasi – ₹12,000 (3 Days)</div>
           <div>✓ Complete UP Circuit – ₹18,000 (5 Days)</div>
         </div>
-        <a href="/sightseeing/ayodhya-tour-packages" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Ayodhya Tour</a>
+        <a href="/sightseeing/ayodhya" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Ayodhya Tour</a>
       </div>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Suggested Itineraries</h2>
@@ -4997,7 +4997,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-orange-500 to-red-500 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready for Ram Mandir Darshan?</h3>
         <p class="mb-6">Book your Ayodhya pilgrimage with Triveni Cabs. Comfortable, safe, and spiritual journey to the sacred city.</p>
-        <a href="/sightseeing/ayodhya-tour-packages" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Ayodhya Pilgrimage</a>
+        <a href="/sightseeing/ayodhya" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Ayodhya Pilgrimage</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -5094,15 +5094,15 @@ export const sightseeingBlogPosts = [
     ],
 
     relatedDestinations: [
-      { name: "Mussoorie", slug: "/sightseeing/mussoorie-tour-packages", highlight: "Queen of Hills" },
-      { name: "Jim Corbett", slug: "/sightseeing/jim-corbett-tour-packages", highlight: "Tiger Safari" },
-      { name: "Rishikesh", slug: "/sightseeing/rishikesh-tour-packages", highlight: "Adventure Capital" },
-      { name: "Ranikhet", slug: "/sightseeing/ranikhet-tour-packages", highlight: "Army Cantonment" }
+      { name: "Mussoorie", slug: "/sightseeing/mussoorie-full-day-tour", highlight: "Queen of Hills" },
+      { name: "Jim Corbett", slug: "/sightseeing/corbett-jeep-safari-tour", highlight: "Tiger Safari" },
+      { name: "Rishikesh", slug: "/sightseeing/rishikesh", highlight: "Adventure Capital" },
+      { name: "Ranikhet", slug: "/sightseeing/nainital-full-day-tour", highlight: "Army Cantonment" }
     ],
 
     primaryCTA: {
       text: "Book Nainital Tour Package",
-      url: "/sightseeing/nainital-tour-packages",
+      url: "/sightseeing/nainital-full-day-tour",
       description: "Experience the magic of the Lake District with our curated packages",
       price: "Starting from ₹7,500"
     },
@@ -5301,7 +5301,7 @@ export const sightseeingBlogPosts = [
           <div>✓ Nainital + Jim Corbett – ₹12,000 (4 Days)</div>
           <div>✓ Sattal, Bhimtal Tour – ₹1,800</div>
         </div>
-        <a href="/sightseeing/nainital-tour-packages" class="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Nainital Tour</a>
+        <a href="/sightseeing/nainital-full-day-tour" class="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Nainital Tour</a>
       </div>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time to Visit Nainital</h2>
@@ -5523,7 +5523,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready for Your Lake District Getaway?</h3>
         <p class="mb-6">Book your Nainital trip with Triveni Cabs. Comfortable travel from Delhi, experienced hill drivers, and customizable itineraries for the perfect mountain escape.</p>
-        <a href="/sightseeing/nainital-tour-packages" class="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Nainital Tour Now</a>
+        <a href="/sightseeing/nainital-full-day-tour" class="inline-block bg-white text-emerald-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Nainital Tour Now</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -5620,15 +5620,15 @@ export const sightseeingBlogPosts = [
     ],
 
     relatedDestinations: [
-      { name: "Nainital", slug: "/sightseeing/nainital-tour-packages", highlight: "Lake District" },
-      { name: "Rishikesh", slug: "/sightseeing/rishikesh-tour-packages", highlight: "Adventure Capital" },
-      { name: "Haridwar", slug: "/sightseeing/haridwar-tour-packages", highlight: "Ganga Aarti" },
-      { name: "Dehradun", slug: "/sightseeing/dehradun-tour-packages", highlight: "Doon Valley" }
+      { name: "Nainital", slug: "/sightseeing/nainital-full-day-tour", highlight: "Lake District" },
+      { name: "Rishikesh", slug: "/sightseeing/rishikesh", highlight: "Adventure Capital" },
+      { name: "Haridwar", slug: "/sightseeing/haridwar-spiritual-tour", highlight: "Ganga Aarti" },
+      { name: "Dehradun", slug: "/sightseeing/dehradun-mussoorie-tour", highlight: "Doon Valley" }
     ],
 
     primaryCTA: {
       text: "Book Mussoorie Tour Package",
-      url: "/sightseeing/mussoorie-tour-packages",
+      url: "/sightseeing/mussoorie-full-day-tour",
       description: "Escape to the Queen of Hills with our comfortable tours",
       price: "Starting from ₹6,500"
     },
@@ -5833,7 +5833,7 @@ export const sightseeingBlogPosts = [
           <div>✓ Mussoorie + Haridwar – ₹9,000 (3 Days)</div>
           <div>✓ Dehradun Pickup – ₹1,500</div>
         </div>
-        <a href="/sightseeing/mussoorie-tour-packages" class="inline-block bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mussoorie Tour</a>
+        <a href="/sightseeing/mussoorie-full-day-tour" class="inline-block bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mussoorie Tour</a>
       </div>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time to Visit Mussoorie</h2>
@@ -6042,7 +6042,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-cyan-600 to-blue-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready to Visit the Queen of Hills?</h3>
         <p class="mb-6">Book your Mussoorie getaway with Triveni Cabs. Safe, comfortable travel from Delhi or Dehradun, with experienced drivers who know every curve of the mountain roads.</p>
-        <a href="/sightseeing/mussoorie-tour-packages" class="inline-block bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mussoorie Tour Now</a>
+        <a href="/sightseeing/mussoorie-full-day-tour" class="inline-block bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mussoorie Tour Now</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -6139,15 +6139,15 @@ export const sightseeingBlogPosts = [
     ],
 
     relatedDestinations: [
-      { name: "Agra", slug: "/sightseeing/agra-tour-packages", highlight: "Taj Mahal" },
-      { name: "Ayodhya", slug: "/sightseeing/ayodhya-tour-packages", highlight: "Ram Mandir" },
-      { name: "Varanasi", slug: "/sightseeing/varanasi-tour-packages", highlight: "Kashi" },
-      { name: "Haridwar", slug: "/sightseeing/haridwar-tour-packages", highlight: "Ganga Aarti" }
+      { name: "Agra", slug: "/sightseeing/agra", highlight: "Taj Mahal" },
+      { name: "Ayodhya", slug: "/sightseeing/ayodhya", highlight: "Ram Mandir" },
+      { name: "Varanasi", slug: "/sightseeing/varanasi", highlight: "Kashi" },
+      { name: "Haridwar", slug: "/sightseeing/haridwar-spiritual-tour", highlight: "Ganga Aarti" }
     ],
 
     primaryCTA: {
       text: "Book Mathura Vrindavan Tour",
-      url: "/sightseeing/mathura-vrindavan-tour",
+      url: "/sightseeing/delhi-to-mathura-vrindavan-same-day",
       description: "Experience the divine land of Lord Krishna with our guided tours",
       price: "Starting from ₹2,800"
     },
@@ -6366,7 +6366,7 @@ export const sightseeingBlogPosts = [
           <div>✓ Mathura Local Tour – ₹1,500</div>
           <div>✓ Braj Parikrama Tour – ₹5,000</div>
         </div>
-        <a href="/sightseeing/mathura-vrindavan-tour" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mathura Vrindavan Tour</a>
+        <a href="/sightseeing/delhi-to-mathura-vrindavan-same-day" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mathura Vrindavan Tour</a>
       </div>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Suggested Itineraries</h2>
@@ -6491,7 +6491,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-yellow-500 to-orange-500 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready for Your Krishna Darshan?</h3>
         <p class="mb-6">Book your Mathura Vrindavan pilgrimage with Triveni Cabs. Comfortable travel, knowledgeable drivers, and a divine experience awaits.</p>
-        <a href="/sightseeing/mathura-vrindavan-tour" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mathura Vrindavan Tour</a>
+        <a href="/sightseeing/delhi-to-mathura-vrindavan-same-day" class="inline-block bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Mathura Vrindavan Tour</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -6588,15 +6588,15 @@ export const sightseeingBlogPosts = [
     ],
 
     relatedDestinations: [
-      { name: "Amritsar", slug: "/sightseeing/amritsar-tour-packages", highlight: "Golden Temple" },
-      { name: "Kashmir", slug: "/sightseeing/kashmir-tour-packages", highlight: "Paradise on Earth" },
-      { name: "Jammu", slug: "/sightseeing/jammu-tour-packages", highlight: "City of Temples" },
-      { name: "Patnitop", slug: "/sightseeing/patnitop-tour-packages", highlight: "Hill Station" }
+      { name: "Amritsar", slug: "/sightseeing/amritsar", highlight: "Golden Temple" },
+      { name: "Kashmir", slug: "/sightseeing/kashmir-valley-complete-tour", highlight: "Paradise on Earth" },
+      { name: "Jammu", slug: "/sightseeing/vaishno-devi-pilgrimage-tour", highlight: "City of Temples" },
+      { name: "Patnitop", slug: "/sightseeing/kashmir-valley-complete-tour", highlight: "Hill Station" }
     ],
 
     primaryCTA: {
       text: "Book Vaishno Devi Yatra",
-      url: "/sightseeing/vaishno-devi-tour",
+      url: "/sightseeing/vaishno-devi-pilgrimage-tour",
       description: "Complete pilgrimage package with comfortable transport and accommodation",
       price: "Starting from ₹4,500"
     },
@@ -6828,7 +6828,7 @@ export const sightseeingBlogPosts = [
           <div>✓ With Kashmir – ₹22,000 (6 Days)</div>
           <div>✓ With Amritsar – ₹15,000 (4 Days)</div>
         </div>
-        <a href="/sightseeing/vaishno-devi-tour" class="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Vaishno Devi Yatra</a>
+        <a href="/sightseeing/vaishno-devi-pilgrimage-tour" class="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Vaishno Devi Yatra</a>
       </div>
 
       <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Best Time to Visit</h2>
@@ -7023,7 +7023,7 @@ export const sightseeingBlogPosts = [
       <div class="bg-gradient-to-r from-red-600 to-pink-600 p-8 rounded-xl text-white text-center my-12">
         <h3 class="text-2xl font-bold mb-4">Ready for Mata's Blessings?</h3>
         <p class="mb-6">Book your Vaishno Devi pilgrimage with Triveni Cabs. Comfortable travel, reliable service, and divine journey awaits.</p>
-        <a href="/sightseeing/vaishno-devi-tour" class="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Vaishno Devi Yatra</a>
+        <a href="/sightseeing/vaishno-devi-pilgrimage-tour" class="inline-block bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors">Book Vaishno Devi Yatra</a>
       </div>
 
       <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">Related Blogs</h3>
@@ -7120,22 +7120,22 @@ export const sightseeingBlogPosts = [
     relatedDestinations: [
       {
         name: "Jaipur",
-        slug: "/sightseeing/jaipur-tour-packages",
+        slug: "/sightseeing/jaipur",
         highlight: "Group Sightseeing"
       },
       {
         name: "Agra",
-        slug: "/sightseeing/agra-tour-packages",
+        slug: "/sightseeing/agra",
         highlight: "Taj Mahal Tours"
       },
       {
         name: "Haridwar",
-        slug: "/sightseeing/haridwar-rishikesh-tour",
+        slug: "/sightseeing/haridwar-rishikesh-same-day",
         highlight: "Pilgrimage Groups"
       },
       {
         name: "Shimla Manali",
-        slug: "/sightseeing/shimla-manali-tour",
+        slug: "/sightseeing/shimla-to-manali-2-days-tour",
         highlight: "Family Groups"
       }
     ],
@@ -7772,22 +7772,22 @@ export const sightseeingBlogPosts = [
     relatedDestinations: [
       {
         name: "Kashmir",
-        slug: "/sightseeing/kashmir-tour-packages",
+        slug: "/sightseeing/kashmir-valley-complete-tour",
         highlight: "Paradise on Earth"
       },
       {
         name: "Shimla Manali",
-        slug: "/sightseeing/shimla-manali-tour",
+        slug: "/sightseeing/shimla-to-manali-2-days-tour",
         highlight: "Hill Romance"
       },
       {
         name: "Udaipur",
-        slug: "/sightseeing/udaipur-tour-packages",
+        slug: "/sightseeing/udaipur",
         highlight: "City of Lakes"
       },
       {
         name: "Mussoorie",
-        slug: "/sightseeing/mussoorie-tour-packages",
+        slug: "/sightseeing/mussoorie-full-day-tour",
         highlight: "Queen of Hills"
       }
     ],
@@ -8350,22 +8350,22 @@ export const sightseeingBlogPosts = [
     relatedDestinations: [
       {
         name: "Rishikesh",
-        slug: "/sightseeing/haridwar-rishikesh-tour",
+        slug: "/sightseeing/haridwar-rishikesh-same-day",
         highlight: "Adventure Activities"
       },
       {
         name: "Jim Corbett",
-        slug: "/sightseeing/jim-corbett-tour",
+        slug: "/sightseeing/corbett-jeep-safari-tour",
         highlight: "Jungle Retreat"
       },
       {
         name: "Jaipur",
-        slug: "/sightseeing/jaipur-tour-packages",
+        slug: "/sightseeing/jaipur",
         highlight: "Heritage Experience"
       },
       {
         name: "Nainital",
-        slug: "/sightseeing/nainital-tour-packages",
+        slug: "/sightseeing/nainital-full-day-tour",
         highlight: "Lake Retreat"
       }
     ],
@@ -8903,22 +8903,22 @@ export const sightseeingBlogPosts = [
     relatedDestinations: [
       {
         name: "Agra",
-        slug: "/sightseeing/agra-tour-packages",
+        slug: "/sightseeing/agra",
         highlight: "Day Trip Deals"
       },
       {
         name: "Jaipur",
-        slug: "/sightseeing/jaipur-tour-packages",
+        slug: "/sightseeing/jaipur",
         highlight: "Budget Friendly"
       },
       {
         name: "Haridwar Rishikesh",
-        slug: "/sightseeing/haridwar-rishikesh-tour",
+        slug: "/sightseeing/haridwar-rishikesh-same-day",
         highlight: "Backpacker Paradise"
       },
       {
         name: "Mussoorie",
-        slug: "/sightseeing/mussoorie-tour-packages",
+        slug: "/sightseeing/mussoorie-full-day-tour",
         highlight: "Weekend Budget"
       }
     ],
@@ -9476,22 +9476,22 @@ export const sightseeingBlogPosts = [
     relatedDestinations: [
       {
         name: "Shimla Manali",
-        slug: "/sightseeing/shimla-manali-tour",
+        slug: "/sightseeing/shimla-to-manali-2-days-tour",
         highlight: "Mountain Roads"
       },
       {
         name: "Jaipur",
-        slug: "/sightseeing/jaipur-tour-packages",
+        slug: "/sightseeing/jaipur",
         highlight: "Highway Travel"
       },
       {
         name: "Haridwar Rishikesh",
-        slug: "/sightseeing/haridwar-rishikesh-tour",
+        slug: "/sightseeing/haridwar-rishikesh-same-day",
         highlight: "Ghat Roads"
       },
       {
         name: "Nainital",
-        slug: "/sightseeing/nainital-tour-packages",
+        slug: "/sightseeing/nainital-full-day-tour",
         highlight: "Hill Roads"
       }
     ],

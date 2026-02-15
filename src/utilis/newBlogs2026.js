@@ -24,7 +24,7 @@ const popularLinksSection = `
 
 <h3 class="text-lg font-bold text-gray-900 mb-3">Popular Routes</h3>
 <div class="flex flex-wrap gap-2 mb-6">
-<a href="/sightseeing/agra-same-day-tour" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Agra</a>
+<a href="/same-day-agra-tour-from-delhi" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Agra</a>
 <a href="/sightseeing/jaipur" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Jaipur</a>
 <a href="/sightseeing/manali" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Manali</a>
 <a href="/sightseeing/shimla" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Shimla</a>
@@ -140,7 +140,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Fog Risk:</strong> Low to moderate</li>
 <li class="ml-4"><strong>Tip:</strong> One of the best months overall - pleasant weather, manageable crowds</li>
 </ul>
-<p class="text-gray-700 leading-relaxed mb-4">February is among the best months to visit the Taj Mahal. The fog clears up, temperatures are comfortable for walking, and the tourist rush of peak season has not yet started. The Taj Mahotsav festival (held in February) adds cultural performances and handicraft exhibitions near the monument. <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Book our same-day Agra tour</a> to make the most of this pleasant weather.</p>
+<p class="text-gray-700 leading-relaxed mb-4">February is among the best months to visit the Taj Mahal. The fog clears up, temperatures are comfortable for walking, and the tourist rush of peak season has not yet started. The Taj Mahotsav festival (held in February) adds cultural performances and handicraft exhibitions near the monument. <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Book our same-day Agra tour</a> to make the most of this pleasant weather.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">March: Peak Tourist Season</h3>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
@@ -184,7 +184,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Crowd Level:</strong> High (peak season returns)</li>
 <li class="ml-4"><strong>Tip:</strong> Book tickets and transport well in advance</li>
 </ul>
-<p class="text-gray-700 leading-relaxed mb-4">October and November are widely considered the absolute best months to visit the Taj Mahal. The monsoon has washed the marble clean, the gardens are lush, and temperatures are ideal for walking. Clear skies mean perfect photography conditions. This is also peak tourist season, so booking a <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">same-day Agra tour from Delhi</a> in advance is essential.</p>
+<p class="text-gray-700 leading-relaxed mb-4">October and November are widely considered the absolute best months to visit the Taj Mahal. The monsoon has washed the marble clean, the gardens are lush, and temperatures are ideal for walking. Clear skies mean perfect photography conditions. This is also peak tourist season, so booking a <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">same-day Agra tour from Delhi</a> in advance is essential.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">December: Festive Season</h3>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
@@ -244,7 +244,7 @@ const newBlogs2026 = [
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">By Car (Recommended)</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Distance:</strong> 230 km via Yamuna Expressway | <strong>Duration:</strong> 3-3.5 hours | <strong>Toll:</strong> ₹735 one-way</p>
-<p class="text-gray-700 leading-relaxed mb-4">Hiring a cab from Delhi is the most flexible option. You control your departure time (crucial for sunrise visits), can stop wherever you like, and have comfortable return transport after a tiring day. <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">Our same-day Agra tour</a> includes pickup from your Delhi hotel at 4 AM for sunrise visits.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Hiring a cab from Delhi is the most flexible option. You control your departure time (crucial for sunrise visits), can stop wherever you like, and have comfortable return transport after a tiring day. <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">Our same-day Agra tour</a> includes pickup from your Delhi hotel at 4 AM for sunrise visits.</p>
 
 <table class="w-full border-collapse border border-gray-300 my-6">
 <thead><tr class="bg-gray-100">
@@ -315,7 +315,7 @@ const newBlogs2026 = [
 <h3 class="text-xl font-bold mb-2">Book Your Taj Mahal Tour Today</h3>
 <p class="mb-4">Travel in comfort with experienced drivers who know the best routes and timings for your Taj Mahal visit.</p>
 <p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> <a href="https://wa.me/917668570551" class="text-white underline">7668570551</a></p>
-<a href="/sightseeing/agra-same-day-tour" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Same-Day Agra Tour</a>
+<a href="/same-day-agra-tour-from-delhi" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Same-Day Agra Tour</a>
 </div>`,
     date: "2026-02-01",
     readTime: "14 min read",
@@ -345,11 +345,11 @@ const newBlogs2026 = [
     ],
     primaryCTA: {
       text: "Book Same-Day Agra Tour",
-      url: "/sightseeing/agra-same-day-tour",
+      url: "/same-day-agra-tour-from-delhi",
       description: "Complete Agra sightseeing in one day from Delhi",
       price: "Starting ₹3,500"
     },
-    content: `<p>Can you really see <strong>Agra in one day</strong>? Absolutely - with the right itinerary and planning, you can cover the Taj Mahal, Agra Fort, a food stop for local delicacies, and even squeeze in Mehtab Bagh or Fatehpur Sikri. This hour-by-hour guide for a one-day Agra itinerary is designed for travelers doing a <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">same-day Agra tour from Delhi</a>.</p>
+    content: `<p>Can you really see <strong>Agra in one day</strong>? Absolutely - with the right itinerary and planning, you can cover the Taj Mahal, Agra Fort, a food stop for local delicacies, and even squeeze in Mehtab Bagh or Fatehpur Sikri. This hour-by-hour guide for a one-day Agra itinerary is designed for travelers doing a <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">same-day Agra tour from Delhi</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Hour-by-Hour Agra Itinerary</h2>
 
@@ -468,7 +468,7 @@ const newBlogs2026 = [
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I do Agra and Fatehpur Sikri in one day from Delhi?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">It is possible but very rushed. Fatehpur Sikri is 37 km from Agra and adds 2-3 hours to your trip. We recommend it only if you depart Delhi by 3 AM and skip one of the Agra attractions. For a relaxed experience, consider our <a href="/sightseeing/agra-overnight" class="text-blue-600 hover:underline">overnight Agra package</a> instead.</p>
+<p class="text-gray-700 leading-relaxed mb-4">It is possible but very rushed. Fatehpur Sikri is 37 km from Agra and adds 2-3 hours to your trip. We recommend it only if you depart Delhi by 3 AM and skip one of the Agra attractions. For a relaxed experience, consider our <a href="/sightseeing/agra" class="text-blue-600 hover:underline">overnight Agra package</a> instead.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is the Yamuna Expressway safe at night?</h3>
 <p class="text-gray-700 leading-relaxed mb-4">The Yamuna Expressway is well-lit and patrolled. However, we recommend completing your return drive before 9 PM. Our <a href="/safety" class="text-blue-600 hover:underline">safety standards</a> ensure all drivers are well-rested and vehicles are in top condition for highway driving.</p>
@@ -480,7 +480,7 @@ const newBlogs2026 = [
 <h3 class="text-xl font-bold mb-2">Book Your Agra Day Trip</h3>
 <p class="mb-4">Our experienced drivers pick you up at 4 AM and ensure you see the best of Agra before returning to Delhi by evening. Over 500+ same-day trips completed since 2015.</p>
 <p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> <a href="https://wa.me/917668570551" class="text-white underline">7668570551</a></p>
-<a href="/sightseeing/agra-same-day-tour" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Same-Day Agra Tour</a>
+<a href="/same-day-agra-tour-from-delhi" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Same-Day Agra Tour</a>
 </div>`,
     date: "2026-02-01",
     readTime: "12 min read",
@@ -582,7 +582,7 @@ const newBlogs2026 = [
 <tr><td class="border border-gray-300 px-4 py-2">Toll Charges</td><td class="border border-gray-300 px-4 py-2">₹735 one-way</td></tr>
 </tbody>
 </table>
-<p class="text-gray-700 leading-relaxed mb-4">India's most popular day trip from Delhi. The Yamuna Expressway makes this a quick, comfortable drive. Perfect as a <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline font-semibold">same-day Agra tour</a> or extend to a 2-day trip including Fatehpur Sikri.</p>
+<p class="text-gray-700 leading-relaxed mb-4">India's most popular day trip from Delhi. The Yamuna Expressway makes this a quick, comfortable drive. Perfect as a <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline font-semibold">same-day Agra tour</a> or extend to a 2-day trip including Fatehpur Sikri.</p>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Highlights:</strong> Taj Mahal (sunrise), Agra Fort, Mehtab Bagh, Fatehpur Sikri, local Mughlai cuisine.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">5. Delhi to Shimla - The Queen of Hills</h2>
@@ -3018,11 +3018,11 @@ const newBlogs2026 = [
     ],
     primaryCTA: {
       text: "Book Golden Triangle Tour",
-      url: "/sightseeing/golden-triangle",
+      url: "/sightseeing/golden-triangle-tour-3-days",
       description: "Delhi-Agra-Jaipur tour with all tolls included",
       price: "Starting ₹12,000"
     },
-    content: `<p>Planning a road trip on the <strong>Delhi-Agra</strong> or <strong>Delhi-Jaipur</strong> routes? Toll charges are a significant part of your travel budget. This guide provides exact <strong>toll booth locations, charges per vehicle type, and total cost breakdowns</strong> for the most popular routes in the Golden Triangle for 2026. All charges are for FASTag payments (cash payment costs double). When you <a href="/sightseeing/golden-triangle" class="text-blue-600 hover:underline font-semibold">book a tour with Triveni Cabs</a>, toll charges are clearly communicated upfront - no surprises.</p>
+    content: `<p>Planning a road trip on the <strong>Delhi-Agra</strong> or <strong>Delhi-Jaipur</strong> routes? Toll charges are a significant part of your travel budget. This guide provides exact <strong>toll booth locations, charges per vehicle type, and total cost breakdowns</strong> for the most popular routes in the Golden Triangle for 2026. All charges are for FASTag payments (cash payment costs double). When you <a href="/sightseeing/golden-triangle-tour-3-days" class="text-blue-600 hover:underline font-semibold">book a tour with Triveni Cabs</a>, toll charges are clearly communicated upfront - no surprises.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Delhi to Agra Toll Charges (Yamuna Expressway)</h2>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi (Noida) → Yamuna Expressway → Agra | <strong>Distance:</strong> 230 km | <strong>Duration:</strong> 3-3.5 hours</p>
@@ -3149,7 +3149,7 @@ const newBlogs2026 = [
 <li class="ml-4"><a href="/blog/outstation-cab-booking-tips-2026" class="text-blue-600 hover:underline font-semibold">Outstation Cab Booking Tips</a> - understand total trip costs including tolls</li>
 <li class="ml-4"><a href="/blog/road-trip-packing-checklist-india" class="text-blue-600 hover:underline font-semibold">Road Trip Packing Checklist</a> - what to carry for the Golden Triangle circuit</li>
 <li class="ml-4"><a href="/blog/holi-in-mathura-vrindavan-travel-guide" class="text-blue-600 hover:underline font-semibold">Holi in Mathura Guide</a> - Mathura is on the Delhi-Agra route</li>
-<li class="ml-4"><a href="/sightseeing/golden-triangle" class="text-blue-600 hover:underline font-semibold">Golden Triangle Tour Package</a> - all-inclusive tour with tolls covered</li>
+<li class="ml-4"><a href="/sightseeing/golden-triangle-tour-3-days" class="text-blue-600 hover:underline font-semibold">Golden Triangle Tour Package</a> - all-inclusive tour with tolls covered</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Money-Saving Toll Tips</h2>
@@ -3164,7 +3164,7 @@ const newBlogs2026 = [
 <h3 class="text-xl font-bold mb-2">Book Golden Triangle Tour - Tolls Included</h3>
 <p class="mb-4">No toll surprises. Our packages include clear toll cost breakdowns. Pay only what you see in the quote.</p>
 <p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> <a href="https://wa.me/917668570551" class="text-white underline">7668570551</a></p>
-<a href="/sightseeing/golden-triangle" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Golden Triangle</a>
+<a href="/sightseeing/golden-triangle-tour-3-days" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Golden Triangle</a>
 </div>`,
     date: "2026-02-01",
     readTime: "11 min read",

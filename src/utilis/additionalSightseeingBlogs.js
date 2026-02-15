@@ -518,13 +518,13 @@ export const additionalSightseeingBlogs = [
 
     primaryCTA: {
       text: "Book Mathura Tour",
-      url: "/sightseeing/mathura-vrindavan",
+      url: "/sightseeing/delhi-to-mathura-vrindavan-same-day",
       description: "Krishna Janmabhoomi experience",
       price: "Starting ₹3,500"
     },
 
     content: `
-      <p>Walk in the footsteps of Lord Krishna in <strong>Mathura</strong> and <strong>Vrindavan</strong> - the most sacred destinations for Krishna devotees worldwide. Our <a href="/sightseeing/mathura-vrindavan" class="text-blue-600 hover:underline font-semibold">Mathura-Vrindavan tours</a> take you through 5,000 years of divine history.</p>
+      <p>Walk in the footsteps of Lord Krishna in <strong>Mathura</strong> and <strong>Vrindavan</strong> - the most sacred destinations for Krishna devotees worldwide. Our <a href="/sightseeing/delhi-to-mathura-vrindavan-same-day" class="text-blue-600 hover:underline font-semibold">Mathura-Vrindavan tours</a> take you through 5,000 years of divine history.</p>
 
       <h2>Why Visit Mathura-Vrindavan?</h2>
       <ul>
@@ -600,7 +600,7 @@ export const additionalSightseeingBlogs = [
       <div class="my-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Radhe Radhe!</h3>
         <p class="mb-4 text-gray-700">Book your Mathura-Vrindavan tour for a divine experience!</p>
-        <a href="/sightseeing/mathura-vrindavan" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md">Book Tour</a>
+        <a href="/sightseeing/delhi-to-mathura-vrindavan-same-day" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md">Book Tour</a>
       </div>
 
       <p>Plan your pilgrimage! <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>

@@ -102,6 +102,20 @@ export const corporateTransportBlogs = [
           <h3>Ready to Transform Your Corporate Transportation?</h3>
           <p>Get a free consultation and customized quote for your corporate transportation needs. Call us at 7668570551 or request a quote online.</p>
         </div>
+
+        <hr class="my-8 border-gray-200" />
+        <h2>Explore Our Corporate & Business Services</h2>
+        <ul>
+          <li><a href="/corporate-transportation-service" class="text-blue-600 hover:underline font-semibold">Corporate Transportation Service</a> — Dedicated fleet for your business</li>
+          <li><a href="/corporate-cab-vs-aggregators" class="text-blue-600 hover:underline">Corporate Cab vs Ola/Uber Comparison</a></li>
+          <li><a href="/get-corporate-quote" class="text-blue-600 hover:underline">Get a Free Corporate Quote</a></li>
+          <li><a href="/corporate-transportation-service/delhi" class="text-blue-600 hover:underline">Corporate Cabs in Delhi NCR</a></li>
+          <li><a href="/corporate-transportation-service/noida" class="text-blue-600 hover:underline">Corporate Cabs in Noida</a></li>
+          <li><a href="/corporate-transportation-service/gurgaon" class="text-blue-600 hover:underline">Corporate Cabs in Gurgaon</a></li>
+          <li><a href="/airport-service" class="text-blue-600 hover:underline">Airport Transfer Services</a> — Executive airport pickups</li>
+          <li><a href="/event-transportation-service" class="text-blue-600 hover:underline">Event Transportation</a> — Corporate events & conferences</li>
+          <li><a href="/outstation-cabs" class="text-blue-600 hover:underline">Outstation Cabs</a> — Business travel between cities</li>
+        </ul>
       </article>
     `,
     date: "2026-01-10",
@@ -234,6 +248,21 @@ export const corporateTransportBlogs = [
           <h3>Plan Your Perfect Wedding Transportation</h3>
           <p>From baraat cars to guest shuttles, we handle all your wedding transportation needs. Call 7668570551 for a customized quote.</p>
         </div>
+
+        <hr class="my-8 border-gray-200" />
+        <h2>Wedding & Event Transportation Services</h2>
+        <ul>
+          <li><a href="/wedding" class="text-blue-600 hover:underline font-semibold">Wedding Car Rental Services</a> — Decorated luxury cars for your big day</li>
+          <li><a href="/wedding/car-decoration-packages" class="text-blue-600 hover:underline">Car Decoration Packages</a></li>
+          <li><a href="/wedding/doli-car-rental" class="text-blue-600 hover:underline">Doli Car Rental</a> — Bridal car with premium decoration</li>
+          <li><a href="/wedding/baraat-tempo-traveller" class="text-blue-600 hover:underline">Baraat Tempo Traveller</a> — Group transport for baraat party</li>
+          <li><a href="/wedding/delhi" class="text-blue-600 hover:underline">Wedding Cars in Delhi</a></li>
+          <li><a href="/wedding/jaipur" class="text-blue-600 hover:underline">Wedding Cars in Jaipur</a></li>
+          <li><a href="/wedding/udaipur" class="text-blue-600 hover:underline">Wedding Cars in Udaipur</a> — Destination wedding transport</li>
+          <li><a href="/event-transportation-service/wedding-transportation" class="text-blue-600 hover:underline">Wedding Transportation Service</a></li>
+          <li><a href="/event-transportation-service/destination-wedding-transport" class="text-blue-600 hover:underline">Destination Wedding Transport</a></li>
+          <li><a href="/tempo-traveller" class="text-blue-600 hover:underline">Tempo Traveller Rental</a> — Guest shuttle for weddings</li>
+        </ul>
       </article>
     `,
     date: "2026-01-08",
@@ -357,6 +386,20 @@ export const corporateTransportBlogs = [
           <h3>Transform Your Employee Transportation</h3>
           <p>Get a free assessment of your current transport system and discover how dedicated services can benefit your organization. Call 7668570551 today.</p>
         </div>
+
+        <hr class="my-8 border-gray-200" />
+        <h2>Related Corporate Services</h2>
+        <ul>
+          <li><a href="/corporate-transportation-service" class="text-blue-600 hover:underline font-semibold">Corporate Transportation Service</a> — Complete business mobility solutions</li>
+          <li><a href="/corporate-transportation-service/use-case/employee-pick-drop" class="text-blue-600 hover:underline">Employee Pick-up & Drop Service</a></li>
+          <li><a href="/corporate-transportation-service/use-case/office-shuttle-service" class="text-blue-600 hover:underline">Office Shuttle Service</a></li>
+          <li><a href="/corporate-transportation-service/use-case/airport-transfer-corporate" class="text-blue-600 hover:underline">Corporate Airport Transfer</a></li>
+          <li><a href="/corporate-transportation-service/industry/it-companies" class="text-blue-600 hover:underline">IT Company Transport Solutions</a></li>
+          <li><a href="/corporate-transportation-service/industry/bpo-call-centers" class="text-blue-600 hover:underline">BPO & Call Center Transport</a></li>
+          <li><a href="/corporate-transportation-service/industry/hospitals-healthcare" class="text-blue-600 hover:underline">Healthcare Staff Transport</a></li>
+          <li><a href="/corporate-cab-vs-aggregators" class="text-blue-600 hover:underline">Corporate Cab vs Ola/Uber</a> — Detailed comparison</li>
+          <li><a href="/get-corporate-quote" class="text-blue-600 hover:underline">Get Free Corporate Quote</a></li>
+        </ul>
       </article>
     `,
     date: "2026-01-06",

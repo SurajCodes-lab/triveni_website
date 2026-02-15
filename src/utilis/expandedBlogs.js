@@ -200,7 +200,7 @@ export const busBlogs = [
 
       <h3>Classic Triangle: Delhi - Jaipur - Agra</h3>
       <p><strong>Duration:</strong> 3-4 days | <strong>Distance:</strong> 720 km round trip</p>
-      <p>Perfect introduction to North India covering the <a href="/sightseeing/golden-triangle" class="text-blue-600 hover:underline">Golden Triangle</a>.</p>
+      <p>Perfect introduction to North India covering the <a href="/sightseeing/golden-triangle-tour-3-days" class="text-blue-600 hover:underline">Golden Triangle</a>.</p>
 
       <h3>Royal Rajasthan Circuit</h3>
       <p><strong>Duration:</strong> 7-10 days | <strong>Distance:</strong> 1,500+ km</p>
@@ -307,13 +307,13 @@ export const busBlogs = [
 
     primaryCTA: {
       text: "Book Char Dham Bus Tour",
-      url: "/sightseeing/chardham-yatra-package",
+      url: "/sightseeing/char-dham-yatra-complete-circuit",
       description: "Comfortable bus pilgrimage to all four dhams",
       price: "Starting ₹18,000"
     },
 
     content: `
-      <p>Embark on the sacred <strong>Char Dham Yatra</strong> - the most revered Hindu pilgrimage covering Yamunotri, Gangotri, Kedarnath, and Badrinath. Our <a href="/sightseeing/chardham-yatra-package" class="text-blue-600 hover:underline font-semibold">Char Dham bus packages</a> make this spiritual journey comfortable and accessible for groups.</p>
+      <p>Embark on the sacred <strong>Char Dham Yatra</strong> - the most revered Hindu pilgrimage covering Yamunotri, Gangotri, Kedarnath, and Badrinath. Our <a href="/sightseeing/char-dham-yatra-complete-circuit" class="text-blue-600 hover:underline font-semibold">Char Dham bus packages</a> make this spiritual journey comfortable and accessible for groups.</p>
 
       <h2>Understanding Char Dham Yatra</h2>
       <p>The Char Dham (Four Abodes) pilgrimage in Uttarakhand is believed to wash away all sins and help attain moksha. Each temple holds immense religious significance:</p>
@@ -396,7 +396,7 @@ export const busBlogs = [
       <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">🙏 Begin Your Spiritual Journey</h3>
         <p class="mb-4 text-gray-700">Book our Char Dham bus package for a comfortable pilgrimage experience. Group discounts available!</p>
-        <a href="/sightseeing/chardham-yatra-package" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-md">Book Char Dham Package →</a>
+        <a href="/sightseeing/char-dham-yatra-complete-circuit" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-md">Book Char Dham Package →</a>
       </div>
 
       <p>Need help planning your Char Dham Yatra? <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>
@@ -919,13 +919,13 @@ export const busBlogs = [
 
     primaryCTA: {
       text: "Book Golden Triangle Tour",
-      url: "/sightseeing/golden-triangle",
+      url: "/sightseeing/golden-triangle-tour-3-days",
       description: "Classic triangle tour by luxury bus",
       price: "Starting ₹8,000"
     },
 
     content: `
-      <p>The <strong>Golden Triangle</strong> - Delhi, Agra, and Jaipur - is India's most popular tourist circuit. Our <a href="/sightseeing/golden-triangle" class="text-blue-600 hover:underline font-semibold">Golden Triangle bus tours</a> make this iconic journey comfortable and affordable for groups.</p>
+      <p>The <strong>Golden Triangle</strong> - Delhi, Agra, and Jaipur - is India's most popular tourist circuit. Our <a href="/sightseeing/golden-triangle-tour-3-days" class="text-blue-600 hover:underline font-semibold">Golden Triangle bus tours</a> make this iconic journey comfortable and affordable for groups.</p>
 
       <h2>Why Golden Triangle by Bus?</h2>
       <ul>
@@ -1024,7 +1024,7 @@ export const busBlogs = [
       <div class="my-8 p-6 bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">🏛️ Experience India's Heritage</h3>
         <p class="mb-4 text-gray-700">Book the classic Golden Triangle tour and witness India's greatest monuments!</p>
-        <a href="/sightseeing/golden-triangle" class="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-md">Book Golden Triangle →</a>
+        <a href="/sightseeing/golden-triangle-tour-3-days" class="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-md">Book Golden Triangle →</a>
       </div>
 
       <p>Plan your heritage tour! <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>

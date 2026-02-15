@@ -94,7 +94,7 @@ const costBlogs = [
       <p>Yes, all toll charges (₹735 one way on Yamuna Expressway) are included in our fare. No hidden charges.</p>
 
       <h3>Can the driver wait while I visit Taj Mahal?</h3>
-      <p>Yes! For round trips and day tours, the driver waits as long as needed. Our <a href="/sightseeing/agra-same-day-tour" class="text-blue-600 hover:underline">Agra day tour package</a> includes 8-10 hours in Agra for sightseeing.</p>
+      <p>Yes! For round trips and day tours, the driver waits as long as needed. Our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">Agra day tour package</a> includes 8-10 hours in Agra for sightseeing.</p>
 
       <div class="my-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Book Delhi to Agra Cab</h3>

@@ -361,7 +361,7 @@ export default function LocalTaxiPage() {
                   { l: "Delhi Sightseeing Tour", h: "/sightseeing/delhi-sightseeing-tour" },
                   { l: "Golden Triangle Tour", h: "/sightseeing/golden-triangle-tour-3-days" },
                   { l: "Same Day Agra Tour", h: "/same-day-agra-tour-from-delhi" },
-                  { l: "Taj Mahal Sunrise Tour", h: "/taj-mahal-sunrise-tour-from-delhi" },
+                  { l: "Taj Mahal Sunrise Tour", h: "/sunrise-taj-mahal-tour-from-delhi" },
                   { l: "Mathura Vrindavan Tour", h: "/sightseeing/mathura-vrindavan-tour-from-delhi" },
                   { l: "Rajasthan Circuit Tour", h: "/sightseeing/rajasthan-tour-from-delhi" },
                   { l: "Weekend Getaways from Delhi", h: "/weekend-getaways-from-delhi-by-car" },

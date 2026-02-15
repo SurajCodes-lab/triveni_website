@@ -218,22 +218,34 @@ export const CrossServiceLinks = ({
       description: `Airport pickup & drop in ${cityDisplay}`
     },
     {
-      name: `${cityDisplay} Cab Service`,
-      icon: 'route',
-      url: `/${citySlug}`,
-      description: `Outstation & local cabs in ${cityDisplay}`
+      name: 'Sightseeing Tours',
+      icon: 'tour',
+      url: `/sightseeing/${citySlug}`,
+      description: `Explore ${cityDisplay} tourist places`
     },
     {
-      name: 'Corporate Transport',
-      icon: 'corporate',
-      url: `/corporate-transportation-service/${citySlug}`,
-      description: `Employee shuttle & office cabs`
+      name: 'One-Way Cab',
+      icon: 'route',
+      url: `/one-way-cab`,
+      description: `Save 50% — pay single direction only`
+    },
+    {
+      name: 'Round Trip Cab',
+      icon: 'route',
+      url: `/round-trip-cab`,
+      description: `Multi-day trips with same driver`
     },
     {
       name: 'Wedding Cars',
       icon: 'wedding',
       url: `/wedding/${citySlug}`,
       description: `Decorated cars for your special day`
+    },
+    {
+      name: 'Corporate Transport',
+      icon: 'corporate',
+      url: `/corporate-transportation-service/${citySlug}`,
+      description: `Employee shuttle & office cabs`
     },
     {
       name: 'Event Transport',
@@ -258,7 +270,7 @@ export const CrossServiceLinks = ({
           {title || `Also Available in ${city}`}
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {displayServices.map((service, index) => {
             const Icon = iconMap[service.icon] || iconMap.default;
 
