@@ -5,6 +5,7 @@ import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
 import { tempoRoutes } from "@/utilis/tempoTravellerData";
 import { chardhamRoutes } from "@/utilis/chardhamData";
+import { getAllSlugs as getAllChardhamYatraSlugs } from "@/utilis/chardhamYatraData";
 import { blogPosts } from "@/utilis/blog";
 import { busRoutes } from "@/utilis/busRoutesData";
 import { getAllTours } from "@/utilis/sightseeingData";
@@ -837,6 +838,23 @@ export default function sitemap() {
   ];
   beyondSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 });
+  });
+
+  // Char Dham Yatra by Car/SUV/Bus Pages - HIGHEST PRIORITY PILGRIMAGE CONTENT (36 pages)
+  urls.push({
+    url: `${baseUrl}/chardham-yatra`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.95,
+  });
+  const chardhamYatraSlugs = getAllChardhamYatraSlugs();
+  chardhamYatraSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/chardham-yatra/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    });
   });
 
   // Mathura/Ayodhya Day Package Pages
