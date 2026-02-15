@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, Clock, Sun, Award, Crown, Zap, Heart, Package, Bus, Fuel, Route } from '@/components/ui/icons';
+import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, Clock, Sun, Award, Crown, Zap, Heart, Package, Bus, Fuel, Route, Compass } from '@/components/ui/icons';
 
 // ============================================================================
 // CHARDHAM PACKAGE CLIENT — "Royal Yatra" Design
