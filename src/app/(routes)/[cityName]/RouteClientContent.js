@@ -23,10 +23,7 @@ const FareCalculator = dynamic(() => import('@/components/calculator/FareCalcula
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
-import { FAQSection } from '@/components/seo/FAQSection';
-import { PopularRoutes, CrossServiceLinks } from '@/components/seo/RelatedContent';
-import { generateRouteFAQs } from '@/lib/seo/faq-generator';
-import { getRelatedRoutes, getServiceCrossLinks, getRelatedContent } from '@/utilis/linkingHelper';
+import { getRelatedContent } from '@/utilis/linkingHelper';
 import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
 // City hero images
