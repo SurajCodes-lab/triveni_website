@@ -7920,6 +7920,208 @@ Faridabad: [
         { vehicle: "56 Seater Volvo Bus", price: "₹19500", roundTrip: "₹39000", capacity: "56 guests" }
       ]
     }
+  ],
+  Kasol: [
+    {
+      destination: "Delhi",
+      distance: "520 km",
+      time: "11-12 hours",
+      description: "Scenic drive from Kasol to Delhi via Mandi, Bilaspur and Chandigarh through the Parvati Valley.",
+      tags: ["Hill Station", "Backpacking", "Adventure"],
+      prices: [
+        { vehicle: "Sedan", price: "₹6240", roundTrip: "₹12480" },
+        { vehicle: "SUV Ertiga", price: "₹7800", roundTrip: "₹15600", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹9360", roundTrip: "₹18720", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹13000", roundTrip: "₹26000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹13520", roundTrip: "₹27040", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹14040", roundTrip: "₹28080", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹13520", roundTrip: "₹27040", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹16640", roundTrip: "₹33280", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹17680", roundTrip: "₹35360", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹18720", roundTrip: "₹37440", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹19760", roundTrip: "₹39520", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹23400", roundTrip: "₹46800", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹27040", roundTrip: "₹54080", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹30160", roundTrip: "₹60320", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹33800", roundTrip: "₹67600", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Chandigarh",
+      distance: "310 km",
+      time: "7-8 hours",
+      description: "Travel from Kasol to Chandigarh through scenic Himachal mountain roads via Mandi and Bilaspur.",
+      tags: ["Gateway City", "Mountain Route"],
+      prices: [
+        { vehicle: "Sedan", price: "₹3720", roundTrip: "₹7440" },
+        { vehicle: "SUV Ertiga", price: "₹4650", roundTrip: "₹9300", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹5580", roundTrip: "₹11160", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹7130", roundTrip: "₹14260", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹7750", roundTrip: "₹15500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹8060", roundTrip: "₹16120", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹8370", roundTrip: "₹16740", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹8060", roundTrip: "₹16120", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹9920", roundTrip: "₹19840", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹10540", roundTrip: "₹21080", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹11160", roundTrip: "₹22320", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹11780", roundTrip: "₹23560", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹13950", roundTrip: "₹27900", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹16120", roundTrip: "₹32240", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹17980", roundTrip: "₹35960", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹20150", roundTrip: "₹40300", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Manali",
+      distance: "80 km",
+      time: "2-3 hours",
+      description: "Short scenic drive from Kasol to Manali through the Kullu Valley along the Beas River.",
+      tags: ["Hill Station", "Short Trip", "Valley Drive"],
+      prices: [
+        { vehicle: "Sedan", price: "₹2500", roundTrip: "₹5000" },
+        { vehicle: "SUV Ertiga", price: "₹3000", roundTrip: "₹6000", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹3500", roundTrip: "₹7000", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹5500", roundTrip: "₹11000", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6000", roundTrip: "₹12000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6240", roundTrip: "₹12480", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6480", roundTrip: "₹12960", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6240", roundTrip: "₹12480", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7680", roundTrip: "₹15360", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8160", roundTrip: "₹16320", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8640", roundTrip: "₹17280", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9120", roundTrip: "₹18240", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10800", roundTrip: "₹21600", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12480", roundTrip: "₹24960", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13920", roundTrip: "₹27840", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15600", roundTrip: "₹31200", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Shimla",
+      distance: "250 km",
+      time: "6-7 hours",
+      description: "Mountain drive from Kasol to Shimla via Mandi and Sundernagar through pine-covered Himachal hills.",
+      tags: ["Hill Station", "Colonial Heritage"],
+      prices: [
+        { vehicle: "Sedan", price: "₹3000", roundTrip: "₹6000" },
+        { vehicle: "SUV Ertiga", price: "₹3750", roundTrip: "₹7500", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹4500", roundTrip: "₹9000", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹5750", roundTrip: "₹11500", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹6250", roundTrip: "₹12500", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6500", roundTrip: "₹13000", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6750", roundTrip: "₹13500", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6500", roundTrip: "₹13000", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹8000", roundTrip: "₹16000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹8500", roundTrip: "₹17000", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹9000", roundTrip: "₹18000", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹9500", roundTrip: "₹19000", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹11250", roundTrip: "₹22500", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹13000", roundTrip: "₹26000", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹14500", roundTrip: "₹29000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹16250", roundTrip: "₹32500", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Kullu",
+      distance: "42 km",
+      time: "1-2 hours",
+      description: "Quick drive from Kasol to Kullu town, the gateway to the Kullu Valley.",
+      tags: ["Valley Town", "Short Trip"],
+      prices: [
+        { vehicle: "Sedan", price: "₹2500", roundTrip: "₹5000" },
+        { vehicle: "SUV Ertiga", price: "₹2800", roundTrip: "₹5600", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹3200", roundTrip: "₹6400", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹5000", roundTrip: "₹10000", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5500", roundTrip: "₹11000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹5700", roundTrip: "₹11400", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹5900", roundTrip: "₹11800", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹5700", roundTrip: "₹11400", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7000", roundTrip: "₹14000", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹7400", roundTrip: "₹14800", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹7800", roundTrip: "₹15600", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹8200", roundTrip: "₹16400", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹9700", roundTrip: "₹19400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹11200", roundTrip: "₹22400", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹12500", roundTrip: "₹25000", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹14000", roundTrip: "₹28000", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Dharamshala",
+      distance: "195 km",
+      time: "5-6 hours",
+      description: "Mountain drive from Kasol to Dharamshala, home of the Dalai Lama, via Mandi and Palampur.",
+      tags: ["Tibetan Culture", "Hill Station"],
+      prices: [
+        { vehicle: "Sedan", price: "₹2500", roundTrip: "₹5000" },
+        { vehicle: "SUV Ertiga", price: "₹2925", roundTrip: "₹5850", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹3510", roundTrip: "₹7020", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹5500", roundTrip: "₹11000", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹5875", roundTrip: "₹11750", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹6070", roundTrip: "₹12140", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹6265", roundTrip: "₹12530", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹6070", roundTrip: "₹12140", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹7480", roundTrip: "₹14960", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹7950", roundTrip: "₹15900", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹8420", roundTrip: "₹16840", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹8890", roundTrip: "₹17780", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹10530", roundTrip: "₹21060", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹12170", roundTrip: "₹24340", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹13570", roundTrip: "₹27140", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹15210", roundTrip: "₹30420", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Amritsar",
+      distance: "400 km",
+      time: "9-10 hours",
+      description: "Long drive from Kasol to Amritsar via Mandi, Bilaspur, and Ludhiana to visit the Golden Temple.",
+      tags: ["Golden Temple", "Pilgrimage"],
+      prices: [
+        { vehicle: "Sedan", price: "₹4800", roundTrip: "₹9600" },
+        { vehicle: "SUV Ertiga", price: "₹6000", roundTrip: "₹12000", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹7200", roundTrip: "₹14400", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹9200", roundTrip: "₹18400", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹10000", roundTrip: "₹20000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹10400", roundTrip: "₹20800", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹10800", roundTrip: "₹21600", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹10400", roundTrip: "₹20800", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹12800", roundTrip: "₹25600", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹13600", roundTrip: "₹27200", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹14400", roundTrip: "₹28800", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹15200", roundTrip: "₹30400", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹18000", roundTrip: "₹36000", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹20800", roundTrip: "₹41600", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹23200", roundTrip: "₹46400", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹26000", roundTrip: "₹52000", capacity: "56 guests" }
+      ]
+    },
+    {
+      destination: "Haridwar",
+      distance: "460 km",
+      time: "10-11 hours",
+      description: "Drive from Kasol to the holy city of Haridwar via Mandi, Bilaspur, Chandigarh, and Roorkee.",
+      tags: ["Pilgrimage", "Holy City"],
+      prices: [
+        { vehicle: "Sedan", price: "₹5520", roundTrip: "₹11040" },
+        { vehicle: "SUV Ertiga", price: "₹6900", roundTrip: "₹13800", capacity: "6 guests" },
+        { vehicle: "SUV Innova", price: "₹8280", roundTrip: "₹16560", capacity: "7 guests" },
+        { vehicle: "12 Seater Tempo", price: "₹10580", roundTrip: "₹21160", capacity: "12 guests" },
+        { vehicle: "16 Seater Tempo", price: "₹11500", roundTrip: "₹23000", capacity: "16 guests" },
+        { vehicle: "17 Seater Tempo", price: "₹11960", roundTrip: "₹23920", capacity: "17 guests" },
+        { vehicle: "20 Seater Tempo", price: "₹12420", roundTrip: "₹24840", capacity: "20 guests" },
+        { vehicle: "26 Seater Maharaja", price: "₹11960", roundTrip: "₹23920", capacity: "26 guests" },
+        { vehicle: "22 Seater Mini Bus", price: "₹14720", roundTrip: "₹29440", capacity: "22 guests" },
+        { vehicle: "25 Seater Mini Bus", price: "₹15640", roundTrip: "₹31280", capacity: "25 guests" },
+        { vehicle: "27 Seater Coach", price: "₹16560", roundTrip: "₹33120", capacity: "27 guests" },
+        { vehicle: "35 Seater Coach", price: "₹17480", roundTrip: "₹34960", capacity: "35 guests" },
+        { vehicle: "41 Seater Bus", price: "₹20700", roundTrip: "₹41400", capacity: "41 guests" },
+        { vehicle: "45 Seater Luxury Bus", price: "₹23920", roundTrip: "₹47840", capacity: "45 guests" },
+        { vehicle: "52 Seater Bus", price: "₹26680", roundTrip: "₹53360", capacity: "52 guests" },
+        { vehicle: "56 Seater Volvo Bus", price: "₹29900", roundTrip: "₹59800", capacity: "56 guests" }
+      ]
+    }
   ]
 };
 

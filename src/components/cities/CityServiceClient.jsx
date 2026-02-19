@@ -7,7 +7,8 @@ import {
   Users, ChevronRight, Star, ArrowRight, Sparkles,
   CreditCard, Headphones, Award, Heart, Navigation,
   Bus, ChevronDown, Route, Fuel, Gift, BadgeCheck,
-  Timer, Snowflake, Search, Filter, X, Play
+  Timer, Snowflake, Search, Filter, X, Play,
+  Calendar, Sun, Thermometer, CloudSun
 } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,6 +16,7 @@ import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import CityRoutes from "@/components/cities/CityRoutes";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
+import { bestTimeToVisitData } from "@/utilis/bestTimeToVisitData";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from 'next/dynamic';
 
@@ -906,6 +908,188 @@ export default function CityServiceClient({
         </section>
       )}
 
+
+      {/* ==================== BEST TIME TO VISIT SECTION ==================== */}
+      {(() => {
+        const visitData = bestTimeToVisitData[formattedCityName];
+        if (!visitData) return null;
+
+        const crowdColor = (crowd) => {
+          if (crowd === 'Very High') return 'bg-red-100 text-red-700';
+          if (crowd === 'High') return 'bg-orange-100 text-orange-700';
+          if (crowd === 'Medium') return 'bg-yellow-100 text-yellow-700';
+          if (crowd === 'Low') return 'bg-green-100 text-green-700';
+          if (crowd === 'Very Low') return 'bg-emerald-100 text-emerald-700';
+          if (crowd === 'None') return 'bg-gray-100 text-gray-500';
+          return 'bg-gray-100 text-gray-600';
+        };
+
+        const pricingColor = (pricing) => {
+          if (pricing === 'Peak') return 'bg-red-100 text-red-700';
+          if (pricing === 'Moderate') return 'bg-yellow-100 text-yellow-700';
+          if (pricing === 'Budget') return 'bg-green-100 text-green-700';
+          if (pricing === 'Closed') return 'bg-gray-200 text-gray-500';
+          return 'bg-gray-100 text-gray-600';
+        };
+
+        return (
+          <section className="py-16 md:py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-20 right-0 w-72 h-72 bg-[#FACF2D]/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-20 left-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              {/* Section Header */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-10 md:mb-14"
+              >
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-5 py-2.5 rounded-full mb-6">
+                  <Calendar className="w-5 h-5 text-[#D4A017]" />
+                  <span className="text-sm font-bold text-[#D4A017]">TRAVEL PLANNING</span>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+                  Best Time to Visit <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedCityName}</span>
+                </h2>
+                <p className="text-slate-600 text-lg max-w-3xl mx-auto">
+                  {visitData.overview}
+                </p>
+              </motion.div>
+
+              {/* Quick Info Row */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10 md:mb-14"
+              >
+                <div className="bg-white rounded-xl border-2 border-gray-100 hover:border-[#FACF2D] px-4 md:px-5 py-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-all">
+                  <div className="p-2 rounded-lg bg-[#FACF2D]">
+                    <Sun className="w-4 h-4 md:w-5 md:h-5 text-black" />
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs font-medium">Peak Season</p>
+                    <p className="text-gray-900 font-bold text-sm">{visitData.peakSeason}</p>
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl border-2 border-gray-100 hover:border-[#FACF2D] px-4 md:px-5 py-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-all">
+                  <div className="p-2 rounded-lg bg-blue-500">
+                    <CloudSun className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs font-medium">Off Season</p>
+                    <p className="text-gray-900 font-bold text-sm">{visitData.offSeason}</p>
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl border-2 border-gray-100 hover:border-[#FACF2D] px-4 md:px-5 py-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-all">
+                  <div className="p-2 rounded-lg bg-green-500">
+                    <Clock className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs font-medium">Ideal Duration</p>
+                    <p className="text-gray-900 font-bold text-sm">{visitData.idealDuration}</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Seasons Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-10 md:mb-14">
+                {visitData.seasons.map((season, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group"
+                  >
+                    <div className="bg-white rounded-2xl border-2 border-gray-100 hover:border-[#FACF2D] p-5 md:p-6 h-full shadow-md hover:shadow-xl transition-all duration-300">
+                      {/* Season Header */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          <div className={`p-2 rounded-lg ${
+                            season.name.includes('Summer') || season.name.includes('Spring') ? 'bg-amber-100' :
+                            season.name.includes('Winter') || season.name.includes('Autumn') ? 'bg-blue-100' :
+                            season.name.includes('Monsoon') ? 'bg-teal-100' :
+                            'bg-gray-100'
+                          }`}>
+                            {season.name.includes('Summer') || season.name.includes('Spring') ? (
+                              <Sun className={`w-5 h-5 ${season.name.includes('Summer') || season.name.includes('Spring') ? 'text-amber-600' : 'text-gray-600'}`} />
+                            ) : season.name.includes('Winter') || season.name.includes('Autumn') ? (
+                              <Snowflake className="w-5 h-5 text-blue-600" />
+                            ) : (
+                              <CloudSun className="w-5 h-5 text-teal-600" />
+                            )}
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-gray-900">{season.name}</h3>
+                            <p className="text-xs text-gray-500">{season.months}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Temperature */}
+                      <div className="flex items-center gap-2 mb-3 p-2.5 bg-gray-50 rounded-lg">
+                        <Thermometer className="w-4 h-4 text-red-500" />
+                        <span className="text-sm font-medium text-gray-700">Temperature: <span className="font-bold text-gray-900">{season.temp}</span></span>
+                      </div>
+
+                      {/* Crowd & Pricing Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${crowdColor(season.crowd)}`}>
+                          {season.crowd} Crowd
+                        </span>
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${pricingColor(season.pricing)}`}>
+                          {season.pricing} Pricing
+                        </span>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-sm text-gray-600 leading-relaxed">{season.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Festivals Section */}
+              {visitData.festivals && visitData.festivals.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="bg-white rounded-2xl border-2 border-gray-100 p-6 md:p-8 shadow-md">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                      <div className="p-2 rounded-xl bg-[#FACF2D]">
+                        <Sparkles className="w-5 h-5 text-black" />
+                      </div>
+                      Festivals & Events in {formattedCityName}
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {visitData.festivals.map((festival, index) => (
+                        <div key={index} className="p-4 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100 hover:border-[#FACF2D] hover:shadow-md transition-all">
+                          <div className="flex items-start gap-3">
+                            <div className="p-1.5 rounded-lg bg-[#FACF2D]/20 mt-0.5">
+                              <Calendar className="w-4 h-4 text-[#D4A017]" />
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-gray-900 text-sm">{festival.name}</h4>
+                              <p className="text-xs font-medium text-[#D4A017] mb-1">{festival.month}</p>
+                              <p className="text-xs text-gray-600 leading-relaxed">{festival.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ==================== FAQ SECTION ==================== */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">

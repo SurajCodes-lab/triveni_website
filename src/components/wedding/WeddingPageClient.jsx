@@ -13,6 +13,7 @@ import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import { blurDataURL } from "@/utilis/imageUtils";
 import dynamic from 'next/dynamic';
+import { FAQSection } from '@/components/seo/FAQSection';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -675,42 +676,18 @@ const PricingPackages = () => {
 };
 
 
-// FAQ Section
-// FAQ Section
+// FAQ Section - Uses centralized FAQSection component with schema
 const FAQ = ({ faqs = [] }) => {
-
-
+  if (!faqs || faqs.length === 0) return null;
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Frequently Asked <span className="text-[#FACF2D]">Questions</span>
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Got questions? We've got answers!
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-lg font-bold mb-2 flex items-start gap-2">
-                <span className="text-[#FACF2D] flex-shrink-0">Q.</span>
-                {faq.question}
-              </h3>
-              <p className="text-gray-600 pl-6">
-                <span className="text-gray-400 mr-2">A.</span>
-                {faq.answer}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <FAQSection
+      faqs={faqs}
+      title="Wedding Car Rental — FAQs"
+      subtitle="Got questions? We've got answers!"
+      showSchema={true}
+      variant="card"
+      showContactCTA={true}
+    />
   );
 };
 

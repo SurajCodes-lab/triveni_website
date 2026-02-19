@@ -6,7 +6,8 @@ import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle,
-  ArrowRight, Route, Award, TrendingUp, IndianRupee, Sparkles, Info, DollarSign, Navigation, HelpCircle, ChevronDown
+  ArrowRight, Route, Award, TrendingUp, IndianRupee, Sparkles, Info, DollarSign, Navigation, HelpCircle, ChevronDown,
+  Compass, MapPinned, Sun
 } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -19,7 +20,7 @@ import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 export default function DynamicBusRoutesClient({ data }) {
-  const { routeSlug, origin, destination, routeData, localSightseeing, fleet } = data;
+  const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription } = data;
 
   const [selectedBus, setSelectedBus] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -207,6 +208,158 @@ export default function DynamicBusRoutesClient({ data }) {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* ============================================ */}
+      {/* ROUTE HIGHLIGHTS SECTION - Route-specific content */}
+      {/* ============================================ */}
+      {routeDescription && (
+        <section className="py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+          {/* Decorative top border */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-orange-400" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-10 md:mb-14"
+            >
+              <div className="inline-flex items-center gap-2 bg-[#FACF2D]/10 px-4 md:px-6 py-2 md:py-3 rounded-full mb-4 md:mb-6 border border-[#FACF2D]/20">
+                <Compass className="w-4 h-4 md:w-5 md:h-5 text-[#FACF2D]" />
+                <span className="text-gray-800 font-bold text-xs md:text-sm tracking-wider">ROUTE GUIDE</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-3 md:mb-4 px-4">
+                {origin} to {destination} <span className="text-[#FACF2D]">Road Trip Guide</span>
+              </h2>
+              <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+                Everything you need to know about the {origin} to {destination} route by bus
+              </p>
+            </motion.div>
+
+            {/* Quick Info Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12"
+            >
+              <div className="bg-white rounded-xl md:rounded-2xl border-2 border-gray-100 hover:border-[#FACF2D] px-4 md:px-5 py-2.5 md:py-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-all">
+                <div className="p-1.5 md:p-2 rounded-lg md:rounded-xl bg-[#FACF2D]">
+                  <Clock className="w-4 h-4 md:w-5 md:h-5 text-black" />
+                </div>
+                <div>
+                  <p className="text-gray-500 text-xs font-medium">Travel Time</p>
+                  <p className="text-gray-900 font-bold text-sm md:text-base">{routeDescription.travelTime}</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl md:rounded-2xl border-2 border-gray-100 hover:border-[#FACF2D] px-4 md:px-5 py-2.5 md:py-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-all">
+                <div className="p-1.5 md:p-2 rounded-lg md:rounded-xl bg-[#FACF2D]">
+                  <Navigation className="w-4 h-4 md:w-5 md:h-5 text-black" />
+                </div>
+                <div>
+                  <p className="text-gray-500 text-xs font-medium">Distance</p>
+                  <p className="text-gray-900 font-bold text-sm md:text-base">{routeDescription.distance}</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl md:rounded-2xl border-2 border-gray-100 hover:border-[#FACF2D] px-4 md:px-5 py-2.5 md:py-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-all">
+                <div className="p-1.5 md:p-2 rounded-lg md:rounded-xl bg-[#FACF2D]">
+                  <Sun className="w-4 h-4 md:w-5 md:h-5 text-black" />
+                </div>
+                <div>
+                  <p className="text-gray-500 text-xs font-medium">Best Season</p>
+                  <p className="text-gray-900 font-bold text-xs md:text-sm">{routeDescription.bestSeason}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-8">
+              {/* Highlights + Bus Types Card */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="bg-white rounded-2xl md:rounded-3xl border-2 border-gray-100 hover:border-[#FACF2D] p-5 md:p-8 h-full shadow-lg hover:shadow-xl transition-all duration-300">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-[#FACF2D]">
+                      <MapPinned className="w-5 h-5 text-black" />
+                    </div>
+                    Route Overview
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-sm md:text-base mb-5 md:mb-6">
+                    {routeDescription.highlights}
+                  </p>
+
+                  {/* Recommended Bus Types */}
+                  {routeDescription.busTypes && (
+                    <div className="p-3 md:p-4 bg-[#FACF2D]/10 rounded-xl border border-[#FACF2D]/20">
+                      <p className="text-gray-900 font-bold text-sm mb-1 flex items-center gap-2">
+                        <Bus className="w-4 h-4 text-[#FACF2D]" />
+                        Recommended Bus Types
+                      </p>
+                      <p className="text-gray-600 text-xs md:text-sm">{routeDescription.busTypes}</p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+
+              {/* Stops + Travel Tips Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="bg-white rounded-2xl md:rounded-3xl border-2 border-gray-100 hover:border-[#FACF2D] p-5 md:p-8 h-full shadow-lg hover:shadow-xl transition-all duration-300">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-[#FACF2D]">
+                      <MapPin className="w-5 h-5 text-black" />
+                    </div>
+                    Popular Stops En-Route
+                  </h3>
+                  <div className="space-y-2.5 md:space-y-3 mb-5 md:mb-6">
+                    {routeDescription.stops.map((stop, index) => (
+                      <div key={index} className="flex items-center gap-3 md:gap-4 group">
+                        <div className="relative flex flex-col items-center">
+                          <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-xs md:text-sm font-bold ${
+                            index === 0 ? 'bg-green-500 text-white' :
+                            index === routeDescription.stops.length - 1 ? 'bg-[#FACF2D] text-black' :
+                            'bg-gray-100 text-gray-600 border-2 border-gray-200'
+                          }`}>
+                            {index + 1}
+                          </div>
+                          {index < routeDescription.stops.length - 1 && (
+                            <div className="w-0.5 h-3 md:h-4 bg-gray-200 mt-0.5 md:mt-1" />
+                          )}
+                        </div>
+                        <span className="text-gray-700 group-hover:text-[#FACF2D] transition-colors font-medium text-sm md:text-base">
+                          {stop}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Travel Tips */}
+                  {routeDescription.travelTips && (
+                    <div className="p-3 md:p-4 bg-blue-50 rounded-xl border border-blue-100">
+                      <p className="text-blue-800 font-bold text-sm mb-1 flex items-center gap-2">
+                        <Info className="w-4 h-4 text-blue-600" />
+                        Travel Tips
+                      </p>
+                      <p className="text-blue-700 text-xs md:text-sm">{routeDescription.travelTips}</p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SEO-Rich Introduction Section */}
       <section className="py-12 md:py-16 bg-white">

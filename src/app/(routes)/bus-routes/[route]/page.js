@@ -1,6 +1,6 @@
 // src/app/bus-routes/[route]/page.js
 
-import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute } from '@/utilis/busRoutesData';
+import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute, busRouteDescriptions } from '@/utilis/busRoutesData';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -213,6 +213,9 @@ export default async function BusRoutePage({ params }) {
   const destinationSightseeing = localSightseeing?.[destinationFormatted] || [];
   const detailedRouteInfo = getDetailedRouteInfo();
 
+  // Get route-specific description if available
+  const routeDescription = busRouteDescriptions?.[route] || null;
+
   // Prepare data for client component
   const pageData = {
     routeSlug: route,
@@ -221,7 +224,8 @@ export default async function BusRoutePage({ params }) {
     routeData: routeData,
     localSightseeing: destinationSightseeing,
     fleet: busFleet,
-    detailedRouteInfo: detailedRouteInfo
+    detailedRouteInfo: detailedRouteInfo,
+    routeDescription: routeDescription
   };
 
   // JSON-LD Structured Data for specific route

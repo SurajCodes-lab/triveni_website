@@ -3,10 +3,18 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, CheckCircle2, ChevronRight, Star, Shield, Car, HelpCircle, ThumbsUp, ThumbsDown, Award, Route, Trophy, Target } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
-import { useState } from 'react';
+import { FAQSection } from '@/components/seo/FAQSection';
+import { useState, useMemo } from 'react';
 
 export default function DestinationCompareClient({ data }) {
-  const [openFaq, setOpenFaq] = useState(null);
+  // Map {q, a} format to {question, answer} for FAQSection
+  const normalizedFaqs = useMemo(() =>
+    (data.faqs || []).map(faq => ({
+      question: faq.q || faq.question,
+      answer: faq.a || faq.answer,
+    })),
+    [data.faqs]
+  );
 
   const getWinnerName = (winner) => {
     const d1Lower = data.dest1.name.toLowerCase().replace(/\s+/g, '');
@@ -450,41 +458,16 @@ export default function DestinationCompareClient({ data }) {
       </section>
 
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-slate-100 rounded-full px-4 py-2 mb-4">
-            <HelpCircle className="w-4 h-4 text-slate-700" />
-            <span className="text-xs font-bold text-slate-700 uppercase tracking-widest">Got Questions?</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
-            Frequently Asked
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-orange-500">Questions</span>
-          </h2>
-        </div>
-        <div className="space-y-4">
-          {data.faqs.map((faq, idx) => (
-            <div key={idx} className="group border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-blue-200 transition-all duration-300">
-              <button
-                onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-blue-50/30 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-500 to-orange-500 rounded-lg flex items-center justify-center text-white font-black text-xs">
-                    {idx + 1}
-                  </span>
-                  <span className="font-bold text-gray-900">{faq.q}</span>
-                </div>
-                <ChevronRight className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openFaq === idx ? 'rotate-90' : ''}`} />
-              </button>
-              {openFaq === idx && (
-                <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 bg-slate-50/50">
-                  <p className="pt-5 pl-12">{faq.a}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      {normalizedFaqs.length > 0 && (
+        <FAQSection
+          faqs={normalizedFaqs}
+          title={`${data.dest1.name} vs ${data.dest2.name} — FAQs`}
+          subtitle="Common questions about choosing between these destinations"
+          showSchema={true}
+          variant="card"
+          showContactCTA={true}
+        />
+      )}
     </div>
   );
 }

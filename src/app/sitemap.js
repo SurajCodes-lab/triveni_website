@@ -861,5 +861,56 @@ export default function sitemap() {
   urls.push({ url: `${baseUrl}/mathura-vrindavan-1-day-package`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 });
   urls.push({ url: `${baseUrl}/ayodhya-1-day-package`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 });
 
+  // How to Reach [City] Pages - HIGH PRIORITY SEO CONTENT (20 pages)
+  const howToReachCities = [
+    'delhi', 'agra', 'jaipur', 'shimla', 'manali', 'haridwar', 'rishikesh',
+    'varanasi', 'udaipur', 'amritsar', 'chandigarh', 'dehradun', 'mussoorie',
+    'nainital', 'jodhpur', 'jaisalmer', 'dharamshala', 'kasol', 'ayodhya', 'lucknow',
+  ];
+  howToReachCities.forEach(city => {
+    urls.push({
+      url: `${baseUrl}/how-to-reach-${city}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // New Trip Cost Pages (15 additional destinations)
+  const newTripCostSlugs = [
+    'amritsar-trip-cost-from-delhi', 'dharamshala-trip-cost-from-delhi',
+    'mussoorie-trip-cost-from-delhi', 'nainital-trip-cost-from-delhi',
+    'jodhpur-trip-cost-from-delhi', 'jaisalmer-trip-cost-from-delhi',
+    'ayodhya-trip-cost-from-delhi', 'leh-ladakh-trip-cost-from-delhi',
+    'jim-corbett-trip-cost-from-delhi', 'kasol-trip-cost-from-delhi',
+    'dehradun-trip-cost-from-delhi', 'pushkar-trip-cost-from-delhi',
+    'haridwar-trip-cost-from-delhi', 'lucknow-trip-cost-from-delhi',
+    'chandigarh-trip-cost-from-delhi',
+  ];
+  newTripCostSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // Vehicle Comparison Pages - HIGH INTENT DECISION CONTENT (8 pages)
+  const vehicleComparisonSlugs = [
+    'innova-vs-ertiga-for-outstation', 'tempo-traveller-vs-mini-bus',
+    'sedan-vs-suv-for-hill-stations', 'fortuner-vs-innova-crysta',
+    '12-seater-vs-17-seater-tempo', 'bus-vs-tempo-for-wedding',
+    'one-way-vs-round-trip-cab', 'self-drive-vs-chauffeur',
+  ];
+  vehicleComparisonSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
   return urls;
 }

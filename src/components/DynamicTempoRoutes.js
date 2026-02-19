@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
+import { routeDescriptions } from '@/utilis/tempoTravellerData';
 import dynamic from 'next/dynamic';
 import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
@@ -26,6 +27,9 @@ export default function DynamicTempoRoutesClient({ data }) {
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
   const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet } = data;
+
+  // Get route-specific description if available
+  const routeDescription = routeDescriptions[routeSlug] || null;
 
   // Helper function to format multi-city destinations with commas for display
   const formatDestinationForDisplay = (dest) => {
@@ -600,6 +604,146 @@ export default function DynamicTempoRoutesClient({ data }) {
           </div>
         </div>
       </section>
+
+      {/* ============================================ */}
+      {/* ROUTE HIGHLIGHTS SECTION - Route-specific content */}
+      {/* ============================================ */}
+      {routeDescription && (
+        <section className="py-16 md:py-20 bg-gradient-to-b from-black to-amber-950/20 relative overflow-hidden">
+          {/* Background Glow */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12 md:mb-16"
+            >
+              <div className="inline-flex items-center gap-2 bg-amber-400/20 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-amber-400/30">
+                <Compass className="w-5 h-5 text-amber-400" />
+                <span className="text-amber-400 font-bold text-sm tracking-wider">ROUTE HIGHLIGHTS</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+                {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Road Trip Guide</span>
+              </h2>
+              <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                Everything you need to know about the {origin} to {destination} route by tempo traveller
+              </p>
+            </motion.div>
+
+            {/* Quick Info Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10"
+            >
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 px-5 py-3 flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500">
+                  <Clock className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-white/50 text-xs font-medium">Travel Time</p>
+                  <p className="text-white font-bold">{routeDescription.travelTime}</p>
+                </div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 px-5 py-3 flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-400 to-green-500">
+                  <Navigation className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-white/50 text-xs font-medium">Distance</p>
+                  <p className="text-white font-bold">{routeDescription.distance}</p>
+                </div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 px-5 py-3 flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500">
+                  <Sun className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-white/50 text-xs font-medium">Best Season</p>
+                  <p className="text-white font-bold text-sm">{routeDescription.bestSeason}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+              {/* Highlights Card */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 md:p-8 h-full hover:border-amber-500/30 transition-all duration-300">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500">
+                      <MapPinned className="w-5 h-5 text-white" />
+                    </div>
+                    Route Overview
+                  </h3>
+                  <p className="text-white/70 leading-relaxed text-base">
+                    {routeDescription.highlights}
+                  </p>
+                  {routeDescription.roadConditions && (
+                    <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+                      <p className="text-amber-400 font-bold text-sm mb-1 flex items-center gap-2">
+                        <Route className="w-4 h-4" />
+                        Road Conditions
+                      </p>
+                      <p className="text-white/60 text-sm">{routeDescription.roadConditions}</p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+
+              {/* Stops Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 md:p-8 h-full hover:border-amber-500/30 transition-all duration-300">
+                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-400 to-green-500">
+                      <MapPin className="w-5 h-5 text-white" />
+                    </div>
+                    Popular Stops En-Route
+                  </h3>
+                  <div className="space-y-3">
+                    {routeDescription.stops.map((stop, index) => (
+                      <div key={index} className="flex items-center gap-4 group">
+                        <div className="relative flex flex-col items-center">
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                            index === 0 ? 'bg-gradient-to-br from-green-400 to-emerald-500 text-white' :
+                            index === routeDescription.stops.length - 1 ? 'bg-gradient-to-br from-amber-400 to-orange-500 text-white' :
+                            'bg-white/10 text-white/70 border border-white/20'
+                          }`}>
+                            {index + 1}
+                          </div>
+                          {index < routeDescription.stops.length - 1 && (
+                            <div className="w-0.5 h-4 bg-white/20 mt-1" />
+                          )}
+                        </div>
+                        <span className="text-white/80 group-hover:text-amber-400 transition-colors font-medium">
+                          {stop}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ============================================ */}
       {/* FLEET SECTION - Premium Vehicle Showcase */}

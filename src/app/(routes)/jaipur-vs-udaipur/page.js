@@ -42,16 +42,6 @@ export default function JaipurVsUdaipurPage() {
     ],
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": data.faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
-    }))
-  };
-
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -66,7 +56,6 @@ export default function JaipurVsUdaipurPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <DestinationCompareClient data={data} />
     </>

@@ -11,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
+import { FAQSection } from '@/components/seo/FAQSection';
 import dynamic from 'next/dynamic';
 
 // Dynamically import FareCalculator (client-only, below fold)
@@ -544,8 +545,8 @@ const WhyChooseUs = ({ city }) => {
   );
 };
 
-// FAQ Section
-const FAQ = ({ city }) => {
+// FAQ Section - Uses centralized FAQSection component with schema
+const WeddingFAQ = ({ city }) => {
   const faqs = [
     {
       question: `What types of wedding cars are available in ${city.name}?`,
@@ -574,36 +575,14 @@ const FAQ = ({ city }) => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Frequently Asked <span className="text-[#FACF2D]">Questions</span>
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Everything you need to know about wedding car rental in {city.name}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-lg font-bold mb-2 flex items-start gap-2">
-                <span className="text-[#FACF2D] flex-shrink-0">Q.</span>
-                {faq.question}
-              </h3>
-              <p className="text-gray-600 pl-6">
-                <span className="text-gray-400 mr-2">A.</span>
-                {faq.answer}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <FAQSection
+      faqs={faqs}
+      title={`${city.name} Wedding Car Rental — FAQs`}
+      subtitle={`Everything you need to know about wedding car rental in ${city.name}`}
+      showSchema={true}
+      variant="card"
+      showContactCTA={true}
+    />
   );
 };
 
@@ -795,7 +774,7 @@ export default function CityWeddingPageClient({ city, citySlug }) {
         <WeddingCarCollection />
         <NearbyDestinations city={city} citySlug={citySlug} />
         <WhyChooseUs city={city} />
-        <FAQ city={city} />
+        <WeddingFAQ city={city} />
         {/* Fare Calculator */}
         <section className="py-12 bg-gradient-to-b from-pink-50/30 to-white" id="fare-calculator">
           <div className="max-w-7xl mx-auto px-4">

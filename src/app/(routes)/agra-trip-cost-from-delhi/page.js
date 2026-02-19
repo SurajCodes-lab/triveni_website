@@ -42,15 +42,6 @@ export default function AgraTripCostPage() {
     ],
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": data.faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
-    }))
-  };
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -66,7 +57,6 @@ export default function AgraTripCostPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <TripCostClient data={data} />
     </>
