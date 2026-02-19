@@ -24,7 +24,6 @@ const FareCalculator = dynamic(() => import('@/components/calculator/FareCalcula
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { getRelatedContent } from '@/utilis/linkingHelper';
-import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
 // City hero images
 const cityHeroData = {
@@ -1244,8 +1243,6 @@ export default function RouteClientContent({
         );
       })()}
 
-      {/* Cross-Linking Section */}
-      <CrossLinkingSection currentCity={formattedCityName} currentService="Outstation Cab" />
 
       {/* ==================== FLOATING MOBILE CTA ==================== */}
       {mounted && (

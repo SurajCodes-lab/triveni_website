@@ -15,7 +15,6 @@ import { TypeAnimation } from 'react-type-animation';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 import { routeDescriptions } from '@/utilis/tempoTravellerData';
 import dynamic from 'next/dynamic';
-import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -1365,8 +1364,6 @@ export default function DynamicTempoRoutesClient({ data }) {
         </div>
       </section>
 
-      {/* Cross-Linking Section */}
-      <CrossLinkingSection currentCity={origin} currentService="Tempo Traveller" />
 
       {/* ============================================ */}
       {/* SEO Content Section */}

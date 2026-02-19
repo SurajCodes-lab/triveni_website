@@ -29,7 +29,6 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations, PopularRoutes } from '@/components/seo/RelatedContent';
 import { generateCityFAQs } from '@/lib/seo/faq-generator';
 import { getNearbyDestinations, getRelatedRoutes, getPopularCities, getRelatedContent } from '@/utilis/linkingHelper';
-import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
 // City data with images
 const cityHeroData = {
@@ -1282,9 +1281,6 @@ export default function CityServiceClient({
         </div>
       </section>
 
-
-      {/* Cross-Linking Section */}
-      <CrossLinkingSection currentCity={formattedCityName} currentService="City Taxi" />
 
       {/* ==================== FLOATING MOBILE CTA ==================== */}
       {mounted && (
