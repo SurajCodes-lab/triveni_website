@@ -24,7 +24,7 @@ const Marquee = dynamic(
     ssr: true,
     loading: () => (
       <div className="flex gap-4 overflow-hidden">
-        {['Delhi', 'Agra', 'Jaipur', 'Haridwar', 'Chandigarh', 'Shimla', 'Manali'].map((city) => (
+        {['Delhi', 'Agra', 'Jaipur', 'Haridwar', 'Chandigarh', 'Shimla', 'Manali', 'Varanasi', 'Lucknow'].map((city) => (
           <div key={city} className="mx-4 bg-white rounded-2xl shadow-lg p-6 min-w-[200px]">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mb-3"></div>
@@ -701,9 +701,9 @@ export default function HomeClient() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6"
           >
             {[
-              { icon: MapPin, number: "14+", label: "Cities Covered", color: "from-blue-500 to-cyan-500" },
-              { icon: Route, number: "500+", label: "Routes Available", color: "from-purple-500 to-pink-500" },
-              { icon: Users, number: "10K+", label: "Happy Customers", color: "from-green-500 to-emerald-500" },
+              { icon: MapPin, number: "37+", label: "Cities Covered", color: "from-blue-500 to-cyan-500" },
+              { icon: Route, number: "314+", label: "Routes Available", color: "from-purple-500 to-pink-500" },
+              { icon: Camera, number: "106+", label: "Sightseeing Tours", color: "from-green-500 to-emerald-500" },
               { icon: Zap, number: "24/7", label: "Service Available", color: "from-orange-500 to-red-500" }
             ].map((stat, index) => (
               <motion.div
