@@ -28,7 +28,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
 
   return (
     <div
-      className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-50 animate-fade-in-up"
+      className="fixed bottom-16 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-50 animate-fade-in-up"
     >
       <div
         className="relative hover:scale-105 active:scale-95 transition-transform duration-200"

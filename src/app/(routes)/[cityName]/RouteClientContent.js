@@ -27,6 +27,7 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { PopularRoutes, CrossServiceLinks } from '@/components/seo/RelatedContent';
 import { generateRouteFAQs } from '@/lib/seo/faq-generator';
 import { getRelatedRoutes, getServiceCrossLinks, getRelatedContent } from '@/utilis/linkingHelper';
+import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
 // City hero images
 const cityHeroData = {
@@ -1254,6 +1255,9 @@ export default function RouteClientContent({
         city={formattedCityName}
         title={`Other Services in ${formattedCityName}`}
       />
+
+      {/* Cross-Linking Section */}
+      <CrossLinkingSection currentCity={formattedCityName} currentService="Outstation Cab" />
 
       {/* ==================== FLOATING MOBILE CTA ==================== */}
       {mounted && (

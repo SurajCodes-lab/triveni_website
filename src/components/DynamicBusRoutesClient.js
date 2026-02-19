@@ -13,6 +13,7 @@ import { TypeAnimation } from 'react-type-animation';
 // Import from smaller utility file to reduce bundle size
 import { additionalInfo } from '@/utilis/busUtilsData';
 import dynamic from 'next/dynamic';
+import CrossLinkingSection from '@/components/seo/CrossLinkingSection';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -555,6 +556,9 @@ export default function DynamicBusRoutesClient({ data }) {
           </div>
         </div>
       </div>
+
+      {/* Cross-Linking Section */}
+      <CrossLinkingSection currentCity={origin} currentService="Bus Rental" />
 
       {/* Add padding at bottom to prevent content from being hidden by sticky CTA */}
       <div className="h-16 sm:h-20"></div>

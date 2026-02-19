@@ -722,6 +722,56 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* POPULAR TOURS & ROUTES SECTION */}
+      <section className="py-16 md:py-20 bg-white border-t border-gray-100" aria-label="Popular tours and routes served by Triveni Cabs">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 px-6 py-2 rounded-full mb-4 shadow-sm">
+              <Map className="w-5 h-5" />
+              <span className="font-semibold">Popular Tours & Routes</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Top Destinations & Tour Packages
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Explore our most booked tours, routes, and travel experiences across India
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {[
+              { label: 'Taj Mahal Tour from Delhi', href: '/taj-mahal-tour-from-delhi' },
+              { label: 'Delhi to Manali Cab', href: '/delhi-to-manali' },
+              { label: 'Golden Triangle Tour', href: '/golden-triangle-english-speaking-driver' },
+              { label: 'Chardham Yatra Package', href: '/tour-package/chardham-yatra' },
+              { label: 'Delhi to Jaipur Taxi', href: '/delhi-to-jaipur' },
+              { label: 'Delhi to Shimla Cab', href: '/delhi-to-shimla' },
+              { label: 'Same Day Agra Tour', href: '/same-day-agra-tour-from-delhi' },
+              { label: 'Rajasthan Desert Circuit', href: '/rajasthan-desert-circuit-tour' },
+              { label: 'Delhi to Haridwar Taxi', href: '/delhi-to-haridwar' },
+              { label: 'Weekend Getaways Delhi', href: '/weekend-getaways-from-delhi-by-car' },
+              { label: 'Agra Sightseeing Tour', href: '/sightseeing/agra' },
+              { label: 'Jaipur Sightseeing Tour', href: '/sightseeing/jaipur' },
+              { label: 'Delhi Airport Taxi', href: '/airport-service/delhi' },
+              { label: 'North India Road Trip', href: '/10-day-north-india-road-trip' },
+              { label: 'Kashmir Road Trip', href: '/kashmir-road-trip-from-delhi' },
+              { label: 'Himachal Tour by Car', href: '/7-day-himachal-tour-by-car' },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block p-3 md:p-4 bg-gray-50 hover:bg-amber-50 border border-gray-100 hover:border-amber-300 rounded-xl transition-all duration-200 group"
+              >
+                <span className="text-sm md:text-base text-gray-800 group-hover:text-amber-700 font-medium">
+                  {item.label}
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-amber-600 mt-1 transition-colors" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Fare Calculator Section */}
       <LazySection minHeight="400px" rootMargin="300px">
         <div id="fare-calculator">

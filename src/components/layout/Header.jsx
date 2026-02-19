@@ -170,14 +170,14 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" role="navigation" aria-label="Main navigation">
               {[
                 { href: '/', label: 'Home' },
-                { href: '/about', label: 'About' },
                 { href: '/services', label: 'Services' },
-                { href: '/corporate-transportation-service', label: 'Corporate' },
-                { href: '/event-transportation-service', label: 'Events' },
-                { href: '/tempo-traveller', label: 'Tempo Traveller' },
+                { href: '/wedding', label: 'Wedding' },
+                { href: '/airport-service', label: 'Airport' },
+                { href: '/sightseeing', label: 'Sightseeing' },
+                { href: '/tempo-traveller', label: 'Tempo' },
                 { href: '/bus-routes', label: 'Bus' },
+                { href: '/routes', label: 'Routes' },
                 { href: '/tour-guide', label: 'Tour Guide' },
-                { href: '/sightseeing', label: 'Wanderlust' },
                 { href: '/contact', label: 'Contact' },
               ].map((link) => (
                 <Link
@@ -260,15 +260,17 @@ const Header = () => {
             <nav className="flex flex-col space-y-1" role="navigation" aria-label="Mobile navigation">
               {[
                 { href: '/', label: 'Home' },
-                { href: '/about', label: 'About' },
                 { href: '/services', label: 'Services' },
-                { href: '/corporate-transportation-service', label: 'Corporate Transport' },
-                { href: '/event-transportation-service', label: 'Event Transport' },
+                { href: '/wedding', label: 'Wedding Cars' },
+                { href: '/airport-service', label: 'Airport Transfer' },
+                { href: '/sightseeing', label: 'Sightseeing' },
                 { href: '/tempo-traveller', label: 'Tempo Traveller' },
-                { href: '/contact', label: 'Contact' },
                 { href: '/bus-routes', label: 'Bus Routes' },
+                { href: '/routes', label: 'Outstation Routes' },
+                { href: '/corporate-transportation-service', label: 'Corporate Transport' },
                 { href: '/tour-guide', label: 'Tour Guide' },
-                { href: '/sightseeing', label: 'Wanderlust' },
+                { href: '/about', label: 'About Us' },
+                { href: '/contact', label: 'Contact' },
               ].map((link) => (
                 <Link
                   key={link.href}
