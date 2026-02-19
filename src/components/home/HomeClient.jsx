@@ -626,7 +626,7 @@ export default function HomeClient() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
             >
-              Cab Service Available in 14+ Cities Across India
+              Cab Service Available in 37+ Cities Across India
             </motion.h2>
 
             <motion.p
@@ -636,14 +636,14 @@ export default function HomeClient() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base md:text-lg lg:text-xl text-gray-700 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4"
             >
-              From bustling metros to serene hill stations, we provide reliable taxi services across major cities in North India
+              From bustling metros to serene hill stations, we provide reliable taxi services across 37+ cities with 300+ routes, 100+ sightseeing tours, and 20+ curated tour packages
             </motion.p>
           </div>
 
           {/* Cities Marquee */}
           <div className="mb-8">
             <Marquee gradient={false} speed={40} pauseOnHover={true}>
-              {['Delhi', 'Agra', 'Jaipur', 'Haridwar', 'Chandigarh', 'Shimla', 'Manali'].map((city, index) => (
+              {['Delhi', 'Agra', 'Jaipur', 'Haridwar', 'Chandigarh', 'Shimla', 'Manali', 'Varanasi', 'Lucknow'].map((city, index) => (
                 <Link href={`/${city.toLowerCase()}`} key={index}>
                   <motion.div
                     whileHover={{ scale: 1.05, y: -5 }}
@@ -669,7 +669,7 @@ export default function HomeClient() {
           {/* Second Row - Reverse Direction */}
           <div className="mb-12">
             <Marquee gradient={false} speed={40} direction="right" pauseOnHover={true}>
-              {['Amritsar', 'Dehradun', 'Rishikesh', 'Jodhpur', 'Udaipur', 'Ayodhya', 'Ahmedabad'].map((city, index) => (
+              {['Amritsar', 'Dehradun', 'Rishikesh', 'Jodhpur', 'Udaipur', 'Ayodhya', 'Ahmedabad', 'Mussoorie', 'Nainital'].map((city, index) => (
                 <Link href={`/${city.toLowerCase()}`} key={index}>
                   <motion.div
                     whileHover={{ scale: 1.05, y: -5 }}
