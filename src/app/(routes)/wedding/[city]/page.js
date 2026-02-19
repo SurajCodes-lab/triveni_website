@@ -270,12 +270,6 @@ export default function CityWeddingPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
 
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
       {/* LocalBusiness Schema */}
       <script
         type="application/ld+json"
