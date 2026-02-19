@@ -514,7 +514,7 @@ export default function FamilyTripClient({ data }) {
               { href: `/${data.destination.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.destination} Cab Service` },
               { href: `/wedding/${data.destination.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.destination} Wedding Cars` },
               { href: `/places-to-visit-near-${data.destination.toLowerCase().replace(/\s+/g, '-')}`, label: `Places Near ${data.destination}` },
-              { href: '/tour-packages', label: 'Tour Packages' },
+              { href: '/tour-package', label: 'Tour Packages' },
               { href: '/tempo-traveller', label: 'Tempo Traveller' },
               { href: '/outstation-cabs', label: 'Outstation Cabs' },
             ].map((link) => (

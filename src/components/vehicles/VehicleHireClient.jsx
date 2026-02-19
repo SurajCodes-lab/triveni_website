@@ -606,7 +606,7 @@ export default function VehicleHireClient({ vehicle }) {
               { label: "Sightseeing Tours", href: "/sightseeing" },
               { label: "Bus Routes", href: "/bus-routes" },
               { label: "All Services", href: "/services" },
-              { label: "Tour Packages", href: "/tour-packages" },
+              { label: "Tour Packages", href: "/tour-package" },
             ].map((link) => (
               <Link
                 key={link.href}
@@ -668,7 +668,7 @@ export default function VehicleHireClient({ vehicle }) {
               { href: '/sightseeing', label: 'Sightseeing Tours' },
               { href: '/airport-service', label: 'Airport Taxi Service' },
               { href: '/wedding', label: 'Wedding Car Rental' },
-              { href: '/tour-packages', label: 'Tour Packages' },
+              { href: '/tour-package', label: 'Tour Packages' },
               { href: '/tempo-traveller', label: 'Tempo Traveller' },
               { href: '/outstation-cabs', label: 'Outstation Cabs' },
               { href: '/bus-routes', label: 'Bus Routes' },

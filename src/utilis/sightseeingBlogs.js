@@ -7793,7 +7793,7 @@ export const sightseeingBlogPosts = [
     ],
     primaryCTA: {
       text: "Plan Your Honeymoon",
-      url: "/honeymoon-packages",
+      url: "/honeymoon-trip-by-car",
       description: "Customized honeymoon packages with private transfers, romantic stays, and special couple experiences",
       price: "Starting from ₹12,999"
     },
@@ -8256,7 +8256,7 @@ export const sightseeingBlogPosts = [
         <h3 class="text-3xl font-bold mb-4">Start Your Forever Journey</h3>
         <p class="text-xl mb-6 text-pink-100">Let us create the perfect honeymoon experience for you. Share your dates and preferences, and we'll craft a romantic itinerary just for you!</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/honeymoon-packages" class="bg-white text-pink-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-pink-100 transition-all">
+          <a href="/honeymoon-trip-by-car" class="bg-white text-pink-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-pink-100 transition-all">
             View Honeymoon Packages
           </a>
           <a href="tel:+917668570551" class="bg-pink-400 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-pink-300 transition-all border border-pink-300">
@@ -8371,7 +8371,7 @@ export const sightseeingBlogPosts = [
     ],
     primaryCTA: {
       text: "Plan Corporate Outing",
-      url: "/corporate-tours",
+      url: "/corporate-transportation-service",
       description: "Complete corporate travel solutions with tempo travellers, team activities, and GST billing",
       price: "Starting from ₹3,500/person"
     },
@@ -8809,7 +8809,7 @@ export const sightseeingBlogPosts = [
         <h3 class="text-3xl font-bold mb-4">Plan Your Team's Next Adventure!</h3>
         <p class="text-xl mb-6 text-blue-100">Let us help you organize an unforgettable corporate outing. Share your team size, budget, and preferences - we'll handle the rest!</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/corporate-tours" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-100 transition-all">
+          <a href="/corporate-transportation-service" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-100 transition-all">
             Corporate Packages
           </a>
           <a href="tel:+917668570551" class="bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-400 transition-all border border-blue-400">
@@ -8924,7 +8924,7 @@ export const sightseeingBlogPosts = [
     ],
     primaryCTA: {
       text: "Get Budget Quote",
-      url: "/budget-packages",
+      url: "/tour-package",
       description: "Affordable travel packages without compromising on quality - smart travel starts here",
       price: "Starting from ₹2,499"
     },
@@ -9382,7 +9382,7 @@ export const sightseeingBlogPosts = [
         <h3 class="text-3xl font-bold mb-4">Start Your Budget Adventure!</h3>
         <p class="text-xl mb-6 text-green-100">Ready to explore India without breaking the bank? Our budget-friendly cab packages make traveling affordable and comfortable!</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/budget-packages" class="bg-white text-green-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-100 transition-all">
+          <a href="/tour-package" class="bg-white text-green-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-100 transition-all">
             View Budget Packages
           </a>
           <a href="tel:+917668570551" class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-400 transition-all border border-green-400">
@@ -9497,7 +9497,7 @@ export const sightseeingBlogPosts = [
     ],
     primaryCTA: {
       text: "Book Safe Travel",
-      url: "/book-cab",
+      url: "/contact",
       description: "Professional drivers with verified licenses, maintained vehicles, and 24/7 support for worry-free travel",
       price: "Starting from ₹10/km"
     },
@@ -9970,7 +9970,7 @@ export const sightseeingBlogPosts = [
         <h3 class="text-3xl font-bold mb-4">Travel Safe with Professional Drivers</h3>
         <p class="text-xl mb-6 text-blue-100">Skip the stress of highway driving. Our experienced drivers ensure you reach your destination safely while you relax and enjoy the journey.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="/book-cab" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-100 transition-all">
+          <a href="/contact" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-100 transition-all">
             Book Safe Travel Now
           </a>
           <a href="tel:+917668570551" class="bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-400 transition-all border border-blue-400">

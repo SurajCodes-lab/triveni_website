@@ -762,13 +762,13 @@ export default function FriendsTripClient({ data }) {
             {(() => {
               const destSlug = data.destination ? data.destination.toLowerCase().replace(/\s+/g, '-') : '';
               const links = data.destination ? [
-                { href: `/sightseeing-tours/${destSlug}`, label: `${data.destination} Sightseeing Tour` },
+                { href: `/sightseeing/${destSlug}`, label: `${data.destination} Sightseeing Tour` },
                 { href: `/delhi-airport-to-${destSlug}-taxi`, label: `Delhi Airport to ${data.destination} Taxi` },
-                { href: `/${destSlug}-cab-service`, label: `${data.destination} Cab Service` },
+                { href: `/${destSlug}`, label: `${data.destination} Cab Service` },
                 { href: `/places-to-visit-near-${destSlug}`, label: `Places Near ${data.destination}` },
                 { href: `/${destSlug}-travel-guide`, label: `${data.destination} Travel Guide` },
-                { href: '/tempo-traveller-hire', label: 'Tempo Traveller Hire' },
-                { href: '/tour-packages', label: 'Tour Packages from Delhi' },
+                { href: '/tempo-traveller', label: 'Tempo Traveller Hire' },
+                { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ] : [
                 { href: '/friends-trip-rishikesh', label: 'Friends Trip to Rishikesh' },
@@ -776,8 +776,8 @@ export default function FriendsTripClient({ data }) {
                 { href: '/friends-trip-kasol', label: 'Friends Trip to Kasol' },
                 { href: '/friends-trip-goa-from-delhi', label: 'Friends Trip to Goa' },
                 { href: '/friends-trip-jaisalmer', label: 'Friends Trip to Jaisalmer' },
-                { href: '/tempo-traveller-hire', label: 'Tempo Traveller Hire' },
-                { href: '/tour-packages', label: 'Tour Packages from Delhi' },
+                { href: '/tempo-traveller', label: 'Tempo Traveller Hire' },
+                { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
               return links.map((link, i) => (

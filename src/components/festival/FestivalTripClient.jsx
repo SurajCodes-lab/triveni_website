@@ -394,13 +394,13 @@ const FestivalTripClient = ({ festival }) => {
             {(() => {
               const locSlug = festival.location.toLowerCase().replace(/\s+/g, '-');
               const links = [
-                { href: `/sightseeing-tours/${locSlug}`, label: `${festival.location} Sightseeing Tour` },
+                { href: `/sightseeing/${locSlug}`, label: `${festival.location} Sightseeing Tour` },
                 { href: `/delhi-airport-to-${locSlug}-taxi`, label: `Delhi Airport to ${festival.location} Taxi` },
-                { href: `/${locSlug}-cab-service`, label: `${festival.location} Cab Service` },
+                { href: `/${locSlug}`, label: `${festival.location} Cab Service` },
                 { href: `/${locSlug}-travel-guide`, label: `${festival.location} Travel Guide` },
                 { href: `/places-to-visit-near-${locSlug}`, label: `Places Near ${festival.location}` },
                 { href: `/${locSlug}-food-tour`, label: `${festival.location} Food Tour` },
-                { href: '/tour-packages', label: 'Tour Packages from Delhi' },
+                { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
               return links.map((link, i) => (

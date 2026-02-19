@@ -615,10 +615,10 @@ export default function RailwayStationClient({ station, slug }) {
           {/* Related Services */}
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { title: "Delhi Airport Taxi", href: "/delhi-airport-taxi" },
-              { title: "Agra Sightseeing", href: "/agra-local-sightseeing" },
-              { title: "Wedding Car Rental", href: "/wedding-car-rental" },
-              { title: "Tour Packages", href: "/tour-packages" },
+              { title: "Delhi Airport Taxi", href: "/airport-service/delhi" },
+              { title: "Agra Sightseeing", href: "/sightseeing/agra" },
+              { title: "Wedding Car Rental", href: "/wedding" },
+              { title: "Tour Packages", href: "/tour-package" },
             ].map((link, i) => (
               <Link key={i} href={link.href} className="bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/10 p-4 hover:border-yellow-500/20 transition-all duration-300 text-center group">
                 <h3 className="text-slate-300 text-sm font-semibold group-hover:text-yellow-300 transition-colors">{link.title}</h3>

@@ -439,7 +439,7 @@ export default function DestinationCompareClient({ data }) {
             { href: `/${data.dest2.name.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.dest2.name} Cab Service` },
             { href: `/places-to-visit-near-${data.dest1.name.toLowerCase().replace(/\s+/g, '-')}`, label: `Places Near ${data.dest1.name}` },
             { href: `/places-to-visit-near-${data.dest2.name.toLowerCase().replace(/\s+/g, '-')}`, label: `Places Near ${data.dest2.name}` },
-            { href: '/tour-packages', label: 'Tour Packages' },
+            { href: '/tour-package', label: 'Tour Packages' },
             { href: '/outstation-cabs', label: 'Outstation Cabs' },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="group p-4 bg-white rounded-2xl border border-gray-100 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 text-center hover:-translate-y-0.5">

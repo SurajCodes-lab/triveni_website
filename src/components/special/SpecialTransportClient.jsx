@@ -306,7 +306,7 @@ const SpecialTransportClient = ({ service }) => {
               { href: '/senior-citizen-travel-service', label: 'Senior Citizen Travel' },
               { href: '/hospital-visit-cab-service', label: 'Hospital Visit Cab' },
               { href: '/outstation-cabs', label: 'Outstation Cab Service' },
-              { href: '/tour-packages', label: 'Tour Packages from Delhi' },
+              { href: '/tour-package', label: 'Tour Packages from Delhi' },
               { href: '/airport-city-tour-combo', label: 'Airport + City Tour Combo' },
             ].map((link, i) => (
               <Link key={i} href={link.href} className="group flex items-center gap-3 bg-white rounded-2xl border border-gray-100 hover:border-amber-300 p-4 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">

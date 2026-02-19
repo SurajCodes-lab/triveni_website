@@ -2647,11 +2647,11 @@ const newBlogs2026 = [
     ],
     primaryCTA: {
       text: "Book Wedding Car",
-      url: "/wedding-cars",
+      url: "/wedding",
       description: "Luxury wedding cars with decoration options",
       price: "Starting ₹5,000"
     },
-    content: `<p>Your wedding day deserves the perfect ride. A beautifully decorated <strong>wedding car</strong> is not just transport - it is part of your celebration, your photos, and your memories. This complete <strong>wedding car booking checklist</strong> covers everything you need to know, from when to book to decoration options, what questions to ask vendors, and how to avoid last-minute disasters. <a href="/wedding-cars" class="text-blue-600 hover:underline font-semibold">Browse our wedding car collection</a> at Triveni Cabs.</p>
+    content: `<p>Your wedding day deserves the perfect ride. A beautifully decorated <strong>wedding car</strong> is not just transport - it is part of your celebration, your photos, and your memories. This complete <strong>wedding car booking checklist</strong> covers everything you need to know, from when to book to decoration options, what questions to ask vendors, and how to avoid last-minute disasters. <a href="/wedding" class="text-blue-600 hover:underline font-semibold">Browse our wedding car collection</a> at Triveni Cabs.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Wedding Car Booking Timeline</h2>
 
@@ -2796,7 +2796,7 @@ const newBlogs2026 = [
 <h3 class="text-xl font-bold mb-2">Book Your Dream Wedding Car</h3>
 <p class="mb-4">Luxury, vintage, and decorated wedding cars with professional chauffeurs. 500+ wedding bookings since 2015. Make your special day perfect.</p>
 <p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> <a href="https://wa.me/917668570551" class="text-white underline">7668570551</a></p>
-<a href="/wedding-cars" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">View Wedding Cars</a>
+<a href="/wedding" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">View Wedding Cars</a>
 </div>`,
     date: "2026-02-01",
     readTime: "11 min read",

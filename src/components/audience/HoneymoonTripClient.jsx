@@ -539,13 +539,13 @@ export default function HoneymoonTripClient({ data }) {
             {(() => {
               const destSlug = data.destination.toLowerCase().replace(/\s+/g, '-');
               const links = [
-                { href: `/sightseeing-tours/${destSlug}`, label: `${data.destination} Sightseeing Tour` },
+                { href: `/sightseeing/${destSlug}`, label: `${data.destination} Sightseeing Tour` },
                 { href: `/delhi-airport-to-${destSlug}-taxi`, label: `Delhi Airport to ${data.destination} Taxi` },
-                { href: `/${destSlug}-cab-service`, label: `${data.destination} Cab Service` },
-                { href: `/${destSlug}-wedding-car-rental`, label: `${data.destination} Wedding Car` },
+                { href: `/${destSlug}`, label: `${data.destination} Cab Service` },
+                { href: `/wedding/${destSlug}`, label: `${data.destination} Wedding Car` },
                 { href: `/places-to-visit-near-${destSlug}`, label: `Places Near ${data.destination}` },
                 { href: `/${destSlug}-travel-guide`, label: `${data.destination} Travel Guide` },
-                { href: '/tour-packages', label: 'Tour Packages from Delhi' },
+                { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
               return links.map((link, i) => (
@@ -946,7 +946,7 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
               { href: '/honeymoon-mussoorie-by-car', label: 'Mussoorie Honeymoon Trip' },
               { href: '/honeymoon-nainital-by-car', label: 'Nainital Honeymoon by Car' },
               { href: '/honeymoon-udaipur-by-car', label: 'Udaipur Honeymoon Package' },
-              { href: '/tour-packages', label: 'Tour Packages from Delhi' },
+              { href: '/tour-package', label: 'Tour Packages from Delhi' },
               { href: '/outstation-cabs', label: 'Outstation Cab Service' },
             ].map((link, i) => (
               <Link key={i} href={link.href} className="group bg-white/[0.04] backdrop-blur-2xl rounded-xl border border-white/[0.08] p-4 hover:bg-white/[0.08] hover:border-rose-500/30 transition-all duration-300 flex items-center gap-3">

@@ -588,7 +588,7 @@ export default function CityItineraryClient({ data }) {
               { href: `/${data.city.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.city} Cab Service` },
               { href: `/wedding/${data.city.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.city} Wedding Cars` },
               { href: `/places-to-visit-near-${data.city.toLowerCase().replace(/\s+/g, '-')}`, label: `Places Near ${data.city}` },
-              { href: '/tour-packages', label: 'Tour Packages' },
+              { href: '/tour-package', label: 'Tour Packages' },
               { href: '/tempo-traveller', label: 'Tempo Traveller' },
               { href: '/outstation-cabs', label: 'Outstation Cabs' },
             ].map((link) => (

@@ -331,8 +331,8 @@ const RentalPackageClient = ({ rental }) => {
               { href: '/multi-day-cab-hire', label: 'Multi-Day Cab Hire' },
               { href: '/monthly-car-rental', label: 'Monthly Car Rental' },
               { href: '/outstation-cabs', label: 'Outstation Cab Service' },
-              { href: '/tour-packages', label: 'Tour Packages from Delhi' },
-              { href: '/tempo-traveller-hire', label: 'Tempo Traveller Hire' },
+              { href: '/tour-package', label: 'Tour Packages from Delhi' },
+              { href: '/tempo-traveller', label: 'Tempo Traveller Hire' },
               { href: '/airport-city-tour-combo', label: 'Airport + City Tour Combo' },
             ].map((link, i) => (
               <Link key={i} href={link.href} className="group flex items-center gap-3 bg-white rounded-2xl border border-gray-100 hover:border-amber-300 p-4 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">

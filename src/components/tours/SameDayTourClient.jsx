@@ -619,7 +619,7 @@ export default function SameDayTourClient({ tour }) {
               { href: `/wedding/${tour.destination.toLowerCase().replace(/\s+/g, '-')}`, label: `${tour.destination} Wedding Cars` },
               { href: `/sightseeing/${tour.origin.toLowerCase().replace(/\s+/g, '-')}`, label: `${tour.origin} Sightseeing Tours` },
               { href: `/${tour.origin.toLowerCase().replace(/\s+/g, '-')}`, label: `${tour.origin} Cab Service` },
-              { href: '/tour-packages', label: 'Tour Packages' },
+              { href: '/tour-package', label: 'Tour Packages' },
               { href: '/outstation-cabs', label: 'Outstation Cabs' },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="group p-4 bg-white rounded-xl border-2 border-dashed border-amber-200/50 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-100/50 hover:-translate-y-0.5 transition-all duration-300 text-center">

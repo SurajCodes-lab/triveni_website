@@ -457,7 +457,7 @@ export default function TripCostClient({ data }) {
             { href: `/wedding/${data.destination.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.destination} Wedding Cars` },
             { href: `/places-to-visit-near-${data.destination.toLowerCase().replace(/\s+/g, '-')}`, label: `Places Near ${data.destination}` },
             { href: `/sightseeing/${data.origin.toLowerCase().replace(/\s+/g, '-')}`, label: `${data.origin} Tours` },
-            { href: '/tour-packages', label: 'Tour Packages' },
+            { href: '/tour-package', label: 'Tour Packages' },
             { href: '/outstation-cabs', label: 'Outstation Cabs' },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="group p-4 bg-white rounded-2xl border border-amber-100 hover:border-amber-300 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 text-center hover:-translate-y-0.5">

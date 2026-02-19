@@ -154,7 +154,7 @@ export default function NotFound() {
                     Travel Blog
                   </Link>
                   <span className="text-gray-300">|</span>
-                  <Link href="/destinations" className="text-sm text-gray-600 hover:text-[#FACF2D] transition-colors">
+                  <Link href="/sightseeing" className="text-sm text-gray-600 hover:text-[#FACF2D] transition-colors">
                     Destinations
                   </Link>
                 </div>
