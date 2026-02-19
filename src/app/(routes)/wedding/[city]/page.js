@@ -210,62 +210,6 @@ export default function CityWeddingPage({ params }) {
     }
   };
 
-  // FAQ Schema
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `What types of wedding cars are available in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `We offer luxury cars (BMW, Audi, Mercedes, Jaguar), premium sedans, SUVs (Fortuner, Innova Crysta), tempo travellers (9-26 seater), and vintage cars in ${city.name}. All vehicles are well-maintained and available with professional chauffeurs.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Do you provide car decoration for weddings in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes! We provide beautiful floral and theme-based decoration services in ${city.name}. You can choose from our standard decoration packages or request custom decorations based on your wedding theme and preferences.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `How much does wedding car rental cost in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Wedding car rental prices in ${city.name} range from ${city.priceRange} depending on the vehicle type, duration, and decoration requirements. We offer customized packages to fit every budget. Contact us for detailed pricing.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `How far in advance should I book a wedding car in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `We recommend booking at least 2-4 weeks in advance, especially during wedding season (October to March) in ${city.name}. However, we also accommodate last-minute bookings based on vehicle availability.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Do you provide baraat tempo travellers in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Yes! We provide AC and Non-AC tempo travellers (9-26 seater) for baraat parties in ${city.name}. Our tempo travellers come with music systems, comfortable seating, and can be decorated as per your wedding theme.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Are the chauffeurs professional and experienced in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Absolutely! All our chauffeurs in ${city.name} are professional, uniformed, well-trained, and experienced in handling wedding events. They are familiar with local routes and ensure timely, safe transportation for your special day.`
-        }
-      }
-    ]
-  };
-
   // LocalBusiness Schema
   const localBusinessSchema = {
     "@context": "https://schema.org",
