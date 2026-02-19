@@ -359,45 +359,6 @@ export default function CityNamePage({ params }) {
       ]
     };
 
-    const routeFAQSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": `How much does a cab from ${formattedCityName} to ${formattedDestination} cost?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Cab fare from ${formattedCityName} to ${formattedDestination} starts from ${startingPrice}. The final cost depends on vehicle type, distance (${estimatedDistance}), and any additional services. We offer transparent pricing with no hidden charges.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `How long does it take to travel from ${formattedCityName} to ${formattedDestination}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `The journey from ${formattedCityName} to ${formattedDestination} typically takes ${estimatedTime}, covering approximately ${estimatedDistance}. Travel time may vary based on traffic and route conditions.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `What types of vehicles are available for ${formattedCityName} to ${formattedDestination} trip?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We offer Sedan (4 seater), SUV (7 seater), and Tempo Traveller (12+ seater) options. All vehicles are AC equipped with professional drivers, GPS tracking, and regularly maintained for your safety and comfort."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `Can I book a one-way or round trip from ${formattedCityName} to ${formattedDestination}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, we offer both one-way and round trip bookings. You can also book multi-day packages, hourly rentals, or outstation trips based on your needs. Flexible booking options available 24/7."
-          }
-        }
-      ]
-    };
-
     return (
       <>
         <Script
@@ -416,12 +377,6 @@ export default function CityNamePage({ params }) {
           id="route-breadcrumb-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeBreadcrumbSchema) }}
-          strategy="beforeInteractive"
-        />
-        <Script
-          id="route-faq-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeFAQSchema) }}
           strategy="beforeInteractive"
         />
         <RouteClientContent
