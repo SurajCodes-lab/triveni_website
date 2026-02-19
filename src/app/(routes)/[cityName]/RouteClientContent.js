@@ -977,6 +977,24 @@ export default function RouteClientContent({
 
 
       {/* ==================== FAQ SECTION ==================== */}
+      {/* FAQ Schema for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+              }
+            }))
+          })
+        }}
+      />
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#FACF2D]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -1206,28 +1224,7 @@ export default function RouteClientContent({
         <FareCalculator variant="full" defaultFrom={formattedCityName} defaultTo={formattedDestination} />
       </div>
 
-      {/* ==================== FAQ SECTION ==================== */}
-      <FAQSection
-        faqs={generateRouteFAQs({
-          origin: formattedCityName,
-          destination: formattedDestination,
-          distance: route?.distance || estimatedDistance,
-          duration: route?.time || estimatedTime,
-          price: startingPrice,
-          vehicles: route?.prices?.map(p => p.vehicle) || []
-        })}
-        title={`Frequently Asked Questions - ${formattedCityName} to ${formattedDestination} Cab`}
-        subtitle="Everything you need to know before booking your trip"
-        variant="card"
-        showSchema={false}
-      />
-
-      {/* ==================== RELATED ROUTES ==================== */}
-      <PopularRoutes
-        city={formattedCityName}
-        routes={getRelatedRoutes(formattedCityName, formattedDestination, 6)}
-        title={`Other Popular Routes from ${formattedCityName}`}
-      />
+      {/* FAQ & Popular Routes handled by inline sections above */}
 
       {/* ==================== TRAVEL GUIDES & TOURS ==================== */}
       {(() => {
@@ -1249,12 +1246,6 @@ export default function RouteClientContent({
           </section>
         );
       })()}
-
-      {/* ==================== CROSS-SERVICE LINKS ==================== */}
-      <CrossServiceLinks
-        city={formattedCityName}
-        title={`Other Services in ${formattedCityName}`}
-      />
 
       {/* Cross-Linking Section */}
       <CrossLinkingSection currentCity={formattedCityName} currentService="Outstation Cab" />
