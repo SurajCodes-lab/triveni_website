@@ -75,6 +75,11 @@ export default function DynamicBusRoutesClient({ data }) {
             <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#FACF2D]" />
           </motion.div>
 
+          {/* Price Badge */}
+          <div className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-3">
+            Starting from ₹30/km
+          </div>
+
           {/* Main Title with TypeAnimation */}
           <div className="mb-6 md:mb-8 overflow-hidden px-4">
             <motion.h1

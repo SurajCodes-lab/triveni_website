@@ -13,6 +13,7 @@ import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import { FAQSection } from '@/components/seo/FAQSection';
 import dynamic from 'next/dynamic';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -26,26 +27,10 @@ const CityWeddingHero = ({ city }) => {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50">
         <div className="absolute inset-0 bg-[url('/images/about/about_banner.webp')] bg-cover bg-center opacity-10"></div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 animate-float">
-          <Heart className="w-12 h-12 text-pink-300 opacity-30" />
-        </div>
-        <div className="absolute top-40 right-20 animate-float-delayed">
-          <Sparkles className="w-16 h-16 text-yellow-300 opacity-30" />
-        </div>
-        <div className="absolute bottom-40 left-1/4 animate-float">
-          <Crown className="w-14 h-14 text-purple-300 opacity-30" />
-        </div>
-        <div className="absolute bottom-20 right-1/3 animate-float-delayed">
-          <Heart className="w-10 h-10 text-pink-300 opacity-30" />
-        </div>
       </div>
 
       {/* Content */}
@@ -770,7 +755,62 @@ export default function CityWeddingPageClient({ city, citySlug }) {
     <>
       <div className="min-h-screen">
         <CityWeddingHero city={city} />
+        {/* Trust Strip */}
+        <div className="bg-white border-b border-gray-100 py-3">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
+              <span className="flex items-center gap-1.5 font-medium">
+                <Star className="w-4 h-4 text-yellow-500" /> 4.9★ Google Rating
+              </span>
+              <span className="flex items-center gap-1.5 font-medium">
+                <Users className="w-4 h-4 text-pink-500" /> 10,000+ Happy Couples
+              </span>
+              <span className="flex items-center gap-1.5 font-medium">
+                <Shield className="w-4 h-4 text-green-500" /> Since 2018
+              </span>
+              <span className="flex items-center gap-1.5 font-medium">
+                <MapPin className="w-4 h-4 text-purple-500" /> 500+ Cities
+              </span>
+            </div>
+          </div>
+        </div>
         <CityOverview city={city} />
+        {/* Quick Booking Section */}
+        <section className="py-12 bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[150px]" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[120px]" />
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Get a Free Wedding Car Quote
+                </h2>
+                <p className="text-gray-300 text-lg mb-6">
+                  Tell us your requirements and get instant pricing for your dream wedding transportation.
+                </p>
+                <div className="space-y-3 text-gray-400">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>No obligation - free quote</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>Instant confirmation via WhatsApp</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>Best price guarantee</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center lg:justify-end">
+                <QuickEnquiryForm fromCity={city.name} toCity="" pageType="wedding" />
+              </div>
+            </div>
+          </div>
+        </section>
         <WeddingCarCollection />
         <NearbyDestinations city={city} citySlug={citySlug} />
         <WhyChooseUs city={city} />

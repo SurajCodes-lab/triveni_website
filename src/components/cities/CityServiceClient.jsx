@@ -28,7 +28,6 @@ import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations, PopularRoutes } from '@/components/seo/RelatedContent';
-import { generateCityFAQs } from '@/lib/seo/faq-generator';
 import { getNearbyDestinations, getRelatedRoutes, getPopularCities, getRelatedContent } from '@/utilis/linkingHelper';
 
 // City data with images
@@ -223,46 +222,6 @@ const cityHeroData = {
     highlights: ['McLeodganj', 'Dalhousie', 'Amritsar', 'Chandigarh']
   }
 };
-
-// Service features
-const serviceFeatures = [
-  {
-    icon: Shield,
-    title: "Verified & Safe Drivers",
-    description: "Police-verified drivers with 5+ years experience. GPS tracking on every trip.",
-    color: "bg-emerald-500"
-  },
-  {
-    icon: CreditCard,
-    title: "Transparent Pricing",
-    description: "No hidden charges. Pay per km rates with toll & parking included.",
-    color: "bg-blue-500"
-  },
-  {
-    icon: Clock,
-    title: "24/7 Booking",
-    description: "Book anytime. Round-the-clock customer support via call and WhatsApp.",
-    color: "bg-violet-500"
-  },
-  {
-    icon: Car,
-    title: "Wide Fleet Options",
-    description: "Sedan, SUV, Innova, Tempo Traveller, Bus - vehicle for every need.",
-    color: "bg-amber-500"
-  },
-  {
-    icon: Navigation,
-    title: "500+ Destinations",
-    description: "All major tourist spots, pilgrimage sites, and hill stations covered.",
-    color: "bg-rose-500"
-  },
-  {
-    icon: Award,
-    title: "4.9 Rating",
-    description: "50,000+ happy customers. Trusted by families and corporates.",
-    color: "bg-yellow-500"
-  }
-];
 
 // Vehicle data
 const vehicleTypes = [

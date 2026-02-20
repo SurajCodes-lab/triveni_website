@@ -29,6 +29,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid, BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import dynamic from 'next/dynamic';
 
 // Dynamically import FareCalculator (client-only, below fold)
@@ -275,6 +276,26 @@ export default function SightseeingDetailClient({ tour }) {
         </div>
       </div>
 
+      {/* Trust Strip */}
+      <div className="bg-slate-900 border-b border-white/10 py-3">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-slate-400 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium">
+              <StarIconSolid className="w-4 h-4 text-yellow-500" /> 4.9★ Rated
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <UserGroupIcon className="w-4 h-4 text-emerald-400" /> 10,000+ Trips
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <CheckCircleIcon className="w-4 h-4 text-teal-400" /> Since 2018
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <MapPinIcon className="w-4 h-4 text-cyan-400" /> 500+ Cities
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Tabs Navigation - Explorer Style */}
       <div className="sticky top-[73px] z-30 bg-slate-900/60 backdrop-blur-xl border-b border-white/5">
         <div className="container mx-auto px-4 sm:px-6">
@@ -359,11 +380,8 @@ export default function SightseeingDetailClient({ tour }) {
                           const imageUrl = tour.images && tour.images[index] ? tour.images[index] : null;
 
                           return (
-                            <motion.div
+                            <div
                               key={index}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: index * 0.08 }}
                               className={`group relative overflow-hidden rounded-2xl border border-white/10 hover:border-emerald-500/50 transition-all duration-500 ${
                                 index === 0 ? 'sm:col-span-2 sm:row-span-1' : ''
                               }`}
@@ -397,7 +415,7 @@ export default function SightseeingDetailClient({ tour }) {
                                   </div>
                                 </div>
                               </div>
-                            </motion.div>
+                            </div>
                           );
                         })}
                       </div>
@@ -492,11 +510,8 @@ export default function SightseeingDetailClient({ tour }) {
                   </div>
                   <div className="space-y-4 sm:space-y-6">
                     {tour.itinerary.map((item, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
                         className="flex gap-3 sm:gap-4 md:gap-6 group"
                       >
                         <div className="flex flex-col items-center flex-shrink-0">
@@ -525,7 +540,7 @@ export default function SightseeingDetailClient({ tour }) {
                             <p className="text-sm sm:text-base text-slate-400 leading-relaxed">{item.description}</p>
                           )}
                         </div>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </motion.div>
@@ -593,18 +608,15 @@ export default function SightseeingDetailClient({ tour }) {
                   </div>
                   <div className="space-y-3">
                     {tour.tips.map((tip, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
                         className="flex items-start gap-4 p-4 bg-amber-500/5 rounded-xl border border-amber-500/10 hover:border-amber-500/30 transition-all"
                       >
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center flex-shrink-0 font-bold text-white text-sm shadow-lg shadow-amber-500/30">
                           {index + 1}
                         </div>
                         <p className="text-slate-300 leading-relaxed">{tip}</p>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 </motion.div>
@@ -614,65 +626,12 @@ export default function SightseeingDetailClient({ tour }) {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-32 space-y-6">
-                {/* Booking Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 shadow-2xl"
-                >
-                  <h3 className="text-2xl font-black text-white mb-4">Book This Tour</h3>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="p-4 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl border border-emerald-500/20">
-                      <div className="text-sm text-slate-400 mb-1">Sedan</div>
-                      <div className="flex items-center gap-1 text-2xl font-black text-emerald-400">
-                        <CurrencyRupeeIcon className="w-6 h-6" />
-                        {tour.price.sedan?.toLocaleString()}
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-xl border border-teal-500/20">
-                      <div className="text-sm text-slate-400 mb-1">SUV</div>
-                      <div className="flex items-center gap-1 text-2xl font-black text-teal-400">
-                        <CurrencyRupeeIcon className="w-6 h-6" />
-                        {tour.price.suv?.toLocaleString()}
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20">
-                      <div className="text-sm text-slate-400 mb-1">Tempo Traveller</div>
-                      <div className="flex items-center gap-1 text-2xl font-black text-cyan-400">
-                        <CurrencyRupeeIcon className="w-6 h-6" />
-                        {tour.price.tempoTraveller?.toLocaleString()}
-                      </div>
-                    </div>
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={handleBooking}
-                    className="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all mb-3"
-                  >
-                    Book via WhatsApp
-                  </motion.button>
-
-                  <a href="tel:+917668570551" className="block">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full px-6 py-4 bg-white/5 text-white rounded-xl font-semibold hover:bg-white/10 transition-colors flex items-center justify-center gap-2 border border-white/10"
-                    >
-                      <PhoneIcon className="w-5 h-5" />
-                      Call: +91 7668570551
-                    </motion.button>
-                  </a>
-
-                  <div className="mt-4 pt-4 border-t border-white/10 text-center text-sm text-slate-400">
-                    <CheckCircleIcon className="w-5 h-5 inline-block text-emerald-400 mb-1" />
-                    <span className="ml-1">Instant confirmation</span>
-                  </div>
-                </motion.div>
+                {/* Quick Enquiry Form */}
+                <QuickEnquiryForm
+                  fromCity={tour.name.split(' ')[0]}
+                  toCity=""
+                  pageType="sightseeing"
+                />
 
                 {/* Reviews Summary */}
                 {tour.reviews && (

@@ -175,6 +175,9 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
           </nav>
 
           <div className="max-w-4xl">
+            <div className="inline-block bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-2 mr-2">
+              Starting from ₹11/km
+            </div>
             <div className="inline-block bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
               {city.airportCode} Airport Transfer
             </div>
@@ -216,6 +219,26 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
           </div>
         </div>
       </section>
+
+      {/* Trust Strip */}
+      <div className="bg-white border-b border-gray-100 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium">
+              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> 4.9★ Google Rating
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Users className="w-4 h-4 text-blue-500" /> 10,000+ Trips
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Shield className="w-4 h-4 text-green-500" /> Since 2018
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <MapPin className="w-4 h-4 text-red-500" /> 500+ Cities
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Features Section */}
       <section className="py-16 px-4 bg-white">

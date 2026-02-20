@@ -69,7 +69,7 @@ export default function CityToursPage({ city }) {
       <header>
       <motion.section
         style={{ opacity, scale }}
-        className="relative h-[85vh] sm:h-[75vh] md:h-[85vh] flex items-center justify-center overflow-hidden"
+        className="relative h-[60vh] sm:h-[55vh] md:h-[60vh] flex items-center justify-center overflow-hidden"
       >
         {/* Hero Background Image */}
         <div className="absolute inset-0">
@@ -87,21 +87,16 @@ export default function CityToursPage({ city }) {
         </div>
 
         {/* Floating Orbs */}
-        <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-[300px] h-[300px] bg-teal-400/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[150px]" />
+        <div className="absolute bottom-20 left-10 w-[300px] h-[300px] bg-teal-400/10 rounded-full blur-[120px]" />
 
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="inline-block mb-4 sm:mb-6"
-          >
+          <div className="inline-block mb-4 sm:mb-6">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl shadow-emerald-500/30 rotate-6">
               <MapPinIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white -rotate-6" />
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -175,20 +170,6 @@ export default function CityToursPage({ city }) {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-emerald-400 rounded-full"
-            />
-          </div>
-        </motion.div>
       </motion.section>
       </header>
 
@@ -203,6 +184,26 @@ export default function CityToursPage({ city }) {
             variant="minimal"
             showSchema={false}
           />
+        </div>
+      </div>
+
+      {/* Trust Strip */}
+      <div className="bg-slate-900 border-b border-white/10 py-3">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-slate-400 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium">
+              <StarIcon className="w-4 h-4 text-yellow-500" /> 4.9★ Rated
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <UserGroupIcon className="w-4 h-4 text-emerald-400" /> 10,000+ Trips
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <SparklesIcon className="w-4 h-4 text-teal-400" /> Since 2018
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <MapPinIcon className="w-4 h-4 text-cyan-400" /> 500+ Cities
+            </span>
+          </div>
         </div>
       </div>
 
