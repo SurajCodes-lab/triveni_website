@@ -22,6 +22,7 @@ import dynamic from 'next/dynamic';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
@@ -348,7 +349,7 @@ export default function CityServiceClient({
     <div className="min-h-screen bg-[#FAFAFA]">
 
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[100svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      <section className="relative min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -380,8 +381,8 @@ export default function CityServiceClient({
 
           {/* Breadcrumb */}
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="mb-8"
           >
             <ol className="flex items-center gap-2 text-sm">
@@ -398,8 +399,8 @@ export default function CityServiceClient({
 
             {/* Main Content - Left */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-7 xl:col-span-8"
             >
@@ -475,8 +476,8 @@ export default function CityServiceClient({
 
             {/* Right Side Cards */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
             >
@@ -538,6 +539,9 @@ export default function CityServiceClient({
                   </div>
                 </div>
               </div>
+
+              {/* Enquiry Form */}
+              <QuickEnquiryForm fromCity={formattedCityName} pageType="city" />
             </motion.div>
 
           </div>
@@ -564,6 +568,25 @@ export default function CityServiceClient({
         </div>
       </section>
 
+      {/* Trust Strip */}
+      <div className="bg-white border-b border-gray-100 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium">
+              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> 4.9★ Google Rating
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Users className="w-4 h-4 text-blue-500" /> 10,000+ Trips
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Shield className="w-4 h-4 text-green-500" /> Since 2018
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <MapPin className="w-4 h-4 text-red-500" /> 500+ Cities
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* ==================== ROUTES SECTION ==================== */}
       <section id="routes" className="py-16 md:py-24 bg-white">

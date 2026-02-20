@@ -1,21 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { Phone } from '@/components/ui/icons';
 
 export default function MobileStickyBar() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!visible) return null;
-
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden animate-fade-in-up">
+    <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden">
       <div className="flex">
+        {/* Call Now */}
         <a
           href="tel:+917668570551"
           className="flex-1 flex items-center justify-center gap-2 bg-[#FACF2D] text-black font-bold py-3.5 text-sm"
@@ -23,6 +14,21 @@ export default function MobileStickyBar() {
           <Phone className="w-4 h-4" />
           Call Now
         </a>
+
+        {/* Get Quote */}
+        <a
+          href="https://wa.me/917668570551?text=Hi, I'd like a quote for cab service."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold py-3.5 text-sm"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Get Quote
+        </a>
+
+        {/* WhatsApp */}
         <a
           href="https://wa.me/917668570551"
           target="_blank"

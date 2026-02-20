@@ -1,8 +1,8 @@
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CityAirportServiceClient from "@/components/airport/CityAirportServiceClient";
 import { getCityData, getAllCitySlugs } from "@/utilis/airportCityData";
 import { sightseeingTours } from '@/utilis/sightseeingData';
+import { generateAirportMetadata } from "@/lib/seo/metadata-factory";
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -18,47 +18,12 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  return {
-    // Title under 60 chars, Description under 155 chars (no emojis per Google)
-    title: `${city.name} Airport Taxi | ${city.airport} Cab ₹11/km`,
-    description: `Book ${city.name} airport taxi. ${city.airport} pickup/drop, flight tracking, meet & greet. Starting ₹11/km. Call 7668570551.`,
-    keywords: city.keywords,
-    alternates: {
-      canonical: `https://www.trivenicabs.in/airport-service/${params.city}`
-    },
-    openGraph: {
-      title: `${city.name} Airport Taxi | ${city.airport} Cab 24/7`,
-      description: `${city.name} airport transfer. ${city.airport} pickup/drop, flight tracking, professional drivers. Book now!`,
-      type: "website",
-      locale: "en_IN",
-      siteName: "Triveni Cabs",
-      images: [
-        {
-          url: "/images/airport_section.jpg",
-          width: 1200,
-          height: 630,
-          alt: `${city.name} Airport Taxi Service - ${city.airport} Transfer`
-        }
-      ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${city.name} Airport Taxi | ${city.airport} Cab 24/7`,
-      description: `Book ${city.name} airport transfer. Flight tracking, meet & greet. Pre-book now!`
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    }
-  };
+  return generateAirportMetadata({
+    city: city.name,
+    airportName: city.airport,
+    price: '11/km',
+    slug: params.city
+  });
 }
 
 // Generate static params for all cities

@@ -7,9 +7,8 @@ import Script from 'next/script';
 export const revalidate = 3600;
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
-// Dynamic import for keywords to reduce initial bundle size (37K+ lines)
-// import { getAllKeywordsForPage } from "@/utilis/enhancedKeywords";
 import { getCityLocalInfo } from "@/utilis/cityLocalInfo";
+import { generateRouteMetadata, generateCityHubMetadata } from "@/lib/seo/metadata-factory";
 import CityServiceClient from "@/components/cities/CityServiceClient";
 import RouteClientContent from "./RouteClientContent";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
@@ -76,166 +75,34 @@ export async function generateMetadata({ params }) {
   const routeData = parseRouteSlug(cityName);
 
   if (routeData) {
-    // ROUTE PAGE METADATA
+    // ROUTE PAGE METADATA — using factory
     const { cityName: originCity, destination } = routeData;
-    // Properly capitalize multi-word city names (e.g., "jim corbett" -> "Jim Corbett")
     const formattedCityName = originCity.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const formattedDestination = destination.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const routes = allCityRoutes[formattedCityName] || defaultRoutes[formattedCityName] || [];
     const route = Array.isArray(routes) ? routes.find(r => r && r.destination && r.destination.toLowerCase() === formattedDestination.toLowerCase()) : null;
-    const startingPrice = route?.prices?.[0]?.price || "₹2760";
+    const startingPrice = route?.prices?.[0]?.price || "2,760";
+    const estimatedDistance = route?.distance || '200';
+    const estimatedTime = route?.time || '4 hours';
 
-    // Get ALL keywords for this route (dynamically imported to reduce bundle)
-    const { getAllKeywordsForPage } = await import("@/utilis/enhancedKeywords");
-    const allKeywords = getAllKeywordsForPage(formattedCityName, formattedDestination);
-
-    // Title under 60 chars, Description under 155 chars (Google guidelines)
-    const enhancedTitle = `${formattedCityName} to ${formattedDestination} Cab ${startingPrice} | 24/7 Taxi`;
-    const enhancedDescription = `Book ${formattedCityName} to ${formattedDestination} cab at ${startingPrice}. AC vehicles, verified drivers, 24/7 booking. Call 7668570551.`;
-
-    return {
-      title: enhancedTitle,
-      description: enhancedDescription,
-      keywords: allKeywords.join(', '),
-      authors: [{ name: 'Triveni Cabs' }],
-      creator: 'Triveni Cabs',
-      publisher: 'Triveni Cabs',
-      formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-      },
-      metadataBase: new URL('https://www.trivenicabs.in'),
-      openGraph: {
-        title: `${formattedCityName} to ${formattedDestination} Cab | ${startingPrice} | 24x7 Booking`,
-        description: `Book ${formattedCityName} to ${formattedDestination} cab service. AC vehicles, verified drivers, GPS tracking. Starting ${startingPrice}. Call 7668570551!`,
-        type: 'website',
-        locale: 'en_IN',
-        url: `https://www.trivenicabs.in/${cityName}`,
-        siteName: 'Triveni Cabs - Premium Taxi Service India',
-        images: [{
-          url: 'https://www.trivenicabs.in/images/car/car1.webp',
-          width: 1200,
-          height: 630,
-          alt: `${formattedCityName} to ${formattedDestination} cab service - Professional taxi booking`
-        }]
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: `${formattedCityName} to ${formattedDestination} Cab Service - Starting ${startingPrice}`,
-        description: `Book reliable taxi from ${formattedCityName} to ${formattedDestination}. Professional drivers, AC vehicles, 24x7 service.`,
-        images: ['https://www.trivenicabs.in/images/car/car1.webp'],
-        creator: '@TriveniCabs',
-        site: '@TriveniCabs',
-      },
-      alternates: {
-        canonical: `https://www.trivenicabs.in/${cityName}`,
-        languages: {
-          'en-IN': `https://www.trivenicabs.in/${cityName}`,
-          'hi-IN': `https://www.trivenicabs.in/${cityName}`,
-        },
-      },
-      robots: {
-        index: true,
-        follow: true,
-        nocache: false,
-        googleBot: {
-          index: true,
-          follow: true,
-          noimageindex: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
-      category: 'Transportation',
-      classification: 'Taxi Service',
-      other: {
-        'geo.region': 'IN',
-        'geo.placename': `${formattedCityName}, ${formattedDestination}`,
-        'price:currency': 'INR',
-        'price:amount': startingPrice.replace('₹', ''),
-        'availability': 'in stock',
-        'rating': '4.8',
-        'review_count': '1250',
-      }
-    };
+    return generateRouteMetadata({
+      origin: formattedCityName,
+      destination: formattedDestination,
+      price: startingPrice.replace('₹', ''),
+      distance: estimatedDistance,
+      duration: estimatedTime,
+      slug: cityName
+    });
   } else {
-    // CITY PAGE METADATA
-    const formattedCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+    // CITY PAGE METADATA — using factory
+    const formattedCityName = cityName.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
-    // Get ALL keywords for this city (dynamically imported to reduce bundle)
-    const { getAllKeywordsForPage } = await import("@/utilis/enhancedKeywords");
-    const allKeywords = getAllKeywordsForPage(formattedCityName);
-
-    const enhancedCityTitle = `Taxi Service in ${formattedCityName} | 24x7 Cab Booking | Car Rental & Outstation Tours`;
-    const enhancedCityDescription = `Book trusted taxi service in ${formattedCityName} for outstation trips, local tours, airport transfers & wedding car rentals. Professional verified drivers, AC vehicles, GPS tracking, 24/7 availability, transparent pricing. Safe & affordable cab service. Call 7668570551!`;
-
-    return {
-      title: enhancedCityTitle,
-      description: enhancedCityDescription,
-      keywords: allKeywords.join(', '),
-      authors: [{ name: 'Triveni Cabs' }],
-      creator: 'Triveni Cabs',
-      publisher: 'Triveni Cabs',
-      formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-      },
-      metadataBase: new URL('https://www.trivenicabs.in'),
-      openGraph: {
-        title: `Taxi Service in ${formattedCityName} | Cab Booking Online | Triveni Cabs`,
-        description: `Book taxi in ${formattedCityName} for outstation, local trips & airport transfers. Professional drivers, AC vehicles, 24x7 service. Call 7668570551!`,
-        type: 'website',
-        locale: 'en_IN',
-        url: `https://www.trivenicabs.in/${cityName}`,
-        siteName: 'Triveni Cabs - Premium Taxi Service India',
-        images: [{
-          url: 'https://www.trivenicabs.in/images/car/car2.webp',
-          width: 1200,
-          height: 630,
-          alt: `Professional taxi service in ${formattedCityName} - Triveni Cabs`
-        }]
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: `Taxi Service ${formattedCityName} | Book Online | Triveni Cabs`,
-        description: `Book taxi in ${formattedCityName} - Outstation, local tours, airport transfers. 24x7 service. Call 7668570551!`,
-        images: ['https://www.trivenicabs.in/images/car/car2.webp'],
-        creator: '@TriveniCabs',
-        site: '@TriveniCabs',
-      },
-      alternates: {
-        canonical: `https://www.trivenicabs.in/${cityName}`,
-        languages: {
-          'en-IN': `https://www.trivenicabs.in/${cityName}`,
-          'hi-IN': `https://www.trivenicabs.in/${cityName}`,
-        },
-      },
-      robots: {
-        index: true,
-        follow: true,
-        nocache: false,
-        googleBot: {
-          index: true,
-          follow: true,
-          noimageindex: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
-      category: 'Transportation',
-      classification: 'Taxi Service',
-      other: {
-        'geo.region': 'IN',
-        'geo.placename': formattedCityName,
-        'availability': 'in stock',
-        'rating': '4.8',
-        'review_count': '1250',
-      }
-    };
+    return generateCityHubMetadata({
+      city: formattedCityName,
+      minPrice: 11,
+      services: ['Airport', 'Local', 'Outstation'],
+      slug: cityName
+    });
   }
 }
 

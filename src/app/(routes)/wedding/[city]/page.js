@@ -1,7 +1,7 @@
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CityWeddingPageClient from "@/components/wedding/CityWeddingPageClient";
 import { getWeddingCityData, getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
+import { generateWeddingMetadata } from "@/lib/seo/metadata-factory";
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -17,47 +17,10 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  return {
-    // Title under 60 chars, no emojis (Google guidelines)
-    title: `${city.name} Wedding Car Rental | BMW, Audi, Mercedes`,
-    description: `Book wedding cars in ${city.name}. BMW, Audi, Mercedes, Baraat tempo. Professional chauffeurs. Call 7668570551.`,
-    keywords: city.keywords,
-    alternates: {
-      canonical: `https://www.trivenicabs.in/wedding/${params.city}`
-    },
-    openGraph: {
-      title: `${city.name} Wedding Car Rental | Luxury Cars`,
-      description: `Wedding car rental in ${city.name}. BMW, Audi, Mercedes. Baraat tempo traveller. Book now!`,
-      type: "website",
-      locale: "en_IN",
-      siteName: "Triveni Cabs",
-      images: [
-        {
-          url: "/images/wedding_section.jpg",
-          width: 1200,
-          height: 630,
-          alt: `${city.name} Premium Wedding Car Rental - BMW, Audi, Mercedes, Baraat Tempo Traveller`
-        }
-      ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${city.name} Wedding Car | BMW, Audi, Mercedes`,
-      description: `Book luxury wedding cars in ${city.name}. BMW, Audi, Mercedes. Baraat tempo travellers. Book now!`
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    }
-  };
+  return generateWeddingMetadata({
+    city: city.name,
+    slug: params.city
+  });
 }
 
 // Generate static params for all cities

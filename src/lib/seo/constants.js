@@ -125,8 +125,8 @@ export const PAGE_TYPES = {
 
 // Aggregate rating for schema
 export const AGGREGATE_RATING = {
-  ratingValue: 4.8,
-  reviewCount: 2500,
+  ratingValue: 4.9,
+  reviewCount: 10000,
   bestRating: 5,
   worstRating: 1
 };

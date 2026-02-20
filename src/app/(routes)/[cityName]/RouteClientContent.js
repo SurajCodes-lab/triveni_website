@@ -20,6 +20,7 @@ import dynamic from 'next/dynamic';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
@@ -202,7 +203,7 @@ export default function RouteClientContent({
     <div className="min-h-screen bg-[#FAFAFA]">
 
       {/* ==================== HERO SECTION - BENTO STYLE ==================== */}
-      <section className="relative min-h-[100svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      <section className="relative min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0" style={{
@@ -219,8 +220,8 @@ export default function RouteClientContent({
 
           {/* Breadcrumb */}
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="mb-8"
           >
             <ol className="flex items-center gap-2 text-sm">
@@ -241,8 +242,8 @@ export default function RouteClientContent({
 
             {/* Main Content Card - Left Side */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-7 xl:col-span-8"
             >
@@ -252,6 +253,11 @@ export default function RouteClientContent({
                 <div className="inline-flex items-center gap-2 bg-[#FACF2D] px-4 py-2 rounded-full mb-6">
                   <Route className="w-4 h-4 text-black" />
                   <span className="text-black font-bold text-sm">OUTSTATION TAXI</span>
+                </div>
+
+                {/* Price Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-4 py-2 rounded-full font-bold text-lg mb-4">
+                  Starting from ₹{startingPrice}
                 </div>
 
                 {/* Main Title */}
@@ -331,8 +337,8 @@ export default function RouteClientContent({
 
             {/* Right Side Cards */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
             >
@@ -404,6 +410,13 @@ export default function RouteClientContent({
                   </div>
                 </div>
               </div>
+
+              {/* Enquiry Form */}
+              <QuickEnquiryForm
+                fromCity={formattedCityName}
+                toCity={formattedDestination}
+                pageType="route"
+              />
             </motion.div>
 
           </div>
@@ -430,6 +443,25 @@ export default function RouteClientContent({
         </div>
       </section>
 
+      {/* Trust Strip */}
+      <div className="bg-white border-b border-gray-100 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium">
+              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> 4.9★ Google Rating
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Users className="w-4 h-4 text-blue-500" /> 10,000+ Trips
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Shield className="w-4 h-4 text-green-500" /> Since 2018
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <MapPin className="w-4 h-4 text-red-500" /> 500+ Cities
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* ==================== VEHICLE SELECTION SECTION ==================== */}
       <section className="py-16 md:py-24 bg-white">
@@ -971,6 +1003,59 @@ export default function RouteClientContent({
         </div>
       </section>
 
+
+      {/* ==================== ROUTE HIGHLIGHTS SECTION ==================== */}
+      {route.routeHighlights && (
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              {formattedCityName} to {formattedDestination} — Route Guide
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                  <Route className="w-5 h-5 text-blue-500" /> Route Highlights
+                </h3>
+                <p className="text-gray-600">{route.routeHighlights}</p>
+              </div>
+              {route.bestTimeToTravel && (
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-green-500" /> Best Time to Travel
+                  </h3>
+                  <p className="text-gray-600">{route.bestTimeToTravel}</p>
+                </div>
+              )}
+              {route.localTip && (
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-amber-500" /> Local Tip
+                  </h3>
+                  <p className="text-gray-600">{route.localTip}</p>
+                </div>
+              )}
+              {route.popularStops?.length > 0 && (
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-red-500" /> Popular Stops Along the Way
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {route.popularStops.map(stop => (
+                      <Link
+                        key={stop}
+                        href={`/${stop.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="px-3 py-1.5 bg-white rounded-full text-sm border border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors"
+                      >
+                        {stop}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ==================== FAQ SECTION ==================== */}
       {/* FAQ Schema for SEO */}

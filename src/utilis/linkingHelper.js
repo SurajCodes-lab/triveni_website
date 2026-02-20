@@ -833,6 +833,59 @@ export function getWeddingPages() {
   ];
 }
 
+/**
+ * Get highest-value money page links for a city
+ * Used to strengthen internal linking TO money pages from blogs/content
+ * @param {string} city - City name
+ * @param {number} limit - Max links to return
+ * @returns {Array} Array of {text, url, type, priority} objects
+ */
+export function getMoneyPageLinks(city, limit = 8) {
+  if (!city) return getDefaultMoneyPages();
+
+  const citySlug = city.toLowerCase().replace(/\s+/g, '-');
+  const cityName = city.charAt(0).toUpperCase() + city.slice(1);
+
+  const links = [
+    // City hub page (highest priority)
+    { text: `${cityName} Taxi Service`, url: `/${citySlug}`, type: 'city', priority: 1 },
+    // Airport page
+    { text: `${cityName} Airport Taxi`, url: `/airport-service/${citySlug}`, type: 'airport', priority: 2 },
+    // Wedding page
+    { text: `${cityName} Wedding Car`, url: `/wedding/${citySlug}`, type: 'wedding', priority: 3 },
+    // Sightseeing page
+    { text: `${cityName} Sightseeing Tours`, url: `/sightseeing/${citySlug}`, type: 'sightseeing', priority: 2 },
+  ];
+
+  // Add popular route pages from this city
+  const popularRoutes = getRelatedRoutes(cityName, '', 4);
+  popularRoutes.forEach((route, i) => {
+    links.push({
+      text: `${route.origin} to ${route.destination} Cab`,
+      url: route.url,
+      type: 'route',
+      priority: 3 + i
+    });
+  });
+
+  return links
+    .sort((a, b) => a.priority - b.priority)
+    .slice(0, limit);
+}
+
+function getDefaultMoneyPages() {
+  return [
+    { text: 'Delhi Taxi Service', url: '/delhi', type: 'city', priority: 1 },
+    { text: 'Delhi to Agra Cab', url: '/delhi-to-agra', type: 'route', priority: 2 },
+    { text: 'Delhi to Jaipur Cab', url: '/delhi-to-jaipur', type: 'route', priority: 2 },
+    { text: 'Delhi Airport Taxi', url: '/airport-service/delhi', type: 'airport', priority: 3 },
+    { text: 'Agra Sightseeing Tours', url: '/sightseeing/agra', type: 'sightseeing', priority: 3 },
+    { text: 'Jaipur Taxi Service', url: '/jaipur', type: 'city', priority: 4 },
+    { text: 'Agra Taxi Service', url: '/agra', type: 'city', priority: 4 },
+    { text: 'Outstation Cabs', url: '/outstation-cabs', type: 'service', priority: 5 },
+  ];
+}
+
 // Export default object
 export default {
   getAllCities,
@@ -858,4 +911,6 @@ export default {
   getGeneralContent,
   getServicePages,
   getWeddingPages,
+  // Money page linking
+  getMoneyPageLinks,
 };

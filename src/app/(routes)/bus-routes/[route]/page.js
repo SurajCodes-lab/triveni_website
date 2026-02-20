@@ -6,6 +6,7 @@ import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute, busRouteDescri
 export const revalidate = 3600;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
 import Script from 'next/script';
+import { generateBusMetadata } from '@/lib/seo/metadata-factory';
 
 // Viewport export (moved from metadata for Next.js 15 compatibility)
 export const viewport = {
@@ -67,71 +68,13 @@ export async function generateMetadata({ params }) {
   const originFormatted = formatCityName(origin);
   const destinationFormatted = formatCityName(destination);
 
-  return {
-    metadataBase: new URL('https://www.trivenicabs.in'),
-    // Title under 60 chars, Description under 155 chars
-    title: `${originFormatted} to ${destinationFormatted} Bus | 22-56 Seater`,
-    description: `Book ${originFormatted} to ${destinationFormatted} bus. 22-56 seater Volvo & AC buses, reclining seats. Professional drivers. Call 7668570551.`,
-    alternates: {
-      canonical: `https://www.trivenicabs.in/bus-routes/${route}`
-    },
-    appleWebApp: {
-      capable: true,
-      statusBarStyle: 'black-translucent',
-      title: `${originFormatted} to ${destinationFormatted} Bus`
-    },
-    formatDetection: {
-      telephone: true,
-      email: true,
-      address: true
-    },
-    openGraph: {
-      title: `Big Groups Travel Better! ${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
-      description: `🚌 22-56 seater Volvo & AC buses | Reclining seats • Entertainment • GPS tracking. 1000+ groups trusted us. Book now & save 20%!`,
-      url: `https://www.trivenicabs.in/bus-routes/${route}`,
-      type: 'website',
-      locale: 'en_IN',
-      siteName: 'Triveni Cabs',
-      images: [
-        {
-          url: 'https://www.trivenicabs.in/images/bus/hero_section_image.png',
-          width: 1200,
-          height: 630,
-          alt: `${originFormatted} to ${destinationFormatted} Bus Service - Triveni Cabs`,
-        }
-      ]
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${originFormatted} to ${destinationFormatted} Luxury Bus | 22-56 Seater`,
-      description: `🚌 Volvo comfort • AC • Entertainment. Perfect for corporate, weddings & tours. Book now!`,
-      images: ['https://www.trivenicabs.in/images/bus/hero_section_image.png']
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-    authors: [{ name: 'Triveni Cabs - Bus Rental Services' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs India',
-    other: {
-      'mobile-web-app-capable': 'yes',
-      'apple-mobile-web-app-capable': 'yes',
-      'geo.region': 'IN-DL',
-      'geo.placename': originFormatted,
-      'geo.position': '28.6139;77.2090',
-      'ICBM': '28.6139, 77.2090',
-    }
-  };
+  return generateBusMetadata({
+    origin: originFormatted,
+    destination: destinationFormatted,
+    price: '30/km',
+    seats: '22-56',
+    slug: route
+  });
 }
 
 export default async function BusRoutePage({ params }) {

@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription } = data;
@@ -55,23 +56,9 @@ export default function DynamicBusRoutesClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
         </div>
 
-        {/* Animated Gradient Orbs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FACF2D]/30 to-orange-500/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"
-        />
+        {/* Gradient Orbs */}
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FACF2D]/30 to-orange-500/30 rounded-full blur-3xl opacity-40" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl opacity-30" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -205,8 +192,37 @@ export default function DynamicBusRoutesClient({ data }) {
               </span>
             </motion.a>
           </motion.div>
+
+          {/* Enquiry Form */}
+          <div className="mt-8 max-w-md mx-auto">
+            <QuickEnquiryForm
+              fromCity={origin}
+              toCity={destination}
+              pageType="bus"
+            />
+          </div>
         </div>
       </motion.section>
+
+      {/* Trust Strip */}
+      <div className="bg-white border-b border-gray-100 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium">
+              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> 4.9★ Google Rating
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Users className="w-4 h-4 text-blue-500" /> 10,000+ Trips
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Shield className="w-4 h-4 text-green-500" /> Since 2018
+            </span>
+            <span className="flex items-center gap-1.5 font-medium">
+              <MapPin className="w-4 h-4 text-red-500" /> 500+ Cities
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* ============================================ */}
       {/* ROUTE HIGHLIGHTS SECTION - Route-specific content */}

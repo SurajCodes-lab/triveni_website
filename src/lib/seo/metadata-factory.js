@@ -1,6 +1,10 @@
 /**
- * Metadata Factory - Generate optimized titles, descriptions, and metadata per page type
+ * Metadata Factory - Generate CTR-optimized titles, descriptions, and metadata per page type
  * Ensures consistent SEO patterns across 750+ pages
+ *
+ * Title patterns use: Price + Trust signal (stars) + Brand
+ * Description patterns use: What + Price + Trust signal + CTA
+ * OG titles are DIFFERENT from page titles (longer, more emotional for social shares)
  */
 
 import {
@@ -14,14 +18,18 @@ import {
 
 /**
  * Generate route page metadata (A to B taxi)
- * Title: {Origin} to {Destination} Taxi ₹{Price} — Book Online 24/7
+ * Title: {Origin} to {Destination} Taxi @ ₹{price} — 4.9★ Rated
  */
 export function generateRouteMetadata({ origin, destination, price, distance, duration, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Taxi ₹${price} — Book Online 24/7`);
+  const title = truncateTitle(`${origin} to ${destination} Taxi @ ₹${price} — 4.9★ Rated`);
+  const ogTitle = truncateOGTitle(`Book ${origin} to ${destination} Taxi @ ₹${price} — Verified Drivers, AC Vehicles | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} taxi at just ₹${price}. ${distance}km in ${duration}. ` +
-    `Sedan, SUV, Tempo available. 10,000+ happy customers. ` +
-    `Call ${COMPANY_INFO.phone.display} for instant booking!`
+    `${origin} to ${destination} cab starting ₹${price}. ${distance} km, ${duration}. ` +
+    `AC sedan/SUV, verified drivers. 4.9★ rated, 10,000+ trips. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Book ${origin} to ${destination} taxi at just ₹${price}. ${distance} km in ${duration}. ` +
+    `AC sedan/SUV, verified drivers, GPS tracking. 4.9★ rated, 10,000+ trips. Call now!`
   );
 
   return {
@@ -37,23 +45,23 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/routes/${slug}-og.jpg`,
+        url: `${BASE_URL}/images/car/car1.webp`,
         width: 1200,
         height: 630,
-        alt: `${origin} to ${destination} Taxi Service`
+        alt: `${origin} to ${destination} Taxi Service — Triveni Cabs`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
@@ -62,21 +70,28 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
     other: {
       'price-range': `₹${price}`,
       'service-type': 'Intercity Taxi',
-      'service-area': `${origin}, ${destination}`
+      'service-area': `${origin}, ${destination}`,
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': String(AGGREGATE_RATING.reviewCount)
     }
   };
 }
 
 /**
  * Generate tour page metadata
- * Title: {TourName} ₹{Price} ({Duration}) — All Inclusive Tour
+ * Title: {TourName} @ ₹{price} ({duration}) — All Inclusive | Book Today
  */
 export function generateTourMetadata({ tourName, city, price, duration, slug, description: tourDesc, image }) {
-  const title = truncateTitle(`${tourName} ₹${price} (${duration}) — All Inclusive`);
+  const title = truncateTitle(`${tourName} @ ₹${price} (${duration}) — All Inclusive`);
+  const ogTitle = truncateOGTitle(`${tourName} @ ₹${price} — ${duration}, All Inclusive with AC Vehicle | Book Today`);
   const description = truncateDescription(
     tourDesc ||
-    `${tourName} at just ₹${price}. ${duration} with AC vehicle & expert driver. ` +
-    `4.8★ rated, 10,000+ happy customers. Book now: ${COMPANY_INFO.phone.display}!`
+    `${tourName} at ₹${price}. ${duration}, AC vehicle, expert driver. ` +
+    `4.9★ rated, 10,000+ happy customers. Call 7668570551 to book now!`
+  );
+  const ogDescription = truncateDescription(
+    `Book ${tourName} at just ₹${price}. ${duration} all-inclusive tour with AC vehicle & expert guide. ` +
+    `4.9★ rated. Book now!`
   );
 
   return {
@@ -92,8 +107,8 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/sightseeing/${slug}`,
@@ -102,13 +117,13 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
         url: image || `${BASE_URL}/images/tours/${slug}-og.jpg`,
         width: 1200,
         height: 630,
-        alt: `${tourName} - ${city}`
+        alt: `${tourName} — ${city} Sightseeing Tour`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
@@ -118,21 +133,89 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
       'price-range': `₹${price}`,
       'duration': duration,
       'tour-type': 'Sightseeing',
-      'location': city
+      'location': city,
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': String(AGGREGATE_RATING.reviewCount)
+    }
+  };
+}
+
+/**
+ * Generate sightseeing city page metadata
+ * Title: {City} Tours — {n}+ Packages from ₹{price} | Triveni Cabs
+ */
+export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, slug, heroImage }) {
+  const title = truncateTitle(`${city} Tours — ${tourCount}+ Packages from ₹${lowestPrice} | Triveni Cabs`);
+  const ogTitle = truncateOGTitle(`Explore ${city} — ${tourCount}+ Sightseeing Tours from ₹${lowestPrice} | Expert Guides | Triveni Cabs`);
+  const description = truncateDescription(
+    `${city} sightseeing: ${tourCount}+ tour packages from ₹${lowestPrice}. ` +
+    `Heritage, day trips, AC vehicle. 4.9★ rated, 10,000+ tourists served. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Discover ${tourCount}+ sightseeing tours in ${city} starting ₹${lowestPrice}. ` +
+    `Heritage sites, cultural experiences & guided day trips. Book now!`
+  );
+
+  return {
+    title,
+    description,
+    keywords: generateSightseeingCityKeywords(city),
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: `${BASE_URL}/sightseeing/${slug}`,
+      languages: {
+        'en-IN': `/sightseeing/${slug}`,
+        'hi-IN': `/sightseeing/${slug}`
+      }
+    },
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      type: 'website',
+      locale: SITE_CONFIG.locale,
+      url: `${BASE_URL}/sightseeing/${slug}`,
+      siteName: SITE_CONFIG.siteName,
+      images: [{
+        url: heroImage || `${BASE_URL}/images/destinations/${slug}.jpg`,
+        width: 1200,
+        height: 630,
+        alt: `${city} Sightseeing Tours — Triveni Cabs`
+      }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description: ogDescription,
+      creator: SITE_CONFIG.twitterHandle,
+      site: SITE_CONFIG.twitterHandle
+    },
+    robots: getDefaultRobots(),
+    category: 'Travel',
+    other: {
+      'tour-count': String(tourCount),
+      'price-range': `From ₹${lowestPrice}`,
+      'location': city,
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': String(AGGREGATE_RATING.reviewCount)
     }
   };
 }
 
 /**
  * Generate city hub page metadata
- * Title: {City} Taxi ₹{minPrice}/km — 24/7 Online Booking
+ * Title: {City} Cab Service — Lowest Fare ₹{minPrice}/km | Triveni Cabs
  */
 export function generateCityHubMetadata({ city, minPrice = 11, services = [], slug }) {
-  const title = truncateTitle(`${city} Taxi ₹${minPrice}/km — 24/7 Online Booking`);
+  const title = truncateTitle(`${city} Cab Service — Lowest Fare ₹${minPrice}/km | Triveni Cabs`);
+  const ogTitle = truncateOGTitle(`${city} Cab Service — Starting ₹${minPrice}/km, AC Vehicles, Verified Drivers | Triveni Cabs`);
   const serviceList = services.length > 0 ? services.slice(0, 3).join(', ') : 'Airport, Local, Outstation';
   const description = truncateDescription(
-    `${city} taxi from just ₹${minPrice}/km. ${serviceList} services. ` +
-    `4.8★ rated, 2800+ customers. Instant booking: ${COMPANY_INFO.phone.display}!`
+    `${city} cab from ₹${minPrice}/km. ${serviceList} services. ` +
+    `AC sedan/SUV, verified drivers. 4.9★ rated, 10,000+ trips. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Book ${city} taxi from just ₹${minPrice}/km. ${serviceList} services with AC vehicles & verified drivers. ` +
+    `4.9★ rated. Book now!`
   );
 
   return {
@@ -148,23 +231,23 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/cities/${slug}-og.jpg`,
+        url: `${BASE_URL}/images/car/car2.webp`,
         width: 1200,
         height: 630,
-        alt: `${city} Taxi Service`
+        alt: `${city} Cab Service — Triveni Cabs`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
@@ -173,20 +256,27 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
     other: {
       'price-range': `From ₹${minPrice}/km`,
       'service-area': city,
-      'available-services': serviceList
+      'available-services': serviceList,
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': String(AGGREGATE_RATING.reviewCount)
     }
   };
 }
 
 /**
  * Generate airport service page metadata
- * Title: {City} Airport Taxi ₹{Price} — Flight Tracking | 24/7
+ * Title: {City} Airport Taxi @ ₹{price} — Flight Tracking | 24/7
  */
 export function generateAirportMetadata({ city, airportName, price, slug }) {
-  const title = truncateTitle(`${city} Airport Taxi ₹${price} — Flight Tracking | 24/7`);
+  const title = truncateTitle(`${city} Airport Taxi @ ₹${price} — Flight Tracking | 24/7`);
+  const ogTitle = truncateOGTitle(`${city} Airport Taxi @ ₹${price} — Live Flight Tracking, Meet & Greet | Triveni Cabs`);
   const description = truncateDescription(
-    `${city} airport taxi from just ₹${price}. ${airportName} pickup/drop with live flight tracking. ` +
-    `Meet & greet, no hidden charges. Book: ${COMPANY_INFO.phone.display}!`
+    `${city} airport taxi from ₹${price}. ${airportName} pickup/drop, flight tracking. ` +
+    `No hidden charges. 4.9★ rated, 10,000+ trips. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Book ${city} airport taxi from just ₹${price}. ${airportName} pickup/drop with live flight tracking. ` +
+    `Meet & greet, no hidden charges. Book now!`
   );
 
   return {
@@ -202,23 +292,23 @@ export function generateAirportMetadata({ city, airportName, price, slug }) {
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/airport-service/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/airport/${slug}-og.jpg`,
+        url: `${BASE_URL}/images/airport_section.jpg`,
         width: 1200,
         height: 630,
-        alt: `${city} Airport Taxi Service`
+        alt: `${city} Airport Taxi Service — Triveni Cabs`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
@@ -227,7 +317,9 @@ export function generateAirportMetadata({ city, airportName, price, slug }) {
     other: {
       'price-range': `₹${price}`,
       'service-type': 'Airport Transfer',
-      'airport': airportName
+      'airport': airportName,
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': String(AGGREGATE_RATING.reviewCount)
     }
   };
 }
@@ -332,12 +424,18 @@ export function generateCorporateMetadata({ city, industry, useCase, slug }) {
 
 /**
  * Generate wedding service page metadata
+ * Title: {City} Wedding Car ₹4,999 — BMW, Audi, Mercedes | Book Now
  */
 export function generateWeddingMetadata({ city, slug }) {
-  const title = truncateTitle(`${city} Wedding Car ₹4,999/day — Decorated Luxury Cars`);
+  const title = truncateTitle(`${city} Wedding Car ₹4,999 — BMW, Audi, Mercedes | Book Now`);
+  const ogTitle = truncateOGTitle(`${city} Wedding Car Rental from ₹4,999 — BMW, Audi, Mercedes, Decorated Baraat | Triveni Cabs`);
   const description = truncateDescription(
-    `${city} wedding car rental from ₹4,999/day. Decorated bridal cars, luxury fleet, ` +
-    `guest transportation. 500+ weddings served. Book: ${COMPANY_INFO.phone.display}!`
+    `${city} wedding car from ₹4,999. BMW, Audi, Mercedes, baraat tempo. ` +
+    `Professional chauffeurs. 4.9★ rated, 500+ weddings. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Book luxury wedding cars in ${city} from ₹4,999. BMW, Audi, Mercedes & decorated baraat tempo travellers. ` +
+    `500+ weddings served. Book now!`
   );
 
   return {
@@ -353,28 +451,34 @@ export function generateWeddingMetadata({ city, slug }) {
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/wedding/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/wedding/${slug}-og.jpg`,
+        url: `${BASE_URL}/images/wedding_section.jpg`,
         width: 1200,
         height: 630,
-        alt: `${city} Wedding Car Rental`
+        alt: `${city} Wedding Car Rental — Triveni Cabs`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
     robots: getDefaultRobots(),
-    category: 'Wedding Services'
+    category: 'Wedding Services',
+    other: {
+      'price-range': 'From ₹4,999',
+      'service-type': 'Wedding Car Rental',
+      'service-area': city,
+      'rating': String(AGGREGATE_RATING.ratingValue)
+    }
   };
 }
 
@@ -477,12 +581,18 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
 
 /**
  * Generate bus route page metadata
+ * Title: {Origin} to {Destination} Bus @ ₹{price} — AC {seats} Seater
  */
 export function generateBusMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Bus ₹${price} — ${seats} Seater AC`);
+  const title = truncateTitle(`${origin} to ${destination} Bus @ ₹${price} — AC ${seats} Seater`);
+  const ogTitle = truncateOGTitle(`${origin} to ${destination} Luxury Bus @ ₹${price} — AC ${seats} Seater, Reclining Seats | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} bus hire ₹${price}. ${seats}-seater AC luxury coach. ` +
-    `Ideal for groups, pilgrimages, corporate tours. Book: ${COMPANY_INFO.phone.display}!`
+    `${origin} to ${destination} bus hire @ ₹${price}. ${seats}-seater AC Volvo, reclining seats. ` +
+    `4.9★ rated, 1,000+ groups served. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Book ${origin} to ${destination} luxury bus @ ₹${price}. ${seats}-seater AC Volvo with reclining seats & entertainment. ` +
+    `1,000+ groups trusted us. Book now!`
   );
 
   return {
@@ -498,28 +608,34 @@ export function generateBusMetadata({ origin, destination, price, seats, slug })
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/bus-routes/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/bus/${slug}-og.jpg`,
+        url: `${BASE_URL}/images/bus/hero_section_image.png`,
         width: 1200,
         height: 630,
-        alt: `${origin} to ${destination} Bus Hire`
+        alt: `${origin} to ${destination} Bus Hire — Triveni Cabs`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
     robots: getDefaultRobots(),
-    category: 'Transportation'
+    category: 'Transportation',
+    other: {
+      'price-range': `₹${price}`,
+      'service-type': 'Bus Hire',
+      'service-area': `${origin}, ${destination}`,
+      'rating': String(AGGREGATE_RATING.ratingValue)
+    }
   };
 }
 
@@ -531,6 +647,14 @@ export function generateBusMetadata({ origin, destination, price, seats, slug })
 function truncateTitle(title) {
   if (title.length <= 60) return title;
   return title.substring(0, 57) + '...';
+}
+
+/**
+ * Truncate OG title to max 95 characters (social shares can be longer)
+ */
+function truncateOGTitle(title) {
+  if (title.length <= 95) return title;
+  return title.substring(0, 92) + '...';
 }
 
 /**
@@ -597,6 +721,25 @@ function generateTourKeywords(tourName, city) {
     `${city} taxi for sightseeing`,
     'sightseeing tour',
     'guided tour',
+    COMPANY_INFO.name
+  ].join(', ');
+}
+
+function generateSightseeingCityKeywords(city) {
+  return [
+    `${city} sightseeing`,
+    `${city} tour packages`,
+    `${city} city tour`,
+    `${city} tours`,
+    `${city} tourist places`,
+    `places to visit in ${city}`,
+    `things to do in ${city}`,
+    `${city} day tour`,
+    `${city} guided tours`,
+    `${city} heritage tour`,
+    `${city} sightseeing by car`,
+    `book ${city} tour online`,
+    'sightseeing tour India',
     COMPANY_INFO.name
   ].join(', ');
 }
@@ -745,6 +888,7 @@ function generateBusKeywords(origin, destination, seats) {
 export default {
   generateRouteMetadata,
   generateTourMetadata,
+  generateSightseeingCityMetadata,
   generateCityHubMetadata,
   generateAirportMetadata,
   generateBlogMetadata,
