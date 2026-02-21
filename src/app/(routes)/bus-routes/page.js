@@ -2,7 +2,6 @@
 
 import { busFleet, busRoutes } from '@/utilis/busRoutesData';
 import BusMainClient from '@/components/BusMainClient';
-import Script from 'next/script';
 
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -359,41 +358,16 @@ export default function BusRoutesPage() {
 
   return (
     <>
-      <Script
-        id="bus-service-schema"
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(busServiceSchema) }}
-        strategy="beforeInteractive"
-      />
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        strategy="beforeInteractive"
-      />
-      <Script
-        id="routes-list-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(routesListSchema) }}
-        strategy="beforeInteractive"
-      />
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        strategy="beforeInteractive"
-      />
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        strategy="beforeInteractive"
-      />
-      <Script
-        id="howto-book-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToBookSchema) }}
-        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          busServiceSchema,
+          breadcrumbSchema,
+          routesListSchema,
+          faqSchema,
+          organizationSchema,
+          howToBookSchema
+        ]) }}
       />
       <BusMainClient data={pageData} />
     </>

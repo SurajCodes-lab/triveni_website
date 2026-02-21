@@ -29,11 +29,11 @@ import {
 } from '@heroicons/react/24/outline';
 import { StarIcon as StarIconSolid, BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
-import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import dynamic from 'next/dynamic';
 
-// Dynamically import FareCalculator (client-only, below fold)
+// Dynamically import below-fold components
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
+const QuickEnquiryForm = dynamic(() => import('@/components/ui/QuickEnquiryForm'), { ssr: false });
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';

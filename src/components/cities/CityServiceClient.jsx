@@ -14,15 +14,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
-import CityRoutes from "@/components/cities/CityRoutes";
-import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 import { bestTimeToVisitData } from "@/utilis/bestTimeToVisitData";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from 'next/dynamic';
 
-// Dynamically import FareCalculator (client-only, below fold)
+// Dynamically import below-fold components
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
-import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+const CityRoutes = dynamic(() => import("@/components/cities/CityRoutes"));
+const CityLocalInfoSection = dynamic(() => import("@/components/cities/CityLocalInfoSection"));
+const QuickEnquiryForm = dynamic(() => import('@/components/ui/QuickEnquiryForm'), { ssr: false });
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';

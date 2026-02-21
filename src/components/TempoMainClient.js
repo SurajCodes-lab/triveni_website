@@ -10,8 +10,13 @@ import {
   Compass, Sparkles, Zap, Heart, ChevronDown, Crown, Gem, Play, X, Mountain
 } from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import ChardhamShowcase from './ChardhamShowcase';
+import dynamic from 'next/dynamic';
+
+const TypeAnimation = dynamic(
+  () => import('react-type-animation').then(mod => mod.TypeAnimation),
+  { ssr: false, loading: () => <span>Tempo Traveller Rental</span> }
+);
+const ChardhamShowcase = dynamic(() => import('./ChardhamShowcase'), { ssr: false });
 
 export default function TempoMainClient({ data, faqData }) {
   const [searchTerm, setSearchTerm] = useState('');
