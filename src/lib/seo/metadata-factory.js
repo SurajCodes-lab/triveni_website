@@ -21,14 +21,14 @@ import {
  * Title: {Origin} to {Destination} Taxi @ ₹{price} — 4.9★ Rated
  */
 export function generateRouteMetadata({ origin, destination, price, distance, duration, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Taxi @ ₹${price} — 4.9★ Rated`);
-  const ogTitle = truncateOGTitle(`Book ${origin} to ${destination} Taxi @ ₹${price} — Verified Drivers, AC Vehicles | Triveni Cabs`);
+  const title = truncateTitle(`${origin} to ${destination} Cab @ ₹${price} — 4.9★ Rated`);
+  const ogTitle = truncateOGTitle(`Book ${origin} to ${destination} Cab @ ₹${price} — Verified Drivers, AC Vehicles | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} cab starting ₹${price}. ${distance} km, ${duration}. ` +
-    `AC sedan/SUV, verified drivers. 4.9★ rated, 10,000+ trips. Call 7668570551.`
+    `${origin} to ${destination} cab & taxi from ₹${price}. ${distance} km, ${duration}. ` +
+    `AC sedan/SUV, one way & round trip. 4.9★ rated. Call 7668570551.`
   );
   const ogDescription = truncateDescription(
-    `Book ${origin} to ${destination} taxi at just ₹${price}. ${distance} km in ${duration}. ` +
+    `Book ${origin} to ${destination} cab at just ₹${price}. ${distance} km in ${duration}. ` +
     `AC sedan/SUV, verified drivers, GPS tracking. 4.9★ rated, 10,000+ trips. Call now!`
   );
 
@@ -206,15 +206,15 @@ export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, 
  * Title: {City} Cab Service — Lowest Fare ₹{minPrice}/km | Triveni Cabs
  */
 export function generateCityHubMetadata({ city, minPrice = 11, services = [], slug }) {
-  const title = truncateTitle(`${city} Cab Service — Lowest Fare ₹${minPrice}/km | Triveni Cabs`);
-  const ogTitle = truncateOGTitle(`${city} Cab Service — Starting ₹${minPrice}/km, AC Vehicles, Verified Drivers | Triveni Cabs`);
+  const title = truncateTitle(`${city} Taxi Service — Cab from ₹${minPrice}/km | Triveni Cabs`);
+  const ogTitle = truncateOGTitle(`${city} Taxi & Cab Service — From ₹${minPrice}/km, AC Vehicles, Verified Drivers | Triveni Cabs`);
   const serviceList = services.length > 0 ? services.slice(0, 3).join(', ') : 'Airport, Local, Outstation';
   const description = truncateDescription(
-    `${city} cab from ₹${minPrice}/km. ${serviceList} services. ` +
-    `AC sedan/SUV, verified drivers. 4.9★ rated, 10,000+ trips. Call 7668570551.`
+    `Best taxi service in ${city} from ₹${minPrice}/km. ${serviceList} cab booking. ` +
+    `AC sedan/SUV, verified drivers. 4.9★ rated. Call 7668570551.`
   );
   const ogDescription = truncateDescription(
-    `Book ${city} taxi from just ₹${minPrice}/km. ${serviceList} services with AC vehicles & verified drivers. ` +
+    `Book ${city} taxi & cab service from just ₹${minPrice}/km. ${serviceList} with AC vehicles & verified drivers. ` +
     `4.9★ rated. Book now!`
   );
 
@@ -584,14 +584,14 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
  * Title: {Origin} to {Destination} Bus @ ₹{price} — AC {seats} Seater
  */
 export function generateBusMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Bus @ ₹${price} — AC ${seats} Seater`);
-  const ogTitle = truncateOGTitle(`${origin} to ${destination} Luxury Bus @ ₹${price} — AC ${seats} Seater, Reclining Seats | Triveni Cabs`);
+  const title = truncateTitle(`${origin} to ${destination} Bus — Route, Fare & Hire ₹${price}`);
+  const ogTitle = truncateOGTitle(`${origin} to ${destination} Bus Route & Hire from ₹${price} — AC ${seats} Seater | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} bus hire @ ₹${price}. ${seats}-seater AC Volvo, reclining seats. ` +
+    `${origin} to ${destination} bus route, fare & AC bus hire from ₹${price}. ${seats}-seater Volvo. ` +
     `4.9★ rated, 1,000+ groups served. Call 7668570551.`
   );
   const ogDescription = truncateDescription(
-    `Book ${origin} to ${destination} luxury bus @ ₹${price}. ${seats}-seater AC Volvo with reclining seats & entertainment. ` +
+    `${origin} to ${destination} bus route info & luxury bus hire from ₹${price}. ${seats}-seater AC Volvo. ` +
     `1,000+ groups trusted us. Book now!`
   );
 
@@ -690,18 +690,18 @@ function generateRouteKeywords(origin, destination) {
   return [
     `${origin} to ${destination} cab`,
     `${origin} to ${destination} taxi`,
-    `${origin} ${destination} cab fare`,
-    `${origin} to ${destination} taxi fare`,
+    `${origin} to ${destination} cab service`,
+    `${origin} ${destination} cab`,
     `cab from ${origin} to ${destination}`,
     `taxi from ${origin} to ${destination}`,
-    `${origin} ${destination} distance`,
-    `${origin} to ${destination} by car`,
+    `${origin} to ${destination} one way cab`,
+    `${origin} to ${destination} round trip`,
     `${origin} to ${destination} cab booking`,
-    `one way taxi ${origin} to ${destination}`,
-    `round trip ${origin} to ${destination}`,
+    `${origin} to ${destination} taxi fare`,
+    `${origin} to ${destination} by car`,
+    `${destination} to ${origin} cab`,
+    `${origin} to ${destination} tempo traveller`,
     'outstation cab',
-    'intercity taxi',
-    'car rental',
     COMPANY_INFO.name
   ].join(', ');
 }
@@ -746,19 +746,20 @@ function generateSightseeingCityKeywords(city) {
 
 function generateCityKeywords(city) {
   return [
+    `${city} taxi service`,
+    `taxi service in ${city}`,
+    `${city} cab service`,
+    `cab service in ${city}`,
+    `cabs in ${city}`,
+    `taxi in ${city}`,
     `${city} taxi`,
     `${city} cab`,
-    `${city} taxi service`,
     `${city} cab booking`,
-    `taxi in ${city}`,
-    `cab service in ${city}`,
-    `${city} car rental`,
-    `${city} taxi rates`,
-    `${city} cab fare`,
-    `${city} online cab booking`,
-    `${city} airport taxi`,
-    `${city} outstation taxi`,
+    `taxi ${city}`,
+    `cab ${city}`,
+    `${city} taxi booking`,
     `${city} local taxi`,
+    `${city} outstation taxi`,
     COMPANY_INFO.name
   ].join(', ');
 }
@@ -809,18 +810,19 @@ function generateCorporateKeywords(city, industry, useCase) {
 
 function generateWeddingKeywords(city) {
   return [
-    `${city} wedding car`,
+    `wedding car rental ${city}`,
     `${city} wedding car rental`,
+    `${city} wedding car`,
     `${city} bridal car`,
-    `${city} wedding transportation`,
+    `doli car booking ${city}`,
+    `doli car rental`,
     `wedding car hire ${city}`,
     `decorated wedding car ${city}`,
-    `vintage wedding car ${city}`,
+    `${city} wedding transportation`,
     'wedding car rental',
+    'doli car booking',
     'bridal car service',
-    'wedding guest transportation',
     'luxury wedding car',
-    'marriage car',
     'shaadi car',
     COMPANY_INFO.name
   ].join(', ');
@@ -855,31 +857,32 @@ function generateTempoKeywords(origin, destination, seats) {
     `${origin} to ${destination} tempo traveller`,
     `tempo traveller ${origin} to ${destination}`,
     `${seats} seater tempo ${origin} to ${destination}`,
+    `${origin} to ${destination} tempo traveller price`,
+    `${origin} to ${destination} tempo traveller booking`,
     `tempo traveller hire ${origin}`,
     `${origin} tempo traveller booking`,
     'tempo traveller rental',
     'tempo traveller on rent',
     '12 seater tempo traveller',
     '17 seater tempo traveller',
-    'group travel',
-    'family trip vehicle',
+    '20 seater tempo traveller',
     COMPANY_INFO.name
   ].join(', ');
 }
 
 function generateBusKeywords(origin, destination, seats) {
   return [
+    `${origin} to ${destination} bus`,
+    `${origin} to ${destination} bus route`,
+    `${origin} to ${destination} bus fare`,
     `${origin} to ${destination} bus hire`,
-    `bus rental ${origin} to ${destination}`,
+    `${origin} to ${destination} bus booking`,
+    `bus from ${origin} to ${destination}`,
     `${seats} seater bus ${origin}`,
-    `bus hire ${origin}`,
-    `${origin} bus booking`,
+    `${origin} to ${destination} volvo bus`,
+    `${origin} to ${destination} AC bus`,
     'bus rental',
-    'bus on rent',
     'luxury bus hire',
-    'AC bus rental',
-    'volvo bus hire',
-    'coach hire',
     'group bus booking',
     COMPANY_INFO.name
   ].join(', ');

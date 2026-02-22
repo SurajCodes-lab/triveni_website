@@ -264,11 +264,11 @@ export default function RouteClientContent({
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
                   {formattedCityName}
                   <span className="text-[#FACF2D]"> to </span>
-                  {formattedDestination}
+                  {formattedDestination} Cab
                 </h1>
 
                 <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
-                  Book reliable cab service with professional drivers, AC vehicles, and transparent pricing.
+                  Book {formattedCityName} to {formattedDestination} cab &amp; taxi with AC sedan, SUV or tempo traveller. One way &amp; round trip available.
                 </p>
 
                 {/* Quick Stats Row */}
@@ -723,10 +723,10 @@ export default function RouteClientContent({
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Why Book With Us?
+              Why Book {formattedCityName} to {formattedDestination} Cab With Us?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Trusted by 50,000+ customers for reliable outstation taxi service
+              Trusted by 50,000+ customers for reliable {formattedCityName} to {formattedDestination} taxi service
             </p>
           </motion.div>
 
@@ -864,10 +864,10 @@ export default function RouteClientContent({
               <span className="text-sm font-semibold text-[#D4A017]">ROUTE GUIDE</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span>
+              {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span> Route Guide
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Everything you need to know about your journey
+              Distance, travel time, stops &amp; fare for {formattedCityName} to {formattedDestination} by car
             </p>
           </motion.div>
 
@@ -1094,10 +1094,10 @@ export default function RouteClientContent({
               <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">Questions</span>
+              {formattedCityName} to {formattedDestination} Cab <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">FAQs</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Everything you need to know about {formattedCityName} to {formattedDestination} taxi service
+              Fare, booking &amp; travel info for {formattedCityName} to {formattedDestination} cab service
             </p>
           </motion.div>
 
@@ -1269,10 +1269,10 @@ export default function RouteClientContent({
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-              Ready to Book Your <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> Trip?
+              Book <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> Cab Now
             </h2>
             <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
-              Get instant confirmation. Professional drivers. Best price guaranteed. Available 24/7.
+              Instant confirmation. AC vehicles. One way &amp; round trip. Best price guaranteed. 24/7 available.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

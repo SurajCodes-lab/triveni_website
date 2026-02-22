@@ -88,7 +88,7 @@ export default function DynamicBusRoutesClient({ data }) {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-3 md:mb-4"
             >
-              🚌 {origin} <span className="text-[#FACF2D]">to</span> {destination}
+              {origin} <span className="text-[#FACF2D]">to</span> {destination} Bus
             </motion.h1>
             <motion.h2
               initial={{ y: 100, opacity: 0 }}

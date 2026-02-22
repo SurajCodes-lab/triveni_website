@@ -426,6 +426,14 @@ export default function CityNamePage({ params }) {
             "@type": "Answer",
             "text": `Taxi rates in ${formattedCityName} vary based on vehicle type and distance. Sedan starts from ₹12/km, SUV from ₹16/km. We offer transparent pricing with no hidden charges. Contact us for custom packages.`
           }
+        },
+        {
+          "@type": "Question",
+          "name": `Which is the best cab service in ${formattedCityName}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Triveni Cabs is rated 4.9★ with 10,000+ completed trips in ${formattedCityName}. We offer the lowest fares starting ₹11/km with AC vehicles, GPS tracking, and verified professional drivers for local, outstation, and airport taxi service.`
+          }
         }
       ]
     };

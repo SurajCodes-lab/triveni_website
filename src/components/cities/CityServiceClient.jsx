@@ -301,6 +301,10 @@ export default function CityServiceClient({
     {
       q: `Do you provide airport transfer in ${formattedCityName}?`,
       a: `Yes, we provide reliable airport pickup and drop service in ${formattedCityName}. 24/7 availability with flight tracking. Meet and greet service available.`
+    },
+    {
+      q: `Which is the best cab service in ${formattedCityName}?`,
+      a: `Triveni Cabs is rated 4.9★ with 10,000+ completed trips in ${formattedCityName}. We offer the lowest fares starting ₹11/km with AC vehicles, GPS tracking, and verified professional drivers for local, outstation, and airport taxi service.`
     }
   ];
 
@@ -381,7 +385,7 @@ export default function CityServiceClient({
                 </h1>
 
                 <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
-                  Book reliable outstation & local taxi service with professional drivers, AC vehicles, and transparent pricing.
+                  Best cab service in {formattedCityName} for local, outstation &amp; airport trips. AC sedan, SUV &amp; tempo with verified drivers.
                 </p>
 
                 {/* Quick Stats */}
@@ -693,10 +697,10 @@ export default function CityServiceClient({
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Why Triveni Cabs in {formattedCityName}?
+              Why Choose Our Taxi Service in {formattedCityName}?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Trusted by 50,000+ customers for reliable taxi service
+              Trusted by 50,000+ customers for reliable cab booking in {formattedCityName}
             </p>
           </motion.div>
 
@@ -1092,10 +1096,10 @@ export default function CityServiceClient({
               <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">Questions</span>
+              {formattedCityName} Taxi <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">FAQs</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Everything you need to know about taxi service in {formattedCityName}
+              Everything about cab booking, rates &amp; taxi service in {formattedCityName}
             </p>
           </motion.div>
 
