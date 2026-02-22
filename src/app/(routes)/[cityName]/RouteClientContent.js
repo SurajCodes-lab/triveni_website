@@ -24,7 +24,7 @@ import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
-import { getRelatedContent } from '@/utilis/linkingHelper';
+import { getRelatedContent, getRelatedRoutes, getServiceCrossLinks } from '@/utilis/linkingHelper';
 
 // City hero images
 const cityHeroData = {
@@ -1328,6 +1328,45 @@ export default function RouteClientContent({
         );
       })()}
 
+
+      {/* ==================== POPULAR ROUTES & SERVICES ==================== */}
+      {(() => {
+        const relatedRoutes = getRelatedRoutes(formattedCityName, formattedDestination, 6);
+        const services = getServiceCrossLinks(formattedCityName);
+        return (relatedRoutes.length > 0 || services.length > 0) && (
+          <section className="py-12 bg-white">
+            <div className="max-w-7xl mx-auto px-4">
+              {relatedRoutes.length > 0 && (
+                <>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">More Routes from {formattedCityName}</h2>
+                  <p className="text-gray-600 mb-6">Explore other popular cab routes</p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
+                    {relatedRoutes.map((route, index) => (
+                      <Link key={index} href={route.url} className="group bg-gray-50 rounded-xl border border-gray-200 p-4 hover:border-yellow-400 hover:shadow-md transition-all text-center">
+                        <p className="text-gray-900 font-semibold text-sm group-hover:text-yellow-600">{route.origin} → {route.destination}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+              {services.length > 0 && (
+                <>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Services in {formattedCityName}</h2>
+                  <p className="text-gray-600 mb-6">Other taxi services available</p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {services.slice(0, 8).map((service, index) => (
+                      <Link key={index} href={service.url} className="group bg-gray-50 rounded-xl border border-gray-200 p-4 hover:border-yellow-400 hover:shadow-md transition-all">
+                        <p className="text-gray-900 font-semibold text-sm group-hover:text-yellow-600">{service.name}</p>
+                        <p className="text-gray-500 text-xs mt-1">{service.description}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ==================== FLOATING MOBILE CTA ==================== */}
       {mounted && (

@@ -324,6 +324,8 @@ export function getRelatedRoutes(origin, destination = '', limit = 6) {
     varanasi: ['delhi', 'agra', 'lucknow', 'allahabad', 'bodhgaya', 'ayodhya', 'sarnath', 'khajuraho', 'patna', 'kolkata'],
     lucknow: ['delhi', 'agra', 'varanasi', 'allahabad', 'ayodhya', 'kanpur', 'jaipur', 'mathura', 'khajuraho', 'gorakhpur'],
     ahmedabad: ['udaipur', 'mumbai', 'rajkot', 'jamnagar', 'somnath', 'dwarka', 'kutch', 'vadodara', 'surat', 'mount-abu'],
+    noida: ['agra', 'jaipur', 'haridwar', 'rishikesh', 'shimla', 'manali', 'chandigarh', 'mathura', 'varanasi', 'lucknow'],
+    ghaziabad: ['agra', 'jaipur', 'haridwar', 'rishikesh', 'shimla', 'manali', 'chandigarh', 'mathura', 'varanasi', 'lucknow'],
   };
 
   const originKey = origin.toLowerCase().replace(/\s+/g, '-');
@@ -484,6 +486,22 @@ export function getNearbyDestinations(city, limit = 6) {
       { name: 'Jodhpur', slug: 'jodhpur', distance: 310, image: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg' },
       { name: 'Jaisalmer', slug: 'jaisalmer', distance: 570, image: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg' },
     ],
+    noida: [
+      { name: 'Agra', slug: 'agra', distance: 200, image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
+      { name: 'Mathura', slug: 'mathura', distance: 145, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 280, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+      { name: 'Haridwar', slug: 'haridwar', distance: 210, image: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg' },
+      { name: 'Rishikesh', slug: 'rishikesh', distance: 230, image: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg' },
+      { name: 'Shimla', slug: 'shimla', distance: 350, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
+    ],
+    ghaziabad: [
+      { name: 'Agra', slug: 'agra', distance: 210, image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
+      { name: 'Mathura', slug: 'mathura', distance: 150, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp' },
+      { name: 'Jaipur', slug: 'jaipur', distance: 270, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+      { name: 'Haridwar', slug: 'haridwar', distance: 200, image: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg' },
+      { name: 'Rishikesh', slug: 'rishikesh', distance: 220, image: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg' },
+      { name: 'Delhi', slug: 'delhi', distance: 30, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+    ],
   };
 
   const cityKey = city.toLowerCase().replace(/\s+/g, '-');
@@ -495,8 +513,16 @@ export function getNearbyDestinations(city, limit = 6) {
   }));
 }
 
+// Cities that ACTUALLY have pages for each service (prevents 404 links)
+const AIRPORT_CITIES = ['agra', 'amritsar', 'ayodhya', 'chandigarh', 'dehradun', 'delhi', 'haridwar', 'jaipur', 'jodhpur', 'manali', 'rishikesh', 'shimla', 'srinagar', 'udaipur'];
+const WEDDING_CITIES = ['agra', 'amritsar', 'ayodhya', 'chandigarh', 'dehradun', 'delhi', 'haridwar', 'jaipur', 'jodhpur', 'lucknow', 'manali', 'mathura', 'mussoorie', 'nainital', 'rishikesh', 'shimla', 'udaipur', 'varanasi'];
+const CORPORATE_CITIES = ['agra', 'chandigarh', 'dehradun', 'delhi', 'gurgaon', 'haridwar', 'jaipur', 'lucknow', 'noida'];
+const EVENT_CITIES = ['agra', 'amritsar', 'chandigarh', 'dehradun', 'delhi', 'haridwar', 'jaipur', 'lucknow', 'manali', 'shimla', 'udaipur', 'varanasi'];
+const SIGHTSEEING_CITIES = ['agra', 'ahmedabad', 'amritsar', 'ayodhya', 'bikaner', 'bodhgaya', 'chandigarh', 'chittorgarh', 'chopta', 'dalhousie', 'dehradun', 'delhi', 'dharamshala', 'haridwar', 'jaipur', 'jaisalmer', 'jammu', 'jim-corbett', 'jodhpur', 'kashmir', 'kasol', 'ladakh', 'lucknow', 'manali', 'mount-abu', 'mussoorie', 'nainital', 'prayagraj', 'pushkar', 'ranthambore', 'rishikesh', 'shimla', 'udaipur', 'varanasi'];
+
 /**
  * Get cross-service links for a city
+ * Only returns links for pages that ACTUALLY exist (no 404s)
  * @param {string} city - City name
  */
 export function getServiceCrossLinks(city) {
@@ -506,19 +532,29 @@ export function getServiceCrossLinks(city) {
   const citySlug = city.toLowerCase().replace(/\s+/g, '-');
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
 
-  const services = [
-    {
+  const services = [];
+
+  // Only add services that have ACTUAL pages for this city
+  if (AIRPORT_CITIES.includes(citySlug)) {
+    services.push({
       name: 'Airport Transfer',
       icon: 'airport',
       url: `/airport-service/${citySlug}`,
       description: `Airport pickup & drop in ${cityName}`
-    },
-    {
+    });
+  }
+
+  if (SIGHTSEEING_CITIES.includes(citySlug)) {
+    services.push({
       name: 'Sightseeing Tours',
       icon: 'tour',
       url: `/sightseeing/${citySlug}`,
       description: `Explore ${cityName} tourist places`
-    },
+    });
+  }
+
+  // One-way and round-trip are generic pages (always valid)
+  services.push(
     {
       name: 'One-Way Cab',
       icon: 'route',
@@ -530,32 +566,43 @@ export function getServiceCrossLinks(city) {
       icon: 'route',
       url: `/round-trip-cab`,
       description: `Multi-day trips with same driver`
-    },
-    {
+    }
+  );
+
+  if (CORPORATE_CITIES.includes(citySlug)) {
+    services.push({
       name: 'Corporate Transport',
       icon: 'corporate',
       url: `/corporate-transportation-service/${citySlug}`,
       description: `Employee shuttle & office cabs`
-    },
-    {
+    });
+  }
+
+  if (WEDDING_CITIES.includes(citySlug)) {
+    services.push({
       name: 'Wedding Cars',
       icon: 'wedding',
       url: `/wedding/${citySlug}`,
       description: `Decorated cars for your special day`
-    },
-    {
+    });
+  }
+
+  if (EVENT_CITIES.includes(citySlug)) {
+    services.push({
       name: 'Event Transport',
       icon: 'event',
       url: `/event-transportation-service/city/${citySlug}`,
       description: `Group & event transportation`
-    },
-    {
-      name: 'Tempo Traveller',
-      icon: 'tempo',
-      url: `/tempo-traveller`,
-      description: `12-20 seater for group travel`
-    },
-  ];
+    });
+  }
+
+  // Tempo traveller is a generic page (always valid)
+  services.push({
+    name: 'Tempo Traveller',
+    icon: 'tempo',
+    url: `/tempo-traveller`,
+    description: `12-20 seater for group travel`
+  });
 
   // Add Delhi-specific airport terminal links
   if (citySlug === 'delhi') {
@@ -625,6 +672,8 @@ export function getPopularCities() {
     { name: 'Varanasi', slug: 'varanasi', url: '/varanasi' },
     { name: 'Lucknow', slug: 'lucknow', url: '/lucknow' },
     { name: 'Ahmedabad', slug: 'ahmedabad', url: '/ahmedabad' },
+    { name: 'Noida', slug: 'noida', url: '/noida' },
+    { name: 'Ghaziabad', slug: 'ghaziabad', url: '/ghaziabad' },
   ];
 }
 
@@ -847,15 +896,23 @@ export function getMoneyPageLinks(city, limit = 8) {
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
 
   const links = [
-    // City hub page (highest priority)
+    // City hub page (highest priority — always exists)
     { text: `${cityName} Taxi Service`, url: `/${citySlug}`, type: 'city', priority: 1 },
-    // Airport page
-    { text: `${cityName} Airport Taxi`, url: `/airport-service/${citySlug}`, type: 'airport', priority: 2 },
-    // Wedding page
-    { text: `${cityName} Wedding Car`, url: `/wedding/${citySlug}`, type: 'wedding', priority: 3 },
-    // Sightseeing page
-    { text: `${cityName} Sightseeing Tours`, url: `/sightseeing/${citySlug}`, type: 'sightseeing', priority: 2 },
   ];
+
+  // Only add pages that ACTUALLY exist for this city
+  if (AIRPORT_CITIES.includes(citySlug)) {
+    links.push({ text: `${cityName} Airport Taxi`, url: `/airport-service/${citySlug}`, type: 'airport', priority: 2 });
+  }
+  if (SIGHTSEEING_CITIES.includes(citySlug)) {
+    links.push({ text: `${cityName} Sightseeing Tours`, url: `/sightseeing/${citySlug}`, type: 'sightseeing', priority: 2 });
+  }
+  if (WEDDING_CITIES.includes(citySlug)) {
+    links.push({ text: `${cityName} Wedding Car`, url: `/wedding/${citySlug}`, type: 'wedding', priority: 3 });
+  }
+  if (CORPORATE_CITIES.includes(citySlug)) {
+    links.push({ text: `${cityName} Corporate Cab`, url: `/corporate-transportation-service/${citySlug}`, type: 'corporate', priority: 3 });
+  }
 
   // Add popular route pages from this city
   const popularRoutes = getRelatedRoutes(cityName, '', 4);
