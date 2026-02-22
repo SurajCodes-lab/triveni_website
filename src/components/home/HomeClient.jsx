@@ -142,7 +142,7 @@ const serviceSections = [
       { icon: Star, title: "Entertainment", desc: "Music system" },
       { icon: Navigation, title: "GPS Tracking", desc: "Live location" }
     ],
-    image: '/images/bus/hero_section_image.png',
+    image: '/images/bus/hero_section_image.webp',
     imageIcon: Bus,
     imageTitle: 'Bus Routes',
     imageSubtitle: 'Luxury Group Travel',
@@ -422,6 +422,7 @@ export default function HomeClient() {
             alt="Triveni Cabs - Premium Taxi Service in India"
             fill
             priority
+            fetchPriority="high"
             placeholder="blur"
             blurDataURL={heroBlurDataURL}
             className="object-cover object-center brightness-110 contrast-110"

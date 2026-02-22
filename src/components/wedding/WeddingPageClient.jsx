@@ -35,6 +35,7 @@ const WeddingHero = () => {
           alt="Wedding Car Services Background"
           fill
           priority
+          fetchPriority="high"
           className="object-cover object-center opacity-10"
           sizes="100vw"
           placeholder="blur"

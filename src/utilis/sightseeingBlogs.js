@@ -6504,7 +6504,7 @@ export const sightseeingBlogPosts = [
 
     date: "2026-02-22",
     readTime: "16 min read",
-    image: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
+    image: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
     category: "Pilgrimage",
     tags: ["Mathura", "Vrindavan", "Krishna", "Pilgrimage", "Temples", "Holi", "Janmashtami"],
     keywords: [

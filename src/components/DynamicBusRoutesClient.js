@@ -42,7 +42,7 @@ export default function DynamicBusRoutesClient({ data }) {
         {/* Animated Background with Parallax */}
         <div className="absolute inset-0">
           <Image
-            src="/images/bus/hero_section_image.png"
+            src="/images/bus/hero_section_image.webp"
             alt={`Luxury bus rental service from ${origin} to ${destination} - 22 to 56 seater AC coaches for group travel`}
             fill
             className="object-cover brightness-50"

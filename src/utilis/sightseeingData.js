@@ -996,7 +996,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October-March (Janmashtami and Holi are special)",
       difficulty: "Easy",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
+      heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
       images: [
         "/images/sightseeing/Mathura_Vrindavan/Krishna_Janmabhoomi.jpg",
         "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg",
@@ -6088,7 +6088,7 @@ export const sightseeingTours = {
       bestTimeToVisit: "October to March, Janmashtami festival (Aug-Sep) is special",
       difficulty: "Easy to Moderate",
       category: "Spiritual & Religious",
-      heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
+      heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
       images: [
         "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg",
         "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg",

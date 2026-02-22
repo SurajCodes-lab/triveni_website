@@ -114,35 +114,47 @@ export default function ContactForm() {
       return;
     }
 
-    // Simulate form submission - replace with actual implementation later
+    // Track successful form submission (CONVERSION EVENT)
+    trackFormSubmission('contact_form', {
+      subject: formData.subject || 'general_inquiry',
+      has_last_name: !!formData.lastName,
+      message_length: formData.message.length
+    });
+
+    // Build WhatsApp message with all form data
+    const nameParts = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
+    const messageParts = [
+      `Hi, I'd like to get in touch.`,
+      ``,
+      `Name: ${nameParts}`,
+      formData.email ? `Email: ${formData.email}` : '',
+      formData.subject ? `Subject: ${formData.subject}` : '',
+      ``,
+      `Message: ${formData.message}`,
+    ].filter(Boolean).join('\n');
+
+    const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(messageParts)}`;
+
+    // Reset form
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+
+    setSuccess(true);
+    setLoading(false);
+    formStarted.current = false;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    // Hide success message after 5 seconds
     setTimeout(() => {
-      console.log('Form submitted:', formData);
-
-      // Track successful form submission (CONVERSION EVENT)
-      trackFormSubmission('contact_form', {
-        subject: formData.subject || 'general_inquiry',
-        has_last_name: !!formData.lastName,
-        message_length: formData.message.length
-      });
-
-      // Reset form
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-
-      setSuccess(true);
-      setLoading(false);
-      formStarted.current = false;
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setSuccess(false);
-      }, 5000);
-    }, 1000);
+      setSuccess(false);
+    }, 5000);
   };
   
   return (

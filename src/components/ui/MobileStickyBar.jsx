@@ -1,6 +1,7 @@
 'use client';
 
 import { Phone } from '@/components/ui/icons';
+import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
 
 export default function MobileStickyBar() {
   return (
@@ -9,6 +10,7 @@ export default function MobileStickyBar() {
         {/* Call Now */}
         <a
           href="tel:+917668570551"
+          onClick={() => trackPhoneCall('mobile_sticky_bar')}
           className="flex-1 flex items-center justify-center gap-2 bg-[#FACF2D] text-black font-bold py-3.5 text-sm"
         >
           <Phone className="w-4 h-4" />
@@ -20,6 +22,7 @@ export default function MobileStickyBar() {
           href="https://wa.me/917668570551?text=Hi, I'd like a quote for cab service."
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('mobile_sticky_bar_quote')}
           className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold py-3.5 text-sm"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -33,6 +36,7 @@ export default function MobileStickyBar() {
           href="https://wa.me/917668570551"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('mobile_sticky_bar_whatsapp')}
           className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3.5 text-sm"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

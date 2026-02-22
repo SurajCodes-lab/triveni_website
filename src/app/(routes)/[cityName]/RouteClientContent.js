@@ -33,14 +33,14 @@ const cityHeroData = {
   'Chandigarh': { image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', icon: '🌳', accent: '#059669' },
   'Agra': { image: '/images/sightseeing/Agra/Agra_Hero_section.jpg', icon: '🕌', accent: '#D97706' },
   'Shimla': { image: '/images/sightseeing/Shimla/shimla_hero_section.jpg', icon: '🏔️', accent: '#0891B2' },
-  'Dehradun': { image: '/images/chardham/chardham-dehradun-hero.png', icon: '🌲', accent: '#16A34A' },
-  'Rishikesh': { image: '/images/chardham/chardham-rishikesh-hero.png', icon: '🧘', accent: '#0D9488' },
-  'Haridwar': { image: '/images/chardham/chardham-haridwar-hero.png', icon: '🙏', accent: '#EA580C' },
+  'Dehradun': { image: '/images/chardham/chardham-dehradun-hero.webp', icon: '🌲', accent: '#16A34A' },
+  'Rishikesh': { image: '/images/chardham/chardham-rishikesh-hero.webp', icon: '🧘', accent: '#0D9488' },
+  'Haridwar': { image: '/images/chardham/chardham-haridwar-hero.webp', icon: '🙏', accent: '#EA580C' },
   'Manali': { image: '/images/packages/manali.webp', icon: '⛷️', accent: '#2563EB' },
   'Amritsar': { image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg', icon: '🛕', accent: '#CA8A04' },
   'Jodhpur': { image: '/images/packages/rajasthan.webp', icon: '🏯', accent: '#4F46E5' },
   'Udaipur': { image: '/images/packages/rajasthan.webp', icon: '🚣', accent: '#7C3AED' },
-  'Ayodhya': { image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png', icon: '🛕', accent: '#DC2626' },
+  'Ayodhya': { image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp', icon: '🛕', accent: '#DC2626' },
   'Ahmedabad': { image: '/images/destinations/delhi.webp', icon: '🏛️', accent: '#B91C1C' }
 };
 

@@ -615,7 +615,7 @@ export function generateBusMetadata({ origin, destination, price, seats, slug })
       url: `${BASE_URL}/bus-routes/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/bus/hero_section_image.png`,
+        url: `${BASE_URL}/images/bus/hero_section_image.webp`,
         width: 1200,
         height: 630,
         alt: `${origin} to ${destination} Bus Hire — Triveni Cabs`

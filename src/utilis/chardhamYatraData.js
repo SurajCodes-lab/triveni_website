@@ -213,7 +213,7 @@ const origins = {
       badrinath: { km: 530, totalKm: 1060, days: '5N/6D' },
       doDham: { km: 530, totalKm: 1400, days: '7N/8D' },
     },
-    heroImage: '/images/chardham/chardham-yatra-delhi-hero.png',
+    heroImage: '/images/chardham/chardham-yatra-delhi-hero.webp',
     galleryImages: [
       '/images/sightseeing/Haridwar/Ganga_Aarti.jpg',
       '/images/sightseeing/Rishikesh/Laxman_Jhula.jpg',
@@ -231,7 +231,7 @@ const origins = {
       badrinath: { km: 320, totalKm: 640, days: '3N/4D' },
       doDham: { km: 320, totalKm: 1100, days: '5N/6D' },
     },
-    heroImage: '/images/chardham/chardham-haridwar-hero.png',
+    heroImage: '/images/chardham/chardham-haridwar-hero.webp',
     galleryImages: [
       '/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg',
       '/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg',
@@ -249,7 +249,7 @@ const origins = {
       badrinath: { km: 340, totalKm: 680, days: '4N/5D' },
       doDham: { km: 340, totalKm: 1200, days: '6N/7D' },
     },
-    heroImage: '/images/chardham/chardham-dehradun-hero.png',
+    heroImage: '/images/chardham/chardham-dehradun-hero.webp',
     galleryImages: [
       '/images/sightseeing/Rishikesh/River_Rafting.jpg',
       '/images/sightseeing/Rishikesh/Triveni_Ghat.jpg',
@@ -267,7 +267,7 @@ const origins = {
       badrinath: { km: 298, totalKm: 596, days: '3N/4D' },
       doDham: { km: 298, totalKm: 1050, days: '5N/6D' },
     },
-    heroImage: '/images/chardham/chardham-rishikesh-hero.png',
+    heroImage: '/images/chardham/chardham-rishikesh-hero.webp',
     galleryImages: [
       '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg',
       '/images/sightseeing/Rishikesh/Ram_Jhula.jpg',
@@ -318,7 +318,7 @@ const destinations = {
     fullName: 'Do Dham Yatra (Kedarnath + Badrinath)',
     type: 'Do',
     dhams: ['Kedarnath', 'Badrinath'],
-    heroImage: '/images/chardham/kedarnath-hero.png',
+    heroImage: '/images/chardham/kedarnath-hero.webp',
     significance: 'The Do Dham Yatra covers the two most popular and sacred Dhams — Kedarnath (Lord Shiva) and Badrinath (Lord Vishnu). This shorter pilgrimage is ideal for those with limited time who wish to experience the most powerful spiritual destinations in the Himalayas.',
     bestSeason: 'May to June & September to November',
     altitude: '3,133m to 3,583m',
@@ -672,12 +672,12 @@ const imageBank = {
     bhairavnath: '/images/sightseeing/Vaishno_Devi/Bhairavnath_Temple.jpg',
   },
   chardhamHeroes: {
-    delhi: '/images/chardham/chardham-yatra-delhi-hero.png',
-    haridwar: '/images/chardham/chardham-haridwar-hero.png',
-    dehradun: '/images/chardham/chardham-dehradun-hero.png',
-    rishikesh: '/images/chardham/chardham-rishikesh-hero.png',
-    kedarnath: '/images/chardham/kedarnath-hero.png',
-    haridwarKedarnath: '/images/chardham/haridwar-kedarnath-hero.png',
+    delhi: '/images/chardham/chardham-yatra-delhi-hero.webp',
+    haridwar: '/images/chardham/chardham-haridwar-hero.webp',
+    dehradun: '/images/chardham/chardham-dehradun-hero.webp',
+    rishikesh: '/images/chardham/chardham-rishikesh-hero.webp',
+    kedarnath: '/images/chardham/kedarnath-hero.webp',
+    haridwarKedarnath: '/images/chardham/haridwar-kedarnath-hero.webp',
   },
   vehicles: {
     sedan: '/images/car/sedan.webp',
@@ -707,7 +707,7 @@ const imageBank = {
     bus45: '/images/bus/45_SEATER_BUS.jpg',
     bus49: '/images/bus/49_SEATER_BUS.jpg',
     bus56: '/images/bus/56_SEATER_BUS.jpg',
-    busHero: '/images/bus/hero_section_image.png',
+    busHero: '/images/bus/hero_section_image.webp',
   },
   tempos: {
     t12: '/images/tempo/12_seater.jpg',

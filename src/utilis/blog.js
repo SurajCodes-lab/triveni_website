@@ -4455,7 +4455,7 @@ export const travelBlogPosts = [
     `,
     date: "2026-01-10",
     readTime: "20 min read",
-    image: "/images/chardham/kedarnath-hero.png",
+    image: "/images/chardham/kedarnath-hero.webp",
     category: "Pilgrimage",
     tags: ["Kedarnath", "Pilgrimage", "Trek", "Shiva", "Uttarakhand", "Jyotirlinga"],
     keywords: ["kedarnath yatra 2026", "kedarnath trek", "kedarnath helicopter booking", "kedarnath temple", "kedarnath guide", "how to reach kedarnath", "kedarnath from delhi", "kedarnath yatra cost", "kedarnath trek difficulty", "kedarnath opening date 2026", "gaurikund to kedarnath", "kedarnath darshan", "kedarnath accommodation", "kedarnath weather", "kedarnath pony booking", "kedarnath pilgrimage", "kedarnath travel guide", "best time kedarnath", "kedarnath registration", "jyotirlinga kedarnath", "kedarnath dham", "sonprayag to kedarnath", "kedarnath helicopter price", "kedarnath trek route", "kedarnath tips"],

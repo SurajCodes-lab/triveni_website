@@ -608,7 +608,7 @@ export const additionalSightseeingBlogs = [
 
     date: "2026-01-11",
     readTime: "11 min read",
-    image: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
+    image: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
     category: "Pilgrimage",
     tags: ["Mathura", "Vrindavan", "Krishna", "Pilgrimage", "Temple Tour"],
     keywords: ["mathura vrindavan tour", "krishna birthplace", "banke bihari temple", "prem mandir", "krishna pilgrimage"],

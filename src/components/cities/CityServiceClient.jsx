@@ -68,21 +68,21 @@ const cityHeroData = {
     highlights: ['Manali', 'Kufri', 'Chandigarh', 'Delhi']
   },
   'Dehradun': {
-    image: '/images/chardham/chardham-dehradun-hero.png',
+    image: '/images/chardham/chardham-dehradun-hero.webp',
     tagline: 'Gateway to Uttarakhand',
     icon: '🌲',
     gradient: 'from-green-500 to-emerald-600',
     highlights: ['Mussoorie', 'Rishikesh', 'Haridwar', 'Delhi']
   },
   'Rishikesh': {
-    image: '/images/chardham/chardham-rishikesh-hero.png',
+    image: '/images/chardham/chardham-rishikesh-hero.webp',
     tagline: 'Yoga Capital of World',
     icon: '🧘',
     gradient: 'from-teal-500 to-cyan-600',
     highlights: ['Haridwar', 'Badrinath', 'Kedarnath', 'Delhi']
   },
   'Haridwar': {
-    image: '/images/chardham/chardham-haridwar-hero.png',
+    image: '/images/chardham/chardham-haridwar-hero.webp',
     tagline: 'Gateway to Gods',
     icon: '🙏',
     gradient: 'from-orange-500 to-amber-600',
@@ -117,7 +117,7 @@ const cityHeroData = {
     highlights: ['Mount Abu', 'Jodhpur', 'Jaipur', 'Delhi']
   },
   'Ayodhya': {
-    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png',
+    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp',
     tagline: 'Ram Janmabhoomi',
     icon: '🛕',
     gradient: 'from-orange-500 to-red-600',
@@ -145,7 +145,7 @@ const cityHeroData = {
     highlights: ['Agra', 'Varanasi', 'Ayodhya', 'Delhi']
   },
   'Mathura': {
-    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png',
+    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp',
     tagline: 'Birthplace of Lord Krishna',
     icon: '🙏',
     gradient: 'from-blue-500 to-purple-600',
@@ -316,6 +316,7 @@ export default function CityServiceClient({
             alt={`Taxi Service in ${formattedCityName}`}
             fill
             priority
+            fetchPriority="high"
             className="object-cover opacity-40"
             sizes="100vw"
             placeholder="blur"

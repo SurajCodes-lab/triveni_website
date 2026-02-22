@@ -39,7 +39,7 @@ export const metadata = {
     siteName: 'Triveni Cabs',
     images: [
       {
-        url: 'https://www.trivenicabs.in/images/bus/hero_section_image.png',
+        url: 'https://www.trivenicabs.in/images/bus/hero_section_image.webp',
         width: 1200,
         height: 630,
         alt: 'Luxury Bus Rental Services - Triveni Cabs',
@@ -50,7 +50,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Luxury Bus Hire for Groups | 22-56 Seater | Triveni Cabs',
     description: '🚌 Volvo comfort • Reclining seats • Entertainment. Big groups travel better together! Book online now.',
-    images: ['https://www.trivenicabs.in/images/bus/hero_section_image.png']
+    images: ['https://www.trivenicabs.in/images/bus/hero_section_image.webp']
   },
   robots: {
     index: true,

@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { User, Phone, Calendar, Users } from '@/components/ui/icons';
+import { User, Phone, Calendar, Users, Mail } from '@/components/ui/icons';
 import { trackFormSubmission } from '@/utilis/analytics';
 
 export default function QuickEnquiryForm({ fromCity = '', toCity = '', pageType = 'route' }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    email: '',
     date: '',
     passengers: '',
   });
@@ -74,8 +75,9 @@ export default function QuickEnquiryForm({ fromCity = '', toCity = '', pageType 
         ? `from ${fromCity}`
         : 'cab service';
 
+    const emailLine = formData.email ? `\nEmail: ${formData.email}` : '';
     const message = encodeURIComponent(
-      `Hi, I'd like a quote for ${routeText}.\n\nName: ${formData.name}\nPhone: ${formData.phone}\nPickup Date: ${formData.date}\nPassengers: ${formData.passengers}\n\nPlease share the best rates. Thank you!`
+      `Hi, I'd like a quote for ${routeText}.\n\nName: ${formData.name}\nPhone: ${formData.phone}${emailLine}\nPickup Date: ${formData.date}\nPassengers: ${formData.passengers}\n\nPlease share the best rates. Thank you!`
     );
 
     const whatsappUrl = `https://wa.me/917668570551?text=${message}`;
@@ -134,6 +136,20 @@ export default function QuickEnquiryForm({ fromCity = '', toCity = '', pageType 
           {errors.phone && (
             <p className="text-red-400 text-xs mt-1 ml-1">{errors.phone}</p>
           )}
+        </div>
+
+        {/* Email (Optional) */}
+        <div className="relative">
+          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email (optional)"
+            className={inputBase}
+            autoComplete="email"
+          />
         </div>
 
         {/* Date */}

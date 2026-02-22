@@ -47,19 +47,19 @@ const cityData = {
     highlights: ['Manali', 'Kufri', 'Chandigarh']
   },
   'Dehradun': {
-    image: '/images/chardham/chardham-dehradun-hero.png',
+    image: '/images/chardham/chardham-dehradun-hero.webp',
     tagline: 'Gateway to Uttarakhand',
     icon: '🌲',
     highlights: ['Mussoorie', 'Rishikesh', 'Haridwar']
   },
   'Rishikesh': {
-    image: '/images/chardham/chardham-rishikesh-hero.png',
+    image: '/images/chardham/chardham-rishikesh-hero.webp',
     tagline: 'Yoga Capital',
     icon: '🧘',
     highlights: ['Haridwar', 'Badrinath', 'Kedarnath']
   },
   'Haridwar': {
-    image: '/images/chardham/chardham-haridwar-hero.png',
+    image: '/images/chardham/chardham-haridwar-hero.webp',
     tagline: 'Gateway to Gods',
     icon: '🙏',
     highlights: ['Rishikesh', 'Kedarnath', 'Badrinath']
@@ -89,7 +89,7 @@ const cityData = {
     highlights: ['Mount Abu', 'Jodhpur', 'Jaipur']
   },
   'Ayodhya': {
-    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png',
+    image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp',
     tagline: 'Ram Janmabhoomi',
     icon: '🛕',
     highlights: ['Varanasi', 'Lucknow', 'Prayagraj']

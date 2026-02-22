@@ -327,7 +327,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/chardham/chardham-yatra-delhi-hero.png"
+      hero: "/images/chardham/chardham-yatra-delhi-hero.webp"
     },
 
     pricing: {
@@ -610,7 +610,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png"
+      hero: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp"
     },
 
     pricing: {
@@ -957,7 +957,7 @@ export const religiousTours = [
     ],
 
     images: {
-      hero: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png"
+      hero: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp"
     },
 
     pricing: {

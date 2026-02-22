@@ -9964,8 +9964,8 @@ export const attractionBlogPosts = [
       }
     },
 
-    image: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
-    heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png",
+    image: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
+    heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
     gallery: [
       "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg",
       "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg",

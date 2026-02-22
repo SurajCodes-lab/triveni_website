@@ -95,6 +95,7 @@ export default function SightseeingDetailClient({ tour }) {
                 alt={tour.name}
                 fill
                 priority
+                fetchPriority="high"
                 quality={90}
                 className="object-cover"
                 sizes="100vw"

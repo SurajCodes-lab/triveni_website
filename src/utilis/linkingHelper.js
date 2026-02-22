@@ -376,7 +376,7 @@ export function getNearbyDestinations(city, limit = 6) {
       { name: 'Chandigarh', slug: 'chandigarh', distance: 250, image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
       { name: 'Haridwar', slug: 'haridwar', distance: 210, image: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg' },
       { name: 'Rishikesh', slug: 'rishikesh', distance: 230, image: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg' },
-      { name: 'Mathura', slug: 'mathura', distance: 160, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png' },
+      { name: 'Mathura', slug: 'mathura', distance: 160, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp' },
       { name: 'Shimla', slug: 'shimla', distance: 350, image: '/images/sightseeing/Shimla/shimla_hero_section.jpg' },
       { name: 'Manali', slug: 'manali', distance: 530, image: '/images/sightseeing/Manali/Manali_hero_section.jpg' },
     ],
@@ -391,7 +391,7 @@ export function getNearbyDestinations(city, limit = 6) {
     agra: [
       { name: 'Delhi', slug: 'delhi', distance: 230, image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
       { name: 'Jaipur', slug: 'jaipur', distance: 240, image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
-      { name: 'Mathura', slug: 'mathura', distance: 58, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png' },
+      { name: 'Mathura', slug: 'mathura', distance: 58, image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp' },
       { name: 'Fatehpur Sikri', slug: 'fatehpur-sikri', distance: 40, image: '/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg' },
       { name: 'Bharatpur', slug: 'bharatpur', distance: 55, image: '/images/sightseeing/Bharatpur/Keoladeo_National_Park _Bharatpur_hero_Section.jpg' },
       { name: 'Lucknow', slug: 'lucknow', distance: 330, image: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg' },
