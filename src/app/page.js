@@ -1,4 +1,4 @@
-import HomeClient from "@/components/home/HomeClient";
+import NewHomeClient from "@/components/home/NewHomeClient";
 import { phoneNumber } from "@/utilis/data";
 import { generateEntityDefinitionSchema, generateServiceAreaBusinessSchema } from '@/lib/seo/aeo-generators';
 
@@ -266,7 +266,7 @@ export default function HomePage() {
       ))}
 
       {/* Client-side interactive content */}
-      <HomeClient />
+      <NewHomeClient />
     </>
   );
 }

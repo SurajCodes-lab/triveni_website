@@ -29,6 +29,7 @@ const ReligiousTourClient = ({ tour }) => {
       ? encodeURIComponent(`Hi! I want to book ${tour.title}. Please share package details.`)
       : encodeURIComponent(`Hi! I want to book ${tour.title}. Please share package details.`);
     const whatsappURL = `https://wa.me/91${phoneNumber}?text=${message}`;
+    trackWhatsAppClick('religious_tour');
     window.open(whatsappURL, '_blank');
   }, [tour.title]);
 

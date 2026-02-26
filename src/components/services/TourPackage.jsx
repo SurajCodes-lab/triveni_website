@@ -62,7 +62,7 @@ Please provide more information and booking details.`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
+    trackWhatsAppClick('tour_package_list');
     window.open(whatsappUrl, '_blank');
   };
 
