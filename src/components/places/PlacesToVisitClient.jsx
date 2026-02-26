@@ -8,6 +8,7 @@ import {
   Calendar, Search, Zap, Map, ShieldCheck, Fuel, HelpCircle, Navigation2,
   MapPinned, Milestone, Target
 } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 /* ── inline keyframes for animations ── */
 const animStyles = `
@@ -134,10 +135,10 @@ export default function PlacesToVisitClient({ data, allCities }) {
           <p className="text-lg md:text-xl text-white/50 mb-10 max-w-2xl leading-relaxed">{data.heroSubtitle}</p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-teal-950 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-400/50 hover:scale-[1.03] transition-all duration-300">
+            <Link onClick={() => trackPhoneCall('places_to_visit')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-teal-950 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-400/50 hover:scale-[1.03] transition-all duration-300">
               <Phone className="w-5 h-5 group-hover:animate-pulse" /> Call: 7668570551
             </Link>
-            <Link href={`https://wa.me/917668570551?text=I want to explore places near ${data.city}`} className="inline-flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-emerald-400/30 transition-all duration-300">
+            <Link onClick={() => trackWhatsAppClick('places_to_visit')} href={`https://wa.me/917668570551?text=I want to explore places near ${data.city}`} className="inline-flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-emerald-400/30 transition-all duration-300">
               WhatsApp Us <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -624,10 +625,10 @@ export default function PlacesToVisitClient({ data, allCities }) {
                 Call or WhatsApp for an instant quote. Sedan from &#8377;11/km, SUV from &#8377;15/km. No hidden charges.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-teal-950 px-9 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-400/50 hover:scale-[1.03] transition-all duration-300">
+                <Link onClick={() => trackPhoneCall('places_to_visit')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-teal-950 px-9 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-400/50 hover:scale-[1.03] transition-all duration-300">
                   <Phone className="w-5 h-5 group-hover:animate-pulse" /> Call: 7668570551
                 </Link>
-                <Link href={`https://wa.me/917668570551?text=I want to explore places near ${data.city}`} className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-xl text-white px-9 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/12 hover:border-emerald-400/30 transition-all duration-300">
+                <Link onClick={() => trackWhatsAppClick('places_to_visit')} href={`https://wa.me/917668570551?text=I want to explore places near ${data.city}`} className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-xl text-white px-9 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/12 hover:border-emerald-400/30 transition-all duration-300">
                   WhatsApp Booking <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>

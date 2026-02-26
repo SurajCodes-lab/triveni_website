@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2, IndianRupee, Route, Zap, MapPin, Navigation, Star, Users } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function OneWayCabRouteClient({ route, relatedRoutes }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -106,10 +107,10 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/25 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
+            <Link onClick={() => trackPhoneCall('oneway_cab')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/25 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
               <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
             </Link>
-            <Link href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center gap-2.5 bg-white/5 backdrop-blur-xl text-white px-8 py-4.5 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300">
+            <Link onClick={() => trackWhatsAppClick('oneway_cab')} href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center gap-2.5 bg-white/5 backdrop-blur-xl text-white px-8 py-4.5 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300">
               WhatsApp Quote <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -166,7 +167,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
                   </div>
                 </div>
 
-                <Link href="tel:+917668570551" className={`mt-6 block text-center bg-gradient-to-r ${v.gradient} text-white px-6 py-3.5 rounded-2xl font-bold text-sm shadow-lg ${v.glow} hover:scale-105 transition-all duration-300`}>
+                <Link onClick={() => trackPhoneCall('oneway_cab')} href="tel:+917668570551" className={`mt-6 block text-center bg-gradient-to-r ${v.gradient} text-white px-6 py-3.5 rounded-2xl font-bold text-sm shadow-lg ${v.glow} hover:scale-105 transition-all duration-300`}>
                   Book {v.name} &rarr;
                 </Link>
               </div>
@@ -463,10 +464,10 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
+                <Link onClick={() => trackPhoneCall('oneway_cab')} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
                   <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
                 </Link>
-                <Link href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:border-amber-500/40 transition-all duration-300">
+                <Link onClick={() => trackWhatsAppClick('oneway_cab')} href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:border-amber-500/40 transition-all duration-300">
                   WhatsApp <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>

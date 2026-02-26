@@ -14,6 +14,7 @@ import {
   Info,
   CheckCircle
 } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 /**
  * Fare Calculator - Interactive tool for instant fare estimates
@@ -205,10 +206,12 @@ const FareCalculator = ({
       `Estimated Fare: ₹${fareDetails.totalFare.toLocaleString()}\n\n` +
       `Please confirm availability and final price.`
     );
+    trackWhatsAppClick('fare_calculator', '', `${fromCity} to ${toCity}`);
     window.open(`https://wa.me/91${phoneNumber}?text=${message}`, '_blank');
   };
 
   const handleCall = () => {
+    trackPhoneCall('fare_calculator');
     window.location.href = `tel:+91${phoneNumber}`;
   };
 

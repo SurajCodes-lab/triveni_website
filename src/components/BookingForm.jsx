@@ -14,6 +14,7 @@ import {
   MessageCircleMore,
 } from "@/components/ui/icons";
 import { motion } from "framer-motion";
+import { trackFormSubmission, trackWhatsAppClick, trackPhoneCall } from "@/utilis/analytics";
 
 const BookingForm = ({ slug, packageInfo }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -88,8 +89,24 @@ const BookingForm = ({ slug, packageInfo }) => {
     return encodeURIComponent(message);
   };
 
-  // WhatsApp booking handler
+  // WhatsApp booking handler - tracks actual form submission
   const handleWhatsAppBooking = () => {
+    // Track the REAL conversion - user completed all 3 steps and clicked Book
+    trackFormSubmission('tour_booking', {
+      serviceType: 'tour_package',
+      tourSlug: slug,
+      tourPackage: packageInfo.title,
+      passengers: formData.passengers.length,
+      has_email: !!formData.contactInfo.email,
+      has_phone: !!formData.contactInfo.phone,
+    });
+    trackWhatsAppClick('booking_form', packageInfo.title, slug);
+
+    // Also fire generate_lead via the page's tracking script
+    if (typeof window !== 'undefined' && window.trackTourFormSubmission) {
+      window.trackTourFormSubmission(slug, packageInfo.title);
+    }
+
     const phoneNumber = "917668570551";
     const message = generateWhatsAppMessage();
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -98,6 +115,7 @@ const BookingForm = ({ slug, packageInfo }) => {
 
   // Direct WhatsApp click handler
   const handleWhatsAppClick = () => {
+    trackWhatsAppClick('booking_form_direct', '', slug);
     const phoneNumber = "917668570551";
     window.open(`https://wa.me/${phoneNumber}`, "_blank");
   };
@@ -470,6 +488,7 @@ const BookingForm = ({ slug, packageInfo }) => {
                     </motion.button>
                     <motion.a
                       href="tel:+917668570551"
+                      onClick={() => trackPhoneCall('booking_form')}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="bg-[#FACF2D] text-black px-6 py-3 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors flex items-center justify-center"

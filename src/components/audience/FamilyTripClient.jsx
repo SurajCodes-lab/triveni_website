@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Baby, TreePine, Hotel, Heart, Coffee, Route, Compass, HelpCircle } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function FamilyTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -185,7 +186,7 @@ export default function FamilyTripClient({ data }) {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('family_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98]"
               style={{ animation: 'pulse-warm 3s ease-in-out infinite' }}
             >
@@ -561,7 +562,7 @@ export default function FamilyTripClient({ data }) {
           </p>
           <div className="flex flex-wrap justify-center gap-5">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('family_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-[1.03] active:scale-[0.98]"
               style={{ animation: 'pulse-warm 3s ease-in-out infinite' }}
             >

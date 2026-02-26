@@ -181,7 +181,7 @@ const trackingScript = `
     }
   };
 
-  // Function to track form submissions
+  // Function to track form submissions - only called on actual WhatsApp booking click
   window.trackTourFormSubmission = function(tourSlug, packageTitle, formData = {}) {
     if (typeof gtag !== 'undefined') {
       gtag('event', 'tour_form_submit', {
@@ -192,8 +192,8 @@ const trackingScript = `
         'form_type': 'booking_inquiry',
         'value': 1
       });
-      
-      // Enhanced conversion tracking
+
+      // Only fire generate_lead when user actually submits the form
       gtag('event', 'generate_lead', {
         'event_category': 'tour_conversion',
         'event_label': tourSlug,
@@ -201,7 +201,7 @@ const trackingScript = `
         'value': 1,
         'currency': 'INR'
       });
-      
+
       // Facebook Pixel conversion
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead', {
@@ -385,33 +385,7 @@ export default function BookingPage({ params }) {
         }}
       />
       
-      {/* Page view tracking with enhanced data */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.addEventListener('DOMContentLoaded', function() {
-              if (window.trackTourBookingPageView) {
-                window.trackTourBookingPageView('${slug}', '${packageInfo.title}');
-              }
-              
-              // Enhanced ecommerce tracking
-              if (typeof gtag !== 'undefined') {
-                gtag('event', 'begin_checkout', {
-                  'currency': 'INR',
-                  'value': ${packageInfo.price.replace('₹', '').replace(',', '')},
-                  'items': [{
-                    'item_id': '${slug}',
-                    'item_name': '${packageInfo.title}',
-                    'item_category': 'Tour Package',
-                    'price': ${packageInfo.price.replace('₹', '').replace(',', '')},
-                    'quantity': 1
-                  }]
-                });
-              }
-            });
-          `
-        }}
-      />
+      {/* Page view tracking - only fires on real user interaction, not page load */}
 
       <div className="bg-gray-50 min-h-screen">
         {/* Breadcrumb Navigation */}

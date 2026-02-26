@@ -4,6 +4,7 @@
 import { ChevronLeft, ChevronRight, PhoneCall, ShieldCheck, Star, Users } from "@/components/ui/icons";
 import React, { useState, useEffect } from "react";
 import { phoneNumber } from "../../../utilis/data";
+import { trackWhatsAppClick } from '@/utilis/analytics';
 import Image from "next/image"; // Import Next.js Image component
 
 const CarSliderStandard = ({ cars, currentIndex, setCurrentIndex, title }) => {
@@ -43,6 +44,7 @@ const CarSliderStandard = ({ cars, currentIndex, setCurrentIndex, title }) => {
     };
 
     const handleClick = () => {
+      trackWhatsAppClick('car_slider_standard');
       window.open(`https://wa.me/${phoneNumber}`, '_blank');
     };
 

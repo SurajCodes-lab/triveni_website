@@ -7,6 +7,7 @@ import {
   CheckCircle2, ArrowRight, IndianRupee, Route, MapPin, Luggage,
   Navigation, ChevronDown, Check, Zap,
 } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 /* ------------------------------------------------------------------ */
 /*  Inline keyframes injected once via <style> for animations          */
@@ -93,10 +94,10 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Link href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 text-white px-9 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/25 hover:shadow-amber-400/40 hover:scale-[1.03] transition-all duration-300">
+                <Link onClick={() => trackPhoneCall('airport_outstation')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 text-white px-9 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/25 hover:shadow-amber-400/40 hover:scale-[1.03] transition-all duration-300">
                   <Phone className="w-5 h-5 group-hover:animate-pulse" /> Call: 7668570551
                 </Link>
-                <Link href={`https://wa.me/917668570551?text=${whatsappMsg}`} className="inline-flex items-center gap-2.5 bg-white/[0.04] backdrop-blur-2xl text-white px-9 py-4.5 rounded-2xl font-bold text-lg border border-white/10 hover:bg-white/[0.08] hover:border-yellow-400/30 transition-all duration-300">
+                <Link onClick={() => trackWhatsAppClick('airport_outstation')} href={`https://wa.me/917668570551?text=${whatsappMsg}`} className="inline-flex items-center gap-2.5 bg-white/[0.04] backdrop-blur-2xl text-white px-9 py-4.5 rounded-2xl font-bold text-lg border border-white/10 hover:bg-white/[0.08] hover:border-yellow-400/30 transition-all duration-300">
                   WhatsApp Booking <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -355,7 +356,7 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
                     <Check className="w-4 h-4 text-amber-400" /> Flight tracking included
                   </div>
 
-                  <Link href="tel:+917668570551" className={`block text-center py-3.5 rounded-2xl font-bold text-sm mt-4 transition-all duration-300 ${
+                  <Link onClick={() => trackPhoneCall('airport_outstation')} href="tel:+917668570551" className={`block text-center py-3.5 rounded-2xl font-bold text-sm mt-4 transition-all duration-300 ${
                     v.popular
                       ? 'bg-gradient-to-r from-amber-500 to-yellow-400 text-white hover:shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02]'
                       : 'bg-white/[0.06] text-white hover:bg-white/[0.12] border border-white/[0.08]'
@@ -600,10 +601,10 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
             Fixed fare from &#8377;{data.fares.sedan.price}. Flight tracking. Meet &amp; greet. 24/7 service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="tel:+917668570551" className="inline-flex items-center gap-2.5 bg-white text-amber-600 px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-black/20 hover:bg-amber-50 hover:scale-[1.03] transition-all duration-300">
+            <Link onClick={() => trackPhoneCall('airport_outstation')} href="tel:+917668570551" className="inline-flex items-center gap-2.5 bg-white text-amber-600 px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-black/20 hover:bg-amber-50 hover:scale-[1.03] transition-all duration-300">
               <Phone className="w-5 h-5" /> Call: 7668570551
             </Link>
-            <Link href={`https://wa.me/917668570551?text=${whatsappMsg}`} className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <Link onClick={() => trackWhatsAppClick('airport_outstation')} href={`https://wa.me/917668570551?text=${whatsappMsg}`} className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
               WhatsApp Booking <ArrowRight className="w-5 h-5" />
             </Link>
           </div>

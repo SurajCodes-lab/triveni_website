@@ -6,6 +6,7 @@ import { ChevronDown, HelpCircle, MessageCircle } from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
 import { generateFAQSchema } from '@/lib/seo/schema-generators';
 import { COMPANY_INFO } from '@/lib/seo/constants';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 /**
  * FAQ Section Component - Accordion-style FAQ display with integrated schema
@@ -202,6 +203,7 @@ const FAQSection = ({
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
                     href={`tel:${COMPANY_INFO.phone.primary}`}
+                    onClick={() => trackPhoneCall('faq_section')}
                     className="inline-flex items-center gap-2 bg-amber-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-amber-700 transition-colors"
                   >
                     Call {COMPANY_INFO.phone.display}
@@ -210,6 +212,7 @@ const FAQSection = ({
                     href={`https://wa.me/${COMPANY_INFO.phone.whatsapp}?text=Hi, I have a question about your services.`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick('faq_section')}
                     className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
                   >
                     WhatsApp Us

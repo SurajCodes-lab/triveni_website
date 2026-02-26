@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks } from '@/components/seo/RelatedContent';
 import { generateTourFAQs } from '@/lib/seo/faq-generator';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const ReligiousTourClient = ({ tour }) => {
   const [activeDay, setActiveDay] = useState(null);
@@ -167,7 +168,7 @@ const ReligiousTourClient = ({ tour }) => {
               </span>
             </motion.button>
 
-            <a href={`tel:+91${phoneNumber}`} className="w-full sm:w-auto">
+            <a onClick={() => trackPhoneCall('religious_tour')} href={`tel:+91${phoneNumber}`} className="w-full sm:w-auto">
               <motion.span
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
@@ -297,7 +298,7 @@ const ReligiousTourClient = ({ tour }) => {
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </button>
                 <a
-                  href={`tel:+91${phoneNumber}`}
+                  onClick={() => trackPhoneCall('religious_tour')} href={`tel:+91${phoneNumber}`}
                   className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 border-orange-300 text-gray-800 font-bold text-sm md:text-base rounded-full hover:bg-orange-50 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-4 h-4 md:w-5 md:h-5" />
@@ -586,7 +587,7 @@ const ReligiousTourClient = ({ tour }) => {
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <a href={`tel:+91${phoneNumber}`}>
+              <a onClick={() => trackPhoneCall('religious_tour')} href={`tel:+91${phoneNumber}`}>
                 <span className="px-8 md:px-10 py-4 md:py-5 bg-white border-2 md:border-3 border-orange-300 text-gray-800 font-bold text-base md:text-lg rounded-full hover:bg-orange-50 hover:border-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3">
                   <Phone className="w-5 h-5 md:w-6 md:h-6" />
                   <span className="truncate">Call Now: {phoneNumber}</span>

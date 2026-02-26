@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { WhatsAppIcon as BsWhatsapp, OutlineMailIcon as HiOutlineMail } from '@/components/ui/icons';
 import { phoneNumber, emailAddress } from '@/utilis/data';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // All 14 cities data
 const cityData = {
@@ -185,10 +186,12 @@ export default function CityRoutesMainClient({ data }) {
   }, []);
 
   const handleCallClick = () => {
+    trackPhoneCall('city_routes_main');
     window.open(`tel:+91${phoneNumber}`, '_blank');
   };
 
   const handleWhatsAppClick = () => {
+    trackWhatsAppClick('city_routes_main');
     window.open(`https://wa.me/${phoneNumber}?text=Hi, I need outstation taxi booking`, '_blank');
   };
 

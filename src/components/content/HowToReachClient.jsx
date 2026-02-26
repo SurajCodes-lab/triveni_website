@@ -11,6 +11,7 @@ import {
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -299,7 +300,7 @@ export default function HowToReachClient({ cityData }) {
                             </td>
                             <td className="py-3">
                               <Link
-                                href={`tel:${COMPANY_INFO.phone.primary}`}
+                                onClick={() => trackPhoneCall('how_to_reach')} href={`tel:${COMPANY_INFO.phone.primary}`}
                                 className="text-xs text-emerald-400 hover:text-emerald-300 font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
                               >
                                 Book Cab
@@ -312,7 +313,7 @@ export default function HowToReachClient({ cityData }) {
                   </div>
 
                   <Link
-                    href={`tel:${COMPANY_INFO.phone.primary}`}
+                    onClick={() => trackPhoneCall('how_to_reach')} href={`tel:${COMPANY_INFO.phone.primary}`}
                     className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-xl font-medium transition-colors"
                   >
                     <Phone className="w-4 h-4" />
@@ -524,14 +525,14 @@ export default function HowToReachClient({ cityData }) {
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={`tel:${COMPANY_INFO.phone.primary}`}
+                onClick={() => trackPhoneCall('how_to_reach')} href={`tel:${COMPANY_INFO.phone.primary}`}
                 className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
               >
                 <Phone className="w-5 h-5" />
                 Call {COMPANY_INFO.phone.display}
               </a>
               <a
-                href={`https://wa.me/${COMPANY_INFO.phone.whatsapp}?text=Hi, I need a cab to ${name}. Please share details.`}
+                onClick={() => trackWhatsAppClick('how_to_reach')} href={`https://wa.me/${COMPANY_INFO.phone.whatsapp}?text=Hi, I need a cab to ${name}. Please share details.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"

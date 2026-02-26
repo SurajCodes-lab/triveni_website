@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { getNearbyStations } from '@/utilis/railwayStationData';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // Train-ticket style perforated divider component
 const TicketPerforation = ({ color = 'slate-950' }) => (
@@ -125,10 +126,10 @@ export default function RailwayStationClient({ station, slug }) {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-600/25 hover:shadow-yellow-500/40 hover:scale-105 transition-all duration-300">
+                <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-600/25 hover:shadow-yellow-500/40 hover:scale-105 transition-all duration-300">
                   <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
                 </Link>
-                <Link href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className="inline-flex items-center justify-center gap-2.5 bg-white/[0.04] backdrop-blur-2xl text-white px-8 py-4.5 rounded-2xl font-bold border border-yellow-400/20 hover:bg-white/10 hover:border-yellow-400/40 transition-all duration-300">
+                <Link onClick={() => trackWhatsAppClick('railway_station')} href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className="inline-flex items-center justify-center gap-2.5 bg-white/[0.04] backdrop-blur-2xl text-white px-8 py-4.5 rounded-2xl font-bold border border-yellow-400/20 hover:bg-white/10 hover:border-yellow-400/40 transition-all duration-300">
                   <WhatsAppIcon className="w-5 h-5" /> WhatsApp Booking
                 </Link>
               </div>
@@ -478,7 +479,7 @@ export default function RailwayStationClient({ station, slug }) {
                     </div>
                   </div>
 
-                  <Link href="tel:+917668570551" className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-600/20 to-yellow-600/20 text-yellow-300 border border-yellow-500/20 text-sm font-bold hover:from-amber-600/30 hover:to-yellow-600/30 hover:border-yellow-500/40 transition-all duration-300">
+                  <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-600/20 to-yellow-600/20 text-yellow-300 border border-yellow-500/20 text-sm font-bold hover:from-amber-600/30 hover:to-yellow-600/30 hover:border-yellow-500/40 transition-all duration-300">
                     <Phone className="w-3.5 h-3.5 inline mr-1.5" /> Book Now
                   </Link>
                 </div>
@@ -648,10 +649,10 @@ export default function RailwayStationClient({ station, slug }) {
           <p className="text-2xl md:text-3xl text-amber-100 font-bold mb-3">Your taxi is waiting at the station.</p>
           <p className="text-amber-100/60 text-lg mb-10 max-w-xl mx-auto">Fixed fares from {'\u20B9'}{lowestFare}. 24/7 service. Meet at platform exit. Clean AC vehicles.</p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-white text-yellow-600 px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-black/20 hover:bg-violet-50 hover:scale-105 transition-all duration-300">
+            <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-white text-yellow-600 px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-black/20 hover:bg-violet-50 hover:scale-105 transition-all duration-300">
               <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
             </Link>
-            <Link href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300">
+            <Link onClick={() => trackWhatsAppClick('railway_station')} href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300">
               <WhatsAppIcon className="w-5 h-5" /> WhatsApp Booking
             </Link>
           </div>

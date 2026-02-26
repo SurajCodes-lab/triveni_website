@@ -26,6 +26,7 @@ import {
   CheckCircle2,
 } from "@/components/ui/icons";
 import { WhatsAppIcon } from "@/components/ui/icons";
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function VehicleHireClient({ vehicle }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -170,14 +171,14 @@ export default function VehicleHireClient({ vehicle }) {
           {/* CTAs with glow */}
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('vehicle_hire')} href="tel:+917668570551"
               className="group inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-xl shadow-amber-600/25 hover:shadow-amber-500/40 hover:scale-105"
             >
               <Phone className="w-5 h-5 group-hover:animate-pulse" />
               Call: +91 76685 70551
             </a>
             <a
-              href="https://wa.me/917668570551"
+              onClick={() => trackWhatsAppClick('vehicle_hire')} href="https://wa.me/917668570551"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-xl shadow-green-600/25 hover:shadow-green-500/40 hover:scale-105"
@@ -289,7 +290,7 @@ export default function VehicleHireClient({ vehicle }) {
                 </div>
 
                 <a
-                  href="tel:+917668570551"
+                  onClick={() => trackPhoneCall('vehicle_hire')} href="tel:+917668570551"
                   className={`inline-flex items-center gap-2 w-full justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                     pkg.popular
                       ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-105"
@@ -640,14 +641,14 @@ export default function VehicleHireClient({ vehicle }) {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('vehicle_hire')} href="tel:+917668570551"
               className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105"
             >
               <Phone className="w-6 h-6 group-hover:animate-pulse" />
               Call: +91 76685 70551
             </a>
             <a
-              href="https://wa.me/917668570551"
+              onClick={() => trackWhatsAppClick('vehicle_hire')} href="https://wa.me/917668570551"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl shadow-green-600/30 hover:shadow-green-500/50 hover:scale-105"

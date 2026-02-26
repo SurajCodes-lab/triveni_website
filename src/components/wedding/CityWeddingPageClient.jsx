@@ -14,6 +14,7 @@ import { phoneNumber } from "@/utilis/data";
 import { FAQSection } from '@/components/seo/FAQSection';
 import dynamic from 'next/dynamic';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -93,6 +94,7 @@ const CityWeddingHero = ({ city }) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:+91${phoneNumber}`}
+              onClick={() => trackPhoneCall('city_wedding')}
               className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl transform hover:scale-105 transition-all"
             >
               <Phone className="w-6 h-6" />
@@ -102,6 +104,7 @@ const CityWeddingHero = ({ city }) => {
               href={`https://wa.me/${phoneNumber}?text=Hi, I'm interested in wedding car rental in ${city.name}. Please share details and packages.`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('city_wedding')}
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl transform hover:scale-105 transition-all"
             >
               <BsWhatsapp className="w-6 h-6" />
@@ -202,6 +205,7 @@ const PopularCars = ({ city }) => {
                 href={`https://wa.me/${phoneNumber}?text=Hi, I'm interested in ${car} for my wedding in ${city.name}. Please share details.`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('city_wedding')}
                 className="block w-full text-center bg-gradient-to-r from-pink-600 to-purple-600 text-white py-3 rounded-xl font-bold hover:from-pink-700 hover:to-purple-700 transition-all"
               >
                 Book Now
@@ -312,7 +316,7 @@ const NearbyDestinations = ({ city, citySlug }) => {
         {/* Additional Info */}
         <div className="mt-12 text-center">
           <p className="text-gray-600 text-sm">
-            Need a cab for a different route? <a href={`https://wa.me/${phoneNumber}?text=Hi, I need a cab from ${city.name} for my wedding. Can you help?`} target="_blank" rel="noopener noreferrer" className="text-green-600 font-semibold underline">Contact us</a> for custom routes!
+            Need a cab for a different route? <a href={`https://wa.me/${phoneNumber}?text=Hi, I need a cab from ${city.name} for my wedding. Can you help?`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('city_wedding')} className="text-green-600 font-semibold underline">Contact us</a> for custom routes!
           </p>
         </div>
       </div>
@@ -594,6 +598,7 @@ const FinalCTA = ({ city }) => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <a
             href={`tel:+91${phoneNumber}`}
+            onClick={() => trackPhoneCall('city_wedding')}
             className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all"
           >
             <Phone className="w-6 h-6" />
@@ -603,6 +608,7 @@ const FinalCTA = ({ city }) => {
             href={`https://wa.me/${phoneNumber}?text=Hi, I want to book wedding car services in ${city.name}. Please share details and availability.`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('city_wedding')}
             className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all"
           >
             <BsWhatsapp className="w-6 h-6" />

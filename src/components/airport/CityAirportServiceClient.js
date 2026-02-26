@@ -32,6 +32,7 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
 import { generateAirportFAQs } from '@/lib/seo/faq-generator';
 import { getNearbyDestinations } from '@/utilis/linkingHelper';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function CityAirportServiceClient({ city, citySlug, cityTours = [] }) {
   const [formData, setFormData] = useState({
@@ -202,7 +203,7 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="tel:+917668570551"
+                onClick={() => trackPhoneCall('city_airport_service')} href="tel:+917668570551"
                 className="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-700 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
               >
                 <Phone className="w-5 h-5 mr-2" />
@@ -624,7 +625,7 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             Call us now for instant booking and on-the-spot service!
           </p>
           <a
-            href="tel:+917668570551"
+            onClick={() => trackPhoneCall('city_airport_service')} href="tel:+917668570551"
             className="inline-flex items-center bg-white text-gray-900 px-10 py-5 rounded-lg font-bold text-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
           >
             <Phone className="w-6 h-6 mr-3" />

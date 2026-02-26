@@ -12,6 +12,7 @@ import {
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from '@/utilis/data';
 import { FAQSection } from '@/components/seo/FAQSection';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const RentalPackageClient = ({ rental }) => {
   const [showAllUses, setShowAllUses] = useState(false);
@@ -107,7 +108,7 @@ const RentalPackageClient = ({ rental }) => {
               <span>Book on WhatsApp</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href={`tel:+91${phoneNumber}`}
+            <a onClick={() => trackPhoneCall('rental_package')} href={`tel:+91${phoneNumber}`}
               className="group inline-flex items-center gap-3 bg-white/[0.07] backdrop-blur-xl hover:bg-white/15 text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:border-amber-500/30 hover:scale-105 transition-all duration-300">
               <Phone className="w-6 h-6 text-amber-400" />
               <span>Call {phoneNumber}</span>
@@ -369,7 +370,7 @@ const RentalPackageClient = ({ rental }) => {
                   <BsWhatsapp className="w-6 h-6" />
                   <span>WhatsApp Us</span>
                 </a>
-                <a href={`tel:+91${phoneNumber}`}
+                <a onClick={() => trackPhoneCall('rental_package')} href={`tel:+91${phoneNumber}`}
                   className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/30 hover:bg-white/30 hover:scale-105 transition-all duration-300">
                   <Phone className="w-6 h-6" />
                   <span>Call {phoneNumber}</span>

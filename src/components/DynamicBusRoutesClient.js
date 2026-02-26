@@ -18,6 +18,7 @@ import dynamic from 'next/dynamic';
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription } = data;
@@ -509,6 +510,7 @@ export default function DynamicBusRoutesClient({ data }) {
                   <button
                     onClick={() => {
                       setSelectedBus(bus);
+                      trackPhoneCall('bus_routes');
                       window.location.href = `tel:+917668570551`;
                     }}
                     className="w-full bg-black text-[#FACF2D] py-3 md:py-4 rounded-lg font-bold text-sm md:text-base hover:bg-gray-900 transition-all duration-300 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-[#FACF2D]/20"
@@ -711,7 +713,7 @@ export default function DynamicBusRoutesClient({ data }) {
 
           <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
             <a
-              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('bus_routes')} href="tel:+917668570551"
               className="flex-1 sm:flex-none bg-[#FACF2D] text-black px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-lg font-bold text-xs sm:text-sm md:text-base flex items-center justify-center shadow-lg hover:bg-yellow-500 transition-all duration-300"
             >
               <Phone className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" />
@@ -720,7 +722,7 @@ export default function DynamicBusRoutesClient({ data }) {
             </a>
 
             <a
-              href="https://wa.me/917668570551"
+              onClick={() => trackWhatsAppClick('bus_routes')} href="https://wa.me/917668570551"
               className="flex-1 sm:flex-none bg-black text-[#FACF2D] px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-lg font-bold text-xs sm:text-sm md:text-base flex items-center justify-center shadow-lg hover:bg-gray-900 transition-all duration-300"
             >
               <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-2" />

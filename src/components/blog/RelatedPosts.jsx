@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ArrowRight, Clock, Phone, MessageCircle } from '@/components/ui/icons';
 import { blogPosts } from '@/utilis/blog';
 import { phoneNumber } from '@/utilis/data';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 function RelatedPostCard({ post }) {
   const [imageError, setImageError] = useState(false);
@@ -105,6 +106,7 @@ export default function RelatedPosts({ currentPostId, currentCategory, currentTa
               href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent("Hi! I'm interested in booking a trip. Can you help with details and pricing?")}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('blog_related')}
               className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
@@ -112,6 +114,7 @@ export default function RelatedPosts({ currentPostId, currentCategory, currentTa
             </a>
             <a
               href={`tel:+91${phoneNumber}`}
+              onClick={() => trackPhoneCall('blog_related')}
               className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-xl transition-colors"
             >
               <Phone className="w-5 h-5" />

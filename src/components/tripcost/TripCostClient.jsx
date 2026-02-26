@@ -5,6 +5,7 @@ import { Phone, IndianRupee, Car, MapPin, Clock, CheckCircle2, ChevronRight, Sta
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { useState, useMemo } from 'react';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function TripCostClient({ data }) {
   // Map {q, a} format to {question, answer} for FAQSection
@@ -424,14 +425,14 @@ export default function TripCostClient({ data }) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <a
-              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('trip_cost')} href="tel:+917668570551"
               className="group flex items-center gap-3 bg-white text-amber-800 font-black px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-amber-300/30 hover:scale-105 transition-all duration-300 text-lg"
             >
               <Phone className="w-5 h-5 group-hover:animate-pulse" />
               Call 7668570551
             </a>
             <a
-              href="https://wa.me/917668570551"
+              onClick={() => trackWhatsAppClick('trip_cost')} href="https://wa.me/917668570551"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 bg-amber-500 text-white font-black px-8 py-4 rounded-2xl hover:bg-amber-400 hover:shadow-2xl hover:shadow-amber-400/30 hover:scale-105 transition-all duration-300 text-lg"

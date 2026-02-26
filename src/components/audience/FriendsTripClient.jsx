@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, ChevronDown, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Mountain, Tent, Flame, Music, Compass, HelpCircle, Zap, UsersRound, Route } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function FriendsTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -205,7 +206,7 @@ export default function FriendsTripClient({ data }) {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('friends_trip')} href={`tel:${phoneNumber}`}
               className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-amber-600/25 hover:shadow-amber-500/40 hover:scale-[1.02]"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
@@ -832,7 +833,7 @@ export default function FriendsTripClient({ data }) {
 
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('friends_trip')} href={`tel:${phoneNumber}`}
               className="group relative inline-flex items-center gap-3 bg-white text-amber-700 px-10 py-5 rounded-2xl font-black text-lg hover:bg-amber-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:scale-[1.03]"
             >
               <div className="absolute inset-0 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.3)] opacity-0 group-hover:opacity-100 transition-opacity" />

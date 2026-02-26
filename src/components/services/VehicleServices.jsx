@@ -15,6 +15,7 @@ import HowToBook from "./HowToBook";
 import WhyBook from "./WhyBook";
 import Link from "next/link";
 import Image from "next/image";
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const VehicleServices = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,6 +49,8 @@ const VehicleServices = () => {
 
   // WhatsApp contact handler
   const handleClick = () => {
+    
+    trackWhatsAppClick('vehicle_services');
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
   };
 

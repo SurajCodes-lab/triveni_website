@@ -4,9 +4,11 @@
 import { CheckCircle, PhoneCall } from '@/components/ui/icons'
 import React from 'react'
 import { phoneNumber } from '../../../utils/data';
+import { trackWhatsAppClick } from '@/utilis/analytics';
 
 function Others() {
     const handleClick = () => {
+        trackWhatsAppClick('car_rent_others');
         window.open(`https://wa.me/${phoneNumber}`, '_blank');
     };
     

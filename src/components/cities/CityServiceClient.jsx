@@ -29,6 +29,7 @@ import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations, PopularRoutes } from '@/components/seo/RelatedContent';
 import { getNearbyDestinations, getRelatedRoutes, getPopularCities, getRelatedContent } from '@/utilis/linkingHelper';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // City data with images
 const cityHeroData = {
@@ -253,11 +254,13 @@ export default function CityServiceClient({
   };
 
   const handleWhatsAppClick = useCallback(() => {
+    trackWhatsAppClick('city_service');
     const message = `Hi, I need taxi service from ${formattedCityName}. Please share rates and availability.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   }, [formattedCityName]);
 
   const handleCallClick = useCallback(() => {
+    trackPhoneCall('city_service');
     window.open(`tel:+91${phoneNumber}`, '_blank');
   }, []);
 
@@ -487,7 +490,7 @@ export default function CityServiceClient({
 
                   <div className="space-y-3">
                     <a
-                      href={`tel:+91${phoneNumber}`}
+                      onClick={() => trackPhoneCall('city_service')} href={`tel:+91${phoneNumber}`}
                       className="flex items-center gap-3 bg-black text-[#FACF2D] px-4 py-3 rounded-xl font-bold text-sm hover:bg-black/90 transition-colors"
                     >
                       <Phone className="w-4 h-4" />
@@ -791,7 +794,7 @@ export default function CityServiceClient({
               <p className="text-white/70 mb-4">
                 Round-the-clock assistance via call and WhatsApp.
               </p>
-              <a href={`tel:+91${phoneNumber}`} className="text-[#FACF2D] font-bold text-lg">
+              <a onClick={() => trackPhoneCall('city_service')} href={`tel:+91${phoneNumber}`} className="text-[#FACF2D] font-bold text-lg">
                 {phoneNumber}
               </a>
             </motion.div>

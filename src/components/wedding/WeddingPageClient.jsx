@@ -14,6 +14,7 @@ import { phoneNumber } from "@/utilis/data";
 import { blurDataURL } from "@/utilis/imageUtils";
 import dynamic from 'next/dynamic';
 import { FAQSection } from '@/components/seo/FAQSection';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -113,6 +114,7 @@ const WeddingHero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:+91${phoneNumber}`}
+              onClick={() => trackPhoneCall('wedding_page')}
               className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl transform hover:scale-105 transition-all"
             >
               <Phone className="w-6 h-6" />
@@ -122,6 +124,7 @@ const WeddingHero = () => {
               href={`https://wa.me/${phoneNumber}?text=Hi, I'm interested in wedding car rental services. Please share details and packages.`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('wedding_page')}
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl transform hover:scale-105 transition-all"
             >
               <BsWhatsapp className="w-6 h-6" />
@@ -543,7 +546,7 @@ const ServiceAreas = () => {
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl px-8 py-4 shadow-md">
             <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
             <p className="text-gray-700 font-medium">
-              Can't find your city? <a href={`https://wa.me/${phoneNumber}?text=Hi, I need wedding car rental in my city. Can you help?`} target="_blank" rel="noopener noreferrer" className="text-[#FACF2D] underline font-bold">Contact us</a> for custom solutions!
+              Can't find your city? <a href={`https://wa.me/${phoneNumber}?text=Hi, I need wedding car rental in my city. Can you help?`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('wedding_page')} className="text-[#FACF2D] underline font-bold">Contact us</a> for custom solutions!
             </p>
           </div>
         </div>
@@ -653,6 +656,7 @@ const PricingPackages = () => {
                   href={`https://wa.me/${phoneNumber}?text=Hi, I'm interested in the ${pkg.name} for my wedding. Please share more details.`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('wedding_page')}
                   className={`block w-full text-center py-3 rounded-xl font-bold transition-all ${pkg.popular
                       ? 'bg-gradient-to-r from-[#FACF2D] to-yellow-500 text-black hover:shadow-lg'
                       : 'bg-black text-white hover:bg-gray-800'
@@ -715,6 +719,7 @@ const FinalCTA = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <a
             href={`tel:+91${phoneNumber}`}
+            onClick={() => trackPhoneCall('wedding_page')}
             className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all"
           >
             <Phone className="w-6 h-6" />
@@ -724,6 +729,7 @@ const FinalCTA = () => {
             href={`https://wa.me/${phoneNumber}?text=Hi, I want to book wedding car services. Please share details and availability.`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick('wedding_page')}
             className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all"
           >
             <BsWhatsapp className="w-6 h-6" />

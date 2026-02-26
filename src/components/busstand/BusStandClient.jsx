@@ -8,6 +8,7 @@ import {
   MapPinned, Gauge, Headphones, ShieldCheck, Navigation2
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function BusStandClient({ stand, slug, allStands }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -73,6 +74,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
               <div className="flex flex-wrap gap-4">
                 <a
                   href="tel:7668570551"
+                  onClick={() => trackPhoneCall('bus_stand')}
                   className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/50 hover:-translate-y-1 hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
@@ -82,6 +84,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
                   href="https://wa.me/917668570551"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('bus_stand')}
                   className="group inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-amber-500/30 hover:border-amber-400/60 hover:bg-amber-500/10 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-500 hover:-translate-y-1"
                 >
                   <WhatsAppIcon className="w-5 h-5 text-amber-400" />
@@ -207,6 +210,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
 
                     <a
                       href="tel:7668570551"
+                      onClick={() => trackPhoneCall('bus_stand')}
                       className="w-full flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-sm font-semibold px-4 py-2.5 rounded-xl border border-amber-500/20 hover:border-amber-500/40 transition-all duration-300"
                     >
                       <Phone className="w-3.5 h-3.5" />
@@ -362,6 +366,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
                     <p className="text-sm text-gray-400 mb-5">Skip the crowded bus. Travel this route in a comfortable, air-conditioned Triveni cab with fixed transparent fares.</p>
                     <a
                       href="tel:7668570551"
+                      onClick={() => trackPhoneCall('bus_stand')}
                       className="inline-flex items-center gap-2 text-amber-400 text-sm font-semibold hover:text-yellow-300 transition-colors"
                     >
                       Book Cab Instead <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -530,6 +535,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
               <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="tel:7668570551"
+                  onClick={() => trackPhoneCall('bus_stand')}
                   className="inline-flex items-center gap-3 bg-white text-amber-700 font-black px-10 py-5 rounded-2xl hover:bg-amber-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:scale-105 text-lg"
                 >
                   <Phone className="w-6 h-6" />
@@ -539,6 +545,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
                   href="https://wa.me/917668570551"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('bus_stand')}
                   className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white font-bold px-10 py-5 rounded-2xl border-2 border-white/30 hover:bg-white/30 transition-all duration-300 hover:-translate-y-1 text-lg"
                 >
                   <WhatsAppIcon className="w-6 h-6" />

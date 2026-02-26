@@ -5,6 +5,7 @@ import { Phone, MapPin, Clock, CheckCircle2, ChevronRight, Star, Shield, Car, He
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { useState, useMemo } from 'react';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function DestinationCompareClient({ data }) {
   // Map {q, a} format to {question, answer} for FAQSection
@@ -404,7 +405,7 @@ export default function DestinationCompareClient({ data }) {
                 <p className="text-white/60 text-sm mb-6">{dest.distanceFromDelhi} | {dest.cabFare}</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
-                    href="tel:+917668570551"
+                    onClick={() => trackPhoneCall('destination_compare')} href="tel:+917668570551"
                     className={`flex items-center gap-2 ${
                       color === 'blue' ? 'bg-blue-500 hover:bg-blue-400' : 'bg-orange-500 hover:bg-orange-400'
                     } text-white font-black px-6 py-3.5 rounded-2xl hover:scale-105 hover:shadow-xl transition-all duration-300 text-sm`}
@@ -413,7 +414,7 @@ export default function DestinationCompareClient({ data }) {
                     Call 7668570551
                   </a>
                   <a
-                    href="https://wa.me/917668570551"
+                    onClick={() => trackWhatsAppClick('destination_compare')} href="https://wa.me/917668570551"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-black px-6 py-3.5 rounded-2xl hover:scale-105 hover:shadow-xl transition-all duration-300 text-sm"

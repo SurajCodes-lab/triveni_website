@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Star, Shield, Users, ChevronDown, Camera, Route, Coffee, Sunrise, HelpCircle, Hotel, Compass, Bookmark, ChevronRight, CalendarDays, MapPinned, Ticket, Check } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { useState } from 'react';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 /* ─── Inline keyframe styles ─── */
 const animStyles = `
@@ -116,10 +117,10 @@ export default function CityItineraryClient({ data }) {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a href="tel:7668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-orange-600 via-yellow-600 to-orange-600 bg-[length:200%_auto] hover:bg-right text-white font-bold px-7 py-4 rounded-2xl transition-all duration-500 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105">
+                <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-orange-600 via-yellow-600 to-orange-600 bg-[length:200%_auto] hover:bg-right text-white font-bold px-7 py-4 rounded-2xl transition-all duration-500 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105">
                   <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call 7668570551
                 </a>
-                <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold px-7 py-4 rounded-2xl transition-all duration-500 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105">
+                <a onClick={() => trackWhatsAppClick('city_itinerary')} href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold px-7 py-4 rounded-2xl transition-all duration-500 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105">
                   <WhatsAppIcon className="w-5 h-5 group-hover:animate-bounce" /> WhatsApp
                 </a>
               </div>
@@ -156,7 +157,7 @@ export default function CityItineraryClient({ data }) {
                   ))}
                 </div>
 
-                <a href="tel:7668570551" className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-500 hover:to-yellow-500 text-white font-bold px-5 py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40">
+                <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-500 hover:to-yellow-500 text-white font-bold px-5 py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40">
                   <Phone className="w-4 h-4" /> Book Your Trip
                 </a>
               </div>
@@ -358,7 +359,7 @@ export default function CityItineraryClient({ data }) {
                 <p className="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent mb-1">{vehicle.price}</p>
                 <p className="text-xs text-white/30 mb-6">{vehicle.capacity}</p>
 
-                <a href="tel:7668570551" className={`w-full inline-flex items-center justify-center gap-2 font-bold px-5 py-3 rounded-xl transition-all duration-300 text-sm ${
+                <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className={`w-full inline-flex items-center justify-center gap-2 font-bold px-5 py-3 rounded-xl transition-all duration-300 text-sm ${
                   vehicle.featured
                     ? 'bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-500 hover:to-yellow-500 text-white shadow-lg shadow-orange-500/25'
                     : 'bg-white/5 border border-white/10 text-white/70 hover:bg-orange-500/10 hover:border-orange-500/30 hover:text-white'
@@ -622,10 +623,10 @@ export default function CityItineraryClient({ data }) {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:7668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-orange-600 via-yellow-600 to-orange-600 bg-[length:200%_auto] hover:bg-right text-white font-bold px-10 py-4.5 rounded-2xl transition-all duration-500 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105 text-base">
+                <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-orange-600 via-yellow-600 to-orange-600 bg-[length:200%_auto] hover:bg-right text-white font-bold px-10 py-4.5 rounded-2xl transition-all duration-500 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105 text-base">
                   <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call 7668570551
                 </a>
-                <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold px-10 py-4.5 rounded-2xl transition-all duration-500 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105 border border-emerald-500/30 text-base">
+                <a onClick={() => trackWhatsAppClick('city_itinerary')} href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold px-10 py-4.5 rounded-2xl transition-all duration-500 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105 border border-emerald-500/30 text-base">
                   <WhatsAppIcon className="w-5 h-5 group-hover:animate-bounce" /> WhatsApp Us
                 </a>
               </div>

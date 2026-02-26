@@ -68,6 +68,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { phoneNumber } from "@/utilis/data";
 import { heroBlurDataURL } from "@/utilis/imageUtils";
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // Static service section data
 const serviceSections = [
@@ -404,6 +405,7 @@ export default function HomeClient() {
   const shouldReduceMotion = useShouldReduceMotion();
 
   const handleBookNowClick = useCallback((serviceName = '') => {
+    trackWhatsAppClick('homepage', '', serviceName);
     const message = serviceName
       ? encodeURIComponent(`Hi! I am interested in your ${serviceName} service. Can you provide more details?`)
       : encodeURIComponent("Hi! I am interested in booking a taxi service. Can you help me with the details?");
@@ -519,7 +521,7 @@ export default function HomeClient() {
               </span>
             </motion.button>
 
-            <Link href={`tel:${phoneNumber}`} className="w-full sm:w-auto">
+            <Link onClick={() => trackPhoneCall('homepage')} href={`tel:${phoneNumber}`} className="w-full sm:w-auto">
               <motion.span
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
@@ -806,7 +808,7 @@ export default function HomeClient() {
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <Link href={`tel:${phoneNumber}`}>
+              <Link onClick={() => trackPhoneCall('homepage')} href={`tel:${phoneNumber}`}>
                 <span className="px-8 md:px-10 py-4 md:py-5 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-base md:text-lg rounded-full hover:bg-amber-50 hover:border-amber-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3">
                   <Phone className="w-5 h-5 md:w-6 md:h-6" />
                   <span className="truncate">Call Now: {phoneNumber}</span>

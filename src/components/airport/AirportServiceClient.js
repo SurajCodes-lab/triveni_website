@@ -21,6 +21,7 @@ import {
   TrendingUp,
   Navigation
 } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function AirportServiceClient({ faqData }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
@@ -57,6 +58,7 @@ export default function AirportServiceClient({ faqData }) {
       `✓ Fixed rates - No surge pricing\n\n` +
       `Please confirm availability and share the fare. Thank you!`;
 
+    trackWhatsAppClick('airport_service');
     const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -184,7 +186,7 @@ export default function AirportServiceClient({ faqData }) {
                 <ChevronRight className="w-5 h-5 ml-2" />
               </button>
               <a
-                href="tel:+917668570551"
+                onClick={() => trackPhoneCall('airport_service')} href="tel:+917668570551"
                 className="bg-white text-gray-900 px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
               >
                 <Phone className="w-5 h-5 mr-2" />
@@ -658,7 +660,7 @@ export default function AirportServiceClient({ faqData }) {
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
-              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('airport_service')} href="tel:+917668570551"
               className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center"
             >
               <Phone className="w-5 h-5 mr-2" />

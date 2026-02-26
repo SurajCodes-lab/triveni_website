@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Phone, Check, X, ArrowRight, Star, Users, Shield, ChevronRight, Car, Fuel } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function ComparisonClient({ data }) {
   const { vehicle1: v1, vehicle2: v2, comparisonPoints, faqs, verdict } = data;
@@ -42,10 +43,10 @@ export default function ComparisonClient({ data }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/20 hover:scale-105 transition-all">
+            <a onClick={() => trackPhoneCall('comparison_page')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/20 hover:scale-105 transition-all">
               <Phone className="w-5 h-5" /> Call: 7668570551
             </a>
-            <a href="https://wa.me/917668570551?text=I need help choosing between vehicles for my trip" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold border border-amber-400/20 hover:bg-white/10 transition-all">
+            <a onClick={() => trackWhatsAppClick('comparison_page')} href="https://wa.me/917668570551?text=I need help choosing between vehicles for my trip" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold border border-amber-400/20 hover:bg-white/10 transition-all">
               <WhatsAppIcon className="w-5 h-5" /> WhatsApp Us
             </a>
           </div>
@@ -281,10 +282,10 @@ export default function ComparisonClient({ data }) {
               {verdict}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all">
+              <a onClick={() => trackPhoneCall('comparison_page')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all">
                 <Phone className="w-5 h-5" /> Get Expert Advice
               </a>
-              <a href="https://wa.me/917668570551?text=Help me choose between vehicles" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-700 transition-all">
+              <a onClick={() => trackWhatsAppClick('comparison_page')} href="https://wa.me/917668570551?text=Help me choose between vehicles" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-700 transition-all">
                 <WhatsAppIcon className="w-5 h-5" /> WhatsApp
               </a>
             </div>
@@ -317,10 +318,10 @@ export default function ComparisonClient({ data }) {
             Our travel experts recommend the perfect vehicle based on your route, group size, and budget. Call us for free advice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-900 transition-all">
+            <a onClick={() => trackPhoneCall('comparison_page')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-900 transition-all">
               <Phone className="w-5 h-5" /> Call: 7668570551
             </a>
-            <a href="https://wa.me/917668570551?text=I need help choosing a vehicle for my trip" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/90 text-black px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all">
+            <a onClick={() => trackWhatsAppClick('comparison_page')} href="https://wa.me/917668570551?text=I need help choosing a vehicle for my trip" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/90 text-black px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all">
               <WhatsAppIcon className="w-5 h-5" /> WhatsApp Us
             </a>
           </div>

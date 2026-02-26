@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Heart, Camera, Hotel, Coffee, Route, Compass, HelpCircle, Gift, Sparkles } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function HoneymoonTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -200,7 +201,7 @@ export default function HoneymoonTripClient({ data }) {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
@@ -236,7 +237,7 @@ export default function HoneymoonTripClient({ data }) {
                   +Rs {data.decoratedCarPrice.toLocaleString()} <span className="text-base font-normal text-rose-400">only</span>
                 </p>
               </div>
-              <a href={`tel:${phoneNumber}`} className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 whitespace-nowrap shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30">
+              <a onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`} className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 whitespace-nowrap shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30">
                 Add to Booking
               </a>
             </div>
@@ -602,7 +603,7 @@ export default function HoneymoonTripClient({ data }) {
           </p>
           <div className="flex flex-wrap justify-center gap-5">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-white text-rose-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
@@ -809,7 +810,7 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
@@ -889,7 +890,7 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
               Fresh flowers, &quot;Just Married&quot; ribbons, welcome bouquet, chocolates, and a congratulations card. Available for all destinations at just Rs 2,000 extra.
             </p>
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/20"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
@@ -998,7 +999,7 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
           <p className="text-lg text-rose-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">Private car, decorated option, experienced drivers. Your love story begins on the road.</p>
           <div className="flex flex-wrap justify-center gap-5">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-white text-rose-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >

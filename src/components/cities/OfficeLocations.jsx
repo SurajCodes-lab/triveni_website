@@ -5,13 +5,16 @@ import React, { useCallback } from 'react';
 import { MapPin, Phone, Clock, Navigation, Mail, Sparkles, Building2, CheckCircle, ArrowRight } from '@/components/ui/icons';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
   const handleCall = useCallback(() => {
+    trackPhoneCall('office_locations');
     window.open(`tel:+91${office.contact.phone}`, '_blank');
   }, [office.contact.phone]);
 
   const handleWhatsApp = useCallback(() => {
+    trackWhatsAppClick('office_locations');
     const message = `Hi, I'm interested in your taxi services at ${office.name}, ${cityName}. Please share more details about cab booking and rates.`;
     window.open(`https://wa.me/${office.contact.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
   }, [office.contact.whatsapp, office.name, cityName]);

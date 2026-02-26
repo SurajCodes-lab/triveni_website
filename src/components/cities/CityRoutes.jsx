@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
 import { phoneNumber } from "@/utilis/data";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // Helper function to create route slug
 function createRouteSlug(cityName, destination) {
@@ -39,6 +40,7 @@ const CityRoutes = ({ cityName }) => {
   );
 
   const handleWhatsApp = useCallback((destination) => {
+    trackWhatsAppClick('city_routes', '', destination);
     const message = `Hi, I want to book a ${activeTab === 'roundTrip' ? 'round trip' : 'one-way'} cab from ${cityName} to ${destination}. Please share pricing.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   }, [cityName, activeTab]);
@@ -75,7 +77,7 @@ const CityRoutes = ({ cityName }) => {
           <h3 className="text-xl font-bold text-slate-700 mb-2">No Routes Available</h3>
           <p className="text-slate-500 mb-6">Contact us for custom routes from {cityName}</p>
           <a
-            href={`tel:${phoneNumber}`}
+            onClick={() => trackPhoneCall('city_routes')} href={`tel:${phoneNumber}`}
             className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-6 py-3 rounded-full font-bold hover:bg-yellow-400 transition-all"
           >
             <Phone className="w-5 h-5" />
@@ -318,14 +320,14 @@ const CityRoutes = ({ cityName }) => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('city_routes')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center justify-center gap-2 bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg shadow-[#FACF2D]/25"
             >
               <Phone className="w-5 h-5" />
               Call {phoneNumber}
             </a>
             <a
-              href={`https://wa.me/${phoneNumber}`}
+              onClick={() => trackWhatsAppClick('city_routes')} href={`https://wa.me/${phoneNumber}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 border border-white/20"

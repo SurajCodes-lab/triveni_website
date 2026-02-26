@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/icons";
 
 import { phoneNumber, vehicleDetails } from "../utilis/data";
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const VehicleDetails = ({ slug }) => {
   const [selectedSeating, setSelectedSeating] = useState(null);
@@ -167,11 +168,13 @@ const VehicleDetails = ({ slug }) => {
   };
 
   const handleBookingClick = () => {
+    trackWhatsAppClick('vehicle_details');
     const message = `Hi! I want to book a ${selectedVehicles.type}${selectedSeating ? ` (${selectedSeating.seats} seater)` : ''} for my travel. Please share the details.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const handleCallClick = () => {
+    trackPhoneCall('vehicle_details');
     window.open(`tel:+91${phoneNumber}`, "_self");
   };
 

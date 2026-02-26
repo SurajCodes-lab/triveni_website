@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee, Landmark, Compass, Sparkles } from '@/components/ui/icons';
 import { getRelatedTours } from '@/utilis/sameDayTourData';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const iconMap = {
   car: Car,
@@ -104,13 +105,13 @@ export default function SameDayTourClient({ tour }) {
 
           {/* CTA Buttons with glow */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="tel:+917668570551" className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
+            <Link onClick={() => trackPhoneCall('same_day_tour')} href="tel:+917668570551" className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 rounded-2xl shadow-2xl shadow-amber-500/30 group-hover:shadow-amber-500/50 transition-shadow" />
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity" />
               <Phone className="w-5 h-5 relative z-10 text-stone-900 group-hover:animate-pulse" />
               <span className="relative z-10 text-stone-900">Call: 7668570551</span>
             </Link>
-            <Link href={`https://wa.me/917668570551?text=I want to book a ${tour.title}`} className="group inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-amber-400/20 hover:bg-white/[0.12] hover:border-amber-400/50 transition-all duration-500">
+            <Link onClick={() => trackWhatsAppClick('same_day_tour')} href={`https://wa.me/917668570551?text=I want to book a ${tour.title}`} className="group inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-amber-400/20 hover:bg-white/[0.12] hover:border-amber-400/50 transition-all duration-500">
               WhatsApp Booking
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -216,7 +217,7 @@ export default function SameDayTourClient({ tour }) {
 
                   {/* Book button */}
                   <div className="p-6 pt-2">
-                    <Link href="tel:+917668570551" className="block text-center bg-gradient-to-r from-amber-400 to-yellow-400 text-stone-900 px-6 py-3.5 rounded-xl font-black text-sm tracking-wider uppercase hover:shadow-lg hover:shadow-amber-400/30 hover:scale-[1.02] transition-all duration-300">
+                    <Link onClick={() => trackPhoneCall('same_day_tour')} href="tel:+917668570551" className="block text-center bg-gradient-to-r from-amber-400 to-yellow-400 text-stone-900 px-6 py-3.5 rounded-xl font-black text-sm tracking-wider uppercase hover:shadow-lg hover:shadow-amber-400/30 hover:scale-[1.02] transition-all duration-300">
                       <Phone className="w-4 h-4 inline mr-2" />Book This Tour
                     </Link>
                   </div>
@@ -394,7 +395,7 @@ export default function SameDayTourClient({ tour }) {
                       ))}
                     </ul>
 
-                    <Link href="tel:+917668570551" className={`block text-center px-6 py-4 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-300 ${plan.popular ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-300/30 hover:shadow-amber-400/50 hover:scale-[1.02]' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'}`}>
+                    <Link onClick={() => trackPhoneCall('same_day_tour')} href="tel:+917668570551" className={`block text-center px-6 py-4 rounded-xl font-black text-sm tracking-wider uppercase transition-all duration-300 ${plan.popular ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-300/30 hover:shadow-amber-400/50 hover:scale-[1.02]' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'}`}>
                       Book Now
                     </Link>
                   </div>
@@ -656,13 +657,13 @@ export default function SameDayTourClient({ tour }) {
           <p className="text-amber-100/80 mb-12 text-lg max-w-2xl mx-auto">Book your {tour.title} now. Comfortable AC cabs, experienced drivers, all-inclusive pricing.</p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link href="tel:+917668570551" className="group relative inline-flex items-center justify-center gap-3 px-12 py-5 rounded-2xl font-black text-lg transition-all duration-300 hover:scale-105">
+            <Link onClick={() => trackPhoneCall('same_day_tour')} href="tel:+917668570551" className="group relative inline-flex items-center justify-center gap-3 px-12 py-5 rounded-2xl font-black text-lg transition-all duration-300 hover:scale-105">
               <div className="absolute inset-0 bg-white rounded-2xl shadow-2xl" />
               <div className="absolute inset-0 bg-white rounded-2xl blur-xl opacity-30" />
               <Phone className="w-5 h-5 relative z-10 text-amber-700" />
               <span className="relative z-10 text-amber-700">Call: 7668570551</span>
             </Link>
-            <Link href={`https://wa.me/917668570551?text=I want to book a ${tour.title}`} className="group inline-flex items-center justify-center gap-3 bg-amber-900/40 backdrop-blur-2xl text-white px-12 py-5 rounded-2xl font-black text-lg border border-amber-300/30 hover:bg-amber-900/60 hover:border-amber-300/50 transition-all duration-500">
+            <Link onClick={() => trackWhatsAppClick('same_day_tour')} href={`https://wa.me/917668570551?text=I want to book a ${tour.title}`} className="group inline-flex items-center justify-center gap-3 bg-amber-900/40 backdrop-blur-2xl text-white px-12 py-5 rounded-2xl font-black text-lg border border-amber-300/30 hover:bg-amber-900/60 hover:border-amber-300/50 transition-all duration-500">
               WhatsApp Booking
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>

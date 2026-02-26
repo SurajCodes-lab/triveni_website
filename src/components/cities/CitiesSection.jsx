@@ -12,6 +12,7 @@ import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import CityRoutes from "@/components/cities/CityRoutes";
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 // SEO-Enhanced Hero Banner Component
 const HeroBanner = ({ formattedCityName }) => {
@@ -95,7 +96,7 @@ const HeroBanner = ({ formattedCityName }) => {
             {/* Enhanced CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href={`tel:+91${phoneNumber}`}
+                onClick={() => trackPhoneCall('cities_section')} href={`tel:+91${phoneNumber}`}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400"
                 aria-label={`Call taxi service in ${formattedCityName}`}
               >
@@ -103,7 +104,7 @@ const HeroBanner = ({ formattedCityName }) => {
                 Call Now: {phoneNumber}
               </a>
               <a
-                href={`https://wa.me/${phoneNumber}?text=Hi, I need taxi service in ${formattedCityName}. Please share rates and availability.`}
+                onClick={() => trackWhatsAppClick('cities_section')} href={`https://wa.me/${phoneNumber}?text=Hi, I need taxi service in ${formattedCityName}. Please share rates and availability.`}
                 className="bg-black hover:bg-yellow-400 hover:text-black text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-black"
                 aria-label={`WhatsApp taxi booking in ${formattedCityName}`}
               >
@@ -445,11 +446,12 @@ export default function CityServiceClient({
 }) {
   // Optimized handlers with better tracking
   const handleCallNow = useCallback(() => {
-    // Add analytics tracking here if needed
+    trackPhoneCall('cities_section');
     window.open(`tel:+91${phoneNumber}`, '_blank');
   }, []);
 
   const handleWhatsAppClick = useCallback(() => {
+    trackWhatsAppClick('cities_section');
     const message = `Hi, I'm looking for reliable taxi service in ${formattedCityName}. Please share your best rates, vehicle options and availability for outstation trips.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   }, [formattedCityName]);
