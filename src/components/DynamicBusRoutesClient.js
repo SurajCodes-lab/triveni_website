@@ -122,7 +122,7 @@ export default function DynamicBusRoutesClient({ data }) {
           >
             {routeData.distance && (
               <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 className="bg-white/10 backdrop-blur-md px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl text-white flex items-center border-2 border-white/20 hover:border-[#FACF2D]/50 transition-all"
               >
                 <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#FACF2D]" />
@@ -135,7 +135,7 @@ export default function DynamicBusRoutesClient({ data }) {
 
             {routeData.duration && (
               <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 className="bg-white/10 backdrop-blur-md px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl text-white flex items-center border-2 border-white/20 hover:border-[#FACF2D]/50 transition-all"
               >
                 <Clock className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#FACF2D]" />
@@ -147,7 +147,7 @@ export default function DynamicBusRoutesClient({ data }) {
             )}
 
             <motion.div
-              whileHover={{ scale: 1.05, y: -5 }}
+              
               className="bg-white/10 backdrop-blur-md px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl md:rounded-2xl text-white flex items-center border-2 border-white/20 hover:border-[#FACF2D]/50 transition-all"
             >
               <Bus className="w-4 h-4 md:w-5 md:h-5 mr-2 text-[#FACF2D]" />
@@ -167,7 +167,7 @@ export default function DynamicBusRoutesClient({ data }) {
           >
             <motion.a
               href="tel:+917668570551"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
+              
               whileTap={{ scale: 0.95 }}
               className="group relative bg-[#FACF2D] text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl text-center"
               aria-label={`Call Triveni Cabs for ${origin} to ${destination} bus booking`}
@@ -187,7 +187,7 @@ export default function DynamicBusRoutesClient({ data }) {
 
             <motion.a
               href="https://wa.me/917668570551"
-              whileHover={{ scale: 1.05 }}
+              
               whileTap={{ scale: 0.95 }}
               className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg hover:bg-white/20 transition-all duration-300 shadow-2xl text-center"
               aria-label={`Contact Triveni Cabs on WhatsApp for ${origin} to ${destination} bus booking`}

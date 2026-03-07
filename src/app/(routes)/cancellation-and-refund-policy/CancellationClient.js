@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 // Centralized icon imports for better bundle optimization
 import {
@@ -148,15 +148,6 @@ const statsItems = [
 ];
 
 export default function CancellationClient() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-
   const handleWhatsAppClick = (message = '') => {
     const defaultMessage = message || "Hi! I need to cancel my booking. Can you help me with the cancellation process?";
     const whatsappURL = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
@@ -166,10 +157,8 @@ export default function CancellationClient() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* HERO SECTION */}
-      <motion.section
-        ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden"
+      <section
+        className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -185,39 +174,9 @@ export default function CancellationClient() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-amber-900/40"></div>
         </div>
 
-        {/* Animated Orbs */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 0.6,
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            opacity: { duration: 1 },
-            x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/40 to-amber-500/40 rounded-full blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 0.5,
-            x: [0, -40, 0],
-            y: [0, 60, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            opacity: { duration: 1, delay: 0.2 },
-            x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl"
-        />
+        {/* Background Orbs */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/30 to-amber-500/30 rounded-full blur-3xl opacity-60" />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-pink-400/20 rounded-full blur-3xl opacity-50" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -285,7 +244,6 @@ export default function CancellationClient() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWhatsAppClick()}
               className="group px-8 py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold rounded-full shadow-xl flex items-center gap-3"
@@ -295,7 +253,6 @@ export default function CancellationClient() {
             </motion.button>
 
             <motion.a
-              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               href={`tel:+91${phoneNumber}`}
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold rounded-full flex items-center gap-3 hover:bg-white/20 transition-all"
@@ -323,7 +280,7 @@ export default function CancellationClient() {
             </div>
           </div>
         </motion.div>
-      </motion.section>
+      </section>
 
       {/* CANCELLATION TIERS SECTION */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
@@ -358,7 +315,6 @@ export default function CancellationClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.02 }}
                 className={`group relative ${tier.bgColor} rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 ${tier.borderColor} overflow-hidden`}
               >
                 <div className="relative z-10 text-center">
@@ -444,7 +400,6 @@ export default function CancellationClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <AnimatedSection delay={0.1}>
               <motion.div
-                whileHover={{ y: -10 }}
                 className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -461,7 +416,6 @@ export default function CancellationClient() {
 
             <AnimatedSection delay={0.2}>
               <motion.div
-                whileHover={{ y: -10 }}
                 className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -508,7 +462,6 @@ export default function CancellationClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.02 }}
                 className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300 overflow-hidden"
               >
                 {/* Step Number */}
@@ -580,7 +533,6 @@ export default function CancellationClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.05 }}
                 className="text-center group"
               >
                 <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300`}>
@@ -632,20 +584,18 @@ export default function CancellationClient() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    whileHover={{ scale: 1.05, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleWhatsAppClick()}
-                    className="group px-10 py-5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl transition-all"
+                    className="group px-10 py-5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl hover:-translate-y-1 transition-all"
                   >
                     <MessageCircle className="w-6 h-6" />
                     WhatsApp Cancel Request
                   </motion.button>
 
                   <motion.a
-                    whileHover={{ scale: 1.05, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     href={`tel:+91${phoneNumber}`}
-                    className="px-10 py-5 bg-white border-2 border-amber-300 text-gray-800 font-bold text-lg rounded-full flex items-center justify-center gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all shadow-lg"
+                    className="px-10 py-5 bg-white border-2 border-amber-300 text-gray-800 font-bold text-lg rounded-full flex items-center justify-center gap-3 hover:bg-amber-50 hover:border-amber-400 hover:-translate-y-1 transition-all shadow-lg"
                   >
                     <Phone className="w-6 h-6" />
                     Call: {phoneNumber}

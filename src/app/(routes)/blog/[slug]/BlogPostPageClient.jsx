@@ -145,7 +145,7 @@ export default function BlogPostPageClient({ post }) {
                 damping: 15,
                 delay: 0.3
               }}
-              whileHover={{ scale: 1.1 }}
+              
               className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D] to-yellow-400 text-black px-6 py-2.5 rounded-full text-sm font-bold mb-6 shadow-2xl"
             >
               <motion.span
@@ -199,7 +199,7 @@ export default function BlogPostPageClient({ post }) {
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.7 + index * 0.1, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.1, y: -3 }}
+                
                 className={`flex items-center gap-2 bg-gradient-to-r ${item.color} backdrop-blur-md text-white px-4 py-2.5 rounded-full font-semibold text-xs md:text-sm shadow-xl border border-white/20`}
               >
                 {item.icon}
@@ -210,7 +210,7 @@ export default function BlogPostPageClient({ post }) {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 1, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.1 }}
+              
               className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-5 py-2.5 rounded-full font-bold text-xs md:text-sm shadow-xl"
             >
               {post.category}
@@ -321,7 +321,7 @@ export default function BlogPostPageClient({ post }) {
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 0.6 + index * 0.1, type: "spring", stiffness: 200 }}
-                  whileHover={{ scale: 1.2, rotate: 360 }}
+                  
                   whileTap={{ scale: 0.9 }}
                   onClick={() => shareOnSocial(social.platform)}
                   className={`p-3 ${social.color} text-white rounded-xl transition-all shadow-lg`}
@@ -386,7 +386,7 @@ export default function BlogPostPageClient({ post }) {
                     whileInView={{ scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
-                    whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
+                    
                     className="bg-gradient-to-r from-purple-100 to-pink-100 text-gray-800 px-4 py-2 rounded-full text-sm font-bold hover:from-[#FACF2D] hover:to-yellow-400 hover:text-black transition-all cursor-pointer shadow-lg"
                   >
                     {tag}
@@ -432,7 +432,7 @@ export default function BlogPostPageClient({ post }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
-                whileHover={{ scale: 1.02 }}
+                
                 className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100"
               >
                 <div className="flex items-center gap-2 mb-4">
@@ -451,7 +451,7 @@ export default function BlogPostPageClient({ post }) {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 0.8 + index * 0.05, type: "spring" }}
-                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      
                       className="bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full text-sm font-semibold hover:bg-[#FACF2D] hover:text-black transition-all cursor-pointer"
                     >
                       {tag}
@@ -465,7 +465,7 @@ export default function BlogPostPageClient({ post }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                whileHover={{ scale: 1.02 }}
+                
                 className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 shadow-xl border-2 border-purple-100"
               >
                 <div className="flex items-center gap-2 mb-4">
@@ -493,7 +493,7 @@ export default function BlogPostPageClient({ post }) {
                     >
                       <Link href={link.href} className="text-gray-700 hover:text-[#FACF2D] transition-colors flex items-center gap-2 font-semibold group">
                         <motion.div
-                          whileHover={{ scale: 1.5, rotate: 360 }}
+                          
                           transition={{ type: "spring", stiffness: 300 }}
                           className="text-purple-600 group-hover:text-[#FACF2D]"
                         >

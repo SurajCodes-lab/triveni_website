@@ -349,7 +349,7 @@ export default function CityRoutesMainClient({ data }) {
                 <div className="flex flex-col sm:flex-row gap-3 flex-wrap">
                   <motion.button
                     onClick={handleCallClick}
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-6 py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 shadow-lg shadow-[#FACF2D]/25 transition-colors"
                   >
@@ -359,7 +359,7 @@ export default function CityRoutesMainClient({ data }) {
 
                   <motion.button
                     onClick={handleWhatsAppClick}
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-6 py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 border border-white/20 transition-colors"
                   >
@@ -369,7 +369,7 @@ export default function CityRoutesMainClient({ data }) {
 
                   <motion.button
                     onClick={handleEmailClick}
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-6 py-3.5 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 border border-white/20 transition-colors"
                   >
@@ -1087,7 +1087,7 @@ export default function CityRoutesMainClient({ data }) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 onClick={handleCallClick}
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
               >
@@ -1097,7 +1097,7 @@ export default function CityRoutesMainClient({ data }) {
 
               <motion.button
                 onClick={handleWhatsAppClick}
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors"
               >

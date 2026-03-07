@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   MapPinIcon,
   ClockIcon,
@@ -46,11 +46,8 @@ export default function SightseeingDetailClient({ tour }) {
   const [activeTab, setActiveTab] = useState('overview');
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [expandedSection, setExpandedSection] = useState(null);
-  const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const tourCity = tour.name.split(' ')[0];
   const relatedContent = getRelatedContent(tourCity);
-  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.8]);
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: '🗺️' },
@@ -82,9 +79,8 @@ export default function SightseeingDetailClient({ tour }) {
     <main className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/TouristTrip">
       {/* Hero Section - Cinematic Explorer Theme */}
       <header>
-      <motion.section
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative h-[65vh] sm:h-[70vh] md:h-[80vh] flex items-end overflow-hidden"
+      <section
+        className="relative h-[55vh] min-h-[380px] flex items-end overflow-hidden"
       >
         {/* Hero Background */}
         <div className="absolute inset-0">
@@ -125,7 +121,7 @@ export default function SightseeingDetailClient({ tour }) {
         {/* Back Button */}
         <Link href="/sightseeing" className="absolute top-6 left-6 z-20">
           <motion.button
-            whileHover={{ scale: 1.05, x: -5 }}
+            
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl text-white rounded-full font-semibold shadow-lg border border-white/20 hover:bg-white/20 transition-all"
           >
@@ -137,7 +133,7 @@ export default function SightseeingDetailClient({ tour }) {
         {/* Action Buttons */}
         <div className="absolute top-6 right-6 z-20 flex gap-3">
           <motion.button
-            whileHover={{ scale: 1.1 }}
+            
             whileTap={{ scale: 0.9 }}
             onClick={shareUrl}
             className="p-3 bg-white/10 backdrop-blur-xl rounded-full shadow-lg border border-white/20 hover:bg-white/20 transition-all"
@@ -145,7 +141,7 @@ export default function SightseeingDetailClient({ tour }) {
             <ShareIcon className="w-5 h-5 text-white" />
           </motion.button>
           <motion.button
-            whileHover={{ scale: 1.1 }}
+            
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsBookmarked(!isBookmarked)}
             className="p-3 bg-white/10 backdrop-blur-xl rounded-full shadow-lg border border-white/20 hover:bg-white/20 transition-all"
@@ -220,7 +216,7 @@ export default function SightseeingDetailClient({ tour }) {
             </motion.div>
           </div>
         </div>
-      </motion.section>
+      </section>
       </header>
 
       {/* Pricing Bar - Glassmorphism */}
@@ -256,7 +252,7 @@ export default function SightseeingDetailClient({ tour }) {
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
               <a href="tel:+917668570551" className="w-full sm:w-auto">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-white/10 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors flex items-center justify-center gap-2 border border-white/10"
                 >
@@ -265,7 +261,7 @@ export default function SightseeingDetailClient({ tour }) {
                 </motion.button>
               </a>
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBooking}
                 className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-bold shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all"
@@ -459,7 +455,7 @@ export default function SightseeingDetailClient({ tour }) {
 
                       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                         <motion.button
-                          whileHover={{ scale: 1.02 }}
+                          
                           whileTap={{ scale: 0.98 }}
                           onClick={handleBooking}
                           className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all flex items-center justify-center gap-2"
@@ -469,7 +465,7 @@ export default function SightseeingDetailClient({ tour }) {
                         </motion.button>
                         <a href="tel:+917668570551" className="flex-1">
                           <motion.button
-                            whileHover={{ scale: 1.02 }}
+                            
                             whileTap={{ scale: 0.98 }}
                             className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white/5 text-emerald-400 border border-emerald-500/40 rounded-xl font-bold text-sm sm:text-base hover:bg-emerald-500/10 transition-all flex items-center justify-center gap-2"
                           >
@@ -811,7 +807,7 @@ export default function SightseeingDetailClient({ tour }) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBooking}
                 className="px-8 py-4 bg-white text-emerald-700 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
@@ -820,7 +816,7 @@ export default function SightseeingDetailClient({ tour }) {
               </motion.button>
               <a href="tel:+917668570551">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white/10 transition-all"
                 >

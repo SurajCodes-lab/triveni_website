@@ -210,7 +210,7 @@ const BookingForm = ({ slug, packageInfo }) => {
                           ? "bg-[#FACF2D] text-black"
                           : "bg-gray-200 text-gray-500"
                       }`}
-                      whileHover={{ scale: 1.05 }}
+                      
                       aria-current={currentStep === step.number ? "step" : undefined}
                       aria-label={`Step ${step.number}: ${step.title}${currentStep > step.number ? " (completed)" : currentStep === step.number ? " (current)" : ""}`}
                     >
@@ -337,7 +337,7 @@ const BookingForm = ({ slug, packageInfo }) => {
                 <motion.button
                   onClick={addPassenger}
                   className="text-[#FACF2D] font-semibold hover:text-black hover:underline transition-all py-3 px-4 rounded-md min-h-[48px] focus-visible:ring-2 focus-visible:ring-[#FACF2D]"
-                  whileHover={{ scale: 1.02 }}
+                  
                   aria-label="Add another passenger"
                 >
                   + Add Another Passenger
@@ -479,7 +479,7 @@ const BookingForm = ({ slug, packageInfo }) => {
                   <div className="flex gap-3">
                     <motion.button
                       onClick={handleWhatsAppBooking}
-                      whileHover={{ scale: 1.02 }}
+                      
                       whileTap={{ scale: 0.98 }}
                       className="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center"
                     >
@@ -489,7 +489,7 @@ const BookingForm = ({ slug, packageInfo }) => {
                     <motion.a
                       href="tel:+917668570551"
                       onClick={() => trackPhoneCall('booking_form')}
-                      whileHover={{ scale: 1.02 }}
+                      
                       whileTap={{ scale: 0.98 }}
                       className="bg-[#FACF2D] text-black px-6 py-3 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors flex items-center justify-center"
                     >
@@ -506,7 +506,7 @@ const BookingForm = ({ slug, packageInfo }) => {
           <div className="px-8 py-6 bg-gray-50 border-t flex justify-between">
             {currentStep > 1 && (
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 text-gray-600 font-medium hover:text-black transition-colors"
                 onClick={() => setCurrentStep(currentStep - 1)}
@@ -516,7 +516,7 @@ const BookingForm = ({ slug, packageInfo }) => {
             )}
             {currentStep < 3 && (
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 className={`ml-auto px-8 py-3 font-semibold rounded-lg transition-colors flex items-center ${
                   isStepValid() 

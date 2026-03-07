@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 // Centralized icon imports for better bundle optimization
 import {
@@ -88,15 +88,6 @@ const AnimatedSection = ({ children, className = "", delay = 0 }) => {
 };
 
 export default function AboutClient() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-
   const handleWhatsAppClick = (message = '') => {
     const defaultMessage = message || "Hi! I am interested in learning more about Triveni Cabs services.";
     const whatsappURL = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
@@ -163,10 +154,8 @@ export default function AboutClient() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* HERO SECTION */}
-      <motion.section
-        ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      <section
+        className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -281,7 +270,7 @@ export default function AboutClient() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
               className="group px-8 py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold rounded-full shadow-xl flex items-center gap-3"
@@ -291,7 +280,7 @@ export default function AboutClient() {
             </motion.button>
 
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWhatsAppClick()}
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold rounded-full flex items-center gap-3 hover:bg-white/20 transition-all"
@@ -319,7 +308,7 @@ export default function AboutClient() {
             </div>
           </div>
         </motion.div>
-      </motion.section>
+      </section>
 
       {/* FOUNDER'S MESSAGE SECTION */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
@@ -458,7 +447,7 @@ export default function AboutClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.02 }}
+                
                 className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300 overflow-hidden"
               >
                 {/* Gradient Background on Hover */}
@@ -521,7 +510,7 @@ export default function AboutClient() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02 }}
+                
                 className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300"
               >
                 <div className="flex items-start gap-6">
@@ -594,7 +583,7 @@ export default function AboutClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.05 }}
+                
                 className="text-center group"
               >
                 <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300`}>
@@ -821,7 +810,7 @@ export default function AboutClient() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
-                  whileHover={{ scale: 1.05, y: -3 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
                   className="group px-10 py-5 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl transition-all"
@@ -831,7 +820,7 @@ export default function AboutClient() {
                 </motion.button>
 
                 <motion.button
-                  whileHover={{ scale: 1.05, y: -3 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleWhatsAppClick()}
                   className="px-10 py-5 bg-white border-2 border-amber-300 text-gray-800 font-bold text-lg rounded-full flex items-center justify-center gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all shadow-lg"

@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, Phone, MapPin, Globe, Languages, Award, Users, Star, Sparkles, BookOpen, Compass, Camera, Heart, CheckCircle, BadgeCheck, Clock, Shield, ArrowRight, Navigation } from '@/components/ui/icons';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Image from 'next/image';
 
@@ -115,7 +115,6 @@ Please confirm my booking. Thank you!`;
   };
 
   const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-white overflow-hidden">
@@ -123,7 +122,7 @@ Please confirm my booking. Thank you!`;
       {/* Hero Section - Tourist Theme */}
       <motion.section
         ref={heroRef}
-        className="relative h-screen min-h-[600px] max-h-screen flex items-center justify-center overflow-hidden"
+        className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden"
       >
         {/* Background Image with Parallax */}
         <div className="absolute inset-0">
@@ -134,27 +133,9 @@ Please confirm my booking. Thank you!`;
           <div className="absolute inset-0 bg-gradient-to-br from-orange-900/80 via-amber-900/70 to-yellow-900/80" />
         </div>
 
-        {/* Animated Gradient Orbs - Tourist Colors */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-            x: [0, 100, 0],
-            y: [0, 50, 0]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-amber-400/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-            x: [0, -80, 0],
-            y: [0, 100, 0]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-teal-400/20 to-blue-400/20 rounded-full blur-3xl"
-        />
+        {/* Static Gradient Orbs */}
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-amber-400/30 rounded-full blur-3xl opacity-40" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-teal-400/20 to-blue-400/20 rounded-full blur-3xl opacity-30" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center pb-8 pt-[22px]">
@@ -223,9 +204,8 @@ Please confirm my booking. Thank you!`;
             <motion.a
               href={`https://wa.me/${phoneNumber}?text=Hello!%20I%27m%20interested%20in%20booking%20a%20tour%20guide.`}
               target="_blank"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-8 py-4 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl"
+              className="group relative bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-8 py-4 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(250,207,45,0.5)] transition-shadow"
             >
               <span className="relative z-10 flex items-center">
                 <BsWhatsapp className="w-5 h-5 mr-2" />
@@ -235,7 +215,7 @@ Please confirm my booking. Thank you!`;
 
             <motion.a
               href={`tel:+91${phoneNumber}`}
-              whileHover={{ scale: 1.05 }}
+              
               whileTap={{ scale: 0.95 }}
               className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-base md:text-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 shadow-xl"
             >
@@ -262,7 +242,7 @@ Please confirm my booking. Thank you!`;
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 1.3 + index * 0.1, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.05, y: -3 }}
+                
                 className="bg-white/10 backdrop-blur-md border-2 border-white/20 rounded-2xl p-3 hover:bg-white/20 transition-all shadow-lg"
               >
                 <item.icon className="w-6 h-6 md:w-8 md:h-8 text-[#FACF2D] mx-auto mb-1" />
@@ -326,7 +306,7 @@ Please confirm my booking. Thank you!`;
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
+                
                 className="group bg-gradient-to-br from-white to-orange-50/50 p-8 rounded-3xl shadow-lg hover:shadow-2xl border-2 border-orange-100 hover:border-orange-300 transition-all duration-300 relative overflow-hidden"
               >
                 {/* Background Gradient on Hover */}
@@ -334,9 +314,7 @@ Please confirm my booking. Thank you!`;
 
                 <div className="relative z-10">
                   <motion.div
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
+                    className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg transition-transform hover:scale-110`}
                   >
                     <feature.icon className="w-8 h-8 text-white" />
                   </motion.div>
@@ -376,7 +354,7 @@ Please confirm my booking. Thank you!`;
                   whileInView={{ scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05, type: "spring", stiffness: 200 }}
-                  whileHover={{ scale: 1.1, y: -3 }}
+                  
                   className="bg-white rounded-xl p-4 text-center shadow-md hover:shadow-lg transition-all border border-orange-200 hover:border-orange-400"
                 >
                   <Navigation className="w-5 h-5 text-orange-600 mx-auto mb-2" />
@@ -531,7 +509,7 @@ Please confirm my booking. Thank you!`;
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, y: -2 }}
+                  
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-5 px-8 rounded-xl hover:from-green-700 hover:to-teal-700 transition-all font-bold text-lg flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl"
                 >
@@ -543,7 +521,7 @@ Please confirm my booking. Thank you!`;
                 <div className="flex items-center justify-center gap-4 pt-4">
                   <motion.a
                     href={`tel:+91${phoneNumber}`}
-                    whileHover={{ scale: 1.05 }}
+                    
                     whileTap={{ scale: 0.95 }}
                     className="bg-black text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-all font-semibold shadow-lg"
                   >
@@ -599,10 +577,8 @@ Please confirm my booking. Thank you!`;
       {/* Contact & Info Section */}
       <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
 
-        {/* Animated Background */}
-        <motion.div
-          animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
+        {/* Background Pattern */}
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: 'linear-gradient(45deg, #FACF2D 25%, transparent 25%, transparent 75%, #FACF2D 75%, #FACF2D), linear-gradient(45deg, #FACF2D 25%, transparent 25%, transparent 75%, #FACF2D 75%, #FACF2D)',
@@ -630,7 +606,7 @@ Please confirm my booking. Thank you!`;
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              
               className="bg-white/5 backdrop-blur-md border-2 border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-[#FACF2D]/50 transition-all"
             >
               <div className="flex items-start gap-6">
@@ -652,7 +628,7 @@ Please confirm my booking. Thank you!`;
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }}
+              
               className="bg-white/5 backdrop-blur-md border-2 border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-[#FACF2D]/50 transition-all"
             >
               <div className="flex items-start gap-6">
@@ -757,16 +733,12 @@ Please confirm my booking. Thank you!`;
 
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 relative overflow-hidden">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 opacity-10"
-        >
+        <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 20px 20px, black 2px, transparent 0)',
             backgroundSize: '40px 40px'
           }} />
-        </motion.div>
+        </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
           <motion.div
@@ -787,9 +759,8 @@ Please confirm my booking. Thank you!`;
             <motion.a
               href={`https://wa.me/${phoneNumber}?text=Hello!%20I%27m%20ready%20to%20book%20a%20tour%20guide.`}
               target="_blank"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-black text-[#FACF2D] px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
+              className="bg-black text-[#FACF2D] px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-shadow"
             >
               <BsWhatsapp className="w-6 h-6" />
               BOOK YOUR GUIDE NOW
@@ -797,9 +768,8 @@ Please confirm my booking. Thank you!`;
 
             <motion.a
               href={`tel:+91${phoneNumber}`}
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-black px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
+              className="bg-white text-black px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-shadow"
             >
               <Phone className="w-6 h-6" />
               CALL: {phoneNumber}

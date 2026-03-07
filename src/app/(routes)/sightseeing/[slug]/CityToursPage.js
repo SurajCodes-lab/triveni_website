@@ -3,7 +3,7 @@
 import { getToursByCity } from '@/utilis/sightseeingData';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   MapPinIcon,
   ClockIcon,
@@ -26,9 +26,6 @@ export default function CityToursPage({ city }) {
   const tours = getToursByCity(city);
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
   const relatedContent = getRelatedContent(cityName);
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
   if (!tours || tours.length === 0) {
     return (
@@ -67,9 +64,8 @@ export default function CityToursPage({ city }) {
     <main className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/CollectionPage">
       {/* Hero Section - Explorer Discovery Theme */}
       <header>
-      <motion.section
-        style={{ opacity, scale }}
-        className="relative h-[60vh] sm:h-[55vh] md:h-[60vh] flex items-center justify-center overflow-hidden"
+      <section
+        className="relative h-[55vh] min-h-[380px] flex items-center justify-center overflow-hidden"
       >
         {/* Hero Background Image */}
         <div className="absolute inset-0">
@@ -170,7 +166,7 @@ export default function CityToursPage({ city }) {
           </motion.div>
         </div>
 
-      </motion.section>
+      </section>
       </header>
 
       {/* Breadcrumb */}
@@ -245,7 +241,6 @@ export default function CityToursPage({ city }) {
                 <motion.div
                   key={tour.id}
                   variants={itemVariants}
-                  whileHover={{ scale: 1.03, y: -8 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="group relative"
                 >
@@ -375,7 +370,6 @@ export default function CityToursPage({ city }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
                 className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-emerald-500/30 transition-all"
               >
                 <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg ${feature.shadow}`}>
@@ -458,7 +452,6 @@ export default function CityToursPage({ city }) {
             </p>
             <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
               <motion.button
-                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-emerald-700 rounded-full font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
               >

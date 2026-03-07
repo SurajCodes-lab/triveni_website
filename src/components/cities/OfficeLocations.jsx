@@ -132,7 +132,7 @@ const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
               <div className="grid grid-cols-2 gap-2">
                 <motion.button
                   onClick={handleCall}
-                  whileHover={{ scale: 1.02 }}
+                  
                   whileTap={{ scale: 0.98 }}
                   className="bg-[#FACF2D] text-black py-3 px-4 rounded-xl text-sm font-bold hover:bg-yellow-400 transition-colors flex items-center justify-center gap-2"
                   aria-label={`Call taxi office at ${office.contact.phone}`}
@@ -143,7 +143,7 @@ const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
 
                 <motion.button
                   onClick={handleWhatsApp}
-                  whileHover={{ scale: 1.02 }}
+                  
                   whileTap={{ scale: 0.98 }}
                   className="bg-green-500 text-white py-3 px-4 rounded-xl text-sm font-bold hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
                   aria-label={`WhatsApp taxi office in ${cityName}`}
@@ -155,7 +155,7 @@ const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
 
               <motion.button
                 onClick={handleGetDirections}
-                whileHover={{ scale: 1.01 }}
+                
                 whileTap={{ scale: 0.99 }}
                 className="w-full bg-slate-900 text-white py-3 px-4 rounded-xl text-sm font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
                 aria-label={`Get directions to taxi office in ${cityName}`}

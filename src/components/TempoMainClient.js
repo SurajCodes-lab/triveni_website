@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Search, Filter, Award, Headphones, CreditCard,
@@ -11,6 +10,7 @@ import {
 } from '@/components/ui/icons';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
+import { getTypeColor, getTypeBadgeColor } from '@/utilis/tempoColors';
 import dynamic from 'next/dynamic';
 
 const TypeAnimation = dynamic(
@@ -35,24 +35,6 @@ export default function TempoMainClient({ data, faqData }) {
     setMounted(true);
   }, []);
 
-  // Structured data for main tempo traveller page
-  const structuredData = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        "@id": "https://www.trivenicabs.in/tempo-traveller#service",
-        "name": "Tempo Traveller Rental Service",
-        "description": "Premium tempo traveller rental service across India. Book 12-26 seater AC vehicles with professional drivers.",
-        "provider": {
-          "@type": "Organization",
-          "name": "Triveni Cabs",
-          "telephone": "+917668570551"
-        }
-      }
-    ]
-  }), []);
-
   // Get unique origins for filter dropdown
   const getOriginCities = () => {
     const origins = [...new Set(allRoutes.map(route => route.origin))];
@@ -75,34 +57,6 @@ export default function TempoMainClient({ data, faqData }) {
     return routes;
   };
 
-  const getTypeColor = (type) => {
-    const colors = {
-      'Hill Station': 'from-emerald-400 to-teal-600',
-      'Adventure': 'from-orange-400 to-red-600',
-      'Spiritual': 'from-violet-400 to-purple-600',
-      'Heritage': 'from-amber-400 to-yellow-600',
-      'Royal': 'from-rose-400 to-pink-600',
-      'Metro': 'from-blue-400 to-indigo-600',
-      'Lakes': 'from-cyan-400 to-blue-600',
-      'Desert': 'from-amber-500 to-orange-600',
-      'Tourism': 'from-gray-400 to-gray-600',
-    };
-    return colors[type] || 'from-gray-400 to-gray-600';
-  };
-
-  const getTypeBadgeColor = (type) => {
-    const colors = {
-      'Hill Station': 'bg-emerald-100 text-emerald-700 border-emerald-200',
-      'Adventure': 'bg-orange-100 text-orange-700 border-orange-200',
-      'Spiritual': 'bg-violet-100 text-violet-700 border-violet-200',
-      'Heritage': 'bg-amber-100 text-amber-700 border-amber-200',
-      'Royal': 'bg-rose-100 text-rose-700 border-rose-200',
-      'Metro': 'bg-blue-100 text-blue-700 border-blue-200',
-      'Tourism': 'bg-gray-100 text-gray-700 border-gray-200',
-    };
-    return colors[type] || 'bg-gray-100 text-gray-700 border-gray-200';
-  };
-
   const statsData = [
     { value: '2500+', label: 'Happy Trips', icon: Heart, color: 'from-rose-500 to-pink-600' },
     { value: '100+', label: 'Routes', icon: Route, color: 'from-blue-500 to-indigo-600' },
@@ -113,12 +67,6 @@ export default function TempoMainClient({ data, faqData }) {
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <div className="min-h-screen bg-white overflow-hidden">
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-
       {/* ============================================ */}
       {/* HERO SECTION */}
       {/* ============================================ */}
@@ -241,7 +189,7 @@ export default function TempoMainClient({ data, faqData }) {
             {statsData.map((stat, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 className="bg-white/10 backdrop-blur-md px-5 md:px-6 py-3 md:py-4 rounded-2xl border border-white/20 hover:border-amber-400/50 transition-all"
               >
                 <div className="flex items-center gap-3">
@@ -283,7 +231,7 @@ export default function TempoMainClient({ data, faqData }) {
                 </select>
               </div>
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   const section = document.getElementById('cities-section');
@@ -306,7 +254,7 @@ export default function TempoMainClient({ data, faqData }) {
           >
             <motion.a
               href="tel:+917668570551"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(251, 191, 36, 0.4)" }}
+              
               whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-8 py-4 rounded-full font-bold text-lg overflow-hidden shadow-2xl"
             >
@@ -320,7 +268,7 @@ export default function TempoMainClient({ data, faqData }) {
               href="https://wa.me/917668570551?text=Hi, I need tempo traveller booking. Please share options."
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
+              
               whileTap={{ scale: 0.95 }}
               className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl"
             >
@@ -648,7 +596,7 @@ export default function TempoMainClient({ data, faqData }) {
             className="text-center mt-10"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowAllVehicles(!showAllVehicles)}
               className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-white/20 text-white font-bold py-4 px-8 rounded-full hover:bg-white/20 transition-all"
@@ -828,7 +776,7 @@ export default function TempoMainClient({ data, faqData }) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(251, 191, 36, 0.5)" }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3"
               >
@@ -840,7 +788,7 @@ export default function TempoMainClient({ data, faqData }) {
                 href="https://wa.me/917668570551?text=Hi, I need tempo traveller booking. Please share options."
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl flex items-center justify-center gap-3"
               >

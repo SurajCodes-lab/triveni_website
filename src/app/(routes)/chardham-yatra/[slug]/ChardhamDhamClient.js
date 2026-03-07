@@ -103,7 +103,7 @@ export default function ChardhamDhamClient({ data }) {
       {/* ===== HERO: Temple Sanctum ===== */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image src={images.hero} alt={`${destination} Temple`} fill className="object-cover" priority />
+          <Image src={images.hero} alt={`${destination} Temple`} fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-indigo-950 via-indigo-950/80 to-indigo-950/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/90 to-indigo-950/30" />
         </div>

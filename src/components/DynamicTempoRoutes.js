@@ -3,20 +3,23 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Calendar, Info, ChevronLeft, MapIcon, Compass,
   Camera, Award, CreditCard, Headphones, MapPinned, Sparkles, Zap, Heart,
   Mountain, Sun, Wind, ChevronDown, Play, Gift, Crown, Gem
 } from '@/components/ui/icons';
-import { motion, AnimatePresence } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
+import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
+import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 import { routeDescriptions } from '@/utilis/tempoTravellerData';
+import { getTypeColor, formatDestinationForDisplay } from '@/utilis/tempoColors';
 import dynamic from 'next/dynamic';
 
-// Dynamically import FareCalculator (client-only, below fold)
+const TypeAnimation = dynamic(
+  () => import('react-type-animation').then(mod => mod.TypeAnimation),
+  { ssr: false, loading: () => <span>Premium Tempo Traveller</span> }
+);
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 export default function DynamicTempoRoutesClient({ data }) {
@@ -27,22 +30,9 @@ export default function DynamicTempoRoutesClient({ data }) {
 
   const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet } = data;
 
-  // Get route-specific description if available
   const routeDescription = routeDescriptions[routeSlug] || null;
-
-  // Helper function to format multi-city destinations with commas for display
-  const formatDestinationForDisplay = (dest) => {
-    // Check if destination has multiple cities (more than 2 words)
-    const cities = dest.trim().split(/\s+/);
-    if (cities.length > 2) {
-      // Join with commas for better readability: "Shimla Manali Kullu Kasol" → "Shimla, Manali, Kullu, Kasol"
-      return cities.join(', ');
-    }
-    return dest;
-  };
-
-  // For display in UI (with commas)
   const displayDestination = formatDestinationForDisplay(destination);
+  const shouldReduceMotion = useShouldReduceMotion();
 
   useEffect(() => {
     setMounted(true);
@@ -55,17 +45,6 @@ export default function DynamicTempoRoutesClient({ data }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Console keyword tracking for Google Search Console
-  useEffect(() => {
-    const keywords = [
-      `tempo traveller ${origin.toLowerCase()} to ${destination.toLowerCase()}`,
-      `${origin.toLowerCase()} to ${destination.toLowerCase()} tempo traveller booking`,
-      `book tempo traveller ${origin.toLowerCase()} to ${destination.toLowerCase()}`,
-    ];
-    console.log('🎯 SEO Keywords Active:', keywords.join(', '));
-  }, [origin, destination]);
-
-  // Enhanced structured data for Google - Comprehensive SEO
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@graph": [
@@ -168,19 +147,6 @@ export default function DynamicTempoRoutesClient({ data }) {
     ]
   }), [origin, destination, routeSlug]);
 
-  const getTypeColor = (type) => {
-    const colors = {
-      'Hill Station': 'from-emerald-400 to-teal-600',
-      'Adventure': 'from-orange-400 to-red-600',
-      'Spiritual': 'from-violet-400 to-purple-600',
-      'Heritage': 'from-amber-400 to-yellow-600',
-      'Royal': 'from-rose-400 to-pink-600',
-      'Metro': 'from-blue-400 to-indigo-600',
-      'Tourism': 'from-cyan-400 to-blue-600',
-    };
-    return colors[type] || 'from-gray-400 to-gray-600';
-  };
-
   const journeyFeatures = [
     { icon: Shield, title: 'Safe Journey', subtitle: 'GPS Tracked & Insured', color: 'from-emerald-500 to-green-600' },
     { icon: Crown, title: 'Royal Comfort', subtitle: 'Pushback Recliner Seats', color: 'from-amber-500 to-yellow-600' },
@@ -189,13 +155,8 @@ export default function DynamicTempoRoutesClient({ data }) {
   ];
 
   return (
+    <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <div className="min-h-screen bg-white overflow-hidden">
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-
       {/* ============================================ */}
       {/* HERO SECTION - Ultra Premium Design */}
       {/* ============================================ */}
@@ -243,20 +204,13 @@ export default function DynamicTempoRoutesClient({ data }) {
 
         {/* Animated Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
+          {mounted && !shouldReduceMotion && [...Array(15)].map((_, i) => (
             <motion.div
               key={i}
-              initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                y: typeof window !== 'undefined' ? window.innerHeight + 100 : 900,
-                opacity: 0
-              }}
-              animate={{
-                y: -100,
-                opacity: [0, 1, 0],
-              }}
+              initial={{ y: '100vh', x: `${Math.random() * 100}%`, opacity: 0 }}
+              animate={{ y: '-10vh', opacity: [0, 1, 0] }}
               transition={{
-                duration: Math.random() * 10 + 10,
+                duration: Math.random() * 15 + 10,
                 repeat: Infinity,
                 delay: Math.random() * 5,
                 ease: "linear"
@@ -357,7 +311,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             {journeyFeatures.map((feature, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 onClick={() => setActiveFeature(index)}
                 className={`cursor-pointer backdrop-blur-md px-4 md:px-6 py-3 md:py-4 rounded-2xl border-2 transition-all duration-300 ${
                   activeFeature === index
@@ -387,7 +341,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           >
             <motion.a
               href="tel:+917668570551"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(251, 191, 36, 0.4)" }}
+              
               whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg overflow-hidden shadow-2xl"
             >
@@ -407,7 +361,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${origin} to ${destination}. Please share rates.`}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
+              
               whileTap={{ scale: 0.95 }}
               className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg hover:bg-white/20 hover:border-amber-400/50 transition-all duration-300 shadow-2xl"
             >
@@ -578,7 +532,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                 <div className="space-y-3">
                   <motion.a
                     href="tel:+917668570551"
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all"
                   >
@@ -590,7 +544,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                     href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${origin} to ${destination}. Please share the rates and availability.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-white text-gray-900 font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all border-2 border-white/50"
                   >
@@ -872,7 +826,7 @@ export default function DynamicTempoRoutesClient({ data }) {
 
                     {/* Book Button */}
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setSelectedVehicle(vehicle)}
                       className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-500 hover:to-orange-500 text-white hover:text-black font-bold py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
@@ -962,7 +916,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
+                
                 className="group"
               >
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-amber-400/50 transition-all duration-500 h-full overflow-hidden">
@@ -1327,7 +1281,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(251, 191, 36, 0.5)" }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3"
               >
@@ -1339,7 +1293,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                 href={`https://wa.me/917668570551?text=Hi, I want to book tempo traveller from ${origin} to ${destination}. Please share rates.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl flex items-center justify-center gap-3"
               >
@@ -1485,5 +1439,6 @@ export default function DynamicTempoRoutesClient({ data }) {
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   );
 }

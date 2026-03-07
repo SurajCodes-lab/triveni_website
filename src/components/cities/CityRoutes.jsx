@@ -8,7 +8,7 @@ import {
   Clock, MapPin, Car, Users, ArrowRight, Phone, Star,
   Sparkles, Navigation, ChevronRight, Zap, Shield, MapPinned
 } from '@/components/ui/icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
 import { phoneNumber } from "@/utilis/data";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';

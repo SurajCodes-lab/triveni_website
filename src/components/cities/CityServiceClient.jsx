@@ -15,7 +15,7 @@ import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import { bestTimeToVisitData } from "@/utilis/bestTimeToVisitData";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 
 // Dynamically import below-fold components
@@ -420,7 +420,7 @@ export default function CityServiceClient({
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.button
                     onClick={handleCallClick}
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
                   >
@@ -430,7 +430,7 @@ export default function CityServiceClient({
 
                   <motion.button
                     onClick={handleWhatsAppClick}
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 border border-white/20 transition-colors"
                   >
@@ -1249,7 +1249,7 @@ export default function CityServiceClient({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 onClick={handleCallClick}
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
               >
@@ -1259,7 +1259,7 @@ export default function CityServiceClient({
 
               <motion.button
                 onClick={handleWhatsAppClick}
-                whileHover={{ scale: 1.02 }}
+                
                 whileTap={{ scale: 0.98 }}
                 className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors"
               >

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
 import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info, HelpCircle, ChevronDown } from '@/components/ui/icons';
-import { motion, useScroll, useTransform, useSpring, useInView, MotionConfig } from 'framer-motion';
+import { motion, useInView, MotionConfig } from 'framer-motion';
 import { useInView as useInViewObserver } from 'react-intersection-observer';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 // Import from smaller utility file to reduce bundle size
@@ -23,8 +23,6 @@ export default function BusMainClient({ data }) {
 
   const heroRef = useRef(null);
   const fleetSectionRef = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const scaleProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   const shouldReduceMotion = useShouldReduceMotion();
 
@@ -182,7 +180,7 @@ export default function BusMainClient({ data }) {
             >
               <motion.a
                 href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(250, 207, 45, 0.5)" }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="group relative bg-[#FACF2D] text-black px-10 py-5 rounded-full font-bold text-lg overflow-hidden"
                 aria-label="Call Triveni Cabs at +91 76685 70551 for bus booking"
@@ -201,7 +199,7 @@ export default function BusMainClient({ data }) {
 
               <motion.a
                 href="https://wa.me/917668570551"
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300"
                 aria-label="Contact Triveni Cabs on WhatsApp for bus booking"
@@ -280,7 +278,7 @@ export default function BusMainClient({ data }) {
                 <motion.button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className={`px-8 py-4 rounded-full font-bold text-sm tracking-wider transition-all duration-300 ${activeFilter === filter
                     ? 'bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black shadow-xl shadow-[#FACF2D]/30'
@@ -303,30 +301,25 @@ export default function BusMainClient({ data }) {
                   className="fleet-card group relative"
                 >
                   <motion.div
-                    whileHover={{ y: -12, scale: 1.02 }}
+                    
                     transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                     className="bg-gradient-to-br from-white via-white to-orange-50/30 rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_rgba(250,207,45,0.3)] border-4 border-orange-100/50 relative"
                   >
                     {/* Badge with cute styling */}
                     {(bus.premium || bus.luxury) && (
                       <div className="absolute top-4 right-4 z-20">
-                        <motion.div
-                          whileHover={{ scale: 1.15, rotate: 10 }}
+                        <div
                           className={`${bus.luxury ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gradient-to-r from-[#FACF2D] to-orange-400'} text-white px-5 py-2.5 rounded-full text-xs font-black flex items-center gap-1.5 shadow-xl`}
                         >
                           {bus.luxury ? <Star className="w-4 h-4" fill="white" /> : <Award className="w-4 h-4" />}
                           {bus.luxury ? 'LUXURY' : 'PREMIUM'}
-                        </motion.div>
+                        </div>
                       </div>
                     )}
 
                     {/* Image with cute styling */}
                     <div className="relative h-64 overflow-hidden rounded-t-[1.75rem]">
-                      <motion.div
-                        whileHover={{ scale: 1.08, rotate: 1 }}
-                        transition={{ duration: 0.6 }}
-                        className="w-full h-full"
-                      >
+                      <div className="w-full h-full hover:scale-105 transition-transform duration-500">
                         <Image
                           src={bus.image}
                           alt={bus.name}
@@ -336,19 +329,18 @@ export default function BusMainClient({ data }) {
                           placeholder="blur"
                           blurDataURL="data:image/jpeg;base64,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"
                         />
-                      </motion.div>
+                      </div>
 
                       {/* Soft Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
                       {/* Cute Capacity Badge */}
-                      <motion.div
-                        whileHover={{ scale: 1.15, rotate: -3 }}
+                      <div
                         className="absolute bottom-4 left-4 bg-gradient-to-r from-[#FACF2D] to-orange-400 text-white backdrop-blur-md px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl border-2 border-white/50"
                       >
                         <Users className="w-5 h-5" />
                         <span className="font-black text-base">{bus.capacity}</span>
-                      </motion.div>
+                      </div>
                     </div>
 
                     {/* Content with cute styling */}
@@ -359,27 +351,25 @@ export default function BusMainClient({ data }) {
 
                       {/* Cute Pricing Cards */}
                       <div className="space-y-3 mb-6">
-                        <motion.div
-                          whileHover={{ scale: 1.03, x: 5 }}
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl border-2 border-orange-100 shadow-md hover:shadow-lg transition-all duration-300"
+                        <div
+                          className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl border-2 border-orange-100 shadow-md hover:shadow-lg hover:translate-x-1 transition-all duration-300"
                         >
                           <span className="text-xs font-bold text-gray-700 flex items-center gap-2">
                             <Route className="w-4 h-4 text-orange-500" />
                             Per KM
                           </span>
                           <span className="text-base font-black text-orange-600">{bus.ratePerKm}</span>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                          whileHover={{ scale: 1.03, x: 5 }}
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-[#FACF2D]/20 to-orange-400/20 rounded-2xl border-2 border-[#FACF2D]/30 shadow-md hover:shadow-lg transition-all duration-300"
+                        <div
+                          className="flex items-center justify-between p-4 bg-gradient-to-r from-[#FACF2D]/20 to-orange-400/20 rounded-2xl border-2 border-[#FACF2D]/30 shadow-md hover:shadow-lg hover:translate-x-1 transition-all duration-300"
                         >
                           <span className="text-xs font-bold text-gray-700 flex items-center gap-2">
                             <Clock className="w-4 h-4 text-[#FACF2D]" />
                             Minimum
                           </span>
                           <span className="text-base font-black text-gray-900">{bus.minimumCharge}</span>
-                        </motion.div>
+                        </div>
                       </div>
 
                       {/* Ideal For - Cute styling */}
@@ -394,7 +384,7 @@ export default function BusMainClient({ data }) {
                         {bus.features.slice(0, 3).map((feature, idx) => (
                           <motion.span
                             key={idx}
-                            whileHover={{ scale: 1.1, y: -2 }}
+                            
                             className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-700 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 hover:border-green-400 hover:shadow-lg transition-all duration-300"
                           >
                             <CheckCircle className="w-3 h-3" fill="currentColor" />
@@ -406,7 +396,7 @@ export default function BusMainClient({ data }) {
                       {/* Cute CTA Button */}
                       <Link href={`/bus-routes/delhi-to-agra?bus=${bus.id}`}>
                         <motion.button
-                          whileHover={{ scale: 1.05, y: -3 }}
+                          
                           whileTap={{ scale: 0.95 }}
                           className="w-full bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black py-4 rounded-2xl font-black text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300"
                         >
@@ -440,7 +430,7 @@ export default function BusMainClient({ data }) {
               >
                 <motion.button
                   onClick={() => setShowAllVehicles(true)}
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(250, 207, 45, 0.3)" }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-12 py-5 rounded-full font-bold text-lg inline-flex items-center gap-3"
                 >
@@ -523,13 +513,10 @@ export default function BusMainClient({ data }) {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
                   <Link href={`/bus-routes/${route.slug}`}>
-                    <motion.div
-                      whileHover={{ y: -15, scale: 1.03, rotateY: 3 }}
-                      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                      className="group relative bg-white rounded-[1.5rem] p-7 shadow-2xl hover:shadow-[0_25px_50px_rgba(250,207,45,0.35)] border-3 border-gradient overflow-hidden cursor-pointer h-full"
+                    <div
+                      className="group relative bg-white rounded-[1.5rem] p-7 shadow-2xl hover:shadow-[0_25px_50px_rgba(250,207,45,0.35)] hover:-translate-y-2 border-3 border-gradient overflow-hidden cursor-pointer h-full transition-all duration-300"
                       style={{
-                        borderImage: 'linear-gradient(135deg, rgba(250,207,45,0.3), rgba(255,165,0,0.3)) 1',
-                        transformStyle: 'preserve-3d'
+                        borderImage: 'linear-gradient(135deg, rgba(250,207,45,0.3), rgba(255,165,0,0.3)) 1'
                       }}
                     >
                       {/* Animated Background Gradient */}
@@ -546,12 +533,11 @@ export default function BusMainClient({ data }) {
                       <div className="relative z-10">
                         {/* Origin with Icon */}
                         <div className="flex items-start mb-4">
-                          <motion.div
-                            whileHover={{ scale: 1.2, rotate: 20 }}
+                          <div
                             className="bg-gradient-to-br from-[#FACF2D] to-orange-400 p-2.5 rounded-2xl mr-3 shadow-lg"
                           >
                             <MapPin className="w-5 h-5 text-white" fill="white" />
-                          </motion.div>
+                          </div>
                           <div>
                             <p className="text-xs text-gray-500 font-semibold mb-1">FROM</p>
                             <h3 className="font-black text-base text-gray-900 group-hover:text-[#FACF2D] transition-colors">{route.origin}</h3>
@@ -577,13 +563,12 @@ export default function BusMainClient({ data }) {
                         </div>
 
                         {/* Type Badge with unique styling */}
-                        <motion.div
-                          whileHover={{ scale: 1.05, x: 3 }}
+                        <div
                           className={`inline-flex items-center px-4 py-2 rounded-xl text-xs font-black mb-5 border-2 shadow-md ${getTypeColor(route.type)}`}
                         >
                           <Sparkles className="w-3 h-3 mr-1.5" />
                           {route.type}
-                        </motion.div>
+                        </div>
 
                         {/* Info Cards */}
                         <div className="space-y-2 mb-5">
@@ -605,7 +590,7 @@ export default function BusMainClient({ data }) {
 
                         {/* CTA with gradient */}
                         <motion.div
-                          whileHover={{ scale: 1.05 }}
+                          
                           className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black font-black text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg group-hover:shadow-xl transition-all"
                         >
                           Explore Route
@@ -622,7 +607,7 @@ export default function BusMainClient({ data }) {
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                       </div>
-                    </motion.div>
+                    </div>
                   </Link>
                 </motion.div>
               ))}
@@ -638,7 +623,7 @@ export default function BusMainClient({ data }) {
               >
                 <motion.button
                   onClick={() => setShowAllRoutes(true)}
-                  whileHover={{ scale: 1.05 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="bg-black text-[#FACF2D] px-12 py-5 rounded-full font-bold text-lg inline-flex items-center gap-3 hover:bg-gray-900 transition-colors duration-300"
                 >
@@ -692,20 +677,16 @@ export default function BusMainClient({ data }) {
                   initial={{ opacity: 0, y: 50 }}
                   animate={featuresInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
+                  
                   className="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl border border-gray-100 hover:border-[#FACF2D] transition-all duration-300 relative overflow-hidden"
                 >
                   {/* Background Gradient on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FACF2D]/0 to-orange-500/0 group-hover:from-[#FACF2D]/10 group-hover:to-orange-500/10 transition-all duration-500" />
 
                   <div className="relative z-10">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className="w-16 h-16 bg-gradient-to-br from-[#FACF2D] to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg"
-                    >
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#FACF2D] to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg transition-transform hover:scale-110">
                       <TrendingUp className="w-8 h-8 text-white" />
-                    </motion.div>
+                    </div>
 
                     <h3 className="text-lg font-black text-gray-900 mb-4 group-hover:text-[#FACF2D] transition-colors duration-300">
                       {feature.title}
@@ -723,12 +704,8 @@ export default function BusMainClient({ data }) {
         {/* Additional Info Section - Premium Dark Theme */}
         <section className="py-32 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
 
-          {/* Animated Background */}
-          <motion.div
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%'],
-            }}
-            transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
+          {/* Background Pattern */}
+          <div
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: 'linear-gradient(45deg, #FACF2D 25%, transparent 25%, transparent 75%, #FACF2D 75%, #FACF2D), linear-gradient(45deg, #FACF2D 25%, transparent 25%, transparent 75%, #FACF2D 75%, #FACF2D)',
@@ -776,19 +753,15 @@ export default function BusMainClient({ data }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.03 }}
+                  
                   className="bg-white/5 backdrop-blur-md border-2 border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-[#FACF2D]/50 transition-all duration-300 group relative overflow-hidden"
                 >
                   {/* Gradient overlay on hover */}
                   <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${item.color} transition-opacity duration-500`} />
 
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                    className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-5 shadow-lg`}
-                  >
+                  <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-5 shadow-lg transition-transform hover:scale-110`}>
                     <item.icon className="w-7 h-7 text-white" />
-                  </motion.div>
+                  </div>
                   <h3 className="text-base font-black text-[#FACF2D] mb-4 group-hover:text-white transition-colors">{item.label}</h3>
                   <p className="text-sm text-gray-300 leading-relaxed font-medium">{item.value}</p>
                 </motion.div>
@@ -900,17 +873,13 @@ export default function BusMainClient({ data }) {
         {/* Final CTA - Unique Design */}
         <section className="relative py-32 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-orange-500 overflow-hidden">
 
-          {/* Animated Background Pattern */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 opacity-10"
-          >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
               backgroundImage: 'radial-gradient(circle at 20px 20px, black 2px, transparent 0)',
               backgroundSize: '40px 40px'
             }} />
-          </motion.div>
+          </div>
 
           <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
 
@@ -931,7 +900,7 @@ export default function BusMainClient({ data }) {
             <div className="flex flex-wrap justify-center gap-6">
               <motion.a
                 href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-black text-[#FACF2D] px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
               >
@@ -941,7 +910,7 @@ export default function BusMainClient({ data }) {
 
               <motion.a
                 href="https://wa.me/917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-black px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
               >

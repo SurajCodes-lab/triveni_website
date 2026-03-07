@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// Centralized icon imports for better bundle optimization
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Search, Award, Headphones, CreditCard,
   Compass, Sparkles, ChevronDown, Crown, Gem, ArrowLeft, Map, Plane
 } from '@/components/ui/icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
+import { useShouldReduceMotion } from '@/hooks/useIsMobile';
+import { getTypeColor, getTypeBadgeColor, getTypeIcon, formatDestinationForDisplay } from '@/utilis/tempoColors';
 
 export default function TempoCityClient({ data }) {
   const [mounted, setMounted] = useState(false);
@@ -17,92 +18,14 @@ export default function TempoCityClient({ data }) {
   const [showAllVehicles, setShowAllVehicles] = useState(false);
 
   const { cityData, routes, fleet } = data;
+  const shouldReduceMotion = useShouldReduceMotion();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const getTypeColor = (type) => {
-    const colors = {
-      'Hill Station': 'from-emerald-400 to-teal-600',
-      'Adventure': 'from-orange-400 to-red-600',
-      'Spiritual': 'from-violet-400 to-purple-600',
-      'Heritage': 'from-amber-400 to-yellow-600',
-      'Royal': 'from-rose-400 to-pink-600',
-      'Metro': 'from-blue-400 to-indigo-600',
-      'Lakes': 'from-cyan-400 to-blue-600',
-      'Desert': 'from-amber-500 to-orange-600',
-      'Blue City': 'from-blue-500 to-indigo-600',
-      'Modern City': 'from-slate-400 to-gray-600',
-      'Commercial': 'from-zinc-400 to-gray-600',
-      'Circuit': 'from-indigo-400 to-purple-600',
-      'Wildlife': 'from-green-400 to-emerald-700',
-      'Long Road': 'from-slate-500 to-stone-700',
-      'Local': 'from-cyan-400 to-sky-600',
-      'Char Dham': 'from-orange-500 to-red-600',
-      'Tourism': 'from-gray-400 to-gray-600',
-    };
-    return colors[type] || 'from-gray-400 to-gray-600';
-  };
-
-  // Helper function to format multi-city destinations with commas for display
-  const formatDestinationForDisplay = (dest) => {
-    // Check if destination has multiple cities (more than 2 words)
-    const cities = dest.trim().split(/\s+/);
-    if (cities.length > 2) {
-      // Join with commas for better readability: "Shimla Manali Kullu Kasol" → "Shimla, Manali, Kullu, Kasol"
-      return cities.join(', ');
-    }
-    return dest;
-  };
-
-  const getTypeBadgeColor = (type) => {
-    const colors = {
-      'Hill Station': 'bg-emerald-100 text-emerald-700 border-emerald-200',
-      'Adventure': 'bg-orange-100 text-orange-700 border-orange-200',
-      'Spiritual': 'bg-violet-100 text-violet-700 border-violet-200',
-      'Heritage': 'bg-amber-100 text-amber-700 border-amber-200',
-      'Royal': 'bg-rose-100 text-rose-700 border-rose-200',
-      'Metro': 'bg-blue-100 text-blue-700 border-blue-200',
-      'Lakes': 'bg-cyan-100 text-cyan-700 border-cyan-200',
-      'Desert': 'bg-amber-100 text-amber-700 border-amber-200',
-      'Blue City': 'bg-blue-100 text-blue-700 border-blue-200',
-      'Modern City': 'bg-slate-100 text-slate-700 border-slate-200',
-      'Commercial': 'bg-zinc-100 text-zinc-700 border-zinc-200',
-      'Circuit': 'bg-indigo-100 text-indigo-700 border-indigo-200',
-      'Wildlife': 'bg-green-100 text-green-700 border-green-200',
-      'Long Road': 'bg-stone-100 text-stone-700 border-stone-200',
-      'Local': 'bg-cyan-100 text-cyan-700 border-cyan-200',
-      'Char Dham': 'bg-orange-100 text-orange-700 border-orange-200',
-      'Tourism': 'bg-gray-100 text-gray-700 border-gray-200',
-    };
-    return colors[type] || 'bg-gray-100 text-gray-700 border-gray-200';
-  };
-
-  const getTypeIcon = (type) => {
-    const icons = {
-      'Hill Station': '🏔️',
-      'Adventure': '🎿',
-      'Spiritual': '🙏',
-      'Heritage': '🏛️',
-      'Royal': '👑',
-      'Metro': '🌆',
-      'Lakes': '🏞️',
-      'Desert': '🏜️',
-      'Blue City': '🔵',
-      'Modern City': '🏙️',
-      'Commercial': '🏢',
-      'Circuit': '🔄',
-      'Wildlife': '🐅',
-      'Long Road': '🛣️',
-      'Local': '🏙️',
-      'Char Dham': '⛰️',
-      'Tourism': '📍',
-    };
-    return icons[type] || '📍';
-  };
-
   return (
+    <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <div className="min-h-screen bg-white overflow-hidden">
       {/* ============================================ */}
       {/* HERO SECTION - City Specific */}
@@ -147,7 +70,7 @@ export default function TempoCityClient({ data }) {
 
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {mounted && [...Array(12)].map((_, i) => (
+          {mounted && !shouldReduceMotion && [...Array(12)].map((_, i) => (
             <motion.div
               key={i}
               initial={{ y: '100vh', x: `${Math.random() * 100}%`, opacity: 0 }}
@@ -279,7 +202,7 @@ export default function TempoCityClient({ data }) {
           >
             <motion.a
               href="tel:+917668570551"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(255, 255, 255, 0.2)" }}
+              
               whileTap={{ scale: 0.95 }}
               className="group relative bg-white text-gray-900 px-8 py-4 rounded-full font-bold text-lg overflow-hidden shadow-2xl"
             >
@@ -293,7 +216,7 @@ export default function TempoCityClient({ data }) {
               href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${cityData.name}. Please share options.`}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
+              
               whileTap={{ scale: 0.95 }}
               className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl"
             >
@@ -428,7 +351,7 @@ export default function TempoCityClient({ data }) {
 
                         {/* Book Button */}
                         <motion.div
-                          whileHover={{ scale: 1.02 }}
+                          
                           className={`w-full bg-gradient-to-r from-gray-900 to-gray-800 group-hover:${cityData.color} text-white group-hover:text-white font-bold py-3.5 rounded-xl transition-all duration-300 text-center flex items-center justify-center gap-2`}
                         >
                           <span>View Route</span>
@@ -575,7 +498,7 @@ export default function TempoCityClient({ data }) {
               className="text-center mt-10"
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowAllVehicles(!showAllVehicles)}
                 className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-white/20 text-white font-bold py-4 px-8 rounded-full hover:bg-white/20 transition-all"
@@ -698,7 +621,7 @@ export default function TempoCityClient({ data }) {
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  
                   className="group"
                 >
                   <Link href={`/tempo-traveller/${city.slug}`} className="block h-full">
@@ -837,7 +760,7 @@ export default function TempoCityClient({ data }) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="tel:+917668570551"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(251, 191, 36, 0.5)" }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3"
               >
@@ -849,7 +772,7 @@ export default function TempoCityClient({ data }) {
                 href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${cityData.name}. Please share options.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl flex items-center justify-center gap-3"
               >
@@ -908,5 +831,6 @@ export default function TempoCityClient({ data }) {
         </div>
       </section>
     </div>
+    </MotionConfig>
   );
 }

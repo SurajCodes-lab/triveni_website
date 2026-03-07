@@ -3,17 +3,23 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// Centralized icon imports for better bundle optimization
 import {
     MapPin, Calendar, Users, Star, Shield, Phone, MessageCircle,
     ChevronDown, CheckCircle, Navigation, Clock, Sun, Mountain, Sparkles, Plane, User
 } from '@/components/ui/icons';
-import { motion, AnimatePresence } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
+import { motion, MotionConfig } from 'framer-motion';
+import { useShouldReduceMotion } from '@/hooks/useIsMobile';
+import dynamic from 'next/dynamic';
+
+const TypeAnimation = dynamic(
+  () => import('react-type-animation').then(mod => mod.TypeAnimation),
+  { ssr: false, loading: () => <span>Journey to Moksha</span> }
+);
 
 export default function ChardhamTempoClient({ data }) {
     const [activeDay, setActiveDay] = useState(0);
     const [mounted, setMounted] = useState(false);
+    const shouldReduceMotion = useShouldReduceMotion();
     const { title, origin, destination, duration, intro, whyChoose, packages, itinerary, features, faqs, images } = data;
 
     useEffect(() => {
@@ -21,6 +27,7 @@ export default function ChardhamTempoClient({ data }) {
     }, []);
 
     return (
+        <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
         <div className="min-h-screen bg-stone-50 font-sans selection:bg-orange-200">
 
             {/* ============================================ */}
@@ -64,7 +71,7 @@ export default function ChardhamTempoClient({ data }) {
 
                 {/* Floating Particles (Sparks/Embers vibe) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                    {mounted && [...Array(20)].map((_, i) => (
+                    {mounted && !shouldReduceMotion && [...Array(15)].map((_, i) => (
                         <motion.div
                             key={i}
                             initial={{ y: '100vh', x: Math.random() * 100 + '%', opacity: 0 }}
@@ -127,7 +134,7 @@ export default function ChardhamTempoClient({ data }) {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <motion.div  whileTap={{ scale: 0.95 }}>
                                 <Link
                                     href="tel:+917668570551"
                                     className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-10 py-5 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(249,115,22,0.5)] hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] transition-all flex items-center gap-2 border border-orange-400/50"
@@ -136,7 +143,7 @@ export default function ChardhamTempoClient({ data }) {
                                 </Link>
                             </motion.div>
 
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <motion.div  whileTap={{ scale: 0.95 }}>
                                 <Link
                                     href="https://wa.me/917668570551?text=Jai Bhole! I am interested in Chardham Yatra package."
                                     className="bg-white/10 backdrop-blur-md text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center gap-2 border border-white/30"
@@ -417,5 +424,6 @@ export default function ChardhamTempoClient({ data }) {
                 </div>
             </section>
         </div>
+        </MotionConfig>
     );
 }

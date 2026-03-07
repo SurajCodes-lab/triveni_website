@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useCallback, useMemo, useEffect } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 // Centralized icon imports for better bundle optimization
 import {
@@ -275,7 +275,7 @@ const LazyMap = () => {
 const ContactCard = ({ item, index }) => (
   <motion.article
     variants={scaleIn}
-    whileHover={{ y: -10, scale: 1.02 }}
+    
     className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300 overflow-hidden"
   >
     {/* Gradient Background on Hover */}
@@ -381,13 +381,6 @@ const FormInput = ({ label, name, type = "text", required = false, placeholder, 
 // Main Contact Component
 export default function ContactClient() {
   const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -480,10 +473,8 @@ export default function ContactClient() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* HERO SECTION */}
-      <motion.section
-        ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden"
+      <section
+        className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -499,39 +490,9 @@ export default function ContactClient() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-amber-900/40"></div>
         </div>
 
-        {/* Animated Orbs */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 0.6,
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            opacity: { duration: 1 },
-            x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/40 to-amber-500/40 rounded-full blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 0.5,
-            x: [0, -40, 0],
-            y: [0, 60, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            opacity: { duration: 1, delay: 0.2 },
-            x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl"
-        />
+        {/* Static Decorative Orbs */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/40 to-amber-500/40 rounded-full blur-3xl opacity-60" />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl opacity-50" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -599,7 +560,7 @@ export default function ContactClient() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.a
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               href={`tel:+91${phoneNumber}`}
               className="group px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-xl flex items-center gap-3"
@@ -609,7 +570,7 @@ export default function ContactClient() {
             </motion.a>
 
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWhatsAppClick()}
               className="px-8 py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold rounded-full flex items-center gap-3 shadow-xl"
@@ -621,23 +582,15 @@ export default function ContactClient() {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
-        >
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
           <div className="flex flex-col items-center gap-2">
             <span className="text-white/80 text-sm font-medium">Scroll to explore</span>
             <div className="w-8 h-14 border-2 border-white/40 rounded-full flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-4 bg-amber-400 rounded-full"
-              />
+              <div className="w-2 h-4 bg-amber-400 rounded-full animate-bounce" />
             </div>
           </div>
-        </motion.div>
-      </motion.section>
+        </div>
+      </section>
 
       {/* CONTACT CARDS SECTION */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
@@ -807,7 +760,7 @@ export default function ContactClient() {
                   />
 
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
+                    
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isSubmitting}
@@ -897,7 +850,7 @@ export default function ContactClient() {
                       </p>
                       <div className="flex flex-col sm:flex-row gap-3">
                         <motion.a
-                          whileHover={{ scale: 1.05 }}
+                          
                           whileTap={{ scale: 0.95 }}
                           href={`tel:+91${phoneNumber}`}
                           className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FACF2D] to-amber-400 text-gray-800 px-5 py-3 rounded-xl font-semibold shadow-md"
@@ -906,7 +859,7 @@ export default function ContactClient() {
                           Call Now
                         </motion.a>
                         <motion.button
-                          whileHover={{ scale: 1.05 }}
+                          
                           whileTap={{ scale: 0.95 }}
                           onClick={() => handleWhatsAppClick()}
                           className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-3 rounded-xl font-semibold shadow-md"
@@ -954,7 +907,7 @@ export default function ContactClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.05 }}
+                
                 className="text-center group"
               >
                 <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300`}>
@@ -1029,7 +982,7 @@ export default function ContactClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.02 }}
+                
                 className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-amber-300 overflow-hidden"
               >
                 {/* Gradient Background on Hover */}
@@ -1136,7 +1089,7 @@ export default function ContactClient() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    whileHover={{ scale: 1.05, y: -3 }}
+                    
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
                     className="group px-10 py-5 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl transition-all"
@@ -1146,7 +1099,7 @@ export default function ContactClient() {
                   </motion.button>
 
                   <motion.a
-                    whileHover={{ scale: 1.05, y: -3 }}
+                    
                     whileTap={{ scale: 0.95 }}
                     href={`tel:+91${phoneNumber}`}
                     className="px-10 py-5 bg-white border-2 border-amber-300 text-gray-800 font-bold text-lg rounded-full flex items-center justify-center gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all shadow-lg"

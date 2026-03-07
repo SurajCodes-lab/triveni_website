@@ -3,6 +3,8 @@
 import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerData';
 import TempoMainClient from '@/components/TempoMainClient';
 
+export const revalidate = 3600;
+
 export const metadata = {
   // Title under 60 chars per Google guidelines - CTR optimized
   title: 'Tempo Traveller Rent 2026 | 12-26 Seater ₹23/km | Delhi Routes',

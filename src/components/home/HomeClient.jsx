@@ -296,7 +296,7 @@ const ServiceSection = memo(function ServiceSection({ section, shouldReduceMotio
         )}
 
         <motion.div
-          whileHover={{ scale: 1.02, y: -5 }}
+          
           transition={{ duration: 0.3 }}
           className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100 hover:shadow-3xl hover:border-amber-300 cursor-pointer"
         >
@@ -510,7 +510,7 @@ export default function HomeClient() {
             className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-6 px-4"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => handleBookNowClick()}
               className="group relative w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-xl overflow-hidden"
@@ -523,7 +523,7 @@ export default function HomeClient() {
 
             <Link onClick={() => trackPhoneCall('homepage')} href={`tel:${phoneNumber}`} className="w-full sm:w-auto">
               <motion.span
-                whileHover={{ scale: 1.05, y: -3 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-amber-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-amber-50 hover:border-amber-400 transition-all"
               >
@@ -551,7 +551,7 @@ export default function HomeClient() {
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 1.6 + index * 0.1, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.05, y: -3 }}
+                
                 className="relative group cursor-pointer"
               >
                 <div className="bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-xl md:rounded-2xl p-2 md:p-3 hover:border-amber-300 hover:shadow-xl transition-all shadow-md">
@@ -649,7 +649,7 @@ export default function HomeClient() {
               {['Delhi', 'Agra', 'Jaipur', 'Haridwar', 'Chandigarh', 'Shimla', 'Manali', 'Varanasi', 'Lucknow'].map((city, index) => (
                 <Link href={`/${city.toLowerCase()}`} key={index}>
                   <motion.div
-                    whileHover={{ scale: 1.05, y: -5 }}
+                    
                     className="mx-2 md:mx-4 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-4 md:p-6 border-2 border-transparent hover:border-blue-400 min-w-[160px] md:min-w-[200px] cursor-pointer"
                   >
                     <div className="flex flex-col items-center">
@@ -675,7 +675,7 @@ export default function HomeClient() {
               {['Amritsar', 'Dehradun', 'Rishikesh', 'Jodhpur', 'Udaipur', 'Ayodhya', 'Ahmedabad', 'Mussoorie', 'Nainital'].map((city, index) => (
                 <Link href={`/${city.toLowerCase()}`} key={index}>
                   <motion.div
-                    whileHover={{ scale: 1.05, y: -5 }}
+                    
                     className="mx-2 md:mx-4 bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-4 md:p-6 border-2 border-transparent hover:border-purple-400 min-w-[160px] md:min-w-[200px] cursor-pointer"
                   >
                     <div className="flex flex-col items-center">
@@ -711,7 +711,7 @@ export default function HomeClient() {
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg text-center border-2 border-gray-100 hover:border-gray-200 transition-all"
               >
                 <div className={`w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 shadow-lg`}>

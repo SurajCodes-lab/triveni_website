@@ -3,7 +3,7 @@
 import { useState, memo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPinIcon,
   ClockIcon,
@@ -23,9 +23,6 @@ import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 export default function SightseeingMainClient({ data, faqData }) {
   const [favorites, setFavorites] = useState([]);
   const [openFaq, setOpenFaq] = useState(null);
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
   // Show all tours (removed filter functionality)
   const filteredTours = data.allTours;
@@ -77,9 +74,8 @@ export default function SightseeingMainClient({ data, faqData }) {
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" itemScope itemType="https://schema.org/CollectionPage">
       {/* Hero Section with Parallax */}
       <header>
-        <motion.section
-          style={{ opacity, scale }}
-          className="relative h-[85vh] sm:h-[75vh] md:h-[85vh] flex items-center justify-center overflow-hidden"
+        <section
+          className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden"
         >
           {/* Hero Background Image */}
           <div className="absolute inset-0">
@@ -96,18 +92,9 @@ export default function SightseeingMainClient({ data, faqData }) {
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/70 via-purple-900/60 to-pink-900/70" />
 
-            {/* Animated Pattern Overlay */}
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.15, 0.1],
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute inset-0"
+            {/* Pattern Overlay */}
+            <div
+              className="absolute inset-0 opacity-10"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
               }}
@@ -199,7 +186,7 @@ export default function SightseeingMainClient({ data, faqData }) {
               />
             </div>
           </motion.div>
-        </motion.section>
+        </section>
       </header>
 
       {/* Featured Tours Section */}
@@ -334,7 +321,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
               >
                 <feature.icon className="w-12 h-12 text-indigo-600 mb-4" />
@@ -423,7 +410,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -5, scale: 1.02 }}
+                
                 className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden"
               >
                 {/* Gradient accent */}
@@ -464,7 +451,7 @@ export default function SightseeingMainClient({ data, faqData }) {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a href="tel:+917668570551">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
                 >
@@ -474,7 +461,7 @@ export default function SightseeingMainClient({ data, faqData }) {
               </a>
               <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   className="px-6 sm:px-8 py-3 sm:py-4 bg-green-500 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
                 >
@@ -632,7 +619,7 @@ export default function SightseeingMainClient({ data, faqData }) {
           >
             <Link href="/sightseeing">
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
               >
@@ -718,7 +705,7 @@ export default function SightseeingMainClient({ data, faqData }) {
             </p>
             <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
               >
@@ -773,7 +760,7 @@ const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, it
                 <motion.div
                   className="absolute inset-0 bg-black/20"
                   initial={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
+                  
                   transition={{ duration: 0.6 }}
                 />
               </>

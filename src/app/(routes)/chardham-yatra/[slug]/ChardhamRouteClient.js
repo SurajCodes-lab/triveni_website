@@ -29,7 +29,7 @@ export default function ChardhamRouteClient({ data }) {
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
-          <Image src={images.hero} alt={title} fill className="object-cover" priority />
+          <Image src={images.hero} alt={title} fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-teal-950 via-teal-950/70 to-teal-950/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-teal-950/80 to-transparent" />
         </div>

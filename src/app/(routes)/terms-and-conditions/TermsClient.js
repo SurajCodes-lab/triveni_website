@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 // Centralized icon imports for better bundle optimization
 import {
@@ -165,15 +165,6 @@ const statsItems = [
 ];
 
 export default function TermsClient() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-
   const handleWhatsAppClick = (message = '') => {
     const defaultMessage = message || "Hi! I have a question about Triveni Cabs terms and conditions.";
     const whatsappURL = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
@@ -183,10 +174,8 @@ export default function TermsClient() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
       {/* HERO SECTION */}
-      <motion.section
-        ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden"
+      <section
+        className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -202,39 +191,9 @@ export default function TermsClient() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-amber-900/40"></div>
         </div>
 
-        {/* Animated Orbs */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 0.6,
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            opacity: { duration: 1 },
-            x: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            y: { duration: 20, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/40 to-amber-500/40 rounded-full blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 0.5,
-            x: [0, -40, 0],
-            y: [0, 60, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            opacity: { duration: 1, delay: 0.2 },
-            x: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            y: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 },
-            scale: { duration: 25, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl"
-        />
+        {/* Background Orbs */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/30 to-amber-500/30 rounded-full blur-3xl opacity-60" />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-pink-400/20 rounded-full blur-3xl opacity-50" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -302,7 +261,7 @@ export default function TermsClient() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
               className="group px-8 py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold rounded-full shadow-xl flex items-center gap-3"
@@ -312,7 +271,7 @@ export default function TermsClient() {
             </motion.button>
 
             <motion.a
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               href={`tel:+91${phoneNumber}`}
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold rounded-full flex items-center gap-3 hover:bg-white/20 transition-all"
@@ -340,7 +299,7 @@ export default function TermsClient() {
             </div>
           </div>
         </motion.div>
-      </motion.section>
+      </section>
 
       {/* TERMS SECTIONS */}
       <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
@@ -463,7 +422,7 @@ export default function TermsClient() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -10, scale: 1.05 }}
+                
                 className="text-center group"
               >
                 <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300`}>
@@ -504,7 +463,7 @@ export default function TermsClient() {
 
                 <div className="grid md:grid-cols-3 gap-6">
                   <motion.a
-                    whileHover={{ scale: 1.05 }}
+                    
                     whileTap={{ scale: 0.95 }}
                     href={`tel:+91${phoneNumber}`}
                     className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/30 transition-all duration-300 block"
@@ -516,7 +475,7 @@ export default function TermsClient() {
                   </motion.a>
 
                   <motion.a
-                    whileHover={{ scale: 1.05 }}
+                    
                     whileTap={{ scale: 0.95 }}
                     href="mailto:cabstriveni@gmail.com"
                     className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/30 transition-all duration-300 block"
@@ -528,7 +487,7 @@ export default function TermsClient() {
                   </motion.a>
 
                   <motion.a
-                    whileHover={{ scale: 1.05 }}
+                    
                     whileTap={{ scale: 0.95 }}
                     href="https://www.trivenicabs.in"
                     target="_blank"
@@ -576,7 +535,7 @@ export default function TermsClient() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
-                  whileHover={{ scale: 1.05, y: -3 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleWhatsAppClick("Hi! I want to book a taxi with Triveni Cabs. Can you help me with the booking?")}
                   className="group px-10 py-5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl transition-all"
@@ -586,7 +545,7 @@ export default function TermsClient() {
                 </motion.button>
 
                 <motion.a
-                  whileHover={{ scale: 1.05, y: -3 }}
+                  
                   whileTap={{ scale: 0.95 }}
                   href={`tel:+91${phoneNumber}`}
                   className="px-10 py-5 bg-transparent border-2 border-white text-white font-bold text-lg rounded-full flex items-center justify-center gap-3 hover:bg-white hover:text-gray-900 transition-all"

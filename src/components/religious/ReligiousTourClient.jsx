@@ -157,7 +157,7 @@ const ReligiousTourClient = ({ tour }) => {
             className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -3 }}
+              
               whileTap={{ scale: 0.95 }}
               onClick={() => handleBookNowClick()}
               className="group relative w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm md:text-base rounded-full shadow-xl overflow-hidden"
@@ -171,7 +171,7 @@ const ReligiousTourClient = ({ tour }) => {
 
             <a onClick={() => trackPhoneCall('religious_tour')} href={`tel:+91${phoneNumber}`} className="w-full sm:w-auto">
               <motion.span
-                whileHover={{ scale: 1.05, y: -3 }}
+                
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-orange-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-orange-50 hover:border-orange-400 transition-all"
               >
@@ -211,7 +211,7 @@ const ReligiousTourClient = ({ tour }) => {
             {/* Image Card */}
             <div className="relative">
               <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
+                
                 transition={{ duration: 0.3 }}
                 className="relative bg-white rounded-3xl shadow-2xl p-6 md:p-8 border-2 border-orange-100 hover:shadow-3xl hover:border-orange-300"
               >
@@ -359,7 +359,7 @@ const ReligiousTourClient = ({ tour }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
+                
                 className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-orange-100 hover:border-orange-300"
               >
                 <div className="flex items-start gap-4">
@@ -517,7 +517,7 @@ const ReligiousTourClient = ({ tour }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
+                
                 className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-xl text-center border-2 border-gray-100 hover:border-orange-300 transition-all duration-300"
               >
                 <div className="text-4xl md:text-5xl mb-4">{reason.icon}</div>

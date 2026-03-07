@@ -22,7 +22,7 @@ const ItinerarySection = ({ itinerary }) => {
         <motion.div
           key={index}
           className="bg-gradient-to-r from-yellow-50 to-bg-white py-3 px-5 rounded-xl shadow-md hover:shadow-xl transition-shadow"
-          whileHover={{ scale: 1.02 }}
+          
           onClick={() => setActiveDay(activeDay === index ? null : index)}
         >
           <div className="flex justify-between items-center cursor-pointer">
