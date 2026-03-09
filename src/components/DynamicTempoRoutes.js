@@ -28,7 +28,7 @@ export default function DynamicTempoRoutesClient({ data }) {
   const [activeFeature, setActiveFeature] = useState(0);
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
-  const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet } = data;
+  const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet, relatedRoutes } = data;
 
   const routeDescription = routeDescriptions[routeSlug] || null;
   const displayDestination = formatDestinationForDisplay(destination);
@@ -1318,6 +1318,96 @@ export default function DynamicTempoRoutesClient({ data }) {
         </div>
       </section>
 
+
+      {/* ============================================ */}
+      {/* Related Routes from Same Origin — Internal Linking */}
+      {/* ============================================ */}
+      {relatedRoutes && relatedRoutes.length > 0 && (
+        <section className="py-12 md:py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
+              More Tempo Traveller Routes from {origin}
+            </h2>
+            <p className="text-gray-500 text-center mb-8">Popular group travel destinations from {origin}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedRoutes.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/tempo-traveller/${r.slug}`}
+                  className="group flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200 hover:border-amber-400 hover:shadow-md transition-all"
+                >
+                  <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0 group-hover:bg-amber-200 transition-colors">
+                    <Navigation className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">
+                      {origin} to {r.name}
+                    </h3>
+                    <p className="text-xs text-gray-500">{r.type} • Tempo Traveller from ₹23/km</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <Link
+                href={`/tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-flex items-center gap-2 text-amber-600 font-semibold hover:text-amber-700"
+              >
+                View all routes from {origin}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================ */}
+      {/* Related Services — Cross-linking for SEO */}
+      {/* ============================================ */}
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            Other Ways to Travel {origin} to {displayDestination}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              href={`/bus-routes/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              className="group p-5 bg-white rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">🚌</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{origin} to {displayDestination} Bus</h3>
+              <p className="text-sm text-gray-500 mt-1">22-56 seater luxury buses from ₹35/km</p>
+            </Link>
+            <Link
+              href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              className="group p-5 bg-white rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">🚕</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{origin} to {displayDestination} Cab</h3>
+              <p className="text-sm text-gray-500 mt-1">Sedan & SUV from ₹11/km one-way</p>
+            </Link>
+            {hasTouristSpots && (
+              <Link
+                href={`/tourist-attractions/${destination.toLowerCase().replace(/\s+/g, '-')}`}
+                className="group p-5 bg-white rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-lg transition-all"
+              >
+                <div className="text-2xl mb-2">📍</div>
+                <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{displayDestination} Tourist Spots</h3>
+                <p className="text-sm text-gray-500 mt-1">Top sightseeing places & attractions</p>
+              </Link>
+            )}
+            <Link
+              href={`/sightseeing`}
+              className="group p-5 bg-white rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">🗺️</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">Sightseeing Tours</h3>
+              <p className="text-sm text-gray-500 mt-1">Full-day guided sightseeing packages</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* SEO Content Section */}

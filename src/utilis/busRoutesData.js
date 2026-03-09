@@ -33217,7 +33217,136 @@ export const whyChooseUs = [
 ];
 
 // Local Sightseeing data for bus routes (placeholder - can be expanded)
-export const localSightseeing = {};
+export const localSightseeing = {
+  Delhi: [
+    "Red Fort", "India Gate", "Qutub Minar", "Lotus Temple",
+    "Akshardham Temple", "Humayun's Tomb", "Connaught Place", "Chandni Chowk"
+  ],
+  Agra: [
+    "Taj Mahal", "Agra Fort", "Fatehpur Sikri", "Mehtab Bagh",
+    "Itmad-ud-Daulah", "Sikandra", "Kinari Bazaar"
+  ],
+  Jaipur: [
+    "Amber Fort", "Hawa Mahal", "City Palace", "Jantar Mantar",
+    "Nahargarh Fort", "Jaigarh Fort", "Albert Hall Museum", "Jal Mahal"
+  ],
+  Udaipur: [
+    "City Palace", "Lake Pichola", "Jag Mandir", "Fateh Sagar Lake",
+    "Saheliyon Ki Bari", "Jagdish Temple", "Monsoon Palace"
+  ],
+  Jaisalmer: [
+    "Jaisalmer Fort", "Patwon Ki Haveli", "Sam Sand Dunes", "Gadisar Lake",
+    "Desert National Park", "Bada Bagh", "Kuldhara Ghost Village"
+  ],
+  Jodhpur: [
+    "Mehrangarh Fort", "Umaid Bhawan Palace", "Jaswant Thada",
+    "Clock Tower", "Mandore Gardens", "Rao Jodha Desert Rock Park"
+  ],
+  "Mount Abu": [
+    "Dilwara Jain Temples", "Nakki Lake", "Guru Shikhar Peak",
+    "Sunset Point", "Achalgarh Fort", "Wildlife Sanctuary"
+  ],
+  Haridwar: [
+    "Har Ki Pauri", "Mansa Devi Temple", "Chandi Devi Temple",
+    "Maya Devi Temple", "Bharat Mata Mandir", "Ganga Aarti"
+  ],
+  Rishikesh: [
+    "Laxman Jhula", "Ram Jhula", "Beatles Ashram", "Triveni Ghat",
+    "Parmarth Niketan", "Neelkanth Mahadev", "River Rafting"
+  ],
+  Dehradun: [
+    "Robber's Cave", "Sahastradhara", "Forest Research Institute",
+    "Tapkeshwar Temple", "Mindrolling Monastery", "Rajaji National Park"
+  ],
+  Mussoorie: [
+    "Kempty Falls", "Gun Hill", "Lal Tibba", "Mall Road",
+    "Company Garden", "Cloud's End", "Camel's Back Road"
+  ],
+  Nainital: [
+    "Naini Lake", "Naina Devi Temple", "Snow View Point", "Mall Road",
+    "Tiffin Top", "Eco Cave Gardens", "Bhimtal Lake"
+  ],
+  "Jim Corbett": [
+    "Dhikala Zone Safari", "Bijrani Zone", "Jhirna Gate",
+    "Corbett Museum", "Garjia Temple", "Kosi River"
+  ],
+  Manali: [
+    "Hadimba Temple", "Solang Valley", "Rohtang Pass", "Old Manali",
+    "Vashisht Hot Springs", "Jogini Falls", "Manu Temple"
+  ],
+  Shimla: [
+    "Mall Road", "Ridge", "Christ Church", "Jakhu Temple",
+    "Kufri", "Chail", "Naldehra", "Toy Train"
+  ],
+  Kasol: [
+    "Kheerganga Trek", "Manikaran Sahib", "Tosh Village",
+    "Chalal Trek", "Parvati Valley", "Malana Village"
+  ],
+  Dharamshala: [
+    "McLeod Ganj", "Dalai Lama Temple", "Bhagsu Waterfall",
+    "Triund Trek", "Norbulingka Institute", "Cricket Stadium"
+  ],
+  Dalhousie: [
+    "Khajjiar (Mini Switzerland)", "Kalatop Wildlife Sanctuary", "Dainkund Peak",
+    "Satdhara Falls", "St. John's Church", "Panchpula"
+  ],
+  Amritsar: [
+    "Golden Temple", "Wagah Border Ceremony", "Jallianwala Bagh",
+    "Partition Museum", "Gobindgarh Fort", "Hall Bazaar"
+  ],
+  Ayodhya: [
+    "Ram Janmabhoomi", "Hanuman Garhi", "Kanak Bhawan",
+    "Dashrath Mahal", "Saryu River Ghat", "Ram Ki Paidi"
+  ],
+  Pushkar: [
+    "Brahma Temple", "Pushkar Lake", "Savitri Temple",
+    "Pushkar Ghats", "Rose Garden", "Apteshwar Temple"
+  ],
+  Ranthambore: [
+    "Ranthambore Fort", "Tiger Safari", "Padam Talao",
+    "Jogi Mahal", "Ranthambore National Park", "Surwal Lake"
+  ],
+  Ajmer: [
+    "Ajmer Sharif Dargah", "Ana Sagar Lake", "Adhai Din Ka Jhonpra",
+    "Taragarh Fort", "Nareli Jain Temple", "Foy Sagar Lake"
+  ],
+  Varanasi: [
+    "Kashi Vishwanath Temple", "Dashashwamedh Ghat", "Sarnath",
+    "Assi Ghat", "Manikarnika Ghat", "BHU Campus"
+  ],
+  Lucknow: [
+    "Bara Imambara", "Chota Imambara", "Rumi Darwaza",
+    "British Residency", "Hazratganj", "Aminabad Market"
+  ],
+  Lansdowne: [
+    "Tip N Top View Point", "Bhulla Lake", "St. Mary's Church",
+    "Garhwali Mess Museum", "Tarkeshwar Mahadev Temple"
+  ],
+  Ranikhet: [
+    "Chaubatia Gardens", "Jhula Devi Temple", "Upat Golf Course",
+    "Rani Jheel", "Majkhali", "Kalika Temple"
+  ],
+  Bikaner: [
+    "Junagarh Fort", "Karni Mata Temple", "Lalgarh Palace",
+    "Camel Breeding Farm", "Rampuria Havelis", "Gajner Palace"
+  ],
+  Bharatpur: [
+    "Keoladeo National Park", "Lohagarh Fort", "Deeg Palace",
+    "Government Museum", "Ganga Mandir", "Laxman Temple"
+  ],
+  "Mathura Vrindavan": [
+    "Krishna Janmabhoomi", "Banke Bihari Temple", "Prem Mandir",
+    "ISKCON Temple", "Dwarkadhish Temple", "Govardhan Hill"
+  ],
+  Prayagraj: [
+    "Triveni Sangam", "Anand Bhawan", "Allahabad Fort",
+    "Khusro Bagh", "Hanuman Mandir", "Civil Lines"
+  ],
+  "Fatehpur Sikri": [
+    "Buland Darwaza", "Panch Mahal", "Jama Masjid",
+    "Tomb of Salim Chishti", "Diwan-i-Khas", "Hiran Minar"
+  ]
+};
 
 // Additional Information - Pricing & Terms
 export const additionalInfo = {

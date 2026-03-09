@@ -533,12 +533,18 @@ export function generateEventMetadata({ eventType, city, slug }) {
 
 /**
  * Generate tempo traveller route page metadata
+ * Title: {Origin} to {Destination} Tempo Traveller | ₹{price} AC
  */
 export function generateTempoMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Tempo ₹${price} — ${seats} Seater AC`);
+  const title = truncateTitle(`${origin} to ${destination} Tempo Traveller | ₹${price} AC`);
+  const ogTitle = truncateOGTitle(`${origin} to ${destination} Tempo Traveller from ₹${price} — ${seats} Seater AC | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} tempo traveller ₹${price}. ${seats}-seater AC with pushback seats. ` +
-    `10,000+ happy groups served. Instant booking: ${COMPANY_INFO.phone.display}!`
+    `${origin} to ${destination} tempo traveller from ₹${price}. ${seats}-seater AC with pushback seats. ` +
+    `4.9★ rated, 2,500+ groups served. Call 7668570551.`
+  );
+  const ogDescription = truncateDescription(
+    `Book ${origin} to ${destination} tempo traveller at ₹${price}. ${seats}-seater AC, professional drivers, GPS tracking. ` +
+    `2,500+ happy groups. Book now!`
   );
 
   return {
@@ -554,28 +560,35 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
       }
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       type: 'website',
       locale: SITE_CONFIG.locale,
       url: `${BASE_URL}/tempo-traveller/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/tempo/${slug}-og.jpg`,
+        url: `${BASE_URL}/images/tempo_hero_section.jpg`,
         width: 1200,
         height: 630,
-        alt: `${origin} to ${destination} Tempo Traveller`
+        alt: `${origin} to ${destination} Tempo Traveller — Triveni Cabs`
       }]
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       creator: SITE_CONFIG.twitterHandle,
       site: SITE_CONFIG.twitterHandle
     },
     robots: getDefaultRobots(),
-    category: 'Transportation'
+    category: 'Transportation',
+    other: {
+      'price-range': `₹${price}`,
+      'service-type': 'Tempo Traveller Rental',
+      'service-area': `${origin}, ${destination}`,
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': '2500'
+    }
   };
 }
 

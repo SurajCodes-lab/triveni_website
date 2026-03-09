@@ -21,7 +21,7 @@ import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function DynamicBusRoutesClient({ data }) {
-  const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription } = data;
+  const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription, relatedRoutes } = data;
 
   const [selectedBus, setSelectedBus] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -686,6 +686,90 @@ export default function DynamicBusRoutesClient({ data }) {
                 </motion.div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Routes from Same Origin */}
+      {relatedRoutes && relatedRoutes.length > 0 && (
+        <section className="py-12 md:py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
+              More Bus Routes from {origin}
+            </h2>
+            <p className="text-gray-500 text-center mb-8">Popular bus hire destinations from {origin}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedRoutes.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/bus-routes/${r.slug}`}
+                  className="group flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-[#FACF2D] hover:shadow-md transition-all"
+                >
+                  <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center shrink-0 group-hover:bg-yellow-200 transition-colors">
+                    <Navigation className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">
+                      {origin} to {r.name}
+                    </h3>
+                    <p className="text-xs text-gray-500">{r.type} • {r.distance}</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <Link
+                href="/bus-routes"
+                className="inline-flex items-center gap-2 text-amber-600 font-semibold hover:text-amber-700"
+              >
+                View all bus routes
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related Services — Cross-linking for SEO */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            Other Ways to Travel {origin} to {destination}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              href={`/tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              className="group p-5 bg-gray-50 rounded-2xl border border-gray-200 hover:border-[#FACF2D] hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">🚐</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{origin} to {destination} Tempo</h3>
+              <p className="text-sm text-gray-500 mt-1">12-26 seater AC tempo from ₹23/km</p>
+            </Link>
+            <Link
+              href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              className="group p-5 bg-gray-50 rounded-2xl border border-gray-200 hover:border-[#FACF2D] hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">🚕</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{origin} to {destination} Cab</h3>
+              <p className="text-sm text-gray-500 mt-1">Sedan & SUV from ₹11/km one-way</p>
+            </Link>
+            <Link
+              href={`/sightseeing`}
+              className="group p-5 bg-gray-50 rounded-2xl border border-gray-200 hover:border-[#FACF2D] hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">🗺️</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">Sightseeing Tours</h3>
+              <p className="text-sm text-gray-500 mt-1">Full-day guided tour packages</p>
+            </Link>
+            <Link
+              href={`/tour-package`}
+              className="group p-5 bg-gray-50 rounded-2xl border border-gray-200 hover:border-[#FACF2D] hover:shadow-lg transition-all"
+            >
+              <div className="text-2xl mb-2">✈️</div>
+              <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">Tour Packages</h3>
+              <p className="text-sm text-gray-500 mt-1">All-inclusive multi-day tour packages</p>
+            </Link>
           </div>
         </div>
       </section>

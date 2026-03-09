@@ -6,7 +6,6 @@ import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute, busRouteDescri
 export const revalidate = false;
 export const dynamicParams = false;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
-import Script from 'next/script';
 import { generateBusMetadata } from '@/lib/seo/metadata-factory';
 
 // Viewport export (moved from metadata for Next.js 15 compatibility)
@@ -160,6 +159,17 @@ export default async function BusRoutePage({ params }) {
   // Get route-specific description if available
   const routeDescription = busRouteDescriptions?.[route] || null;
 
+  // Get related routes from the same origin for internal linking
+  const relatedRoutes = (busRoutes[originFormatted] || [])
+    .filter(r => r.name.toLowerCase() !== destinationFormatted.toLowerCase())
+    .slice(0, 6)
+    .map(r => ({
+      name: r.name,
+      type: r.type,
+      distance: r.distance,
+      slug: `${originFormatted.toLowerCase().replace(/\s+/g, '-')}-to-${r.name.toLowerCase().replace(/\s+/g, '-')}`
+    }));
+
   // Prepare data for client component
   const pageData = {
     routeSlug: route,
@@ -169,7 +179,8 @@ export default async function BusRoutePage({ params }) {
     localSightseeing: destinationSightseeing,
     fleet: busFleet,
     detailedRouteInfo: detailedRouteInfo,
-    routeDescription: routeDescription
+    routeDescription: routeDescription,
+    relatedRoutes: relatedRoutes
   };
 
   // JSON-LD Structured Data for specific route
@@ -376,35 +387,25 @@ export default async function BusRoutePage({ params }) {
 
   return (
     <>
-      <Script
-        id="bus-route-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(busRouteSchema) }}
-        strategy="beforeInteractive"
       />
-      <Script
-        id="product-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-        strategy="beforeInteractive"
       />
-      <Script
-        id="breadcrumb-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        strategy="beforeInteractive"
       />
-      <Script
-        id="faq-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        strategy="beforeInteractive"
       />
-      <Script
-        id="howto-book-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToBookSchema) }}
-        strategy="beforeInteractive"
       />
       <DynamicBusRoutesClient data={pageData} />
     </>

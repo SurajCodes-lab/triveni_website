@@ -1,11 +1,12 @@
 // src/app/tempo-traveller/[route]/page.js
 
-import { tempoFleet, tempoRoutes, localSightseeing, tempoCities } from '@/utilis/tempoTravellerData';
+import { tempoFleet, tempoRoutes, localSightseeing, tempoCities, routeDescriptions } from '@/utilis/tempoTravellerData';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
 export const dynamicParams = false;
 import { chardhamRoutes } from '@/utilis/chardhamData';
+import { generateTempoMetadata } from '@/lib/seo/metadata-factory';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import TempoCityClient from '@/components/TempoCityClient';
 import ChardhamTempoClient from '@/components/ChardhamTempoClient';
@@ -36,29 +37,14 @@ export async function generateStaticParams() {
     route: city.slug,
   }));
 
-  // Generate static params for popular routes
-  const popularRoutes = [
-    'delhi-to-shimla',
-    'delhi-to-manali',
-    'delhi-to-dharamshala',
-    'delhi-to-amritsar',
-    'delhi-to-haridwar',
-    'delhi-to-rishikesh',
-    'delhi-to-jaipur',
-    'delhi-to-agra',
-    'chandigarh-to-shimla',
-    'chandigarh-to-manali',
-    'chandigarh-to-dharamshala',
-    'jaipur-to-delhi',
-    'jaipur-to-agra',
-    'jaipur-to-udaipur',
-    'agra-to-delhi',
-    'agra-to-jaipur'
-  ];
-
-  const routeParams = popularRoutes.map((route) => ({
-    route: route,
-  }));
+  // Generate static params for ALL routes from tempoRoutes data
+  const routeParams = [];
+  Object.entries(tempoRoutes).forEach(([origin, destinations]) => {
+    destinations.forEach(dest => {
+      const routeSlug = `${origin.toLowerCase().replace(/\s+/g, '-')}-to-${dest.name.toLowerCase().replace(/\s+/g, '-')}`;
+      routeParams.push({ route: routeSlug });
+    });
+  });
 
   const chardhamParams = chardhamRoutes.map(route => ({
     route: route.slug
@@ -215,53 +201,13 @@ export async function generateMetadata({ params }) {
   const originFormatted = formatCityName(origin);
   const destinationFormatted = formatCityName(destination);
 
-  return {
-    title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | ₹23/km AC`,
-    description: `Book ${originFormatted} to ${destinationFormatted} tempo traveller. 12-26 seater AC, ₹23-27/km all-inclusive. Professional drivers, GPS tracking. Call 7668570551.`,
-    applicationName: 'Triveni Cabs',
-    metadataBase: new URL('https://www.trivenicabs.in'),
-    alternates: {
-      canonical: `https://www.trivenicabs.in/tempo-traveller/${route}`,
-    },
-    openGraph: {
-      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | 12-26 Seater AC from ₹23/km`,
-      description: `Book tempo traveller from ${originFormatted} to ${destinationFormatted}. 12-26 seater AC vehicles, professional drivers, GPS tracking. ₹23-27/km all-inclusive.`,
-      url: `https://www.trivenicabs.in/tempo-traveller/${route}`,
-      type: 'website',
-      locale: 'en_IN',
-      siteName: 'Triveni Cabs - Tempo Traveller Rental',
-      images: [
-        {
-          url: '/images/tempo_hero_section.jpg',
-          width: 1200,
-          height: 630,
-          alt: `${originFormatted} to ${destinationFormatted} Tempo Traveller - Triveni Cabs`,
-          type: 'image/jpeg',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${originFormatted} to ${destinationFormatted} Tempo Traveller | ₹23/km AC`,
-      description: `Book ${originFormatted} to ${destinationFormatted} tempo traveller. 12-26 seater AC, professional drivers, GPS tracking. Call 7668570551.`,
-      site: '@trivenicabs',
-      images: ['/images/tempo_hero_section.jpg'],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-    category: 'Travel & Transportation',
-  };
+  return generateTempoMetadata({
+    origin: originFormatted,
+    destination: destinationFormatted,
+    price: '23/km',
+    seats: '12-26',
+    slug: route
+  });
 }
 
 export default async function TempoTravellerRoutePage({ params }) {
@@ -398,7 +344,67 @@ export default async function TempoTravellerRoutePage({ params }) {
       allCities: allCitiesData
     };
 
-    return <TempoCityClient data={pageData} />;
+    // City page schemas
+    const cityBreadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+        { "@type": "ListItem", "position": 2, "name": "Tempo Traveller", "item": "https://www.trivenicabs.in/tempo-traveller" },
+        { "@type": "ListItem", "position": 3, "name": `Tempo Traveller in ${cityData.name}`, "item": `https://www.trivenicabs.in/tempo-traveller/${route}` }
+      ]
+    };
+
+    const cityServiceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Tempo Traveller Rental",
+      "name": `Tempo Traveller on Rent in ${cityData.name}`,
+      "description": `Book 12-26 seater AC tempo traveller in ${cityData.name}. ${cityRoutes.length}+ routes to ${cityData.popularDestinations.join(', ')} and more. From ₹23/km all-inclusive.`,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Triveni Cabs",
+        "telephone": "+91-7668570551",
+        "url": "https://www.trivenicabs.in",
+        "priceRange": "₹₹",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "2500",
+          "bestRating": "5"
+        }
+      },
+      "areaServed": { "@type": "City", "name": cityData.name },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "23",
+        "highPrice": "28",
+        "priceCurrency": "INR",
+        "offerCount": cityRoutes.length
+      }
+    };
+
+    const cityItemListSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": `Tempo Traveller Routes from ${cityData.name}`,
+      "numberOfItems": cityRoutes.length,
+      "itemListElement": cityRoutes.slice(0, 10).map((r, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": `${cityData.name} to ${r.name} Tempo Traveller`,
+        "url": `https://www.trivenicabs.in/tempo-traveller/${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${r.name.toLowerCase().replace(/\s+/g, '-')}`
+      }))
+    };
+
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityBreadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityItemListSchema) }} />
+        <TempoCityClient data={pageData} />
+      </>
+    );
   }
 
   // It's a route page
@@ -459,6 +465,16 @@ export default async function TempoTravellerRoutePage({ params }) {
   const routeData = findRouteData(originFormatted, destinationFormatted);
   const destinationSightseeing = localSightseeing?.[destinationFormatted] || [];
 
+  // Get related routes from the same origin for internal linking
+  const relatedRoutes = (tempoRoutes[originFormatted] || [])
+    .filter(r => r.name.toLowerCase() !== destinationFormatted.toLowerCase())
+    .slice(0, 6)
+    .map(r => ({
+      name: r.name,
+      type: r.type,
+      slug: `${originFormatted.toLowerCase().replace(/\s+/g, '-')}-to-${r.name.toLowerCase().replace(/\s+/g, '-')}`
+    }));
+
   // Prepare data for client component
   const pageData = {
     routeSlug: route,
@@ -467,40 +483,198 @@ export default async function TempoTravellerRoutePage({ params }) {
     routeData: routeData,
     hasTouristSpots: hasTouristSpots(destinationFormatted),
     localSightseeing: destinationSightseeing,
-    fleet: tempoFleet
+    fleet: tempoFleet,
+    relatedRoutes: relatedRoutes
   };
 
-  // BreadcrumbList schema for SEO
+  // Get route description for enriched schema data
+  const routeDesc = routeDescriptions[route] || null;
+
+  // TravelAction schema
+  const travelActionSchema = {
+    "@context": "https://schema.org",
+    "@type": "TravelAction",
+    "name": `${originFormatted} to ${destinationFormatted} Tempo Traveller Service`,
+    "description": `Premium tempo traveller rental from ${originFormatted} to ${destinationFormatted}. 12 to 26 seater AC tempo with pushback seats, professional drivers, and GPS tracking.`,
+    "fromLocation": {
+      "@type": "Place",
+      "name": originFormatted,
+      "address": { "@type": "PostalAddress", "addressCountry": "IN" }
+    },
+    "toLocation": {
+      "@type": "Place",
+      "name": destinationFormatted,
+      "address": { "@type": "PostalAddress", "addressCountry": "IN" }
+    },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Triveni Cabs",
+      "telephone": "+91-7668570551",
+      "email": "cabstriveni@gmail.com",
+      "url": "https://www.trivenicabs.in"
+    },
+    ...(routeDesc?.distance && { "distance": routeDesc.distance }),
+    ...(routeDesc?.travelTime && { "duration": routeDesc.travelTime })
+  };
+
+  // Product schema with pricing and rating
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${originFormatted} to ${destinationFormatted} Tempo Traveller Rental`,
+    "description": `Book tempo traveller from ${originFormatted} to ${destinationFormatted}. Available in 12, 14, 17, 20, and 26 seater options. All vehicles AC with pushback seats, music system, and GPS tracking.`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "23",
+      "highPrice": "28",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "INR",
+        "unitText": "per kilometer"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": `https://www.trivenicabs.in/tempo-traveller/${route}`,
+      "seller": { "@type": "Organization", "name": "Triveni Cabs" }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "2500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
+  // BreadcrumbList schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+      { "@type": "ListItem", "position": 2, "name": "Tempo Traveller", "item": "https://www.trivenicabs.in/tempo-traveller" },
+      { "@type": "ListItem", "position": 3, "name": `${originFormatted} to ${destinationFormatted}`, "item": `https://www.trivenicabs.in/tempo-traveller/${route}` }
+    ]
+  };
+
+  // FAQPage schema — route-specific long-tail keyword targeting
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.trivenicabs.in"
+        "@type": "Question",
+        "name": `What is the fare for ${originFormatted} to ${destinationFormatted} tempo traveller?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Tempo traveller fare from ${originFormatted} to ${destinationFormatted} starts at ₹23/km for 12 seater and goes up to ₹28/km for 26 seater AC tempo. ${routeDesc?.distance ? `The total distance is approximately ${routeDesc.distance}.` : ''} Price includes driver, fuel, and AC. Toll and parking extra. Call 7668570551 for exact quote.`
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tempo Traveller",
-        "item": "https://www.trivenicabs.in/tempo-traveller"
+        "@type": "Question",
+        "name": `How long does ${originFormatted} to ${destinationFormatted} take by tempo traveller?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": routeDesc?.travelTime
+            ? `The journey from ${originFormatted} to ${destinationFormatted} by tempo traveller takes approximately ${routeDesc.travelTime}, depending on traffic and road conditions.`
+            : `The travel time from ${originFormatted} to ${destinationFormatted} by tempo traveller depends on the route and traffic. Contact us at 7668570551 for estimated travel time.`
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 3,
-        "name": `${originFormatted} to ${destinationFormatted}`,
-        "item": `https://www.trivenicabs.in/tempo-traveller/${route}`
+        "@type": "Question",
+        "name": `What tempo traveller sizes are available for ${originFormatted} to ${destinationFormatted}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `We offer 12 seater, 14 seater, 17 seater, 20 seater, and 26 seater tempo travellers for ${originFormatted} to ${destinationFormatted}. All are AC with pushback seats, music system, charging points, and GPS tracking. 17 seater is most popular for this route.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Is it safe to travel ${originFormatted} to ${destinationFormatted} by tempo traveller?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, absolutely safe. All our tempo travellers for ${originFormatted} to ${destinationFormatted} come with experienced drivers (10+ years), GPS tracking, first-aid kit, and 24/7 roadside assistance. Vehicles are regularly serviced and inspected.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Can I book ${originFormatted} to ${destinationFormatted} tempo traveller for a round trip?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, we offer both one-way and round trip tempo traveller bookings from ${originFormatted} to ${destinationFormatted}. Round trips get better per-km rates. Multi-day trips with sightseeing stops are also available. Call 7668570551 or WhatsApp for custom itineraries.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What is the best time to travel from ${originFormatted} to ${destinationFormatted}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": routeDesc?.bestSeason
+            ? `The best time to travel from ${originFormatted} to ${destinationFormatted} is ${routeDesc.bestSeason}. We recommend starting early morning for the most comfortable journey.`
+            : `${originFormatted} to ${destinationFormatted} can be traveled year-round. We recommend starting early morning for the best experience. Contact us for seasonal travel advice.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Do you provide overnight tempo traveller from ${originFormatted} to ${destinationFormatted}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Yes, overnight tempo traveller service is available from ${originFormatted} to ${destinationFormatted}. Our experienced drivers are comfortable with night driving. For long routes, we provide two drivers for safety. Driver night charges apply for overnight journeys.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `How do I book a tempo traveller from ${originFormatted} to ${destinationFormatted}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Booking is easy: Call +91-7668570551 or WhatsApp us with your travel date, pickup location in ${originFormatted}, group size, and any sightseeing stops needed. We confirm within 15 minutes with driver details and vehicle photos. No advance payment needed for most bookings.`
+        }
       }
+    ]
+  };
+
+  // HowTo schema for booking
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to Book Tempo Traveller from ${originFormatted} to ${destinationFormatted}`,
+    "description": `Step-by-step guide to book tempo traveller for ${originFormatted} to ${destinationFormatted} trip`,
+    "totalTime": "PT5M",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Choose Your Vehicle", "text": `Select from 12 to 26 seater tempo travellers for your ${originFormatted} to ${destinationFormatted} journey based on group size` },
+      { "@type": "HowToStep", "position": 2, "name": "Call or WhatsApp", "text": "Contact us at +91-7668570551 or WhatsApp for instant booking and price quote" },
+      { "@type": "HowToStep", "position": 3, "name": "Share Trip Details", "text": `Provide travel date, pickup location in ${originFormatted}, number of passengers, and any sightseeing stops` },
+      { "@type": "HowToStep", "position": 4, "name": "Get Instant Confirmation", "text": "Receive booking confirmation with driver name, photo, vehicle number, and GPS tracking link within 15 minutes" }
     ]
   };
 
   return (
     <>
       <script
+        id="tempo-travel-action"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(travelActionSchema) }}
+      />
+      <script
+        id="tempo-product"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        id="tempo-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        id="tempo-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        id="tempo-howto"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <DynamicTempoRoutesClient data={pageData} />
     </>
