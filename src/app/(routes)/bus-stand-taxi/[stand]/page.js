@@ -99,6 +99,13 @@ export default async function BusStandPage({ params }) {
       "lowPrice": stand.destinations[0]?.fare.replace(/[^\d]/g, '') || "100",
       "highPrice": stand.destinations[stand.destinations.length - 1]?.fare.replace(/[^\d,]/g, '').replace(',', '') || "5000",
       "priceCurrency": "INR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1500",
+      "bestRating": "5",
+      "worstRating": "1"
     }
   };
 

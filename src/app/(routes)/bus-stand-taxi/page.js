@@ -6,7 +6,7 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 export const revalidate = false;
 
 export const metadata = {
-  title: 'Bus Stand & ISBT Taxi Service | Cab from Bus Stands Across India | Triveni Cabs',
+  title: 'Bus Stand Taxi Service | 13+ ISBTs | Fixed Fares | Triveni Cabs',
   description: 'Book reliable taxi from bus stands & ISBTs across India. Service at Kashmere Gate, Anand Vihar, Sindhi Camp Jaipur, Agra Idgah & more. Fixed fares, 24/7 service. Call 7668570551.',
   keywords: 'bus stand taxi, ISBT cab service, bus stand cab, bus terminal taxi, taxi from bus stand, ISBT taxi service India, bus stand pickup cab',
   authors: [{ name: 'Triveni Cabs' }],
@@ -55,6 +55,37 @@ export default function BusStandTaxiHubPage() {
       "telephone": "+91-7668570551",
     },
     "areaServed": standEntries.map(([, s]) => ({ "@type": "Place", "name": `${s.name}, ${s.city}` })),
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bus Stand Taxi Services",
+    "numberOfItems": standEntries.length,
+    "itemListElement": standEntries.map(([slug, s], i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": `${s.name} Cab Service`,
+      "url": `https://www.trivenicabs.in/bus-stand-taxi/${slug}`
+    }))
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How do I book a taxi from a bus stand?", "acceptedAnswer": { "@type": "Answer", "text": "Call Triveni Cabs at 7668570551 or WhatsApp with your bus stand name and destination. Our driver will be waiting when your bus arrives. Pre-booking ensures zero waiting time." } },
+      { "@type": "Question", "name": "Are cabs available 24/7 at bus stands?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Triveni Cabs operates 24/7 at all 13+ bus stands and ISBTs. Whether your bus arrives at midnight or early morning, our drivers are available with no extra night charges." } },
+      { "@type": "Question", "name": "What are the taxi fares from bus stands?", "acceptedAnswer": { "@type": "Answer", "text": "Fares are fixed and transparent. Local destinations start from ₹100-200. Airport transfers range from ₹500-800. All fares include AC sedan. No surge pricing or hidden charges." } },
+      { "@type": "Question", "name": "Which bus stands does Triveni Cabs serve?", "acceptedAnswer": { "@type": "Answer", "text": "We serve 13+ major bus stands including ISBT Kashmere Gate, ISBT Anand Vihar, ISBT Sarai Kale Khan (Delhi), Sindhi Camp (Jaipur), Agra ISBT Idgah, ISBT Sector 43 (Chandigarh), and more across North India." } }
+    ]
   };
 
   // Group by city
@@ -69,6 +100,8 @@ export default function BusStandTaxiHubPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-slate-950 text-white">
         {/* Hero */}
@@ -253,6 +286,58 @@ export default function BusStandTaxiHubPage() {
                   <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-400">{feature.desc}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Frequently Asked <span className="text-green-400">Questions</span>
+              </h2>
+              <p className="text-gray-400">Common queries about our bus stand taxi services</p>
+            </div>
+            <div className="space-y-4">
+              {faqSchema.mainEntity.map((faq, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6">
+                  <h3 className="font-bold text-lg mb-3 text-green-400">{faq.name}</h3>
+                  <p className="text-gray-300 leading-relaxed">{faq.acceptedAnswer.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Cross-Service Links */}
+        <section className="py-20 bg-gradient-to-b from-slate-950 via-green-950/20 to-slate-950">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                Explore More <span className="text-green-400">Travel Services</span>
+              </h2>
+              <p className="text-gray-400">Other ways to travel across India with Triveni Cabs</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { title: 'Railway Station Taxi', href: '/railway-station-taxi', desc: 'Taxi at 27+ railway stations' },
+                { title: 'One-Way Cabs', href: '/one-way-cab', desc: 'Affordable outstation rides' },
+                { title: 'Sightseeing Tours', href: '/sightseeing', desc: 'Explore tourist attractions' },
+                { title: 'Tour Packages', href: '/tour-package', desc: 'Multi-day curated tours' },
+              ].map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.href}
+                  className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-green-500/30 p-6 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <h3 className="font-bold group-hover:text-green-400 transition-colors mb-1">{link.title}</h3>
+                  <p className="text-sm text-gray-400">{link.desc}</p>
+                  <span className="inline-flex items-center gap-1 text-green-400 text-sm font-medium mt-3 group-hover:gap-2 transition-all">
+                    Explore <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

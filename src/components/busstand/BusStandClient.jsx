@@ -468,7 +468,41 @@ export default function BusStandClient({ stand, slug, allStands }) {
         </div>
       </section>
 
-      {/* Cross Links */}
+      {/* Cross-Service Links */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
+              Other Travel Options from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.city}</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Explore more ways to travel from {stand.city}</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { title: `${stand.city} Railway Station Taxi`, href: `/railway-station-taxi`, icon: Route, desc: 'Taxi service at railway stations' },
+              { title: `${stand.city} Sightseeing Tours`, href: `/sightseeing/${stand.city.toLowerCase().replace(/\s+/g, '-')}`, icon: MapPin, desc: 'Explore tourist attractions' },
+              { title: `One-Way Cab from ${stand.city}`, href: `/one-way-cab`, icon: Car, desc: 'Affordable outstation cabs' },
+              { title: 'Tour Packages', href: '/tour-package', icon: Navigation, desc: 'Multi-day curated tours' },
+            ].map((link, i) => (
+              <Link
+                key={i}
+                href={link.href}
+                className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-6 transition-all duration-500 hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <link.icon className="w-6 h-6 text-amber-400" />
+                </div>
+                <h3 className="font-bold group-hover:text-amber-400 transition-colors mb-1">{link.title}</h3>
+                <p className="text-sm text-gray-400">{link.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Other Bus Stand Taxi Services */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">

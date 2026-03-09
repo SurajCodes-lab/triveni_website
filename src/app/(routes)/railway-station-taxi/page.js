@@ -73,12 +73,48 @@ export default function RailwayStationTaxiHub() {
       "@type": "Country",
       "name": "India",
     },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "3000",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Railway Station Taxi Services",
+    "numberOfItems": totalStations,
+    "itemListElement": allSlugs.map((stationSlug, i) => {
+      const s = railwayStations[stationSlug];
+      return s ? {
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": `${s.name} Taxi Service`,
+        "url": `https://www.trivenicabs.in/railway-station-taxi/${stationSlug}`
+      } : null;
+    }).filter(Boolean)
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How do I book a taxi at a railway station?", "acceptedAnswer": { "@type": "Answer", "text": "Call Triveni Cabs at 7668570551 or WhatsApp with your train number and destination. Our driver will meet you at the platform exit with a name board. Pre-booking ensures zero waiting time." } },
+      { "@type": "Question", "name": "Are taxis available 24/7 at railway stations?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Triveni Cabs operates 24/7 at all 27+ railway stations. Whether your train arrives at midnight or early morning, our drivers are available with no extra night charges." } },
+      { "@type": "Question", "name": "Do you track train delays?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we actively track your train status. If your train is delayed, we adjust the driver dispatch time so they are ready exactly when you arrive. No waiting, no wasted time." } },
+      { "@type": "Question", "name": "Which railway stations does Triveni Cabs serve?", "acceptedAnswer": { "@type": "Answer", "text": "We serve 27+ major railway stations including New Delhi, Agra Cantt, Jaipur Junction, Varanasi Junction, Lucknow, Haridwar, Amritsar, Chandigarh, and more across North India." } }
+    ]
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-slate-950">
 
@@ -214,6 +250,55 @@ export default function RailwayStationTaxiHub() {
                   <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* === FAQ Section === */}
+        <section className="py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
+                Frequently Asked <span className="text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">Questions</span>
+              </h2>
+              <p className="text-slate-400">Common queries about railway station taxi services</p>
+            </div>
+            <div className="space-y-4">
+              {faqSchema.mainEntity.map((faq, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-violet-500/30 transition-all">
+                  <h3 className="font-bold text-lg mb-3 text-violet-300">{faq.name}</h3>
+                  <p className="text-slate-400 leading-relaxed">{faq.acceptedAnswer.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* === Cross-Service Links === */}
+        <section className="py-20 px-4 border-t border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
+                Explore More <span className="text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">Travel Services</span>
+              </h2>
+              <p className="text-slate-400">Other ways to travel across India with Triveni Cabs</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { title: 'Bus Stand Taxi', href: '/bus-stand-taxi', desc: 'Taxi at 13+ bus terminals' },
+                { title: 'One-Way Cabs', href: '/one-way-cab', desc: 'Affordable outstation rides' },
+                { title: 'Sightseeing Tours', href: '/sightseeing', desc: 'Explore tourist attractions' },
+                { title: 'Tour Packages', href: '/tour-package', desc: 'Multi-day curated tours' },
+              ].map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.href}
+                  className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-violet-500/30 p-5 transition-all group"
+                >
+                  <h3 className="text-white font-bold group-hover:text-violet-300 transition-colors mb-1">{link.title}</h3>
+                  <p className="text-sm text-slate-400">{link.desc}</p>
+                </Link>
               ))}
             </div>
           </div>

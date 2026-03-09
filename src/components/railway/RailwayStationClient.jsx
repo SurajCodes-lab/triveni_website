@@ -524,6 +524,24 @@ export default function RailwayStationClient({ station, slug }) {
         </div>
       </section>
 
+      {/* === SEO CONTENT - About This Station === */}
+      {station.seoContent && station.seoContent.length > 0 && (
+        <section className="py-20 md:py-32 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-8 md:p-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-8">
+                Complete Guide to Taxi from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.name}</span>
+              </h2>
+              <div className="space-y-5 text-slate-300 leading-relaxed">
+                {station.seoContent.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* === TRAVEL TIPS - Card Grid === */}
       <section className="py-20 md:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-950/15 to-transparent" />
@@ -583,6 +601,40 @@ export default function RailwayStationClient({ station, slug }) {
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === CROSS-SERVICE LINKS === */}
+      <section className="py-20 md:py-32 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/15 to-transparent" />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
+              Other Travel Options from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city}</span>
+            </h2>
+            <p className="text-slate-400 text-lg">Explore more ways to travel from {station.city}</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { title: `${station.city} Bus Stand Taxi`, href: '/bus-stand-taxi', icon: Route, desc: 'Taxi from bus terminals' },
+              { title: `${station.city} Sightseeing`, href: `/sightseeing/${station.city.toLowerCase().replace(/\s+/g, '-')}`, icon: MapPin, desc: 'Explore tourist attractions' },
+              { title: `One-Way Cab from ${station.city}`, href: '/one-way-cab', icon: Car, desc: 'Affordable outstation cabs' },
+              { title: 'Tour Packages', href: '/tour-package', icon: Navigation, desc: 'Multi-day curated tours' },
+            ].map((link, i) => (
+              <Link
+                key={i}
+                href={link.href}
+                className="group bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 hover:border-yellow-500/30 p-6 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-yellow-500/5 transition-all duration-500"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600/20 to-yellow-600/20 border border-yellow-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <link.icon className="w-6 h-6 text-yellow-400" />
+                </div>
+                <h3 className="text-white font-bold group-hover:text-yellow-300 transition-colors mb-1">{link.title}</h3>
+                <p className="text-sm text-slate-400">{link.desc}</p>
+              </Link>
             ))}
           </div>
         </div>

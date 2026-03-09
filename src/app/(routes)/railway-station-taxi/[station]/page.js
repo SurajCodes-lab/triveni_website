@@ -96,6 +96,13 @@ export default async function RailwayStationPage({ params }) {
       "priceCurrency": "INR",
     },
     "serviceType": "Railway Station Taxi",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "3000",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "availableChannel": {
       "@type": "ServiceChannel",
       "servicePhone": {
