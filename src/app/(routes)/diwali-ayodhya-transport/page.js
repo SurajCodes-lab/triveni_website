@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function DiwaliAyodhyaTransportPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Diwali Festival Transport", "name": "Diwali Ayodhya Cab Service - Deepotsav Special", "description": "Cab service from Delhi to Ayodhya for Diwali Deepotsav celebrations. Visit Ram Mandir, Saryu Ghat, and witness the spectacular drone show.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Ayodhya" }], "offers": { "@type": "AggregateOffer", "lowPrice": "9500", "highPrice": "22000", "priceCurrency": "INR" } };

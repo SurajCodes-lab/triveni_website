@@ -3,7 +3,7 @@ import TripCostClient from '@/components/tripcost/TripCostClient';
 
 const data = getTripCostBySlug('jaisalmer-trip-cost-from-delhi');
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: data.title,

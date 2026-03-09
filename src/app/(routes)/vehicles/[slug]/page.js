@@ -4,7 +4,8 @@ import VehicleHireClient from "@/components/vehicles/VehicleHireClient";
 import { vehicleDetails } from "@/utilis/data";
 import { vehicleHirePages, getAllVehicleHireSlugs } from "@/utilis/vehicleHireData";
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 // Old category slugs (sedan, suv, tempo-traveller, luxury-bus, bus)
 const oldCategorySlugs = ["sedan", "suv", "tempo-traveller", "luxury-bus", "bus"];

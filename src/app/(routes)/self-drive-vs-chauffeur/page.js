@@ -5,7 +5,7 @@ import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, com
 const SLUG = 'self-drive-vs-chauffeur';
 const data = getComparisonBySlug(SLUG);
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: `${data.title} | Triveni Cabs`,

@@ -90,6 +90,9 @@ const bookingSeoContent = {
   }
 };
 
+export const revalidate = false;
+export const dynamicParams = false;
+
 // Generate static params for all tour packages
 export async function generateStaticParams() {
   return Object.keys(tourDetails).map((slug) => ({

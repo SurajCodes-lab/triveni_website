@@ -4,7 +4,7 @@ import SightseeingMainClient from './SightseeingMainClient';
 import { getAllTours, tourCategories, featuredTours } from '@/utilis/sightseeingData';
 
 // ISR - Revalidate every hour (3600 seconds)
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: 'Sightseeing Tours India 2026 | Taj Mahal ₹3,500 | Same Day Packages',

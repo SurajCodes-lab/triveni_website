@@ -6,7 +6,7 @@ import {
   Heart, Star, Sparkles, Crown, Car, Leaf, Gift
 } from '@/components/ui/icons';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 const service = getWeddingSpecialService('car-decoration-packages');
 

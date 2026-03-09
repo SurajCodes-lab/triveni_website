@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: 'Railway Station Taxi Service | 27 Stations | 24/7 Cab Booking | Triveni Cabs',

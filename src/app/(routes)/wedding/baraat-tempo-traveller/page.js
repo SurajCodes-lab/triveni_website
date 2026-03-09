@@ -6,7 +6,7 @@ import {
   Car, Heart, Star, Sparkles, Music, Crown, Users, Zap, PartyPopper
 } from '@/components/ui/icons';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 const service = getWeddingSpecialService('baraat-tempo-traveller');
 

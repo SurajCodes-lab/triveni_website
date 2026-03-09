@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function SeniorCitizenTravelPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Senior Citizen Travel Service", "name": "Senior Citizen Travel Service - Elderly-Friendly Cabs", "description": "Cab service designed for senior citizens with patient drivers, gentle driving, and door-to-door assistance.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

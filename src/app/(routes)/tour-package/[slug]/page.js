@@ -4,7 +4,8 @@ import Link from "next/link";
 import { tourDetails } from "@/utilis/data";
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 import ItinerarySection from "@/components/ItinerarySection";
 // Centralized icon imports for better bundle optimization
 import { Calendar, MapPin, Clock, Users, Car, Star, Coffee, BedDouble, CheckCircle, Phone } from "@/components/ui/icons";

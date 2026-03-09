@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function SchoolTripBusPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "School Trip Bus Rental", "name": "School Trip Bus Rental Service", "description": "Safe and reliable bus rental for school trips with GPS tracking, verified drivers, and safety equipment.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

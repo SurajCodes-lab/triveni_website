@@ -5,7 +5,7 @@ import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, com
 const SLUG = '12-seater-vs-17-seater-tempo';
 const data = getComparisonBySlug(SLUG);
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: `${data.title} | Triveni Cabs`,

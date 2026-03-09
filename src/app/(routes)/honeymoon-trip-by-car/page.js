@@ -22,4 +22,4 @@ export default function HoneymoonHubPage() {
   return (<><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><HoneymoonTripClient data={data} /></>);
 }
 
-export const revalidate = 3600;
+export const revalidate = false;

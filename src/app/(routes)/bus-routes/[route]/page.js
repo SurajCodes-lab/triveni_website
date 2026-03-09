@@ -3,7 +3,8 @@
 import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute, busRouteDescriptions } from '@/utilis/busRoutesData';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
 import Script from 'next/script';
 import { generateBusMetadata } from '@/lib/seo/metadata-factory';

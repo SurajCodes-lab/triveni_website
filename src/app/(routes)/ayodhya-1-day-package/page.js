@@ -6,7 +6,7 @@ const data = getItinerary('ayodhya-1-day-package');
 
 if (!data) notFound();
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: data.metaTitle,

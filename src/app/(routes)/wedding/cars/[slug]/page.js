@@ -7,7 +7,8 @@ import {
   Car, Heart, Star, Sparkles, Crown, Award, Users, Zap
 } from '@/components/ui/icons';
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = getAllWeddingCarModelSlugs();

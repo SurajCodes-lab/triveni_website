@@ -3,7 +3,8 @@ import { getAllHowToReachCities, getHowToReachCityData } from '@/utilis/howToRea
 import HowToReachClient from '@/components/content/HowToReachClient';
 
 // ISR - Revalidate every hour
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const cities = getAllHowToReachCities();

@@ -11,7 +11,8 @@ import {
 } from '@/utilis/corporateTransportData';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 // Centralized icon imports for better bundle optimization
 import {
   Phone,

@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function PetFriendlyCabPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Pet-Friendly Cab Service", "name": "Pet-Friendly Cab Service - Travel with Your Pets", "description": "Pet-friendly cab service with sanitized vehicles, pet seat covers, and trained pet-comfortable drivers for safe pet travel.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

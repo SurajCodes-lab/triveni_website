@@ -40,4 +40,4 @@ export default function FamilyTripManaliPage() {
   );
 }
 
-export const revalidate = 3600;
+export const revalidate = false;

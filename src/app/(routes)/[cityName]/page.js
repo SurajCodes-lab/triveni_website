@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import Script from 'next/script';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
 import { getCityLocalInfo } from "@/utilis/cityLocalInfo";

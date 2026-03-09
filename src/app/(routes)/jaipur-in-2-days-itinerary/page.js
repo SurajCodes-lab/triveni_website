@@ -6,7 +6,7 @@ const data = getItinerary('jaipur-in-2-days-itinerary');
 
 if (!data) notFound();
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: data.metaTitle,

@@ -3,7 +3,8 @@ import { blogPosts } from '@/utilis/blog';
 import BlogPostPageClient from '@/components/blog/BlogPostPageClient';
 
 // ISR - Revalidate every hour (3600 seconds)
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 // Generate Article Schema for SEO
 function generateArticleSchema(post) {

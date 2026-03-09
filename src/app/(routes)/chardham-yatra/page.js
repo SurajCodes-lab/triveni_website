@@ -1,7 +1,7 @@
 import { allRoutes, vehicleHubPages, dhamPages, packagePages, imageBank } from '@/utilis/chardhamYatraData';
 import ChardhamHubClient from './ChardhamHubClient';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: 'Char Dham Yatra 2026 by Car, SUV, Bus | Sedan ₹12/km | Triveni Cabs',

@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function PushkarMelaTransportPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Pushkar Mela Transport", "name": "Pushkar Mela Cab Service - Camel Fair Special", "description": "Cab service from Delhi to Pushkar for the world-famous Pushkar Camel Fair. Visit Brahma Temple and experience Rajasthani culture.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Pushkar" }], "offers": { "@type": "AggregateOffer", "lowPrice": "6500", "highPrice": "16000", "priceCurrency": "INR" } };

@@ -3,7 +3,7 @@
 import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerData';
 import TempoMainClient from '@/components/TempoMainClient';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   // Title under 60 chars per Google guidelines - CTR optimized

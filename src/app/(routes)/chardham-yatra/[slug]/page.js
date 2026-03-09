@@ -5,7 +5,8 @@ import ChardhamRouteClient from './ChardhamRouteClient';
 import ChardhamDhamClient from './ChardhamDhamClient';
 import ChardhamPackageClient from './ChardhamPackageClient';
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 // ---------------------------------------------------------------------------
 // Static Params — Pre-build all 35 pages

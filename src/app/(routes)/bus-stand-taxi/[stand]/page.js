@@ -2,7 +2,8 @@ import { busStands, busStandSlugs, getBusStandBySlug } from '@/utilis/busStandDa
 import BusStandClient from '@/components/busstand/BusStandClient';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return busStandSlugs.map((stand) => ({ stand }));

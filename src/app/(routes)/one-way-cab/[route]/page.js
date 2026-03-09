@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import { getOneWayRoute, getAllOneWayRouteSlugs, getRelatedRoutes } from '@/utilis/oneWayCabData';
 import OneWayCabRouteClient from '@/components/oneway/OneWayCabRouteClient';
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllOneWayRouteSlugs().map((slug) => ({ route: slug }));

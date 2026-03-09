@@ -3,7 +3,7 @@ import { busStands } from '@/utilis/busStandData';
 import { Phone, MapPin, Bus, ArrowRight, Clock, Shield, Star, Users, ChevronDown } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: 'Bus Stand & ISBT Taxi Service | Cab from Bus Stands Across India | Triveni Cabs',

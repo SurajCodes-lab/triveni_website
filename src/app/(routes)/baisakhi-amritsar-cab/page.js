@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function BaisakhiAmritsarPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Baisakhi Festival Transport", "name": "Baisakhi Amritsar Cab Service", "description": "Cab from Delhi to Amritsar for Baisakhi celebrations at Golden Temple. Wagah Border ceremony included.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Amritsar" }], "offers": { "@type": "AggregateOffer", "lowPrice": "7000", "highPrice": "18000", "priceCurrency": "INR" } };

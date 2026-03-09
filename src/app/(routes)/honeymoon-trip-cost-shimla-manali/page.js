@@ -3,7 +3,7 @@ import TripCostClient from '@/components/tripcost/TripCostClient';
 
 const data = getTripCostBySlug('honeymoon-trip-cost-shimla-manali');
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: data.title,

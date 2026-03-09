@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function AirportCityTourComboPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Airport City Tour Combo", "name": "Airport Pickup + City Tour Combo Package", "description": "Combo package: airport pickup with name board and city sightseeing. 12 hours, 120 km. Flight tracking included.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }], "offers": { "@type": "AggregateOffer", "lowPrice": "3500", "highPrice": "6500", "priceCurrency": "INR" } };

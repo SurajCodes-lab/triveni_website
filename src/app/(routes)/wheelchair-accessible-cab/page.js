@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function WheelchairAccessibleCabPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Wheelchair Accessible Cab Service", "name": "Wheelchair Accessible Cab - Disability-Friendly Transport", "description": "Wheelchair accessible cab service with ramp access, trained drivers, and spacious vehicles for comfortable disability-friendly transport.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

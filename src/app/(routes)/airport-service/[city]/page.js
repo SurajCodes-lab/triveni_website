@@ -5,7 +5,8 @@ import { sightseeingTours } from '@/utilis/sightseeingData';
 import { generateAirportMetadata } from "@/lib/seo/metadata-factory";
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 // Generate metadata for each city page
 export async function generateMetadata({ params }) {

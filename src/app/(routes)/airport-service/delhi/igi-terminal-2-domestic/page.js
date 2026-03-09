@@ -4,7 +4,7 @@ import {
   Car, MapPin, Star, Navigation, Plane, Users
 } from '@/components/ui/icons';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: 'IGI Airport Terminal 2 Domestic Taxi | T2 Cab Pickup ₹11/km',

@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export default function ChhathPujaVaranasiPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Chhath Puja Transport", "name": "Chhath Puja Varanasi Cab Service", "description": "Cab from Delhi to Varanasi for Chhath Puja celebrations at Ganga ghats. Local ghat transport included.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Varanasi" }], "offers": { "@type": "AggregateOffer", "lowPrice": "11000", "highPrice": "24000", "priceCurrency": "INR" } };

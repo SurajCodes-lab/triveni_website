@@ -3,7 +3,7 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('jaipur-vs-udaipur');
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
   title: data.title,

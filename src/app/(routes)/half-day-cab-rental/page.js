@@ -30,4 +30,4 @@ export default function HalfDayCabRentalPage() {
   );
 }
 
-export const revalidate = 3600;
+export const revalidate = false;

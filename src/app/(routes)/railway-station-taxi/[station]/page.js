@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
 import RailwayStationClient from '@/components/railway/RailwayStationClient';
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllStationSlugs().map((station) => ({ station }));
