@@ -4,6 +4,7 @@ import ChardhamVehicleHubClient from './ChardhamVehicleHubClient';
 import ChardhamRouteClient from './ChardhamRouteClient';
 import ChardhamDhamClient from './ChardhamDhamClient';
 import ChardhamPackageClient from './ChardhamPackageClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 export const dynamicParams = false;
@@ -207,6 +208,8 @@ export default async function ChardhamYatraPage({ params }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faqSchema) }} />
       )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.vehicleSchema) }} />
+
+      <AEOHead pageType="tour" data={{ url: `/chardham-yatra/${slug}`, title: route.title || '' }} />
 
       {/* Route to the correct unique design template */}
       {route.pageType === 'vehicleHub' && <ChardhamVehicleHubClient data={route} />}

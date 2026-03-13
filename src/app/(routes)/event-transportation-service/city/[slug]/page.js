@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import AEOHead from '@/components/seo/AEOHead';
 import {
   getAllEventSlugs,
   getEventCityBySlug,
@@ -151,6 +152,7 @@ export default async function EventCityPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="event" data={{ url: `/event-transportation-service/city/${slug}`, title: city.name || '', city: city.name || '' }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}

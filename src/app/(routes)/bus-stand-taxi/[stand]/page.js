@@ -1,6 +1,7 @@
 import { busStands, busStandSlugs, getBusStandBySlug } from '@/utilis/busStandData';
 import BusStandClient from '@/components/busstand/BusStandClient';
 import { notFound } from 'next/navigation';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 export const dynamicParams = false;
@@ -150,6 +151,7 @@ export default async function BusStandPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <AEOHead pageType="busStand" data={{ url: `/bus-stand-taxi/${slug}`, title: `${stand.name} Taxi Service`, city: stand.city }} />
       <BusStandClient stand={stand} slug={slug} allStands={busStands} />
     </>
   );

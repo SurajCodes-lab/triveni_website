@@ -10,6 +10,7 @@ import {
   getAllEventTypes
 } from '@/utilis/eventTransportData';
 import { getWeddingPages, getServicePages } from '@/utilis/linkingHelper';
+import AEOHead from '@/components/seo/AEOHead';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -319,6 +320,7 @@ export default function EventTransportationPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="event" data={{ url: '/event-transportation-service', title: 'Event Transportation Service' }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen Premium Design */}

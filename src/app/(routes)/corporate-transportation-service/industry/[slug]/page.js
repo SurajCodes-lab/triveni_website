@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import AEOHead from '@/components/seo/AEOHead';
 import {
   getIndustryBySlug,
   getAllIndustrySlugs
@@ -149,6 +150,7 @@ export default async function IndustryPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      <AEOHead pageType="corporate" data={{ url: `/corporate-transportation-service/industry/${slug}`, title: industry.name || '' }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen Premium Design */}

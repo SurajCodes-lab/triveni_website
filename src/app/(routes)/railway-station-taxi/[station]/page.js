@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
 import RailwayStationClient from '@/components/railway/RailwayStationClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 export const dynamicParams = false;
@@ -173,6 +174,7 @@ export default async function RailwayStationPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
 
+      <AEOHead pageType="station" data={{ url: `/railway-station-taxi/${slug}`, title: `${station.name} Taxi Service`, city: station.city }} />
       <RailwayStationClient station={station} slug={slug} />
     </>
   );

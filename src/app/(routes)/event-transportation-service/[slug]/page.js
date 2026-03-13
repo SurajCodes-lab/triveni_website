@@ -6,6 +6,7 @@ import {
   getEventTypeBySlug,
   getAllEventTypes
 } from '@/utilis/eventTransportData';
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
@@ -149,6 +150,7 @@ export default async function EventTypePage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <AEOHead pageType="event" data={{ url: `/event-transportation-service/${slug}`, title: eventType.name }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen with Background Image */}

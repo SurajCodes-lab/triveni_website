@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import WeddingPageClient from "@/components/wedding/WeddingPageClient";
+import AEOHead from '@/components/seo/AEOHead';
 
 export const metadata = {
   title: 'Wedding Car Rental 2026 | BMW ₹15K, Audi ₹18K | Delhi NCR & North India',
@@ -271,6 +272,7 @@ export default function WeddingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
+      <AEOHead pageType="wedding" data={{ url: '/wedding', title: 'Wedding Car Rental India' }} />
       <WeddingPageClient faqs={faqs} />
     </>
   );

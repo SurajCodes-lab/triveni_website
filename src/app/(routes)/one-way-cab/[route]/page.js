@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getOneWayRoute, getAllOneWayRouteSlugs, getRelatedRoutes } from '@/utilis/oneWayCabData';
 import OneWayCabRouteClient from '@/components/oneway/OneWayCabRouteClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 export const dynamicParams = false;
@@ -170,6 +171,7 @@ export default async function OneWayCabRoutePage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <AEOHead pageType="route" data={{ url: `/one-way-cab/${slug}`, title: `One Way Cab ${route.from} to ${route.to}`, origin: route.from, destination: route.to, city: route.from }} />
       <OneWayCabRouteClient route={route} relatedRoutes={relatedRoutes} />
     </>
   );

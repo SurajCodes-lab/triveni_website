@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AEOHead from '@/components/seo/AEOHead';
 import { tourDetails } from "@/utilis/data";
 
 // ISR: Revalidate every hour for better SEO and performance
@@ -401,6 +402,7 @@ export default function TourPackagePage({ params }) {
 
   return (
     <TrackingProvider slug={slug} packageTitle={packageInfo.title}>
+      <AEOHead pageType="tour" data={{ url: `/tour-package/${slug}`, title: packageInfo.title || '' }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

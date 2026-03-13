@@ -176,9 +176,10 @@ const FAQSection = ({
                     <div className="overflow-hidden">
                       <div
                         className={cn(
-                          'px-4 md:px-5 pb-4 md:pb-5 text-base leading-relaxed',
+                          'faq-answer px-4 md:px-5 pb-4 md:pb-5 text-base leading-relaxed',
                           currentVariant.answer
                         )}
+                        data-snippet-type="faq"
                       >
                         {faq.answer}
                       </div>
@@ -277,7 +278,7 @@ export const InlineFAQ = ({
               </button>
 
               {isOpen && (
-                <div className="p-4 bg-white text-gray-600 text-sm md:text-base border-t border-gray-100">
+                <div className="faq-answer p-4 bg-white text-gray-600 text-sm md:text-base border-t border-gray-100" data-snippet-type="faq">
                   {faq.answer}
                 </div>
               )}
@@ -353,7 +354,7 @@ export const SimpleFAQ = ({
                   isOpen ? 'max-h-96 pb-4' : 'max-h-0'
                 )}
               >
-                <p className="text-gray-600 leading-relaxed">
+                <p className="faq-answer text-gray-600 leading-relaxed" data-snippet-type="faq">
                   {faq.answer}
                 </p>
               </div>

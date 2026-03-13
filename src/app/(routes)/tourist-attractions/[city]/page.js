@@ -2,6 +2,7 @@
 
 import TouristAttractionsClient from '@/components/TouristAttractionsClient';
 import { touristAttractions, getCitiesWithAttractions } from '@/utilis/touristAttractionsData';
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
@@ -128,6 +129,7 @@ export default function TouristAttractionsPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationSchema) }}
       />
+      <AEOHead pageType="tour" data={{ url: `/tourist-attractions/${city}`, title: `${cityName} Tourist Attractions`, city: cityName }} />
       <TouristAttractionsClient data={pageData} />
     </>
   );

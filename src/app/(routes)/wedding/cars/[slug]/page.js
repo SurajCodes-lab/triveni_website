@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import AEOHead from '@/components/seo/AEOHead';
 import { getWeddingCarModel, getAllWeddingCarModelSlugs } from '@/utilis/weddingCarModels';
 import {
   Phone, ChevronRight, CheckCircle2, ArrowRight, Shield, Clock,
@@ -110,6 +111,7 @@ export default async function WeddingCarModelPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="wedding" data={{ url: `/wedding/cars/${slug}`, title: carModel.name || '' }} />
 
       <div className="min-h-screen bg-slate-950">
 

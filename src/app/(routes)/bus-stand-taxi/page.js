@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { busStands } from '@/utilis/busStandData';
 import { Phone, MapPin, Bus, ArrowRight, Clock, Shield, Star, Users, ChevronDown } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 
@@ -102,6 +103,7 @@ export default function BusStandTaxiHubPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="busStand" data={{ url: '/bus-stand-taxi', title: 'Bus Stand Taxi Service' }} />
 
       <div className="min-h-screen bg-slate-950 text-white">
         {/* Hero */}

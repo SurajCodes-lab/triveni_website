@@ -2,6 +2,7 @@
 
 import SightseeingMainClient from './SightseeingMainClient';
 import { getAllTours, tourCategories, featuredTours } from '@/utilis/sightseeingData';
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR - Revalidate every hour (3600 seconds)
 export const revalidate = false;
@@ -295,6 +296,7 @@ export default function SightseeingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
+      <AEOHead pageType="tour" data={{ url: '/sightseeing', title: 'Sightseeing Tours India' }} />
       <SightseeingMainClient data={pageData} faqData={faqData} />
     </>
   );

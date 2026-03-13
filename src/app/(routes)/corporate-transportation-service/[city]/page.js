@@ -9,6 +9,7 @@ import {
   getCorporateCityBySlug,
   getAllCorporateSlugs
 } from '@/utilis/corporateTransportData';
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
@@ -156,6 +157,7 @@ export default async function CorporateCityPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="corporate" data={{ url: `/corporate-transportation-service/${city}`, title: `${cityData.name} Corporate Transport`, city: cityData.name }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen with City Image */}

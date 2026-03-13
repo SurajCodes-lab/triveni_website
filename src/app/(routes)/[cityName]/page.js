@@ -13,6 +13,7 @@ import { generateRouteMetadata, generateCityHubMetadata } from "@/lib/seo/metada
 import CityServiceClient from "@/components/cities/CityServiceClient";
 import RouteClientContent from "./RouteClientContent";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
+import AEOHead from '@/components/seo/AEOHead';
 
 const allCityRoutes = {
   ...cityRoutesData,
@@ -247,6 +248,7 @@ export default function CityNamePage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeBreadcrumbSchema) }}
           strategy="beforeInteractive"
         />
+        <AEOHead pageType="route" data={{ url: `/${cityName}`, title: `${formattedCityName} to ${formattedDestination} Taxi`, origin: formattedCityName, destination: formattedDestination }} />
         <RouteClientContent
           cityName={originCity}
           formattedCityName={formattedCityName}
@@ -496,6 +498,7 @@ export default function CityNamePage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceListSchema) }}
           strategy="beforeInteractive"
         />
+        <AEOHead pageType="cityHub" data={{ url: `/${cityName}`, title: `${formattedCityName} Cab Service`, city: formattedCityName }} />
         <CityServiceClient
           formattedCityName={formattedCityName}
           citySpots={citySpots}

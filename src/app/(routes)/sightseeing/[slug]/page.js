@@ -9,6 +9,7 @@ import SightseeingDetailClient from './SightseeingDetailClient';
 import CityToursPage from './CityToursPage';
 import { notFound } from 'next/navigation';
 import { generateTourMetadata, generateSightseeingCityMetadata } from '@/lib/seo/metadata-factory';
+import AEOHead from '@/components/seo/AEOHead';
 
 export async function generateStaticParams() {
   const allTours = getAllTours();
@@ -308,6 +309,7 @@ export default async function SightseeingDetailPage({ params }) {
           }}
         />
 
+        <AEOHead pageType="tour" data={{ url: `/sightseeing/${slug}`, title: `${cityName} Sightseeing Tours`, city: cityName }} />
         <CityToursPage city={slug} />
       </>
     );
@@ -766,6 +768,7 @@ export default async function SightseeingDetailPage({ params }) {
         />
       )}
 
+      <AEOHead pageType="tour" data={{ url: `/sightseeing/${slug}`, title: tour.name, city: tour.category || slug.split('-')[0] }} />
       <SightseeingDetailClient tour={tour} />
     </>
   );

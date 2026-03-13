@@ -2,6 +2,7 @@
 
 import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerData';
 import TempoMainClient from '@/components/TempoMainClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 
@@ -418,6 +419,7 @@ export default function TempoTravellerPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+      <AEOHead pageType="tempo" data={{ url: '/tempo-traveller', title: 'Tempo Traveller Rental India' }} />
       <TempoMainClient data={pageData} faqData={[
         {
           question: 'What seater options are available?',

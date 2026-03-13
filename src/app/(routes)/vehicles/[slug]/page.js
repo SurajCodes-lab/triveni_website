@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import VehicleDetails from "@/components/VehicleDetails";
 import VehicleHireClient from "@/components/vehicles/VehicleHireClient";
+import AEOHead from '@/components/seo/AEOHead';
 import { vehicleDetails } from "@/utilis/data";
 import { vehicleHirePages, getAllVehicleHireSlugs } from "@/utilis/vehicleHireData";
 
@@ -208,6 +209,7 @@ export default async function VehicleSlugPage({ params }) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         ))}
+        <AEOHead pageType="route" data={{ url: `/vehicles/${slug}`, title: vehicleHire.name || '' }} />
         <VehicleHireClient vehicle={vehicleHire} />
       </>
     );

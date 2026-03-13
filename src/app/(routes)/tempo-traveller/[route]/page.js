@@ -10,6 +10,7 @@ import { generateTempoMetadata } from '@/lib/seo/metadata-factory';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import TempoCityClient from '@/components/TempoCityClient';
 import ChardhamTempoClient from '@/components/ChardhamTempoClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 // Helper to check if slug is a Chardham route
 function isChardhamSlug(slug) {
@@ -321,6 +322,7 @@ export default async function TempoTravellerRoutePage({ params }) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
           />
         )}
+        <AEOHead pageType="tour" data={{ url: `/tempo-traveller/${route}`, title: `Chardham ${chardhamData.name} Tempo Traveller` }} />
         <ChardhamTempoClient data={chardhamData} />
       </>
     );
@@ -402,6 +404,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityBreadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityItemListSchema) }} />
+        <AEOHead pageType="tempo" data={{ url: `/tempo-traveller/${route}`, title: `${cityData.name} Tempo Traveller`, city: cityData.name }} />
         <TempoCityClient data={pageData} />
       </>
     );
@@ -676,6 +679,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
+      <AEOHead pageType="tempo" data={{ url: `/tempo-traveller/${route}`, title: `Tempo Traveller ${originFormatted} to ${destinationFormatted}`, origin: originFormatted, destination: destinationFormatted, city: originFormatted }} />
       <DynamicTempoRoutesClient data={pageData} />
     </>
   );

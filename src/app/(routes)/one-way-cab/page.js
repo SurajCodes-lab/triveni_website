@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Route, Zap, Navigation } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const metadata = {
   title: 'One Way Cab Service 2026 | Save 50% | Sedan ₹11/km | Book Now',
@@ -48,6 +49,7 @@ export default function OneWayCabPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <AEOHead pageType="route" data={{ url: '/one-way-cab', title: 'One Way Cab Service India' }} />
 
       {/* ===== DESIGN: Emerald savings theme with clean white, comparison focus ===== */}
       <div className="min-h-screen bg-white text-stone-900">

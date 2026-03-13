@@ -9,6 +9,7 @@ import {
 import { getAllIndustries } from '@/utilis/corporateIndustryData';
 import { getAllUseCases } from '@/utilis/corporateUseCaseData';
 import { getServicePages, getGeneralContent } from '@/utilis/linkingHelper';
+import AEOHead from '@/components/seo/AEOHead';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -334,6 +335,7 @@ export default function CorporateTransportationPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="corporate" data={{ url: '/corporate-transportation-service', title: 'Corporate Transportation Service' }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen with Image */}

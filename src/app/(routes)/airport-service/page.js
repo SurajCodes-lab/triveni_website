@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import AirportServiceClient from "@/components/airport/AirportServiceClient";
+import AEOHead from '@/components/seo/AEOHead';
 
 export const metadata = {
   title: 'Airport Taxi 2026 | Delhi IGI from ₹1,500 | Flight Tracking | Book Now',
@@ -261,6 +262,7 @@ export default function AirportServicePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <AEOHead pageType="airport" data={{ url: '/airport-service', title: 'Airport Taxi Service' }} />
       <AirportServiceClient faqData={faqData} />
     </>
   );

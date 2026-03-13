@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-// Centralized icon imports for better bundle optimization
 import { MessageCircle } from '@/components/ui/icons';
-import { trackWhatsAppClick, trackHover, trackEvent } from '@/utilis/analytics';
+import { trackWhatsAppClick, trackHover } from '@/utilis/analytics';
 
 const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -28,7 +27,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
 
   return (
     <div
-      className="fixed bottom-16 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-50 animate-fade-in-up"
+      className="fixed bottom-16 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-50 animate-fade-in-up hidden md:block"
     >
       <div
         className="relative hover:scale-105 active:scale-95 transition-transform duration-200"
@@ -36,7 +35,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
       >
         {/* Outer pulse ring - CSS animation for better performance */}
         <div
-          className="absolute inset-0 rounded-full hidden sm:block animate-whatsapp-pulse"
+          className="absolute inset-0 rounded-full animate-whatsapp-pulse"
           style={{
             background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
             filter: 'blur(6px)'
@@ -46,7 +45,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
 
         {/* Notification ping dot */}
         <div
-          className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"
+          className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white shadow-lg z-10"
           aria-hidden="true"
         >
           <div className="absolute inset-0 rounded-full bg-red-500 animate-ping" />
@@ -57,7 +56,7 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
           onClick={handleClick}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className="relative overflow-hidden w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center group transition-all duration-300 focus-visible:ring-2 focus-visible:ring-green-300 focus-visible:ring-offset-2"
+          className="relative overflow-hidden w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center group transition-all duration-300 focus-visible:ring-2 focus-visible:ring-green-300 focus-visible:ring-offset-2"
           style={{
             background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
             boxShadow: '0 4px 20px rgba(37, 211, 102, 0.35), 0 2px 10px rgba(0, 0, 0, 0.15), inset 0 -1px 4px rgba(0, 0, 0, 0.15), inset 0 1px 4px rgba(255, 255, 255, 0.2)'
@@ -77,15 +76,15 @@ const WhatsAppFloat = ({ phoneNumber = "1234567890" }) => {
           {/* Icon - CSS animation instead of framer-motion */}
           <div className="relative z-10 animate-whatsapp-wiggle">
             <MessageCircle
-              className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
+              className="w-6 h-6 md:w-7 md:h-7 text-white drop-shadow-lg group-hover:drop-shadow-2xl transition-all duration-300"
               strokeWidth={2.5}
               aria-hidden="true"
             />
           </div>
 
-          {/* Tooltip - hidden on mobile */}
+          {/* Tooltip */}
           <span
-            className={`hidden md:block absolute right-full mr-3 lg:mr-4 px-3 py-2 lg:px-4 lg:py-2.5 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap shadow-2xl transition-all duration-300 ${
+            className={`block absolute right-full mr-3 lg:mr-4 px-3 py-2 lg:px-4 lg:py-2.5 rounded-xl text-xs lg:text-sm font-medium whitespace-nowrap shadow-2xl transition-all duration-300 ${
               isFocused ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible translate-x-2 group-hover:opacity-100 group-hover:visible group-hover:translate-x-0'
             }`}
             style={{

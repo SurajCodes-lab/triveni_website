@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import CityWeddingPageClient from "@/components/wedding/CityWeddingPageClient";
 import { getWeddingCityData, getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
 import { generateWeddingMetadata } from "@/lib/seo/metadata-factory";
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
@@ -240,6 +241,7 @@ export default function CityWeddingPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
+      <AEOHead pageType="wedding" data={{ url: `/wedding/${params.city}`, title: `${city.name} Wedding Car Rental`, city: city.name }} />
       <CityWeddingPageClient city={city} citySlug={params.city} />
     </>
   );

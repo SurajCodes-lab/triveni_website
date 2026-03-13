@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/utilis/blog';
 import BlogPostPageClient from '@/components/blog/BlogPostPageClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR - Revalidate every hour (3600 seconds)
 export const revalidate = false;
@@ -132,6 +133,7 @@ export default async function BlogPostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <AEOHead pageType="tour" data={{ url: `/blog/${slug}`, title: post.title || '' }} />
       <BlogPostPageClient post={post} />
     </>
   );

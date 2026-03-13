@@ -290,6 +290,56 @@ const structuredData = [
       "cssSelector": [".direct-answer", ".faq-answer", ".key-info", ".key-stats", ".summary-box", ".inline-stats", "article > p:first-of-type", "[data-snippet-type]", "[data-citation-source]"]
     },
     "url": "https://www.trivenicabs.in"
+  },
+  // ServiceAreaBusiness Schema — AEO/GEO: Signals multi-city coverage to AI engines
+  {
+    "@context": "https://schema.org",
+    "@type": "ServiceAreaBusiness",
+    "@id": "https://www.trivenicabs.in/#serviceareabusiness",
+    "name": "Triveni Cabs",
+    "description": "Premium taxi and cab service provider across North India offering reliable transportation for sightseeing tours, airport transfers, corporate travel, and wedding events.",
+    "url": "https://www.trivenicabs.in",
+    "telephone": "+91-7668570551",
+    "email": "cabstriveni@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "366, Dandupura, near Tajganj",
+      "addressLocality": "Agra",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "282006",
+      "addressCountry": "IN"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 27.1767, "longitude": 78.0081 },
+    "areaServed": [
+      { "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Jaipur" },
+      { "@type": "City", "name": "Agra" }, { "@type": "City", "name": "Chandigarh" },
+      { "@type": "City", "name": "Amritsar" }, { "@type": "City", "name": "Dehradun" },
+      { "@type": "City", "name": "Haridwar" }, { "@type": "City", "name": "Rishikesh" },
+      { "@type": "City", "name": "Shimla" }, { "@type": "City", "name": "Manali" },
+      { "@type": "City", "name": "Udaipur" }, { "@type": "City", "name": "Jodhpur" },
+      { "@type": "City", "name": "Varanasi" }, { "@type": "City", "name": "Lucknow" },
+      { "@type": "City", "name": "Mathura" }, { "@type": "City", "name": "Noida" },
+      { "@type": "City", "name": "Gurgaon" }, { "@type": "City", "name": "Mussoorie" },
+      { "@type": "City", "name": "Nainital" }, { "@type": "City", "name": "Dharamshala" },
+      { "@type": "City", "name": "Srinagar" }, { "@type": "City", "name": "Ayodhya" },
+      { "@type": "City", "name": "Jaisalmer" }, { "@type": "City", "name": "Pushkar" },
+      { "@type": "City", "name": "Ranthambore" }
+    ],
+    "serviceType": ["Taxi Service", "Cab Booking", "Airport Transfer", "Sightseeing Tours", "Corporate Transportation", "Wedding Car Rental", "Tempo Traveller Rental", "Bus Hire"],
+    "priceRange": "₹₹",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   }
 ];
 

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getTourBySlug, getAllTourSlugs } from '@/utilis/religiousTourData';
 import ReligiousTourClient from '@/components/religious/ReligiousTourClient';
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
@@ -151,6 +152,7 @@ export default async function ReligiousTourPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <AEOHead pageType="tour" data={{ url: `/religious-tours/${resolvedParams.slug}`, title: tour.title || '' }} />
       <ReligiousTourClient tour={tour} />
     </>
   );

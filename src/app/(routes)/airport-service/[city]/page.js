@@ -3,6 +3,7 @@ import CityAirportServiceClient from "@/components/airport/CityAirportServiceCli
 import { getCityData, getAllCitySlugs } from "@/utilis/airportCityData";
 import { sightseeingTours } from '@/utilis/sightseeingData';
 import { generateAirportMetadata } from "@/lib/seo/metadata-factory";
+import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = false;
@@ -123,6 +124,7 @@ export default function CityAirportPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <AEOHead pageType="airport" data={{ url: `/airport-service/${params.city}`, title: `${city.name} Airport Taxi Service`, city: city.name }} />
       <CityAirportServiceClient
         city={city}
         citySlug={params.city}

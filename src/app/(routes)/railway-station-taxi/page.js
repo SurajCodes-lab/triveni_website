@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
+import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
 
@@ -115,6 +116,7 @@ export default function RailwayStationTaxiHub() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AEOHead pageType="station" data={{ url: '/railway-station-taxi', title: 'Railway Station Taxi Service' }} />
 
       <div className="min-h-screen bg-slate-950">
 
