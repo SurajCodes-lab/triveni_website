@@ -11,6 +11,10 @@ import {
 } from '@/utilis/eventTransportData';
 import { getWeddingPages, getServicePages } from '@/utilis/linkingHelper';
 import AEOHead from '@/components/seo/AEOHead';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -30,6 +34,8 @@ import {
   Car,
   HelpCircle
 } from '@/components/ui/icons';
+
+export const revalidate = false;
 
 export const metadata = {
   title: 'Event Transportation Services | Wedding, Corporate & Festival Transport | Triveni Cabs',
@@ -465,6 +471,9 @@ export default function EventTransportationPage() {
             </div>
           </div>
         </section>
+
+        {/* Social Proof */}
+        <SocialProofStrip theme="light" />
 
         {/* Trust Bar */}
         <section className="py-6 bg-slate-900 border-y border-slate-800">
@@ -956,6 +965,14 @@ export default function EventTransportationPage() {
             </div>
           </div>
         </section>
+
+        {/* What's Included */}
+        <InclusionBadges preset="tour" theme="light" />
+        <SectionDivider color="gray" className="my-4" />
+
+        {/* How It Works */}
+        <BookingJourney theme="light" />
+        <SectionDivider color="gray" className="my-4" />
 
         {/* FAQ Section */}
         <section className="py-32 px-4 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">

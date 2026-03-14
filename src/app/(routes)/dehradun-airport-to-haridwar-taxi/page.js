@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'dehradun-airport-to-haridwar-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Dehradun Airport to Haridwar Taxi | Fixed \u20B9${data.fares.sedan.price} | Quick Transfer`,
   description: `Dehradun Jolly Grant Airport to Haridwar taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Closest airport to Haridwar. ${data.time}. Call 7668570551.`,

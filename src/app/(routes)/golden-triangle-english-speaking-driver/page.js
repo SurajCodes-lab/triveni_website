@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Golden Triangle Tour with English Speaking Driver 2026 | Delhi Agra Jaipur | Triveni Cabs',
   description: 'Golden Triangle tour (Delhi-Agra-Jaipur) with English-speaking chauffeur. 3/4/5 day options from $135. Taj Mahal, Amber Fort, India Gate. Trusted by 1500+ tourists.',

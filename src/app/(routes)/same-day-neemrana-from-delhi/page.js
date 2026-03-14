@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-neemrana-from-delhi');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Neemrana Fort Tour from Delhi | ₹3,000 AC Cab | 2026',
   description: 'Book same day Neemrana tour from Delhi. Neemrana Fort Palace, zip-lining, stepwell. Just 120 km. AC sedan ₹3,000, SUV ₹4,500. Call 7668570551.',

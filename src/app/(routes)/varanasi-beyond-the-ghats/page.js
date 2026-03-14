@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Varanasi Beyond the Ghats | Hidden Gems & Day Trips | 2026',
   description: 'Discover Varanasi beyond the ghats. Sarnath, Ramnagar Fort, Chunar Fort, BHU, Kabir Math, silk weaving villages + more. By locals. Call 7668570551.',

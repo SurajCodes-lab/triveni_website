@@ -4,12 +4,23 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2, IndianRupee, Route, Zap, MapPin, Navigation, Star, Users } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import StickyPriceBar from '@/components/shared/StickyPriceBar';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import RouteVisualization from '@/components/shared/RouteVisualization';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 export default function OneWayCabRouteClient({ route, relatedRoutes }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
+      <StickyPriceBar
+        title={`${route.from} to ${route.to} One-Way Cab`}
+        price={route.sedanFare || ''}
+        badge="Save 50%"
+        whatsappMessage={`Hi, I want to book a one-way cab from ${route.from} to ${route.to}`}
+      />
 
       {/* CSS Animations */}
       <style jsx global>{`
@@ -116,6 +127,9 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+
+      <SocialProofStrip theme="dark" />
+      <RouteVisualization origin={route.from} destination={route.to} distance={route.distance} duration={route.duration} highway={route.highway} accentColor="amber" />
 
       {/* ═══════════════════════════════════════════════════════════════
           SAVINGS COMPARISON: Arrow-shaped directional cards
@@ -362,6 +376,9 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+
+      <InclusionBadges preset="outstation" theme="dark" />
+      <SectionDivider color="amber" className="my-8" />
 
       {/* ═══════════════════════════════════════════════════════════════
           FAQ: Expandable accordion with glow effects

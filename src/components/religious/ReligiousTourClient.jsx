@@ -20,6 +20,8 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks } from '@/components/seo/RelatedContent';
 import { generateTourFAQs } from '@/lib/seo/faq-generator';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import InclusionBadges from '@/components/shared/InclusionBadges';
 
 const ReligiousTourClient = ({ tour }) => {
   const [activeDay, setActiveDay] = useState(null);
@@ -200,6 +202,8 @@ const ReligiousTourClient = ({ tour }) => {
           </div>
         </motion.div>
       </section>
+
+      <SocialProofStrip theme="dark" />
 
       {/* ABOUT THIS JOURNEY SECTION */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
@@ -528,6 +532,8 @@ const ReligiousTourClient = ({ tour }) => {
           </div>
         </div>
       </section>
+
+      <InclusionBadges preset="tour" theme="dark" />
 
       {/* SEO: FAQ Section */}
       <FAQSection

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Udaipur Shopping Guide 2026 | Miniature Paintings, Silver & Crafts',
   description: 'Udaipur shopping guide. Miniature paintings, Pichwai art, silver jewelry, puppets, marble crafts, Bandhani. Hathi Pol, Bada Bazaar, Shilpgram. Prices & tips. Call 7668570551.',

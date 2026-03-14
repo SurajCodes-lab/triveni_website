@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: '10 Day North India Road Trip Itinerary 2026 | Delhi-Agra-Jaipur-Jaisalmer | Triveni Cabs',
   description: '10 day north India road trip itinerary covering Delhi, Agra, Jaipur, Udaipur, Jodhpur & Jaisalmer. Day-wise plan, distances, costs. Sedan ₹55,000, SUV ₹75,000. Call 7668570551.',

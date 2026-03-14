@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Calendar, Route } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Round Trip Cab Booking 2026 | Same Driver | Sedan ₹11/km | Multi-Day',
   description: 'Book round trip cabs with same driver for multi-day trips. Sedan ₹11/km, SUV ₹15/km. Delhi-Agra, Delhi-Jaipur & 500+ routes. Flexible schedules. Call 7668570551.',

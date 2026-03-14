@@ -3,6 +3,8 @@ import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import { Users, Fuel, Car, Check, X, ArrowRight, Phone, MapPin } from "@/components/ui/icons";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Tempo Traveller vs Bus: Which to Rent for Group Travel? | Triveni Cabs",
   description: "Tempo Traveller or Bus rental? Compare capacity (12-26 vs 28-55 seats), pricing, comfort & best use cases. Tempo from ₹22/km, Bus from ₹55/km. Choose the right group vehicle!",

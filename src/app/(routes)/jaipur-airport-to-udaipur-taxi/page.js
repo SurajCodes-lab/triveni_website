@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'jaipur-airport-to-udaipur-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Jaipur Airport to Udaipur Taxi | Fixed \u20B9${data.fares.sedan.price} | Rajasthan Route`,
   description: `Jaipur Airport to Udaipur taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Flight tracking, meet & greet. ${data.time} scenic drive. Call 7668570551.`,

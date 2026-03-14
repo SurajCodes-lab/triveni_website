@@ -9,12 +9,22 @@ import {
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import StickyPriceBar from '@/components/shared/StickyPriceBar';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 export default function BusStandClient({ stand, slug, allStands }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
+      <StickyPriceBar
+        title={`${stand.name} Taxi Service`}
+        price={stand.destinations?.[0]?.fare || ''}
+        whatsappMessage={`Hi, I need a taxi from ${stand.name}, ${stand.city}`}
+      />
+
       {/* Hero Section - Dramatic Bus Terminal Design */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
         {/* Animated gradient background */}
@@ -142,6 +152,8 @@ export default function BusStandClient({ stand, slug, allStands }) {
           </div>
         </div>
       </section>
+
+      <SocialProofStrip theme="dark" />
 
       {/* Quick Stats Bar - LED Board Style */}
       <section className="relative border-y border-amber-500/10 bg-slate-900/80 backdrop-blur-sm">
@@ -435,6 +447,9 @@ export default function BusStandClient({ stand, slug, allStands }) {
           </div>
         </div>
       </section>
+
+      <InclusionBadges preset="local" theme="dark" />
+      <SectionDivider color="amber" className="my-8" />
 
       {/* FAQ Section */}
       <section className="py-24 relative">

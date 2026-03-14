@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, IndianRupee, Sparkles, Navigation } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Ayodhya Ram Mandir Tour from Delhi | Sedan ₹8,500 | 2-3 Day Packages',
   description: 'Book Ayodhya Ram Mandir tour from Delhi. 530km, 9-10 hrs drive. Sedan ₹8,500, SUV ₹12,000. Ram Mandir darshan, Hanuman Garhi, Saryu Ghat. Call 7668570551.',

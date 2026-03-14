@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Route, Camera } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Taj Mahal Tour from Delhi by Car | ₹4,500 | 2026',
   description: 'Private car tour from Delhi to Taj Mahal. Yamuna Expressway, 3-3.5 hrs. Sedan ₹4,500, SUV ₹6,500. Multiple itinerary options. Call 7668570551.',

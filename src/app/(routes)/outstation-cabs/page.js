@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Calendar, Route, Zap, Navigation } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Outstation Cab Booking 2026 | Sedan ₹11/km, SUV ₹15/km | 500+ Routes',
   description: 'Book outstation cabs from Delhi, Agra, Jaipur at ₹11/km. One-way & round trip. 500+ routes, verified drivers, AC vehicles. 10,000+ trips completed. Call 7668570551.',

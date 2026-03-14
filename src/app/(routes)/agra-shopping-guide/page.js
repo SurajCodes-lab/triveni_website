@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Agra Shopping Guide 2026 | Marble, Leather & Handicrafts',
   description: 'Agra shopping guide. Marble inlay (Pietra Dura), leather goods, Zardozi embroidery. Sadar, Kinari, Subhash Bazaar. Price ranges & tips. Call 7668570551.',

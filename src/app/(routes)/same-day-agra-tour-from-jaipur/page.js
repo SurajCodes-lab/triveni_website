@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-agra-tour-from-jaipur');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Agra Tour from Jaipur | ₹5,500 AC Cab | 2026',
   description: 'Book same day Agra tour from Jaipur by car. Visit Taj Mahal, Agra Fort, Baby Taj via NH21. AC sedan ₹5,500, SUV ₹7,500. Call 7668570551.',

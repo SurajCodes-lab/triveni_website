@@ -134,7 +134,7 @@ export default function ChardhamRouteClient({ data }) {
                 transition={{ delay: i * 0.1 }}
                 className="relative h-40 rounded-xl overflow-hidden group"
               >
-                <Image src={img} alt={`${destination} route highlight ${i + 1}`} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src={img} alt={`${destination} route highlight ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-950/60 to-transparent" />
               </motion.div>
             ))}
@@ -173,7 +173,7 @@ export default function ChardhamRouteClient({ data }) {
                 )}
                 <div className="p-5 pt-8">
                   <div className="relative h-32 mb-4">
-                    <Image src={car.image} alt={car.name} fill className="object-contain group-hover:scale-105 transition-transform" />
+                    <Image src={car.image} alt={car.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain group-hover:scale-105 transition-transform" />
                   </div>
                   <h3 className="text-white font-bold text-lg">{car.name}</h3>
                   <p className="text-teal-400/60 text-sm">{car.category} | {car.seats} Seater</p>
@@ -221,7 +221,7 @@ export default function ChardhamRouteClient({ data }) {
                   {allBusPrices.map((bus, i) => (
                     <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-teal-500/30 transition-all">
                       <div className="relative h-24 mb-3">
-                        <Image src={bus.image} alt={bus.name} fill className="object-contain" />
+                        <Image src={bus.image} alt={bus.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                       </div>
                       <h4 className="text-white font-semibold">{bus.name}</h4>
                       <p className="text-teal-400/60 text-sm">{bus.seats} Seater | ₹{bus.perKm}/km</p>
@@ -241,7 +241,7 @@ export default function ChardhamRouteClient({ data }) {
                   {tempoOptions.map((tempo, i) => (
                     <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:border-teal-500/30 transition-all">
                       <div className="relative h-20 mb-2">
-                        <Image src={tempo.image} alt={tempo.name} fill className="object-contain" />
+                        <Image src={tempo.image} alt={tempo.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                       </div>
                       <p className="text-white font-semibold text-sm">{tempo.name}</p>
                       <p className="text-teal-400/60 text-xs">₹{tempo.perKm}/km</p>
@@ -394,7 +394,7 @@ export default function ChardhamRouteClient({ data }) {
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-3">
                 {images.gallery.map((img, i) => (
                   <div key={i} className={`relative overflow-hidden rounded-2xl ${i === 0 ? 'row-span-2 h-full min-h-[280px]' : 'h-36'}`}>
-                    <Image src={img} alt={`${origin} highlight ${i + 1}`} fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src={img} alt={`${origin} highlight ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                 ))}
               </motion.div>

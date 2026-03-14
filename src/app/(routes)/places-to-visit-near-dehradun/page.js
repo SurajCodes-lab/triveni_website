@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.dehradun;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Dehradun by Car | Mountain Escapes | Book Cab',
   description: `Best places to visit near Dehradun by car. Mussoorie (35 km), Rishikesh (45 km), Haridwar (55 km), Auli (290 km) & more. Sedan ₹11/km. Call 7668570551.`,

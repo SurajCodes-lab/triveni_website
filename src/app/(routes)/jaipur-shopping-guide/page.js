@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jaipur Shopping Guide 2026 | Jewelry, Block Print & Handicrafts',
   description: 'Jaipur shopping guide. Kundan jewelry, block print, Blue Pottery, Bandhani textiles, gemstones. Johari Bazaar, Bapu Bazaar, Tripolia Bazaar. Prices & tips. Call 7668570551.',

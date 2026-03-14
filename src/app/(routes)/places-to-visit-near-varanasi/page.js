@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.varanasi;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Varanasi by Car | Spiritual Trails | Book Cab',
   description: `Best places to visit near Varanasi by car. Sarnath (10 km), Prayagraj (120 km), Bodhgaya (250 km), Ayodhya (210 km) & more. Sedan ₹11/km. Call 7668570551.`,

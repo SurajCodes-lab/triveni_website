@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Agra Tour from Delhi | ₹4,500 AC Cab | 2026',
   description: 'Book same day Agra tour from Delhi by car. Taj Mahal, Agra Fort, Baby Taj visit. AC sedan ₹4,500, SUV ₹6,500. Yamuna Expressway. Call 7668570551.',

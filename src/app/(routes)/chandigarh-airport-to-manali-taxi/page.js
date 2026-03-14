@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'chandigarh-airport-to-manali-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Chandigarh Airport to Manali Taxi | Fixed \u20B9${data.fares.sedan.price} | Mountain Route`,
   description: `Chandigarh Airport to Manali taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Scenic Beas Valley drive. ${data.time}. Call 7668570551.`,

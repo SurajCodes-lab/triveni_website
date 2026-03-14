@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Udaipur Food Tour 2026 | Dal Baati, Gatte Ki Sabzi & Lake City Cuisine Guide',
   description: 'Udaipur food & culinary tour. Famous Dal Baati, Gatte Ki Sabzi, Kachori, Kulfi, Pani Puri. Street food itinerary, best restaurants, lakeside dining. By Udaipur locals. Call 7668570551.',

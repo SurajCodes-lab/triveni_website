@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Shimla Beyond Mall Road | Hidden Gems & Day Trips | 2026',
   description: 'Discover Shimla beyond Mall Road. Mashobra, Naldehra, Tattapani hot springs, Chail, Fagu, Narkanda, Wildflower Hall, Jakhu Ropeway + more. Call 7668570551.',

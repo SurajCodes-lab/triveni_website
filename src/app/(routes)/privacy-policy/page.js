@@ -1,5 +1,7 @@
 import PrivacyClient from "./PrivacyClient";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Privacy Policy | Triveni Cabs",
   description: "Read Triveni Cabs privacy policy. Learn how we collect, use, and protect your personal information when you use our taxi and car rental services across India.",

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Pushkar Food Tour 2026 | Malpua, Dal Bati & Holy Lake Cuisine Guide',
   description: 'Pushkar food & culinary tour. Pure vegetarian holy city. Famous Malpua, Dal Bati Churma, Poha, Malai Lassi, Aloo Tikki. Street food itinerary, best cafes & restaurants. By locals. Call 7668570551.',

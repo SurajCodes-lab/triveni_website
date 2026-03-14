@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-gwalior-from-agra');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Gwalior Tour from Agra | ₹3,500 AC Cab | 2026',
   description: 'Book same day Gwalior tour from Agra. Gwalior Fort, Jai Vilas Palace, Tansen Tomb. 120 km. AC sedan ₹3,500, SUV ₹5,000. Call 7668570551.',

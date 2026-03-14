@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Car, MapPin, ThumbsUp, Award, Quote } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Triveni Cabs Reviews | 4.8★ Rating | 2,847+ Customer Reviews 2026',
   description: 'Read 2,847+ genuine Triveni Cabs reviews. 4.8/5 rating. Customer feedback on outstation cabs, airport taxi, wedding cars & more. Verified reviews from real travelers.',

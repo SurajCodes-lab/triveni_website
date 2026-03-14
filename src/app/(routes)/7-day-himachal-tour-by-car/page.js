@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: '7 Day Himachal Pradesh Tour Plan by Car 2026 | Shimla Manali Dharamshala | Triveni Cabs',
   description: '7 day Himachal Pradesh tour plan by car covering Shimla, Manali, Dharamshala & Dalhousie. Day-wise itinerary, distances, hotel areas, costs. Sedan ₹35,000, SUV ₹50,000. Call 7668570551.',

@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'chandigarh-airport-to-shimla-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Chandigarh Airport to Shimla Taxi | Fixed \u20B9${data.fares.sedan.price} | Hill Experts`,
   description: `Chandigarh Airport to Shimla taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Expert hill drivers, scenic mountain drive. ${data.time}. Call 7668570551.`,

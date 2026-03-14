@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Shimla Travel Guide 2026 | Queen of Hills, Mall Road & Kufri',
   description: 'Complete Shimla travel guide 2026. Mall Road, Jakhu Temple, Kufri, Christ Church, best time to visit, food, snow tips. Call 7668570551.',

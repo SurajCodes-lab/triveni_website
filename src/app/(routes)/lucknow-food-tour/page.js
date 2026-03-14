@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Lucknow Food Tour 2026 | Tunday Kebab, Biryani & Awadhi Cuisine Guide',
   description: 'Lucknow food & culinary tour. Famous Tunday Kebab, Lucknowi Biryani, Galawati Kebab, Basket Chaat, Makkhan Malai. Street food itinerary, best restaurants. By Lucknow locals. Call 7668570551.',

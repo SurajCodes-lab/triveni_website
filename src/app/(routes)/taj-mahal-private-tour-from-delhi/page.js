@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Private Taj Mahal Tour from Delhi 2026 | Skip-the-Line Tips | Triveni Cabs',
   description: 'Private Taj Mahal tour from Delhi for tourists. Sunrise visit, skip-the-line tips, photography guide. AC car with English-speaking driver from $40. Call +91-7668570551.',

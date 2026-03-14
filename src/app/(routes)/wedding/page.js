@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import WeddingPageClient from "@/components/wedding/WeddingPageClient";
 import AEOHead from '@/components/seo/AEOHead';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Wedding Car Rental 2026 | BMW ₹15K, Audi ₹18K | Delhi NCR & North India',
   description: 'Book wedding cars: BMW ₹15K, Audi ₹18K, Mercedes ₹20K, Vintage ₹25K. Baraat tempo 12-26 seater ₹8K+. 500+ weddings done. Decoration included. Call 7668570551.',

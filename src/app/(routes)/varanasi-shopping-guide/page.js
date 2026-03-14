@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Varanasi Shopping Guide 2026 | Banarasi Silk, Brassware & Crafts',
   description: 'Varanasi shopping guide. Banarasi silk sarees, brassware, wooden toys, Rudraksha beads, gulabi minakari. Vishwanath Gali, Thatheri Bazaar, Chowk. Call 7668570551.',

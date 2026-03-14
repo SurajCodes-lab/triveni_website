@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Top 20 Weekend Getaways from Delhi by Car 2026 | Triveni Cabs',
   description: 'Best weekend trips from Delhi by car in 2026. Distance, drive time, costs & itineraries for Agra, Jaipur, Rishikesh, Mussoorie & 16 more. Book AC cab from ₹9/km. Call 7668570551.',

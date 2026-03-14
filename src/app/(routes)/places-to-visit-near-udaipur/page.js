@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.udaipur;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Udaipur by Car | Royal Mewar | Book Cab',
   description: `Best places to visit near Udaipur by car. Chittorgarh (115 km), Kumbhalgarh (85 km), Ranakpur (90 km), Mount Abu (165 km) & more. Sedan ₹11/km. Call 7668570551.`,

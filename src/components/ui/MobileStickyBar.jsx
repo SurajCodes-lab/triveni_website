@@ -1,81 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Phone } from '@/components/ui/icons';
 import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
 
-/**
- * Reads the current page URL to build a contextual WhatsApp message
- * instead of the generic "I'd like a quote for cab service."
- */
-function getPageContext() {
-  if (typeof window === 'undefined') return { message: "Hi, I'd like a quote for cab service.", label: 'Get Quote' };
-
-  const path = window.location.pathname;
-  const parts = path.split('/').filter(Boolean);
-  const title = document.title || '';
-
-  // Extract city/route from URL patterns
-  const slug = parts[parts.length - 1] || '';
-  const prettySlug = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-
-  let message = "Hi, I'd like a quote for cab service.";
-
-  if (parts[0] === 'one-way-cab' && slug) {
-    message = `Hi, I need a quote for one-way cab on the ${prettySlug} route. Please share pricing.`;
-  } else if (parts[0] === 'tempo-traveller' && slug) {
-    message = `Hi, I need a tempo traveller quote for ${prettySlug}. Please share pricing.`;
-  } else if (parts[0] === 'airport-service' && slug) {
-    message = `Hi, I need airport cab service in ${prettySlug}. Please share pricing.`;
-  } else if (parts[0] === 'sightseeing' && slug) {
-    message = `Hi, I'm interested in the ${prettySlug} sightseeing tour. Please share pricing.`;
-  } else if (parts[0] === 'tour-package' && slug) {
-    message = `Hi, I'm interested in the ${prettySlug} tour package. Please share details and pricing.`;
-  } else if (parts[0] === 'wedding') {
-    message = slug
-      ? `Hi, I need wedding car service in ${prettySlug}. Please share pricing.`
-      : 'Hi, I need wedding car service. Please share options and pricing.';
-  } else if (parts[0] === 'corporate-transportation-service') {
-    message = slug
-      ? `Hi, I need corporate transportation in ${prettySlug}. Please share pricing.`
-      : 'Hi, I need corporate transportation service. Please share options.';
-  } else if (parts[0] === 'event-transportation-service') {
-    message = slug
-      ? `Hi, I need event transportation for ${prettySlug}. Please share pricing.`
-      : 'Hi, I need event transportation service. Please share options.';
-  } else if (parts[0] === 'bus-stand-taxi' && slug) {
-    message = `Hi, I need a taxi from ${prettySlug}. Please share pricing.`;
-  } else if (parts[0] === 'railway-station-taxi' && slug) {
-    message = `Hi, I need a taxi from ${prettySlug} railway station. Please share pricing.`;
-  } else if (parts[0] === 'bus-routes' && slug) {
-    message = `Hi, I need a cab for the ${prettySlug} route. Please share pricing.`;
-  } else if (parts[0] === 'chardham-yatra' && slug) {
-    message = `Hi, I'm interested in Chardham Yatra - ${prettySlug}. Please share details.`;
-  } else if (parts[0] === 'religious-tours' && slug) {
-    message = `Hi, I'm interested in the ${prettySlug} religious tour. Please share pricing.`;
-  } else if (parts[0] === 'vehicles' && slug) {
-    message = `Hi, I'm interested in booking a ${prettySlug}. Please share availability and pricing.`;
-  } else if (parts.length === 1 && parts[0]) {
-    // City hub page like /delhi, /agra
-    message = `Hi, I need cab service in ${prettySlug}. Please share pricing.`;
-  } else if (title) {
-    // Fallback: use page title
-    const cleanTitle = title.replace(/\s*[-|].*$/, '').trim();
-    if (cleanTitle && cleanTitle.length < 80) {
-      message = `Hi, I'm browsing "${cleanTitle}" and need a quote. Please share pricing.`;
-    }
-  }
-
-  return { message };
-}
-
 export default function MobileStickyBar() {
-  const [ctx, setCtx] = useState({ message: "Hi, I'd like a quote for cab service." });
-
-  useEffect(() => {
-    setCtx(getPageContext());
-  }, []);
-
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden">
       <div className="flex">
@@ -89,12 +17,12 @@ export default function MobileStickyBar() {
           Call Now
         </a>
 
-        {/* Get Quote - contextual WhatsApp message */}
+        {/* Get Quote */}
         <a
-          href={`https://wa.me/917668570551?text=${encodeURIComponent(ctx.message)}`}
+          href="https://wa.me/917668570551?text=Hi, I'd like a quote for cab service."
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackWhatsAppClick('mobile_sticky_bar_quote', ctx.message)}
+          onClick={() => trackWhatsAppClick('mobile_sticky_bar_quote')}
           className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold py-3.5 text-sm"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -105,10 +33,10 @@ export default function MobileStickyBar() {
 
         {/* WhatsApp */}
         <a
-          href={`https://wa.me/917668570551?text=${encodeURIComponent(ctx.message)}`}
+          href="https://wa.me/917668570551"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackWhatsAppClick('mobile_sticky_bar_whatsapp', ctx.message)}
+          onClick={() => trackWhatsAppClick('mobile_sticky_bar_whatsapp')}
           className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3.5 text-sm"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

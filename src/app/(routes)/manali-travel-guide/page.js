@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Manali Travel Guide 2026 | Solang Valley, Rohtang Pass & Adventure',
   description: 'Complete Manali travel guide 2026. Solang Valley, Rohtang Pass, Hidimba Temple, Old Manali, best time, adventure sports. Call 7668570551.',

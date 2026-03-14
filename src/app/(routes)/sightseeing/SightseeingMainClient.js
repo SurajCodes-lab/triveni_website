@@ -19,6 +19,7 @@ import {
   ChevronDownIcon
 } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
 
 export default function SightseeingMainClient({ data, faqData }) {
   const [favorites, setFavorites] = useState([]);
@@ -188,6 +189,8 @@ export default function SightseeingMainClient({ data, faqData }) {
           </motion.div>
         </section>
       </header>
+
+      <SocialProofStrip />
 
       {/* Featured Tours Section */}
       {data.featuredTours.length > 0 && (

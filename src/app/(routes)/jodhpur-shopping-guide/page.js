@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jodhpur Shopping Guide 2026 | Bandhani, Spices & Antiques',
   description: 'Jodhpur shopping guide. Bandhani textiles, antique furniture, spices, mojaris, lacquer bangles. Sardar Market, Clock Tower Bazaar, Tripolia Bazaar. Call 7668570551.',

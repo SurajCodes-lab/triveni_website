@@ -27,6 +27,8 @@ import {
 } from "@/components/ui/icons";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import InclusionBadges from '@/components/shared/InclusionBadges';
 
 export default function VehicleHireClient({ vehicle }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -189,6 +191,8 @@ export default function VehicleHireClient({ vehicle }) {
           </div>
         </div>
       </section>
+
+      <SocialProofStrip theme="dark" />
 
       {/* ==================== INSTRUMENT CLUSTER SPECS BAR ==================== */}
       <section className="py-10 relative">
@@ -536,6 +540,8 @@ export default function VehicleHireClient({ vehicle }) {
           </div>
         </section>
       )}
+
+      <InclusionBadges preset="tour" theme="dark" />
 
       {/* ==================== FAQ SECTION ==================== */}
       <section className="py-20 md:py-28 px-4">

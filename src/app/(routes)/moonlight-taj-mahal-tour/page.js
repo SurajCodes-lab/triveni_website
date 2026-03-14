@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, IndianRupee, Moon, Camera, Calendar, Ticket } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Moonlight Taj Mahal Tour | Full Moon Night Visit | 2026',
   description: 'Moonlight Taj Mahal tour on full moon nights. ASI night viewing schedule, ticket booking guide. 5 nights monthly. Combine with Mehtab Bagh. Call 7668570551.',

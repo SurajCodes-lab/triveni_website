@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Route, Zap, Navigation } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
 import AEOHead from '@/components/seo/AEOHead';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
+import FleetShowcase from '@/components/shared/FleetShowcase';
+
+export const revalidate = false;
 
 export const metadata = {
   title: 'One Way Cab Service 2026 | Save 50% | Sedan ₹11/km | Book Now',
@@ -88,6 +94,9 @@ export default function OneWayCabPage() {
             </div>
           </div>
         </section>
+
+        {/* Social Proof Strip */}
+        <SocialProofStrip theme="light" />
 
         {/* ─── OVERVIEW: SEO prose content section ─── */}
         <section className="py-20 px-4 sm:px-6 relative">
@@ -191,6 +200,20 @@ export default function OneWayCabPage() {
             </div>
           </div>
         </section>
+
+        {/* What's Included */}
+        <InclusionBadges preset="outstation" theme="light" />
+
+        {/* Fleet Showcase */}
+        <FleetShowcase
+          theme="light"
+          accentColor="emerald"
+          title="Available Vehicles"
+          subtitle="One-Way Fleet"
+          whatsappMessage="Hi, I'd like to book a one-way cab."
+        />
+
+        <SectionDivider color="gray" className="my-4" />
 
         {/* ─── BENEFITS ─── */}
         <section className="py-20 px-4 sm:px-6">

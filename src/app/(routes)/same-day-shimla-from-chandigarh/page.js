@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-shimla-from-chandigarh');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Shimla Tour from Chandigarh | ₹3,500 AC Cab | 2026',
   description: 'Book same day Shimla tour from Chandigarh. The Ridge, Mall Road, Kufri, Jakhoo Temple. AC sedan ₹3,500, SUV ₹5,000. Call 7668570551.',

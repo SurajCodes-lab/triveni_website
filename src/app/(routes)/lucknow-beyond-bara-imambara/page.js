@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Lucknow Beyond Bara Imambara | Hidden Gems & Heritage | 2026',
   description: 'Discover Lucknow beyond Bara Imambara. La Martiniere, Ambedkar Park, Dilkusha Kothi, Constantia, Kukrail Reserve, Janeshwar Mishra Park + more. Call 7668570551.',

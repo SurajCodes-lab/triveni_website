@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Safe Travel Tips India for Foreign Tourists 2026 | Complete Safety Guide',
   description: 'Comprehensive safety guide for foreign tourists in India 2026. Transportation safety, health tips, scam awareness, emergency numbers, women safety, solo travel tips.',

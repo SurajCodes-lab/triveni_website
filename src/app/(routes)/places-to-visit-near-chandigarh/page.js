@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.chandigarh;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Chandigarh by Car | Hills & Heritage | Book Cab',
   description: `Best places to visit near Chandigarh by car. Shimla (115 km), Kasauli (60 km), Manali (310 km), Amritsar (230 km) & more. Sedan ₹11/km. Call 7668570551.`,

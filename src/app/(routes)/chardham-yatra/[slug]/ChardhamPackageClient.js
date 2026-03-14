@@ -320,7 +320,7 @@ export default function ChardhamPackageClient({ data }) {
                 transition={{ delay: i * 0.08 }}
                 className={`relative h-40 rounded-xl overflow-hidden border border-white/10 ${theme.hoverBorder} transition-all group`}
               >
-                <Image src={img} alt={`Package gallery ${i + 1}`} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src={img} alt={`Package gallery ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </motion.div>
             ))}
@@ -360,7 +360,7 @@ export default function ChardhamPackageClient({ data }) {
                   )}
                   <div className="p-5">
                     <div className="relative h-28 mb-4">
-                      <Image src={car.image} alt={car.name} fill className="object-contain" />
+                      <Image src={car.image} alt={car.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                     </div>
                     <h3 className="text-white font-bold">{car.name}</h3>
                     <p className="text-gray-400 text-sm">{car.category} | {car.seats} Seater</p>
@@ -405,7 +405,7 @@ export default function ChardhamPackageClient({ data }) {
                           <td className="p-4">
                             <div className="flex items-center gap-3">
                               <div className="relative w-12 h-8 flex-shrink-0">
-                                <Image src={bus.image} alt={bus.name} fill className="object-contain" />
+                                <Image src={bus.image} alt={bus.name} fill sizes="96px" className="object-contain" />
                               </div>
                               <span className="text-white font-medium">{bus.name}</span>
                             </div>

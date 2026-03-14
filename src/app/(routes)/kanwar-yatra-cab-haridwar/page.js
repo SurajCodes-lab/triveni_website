@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Droplets } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Kanwar Yatra Cab to Haridwar 2026 | AC Vehicle from ₹4,000 | Safe Transport',
   description: 'Book Kanwar Yatra cab to Haridwar from Delhi, Noida, Ghaziabad. AC sedan, SUV, Tempo Traveller. Safe transport for Kanwariyas. Group discounts. Call 7668570551.',

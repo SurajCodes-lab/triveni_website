@@ -1,5 +1,7 @@
 import ServicesClient from './ServicesClient';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Cab Services India 2026 | Outstation from ₹11/km | 50+ Cities | Book Now',
   description: 'Book cabs across India: Outstation ₹11/km, Airport ₹1,500+, Wedding cars ₹15,000+, Tempo ₹23/km. 10,000+ rides completed. 50+ cities. 24/7 support. Call 7668570551.',

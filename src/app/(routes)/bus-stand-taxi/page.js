@@ -3,6 +3,10 @@ import { busStands } from '@/utilis/busStandData';
 import { Phone, MapPin, Bus, ArrowRight, Clock, Shield, Star, Users, ChevronDown } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import AEOHead from '@/components/seo/AEOHead';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 export const revalidate = false;
 
@@ -165,6 +169,9 @@ export default function BusStandTaxiHubPage() {
           </div>
         </section>
 
+        {/* Social Proof */}
+        <SocialProofStrip theme="dark" />
+
         {/* Stats */}
         <section className="border-y border-white/5 bg-gradient-to-r from-green-950/50 via-slate-950 to-emerald-950/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -292,6 +299,14 @@ export default function BusStandTaxiHubPage() {
             </div>
           </div>
         </section>
+
+        {/* What's Included */}
+        <InclusionBadges preset="local" theme="dark" />
+        <SectionDivider color="emerald" className="my-4" />
+
+        {/* How It Works */}
+        <BookingJourney theme="dark" />
+        <SectionDivider color="emerald" className="my-4" />
 
         {/* FAQ Section */}
         <section className="py-20">

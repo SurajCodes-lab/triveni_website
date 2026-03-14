@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'amritsar-airport-to-city-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Amritsar Airport to City Taxi | Fixed \u20B9${data.fares.sedan.price} | Golden Temple`,
   description: `Amritsar Airport to city taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Golden Temple direct drop, NRI-friendly. ${data.time}. Call 7668570551.`,

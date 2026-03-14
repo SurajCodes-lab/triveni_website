@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Udaipur Beyond City Palace | Hidden Gems & Day Trips | 2026',
   description: 'Discover Udaipur beyond City Palace. Badi Lake, Shilpgram, Monsoon Palace, Haldighati, Kumbhalgarh, Nathdwara, Chittorgarh + more. By locals. Call 7668570551.',

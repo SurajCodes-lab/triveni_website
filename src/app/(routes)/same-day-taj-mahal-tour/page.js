@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Taj Mahal Tour | Sunrise Visit ₹4,500 | 2026',
   description: 'Same day Taj Mahal tour by private car. Sunrise visit, golden hour photography. From Delhi ₹4,500, Jaipur ₹5,500. Entry details & tips. Call 7668570551.',

@@ -123,11 +123,11 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      // HTML pages - CDN caching with stale-while-revalidate (pages are fully static)
+      // HTML pages - long CDN cache (all pages are fully static with revalidate=false)
       {
         source: '/:path((?!api|_next|images|fonts).*)',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
+          { key: 'Cache-Control', value: 'public, s-maxage=31536000, stale-while-revalidate=604800' },
         ],
       },
     ];

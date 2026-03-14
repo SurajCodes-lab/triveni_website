@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Amritsar Shopping Guide 2026 | Phulkari, Juttis & Dry Fruits',
   description: 'Amritsar shopping guide. Phulkari dupattas, Juttis, Amritsari papad, dry fruits, Pashmina shawls. Hall Bazaar, Katra Jaimal Singh, Guru Bazaar. Call 7668570551.',

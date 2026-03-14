@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-amritsar-from-chandigarh');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Amritsar Tour from Chandigarh | ₹5,000 AC Cab | 2026',
   description: 'Book same day Amritsar tour from Chandigarh. Golden Temple, Jallianwala Bagh, Wagah Border ceremony. AC sedan ₹5,000, SUV ₹7,000. Call 7668570551.',

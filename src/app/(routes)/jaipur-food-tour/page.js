@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jaipur Food Tour 2026 | Dal Baati Churma, Pyaaz Kachori & Rajasthani Cuisine Guide',
   description: 'Jaipur food & culinary tour. Famous Dal Baati Churma, Pyaaz Kachori, Laal Maas, Ghewar, Lassi. Street food itinerary, best restaurants. By Jaipur locals. Call 7668570551.',

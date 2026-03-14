@@ -1,5 +1,7 @@
 import ContactClient from "./ContactClient";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Contact Us | Triveni Cabs - 24/7 Customer Support",
   description: "Contact Triveni Cabs for reliable taxi booking across India. 24/7 customer support, instant WhatsApp booking, and quick response times. Call us at any time for outstation, local, or airport transfers.",

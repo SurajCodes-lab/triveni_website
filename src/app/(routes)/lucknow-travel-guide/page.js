@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Lucknow Travel Guide 2026 | City of Nawabs, Kebabs & Heritage',
   description: 'Complete Lucknow travel guide 2026. Bara Imambara, Rumi Darwaza, British Residency, Hazratganj, food, Awadhi cuisine. Call 7668570551.',

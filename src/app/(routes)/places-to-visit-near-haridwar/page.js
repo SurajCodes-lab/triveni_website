@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.haridwar;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Haridwar by Car | Spiritual & Adventure | Book Cab',
   description: `Best places to visit near Haridwar by car. Rishikesh (20 km), Mussoorie (80 km), Jim Corbett (130 km), Kedarnath (245 km) & more. Sedan ₹11/km. Call 7668570551.`,

@@ -22,6 +22,10 @@ import {
   Navigation
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 export default function AirportServiceClient({ faqData }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
@@ -196,6 +200,8 @@ export default function AirportServiceClient({ faqData }) {
           </div>
         </div>
       </section>
+
+      <SocialProofStrip theme="dark" />
 
       {/* Stats Section */}
       <section className="py-16 px-4 bg-white">
@@ -608,6 +614,12 @@ export default function AirportServiceClient({ faqData }) {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
+      <InclusionBadges preset="airport" theme="dark" />
+      <SectionDivider />
+      <BookingJourney theme="dark" />
+      <SectionDivider />
 
       {/* FAQ Section */}
       {faqData && (

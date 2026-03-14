@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Plane, Route } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Delhi Airport to Agra Taxi | Fixed ₹3,500 | Meet & Greet',
   description: 'Delhi Airport (IGI) to Agra taxi. Fixed fare sedan ₹3,500, SUV ₹5,000. T1, T2, T3 pickup. Flight tracking, meet & greet. 3-4 hrs. Call 7668570551.',

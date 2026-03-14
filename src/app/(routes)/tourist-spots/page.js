@@ -4,6 +4,8 @@ import { MapPin, ChevronRight, Phone, Shield, Clock, Users, Star, Car, Compass, 
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Tourist Spots India 2026 | Forts, Palaces, Lakes & Heritage | Book Cab',
   description: 'Explore top tourist spots across Jaipur, Udaipur, Jodhpur. Amber Fort, Hawa Mahal, Lake Pichola, Mehrangarh Fort & more. Cab from Rs 11/km. Call 7668570551.',

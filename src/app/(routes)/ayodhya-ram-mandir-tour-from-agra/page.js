@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Award, Route } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Ayodhya Ram Mandir Tour from Agra | Sedan ₹7,000 | 2-3 Day Packages',
   description: 'Book Ayodhya Ram Mandir tour from Agra. 400km, 7-8 hrs drive. Sedan ₹7,000, SUV ₹10,000. Ram Mandir darshan, Hanuman Garhi, Saryu Ghat. Call 7668570551.',

@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-agra-tour-from-noida');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Agra Tour from Noida | ₹4,500 AC Cab | 2026',
   description: 'Book same day Agra tour from Noida by car. Taj Mahal, Agra Fort via Yamuna Expressway. AC sedan ₹4,500, SUV ₹6,500. Call 7668570551.',

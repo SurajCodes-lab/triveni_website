@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Shimla Shopping Guide 2026 | Wooden Toys, Shawls & Hill Crafts',
   description: 'Shimla shopping guide. Wooden toys, Kullu shawls, Himachali caps, dry fruits, jams, knitwear. Mall Road, Lakkar Bazaar, Lower Bazaar. Prices & tips. Call 7668570551.',

@@ -6,6 +6,8 @@ import FareCalculator from '@/components/calculator/FareCalculator';
 import { COMPANY_INFO } from '@/lib/seo/constants';
 import { generatePricingTableSchema, generateSpeakableSchema } from '@/lib/seo/aeo-generators';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Transparent Fares',
   description: 'Triveni Cabs pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23-26/km, Bus ₹30-42/km. No hidden charges. Includes driver, fuel, toll. Get instant fare estimates. Call 7668570551!',

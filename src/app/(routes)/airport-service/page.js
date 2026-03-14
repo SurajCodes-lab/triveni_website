@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import AirportServiceClient from "@/components/airport/AirportServiceClient";
 import AEOHead from '@/components/seo/AEOHead';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Airport Taxi 2026 | Delhi IGI from ₹1,500 | Flight Tracking | Book Now',
   description: 'Book airport taxi: Delhi IGI ₹1,500, Jaipur ₹1,200, Chandigarh ₹1,000. Real-time flight tracking, meet & greet, 24/7 service. 5000+ transfers done. Call 7668570551.',

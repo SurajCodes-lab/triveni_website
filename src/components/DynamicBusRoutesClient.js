@@ -19,6 +19,8 @@ import dynamic from 'next/dynamic';
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import InclusionBadges from '@/components/shared/InclusionBadges';
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription, relatedRoutes } = data;
@@ -209,6 +211,8 @@ export default function DynamicBusRoutesClient({ data }) {
           </div>
         </div>
       </motion.section>
+
+      <SocialProofStrip theme="dark" />
 
       {/* Trust Strip */}
       <div className="bg-white border-b border-gray-100 py-3">
@@ -596,6 +600,8 @@ export default function DynamicBusRoutesClient({ data }) {
           </div>
         </div>
       </div>
+
+      <InclusionBadges preset="tour" theme="dark" />
 
       {/* FAQ Section - SEO Optimized */}
       <section className="py-16 md:py-24 bg-white">

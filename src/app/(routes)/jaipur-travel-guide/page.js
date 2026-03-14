@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jaipur Travel Guide 2026 | Pink City Attractions, Food & Tips',
   description: 'Complete Jaipur travel guide 2026. Amber Fort, Hawa Mahal, City Palace, Nahargarh, best time to visit, food, shopping. Call 7668570551.',

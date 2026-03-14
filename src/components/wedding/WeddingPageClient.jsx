@@ -15,6 +15,10 @@ import { blurDataURL } from "@/utilis/imageUtils";
 import dynamic from 'next/dynamic';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
@@ -768,6 +772,7 @@ export default function WeddingPageClient({ faqs }) {
 
       <div className="min-h-screen">
         <WeddingHero />
+        <SocialProofStrip theme="dark" />
         <WeddingCarCollection />
         <WhyChooseUs />
         <WeddingServices />
@@ -786,6 +791,11 @@ export default function WeddingPageClient({ faqs }) {
             <FareCalculator variant="compact" className="max-w-md mx-auto" />
           </div>
         </section>
+        <SectionDivider />
+        <InclusionBadges preset="wedding" theme="dark" />
+        <SectionDivider />
+        <BookingJourney theme="dark" />
+        <SectionDivider />
         <FAQ faqs={faqs} />
         <FinalCTA />
         <FinalCTA />

@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-haridwar-from-delhi');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Haridwar Tour from Delhi | ₹5,000 AC Cab | 2026',
   description: 'Book same day Haridwar tour from Delhi. Visit Har Ki Pauri, Mansa Devi, Ganga Aarti. AC sedan ₹5,000, SUV ₹7,000. Call 7668570551.',

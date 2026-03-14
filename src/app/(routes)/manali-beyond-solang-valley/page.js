@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Manali Beyond Solang Valley | Hidden Gems & Secret Spots | 2026',
   description: 'Discover Manali beyond Solang Valley. Jogini Falls, Naggar Castle, Great Himalayan National Park, Hampta Pass, Sethan Village, Vashisht + more. Call 7668570551.',

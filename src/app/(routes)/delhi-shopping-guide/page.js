@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Delhi Shopping Guide 2026 | Chandni Chowk, Khan Market & More',
   description: 'Delhi shopping guide. Chandni Chowk, Khan Market, Dilli Haat, Sarojini Nagar, Janpath. Designer to street fashion, wedding shopping, spices, electronics. Call 7668570551.',

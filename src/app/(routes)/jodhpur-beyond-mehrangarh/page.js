@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jodhpur Beyond Mehrangarh | Hidden Gems & Blue City Secrets | 2026',
   description: 'Discover Jodhpur beyond Mehrangarh Fort. Mandore Gardens, Rao Jodha Desert Rock Park, Toorji Ka Jhalra stepwell, Bishnoi Village Safari, Clock Tower Market, Masuria Hill, Balsamand & Kaylana Lake. Call 7668570551.',

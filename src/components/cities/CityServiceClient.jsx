@@ -28,6 +28,8 @@ const QuickEnquiryForm = dynamic(() => import('@/components/ui/QuickEnquiryForm'
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations, PopularRoutes } from '@/components/seo/RelatedContent';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import InclusionBadges from '@/components/shared/InclusionBadges';
 import { getNearbyDestinations, getRelatedRoutes, getPopularCities, getRelatedContent } from '@/utilis/linkingHelper';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
@@ -534,6 +536,9 @@ export default function CityServiceClient({
           </motion.div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProofStrip theme="light" />
 
       {/* Trust Strip */}
       <div className="bg-white border-b border-gray-100 py-3">
@@ -1198,6 +1203,9 @@ export default function CityServiceClient({
           </section>
         );
       })()}
+
+      {/* What's Included */}
+      <InclusionBadges preset="outstation" theme="light" />
 
       {/* ==================== SEO: RELATED CONTENT ==================== */}
       <section className="py-16 md:py-20 bg-white">

@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.mathura;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Mathura by Car | Braj Mandal | Book Cab',
   description: `Best places to visit near Mathura by car. Vrindavan (15 km), Agra (58 km), Govardhan (26 km), Bharatpur (40 km) & more. Sedan ₹11/km. Call 7668570551.`,

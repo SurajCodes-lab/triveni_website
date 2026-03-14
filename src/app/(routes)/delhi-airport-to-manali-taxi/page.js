@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'delhi-airport-to-manali-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Delhi Airport to Manali Taxi | Fixed \u20B9${data.fares.sedan.price} | Mountain Experts`,
   description: `Delhi Airport (IGI) to Manali taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. All terminal pickup. Flight tracking, meet & greet. ${data.time}. Call 7668570551.`,

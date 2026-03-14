@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.delhi;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '20+ Places to Visit Near Delhi by Car | Weekend Getaways | Book Cab',
   description: `Best places to visit near Delhi by car. Agra (230 km), Jaipur (280 km), Mussoorie (290 km), Rishikesh (245 km) & 16 more. Sedan ₹11/km. Book cab: 7668570551.`,

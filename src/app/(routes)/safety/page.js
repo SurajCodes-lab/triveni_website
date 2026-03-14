@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShieldCheck, UserCheck, MapPin, Car, Fingerprint, Lock } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Safety Standards 2026 | Verified Drivers | GPS Tracking | Women Safety',
   description: 'Triveni Cabs safety: background-checked drivers, GPS tracking, SOS support, 24/7 helpline, sanitized vehicles, women safety features. 100% verified fleet. Call 7668570551.',

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Amritsar Food Tour 2026 | Amritsari Kulcha, Lassi & Punjabi Street Food Guide',
   description: 'Amritsar food & culinary tour. Famous Amritsari Kulcha, Lassi, Chole Bhature, Jalebi, Fish Fry. Street food itinerary, best restaurants. By Amritsar locals. Call 7668570551.',

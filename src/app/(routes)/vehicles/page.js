@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Car, Users, Fuel, Star, ArrowRight, Shield, Clock, Phone } from "@/components/ui/icons";
 import { vehicleDetails } from "@/utilis/data";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Car Rental Fleet | Sedan, SUV, Tempo Traveller, Bus Hire India | Triveni Cabs",
   description: "Browse our complete vehicle fleet for rental across India. Sedan from ₹11/km, SUV from ₹15/km, Tempo Traveller from ₹23/km, Bus from ₹30/km. Professional drivers, AC vehicles, 24/7 booking.",

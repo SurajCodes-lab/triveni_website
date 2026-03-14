@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Varanasi Food Tour 2026 | Kachori Sabzi, Tamatar Chaat & Banarasi Cuisine Guide',
   description: 'Varanasi food & culinary tour. Famous Kachori Sabzi, Tamatar Chaat, Banarasi Paan, Thandai, Malaiyo. Street food itinerary, best restaurants. By Varanasi locals. Call 7668570551.',

@@ -1,5 +1,7 @@
 import AboutClient from "./AboutClient";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "About Us | Triveni Cabs - India's Most Trusted Cab Service",
   description: "Discover Triveni Cabs - a brand born from passion, discipline, and customer-first values. 500+ premium vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable, and affordable travel across India with 24/7 support.",

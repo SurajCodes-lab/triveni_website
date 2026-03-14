@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'jaipur-airport-to-agra-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Jaipur Airport to Agra Taxi | Fixed \u20B9${data.fares.sedan.price} | Taj Mahal`,
   description: `Jaipur Airport to Agra taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Golden Triangle route, Fatehpur Sikri stop. ${data.time}. Call 7668570551.`,

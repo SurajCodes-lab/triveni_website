@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Agra Food Tour 2026 | Petha, Mughlai & Street Food Guide',
   description: 'Agra food & culinary tour. Famous Petha, Dalmoth, Bedai-Jalebi, Mughlai cuisine. Street food itinerary, best restaurants. By Agra locals. Call 7668570551.',

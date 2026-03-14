@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jodhpur Food Tour 2026 | Mirchi Vada, Mawa Kachori & Rajasthani Street Food Guide',
   description: 'Jodhpur food & culinary tour. Famous Mirchi Vada, Mawa Kachori, Pyaaz Kachori, Gulab Jamun, Makhaniya Lassi. Street food itinerary, best restaurants. By Jodhpur locals. Call 7668570551.',

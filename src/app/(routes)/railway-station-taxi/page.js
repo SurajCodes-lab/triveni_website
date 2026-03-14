@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
 import AEOHead from '@/components/seo/AEOHead';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 export const revalidate = false;
 
@@ -164,6 +168,9 @@ export default function RailwayStationTaxiHub() {
           </div>
         </section>
 
+        {/* Social Proof */}
+        <SocialProofStrip theme="dark" />
+
         {/* === STATS BAR === */}
         <section className="py-10 px-4 border-b border-white/5">
           <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -256,6 +263,14 @@ export default function RailwayStationTaxiHub() {
             </div>
           </div>
         </section>
+
+        {/* What's Included */}
+        <InclusionBadges preset="outstation" theme="dark" />
+        <SectionDivider color="violet" className="my-4" />
+
+        {/* How It Works */}
+        <BookingJourney theme="dark" />
+        <SectionDivider color="violet" className="my-4" />
 
         {/* === FAQ Section === */}
         <section className="py-20 px-4">

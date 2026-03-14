@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.rishikesh;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Rishikesh by Car | Adventure & Himalayas | Book Cab',
   description: `Best places to visit near Rishikesh by car. Haridwar (20 km), Mussoorie (70 km), Chopta (175 km), Auli (260 km) & more. Sedan ₹11/km. Call 7668570551.`,

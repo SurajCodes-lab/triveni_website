@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'delhi-airport-to-noida-cab';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Delhi Airport to Noida Cab | Fixed \u20B9${data.fares.sedan.price} | No Surge`,
   description: `Delhi Airport (IGI) to Noida cab. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. All terminal pickup. No surge pricing. ${data.time}. Call 7668570551.`,

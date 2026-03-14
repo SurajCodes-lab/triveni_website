@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.agra;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Agra by Car | Day Trips | Book Cab',
   description: `Best places to visit near Agra by car. Fatehpur Sikri (40 km), Mathura (58 km), Bharatpur (55 km), Gwalior (120 km) & more. Sedan ₹11/km. Call 7668570551.`,

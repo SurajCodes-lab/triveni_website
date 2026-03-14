@@ -3,6 +3,8 @@ import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import { Users, Fuel, Car, Star, Check, X, ArrowRight, Phone } from "@/components/ui/icons";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Sedan vs SUV: Which Car to Rent? | Complete Comparison Guide | Triveni Cabs",
   description: "Confused between Sedan and SUV rental? Compare capacity, comfort, pricing, fuel efficiency & best use cases. Sedan from ₹11/km, SUV from ₹15/km. Make the right choice for your trip!",

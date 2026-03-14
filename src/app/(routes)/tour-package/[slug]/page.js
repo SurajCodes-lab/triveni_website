@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AEOHead from '@/components/seo/AEOHead';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 import { tourDetails } from "@/utilis/data";
 
 // ISR: Revalidate every hour for better SEO and performance
@@ -470,6 +473,9 @@ export default function TourPackagePage({ params }) {
           </div>
         </div>
 
+        {/* Social Proof */}
+        <SocialProofStrip theme="light" />
+
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-50 border-b">
           <div className="max-w-7xl mx-auto px-4 py-3">
@@ -621,6 +627,10 @@ export default function TourPackagePage({ params }) {
                   </ul>
                 </div>
               </section>
+
+              {/* What's Included */}
+              <InclusionBadges preset="tour" theme="light" />
+              <SectionDivider color="gray" className="my-6" />
 
               {/* Why Book With Us */}
               <section className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl">

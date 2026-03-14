@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Top 18 Weekend Getaways from Chandigarh by Car 2026 | Triveni Cabs',
   description: 'Best weekend trips from Chandigarh by car in 2026. Shimla, Kasauli, Manali, Dharamshala & more. Distance, drive time, costs. AC cab from ₹9/km. Call 7668570551.',

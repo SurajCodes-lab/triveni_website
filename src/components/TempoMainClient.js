@@ -18,6 +18,7 @@ const TypeAnimation = dynamic(
   { ssr: false, loading: () => <span>Tempo Traveller Rental</span> }
 );
 const ChardhamShowcase = dynamic(() => import('./ChardhamShowcase'), { ssr: false });
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
 
 export default function TempoMainClient({ data, faqData }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -293,6 +294,8 @@ export default function TempoMainClient({ data, faqData }) {
           </motion.div>
         </div>
       </section>
+
+      <SocialProofStrip />
 
       {/* ============================================ */}
       {/* CHOOSE YOUR CITY SECTION */}

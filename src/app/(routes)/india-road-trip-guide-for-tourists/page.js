@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'India Road Trip Guide for International Tourists 2026 | Essential Travel Tips',
   description: 'Comprehensive India road trip guide for foreign tourists. Visa, currency, safety, etiquette, best routes, hiring a driver vs self-drive, cultural tips, weather guide.',

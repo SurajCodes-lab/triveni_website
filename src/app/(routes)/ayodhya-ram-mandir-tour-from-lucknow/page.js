@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Navigation, Zap } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Ayodhya Ram Mandir Tour from Lucknow | Sedan ₹3,500 | Same-Day Possible',
   description: 'Book Ayodhya Ram Mandir tour from Lucknow. Just 135km, 2.5-3 hrs drive. Sedan ₹3,500, SUV ₹5,000. Same-day return or overnight. Call 7668570551.',

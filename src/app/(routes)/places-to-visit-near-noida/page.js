@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.noida;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Noida by Car | NCR Getaways | Book Cab',
   description: `Best places to visit near Noida by car. Agra (200 km), Mathura (145 km), Jim Corbett (240 km), Rishikesh (230 km) & more. Sedan ₹11/km. Call 7668570551.`,

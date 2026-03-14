@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.jaipur;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Jaipur by Car | Royal Rajasthan | Book Cab',
   description: `Best places to visit near Jaipur by car. Pushkar (145 km), Ranthambore (180 km), Udaipur (395 km), Jodhpur (340 km) & more. Sedan ₹11/km. Call 7668570551.`,

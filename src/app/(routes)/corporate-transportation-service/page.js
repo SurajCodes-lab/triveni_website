@@ -10,6 +10,10 @@ import { getAllIndustries } from '@/utilis/corporateIndustryData';
 import { getAllUseCases } from '@/utilis/corporateUseCaseData';
 import { getServicePages, getGeneralContent } from '@/utilis/linkingHelper';
 import AEOHead from '@/components/seo/AEOHead';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SectionDivider from '@/components/shared/SectionDivider';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -29,6 +33,8 @@ import {
   Play,
   Star
 } from '@/components/ui/icons';
+
+export const revalidate = false;
 
 export const metadata = {
   title: 'Corporate Transportation Service India | Employee Transport & Fleet Solutions | Triveni Cabs',
@@ -464,6 +470,9 @@ export default function CorporateTransportationPage() {
             </div>
           </div>
         </section>
+
+        {/* Social Proof */}
+        <SocialProofStrip theme="light" />
 
         {/* Trust Bar */}
         <section className="py-6 bg-slate-900 border-y border-slate-800">
@@ -990,6 +999,14 @@ export default function CorporateTransportationPage() {
             </div>
           </div>
         </section>
+
+        {/* What's Included */}
+        <InclusionBadges preset="outstation" theme="light" />
+        <SectionDivider color="gray" className="my-4" />
+
+        {/* How It Works */}
+        <BookingJourney theme="light" />
+        <SectionDivider color="gray" className="my-4" />
 
         {/* FAQ Section - Open Cards Design */}
         <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">

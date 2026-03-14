@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jaipur Beyond Hawa Mahal | Hidden Gems & Secret Spots | 2026',
   description: 'Discover Jaipur beyond Hawa Mahal. Panna Meena Ka Kund, Galtaji Monkey Temple, Chand Baori, Bhangarh Fort, Samode Palace + more. By locals. Call 7668570551.',

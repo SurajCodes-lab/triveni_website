@@ -3,6 +3,8 @@
 import { busFleet, busRoutes } from '@/utilis/busRoutesData';
 import BusMainClient from '@/components/BusMainClient';
 
+export const revalidate = false;
+
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   title: 'Luxury Bus Hire 2026 | 22-56 Seater Volvo from ₹35/km | Book Now',

@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import SearchResultsClient from './SearchResultsClient';
+export const revalidate = false;
 
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams;

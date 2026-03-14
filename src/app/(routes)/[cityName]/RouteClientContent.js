@@ -658,7 +658,7 @@ export default function RouteClientContent({
                   <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden shadow-lg hover:shadow-2xl hover:border-[#FACF2D] hover:-translate-y-2 transition-all duration-500">
                     <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
                     <div className="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100">
-                      <Image src={v.image} alt={v.name} fill className="object-contain p-6 group-hover:scale-110 transition-transform duration-500" />
+                      <Image src={v.image} alt={v.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-500" />
                     </div>
                     <div className="p-5">
                       <h3 className="text-xl font-black text-slate-900 mb-2">{v.name}</h3>

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Udaipur Travel Guide 2026 | City of Lakes, Palaces & Romance',
   description: 'Complete Udaipur travel guide 2026. City Palace, Lake Pichola, Jag Mandir, Saheliyon Ki Bari, best time to visit, food, tips. Call 7668570551.',

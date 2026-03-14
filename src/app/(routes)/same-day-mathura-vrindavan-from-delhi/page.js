@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-mathura-vrindavan-from-delhi');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Mathura Vrindavan Tour from Delhi | ₹4,000 AC Cab | 2026',
   description: 'Book same day Mathura Vrindavan tour from Delhi. Visit Krishna Janmabhoomi, Banke Bihari, ISKCON, Prem Mandir. AC sedan ₹4,000. Call 7668570551.',

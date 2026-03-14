@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Calendar, Route, Coffee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Agra Day Trip from Delhi | Complete Guide & Cost ₹4,500',
   description: 'Complete Agra day trip guide from Delhi. Budget breakdown: cab ₹4,500 + entries ₹200 + food ₹500. 3 itinerary options. Money-saving tips. Call 7668570551.',

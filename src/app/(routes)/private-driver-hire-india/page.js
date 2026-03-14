@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Hire Car with Driver in India for Foreigners 2026 | English-Speaking Drivers | Triveni Cabs',
   description: 'Hire a car with English-speaking driver in India. Multi-day packages from $45/day. Golden Triangle, Rajasthan, Kerala circuits. Safe, reliable service for foreign tourists. Call +91-7668570551.',

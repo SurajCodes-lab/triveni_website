@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-haridwar-rishikesh-from-delhi');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Haridwar Rishikesh Tour from Delhi | ₹5,500 AC Cab | 2026',
   description: 'Book same day Haridwar Rishikesh tour from Delhi. Har Ki Pauri, Lakshman Jhula, Ganga Aarti. AC sedan ₹5,500, SUV ₹7,500. Call 7668570551.',

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: '5 Day Rajasthan Road Trip Jaipur Udaipur Jodhpur 2026 | Triveni Cabs',
   description: '5 day Rajasthan road trip itinerary: Jaipur, Udaipur, Jodhpur circuit. Day-wise plan, distances, hotel areas, costs. Sedan ₹28,000, SUV ₹40,000. Call 7668570551.',

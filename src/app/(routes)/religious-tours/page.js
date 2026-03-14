@@ -4,6 +4,8 @@ import { religiousTours } from '@/utilis/religiousTourData';
 // Centralized icon imports for better bundle optimization
 import { Calendar, MapPin, Star, ChevronRight, Phone, Shield, Clock, Users, Heart } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Pilgrimage Tours 2026 | Char Dham from ₹45,000 | AC Transport & Guide',
   description: 'Book pilgrimage tours from Delhi with AC transport. Char Dham Yatra ₹45K, Vaishno Devi ₹8K, Haridwar ₹4K. 3000+ pilgrims served. Expert guides + 24/7 support. Call 7668570551.',

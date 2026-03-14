@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Delhi to Kashmir Road Trip Plan 2026 | 7-8 Day Itinerary | Triveni Cabs',
   description: 'Delhi to Kashmir road trip plan covering Srinagar, Gulmarg, Pahalgam & Sonmarg. 7-8 day itinerary, road conditions, permits. Sedan ₹45,000, SUV ₹65,000. Call 7668570551.',

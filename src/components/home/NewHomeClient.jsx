@@ -11,6 +11,9 @@ import { getPopularRoutes } from '@/lib/searchUtils';
 import { phoneNumber } from '@/utilis/data';
 import MobileStickyBar from '@/components/ui/MobileStickyBar';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import BookingJourney from '@/components/shared/BookingJourney';
+import FleetShowcase from '@/components/shared/FleetShowcase';
 
 // ─── Section 1: Bright Hero ───────────────────────────────────────
 function HeroSection() {
@@ -571,9 +574,17 @@ export default function NewHomeClient() {
   return (
     <>
       <HeroSection />
+      <SocialProofStrip theme="light" />
       <PopularRoutes />
       <ServicesSection />
-      <HowItWorks />
+      <BookingJourney theme="light" />
+      <FleetShowcase
+        theme="light"
+        accentColor="amber"
+        title="Our Premium Fleet"
+        subtitle="Choose Your Ride"
+        whatsappMessage="Hi, I'd like to know about your vehicles."
+      />
       <WhyChooseUs />
       <PopularDestinations />
       <CTASection />

@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'delhi-airport-to-mathura-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Delhi Airport to Mathura Taxi | Fixed \u20B9${data.fares.sedan.price} | Expressway Route`,
   description: `Delhi Airport (IGI) to Mathura taxi via Yamuna Expressway. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Flight tracking, meet & greet. ${data.time}. Call 7668570551.`,

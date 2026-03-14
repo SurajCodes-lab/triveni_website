@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Sunrise Taj Mahal Tour from Delhi | 2-3 AM Start | 2026',
   description: 'Sunrise Taj Mahal tour from Delhi. Depart 2-3 AM, witness golden sunrise at Taj. Seasonal timing chart, photography tips. Sedan ₹4,500. Call 7668570551.',

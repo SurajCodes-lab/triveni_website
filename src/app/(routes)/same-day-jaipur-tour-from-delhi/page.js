@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-jaipur-tour-from-delhi');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Jaipur Tour from Delhi | ₹6,000 AC Cab | 2026',
   description: 'Book same day Jaipur tour from Delhi by car. Visit Amber Fort, Hawa Mahal, City Palace. AC sedan ₹6,000, SUV ₹8,000. Call 7668570551.',

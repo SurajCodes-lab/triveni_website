@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-kurukshetra-from-delhi');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Kurukshetra Tour from Delhi | ₹4,000 AC Cab | 2026',
   description: 'Book same day Kurukshetra tour from Delhi. Brahma Sarovar, Jyotisar (Bhagavad Gita site), Bhadrakali Temple. AC sedan ₹4,000. Call 7668570551.',

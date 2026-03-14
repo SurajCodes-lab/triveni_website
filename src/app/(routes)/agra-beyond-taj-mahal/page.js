@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Agra Beyond Taj Mahal | Hidden Gems & Day Trips | 2026',
   description: 'Discover Agra beyond the Taj. Agra Fort, Fatehpur Sikri, Baby Taj, Mehtab Bagh, Sikandra + day trips to Mathura, Bharatpur. By Agra locals. Call 7668570551.',

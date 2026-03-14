@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Amritsar Beyond Golden Temple | Hidden Gems & Heritage | 2026',
   description: 'Discover Amritsar beyond the Golden Temple. Gobindgarh Fort, Maharaja Ranjit Singh Museum, Pul Kanjri, Sadda Pind, Durgiana Temple + more. Call 7668570551.',

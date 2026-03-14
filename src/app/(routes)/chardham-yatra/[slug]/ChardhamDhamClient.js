@@ -234,7 +234,7 @@ export default function ChardhamDhamClient({ data }) {
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-3 h-full">
                 {images.gallery.map((img, i) => (
                   <div key={i} className={`relative overflow-hidden rounded-2xl ${i === 0 ? 'col-span-2 h-56' : 'h-40'} border border-white/10`}>
-                    <Image src={img} alt={`${destination} gallery ${i + 1}`} fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src={img} alt={`${destination} gallery ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/40 to-transparent" />
                   </div>
                 ))}
@@ -277,7 +277,7 @@ export default function ChardhamDhamClient({ data }) {
                 {allCarPrices.map((car, i) => (
                   <div key={i} className={`bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 ${colors.hoverBorder} transition-all overflow-hidden group`}>
                     <div className="relative h-36 bg-gradient-to-br from-white/5 to-white/[0.02]">
-                      <Image src={car.image} alt={car.name} fill className="object-contain p-4 group-hover:scale-105 transition-transform" />
+                      <Image src={car.image} alt={car.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain p-4 group-hover:scale-105 transition-transform" />
                     </div>
                     <div className="p-5">
                       <h3 className="text-white font-bold">{car.name}</h3>
@@ -306,7 +306,7 @@ export default function ChardhamDhamClient({ data }) {
                   {allBusPrices.map((bus, i) => (
                     <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5 hover:border-indigo-500/30 transition-all">
                       <div className="relative h-32 mb-4">
-                        <Image src={bus.image} alt={bus.name} fill className="object-contain" />
+                        <Image src={bus.image} alt={bus.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                       </div>
                       <h3 className="text-white font-bold">{bus.name}</h3>
                       <p className="text-indigo-400/60 text-sm">{bus.seats} Seater | ₹{bus.perKm}/km</p>
@@ -354,7 +354,7 @@ export default function ChardhamDhamClient({ data }) {
                 {tempoOptions.map((tempo, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center hover:border-indigo-500/30 transition-all">
                     <div className="relative h-28 mb-3">
-                      <Image src={tempo.image} alt={tempo.name} fill className="object-contain" />
+                      <Image src={tempo.image} alt={tempo.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                     </div>
                     <h4 className="text-white font-semibold">{tempo.name}</h4>
                     <p className="text-indigo-400/60 text-sm">{tempo.seats} Seater</p>

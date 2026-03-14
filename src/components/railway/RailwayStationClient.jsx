@@ -10,6 +10,10 @@ import {
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { getNearbyStations } from '@/utilis/railwayStationData';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import StickyPriceBar from '@/components/shared/StickyPriceBar';
+import InclusionBadges from '@/components/shared/InclusionBadges';
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import SectionDivider from '@/components/shared/SectionDivider';
 
 // Train-ticket style perforated divider component
 const TicketPerforation = ({ color = 'slate-950' }) => (
@@ -73,6 +77,12 @@ export default function RailwayStationClient({ station, slug }) {
           );
         }
       `}</style>
+
+      <StickyPriceBar
+        title={`${station.name} Taxi Service`}
+        price={`₹${lowestFare}`}
+        whatsappMessage={`Hi, I need a taxi from ${station.name}`}
+      />
 
       {/* === HERO SECTION - Dramatic Railway Terminal === */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
@@ -207,6 +217,8 @@ export default function RailwayStationClient({ station, slug }) {
           </svg>
         </div>
       </section>
+
+      <SocialProofStrip theme="dark" />
 
       {/* === TRUST BAR - Departure Board Style === */}
       <section className="py-10 px-4 border-b border-white/5">
@@ -567,6 +579,9 @@ export default function RailwayStationClient({ station, slug }) {
           </div>
         </div>
       </section>
+
+      <InclusionBadges preset="outstation" theme="dark" />
+      <SectionDivider color="violet" className="my-8" />
 
       {/* === FAQ - Expandable Accordion === */}
       <section className="py-20 md:py-32 px-4">

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Delhi Beyond Red Fort | Hidden Gems & Secret Spots | 2026',
   description: 'Discover Delhi beyond Red Fort. Agrasen Ki Baoli, Hauz Khas, Mehrauli Archaeological Park, Tughlaqabad Fort, Lodhi Art District, Sunder Nursery + more. Call 7668570551.',

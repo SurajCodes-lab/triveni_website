@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Jaisalmer Shopping Guide 2026 | Rajasthani Crafts, Mirror Work & Desert Souvenirs',
   description: 'Jaisalmer shopping guide. Mirror work embroidery, leather mojaris, patchwork textiles, silver jewelry, Rajasthani paintings, camel leather products. Sadar Bazaar, Fort Market. Prices & tips. Call 7668570551.',

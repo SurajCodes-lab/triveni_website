@@ -1,5 +1,7 @@
 import CancellationClient from "./CancellationClient";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Cancellation & Refund Policy | Triveni Cabs",
   description: "Learn about Triveni Cabs cancellation and refund policy. Fair, transparent, and customer-friendly terms. Full refund for 7+ days advance cancellation, 50% for 3-6 days, no refund within 72 hours.",

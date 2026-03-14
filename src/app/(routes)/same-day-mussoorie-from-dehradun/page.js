@@ -3,6 +3,8 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-mussoorie-from-dehradun');
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Same Day Mussoorie Tour from Dehradun | ₹2,000 AC Cab | 2026',
   description: 'Book same day Mussoorie tour from Dehradun. Kempty Falls, Gun Hill, Mall Road, Lal Tibba. Just 35 km. AC sedan ₹2,000. Call 7668570551.',

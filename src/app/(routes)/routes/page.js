@@ -7,6 +7,8 @@ import { busFleet } from '@/utilis/busRoutesData';
 import CityRoutesMainClient from '@/components/CityRoutesMainClient';
 import Script from 'next/script';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Outstation Cab Routes 2026 | Delhi to Agra ₹3K | 500+ Destinations',
   description: 'Book outstation cabs from Delhi: Agra ₹3K, Jaipur ₹4.5K, Shimla ₹6K, Manali ₹8K. One-way & round trips. ₹11-15/km. 10,000+ trips done. Call 7668570551.',

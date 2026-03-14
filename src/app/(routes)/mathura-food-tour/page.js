@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Mathura Food Tour 2026 | Peda, Rabri, Lassi & Temple Prasad Guide',
   description: 'Mathura food & culinary tour. Famous Mathura Peda, Rabri, Lassi, Kachori Sabzi, Temple Prasad. Street food itinerary, best restaurants. By Mathura locals. Call 7668570551.',

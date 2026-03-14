@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Agra Travel Guide 2026 | Attractions, Food, Tips',
   description: 'Complete Agra travel guide 2026. Best time to visit, all attractions, food guide, shopping, local transport. By Agra locals. Call 7668570551.',

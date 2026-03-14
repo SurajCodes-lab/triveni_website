@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Zap, ShieldCheck, UserCheck, Calendar } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Local Taxi Service 2026 | 4hr/40km from ₹1,200 | Hourly Packages',
   description: 'Book local taxi service in Delhi, Agra, Jaipur & 50+ cities. Hourly packages: 4hr/40km ₹1,200, 8hr/80km ₹2,200. Verified drivers, AC cabs, GPS tracked. Call 7668570551.',

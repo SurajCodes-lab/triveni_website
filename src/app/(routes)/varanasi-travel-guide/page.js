@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Varanasi Travel Guide 2026 | Ghats, Temples, Spiritual Capital',
   description: 'Complete Varanasi travel guide 2026. Ganga Aarti, Kashi Vishwanath, Sarnath, ghats, best time to visit, food, tips. Call 7668570551.',

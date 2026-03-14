@@ -1,5 +1,7 @@
 import TourGuideClient from './TourGuideClient';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Tour Guide India 2026 | Licensed Guides from ₹1,200/Day | 14+ Cities',
   description: 'Hire certified tour guides in Delhi, Agra, Jaipur & 14+ cities. Multi-language (EN/FR/ES/DE). Ministry licensed. ₹1,200-3,000/day. 100+ guides. Book via WhatsApp 7668570551.',

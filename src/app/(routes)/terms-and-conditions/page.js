@@ -1,5 +1,7 @@
 import TermsClient from "./TermsClient";
 
+export const revalidate = false;
+
 export const metadata = {
   title: "Terms & Conditions | Triveni Cabs",
   description: "Read Triveni Cabs terms and conditions for taxi booking services. Clear policies on booking, payments, vehicle responsibilities, customer guidelines, and more.",

@@ -4,6 +4,8 @@ import AirportOutstationClient from '@/components/airport/AirportOutstationClien
 const SLUG = 'dehradun-airport-to-rishikesh-taxi';
 const data = airportRoutes[SLUG];
 
+export const revalidate = false;
+
 export const metadata = {
   title: `Dehradun Airport to Rishikesh Taxi | Fixed \u20B9${data.fares.sedan.price} | 30 Min`,
   description: `Dehradun Jolly Grant Airport to Rishikesh taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Fastest airport to Rishikesh. ${data.time}. Call 7668570551.`,

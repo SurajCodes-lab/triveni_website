@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Spiti Valley Road Trip from Delhi 2026 | 8-10 Day Plan | Triveni Cabs',
   description: 'Spiti Valley road trip from Delhi: 8-10 day plan via Shimla & Manali. Route, permits, altitude tips, road conditions. SUV ₹65,000. Call 7668570551.',

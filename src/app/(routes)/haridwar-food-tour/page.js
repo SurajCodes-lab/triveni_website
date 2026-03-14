@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Haridwar Food Tour 2026 | Pure Veg Kachori, Aloo Puri & Holy City Cuisine Guide',
   description: 'Haridwar food & culinary tour. Pure vegetarian city. Famous Kachori Sabzi, Aloo Puri, Chole Bhature, Rabri, Lassi. Street food itinerary, best restaurants. By locals. Call 7668570551.',

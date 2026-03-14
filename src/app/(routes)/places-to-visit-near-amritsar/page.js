@@ -4,6 +4,8 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.amritsar;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
+export const revalidate = false;
+
 export const metadata = {
   title: '15+ Places to Visit Near Amritsar by Car | Punjab Heritage | Book Cab',
   description: `Best places to visit near Amritsar by car. Wagah Border (28 km), Dalhousie (190 km), Dharamshala (210 km), Chandigarh (230 km) & more. Sedan ₹11/km. Call 7668570551.`,

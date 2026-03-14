@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
+export const revalidate = false;
+
 export const metadata = {
   title: 'Lucknow Shopping Guide 2026 | Chikankari, Zardozi & Ittar',
   description: 'Lucknow shopping guide. Chikankari embroidery, Zardozi, Ittar perfumes, Nawabi jewelry, Lucknowi kurtas. Aminabad, Hazratganj, Chowk. Prices & tips. Call 7668570551.',
