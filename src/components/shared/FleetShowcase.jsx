@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Car, Users, Snowflake, Briefcase, ChevronRight } from '@/components/ui/icons';
 import { trackWhatsAppClick } from '@/utilis/analytics';
 
@@ -16,7 +17,7 @@ const defaultFleet = [
     luggage: '2 Bags',
     features: ['AC', 'Music System', 'Comfortable'],
     startingPrice: '₹9/km',
-    image: null,
+    image: '/images/swift_dzire.jpg',
   },
   {
     name: 'Ertiga',
@@ -25,7 +26,7 @@ const defaultFleet = [
     luggage: '3 Bags',
     features: ['AC', 'Spacious', 'Family-friendly'],
     startingPrice: '₹12/km',
-    image: null,
+    image: '/images/ertiga.jpg',
   },
   {
     name: 'Innova Crysta',
@@ -35,7 +36,7 @@ const defaultFleet = [
     features: ['AC', 'Premium', 'Captain Seats'],
     startingPrice: '₹15/km',
     popular: true,
-    image: null,
+    image: '/images/innova_crysta.jpg',
   },
   {
     name: 'Tempo Traveller',
@@ -44,7 +45,7 @@ const defaultFleet = [
     luggage: '10+ Bags',
     features: ['AC', 'Pushback Seats', 'LCD'],
     startingPrice: '₹18/km',
-    image: null,
+    image: '/images/tempo/26_seater.jpg',
   },
 ];
 
@@ -100,10 +101,22 @@ export default function FleetShowcase({
               )}
 
               {/* Vehicle visual area */}
-              <div className={`relative h-36 flex items-center justify-center ${isDark ? 'bg-gradient-to-b from-white/[0.04] to-transparent' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
-                <Car className={`w-16 h-16 ${isDark ? 'text-white/20' : 'text-gray-200'} group-hover:scale-110 transition-transform duration-500`} />
+              <div className={`relative h-48 sm:h-44 overflow-hidden ${isDark ? 'bg-gradient-to-b from-white/[0.04] to-transparent' : 'bg-gradient-to-b from-gray-50 to-white'}`}>
+                {v.image ? (
+                  <Image
+                    src={v.image}
+                    alt={v.name}
+                    fill
+                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <Car className={`w-16 h-16 ${isDark ? 'text-white/20' : 'text-gray-200'} group-hover:scale-110 transition-transform duration-500`} />
+                  </div>
+                )}
                 {/* Vehicle type badge */}
-                <span className={`absolute bottom-3 left-3 px-2 py-0.5 rounded-md text-[10px] font-semibold ${isDark ? 'bg-white/5 text-white/50 border border-white/10' : 'bg-gray-100 text-gray-500'}`}>
+                <span className={`absolute bottom-3 left-3 z-10 px-2 py-0.5 rounded-md text-[10px] font-semibold ${isDark ? 'bg-black/50 text-white/80 backdrop-blur-sm border border-white/10' : 'bg-gray-100/90 backdrop-blur-sm text-gray-600'}`}>
                   {v.type}
                 </span>
               </div>

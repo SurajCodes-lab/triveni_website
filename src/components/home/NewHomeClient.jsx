@@ -199,7 +199,7 @@ const SERVICES = [
     icon: Car,
     href: '/outstation-cabs',
     gradient: 'from-blue-500 to-indigo-600',
-    image: '/images/car/WhatsApp Image 2025-01-13 at 14.34.22 (1).webp',
+    image: '/images/innova_crysta.jpg',
   },
   {
     title: 'Airport Transfers',
@@ -215,7 +215,7 @@ const SERVICES = [
     icon: Heart,
     href: '/wedding',
     gradient: 'from-rose-500 to-pink-600',
-    image: '/images/car/WhatsApp Image 2025-01-13 at 14.34.26.webp',
+    image: '/images/wedding_car.jpg',
   },
   {
     title: 'Tour Packages',
@@ -239,7 +239,7 @@ const SERVICES = [
     icon: Users,
     href: '/tempo-traveller',
     gradient: 'from-amber-500 to-orange-600',
-    image: '/images/tempo/17_seater.jpg',
+    image: '/images/tempo/26_seater.jpg',
   },
 ];
 
