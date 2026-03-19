@@ -4,8 +4,8 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 export const revalidate = false;
 
 export const metadata = {
-  title: 'Shimla Shopping Guide 2026 | Wooden Toys, Shawls & Hill Crafts',
-  description: 'Shimla shopping guide. Wooden toys, Kullu shawls, Himachali caps, dry fruits, jams, knitwear. Mall Road, Lakkar Bazaar, Lower Bazaar. Prices & tips. Call 7668570551.',
+  title: 'Shimla Shopping Guide 2026 | What to Buy & Where (Prices)',
+  description: 'What to buy in Shimla: Kullu shawls ₹500-5K, wooden toys ₹50-500, Himachali caps ₹150+, dry fruits, jams. Lakkar Bazaar, Mall Road, Lower Bazaar. Bargaining tips.',
   keywords: 'shimla shopping guide, shopping in shimla, lakkar bazaar shimla, shimla mall road shopping, kullu shawls shimla, shimla wooden toys, himachali cap, shimla dry fruits',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',

@@ -15,8 +15,14 @@ export async function generateMetadata({ params }) {
   const stand = getBusStandBySlug(slug);
   if (!stand) return {};
 
-  const title = `${stand.name} Cab Service | Taxi from ${stand.name}, ${stand.city} | Triveni Cabs`;
-  const description = `Book reliable taxi from ${stand.name}, ${stand.city}. Fixed fares, 24/7 service, AC cabs. Destinations: ${stand.destinations.slice(0, 3).map(d => d.name).join(', ')} & more. Call 7668570551.`;
+  const lowestFare = stand.destinations.reduce((min, d) => {
+    const num = parseInt(String(d.fare).replace(/[^\d]/g, ''));
+    return num && num < min ? num : min;
+  }, Infinity);
+  const fareDisplay = lowestFare < Infinity ? `\u20B9${lowestFare}` : 'Lowest Fare';
+  const topDest = stand.destinations.slice(0, 3).map(d => d.name).join(', ');
+  const title = `${stand.name} Taxi from ${fareDisplay} | Fixed Fare | 24/7`;
+  const description = `Taxi from ${stand.name}, ${stand.city} starting ${fareDisplay}. AC sedan/SUV to ${topDest} & more. Fixed fares, no surge, meet at bus stand exit. Call 7668570551.`;
 
   return {
     title,

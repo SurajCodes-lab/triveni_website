@@ -3975,6 +3975,8 @@ export const attractionBlogPosts = [
     id: 112,
     slug: "mehrangarh-fort-jodhpur-complete-guide-2026",
     title: "Mehrangarh Fort Jodhpur Complete Guide 2026 - History, Timings, Entry Fees & Tours",
+    metaTitle: "Mehrangarh Fort Jodhpur: Timings, Entry Fee ₹100, How to Reach (2026)",
+    metaDescription: "Mehrangarh Fort timings 9 AM–5 PM, entry fee ₹100 (Indian) ₹600 (Foreign). Museum, blue city views, zip lining ₹1,800. Complete visitor guide with tips.",
     excerpt: "Mehrangarh Fort Jodhpur: majestic hilltop fortress, museums, blue city views, zip lining, timings, entry fees. Complete guide to Jodhpur's iconic fort!",
 
     category: "Attractions",

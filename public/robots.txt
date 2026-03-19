@@ -17,17 +17,20 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 2
 
-# Block spam/unwanted bots
+# Allow SEO tool bots for backlink analysis and monitoring
 User-agent: AhrefsBot
-Disallow: /
+Allow: /
+Crawl-delay: 5
 
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 5
+
+# Block spam/unwanted bots
 User-agent: MJ12bot
 Disallow: /
 
 User-agent: DotBot
-Disallow: /
-
-User-agent: SemrushBot
 Disallow: /
 
 User-agent: PetalBot

@@ -16,8 +16,8 @@ export async function generateMetadata({ params }) {
   if (!station) return {};
 
   const lowestFare = station.destinations.reduce((min, d) => Math.min(min, d.sedanFare), Infinity);
-  const title = `${station.name} Cab Service | 24/7 Taxi | \u20B9${lowestFare} | Triveni Cabs`;
-  const description = `Book reliable taxi from ${station.name} (${station.stationCode}). ${station.platforms} platforms, ${station.destinations.length}+ destinations. Sedan from \u20B9${lowestFare}. 24/7 service, fixed fares, meet at platform. Call 7668570551.`;
+  const title = `${station.name} Taxi from \u20B9${lowestFare} | Platform Pickup | 24/7`;
+  const description = `Taxi from ${station.name} starting \u20B9${lowestFare}. Meet at platform exit, AC sedan/SUV, fixed fares, no surge. ${station.destinations.length}+ destinations. Call 7668570551.`;
 
   return {
     title,

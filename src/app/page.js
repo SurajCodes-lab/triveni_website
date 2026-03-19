@@ -12,8 +12,8 @@ const companyZip = "282006";
 
 // Server-side metadata for SEO
 export const metadata = {
-  title: "Triveni Cabs — Taxi from ₹11/km | 4.8★ Rated | 24/7 India",
-  description: "Book reliable taxi services across India. Wedding car rentals (BMW, Audi, Mercedes), airport transfers, tempo traveller, tour packages & expert guides. 24/7 service, 500+ destinations, 10K+ happy customers.",
+  title: "Triveni Cabs — Cab ₹11/km | Delhi Agra Jaipur Shimla | 4.9★",
+  description: "Cab service from ₹11/km across 500+ cities. Delhi, Agra, Jaipur, Shimla airport pickup, wedding cars, tempo traveller. 4.9★ rated, 10K+ trips. Call 7668570551",
   keywords: [
     "taxi service india",
     "cab booking",
@@ -86,8 +86,8 @@ function generateStructuredData() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "28.6139",
-      longitude: "77.2090"
+      latitude: "27.1767",
+      longitude: "78.0081"
     },
     image: "https://www.trivenicabs.in/images/HERO_SECTION_MAIN_PAGE.jpg",
     priceRange: "$$",
@@ -104,7 +104,7 @@ function generateStructuredData() {
     ],
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.8",
+      ratingValue: "4.9",
       reviewCount: "10000",
       bestRating: "5",
       worstRating: "1"
@@ -243,12 +243,43 @@ function generateStructuredData() {
     ]
   };
 
+  // BreadcrumbList for homepage
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.trivenicabs.in"
+      }
+    ]
+  };
+
+  // HowTo Schema — moved from layout.js to homepage where it belongs
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Book a Cab with Triveni Cabs",
+    "description": "Step-by-step guide to book a reliable taxi with Triveni Cabs. Easy booking, transparent pricing, verified drivers.",
+    "totalTime": "PT5M",
+    "estimatedCost": { "@type": "MonetaryAmount", "currency": "INR", "value": "1500-25000" },
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Choose Your Service", "text": "Select your required service: outstation taxi, local rental, airport transfer, or sightseeing tour. Browse our website or call 7668570551." },
+      { "@type": "HowToStep", "position": 2, "name": "Select Vehicle Type", "text": "Choose from Sedan (4 seater, ₹11/km), SUV (6 seater, ₹15/km), or Tempo Traveller (12-17 seater, ₹24/km) based on your group size." },
+      { "@type": "HowToStep", "position": 3, "name": "Provide Trip Details", "text": "Enter your pickup location, drop location, date, time, and number of passengers. Mention any special requirements." },
+      { "@type": "HowToStep", "position": 4, "name": "Get Instant Quote", "text": "Receive transparent quote with all costs included - base fare, driver allowance, tolls, and taxes. No hidden charges." },
+      { "@type": "HowToStep", "position": 5, "name": "Confirm Booking", "text": "Confirm via WhatsApp, phone call (7668570551), or online form. Pay small advance to secure your vehicle." },
+      { "@type": "HowToStep", "position": 6, "name": "Enjoy Your Trip", "text": "Verified driver arrives 15 minutes before pickup. Enjoy comfortable, hassle-free journey with 24/7 support." }
+    ]
+  };
+
   // Entity definition and ServiceAreaBusiness for AEO/GEO
   const entitySchema = generateEntityDefinitionSchema();
   const serviceAreaSchema = generateServiceAreaBusinessSchema();
 
-  // Note: LocalBusiness and WebSite schemas are already in layout.js - only returning unique schemas here
-  return [servicesSchema, faqSchema, entitySchema, serviceAreaSchema];
+  return [servicesSchema, faqSchema, breadcrumbSchema, howToSchema, entitySchema, serviceAreaSchema];
 }
 
 export default function HomePage() {

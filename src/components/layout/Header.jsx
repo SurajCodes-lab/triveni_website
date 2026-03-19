@@ -177,7 +177,8 @@ const Header = () => {
                 { href: '/tempo-traveller', label: 'Tempo' },
                 { href: '/bus-routes', label: 'Bus' },
                 { href: '/routes', label: 'Routes' },
-                { href: '/tour-guide', label: 'Tour Guide' },
+                { href: '/blog', label: 'Blog' },
+                { href: '/about', label: 'About' },
                 { href: '/contact', label: 'Contact' },
               ].map((link) => (
                 <Link

@@ -31,11 +31,11 @@ export const viewport = {
 
 export const metadata = {
   title: {
-    default: 'Triveni Cabs — Taxi ₹11/km | 4.8★ Rated | 24/7 Booking India',
+    default: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
     template: '%s | Triveni Cabs'
   },
-  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.8★ rating. Delhi, Agra, Jaipur, Manali & 50+ cities. Book now: 7668570551!',
-  keywords: 'taxi service India 2026, car rental India, outstation cab booking online, local taxi service near me, airport transfer Delhi, Triveni Cabs booking, luxury car rental India, tempo traveller hire Delhi, Delhi taxi service 24/7, Agra tour packages, Jaipur taxi booking online, reliable cab service India, 24/7 taxi booking, online cab booking India, corporate car rental Delhi, wedding car hire, intercity cab service, one way taxi Delhi Agra, round trip cab booking, best taxi service 2026, cheap car rental India, book cab online now, taxi near me, outstation taxi booking, cab service near me',
+  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+  keywords: 'taxi service India, car rental India, outstation cab booking, airport transfer Delhi, tempo traveller hire, wedding car rental, Delhi taxi 24/7, Agra tour packages, Jaipur cab booking, Triveni Cabs, one way taxi, round trip cab, cab service near me',
   authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
   creator: 'Triveni Cabs Travel Services',
   publisher: 'Triveni Cabs India',
@@ -47,13 +47,10 @@ export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/',
-    languages: {
-      'en-IN': '/',
-    }
   },
   openGraph: {
-    title: 'Triveni Cabs — Taxi ₹11/km | 4.8★ Rated | 24/7 Booking India',
-    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.8★ rating. Delhi, Agra, Jaipur, Manali & 50+ cities. Book now: 7668570551!',
+    title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
+    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
     url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
@@ -69,8 +66,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Triveni Cabs — Taxi ₹11/km | 4.8★ Rated | 24/7 Booking',
-    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers. Book now: 7668570551!',
+    title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking',
+    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers. Call 7668570551!',
     images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
   },
@@ -160,7 +157,7 @@ const structuredData = [
     "alternateName": ["Triveni Taxi", "Triveni Cab Service"],
     "url": "https://www.trivenicabs.in",
     "description": "India's trusted taxi service. Book outstation cabs, airport transfers, sightseeing tours, wedding cars, and tempo travellers across 50+ cities.",
-    "inLanguage": ["en-IN", "hi-IN"],
+    "inLanguage": "en-IN",
     "publisher": { "@id": "https://www.trivenicabs.in/#organization" },
     "potentialAction": {
       "@type": "SearchAction",
@@ -218,8 +215,8 @@ const structuredData = [
     "areaServed": { "@type": "Country", "name": "India" },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "2847",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -245,101 +242,6 @@ const structuredData = [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rajasthan Tour Package", "description": "7 Days 6 Nights Rajasthan tour from Jaipur" }, "price": "19999", "priceCurrency": "INR" }
       ]
     },
-  },
-  // FAQ Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "What are the car rental rates?", "acceptedAnswer": { "@type": "Answer", "text": "Sedan rental starts at ₹11/km, SUV at ₹15/km, and Tempo Traveller at ₹24/km. All vehicles include professional drivers and are AC equipped." } },
-      { "@type": "Question", "name": "Which cities do you serve?", "acceptedAnswer": { "@type": "Answer", "text": "We serve Delhi, Mumbai, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, and many other cities across India for both local and outstation trips." } },
-      { "@type": "Question", "name": "How to book a cab online?", "acceptedAnswer": { "@type": "Answer", "text": "You can book online through our website or call us at 7668570551 for instant booking. We provide 24/7 customer support and same-day booking." } },
-      { "@type": "Question", "name": "What tour packages do you offer?", "acceptedAnswer": { "@type": "Answer", "text": "We offer tour packages to Manali (₹9,999), Kashmir (₹16,999), Rajasthan (₹19,999), Chardham Yatra (₹24,999), and other popular destinations with accommodation and sightseeing included." } },
-      { "@type": "Question", "name": "What is the price for Agra to Delhi cab?", "acceptedAnswer": { "@type": "Answer", "text": "Agra to Delhi cab fare starts at ₹2,500 for sedan (one-way). The distance is approximately 230 km. We offer both one-way and round-trip options with experienced drivers." } },
-      { "@type": "Question", "name": "How do I book a tempo traveller?", "acceptedAnswer": { "@type": "Answer", "text": "You can book a tempo traveller (12-26 seater) online or call 7668570551. Rates start at ₹24/km with minimum 250km/day. We offer AC vehicles with push-back seats for group travel." } },
-      { "@type": "Question", "name": "Do you provide airport pickup and drop service?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we provide 24/7 airport transfer services at all major airports including Delhi IGI, Mumbai, Jaipur, Lucknow, and Chandigarh. Our drivers track flight timings for timely pickup." } },
-      { "@type": "Question", "name": "What payment methods do you accept?", "acceptedAnswer": { "@type": "Answer", "text": "We accept Cash, UPI (Google Pay, PhonePe, Paytm), Credit Cards, Debit Cards, and Bank Transfer. Partial advance payment is required for bookings." } },
-      { "@type": "Question", "name": "Is driver accommodation included in outstation trips?", "acceptedAnswer": { "@type": "Answer", "text": "Driver accommodation is the customer's responsibility for overnight trips. Alternatively, you can pay ₹300/night as driver allowance, and we arrange their stay separately." } },
-      { "@type": "Question", "name": "Can I book a one-way taxi?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer one-way taxi services on popular routes like Delhi-Agra, Delhi-Jaipur, Delhi-Chandigarh, and more. One-way fares are calculated at per km rates without return charges." } }
-    ]
-  },
-  // HowTo Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to Book a Cab with Triveni Cabs",
-    "description": "Step-by-step guide to book a reliable taxi with Triveni Cabs. Easy booking, transparent pricing, verified drivers.",
-    "totalTime": "PT5M",
-    "estimatedCost": { "@type": "MonetaryAmount", "currency": "INR", "value": "1500-25000" },
-    "step": [
-      { "@type": "HowToStep", "position": 1, "name": "Choose Your Service", "text": "Select your required service: outstation taxi, local rental, airport transfer, or sightseeing tour. Browse our website or call 7668570551." },
-      { "@type": "HowToStep", "position": 2, "name": "Select Vehicle Type", "text": "Choose from Sedan (4 seater, ₹11/km), SUV (6 seater, ₹15/km), or Tempo Traveller (12-17 seater, ₹24/km) based on your group size." },
-      { "@type": "HowToStep", "position": 3, "name": "Provide Trip Details", "text": "Enter your pickup location, drop location, date, time, and number of passengers. Mention any special requirements." },
-      { "@type": "HowToStep", "position": 4, "name": "Get Instant Quote", "text": "Receive transparent quote with all costs included - base fare, driver allowance, tolls, and taxes. No hidden charges." },
-      { "@type": "HowToStep", "position": 5, "name": "Confirm Booking", "text": "Confirm via WhatsApp, phone call (7668570551), or online form. Pay small advance to secure your vehicle." },
-      { "@type": "HowToStep", "position": 6, "name": "Enjoy Your Trip", "text": "Verified driver arrives 15 minutes before pickup. Enjoy comfortable, hassle-free journey with 24/7 support." }
-    ]
-  },
-  // Speakable Schema
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Triveni Cabs - Car Rental & Taxi Service India",
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "cssSelector": [".direct-answer", ".faq-answer", ".key-info", ".key-stats", ".summary-box", ".inline-stats", "article > p:first-of-type", "[data-snippet-type]", "[data-citation-source]"]
-    },
-    "url": "https://www.trivenicabs.in"
-  },
-  // ServiceAreaBusiness Schema — AEO/GEO: Signals multi-city coverage to AI engines
-  {
-    "@context": "https://schema.org",
-    "@type": "ServiceAreaBusiness",
-    "@id": "https://www.trivenicabs.in/#serviceareabusiness",
-    "name": "Triveni Cabs",
-    "description": "Premium taxi and cab service provider across North India offering reliable transportation for sightseeing tours, airport transfers, corporate travel, and wedding events.",
-    "url": "https://www.trivenicabs.in",
-    "telephone": "+91-7668570551",
-    "email": "cabstriveni@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "366, Dandupura, near Tajganj",
-      "addressLocality": "Agra",
-      "addressRegion": "Uttar Pradesh",
-      "postalCode": "282006",
-      "addressCountry": "IN"
-    },
-    "geo": { "@type": "GeoCoordinates", "latitude": 27.1767, "longitude": 78.0081 },
-    "areaServed": [
-      { "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Jaipur" },
-      { "@type": "City", "name": "Agra" }, { "@type": "City", "name": "Chandigarh" },
-      { "@type": "City", "name": "Amritsar" }, { "@type": "City", "name": "Dehradun" },
-      { "@type": "City", "name": "Haridwar" }, { "@type": "City", "name": "Rishikesh" },
-      { "@type": "City", "name": "Shimla" }, { "@type": "City", "name": "Manali" },
-      { "@type": "City", "name": "Udaipur" }, { "@type": "City", "name": "Jodhpur" },
-      { "@type": "City", "name": "Varanasi" }, { "@type": "City", "name": "Lucknow" },
-      { "@type": "City", "name": "Mathura" }, { "@type": "City", "name": "Noida" },
-      { "@type": "City", "name": "Gurgaon" }, { "@type": "City", "name": "Mussoorie" },
-      { "@type": "City", "name": "Nainital" }, { "@type": "City", "name": "Dharamshala" },
-      { "@type": "City", "name": "Srinagar" }, { "@type": "City", "name": "Ayodhya" },
-      { "@type": "City", "name": "Jaisalmer" }, { "@type": "City", "name": "Pushkar" },
-      { "@type": "City", "name": "Ranthambore" }
-    ],
-    "serviceType": ["Taxi Service", "Cab Booking", "Airport Transfer", "Sightseeing Tours", "Corporate Transportation", "Wedding Car Rental", "Tempo Traveller Rental", "Bus Hire"],
-    "priceRange": "₹₹",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
   }
 ];
 

@@ -70,54 +70,57 @@ const allCityRoutes = {
 
 export default function sitemap() {
   const baseUrl = 'https://www.trivenicabs.in';
-  
+  // Use a fixed date instead of new Date() — prevents Google from ignoring lastmod signals
+  // Update this date manually when content is actually modified
+  const lastContentUpdate = new Date('2026-03-15');
+
   const urls = [
     // Main Pages
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/tour-guide`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/vehicles`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/wedding`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
@@ -125,13 +128,13 @@ export default function sitemap() {
     // Comparison Pages - DECISION HELPER CONTENT
     {
       url: `${baseUrl}/sedan-vs-suv`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/tempo-vs-bus`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
@@ -139,37 +142,37 @@ export default function sitemap() {
     // Tour Packages - HIGH PRIORITY CONTENT PAGES
     {
       url: `${baseUrl}/tour-package/manali-tour-from-mumbai`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/chardham-yatra-package`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/shimla-from-mumbai`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/rajasthan-tour`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/kashmir-tour`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/tour-package/punjab-tour`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
@@ -177,37 +180,37 @@ export default function sitemap() {
     // Booking Pages - CONVERSION PAGES
     {
       url: `${baseUrl}/tour-package/manali-tour-from-mumbai/book`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/chardham-yatra-package/book`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/shimla-from-mumbai/book`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/rajasthan-tour/book`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/kashmir-tour/book`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/tour-package/punjab-tour/book`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
@@ -215,31 +218,31 @@ export default function sitemap() {
     // Vehicle Categories - CONTENT PAGES
     {
       url: `${baseUrl}/vehicles/sedan`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/suv`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/tempo-traveller`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/luxury-bus`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/vehicles/bus`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     },
@@ -247,13 +250,13 @@ export default function sitemap() {
     // Additional Service Pages
     {
       url: `${baseUrl}/tourist-spots`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/airport-service`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
@@ -261,7 +264,7 @@ export default function sitemap() {
     // Religious Tours Main Page - HIGH PRIORITY CATEGORY PAGE
     {
       url: `${baseUrl}/religious-tours`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -269,7 +272,7 @@ export default function sitemap() {
     // Tempo Traveller Main Page - HIGH PRIORITY CATEGORY PAGE
     {
       url: `${baseUrl}/tempo-traveller`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
@@ -277,19 +280,19 @@ export default function sitemap() {
     // Policy Pages
     {
       url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.4,
     },
     {
       url: `${baseUrl}/terms-and-conditions`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.4,
     },
     {
       url: `${baseUrl}/cancellation-and-refund-policy`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.4,
     },
@@ -297,19 +300,19 @@ export default function sitemap() {
     // Corporate Transportation Service Pages - HIGH PRIORITY B2B CONTENT
     {
       url: `${baseUrl}/corporate-transportation-service`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/corporate-cab-vs-aggregators`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/get-corporate-quote`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -317,7 +320,7 @@ export default function sitemap() {
     // Event Transportation Service Pages - HIGH PRIORITY CONTENT
     {
       url: `${baseUrl}/event-transportation-service`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
@@ -325,7 +328,7 @@ export default function sitemap() {
     // Blog Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
@@ -333,7 +336,7 @@ export default function sitemap() {
     // Sightseeing Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/sightseeing`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.75,
     },
@@ -341,7 +344,7 @@ export default function sitemap() {
     // Routes Main Page - CATEGORY PAGE
     {
       url: `${baseUrl}/routes`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.75,
     },
@@ -436,7 +439,7 @@ export default function sitemap() {
   weddingCarSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/wedding/cars/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -447,7 +450,7 @@ export default function sitemap() {
   sightseeingCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/sightseeing/${city}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -459,7 +462,7 @@ export default function sitemap() {
     .forEach(post => {
       urls.push({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: post.date ? new Date(post.date) : new Date(),
+        lastModified: post.date ? new Date(post.date) : lastContentUpdate,
         changeFrequency: 'monthly',
         priority: 0.7,
       });
@@ -470,7 +473,7 @@ export default function sitemap() {
   allSightseeingTours.forEach(tour => {
     urls.push({
       url: `${baseUrl}/sightseeing/${tour.slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     });
@@ -481,7 +484,7 @@ export default function sitemap() {
   religiousTourSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/religious-tours/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.95,
     });
@@ -492,7 +495,7 @@ export default function sitemap() {
   weddingCitySlugs.forEach(citySlug => {
     urls.push({
       url: `${baseUrl}/wedding/${citySlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     });
@@ -502,7 +505,7 @@ export default function sitemap() {
   chardhamRoutes.forEach(route => {
     urls.push({
       url: `${baseUrl}/tempo-traveller/${route.slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.95,
     });
@@ -515,7 +518,7 @@ export default function sitemap() {
       const routeSlug = createTempoRouteSlug(originCity, route.name);
       urls.push({
         url: `${baseUrl}/tempo-traveller/${routeSlug}`,
-        lastModified: new Date(),
+        lastModified: lastContentUpdate,
         changeFrequency: 'weekly',
         priority: 0.8,
       });
@@ -537,7 +540,7 @@ export default function sitemap() {
       const routeSlug = `${originCity.toLowerCase().replace(/\s+/g, '-')}-to-${route.name.toLowerCase().replace(/\s+/g, '-')}`;
       urls.push({
         url: `${baseUrl}/bus-routes/${routeSlug}`,
-        lastModified: new Date(),
+        lastModified: lastContentUpdate,
         changeFrequency: 'weekly',
         priority: 0.8,
       });
@@ -554,7 +557,7 @@ export default function sitemap() {
   touristAttractionCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/tourist-attractions/${city}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -565,7 +568,7 @@ export default function sitemap() {
   airportCitySlugs.forEach(citySlug => {
     urls.push({
       url: `${baseUrl}/airport-service/${citySlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.9,
     });
@@ -578,7 +581,7 @@ export default function sitemap() {
     const cityName = city.name.toLowerCase();
     urls.push({
       url: `${baseUrl}/${cityName}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     });
@@ -599,7 +602,7 @@ export default function sitemap() {
           const routeSlug = createRouteSlug(cityName, route.destination);
           urls.push({
             url: `${baseUrl}/${routeSlug}`,
-            lastModified: new Date(),
+            lastModified: lastContentUpdate,
             changeFrequency: 'weekly',
             priority: 0.8,
           });
@@ -612,7 +615,7 @@ export default function sitemap() {
   corporateCitySlugs.forEach(citySlug => {
     urls.push({
       url: `${baseUrl}/corporate-transportation-service/${citySlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     });
@@ -622,7 +625,7 @@ export default function sitemap() {
   corporateIndustrySlugs.forEach(industrySlug => {
     urls.push({
       url: `${baseUrl}/corporate-transportation-service/industry/${industrySlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     });
@@ -632,7 +635,7 @@ export default function sitemap() {
   corporateUseCaseSlugs.forEach(useCaseSlug => {
     urls.push({
       url: `${baseUrl}/corporate-transportation-service/use-case/${useCaseSlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     });
@@ -642,7 +645,7 @@ export default function sitemap() {
   eventTypeSlugs.forEach(eventSlug => {
     urls.push({
       url: `${baseUrl}/event-transportation-service/${eventSlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -652,7 +655,7 @@ export default function sitemap() {
   eventCitySlugs.forEach(citySlug => {
     urls.push({
       url: `${baseUrl}/event-transportation-service/city/${citySlug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -663,7 +666,7 @@ export default function sitemap() {
   oneWayRouteSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/one-way-cab/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.85,
     });
@@ -674,7 +677,7 @@ export default function sitemap() {
   itinerarySlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -685,7 +688,7 @@ export default function sitemap() {
   placesToVisitCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/places-to-visit-near-${city}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -851,7 +854,7 @@ export default function sitemap() {
   chardhamYatraSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/chardham-yatra/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'weekly',
       priority: 0.95,
     });
@@ -870,7 +873,7 @@ export default function sitemap() {
   howToReachCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/how-to-reach-${city}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -890,7 +893,7 @@ export default function sitemap() {
   newTripCostSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
     });
@@ -906,7 +909,7 @@ export default function sitemap() {
   vehicleComparisonSlugs.forEach(slug => {
     urls.push({
       url: `${baseUrl}/${slug}`,
-      lastModified: new Date(),
+      lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
     });

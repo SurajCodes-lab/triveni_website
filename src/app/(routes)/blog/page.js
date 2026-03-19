@@ -1,130 +1,14 @@
 import BlogClient from './BlogClient';
 import { blogPosts } from '@/utilis/blog';
 
-// ISR - Revalidate every hour (3600 seconds)
+// Static generation - no ISR
 export const revalidate = false;
 
 // SEO Metadata for Blog Page
 export const metadata = {
-  title: 'India Uncovered: Travel Tales That Inspire Wanderlust | Triveni Cabs 2026',
-  description: '🌏 Your passport to incredible India starts here! Explore hidden gems, budget hacks, jaw-dropping destinations & insider secrets. From Himalayan peaks to coastal paradises - real stories, practical tips & itineraries that actually work. Join 500+ readers discovering India differently!',
-  keywords: [
-    // Primary Keywords
-    'travel blog India',
-    'India travel tips 2026',
-    'destination guides India',
-    'travel advice India',
-    'tourism blog India',
-    'Indian travel blog',
-
-    // Location-Based Keywords
-    'Delhi travel guide',
-    'Agra travel tips',
-    'Jaipur tourism',
-    'Manali travel blog',
-    'Kashmir travel guide',
-    'Goa travel tips',
-    'Kerala tourism blog',
-    'Rajasthan travel guide',
-    'Himachal Pradesh travel',
-    'Uttarakhand tourism',
-    'Mumbai travel blog',
-    'Bangalore travel guide',
-    'Kolkata tourism',
-    'Chennai travel tips',
-
-    // Travel Type Keywords
-    'road trip India',
-    'budget travel India',
-    'luxury travel India',
-    'family travel India',
-    'solo travel India',
-    'adventure travel India',
-    'cultural tourism India',
-    'heritage tourism India',
-    'pilgrimage tours India',
-    'honeymoon destinations India',
-    'weekend getaways India',
-    'outstation travel tips',
-
-    // Seasonal Keywords
-    'best time to visit India',
-    'monsoon travel India',
-    'winter destinations India',
-    'summer travel India 2026',
-    'Indian festivals travel',
-
-    // Activity Keywords
-    'trekking in India',
-    'wildlife tourism India',
-    'beach destinations India',
-    'hill station travel',
-    'food tourism India',
-    'shopping destinations India',
-    'photography tours India',
-    'spiritual tourism India',
-    'adventure sports India',
-
-    // Service Keywords
-    'taxi booking tips',
-    'cab service blog',
-    'car rental guide India',
-    'highway travel India',
-    'road safety tips',
-
-    // Long-tail Keywords
-    'best places to visit in India 2026',
-    'how to plan India trip',
-    'India travel itinerary',
-    'cheap travel in India',
-    'India tourism guide 2026',
-    'travel stories from India',
-    'India sightseeing tips',
-    'local travel India',
-    'intercity travel India',
-    'North India travel guide',
-    'South India tourism',
-    'East India travel blog',
-    'West India destinations',
-
-    // Tourist Keywords
-    'UNESCO heritage sites India',
-    'historical places India',
-    'architectural tourism India',
-    'art and culture India',
-    'tribal tourism India',
-    'rural tourism India',
-    'eco-tourism India',
-    'sustainable travel India',
-    'responsible tourism India',
-
-    // Wellness Keywords
-    'yoga retreats India',
-    'Ayurveda tourism',
-    'wellness travel India',
-    'spiritual journeys India',
-    'meditation retreats India',
-
-    // Practical Keywords
-    'travel planning India',
-    'India visa guide',
-    'currency exchange India',
-    'best hotels India',
-    'India restaurant guide',
-    'local transport India',
-    'India travel safety',
-    'travel insurance India',
-
-    // Activity-Based Keywords
-    'camping in India',
-    'river rafting India',
-    'paragliding India',
-    'scuba diving India',
-    'skiing in India',
-    'rock climbing India',
-    'bird watching India',
-    'safari tours India',
-  ].join(', '),
+  title: 'Travel Blog India 2026 | Tips & Guides | Triveni Cabs',
+  description: 'Expert India travel guides, destination tips, road trip itineraries & budget hacks. Delhi, Agra, Jaipur, Manali, Kashmir & more. Plan your perfect trip today!',
+  keywords: 'travel blog India, India travel tips, destination guides, road trip India, budget travel India, Delhi travel guide, Agra travel tips, Jaipur tourism, North India travel, weekend getaways India, hill station travel, pilgrimage tours India, travel itinerary India, Triveni Cabs blog',
   authors: [{ name: 'Triveni Cabs Travel Experts' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -136,10 +20,6 @@ export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/blog',
-    languages: {
-      'en-IN': '/blog',
-      'hi-IN': '/blog',
-    },
   },
   openGraph: {
     title: 'India Uncovered: Travel Tales That Inspire Wanderlust | 2026',
@@ -159,8 +39,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'India Uncovered: Travel Tales That Inspire 🌏',
-    description: '✨ Hidden gems 💰 Budget hacks 🏔️ Epic adventures. Real stories from incredible India that will make you pack your bags today!',
+    title: 'Travel Blog India 2026 | Tips & Guides | Triveni Cabs',
+    description: 'Expert India travel guides, destination tips, road trip itineraries & budget hacks. Plan your perfect trip today!',
     images: ['https://www.trivenicabs.in/images/blog/travel-blog-twitter.jpg'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs',

@@ -268,15 +268,15 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
  * Title: {City} Airport Taxi @ ₹{price} — Flight Tracking | 24/7
  */
 export function generateAirportMetadata({ city, airportName, price, slug }) {
-  const title = truncateTitle(`${city} Airport Taxi @ ₹${price} — Flight Tracking | 24/7`);
-  const ogTitle = truncateOGTitle(`${city} Airport Taxi @ ₹${price} — Live Flight Tracking, Meet & Greet | Triveni Cabs`);
+  const title = truncateTitle(`${city} Airport Cab ₹${price} — Terminal Pickup | No Wait`);
+  const ogTitle = truncateOGTitle(`${city} Airport Cab ₹${price} — Meet at Terminal Exit, AC Vehicle, No Hidden Charges | Triveni Cabs`);
   const description = truncateDescription(
-    `${city} airport taxi from ₹${price}. ${airportName} pickup/drop, flight tracking. ` +
-    `No hidden charges. 4.9★ rated, 10,000+ trips. Call 7668570551.`
+    `${city} airport taxi from ₹${price}. ${airportName} terminal pickup at exit gate. ` +
+    `AC sedan/SUV, no surge, no hidden charges. 4.9★ rated. Call 7668570551.`
   );
   const ogDescription = truncateDescription(
-    `Book ${city} airport taxi from just ₹${price}. ${airportName} pickup/drop with live flight tracking. ` +
-    `Meet & greet, no hidden charges. Book now!`
+    `Book ${city} airport cab from ₹${price}. ${airportName} terminal pickup, meet at exit gate. ` +
+    `AC vehicles, fixed fares, 24/7. Book now!`
   );
 
   return {

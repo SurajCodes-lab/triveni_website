@@ -7,8 +7,8 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = false;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Noida by Car | NCR Getaways | Book Cab',
-  description: `Best places to visit near Noida by car. Agra (200 km), Mathura (145 km), Jim Corbett (240 km), Rishikesh (230 km) & more. Sedan ₹11/km. Call 7668570551.`,
+  title: '15 Best Places to Visit Near Noida (2026) | With Distance',
+  description: 'Best places to visit near Noida by car — Agra (200 km), Mathura (145 km), Jim Corbett (240 km), Rishikesh (230 km). Distances, drive time & cab fare included.',
   keywords: 'places to visit near noida, places near noida, weekend getaways from noida, day trips from noida, noida nearby places, places around noida, tourist places near noida, places to visit near noida by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
