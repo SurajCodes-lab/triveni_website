@@ -131,8 +131,8 @@ function generateSchemas(route) {
       },
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        reviewCount: '2450',
+        ratingValue: '4.9',
+        reviewCount: '10000',
         bestRating: '5',
       },
     },

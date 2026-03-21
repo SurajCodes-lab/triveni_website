@@ -224,8 +224,8 @@ export default function EventTransportationPage() {
     "priceRange": "$$",
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "2500",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -290,8 +290,8 @@ export default function EventTransportationPage() {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1200",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }

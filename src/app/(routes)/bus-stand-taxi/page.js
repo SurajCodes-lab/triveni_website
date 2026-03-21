@@ -62,8 +62,8 @@ export default function BusStandTaxiHubPage() {
     "areaServed": standEntries.map(([, s]) => ({ "@type": "Place", "name": `${s.name}, ${s.city}` })),
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1500",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }

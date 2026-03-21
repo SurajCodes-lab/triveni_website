@@ -92,8 +92,8 @@ export default function DynamicTempoRoutesClient({ data }) {
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "2500",
+          "ratingValue": "4.9",
+          "reviewCount": "10000",
           "bestRating": "5"
         },
         "hasOfferCatalog": {
@@ -156,7 +156,7 @@ export default function DynamicTempoRoutesClient({ data }) {
 
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
-    <div className="min-h-screen bg-white overflow-hidden">
+    <article className="min-h-screen bg-white overflow-hidden" itemScope itemType="https://schema.org/TravelAction">
       {/* ============================================ */}
       {/* HERO SECTION - Ultra Premium Design */}
       {/* ============================================ */}
@@ -697,6 +697,45 @@ export default function DynamicTempoRoutesClient({ data }) {
           </div>
         </section>
       )}
+
+      {/* ============================================ */}
+      {/* DIRECT ANSWER BOX (AEO/Featured Snippet Target) */}
+      {/* ============================================ */}
+      <section className="py-8 md:py-12 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
+              {origin} to {destination} Tempo Traveller — Quick Summary
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Distance</p>
+                <p className="text-xl font-black text-slate-900">{routeData?.distance || 'Contact Us'}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Duration</p>
+                <p className="text-xl font-black text-slate-900">{routeData?.duration || 'Contact Us'}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Rate</p>
+                <p className="text-xl font-black text-green-700">₹23/km</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Capacity</p>
+                <p className="text-xl font-black text-slate-900">12-26 Seat</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
+              Tempo traveller hire from <strong>{origin} to {destination}</strong> starts at <strong>₹23/km</strong> for a 12-seater AC tempo.
+              {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
+              Triveni Cabs offers 12, 16, 17, 20, and 26 seater Maharaja tempo travellers with pushback seats,
+              AC, music system, charging points, and ample luggage space. Perfect for family trips, pilgrimages,
+              wedding groups, and corporate outings. Book by calling <strong>+91-7668570551</strong> or WhatsApp.
+              4.9★ rated with 10,000+ group trips completed.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* FLEET SECTION - Premium Vehicle Showcase */}
@@ -1528,7 +1567,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </article>
     </MotionConfig>
   );
 }

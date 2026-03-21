@@ -76,7 +76,7 @@ export default function CityWeddingPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "850",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -169,7 +169,7 @@ export default function CityWeddingPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "850",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -203,7 +203,7 @@ export default function CityWeddingPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "850",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }

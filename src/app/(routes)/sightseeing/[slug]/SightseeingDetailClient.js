@@ -293,6 +293,44 @@ export default function SightseeingDetailClient({ tour }) {
         </div>
       </div>
 
+      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) === */}
+      <section className="py-8 px-4 bg-slate-900">
+        <div className="max-w-4xl mx-auto">
+          <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-emerald-500/20" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
+              {tour.name} — Quick Summary
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Duration</p>
+                <p className="text-xl font-black text-emerald-400">{tour.duration}</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Sedan Price</p>
+                <p className="text-xl font-black text-emerald-400">₹{tour.price?.sedan?.toLocaleString()}</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Highlights</p>
+                <p className="text-xl font-black text-white">{tour.highlights?.length || 0}+</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Rating</p>
+                <p className="text-xl font-black text-emerald-400">4.9★</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
+              The <strong className="text-white">{tour.name}</strong> is a {tour.duration} guided experience starting from
+              <strong className="text-emerald-400"> ₹{tour.price?.sedan?.toLocaleString()}</strong> (AC sedan).
+              {tour.highlights?.length > 0 && ` Visit ${tour.highlights.slice(0, 4).join(', ')} and more.`}
+              {tour.inclusions?.length > 0 && ` Includes ${tour.inclusions.slice(0, 3).join(', ').toLowerCase()}.`}
+              {tour.bestTimeToVisit && ` Best time: ${tour.bestTimeToVisit}.`}
+              {' '}All tours include AC vehicle, experienced driver, and flexible timing.
+              Book by calling <strong className="text-white">+91-7668570551</strong> or WhatsApp for instant confirmation.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Tabs Navigation - Explorer Style */}
       <div className="sticky top-[73px] z-30 bg-slate-900/60 backdrop-blur-xl border-b border-white/5">
         <div className="container mx-auto px-4 sm:px-6">

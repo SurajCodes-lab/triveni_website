@@ -314,7 +314,7 @@ export default function CityServiceClient({
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <article className="min-h-screen bg-[#FAFAFA]" itemScope itemType="https://schema.org/TaxiService">
 
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
@@ -559,6 +559,42 @@ export default function CityServiceClient({
           </div>
         </div>
       </div>
+
+      {/* ==================== DIRECT ANSWER BOX (AEO/Featured Snippet Target) ==================== */}
+      <section className="py-8 md:py-12 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
+              {formattedCityName} Taxi Service — Quick Info
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Rate</p>
+                <p className="text-xl font-black text-green-700">₹11/km</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Vehicles</p>
+                <p className="text-xl font-black text-slate-900">6 Types</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Available</p>
+                <p className="text-xl font-black text-slate-900">24/7</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Rating</p>
+                <p className="text-xl font-black text-amber-600">4.9★</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
+              Triveni Cabs is the <strong>best-rated taxi service in {formattedCityName}</strong> with a 4.9-star rating and 10,000+ completed trips.
+              Our {formattedCityName} cab service starts from just <strong>₹11 per km</strong> for AC sedans (Swift Dzire, Toyota Etios).
+              We offer local taxi, outstation cabs, airport transfers, sightseeing tours, wedding car rental, and corporate transportation in {formattedCityName}.
+              All vehicles are AC, GPS-tracked, and driven by police-verified professional drivers.
+              Book instantly by calling <strong>+91-7668570551</strong> or WhatsApp — no advance payment required.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ==================== ROUTES SECTION ==================== */}
       <section id="routes" className="py-16 md:py-24 bg-white">
@@ -1310,6 +1346,6 @@ export default function CityServiceClient({
         </motion.div>
       )}
 
-    </div>
+    </article>
   );
 }

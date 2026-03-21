@@ -131,7 +131,7 @@ export default function TouristSpotsPage() {
       "telephone": "+91-7668570551",
     },
     "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "2847", "bestRating": "5" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" },
   };
 
   const faqData = [

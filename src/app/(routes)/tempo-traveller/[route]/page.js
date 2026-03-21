@@ -372,7 +372,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
-          "reviewCount": "2500",
+          "reviewCount": "10000",
           "bestRating": "5"
         }
       },
@@ -544,7 +544,7 @@ export default async function TempoTravellerRoutePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "2500",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }

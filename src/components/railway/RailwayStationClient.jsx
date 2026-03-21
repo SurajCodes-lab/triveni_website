@@ -30,7 +30,7 @@ export default function RailwayStationClient({ station, slug }) {
   const lowestFare = station.destinations.reduce((min, d) => Math.min(min, d.sedanFare), Infinity);
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <article className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/TaxiService">
       {/* Inline CSS for custom animations */}
       <style jsx global>{`
         @keyframes shimmer-slide {
@@ -433,6 +433,42 @@ export default function RailwayStationClient({ station, slug }) {
         </div>
       </section>
 
+      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) === */}
+      <section className="py-10 px-4 relative">
+        <div className="max-w-4xl mx-auto">
+          <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-amber-500/20" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
+              {station.name} Taxi — Quick Info
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Starting Fare</p>
+                <p className="text-xl font-black text-amber-400">₹{lowestFare}</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Destinations</p>
+                <p className="text-xl font-black text-white">{station.destinations.length}+</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Available</p>
+                <p className="text-xl font-black text-white">24/7</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Rating</p>
+                <p className="text-xl font-black text-amber-400">4.9★</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
+              Taxi from <strong className="text-white">{station.name} ({station.stationCode})</strong> starts at just <strong className="text-amber-400">₹{lowestFare}</strong> for AC sedan.
+              Our drivers meet you at the <strong className="text-white">platform exit gate</strong> with a name placard — no waiting, no searching.
+              Fixed fares to {station.destinations.slice(0, 3).map(d => d.name).join(', ')} and {station.destinations.length - 3}+ more destinations.
+              AC sedan and SUV options with verified professional drivers and GPS tracking.
+              Book by calling <strong className="text-white">+91-7668570551</strong> or WhatsApp. 4.9★ rated, 10,000+ station pickups completed.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* === DESTINATIONS - Train Ticket Cards === */}
       <section className="py-20 md:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/20 to-transparent" />
@@ -736,6 +772,6 @@ export default function RailwayStationClient({ station, slug }) {
           <span className="text-slate-300 font-medium">{station.name}</span>
         </div>
       </nav>
-    </div>
+    </article>
   );
 }

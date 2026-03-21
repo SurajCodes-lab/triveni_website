@@ -9,6 +9,9 @@ import SightseeingDetailClient from './SightseeingDetailClient';
 import CityToursPage from './CityToursPage';
 import { notFound } from 'next/navigation';
 import { generateTourMetadata, generateSightseeingCityMetadata } from '@/lib/seo/metadata-factory';
+import { generateTourFAQs } from '@/lib/seo/faq-generator';
+import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
+import Script from 'next/script';
 import AEOHead from '@/components/seo/AEOHead';
 
 export async function generateStaticParams() {
@@ -457,26 +460,38 @@ export default async function SightseeingDetailPage({ params }) {
         }}
       />
 
-      {/* FAQ Schema if available */}
-      {tour.faq && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": tour.faq.map(item => ({
-                "@type": "Question",
-                "name": item.question,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": item.answer
-                }
-              }))
-            })
-          }}
-        />
-      )}
+      {/* FAQ Schema — always generated using FAQ generator */}
+      {(() => {
+        const tourFAQs = generateTourFAQs({
+          tourName: tour.name,
+          city: tour.city || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+          duration: tour.duration,
+          price: lowestPrice,
+          highlights: tour.highlights || [],
+          inclusions: tour.inclusions || []
+        });
+        return (
+          <Script
+            id="tour-faq-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": tourFAQs.map(faq => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                  }
+                }))
+              })
+            }}
+            strategy="beforeInteractive"
+          />
+        );
+      })()}
 
       {/* ItemList Schema for Itinerary */}
       {tour.itinerary && tour.itinerary.length > 0 && (

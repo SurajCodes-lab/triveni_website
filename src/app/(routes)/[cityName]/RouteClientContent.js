@@ -199,8 +199,16 @@ export default function RouteClientContent({
     }
   ];
 
+  // Get destination city info for "Things to Do" section
+  const destinationInfo = (() => {
+    try {
+      const { getCityLocalInfo } = require('@/utilis/cityLocalInfo');
+      return getCityLocalInfo(formattedDestination);
+    } catch { return null; }
+  })();
+
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <article className="min-h-screen bg-[#FAFAFA]" itemScope itemType="https://schema.org/TravelAction">
 
       {/* ==================== HERO SECTION - BENTO STYLE ==================== */}
       <section className="relative min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
@@ -462,6 +470,60 @@ export default function RouteClientContent({
           </div>
         </div>
       </div>
+
+      {/* ==================== DIRECT ANSWER BOX (AEO/Featured Snippet Target) ==================== */}
+      <section className="py-8 md:py-12 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
+              {formattedCityName} to {formattedDestination} Cab — Quick Summary
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Distance</p>
+                <p className="text-xl font-black text-slate-900">{route.distance || estimatedDistance}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Duration</p>
+                <p className="text-xl font-black text-slate-900">{route.time || estimatedTime}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Fare</p>
+                <p className="text-xl font-black text-green-700">₹{startingPrice}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Rating</p>
+                <p className="text-xl font-black text-amber-600">4.9★</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
+              The {formattedCityName} to {formattedDestination} taxi fare starts from <strong>₹{startingPrice}</strong> for a sedan (one way).
+              The road distance is approximately <strong>{route.distance || estimatedDistance}</strong> and the journey takes around <strong>{route.time || estimatedTime}</strong>.
+              {route.routeHighlights ? ` The route goes ${route.routeHighlights.toLowerCase()}.` : ''}
+              {route.bestTimeToTravel ? ` Best time to travel: ${route.bestTimeToTravel}.` : ''}
+              Triveni Cabs offers AC sedan, SUV, tempo traveller, and bus options with verified professional drivers, GPS tracking, and 24/7 booking.
+              Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
+            </p>
+          </div>
+
+          {/* Route Tags — keyword signals */}
+          {route.tags && route.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-5">
+              {route.tags.map((tag, i) => (
+                <span key={i} className="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full text-sm font-medium border border-slate-200">
+                  {tag}
+                </span>
+              ))}
+              <span className="bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full text-sm font-medium border border-amber-200">
+                One Way Available
+              </span>
+              <span className="bg-green-100 text-green-800 px-3 py-1.5 rounded-full text-sm font-medium border border-green-200">
+                24/7 Service
+              </span>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* ==================== VEHICLE SELECTION SECTION ==================== */}
       <section className="py-16 md:py-24 bg-white">
@@ -1057,6 +1119,126 @@ export default function RouteClientContent({
         </section>
       )}
 
+      {/* ==================== DETAILED TRAVEL GUIDE (Unique Prose Content for SEO) ==================== */}
+      <section className="py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-6">
+            Complete Guide: {formattedCityName} to {formattedDestination} by Cab
+          </h2>
+          <div className="prose prose-lg prose-slate max-w-none" data-snippet-type="travel-guide">
+            <p>
+              Planning a trip from {formattedCityName} to {formattedDestination}? The road journey covers approximately {route.distance || estimatedDistance} and
+              takes around {route.time || estimatedTime} by cab. {route.routeHighlights ? `The route goes ${route.routeHighlights.toLowerCase()}, offering a comfortable and scenic drive.` : `The highway connecting these two cities is well-maintained, making it a comfortable drive.`}
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">Why Choose a Cab Over Bus or Train?</h3>
+            <p>
+              While buses and trains are available on the {formattedCityName} to {formattedDestination} route, a private cab offers unmatched flexibility.
+              You can stop at {route.popularStops?.length > 0 ? route.popularStops.slice(0, 3).join(', ') : 'popular attractions'} along the way,
+              travel at your own pace, and enjoy door-to-door pickup and drop. Families with children, senior citizens, and groups especially benefit
+              from the comfort and convenience of a private taxi.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">{formattedCityName} to {formattedDestination} Cab Fare Breakdown</h3>
+            <p>
+              The one-way taxi fare from {formattedCityName} to {formattedDestination} starts at just ₹{startingPrice} for an AC sedan (Swift Dzire / Toyota Etios).
+              SUV options like Ertiga and Innova Crysta are available at slightly higher rates, ideal for families of 5-7 people.
+              For larger groups, tempo travellers (12-26 seater) and buses (22-56 seater) offer cost-effective per-person pricing.
+              All fares include fuel, driver charges, and applicable taxes. Toll and parking charges are extra and paid directly.
+            </p>
+
+            {route.bestTimeToTravel && (
+              <>
+                <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">Best Time to Travel from {formattedCityName} to {formattedDestination}</h3>
+                <p>
+                  {route.bestTimeToTravel}. Starting early in the morning helps avoid traffic congestion near city exits and ensures a cooler,
+                  more pleasant journey. If you are planning a round trip, we recommend an overnight stay at the destination to avoid driver fatigue
+                  and make the most of your visit.
+                </p>
+              </>
+            )}
+
+            {route.localTip && (
+              <>
+                <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">Insider Tips for This Route</h3>
+                <p>
+                  {route.localTip}. Our experienced drivers, many with over 10 years of driving on this route, can suggest the best food stops,
+                  scenic viewpoints, and restroom facilities along the highway. Do not hesitate to ask your driver for recommendations—they know
+                  the route inside out.
+                </p>
+              </>
+            )}
+
+            <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">Booking Process</h3>
+            <p>
+              Booking your {formattedCityName} to {formattedDestination} cab with Triveni Cabs takes under 2 minutes. Call us at <strong>+91-7668570551</strong> or
+              send a WhatsApp message with your travel date, pickup time, and number of passengers. We confirm your booking instantly with driver name,
+              vehicle number, and phone number. No advance payment required—pay after your trip. We serve over 10,000 happy customers with a 4.9-star rating.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== THINGS TO DO AT DESTINATION ==================== */}
+      {destinationInfo && destinationInfo.localAttractions && destinationInfo.localAttractions.length > 0 && (
+        <section className="py-12 md:py-16 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-3">
+              Things to Do in {formattedDestination}
+            </h2>
+            <p className="text-slate-600 text-lg mb-8 max-w-3xl">
+              {destinationInfo.description || `Explore the best of ${formattedDestination} after your cab ride from ${formattedCityName}.`}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {destinationInfo.localAttractions.slice(0, 6).map((attraction, index) => (
+                <div key={index} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-amber-300 hover:shadow-md transition-all">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-white font-bold text-sm">{index + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-base">{attraction.name || attraction}</h3>
+                      {attraction.description && (
+                        <p className="text-slate-600 text-sm mt-1 leading-relaxed">{attraction.description}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {destinationInfo.travelTips && destinationInfo.travelTips.length > 0 && (
+              <div className="mt-8 bg-amber-50 rounded-xl p-6 border border-amber-200/50">
+                <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-amber-600" /> Travel Tips for {formattedDestination}
+                </h3>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {destinationInfo.travelTips.map((tip, i) => (
+                    <li key={i} className="flex items-start gap-2 text-slate-700">
+                      <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href={`/${formattedDestination.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-800 transition-colors"
+              >
+                Explore {formattedDestination} Cab Services <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href={`/sightseeing/${formattedDestination.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-amber-200 transition-colors"
+              >
+                {formattedDestination} Sightseeing Tours <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ==================== FAQ SECTION ==================== */}
       {/* FAQ Schema for SEO */}
       <script
@@ -1398,6 +1580,6 @@ export default function RouteClientContent({
         </motion.div>
       )}
 
-    </div>
+    </article>
   );
 }

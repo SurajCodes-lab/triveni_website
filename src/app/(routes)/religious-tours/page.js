@@ -71,7 +71,7 @@ export default function ReligiousToursPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "650",
+      "reviewCount": "10000",
       "bestRating": "5"
     }
   };

@@ -18,7 +18,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <article className="min-h-screen bg-slate-950 text-white" itemScope itemType="https://schema.org/TaxiService">
       <StickyPriceBar
         title={`${stand.name} Taxi Service`}
         price={stand.destinations?.[0]?.fare || ''}
@@ -176,6 +176,42 @@ export default function BusStandClient({ stand, slug, allStands }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) === */}
+      <section className="py-10 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-amber-500/20" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
+              {stand.name} Taxi — Quick Info
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Starting Fare</p>
+                <p className="text-xl font-black text-amber-400">{stand.destinations?.[0]?.fare || '₹300'}</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Destinations</p>
+                <p className="text-xl font-black text-white">{stand.destinations.length}+</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Available</p>
+                <p className="text-xl font-black text-white">24/7</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Rating</p>
+                <p className="text-xl font-black text-amber-400">4.9★</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
+              Taxi from <strong className="text-white">{stand.name}, {stand.city}</strong> starts at just <strong className="text-amber-400">{stand.destinations?.[0]?.fare || '₹300'}</strong> for AC sedan.
+              Our drivers wait at the <strong className="text-white">bus stand exit gate</strong> — no surge pricing, no meter tampering.
+              Fixed fares to {stand.destinations.slice(0, 3).map(d => d.name).join(', ')} and {Math.max(0, stand.destinations.length - 3)}+ more destinations.
+              AC sedan and SUV with verified drivers, GPS tracking, and 24/7 availability.
+              Call <strong className="text-white">+91-7668570551</strong> or WhatsApp to book instantly. 4.9★ rated, 10,000+ trips completed.
+            </p>
           </div>
         </div>
       </section>
@@ -605,6 +641,6 @@ export default function BusStandClient({ stand, slug, allStands }) {
           </div>
         </div>
       </section>
-    </div>
+    </article>
   );
 }

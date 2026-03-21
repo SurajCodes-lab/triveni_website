@@ -383,8 +383,8 @@ export default function TourPackagePage({ params }) {
     })),
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "150",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }

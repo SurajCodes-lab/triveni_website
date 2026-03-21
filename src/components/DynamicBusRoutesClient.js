@@ -34,7 +34,7 @@ export default function DynamicBusRoutesClient({ data }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <article className="min-h-screen bg-white" itemScope itemType="https://schema.org/TravelAction">
 
       {/* Hero Section - Ultra Modern */}
       <motion.section
@@ -233,6 +233,45 @@ export default function DynamicBusRoutesClient({ data }) {
           </div>
         </div>
       </div>
+
+      {/* ============================================ */}
+      {/* DIRECT ANSWER BOX (AEO/Featured Snippet Target) */}
+      {/* ============================================ */}
+      <section className="py-8 md:py-12 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
+              {origin} to {destination} Bus Hire — Quick Summary
+            </h2>
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Distance</p>
+                <p className="text-xl font-black text-slate-900">{routeData?.distance || 'Contact Us'}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Duration</p>
+                <p className="text-xl font-black text-slate-900">{routeData?.duration || 'Contact Us'}</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Rate</p>
+                <p className="text-xl font-black text-green-700">₹30/km</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
+                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Bus Sizes</p>
+                <p className="text-xl font-black text-slate-900">22-56 Seat</p>
+              </div>
+            </div>
+            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
+              Bus hire from <strong>{origin} to {destination}</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus.
+              {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
+              Triveni Cabs offers 22, 25, 27, 35, 41, 45, 52, and 56 seater AC luxury buses with pushback seats,
+              entertainment systems, GPS tracking, and professional drivers. Ideal for corporate outings, wedding groups,
+              pilgrimages, and school trips. Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
+              4.9★ rated with 10,000+ group trips completed.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* ROUTE HIGHLIGHTS SECTION - Route-specific content */}
@@ -856,6 +895,6 @@ export default function DynamicBusRoutesClient({ data }) {
           animation: fadeIn 0.5s ease-out forwards;
         }
       `}</style>
-    </div>
+    </article>
   );
 }

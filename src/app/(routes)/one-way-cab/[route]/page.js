@@ -113,8 +113,8 @@ export default async function OneWayCabRoutePage({ params }) {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "2847",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5"
     }
   };
@@ -160,8 +160,8 @@ export default async function OneWayCabRoutePage({ params }) {
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "2847"
+      "ratingValue": "4.9",
+      "reviewCount": "10000"
     }
   };
 

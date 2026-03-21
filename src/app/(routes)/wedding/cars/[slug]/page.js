@@ -83,7 +83,7 @@ export default async function WeddingCarModelPage({ params }) {
       "offerCount": String(carModel.models.length),
       "availability": "https://schema.org/InStock"
     },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "420", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
   };
 
   const breadcrumbSchema = {

@@ -237,6 +237,7 @@ export default async function BusRoutePage({ params }) {
         "unitText": "per kilometer"
       },
       "availability": "https://schema.org/InStock",
+      "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       "url": `https://www.trivenicabs.in/bus-routes/${route}`,
       "seller": {
         "@type": "Organization",
@@ -246,7 +247,7 @@ export default async function BusRoutePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.7",
-      "reviewCount": "350",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }

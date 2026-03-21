@@ -85,7 +85,7 @@ export default function WeddingPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "500",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     },

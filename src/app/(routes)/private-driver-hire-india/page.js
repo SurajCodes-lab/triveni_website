@@ -59,7 +59,7 @@ export default function PrivateDriverHirePage() {
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "addressCountry": "IN" } },
     "areaServed": { "@type": "Country", "name": "India" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "45", "highPrice": "110", "priceCurrency": "USD", "unitText": "per day" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "480", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
+import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import RailwayStationClient from '@/components/railway/RailwayStationClient';
 import AEOHead from '@/components/seo/AEOHead';
 
@@ -100,7 +102,7 @@ export default async function RailwayStationPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "3000",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -167,12 +169,56 @@ export default async function RailwayStationPage({ params }) {
     "priceRange": `\u20B9${lowestFare} - \u20B9${highestFare}`,
   };
 
+  // Product schema — price rich snippets
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${station.name} Taxi Service`,
+    "description": `Book taxi from ${station.name} starting ₹${lowestFare}. AC sedan & SUV, fixed fares, 24/7 platform pickup, ${station.destinations.length}+ destinations.`,
+    "brand": { "@type": "Brand", "name": COMPANY_INFO.name },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": lowestFare,
+      "highPrice": highestFare,
+      "priceCurrency": "INR",
+      "offerCount": station.destinations.length,
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      "seller": { "@type": "Organization", "name": COMPANY_INFO.name }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": String(AGGREGATE_RATING.ratingValue),
+      "reviewCount": String(AGGREGATE_RATING.reviewCount),
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
+  // HowTo schema — booking process
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to Book Taxi from ${station.name}`,
+    "description": `Step-by-step guide to book a cab from ${station.name}, ${station.city}.`,
+    "totalTime": "PT3M",
+    "estimatedCost": { "@type": "MonetaryAmount", "currency": "INR", "value": lowestFare },
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Call Before Arrival", "text": `Call ${COMPANY_INFO.phone.display} or WhatsApp at ${COMPANY_INFO.phone.whatsapp} with your train number and arrival time at ${station.name}.` },
+      { "@type": "HowToStep", "position": 2, "name": "Choose Vehicle", "text": `Select AC Sedan (₹${lowestFare}+) or SUV based on passengers and luggage.` },
+      { "@type": "HowToStep", "position": 3, "name": "Get Confirmation", "text": "Receive instant booking confirmation with driver name, phone number, and vehicle number." },
+      { "@type": "HowToStep", "position": 4, "name": "Meet at Platform Exit", "text": `Your driver meets you at ${station.name} main exit gate with a name placard. No waiting, no surge.` }
+    ]
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <Script id="station-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="beforeInteractive" />
+      <Script id="station-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="beforeInteractive" />
+      <Script id="station-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="beforeInteractive" />
+      <Script id="station-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="beforeInteractive" />
+      <Script id="station-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="beforeInteractive" />
+      <Script id="station-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="beforeInteractive" />
 
       <AEOHead pageType="station" data={{ url: `/railway-station-taxi/${slug}`, title: `${station.name} Taxi Service`, city: station.city }} />
       <RailwayStationClient station={station} slug={slug} />

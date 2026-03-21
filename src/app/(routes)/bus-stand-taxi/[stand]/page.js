@@ -1,6 +1,8 @@
 import { busStands, busStandSlugs, getBusStandBySlug } from '@/utilis/busStandData';
 import BusStandClient from '@/components/busstand/BusStandClient';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
+import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import AEOHead from '@/components/seo/AEOHead';
 
 export const revalidate = false;
@@ -109,8 +111,8 @@ export default async function BusStandPage({ params }) {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1500",
+      "ratingValue": "4.9",
+      "reviewCount": "10000",
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -151,12 +153,65 @@ export default async function BusStandPage({ params }) {
     }
   };
 
+  // Product schema — price rich snippets
+  const standLowestFare = stand.destinations.reduce((min, d) => {
+    const num = parseInt(String(d.fare).replace(/[^\d]/g, ''));
+    return num && num < min ? num : min;
+  }, Infinity);
+  const standHighestFare = stand.destinations.reduce((max, d) => {
+    const num = parseInt(String(d.fare).replace(/[^\d,]/g, '').replace(',', ''));
+    return num && num > max ? num : max;
+  }, 0);
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${stand.name} Cab & Taxi Service`,
+    "description": `Book taxi from ${stand.name}, ${stand.city}. AC sedan & SUV, fixed fares, 24/7, ${stand.destinations.length}+ destinations.`,
+    "brand": { "@type": "Brand", "name": COMPANY_INFO.name },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": standLowestFare < Infinity ? standLowestFare : 100,
+      "highPrice": standHighestFare || 5000,
+      "priceCurrency": "INR",
+      "offerCount": stand.destinations.length,
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      "seller": { "@type": "Organization", "name": COMPANY_INFO.name }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": String(AGGREGATE_RATING.ratingValue),
+      "reviewCount": String(AGGREGATE_RATING.reviewCount),
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
+  // HowTo schema — booking process
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to Book Taxi from ${stand.name}`,
+    "description": `Step-by-step guide to book a cab from ${stand.name}, ${stand.city}.`,
+    "totalTime": "PT3M",
+    "estimatedCost": { "@type": "MonetaryAmount", "currency": "INR", "value": standLowestFare < Infinity ? standLowestFare : 100 },
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Call or WhatsApp", "text": `Call ${COMPANY_INFO.phone.display} or WhatsApp at ${COMPANY_INFO.phone.whatsapp} with your bus arrival time at ${stand.name}.` },
+      { "@type": "HowToStep", "position": 2, "name": "Choose Vehicle", "text": "Select AC Sedan or SUV based on passengers and luggage needs." },
+      { "@type": "HowToStep", "position": 3, "name": "Get Confirmation", "text": "Receive instant booking confirmation with driver name, phone, and vehicle number." },
+      { "@type": "HowToStep", "position": 4, "name": "Meet at Exit", "text": `Driver meets you at ${stand.name} exit gate. Fixed fare, no surge, no waiting.` }
+    ]
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <Script id="stand-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="beforeInteractive" />
+      <Script id="stand-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="beforeInteractive" />
+      <Script id="stand-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="beforeInteractive" />
+      <Script id="stand-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="beforeInteractive" />
+      <Script id="stand-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="beforeInteractive" />
+      <Script id="stand-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="beforeInteractive" />
       <AEOHead pageType="busStand" data={{ url: `/bus-stand-taxi/${slug}`, title: `${stand.name} Taxi Service`, city: stand.city }} />
       <BusStandClient stand={stand} slug={slug} allStands={busStands} />
     </>

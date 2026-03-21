@@ -17,16 +17,23 @@ import GoogleReviewsBadge from '@/components/shared/GoogleReviewsBadge';
 // ─── FOLD 1: Search-First Hero — Convert immediately ─────────────────────────
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Subtle background texture */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "radial-gradient(circle at 1px 1px, #1e293b 1px, transparent 0)",
-        backgroundSize: "24px 24px"
-      }} />
+    <section className="relative overflow-hidden min-h-[600px] sm:min-h-[650px]">
+      {/* Background Image */}
+      <Image
+        src="/images/HERO_SECTION_MAIN_PAGE.jpg"
+        alt="Triveni Cabs Fleet - Premium Cars, SUVs, Buses and Tempo Travellers"
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+        quality={85}
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
       {/* Warm gradient accent at top */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400 z-10" />
 
-      <div className="relative max-w-6xl mx-auto px-4 pt-6 sm:pt-10 pb-8 sm:pb-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 pt-6 sm:pt-10 pb-8 sm:pb-12">
         {/* Trust micro-strip — immediately visible */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -34,17 +41,17 @@ function HeroSection() {
           transition={{ duration: 0.4 }}
           className="flex items-center justify-center gap-2 sm:gap-4 mb-6 flex-wrap"
         >
-          <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200/60 rounded-full px-3 py-1.5">
+          <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5">
             <div className="flex gap-0.5">
               {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}
             </div>
-            <span className="text-xs font-bold text-amber-700">4.9</span>
-            <span className="text-[10px] text-gray-500">10,000+ Trips</span>
+            <span className="text-xs font-bold text-[#FACF2D]">4.9</span>
+            <span className="text-[10px] text-white/70">10,000+ Trips</span>
           </div>
-          <div className="flex items-center gap-3 text-[11px] text-gray-400 font-medium">
-            <span className="flex items-center gap-1"><Shield className="w-3 h-3 text-green-500" /> 100% Safe</span>
-            <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-blue-500" /> 24/7 Support</span>
-            <span className="hidden sm:flex items-center gap-1"><Zap className="w-3 h-3 text-amber-500" /> ~2 min Response</span>
+          <div className="flex items-center gap-3 text-[11px] text-white/70 font-medium">
+            <span className="flex items-center gap-1"><Shield className="w-3 h-3 text-green-400" /> 100% Safe</span>
+            <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-blue-400" /> 24/7 Support</span>
+            <span className="hidden sm:flex items-center gap-1"><Zap className="w-3 h-3 text-amber-400" /> ~2 min Response</span>
           </div>
         </motion.div>
 
@@ -55,20 +62,20 @@ function HeroSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-center mb-6 sm:mb-8"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-black text-gray-900 leading-[1.1] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-black text-white leading-[1.1] tracking-tight drop-shadow-lg">
             North India&apos;s Trusted{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-500 to-orange-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400">
               Cab Service
             </span>
           </h1>
           <div className="flex items-center justify-center gap-3 sm:gap-5 mt-4 flex-wrap">
-            <span className="text-lg sm:text-xl font-black text-gray-900">Sedan <span className="text-amber-600">{'\u20B9'}11/km</span></span>
-            <span className="w-1 h-1 rounded-full bg-gray-300" />
-            <span className="text-lg sm:text-xl font-black text-gray-900">SUV <span className="text-amber-600">{'\u20B9'}14/km</span></span>
-            <span className="w-1 h-1 rounded-full bg-gray-300" />
-            <span className="text-lg sm:text-xl font-black text-gray-900">Tempo <span className="text-amber-600">{'\u20B9'}20/km</span></span>
+            <span className="text-lg sm:text-xl font-black text-white">Sedan <span className="text-[#FACF2D]">{'\u20B9'}11/km</span></span>
+            <span className="w-1 h-1 rounded-full bg-white/40" />
+            <span className="text-lg sm:text-xl font-black text-white">SUV <span className="text-[#FACF2D]">{'\u20B9'}14/km</span></span>
+            <span className="w-1 h-1 rounded-full bg-white/40" />
+            <span className="text-lg sm:text-xl font-black text-white">Tempo <span className="text-[#FACF2D]">{'\u20B9'}20/km</span></span>
           </div>
-          <p className="text-sm text-gray-500 mt-3 max-w-lg mx-auto">
+          <p className="text-sm text-white/60 mt-3 max-w-lg mx-auto">
             Cars &middot; Buses &middot; Tempo Travellers &middot; Chardham Yatra &middot; Wedding Cars &middot; Airport Transfers
           </p>
         </motion.div>
@@ -80,8 +87,6 @@ function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-4xl mx-auto relative"
         >
-          {/* Subtle amber glow behind */}
-          <div className="absolute -inset-3 bg-gradient-to-b from-amber-100/40 via-amber-50/20 to-transparent rounded-3xl blur-xl pointer-events-none" />
           <div className="relative">
             <CabSearchWidget />
           </div>
@@ -95,11 +100,11 @@ function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.35 }}
-          className="flex items-center justify-center gap-4 sm:gap-6 mt-3 flex-wrap text-xs sm:text-sm text-gray-400"
+          className="flex items-center justify-center gap-4 sm:gap-6 mt-3 flex-wrap text-xs sm:text-sm text-white/70"
         >
-          <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-500" /> No Hidden Charges</span>
-          <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-500" /> Free Cancellation</span>
-          <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-500" /> Verified Drivers</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-400" /> No Hidden Charges</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-400" /> Free Cancellation</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-green-400" /> Verified Drivers</span>
         </motion.div>
       </div>
     </section>

@@ -34,7 +34,7 @@ export default function CarDecorationPage() {
     "description": data.description,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "2000", "highPrice": "15000", "offerCount": "4", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "280", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
   };
 
   const faqSchema = {
