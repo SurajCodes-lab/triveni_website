@@ -301,6 +301,32 @@ export const airportCityData = {
       "Mandore Gardens"
     ]
   },
+  jewar: {
+    name: "Jewar",
+    airport: "Noida International Airport (NIA)",
+    airportCode: "NIA",
+    description: "Premium taxi service from Noida International Airport (Jewar Airport). 24/7 cab booking from Jewar Airport to Noida, Greater Noida, Delhi, Agra, Mathura. India's newest greenfield international airport with seamless airport transfers.",
+    keywords: "jewar airport taxi, noida international airport cab, jewar airport pickup, jewar airport drop, NIA airport taxi, jewar airport to noida taxi, jewar airport to delhi cab, jewar airport transfer, jewar airport cab booking, noida airport taxi service, jewar airport to agra taxi, jewar airport to greater noida cab, jewar airport to mathura taxi, cheap airport taxi jewar, best jewar airport taxi, jewar airport taxi service near me, pre book jewar airport cab, jewar airport cab fare, reliable airport taxi jewar, jewar airport private cab, jewar airport to ghaziabad taxi, gautam buddha nagar airport taxi, jewar airport outstation cab, NIA terminal taxi, jewar international airport cab service, noida airport pickup service, jewar airport 24x7 taxi",
+    routes: ["Jewar to Delhi", "Jewar to Agra", "Jewar to Noida", "Jewar to Mathura", "Jewar to Greater Noida", "Jewar to Aligarh"],
+    distance: "72 km from Delhi, 130 km from Agra",
+    terminals: "1 Terminal (International & Domestic)",
+    popularDestinations: [
+      { name: "Noida Sector 18", distance: "35 km", time: "40 mins" },
+      { name: "Greater Noida", distance: "25 km", time: "30 mins" },
+      { name: "Delhi Connaught Place", distance: "72 km", time: "1.5 hours" },
+      { name: "Agra (Taj Mahal)", distance: "130 km", time: "2 hours" },
+      { name: "Mathura", distance: "90 km", time: "1.5 hours" },
+      { name: "Ghaziabad", distance: "55 km", time: "1 hour" }
+    ],
+    nearbyAttractions: [
+      "Buddh International Circuit",
+      "Surajpur Wetland",
+      "Worlds of Wonder",
+      "ISKCON Noida",
+      "Okhla Bird Sanctuary",
+      "Taj Mahal (Agra)"
+    ]
+  },
   srinagar: {
     name: "Srinagar",
     airport: "Sheikh ul-Alam International Airport",

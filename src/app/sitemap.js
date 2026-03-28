@@ -447,6 +447,9 @@ export default function sitemap() {
     { url: `${baseUrl}/airport-service/delhi/igi-terminal-2-domestic`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/airport-service/delhi/igi-terminal-3-international`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
 
+    // Phase 10b: Jewar Airport Terminal Pages
+    { url: `${baseUrl}/airport-service/jewar/jewar-terminal-1-international`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
+
     // Additional Tour Packages (Phase 14 - new)
     { url: `${baseUrl}/tour-package/golden-triangle-tour`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/tour-package/delhi-agra-weekend-tour`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
