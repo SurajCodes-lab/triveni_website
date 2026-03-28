@@ -10,8 +10,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/mathura-food-tour' },
-  openGraph: { title: 'Mathura Food Tour 2026 | Holy City Culinary Guide by Locals', description: 'Complete Mathura food guide. Famous Peda, Rabri, Lassi, Temple Prasad, best restaurants and sweet shops.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mathura-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Mathura Food Tour Guide' }] },
-  twitter: { card: 'summary_large_image', title: 'Mathura Food Tour 2026 | By Locals', description: 'Mathura culinary guide. Peda, Rabri, Temple Prasad, holy city food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/taj-mahal-hero.jpg'] },
+  openGraph: { title: 'Mathura Food Tour 2026 | Holy City Culinary Guide by Locals', description: 'Complete Mathura food guide. Famous Peda, Rabri, Lassi, Temple Prasad, best restaurants and sweet shops.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mathura-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png', width: 1200, height: 630, alt: 'Mathura Food Tour Guide' }] },
+  twitter: { card: 'summary_large_image', title: 'Mathura Food Tour 2026 | By Locals', description: 'Mathura culinary guide. Peda, Rabri, Temple Prasad, holy city food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

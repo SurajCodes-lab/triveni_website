@@ -86,9 +86,9 @@ export default function ChardhamShowcase() {
                 </div>
 
                 <div className="text-center mt-10">
-                    <Link href="tel:+917668570551" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700 transition-colors border-b-2 border-orange-200 hover:border-orange-500">
+                    <a href="tel:+917668570551" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700 transition-colors border-b-2 border-orange-200 hover:border-orange-500">
                         Customize Your Yatra Package <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    </a>
                 </div>
             </div>
         </section>

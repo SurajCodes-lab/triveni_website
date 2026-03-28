@@ -503,7 +503,9 @@ export default function BusStandClient({ stand, slug, allStands }) {
               <div key={i} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 overflow-hidden transition-all duration-300">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-7 py-6 text-left"
+                  aria-expanded={openFaq === i}
+                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
+                  className="w-full flex items-center justify-between px-7 py-6 text-left focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
                 >
                   <span className="font-bold text-lg pr-4 group-hover:text-amber-400 transition-colors">{faq.question}</span>
                   <div className={`w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openFaq === i ? 'rotate-180 bg-amber-500/20' : ''}`}>

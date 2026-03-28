@@ -69,7 +69,7 @@ export async function generateMetadata({ params }) {
     other: {
       'geo.region': 'IN-UK',
       'geo.placename': route.origin || 'Uttarakhand',
-      'og:price:amount': route.priceNum > 0 ? route.priceNum : undefined,
+      ...(route.priceNum > 0 && { 'og:price:amount': String(route.priceNum) }),
       'og:price:currency': 'INR',
     },
   };
@@ -78,6 +78,10 @@ export async function generateMetadata({ params }) {
 // ---------------------------------------------------------------------------
 // JSON-LD Structured Data Schemas
 // ---------------------------------------------------------------------------
+function cleanSchema(obj) {
+  return JSON.parse(JSON.stringify(obj, (_, v) => (v === undefined ? undefined : v)));
+}
+
 function generateSchemas(route) {
   const baseUrl = 'https://www.trivenicabs.in';
   const pageUrl = `${baseUrl}/chardham-yatra/${route.slug}`;
@@ -162,14 +166,14 @@ function generateSchemas(route) {
       '@type': 'Brand',
       name: 'Triveni Cabs',
     },
-    offers: {
+    offers: route.vehicle.perKm > 0 ? {
       '@type': 'AggregateOffer',
       lowPrice: route.vehicle.perKm,
       highPrice: route.vehicle.perKm * 2,
       priceCurrency: 'INR',
       offerCount: '1',
       availability: 'https://schema.org/InStock',
-    },
+    } : undefined,
     image: `${baseUrl}${route.vehicle.image}`,
   };
 
@@ -202,12 +206,12 @@ export default async function ChardhamYatraPage({ params }) {
   return (
     <>
       {/* JSON-LD Structured Data for SEO */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.service) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cleanSchema(schemas.breadcrumb)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cleanSchema(schemas.service)) }} />
       {schemas.faqSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faqSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cleanSchema(schemas.faqSchema)) }} />
       )}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.vehicleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cleanSchema(schemas.vehicleSchema)) }} />
 
       <AEOHead pageType="tour" data={{ url: `/chardham-yatra/${slug}`, title: route.title || '' }} />
 

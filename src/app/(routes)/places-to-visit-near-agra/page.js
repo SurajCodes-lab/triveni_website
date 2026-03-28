@@ -13,8 +13,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/places-to-visit-near-agra' },
-  openGraph: { title: '15+ Places to Visit Near Agra by Car | Book Cab', description: 'Discover the best day trips from Agra. Fatehpur Sikri, Mathura, Bharatpur, Gwalior & more with cab fares.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-agra', siteName: 'Triveni Cabs', images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Agra' }] },
-  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Agra by Car | Triveni Cabs', description: 'Best day trips from Agra with distances and cab fares. Call 7668570551.', images: ['/images/citypage_hero_section_image.jpg'] },
+  openGraph: { title: '15+ Places to Visit Near Agra by Car | Book Cab', description: 'Discover the best day trips from Agra. Fatehpur Sikri, Mathura, Bharatpur, Gwalior & more with cab fares.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-agra', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Agra/Agra_Hero_section.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Agra' }] },
+  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Agra by Car | Triveni Cabs', description: 'Best day trips from Agra with distances and cab fares. Call 7668570551.', images: ['/images/sightseeing/Agra/Agra_Hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

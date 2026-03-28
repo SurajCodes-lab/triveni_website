@@ -477,7 +477,9 @@ export default function FamilyTripClient({ data }) {
               >
                 <button
                   onClick={() => toggleFaq(i)}
-                  className="w-full flex items-center gap-4 p-5 sm:p-6 text-left hover:bg-white/[0.02] transition-colors"
+                  aria-expanded={openFaq === i}
+                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
+                  className="w-full flex items-center gap-4 p-5 sm:p-6 text-left hover:bg-white/[0.02] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
                 >
                   <span className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
                     {i + 1}

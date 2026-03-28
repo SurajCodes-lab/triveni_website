@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getOneWayRoute, getAllOneWayRouteSlugs, getRelatedRoutes } from '@/utilis/oneWayCabData';
 import OneWayCabRouteClient from '@/components/oneway/OneWayCabRouteClient';
 import AEOHead from '@/components/seo/AEOHead';
+import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 
 export const revalidate = false;
 export const dynamicParams = false;
@@ -54,7 +55,7 @@ export async function generateMetadata({ params }) {
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/one-way-cab/${slug}`,
       siteName: 'Triveni Cabs',
-      images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: `One Way Cab ${route.from} to ${route.to}` }],
+      images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `One Way Cab ${route.from} to ${route.to}` }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }) {
       description,
       creator: '@trivenicabs',
       site: '@trivenicabs',
-      images: ['/images/citypage_hero_section_image.jpg'],
+      images: [getOgImageForSlug(slug)],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
   };

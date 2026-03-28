@@ -20,16 +20,16 @@ export default function CTASection({
         <p className="text-white/45 text-base mb-7 max-w-lg mx-auto">{subheading}</p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-          <Link href="https://wa.me/917668570551?text=Hello!%20I%27m%20interested%20in%20booking.%20Can%20you%20provide%20a%20free%20quote%3F" target="_blank">
+          <a href="https://wa.me/917668570551?text=Hello!%20I%27m%20interested%20in%20booking.%20Can%20you%20provide%20a%20free%20quote%3F" target="_blank" rel="noopener noreferrer">
             <button className="w-full sm:w-auto px-9 py-3.5 bg-gradient-to-r from-[#FACF2D] to-[#e6bb15] text-gray-900 font-bold text-base rounded-full shadow-xl shadow-[#FACF2D]/10 hover:shadow-[#FACF2D]/25 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
               Get Free Quote <ArrowRight className="w-4 h-4" />
             </button>
-          </Link>
-          <Link href="tel:7668570551">
+          </a>
+          <a href="tel:7668570551">
             <button className="w-full sm:w-auto px-9 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold text-base rounded-full hover:bg-white/15 transition-all duration-300 flex items-center justify-center gap-2">
               <Phone className="w-4 h-4" /> Call: 7668570551
             </button>
-          </Link>
+          </a>
         </div>
 
         <div className="flex items-center justify-center gap-4 flex-wrap">

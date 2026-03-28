@@ -84,7 +84,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
 
           {/* City names with animated arrow */}
           <div className="flex items-center gap-4 sm:gap-6 mb-6 flex-wrap">
-            <span className="text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tight">{route.from}</span>
+            <span className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tight">{route.from}</span>
             <div className="flex items-center gap-1.5">
               <div className="w-10 sm:w-20 h-0.5 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full" />
               <div className="animate-arrow-slide">
@@ -92,7 +92,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
               </div>
               <div className="w-10 sm:w-20 h-0.5 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full" />
             </div>
-            <span className="text-5xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400">{route.to}</span>
+            <span className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400">{route.to}</span>
           </div>
 
           {/* H1 with price */}
@@ -170,7 +170,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-white/50 text-sm">Round Trip</span>
-                    <span className="text-lg font-bold text-white/25 line-through">{v.rt}</span>
+                    <span className="text-lg font-bold text-white/35 line-through">{v.rt}</span>
                   </div>
                   <div className="h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
                   <div className="flex justify-between items-center bg-green-500/10 rounded-xl px-4 py-3 border border-green-500/20">
@@ -188,7 +188,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
             ))}
           </div>
 
-          <p className="text-white/25 text-xs mt-6 text-center">Min 300 km billing. Toll, parking, state tax extra at actual. Driver allowance included.</p>
+          <p className="text-white/35 text-xs mt-6 text-center">Min 300 km billing. Toll, parking, state tax extra at actual. Driver allowance included.</p>
         </div>
       </section>
 
@@ -207,14 +207,14 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
               {/* Left: Route info cards (3 cols) */}
               <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: Navigation, label: "Highway", value: route.highway, color: "amber" },
-                  { icon: Route, label: "Distance", value: route.distance, color: "yellow" },
-                  { icon: Clock, label: "Travel Time", value: route.time, color: "orange" },
-                  { icon: Star, label: "Best Time to Leave", value: route.bestTime, color: "amber" },
+                  { icon: Navigation, label: "Highway", value: route.highway, bgClass: "bg-amber-500/20", textClass: "text-amber-400" },
+                  { icon: Route, label: "Distance", value: route.distance, bgClass: "bg-yellow-500/20", textClass: "text-yellow-400" },
+                  { icon: Clock, label: "Travel Time", value: route.time, bgClass: "bg-orange-500/20", textClass: "text-orange-400" },
+                  { icon: Star, label: "Best Time to Leave", value: route.bestTime, bgClass: "bg-amber-500/20", textClass: "text-amber-400" },
                 ].map((item, i) => (
                   <div key={i} className="bg-white/[0.04] rounded-2xl border border-white/10 p-5 hover:border-amber-500/30 transition-all duration-300">
-                    <div className={`w-10 h-10 bg-${item.color}-500/20 rounded-xl flex items-center justify-center mb-3`}>
-                      <item.icon className={`w-5 h-5 text-${item.color}-400`} />
+                    <div className={`w-10 h-10 ${item.bgClass} rounded-xl flex items-center justify-center mb-3`}>
+                      <item.icon className={`w-5 h-5 ${item.textClass}`} />
                     </div>
                     <p className="text-white/40 text-xs uppercase tracking-wider mb-1">{item.label}</p>
                     <p className="text-white font-bold text-sm">{item.value}</p>
@@ -394,7 +394,9 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
               <div key={i} className={`bg-white/[0.04] backdrop-blur-2xl rounded-2xl border transition-all duration-300 overflow-hidden ${openFaq === i ? 'border-amber-500/30 shadow-lg shadow-amber-500/10' : 'border-white/10 hover:border-white/20'}`}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full text-left p-6 flex items-start justify-between gap-4"
+                  aria-expanded={openFaq === i}
+                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
+                  className="w-full text-left p-6 flex items-start justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
                 >
                   <h3 className="font-bold text-white pr-4 flex items-start gap-3">
                     <span className="flex-shrink-0 w-7 h-7 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center text-xs font-black mt-0.5">{i + 1}</span>

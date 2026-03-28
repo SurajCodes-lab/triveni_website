@@ -127,7 +127,7 @@ export default function VehicleHireClient({ vehicle }) {
           </div>
 
           {/* Vehicle Name - massive typography */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-3 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-center mb-3 tracking-tight">
             <span
               className="bg-clip-text text-transparent"
               style={{

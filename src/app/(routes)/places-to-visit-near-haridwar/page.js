@@ -13,8 +13,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/places-to-visit-near-haridwar' },
-  openGraph: { title: '15+ Places to Visit Near Haridwar by Car | Book Cab', description: 'Spiritual trails and Himalayan adventures from Haridwar. Rishikesh, Mussoorie, Kedarnath & more.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-haridwar', siteName: 'Triveni Cabs', images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Haridwar' }] },
-  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Haridwar | Triveni Cabs', description: 'Spiritual and adventure trips from Haridwar. Call 7668570551.', images: ['/images/citypage_hero_section_image.jpg'] },
+  openGraph: { title: '15+ Places to Visit Near Haridwar by Car | Book Cab', description: 'Spiritual trails and Himalayan adventures from Haridwar. Rishikesh, Mussoorie, Kedarnath & more.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-haridwar', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Haridwar' }] },
+  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Haridwar | Triveni Cabs', description: 'Spiritual and adventure trips from Haridwar. Call 7668570551.', images: ['/images/sightseeing/Haridwar/Haridwar_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

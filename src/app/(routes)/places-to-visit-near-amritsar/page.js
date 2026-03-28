@@ -13,8 +13,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/places-to-visit-near-amritsar' },
-  openGraph: { title: '15+ Places to Visit Near Amritsar by Car | Book Cab', description: 'Punjab heritage and Himalayan gateways from Amritsar. Wagah, Dalhousie, Dharamshala & more.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-amritsar', siteName: 'Triveni Cabs', images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Amritsar' }] },
-  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Amritsar | Triveni Cabs', description: 'Punjab heritage trips from Amritsar. Call 7668570551.', images: ['/images/citypage_hero_section_image.jpg'] },
+  openGraph: { title: '15+ Places to Visit Near Amritsar by Car | Book Cab', description: 'Punjab heritage and Himalayan gateways from Amritsar. Wagah, Dalhousie, Dharamshala & more.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-amritsar', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Amritsar/Amristar_hero_section.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Amritsar' }] },
+  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Amritsar | Triveni Cabs', description: 'Punjab heritage trips from Amritsar. Call 7668570551.', images: ['/images/sightseeing/Amritsar/Amristar_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

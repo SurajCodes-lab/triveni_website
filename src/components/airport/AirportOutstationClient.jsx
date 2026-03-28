@@ -81,7 +81,7 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight leading-[0.9]">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight leading-[0.9]">
                 {data.airportCity}
                 <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 anim-shimmer">
                   to {data.destination}
@@ -529,7 +529,9 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
               <div key={i} className={`rounded-2xl border transition-all duration-300 overflow-hidden ${openFaq === i ? 'bg-white/[0.05] border-amber-500/25' : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12]'}`}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left"
+                  aria-expanded={openFaq === i}
+                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
+                  className="w-full flex items-center justify-between p-5 text-left focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${openFaq === i ? 'bg-amber-500/20' : 'bg-white/[0.05]'}`}>

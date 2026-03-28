@@ -7,7 +7,7 @@ export const COMPANY_INFO = {
   name: 'Triveni Cabs',
   legalName: 'Triveni Cabs Private Limited',
   founder: 'Pankaj Singh Gaur',
-  foundingDate: '2018',
+  foundingDate: '2015',
   slogan: 'Your Journey, Our Priority',
   description: 'Premium taxi and cab service provider across North India offering reliable transportation for sightseeing tours, airport transfers, corporate travel, and wedding events.',
 

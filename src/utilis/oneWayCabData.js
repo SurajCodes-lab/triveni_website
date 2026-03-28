@@ -1,4 +1,4 @@
-// src/utilis/oneWayCabData.js - Complete data for all 26 one-way cab routes
+// src/utilis/oneWayCabData.js - Complete data for all 59 one-way cab routes
 // Pricing: Sedan ₹11/km, Ertiga ₹15/km, Innova ₹18/km (min 300km billing)
 
 function calcFares(distanceKm) {
@@ -645,6 +645,800 @@ Our one-way cab from Gurgaon to Jaipur takes just 4-4.5 hours and saves you 50% 
       { question: "Can I be picked up from my office in Gurgaon?", answer: "Yes, pickup from any location in Gurgaon, Cyber City, Manesar, Sohna Road, or Golf Course Road." },
       { question: "Can I stop at Neemrana Fort?", answer: "Yes, Neemrana Fort is on the Gurgaon-Jaipur highway and makes for a great en-route stop." },
       { question: "Do you offer Gurgaon to Jaipur for corporate travel?", answer: "Yes, we offer corporate one-way cabs with invoicing, GST bills, and dedicated account managers. Call 7668570551." }
+    ]
+  },
+
+  // ===== REVERSE & ADDITIONAL ONE-WAY ROUTES (34 new routes) =====
+
+  "rishikesh-to-delhi": {
+    from: "Rishikesh",
+    to: "Delhi",
+    distance: "250 km",
+    distanceNum: 250,
+    time: "5-6 hours",
+    highway: "NH-334 via Haridwar & Meerut Expressway",
+    ...calcFares(250),
+    highlights: ["Via Haridwar & Delhi-Meerut Expressway", "5-6 hours yoga capital to Delhi", "Post-adventure comfortable ride"],
+    popularStops: ["Haridwar", "Roorkee"],
+    bestTime: "Morning 7-8 AM after attending Ganga Aarti or yoga session",
+    description: `Rishikesh to Delhi one-way cab covers 250 km from the yoga capital of the world to the national capital. After your spiritual retreat, adventure activities like river rafting, bungee jumping, or a peaceful stay by the Ganges, our one-way cab ensures a comfortable return to Delhi. The route passes through Haridwar and joins the Delhi-Meerut Expressway for a smooth ride.
+
+The 5-6 hour drive takes you from the Himalayan foothills back to the plains. Many travellers visit Rishikesh for ashram stays, yoga retreats, or as part of the Char Dham circuit and need a reliable one-way ride back to Delhi for flights or trains. Our professional drivers ensure a relaxed, on-time journey. Book from ₹3,300 for a Sedan.`,
+    faqs: [
+      { question: "How much does a one-way cab from Rishikesh to Delhi cost?", answer: "Rishikesh to Delhi one-way cab starts at ₹3,300 for Sedan (300 km minimum billing). Ertiga is ₹4,500 and Innova is ₹5,400. Toll extra." },
+      { question: "How long does Rishikesh to Delhi take by cab?", answer: "Rishikesh to Delhi takes 5-6 hours via NH-334 and the Delhi-Meerut Expressway." },
+      { question: "Can you drop me at Delhi Airport from Rishikesh?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Rishikesh are available with flight tracking." },
+      { question: "Can I get picked up from my ashram in Rishikesh?", answer: "Yes, pickup from any ashram, hotel, camp, or address in Rishikesh including Laxman Jhula, Ram Jhula, and Tapovan areas." },
+      { question: "Is the Rishikesh to Delhi route the same as Haridwar to Delhi?", answer: "Rishikesh is 25 km ahead of Haridwar. The route merges at Haridwar and follows the same highway to Delhi." },
+      { question: "What is the best time to leave Rishikesh for Delhi?", answer: "Leave by 7-8 AM to reach Delhi by early afternoon. This avoids Delhi evening traffic and gives you a comfortable daytime drive." }
+    ]
+  },
+
+  "manali-to-delhi": {
+    from: "Manali",
+    to: "Delhi",
+    distance: "530 km",
+    distanceNum: 530,
+    time: "12-13 hours",
+    highway: "NH-21 via Kullu & Chandigarh, then NH-44",
+    ...calcFares(530),
+    highlights: ["Via Kullu Valley & Chandigarh", "12-13 hours Himalayan to plains journey", "Epic mountain descent road trip"],
+    popularStops: ["Kullu", "Sundernagar", "Chandigarh"],
+    bestTime: "Night departure 8-9 PM to arrive in Delhi by morning",
+    description: `Manali to Delhi one-way cab covers 530 km from the adventure capital of the Himalayas back to the national capital. After your mountain holiday — skiing, paragliding, visiting Rohtang Pass, or exploring Old Manali — our one-way cab provides a comfortable return without paying for a round trip. The route descends through the stunning Kullu Valley, passes Chandigarh, and joins NH-44 to Delhi.
+
+The 12-13 hour drive is best done as an overnight journey. Depart Manali at 8-9 PM and arrive in Delhi by morning, ready for your flight or onward plans. Our experienced hill drivers navigate the mountain roads safely, transitioning to the plains highway seamlessly. Book from ₹5,830 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Manali to Delhi?", answer: "Manali to Delhi one-way cab costs ₹5,830 for Sedan (530 km at ₹11/km). Ertiga is ₹7,950 and Innova Crysta is ₹9,540. Toll extra." },
+      { question: "How long does Manali to Delhi take by cab?", answer: "Manali to Delhi takes 12-13 hours by cab. The mountain section (Manali-Chandigarh) takes 7-8 hours and the plains (Chandigarh-Delhi) takes 4-5 hours." },
+      { question: "Is overnight travel recommended from Manali to Delhi?", answer: "Yes, departing at 8-9 PM is popular. You sleep through the plains section and wake up near Delhi by morning." },
+      { question: "Can I stop at Chandigarh on the way back?", answer: "Yes, Chandigarh is a natural midpoint. You can take a rest break or a short visit before continuing to Delhi." },
+      { question: "Which vehicle is best for the Manali to Delhi return?", answer: "Innova Crysta is recommended for the long mountain journey — better comfort, suspension, and engine power on hills." },
+      { question: "Is the road from Manali to Delhi safe at night?", answer: "The hill section requires careful driving, and our drivers are experienced on this route. The plains section (Chandigarh-Delhi) is well-lit and safe." }
+    ]
+  },
+
+  "shimla-to-delhi": {
+    from: "Shimla",
+    to: "Delhi",
+    distance: "350 km",
+    distanceNum: 350,
+    time: "7-8 hours",
+    highway: "NH-5 to Chandigarh, then NH-44 to Delhi",
+    ...calcFares(350),
+    highlights: ["Via Chandigarh & NH-44", "7-8 hours Queen of Hills to Capital", "Scenic mountain descent"],
+    popularStops: ["Solan", "Chandigarh"],
+    bestTime: "Morning 6-7 AM for comfortable daytime travel",
+    description: `Shimla to Delhi one-way cab covers 350 km from the Queen of Hills back to the capital. After your hill station holiday, honeymoon, or winter getaway, our one-way cab saves you 50% compared to round-trip fares. The route descends from Shimla through Solan and Kandaghat to Chandigarh, then takes the NH-44 expressway to Delhi.
+
+The 7-8 hour drive includes the scenic Shimla-Chandigarh hill section (3 hours) and the Chandigarh-Delhi highway section (4-5 hours). Our experienced hill drivers ensure a safe descent through the winding mountain roads. Depart early morning and reach Delhi by afternoon. Book from ₹3,850 for a Sedan.`,
+    faqs: [
+      { question: "How much is a one-way cab from Shimla to Delhi?", answer: "Shimla to Delhi one-way cab costs ₹3,850 for Sedan (350 km at ₹11/km). Ertiga is ₹5,250 and Innova Crysta is ₹6,300. Toll extra." },
+      { question: "How long does Shimla to Delhi take by cab?", answer: "Shimla to Delhi takes 7-8 hours. The Shimla-Chandigarh hill section takes 3 hours and Chandigarh-Delhi takes 4-5 hours." },
+      { question: "Can you drop me at Delhi Airport from Shimla?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Shimla are available with flight monitoring." },
+      { question: "Is the Shimla-Chandigarh road safe for descent?", answer: "Yes, the road is well-maintained. Our drivers are experienced on hill roads and handle the 50+ hairpin bends safely." },
+      { question: "Can I stop at Chandigarh on the way?", answer: "Yes, Chandigarh is a natural break point. You can stop for a meal or a quick visit to Rock Garden or Sukhna Lake." },
+      { question: "Is night travel possible from Shimla to Delhi?", answer: "We recommend daytime travel for the hill section. The Chandigarh-Delhi highway is safe for night driving." }
+    ]
+  },
+
+  "shimla-to-chandigarh": {
+    from: "Shimla",
+    to: "Chandigarh",
+    distance: "115 km",
+    distanceNum: 115,
+    time: "3-4 hours",
+    highway: "NH-5 via Solan & Kalka",
+    ...calcFares(115),
+    highlights: ["Via NH-5 scenic descent", "3-4 hours hill drive", "Queen of Hills to City Beautiful"],
+    popularStops: ["Solan", "Kalka"],
+    bestTime: "Morning 8-9 AM for clear mountain views",
+    description: `Shimla to Chandigarh one-way cab covers 115 km descending from the Queen of Hills to the City Beautiful. This short but scenic drive is popular with travellers heading to Chandigarh Airport, Railway Station, or continuing to Delhi, Amritsar, or other plains destinations. Despite the short distance, the winding mountain roads make it a 3-4 hour journey.
+
+Our one-way cab saves you from the hassle of booking a round trip when you only need a downhill drop. The route passes through Solan and Kalka (famous for the Kalka-Shimla toy train). Our skilled hill drivers ensure a safe, comfortable descent. Book from ₹3,300 for a Sedan (300 km minimum billing applies).`,
+    faqs: [
+      { question: "How much is a one-way cab from Shimla to Chandigarh?", answer: "Shimla to Chandigarh one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 115 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "Why is minimum billing 300 km for 115 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves you 50% versus a round-trip booking." },
+      { question: "How long does Shimla to Chandigarh take?", answer: "The drive takes 3-4 hours due to winding mountain roads with 50+ hairpin turns despite the 115 km distance." },
+      { question: "Can you drop me at Chandigarh Airport?", answer: "Yes, direct drops at Chandigarh Airport are available from Shimla, timed to your flight departure." },
+      { question: "Is the toy train from Shimla to Kalka better?", answer: "The Shimla-Kalka toy train is scenic but takes 5-6 hours. Our cab reaches Chandigarh in 3-4 hours with door-to-door convenience." },
+      { question: "Is the road from Shimla safe during monsoon?", answer: "The road is generally open during monsoon. Our drivers are experienced and avoid travel during active landslide warnings." }
+    ]
+  },
+
+  "amritsar-to-delhi": {
+    from: "Amritsar",
+    to: "Delhi",
+    distance: "450 km",
+    distanceNum: 450,
+    time: "7-8 hours",
+    highway: "NH-44 (GT Road) via Jalandhar & Ambala",
+    ...calcFares(450),
+    highlights: ["Via NH-44 Grand Trunk Road", "7-8 hours Golden Temple city to Capital", "Punjab heartland return"],
+    popularStops: ["Jalandhar", "Ludhiana", "Ambala"],
+    bestTime: "Morning 6-7 AM after Golden Temple morning visit",
+    description: `Amritsar to Delhi one-way cab covers 450 km along the historic Grand Trunk Road (NH-44). After visiting the magnificent Golden Temple, attending the Wagah Border ceremony, or attending a family event in Amritsar, our one-way cab provides a comfortable return to Delhi at half the cost of a round-trip booking.
+
+The 7-8 hour drive passes through the bustling Punjab cities of Jalandhar, Ludhiana, and Ambala. The highway is in excellent condition with multiple food stops serving authentic Punjabi cuisine. Our drivers know the best dhaba stops along the route. Book from ₹4,950 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Amritsar to Delhi?", answer: "Amritsar to Delhi one-way cab costs ₹4,950 for Sedan (450 km at ₹11/km). Ertiga is ₹6,750 and Innova Crysta is ₹8,100. Toll extra." },
+      { question: "How long does Amritsar to Delhi take by cab?", answer: "Amritsar to Delhi takes 7-8 hours via NH-44. The highway is well-maintained with minimal traffic outside peak hours." },
+      { question: "Can you drop me at Delhi Airport from Amritsar?", answer: "Yes, direct airport drops at IGI Terminal 1, 2, or 3 from Amritsar with flight monitoring included." },
+      { question: "What is the best time to leave Amritsar?", answer: "Leave by 6-7 AM to reach Delhi by early afternoon. This avoids Delhi evening traffic." },
+      { question: "Can I stop for meals on the route?", answer: "Yes, the GT Road has legendary Punjabi dhabas. Stops at Jalandhar, Ludhiana, and Karnal are popular for meals." },
+      { question: "Is night travel safe from Amritsar to Delhi?", answer: "Yes, NH-44 is well-lit, well-patrolled, and safe for night travel. Many travellers depart late evening." }
+    ]
+  },
+
+  "amritsar-to-chandigarh": {
+    from: "Amritsar",
+    to: "Chandigarh",
+    distance: "230 km",
+    distanceNum: 230,
+    time: "4-5 hours",
+    highway: "NH-44 via Jalandhar & Ludhiana",
+    ...calcFares(230),
+    highlights: ["Via NH-44 Punjab highway", "4-5 hours through Punjab", "Golden Temple city to City Beautiful"],
+    popularStops: ["Jalandhar", "Ludhiana"],
+    bestTime: "Morning 7-8 AM for comfortable daytime travel",
+    description: `Amritsar to Chandigarh one-way cab covers 230 km through the heart of Punjab. This route is popular with travellers heading to Chandigarh for business, catching a flight from Chandigarh Airport, or continuing to Shimla, Manali, or Delhi. After visiting the Golden Temple and experiencing Amritsar's culture, our one-way cab provides an affordable, comfortable ride.
+
+The 4-5 hour drive on NH-44 passes through Jalandhar and Ludhiana, two of Punjab's largest cities. The highway is in excellent condition. Our drivers know the best food stops along the route. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "What is the one-way cab fare from Amritsar to Chandigarh?", answer: "Amritsar to Chandigarh one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 230 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Amritsar to Chandigarh take?", answer: "Amritsar to Chandigarh takes 4-5 hours via NH-44 through Jalandhar and Ludhiana." },
+      { question: "Can you drop me at Chandigarh Airport?", answer: "Yes, direct drops at Chandigarh Airport from Amritsar are available with flight tracking." },
+      { question: "Can I stop at Jalandhar on the way?", answer: "Yes, Jalandhar is on the route. Up to 2 on-route stops are included at no extra charge." },
+      { question: "Is this route suitable for night travel?", answer: "Yes, NH-44 is well-lit and safe for night travel between Amritsar and Chandigarh." },
+      { question: "What vehicles are available?", answer: "We offer Sedan (Swift Dzire/Etios), Ertiga (7-seater), and Innova Crysta (7-seater premium) for this route." }
+    ]
+  },
+
+  "varanasi-to-delhi": {
+    from: "Varanasi",
+    to: "Delhi",
+    distance: "820 km",
+    distanceNum: 820,
+    time: "12-14 hours",
+    highway: "Purvanchal Expressway + Agra-Lucknow Expressway + Yamuna Expressway",
+    ...calcFares(820),
+    highlights: ["Via triple expressway route", "12-14 hours spiritual capital to Delhi", "Ganga to Yamuna journey"],
+    popularStops: ["Lucknow bypass", "Agra bypass"],
+    bestTime: "Night departure 7-8 PM to arrive in Delhi by morning",
+    description: `Varanasi to Delhi one-way cab covers 820 km using three world-class expressways — the Purvanchal Expressway, Agra-Lucknow Expressway, and Yamuna Expressway. After your spiritual journey to the oldest living city, visiting the Ganga Ghats, Kashi Vishwanath Temple, and Sarnath, our one-way cab provides a comfortable return to Delhi at 50% savings versus round-trip fares.
+
+The 12-14 hour drive is best done overnight, departing Varanasi at 7-8 PM and arriving in Delhi by morning. The expressway network has made this once-gruelling journey much more comfortable. Our professional drivers handle the long distance with scheduled rest breaks. Book from ₹9,020 for a Sedan.`,
+    faqs: [
+      { question: "How much does a one-way cab from Varanasi to Delhi cost?", answer: "Varanasi to Delhi one-way cab costs ₹9,020 for Sedan (820 km at ₹11/km). Ertiga is ₹12,300 and Innova Crysta is ₹14,760. Toll extra." },
+      { question: "How long does Varanasi to Delhi take by cab?", answer: "Varanasi to Delhi takes 12-14 hours via the expressway route. Overnight travel is strongly recommended." },
+      { question: "Is overnight travel recommended?", answer: "Yes, depart Varanasi at 7-8 PM and arrive in Delhi by 7-8 AM. This is the most popular timing for this route." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Varanasi with flight monitoring." },
+      { question: "Do you assign two drivers for this distance?", answer: "For 820 km routes, we may assign a co-driver for safety, especially on overnight trips. This ensures the driver is always well-rested." },
+      { question: "Is flying better than driving Varanasi to Delhi?", answer: "Flying takes 1.5 hours versus 12-14 by road. However, for 3-4 passengers with luggage, the overnight cab is cost-effective and convenient." }
+    ]
+  },
+
+  "varanasi-to-lucknow": {
+    from: "Varanasi",
+    to: "Lucknow",
+    distance: "300 km",
+    distanceNum: 300,
+    time: "5-6 hours",
+    highway: "Purvanchal Expressway / NH-232",
+    ...calcFares(300),
+    highlights: ["Via Purvanchal Expressway", "5-6 hours holy city to Nawabi city", "Eastern UP to Central UP"],
+    popularStops: ["Jaunpur", "Sultanpur"],
+    bestTime: "Morning 7-8 AM for comfortable daytime travel",
+    description: `Varanasi to Lucknow one-way cab covers 300 km through the heartland of Uttar Pradesh. After your pilgrimage to Kashi, visits to the Ganga Ghats, and darshan at Kashi Vishwanath Temple, our one-way cab provides a smooth ride to the City of Nawabs. The Purvanchal Expressway has made this journey faster and more comfortable than ever.
+
+The 5-6 hour drive passes through the historic town of Jaunpur and the flat Gangetic plains. Whether you are heading to Lucknow for business, catching a flight, or continuing westward, our one-way service saves you 50% compared to round-trip bookings. Book from ₹3,300 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Varanasi to Lucknow?", answer: "Varanasi to Lucknow one-way cab costs ₹3,300 for Sedan (300 km at ₹11/km). Ertiga is ₹4,500 and Innova is ₹5,400. Toll extra." },
+      { question: "How long does Varanasi to Lucknow take?", answer: "Varanasi to Lucknow takes 5-6 hours via the Purvanchal Expressway or NH-232." },
+      { question: "Is the Purvanchal Expressway used?", answer: "Yes, the Purvanchal Expressway connects eastern UP to Lucknow, significantly reducing travel time." },
+      { question: "Can I be picked up from my hotel in Varanasi?", answer: "Yes, pickup from any hotel, ghat area, Varanasi Airport, or Railway Station for the one-way trip to Lucknow." },
+      { question: "Can I visit Ayodhya on the way?", answer: "Ayodhya is slightly off the direct route. A detour would add about 2 hours and additional kilometre charges." },
+      { question: "Can you drop me at Lucknow Airport?", answer: "Yes, direct drops at Chaudhary Charan Singh International Airport, Lucknow from Varanasi are available." }
+    ]
+  },
+
+  "lucknow-to-agra": {
+    from: "Lucknow",
+    to: "Agra",
+    distance: "330 km",
+    distanceNum: 330,
+    time: "4-5 hours",
+    highway: "Agra-Lucknow Expressway",
+    ...calcFares(330),
+    highlights: ["Via Agra-Lucknow Expressway", "4-5 hours expressway ride", "Nawabi city to Taj Mahal city"],
+    popularStops: ["Expressway rest areas", "Kannauj bypass"],
+    bestTime: "Early morning 5-6 AM for a Taj Mahal afternoon visit",
+    description: `Lucknow to Agra one-way cab covers 330 km via the Agra-Lucknow Expressway, one of India's finest highways. This route connects the City of Nawabs to the city of the Taj Mahal, making it popular with tourists completing the UP heritage circuit, business travellers, and families. The expressway ensures a smooth, fast journey of just 4-5 hours.
+
+Our one-way cab service saves you 50% if you are visiting Agra for a day or continuing to Delhi, Jaipur, or other destinations. The expressway has excellent rest areas with food and fuel. Our experienced drivers know every exit and lane. Book from ₹3,630 for a Sedan.`,
+    faqs: [
+      { question: "How much is a one-way cab from Lucknow to Agra?", answer: "Lucknow to Agra one-way cab costs ₹3,630 for Sedan (330 km at ₹11/km). Ertiga is ₹4,950 and Innova is ₹5,940. Toll extra." },
+      { question: "How long does Lucknow to Agra take?", answer: "Lucknow to Agra takes 4-5 hours via the Agra-Lucknow Expressway." },
+      { question: "Is the Agra-Lucknow Expressway safe?", answer: "Yes, the expressway is well-maintained, patrolled, and has emergency services. One of the safest highways in India." },
+      { question: "Can I continue to Delhi from Agra?", answer: "Yes, you can book a separate Agra to Delhi one-way cab or request an extended trip. Call 7668570551 for a combined quote." },
+      { question: "Are meals available on the expressway?", answer: "Yes, the Agra-Lucknow Expressway has multiple rest areas with food courts, restrooms, and fuel stations." },
+      { question: "Do you pick up from Lucknow Railway Station?", answer: "Yes, pickup from Lucknow Railway Station, Airport, or any address in Lucknow for the one-way trip to Agra." }
+    ]
+  },
+
+  "udaipur-to-jaipur": {
+    from: "Udaipur",
+    to: "Jaipur",
+    distance: "395 km",
+    distanceNum: 395,
+    time: "6-7 hours",
+    highway: "NH-48 via Chittorgarh & Ajmer",
+    ...calcFares(395),
+    highlights: ["Via Chittorgarh Fort & Ajmer", "6-7 hours Lake City to Pink City", "Rajasthan heritage corridor"],
+    popularStops: ["Chittorgarh", "Ajmer"],
+    bestTime: "Morning 6-7 AM for scenic daylight drive through Rajasthan",
+    description: `Udaipur to Jaipur one-way cab covers 395 km through the heart of Rajasthan, passing through the legendary Chittorgarh Fort and the pilgrim city of Ajmer. After your romantic getaway in the City of Lakes — visiting Lake Pichola, City Palace, and the sunset points — our one-way cab takes you to the Pink City comfortably and affordably.
+
+The 6-7 hour drive passes through some of Rajasthan's most scenic countryside. You can stop at Chittorgarh Fort (UNESCO World Heritage Site) for a heritage break or Ajmer for a visit to the famous Dargah Sharif. Our drivers are experienced on this Rajasthan circuit route. Book from ₹4,345 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Udaipur to Jaipur?", answer: "Udaipur to Jaipur one-way cab costs ₹4,345 for Sedan (395 km at ₹11/km). Ertiga is ₹5,925 and Innova Crysta is ₹7,110. Toll extra." },
+      { question: "How long does Udaipur to Jaipur take?", answer: "Udaipur to Jaipur takes 6-7 hours via NH-48 through Chittorgarh and Ajmer." },
+      { question: "Can I visit Chittorgarh Fort on the way?", answer: "Yes, Chittorgarh Fort is on the route and makes for an excellent 1-2 hour stop. It is a UNESCO World Heritage Site." },
+      { question: "Is the road from Udaipur to Jaipur good?", answer: "The highway is mostly 4-lane and well-maintained. Some sections near Chittorgarh may be 2-lane but are still good quality." },
+      { question: "Can I stop at Ajmer Dargah on the way?", answer: "Yes, Ajmer is on the route. You can visit the Ajmer Sharif Dargah as an en-route stop." },
+      { question: "Can I be dropped at Jaipur Airport?", answer: "Yes, direct drops at Jaipur International Airport from Udaipur are available." }
+    ]
+  },
+
+  "jodhpur-to-delhi": {
+    from: "Jodhpur",
+    to: "Delhi",
+    distance: "590 km",
+    distanceNum: 590,
+    time: "9-10 hours",
+    highway: "NH-62 via Ajmer, then NH-48 to Delhi",
+    ...calcFares(590),
+    highlights: ["Via Ajmer & NH-48", "9-10 hours Blue City to Capital", "Desert to metropolis journey"],
+    popularStops: ["Ajmer", "Jaipur bypass", "Neemrana"],
+    bestTime: "Early morning 5-6 AM or overnight departure",
+    description: `Jodhpur to Delhi one-way cab covers 590 km from the magnificent Blue City to the national capital. After exploring Mehrangarh Fort, the vibrant Sardar Market, and the desert landscapes of Jodhpur, our one-way cab provides a comfortable return journey. The route passes through Ajmer, bypasses Jaipur, and joins the NH-48 expressway to Delhi.
+
+The 9-10 hour drive is best started early morning or as an overnight trip. The changing landscape from the Thar Desert edge through the Aravalli foothills to the Delhi plains is a memorable experience. Our professional drivers ensure a safe, comfortable journey. Book from ₹6,490 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Jodhpur to Delhi?", answer: "Jodhpur to Delhi one-way cab costs ₹6,490 for Sedan (590 km at ₹11/km). Ertiga is ₹8,850 and Innova Crysta is ₹10,620. Toll extra." },
+      { question: "How long does Jodhpur to Delhi take?", answer: "Jodhpur to Delhi takes 9-10 hours via NH-62 and NH-48." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Jodhpur with flight monitoring." },
+      { question: "Is overnight travel recommended?", answer: "Yes, departing Jodhpur at 9-10 PM and arriving in Delhi by morning is a popular option." },
+      { question: "Can I stop at Jaipur on the way?", answer: "The route bypasses Jaipur. A city visit would require a detour. For a Jaipur stop, book Jodhpur-Jaipur and Jaipur-Delhi separately." },
+      { question: "Which vehicle is best for this long route?", answer: "Innova Crysta is recommended for the 590 km journey. Sedan works for budget-conscious travellers." }
+    ]
+  },
+
+  "jaisalmer-to-jodhpur": {
+    from: "Jaisalmer",
+    to: "Jodhpur",
+    distance: "285 km",
+    distanceNum: 285,
+    time: "4-5 hours",
+    highway: "NH-15 via Pokhran & Dechu",
+    ...calcFares(285),
+    highlights: ["Via NH-15 desert highway", "4-5 hours through the Thar Desert", "Golden City to Blue City"],
+    popularStops: ["Pokhran", "Dechu"],
+    bestTime: "Morning 7-8 AM for desert sunrise views",
+    description: `Jaisalmer to Jodhpur one-way cab covers 285 km through the heart of the Thar Desert. After your magical experience in the Golden City — camel safaris at Sam Sand Dunes, exploring Jaisalmer Fort, and the stunning havelis — our one-way cab takes you to the Blue City of Jodhpur. This is a key leg of the popular Rajasthan desert circuit.
+
+The 4-5 hour drive passes through the desert landscape with vast stretches of golden sand, occasional oases, and the town of Pokhran (site of India's nuclear tests). The highway is in good condition and the desert scenery makes this a memorable drive. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "What is the one-way cab fare from Jaisalmer to Jodhpur?", answer: "Jaisalmer to Jodhpur one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 285 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Jaisalmer to Jodhpur take?", answer: "Jaisalmer to Jodhpur takes 4-5 hours via NH-15 through Pokhran." },
+      { question: "Is the desert road safe?", answer: "Yes, NH-15 is a well-maintained national highway. Our drivers are experienced on this desert route." },
+      { question: "Can I stop at Pokhran on the way?", answer: "Yes, Pokhran is on the route. You can visit the Pokhran Fort or stop for refreshments." },
+      { question: "What time should I leave Jaisalmer?", answer: "Leave by 7-8 AM to enjoy the desert morning scenery and reach Jodhpur by noon for sightseeing." },
+      { question: "Is this route part of the Rajasthan circuit?", answer: "Yes, Jaisalmer-Jodhpur is a key leg of the popular Jaisalmer-Jodhpur-Udaipur or Jaisalmer-Jodhpur-Jaipur Rajasthan circuit." }
+    ]
+  },
+
+  "jaisalmer-to-jaipur": {
+    from: "Jaisalmer",
+    to: "Jaipur",
+    distance: "560 km",
+    distanceNum: 560,
+    time: "8-9 hours",
+    highway: "NH-15 via Jodhpur, then NH-62 via Ajmer",
+    ...calcFares(560),
+    highlights: ["Via Jodhpur & Ajmer", "8-9 hours desert to Pink City", "Complete Rajasthan desert circuit"],
+    popularStops: ["Pokhran", "Jodhpur bypass", "Ajmer"],
+    bestTime: "Early morning 5-6 AM for a full day of driving",
+    description: `Jaisalmer to Jaipur one-way cab covers 560 km across the breadth of Rajasthan, from the golden sands of the Thar Desert to the Pink City. This is the longest single-leg route in the Rajasthan circuit, passing through Jodhpur and Ajmer. After your desert adventure in Jaisalmer, our one-way cab provides a direct, comfortable ride to Jaipur for your flight home or onward journey.
+
+The 8-9 hour drive takes you from the barren beauty of the Thar through the Aravalli foothills to the bustling capital of Rajasthan. The changing landscape is one of the highlights of this drive. Our experienced drivers ensure comfortable navigation. Book from ₹6,160 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Jaisalmer to Jaipur?", answer: "Jaisalmer to Jaipur one-way cab costs ₹6,160 for Sedan (560 km at ₹11/km). Ertiga is ₹8,400 and Innova Crysta is ₹10,080. Toll extra." },
+      { question: "How long does Jaisalmer to Jaipur take?", answer: "Jaisalmer to Jaipur takes 8-9 hours via Jodhpur and Ajmer." },
+      { question: "Can I stop at Jodhpur on the way?", answer: "The route passes through Jodhpur. A quick stop for meals is possible, but a full Jodhpur sightseeing visit would require an extended stop." },
+      { question: "Is this a long drive?", answer: "Yes, 560 km is a long drive. Early departure or overnight travel is recommended. Innova is preferred for comfort." },
+      { question: "Can you drop me at Jaipur Airport?", answer: "Yes, direct drops at Jaipur International Airport from Jaisalmer are available." },
+      { question: "What is the road condition?", answer: "NH-15 from Jaisalmer to Jodhpur and NH-62 from Jodhpur to Jaipur are well-maintained national highways." }
+    ]
+  },
+
+  "jaipur-to-agra": {
+    from: "Jaipur",
+    to: "Agra",
+    distance: "240 km",
+    distanceNum: 240,
+    time: "4-5 hours",
+    highway: "NH-21 via Dausa & Bharatpur",
+    ...calcFares(240),
+    highlights: ["Via Bharatpur & Fatehpur Sikri", "4-5 hours Pink City to Taj City", "Golden Triangle return leg"],
+    popularStops: ["Dausa", "Bharatpur Bird Sanctuary"],
+    bestTime: "Morning 7-8 AM for an afternoon Taj Mahal visit",
+    description: `Jaipur to Agra one-way cab covers 240 km through the Rajasthan-UP border region, completing the classic Golden Triangle route. After exploring the Pink City — Amber Fort, Hawa Mahal, City Palace, and the vibrant bazaars — our one-way cab takes you to the city of the Taj Mahal. This route passes near the famous Bharatpur Bird Sanctuary and Fatehpur Sikri.
+
+The 4-5 hour drive through the scenic Rajasthani countryside is a pleasant journey. You can stop at Bharatpur for bird watching or Fatehpur Sikri for a heritage visit. Our one-way service saves you 50% compared to round-trip fares. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "What is the one-way cab fare from Jaipur to Agra?", answer: "Jaipur to Agra one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 240 km). Ertiga is ₹4,500 and Innova is ₹5,400. Toll extra." },
+      { question: "How long does Jaipur to Agra take?", answer: "Jaipur to Agra takes 4-5 hours via NH-21 through Dausa and Bharatpur." },
+      { question: "Can I visit Fatehpur Sikri on the way?", answer: "Yes, Fatehpur Sikri is near the Agra end of this route. It is a popular en-route stop for heritage enthusiasts." },
+      { question: "Can I visit Bharatpur on the way?", answer: "Yes, Bharatpur Bird Sanctuary (Keoladeo National Park) is on the route. A 1-2 hour visit is possible." },
+      { question: "Is this the Golden Triangle route?", answer: "Yes, Jaipur to Agra is the return leg of the Delhi-Agra-Jaipur Golden Triangle circuit." },
+      { question: "Can I continue to Delhi from Agra?", answer: "Yes, book a separate Agra to Delhi one-way cab or call 7668570551 for a combined Jaipur-Agra-Delhi quote." }
+    ]
+  },
+
+  "jaipur-to-ajmer": {
+    from: "Jaipur",
+    to: "Ajmer",
+    distance: "135 km",
+    distanceNum: 135,
+    time: "2-2.5 hours",
+    highway: "NH-48 via Dudu & Kishangarh",
+    ...calcFares(135),
+    highlights: ["Via NH-48 highway", "2-2.5 hours quick ride", "Pink City to Dargah city"],
+    popularStops: ["Kishangarh"],
+    bestTime: "Morning 7-8 AM for early darshan at Ajmer Dargah",
+    description: `Jaipur to Ajmer one-way cab covers 135 km via the NH-48 highway. Ajmer is one of the most important pilgrimage centres in India, home to the Ajmer Sharif Dargah (shrine of Sufi saint Moinuddin Chishti) visited by millions of devotees annually. The nearby town of Pushkar with its sacred lake and Brahma Temple is also easily accessible from Ajmer.
+
+The 2-2.5 hour drive is quick and comfortable on the well-maintained highway. Whether you are heading for pilgrimage, continuing to Pushkar, or attending a function in Ajmer, our one-way cab saves you 50% versus round-trip. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Jaipur to Ajmer?", answer: "Jaipur to Ajmer one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 135 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Jaipur to Ajmer take?", answer: "Jaipur to Ajmer takes 2-2.5 hours via NH-48 through Kishangarh." },
+      { question: "Can I continue to Pushkar from Ajmer?", answer: "Yes, Pushkar is just 15 km from Ajmer. You can request a Pushkar drop at minimal extra charge or book Jaipur to Pushkar directly." },
+      { question: "Why is minimum billing 300 km for 135 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus a round-trip booking." },
+      { question: "Is there a direct cab to Pushkar from Jaipur?", answer: "Yes, we offer Jaipur to Pushkar one-way cab as well. The distance is 150 km via Ajmer." },
+      { question: "What is the best time to visit Ajmer Dargah?", answer: "Morning hours (6-9 AM) and evening hours (5-8 PM) are best for darshan. Plan your departure from Jaipur accordingly." }
+    ]
+  },
+
+  "jaipur-to-pushkar": {
+    from: "Jaipur",
+    to: "Pushkar",
+    distance: "150 km",
+    distanceNum: 150,
+    time: "2.5-3 hours",
+    highway: "NH-48 via Ajmer",
+    ...calcFares(150),
+    highlights: ["Via Ajmer & NH-48", "2.5-3 hours to sacred lake town", "Pink City to Brahma Temple town"],
+    popularStops: ["Ajmer"],
+    bestTime: "Morning 6-7 AM for peaceful morning aarti at Pushkar Lake",
+    description: `Jaipur to Pushkar one-way cab covers 150 km via Ajmer to the sacred lakeside town of Pushkar. Home to the only Brahma Temple in the world and the holy Pushkar Lake, this is one of Rajasthan's most spiritual destinations. The town is also famous for the annual Pushkar Camel Fair and its vibrant hippie culture.
+
+The 2.5-3 hour drive passes through Ajmer, where you can stop for darshan at the Ajmer Sharif Dargah. Pushkar is 15 km beyond Ajmer on a scenic road through the Nag Pahar hills. Our one-way cab is perfect for pilgrims and tourists who plan to stay in Pushkar. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Jaipur to Pushkar?", answer: "Jaipur to Pushkar one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 150 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Jaipur to Pushkar take?", answer: "Jaipur to Pushkar takes 2.5-3 hours via NH-48 through Ajmer." },
+      { question: "Can I visit Ajmer Dargah on the way?", answer: "Yes, Ajmer is on the route, 15 km before Pushkar. You can stop for darshan at the Ajmer Sharif Dargah." },
+      { question: "Is Pushkar accessible by road?", answer: "Yes, Pushkar is well-connected by road from Jaipur via Ajmer. The road is in good condition." },
+      { question: "When is the Pushkar Camel Fair?", answer: "The Pushkar Camel Fair is held annually in November (Kartik Purnima). Book your one-way cab well in advance during this period." },
+      { question: "Why is minimum billing 300 km for 150 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus a round-trip booking." }
+    ]
+  },
+
+  "jaipur-to-jaisalmer": {
+    from: "Jaipur",
+    to: "Jaisalmer",
+    distance: "560 km",
+    distanceNum: 560,
+    time: "8-9 hours",
+    highway: "NH-62 via Ajmer & Jodhpur, then NH-15",
+    ...calcFares(560),
+    highlights: ["Via Jodhpur & the Thar Desert", "8-9 hours Pink City to Golden City", "Into the heart of the desert"],
+    popularStops: ["Ajmer", "Jodhpur", "Pokhran"],
+    bestTime: "Early morning 5-6 AM to arrive before sunset desert safari",
+    description: `Jaipur to Jaisalmer one-way cab covers 560 km from the Pink City deep into the Thar Desert to the Golden City. Jaisalmer, with its magnificent sand fort, ornate havelis, and Sam Sand Dunes, is the crown jewel of the Rajasthan desert circuit. This route passes through Jodhpur and across the desert landscape.
+
+The 8-9 hour drive takes you from the Aravalli foothills into the barren beauty of the Thar Desert. The changing landscape is one of the highlights of this journey. Leave early to arrive in Jaisalmer by afternoon for a sunset camel safari at Sam Sand Dunes. Book from ₹6,160 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Jaipur to Jaisalmer?", answer: "Jaipur to Jaisalmer one-way cab costs ₹6,160 for Sedan (560 km at ₹11/km). Ertiga is ₹8,400 and Innova Crysta is ₹10,080. Toll extra." },
+      { question: "How long does Jaipur to Jaisalmer take?", answer: "Jaipur to Jaisalmer takes 8-9 hours via Jodhpur." },
+      { question: "Can I stop at Jodhpur on the way?", answer: "Yes, Jodhpur is on the route. A quick stop for meals is possible, but a full sightseeing visit would require extra time." },
+      { question: "What time should I leave for a sunset desert safari?", answer: "Leave Jaipur by 5-6 AM to reach Jaisalmer by 2-3 PM, giving you time to reach Sam Sand Dunes for the sunset camel safari." },
+      { question: "Which vehicle for a 560 km desert drive?", answer: "Innova Crysta is recommended for long desert drives — better comfort, AC performance, and suspension." },
+      { question: "Is the road to Jaisalmer good?", answer: "NH-62 and NH-15 are well-maintained national highways. The desert section has some single-lane stretches but is generally good." }
+    ]
+  },
+
+  "chandigarh-to-dharamshala": {
+    from: "Chandigarh",
+    to: "Dharamshala",
+    distance: "240 km",
+    distanceNum: 240,
+    time: "5-6 hours",
+    highway: "NH-21 via Anandpur Sahib & Kangra",
+    ...calcFares(240),
+    highlights: ["Via Kangra Valley route", "5-6 hours to Little Lhasa", "Plains to Himalayan foothills"],
+    popularStops: ["Anandpur Sahib", "Kangra"],
+    bestTime: "Morning 6-7 AM for daylight hill driving",
+    description: `Chandigarh to Dharamshala one-way cab covers 240 km from the City Beautiful to the home of the Dalai Lama. Dharamshala and McLeodganj, nestled in the Kangra Valley of Himachal Pradesh, attract spiritual seekers, trekkers, and culture enthusiasts from around the world. The route passes through Anandpur Sahib (the holy Sikh city) and the scenic Kangra Valley.
+
+The 5-6 hour drive transitions from the plains to the beautiful Himalayan foothills. Our drivers are experienced on the hill roads of Himachal Pradesh. Whether you are heading for a meditation retreat, trekking expedition, or a peaceful mountain getaway, our one-way cab provides an affordable, comfortable ride. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Chandigarh to Dharamshala?", answer: "Chandigarh to Dharamshala one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 240 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Chandigarh to Dharamshala take?", answer: "The drive takes 5-6 hours via NH-21 through Anandpur Sahib and Kangra." },
+      { question: "Can I be dropped at McLeodganj instead?", answer: "Yes, McLeodganj is just 10 km above Dharamshala. We can drop you at McLeodganj at no extra charge." },
+      { question: "Can I stop at Anandpur Sahib?", answer: "Yes, Anandpur Sahib is on the route. You can visit the Takht Sri Kesgarh Sahib gurudwara as an en-route stop." },
+      { question: "Is this a hill route?", answer: "The last section from Kangra to Dharamshala involves hill roads, but they are well-maintained. Our drivers are experienced." },
+      { question: "Can I get picked up from Chandigarh Airport?", answer: "Yes, pickup from Chandigarh Airport, Railway Station, or any address in Chandigarh is available." }
+    ]
+  },
+
+  "chandigarh-to-amritsar": {
+    from: "Chandigarh",
+    to: "Amritsar",
+    distance: "230 km",
+    distanceNum: 230,
+    time: "4-5 hours",
+    highway: "NH-44 via Ludhiana & Jalandhar",
+    ...calcFares(230),
+    highlights: ["Via NH-44 Punjab highway", "4-5 hours through Punjab heartland", "City Beautiful to Golden Temple city"],
+    popularStops: ["Ludhiana", "Jalandhar"],
+    bestTime: "Morning 7-8 AM for afternoon Golden Temple visit",
+    description: `Chandigarh to Amritsar one-way cab covers 230 km through the fertile plains of Punjab. This route is popular with travellers heading to the Golden Temple, Wagah Border, or attending family events in Amritsar. The well-maintained NH-44 makes this a comfortable 4-5 hour drive through the heart of Punjab.
+
+Our one-way cab is ideal if you are arriving in Chandigarh by train or flight and continuing to Amritsar. You pass through Ludhiana and Jalandhar, two of Punjab's largest cities. The highway has excellent food stops serving authentic Punjabi cuisine. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "What is the one-way cab fare from Chandigarh to Amritsar?", answer: "Chandigarh to Amritsar one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 230 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Chandigarh to Amritsar take?", answer: "Chandigarh to Amritsar takes 4-5 hours via NH-44 through Ludhiana and Jalandhar." },
+      { question: "Can I reach in time for Wagah Border ceremony?", answer: "Yes, leave Chandigarh by 10-11 AM to reach Amritsar by 2-3 PM. The Wagah Border ceremony starts at 4-5 PM." },
+      { question: "Can I stop at Ludhiana on the way?", answer: "Yes, Ludhiana is on the route. Up to 2 on-route stops are included at no extra charge." },
+      { question: "Is night travel available?", answer: "Yes, NH-44 is well-lit and safe for night travel between Chandigarh and Amritsar." },
+      { question: "Do you pick up from Chandigarh Railway Station?", answer: "Yes, pickup from Chandigarh Railway Station, Airport, Bus Stand, or any address is available." }
+    ]
+  },
+
+  "chandigarh-to-kasol": {
+    from: "Chandigarh",
+    to: "Kasol",
+    distance: "310 km",
+    distanceNum: 310,
+    time: "8-9 hours",
+    highway: "NH-21 via Mandi & Bhuntar, then Parvati Valley road",
+    ...calcFares(310),
+    highlights: ["Via Mandi & Parvati Valley", "8-9 hours to backpacker paradise", "Plains to Himalayan valley"],
+    popularStops: ["Mandi", "Bhuntar"],
+    bestTime: "Early morning 5-6 AM for daylight driving through mountains",
+    description: `Chandigarh to Kasol one-way cab covers 310 km from the City Beautiful to the magical Parvati Valley. Kasol, often called the Amsterdam of India, is a backpacker's paradise nestled along the Parvati River in Himachal Pradesh. The route passes through Mandi and Bhuntar before entering the narrow, scenic Parvati Valley.
+
+The 8-9 hour drive includes challenging mountain roads, especially in the Parvati Valley section. Our experienced hill drivers navigate the narrow roads safely. Whether you are heading for trekking to Kheerganga, visiting Manikaran Sahib, or simply enjoying the mountain vibes, our one-way cab gets you there comfortably. Book from ₹3,410 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Chandigarh to Kasol?", answer: "Chandigarh to Kasol one-way cab costs ₹3,410 for Sedan (310 km at ₹11/km). Ertiga is ₹4,650 and Innova is ₹5,580." },
+      { question: "How long does Chandigarh to Kasol take?", answer: "The drive takes 8-9 hours. The last section through Parvati Valley is slow due to narrow mountain roads." },
+      { question: "Is Innova recommended for Kasol route?", answer: "Ertiga or Innova is recommended for the mountain roads. Sedan works but may be less comfortable on rough patches." },
+      { question: "Can I stop at Manikaran on the way?", answer: "Yes, Manikaran Sahib is 5 km before Kasol and is a popular en-route stop for the hot springs and gurudwara." },
+      { question: "Is the Parvati Valley road safe?", answer: "The road is narrow but well-travelled. Our drivers are experienced on this route. Monsoon travel may have some risks due to landslides." },
+      { question: "Can I get picked up from Chandigarh Airport?", answer: "Yes, pickup from Chandigarh Airport, Railway Station, or any address is available." }
+    ]
+  },
+
+  "nainital-to-delhi": {
+    from: "Nainital",
+    to: "Delhi",
+    distance: "300 km",
+    distanceNum: 300,
+    time: "6-7 hours",
+    highway: "NH-9 via Haldwani & Moradabad",
+    ...calcFares(300),
+    highlights: ["Via Haldwani & Moradabad", "6-7 hours lake city to Capital", "Hill station to plains comfortable ride"],
+    popularStops: ["Haldwani", "Rampur"],
+    bestTime: "Morning 6-7 AM for comfortable daytime travel",
+    description: `Nainital to Delhi one-way cab covers 300 km from the beautiful Lake District of Uttarakhand back to the national capital. After your holiday at the stunning Naini Lake, boating, visiting Snow View Point, and enjoying the colonial charm of the hill station, our one-way cab provides a comfortable return to Delhi.
+
+The 6-7 hour drive descends from Nainital to Haldwani in the plains, then follows the highway through Moradabad to Delhi. The initial hill section takes about 1.5 hours, followed by a smooth plains drive. Our hill-experienced drivers ensure a safe descent. Book from ₹3,300 for a Sedan.`,
+    faqs: [
+      { question: "How much is a one-way cab from Nainital to Delhi?", answer: "Nainital to Delhi one-way cab costs ₹3,300 for Sedan (300 km at ₹11/km). Ertiga is ₹4,500 and Innova is ₹5,400. Toll extra." },
+      { question: "How long does Nainital to Delhi take?", answer: "Nainital to Delhi takes 6-7 hours via Haldwani and Moradabad." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Nainital with flight monitoring." },
+      { question: "Is the hill road from Nainital steep?", answer: "The Nainital to Haldwani descent has curves but is well-maintained. Our drivers are experienced on hill roads." },
+      { question: "Can I be picked up from my hotel in Nainital?", answer: "Yes, pickup from any hotel in Nainital including Mall Road area, Tallital, and Mallital." },
+      { question: "Is night travel possible from Nainital?", answer: "We recommend daytime travel for the hill descent section. The plains section is safe for night driving." }
+    ]
+  },
+
+  "mussoorie-to-delhi": {
+    from: "Mussoorie",
+    to: "Delhi",
+    distance: "290 km",
+    distanceNum: 290,
+    time: "6-7 hours",
+    highway: "Via Dehradun, then NH-334 & Meerut Expressway",
+    ...calcFares(290),
+    highlights: ["Via Dehradun & Meerut Expressway", "6-7 hours Queen of Hills to Capital", "Mountain charm to city life"],
+    popularStops: ["Dehradun", "Roorkee"],
+    bestTime: "Morning 7-8 AM for comfortable daytime travel",
+    description: `Mussoorie to Delhi one-way cab covers 290 km from the charming Queen of Hills back to the national capital. After your mountain getaway — walking on Mall Road, visiting Kempty Falls, enjoying the views from Gun Hill — our one-way cab provides a smooth return to Delhi. The route descends from Mussoorie to Dehradun and then takes the highway to Delhi.
+
+The 6-7 hour drive starts with a scenic 35 km descent from Mussoorie to Dehradun (1 hour), then follows NH-334 through the Mohand forest, bypasses Haridwar, and joins the Delhi-Meerut Expressway. Our experienced hill drivers handle the mountain descent safely. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Mussoorie to Delhi?", answer: "Mussoorie to Delhi one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 290 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Mussoorie to Delhi take?", answer: "Mussoorie to Delhi takes 6-7 hours including the 1-hour descent to Dehradun." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Mussoorie with flight tracking." },
+      { question: "Can I be picked up from my hotel in Mussoorie?", answer: "Yes, pickup from any hotel on Mall Road, Library Point, or anywhere in Mussoorie." },
+      { question: "Is it the same route as Dehradun to Delhi?", answer: "Yes, after descending to Dehradun (35 km, 1 hour), the route is the same as Dehradun to Delhi." },
+      { question: "Is night travel possible from Mussoorie?", answer: "We recommend daytime travel for the Mussoorie-Dehradun hill descent. The Dehradun-Delhi highway is safe for night driving." }
+    ]
+  },
+
+  "mcleodganj-to-delhi": {
+    from: "McLeodganj",
+    to: "Delhi",
+    distance: "480 km",
+    distanceNum: 480,
+    time: "9-10 hours",
+    highway: "Via Kangra & Chandigarh, then NH-44",
+    ...calcFares(480),
+    highlights: ["Via Kangra Valley & Chandigarh", "9-10 hours Little Lhasa to Capital", "Himalayan retreat to metropolis"],
+    popularStops: ["Kangra", "Anandpur Sahib", "Chandigarh bypass"],
+    bestTime: "Early morning 5-6 AM or overnight departure",
+    description: `McLeodganj to Delhi one-way cab covers 480 km from the home of the Dalai Lama back to the national capital. After your spiritual retreat, Triund trek, visits to the Tibetan monasteries, and soaking in the Himalayan atmosphere, our one-way cab provides a comfortable return to Delhi. The route descends through the Kangra Valley, passes Chandigarh, and joins NH-44 to Delhi.
+
+The 9-10 hour drive starts with scenic mountain roads through the Kangra Valley before transitioning to the plains highway. Our experienced hill drivers ensure safe navigation through the mountain section. Book from ₹5,280 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from McLeodganj to Delhi?", answer: "McLeodganj to Delhi one-way cab costs ₹5,280 for Sedan (480 km at ₹11/km). Ertiga is ₹7,200 and Innova Crysta is ₹8,640. Toll extra." },
+      { question: "How long does McLeodganj to Delhi take?", answer: "McLeodganj to Delhi takes 9-10 hours via Kangra, Chandigarh bypass, and NH-44." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from McLeodganj with flight monitoring." },
+      { question: "Is overnight travel possible?", answer: "Yes, departing at 9-10 PM and arriving in Delhi by morning is an option. The plains section is safe for night driving." },
+      { question: "Can I stop at Chandigarh?", answer: "Yes, Chandigarh is on the route and makes for a natural break point for meals or a rest stop." },
+      { question: "Is pickup from Dharamshala also available?", answer: "Yes, McLeodganj is 10 km above Dharamshala. Pickup from either location is available at the same rate." }
+    ]
+  },
+
+  "kasol-to-delhi": {
+    from: "Kasol",
+    to: "Delhi",
+    distance: "520 km",
+    distanceNum: 520,
+    time: "11-12 hours",
+    highway: "Parvati Valley road to Bhuntar, then NH-21 via Mandi & Chandigarh to NH-44",
+    ...calcFares(520),
+    highlights: ["Via Parvati Valley & Chandigarh", "11-12 hours mountain valley to Capital", "Backpacker paradise to metro life"],
+    popularStops: ["Bhuntar", "Mandi", "Chandigarh bypass"],
+    bestTime: "Early morning 4-5 AM or overnight departure",
+    description: `Kasol to Delhi one-way cab covers 520 km from the magical Parvati Valley back to the national capital. After your mountain adventure — trekking to Kheerganga, visiting Manikaran hot springs, or simply relaxing by the Parvati River — our one-way cab provides a comfortable return. The route exits the Parvati Valley, passes through Mandi and Chandigarh, then takes NH-44 to Delhi.
+
+The 11-12 hour drive starts with the narrow Parvati Valley road before joining the wider highways. Overnight travel is popular, departing Kasol at night and arriving in Delhi by morning. Our experienced mountain drivers handle the challenging valley roads safely. Book from ₹5,720 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Kasol to Delhi?", answer: "Kasol to Delhi one-way cab costs ₹5,720 for Sedan (520 km at ₹11/km). Ertiga is ₹7,800 and Innova Crysta is ₹9,360. Toll extra." },
+      { question: "How long does Kasol to Delhi take?", answer: "Kasol to Delhi takes 11-12 hours. The Parvati Valley section is slow, then the journey speeds up on the main highway." },
+      { question: "Is overnight travel recommended?", answer: "Yes, departing at night is popular. However, the Parvati Valley road is best driven in daylight. Consider a 4-5 AM departure instead." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport from Kasol with flight tracking service." },
+      { question: "Which vehicle is best for this long route?", answer: "Innova Crysta is recommended for the 520 km journey through mountains — better comfort and engine power." },
+      { question: "Can I stop at Manikaran on the way?", answer: "Yes, Manikaran is 5 km from Kasol on the exit route. You can stop for the hot springs and gurudwara visit." }
+    ]
+  },
+
+  "dharamshala-to-delhi": {
+    from: "Dharamshala",
+    to: "Delhi",
+    distance: "475 km",
+    distanceNum: 475,
+    time: "9-10 hours",
+    highway: "Via Kangra & Chandigarh, then NH-44",
+    ...calcFares(475),
+    highlights: ["Via Kangra Valley & NH-44", "9-10 hours Himachal to Capital", "Mountain town to metropolis"],
+    popularStops: ["Kangra", "Anandpur Sahib", "Chandigarh bypass"],
+    bestTime: "Early morning 5-6 AM or overnight departure",
+    description: `Dharamshala to Delhi one-way cab covers 475 km from the scenic Kangra Valley back to the national capital. Dharamshala, home to the Dalai Lama and the Tibetan government-in-exile, is a popular destination for spiritual seekers, cricket fans (HPCA Stadium), and nature lovers. Our one-way cab provides a comfortable return after your mountain stay.
+
+The 9-10 hour drive descends from the Himachal hills through the Kangra Valley, passes near Chandigarh, and takes NH-44 to Delhi. The varied landscape — from pine forests to Punjab plains to the Delhi suburban sprawl — makes this an interesting journey. Book from ₹5,225 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Dharamshala to Delhi?", answer: "Dharamshala to Delhi one-way cab costs ₹5,225 for Sedan (475 km at ₹11/km). Ertiga is ₹7,125 and Innova Crysta is ₹8,550. Toll extra." },
+      { question: "How long does Dharamshala to Delhi take?", answer: "Dharamshala to Delhi takes 9-10 hours via Kangra, Chandigarh bypass, and NH-44." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport Terminal 1, 2, or 3 from Dharamshala with flight monitoring." },
+      { question: "Can I be picked up from McLeodganj?", answer: "Yes, McLeodganj is 10 km above Dharamshala. Pickup from McLeodganj is available at the same rate." },
+      { question: "Is overnight travel safe?", answer: "The hill section is best driven in daylight. We recommend early morning departure. The plains section is safe for night driving." },
+      { question: "Can I stop at Chandigarh on the way?", answer: "Yes, Chandigarh is a natural break point for meals or a short rest before continuing to Delhi." }
+    ]
+  },
+
+  "mathura-to-delhi": {
+    from: "Mathura",
+    to: "Delhi",
+    distance: "180 km",
+    distanceNum: 180,
+    time: "2.5-3 hours",
+    highway: "Yamuna Expressway",
+    ...calcFares(180),
+    highlights: ["Via Yamuna Expressway", "2.5-3 hours quick ride", "Krishna's birthplace to Capital"],
+    popularStops: ["Vrindavan (nearby)"],
+    bestTime: "Morning after temple darshan or afternoon departure",
+    description: `Mathura to Delhi one-way cab covers 180 km via the Yamuna Expressway. After visiting the birthplace of Lord Krishna, exploring the temples of Mathura and nearby Vrindavan, our one-way cab provides a quick, comfortable return to Delhi. The Yamuna Expressway makes this one of the fastest intercity routes in India.
+
+The 2.5-3 hour drive is smooth on the six-lane expressway. Whether you visited for religious darshan, Holi celebrations, or a family trip, our one-way service saves you 50% versus round-trip fares. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Mathura to Delhi?", answer: "Mathura to Delhi one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 180 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Mathura to Delhi take?", answer: "Mathura to Delhi takes just 2.5-3 hours via the Yamuna Expressway." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport from Mathura with flight monitoring service." },
+      { question: "Can I be picked up from Vrindavan?", answer: "Yes, Vrindavan is 15 km from Mathura. Pickup from Vrindavan temples or hotels is available." },
+      { question: "Why is minimum billing 300 km for 180 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus a round-trip." },
+      { question: "Is this the same expressway as Delhi to Agra?", answer: "Yes, the Yamuna Expressway connects Delhi/Noida to Agra, passing through Mathura at the southern end." }
+    ]
+  },
+
+  "vrindavan-to-delhi": {
+    from: "Vrindavan",
+    to: "Delhi",
+    distance: "185 km",
+    distanceNum: 185,
+    time: "3-3.5 hours",
+    highway: "Via Mathura, then Yamuna Expressway",
+    ...calcFares(185),
+    highlights: ["Via Yamuna Expressway", "3-3.5 hours temple town to Capital", "Sacred Braj to Delhi"],
+    popularStops: ["Mathura"],
+    bestTime: "After morning temple darshan, depart by 10-11 AM",
+    description: `Vrindavan to Delhi one-way cab covers 185 km from the sacred town of Lord Krishna's childhood to the national capital. After visiting the magnificent temples — Banke Bihari, ISKCON, Prem Mandir — and experiencing the divine atmosphere of Vrindavan, our one-way cab provides a comfortable return to Delhi via the Yamuna Expressway.
+
+The 3-3.5 hour drive joins the Yamuna Expressway near Mathura for a smooth, fast ride to Delhi. Our one-way service is perfect for pilgrims and tourists who visited for darshan and do not need a return ride from Delhi. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Vrindavan to Delhi?", answer: "Vrindavan to Delhi one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 185 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Vrindavan to Delhi take?", answer: "Vrindavan to Delhi takes 3-3.5 hours via Mathura and the Yamuna Expressway." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport from Vrindavan with flight monitoring." },
+      { question: "Can I stop at Mathura on the way?", answer: "Yes, Mathura is on the route, 15 km from Vrindavan. You can stop at Krishna Janmabhoomi or other temples." },
+      { question: "Why is minimum billing 300 km for 185 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus a round-trip." },
+      { question: "Is pickup from ISKCON Temple possible?", answer: "Yes, pickup from ISKCON Temple, Banke Bihari area, Prem Mandir, or any hotel in Vrindavan is available." }
+    ]
+  },
+
+  "ayodhya-to-lucknow": {
+    from: "Ayodhya",
+    to: "Lucknow",
+    distance: "135 km",
+    distanceNum: 135,
+    time: "2.5-3 hours",
+    highway: "NH-330 via Barabanki",
+    ...calcFares(135),
+    highlights: ["Via NH-330 highway", "2.5-3 hours quick ride", "Ram Janmabhoomi city to Nawabi capital"],
+    popularStops: ["Barabanki"],
+    bestTime: "After morning temple darshan, depart by 10-11 AM",
+    description: `Ayodhya to Lucknow one-way cab covers 135 km from the sacred birthplace of Lord Ram to the City of Nawabs. After visiting the Ram Janmabhoomi Temple, Hanuman Garhi, and the ghats of the Saryu River, our one-way cab provides a quick, comfortable ride to Lucknow for your flight, train, or onward journey.
+
+The 2.5-3 hour drive passes through Barabanki on the well-maintained highway. With the new Ram Temple drawing millions of devotees, this route has become increasingly popular. Our one-way service saves you 50% versus round-trip fares. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Ayodhya to Lucknow?", answer: "Ayodhya to Lucknow one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 135 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Ayodhya to Lucknow take?", answer: "Ayodhya to Lucknow takes 2.5-3 hours via NH-330 through Barabanki." },
+      { question: "Can you drop me at Lucknow Airport?", answer: "Yes, direct drops at Chaudhary Charan Singh International Airport, Lucknow from Ayodhya." },
+      { question: "Why is minimum billing 300 km for 135 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus round-trip booking." },
+      { question: "Is this route popular after Ram Temple darshan?", answer: "Yes, Ayodhya to Lucknow is one of the most popular return routes after visiting the Ram Janmabhoomi Temple." },
+      { question: "Can I be picked up from my hotel in Ayodhya?", answer: "Yes, pickup from any hotel, dharamshala, or the temple area in Ayodhya is available." }
+    ]
+  },
+
+  "prayagraj-to-lucknow": {
+    from: "Prayagraj",
+    to: "Lucknow",
+    distance: "200 km",
+    distanceNum: 200,
+    time: "3.5-4 hours",
+    highway: "Purvanchal Expressway / NH-232",
+    ...calcFares(200),
+    highlights: ["Via Purvanchal Expressway", "3.5-4 hours Sangam city to Nawabi capital", "Confluence to culture"],
+    popularStops: ["Pratapgarh"],
+    bestTime: "Morning 7-8 AM after Sangam visit",
+    description: `Prayagraj to Lucknow one-way cab covers 200 km from the holy Sangam city (confluence of Ganga, Yamuna, and Saraswati rivers) to the City of Nawabs. After attending the Kumbh Mela, visiting the Triveni Sangam, or paying respects at the Allahabad Fort, our one-way cab provides a comfortable ride to Lucknow for your onward journey.
+
+The 3.5-4 hour drive is smooth via the Purvanchal Expressway or NH-232. Prayagraj (formerly Allahabad) has seen a surge in tourism with the grand Kumbh Mela and improved infrastructure. Our one-way service is perfect for devotees returning to Lucknow for flights or trains. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Prayagraj to Lucknow?", answer: "Prayagraj to Lucknow one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 200 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Prayagraj to Lucknow take?", answer: "Prayagraj to Lucknow takes 3.5-4 hours via the Purvanchal Expressway or NH-232." },
+      { question: "Can you drop me at Lucknow Airport?", answer: "Yes, direct drops at Chaudhary Charan Singh International Airport from Prayagraj are available." },
+      { question: "Is this route busy during Kumbh Mela?", answer: "Yes, during Kumbh Mela period, advance booking is essential. We operate throughout the Mela with experienced drivers." },
+      { question: "Why is minimum billing 300 km for 200 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus round-trip." },
+      { question: "Can I be picked up from Sangam area?", answer: "Yes, pickup from Sangam, any ghat, hotel, Railway Station, or any address in Prayagraj is available." }
+    ]
+  },
+
+  "corbett-to-delhi": {
+    from: "Jim Corbett",
+    to: "Delhi",
+    distance: "260 km",
+    distanceNum: 260,
+    time: "5-6 hours",
+    highway: "NH-9 via Moradabad",
+    ...calcFares(260),
+    highlights: ["Via Moradabad highway", "5-6 hours jungle to metro", "Wildlife adventure to city life"],
+    popularStops: ["Kashipur", "Moradabad"],
+    bestTime: "After morning jungle safari, depart by 10-11 AM",
+    description: `Jim Corbett to Delhi one-way cab covers 260 km from India's oldest national park to the national capital. After your thrilling tiger safari, nature walks, and jungle resort stay at Corbett National Park, our one-way cab provides a comfortable return to Delhi. The route passes through Kashipur and Moradabad on the NH-9 highway.
+
+The 5-6 hour drive transitions from the forested Kumaon foothills to the Gangetic plains. Whether you spotted a tiger, enjoyed elephant safaris, or simply relaxed in the wilderness, our clean AC cab and professional driver ensure a relaxed journey home. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Jim Corbett to Delhi?", answer: "Jim Corbett to Delhi one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 260 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Jim Corbett to Delhi take?", answer: "Jim Corbett to Delhi takes 5-6 hours via NH-9 through Moradabad." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport from Jim Corbett National Park with flight tracking." },
+      { question: "Can I be picked up from my jungle resort?", answer: "Yes, pickup from any resort or gate (Bijrani, Jhirna, Dhikala approach) in the Corbett area." },
+      { question: "Is the road from Corbett good?", answer: "Yes, the highway from Ramnagar (Corbett gateway) to Delhi is well-maintained. The park approach roads may be narrow." },
+      { question: "Can I stop at Moradabad for brass shopping?", answer: "Yes, Moradabad (Brass City) is on the route. You can stop for shopping as an en-route break." }
+    ]
+  },
+
+  "lansdowne-to-delhi": {
+    from: "Lansdowne",
+    to: "Delhi",
+    distance: "270 km",
+    distanceNum: 270,
+    time: "6-7 hours",
+    highway: "Via Kotdwar, then NH-119 & NH-9",
+    ...calcFares(270),
+    highlights: ["Via Kotdwar & highway", "6-7 hours cantonment hill to Capital", "Peaceful hills to bustling metro"],
+    popularStops: ["Kotdwar", "Najibabad"],
+    bestTime: "Morning 7-8 AM for comfortable daytime travel",
+    description: `Lansdowne to Delhi one-way cab covers 270 km from the quiet cantonment hill station back to the national capital. Lansdowne, one of the few unspoiled hill stations in Uttarakhand, is known for its serene atmosphere, war memorial, and the Garhwal Rifles regimental centre. After your peaceful getaway, our one-way cab provides a comfortable descent to Delhi.
+
+The 6-7 hour drive starts with a scenic hill descent to Kotdwar, then follows the highway through Najibabad and joins the main Delhi road. The initial hill section requires experienced driving, and our drivers are well-versed on this route. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Lansdowne to Delhi?", answer: "Lansdowne to Delhi one-way cab starts at ₹3,300 for Sedan (300 km minimum billing for 270 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Lansdowne to Delhi take?", answer: "Lansdowne to Delhi takes 6-7 hours via Kotdwar and the NH-9 highway." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct airport drops at IGI Terminal 1, 2, or 3 from Lansdowne with flight tracking." },
+      { question: "Is the hill road from Lansdowne difficult?", answer: "The Lansdowne to Kotdwar descent has moderate curves. Our drivers are experienced and ensure a safe journey." },
+      { question: "Can I be picked up from my hotel in Lansdowne?", answer: "Yes, pickup from any hotel, Tip-N-Top, or the cantonment area in Lansdowne." },
+      { question: "Is this a popular weekend getaway return route?", answer: "Yes, Lansdowne to Delhi is very popular as a weekend return. Book in advance for Sunday departures." }
+    ]
+  },
+
+  "dalhousie-to-delhi": {
+    from: "Dalhousie",
+    to: "Delhi",
+    distance: "560 km",
+    distanceNum: 560,
+    time: "10-11 hours",
+    highway: "Via Pathankot & NH-44",
+    ...calcFares(560),
+    highlights: ["Via Pathankot & Punjab", "10-11 hours hill station to Capital", "Colonial charm to metro bustle"],
+    popularStops: ["Pathankot", "Jalandhar", "Ludhiana"],
+    bestTime: "Early morning 5-6 AM or overnight departure",
+    description: `Dalhousie to Delhi one-way cab covers 560 km from the charming colonial hill station in Himachal Pradesh back to the national capital. After your mountain holiday — walking on Mall Road, visiting Khajjiar (Mini Switzerland of India), and enjoying the Himalayan views — our one-way cab provides a comfortable return. The route descends to Pathankot and joins NH-44 through Punjab to Delhi.
+
+The 10-11 hour drive is best started early morning or as an overnight trip. The Dalhousie to Pathankot hill section takes about 2-3 hours, followed by the well-maintained Punjab plains highway. Our experienced drivers navigate both terrain types safely. Book from ₹6,160 for a Sedan.`,
+    faqs: [
+      { question: "What is the one-way cab fare from Dalhousie to Delhi?", answer: "Dalhousie to Delhi one-way cab costs ₹6,160 for Sedan (560 km at ₹11/km). Ertiga is ₹8,400 and Innova Crysta is ₹10,080. Toll extra." },
+      { question: "How long does Dalhousie to Delhi take?", answer: "Dalhousie to Delhi takes 10-11 hours via Pathankot and NH-44 through Punjab." },
+      { question: "Can you drop me at Delhi Airport?", answer: "Yes, direct drops at IGI Airport from Dalhousie with flight monitoring." },
+      { question: "Can I stop at Khajjiar on the way?", answer: "Khajjiar is near Dalhousie. If you haven't visited, a short detour is possible at the start of the journey." },
+      { question: "Is overnight travel recommended?", answer: "The hill section is best driven in daylight. Early morning departure (5-6 AM) is recommended to reach Delhi by evening." },
+      { question: "Which vehicle is best for this route?", answer: "Innova Crysta is recommended for the long 560 km journey with hill and plains sections." }
+    ]
+  },
+
+  "mount-abu-to-udaipur": {
+    from: "Mount Abu",
+    to: "Udaipur",
+    distance: "165 km",
+    distanceNum: 165,
+    time: "3-3.5 hours",
+    highway: "NH-48 via Abu Road",
+    ...calcFares(165),
+    highlights: ["Via Abu Road & NH-48", "3-3.5 hours Rajasthan's only hill station to Lake City", "Hills to lakes journey"],
+    popularStops: ["Abu Road"],
+    bestTime: "Morning 8-9 AM for scenic daylight drive",
+    description: `Mount Abu to Udaipur one-way cab covers 165 km from Rajasthan's only hill station to the romantic City of Lakes. After visiting the stunning Dilwara Temples, Nakki Lake, and Sunset Point in Mount Abu, our one-way cab takes you to Udaipur — one of India's most beautiful cities. The route descends from Mount Abu to Abu Road and joins NH-48 to Udaipur.
+
+The 3-3.5 hour drive starts with a scenic hill descent and then passes through the Aravalli countryside to Udaipur. This is a popular route for Rajasthan circuit travellers combining Mount Abu with Udaipur. Our one-way service saves you 50% versus round-trip fares. Book from ₹3,300 for a Sedan (300 km minimum billing).`,
+    faqs: [
+      { question: "How much is a one-way cab from Mount Abu to Udaipur?", answer: "Mount Abu to Udaipur one-way cab costs ₹3,300 for Sedan (300 km minimum billing for 165 km). Ertiga is ₹4,500 and Innova is ₹5,400." },
+      { question: "How long does Mount Abu to Udaipur take?", answer: "Mount Abu to Udaipur takes 3-3.5 hours via Abu Road and NH-48." },
+      { question: "Is the hill descent from Mount Abu steep?", answer: "The Mount Abu descent to Abu Road has curves but is well-maintained. Our drivers are experienced on this hill road." },
+      { question: "Can I stop at Ranakpur on the way?", answer: "Ranakpur Jain Temple is slightly off the direct route but can be visited with a small detour. Ask your driver for options." },
+      { question: "Why is minimum billing 300 km for 165 km?", answer: "One-way cabs have 300 km minimum billing as the driver returns empty. This still saves 50% versus a round-trip." },
+      { question: "Is this part of the Rajasthan circuit?", answer: "Yes, Mount Abu to Udaipur is a popular leg of the Rajasthan tourism circuit (Jaipur-Udaipur-Mount Abu or Mount Abu-Udaipur-Jaipur)." }
     ]
   },
 };

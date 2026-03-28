@@ -150,7 +150,7 @@ export default function CityItineraryClient({ data }) {
                     <div key={i} className="flex items-center justify-between py-2 border-b border-dashed border-white/[0.06] last:border-0">
                       <div>
                         <p className="text-sm text-white/80 font-medium">{v.label}</p>
-                        <p className="text-[10px] text-white/30">{v.sub}</p>
+                        <p className="text-[10px] text-white/40">{v.sub}</p>
                       </div>
                       <span className="text-sm font-bold text-orange-300">{v.price}</span>
                     </div>
@@ -174,14 +174,14 @@ export default function CityItineraryClient({ data }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
-              { icon: CalendarDays, label: 'Duration', value: `${data.days} Day${data.days > 1 ? 's' : ''}`, color: 'orange' },
-              { icon: Camera, label: 'Places to Visit', value: `${totalPlaces}+ Stops`, color: 'yellow' },
-              { icon: Route, label: 'Total Coverage', value: `~${totalKm} km`, color: 'amber' },
-              { icon: IndianRupee, label: 'Starting Price', value: data.packagePrice.sedan, color: 'orange' },
+              { icon: CalendarDays, label: 'Duration', value: `${data.days} Day${data.days > 1 ? 's' : ''}`, bgClass: 'bg-orange-500/10', borderClass: 'border-orange-500/20', textClass: 'text-orange-400' },
+              { icon: Camera, label: 'Places to Visit', value: `${totalPlaces}+ Stops`, bgClass: 'bg-yellow-500/10', borderClass: 'border-yellow-500/20', textClass: 'text-yellow-400' },
+              { icon: Route, label: 'Total Coverage', value: `~${totalKm} km`, bgClass: 'bg-amber-500/10', borderClass: 'border-amber-500/20', textClass: 'text-amber-400' },
+              { icon: IndianRupee, label: 'Starting Price', value: data.packagePrice.sedan, bgClass: 'bg-orange-500/10', borderClass: 'border-orange-500/20', textClass: 'text-orange-400' },
             ].map((stat, i) => (
               <div key={i} className="group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-5 md:p-6 text-center hover:bg-white/[0.08] hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 hover:scale-[1.03]">
-                <div className={`w-12 h-12 rounded-xl bg-${stat.color}-500/10 border border-${stat.color}-500/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className={`w-5 h-5 text-${stat.color}-400`} />
+                <div className={`w-12 h-12 rounded-xl ${stat.bgClass} border ${stat.borderClass} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  <stat.icon className={`w-5 h-5 ${stat.textClass}`} />
                 </div>
                 <p className="text-xl md:text-2xl font-black text-white mb-0.5">{stat.value}</p>
                 <p className="text-xs text-white/40 uppercase tracking-wider font-medium">{stat.label}</p>
@@ -267,7 +267,7 @@ export default function CityItineraryClient({ data }) {
                             {isActivity ? (
                               <span className="text-xs font-black text-orange-300">{String(placeIndex + 1).padStart(2, '0')}</span>
                             ) : (
-                              <Coffee className="w-4 h-4 text-white/30" />
+                              <Coffee className="w-4 h-4 text-white/40" />
                             )}
                           </div>
                         </div>
@@ -357,7 +357,7 @@ export default function CityItineraryClient({ data }) {
                 <p className="text-xs text-white/40 mb-5">{vehicle.desc}</p>
 
                 <p className="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-300 to-yellow-300 bg-clip-text text-transparent mb-1">{vehicle.price}</p>
-                <p className="text-xs text-white/30 mb-6">{vehicle.capacity}</p>
+                <p className="text-xs text-white/40 mb-6">{vehicle.capacity}</p>
 
                 <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className={`w-full inline-flex items-center justify-center gap-2 font-bold px-5 py-3 rounded-xl transition-all duration-300 text-sm ${
                   vehicle.featured
@@ -631,7 +631,7 @@ export default function CityItineraryClient({ data }) {
                 </a>
               </div>
 
-              <div className="flex items-center justify-center gap-6 md:gap-8 mt-8 text-xs text-white/30">
+              <div className="flex items-center justify-center gap-6 md:gap-8 mt-8 text-xs text-white/40">
                 <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5" /> Verified Drivers</span>
                 <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5" /> 4.8/5 Rating</span>
                 <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5" /> 5000+ Trips</span>

@@ -183,7 +183,7 @@ export default function DestinationCompareClient({ data }) {
             { dest: data.dest1, side: "blue", label: "OPTION A" },
             { dest: data.dest2, side: "orange", label: "OPTION B" }
           ].map(({ dest, side, label }) => (
-            <div key={dest.name} className={`group bg-white rounded-3xl shadow-2xl shadow-${side === 'blue' ? 'blue' : 'orange'}-500/5 border-2 ${side === 'blue' ? 'border-blue-100 hover:border-blue-300' : 'border-orange-100 hover:border-orange-300'} overflow-hidden transition-all duration-500 hover:-translate-y-1`}>
+            <div key={dest.name} className={`group bg-white rounded-3xl shadow-2xl border-2 ${side === 'blue' ? 'shadow-blue-500/5 border-blue-100 hover:border-blue-300' : 'shadow-orange-500/5 border-orange-100 hover:border-orange-300'} overflow-hidden transition-all duration-500 hover:-translate-y-1`}>
               {/* Card Header */}
               <div className={`relative p-6 ${side === 'blue' ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600' : 'bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500'}`}>
                 <div className="absolute top-3 right-4">

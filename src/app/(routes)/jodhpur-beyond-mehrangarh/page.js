@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jodhpur-beyond-mehrangarh',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Jodhpur Beyond Mehrangarh' }],
+    images: [{ url: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg', width: 1200, height: 630, alt: 'Jodhpur Beyond Mehrangarh' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Stepwells, desert parks, Bishnoi villages, and secret lakes. By Jodhpur locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

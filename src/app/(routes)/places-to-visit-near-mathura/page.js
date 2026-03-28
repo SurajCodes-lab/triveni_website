@@ -13,8 +13,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/places-to-visit-near-mathura' },
-  openGraph: { title: '15+ Places to Visit Near Mathura by Car | Book Cab', description: 'Braj Mandal sacred trails from Mathura. Vrindavan, Agra, Govardhan, Barsana & more.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-mathura', siteName: 'Triveni Cabs', images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Mathura' }] },
-  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Mathura | Triveni Cabs', description: 'Sacred trails and heritage from Mathura. Call 7668570551.', images: ['/images/citypage_hero_section_image.jpg'] },
+  openGraph: { title: '15+ Places to Visit Near Mathura by Car | Book Cab', description: 'Braj Mandal sacred trails from Mathura. Vrindavan, Agra, Govardhan, Barsana & more.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-mathura', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png', width: 1200, height: 630, alt: 'Places to Visit Near Mathura' }] },
+  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Mathura | Triveni Cabs', description: 'Sacred trails and heritage from Mathura. Call 7668570551.', images: ['/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

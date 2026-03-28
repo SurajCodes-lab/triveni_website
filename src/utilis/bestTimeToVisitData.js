@@ -721,3 +721,67 @@ export const bestTimeToVisitData = {
     ],
   },
 };
+
+// Slug mapping: URL slug -> data key
+const slugToName = {
+  'manali': 'Manali', 'shimla': 'Shimla', 'jaipur': 'Jaipur', 'udaipur': 'Udaipur',
+  'rishikesh': 'Rishikesh', 'kashmir': 'Srinagar', 'ladakh': 'Leh Ladakh',
+  'rajasthan': 'Jaipur', 'agra': 'Agra', 'varanasi': 'Varanasi', 'haridwar': 'Haridwar',
+  'nainital': 'Nainital', 'mussoorie': 'Mussoorie', 'dharamshala': 'Dharamshala',
+  'spiti-valley': 'Leh Ladakh', 'amritsar': 'Amritsar', 'jim-corbett': 'Jim Corbett',
+  'kedarnath': 'Haridwar', 'badrinath': 'Haridwar', 'jodhpur': 'Jodhpur',
+  'jaisalmer': 'Jaisalmer', 'kasol': 'Kasol', 'mcleodganj': 'Mcleodganj',
+  'ranthambore': 'Ranthambore', 'mount-abu': 'Mount Abu', 'delhi': 'Delhi',
+  'chandigarh': 'Chandigarh', 'dehradun': 'Dehradun', 'lucknow': 'Lucknow',
+  'mathura': 'Mathura', 'ayodhya': 'Ayodhya', 'noida': 'Noida', 'gurgaon': 'Gurgaon',
+  'pushkar': 'Pushkar', 'ajmer': 'Ajmer', 'bikaner': 'Bikaner', 'dalhousie': 'Dalhousie',
+};
+
+// Display names for slugs that differ from data keys
+const slugDisplayNames = {
+  'kashmir': 'Kashmir', 'ladakh': 'Ladakh', 'rajasthan': 'Rajasthan',
+  'spiti-valley': 'Spiti Valley', 'jim-corbett': 'Jim Corbett National Park',
+  'kedarnath': 'Kedarnath', 'badrinath': 'Badrinath', 'mount-abu': 'Mount Abu',
+  'mcleodganj': 'McLeodganj',
+};
+
+// The 25 slugs we want pages for (from the PDF)
+const targetSlugs = [
+  'manali', 'shimla', 'jaipur', 'udaipur', 'rishikesh', 'kashmir', 'ladakh',
+  'rajasthan', 'agra', 'varanasi', 'haridwar', 'nainital', 'mussoorie',
+  'dharamshala', 'spiti-valley', 'amritsar', 'jim-corbett', 'kedarnath',
+  'badrinath', 'jodhpur', 'jaisalmer', 'kasol', 'mcleodganj', 'ranthambore', 'mount-abu'
+];
+
+const defaultFaqs = (dest) => [
+  { question: `What is the best time to visit ${dest}?`, answer: `The best months to visit ${dest} are during the peak season when weather is pleasant and most attractions are accessible. Check the seasonal guide above for month-by-month details.` },
+  { question: `Is ${dest} good to visit in monsoon?`, answer: `Monsoon season brings rainfall which can affect outdoor activities. However, the scenery is lush and green, and prices are lower. Carry rain gear if visiting during July-September.` },
+  { question: `What is the cheapest time to visit ${dest}?`, answer: `Off-season months offer the best hotel and cab rates. You can save 30-50% on accommodation and travel during the low season.` },
+  { question: `How many days are enough for ${dest}?`, answer: `A typical visit to ${dest} requires 2-4 days to cover the major attractions comfortably. Check our itinerary guide for detailed day-wise plans.` },
+  { question: `Can I book a cab for ${dest} sightseeing?`, answer: `Yes, Triveni Cabs offers local taxi packages and outstation cabs for ${dest}. AC sedan from ₹11/km, SUV from ₹14/km. Call 7668570551 or WhatsApp for instant booking.` },
+  { question: `What should I pack when visiting ${dest}?`, answer: `Packing depends on the season. Check the weather guide above for temperature ranges. Generally carry layers, comfortable walking shoes, and sunscreen.` },
+];
+
+export function getBestTimeData(slug) {
+  const dataKey = slugToName[slug];
+  if (!dataKey || !bestTimeToVisitData[dataKey]) return null;
+  const data = bestTimeToVisitData[dataKey];
+  const displayName = slugDisplayNames[slug] || dataKey;
+  return {
+    slug,
+    destination: displayName,
+    ...data,
+    faqs: defaultFaqs(displayName),
+  };
+}
+
+export function getAllBestTimeSlugs() {
+  return targetSlugs.filter(slug => slugToName[slug] && bestTimeToVisitData[slugToName[slug]]);
+}
+
+export function getRelatedBestTimeDestinations(slug) {
+  const allSlugs = getAllBestTimeSlugs();
+  const idx = allSlugs.indexOf(slug);
+  const related = allSlugs.filter((s, i) => s !== slug && Math.abs(i - idx) <= 3).slice(0, 4);
+  return related.map(s => getBestTimeData(s)).filter(Boolean);
+}

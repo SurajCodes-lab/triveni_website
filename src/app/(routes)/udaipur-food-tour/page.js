@@ -10,8 +10,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/udaipur-food-tour' },
-  openGraph: { title: 'Udaipur Food Tour 2026 | Lake City Culinary Guide by Locals', description: 'Complete Udaipur food guide. Dal Baati, Gatte Ki Sabzi, lakeside dining, best restaurants and street food spots.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/udaipur-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Udaipur Food Tour Guide' }] },
-  twitter: { card: 'summary_large_image', title: 'Udaipur Food Tour 2026 | By Locals', description: 'Udaipur culinary guide. Dal Baati, lakeside dining, Rajasthani cuisine.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/taj-mahal-hero.jpg'] },
+  openGraph: { title: 'Udaipur Food Tour 2026 | Lake City Culinary Guide by Locals', description: 'Complete Udaipur food guide. Dal Baati, Gatte Ki Sabzi, lakeside dining, best restaurants and street food spots.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/udaipur-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg', width: 1200, height: 630, alt: 'Udaipur Food Tour Guide' }] },
+  twitter: { card: 'summary_large_image', title: 'Udaipur Food Tour 2026 | By Locals', description: 'Udaipur culinary guide. Dal Baati, lakeside dining, Rajasthani cuisine.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Udaipur/Udaipur_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

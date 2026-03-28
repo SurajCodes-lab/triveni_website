@@ -16,20 +16,25 @@ const Footer = () => {
     { name: "Services", href: "/services" },
     { name: "Pricing", href: "/pricing" },
     { name: "Our Vehicles", href: "/vehicles" },
-    { name: "Outstation Routes", href: "/routes" },
-    { name: "Tour Packages", href: "/services" },
-    { name: "Tour Guide", href: "/tour-guide" },
+    { name: "Tour Packages", href: "/tour-package" },
+    { name: "Chardham Yatra", href: "/chardham-yatra" },
+    { name: "Customer Reviews", href: "/reviews" },
+    { name: "FAQ", href: "/faq" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" }
   ];
 
   const services = [
     { name: "Airport Transfer", href: "/airport-service" },
+    { name: "Outstation Cabs", href: "/outstation-cabs" },
+    { name: "One Way Cab", href: "/one-way-cab" },
+    { name: "Round Trip Cab", href: "/round-trip-cab" },
+    { name: "Local Taxi", href: "/local-taxi" },
     { name: "Tempo Traveller", href: "/tempo-traveller" },
     { name: "Wedding Cars", href: "/wedding" },
-    { name: "Corporate Transport", href: "/corporate-transportation-service" },
-    { name: "Event Transport", href: "/event-transportation-service" },
     { name: "Sightseeing Tours", href: "/sightseeing" },
+    { name: "Corporate Transport", href: "/corporate-transportation-service" },
+    { name: "Private Driver Hire", href: "/private-driver-hire-india" },
     { name: "Religious Tours", href: "/religious-tours" },
     { name: "Bus Hire", href: "/bus-routes" }
   ];

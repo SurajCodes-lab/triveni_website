@@ -258,6 +258,8 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="//stimg.cardekho.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://media.istockphoto.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://img.freepik.com" crossOrigin="anonymous" />
 
         {/* Single consolidated structured data script - reduces DOM nodes & parse time */}
         <script

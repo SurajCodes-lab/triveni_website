@@ -16,11 +16,11 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import SectionDivider from '@/components/shared/SectionDivider';
 
 // Train-ticket style perforated divider component
-const TicketPerforation = ({ color = 'slate-950' }) => (
+const TicketPerforation = () => (
   <div className="flex items-center -mx-5 my-4">
-    <div className={`w-4 h-8 bg-${color} rounded-r-full -ml-1`} />
+    <div className="w-4 h-8 bg-slate-950 rounded-r-full -ml-1" />
     <div className="flex-1 border-t-2 border-dashed border-white/10 mx-1" />
-    <div className={`w-4 h-8 bg-${color} rounded-l-full -mr-1`} />
+    <div className="w-4 h-8 bg-slate-950 rounded-l-full -mr-1" />
   </div>
 );
 
@@ -123,7 +123,7 @@ export default function RailwayStationClient({ station, slug }) {
                 <span className="text-yellow-200 text-sm font-mono tracking-widest">{station.stationCode} STATION</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
                 {station.city}
                 <span className="block text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300 bg-clip-text shimmer-text"
                   style={{ backgroundImage: 'linear-gradient(90deg, #fbbf24, #fde68a, #f59e0b, #fbbf24)', backgroundSize: '200% 100%' }}>
@@ -322,19 +322,19 @@ export default function RailwayStationClient({ station, slug }) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: MapPinned, title: "Meet at Platform Exit", desc: "Our driver waits right at the station exit with your name board. No searching, no confusion.", accent: "indigo" },
-              { icon: Clock, title: "24/7 Available", desc: "Whether your train arrives at 2 AM or noon, our taxi is ready and waiting for you.", accent: "violet" },
-              { icon: Shield, title: "No Surge Pricing", desc: "Fixed fares agreed before booking. No meters, no multipliers, no hidden charges.", accent: "purple" },
-              { icon: Navigation, title: "GPS Tracked Rides", desc: "All vehicles are GPS tracked. Share your live location with family for complete safety.", accent: "indigo" },
-              { icon: Car, title: "Clean AC Vehicles", desc: "Well-maintained, sanitized AC cars. Sedan, SUV, and Tempo Traveller options available.", accent: "violet" },
-              { icon: BadgeCheck, title: "Verified Drivers", desc: "All drivers are background-verified, experienced, and know local routes perfectly.", accent: "purple" },
+              { icon: MapPinned, title: "Meet at Platform Exit", desc: "Our driver waits right at the station exit with your name board. No searching, no confusion.", hoverBorderClass: "hover:border-indigo-500/40", hoverShadowClass: "hover:shadow-indigo-500/10", glowClass: "bg-indigo-500/5", glowHoverClass: "group-hover:bg-indigo-500/10", iconBgClass: "bg-gradient-to-br from-indigo-600/20 to-indigo-400/10", iconBorderClass: "border-indigo-500/20", iconTextClass: "text-indigo-400" },
+              { icon: Clock, title: "24/7 Available", desc: "Whether your train arrives at 2 AM or noon, our taxi is ready and waiting for you.", hoverBorderClass: "hover:border-violet-500/40", hoverShadowClass: "hover:shadow-violet-500/10", glowClass: "bg-violet-500/5", glowHoverClass: "group-hover:bg-violet-500/10", iconBgClass: "bg-gradient-to-br from-violet-600/20 to-violet-400/10", iconBorderClass: "border-violet-500/20", iconTextClass: "text-violet-400" },
+              { icon: Shield, title: "No Surge Pricing", desc: "Fixed fares agreed before booking. No meters, no multipliers, no hidden charges.", hoverBorderClass: "hover:border-purple-500/40", hoverShadowClass: "hover:shadow-purple-500/10", glowClass: "bg-purple-500/5", glowHoverClass: "group-hover:bg-purple-500/10", iconBgClass: "bg-gradient-to-br from-purple-600/20 to-purple-400/10", iconBorderClass: "border-purple-500/20", iconTextClass: "text-purple-400" },
+              { icon: Navigation, title: "GPS Tracked Rides", desc: "All vehicles are GPS tracked. Share your live location with family for complete safety.", hoverBorderClass: "hover:border-indigo-500/40", hoverShadowClass: "hover:shadow-indigo-500/10", glowClass: "bg-indigo-500/5", glowHoverClass: "group-hover:bg-indigo-500/10", iconBgClass: "bg-gradient-to-br from-indigo-600/20 to-indigo-400/10", iconBorderClass: "border-indigo-500/20", iconTextClass: "text-indigo-400" },
+              { icon: Car, title: "Clean AC Vehicles", desc: "Well-maintained, sanitized AC cars. Sedan, SUV, and Tempo Traveller options available.", hoverBorderClass: "hover:border-violet-500/40", hoverShadowClass: "hover:shadow-violet-500/10", glowClass: "bg-violet-500/5", glowHoverClass: "group-hover:bg-violet-500/10", iconBgClass: "bg-gradient-to-br from-violet-600/20 to-violet-400/10", iconBorderClass: "border-violet-500/20", iconTextClass: "text-violet-400" },
+              { icon: BadgeCheck, title: "Verified Drivers", desc: "All drivers are background-verified, experienced, and know local routes perfectly.", hoverBorderClass: "hover:border-purple-500/40", hoverShadowClass: "hover:shadow-purple-500/10", glowClass: "bg-purple-500/5", glowHoverClass: "group-hover:bg-purple-500/10", iconBgClass: "bg-gradient-to-br from-purple-600/20 to-purple-400/10", iconBorderClass: "border-purple-500/20", iconTextClass: "text-purple-400" },
             ].map((item, i) => (
-              <div key={i} className={`relative bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-7 hover:border-${item.accent}-500/40 hover:bg-white/[0.06] hover:shadow-2xl hover:shadow-${item.accent}-500/10 transition-all duration-500 group overflow-hidden`}>
+              <div key={i} className={`relative bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-7 ${item.hoverBorderClass} hover:bg-white/[0.06] hover:shadow-2xl ${item.hoverShadowClass} transition-all duration-500 group overflow-hidden`}>
                 {/* Subtle corner glow */}
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-${item.accent}-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-${item.accent}-500/10 transition-all duration-500`} />
+                <div className={`absolute top-0 right-0 w-32 h-32 ${item.glowClass} rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${item.glowHoverClass} transition-all duration-500`} />
 
-                <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br from-${item.accent}-600/20 to-${item.accent}-400/10 border border-${item.accent}-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <item.icon className={`w-6 h-6 text-${item.accent}-400`} />
+                <div className={`relative w-14 h-14 rounded-2xl ${item.iconBgClass} border ${item.iconBorderClass} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon className={`w-6 h-6 ${item.iconTextClass}`} />
                 </div>
                 <h3 className="relative text-white font-bold text-xl mb-2">{item.title}</h3>
                 <p className="relative text-slate-400 text-sm leading-relaxed">{item.desc}</p>
@@ -636,7 +636,9 @@ export default function RailwayStationClient({ station, slug }) {
               <div key={i} className={`bg-white/[0.03] backdrop-blur-2xl rounded-2xl border overflow-hidden transition-all duration-500 ${openFaq === i ? 'border-yellow-500/30 shadow-lg shadow-yellow-500/5' : 'border-white/10 hover:border-white/20'}`}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  aria-expanded={openFaq === i}
+                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-yellow-500/50 rounded-2xl"
                 >
                   <div className="flex items-center gap-4 pr-4">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 ${openFaq === i ? 'bg-yellow-500/20' : 'bg-white/5'}`}>

@@ -11,11 +11,7 @@ export const metadata = {
   publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
-    canonical: "/about",
-    languages: {
-      'en-IN': '/about',
-      'hi-IN': '/about',
-    },
+    canonical: "https://www.trivenicabs.in/about",
   },
   openGraph: {
     title: "About Us | Triveni Cabs - India's Most Trusted Cab Service",

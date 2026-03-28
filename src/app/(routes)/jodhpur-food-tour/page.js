@@ -19,9 +19,9 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jodhpur-food-tour',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Jodhpur Food Tour Guide' }],
+    images: [{ url: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg', width: 1200, height: 630, alt: 'Jodhpur Food Tour Guide' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Jodhpur Food Tour 2026 | By Locals', description: 'Jodhpur culinary guide. Mirchi Vada, Mawa Kachori, Rajasthani restaurants.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/taj-mahal-hero.jpg'] },
+  twitter: { card: 'summary_large_image', title: 'Jodhpur Food Tour 2026 | By Locals', description: 'Jodhpur culinary guide. Mirchi Vada, Mawa Kachori, Rajasthani restaurants.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

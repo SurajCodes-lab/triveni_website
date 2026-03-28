@@ -66,7 +66,7 @@ export default function SameDayTourClient({ tour }) {
           </div>
 
           {/* Main title with shimmer effect */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 leading-[0.9] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 leading-[0.9] tracking-tight">
             <span className="block">Same Day</span>
             <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300" style={{ backgroundSize: '200% auto', animation: 'shimmer 3s linear infinite' }}>{tour.destination} Tour</span>
           </h1>

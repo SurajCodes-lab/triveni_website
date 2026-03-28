@@ -4,10 +4,19 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/'],
+        disallow: ['/api/', '/admin/', '/_next/data/'],
       },
       {
-        userAgent: ['AhrefsBot', 'SemrushBot', 'MJ12bot', 'DotBot', 'BLEXBot'],
+        userAgent: 'Googlebot',
+        allow: '/',
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        crawlDelay: 2,
+      },
+      {
+        userAgent: ['MJ12bot', 'DotBot', 'BLEXBot', 'PetalBot'],
         disallow: '/',
       },
     ],

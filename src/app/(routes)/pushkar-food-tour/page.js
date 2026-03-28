@@ -10,8 +10,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/pushkar-food-tour' },
-  openGraph: { title: 'Pushkar Food Tour 2026 | Holy Lake Culinary Guide by Locals', description: 'Complete Pushkar food guide. Pure vegetarian holy city. Malpua, Dal Bati Churma, lakeside cafes, backpacker food culture.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/pushkar-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Pushkar Food Tour Guide' }] },
-  twitter: { card: 'summary_large_image', title: 'Pushkar Food Tour 2026 | By Locals', description: 'Pushkar culinary guide. Pure veg holy city food, lakeside dining & cafe culture.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/taj-mahal-hero.jpg'] },
+  openGraph: { title: 'Pushkar Food Tour 2026 | Holy Lake Culinary Guide by Locals', description: 'Complete Pushkar food guide. Pure vegetarian holy city. Malpua, Dal Bati Churma, lakeside cafes, backpacker food culture.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/pushkar-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg', width: 1200, height: 630, alt: 'Pushkar Food Tour Guide' }] },
+  twitter: { card: 'summary_large_image', title: 'Pushkar Food Tour 2026 | By Locals', description: 'Pushkar culinary guide. Pure veg holy city food, lakeside dining & cafe culture.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

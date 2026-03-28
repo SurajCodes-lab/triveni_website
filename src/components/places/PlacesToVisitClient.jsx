@@ -122,7 +122,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
             <span className="text-emerald-300 font-semibold text-sm tracking-wide">Explore {data.destinations.length}+ Destinations by Car</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white mb-6 leading-[1.05] max-w-4xl tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white mb-6 leading-[1.05] max-w-4xl tracking-tight">
             <span className="block text-white/90">Places to Visit</span>
             <span className="block">Near{' '}
               <span className="relative inline-block">

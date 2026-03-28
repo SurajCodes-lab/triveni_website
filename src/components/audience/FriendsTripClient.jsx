@@ -705,7 +705,9 @@ export default function FriendsTripClient({ data }) {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center gap-4 p-6 text-left cursor-pointer hover:bg-white/[0.03] transition-colors"
+                  aria-expanded={openFaq === i}
+                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
+                  className="w-full flex items-center gap-4 p-6 text-left cursor-pointer hover:bg-white/[0.03] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
                 >
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-sm font-bold transition-colors ${
                     openFaq === i

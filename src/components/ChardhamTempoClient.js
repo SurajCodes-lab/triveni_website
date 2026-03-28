@@ -385,12 +385,12 @@ export default function ChardhamTempoClient({ data }) {
                 <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">Start Your Sacred Journey Today</h2>
                 <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">Book early to ensure availability during peak Yatra season 2026.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="tel:+917668570551" className="bg-white text-orange-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-stone-100 transition-colors shadow-xl">
+                    <a href="tel:+917668570551" className="bg-white text-orange-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-stone-100 transition-colors shadow-xl">
                         Call +91-7668570551
-                    </Link>
-                    <Link href="https://wa.me/917668570551" className="bg-stone-900 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-black transition-colors shadow-xl">
+                    </a>
+                    <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="bg-stone-900 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-black transition-colors shadow-xl">
                         WhatsApp Booking
-                    </Link>
+                    </a>
                 </div>
             </section>
 
