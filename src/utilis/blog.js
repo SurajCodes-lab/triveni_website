@@ -1934,8 +1934,8 @@ export const travelBlogPosts = [
     keywords: ["delhi sightseeing", "places to visit in delhi", "delhi city tour", "delhi tourism", "red fort delhi", "qutub minar", "lotus temple", "india gate", "akshardham temple", "old delhi tour", "new delhi tourist places", "delhi darshan", "delhi travel guide", "things to do in delhi", "delhi one day tour", "best time to visit delhi", "delhi heritage walk", "shopping in delhi", "chandni chowk market", "humayun tomb"],
     featured: true,
     views: 1100,
-    metaTitle: "Delhi Sightseeing Guide 2026: Top 15 Places to Visit | Complete Itinerary",
-    metaDescription: "Discover the top 15 places to visit in Delhi with our 2026 sightseeing guide. Explore Red Fort, Qutub Minar, Akshardham & more. Plan your Delhi tour now!",
+    metaTitle: "Best Places to Visit in Delhi — Top 15 Sightseeing | 2026",
+    metaDescription: "Top 15 places to visit in Delhi: Red Fort, Qutub Minar, Akshardham, India Gate, Lotus Temple & more. Timings, entry fees, itinerary & travel tips.",
   },
   {
     id: 14,
@@ -2612,8 +2612,8 @@ export const travelBlogPosts = [
     keywords: ["ayodhya ram mandir", "ram mandir darshan", "how to reach ayodhya", "ayodhya travel guide 2026", "ram mandir timings", "ayodhya trip", "ayodhya tour package", "delhi to ayodhya", "lucknow to ayodhya", "ram janmabhoomi", "ayodhya temples", "best time to visit ayodhya", "ayodhya hotels", "ram mandir online booking", "ayodhya darshan", "ayodhya pilgrimage", "ayodhya yatra", "ram mandir architecture", "ayodhya nearby places", "varanasi ayodhya tour", "ayodhya prayagraj tour", "ayodhya religious tour", "tempo traveller ayodhya"],
     featured: true,
     views: 0,
-    metaTitle: "Ayodhya Ram Mandir Complete Travel Guide 2026 | Darshan Timings, How to Reach & Tips",
-    metaDescription: "Complete Ayodhya Ram Mandir travel guide 2026. Darshan timings, how to reach, best time to visit, nearby temples, hotels & travel tips. Plan your pilgrimage now!"
+    metaTitle: "Ayodhya Ram Mandir — Darshan Timings & Booking | 2026",
+    metaDescription: "Ram Mandir darshan 7 AM–11:30 PM, free entry. Online booking, dress code, how to reach Ayodhya. Nearby temples, hotels & pilgrimage tips.",
   },
 
   {
@@ -3432,8 +3432,8 @@ export const travelBlogPosts = [
     keywords: ["wedding car rental", "wedding car booking", "bridal car", "groom car", "baraat tempo traveller", "luxury wedding car", "BMW wedding car", "Mercedes wedding car", "Audi wedding car", "decorated wedding car", "wedding car decoration", "wedding car price", "baraat car", "wedding car delhi", "wedding car jaipur", "wedding car rental india 2026", "vintage wedding car", "wedding tempo", "shaadi car rental"],
     featured: true,
     views: 0,
-    metaTitle: "Wedding Car Rental India 2026 | Luxury BMW, Audi, Mercedes & Baraat Tempo",
-    metaDescription: "Complete guide to wedding car rental in India 2026. Book luxury BMW, Audi, Mercedes for bride/groom entry & decorated baraat tempo travellers. City-wise prices & tips!"
+    metaTitle: "Wedding Car Rental — Booking, Prices & Decoration | 2026",
+    metaDescription: "Book wedding cars from ₹7,000/day. BMW, Audi, Mercedes for bride entry. Decorated baraat tempo options. City-wise prices, tips & early booking discounts.",
   },
 
   {

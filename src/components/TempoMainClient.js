@@ -148,7 +148,7 @@ export default function TempoMainClient({ data, faqData }) {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mb-6"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
               Explore India with
               <br />
               <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
@@ -320,7 +320,7 @@ export default function TempoMainClient({ data, faqData }) {
                 <MapPin className="w-5 h-5 text-amber-600" />
                 <span className="text-amber-700 font-bold text-sm tracking-wider">SELECT YOUR STARTING POINT</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
                 Choose Your <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">City</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -491,7 +491,7 @@ export default function TempoMainClient({ data, faqData }) {
               <Car className="w-5 h-5 text-amber-400" />
               <span className="text-amber-400 font-bold text-sm tracking-wider">PREMIUM FLEET</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-4">
               Our <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Vehicle Range</span>
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto">
@@ -627,7 +627,7 @@ export default function TempoMainClient({ data, faqData }) {
               <Award className="w-5 h-5 text-green-600" />
               <span className="text-green-700 font-bold text-sm tracking-wider">WHY CHOOSE US</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               The <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Triveni</span> Advantage
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -714,7 +714,7 @@ export default function TempoMainClient({ data, faqData }) {
               <Compass className="w-5 h-5 text-blue-600" />
               <span className="text-blue-700 font-bold text-sm tracking-wider">FAQ</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
               Frequently Asked <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Questions</span>
             </h2>
           </motion.div>

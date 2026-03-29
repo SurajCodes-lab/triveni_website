@@ -134,12 +134,12 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           SAVINGS COMPARISON: Arrow-shaped directional cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">See Your Savings</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-3 tracking-tight">One-Way vs Round Trip</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">One-Way vs Round Trip</h2>
             <p className="text-white/40 mt-4 text-lg">{route.from} to {route.to} &mdash; {route.distance} via {route.highway}</p>
           </div>
 
@@ -195,11 +195,11 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           ROUTE OVERVIEW: Visual route map with animated path
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Route Details</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-3 tracking-tight">{route.from} to {route.to} Route</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">{route.from} to {route.to} Route</h2>
           </div>
 
           <div className="bg-white/[0.04] backdrop-blur-2xl rounded-3xl border border-white/10 p-8 md:p-12 shadow-2xl shadow-amber-500/5">
@@ -303,11 +303,11 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           HOW IT WORKS: Animated numbered steps with glow
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Easy Process</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-3 tracking-tight">Book in 4 Simple Steps</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">Book in 4 Simple Steps</h2>
           </div>
 
           <div className="space-y-0 relative">
@@ -341,12 +341,12 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           WHY ONE-WAY: Arrow-shaped directional benefit cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Why Choose One-Way</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-3 tracking-tight">Smart Travel, Smart Savings</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">Smart Travel, Smart Savings</h2>
             <p className="text-white/40 mt-4 text-lg max-w-xl mx-auto">Why pay for a return trip you will never take?</p>
           </div>
 
@@ -383,11 +383,11 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           FAQ: Expandable accordion with glow effects
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Common Questions</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-3 tracking-tight">{route.from} to {route.to} FAQs</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">{route.from} to {route.to} FAQs</h2>
           </div>
           <div className="space-y-3">
             {route.faqs.map((faq, i) => (
@@ -405,7 +405,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
                   <ChevronDown className={`w-5 h-5 text-amber-400 flex-shrink-0 mt-1 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-                  <p className="text-white/50 text-sm leading-relaxed px-6 pl-16">{faq.answer}</p>
+                  <p className="text-white/50 text-sm leading-relaxed px-4 md:px-6 pl-4 md:pl-16">{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -417,12 +417,12 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
           RELATED ROUTES: Arrow-directional link cards
          ═══════════════════════════════════════════════════════════════ */}
       {relatedRoutes.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/5 to-slate-950" />
           <div className="relative max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">More Routes</span>
-              <h2 className="text-4xl md:text-5xl font-black mt-3 tracking-tight">Related One-Way Routes</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">Related One-Way Routes</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {relatedRoutes.map((r, i) => (
@@ -458,9 +458,9 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           FINAL CTA: Bold savings banner with animated glow
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="relative bg-gradient-to-br from-amber-900/60 via-yellow-900/40 to-orange-900/50 rounded-[2.5rem] p-10 md:p-16 lg:p-20 text-center overflow-hidden border border-amber-500/20">
+          <div className="relative bg-gradient-to-br from-amber-900/60 via-yellow-900/40 to-orange-900/50 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 lg:p-20 text-center overflow-hidden border border-amber-500/20">
             {/* Animated glowing orbs */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/15 rounded-full blur-[120px] animate-pulse" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/15 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1.5s' }} />
@@ -472,7 +472,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes }) {
                 <span className="text-green-300 font-bold text-sm">Save {route.savings} on this route</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5 tracking-tight">
                 Book Your One-Way Cab
               </h2>
               <p className="text-white/50 mb-4 text-xl font-medium">

@@ -24,6 +24,7 @@ function HeroSection() {
         alt="Triveni Cabs Fleet - Premium Cars, SUVs, Buses and Tempo Travellers"
         fill
         priority
+        fetchPriority="high"
         className="object-cover object-center"
         sizes="100vw"
         quality={85}
@@ -514,7 +515,118 @@ function FinalSection() {
   );
 }
 
-// ─── Main Component — 5 Folds Only ──────────────────────────────────────────
+// ─── FOLD 6: International Travellers / NRI Section ────────────────────────
+function InternationalTravellersSection() {
+  return (
+    <section className="py-10 sm:py-14 bg-gradient-to-br from-amber-50 to-orange-50">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="text-center mb-8">
+          <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">International Guests</p>
+          <h2 className="text-2xl md:text-3xl font-black text-gray-900">Planning Your India Trip?</h2>
+          <p className="text-gray-600 text-sm mt-2 max-w-xl mx-auto">
+            Trusted by travellers from USA, UK, Canada, Australia &amp; UAE. WhatsApp us from anywhere in the world.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-amber-200/60 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center mb-3 shadow-md">
+              <Plane className="w-5 h-5 text-white" />
+            </div>
+            <h3 className="font-bold text-gray-900 mb-2">Airport Pickup</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Pre-book your airport taxi before you land. Driver waiting at arrival gate with name board. Delhi, Jaipur, Amritsar airports.
+            </p>
+            <Link href="/airport-service" className="text-amber-600 text-sm font-bold mt-3 inline-flex items-center gap-1 hover:gap-2 transition-all">
+              Book Airport Pickup <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-amber-200/60 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mb-3 shadow-md">
+              <MapPin className="w-5 h-5 text-white" />
+            </div>
+            <h3 className="font-bold text-gray-900 mb-2">Tour Packages</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Golden Triangle, Rajasthan, Kashmir, Himachal — all-inclusive packages with AC car, driver, and hotel assistance.
+            </p>
+            <Link href="/sightseeing" className="text-amber-600 text-sm font-bold mt-3 inline-flex items-center gap-1 hover:gap-2 transition-all">
+              Explore Tours <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-amber-200/60 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-3 shadow-md">
+              <MessageCircle className="w-5 h-5 text-white" />
+            </div>
+            <h3 className="font-bold text-gray-900 mb-2">WhatsApp Booking</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Message us on WhatsApp from any country. Get instant quotes, itinerary planning, and 24/7 support in English.
+            </p>
+            <a
+              href="https://wa.me/917668570551?text=Hi%2C%20I%27m%20planning%20a%20trip%20to%20India%20and%20need%20cab%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 text-sm font-bold mt-3 inline-flex items-center gap-1 hover:gap-2 transition-all"
+            >
+              WhatsApp Us <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <Link href="/sightseeing/golden-triangle" className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-100 hover:border-amber-200 hover:text-amber-700 transition-all">Golden Triangle Tour</Link>
+          <Link href="/varanasi" className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-100 hover:border-amber-200 hover:text-amber-700 transition-all">Varanasi Spiritual Tour</Link>
+          <Link href="/sightseeing" className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-100 hover:border-amber-200 hover:text-amber-700 transition-all">Rajasthan Heritage</Link>
+          <Link href="/tour-package/kashmir-tour" className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-100 hover:border-amber-200 hover:text-amber-700 transition-all">Kashmir Honeymoon</Link>
+          <Link href="/amritsar" className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-100 hover:border-amber-200 hover:text-amber-700 transition-all">Amritsar Sikh Heritage</Link>
+          <Link href="/tour-package/chardham-yatra-package" className="text-xs text-gray-500 bg-white px-3 py-1.5 rounded-full border border-gray-100 hover:border-amber-200 hover:text-amber-700 transition-all">Chardham Yatra</Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── FOLD 7: Trending Searches — Top GSC Keywords ──────────────────────────
+const TRENDING_LINKS = [
+  { label: 'Lotus Temple Timings', url: '/blog/lotus-temple-delhi-complete-guide-2026' },
+  { label: 'Golden Temple Guide', url: '/blog/golden-temple-amritsar-complete-guide-2026' },
+  { label: 'Akshardham Temple Delhi', url: '/blog/akshardham-temple-delhi-guide-2026' },
+  { label: 'Wedding Car Rental', url: '/wedding' },
+  { label: 'Manali Taxi Service', url: '/manali' },
+  { label: 'Chandigarh to Spiti Valley Bus', url: '/bus-routes/chandigarh-to-spiti-valley' },
+  { label: 'Taxi Service in Ghaziabad', url: '/ghaziabad' },
+  { label: 'Haridwar to Auli Bus', url: '/bus-routes/haridwar-to-auli' },
+  { label: 'Doli Car Booking', url: '/wedding/doli-car-rental' },
+  { label: 'BMW Wedding Car', url: '/wedding/cars/bmw-wedding-car' },
+];
+
+function TrendingSearchesSection() {
+  return (
+    <section className="py-10 sm:py-12 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex items-center gap-2 mb-5">
+          <Search className="w-5 h-5 text-amber-500" />
+          <h2 className="text-xl sm:text-2xl font-black text-gray-900">Trending on Triveni Cabs</h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          {TRENDING_LINKS.map((link, i) => (
+            <Link
+              key={i}
+              href={link.url}
+              className="p-3 bg-white rounded-xl border border-gray-100 hover:border-amber-200 hover:shadow-sm transition-all text-sm text-gray-700 hover:text-amber-700 font-medium flex items-center gap-2 group"
+            >
+              <ArrowRight className="w-3.5 h-3.5 text-amber-400 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Main Component ────────────────────────────────────────────────────────
 export default function NewHomeClient() {
   return (
     <>
@@ -523,6 +635,8 @@ export default function NewHomeClient() {
       <ServicesSection />
       <TrustSection />
       <FinalSection />
+      <InternationalTravellersSection />
+      <TrendingSearchesSection />
       <MobileStickyBar />
     </>
   );

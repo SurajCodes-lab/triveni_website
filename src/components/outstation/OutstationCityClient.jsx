@@ -106,7 +106,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
           </p>
 
           {/* CITY NAME — text-9xl */}
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-6 leading-none">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-none">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400">{cityData.city}</span>
           </h1>
 
@@ -153,7 +153,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
       {/* ═══════════════════════════════════════════════════════════════
           POPULAR ROUTES — Glass card grid
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-14 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950" />
         <div className="absolute top-0 left-[20%] w-64 h-64 bg-amber-600/8 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 right-[15%] w-72 h-72 bg-yellow-500/6 rounded-full blur-[140px]" />
@@ -231,7 +231,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
       {/* ═══════════════════════════════════════════════════════════════
           VEHICLE OPTIONS — 3 big glass fare cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-14 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="absolute top-[20%] right-[10%] w-80 h-80 bg-amber-500/8 rounded-full blur-[150px]" />
 
@@ -332,7 +332,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
       {/* ═══════════════════════════════════════════════════════════════
           ONE-WAY vs ROUND TRIP — Glass comparison panel
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-14 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950" />
         <div className="absolute bottom-[10%] left-[15%] w-64 h-64 bg-amber-500/8 rounded-full blur-[120px]" />
 
@@ -443,7 +443,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
       {/* ═══════════════════════════════════════════════════════════════
           BOOKING PROCESS — 3-step glass timeline
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-14 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/8 to-slate-950" />
         <div className="absolute top-[30%] left-[40%] w-56 h-56 bg-amber-500/6 rounded-full blur-[100px]" />
 
@@ -514,7 +514,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
       {/* ═══════════════════════════════════════════════════════════════
           WHY CHOOSE US — Trust signals
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-14 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950" />
         <div className="absolute bottom-[15%] right-[20%] w-72 h-72 bg-amber-500/6 rounded-full blur-[130px]" />
 
@@ -613,7 +613,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
       {/* ═══════════════════════════════════════════════════════════════
           FAQ SECTION — Accordion with glass style
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-14 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/30 to-slate-950" />
         <div className="absolute top-[20%] left-[10%] w-56 h-56 bg-amber-500/6 rounded-full blur-[110px]" />
 

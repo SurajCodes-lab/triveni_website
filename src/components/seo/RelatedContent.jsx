@@ -17,6 +17,7 @@ import {
   IndianRupee
 } from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
+import { BASE_URL } from '@/lib/seo/constants';
 
 /**
  * Related Content Component - Displays related internal links for SEO
@@ -61,8 +62,31 @@ export const PopularRoutes = ({
 
   const displayRoutes = routes.slice(0, limit);
 
+  // ItemList schema for internal link discovery by search engines
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: title || `Popular Routes from ${city}`,
+    numberOfItems: displayRoutes.length,
+    itemListElement: displayRoutes.map((route, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'TaxiService',
+        name: `${route.origin || city} to ${route.destination} Cab`,
+        url: `${BASE_URL}${route.url || route.href || ''}`,
+        ...(route.price ? { offers: { '@type': 'Offer', price: route.price, priceCurrency: 'INR' } } : {})
+      }
+    }))
+  };
+
   return (
     <section className={cn('py-8 md:py-12', className)} {...props}>
+      {/* ItemList Schema for route discovery */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <div className="container mx-auto px-4">
         <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
           {title || `Popular Routes from ${city}`}
@@ -378,8 +402,32 @@ export const QuickLinksGrid = ({
     6: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6'
   };
 
+  // ItemList schema for internal link discovery
+  const quickLinksSchema = title ? {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: title,
+    numberOfItems: links.length,
+    itemListElement: links.map((link, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'WebPage',
+        name: link.label || link.name,
+        url: `${BASE_URL}${link.url || link.href || ''}`
+      }
+    }))
+  } : null;
+
   return (
     <section className={cn('py-8 md:py-10', className)} {...props}>
+      {/* ItemList Schema for link discovery */}
+      {quickLinksSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(quickLinksSchema) }}
+        />
+      )}
       <div className="container mx-auto px-4">
         {title && (
           <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4">

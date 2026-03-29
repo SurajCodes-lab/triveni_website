@@ -107,7 +107,7 @@ export default function TripCostClient({ data }) {
               <Receipt className="w-12 h-12 text-amber-400" />
             </div>
             <div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-4">
                 <span className="shimmer-text">{data.destination}</span>
                 <br />
                 <span className="text-white/90">Trip Cost Guide</span>
@@ -183,7 +183,7 @@ export default function TripCostClient({ data }) {
             <Car className="w-4 h-4 text-amber-700" />
             <span className="text-xs font-bold text-amber-700 uppercase tracking-widest">Cab Fare Breakdown</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
             {data.origin} to {data.destination}
             <span className="block text-amber-600">Transportation Cost</span>
           </h2>
@@ -255,7 +255,7 @@ export default function TripCostClient({ data }) {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
               Itemized Trip
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-300">Expense Sheet</span>
             </h2>
@@ -330,7 +330,7 @@ export default function TripCostClient({ data }) {
 
           {/* Entry Fees Table */}
           <div className="bg-white/[0.06] backdrop-blur-xl rounded-3xl border border-amber-500/20 overflow-hidden">
-            <div className="flex items-center gap-3 px-7 py-5 border-b border-amber-500/10">
+            <div className="flex items-center gap-3 px-4 sm:px-7 py-4 sm:py-5 border-b border-amber-500/10">
               <div className="p-2.5 bg-rose-500/20 rounded-xl border border-rose-400/20">
                 <Ticket className="w-5 h-5 text-rose-400" />
               </div>
@@ -339,21 +339,21 @@ export default function TripCostClient({ data }) {
                 <p className="text-xs text-amber-400/60">Monument and attraction charges</p>
               </div>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto -mx-0">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-amber-500/10">
-                    <th className="text-left py-4 px-7 text-xs font-bold text-amber-400 uppercase tracking-widest">Attraction</th>
-                    <th className="text-right py-4 px-7 text-xs font-bold text-amber-400 uppercase tracking-widest">Indian</th>
-                    <th className="text-right py-4 px-7 text-xs font-bold text-amber-400 uppercase tracking-widest">Foreign</th>
+                    <th className="text-left py-3 sm:py-4 px-4 sm:px-7 text-xs font-bold text-amber-400 uppercase tracking-widest">Attraction</th>
+                    <th className="text-right py-3 sm:py-4 px-3 sm:px-7 text-xs font-bold text-amber-400 uppercase tracking-widest">Indian</th>
+                    <th className="text-right py-3 sm:py-4 px-3 sm:px-7 text-xs font-bold text-amber-400 uppercase tracking-widest">Foreign</th>
                   </tr>
                 </thead>
                 <tbody>
                   {data.entryFees.map((fee, idx) => (
                     <tr key={idx} className="border-b border-white/5 last:border-0 hover:bg-white/[0.03] transition-colors">
-                      <td className="py-4 px-7 text-white font-medium text-sm">{fee.place}</td>
-                      <td className="py-4 px-7 text-right text-amber-300 font-bold text-sm">{fee.indian}</td>
-                      <td className="py-4 px-7 text-right text-amber-200/60 text-sm">{fee.foreigner}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-7 text-white font-medium text-xs sm:text-sm">{fee.place}</td>
+                      <td className="py-3 sm:py-4 px-3 sm:px-7 text-right text-amber-300 font-bold text-xs sm:text-sm">{fee.indian}</td>
+                      <td className="py-3 sm:py-4 px-3 sm:px-7 text-right text-amber-200/60 text-xs sm:text-sm">{fee.foreigner}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -370,7 +370,7 @@ export default function TripCostClient({ data }) {
             <Percent className="w-4 h-4 text-amber-700" />
             <span className="text-xs font-bold text-amber-700 uppercase tracking-widest">Save Money</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
             Budget-Saving
             <span className="block text-amber-600">Pro Tips</span>
           </h2>
@@ -417,7 +417,7 @@ export default function TripCostClient({ data }) {
             <Star className="w-4 h-4 text-yellow-300 fill-yellow-300" />
             <span className="text-sm text-white/90 font-medium">Rated 4.9/5 by 5000+ Travelers</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-black text-white tracking-tight mb-4">
             Book Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-yellow-200">{data.destination}</span> Cab
           </h2>
           <p className="text-amber-200/80 text-lg mb-10 max-w-xl mx-auto">

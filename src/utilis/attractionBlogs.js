@@ -1250,7 +1250,7 @@ export const attractionBlogPosts = [
     ],
     attractionData: { location: "Amritsar, Punjab", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Early morning or evening" }, howToReach: { fromDelhi: "450 km by road", nearestAirport: "Amritsar Airport (11 km)", nearestRailway: "Amritsar Junction (2 km)" }, timeNeeded: "3-4 hours", coordinates: { latitude: 31.6200, longitude: 74.8765 } },
     image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2026-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Golden Temple Complete Guide 2026 - Timings, Langar & Tours", metaDescription: "Golden Temple Amritsar complete guide: history, free langar, timings, tours. Experience world's largest community kitchen!",
+    metaTitle: "Golden Temple Amritsar — Timings, Langar, Entry | 2026", metaDescription: "Golden Temple open 24 hours, free entry for all. Langar serves 100,000+ daily. How to reach, dress code, best time to visit & nearby places.",
     content: `
       <div class="blog-intro">
         <p>The <strong>Golden Temple (Harmandir Sahib)</strong>, the holiest shrine in Sikhism, stands as a beacon of spirituality, equality, and selfless service. This stunning golden monument in Amritsar welcomes over 100,000 visitors daily from all faiths, completely free of charge, 24 hours a day. Experience the world's largest community kitchen (langar) serving free meals to everyone, regardless of religion, caste, or creed. Our <a href="/sightseeing/amritsar-golden-temple-wagah-border-tour" class="text-blue-600 hover:underline font-semibold">Amritsar Golden Temple & Wagah Border Tour</a> offers a complete spiritual and cultural experience.</p>
@@ -3058,7 +3058,7 @@ export const attractionBlogPosts = [
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Lotus Temple & Delhi attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Lotus Temple Rd, Bahapur, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "9:00 AM", close: "5:30 PM", closedOn: "Monday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) or evening (4-5:30 PM)" }, howToReach: { fromNewDelhi: "10 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "Hazrat Nizamuddin (8 km)", nearestMetro: "Kalkaji Mandir Metro" }, timeNeeded: "45 min - 1 hour", coordinates: { latitude: 28.5535, longitude: 77.2588 } },
     image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Lotus Temple Delhi Guide 2026 - Timings & Tours", metaDescription: "Lotus Temple Delhi: stunning lotus-shaped Bahai Temple, peaceful meditation, modern architecture. Free entry!",
+    metaTitle: "Lotus Temple Delhi — Timings, Entry Free, Closed Day | 2026", metaDescription: "Lotus Temple open 9 AM–5:30 PM, closed Monday. Entry is free. 27 marble petals, Bahai worship. How to reach via Kalkaji Mandir Metro & tips.",
     content: `
       <div class="blog-intro">
         <p>The <strong>Lotus Temple</strong>, one of the most visited buildings in the world, is an architectural masterpiece that welcomes over 10,000 visitors daily. Shaped like a magnificent lotus flower with 27 free-standing marble petals, this Bahai House of Worship in New Delhi is open to people of all faiths, backgrounds, and beliefs. Experience serene meditation and marvel at award-winning architecture. Our <a href="/sightseeing/delhi-full-day-city-tour" class="text-blue-600 hover:underline font-semibold">Delhi Full Day City Tour</a> includes Lotus Temple along with other iconic Delhi attractions.</p>
@@ -7315,8 +7315,8 @@ export const attractionBlogPosts = [
     featured: false,
     views: 0,
 
-    metaTitle: "Jaigarh Fort Jaipur Guide 2026 - Jaivana Cannon, Timings, Entry Fee & Tours",
-    metaDescription: "Complete guide to Jaigarh Fort Jaipur - home to world's largest wheeled cannon Jaivana, underground tunnels to Amber Fort, royal armory museum & stunning Aravalli views.",
+    metaTitle: "Jaigarh Fort Jaipur — Timings, Entry Fee, History | 2026",
+    metaDescription: "Jaigarh Fort open 9 AM–4:30 PM. Entry ₹100 (Indian), ₹200 (Foreign). Jaivana cannon, Amber Fort tunnel, armory museum & Aravalli views.",
 
     content: `
       <div class="blog-intro">
@@ -10530,8 +10530,8 @@ export const attractionBlogPosts = [
     author: "Triveni Cabs Travel Team",
     featured: true,
     views: 850,
-    metaTitle: "Akshardham Temple Delhi Guide 2026: Timings, Shows & Entry Fee",
-    metaDescription: "Plan your visit to Akshardham Temple Delhi. Complete guide on timings, ticket prices, exhibitions, musical fountain show & dress code rules for 2026.",
+    metaTitle: "Akshardham Temple Delhi — Timings, Show & Entry | 2026",
+    metaDescription: "Akshardham open 9:30 AM–6:30 PM, closed Monday. Water show at 7:15 PM. Free temple entry, exhibition ₹170. Dress code, how to reach & visit tips.",
 
     content: `
       <div class="blog-intro">

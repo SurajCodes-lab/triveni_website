@@ -101,7 +101,7 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
             <button
               type="button"
               onClick={handleSwap}
-              className="p-2 rounded-full border border-gray-200 hover:border-[#FACF2D] hover:bg-[#FACF2D]/10 transition-all group"
+              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full border border-gray-200 hover:border-[#FACF2D] hover:bg-[#FACF2D]/10 transition-all group"
               title="Swap cities"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-[#d4ad00] transition-colors rotate-90 md:rotate-0">

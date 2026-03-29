@@ -66,7 +66,7 @@ export default function SameDayTourClient({ tour }) {
           </div>
 
           {/* Main title with shimmer effect */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 leading-[0.9] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[0.95] tracking-tight">
             <span className="block">Same Day</span>
             <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300" style={{ backgroundSize: '200% auto', animation: 'shimmer 3s linear infinite' }}>{tour.destination} Tour</span>
           </h1>
@@ -230,10 +230,10 @@ export default function SameDayTourClient({ tour }) {
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-6 tracking-wider uppercase border border-amber-200/50">
                 <Compass className="w-3.5 h-3.5" /> About This Tour
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-stone-900 mb-8 leading-tight tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 mb-8 leading-tight tracking-tight">
                 {tour.origin} to {tour.destination}{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-500">Same Day Tour</span>
-                <span className="block text-xl md:text-2xl font-medium text-stone-400 mt-2">by Private Car</span>
+                <span className="block text-lg sm:text-xl md:text-2xl font-medium text-stone-400 mt-2">by Private Car</span>
               </h2>
               <div className="space-y-6 text-stone-600 text-lg leading-relaxed">
                 {tour.description.split('\n\n').map((para, i) => (
@@ -261,7 +261,7 @@ export default function SameDayTourClient({ tour }) {
             <div className="inline-flex items-center gap-2 bg-amber-500/10 backdrop-blur-2xl text-amber-300 text-xs font-bold px-6 py-2 rounded-full mb-6 border border-amber-500/20 tracking-[0.25em] uppercase shadow-lg shadow-amber-500/5">
               <Clock className="w-3.5 h-3.5" /> Your Day Unfolds
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
               Detailed{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300">Itinerary</span>
             </h2>
@@ -336,7 +336,7 @@ export default function SameDayTourClient({ tour }) {
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-bold px-5 py-2 rounded-full mb-6 tracking-[0.25em] uppercase border border-amber-200/60">
               <IndianRupee className="w-3.5 h-3.5" /> Transparent Pricing
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-stone-900 mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-stone-900 mb-4 tracking-tight">
               Tour{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-500">Pricing</span>
             </h2>
@@ -416,7 +416,7 @@ export default function SameDayTourClient({ tour }) {
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-bold px-5 py-2 rounded-full mb-6 tracking-[0.25em] uppercase border border-amber-200/60">
               <Camera className="w-3.5 h-3.5" /> Sightseeing Highlights
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-stone-900 mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-stone-900 mb-4 tracking-tight">
               Places to{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-500">Visit</span>
             </h2>

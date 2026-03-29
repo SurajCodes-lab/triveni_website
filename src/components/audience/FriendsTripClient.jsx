@@ -167,7 +167,7 @@ export default function FriendsTripClient({ data }) {
           </div>
 
           {/* H1 with shimmer */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1] tracking-tight">
             {isBachelor
               ? <><span className="shimmer-gold">Bachelor Trip</span><br /><span className="text-white/90">North India Adventures</span></>
               : <><span className="text-white/90">Friends Trip to</span><br /><span className="shimmer-gold">{data.destination}</span></>

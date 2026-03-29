@@ -245,7 +245,7 @@ const BookingForm = ({ slug, packageInfo }) => {
                       </span>
                     </div>
                     {index < steps.length - 1 && (
-                      <div className="w-16 sm:w-32 h-1 mx-4 bg-gray-200" aria-hidden="true">
+                      <div className="w-8 sm:w-16 md:w-32 h-1 mx-1 sm:mx-2 md:mx-4 bg-gray-200" aria-hidden="true">
                         <motion.div
                           className="h-full bg-[#FACF2D]"
                           initial={{ width: 0 }}

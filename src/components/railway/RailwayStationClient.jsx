@@ -113,7 +113,7 @@ export default function RailwayStationClient({ station, slug }) {
         <div className="absolute top-[70%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-400/15 to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-20">
-          <div className="grid lg:grid-cols-5 gap-12 items-center">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
             {/* Left: Content (3 cols) */}
             <div className="lg:col-span-3">
               {/* Animated badge */}
@@ -123,7 +123,7 @@ export default function RailwayStationClient({ station, slug }) {
                 <span className="text-yellow-200 text-sm font-mono tracking-widest">{station.stationCode} STATION</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.9] tracking-tight">
                 {station.city}
                 <span className="block text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300 bg-clip-text shimmer-text"
                   style={{ backgroundImage: 'linear-gradient(90deg, #fbbf24, #fde68a, #f59e0b, #fbbf24)', backgroundSize: '200% 100%' }}>
@@ -222,7 +222,7 @@ export default function RailwayStationClient({ station, slug }) {
 
       {/* === TRUST BAR - Departure Board Style === */}
       <section className="py-10 px-4 border-b border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
             { icon: TrainFront, title: "Meet at Platform", desc: "Driver waits at exit", color: "from-amber-500 to-yellow-500" },
             { icon: Shield, title: "Fixed Fares", desc: "Zero surge pricing", color: "from-emerald-500 to-teal-500" },
@@ -243,13 +243,13 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === FARE TABLE - Ticket Window Display === */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-amber-500/20 tracking-widest uppercase">
               <IndianRupee className="w-3.5 h-3.5" /> Fare Chart
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Taxi Fares from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city}</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Transparent pricing. Tolls included. No hidden charges.</p>
@@ -308,14 +308,14 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === WHY BOOK - Feature Cards with Glow === */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/20 to-transparent" />
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-yellow-500/20 tracking-widest uppercase">
               <Sparkles className="w-3.5 h-3.5" /> Premium Service
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Why Book <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">With Us</span>
             </h2>
           </div>
@@ -345,13 +345,13 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === STATION INFO - Train-Ticket Split Cards === */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-amber-500/20 tracking-widest uppercase">
               <TrainFront className="w-3.5 h-3.5" /> Station Details
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               About <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.name}</span>
             </h2>
           </div>
@@ -470,14 +470,14 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === DESTINATIONS - Train Ticket Cards === */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/20 to-transparent" />
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-yellow-500/20 tracking-widest uppercase">
               <Route className="w-3.5 h-3.5" /> Popular Routes
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Popular Destinations from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city}</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Book a taxi to any destination. Fixed fares, AC vehicles, professional drivers.</p>
@@ -538,13 +538,13 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === HOW TO BOOK - Connected Timeline === */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-yellow-500/20 tracking-widest uppercase">
               <Zap className="w-3.5 h-3.5" /> Simple Process
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
               How to <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Book</span>
             </h2>
           </div>
@@ -574,7 +574,7 @@ export default function RailwayStationClient({ station, slug }) {
 
       {/* === SEO CONTENT - About This Station === */}
       {station.seoContent && station.seoContent.length > 0 && (
-        <section className="py-20 md:py-32 px-4">
+        <section className="py-14 md:py-20 lg:py-32 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-8 md:p-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-8">
@@ -591,14 +591,14 @@ export default function RailwayStationClient({ station, slug }) {
       )}
 
       {/* === TRAVEL TIPS - Card Grid === */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-950/15 to-transparent" />
         <div className="relative max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-orange-500/10 text-orange-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-orange-500/20 tracking-widest uppercase">
               Pro Tips
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
               Tips for <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city} Station</span>
             </h2>
           </div>
@@ -620,13 +620,13 @@ export default function RailwayStationClient({ station, slug }) {
       <SectionDivider color="violet" className="my-8" />
 
       {/* === FAQ - Expandable Accordion === */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-amber-500/20 tracking-widest uppercase">
               FAQs
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
               Common <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Questions</span>
             </h2>
           </div>
@@ -660,7 +660,7 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === CROSS-SERVICE LINKS === */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/15 to-transparent" />
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -694,7 +694,7 @@ export default function RailwayStationClient({ station, slug }) {
       </section>
 
       {/* === CROSS LINKS - Station Network Map === */}
-      <section className="py-20 md:py-32 px-4 border-t border-white/5">
+      <section className="py-14 md:py-20 lg:py-32 px-4 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">

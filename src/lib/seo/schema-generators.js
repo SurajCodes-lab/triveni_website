@@ -713,6 +713,85 @@ export function generateCompleteCityPageSchema(city, tours, breadcrumbItems, faq
   );
 }
 
+/**
+ * Generate Tempo Traveller Service schema with price range and AggregateRating
+ * Adds Service rich snippet for tempo routes in SERP
+ */
+export function generateTempoServiceSchema(origin, destination, price, seats) {
+  return generateServiceSchema({
+    name: `${origin} to ${destination} Tempo Traveller Service`,
+    slug: `tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`,
+    description: `Book ${seats}-seater AC tempo traveller from ${origin} to ${destination}. Professional drivers, pushback seats, GPS tracking. 4.9★ rated by 2,500+ groups.`,
+    serviceType: 'Tempo Traveller Rental',
+    price: price,
+    priceUnit: 'per trip',
+    areaServed: [
+      { '@type': 'City', name: origin },
+      { '@type': 'City', name: destination }
+    ],
+    image: `${BASE_URL}/images/tempo_hero_section.jpg`
+  });
+}
+
+/**
+ * Generate Bus Hire Service schema with price range and AggregateRating
+ * Adds Service rich snippet for bus routes in SERP
+ */
+export function generateBusServiceSchema(origin, destination, price, seats) {
+  return generateServiceSchema({
+    name: `${origin} to ${destination} Bus Hire Service`,
+    slug: `bus-routes/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`,
+    description: `Hire ${seats}-seater AC Volvo bus from ${origin} to ${destination}. Professional driver, entertainment system, 24/7 support. 4.9★ rated by 1,000+ groups.`,
+    serviceType: 'Bus Hire',
+    price: price,
+    priceUnit: 'per trip',
+    areaServed: [
+      { '@type': 'City', name: origin },
+      { '@type': 'City', name: destination }
+    ],
+    image: `${BASE_URL}/images/bus/hero_section_image.webp`
+  });
+}
+
+/**
+ * Generate Event Transportation Service schema with AggregateRating
+ * Adds Service rich snippet for event pages in SERP
+ */
+export function generateEventServiceSchema(eventType, city) {
+  const location = city || 'India';
+  const slug = city
+    ? `event-transportation-service/${city.toLowerCase().replace(/\s+/g, '-')}`
+    : `event-transportation-service/${eventType.toLowerCase().replace(/\s+/g, '-')}`;
+
+  return generateServiceSchema({
+    name: `${eventType} Transportation Service ${location}`,
+    slug: slug,
+    description: `Professional ${eventType.toLowerCase()} transportation in ${location}. Buses, tempos, luxury cars for groups. 500+ events served. 4.9★ rated.`,
+    serviceType: 'Event Transportation',
+    price: null,
+    areaServed: city ? { '@type': 'City', name: city } : { '@type': 'Country', name: 'India' },
+    image: `${BASE_URL}/images/events/event-transport.jpg`
+  });
+}
+
+/**
+ * Generate Corporate Transportation Service schema with AggregateRating
+ * Adds Service rich snippet for corporate pages in SERP
+ */
+export function generateCorporateServiceSchema(city, industry, useCase) {
+  const contextualPart = industry || useCase || 'Cab';
+  return generateServiceSchema({
+    name: `${city} Corporate ${contextualPart} Service`,
+    slug: `corporate-transportation-service/${city.toLowerCase().replace(/\s+/g, '-')}`,
+    description: `Corporate transportation in ${city} from ₹11/km. Dedicated fleet, monthly contracts, GPS tracking, 24/7 support. 500+ companies trust us.`,
+    serviceType: 'Corporate Transportation',
+    price: 11,
+    priceUnit: 'per km',
+    areaServed: { '@type': 'City', name: city },
+    image: `${BASE_URL}/images/corporate/corporate-transport.jpg`
+  });
+}
+
 // Helper function to calculate average rating
 function calculateAverageRating(reviews) {
   if (!reviews || reviews.length === 0) return AGGREGATE_RATING.ratingValue;
@@ -739,5 +818,9 @@ export default {
   combineSchemas,
   generateCompleteTourPageSchema,
   generateCompleteRoutePageSchema,
-  generateCompleteCityPageSchema
+  generateCompleteCityPageSchema,
+  generateTempoServiceSchema,
+  generateBusServiceSchema,
+  generateEventServiceSchema,
+  generateCorporateServiceSchema
 };

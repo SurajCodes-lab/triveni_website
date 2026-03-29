@@ -7,6 +7,7 @@ export const revalidate = false;
 export const dynamicParams = false;
 import { chardhamRoutes } from '@/utilis/chardhamData';
 import { generateTempoMetadata } from '@/lib/seo/metadata-factory';
+import { generateTempoServiceSchema } from '@/lib/seo/schema-generators';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import TempoCityClient from '@/components/TempoCityClient';
 import ChardhamTempoClient from '@/components/ChardhamTempoClient';
@@ -678,6 +679,11 @@ export default async function TempoTravellerRoutePage({ params }) {
         id="tempo-howto"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        id="tempo-service"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateTempoServiceSchema(originFormatted, destinationFormatted, '23', '12-26')) }}
       />
       <AEOHead pageType="tempo" data={{ url: `/tempo-traveller/${route}`, title: `Tempo Traveller ${originFormatted} to ${destinationFormatted}`, origin: originFormatted, destination: destinationFormatted, city: originFormatted }} />
       <DynamicTempoRoutesClient data={pageData} />

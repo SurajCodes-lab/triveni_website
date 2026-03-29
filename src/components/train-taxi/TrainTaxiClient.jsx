@@ -53,7 +53,7 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
             <span className="text-lg">🚂</span>
             <span className="text-cyan-300 font-semibold text-sm tracking-wide">Train + Taxi Combo</span>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 max-w-5xl">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight mb-4 max-w-5xl">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">{route.train.name}</span>
             <br /><span className="text-white">+ {route.city} Taxi</span>
           </h1>
@@ -93,9 +93,9 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
       </section>
 
       {/* TRAIN INFO */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">Train Details</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-center mb-16">Train Details</h2>
           <div className="glass-strong rounded-[2rem] p-8 md:p-12" data-snippet-type="direct-answer">
             <div className="key-info grid grid-cols-2 md:grid-cols-3 gap-8">
               <div><div className="text-xs text-cyan-400 uppercase tracking-wider font-bold mb-1">Train</div><div className="text-xl font-black">{route.train.name}</div></div>
@@ -114,10 +114,10 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
       </section>
 
       {/* TAXI PACKAGES */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.05),transparent_60%)]" />
         <div className="relative max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-4">Taxi Packages at {route.city}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-center mb-4">Taxi Packages at {route.city}</h2>
           <p className="text-white/40 text-center mb-16">Pre-booked cab waiting at station exit with your name board</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {route.taxiPackages.map((pkg, i) => (
@@ -142,9 +142,9 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">How It Works</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-center mb-16">How It Works</h2>
           <div className="space-y-6">
             {[
               { step: '1', title: 'Book Train on IRCTC', desc: `Book ${route.train.name} (${route.train.number}) on irctc.co.in. Share PNR with us.` },
@@ -162,9 +162,9 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
       </section>
 
       {/* FAQs */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-center mb-16">FAQs</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-center mb-16">FAQs</h2>
           <div className="space-y-4">
             {route.faqs.map((faq, i) => (
               <div key={i} className="glass-card rounded-2xl overflow-hidden hover:border-cyan-500/20 transition-all">
@@ -181,9 +181,9 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
 
       {/* RELATED */}
       {relatedRoutes && relatedRoutes.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-black text-center mb-16">More Train + Taxi Combos</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-center mb-12 md:mb-16">More Train + Taxi Combos</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedRoutes.map((rr, i) => (
                 <Link key={i} href={`/train-taxi/${rr.slug}`} className="glass-card glass-card-hover rounded-2xl p-6 block transition-all">
@@ -200,7 +200,7 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
       {/* FINAL CTA */}
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-6">Book Station Pickup</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-6">Book Station Pickup</h2>
           <p className="text-white/40 text-lg mb-10">Pre-booked taxi for {route.train.name} passengers at {route.city}. From ₹{cheapest}.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+917668570551" className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:scale-105 transition-all"><Phone className="w-5 h-5" /> Call: 7668570551</a>

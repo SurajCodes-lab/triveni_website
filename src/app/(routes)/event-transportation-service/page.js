@@ -38,8 +38,8 @@ import {
 export const revalidate = false;
 
 export const metadata = {
-  title: 'Event Transportation Services | Wedding, Corporate & Festival Transport | Triveni Cabs',
-  description: 'Premium event transportation services in Delhi NCR, Jaipur, Chandigarh, Agra & Dehradun. Wedding guest shuttles, baraat cars, corporate event buses, concert transport, religious pilgrimage. 500+ vehicles, 24/7 support. Get free quote: 7668570551.',
+  title: 'Event Transport India — Buses, Cabs 4.9★ | Free Quote',
+  description: 'Event transport for weddings, corporate meets & festivals. 500+ vehicles, 5 cities, 24/7 coordination. Get free quote.',
   keywords: [
     // Primary keywords
     'event transportation services',
@@ -91,8 +91,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Event Transportation Services India | Wedding & Corporate Transport | Triveni Cabs',
-    description: 'Book premium event transportation - weddings, corporate events, concerts, festivals. 500+ vehicles across Delhi, Jaipur, Chandigarh, Agra, Dehradun. 24/7 support.',
+    title: 'Event Transport India — Wedding, Corporate & Festival Buses & Cabs | Triveni Cabs',
+    description: 'Event transport for weddings, corporate meets & festivals. 500+ vehicles, 5 cities, 24/7 coordination. Get free quote.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/event-transportation-service',
@@ -108,8 +108,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Event Transportation Services | Triveni Cabs',
-    description: 'Wedding guest transport, corporate event buses, festival shuttles. 500+ vehicles, 5 cities. Call 7668570551.',
+    title: 'Event Transport India — Buses, Cabs 4.9★ | Free Quote',
+    description: 'Event transport for weddings, corporate meets & festivals. 500+ vehicles, 5 cities, 24/7 coordination. Get free quote.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']

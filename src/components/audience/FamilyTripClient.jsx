@@ -153,7 +153,7 @@ export default function FamilyTripClient({ data }) {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
             Family Trip to{' '}
             <span className="shimmer-amber">{data.destination}</span>
             <br />

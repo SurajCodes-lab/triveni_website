@@ -60,7 +60,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
             <span className="text-amber-400">{stand.name}</span>
           </nav>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               {/* Badge */}
               <div className="inline-flex items-center gap-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-8 backdrop-blur-sm">
@@ -68,12 +68,12 @@ export default function BusStandClient({ stand, slug, allStands }) {
                 <span className="text-amber-400 text-sm font-semibold tracking-wide uppercase">{stand.city} Bus Terminal</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
                 <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
                   {stand.name}
                 </span>
                 <br />
-                <span className="text-white text-3xl md:text-5xl font-bold">Cab &amp; Taxi Service</span>
+                <span className="text-white text-2xl sm:text-3xl md:text-5xl font-bold">Cab &amp; Taxi Service</span>
               </h1>
 
               <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-xl">
@@ -159,7 +159,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       <section className="relative border-y border-amber-500/10 bg-slate-900/80 backdrop-blur-sm">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-yellow-500/5" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
               { icon: Bus, label: 'Bus Operators', value: `${stand.busOperators.length}+ Lines` },
               { icon: Clock, label: 'Service', value: '24/7 Available' },
@@ -217,7 +217,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Fare Table Section - Route Board Style Cards */}
-      <section className="py-24">
+      <section className="py-14 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-6">
@@ -274,7 +274,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Bus Operators Section */}
-      <section className="py-24 relative">
+      <section className="py-14 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/15 to-slate-950" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -301,7 +301,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Why Choose Triveni - Premium Feature Cards */}
-      <section className="py-24">
+      <section className="py-14 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-6">
@@ -340,7 +340,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* How to Book - 4 Step Process */}
-      <section className="py-24 relative">
+      <section className="py-14 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/15 to-slate-950" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -350,7 +350,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
             <p className="text-gray-400 text-lg">4 simple steps to your comfortable ride from {stand.name}</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               { step: '01', title: 'Call or WhatsApp', desc: 'Reach us at 7668570551 with your bus arrival details, expected time, and your destination.', icon: Phone },
               { step: '02', title: 'Share Bus Details', desc: 'Tell us your bus number, operator name, expected arrival time, and exact drop location.', icon: Bus },
@@ -381,7 +381,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Major Routes Section */}
-      <section className="py-24">
+      <section className="py-14 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-6">
@@ -428,7 +428,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* SEO Content Section */}
-      <section className="py-24 relative">
+      <section className="py-14 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 p-8 md:p-12">
@@ -463,7 +463,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Travel Tips */}
-      <section className="py-24">
+      <section className="py-14 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
@@ -488,7 +488,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       <SectionDivider color="amber" className="my-8" />
 
       {/* FAQ Section */}
-      <section className="py-24 relative">
+      <section className="py-14 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -522,7 +522,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Cross-Service Links */}
-      <section className="py-24 relative">
+      <section className="py-14 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -532,7 +532,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
             <p className="text-gray-400 text-lg">Explore more ways to travel from {stand.city}</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { title: `${stand.city} Railway Station Taxi`, href: `/railway-station-taxi`, icon: Route, desc: 'Taxi service at railway stations' },
               { title: `${stand.city} Sightseeing Tours`, href: `/sightseeing/${stand.city.toLowerCase().replace(/\s+/g, '-')}`, icon: MapPin, desc: 'Explore tourist attractions' },
@@ -556,7 +556,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Other Bus Stand Taxi Services */}
-      <section className="py-24">
+      <section className="py-14 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
@@ -599,7 +599,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24">
+      <section className="py-14 md:py-20 lg:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl">
             <div className="absolute inset-0 bg-gradient-to-r from-amber-600 via-yellow-500 to-orange-500" />

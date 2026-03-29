@@ -81,36 +81,36 @@ const WeddingHero = () => {
 
         {/* Main Heading with Animation */}
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Crown className="w-10 h-10 md:w-12 md:h-12 text-[#FACF2D] animate-bounce" />
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
+          <div className="flex items-center justify-center gap-2 md:gap-3 mb-4">
+            <Crown className="w-8 h-8 md:w-12 md:h-12 text-[#FACF2D] animate-bounce hidden sm:block" />
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
               Wedding Car Rental India
             </h1>
-            <Crown className="w-10 h-10 md:w-12 md:h-12 text-[#FACF2D] animate-bounce" />
+            <Crown className="w-8 h-8 md:w-12 md:h-12 text-[#FACF2D] animate-bounce hidden sm:block" />
           </div>
 
-          <p className="text-xl md:text-3xl font-semibold text-gray-800 mb-4">
+          <p className="text-lg md:text-3xl font-semibold text-gray-800 mb-4">
             Make Your Wedding Journey <span className="text-[#FACF2D]">Unforgettable</span>
           </p>
 
-          <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="text-sm md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
             Luxury Wedding Cars • Premium Baraat Tempo Travellers • Professional Chauffeurs<br />
             BMW | Audi | Mercedes | Vintage Cars | Decorated Vehicles
           </p>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <div className="text-3xl font-bold text-[#FACF2D]">5000+</div>
-              <div className="text-sm text-gray-600">Vehicles</div>
+          <div className="grid grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto mb-8">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-lg">
+              <div className="text-2xl md:text-3xl font-bold text-[#FACF2D]">5000+</div>
+              <div className="text-xs md:text-sm text-gray-600">Vehicles</div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <div className="text-3xl font-bold text-pink-600">10000+</div>
-              <div className="text-sm text-gray-600">Happy Couples</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-lg">
+              <div className="text-2xl md:text-3xl font-bold text-pink-600">10000+</div>
+              <div className="text-xs md:text-sm text-gray-600">Happy Couples</div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <div className="text-3xl font-bold text-green-600">24/7</div>
-              <div className="text-sm text-gray-600">Support</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 md:p-4 shadow-lg">
+              <div className="text-2xl md:text-3xl font-bold text-green-600">24/7</div>
+              <div className="text-xs md:text-sm text-gray-600">Support</div>
             </div>
           </div>
 
@@ -161,7 +161,7 @@ const WeddingCarCollection = () => {
             <Heart className="w-5 h-5" />
             <span className="font-semibold">Our Wedding Car Collection</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
             Choose from our exclusive fleet to make your big day memorable
           </h2>
         </div>
@@ -370,7 +370,7 @@ const WhyChooseUs = () => {
             <span className="font-bold text-lg">Why Choose Triveni Cabs for Wedding Travel?</span>
             <Heart className="w-6 h-6 animate-pulse" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-pink-600 via-purple-600 to-[#FACF2D] bg-clip-text text-transparent">
             Making Your Wedding Journey Extraordinary
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -448,7 +448,7 @@ const WeddingServices = () => {
             <Gift className="w-5 h-5" />
             <span className="font-semibold">Complete Wedding Solutions</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
             Our <span className="text-[#FACF2D]">Wedding Services</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -514,7 +514,7 @@ const ServiceAreas = () => {
             <MapPin className="w-5 h-5" />
             <span className="font-semibold">Wedding Car Rental by City</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
             Book <span className="text-[#FACF2D]">City-Specific</span> Wedding Cars
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-8">
@@ -619,7 +619,7 @@ const PricingPackages = () => {
             <CreditCard className="w-5 h-5" />
             <span className="font-semibold">Affordable Wedding Packages</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
             Choose Your <span className="text-[#FACF2D]">Wedding Package</span>
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -713,7 +713,7 @@ const FinalCTA = () => {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <Crown className="w-16 h-16 mx-auto mb-6 animate-bounce" />
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6">
           Ready to Make Your Wedding Royal?
         </h2>
         <p className="text-xl md:text-2xl mb-8 opacity-90">

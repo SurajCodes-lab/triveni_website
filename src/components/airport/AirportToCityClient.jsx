@@ -52,7 +52,7 @@ export default function AirportToCityClient({ airport, city, distance, duration,
             <Plane className="w-4 h-4" /> Airport Transfer
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight">
             <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
               {airport}
             </span>

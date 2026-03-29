@@ -29,9 +29,10 @@ const FareCalculator = dynamic(() => import('@/components/calculator/FareCalcula
 
 // SEO Components
 import { FAQSection } from '@/components/seo/FAQSection';
-import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
+import { CrossServiceLinks, PopularRoutes, NearbyDestinations } from '@/components/seo/RelatedContent';
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { generateAirportFAQs } from '@/lib/seo/faq-generator';
-import { getNearbyDestinations } from '@/utilis/linkingHelper';
+import { getRelatedRoutes, getNearbyDestinations } from '@/utilis/linkingHelper';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function CityAirportServiceClient({ city, citySlug, cityTours = [] }) {
@@ -84,6 +85,9 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
       [name]: value
     }));
   };
+
+  // SEO internal linking data
+  const relatedRoutes = getRelatedRoutes(city.name);
 
   // Helper function to create route slug - handles multi-word city names
   const createRouteSlug = (cityName, destination) => {
@@ -182,10 +186,10 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             <div className="inline-block bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
               {city.airportCode} Airport Transfer
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               {city.name} Airport Taxi Service - Book {city.airport} Cab in 60 Seconds
             </h1>
-            <h2 className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
               24/7 Premium {city.name} Airport Transfer | Flight Tracking + On-Time Guarantee
             </h2>
             <p className="text-lg md:text-xl text-gray-200 mb-6 leading-relaxed">
@@ -239,6 +243,17 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             </span>
           </div>
         </div>
+      </div>
+
+      {/* SEO Breadcrumb */}
+      <div className="max-w-7xl mx-auto px-4 py-3">
+        <SEOBreadcrumb
+          items={[
+            { name: 'Airport Service', url: '/airport-service' },
+            { name: `${city.name} Airport`, url: '' }
+          ]}
+          variant="minimal"
+        />
       </div>
 
       {/* Features Section */}
@@ -730,6 +745,12 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
           </div>
         </div>
       </section>
+
+      {/* SEO: Popular Routes */}
+      <PopularRoutes city={city.name} routes={relatedRoutes} title={`Popular Routes from ${city.name}`} />
+
+      {/* SEO: Cross-Service Links */}
+      <CrossServiceLinks city={city.name} title={`More Services in ${city.name}`} />
     </div>
   );
 }

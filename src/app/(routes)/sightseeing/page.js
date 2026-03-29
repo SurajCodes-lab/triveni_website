@@ -9,7 +9,7 @@ export const revalidate = false;
 
 export const metadata = {
   title: 'Sightseeing Tours India 2026 | Taj Mahal ₹3,500 | Triveni',
-  description: 'Book sightseeing tours from Delhi: Taj Mahal ₹3,500, Jaipur ₹4,500, Golden Triangle ₹12,000. 50+ tours, AC cars, expert guides. 10,000+ happy tourists. Call 7668570551.',
+  description: 'Sightseeing tours: Taj Mahal ₹3,500, Jaipur ₹4,500, Golden Triangle ₹12K. AC cars, expert guides. 10,000+ tourists served. Book in 2 min.',
   keywords: 'sightseeing tours India, Taj Mahal tour from Delhi, same day Agra tour, Golden Triangle tour, Delhi city tour, Jaipur sightseeing, heritage tours India, day tour packages, guided city tours, book sightseeing tour online, private tours India, full day tour, Agra sightseeing, Varanasi tour, Triveni Cabs tours',
   alternates: {
     canonical: 'https://www.trivenicabs.in/sightseeing'

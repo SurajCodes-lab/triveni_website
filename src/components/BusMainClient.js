@@ -155,7 +155,7 @@ export default function BusMainClient({ data }) {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="hero-title text-3xl md:text-5xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
+                className="hero-title text-2xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
               >
                 22 to 56 Seater Coaches Across India
               </motion.div>
@@ -259,7 +259,7 @@ export default function BusMainClient({ data }) {
                 <span className="text-[#FACF2D] font-bold text-sm tracking-wider">OUR PREMIUM FLEET</span>
               </motion.div>
 
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6">
                 Our Luxury Bus Fleet <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">22 to 56 Seater Options</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -463,7 +463,7 @@ export default function BusMainClient({ data }) {
                 <span className="text-purple-600 font-bold text-sm tracking-wider">POPULAR ROUTES</span>
               </motion.div>
 
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6">
                 Popular Bus Routes <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Across India</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
@@ -662,7 +662,7 @@ export default function BusMainClient({ data }) {
                 <span className="text-green-600 font-bold text-sm tracking-wider">WHY CHOOSE US</span>
               </motion.div>
 
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6">
                 Why Choose Our <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Bus Rental Service</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -733,7 +733,7 @@ export default function BusMainClient({ data }) {
                 <Info className="w-5 h-5 text-[#FACF2D]" />
                 <span className="text-[#FACF2D] font-bold text-sm tracking-wider">ADDITIONAL INFORMATION</span>
               </motion.div>
-              <h2 className="text-3xl md:text-4xl font-black mb-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4">
                 Transparent Bus Hire <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Pricing & Terms</span>
               </h2>
               <p className="text-lg text-gray-400">Clear bus rental rates with no hidden charges - pay only for distance traveled and driver allowance</p>
@@ -792,7 +792,7 @@ export default function BusMainClient({ data }) {
                 <span className="text-blue-600 font-bold text-sm tracking-wider">FREQUENTLY ASKED QUESTIONS</span>
               </motion.div>
 
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4">
                 Bus Rental <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">FAQs</span>
               </h2>
               <p className="text-lg text-gray-600">Everything you need to know about our luxury bus hire services</p>
@@ -889,7 +889,7 @@ export default function BusMainClient({ data }) {
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 200 }}
             >
-              <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black mb-6">
                 Ready to Start Your Journey?
               </h2>
               <p className="text-lg text-gray-800 mb-12 font-semibold">

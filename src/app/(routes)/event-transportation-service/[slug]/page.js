@@ -6,6 +6,7 @@ import {
   getEventTypeBySlug,
   getAllEventTypes
 } from '@/utilis/eventTransportData';
+import { generateEventServiceSchema, generateBreadcrumbSchema } from '@/lib/seo/schema-generators';
 import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
@@ -102,28 +103,8 @@ export default async function EventTypePage({ params }) {
   const allEventTypes = getAllEventTypes();
   const otherEventTypes = allEventTypes.filter(e => e.slug !== slug).slice(0, 4);
 
-  // Schema markup
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": eventType.title,
-    "name": eventType.name,
-    "description": eventType.description,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Triveni Cabs",
-      "telephone": "+91-7668570551",
-      "email": "cabstriveni@gmail.com",
-      "url": "https://www.trivenicabs.in"
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Delhi" },
-      { "@type": "City", "name": "Jaipur" },
-      { "@type": "City", "name": "Chandigarh" },
-      { "@type": "City", "name": "Agra" },
-      { "@type": "City", "name": "Dehradun" }
-    ]
-  };
+  // Schema markup — use centralized generators for Service and Breadcrumb
+  const serviceSchema = generateEventServiceSchema(eventType.name);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -135,15 +116,11 @@ export default async function EventTypePage({ params }) {
     }))
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
-      { "@type": "ListItem", "position": 2, "name": "Event Transportation", "item": "https://www.trivenicabs.in/event-transportation-service" },
-      { "@type": "ListItem", "position": 3, "name": eventType.name, "item": `https://www.trivenicabs.in/event-transportation-service/${slug}` }
-    ]
-  };
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Event Transportation', url: '/event-transportation-service' },
+    { name: eventType.name, url: `/event-transportation-service/${slug}` }
+  ]);
 
   return (
     <>

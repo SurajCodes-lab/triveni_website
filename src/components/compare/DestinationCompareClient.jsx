@@ -122,13 +122,13 @@ export default function DestinationCompareClient({ data }) {
           </div>
 
           {/* VS Visual */}
-          <div className="flex items-center justify-center gap-6 md:gap-12 mb-10">
+          <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-12 mb-10">
             {/* Dest 1 */}
-            <div className="text-center split-card-blue">
-              <div className="relative w-28 h-28 md:w-40 md:h-40 mx-auto mb-4">
+            <div className="text-center split-card-blue min-w-0">
+              <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40 mx-auto mb-4">
                 <div className="absolute inset-0 bg-blue-500/20 rounded-3xl border-2 border-blue-400/30 backdrop-blur-xl" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-5xl md:text-7xl font-black text-blue-400">{data.dest1.name.charAt(0)}</span>
+                  <span className="text-3xl sm:text-5xl md:text-7xl font-black text-blue-400">{data.dest1.name.charAt(0)}</span>
                 </div>
                 {/* Rating Badge */}
                 <div className="absolute -bottom-2 -right-2 bg-blue-500 rounded-xl px-2.5 py-1 flex items-center gap-1 shadow-lg shadow-blue-500/30">
@@ -136,14 +136,14 @@ export default function DestinationCompareClient({ data }) {
                   <span className="text-white text-xs font-black">{data.dest1.rating}</span>
                 </div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-black shimmer-blue mb-1">{data.dest1.name}</h2>
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-black shimmer-blue mb-1">{data.dest1.name}</h2>
               <p className="text-blue-300/60 text-sm">{data.dest1.distanceFromDelhi} from Delhi</p>
             </div>
 
             {/* VS Badge */}
             <div className="flex-shrink-0">
-              <div className="vs-badge relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                <span className="text-3xl md:text-4xl font-black text-white drop-shadow-lg">VS</span>
+              <div className="vs-badge relative w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                <span className="text-xl sm:text-3xl md:text-4xl font-black text-white drop-shadow-lg">VS</span>
                 {/* Ring */}
                 <div className="absolute inset-[-4px] rounded-full border-2 border-white/20" />
                 <div className="absolute inset-[-8px] rounded-full border border-white/10" />
@@ -151,11 +151,11 @@ export default function DestinationCompareClient({ data }) {
             </div>
 
             {/* Dest 2 */}
-            <div className="text-center split-card-orange">
-              <div className="relative w-28 h-28 md:w-40 md:h-40 mx-auto mb-4">
+            <div className="text-center split-card-orange min-w-0">
+              <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40 mx-auto mb-4">
                 <div className="absolute inset-0 bg-orange-500/20 rounded-3xl border-2 border-orange-400/30 backdrop-blur-xl" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-5xl md:text-7xl font-black text-orange-400">{data.dest2.name.charAt(0)}</span>
+                  <span className="text-3xl sm:text-5xl md:text-7xl font-black text-orange-400">{data.dest2.name.charAt(0)}</span>
                 </div>
                 {/* Rating Badge */}
                 <div className="absolute -bottom-2 -right-2 bg-orange-500 rounded-xl px-2.5 py-1 flex items-center gap-1 shadow-lg shadow-orange-500/30">
@@ -163,7 +163,7 @@ export default function DestinationCompareClient({ data }) {
                   <span className="text-white text-xs font-black">{data.dest2.rating}</span>
                 </div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-black shimmer-orange mb-1">{data.dest2.name}</h2>
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-black shimmer-orange mb-1">{data.dest2.name}</h2>
               <p className="text-orange-300/60 text-sm">{data.dest2.distanceFromDelhi} from Delhi</p>
             </div>
           </div>
@@ -293,19 +293,20 @@ export default function DestinationCompareClient({ data }) {
             </h2>
           </div>
 
-          <div className="bg-white/[0.06] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
+          <div className="overflow-x-auto -mx-4 px-4">
+          <div className="bg-white/[0.06] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden min-w-[600px]">
             {/* Table Header */}
             <div className="grid grid-cols-4 border-b border-white/10">
-              <div className="py-5 px-6">
+              <div className="py-4 md:py-5 px-4 md:px-6">
                 <span className="text-xs font-bold text-white/40 uppercase tracking-widest">Category</span>
               </div>
-              <div className="py-5 px-4 text-center border-l border-white/5">
-                <span className="text-sm font-black text-blue-400">{data.dest1.name}</span>
+              <div className="py-4 md:py-5 px-3 md:px-4 text-center border-l border-white/5">
+                <span className="text-xs md:text-sm font-black text-blue-400">{data.dest1.name}</span>
               </div>
-              <div className="py-5 px-4 text-center border-l border-white/5">
-                <span className="text-sm font-black text-orange-400">{data.dest2.name}</span>
+              <div className="py-4 md:py-5 px-3 md:px-4 text-center border-l border-white/5">
+                <span className="text-xs md:text-sm font-black text-orange-400">{data.dest2.name}</span>
               </div>
-              <div className="py-5 px-4 text-center border-l border-white/5">
+              <div className="py-4 md:py-5 px-3 md:px-4 text-center border-l border-white/5">
                 <span className="text-xs font-bold text-white/40 uppercase tracking-widest">Winner</span>
               </div>
             </div>
@@ -315,24 +316,24 @@ export default function DestinationCompareClient({ data }) {
               <div key={idx} className={`grid grid-cols-4 border-b border-white/5 last:border-0 ${
                 point.winner === 'tie' ? '' : isDest1Winner(point.winner) ? 'winner-row-blue' : 'winner-row-orange'
               } hover:bg-white/[0.03] transition-colors`}>
-                <div className="py-4 px-6 flex items-center">
-                  <span className="text-sm font-bold text-white/80">{point.category}</span>
+                <div className="py-3 md:py-4 px-4 md:px-6 flex items-center">
+                  <span className="text-xs md:text-sm font-bold text-white/80">{point.category}</span>
                 </div>
-                <div className={`py-4 px-4 text-center border-l border-white/5 flex items-center justify-center ${
+                <div className={`py-3 md:py-4 px-3 md:px-4 text-center border-l border-white/5 flex items-center justify-center ${
                   isDest1Winner(point.winner) ? 'text-blue-300 font-black' : 'text-white/50'
                 }`}>
-                  <span className="text-sm">{point.dest1}</span>
+                  <span className="text-xs md:text-sm">{point.dest1}</span>
                 </div>
-                <div className={`py-4 px-4 text-center border-l border-white/5 flex items-center justify-center ${
+                <div className={`py-3 md:py-4 px-3 md:px-4 text-center border-l border-white/5 flex items-center justify-center ${
                   !isDest1Winner(point.winner) && point.winner !== 'tie' ? 'text-orange-300 font-black' : 'text-white/50'
                 }`}>
-                  <span className="text-sm">{point.dest2}</span>
+                  <span className="text-xs md:text-sm">{point.dest2}</span>
                 </div>
-                <div className="py-4 px-4 text-center border-l border-white/5 flex items-center justify-center">
+                <div className="py-3 md:py-4 px-3 md:px-4 text-center border-l border-white/5 flex items-center justify-center">
                   {point.winner === 'tie' ? (
-                    <span className="text-[10px] font-black bg-white/10 text-white/60 px-3 py-1 rounded-full uppercase tracking-wider">Draw</span>
+                    <span className="text-[10px] font-black bg-white/10 text-white/60 px-2 md:px-3 py-1 rounded-full uppercase tracking-wider">Draw</span>
                   ) : (
-                    <span className={`text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider ${
+                    <span className={`text-[10px] font-black px-2 md:px-3 py-1 rounded-full uppercase tracking-wider ${
                       isDest1Winner(point.winner)
                         ? 'bg-blue-500/20 text-blue-300 border border-blue-500/20'
                         : 'bg-orange-500/20 text-orange-300 border border-orange-500/20'
@@ -343,6 +344,7 @@ export default function DestinationCompareClient({ data }) {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </section>
@@ -382,7 +384,7 @@ export default function DestinationCompareClient({ data }) {
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black text-white tracking-tight mb-4">
               Book Your Trip Now
             </h2>
             <p className="text-white/70 text-lg max-w-xl mx-auto">

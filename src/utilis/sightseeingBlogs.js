@@ -5047,8 +5047,8 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Ayodhya Ram Mandir 2026: Complete Darshan Guide - Timings, Booking, Tips | Triveni Cabs",
-    metaDescription: "Plan your Ram Mandir darshan with our complete 2026 Ayodhya guide. Temple timings, online booking, dress code, nearby temples & travel tips for pilgrims."
+    metaTitle: "Ayodhya Ram Mandir — Darshan Timings & Booking | 2026",
+    metaDescription: "Ram Mandir darshan 7 AM–11:30 PM, free entry. Online booking, dress code, how to reach Ayodhya. Nearby temples, hotels & pilgrimage tips.",
   },
 
   // Blog 12: Nainital Lake District Guide
@@ -7073,8 +7073,8 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Vaishno Devi 2026: Complete Yatra Guide - Route, Helicopter, Darshan Tips | Triveni Cabs",
-    metaDescription: "Plan your Vaishno Devi pilgrimage with our complete 2026 guide. Trek routes, helicopter booking, pony options, darshan timings & essential yatra tips."
+    metaTitle: "Vaishno Devi Yatra — Route, Helicopter, Darshan | 2026",
+    metaDescription: "Vaishno Devi trek 13 km from Katra. Helicopter ₹1,800 one-way. Darshan open 24 hrs. Pony, palki options. Registration, best time & packing tips.",
   },
 
   // Blog 16: Group Travel & Tempo Traveller Complete Guide
@@ -8303,8 +8303,8 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "15 Best Honeymoon Destinations in North India 2026 | Romantic Getaways & Packages | Triveni Cabs",
-    metaDescription: "Plan your dream honeymoon in North India! From Kashmir houseboats to Udaipur palaces - discover romantic destinations, budgets, itineraries & booking tips for 2026."
+    metaTitle: "Honeymoon Destinations in North India — Top 15 | 2026",
+    metaDescription: "Best honeymoon spots in North India: Kashmir, Manali, Udaipur, Shimla, Mussoorie. Couple-friendly stays, budgets from ₹15,000 & romantic itineraries.",
   },
 
   // Blog 18: Corporate Team Outing Guide

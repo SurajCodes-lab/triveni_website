@@ -7,8 +7,8 @@ export const revalidate = false;
 
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
-  title: 'Luxury Bus Hire 2026 | 22-56 Seater Volvo from ₹35/km | Book Now',
-  description: 'Hire luxury buses from Delhi: 22 seater ₹35/km, 35 seater ₹45/km, 56 seater Volvo ₹55/km. Perfect for weddings, corporate, pilgrimages. AC + entertainment. Call 7668570551.',
+  title: 'Bus Hire India ₹35/km — 22-56 Seater AC 4.9★ | Book Now',
+  description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
   alternates: {
     canonical: 'https://www.trivenicabs.in/bus-routes'
   },
@@ -33,8 +33,8 @@ export const metadata = {
     address: true
   },
   openGraph: {
-    title: 'Big Groups, Bigger Adventures! Luxury Bus Hire 22-56 Seater | Triveni Cabs',
-    description: '🚌 22-56 seater Volvo & AC buses | Corporate • Weddings • Tours • Perfect for large groups. GPS tracking, professional drivers, reclining seats, entertainment systems. Book now!',
+    title: 'Bus Hire India ₹35/km — 22-56 Seater Volvo AC for Groups | Triveni Cabs',
+    description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
     url: 'https://www.trivenicabs.in/bus-routes',
     type: 'website',
     locale: 'en_IN',
@@ -50,8 +50,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Luxury Bus Hire for Groups | 22-56 Seater | Triveni Cabs',
-    description: '🚌 Volvo comfort • Reclining seats • Entertainment. Big groups travel better together! Book online now.',
+    title: 'Bus Hire India ₹35/km — 22-56 Seater AC 4.9★ | Book Now',
+    description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
     images: ['https://www.trivenicabs.in/images/bus/hero_section_image.webp']
   },
   robots: {

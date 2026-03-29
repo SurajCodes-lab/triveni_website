@@ -47,6 +47,7 @@ const ReligiousTourClient = ({ tour }) => {
             fill
             className="object-cover"
             priority
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60" />
           <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent" />

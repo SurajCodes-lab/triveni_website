@@ -198,7 +198,7 @@ export default function VehicleHireClient({ vehicle }) {
       <section className="py-10 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-950/30 via-slate-900/40 to-amber-950/30" />
         <div className="relative max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {[
               { icon: Users, label: "Passengers", value: typeof vehicle.seats === "number" ? `${vehicle.seats} Seats` : `${vehicle.seats} Seats` },
               { icon: Fuel, label: "Fuel Type", value: vehicle.fuelType },
@@ -226,7 +226,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Transparent Rates</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(to right, #f59e0b, #94a3b8, #f59e0b)" }}
@@ -316,7 +316,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Equipped For Comfort</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #cbd5e1, #f59e0b, #cbd5e1)" }}>
                 Vehicle Features
               </span>
@@ -348,7 +348,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Route Pricing</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #f59e0b, #e2e8f0, #f59e0b)" }}>
                 Popular Routes &amp; Fares
               </span>
@@ -356,29 +356,29 @@ export default function VehicleHireClient({ vehicle }) {
             <p className="text-gray-400 mt-4">Estimated fares for {vehicle.name}</p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto overflow-x-auto -mx-4 px-4">
             {/* Table header */}
-            <div className="grid grid-cols-3 gap-4 px-6 py-3 mb-2 text-xs font-bold uppercase tracking-[0.15em] text-gray-500">
+            <div className="grid grid-cols-3 gap-2 md:gap-4 px-4 md:px-6 py-3 mb-2 text-xs font-bold uppercase tracking-[0.15em] text-gray-500 min-w-[360px]">
               <div>Route</div>
               <div className="text-center">Distance</div>
               <div className="text-right">Fare</div>
             </div>
             {/* Table rows - car dashboard instrument style */}
-            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden divide-y divide-white/5">
+            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden divide-y divide-white/5 min-w-[360px]">
               {vehicle.popularRoutes.map((route, i) => (
                 <div
                   key={i}
-                  className="group grid grid-cols-3 gap-4 px-6 py-4 hover:bg-amber-500/5 transition-all duration-300"
+                  className="group grid grid-cols-3 gap-2 md:gap-4 px-4 md:px-6 py-3 md:py-4 hover:bg-amber-500/5 transition-all duration-300"
                 >
-                  <div className="text-gray-300 font-medium flex items-center gap-3 text-sm">
+                  <div className="text-gray-300 font-medium flex items-center gap-2 md:gap-3 text-xs md:text-sm min-w-0">
                     <div className="w-2 h-2 rounded-full bg-amber-500/50 group-hover:bg-amber-400 transition-colors flex-shrink-0" />
-                    {route.route}
+                    <span className="truncate">{route.route}</span>
                   </div>
-                  <div className="text-gray-500 text-center text-sm flex items-center justify-center gap-1">
-                    <Navigation className="w-3 h-3 text-slate-600" />
+                  <div className="text-gray-500 text-center text-xs md:text-sm flex items-center justify-center gap-1">
+                    <Navigation className="w-3 h-3 text-slate-600 flex-shrink-0" />
                     {route.distance}
                   </div>
-                  <div className="text-amber-400 font-bold text-right text-sm group-hover:text-amber-300 transition-colors">{route.price}</div>
+                  <div className="text-amber-400 font-bold text-right text-xs md:text-sm group-hover:text-amber-300 transition-colors">{route.price}</div>
                 </div>
               ))}
             </div>
@@ -395,7 +395,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Ideal Use Cases</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #cbd5e1, #f59e0b, #cbd5e1)" }}>
                 Who Should Book This Vehicle?
               </span>
@@ -420,7 +420,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Under The Hood</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #f59e0b, #e2e8f0, #f59e0b)" }}>
                 Technical Specifications
               </span>
@@ -451,7 +451,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Simple Process</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #cbd5e1, #f59e0b, #cbd5e1)" }}>
                 How to Book
               </span>
@@ -493,7 +493,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Why Choose This Vehicle</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #f59e0b, #e2e8f0, #f59e0b)" }}>
                 About {vehicle.name} Rental
               </span>
@@ -516,7 +516,7 @@ export default function VehicleHireClient({ vehicle }) {
           <div className="relative max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Alternatives</span>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
                 <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #cbd5e1, #f59e0b, #cbd5e1)" }}>
                   Compare With Similar Vehicles
                 </span>
@@ -548,7 +548,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">Got Questions?</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(to right, #f59e0b, #e2e8f0, #f59e0b)" }}>
                 Frequently Asked Questions
               </span>

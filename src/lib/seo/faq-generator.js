@@ -440,6 +440,56 @@ export function getFAQsByPageType(pageType, data) {
   return generator(data);
 }
 
+/**
+ * Generate FAQs for blog posts — contextual based on city, tags, and category
+ * These help blog pages earn FAQ rich snippets in SERP
+ */
+export function generateBlogFAQs({ city, title, tags = [], category }) {
+  const faqs = [];
+
+  if (city) {
+    faqs.push({
+      question: `How can I book a cab in ${city}?`,
+      answer: `You can book a cab in ${city} with ${COMPANY_INFO.name} by calling ${COMPANY_INFO.phone.display}, WhatsApp at ${COMPANY_INFO.phone.whatsapp}, or using our website booking form. We offer AC sedan, SUV, and tempo traveller options starting at ₹${PRICING.sedan.minPrice}/km. All bookings confirmed within 2 minutes.`
+    });
+    faqs.push({
+      question: `What are the best tourist places to visit in ${city}?`,
+      answer: `${city} has many must-visit attractions. ${COMPANY_INFO.name} offers guided sightseeing tours covering all major spots with AC vehicle and expert driver. Check our ${city} tour packages starting from ₹2,499 for a full-day tour.`
+    });
+    faqs.push({
+      question: `Is taxi service available 24/7 in ${city}?`,
+      answer: `Yes, ${COMPANY_INFO.name} provides 24/7 taxi service in ${city} for airport transfers, local trips, and outstation travel. Our verified drivers and AC vehicles ensure safe, comfortable travel at any hour. Call ${COMPANY_INFO.phone.display} for instant booking.`
+    });
+  }
+
+  if (tags.includes('food') || tags.includes('restaurant') || category === 'food') {
+    faqs.push({
+      question: `Can I hire a cab for a food tour${city ? ` in ${city}` : ''}?`,
+      answer: `Absolutely! ${COMPANY_INFO.name} offers customizable food tour packages${city ? ` in ${city}` : ''}. Our drivers know the best local eateries and street food spots. Book an AC sedan from ₹${PRICING.sedan.minPrice}/km for a comfortable food exploration.`
+    });
+  }
+
+  if (tags.includes('shopping') || category === 'shopping') {
+    faqs.push({
+      question: `Can I book a cab for shopping trips${city ? ` in ${city}` : ''}?`,
+      answer: `Yes, ${COMPANY_INFO.name} provides comfortable AC cabs for shopping trips${city ? ` across ${city}` : ''}. Our drivers can wait at each stop while you shop. Hourly packages and full-day rentals available. Call ${COMPANY_INFO.phone.display}.`
+    });
+  }
+
+  // Always add generic travel booking FAQ
+  faqs.push({
+    question: `Why choose ${COMPANY_INFO.name} for travel?`,
+    answer: `${COMPANY_INFO.name} is rated 4.9★ by 10,000+ travellers. We offer AC vehicles, verified drivers, transparent pricing with no hidden charges, 24/7 availability, and GPS-tracked rides. Trusted by families, corporates, and tourists across 50+ cities in India.`
+  });
+
+  faqs.push({
+    question: `What types of vehicles does ${COMPANY_INFO.name} offer?`,
+    answer: `We offer AC Sedan (Swift Dzire, Toyota Etios), SUV (Toyota Innova, Ertiga), Tempo Traveller (12-26 seater), and luxury buses. All vehicles are sanitized, well-maintained, and equipped with GPS tracking. Choose based on your group size and budget.`
+  });
+
+  return faqs.slice(0, 5);
+}
+
 export default {
   generateRouteFAQs,
   generateTourFAQs,
@@ -452,5 +502,6 @@ export default {
   generateTempoTravellerFAQs,
   generateBusFAQs,
   generateAttractionCityFAQs,
+  generateBlogFAQs,
   getFAQsByPageType
 };

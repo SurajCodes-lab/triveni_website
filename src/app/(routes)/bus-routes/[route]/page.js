@@ -7,6 +7,7 @@ export const revalidate = false;
 export const dynamicParams = false;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
 import { generateBusMetadata } from '@/lib/seo/metadata-factory';
+import { generateBusServiceSchema } from '@/lib/seo/schema-generators';
 import AEOHead from '@/components/seo/AEOHead';
 
 // Viewport export (moved from metadata for Next.js 15 compatibility)
@@ -408,6 +409,10 @@ export default async function BusRoutePage({ params }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToBookSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBusServiceSchema(originFormatted, destinationFormatted, '30', '22-56')) }}
       />
       <AEOHead pageType="route" data={{ url: `/bus-routes/${route}`, title: `${originFormatted} to ${destinationFormatted} Bus Service` }} />
       <DynamicBusRoutesClient data={pageData} />

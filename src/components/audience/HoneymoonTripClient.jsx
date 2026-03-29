@@ -169,10 +169,10 @@ export default function HoneymoonTripClient({ data }) {
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="shimmer-rose">{data.destination}</span>
             <br />
-            <span className="text-white/90">Honeymoon by Car</span>
+            <span className="text-white/90 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Honeymoon by Car</span>
           </h1>
           <p className="text-lg sm:text-xl text-rose-200/90 mb-10 max-w-3xl leading-relaxed">
             {data.tagline}. Private {data.vehicle.type.toLowerCase()} ride with decorated car option and scenic stops.
@@ -780,11 +780,11 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
             Honeymoon Road Trips
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="shimmer-rose">Honeymoon Trip by Car</span>
             <br />
             <span className="text-white/90">from Delhi</span>
-          </h1>
+          </h2>
           <p className="text-lg sm:text-xl text-rose-200/90 mb-10 max-w-3xl leading-relaxed">
             {data.heroDescription}
           </p>

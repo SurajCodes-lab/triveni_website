@@ -94,9 +94,9 @@ const TouristAttractionsClient = ({ data }) => {
           </nav>
 
           <div className="text-center">
-            <div className="flex items-center justify-center mb-6">
-              <Camera className="w-12 h-12 text-yellow-400 mr-4" />
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
+            <div className="flex items-center justify-center mb-6 gap-3 md:gap-4">
+              <Camera className="w-8 h-8 md:w-12 md:h-12 text-yellow-400 flex-shrink-0" />
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                 Tourist Attractions in <span className="text-yellow-400">{city}</span>
               </h1>
             </div>
@@ -221,9 +221,9 @@ const TouristAttractionsClient = ({ data }) => {
 
         {/* Book Tempo CTA */}
         <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 md:p-12 text-center text-white mb-16">
-          <div className="flex items-center justify-center mb-6">
-            <Car className="w-12 h-12 mr-4" />
-            <h2 className="text-3xl md:text-4xl font-bold">
+          <div className="flex items-center justify-center gap-3 md:gap-4 mb-6">
+            <Car className="w-8 h-8 md:w-12 md:h-12 flex-shrink-0" />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
               Ready to Visit <span className="text-yellow-300">{city}?</span>
             </h2>
           </div>

@@ -197,7 +197,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
 
           {/* Massive city names: Origin ⟷ Destination */}
           <div className="flex items-center gap-4 sm:gap-6 mb-8 flex-wrap">
-            <span className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+            <span className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
               {route.origin}
             </span>
             <div className="flex items-center gap-2">
@@ -213,7 +213,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
                 <defs><linearGradient id="gold-road-r" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#d97706" /><stop offset="100%" stopColor="#b45309" /></linearGradient></defs>
               </svg>
             </div>
-            <span className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 drop-shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+            <span className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 drop-shadow-[0_0_30px_rgba(245,158,11,0.3)]">
               {route.destination}
             </span>
           </div>
@@ -266,14 +266,14 @@ export default function RoundTripClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           2. ROUND TRIP FARE CARDS — 3 glass cards with ribbon
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(245,158,11,0.06),transparent_60%)]" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-amber-400 font-semibold text-xs tracking-widest uppercase mb-5">
               <Car className="w-3.5 h-3.5" /> Round Trip Fares
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tight">
               {route.origin} &#10231; {route.destination}
             </h2>
             <p className="text-white/40 mt-4 text-lg">
@@ -302,7 +302,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
 
               <div className="glass rounded-2xl p-6 mb-6 text-center border border-white/[0.04] group-hover:border-amber-500/20 transition-all">
                 <div className="text-xs text-white/30 uppercase tracking-wider mb-1">Round Trip Fare</div>
-                <div className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-500">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-500">
                   {route.cabFares.sedan}
                 </div>
                 <div className="text-white/40 text-sm mt-2">&#8377;11/km &middot; {route.totalBillableKm} km billed</div>
@@ -361,7 +361,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
 
               <div className="glass rounded-2xl p-6 mb-6 text-center border border-white/[0.04] group-hover:border-orange-500/20 transition-all">
                 <div className="text-xs text-white/30 uppercase tracking-wider mb-1">Round Trip Fare</div>
-                <div className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-500">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-500">
                   {route.cabFares.suv}
                 </div>
                 <div className="text-white/40 text-sm mt-2">&#8377;14/km &middot; {route.totalBillableKm} km billed</div>
@@ -420,7 +420,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
 
               <div className="glass rounded-2xl p-6 mb-6 text-center border border-white/[0.04] group-hover:border-yellow-500/20 transition-all">
                 <div className="text-xs text-white/30 uppercase tracking-wider mb-1">Round Trip Fare</div>
-                <div className="text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500">
                   {route.cabFares.tempo}
                 </div>
                 <div className="text-white/40 text-sm mt-2">&#8377;20/km &middot; {route.totalBillableKm} km billed</div>
@@ -470,14 +470,14 @@ export default function RoundTripClient({ route, relatedRoutes }) {
           3. DAY-WISE ITINERARY — Glass timeline with day nodes
          ═══════════════════════════════════════════════════════════════ */}
       {route.suggestedItinerary && route.suggestedItinerary.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(245,158,11,0.05),transparent_60%)]" />
           <div className="relative max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <span className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-amber-400 font-semibold text-xs tracking-widest uppercase mb-5">
                 <Calendar className="w-3.5 h-3.5" /> Suggested Itinerary
               </span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tight">Day-by-Day Plan</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tight">Day-by-Day Plan</h2>
               <p className="text-white/40 mt-4 text-lg">
                 {route.origin} &#10231; {route.destination} &mdash; {tripDays === 1 ? 'Same Day Return' : `${tripDays} Days`}
               </p>
@@ -542,14 +542,14 @@ export default function RoundTripClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           4. INCLUSIONS vs EXCLUSIONS — Side-by-side glass panels
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(217,119,6,0.04),transparent_60%)]" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-orange-400 font-semibold text-xs tracking-widest uppercase mb-5">
               <Shield className="w-3.5 h-3.5" /> Full Transparency
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">Inclusions &amp; Exclusions</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tight">Inclusions &amp; Exclusions</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -614,14 +614,14 @@ export default function RoundTripClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           5. WHY ROUND TRIP? — 4 benefit glass cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.04),transparent_60%)]" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-yellow-400 font-semibold text-xs tracking-widest uppercase mb-5">
               <Sparkles className="w-3.5 h-3.5" /> The Smart Choice
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">Why Book a Round Trip?</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tight">Why Book a Round Trip?</h2>
             <p className="text-white/40 mt-4 text-lg">More comfort, more flexibility, better value</p>
           </div>
 
@@ -677,14 +677,14 @@ export default function RoundTripClient({ route, relatedRoutes }) {
           6. FAQ ACCORDION — Amber-themed glass accordion
          ═══════════════════════════════════════════════════════════════ */}
       {route.faqs && route.faqs.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.05),transparent_60%)]" />
           <div className="relative max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <span className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-amber-400 font-semibold text-xs tracking-widest uppercase mb-5">
                 <Zap className="w-3.5 h-3.5" /> Got Questions?
               </span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tight">Common Questions</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tight">Common Questions</h2>
               <p className="text-white/40 mt-4 text-lg">{route.origin} to {route.destination} round trip FAQs</p>
             </div>
 
@@ -732,7 +732,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
           7. RELATED ROUTES — Glass cards linking to other round trips
          ═══════════════════════════════════════════════════════════════ */}
       {relatedRoutes && relatedRoutes.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="relative max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <span className="inline-flex items-center gap-2 glass px-5 py-2.5 rounded-full text-amber-400 font-semibold text-xs tracking-widest uppercase mb-5">
@@ -801,7 +801,7 @@ export default function RoundTripClient({ route, relatedRoutes }) {
               <span className="text-xs font-bold text-amber-300 uppercase tracking-wider">Book Today</span>
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">Book Your Round Trip</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black mb-4 tracking-tight">Book Your Round Trip</h2>
             <p className="text-white/40 text-xl mb-3">
               {route.origin} &#10231; {route.destination} &middot; {route.totalRoundTripKm} km &middot; From{' '}
               <span className="text-amber-400 font-bold">{route.cabFares.sedan}</span>

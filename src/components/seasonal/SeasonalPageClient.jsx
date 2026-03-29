@@ -212,8 +212,8 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
 
           {/* Title */}
           <div className="mb-8">
-            <span className="text-5xl md:text-6xl mr-4">{t.emoji}</span>
-            <h1 className="inline text-4xl md:text-5xl lg:text-7xl font-black tracking-tight">
+            <span className="text-4xl md:text-5xl lg:text-6xl mr-3 md:mr-4">{t.emoji}</span>
+            <h1 className="inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight">
               <span className={`bg-clip-text text-transparent bg-gradient-to-r ${t.gradientFrom} ${t.gradientVia} ${t.gradientTo}`}>{title}</span>
             </h1>
           </div>
@@ -435,7 +435,7 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
         <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] ${t.bgGlow1} rounded-full blur-[200px] opacity-30`} />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <div className="text-5xl mb-6">{t.emoji}</div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6">Ready to Book Your Trip?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6">Ready to Book Your Trip?</h2>
           <p className="text-white/40 text-lg mb-10 max-w-2xl mx-auto">Get instant quotes, transparent pricing, and 24/7 support. Over 10,000 happy travelers trust Triveni Cabs.</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

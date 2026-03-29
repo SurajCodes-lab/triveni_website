@@ -44,6 +44,20 @@ const nextConfig = {
   // Strict mode for better development
   reactStrictMode: true,
 
+  // Redirect non-www to www for canonical URL consolidation
+  // GSC shows trivenicabs.in getting separate impressions from www.trivenicabs.in
+  // This splits ranking signals — consolidating to www via 301 redirect
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'trivenicabs.in' }],
+        destination: 'https://www.trivenicabs.in/:path*',
+        permanent: true, // 301 redirect — tells Google to consolidate
+      },
+    ];
+  },
+
   // Headers for caching, security, and performance
   async headers() {
     return [

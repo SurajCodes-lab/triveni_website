@@ -1,10 +1,16 @@
 /**
  * Metadata Factory - Generate CTR-optimized titles, descriptions, and metadata per page type
- * Ensures consistent SEO patterns across 750+ pages
+ * Ensures consistent SEO patterns across 1,900+ pages
  *
- * Title patterns use: Price + Trust signal (stars) + Brand
- * Description patterns use: What + Price + Trust signal + CTA
+ * CTR Title Formula: [Keyword] [Price] — [Benefit] [Trust Signal] | [CTA]
+ * Description Formula: [What you get] + [Price] + [Why trust us] + [Action trigger]
  * OG titles are DIFFERENT from page titles (longer, more emotional for social shares)
+ *
+ * Power words for CTR:
+ * - Urgency: 24/7, Instant, Same Day, Book Now, Today
+ * - Trust: Verified Drivers, AC Guaranteed, 4.9★, 10,000+ Trips
+ * - Value: Lowest Fare, Starting ₹, All Inclusive, No Hidden Cost
+ * - Specificity: AC Sedan, Innova, SUV, Airport Pickup, Door-to-Door
  */
 
 import {
@@ -18,17 +24,17 @@ import {
 
 /**
  * Generate route page metadata (A to B taxi)
- * Title: {Origin} to {Destination} Taxi @ ₹{price} — 4.9★ Rated
+ * CTR Formula: [Keyword] [Price] — [Benefit] [Trust] | [CTA]
  */
 export function generateRouteMetadata({ origin, destination, price, distance, duration, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Cab @ ₹${price} — 4.9★ Rated`);
-  const ogTitle = truncateOGTitle(`Book ${origin} to ${destination} Cab @ ₹${price} — Verified Drivers, AC Vehicles | Triveni Cabs`);
+  const title = truncateTitle(`${origin} to ${destination} Cab ₹${price} — AC, 24/7 4.9★ | Book Now`);
+  const ogTitle = truncateOGTitle(`Book ${origin} to ${destination} Cab ₹${price} — AC Sedan, Verified Drivers, 24/7 Pickup | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} cab & taxi from ₹${price}. ${distance} km, ${duration}. ` +
-    `AC sedan/SUV, one way & round trip. 4.9★ rated. Call 7668570551.`
+    `AC sedan ${origin} to ${destination} ₹${price}. ${distance}, ${duration}. ` +
+    `Verified driver, no hidden charges. 4.9★ by 10K+ travellers. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
-    `Book ${origin} to ${destination} cab at just ₹${price}. ${distance} km in ${duration}. ` +
+    `Book ${origin} to ${destination} cab at just ₹${price}. ${distance} in ${duration}. ` +
     `AC sedan/SUV, verified drivers, GPS tracking. 4.9★ rated, 10,000+ trips. Call now!`
   );
 
@@ -79,15 +85,15 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
 
 /**
  * Generate tour page metadata
- * Title: {TourName} @ ₹{price} ({duration}) — All Inclusive | Book Today
+ * CTR Formula: [Tour] [Price] — [Benefit] [Trust] | [CTA]
  */
 export function generateTourMetadata({ tourName, city, price, duration, slug, description: tourDesc, image }) {
-  const title = truncateTitle(`${tourName} @ ₹${price} (${duration}) — All Inclusive`);
-  const ogTitle = truncateOGTitle(`${tourName} @ ₹${price} — ${duration}, All Inclusive with AC Vehicle | Book Today`);
+  const title = truncateTitle(`${tourName} ₹${price} — AC Vehicle 4.9★ | Book Now`);
+  const ogTitle = truncateOGTitle(`${tourName} ₹${price} — ${duration}, All Inclusive AC Vehicle & Expert Guide | Book Today`);
   const description = truncateDescription(
     tourDesc ||
     `${tourName} at ₹${price}. ${duration}, AC vehicle, expert driver. ` +
-    `4.9★ rated, 10,000+ happy customers. Call 7668570551 to book now!`
+    `4.9★ by 10K+ travellers. No hidden cost. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
     `Book ${tourName} at just ₹${price}. ${duration} all-inclusive tour with AC vehicle & expert guide. ` +
@@ -142,14 +148,14 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
 
 /**
  * Generate sightseeing city page metadata
- * Title: {City} Tours — {n}+ Packages from ₹{price} | Triveni Cabs
+ * CTR Formula: [City Tours] [Price] — [Count] [Trust] | [CTA]
  */
 export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, slug, heroImage }) {
-  const title = truncateTitle(`${city} Tours — ${tourCount}+ Packages from ₹${lowestPrice} | Triveni Cabs`);
+  const title = truncateTitle(`${city} Tours from ₹${lowestPrice} — ${tourCount}+ Packages 4.9★ | Book`);
   const ogTitle = truncateOGTitle(`Explore ${city} — ${tourCount}+ Sightseeing Tours from ₹${lowestPrice} | Expert Guides | Triveni Cabs`);
   const description = truncateDescription(
-    `${city} sightseeing: ${tourCount}+ tour packages from ₹${lowestPrice}. ` +
-    `Heritage, day trips, AC vehicle. 4.9★ rated, 10,000+ tourists served. Call 7668570551.`
+    `${city} sightseeing: ${tourCount}+ packages from ₹${lowestPrice}. AC vehicle, expert guide. ` +
+    `4.9★ by 10K+ tourists. No hidden cost. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
     `Discover ${tourCount}+ sightseeing tours in ${city} starting ₹${lowestPrice}. ` +
@@ -203,15 +209,15 @@ export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, 
 
 /**
  * Generate city hub page metadata
- * Title: {City} Cab Service — Lowest Fare ₹{minPrice}/km | Triveni Cabs
+ * CTR Formula: [City Cab] [Price] — [Benefit] [Trust] | [CTA]
  */
 export function generateCityHubMetadata({ city, minPrice = 11, services = [], slug }) {
-  const title = truncateTitle(`${city} Taxi Service — Cab from ₹${minPrice}/km | Triveni Cabs`);
+  const title = truncateTitle(`${city} Cab ₹${minPrice}/km — AC, Verified Drivers 4.9★ | Book Now`);
   const ogTitle = truncateOGTitle(`${city} Taxi & Cab Service — From ₹${minPrice}/km, AC Vehicles, Verified Drivers | Triveni Cabs`);
   const serviceList = services.length > 0 ? services.slice(0, 3).join(', ') : 'Airport, Local, Outstation';
   const description = truncateDescription(
-    `Best taxi service in ${city} from ₹${minPrice}/km. ${serviceList} cab booking. ` +
-    `AC sedan/SUV, verified drivers. 4.9★ rated. Call 7668570551.`
+    `${city} cab from ₹${minPrice}/km. ${serviceList}. AC sedan/SUV, verified drivers. ` +
+    `4.9★ by 10K+ travellers. No hidden charges. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
     `Book ${city} taxi & cab service from just ₹${minPrice}/km. ${serviceList} with AC vehicles & verified drivers. ` +
@@ -265,14 +271,14 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
 
 /**
  * Generate airport service page metadata
- * Title: {City} Airport Taxi @ ₹{price} — Flight Tracking | 24/7
+ * CTR Formula: [Airport Cab] [Price] — [Benefit] [Trust] | [CTA]
  */
 export function generateAirportMetadata({ city, airportName, price, slug }) {
-  const title = truncateTitle(`${city} Airport Cab ₹${price} — Terminal Pickup | No Wait`);
+  const title = truncateTitle(`${city} Airport Cab ₹${price} — 24/7 Pickup 4.9★ | Book Now`);
   const ogTitle = truncateOGTitle(`${city} Airport Cab ₹${price} — Meet at Terminal Exit, AC Vehicle, No Hidden Charges | Triveni Cabs`);
   const description = truncateDescription(
-    `${city} airport taxi from ₹${price}. ${airportName} terminal pickup at exit gate. ` +
-    `AC sedan/SUV, no surge, no hidden charges. 4.9★ rated. Call 7668570551.`
+    `${city} airport cab ₹${price}. ${airportName} terminal pickup, AC sedan/SUV. ` +
+    `No surge, fixed fare. 4.9★ by 10K+ travellers. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
     `Book ${city} airport cab from ₹${price}. ${airportName} terminal pickup, meet at exit gate. ` +
@@ -375,13 +381,14 @@ export function generateBlogMetadata({ title: blogTitle, excerpt, slug, image, a
 
 /**
  * Generate corporate service page metadata
+ * CTR Formula: [Corporate Cab] [Price] — [Benefit] [Trust] | [CTA]
  */
 export function generateCorporateMetadata({ city, industry, useCase, slug }) {
-  const contextualPart = industry || useCase || 'Cab Service';
-  const title = truncateTitle(`${city} Corporate ${contextualPart} — Monthly Plans Available`);
+  const contextualPart = industry || useCase || 'Cab';
+  const title = truncateTitle(`${city} Corporate ${contextualPart} ₹11/km — 4.9★ | Get Quote`);
   const description = truncateDescription(
-    `${city} corporate transportation from ₹11/km. ${contextualPart} with dedicated fleet. ` +
-    `Monthly contracts, GPS tracking, 24/7 support. Call ${COMPANY_INFO.phone.display}!`
+    `${city} corporate cab ₹11/km. Dedicated fleet, GPS, 24/7 support. ` +
+    `500+ companies trust us. 4.9★ rated. Get free quote now.`
   );
 
   return {
@@ -484,13 +491,14 @@ export function generateWeddingMetadata({ city, slug }) {
 
 /**
  * Generate event transportation page metadata
+ * CTR Formula: [Event Transport] [Location] — [Trust] | [CTA]
  */
 export function generateEventMetadata({ eventType, city, slug }) {
   const location = city ? `${city}` : 'India';
-  const title = truncateTitle(`${eventType} Transportation ${location} — Group Travel Experts`);
+  const title = truncateTitle(`${eventType} Transport ${location} — 500+ Events 4.9★ | Quote`);
   const description = truncateDescription(
-    `${eventType} transportation in ${location}. Buses, tempos, luxury cars available. ` +
-    `Trusted by 500+ events. Get free quote: ${COMPANY_INFO.phone.display}!`
+    `${eventType} transport in ${location}. Buses, tempos, luxury cars. ` +
+    `500+ events served. 4.9★ rated. Get free quote today.`
   );
 
   return {
@@ -533,14 +541,14 @@ export function generateEventMetadata({ eventType, city, slug }) {
 
 /**
  * Generate tempo traveller route page metadata
- * Title: {Origin} to {Destination} Tempo Traveller | ₹{price} AC
+ * CTR Formula: [Route Tempo] [Price] — [Seats] [Trust] | [CTA]
  */
 export function generateTempoMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Tempo Traveller | ₹${price} AC`);
+  const title = truncateTitle(`${origin} to ${destination} Tempo ₹${price} — ${seats} Seater AC 4.9★ | Book`);
   const ogTitle = truncateOGTitle(`${origin} to ${destination} Tempo Traveller from ₹${price} — ${seats} Seater AC | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} tempo traveller from ₹${price}. ${seats}-seater AC with pushback seats. ` +
-    `4.9★ rated, 2,500+ groups served. Call 7668570551.`
+    `${origin} to ${destination} tempo ₹${price}. ${seats}-seater AC, pushback seats. ` +
+    `4.9★ by 2,500+ groups. No hidden cost. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
     `Book ${origin} to ${destination} tempo traveller at ₹${price}. ${seats}-seater AC, professional drivers, GPS tracking. ` +
@@ -594,14 +602,14 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
 
 /**
  * Generate bus route page metadata
- * Title: {Origin} to {Destination} Bus @ ₹{price} — AC {seats} Seater
+ * CTR Formula: [Route Bus] [Price] — [Seats] [Trust] | [CTA]
  */
 export function generateBusMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Bus — Route, Fare & Hire ₹${price}`);
+  const title = truncateTitle(`${origin} to ${destination} Bus ₹${price} — ${seats} Seater AC 4.9★ | Book`);
   const ogTitle = truncateOGTitle(`${origin} to ${destination} Bus Route & Hire from ₹${price} — AC ${seats} Seater | Triveni Cabs`);
   const description = truncateDescription(
-    `${origin} to ${destination} bus route, fare & AC bus hire from ₹${price}. ${seats}-seater Volvo. ` +
-    `4.9★ rated, 1,000+ groups served. Call 7668570551.`
+    `${origin} to ${destination} bus hire ₹${price}. ${seats}-seater AC Volvo. ` +
+    `4.9★ by 1,000+ groups. Fixed fare, no hidden cost. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
     `${origin} to ${destination} bus route info & luxury bus hire from ₹${price}. ${seats}-seater AC Volvo. ` +
@@ -655,27 +663,40 @@ export function generateBusMetadata({ origin, destination, price, seats, slug })
 // ============= Helper Functions =============
 
 /**
- * Truncate title to max 60 characters
+ * Smart truncate at word boundary to avoid cutting mid-word
+ * Google truncates at ~60 chars for titles and ~155 for descriptions.
+ * Cutting mid-word looks unprofessional and kills CTR.
+ */
+function smartTruncate(text, maxLength) {
+  if (text.length <= maxLength) return text;
+  const cutoff = maxLength - 3; // Reserve 3 chars for '...'
+  const truncated = text.substring(0, cutoff);
+  const lastSpace = truncated.lastIndexOf(' ');
+  // If last space is too far back (>30% of text lost), hard-clip instead
+  return (lastSpace > cutoff * 0.6 ? truncated.substring(0, lastSpace) : truncated) + '...';
+}
+
+/**
+ * Truncate title to max 60 characters (Google SERP limit)
+ * Uses word-boundary truncation to avoid mid-word cuts
  */
 function truncateTitle(title) {
-  if (title.length <= 60) return title;
-  return title.substring(0, 57) + '...';
+  return smartTruncate(title, 60);
 }
 
 /**
  * Truncate OG title to max 95 characters (social shares can be longer)
  */
 function truncateOGTitle(title) {
-  if (title.length <= 95) return title;
-  return title.substring(0, 92) + '...';
+  return smartTruncate(title, 95);
 }
 
 /**
- * Truncate description to max 155 characters
+ * Truncate description to max 155 characters (Google SERP limit)
+ * Uses word-boundary truncation to avoid mid-word cuts
  */
 function truncateDescription(desc) {
-  if (desc.length <= 155) return desc;
-  return desc.substring(0, 152) + '...';
+  return smartTruncate(desc, 155);
 }
 
 /**

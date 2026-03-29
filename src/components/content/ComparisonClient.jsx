@@ -65,7 +65,8 @@ export default function ComparisonClient({ data }) {
             </h2>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
+          <div className="overflow-x-auto -mx-4 px-4">
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden min-w-[480px]">
             <div className="grid grid-cols-3">
               {/* Header Row */}
               <div className="p-4 md:p-6 bg-white/5 border-b border-white/10">
@@ -103,6 +104,7 @@ export default function ComparisonClient({ data }) {
                 </div>
               ))}
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -311,7 +313,7 @@ export default function ComparisonClient({ data }) {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'50\' height=\'50\' viewBox=\'0 0 50 50\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23000\' stroke-width=\'0.5\'%3E%3Crect width=\'50\' height=\'50\'/%3E%3C/g%3E%3C/svg%3E")' }} />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
             Need Help Choosing?
           </h2>
           <p className="text-black/70 text-lg mb-8 max-w-xl mx-auto">
@@ -354,12 +356,12 @@ export default function ComparisonClient({ data }) {
 
       {/* Bottom Breadcrumb */}
       <nav className="py-4 px-4 bg-slate-900 border-t border-white/5">
-        <div className="max-w-6xl mx-auto flex items-center gap-2 text-sm text-slate-500">
-          <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3" />
-          <Link href="/vehicles" className="hover:text-amber-400 transition-colors">Vehicles</Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-slate-300">{v1.name} vs {v2.name}</span>
+        <div className="max-w-6xl mx-auto flex items-center gap-2 text-sm text-slate-500 overflow-x-auto">
+          <Link href="/" className="hover:text-amber-400 transition-colors flex-shrink-0">Home</Link>
+          <ChevronRight className="w-3 h-3 flex-shrink-0" />
+          <Link href="/vehicles" className="hover:text-amber-400 transition-colors flex-shrink-0">Vehicles</Link>
+          <ChevronRight className="w-3 h-3 flex-shrink-0" />
+          <span className="text-slate-300 truncate">{v1.name} vs {v2.name}</span>
         </div>
       </nav>
     </div>

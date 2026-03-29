@@ -12,6 +12,9 @@ import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from "@/utilis/data";
 import { FAQSection } from '@/components/seo/FAQSection';
+import { CrossServiceLinks, PopularRoutes } from '@/components/seo/RelatedContent';
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import { getRelatedRoutes } from '@/utilis/linkingHelper';
 import dynamic from 'next/dynamic';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
@@ -757,10 +760,23 @@ export default function CityWeddingPageClient({ city, citySlug }) {
     window.scrollTo(0, 0);
   }, []);
 
+  // SEO internal linking data
+  const relatedRoutes = getRelatedRoutes(city.name);
+
   return (
     <>
       <div className="min-h-screen">
         <CityWeddingHero city={city} />
+        {/* SEO Breadcrumb */}
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <SEOBreadcrumb
+            items={[
+              { name: 'Wedding Services', url: '/wedding' },
+              { name: `${city.name} Wedding Cars`, url: '' }
+            ]}
+            variant="minimal"
+          />
+        </div>
         {/* Trust Strip */}
         <div className="bg-white border-b border-gray-100 py-3">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -834,6 +850,13 @@ export default function CityWeddingPageClient({ city, citySlug }) {
           </div>
         </section>
         <RelatedServices city={city} citySlug={citySlug} />
+
+        {/* SEO: Popular Routes */}
+        <PopularRoutes city={city.name} routes={relatedRoutes} title={`Popular Routes from ${city.name}`} />
+
+        {/* SEO: Cross-Service Links */}
+        <CrossServiceLinks city={city.name} title={`More Services in ${city.name}`} />
+
         <FinalCTA city={city} />
       </div>
 

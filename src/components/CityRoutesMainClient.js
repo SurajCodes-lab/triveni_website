@@ -261,6 +261,7 @@ export default function CityRoutesMainClient({ data }) {
             alt="Outstation Taxi Service India"
             fill
             priority
+            fetchPriority="high"
             className="object-cover opacity-40"
             sizes="100vw"
             placeholder="blur"
@@ -317,7 +318,7 @@ export default function CityRoutesMainClient({ data }) {
                 </div>
 
                 {/* Main Title */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
                   Outstation Taxi to
                   <span className="block text-[#FACF2D]">500+ Destinations</span>
                 </h1>

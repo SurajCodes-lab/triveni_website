@@ -169,10 +169,10 @@ export default function AirportServiceClient({ faqData }) {
           </nav>
 
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               Airport Taxi Service India — 24/7 Pickup & Drop
             </h1>
-            <h2 className="text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
               24/7 Premium Airport Transfer Service | Flight Tracking + On-Time Guarantee
             </h2>
             <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
@@ -209,22 +209,22 @@ export default function AirportServiceClient({ faqData }) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-6">
               <TrendingUp className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
-              <div className="text-4xl font-bold text-gray-900 mb-2">10,000+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">10,000+</div>
               <div className="text-gray-600">Airport Transfers</div>
             </div>
             <div className="p-6">
               <Clock className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
-              <div className="text-4xl font-bold text-gray-900 mb-2">24/7</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">24/7</div>
               <div className="text-gray-600">Available Service</div>
             </div>
             <div className="p-6">
               <MapPin className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
-              <div className="text-4xl font-bold text-gray-900 mb-2">50+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">50+</div>
               <div className="text-gray-600">Cities Covered</div>
             </div>
             <div className="p-6">
               <Star className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
-              <div className="text-4xl font-bold text-gray-900 mb-2">4.8/5</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">4.8/5</div>
               <div className="text-gray-600">Customer Rating</div>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function AirportServiceClient({ faqData }) {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Why Choose Our Airport Taxi Service? Premium Features Included
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">

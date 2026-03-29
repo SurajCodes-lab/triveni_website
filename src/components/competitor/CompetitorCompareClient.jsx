@@ -83,12 +83,12 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
             <div className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" />
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-6 mb-8 flex-wrap">
-            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tight">Triveni Cabs</span>
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6 mb-8 flex-wrap">
+            <span className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tight">Triveni Cabs</span>
             <div className="flex items-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500 flex items-center justify-center text-2xl font-black text-white shadow-[0_0_40px_rgba(147,51,234,0.5)]">VS</div>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500 flex items-center justify-center text-xl sm:text-2xl font-black text-white shadow-[0_0_40px_rgba(147,51,234,0.5)]">VS</div>
             </div>
-            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-400">{competitor}</span>
+            <span className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-400 break-words">{competitor}</span>
           </div>
 
           <p className="text-lg md:text-xl text-white/50 mb-10 max-w-3xl leading-relaxed">{intro}</p>
@@ -131,8 +131,10 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
           </div>
 
           {/* Comparison header */}
-          <div className="comp-glass rounded-t-2xl border border-white/6 p-6">
-            <div className="grid grid-cols-3 gap-4 items-center">
+          <div className="overflow-x-auto -mx-4 px-4">
+          <div className="min-w-[540px]">
+          <div className="comp-glass rounded-t-2xl border border-white/6 p-4 md:p-6">
+            <div className="grid grid-cols-3 gap-3 md:gap-4 items-center">
               <div className="text-sm font-bold text-white/40 uppercase tracking-widest">Feature</div>
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-violet-500/20 px-4 py-2 rounded-xl border border-purple-500/30">
@@ -151,7 +153,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
           {/* Comparison rows */}
           <div className="border-x border-white/6">
             {features.map((f, i) => (
-              <div key={i} className={`grid grid-cols-3 gap-4 items-center p-6 border-b border-white/6 transition-all duration-300 hover:bg-white/[0.02] ${f.winner === 'triveni' ? 'bg-purple-500/[0.02]' : ''}`}>
+              <div key={i} className={`grid grid-cols-3 gap-3 md:gap-4 items-center p-4 md:p-6 border-b border-white/6 transition-all duration-300 hover:bg-white/[0.02] ${f.winner === 'triveni' ? 'bg-purple-500/[0.02]' : ''}`}>
                 <div>
                   <div className="text-white font-semibold text-sm">{f.feature}</div>
                   {f.note && <div className="text-white/40 text-xs mt-1">{f.note}</div>}
@@ -172,9 +174,9 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
           </div>
 
           {/* Bottom summary */}
-          <div className="comp-glass rounded-b-2xl border border-white/6 p-6">
-            <div className="grid grid-cols-3 gap-4 items-center">
-              <div className="text-sm font-bold text-white/40 uppercase tracking-widest">Winner</div>
+          <div className="comp-glass rounded-b-2xl border border-white/6 p-4 md:p-6">
+            <div className="grid grid-cols-3 gap-3 md:gap-4 items-center">
+              <div className="text-xs md:text-sm font-bold text-white/40 uppercase tracking-widest">Winner</div>
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-violet-500 px-6 py-2 rounded-xl text-white font-bold text-sm shadow-[0_0_20px_rgba(147,51,234,0.3)]">
                   <Trophy className="w-4 h-4" /> Triveni Cabs
@@ -182,6 +184,8 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
               </div>
               <div className="text-center text-white/40 text-sm">{competitor}</div>
             </div>
+          </div>
+          </div>
           </div>
         </div>
       </section>

@@ -3,9 +3,13 @@
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { getRelatedLinks } from '@/utilis/linkingHelper';
+import { getRelatedLinks, getRelatedRoutes, getMoneyPageLinks } from '@/utilis/linkingHelper';
 import { getLayoutComponent } from './layouts';
 import RelatedPosts from './RelatedPosts';
+import { FAQSection } from '@/components/seo/FAQSection';
+import { generateBlogFAQs } from '@/lib/seo/faq-generator';
+import { PopularRoutes, QuickLinksGrid } from '@/components/seo/RelatedContent';
+import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 
 // Loading placeholder for blog layouts
 const LayoutLoading = () => (
@@ -110,6 +114,11 @@ export default function BlogPostPageClient({ post }) {
   const relatedLinks = useMemo(() => {
     return getRelatedLinks(post);
   }, [post]);
+
+  // SEO: Generate FAQ, routes, and money page links
+  const blogFAQs = useMemo(() => generateBlogFAQs({ city: post?.city, title: post?.title, tags: post?.tags, category: post?.category }), [post?.city, post?.title, post?.tags, post?.category]);
+  const routes = useMemo(() => post?.city ? getRelatedRoutes(post.city) : [], [post?.city]);
+  const moneyLinks = useMemo(() => post?.city ? getMoneyPageLinks(post.city) : [], [post?.city]);
 
   // Determine which layout to use - 12 unique designs
   const layoutName = useMemo(() => {
@@ -239,6 +248,18 @@ export default function BlogPostPageClient({ post }) {
           __html: JSON.stringify(generateBreadcrumbSchema(post))
         }}
       />
+
+      {/* Visual Breadcrumb */}
+      <div className="max-w-5xl mx-auto px-4 pt-4">
+        <SEOBreadcrumb
+          items={[
+            { name: 'Blog', url: '/blog' },
+            { name: post.title }
+          ]}
+          variant="minimal"
+        />
+      </div>
+
       <LayoutComponent post={post} relatedLinks={relatedLinks} />
 
       {/* Related Service Pages — SEO internal linking based on blog category */}
@@ -311,6 +332,15 @@ export default function BlogPostPageClient({ post }) {
           </div>
         </div>
       </section>
+
+      {/* SEO: FAQ Section */}
+      {blogFAQs.length > 0 && <FAQSection faqs={blogFAQs} title="Common Travel Questions" />}
+
+      {/* SEO: Popular Routes */}
+      {routes.length > 0 && <PopularRoutes city={post.city} routes={routes} />}
+
+      {/* SEO: Quick Links Grid */}
+      {moneyLinks.length > 0 && <QuickLinksGrid title="Quick Links" links={moneyLinks} />}
 
       {/* Related Posts */}
       <div className="max-w-5xl mx-auto px-4">

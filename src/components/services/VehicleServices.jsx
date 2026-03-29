@@ -70,7 +70,7 @@ const VehicleServices = () => {
           {currentIndex > 0 && (
             <button
               onClick={prevSlide}
-              className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-2 rounded-full text-white hover:bg-yellow-400 hover:text-black transition-all"
+              className="absolute -left-1 md:-left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-2.5 sm:p-2 rounded-full text-white hover:bg-yellow-400 hover:text-black transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Previous vehicles"
             >
               <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
@@ -80,7 +80,7 @@ const VehicleServices = () => {
           {currentIndex < maxIndex && (
             <button
               onClick={nextSlide}
-              className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-2 rounded-full text-white hover:bg-yellow-400 hover:text-black transition-all"
+              className="absolute -right-1 md:-right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 p-2.5 sm:p-2 rounded-full text-white hover:bg-yellow-400 hover:text-black transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Next vehicles"
             >
               <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />

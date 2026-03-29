@@ -724,7 +724,7 @@ Please confirm my booking. Thank you!`;
                   </div>
                   <h3 className="text-xl font-black text-gray-900 leading-tight">{faq.question}</h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed pl-16">{faq.answer}</p>
+                <p className="text-gray-600 leading-relaxed pl-0 md:pl-16 text-sm md:text-base">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

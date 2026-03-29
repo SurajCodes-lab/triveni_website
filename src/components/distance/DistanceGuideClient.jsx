@@ -123,8 +123,8 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           </div>
 
           {/* Massive city names with neon glow */}
-          <div className="flex items-center gap-4 sm:gap-6 mb-8 flex-wrap">
-            <span className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">{route.origin}</span>
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 mb-8 flex-wrap">
+            <span className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tight drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">{route.origin}</span>
             <div className="flex items-center gap-2">
               {/* Animated dashed road line */}
               <svg width="80" height="4" className="hidden sm:block">
@@ -139,7 +139,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
                 <defs><linearGradient id="road-gradient2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#a78bfa" /><stop offset="100%" stopColor="#c084fc" /></linearGradient></defs>
               </svg>
             </div>
-            <span className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 drop-shadow-[0_0_30px_rgba(139,92,246,0.3)]">{route.destination}</span>
+            <span className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 drop-shadow-[0_0_30px_rgba(139,92,246,0.3)]">{route.destination}</span>
           </div>
 
           {/* H1 with price highlight */}
@@ -204,14 +204,14 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           ROUTE OVERVIEW: Massive glass panel with neon cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.05),transparent_70%)]" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-indigo-400 font-semibold text-xs tracking-widest uppercase mb-4">
               <Route className="w-3.5 h-3.5" /> Route Overview
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">{route.origin} to {route.destination}</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight">{route.origin} to {route.destination}</h2>
             <p className="text-white/30 mt-4 text-lg">Complete road distance, driving time, route map &amp; cab booking guide</p>
           </div>
 
@@ -264,14 +264,14 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           PRICING: Dramatic glass fare cards with hover neon
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.08),transparent_60%)]" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-violet-400 font-semibold text-xs tracking-widest uppercase mb-4">
               <Car className="w-3.5 h-3.5" /> Book Your Ride
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">{route.origin} to {route.destination} Cab</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight">{route.origin} to {route.destination} Cab</h2>
             <p className="text-white/30 mt-4 text-lg">All fares include driver, fuel &amp; AC &mdash; No hidden charges</p>
           </div>
 
@@ -331,14 +331,14 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           ROUTE TIMELINE: Animated glass timeline with stops
          ═══════════════════════════════════════════════════════════════ */}
       {route.majorStops.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(99,102,241,0.05),transparent_60%)]" />
           <div className="relative max-w-4xl mx-auto">
             <div className="text-center mb-20">
               <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-indigo-400 font-semibold text-xs tracking-widest uppercase mb-4">
                 <MapPin className="w-3.5 h-3.5" /> Route Map
               </span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tight">En-Route Stops</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight">En-Route Stops</h2>
               <p className="text-white/30 mt-4 text-lg">{route.origin} &rarr; {route.majorStops.join(' → ')} &rarr; {route.destination}</p>
             </div>
 
@@ -393,14 +393,14 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           TOLL INFO: Glass table with neon accents
          ═══════════════════════════════════════════════════════════════ */}
       {route.tollPlazas.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(168,85,247,0.05),transparent_60%)]" />
           <div className="relative max-w-5xl mx-auto">
             <div className="text-center mb-20">
               <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-purple-400 font-semibold text-xs tracking-widest uppercase mb-4">
                 <Fuel className="w-3.5 h-3.5" /> Toll Information
               </span>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tight">Toll Plazas</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight">Toll Plazas</h2>
               <p className="text-white/30 mt-4 text-lg">Estimated toll charges for {route.origin} to {route.destination} route</p>
             </div>
 
@@ -412,13 +412,13 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
                 <div className="text-[10px] md:text-xs font-black text-purple-400 uppercase tracking-wider text-right">Cost</div>
               </div>
               {route.tollPlazas.map((toll, i) => (
-                <div key={i} className={`grid grid-cols-3 gap-2 md:gap-4 p-4 md:p-6 border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}>
-                  <div className="font-medium text-white/80 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-purple-500/60" />
-                    {toll.name}
+                <div key={i} className={`grid grid-cols-3 gap-2 md:gap-4 p-3 md:p-6 border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}>
+                  <div className="font-medium text-white/80 flex items-center gap-2 text-sm md:text-base min-w-0">
+                    <div className="w-2 h-2 rounded-full bg-purple-500/60 flex-shrink-0" />
+                    <span className="truncate">{toll.name}</span>
                   </div>
-                  <div className="text-center text-white/40">{toll.km} km</div>
-                  <div className="text-right font-bold text-white">₹{toll.cost}</div>
+                  <div className="text-center text-white/40 text-sm md:text-base">{toll.km} km</div>
+                  <div className="text-right font-bold text-white text-sm md:text-base">₹{toll.cost}</div>
                 </div>
               ))}
               {/* Total row with neon glow */}
@@ -441,14 +441,14 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           TRAVEL TIPS: Two-column glass cards
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.03),transparent_60%)]" />
         <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-cyan-400 font-semibold text-xs tracking-widest uppercase mb-4">
               <Info className="w-3.5 h-3.5" /> Pro Tips
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">Travel Smart</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight">Travel Smart</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -495,14 +495,14 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           FAQ: Glass accordion with animated borders
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.05),transparent_60%)]" />
         <div className="relative max-w-4xl mx-auto">
           <div className="text-center mb-20">
             <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-violet-400 font-semibold text-xs tracking-widest uppercase mb-4">
               FAQ
             </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">Common Questions</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tight">Common Questions</h2>
             <p className="text-white/30 mt-4 text-lg">{route.origin} to {route.destination} travel FAQs</p>
           </div>
 
@@ -531,7 +531,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           RELATED ROUTES: Hover-glow glass cards
          ═══════════════════════════════════════════════════════════════ */}
       {relatedRoutes.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6 relative">
+        <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="relative max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-indigo-400 font-semibold text-xs tracking-widest uppercase mb-4">
@@ -565,7 +565,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
       {/* ═══════════════════════════════════════════════════════════════
           FINAL CTA: Full-bleed glass with dramatic neon
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-28 md:py-36 px-4 sm:px-6 relative overflow-hidden">
+      <section className="py-16 md:py-24 lg:py-36 px-4 sm:px-6 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/50 via-violet-950/60 to-purple-950/50" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[200px]" />
@@ -580,7 +580,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
             <div className="absolute top-0 bottom-0 right-0 w-px bg-gradient-to-b from-transparent via-violet-500/20 to-transparent" />
 
             <div className="text-5xl mb-6">🚗</div>
-            <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">Ready to Travel?</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black mb-4 tracking-tight">Ready to Travel?</h2>
             <p className="text-white/40 text-xl mb-3">
               {route.origin} to {route.destination} &middot; {route.distance.km} km &middot; From <span className="text-indigo-400 font-bold">{route.cabFares.sedan}</span>
             </p>

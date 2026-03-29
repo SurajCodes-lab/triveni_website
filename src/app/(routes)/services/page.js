@@ -3,8 +3,8 @@ import ServicesClient from './ServicesClient';
 export const revalidate = false;
 
 export const metadata = {
-  title: 'Cab Services India 2026 | Outstation from ₹11/km | 50+ Cities | Book Now',
-  description: 'Book cabs across India: Outstation ₹11/km, Airport ₹1,500+, Wedding cars ₹15,000+, Tempo ₹23/km. 10,000+ rides completed. 50+ cities. 24/7 support. Call 7668570551.',
+  title: 'Cab Service India ₹11/km — 50+ Cities 4.9★ | Book Now',
+  description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
   keywords: [
     // Primary Service Keywords
     'cab services India',
@@ -72,8 +72,8 @@ export const metadata = {
     canonical: 'https://www.trivenicabs.in/services'
   },
   openGraph: {
-    title: 'Premium Cab Services Across India | Triveni Cabs',
-    description: 'From daily commutes to dream vacations - we have got the perfect ride for every journey. Professional drivers, modern vehicles & unbeatable service across India.',
+    title: 'Cab Service India ₹11/km — 50+ Cities, All Vehicle Types | Triveni Cabs',
+    description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs',
@@ -89,8 +89,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Every Journey, Every Need - One Perfect Ride 🚗',
-    description: 'Local rides • Outstation tours • Airport transfers • Wedding cars • Corporate travel. Your complete cab service partner across India!',
+    title: 'Cab Service India ₹11/km — 50+ Cities 4.9★ | Book Now',
+    description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
     images: ['/images/about/about_banner.webp'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs'

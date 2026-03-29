@@ -226,7 +226,7 @@ const Header = () => {
           <div
             ref={mobileMenuRef}
             id="mobile-menu"
-            className="bg-gradient-to-br from-gray-900 via-gray-800 to-black w-80 h-full shadow-modal p-6 relative animate-slide-in-left border-r-4 border-primary"
+            className="bg-gradient-to-br from-gray-900 via-gray-800 to-black w-[85vw] max-w-80 h-full shadow-modal p-4 sm:p-6 relative animate-slide-in-left border-r-4 border-primary"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

@@ -8,9 +8,8 @@ export const revalidate = false;
 
 export const metadata = {
   // Title under 60 chars per Google guidelines - CTR optimized
-  title: 'Tempo Traveller Rent 2026 | 12-26 Seater ₹23/km | Delhi Routes',
-  // Description under 160 chars, unique and descriptive - CTR optimized
-  description: 'Book tempo traveller from Delhi: Manali ₹18K, Shimla ₹12K, Jaipur ₹10K. 12-26 seater AC with driver. 5000+ trips done. GPS tracking. Call 7668570551.',
+  title: 'Tempo Traveller ₹23/km — 12-26 Seater AC 4.9★ | Book',
+  description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -20,8 +19,8 @@ export const metadata = {
     canonical: '/tempo-traveller',
   },
   openGraph: {
-    title: 'Tempo Traveller on Rent | 12-26 Seater AC from ₹23/km',
-    description: 'Book tempo traveller for group travel. Delhi to Manali, Shimla, Jaipur. 100+ routes, professional drivers, GPS tracking.',
+    title: 'Tempo Traveller ₹23/km — 12-26 Seater AC for Group Travel | Triveni Cabs',
+    description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
     url: 'https://www.trivenicabs.in/tempo-traveller',
     siteName: 'Triveni Cabs',
     type: 'website',
@@ -38,8 +37,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tempo Traveller on Rent | 12-26 Seater from ₹23/km',
-    description: 'Book tempo traveller across India. 100+ routes, professional drivers, GPS tracking. Call 7668570551.',
+    title: 'Tempo Traveller ₹23/km — 12-26 Seater AC 4.9★ | Book',
+    description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
     site: '@trivenicabs',
     images: ['/images/tempo_hero_section.jpg'],
   },

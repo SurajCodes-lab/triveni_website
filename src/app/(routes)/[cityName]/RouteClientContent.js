@@ -264,12 +264,12 @@ export default function RouteClientContent({
                 </div>
 
                 {/* Price Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-4 py-2 rounded-full font-bold text-lg mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-4 py-2 rounded-full font-bold text-base md:text-lg mb-4">
                   Starting from ₹{startingPrice}
                 </div>
 
                 {/* Main Title */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
                   {formattedCityName}
                   <span className="text-[#FACF2D]"> to </span>
                   {formattedDestination} Cab
@@ -357,7 +357,7 @@ export default function RouteClientContent({
                 <div className="relative z-10">
                   <p className="text-black/60 font-medium mb-1">Starting from</p>
                   <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-black text-5xl md:text-6xl font-black">₹{startingPrice}</span>
+                    <span className="text-black text-4xl md:text-5xl lg:text-6xl font-black">₹{startingPrice}</span>
                     <span className="text-black/60 font-medium">/{tripType === 'roundTrip' ? 'round trip' : 'one way'}</span>
                   </div>
 
@@ -540,7 +540,7 @@ export default function RouteClientContent({
               <Car className="w-4 h-4" />
               <span className="text-sm font-bold">CHOOSE YOUR RIDE</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               Select Your Vehicle
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -784,7 +784,7 @@ export default function RouteClientContent({
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               Why Book {formattedCityName} to {formattedDestination} Cab With Us?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -925,7 +925,7 @@ export default function RouteClientContent({
               <Route className="w-4 h-4 text-[#D4A017]" />
               <span className="text-sm font-semibold text-[#D4A017]">ROUTE GUIDE</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span> Route Guide
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -1275,7 +1275,7 @@ export default function RouteClientContent({
               <Sparkles className="w-5 h-5 text-[#D4A017]" />
               <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               {formattedCityName} to {formattedDestination} Cab <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">FAQs</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -1297,19 +1297,19 @@ export default function RouteClientContent({
                   {/* Gradient accent */}
                   <div className="h-2 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
 
-                  <div className="p-6 md:p-8">
+                  <div className="p-4 md:p-6 lg:p-8">
                     {/* Question */}
-                    <div className="flex items-start gap-4 mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FACF2D]/30 group-hover:scale-110 transition-transform">
-                        <span className="text-xl font-black text-black">?</span>
+                    <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-5">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FACF2D]/30 group-hover:scale-110 transition-transform">
+                        <span className="text-lg md:text-xl font-black text-black">?</span>
                       </div>
-                      <h3 className="font-bold text-slate-900 text-lg leading-snug pt-2">{faq.q}</h3>
+                      <h3 className="font-bold text-slate-900 text-base md:text-lg leading-snug pt-1.5 md:pt-2 min-w-0">{faq.q}</h3>
                     </div>
 
                     {/* Answer */}
-                    <div className="pl-16">
-                      <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-4 border border-slate-100">
-                        <p className="text-slate-600 leading-relaxed">{faq.a}</p>
+                    <div className="pl-0 md:pl-14 lg:pl-16">
+                      <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-3 md:p-4 border border-slate-100">
+                        <p className="text-slate-600 leading-relaxed text-sm md:text-base">{faq.a}</p>
                       </div>
                     </div>
                   </div>
@@ -1450,7 +1450,7 @@ export default function RouteClientContent({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-4">
               Book <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> Cab Now
             </h2>
             <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">

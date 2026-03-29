@@ -1,12 +1,60 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 // Centralized icon imports for better bundle optimization
 import { ChevronDown, HelpCircle, MessageCircle } from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
 import { generateFAQSchema } from '@/lib/seo/schema-generators';
 import { COMPANY_INFO } from '@/lib/seo/constants';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+
+/**
+ * Parse markdown-style links [text](url) in FAQ answers into clickable links.
+ * This enables contextual internal linking within FAQ answers for SEO.
+ * External links open in new tab; internal links use Next.js Link.
+ */
+function renderAnswerWithLinks(answer) {
+  if (!answer || typeof answer !== 'string') return answer;
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  if (!linkRegex.test(answer)) return answer;
+
+  // Reset regex
+  linkRegex.lastIndex = 0;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = linkRegex.exec(answer)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(answer.substring(lastIndex, match.index));
+    }
+    const [, text, url] = match;
+    const isExternal = url.startsWith('http');
+    if (isExternal) {
+      parts.push(
+        <a key={match.index} href={url} target="_blank" rel="noopener noreferrer" className="text-amber-700 underline hover:text-amber-800">
+          {text}
+        </a>
+      );
+    } else {
+      parts.push(
+        <Link key={match.index} href={url} className="text-amber-700 underline hover:text-amber-800">
+          {text}
+        </Link>
+      );
+    }
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text
+  if (lastIndex < answer.length) {
+    parts.push(answer.substring(lastIndex));
+  }
+
+  return parts;
+}
 
 /**
  * FAQ Section Component - Accordion-style FAQ display with integrated schema
@@ -181,7 +229,7 @@ const FAQSection = ({
                         )}
                         data-snippet-type="faq"
                       >
-                        {faq.answer}
+                        {renderAnswerWithLinks(faq.answer)}
                       </div>
                     </div>
                   </div>
@@ -279,7 +327,7 @@ export const InlineFAQ = ({
 
               {isOpen && (
                 <div className="faq-answer p-4 bg-white text-gray-600 text-sm md:text-base border-t border-gray-100" data-snippet-type="faq">
-                  {faq.answer}
+                  {renderAnswerWithLinks(faq.answer)}
                 </div>
               )}
             </div>
@@ -355,7 +403,7 @@ export const SimpleFAQ = ({
                 )}
               >
                 <p className="faq-answer text-gray-600 leading-relaxed" data-snippet-type="faq">
-                  {faq.answer}
+                  {renderAnswerWithLinks(faq.answer)}
                 </p>
               </div>
             </div>

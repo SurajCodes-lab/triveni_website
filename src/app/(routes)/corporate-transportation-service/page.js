@@ -37,8 +37,8 @@ import {
 export const revalidate = false;
 
 export const metadata = {
-  title: 'Corporate Transportation Service India | Employee Transport & Fleet Solutions | Triveni Cabs',
-  description: 'Premium corporate cab services in Delhi NCR, Jaipur, Chandigarh, Agra & Dehradun. Employee pick-up/drop, executive car rental, airport transfers, fleet management. GST billing, dedicated drivers. 500+ corporates trust us. Call 7668570551.',
+  title: 'Corporate Cab India ₹11/km — Fleet, 24/7 4.9★ | Get Quote',
+  description: 'Corporate cabs from ₹11/km. Employee transport, executive cars, airport transfers. GST billing, 500+ companies trust us. Book in 2 min.',
   keywords: [
     // Primary keywords
     'corporate transportation service',
@@ -94,8 +94,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Corporate Transportation Service India | Employee & Executive Transport | Triveni Cabs',
-    description: 'Complete corporate mobility solutions - employee shuttles, executive travel, airport transfers, fleet management. 500+ companies, GST billing, 24/7 support.',
+    title: 'Corporate Cab India ₹11/km — Employee & Executive Fleet Solutions | Triveni Cabs',
+    description: 'Corporate cabs from ₹11/km. Employee transport, executive cars, airport transfers. GST billing, 500+ companies trust us. Book in 2 min.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/corporate-transportation-service',
@@ -111,8 +111,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corporate Transportation Service India | Triveni Cabs',
-    description: 'Employee transport, executive travel, fleet management. GST billing, dedicated drivers. 500+ corporates. Call 7668570551.',
+    title: 'Corporate Cab India ₹11/km — Fleet, 24/7 4.9★ | Get Quote',
+    description: 'Corporate cabs from ₹11/km. Employee transport, executive cars, airport transfers. GST billing, 500+ companies trust us. Book in 2 min.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']

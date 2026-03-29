@@ -384,7 +384,7 @@ export default function CityServiceClient({
                 </div>
 
                 {/* Main Title */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
                   Taxi Service in
                   <span className="block text-[#FACF2D]">{formattedCityName}</span>
                 </h1>
@@ -618,7 +618,7 @@ export default function CityServiceClient({
               <Car className="w-4 h-4" />
               <span className="text-sm font-bold">OUR FLEET</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               Choose Your Vehicle
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -740,7 +740,7 @@ export default function CityServiceClient({
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               Why Choose Our Taxi Service in {formattedCityName}?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -881,7 +881,7 @@ export default function CityServiceClient({
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm font-bold">EXPLORE</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
                 Places to Visit in {formattedCityName}
               </h2>
               <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -980,7 +980,7 @@ export default function CityServiceClient({
                   <Calendar className="w-5 h-5 text-[#D4A017]" />
                   <span className="text-sm font-bold text-[#D4A017]">TRAVEL PLANNING</span>
                 </div>
-                <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
                   Best Time to Visit <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedCityName}</span>
                 </h2>
                 <p className="text-slate-600 text-lg max-w-3xl mx-auto">
@@ -1121,6 +1121,87 @@ export default function CityServiceClient({
         );
       })()}
 
+      {/* ==================== SEO CONTENT SECTION — Search Query Targeted ==================== */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-8">
+              Why Choose Our Taxi Service in {formattedCityName}
+            </h2>
+
+            <div className="prose prose-lg max-w-none text-slate-700 space-y-6">
+              <p>
+                Looking for a reliable <strong>taxi service in {formattedCityName}</strong>? Triveni Cabs is the
+                highest-rated <strong>cab service in {formattedCityName}</strong> with 4.9&#9733; ratings from
+                10,000+ travellers. Whether you need a <strong>{formattedCityName} local taxi</strong> for
+                sightseeing, an airport transfer, or outstation travel, we provide AC sedan, SUV, and tempo
+                traveller options starting at just &#8377;11/km. Our fleet of well-maintained vehicles and
+                professional, verified drivers ensure a safe and comfortable journey every time you ride with us.
+              </p>
+
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 !mt-10">
+                Best {formattedCityName} Cab Booking &mdash; Online &amp; Instant
+              </h3>
+              <p>
+                <strong>{formattedCityName} cab booking</strong> takes just 2 minutes with Triveni Cabs. Call
+                us at <strong>{phoneNumber}</strong>, WhatsApp us, or fill our quick online enquiry form. We
+                believe in complete transparency &mdash; no surge pricing, no hidden charges, GPS-tracked
+                vehicles, and verified drivers available 24/7. We serve 50+ routes from {formattedCityName} with
+                fixed fares displayed upfront so you know exactly what you pay before your trip begins.
+              </p>
+
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 !mt-10">
+                Local &amp; Outstation Cab Service from {formattedCityName}
+              </h3>
+              <p>
+                Our <strong>{formattedCityName} cab service</strong> covers local sightseeing, point-to-point
+                transfers, outstation trips, and multi-day packages. Popular routes include {formattedCityName} to
+                Delhi, {formattedCityName} to Chandigarh, {formattedCityName} to Shimla, and {formattedCityName} local
+                tour packages. All vehicles are AC, well-maintained, and driven by professional, verified drivers
+                who know {formattedCityName}&apos;s roads inside out.
+              </p>
+
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 !mt-10">
+                {formattedCityName} Local Taxi Service for Sightseeing
+              </h3>
+              <p>
+                Exploring {formattedCityName}&apos;s top attractions &mdash; Hadimba Temple, Solang Valley,
+                Rohtang Pass, Old Manali, and Mall Road &mdash; is best done with a <strong>{formattedCityName} local
+                taxi service</strong>. Our drivers double as knowledgeable local guides, suggesting the best
+                stops, photo points, and hidden gems most tourists miss. Book a half-day or full-day{' '}
+                <strong>taxi in {formattedCityName}</strong> and enjoy a hassle-free sightseeing experience with
+                door-to-door pickup and drop.
+              </p>
+
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 !mt-10">
+                Why Travellers Prefer Our Cabs in {formattedCityName}
+              </h3>
+              <ul className="list-disc pl-6 space-y-2 text-slate-700">
+                <li><strong>Lowest fares</strong> &mdash; Sedan from &#8377;11/km, SUV from &#8377;14/km, Tempo Traveller from &#8377;20/km</li>
+                <li><strong>No hidden charges</strong> &mdash; Toll, parking, and driver allowance clearly stated upfront</li>
+                <li><strong>24/7 availability</strong> &mdash; Early morning flights, late-night arrivals &mdash; we never say no</li>
+                <li><strong>GPS-tracked rides</strong> &mdash; Real-time vehicle tracking shared with you and your family</li>
+                <li><strong>Verified drivers</strong> &mdash; Background-checked, experienced hill-road drivers</li>
+                <li><strong>One-way &amp; round trip</strong> &mdash; Pay only for the distance you travel on one-way trips</li>
+                <li><strong>Instant booking</strong> &mdash; Call {phoneNumber} or WhatsApp for same-day confirmation</li>
+              </ul>
+
+              <p className="!mt-8">
+                Whether you&apos;re searching for the <strong>best taxi service in {formattedCityName}</strong>,
+                need a quick <strong>{formattedCityName} cab booking</strong> for an outstation trip, or want
+                a reliable <strong>cab service in {formattedCityName}</strong> for local sightseeing &mdash;
+                Triveni Cabs has you covered. Join 50,000+ happy travellers who trust us for safe, affordable,
+                and comfortable <strong>cabs in {formattedCityName}</strong> every day.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ==================== FAQ SECTION ==================== */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
         {/* Background decoration */}
@@ -1139,7 +1220,7 @@ export default function CityServiceClient({
               <Sparkles className="w-5 h-5 text-[#D4A017]" />
               <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
               {formattedCityName} Taxi <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">FAQs</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -1161,19 +1242,19 @@ export default function CityServiceClient({
                   {/* Gradient accent */}
                   <div className="h-2 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
 
-                  <div className="p-6 md:p-8">
+                  <div className="p-4 md:p-6 lg:p-8">
                     {/* Question */}
-                    <div className="flex items-start gap-4 mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FACF2D]/30 group-hover:scale-110 transition-transform">
-                        <span className="text-xl font-black text-black">?</span>
+                    <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-5">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FACF2D]/30 group-hover:scale-110 transition-transform">
+                        <span className="text-lg md:text-xl font-black text-black">?</span>
                       </div>
-                      <h3 className="font-bold text-slate-900 text-lg leading-snug pt-2">{faq.q}</h3>
+                      <h3 className="font-bold text-slate-900 text-base md:text-lg leading-snug pt-1.5 md:pt-2 min-w-0">{faq.q}</h3>
                     </div>
 
                     {/* Answer */}
-                    <div className="pl-16">
-                      <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-4 border border-slate-100">
-                        <p className="text-slate-600 leading-relaxed">{faq.a}</p>
+                    <div className="pl-0 md:pl-14 lg:pl-16">
+                      <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-3 md:p-4 border border-slate-100">
+                        <p className="text-slate-600 leading-relaxed text-sm md:text-base">{faq.a}</p>
                       </div>
                     </div>
                   </div>
@@ -1283,7 +1364,7 @@ export default function CityServiceClient({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-4">
               Ready to Book Your <span className="text-[#FACF2D]">{formattedCityName}</span> Taxi?
             </h2>
             <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">

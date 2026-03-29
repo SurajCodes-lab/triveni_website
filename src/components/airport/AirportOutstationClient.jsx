@@ -81,7 +81,7 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight leading-[0.9]">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-[0.9]">
                 {data.airportCity}
                 <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 anim-shimmer">
                   to {data.destination}
@@ -204,13 +204,13 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  TERMINAL PICKUP GUIDE  --  Gate / Terminal cards             */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-slate-950">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-slate-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-1.5 mb-6">
               <span className="text-amber-300 text-xs font-bold tracking-[0.15em] uppercase">Terminal Guide</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
               Pickup From <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Every Gate</span>
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto text-lg">Our drivers know every corner of {data.airport}</p>
@@ -255,12 +255,12 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  ABOUT / ROUTE OVERVIEW  --  Split content on dark           */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
         <div className="max-w-7xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-1.5 mb-6">
             <span className="text-amber-300 text-xs font-bold tracking-[0.15em] uppercase">About This Route</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-10 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-10 tracking-tight leading-tight">
             Hassle-Free<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400">Airport Transfer</span>
           </h2>
           <div className="grid lg:grid-cols-2 gap-12">
@@ -298,13 +298,13 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  PRICING  --  Boarding Pass Style Cards                      */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-slate-950">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-slate-950">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-1.5 mb-6">
               <span className="text-amber-300 text-xs font-bold tracking-[0.15em] uppercase">Fixed Fares</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
               Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Boarding Pass</span>
             </h2>
             <p className="text-slate-500 text-lg">Tolls, parking, meet &amp; greet, flight tracking &mdash; all included</p>
@@ -333,7 +333,7 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
                     <v.icon className={`w-5 h-5 ${v.popular ? 'text-yellow-400' : 'text-slate-600'}`} />
                   </div>
                   <div className="text-slate-400 text-sm mb-1">{v.vehicle}</div>
-                  <div className="text-5xl font-black text-white mb-1 tracking-tight">&#8377;{v.price}</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1 tracking-tight">&#8377;{v.price}</div>
                   <div className="text-slate-500 text-sm">one way &bull; fixed fare</div>
                 </div>
 
@@ -373,7 +373,7 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  ROUTE + DESTINATION  --  Two-column info cards              */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Route info card */}
@@ -428,13 +428,13 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  HOW IT WORKS  --  Runway Timeline Steps                     */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-slate-950 overflow-hidden">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-slate-950 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-1.5 mb-6">
               <span className="text-amber-300 text-xs font-bold tracking-[0.15em] uppercase">4 Simple Steps</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
               How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Works</span>
             </h2>
           </div>
@@ -477,14 +477,14 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  AIRPORT SERVICES  --  Glassmorphic service cards            */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-1.5 mb-6">
               <Zap className="w-3.5 h-3.5 text-amber-400" />
               <span className="text-amber-300 text-xs font-bold tracking-[0.15em] uppercase">Premium Services</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
               What&apos;s <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Included</span>
             </h2>
           </div>
@@ -513,13 +513,13 @@ export default function AirportOutstationClient({ data, relatedRoutes }) {
       {/* ============================================================ */}
       {/*  FAQs  --  Expandable accordion on dark                      */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 px-4 bg-slate-950">
+      <section className="py-14 md:py-20 lg:py-28 px-4 bg-slate-950">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-1.5 mb-6">
               <span className="text-amber-300 text-xs font-bold tracking-[0.15em] uppercase">FAQs</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
               Common <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Questions</span>
             </h2>
           </div>

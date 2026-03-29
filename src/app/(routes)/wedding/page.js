@@ -6,7 +6,7 @@ export const revalidate = false;
 
 export const metadata = {
   title: 'Wedding Car Rental 2026 | BMW ₹15K, Audi ₹18K | Triveni',
-  description: 'Book wedding cars: BMW ₹15K, Audi ₹18K, Mercedes ₹20K, Vintage ₹25K. Baraat tempo 12-26 seater ₹8K+. 500+ weddings done. Decoration included. Call 7668570551.',
+  description: 'Wedding cars: BMW ₹15K, Audi ₹18K, Mercedes ₹20K. Baraat tempo ₹8K+. 500+ weddings, decor included. Get free quote.',
   keywords: 'wedding car rental, luxury wedding car, BMW wedding car, Audi wedding car, Mercedes wedding car, baraat tempo traveller, bridal car rental, wedding car Delhi, wedding car Jaipur, destination wedding car, vintage wedding car, shaadi car rental, wedding car decoration, wedding transportation India, book wedding car online',
   alternates: {
     canonical: "https://www.trivenicabs.in/wedding"

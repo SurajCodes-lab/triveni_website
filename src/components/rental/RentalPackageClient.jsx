@@ -67,7 +67,7 @@ const RentalPackageClient = ({ rental }) => {
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
             <span className="text-white drop-shadow-lg">{rental.duration}</span>
             <br />
             <span className="shimmer-blue">Cab Rental Package</span>
@@ -125,7 +125,7 @@ const RentalPackageClient = ({ rental }) => {
               <Car className="w-4 h-4 text-amber-600" />
               <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Vehicle Options</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
               Choose Your <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Vehicle</span>
             </h2>
           </div>
@@ -171,7 +171,7 @@ const RentalPackageClient = ({ rental }) => {
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
               What&#39;s <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Included</span>
             </h2>
           </div>
@@ -224,7 +224,7 @@ const RentalPackageClient = ({ rental }) => {
               <Target className="w-4 h-4 text-amber-600" />
               <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Best Uses</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
               Perfect <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">For</span>
             </h2>
           </div>
@@ -245,7 +245,7 @@ const RentalPackageClient = ({ rental }) => {
       <section className="py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
               Available <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Cities</span>
             </h2>
           </div>
@@ -283,7 +283,7 @@ const RentalPackageClient = ({ rental }) => {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
               Why Choose <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Triveni Cabs</span>?
             </h2>
           </div>
@@ -321,7 +321,7 @@ const RentalPackageClient = ({ rental }) => {
               <Navigation className="w-4 h-4 text-amber-600" />
               <span className="text-amber-600 font-semibold text-sm uppercase tracking-wider">Explore More</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
               More <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Services</span>
             </h2>
           </div>

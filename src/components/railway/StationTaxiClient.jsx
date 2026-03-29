@@ -65,7 +65,7 @@ export default function StationTaxiClient({ data }) {
         <div className="absolute top-[50%] right-[10%] w-[350px] h-[350px] bg-blue-500/8 rounded-full blur-[100px] float-el-d" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-20">
-          <div className="grid lg:grid-cols-5 gap-12 items-center">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-3">
               <div className="inline-flex items-center gap-2.5 bg-cyan-500/10 backdrop-blur-2xl border border-cyan-400/20 rounded-full px-5 py-2.5 mb-8">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -73,7 +73,7 @@ export default function StationTaxiClient({ data }) {
                 <span className="text-cyan-200 text-sm font-mono tracking-widest">{stationCode} STATION</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.9] tracking-tight">
                 {stationName}
                 <span className="block text-transparent bg-clip-text shimmer-text-cyan" style={{ backgroundImage: 'linear-gradient(90deg, #22d3ee, #67e8f9, #06b6d4, #22d3ee)', backgroundSize: '200% 100%' }}>
                   Taxi Service
@@ -156,7 +156,7 @@ export default function StationTaxiClient({ data }) {
 
       {/* ====== TRUST BAR ====== */}
       <section className="py-10 px-4 border-b border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
             { icon: TrainFront, title: 'Meet at Platform', desc: 'Driver waits at exit', color: 'from-cyan-500 to-blue-500' },
             { icon: Shield, title: 'Fixed Fares', desc: 'Zero surge pricing', color: 'from-emerald-500 to-teal-500' },
@@ -177,14 +177,14 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== POPULAR DESTINATIONS ====== */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.05),transparent_60%)]" />
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase">
               <Route className="w-3.5 h-3.5" /> Popular Routes
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Taxi from <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">{stationName}</span>
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Fixed fares. AC vehicles. Meet at platform exit with name board.</p>
@@ -225,13 +225,13 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== LOCAL SIGHTSEEING PACKAGES ====== */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-blue-500/20 tracking-widest uppercase">
               <Sparkles className="w-3.5 h-3.5" /> Local Packages
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               {city} Sightseeing <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Packages</span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto">Pre-booked local taxi for hassle-free sightseeing from the station</p>
@@ -269,14 +269,14 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== VEHICLE OPTIONS ====== */}
-      <section className="py-20 md:py-32 px-4 relative">
+      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/20 to-transparent" />
         <div className="relative max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-indigo-500/20 tracking-widest uppercase">
               <Car className="w-3.5 h-3.5" /> Vehicle Fleet
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
               Choose Your <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Ride</span>
             </h2>
           </div>
@@ -296,13 +296,13 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== PRE-BOOK BENEFITS ====== */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase">
               <Shield className="w-3.5 h-3.5" /> Why Pre-Book
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Pre-book for <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Hassle-free Pickup</span>
             </h2>
           </div>
@@ -322,17 +322,17 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== HOW TO BOOK ====== */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-blue-500/20 tracking-widest uppercase">
               <Zap className="w-3.5 h-3.5" /> Simple Process
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
               How to <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Book</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-4 gap-6 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 relative">
             <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-cyan-600/30 via-blue-500/30 to-indigo-600/30" />
             {[
               { step: '01', title: 'Arrive', desc: `Your train pulls into ${stationName}. Collect luggage and head to exit.`, icon: TrainFront },
@@ -361,7 +361,7 @@ export default function StationTaxiClient({ data }) {
               <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase">
                 <TrainFront className="w-3.5 h-3.5" /> Station Details
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
                 About <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">{stationName}</span>
               </h2>
             </div>
@@ -397,13 +397,13 @@ export default function StationTaxiClient({ data }) {
       )}
 
       {/* ====== FAQS ====== */}
-      <section className="py-20 md:py-32 px-4">
+      <section className="py-14 md:py-20 lg:py-32 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-indigo-500/20 tracking-widest uppercase">
               FAQs
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
               Common <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Questions</span>
             </h2>
           </div>

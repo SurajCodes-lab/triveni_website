@@ -12,11 +12,11 @@ export default function MobileStickyBar() {
           href="tel:+917668570551"
           onClick={() => trackPhoneCall('mobile_sticky_bar')}
           aria-label="Call Triveni Cabs"
-          className="flex items-center justify-center gap-1.5 bg-[#FACF2D] text-black font-bold py-3.5 text-xs"
+          className="flex items-center justify-center gap-1.5 bg-[#FACF2D] text-black font-bold py-4 min-h-[52px] text-[11px] sm:text-xs"
           style={{ flex: '0 0 25%' }}
         >
-          <Phone className="w-4 h-4" />
-          Call
+          <Phone className="w-4 h-4 flex-shrink-0" />
+          <span className="truncate">Call</span>
         </a>
 
         {/* Get Quote — 50% width, DOMINANT */}
@@ -26,13 +26,13 @@ export default function MobileStickyBar() {
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick('mobile_sticky_bar_quote')}
           aria-label="Get a free cab quote"
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold py-3.5 text-sm shadow-[0_-2px_12px_rgba(245,158,11,0.3)]"
+          className="flex items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold py-4 min-h-[52px] text-xs sm:text-sm shadow-[0_-2px_12px_rgba(245,158,11,0.3)]"
           style={{ flex: '0 0 50%' }}
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
-          GET FREE QUOTE
+          <span className="truncate">FREE QUOTE</span>
         </a>
 
         {/* WhatsApp — 25% width */}
@@ -42,7 +42,7 @@ export default function MobileStickyBar() {
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick('mobile_sticky_bar_whatsapp')}
           aria-label="Chat on WhatsApp"
-          className="flex items-center justify-center gap-1.5 bg-[#25D366] text-white font-bold py-3.5 text-xs"
+          className="flex items-center justify-center gap-1.5 bg-[#25D366] text-white font-bold py-4 min-h-[52px] text-[11px] sm:text-xs"
           style={{ flex: '0 0 25%' }}
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

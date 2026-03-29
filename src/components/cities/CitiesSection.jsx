@@ -74,7 +74,7 @@ const HeroBanner = ({ formattedCityName }) => {
             </p>
             
             {/* Key Features for SEO */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 text-sm">
               <div className="text-center text-white">
                 <Clock className="w-6 h-6 mx-auto mb-1 text-yellow-400" />
                 <span>24/7 Service</span>
@@ -424,7 +424,7 @@ const QuickInfoSection = ({ formattedCityName, details }) => {
   ], [formattedCityName]);
 
   return (
-    <section className="grid grid-cols-2 lg:grid-cols-4 gap-4" aria-label="Service highlights">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" aria-label="Service highlights">
       {infoCards.map((card, index) => (
         <div key={index} className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg p-4 text-center hover:shadow-md transition-shadow">
           <card.icon className="w-8 h-8 text-yellow-500 mx-auto mb-2" aria-hidden="true" />
@@ -546,7 +546,7 @@ export default function CityServiceClient({
                     <Shield className="w-4 h-4 text-blue-600" />
                     <span className="font-medium text-blue-900">All vehicles include:</span>
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm text-blue-700">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 text-sm text-blue-700">
                     <div>✓ GPS Tracking</div>
                     <div>✓ AC & Music</div>
                     <div>✓ First Aid Kit</div>
