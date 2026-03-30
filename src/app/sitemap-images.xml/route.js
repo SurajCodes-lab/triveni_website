@@ -118,7 +118,7 @@ function generateImageSitemap() {
   xml += `  <url>
     <loc>${BASE_URL}/wedding</loc>
     <image:image>
-      <image:loc>${BASE_URL}/images/wedding_section.jpg</image:loc>
+      <image:loc>${BASE_URL}/images/wedding/luxury_car.jpg</image:loc>
       <image:title>Wedding Car Rental - Triveni Cabs</image:title>
       <image:caption>Luxury wedding car rental including BMW, Audi, Mercedes, and decorated vehicles</image:caption>
     </image:image>
@@ -129,7 +129,7 @@ function generateImageSitemap() {
   xml += `  <url>
     <loc>${BASE_URL}/corporate-transportation-service</loc>
     <image:image>
-      <image:loc>${BASE_URL}/images/corporate/corporate-hero.jpg</image:loc>
+      <image:loc>${BASE_URL}/images/car/innova_crysta.jpg</image:loc>
       <image:title>Corporate Transportation Service - Triveni Cabs</image:title>
       <image:caption>Professional corporate cab and employee transportation services</image:caption>
     </image:image>
@@ -138,11 +138,11 @@ function generateImageSitemap() {
 
   // Vehicle pages images
   const vehicleImages = [
-    { slug: 'sedan', image: '/images/vehicles/sedan.jpg', title: 'Sedan Cars' },
-    { slug: 'suv', image: '/images/vehicles/suv.jpg', title: 'SUV Vehicles' },
-    { slug: 'tempo-traveller', image: '/images/vehicles/tempo-traveller.jpg', title: 'Tempo Traveller' },
-    { slug: 'bus', image: '/images/vehicles/bus.jpg', title: 'Bus Rental' },
-    { slug: 'luxury-bus', image: '/images/vehicles/luxury-bus.jpg', title: 'Luxury Bus' }
+    { slug: 'sedan', image: '/images/car/swift_dzire.jpg', title: 'Sedan Cars' },
+    { slug: 'suv', image: '/images/car/premium_suv.jpg', title: 'SUV Vehicles' },
+    { slug: 'tempo-traveller', image: '/images/tempo/17_seater.jpg', title: 'Tempo Traveller' },
+    { slug: 'bus', image: '/images/bus/35_SEATER_BUS.jpg', title: 'Bus Rental' },
+    { slug: 'luxury-bus', image: '/images/bus/45_SEATER_BUS.jpg', title: 'Luxury Bus' }
   ];
 
   vehicleImages.forEach(vehicle => {

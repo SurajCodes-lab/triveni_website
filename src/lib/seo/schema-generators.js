@@ -729,7 +729,7 @@ export function generateTempoServiceSchema(origin, destination, price, seats) {
       { '@type': 'City', name: origin },
       { '@type': 'City', name: destination }
     ],
-    image: `${BASE_URL}/images/tempo_hero_section.jpg`
+    image: `${BASE_URL}/images/tempo/17_seater.jpg`
   });
 }
 
@@ -788,7 +788,7 @@ export function generateCorporateServiceSchema(city, industry, useCase) {
     price: 11,
     priceUnit: 'per km',
     areaServed: { '@type': 'City', name: city },
-    image: `${BASE_URL}/images/corporate/corporate-transport.jpg`
+    image: `${BASE_URL}/images/car/innova_crysta.jpg`
   });
 }
 

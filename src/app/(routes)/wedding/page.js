@@ -19,7 +19,7 @@ export const metadata = {
     siteName: "Triveni Cabs",
     images: [
       {
-        url: "/images/wedding_section.jpg",
+        url: "/images/wedding/luxury_car.jpg",
         width: 1200,
         height: 630,
         alt: "Triveni Cabs Premium Wedding Car Rental Service - BMW, Audi, Mercedes"

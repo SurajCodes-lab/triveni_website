@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
         siteName: "Triveni Cabs",
         images: [
           {
-            url: "https://www.trivenicabs.in/images/car/car2.webp",
+            url: "https://www.trivenicabs.in/images/car/innova_crysta.jpg",
             width: 1200,
             height: 630,
             alt: `${vehicleHire.name} on Rent - Triveni Cabs`,
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
         card: "summary_large_image",
         title,
         description,
-        images: ["https://www.trivenicabs.in/images/car/car2.webp"],
+        images: ["https://www.trivenicabs.in/images/car/innova_crysta.jpg"],
       },
       robots: { index: true, follow: true },
     };
@@ -125,7 +125,7 @@ function generateVehicleHireStructuredData(vehicle) {
     },
     category: vehicle.category,
     url: canonical,
-    image: "https://www.trivenicabs.in/images/car/car2.webp",
+    image: "https://www.trivenicabs.in/images/car/innova_crysta.jpg",
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "INR",

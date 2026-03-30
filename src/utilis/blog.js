@@ -2606,7 +2606,7 @@ export const travelBlogPosts = [
     `,
     date: "2026-12-20",
     readTime: "15 min read",
-    image: "/images/sightseeing/Ayodhya/ayodhya_hero_section.jpg",
+    image: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
     category: "Pilgrimage",
     tags: ["Ayodhya", "Ram Mandir", "Pilgrimage", "Religious Tourism", "Uttar Pradesh"],
     keywords: ["ayodhya ram mandir", "ram mandir darshan", "how to reach ayodhya", "ayodhya travel guide 2026", "ram mandir timings", "ayodhya trip", "ayodhya tour package", "delhi to ayodhya", "lucknow to ayodhya", "ram janmabhoomi", "ayodhya temples", "best time to visit ayodhya", "ayodhya hotels", "ram mandir online booking", "ayodhya darshan", "ayodhya pilgrimage", "ayodhya yatra", "ram mandir architecture", "ayodhya nearby places", "varanasi ayodhya tour", "ayodhya prayagraj tour", "ayodhya religious tour", "tempo traveller ayodhya"],

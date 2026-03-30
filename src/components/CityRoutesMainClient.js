@@ -161,9 +161,9 @@ const popularRoutes = [
 
 // Vehicle types
 const vehicleTypes = [
-  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/car1.webp', rating: '4.9', category: 'car' },
-  { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/car2.webp', rating: '4.8', category: 'car' },
-  { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/car2.webp', rating: '4.9', category: 'car' },
+  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/swift_dzire.jpg', rating: '4.9', category: 'car' },
+  { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/ertiga.jpg', rating: '4.8', category: 'car' },
+  { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/innova_crysta.jpg', rating: '4.9', category: 'car' },
   { type: '12 Seater Tempo', seats: '12', price: '₹20/km', image: '/images/tempo/12_seater.jpg', rating: '4.8', category: 'tempo' },
   { type: '17 Seater Tempo', seats: '17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8', category: 'tempo' },
   { type: '26 Seater Maharaja', seats: '26', price: '₹28/km', image: '/images/tempo/26_seater.jpg', rating: '4.9', category: 'tempo' },

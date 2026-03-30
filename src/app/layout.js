@@ -178,8 +178,8 @@ const structuredData = [
     "logo": "https://www.trivenicabs.in/images/logo/logo.webp",
     "image": [
       "https://www.trivenicabs.in/images/logo/logo.webp",
-      "https://www.trivenicabs.in/images/car/sedan.webp",
-      "https://www.trivenicabs.in/images/car/suv.webp"
+      "https://www.trivenicabs.in/images/car/swift_dzire.jpg",
+      "https://www.trivenicabs.in/images/car/premium_suv.jpg"
     ],
     "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
     "url": "https://www.trivenicabs.in",

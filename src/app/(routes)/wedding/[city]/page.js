@@ -59,7 +59,7 @@ export default function CityWeddingPage({ params }) {
         "addressCountry": "IN"
       },
       "priceRange": city.priceRange,
-      "image": "https://www.trivenicabs.in/images/wedding_section.jpg"
+      "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg"
     },
     "areaServed": {
       "@type": "City",
@@ -120,7 +120,7 @@ export default function CityWeddingPage({ params }) {
     "@type": "Event",
     "name": `${city.name} Wedding Car Rental Services`,
     "description": `Professional wedding car rental services in ${city.name} including luxury cars, baraat tempo travellers, and decorated vehicles for all wedding ceremonies.`,
-    "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
+    "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": {
@@ -153,7 +153,7 @@ export default function CityWeddingPage({ params }) {
     "@type": "Product",
     "name": `${city.name} Wedding Car Rental Services`,
     "description": city.description,
-    "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
+    "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg",
     "brand": {
       "@type": "Brand",
       "name": "Triveni Cabs"
@@ -180,7 +180,7 @@ export default function CityWeddingPage({ params }) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": `Triveni Cabs - ${city.name} Wedding Car Rental`,
-    "image": "https://www.trivenicabs.in/images/wedding_section.jpg",
+    "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg",
     "telephone": "+91-7668570551",
     "email": "cabstriveni@gmail.com",
     "address": {

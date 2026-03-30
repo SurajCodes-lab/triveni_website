@@ -17,7 +17,7 @@ const defaultFleet = [
     luggage: '2 Bags',
     features: ['AC', 'Music System', 'Comfortable'],
     startingPrice: '₹9/km',
-    image: '/images/swift_dzire.jpg',
+    image: '/images/car/swift_dzire.jpg',
   },
   {
     name: 'Ertiga',
@@ -26,7 +26,7 @@ const defaultFleet = [
     luggage: '3 Bags',
     features: ['AC', 'Spacious', 'Family-friendly'],
     startingPrice: '₹12/km',
-    image: '/images/ertiga.jpg',
+    image: '/images/car/ertiga.jpg',
   },
   {
     name: 'Innova Crysta',
@@ -36,7 +36,7 @@ const defaultFleet = [
     features: ['AC', 'Premium', 'Captain Seats'],
     startingPrice: '₹15/km',
     popular: true,
-    image: '/images/innova_crysta.jpg',
+    image: '/images/car/innova_crysta.jpg',
   },
   {
     name: 'Tempo Traveller',

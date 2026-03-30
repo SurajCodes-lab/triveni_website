@@ -9,7 +9,7 @@ export const comparisonData = {
     category: 'Family Car Decision',
     vehicle1: {
       name: 'Toyota Innova Crysta',
-      image: '/images/fleet/innova-crysta.jpg',
+      image: '/images/car/innova_crysta.jpg',
       category: 'Premium MUV',
       seating: '6-7 passengers',
       bootSpace: 'Large (300L+)',
@@ -25,7 +25,7 @@ export const comparisonData = {
     },
     vehicle2: {
       name: 'Maruti Ertiga',
-      image: '/images/fleet/ertiga.jpg',
+      image: '/images/car/ertiga.jpg',
       category: 'Compact MPV',
       seating: '6-7 passengers',
       bootSpace: 'Medium (209L)',
@@ -81,7 +81,7 @@ export const comparisonData = {
     },
     vehicle2: {
       name: 'Mini Bus',
-      image: '/images/car/bus.webp',
+      image: '/images/bus/35_SEATER_BUS.jpg',
       category: '20-27 Seater',
       seating: '20-27 passengers',
       bootSpace: 'Large underfloor storage',
@@ -121,7 +121,7 @@ export const comparisonData = {
     category: 'Terrain-Based Choice',
     vehicle1: {
       name: 'Sedan (Swift Dzire)',
-      image: '/images/car/sedan.webp',
+      image: '/images/car/swift_dzire.jpg',
       category: 'Compact Sedan',
       seating: '4 passengers',
       bootSpace: 'Standard (378L)',
@@ -137,7 +137,7 @@ export const comparisonData = {
     },
     vehicle2: {
       name: 'SUV (Innova/Crysta)',
-      image: '/images/car/suv.webp',
+      image: '/images/car/premium_suv.jpg',
       category: 'Premium SUV/MUV',
       seating: '6-7 passengers',
       bootSpace: 'Large (300L+)',
@@ -177,7 +177,7 @@ export const comparisonData = {
     category: 'Premium SUV Comparison',
     vehicle1: {
       name: 'Toyota Fortuner',
-      image: '/images/fleet/fortuner.jpg',
+      image: '/images/car/premium_suv.jpg',
       category: 'Premium SUV',
       seating: '7 passengers',
       bootSpace: 'Large (296L expandable)',
@@ -193,7 +193,7 @@ export const comparisonData = {
     },
     vehicle2: {
       name: 'Toyota Innova Crysta',
-      image: '/images/fleet/innova-crysta.jpg',
+      image: '/images/car/innova_crysta.jpg',
       category: 'Premium MUV',
       seating: '7 passengers',
       bootSpace: 'Large (300L)',
@@ -289,7 +289,7 @@ export const comparisonData = {
     category: 'Wedding Transport',
     vehicle1: {
       name: 'Bus (40-56 Seater)',
-      image: '/images/car/bus.webp',
+      image: '/images/bus/35_SEATER_BUS.jpg',
       category: 'Large Coach',
       seating: '40-56 passengers',
       bootSpace: 'Massive underfloor cargo',
@@ -345,7 +345,7 @@ export const comparisonData = {
     category: 'Trip Type Comparison',
     vehicle1: {
       name: 'One-Way Cab',
-      image: '/images/car/sedan.webp',
+      image: '/images/car/swift_dzire.jpg',
       category: 'Single Direction',
       seating: '4-7 passengers',
       bootSpace: 'Standard',
@@ -361,7 +361,7 @@ export const comparisonData = {
     },
     vehicle2: {
       name: 'Round Trip Cab',
-      image: '/images/car/suv.webp',
+      image: '/images/car/premium_suv.jpg',
       category: 'Return Journey',
       seating: '4-7 passengers',
       bootSpace: 'Standard',
@@ -401,7 +401,7 @@ export const comparisonData = {
     category: 'Service Type Comparison',
     vehicle1: {
       name: 'Self-Drive Rental',
-      image: '/images/car/sedan.webp',
+      image: '/images/car/swift_dzire.jpg',
       category: 'You Drive',
       seating: '4-7 (you drive)',
       bootSpace: 'Full boot access',
@@ -417,7 +417,7 @@ export const comparisonData = {
     },
     vehicle2: {
       name: 'Chauffeur-Driven Car',
-      image: '/images/car/suv.webp',
+      image: '/images/car/premium_suv.jpg',
       category: 'Professional Driver',
       seating: '4-7 passengers + driver',
       bootSpace: 'Standard (driver bag takes small space)',

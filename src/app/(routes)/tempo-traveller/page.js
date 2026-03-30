@@ -27,7 +27,7 @@ export const metadata = {
     locale: 'en_IN',
     images: [
       {
-        url: '/images/tempo_hero_section.jpg',
+        url: '/images/tempo/17_seater.jpg',
         width: 1200,
         height: 630,
         alt: 'Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles with Professional Drivers - Triveni Cabs India',
@@ -40,7 +40,7 @@ export const metadata = {
     title: 'Tempo Traveller ₹23/km — 12-26 Seater AC 4.9★ | Book',
     description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
     site: '@trivenicabs',
-    images: ['/images/tempo_hero_section.jpg'],
+    images: ['/images/tempo/17_seater.jpg'],
   },
   robots: {
     index: true,
@@ -126,7 +126,7 @@ export default function TempoTravellerPage() {
         "dateModified": new Date().toISOString(),
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://www.trivenicabs.in/images/tempo_hero_section.jpg",
+          "url": "https://www.trivenicabs.in/images/tempo/17_seater.jpg",
           "width": 1200,
           "height": 630,
           "caption": "Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles - Triveni Cabs"

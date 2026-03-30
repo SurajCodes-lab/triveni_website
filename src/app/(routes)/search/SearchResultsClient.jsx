@@ -41,8 +41,8 @@ const CITY_IMAGES = {
   amritsar: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
   jaisalmer: "/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg",
   srinagar: "/images/sightseeing/Srinagar/Srinagar_hero_section.jpg",
-  jodhpur: "/images/sightseeing/Jodhpur/Jodhpur_hero_section.jpg",
-  mussoorie: "/images/sightseeing/Mussoorie/Mussoorie_hero_section.jpg",
+  jodhpur: "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+  mussoorie: "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
   nainital: "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
   dehradun: "/images/sightseeing/Dehradun/Dehradun_hero_section.jpg",
   lucknow: "/images/sightseeing/Lucknow/Lucknow_hero_section.jpg",
@@ -74,12 +74,42 @@ function VehicleCard({ vehicle, from, to, date, tripType, index }) {
   };
   const tc = tagColors[vehicle.tag] || { bg: 'bg-gray-50', text: 'text-gray-600', border: 'border-gray-200' };
 
-  // Get the right vehicle image
-  const vehicleImage = vehicle.category === 'bus'
-    ? '/images/bus/41_SEATER_BUS.jpg'
-    : vehicle.category === 'tempo'
-    ? '/images/tempo/17_seater.jpg'
-    : '/images/car/WhatsApp Image 2025-01-13 at 14.34.22 (1).webp';
+  // Smart vehicle image mapping by type and capacity
+  const getVehicleImage = () => {
+    const name = (vehicle.name || '').toLowerCase();
+    const seats = vehicle.seats || 0;
+
+    if (vehicle.category === 'car') {
+      if (name.includes('sedan') || name.includes('dzire') || name.includes('etios'))
+        return '/images/car/swift_dzire.jpg';
+      if (name.includes('ertiga'))
+        return '/images/car/ertiga.jpg';
+      if (name.includes('innova') || name.includes('crysta'))
+        return '/images/car/innova_crysta.jpg';
+      if (name.includes('suv') || name.includes('fortuner'))
+        return '/images/car/premium_suv.jpg';
+      if (seats <= 4) return '/images/car/swift_dzire.jpg';
+      if (seats <= 6) return '/images/car/ertiga.jpg';
+      return '/images/car/innova_crysta.jpg';
+    }
+
+    if (vehicle.category === 'tempo') {
+      const tempoMap = { 12: '12_seater', 16: '16_seater', 17: '17_seater', 20: '20_seater', 26: '26_seater' };
+      const sizes = [12, 16, 17, 20, 26];
+      const closest = sizes.reduce((prev, curr) => Math.abs(curr - seats) < Math.abs(prev - seats) ? curr : prev);
+      return `/images/tempo/${tempoMap[closest] || '17_seater'}.jpg`;
+    }
+
+    if (vehicle.category === 'bus') {
+      const busMap = { 22: '22_SEATER_BUS', 25: '25_SEATER_BUS', 27: '27_SEATER_BUS', 35: '35_SEATER_BUS', 41: '41_SEATER_BUS', 45: '45_SEATER_BUS', 49: '49_SEATER_BUS', 56: '56_SEATER_BUS' };
+      const sizes = [22, 25, 27, 35, 41, 45, 49, 56];
+      const closest = sizes.reduce((prev, curr) => Math.abs(curr - seats) < Math.abs(prev - seats) ? curr : prev);
+      return `/images/bus/${busMap[closest] || '41_SEATER_BUS'}.jpg`;
+    }
+
+    return '/images/car/innova_crysta.jpg';
+  };
+  const vehicleImage = getVehicleImage();
 
   return (
     <motion.div

@@ -128,7 +128,7 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
     "@type": "Product",
     "name": `${vehicle.type} Taxi Service ${cityName}`,
     "description": `Book ${vehicle.type} taxi in ${cityName}. ${vehicle.seating} seater vehicle with AC, GPS tracking and professional driver.`,
-    "image": vehicle.image?.startsWith('http') ? vehicle.image : `https://www.trivenicabs.in${vehicle.image || "/images/car/car1.webp"}`,
+    "image": vehicle.image?.startsWith('http') ? vehicle.image : `https://www.trivenicabs.in${vehicle.image || "/images/car/swift_dzire.jpg"}`,
     "brand": {
       "@type": "Brand",
       "name": "Triveni Cabs"
@@ -151,14 +151,14 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
         {/* Enhanced Vehicle Image */}
         <div className="relative h-40 md:h-48 bg-gray-100">
           <Image
-            src={vehicle.image || "/images/car/car1.webp"}
+            src={vehicle.image || "/images/car/swift_dzire.jpg"}
             alt={`${vehicle.type} taxi available for booking in ${cityName} - ${vehicle.seating} seater vehicle`}
             fill
             className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onLoad={() => setImageLoaded(true)}
             onError={(e) => {
-              e.target.src = "/images/car/car1.webp";
+              e.target.src = "/images/car/swift_dzire.jpg";
             }}
             itemProp="image"
             placeholder="blur"

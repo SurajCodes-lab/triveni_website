@@ -22,7 +22,7 @@ export const metadata = {
     siteName: "Triveni Cabs",
     images: [
       {
-        url: "https://www.trivenicabs.in/images/car/car2.webp",
+        url: "https://www.trivenicabs.in/images/car/innova_crysta.jpg",
         width: 1200,
         height: 630,
         alt: "Triveni Cabs Vehicle Fleet"
@@ -33,7 +33,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Vehicle Fleet | Triveni Cabs",
     description: "Sedan, SUV, Tempo Traveller & Bus rentals across India. Book now!",
-    images: ["https://www.trivenicabs.in/images/car/car2.webp"]
+    images: ["https://www.trivenicabs.in/images/car/innova_crysta.jpg"]
   },
   robots: {
     index: true,
@@ -52,7 +52,7 @@ const vehicleCategories = [
     luggage: "2 Large Bags",
     priceStart: "₹11/km",
     features: ["AC", "Music System", "Comfortable Seating", "Fuel Efficient"],
-    image: "/images/car/sedan.webp",
+    image: "/images/car/swift_dzire.jpg",
     bestFor: ["Airport Transfers", "Business Trips", "Couple Outings", "City Tours"]
   },
   {
@@ -64,7 +64,7 @@ const vehicleCategories = [
     luggage: "4 Large Bags",
     priceStart: "₹15/km",
     features: ["AC", "Extra Legroom", "Large Boot Space", "Hill Climb Power"],
-    image: "/images/car/suv.webp",
+    image: "/images/car/premium_suv.jpg",
     bestFor: ["Family Vacations", "Hill Station Trips", "Group Outings", "Long Distance"]
   },
   {

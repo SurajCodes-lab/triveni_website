@@ -741,7 +741,7 @@ import {
   export const vehiclesServices = [
     {
       type: "Sedan",
-      image: "/images/car/car1.webp",
+      image: "/images/car/swift_dzire.jpg",
       imageAlt: "Sedan taxi for hire - comfortable 4-seater AC car with professional driver, ideal for airport transfers and business trips",
       seating: "4 passengers",
       rating: "4.9",
@@ -755,7 +755,7 @@ import {
     },
     {
       type: "SUV",
-      image: "/images/car/car2.webp",
+      image: "/images/car/premium_suv.jpg",
       imageAlt: "SUV rental with driver - spacious 6-7 seater vehicle with extra legroom for family trips, group tours, and long-distance travel",
       seating: "6-7 passengers",
       perKm: "₹15/km",
@@ -795,7 +795,7 @@ import {
     },
     {
       type: "Luxury Bus",
-      image: "/images/car/luxury_bus.webp",
+      image: "/images/bus/45_SEATER_BUS.jpg",
       imageAlt: "Luxury Volvo AC bus with pushback seats - 30 to 55 seater coach with washroom facility for extended group tours",
       seating: "30-55 passengers",
       perKm: "₹30/km",
@@ -840,12 +840,9 @@ import {
     {
       id: "1",
       type: "Sedan",
-      image: "/images/car/sedan.webp",
+      image: "/images/car/swift_dzire.jpg",
       gallery: [
-        "/images/car/sedan.webp",
-        "/images/car/sedan-interior.webp",
-        "/images/car/sedan-side.webp",
-        "/images/car/sedan-back.webp",
+        "/images/car/swift_dzire.jpg",
       ],
       rating: "4.9",
       reviews: "128",
@@ -882,13 +879,9 @@ import {
     {
       id: "2",
       type: "SUV",
-      image: "/images/car/suv.webp",
+      image: "/images/car/premium_suv.jpg",
       gallery: [
-        "/images/car/suv.webp",
-        "/images/car/suv2.webp",
-        "/images/car/suv-interior.webp",
-        "/images/car/suv-side.webp",
-        "/images/car/suv-back.webp",
+        "/images/car/premium_suv.jpg",
       ],
       rating: "4.8",
       reviews: "120",
@@ -1168,7 +1161,7 @@ import {
           duration: "3 Days",
           highlights: ["Bollywood tour", "Street food", "Night safari"],
           price: "₹12,999",
-          image: "/images/home/banner2.jpg",
+          image: "/images/HERO_SECTION_MAIN_PAGE.jpg",
         },
       ],
       heroImage: "/images/destinations/mumbai.webp",

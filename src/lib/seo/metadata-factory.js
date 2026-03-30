@@ -58,7 +58,7 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
       url: `${BASE_URL}/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/car/car1.webp`,
+        url: `${BASE_URL}/images/car/swift_dzire.jpg`,
         width: 1200,
         height: 630,
         alt: `${origin} to ${destination} Taxi Service — Triveni Cabs`
@@ -244,7 +244,7 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
       url: `${BASE_URL}/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/car/car2.webp`,
+        url: `${BASE_URL}/images/car/innova_crysta.jpg`,
         width: 1200,
         height: 630,
         alt: `${city} Cab Service — Triveni Cabs`
@@ -465,7 +465,7 @@ export function generateWeddingMetadata({ city, slug }) {
       url: `${BASE_URL}/wedding/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/wedding_section.jpg`,
+        url: `${BASE_URL}/images/wedding/luxury_car.jpg`,
         width: 1200,
         height: 630,
         alt: `${city} Wedding Car Rental — Triveni Cabs`
@@ -575,7 +575,7 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
       url: `${BASE_URL}/tempo-traveller/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: `${BASE_URL}/images/tempo_hero_section.jpg`,
+        url: `${BASE_URL}/images/tempo/17_seater.jpg`,
         width: 1200,
         height: 630,
         alt: `${origin} to ${destination} Tempo Traveller — Triveni Cabs`

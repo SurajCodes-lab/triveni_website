@@ -46,9 +46,9 @@ const cityHeroData = {
 
 // Vehicle image mapping
 const vehicleImageMap = {
-  'Sedan': '/images/car/car1.webp',
-  'SUV Ertiga': '/images/car/car2.webp',
-  'SUV Innova': '/images/car/car2.webp',
+  'Sedan': '/images/car/swift_dzire.jpg',
+  'SUV Ertiga': '/images/car/ertiga.jpg',
+  'SUV Innova': '/images/car/innova_crysta.jpg',
   '12 Seater Tempo': '/images/tempo/12_seater.jpg',
   '16 Seater Tempo': '/images/tempo/16_seater.jpg',
   '17 Seater Tempo': '/images/tempo/17_seater.jpg',
@@ -612,7 +612,7 @@ export default function RouteClientContent({
                     {/* Image Section */}
                     <div className="relative h-52 bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden">
                       <Image
-                        src={vehicleImageMap[vehicle.vehicle] || '/images/car/car1.webp'}
+                        src={vehicleImageMap[vehicle.vehicle] || '/images/car/swift_dzire.jpg'}
                         alt={`${vehicle.vehicle} cab`}
                         fill
                         className={`object-contain p-6 transition-transform duration-500 ${isHovered ? 'scale-110' : ''}`}
@@ -705,9 +705,9 @@ export default function RouteClientContent({
             }) : (
               // Fallback vehicles with same modern style
               [
-                { name: 'Sedan', price: '₹2,760', seats: '4', image: '/images/car/car1.webp' },
-                { name: 'SUV Ertiga', price: '₹3,450', seats: '6', image: '/images/car/car2.webp' },
-                { name: 'SUV Innova', price: '₹4,140', seats: '7', image: '/images/car/car2.webp' }
+                { name: 'Sedan', price: '₹2,760', seats: '4', image: '/images/car/swift_dzire.jpg' },
+                { name: 'SUV Ertiga', price: '₹3,450', seats: '6', image: '/images/car/ertiga.jpg' },
+                { name: 'SUV Innova', price: '₹4,140', seats: '7', image: '/images/car/innova_crysta.jpg' }
               ].map((v, i) => (
                 <motion.div
                   key={i}

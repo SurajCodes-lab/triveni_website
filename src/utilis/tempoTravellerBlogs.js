@@ -145,7 +145,7 @@ export const tempoTravellerBlogs = [
 
     date: "2026-01-15",
     readTime: "12 min read",
-    image: "/images/car/tempo_traveller.webp",
+    image: "/images/tempo/17_seater.jpg",
     category: "Vehicle Guide",
     tags: ["Tempo Traveller", "Delhi", "Rental", "Group Travel", "Vehicle Guide"],
     keywords: ["tempo traveller rental delhi", "12 seater tempo traveller", "tempo traveller booking", "delhi tempo traveller price", "group travel delhi"],
@@ -519,7 +519,7 @@ export const tempoTravellerBlogs = [
 
     date: "2026-01-12",
     readTime: "11 min read",
-    image: "/images/sightseeing/Agra/agra_hero_section.jpg",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     category: "Day Trip",
     tags: ["Delhi to Agra", "Taj Mahal", "Same Day Tour", "Tempo Traveller", "Day Trip"],
     keywords: ["delhi to agra tempo traveller", "agra same day tour", "taj mahal day trip", "agra group tour", "tempo traveller agra"],
@@ -1041,7 +1041,7 @@ export const tempoTravellerBlogs = [
 
     date: "2026-01-07",
     readTime: "10 min read",
-    image: "/images/car/tempo_traveller.webp",
+    image: "/images/tempo/17_seater.jpg",
     category: "Wedding",
     tags: ["Wedding", "Tempo Traveller", "Delhi", "Guest Transportation", "Baraat"],
     keywords: ["wedding tempo traveller", "wedding guest transport delhi", "baraat vehicle rental", "wedding transportation delhi"],
@@ -1153,7 +1153,7 @@ export const tempoTravellerBlogs = [
 
     date: "2026-01-06",
     readTime: "11 min read",
-    image: "/images/car/tempo_traveller.webp",
+    image: "/images/tempo/17_seater.jpg",
     category: "Corporate",
     tags: ["Corporate", "Tempo Traveller", "Delhi", "Team Outing", "Office Transport"],
     keywords: ["corporate tempo traveller delhi", "office outing transport", "team building vehicle", "corporate event transportation"],
@@ -1362,7 +1362,7 @@ export const tempoTravellerBlogs = [
 
     date: "2026-01-04",
     readTime: "10 min read",
-    image: "/images/car/tempo_traveller.webp",
+    image: "/images/tempo/17_seater.jpg",
     category: "School",
     tags: ["School Picnic", "Tempo Traveller", "Delhi", "Student Transport", "Educational Tour"],
     keywords: ["school picnic tempo traveller", "student bus rental delhi", "school trip transport", "educational tour delhi"],

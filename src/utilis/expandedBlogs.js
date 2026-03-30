@@ -149,7 +149,7 @@ export const busBlogs = [
 
     date: "2026-01-15",
     readTime: "18 min read",
-    image: "/images/car/luxury_bus.webp",
+    image: "/images/bus/45_SEATER_BUS.jpg",
     category: "Adventure",
     tags: ["Spiti Valley", "Bus Tour", "Adventure Travel", "Himachal Pradesh", "Group Travel"],
     keywords: ["spiti valley bus tour", "delhi to spiti by bus", "spiti valley group tour", "volvo bus spiti", "spiti valley road trip", "kaza bus tour"],
@@ -1032,7 +1032,7 @@ export const busBlogs = [
 
     date: "2026-01-08",
     readTime: "15 min read",
-    image: "/images/sightseeing/Agra/agra_hero_section.jpg",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     category: "Heritage",
     tags: ["Golden Triangle", "Delhi", "Agra", "Jaipur", "Taj Mahal", "Bus Tour"],
     keywords: ["golden triangle bus tour", "delhi agra jaipur bus", "taj mahal bus tour", "golden triangle group tour", "india heritage tour"],

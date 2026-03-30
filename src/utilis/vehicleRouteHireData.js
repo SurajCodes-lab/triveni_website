@@ -12,7 +12,7 @@ const vehicles = {
     perKm: 14,
     idealFor: ["Family trips", "Hill stations"],
     features: ["Spacious", "Powerful engine", "Large boot"],
-    image: "/images/car/car1.webp",
+    image: "/images/car/innova_crysta.jpg",
   },
   "fortuner": {
     name: "Toyota Fortuner",
@@ -24,7 +24,7 @@ const vehicles = {
     perKm: 22,
     idealFor: ["Luxury travel", "Mountain roads", "Leh-Ladakh"],
     features: ["4x4 capable", "Premium comfort", "Powerful"],
-    image: "/images/car/car1.webp",
+    image: "/images/car/premium_suv.jpg",
   },
   "ertiga": {
     name: "Maruti Ertiga",
@@ -36,7 +36,7 @@ const vehicles = {
     perKm: 13,
     idealFor: ["Budget family", "City tours"],
     features: ["Fuel efficient", "Comfortable", "Value for money"],
-    image: "/images/car/car1.webp",
+    image: "/images/car/ertiga.jpg",
   },
   "dzire": {
     name: "Maruti Dzire",
@@ -48,7 +48,7 @@ const vehicles = {
     perKm: 11,
     idealFor: ["Couples", "Solo", "Business"],
     features: ["Compact", "Fuel efficient", "City-friendly"],
-    image: "/images/car/car1.webp",
+    image: "/images/car/swift_dzire.jpg",
   },
   "innova-crysta": {
     name: "Innova Crysta",
@@ -60,7 +60,7 @@ const vehicles = {
     perKm: 18,
     idealFor: ["Premium family", "Business"],
     features: ["Captain seats", "Premium interiors", "Smooth ride"],
-    image: "/images/car/car1.webp",
+    image: "/images/car/innova_crysta.jpg",
   },
   "traveller-12-seater": {
     name: "Force Traveller",
@@ -72,7 +72,7 @@ const vehicles = {
     perKm: 20,
     idealFor: ["Groups", "Pilgrimages", "Corporate"],
     features: ["Spacious", "Push-back seats", "Luggage carrier"],
-    image: "/images/car/car1.webp",
+    image: "/images/tempo/12_seater.jpg",
   },
 };
 

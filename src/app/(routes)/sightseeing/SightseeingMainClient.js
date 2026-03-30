@@ -526,7 +526,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 tagline: "Amber Fort • Hawa Mahal • City Palace",
                 tours: "7+ Tours",
                 gradient: "from-pink-500 via-rose-500 to-red-500",
-                image: "/images/sightseeing/Jaipur/Jaipur_hero_section.jpg"
+                image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg"
               },
               {
                 name: "Udaipur",
@@ -535,7 +535,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 tagline: "Lake Palace • City Palace • Pichola",
                 tours: "5+ Tours",
                 gradient: "from-blue-400 via-cyan-500 to-teal-500",
-                image: "/images/destinations/udaipur.jpg"
+                image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg"
               },
               {
                 name: "Varanasi",
@@ -544,7 +544,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 tagline: "Ghats • Temples • Ganga Aarti",
                 tours: "4+ Tours",
                 gradient: "from-orange-500 via-amber-500 to-yellow-500",
-                image: "/images/destinations/varanasi.jpg"
+                image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg"
               },
               {
                 name: "Jodhpur",
@@ -553,7 +553,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 tagline: "Mehrangarh • Jaswant Thada • Blue Streets",
                 tours: "4+ Tours",
                 gradient: "from-blue-500 via-indigo-500 to-violet-500",
-                image: "/images/destinations/jodhpur.jpg"
+                image: "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg"
               }
             ].map((city, index) => (
               <motion.div

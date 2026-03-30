@@ -217,7 +217,7 @@ const SERVICES = [
     icon: Car,
     href: '/outstation-cabs',
     gradient: 'from-blue-500 to-indigo-600',
-    image: '/images/innova_crysta.jpg',
+    image: '/images/car/innova_crysta.jpg',
   },
   {
     title: 'Airport Transfers',

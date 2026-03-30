@@ -162,7 +162,7 @@ export const weddingCarModels = {
     title: 'Vintage Car Wedding Rental',
     metaTitle: 'Vintage Car Wedding Rental | Classic Cars for Marriage | Triveni Cabs',
     metaDescription: 'Rent vintage car for wedding. Classic Ambassador, Rolls Royce style, retro cars for bride/groom entry. Royal vintage wedding car. Call 7668570551.',
-    heroImage: '/images/wedding/luxury_car.jpg',
+    heroImage: '/images/wedding/vintage_car.jpg',
     tagline: 'Timeless Charm for Your Wedding',
     subtitle: 'Step Into History With Our Vintage Collection',
     description: 'Add a touch of old-world charm to your wedding with our vintage car collection. Triveni Cabs offers beautifully restored classic cars including the iconic Ambassador, vintage-style luxury cars, and retro vehicles that create stunning photo opportunities and unforgettable wedding memories.',

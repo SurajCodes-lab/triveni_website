@@ -50,7 +50,7 @@ const comparisonData = {
   },
   bus: {
     name: "Bus",
-    image: "/images/car/bus.webp",
+    image: "/images/bus/35_SEATER_BUS.jpg",
     price: "₹55/km",
     capacity: "28-55 Passengers",
     luggage: "Large Cargo Hold",

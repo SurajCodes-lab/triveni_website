@@ -228,7 +228,7 @@ export const eventCities = {
     title: 'Event Transportation Service in Jaipur',
     metaTitle: 'Event Transportation Jaipur | Royal Wedding Transport | Triveni Cabs',
     metaDescription: 'Royal event transportation in Jaipur. Palace weddings, corporate events, MICE logistics. Experienced in heritage venues. Call 7668570551.',
-    heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section.jpg',
+    heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
     tagline: 'Pink City Royal Events',
     subtitle: 'India Premier Wedding & Event Destination',
     description: 'Jaipur, the Pink City, offers unparalleled royal wedding experiences at majestic palaces and heritage hotels. Triveni Cabs brings extensive experience in managing transportation for palace weddings at City Palace, Samode, and Rambagh, along with corporate events at JKK and JECC. Experience royal treatment for your guests.',
@@ -646,7 +646,7 @@ export const eventTypes = [
     metaTitle: 'Corporate Event Transportation | Conference & Seminar Transport | Triveni Cabs',
     metaDescription: 'Corporate event transportation for conferences, seminars, product launches. Airport transfers, venue shuttles, executive cars. Get quote!',
     keywords: ['corporate event transport', 'conference transportation', 'seminar bus hire', 'corporate shuttle service', 'event logistics'],
-    heroImage: '/images/citypage_hero_section.jpg',
+    heroImage: '/images/citypage_hero_section_image.jpg',
     color: 'from-blue-500 to-indigo-600',
     features: [
       { icon: '✈️', title: 'Airport Transfers', description: 'Meet & greet for delegates arriving by air' },
@@ -846,7 +846,7 @@ export const eventTypes = [
     metaTitle: 'School & College Event Transportation | Educational Tour Bus | Triveni Cabs',
     metaDescription: 'Safe transportation for school trips, college fests, educational tours. GPS tracking, verified drivers. Book school bus now!',
     keywords: ['school bus hire', 'college fest transport', 'educational tour bus', 'school excursion', 'student transportation'],
-    heroImage: '/images/citypage_hero_section.jpg',
+    heroImage: '/images/citypage_hero_section_image.jpg',
     color: 'from-cyan-500 to-blue-600',
     features: [
       { icon: '🏫', title: 'School Excursions', description: 'Safe transport for field trips and picnics' },
@@ -946,7 +946,7 @@ export const eventTypes = [
     metaTitle: 'Political Rally Bus Rental | Election Campaign Transport | Triveni Cabs',
     metaDescription: 'Political rally transportation and bus rental services. Large fleet for crowd transport. Campaign buses, rally shuttles. Call 7668570551.',
     keywords: ['political rally bus rental', 'election campaign transport', 'rally crowd bus', 'political event logistics', 'mass transportation rally'],
-    heroImage: '/images/citypage_hero_section.jpg',
+    heroImage: '/images/citypage_hero_section_image.jpg',
     color: 'from-orange-500 to-red-600',
     features: [
       { icon: '🚌', title: 'Mass Transport', description: 'Large fleet of buses for crowd movement' },
@@ -996,7 +996,7 @@ export const eventTypes = [
     metaTitle: 'Exhibition Visitor Shuttle Service | Trade Show Transport | Triveni Cabs',
     metaDescription: 'Exhibition and trade show shuttle services. Visitor transport, exhibitor logistics. Auto Expo, IITF, trade fairs. Call 7668570551.',
     keywords: ['exhibition visitor shuttle service', 'trade show transport', 'expo shuttle bus', 'exhibition logistics', 'visitor shuttle hire'],
-    heroImage: '/images/citypage_hero_section.jpg',
+    heroImage: '/images/citypage_hero_section_image.jpg',
     color: 'from-violet-500 to-purple-600',
     features: [
       { icon: '🚐', title: 'Visitor Shuttles', description: 'Regular loops between metro, hotels, and venue' },

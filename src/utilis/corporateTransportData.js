@@ -62,7 +62,7 @@ export const corporateFleet = [
     features: ['AC', 'Leather Seats', 'Music System', 'GPS Tracking'],
     priceRange: '₹12-15/km',
     icon: '🚗',
-    image: '/images/wedding/luxury_car.jpg'
+    image: '/images/car/swift_dzire.jpg'
   },
   {
     id: 'suv',
@@ -73,7 +73,7 @@ export const corporateFleet = [
     features: ['AC', 'Spacious', 'Premium Interiors', 'GPS Tracking'],
     priceRange: '₹16-20/km',
     icon: '🚙',
-    image: '/images/wedding/premium_suv.jpg'
+    image: '/images/car/innova_crysta.jpg'
   },
   {
     id: 'tempo',

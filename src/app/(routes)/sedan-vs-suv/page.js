@@ -25,7 +25,7 @@ export const metadata = {
 const comparisonData = {
   sedan: {
     name: "Sedan",
-    image: "/images/car/sedan.webp",
+    image: "/images/car/swift_dzire.jpg",
     price: "₹11/km",
     capacity: "4 Passengers",
     luggage: "2 Large Bags",
@@ -50,7 +50,7 @@ const comparisonData = {
   },
   suv: {
     name: "SUV",
-    image: "/images/car/suv.webp",
+    image: "/images/car/premium_suv.jpg",
     price: "₹15/km",
     capacity: "6-7 Passengers",
     luggage: "4 Large Bags",

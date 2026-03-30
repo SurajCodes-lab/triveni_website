@@ -104,7 +104,7 @@ export function normalizeBlogPost(post) {
   return {
     ...post,
     // Ensure image field exists (use heroImage as fallback)
-    image: post.image || post.heroImage || '/images/car/luxury_bus.webp',
+    image: post.image || post.heroImage || '/images/bus/45_SEATER_BUS.jpg',
     // Ensure date field exists (use publishDate as fallback)
     date: post.date || post.publishDate || '2026-01-15',
     // Convert Markdown content to HTML if needed

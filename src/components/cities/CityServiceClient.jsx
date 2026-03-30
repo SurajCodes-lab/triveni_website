@@ -228,9 +228,9 @@ const cityHeroData = {
 
 // Vehicle data
 const vehicleTypes = [
-  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/car1.webp', rating: '4.9' },
-  { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/car2.webp', rating: '4.8' },
-  { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/car2.webp', rating: '4.9' },
+  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/swift_dzire.jpg', rating: '4.9' },
+  { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/ertiga.jpg', rating: '4.8' },
+  { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/innova_crysta.jpg', rating: '4.9' },
   { type: 'Tempo Traveller', seats: '12-17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
   { type: 'Mini Bus', seats: '22-27', price: '₹28/km', image: '/images/bus/25_SEATER_BUS.jpg', rating: '4.7' },
   { type: 'Luxury Bus', seats: '35-56', price: '₹35/km', image: '/images/bus/45_SEATER_BUS.jpg', rating: '4.8' }
