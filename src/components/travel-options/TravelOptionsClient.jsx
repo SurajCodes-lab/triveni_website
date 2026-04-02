@@ -2,295 +2,382 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
-  Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2,
-  Route, MapPin, Star, Users, Sparkles, Award, ChevronRight, Zap
+  Phone, ArrowRight, Clock, Car, CheckCircle2, Star, Users, MapPin,
+  Shield, ChevronRight, Award, Bus, Plane, TrainFront, Navigation,
 } from '@/components/ui/icons';
+import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import ScrollReveal from '@/components/shared/ScrollReveal';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import CTASection from '@/components/shared/CTASection';
+import MobileStickyBar from '@/components/ui/MobileStickyBar';
 
-const modeIcons = { Car: '🚗', Bus: '🚌', Train: '🚂', Flight: '✈️' };
-const modeColors = { Car: 'purple', Bus: 'green', Train: 'blue', Flight: 'sky' };
+const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
-function ComfortBar({ value, max = 5, activeClass = 'bg-purple-400' }) {
+const MODE_CONFIG = {
+  Car:    { Icon: Car,        color: 'emerald', bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', bar: 'bg-emerald-500', badge: 'bg-emerald-600', ring: 'ring-emerald-200', darkBg: 'bg-emerald-500/10', darkBorder: 'border-emerald-500/20' },
+  Bus:    { Icon: Bus,        color: 'blue',    bg: 'bg-blue-50',    border: 'border-blue-200',    text: 'text-blue-600',    bar: 'bg-blue-500',    badge: 'bg-blue-600',    ring: 'ring-blue-200',    darkBg: 'bg-blue-500/10',    darkBorder: 'border-blue-500/20' },
+  Train:  { Icon: TrainFront, color: 'amber',   bg: 'bg-amber-50',   border: 'border-amber-200',   text: 'text-amber-600',   bar: 'bg-amber-500',   badge: 'bg-amber-600',   ring: 'ring-amber-200',   darkBg: 'bg-amber-500/10',   darkBorder: 'border-amber-500/20' },
+  Flight: { Icon: Plane,      color: 'violet',  bg: 'bg-violet-50',  border: 'border-violet-200',  text: 'text-violet-600',  bar: 'bg-violet-500',  badge: 'bg-violet-600',  ring: 'ring-violet-200',  darkBg: 'bg-violet-500/10',  darkBorder: 'border-violet-500/20' },
+};
+
+function MetricBar({ value, max = 5, barClass = 'bg-emerald-500' }) {
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-0.5">
       {Array.from({ length: max }, (_, i) => (
-        <div key={i} className={`w-4 h-2 rounded-full ${i < value ? activeClass : 'bg-white/10'}`} />
+        <div key={i} className={`h-2 flex-1 rounded-full ${i < value ? barClass : 'bg-slate-200'}`} />
       ))}
     </div>
   );
 }
 
 export default function TravelOptionsClient({ route, relatedRoutes }) {
-  const [openFaq, setOpenFaq] = useState(null);
+  const [activeMode, setActiveMode] = useState('Car');
 
   const whatsappMsg = `Hi, I want to book a cab from ${route.origin} to ${route.destination}`;
   const carMode = route.modes.find(m => m.mode === 'Car');
   const availableModes = route.modes.filter(m => m.comfort > 0);
-  const fastestMode = [...availableModes].sort((a, b) => a.duration.length - b.duration.length)[0];
-  const cheapestMode = availableModes[0]; // Bus is typically cheapest
-  const bestComfort = [...availableModes].sort((a, b) => b.comfort - a.comfort)[0];
+  const heroImage = getCityImage(route.origin);
+  const selectedMode = route.modes.find(m => m.mode === activeMode);
+  const selectedConfig = MODE_CONFIG[activeMode] || MODE_CONFIG.Car;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
+    <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
 
-      <style jsx global>{`
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
-        @keyframes float-slow { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-        @keyframes pulse-glow { 0%,100% { box-shadow: 0 0 30px rgba(168,85,247,0.2); } 50% { box-shadow: 0 0 60px rgba(168,85,247,0.5); } }
-        @keyframes gradient-x { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        @keyframes morph { 0%,100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; } 50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; } }
-        @keyframes glow-pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
-        .animate-gradient-x { background-size: 200% 200%; animation: gradient-x 6s ease infinite; }
-        .animate-morph { animation: morph 8s ease-in-out infinite; }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-        .animate-glow { animation: glow-pulse 2s ease-in-out infinite; }
-        .glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); }
-        .glass-card-hover:hover { background: rgba(255,255,255,0.06); border-color: rgba(168,85,247,0.3); box-shadow: 0 8px 32px rgba(168,85,247,0.1); transform: translateY(-2px); }
-        .glass-strong { background: rgba(255,255,255,0.05); backdrop-filter: blur(40px); border: 1px solid rgba(255,255,255,0.08); }
-        .text-glow { text-shadow: 0 0 40px rgba(168,85,247,0.5), 0 0 80px rgba(217,70,239,0.3); }
-      `}</style>
-
-      {/* HERO */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950/50 to-fuchsia-950/30 animate-gradient-x" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(168,85,247,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.5) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        <div className="absolute top-[15%] left-[5%] w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] animate-morph" />
-        <div className="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-fuchsia-500/12 rounded-full blur-[120px] animate-morph" style={{ animationDelay: '-4s' }} />
-
-        <div className="absolute -bottom-1 left-0 right-0 h-32">
-          <svg viewBox="0 0 1440 120" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,80 C240,120 480,20 720,60 C960,100 1200,30 1440,70 L1440,120 L0,120 Z" fill="#020617" />
-          </svg>
+      {/* ━━━ HERO: Multi-modal transport selector ━━━ */}
+      <section className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-end overflow-hidden">
+        <Image src={heroImage} alt={`${route.origin} to ${route.destination} travel options`} fill priority className="object-cover" sizes="100vw" quality={85} placeholder="blur" blurDataURL={heroBlurDataURL} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 z-20 flex">
+          <div className="flex-1 bg-emerald-500" />
+          <div className="flex-1 bg-blue-500" />
+          <div className="flex-1 bg-amber-500" />
+          <div className="flex-1 bg-violet-500" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-32">
-          <div className="inline-flex items-center gap-2.5 glass-strong px-6 py-3 rounded-full mb-10 border border-purple-500/25 animate-glow">
-            <Zap className="w-4 h-4 text-purple-400" />
-            <span className="text-purple-300 font-semibold text-sm tracking-wide">Smart Travel Comparator</span>
-          </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pb-8 sm:pb-12">
+          <nav className="mb-6 flex items-center gap-1.5 text-xs text-white/40">
+            <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <Link href="/travel-options" className="hover:text-white/70 transition-colors">Travel Options</Link>
+            <ChevronRight className="w-3 h-3" />
+            <span className="text-white/60">{route.origin} to {route.destination}</span>
+          </nav>
 
-          <div className="flex items-center gap-4 sm:gap-6 mb-6 flex-wrap">
-            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black text-white">{route.origin}</span>
-            <ArrowRight className="w-8 h-8 sm:w-10 sm:h-10 text-purple-400" />
-            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400">{route.destination}</span>
-          </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
+                <Navigation className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-widest">Multi-Modal Hub</span>
+              </div>
+              <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">How to Reach</p>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+                {route.origin}<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-violet-400">{route.destination}</span>
+              </h1>
+              <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg">Compare Car, Bus, Train, and Flight -- find the best way to travel</p>
 
-          <h1 className="text-xl md:text-2xl text-white/40 mb-8 max-w-3xl font-medium">
-            Compare <span className="text-purple-400 font-bold">Car vs Train vs Bus vs Flight</span> — Find the best way to travel
-          </h1>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <a onClick={() => trackPhoneCall('travel_options_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
+                  <Phone className="w-4 h-4" /> Call 7668570551
+                </a>
+                <a onClick={() => trackWhatsAppClick('travel_options_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">
+                  {WA} WhatsApp Quote
+                </a>
+              </div>
+            </div>
 
-          <div className="flex flex-wrap gap-3 mb-12">
-            {[
-              { icon: Car, text: `Cab from ${carMode?.cost || 'N/A'}` },
-              { icon: Clock, text: `Car: ${carMode?.duration || 'N/A'}` },
-              { icon: Star, text: '4.9★ Rating', special: true },
-            ].map((pill, i) => (
-              <span key={i} className={`inline-flex items-center gap-2 backdrop-blur-2xl px-5 py-3 rounded-2xl text-sm font-medium ${pill.special ? 'bg-yellow-500/10 border border-yellow-500/25 text-yellow-300' : 'glass-card border-white/10 text-white/70'} transition-all`}>
-                <pill.icon className={`w-4 h-4 ${pill.special ? 'text-yellow-400' : 'text-purple-400'}`} /> {pill.text}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link onClick={() => trackPhoneCall('travel_options')} href="tel:+917668570551" className="group inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:shadow-[0_0_60px_rgba(168,85,247,0.5)] hover:scale-105 transition-all">
-              <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
-            </Link>
-            <Link onClick={() => trackWhatsAppClick('travel_options')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="group inline-flex items-center gap-3 glass-strong text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/15 hover:border-purple-500/40 transition-all">
-              <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.318 0-4.468-.67-6.29-1.823l-.451-.27-2.649.888.888-2.649-.27-.451A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            {/* Quick stat card */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Modes</p>
+                  <p className="text-2xl font-black text-white leading-tight">{availableModes.length}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">By Car</p>
+                  <p className="text-sm font-bold text-white/80">{carMode?.duration || '--'}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Cab Fare</p>
+                  <p className="text-sm font-bold text-[#FACF2D]">{carMode?.cost || '--'}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Booking</p>
+                  <p className="text-sm font-bold text-white/80">24/7</p>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
+                <div className="flex -space-x-1">{[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}</div>
+                <span className="text-[11px] text-white/40">4.9 · 10,000+ trips</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4-WAY COMPARISON */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.05),transparent_70%)]" />
-        <div className="relative max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-purple-400 font-semibold text-xs tracking-widest uppercase mb-4">
-              <Zap className="w-3.5 h-3.5" /> 4-Way Comparison
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight">Compare All Options</h2>
-            <p className="text-white/40 mt-4 text-lg">{route.origin} to {route.destination} — every way to get there</p>
-          </div>
+      {/* ━━━ MODE SELECTOR STRIP ━━━ */}
+      <section className="bg-slate-900 py-4 sm:py-5 px-4 sm:px-6 overflow-x-auto">
+        <div className="max-w-4xl mx-auto flex items-center justify-center gap-2 sm:gap-3">
+          {route.modes.map((mode) => {
+            const cfg = MODE_CONFIG[mode.mode] || MODE_CONFIG.Car;
+            const isAvailable = mode.comfort > 0;
+            const isActive = activeMode === mode.mode;
+            return (
+              <button key={mode.mode} onClick={() => isAvailable && setActiveMode(mode.mode)}
+                className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm transition-all flex-shrink-0 ${
+                  !isAvailable ? 'opacity-30 cursor-not-allowed bg-white/5 text-white/30' :
+                  isActive ? `${cfg.bar} text-white shadow-lg` :
+                  'bg-white/10 text-white/60 hover:bg-white/15 hover:text-white/80'
+                }`}>
+                <cfg.Icon className="w-4 h-4" />
+                <span className="hidden sm:inline">{mode.mode}</span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* ━━━ 4 LARGE TRANSPORT MODE CARDS ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1">4-Way Comparison</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">{route.origin} to {route.destination} -- Every Way to Get There</h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {route.modes.map((mode, i) => {
+              const cfg = MODE_CONFIG[mode.mode] || MODE_CONFIG.Car;
               const isAvailable = mode.comfort > 0;
-              const isBestValue = mode.mode === 'Car';
-              const isFastest = mode === fastestMode;
-              const isMostComfortable = mode === bestComfort;
+              const isActive = activeMode === mode.mode;
+              const isBest = mode.mode === 'Car';
 
               return (
-                <div key={i} className={`group glass-card rounded-[2rem] p-6 transition-all duration-500 relative ${!isAvailable ? 'opacity-40' : 'glass-card-hover'} ${isBestValue ? 'ring-2 ring-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.1)]' : ''}`}>
-                  {/* Badges */}
-                  {isAvailable && isBestValue && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.15em]">Best Value</span>
-                    </div>
-                  )}
-                  {isAvailable && isFastest && !isBestValue && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.15em]">Fastest</span>
-                    </div>
-                  )}
+                <ScrollReveal key={i} delay={i * 80}>
+                  <div onClick={() => isAvailable && setActiveMode(mode.mode)}
+                    className={`relative cursor-pointer rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
+                      !isAvailable ? 'opacity-50 border-slate-200 bg-slate-50' :
+                      isActive ? `${cfg.border} shadow-lg ring-2 ${cfg.ring} bg-white` :
+                      'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
+                    }`}>
+                    {/* Color accent */}
+                    <div className={`h-1.5 ${cfg.bar}`} />
 
-                  <div className="text-center mb-6">
-                    <div className="text-4xl mb-2">{modeIcons[mode.mode] || '🚗'}</div>
-                    <h3 className="text-xl font-black">{mode.mode}</h3>
+                    {isAvailable && isBest && (
+                      <div className="absolute top-5 right-4 z-10">
+                        <span className={`${cfg.badge} text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-wider`}>Best Value</span>
+                      </div>
+                    )}
+
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className={`w-12 h-12 rounded-xl ${cfg.bg} flex items-center justify-center`}>
+                          <cfg.Icon className={`w-6 h-6 ${cfg.text}`} />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-black text-slate-900">{mode.mode}</h3>
+                          {isAvailable && <p className="text-xs text-slate-400">{mode.bestFor}</p>}
+                        </div>
+                      </div>
+
+                      {isAvailable ? (
+                        <>
+                          <div className="grid grid-cols-2 gap-4 mb-5">
+                            <div>
+                              <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-0.5">Duration</p>
+                              <p className="text-lg font-black text-slate-900">{mode.duration}</p>
+                            </div>
+                            <div>
+                              <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-0.5">Cost</p>
+                              <p className={`text-lg font-black ${cfg.text}`}>{mode.cost}</p>
+                            </div>
+                          </div>
+
+                          {/* Visual bars */}
+                          <div className="space-y-3">
+                            <div>
+                              <div className="flex items-center justify-between mb-1">
+                                <span className="text-[10px] text-slate-400 uppercase tracking-wider">Comfort</span>
+                                <span className="text-[10px] font-bold text-slate-500">{mode.comfort}/5</span>
+                              </div>
+                              <MetricBar value={mode.comfort} barClass={cfg.bar} />
+                            </div>
+                            <div>
+                              <div className="flex items-center justify-between mb-1">
+                                <span className="text-[10px] text-slate-400 uppercase tracking-wider">Flexibility</span>
+                                <span className="text-[10px] font-bold text-slate-500">{mode.flexibility}/5</span>
+                              </div>
+                              <MetricBar value={mode.flexibility} barClass={cfg.bar} />
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="text-center py-8">
+                          <p className="text-slate-400 text-sm">Not available on this route</p>
+                        </div>
+                      )}
+                    </div>
                   </div>
-
-                  {isAvailable ? (
-                    <>
-                      <div className="space-y-4 mb-6">
-                        <div>
-                          <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Duration</div>
-                          <div className="text-lg font-bold text-white">{mode.duration}</div>
-                        </div>
-                        <div>
-                          <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Cost</div>
-                          <div className="text-lg font-bold text-purple-400">{mode.cost}</div>
-                        </div>
-                        <div>
-                          <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Comfort</div>
-                          <div className="flex gap-1">
-                            {Array.from({ length: 5 }, (_, j) => (
-                              <div key={j} className={`w-5 h-2 rounded-full ${j < mode.comfort ? 'bg-purple-400' : 'bg-white/10'}`} />
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Flexibility</div>
-                          <div className="flex gap-1">
-                            {Array.from({ length: 5 }, (_, j) => (
-                              <div key={j} className={`w-5 h-2 rounded-full ${j < mode.flexibility ? 'bg-fuchsia-400' : 'bg-white/10'}`} />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="glass-card rounded-xl p-3">
-                        <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Best For</div>
-                        <p className="text-sm text-white/60">{mode.bestFor}</p>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="text-center py-8">
-                      <p className="text-white/40 text-sm">Not available on this route</p>
-                    </div>
-                  )}
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* VERDICT */}
-      <section className="py-16 px-4 sm:px-6">
+      {/* ━━━ VISUAL DURATION/COST COMPARISON BARS ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-strong rounded-[2rem] p-8 md:p-12 relative overflow-hidden" data-snippet-type="direct-answer">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
-            <div className="key-info">
-              <div className="flex items-center gap-3 mb-4">
-                <Award className="w-6 h-6 text-purple-400" />
-                <h2 className="text-2xl font-black">Our Verdict</h2>
-              </div>
-              <p className="text-white/60 leading-relaxed text-lg">{route.verdict}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1">At a Glance</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Relative Duration and Cost</h2>
+          </ScrollReveal>
 
-      {/* WHY CHOOSE CAB */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">Why Choose Cab</h2>
-            <p className="text-white/40 mt-4">Advantages of hiring a car for this route</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: MapPin, title: 'Door-to-Door', desc: 'Pickup from your exact location, drop at your destination. No station/airport transfers needed.' },
-              { icon: Clock, title: 'Flexible Timing', desc: 'Leave when you want, stop where you want. No fixed schedules or missed connections.' },
-              { icon: Shield, title: 'Private & Safe', desc: 'Your own AC vehicle with experienced driver. GPS-tracked with 24/7 support.' },
-              { icon: Users, title: 'Group Friendly', desc: 'For 3-4 people, per-person cab cost equals bus fare. For families, it is the most economical.' },
-              { icon: Car, title: 'Scenic Stops', desc: 'Stop for photos, food breaks, and detours. The journey becomes part of the vacation.' },
-              { icon: CheckCircle2, title: 'No Hidden Costs', desc: 'Transparent pricing: ₹11/km Sedan, ₹14/km SUV. Toll extra at actual. That is it.' },
-            ].map((item, i) => (
-              <div key={i} className="glass-card glass-card-hover rounded-2xl p-6 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-purple-400" />
+          {availableModes.length > 0 && (() => {
+            const parseDuration = (d) => {
+              const h = d.match(/(\d+)\s*h/i);
+              const m = d.match(/(\d+)\s*m/i);
+              return (h ? parseInt(h[1]) * 60 : 0) + (m ? parseInt(m[1]) : 0);
+            };
+            const parseCost = (c) => parseInt(String(c).replace(/[^0-9]/g, '')) || 0;
+            const maxDur = Math.max(...availableModes.map(m => parseDuration(m.duration)));
+            const maxCost = Math.max(...availableModes.map(m => parseCost(m.cost)));
+
+            return (
+              <div className="space-y-6">
+                {/* Duration bars */}
+                <div>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Travel Time</p>
+                  <div className="space-y-3">
+                    {availableModes.map((mode) => {
+                      const cfg = MODE_CONFIG[mode.mode] || MODE_CONFIG.Car;
+                      const dur = parseDuration(mode.duration);
+                      const pct = maxDur > 0 ? (dur / maxDur) * 100 : 0;
+                      return (
+                        <div key={mode.mode} className="flex items-center gap-3">
+                          <div className="w-20 flex items-center gap-2 flex-shrink-0">
+                            <cfg.Icon className={`w-4 h-4 ${cfg.text}`} />
+                            <span className="text-sm font-bold text-slate-700">{mode.mode}</span>
+                          </div>
+                          <div className="flex-1 h-6 bg-slate-100 rounded-full overflow-hidden">
+                            <div className={`h-full ${cfg.bar} rounded-full flex items-center justify-end pr-2 transition-all duration-500`} style={{ width: `${Math.max(pct, 15)}%` }}>
+                              <span className="text-[10px] font-bold text-white whitespace-nowrap">{mode.duration}</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <h3 className="text-lg font-black mb-2">{item.title}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{item.desc}</p>
+
+                {/* Cost bars */}
+                <div>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Cost</p>
+                  <div className="space-y-3">
+                    {availableModes.map((mode) => {
+                      const cfg = MODE_CONFIG[mode.mode] || MODE_CONFIG.Car;
+                      const cost = parseCost(mode.cost);
+                      const pct = maxCost > 0 ? (cost / maxCost) * 100 : 0;
+                      return (
+                        <div key={mode.mode} className="flex items-center gap-3">
+                          <div className="w-20 flex items-center gap-2 flex-shrink-0">
+                            <cfg.Icon className={`w-4 h-4 ${cfg.text}`} />
+                            <span className="text-sm font-bold text-slate-700">{mode.mode}</span>
+                          </div>
+                          <div className="flex-1 h-6 bg-slate-100 rounded-full overflow-hidden">
+                            <div className={`h-full ${cfg.bar} rounded-full flex items-center justify-end pr-2 transition-all duration-500`} style={{ width: `${Math.max(pct, 15)}%` }}>
+                              <span className="text-[10px] font-bold text-white whitespace-nowrap">{mode.cost}</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })()}
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">FAQs</h2>
-          </div>
-          <div className="space-y-4">
-            {route.faqs.map((faq, i) => (
-              <div key={i} className="glass-card rounded-2xl overflow-hidden hover:border-purple-500/20 transition-all">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i} aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'} className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-purple-500/50 rounded-2xl">
-                  <span className="font-bold text-white/90 pr-4 faq-answer">{faq.question}</span>
-                  <ChevronDown className={`w-5 h-5 text-purple-400 transition-transform flex-shrink-0 ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-6 faq-answer"><p className="text-white/50 leading-relaxed">{faq.answer}</p></div>
-                )}
+      {/* ━━━ DARK VERDICT SECTION ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="flex flex-col lg:flex-row gap-4">
+              {/* Verdict */}
+              <div className="lg:flex-1 bg-white/5 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/10">
+                <div className="flex items-center gap-3 mb-4">
+                  <Award className="w-6 h-6 text-[#FACF2D]" />
+                  <h2 className="text-xl font-black text-white">Our Verdict</h2>
+                </div>
+                <p className="text-white/50 text-sm leading-relaxed mb-6">{route.verdict}</p>
+                <a onClick={() => trackWhatsAppClick('travel_verdict')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3 rounded-full font-bold text-sm hover:bg-amber-300 transition-all">
+                  Book a Cab <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
-            ))}
-          </div>
+
+              {/* Why cab advantages */}
+              <div className="lg:w-80 space-y-3">
+                {[
+                  { icon: MapPin, title: 'Door-to-Door', desc: 'No station transfers' },
+                  { icon: Clock, title: 'Flexible Timing', desc: 'Leave when you want' },
+                  { icon: Shield, title: 'Private and Safe', desc: 'GPS tracked, 24/7 support' },
+                  { icon: Users, title: 'Group Friendly', desc: 'Per-person cost drops with more riders' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-white/5 rounded-xl p-3 border border-white/5 hover:border-emerald-500/20 transition-all">
+                    <div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-white">{item.title}</p>
+                      <p className="text-[11px] text-white/30">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* RELATED ROUTES */}
+      {/* ━━━ FAQ ━━━ */}
+      <FaqAccordion heading={`${route.origin} to ${route.destination} Travel FAQs`} faqs={route.faqs} />
+
+      {/* ━━━ RELATED ROUTES ━━━ */}
       {relatedRoutes.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6">
+        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-black text-center mb-16">Compare More Routes</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <ScrollReveal>
+              <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1">Explore More</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Compare More Routes</h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {relatedRoutes.map((rr, i) => (
-                <Link key={i} href={`/travel-options/${rr.slug}`} className="glass-card glass-card-hover rounded-2xl p-5 block transition-all">
-                  <h3 className="font-black mb-1 text-sm">{rr.origin} → {rr.destination}</h3>
-                  <p className="text-white/40 text-xs mb-2">{rr.modes.find(m => m.mode === 'Car')?.duration || ''}</p>
-                  <span className="text-purple-400 text-xs font-semibold">Compare →</span>
-                </Link>
+                <ScrollReveal key={i} stagger={i * 50}>
+                  <Link href={`/travel-options/${rr.slug}`} className="group bg-[#f8f7f4] rounded-xl p-4 hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-emerald-200 block">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-100 transition-colors">
+                        <Navigation className="w-3.5 h-3.5 text-emerald-600" />
+                      </div>
+                      <ArrowRight className="w-3 h-3 text-slate-300 group-hover:text-emerald-500 transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-sm mb-0.5">{rr.origin} to {rr.destination}</h3>
+                    <p className="text-xs text-slate-400">{rr.modes.find(m => m.mode === 'Car')?.duration || ''}</p>
+                  </Link>
+                </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* FINAL CTA */}
-      <section className="py-24 px-4 sm:px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/20 to-slate-950" />
-        <div className="relative max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-6">Book Your Cab Now</h2>
-          <p className="text-white/40 text-lg mb-10">{route.origin} to {route.destination} — AC cab from {carMode?.cost}. Door-to-door service.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+917668570551" className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:scale-105 transition-all">
-              <Phone className="w-5 h-5" /> Call: 7668570551
-            </a>
-            <a href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 glass-strong text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/15 hover:border-purple-500/40 transition-all">
-              WhatsApp Quote <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTASection heading="Book Your Cab Now" subheading={`${route.origin} to ${route.destination} -- AC cab from ${carMode?.cost || 'N/A'}. Door-to-door with verified drivers.`} />
+      <MobileStickyBar />
     </div>
   );
 }

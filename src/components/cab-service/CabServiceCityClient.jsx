@@ -1,259 +1,229 @@
 'use client';
 
-import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2,
-  Route, MapPin, Star, Users, Sparkles, Award, ChevronRight, Navigation
+  Phone, ArrowRight, Shield, Clock, Car, CheckCircle2,
+  Route, MapPin, Star, Users, Navigation, ChevronRight, Award
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
+import ScrollReveal from '@/components/shared/ScrollReveal';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import CTASection from '@/components/shared/CTASection';
+import MobileStickyBar from '@/components/ui/MobileStickyBar';
+
+const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>;
 
 export default function CabServiceCityClient({ data, relatedCities }) {
-  const [openFaq, setOpenFaq] = useState(null);
   const whatsappMsg = `Hi, I need a cab service in ${data.city}. Please share rates.`;
+  const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`;
   const cheapest = Math.min(...data.services.map(s => s.startingPrice));
+  const heroImage = getCityImage(data.city);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+    <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
 
-      {/* HERO — Light Theme with Gold Accents */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-white via-yellow-50/50 to-amber-50/30">
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.3) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+      {/* ━━━ HERO: City service hub ━━━ */}
+      <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
+        <Image src={heroImage} alt={`Cab service in ${data.city}`} fill priority className="object-cover" sizes="100vw" quality={85} placeholder="blur" blurDataURL={heroBlurDataURL} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400 z-20" />
 
-        {/* Decorative blobs */}
-        <div className="absolute top-[10%] right-[5%] w-[400px] h-[400px] bg-[#FACF2D]/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] bg-amber-200/15 rounded-full blur-[100px]" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pb-8 sm:pb-12">
+          <nav className="mb-6 flex items-center gap-1.5 text-xs text-white/40">
+            <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <Link href="/cab-service" className="hover:text-white/70 transition-colors">Cab Service</Link>
+            <ChevronRight className="w-3 h-3" />
+            <span className="text-white/60">{data.city}</span>
+          </nav>
 
-        {/* Floating price badge */}
-        <div className="absolute top-32 right-[10%] hidden lg:block">
-          <div className="bg-white shadow-2xl shadow-amber-200/30 rounded-2xl px-6 py-4 border border-[#FACF2D]/30">
-            <div className="text-xs text-amber-600 uppercase tracking-wider font-bold">Starting From</div>
-            <div className="text-3xl font-black text-gray-900">₹{cheapest}</div>
-          </div>
-        </div>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
+                <MapPin className="w-3.5 h-3.5 text-[#FACF2D]" />
+                <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Service Directory</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+                {data.city}<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-amber-300">Cab Service</span>
+              </h1>
+              <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{data.tagline}</p>
 
-        <div className="absolute -bottom-1 left-0 right-0 h-32">
-          <svg viewBox="0 0 1440 120" className="w-full h-full" preserveAspectRatio="none">
-            <path d="M0,80 C240,120 480,20 720,60 C960,100 1200,30 1440,70 L1440,120 L0,120 Z" fill="#ffffff" />
-          </svg>
-        </div>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <a onClick={() => trackPhoneCall('cab_service_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
+                  <Phone className="w-4 h-4" /> Call 7668570551
+                </a>
+                <a onClick={() => trackWhatsAppClick('cab_service_hero', whatsappMsg)} href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3.5 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">
+                  {WA} WhatsApp Quote
+                </a>
+              </div>
+            </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-32">
-          <div className="inline-flex items-center gap-2.5 bg-[#FACF2D]/10 border border-[#FACF2D]/30 px-6 py-3 rounded-full mb-10">
-            <MapPin className="w-4 h-4 text-amber-600" />
-            <span className="text-amber-700 font-semibold text-sm tracking-wide">Cab Service in {data.city}</span>
-            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4">
-            <span className="text-gray-900">{data.city}</span>
-            <br />
-            <span className="text-[#FACF2D] drop-shadow-[0_2px_10px_rgba(250,207,45,0.3)]">Cab Service</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-500 mb-8 max-w-3xl font-medium">{data.tagline}</p>
-
-          <div className="flex flex-wrap gap-3 mb-12">
-            {[
-              { icon: Car, text: `From ₹${cheapest}` },
-              { icon: Clock, text: '24/7 Available' },
-              { icon: Star, text: '4.9★ (10,000+ reviews)', special: true },
-              { icon: Shield, text: 'GPS Tracked' },
-            ].map((pill, i) => (
-              <span key={i} className={`inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-medium ${pill.special ? 'bg-amber-50 border border-amber-200 text-amber-700' : 'bg-gray-50 border border-gray-200 text-gray-600'}`}>
-                <pill.icon className={`w-4 h-4 ${pill.special ? 'text-amber-500' : 'text-[#FACF2D]'}`} /> {pill.text}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link onClick={() => trackPhoneCall('cab_service_city')} href="tel:+917668570551" className="group inline-flex items-center gap-3 bg-[#FACF2D] text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg shadow-lg shadow-[#FACF2D]/30 hover:shadow-xl hover:shadow-[#FACF2D]/40 hover:scale-105 transition-all duration-300">
-              <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
-            </Link>
-            <Link onClick={() => trackWhatsAppClick('cab_service_city')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="group inline-flex items-center gap-3 bg-white text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg border-2 border-gray-200 hover:border-[#FACF2D] hover:shadow-lg transition-all duration-300">
-              <svg className="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.318 0-4.468-.67-6.29-1.823l-.451-.27-2.649.888.888-2.649-.27-.451A9.965 9.965 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Starting</p>
+                  <p className="text-3xl font-black text-[#FACF2D] leading-tight">{'\u20B9'}{cheapest}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Rating</p>
+                  <p className="text-3xl font-black text-white leading-tight">4.9<span className="text-lg text-white/40 ml-0.5">/5</span></p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Services</p>
+                  <p className="text-sm font-bold text-white/80">{data.services.length} Types</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Available</p>
+                  <p className="text-sm font-bold text-white/80">24/7</p>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
+                <div className="flex -space-x-1">
+                  {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}
+                </div>
+                <span className="text-[11px] text-white/40 font-medium">10,000+ reviews</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SOCIAL PROOF STRIP */}
-      <section className="py-8 border-y border-gray-100 bg-gray-50/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap justify-center gap-10 md:gap-20">
-            {[
-              { value: '10,000+', label: 'Happy Customers', icon: Users },
-              { value: '4.9★', label: 'Google Rating', icon: Star },
-              { value: '24/7', label: 'Service Available', icon: Clock },
-              { value: '15+', label: 'Cities Covered', icon: MapPin },
-            ].map((stat, i) => (
-              <div key={i} className="group text-center flex items-center gap-3 cursor-default">
-                <div className="w-10 h-10 rounded-xl bg-[#FACF2D]/10 border border-[#FACF2D]/20 flex items-center justify-center">
-                  <stat.icon className="w-5 h-5 text-amber-600" />
-                </div>
-                <div className="text-left">
-                  <div className="text-xl font-black text-gray-900">{stat.value}</div>
-                  <div className="text-[10px] text-gray-400 uppercase tracking-widest">{stat.label}</div>
-                </div>
+      {/* ━━━ DARK STRIP: Service types at a glance ━━━ */}
+      <section className="bg-slate-900 py-6 sm:py-8 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-4 text-center">Available Services in {data.city}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {data.services.slice(0, 4).map((service, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-[#FACF2D]/30 transition-all">
+                <Car className="w-5 h-5 text-[#FACF2D] mx-auto mb-2" />
+                <p className="text-xs font-bold text-white truncate">{service.name}</p>
+                <p className="text-lg font-black text-[#FACF2D] mt-1">{'\u20B9'}{service.startingPrice.toLocaleString('en-IN')}</p>
+                <p className="text-[10px] text-white/30">starting</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
+      {/* ━━━ SERVICES: Bento grid ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 bg-[#FACF2D]/10 border border-[#FACF2D]/20 px-4 py-2 rounded-full text-amber-700 font-semibold text-xs tracking-widest uppercase mb-4">
-              <Car className="w-3.5 h-3.5" /> Our Services
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">{data.city} Cab Services</h2>
-            <p className="text-gray-400 mt-4 text-lg">Complete transportation solutions in {data.city}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mb-1">Our Services</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">{data.city} Cab Services</h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.services.map((service, i) => (
-              <div key={i} className="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FACF2D]/30 transition-all duration-300 hover:-translate-y-1">
-                <div className="w-14 h-14 rounded-2xl bg-[#FACF2D]/10 border border-[#FACF2D]/20 flex items-center justify-center mb-6 group-hover:bg-[#FACF2D]/20 transition-all">
-                  <Car className="w-7 h-7 text-amber-600" />
-                </div>
-                <h3 className="text-xl font-black text-gray-900 mb-2">{service.name}</h3>
-                <p className="text-gray-500 text-sm mb-4 leading-relaxed">{service.description}</p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider">Starting</span>
-                    <div className="text-2xl font-black text-gray-900">₹{service.startingPrice.toLocaleString('en-IN')}</div>
+              <ScrollReveal key={i} delay={i * 60}>
+                <div className="bg-white rounded-2xl border border-slate-100 p-6 hover:border-amber-200 hover:shadow-lg transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-4"><Car className="w-6 h-6 text-amber-600" /></div>
+                  <h3 className="text-lg font-black text-slate-900 mb-2">{service.name}</h3>
+                  <p className="text-sm text-slate-500 mb-4 leading-relaxed">{service.description}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <div><span className="text-[10px] text-slate-400 uppercase tracking-wider">Starting</span><div className="text-xl font-black text-slate-900">{'\u20B9'}{service.startingPrice.toLocaleString('en-IN')}</div></div>
+                    <a href="tel:+917668570551" className="text-amber-600 font-bold text-sm hover:text-amber-700 flex items-center gap-1">Book <ChevronRight className="w-4 h-4" /></a>
                   </div>
-                  <a href="tel:+917668570551" className="inline-flex items-center gap-1 text-amber-600 font-bold text-sm hover:text-amber-700">
-                    Book Now <ChevronRight className="w-4 h-4" />
-                  </a>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FLEET */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 bg-gray-50">
+      {/* ━━━ FLEET: Dark section ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 bg-white border border-gray-200 px-4 py-2 rounded-full text-gray-600 font-semibold text-xs tracking-widest uppercase mb-4">
-              <Shield className="w-3.5 h-3.5" /> Our Fleet
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">Choose Your Ride</h2>
-            <p className="text-gray-400 mt-4 text-lg">Well-maintained, AC, GPS-tracked vehicles</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-[#FACF2D] uppercase tracking-widest mb-1">Our Fleet</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-8">Choose Your Ride</h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {data.fleet.map((vehicle, i) => (
-              <div key={i} className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FACF2D]/30 transition-all duration-300 text-center">
-                <div className="text-4xl mb-4">{['🚗', '🚙', '🏎️', '🚐'][i] || '🚗'}</div>
-                <h3 className="text-xl font-black text-gray-900 mb-1">{vehicle.type}</h3>
-                <p className="text-gray-400 text-sm mb-4">{vehicle.model}</p>
-                <div className="text-3xl font-black text-[#FACF2D] mb-1">₹{vehicle.perKm}<span className="text-sm text-gray-400 font-normal">/km</span></div>
-                <p className="text-xs text-gray-400">{vehicle.seats} Seater &middot; AC</p>
-              </div>
+              <ScrollReveal key={i} stagger={i * 60}>
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 text-center hover:border-[#FACF2D]/30 transition-all">
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-4"><Car className="w-6 h-6 text-[#FACF2D]" /></div>
+                  <h3 className="text-lg font-black text-white mb-0.5">{vehicle.type}</h3>
+                  <p className="text-sm text-white/40 mb-3">{vehicle.model}</p>
+                  <div className="text-2xl font-black text-[#FACF2D] mb-1">{'\u20B9'}{vehicle.perKm}<span className="text-sm text-white/30 font-normal">/km</span></div>
+                  <p className="text-xs text-white/30">{vehicle.seats} Seater &middot; AC</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* POPULAR ROUTES */}
-      <section className="py-24 md:py-32 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-flex items-center gap-2 bg-[#FACF2D]/10 border border-[#FACF2D]/20 px-4 py-2 rounded-full text-amber-700 font-semibold text-xs tracking-widest uppercase mb-4">
-              <Route className="w-3.5 h-3.5" /> Popular Routes
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">Top Routes from {data.city}</h2>
-          </div>
-
-          <div className="space-y-4">
+      {/* ━━━ POPULAR ROUTES ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mb-1">Popular Routes</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Top Routes from {data.city}</h2>
+          </ScrollReveal>
+          <div className="space-y-3">
             {data.popularRoutes.map((route, i) => (
-              <div key={i} className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#FACF2D]/30 transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#FACF2D]/10 flex items-center justify-center flex-shrink-0">
-                    <Navigation className="w-5 h-5 text-amber-600" />
+              <ScrollReveal key={i} delay={i * 40}>
+                <div className="bg-white rounded-xl p-4 sm:p-5 border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0"><Navigation className="w-5 h-5 text-amber-600" /></div>
+                    <div><h3 className="font-bold text-slate-900">{data.city} to {route.to}</h3><p className="text-sm text-slate-400">{route.distance} &middot; {route.time}</p></div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">{data.city} to {route.to}</h3>
-                    <p className="text-sm text-gray-400">{route.distance} &middot; {route.time}</p>
+                  <div className="flex items-center gap-5 w-full sm:w-auto justify-between sm:justify-end">
+                    <div className="text-right"><div className="text-xs text-slate-400">Sedan from</div><div className="text-lg font-black text-slate-900">{route.fare}</div></div>
+                    <a href="tel:+917668570551" className="inline-flex items-center gap-1 bg-[#FACF2D] text-slate-900 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-amber-400 transition-all">Book <ArrowRight className="w-4 h-4" /></a>
                   </div>
                 </div>
-                <div className="flex items-center gap-6">
-                  <div className="text-right">
-                    <div className="text-xs text-gray-400">Sedan from</div>
-                    <div className="text-xl font-black text-gray-900">{route.fare}</div>
-                  </div>
-                  <a href="tel:+917668570551" className="inline-flex items-center gap-1 bg-[#FACF2D] text-gray-900 px-5 py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all">
-                    Book <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* KEY INFO */}
-      <section className="py-16 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100" data-snippet-type="direct-answer">
-            <div className="key-info">
-              <h2 className="text-2xl font-black text-gray-900 mb-4">{data.city} Cab Service — Quick Info</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-                <div><div className="text-xs text-amber-600 uppercase tracking-wider font-bold mb-1">Sedan Rate</div><div className="text-xl font-black text-gray-900">₹11/km</div></div>
-                <div><div className="text-xs text-amber-600 uppercase tracking-wider font-bold mb-1">SUV Rate</div><div className="text-xl font-black text-gray-900">₹14/km</div></div>
-                <div><div className="text-xs text-amber-600 uppercase tracking-wider font-bold mb-1">Local Min</div><div className="text-xl font-black text-gray-900">₹{cheapest}</div></div>
-                <div><div className="text-xs text-amber-600 uppercase tracking-wider font-bold mb-1">Availability</div><div className="text-xl font-black text-gray-900">24/7</div></div>
-              </div>
-              <p className="text-gray-500 text-sm">Triveni Cabs provides reliable cab service in {data.city} for local trips, outstation travel, airport transfers, and wedding car rentals. All fares include driver, fuel, and AC. Call 7668570551.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900">Frequently Asked Questions</h2>
-          </div>
-          <div className="space-y-4">
-            {data.faqs.map((faq, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i} aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'} className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-yellow-500/50 rounded-2xl">
-                  <span className="font-bold text-gray-900 pr-4 faq-answer">{faq.question}</span>
-                  <ChevronDown className={`w-5 h-5 text-[#FACF2D] transition-transform duration-300 flex-shrink-0 ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-6 faq-answer">
-                    <p className="text-gray-500 leading-relaxed">{faq.answer}</p>
+      {/* ━━━ WHY CHOOSE US ━━━ */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mb-1">Our Promise</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Why Choose Triveni Cabs</h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Shield, title: 'Verified Drivers', desc: 'Background-checked, trained chauffeurs' },
+              { icon: Clock, title: '24/7 Available', desc: 'Round-the-clock booking support' },
+              { icon: Award, title: 'Best Prices', desc: 'Transparent, no hidden charges' },
+              { icon: Star, title: '4.9 Rated', desc: '10,000+ verified reviews' },
+            ].map((f, i) => (
+              <ScrollReveal key={i} stagger={i * 60}>
+                <div className="bg-[#f8f7f4] rounded-2xl p-5 text-center hover:shadow-md transition-all border border-slate-100">
+                  <div className="w-12 h-12 mx-auto rounded-2xl bg-amber-50 flex items-center justify-center mb-3">
+                    <f.icon className="w-6 h-6 text-amber-600" />
                   </div>
-                )}
-              </div>
+                  <h3 className="font-bold text-slate-900 text-sm mb-1">{f.title}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed">{f.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* RELATED CITIES */}
+      <FaqAccordion heading={`${data.city} Cab Service FAQs`} faqs={data.faqs} />
+
       {relatedCities.length > 0 && (
-        <section className="py-24 md:py-32 px-4 sm:px-6">
+        <section className="py-12 px-4 sm:px-6 bg-white">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-gray-900">Cab Service in Other Cities</h2>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <ScrollReveal>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 text-center mb-8">Cab Service in Other Cities</h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {relatedCities.map((rc, i) => (
-                <Link key={i} href={`/cab-service/${rc.slug}`} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#FACF2D]/30 transition-all duration-300 block text-center">
-                  <h3 className="text-lg font-black text-gray-900 mb-1">{rc.city}</h3>
-                  <p className="text-gray-400 text-xs mb-3">Cab Service</p>
-                  <span className="text-amber-600 font-bold text-sm">View Rates →</span>
+                <Link key={i} href={`/cab-service/${rc.slug}`} className="bg-white rounded-xl p-5 border border-slate-200 hover:border-amber-200 hover:shadow-md transition-all text-center block">
+                  <h3 className="font-bold text-slate-900 mb-0.5">{rc.city}</h3>
+                  <p className="text-xs text-slate-400 mb-2">Cab Service</p>
+                  <span className="text-amber-600 font-bold text-sm">View Rates &rarr;</span>
                 </Link>
               ))}
             </div>
@@ -261,21 +231,8 @@ export default function CabServiceCityClient({ data, relatedCities }) {
         </section>
       )}
 
-      {/* FINAL CTA */}
-      <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-amber-50/30">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Book a Cab in {data.city}</h2>
-          <p className="text-gray-500 text-lg mb-10">Professional drivers, GPS-tracked vehicles, transparent pricing. Available 24/7.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+917668570551" className="inline-flex items-center gap-3 bg-[#FACF2D] text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg shadow-lg shadow-[#FACF2D]/30 hover:shadow-xl hover:scale-105 transition-all">
-              <Phone className="w-5 h-5" /> Call: 7668570551
-            </a>
-            <a href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-white text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg border-2 border-gray-200 hover:border-[#FACF2D] transition-all">
-              WhatsApp Quote <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTASection heading={`Book a Cab in ${data.city}`} subheading="Professional drivers, GPS-tracked vehicles, transparent pricing. Available 24/7." />
+      <MobileStickyBar />
     </div>
   );
 }
