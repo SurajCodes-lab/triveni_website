@@ -35,7 +35,7 @@ export default function TrustPageClient({ title, subtitle, description, sections
               <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Trust & Safety</span>
             </div>
             {subtitle && <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">{subtitle}</p>}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">{title}</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">{title}</h1>
             {description && <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{description}</p>}
 
             <div className="flex flex-wrap gap-3 mt-6">

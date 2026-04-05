@@ -52,14 +52,14 @@ export default function LocalTaxiCityClient({ city, relatedCities }) {
             <span className="text-white/60">{city.city}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
                 <Navigation className="w-3.5 h-3.5 text-[#FACF2D]" />
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">City Navigator</span>
               </div>
               <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">Local Taxi in</p>
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight">
                 {city.city}
               </h1>
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg">{city.tagline}</p>

@@ -49,7 +49,7 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
             <span className="text-white/60">{city.city}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
                 <IndianRupee className="w-3.5 h-3.5 text-[#FACF2D]" />

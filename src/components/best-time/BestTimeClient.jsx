@@ -49,7 +49,7 @@ export default function BestTimeClient({ data, relatedDestinations }) {
             <span className="text-white/60">{data.destination}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
                 <Calendar className="w-3.5 h-3.5 text-emerald-400" />
@@ -110,7 +110,7 @@ export default function BestTimeClient({ data, relatedDestinations }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
             {/* Season tab column */}
-            <div className="lg:col-span-2 flex flex-row lg:flex-col gap-2">
+            <div className="lg:col-span-2 grid grid-cols-3 lg:grid-cols-1 gap-2">
               {data.seasons.map((s, i) => {
                 const Icon = SEASON_ICONS[s.name] || Calendar;
                 const accent = SEASON_ACCENTS[s.name] || 'bg-emerald-500';

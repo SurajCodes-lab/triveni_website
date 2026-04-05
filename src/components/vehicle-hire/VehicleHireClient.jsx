@@ -51,7 +51,7 @@ export default function VehicleHireClient({ vehicleSpec, routeData }) {
             <span className="text-white/60">{routeData.origin} to {routeData.destination}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
                 <Car className="w-3.5 h-3.5 text-rose-400" />
@@ -108,7 +108,7 @@ export default function VehicleHireClient({ vehicleSpec, routeData }) {
       <section className="bg-slate-900 py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-4 text-center">Vehicle Specs Dashboard</p>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
             {specs.map((spec, i) => {
               const Icon = spec.icon;
               return (

@@ -42,7 +42,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
             <span className="text-white/60">{route.origin} to {route.destination}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
                 <Route className="w-3.5 h-3.5 text-[#FACF2D]" />
@@ -159,34 +159,62 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-            {/* Large route card */}
+            {/* Large route card — visual journey map */}
             <ScrollReveal className="lg:col-span-3">
-              <div className="h-full bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Navigation className="w-5 h-5 text-blue-200" />
-                    <span className="text-xs font-bold text-blue-200 uppercase tracking-wider">Best Route</span>
+              <div className="h-full bg-slate-900 rounded-2xl p-5 sm:p-7 text-white relative overflow-hidden">
+                <div className="flex items-center gap-2 mb-5">
+                  <Navigation className="w-4 h-4 text-[#FACF2D]" />
+                  <span className="text-[10px] font-bold text-[#FACF2D] uppercase tracking-widest">Best Route</span>
+                </div>
+
+                {/* Visual route journey */}
+                <div className="relative mb-6">
+                  {/* Origin */}
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="w-8 h-8 rounded-full bg-[#FACF2D] flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/20">
+                      <MapPin className="w-4 h-4 text-slate-900" />
+                    </div>
+                    <span className="text-lg sm:text-xl font-black">{route.origin}</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black mb-3 leading-snug">{route.origin} → {route.destination}</h3>
-                  <p className="text-white/70 leading-relaxed text-sm mb-6">{route.bestRoute}</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs font-semibold text-white/80">
-                      <Route className="w-3 h-3" /> {route.distance.km} km
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs font-semibold text-white/80">
-                      <Clock className="w-3 h-3" /> {route.duration}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs font-semibold text-white/80">
-                      <Navigation className="w-3 h-3" /> {route.highway}
-                    </span>
+
+                  {/* Connecting line with stops */}
+                  <div className="ml-[15px] border-l-2 border-dashed border-white/15 pl-6 py-2 space-y-1.5">
+                    {route.majorStops.map((stop, i) => (
+                      <div key={i} className="flex items-center gap-2 relative">
+                        <div className="absolute -left-[31px] w-3 h-3 rounded-full bg-slate-700 border-2 border-white/20" />
+                        <span className="text-xs text-white/50 font-medium">{stop}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Destination */}
+                  <div className="flex items-center gap-3 mt-1">
+                    <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/20">
+                      <MapPin className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-lg sm:text-xl font-black">{route.destination}</span>
+                  </div>
+                </div>
+
+                {/* Route stats row */}
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="bg-white/5 rounded-lg px-3 py-2 text-center">
+                    <p className="text-lg sm:text-xl font-black text-white">{route.distance.km}</p>
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest">km</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg px-3 py-2 text-center">
+                    <p className="text-lg sm:text-xl font-black text-white">{route.duration.split('-')[0].trim()}</p>
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest">hours</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg px-3 py-2 text-center">
+                    <p className="text-sm font-bold text-white/70">{route.highway}</p>
+                    <p className="text-[9px] text-white/30 uppercase tracking-widest">highway</p>
                   </div>
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Smaller stat cards */}
+            {/* Right column: road conditions + fare card */}
             <div className="lg:col-span-2 flex flex-col gap-4">
               <ScrollReveal stagger={80}>
                 <div className="bg-white rounded-2xl border border-slate-200/60 p-5 hover:shadow-md transition-shadow">
@@ -200,7 +228,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
                 </div>
               </ScrollReveal>
               <ScrollReveal stagger={160}>
-                <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-5 text-white relative overflow-hidden">
+                <div className="bg-slate-900 rounded-2xl p-5 text-white relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-[#FACF2D]/10 rounded-full -translate-y-1/3 translate-x-1/3" />
                   <p className="text-[10px] text-white/40 uppercase tracking-wider font-semibold mb-1">Starting from</p>
                   <p className="text-3xl font-black text-[#FACF2D] leading-tight">{route.cabFares.sedan}</p>
