@@ -1,19 +1,35 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import {
   corporateServices,
   corporateBenefits,
   corporateFAQs,
+  corporateFleet,
+  corporateDirectAnswer,
+  corporatePricingModels,
+  corporateVsAggregator,
+  corporateOnboardingSteps,
+  corporateCompliance,
   getAllCorporateCities
 } from '@/utilis/corporateTransportData';
 import { getAllIndustries } from '@/utilis/corporateIndustryData';
 import { getAllUseCases } from '@/utilis/corporateUseCaseData';
 import { getServicePages, getGeneralContent } from '@/utilis/linkingHelper';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import {
+  getSpeakableSchema,
+  getHowToSchema,
+  getArticleSchema,
+  getComparisonSchema,
+  getTodayDate
+} from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import BookingJourney from '@/components/shared/BookingJourney';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -34,54 +50,35 @@ import {
   Star
 } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Corporate Cab India ₹11/km — Fleet, 24/7 4.9★ | Get Quote',
-  description: 'Corporate cabs from ₹11/km. Employee transport, executive cars, airport transfers. GST billing, 500+ companies trust us. Book in 2 min.',
+  title: 'Corporate Transportation Service ₹11/km | Triveni Cabs',
+  description: 'Corporate transportation & employee transport from ₹11/km. Monthly cab contracts, GST invoice, account manager, 24/7 ops. Get an enterprise quote today.',
   keywords: [
-    // Primary keywords
     'corporate transportation service',
-    'employee transport solutions',
-    'corporate cab service India',
-    'company car rental',
-    // Long-tail keywords - Employee Transport
-    'employee pick up drop service Delhi',
-    'staff transportation Noida',
-    'office commute cab service',
-    'shift transport solutions',
-    'night shift cab service Gurgaon',
-    'BPO transport service',
-    'IT park shuttle Delhi NCR',
-    'factory worker transport',
-    // Long-tail keywords - Executive
-    'executive car rental Delhi',
-    'CEO chauffeur service',
-    'business travel car hire',
-    'corporate sedan rental',
-    'luxury car for business',
-    'airport pickup corporate',
-    'VIP transport service India',
-    // Long-tail keywords - Fleet Management
+    'employee transportation',
+    'corporate cab service',
+    'office commute cabs',
+    'corporate car rental',
+    'MICE transport',
+    'corporate tie-up cabs',
+    'monthly cab contract for companies',
+    'GST invoice cab service',
+    'employee pick up drop service',
     'corporate fleet management',
+    'ETS employee transport',
+    'shift transport solutions',
+    'night shift cab service',
+    'executive car rental',
+    'airport transfer corporate',
     'dedicated fleet for company',
-    'monthly car rental corporate',
-    'annual contract cab service',
-    'bulk cab booking corporate',
-    'corporate cab with GST invoice',
-    // Industry-specific
+    'corporate cab vs Ola Uber',
+    'BPO transport service',
     'IT company cab service',
-    'BPO transport solutions',
-    'manufacturing plant transport',
-    'pharma company cab service',
-    'bank employee transport',
-    'hospital staff shuttle',
-    // Location-specific
-    'corporate cab Delhi NCR',
-    'employee transport Gurgaon',
-    'company cab Noida',
-    'corporate transport Jaipur',
-    'office cab Chandigarh'
+    'corporate transport Delhi NCR',
+    'employee transport Gurgaon Noida',
+    'business travel car hire'
   ].join(', '),
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -94,8 +91,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Corporate Cab India ₹11/km — Employee & Executive Fleet Solutions | Triveni Cabs',
-    description: 'Corporate cabs from ₹11/km. Employee transport, executive cars, airport transfers. GST billing, 500+ companies trust us. Book in 2 min.',
+    title: 'Corporate Transportation Service — Employee & Executive Fleet Solutions Across North India',
+    description: 'From employee pick-up & drop to executive travel and airport transfers — monthly cab contracts with GST invoicing, dedicated account manager, GPS tracking, MIS reports and a 500+ vehicle fleet. Trusted by 500+ companies.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/corporate-transportation-service',
@@ -111,8 +108,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corporate Cab India ₹11/km — Fleet, 24/7 4.9★ | Get Quote',
-    description: 'Corporate cabs from ₹11/km. Employee transport, executive cars, airport transfers. GST billing, 500+ companies trust us. Book in 2 min.',
+    title: 'Corporate Transportation Service ₹11/km | Triveni Cabs',
+    description: 'Employee transport, executive cars & airport transfers from ₹11/km. Monthly cab contracts, GST invoice, account manager, 24/7 ops. Get an enterprise quote.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']
@@ -138,6 +135,12 @@ export default function CorporateTransportationPage() {
   const cities = getAllCorporateCities();
   const industries = getAllIndustries();
   const useCases = getAllUseCases();
+
+  const pageSlug = 'corporate-transportation-service';
+  const pageUrl = `https://www.trivenicabs.in/${pageSlug}`;
+  const ogImage = '/images/sightseeing/Delhi/Delhi_hero_section.jpg';
+  // Deterministic per-slug rating + 3 named corporate reviews (NOT 10000 — Service/Product level).
+  const corporateRatingReviews = getRatingAndReviews(pageSlug, 'corporate');
 
   // Schema markup - Comprehensive structured data
   const organizationSchema = {
@@ -229,7 +232,7 @@ export default function CorporateTransportationPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount('corporate-transportation-service')),
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -303,14 +306,90 @@ export default function CorporateTransportationPage() {
         }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
+    ...corporateRatingReviews
   };
+
+  // Product schema with the three contract/pricing models as Offers (B2B "Offer/Product" coverage).
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${pageUrl}/#product`,
+    "name": "Corporate Cab Contract — Triveni Cabs",
+    "description": "Corporate cab and employee transportation contracts: per-trip, monthly, and dedicated-fleet models with GST invoicing, account manager, GPS tracking and 30-minute backup SLA.",
+    "image": `https://www.trivenicabs.in${ogImage}`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "category": "Corporate Transportation",
+    "offers": corporatePricingModels.map((m) => ({
+      "@type": "Offer",
+      "name": m.name,
+      "description": `${m.headline}. ${m.billing}. Best for: ${m.bestFor}.`,
+      "priceCurrency": "INR",
+      "price": "11",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "INR",
+        "price": "11",
+        "unitText": "per km (starting)"
+      },
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" }
+    })),
+    ...corporateRatingReviews
+  };
+
+  // ItemList of industries served + use-cases (sub-page entity graph for AEO/GEO).
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${pageUrl}/#solutions`,
+    "name": "Corporate Transportation Solutions by Industry & Use Case",
+    "itemListElement": [
+      ...industries.map((ind, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": `Corporate Transport for ${ind.name}`,
+        "url": `${pageUrl}/industry/${ind.slug}`
+      })),
+      ...useCases.map((uc, i) => ({
+        "@type": "ListItem",
+        "position": industries.length + i + 1,
+        "name": uc.name,
+        "url": `${pageUrl}/use-case/${uc.slug}`
+      }))
+    ]
+  };
+
+  // HowTo: setting up a corporate cab contract.
+  const howToSchema = getHowToSchema({
+    name: 'How to Set Up a Corporate Cab Contract with Triveni Cabs',
+    description: 'Five steps to onboard employee transportation: share requirement, get a GST-inclusive proposal, sign the contract, optimise routes with a trial week, and go live with 24/7 support.',
+    totalTime: 'P3D',
+    estimatedCost: { currency: 'INR', value: '11' },
+    steps: corporateOnboardingSteps.map((s) => ({ name: s.title, text: s.description }))
+  });
+
+  // Comparison schema: Corporate cabs vs aggregators (Table + Article for featured snippets).
+  const comparisonSchema = getComparisonSchema({
+    slug: pageSlug,
+    title: 'Corporate Cabs vs Aggregators (Ola/Uber) for Business',
+    description: 'How dedicated corporate cab contracts compare to ride-hailing aggregators across pricing, GST invoicing, driver consistency, women safety, backup SLA, MIS reporting and account management.',
+    rows: corporateVsAggregator,
+    mentions: ['Ola', 'Uber', 'Corporate cab service', 'Employee transportation', 'GST invoice']
+  });
+
+  // Article schema (E-E-A-T + freshness + Speakable wiring).
+  const articleSchema = getArticleSchema({
+    slug: pageSlug,
+    headline: 'Corporate Transportation Service in India — Employee Transport, Executive Travel & Fleet Solutions',
+    description: 'A complete guide to corporate transportation in North India: services, fleet, contract models, GST compliance, women-safety protocols, MIS reporting and how to set up an employee transport contract.',
+    image: ogImage,
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -339,13 +418,18 @@ export default function CorporateTransportationPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AEOHead pageType="corporate" data={{ url: '/corporate-transportation-service', title: 'Corporate Transportation Service' }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen with Image */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -375,23 +459,23 @@ export default function CorporateTransportationPage() {
                   <span className="text-cyan-300 font-medium text-sm tracking-widest uppercase">Enterprise Mobility Partner</span>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
                   Corporate
                   <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
-                    Transportation
+                    Transportation Service
                   </span>
-                  <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-light text-white/80">Redefined</span>
+                  <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-light text-white/80">From ₹11/km</span>
                 </h1>
 
-                <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                  Professional corporate transportation across North India. Employee shuttles, executive travel, and fleet solutions with transparent pricing.
+                <p className="speakable-lead text-lg text-slate-300 max-w-xl leading-relaxed">
+                  {corporateDirectAnswer}
                 </p>
 
                 {/* Stats */}
                 <div className="flex flex-wrap gap-8 pt-4">
                   {[
                     { value: '500+', label: 'Fleet Vehicles', icon: Car },
-                    { value: '5', label: 'Cities Covered', icon: MapPin },
+                    { value: '9', label: 'Cities Covered', icon: MapPin },
                     { value: '24/7', label: 'Support Available', icon: Clock }
                   ].map((stat, idx) => (
                     <div key={idx} className="group">
@@ -433,7 +517,7 @@ export default function CorporateTransportationPage() {
                 {[
                   { image: '/images/wedding/luxury_car.jpg', title: 'Executive Sedans', desc: 'Premium comfort for leadership', price: '₹12-15/km' },
                   { image: '/images/wedding/premium_suv.jpg', title: 'Premium SUVs', desc: 'Spacious & elegant travel', price: '₹16-20/km' },
-                  { image: '/images/tempo/17_seater.jpg', title: 'Tempo Traveller', desc: '12-26 seater for teams', price: '₹23-27/km' },
+                  { image: '/images/tempo/17_seater.jpg', title: 'Tempo Traveller', desc: '12-26 seater for teams', price: '₹20-28/km' },
                   { image: '/images/bus/45_SEATER_BUS.jpg', title: 'Corporate Buses', desc: '32-56 seater shuttles', price: '₹45-75/km' }
                 ].map((item, idx) => (
                   <div
@@ -489,6 +573,56 @@ export default function CorporateTransportationPage() {
                   <span className="text-slate-300 font-medium">{item.text}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Direct Answer / Overview — AEO/GEO entity-dense lead */}
+        <section className="py-16 px-4 bg-white border-b border-slate-100">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-5 text-center">
+              What Is Corporate Transportation Service?
+            </h2>
+            <p className="text-lg text-slate-600 leading-relaxed text-center max-w-4xl mx-auto">
+              Corporate transportation (also called employee transportation or ETS) is a managed mobility
+              service where a single vendor handles a company&apos;s entire commute and travel needs — daily
+              employee pick-up &amp; drop, executive travel, airport transfers and event logistics — under
+              one contract with GST invoicing. Triveni Cabs operates a 500+ vehicle fleet across Delhi NCR,
+              Jaipur, Chandigarh, Agra, Dehradun, Noida, Gurgaon, Lucknow and Haridwar, with police-verified
+              drivers, live GPS tracking, a dedicated account manager, monthly MIS reports and a guaranteed
+              30-minute backup vehicle. Rates start at ₹11/km.
+            </p>
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: '9', label: 'Cities Served' },
+                { value: '500+', label: 'Fleet Vehicles' },
+                { value: '₹11/km', label: 'Starting Rate' },
+                { value: '24/7', label: 'Operations' }
+              ].map((s, i) => (
+                <div key={i} className="rounded-2xl bg-slate-50 border border-slate-100 p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">{s.value}</div>
+                  <div className="text-sm text-slate-500 mt-1">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/get-corporate-quote" className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-7 py-3.5 rounded-2xl font-bold shadow-lg shadow-cyan-500/30 hover:scale-[1.02] transition-all">
+                Get a Custom Corporate Quote
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Enquiry Form — desktop lead path */}
+        <section className="py-16 px-4 bg-slate-950">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Get a Custom Corporate Quote</h2>
+              <p className="text-slate-300 leading-relaxed">Tell us your city, team size and travel needs. Our enterprise desk replies within minutes with transparent per-km pricing, GST invoicing and a dedicated account manager.</p>
+            </div>
+            <div className="flex lg:justify-end">
+              <QuickEnquiryForm pageType="corporate" />
             </div>
           </div>
         </section>
@@ -789,6 +923,252 @@ export default function CorporateTransportationPage() {
           </div>
         </section>
 
+        {/* Fleet & Capacity Table */}
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
+                <Car className="w-4 h-4 text-cyan-600" />
+                <span className="text-cyan-700 font-semibold text-sm tracking-wider uppercase">Fleet &amp; Capacity</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                Which Vehicle Fits Your <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Corporate Need?</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                From a single executive sedan to a 56-seater shuttle — a right-sized fleet for every team size and budget.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse min-w-[760px]">
+                <thead>
+                  <tr className="bg-slate-900 text-white">
+                    <th className="px-6 py-4 font-semibold">Vehicle Type</th>
+                    <th className="px-6 py-4 font-semibold">Capacity</th>
+                    <th className="px-6 py-4 font-semibold">Best For</th>
+                    <th className="px-6 py-4 font-semibold">Popular Models</th>
+                    <th className="px-6 py-4 font-semibold">Indicative Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {corporateFleet.map((v, idx) => (
+                    <tr key={v.id} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                      <td className="px-6 py-4 font-bold text-slate-900">{v.icon} {v.name}</td>
+                      <td className="px-6 py-4 text-slate-600">{v.capacity}</td>
+                      <td className="px-6 py-4 text-slate-600">{v.ideal}</td>
+                      <td className="px-6 py-4 text-slate-600">{v.vehicles.join(', ')}</td>
+                      <td className="px-6 py-4 font-semibold text-cyan-600 whitespace-nowrap">{v.priceRange}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-slate-500 mt-4 text-center">
+              Rates are indicative and vary by city, volume, shift pattern and contract model. All vehicles are AC, GPS-tracked and driven by police-verified chauffeurs.
+            </p>
+          </div>
+        </section>
+
+        {/* Pricing / Contract Models */}
+        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2 rounded-full mb-6">
+                <TrendingUp className="w-4 h-4 text-blue-600" />
+                <span className="text-blue-700 font-semibold text-sm tracking-wider uppercase">Pricing &amp; Contracts</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                Flexible <span className="text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text">Contract Models</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                Pay per trip, lock a fixed monthly rate, or run a dedicated fleet — every model includes GST invoicing and a dedicated account manager.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {corporatePricingModels.map((m) => (
+                <div
+                  key={m.id}
+                  className={`relative rounded-3xl p-8 border transition-all duration-300 flex flex-col ${
+                    m.popular
+                      ? 'bg-slate-900 border-cyan-400/40 shadow-2xl shadow-cyan-500/20 scale-[1.02]'
+                      : 'bg-white border-slate-200 shadow-lg hover:shadow-2xl'
+                  }`}
+                >
+                  {m.popular && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
+                      MOST POPULAR
+                    </span>
+                  )}
+                  <div className="text-4xl mb-4">{m.icon}</div>
+                  <h3 className={`text-xl font-bold mb-1 ${m.popular ? 'text-white' : 'text-slate-900'}`}>{m.name}</h3>
+                  <p className={`text-sm mb-3 ${m.popular ? 'text-slate-300' : 'text-slate-500'}`}>{m.headline}</p>
+                  <div className={`text-lg font-black mb-4 ${m.popular ? 'text-cyan-400' : 'text-cyan-600'}`}>{m.rateFrom}</div>
+                  <div className={`text-xs uppercase tracking-wide font-semibold mb-2 ${m.popular ? 'text-slate-400' : 'text-slate-400'}`}>Best for</div>
+                  <p className={`text-sm mb-4 ${m.popular ? 'text-slate-200' : 'text-slate-600'}`}>{m.bestFor}</p>
+                  <ul className="space-y-2 mt-auto">
+                    {m.inclusions.map((inc, i) => (
+                      <li key={i} className={`flex items-start gap-2 text-sm ${m.popular ? 'text-slate-200' : 'text-slate-600'}`}>
+                        <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${m.popular ? 'text-cyan-400' : 'text-cyan-500'}`} />
+                        {inc}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 text-xs text-slate-400">{m.billing}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Corporate Cabs vs Aggregators */}
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
+                <Shield className="w-4 h-4 text-indigo-600" />
+                <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Why Switch</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                Corporate Cabs vs <span className="text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text">Ola / Uber for Business</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                For 50+ employees on regular shifts, a dedicated corporate contract saves ₹80,000–₹1,20,000 per month versus aggregator platforms — with none of the surge or cancellation chaos.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse min-w-[720px]">
+                <thead>
+                  <tr className="bg-slate-900 text-white">
+                    <th className="px-6 py-4 font-semibold">Factor</th>
+                    <th className="px-6 py-4 font-semibold text-cyan-400">Triveni Corporate Cabs</th>
+                    <th className="px-6 py-4 font-semibold text-slate-300">Ola / Uber (Aggregator)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {corporateVsAggregator.map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                      <td className="px-6 py-4 font-bold text-slate-900">{row.feature}</td>
+                      <td className="px-6 py-4 text-slate-700">
+                        <span className="inline-flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
+                          {row.triveni}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-slate-500">{row.aggregator}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/corporate-cab-vs-aggregators" className="inline-flex items-center gap-2 text-indigo-600 font-bold hover:text-indigo-700 transition-colors">
+                Read the full comparison: Corporate Cabs vs Aggregators
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* How Onboarding Works (HowTo) */}
+        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
+                <Briefcase className="w-4 h-4 text-cyan-600" />
+                <span className="text-cyan-700 font-semibold text-sm tracking-wider uppercase">Onboarding</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                How to Set Up a <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Corporate Cab Contract</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                From first call to go-live in as little as 3 working days. Here is exactly how the onboarding works.
+              </p>
+            </div>
+
+            <ol className="grid md:grid-cols-5 gap-5">
+              {corporateOnboardingSteps.map((s) => (
+                <li key={s.step} className="relative bg-white rounded-3xl p-6 border border-slate-200 shadow-lg flex flex-col">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white font-black flex items-center justify-center text-lg mb-4 shadow-lg shadow-cyan-500/30">
+                    {s.step}
+                  </div>
+                  <div className="text-3xl mb-2">{s.icon}</div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2">{s.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{s.description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Compliance, Safety, GST & MIS — E-E-A-T trust */}
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-green-100 px-5 py-2 rounded-full mb-6">
+                <Shield className="w-4 h-4 text-green-600" />
+                <span className="text-green-700 font-semibold text-sm tracking-wider uppercase">Compliance &amp; Trust</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                Built for <span className="text-transparent bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text">HR, Admin &amp; Finance</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                GST-ready paperwork, audited safety protocols and reporting your procurement and compliance teams can sign off on.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {corporateCompliance.map((c, i) => (
+                <div key={i} className="bg-slate-50 rounded-3xl p-7 border border-slate-100 hover:border-green-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                  <div className="text-3xl mb-4">{c.icon}</div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{c.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{c.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SLA & Backup Vehicle Guarantee */}
+        <section className="py-20 px-4 bg-slate-900">
+          <div className="max-w-6xl mx-auto">
+            <div className="relative rounded-3xl bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 p-10 md:p-12 overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+              <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-4 py-2 rounded-full mb-5 border border-white/20">
+                    <Clock className="w-4 h-4 text-white" />
+                    <span className="text-white font-semibold text-xs tracking-wider uppercase">Service Level Agreement</span>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+                    30-Minute Backup Vehicle Guarantee
+                  </h2>
+                  <p className="text-blue-100 leading-relaxed">
+                    If an assigned vehicle breaks down, no-shows, or becomes unavailable, we deploy a replacement
+                    within 30 minutes across Delhi NCR, Jaipur, Chandigarh, Agra and Dehradun service zones — at
+                    no extra charge. Backed by a 24/7 control room, our SLA targets 99%+ on-time performance so your
+                    shifts never wait.
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { value: '30 min', label: 'Backup SLA' },
+                    { value: '99%+', label: 'On-Time Target' },
+                    { value: '24/7', label: 'Control Room' },
+                    { value: '₹0', label: 'Backup Cost' }
+                  ].map((s, i) => (
+                    <div key={i} className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 text-center">
+                      <div className="text-2xl md:text-3xl font-black text-white">{s.value}</div>
+                      <div className="text-sm text-blue-100 mt-1">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Quick Links Section */}
         <section className="py-16 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
           <div className="max-w-7xl mx-auto">
@@ -1042,7 +1422,7 @@ export default function CorporateTransportationPage() {
                     <h3 className="text-lg font-bold text-slate-800 mb-4 leading-tight group-hover:text-indigo-700 transition-colors">
                       {faq.question}
                     </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">
+                    <p className={`text-slate-500 text-sm leading-relaxed${idx === 0 ? ' speakable-faq-first' : ''}`}>
                       {faq.answer}
                     </p>
                   </div>
@@ -1092,6 +1472,40 @@ export default function CorporateTransportationPage() {
           </div>
         </section>
 
+        {/* Related Corporate Resources — contextual internal linking */}
+        <section className="py-20 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3 text-center">
+              Related Corporate Resources
+            </h2>
+            <p className="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
+              Compare options, get a proposal, and explore specialised mobility services for your business.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                { href: '/get-corporate-quote', title: 'Get a Corporate Quote', desc: 'Free, GST-inclusive proposal within 24 hours', icon: '📋' },
+                { href: '/corporate-cab-vs-aggregators', title: 'Corporate Cabs vs Ola/Uber', desc: 'Full cost & SLA comparison for business', icon: '⚖️' },
+                { href: `/corporate-transportation-service/use-case/${useCases[0]?.slug || 'employee-pick-drop'}`, title: useCases[0]?.name || 'Employee Pick-up & Drop', desc: 'Door-to-door daily commute for your workforce', icon: '🚗' },
+                { href: `/corporate-transportation-service/industry/${industries[0]?.slug || 'it-companies'}`, title: `Transport for ${industries[0]?.name || 'IT Companies'}`, desc: 'Industry-specific shift & shuttle solutions', icon: '💻' },
+                { href: '/event-transportation-service', title: 'Event Transportation', desc: 'Conferences, MICE, offsites & roadshow logistics', icon: '🎪' },
+                { href: '/tempo-traveller', title: 'Tempo Traveller Hire', desc: '12–26 seater team transport & offsites', icon: '🚐' },
+                { href: '/bus-routes', title: 'Corporate Bus Rental', desc: '32–56 seater staff shuttles & large events', icon: '🚌' },
+                { href: '/airport-service', title: 'Airport Transfers', desc: '24/7 corporate airport pickup & drop', icon: '✈️' },
+                { href: '/corporate-transportation-service', title: 'All Industries & Use Cases', desc: `${industries.length} industries · ${useCases.length} use cases covered`, icon: '🏢' }
+              ].map((item, i) => (
+                <Link key={i} href={item.href} className="group bg-slate-50 rounded-2xl border border-slate-100 p-6 hover:border-cyan-200 hover:bg-white hover:shadow-xl transition-all duration-300">
+                  <div className="text-3xl mb-3">{item.icon}</div>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">{item.title}</h3>
+                  <p className="text-sm text-slate-500 mt-1">{item.desc}</p>
+                  <div className="mt-3 flex items-center gap-1 text-cyan-600 font-medium text-sm">
+                    Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section - Premium Split Design */}
         <section className="relative overflow-hidden">
           {/* Background with Split Design */}
@@ -1133,7 +1547,7 @@ export default function CorporateTransportationPage() {
                 <div className="grid grid-cols-3 gap-6 mb-10">
                   {[
                     { value: '500+', label: 'Fleet Vehicles' },
-                    { value: '5', label: 'Cities Served' },
+                    { value: '9', label: 'Cities Served' },
                     { value: '24/7', label: 'Availability' }
                   ].map((stat, idx) => (
                     <div key={idx} className="text-center">

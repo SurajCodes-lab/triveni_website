@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, Clock, Sun, Award, Route, Fuel, Compass, Bus } from '@/components/ui/icons';
+import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award, Route, Fuel, Compass, Bus } from '@/components/ui/icons';
+import { registrationSteps, packingTips, seasonGuide, inclusions, exclusions } from '@/utilis/chardhamYatraData';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 // ============================================================================
 // CHARDHAM ROUTE CLIENT — "Sacred Journey" Design
@@ -78,10 +80,19 @@ export default function ChardhamRouteClient({ data }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif mb-6 leading-tight"
+              className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif mb-4 leading-tight"
             >
               {title}
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="speakable-lead text-teal-100/75 text-base md:text-lg mb-8 max-w-2xl leading-relaxed"
+            >
+              {origin} to {destination} by {vehicle.name} costs from {estimatedPrice} (₹{vehicle.perKm}/km) for a {duration} trip covering {distance}. Fare includes vehicle, fuel, driver and tolls. Experienced Char Dham hill drivers, daytime-only driving and 24/7 support.
+            </motion.p>
 
             {/* Quick stats bar */}
             <motion.div
@@ -117,6 +128,35 @@ export default function ChardhamRouteClient({ data }) {
                 <MessageCircle className="w-5 h-5" /> WhatsApp
               </a>
             </motion.div>
+
+            {/* Trust Row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-7 text-white/80 text-sm"
+            >
+              <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-orange-400" /> 4.9&#9733; Rated</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> 10,000+ trips</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-cyan-400" /> Verified hill drivers</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No advance payment</span>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Quick Enquiry Form ===== */}
+      <section className="py-14">
+        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Get a Free {origin} to {destination} Quote</h2>
+            <p className="text-teal-100/75 leading-relaxed">Tell us your dates and group size for a transparent, all-inclusive fare within minutes. No advance payment needed to reserve your vehicle.</p>
+          </div>
+          <div className="flex lg:justify-end">
+            <QuickEnquiryForm fromCity={origin} toCity={destination} pageType="chardham" />
           </div>
         </div>
       </section>
@@ -403,6 +443,121 @@ export default function ChardhamRouteClient({ data }) {
         </section>
       )}
 
+      {/* ===== SECTION: Transparent Fare Breakdown ===== */}
+      <section className="py-20 bg-gradient-to-b from-teal-950/40 to-emerald-950/40">
+        <div className="max-w-5xl mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className="text-orange-400 text-sm font-bold tracking-widest uppercase">Transparent Pricing</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">{origin} to {destination} Fare Breakdown</h2>
+            <p className="text-teal-300/60 mt-3">All vehicle estimates for {distance} — vehicle, fuel, driver &amp; tolls included (GST 5% extra)</p>
+          </motion.div>
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/5">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="p-4 text-teal-400/60 font-medium">Vehicle</th>
+                  <th className="p-4 text-teal-400/60 font-medium text-center">Seats</th>
+                  <th className="p-4 text-teal-400/60 font-medium text-center">Per Km</th>
+                  <th className="p-4 text-teal-400/60 font-medium text-center">Est. Total ({duration})</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allCarPrices.map((car, i) => (
+                  <tr key={i} className={`border-b border-white/5 hover:bg-white/5 transition-colors ${car.type === vehicleType ? 'bg-orange-500/5' : ''}`}>
+                    <td className="p-4 text-white font-medium">
+                      {car.name}
+                      {car.type === vehicleType && <span className="ml-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Recommended</span>}
+                    </td>
+                    <td className="p-4 text-center text-teal-300/70">{car.seats}</td>
+                    <td className="p-4 text-center text-teal-300/80">₹{car.perKm}</td>
+                    <td className="p-4 text-center text-orange-400 font-bold">{car.estimatedPrice}</td>
+                  </tr>
+                ))}
+                {allBusPrices.map((bus, i) => (
+                  <tr key={`b${i}`} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <td className="p-4 text-white font-medium">{bus.name}</td>
+                    <td className="p-4 text-center text-teal-300/70">{bus.seats}</td>
+                    <td className="p-4 text-center text-teal-300/80">₹{bus.perKm}</td>
+                    <td className="p-4 text-center text-orange-400 font-bold">{bus.estimatedPrice}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+            <div className="bg-white/5 border border-emerald-500/20 rounded-xl p-5">
+              <h3 className="text-emerald-400 font-bold mb-3 flex items-center gap-2 text-sm"><CheckCircle className="w-4 h-4" /> Included in Fare</h3>
+              <ul className="space-y-2">
+                {inclusions.slice(0, 6).map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-teal-100/70 text-sm"><CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white/5 border border-rose-500/20 rounded-xl p-5">
+              <h3 className="text-rose-400 font-bold mb-3 flex items-center gap-2 text-sm"><XCircle className="w-4 h-4" /> Not Included</h3>
+              <ul className="space-y-2">
+                {exclusions.slice(0, 5).map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-teal-100/70 text-sm"><XCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION: Registration & Biometric Steps ===== */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className="text-orange-400 text-sm font-bold tracking-widest uppercase">Mandatory in 2026</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Char Dham Registration &amp; Biometric Steps</h2>
+            <p className="text-teal-300/60 mt-3">We assist with the full process at no extra cost</p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {registrationSteps.map((step, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-orange-500/30 transition-all"
+              >
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white font-bold text-sm mb-3">{i + 1}</div>
+                <h3 className="text-white font-semibold mb-2">{step.name}</h3>
+                <p className="text-teal-100/60 text-sm leading-relaxed">{step.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION: What to Pack & Season Guide ===== */}
+      <section className="py-20 bg-gradient-to-b from-emerald-950/40 to-teal-950/40">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">What to Pack for {destination}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {packingTips.map((tip, i) => (
+                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <h3 className="text-orange-300 font-semibold text-sm mb-1">{tip.title}</h3>
+                  <p className="text-teal-100/60 text-xs leading-relaxed">{tip.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">Season &amp; Weather Guide</h2>
+            <div className="space-y-3">
+              {seasonGuide.map((s, i) => (
+                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-white font-semibold text-sm">{s.period}</span>
+                    <span className="text-xs font-bold text-orange-400">{s.label}</span>
+                  </div>
+                  <p className="text-teal-100/60 text-sm">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== SECTION 7: SEO Content Block ===== */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4">
@@ -453,6 +608,25 @@ export default function ChardhamRouteClient({ data }) {
                 <ArrowRight className="w-4 h-4 text-teal-500 ml-auto group-hover:text-orange-400 transition-colors" />
               </Link>
             </div>
+
+            {/* Related Char Dham Resources */}
+            <div className="mt-10">
+              <h3 className="text-white font-bold text-lg mb-4">Related Char Dham Resources</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {[
+                  { href: '/chardham-yatra-cost-by-car', label: 'Char Dham Cost by Car' },
+                  { href: '/chardham-yatra/by-innova-crysta', label: 'Char Dham by Innova' },
+                  { href: '/chardham-yatra/by-bus', label: 'Char Dham by Bus' },
+                  { href: '/chardham-yatra/kedarnath-yatra-by-car', label: 'Kedarnath by Car' },
+                  { href: '/chardham-yatra/badrinath-yatra-by-car', label: 'Badrinath by Car' },
+                  { href: '/tempo-traveller', label: 'Tempo Traveller Hire' },
+                ].map((res, i) => (
+                  <Link key={i} href={res.href} className="flex items-center gap-2 bg-white/[0.03] border border-white/10 rounded-lg px-4 py-3 hover:border-orange-500/30 transition-all text-sm text-teal-100/80 hover:text-orange-300">
+                    <ArrowRight className="w-3 h-3 text-orange-400 flex-shrink-0" />{res.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -491,7 +665,7 @@ export default function ChardhamRouteClient({ data }) {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-teal-200/70 leading-relaxed">{faq.answer}</p>
+                      <p className={`px-5 pb-5 text-teal-200/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

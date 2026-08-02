@@ -1,0 +1,50 @@
+import { friendsTripData } from '@/utilis/friendsTripData';
+import FriendsTripClient from '@/components/audience/FriendsTripClient';
+import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+
+const SLUG = "friends-trip-tirthan-valley";
+const data = friendsTripData["tirthan-valley"];
+
+export const metadata = {
+  title: 'Friends Trip to Tirthan Valley by Tempo Traveller | Rs 1,235/Person | 2026',
+  description: 'Book Tempo Traveller for a friends trip to Tirthan Valley from Delhi. Rs 1,235/person. GHNP treks, trout fishing, riverside camping. 12-17 seater AC. Call 7668570551.',
+  keywords: 'friends trip tirthan valley, tirthan valley group trip, tirthan tempo traveller, delhi to tirthan friends, ghnp trek trout fishing, tirthan valley camping package',
+  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  metadataBase: new URL('https://www.trivenicabs.in'),
+  alternates: { canonical: '/friends-trip-tirthan-valley' },
+  openGraph: { title: 'Friends Trip to Tirthan Valley | Tempo Traveller Rs 1,235/Person', description: 'Tirthan Valley friends trip. GHNP treks, trout fishing, riverside camping. From Rs 1,235/person.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/friends-trip-tirthan-valley', siteName: 'Triveni Cabs' },
+  twitter: { card: 'summary_large_image', title: 'Friends Trip Tirthan Valley | Rs 1,235/Person', description: 'Tirthan Valley group trip by Tempo Traveller. GHNP, trout fishing, camping.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+};
+
+export default function FriendsTripPage() {
+  const lowPrice = data.price.tempo12 || data.price.tempo17 || 0;
+  const highPrice = data.price.tempo17 || data.price.minibus || lowPrice;
+  const schemaGraph = buildTripSchemaGraph({
+    data,
+    slug: SLUG,
+    touristType: 'Friends Group',
+    citySlug: "tirthan-valley",
+    breadcrumbTrail: [
+      { name: 'Home', url: 'https://www.trivenicabs.in' },
+      { name: 'Friends Trip to Tirthan Valley', url: `https://www.trivenicabs.in/${SLUG}` },
+    ],
+    image: '/images/triveni-cabs-og.jpg',
+    lowPrice,
+    highPrice,
+    tripName: 'Friends Trip to Tirthan Valley by Tempo Traveller from Delhi',
+    howToName: 'How to Plan a Friends Group Trip to Tirthan Valley from Delhi',
+    howToDesc: 'Step-by-step guide to booking a Tempo Traveller for a friends group trip to Tirthan Valley from Delhi with Triveni Cabs.',
+  });
+
+  return (
+    <>
+      {schemaGraph.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      <FriendsTripClient data={data} />
+    </>
+  );
+}
+
+export const revalidate = 3600;

@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import AEOHead from '@/components/seo/AEOHead';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import BookingJourney from '@/components/shared/BookingJourney';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Railway Station Taxi Service | 27 Stations | 24/7 Cab Booking | Triveni Cabs',
-  description: 'Book reliable taxi at 27+ railway stations across India. Fixed fares, 24/7 service, meet at platform exit. Agra Cantt, New Delhi, Jaipur, Varanasi, Lucknow, Haridwar & more. Call 7668570551.',
+  title: 'Railway Station Taxi Service | 27 Stations | 24/7 Cab Booking',
+  description: 'Book reliable taxi at 27+ railway stations across India. Fixed fares, 24/7 service, meet at platform exit.',
   keywords: 'railway station taxi, station cab booking, train station taxi service, railway station cab, station pickup taxi, india railway station taxi, station to hotel taxi, prepaid taxi railway station, 24/7 station taxi, railway station cab service near me',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -81,7 +82,7 @@ export default function RailwayStationTaxiHub() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount('railway-station-taxi')),
       "bestRating": "5",
       "worstRating": "1"
     }

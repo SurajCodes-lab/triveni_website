@@ -180,9 +180,9 @@ function getEstimatedRoute(from, to, tripType) {
     { vehicle: 'Sedan (Swift Dzire)', rate: 12, category: 'car', seats: 4, tag: 'Economy', features: ['AC', '4 Seats', 'Boot Space'] },
     { vehicle: 'SUV Ertiga', rate: 15, category: 'car', seats: 6, tag: 'Spacious', features: ['AC', '6 Seats', 'Spacious'] },
     { vehicle: 'SUV Innova Crysta', rate: 18, category: 'car', seats: 7, tag: 'Premium', features: ['AC', '7 Seats', 'Premium'] },
-    { vehicle: '12 Seater Tempo', rate: 23, category: 'tempo', seats: 12, tag: 'Group', features: ['AC', '12 Seats', 'Groups'] },
-    { vehicle: '17 Seater Tempo', rate: 26, category: 'tempo', seats: 17, tag: 'Group', features: ['AC', '17 Seats', 'Groups'] },
-    { vehicle: '26 Seater Maharaja', rate: 26, category: 'tempo', seats: 26, tag: 'Large Group', features: ['AC', '26 Seats', 'Maharaja'] },
+    { vehicle: '12 Seater Tempo', rate: 20, category: 'tempo', seats: 12, tag: 'Group', features: ['AC', '12 Seats', 'Groups'] },
+    { vehicle: '17 Seater Tempo', rate: 24, category: 'tempo', seats: 17, tag: 'Group', features: ['AC', '17 Seats', 'Groups'] },
+    { vehicle: '26 Seater Maharaja', rate: 28, category: 'tempo', seats: 26, tag: 'Large Group', features: ['AC', '26 Seats', 'Maharaja'] },
   ];
 
   const vehicles = perKmRates.map(v => {

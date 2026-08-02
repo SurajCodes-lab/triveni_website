@@ -4,7 +4,7 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.agra;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: '15+ Places to Visit Near Agra by Car | Day Trips | Book Cab',

@@ -1,9 +1,11 @@
 import { getTripCostBySlug } from '@/utilis/tripCostData';
 import TripCostClient from '@/components/tripcost/TripCostClient';
+import { buildTripCostBareGraph } from '@/utilis/tripSchemaHelper';
 
-const data = getTripCostBySlug('honeymoon-trip-cost-shimla-manali');
+const SLUG = 'honeymoon-trip-cost-shimla-manali';
+const data = getTripCostBySlug(SLUG);
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: data.title,
@@ -33,31 +35,28 @@ export const metadata = {
 };
 
 export default function HoneymoonTripCostPage() {
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
-      { "@type": "ListItem", "position": 2, "name": "Honeymoon Trip Cost Shimla Manali", "item": "https://www.trivenicabs.in/honeymoon-trip-cost-shimla-manali" },
+  const schemaGraph = buildTripCostBareGraph({
+    slug: SLUG,
+    data,
+    citySlug: 'manali',
+    breadcrumbName: 'Honeymoon Trip Cost Shimla Manali',
+    image: '/images/triveni-cabs-og.jpg',
+    howToName: 'How to Budget a Shimla Manali Honeymoon by Car from Delhi',
+    howToDesc: 'Step-by-step Shimla Manali honeymoon budget: cab fare, decorated car, hotels, food and sightseeing for a 5-6 day romantic road trip.',
+    howToSteps: [
+      { name: 'Pick your vehicle', text: 'A private sedan for Shimla Manali honeymoon starts around Rs 14,500 all-inclusive of fuel, toll and driver allowance; an SUV is around Rs 18,000 for extra comfort on hill roads.' },
+      { name: 'Add a decorated car option', text: 'Triveni Cabs offers a complimentary decorated car for the honeymoon entry, plus flexible scenic stops at Kufri, Solang Valley and the Atal Tunnel.' },
+      { name: 'Budget hotels and meals', text: 'Mid-range honeymoon resorts in Shimla and Manali cost Rs 2,500-6,000 per night; meals run Rs 800-1,500 per couple per day at cafes and restaurants.' },
+      { name: 'Plan sightseeing and activities', text: 'Add paragliding, ropeway rides and Rohtang/Atal Tunnel permits. Most couple activities cost Rs 500-2,500 per person.' },
+      { name: 'Total honeymoon budget', text: 'A 5-6 day Shimla Manali honeymoon by car from Delhi typically costs Rs 35,000-60,000 per couple including cab, hotels, food and activities.' },
     ],
-  };
-
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": data.title,
-    "description": data.metaDescription,
-    "author": { "@type": "Organization", "name": "Triveni Cabs" },
-    "publisher": { "@type": "Organization", "name": "Triveni Cabs", "url": "https://www.trivenicabs.in" },
-    "datePublished": "2025-01-01",
-    "dateModified": "2026-01-01"
-  };
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {schemaGraph.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <TripCostClient data={data} />
     </>
   );

@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, Car, ArrowRight, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll, Mountain, Snowflake, Waves } from '@/components/ui/icons';
 
-export const metadata = { title: 'Kashmir Travel Guide 2026 | Paradise on Earth - Dal Lake, Gulmarg & Pahalgam', description: 'Complete Kashmir travel guide 2026. Paradise on Earth, Dal Lake shikaras, Gulmarg skiing and gondola, Pahalgam valleys, Mughal Gardens, houseboats, Wazwan cuisine. Srinagar local cabs available. Call 7668570551.', keywords: 'kashmir travel guide, paradise on earth, dal lake srinagar, gulmarg skiing, pahalgam travel, mughal gardens kashmir, kashmir houseboat, wazwan cuisine, srinagar tourism 2026, kashmir cab service', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/kashmir-travel-guide' }, openGraph: { title: 'Kashmir Travel Guide 2026 | Paradise on Earth - Dal Lake, Gulmarg & Pahalgam', description: 'Everything about visiting Kashmir. Dal Lake, Gulmarg, Pahalgam, houseboats, Wazwan, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/kashmir-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/kashmir-hero.jpg', width: 1200, height: 630, alt: 'Kashmir Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Kashmir Travel Guide 2026 | Paradise on Earth', description: 'Complete Kashmir guide. Dal Lake, Gulmarg, Pahalgam, houseboats, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/kashmir-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Kashmir Travel Guide 2026: Best Time, Cost & Itinerary', description: 'Best time to visit Kashmir: Mar-Oct for valleys & tulips, Dec-Feb for snow. Plan 5-7 days across Srinagar, Gulmarg & Pahalgam. Dal Lake, houseboats, Wazwan + cab tips. Call 7668570551.', keywords: 'kashmir travel guide, paradise on earth, dal lake srinagar, gulmarg skiing, pahalgam travel, mughal gardens kashmir, kashmir houseboat, wazwan cuisine, srinagar tourism 2026, kashmir cab service', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/kashmir-travel-guide' }, openGraph: { title: 'Kashmir Travel Guide 2026 | Paradise on Earth - Dal Lake, Gulmarg & Pahalgam', description: 'Everything about visiting Kashmir. Dal Lake, Gulmarg, Pahalgam, houseboats, Wazwan, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/kashmir-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg', width: 1200, height: 630, alt: 'Kashmir Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Kashmir Travel Guide 2026 | Paradise on Earth', description: 'Complete Kashmir guide. Dal Lake, Gulmarg, Pahalgam, houseboats, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function KashmirTravelGuidePage() {
+  const heroImage = "/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg";
+  const cityName = "Kashmir";
+  const whatsappMsg = "I want to book a cab for Kashmir trip";
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Kashmir Travel Guide", "item": "https://www.trivenicabs.in/kashmir-travel-guide" }] };
   const faqData = [
     { question: "How many days do I need in Kashmir?", answer: "5-7 days is ideal for a complete Kashmir experience. Day 1-2: Srinagar -- Dal Lake shikara ride, Mughal Gardens (Nishat, Shalimar, Chashme Shahi), old city walk, houseboat stay. Day 3-4: Gulmarg -- gondola ride to Apharwat Peak, skiing in winter, meadow walks in summer. Day 5-6: Pahalgam -- Betaab Valley, Aru Valley, Chandanwari, Lidder River walk. Day 7: Sonamarg and Thajiwas Glacier trek if time permits." },
@@ -18,13 +23,13 @@ export default function KashmirTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Dal Lake & Shikara Rides", desc: "The crown jewel of Srinagar -- a 22 sq km lake surrounded by snow-capped mountains, lined with ornate houseboats and floating gardens. A shikara (traditional wooden boat) ride at sunset is one of India&apos;s most iconic experiences. The floating vegetable market at dawn and the lotus gardens in summer are magical sights found nowhere else.", entry: "Shikara &#8377;500-2,000/hour", timing: "All day; sunset best", duration: "1-3 hours", icon: Waves },
-    { name: "Gulmarg (Meadow of Flowers)", desc: "A breathtaking hill station at 2,650 metres, famous for having Asia&apos;s highest and longest cable car -- the Gulmarg Gondola. In winter (December-February), it transforms into India&apos;s premier ski resort with powder snow. In summer, the meadows burst with wildflowers. The gondola&apos;s Phase 2 takes you to 3,980 metres at Apharwat Peak for stunning Himalayan panoramas.", entry: "Gondola Phase 1: &#8377;740, Phase 2: &#8377;920", timing: "10:00 AM - 5:00 PM", duration: "Full day trip", icon: Mountain },
-    { name: "Pahalgam (Valley of Shepherds)", desc: "A stunning valley town at 2,130 metres, serving as the base camp for the Amarnath Yatra pilgrimage. Surrounded by pine forests and snow-capped peaks, Pahalgam offers the idyllic Aru Valley (12 km), the dramatic Betaab Valley (named after a Bollywood film), and Chandanwari (the first stop on the Amarnath trek). The Lidder River running through town is perfect for trout fishing.", entry: "Aru/Betaab Valley vehicle &#8377;1,500-2,500", timing: "All day", duration: "Full day trip", icon: Mountain },
+    { name: "Dal Lake & Shikara Rides", desc: "The crown jewel of Srinagar -- a 22 sq km lake surrounded by snow-capped mountains, lined with ornate houseboats and floating gardens. A shikara (traditional wooden boat) ride at sunset is one of India&apos;s most iconic experiences. The floating vegetable market at dawn and the lotus gardens in summer are magical sights found nowhere else.", entry: "Shikara &#8377;500-2,000/hour", timing: "All day; sunset best", duration: "1-3 hours", icon: Waves, img: "/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg" },
+    { name: "Gulmarg (Meadow of Flowers)", desc: "A breathtaking hill station at 2,650 metres, famous for having Asia&apos;s highest and longest cable car -- the Gulmarg Gondola. In winter (December-February), it transforms into India&apos;s premier ski resort with powder snow. In summer, the meadows burst with wildflowers. The gondola&apos;s Phase 2 takes you to 3,980 metres at Apharwat Peak for stunning Himalayan panoramas.", entry: "Gondola Phase 1: &#8377;740, Phase 2: &#8377;920", timing: "10:00 AM - 5:00 PM", duration: "Full day trip", icon: Mountain, img: "/images/sightseeing/Kashmir_Valley/Gondola_Cable_Car.jpg" },
+    { name: "Pahalgam (Valley of Shepherds)", desc: "A stunning valley town at 2,130 metres, serving as the base camp for the Amarnath Yatra pilgrimage. Surrounded by pine forests and snow-capped peaks, Pahalgam offers the idyllic Aru Valley (12 km), the dramatic Betaab Valley (named after a Bollywood film), and Chandanwari (the first stop on the Amarnath trek). The Lidder River running through town is perfect for trout fishing.", entry: "Aru/Betaab Valley vehicle &#8377;1,500-2,500", timing: "All day", duration: "Full day trip", icon: Mountain, img: "/images/sightseeing/Kashmir_Valley/Betaab_Valley.jpg" },
     { name: "Mughal Gardens (Nishat, Shalimar, Chashme Shahi)", desc: "Three magnificent terraced gardens built by Mughal emperors on the banks of Dal Lake. Nishat Bagh (Garden of Joy, 1633) has 12 terraces with cascading fountains. Shalimar Bagh (Abode of Love, 1619) was Emperor Jahangir&apos;s gift to Empress Nur Jahan. Chashme Shahi (Royal Spring) has a natural spring of crystal-clear cold water believed to have medicinal properties.", entry: "&#8377;24 each", timing: "9:00 AM - 7:00 PM", duration: "2-3 hours (all three)", icon: Landmark },
     { name: "Shankaracharya Temple", desc: "An ancient Hindu temple dedicated to Lord Shiva, perched at 1,000 feet above Srinagar on Shankaracharya Hill. Believed to date back to 200 BC, making it one of the oldest temples in Kashmir. The climb up 243 stone steps rewards visitors with breathtaking 360-degree views of Srinagar city, Dal Lake, and the surrounding Zabarwan mountains.", entry: "Free", timing: "6:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: Landmark },
     { name: "Sonamarg (Meadow of Gold)", desc: "A jaw-droppingly beautiful alpine valley at 2,800 metres, located 80 km from Srinagar on the road to Ladakh. The golden meadows surrounded by glaciers and towering snow-capped mountains fully justify its evocative name. This is the last major tourist stop before the Zoji La pass into Ladakh and serves as a base for the Thajiwas Glacier trek.", entry: "Pony ride to glacier &#8377;500-1,000", timing: "Apr-Oct (road closed in winter)", duration: "Full day trip", icon: Mountain },
-    { name: "Thajiwas Glacier", desc: "A spectacular glacier accessible via a 3 km trek or pony ride from Sonamarg. The trail passes through alpine meadows carpeted with wildflowers in summer. At the glacier face, you can touch actual glacial ice and snow even in the height of July. One of the most accessible and rewarding glacier experiences in all of India.", entry: "Trek free; pony &#8377;500-1,000", timing: "Best Apr-Sep", duration: "2-3 hours", icon: Snowflake },
+    { name: "Thajiwas Glacier", desc: "A spectacular glacier accessible via a 3 km trek or pony ride from Sonamarg. The trail passes through alpine meadows carpeted with wildflowers in summer. At the glacier face, you can touch actual glacial ice and snow even in the height of July. One of the most accessible and rewarding glacier experiences in all of India.", entry: "Trek free; pony &#8377;500-1,000", timing: "Best Apr-Sep", duration: "2-3 hours", icon: Snowflake, img: "/images/sightseeing/Kashmir_Valley/Thajiwas_Glacier.jpg" },
     { name: "Old Srinagar City Walk", desc: "The atmospheric old quarter of Srinagar is a treasure trove of medieval mosques, traditional Kashmiri homes with ornate wooden balconies (pinjrakari), and bustling bazaars. Visit the Shah-e-Hamdan Mosque (1395), the grand Jamia Masjid (1394), and the vibrant spice, dry fruit, and copper markets. A guided walk reveals the authentic soul of Kashmiri life.", entry: "Free", timing: "Morning best", duration: "2-3 hours", icon: Compass },
   ];
   const monthlyGuide = [
@@ -63,6 +68,16 @@ export default function KashmirTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: MapPin, title: "Kashmir Specialists", desc: "Srinagar local cabs" }, { icon: Mountain, title: "Paradise on Earth", desc: "Dal Lake to Gulmarg" }, { icon: Users, title: "3000+ Kashmir Trips", desc: "Full valley coverage" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "8 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "kashmir-travel-guide",
+    headline: "Kashmir Travel Guide",
+    description: "Kashmir Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -78,12 +93,14 @@ export default function KashmirTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+        <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -119,6 +136,23 @@ export default function KashmirTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Kashmir trip?"
+            answer="Kashmir's main season runs March to October, with spring tulips from March to May, 20-30 degree summers from June to August and golden chinar autumn in September and October; December to February is for snow and skiing at Gulmarg. Five to seven days covers Srinagar's Dal Lake and Mughal Gardens, the Gulmarg gondola, Pahalgam's valleys and Sonamarg. Delhi to Srinagar is a 1.5 hour flight, far more practical than the 850 km highway drive."
+            facts={[
+              { label: 'Best time', value: 'Mar to Oct' },
+              { label: 'Ideal duration', value: '5 to 7 days' },
+              { label: 'Top sight', value: 'Dal Lake' },
+              { label: 'From Delhi', value: '1.5 hr flight' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -140,9 +174,9 @@ export default function KashmirTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to Paradise on Earth</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Kashmir, described by Mughal Emperor Jahangir as &quot;Paradise on Earth,&quot; is a valley of such extraordinary beauty that it has inspired poets, painters, and travellers for centuries. Cradled by the Great Himalayas and the Pir Panjal Range, the Kashmir Valley stretches 135 kilometres long and 32 kilometres wide at an average altitude of 1,850 metres. At its heart lies Srinagar, the summer capital of Jammu and Kashmir, where the legendary Dal Lake reflects snow-capped peaks and ornate houseboats have hosted visitors since the British era. The Mughal emperors were so enchanted by Kashmir that they built magnificent terraced gardens along the lake -- Nishat, Shalimar, and Chashme Shahi stand as testaments to their love for this land. Beyond Srinagar, Gulmarg offers Asia&apos;s highest cable car and India&apos;s best skiing, while Pahalgam&apos;s alpine valleys and rushing rivers provide a more pastoral paradise. The legendary Wazwan cuisine, with its intricate multi-course feasts, is a culinary art form perfected over centuries. Pashmina shawls, hand-knotted carpets, and walnut wood carvings represent some of India&apos;s finest craftsmanship. From the tulip-carpeted springs to the snow-blanketed winters, from shikara rides at sunset to Kahwa by a kangri (fire pot), Kashmir offers experiences that exist nowhere else on Earth. It is not just a destination -- it is an emotion.</p>
@@ -189,9 +223,16 @@ export default function KashmirTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -204,6 +245,53 @@ export default function KashmirTravelGuidePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOK / SELL */}
+      <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+              <Car className="w-4 h-4 text-amber-300" />
+              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+            <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+              { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+              { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+            ].map((v, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                <div className="h-44 overflow-hidden relative">
+                  <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                    <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                  </div>
+                  <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                  <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                    Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+              <Phone className="w-5 h-5" /> Call Now: 7668570551
+            </Link>
+            <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+              Get a Free Quote
+            </Link>
           </div>
         </div>
       </section>

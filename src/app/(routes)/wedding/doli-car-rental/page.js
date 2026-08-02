@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
 import { getWeddingPages } from '@/utilis/linkingHelper';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import {
   Phone, ChevronRight, CheckCircle2, ArrowRight,
   Heart, Star, Sparkles, Crown, Car, Shield, Clock
 } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 const service = getWeddingSpecialService('doli-car-rental');
 
@@ -22,6 +23,15 @@ export const metadata = {
   },
   keywords: service?.keywords || '',
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: "Doli Car Rental for Wedding | Bride Vidai Car | Triveni Cabs",
+    description: "Decorated luxury car for bride vidai ceremony. BMW, Audi, Mercedes doli car with driver.",
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ["/images/wedding/luxury_car.jpg"],
+  },
 };
 
 export default function DoliCarPage() {
@@ -30,11 +40,11 @@ export default function DoliCarPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": data.title,
+    "name": `${data.title} | Triveni Cabs`,
     "description": data.description,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "5000", "highPrice": "50000", "offerCount": "4", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "5000", "highPrice": "50000", "offerCount": "4", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs" } },
+    ...getRatingAndReviews('doli-car-rental', 'wedding')
   };
 
   const faqSchema = {

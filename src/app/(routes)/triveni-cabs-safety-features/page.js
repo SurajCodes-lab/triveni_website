@@ -1,4 +1,6 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
 
 export const revalidate = 3600;
 
@@ -43,8 +45,16 @@ export default function SafetyFeaturesPage() {
     "name": "Triveni Cabs Safety Features",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...getRatingAndReviews(slug, 'city')
   };
+  const articleSchema = getArticleSchema({
+    slug,
+    headline: 'Triveni Cabs Safety Features: GPS Tracking, Verified Drivers & SOS',
+    description: pageDesc,
+    image: '/images/citypage_hero_section_image.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+  const speakableSchema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `https://www.trivenicabs.in/${slug}#webpage`, "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']) };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     "itemListElement": [
@@ -60,6 +70,8 @@ export default function SafetyFeaturesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TrustPageClient

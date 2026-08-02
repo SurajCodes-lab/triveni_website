@@ -87,17 +87,27 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
  * Generate tour page metadata
  * CTR Formula: [Tour] [Price] — [Benefit] [Trust] | [CTA]
  */
-export function generateTourMetadata({ tourName, city, price, duration, slug, description: tourDesc, image }) {
-  const title = truncateTitle(`${tourName} ₹${price} — AC Vehicle 4.9★ | Book Now`);
+export function generateTourMetadata({ tourName, city, price, duration, slug, description: tourDesc, image, highlights = [], inclusions = [] }) {
+  // Build keyword-rich title with specific attractions
+  const topHighlights = highlights.slice(0, 2).map(h => typeof h === 'string' ? h : h.name || h.title || '').filter(Boolean).join(', ');
+  const titleWithAttractions = topHighlights
+    ? truncateTitle(`${tourName} ₹${price} — ${topHighlights} | Book`)
+    : truncateTitle(`${tourName} ₹${price} — ${duration} Tour 4.9★ | Book`);
+  const title = titleWithAttractions;
   const ogTitle = truncateOGTitle(`${tourName} ₹${price} — ${duration}, All Inclusive AC Vehicle & Expert Guide | Book Today`);
+
+  // Build description with specific attractions instead of generic text
+  const highlightText = highlights.slice(0, 4).map(h => typeof h === 'string' ? h : h.name || h.title || '').filter(Boolean).join(', ');
   const description = truncateDescription(
     tourDesc ||
-    `${tourName} at ₹${price}. ${duration}, AC vehicle, expert driver. ` +
-    `4.9★ by 10K+ travellers. No hidden cost. Book in 2 min.`
+    (highlightText
+      ? `${tourName} ₹${price}: ${highlightText}. ${duration}, AC car, expert guide. 4.9★ rated. Book in 2 min.`
+      : `${tourName} at ₹${price}. ${duration}, AC vehicle, expert driver. 4.9★ by 10K+ travellers. No hidden cost. Book in 2 min.`)
   );
   const ogDescription = truncateDescription(
-    `Book ${tourName} at just ₹${price}. ${duration} all-inclusive tour with AC vehicle & expert guide. ` +
-    `4.9★ rated. Book now!`
+    highlightText
+      ? `Book ${tourName} ₹${price}: ${highlightText}. ${duration} all-inclusive tour. 4.9★ rated. Book now!`
+      : `Book ${tourName} at just ₹${price}. ${duration} all-inclusive tour with AC vehicle & expert guide. 4.9★ rated. Book now!`
   );
 
   return {
@@ -922,6 +932,130 @@ function generateBusKeywords(origin, destination, seats) {
   ].join(', ');
 }
 
+/**
+ * Generate Tours-With-Guide page metadata (Group A vehicle+itinerary, B language landing, C deep)
+ * CTR Formula: bundled price → "Licensed Guide Included" trust → monument → no-surprise-fee promise
+ */
+export function generateTourWithGuideMetadata({
+  slug,
+  city,
+  vehicle,
+  monument,
+  bundledFare,
+  guideFee,
+  duration,
+  guideLanguage,
+  group,
+  heroImage,
+  intro,
+}) {
+  const monumentSegment = monument || (city || 'India');
+  const langTag = guideLanguage ? `${guideLanguage}-Speaking ` : 'Licensed ';
+  const baseTitle = group === 'B'
+    ? `${guideLanguage || 'English'}-Speaking Tour Guide India ₹${guideFee}/day — Ministry-Licensed | Book`
+    : group === 'C'
+    ? `${monumentSegment} with ${langTag}Guide ₹${bundledFare?.toLocaleString('en-IN')} — All-In | Book`
+    : `${monumentSegment} ₹${bundledFare?.toLocaleString('en-IN')} — Vehicle + Licensed Guide | Book`;
+
+  const title = truncateTitle(baseTitle);
+  const ogTitle = truncateOGTitle(
+    group === 'B'
+      ? `Hire a ${guideLanguage}-Speaking Tour Guide in India — ₹${guideFee}/day, Ministry-Licensed | Triveni Cabs`
+      : `${monumentSegment} Tour with ${langTag}Guide — ${vehicle} + Guide Bundle ₹${bundledFare?.toLocaleString('en-IN')} | Triveni Cabs`
+  );
+
+  const description = truncateDescription(
+    group === 'B'
+      ? `Book a Ministry-licensed ${guideLanguage}-speaking tour guide for the Taj Mahal, Delhi, Jaipur or Golden Triangle. ₹${guideFee}/day. License proof shared at confirmation.`
+      : `${monumentSegment} bundled tour ₹${bundledFare?.toLocaleString('en-IN')}: ${vehicle} + ${langTag.trim()} guide. ${duration}. Hotel pickup, no surprise fees. 4.9★, book in 2 min.`
+  );
+  const ogDescription = truncateDescription(
+    group === 'B'
+      ? `Hire a Ministry-licensed ${guideLanguage}-speaking tour guide in India from ₹${guideFee}/day. License proof on confirmation. Book on WhatsApp.`
+      : `Book ${monumentSegment} with a ${langTag.trim()} guide + ${vehicle} from ₹${bundledFare?.toLocaleString('en-IN')}. ${duration}, hotel pickup, no surprise fees. 4.9★ rated.`
+  );
+
+  const url = `${BASE_URL}/tours-with-guide/${slug}`;
+  const ogImage = heroImage ? (heroImage.startsWith('http') ? heroImage : `${BASE_URL}${heroImage}`) : `${BASE_URL}/images/sightseeing/Agra/Taj_mahal.jpg`;
+
+  return {
+    title,
+    description,
+    keywords: generateTourWithGuideKeywords(monumentSegment, city, guideLanguage, group),
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: url,
+      languages: {
+        'en-IN': `/tours-with-guide/${slug}`,
+      },
+    },
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      type: 'website',
+      locale: SITE_CONFIG.locale,
+      url,
+      siteName: SITE_CONFIG.siteName,
+      images: [{
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${monumentSegment} — Tour With ${langTag.trim()} Guide — Triveni Cabs`,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description: ogDescription,
+      creator: SITE_CONFIG.twitterHandle,
+      site: SITE_CONFIG.twitterHandle,
+    },
+    robots: getDefaultRobots(),
+    category: 'Travel',
+    other: {
+      'price-range': bundledFare ? `₹${bundledFare}` : (guideFee ? `From ₹${guideFee}/day` : '₹₹'),
+      'service-type': group === 'B' ? 'Tour Guide Hire' : 'Tour With Guide',
+      'duration': duration || '',
+      'language': guideLanguage || 'English',
+      'rating': String(AGGREGATE_RATING.ratingValue),
+      'review_count': String(AGGREGATE_RATING.reviewCount),
+    },
+  };
+}
+
+function generateTourWithGuideKeywords(monument, city, language, group) {
+  const langKw = language ? `${language.toLowerCase()} speaking guide` : 'licensed tour guide';
+  const base = group === 'B'
+    ? [
+        `${langKw} india`,
+        `hire ${langKw}`,
+        `${language?.toLowerCase()} tour guide ${city}`,
+        `${language?.toLowerCase()} guide taj mahal`,
+        `${language?.toLowerCase()} guide delhi`,
+        `${language?.toLowerCase()} guide jaipur`,
+        `${language?.toLowerCase()} guide golden triangle`,
+        'ministry of tourism guide',
+        'tours with guide',
+        COMPANY_INFO.name,
+      ]
+    : [
+        `${monument?.toLowerCase()} tour with guide`,
+        `${monument?.toLowerCase()} ${langKw}`,
+        `${city?.toLowerCase()} tour with guide`,
+        `${city?.toLowerCase()} private tour`,
+        `${monument?.toLowerCase()} tour package`,
+        `${monument?.toLowerCase()} day tour`,
+        'taj mahal tour with guide',
+        'agra tour with guide',
+        'delhi tour with guide',
+        'jaipur tour with guide',
+        'golden triangle tour with guide',
+        'tours with guide india',
+        COMPANY_INFO.name,
+      ];
+  return base.filter(Boolean).join(', ');
+}
+
 export default {
   generateRouteMetadata,
   generateTourMetadata,
@@ -933,5 +1067,6 @@ export default {
   generateWeddingMetadata,
   generateEventMetadata,
   generateTempoMetadata,
-  generateBusMetadata
+  generateBusMetadata,
+  generateTourWithGuideMetadata
 };

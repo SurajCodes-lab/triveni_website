@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Udaipur Food Tour 2026 | Dal Baati, Gatte Ki Sabzi & Lake City Cuisine Guide',
-  description: 'Udaipur food & culinary tour. Famous Dal Baati, Gatte Ki Sabzi, Kachori, Kulfi, Pani Puri. Street food itinerary, best restaurants, lakeside dining. By Udaipur locals. Call 7668570551.',
+  title: 'Udaipur Food Tour 2026 | Dal Baati & Gatte Ki Sabzi',
+  description: 'Udaipur food & culinary tour. Famous Dal Baati, Gatte Ki Sabzi, Kachori, Kulfi, Pani Puri. Street food itinerary, best restaurants, lakeside dining.',
   keywords: 'udaipur food tour, udaipur street food, udaipur famous food, dal baati udaipur, gatte ki sabzi, udaipur restaurants, lakeside dining udaipur, udaipur food guide',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -74,6 +75,19 @@ export default function UdaipurFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "udaipur-food-tour",
+    headline: "Udaipur Food Tour 2026 — Best Street Food, Restaurants & Local Specialties",
+    description: "Complete Udaipur food tour. Local specialties, street food trails, best restaurants, dessert spots, regional cuisine highlights, where to eat in Udaipur.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("udaipur", { idSlug: "udaipur-food-tour" });
+
 
   return (
     <>
@@ -91,6 +105,8 @@ export default function UdaipurFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

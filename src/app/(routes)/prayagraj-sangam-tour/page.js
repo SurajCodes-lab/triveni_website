@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Navigation } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Prayagraj Sangam Tour from Delhi | 2-3 Day Triveni Sangam Package | ₹10,500',
+  title: 'Prayagraj Sangam Tour from Delhi | 2-3 Day Package ₹10,500',
   description: 'Book Prayagraj Triveni Sangam tour from Delhi. 630km, 2-3 day packages. Sangam boat ride, Hanuman Mandir, Anand Bhawan. Sedan from ₹10,500. Call 7668570551.',
+  keywords: 'prayagraj sangam tour, tour package india, sightseeing tour, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',

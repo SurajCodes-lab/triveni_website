@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Shimla Shopping Guide 2026 | What to Buy & Where (Prices)',
-  description: 'What to buy in Shimla: Kullu shawls ₹500-5K, wooden toys ₹50-500, Himachali caps ₹150+, dry fruits, jams. Lakkar Bazaar, Mall Road, Lower Bazaar. Bargaining tips.',
+  description: 'What to buy in Shimla: Kullu shawls ₹500-5K, wooden toys ₹50-500, Himachali caps ₹150+, dry fruits, jams. Lakkar Bazaar, Mall Road, Lower Bazaar.',
   keywords: 'shimla shopping guide, shopping in shimla, lakkar bazaar shimla, shimla mall road shopping, kullu shawls shimla, shimla wooden toys, himachali cap, shimla dry fruits',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function ShimlaShoppingGuidePage() {
     { question: "What are the best food souvenirs from Shimla?", answer: "Top edible souvenirs: apple products (jam, juice, cider vinegar, chips), Himachali pickles, honey (especially from Kullu), dry fruits (walnuts, almonds, apricots from Kinnaur), rhododendron juice, and herbal teas. Shimla&apos;s apple season is July-September when fresh apples are cheapest. Pre-packed gift boxes are available on Mall Road." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function ShimlaShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -150,11 +151,26 @@ export default function ShimlaShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "shimla-shopping-guide",
+    headline: "Shimla Shopping Guide 2026 — Markets, Bazaars & What to Buy",
+    description: "Complete Shimla shopping guide. Best markets, bazaars, what to buy, bargaining tips, local crafts, branded shopping, market timings.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("shimla", { idSlug: "shimla-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }
@@ -222,6 +238,19 @@ export default function ShimlaShoppingGuidePage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* QUICK ANSWER */}
+        <section className="pt-14 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200/70 p-6 md:p-7 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <ShoppingBag className="w-5 h-5 text-amber-600" />
+                <h2 className="text-sm font-bold uppercase tracking-widest text-stone-500">Quick Answer</h2>
+              </div>
+              <p className="text-base md:text-lg text-stone-700 leading-relaxed">The best things to buy in Shimla are Kullu shawls and woollens (₹500-5,000), handcrafted wooden toys (₹50-500), Himachali caps (₹150+), and local apple products, jams and dry fruits. Head to Lakkar Bazaar for wood crafts, Mall Road for branded shopping, and Lower Bazaar for the best bargains.</p>
             </div>
           </div>
         </section>

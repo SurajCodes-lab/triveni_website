@@ -1,17 +1,38 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = "5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur";
+
+export const revalidate = 3600;
 
 export const metadata = {
-  title: '5 Day Rajasthan Road Trip Jaipur Udaipur Jodhpur 2026 | Triveni Cabs',
-  description: '5 day Rajasthan road trip itinerary: Jaipur, Udaipur, Jodhpur circuit. Day-wise plan, distances, hotel areas, costs. Sedan ₹28,000, SUV ₹40,000. Call 7668570551.',
+  title: '5 Day Rajasthan Road Trip 2026 | Jaipur Udaipur Jodhpur',
+  description: '5-day Jaipur → Udaipur → Jodhpur circuit. Day-wise plan, hotel areas, costs from ₹28K Sedan / ₹40K SUV. Call 7668570551.',
   keywords: '5 day rajasthan road trip itinerary, jaipur udaipur jodhpur road trip, rajasthan 5 day tour by car, rajasthan road trip plan, rajasthan circuit tour',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur' },
-  openGraph: { title: '5 Day Rajasthan Road Trip | Jaipur-Udaipur-Jodhpur Circuit', description: 'The perfect 5-day Rajasthan circuit with forts, palaces, and lake views.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: '5 Day Rajasthan Road Trip 2026 | Jaipur-Udaipur-Jodhpur' },
+  openGraph: {
+    title: '5 Day Rajasthan Road Trip | Jaipur-Udaipur-Jodhpur Circuit',
+    description: 'The perfect 5-day Rajasthan circuit with forts, palaces, and lake views.',
+    type: 'website', locale: 'en_IN',
+    url: 'https://www.trivenicabs.in/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur',
+    siteName: 'Triveni Cabs',
+    images: [{
+      url: '/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg',
+      width: 1200, height: 630,
+      alt: '5 Day Rajasthan Road Trip — Jaipur, Udaipur, Jodhpur circuit',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '5 Day Rajasthan Road Trip 2026 | Jaipur-Udaipur-Jodhpur',
+    description: 'Jaipur → Udaipur → Jodhpur circuit. Day-wise plan, heritage hotels, stops. From ₹28,000 Sedan / ₹40,000 SUV.',
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ['/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg'],
+  },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -58,7 +79,7 @@ export default function RajasthanRoadTripPage() {
     "@context": "https://schema.org", "@type": "TouristTrip",
     "name": "5 Day Rajasthan Road Trip - Jaipur Udaipur Jodhpur",
     "description": "5-day Rajasthan circuit covering the Pink City, City of Lakes, and Blue City",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "28000", "highPrice": "65000", "priceCurrency": "INR" }
   };
   const breadcrumbSchema = {
@@ -68,6 +89,11 @@ export default function RajasthanRoadTripPage() {
       { "@type": "ListItem", "position": 2, "name": "5 Day Rajasthan Road Trip", "item": "https://www.trivenicabs.in/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur" }
     ]
   };
+  const serviceSchema = buildStaticService({ slug: SLUG, name: "Rajasthan Road Trip Cab Service from Delhi", description: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 28000, highPrice: 65000, serviceType: 'Multi-Day Road Trip Cab Service' });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) 2026", description: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const howToSchema = getHowToSchema({ name: "How to Plan a 5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur)", description: "Step-by-step day-wise plan for the 5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 28000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
+  const placeSchemas = buildPlaceSchemas(["jaipur","udaipur","jodhpur","pushkar","ajmer"], SLUG, '/images/triveni-cabs-og.jpg');
+
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
   return (
@@ -75,6 +101,12 @@ export default function RajasthanRoadTripPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {placeSchemas.map((sc, idx) => (
+        <script key={`place-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sc) }} />
+      ))}
 
       <div className="min-h-screen bg-gradient-to-b from-rose-50 to-amber-50">
         <section className="relative bg-gradient-to-br from-rose-800 via-pink-700 to-amber-800 text-white py-20 px-4">
@@ -82,8 +114,8 @@ export default function RajasthanRoadTripPage() {
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full mb-6">
               <Calendar className="w-4 h-4" /><span className="text-sm font-medium">5 Days | 3 Royal Cities | 1 Unforgettable Trip</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">5-Day Rajasthan Road Trip<br />Jaipur &bull; Udaipur &bull; Jodhpur</h1>
-            <p className="text-xl text-rose-100 mb-4 max-w-3xl mx-auto">The Pink City, the City of Lakes, and the Blue City — three of India&apos;s most iconic destinations in one perfect road trip.</p>
+            <h1 className="speakable-headline text-4xl md:text-6xl font-bold mb-6 leading-tight">5-Day Rajasthan Road Trip<br />Jaipur &bull; Udaipur &bull; Jodhpur</h1>
+            <p className="speakable-lead text-xl text-rose-100 mb-4 max-w-3xl mx-auto">A 5-day Rajasthan road trip covering Jaipur, Udaipur and Jodhpur runs about 1,100 km and costs from Rs 28,000 (sedan) to Rs 40,000 (SUV) with Triveni Cabs, all-inclusive of fuel, tolls and driver allowance. Explore the Pink City, the City of Lakes and the Blue City — three of India&apos;s most iconic destinations in one perfect road trip.</p>
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span className="bg-white/10 px-4 py-2 rounded-full text-sm">Sedan ₹28,000</span>
               <span className="bg-white/10 px-4 py-2 rounded-full text-sm">SUV ₹40,000</span>
@@ -207,7 +239,7 @@ export default function RajasthanRoadTripPage() {
               {faqData.map((faq, i) => (
                 <details key={i} className="bg-rose-50 rounded-xl p-6 group">
                   <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">{faq.question}<ChevronRight className="w-5 h-5 text-rose-600 group-open:rotate-90 transition-transform flex-shrink-0" /></summary>
-                  <p className="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
+                  <p className={`mt-4 text-gray-700 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                 </details>
               ))}
             </div>

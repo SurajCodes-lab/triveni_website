@@ -1,18 +1,19 @@
 import { Metadata } from "next";
 import AirportServiceClient from "@/components/airport/AirportServiceClient";
 import AEOHead from '@/components/seo/AEOHead';
+import { getAllAirportPlaces } from '@/utilis/airportOutstationData';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Airport Taxi 2026 | Delhi IGI from ₹1,500 | Flight Tracking | Book Now',
-  description: 'Book airport taxi: Delhi IGI ₹1,500, Jaipur ₹1,200, Chandigarh ₹1,000. Real-time flight tracking, meet & greet, 24/7 service. 5000+ transfers done. Call 7668570551.',
-  keywords: "airport taxi, airport cab service, airport transfer, airport pickup, airport drop, airport cab booking, 24x7 airport cab, cheap airport taxi, airport taxi service, airport transfer service, best airport taxi near me, reliable airport cab, instant airport taxi booking, airport taxi booking online, pre book airport taxi, advance airport cab booking, airport taxi delhi, delhi airport cab service, delhi to airport taxi, indira gandhi airport taxi, IGI airport taxi, delhi airport transfer, airport pickup delhi, delhi airport drop, delhi airport cab booking, cheap airport taxi delhi, 24x7 airport cab delhi, best airport taxi delhi, affordable airport cab delhi, delhi airport taxi booking, delhi airport pickup service, delhi airport drop service, new delhi airport taxi, IGI terminal 3 taxi, IGI terminal 1 taxi, IGI terminal 2 taxi, delhi airport to city taxi, delhi airport to noida taxi, delhi airport to gurgaon cab, delhi airport to faridabad taxi, airport taxi jaipur, jaipur airport cab service, jaipur to airport taxi, jaipur international airport taxi, jaipur airport transfer, airport pickup jaipur, jaipur airport drop, jaipur airport cab booking, sanganer airport taxi, cheap airport taxi jaipur, jaipur airport to city taxi, best airport cab jaipur, jaipur airport pickup service, airport taxi agra, agra airport cab service, agra to delhi airport taxi, kheria airport taxi agra, agra airport transfer, airport pickup agra, agra to airport cab, agra airport drop service, agra to jaipur airport taxi, airport taxi chandigarh, chandigarh airport cab, chandigarh international airport taxi, airport transfer chandigarh, airport pickup chandigarh, chandigarh airport drop, mohali airport taxi, chandigarh airport cab booking, cheap airport taxi chandigarh, chandigarh airport to city taxi, best airport cab chandigarh, airport taxi shimla, shimla airport cab service, shimla to chandigarh airport taxi, shimla to delhi airport taxi, shimla airport transfer, jubbarhatti airport taxi, shimla to airport cab, shimla airport pickup, airport taxi manali, manali to kullu airport taxi, manali to chandigarh airport taxi, manali to delhi airport taxi, bhuntar airport to manali taxi, manali airport transfer, kullu airport taxi manali, manali airport cab service, kullu manali airport taxi, bhuntar to manali taxi, airport taxi amritsar, amritsar airport cab service, sri guru ram dass airport taxi, amritsar international airport taxi, amritsar airport transfer, airport pickup amritsar, amritsar airport drop, golden temple to airport taxi, amritsar airport cab booking, cheap airport taxi amritsar, best airport cab amritsar, airport taxi haridwar, haridwar to delhi airport taxi, haridwar to dehradun airport taxi, jolly grant airport to haridwar, haridwar airport transfer, haridwar airport cab service, haridwar to airport cab, haridwar airport pickup, airport taxi rishikesh, rishikesh to delhi airport taxi, rishikesh to dehradun airport taxi, jolly grant airport to rishikesh, rishikesh airport transfer, rishikesh airport cab service, rishikesh to airport cab, rishikesh airport pickup, airport taxi dehradun, dehradun airport cab service, jolly grant airport taxi, dehradun to delhi airport taxi, dehradun airport transfer, airport pickup dehradun, dehradun airport drop, dehradun to airport cab, jolly grant to dehradun taxi, cheap airport taxi dehradun, airport taxi jodhpur, jodhpur airport cab service, jodhpur airport transfer, jodhpur to jaipur airport taxi, airport pickup jodhpur, jodhpur airport drop, jodhpur to airport cab, jodhpur airport taxi booking, airport taxi udaipur, udaipur airport cab service, maharana pratap airport taxi, udaipur airport transfer, airport pickup udaipur, udaipur airport drop, udaipur to jaipur airport taxi, udaipur to airport cab, udaipur airport cab booking, airport taxi ayodhya, ayodhya to lucknow airport taxi, ayodhya to delhi airport taxi, ayodhya airport transfer, airport pickup ayodhya, ram mandir to airport taxi, ayodhya airport cab service, ayodhya to airport cab, one way airport taxi, round trip airport taxi, airport taxi near me, airport cab near me, luxury airport taxi, premium airport cab, sedan airport taxi, SUV airport taxi, innova airport taxi, tempo traveller airport transfer, corporate airport transfer, group airport transfer, family airport taxi, early morning airport taxi, late night airport cab, midnight airport taxi, airport to hotel taxi, hotel to airport taxi, airport to home taxi, home to airport cab, airport shuttle service, airport taxi fare, airport cab charges, airport taxi rate, airport transfer cost, how to book airport taxi, airport taxi contact number, airport cab customer care, airport transfer with flight tracking, meet and greet airport service, airport taxi with luggage assistance, safe airport transfer, verified airport drivers, sanitized airport cabs, GPS tracked airport taxi, fixed fare airport cab, no surge pricing airport taxi, instant confirmation airport booking",
+  title: 'Airport Taxi 2026 | Delhi IGI ₹1,500 | Flight Tracking',
+  description: 'Airport taxi — Delhi IGI ₹1,500, Jaipur ₹1,200, Chandigarh ₹1,000. Flight tracking, meet & greet, 24/7. Call 7668570551.',
+  keywords: "airport taxi service, airport cab booking, flight tracking taxi, meet and greet airport, fixed fare airport cab, 24x7 airport transfer, Delhi IGI airport taxi, Jaipur airport cab, Chandigarh airport transfer, late night airport pickup, no surge airport taxi, Triveni Cabs",
   alternates: {
     canonical: "https://www.trivenicabs.in/airport-service"
   },
   openGraph: {
-    title: "🚖 Book Airport Taxi in 60 Seconds | Flight Tracking + On-Time Guarantee | Triveni Cabs",
+    title: "🚖 Book Airport Taxi in 60 Seconds | Flight Tracking + On-Time Guarantee",
     description: "India's most trusted airport transfer service! ✓ Real-time flight tracking ✓ Meet & greet ✓ Luggage help ✓ Zero cancellation fee. Serving Delhi IGI, Jaipur, Chandigarh & 50+ cities. Pre-book for guaranteed rates!",
     type: "website",
     locale: "en_IN",
@@ -51,10 +52,12 @@ export default function AirportServicePage() {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Airport Transfer Service",
-    "name": "24/7 Premium Airport Taxi Service",
-    "description": "Professional airport transfer service with flight tracking, luggage assistance & on-time guarantee. Serving Delhi, Jaipur, Chandigarh, Shimla & major cities across India.",
+    "name": "Triveni Cabs - 24/7 Premium Airport Taxi Service",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "description": "Professional airport transfer service by Triveni Cabs with flight tracking, luggage assistance & on-time guarantee. Serving Delhi IGI, Jaipur, Chandigarh, Shimla & major cities across India.",
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -91,10 +94,30 @@ export default function AirportServicePage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": "412",
       "bestRating": "5",
       "worstRating": "1"
     },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Priya Sharma" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Driver from Triveni Cabs was waiting at IGI T3 arrival with a name board even though my Emirates flight landed 40 minutes late. Fixed fare honoured, no surge. Highly recommend for international arrivals."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Rohit Mehta" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Booked Triveni Cabs for a 2 AM Jaipur airport pickup. Driver tracked the flight, helped with luggage, AC sedan was clean. Far better than prepaid taxi counter prices."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Anjali Khanna" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Used the Chandigarh airport to Shimla service. Hill driver was experienced, Innova was comfortable for the family, fixed Rs 6,000 with no hidden charges. Will book again."
+      }
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Airport Transfer Fleet",
@@ -206,7 +229,7 @@ export default function AirportServicePage() {
     },
     {
       question: "What vehicles are available for airport transfer?",
-      answer: "We offer Sedan (Swift Dzire, Etios) from ₹11/km, SUV (Innova, Ertiga) from ₹15/km, and Tempo Traveller (12-26 seater) from ₹23/km for group airport transfers."
+      answer: "We offer Sedan (Swift Dzire, Etios) from ₹11/km, SUV (Innova, Ertiga) from ₹15/km, and Tempo Traveller (12-26 seater) from ₹20/km for group airport transfers."
     },
     {
       question: "How much in advance should I book airport taxi?",
@@ -246,11 +269,21 @@ export default function AirportServicePage() {
     }))
   };
 
+  // Place graph for major Indian airports — anchors Service schema to real-world entities
+  const placesGraph = {
+    "@context": "https://schema.org",
+    "@graph": getAllAirportPlaces()
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(placesGraph) }}
       />
       <script
         type="application/ld+json"

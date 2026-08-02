@@ -563,7 +563,7 @@ export const howToReachData = {
   chandigarh: {
     name: 'Chandigarh',
     slug: 'chandigarh',
-    title: 'How to Reach Chandigarh - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Chandigarh- By Air, Train, Road& Bus',
     metaDescription: 'Complete guide on how to reach Chandigarh by air, train, road and bus. Routes to the City Beautiful, nearest airport, railway station, and cab booking.',
     introduction: 'Chandigarh, the City Beautiful, serves as the joint capital of Punjab and Haryana. Designed by the legendary architect Le Corbusier, this planned city is known for its clean roads, Rock Garden, and Sukhna Lake. Chandigarh is also the gateway to popular hill stations like Shimla, Manali, and Dharamshala, making it an important transit hub for Himachal Pradesh tourism.',
     distanceFromDelhi: '250 km',
@@ -888,7 +888,7 @@ export const howToReachData = {
   dharamshala: {
     name: 'Dharamshala',
     slug: 'dharamshala',
-    title: 'How to Reach Dharamshala - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Dharamshala- By Air, Train, Road& Bus',
     metaDescription: 'Complete guide on how to reach Dharamshala by air, train, road and bus. Routes to the Dalai Lama residence, nearest airport, railway station, and cab booking.',
     introduction: 'Dharamshala, the winter capital of Himachal Pradesh, is best known as the home of His Holiness the Dalai Lama and the Tibetan government-in-exile. Nestled in the Kangra Valley at the edge of the Himalayas, Dharamshala (and its upper division McLeodganj) offers stunning mountain views, Tibetan culture, cricket stadiums, and trekking opportunities. Despite its mountain location, it is reasonably well-connected.',
     distanceFromDelhi: '480 km',

@@ -4,13 +4,15 @@ import { notFound } from 'next/navigation';
 import {
   getAllEventTypeSlugs,
   getEventTypeBySlug,
-  getAllEventTypes
+  getAllEventTypes,
+  getAllEventCities
 } from '@/utilis/eventTransportData';
 import { generateEventServiceSchema, generateBreadcrumbSchema } from '@/lib/seo/schema-generators';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 // Centralized icon imports for better bundle optimization
 import {
@@ -103,8 +105,15 @@ export default async function EventTypePage({ params }) {
   const allEventTypes = getAllEventTypes();
   const otherEventTypes = allEventTypes.filter(e => e.slug !== slug).slice(0, 4);
 
-  // Schema markup — use centralized generators for Service and Breadcrumb
-  const serviceSchema = generateEventServiceSchema(eventType.name);
+  // Schema markup — use centralized generators for Service and Breadcrumb.
+  // Override the inflated reviewCount + add named Reviews + Brand for AEO/GEO.
+  const baseServiceSchema = generateEventServiceSchema(eventType.name);
+  const serviceSchema = {
+    ...baseServiceSchema,
+    brand: { "@type": "Brand", "name": "Triveni Cabs" },
+    name: `${eventType.name} Transportation by Triveni Cabs`,
+    ...getRatingAndReviews(slug, 'event')
+  };
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -122,11 +131,34 @@ export default async function EventTypePage({ params }) {
     { name: eventType.name, url: `/event-transportation-service/${slug}` }
   ]);
 
+  // GEO: Place anchor for the primary service area (Delhi NCR HQ -> India).
+  // Grounds the event-type page to a real geographic entity for AEO/GEO.
+  const servicePlaceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    "@id": `https://www.trivenicabs.in/event-transportation-service/${slug}/#servicearea`,
+    "name": `${eventType.name} Transportation Service Area — North India`,
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Delhi NCR",
+      "addressRegion": "Delhi",
+      "postalCode": "110001",
+      "addressCountry": "IN"
+    },
+    "containedInPlace": { "@type": "Country", "name": "India" }
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicePlaceSchema) }} />
       <AEOHead pageType="event" data={{ url: `/event-transportation-service/${slug}`, title: eventType.name }} />
 
       <div className="min-h-screen bg-white">
@@ -446,7 +478,7 @@ export default async function EventTypePage({ params }) {
               <h2 className="text-5xl md:text-7xl font-black text-white mt-10 mb-6 leading-tight">
                 Serving
                 <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
-                  All 5 Cities
+                  All 12 Cities
                 </span>
               </h2>
               <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -456,14 +488,13 @@ export default async function EventTypePage({ params }) {
 
             {/* Cities Grid with Premium Cards */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { city: 'Delhi NCR', slug: 'delhi', desc: 'Covering Delhi, Noida, Gurgaon, Faridabad & Ghaziabad', image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
-                { city: 'Jaipur', slug: 'jaipur', desc: 'Pink City & surrounding Rajasthan destinations', image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
-                { city: 'Chandigarh', slug: 'chandigarh', desc: 'Tricity region - Chandigarh, Mohali & Panchkula', image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
-                { city: 'Agra', slug: 'agra', desc: 'Taj City & Agra-Mathura circuit', image: '/images/sightseeing/Agra/Agra_Hero_section.jpg' },
-                { city: 'Dehradun', slug: 'dehradun', desc: 'Uttarakhand gateway including Mussoorie & Rishikesh', image: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg' }
-              ].map((location, idx) => (
-                <Link key={idx} href={`/event-transportation-service/city/${location.slug}`}>
+              {getAllEventCities().map((c, idx) => ({
+                city: c.name,
+                slug: c.slug,
+                desc: c.tagline || (c.highlights && c.highlights[0]) || `${eventType.name} transport in ${c.name}`,
+                image: c.heroImage,
+              })).map((location, idx) => (
+                <Link key={idx} href={`/event-transportation-service/${slug}/${location.slug}`}>
                   <div className="group relative h-full">
                     {/* Glow Effect */}
                     <div className={`absolute inset-0 rounded-[2rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 ${
@@ -496,7 +527,7 @@ export default async function EventTypePage({ params }) {
                       <div className="p-6">
                         <p className="text-slate-400 leading-relaxed mb-3">{location.desc}</p>
                         <div className="flex items-center gap-2 text-cyan-400 font-semibold text-sm">
-                          View {location.city} Events <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          {eventType.name} in {location.city} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
                     </div>

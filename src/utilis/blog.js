@@ -11,6 +11,9 @@ import additionalSightseeingBlogs from './additionalSightseeingBlogs';
 import seasonalBlogs from './seasonalBlogs';
 import costBlogs from './costBlogs';
 import newBlogs2026 from './newBlogs2026';
+import newBlogsWeek39 from './newBlogsWeek39';
+// 30-Blog Pillar+Cluster+Decision Program (May 2026)
+import { blogPosts30 } from './blogPosts30';
 // Blog utilities no longer needed - all blogs now in correct format
 
 // Travel Blog Posts Data
@@ -138,7 +141,7 @@ export const travelBlogPosts = [
     keywords: ["north india travel destinations", "manali tourism", "jaipur travel guide", "rishikesh adventure", "taj mahal agra", "shimla hill station", "best places to visit north india", "north india tour packages", "himalayan destinations", "rajasthan tourism", "udaipur city of lakes", "amritsar golden temple", "varanasi spiritual tour", "dharamshala mcleodganj", "nainital lake district", "north india tourist places", "places to visit in north india", "north india travel guide 2026", "best tourist destinations north india", "north india sightseeing", "north india vacation spots", "top 10 places north india", "north india holiday destinations", "north india trip planning", "north india itinerary", "north india tourism guide", "famous places in north india", "north india honeymoon destinations", "family trip north india", "north india adventure tourism", "north india cultural tour", "north india pilgrimage sites", "north india weekend getaway", "delhi to manali tour", "delhi to jaipur tour", "rishikesh yoga retreat", "north india travel tips", "best time to visit north india", "north india travel cost", "north india package tour"],
     featured: true,
     views: 1250,
-    metaTitle: "10 Best Travel Destinations in North India 2026 | Complete Travel Guide",
+    metaTitle: "10 Best Travel Destinations in North India 2026 | Complete",
     metaDescription: "Explore top 10 destinations in North India for 2026. Expert guide to Manali, Jaipur, Rishikesh, Agra & more. Best time to visit, activities & travel tips.",
   },
   {
@@ -554,13 +557,13 @@ export const travelBlogPosts = [
     keywords: ["char dham yatra 2026", "char dham yatra package", "kedarnath badrinath yatra", "uttarakhand pilgrimage", "char dham registration", "yamunotri gangotri tour", "char dham opening dates 2026", "char dham yatra cost", "kedarnath helicopter booking", "badrinath yatra", "char dham taxi service", "haridwar to char dham", "do dham yatra", "char dham itinerary", "uttarakhand temple tour", "char dham yatra booking", "four dham yatra", "chota char dham", "kedarnath trek", "badrinath temple", "yamunotri temple", "gangotri temple", "char dham yatra by car", "char dham package from delhi", "char dham tour operator", "kedarnath yatra 2026", "badrinath yatra 2026", "char dham registration online", "char dham yatra guide", "best time for char dham", "char dham yatra tips", "kedarnath helicopter fare", "badrinath darshan", "haridwar to kedarnath", "rishikesh to badrinath", "char dham route map", "uttarakhand religious tour", "char dham pilgrimage package", "gangotri yamunotri package", "char dham travel agency", "char dham accommodation", "gaurikund to kedarnath", "mana village badrinath"],
     featured: true,
     views: 1450,
-    metaTitle: "Char Dham Yatra Complete Guide 2026 | Registration, Dates & Packages",
+    metaTitle: "Char Dham Yatra Complete Guide 2026",
     metaDescription: "Complete Char Dham Yatra 2026 guide - opening dates, registration, itinerary, costs & travel tips. Book your Kedarnath, Badrinath, Gangotri, Yamunotri tour now.",
   },
   {
     id: 4,
     slug: "rajasthan-road-trip-complete-guide-2026",
-    title: "Perfect Rajasthan Road Trip Guide 2026 - Forts, Palaces & Desert Safari",
+    title: "Perfect Rajasthan Road Trip Guide 2026 - Forts, Palaces &",
     excerpt: "Plan your ultimate Rajasthan road trip in 2026. Explore Jaipur, Udaipur, Jaisalmer, Jodhpur & more. Complete route, costs, best time & travel tips.",
     content: `
       <p>Rajasthan, the land of kings, offers one of India's most spectacular road trip experiences. From magnificent forts and opulent palaces to golden deserts and colorful bazaars, a Rajasthan road trip is a journey through India's royal heritage and vibrant culture.</p>
@@ -730,7 +733,7 @@ export const travelBlogPosts = [
     keywords: ["rajasthan road trip", "jaipur udaipur jaisalmer tour", "rajasthan tour package", "jodhpur tourism", "desert safari jaisalmer", "rajasthan travel guide", "best places in rajasthan", "rajasthan itinerary", "golden triangle tour", "rajasthan desert tour", "jaipur to jaisalmer", "udaipur trip", "pushkar travel", "bikaner camel safari", "rajasthan heritage tour", "rajasthan tourism", "jaipur city tour", "amber fort jaipur", "city palace udaipur", "mehrangarh fort jodhpur", "jaisalmer fort", "hawa mahal jaipur", "lake pichola udaipur", "pushkar camel fair", "bikaner rat temple", "rajasthan travel packages", "delhi to jaipur tour", "jaipur to udaipur distance", "udaipur to jodhpur route", "jodhpur to jaisalmer road", "rajasthan car rental", "rajasthan taxi service", "royal rajasthan tour", "rajasthan forts and palaces", "rajasthan culture tour", "rajasthan food tour", "best time to visit rajasthan", "rajasthan winter tour", "rajasthan family tour", "rajasthan honeymoon package", "rajasthan budget travel", "rajasthan luxury tour", "sam sand dunes jaisalmer", "desert camp rajasthan"],
     featured: true,
     views: 1120,
-    metaTitle: "Perfect Rajasthan Road Trip Guide 2026 | Complete Itinerary & Costs",
+    metaTitle: "Perfect Rajasthan Road Trip Guide 2026",
     metaDescription: "Ultimate Rajasthan road trip guide - Jaipur, Udaipur, Jaisalmer, Jodhpur itinerary. Routes, costs, best time & travel tips for your desert adventure.",
   },
   {
@@ -989,7 +992,7 @@ export const travelBlogPosts = [
     keywords: ["uttarakhand hill stations", "best hill stations in uttarakhand", "nainital summer trip", "mussoorie travel guide", "auli summer tourism", "uttarakhand summer vacation", "hill stations near delhi", "ranikhet travel", "almora tourism", "kausani himalayan views", "chopta trekking", "lansdowne weekend trip", "binsar wildlife sanctuary", "uttarakhand tour package", "summer getaway uttarakhand", "uttarakhand tourism", "nainital lake", "mussoorie kempty falls", "auli ropeway", "delhi to nainital", "delhi to mussoorie", "nainital tour package", "mussoorie honeymoon", "hill station in summer", "uttarakhand travel", "places to visit in uttarakhand", "kumaon hills", "garhwal hills", "uttarakhand adventure", "nainital boating", "mussoorie mall road", "ranikhet golf course", "almora kasar devi", "kausani tea gardens", "chopta tungnath trek", "lansdowne bhulla lake", "mukteshwar temple", "binsar zero point", "uttarakhand weekend trip", "family trip uttarakhand", "uttarakhand cab service", "best time to visit uttarakhand", "uttarakhand travel tips"],
     featured: false,
     views: 850,
-    metaTitle: "Best Hill Stations in Uttarakhand for Summer 2026 | Complete Guide",
+    metaTitle: "Best Hill Stations in Uttarakhand for Summer 2026 |",
     metaDescription: "Discover top Uttarakhand hill stations for summer 2026. Nainital, Mussoorie, Auli, Ranikhet travel guide with itinerary, costs & booking tips.",
     city: "uttarakhand",
     attractionType: "hill-station",
@@ -1631,13 +1634,13 @@ export const travelBlogPosts = [
 
     featured: true,
     views: 0,
-    metaTitle: "How to Visit Taj Mahal from Delhi - Complete Guide 2026 | Best Routes, Cost & Tours",
-    metaDescription: "Planning Taj Mahal visit from Delhi? Complete guide with best routes, costs (from ₹3,500), timings, tickets & insider tips. Compare train vs car options. Book hassle-free tour now!",
+    metaTitle: "How to Visit Taj Mahal from Delhi - Complete Guide 2026",
+    metaDescription: "Planning Taj Mahal visit from Delhi? Complete guide with best routes, costs (from ₹3,500), timings, tickets & insider tips. Compare train vs car options.",
   },
   {
     id: 7,
     slug: "golden-triangle-tour-india-itinerary-guide-2026",
-    title: "Golden Triangle Tour India: The Ultimate 7-Day Itinerary & Guide 2026",
+    title: "Golden Triangle Tour India: The Ultimate 7-Day Itinerary &",
     excerpt: "Planning a Golden Triangle Tour in India? Discover the ultimate 7-day itinerary covering Delhi, Agra, and Jaipur. Explore forts, palaces, the Taj Mahal, and cultural gems with our comprehensive travel guide.",
 
     relatedTours: [
@@ -1788,13 +1791,13 @@ export const travelBlogPosts = [
     keywords: ["golden triangle tour", "golden triangle india itinerary", "delhi agra jaipur tour package", "7 days golden triangle itinerary", "best time to visit golden triangle", "india travel guide", "golden triangle tour cost", "private car for golden triangle", "golden triangle sightseeing", "golden triangle map", "jaipur sightseeing from delhi", "agra tour from delhi", "golden triangle places to visit", "golden triangle luxury tour", "budget golden triangle tour", "golden triangle with ranthambore", "golden triangle with udaipur", "delhi sightseeing guide", "agra travel guide", "jaipur city tour"],
     featured: true,
     views: 850,
-    metaTitle: "Golden Triangle Tour India: Ultimate 7-Day Itinerary 2026 | Delhi Agra Jaipur",
-    metaDescription: "Plan your Golden Triangle Tour (Delhi-Agra-Jaipur) with our ultimate 7-day itinerary for 2026. Discover best places to visit, hotels, costs & travel tips. Book Now!",
+    metaTitle: "Golden Triangle Tour India: Ultimate 7-Day Itinerary 2026",
+    metaDescription: "Plan your Golden Triangle Tour (Delhi-Agra-Jaipur) with our ultimate 7-day itinerary for 2026. Discover best places to visit, hotels, costs & travel tips.",
   },
   {
     id: 13,
     slug: "delhi-sightseeing-guide-places-to-visit-2026",
-    title: "Delhi Sightseeing Guide 2026: Top 15 Places to Visit in The Capital",
+    title: "Delhi Sightseeing Guide 2026: Top 15 Places to Visit in The",
     excerpt: "Explore the best of Delhi with our comprehensive 2026 sightseeing guide. From the historic Red Fort to the modern Lotus Temple, discover the top 15 places to visit in India's capital.",
 
     relatedTours: [
@@ -2081,13 +2084,13 @@ export const travelBlogPosts = [
     keywords: ["jaipur sightseeing", "jaipur city tour", "amber fort jaipur", "hawa mahal", "city palace jaipur", "places to visit in jaipur", "jaipur tour guide", "things to do in jaipur", "jaipur tourism", "chokhi dhani jaipur", "shopping in jaipur", "best time to visit jaipur", "jaipur itinerary 2 days", "jal mahal jaipur", "nahargarh fort sunset", "jaipur photo spots", "patrika gate", "albert hall museum", "jaipur food guide", "rajasthani cuisine"],
     featured: true,
     views: 920,
-    metaTitle: "Jaipur City Tour 2026: Complete Sightseeing Guide | Pink City Itinerary",
+    metaTitle: "Jaipur City Tour 2026: Complete Sightseeing Guide",
     metaDescription: "Explore the best of Jaipur with our 2026 City Tour Guide. Visit Amber Fort, Hawa Mahal, City Palace & more. Find best itinerary, food & shopping tips.",
   },
   {
     id: 15,
     slug: "agra-travel-guide-beyond-taj-mahal-2026",
-    title: "Agra Travel Guide 2026: Beyond the Taj Mahal - Forts, Tombs & Food",
+    title: "Agra Travel Guide 2026: Beyond the Taj Mahal- Forts, Tombs& Food",
     excerpt: "Think Agra is just about the Taj Mahal? Think again! Explore Agra Fort, Mehtab Bagh, Fatehpur Sikri, and the vibrant food streets of Agra with our complete 2026 travel guide.",
 
     relatedTours: [
@@ -2211,7 +2214,7 @@ export const travelBlogPosts = [
     keywords: ["agra sightseeing", "places to visit in agra", "agra fort history", "fatehpur sikri tour", "baby taj agra", "mehtab bagh sunset", "agra street food", "shopping in agra", "best time to visit agra", "agra city tour", "taj mahal sunrise", "agra tour package", "delhi to agra one day tour", "agra travel guide", "mughal heritage walk", "petha agra", "agra leather market", "taj mahotsav", "agra itinerary 1 day"],
     featured: true,
     views: 1300,
-    metaTitle: "Agra Travel Guide 2026: Beyond Taj Mahal | Forts, Food & Itinerary",
+    metaTitle: "Agra Travel Guide 2026: Beyond Taj Mahal",
     metaDescription: "Discover Agra beyond the Taj Mahal. Complete 2026 travel guide to Agra Fort, Fatehpur Sikri, Baby Taj, best street food & shopping spots.",
   },
   {
@@ -2341,7 +2344,7 @@ export const travelBlogPosts = [
     keywords: ["jim corbett national park", "jim corbett safari booking", "dhikala zone", "best time to visit jim corbett", "tiger sighting in corbett", "jungle safari india", "resorts in jim corbett", "delhi to jim corbett cab", "jim corbett packages", "wildlife photography india", "bijrani zone", "jhirna zone", "corbett waterfall", "garjia devi temple", "jeep safari booking", "canter safari dhikala", "ramnagar to corbett", "project tiger", "corbett itinerary 3 days"],
     featured: true,
     views: 1450,
-    metaTitle: "Jim Corbett Safari Guide 2026: Zones, Booking & Best Time to Visit",
+    metaTitle: "Jim Corbett Safari Guide 2026: Zones, Booking & Best Time",
     metaDescription: "Ultimate guide to Jim Corbett National Park 2026. Best safari zones, tiger sighting tips, resort guide & travel tips. Plan your wildlife adventure now!",
   },
 
@@ -2352,8 +2355,8 @@ export const travelBlogPosts = [
   {
     id: 8,
     slug: "ayodhya-ram-mandir-complete-travel-guide-2026",
-    title: "Ayodhya Ram Mandir Complete Travel Guide 2026: How to Visit, Best Time, Darshan Timings & Tips",
-    excerpt: "Planning to visit the magnificent Ram Mandir in Ayodhya? Complete guide covering darshan timings, how to reach, best hotels, nearby attractions, and insider tips for a spiritual journey in 2026.",
+    title: "Ayodhya Ram Mandir Darshan Timings & Booking (2026)",
+    excerpt: "Ram Mandir darshan runs ~7–11:30 AM & 2–7 PM with free entry; aarti passes are bookable online. How to reach Ayodhya, best hotels, dress code & 2026 pilgrimage tips.",
 
     relatedTours: [
       { id: "ayodhya-1", name: "Ayodhya Ram Mandir Tour from Lucknow", slug: "lucknow-to-ayodhya", city: "lucknow", price: "₹4,500" },
@@ -2612,14 +2615,15 @@ export const travelBlogPosts = [
     keywords: ["ayodhya ram mandir", "ram mandir darshan", "how to reach ayodhya", "ayodhya travel guide 2026", "ram mandir timings", "ayodhya trip", "ayodhya tour package", "delhi to ayodhya", "lucknow to ayodhya", "ram janmabhoomi", "ayodhya temples", "best time to visit ayodhya", "ayodhya hotels", "ram mandir online booking", "ayodhya darshan", "ayodhya pilgrimage", "ayodhya yatra", "ram mandir architecture", "ayodhya nearby places", "varanasi ayodhya tour", "ayodhya prayagraj tour", "ayodhya religious tour", "tempo traveller ayodhya"],
     featured: true,
     views: 0,
-    metaTitle: "Ayodhya Ram Mandir — Darshan Timings & Booking | 2026",
-    metaDescription: "Ram Mandir darshan 7 AM–11:30 PM, free entry. Online booking, dress code, how to reach Ayodhya. Nearby temples, hotels & pilgrimage tips.",
+    metaTitle: "Ayodhya Ram Mandir Darshan Timings & Free Entry (2026)",
+    metaDescription: "Ram Mandir darshan ~7–11:30 AM & 2–7 PM, free entry. Book aarti passes online. How to reach Ayodhya, dress code, hotels & pilgrimage tips for 2026.",
+    quickAnswer: "Ram Mandir, Ayodhya is open for darshan from roughly 7:00 AM to 11:30 AM and 2:00 PM to 7:00 PM, and entry is free. Aarti passes can be reserved online in advance. The temple is busiest on weekends and festivals; the nearest railway station is Ayodhya Dham, about 7 km away.",
   },
 
   {
     id: 9,
     slug: "varanasi-spiritual-tour-complete-guide-2026",
-    title: "Varanasi Complete Travel Guide 2026: Ghats, Temples, Ganga Aarti & Spiritual Experience",
+    title: "Varanasi Complete Travel Guide 2026: Ghats, Temples, Ganga",
     excerpt: "Discover the oldest living city in the world. Complete guide to Varanasi covering famous ghats, ancient temples, mesmerizing Ganga Aarti, local food, and how to plan your spiritual journey in 2026.",
 
     relatedTours: [
@@ -2874,14 +2878,14 @@ export const travelBlogPosts = [
     keywords: ["varanasi travel guide", "varanasi tour", "kashi vishwanath temple", "ganga aarti varanasi", "varanasi ghats", "dashashwamedh ghat", "best time to visit varanasi", "varanasi temples", "sarnath", "varanasi trip", "banaras", "varanasi 2026", "varanasi itinerary", "varanasi boat ride", "varanasi spiritual tour", "varanasi ayodhya tour", "delhi to varanasi", "varanasi food", "varanasi shopping", "manikarnika ghat", "assi ghat varanasi"],
     featured: true,
     views: 0,
-    metaTitle: "Varanasi Complete Travel Guide 2026 | Ghats, Temples, Ganga Aarti & Tips",
+    metaTitle: "Varanasi Complete Travel Guide 2026",
     metaDescription: "Complete Varanasi travel guide 2026. Famous ghats, Kashi Vishwanath Temple, Ganga Aarti timings, best time to visit, food & hotels. Plan your spiritual journey!"
   },
 
   {
     id: 10,
     slug: "best-group-trip-destinations-tempo-traveller-india-2026",
-    title: "15 Best Group Trip Destinations in India 2026: Perfect for Tempo Traveller Travel",
+    title: "15 Best Group Trip Destinations in India 2026: Perfect for",
     excerpt: "Planning a group trip with friends, family, or colleagues? Discover the 15 best destinations in India perfect for tempo traveller travel - from hill stations to beaches, spiritual sites to adventure spots.",
 
     relatedTours: [
@@ -2901,7 +2905,7 @@ export const travelBlogPosts = [
       text: "Book Tempo Traveller",
       url: "/tempo-traveller",
       description: "Comfortable 12-26 seater tempo travellers for your group trip",
-      price: "Starting from ₹23/km"
+      price: "Starting from ₹20/km"
     },
 
     content: `
@@ -3112,19 +3116,19 @@ export const travelBlogPosts = [
             <td class="border border-gray-300 p-2">12 Seater</td>
             <td class="border border-gray-300 p-2">10-12 persons</td>
             <td class="border border-gray-300 p-2">Small families, friend groups</td>
-            <td class="border border-gray-300 p-2">₹23/km</td>
+            <td class="border border-gray-300 p-2">₹20/km</td>
           </tr>
           <tr>
             <td class="border border-gray-300 p-2">17 Seater</td>
             <td class="border border-gray-300 p-2">14-17 persons</td>
             <td class="border border-gray-300 p-2">Medium groups, weddings</td>
-            <td class="border border-gray-300 p-2">₹26/km</td>
+            <td class="border border-gray-300 p-2">₹24/km</td>
           </tr>
           <tr>
             <td class="border border-gray-300 p-2">20 Seater</td>
             <td class="border border-gray-300 p-2">18-20 persons</td>
             <td class="border border-gray-300 p-2">Large families, corporate</td>
-            <td class="border border-gray-300 p-2">₹27/km</td>
+            <td class="border border-gray-300 p-2">₹26/km</td>
           </tr>
           <tr>
             <td class="border border-gray-300 p-2">26 Seater Maharaja</td>
@@ -3152,14 +3156,14 @@ export const travelBlogPosts = [
     keywords: ["group trip destinations india", "tempo traveller trip", "friends trip india", "best places for group travel", "family trip india", "tempo traveller booking", "group tour packages", "road trip india", "bachelor trip india", "corporate outing india", "group travel 2026", "tempo traveller rental", "12 seater tempo", "17 seater tempo", "manali group trip", "goa group trip", "rajasthan group trip"],
     featured: true,
     views: 0,
-    metaTitle: "15 Best Group Trip Destinations India 2026 | Tempo Traveller Travel Guide",
-    metaDescription: "Discover 15 best destinations for group trips in India 2026. Perfect for tempo traveller travel - Manali, Goa, Jaipur, Rishikesh & more. Plan your group adventure!"
+    metaTitle: "15 Best Group Trip Destinations India 2026 | Tempo Traveller",
+    metaDescription: "Discover 15 best destinations for group trips in India 2026. Perfect for tempo traveller travel - Manali, Goa, Jaipur, Rishikesh & more."
   },
 
   {
     id: 11,
     slug: "wedding-car-rental-india-complete-guide-2026",
-    title: "Wedding Car Rental in India 2026: Complete Guide to Luxury Cars, Baraat Tempo & Booking Tips",
+    title: "Wedding Car Rental in India 2026: Luxury Cars, Baraat Tempo & Prices",
     excerpt: "Planning your dream wedding? Complete guide to wedding car rental in India - from luxury BMW, Audi, Mercedes for bride/groom entry to decorated baraat tempo travellers. City-wise prices, booking tips & more.",
 
     relatedTours: [
@@ -3432,14 +3436,14 @@ export const travelBlogPosts = [
     keywords: ["wedding car rental", "wedding car booking", "bridal car", "groom car", "baraat tempo traveller", "luxury wedding car", "BMW wedding car", "Mercedes wedding car", "Audi wedding car", "decorated wedding car", "wedding car decoration", "wedding car price", "baraat car", "wedding car delhi", "wedding car jaipur", "wedding car rental india 2026", "vintage wedding car", "wedding tempo", "shaadi car rental"],
     featured: true,
     views: 0,
-    metaTitle: "Wedding Car Rental — Booking, Prices & Decoration | 2026",
-    metaDescription: "Book wedding cars from ₹7,000/day. BMW, Audi, Mercedes for bride entry. Decorated baraat tempo options. City-wise prices, tips & early booking discounts.",
+    metaTitle: "Wedding Car Rental India 2026: Prices from ₹7,000/day",
+    metaDescription: "Wedding cars from ₹7,000/day: BMW, Audi & Mercedes for bride/groom entry, decorated baraat tempos. City-wise 2026 prices, decoration tips & early booking discounts. Call 7668570551.",
   },
 
   {
     id: 12,
     slug: "udaipur-romantic-getaway-complete-guide-2026",
-    title: "Udaipur Complete Travel Guide 2026: City of Lakes, Royal Palaces & Romantic Experiences",
+    title: "Udaipur Complete Travel Guide 2026: City of Lakes, Royal",
     excerpt: "Discover why Udaipur is called the most romantic city in India! Complete guide to the City of Lakes - lake palaces, heritage hotels, sunset boat rides, local food, and planning your perfect Udaipur trip.",
 
     relatedTours: [
@@ -3723,13 +3727,13 @@ export const travelBlogPosts = [
     keywords: ["udaipur travel guide", "udaipur tourism", "city of lakes", "udaipur palaces", "lake pichola", "udaipur honeymoon", "udaipur romantic trip", "udaipur city palace", "jag mandir", "udaipur hotels", "udaipur itinerary", "udaipur 2026", "best time to visit udaipur", "udaipur restaurants", "udaipur boat ride", "udaipur destination wedding", "rajasthan tour udaipur", "delhi to udaipur", "jaipur to udaipur"],
     featured: true,
     views: 0,
-    metaTitle: "Udaipur Complete Travel Guide 2026 | City of Lakes, Palaces & Romantic Getaway",
+    metaTitle: "Udaipur Complete Travel Guide 2026",
     metaDescription: "Complete Udaipur travel guide 2026. Explore Lake Pichola, City Palace, romantic experiences, best hotels & restaurants. Plan your perfect Udaipur trip!"
   },
   {
     id: 17,
     slug: "delhi-to-chardham-tempo-traveller-complete-guide-2026",
-    title: "Delhi to Chardham by Tempo Traveller: Complete Group Travel Guide 2026",
+    title: "Delhi to Chardham by Tempo Traveller: Group Travel Guide 2026",
     excerpt: "Planning Char Dham Yatra with family or group? Complete guide to Delhi-Chardham tempo traveller journey - routes, costs, best 12-26 seater options & booking tips.",
 
     relatedTours: [
@@ -4105,13 +4109,13 @@ export const travelBlogPosts = [
     keywords: ["delhi to chardham tempo traveller", "chardham yatra by tempo", "delhi chardham tempo", "12 seater tempo for chardham", "tempo traveller chardham package", "group travel chardham", "delhi to char dham by tempo", "chardham tempo booking", "char dham yatra group package", "tempo hire for chardham", "delhi to kedarnath tempo", "chardham pilgrimage tempo", "family chardham yatra", "affordable chardham travel", "tempo traveller uttarakhand", "delhi chardham taxi service", "chardham yatra 2026 tempo", "best tempo for hills", "chardham group package", "delhi to badrinath tempo"],
     featured: true,
     views: 0,
-    metaTitle: "Delhi to Chardham by Tempo Traveller 2026 | Group Travel Guide & Booking",
+    metaTitle: "Delhi to Chardham by Tempo Traveller 2026",
     metaDescription: "Complete guide to Delhi-Chardham Yatra by tempo traveller. 12-26 seater options, routes, costs (₹84,000+), itinerary & booking tips for group pilgrimage."
   },
   {
     id: 18,
     slug: "kedarnath-yatra-complete-guide-2026",
-    title: "Kedarnath Yatra Complete Guide 2026: Trek, Helicopter & Travel Tips",
+    title: "Kedarnath Yatra 2026: Trek, Helicopter& Travel Tips",
     excerpt: "Planning Kedarnath Yatra 2026? Complete guide covering trek routes, helicopter booking, best time, accommodation, packing list & essential tips for this sacred pilgrimage.",
 
     relatedTours: [
@@ -4461,7 +4465,7 @@ export const travelBlogPosts = [
     keywords: ["kedarnath yatra 2026", "kedarnath trek", "kedarnath helicopter booking", "kedarnath temple", "kedarnath guide", "how to reach kedarnath", "kedarnath from delhi", "kedarnath yatra cost", "kedarnath trek difficulty", "kedarnath opening date 2026", "gaurikund to kedarnath", "kedarnath darshan", "kedarnath accommodation", "kedarnath weather", "kedarnath pony booking", "kedarnath pilgrimage", "kedarnath travel guide", "best time kedarnath", "kedarnath registration", "jyotirlinga kedarnath", "kedarnath dham", "sonprayag to kedarnath", "kedarnath helicopter price", "kedarnath trek route", "kedarnath tips"],
     featured: true,
     views: 0,
-    metaTitle: "Kedarnath Yatra Complete Guide 2026 | Trek, Helicopter Booking & Tips",
+    metaTitle: "Kedarnath Yatra Complete Guide 2026",
     metaDescription: "Complete Kedarnath Yatra 2026 guide - trek route, helicopter booking, best time, costs & tips. Plan your pilgrimage to one of the 12 Jyotirlingas of Lord Shiva."
   },
   {
@@ -4889,8 +4893,8 @@ export const travelBlogPosts = [
     keywords: ["do dham yatra", "kedarnath badrinath yatra", "do dham yatra 2026", "kedarnath badrinath tour", "do dham package", "2 dham yatra", "kedarnath badrinath itinerary", "do dham yatra cost", "two dham yatra", "do dham from delhi", "do dham from haridwar", "kedarnath badrinath by helicopter", "do dham yatra guide", "do dham pilgrimage", "kedarnath badrinath trip", "do dham tour package", "best time do dham", "do dham registration", "do dham route", "kedarnath badrinath distance", "do dham yatra 5 days", "short char dham"],
     featured: true,
     views: 0,
-    metaTitle: "Do Dham Yatra 2026: Complete Kedarnath-Badrinath Guide | Itinerary & Costs",
-    metaDescription: "Complete Do Dham Yatra guide 2026 - Kedarnath & Badrinath pilgrimage in 5-6 days. Itinerary, costs, transport options, trek/helicopter tips. Book your package now!"
+    metaTitle: "Do Dham Yatra 2026: Complete Kedarnath-Badrinath Guide",
+    metaDescription: "Complete Do Dham Yatra guide 2026 - Kedarnath & Badrinath pilgrimage in 5-6 days. Itinerary, costs, transport options, trek/helicopter tips."
   },
 ]
 
@@ -4907,7 +4911,11 @@ export const blogPosts = [
   ...seasonalBlogs,
   ...costBlogs,
   // Phase 15: 17 new destination, seasonal, and service blogs
-  ...newBlogs2026
+  ...newBlogs2026,
+  // Phase 16: 30-blog pillar+cluster+decision program (May 2026)
+  ...blogPosts30,
+  // Week 39: 15 AEO/GEO question-first blogs (July 2026)
+  ...newBlogsWeek39
 ];
 
 // Helper functions to filter blogs

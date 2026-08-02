@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getTravelOptionsRoute, getAllTravelOptionsSlugs, getRelatedTravelRoutes } from '@/utilis/travelOptionsData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import TravelOptionsClient from '@/components/travel-options/TravelOptionsClient';
 import AEOHead from '@/components/seo/AEOHead';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -97,7 +98,7 @@ export default async function TravelOptionsPage({ params }) {
       { "@type": "City", "name": route.origin },
       { "@type": "City", "name": route.destination }
     ],
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
   };
 
   const breadcrumbSchema = {

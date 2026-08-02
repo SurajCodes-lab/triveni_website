@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Haridwar Food Tour 2026 | Pure Veg Kachori, Aloo Puri & Holy City Cuisine Guide',
-  description: 'Haridwar food & culinary tour. Pure vegetarian city. Famous Kachori Sabzi, Aloo Puri, Chole Bhature, Rabri, Lassi. Street food itinerary, best restaurants. By locals. Call 7668570551.',
+  title: 'Haridwar Food Tour 2026 | Pure Veg Kachori & Aloo Puri Guide',
+  description: 'Haridwar pure veg food guide — Kachori Sabzi, Aloo Puri, Chole Bhature, Rabri, Lassi. Best restaurants & ghat-side eateries. Call 7668570551.',
   keywords: 'haridwar food tour, haridwar street food, haridwar food guide, pure vegetarian haridwar, kachori haridwar, har ki pauri food, haridwar restaurants, hoshiyar puri haridwar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -74,6 +75,19 @@ export default function HaridwarFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "haridwar-food-tour",
+    headline: "Haridwar Food Tour 2026 — Best Street Food, Restaurants & Local Specialties",
+    description: "Complete Haridwar food tour. Local specialties, street food trails, best restaurants, dessert spots, regional cuisine highlights, where to eat in Haridwar.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("haridwar", { idSlug: "haridwar-food-tour" });
+
 
   return (
     <>
@@ -91,6 +105,8 @@ export default function HaridwarFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

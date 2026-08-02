@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Varanasi Travel Guide 2026 | Ghats, Temples, Spiritual Capital',
@@ -19,7 +21,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/varanasi-travel-guide',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/varanasi-hero.jpg', width: 1200, height: 630, alt: 'Varanasi Travel Guide 2026' }],
+    images: [{ url: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg', width: 1200, height: 630, alt: 'Varanasi Travel Guide 2026' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +29,7 @@ export const metadata = {
     description: 'Complete Varanasi guide. Ghats, temples, food, transport.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/varanasi-hero.jpg'],
+    images: ['/images/sightseeing/Varanasi/varanasi_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +55,7 @@ export default function VaranasiTravelGuidePage() {
     { question: "Can I take a boat ride on the Ganga?", answer: "Absolutely! Sunrise boat rides (5:30-7 AM) are magical. You can see cremation ghats, morning rituals, and the entire ghat panorama. Cost: 200-500 rupees per person (shared) or 800-1,500 for private boat. Evening Aarti boat rides also available." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,13 +63,13 @@ export default function VaranasiTravelGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const attractions = [
-    { name: "Dashashwamedh Ghat", desc: "Varanasi&apos;s main ghat and the site of the spectacular Ganga Aarti every evening. One of the oldest and most vibrant ghats on the Ganges.", entry: "Free", timing: "All day; Aarti at 6:30 PM", duration: "1-2 hours", icon: Sunrise },
-    { name: "Kashi Vishwanath Temple", desc: "One of the 12 Jyotirlingas, the holiest Shiva temple. The new Kashi Vishwanath Corridor connects it directly to the ghats. Gold-plated spire.", entry: "Free (ID required)", timing: "3:00 AM - 11:00 PM", duration: "1-1.5 hours", icon: Landmark },
-    { name: "Sarnath", desc: "Where Buddha gave his first sermon. Dhamek Stupa, Ashoka Pillar, archaeological museum with the Lion Capital. 10 km from Varanasi city.", entry: "₹25 Indian / ₹300 Foreign (museum)", timing: "9:00 AM - 5:00 PM", duration: "2-3 hours", icon: BookOpen },
-    { name: "Assi Ghat", desc: "Southernmost major ghat, popular with backpackers and students. Morning yoga sessions, boat rides, and a large Shiva lingam under a peepal tree.", entry: "Free", timing: "All day", duration: "1 hour", icon: Compass },
+    { name: "Dashashwamedh Ghat", desc: "Varanasi&apos;s main ghat and the site of the spectacular Ganga Aarti every evening. One of the oldest and most vibrant ghats on the Ganges.", entry: "Free", timing: "All day; Aarti at 6:30 PM", duration: "1-2 hours", icon: Sunrise, img: "/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg" },
+    { name: "Kashi Vishwanath Temple", desc: "One of the 12 Jyotirlingas, the holiest Shiva temple. The new Kashi Vishwanath Corridor connects it directly to the ghats. Gold-plated spire.", entry: "Free (ID required)", timing: "3:00 AM - 11:00 PM", duration: "1-1.5 hours", icon: Landmark, img: "/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg" },
+    { name: "Sarnath", desc: "Where Buddha gave his first sermon. Dhamek Stupa, Ashoka Pillar, archaeological museum with the Lion Capital. 10 km from Varanasi city.", entry: "₹25 Indian / ₹300 Foreign (museum)", timing: "9:00 AM - 5:00 PM", duration: "2-3 hours", icon: BookOpen, img: "/images/sightseeing/Varanasi/Sarnath.jpg" },
+    { name: "Assi Ghat", desc: "Southernmost major ghat, popular with backpackers and students. Morning yoga sessions, boat rides, and a large Shiva lingam under a peepal tree.", entry: "Free", timing: "All day", duration: "1 hour", icon: Compass, img: "/images/sightseeing/Varanasi/Assi_Ghat.jpg" },
     { name: "Manikarnika Ghat", desc: "The main cremation ghat, considered the most sacred place to attain moksha. A profound spiritual experience. Photography is strictly prohibited.", entry: "Free (respectful visit)", timing: "All day", duration: "30-45 min", icon: Shield },
     { name: "Ramnagar Fort", desc: "18th-century fort across the Ganga. Houses the Maharaja of Banaras&apos;s museum with vintage cars, costumes, weapons, and ivory works.", entry: "₹25 Indian / ₹100 Foreign", timing: "10:00 AM - 5:00 PM", duration: "1.5 hours", icon: Shield },
     { name: "BHU & Bharat Kala Bhavan", desc: "Banaras Hindu University campus is one of Asia&apos;s largest. Bharat Kala Bhavan museum has rare paintings, sculptures, and ancient artifacts.", entry: "₹20 (museum)", timing: "10:30 AM - 4:30 PM", duration: "1-2 hours", icon: BookOpen },
@@ -128,6 +130,7 @@ export default function VaranasiTravelGuidePage() {
     { title: "Transport", icon: Car, count: "4 Options" },
   ];
 
+  const heroImage = "/images/sightseeing/Varanasi/varanasi_hero_section.jpg";
   const cityName = "Varanasi";
   const cityTagline = "The spiritual heart of India -- ancient ghats, sacred temples, mesmerizing Ganga Aarti, and a culture that has thrived for over 5,000 years.";
   const welcomeTitle = "Welcome to Varanasi";
@@ -155,6 +158,19 @@ export default function VaranasiTravelGuidePage() {
   const ctaTitle = "Need Help Planning Your Varanasi Trip?";
   const ctaDesc = "We know Varanasi&apos;s ghats, temples, and hidden gems. Call us for personalized spiritual tourism advice.";
   const whatsappMsg = "I want to book a cab for Varanasi trip";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "varanasi-travel-guide",
+    headline: "Varanasi Travel Guide 2026 — Attractions, Food, Tips & Itinerary",
+    description: "Complete Varanasi travel guide. Best attractions, food, shopping, monthly weather, transport from major cities, day trips, photography, where to stay. Updated for 2026.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("varanasi", { idSlug: "varanasi-travel-guide" });
+
 
   return (
     <>
@@ -171,13 +187,16 @@ export default function VaranasiTravelGuidePage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-amber-50/30">
         <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
         {/* HERO */}
         <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/20 rounded-full blur-[120px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-600/15 rounded-full blur-[100px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -226,6 +245,23 @@ export default function VaranasiTravelGuidePage() {
           </div>
         </section>
 
+        {/* AEO QUICK ANSWER */}
+        <section className="px-4 pt-10">
+          <div className="max-w-4xl mx-auto">
+            <QuickAnswer
+              tone="light"
+              question="Planning a Varanasi trip?"
+              answer="Varanasi is best visited from October to March, when the weather stays a pleasant 10-25 degrees Celsius; November is ideal for the Dev Deepawali festival. Two to three days covers the evening Ganga Aarti and a ghats walk, Kashi Vishwanath Temple, a sunrise boat ride and Sarnath. Delhi is about 800 km by road (12 to 14 hours via Lucknow), with a 1.5 hour flight or the 8 hour Vande Bharat Express as faster options."
+              facts={[
+                { label: 'Best time', value: 'Oct to Mar' },
+                { label: 'Ideal duration', value: '2 to 3 days' },
+                { label: 'Top sight', value: 'Kashi Vishwanath' },
+                { label: 'Cab from Delhi', value: '800 km · ₹11/km' },
+              ]}
+            />
+          </div>
+        </section>
+
         {/* TABLE OF CONTENTS */}
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto">
@@ -250,9 +286,9 @@ export default function VaranasiTravelGuidePage() {
         {/* WELCOME */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full" />
+            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full rounded-br-3xl" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
               <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2>
               <p className="text-lg text-stone-600 leading-relaxed text-center relative">{welcomeText}</p>
@@ -313,9 +349,16 @@ export default function VaranasiTravelGuidePage() {
               {attractions.map((a, idx) => (
                 <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
-                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
+                    {a.img ? (
+                      <div className="md:w-56 relative shrink-0 overflow-hidden">
+                        <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    ) : (
+                      <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
+                        <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    )}
                     <div className="flex-1 p-6">
                       <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2">
                         <a.icon className="w-5 h-5 text-amber-600" /> {a.name}
@@ -330,6 +373,53 @@ export default function VaranasiTravelGuidePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
             </div>
           </div>
         </section>

@@ -1,4 +1,10 @@
-export const festivalData = [
+import { augSepFestivals } from './season/augSepFestivals';
+import { monsoonSeason } from './season/monsoonSeason';
+import { postMonsoonSeason } from './season/postMonsoonSeason';
+import { RELATED_LINKS } from './season/relatedLinksMap';
+import { SEASON_IMAGES } from './season/seasonImageMap';
+
+const baseFestivalData = [
   {
     slug: "holi-mathura-vrindavan-cab-service",
     title: "Holi Special Mathura Vrindavan Cab Service 2026",
@@ -545,6 +551,26 @@ export const festivalData = [
     ]
   }
 ];
+
+// Full catalogue = the original festivals + the Aug/Sep season expansion.
+// `relatedLinks` from RELATED_LINKS overrides FestivalTripClient's auto-generated
+// links (which slugify `location` and 404 for multi-destination / no-city-page
+// entries). Every href in that map was verified to return 200 before adding.
+export const festivalData = [
+  ...baseFestivalData,
+  ...augSepFestivals,
+  ...monsoonSeason,
+  ...postMonsoonSeason,
+].map((f) => ({
+  ...f,
+  ...(RELATED_LINKS[f.slug] ? { relatedLinks: RELATED_LINKS[f.slug] } : {}),
+  // Imagery: the entries carry no image field and FestivalTripClient shipped
+  // with no <Image> at all, so every festival page rendered image-less.
+  // Attach the verified hero + gallery here.
+  ...(SEASON_IMAGES[f.slug]
+    ? { heroImage: SEASON_IMAGES[f.slug].hero, gallery: SEASON_IMAGES[f.slug].gallery }
+    : {}),
+}));
 
 export function getFestivalBySlug(slug) {
   return festivalData.find(f => f.slug === slug);

@@ -3,12 +3,15 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 // Centralized icon imports for better bundle optimization
-import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle, ChevronRight } from '@/components/ui/icons';
+import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle, ChevronRight, Shield, WhatsAppIcon } from '@/components/ui/icons';
 
 // SEO Components
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks } from '@/components/seo/RelatedContent';
 import { generateCityFAQs } from '@/lib/seo/faq-generator';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
 
 const TouristAttractionsClient = ({ data }) => {
   const [selectedType, setSelectedType] = useState('all');
@@ -118,6 +121,34 @@ const TouristAttractionsClient = ({ data }) => {
                 <Star className="w-5 h-5 mr-2 text-yellow-400" />
                 Must Visit Places
               </div>
+            </div>
+
+            {/* Above-the-fold CTAs */}
+            <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6">
+              <a
+                onClick={() => trackPhoneCall('tourist_attractions_hero')}
+                href="tel:+917668570551"
+                className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg"
+              >
+                <Phone className="w-5 h-5" /> Call 7668570551
+              </a>
+              <a
+                onClick={() => trackWhatsAppClick('tourist_attractions_hero')}
+                href={`https://wa.me/917668570551?text=${encodeURIComponent(`Hi, I want to plan a trip to visit attractions in ${city}. Please share details.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg"
+              >
+                <WhatsAppIcon className="w-5 h-5" /> WhatsApp Us
+              </a>
+            </div>
+
+            {/* Trust row */}
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-gray-200">
+              <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /> 4.9&#9733; Rated</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-yellow-400" /> 10,000+ Trips</span>
+              <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-yellow-400" /> Verified Drivers</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-yellow-400" /> No Advance Payment</span>
             </div>
           </div>
         </div>
@@ -233,17 +264,21 @@ const TouristAttractionsClient = ({ data }) => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button
-              onClick={() => window.open(`/tempo-traveller/delhi-to-${citySlug}`, '_blank')}
+            <Link
+              href={`/tempo-traveller/delhi-to-${citySlug}`}
               className="bg-white hover:bg-gray-100 text-green-600 font-bold py-4 px-8 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
             >
               <RouteIcon className="w-5 h-5 mr-3" />
               Book Tempo to {city}
-            </button>
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-lg flex items-center justify-center transition-all transform hover:scale-105">
+            </Link>
+            <a
+              onClick={() => trackPhoneCall('tourist_attractions_midcta')}
+              href="tel:+917668570551"
+              className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
+            >
               <Phone className="w-5 h-5 mr-3" />
               Call: +91-7668570551
-            </button>
+            </a>
           </div>
         </div>
 
@@ -270,26 +305,49 @@ const TouristAttractionsClient = ({ data }) => {
           />
         </div>
 
-        {/* Quick Contact */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 text-center mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Help Planning Your Trip?</h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Our travel experts can help you create a customized itinerary for visiting {city}  attractions. 
-            Get personalized recommendations and book the perfect tempo traveller for your group.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-all">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp Chat
-            </button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-all">
-              <Phone className="w-5 h-5 mr-2" />
-              Request Callback
-            </button>
+        {/* Quick Contact + Lead Capture */}
+        <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-2xl shadow-lg p-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-bold text-white mb-4">Need Help Planning Your Trip?</h3>
+              <p className="text-gray-200 mb-6 max-w-xl">
+                Our travel experts can help you create a customized itinerary for visiting {city} attractions.
+                Get personalized recommendations and book the perfect cab or tempo traveller for your group.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a
+                  onClick={() => trackWhatsAppClick('tourist_attractions_quickcontact')}
+                  href={`https://wa.me/917668570551?text=${encodeURIComponent(`Hi, I need help planning a trip to ${city}. Please share details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-all"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  WhatsApp Chat
+                </a>
+                <a
+                  onClick={() => trackPhoneCall('tourist_attractions_quickcontact')}
+                  href="tel:+917668570551"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-all"
+                >
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call Now
+                </a>
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <QuickEnquiryForm fromCity={city} pageType="route" />
+            </div>
           </div>
         </div>
       </div>
+
+      <SetStickyCta
+        label={`${city} Attractions`}
+        whatsappText={`Hi, I want to plan a trip to visit attractions in ${city}. Please share details.`}
+      />
     </div>
   );
 };

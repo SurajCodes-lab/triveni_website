@@ -56,10 +56,10 @@ export default function FAQClient({ categories }) {
               <li className="text-amber-700 font-medium">FAQ</li>
             </ol>
           </nav>
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="speakable-headline text-3xl md:text-5xl font-bold text-gray-900 mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="speakable-lead text-lg text-gray-600 max-w-2xl mx-auto">
             Everything you need to know about booking a cab with Triveni Cabs — pricing, vehicles, routes, safety, and more.
           </p>
 
@@ -83,7 +83,7 @@ export default function FAQClient({ categories }) {
                 <div className="text-xs text-gray-600">Customer Rating</div>
               </div>
             </div>
-            <p className="faq-answer text-gray-700 text-sm leading-relaxed">
+            <p className="faq-answer speakable-faq-first text-gray-700 text-sm leading-relaxed">
               Triveni Cabs offers affordable taxi services starting at ₹11/km for sedans across 50+ cities in North India. Book instantly by calling 7668570551 or WhatsApp. No advance payment required. All fares include fuel, driver, and AC. Available 24/7 with 4.9-star rated service and 10,000+ happy customers.
             </p>
           </div>

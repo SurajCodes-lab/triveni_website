@@ -1,7 +1,9 @@
 import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
+import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
-const data = familyTripData['manali'];
+const SLUG = "family-trip-manali-from-delhi";
+const data = familyTripData["manali"];
 
 export const metadata = {
   title: 'Family Trip to Manali from Delhi by Car | Innova Rs 14,500 | 2026',
@@ -22,22 +24,32 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export default function FamilyTripManaliPage() {
-  const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
-    { "@type": "ListItem", "position": 2, "name": "Family Trip to Manali from Delhi", "item": "https://www.trivenicabs.in/family-trip-manali-from-delhi" },
-  ]};
-  const tripSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": "Family Trip to Manali from Delhi by Car", "description": data.tagline, "touristType": "Family", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551" }, "offers": { "@type": "AggregateOffer", "lowPrice": "11000", "highPrice": "20000", "priceCurrency": "INR" }};
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": data.faqs.map(faq => ({ "@type": "Question", "name": faq.question, "acceptedAnswer": { "@type": "Answer", "text": faq.answer } })) };
+export default function FamilyTripPage() {
+  const schemaGraph = buildTripSchemaGraph({
+    data,
+    slug: SLUG,
+    touristType: 'Family',
+    citySlug: "manali",
+    breadcrumbTrail: [
+      { name: 'Home', url: 'https://www.trivenicabs.in' },
+      { name: 'Family Trip to Manali from Delhi', url: `https://www.trivenicabs.in/${SLUG}` },
+    ],
+    image: '/images/triveni-cabs-og.jpg',
+    lowPrice: data.price.sedan,
+    highPrice: data.price.tempo,
+    tripName: 'Family Trip to Manali from Delhi by Car',
+    howToName: 'How to Plan a Family Trip to Manali from Delhi by Car',
+    howToDesc: 'Step-by-step guide to booking a comfortable, kid-friendly family road trip to Manali from Delhi with Triveni Cabs.',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {schemaGraph.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <FamilyTripClient data={data} />
     </>
   );
 }
 
-export const revalidate = false;
+export const revalidate = 3600;

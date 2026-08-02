@@ -378,3 +378,112 @@ export const busStandSlugs = Object.keys(busStands);
 export function getBusStandBySlug(slug) {
   return busStands[slug] || null;
 }
+
+/**
+ * Generate a rich, stand-specific FAQ set (10-12 questions) for each bus stand.
+ * Strategy: keep the hand-written `stand.faqs` first (highest quality, most
+ * specific), then append programmatically-generated, deterministic FAQs that
+ * cover the long-tail / voice-search queries every bus-stand taxi page should
+ * answer: nearest airport/railway fare, prepaid availability, night charges,
+ * waiting/parking time, vehicle types, luggage, advance booking, safety,
+ * exact pickup point, and GST. De-duplicates by question text so we never
+ * repeat a topic already covered by the curated FAQs.
+ *
+ * Returns 10-12 { question, answer } objects. Safe to call at build time.
+ */
+export function getStandFaqs(stand) {
+  const curated = Array.isArray(stand.faqs) ? stand.faqs : [];
+
+  const dests = stand.destinations || [];
+  // Identify nearby key destinations for fare-anchored answers
+  const airport = dests.find((d) => /airport/i.test(d.name));
+  const railway = dests.find((d) => /station|junction|railway|cantt/i.test(d.name));
+  const cheapest = dests.reduce(
+    (min, d) => {
+      const n = parseInt(String(d.fare).replace(/[^\d]/g, ''), 10);
+      return n && n < min.n ? { n, d } : min;
+    },
+    { n: Infinity, d: dests[0] }
+  ).d;
+
+  const pickup = stand.cabWaitingArea || `the main exit gate of ${stand.name}`;
+  const fareLow = cheapest?.fare || '₹100';
+
+  const generated = [
+    airport && {
+      question: `What is the taxi fare from ${stand.name} to ${airport.name}?`,
+      answer: `The taxi fare from ${stand.name} to ${airport.name} is approximately ${airport.fare} by AC sedan, covering ${airport.distance} in about ${airport.time}. This is a fixed fare with no surge pricing or hidden charges. SUVs (Innova/Ertiga) are available at a slightly higher rate for families and extra luggage.`,
+    },
+    railway && {
+      question: `How much does a cab from ${stand.name} to ${railway.name} cost?`,
+      answer: `A cab from ${stand.name} to ${railway.name} costs ${railway.fare} (${railway.distance}, around ${railway.time}). Many travellers transfer between the bus stand and the railway station — pre-book with Triveni Cabs on 7668570551 for a fixed fare and a driver waiting at ${pickup}.`,
+    },
+    {
+      question: `Is there a prepaid taxi counter at ${stand.name}?`,
+      answer: `Local prepaid auto and taxi options exist around ${stand.name}, but rates fluctuate and AC cabs are not guaranteed. Booking Triveni Cabs in advance gives you a confirmed fixed fare, an air-conditioned sedan or SUV, and a verified driver who meets you at ${pickup} — no haggling at the counter.`,
+    },
+    {
+      question: `Are night taxis available at ${stand.name} and are there extra night charges?`,
+      answer: `Yes. Triveni Cabs operates 24/7 at ${stand.name}, including late-night and early-morning bus arrivals. There are no extra night surcharges on standard city fares — the price you are quoted at the time of booking is the price you pay, whether your bus arrives at midnight or noon.`,
+    },
+    {
+      question: `How long will the driver wait for me at ${stand.name}?`,
+      answer: `Your assigned driver reaches ${stand.name} before your scheduled bus arrival and waits at ${pickup}. If your bus is delayed, simply call or WhatsApp 7668570551 — we track your arrival and the driver waits free of charge for reasonable delays so you never feel rushed after a long journey.`,
+    },
+    {
+      question: `What types of vehicles can I book from ${stand.name}?`,
+      answer: `From ${stand.name} you can book an AC sedan (Swift Dzire, Honda Amaze) for up to 4 passengers, an SUV (Toyota Innova, Maruti Ertiga) for 6-7 passengers, or a tempo traveller for larger groups. Choose based on your passenger count and luggage when you call 7668570551 or WhatsApp us.`,
+    },
+    {
+      question: `Can I carry heavy luggage in the taxi from ${stand.name}?`,
+      answer: `Absolutely. After a long bus journey you often have heavy bags — our sedans comfortably fit 2-3 suitcases, and SUVs handle 4-5 large bags plus passengers. Let us know your luggage when booking so we assign the right vehicle for your group from ${stand.name}.`,
+    },
+    {
+      question: `Should I book my ${stand.name} cab in advance or on arrival?`,
+      answer: `Advance booking is strongly recommended, especially for night arrivals, weekends, and festival seasons when demand at ${stand.name} peaks. Pre-booking guarantees a driver waiting at ${pickup} with zero waiting time. That said, on-the-spot bookings are also accepted subject to availability — just call 7668570551.`,
+    },
+    {
+      question: `Are the drivers and cabs from ${stand.name} safe and verified?`,
+      answer: `Yes. Every Triveni Cabs driver serving ${stand.name} is background-verified, licensed, and trained in courteous, professional service. All rides are GPS-tracked and you receive the driver's name, photo, phone number, and vehicle registration before pickup — ideal for solo travellers and families arriving at ${stand.city}.`,
+    },
+    {
+      question: `Where exactly is the cab pickup point at ${stand.name}?`,
+      answer: `The designated pickup point is ${pickup}. Once you book, we share the driver's live location and contact number so you can meet quickly. If you are unsure of the exit, call 7668570551 and the driver will guide you to the correct gate at ${stand.name}.`,
+    },
+    {
+      question: `Do you provide a GST invoice for cab rides from ${stand.name}?`,
+      answer: `Yes. Triveni Cabs provides a proper GST tax invoice on request for all rides from ${stand.name}, which is useful for business travellers and corporate reimbursement. Mention your GST requirement at the time of booking and we will email or hand over the invoice after your trip.`,
+    },
+    cheapest && {
+      question: `What is the cheapest taxi ride available from ${stand.name}?`,
+      answer: `The most affordable fixed-fare ride from ${stand.name} starts at ${fareLow} for the nearest destination (${cheapest.name}). All fares are transparent AC-sedan rates with no surge — see the full fare table on this page or call 7668570551 for an instant quote to your exact drop point.`,
+    },
+  ].filter(Boolean);
+
+  // De-duplicate: skip generated questions whose topic the curated set already
+  // answers (loose keyword overlap on the question text).
+  const curatedText = curated.map((f) => f.question.toLowerCase());
+  const isCovered = (q) => {
+    const ql = q.toLowerCase();
+    return curatedText.some((c) => {
+      // crude topic-overlap test on distinctive nouns
+      const keys = ['airport', 'station', 'prepaid', 'night', 'gst', 'luggage', 'safe', 'pickup', 'advance', 'wait', 'vehicle', 'cheapest'];
+      return keys.some((k) => ql.includes(k) && c.includes(k));
+    });
+  };
+
+  const merged = [...curated];
+  for (const g of generated) {
+    if (merged.length >= 12) break;
+    if (!isCovered(g.question)) merged.push(g);
+  }
+  // Ensure a minimum of 10 if curated was thin and dedupe trimmed too much
+  if (merged.length < 10) {
+    for (const g of generated) {
+      if (merged.length >= 10) break;
+      if (!merged.some((m) => m.question === g.question)) merged.push(g);
+    }
+  }
+
+  return merged.slice(0, 12);
+}

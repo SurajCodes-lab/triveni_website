@@ -149,7 +149,7 @@ export const seasonalBlogs = [
   {
     id: 'season-2',
     slug: 'winter-snow-destinations-north-india-complete-guide-2026',
-    title: 'Winter Snow Destinations in North India: Complete Travel Guide 2026',
+    title: 'Winter Snow Destinations in North India: Travel Guide 2026',
     excerpt: 'Best snow destinations in North India including Gulmarg, Auli, Solang, and Chopta. When to visit, how to reach, and snow activities guide with cab booking.',
     relatedTours: [
       { id: "manali", name: "Delhi to Manali Package", slug: "manali", city: "delhi", price: "₹18,000" },
@@ -305,7 +305,7 @@ export const seasonalBlogs = [
   {
     id: 'season-3',
     slug: 'photography-tour-rajasthan-heritage-complete-guide-2026',
-    title: 'Photography Tour of Rajasthan: Heritage & Culture Capture Guide 2026',
+    title: 'Photography Tour of Rajasthan: Heritage & Culture Capture',
     excerpt: 'Plan your Rajasthan photography tour covering the best forts, palaces, desert, and portrait locations. Golden hour tips, equipment guide, and photo tour vehicle booking.',
     relatedTours: [
       { id: "rajasthan", name: "Rajasthan Circuit Tour", slug: "rajasthan-circuit", city: "delhi", price: "₹38,000" },

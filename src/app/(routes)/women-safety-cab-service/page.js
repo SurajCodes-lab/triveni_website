@@ -4,7 +4,7 @@ import SpecialTransportClient from '@/components/special/SpecialTransportClient'
 const service = getSpecialTransportBySlug('women-safety-cab-service');
 
 export const metadata = {
-  title: 'Women Safety Cab Service | Verified Drivers, GPS Tracked | Triveni Cabs',
+  title: 'Women Safety Cab Service | Verified Drivers, GPS Tracked',
   description: 'Book women safety cab with verified drivers, GPS tracking, SOS panic button. No night surcharge. Safe travel for women at all hours. Call 7668570551.',
   keywords: 'women safety cab, safe cab for women, women cab service, night cab for women, women safety taxi, lady cab service, SOS cab, GPS tracked cab women',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function WomenSafetyCabPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Women Safety Cab Service", "name": "Women Safety Cab Service - Secure Travel for Women", "description": "Safe cab service for women with verified drivers, GPS tracking, SOS panic button, and no night surcharge.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

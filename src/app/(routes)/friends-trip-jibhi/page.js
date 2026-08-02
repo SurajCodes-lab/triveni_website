@@ -1,0 +1,50 @@
+import { friendsTripData } from '@/utilis/friendsTripData';
+import FriendsTripClient from '@/components/audience/FriendsTripClient';
+import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+
+const SLUG = "friends-trip-jibhi";
+const data = friendsTripData["jibhi"];
+
+export const metadata = {
+  title: 'Friends Trip to Jibhi by Tempo Traveller | Rs 1,295/Person | 2026',
+  description: 'Book Tempo Traveller for a friends trip to Jibhi from Delhi. Rs 1,295/person. Waterfalls, Jalori Pass, Serolsar Lake, forest cottages. 12-17 seater AC. Call 7668570551.',
+  keywords: 'friends trip jibhi, jibhi group trip, jibhi tempo traveller, delhi to jibhi friends, jalori pass serolsar lake, jibhi camping package himachal',
+  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  metadataBase: new URL('https://www.trivenicabs.in'),
+  alternates: { canonical: '/friends-trip-jibhi' },
+  openGraph: { title: 'Friends Trip to Jibhi | Tempo Traveller Rs 1,295/Person', description: 'Jibhi friends trip. Waterfalls, Jalori Pass, Serolsar Lake, forest cottages. From Rs 1,295/person.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/friends-trip-jibhi', siteName: 'Triveni Cabs' },
+  twitter: { card: 'summary_large_image', title: 'Friends Trip Jibhi | Rs 1,295/Person', description: 'Jibhi group trip by Tempo Traveller. Waterfalls, Jalori Pass, Serolsar Lake.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+};
+
+export default function FriendsTripPage() {
+  const lowPrice = data.price.tempo12 || data.price.tempo17 || 0;
+  const highPrice = data.price.tempo17 || data.price.minibus || lowPrice;
+  const schemaGraph = buildTripSchemaGraph({
+    data,
+    slug: SLUG,
+    touristType: 'Friends Group',
+    citySlug: "jibhi",
+    breadcrumbTrail: [
+      { name: 'Home', url: 'https://www.trivenicabs.in' },
+      { name: 'Friends Trip to Jibhi', url: `https://www.trivenicabs.in/${SLUG}` },
+    ],
+    image: '/images/triveni-cabs-og.jpg',
+    lowPrice,
+    highPrice,
+    tripName: 'Friends Trip to Jibhi by Tempo Traveller from Delhi',
+    howToName: 'How to Plan a Friends Group Trip to Jibhi from Delhi',
+    howToDesc: 'Step-by-step guide to booking a Tempo Traveller for a friends group trip to Jibhi from Delhi with Triveni Cabs.',
+  });
+
+  return (
+    <>
+      {schemaGraph.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      <FriendsTripClient data={data} />
+    </>
+  );
+}
+
+export const revalidate = 3600;

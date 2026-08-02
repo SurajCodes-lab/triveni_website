@@ -19,6 +19,122 @@ const isGtagAvailable = () => {
 };
 
 /**
+ * Bot detection — filters obvious non-humans out of conversion events.
+ *
+ * Why: GA4's default bot filter catches known spiders but misses headless
+ * browsers (Puppeteer, Playwright) and link-preview crawlers (WhatsApp,
+ * Facebook, Slack unfurlers). These trigger conversion events on page load,
+ * inflating WhatsApp click counts. Returns true if this session looks
+ * automated and the event should be dropped.
+ */
+const isBot = () => {
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') return true;
+  if (navigator.webdriver) return true;
+  const ua = (navigator.userAgent || '').toLowerCase();
+  const botPatterns = [
+    'bot', 'crawler', 'spider', 'scraper', 'headless',
+    'puppeteer', 'playwright', 'phantom', 'selenium',
+    'whatsapp', 'facebookexternalhit', 'slackbot', 'discordbot',
+    'twitterbot', 'linkedinbot', 'pinterestbot', 'redditbot',
+    'preview', 'prerender',
+  ];
+  if (botPatterns.some(p => ua.includes(p))) return true;
+  // Missing standard human-browser traits
+  if (!navigator.languages || navigator.languages.length === 0) return true;
+  return false;
+};
+
+/**
+ * Per-session, per-key dedup gate. Fires callback only if key hasn't fired
+ * in this session. Uses sessionStorage so a hard reload resets but within-tab
+ * navigation dedupes correctly.
+ *
+ * This is the single biggest fix for the "GA says 24, real inquiries 7" gap:
+ * previously one click could fire 2-3 times due to React re-renders +
+ * bubbling + handler duplication. Now guaranteed max once per session.
+ */
+const hasFiredThisSession = (key) => {
+  if (typeof window === 'undefined' || !window.sessionStorage) return false;
+  try {
+    const fired = window.sessionStorage.getItem(`trk_${key}`);
+    if (fired) return true;
+    window.sessionStorage.setItem(`trk_${key}`, Date.now().toString());
+    return false;
+  } catch {
+    return false;
+  }
+};
+
+/**
+ * AI-bot detection — for AEO/GEO instrumentation, NOT for filtering.
+ *
+ * `isBot()` above filters bots OUT of conversion events (correct behavior
+ * for conversions). This helper does the opposite: it identifies the specific
+ * AI bot when one is present so we can log it as a separate "ai_bot_visit"
+ * event. Returns the bot name string or null.
+ *
+ * Most AI crawlers fetch HTML only and never run JS, so this only catches
+ * agent-style renderers (ChatGPT-User, OAI-SearchBot in browse mode, some
+ * Perplexity rendering passes). Even partial coverage gives directional
+ * signal — month-over-month trend tells us if our AEO investment is moving
+ * crawl frequency.
+ */
+const AI_BOT_PATTERNS = [
+  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot',
+  'ClaudeBot', 'Claude-Web', 'anthropic-ai',
+  'PerplexityBot', 'Perplexity-User',
+  'Google-Extended', 'Applebot-Extended',
+  'Bytespider', 'Amazonbot', 'CCBot', 'Meta-ExternalAgent',
+  'Diffbot', 'cohere-ai', 'YouBot',
+];
+
+export const detectAIBot = (userAgent) => {
+  const ua = userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : '') || '';
+  return AI_BOT_PATTERNS.find((bot) => ua.includes(bot)) || null;
+};
+
+/**
+ * Fire a one-time-per-session `ai_bot_visit` GA4 event when an AI crawler
+ * with JS execution lands on a page. Idempotent via sessionStorage so a
+ * single agent rendering pass produces a single event regardless of how
+ * many components mount.
+ *
+ * Call from `app/layout.js` <Script>'s onLoad — safe to call from anywhere
+ * client-side. Server-side calls become no-ops.
+ */
+export const trackAIBotVisit = () => {
+  if (typeof window === 'undefined') return;
+  const bot = detectAIBot();
+  if (!bot) return;
+  try {
+    if (window.sessionStorage.getItem('ai_bot_logged')) return;
+    window.sessionStorage.setItem('ai_bot_logged', '1');
+  } catch {
+    // If sessionStorage blocked (e.g., privacy mode), still fire once per pageload
+  }
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'ai_bot_visit', {
+      bot_name: bot,
+      page_path: window.location.pathname,
+      page_location: window.location.href,
+    });
+  }
+};
+
+/**
+ * Generate a short, unique tracking token that we embed in outbound
+ * WhatsApp/Call URLs. When the client receives the message, they can match
+ * "ref=abc123" back to the exact page + session that triggered it — the
+ * only way to reconcile GA events with actual inbound conversations.
+ */
+const generateTrackingToken = () => {
+  if (typeof window === 'undefined') return 'ssr';
+  const rand = Math.random().toString(36).slice(2, 8);
+  const ts = Date.now().toString(36).slice(-4);
+  return `${ts}${rand}`;
+};
+
+/**
  * Google Ads Conversion Events
  * These are the event names from Google Ads conversion setup
  *
@@ -153,24 +269,146 @@ export const trackPhoneCall = (location, phoneNumber = '') => {
     value: 300,
     currency: 'INR'
   });
+  // Log the call to the Sheet as a "call placed" event (page + time) so the
+  // Sheet shows the full enquiry picture alongside form leads + WhatsApp.
+  postLeadEvent({ type: 'call_placed', location });
 };
 
 /**
- * Track WhatsApp clicks (CONVERSION)
+ * Track WhatsApp clicks (CONVERSION) — 2026 deduplicated version.
+ *
+ * Diagnosis: previously fired multiple times per real click due to React
+ * re-render, event bubbling, and GTM listener overlap, inflating GA4
+ * counts by 30-60% vs. actual inbound conversations. Fixed with:
+ *   1. Bot filter — drops unfurler/crawler triggers.
+ *   2. Session dedup — max one event per page per session.
+ *   3. Tracking token — embedded in the WhatsApp message so the client
+ *      can reconcile GA events ↔ real messages ↔ bookings.
+ *   4. Two-step funnel — fires `whatsapp_click` (intent) here; the
+ *      separate `whatsapp_message_sent` event fires from a visibility
+ *      listener when the user returns to the tab after >8s (indicating
+ *      they actually typed and sent vs. just tapped accidentally).
+ *
  * @param {string} location - Where the WhatsApp button was clicked
  * @param {string} message - Pre-filled message
  * @param {string} context - Additional context (service type, package name, etc.)
+ * @returns {string} tracking token (caller can append ?ref=<token> to the wa.me URL)
  */
+// Fire-and-forget log of an event to the lead Sheet (via /api/lead).
+// Used for WhatsApp click/sent + phone-call events so the Sheet shows the full
+// enquiry picture, not just form leads. Never blocks UX.
+const postLeadEvent = (body) => {
+  if (typeof window === 'undefined') return;
+  try {
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      keepalive: true,
+      body: JSON.stringify({ source: window.location.pathname, ...body }),
+    }).catch(() => {});
+  } catch { /* never block UX */ }
+};
+
 export const trackWhatsAppClick = (location, message = '', context = '') => {
-  trackConversion('whatsapp_inquiry', {
+  if (isBot()) return '';
+  const pagePath = typeof window !== 'undefined' ? window.location.pathname : 'ssr';
+  const dedupKey = `wa_${pagePath}_${location}`;
+  if (hasFiredThisSession(dedupKey)) {
+    // Still fire a light "repeat click" engagement event for diagnostics,
+    // but don't double-count the conversion.
+    trackEvent('whatsapp_repeat_click', {
+      event_category: 'engagement',
+      button_location: location,
+    });
+    return '';
+  }
+  const trackingToken = generateTrackingToken();
+  // A WhatsApp CLICK is intent, NOT a conversion — counting it as a conversion is
+  // what inflated the dashboard (30-40 vs the real ~8-10). Fire it as engagement
+  // only. The single real WhatsApp conversion is `whatsapp_message_sent` (confirmed
+  // below) + the Sheet capture.
+  trackEvent('whatsapp_click', {
+    event_category: 'engagement',
     event_label: `whatsapp_from_${location}`,
     button_location: location,
     message_type: message ? 'prefilled' : 'empty',
-    contact_method: 'whatsapp',
     inquiry_context: context,
-    value: 250,
-    currency: 'INR'
+    tracking_token: trackingToken,
   });
+  postLeadEvent({ type: 'whatsapp_click', location, toCity: context || '' });
+  // Arm the two-step funnel: if the user comes back to the tab after >8s,
+  // they probably actually sent the message. Fires once.
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    const clickAt = Date.now();
+    let fired = false;
+    const onVisible = () => {
+      if (fired) return;
+      if (document.visibilityState === 'visible') {
+        const elapsed = Date.now() - clickAt;
+        if (elapsed > 8000 && elapsed < 10 * 60 * 1000) {
+          fired = true;
+          trackEvent('whatsapp_message_sent', {
+            event_category: 'conversion',
+            tracking_token: trackingToken,
+            button_location: location,
+            elapsed_ms: elapsed,
+            value: 250,
+            currency: 'INR',
+          });
+          postLeadEvent({ type: 'whatsapp_sent', location, elapsed_ms: elapsed });
+        }
+        document.removeEventListener('visibilitychange', onVisible);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisible, { once: false });
+    // Safety timeout: 10 minutes then stop listening
+    setTimeout(() => {
+      document.removeEventListener('visibilitychange', onVisible);
+    }, 10 * 60 * 1000);
+  }
+  return trackingToken;
+};
+
+/**
+ * Track CTA view-impression (IntersectionObserver).
+ * Pairs with click/send events to build a real funnel:
+ *   cta_viewed → whatsapp_click → whatsapp_message_sent → real booking
+ *
+ * Use: in a useEffect, observe the CTA element; when it scrolls into view,
+ * call this once.
+ *
+ * @param {string} ctaName - E.g., 'mobile_sticky_whatsapp', 'hero_call_button'
+ * @param {string} location - Page section / context
+ */
+export const trackCtaImpression = (ctaName, location = '') => {
+  if (isBot()) return;
+  const pagePath = typeof window !== 'undefined' ? window.location.pathname : 'ssr';
+  const dedupKey = `imp_${pagePath}_${ctaName}`;
+  if (hasFiredThisSession(dedupKey)) return;
+  trackEvent('cta_viewed', {
+    event_category: 'engagement',
+    cta_name: ctaName,
+    cta_location: location,
+  });
+};
+
+/**
+ * Helper to append tracking token to a wa.me URL. Returns the same URL
+ * untouched if the token is empty (bot-suppressed or duplicate click).
+ *
+ * Usage:
+ *   const token = trackWhatsAppClick('hero', message, 'delhi-agra-route');
+ *   window.open(appendTrackingToken('https://wa.me/917668570551?text=...', token), '_blank');
+ */
+export const appendTrackingToken = (url, token) => {
+  if (!token || !url) return url;
+  const separator = url.includes('?') ? '&' : '?';
+  // Embed token in the message text so the client sees it on arrival,
+  // OR append as URL param for outbound redirects that preserve query.
+  if (url.includes('wa.me/') && url.includes('text=')) {
+    return `${url}%20ref%3A${encodeURIComponent(token)}`;
+  }
+  return `${url}${separator}ref=${encodeURIComponent(token)}`;
 };
 
 /**
@@ -519,6 +757,8 @@ export default {
   trackConversion,
   trackPhoneCall,
   trackWhatsAppClick,
+  trackCtaImpression,
+  appendTrackingToken,
   trackFormSubmission,
   trackFormInteraction,
   trackBooking,

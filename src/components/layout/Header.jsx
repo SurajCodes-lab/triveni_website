@@ -128,7 +128,7 @@ const Header = () => {
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center flex-shrink-0">
               <Link
                 href="/"
                 className="rounded-md focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
@@ -143,7 +143,7 @@ const Header = () => {
                   priority
                   placeholder="blur"
                   blurDataURL={blurDataURL}
-                  className="h-20 w-auto hover:opacity-90 transition-opacity"
+                  className="h-20 w-auto max-w-none hover:opacity-90 transition-opacity"
                 />
               </Link>
             </div>
@@ -166,17 +166,76 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Navigation Links */}
-            <nav className="hidden md:flex items-center space-x-1 lg:space-x-2" role="navigation" aria-label="Main navigation">
+            {/* Navigation Links — grouped with dropdowns to avoid crowding */}
+            <nav className="hidden md:flex items-center justify-center flex-1 min-w-0 gap-0.5 lg:gap-1" role="navigation" aria-label="Main navigation">
+              {/* Simple top-level links */}
+              <Link
+                href="/"
+                className="text-label-md text-gray-900 hover:text-black hover:bg-primary-dark/20 px-2.5 lg:px-3 py-2 rounded-button transition-all duration-normal whitespace-nowrap focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                onClick={() => handleNavClick('Home', '/')}
+              >
+                Home
+              </Link>
+
               {[
-                { href: '/', label: 'Home' },
-                { href: '/services', label: 'Services' },
-                { href: '/wedding', label: 'Wedding' },
-                { href: '/airport-service', label: 'Airport' },
-                { href: '/sightseeing', label: 'Sightseeing' },
-                { href: '/tempo-traveller', label: 'Tempo' },
-                { href: '/bus-routes', label: 'Bus' },
-                { href: '/routes', label: 'Routes' },
+                {
+                  label: 'Cabs',
+                  items: [
+                    { href: '/outstation-cabs', label: 'Outstation Cabs' },
+                    { href: '/one-way-cab', label: 'One-Way Cabs' },
+                    { href: '/round-trip-cab', label: 'Round-Trip Cabs' },
+                    { href: '/airport-service', label: 'Airport Transfer' },
+                    { href: '/local-taxi', label: 'Local Taxi' },
+                    { href: '/routes', label: 'All Routes' },
+                  ],
+                },
+                {
+                  label: 'Tours & Yatra',
+                  items: [
+                    { href: '/sightseeing', label: 'Sightseeing Tours' },
+                    { href: '/chardham-yatra', label: 'Chardham Yatra' },
+                    { href: '/tour-guide', label: 'Tours with Guide' },
+                    { href: '/wedding', label: 'Wedding Cars' },
+                  ],
+                },
+                {
+                  label: 'Group',
+                  items: [
+                    { href: '/tempo-traveller', label: 'Tempo Traveller' },
+                    { href: '/bus-routes', label: 'Bus Routes' },
+                    { href: '/corporate-transportation-service', label: 'Corporate Transport' },
+                    { href: '/event-transportation-service', label: 'Event Transport' },
+                  ],
+                },
+              ].map((group) => (
+                <div key={group.label} className="relative group">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 text-label-md text-gray-900 hover:text-black hover:bg-primary-dark/20 px-2.5 lg:px-3 py-2 rounded-button transition-all duration-normal whitespace-nowrap focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                    aria-haspopup="true"
+                  >
+                    {group.label}
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" aria-hidden="true" />
+                  </button>
+                  {/* Dropdown — appears on hover/focus-within */}
+                  <div className="absolute left-0 top-full pt-2 w-56 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200 z-popover">
+                    <div className="bg-white rounded-xl shadow-2xl ring-1 ring-black/5 overflow-hidden py-2">
+                      {group.items.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-amber-50 hover:text-black transition-colors focus-visible:bg-amber-50 focus-visible:outline-none"
+                          onClick={() => handleNavClick(item.label, item.href)}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {[
                 { href: '/blog', label: 'Blog' },
                 { href: '/about', label: 'About' },
                 { href: '/contact', label: 'Contact' },
@@ -184,7 +243,7 @@ const Header = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-label-md text-gray-900 hover:text-black hover:bg-primary-dark/20 px-3 py-2 rounded-button transition-all duration-normal focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                  className="text-label-md text-gray-900 hover:text-black hover:bg-primary-dark/20 px-2.5 lg:px-3 py-2 rounded-button transition-all duration-normal whitespace-nowrap focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                   onClick={() => handleNavClick(link.label, link.href)}
                 >
                   {link.label}
@@ -193,22 +252,22 @@ const Header = () => {
             </nav>
 
             {/* Phone Number & Login */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
               <a
                 href="tel:+917668570551"
                 onClick={handlePhoneClick}
-                className="flex items-center hover:opacity-80 transition-opacity rounded-md focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                className="flex items-center flex-shrink-0 hover:opacity-80 transition-opacity rounded-md focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                 aria-label="Call us at +91 76685 70551, available 24/7"
               >
-                <div className="text-sm flex items-center px-2 bg-amber-50 rounded-l-md py-1">
+                <div className="text-sm flex items-center flex-shrink-0 px-2 bg-amber-50 rounded-l-md py-1">
                   <Phone className="h-4 w-4 text-gray-700 mr-1" aria-hidden="true" />
-                  <span className="text-gray-900 text-xs font-semibold">24x7</span>
+                  <span className="text-gray-900 text-xs font-semibold whitespace-nowrap">24x7</span>
                 </div>
-                <div className="text-xs font-medium bg-black text-white py-1.5 px-3 rounded-r-md">
+                <div className="text-xs font-medium bg-black text-white py-1.5 px-3 rounded-r-md whitespace-nowrap">
                   +91 76685 70551
                 </div>
               </a>
-              
+
             </div>
           </div>
         </div>
@@ -261,14 +320,17 @@ const Header = () => {
             <nav className="flex flex-col space-y-1" role="navigation" aria-label="Mobile navigation">
               {[
                 { href: '/', label: 'Home' },
-                { href: '/services', label: 'Services' },
-                { href: '/wedding', label: 'Wedding Cars' },
+                { href: '/outstation-cabs', label: 'Outstation Cabs' },
                 { href: '/airport-service', label: 'Airport Transfer' },
-                { href: '/sightseeing', label: 'Sightseeing' },
+                { href: '/sightseeing', label: 'Sightseeing Tours' },
+                { href: '/chardham-yatra', label: 'Chardham Yatra' },
+                { href: '/wedding', label: 'Wedding Cars' },
                 { href: '/tempo-traveller', label: 'Tempo Traveller' },
                 { href: '/bus-routes', label: 'Bus Routes' },
-                { href: '/routes', label: 'Outstation Routes' },
                 { href: '/corporate-transportation-service', label: 'Corporate Transport' },
+                { href: '/event-transportation-service', label: 'Event Transport' },
+                { href: '/routes', label: 'All Routes' },
+                { href: '/blog', label: 'Travel Blog' },
                 { href: '/tour-guide', label: 'Tour Guide' },
                 { href: '/about', label: 'About Us' },
                 { href: '/contact', label: 'Contact' },

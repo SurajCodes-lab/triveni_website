@@ -1,0 +1,27 @@
+To: spam.grievance@airtel.com
+Subject: RE: False-positive block of trivenicabs.in — IP reputation proof attached (as requested)
+
+Dear Airtel Grievance Team,
+
+As requested, please find attached the IP reputation proof for our server IP 13.201.84.132 (AWS Lightsail, Mumbai — dedicated IP hosting www.trivenicabs.in):
+
+1. IP_PROOF_1_MXToolbox_Blacklist_0of60.png — MXToolbox blacklist check dated 24-Jul-2026: IP 13.201.84.132 checked against 60 known blacklists, LISTED 0 TIMES. All entries show status OK (including Spamhaus ZEN, SpamCop, Barracuda, UCEPROTECT L1/L2/L3).
+
+2. IP_PROOF_2_VirusTotal_0of91_Clean.png — VirusTotal report for 13.201.84.132: 0/91 security vendors flag this IP. Verdict shown: "No security vendor flagged this IP address as malicious." (AS16509 Amazon.com, Inc.)
+   Live link: https://www.virustotal.com/gui/ip-address/13.201.84.132
+
+3. IP_PROOF_3_GoogleSafeBrowsing_NoUnsafeContent.png — Google Safe Browsing site status for trivenicabs.in: no unsafe content found.
+   Live link: https://transparencyreport.google.com/safe-browsing/search?url=trivenicabs.in
+
+The IP is a dedicated (non-shared) AWS static IP used exclusively by our business website, with a valid Let's Encrypt SSL certificate for trivenicabs.in / www.trivenicabs.in.
+
+We have additionally submitted false-positive review requests to third-party security vendors to ensure all upstream threat-intelligence feeds reflect the correct (clean) classification of our domain.
+
+Kindly remove trivenicabs.in and www.trivenicabs.in from the Airtel Safe Internet blocklist and confirm on this email.
+
+Regards,
+[YOUR NAME]
+Triveni Cabs
++91 76685 70551
+samardev1428@gmail.com
+https://www.trivenicabs.in

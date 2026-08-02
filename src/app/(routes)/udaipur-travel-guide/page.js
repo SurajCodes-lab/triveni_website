@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Udaipur Travel Guide 2026 | City of Lakes, Palaces & Romance',
@@ -16,9 +18,9 @@ export const metadata = {
     title: 'Udaipur Travel Guide 2026 | City of Lakes Complete Guide',
     description: 'Everything about visiting Udaipur. City Palace, Lake Pichola, food, shopping, transport.',
     type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/udaipur-travel-guide', siteName: 'Triveni Cabs',
-    images: [{ url: '/images/udaipur-hero.jpg', width: 1200, height: 630, alt: 'Udaipur Travel Guide 2026' }],
+    images: [{ url: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg', width: 1200, height: 630, alt: 'Udaipur Travel Guide 2026' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Udaipur Travel Guide 2026', description: 'Complete Udaipur guide. Palaces, lakes, food, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/udaipur-hero.jpg'] },
+  twitter: { card: 'summary_large_image', title: 'Udaipur Travel Guide 2026', description: 'Complete Udaipur guide. Palaces, lakes, food, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Udaipur/Udaipur_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -42,13 +44,13 @@ export default function UdaipurTravelGuidePage() {
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
   const attractions = [
-    { name: "City Palace", desc: "Rajasthan&apos;s largest palace complex overlooking Lake Pichola. 11 palaces built over 400 years by different rulers. Museum, courtyards, and stunning lake views.", entry: "₹300 Indian / ₹700 Foreign", timing: "9:30 AM - 5:30 PM", duration: "2-3 hours", icon: Landmark },
-    { name: "Lake Pichola", desc: "The heart of Udaipur. Artificial freshwater lake created in 1362. Home to Jag Mandir and Taj Lake Palace (island hotel). Sunset boat rides are a must.", entry: "₹400-800 (boat ride)", timing: "10:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Sunrise },
-    { name: "Jag Mandir", desc: "Island palace in Lake Pichola with Mughal-style gardens. Shah Jahan took refuge here, and it inspired the Taj Mahal. Accessible by boat from City Palace.", entry: "₹500 (includes boat)", timing: "10:00 AM - 6:00 PM", duration: "1 hour", icon: Shield },
+    { name: "City Palace", desc: "Rajasthan&apos;s largest palace complex overlooking Lake Pichola. 11 palaces built over 400 years by different rulers. Museum, courtyards, and stunning lake views.", entry: "₹300 Indian / ₹700 Foreign", timing: "9:30 AM - 5:30 PM", duration: "2-3 hours", icon: Landmark, img: "/images/sightseeing/Udaipur/City_Palace.jpg" },
+    { name: "Lake Pichola", desc: "The heart of Udaipur. Artificial freshwater lake created in 1362. Home to Jag Mandir and Taj Lake Palace (island hotel). Sunset boat rides are a must.", entry: "₹400-800 (boat ride)", timing: "10:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Sunrise, img: "/images/sightseeing/Udaipur/Lake_Pichola.jpg" },
+    { name: "Jag Mandir", desc: "Island palace in Lake Pichola with Mughal-style gardens. Shah Jahan took refuge here, and it inspired the Taj Mahal. Accessible by boat from City Palace.", entry: "₹500 (includes boat)", timing: "10:00 AM - 6:00 PM", duration: "1 hour", icon: Shield, img: "/images/sightseeing/Udaipur/Jag_Mandir.jpg" },
     { name: "Saheliyon Ki Bari", desc: "Garden of the Maidens -- built for 48 royal ladies. Marble elephants, kiosks, lotus pool, and fountains. Peaceful and photogenic.", entry: "₹30 Indian / ₹200 Foreign", timing: "9:00 AM - 7:00 PM", duration: "45 min", icon: Camera },
     { name: "Monsoon Palace (Sajjangarh)", desc: "Hilltop palace offering panoramic views of Udaipur and the Aravalli range. Best visited at sunset. Used as a filming location for James Bond (Octopussy).", entry: "₹80 Indian / ₹325 Foreign", timing: "9:00 AM - 5:30 PM", duration: "1 hour", icon: Compass },
-    { name: "Jagdish Temple", desc: "Magnificent 17th-century Vishnu temple in Indo-Aryan style. Three-storey structure with intricate carvings. Located in the heart of the Old City.", entry: "Free", timing: "5:15 AM - 1:00 PM, 5:15-8:00 PM", duration: "30-45 min", icon: Landmark },
-    { name: "Fateh Sagar Lake", desc: "Second-largest artificial lake in Udaipur. Nehru Park on an island, boat rides, and the solar observatory. Popular with locals for evening walks.", entry: "Free (boat ₹200+)", timing: "All day", duration: "1 hour", icon: Sunrise },
+    { name: "Jagdish Temple", desc: "Magnificent 17th-century Vishnu temple in Indo-Aryan style. Three-storey structure with intricate carvings. Located in the heart of the Old City.", entry: "Free", timing: "5:15 AM - 1:00 PM, 5:15-8:00 PM", duration: "30-45 min", icon: Landmark, img: "/images/sightseeing/Udaipur/Jagdish_Temple.jpg" },
+    { name: "Fateh Sagar Lake", desc: "Second-largest artificial lake in Udaipur. Nehru Park on an island, boat rides, and the solar observatory. Popular with locals for evening walks.", entry: "Free (boat ₹200+)", timing: "All day", duration: "1 hour", icon: Sunrise, img: "/images/sightseeing/Udaipur/Fateh_Sagar_Lake.jpg" },
     { name: "Kumbhalgarh Fort (Day Trip)", desc: "Massive fort with the world&apos;s second-longest wall (36 km). 90 km from Udaipur. UNESCO World Heritage Site. Combine with Ranakpur Jain Temple.", entry: "₹100 Indian / ₹400 Foreign", timing: "9:00 AM - 5:00 PM", duration: "Full day trip", icon: Shield },
   ];
 
@@ -106,6 +108,7 @@ export default function UdaipurTravelGuidePage() {
     { title: "Transport", icon: Car, count: "4 Options" },
   ];
 
+  const heroImage = "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg";
   const cityName = "Udaipur";
   const cityTagline = "The Venice of the East -- shimmering lakes, magnificent palaces, romantic sunsets, and Rajput grandeur nestled in the Aravalli hills.";
   const welcomeTitle = "Welcome to the City of Lakes";
@@ -133,6 +136,19 @@ export default function UdaipurTravelGuidePage() {
   const ctaTitle = "Need Help Planning Your Udaipur Trip?";
   const ctaDesc = "Romantic getaway or heritage exploration -- we plan the perfect Udaipur experience for you.";
   const whatsappMsg = "I want to book a cab for Udaipur trip";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "udaipur-travel-guide",
+    headline: "Udaipur Travel Guide 2026 — Attractions, Food, Tips & Itinerary",
+    description: "Complete Udaipur travel guide. Best attractions, food, shopping, monthly weather, transport from major cities, day trips, photography, where to stay. Updated for 2026.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("udaipur", { idSlug: "udaipur-travel-guide" });
+
 
   return (
     <>
@@ -149,12 +165,15 @@ export default function UdaipurTravelGuidePage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-amber-50/30">
         <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
         <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/20 rounded-full blur-[120px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-600/15 rounded-full blur-[100px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -184,13 +203,77 @@ export default function UdaipurTravelGuidePage() {
           </div>
         </section>
 
+        {/* AEO QUICK ANSWER */}
+        <section className="px-4 pt-10">
+          <div className="max-w-4xl mx-auto">
+            <QuickAnswer
+              tone="light"
+              question="Planning a Udaipur trip?"
+              answer="Udaipur is best visited from September to March, with the post-monsoon months especially magical when the lakes are full and the hills are green. Two to three days covers the City Palace, Jagdish Temple and a Lake Pichola boat ride, then Saheliyon Ki Bari, Fateh Sagar Lake and a Monsoon Palace sunset. Delhi is about 660 km away via Jaipur, roughly 10 to 12 hours by car, or a 1.5 hour flight."
+              facts={[
+                { label: 'Best time', value: 'Sep to Mar' },
+                { label: 'Ideal duration', value: '2 to 3 days' },
+                { label: 'Top sight', value: 'City Palace' },
+                { label: 'Cab from Delhi', value: '660 km · ₹11/km' },
+              ]}
+            />
+          </div>
+        </section>
+
         <section className="py-16 px-4"><div className="max-w-5xl mx-auto"><div className="text-center mb-10"><h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Table of Contents</h2><p className="text-stone-500">Your chapter-by-chapter guide to {cityName}</p></div><div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">{chapters.map((ch, i) => (<div key={i} className="glass-card-light rounded-xl p-4 text-center hover-lift cursor-default group"><div className="w-12 h-12 mx-auto bg-gradient-to-br from-amber-100 to-orange-100 rounded-full flex items-center justify-center mb-3 group-hover:from-amber-200 group-hover:to-orange-200 transition-all"><ch.icon className="w-6 h-6 text-amber-700" /></div><div className="font-bold text-stone-800 text-sm">{ch.title}</div><div className="text-xs text-amber-600 font-medium mt-1">{ch.count}</div></div>))}</div></div></section>
 
-        <section className="py-16 px-4"><div className="max-w-4xl mx-auto"><div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden"><div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full" /><div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full" /><div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div><h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2><p className="text-lg text-stone-600 leading-relaxed text-center relative">{welcomeText}</p><div className="flex justify-center gap-8 mt-8 text-center relative">{stats.map((s, i) => (<div key={i} className="flex items-center gap-4">{i > 0 && <div className="w-px h-12 bg-amber-200" />}<div><div className="glass-card-light rounded-xl px-4 py-2 mb-1"><div className="text-2xl md:text-3xl font-bold text-amber-700">{s.value}</div></div><div className="text-xs text-stone-500 mt-1">{s.label}</div></div></div>))}</div></div></div></section>
+        <section className="py-16 px-4"><div className="max-w-4xl mx-auto"><div className="glass-card-light rounded-3xl p-8 md:p-12 relative"><div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" /><div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full rounded-br-3xl" /><div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div><h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2><p className="text-lg text-stone-600 leading-relaxed text-center relative">{welcomeText}</p><div className="flex justify-center gap-8 mt-8 text-center relative">{stats.map((s, i) => (<div key={i} className="flex items-center gap-4">{i > 0 && <div className="w-px h-12 bg-amber-200" />}<div><div className="glass-card-light rounded-xl px-4 py-2 mb-1"><div className="text-2xl md:text-3xl font-bold text-amber-700">{s.value}</div></div><div className="text-xs text-stone-500 mt-1">{s.label}</div></div></div>))}</div></div></div></section>
 
         <section className="py-16 px-4 bg-white/80"><div className="max-w-6xl mx-auto"><div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 1</div></div><h2 className="text-3xl font-bold text-stone-800 mb-2">Best Time to Visit {cityName}</h2><p className="text-stone-500 mb-10">Visual month-by-month guide -- taller bars mean better visiting conditions</p><div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-2 mb-8">{monthlyGuide.map((m, i) => (<div key={i} className="flex flex-col items-center group cursor-default"><div className="w-full h-32 flex items-end mb-2 relative"><div className={`w-full rounded-t-lg transition-all duration-500 group-hover:opacity-80 group-hover:scale-105 origin-bottom ${m.bar > 75 ? 'bg-gradient-to-t from-emerald-600 to-emerald-400' : m.bar > 40 ? 'bg-gradient-to-t from-amber-500 to-amber-300' : 'bg-gradient-to-t from-red-400 to-red-300'}`} style={{ height: `${m.bar}%` }} /></div><div className="text-xs font-bold text-stone-700">{m.month}</div><div className="text-[10px] text-stone-400">{m.temp}</div><div className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full mt-1 ${m.color}`}>{m.verdict}</div></div>))}</div><div className="flex flex-wrap items-center justify-center gap-4 text-xs">{bestTimeLegend.map((l, i) => (<div key={i} className="flex items-center gap-1.5"><div className={`w-3 h-3 rounded ${l.color}`} /> {l.label}</div>))}</div></div></section>
 
-        <section className="py-16 px-4"><div className="max-w-5xl mx-auto"><div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 2</div></div><h2 className="text-3xl font-bold text-stone-800 mb-10">Top Attractions in {cityName}</h2><div className="space-y-5">{attractions.map((a, idx) => (<div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group"><div className="flex flex-col md:flex-row"><div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0"><span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span></div><div className="flex-1 p-6"><h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3><p className="text-stone-600 mb-4">{a.desc}</p><div className="flex flex-wrap gap-2 text-sm"><span className="bg-gradient-to-r from-amber-50 to-orange-50 backdrop-blur-sm border border-amber-200/60 px-3 py-1.5 rounded-full text-amber-800 font-medium">Entry: {a.entry}</span><span className="bg-gradient-to-r from-blue-50 to-sky-50 backdrop-blur-sm border border-blue-200/60 px-3 py-1.5 rounded-full text-blue-700 font-medium"><Clock className="w-3 h-3 inline mr-1" />{a.timing}</span><span className="bg-gradient-to-r from-emerald-50 to-green-50 backdrop-blur-sm border border-emerald-200/60 px-3 py-1.5 rounded-full text-emerald-700 font-medium">{a.duration}</span></div></div></div></div>))}</div></div></section>
+        <section className="py-16 px-4"><div className="max-w-5xl mx-auto"><div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 2</div></div><h2 className="text-3xl font-bold text-stone-800 mb-10">Top Attractions in {cityName}</h2><div className="space-y-5">{attractions.map((a, idx) => (<div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group"><div className="flex flex-col md:flex-row">{a.img ? (<div className="md:w-56 relative shrink-0 overflow-hidden"><img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" /><span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span></div>) : (<div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0"><span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span></div>)}<div className="flex-1 p-6"><h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3><p className="text-stone-600 mb-4">{a.desc}</p><div className="flex flex-wrap gap-2 text-sm"><span className="bg-gradient-to-r from-amber-50 to-orange-50 backdrop-blur-sm border border-amber-200/60 px-3 py-1.5 rounded-full text-amber-800 font-medium">Entry: {a.entry}</span><span className="bg-gradient-to-r from-blue-50 to-sky-50 backdrop-blur-sm border border-blue-200/60 px-3 py-1.5 rounded-full text-blue-700 font-medium"><Clock className="w-3 h-3 inline mr-1" />{a.timing}</span><span className="bg-gradient-to-r from-emerald-50 to-green-50 backdrop-blur-sm border border-emerald-200/60 px-3 py-1.5 rounded-full text-emerald-700 font-medium">{a.duration}</span></div></div></div></div>))}</div></div></section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
+            </div>
+          </div>
+        </section>
 
         <section className="py-16 px-4 bg-gradient-to-br from-orange-50/80 to-amber-50/80"><div className="max-w-5xl mx-auto"><div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 3</div></div><h2 className="text-3xl font-bold text-stone-800 mb-2">{cityName} Food Guide</h2><p className="text-stone-500 mb-10">{foodSubtitle}</p><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">{foodSection.map((food, idx) => (<div key={idx} className="glass-card-light rounded-2xl p-5 hover-lift relative overflow-hidden group"><div className="absolute -top-4 -right-4 text-7xl opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500">{food.icon}</div><h3 className="font-bold text-stone-800 mb-2 flex items-center gap-2 relative"><Coffee className="w-4 h-4 text-amber-600" /> {food.name}</h3><p className="text-stone-600 text-sm relative">{food.desc}</p></div>))}</div></div></section>
 

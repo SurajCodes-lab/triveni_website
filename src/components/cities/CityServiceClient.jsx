@@ -32,6 +32,7 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import { getNearbyDestinations, getRelatedRoutes, getPopularCities, getRelatedContent } from '@/utilis/linkingHelper';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
 // City data with images
 const cityHeroData = {
@@ -231,7 +232,7 @@ const vehicleTypes = [
   { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/swift_dzire.jpg', rating: '4.9' },
   { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/ertiga.jpg', rating: '4.8' },
   { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/innova_crysta.jpg', rating: '4.9' },
-  { type: 'Tempo Traveller', seats: '12-17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
+  { type: 'Tempo Traveller', seats: '12-17', price: '₹20/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
   { type: 'Mini Bus', seats: '22-27', price: '₹28/km', image: '/images/bus/25_SEATER_BUS.jpg', rating: '4.7' },
   { type: 'Luxury Bus', seats: '35-56', price: '₹35/km', image: '/images/bus/45_SEATER_BUS.jpg', rating: '4.8' }
 ];
@@ -1397,35 +1398,12 @@ export default function CityServiceClient({
       </section>
 
 
-      {/* ==================== FLOATING MOBILE CTA ==================== */}
-      {mounted && (
-        <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 p-4 md:hidden shadow-lg"
-        >
-          <div className="flex items-center gap-3">
-            <div className="flex-1">
-              <p className="text-xs text-slate-500">Taxi in {formattedCityName}</p>
-              <p className="text-lg font-black text-slate-900">From ₹12/km</p>
-            </div>
-            <button
-              onClick={handleCallClick}
-              className="bg-[#FACF2D] text-black px-5 py-3 rounded-xl font-bold flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4" />
-              Call
-            </button>
-            <button
-              onClick={handleWhatsAppClick}
-              className="bg-slate-900 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2"
-            >
-              <BsWhatsapp className="w-4 h-4" />
-              Book
-            </button>
-          </div>
-        </motion.div>
-      )}
+      {/* Feed the GLOBAL mobile sticky bar with city context (no duplicate bar) */}
+      <SetStickyCta
+        price="₹12/km"
+        label={`Taxi in ${formattedCityName}`}
+        whatsappText={`Hi, I need taxi service in ${formattedCityName}. Please share rates and availability.`}
+      />
 
     </article>
   );

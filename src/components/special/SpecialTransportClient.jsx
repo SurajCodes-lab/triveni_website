@@ -13,15 +13,22 @@ import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from '@/utilis/data';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const SpecialTransportClient = ({ service }) => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
 
-  const whatsappMessage = encodeURIComponent(`Hi! I need ${service.title}. Please share details and pricing.`);
+  const whatsappText = `Hi! I need ${service.title}. Please share details and pricing.`;
+  const whatsappMessage = encodeURIComponent(whatsappText);
   const whatsappURL = `https://wa.me/91${phoneNumber}?text=${whatsappMessage}`;
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
+      <SetStickyCta
+        label={service.serviceType}
+        whatsappText={whatsappText}
+      />
       {/* Animations */}
       <style jsx>{`
         @keyframes trust-pulse { 0%,100% { box-shadow: 0 0 20px rgba(245,158,11,0.2), 0 0 60px rgba(245,158,11,0.05); } 50% { box-shadow: 0 0 35px rgba(245,158,11,0.35), 0 0 80px rgba(245,158,11,0.1); } }
@@ -31,7 +38,7 @@ const SpecialTransportClient = ({ service }) => {
       `}</style>
 
       {/* HERO SECTION - Warm amber on dark */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
         {/* Subtle mesh pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
@@ -88,17 +95,30 @@ const SpecialTransportClient = ({ service }) => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 transition-all duration-300">
+            <a onClick={() => trackWhatsAppClick('special_transport_hero', whatsappText)} href={whatsappURL} target="_blank" rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-3 min-h-[52px] bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 transition-all duration-300">
               <BsWhatsapp className="w-6 h-6" />
               <span>Book on WhatsApp</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a onClick={() => trackPhoneCall('special_transport')} href={`tel:+91${phoneNumber}`}
-              className="group inline-flex items-center gap-3 bg-white/[0.07] backdrop-blur-xl hover:bg-white/15 text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:border-amber-500/30 hover:scale-105 transition-all duration-300">
+            <a onClick={() => trackPhoneCall('special_transport_hero')} href={`tel:+91${phoneNumber}`}
+              className="group inline-flex items-center justify-center gap-3 min-h-[52px] bg-white/[0.07] backdrop-blur-xl hover:bg-white/15 text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:border-amber-500/30 hover:scale-105 transition-all duration-300">
               <Phone className="w-6 h-6 text-amber-400" />
               <span>Call {phoneNumber}</span>
             </a>
+          </div>
+
+          {/* Trust row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-7 text-sm text-white/70">
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-amber-400" /> 10,000+ trips</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-amber-400" /> Verified drivers</span>
+            <span className="flex items-center gap-1.5"><Check className="w-4 h-4 text-amber-400" /> No advance payment</span>
+          </div>
+
+          {/* Quick Enquiry Form */}
+          <div className="mt-10 flex justify-center">
+            <QuickEnquiryForm fromCity="Delhi" toCity={service.serviceType} pageType="route" />
           </div>
         </div>
       </section>
@@ -200,8 +220,8 @@ const SpecialTransportClient = ({ service }) => {
                 <h3 className="text-gray-900 font-bold text-xl mb-2">{vehicle.name}</h3>
                 <p className="text-gray-500 text-sm mb-4">{vehicle.capacity}</p>
                 <div className="text-3xl font-black bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent mb-6">{vehicle.rate}</div>
-                <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-white px-6 py-3.5 rounded-xl font-bold text-sm w-full justify-center transition-all duration-300 shadow-lg shadow-amber-500/20">
+                <a onClick={() => trackWhatsAppClick('special_transport_vehicle', whatsappText)} href={whatsappURL} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 min-h-[48px] bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-white px-6 py-3.5 rounded-xl font-bold text-sm w-full justify-center transition-all duration-300 shadow-lg shadow-amber-500/20">
                   <BsWhatsapp className="w-4 h-4" />
                   Book Now
                 </a>
@@ -339,12 +359,12 @@ const SpecialTransportClient = ({ service }) => {
                 Verified drivers, GPS tracking, and 24/7 support for your peace of mind.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
+                <a onClick={() => trackWhatsAppClick('special_transport_footer', whatsappText)} href={whatsappURL} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-white text-amber-600 px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <BsWhatsapp className="w-6 h-6" />
                   <span>WhatsApp Us</span>
                 </a>
-                <a onClick={() => trackPhoneCall('special_transport')} href={`tel:+91${phoneNumber}`}
+                <a onClick={() => trackPhoneCall('special_transport_footer')} href={`tel:+91${phoneNumber}`}
                   className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/30 hover:bg-white/30 hover:scale-105 transition-all duration-300">
                   <Phone className="w-6 h-6" />
                   <span>Call {phoneNumber}</span>

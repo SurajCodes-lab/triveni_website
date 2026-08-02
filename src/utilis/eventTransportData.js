@@ -130,7 +130,7 @@ export const eventFleet = [
     ideal: 'Group guests, relative transport',
     vehicles: ['12 Seater', '17 Seater', '20 Seater', '26 Seater Maharaja'],
     features: ['AC', 'Pushback Seats', 'Music', 'Charging Points'],
-    priceRange: '₹23-27/km',
+    priceRange: '₹20-28/km',
     icon: '🚐',
     image: '/images/tempo/17_seater.jpg',
     highlight: true
@@ -166,7 +166,7 @@ export const eventCities = {
     name: 'Delhi',
     slug: 'delhi',
     title: 'Event Transportation Service in Delhi',
-    metaTitle: 'Event Transportation Delhi | Wedding, Corporate Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Delhi | Wedding, Corporate Event Transport',
     metaDescription: 'Premium event transportation in Delhi NCR. Wedding guest transport, corporate event shuttles, MICE logistics. 500+ events handled. Call 7668570551.',
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     tagline: 'Delhi NCR Event Capital',
@@ -196,7 +196,7 @@ export const eventCities = {
     name: 'Agra',
     slug: 'agra',
     title: 'Event Transportation Service in Agra',
-    metaTitle: 'Event Transportation Agra | Destination Wedding Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Agra | Destination Wedding Transport',
     metaDescription: 'Event transportation in Agra. Destination weddings near Taj Mahal, corporate events, MICE logistics. Professional service. Call 7668570551.',
     heroImage: '/images/sightseeing/Agra/Agra_Hero_section.jpg',
     tagline: 'Taj City Wedding Destination',
@@ -226,7 +226,7 @@ export const eventCities = {
     name: 'Jaipur',
     slug: 'jaipur',
     title: 'Event Transportation Service in Jaipur',
-    metaTitle: 'Event Transportation Jaipur | Royal Wedding Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Jaipur | Royal Wedding Transport',
     metaDescription: 'Royal event transportation in Jaipur. Palace weddings, corporate events, MICE logistics. Experienced in heritage venues. Call 7668570551.',
     heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
     tagline: 'Pink City Royal Events',
@@ -256,7 +256,7 @@ export const eventCities = {
     name: 'Chandigarh',
     slug: 'chandigarh',
     title: 'Event Transportation Service in Chandigarh',
-    metaTitle: 'Event Transportation Chandigarh | Wedding & Corporate Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Chandigarh | Wedding & Corporate Transport',
     metaDescription: 'Event transportation in Chandigarh Tricity. Wedding venues, corporate events, MICE logistics. Serving Chandigarh, Mohali, Panchkula. Call 7668570551.',
     heroImage: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
     tagline: 'Tricity Event Excellence',
@@ -286,7 +286,7 @@ export const eventCities = {
     name: 'Dehradun',
     slug: 'dehradun',
     title: 'Event Transportation Service in Dehradun',
-    metaTitle: 'Event Transportation Dehradun | Hill Station Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Dehradun | Hill Station Event Transport',
     metaDescription: 'Event transportation in Dehradun & Mussoorie. Hill station weddings, corporate retreats, adventure events. Call 7668570551.',
     heroImage: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
     tagline: 'Uttarakhand Event Gateway',
@@ -316,7 +316,7 @@ export const eventCities = {
     name: 'Shimla',
     slug: 'shimla',
     title: 'Event Transportation Service in Shimla',
-    metaTitle: 'Event Transportation Shimla | Hill Station Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Shimla | Hill Station Event Transport',
     metaDescription: 'Event transportation in Shimla. Hill station weddings, corporate retreats, MICE events. Experienced hill drivers. Call 7668570551.',
     heroImage: '/images/sightseeing/Shimla/shimla_hero_section.jpg',
     tagline: 'Queen of Hills Event Destination',
@@ -346,7 +346,7 @@ export const eventCities = {
     name: 'Manali',
     slug: 'manali',
     title: 'Event Transportation Service in Manali',
-    metaTitle: 'Event Transportation Manali | Adventure & Destination Events | Triveni Cabs',
+    metaTitle: 'Event Transportation Manali | Adventure & Destination Events',
     metaDescription: 'Event transportation in Manali & Kullu Valley. Destination weddings, adventure corporate retreats, team building events. Call 7668570551.',
     heroImage: '/images/sightseeing/Manali/Manali_hero_section.jpg',
     tagline: 'Adventure Valley Event Hub',
@@ -376,7 +376,7 @@ export const eventCities = {
     name: 'Amritsar',
     slug: 'amritsar',
     title: 'Event Transportation Service in Amritsar',
-    metaTitle: 'Event Transportation Amritsar | Wedding & Religious Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Amritsar | Wedding & Religious Event',
     metaDescription: 'Event transportation in Amritsar. Punjabi weddings, religious events, corporate gatherings. Golden Temple area specialists. Call 7668570551.',
     heroImage: '/images/sightseeing/Amritsar/Amristar_hero_section.jpg',
     tagline: 'Holy City Grand Events',
@@ -406,7 +406,7 @@ export const eventCities = {
     name: 'Haridwar',
     slug: 'haridwar',
     title: 'Event Transportation Service in Haridwar',
-    metaTitle: 'Event Transportation Haridwar | Religious & Spiritual Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Haridwar | Religious & Spiritual Event',
     metaDescription: 'Event transportation in Haridwar. Religious gatherings, Kumbh Mela logistics, spiritual retreats, wedding transport. Call 7668570551.',
     heroImage: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg',
     tagline: 'Sacred City Event Logistics',
@@ -436,7 +436,7 @@ export const eventCities = {
     name: 'Lucknow',
     slug: 'lucknow',
     title: 'Event Transportation Service in Lucknow',
-    metaTitle: 'Event Transportation Lucknow | Wedding & Corporate Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Lucknow | Wedding & Corporate Event',
     metaDescription: 'Event transportation in Lucknow. Nawabi weddings, corporate conferences, MICE events. City of Nawabs event logistics. Call 7668570551.',
     heroImage: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg',
     tagline: 'City of Nawabs Event Excellence',
@@ -466,7 +466,7 @@ export const eventCities = {
     name: 'Udaipur',
     slug: 'udaipur',
     title: 'Event Transportation Service in Udaipur',
-    metaTitle: 'Event Transportation Udaipur | Royal Wedding & Lakeside Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Udaipur | Royal Wedding & Lakeside',
     metaDescription: 'Event transportation in Udaipur. Royal palace weddings, lakeside events, corporate retreats. India premier wedding destination. Call 7668570551.',
     heroImage: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
     tagline: 'City of Lakes Royal Events',
@@ -496,7 +496,7 @@ export const eventCities = {
     name: 'Varanasi',
     slug: 'varanasi',
     title: 'Event Transportation Service in Varanasi',
-    metaTitle: 'Event Transportation Varanasi | Religious & Cultural Event Transport | Triveni Cabs',
+    metaTitle: 'Event Transportation Varanasi | Religious & Cultural Event',
     metaDescription: 'Event transportation in Varanasi. Religious gatherings, cultural festivals, spiritual retreats, wedding guest transport. Call 7668570551.',
     heroImage: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
     tagline: 'Spiritual Capital Event Logistics',
@@ -581,6 +581,26 @@ export const eventFAQs = [
   {
     question: 'Do you offer airport pickup coordination for destination events?',
     answer: 'Yes, we provide 24/7 airport pickup coordination for destination events. We track flight arrivals, manage delayed flights, and ensure guests are picked up promptly with name boards and meet-and-greet service.'
+  },
+  {
+    question: 'How much does wedding guest transportation cost?',
+    answer: 'Wedding guest transport is typically priced per vehicle per day. A 32-45 seater AC bus runs about Rs.18,000-28,000/day, a decorated 17-26 seater baraat tempo Rs.8,000-15,000, and bridal/VIP luxury cars are quoted on request. Final pricing depends on city, distance, number of trips and season. You get one consolidated, GST-ready quote.'
+  },
+  {
+    question: 'How far in advance should I book event transportation?',
+    answer: 'Book 2-4 weeks ahead for most events. For peak wedding season (October-February) and major festivals or concerts, reserve at least one month in advance because fleet availability tightens. Last-minute bookings are possible via WhatsApp subject to vehicle availability.'
+  },
+  {
+    question: 'Do you provide GST invoices for corporate and MICE events?',
+    answer: 'Yes. All corporate events, conferences, MICE and exhibition bookings can be raised against a corporate account with a proper GST tax invoice, making reimbursement and accounting straightforward.'
+  },
+  {
+    question: 'Which cities do you cover for event transportation?',
+    answer: 'We operate across Delhi NCR (Delhi, Noida, Gurgaon, Faridabad, Ghaziabad), Jaipur, Chandigarh, Agra and Dehradun, with hill-station and destination-wedding coverage extending to Shimla, Manali, Udaipur, Amritsar, Haridwar, Lucknow and Varanasi.'
+  },
+  {
+    question: 'Can you handle a multi-city or destination event?',
+    answer: 'Yes. We coordinate guest arrivals across airports and stations in multiple cities, run inter-city transfers, and assign a single coordinator so you have one point of contact for the entire event - ideal for destination weddings in Rajasthan and corporate offsites in the hills.'
   }
 ];
 
@@ -593,7 +613,7 @@ export const eventTypes = [
     title: 'Wedding Guest Transportation Services',
     tagline: 'Make Your Special Day Stress-Free',
     description: 'Complete wedding transportation solutions - from baraat arrangements to guest pickups. We handle the logistics so you can focus on celebrating.',
-    metaTitle: 'Wedding Transportation Services | Guest Transport for Weddings | Triveni Cabs',
+    metaTitle: 'Wedding Transportation Services | Guest Transport for Weddings',
     metaDescription: 'Professional wedding transportation in Delhi, Jaipur, Chandigarh. Baraat cars, guest shuttles, decorated vehicles. 500+ fleet. Book now!',
     keywords: ['wedding transportation', 'wedding car rental', 'baraat car', 'wedding guest transport', 'wedding bus hire', 'decorated wedding car'],
     heroImage: '/images/wedding_section.jpg',
@@ -643,7 +663,7 @@ export const eventTypes = [
     title: 'Corporate Event Transportation',
     tagline: 'Professional Transport for Business Events',
     description: 'Seamless transportation for conferences, seminars, product launches, and corporate gatherings. Impress your delegates with punctual, professional service.',
-    metaTitle: 'Corporate Event Transportation | Conference & Seminar Transport | Triveni Cabs',
+    metaTitle: 'Corporate Event Transportation | Conference & Seminar Transport',
     metaDescription: 'Corporate event transportation for conferences, seminars, product launches. Airport transfers, venue shuttles, executive cars. Get quote!',
     keywords: ['corporate event transport', 'conference transportation', 'seminar bus hire', 'corporate shuttle service', 'event logistics'],
     heroImage: '/images/citypage_hero_section_image.jpg',
@@ -693,7 +713,7 @@ export const eventTypes = [
     title: 'Concert & Festival Transportation',
     tagline: 'Get Your Crowd There & Back Safely',
     description: 'Large-scale transportation for music concerts, cultural festivals, and entertainment events. Safe, reliable transport for thousands of attendees.',
-    metaTitle: 'Concert & Festival Transportation | Event Shuttle Services | Triveni Cabs',
+    metaTitle: 'Concert & Festival Transportation | Event Shuttle Services',
     metaDescription: 'Concert and festival transportation services. Shuttle buses, parking solutions, late-night transport. Handle crowds of any size. Book now!',
     keywords: ['concert transportation', 'festival shuttle', 'event bus hire', 'music festival transport', 'crowd transport'],
     heroImage: '/images/HERO_SECTION_MAIN_PAGE.jpg',
@@ -743,7 +763,7 @@ export const eventTypes = [
     title: 'Sports Event Transportation',
     tagline: 'Team Travel & Fan Transport Solutions',
     description: 'Reliable transportation for sports teams, tournaments, and spectators. From local matches to national championships.',
-    metaTitle: 'Sports Event Transportation | Team Bus Hire | Tournament Transport | Triveni Cabs',
+    metaTitle: 'Sports Event Transportation | Team Bus Hire',
     metaDescription: 'Sports event transportation for teams and spectators. Team buses, fan shuttles, tournament logistics. Book now!',
     keywords: ['sports team transport', 'team bus hire', 'tournament transportation', 'fan shuttle', 'cricket team bus'],
     heroImage: '/images/about_page_hero_section.jpg',
@@ -793,7 +813,7 @@ export const eventTypes = [
     title: 'Religious Event Transportation',
     tagline: 'Sacred Journeys Made Comfortable',
     description: 'Respectful, reliable transportation for religious ceremonies, pilgrimages, and spiritual gatherings. Serving all faiths with dedication.',
-    metaTitle: 'Religious Event Transportation | Pilgrimage Bus Hire | Temple Tour | Triveni Cabs',
+    metaTitle: 'Religious Event Transportation | Pilgrimage Bus Hire',
     metaDescription: 'Religious event transportation for pilgrimages, temple visits, spiritual gatherings. Char Dham, temple tours. Book now!',
     keywords: ['religious event transport', 'pilgrimage bus', 'temple tour', 'char dham yatra', 'religious tour bus'],
     heroImage: '/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg',
@@ -843,7 +863,7 @@ export const eventTypes = [
     title: 'School & College Event Transportation',
     tagline: 'Safe Transport for Educational Events',
     description: 'Trusted transportation for school excursions, college fests, educational tours, and convocations. Safety-first approach for student transport.',
-    metaTitle: 'School & College Event Transportation | Educational Tour Bus | Triveni Cabs',
+    metaTitle: 'School & College Event Transportation | Educational Tour Bus',
     metaDescription: 'Safe transportation for school trips, college fests, educational tours. GPS tracking, verified drivers. Book school bus now!',
     keywords: ['school bus hire', 'college fest transport', 'educational tour bus', 'school excursion', 'student transportation'],
     heroImage: '/images/citypage_hero_section_image.jpg',
@@ -893,7 +913,7 @@ export const eventTypes = [
     title: 'Destination Wedding Transportation in Rajasthan',
     tagline: 'Royal Transport for Royal Weddings',
     description: 'Premium transportation for destination weddings in Rajasthan. From palace venues in Jaipur and Udaipur to desert camps in Jaisalmer, we manage guest logistics for your dream wedding.',
-    metaTitle: 'Destination Wedding Transport Rajasthan | Palace Wedding Logistics | Triveni Cabs',
+    metaTitle: 'Destination Wedding Transport Rajasthan',
     metaDescription: 'Destination wedding transportation in Rajasthan. Palace weddings in Jaipur, Udaipur, Jodhpur. Guest shuttles, airport transfers. Call 7668570551.',
     keywords: ['destination wedding transport rajasthan', 'palace wedding car hire', 'rajasthan wedding logistics', 'udaipur wedding transport', 'jaipur palace wedding shuttle'],
     heroImage: '/images/wedding_section.jpg',
@@ -943,7 +963,7 @@ export const eventTypes = [
     title: 'Political Rally Transportation & Bus Rental',
     tagline: 'Large-Scale Crowd Transport Solutions',
     description: 'Reliable mass transportation for political rallies, election campaigns, and party events. Large fleet of buses and tempo travellers for crowd movement across cities.',
-    metaTitle: 'Political Rally Bus Rental | Election Campaign Transport | Triveni Cabs',
+    metaTitle: 'Political Rally Bus Rental | Election Campaign Transport',
     metaDescription: 'Political rally transportation and bus rental services. Large fleet for crowd transport. Campaign buses, rally shuttles. Call 7668570551.',
     keywords: ['political rally bus rental', 'election campaign transport', 'rally crowd bus', 'political event logistics', 'mass transportation rally'],
     heroImage: '/images/citypage_hero_section_image.jpg',
@@ -993,7 +1013,7 @@ export const eventTypes = [
     title: 'Exhibition & Trade Show Visitor Shuttle Service',
     tagline: 'Seamless Visitor Transport for Exhibitions',
     description: 'Professional shuttle services for trade shows, exhibitions, and expos. Move visitors, exhibitors, and staff efficiently between hotels, airports, and exhibition centers.',
-    metaTitle: 'Exhibition Visitor Shuttle Service | Trade Show Transport | Triveni Cabs',
+    metaTitle: 'Exhibition Visitor Shuttle Service | Trade Show Transport',
     metaDescription: 'Exhibition and trade show shuttle services. Visitor transport, exhibitor logistics. Auto Expo, IITF, trade fairs. Call 7668570551.',
     keywords: ['exhibition visitor shuttle service', 'trade show transport', 'expo shuttle bus', 'exhibition logistics', 'visitor shuttle hire'],
     heroImage: '/images/citypage_hero_section_image.jpg',
@@ -1038,6 +1058,232 @@ export const eventTypes = [
   }
 ];
 
+// Direct-answer lead for AEO/GEO (voice + featured snippet). 40-55 words, fact-dense.
+export const eventDirectAnswer =
+  "Event transportation is a managed group-mobility service where one vendor coordinates all vehicles for an event. Triveni Cabs runs a 500+ vehicle fleet — luxury sedans, SUVs, 12–26 seater tempo travellers and 32–56 seater AC buses — across Delhi NCR, Jaipur, Chandigarh, Agra and Dehradun, with a dedicated coordinator, GPS tracking and 24/7 event-day support. Book 2–4 weeks ahead.";
+
+// Fleet capacity table source (visible <table> + Product/Offer schema). Mirrors corporateFleet shape.
+export const eventFleetTable = [
+  { id: 'luxury-sedan', icon: '🚗', name: 'Luxury Sedan', capacity: '4 seater', ideal: 'VIPs, speakers, bride & groom', vehicles: ['Mercedes', 'BMW', 'Audi', 'Toyota Camry'], priceRange: 'On request' },
+  { id: 'suv', icon: '🚙', name: 'SUV / Innova Crysta', capacity: '6–7 seater', ideal: 'Family guests, small VIP groups', vehicles: ['Innova Crysta', 'Fortuner', 'XUV700'], priceRange: '₹18–22/km' },
+  { id: 'tempo', icon: '🚐', name: 'Tempo Traveller', capacity: '12–26 seater', ideal: 'Guest groups, baraat, relatives', vehicles: ['12 Seater', '17 Seater', '20 Seater', '26 Seater Maharaja'], priceRange: '₹23–27/km' },
+  { id: 'ac-bus', icon: '🚌', name: 'AC Luxury Bus', capacity: '32–56 seater', ideal: 'Large guest shuttles, mass transport', vehicles: ['32 Seater', '41 Seater', '45 Seater', '56 Seater Volvo'], priceRange: '₹55–85/km' },
+  { id: 'wedding-special', icon: '💒', name: 'Decorated Wedding Car', capacity: 'Customised', ideal: 'Baraat, bridal entry, vidai', vehicles: ['Decorated Innova', 'Vintage Cars', 'Open Jeeps', 'Luxury Sedans'], priceRange: 'On request' }
+];
+
+// HowTo: 5 booking steps (visible <ol> + HowTo schema).
+export const eventBookingSteps = [
+  { title: 'Share your event brief', description: 'Tell us the event type, date(s), city, guest count, pickup points and venue. WhatsApp or call works — no forms required to start.' },
+  { title: 'Get a transparent quote', description: 'Within hours you receive a vehicle-mix recommendation and an all-inclusive quote (fuel, driver, tolls, parking) with optional GST invoicing.' },
+  { title: 'Confirm & lock the fleet', description: 'A small advance reserves your vehicles at a fixed, surge-free price. Peak wedding and festival dates are first-come, first-served.' },
+  { title: 'Pre-event coordination', description: 'Your dedicated coordinator finalises routes, timing and a guest pickup plan, and shares driver details plus live GPS tracking links.' },
+  { title: 'Event day & support', description: 'Vehicles arrive early, a 24/7 control room monitors every car, and a 30-minute backup-vehicle SLA covers any contingency.' }
+];
+
+// Pricing guidance rows (visible table + AEO). Indicative — varies by city/season/volume.
+export const eventPricingGuidance = [
+  { useCase: 'Wedding guest shuttle (per bus, per day)', vehicle: '32–45 seater AC bus', indicative: '₹18,000–28,000' },
+  { useCase: 'Baraat tempo traveller (decorated)', vehicle: '17–26 seater', indicative: '₹8,000–15,000' },
+  { useCase: 'Bridal / VIP car', vehicle: 'Luxury sedan', indicative: 'On request' },
+  { useCase: 'Corporate conference shuttle (per day)', vehicle: 'Mixed fleet', indicative: '₹20,000–85,000' },
+  { useCase: 'Concert / festival shuttle loop', vehicle: 'Multiple buses', indicative: '₹30,000+' },
+  { useCase: 'Exhibition visitor shuttle (per day)', vehicle: '3–12 buses', indicative: '₹20,000–50,000/day' }
+];
+
+// Comparison rows: Triveni vs typical event vendors (visible table + Comparison schema).
+export const eventVsTypicalVendor = [
+  { feature: 'Single account manager', triveni: 'Yes — dedicated coordinator', typicalVendor: 'No — call centre' },
+  { feature: 'GST invoicing', triveni: 'Yes — proper tax invoice', typicalVendor: 'Per-trip only' },
+  { feature: 'Fixed pricing', triveni: 'Locked at booking', typicalVendor: 'Surge / dynamic common' },
+  { feature: 'Multi-vehicle coordination', triveni: 'Live ops dashboard', typicalVendor: 'Manual phone calls' },
+  { feature: 'Driver background verification', triveni: '100%, police-verified', typicalVendor: 'Varies' },
+  { feature: 'Decorated wedding cars', triveni: 'BMW / Audi / Mercedes baraat', typicalVendor: 'Standard sedans' },
+  { feature: 'Backup vehicle guarantee', triveni: '30-min replacement SLA', typicalVendor: 'Best effort' },
+  { feature: 'Multi-city coverage', triveni: '5+ cities, 500+ fleet', typicalVendor: 'Single-city local' },
+  { feature: '24/7 event-day support', triveni: 'Dedicated war room', typicalVendor: 'Office hours' }
+];
+
+// Planning checklist (visible list). Helps AEO "event transport checklist" queries.
+export const eventPlanningChecklist = [
+  'Lock vehicles 2–4 weeks ahead (1 month+ for peak wedding/festival dates)',
+  'Share a guest list with pickup addresses for route optimisation',
+  'Confirm venue access, parking and entry-time restrictions',
+  'Decide decorated vehicles for baraat / bridal entry early',
+  'Plan a return / late-night shuttle schedule',
+  'Assign one event-side contact for the Triveni coordinator',
+  'Request GST invoice details upfront for corporate billing',
+  'Confirm backup-vehicle and contingency plan before the day'
+];
+
+/**
+ * GEO: per-city geographic anchors for event-city Place schema.
+ * Additive — used by getEventCityGeoSchema() to emit a real-world City entity
+ * with a City -> State -> India containedInPlace chain plus per-venue locality.
+ * Coordinates from public city centroids (same source as review-helpers _CITY_GEO).
+ */
+export const eventCityGeo = {
+  delhi:      { lat: '28.6139', lng: '77.2090', state: 'Delhi',             postalCode: '110001' },
+  agra:       { lat: '27.1767', lng: '78.0081', state: 'Uttar Pradesh',     postalCode: '282001' },
+  jaipur:     { lat: '26.9124', lng: '75.7873', state: 'Rajasthan',         postalCode: '302001' },
+  chandigarh: { lat: '30.7333', lng: '76.7794', state: 'Chandigarh',        postalCode: '160001' },
+  dehradun:   { lat: '30.3165', lng: '78.0322', state: 'Uttarakhand',       postalCode: '248001' },
+  shimla:     { lat: '31.1048', lng: '77.1734', state: 'Himachal Pradesh',  postalCode: '171001' },
+  manali:     { lat: '32.2396', lng: '77.1887', state: 'Himachal Pradesh',  postalCode: '175131' },
+  amritsar:   { lat: '31.6340', lng: '74.8723', state: 'Punjab',            postalCode: '143001' },
+  haridwar:   { lat: '29.9457', lng: '78.1642', state: 'Uttarakhand',       postalCode: '249401' },
+  lucknow:    { lat: '26.8467', lng: '80.9462', state: 'Uttar Pradesh',     postalCode: '226001' },
+  udaipur:    { lat: '24.5854', lng: '73.7125', state: 'Rajasthan',         postalCode: '313001' },
+  varanasi:   { lat: '25.3176', lng: '82.9739', state: 'Uttar Pradesh',     postalCode: '221001' }
+};
+
+/**
+ * GEO: venue -> locality/area map per city. Lets each event venue Place entity
+ * carry a PostalAddress with addressLocality (area) for sharper GEO grounding.
+ * Keys are the exact `name` strings used in eventCities[*].popularVenues.
+ */
+export const eventVenueAreas = {
+  delhi: {
+    'Taj Palace Hotel': 'Sardar Patel Marg, Diplomatic Enclave',
+    'Pragati Maidan': 'Mathura Road, ITO',
+    'IEML Greater Noida': 'Knowledge Park II, Greater Noida',
+    'Farmhouse Chattarpur': 'Chattarpur'
+  },
+  agra: {
+    'Oberoi Amarvilas': 'Taj East Gate Road',
+    'ITC Mughal': 'Taj Ganj',
+    'Jaypee Palace': 'Fatehabad Road',
+    'Crystal Sarovar': 'Fatehabad Road'
+  },
+  jaipur: {
+    'City Palace': 'Jalebi Chowk, Old City',
+    'Rambagh Palace': 'Bhawani Singh Road',
+    'JECC': 'Sitapura Industrial Area',
+    'Samode Palace': 'Samode, Chomu'
+  },
+  chandigarh: {
+    'JW Marriott': 'Sector 35-B',
+    'Hyatt Regency': 'Industrial Area Phase 1',
+    'Farmhouses Zirakpur': 'Zirakpur',
+    'CII Chandigarh': 'Sector 31-A'
+  },
+  dehradun: {
+    'JW Marriott Mussoorie': 'Mussoorie Walkers Court',
+    'Jaypee Residency': 'Mall Road, Mussoorie',
+    'Forest Resorts': 'Doon Valley',
+    'Rishikesh Camps': 'Rishikesh'
+  },
+  shimla: {
+    'Wildflower Hall': 'Chharabra, Mashobra',
+    'Oberoi Cecil': 'Chaura Maidan',
+    'Peterhoff Hotel': 'Chaura Maidan',
+    'Kufri Resorts': 'Kufri'
+  },
+  manali: {
+    'Span Resort': 'Manali-Naggar Road, Katrain',
+    'The Himalayan': 'Hadimba Road',
+    'Solang Valley': 'Solang',
+    'Apple Country Resort': 'Manali-Naggar Road'
+  },
+  amritsar: {
+    'Hyatt Amritsar': 'MBM Farm, GT Road',
+    'Radisson Blu': 'GT Road',
+    'Marriage Palaces GT Road': 'GT Road',
+    'Golden Temple Area': 'Golden Temple Road'
+  },
+  haridwar: {
+    'Har Ki Pauri Area': 'Har Ki Pauri',
+    'Ashram Retreats': 'Bhupatwala',
+    'Haridwar Hotels': 'Jwalapur',
+    'Rajaji National Park Area': 'Chila Range'
+  },
+  lucknow: {
+    'Taj Mahal Lucknow': 'Gomti Nagar',
+    'Hyatt Regency': 'Vibhuti Khand, Gomti Nagar',
+    'Indira Gandhi Pratishthan': 'Gomti Nagar',
+    'Lulu Mall Area': 'Sushant Golf City'
+  },
+  udaipur: {
+    'Oberoi Udaivilas': 'Haridasji Ki Magri',
+    'Taj Lake Palace': 'Pichola',
+    'Fateh Prakash Palace': 'City Palace Complex',
+    'Chunda Palace': 'Krishnapura'
+  },
+  varanasi: {
+    'Dashashwamedh Ghat Area': 'Dashashwamedh Ghat',
+    'Ramada Plaza': 'The Mall, Cantonment',
+    'BHU Convention Center': 'Banaras Hindu University',
+    'Heritage Hotels': 'Assi Ghat'
+  }
+};
+
+/**
+ * GEO: build an enriched City Place schema for an event-city page.
+ * Emits GeoCoordinates + PostalAddress (addressRegion + addressCountry) +
+ * a City -> State -> Country (India) containedInPlace chain, plus each
+ * popularVenue as a containsPlace child with its own locality address where known.
+ * Returns null if the city has no geo anchor (so callers can guard the render).
+ */
+export const getEventCityGeoSchema = (citySlug, city) => {
+  const slug = String(citySlug || '').toLowerCase();
+  const geo = eventCityGeo[slug];
+  if (!geo || !city) return null;
+
+  const placeId = `https://www.trivenicabs.in/event-transportation-service/city/${slug}/#place`;
+  const stateId = `https://www.trivenicabs.in/event-transportation-service/city/${slug}/#state`;
+  const areaMap = eventVenueAreas[slug] || {};
+  const venues = Array.isArray(city.popularVenues) ? city.popularVenues : [];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'City',
+    '@id': placeId,
+    name: city.name || slug,
+    description: city.subtitle || city.tagline || `Event transportation service area: ${city.name}`,
+    url: `https://www.trivenicabs.in/event-transportation-service/city/${slug}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: city.name || slug,
+      addressRegion: geo.state,
+      postalCode: geo.postalCode,
+      addressCountry: 'IN'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: geo.lat,
+      longitude: geo.lng
+    },
+    // City -> State -> India geographic containment chain.
+    containedInPlace: {
+      '@type': 'State',
+      '@id': stateId,
+      name: geo.state,
+      containedInPlace: {
+        '@type': 'Country',
+        name: 'India'
+      }
+    },
+    ...(venues.length > 0 ? {
+      containsPlace: venues.map((v) => {
+        const area = areaMap[v.name];
+        return {
+          '@type': 'Place',
+          name: v.name,
+          additionalType: v.type,
+          ...(area ? {
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: area,
+              addressRegion: geo.state,
+              addressCountry: 'IN'
+            }
+          } : {}),
+          containedInPlace: { '@id': placeId }
+        };
+      })
+    } : {})
+  };
+};
+
 export const getAllEventTypes = () => {
   return eventTypes;
 };
@@ -1060,4 +1306,28 @@ export const getEventCityBySlug = (slug) => {
 
 export const getAllEventSlugs = () => {
   return Object.keys(eventCities);
+};
+
+// ─────────────────────────────────────────────────────────────
+// Event Type × City combo pages
+// Route: /event-transportation-service/[slug]/[city]
+// e.g. /event-transportation-service/wedding-transportation/jaipur
+// Each combo merges a type (packages/features/faqs) with a city
+// (venues/highlights/geo) → unique "{Type} in {City}" landing page.
+// ─────────────────────────────────────────────────────────────
+export const getEventComboParams = () => {
+  const params = [];
+  for (const type of eventTypes) {
+    for (const citySlug of Object.keys(eventCities)) {
+      params.push({ slug: type.slug, city: citySlug });
+    }
+  }
+  return params;
+};
+
+export const getEventCombo = (typeSlug, citySlug) => {
+  const type = getEventTypeBySlug(typeSlug);
+  const city = getEventCityBySlug(String(citySlug || '').toLowerCase());
+  if (!type || !city) return null;
+  return { type, city, citySlug: String(citySlug).toLowerCase() };
 };

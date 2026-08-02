@@ -50,7 +50,15 @@ const Footer = () => {
     { name: "Delhi to Manali", href: "/delhi-to-manali" },
     { name: "Chandigarh to Shimla", href: "/chandigarh-to-shimla" },
     { name: "Chandigarh to Manali", href: "/chandigarh-to-manali" },
-    { name: "Delhi to Amritsar", href: "/delhi-to-amritsar" }
+    { name: "Delhi to Amritsar", href: "/delhi-to-amritsar" },
+    // Exact-match anchors for GSC booking queries stuck at pos 8-25 — the
+    // "Cab"/"Taxi" word is intentional here and must not be trimmed to match
+    // the shorter style of the entries above.
+    { name: "Delhi to Dehradun Taxi", href: "/delhi-to-dehradun" },
+    { name: "Chandigarh to Amritsar Cab", href: "/chandigarh-to-amritsar" },
+    { name: "Mussoorie to Delhi Cab", href: "/mussoorie-to-delhi" },
+    { name: "Chandigarh to Kasauli Cab", href: "/chandigarh-to-kasauli" },
+    { name: "Delhi to Kasol Cab", href: "/round-trip/delhi-to-kasol" }
   ];
 
   // Popular Cities - Service area links
@@ -81,6 +89,26 @@ const Footer = () => {
     { name: "Manali Solang Tour", href: "/sightseeing/manali-solang-valley-tour" },
     { name: "Amritsar Golden Temple", href: "/sightseeing/amritsar-golden-temple-wagah-border-tour" },
     { name: "Haridwar Rishikesh Tour", href: "/sightseeing/haridwar-rishikesh-same-day" }
+  ];
+
+  // Aug/Sep 2026 season pages — peak-season money pages; footer link gives them
+  // sitewide equity (they previously had zero internal links from core pages).
+  const seasonLinks = [
+    { name: "Independence Day Weekend", href: "/independence-day-weekend-packages-2026" },
+    { name: "August Long Weekends", href: "/august-long-weekend-getaways-delhi" },
+    { name: "September Long Weekends", href: "/september-long-weekend-trips-2026" },
+    { name: "Monsoon Road Trips", href: "/monsoon-road-trip-packages" },
+    { name: "Monsoon Hill Stations", href: "/monsoon-hill-station-packages" },
+    { name: "Leh Ladakh Aug-Sep", href: "/leh-ladakh-august-september-trip" },
+    { name: "Spiti Valley in August", href: "/spiti-valley-august-trip" },
+    { name: "Kashmir in September", href: "/kashmir-in-september" },
+    { name: "Kedarnath in September", href: "/kedarnath-september-trip" },
+    { name: "Char Dham September", href: "/chardham-yatra-september-2026" },
+    { name: "Valley of Flowers Trek", href: "/valley-of-flowers-trek-from-delhi" },
+    { name: "Raksha Bandhan Cabs", href: "/raksha-bandhan-cab-service" },
+    { name: "Janmashtami Mathura", href: "/janmashtami-mathura-vrindavan-cab" },
+    { name: "Ganesh Chaturthi", href: "/ganesh-chaturthi-transport" },
+    { name: "Teej in Jaipur", href: "/hariyali-teej-jaipur-cab" }
   ];
 
   const eventCities = [
@@ -131,7 +159,7 @@ const Footer = () => {
       {/* SEO Links Section - Popular Routes, Cities, Tours */}
       <div className="border-b border-gray-800 relative z-10 bg-gray-900/50">
         <div className="max-w-container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Popular Routes */}
             <div>
               <h3 className="text-white font-semibold mb-4 flex items-center gap-2 text-sm">
@@ -189,6 +217,27 @@ const Footer = () => {
                       onClick={() => handleFooterLinkClick(tour.name, tour.href)}
                     >
                       {tour.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Season Specials — Aug/Sep 2026 */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 flex items-center gap-2 text-sm">
+                <Plane className="w-4 h-4 text-primary" aria-hidden="true" />
+                Season Specials
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {seasonLinks.map((s) => (
+                  <li key={s.name}>
+                    <Link
+                      href={s.href}
+                      className="text-body-xs text-gray-400 hover:text-primary transition-colors duration-fast px-2 py-1 bg-gray-800/50 rounded hover:bg-gray-800"
+                      onClick={() => handleFooterLinkClick(s.name, s.href)}
+                    >
+                      {s.name}
                     </Link>
                   </li>
                 ))}

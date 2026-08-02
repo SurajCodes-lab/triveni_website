@@ -157,6 +157,65 @@ function generateImageSitemap() {
 `;
   });
 
+  // Week 27 expansion — road trips, Ayodhya, best-time, Agra guides, Delhi
+  // airport terminals. Each entry lets Google Images index the hero we
+  // actually ship and credit the destination page for the image rank.
+  const week27Additions = [
+    // Road trips (Week 26 OG-image fixes)
+    { loc: `${BASE_URL}/10-day-north-india-road-trip`, img: '/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg', title: '10 Day North India Road Trip', caption: 'Delhi, Agra, Jaipur, Udaipur, Jodhpur, Jaisalmer circuit with Triveni Cabs' },
+    { loc: `${BASE_URL}/7-day-himachal-tour-by-car`, img: '/images/sightseeing/Manali/Manali_Hero_section.jpg', title: '7 Day Himachal Tour by Car', caption: 'Shimla, Manali, Dharamshala, Dalhousie 7-day itinerary with Triveni Cabs' },
+    { loc: `${BASE_URL}/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur`, img: '/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg', title: '5 Day Rajasthan Road Trip', caption: 'Jaipur Udaipur Jodhpur circuit — heritage hotels and forts' },
+
+    // Ayodhya ecosystem
+    { loc: `${BASE_URL}/ayodhya-1-day-package`, img: '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg', title: 'Ayodhya 1-Day Package', caption: 'Same-day Ram Mandir darshan from Lucknow / Prayagraj' },
+    { loc: `${BASE_URL}/ayodhya-ram-mandir-tour-from-delhi`, img: '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg', title: 'Ayodhya Ram Mandir Tour from Delhi', caption: '2-3 day sacred darshan package — Delhi to Ayodhya by cab' },
+    { loc: `${BASE_URL}/ayodhya-ram-mandir-tour-from-agra`, img: '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg', title: 'Ayodhya Ram Mandir Tour from Agra', caption: 'Combined Taj Mahal + Ayodhya cab package' },
+    { loc: `${BASE_URL}/ayodhya-ram-mandir-tour-from-lucknow`, img: '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg', title: 'Ayodhya Ram Mandir Tour from Lucknow', caption: 'Shortest same-day Ayodhya darshan cab — 135 km' },
+    { loc: `${BASE_URL}/ayodhya-trip-cost-from-delhi`, img: '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg', title: 'Ayodhya Trip Cost from Delhi', caption: 'Full per-vehicle cost breakdown for Delhi-Ayodhya trip' },
+
+    // Delhi airport terminals
+    { loc: `${BASE_URL}/airport-service/delhi/igi-terminal-1-domestic`, img: '/images/airport_section.jpg', title: 'Delhi IGI Airport Terminal 1 Taxi', caption: 'T1 domestic terminal taxi with flight-tracked pickup and 60-min free wait' },
+    { loc: `${BASE_URL}/airport-service/delhi/igi-terminal-2-domestic`, img: '/images/airport_section.jpg', title: 'Delhi IGI Airport Terminal 2 Taxi', caption: 'T2 Vistara/Air India terminal pickup with flight-tracked cab' },
+    { loc: `${BASE_URL}/airport-service/delhi/igi-terminal-3-international`, img: '/images/airport_section.jpg', title: 'Delhi IGI T3 International Airport Taxi', caption: 'T3 international arrivals pickup with 90-min free wait' },
+    { loc: `${BASE_URL}/airport-service/jewar/jewar-terminal-1-international`, img: '/images/airport_section.jpg', title: 'Jewar International Airport Taxi', caption: 'Noida International Airport (Jewar) T1 pickup service' },
+
+    // Agra guides (high-traffic head-term content)
+    { loc: `${BASE_URL}/agra-travel-guide`, img: '/images/sightseeing/Agra/Taj_mahal.jpg', title: 'Agra Travel Guide', caption: 'Complete Agra travel guide — Taj Mahal, Fort, Fatehpur Sikri, food & shopping' },
+    { loc: `${BASE_URL}/agra-food-tour`, img: '/images/sightseeing/Agra/Agra_Hero_section.jpg', title: 'Agra Food Tour Guide', caption: 'Best Agra food — Petha, Bedai, Jalebi, Sadar Bazaar chaat walk' },
+    { loc: `${BASE_URL}/agra-shopping-guide`, img: '/images/sightseeing/Agra/Agra_Hero_section.jpg', title: 'Agra Shopping Guide', caption: 'Best Agra markets — Hall Bazaar, Kinari Bazaar, Sadar, marble handicrafts' },
+    { loc: `${BASE_URL}/agra-beyond-taj-mahal`, img: '/images/sightseeing/Agra/agra_fort.jpg', title: 'Agra Beyond Taj Mahal', caption: 'Hidden Agra — Chini Ka Rauza, Sikandra, Ram Bagh, Fatehpur Sikri' },
+    { loc: `${BASE_URL}/agra-day-trip-from-delhi`, img: '/images/sightseeing/Agra/Taj_mahal.jpg', title: 'Agra Day Trip from Delhi', caption: 'Same-day Taj Mahal day-trip from Delhi — cost, itinerary, booking' },
+    { loc: `${BASE_URL}/agra-in-1-day-itinerary`, img: '/images/sightseeing/Agra/Taj_mahal.jpg', title: 'Agra in 1 Day Itinerary', caption: 'Best Agra 1-day plan: Taj Mahal, Agra Fort, Mehtab Bagh' },
+    { loc: `${BASE_URL}/agra-in-2-days-itinerary`, img: '/images/sightseeing/Agra/Taj_mahal.jpg', title: 'Agra in 2 Days Itinerary', caption: 'Relaxed 2-day Agra itinerary with food, shopping, sightseeing' },
+
+    // 12v17 comparison
+    { loc: `${BASE_URL}/12-seater-vs-17-seater-tempo`, img: '/images/tempo/17_seater.jpg', title: '12 Seater vs 17 Seater Tempo', caption: 'Side-by-side tempo traveller comparison for group bookings' },
+  ];
+
+  // Best-time-to-visit pages — each top destination gets one entry
+  const bestTimeDestinations = ['manali', 'shimla', 'jaipur', 'udaipur', 'rishikesh', 'kashmir', 'ladakh', 'agra', 'varanasi', 'nainital', 'mussoorie', 'dharamshala', 'amritsar', 'jodhpur', 'jaisalmer', 'pushkar', 'mcleodganj', 'dalhousie', 'mount-abu', 'haridwar'];
+  bestTimeDestinations.forEach(slug => {
+    const city = slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+    week27Additions.push({
+      loc: `${BASE_URL}/best-time-to-visit/${slug}`,
+      img: `/images/sightseeing/${city.replace(/ /g, '_')}/${city.replace(/ /g, '_')}_Hero_section.jpg`,
+      title: `Best Time to Visit ${city}`,
+      caption: `Month-by-month guide: when to visit ${city}, weather, festivals, budget, cab booking`,
+    });
+  });
+
+  week27Additions.forEach(entry => {
+    xml += `  <url>
+    <loc>${entry.loc}</loc>
+    <image:image>
+      <image:loc>${BASE_URL}${escapeXml(entry.img)}</image:loc>
+      <image:title>${escapeXml(entry.title)} - Triveni Cabs</image:title>
+      <image:caption>${escapeXml(entry.caption)}</image:caption>
+    </image:image>
+  </url>
+`;
+  });
+
   xml += `</urlset>`;
 
   return xml;

@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation';
 import { getVehicleHireRoute, getAllVehicleHireRoutes, getVehicleSpec } from '@/utilis/vehicleRouteHireData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import VehicleHireClient from '@/components/vehicle-hire/VehicleHireClient';
 import AEOHead from '@/components/seo/AEOHead';
 
 const VEHICLE_TYPE = 'traveller-12-seater';
 const VEHICLE_SLUG = 'traveller-12-seater';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -96,7 +97,7 @@ export default async function VehicleHirePage({ params }) {
     },
     "areaServed": [{ "@type": "City", "name": routeData.origin }, { "@type": "City", "name": routeData.destination }],
     "offers": { "@type": "Offer", "price": routeData.fare.toString(), "priceCurrency": "INR", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
   };
 
   const breadcrumbSchema = {

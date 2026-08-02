@@ -3,7 +3,7 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-mathura-vrindavan-from-agra');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Same Day Mathura Vrindavan Tour from Agra | ₹2,500 AC Cab | 2026',

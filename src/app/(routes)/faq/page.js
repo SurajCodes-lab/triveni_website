@@ -1,8 +1,8 @@
 import FAQClient from "./FAQClient";
-import Script from "next/script";
 import { AGGREGATE_RATING, COMPANY_INFO, BASE_URL } from "@/lib/seo/constants";
+import { getSpeakableSchema, getArticleSchema } from "@/lib/seo/speakable-helpers";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 const faqCategories = [
   {
@@ -142,6 +142,14 @@ export const metadata = {
     url: "https://www.trivenicabs.in/faq",
     siteName: "Triveni Cabs",
   },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: "Frequently Asked Questions — Triveni Cabs",
+    description: "Everything you need to know about booking a cab with Triveni Cabs. Pricing, vehicles, routes, safety, and special services explained.",
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+  },
 };
 
 export default function FAQPage() {
@@ -167,18 +175,38 @@ export default function FAQPage() {
     ]
   };
 
+  const articleSchema = getArticleSchema({
+    slug: 'faq',
+    headline: 'Triveni Cabs FAQ — Cab Booking Questions Answered',
+    description: 'Answers to common questions about taxi booking, pricing, vehicles, routes, and safety with Triveni Cabs across 50+ cities in India.',
+    image: '/images/about/about_banner.webp',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${BASE_URL}/faq#webpage`,
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first'])
+  };
+
   return (
     <>
-      <Script
-        id="faq-schema"
+      {/* Plain <script> tags for static JSON-LD — zero next/script runtime cost */}
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <Script
-        id="faq-breadcrumb"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <FAQClient categories={faqCategories} />

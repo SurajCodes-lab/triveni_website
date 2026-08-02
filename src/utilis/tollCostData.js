@@ -9,17 +9,27 @@ function calcCabFare(distanceKm) {
 
 function generateTollFaqs(origin, dest, totalTollCar, totalTollSuv, totalDistance, plazaCount, fastagInfo) {
   const sedanFare = calcCabFare(totalDistance);
+  const roundTripToll = totalTollCar * 2;
   return [
-    { question: `What is the total toll cost from ${origin} to ${dest} by car?`, answer: `The total toll cost from ${origin} to ${dest} is approximately ₹${totalTollCar} for a car/sedan and ₹${totalTollSuv} for an SUV. There are ${plazaCount} toll plaza(s) on this route. FASTag users get a small discount at all plazas.` },
+    { question: `What is the total toll cost from ${origin} to ${dest} by car?`, answer: `The total toll cost from ${origin} to ${dest} is approximately ₹${totalTollCar} for a car/sedan and ₹${totalTollSuv} for an SUV (one-way). There are ${plazaCount} toll plaza(s) on this ${totalDistance} km route. FASTag users get a small discount at all plazas.` },
     { question: `How many toll plazas are there on the ${origin} to ${dest} route?`, answer: `There are ${plazaCount} toll plaza(s) on the ${origin} to ${dest} route covering ${totalDistance} km. All toll plazas accept FASTag for contactless payment, reducing wait time significantly.` },
     { question: `Does FASTag work on the ${origin} to ${dest} route?`, answer: `Yes, all ${plazaCount} toll plazas on the ${origin} to ${dest} route accept FASTag. ${fastagInfo} FASTag lanes are faster and avoid cash queues.` },
-    { question: `Are toll charges included in Triveni Cabs fare from ${origin} to ${dest}?`, answer: `Toll charges are extra and paid at actual during the journey. The cab fare from ${origin} to ${dest} starts at ₹${sedanFare.toLocaleString('en-IN')} (sedan). Toll of approximately ₹${totalTollCar} is paid separately. Our driver handles all toll payments.` },
+    { question: `How much is the toll for a sedan from ${origin} to ${dest}?`, answer: `A sedan (Swift Dzire, Etios, or similar private car) pays approximately ₹${totalTollCar} in total toll across ${plazaCount} plaza(s) on the ${origin} to ${dest} route. This is the single-journey car rate; the return leg costs the same.` },
+    { question: `How much is the toll for an SUV from ${origin} to ${dest}?`, answer: `An SUV/MUV (Innova, Ertiga, Fortuner, or similar) pays approximately ₹${totalTollSuv} in total toll on the ${origin} to ${dest} route. SUV rates are typically 60-65% higher than car rates because of the heavier vehicle category.` },
+    { question: `Are toll charges included in Triveni Cabs fare from ${origin} to ${dest}?`, answer: `Toll charges are extra and paid at actual during the journey. The cab fare from ${origin} to ${dest} starts at ₹${sedanFare.toLocaleString('en-IN')} (sedan). Toll of approximately ₹${totalTollCar} is paid separately. Our driver handles all toll payments at the plazas.` },
+    { question: `How do I pay tolls on the ${origin} to ${dest} highway?`, answer: `The easiest way is FASTag — a prepaid RFID sticker on your windshield that is auto-debited at every plaza without stopping. Cash lanes also exist at most plazas but have longer queues. When you book a Triveni Cab, the driver's vehicle is FASTag-equipped and handles all payments for you.` },
+    { question: `What is the toll for a return trip from ${origin} to ${dest}?`, answer: `A round-trip ${origin}–${dest}–${origin} journey costs approximately ₹${roundTripToll} in car toll (₹${totalTollCar} each way) because the same plazas are crossed in both directions. Budget the same SUV doubling for ₹${totalTollSuv * 2} round-trip.` },
+    { question: `Is there a night-time discount on tolls between ${origin} and ${dest}?`, answer: `National highway toll rates are the same 24 hours a day — there is no separate night discount on the ${origin} to ${dest} route. However, monthly-pass and local-vehicle concessions exist at some plazas for nearby residents, which do not apply to outstation cabs.` },
     { question: `What is the total trip cost from ${origin} to ${dest} including toll?`, answer: `The total trip cost from ${origin} to ${dest} includes cab fare (from ₹${sedanFare.toLocaleString('en-IN')} for sedan) + toll charges (₹${totalTollCar} approx.) + fuel if self-driving. When booking with Triveni Cabs, you only pay cab fare + actual toll. No hidden charges.` },
+    { question: `Is there a cheaper toll-free route from ${origin} to ${dest}?`, answer: `Alternate state-road routes may bypass some tolls, but they usually add 30-60+ minutes to travel time and pass through congested towns with poorer road quality. The main highway toll route is recommended for comfort, safety, and faster travel. Our drivers always take the best route.` },
     { question: `Can I avoid toll plazas on the ${origin} to ${dest} route?`, answer: `While alternate routes may bypass some tolls, they usually add 30-60+ minutes to travel time and pass through congested areas. The toll route via the main highway is recommended for comfort, safety, and faster travel. Our drivers always take the best route.` },
   ];
 }
 
-function createTollRoute({ slug, origin, destination, totalDistance, tollPlazas, fastagInfo, tips, estimatedFuel, relatedRoutes }) {
+// `leadFaqs` are placed BEFORE the generated set: faqs[0] is what the client
+// renders as the speakable quick-answer card, so a route whose search demand is
+// phrased differently from the generic template can front-load that phrasing.
+function createTollRoute({ slug, origin, destination, totalDistance, tollPlazas, fastagInfo, tips, estimatedFuel, relatedRoutes, leadFaqs }) {
   const totalTollCar = tollPlazas.reduce((sum, t) => sum + t.carCost, 0);
   const totalTollSuv = tollPlazas.reduce((sum, t) => sum + t.suvCost, 0);
   const cabFare = calcCabFare(totalDistance);
@@ -35,7 +45,10 @@ function createTollRoute({ slug, origin, destination, totalDistance, tollPlazas,
     tips,
     estimatedFuel,
     cabFare,
-    faqs: generateTollFaqs(origin, destination, totalTollCar, totalTollSuv, totalDistance, tollPlazas.length, fastagInfo),
+    faqs: [
+      ...(leadFaqs || []),
+      ...generateTollFaqs(origin, destination, totalTollCar, totalTollSuv, totalDistance, tollPlazas.length, fastagInfo),
+    ],
     relatedRoutes: relatedRoutes || [],
   };
 }
@@ -214,14 +227,20 @@ export const tollCostRoutes = {
       { name: "Delhi-Meerut Expressway Toll", location: 35, carCost: 120, suvCost: 195, commercialCost: 415, acceptsFASTag: true },
       { name: "Muzaffarnagar Toll Plaza", location: 130, carCost: 95, suvCost: 155, commercialCost: 325, acceptsFASTag: true },
     ],
-    fastagInfo: "Delhi-Meerut Expressway is FASTag-only (no cash lanes). Muzaffarnagar plaza accepts both FASTag and cash.",
+    fastagInfo: "The Delhi–Dehradun expressway run starts on the Delhi-Meerut Expressway, which is FASTag-only (no cash lanes). The Muzaffarnagar plaza further along accepts both FASTag and cash.",
     tips: [
-      "Only 2 toll plazas totaling ₹215 for car — one of the most affordable toll routes from Delhi.",
+      "Delhi–Dehradun Expressway toll totals just ₹215 for a car across 2 plazas — one of the most affordable toll routes from Delhi.",
       "Delhi-Meerut Expressway toll is FASTag-mandatory. Ensure your tag is active before entering.",
       "Dehradun is the gateway to Mussoorie (35 km uphill). No additional toll for the Mussoorie stretch.",
     ],
     estimatedFuel: { petrol: 1530, diesel: 1148 },
     relatedRoutes: ["delhi-to-mussoorie", "delhi-to-haridwar", "delhi-to-rishikesh"],
+    leadFaqs: [
+      {
+        question: "What is the toll on the Delhi–Dehradun Expressway?",
+        answer: "The Delhi–Dehradun expressway route is tolled at 2 plazas rather than one expressway gate, and comes to approximately ₹215 for a car or sedan and ₹350 for an SUV one-way. You pay ₹120 (car) or ₹195 (SUV) at the Delhi-Meerut Expressway plaza 35 km out, then ₹95 (car) or ₹155 (SUV) at the Muzaffarnagar plaza around the 130 km mark. The Delhi-Meerut Expressway section is FASTag-only, so make sure your tag is active before you enter.",
+      },
+    ],
   }),
 
   // ═══════════════════════════════════════════
@@ -255,14 +274,20 @@ export const tollCostRoutes = {
     tollPlazas: [
       { name: "Delhi-Meerut Expressway Toll", location: 35, carCost: 120, suvCost: 195, commercialCost: 415, acceptsFASTag: true },
     ],
-    fastagInfo: "Delhi-Meerut Expressway has a single FASTag-only toll plaza. No cash lanes — FASTag is mandatory.",
+    fastagInfo: "The Delhi–Meerut Expressway has a single FASTag-only toll plaza. No cash lanes — FASTag is mandatory.",
     tips: [
-      "Only one toll plaza at ₹120 for car. The 14-lane Delhi-Meerut Expressway makes this a quick 45-minute drive.",
+      "Delhi–Meerut Expressway toll is ₹120 for a car at the route's only plaza. The 14-lane expressway makes this a quick 45-minute drive.",
       "FASTag is mandatory — there are no cash lanes on this expressway. Get a FASTag beforehand.",
       "Meerut is also the starting point for trips to Haridwar, Rishikesh, and Dehradun.",
     ],
     estimatedFuel: { petrol: 420, diesel: 315 },
     relatedRoutes: ["delhi-to-haridwar", "delhi-to-dehradun", "delhi-to-rishikesh"],
+    leadFaqs: [
+      {
+        question: "What is the toll on the Delhi–Meerut Expressway?",
+        answer: "The Delhi–Meerut Expressway toll is approximately ₹120 for a car or sedan and ₹195 for an SUV one-way. There is a single toll plaza on the 70 km route, roughly 35 km from Delhi, and it is FASTag-only — there are no cash lanes, so your tag must be active and funded before you enter the expressway.",
+      },
+    ],
   }),
 
   // ═══════════════════════════════════════════
@@ -536,6 +561,17 @@ export const tollCostRoutes = {
 // ═══════════════════════════════════════════
 // EXPORT FUNCTIONS
 // ═══════════════════════════════════════════
+
+// Normalise a city display name (e.g. "Srinagar (Kashmir)") into a lowercase
+// slug ("srinagar") that matches the _CITY_PLACES geo map in speakable-helpers.
+export function cityNameToGeoSlug(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/\(.*?\)/g, '')      // drop "(Kashmir)" etc.
+    .replace(/national park/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
 
 export function getTollCostRoute(slug) {
   return tollCostRoutes[slug] || null;

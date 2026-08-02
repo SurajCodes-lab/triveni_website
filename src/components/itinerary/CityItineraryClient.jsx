@@ -1,10 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MapPin, Clock, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Star, Shield, Users, ChevronDown, Camera, Route, Coffee, Sunrise, HelpCircle, Hotel, Compass, Bookmark, ChevronRight, CalendarDays, MapPinned, Ticket, Check } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { useState } from 'react';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 /* ─── Inline keyframe styles ─── */
 const animStyles = `
@@ -124,6 +127,14 @@ export default function CityItineraryClient({ data }) {
                   <WhatsAppIcon className="w-5 h-5 group-hover:animate-bounce" /> WhatsApp
                 </a>
               </div>
+
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6 text-sm text-white/50">
+                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-orange-400 fill-orange-400" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 10,000+ Trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-orange-400" /> Verified Drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> No Advance Payment</span>
+              </div>
             </div>
 
             {/* Floating Price Card — Calendar/Day-planner style */}
@@ -187,6 +198,11 @@ export default function CityItineraryClient({ data }) {
                 <p className="text-xs text-white/40 uppercase tracking-wider font-medium">{stat.label}</p>
               </div>
             ))}
+          </div>
+
+          {/* Lead capture form */}
+          <div className="mt-10 flex justify-center">
+            <QuickEnquiryForm fromCity={data.city} pageType="route" />
           </div>
         </div>
       </section>
@@ -331,9 +347,9 @@ export default function CityItineraryClient({ data }) {
 
           <div className="grid sm:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
             {[
-              { type: 'AC Sedan', desc: 'Swift Dzire / Etios', price: data.packagePrice.sedan, capacity: '4 Passengers', icon: Car, tag: 'Budget Friendly' },
-              { type: 'AC SUV', desc: 'Innova / Ertiga', price: data.packagePrice.suv, capacity: '6 Passengers', icon: Car, featured: true, tag: 'Most Popular' },
-              { type: 'Tempo Traveller', desc: '12-17 Seater AC', price: data.packagePrice.tempo, capacity: '12+ Passengers', icon: Users, tag: 'Group Travel' },
+              { type: 'AC Sedan', desc: 'Swift Dzire / Etios', price: data.packagePrice.sedan, capacity: '4 Passengers', icon: Car, tag: 'Budget Friendly', img: '/images/car/swift_dzire.jpg' },
+              { type: 'AC SUV', desc: 'Innova / Ertiga', price: data.packagePrice.suv, capacity: '6 Passengers', icon: Car, featured: true, tag: 'Most Popular', img: '/images/car/innova_crysta.jpg' },
+              { type: 'Tempo Traveller', desc: '12-17 Seater AC', price: data.packagePrice.tempo, capacity: '12+ Passengers', icon: Users, tag: 'Group Travel', img: '/images/tempo/12_seater.jpg' },
             ].map((vehicle, i) => (
               <div key={i} className={`group relative bg-white/[0.04] backdrop-blur-2xl rounded-3xl border p-7 md:p-8 text-center transition-all duration-500 hover:scale-[1.03] ${
                 vehicle.featured
@@ -347,10 +363,11 @@ export default function CityItineraryClient({ data }) {
                   vehicle.featured ? 'bg-orange-500/20 text-orange-300 border border-orange-500/30' : 'bg-white/5 text-white/40 border border-white/10'
                 }`}>{vehicle.tag}</span>
 
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 ${
-                  vehicle.featured ? 'bg-gradient-to-br from-orange-500/20 to-yellow-500/20 border border-orange-500/30' : 'bg-white/5 border border-white/10'
+                <div className={`relative w-full h-36 rounded-2xl overflow-hidden mx-auto mb-4 transition-all duration-300 group-hover:scale-[1.03] ${
+                  vehicle.featured ? 'ring-2 ring-orange-500/40' : ''
                 }`}>
-                  <vehicle.icon className={`w-7 h-7 ${vehicle.featured ? 'text-orange-300' : 'text-white/50'}`} />
+                  <Image src={vehicle.img} alt={vehicle.type} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 to-transparent" />
                 </div>
 
                 <h3 className="text-lg font-bold text-white mb-0.5">{vehicle.type}</h3>
@@ -640,6 +657,12 @@ export default function CityItineraryClient({ data }) {
           </div>
         </div>
       </section>
+
+      <SetStickyCta
+        price={data.packagePrice?.sedan}
+        label={`${data.city} ${data.days}-Day Trip`}
+        whatsappText={`Hi, I'm interested in the ${data.days}-day ${data.city} cab package. Please share details.`}
+      />
     </div>
   );
 }

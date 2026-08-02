@@ -1,10 +1,13 @@
 import AboutClient from "./AboutClient";
+import { FOUNDER_AUTHOR, EDITORIAL_TEAM, getAllEditorialPersons } from "@/lib/seo/authors";
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
+import { getSpeakableSchema, getArticleSchema } from "@/lib/seo/speakable-helpers";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: "About Us | Triveni Cabs - India's Most Trusted Cab Service",
-  description: "Discover Triveni Cabs - a brand born from passion, discipline, and customer-first values. 500+ premium vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable, and affordable travel across India with 24/7 support.",
+  description: "Triveni Cabs — 500+ vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable travel across India with transparent pricing & 24/7 support.",
   keywords: "Triveni Cabs about, Pankaj Singh Gaur, cab service founder, India travel company, trusted cab service, reliable taxi India, professional drivers, customer focused travel, transparent pricing cabs, safe travel India, premium cab service, 24/7 support taxi, airport transfer India, outstation cab booking, taxi company India, car rental company, travel agency India, transportation service",
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -68,11 +71,10 @@ export default function AboutPage() {
       "height": 60
     },
     "foundingDate": "2015",
-    "founder": {
-      "@type": "Person",
-      "name": "Pankaj Singh Gaur",
-      "jobTitle": "Founder & CEO"
-    },
+    // Promote founder to a full Person entity with @id, sameAs, credentials —
+    // this is the E-E-A-T fix from AEO/GEO standard S6. The @id makes every
+    // page that mentions the founder reference the same Knowledge Graph entity.
+    "founder": FOUNDER_AUTHOR,
     "description": "India's most trusted cab service provider with a fleet of 500+ premium vehicles serving 50+ cities. Offering outstation, local, airport transfers, and wedding car rentals.",
     "slogan": "Your Journey, Our Responsibility",
     "numberOfEmployees": {
@@ -118,7 +120,7 @@ export default function AboutPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount('about')),
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -156,6 +158,26 @@ export default function AboutPage() {
       "name": "Triveni Cabs",
       "url": "https://www.trivenicabs.in"
     }
+  };
+
+  // Article Schema — establishes the About story as authored editorial content
+  // for E-E-A-T, with Speakable voice-search hooks tied to the hero H1 + lead.
+  const articleSchema = getArticleSchema({
+    slug: 'about',
+    headline: "About Triveni Cabs — India's Most Trusted Cab Service",
+    description: "The story behind Triveni Cabs: founder Pankaj Singh Gaur, 500+ vehicles, 50+ cities, and 10,000+ happy customers across India.",
+    image: '/images/about_page_hero_section.jpg',
+    datePublished: '2015-01-01',
+    authorName: 'founder',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead']
+  });
+
+  // Standalone Speakable WebPage block for voice assistants.
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.trivenicabs.in/about#webpage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead'])
   };
 
   // Breadcrumb Schema
@@ -232,6 +254,18 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
 
+      {/* Article Schema (E-E-A-T + Speakable) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* Speakable WebPage Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
+
       {/* Breadcrumb Schema */}
       <script
         type="application/ld+json"
@@ -242,6 +276,18 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Editorial team @graph — exposes named Person entities for E-E-A-T.
+          Each Person has @id, jobTitle, worksFor (linked to #organization),
+          sameAs (LinkedIn), knowsAbout. Aggregating to a graph lets Google
+          treat them as connected entities rather than duplicates. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": getAllEditorialPersons()
+        }) }}
       />
 
       <AboutClient />

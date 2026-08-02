@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Lucknow Beyond Bara Imambara | Hidden Gems & Heritage | 2026',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/lucknow-beyond-bara-imambara',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/lucknow-hero.jpg', width: 1200, height: 630, alt: 'Lucknow Beyond Bara Imambara' }],
+    images: [{ url: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg', width: 1200, height: 630, alt: 'Lucknow Beyond Bara Imambara' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Colonial ruins, Nawabi heritage, crocodile reserves, grand parks. By Lucknow locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/lucknow-hero.jpg'],
+    images: ['/images/sightseeing/Lucknow/Lucknow_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

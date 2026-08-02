@@ -14,7 +14,8 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const INCLUSIONS = [
   { icon: Car, label: 'AC Vehicle', desc: 'Well-maintained sedan or SUV with AC' },
@@ -51,12 +52,22 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <style jsx global>{`
+        .rt-serif { font-family: Georgia, 'Times New Roman', serif; }
+      `}</style>
+      <SetStickyCta
+        price={`₹${trip.totalCost.sedan.toLocaleString('en-IN')}`}
+        label={`${trip.name} (${trip.totalDays}D)`}
+        whatsappText={whatsappMsg}
+      />
 
       {/* ━━━ HERO: Circuit explorer ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
-        <Image src={heroImage} alt={`${trip.name} road trip circuit`} fill priority className="object-cover" sizes="100vw" quality={85} placeholder="blur" blurDataURL={heroBlurDataURL} />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+        <Image src={heroImage} alt={`${trip.name} road trip circuit`} fill priority className="object-cover scale-105" sizes="100vw" quality={85} placeholder="blur" blurDataURL={heroBlurDataURL} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/15" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-amber-950/40 via-transparent to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 z-20" />
+        <div className="absolute bottom-1/4 left-[6%] w-72 h-72 bg-amber-500/15 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pb-8 sm:pb-12">
           <nav className="mb-6 flex items-center gap-1.5 text-xs text-white/40">
@@ -69,12 +80,13 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
-                <Compass className="w-3.5 h-3.5 text-amber-400" />
-                <span className="text-[11px] font-bold text-amber-300 uppercase tracking-widest">Circuit Explorer</span>
+              <div className="inline-flex items-center gap-2 bg-amber-500/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-amber-400/25 mb-5">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <Compass className="w-3.5 h-3.5 text-amber-300" />
+                <span className="text-[11px] font-bold text-amber-200 uppercase tracking-widest">Circuit Explorer</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[0.95] tracking-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">{trip.name}</span>
+              <h1 className="speakable-headline rt-serif italic text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.02] tracking-tight">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-200 to-rose-300">{trip.name}</span>
               </h1>
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">
                 {trip.tagline} -- {trip.totalDistance} km in {trip.totalDays} days from <span className="text-[#FACF2D] font-bold">{'\u20B9'}{trip.totalCost.sedan.toLocaleString('en-IN')}</span>
@@ -101,9 +113,18 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
                   <Phone className="w-4 h-4" /> Call Now
                 </a>
               </div>
+
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 text-white/70 text-xs sm:text-sm font-medium">
+                <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-[#FACF2D] fill-[#FACF2D]" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-amber-300" /> 10,000+ Trips</span>
+                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-amber-300" /> Verified Drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> No Advance Payment</span>
+              </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
+            <div className="w-full lg:w-72 flex-shrink-0 space-y-4">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Distance</p>
@@ -129,6 +150,8 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
                 <span className="text-[11px] text-white/40 font-medium">4.9 &middot; 10,000+ trips</span>
               </div>
             </div>
+            <QuickEnquiryForm fromCity={firstCity} pageType="road-trip" />
+            </div>
           </div>
         </div>
       </section>
@@ -144,11 +167,37 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
               { icon: Car, label: 'Sedan Fare', value: `\u20B9${trip.totalCost.sedan.toLocaleString('en-IN')}`, color: 'text-[#FACF2D]' },
               { icon: Star, label: 'Rating', value: '4.9 / 5', color: 'text-amber-400' },
             ].map((s, i) => (
-              <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center">
+              <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-amber-500/30 transition-all duration-300">
                 <s.icon className={`w-5 h-5 ${s.color} mx-auto mb-2`} />
-                <p className="text-sm font-black text-white">{s.value}</p>
+                <p className="text-base font-black bg-clip-text text-transparent bg-gradient-to-br from-amber-200 to-orange-300">{s.value}</p>
                 <p className="text-[10px] text-white/30 uppercase tracking-wider">{s.label}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━ DIRECT-ANSWER LEAD: voice + featured-snippet target ━━━ */}
+      <section className="bg-white py-8 sm:py-10 px-4 sm:px-6 border-b border-slate-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-lg sm:text-xl font-black text-slate-900 mb-2">
+            How long is the {trip.name} road trip and what does it cost?
+          </h2>
+          <p className="speakable-lead text-slate-600 text-sm sm:text-base leading-relaxed">
+            The {trip.name} is a <strong className="text-slate-900">{trip.totalDays}-day, {trip.totalDistance} km</strong> circuit
+            covering {trip.stops.map(s => s.city).filter((c, i, a) => a.indexOf(c) === i).join(' → ')}.
+            A chauffeur-driven AC cab starts at <strong className="text-slate-900">{'₹'}{trip.totalCost.sedan.toLocaleString('en-IN')} (sedan)</strong> and
+            <strong className="text-slate-900"> {'₹'}{trip.totalCost.suv.toLocaleString('en-IN')} (SUV)</strong>, including driver, fuel and 24/7 support.
+            Toll, parking and driver night allowance are extra. {trip.bestSeason.split('.')[0]}.
+          </p>
+          <div className="flex flex-wrap gap-2 mt-4">
+            <Link href="/road-trip" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full transition-colors">
+              <Compass className="w-3.5 h-3.5" /> All road trip circuits
+            </Link>
+            {trip.stops.slice(0, 3).map((stop, i) => (
+              <Link key={i} href={`/best-time-to-visit/${stop.city.toLowerCase().split(/[-/]/)[0].trim().replace(/\s+/g, '-')}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full transition-colors">
+                <MapPin className="w-3.5 h-3.5" /> Best time for {stop.city}
+              </Link>
             ))}
           </div>
         </div>
@@ -166,7 +215,7 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
           </ScrollReveal>
 
           <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-amber-200 hidden sm:block" />
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-400 via-orange-400 to-rose-400 hidden sm:block" />
 
             <div className="space-y-3">
               {trip.stops.map((stop, i) => {
@@ -221,6 +270,13 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
         </div>
       </section>
 
+      {/* Ornament divider */}
+      <div className="flex items-center justify-center gap-3 py-2" aria-hidden="true">
+        <span className="h-px w-12 bg-gradient-to-r from-transparent to-amber-300" />
+        <Compass className="w-4 h-4 text-amber-400" />
+        <span className="h-px w-12 bg-gradient-to-l from-transparent to-amber-300" />
+      </div>
+
       {/* ━━━ PRICING: Dark section ━━━ */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900">
         <div className="max-w-4xl mx-auto">
@@ -234,19 +290,20 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {[
-              { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: trip.totalCost.sedan, seats: '4', perKm: '\u20B911/km', popular: false },
-              { name: 'SUV', sub: 'Innova / Ertiga', fare: trip.totalCost.suv, seats: '6-7', perKm: '\u20B914/km', popular: true },
+              { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: trip.totalCost.sedan, seats: '4', perKm: '\u20B911/km', popular: false, img: '/images/car/swift_dzire.jpg' },
+              { name: 'SUV', sub: 'Innova / Ertiga', fare: trip.totalCost.suv, seats: '6-7', perKm: '\u20B914/km', popular: true, img: '/images/car/innova_crysta.jpg' },
             ].map((v, i) => (
               <ScrollReveal key={i} stagger={i * 80}>
-                <div className={`relative rounded-2xl overflow-hidden ${v.popular ? 'ring-2 ring-amber-400/50' : ''}`}>
-                  {v.popular && <div className="bg-amber-500 text-center py-1.5"><span className="text-[10px] font-black text-white uppercase tracking-widest">Recommended</span></div>}
-                  <div className="bg-slate-800 p-6 text-center">
-                    <div className={`w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 ${v.popular ? 'bg-amber-500/20' : 'bg-white/10'}`}>
-                      <Car className={`w-8 h-8 ${v.popular ? 'text-amber-400' : 'text-white/60'}`} />
+                <div className={`relative rounded-2xl overflow-hidden ${v.popular ? 'ring-2 ring-amber-400/60 shadow-2xl shadow-amber-500/20' : 'ring-1 ring-white/10'}`}>
+                  {v.popular && <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-center py-1.5"><span className="inline-flex items-center gap-1 text-[10px] font-black text-white uppercase tracking-widest"><Star className="w-3 h-3 fill-white" /> Recommended</span></div>}
+                  <div className="bg-gradient-to-b from-slate-800 to-slate-900 p-6 text-center">
+                    <div className="relative w-full h-36 rounded-2xl overflow-hidden mx-auto mb-4 group">
+                      <Image src={v.img} alt={`${v.name} cab for road trip`} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
                     </div>
                     <h3 className="text-xl font-black text-white">{v.name}</h3>
                     <p className="text-white/40 text-sm mt-1">{v.sub} / {v.seats} Seater</p>
-                    <div className="text-4xl font-black text-[#FACF2D] my-4">{'\u20B9'}{v.fare.toLocaleString('en-IN')}</div>
+                    <div className="text-4xl font-black my-4 bg-clip-text text-transparent bg-gradient-to-br from-[#FACF2D] to-amber-300">{'\u20B9'}{v.fare.toLocaleString('en-IN')}</div>
                     <p className="text-white/30 text-xs mb-5">{v.perKm} / {trip.totalDistance} km circuit</p>
                     <div className="space-y-2 mb-5 text-left">
                       {['Driver + Fuel + AC included', 'GPS-tracked vehicle', `${trip.totalDays}-day circuit support`, 'No hidden charges'].map((f, j) => (
@@ -368,6 +425,15 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
         </div>
       </section>
 
+      {trip.faqs && trip.faqs.length > 0 && (
+        <section className="bg-gray-50 pt-12 sm:pt-16 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl border border-slate-200 p-5">
+            <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mb-1.5">Quick Answer</p>
+            <p className="font-bold text-slate-900 text-sm mb-1.5">{trip.faqs[0].question}</p>
+            <p className="speakable-faq-first text-slate-600 text-sm leading-relaxed">{trip.faqs[0].answer}</p>
+          </div>
+        </section>
+      )}
       <FaqAccordion heading={`${trip.name} FAQs`} faqs={trip.faqs} />
 
       {relatedTrips && relatedTrips.length > 0 && (
@@ -403,7 +469,6 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
       )}
 
       <CTASection heading="Ready for This Road Trip?" subheading={`Book your ${trip.name} circuit with Triveni Cabs. ${trip.totalDistance} km, ${trip.totalDays} days, from \u20B9${trip.totalCost.sedan.toLocaleString('en-IN')}.`} />
-      <MobileStickyBar />
     </div>
   );
 }

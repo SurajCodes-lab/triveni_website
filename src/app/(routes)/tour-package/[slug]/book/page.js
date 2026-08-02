@@ -90,7 +90,7 @@ const bookingSeoContent = {
   }
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 // Generate static params for all tour packages

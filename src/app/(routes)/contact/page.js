@@ -1,10 +1,11 @@
 import ContactClient from "./ContactClient";
+import { getSpeakableSchema } from "@/lib/seo/speakable-helpers";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Contact Us | Triveni Cabs - 24/7 Customer Support",
-  description: "Contact Triveni Cabs for reliable taxi booking across India. 24/7 customer support, instant WhatsApp booking, and quick response times. Call us at any time for outstation, local, or airport transfers.",
+  description: "Contact Triveni Cabs for reliable taxi booking across India. 24/7 customer support, instant WhatsApp booking, and quick response times.",
   keywords: "contact Triveni Cabs, taxi booking support, cab service contact, 24/7 taxi support, WhatsApp cab booking, Agra taxi contact, India cab service contact, emergency taxi support, reliable cab customer service",
   alternates: {
     canonical: "https://www.trivenicabs.in/contact"
@@ -193,6 +194,19 @@ export default function ContactPage() {
                 }
               }
             ]
+          })
+        }}
+      />
+
+      {/* Speakable WebPage Schema for voice assistants */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": "https://www.trivenicabs.in/contact#webpage",
+            "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead'])
           })
         }}
       />

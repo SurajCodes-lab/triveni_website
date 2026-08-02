@@ -129,7 +129,7 @@ export const additionalSightseeingBlogs = [
   {
     id: 'sight-2',
     slug: 'varanasi-spiritual-capital-complete-guide-2026',
-    title: 'Varanasi 2026: India Spiritual Capital Guide - Ghats, Temples & Aarti',
+    title: 'Varanasi 2026: India Spiritual Capital Guide - Ghats,',
     excerpt: 'Complete Varanasi travel guide. Experience Ganga Aarti, explore ancient ghats, visit Kashi Vishwanath. Spiritual journey tips and cab booking.',
 
     relatedTours: [
@@ -261,7 +261,7 @@ export const additionalSightseeingBlogs = [
   {
     id: 'sight-3',
     slug: 'amritsar-golden-temple-wagah-border-guide-2026',
-    title: 'Amritsar 2026: Golden Temple, Wagah Border & Complete Travel Guide',
+    title: 'Amritsar 2026: Golden Temple, Wagah Border& Complete Travel Guide',
     excerpt: 'Visit Amritsar - home of the Golden Temple. Witness Wagah Border ceremony, explore Jallianwala Bagh. Punjab culture and food guide.',
 
     relatedTours: [

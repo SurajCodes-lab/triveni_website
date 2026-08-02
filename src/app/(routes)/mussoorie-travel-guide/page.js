@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll, Mountain, TreePine } from '@/components/ui/icons';
 
-export const metadata = { title: 'Mussoorie Travel Guide 2026 | Queen of Hills, Mall Road & Doon Valley Views', description: 'Complete Mussoorie travel guide 2026. Kempty Falls, Gun Hill, Lal Tibba, Mall Road, Cloud&apos;s End, George Everest House. Call 7668570551.', keywords: 'mussoorie travel guide, queen of hills, kempty falls, gun hill, lal tibba, mall road mussoorie, mussoorie tourism, uttarakhand tourism, dehradun to mussoorie', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/mussoorie-travel-guide' }, openGraph: { title: 'Mussoorie Travel Guide 2026 | Queen of Hills & Beyond', description: 'Everything about visiting Mussoorie. Kempty Falls, Gun Hill, Mall Road, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mussoorie-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/mussoorie-hero.jpg', width: 1200, height: 630, alt: 'Mussoorie Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Mussoorie Travel Guide 2026', description: 'Complete Mussoorie guide. Queen of Hills, Mall Road, Kempty Falls, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/mussoorie-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Mussoorie Travel Guide 2026: Best Time, Cost & Top Sights', description: 'Best time to visit Mussoorie: Mar-Jun for cool weather, Dec-Feb for snow. Plan 2-3 days for Kempty Falls, Gun Hill, Lal Tibba & Mall Road. 290 km from Delhi + cab tips. Call 7668570551.', keywords: 'mussoorie travel guide, queen of hills, kempty falls, gun hill, lal tibba, mall road mussoorie, mussoorie tourism, uttarakhand tourism, dehradun to mussoorie', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/mussoorie-travel-guide' }, openGraph: { title: 'Mussoorie Travel Guide 2026 | Queen of Hills & Beyond', description: 'Everything about visiting Mussoorie. Kempty Falls, Gun Hill, Mall Road, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mussoorie-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg', width: 1200, height: 630, alt: 'Mussoorie Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Mussoorie Travel Guide 2026', description: 'Complete Mussoorie guide. Queen of Hills, Mall Road, Kempty Falls, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function MussorieTravelGuidePage() {
+  const heroImage = "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg";
+  const cityName = "Mussoorie";
+  const whatsappMsg = "I want to book a cab for Mussoorie trip";
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Mussoorie Travel Guide", "item": "https://www.trivenicabs.in/mussoorie-travel-guide" }] };
   const faqData = [
     { question: "How many days do I need in Mussoorie?", answer: "2-3 days is perfect. Day 1: Mall Road, Gun Hill cable car ride, Camel&apos;s Back Road sunset walk. Day 2: Kempty Falls, Company Garden, Lal Tibba viewpoint. Day 3: George Everest House trek, Cloud&apos;s End, Jharipani Falls. Add a day for Dhanaulti (24 km) and Surkanda Devi Temple." },
@@ -18,12 +23,12 @@ export default function MussorieTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Kempty Falls", desc: "Mussoorie&apos;s most famous waterfall, cascading from a height of 40 feet into a natural pool. Located 15 km from Mall Road. Swimming allowed in designated areas. Rope-way ride available. Most popular during summer months.", entry: "&#8377;50 (pool access)", timing: "8:00 AM - 6:00 PM", duration: "1.5-2 hours", icon: Sunrise },
-    { name: "Gun Hill (Cable Car)", desc: "The second-highest point in Mussoorie at 2,024 metres. Reached by a fun ropeway (cable car) ride from Mall Road. Panoramic 360-degree views of the Doon Valley and Himalayan peaks including Banderpoonch and Srikantha.", entry: "&#8377;125 (cable car return)", timing: "10:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: Mountain },
-    { name: "Lal Tibba", desc: "The highest point of Mussoorie at 2,275 metres in the charming Landour area. Telescopic views of Himalayan peaks -- Kedarnath, Badrinath, and Banderpoonch on clear days. The old telescope at the cafe is a beloved tradition.", entry: "Free", timing: "All day (morning best)", duration: "1-2 hours", icon: Camera },
-    { name: "Mall Road (The Mall)", desc: "The vibrant 2 km pedestrian promenade and heart of Mussoorie since British times. Colonial architecture, curio shops, eateries, and ice cream parlours. The Library Chowk and Picture Palace areas are the busiest stretches. Best in the evening.", entry: "Free", timing: "All day (evening best)", duration: "2-3 hours", icon: MapPin },
-    { name: "Company Garden", desc: "A beautifully maintained garden with an artificial lake, flower beds, and an amusement section for children. Boating available on the mini lake. Good for families. Managed by the Mussoorie municipality.", entry: "&#8377;50", timing: "8:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: TreePine },
-    { name: "Camel&apos;s Back Road", desc: "A scenic 3 km walking road named after a rock formation that resembles a camel&apos;s hump. Stunning views of the Doon Valley. Perfect for a peaceful morning jog or sunset walk. Horse rides available along the route.", entry: "Free", timing: "All day (sunrise/sunset best)", duration: "1-1.5 hours", icon: Compass },
+    { name: "Kempty Falls", desc: "Mussoorie&apos;s most famous waterfall, cascading from a height of 40 feet into a natural pool. Located 15 km from Mall Road. Swimming allowed in designated areas. Rope-way ride available. Most popular during summer months.", entry: "&#8377;50 (pool access)", timing: "8:00 AM - 6:00 PM", duration: "1.5-2 hours", icon: Sunrise, img: "/images/sightseeing/Mussoorie/Kempty_Falls.jpg" },
+    { name: "Gun Hill (Cable Car)", desc: "The second-highest point in Mussoorie at 2,024 metres. Reached by a fun ropeway (cable car) ride from Mall Road. Panoramic 360-degree views of the Doon Valley and Himalayan peaks including Banderpoonch and Srikantha.", entry: "&#8377;125 (cable car return)", timing: "10:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: Mountain, img: "/images/sightseeing/Mussoorie/Gun_Hill.jpg" },
+    { name: "Lal Tibba", desc: "The highest point of Mussoorie at 2,275 metres in the charming Landour area. Telescopic views of Himalayan peaks -- Kedarnath, Badrinath, and Banderpoonch on clear days. The old telescope at the cafe is a beloved tradition.", entry: "Free", timing: "All day (morning best)", duration: "1-2 hours", icon: Camera, img: "/images/sightseeing/Mussoorie/Lal_tibba.jpg" },
+    { name: "Mall Road (The Mall)", desc: "The vibrant 2 km pedestrian promenade and heart of Mussoorie since British times. Colonial architecture, curio shops, eateries, and ice cream parlours. The Library Chowk and Picture Palace areas are the busiest stretches. Best in the evening.", entry: "Free", timing: "All day (evening best)", duration: "2-3 hours", icon: MapPin, img: "/images/sightseeing/Mussoorie/Mall_road.jpg" },
+    { name: "Company Garden", desc: "A beautifully maintained garden with an artificial lake, flower beds, and an amusement section for children. Boating available on the mini lake. Good for families. Managed by the Mussoorie municipality.", entry: "&#8377;50", timing: "8:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: TreePine, img: "/images/sightseeing/Mussoorie/company_garden.jpg" },
+    { name: "Camel&apos;s Back Road", desc: "A scenic 3 km walking road named after a rock formation that resembles a camel&apos;s hump. Stunning views of the Doon Valley. Perfect for a peaceful morning jog or sunset walk. Horse rides available along the route.", entry: "Free", timing: "All day (sunrise/sunset best)", duration: "1-1.5 hours", icon: Compass, img: "/images/sightseeing/Mussoorie/camel_back_road.jpg" },
     { name: "Cloud&apos;s End", desc: "The westernmost point of Mussoorie where the town ends and thick forests begin. A historic British-era bungalow sits at the edge. Starting point for treks to Benog Wildlife Sanctuary. Misty and magical, especially during monsoon edge months.", entry: "Free", timing: "All day", duration: "2-3 hours (with trek)", icon: Landmark },
     { name: "George Everest House", desc: "Ruins of the house and laboratory of Sir George Everest, the Surveyor General after whom Mount Everest is named. A 6 km trek from Library Point through Hathipaon. Spectacular 270-degree views of the Doon Valley and Aglar River valley.", entry: "Free", timing: "All day (morning best)", duration: "3-4 hours (with trek)", icon: Shield },
     { name: "Jharipani Falls", desc: "A serene 40-feet waterfall about 7 km from Mussoorie. Requires a short trek through dense forest. Less crowded than Kempty Falls, offering a more peaceful nature experience. Best visited after monsoon when water flow is fullest.", entry: "Free", timing: "All day", duration: "2-3 hours (with trek)", icon: Sunrise },
@@ -64,6 +69,16 @@ export default function MussorieTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: Mountain, title: "Hill Station Experts", desc: "Uttarakhand specialists" }, { icon: Landmark, title: "Queen of Hills", desc: "Since the British era" }, { icon: Users, title: "5000+ Trips Done", desc: "Mussoorie tour experts" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "9 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "mussoorie-travel-guide",
+    headline: "Mussoorie Travel Guide",
+    description: "Mussoorie Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -79,12 +94,14 @@ export default function MussorieTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -120,6 +137,23 @@ export default function MussorieTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Mussoorie trip?"
+            answer="Mussoorie is best from March to June for pleasant 15-30 degree weather and clear Doon Valley views, and again from September to November after the monsoon; December to February brings snowfall. Two to three days covers Mall Road, the Gun Hill cable car, Kempty Falls, Lal Tibba and Camel's Back Road. Delhi is about 290 km away, roughly 6 hours by car on NH58, or a short 35 km climb from Dehradun."
+            facts={[
+              { label: 'Best time', value: 'Mar-Jun, Sep-Nov' },
+              { label: 'Ideal duration', value: '2 to 3 days' },
+              { label: 'Top sight', value: 'Kempty Falls' },
+              { label: 'Cab from Delhi', value: '290 km · ₹11/km' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -141,9 +175,9 @@ export default function MussorieTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to the Queen of Hills</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Mussoorie, perched at an elevation of 2,005 metres in the Garhwal Himalayas, has been India&apos;s most beloved hill station since Captain Frederick Young founded it in 1823. The British christened it the Queen of Hills, and the title has stuck for over two centuries. Its crowning jewel, Mall Road, is a grand promenade that has witnessed generations of families, honeymooners, and literary figures -- Ruskin Bond still writes from his home in nearby Landour. The town offers a rare combination of colonial charm, natural beauty, and accessibility. Kempty Falls thunders into a misty pool just 15 km away, Gun Hill&apos;s cable car lifts visitors above the cloud line, and Lal Tibba rewards the curious with telescopic views of Kedarnath and Badrinath on clear mornings. George Everest&apos;s hilltop laboratory, from where the Great Trigonometric Survey of India was directed, offers one of the most spectacular sunset viewpoints in the Himalayas. For food lovers, Mussoorie delivers surprisingly well -- from the legendary Lovely Omelette on Mall Road to artisan bakeries in Landour. Whether you seek a classic family holiday, a romantic getaway, or a quiet literary retreat, Mussoorie wraps you in mist and memory, and invites you back again and again.</p>
@@ -190,9 +224,16 @@ export default function MussorieTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -208,6 +249,53 @@ export default function MussorieTravelGuidePage() {
           </div>
         </div>
       </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
+            </div>
+          </div>
+        </section>
 
       {/* FOOD */}
       <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">

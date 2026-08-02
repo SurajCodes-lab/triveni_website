@@ -23,6 +23,7 @@ import additionalSightseeingBlogs from './additionalSightseeingBlogs';
 import seasonalBlogs from './seasonalBlogs';
 import costBlogs from './costBlogs';
 import newBlogs2026 from './newBlogs2026';
+import newBlogsWeek39 from './newBlogsWeek39';
 
 /**
  * Combined collection of all blogs
@@ -34,7 +35,8 @@ export const allBlogs = [
   ...additionalSightseeingBlogs,  // 12 sightseeing/city guide blogs
   ...seasonalBlogs,               // 6 seasonal/special interest blogs
   ...costBlogs,                   // 10 cost/fare guide blogs
-  ...newBlogs2026                 // 17 Phase 15 blogs (destination, seasonal, service)
+  ...newBlogs2026,                // 17 Phase 15 blogs (destination, seasonal, service)
+  ...newBlogsWeek39               // 15 Week 39 AEO/GEO blogs (July 2026)
 ];
 
 /**

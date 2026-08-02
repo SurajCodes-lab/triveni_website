@@ -286,6 +286,35 @@ body {
   animation: fade-in-up 0.4s ease-out forwards;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Staggered hero entrance — use with inline animationDelay */
+.tg-hero-enter {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Trust marquee — slow horizontal loop. Duplicate children to fill 200% width. */
+@keyframes tgMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tg-marquee {
+  animation: tgMarquee 35s linear infinite;
+}
+.tg-marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tg-marquee { animation: none; }
+}
+
 .animate-whatsapp-pulse {
   animation: whatsapp-pulse 2.5s ease-in-out infinite;
 }
@@ -305,4 +334,119 @@ body {
   .animate-whatsapp-wiggle {
     animation: none;
   }
+}
+/* ============================================================
+ * "TRIVENI AURORA" DESIGN LANGUAGE — premium wow-factor kit
+ * Reusable utilities adopted by the new component primitives.
+ * Mobile-first; all safe down to 300px.
+ * ============================================================ */
+@layer utilities {
+  /* Aurora glow background — layered radial gold/amber (+faint teal) on dark */
+  .bg-aurora {
+    background-color: #0a0a0f;
+    background-image:
+      radial-gradient(60% 50% at 15% 0%, rgba(250, 207, 45, 0.16), transparent 70%),
+      radial-gradient(45% 45% at 100% 10%, rgba(45, 212, 191, 0.08), transparent 70%),
+      radial-gradient(60% 60% at 50% 100%, rgba(250, 207, 45, 0.10), transparent 70%);
+  }
+  .bg-aurora-light {
+    background-color: #faf9f6;
+    background-image:
+      radial-gradient(55% 40% at 100% 0%, rgba(250, 207, 45, 0.10), transparent 70%),
+      radial-gradient(45% 35% at 0% 100%, rgba(250, 207, 45, 0.07), transparent 70%);
+  }
+
+  /* Subtle film grain — adds premium depth over gradients */
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Gradient text — brand gold headline treatment */
+  .text-gradient-gold {
+    background-image: linear-gradient(120deg, #FFE17D 0%, #FACF2D 45%, #E5B91A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Animated gradient hairline border (card hover) */
+  .border-gradient-gold {
+    position: relative;
+  }
+  .border-gradient-gold::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(250, 207, 45, 0.6), rgba(255, 255, 255, 0.05) 40%, rgba(250, 207, 45, 0.35));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .group:hover .border-gradient-gold::before,
+  .border-gradient-gold:hover::before { opacity: 1; }
+
+  /* Premium glass surface (dark) */
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Gold glow shadow for primary CTAs / focal cards */
+  .glow-gold { box-shadow: 0 10px 40px -10px rgba(250, 207, 45, 0.45); }
+  .glow-gold-lg { box-shadow: 0 20px 70px -15px rgba(250, 207, 45, 0.55); }
+
+  /* Route-line motif: dotted A→B path connector */
+  .route-dashed {
+    background-image: linear-gradient(90deg, currentColor 40%, transparent 0);
+    background-size: 10px 2px;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+  }
+
+  /* Horizontal scroll container for wide content (tables, chips) — the
+     canonical fix for the "gets cropped" bug: scroll instead of clip. */
+  .scroll-x-edge {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 640px) {
+    .scroll-x-edge { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+  }
+
+  /* Shimmering sheen sweep for hero CTAs */
+  .sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .sheen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .sheen:hover::after { left: 125%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheen::after, .border-gradient-gold::before { transition: none; }
 }

@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
 import { getWeddingPages } from '@/utilis/linkingHelper';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import {
   Phone, ChevronRight, CheckCircle2, ArrowRight,
   Heart, Star, Sparkles, Crown, Car, Leaf, Gift
 } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 const service = getWeddingSpecialService('car-decoration-packages');
 
@@ -22,6 +23,15 @@ export const metadata = {
   },
   keywords: service?.keywords || '',
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: "Wedding Car Decoration Packages | Triveni Cabs",
+    description: "Professional wedding car decoration with fresh flowers, ribbons, LED. Starting Rs 2,000.",
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ["/images/wedding/luxury_car.jpg"],
+  },
 };
 
 export default function CarDecorationPage() {
@@ -30,11 +40,11 @@ export default function CarDecorationPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": data.title,
+    "name": `${data.title} | Triveni Cabs`,
     "description": data.description,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
-    "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "2000", "highPrice": "15000", "offerCount": "4", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "2000", "highPrice": "15000", "offerCount": "4", "availability": "https://schema.org/InStock", "seller": { "@type": "Organization", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs" } },
+    ...getRatingAndReviews('car-decoration-packages', 'wedding')
   };
 
   const faqSchema = {

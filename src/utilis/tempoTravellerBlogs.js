@@ -7,7 +7,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-1',
     slug: 'tempo-traveller-rental-delhi-guide-2026',
-    title: 'Tempo Traveller Rental Delhi 2026: Complete Booking Guide & Prices',
+    title: 'Tempo Traveller Rental Delhi 2026: Complete Booking Guide& Prices',
     excerpt: 'Complete guide to renting a tempo traveller in Delhi. 9, 12, 17, 20, 26 seater options with prices, routes, and booking tips. Best for group travel.',
 
     relatedTours: [
@@ -155,7 +155,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-2',
     slug: 'delhi-to-manali-tempo-traveller-complete-guide-2026',
-    title: 'Delhi to Manali by Tempo Traveller 2026: Route, Cost & Booking Guide',
+    title: 'Delhi to Manali by Tempo Traveller 2026: Route, Cost &',
     excerpt: 'Plan your Delhi to Manali trip by tempo traveller. 12-17 seater options, best routes via Chandigarh, costs per person, and scenic stops.',
 
     relatedTours: [
@@ -529,7 +529,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-5',
     slug: 'char-dham-yatra-tempo-traveller-guide-2026',
-    title: 'Char Dham Yatra by Tempo Traveller 2026: Complete Pilgrimage Guide',
+    title: 'Char Dham Yatra by Tempo Traveller 2026: Pilgrimage Guide',
     excerpt: 'Plan Char Dham Yatra by tempo traveller. Visit Yamunotri, Gangotri, Kedarnath, Badrinath. Routes, registration, permits, and packages.',
 
     relatedTours: [
@@ -734,7 +734,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-7',
     slug: 'himachal-pradesh-tempo-traveller-tour-2026',
-    title: 'Himachal Pradesh by Tempo Traveller 2026: Complete Hill Station Guide',
+    title: 'Himachal Pradesh by Tempo Traveller 2026: Hill Station Guide',
     excerpt: 'Explore Himachal by tempo traveller. Shimla, Manali, Dharamshala, Dalhousie circuit. Best routes, scenic stops, and group tour packages.',
 
     relatedTours: [
@@ -844,7 +844,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-8',
     slug: 'uttarakhand-tempo-traveller-nainital-mussoorie-2026',
-    title: 'Uttarakhand by Tempo Traveller 2026: Nainital Mussoorie Jim Corbett',
+    title: 'Uttarakhand by Tempo Traveller 2026: Nainital Mussoorie Jim',
     excerpt: 'Explore Uttarakhand by tempo traveller. Cover Nainital lakes, Mussoorie hills, Jim Corbett safari. Complete group tour with routes and costs.',
 
     relatedTours: [
@@ -947,7 +947,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-9',
     slug: 'wedding-tempo-traveller-rental-delhi-2026',
-    title: 'Wedding Tempo Traveller Rental Delhi 2026: Guest Transportation Guide',
+    title: 'Wedding Tempo Traveller Rental Delhi 2026: Guest',
     excerpt: 'Rent tempo traveller for weddings in Delhi NCR. Guest pickup, baraat, venue transfer services. Decorated options, multiple vehicle bookings.',
 
     relatedTours: [],
@@ -1051,7 +1051,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-10',
     slug: 'corporate-tempo-traveller-rental-delhi-2026',
-    title: 'Corporate Tempo Traveller Rental Delhi 2026: Office Outing & Team Events',
+    title: 'Corporate Tempo Traveller Rental Delhi 2026: Office Outing',
     excerpt: 'Book tempo traveller for corporate events in Delhi NCR. Office outings, team building, conferences. Professional service with competitive rates.',
 
     relatedTours: [],
@@ -1163,7 +1163,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-11',
     slug: 'pilgrimage-tempo-traveller-vaishno-devi-2026',
-    title: 'Vaishno Devi by Tempo Traveller 2026: Delhi to Katra Pilgrimage Guide',
+    title: 'Vaishno Devi by Tempo Traveller 2026: Delhi to Katra',
     excerpt: 'Plan Vaishno Devi yatra by tempo traveller. Delhi to Katra route, darshan tips, helicopter booking, and group pilgrimage packages.',
 
     relatedTours: [
@@ -1262,7 +1262,7 @@ export const tempoTravellerBlogs = [
   {
     id: 'tempo-12',
     slug: 'school-picnic-tempo-traveller-delhi-2026',
-    title: 'School Picnic Tempo Traveller Delhi 2026: Student Transport & Trip Guide',
+    title: 'School Picnic Tempo Traveller Delhi 2026: Student Transport',
     excerpt: 'Book tempo traveller for school picnics in Delhi NCR. Safe student transport to amusement parks, museums, historical sites. Group discounts.',
 
     relatedTours: [],

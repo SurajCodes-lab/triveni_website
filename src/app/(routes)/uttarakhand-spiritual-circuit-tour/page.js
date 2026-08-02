@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Uttarakhand Spiritual Circuit Tour by Car 2026 | Haridwar Rishikesh Badrinath | Triveni Cabs',
-  description: 'Uttarakhand spiritual tour plan by car: Haridwar, Rishikesh, Devprayag, Chopta, Badrinath circuit. 7-8 day itinerary. Sedan ₹38,000, SUV ₹55,000. Call 7668570551.',
+  title: 'Uttarakhand Spiritual Circuit by Car 2026 | Haridwar Rishikesh',
+  description: 'Uttarakhand spiritual tour plan by car: Haridwar, Rishikesh, Devprayag, Chopta, Badrinath circuit. 7-8 day itinerary. Sedan ₹38,000, SUV ₹55,000.',
   keywords: 'uttarakhand spiritual tour plan by car, haridwar rishikesh tour, devprayag chopta badrinath tour, uttarakhand pilgrimage by car, char dham lite tour',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),

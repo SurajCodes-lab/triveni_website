@@ -4,10 +4,10 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.delhi;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: '20+ Places to Visit Near Delhi by Car | Weekend Getaways | Book Cab',
+  title: '20+ Places to Visit Near Delhi by Car | Weekend Getaways',
   description: `Best places to visit near Delhi by car. Agra (230 km), Jaipur (280 km), Mussoorie (290 km), Rishikesh (245 km) & 16 more. Sedan ₹11/km. Book cab: 7668570551.`,
   keywords: 'places to visit near delhi, weekend getaways from delhi, places near delhi by car, day trips from delhi, delhi nearby places, road trips from delhi, places around delhi, best places near delhi, tourist places near delhi, places to visit near delhi within 200 km, places to visit near delhi within 300 km',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

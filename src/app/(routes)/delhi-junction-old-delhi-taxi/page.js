@@ -3,7 +3,7 @@ import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 const STATION = {
   stationName: 'Delhi Junction (Old Delhi)', stationCode: 'DLI', city: 'Delhi', platforms: 16, slug: 'delhi-junction-old-delhi-taxi',
@@ -46,10 +46,18 @@ const STATION = {
 
 export const metadata = {
   title: 'Old Delhi Station Taxi Service | Pickup from ₹149 — 4.9★ Rated',
-  description: 'Book taxi from Delhi Junction / Old Delhi Railway Station (DLI). Fixed fares from ₹149 to Red Fort, Chandni Chowk, Airport. AC sedan & SUV, 24/7. Call 7668570551.',
+  description: 'Book taxi from Delhi Junction / Old Delhi Railway Station (DLI). Fixed fares from ₹149 to Red Fort, Chandni Chowk, Airport. AC sedan & SUV, 24/7.',
   keywords: 'old delhi station taxi, delhi junction taxi, DLI station cab, taxi from old delhi to red fort, delhi junction cab booking, old delhi station to airport taxi, chandni chowk station taxi, old delhi railway station cab, DLI to connaught place taxi, old delhi station pickup',
   alternates: { canonical: '/delhi-junction-old-delhi-taxi' },
   openGraph: { title: 'Old Delhi Station Taxi — Fixed Fare from ₹149 | Triveni Cabs', description: '24/7 taxi from Delhi Junction. Red Fort ₹149, CP ₹249, Airport ₹699. AC vehicles, platform pickup.', type: 'website', url: `${BASE_URL}/delhi-junction-old-delhi-taxi` },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: "Old Delhi Station Taxi — Fixed Fare from ₹149 | Triveni Cabs",
+    description: "24/7 taxi from Delhi Junction. Red Fort ₹149, CP ₹249, Airport ₹699. AC vehicles, platform pickup.",
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+  },
 };
 
 export default function DelhiJunctionTaxiPage() {
@@ -62,7 +70,7 @@ export default function DelhiJunctionTaxiPage() {
   ];
   return (
     <>
-      {schemas.map((s, i) => <Script key={i} id={`schema-${STATION.slug}-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="beforeInteractive" />)}
+      {schemas.map((s, i) => <Script key={i} id={`schema-${STATION.slug}-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
       <AEOHead pageType="station" data={{ url: `/${STATION.slug}`, title: `${STATION.stationName} Taxi Service`, city: STATION.city }} />
       <StationTaxiClient data={STATION} />
     </>

@@ -4,6 +4,7 @@
 import { MessageCircle, Phone } from '@/components/ui/icons';
 import { phoneNumber } from '@/utilis/data';
 import { trackWhatsAppClick } from '@/utilis/analytics';
+import { useStickyCta } from '@/components/ui/StickyCtaContext';
 
 export default function WhatsAppCTA({
   message = "Hi! I'm interested in booking a trip. Can you help me with the details?",
@@ -11,7 +12,12 @@ export default function WhatsAppCTA({
   variant = "primary", // primary, secondary, inline
   context = "blog"
 }) {
+  const { openQuote } = useStickyCta();
 
+  // "Get a quote" actions open the capture form (saved to the Sheet).
+  const handleQuoteClick = () => openQuote();
+
+  // Direct "Chat on WhatsApp" keeps WhatsApp access.
   const handleWhatsAppClick = () => {
     trackWhatsAppClick(`blog_${variant}`, message, context);
     const encodedMessage = encodeURIComponent(message);
@@ -32,7 +38,7 @@ export default function WhatsAppCTA({
             Get instant quotes, personalized itineraries, and expert travel advice on WhatsApp!
           </p>
           <button
-            onClick={handleWhatsAppClick}
+            onClick={handleQuoteClick}
             className="bg-white text-green-600 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-lg flex items-center gap-3 mx-auto hover:scale-105"
           >
             <MessageCircle className="w-6 h-6" />
@@ -61,7 +67,7 @@ export default function WhatsAppCTA({
             Chat with our travel experts on WhatsApp for personalized recommendations!
           </p>
           <button
-            onClick={handleWhatsAppClick}
+            onClick={handleQuoteClick}
             className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 w-full flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-5 h-5" />
@@ -80,7 +86,7 @@ export default function WhatsAppCTA({
     return (
       <div className="inline-flex items-center">
         <button
-          onClick={handleWhatsAppClick}
+          onClick={handleQuoteClick}
           className="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 inline-flex items-center gap-2 text-sm"
         >
           <MessageCircle className="w-4 h-4" />

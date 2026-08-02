@@ -1,8 +1,9 @@
 import { Metadata } from "next";
-import WeddingPageClient from "@/components/wedding/WeddingPageClient";
+import WeddingHubRedesign from "@/components/wedding/WeddingHubRedesign";
 import AEOHead from '@/components/seo/AEOHead';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Wedding Car Rental 2026 | BMW ₹15K, Audi ₹18K | Triveni',
@@ -12,7 +13,7 @@ export const metadata = {
     canonical: "https://www.trivenicabs.in/wedding"
   },
   openGraph: {
-    title: "💍 Your Dream Wedding Deserves a Royal Ride! Luxury Car Rental | Triveni Cabs",
+    title: "💍 Your Dream Wedding Deserves a Royal Ride! Luxury Car Rental",
     description: "Premium wedding cars (BMW, Audi, Mercedes) + Baraat tempo travellers. 500+ couples chose us. Professional chauffeurs, stunning decorations. Book now & save 15%!",
     type: "website",
     locale: "en_IN",
@@ -51,10 +52,12 @@ export default function WeddingPage() {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Wedding Car Rental Service",
-    "name": "Luxury Wedding Car Rental",
+    "name": "Luxury Wedding Car Rental by Triveni Cabs",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": "Premium wedding car rental with BMW, Audi, Mercedes & vintage cars for bride/groom entry. Baraat tempo travellers (12-26 seater), professional chauffeurs, stunning decorations included.",
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -82,13 +85,7 @@ export default function WeddingPage() {
       "highPrice": "50000",
       "offerCount": "5"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    ...getRatingAndReviews('wedding-hub', 'wedding'),
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Wedding Car Fleet",
@@ -275,7 +272,7 @@ export default function WeddingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <AEOHead pageType="wedding" data={{ url: '/wedding', title: 'Wedding Car Rental India' }} />
-      <WeddingPageClient faqs={faqs} />
+      <WeddingHubRedesign faqs={faqs} />
     </>
   );
 }

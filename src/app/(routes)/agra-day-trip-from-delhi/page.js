@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Calendar, Route, Coffee } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Agra Day Trip from Delhi | Complete Guide & Cost ₹4,500',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-day-trip-from-delhi',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Agra Day Trip from Delhi Guide' }],
+    images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Day Trip from Delhi Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Complete Agra day trip guide. Budget ₹5,500 per person. 3 itinerary options.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Agra/Taj_mahal.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

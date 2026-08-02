@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Delhi Shopping Guide 2026 | Chandni Chowk, Khan Market & More',
-  description: 'Delhi shopping guide. Chandni Chowk, Khan Market, Dilli Haat, Sarojini Nagar, Janpath. Designer to street fashion, wedding shopping, spices, electronics. Call 7668570551.',
+  description: 'Delhi shopping guide. Chandni Chowk, Khan Market, Dilli Haat, Sarojini Nagar, Janpath. Designer to street fashion, wedding shopping, spices, electronics.',
   keywords: 'delhi shopping guide, shopping in delhi, chandni chowk shopping, khan market delhi, dilli haat, sarojini nagar market, delhi wedding shopping, janpath market',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function DelhiShoppingGuidePage() {
     { question: "How do I get around Delhi&apos;s markets?", answer: "Delhi&apos;s markets are spread across the city. Metro covers most major markets (Chandni Chowk, CP, Khan Market, INA for Dilli Haat, Lajpat Nagar). However, carrying shopping bags on metro is inconvenient. A hired cab for the day is ideal -- park at each market, shop comfortably, and store bags in the car between markets." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function DelhiShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -151,11 +152,26 @@ export default function DelhiShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "delhi-shopping-guide",
+    headline: "Delhi Shopping Guide 2026 — Markets, Bargains & What to Buy",
+    description: "Complete Delhi shopping guide. Chandni Chowk, Sarojini Nagar, Khan Market, Janpath, Dilli Haat. Bargaining tips, what to buy, market timings.",
+    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("delhi", { idSlug: "delhi-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

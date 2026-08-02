@@ -2,11 +2,13 @@ import { notFound } from 'next/navigation';
 import { getVehicleHireRoute, getAllVehicleHireRoutes, getVehicleSpec } from '@/utilis/vehicleRouteHireData';
 import VehicleHireClient from '@/components/vehicle-hire/VehicleHireClient';
 import AEOHead from '@/components/seo/AEOHead';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 
 const VEHICLE_TYPE = 'dzire';
 const VEHICLE_SLUG = 'dzire-hire';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -31,12 +33,12 @@ export async function generateMetadata({ params }) {
     title,
     description,
     keywords: [
+      `${vehicleSpec.name.toLowerCase()} on rent ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()}`,
       `${vehicleSpec.name.toLowerCase()} hire ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()}`,
-      `${vehicleSpec.name.toLowerCase()} rental ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()}`,
       `${vehicleSpec.name.toLowerCase()} ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()} fare`,
+      `${vehicleSpec.name.toLowerCase()} taxi fare ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()}`,
       `${vehicleSpec.name.toLowerCase()} ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()} price`,
-      `${vehicleSpec.name.toLowerCase()} on rent ${routeData.origin.toLowerCase()}`,
-      `hire ${vehicleSpec.name.toLowerCase()} for ${routeData.destination.toLowerCase()}`,
+      `hire ${vehicleSpec.name.toLowerCase()} ${routeData.origin.toLowerCase()}`,
       `${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()} by ${vehicleSpec.name.toLowerCase()}`,
       `${vehicleSpec.name.toLowerCase()} booking ${routeData.origin.toLowerCase()}`,
       `${vehicleSpec.type.toLowerCase()} hire ${routeData.origin.toLowerCase()} to ${routeData.destination.toLowerCase()}`,
@@ -80,14 +82,21 @@ export default async function VehicleHirePage({ params }) {
     notFound();
   }
 
+  const pageUrl = `https://www.trivenicabs.in/${VEHICLE_SLUG}/${slug}`;
+  const ratingAndReviews = getRatingAndReviews(`${VEHICLE_TYPE}-${slug}`, 'city');
+  const imageUrl = vehicleSpec.image.startsWith('http') ? vehicleSpec.image : `https://www.trivenicabs.in${vehicleSpec.image}`;
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${pageUrl}#service`,
     "serviceType": `${vehicleSpec.name} Hire ${routeData.origin} to ${routeData.destination}`,
     "name": `${vehicleSpec.name} Hire: ${routeData.origin} to ${routeData.destination}`,
     "description": `Hire ${vehicleSpec.name} from ${routeData.origin} to ${routeData.destination}. ${routeData.distanceKm} km, ${routeData.duration}. All-inclusive fare Rs ${routeData.fare.toLocaleString('en-IN')}.`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -95,8 +104,27 @@ export default async function VehicleHirePage({ params }) {
       "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" }
     },
     "areaServed": [{ "@type": "City", "name": routeData.origin }, { "@type": "City", "name": routeData.destination }],
-    "offers": { "@type": "Offer", "price": routeData.fare.toString(), "priceCurrency": "INR", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "offers": { "@type": "Offer", "price": routeData.fare.toString(), "priceCurrency": "INR", "availability": "https://schema.org/InStock", "url": pageUrl },
+    ...ratingAndReviews
+  };
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${pageUrl}#product`,
+    "name": `${vehicleSpec.name} on Rent: ${routeData.origin} to ${routeData.destination}`,
+    "description": `${vehicleSpec.name} (${vehicleSpec.type}, ${vehicleSpec.seating} seater, AC) on rent from ${routeData.origin} to ${routeData.destination} — ${routeData.distanceKm} km at Rs ${vehicleSpec.perKm}/km, all-inclusive Rs ${routeData.fare.toLocaleString('en-IN')}.`,
+    "image": imageUrl,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "offers": {
+      "@type": "Offer",
+      "price": routeData.fare.toString(),
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": pageUrl,
+      "seller": { "@id": "https://www.trivenicabs.in/#organization" }
+    },
+    ...ratingAndReviews
   };
 
   const breadcrumbSchema = {
@@ -105,13 +133,14 @@ export default async function VehicleHirePage({ params }) {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
       { "@type": "ListItem", "position": 2, "name": `${vehicleSpec.name} Hire`, "item": `https://www.trivenicabs.in/${VEHICLE_SLUG}` },
-      { "@type": "ListItem", "position": 3, "name": `${routeData.origin} to ${routeData.destination}`, "item": `https://www.trivenicabs.in/${VEHICLE_SLUG}/${slug}` }
+      { "@type": "ListItem", "position": 3, "name": `${routeData.origin} to ${routeData.destination}`, "item": pageUrl }
     ]
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-faq-first']),
     "mainEntity": routeData.faqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,
@@ -119,11 +148,31 @@ export default async function VehicleHirePage({ params }) {
     }))
   };
 
+  const articleSchema = getArticleSchema({
+    slug: `${VEHICLE_SLUG}/${slug}`,
+    headline: `${vehicleSpec.name} on Rent ${routeData.origin} to ${routeData.destination}: Fare, Specs & Booking`,
+    description: `Complete guide to hiring a ${vehicleSpec.name} from ${routeData.origin} to ${routeData.destination} — all-inclusive fare Rs ${routeData.fare.toLocaleString('en-IN')}, ${routeData.distanceKm} km, ${routeData.duration}.`,
+    image: imageUrl,
+    dateModified: getTodayDate(),
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  const howToSchema = getHowToSchema({
+    name: `How to Book a ${vehicleSpec.name} for ${routeData.origin} to ${routeData.destination}`,
+    description: `Book a ${vehicleSpec.name} from ${routeData.origin} to ${routeData.destination} with Triveni Cabs in under 2 minutes.`,
+    totalTime: 'PT2M',
+    estimatedCost: { currency: 'INR', value: routeData.fare },
+    steps: routeData.bookingSteps
+  });
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <AEOHead pageType="route" data={{ url: `/${VEHICLE_SLUG}/${slug}`, title: `${vehicleSpec.name} Hire: ${routeData.origin} to ${routeData.destination}`, origin: routeData.origin, destination: routeData.destination, city: routeData.origin }} />
       <VehicleHireClient vehicleSpec={vehicleSpec} routeData={routeData} />
     </>

@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Shimla Travel Guide 2026 | Queen of Hills, Mall Road & Kufri',
-  description: 'Complete Shimla travel guide 2026. Mall Road, Jakhu Temple, Kufri, Christ Church, best time to visit, food, snow tips. Call 7668570551.',
+  title: 'Shimla Travel Guide 2026: Best Time, Cost & Top Sights',
+  description: 'Best time to visit Shimla: Apr-Jun for pleasant weather, Dec-Feb for snow. Plan 2-3 days, budget ₹4,000-8,000/day. Mall Road, Kufri, Jakhu, toy train + Delhi cab tips. Call 7668570551.',
   keywords: 'shimla travel guide, shimla tourist guide, queen of hills, shimla sightseeing, shimla tourism, things to do in shimla, shimla snow',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/shimla-travel-guide' },
-  openGraph: { title: 'Shimla Travel Guide 2026 | Queen of Hills', description: 'Everything about visiting Shimla. Mall Road, Jakhu, Kufri, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/shimla-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/shimla-hero.jpg', width: 1200, height: 630, alt: 'Shimla Travel Guide 2026' }] },
-  twitter: { card: 'summary_large_image', title: 'Shimla Travel Guide 2026', description: 'Complete Shimla guide. Hills, snow, food, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/shimla-hero.jpg'] },
+  openGraph: { title: 'Shimla Travel Guide 2026 | Queen of Hills', description: 'Everything about visiting Shimla. Mall Road, Jakhu, Kufri, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/shimla-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Shimla/shimla_hero_section.jpg', width: 1200, height: 630, alt: 'Shimla Travel Guide 2026' }] },
+  twitter: { card: 'summary_large_image', title: 'Shimla Travel Guide 2026', description: 'Complete Shimla guide. Hills, snow, food, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Shimla/shimla_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -35,10 +37,10 @@ export default function ShimlaTravelGuidePage() {
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
   const attractions = [
-    { name: "The Ridge & Mall Road", desc: "Shimla&apos;s iconic promenade -- a flat open space with panoramic mountain views. Mall Road is the main pedestrian shopping street. The heart of Shimla&apos;s social life.", entry: "Free", timing: "All day", duration: "2-3 hours", icon: Compass },
-    { name: "Christ Church", desc: "Second oldest church in North India, built in 1857. Neo-Gothic architecture with stunning stained glass windows. Located at The Ridge -- Shimla&apos;s most photographed landmark.", entry: "Free", timing: "8:00 AM - 6:00 PM", duration: "30 min", icon: Landmark },
-    { name: "Jakhu Temple", desc: "Ancient Hanuman temple at 2,455m -- highest point in Shimla. 108-foot Hanuman statue visible from everywhere. Steep 2 km trek or ropeway available. Beware of monkeys.", entry: "Free (Ropeway ₹500)", timing: "5:00 AM - 9:00 PM", duration: "1.5-2 hours", icon: Landmark },
-    { name: "Kufri", desc: "Popular hill station 16 km from Shimla at 2,622m. Horse riding, yak rides, skiing in winter, and Himalayan Nature Park. Best for snow during December-February.", entry: "₹50-200 (activities)", timing: "All day", duration: "3-4 hours", icon: Camera },
+    { name: "The Ridge & Mall Road", desc: "Shimla&apos;s iconic promenade -- a flat open space with panoramic mountain views. Mall Road is the main pedestrian shopping street. The heart of Shimla&apos;s social life.", entry: "Free", timing: "All day", duration: "2-3 hours", icon: Compass, img: "/images/sightseeing/Shimla/the ridge shimla.jpg" },
+    { name: "Christ Church", desc: "Second oldest church in North India, built in 1857. Neo-Gothic architecture with stunning stained glass windows. Located at The Ridge -- Shimla&apos;s most photographed landmark.", entry: "Free", timing: "8:00 AM - 6:00 PM", duration: "30 min", icon: Landmark, img: "/images/sightseeing/Shimla/christ church shimla.jpg" },
+    { name: "Jakhu Temple", desc: "Ancient Hanuman temple at 2,455m -- highest point in Shimla. 108-foot Hanuman statue visible from everywhere. Steep 2 km trek or ropeway available. Beware of monkeys.", entry: "Free (Ropeway ₹500)", timing: "5:00 AM - 9:00 PM", duration: "1.5-2 hours", icon: Landmark, img: "/images/sightseeing/Shimla/jakhoo_temple.jpg" },
+    { name: "Kufri", desc: "Popular hill station 16 km from Shimla at 2,622m. Horse riding, yak rides, skiing in winter, and Himalayan Nature Park. Best for snow during December-February.", entry: "₹50-200 (activities)", timing: "All day", duration: "3-4 hours", icon: Camera, img: "/images/sightseeing/Shimla/kurif_adventure_park.jpg" },
     { name: "Toy Train (Kalka-Shimla Railway)", desc: "UNESCO World Heritage railway -- 96 km narrow gauge track through 102 tunnels and 800+ bridges. One of the most scenic train journeys in the world.", entry: "₹300-800 (class dependent)", timing: "Multiple departures", duration: "5-6 hours", icon: Car },
     { name: "Viceregal Lodge", desc: "Former summer residence of British Viceroys, now Indian Institute of Advanced Study. Magnificent Scottish baronial architecture set in vast botanical gardens.", entry: "₹40 Indian / ₹200 Foreign", timing: "10:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Shield },
     { name: "Chadwick Falls", desc: "Stunning 67-metre waterfall surrounded by dense deodar forest. 7 km from Shimla. Best visited during and after monsoon when water flow is at its peak.", entry: "Free", timing: "All day", duration: "1 hour", icon: Sunrise },
@@ -99,6 +101,7 @@ export default function ShimlaTravelGuidePage() {
     { title: "Transport", icon: Car, count: "4 Options" },
   ];
 
+  const heroImage = "/images/sightseeing/Shimla/shimla_hero_section.jpg";
   const cityName = "Shimla";
   const cityTagline = "The Queen of Hills -- colonial charm, snow-capped peaks, the iconic Toy Train, and Himalayan beauty at 2,276 metres above sea level.";
   const welcomeTitle = "Welcome to the Queen of Hills";
@@ -126,6 +129,19 @@ export default function ShimlaTravelGuidePage() {
   const ctaTitle = "Need Help Planning Your Shimla Trip?";
   const ctaDesc = "Expert mountain drivers, customized itineraries, and Himachal travel advice -- all one call away.";
   const whatsappMsg = "I want to book a cab for Shimla trip";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "shimla-travel-guide",
+    headline: "Shimla Travel Guide 2026 — Attractions, Food, Tips & Itinerary",
+    description: "Complete Shimla travel guide. Best attractions, food, shopping, monthly weather, transport from major cities, day trips, photography, where to stay. Updated for 2026.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("shimla", { idSlug: "shimla-travel-guide" });
+
 
   return (
     <>
@@ -142,13 +158,16 @@ export default function ShimlaTravelGuidePage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-amber-50/30">
         <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
         {/* HERO */}
         <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/20 rounded-full blur-[120px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-600/15 rounded-full blur-[100px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -197,6 +216,23 @@ export default function ShimlaTravelGuidePage() {
           </div>
         </section>
 
+        {/* AEO QUICK ANSWER */}
+        <section className="px-4 pt-10">
+          <div className="max-w-4xl mx-auto">
+            <QuickAnswer
+              tone="light"
+              question="Planning a Shimla trip?"
+              answer="Shimla is best visited from April to June for pleasant 15-30 degree weather, or from December to February for snowfall in Kufri; the July-August monsoon brings landslides. Two to three days covers Mall Road, The Ridge, Christ Church, Jakhu Temple and Kufri, with the Kalka toy train as a scenic add-on. Delhi is 350 km away, about 7 to 8 hours by car via Chandigarh."
+              facts={[
+                { label: 'Best time', value: 'Apr-Jun, Dec-Feb' },
+                { label: 'Ideal duration', value: '2 to 3 days' },
+                { label: 'Top sight', value: 'Mall Road & The Ridge' },
+                { label: 'Cab from Delhi', value: '350 km · ₹11/km' },
+              ]}
+            />
+          </div>
+        </section>
+
         {/* TABLE OF CONTENTS */}
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto">
@@ -221,9 +257,9 @@ export default function ShimlaTravelGuidePage() {
         {/* WELCOME */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full" />
+            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full rounded-br-3xl" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
               <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2>
               <p className="text-lg text-stone-600 leading-relaxed text-center relative" dangerouslySetInnerHTML={{ __html: welcomeText }} />
@@ -284,9 +320,16 @@ export default function ShimlaTravelGuidePage() {
               {attractions.map((a, idx) => (
                 <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
-                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
+                    {a.img ? (
+                      <div className="md:w-56 relative shrink-0 overflow-hidden">
+                        <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    ) : (
+                      <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
+                        <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    )}
                     <div className="flex-1 p-6">
                       <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2">
                         <a.icon className="w-5 h-5 text-amber-600" /> {a.name}
@@ -301,6 +344,53 @@ export default function ShimlaTravelGuidePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
             </div>
           </div>
         </section>

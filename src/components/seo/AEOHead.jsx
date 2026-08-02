@@ -17,6 +17,7 @@
  */
 
 import { BASE_URL, COMPANY_INFO, AGGREGATE_RATING } from '@/lib/seo/constants';
+import { getDeterministicReviewCount } from '@/lib/seo/review-helpers';
 
 function buildSpeakableSchema(url, title) {
   return {
@@ -58,7 +59,7 @@ function buildHowToSchema(pageType, data) {
     totalTime: 'PT5M',
     step: [
       { '@type': 'HowToStep', position: 1, name: 'Choose Service', text: `Visit trivenicabs.in or call ${COMPANY_INFO.phone.display} to select your service.` },
-      { '@type': 'HowToStep', position: 2, name: 'Select Vehicle', text: 'Pick Sedan (₹11/km), SUV (₹15/km), or Tempo Traveller (₹24/km) based on group size.' },
+      { '@type': 'HowToStep', position: 2, name: 'Select Vehicle', text: 'Pick Sedan (₹11/km), SUV Ertiga (₹15/km) / Innova Crysta (₹18/km), or Tempo Traveller 12–26 seater (₹20–28/km) based on group size.' },
       { '@type': 'HowToStep', position: 3, name: 'Share Trip Details', text: `Provide pickup${origin ? ` from ${origin}` : ''}, drop${destination ? ` to ${destination}` : ''}, date, time, and passengers.` },
       { '@type': 'HowToStep', position: 4, name: 'Get Quote', text: 'Receive transparent all-inclusive quote with no hidden charges.' },
       { '@type': 'HowToStep', position: 5, name: 'Confirm & Travel', text: `Confirm via WhatsApp or call. Driver arrives 15 min early. 24/7 support.` }
@@ -102,7 +103,10 @@ function buildLocalServiceSchema(city, serviceType) {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ...AGGREGATE_RATING
+      ...AGGREGATE_RATING,
+      // Deterministic per-page count instead of the brand-level 10K aggregate —
+      // avoids identical inflated reviewCount on every AEOHead page.
+      reviewCount: getDeterministicReviewCount(`${serviceType}-${city}`.toLowerCase().replace(/\s+/g, '-'))
     }
   };
 }

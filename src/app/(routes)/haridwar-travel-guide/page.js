@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, Car, ArrowRight, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll, Waves } from '@/components/ui/icons';
 
-export const metadata = { title: 'Haridwar Travel Guide 2026 | Gateway to Gods, Ganga Aarti & Kumbh City', description: 'Complete Haridwar travel guide 2026. Gateway to Gods, Har Ki Pauri Ganga Aarti, Mansa Devi, Chandi Devi, Kumbh Mela city, Char Dham gateway. Book cab from Delhi 210 km. Call 7668570551.', keywords: 'haridwar travel guide, gateway to gods, ganga aarti haridwar, har ki pauri, kumbh mela haridwar, mansa devi temple, chandi devi temple, delhi to haridwar cab, char dham gateway, haridwar tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/haridwar-travel-guide' }, openGraph: { title: 'Haridwar Travel Guide 2026 | Gateway to Gods, Ganga Aarti & Kumbh City', description: 'Everything about visiting Haridwar. Ganga Aarti, temples, Kumbh Mela, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/haridwar-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/haridwar-hero.jpg', width: 1200, height: 630, alt: 'Haridwar Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Haridwar Travel Guide 2026 | Gateway to Gods & Kumbh City', description: 'Complete Haridwar guide. Ganga Aarti, temples, Kumbh, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/haridwar-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Haridwar Travel Guide 2026 | Ganga Aarti & Kumbh City', description: 'Haridwar guide — Har Ki Pauri Ganga Aarti, Mansa Devi, Chandi Devi, Kumbh Mela city. Cab from Delhi (210 km). Call 7668570551.', keywords: 'haridwar travel guide, gateway to gods, ganga aarti haridwar, har ki pauri, kumbh mela haridwar, mansa devi temple, chandi devi temple, delhi to haridwar cab, char dham gateway, haridwar tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/haridwar-travel-guide' }, openGraph: { title: 'Haridwar Travel Guide 2026 | Gateway to Gods, Ganga Aarti & Kumbh City', description: 'Everything about visiting Haridwar. Ganga Aarti, temples, Kumbh Mela, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/haridwar-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg', width: 1200, height: 630, alt: 'Haridwar Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Haridwar Travel Guide 2026 | Gateway to Gods & Kumbh City', description: 'Complete Haridwar guide. Ganga Aarti, temples, Kumbh, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Haridwar/Haridwar_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function HaridwarTravelGuidePage() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Haridwar Travel Guide", "item": "https://www.trivenicabs.in/haridwar-travel-guide" }] };
@@ -18,10 +20,10 @@ export default function HaridwarTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Har Ki Pauri", desc: "The most sacred ghat in Haridwar, believed to bear the actual footprint of Lord Vishnu. This is where the Ganga officially enters the plains from the Himalayas. The site of the grand Ganga Aarti every evening and the epicentre of Kumbh Mela celebrations when millions gather to take a holy dip. The ghat is beautifully lit at night and deeply atmospheric at dawn.", entry: "Free", timing: "All day; Ganga Aarti at sunset", duration: "1-2 hours", icon: Landmark },
-    { name: "Mansa Devi Temple", desc: "Revered hilltop temple dedicated to Goddess Mansa Devi (the wish-fulfilling deity), perched atop Bilwa Parvat hill. Reached by an aerial tramway (cable car, &#8377;275 round trip) or a scenic 3 km uphill trek. One of the Siddh Peethas, where devotees tie sacred threads to make wishes. Offers breathtaking panoramic views of Haridwar city and the Ganga.", entry: "Free (Cable car &#8377;275)", timing: "8:00 AM - 5:00 PM", duration: "1.5-2 hours", icon: Landmark },
-    { name: "Chandi Devi Temple", desc: "Ancient hilltop temple on Neel Parvat hill, dedicated to Goddess Chandi. Believed to be established by Adi Shankaracharya in the 8th century. Accessible via cable car from Gauchar (&#8377;315 round trip) or a 3 km forest trek. Together with Mansa Devi, completing both temples is considered the Panch Tirth yatra.", entry: "Free (Cable car &#8377;315)", timing: "8:00 AM - 5:00 PM", duration: "1.5-2 hours", icon: Shield },
-    { name: "Ganga Aarti (Evening Ceremony)", desc: "India&apos;s most spectacular evening fire ritual, performed daily at Har Ki Pauri ghat. Dozens of priests hold massive multi-tiered brass lamps and perform synchronized worship to the sacred Ganga. Thousands of floating diyas released by devotees create a river of light. The combined sound of conch shells, bells, and Vedic chanting is deeply transcendent.", entry: "Free", timing: "Sunset (5:30-7:00 PM seasonal)", duration: "45 min - 1 hour", icon: Sunrise },
+    { name: "Har Ki Pauri", desc: "The most sacred ghat in Haridwar, believed to bear the actual footprint of Lord Vishnu. This is where the Ganga officially enters the plains from the Himalayas. The site of the grand Ganga Aarti every evening and the epicentre of Kumbh Mela celebrations when millions gather to take a holy dip. The ghat is beautifully lit at night and deeply atmospheric at dawn.", entry: "Free", timing: "All day; Ganga Aarti at sunset", duration: "1-2 hours", icon: Landmark, img: "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg" },
+    { name: "Mansa Devi Temple", desc: "Revered hilltop temple dedicated to Goddess Mansa Devi (the wish-fulfilling deity), perched atop Bilwa Parvat hill. Reached by an aerial tramway (cable car, &#8377;275 round trip) or a scenic 3 km uphill trek. One of the Siddh Peethas, where devotees tie sacred threads to make wishes. Offers breathtaking panoramic views of Haridwar city and the Ganga.", entry: "Free (Cable car &#8377;275)", timing: "8:00 AM - 5:00 PM", duration: "1.5-2 hours", icon: Landmark, img: "/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg" },
+    { name: "Chandi Devi Temple", desc: "Ancient hilltop temple on Neel Parvat hill, dedicated to Goddess Chandi. Believed to be established by Adi Shankaracharya in the 8th century. Accessible via cable car from Gauchar (&#8377;315 round trip) or a 3 km forest trek. Together with Mansa Devi, completing both temples is considered the Panch Tirth yatra.", entry: "Free (Cable car &#8377;315)", timing: "8:00 AM - 5:00 PM", duration: "1.5-2 hours", icon: Shield, img: "/images/sightseeing/Haridwar/Chandi_Devi_Temple.jpg" },
+    { name: "Ganga Aarti (Evening Ceremony)", desc: "India&apos;s most spectacular evening fire ritual, performed daily at Har Ki Pauri ghat. Dozens of priests hold massive multi-tiered brass lamps and perform synchronized worship to the sacred Ganga. Thousands of floating diyas released by devotees create a river of light. The combined sound of conch shells, bells, and Vedic chanting is deeply transcendent.", entry: "Free", timing: "Sunset (5:30-7:00 PM seasonal)", duration: "45 min - 1 hour", icon: Sunrise, img: "/images/sightseeing/Haridwar/Ganga_Aarti.jpg" },
     { name: "Shantikunj (Gayatri Pariwar)", desc: "The sprawling headquarters of the All World Gayatri Pariwar, one of India&apos;s largest spiritual organisations. Features beautiful gardens, a museum of ancient Indian science (Yug Nirman Yojana), meditation halls, and educational exhibits on Vedic culture. A centre of peace and learning, open to visitors of all faiths.", entry: "Free", timing: "6:00 AM - 8:00 PM", duration: "1-2 hours", icon: BookOpen },
     { name: "Daksha Mahadev Temple", desc: "One of Haridwar&apos;s most ancient temples, standing at the site where the legendary King Daksha performed a grand yajna (fire sacrifice). The temple houses a magnificent Shiva lingam and is surrounded by peaceful gardens. Located in Kankhal, 4 km south of Har Ki Pauri, in one of Haridwar&apos;s oldest neighbourhoods.", entry: "Free", timing: "5:00 AM - 9:00 PM", duration: "30-45 min", icon: Landmark },
     { name: "Bilkeshwar Mahadev Temple", desc: "A serene Shiva temple situated atop a small hillock near the Ganga, offering beautiful river views. Less visited by tourists and therefore more peaceful. The temple is believed to be the spot where Lord Shiva consoled a grieving Vishnu. A hidden gem for those seeking a quieter spiritual experience in Haridwar.", entry: "Free", timing: "6:00 AM - 8:00 PM", duration: "30-45 min", icon: Landmark },
@@ -63,6 +65,19 @@ export default function HaridwarTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: MapPin, title: "Pilgrimage Experts", desc: "Char Dham gateway" }, { icon: Waves, title: "Gateway to Gods", desc: "One of 7 holy cities" }, { icon: Users, title: "7000+ Pilgrims Served", desc: "Uttarakhand specialists" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "8 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "haridwar-travel-guide",
+    headline: "Haridwar Travel Guide",
+    description: "Haridwar Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  const heroImage = "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg";
+  const cityName = "Haridwar";
+  const whatsappMsg = "I want to book a cab for Haridwar trip";
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -78,12 +93,14 @@ export default function HaridwarTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+        <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -119,6 +136,23 @@ export default function HaridwarTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Haridwar trip?"
+            answer="Haridwar is best visited from October to March, when the weather is a pleasant 15-30 degrees Celsius. One to two days covers Har Ki Pauri for a morning dip and the grand evening Ganga Aarti, Mansa Devi by cable car and Chandi Devi Temple; most visitors add Rishikesh, just 25 km away. Delhi is 210 km away, about 5 hours by car on NH58."
+            facts={[
+              { label: 'Best time', value: 'Oct to Mar' },
+              { label: 'Ideal duration', value: '1 to 2 days' },
+              { label: 'Top sight', value: 'Har Ki Pauri' },
+              { label: 'Cab from Delhi', value: '210 km · ₹11/km' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -140,9 +174,9 @@ export default function HaridwarTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to the Gateway to Gods</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Haridwar, meaning &quot;Gateway to God,&quot; is one of India&apos;s seven holiest cities (Sapta Puri) and the sacred point where the Ganga leaves the Himalayan foothills to enter the vast Indo-Gangetic plains. This ancient city has been a centre of pilgrimage, learning, and devotion for thousands of years, finding mention in the Puranas and the Mahabharata. Har Ki Pauri, where Lord Vishnu is believed to have left his divine footprint, is the epicentre of Haridwar&apos;s spiritual energy. Every evening, thousands gather at this ghat for the mesmerizing Ganga Aarti -- one of India&apos;s most spectacular spiritual ceremonies, where the night comes alive with fire, chanting, and a river of floating diyas. The city hosts the Kumbh Mela every 12 years, the world&apos;s largest human gathering, when tens of millions of pilgrims converge to bathe in the sacred waters. Beyond its profound spiritual significance, Haridwar serves as the gateway to the Char Dham pilgrimage (Kedarnath, Badrinath, Gangotri, Yamunotri) and offers access to the magnificent Rajaji National Park. The city is also home to Patanjali Yogpeeth and Shantikunj, making it a centre for Ayurveda and yoga. Whether you are a pilgrim seeking blessings, a tourist drawn by the cultural spectacle of the Aarti, or a traveller heading deeper into the mountains of Uttarakhand, Haridwar is an essential and deeply moving stop on any Indian journey.</p>
@@ -189,9 +223,16 @@ export default function HaridwarTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -204,6 +245,53 @@ export default function HaridwarTravelGuidePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOK / SELL */}
+      <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+              <Car className="w-4 h-4 text-amber-300" />
+              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+            <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+              { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+              { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+            ].map((v, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                <div className="h-44 overflow-hidden relative">
+                  <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                    <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                  </div>
+                  <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                  <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                    Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+              <Phone className="w-5 h-5" /> Call Now: 7668570551
+            </Link>
+            <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+              Get a Free Quote
+            </Link>
           </div>
         </div>
       </section>

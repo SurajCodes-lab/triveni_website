@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
-export const metadata = { title: 'Jaisalmer Travel Guide 2026 | Golden City, Desert Safari & Living Fort', description: 'Complete Jaisalmer travel guide 2026. Golden Fort, Sam Sand Dunes, Patwon Ki Haveli, desert safari, Kuldhara ghost village. Book cab 7668570551.', keywords: 'jaisalmer travel guide, golden city jaisalmer, jaisalmer fort, sam sand dunes, desert safari rajasthan, kuldhara ghost village, jaisalmer tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/jaisalmer-travel-guide' }, openGraph: { title: 'Jaisalmer Travel Guide 2026 | Golden City & Desert Safari', description: 'Everything about visiting Jaisalmer. Golden Fort, Sam Sand Dunes, desert cuisine, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/jaisalmer-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/jaisalmer-hero.jpg', width: 1200, height: 630, alt: 'Jaisalmer Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Jaisalmer Travel Guide 2026', description: 'Complete Jaisalmer guide. Golden Fort, desert safari, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/jaisalmer-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Jaisalmer Travel Guide 2026 | Golden City & Desert Safari', description: 'Complete Jaisalmer travel guide 2026. Golden Fort, Sam Sand Dunes, Patwon Ki Haveli, desert safari, Kuldhara ghost village. Book cab 7668570551.', keywords: 'jaisalmer travel guide, golden city jaisalmer, jaisalmer fort, sam sand dunes, desert safari rajasthan, kuldhara ghost village, jaisalmer tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/jaisalmer-travel-guide' }, openGraph: { title: 'Jaisalmer Travel Guide 2026 | Golden City & Desert Safari', description: 'Everything about visiting Jaisalmer. Golden Fort, Sam Sand Dunes, desert cuisine, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/jaisalmer-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg', width: 1200, height: 630, alt: 'Jaisalmer Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Jaisalmer Travel Guide 2026', description: 'Complete Jaisalmer guide. Golden Fort, desert safari, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function JaisalmerTravelGuidePage() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Jaisalmer Travel Guide", "item": "https://www.trivenicabs.in/jaisalmer-travel-guide" }] };
@@ -18,12 +20,12 @@ export default function JaisalmerTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Jaisalmer Fort (Sonar Quila)", desc: "One of the world&apos;s few living forts, built in 1156 AD by Rawal Jaisal. Made of golden-yellow sandstone that glows at sunset. Home to 3,000 residents, Jain temples, havelis, shops, and restaurants within its massive walls.", entry: "&#8377;50 Indian / &#8377;250 Foreign", timing: "9:00 AM - 6:00 PM", duration: "2-3 hours", icon: Landmark },
-    { name: "Patwon Ki Haveli", desc: "The largest and most elaborate haveli in Jaisalmer. A cluster of five havelis built between 1805-1862 by wealthy Jain merchants. Intricate sandstone carvings, jharokhas (balconies), and mirror work that showcase Rajasthani craftsmanship at its finest.", entry: "&#8377;100 Indian / &#8377;250 Foreign", timing: "9:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: Camera },
-    { name: "Sam Sand Dunes", desc: "The iconic Thar Desert dunes 42 km from Jaisalmer. Camel safaris, jeep rides, quad biking, and cultural evenings with Rajasthani folk music and dance. Overnight desert camps from budget tents to luxury glamping.", entry: "Free (activities extra)", timing: "Best at sunset/sunrise", duration: "Half day to overnight", icon: Sunrise },
-    { name: "Desert National Park", desc: "3,162 sq km sanctuary preserving the Thar Desert ecosystem. Home to the critically endangered Great Indian Bustard, desert fox, chinkara, and fossilised trees 180 million years old. A unique wildlife experience.", entry: "&#8377;100 Indian / &#8377;500 Foreign", timing: "Sunrise to Sunset", duration: "3-4 hours", icon: Compass },
+    { name: "Jaisalmer Fort (Sonar Quila)", desc: "One of the world&apos;s few living forts, built in 1156 AD by Rawal Jaisal. Made of golden-yellow sandstone that glows at sunset. Home to 3,000 residents, Jain temples, havelis, shops, and restaurants within its massive walls.", entry: "&#8377;50 Indian / &#8377;250 Foreign", timing: "9:00 AM - 6:00 PM", duration: "2-3 hours", icon: Landmark, img: "/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg" },
+    { name: "Patwon Ki Haveli", desc: "The largest and most elaborate haveli in Jaisalmer. A cluster of five havelis built between 1805-1862 by wealthy Jain merchants. Intricate sandstone carvings, jharokhas (balconies), and mirror work that showcase Rajasthani craftsmanship at its finest.", entry: "&#8377;100 Indian / &#8377;250 Foreign", timing: "9:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: Camera, img: "/images/sightseeing/Jaisalmer/Patwon_Ki_Haveli.jpg" },
+    { name: "Sam Sand Dunes", desc: "The iconic Thar Desert dunes 42 km from Jaisalmer. Camel safaris, jeep rides, quad biking, and cultural evenings with Rajasthani folk music and dance. Overnight desert camps from budget tents to luxury glamping.", entry: "Free (activities extra)", timing: "Best at sunset/sunrise", duration: "Half day to overnight", icon: Sunrise, img: "/images/sightseeing/Jaisalmer/Sam_Sand_Dunes.jpg" },
+    { name: "Desert National Park", desc: "3,162 sq km sanctuary preserving the Thar Desert ecosystem. Home to the critically endangered Great Indian Bustard, desert fox, chinkara, and fossilised trees 180 million years old. A unique wildlife experience.", entry: "&#8377;100 Indian / &#8377;500 Foreign", timing: "Sunrise to Sunset", duration: "3-4 hours", icon: Compass, img: "/images/sightseeing/Jaisalmer/Desert_Safari.jpg" },
     { name: "Kuldhara (Ghost Village)", desc: "Abandoned village deserted overnight in 1825 by Paliwal Brahmins fleeing a tyrannical minister. 170+ houses stand eerily intact. Considered haunted by locals. A fascinating and atmospheric historical site.", entry: "&#8377;25 Indian / &#8377;100 Foreign", timing: "8:00 AM - 6:00 PM", duration: "1-1.5 hours", icon: Shield },
-    { name: "Gadsisar Lake", desc: "Artificial lake built by Maharawal Gadsi Singh in 1367 as the city&apos;s main water source. Surrounded by temples, ghats, and shrines. The ornate Tilon Ki Pol gateway is a masterpiece. Boating available in winter months.", entry: "Free (boating extra)", timing: "Open all day", duration: "1-1.5 hours", icon: Landmark },
+    { name: "Gadsisar Lake", desc: "Artificial lake built by Maharawal Gadsi Singh in 1367 as the city&apos;s main water source. Surrounded by temples, ghats, and shrines. The ornate Tilon Ki Pol gateway is a masterpiece. Boating available in winter months.", entry: "Free (boating extra)", timing: "Open all day", duration: "1-1.5 hours", icon: Landmark, img: "/images/sightseeing/Jaisalmer/Gadisar_Lake.jpg" },
     { name: "Nathmal Ki Haveli", desc: "19th-century Prime Minister&apos;s residence built by two Muslim architect brothers simultaneously. Each half has unique carvings yet harmonizes perfectly. Elephants carved from single stones guard the entrance.", entry: "&#8377;30", timing: "8:00 AM - 6:00 PM", duration: "30-45 min", icon: Camera },
     { name: "Bada Bagh", desc: "Royal cenotaphs (chhatris) of Jaisalmer&apos;s rulers set against barren desert hills. Beautifully carved sandstone memorials dating from the 16th century. Stunning at sunrise and sunset for photography.", entry: "&#8377;50 Indian / &#8377;100 Foreign", timing: "8:00 AM - 6:00 PM", duration: "45 min - 1 hour", icon: Landmark },
   ];
@@ -63,6 +65,19 @@ export default function JaisalmerTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: MapPin, title: "Rajasthan Specialists", desc: "Desert route experts" }, { icon: Landmark, title: "Golden City", desc: "Thar Desert gateway" }, { icon: Users, title: "4000+ Travellers Served", desc: "Rajasthan tour experts" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "8 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "jaisalmer-travel-guide",
+    headline: "Jaisalmer Travel Guide",
+    description: "Jaisalmer Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  const heroImage = "/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg";
+  const cityName = "Jaisalmer";
+  const whatsappMsg = "I want to book a cab for Jaisalmer trip";
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -78,12 +93,14 @@ export default function JaisalmerTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+        <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -119,6 +136,23 @@ export default function JaisalmerTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Jaisalmer trip?"
+            answer="Jaisalmer is best visited from October to March, with November to February ideal at 10-25 degrees for desert exploration. Three days covers Jaisalmer Fort, Patwon Ki Haveli and Gadsisar Lake, a Sam Sand Dunes safari with an overnight camp, then Kuldhara, Bada Bagh and the Desert National Park. Delhi is 780 km away, about 12 hours by road on NH15, and Jodhpur is 285 km."
+            facts={[
+              { label: 'Best time', value: 'Oct to Mar' },
+              { label: 'Ideal duration', value: '3 days' },
+              { label: 'Top sight', value: 'Jaisalmer Fort' },
+              { label: 'Cab from Delhi', value: '780 km · ₹11/km' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -140,9 +174,9 @@ export default function JaisalmerTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to the Golden City</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Jaisalmer, the Golden City of India, rises from the vast Thar Desert like a magnificent sandcastle frozen in time. Founded in 1156 AD by Rawal Jaisal, a Bhati Rajput king, this frontier city was once a vital halt on the ancient Silk Road connecting India to Central Asia and beyond. The magnificent Jaisalmer Fort -- Sonar Quila, the Golden Fort -- is one of the very few living forts in the world, still home to nearly 3,000 residents who live, work, and worship within its honey-coloured sandstone walls. The city&apos;s elaborate havelis, built by wealthy Jain merchants, showcase some of the finest stone carving in all of Rajasthan, with facades so intricate they resemble lacework. Beyond the city walls lies the vast Thar Desert, where Sam Sand Dunes offer camel safaris under star-filled skies, the abandoned ghost village of Kuldhara holds centuries-old mysteries, and the Desert National Park protects the endangered Great Indian Bustard. Jaisalmer is Rajasthan at its most romantic and remote -- a place where golden sunsets paint the desert in shades of fire and ancient legends come alive.</p>
@@ -189,9 +223,16 @@ export default function JaisalmerTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -204,6 +245,53 @@ export default function JaisalmerTravelGuidePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOK / SELL */}
+      <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+              <Car className="w-4 h-4 text-amber-300" />
+              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+            <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+              { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+              { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+            ].map((v, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                <div className="h-44 overflow-hidden relative">
+                  <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                    <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                  </div>
+                  <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                  <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                    Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+              <Phone className="w-5 h-5" /> Call Now: 7668570551
+            </Link>
+            <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+              Get a Free Quote
+            </Link>
           </div>
         </div>
       </section>

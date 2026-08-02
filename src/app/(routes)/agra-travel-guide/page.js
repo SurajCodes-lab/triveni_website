@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Agra Travel Guide 2026 | Attractions, Food, Tips',
@@ -19,7 +21,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-travel-guide',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Agra Travel Guide 2026' }],
+    images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Travel Guide 2026' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +29,7 @@ export const metadata = {
     description: 'Complete Agra guide. Attractions, food, shopping, transport.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Agra/Taj_mahal.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +55,7 @@ export default function AgraTravelGuidePage() {
     { question: "Which language is spoken in Agra?", answer: "Hindi is the primary language. English is widely understood in tourist areas, hotels, and restaurants. Our drivers speak basic English and can translate at local shops and eateries if needed." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,14 +63,14 @@ export default function AgraTravelGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const attractions = [
-    { name: "Taj Mahal", desc: "UNESCO World Heritage Site. One of the Seven Wonders. Built by Shah Jahan for Mumtaz Mahal. White marble masterpiece.", entry: "₹50 Indian / ₹1,100 Foreign", timing: "Sunrise to Sunset (Closed Fridays)", duration: "2-3 hours", icon: Landmark },
-    { name: "Agra Fort", desc: "Massive red sandstone fort, another UNESCO site. Home to Diwan-i-Am, Diwan-i-Khas, Sheesh Mahal, and Musamman Burj.", entry: "₹50 Indian / ₹650 Foreign", timing: "Sunrise to Sunset", duration: "1.5-2 hours", icon: Shield },
-    { name: "Fatehpur Sikri", desc: "Abandoned Mughal capital, 37 km from Agra. Built by Akbar. Buland Darwaza (world&apos;s highest gateway), Panch Mahal, Jama Masjid.", entry: "₹50 Indian / ₹610 Foreign", timing: "Sunrise to Sunset", duration: "2-3 hours", icon: Compass },
-    { name: "Itimad-ud-Daulah (Baby Taj)", desc: "Exquisite marble tomb that inspired the Taj Mahal. Famous for intricate pietra dura (marble inlay) work.", entry: "₹30 Indian / ₹310 Foreign", timing: "Sunrise to Sunset", duration: "45 min", icon: Camera },
-    { name: "Mehtab Bagh", desc: "Moonlight Garden across the Yamuna from Taj Mahal. Best sunset views of the Taj. Perfect for photography.", entry: "₹30 Indian / ₹300 Foreign", timing: "Sunrise to Sunset", duration: "45 min - 1 hr", icon: Sunrise },
+    { name: "Taj Mahal", desc: "UNESCO World Heritage Site. One of the Seven Wonders. Built by Shah Jahan for Mumtaz Mahal. White marble masterpiece.", entry: "₹50 Indian / ₹1,100 Foreign", timing: "Sunrise to Sunset (Closed Fridays)", duration: "2-3 hours", icon: Landmark, img: "/images/sightseeing/Agra/Taj_mahal.jpg" },
+    { name: "Agra Fort", desc: "Massive red sandstone fort, another UNESCO site. Home to Diwan-i-Am, Diwan-i-Khas, Sheesh Mahal, and Musamman Burj.", entry: "₹50 Indian / ₹650 Foreign", timing: "Sunrise to Sunset", duration: "1.5-2 hours", icon: Shield, img: "/images/sightseeing/Agra/agra_fort.jpg" },
+    { name: "Fatehpur Sikri", desc: "Abandoned Mughal capital, 37 km from Agra. Built by Akbar. Buland Darwaza (world&apos;s highest gateway), Panch Mahal, Jama Masjid.", entry: "₹50 Indian / ₹610 Foreign", timing: "Sunrise to Sunset", duration: "2-3 hours", icon: Compass, img: "/images/sightseeing/Agra/Fathepur_shikiri.jpg" },
+    { name: "Itimad-ud-Daulah (Baby Taj)", desc: "Exquisite marble tomb that inspired the Taj Mahal. Famous for intricate pietra dura (marble inlay) work.", entry: "₹30 Indian / ₹310 Foreign", timing: "Sunrise to Sunset", duration: "45 min", icon: Camera, img: "/images/sightseeing/Agra/Baby_Taj.jpg" },
+    { name: "Mehtab Bagh", desc: "Moonlight Garden across the Yamuna from Taj Mahal. Best sunset views of the Taj. Perfect for photography.", entry: "₹30 Indian / ₹300 Foreign", timing: "Sunrise to Sunset", duration: "45 min - 1 hr", icon: Sunrise, img: "/images/sightseeing/Agra/Mehtab_Bagh.jpg" },
     { name: "Sikandra (Akbar&apos;s Tomb)", desc: "Tomb of Emperor Akbar. Unique blend of Hindu, Islamic, Buddhist, and Jain architecture. Peaceful deer park.", entry: "₹35 Indian / ₹310 Foreign", timing: "Sunrise to Sunset", duration: "1 hour", icon: BookOpen },
   ];
 
@@ -126,6 +128,7 @@ export default function AgraTravelGuidePage() {
     { title: "Transport", icon: Car, count: "4 Options" },
   ];
 
+  const heroImage = "/images/sightseeing/Agra/Taj_mahal.jpg";
   const cityName = "Agra";
   const cityTagline = "Everything you need to know about visiting Agra -- attractions, food, shopping, best time to visit, and local secrets. Written by people who call Agra home.";
   const welcomeTitle = "Welcome to Agra";
@@ -157,6 +160,19 @@ export default function AgraTravelGuidePage() {
   const ctaTitle = "Need Help Planning Your Agra Trip?";
   const ctaDesc = "We are Agra locals. Call us for personalized advice on itinerary, timing, and transport.";
   const whatsappMsg = "I need help planning my Agra trip";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "agra-travel-guide",
+    headline: "Agra Travel Guide 2026 — Taj Mahal, Fort, Food & Tips",
+    description: "Complete Agra travel guide. Taj Mahal sunrise, Agra Fort, Fatehpur Sikri, Mehtab Bagh, food, shopping, where to stay, photography spots, monthly weather.",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("agra", { idSlug: "agra-travel-guide" });
+
 
   return (
     <>
@@ -173,6 +189,8 @@ export default function AgraTravelGuidePage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-amber-50/30">
         {/* Subtle pattern overlay */}
@@ -180,7 +198,8 @@ export default function AgraTravelGuidePage() {
 
         {/* HERO - Animated Gradient with Floating Particles */}
         <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           {/* Floating glow orbs */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/20 rounded-full blur-[120px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-600/15 rounded-full blur-[100px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
@@ -232,6 +251,23 @@ export default function AgraTravelGuidePage() {
           </div>
         </section>
 
+        {/* AEO QUICK ANSWER */}
+        <section className="px-4 pt-10">
+          <div className="max-w-4xl mx-auto">
+            <QuickAnswer
+              tone="light"
+              question="Planning a Agra trip?"
+              answer="Agra is best visited between October and March; April to June is very hot at 40-45 degrees Celsius. One day covers the Taj Mahal, Agra Fort and the Baby Taj, while two days let you add Fatehpur Sikri, a Mehtab Bagh sunset and Agra's street food. From Delhi it works as an easy day trip by car, at roughly 4,500 rupees round trip."
+              facts={[
+                { label: 'Best time', value: 'Oct to Mar' },
+                { label: 'Ideal duration', value: '1 to 2 days' },
+                { label: 'Top sight', value: 'Taj Mahal' },
+                { label: 'Cab from Delhi', value: '₹4,500 round trip' },
+              ]}
+            />
+          </div>
+        </section>
+
         {/* TABLE OF CONTENTS - Glass cards with hover-lift */}
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto">
@@ -256,9 +292,9 @@ export default function AgraTravelGuidePage() {
         {/* WELCOME - Glass card with gradient corners and stats */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full" />
+            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full rounded-br-3xl" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
               <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2>
               <p className="text-lg text-stone-600 leading-relaxed text-center relative" dangerouslySetInnerHTML={{ __html: welcomeText }} />
@@ -319,9 +355,16 @@ export default function AgraTravelGuidePage() {
               {attractions.map((a, idx) => (
                 <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
-                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
+                    {a.img ? (
+                      <div className="md:w-56 relative shrink-0 overflow-hidden">
+                        <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    ) : (
+                      <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
+                        <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    )}
                     <div className="flex-1 p-6">
                       <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2">
                         <a.icon className="w-5 h-5 text-amber-600" /> {a.name}
@@ -336,6 +379,53 @@ export default function AgraTravelGuidePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
             </div>
           </div>
         </section>

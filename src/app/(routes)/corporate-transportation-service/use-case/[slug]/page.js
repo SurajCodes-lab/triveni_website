@@ -6,9 +6,11 @@ import {
   getUseCaseBySlug,
   getAllUseCaseSlugs
 } from '@/utilis/corporateUseCaseData';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getArticleSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 // Centralized icon imports for better bundle optimization
 import {
@@ -105,10 +107,12 @@ export default async function UseCasePage({ params }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": useCase.name,
-    "name": useCase.title,
+    "name": `${useCase.title} | Triveni Cabs`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": useCase.description,
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -120,8 +124,22 @@ export default async function UseCasePage({ params }) {
       { "@type": "City", "name": "Chandigarh" },
       { "@type": "City", "name": "Agra" },
       { "@type": "City", "name": "Dehradun" }
-    ]
+    ],
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
+    ...getRatingAndReviews(slug, 'corporate')
   };
+
+  // Article schema for E-E-A-T + freshness + voice search (was missing).
+  const articleSchema = getArticleSchema({
+    slug: `corporate-transportation-service/use-case/${slug}`,
+    headline: useCase.title,
+    description: useCase.metaDescription || useCase.description,
+    image: useCase.heroImage,
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -149,6 +167,7 @@ export default async function UseCasePage({ params }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
       <AEOHead pageType="corporate" data={{ url: `/corporate-transportation-service/use-case/${slug}`, title: useCase.name || '' }} />
@@ -217,14 +236,14 @@ export default async function UseCasePage({ params }) {
                   </div>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
                   {useCase.title.split(' ').slice(0, 2).join(' ')}
                   <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
                     {useCase.title.split(' ').slice(2).join(' ') || 'Service'}
                   </span>
                 </h1>
 
-                <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                <p className="speakable-lead text-xl text-slate-300 max-w-lg leading-relaxed">
                   {useCase.description}
                 </p>
 
@@ -825,7 +844,7 @@ export default async function UseCasePage({ params }) {
                       <h3 className="text-lg font-bold text-slate-800 mb-4 leading-tight group-hover:text-indigo-700 transition-colors">
                         {faq.question}
                       </h3>
-                      <p className="text-slate-500 leading-relaxed">
+                      <p className={`text-slate-500 leading-relaxed ${idx === 0 ? 'speakable-faq-first' : ''}`}>
                         {faq.answer}
                       </p>
                     </div>

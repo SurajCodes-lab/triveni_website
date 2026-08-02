@@ -7,8 +7,8 @@ export const corporateIndustries = {
     slug: 'it-companies',
     name: 'IT Companies',
     title: 'Corporate Cab Service for IT Companies',
-    metaTitle: 'Corporate Cab Service for IT Companies | Tech Park Transport | Triveni Cabs',
-    metaDescription: 'Specialized corporate transportation for IT companies. Tech park shuttles, shift-based transport, employee pickup-drop. Serving Gurgaon, Noida, Jaipur IT hubs. Call 7668570551.',
+    metaTitle: 'Corporate Cab Service for IT Companies | Tech Park Transport',
+    metaDescription: 'Specialized corporate transportation for IT companies. Tech park shuttles, shift-based transport, employee pickup-drop. Serving Gurgaon, Noida, Jaipur IT hubs.',
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     icon: '💻',
     color: 'from-blue-500 to-cyan-500',
@@ -59,7 +59,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Individual executives, leads', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Small teams, managers', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large team shuttles', price: '₹55-85/km' }
     ],
 
@@ -96,7 +96,7 @@ export const corporateIndustries = {
     slug: 'bpo-call-centers',
     name: 'BPO & Call Centers',
     title: 'Corporate Cab Service for BPO & Call Centers',
-    metaTitle: 'BPO Cab Service | Call Center Transport | Night Shift Cabs | Triveni Cabs',
+    metaTitle: 'BPO Cab Service | Call Center Transport | Night Shift Cabs',
     metaDescription: '24/7 corporate transport for BPO and call centers. Night shift cabs, women safety protocols, rotational shift coverage. Gurgaon, Noida, Jaipur. Call 7668570551.',
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     icon: '🎧',
@@ -157,7 +157,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Team leads, individual drops', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Small groups, managers', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large shift batches', price: '₹55-85/km' }
     ],
 
@@ -240,7 +240,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, QA executives', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Plant heads, senior staff', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Worker transport', price: '₹55-85/km' }
     ],
 
@@ -271,7 +271,7 @@ export const corporateIndustries = {
     slug: 'manufacturing',
     name: 'Manufacturing & Industrial',
     title: 'Corporate Transport for Manufacturing Industries',
-    metaTitle: 'Factory Employee Transport | Manufacturing Plant Cab Service | Triveni Cabs',
+    metaTitle: 'Factory Employee Transport | Manufacturing Plant Cab Service',
     metaDescription: 'Workforce transport for manufacturing industries. Factory employee pickup-drop, 3-shift coverage, large workforce handling. Call 7668570551.',
     heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
     icon: '🏭',
@@ -323,7 +323,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Plant managers, executives', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, supervisors', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff, operators', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff, operators', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Workers, large teams', price: '₹55-85/km' }
     ],
 
@@ -354,7 +354,7 @@ export const corporateIndustries = {
     slug: 'banks-financial',
     name: 'Banks & Financial Services',
     title: 'Corporate Transport for Banks & Financial Institutions',
-    metaTitle: 'Bank Employee Transport | BFSI Corporate Cab | Executive Car Service | Triveni Cabs',
+    metaTitle: 'Bank Employee Transport | BFSI Corporate Cab',
     metaDescription: 'Premium corporate transport for banks and financial services. Executive car rental, branch visit transport, professional chauffeurs. Call 7668570551.',
     heroImage: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
     icon: '🏦',
@@ -416,7 +416,7 @@ export const corporateIndustries = {
       { type: 'Premium Sedan', capacity: '4 pax', useCase: 'Executives, branch heads', price: '₹18-25/km' },
       { type: 'Luxury Sedan', capacity: '4 pax', useCase: 'CXOs, senior management', price: 'On Request' },
       { type: 'Premium SUV', capacity: '6-7 pax', useCase: 'Team visits, client meetings', price: '₹20-28/km' },
-      { type: 'Tempo Traveller', capacity: '12-17 pax', useCase: 'Branch team outings', price: '₹23-27/km' }
+      { type: 'Tempo Traveller', capacity: '12-17 pax', useCase: 'Branch team outings', price: '₹20-24/km' }
     ],
 
     faqs: [
@@ -446,7 +446,7 @@ export const corporateIndustries = {
     slug: 'hospitals-healthcare',
     name: 'Hospitals & Healthcare',
     title: 'Corporate Transport for Hospitals & Healthcare',
-    metaTitle: 'Hospital Staff Transport | Healthcare Employee Cab Service | Triveni Cabs',
+    metaTitle: 'Hospital Staff Transport | Healthcare Employee Cab Service',
     metaDescription: 'Reliable transport for hospital staff, doctors, nurses. 24/7 shift-based operations, emergency availability, clean sanitized vehicles. Call 7668570551.',
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     icon: '🏥',
@@ -498,7 +498,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Doctors, specialists', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Medical teams, HODs', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Nursing staff, technicians', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Nursing staff, technicians', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large hospital staff', price: '₹55-85/km' }
     ],
 
@@ -529,7 +529,7 @@ export const corporateIndustries = {
     slug: 'education-schools',
     name: 'Education & Schools',
     title: 'Corporate Transport for Schools & Education',
-    metaTitle: 'School Staff Transport | Teacher Cab Service | Education Employee | Triveni Cabs',
+    metaTitle: 'School Staff Transport | Teacher Cab Service | Education Employee',
     metaDescription: 'Reliable transport for school teachers, college staff, education sector employees. Safe, GPS-tracked vehicles with verified drivers. Call 7668570551.',
     heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
     icon: '🎓',
@@ -581,7 +581,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Principals, HODs', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior faculty', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Teaching staff groups', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Teaching staff groups', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large staff transport', price: '₹55-85/km' }
     ],
 
@@ -612,7 +612,7 @@ export const corporateIndustries = {
     slug: 'government-psu',
     name: 'Government & PSU',
     title: 'Vehicle Rental for Government & PSU Organizations',
-    metaTitle: 'Government Vehicle Rental | PSU Car Hire | Tender Cab Service | Triveni Cabs',
+    metaTitle: 'Government Vehicle Rental | PSU Car Hire | Tender Cab Service',
     metaDescription: 'Government and PSU vehicle rental service. Tender compliant, GST billing, fleet for official use. Competitive rates for government departments. Call 7668570551.',
     heroImage: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
     icon: '🏛️',
@@ -695,7 +695,7 @@ export const corporateIndustries = {
     slug: 'ecommerce-logistics',
     name: 'E-commerce & Logistics',
     title: 'Corporate Transport for E-commerce & Logistics',
-    metaTitle: 'E-commerce Employee Transport | Logistics Company Cab | Warehouse Staff | Triveni Cabs',
+    metaTitle: 'E-commerce Employee Transport | Logistics Company Cab',
     metaDescription: 'Employee transport for e-commerce and logistics companies. Warehouse staff pickup, 24/7 shift coverage, large fleet for peak seasons. Call 7668570551.',
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     icon: '📦',
@@ -747,7 +747,7 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, supervisors', price: '₹12-15/km' },
       { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, team leads', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹23-27/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹20-28/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Warehouse workers', price: '₹55-85/km' }
     ],
 

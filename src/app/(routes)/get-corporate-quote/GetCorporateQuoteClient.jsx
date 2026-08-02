@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { captureLead } from '@/utilis/captureLead';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -96,6 +97,16 @@ export default function GetCorporateQuoteClient() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Capture the lead to the Sheet before the WhatsApp handoff.
+    captureLead({
+      name: formData.contactPerson || formData.companyName,
+      phone: formData.phone,
+      email: formData.email,
+      fromCity: formData.city,
+      pageType: 'corporate_quote',
+      passengers: formData.employeeCount,
+    });
 
     // Create WhatsApp message
     const message = `*Corporate Transport Inquiry*
@@ -449,7 +460,7 @@ ${formData.additionalInfo || 'None'}`;
               { icon: Shield, text: 'Verified Drivers' },
               { icon: Car, text: '500+ Fleet' },
               { icon: Clock, text: '24/7 Support' },
-              { icon: MapPin, text: '5 Cities' }
+              { icon: MapPin, text: '9 Cities' }
             ].map((item, idx) => (
               <div key={idx} className="flex items-center gap-2">
                 <item.icon className="w-5 h-5" />

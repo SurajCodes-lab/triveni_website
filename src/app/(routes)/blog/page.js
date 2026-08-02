@@ -1,8 +1,9 @@
 import BlogClient from './BlogClient';
 import { blogPosts } from '@/utilis/blog';
+import { getTodayDate, getSpeakableSchema } from '@/lib/seo/speakable-helpers';
 
 // Static generation - no ISR
-export const revalidate = false;
+export const revalidate = 3600;
 
 // SEO Metadata for Blog Page
 export const metadata = {
@@ -70,16 +71,28 @@ export const metadata = {
 };
 
 export default function BlogPage() {
-  // Structured data for SEO
+  // Filter once for reuse
+  const validPosts = blogPosts.filter(post => post && post.title && post.excerpt);
+
+  // Structured data — CollectionPage + mainEntity ItemList pattern
+  // Changed 2026-04-08 from "@type: Blog" (valid but weak) to "CollectionPage"
+  // Why: CollectionPage + ItemList enables Google's carousel rich result for blog
+  // index pages, where multiple article titles show in SERP under the main result.
+  // Blog type works but doesn't trigger any specific rich result.
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Blog",
+    "@type": "CollectionPage",
     "name": "Triveni Cabs Travel Blog - India Tourism & Travel Guides",
     "description": "Expert travel tips, destination guides, and insider secrets for traveling across India. Get the best advice for planning your perfect trip with comprehensive travel guides, budget tips, and local insights.",
     "url": "https://www.trivenicabs.in/blog",
     "inLanguage": "en-IN",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://www.trivenicabs.in/#website"
+    },
     "publisher": {
       "@type": "Organization",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "url": "https://www.trivenicabs.in",
       "logo": {
@@ -87,58 +100,51 @@ export default function BlogPage() {
         "url": "https://www.trivenicabs.in/logo.webp",
         "width": 250,
         "height": 60
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-7668570551",
-        "contactType": "customer service",
-        "availableLanguage": ["English", "Hindi"],
-        "areaServed": "IN"
-      },
-      "sameAs": [
-        "https://www.facebook.com/trivenicabs",
-        "https://twitter.com/trivenicabs",
-        "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
-      ]
-    },
-    "blogPost": blogPosts
-      .filter(post => post && post.title && post.excerpt) // Filter out undefined or invalid posts
-      .map(post => ({
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "image": post.image,
-      "datePublished": post.date,
-      "dateModified": post.date,
-      "author": {
-        "@type": "Organization",
-        "name": "Triveni Cabs Travel Experts"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Triveni Cabs",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.trivenicabs.in/logo.webp"
-        }
-      },
-      "url": `https://www.trivenicabs.in/blog/${post.slug}`,
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://www.trivenicabs.in/blog/${post.slug}`
-      },
-      "keywords": post.tags?.join(', ') || "travel India, tourism, destination guide",
-      "articleSection": post.category || "Travel",
-      "wordCount": 1500,
-      "inLanguage": "en-IN"
-    })),
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Travelers, Tourists, Adventure Seekers"
+      }
     },
     "about": {
       "@type": "Thing",
       "name": "India Travel and Tourism"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Travelers, Tourists, Adventure Seekers"
+    },
+    // Speakable for voice search — h1 + lead are reliably present in BlogClient
+    "speakable": getSpeakableSchema(['h1', 'p']),
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": validPosts.length,
+      "itemListElement": validPosts.map((post, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `https://www.trivenicabs.in/blog/${post.slug}`,
+        "item": {
+          "@type": "BlogPosting",
+          "@id": `https://www.trivenicabs.in/blog/${post.slug}#blogposting`,
+          "headline": post.title,
+          "description": post.excerpt,
+          "image": post.image,
+          "datePublished": post.date,
+          "dateModified": post.date,
+          "url": `https://www.trivenicabs.in/blog/${post.slug}`,
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://www.trivenicabs.in/blog/${post.slug}`
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "Triveni Cabs Travel Experts",
+            "url": "https://www.trivenicabs.in"
+          },
+          "publisher": {
+            "@id": "https://www.trivenicabs.in/#organization"
+          },
+          "keywords": post.tags?.join(', ') || "travel India, tourism, destination guide",
+          "articleSection": post.category || "Travel",
+          "inLanguage": "en-IN"
+        }
+      }))
     }
   };
 

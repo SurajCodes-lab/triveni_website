@@ -1,11 +1,12 @@
 import { getComparisonBySlug } from '@/utilis/comparisonData';
 import ComparisonClient from '@/components/content/ComparisonClient';
 import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, combineSchemas } from '@/lib/seo/schema-generators';
+import SemanticComparison from '@/components/seo/SemanticComparison';
 
 const SLUG = 'one-way-vs-round-trip-cab';
 const data = getComparisonBySlug(SLUG);
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: `${data.title} | Triveni Cabs`,
@@ -19,6 +20,14 @@ export const metadata = {
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${SLUG}`,
     siteName: 'Triveni Cabs',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: `${data.title} | Triveni Cabs`,
+    description: data.metaDescription,
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
   },
 };
 
@@ -38,6 +47,7 @@ export default function OneWayVsRoundTripPage() {
       {schemas && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       )}
+      <SemanticComparison data={data} />
       <ComparisonClient data={data} />
     </>
   );

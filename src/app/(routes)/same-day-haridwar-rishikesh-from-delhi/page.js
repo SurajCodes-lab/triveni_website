@@ -3,10 +3,10 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-haridwar-rishikesh-from-delhi');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Haridwar Rishikesh Tour from Delhi | ₹5,500 AC Cab | 2026',
+  title: 'Same Day Haridwar Rishikesh from Delhi | ₹5,500 | 2026',
   description: 'Book same day Haridwar Rishikesh tour from Delhi. Har Ki Pauri, Lakshman Jhula, Ganga Aarti. AC sedan ₹5,500, SUV ₹7,500. Call 7668570551.',
   keywords: 'same day haridwar rishikesh tour from delhi, delhi to haridwar rishikesh one day trip, haridwar rishikesh cab from delhi',
   authors: [{ name: 'Triveni Cabs' }],

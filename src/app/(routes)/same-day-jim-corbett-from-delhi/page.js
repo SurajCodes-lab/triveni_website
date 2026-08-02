@@ -3,7 +3,7 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-jim-corbett-from-delhi');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Same Day Jim Corbett Tour from Delhi | ₹6,500 AC Cab | 2026',

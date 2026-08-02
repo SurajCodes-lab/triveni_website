@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Agra Beyond Taj Mahal | Hidden Gems & Day Trips | 2026',
@@ -19,7 +20,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-beyond-taj-mahal',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Agra Beyond Taj Mahal' }],
+    images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Beyond Taj Mahal' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +28,7 @@ export const metadata = {
     description: 'Agra Fort, Fatehpur Sikri, day trips, hidden gems. By Agra locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Agra/Taj_mahal.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +54,7 @@ export default function AgraBeyondTajMahalPage() {
     { question: "What is the best 2-day Agra itinerary?", answer: "Day 1: Sunrise Taj Mahal, breakfast, Agra Fort, lunch, Baby Taj, Mehtab Bagh sunset, moonlight Taj (if full moon). Day 2: Fatehpur Sikri (morning), Sikandra (noon), Rambagh, Chini Ka Rauza, shopping at Sadar Bazaar, departure. This covers everything." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function AgraBeyondTajMahalPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const mainAttractions = [
     { name: "Agra Fort", desc: "A massive red sandstone fort and UNESCO World Heritage Site. Capital of the Mughal Empire from 1556-1648. Contains palaces, audience halls, and the famous Musamman Burj where Shah Jahan spent his last days gazing at the Taj Mahal.", entry: "\u20B950 Indian / \u20B9650 Foreign", distance: "2.5 km from Taj", duration: "1.5-2 hours", icon: Shield, color: "from-red-500 to-orange-500" },
@@ -150,6 +151,16 @@ export default function AgraBeyondTajMahalPage() {
   const linksTitle = "More Agra Guides & Tours";
   const ctaTitle = "Explore the Real Agra with Locals";
   const ctaSubtitle = "We show you the Agra that guidebooks miss. Custom itineraries, hidden gems, and insider knowledge.";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "agra-beyond-taj-mahal",
+    headline: "Agra Beyond Taj Mahal — 15 Hidden Attractions & Day Trips 2026",
+    description: "Agra beyond the Taj. Itmad-ud-Daulah, Mehtab Bagh, Akbar tomb, Tomb of Mariam, Chini Ka Rauza, Wildlife SOS, day trips to Fatehpur Sikri & Bharatpur.",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (
     <>
@@ -170,6 +181,7 @@ export default function AgraBeyondTajMahalPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <div className="min-h-screen bg-teal-50/30">
         <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 Q75 70 100 50' fill='none' stroke='%230d9488' stroke-width='0.5'/%3E%3Cpath d='M0 30 Q25 10 50 30 Q75 50 100 30' fill='none' stroke='%230d9488' stroke-width='0.3'/%3E%3Cpath d='M0 70 Q25 50 50 70 Q75 90 100 70' fill='none' stroke='%230d9488' stroke-width='0.3'/%3E%3C/svg%3E")` }} />

@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getBusVsCabRoute, getAllBusVsCabSlugs, getRelatedBusVsCabRoutes } from '@/utilis/busVsCabData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import BusVsCabClient from '@/components/bus-vs-cab/BusVsCabClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -117,7 +118,7 @@ export default async function BusVsCabPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5"
     }
   };

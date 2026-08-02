@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getAllHowToReachCities, getHowToReachCityData } from '@/utilis/howToReachData';
 import HowToReachClient from '@/components/content/HowToReachClient';
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
 
 // ISR - Revalidate every hour
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -53,6 +54,13 @@ export async function generateMetadata({ params }) {
       locale: 'en_IN',
       type: 'article',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: cityData.title,
+      description: cityData.metaDescription,
+      creator: '@trivenicabs',
+      site: '@trivenicabs',
+    },
   };
 }
 
@@ -65,5 +73,46 @@ export default async function HowToReachPage({ params }) {
     notFound();
   }
 
-  return <HowToReachClient cityData={cityData} />;
+  // BreadcrumbList schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+      { "@type": "ListItem", "position": 2, "name": "Travel Guides", "item": "https://www.trivenicabs.in" },
+      { "@type": "ListItem", "position": 3, "name": `How to Reach ${cityData.name}`, "item": `https://www.trivenicabs.in/how-to-reach-${city}` }
+    ]
+  };
+
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: `how-to-reach-${city}`,
+    headline: `How to Reach ${cityData.name} — Air · Train · Road · Bus Travel Guide 2026`,
+    description: cityData.metaDescription,
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead']
+  });
+
+  // FAQ schema if cityData has faqs
+  const faqSchema = cityData.faqs && cityData.faqs.length > 0 ? withSpeakableFAQ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": cityData.faqs.map(item => ({
+      "@type": "Question",
+      "name": item.question || item.q,
+      "acceptedAnswer": { "@type": "Answer", "text": item.answer || item.a },
+    })),
+  }) : null;
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+      <HowToReachClient cityData={cityData} />
+    </>
+  );
 }

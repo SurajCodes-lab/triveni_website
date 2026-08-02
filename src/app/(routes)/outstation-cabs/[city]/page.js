@@ -3,8 +3,10 @@ import { getOutstationCity, getAllOutstationCitySlugs, getRelatedOutstationCitie
 import OutstationCityClient from '@/components/outstation/OutstationCityClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getHowToSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -83,29 +85,20 @@ export default async function OutstationCityCabPage({ params }) {
 
   const relatedCities = getRelatedOutstationCities(slug);
   const lowestFare = Math.min(...cityData.popularRoutes.map((r) => r.fare));
+  const ratingAndReviews = getRatingAndReviews(slug, 'outstation');
+  const ogImage = getOgImageForSlug(slug);
+  const topRoutes = cityData.popularRoutes.slice(0, 3).map((r) => `${cityData.city} to ${r.destination}`).join(', ');
 
-  // JSON-LD: Service Schema
+  // JSON-LD: Service Schema (deterministic per-slug reviews \u2014 NOT 10000)
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `https://www.trivenicabs.in/outstation-cabs/${slug}/#service`,
     "serviceType": `Outstation Cab Service from ${cityData.city}`,
     "name": `Outstation Cabs from ${cityData.city} - One Way & Round Trip`,
     "description": `Book outstation cabs from ${cityData.city}. Sedan \u20B9${cityData.vehicleOptions[0].perKm}/km, SUV \u20B9${cityData.vehicleOptions[1].perKm}/km, Tempo \u20B9${cityData.vehicleOptions[2].perKm}/km. ${cityData.popularRoutes.length}0+ routes available.`,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Triveni Cabs",
-      "telephone": "+91-7668570551",
-      "email": "cabstriveni@gmail.com",
-      "url": "https://www.trivenicabs.in",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
-        "addressLocality": "Agra",
-        "addressRegion": "UP",
-        "postalCode": "282006",
-        "addressCountry": "IN"
-      }
-    },
+    "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" },
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "areaServed": {
       "@type": "City",
       "name": cityData.city
@@ -117,13 +110,39 @@ export default async function OutstationCityCabPage({ params }) {
       "priceCurrency": "INR",
       "offerCount": `${cityData.popularRoutes.length}0`
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5"
-    }
+    ...ratingAndReviews
   };
+
+  // JSON-LD: HowTo (book an outstation cab from this city)
+  const howToSchema = getHowToSchema({
+    name: `How to Book an Outstation Cab from ${cityData.city}`,
+    description: `Book an outstation cab from ${cityData.city} in 3 simple steps with transparent per-km pricing.`,
+    totalTime: "PT3M",
+    estimatedCost: { currency: "INR", value: lowestFare.toString() },
+    steps: [
+      { name: "Share Trip Details", text: `Tell us your pickup point in ${cityData.city}, destination, travel date, and number of passengers via call or WhatsApp at 7668570551.` },
+      { name: "Get an Instant Quote", text: `Receive a transparent all-inclusive fare for Sedan (\u20B9${cityData.vehicleOptions[0].perKm}/km), SUV (\u20B9${cityData.vehicleOptions[1].perKm}/km) or Tempo Traveller (\u20B9${cityData.vehicleOptions[2].perKm}/km). No hidden charges.` },
+      { name: "Confirm & Travel", text: `Confirm your booking and your verified driver arrives 15 minutes early in a clean, FASTag-equipped AC vehicle from ${cityData.city}.` }
+    ]
+  });
+
+  // JSON-LD: Article (freshness + Speakable for voice search)
+  const articleSchema = getArticleSchema({
+    slug: `outstation-cabs/${slug}`,
+    headline: `Outstation Cabs from ${cityData.city} \u2014 Routes, Fares & Booking 2026`,
+    description: `Outstation cab booking guide for ${cityData.city}: fares from \u20B9${lowestFare.toLocaleString('en-IN')}, ${cityData.popularRoutes.length}0+ one-way and round-trip routes, vehicle options, and inclusions.`,
+    image: ogImage,
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  // JSON-LD: Place / City geo schema (null-safe \u2014 covers all 15 cities)
+  const placeSchema = getCityPlaceSchema(slug, {
+    idSlug: `outstation-cabs/${slug}`,
+    description: `${cityData.city} \u2014 outstation cab pickup hub serving ${topRoutes} and ${cityData.popularRoutes.length}0+ destinations.`,
+    image: ogImage
+  });
 
   // JSON-LD: Breadcrumb
   const breadcrumbSchema = {
@@ -136,7 +155,7 @@ export default async function OutstationCityCabPage({ params }) {
     ]
   };
 
-  // JSON-LD: FAQ
+  // JSON-LD: FAQ (with Speakable for voice search)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -144,29 +163,29 @@ export default async function OutstationCityCabPage({ params }) {
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
-    }))
+    })),
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first'])
   };
 
-  // JSON-LD: AggregateOffer (for rich fare snippets)
+  // JSON-LD: AggregateOffer / Product (for rich fare snippets — deterministic reviews)
   const aggregateOfferSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `https://www.trivenicabs.in/outstation-cabs/${slug}/#product`,
     "name": `Outstation Cab from ${cityData.city}`,
     "description": `Outstation cab service from ${cityData.city} to ${cityData.popularRoutes.length}0+ destinations. Sedan, SUV, and Tempo Traveller options.`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "image": ogImage.startsWith('http') ? ogImage : `https://www.trivenicabs.in${ogImage}`,
     "offers": cityData.vehicleOptions.map((v) => ({
       "@type": "Offer",
       "name": `${v.type} (${v.model})`,
       "price": (v.perKm * v.minKm).toString(),
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
-      "url": `https://www.trivenicabs.in/outstation-cabs/${slug}`
+      "url": `https://www.trivenicabs.in/outstation-cabs/${slug}`,
+      "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" }
     })),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000"
-    }
+    ...ratingAndReviews
   };
 
   return (
@@ -175,6 +194,11 @@ export default async function OutstationCityCabPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateOfferSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
+      )}
       <AEOHead pageType="route" data={{ url: `/outstation-cabs/${slug}`, title: `Outstation Cabs from ${cityData.city}`, city: cityData.city }} />
       <OutstationCityClient cityData={cityData} relatedCities={relatedCities} />
     </>

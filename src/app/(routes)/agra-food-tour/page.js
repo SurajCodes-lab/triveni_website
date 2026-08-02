@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Agra Food Tour 2026 | Petha, Mughlai & Street Food Guide',
@@ -19,7 +20,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-food-tour',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Agra Food Tour Guide' }],
+    images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Food Tour Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +28,7 @@ export const metadata = {
     description: 'Agra culinary guide. Petha, street food, Mughlai restaurants.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Agra/Taj_mahal.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +54,7 @@ export default function AgraFoodTourPage() {
     { question: "What markets should I visit for food?", answer: "Sadar Bazaar (main market, everything), Kinari Bazaar (traditional sweets), area near Jama Masjid (Bedai-Jalebi, chaat), and Noori Gate area (Petha shops). Our drivers know exactly where each specialty is found." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function AgraFoodTourPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const famousFoods = [
     { name: "Petha", desc: "Agra's signature sweet made from ash gourd (Benincasa hispida). Over 30 varieties: Angoori (tiny, juicy), Paan (betel-flavored), Kesar (saffron), Chocolate, Coconut, Dry Fruit, and more. Panchhi Petha at Noori Gate is the gold standard.", price: "₹100-500 per kg", mustTry: true, heat: 0 },
@@ -106,6 +107,19 @@ export default function AgraFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "agra-food-tour",
+    headline: "Agra Food Tour 2026 — Petha, Chaat, Mughlai & Best Restaurants",
+    description: "Complete Agra food tour. Petha sweet shops, chaat trails, Mughlai non-veg, Sadar Bazaar street food, top restaurants near Taj Mahal.",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("agra", { idSlug: "agra-food-tour" });
+
 
   return (
     <>
@@ -123,6 +137,8 @@ export default function AgraFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

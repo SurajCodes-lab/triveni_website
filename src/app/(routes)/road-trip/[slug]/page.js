@@ -1,10 +1,15 @@
 import { notFound } from 'next/navigation';
-import { getRoadTrip, getAllRoadTripSlugs, getRelatedRoadTrips } from '@/utilis/roadTripData';
+import { getRoadTrip, getAllRoadTripSlugs, getRelatedRoadTrips, stopNameToGeoSlug } from '@/utilis/roadTripData';
 import RoadTripCircuitClient from '@/components/road-trip/RoadTripCircuitClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import {
+  getSpeakableSchema, getArticleSchema, getHowToSchema,
+  getComparisonSchema, getCityPlaceSchema,
+} from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -80,26 +85,36 @@ export default async function RoadTripPage({ params }) {
 
   const relatedTrips = getRelatedRoadTrips(slug);
 
-  const serviceSchema = {
+  const pageUrl = `https://www.trivenicabs.in/road-trip/${slug}`;
+  const ogImage = getOgImageForSlug(slug);
+  const ratingAndReviews = getRatingAndReviews(slug, 'city');
+  const routeCities = [...new Set(trip.stops.map(s => s.city))];
+
+  // JSON-LD: TouristTrip (enriched itinerary + deterministic rating/reviews/brand)
+  const touristTripSchema = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
+    "@id": `${pageUrl}#trip`,
     "name": trip.name,
     "description": `${trip.name} — ${trip.totalDistance} km road trip covering ${trip.stops.map(s => s.city).join(', ')} in ${trip.totalDays} days.`,
     "touristType": "Road Trip Enthusiasts",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "itinerary": {
       "@type": "ItemList",
+      "numberOfItems": trip.stops.length,
       "itemListElement": trip.stops.map((stop, i) => ({
         "@type": "ListItem",
         "position": i + 1,
         "item": {
           "@type": "TouristDestination",
           "name": stop.city,
-          "description": stop.highlights.join(', ')
+          "description": `${stop.nights > 0 ? `${stop.nights} night(s). ` : 'Transit stop. '}${stop.highlights.join(', ')}`
         }
       }))
     },
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#localbusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -120,12 +135,27 @@ export default async function RoadTripPage({ params }) {
       "priceCurrency": "INR",
       "offerCount": "2"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5"
-    }
+    ...ratingAndReviews,
+  };
+
+  // JSON-LD: Service (chauffeur-driven cab for the circuit)
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": `Road Trip Cab — ${trip.name}`,
+    "name": `${trip.name} Chauffeur Cab — ${trip.totalDays} Days`,
+    "description": `Chauffeur-driven AC cab for the ${trip.name} (${trip.totalDistance} km, ${trip.totalDays} days). Sedan from ₹${trip.totalCost.sedan.toLocaleString('en-IN')}, SUV from ₹${trip.totalCost.suv.toLocaleString('en-IN')}. Driver, fuel and 24/7 support included.`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "areaServed": routeCities.map(c => ({ "@type": "City", "name": c })),
+    "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": trip.totalCost.sedan.toString(),
+      "highPrice": trip.totalCost.suv.toString(),
+      "priceCurrency": "INR",
+      "offerCount": "2"
+    },
+    ...ratingAndReviews,
   };
 
   const breadcrumbSchema = {
@@ -134,13 +164,14 @@ export default async function RoadTripPage({ params }) {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
       { "@type": "ListItem", "position": 2, "name": "Road Trips", "item": "https://www.trivenicabs.in/road-trip" },
-      { "@type": "ListItem", "position": 3, "name": trip.name, "item": `https://www.trivenicabs.in/road-trip/${slug}` }
+      { "@type": "ListItem", "position": 3, "name": trip.name, "item": pageUrl }
     ]
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
     "mainEntity": trip.faqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,
@@ -148,11 +179,63 @@ export default async function RoadTripPage({ params }) {
     }))
   };
 
+  // JSON-LD: Article (freshness + voice)
+  const articleSchema = getArticleSchema({
+    slug: `road-trip/${slug}`,
+    headline: `${trip.name} Road Trip — ${trip.totalDistance} km, ${trip.totalDays}-Day Itinerary`,
+    description: `Day-by-day ${trip.name} itinerary covering ${routeCities.join(', ')} over ${trip.totalDays} days and ${trip.totalDistance} km, with chauffeur cab fares from ₹${trip.totalCost.sedan.toLocaleString('en-IN')}.`,
+    image: ogImage,
+    speakableSelectors: ['.speakable-headline', '.speakable-lead'],
+  });
+
+  // JSON-LD: HowTo — plan the road trip
+  const howToSchema = getHowToSchema({
+    name: `How to Plan the ${trip.name} Road Trip`,
+    description: `Step-by-step guide to planning the ${trip.totalDays}-day, ${trip.totalDistance} km ${trip.name} circuit.`,
+    totalTime: 'PT20M',
+    estimatedCost: { currency: 'INR', value: trip.totalCost.sedan },
+    steps: [
+      { name: 'Pick your dates', text: `Choose travel dates in the best season for this circuit: ${trip.bestSeason}` },
+      { name: 'Map the route', text: `Lock the ${trip.totalDays}-day route: ${routeCities.join(' → ')}, totalling ${trip.totalDistance} km.` },
+      { name: 'Choose a vehicle', text: `Select a sedan (from ₹${trip.totalCost.sedan.toLocaleString('en-IN')}) for couples or an SUV (from ₹${trip.totalCost.suv.toLocaleString('en-IN')}) for families and hill comfort.` },
+      { name: 'Book hotels at each halt', text: `Reserve overnight stays at ${trip.stops.filter(s => s.nights > 0).map(s => s.city).join(', ')} in advance during peak season.` },
+      { name: 'Confirm the cab', text: 'Call 7668570551 or WhatsApp to confirm the chauffeur cab. The driver handles navigation, tolls, parking and luggage.' },
+    ],
+  });
+
+  // JSON-LD: Comparison — self-drive vs chauffeur cab
+  const comparisonSchema = getComparisonSchema({
+    slug: `road-trip/${slug}`,
+    title: `Self-Drive vs Chauffeur Cab for the ${trip.name}`,
+    description: `Compare self-driving and a chauffeur-driven cab for the ${trip.totalDistance} km ${trip.name} circuit — cost, fatigue, local knowledge and convenience.`,
+    rows: [
+      { feature: 'Driver fatigue over long distance' },
+      { feature: 'Local route & hill-road knowledge' },
+      { feature: 'Total cost (fuel, tolls, drop charges)' },
+      { feature: 'Flexibility & convenience' },
+    ],
+    mentions: ['Self-drive car rental', 'Chauffeur-driven cab', ...routeCities],
+  });
+
+  // JSON-LD: GEO Place entities for each unique stop city
+  const placeSchemas = routeCities
+    .map(city => getCityPlaceSchema(stopNameToGeoSlug(city), { idSlug: `road-trip/${slug}` }))
+    .filter(Boolean);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(touristTripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      {placeSchemas.map((s, i) => (
+        <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <AEOHead pageType="tour" data={{ url: `/road-trip/${slug}`, title: trip.name, city: trip.stops[0]?.city }} />
       <RoadTripCircuitClient trip={trip} relatedTrips={relatedTrips} />
     </>

@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import { MapPin, ChevronRight, Phone, Shield, Clock, Users, Star, Car, Compass, Camera, Heart, Landmark } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Tourist Spots India 2026 | Forts, Palaces, Lakes & Heritage | Book Cab',
+  title: 'Tourist Spots India 2026 | Forts, Palaces, Lakes & Heritage',
   description: 'Explore top tourist spots across Jaipur, Udaipur, Jodhpur. Amber Fort, Hawa Mahal, Lake Pichola, Mehrangarh Fort & more. Cab from Rs 11/km. Call 7668570551.',
   keywords: 'tourist spots india, jaipur tourist places, udaipur tourist spots, jodhpur sightseeing, rajasthan tourism, famous places india, heritage sites india, forts palaces india',
   authors: [{ name: 'Triveni Cabs' }],
@@ -131,7 +132,7 @@ export default function TouristSpotsPage() {
       "telephone": "+91-7668570551",
     },
     "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('tourist-spots')), "bestRating": "5" },
   };
 
   const faqData = [

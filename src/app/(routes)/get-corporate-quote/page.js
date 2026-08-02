@@ -1,11 +1,11 @@
 import GetCorporateQuoteClient from './GetCorporateQuoteClient';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Get Corporate Quote | Employee Transport from ₹8/km | Triveni Cabs',
+  title: 'Get Corporate Quote | Employee Transport from ₹8/km',
   description:
-    'Request a customized corporate transportation quote. Employee pickup-drop, office shuttles, executive car rental, airport transfers. Dedicated account manager. Response within 2-4 hours. Call 7668570551.',
+    'Request a customized corporate transportation quote. Employee pickup-drop, office shuttles, executive car rental, airport transfers.',
   keywords:
     'corporate cab quote, employee transport quote, office shuttle pricing, corporate car rental, executive cab service, monthly car rental corporate, employee pickup drop service, corporate transportation India, Triveni Cabs corporate',
   authors: [{ name: 'Triveni Cabs' }],
@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: 'Get Your Corporate Transport Quote — Custom Plans from ₹8/km',
     description:
-      'Fill out a quick form and get a tailored corporate transportation proposal. 500+ fleet, 5 cities, 24/7 support. Dedicated account manager responds within 2-4 hours.',
+      'Fill out a quick form and get a tailored corporate transportation proposal. 500+ fleet, 9 cities, 24/7 support. Dedicated account manager responds within 2-4 hours.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/get-corporate-quote',
@@ -34,7 +34,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Get Corporate Quote | Employee Transport from ₹8/km | Triveni Cabs',
+    title: 'Get Corporate Quote | Employee Transport from ₹8/km',
     description:
       'Customized corporate transportation. Employee pickup-drop, shuttles, executive rentals. 500+ fleet. Response in 2-4 hours.',
     creator: '@TriveniCabs',

@@ -1,4 +1,6 @@
 import CompetitorCompareClient from '@/components/competitor/CompetitorCompareClient';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
 
 export const revalidate = 3600;
 
@@ -71,8 +73,23 @@ export default function TriveniVsOlaPage() {
     "name": "Triveni Cabs — Better Than Ola for Outstation Travel",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...getRatingAndReviews(slug, 'city')
   };
+  const articleSchema = getArticleSchema({
+    slug,
+    headline: 'Triveni Cabs vs Ola: Honest Comparison 2026',
+    description: pageDesc,
+    image: '/images/citypage_hero_section_image.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+  const comparisonSchema = getComparisonSchema({
+    slug,
+    title: 'Triveni Cabs vs Ola — Feature Comparison',
+    description: pageDesc,
+    rows: comparisonData.features,
+    mentions: ['Triveni Cabs', 'Ola', 'outstation cab', 'surge pricing']
+  });
+  const speakableSchema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `https://www.trivenicabs.in/${slug}#webpage`, "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']) };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     "itemListElement": [
@@ -88,6 +105,11 @@ export default function TriveniVsOlaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <CompetitorCompareClient competitor="Ola" comparisonData={comparisonData} />

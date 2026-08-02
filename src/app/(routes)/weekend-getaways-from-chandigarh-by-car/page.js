@@ -2,10 +2,14 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import { buildStaticService, buildPlaceSchemas, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
+
+const SLUG = 'weekend-getaways-from-chandigarh-by-car';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Top 18 Weekend Getaways from Chandigarh by Car 2026 | Triveni Cabs',
+  title: 'Top 18 Weekend Getaways from Chandigarh by Car 2026',
   description: 'Best weekend trips from Chandigarh by car in 2026. Shimla, Kasauli, Manali, Dharamshala & more. Distance, drive time, costs. AC cab from ₹9/km. Call 7668570551.',
   keywords: 'weekend trips from chandigarh by car, weekend getaways from chandigarh, short trips from chandigarh, road trips from chandigarh, places near chandigarh by car',
   authors: [{ name: 'Triveni Cabs' }],
@@ -56,11 +60,42 @@ export default function WeekendGetawaysFromChandigarhPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
+    "@id": `https://www.trivenicabs.in/${SLUG}#trip`,
     "name": "Weekend Getaways from Chandigarh by Car",
-    "description": "Top 18 weekend road trip destinations from Chandigarh with cab service",
+    "description": "Top 18 weekend road trip destinations from Chandigarh with all-inclusive cab service",
     "touristType": "Weekend Travelers",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" }
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" }
   };
+  const cabServiceSchema = buildStaticService({
+    slug: SLUG,
+    name: 'Weekend Getaway Cab Service from Chandigarh',
+    description: 'Outstation weekend cab service from Chandigarh to Kasauli, Shimla, Manali, Dharamshala, Dalhousie and more. AC cabs with all-inclusive fares.',
+    lowPrice: 1500,
+    highPrice: 12000,
+  });
+  const howToSchema = getHowToSchema({
+    name: 'How to Plan a Weekend Getaway from Chandigarh by Car',
+    description: 'Step-by-step guide to picking a hill or heritage weekend destination near Chandigarh and booking an all-inclusive cab.',
+    totalTime: 'PT5M',
+    estimatedCost: { currency: 'INR', value: 1500 },
+    steps: [
+      { name: 'Pick a destination by drive time', text: 'Choose a near escape under 3 hours (Kasauli, Morni Hills, Pinjore) or a longer hill drive (Shimla, Manali, Dharamshala, Dalhousie, Khajjiar).' },
+      { name: 'Choose your vehicle', text: 'A sedan suits couples and small families; an Innova or Ertiga SUV is ideal for hill roads and groups of 4-6. Tempo Travellers cover larger groups.' },
+      { name: 'Get an all-inclusive quote', text: 'Call or WhatsApp 7668570551 with your destination, dates and group size for a transparent fare covering fuel, tolls, parking and driver allowance.' },
+      { name: 'Confirm and travel', text: 'No advance payment required. A verified hill-experienced driver picks you up from anywhere in Chandigarh, Mohali or Panchkula.' },
+    ],
+  });
+  const comparisonSchema = getComparisonSchema({
+    slug: SLUG,
+    title: 'Near vs Far Weekend Getaways from Chandigarh',
+    description: 'Comparison of weekend getaways from Chandigarh by drive time, terrain and starting cab fare.',
+    rows: [
+      { feature: 'Near escapes (under 3 hrs)' },
+      { feature: 'Far hill drives (over 3 hrs)' },
+    ],
+    mentions: ['Kasauli', 'Shimla', 'Manali', 'Dharamshala', 'Dalhousie', 'Amritsar', 'Kasol'],
+  });
+  const placeSchemas = buildPlaceSchemas(['shimla', 'manali', 'dharamshala', 'dalhousie', 'amritsar', 'kasol', 'chandigarh'], SLUG, '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg');
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -71,14 +106,14 @@ export default function WeekendGetawaysFromChandigarhPage() {
     ]
   };
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
       "@type": "Question", "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer }
     }))
-  };
+  });
 
   const itemListSchema = {
     "@context": "https://schema.org", "@type": "ItemList",
@@ -89,12 +124,31 @@ export default function WeekendGetawaysFromChandigarhPage() {
 
   const nearDestinations = destinations.filter(d => parseFloat(d.duration) <= 3);
   const farDestinations = destinations.filter(d => parseFloat(d.duration) > 3);
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "weekend-getaways-from-chandigarh-by-car",
+    headline: "Weekend Getaways from Chandigarh by Car — 18 Best Destinations 2026",
+    description: "Best weekend getaways from Chandigarh by car. Kasauli, Shimla, Manali, Dharamshala, Dalhousie, Khajjiar, Amritsar, Kasol. Distance, cost, best time.",
+    image: "/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cabServiceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      {placeSchemas.map((s, i) => (
+        <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
       <div className="min-h-screen bg-slate-950 text-white">
@@ -115,15 +169,15 @@ export default function WeekendGetawaysFromChandigarhPage() {
                   <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
                   <span className="text-cyan-300 text-sm font-medium tracking-wide uppercase">Gateway to the Himalayas</span>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[0.9]">
+                <h1 className="speakable-headline text-5xl md:text-7xl font-black mb-6 leading-[0.9]">
                   <span className="text-white">Weekend</span>
                   <br />
                   <span className="text-transparent bg-gradient-to-r from-cyan-300 via-sky-200 to-teal-300 bg-clip-text">Getaways</span>
                   <br />
                   <span className="text-slate-500 text-3xl md:text-4xl font-light">from The City Beautiful</span>
                 </h1>
-                <p className="text-slate-400 text-lg mb-10 max-w-xl leading-relaxed">
-                  Hill stations, adventure spots, and spiritual retreats. 18 mountain escapes from 30 minutes to 12 hours away.
+                <p className="speakable-lead text-slate-400 text-lg mb-10 max-w-xl leading-relaxed">
+                  The best weekend getaways from Chandigarh by car include Kasauli, Shimla, Manali, Dharamshala, Dalhousie and Khajjiar. Triveni Cabs runs all-inclusive AC cabs covering fuel, tolls and driver allowance — 18 hill, adventure and spiritual escapes from 30 minutes to 12 hours away.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a href="tel:7668570551" className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-cyan-500/25">
@@ -380,7 +434,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
                     <ChevronRight className="w-5 h-5 text-cyan-500 group-open:rotate-90 transition-transform flex-shrink-0" />
                   </summary>
                   <div className="px-6 pb-6 -mt-1">
-                    <p className="text-slate-400 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-slate-400 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </details>
               ))}

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import Link from "next/link";
 import AEOHead from '@/components/seo/AEOHead';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
@@ -8,7 +9,7 @@ import SectionDivider from '@/components/shared/SectionDivider';
 import { tourDetails } from "@/utilis/data";
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 import ItinerarySection from "@/components/ItinerarySection";
 // Centralized icon imports for better bundle optimization
@@ -19,6 +20,66 @@ import { TrackingProvider, ItineraryWrapper, AccommodationWrapper, BookNowButton
 
 // SEO Content for each package - This will be visible on the page
 const seoContent = {
+  "golden-triangle-tour-from-jaipur": {
+    title: "Golden Triangle Tour from Jaipur",
+    h1: "Golden Triangle Tour from Jaipur | Jaipur–Agra–Delhi Package",
+    intro: "Start your Golden Triangle journey from the Pink City with our Jaipur-origin package covering Jaipur, Agra and Delhi. Explore Amber Fort, the Taj Mahal and Delhi's iconic monuments with a private chauffeur-driven car.",
+    whyChoose: "This Jaipur-origin Golden Triangle package is ideal for travellers already in Rajasthan. Enjoy a comfortable 4-day circuit with an experienced driver, hand-picked hotels, and a flexible itinerary covering India's three most iconic cities.",
+    features: [
+      "Jaipur → Agra → Delhi → Jaipur circuit by private AC car",
+      "Amber Fort, Hawa Mahal & City Palace in Jaipur",
+      "Taj Mahal & Agra Fort at sunrise",
+      "Delhi highlights - India Gate, Qutub Minar, Red Fort",
+      "Comfortable 3-star / 4-star hotel stays"
+    ],
+    destinations: "Visit Jaipur (Amber Fort, Hawa Mahal, City Palace), Agra (Taj Mahal, Agra Fort, Fatehpur Sikri) and Delhi (India Gate, Qutub Minar, Lotus Temple) on this classic Golden Triangle circuit starting and ending in Jaipur.",
+    breadcrumb: ["Home", "Tour Packages", "Golden Triangle", "Golden Triangle from Jaipur"]
+  },
+  "golden-triangle-tour-from-agra": {
+    title: "Golden Triangle Tour from Agra",
+    h1: "Golden Triangle Tour from Agra | Agra–Jaipur–Delhi Package",
+    intro: "Begin the Golden Triangle from the city of the Taj Mahal. Our Agra-origin package covers Agra, Jaipur and Delhi over 3 days with a private chauffeur-driven car and comfortable stays.",
+    whyChoose: "Perfect for travellers arriving in Agra, this package weaves together the Taj Mahal, the palaces of Jaipur and the monuments of Delhi into one seamless 3-day circuit with an experienced driver and flexible timings.",
+    features: [
+      "Agra → Jaipur → Delhi circuit by private AC car",
+      "Taj Mahal & Agra Fort with expert local guidance",
+      "Amber Fort, Hawa Mahal & City Palace in Jaipur",
+      "Delhi sightseeing - India Gate, Qutub Minar, Red Fort",
+      "Hand-picked 3-star / 4-star hotels"
+    ],
+    destinations: "Explore Agra (Taj Mahal, Agra Fort), Jaipur (Amber Fort, City Palace, Jantar Mantar) and Delhi (Red Fort, India Gate, Humayun's Tomb) on this Golden Triangle circuit starting from Agra.",
+    breadcrumb: ["Home", "Tour Packages", "Golden Triangle", "Golden Triangle from Agra"]
+  },
+  "rajasthan-tour-from-delhi": {
+    title: "Rajasthan Tour from Delhi",
+    h1: "Rajasthan Tour Package from Delhi | 8-Day Royal Rajasthan",
+    intro: "Discover royal Rajasthan on an 8-day circuit starting from Delhi. Travel through Jaipur, Jodhpur, Jaisalmer and Udaipur — forts, palaces, desert dunes and lake cities — with a private chauffeur-driven car.",
+    whyChoose: "Our Delhi-origin Rajasthan tour is the most convenient way to see the whole state in one trip. Enjoy heritage hotels, a Thar desert safari, palace tours and a Lake Pichola boat ride across 8 well-paced days with an experienced driver.",
+    features: [
+      "Delhi → Jaipur → Jodhpur → Jaisalmer → Udaipur → Delhi",
+      "Amber Fort, Mehrangarh Fort & City Palaces",
+      "Sam Sand Dunes desert safari in Jaisalmer",
+      "Lake Pichola boat ride in Udaipur",
+      "Heritage-style hotel accommodations"
+    ],
+    destinations: "Cover Jaipur (Pink City), Jodhpur (Blue City), Jaisalmer (Golden City & Thar desert) and Udaipur (City of Lakes) on this complete Rajasthan circuit starting and ending in Delhi.",
+    breadcrumb: ["Home", "Tour Packages", "Rajasthan Tours", "Rajasthan Tour from Delhi"]
+  },
+  "rajasthan-tour-from-jaipur": {
+    title: "Rajasthan Tour from Jaipur",
+    h1: "Rajasthan Tour Package from Jaipur | 7-Day Royal Circuit",
+    intro: "Explore royal Rajasthan on a 7-day circuit starting from Jaipur, covering Pushkar, Jodhpur, Jaisalmer and Udaipur with a private chauffeur-driven car and heritage stays.",
+    whyChoose: "Starting in Jaipur, this 7-day package is ideal for travellers already in the Pink City. Experience desert forts, blue streets, golden dunes and shimmering lakes with an experienced driver and a flexible, well-paced itinerary.",
+    features: [
+      "Jaipur → Pushkar → Jodhpur → Jaisalmer → Udaipur circuit",
+      "Brahma Temple & holy lake at Pushkar",
+      "Mehrangarh Fort in Jodhpur & Sonar Quila in Jaisalmer",
+      "Sam Sand Dunes desert safari & camel ride",
+      "Lake Pichola boat ride in Udaipur"
+    ],
+    destinations: "Travel through Jaipur, Pushkar (sacred city), Jodhpur (Blue City), Jaisalmer (Golden City) and Udaipur (City of Lakes) on this royal Rajasthan circuit starting from Jaipur.",
+    breadcrumb: ["Home", "Tour Packages", "Rajasthan Tours", "Rajasthan Tour from Jaipur"]
+  },
   "manali-tour-from-mumbai": {
     title: "Manali Tour Package from Mumbai",
     h1: "Best Manali Tour Packages from Mumbai | Book Himachal Pradesh Tours",
@@ -384,7 +445,7 @@ export default function TourPackagePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5",
       "worstRating": "1"
     }

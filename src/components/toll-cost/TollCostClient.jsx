@@ -10,16 +10,18 @@ import {
 } from '@/components/ui/icons';
 import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import CorridorLinks from '@/components/seo/CorridorLinks';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
 const fmt = (n) => (!n && n !== 0) ? '---' : n.toLocaleString('en-IN');
 
-export default function TollCostClient({ route, relatedRoutes }) {
+export default function TollCostClient({ route, relatedRoutes, corridorLinks = [] }) {
   const [activeTab, setActiveTab] = useState('car');
 
   const whatsappMsg = `Hi, I want to book a cab from ${route.origin} to ${route.destination} (${route.totalDistance} km). Please share toll-inclusive fare.`;
@@ -32,6 +34,11 @@ export default function TollCostClient({ route, relatedRoutes }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta
+        price={route.cabFare ? `₹${fmt(route.cabFare)}` : ''}
+        label={`${route.origin} → ${route.destination} Cab`}
+        whatsappText={whatsappMsg}
+      />
 
       {/* ━━━ HERO: Financial dashboard vibe ━━━ */}
       <section className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-end overflow-hidden">
@@ -55,9 +62,9 @@ export default function TollCostClient({ route, relatedRoutes }) {
                 <span className="text-[11px] font-bold text-violet-300 uppercase tracking-widest">Cost Dashboard 2026</span>
               </div>
               <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">Toll Breakdown</p>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
-                {route.origin}<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">{route.destination}</span>
+              <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+                {route.origin} to {route.destination}<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">Toll Cost 2026</span>
               </h1>
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg">{route.tollPlazas.length} toll plazas across {route.totalDistance} km highway</p>
 
@@ -71,31 +78,64 @@ export default function TollCostClient({ route, relatedRoutes }) {
               </div>
             </div>
 
-            {/* Stat card */}
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Toll (Car)</p>
-                  <p className="text-2xl font-black text-white leading-tight">{fmt(route.totalTollCost.car)}</p>
+            {/* Stat card + Quick Enquiry Form */}
+            <div className="flex flex-col gap-4 lg:w-80 flex-shrink-0">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Toll (Car)</p>
+                    <p className="text-2xl font-black text-white leading-tight">{fmt(route.totalTollCost.car)}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Toll (SUV)</p>
+                    <p className="text-2xl font-black text-white leading-tight">{fmt(route.totalTollCost.suv)}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Plazas</p>
+                    <p className="text-2xl font-black text-violet-300 leading-tight">{route.tollPlazas.length}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Distance</p>
+                    <p className="text-sm font-bold text-white/80">{route.totalDistance} km</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Toll (SUV)</p>
-                  <p className="text-2xl font-black text-white leading-tight">{fmt(route.totalTollCost.suv)}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Plazas</p>
-                  <p className="text-2xl font-black text-violet-300 leading-tight">{route.tollPlazas.length}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Distance</p>
-                  <p className="text-sm font-bold text-white/80">{route.totalDistance} km</p>
+                <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
+                  <CreditCard className="w-3.5 h-3.5 text-violet-400" />
+                  <span className="text-[11px] text-white/40 font-medium">All plazas FASTag enabled</span>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
-                <CreditCard className="w-3.5 h-3.5 text-violet-400" />
-                <span className="text-[11px] text-white/40 font-medium">All plazas FASTag enabled</span>
-              </div>
+
+              {/* Quick Enquiry Form — convert toll info into a booking */}
+              <QuickEnquiryForm fromCity={route.origin} toCity={route.destination} pageType="outstation" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━ DIRECT-ANSWER LEAD: voice + featured-snippet target ━━━ */}
+      <section className="bg-white py-8 sm:py-10 px-4 sm:px-6 border-b border-slate-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-lg sm:text-xl font-black text-slate-900 mb-2">
+            How much is the toll from {route.origin} to {route.destination}?
+          </h2>
+          <p className="speakable-lead text-slate-600 text-sm sm:text-base leading-relaxed">
+            The total toll from {route.origin} to {route.destination} is approximately
+            {' '}<strong className="text-slate-900">{'₹'}{fmt(route.totalTollCost.car)} for a car/sedan</strong> and
+            {' '}<strong className="text-slate-900">{'₹'}{fmt(route.totalTollCost.suv)} for an SUV</strong>, paid across
+            {' '}{route.tollPlazas.length} toll plaza{route.tollPlazas.length === 1 ? '' : 's'} over the {route.totalDistance} km route.
+            All plazas accept FASTag. A toll-inclusive Triveni cab starts at {'₹'}{fmt(route.cabFare)} (sedan), with the
+            driver handling every toll payment for you.
+          </p>
+          <div className="flex flex-wrap gap-2 mt-4">
+            <Link href={`/distance/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-700 bg-violet-50 hover:bg-violet-100 px-3 py-1.5 rounded-full transition-colors">
+              <Route className="w-3.5 h-3.5" /> {route.origin}-{route.destination} distance &amp; time
+            </Link>
+            <Link href={`/one-way-cab/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-700 bg-violet-50 hover:bg-violet-100 px-3 py-1.5 rounded-full transition-colors">
+              <Car className="w-3.5 h-3.5" /> One-way cab {route.origin} to {route.destination}
+            </Link>
+            <Link href={`/travel-by-car/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-700 bg-violet-50 hover:bg-violet-100 px-3 py-1.5 rounded-full transition-colors">
+              <MapPin className="w-3.5 h-3.5" /> {route.origin} to {route.destination} by car
+            </Link>
           </div>
         </div>
       </section>
@@ -161,6 +201,16 @@ export default function TollCostClient({ route, relatedRoutes }) {
             </div>
             <span className="text-sm font-black text-violet-300">Total: {fmt(totalToll)}</span>
           </div>
+        </div>
+      </section>
+
+      {/* ━━━ DESTINATION IMAGE ━━━ */}
+      <section className="relative h-64 sm:h-80 overflow-hidden">
+        <Image src={getCityImage(route.destination)} alt={`${route.destination} city`} fill className="object-cover" sizes="100vw" quality={80} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Your Destination</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-white">{route.destination}</h2>
         </div>
       </section>
 
@@ -336,12 +386,15 @@ export default function TollCostClient({ route, relatedRoutes }) {
               </ScrollReveal>
               <div className="grid sm:grid-cols-3 gap-3">
                 {[
-                  { label: 'Sedan', sub: 'Swift Dzire / Etios', price: route.cabFare, rate: '11/km', pop: false },
-                  { label: 'SUV', sub: 'Innova / Ertiga', price: suvFare, rate: '14/km', pop: true },
-                  { label: 'Tempo', sub: '12-16 Seater', price: tempoFare, rate: '18/km', pop: false },
+                  { label: 'Sedan', sub: 'Swift Dzire / Etios', price: route.cabFare, rate: '11/km', pop: false, img: '/images/car/swift_dzire.jpg' },
+                  { label: 'SUV', sub: 'Innova / Ertiga', price: suvFare, rate: '14/km', pop: true, img: '/images/car/innova_crysta.jpg' },
+                  { label: 'Tempo', sub: '12-16 Seater', price: tempoFare, rate: '18/km', pop: false, img: '/images/tempo/12_seater.jpg' },
                 ].map((v, i) => (
                   <ScrollReveal key={i} stagger={i * 80}>
                     <div className={`bg-white rounded-xl p-5 border transition-all hover:shadow-md ${v.pop ? 'border-violet-200 ring-1 ring-violet-100' : 'border-slate-100 hover:border-violet-200'}`}>
+                      <div className="relative h-32 -mx-5 -mt-5 mb-3 overflow-hidden rounded-t-xl">
+                        <Image src={v.img} alt={v.label} fill className="object-cover" sizes="(max-width:640px) 100vw, 33vw" />
+                      </div>
                       {v.pop && <span className="text-[9px] font-black text-violet-600 uppercase tracking-widest bg-violet-50 px-2 py-0.5 rounded-full">Best Value</span>}
                       <p className="font-bold text-slate-900 text-sm mt-2">{v.label}</p>
                       <p className="text-[11px] text-slate-400 mb-3">{v.sub}</p>
@@ -362,7 +415,30 @@ export default function TollCostClient({ route, relatedRoutes }) {
 
       {/* ━━━ FAQ ━━━ */}
       {route.faqs && route.faqs.length > 0 && (
-        <FaqAccordion heading={`${route.origin} to ${route.destination} Toll FAQs`} faqs={route.faqs} />
+        <>
+          <section className="bg-gray-50 pt-12 sm:pt-16 px-4 sm:px-6">
+            <div className="max-w-3xl mx-auto bg-white rounded-xl border border-slate-200 p-5">
+              <p className="text-[10px] font-bold text-violet-600 uppercase tracking-widest mb-1.5">Quick Answer</p>
+              <p className="font-bold text-slate-900 text-sm mb-1.5">{route.faqs[0].question}</p>
+              <p className="speakable-faq-first text-slate-600 text-sm leading-relaxed">{route.faqs[0].answer}</p>
+            </div>
+          </section>
+          <FaqAccordion heading={`${route.origin} to ${route.destination} Toll FAQs`} faqs={route.faqs} />
+        </>
+      )}
+
+      {/* ━━━ CORRIDOR CLUSTER: book this route ━━━ */}
+      {corridorLinks.length > 0 && (
+        <section className="py-10 sm:py-14 px-4 sm:px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <CorridorLinks
+              links={corridorLinks}
+              fromLabel={route.origin}
+              toLabel={route.destination}
+              theme="light"
+            />
+          </div>
+        </section>
       )}
 
       {/* ━━━ RELATED ROUTES ━━━ */}
@@ -394,7 +470,6 @@ export default function TollCostClient({ route, relatedRoutes }) {
       )}
 
       <CTASection heading="Skip the Toll Stress. Book Triveni Cabs." subheading={`${route.origin} to ${route.destination} -- ${route.totalDistance} km with ${route.tollPlazas.length} toll plazas. Our driver handles it all.`} />
-      <MobileStickyBar />
     </div>
   );
 }

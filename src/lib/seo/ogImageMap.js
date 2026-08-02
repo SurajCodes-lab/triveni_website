@@ -33,6 +33,26 @@ const cityOgImages = {
   shimla: '/images/sightseeing/Shimla/shimla_hero_section.jpg',
   udaipur: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
   varanasi: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
+  // Week 39/40 route endpoints with real assets (verified in /public/images/sightseeing)
+  alwar: '/images/sightseeing/Alwar_Sariska/Alwar_Sariska_Hero_Section.jpg',
+  bharatpur: '/images/sightseeing/Bharatpur/Bird_Sanctuary.jpg',
+  bodhgaya: '/images/sightseeing/Bodh_Gaya/Bhod_gaya_hero_section.jpg',
+  gaya: '/images/sightseeing/Bodh_Gaya/Mahabodhi_Temple.jpg',
+  khajjiar: '/images/sightseeing/Khajjiar/Khajjiar_hero_section.jpg',
+  kufri: '/images/sightseeing/Kufri/kufri_hero_section.jpg',
+  badrinath: '/images/sightseeing/Char_Dham/Badrinath_Temple.jpg',
+  kedarnath: '/images/sightseeing/Char_Dham/Kedarnath_Temple.jpg',
+  gangotri: '/images/sightseeing/Char_Dham/Gangotri_Temple.jpg',
+  yamunotri: '/images/sightseeing/Char_Dham/Yamunotri_Temple.jpg',
+  kumbhalgarh: '/images/sightseeing/Kumbhalgarh/Kumbhalgarh_hero_section.jpg',
+  leh: '/images/sightseeing/Ladakh/Ladakh_hero_section.jpg',
+  ladakh: '/images/sightseeing/Ladakh/Ladakh_hero_section.jpg',
+  neemrana: '/images/sightseeing/Neemrana/Neemrana_hero_section.jpg',
+  pahalgam: '/images/sightseeing/Pahalgam/Pahalgam_hero_section.jpg',
+  prayagraj: '/images/sightseeing/Prayagraj/Prayagraj_hero_section.jpg',
+  sonamarg: '/images/sightseeing/Sonamarg/Sonamarg_hero_section.jpg',
+  mandawa: '/images/sightseeing/Shekhawati/Mandawa_Fort.jpg',
+  bikaner: '/images/sightseeing/Bikaner/Bikaner_hero_section.jpg',
 };
 
 const defaultOgImage = '/images/HERO_SECTION_MAIN_PAGE.jpg';
@@ -59,6 +79,16 @@ export function getCityOgImage(cityName) {
 export function getCityFromSlug(slug) {
   if (!slug) return null;
   const cities = Object.keys(cityOgImages);
+  // Route slugs ("delhi-to-gulmarg") are ABOUT the destination — match the
+  // segment after the last "-to-" first, otherwise the origin (usually Delhi)
+  // shadows the destination and every route shares the Delhi OG image.
+  const toIdx = slug.lastIndexOf('-to-');
+  if (toIdx !== -1) {
+    const dest = slug.slice(toIdx + 4);
+    for (const city of cities) {
+      if (dest.includes(city)) return city;
+    }
+  }
   for (const city of cities) {
     if (slug.includes(city)) return city;
   }

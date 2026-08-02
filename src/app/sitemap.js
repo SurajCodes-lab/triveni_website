@@ -1,5 +1,6 @@
 // src/app/sitemap.js - Complete sitemap with all routes
 
+import { execSync } from "child_process";
 import { cities } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
@@ -19,6 +20,7 @@ import { getAllDistanceRouteSlugs } from "@/utilis/distanceData";
 import { getAllLocalTaxiSlugs } from "@/utilis/localTaxiCityData";
 import { getAllOutstationCitySlugs } from "@/utilis/outstationCityData";
 import { getAllHowToReachSlugs } from "@/utilis/howToReachRouteData";
+import { getAllHowToReachCities } from "@/utilis/howToReachData";
 import { getAllBestTimeSlugs } from "@/utilis/bestTimeToVisitData";
 import { getAllRoundTripSlugs } from "@/utilis/roundTripData";
 import { getAllTravelByCarSlugs } from "@/utilis/travelByCarData";
@@ -32,6 +34,7 @@ import { getAllPackageSlugs } from "@/utilis/packageData";
 import { getAllTravelOptionsSlugs } from "@/utilis/travelOptionsData";
 import { getAllTrainTaxiSlugs } from "@/utilis/trainTaxiData";
 import { getAllMonthSlugs } from "@/utilis/monthlyCalendarData";
+import { getAllTourSlugs as getAllToursWithGuideSlugs, getToursByGroup as getToursWithGuideByGroup } from "@/utilis/toursWithGuideData";
 
 // Corporate and Event slugs for sitemap
 const corporateIndustrySlugs = [
@@ -85,11 +88,109 @@ const allCityRoutes = {
   ...basicCityRoutes
 };
 
+/**
+ * Get the last content-update timestamp dynamically from git.
+ *
+ * Why dynamic: a hardcoded date goes stale the moment someone forgets to bump it.
+ * Why git: it's the source of truth for "when content actually changed". We watch
+ *   directories that hold content/data (not cosmetic CSS tweaks), so a style-only
+ *   commit won't falsely trigger a recrawl signal.
+ *
+ * Fallback: if git isn't available at build time (e.g., shallow CI clone without
+ * history, some serverless builders), fall back to the hardcoded date. Never use
+ * `new Date()` directly here — Google ignores sitemaps whose lastmod equals
+ * "rebuilt today" because it signals a lying lastmod.
+ */
+function getLastContentUpdate() {
+  // Updated after 5-queue SEO overhaul (stations, Amritsar, best-time, cab-service, corporate) + site-wide acceleration
+  const HARDCODED_FALLBACK = new Date('2026-04-17');
+  try {
+    // Watch the utils + content-producing route dirs — not styles or components.
+    const iso = execSync(
+      'git log -1 --format=%cI -- src/utilis src/app/(routes)',
+      { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim();
+    if (iso) {
+      const parsed = new Date(iso);
+      if (!Number.isNaN(parsed.getTime())) return parsed;
+    }
+  } catch {
+    // git unavailable or not a git repo — fall through to fallback
+  }
+  return HARDCODED_FALLBACK;
+}
+
+// Per-category lastmod — the honest signal.
+//
+// Google explicitly says lastmod should reflect the specific URL's content change,
+// NOT the site's latest deploy. Previously this function used a hardcoded
+// 2026-04-17 date for a static "recently overhauled" list, which meant:
+//   (a) every category beyond the list got the global git-log date (too coarse),
+//   (b) categories on the list got a frozen date that went stale (dishonest).
+//
+// New approach: each category is mapped to the canonical data file(s) that drive
+// its pages. We ask git for the last modification time of those files. If the
+// data file changed today, that category's lastmod is today. If nothing has
+// touched it in months, Google sees the honest older date. This is exactly what
+// Google wants — and exactly what Navboost rewards for freshness + honesty.
+//
+// Cache the git lookups so the 60+ sitemap entries don't each fork a git process.
+const _categoryLastmodCache = new Map();
+
+const CATEGORY_FILES = {
+  'one-way-cab': ['src/utilis/oneWayCabData.js', 'src/utilis/oneWayCabEnrichment.js', 'src/utilis/oneway'],
+  'station-taxi': ['src/utilis/stationTaxiEnrichment.js'],
+  'amritsar': ['src/app/(routes)/amritsar-travel-guide', 'src/app/(routes)/amritsar-beyond-golden-temple'],
+  'best-time-to-visit': ['src/utilis/bestTimeToVisitData.js', 'src/app/(routes)/best-time-to-visit'],
+  'cab-service': ['src/utilis/cabServiceCityData.js', 'src/app/(routes)/cab-service'],
+  'corporate': ['src/app/(routes)/corporate-transportation-service'],
+  'bus-vs-tempo': ['src/app/(routes)/bus-vs-tempo-for-wedding'],
+  'city-hub': ['src/utilis/data.js', 'src/utilis/cityRoutesData.js'],
+  'wedding': ['src/utilis/weddingCityData.js', 'src/utilis/weddingCarModels.js'],
+  'airport-service': ['src/utilis/airportCityData.js', 'src/app/(routes)/airport-service'],
+  'sightseeing': ['src/utilis/sightseeingData.js'],
+  'road-trip': ['src/utilis/roadTripData.js', 'src/app/(routes)/10-day-north-india-road-trip', 'src/app/(routes)/7-day-himachal-tour-by-car', 'src/app/(routes)/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur'],
+  'day-trip': ['src/app/(routes)/agra-day-trip-from-delhi', 'src/app/(routes)/agra-in-1-day-itinerary', 'src/app/(routes)/ayodhya-1-day-package'],
+  'blog': ['src/utilis/blog'],
+  'tempo': ['src/utilis/tempoTravellerData.js'],
+  'bus-routes': ['src/utilis/busRoutesData.js'],
+  'religious-tour': ['src/utilis/religiousTourData.js'],
+  'chardham': ['src/utilis/chardhamData.js', 'src/utilis/chardhamYatraData.js'],
+  'tours-with-guide': ['src/utilis/toursWithGuideData.js', 'src/utilis/toursWithGuideEnrichment.js'],
+};
+
+function getCategoryLastmod(category, fallback) {
+  if (_categoryLastmodCache.has(category)) {
+    return _categoryLastmodCache.get(category);
+  }
+  const paths = CATEGORY_FILES[category];
+  if (!paths || paths.length === 0) {
+    _categoryLastmodCache.set(category, fallback);
+    return fallback;
+  }
+  try {
+    const iso = execSync(
+      `git log -1 --format=%cI -- ${paths.join(' ')}`,
+      { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim();
+    if (iso) {
+      const parsed = new Date(iso);
+      if (!Number.isNaN(parsed.getTime())) {
+        _categoryLastmodCache.set(category, parsed);
+        return parsed;
+      }
+    }
+  } catch {
+    // git unavailable — fall through
+  }
+  _categoryLastmodCache.set(category, fallback);
+  return fallback;
+}
+
 export default function sitemap() {
   const baseUrl = 'https://www.trivenicabs.in';
-  // Use a fixed date instead of new Date() — prevents Google from ignoring lastmod signals
-  // Update this date manually when content is actually modified
-  const lastContentUpdate = new Date('2026-03-15');
+  // Derived from `git log` of content dirs; falls back to hardcoded date if git is unavailable.
+  const lastContentUpdate = getLastContentUpdate();
 
   const urls = [
     // Main Pages
@@ -104,6 +205,13 @@ export default function sitemap() {
       lastModified: lastContentUpdate,
       changeFrequency: 'yearly',
       priority: 0.6,
+    },
+    {
+      // /trust — authority/credentials hub (E-E-A-T anchor for AI engines)
+      url: `${baseUrl}/trust`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/faq`,
@@ -300,6 +408,14 @@ export default function sitemap() {
       priority: 0.85,
     },
 
+    // Per-Seater Tempo Traveller Landing Pages (head-term keywords)
+    ...['12', '16', '17', '20', '26'].map((s) => ({
+      url: `${baseUrl}/${s}-seater-tempo-traveller`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })),
+
     // Policy Pages
     {
       url: `${baseUrl}/privacy-policy`,
@@ -381,6 +497,22 @@ export default function sitemap() {
     { url: `${baseUrl}/reviews`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/search`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.5 },
 
+    // Category Hub Pages (added Jun 29 2026 — fix bare-category 404s + head-term landing hubs)
+    { url: `${baseUrl}/distance`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/toll-cost`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/cab-service`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/round-trip`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/taxi-fare`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/travel-by-car`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/travel-options`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/how-to-reach`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/best-time-to-visit`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/bus-vs-cab`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${baseUrl}/train-taxi`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/packages`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/road-trip`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.75 },
+    { url: `${baseUrl}/tour-package`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.8 },
+
     // Phase 2: Same Day Agra Tours - HIGH PRIORITY CONTENT
     { url: `${baseUrl}/same-day-agra-tour-from-delhi`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/same-day-taj-mahal-tour`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
@@ -401,6 +533,9 @@ export default function sitemap() {
     { url: `${baseUrl}/same-day-haridwar-from-delhi`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/same-day-haridwar-rishikesh-from-delhi`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/same-day-shimla-from-chandigarh`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/same-day-kasauli-from-chandigarh`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/same-day-dharamshala-from-chandigarh`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/same-day-chail-from-chandigarh`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/same-day-amritsar-from-chandigarh`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/same-day-fatehpur-sikri-from-agra`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/same-day-gwalior-from-agra`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
@@ -433,6 +568,7 @@ export default function sitemap() {
     // Phase 6: International Tourist Pages - HIGH PRIORITY CONTENT
     { url: `${baseUrl}/private-driver-hire-india`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/golden-triangle-english-speaking-driver`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/golden-triangle-tour-from-chandigarh`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/safe-travel-india-for-tourists`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/india-road-trip-guide-for-tourists`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/delhi-airport-to-agra-taxi`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.9 },
@@ -668,6 +804,18 @@ export default function sitemap() {
     });
   });
 
+  // Corporate City × (Industry + Use-case) combo pages (126 long-tail B2B pages)
+  corporateCitySlugs.forEach(citySlug => {
+    [...corporateIndustrySlugs, ...corporateUseCaseSlugs].forEach(subSlug => {
+      urls.push({
+        url: `${baseUrl}/corporate-transportation-service/${citySlug}/${subSlug}`,
+        lastModified: lastContentUpdate,
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      });
+    });
+  });
+
   // Add Event Transportation Type Pages - HIGH PRIORITY CONTENT
   eventTypeSlugs.forEach(eventSlug => {
     urls.push({
@@ -685,6 +833,28 @@ export default function sitemap() {
       lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.85,
+    });
+  });
+
+  // Add Event Type × City combo pages (long-tail "{event} in {city}")
+  eventTypeSlugs.forEach(eventSlug => {
+    eventCitySlugs.forEach(citySlug => {
+      urls.push({
+        url: `${baseUrl}/event-transportation-service/${eventSlug}/${citySlug}`,
+        lastModified: lastContentUpdate,
+        changeFrequency: 'monthly',
+        priority: 0.8,
+      });
+    });
+  });
+
+  // Add Vehicle-for-Event landing pages
+  ['luxury-bus-for-events', 'tempo-traveller-for-events', 'luxury-car-for-events'].forEach(vSlug => {
+    urls.push({
+      url: `${baseUrl}/${vSlug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     });
   });
 
@@ -711,7 +881,7 @@ export default function sitemap() {
   });
 
   // Add Places to Visit Near [City] Pages - HIGH PRIORITY CONTENT
-  const placesToVisitCities = ['delhi', 'agra', 'jaipur', 'chandigarh', 'lucknow', 'varanasi', 'dehradun', 'amritsar', 'noida', 'gurgaon', 'haridwar', 'shimla', 'udaipur', 'mathura', 'rishikesh'];
+  const placesToVisitCities = ['delhi', 'agra', 'jaipur', 'chandigarh', 'lucknow', 'varanasi', 'dehradun', 'amritsar', 'noida', 'gurgaon', 'haridwar', 'shimla', 'udaipur', 'mathura', 'rishikesh', 'ghaziabad'];
   placesToVisitCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/places-to-visit-near-${city}`,
@@ -745,8 +915,10 @@ export default function sitemap() {
     'delhi-airport-to-gurgaon-cab', 'delhi-airport-to-amritsar-taxi', 'delhi-airport-to-lucknow-taxi',
     'jaipur-airport-to-udaipur-taxi', 'jaipur-airport-to-pushkar-taxi', 'jaipur-airport-to-agra-taxi',
     'chandigarh-airport-to-shimla-taxi', 'chandigarh-airport-to-manali-taxi',
+    'chandigarh-airport-to-kasauli-taxi', 'chandigarh-airport-to-dharamshala-taxi', 'chandigarh-airport-to-dalhousie-taxi', 'chandigarh-airport-to-amritsar-taxi',
     'dehradun-airport-to-mussoorie-taxi', 'dehradun-airport-to-haridwar-taxi', 'dehradun-airport-to-rishikesh-taxi',
     'amritsar-airport-to-city-taxi', 'srinagar-airport-to-gulmarg-taxi', 'srinagar-airport-to-pahalgam-taxi',
+    'udaipur-airport-to-city-taxi', 'jaipur-airport-to-city-taxi',
   ];
   airportOutstationSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
@@ -778,7 +950,7 @@ export default function sitemap() {
     'family-trip-shimla-from-delhi', 'family-trip-manali-from-delhi', 'family-trip-mussoorie-from-delhi',
     'family-trip-nainital-from-delhi', 'family-trip-jaipur-from-delhi', 'family-trip-agra-from-delhi',
     'family-trip-kashmir-from-delhi', 'family-trip-rishikesh-from-delhi', 'family-trip-udaipur-from-delhi',
-    'family-trip-jim-corbett-from-delhi',
+    'family-trip-jim-corbett-from-delhi', 'family-trip-auli-from-delhi', 'family-trip-chopta-from-delhi',
   ];
   familyTripSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
@@ -798,6 +970,7 @@ export default function sitemap() {
   const friendsTripSlugs = [
     'friends-trip-rishikesh', 'friends-trip-manali', 'friends-trip-kasol',
     'friends-trip-jaisalmer', 'friends-trip-goa-from-delhi',
+    'friends-trip-spiti', 'friends-trip-tirthan-valley', 'friends-trip-jibhi',
   ];
   friendsTripSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
@@ -813,6 +986,15 @@ export default function sitemap() {
     'navratri-vaishno-devi-cab', 'pushkar-mela-transport', 'chhath-puja-varanasi-transport',
     'maha-shivratri-pilgrimage-cab', 'baisakhi-amritsar-cab', 'christmas-shimla-manali-package',
     'new-year-road-trip-packages', 'summer-hill-station-packages', 'winter-snow-trip-packages',
+    // ── August/September 2026 season expansion (15 pages) ──
+    'janmashtami-mathura-vrindavan-cab', 'raksha-bandhan-cab-service',
+    'independence-day-weekend-packages-2026', 'ganesh-chaturthi-transport',
+    'hariyali-teej-jaipur-cab', 'monsoon-road-trip-packages',
+    'monsoon-hill-station-packages', 'valley-of-flowers-trek-from-delhi',
+    'spiti-valley-august-trip', 'kashmir-in-september',
+    'leh-ladakh-august-september-trip', 'chardham-yatra-september-2026',
+    'kedarnath-september-trip', 'august-long-weekend-getaways-delhi',
+    'september-long-weekend-trips-2026',
   ];
   festivalSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
@@ -864,6 +1046,9 @@ export default function sitemap() {
     'rishikesh-travel-guide', 'haridwar-travel-guide', 'kashmir-travel-guide', 'jaisalmer-travel-guide',
     'jodhpur-travel-guide', 'mathura-vrindavan-travel-guide', 'dharamshala-travel-guide',
     'mussoorie-travel-guide', 'nainital-travel-guide',
+    // Week 39 guide expansion
+    'ayodhya-travel-guide', 'pushkar-travel-guide', 'ajmer-travel-guide',
+    'dehradun-travel-guide', 'mount-abu-travel-guide', 'dalhousie-travel-guide',
   ];
   travelGuideSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
@@ -982,10 +1167,20 @@ export default function sitemap() {
     });
   });
 
-  // How-to-Reach Origin-Specific Pages (30 routes)
+  // How-to-Reach Origin-Specific Pages (30 routes) - /how-to-reach/{route}
   getAllHowToReachSlugs().forEach((slug) => {
     urls.push({
       url: `${baseUrl}/how-to-reach/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // How-to-Reach City Pages (20 cities) - /how-to-reach-{city}
+  getAllHowToReachCities().forEach((city) => {
+    urls.push({
+      url: `${baseUrl}/how-to-reach-${city}`,
       lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -1118,6 +1313,107 @@ export default function sitemap() {
   getAllMonthSlugs().forEach((slug) => {
     urls.push({
       url: `${baseUrl}/where-to-go/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  });
+
+  // ============= Tours With Guide Section (3 hubs + 80 production pages) =============
+  const toursWithGuideLastmod = getCategoryLastmod('tours-with-guide', lastContentUpdate);
+
+  // H1 — Main hub
+  urls.push({
+    url: `${baseUrl}/tours-with-guide`,
+    lastModified: toursWithGuideLastmod,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  });
+  // H2 — by guide language
+  urls.push({
+    url: `${baseUrl}/tours-with-guide/by-guide-language`,
+    lastModified: toursWithGuideLastmod,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  });
+  // H3 — by vehicle
+  urls.push({
+    url: `${baseUrl}/tours-with-guide/by-vehicle`,
+    lastModified: toursWithGuideLastmod,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  });
+
+  // Group A — vehicle + itinerary (40 pages, priority 0.85)
+  // Groups B + C — language + per-tour×language (10 + 30 pages, priority 0.8)
+  const twgAllSlugs = getAllToursWithGuideSlugs();
+  const twgGroupA = new Set(getToursWithGuideByGroup('A').map(t => t.slug));
+  twgAllSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/tours-with-guide/${slug}`,
+      lastModified: toursWithGuideLastmod,
+      changeFrequency: 'weekly',
+      priority: twgGroupA.has(slug) ? 0.85 : 0.8,
+    });
+  });
+
+  // Airport-to-City Taxi Pages (origin city + destination, individual page.js routes)
+  const airportToCityRoutes = [
+    'delhi-airport-to-aligarh-taxi', 'delhi-airport-to-bareilly-taxi',
+    'delhi-airport-to-faridabad-cab', 'delhi-airport-to-ghaziabad-cab',
+    'delhi-airport-to-karnal-taxi', 'delhi-airport-to-meerut-taxi',
+    'delhi-airport-to-panipat-taxi', 'delhi-airport-to-sonipat-taxi',
+    'jaipur-airport-to-ajmer-taxi', 'jaipur-airport-to-jaisalmer-taxi',
+    'jaipur-airport-to-jodhpur-taxi', 'jaipur-airport-to-ranthambore-taxi',
+    'lucknow-airport-to-ayodhya-taxi', 'lucknow-airport-to-varanasi-taxi',
+    'varanasi-airport-to-ayodhya-taxi', 'varanasi-airport-to-sarnath-taxi',
+  ];
+  airportToCityRoutes.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // Triveni Cabs vs Competitor Comparison Pages
+  const competitorComparisonSlugs = [
+    'triveni-cabs-vs-ola', 'triveni-cabs-vs-uber', 'triveni-cabs-vs-savaari',
+    'triveni-cabs-vs-makemytrip-cabs', 'triveni-cabs-vs-cabbazar',
+  ];
+  competitorComparisonSlugs.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  });
+
+  // Brand Trust / About Triveni Cabs Pages
+  const brandPages = [
+    'why-triveni-cabs', 'triveni-cabs-driver-verification', 'triveni-cabs-fleet',
+    'triveni-cabs-pricing-transparency', 'triveni-cabs-safety-features',
+  ];
+  brandPages.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // Festival / Seasonal Cab Service Pages
+  const seasonalPages = [
+    'guru-purab-amritsar-transport', 'durga-puja-travel-transport',
+    'republic-day-delhi-cab', 'long-weekend-getaway-packages-2026',
+    'summer-vacation-cab-packages-2026', 'christmas-new-year-cab-packages',
+  ];
+  seasonalPages.forEach(slug => {
+    urls.push({
+      url: `${baseUrl}/${slug}`,
       lastModified: lastContentUpdate,
       changeFrequency: 'monthly',
       priority: 0.7,

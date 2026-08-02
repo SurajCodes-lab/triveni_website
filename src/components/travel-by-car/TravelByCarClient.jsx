@@ -9,11 +9,22 @@ import {
   ChevronDown, Info, Sparkles, Award,
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+// Rich UI + ranking-lift components added May 2026
+import InfographicPanel from '@/components/seo/InfographicPanel';
+import PriceCalculator from '@/components/seo/PriceCalculator';
+import OutboundCitations from '@/components/seo/OutboundCitations';
+import ExpertQuote from '@/components/seo/ExpertQuote';
+import LongTailFAQ from '@/components/seo/LongTailFAQ';
+import { getCitationsForRoute } from '@/utilis/outboundCitations';
+import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
+import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
@@ -36,6 +47,17 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
   const [expandedSeg, setExpandedSeg] = useState(0);
   const [activeSeason, setActiveSeason] = useState('winter');
   const whatsappMsg = `Hi, I want to book a cab from ${route.origin} to ${route.destination} (${route.totalDistance} km)`;
+  // Phase 3: unique, entity-rich, slug-seeded intro so each travel-by-car page reads differently.
+  const uniqueIntro = generateUniqueIntro({
+    origin: route.origin,
+    destination: route.destination,
+    distance: `${route.totalDistance} km`,
+    time: route.drivingTime,
+    highway: route.highway,
+    attractions: (route.attractions || route.topAttractions || []),
+    vehicleType: route.bestCarType || 'AC sedan or SUV',
+    slug: route.slug || `${route.origin}-to-${route.destination}`,
+  });
   const heroImage = getCityImage(route.destination) || getCityImage(route.origin);
   const totalSegDist = route.roadMap.reduce((s, r) => s + r.distance, 0) || route.totalDistance;
 
@@ -47,12 +69,17 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <style jsx global>{`
+        .tbc-serif { font-family: Georgia, 'Times New Roman', serif; }
+      `}</style>
 
       {/* ━━━ HERO: Full-bleed immersive photo ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
-        <Image src={heroImage} alt={`Drive ${route.origin} to ${route.destination}`} fill priority className="object-cover" sizes="100vw" quality={85} placeholder="blur" blurDataURL={heroBlurDataURL} />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+        <Image src={heroImage} alt={`Drive ${route.origin} to ${route.destination}`} fill priority className="object-cover scale-105" sizes="100vw" quality={85} placeholder="blur" blurDataURL={heroBlurDataURL} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/15" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-emerald-950/40 via-transparent to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-emerald-400 z-20" />
+        <div className="absolute bottom-1/4 left-[6%] w-72 h-72 bg-emerald-500/15 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pb-8 sm:pb-12">
           {/* Breadcrumb */}
@@ -67,18 +94,29 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
           {/* Split layout: content left, stat card right */}
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
+              <div className="inline-flex items-center gap-2 bg-emerald-500/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-emerald-400/25 mb-5">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <Car className="w-3.5 h-3.5 text-[#FACF2D]" />
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Road Trip Guide</span>
               </div>
-              <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">Drive</p>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
-                {route.origin}<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-emerald-400">
-                  {route.destination}
+              <p className="tbc-serif text-emerald-200/70 text-base sm:text-lg italic mb-2">Drive</p>
+              <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+                {route.origin} to {route.destination}<br />
+                <span className="tbc-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-300 to-emerald-400">
+                  by Car
                 </span>
               </h1>
-              <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{route.bestRoute}</p>
+              {/* Route badge */}
+              <div className="inline-flex items-center gap-2.5 mt-4 text-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
+                <span className="inline-flex items-center gap-1.5 font-bold text-white"><MapPin className="w-3.5 h-3.5 text-[#FACF2D]" />{route.origin}</span>
+                <span className="flex items-center gap-1" aria-hidden="true">
+                  <span className="w-8 h-px bg-gradient-to-r from-[#FACF2D]/70 to-emerald-400/70" />
+                  <ArrowRight className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="w-8 h-px bg-gradient-to-l from-emerald-400/70 to-[#FACF2D]/70" />
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-bold text-emerald-300"><MapPin className="w-3.5 h-3.5 text-emerald-400" />{route.destination}</span>
+              </div>
+              <p className="text-white/45 mt-3 text-sm sm:text-base max-w-lg leading-relaxed">{route.totalDistance} km &middot; {route.drivingTime} drive &middot; cab from <span className="text-[#FACF2D] font-bold">{route.cabFares.sedan}</span></p>
 
               <div className="flex flex-wrap gap-3 mt-6">
                 <a onClick={() => trackPhoneCall('travel_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
@@ -90,16 +128,16 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
               </div>
             </div>
 
-            {/* Right: floating stat card */}
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
+            {/* Right: floating stat card — gold-trimmed */}
+            <div className="bg-white/10 backdrop-blur-xl border border-[#FACF2D]/30 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0 shadow-2xl shadow-emerald-950/30">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Distance</p>
-                  <p className="text-3xl font-black text-white leading-tight">{route.totalDistance}<span className="text-lg text-white/40 ml-0.5">km</span></p>
+                  <p className="text-3xl font-black leading-tight bg-clip-text text-transparent bg-gradient-to-br from-[#FACF2D] to-amber-200">{route.totalDistance}<span className="text-lg text-white/40 ml-0.5">km</span></p>
                 </div>
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Drive Time</p>
-                  <p className="text-3xl font-black text-white leading-tight">{route.drivingTime.split('-')[0].trim()}<span className="text-lg text-white/40 ml-0.5">hrs</span></p>
+                  <p className="text-3xl font-black leading-tight bg-clip-text text-transparent bg-gradient-to-br from-emerald-300 to-emerald-400">{route.drivingTime.split('-')[0].trim()}<span className="text-lg text-white/40 ml-0.5">hrs</span></p>
                 </div>
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Highway</p>
@@ -117,6 +155,38 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
                 <span className="text-[11px] text-white/40 font-medium">4.9 · 10,000+ trips</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━ DIRECT-ANSWER LEAD: voice + featured-snippet target ━━━ */}
+      <section className="bg-white py-8 sm:py-10 px-4 sm:px-6 border-b border-slate-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-lg sm:text-xl font-black text-slate-900 mb-2">
+            How far is {route.destination} from {route.origin} by car?
+          </h2>
+          <p className="speakable-lead text-slate-600 text-sm sm:text-base leading-relaxed">
+            {route.destination} is approximately <strong className="text-slate-900">{route.totalDistance} km from {route.origin}</strong> by road,
+            a drive of about <strong className="text-slate-900">{route.drivingTime}</strong> depending on traffic and stops.
+            The recommended vehicle is a <strong className="text-slate-900">{route.bestCarType}</strong>, and a one-way AC cab
+            starts at <strong className="text-slate-900">{route.cabFares.sedan}</strong> (sedan), {route.cabFares.suv} (SUV),
+            or {route.cabFares.tempo} (tempo). Toll and state tax are extra. Start by 5-6 AM for the smoothest run.
+          </p>
+          {uniqueIntro && (
+            <p className="mt-3 text-slate-500 text-sm sm:text-base leading-relaxed">
+              {uniqueIntro}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-2 mt-4">
+            <Link href={`/distance/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+              <Route className="w-3.5 h-3.5" /> {route.origin}-{route.destination} distance &amp; time
+            </Link>
+            <Link href={`/one-way-cab/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+              <Car className="w-3.5 h-3.5" /> One-way cab {route.origin} to {route.destination}
+            </Link>
+            <Link href={`/toll-cost/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+              <MapPin className="w-3.5 h-3.5" /> {route.origin} to {route.destination} toll cost
+            </Link>
           </div>
         </div>
       </section>
@@ -167,6 +237,11 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
                 <span className="text-[10px] text-white/40 font-medium">{q.label}</span>
               </div>
             ))}
+          </div>
+
+          {/* Lead capture form */}
+          <div className="mt-8 flex justify-center">
+            <QuickEnquiryForm fromCity={route.origin} toCity={route.destination} pageType="route" />
           </div>
         </div>
       </section>
@@ -246,11 +321,11 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
             {[
               { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: route.cabFares.sedan, seats: '4', perKm: '₹11/km', img: '/images/car/swift_dzire.jpg', pop: false },
               { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '₹14/km', img: '/images/car/innova_crysta.jpg', pop: true },
-              { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '₹20/km', img: '/images/car/premium_suv.jpg', pop: false },
+              { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '₹20/km', img: '/images/tempo/12_seater.jpg', pop: false },
             ].map((v, i) => (
               <ScrollReveal key={i} stagger={i * 100}>
-                <div className={`relative rounded-2xl overflow-hidden group ${v.pop ? 'ring-2 ring-[#FACF2D]/50' : ''}`}>
-                  {v.pop && <div className="bg-[#FACF2D] text-center py-1.5"><span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Most Popular</span></div>}
+                <div className={`relative rounded-2xl overflow-hidden group ${v.pop ? 'ring-2 ring-[#FACF2D]/60 shadow-2xl shadow-amber-500/20' : 'ring-1 ring-white/10'}`}>
+                  {v.pop && <div className="bg-gradient-to-r from-[#FACF2D] to-amber-400 text-center py-1.5"><span className="inline-flex items-center gap-1 text-[10px] font-black text-slate-900 uppercase tracking-widest"><Star className="w-3 h-3 fill-slate-900" /> Most Popular</span></div>}
                   <div className="relative h-36 sm:h-40">
                     <Image src={v.img} alt={v.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
@@ -263,7 +338,7 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
                     <div className="flex items-end justify-between mb-4">
                       <div>
                         <p className="text-[10px] text-white/30 uppercase tracking-wider">Starting from</p>
-                        <p className="text-2xl sm:text-3xl font-black text-white">{v.fare}</p>
+                        <p className="text-2xl sm:text-3xl font-black bg-clip-text text-transparent bg-gradient-to-br from-white to-amber-100">{v.fare}</p>
                       </div>
                       <span className="text-xs text-white/30 font-medium">{v.perKm}</span>
                     </div>
@@ -285,6 +360,13 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+
+      {/* Ornament divider */}
+      <div className="flex items-center justify-center gap-3 py-4" aria-hidden="true">
+        <span className="h-px w-12 bg-gradient-to-r from-transparent to-emerald-300" />
+        <Navigation className="w-4 h-4 text-emerald-500" />
+        <span className="h-px w-12 bg-gradient-to-l from-transparent to-emerald-300" />
+      </div>
 
       {/* ━━━ SEASON TABS + TIPS: Bento asymmetric ━━━ */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
@@ -392,7 +474,19 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
         </div>
       </section>
 
+      {/* ━━━ RICH UI: Infographic + Calculator + Quote + Long-Tail FAQ + Citations ━━━ */}
+      <TravelByCarRichBlock route={route} />
+
       {/* ━━━ FAQ ━━━ */}
+      {route.faqs && route.faqs.length > 0 && (
+        <section className="bg-gray-50 pt-12 sm:pt-16 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl border border-slate-200 p-5">
+            <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1.5">Quick Answer</p>
+            <p className="font-bold text-slate-900 text-sm mb-1.5">{route.faqs[0].question}</p>
+            <p className="speakable-faq-first text-slate-600 text-sm leading-relaxed">{route.faqs[0].answer}</p>
+          </div>
+        </section>
+      )}
       <FaqAccordion heading={`${route.origin} to ${route.destination} Road Trip FAQs`} faqs={route.faqs} />
 
       {/* ━━━ RELATED ━━━ */}
@@ -424,7 +518,97 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
       )}
 
       <CTASection heading={`Book ${route.origin} to ${route.destination} Cab`} subheading={`${route.totalDistance} km · From ${route.cabFares.sedan} · AC vehicles, verified drivers, 24/7 support`} />
-      <MobileStickyBar />
+
+      <SetStickyCta
+        price={route.cabFares?.sedan}
+        label={`${route.origin} → ${route.destination}`}
+        whatsappText={whatsappMsg}
+      />
+    </div>
+  );
+}
+
+function TravelByCarRichBlock({ route }) {
+  const distanceKm = route.totalDistance || 250;
+  const sedanFareNum = parseInt((route.cabFares?.sedan || '').replace(/[^0-9]/g, ''), 10) || 4000;
+  const drivingHours = parseFloat((route.drivingTime || '5').toString().replace(/[^0-9.]/g, '')) || 5;
+  const stats = [
+    { value: distanceKm, suffix: ' km', label: 'Total distance', sublabel: 'one-way' },
+    { value: drivingHours, suffix: ' hr', label: 'Driving time', sublabel: 'plus stops', format: 'decimal' },
+    { value: sedanFareNum, prefix: '₹', label: 'Sedan from', sublabel: 'all-inclusive', format: 'compact' },
+    { value: route.fuelStops?.length || 3, label: 'Fuel stops', sublabel: 'recommended en-route' },
+  ];
+
+  const longTailFaqs = generateLongTailFaqs({
+    mode: 'travel-by-car',
+    origin: route.origin,
+    destination: route.destination,
+    distanceKm,
+    durationText: route.drivingTime,
+    sedanFare: route.cabFares?.sedan,
+    suvFare: route.cabFares?.suv,
+    tempoFare: route.cabFares?.tempo,
+    highway: route.highway,
+  });
+
+  const founderQuote = getFounderQuoteForContext('travel-by-car');
+  const citations = getCitationsForRoute({ from: route.origin, to: route.destination, context: 'outstation' });
+
+  return (
+    <div className="bg-slate-950 text-white">
+      <section className="py-12 md:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+          <div className="lg:col-span-3">
+            <InfographicPanel
+              title={`The ${route.origin} to ${route.destination} road trip by the numbers`}
+              subtitle="Distance, driving time, fuel stop counts and indicative fares verified weekly against our drivers' actual route runs."
+              stats={stats}
+              tone="emerald"
+            />
+          </div>
+          <div className="lg:col-span-2">
+            <PriceCalculator
+              distanceKm={distanceKm}
+              mode="one-way"
+              vehicles={[
+                { key: 'sedan', label: 'Sedan', ratePerKm: 11 },
+                { key: 'suv', label: 'SUV', ratePerKm: 14 },
+                { key: 'tempo12', label: '12-Seater', ratePerKm: 20 },
+                { key: 'tempo17', label: '17-Seater', ratePerKm: 24 },
+              ]}
+              tone="emerald"
+              originName={route.origin}
+              destinationName={route.destination}
+            />
+          </div>
+        </div>
+      </section>
+
+      {founderQuote && (
+        <section className="py-10 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <ExpertQuote quote={founderQuote.quote} authorName={founderQuote.author} authorTitle={founderQuote.title} authorOrg={founderQuote.org} tone="dark" />
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-emerald-400 font-semibold text-sm tracking-widest uppercase">Road Trip Q&amp;A</span>
+            <h2 className="text-2xl sm:text-4xl font-black mt-3 tracking-tight">More about driving from {route.origin} to {route.destination}</h2>
+          </div>
+          <LongTailFAQ faqs={longTailFaqs} tone="dark" />
+        </div>
+      </section>
+
+      {citations.length > 0 && (
+        <section className="py-12 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <OutboundCitations sources={citations} tone="dark" heading="Verified against these sources" />
+          </div>
+        </section>
+      )}
     </div>
   );
 }

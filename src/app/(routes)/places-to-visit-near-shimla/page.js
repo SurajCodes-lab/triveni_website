@@ -4,10 +4,10 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.shimla;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Shimla by Car | Himalayan Trails | Book Cab',
+  title: '15+ Places to Visit Near Shimla by Car | Himalayan Trails',
   description: `Best places to visit near Shimla by car. Kufri (15 km), Chail (45 km), Narkanda (65 km), Manali (260 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near shimla, places near shimla, day trips from shimla, weekend getaways from shimla, shimla nearby places, hill stations near shimla, places around shimla, tourist places near shimla',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

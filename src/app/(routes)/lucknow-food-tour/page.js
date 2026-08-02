@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Lucknow Food Tour 2026 | Tunday Kebab, Biryani & Awadhi Cuisine Guide',
-  description: 'Lucknow food & culinary tour. Famous Tunday Kebab, Lucknowi Biryani, Galawati Kebab, Basket Chaat, Makkhan Malai. Street food itinerary, best restaurants. By Lucknow locals. Call 7668570551.',
+  title: 'Lucknow Food Tour 2026 | Tunday Kebab & Awadhi Cuisine',
+  description: 'Lucknow food & culinary tour. Famous Tunday Kebab, Lucknowi Biryani, Galawati Kebab, Basket Chaat, Makkhan Malai. Street food itinerary, best restaurants.',
   keywords: 'lucknow food tour, lucknow street food, tunday kebab, lucknowi biryani, galawati kebab, basket chaat, awadhi cuisine, lucknow food guide, chowk lucknow food',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function LucknowFoodTourPage() {
     { question: "What is Makkhan Malai?", answer: "Makkhan Malai (also called Nimish or Malaiyo) is a winter-only Lucknowi dessert. Light, airy milk foam flavoured with saffron, cardamom, and pistachios. Available only November to February, sold by roadside vendors in the morning. It literally melts on your tongue." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function LucknowFoodTourPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const famousFoods = [
     { name: "Tunday Kebab", desc: "Lucknow&apos;s most legendary dish. Melt-in-your-mouth minced meat kebabs made with 160 spices — a recipe perfected since 1905 by Haji Murad Ali (who had one hand, hence &apos;Tunday&apos;). The original Chowk shop is a pilgrimage for food lovers.", price: "₹100-200 per plate", mustTry: true, heat: 2 },
@@ -106,6 +107,19 @@ export default function LucknowFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "lucknow-food-tour",
+    headline: "Lucknow Food Tour 2026 — Best Street Food, Restaurants & Local Specialties",
+    description: "Complete Lucknow food tour. Local specialties, street food trails, best restaurants, dessert spots, regional cuisine highlights, where to eat in Lucknow.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("lucknow", { idSlug: "lucknow-food-tour" });
+
 
   return (
     <>
@@ -123,6 +137,8 @@ export default function LucknowFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

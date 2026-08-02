@@ -3,10 +3,10 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-bharatpur-from-agra');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Bharatpur Bird Sanctuary Tour from Agra | ₹2,000 AC Cab | 2026',
+  title: 'Same Day Bharatpur Tour from Agra | ₹2,000 AC Cab | 2026',
   description: 'Book same day Bharatpur tour from Agra. Keoladeo National Park bird sanctuary, Lohagarh Fort. 55 km. AC sedan ₹2,000. Call 7668570551.',
   keywords: 'same day bharatpur tour from agra, agra to bharatpur bird sanctuary, keoladeo national park day trip, bharatpur cab from agra',
   authors: [{ name: 'Triveni Cabs' }],

@@ -401,6 +401,16 @@ export const bestTimeToVisitData = {
     festivals: [
       { name: 'Spring Festival', month: 'March/April', description: 'Local spring celebrations with folk music and dances in Parvati Valley villages.' },
     ],
+    extraFaqs: [
+      {
+        question: 'What is the best time to visit Kasol?',
+        answer: 'The best time to visit Kasol is March to June and September to November. March to June brings clear Parvati Valley weather at 8-25 degrees Celsius, with the Kheerganga trek open and riverside camping at its best. September to November is quieter after the monsoon, with crisp air and good visibility. Avoid July and August, when heavy rain brings flash flood and landslide risk in the valley, and expect snow with sub-zero nights from December to February.',
+      },
+      {
+        question: 'Which month is best for the Kheerganga trek from Kasol?',
+        answer: 'April to June and September to October are the best months for the Kheerganga trek. The trail is open, dry and safe in these windows. The trek closes through the July-August monsoon because of landslides, and again in deep winter from December to February when snow covers the route above Barshaini.',
+      },
+    ],
   },
   Pushkar: {
     overview: 'Pushkar is best November to February for pleasant weather. The legendary Pushkar Camel Fair in November is a once-in-a-lifetime experience.',
@@ -753,25 +763,107 @@ const targetSlugs = [
   'badrinath', 'jodhpur', 'jaisalmer', 'kasol', 'mcleodganj', 'ranthambore', 'mount-abu'
 ];
 
-const defaultFaqs = (dest) => [
-  { question: `What is the best time to visit ${dest}?`, answer: `The best months to visit ${dest} are during the peak season when weather is pleasant and most attractions are accessible. Check the seasonal guide above for month-by-month details.` },
-  { question: `Is ${dest} good to visit in monsoon?`, answer: `Monsoon season brings rainfall which can affect outdoor activities. However, the scenery is lush and green, and prices are lower. Carry rain gear if visiting during July-September.` },
-  { question: `What is the cheapest time to visit ${dest}?`, answer: `Off-season months offer the best hotel and cab rates. You can save 30-50% on accommodation and travel during the low season.` },
-  { question: `How many days are enough for ${dest}?`, answer: `A typical visit to ${dest} requires 2-4 days to cover the major attractions comfortably. Check our itinerary guide for detailed day-wise plans.` },
-  { question: `Can I book a cab for ${dest} sightseeing?`, answer: `Yes, Triveni Cabs offers local taxi packages and outstation cabs for ${dest}. AC sedan from ₹11/km, SUV from ₹14/km. Call 7668570551 or WhatsApp for instant booking.` },
-  { question: `What should I pack when visiting ${dest}?`, answer: `Packing depends on the season. Check the weather guide above for temperature ranges. Generally carry layers, comfortable walking shoes, and sunscreen.` },
-];
+// Destination-aware FAQs. Expanded from 6 generic → 14 question set that pulls
+// real data from the destination (peak/off season, ideal duration, first festival,
+// seasons) so each destination page has unique long-tail answers and AI-Overview-
+// extractable content. One function edit propagates to all 40+ destination pages.
+const defaultFaqs = (dest, data = {}) => {
+  const peak = data.peakSeason || 'peak season';
+  const off = data.offSeason || 'off season';
+  const duration = data.idealDuration || '2-3 days';
+  const firstFestival = data.festivals?.[0]?.name;
+  const firstFestivalMonth = data.festivals?.[0]?.month;
+  const recommendedMonths = data.recommendedMonths?.slice(0, 3).join(', ') || 'October-March';
+  const winterSeason = data.seasons?.find(s => s.name?.toLowerCase().includes('winter'));
+  const summerSeason = data.seasons?.find(s => s.name?.toLowerCase().includes('summer'));
+  const monsoonSeason = data.seasons?.find(s => s.name?.toLowerCase().includes('monsoon'));
+
+  return [
+    {
+      question: `What is the best time to visit ${dest}?`,
+      answer: `The best time to visit ${dest} is during ${peak} (${recommendedMonths}). Weather is pleasant, all attractions are fully accessible, and it's the most comfortable season for sightseeing. Avoid ${off} unless you prefer fewer crowds and budget pricing.`,
+    },
+    {
+      question: `Is ${dest} good to visit in monsoon (July-September)?`,
+      answer: monsoonSeason
+        ? `Monsoon in ${dest} (${monsoonSeason.temp}): ${monsoonSeason.description} Crowds are ${monsoonSeason.crowd?.toLowerCase?.() || 'low'}, pricing is ${monsoonSeason.pricing?.toLowerCase?.() || 'budget'}. Carry rain gear and expect some slippery conditions at outdoor sites.`
+        : `Monsoon season in ${dest} brings moderate rainfall. Scenery is lush and lower crowds mean cheaper hotels and cabs — but carry rain gear and expect some attractions may be affected.`,
+    },
+    {
+      question: `What is the cheapest time to visit ${dest}?`,
+      answer: `The cheapest time to visit ${dest} is ${off}. You'll save 30-50% on hotels and 15-20% on cab rates compared to ${peak}. Triveni Cabs rates stay transparent year-round — no surge pricing. Call 7668570551 for the current rate on your dates.`,
+    },
+    {
+      question: `How many days are enough for ${dest}?`,
+      answer: `${duration} is ideal for ${dest}. This covers the major attractions at a relaxed pace with time for local food and shopping. Add 1-2 extra days if you want to include nearby day trips. Book a multi-day cab with Triveni for flexible itineraries and the same driver throughout.`,
+    },
+    {
+      question: `Is it too hot to visit ${dest} in summer (April-June)?`,
+      answer: summerSeason
+        ? `Summer in ${dest} (${summerSeason.temp}): ${summerSeason.description} If you must travel, plan outdoor activities for early morning and evening. All Triveni cabs are fully AC and fuel is included — no summer surge.`
+        : `Summer in ${dest} is hot. Outdoor sightseeing is uncomfortable midday. Plan activities at sunrise or after 4 PM. AC cabs essential — Triveni Cabs AC sedans start at ₹11/km.`,
+    },
+    {
+      question: `How cold does ${dest} get in winter (December-February)?`,
+      answer: winterSeason
+        ? `Winter in ${dest} (${winterSeason.temp}): ${winterSeason.description} Pack layers, a warm jacket, and expect chilly mornings. Most travelers consider this the most atmospheric time to visit.`
+        : `Winter in ${dest} is cool to cold. Pack layers and a warm jacket. Early morning and late evening are coldest. Most attractions remain open. AC cab heaters are standard in Triveni Cabs.`,
+    },
+    {
+      question: firstFestival ? `Should I plan my ${dest} trip around ${firstFestival}?` : `Does ${dest} have major festivals worth planning around?`,
+      answer: firstFestival
+        ? `${firstFestival} (${firstFestivalMonth}) is one of ${dest}'s biggest festivals and a powerful reason to visit — but hotels book out 2-3 months in advance and rates rise 30-60%. Book your Triveni cab early to lock in the standard rate. Some routes see heavy traffic; allow an extra hour buffer.`
+        : `${dest} hosts cultural and regional festivals throughout the year. Check the Festivals section above for dates. Festival weeks bring higher hotel prices and crowds — book Triveni cabs early to lock in standard rates.`,
+    },
+    {
+      question: `What should I pack when visiting ${dest}?`,
+      answer: `Pack for ${peak}: comfortable walking shoes, sun hat, sunscreen, a refillable water bottle, and a light jacket for mornings/evenings. Check the weather guide above for the specific month. Cabs have ample luggage space — no need to over-pack.`,
+    },
+    {
+      question: `Can I book a cab from Delhi, Agra, or Jaipur to ${dest}?`,
+      answer: `Yes — Triveni Cabs operates one-way and round-trip cabs from Delhi, Agra, Jaipur, Chandigarh, and other major North India hubs to ${dest}. Sedan ₹11/km, SUV ₹14/km, Tempo Traveller ₹24/km. Toll, fuel, and driver allowance included. Book at 7668570551 or WhatsApp for instant quote.`,
+    },
+    {
+      question: `Is ${dest} good for a weekend trip?`,
+      answer: `${dest} works for a 2-day weekend trip if you start early Friday or Saturday morning. Triveni's one-way cabs let you book the outbound leg only — save 50% versus a traditional round trip. For a weekend that feels relaxed, consider ${duration.includes('1-2') ? 'adding Friday night' : 'starting Thursday night or leaving Monday morning'}.`,
+    },
+    {
+      question: `Is ${dest} safe for solo travelers and women?`,
+      answer: `${dest} is generally safe for solo and women travelers during daytime, especially in tourist areas. For cab travel, Triveni provides driver photo + live GPS share with family, verified drivers, and 24/7 support. Preferred for women solo travelers — driver details and car number are shared in advance via WhatsApp.`,
+    },
+    {
+      question: `How reliable is the weather in ${dest} during ${peak}?`,
+      answer: `Weather during ${peak} in ${dest} is historically stable — clear skies, predictable temperatures, minimal rain disruption. This is exactly why ${recommendedMonths} are recommended. Check a 10-day forecast 2 weeks before travel for final confirmation.`,
+    },
+    {
+      question: `Which is better for ${dest} — self-drive, train, or cab?`,
+      answer: `Cab wins on flexibility (any stop, any time), comfort (AC, luggage), and group economics (3-6 people share one fare). Self-drive adds fuel, toll, parking, and driver fatigue on long routes. Train is good for fixed point-to-point but no sightseeing flexibility. Triveni's transparent per-km pricing is typically 25-40% cheaper than a traditional package tour.`,
+    },
+    {
+      question: `How far in advance should I book a cab for ${dest}?`,
+      answer: `For ${peak}, book 2-3 weeks in advance to guarantee your preferred vehicle type. For off-season, 3-5 days is enough. Festival weeks (like ${firstFestival || 'local festivals'}) — book 30+ days ahead. Triveni Cabs allows free cancellation up to 2 hours before pickup, so early booking carries no risk.`,
+    },
+  ];
+};
 
 export function getBestTimeData(slug) {
   const dataKey = slugToName[slug];
   if (!dataKey || !bestTimeToVisitData[dataKey]) return null;
   const data = bestTimeToVisitData[dataKey];
   const displayName = slugDisplayNames[slug] || dataKey;
+  // extraFaqs lead: destination-specific, query-matched answers rank above the
+  // generated set. A generated FAQ asking the same question is dropped so the
+  // FAQPage schema never carries a duplicate question.
+  const extraFaqs = data.extraFaqs || [];
+  const overridden = new Set(extraFaqs.map(f => f.question.toLowerCase()));
   return {
     slug,
     destination: displayName,
     ...data,
-    faqs: defaultFaqs(displayName),
+    faqs: [
+      ...extraFaqs,
+      ...defaultFaqs(displayName, data).filter(f => !overridden.has(f.question.toLowerCase())),
+    ],
   };
 }
 

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Navigation, Zap } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Ayodhya Ram Mandir Tour from Lucknow | Sedan ₹3,500 | Same-Day Possible',
+  title: 'Ayodhya Ram Mandir Tour from Lucknow | Sedan ₹3,500 Same-Day',
   description: 'Book Ayodhya Ram Mandir tour from Lucknow. Just 135km, 2.5-3 hrs drive. Sedan ₹3,500, SUV ₹5,000. Same-day return or overnight. Call 7668570551.',
+  keywords: 'ayodhya ram mandir tour from lucknow, tour package india, sightseeing tour, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -17,12 +18,19 @@ export const metadata = {
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-ram-mandir-tour-from-lucknow',
     siteName: 'Triveni Cabs',
+    images: [{
+      url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
+      width: 1200, height: 630,
+      alt: 'Lucknow to Ayodhya Ram Mandir — shortest same-day Darshan cab',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lucknow to Ayodhya Ram Mandir | From ₹3,500',
     description: 'Shortest route to Ayodhya. Same-day possible. AC cab from ₹3,500.',
     site: '@trivenicabs',
+    creator: '@trivenicabs',
+    images: ['/images/sightseeing/Ayodhya/ayodha_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

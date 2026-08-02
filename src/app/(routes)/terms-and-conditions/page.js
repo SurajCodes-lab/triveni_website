@@ -1,6 +1,6 @@
 import TermsClient from "./TermsClient";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Terms & Conditions | Triveni Cabs",
@@ -35,6 +35,24 @@ export const metadata = {
   },
 };
 
+// BreadcrumbList schema — makes the page eligible for breadcrumb SERP display
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+    { "@type": "ListItem", "position": 2, "name": "Terms & Conditions", "item": "https://www.trivenicabs.in/terms-and-conditions" }
+  ]
+};
+
 export default function TermsConditionsPage() {
-  return <TermsClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <TermsClient />
+    </>
+  );
 }

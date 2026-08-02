@@ -137,11 +137,29 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      // HTML pages - long CDN cache (all pages are fully static with revalidate=false)
+      // HTML pages — 1-week CDN cache with 1-day stale-while-revalidate.
+      // Previously s-maxage=31536000 (1 year) which meant content fixes took
+      // up to a year to propagate via the CDN. Cutting to 7 days (604800s)
+      // so editorial fixes reach users within a week while still benefiting
+      // from CDN caching. stale-while-revalidate=86400 means users see the
+      // cached version instantly while a fresh version is fetched in the
+      // background — best of both worlds.
       {
         source: '/:path((?!api|_next|images|fonts).*)',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=31536000, stale-while-revalidate=604800' },
+          { key: 'Cache-Control', value: 'public, s-maxage=604800, stale-while-revalidate=86400' },
+          // Allow Google to display full-size previews, unlimited-length
+          // snippets, and large image thumbnails (critical for travel queries
+          // where rich previews drive CTR). Unlimited video-preview is
+          // harmless because Triveni's travel videos welcome full-frame.
+          { key: 'X-Robots-Tag', value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
+        ],
+      },
+      // Internal search + API routes must never be indexed
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
         ],
       },
     ];

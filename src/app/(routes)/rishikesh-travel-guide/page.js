@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, ArrowRight, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll, Waves, TreePine, Mountain } from '@/components/ui/icons';
 
-export const metadata = { title: 'Rishikesh Travel Guide 2026 | Yoga Capital, Rafting & Ganga Adventures', description: 'Complete Rishikesh travel guide 2026. Yoga Capital of the World, white water rafting, Laxman Jhula, Ram Jhula, Beatles Ashram, Triveni Ghat, Neelkanth Temple. Book cab from Delhi 230 km. Call 7668570551.', keywords: 'rishikesh travel guide, yoga capital of the world, rishikesh rafting, laxman jhula, beatles ashram, triveni ghat rishikesh, neelkanth mahadev temple, delhi to rishikesh cab, rishikesh tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/rishikesh-travel-guide' }, openGraph: { title: 'Rishikesh Travel Guide 2026 | Yoga Capital, Rafting & Ganga Adventures', description: 'Everything about visiting Rishikesh. Yoga capital, rafting, Beatles Ashram, cafes, temples, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/rishikesh-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/rishikesh-hero.jpg', width: 1200, height: 630, alt: 'Rishikesh Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Rishikesh Travel Guide 2026 | Yoga Capital & Ganga Adventures', description: 'Complete Rishikesh guide. Yoga, rafting, ashrams, cafes, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/rishikesh-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Rishikesh Travel Guide 2026: Best Time, Rafting & Cost', description: 'Best time to visit Rishikesh: Sep-Nov & Feb-May for rafting (closed in monsoon). Plan 2-3 days for rafting, bungee, Laxman Jhula, Beatles Ashram & Ganga Aarti. 240 km from Delhi. Call 7668570551.', keywords: 'rishikesh travel guide, yoga capital of the world, rishikesh rafting, laxman jhula, beatles ashram, triveni ghat rishikesh, neelkanth mahadev temple, delhi to rishikesh cab, rishikesh tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/rishikesh-travel-guide' }, openGraph: { title: 'Rishikesh Travel Guide 2026 | Yoga Capital, Rafting & Ganga Adventures', description: 'Everything about visiting Rishikesh. Yoga capital, rafting, Beatles Ashram, cafes, temples, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/rishikesh-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg', width: 1200, height: 630, alt: 'Rishikesh Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Rishikesh Travel Guide 2026 | Yoga Capital & Ganga Adventures', description: 'Complete Rishikesh guide. Yoga, rafting, ashrams, cafes, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function RishikeshTravelGuidePage() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Rishikesh Travel Guide", "item": "https://www.trivenicabs.in/rishikesh-travel-guide" }] };
@@ -18,13 +20,13 @@ export default function RishikeshTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Laxman Jhula", desc: "Iconic 137-metre iron suspension bridge over the Ganga, built in 1930 at the spot where Lord Laxman is believed to have crossed the river on a jute rope. The bridge offers spectacular views of the turquoise Ganga flanked by temples and ashrams on both banks. Currently closed for pedestrian crossing due to structural concerns, but the viewpoint and surrounding temples remain must-visit.", entry: "Free", timing: "Open 24 hours", duration: "30 min - 1 hour", icon: Landmark },
-    { name: "Ram Jhula", desc: "The second famous suspension bridge of Rishikesh, built in 1986, connecting Swargashram on one side to the Sivananda Ashram area on the other. Open to pedestrians and two-wheelers, this bridge offers panoramic views of the temples, ashrams, and the sacred Ganga flowing below.", entry: "Free", timing: "Open 24 hours", duration: "30 min - 1 hour", icon: Landmark },
-    { name: "Triveni Ghat", desc: "The most sacred bathing ghat in Rishikesh, believed to be the confluence of three rivers -- Ganga, Yamuna, and Saraswati. The mesmerizing evening Ganga Aarti here features priests offering fire to the river with chanting, bells, and thousands of floating diyas. Less crowded than Haridwar&apos;s Har Ki Pauri but equally moving.", entry: "Free", timing: "Aarti at 6-7 PM", duration: "1-1.5 hours", icon: Waves },
-    { name: "Beatles Ashram (Chaurasi Kutia)", desc: "The abandoned ashram of Maharishi Mahesh Yogi where The Beatles stayed in 1968 and composed most of the White Album. Now a stunning open-air gallery with vibrant Beatles-themed street art, meditation caves, and architecture being slowly reclaimed by the jungle. A pilgrimage site for music lovers and spiritual seekers alike.", entry: "&#8377;150 Indian / &#8377;600 Foreign", timing: "9:00 AM - 4:00 PM", duration: "1.5-2 hours", icon: Camera },
+    { name: "Laxman Jhula", desc: "Iconic 137-metre iron suspension bridge over the Ganga, built in 1930 at the spot where Lord Laxman is believed to have crossed the river on a jute rope. The bridge offers spectacular views of the turquoise Ganga flanked by temples and ashrams on both banks. Currently closed for pedestrian crossing due to structural concerns, but the viewpoint and surrounding temples remain must-visit.", entry: "Free", timing: "Open 24 hours", duration: "30 min - 1 hour", icon: Landmark, img: "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg" },
+    { name: "Ram Jhula", desc: "The second famous suspension bridge of Rishikesh, built in 1986, connecting Swargashram on one side to the Sivananda Ashram area on the other. Open to pedestrians and two-wheelers, this bridge offers panoramic views of the temples, ashrams, and the sacred Ganga flowing below.", entry: "Free", timing: "Open 24 hours", duration: "30 min - 1 hour", icon: Landmark, img: "/images/sightseeing/Rishikesh/Ram_Jhula.jpg" },
+    { name: "Triveni Ghat", desc: "The most sacred bathing ghat in Rishikesh, believed to be the confluence of three rivers -- Ganga, Yamuna, and Saraswati. The mesmerizing evening Ganga Aarti here features priests offering fire to the river with chanting, bells, and thousands of floating diyas. Less crowded than Haridwar&apos;s Har Ki Pauri but equally moving.", entry: "Free", timing: "Aarti at 6-7 PM", duration: "1-1.5 hours", icon: Waves, img: "/images/sightseeing/Rishikesh/Triveni_Ghat.jpg" },
+    { name: "Beatles Ashram (Chaurasi Kutia)", desc: "The abandoned ashram of Maharishi Mahesh Yogi where The Beatles stayed in 1968 and composed most of the White Album. Now a stunning open-air gallery with vibrant Beatles-themed street art, meditation caves, and architecture being slowly reclaimed by the jungle. A pilgrimage site for music lovers and spiritual seekers alike.", entry: "&#8377;150 Indian / &#8377;600 Foreign", timing: "9:00 AM - 4:00 PM", duration: "1.5-2 hours", icon: Camera, img: "/images/sightseeing/Rishikesh/Beatles_Ashram.jpg" },
     { name: "Neelkanth Mahadev Temple", desc: "Ancient Hindu temple dedicated to Lord Shiva, perched at 1,330 metres in the forested hills above Rishikesh. The name &apos;Neelkanth&apos; (Blue Throat) refers to Shiva drinking the cosmic poison that turned his throat blue. The 32 km drive through dense forest and the Rajaji National Park buffer zone is spectacularly scenic.", entry: "Free", timing: "6:00 AM - 7:00 PM", duration: "3-4 hours (with travel)", icon: Landmark },
     { name: "Rajaji National Park", desc: "One of North India&apos;s finest wildlife sanctuaries spread across 820 sq km of the Shivalik foothills. Home to Asian elephants, Bengal tigers, leopards, king cobras, and over 315 bird species. Jeep safaris available from Chilla and Motichur gates near Rishikesh. Best visited November to June.", entry: "&#8377;150-750 (varies by vehicle)", timing: "6:30 AM - 9:30 AM, 3 PM - 6 PM", duration: "3-4 hours", icon: TreePine },
-    { name: "Shivpuri (White Water Rafting)", desc: "The undisputed adventure capital of Rishikesh, located 16 km upstream. The Shivpuri-to-Rishikesh stretch features Grade 3-4 rapids with names like Roller Coaster, Golf Course, Club House, and Double Trouble. This is the most popular rafting stretch with beach camping options along the riverbank.", entry: "&#8377;1,000-2,500/person", timing: "9:00 AM - 4:00 PM (Sep-Jun)", duration: "3-4 hours", icon: Waves },
+    { name: "Shivpuri (White Water Rafting)", desc: "The undisputed adventure capital of Rishikesh, located 16 km upstream. The Shivpuri-to-Rishikesh stretch features Grade 3-4 rapids with names like Roller Coaster, Golf Course, Club House, and Double Trouble. This is the most popular rafting stretch with beach camping options along the riverbank.", entry: "&#8377;1,000-2,500/person", timing: "9:00 AM - 4:00 PM (Sep-Jun)", duration: "3-4 hours", icon: Waves, img: "/images/sightseeing/Rishikesh/River_Rafting.jpg" },
     { name: "Neer Garh Waterfall", desc: "A beautiful two-tier waterfall hidden in lush forest, just 4 km from Laxman Jhula. A short but scenic trek through wooded paths leads to natural rock pools perfect for a refreshing dip. The waterfall is at its most spectacular during and just after the monsoon season.", entry: "&#8377;30", timing: "8:00 AM - 5:00 PM", duration: "1.5-2 hours", icon: Mountain },
   ];
   const monthlyGuide = [
@@ -64,6 +66,7 @@ export default function RishikeshTravelGuidePage() {
   const trustFeatures = [{ icon: MapPin, title: "Uttarakhand Experts", desc: "Devbhoomi specialists" }, { icon: Waves, title: "Adventure Capital", desc: "Rafting & yoga hub" }, { icon: Users, title: "4000+ Trips Done", desc: "Delhi-Rishikesh route" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "8 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
 
+  const heroImage = "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg";
   const cityName = "Rishikesh";
   const cityTagline = "The Yoga Capital of the World -- where the sacred Ganga meets Himalayan foothills, Beatles history lives on, and white-water rapids await the adventurous.";
   const welcomeTitle = "Welcome to the Yoga Capital of the World";
@@ -91,6 +94,19 @@ export default function RishikeshTravelGuidePage() {
   const ctaTitle = "Need Help Planning Your Rishikesh Trip?";
   const ctaDesc = "Yoga retreats, river rafting, temple visits, and Haridwar combo tours -- we arrange it all with safe, reliable drivers.";
   const whatsappMsg = "I want to book a cab for Rishikesh trip";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "rishikesh-travel-guide",
+    headline: "Rishikesh Travel Guide 2026 — Attractions, Food, Tips & Itinerary",
+    description: "Complete Rishikesh travel guide. Best attractions, food, shopping, monthly weather, transport from major cities, day trips, photography, where to stay. Updated for 2026.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("rishikesh", { idSlug: "rishikesh-travel-guide" });
+
 
   return (
     <>
@@ -107,6 +123,8 @@ export default function RishikeshTravelGuidePage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-amber-50/30">
         {/* Subtle pattern overlay */}
@@ -114,7 +132,8 @@ export default function RishikeshTravelGuidePage() {
 
         {/* HERO - Animated Gradient with Floating Particles */}
         <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           {/* Floating glow orbs */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/20 rounded-full blur-[120px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-600/15 rounded-full blur-[100px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
@@ -166,6 +185,23 @@ export default function RishikeshTravelGuidePage() {
           </div>
         </section>
 
+        {/* AEO QUICK ANSWER */}
+        <section className="px-4 pt-10">
+          <div className="max-w-4xl mx-auto">
+            <QuickAnswer
+              tone="light"
+              question="Planning a Rishikesh trip?"
+              answer="Rishikesh is best from September to November and February to May, which is peak rafting season with Grade 3-4 rapids; the June to August monsoon closes rafting. Two to three days covers Laxman Jhula and Ram Jhula, rafting at Shivpuri, the Beatles Ashram and the evening Ganga Aarti at Triveni Ghat. Delhi is about 240 km away, roughly 5 to 6 hours by car on NH58, and Haridwar is just 25 km away."
+              facts={[
+                { label: 'Best time', value: 'Sep-Nov, Feb-May' },
+                { label: 'Ideal duration', value: '2 to 3 days' },
+                { label: 'Top sight', value: 'Laxman Jhula' },
+                { label: 'Cab from Delhi', value: '240 km · ₹11/km' },
+              ]}
+            />
+          </div>
+        </section>
+
         {/* TABLE OF CONTENTS - Glass cards with hover-lift */}
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto">
@@ -190,9 +226,9 @@ export default function RishikeshTravelGuidePage() {
         {/* WELCOME - Glass card with gradient corners and stats */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full" />
+            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full rounded-br-3xl" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
               <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2>
               <p className="text-lg text-stone-600 leading-relaxed text-center relative" dangerouslySetInnerHTML={{ __html: welcomeText }} />
@@ -253,9 +289,16 @@ export default function RishikeshTravelGuidePage() {
               {attractions.map((a, idx) => (
                 <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
-                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
+                    {a.img ? (
+                      <div className="md:w-56 relative shrink-0 overflow-hidden">
+                        <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    ) : (
+                      <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
+                        <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    )}
                     <div className="flex-1 p-6">
                       <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2">
                         <a.icon className="w-5 h-5 text-amber-600" /> {a.name}
@@ -270,6 +313,53 @@ export default function RishikeshTravelGuidePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
             </div>
           </div>
         </section>

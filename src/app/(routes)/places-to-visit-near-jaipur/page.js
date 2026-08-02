@@ -4,10 +4,10 @@ import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
 const data = placesToVisitPages.jaipur;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Jaipur by Car | Royal Rajasthan | Book Cab',
+  title: '15+ Places to Visit Near Jaipur by Car | Royal Rajasthan',
   description: `Best places to visit near Jaipur by car. Pushkar (145 km), Ranthambore (180 km), Udaipur (395 km), Jodhpur (340 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near jaipur, places near jaipur, weekend getaways from jaipur, day trips from jaipur, jaipur nearby places, places around jaipur, rajasthan road trip from jaipur, tourist places near jaipur, places to visit near jaipur by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Delhi Beyond Red Fort | Hidden Gems & Secret Spots | 2026',
-  description: 'Discover Delhi beyond Red Fort. Agrasen Ki Baoli, Hauz Khas, Mehrauli Archaeological Park, Tughlaqabad Fort, Lodhi Art District, Sunder Nursery + more. Call 7668570551.',
+  description: 'Discover Delhi beyond Red Fort. Agrasen Ki Baoli, Hauz Khas, Mehrauli Archaeological Park, Tughlaqabad Fort, Lodhi Art District, Sunder Nursery + more.',
   keywords: 'delhi beyond red fort, delhi hidden gems, agrasen ki baoli, hauz khas complex, tughlaqabad fort, lodhi art district, mehrauli archaeological park, sunder nursery',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -19,7 +20,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/delhi-beyond-red-fort',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/delhi-hero.jpg', width: 1200, height: 630, alt: 'Delhi Beyond Red Fort' }],
+    images: [{ url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg', width: 1200, height: 630, alt: 'Delhi Beyond Red Fort' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +28,7 @@ export const metadata = {
     description: 'Stepwells, ruined forts, street art districts, and secret Mughal parks. By Delhi locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/delhi-hero.jpg'],
+    images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +54,7 @@ export default function DelhiBeyondRedFortPage() {
     { question: "How many days do I need for Delhi beyond the main sights?", answer: "1 day covers Red Fort, Jama Masjid, Qutub Minar, Humayun&apos;s Tomb. 2 days lets you add the hidden gems: Agrasen Ki Baoli, Hauz Khas, Lodhi Art District, and Sunder Nursery. 3 days adds Tughlaqabad, Mehrauli Park, and food trails. Our 3-day plan covers all 8 hidden gems." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function DelhiBeyondRedFortPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const hiddenGems = [
     { name: "Agrasen Ki Baoli", desc: "A stunning 14th-century stepwell hidden in the heart of Delhi&apos;s business district. With 108 steps descending into the earth and three levels of arched niches, it creates a dramatic geometric perspective. Featured in the Bollywood film PK, it is one of Delhi&apos;s most photogenic hidden spots.", distance: "7 km from Red Fort", timing: "Sunrise to sunset daily; free entry; best in morning light", whyVisit: "A 700-year-old stepwell hiding in plain sight among Delhi&apos;s office towers -- hauntingly beautiful", cabTip: "Near Connaught Place; our driver drops you at the gate on Hailey Road" },
@@ -157,6 +158,16 @@ export default function DelhiBeyondRedFortPage() {
   const linksTitle = "More Delhi Guides & Tours";
   const ctaTitle = "Explore the Real Delhi with Locals";
   const ctaSubtitle = "We show you the Delhi that guidebooks miss. Stepwells, street art, cursed forts, and secret Mughal parks.";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "delhi-beyond-red-fort",
+    headline: "Delhi Beyond Red Fort — 15 Hidden Gems & Offbeat Attractions 2026",
+    description: "Discover Delhi beyond the Red Fort. Hauz Khas, Lodhi Gardens, Mehrauli Archaeological Park, Sunder Nursery, Bangla Sahib at dawn, Akshardham, food walks.",
+    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (
     <>
@@ -177,6 +188,7 @@ export default function DelhiBeyondRedFortPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <div className="min-h-screen bg-teal-50/30">
         {/* Topographic pattern */}

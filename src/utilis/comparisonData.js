@@ -4,7 +4,7 @@
 export const comparisonData = {
   'innova-vs-ertiga-for-outstation': {
     title: 'Innova vs Ertiga for Outstation Trips - Which is Better?',
-    metaDescription: 'Detailed comparison of Toyota Innova Crysta vs Maruti Ertiga for outstation trips. Compare comfort, space, pricing, mileage, and find the best car for your family trip.',
+    metaDescription: 'Detailed comparison of Toyota Innova Crysta vs Maruti Ertiga for outstation trips. Compare comfort, space, pricing, mileage.',
     slug: 'innova-vs-ertiga-for-outstation',
     category: 'Family Car Decision',
     vehicle1: {
@@ -60,7 +60,7 @@ export const comparisonData = {
 
   'tempo-traveller-vs-mini-bus': {
     title: 'Tempo Traveller vs Mini Bus - Which is Better for Group Travel?',
-    metaDescription: 'Compare Tempo Traveller (12-17 seater) vs Mini Bus (20-27 seater) for group trips. Side-by-side comparison of capacity, pricing from ₹23/km, comfort, and best use cases.',
+    metaDescription: 'Compare Tempo Traveller (12-17 seater) vs Mini Bus (20-27 seater) for group trips. Side-by-side comparison of capacity, pricing from ₹20/km, comfort.',
     slug: 'tempo-traveller-vs-mini-bus',
     category: 'Group Travel',
     vehicle1: {
@@ -70,7 +70,7 @@ export const comparisonData = {
       seating: '12-17 passengers',
       bootSpace: 'Moderate boot area',
       acType: 'Roof-mounted AC',
-      ratePerKm: '₹23-27/km',
+      ratePerKm: '₹20-28/km',
       minimumCharge: '₹6,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '8-10 km/l',
@@ -116,7 +116,7 @@ export const comparisonData = {
 
   'sedan-vs-suv-for-hill-stations': {
     title: 'Sedan vs SUV for Hill Stations - Which Car to Book?',
-    metaDescription: 'Should you book a Sedan or SUV for your hill station trip? Compare Swift Dzire vs Innova for Manali, Shimla, Mussoorie routes. Pricing from ₹11/km. Expert recommendation inside.',
+    metaDescription: 'Should you book a Sedan or SUV for your hill station trip? Compare Swift Dzire vs Innova for Manali, Shimla, Mussoorie routes. Pricing from ₹11/km.',
     slug: 'sedan-vs-suv-for-hill-stations',
     category: 'Terrain-Based Choice',
     vehicle1: {
@@ -172,7 +172,7 @@ export const comparisonData = {
 
   'fortuner-vs-innova-crysta': {
     title: 'Fortuner vs Innova Crysta for Outstation - Premium SUV Comparison',
-    metaDescription: 'Compare Toyota Fortuner vs Innova Crysta for outstation rental. Pricing, comfort, capacity, and performance comparison. Premium SUV from ₹18/km vs MUV from ₹16/km.',
+    metaDescription: 'Compare Toyota Fortuner vs Innova Crysta for outstation rental. Pricing, comfort, capacity, and performance comparison.',
     slug: 'fortuner-vs-innova-crysta',
     category: 'Premium SUV Comparison',
     vehicle1: {
@@ -228,7 +228,7 @@ export const comparisonData = {
 
   '12-seater-vs-17-seater-tempo': {
     title: '12 Seater vs 17 Seater Tempo Traveller - Which to Book?',
-    metaDescription: 'Compare 12-seater vs 17-seater Tempo Traveller for your group trip. Pricing from ₹23/km, seat comfort, luggage space, and best use cases. Book the right tempo size.',
+    metaDescription: 'Compare 12-seater vs 17-seater Tempo Traveller for your group trip. Pricing from ₹20/km, seat comfort, luggage space, and best use cases.',
     slug: '12-seater-vs-17-seater-tempo',
     category: 'Group Size Decision',
     vehicle1: {
@@ -238,7 +238,7 @@ export const comparisonData = {
       seating: '12 passengers',
       bootSpace: 'Moderate boot',
       acType: 'Roof-mounted AC',
-      ratePerKm: '₹23-25/km',
+      ratePerKm: '₹20-22/km',
       minimumCharge: '₹5,500 (250km/day)',
       fuelType: 'Diesel',
       mileage: '9-11 km/l',
@@ -254,7 +254,7 @@ export const comparisonData = {
       seating: '17 passengers',
       bootSpace: 'Larger boot area',
       acType: 'Roof-mounted AC (powerful)',
-      ratePerKm: '₹25-27/km',
+      ratePerKm: '₹24-26/km',
       minimumCharge: '₹6,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '8-10 km/l',
@@ -284,7 +284,7 @@ export const comparisonData = {
 
   'bus-vs-tempo-for-wedding': {
     title: 'Bus vs Tempo Traveller for Wedding - Group Transport Guide',
-    metaDescription: 'Planning wedding guest transport? Compare Bus (40-56 seater) vs Tempo Traveller (12-26 seater) for wedding functions. Baraat, reception, and guest pickup pricing guide.',
+    metaDescription: 'Planning wedding guest transport? Compare Bus (40-56 seater) vs Tempo Traveller (12-26 seater) for wedding functions.',
     slug: 'bus-vs-tempo-for-wedding',
     category: 'Wedding Transport',
     vehicle1: {
@@ -310,7 +310,7 @@ export const comparisonData = {
       seating: '12-26 passengers',
       bootSpace: 'Moderate boot area',
       acType: 'Roof-mounted AC',
-      ratePerKm: '₹23-30/km',
+      ratePerKm: '₹20-28/km',
       minimumCharge: '₹5,500-7,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '7-10 km/l',
@@ -340,7 +340,7 @@ export const comparisonData = {
 
   'one-way-vs-round-trip-cab': {
     title: 'One Way vs Round Trip Cab - Which Saves More Money?',
-    metaDescription: 'Compare one-way cab vs round trip taxi pricing. When does one-way save money? Cost calculator for popular routes. One-way from ₹11/km, round trip with 15-20% discount.',
+    metaDescription: 'Compare one-way cab vs round trip taxi pricing. When does one-way save money? Cost calculator for popular routes.',
     slug: 'one-way-vs-round-trip-cab',
     category: 'Trip Type Comparison',
     vehicle1: {
@@ -396,7 +396,7 @@ export const comparisonData = {
 
   'self-drive-vs-chauffeur': {
     title: 'Self-Drive vs Chauffeur-Driven Car - Which Should You Choose?',
-    metaDescription: 'Self-drive rental vs hiring a car with driver in India. Compare costs, convenience, safety, and best use cases. Chauffeur-driven from ₹11/km. Make the right choice.',
+    metaDescription: 'Self-drive rental vs hiring a car with driver in India. Compare costs, convenience, safety, and best use cases. Chauffeur-driven from ₹11/km.',
     slug: 'self-drive-vs-chauffeur',
     category: 'Service Type Comparison',
     vehicle1: {

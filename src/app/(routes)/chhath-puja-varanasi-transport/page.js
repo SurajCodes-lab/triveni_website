@@ -4,7 +4,7 @@ import FestivalTripClient from '@/components/festival/FestivalTripClient';
 const festival = getFestivalBySlug('chhath-puja-varanasi-transport');
 
 export const metadata = {
-  title: 'Chhath Puja Varanasi Cab Service 2026 | Ghat Transport | Triveni Cabs',
+  title: 'Chhath Puja Varanasi Cab Service 2026 | Ghat Transport',
   description: 'Book cab from Delhi to Varanasi for Chhath Puja 2026. Sedan from ₹11,000, SUV ₹15,000. Ganga ghat transport, sunrise arghya. Call 7668570551.',
   keywords: 'chhath puja varanasi cab, delhi to varanasi chhath, chhath puja transport, varanasi ghat cab, chhath 2026 cab, chhath puja travel service',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function ChhathPujaVaranasiPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Chhath Puja Transport", "name": "Chhath Puja Varanasi Cab Service", "description": "Cab from Delhi to Varanasi for Chhath Puja celebrations at Ganga ghats. Local ghat transport included.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Varanasi" }], "offers": { "@type": "AggregateOffer", "lowPrice": "11000", "highPrice": "24000", "priceCurrency": "INR" } };

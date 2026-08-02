@@ -4,7 +4,7 @@ import RentalPackageClient from '@/components/rental/RentalPackageClient';
 const rental = getRentalBySlug('multi-day-cab-hire');
 
 export const metadata = {
-  title: 'Multi-Day Cab Hire | 2-7 Day Packages | Rs 2,750/Day | Triveni Cabs',
+  title: 'Multi-Day Cab Hire | 2-7 Day Packages | Rs 2,750/Day',
   description: 'Book multi-day cab hire for 2-7 days. Sedan from Rs 2,750/day, 250 km/day included. Golden Triangle, Rajasthan, Char Dham packages. Call 7668570551.',
   keywords: 'multi day cab hire, outstation cab for days, multi day taxi, cab for multiple days, road trip cab, golden triangle cab, rajasthan cab hire, multi day car rental',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function MultiDayCabHirePage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Multi-Day Cab Hire", "name": "Multi-Day Cab Hire - 2 to 7 Day Packages", "description": "Multi-day outstation cab hire for road trips and tours. 250 km/day included with driver accommodation.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" }, "offers": { "@type": "AggregateOffer", "lowPrice": "2750", "highPrice": "4500", "priceCurrency": "INR" } };

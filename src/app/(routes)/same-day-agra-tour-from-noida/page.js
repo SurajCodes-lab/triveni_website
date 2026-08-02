@@ -3,7 +3,7 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-agra-tour-from-noida');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Same Day Agra Tour from Noida | ₹4,500 AC Cab | 2026',

@@ -1,11 +1,13 @@
-import { busStands, busStandSlugs, getBusStandBySlug } from '@/utilis/busStandData';
+import { busStands, busStandSlugs, getBusStandBySlug, getStandFaqs } from '@/utilis/busStandData';
 import BusStandClient from '@/components/busstand/BusStandClient';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -59,6 +61,9 @@ export default async function BusStandPage({ params }) {
   const stand = getBusStandBySlug(slug);
   if (!stand) notFound();
 
+  // Rich, deterministic FAQ set (10-12 stand-specific questions)
+  const standFaqs = getStandFaqs(stand);
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -73,9 +78,11 @@ export default async function BusStandPage({ params }) {
     "@context": "https://schema.org",
     "@type": "TaxiService",
     "name": `Triveni Cabs - ${stand.name} Taxi Service`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": stand.description,
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "address": {
@@ -109,19 +116,14 @@ export default async function BusStandPage({ params }) {
       "highPrice": stand.destinations[stand.destinations.length - 1]?.fare.replace(/[^\d,]/g, '').replace(',', '') || "5000",
       "priceCurrency": "INR"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    ...getRatingAndReviews(slug, 'bus')
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": stand.faqs.map(faq => ({
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
+    "mainEntity": standFaqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
@@ -179,13 +181,7 @@ export default async function BusStandPage({ params }) {
       "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       "seller": { "@type": "Organization", "name": COMPANY_INFO.name }
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": String(AGGREGATE_RATING.ratingValue),
-      "reviewCount": String(AGGREGATE_RATING.reviewCount),
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    ...getRatingAndReviews(slug, 'bus')
   };
 
   // HowTo schema — booking process
@@ -204,16 +200,66 @@ export default async function BusStandPage({ params }) {
     ]
   };
 
+  // Article schema — E-E-A-T + freshness + voice search for the guide content
+  const topDestNames = stand.destinations.slice(0, 3).map(d => d.name).join(', ');
+  const articleSchema = getArticleSchema({
+    slug: `bus-stand-taxi/${slug}`,
+    headline: `${stand.name} Taxi Service — Fixed Fares, 24/7 Cab Pickup in ${stand.city}`,
+    description: `Complete guide to booking a taxi from ${stand.name}, ${stand.city}: fixed fares to ${topDestNames} & more, prepaid pickup point, night availability, vehicle options and verified drivers.`,
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    type: 'Article',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  // Place schema — anchor to a real geographic entity when the city is known
+  const citySlug = stand.city.toLowerCase().replace(/\s+/g, '-');
+  const cityPlaceSchema = getCityPlaceSchema(citySlug, {
+    idSlug: `bus-stand-taxi/${slug}`,
+    description: `${stand.name} (${stand.area}) bus terminal in ${stand.city}, India. Triveni Cabs provides 24/7 fixed-fare taxi pickup at this bus stand.`
+  });
+
+  // Bus-native GEO: represent the actual stand as a BusStation transit entity,
+  // grounded to the city's real coordinates and chained into the City place.
+  const busStationSchema = {
+    "@context": "https://schema.org",
+    "@type": "BusStation",
+    "@id": `https://www.trivenicabs.in/bus-stand-taxi/${slug}#busstation`,
+    "name": stand.fullName || stand.name,
+    "description": `${stand.name}${stand.area ? ` (${stand.area})` : ''} — major bus terminal in ${stand.city}. Triveni Cabs offers 24/7 fixed-fare taxi pickup at this stand.`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": stand.city,
+      ...(cityPlaceSchema?.address?.addressRegion ? { "addressRegion": cityPlaceSchema.address.addressRegion } : {}),
+      "addressCountry": "IN",
+    },
+    ...(cityPlaceSchema?.geo ? { "geo": cityPlaceSchema.geo } : {}),
+    ...(cityPlaceSchema ? { "containedInPlace": { "@id": cityPlaceSchema["@id"] } } : {}),
+    "publicAccess": true,
+    "isAccessibleForFree": true,
+    "amenityFeature": stand.cabWaitingArea
+      ? [{ "@type": "LocationFeatureSpecification", "name": "Prepaid taxi / cab pickup point", "value": true }]
+      : undefined,
+  };
+
   return (
     <>
-      <Script id="stand-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="beforeInteractive" />
-      <Script id="stand-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="beforeInteractive" />
-      <Script id="stand-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="beforeInteractive" />
-      <Script id="stand-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="beforeInteractive" />
-      <Script id="stand-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="beforeInteractive" />
-      <Script id="stand-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="beforeInteractive" />
+      <Script id="stand-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="afterInteractive" />
+      <Script id="stand-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="afterInteractive" />
+      <Script id="stand-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="afterInteractive" />
+      <Script id="stand-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="afterInteractive" />
+      <Script id="stand-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="afterInteractive" />
+      <Script id="stand-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="afterInteractive" />
+      <Script id="stand-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} strategy="afterInteractive" />
+      {cityPlaceSchema && (
+        <Script id="stand-place-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} strategy="afterInteractive" />
+      )}
+      <Script id="stand-busstation-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(busStationSchema) }} strategy="afterInteractive" />
+
       <AEOHead pageType="busStand" data={{ url: `/bus-stand-taxi/${slug}`, title: `${stand.name} Taxi Service`, city: stand.city }} />
-      <BusStandClient stand={stand} slug={slug} allStands={busStands} />
+      <BusStandClient stand={stand} slug={slug} allStands={busStands} faqs={standFaqs} />
     </>
   );
 }

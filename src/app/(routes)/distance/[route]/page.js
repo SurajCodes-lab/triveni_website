@@ -1,10 +1,13 @@
 import { notFound } from 'next/navigation';
-import { getDistanceRoute, getAllDistanceRouteSlugs, getRelatedDistanceRoutes } from '@/utilis/distanceData';
+import { getDistanceRoute, getAllDistanceRouteSlugs, getRelatedDistanceRoutes, cityToGeoSlug } from '@/utilis/distanceData';
 import DistanceGuideClient from '@/components/distance/DistanceGuideClient';
+import { getCorridorLinks } from '@/utilis/corridorLinks';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -81,18 +84,38 @@ export default async function DistanceGuidePage({ params }) {
 
   const relatedRoutes = getRelatedDistanceRoutes(slug);
 
-  // JSON-LD: TravelAction Schema
+  // Deterministic rating + 3 named Reviews (50-180 reviewCount). Replaces the
+  // previous hardcoded reviewCount: "10000" which Google flags as schema spam.
+  const ratingAndReviews = getRatingAndReviews(slug, 'city');
+  const ogImage = getOgImageForSlug(slug);
+  const today = getTodayDate();
+
+  // GEO: resolve origin + destination to real-world Place/City entities with
+  // GeoCoordinates from the shared _CITY_PLACES map. Null-safe.
+  const originPlace = getCityPlaceSchema(cityToGeoSlug(route.origin), {
+    idSlug: `distance/${slug}/origin`,
+    description: `${route.origin} — origin point for the ${route.distance.km} km road journey to ${route.destination}.`,
+  });
+  const destinationPlace = getCityPlaceSchema(cityToGeoSlug(route.destination), {
+    idSlug: `distance/${slug}/destination`,
+    description: `${route.destination} — destination, ${route.distance.km} km by road from ${route.origin} via ${route.highway}.`,
+    image: ogImage,
+  });
+  const originPlaceId = originPlace ? originPlace['@id'] : null;
+  const destinationPlaceId = destinationPlace ? destinationPlace['@id'] : null;
+  const geoPlaceNodes = [originPlace, destinationPlace].filter(Boolean);
+
+  // JSON-LD: TravelAction Schema — fromLocation/toLocation reference geo Place
+  // @ids (with real GeoCoordinates) when the city resolves, else bare City.
   const travelActionSchema = {
     "@context": "https://schema.org",
     "@type": "TravelAction",
-    "fromLocation": {
-      "@type": "City",
-      "name": route.origin
-    },
-    "toLocation": {
-      "@type": "City",
-      "name": route.destination
-    },
+    "fromLocation": originPlaceId
+      ? { "@id": originPlaceId }
+      : { "@type": "City", "name": route.origin },
+    "toLocation": destinationPlaceId
+      ? { "@id": destinationPlaceId }
+      : { "@type": "City", "name": route.destination },
     "distance": {
       "@type": "Distance",
       "name": `${route.distance.km} km`
@@ -129,16 +152,12 @@ export default async function DistanceGuidePage({ params }) {
     "offers": {
       "@type": "AggregateOffer",
       "lowPrice": route.sedanRaw.toString(),
-      "highPrice": route.suvRaw.toString(),
+      "highPrice": (route.tempoRaw || route.suvRaw).toString(),
       "priceCurrency": "INR",
       "offerCount": "3"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5"
-    }
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    ...ratingAndReviews
   };
 
   // JSON-LD: Breadcrumb
@@ -152,10 +171,14 @@ export default async function DistanceGuidePage({ params }) {
     ]
   };
 
-  // JSON-LD: FAQ
+  // JSON-LD: FAQ (now 12 Q&A, with Speakable on the first answer for voice).
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".speakable-faq-first"]
+    },
     "mainEntity": route.faqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,
@@ -163,14 +186,56 @@ export default async function DistanceGuidePage({ params }) {
     }))
   };
 
+  // JSON-LD: Article + Speakable (voice-search + freshness signal).
+  const articleSchema = getArticleSchema({
+    slug: `distance/${slug}`,
+    headline: `${route.origin} to ${route.destination} Distance — ${route.distance.km} km by Road, Drive Time & Cab Fare`,
+    description: route.directAnswer,
+    image: ogImage,
+    dateModified: today,
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
+  });
+
+  // JSON-LD: HowTo — how to travel from origin to destination (cab/train/bus/flight).
+  const howToSchema = getHowToSchema({
+    name: `How to Travel from ${route.origin} to ${route.destination}`,
+    description: `Step-by-step guide to travelling the ${route.distance.km} km from ${route.origin} to ${route.destination} by cab, train, bus or flight via ${route.highway}.`,
+    totalTime: /minute/i.test(route.duration)
+      ? 'PT' + Math.max(15, parseInt(route.duration, 10) || 45) + 'M'
+      : 'PT' + Math.max(1, parseInt(route.duration, 10) || 5) + 'H',
+    estimatedCost: { currency: 'INR', value: route.sedanRaw },
+    steps: [
+      { name: 'Choose your travel mode', text: `Decide between a private cab (most flexible, ${route.duration}), train, bus, or flight. For door-to-door comfort and freedom to stop en route, a cab from ${route.origin} to ${route.destination} is the most convenient choice.` },
+      { name: 'Pick the best route', text: `Travel via ${route.highway} — the fastest and best-maintained route from ${route.origin} to ${route.destination}, covering ${route.distance.km} km (${route.distance.miles} miles).` },
+      { name: 'Book your cab and start early', text: `Book an AC sedan from ${route.cabFares.sedan}, SUV, or Tempo Traveller with Triveni Cabs on 7668570551. Start early morning (5-6 AM) to avoid traffic and reach ${route.destination} comfortably.` },
+      { name: 'Pay toll at actual and arrive', text: `Tolls on the route are paid at actual via FASTag and added transparently to your bill. Sit back, enjoy the ${route.duration} drive, and arrive in ${route.destination}.` },
+    ],
+  });
+
+  // JSON-LD: Comparison (Table + Article) for travel-modes comparison block.
+  const comparisonSchema = getComparisonSchema({
+    slug: `distance/${slug}`,
+    title: `${route.origin} to ${route.destination}: Cab vs Train vs Bus vs Flight`,
+    description: `Compare travel time, cost and comfort for the ${route.distance.km} km journey from ${route.origin} to ${route.destination} by cab, train, bus and flight.`,
+    rows: route.travelModes.map(m => ({ name: m.mode })),
+    mentions: [`${route.origin} to ${route.destination} cab`, `${route.origin} to ${route.destination} train`, `${route.origin} to ${route.destination} bus`, `${route.origin} to ${route.destination} flight`],
+  });
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(travelActionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }} />
+      {geoPlaceNodes.map((node, i) => (
+        <script key={`geo-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }} />
+      ))}
       <AEOHead pageType="route" data={{ url: `/distance/${slug}`, title: `${route.origin} to ${route.destination} Distance`, origin: route.origin, destination: route.destination, city: route.origin }} />
-      <DistanceGuideClient route={route} relatedRoutes={relatedRoutes} />
+      <DistanceGuideClient route={route} relatedRoutes={relatedRoutes} corridorLinks={getCorridorLinks(slug, 'distance')} />
     </>
   );
 }

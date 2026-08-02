@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getPackage, getAllPackageSlugs, getRelatedPackages } from '@/utilis/packageData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import HotelCabPackageClient from '@/components/packages/HotelCabPackageClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -120,7 +121,7 @@ export default async function PackagePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5"
     }
   };

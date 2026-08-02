@@ -1,7 +1,9 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
+import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
-const data = honeymoonTripData['nainital'];
+const SLUG = "honeymoon-nainital-by-car";
+const data = honeymoonTripData["nainital"];
 
 export const metadata = {
   title: 'Nainital Honeymoon by Car | Lakeside Romance Rs 10,000 | 2026',
@@ -15,12 +17,35 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export default function HoneymoonNainitalPage() {
-  const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Honeymoon Trips", "item": "https://www.trivenicabs.in/honeymoon-trip-by-car" }, { "@type": "ListItem", "position": 3, "name": "Nainital Honeymoon", "item": "https://www.trivenicabs.in/honeymoon-nainital-by-car" }] };
-  const tripSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": "Nainital Honeymoon by Car", "description": data.tagline, "touristType": "Honeymoon Couple", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551" }, "offers": { "@type": "AggregateOffer", "lowPrice": "10000", "highPrice": "13000", "priceCurrency": "INR" } };
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": data.faqs.map(faq => ({ "@type": "Question", "name": faq.question, "acceptedAnswer": { "@type": "Answer", "text": faq.answer } })) };
+export default function HoneymoonTripPage() {
+  const lowPrice = data.price.sedan;
+  const highPrice = data.price.suv;
+  const schemaGraph = buildTripSchemaGraph({
+    data,
+    slug: SLUG,
+    touristType: 'Honeymoon Couple',
+    citySlug: "nainital",
+    breadcrumbTrail: [
+      { name: 'Home', url: 'https://www.trivenicabs.in' },
+      { name: 'Honeymoon Trips', url: 'https://www.trivenicabs.in/honeymoon-trip-by-car' },
+      { name: "Nainital Honeymoon", url: `https://www.trivenicabs.in/${SLUG}` },
+    ],
+    image: '/images/triveni-cabs-og.jpg',
+    lowPrice,
+    highPrice,
+    tripName: "Nainital Honeymoon by Car from Delhi",
+    howToName: "How to Plan a Nainital Honeymoon by Car from Delhi",
+    howToDesc: "Step-by-step guide to booking a romantic Nainital honeymoon by car from Delhi with a decorated-car option from Triveni Cabs.",
+  });
 
-  return (<><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><HoneymoonTripClient data={data} /></>);
+  return (
+    <>
+      {schemaGraph.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      <HoneymoonTripClient data={data} />
+    </>
+  );
 }
 
-export const revalidate = false;
+export const revalidate = 3600;

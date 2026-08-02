@@ -1,19 +1,21 @@
 import Link from 'next/link';
 import { busStands } from '@/utilis/busStandData';
-import { Phone, MapPin, Bus, ArrowRight, Clock, Shield, Star, Users, ChevronDown } from '@/components/ui/icons';
+import { Phone, MapPin, Bus, ArrowRight, Clock, Shield, Star, Users, ChevronDown, CheckCircle, IndianRupee } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getHowToSchema, getArticleSchema, getComparisonSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import BookingJourney from '@/components/shared/BookingJourney';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Bus Stand Taxi Service | 13+ ISBTs | Fixed Fares | Triveni Cabs',
-  description: 'Book reliable taxi from bus stands & ISBTs across India. Service at Kashmere Gate, Anand Vihar, Sindhi Camp Jaipur, Agra Idgah & more. Fixed fares, 24/7 service. Call 7668570551.',
-  keywords: 'bus stand taxi, ISBT cab service, bus stand cab, bus terminal taxi, taxi from bus stand, ISBT taxi service India, bus stand pickup cab',
+  title: 'Bus Stand Taxi | Taxi from Bus Stand | 13+ ISBTs | Triveni Cabs',
+  description: 'Book a taxi from any bus stand or ISBT across North India. Fixed fares, 24/7 pickup at the bus stand exit, AC cabs. Kashmere Gate, Anand Vihar, Sindhi Camp Jaipur, Agra Idgah & more. Call 7668570551.',
+  keywords: 'bus stand taxi, taxi from bus stand, cab at bus stand, ISBT cab service, bus stand pickup taxi, bus terminal taxi, prepaid bus stand taxi, ISBT taxi India, bus stand cab booking',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -53,20 +55,16 @@ export default function BusStandTaxiHubPage() {
     "@context": "https://schema.org",
     "@type": "TaxiService",
     "name": "Triveni Cabs - Bus Stand Taxi Service",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": "Reliable taxi and cab service from major bus stands and ISBTs across India. 24/7 availability, fixed fares, AC cabs.",
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
     },
     "areaServed": standEntries.map(([, s]) => ({ "@type": "Place", "name": `${s.name}, ${s.city}` })),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    ...getRatingAndReviews('bus-stand-taxi-hub', 'bus')
   };
 
   const itemListSchema = {
@@ -82,16 +80,76 @@ export default function BusStandTaxiHubPage() {
     }))
   };
 
+  const hubFaqs = [
+    { question: "How do I book a taxi from a bus stand?", answer: "Call Triveni Cabs at 7668570551 or send a WhatsApp message with your bus stand name, arrival time, and drop destination. We assign a verified driver who waits at the bus stand exit before your bus arrives. Pre-booking guarantees a fixed fare and zero waiting time." },
+    { question: "Are cabs available 24/7 at bus stands?", answer: "Yes. Triveni Cabs operates round the clock at all 13+ bus stands and ISBTs we serve. Whether your bus arrives at midnight or 5 AM, a driver is available — and there are no extra night surcharges on standard city fares." },
+    { question: "What are the typical taxi fares from a bus stand?", answer: "Fares are fixed and transparent. Local city drops start from ₹100-250, airport transfers range from ₹350-800 depending on the city, and outstation trips are quoted upfront. All fares are for AC sedans with no surge pricing, meter tampering, or hidden charges." },
+    { question: "Which bus stands does Triveni Cabs serve?", answer: "We serve 13+ major terminals including ISBT Kashmere Gate, ISBT Anand Vihar and ISBT Sarai Kale Khan (Delhi), Sindhi Camp (Jaipur), Agra ISBT Idgah, ISBT Sector 43 (Chandigarh), plus bus stands in Haridwar, Dehradun, Lucknow, Varanasi, Amritsar, Shimla and Manali." },
+    { question: "Is prepaid taxi at the bus stand better than an app cab or auto?", answer: "A pre-booked Triveni cab gives you a fixed fare, a guaranteed AC vehicle, and a verified driver waiting at the exit — unlike app cabs that surge during peak arrivals or autos that negotiate on the spot. You avoid haggling and never wait after a tiring bus journey." },
+    { question: "How early should I book my bus stand taxi?", answer: "Booking a few hours in advance is ideal, and a day ahead during festivals, weekends, and tourist season. Advance booking guarantees a driver at the pickup point with zero waiting. On-the-spot bookings are accepted too, subject to availability — just call 7668570551." },
+    { question: "Where will the driver meet me at the bus stand?", answer: "Each bus stand page lists the exact pickup point (for example, the prepaid counter near Gate No. 1 or the designated taxi zone by the main exit). After booking, we share the driver's live location, name, photo, and vehicle number so you can meet within minutes of stepping off your bus." },
+    { question: "What types of vehicles can I book from a bus stand?", answer: "You can book an AC sedan (Swift Dzire, Honda Amaze) for up to 4 passengers, an SUV (Toyota Innova, Maruti Ertiga) for 6-7 passengers, or a tempo traveller for larger groups. Choose based on your passenger count and luggage when you book." },
+    { question: "Can I carry heavy luggage in a bus stand taxi?", answer: "Yes. Sedans fit 2-3 suitcases comfortably and SUVs handle 4-5 large bags plus passengers. Mention your luggage when booking so we assign the right vehicle — especially useful after long interstate bus journeys with multiple bags." },
+    { question: "Are the drivers verified and the cabs safe?", answer: "Every Triveni Cabs driver is background-verified, licensed, and trained for professional, courteous service. All rides are GPS-tracked and you receive driver and vehicle details before pickup, making it safe for solo travellers, women, and families." },
+    { question: "Can I book an outstation cab from a bus stand?", answer: "Absolutely. Beyond local city drops, we run outstation trips from every bus stand we serve — for example Delhi to Agra, Chandigarh to Shimla, or Haridwar to Rishikesh. Outstation fares are quoted upfront with experienced highway drivers." },
+    { question: "Do you provide a GST invoice for bus stand cab rides?", answer: "Yes. We provide a proper GST tax invoice on request, which is useful for business travellers and corporate reimbursement. Mention your GST requirement at booking and we email or hand over the invoice after the trip." }
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "How do I book a taxi from a bus stand?", "acceptedAnswer": { "@type": "Answer", "text": "Call Triveni Cabs at 7668570551 or WhatsApp with your bus stand name and destination. Our driver will be waiting when your bus arrives. Pre-booking ensures zero waiting time." } },
-      { "@type": "Question", "name": "Are cabs available 24/7 at bus stands?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Triveni Cabs operates 24/7 at all 13+ bus stands and ISBTs. Whether your bus arrives at midnight or early morning, our drivers are available with no extra night charges." } },
-      { "@type": "Question", "name": "What are the taxi fares from bus stands?", "acceptedAnswer": { "@type": "Answer", "text": "Fares are fixed and transparent. Local destinations start from ₹100-200. Airport transfers range from ₹500-800. All fares include AC sedan. No surge pricing or hidden charges." } },
-      { "@type": "Question", "name": "Which bus stands does Triveni Cabs serve?", "acceptedAnswer": { "@type": "Answer", "text": "We serve 13+ major bus stands including ISBT Kashmere Gate, ISBT Anand Vihar, ISBT Sarai Kale Khan (Delhi), Sindhi Camp (Jaipur), Agra ISBT Idgah, ISBT Sector 43 (Chandigarh), and more across North India." } }
-    ]
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
+    "mainEntity": hubFaqs.map(f => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+    }))
   };
+
+  // HowTo — booking process (renders as visible <ol> below)
+  const howToSteps = [
+    { name: 'Call or WhatsApp Triveni Cabs', text: 'Call 7668570551 or WhatsApp with the bus stand name, your expected arrival time, and your drop destination.' },
+    { name: 'Choose your vehicle & confirm the fare', text: 'Pick an AC sedan, SUV, or tempo traveller. You get a fixed, transparent fare quote upfront — no surge, no meter.' },
+    { name: 'Receive driver details', text: 'Get instant confirmation with the driver name, photo, phone number, and vehicle registration, plus live GPS tracking.' },
+    { name: 'Meet at the bus stand exit', text: 'Your driver waits at the marked pickup point near the exit gate when your bus arrives. Step out and ride away — no waiting, no haggling.' }
+  ];
+  const howToSchema = getHowToSchema({
+    name: 'How to Book a Taxi from a Bus Stand',
+    description: 'A simple 4-step guide to booking a fixed-fare cab from any bus stand or ISBT with Triveni Cabs.',
+    totalTime: 'PT3M',
+    estimatedCost: { currency: 'INR', value: 100 },
+    steps: howToSteps
+  });
+
+  // Article — E-E-A-T + freshness + voice search
+  const articleSchema = getArticleSchema({
+    slug: 'bus-stand-taxi',
+    headline: 'Bus Stand & ISBT Taxi Service Across India — Fixed Fares, 24/7 Pickup',
+    description: 'How to book a reliable, fixed-fare taxi from any bus stand or ISBT in North India: covered terminals, fares, prepaid vs app cab vs auto, and booking steps.',
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    type: 'Article',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  // Comparison table data — prepaid stand taxi vs app cab vs auto
+  const comparisonRows = [
+    { feature: 'Fare certainty', triveni: 'Fixed fare quoted upfront', app: 'Surges during peak bus arrivals', auto: 'Negotiated on the spot' },
+    { feature: 'Vehicle', triveni: 'AC sedan / SUV guaranteed', app: 'Varies, AC not guaranteed', auto: 'Open auto, no AC' },
+    { feature: 'Availability at night', triveni: '24/7, no night surcharge', app: 'Limited, high surge', auto: 'Scarce, premium charged' },
+    { feature: 'Driver verification', triveni: 'Background-verified & GPS-tracked', app: 'Verified, varies by city', auto: 'Unverified' },
+    { feature: 'Waiting for delayed bus', triveni: 'Driver waits free for delays', app: 'Cancels / re-books', auto: 'May refuse to wait' },
+    { feature: 'Luggage & comfort', triveni: 'Fits suitcases, clean cabin', app: 'Depends on car', auto: 'Limited space' }
+  ];
+  const comparisonSchema = getComparisonSchema({
+    slug: 'bus-stand-taxi',
+    title: 'Bus Stand Taxi vs App Cab vs Auto-Rickshaw',
+    description: 'A comparison of pre-booked bus stand taxis, app-based cabs, and auto-rickshaws on fare, vehicle, night availability, safety, and comfort.',
+    rows: comparisonRows,
+    mentions: ['Prepaid taxi', 'App cab', 'Auto-rickshaw', 'Bus stand pickup']
+  });
 
   // Group by city
   const grouped = {};
@@ -107,6 +165,11 @@ export default function BusStandTaxiHubPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <AEOHead pageType="busStand" data={{ url: '/bus-stand-taxi', title: 'Bus Stand Taxi Service' }} />
 
       <div className="min-h-screen bg-slate-950 text-white">
@@ -135,7 +198,7 @@ export default function BusStandTaxiHubPage() {
                 <span className="text-green-400 text-sm font-medium">13 Bus Stands Covered</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="speakable-headline text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-green-400 via-emerald-300 to-lime-400 bg-clip-text text-transparent">
                   Bus Stand & ISBT
                 </span>
@@ -143,8 +206,8 @@ export default function BusStandTaxiHubPage() {
                 <span className="text-white">Taxi Service Across India</span>
               </h1>
 
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Arrive at any bus stand and get a reliable, comfortable cab instantly. We serve 13 major bus terminals and ISBTs across North India with fixed fares, 24/7 availability, and professional drivers.
+              <p className="speakable-lead text-lg text-gray-300 mb-8 leading-relaxed">
+                Book a taxi from any bus stand or ISBT and get a reliable, AC cab waiting at the exit gate. We serve 13 major bus terminals across North India with fixed fares starting at ₹100, 24/7 availability, verified drivers, and zero waiting time — no surge pricing, no haggling with autos.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -196,12 +259,103 @@ export default function BusStandTaxiHubPage() {
           </div>
         </section>
 
+        {/* Direct Answer (AEO / featured-snippet target) */}
+        <section className="py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-green-500/20 p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                How do I get a taxi from a bus stand?
+              </h2>
+              <p className="speakable-faq-first text-gray-300 leading-relaxed text-base md:text-lg">
+                To get a taxi from a bus stand, call Triveni Cabs at <strong className="text-white">7668570551</strong> or WhatsApp with the bus stand name, your arrival time, and destination. A verified driver waits at the marked pickup point near the exit gate when your bus arrives. Fares are <strong className="text-green-400">fixed and start at ₹100</strong> for local drops, with AC sedans and SUVs available 24/7 and no surge pricing. This works at all 13+ ISBTs and bus stands we serve across North India.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* How to Book — visible ordered list (HowTo schema mirror) */}
+        <section className="py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+                How to <span className="text-green-400">Book a Taxi from a Bus Stand</span>
+              </h2>
+              <p className="text-gray-400">Four simple steps to a fixed-fare cab waiting at your bus stand</p>
+            </div>
+            <ol className="space-y-4">
+              {[
+                { name: 'Call or WhatsApp Triveni Cabs', text: 'Call 7668570551 or WhatsApp with the bus stand name, your expected arrival time, and your drop destination.' },
+                { name: 'Choose your vehicle & confirm the fare', text: 'Pick an AC sedan, SUV, or tempo traveller. You get a fixed, transparent fare quote upfront — no surge, no meter.' },
+                { name: 'Receive driver details', text: 'Get instant confirmation with the driver name, photo, phone number, and vehicle registration, plus live GPS tracking.' },
+                { name: 'Meet at the bus stand exit', text: 'Your driver waits at the marked pickup point near the exit gate when your bus arrives. Step out and ride away — no waiting, no haggling.' },
+              ].map((step, i) => (
+                <li key={i} className="flex items-start gap-4 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
+                  <div className="w-9 h-9 rounded-full bg-green-500 text-slate-950 font-bold flex items-center justify-center flex-shrink-0">{i + 1}</div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">{step.name}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{step.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Comparison Table — prepaid stand taxi vs app cab vs auto */}
+        <section className="py-12">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+                Bus Stand Taxi vs <span className="text-green-400">App Cab vs Auto</span>
+              </h2>
+              <p className="text-gray-400">Why a pre-booked bus stand taxi beats app cabs and autos on price, comfort, and safety</p>
+            </div>
+            <div className="overflow-x-auto bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="px-4 py-4 font-semibold text-gray-300">Feature</th>
+                    <th className="px-4 py-4 font-semibold text-green-400">Triveni Bus Stand Taxi</th>
+                    <th className="px-4 py-4 font-semibold text-gray-300">App Cab</th>
+                    <th className="px-4 py-4 font-semibold text-gray-300">Auto-Rickshaw</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { feature: 'Fare certainty', triveni: 'Fixed fare quoted upfront', app: 'Surges during peak bus arrivals', auto: 'Negotiated on the spot' },
+                    { feature: 'Vehicle', triveni: 'AC sedan / SUV guaranteed', app: 'Varies, AC not guaranteed', auto: 'Open auto, no AC' },
+                    { feature: 'Availability at night', triveni: '24/7, no night surcharge', app: 'Limited, high surge', auto: 'Scarce, premium charged' },
+                    { feature: 'Driver verification', triveni: 'Background-verified & GPS-tracked', app: 'Verified, varies by city', auto: 'Unverified' },
+                    { feature: 'Waiting for delayed bus', triveni: 'Driver waits free for delays', app: 'Cancels / re-books', auto: 'May refuse to wait' },
+                    { feature: 'Luggage & comfort', triveni: 'Fits suitcases, clean cabin', app: 'Depends on car', auto: 'Limited space' },
+                  ].map((row, i) => (
+                    <tr key={i} className="border-b border-white/5 last:border-0">
+                      <td className="px-4 py-3.5 font-medium text-gray-200">{row.feature}</td>
+                      <td className="px-4 py-3.5 text-green-300">
+                        <span className="inline-flex items-start gap-1.5">
+                          <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                          {row.triveni}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3.5 text-gray-400">{row.app}</td>
+                      <td className="px-4 py-3.5 text-gray-400">{row.auto}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-center text-xs text-gray-500 mt-4">
+              <IndianRupee className="w-3 h-3 inline -mt-0.5" /> All Triveni fares are fixed AC-sedan rates with no surge or hidden charges.
+            </p>
+          </div>
+        </section>
+
         {/* Bus Stand Cards grouped by city */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Choose Your <span className="text-green-400">Bus Stand</span>
+                Which <span className="text-green-400">bus stand</span> are you arriving at?
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">Select the bus stand where you are arriving for instant cab service with transparent pricing</p>
             </div>
@@ -318,10 +472,10 @@ export default function BusStandTaxiHubPage() {
               <p className="text-gray-400">Common queries about our bus stand taxi services</p>
             </div>
             <div className="space-y-4">
-              {faqSchema.mainEntity.map((faq, i) => (
+              {hubFaqs.map((faq, i) => (
                 <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6">
-                  <h3 className="font-bold text-lg mb-3 text-green-400">{faq.name}</h3>
-                  <p className="text-gray-300 leading-relaxed">{faq.acceptedAnswer.text}</p>
+                  <h3 className="font-bold text-lg mb-3 text-green-400">{faq.question}</h3>
+                  <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

@@ -260,6 +260,21 @@ export default function BlogPostPageClient({ post }) {
         />
       </div>
 
+      {/* Quick Answer — featured-snippet bait for "<attraction> timings/entry fee" intent */}
+      {post.quickAnswer && (
+        <div className="max-w-5xl mx-auto px-4 mt-4">
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-6 shadow-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <span aria-hidden="true" className="text-xl">⚡</span>
+              <h2 className="text-lg sm:text-xl font-bold text-amber-900 m-0">Quick Answer</h2>
+            </div>
+            <p className="blog-summary text-[15px] sm:text-base leading-relaxed text-gray-800 m-0">
+              {post.quickAnswer}
+            </p>
+          </div>
+        </div>
+      )}
+
       <LayoutComponent post={post} relatedLinks={relatedLinks} />
 
       {/* Related Service Pages — SEO internal linking based on blog category */}
@@ -285,7 +300,7 @@ export default function BlogPostPageClient({ post }) {
             >
               <div className="text-2xl mb-2">🚐</div>
               <p className="text-sm font-semibold text-gray-900">Tempo Traveller</p>
-              <p className="text-xs text-gray-500 mt-1">12–26 seater from ₹23/km</p>
+              <p className="text-xs text-gray-500 mt-1">12–26 seater from ₹20/km</p>
             </Link>
             <Link
               href="/pricing"

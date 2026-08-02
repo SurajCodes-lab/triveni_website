@@ -1,3 +1,4 @@
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
 
 export const revalidate = 3600;
@@ -16,7 +17,7 @@ export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
-    title: 'Durga Puja & Navratri 2026 Cab Service — Pandal Hopping Made Easy | Triveni Cabs',
+    title: 'Durga Puja & Navratri 2026 Cab Service — Pandal Hopping Made Easy',
     description: pageDesc,
     type: 'website',
     locale: 'en_IN',
@@ -44,7 +45,7 @@ export default function DurgaPujaPage() {
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('durga-puja-travel-transport')), "bestRating": "5" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll, Mountain, Waves, Bird } from '@/components/ui/icons';
 
-export const metadata = { title: 'Nainital Travel Guide 2026 | Lake City, Naini Lake & Kumaon Hills', description: 'Complete Nainital travel guide 2026. Naini Lake boating, Naina Devi Temple, Snow View Point, Tiffin Top, Bhimtal, Mall Road. Call 7668570551.', keywords: 'nainital travel guide, naini lake, lake city, kumaon hills, snow view point, nainital tourism, uttarakhand tourism, nainital boating, bhimtal, pangot birding', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/nainital-travel-guide' }, openGraph: { title: 'Nainital Travel Guide 2026 | Lake City & Beyond', description: 'Everything about visiting Nainital. Naini Lake, Snow View Point, Mall Road, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/nainital-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/nainital-hero.jpg', width: 1200, height: 630, alt: 'Nainital Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Nainital Travel Guide 2026', description: 'Complete Nainital guide. Lake City, Naini Lake, Snow View, Kumaoni food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/nainital-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Nainital Travel Guide 2026: Best Time, Cost & Top Sights', description: 'Best time to visit Nainital: Mar-Jun for lake weather, Dec-Feb for snow. Plan 2-3 days for Naini Lake boating, Snow View, Tiffin Top & Bhimtal. 300 km from Delhi + cab tips. Call 7668570551.', keywords: 'nainital travel guide, naini lake, lake city, kumaon hills, snow view point, nainital tourism, uttarakhand tourism, nainital boating, bhimtal, pangot birding', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/nainital-travel-guide' }, openGraph: { title: 'Nainital Travel Guide 2026 | Lake City & Beyond', description: 'Everything about visiting Nainital. Naini Lake, Snow View Point, Mall Road, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/nainital-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Nainital/Nainital_hero_section.jpg', width: 1200, height: 630, alt: 'Nainital Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Nainital Travel Guide 2026', description: 'Complete Nainital guide. Lake City, Naini Lake, Snow View, Kumaoni food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Nainital/Nainital_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function NainitalTravelGuidePage() {
+  const heroImage = "/images/sightseeing/Nainital/Nainital_hero_section.jpg";
+  const cityName = "Nainital";
+  const whatsappMsg = "I want to book a cab for Nainital trip";
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Nainital Travel Guide", "item": "https://www.trivenicabs.in/nainital-travel-guide" }] };
   const faqData = [
     { question: "How many days do I need in Nainital?", answer: "2-3 days is ideal. Day 1: Naini Lake boating, Mall Road, Naina Devi Temple, Tibetan Market. Day 2: Snow View Point cable car, Tiffin Top trek, Eco Cave Garden. Day 3: Bhimtal Lake, Sattal, Pangot (for birding enthusiasts). Add a day for Mukteshwar or Ranikhet excursion." },
@@ -18,13 +23,13 @@ export default function NainitalTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Naini Lake (Boating)", desc: "The emerald-green kidney-shaped lake that gives Nainital its name. Surrounded by seven hills, it is the heart and soul of the town. Boating options include paddleboats, rowboats, and yacht rides. The reflection of surrounding hills in the still morning waters is unforgettable.", entry: "&#8377;210-510 (boat type)", timing: "6:00 AM - 6:00 PM", duration: "1-2 hours", icon: Waves },
-    { name: "Naina Devi Temple", desc: "A sacred Hindu temple on the northern shore of Naini Lake, dedicated to Goddess Naina Devi (an incarnation of Goddess Sati). One of the 51 Shakti Peethas. Rebuilt after the 1880 landslide. The temple&apos;s spiritual atmosphere is enhanced by lake views.", entry: "Free", timing: "6:00 AM - 10:00 PM", duration: "30-45 min", icon: Landmark },
-    { name: "Snow View Point (Cable Car)", desc: "At 2,270 metres, accessible by a scenic aerial ropeway (cable car) from Mall Road. On clear days, witness a stunning panorama of Himalayan peaks -- Nanda Devi, Trisul, and Nanda Kot. The cable car ride itself offers spectacular views of the town and lake below.", entry: "&#8377;200 (cable car return)", timing: "10:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Mountain },
+    { name: "Naini Lake (Boating)", desc: "The emerald-green kidney-shaped lake that gives Nainital its name. Surrounded by seven hills, it is the heart and soul of the town. Boating options include paddleboats, rowboats, and yacht rides. The reflection of surrounding hills in the still morning waters is unforgettable.", entry: "&#8377;210-510 (boat type)", timing: "6:00 AM - 6:00 PM", duration: "1-2 hours", icon: Waves, img: "/images/sightseeing/Nainital/Naini_Lake.jpg" },
+    { name: "Naina Devi Temple", desc: "A sacred Hindu temple on the northern shore of Naini Lake, dedicated to Goddess Naina Devi (an incarnation of Goddess Sati). One of the 51 Shakti Peethas. Rebuilt after the 1880 landslide. The temple&apos;s spiritual atmosphere is enhanced by lake views.", entry: "Free", timing: "6:00 AM - 10:00 PM", duration: "30-45 min", icon: Landmark, img: "/images/sightseeing/Nainital/Naina_devi_temple.jpg" },
+    { name: "Snow View Point (Cable Car)", desc: "At 2,270 metres, accessible by a scenic aerial ropeway (cable car) from Mall Road. On clear days, witness a stunning panorama of Himalayan peaks -- Nanda Devi, Trisul, and Nanda Kot. The cable car ride itself offers spectacular views of the town and lake below.", entry: "&#8377;200 (cable car return)", timing: "10:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Mountain, img: "/images/sightseeing/Nainital/Snow_View_Point.jpg" },
     { name: "Tiffin Top (Dorothy&apos;s Seat)", desc: "A hilltop viewpoint at 2,292 metres offering panoramic views of the Kumaon Himalayas. Named after Dorothy Kellett, a British painter. Reached by a pleasant 4 km trek or pony ride from Bara Pathar. The whole Nainital town and lake spread below like a postcard.", entry: "Free (pony &#8377;300-500)", timing: "All day (morning best)", duration: "2-3 hours (with trek)", icon: Camera },
     { name: "Eco Cave Garden", desc: "A network of interconnected natural caves named after animals -- Tiger Cave, Panther Cave, Bat Cave, and more. Narrow passages add adventure, especially for children. Musical fountain show in the evening. Well-maintained gardens surrounding the caves.", entry: "&#8377;35 adults / &#8377;25 children", timing: "9:30 AM - 5:30 PM", duration: "1-1.5 hours", icon: Compass },
-    { name: "Mall Road", desc: "The bustling main street of Nainital running along the lake between Tallital (lower end) and Mallital (upper end). Lined with hotels, restaurants, shops, and the famous Flats. A flat, easy walk with the lake on one side and the hills on the other. Car-free on peak season days.", entry: "Free", timing: "All day (evening best)", duration: "1-2 hours", icon: MapPin },
-    { name: "Bhimtal Lake", desc: "A larger and quieter lake than Naini, located 22 km from Nainital. Features a unique island aquarium in the centre. Less crowded with better boating opportunities. The surrounding villages offer a peaceful escape from Nainital&apos;s tourist bustle.", entry: "&#8377;200 (boating)", timing: "8:00 AM - 6:00 PM", duration: "2-3 hours", icon: Sunrise },
+    { name: "Mall Road", desc: "The bustling main street of Nainital running along the lake between Tallital (lower end) and Mallital (upper end). Lined with hotels, restaurants, shops, and the famous Flats. A flat, easy walk with the lake on one side and the hills on the other. Car-free on peak season days.", entry: "Free", timing: "All day (evening best)", duration: "1-2 hours", icon: MapPin, img: "/images/sightseeing/Nainital/Mall_Road_Nainital.jpg" },
+    { name: "Bhimtal Lake", desc: "A larger and quieter lake than Naini, located 22 km from Nainital. Features a unique island aquarium in the centre. Less crowded with better boating opportunities. The surrounding villages offer a peaceful escape from Nainital&apos;s tourist bustle.", entry: "&#8377;200 (boating)", timing: "8:00 AM - 6:00 PM", duration: "2-3 hours", icon: Sunrise, img: "/images/sightseeing/Nainital/Bhimtal_Lake.jpg" },
     { name: "Sattal (Seven Lakes)", desc: "A cluster of seven interconnected freshwater lakes nestled in dense oak forests, 23 km from Nainital. A paradise for birdwatchers with over 500 species recorded. Kayaking, nature walks, and butterfly watching available. Far less commercialised than Nainital.", entry: "Free (activities extra)", timing: "All day", duration: "3-4 hours", icon: Bird },
     { name: "Pangot (Birding Paradise)", desc: "A tiny village 15 km from Nainital, famous among birdwatchers for sightings of over 580 species including the Lammergeier vulture, Koklass Pheasant, and Rufous-bellied Woodpecker. Dense oak and rhododendron forests. Ideal for nature photography and peaceful walks.", entry: "Free", timing: "Early morning best", duration: "Half day", icon: Bird },
   ];
@@ -64,6 +69,16 @@ export default function NainitalTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: Waves, title: "Lake City Experts", desc: "Kumaon specialists" }, { icon: Landmark, title: "Lake District", desc: "India&apos;s beloved hill station" }, { icon: Users, title: "5000+ Trips Done", desc: "Nainital tour experts" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "9 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "nainital-travel-guide",
+    headline: "Nainital Travel Guide",
+    description: "Nainital Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -79,12 +94,14 @@ export default function NainitalTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -120,6 +137,23 @@ export default function NainitalTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Nainital trip?"
+            answer="Nainital is best from March to June for pleasant 10-27 degree weather and clear lake views, and again from September to November when the hills are lush and crowds thin; December to February brings snow. Two to three days covers Naini Lake boating, Mall Road, Naina Devi Temple, Snow View Point and Tiffin Top, with Bhimtal and Sattal nearby. Delhi is about 300 km away, roughly 7 hours by car via NH9 through Moradabad and Haldwani."
+            facts={[
+              { label: 'Best time', value: 'Mar-Jun, Sep-Nov' },
+              { label: 'Ideal duration', value: '2 to 3 days' },
+              { label: 'Top sight', value: 'Naini Lake' },
+              { label: 'Cab from Delhi', value: '300 km · ₹11/km' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -141,9 +175,9 @@ export default function NainitalTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to the Lake City</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Nainital, the jewel of the Kumaon Hills, is a destination that has enchanted travellers since a British sugar merchant, P. Barron, discovered this emerald lake in 1841 and declared it the most beautiful spot he had ever seen. The town takes its name from Naini Lake, a kidney-shaped body of water cradled by seven hills -- Ayarpata, Deopata, Handi-Bandi, Naina, Alma, Laria Kanta, and Sher Ka Danda. Legend holds that the lake formed from an eye (nain) of Goddess Sati, making it one of the 51 Shakti Peethas in Hindu mythology. At 1,938 metres above sea level, Nainital offers a climate that ranges from pleasantly warm summers to magical snowy winters. The British developed it as a summer retreat, and their colonial legacy lives on in the Gothic churches, the Raj-era Boat House Club, and the wide Mall Road promenade. But Nainital is more than just its famous lake. Bhimtal, Sattal, and Naukuchiatal -- the satellite lakes -- offer quieter escapes. Pangot village is a world-class birding destination. The local Kumaoni cuisine, from the unique Bal Mithai sweet to hearty bhatt ki churkani, adds a flavour found nowhere else in India. Whether you come for the boating, the views, or simply to breathe mountain air by the lake, Nainital is a hill station that never disappoints.</p>
@@ -190,9 +224,16 @@ export default function NainitalTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -208,6 +249,53 @@ export default function NainitalTravelGuidePage() {
           </div>
         </div>
       </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
+            </div>
+          </div>
+        </section>
 
       {/* FOOD */}
       <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">

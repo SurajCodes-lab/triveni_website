@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Hire Car with Driver in India for Foreigners 2026 | English-Speaking Drivers | Triveni Cabs',
-  description: 'Hire a car with English-speaking driver in India. Multi-day packages from $45/day. Golden Triangle, Rajasthan, Kerala circuits. Safe, reliable service for foreign tourists. Call +91-7668570551.',
+  title: 'Hire Car with English-Speaking Driver in India 2026',
+  description: 'Hire a car with English-speaking driver in India. Multi-day packages from $45/day. Golden Triangle, Rajasthan, Kerala circuits.',
   keywords: 'hire car with driver india for foreigners, private driver india, english speaking driver india, chauffeur hire india, india car rental with driver',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -59,7 +60,7 @@ export default function PrivateDriverHirePage() {
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "addressCountry": "IN" } },
     "areaServed": { "@type": "Country", "name": "India" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "45", "highPrice": "110", "priceCurrency": "USD", "unitText": "per day" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('private-driver-hire-india')), "bestRating": "5" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

@@ -6,6 +6,7 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { useState, useMemo } from 'react';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
 export default function DestinationCompareClient({ data }) {
   // Map {q, a} format to {question, answer} for FAQSection
@@ -31,8 +32,14 @@ export default function DestinationCompareClient({ data }) {
     return winner === d1Lower || winner === d1LowerSpace;
   };
 
+  const compareWaMsg = `Hi, I'm comparing ${data.dest1.name} and ${data.dest2.name} for a trip. Please suggest the best option and share cab fares.`;
+
   return (
     <div className="min-h-screen bg-white">
+      <SetStickyCta
+        label={`${data.dest1.name} vs ${data.dest2.name} Trip`}
+        whatsappText={compareWaMsg}
+      />
       {/* Animated CSS */}
       <style jsx global>{`
         @keyframes vsGlow {
@@ -175,6 +182,19 @@ export default function DestinationCompareClient({ data }) {
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent" />
       </section>
+
+      {/* Quick Answer - featured snippet */}
+      {data.quickAnswer && (
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 mt-10 mb-4 relative z-20">
+          <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl border border-blue-100 p-6 md:p-7 shadow-sm">
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="w-5 h-5 text-orange-500" />
+              <h2 className="text-sm font-black uppercase tracking-widest text-gray-500">Quick Answer</h2>
+            </div>
+            <p className="text-base md:text-lg text-gray-800 leading-relaxed font-medium">{data.quickAnswer}</p>
+          </div>
+        </section>
+      )}
 
       {/* Side-by-Side Destination Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-6 relative z-20 mb-20">
@@ -365,6 +385,30 @@ export default function DestinationCompareClient({ data }) {
               </div>
             </div>
             <p className="text-lg text-gray-600 leading-relaxed">{data.verdict}</p>
+
+            {/* Verdict → booking funnel */}
+            <div className="mt-7 flex flex-col sm:flex-row gap-3">
+              <a
+                onClick={() => trackPhoneCall('destination_compare_verdict')} href="tel:+917668570551"
+                className="flex items-center justify-center gap-2 bg-gray-900 text-white font-bold px-6 py-3.5 rounded-2xl hover:bg-gray-800 transition-all text-sm"
+              >
+                <Phone className="w-4 h-4" /> Call 7668570551
+              </a>
+              <a
+                onClick={() => trackWhatsAppClick('destination_compare_verdict')}
+                href={`https://wa.me/917668570551?text=${encodeURIComponent(compareWaMsg)}`}
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-green-500 text-white font-bold px-6 py-3.5 rounded-2xl hover:bg-green-400 transition-all text-sm"
+              >
+                <WhatsAppIcon className="w-4 h-4" /> Get Trip Advice on WhatsApp
+              </a>
+            </div>
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-gray-500 text-xs sm:text-sm font-medium">
+              <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> 4.9&#9733; Rated</span>
+              <span className="flex items-center gap-1.5"><Car className="w-3.5 h-3.5 text-gray-400" /> 10,000+ Trips</span>
+              <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-gray-400" /> Verified Drivers</span>
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-500" /> No Advance Payment</span>
+            </div>
           </div>
         </div>
       </section>

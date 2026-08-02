@@ -3,7 +3,7 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-kurukshetra-from-delhi');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Same Day Kurukshetra Tour from Delhi | ₹4,000 AC Cab | 2026',

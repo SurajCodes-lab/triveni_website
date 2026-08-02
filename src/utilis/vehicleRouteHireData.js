@@ -1,5 +1,6 @@
 // src/utilis/vehicleRouteHireData.js - Vehicle-specific route hire data for 30 vehicle-route pages
 // Pricing: perKm rate * max(distanceKm, 300) minimum billing
+import { getDeterministicReviewCount } from '@/lib/seo/review-helpers';
 
 const vehicles = {
   "innova": {
@@ -91,6 +92,21 @@ const routeInfo = {
   "delhi-to-leh":        { origin: "Delhi",  destination: "Leh",        distanceKm: 985, duration: "2 days",      highway: "NH-44, NH-21, NH-3",             stops: ["Chandigarh", "Manali", "Rohtang Pass", "Keylong", "Sarchu"] },
   "delhi-to-kashmir":    { origin: "Delhi",  destination: "Srinagar",   distanceKm: 810, duration: "18-20 hours", highway: "NH-44",                          stops: ["Ambala", "Ludhiana", "Jalandhar", "Udhampur", "Ramban"] },
   "delhi-to-mathura":    { origin: "Delhi",  destination: "Mathura",    distanceKm: 180, duration: "3-4 hours",   highway: "Yamuna Expressway",              stops: ["Greater Noida", "Jewar"] },
+  "delhi-to-amritsar":    { origin: "Delhi",      destination: "Amritsar",   distanceKm: 450, duration: "7-8 hours",   highway: "NH-44",                          stops: ["Panipat", "Karnal", "Ambala", "Ludhiana", "Jalandhar"] },
+  "delhi-to-dehradun":    { origin: "Delhi",      destination: "Dehradun",   distanceKm: 260, duration: "5-6 hours",   highway: "NH-44 & NH-7",                   stops: ["Meerut", "Muzaffarnagar", "Roorkee", "Haridwar"] },
+  "delhi-to-mussoorie":   { origin: "Delhi",      destination: "Mussoorie",  distanceKm: 290, duration: "6-7 hours",   highway: "NH-44 & NH-7",                   stops: ["Meerut", "Roorkee", "Haridwar", "Dehradun"] },
+  "delhi-to-dharamshala": { origin: "Delhi",      destination: "Dharamshala", distanceKm: 475, duration: "9-10 hours", highway: "NH-44 & NH-154",                 stops: ["Ambala", "Chandigarh", "Una", "Kangra"] },
+  "delhi-to-katra":       { origin: "Delhi",      destination: "Katra",      distanceKm: 630, duration: "11-12 hours", highway: "NH-44",                          stops: ["Ambala", "Ludhiana", "Jalandhar", "Pathankot", "Jammu"] },
+  "delhi-to-jodhpur":     { origin: "Delhi",      destination: "Jodhpur",    distanceKm: 600, duration: "10-11 hours", highway: "NH-48 & NH-62",                  stops: ["Jaipur", "Ajmer", "Beawar", "Pali"] },
+  "delhi-to-udaipur":     { origin: "Delhi",      destination: "Udaipur",    distanceKm: 660, duration: "11-12 hours", highway: "NH-48",                          stops: ["Jaipur", "Ajmer", "Bhilwara", "Chittorgarh"] },
+  "delhi-to-jaisalmer":   { origin: "Delhi",      destination: "Jaisalmer",  distanceKm: 790, duration: "13-14 hours", highway: "NH-48 & NH-11",                  stops: ["Jaipur", "Bikaner", "Pokhran"] },
+  "delhi-to-varanasi":    { origin: "Delhi",      destination: "Varanasi",   distanceKm: 820, duration: "13-14 hours", highway: "NH-19 & Purvanchal Expressway",  stops: ["Aligarh", "Kanpur", "Prayagraj"] },
+  "delhi-to-lucknow":     { origin: "Delhi",      destination: "Lucknow",    distanceKm: 555, duration: "8-9 hours",   highway: "Agra-Lucknow Expressway",        stops: ["Agra", "Etawah", "Kanpur"] },
+  "delhi-to-ayodhya":     { origin: "Delhi",      destination: "Ayodhya",    distanceKm: 690, duration: "11-12 hours", highway: "Lucknow Expressway & NH-27",     stops: ["Agra", "Lucknow", "Barabanki"] },
+  "delhi-to-corbett":     { origin: "Delhi",      destination: "Jim Corbett", distanceKm: 245, duration: "5-6 hours",  highway: "NH-9",                           stops: ["Hapur", "Moradabad", "Kashipur", "Ramnagar"] },
+  "chandigarh-to-manali": { origin: "Chandigarh", destination: "Manali",     distanceKm: 310, duration: "8-9 hours",   highway: "NH-205 & NH-3",                  stops: ["Ropar", "Bilaspur", "Mandi", "Kullu"] },
+  "chandigarh-to-shimla": { origin: "Chandigarh", destination: "Shimla",     distanceKm: 115, duration: "3-4 hours",   highway: "NH-5",                           stops: ["Kalka", "Parwanoo", "Solan"] },
+  "jaipur-to-jaisalmer":  { origin: "Jaipur",     destination: "Jaisalmer",  distanceKm: 560, duration: "9-10 hours",  highway: "NH-11 & NH-15",                  stops: ["Kishangarh", "Nagaur", "Bikaner", "Pokhran"] },
 };
 
 // Inclusions & exclusions
@@ -99,10 +115,15 @@ const baseExclusions = ["Parking fees at tourist spots", "Monument entry tickets
 
 function generateFaqs(vehicleName, vehicleType, origin, destination, distanceKm, fare, duration, perKm, seating) {
   const minKm = Math.max(distanceKm, 300);
+  const roundTripFare = Math.round(fare * 2 * 0.9);
   return [
     {
       question: `How much does it cost to hire a ${vehicleName} from ${origin} to ${destination}?`,
-      answer: `Hiring a ${vehicleName} from ${origin} to ${destination} costs approximately Rs ${fare.toLocaleString('en-IN')} for the ${distanceKm} km journey (minimum billing: ${minKm} km at Rs ${perKm}/km). This includes fuel, driver charges, and all tolls. Call Triveni Cabs at 7668570551 for exact fare.`,
+      answer: `Hiring a ${vehicleName} from ${origin} to ${destination} costs approximately Rs ${fare.toLocaleString('en-IN')} for the ${distanceKm} km journey (minimum billing: ${minKm} km at Rs ${perKm}/km). This all-inclusive fare covers fuel, the driver, all tolls, and state permits. Call Triveni Cabs at 7668570551 for an exact, no-surge quote.`,
+    },
+    {
+      question: `What is the per km rate for a ${vehicleName} on the ${origin} to ${destination} route?`,
+      answer: `The ${vehicleName} is charged at Rs ${perKm}/km for the ${origin} to ${destination} route, with a minimum billing of ${minKm} km on one-way trips. There is no surge pricing — the rate is fixed at the time of booking and confirmed in writing on WhatsApp.`,
     },
     {
       question: `Is ${vehicleName} good for the ${origin} to ${destination} route?`,
@@ -118,13 +139,85 @@ function generateFaqs(vehicleName, vehicleType, origin, destination, distanceKm,
     },
     {
       question: `Can I book a one-way ${vehicleName} from ${origin} to ${destination}?`,
-      answer: `Yes, Triveni Cabs offers both one-way and round-trip ${vehicleName} hire from ${origin} to ${destination}. One-way trips are charged at Rs ${perKm}/km with a minimum of 300 km billing. Book via call at 7668570551 or WhatsApp for instant confirmation.`,
+      answer: `Yes, Triveni Cabs offers both one-way and round-trip ${vehicleName} hire from ${origin} to ${destination}. One-way trips are charged at Rs ${perKm}/km with a minimum of 300 km billing. A round trip costs approximately Rs ${roundTripFare.toLocaleString('en-IN')} with a 10% return discount. Book via call at 7668570551 or WhatsApp for instant confirmation.`,
     },
     {
       question: `How many passengers can travel in a ${vehicleName} from ${origin} to ${destination}?`,
       answer: `The ${vehicleName} comfortably accommodates ${seating} passengers for the ${origin} to ${destination} trip. For larger groups, consider our Tempo Traveller options. All seats have individual AC vents and comfortable cushioning.`,
     },
+    {
+      question: `How do I book a ${vehicleName} from ${origin} to ${destination}?`,
+      answer: `Booking takes under two minutes: call or WhatsApp Triveni Cabs at 7668570551 with your travel date and pickup address, confirm the Rs ${fare.toLocaleString('en-IN')} fare, and pay a small advance to lock the ${vehicleName}. You receive driver details before the trip — no app download or sign-up needed.`,
+    },
+    {
+      question: `Is the driver and fuel included in the ${vehicleName} ${origin} to ${destination} fare?`,
+      answer: `Yes. The Rs ${fare.toLocaleString('en-IN')} fare for ${origin} to ${destination} is all-inclusive of the experienced driver, fuel, all highway tolls, state taxes/permits, and driver night-halt allowance. You only pay extra for parking at attractions and monument entry tickets.`,
+    },
+    {
+      question: `Can I make stops along the way from ${origin} to ${destination}?`,
+      answer: `Absolutely. On the ${origin} to ${destination} route the ${vehicleName} can stop at your chosen rest stops, dhabas, and sightseeing spots at no extra per-stop charge on point-to-point trips. Just inform the driver in advance so the timing can be planned comfortably.`,
+    },
   ];
+}
+
+// Fare breakdown rows (AEO/featured-snippet friendly)
+function getFareBreakdown(perKm, distanceKm, fare) {
+  const minKm = Math.max(distanceKm, 300);
+  return [
+    { label: 'Base distance billed', value: `${minKm} km (min)` },
+    { label: 'Per km rate', value: `Rs ${perKm}/km` },
+    { label: 'Fuel charges', value: 'Included' },
+    { label: 'Tolls & state permits', value: 'Included' },
+    { label: 'Driver allowance', value: 'Included' },
+    { label: 'Total all-inclusive fare', value: `Rs ${fare.toLocaleString('en-IN')}` },
+  ];
+}
+
+// How-to booking steps (HowTo schema + on-page)
+function getBookingSteps(vehicleName, origin, destination, fare) {
+  return [
+    { name: 'Call or WhatsApp', text: `Contact Triveni Cabs at 7668570551 with your ${origin} to ${destination} travel date, pickup address, and passenger count.` },
+    { name: 'Confirm the fare', text: `Get the all-inclusive ${vehicleName} fare of Rs ${fare.toLocaleString('en-IN')} confirmed in writing on WhatsApp — no surge, no hidden charges.` },
+    { name: 'Pay a small advance', text: `Lock the ${vehicleName} for your date with a small advance via UPI, card, or bank transfer. The balance is paid at trip end.` },
+    { name: 'Receive driver details', text: `Get the assigned driver's name, photo, and vehicle number before the trip, plus a live GPS tracking link for safety.` },
+    { name: 'Travel comfortably', text: `Your ${vehicleName} arrives at your doorstep at the scheduled time for the ${origin} to ${destination} journey.` },
+  ];
+}
+
+// Direct-answer lead sentence (speakable / AI answer)
+function getDirectAnswer(vehicleName, vehicleType, origin, destination, distanceKm, duration, fare, perKm, seating) {
+  return `Hiring a ${vehicleName} on rent from ${origin} to ${destination} costs Rs ${fare.toLocaleString('en-IN')} all-inclusive for the ${distanceKm} km, ${duration} journey. The fare covers an AC ${vehicleType.toLowerCase()} that seats ${seating}, an experienced driver, fuel, and all tolls at Rs ${perKm}/km. Book instantly with Triveni Cabs on 7668570551.`;
+}
+
+// Known slug sets for safe interlinking (verified against oneWayCabData.js + distanceData.js)
+const ONE_WAY_SLUGS = new Set([
+  "delhi-to-agra", "delhi-to-chandigarh", "delhi-to-haridwar", "delhi-to-jaipur",
+  "delhi-to-manali", "delhi-to-nainital", "delhi-to-rishikesh", "delhi-to-shimla",
+  "jaipur-to-jodhpur", "jaipur-to-udaipur",
+]);
+const DISTANCE_SLUGS = new Set([
+  "delhi-to-agra", "delhi-to-chandigarh", "delhi-to-haridwar", "delhi-to-jaipur",
+  "delhi-to-manali", "delhi-to-mathura", "delhi-to-nainital", "delhi-to-rishikesh",
+  "delhi-to-shimla", "jaipur-to-jodhpur", "jaipur-to-udaipur",
+]);
+const CITY_HUB_SLUGS = new Set(["delhi", "agra", "jaipur", "haridwar", "chandigarh"]);
+
+// Internal links for SEO interlinking. Only emits links whose targets exist.
+function getInternalLinks(vehicleType, routeSlug, origin, destination) {
+  const od = routeSlug; // routeSlug is already "origin-to-destination"
+  const originSlug = origin.toLowerCase();
+  const links = [];
+  if (ONE_WAY_SLUGS.has(od)) {
+    links.push({ label: `${origin} to ${destination} one-way cab fare`, href: `/one-way-cab/${od}` });
+  }
+  if (DISTANCE_SLUGS.has(od)) {
+    links.push({ label: `${origin} to ${destination} distance & route map`, href: `/distance/${od}` });
+  }
+  if (CITY_HUB_SLUGS.has(originSlug)) {
+    links.push({ label: `All ${origin} taxi & cab services`, href: `/${originSlug}` });
+  }
+  links.push({ label: 'Compare our full fleet & per-km rates', href: '/triveni-cabs-fleet' });
+  return links;
 }
 
 function calcFare(perKm, distanceKm) {
@@ -132,12 +225,20 @@ function calcFare(perKm, distanceKm) {
 }
 
 // Vehicle-route assignment definitions
+// 15 North-India money routes added across all 5 main vehicle types (75 pages).
+const NEW_HIRE_ROUTES = [
+  "delhi-to-amritsar", "delhi-to-dehradun", "delhi-to-mussoorie", "delhi-to-dharamshala",
+  "delhi-to-katra", "delhi-to-jodhpur", "delhi-to-udaipur", "delhi-to-jaisalmer",
+  "delhi-to-varanasi", "delhi-to-lucknow", "delhi-to-ayodhya", "delhi-to-corbett",
+  "chandigarh-to-manali", "chandigarh-to-shimla", "jaipur-to-jaisalmer",
+];
+
 const vehicleRouteDefs = {
-  "innova":               ["delhi-to-manali", "delhi-to-shimla", "delhi-to-haridwar", "delhi-to-jaipur", "delhi-to-agra", "delhi-to-rishikesh", "delhi-to-chandigarh", "delhi-to-nainital", "jaipur-to-udaipur", "jaipur-to-jodhpur"],
-  "fortuner":             ["delhi-to-manali", "delhi-to-shimla", "delhi-to-leh", "delhi-to-kashmir", "delhi-to-rishikesh"],
-  "ertiga":               ["delhi-to-manali", "delhi-to-jaipur", "delhi-to-agra", "delhi-to-shimla", "delhi-to-haridwar"],
-  "dzire":                ["delhi-to-agra", "delhi-to-jaipur", "delhi-to-chandigarh", "delhi-to-haridwar", "delhi-to-mathura"],
-  "innova-crysta":        ["delhi-to-manali", "delhi-to-shimla", "delhi-to-jaipur"],
+  "innova":               ["delhi-to-manali", "delhi-to-shimla", "delhi-to-haridwar", "delhi-to-jaipur", "delhi-to-agra", "delhi-to-rishikesh", "delhi-to-chandigarh", "delhi-to-nainital", "jaipur-to-udaipur", "jaipur-to-jodhpur", ...NEW_HIRE_ROUTES],
+  "fortuner":             ["delhi-to-manali", "delhi-to-shimla", "delhi-to-leh", "delhi-to-kashmir", "delhi-to-rishikesh", ...NEW_HIRE_ROUTES],
+  "ertiga":               ["delhi-to-manali", "delhi-to-jaipur", "delhi-to-agra", "delhi-to-shimla", "delhi-to-haridwar", ...NEW_HIRE_ROUTES],
+  "dzire":                ["delhi-to-agra", "delhi-to-jaipur", "delhi-to-chandigarh", "delhi-to-haridwar", "delhi-to-mathura", ...NEW_HIRE_ROUTES],
+  "innova-crysta":        ["delhi-to-manali", "delhi-to-shimla", "delhi-to-jaipur", ...NEW_HIRE_ROUTES],
   "traveller-12-seater":  ["delhi-to-manali", "delhi-to-haridwar"],
 };
 
@@ -258,11 +359,18 @@ for (const [vehicleType, routeSlugs] of Object.entries(vehicleRouteDefs)) {
       stops: info.stops,
       fare,
       fareFormatted: `Rs ${fare.toLocaleString('en-IN')}`,
+      perKm: vehicle.perKm,
       inclusions: baseInclusions,
       exclusions: baseExclusions,
       faqs: generateFaqs(vehicle.name, vehicle.type, info.origin, info.destination, info.distanceKm, fare, info.duration, vehicle.perKm, vehicle.seating),
       relatedVehicleRoutes: getRelatedForRoute(vehicleType, routeSlug),
       whyThisVehicle: getWhyVehicle(vehicleType, info),
+      directAnswer: getDirectAnswer(vehicle.name, vehicle.type, info.origin, info.destination, info.distanceKm, info.duration, fare, vehicle.perKm, vehicle.seating),
+      fareBreakdown: getFareBreakdown(vehicle.perKm, info.distanceKm, fare),
+      bookingSteps: getBookingSteps(vehicle.name, info.origin, info.destination, fare),
+      internalLinks: getInternalLinks(vehicleType, routeSlug, info.origin, info.destination),
+      roundTripFare: Math.round(fare * 2 * 0.9),
+      reviewCount: getDeterministicReviewCount(`${vehicleType}-${routeSlug}`),
     };
   }
 }

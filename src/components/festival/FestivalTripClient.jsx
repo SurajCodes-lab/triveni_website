@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MapPin, Calendar, Check, Star,
   Sparkles, Shield, ChevronRight, ChevronDown,
@@ -12,16 +13,24 @@ import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { phoneNumber } from '@/utilis/data';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const FestivalTripClient = ({ festival }) => {
   const [activeDay, setActiveDay] = useState(null);
   const [showAllTips, setShowAllTips] = useState(false);
 
-  const whatsappMessage = encodeURIComponent(`Hi! I want to book ${festival.title}. Please share package details and availability.`);
+  const whatsappText = `Hi! I want to book ${festival.title}. Please share package details and availability.`;
+  const whatsappMessage = encodeURIComponent(whatsappText);
   const whatsappURL = `https://wa.me/91${phoneNumber}?text=${whatsappMessage}`;
 
   return (
     <div className="min-h-screen bg-red-950 overflow-hidden">
+      <SetStickyCta
+        price={festival.fares.sedan}
+        label={`${festival.festival} - ${festival.location}`}
+        whatsappText={whatsappText}
+      />
       {/* Shimmer animation style */}
       <style jsx>{`
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
@@ -35,89 +44,111 @@ const FestivalTripClient = ({ festival }) => {
         .lantern-card { animation: lantern-swing 4s ease-in-out infinite; transform-origin: top center; }
       `}</style>
 
-      {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Layered gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-950 via-red-900 to-amber-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(251,191,36,0.18),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(239,68,68,0.12),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(234,179,8,0.06),transparent_40%)]" />
+      {/* HERO SECTION — true viewport-height hero, destination photo visible */}
+      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        {/* Destination photo — the pitch, now actually visible */}
+        {festival.heroImage && (
+          <Image
+            src={festival.heroImage}
+            alt={`${festival.festival} at ${festival.location} — cab & tempo hire from Delhi with Triveni Cabs`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-105"
+          />
+        )}
+        {/* Premium scrim: light at top (photo shows), dark at bottom (text legible) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/55 via-slate-950/45 to-slate-950/90" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(250,207,45,0.16),transparent_55%)]" />
+        {/* top gold hairline */}
+        <div className="absolute inset-x-0 top-0 z-20 h-[3px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+        {/* two subtle gold glow orbs */}
+        <div className="float-slow absolute top-24 left-[8%] w-40 h-40 md:w-72 md:h-72 bg-amber-400/20 rounded-full blur-3xl" />
+        <div className="float-medium absolute bottom-24 right-[8%] w-56 h-56 md:w-96 md:h-96 bg-amber-500/12 rounded-full blur-3xl" />
 
-        {/* Festive grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #fbbf24 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-
-        {/* Animated festive orbs (lantern glow effect) */}
-        <div className="float-slow absolute top-16 left-[10%] w-40 h-40 md:w-72 md:h-72 bg-gradient-to-br from-amber-400/25 to-orange-500/15 rounded-full blur-3xl" />
-        <div className="float-medium absolute bottom-20 right-[8%] w-56 h-56 md:w-96 md:h-96 bg-gradient-to-br from-red-400/15 to-yellow-400/15 rounded-full blur-3xl" />
-        <div className="float-slow absolute top-1/2 left-1/3 w-32 h-32 md:w-52 md:h-52 bg-gradient-to-br from-yellow-300/15 to-amber-500/10 rounded-full blur-3xl" />
-        <div className="float-medium absolute top-1/4 right-1/4 w-24 h-24 md:w-40 md:h-40 bg-gradient-to-br from-orange-400/20 to-red-400/10 rounded-full blur-2xl" />
-
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center pt-24 md:pt-0">
+        {/* Hero Content — fits ONE viewport inside the safe area (below the fixed
+            header, above the mobile sticky bar). Nothing cut, nothing scrolls. */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 text-center pt-[76px] pb-[84px] sm:py-16">
           {/* Breadcrumb */}
-          <nav className="mb-6 md:mb-8" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-2 text-sm">
+          <nav className="mb-2.5 sm:mb-4" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center gap-2 text-[0.7rem] sm:text-sm">
               <li><Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link></li>
-              <ChevronRight className="w-4 h-4 text-white/40" />
-              <li><span className="text-amber-400 font-medium truncate max-w-[200px]">{festival.festival}</span></li>
+              <ChevronRight className="w-3.5 h-3.5 text-white/40" />
+              <li><span className="text-amber-400 font-medium truncate max-w-[160px] sm:max-w-[220px]">{festival.festival}</span></li>
             </ol>
           </nav>
 
-          {/* Festival badge with glow */}
-          <div className="mb-6">
-            <div className="inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-amber-500/90 to-red-500/90 rounded-full px-6 py-2.5 md:px-8 md:py-3 shadow-lg shadow-amber-500/30 backdrop-blur-sm border border-amber-400/20">
-              <PartyPopper className="w-5 h-5 md:w-6 md:h-6 text-white" />
-              <span className="text-white font-bold text-sm md:text-base tracking-wider uppercase">{festival.festival} {festival.year}</span>
-              <Flame className="w-5 h-5 md:w-6 md:h-6 text-yellow-300" />
-            </div>
+          {/* Festival badge */}
+          <div className="mb-3 sm:mb-5">
+            <span className="inline-flex items-center gap-2 rounded-full glass-dark px-3.5 py-1.5 sm:px-5 sm:py-2 text-[0.7rem] sm:text-sm font-bold uppercase tracking-wider text-amber-300 shadow-lg shadow-black/30">
+              <PartyPopper className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+              {festival.festival} {festival.year}
+              <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
+            </span>
           </div>
 
-          {/* Title with shimmer */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
-            <span className="text-white drop-shadow-lg">{festival.festival} Special</span>
-            <br />
-            <span className="shimmer-text">{festival.location} Cab Service</span>
+          {/* Title */}
+          <h1 className="font-black leading-[1.06] tracking-tight text-balance text-[1.55rem] sm:text-5xl lg:text-6xl mb-3 sm:mb-5">
+            <span className="text-white drop-shadow-xl">{festival.festival} Special</span>
+            <span className="block mt-0.5 sm:mt-1 text-gradient-gold">{festival.location} Cab Service</span>
           </h1>
 
           {/* Quick info pills */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 mb-4 sm:mb-6">
             {[
               { icon: Calendar, text: festival.dates },
               { icon: MapPin, text: `${festival.distanceFromDelhi} from Delhi` },
               { icon: Clock, text: festival.duration }
             ].map((pill, i) => (
-              <div key={i} className="flex items-center gap-2 bg-white/[0.07] backdrop-blur-xl rounded-full px-5 py-2.5 border border-white/10 hover:border-amber-500/30 transition-all duration-300">
-                <pill.icon className="w-4 h-4 text-amber-400" />
-                <span className="text-white/90 text-sm font-medium">{pill.text}</span>
+              <div key={i} className="flex items-center gap-1.5 glass-dark rounded-full px-3 py-1.5 text-[0.72rem] sm:text-sm">
+                <pill.icon className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="text-white/90 font-medium">{pill.text}</span>
               </div>
             ))}
           </div>
 
-          {/* Price highlight with diya glow */}
-          <div className="mb-10">
-            <p className="text-white/50 text-sm mb-2 uppercase tracking-wider">Starting from</p>
-            <div className="inline-block diya-card bg-white/[0.05] backdrop-blur-xl rounded-2xl border border-amber-500/20 px-8 py-4">
-              <div className="flex items-center justify-center gap-4">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent">{festival.fares.sedan}</span>
-                <span className="text-white/50 text-lg">Sedan<br/>One-Way</span>
-              </div>
+          {/* Price + CTAs in one compact glass card so it all fits the fold */}
+          <div className="mx-auto max-w-lg rounded-3xl glass-dark p-3.5 sm:p-5 shadow-2xl shadow-black/40">
+            <div className="flex items-center justify-center gap-3 mb-3 sm:mb-4">
+              <span className="text-[0.6rem] uppercase tracking-widest text-white/50">From</span>
+              <span className="text-3xl sm:text-5xl font-black text-gradient-gold leading-none">{festival.fares.sedan}</span>
+              <span className="text-left text-[0.7rem] text-white/50 leading-tight">Sedan<br/>one-way</span>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2.5">
+              <a onClick={() => trackWhatsAppClick('festival_trip_hero', whatsappText)} href={whatsappURL} target="_blank" rel="noopener noreferrer"
+                className="sheen glow-gold group flex flex-1 items-center justify-center gap-2 min-h-[48px] rounded-xl bg-amber-400 px-5 py-3 font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95">
+                <BsWhatsapp className="w-5 h-5" />
+                Book on WhatsApp
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a onClick={() => trackPhoneCall('festival_trip_hero')} href={`tel:+91${phoneNumber}`}
+                className="flex items-center justify-center gap-2 min-h-[48px] rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10">
+                <Phone className="w-4 h-4 text-amber-400" />
+                Call {phoneNumber}
+              </a>
+            </div>
+            {/* Trust row */}
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.7rem] sm:text-xs text-white/60">
+              <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 text-amber-400" /> 4.9&#9733;</span>
+              <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5 text-amber-400" /> 10,000+ trips</span>
+              <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-amber-400" /> Verified drivers</span>
+              <span className="flex items-center gap-1"><Check className="w-3.5 h-3.5 text-amber-400" /> No advance</span>
             </div>
           </div>
+        </div>
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 transition-all duration-300">
-              <BsWhatsapp className="w-6 h-6" />
-              <span>Book on WhatsApp</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a onClick={() => trackPhoneCall('festival_trip')} href={`tel:+91${phoneNumber}`}
-              className="group inline-flex items-center gap-3 bg-white/[0.07] backdrop-blur-xl hover:bg-white/15 text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:border-amber-500/30 hover:scale-105 transition-all duration-300">
-              <Phone className="w-6 h-6 text-amber-400" />
-              <span>Call {phoneNumber}</span>
-            </a>
-          </div>
+        {/* scroll cue (desktop only — no room on mobile) */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-1 text-white/40">
+          <span className="text-[0.65rem] uppercase tracking-widest">Scroll</span>
+          <ChevronDown className="w-4 h-4 animate-bounce" />
+        </div>
+      </section>
+
+      {/* Enquiry form — moved out of the hero so the hero fits one viewport */}
+      <section className="relative bg-slate-950 py-10 sm:py-12">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(250,207,45,0.06),transparent_60%)]" />
+        <div className="relative max-w-xl mx-auto px-4 sm:px-6">
+          <QuickEnquiryForm fromCity="Delhi" toCity={festival.location} pageType="route" />
         </div>
       </section>
 
@@ -154,6 +185,41 @@ const FestivalTripClient = ({ festival }) => {
           </div>
         </div>
       </section>
+
+      {/* GALLERY — real destination photography. A travel page without pictures
+          of the place cannot sell the trip; this section previously did not exist. */}
+      {festival.gallery?.length > 0 && (
+        <section className="py-16 md:py-24 bg-red-950/20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-black text-white">
+                {festival.location} <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">in pictures</span>
+              </h2>
+              <p className="text-white/50 mt-3">What you’ll see on this trip.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+              {festival.gallery.map((src, i) => (
+                <div
+                  key={i}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/10 ${i === 0 ? 'col-span-2 md:col-span-1' : ''}`}
+                >
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={src}
+                      alt={`${festival.location} — ${festival.festival} trip with Triveni Cabs (${i + 1})`}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ITINERARY - Day planner style */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-red-950/30 to-red-950">
@@ -229,9 +295,9 @@ const FestivalTripClient = ({ festival }) => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
-              { type: "Sedan", desc: "Swift Dzire / Honda Amaze", capacity: "4 Passengers", fare: festival.fares.sedan, icon: Car },
-              { type: "SUV", desc: "Ertiga / Innova", capacity: "6 Passengers", fare: festival.fares.suv, icon: Users, popular: true },
-              { type: "Tempo Traveller", desc: "12-17 Seater", capacity: "12+ Passengers", fare: festival.fares.tempo, icon: Users }
+              { type: "Sedan", desc: "Swift Dzire / Honda Amaze", capacity: "4 Passengers", fare: festival.fares.sedan, icon: Car, img: "/images/car/swift_dzire.jpg" },
+              { type: "SUV", desc: "Ertiga / Innova", capacity: "6 Passengers", fare: festival.fares.suv, icon: Users, popular: true, img: "/images/car/ertiga.jpg" },
+              { type: "Tempo Traveller", desc: "12-17 Seater", capacity: "12+ Passengers", fare: festival.fares.tempo, icon: Users, img: "/images/tempo/17_seater.jpg" }
             ].map((vehicle, i) => (
               <div key={i} className={`relative group ${vehicle.popular ? 'md:-mt-4 md:mb-4' : ''}`}>
                 {vehicle.popular && (
@@ -247,15 +313,22 @@ const FestivalTripClient = ({ festival }) => {
                   {/* Inner festive glow */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl" />
                   <div className="relative">
-                    <div className="w-16 h-16 bg-gradient-to-br from-amber-500/20 to-red-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <vehicle.icon className="w-8 h-8 text-amber-400" />
+                    {/* Real fleet photo — object-contain so the whole vehicle shows */}
+                    <div className="relative h-32 sm:h-36 w-full mb-4 rounded-2xl bg-white/[0.03] overflow-hidden">
+                      <Image
+                        src={vehicle.img}
+                        alt={`${vehicle.type} (${vehicle.desc}) for ${festival.festival} at ${festival.location} — Triveni Cabs`}
+                        fill
+                        sizes="(max-width: 768px) 90vw, 30vw"
+                        className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                      />
                     </div>
                     <h3 className="text-white font-bold text-xl mb-1">{vehicle.type}</h3>
                     <p className="text-white/40 text-sm mb-1">{vehicle.desc}</p>
                     <p className="text-white/50 text-sm mb-5">{vehicle.capacity}</p>
                     <div className="text-4xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent mb-6">{vehicle.fare}</div>
-                    <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-400 hover:to-red-400 text-white px-6 py-3.5 rounded-xl font-bold text-sm w-full justify-center transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30">
+                    <a onClick={() => trackWhatsAppClick('festival_trip_vehicle', `Hi! I want to book ${festival.title} with a ${vehicle.type}. Please share package details.`)} href={`https://wa.me/91${phoneNumber}?text=${encodeURIComponent(`Hi! I want to book ${festival.title} with a ${vehicle.type}. Please share package details.`)}`} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 min-h-[48px] bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-400 hover:to-red-400 text-white px-6 py-3.5 rounded-xl font-bold text-sm w-full justify-center transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30">
                       <BsWhatsapp className="w-4 h-4" />
                       Book Now
                     </a>
@@ -393,8 +466,16 @@ const FestivalTripClient = ({ festival }) => {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {(() => {
+              // The auto-generated links below slugify `location` and only resolve
+              // when location is a single city that actually has those pages
+              // (Mathura, Amritsar…). Multi-destination hubs ("Rishikesh, Corbett
+              // & Nainital") or remote shrines (Kedarnath) have no such pages, so
+              // an entry can supply an explicit `relatedLinks: [{href,label}]`
+              // list instead — that is always preferred and prevents 404s.
               const locSlug = festival.location.toLowerCase().replace(/\s+/g, '-');
-              const links = [
+              const links = festival.relatedLinks?.length
+                ? festival.relatedLinks
+                : [
                 { href: `/sightseeing/${locSlug}`, label: `${festival.location} Sightseeing Tour` },
                 { href: `/delhi-airport-to-${locSlug}-taxi`, label: `Delhi Airport to ${festival.location} Taxi` },
                 { href: `/${locSlug}`, label: `${festival.location} Cab Service` },
@@ -436,12 +517,12 @@ const FestivalTripClient = ({ festival }) => {
                 Book early to guarantee vehicle availability during peak festival season.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
+                <a onClick={() => trackWhatsAppClick('festival_trip_footer', whatsappText)} href={whatsappURL} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-white text-red-600 px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <BsWhatsapp className="w-6 h-6" />
                   <span>WhatsApp Us</span>
                 </a>
-                <a onClick={() => trackPhoneCall('festival_trip')} href={`tel:+91${phoneNumber}`}
+                <a onClick={() => trackPhoneCall('festival_trip_footer')} href={`tel:+91${phoneNumber}`}
                   className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/30 hover:bg-white/30 hover:scale-105 transition-all duration-300">
                   <Phone className="w-6 h-6" />
                   <span>Call {phoneNumber}</span>

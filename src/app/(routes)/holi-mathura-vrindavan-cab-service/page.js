@@ -4,8 +4,8 @@ import FestivalTripClient from '@/components/festival/FestivalTripClient';
 const festival = getFestivalBySlug('holi-mathura-vrindavan-cab-service');
 
 export const metadata = {
-  title: 'Holi Special Mathura Vrindavan Cab Service 2026 | Book Early | Triveni Cabs',
-  description: 'Book Holi special cab from Delhi to Mathura Vrindavan 2026. Sedan from ₹3,500, SUV ₹5,000. Lathmar Holi Barsana, Phalen ki Holi Vrindavan. AC vehicles. Call 7668570551.',
+  title: 'Holi Special Mathura Vrindavan Cab Service 2026 | Book Early',
+  description: 'Book Holi special cab from Delhi to Mathura Vrindavan 2026. Sedan from ₹3,500, SUV ₹5,000. Lathmar Holi Barsana, Phalen ki Holi Vrindavan. AC vehicles.',
   keywords: 'holi cab mathura, holi vrindavan cab, holi special cab service, delhi to mathura holi cab, barsana holi cab, holi 2026 cab booking, mathura vrindavan taxi, holi festival transport',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -27,7 +27,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function HoliMathuraVrindavanCabPage() {
   const serviceSchema = {

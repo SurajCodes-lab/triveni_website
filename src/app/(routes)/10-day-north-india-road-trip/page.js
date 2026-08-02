@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = "10-day-north-india-road-trip";
+
+export const revalidate = 3600;
 
 export const metadata = {
-  title: '10 Day North India Road Trip Itinerary 2026 | Delhi-Agra-Jaipur-Jaisalmer | Triveni Cabs',
-  description: '10 day north India road trip itinerary covering Delhi, Agra, Jaipur, Udaipur, Jodhpur & Jaisalmer. Day-wise plan, distances, costs. Sedan ₹55,000, SUV ₹75,000. Call 7668570551.',
+  title: '10 Day North India Road Trip 2026 | Delhi to Jaisalmer Circuit',
+  description: '10-day Delhi → Agra → Jaipur → Udaipur → Jodhpur → Jaisalmer road trip. Day-wise plan, costs from ₹55K. Call 7668570551.',
   keywords: 'north india road trip 10 day itinerary, 10 day north india trip, delhi to jaisalmer road trip, rajasthan road trip plan, north india by car',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -16,8 +19,20 @@ export const metadata = {
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/10-day-north-india-road-trip',
     siteName: 'Triveni Cabs',
+    images: [{
+      url: '/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg',
+      width: 1200, height: 630,
+      alt: '10 Day North India Road Trip — Delhi, Agra, Jaipur, Udaipur, Jodhpur, Jaisalmer circuit',
+    }],
   },
-  twitter: { card: 'summary_large_image', title: '10 Day North India Road Trip 2026 | Delhi to Jaisalmer Circuit' },
+  twitter: {
+    card: 'summary_large_image',
+    title: '10 Day North India Road Trip 2026 | Delhi to Jaisalmer Circuit',
+    description: 'Full 10-day Golden Triangle + Rajasthan circuit. Day-wise itinerary, vehicle options (Sedan ₹55K → Tempo ₹1.2L), everything included.',
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ['/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg'],
+  },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -79,7 +94,7 @@ export default function NorthIndiaRoadTripPage() {
       "@type": "ItemList", "numberOfItems": 10,
       "itemListElement": itinerary.map((day, i) => ({ "@type": "ListItem", "position": i + 1, "name": day.title }))
     },
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "55000", "highPrice": "120000", "priceCurrency": "INR" }
   };
 
@@ -91,6 +106,11 @@ export default function NorthIndiaRoadTripPage() {
     ]
   };
 
+  const serviceSchema = buildStaticService({ slug: SLUG, name: "North India Road Trip Cab Service from Delhi", description: "10-Day North India Road Trip with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 55000, highPrice: 120000, serviceType: 'Multi-Day Road Trip Cab Service' });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "10-Day North India Road Trip 2026", description: "10-Day North India Road Trip itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const howToSchema = getHowToSchema({ name: "How to Plan a 10-Day North India Road Trip", description: "Step-by-step day-wise plan for the 10-Day North India Road Trip by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 55000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
+  const placeSchemas = buildPlaceSchemas(["delhi","agra","jaipur","udaipur","jodhpur","jaisalmer","pushkar"], SLUG, '/images/triveni-cabs-og.jpg');
+
   const faqSchema = {
     "@context": "https://schema.org", "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } }))
@@ -101,6 +121,12 @@ export default function NorthIndiaRoadTripPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {placeSchemas.map((sc, idx) => (
+        <script key={`place-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sc) }} />
+      ))}
 
       <div className="min-h-screen bg-neutral-950 text-white">
         {/* Hero - Epic Journey Map with Terracotta Warm Tones */}
@@ -119,7 +145,7 @@ export default function NorthIndiaRoadTripPage() {
                   <span className="text-orange-300 text-sm font-medium tracking-widest uppercase">10 Days | 2,500 km | 6 Cities</span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[0.85]">
+                <h1 className="speakable-headline text-5xl md:text-7xl font-black mb-6 leading-[0.85]">
                   <span className="text-transparent bg-gradient-to-r from-orange-300 via-amber-200 to-red-300 bg-clip-text">North India</span>
                   <br />
                   <span className="text-white">Road Trip</span>
@@ -127,8 +153,8 @@ export default function NorthIndiaRoadTripPage() {
                   <span className="text-neutral-600 text-3xl md:text-4xl font-light">The Epic 10-Day Circuit</span>
                 </h1>
 
-                <p className="text-neutral-400 text-lg mb-10 max-w-xl leading-relaxed">
-                  Taj Mahal, Royal Forts, Desert Safaris, Lake Palaces. The ultimate North India journey from Delhi through Rajasthan and back.
+                <p className="speakable-lead text-neutral-400 text-lg mb-10 max-w-xl leading-relaxed">
+                  A 10-day North India road trip from Delhi covers Agra, Jaipur, Pushkar, Udaipur, Jodhpur and Jaisalmer, costing from Rs 55,000 (sedan) to Rs 1,20,000 (premium SUV) with Triveni Cabs, all-inclusive of fuel, tolls and driver allowance. The ultimate circuit of Taj Mahal, royal forts, desert safaris and lake palaces through Rajasthan and back.
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -311,7 +337,7 @@ export default function NorthIndiaRoadTripPage() {
                     <ChevronRight className="w-5 h-5 text-orange-500 group-open:rotate-90 transition-transform flex-shrink-0" />
                   </summary>
                   <div className="px-6 pb-6 -mt-1">
-                    <p className="text-neutral-400 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-neutral-400 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </details>
               ))}

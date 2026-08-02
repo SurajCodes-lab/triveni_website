@@ -5,7 +5,7 @@ import AEOHead from '@/components/seo/AEOHead';
 import { vehicleDetails } from "@/utilis/data";
 import { vehicleHirePages, getAllVehicleHireSlugs } from "@/utilis/vehicleHireData";
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 // Old category slugs (sedan, suv, tempo-traveller, luxury-bus, bus)
@@ -70,8 +70,8 @@ export async function generateMetadata({ params }) {
       description: "Book 6-7 seater SUV cars for family trips across India. Innova, Ertiga SUV rental with professional driver. Best rates for group travel.",
     },
     "tempo-traveller": {
-      title: "Tempo Traveller Rental India | 12-26 Seater | \u20B923/km Onwards | Triveni Cabs",
-      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group tours. AC tempo with pushback seats from \u20B923/km.",
+      title: "Tempo Traveller Rental India | 12-26 Seater | \u20B920/km Onwards | Triveni Cabs",
+      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group tours. AC tempo with pushback seats from \u20B920/km.",
     },
     "luxury-bus": {
       title: "Luxury Bus Rental India | Volvo 35-56 Seater | \u20B945/km | Triveni Cabs",

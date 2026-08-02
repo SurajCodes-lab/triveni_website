@@ -3,7 +3,7 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-mussoorie-from-dehradun');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Same Day Mussoorie Tour from Dehradun | ₹2,000 AC Cab | 2026',

@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = "7-day-himachal-tour-by-car";
+
+export const revalidate = 3600;
 
 export const metadata = {
-  title: '7 Day Himachal Pradesh Tour Plan by Car 2026 | Shimla Manali Dharamshala | Triveni Cabs',
-  description: '7 day Himachal Pradesh tour plan by car covering Shimla, Manali, Dharamshala & Dalhousie. Day-wise itinerary, distances, hotel areas, costs. Sedan ₹35,000, SUV ₹50,000. Call 7668570551.',
+  title: '7 Day Himachal Tour by Car 2026 | Shimla Manali Dharamshala',
+  description: '7-day Himachal trip: Shimla, Manali, Dharamshala, Dalhousie. Day-wise plan, costs from ₹35K Sedan / ₹50K SUV. Call 7668570551.',
   keywords: '7 day himachal pradesh tour plan by car, himachal tour itinerary, shimla manali tour by car, himachal road trip, himachal pradesh tour package by car',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -16,8 +19,20 @@ export const metadata = {
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/7-day-himachal-tour-by-car',
     siteName: 'Triveni Cabs',
+    images: [{
+      url: '/images/sightseeing/Manali/Manali_Hero_section.jpg',
+      width: 1200, height: 630,
+      alt: '7 Day Himachal Tour by Car — Shimla, Manali, Dharamshala, Dalhousie',
+    }],
   },
-  twitter: { card: 'summary_large_image', title: '7 Day Himachal Tour by Car 2026 | Shimla-Manali-Dharamshala' },
+  twitter: {
+    card: 'summary_large_image',
+    title: '7 Day Himachal Tour by Car 2026 | Shimla-Manali-Dharamshala',
+    description: 'Delhi → Shimla → Manali → Dharamshala → Dalhousie → Delhi. Day-wise itinerary, stays, costs. From ₹35,000 Sedan / ₹50,000 SUV.',
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+    images: ['/images/sightseeing/Manali/Manali_Hero_section.jpg'],
+  },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -112,7 +127,7 @@ export default function HimachalTourPage() {
       }))
     },
     "touristType": "Road Trip Travelers",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "35000", "highPrice": "80000", "priceCurrency": "INR" }
   };
 
@@ -124,6 +139,11 @@ export default function HimachalTourPage() {
     ]
   };
 
+  const serviceSchema = buildStaticService({ slug: SLUG, name: "Himachal Road Trip Cab Service from Delhi", description: "7-Day Himachal Tour by Car with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 35000, highPrice: 80000, serviceType: 'Multi-Day Road Trip Cab Service' });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "7-Day Himachal Tour by Car 2026", description: "7-Day Himachal Tour by Car itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const howToSchema = getHowToSchema({ name: "How to Plan a 7-Day Himachal Tour by Car", description: "Step-by-step day-wise plan for the 7-Day Himachal Tour by Car by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 35000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
+  const placeSchemas = buildPlaceSchemas(["shimla","manali","dharamshala","dalhousie","kasol"], SLUG, '/images/triveni-cabs-og.jpg');
+
   const faqSchema = {
     "@context": "https://schema.org", "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } }))
@@ -134,6 +154,12 @@ export default function HimachalTourPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {placeSchemas.map((sc, idx) => (
+        <script key={`place-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sc) }} />
+      ))}
 
       <div className="min-h-screen bg-green-950 text-white">
         {/* Hero - Pine Forest with Gradient Mesh */}
@@ -151,7 +177,7 @@ export default function HimachalTourPage() {
                 <span className="text-emerald-400 text-sm font-medium tracking-widest uppercase">7 Days | 4 Cities | 1,400+ km</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[0.85]">
+              <h1 className="speakable-headline text-5xl md:text-7xl font-black mb-6 leading-[0.85]">
                 <span className="text-white">Himachal</span>
                 <br />
                 <span className="text-transparent bg-gradient-to-r from-emerald-300 via-green-200 to-teal-300 bg-clip-text">Pradesh</span>
@@ -159,8 +185,8 @@ export default function HimachalTourPage() {
                 <span className="text-green-600/50 text-3xl md:text-4xl font-light">7-Day Tour by Car</span>
               </h1>
 
-              <p className="text-green-300/40 text-lg mb-8 max-w-xl leading-relaxed">
-                Shimla, Manali, Dharamshala — the definitive Himachal circuit. Snow peaks, cedar forests, Tibetan culture, and mountain adventures.
+              <p className="speakable-lead text-green-300/40 text-lg mb-8 max-w-xl leading-relaxed">
+                A 7-day Himachal tour by car covers Shimla, Manali and Dharamshala, costing from Rs 35,000 (sedan) to Rs 80,000 (premium SUV) with Triveni Cabs, all-inclusive of fuel, tolls and an experienced hill driver. The definitive circuit of snow peaks, cedar forests, Tibetan culture and mountain adventures.
               </p>
 
               {/* Price badges */}
@@ -404,7 +430,7 @@ export default function HimachalTourPage() {
                     <ChevronRight className="w-5 h-5 text-emerald-500 group-open:rotate-90 transition-transform flex-shrink-0" />
                   </summary>
                   <div className="px-6 pb-6 -mt-1">
-                    <p className="text-green-200/40 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-green-200/40 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </details>
               ))}

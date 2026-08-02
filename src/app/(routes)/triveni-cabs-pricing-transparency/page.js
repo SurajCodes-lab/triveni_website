@@ -1,4 +1,6 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
 
 export const revalidate = 3600;
 
@@ -43,8 +45,27 @@ export default function PricingTransparencyPage() {
     "name": "Triveni Cabs Pricing Transparency",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...getRatingAndReviews(slug, 'city')
   };
+  const articleSchema = getArticleSchema({
+    slug,
+    headline: 'Triveni Cabs Pricing Transparency: No Hidden Charges, No Surge',
+    description: pageDesc,
+    image: '/images/citypage_hero_section_image.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+  const speakableSchema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `https://www.trivenicabs.in/${slug}#webpage`, "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']) };
+  const howToSchema = getHowToSchema({
+    name: 'How Triveni Cabs Pricing Works',
+    description: 'How to get an all-inclusive, no-surge fixed cab quote from Triveni Cabs.',
+    totalTime: 'PT5M',
+    steps: [
+      { name: 'Share your route', text: 'Call 7668570551 or WhatsApp your pickup, drop, date and vehicle type.' },
+      { name: 'Receive an all-inclusive quote', text: 'We send a fixed quote covering vehicle, fuel, toll, parking, driver allowance, night charges and GST.' },
+      { name: 'Compare and confirm', text: 'The quote is valid 7 days with no surge multipliers and no hidden convenience fees. Confirm when ready.' },
+      { name: 'Pay the quoted price', text: 'The price you confirmed is exactly what you pay at the end of the trip. A GST invoice is provided on request.' }
+    ]
+  });
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     "itemListElement": [
@@ -60,6 +81,9 @@ export default function PricingTransparencyPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TrustPageClient

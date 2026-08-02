@@ -4,7 +4,7 @@ import FestivalTripClient from '@/components/festival/FestivalTripClient';
 const festival = getFestivalBySlug('pushkar-mela-transport');
 
 export const metadata = {
-  title: 'Pushkar Mela Cab Service 2026 | Camel Fair Transport | Triveni Cabs',
+  title: 'Pushkar Mela Cab Service 2026 | Camel Fair Transport',
   description: 'Book cab from Delhi to Pushkar for Pushkar Mela 2026. Sedan from ₹6,500, SUV ₹9,000. Camel fair, Brahma Temple, hot air balloon. Call 7668570551.',
   keywords: 'pushkar mela cab, pushkar camel fair transport, delhi to pushkar cab, pushkar mela 2026, pushkar fair cab service, rajasthan cab pushkar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function PushkarMelaTransportPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Pushkar Mela Transport", "name": "Pushkar Mela Cab Service - Camel Fair Special", "description": "Cab service from Delhi to Pushkar for the world-famous Pushkar Camel Fair. Visit Brahma Temple and experience Rajasthani culture.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Pushkar" }], "offers": { "@type": "AggregateOffer", "lowPrice": "6500", "highPrice": "16000", "priceCurrency": "INR" } };

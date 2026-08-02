@@ -221,6 +221,7 @@ export {
   Wine,
   PartyPopper,
   Cake,
+  Flower2,
   Church,
   Snowflake,
   CloudRain,

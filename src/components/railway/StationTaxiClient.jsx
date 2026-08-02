@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2,
   ArrowRight, ChevronDown, Route, Navigation, TrainFront, BadgeCheck, Sparkles,
@@ -9,8 +10,16 @@ import {
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { getCityImage, getVehicleImage, getCityGallery, getAttractionImage, getCityImageByIndex } from '@/utilis/imageUtils';
 import StickyPriceBar from '@/components/shared/StickyPriceBar';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import {
+  getStationDetails, getArrivalTips, getTaxiComparison, getOutstationFromCity,
+  getStationReviews, getCityThingsToDo, getExtendedStationFaqs, getWhyPreBookReasons,
+  STATION_TAXI_INCLUSIONS, STATION_TAXI_EXCLUSIONS, STATION_CANCELLATION_POLICY,
+} from '@/utilis/stationTaxiEnrichment';
 
 // Map string icon names to components (since icons can't be serialized from server)
 const iconMap = { MapPinned, Shield, Clock, Navigation, BadgeCheck, Sparkles, MapPin, Star, Zap, Phone, Car, Users, CheckCircle2, Route };
@@ -30,6 +39,23 @@ export default function StationTaxiClient({ data }) {
   const cheapest = destinations.reduce((m, d) => Math.min(m, d.fare), Infinity);
   const whatsappMsg = `Hi, I need a taxi from ${stationName} (${stationCode}). Please share rates.`;
 
+  // Derived enrichment — custom data-override-first, then programmatic defaults
+  const stationDetails = data.stationDetails || getStationDetails(slug.replace('-station-taxi', '').replace('-station', ''));
+  const arrivalTips = data.arrivalTips || getArrivalTips();
+  const comparison = data.taxiComparison || getTaxiComparison(stationName);
+  const outstationOptions = data.outstationOptions || getOutstationFromCity(city);
+  const reviews = data.reviews || getStationReviews(stationName, cheapest);
+  const thingsToDo = data.thingsToDoInCity || getCityThingsToDo(city);
+  const extendedFaqs = data.extendedFaqs || getExtendedStationFaqs(stationName, stationCode, city);
+  const whyPreBook = data.whyPreBook || getWhyPreBookReasons(stationName);
+  const inclusions = data.inclusions || STATION_TAXI_INCLUSIONS;
+  const exclusions = data.exclusions || STATION_TAXI_EXCLUSIONS;
+  const allFaqs = [...faqs, ...extendedFaqs];
+  const cityBgImage = getCityImageByIndex(city, 0);       // Hero uses the main hero image
+  const cityGuideImage = getCityImageByIndex(city, 1);    // Things-to-Do left panel uses a DIFFERENT image
+  const cityBannerImage = getCityImageByIndex(city, 2);   // Destination banner near bottom uses yet another
+  const cityGallery = getCityGallery(city);
+
   return (
     <article className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/TaxiService">
       <style jsx global>{`
@@ -48,10 +74,25 @@ export default function StationTaxiClient({ data }) {
         price={`\u20B9${cheapest}`}
         whatsappMessage={whatsappMsg}
       />
+      <SetStickyCta
+        price={`\u20B9${cheapest}`}
+        label={`${stationName} Taxi`}
+        whatsappText={whatsappMsg}
+      />
 
       {/* ====== HERO ====== */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-cyan-950/40 to-blue-950/30" />
+        {/* Destination city image backdrop (dimmed) */}
+        <Image
+          src={cityBgImage}
+          alt={`${city} — ${stationName} station taxi destination`}
+          fill
+          priority
+          className="object-cover opacity-25"
+          sizes="100vw"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-cyan-950/80 to-blue-950/60" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(6,182,212,0.15),transparent_50%)]" />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.5) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
@@ -90,6 +131,9 @@ export default function StationTaxiClient({ data }) {
                   <WhatsAppIcon className="w-5 h-5" /> WhatsApp Booking
                 </Link>
               </div>
+
+              {/* Quick Enquiry Form */}
+              <QuickEnquiryForm fromCity={stationName} toCity={city} pageType="station_taxi" />
             </div>
 
             {/* Station Ticket Card */}
@@ -154,6 +198,16 @@ export default function StationTaxiClient({ data }) {
 
       <SocialProofStrip theme="dark" />
 
+      {/* Freshness signal — visible "Last updated" */}
+      <div className="bg-gradient-to-r from-slate-950 via-cyan-950/20 to-slate-950 border-y border-cyan-500/10 py-3 px-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-center gap-2 text-xs text-slate-400">
+          <Clock className="w-3.5 h-3.5 text-cyan-400" />
+          <span>Fares and pickup info last verified <span className="text-cyan-300 font-semibold">April 17, 2026</span></span>
+          <span className="hidden sm:inline text-slate-600">·</span>
+          <span className="hidden sm:inline">Station driver roster updated every 72 hours</span>
+        </div>
+      </div>
+
       {/* ====== TRUST BAR ====== */}
       <section className="py-10 px-4 border-b border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
@@ -185,7 +239,7 @@ export default function StationTaxiClient({ data }) {
               <Route className="w-3.5 h-3.5" /> Popular Routes
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Taxi from <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">{stationName}</span>
+              Where can a taxi from <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">{stationName}</span> drop me?
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Fixed fares. AC vehicles. Meet at platform exit with name board.</p>
           </div>
@@ -232,7 +286,7 @@ export default function StationTaxiClient({ data }) {
               <Sparkles className="w-3.5 h-3.5" /> Local Packages
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              {city} Sightseeing <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Packages</span>
+              Which {city} <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">sightseeing packages</span> can I book from the station?
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto">Pre-booked local taxi for hassle-free sightseeing from the station</p>
           </div>
@@ -268,27 +322,314 @@ export default function StationTaxiClient({ data }) {
         </div>
       </section>
 
-      {/* ====== VEHICLE OPTIONS ====== */}
+      {/* ====== VEHICLE OPTIONS — with real vehicle imagery ====== */}
       <section className="py-14 md:py-20 lg:py-32 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/20 to-transparent" />
-        <div className="relative max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-indigo-500/20 tracking-widest uppercase">
               <Car className="w-3.5 h-3.5" /> Vehicle Fleet
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
-              Choose Your <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">Ride</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
+              Which <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">vehicle</span> should I book from {stationName}?
             </h2>
+            <p className="text-slate-400 max-w-xl mx-auto text-base md:text-lg">All AC. All under 4 years old. All GPS-tracked. All driver-verified.</p>
           </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {vehicles.map((v, i) => (
-              <div key={i} className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-7 hover:border-cyan-500/30 hover:bg-white/[0.06] transition-all duration-500 text-center group">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-600/20 to-blue-600/20 border border-cyan-500/20 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform">
-                  <Car className="w-7 h-7 text-cyan-400" />
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {vehicles.map((v, i) => {
+              const vehicleImg = getVehicleImage(v.type.toLowerCase());
+              const badge = i === 1 ? "MOST POPULAR" : null;
+              const perks = v.type.toLowerCase().includes('sedan') ? ["Powerful AC cabin", "2 large + 1 cabin bag", "4 seatbelts"]
+                : v.type.toLowerCase().includes('tempo') ? ["AC cabin, pushback seats", "Huge boot for 12-17 bags", "Seatbelts on all seats"]
+                : ["Premium AC climate", "4 large + 2 cabin bags", "Captain seats + boot"];
+              return (
+                <div key={i} className={`group relative bg-gradient-to-b from-white/[0.05] to-white/[0.02] backdrop-blur-2xl rounded-3xl border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 flex flex-col ${badge ? 'border-cyan-400/50 shadow-2xl shadow-cyan-500/20' : 'border-white/10 hover:border-cyan-500/40'}`}>
+                  {badge && (
+                    <div className="absolute top-4 right-4 z-10">
+                      <span className="inline-flex items-center gap-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg shadow-cyan-500/40 uppercase tracking-wider">
+                        <Star className="w-3 h-3 fill-white" /> {badge}
+                      </span>
+                    </div>
+                  )}
+                  {/* Vehicle image */}
+                  <div className="relative h-48 md:h-52 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 overflow-hidden">
+                    <div style={{ background: `radial-gradient(ellipse at center, rgba(6,182,212,0.18) 0%, transparent 70%)` }} className="absolute inset-0" />
+                    <Image
+                      src={vehicleImg}
+                      alt={`${v.type} for ${stationName} taxi — ${v.examples}`}
+                      fill
+                      className="object-contain p-4 transition-transform duration-700 group-hover:scale-110 drop-shadow-2xl"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      quality={90}
+                    />
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-2 bg-black/40 blur-xl rounded-full" />
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-1">
+                      <h3 className="font-black text-xl md:text-2xl text-white">{v.type}</h3>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-bold text-cyan-300 bg-cyan-500/15 px-2.5 py-1 rounded-full border border-cyan-500/25">
+                        <Users className="w-3 h-3" /> {v.capacity.replace(' Passengers', '')}
+                      </span>
+                    </div>
+                    <p className="text-white/45 text-sm mb-4">{v.examples}</p>
+                    <ul className="space-y-1.5 mb-5">
+                      {perks.map((p, j) => (
+                        <li key={j} className="flex items-center gap-2 text-xs text-white/55">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="grid grid-cols-2 gap-2 mt-auto">
+                      <Link onClick={() => trackPhoneCall('station_taxi')} href="tel:+917668570551" className="inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-3 rounded-xl font-bold text-sm shadow-lg shadow-cyan-500/25 hover:scale-[1.03] transition-all">
+                        <Phone className="w-4 h-4" /> Book
+                      </Link>
+                      <Link onClick={() => trackWhatsAppClick('station_taxi')} href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want ${v.type} from ${stationName}`)}`} className="inline-flex items-center justify-center gap-1.5 bg-white/5 text-white px-4 py-3 rounded-xl font-bold text-sm border border-white/15 hover:bg-white/10 hover:border-cyan-400/40 transition-all">
+                        WhatsApp
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-white font-black text-xl mb-1">{v.type}</h3>
-                <p className="text-slate-500 text-sm mb-3">{v.examples}</p>
-                <div className="text-cyan-300 font-mono text-xs tracking-widest">{v.capacity}</div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ====== TAXI COMPARISON (NEW) — us vs prepaid / auto / app ====== */}
+      <section className="py-14 md:py-20 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent" />
+        <div className="relative max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase"><Shield className="w-3.5 h-3.5" /> Compare Options</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3">Pre-booked Cab vs <span className="text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text">Prepaid / Auto / App</span></h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">Why thousands of travellers switch away from prepaid booth and ride-hailing apps at {stationName}.</p>
+          </div>
+          <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm min-w-[760px]">
+                <thead className="bg-cyan-500/10 border-b border-cyan-500/20">
+                  <tr>
+                    <th className="text-left p-5 text-cyan-300 font-bold uppercase text-xs tracking-wider">Mode</th>
+                    <th className="text-left p-5 text-cyan-300 font-bold uppercase text-xs tracking-wider">Price</th>
+                    <th className="text-left p-5 text-cyan-300 font-bold uppercase text-xs tracking-wider">Wait</th>
+                    <th className="text-left p-5 text-cyan-300 font-bold uppercase text-xs tracking-wider">Vehicle</th>
+                    <th className="text-left p-5 text-cyan-300 font-bold uppercase text-xs tracking-wider">Best For / Caveat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparison.map((c, i) => (
+                    <tr key={i} className={`border-b border-white/5 hover:bg-white/[0.04] transition-colors ${c.badge ? 'bg-emerald-500/5' : ''}`}>
+                      <td className="p-5 text-white font-bold">
+                        {c.badge && <span className="inline-block mr-2 text-[10px] font-black bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">{c.badge}</span>}
+                        {c.mode}
+                      </td>
+                      <td className="p-5 text-cyan-300 font-bold text-xs">{c.price}</td>
+                      <td className="p-5 text-white/70 text-xs">{c.wait}</td>
+                      <td className="p-5 text-white/60 text-xs leading-relaxed">{c.vehicle}</td>
+                      <td className="p-5 text-white/60 text-xs leading-relaxed">{c.cons || c.pros}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ====== ARRIVAL TIPS (NEW) — by train type / time ====== */}
+      <section className="py-14 md:py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-blue-500/20 tracking-widest uppercase"><Clock className="w-3.5 h-3.5" /> Arrival Tips</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3">What pickup tips apply by train type and arrival time?</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">Different trains, different logistics. We&apos;ve run {stationName} pickup so many times we wrote it down.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {arrivalTips.map((a, i) => (
+              <div key={i} className="bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-500/30 p-6 transition-all duration-300">
+                <h3 className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                  <TrainFront className="w-4 h-4 text-cyan-400" /> {a.scenario}
+                </h3>
+                <p className="text-white/55 text-sm leading-relaxed">{a.tip}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====== THINGS TO DO IN CITY (NEW) — post-arrival guidance ====== */}
+      <section className="py-14 md:py-20 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent" />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-indigo-500/20 tracking-widest uppercase"><MapPin className="w-3.5 h-3.5" /> After You Arrive</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3">What can you do in {city} after you arrive?</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">Driver-curated shortlist. Our taxi can convert into a half-day sightseeing package on request.</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-1 lg:row-span-2 relative rounded-3xl overflow-hidden h-72 lg:h-full min-h-[360px] group">
+              <Image src={cityGuideImage} alt={`${city} sightseeing`} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 1024px) 100vw, 33vw" quality={85} />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <span className="inline-flex items-center gap-1.5 bg-cyan-500/20 backdrop-blur-sm text-cyan-200 text-xs font-bold px-3 py-1.5 rounded-full border border-cyan-500/30 mb-3">
+                  <MapPinned className="w-3 h-3" /> {city} Guide
+                </span>
+                <h3 className="text-3xl md:text-4xl font-black text-white mb-2">{city}</h3>
+                <p className="text-white/70 text-sm">Covered by our local drivers daily.</p>
+              </div>
+            </div>
+            {thingsToDo.slice(0, 4).map((item, i) => {
+              // Each activity card gets its own specific attraction image (e.g., Taj Mahal, Agra Fort)
+              const activityImage = getAttractionImage(item.title, city);
+              return (
+                <div key={i} className="bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-500/40 overflow-hidden transition-all duration-300 group">
+                  {/* Dedicated activity image — varies per card */}
+                  <div className="relative h-40 overflow-hidden">
+                    <Image src={activityImage} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={80} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+                    {item.time && <span className="absolute top-3 right-3 text-[10px] font-bold text-cyan-300 bg-slate-950/80 backdrop-blur-sm px-2.5 py-1 rounded-full border border-cyan-500/30 uppercase tracking-wider">{item.time}</span>}
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <div className="flex items-center gap-2">
+                        <span className="flex-shrink-0 w-8 h-8 bg-cyan-500/30 backdrop-blur-sm border border-cyan-500/40 rounded-lg flex items-center justify-center text-cyan-200 font-black text-sm">{i + 1}</span>
+                        <h3 className="font-black text-white text-base drop-shadow-lg">{item.title}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-white/55 text-sm leading-relaxed p-5">{item.detail}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ====== OUTSTATION FROM STATION (NEW) ====== */}
+      {outstationOptions.length > 0 && (
+        <section className="py-14 md:py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase"><Route className="w-3.5 h-3.5" /> Onward Journey</div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3">Can I travel outstation directly from {stationName}?</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">Arriving here but going elsewhere? We can drop you intercity directly from the station.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {outstationOptions.map((o, i) => (
+                <div key={i} className="bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-500/30 p-5 transition-all duration-300 group">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs text-white/40 font-mono">{stationCode}</span>
+                    <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/30 to-transparent" />
+                    <ArrowRight className="w-4 h-4 text-cyan-400/70 group-hover:translate-x-0.5 transition-transform" />
+                    <span className="text-sm font-bold text-white">{o.dest}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-white/50 mb-3">
+                    <span>{o.distance}</span>
+                    <span>{o.time}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-white/40 uppercase tracking-wider font-semibold">From</span>
+                    <span className="text-cyan-300 font-black text-lg">{o.fare}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ====== INCLUSIONS / EXCLUSIONS (NEW) ====== */}
+      <section className="py-14 md:py-20 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent" />
+        <div className="relative max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase"><CheckCircle2 className="w-3.5 h-3.5" /> What&apos;s Included</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3">What is included in the {stationName} taxi fare?</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-green-950/30 to-slate-950 backdrop-blur-xl rounded-3xl border border-green-500/20 p-7">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-11 h-11 bg-green-500/20 rounded-xl flex items-center justify-center border border-green-500/30"><CheckCircle2 className="w-5 h-5 text-green-400" /></div>
+                <h3 className="font-black text-xl text-white">Included in Fare</h3>
+              </div>
+              <ul className="space-y-3">
+                {inclusions.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-white/70 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-orange-950/30 to-slate-950 backdrop-blur-xl rounded-3xl border border-orange-500/20 p-7">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-11 h-11 bg-orange-500/20 rounded-xl flex items-center justify-center border border-orange-500/30"><IndianRupee className="w-5 h-5 text-orange-400" /></div>
+                <h3 className="font-black text-xl text-white">Extra (Paid at Actual)</h3>
+              </div>
+              <ul className="space-y-3">
+                {exclusions.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-white/70 text-sm">
+                    <ArrowRight className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ====== CUSTOMER REVIEWS (NEW) ====== */}
+      <section className="py-14 md:py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-cyan-500/20 tracking-widest uppercase"><Star className="w-3.5 h-3.5" /> Reviews</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3">What do {stationName} passengers say about us?</h2>
+            <div className="flex items-center justify-center gap-2 mt-4">
+              {[...Array(5)].map((_, i) => (<Star key={i} className="w-5 h-5 text-cyan-400 fill-cyan-400" />))}
+              <span className="text-white/70 font-bold ml-2">4.9 / 5</span>
+              <span className="text-white/40 text-sm">({reviews.length}+ recent reviews for this station)</span>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {reviews.map((r, i) => (
+              <div key={i} className="bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-cyan-500/30 transition-all duration-300">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-black text-sm">{r.name.charAt(0)}</div>
+                    <div>
+                      <p className="font-bold text-white text-sm">{r.name}</p>
+                      <p className="text-white/40 text-[11px]">{r.date} · {r.vehicle}</p>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    {[...Array(r.rating)].map((_, s) => (<Star key={s} className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400" />))}
+                  </div>
+                </div>
+                <p className="text-white/60 text-sm leading-relaxed italic">&ldquo;{r.text}&rdquo;</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====== CANCELLATION POLICY (NEW) ====== */}
+      <section className="py-14 md:py-20 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent" />
+        <div className="relative max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-blue-500/20 tracking-widest uppercase"><Clock className="w-3.5 h-3.5" /> Flexible Cancellation</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">What is the cancellation and refund policy?</h2>
+          </div>
+          <div className="bg-white/[0.04] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
+            {STATION_CANCELLATION_POLICY.map((c, i) => (
+              <div key={i} className={`flex items-center justify-between gap-4 p-5 md:p-6 ${i !== STATION_CANCELLATION_POLICY.length - 1 ? 'border-b border-white/5' : ''} hover:bg-white/[0.02] transition-colors`}>
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-cyan-500/15 rounded-xl flex items-center justify-center border border-cyan-500/25">
+                    <Clock className="w-4 h-4 text-cyan-400" />
+                  </div>
+                  <p className="font-bold text-white text-sm md:text-base">{c.window}</p>
+                </div>
+                <span className={`text-xs md:text-sm font-bold ${i === 0 || i === 3 ? 'text-green-400' : i === 1 ? 'text-yellow-400' : 'text-orange-400'}`}>{c.charge}</span>
               </div>
             ))}
           </div>
@@ -362,7 +703,7 @@ export default function StationTaxiClient({ data }) {
                 <TrainFront className="w-3.5 h-3.5" /> Station Details
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-                About <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">{stationName}</span>
+              What you need to know about <span className="text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">{stationName}</span>
               </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
@@ -408,7 +749,7 @@ export default function StationTaxiClient({ data }) {
             </h2>
           </div>
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {allFaqs.map((faq, i) => (
               <div key={i} className={`bg-white/[0.03] backdrop-blur-2xl rounded-2xl border overflow-hidden transition-all duration-500 ${openFaq === i ? 'border-cyan-500/30 shadow-lg shadow-cyan-500/5' : 'border-white/10 hover:border-white/20'}`}>
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i} aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'} className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-cyan-500/50 rounded-2xl">
                   <div className="flex items-center gap-4 pr-4">
@@ -426,6 +767,36 @@ export default function StationTaxiClient({ data }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====== RELATED GUIDES — cross-links to city cluster ====== */}
+      <section className="py-14 md:py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-300 text-xs font-bold px-5 py-2 rounded-full mb-4 border border-cyan-500/20 tracking-widest uppercase"><MapPinned className="w-3.5 h-3.5" /> More About {city}</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">Plan Your {city} Trip</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href={`/best-time-to-visit/${city.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-500/30 p-5 transition-all duration-300">
+              <Clock className="w-6 h-6 text-cyan-400 mb-3" />
+              <h3 className="font-bold text-white text-base mb-1">Best Time to Visit {city}</h3>
+              <p className="text-slate-400 text-xs leading-relaxed">Month-by-month weather, festivals, peak-season guide for {city}.</p>
+              <span className="mt-3 inline-flex items-center text-cyan-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">Read guide <ArrowRight className="w-3 h-3" /></span>
+            </Link>
+            <Link href={`/cab-service/${city.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-500/30 p-5 transition-all duration-300">
+              <Car className="w-6 h-6 text-cyan-400 mb-3" />
+              <h3 className="font-bold text-white text-base mb-1">{city} Cab Service</h3>
+              <p className="text-slate-400 text-xs leading-relaxed">Local, outstation, airport transfers — all {city} cab services.</p>
+              <span className="mt-3 inline-flex items-center text-cyan-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">Explore <ArrowRight className="w-3 h-3" /></span>
+            </Link>
+            <Link href={`/${city.toLowerCase().replace(/\s+/g, '-')}-travel-guide`} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-cyan-500/30 p-5 transition-all duration-300">
+              <MapPin className="w-6 h-6 text-cyan-400 mb-3" />
+              <h3 className="font-bold text-white text-base mb-1">{city} Travel Guide</h3>
+              <p className="text-slate-400 text-xs leading-relaxed">Complete {city} attractions, food, shopping and itinerary guide.</p>
+              <span className="mt-3 inline-flex items-center text-cyan-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">View guide <ArrowRight className="w-3 h-3" /></span>
+            </Link>
           </div>
         </div>
       </section>
@@ -458,11 +829,13 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== BREADCRUMB ====== */}
-      <nav className="py-4 px-4 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm text-slate-500">
+      <nav className="py-4 px-4 border-t border-white/5" aria-label="Breadcrumb">
+        <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm text-slate-500 flex-wrap">
           <Link href="/" className="hover:text-cyan-400 transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-slate-300 font-medium">{stationName} Taxi</span>
+          <Link href="/railway-station-taxi" className="hover:text-cyan-400 transition-colors">Railway Station Taxi</Link>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-slate-300 font-medium">{stationName} ({stationCode})</span>
         </div>
       </nav>
     </article>

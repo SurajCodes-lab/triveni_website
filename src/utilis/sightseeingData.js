@@ -3,6 +3,758 @@
 export const sightseeingTours = {
   delhi: [
     {
+          "id": 213,
+          "slug": "delhi-to-manali-tour-3-days",
+          "name": "Delhi to Manali Tour Package - 3 Days / 2 Nights by Car",
+          "shortDescription": "Book a 3-day Delhi to Manali cab package with private car, hotel-pickup, Solang & Atal Tunnel sightseeing and fixed fleet pricing.",
+          "fullDescription": "Trade the cramped overnight Volvo for your own private car on this 3 Days / 2 Nights Delhi to Manali tour package from Triveni Cabs. This is a transactional, ready-to-book holiday: a fixed door-to-door itinerary, a clearly priced fleet of Sedan, SUV and Tempo Traveller options, and transparent inclusions/exclusions so you know exactly what you are paying for before you leave Delhi. If you have already read our detailed Delhi-to-Manali road-trip travel guide and want someone else to do the driving, this package turns that inspiration into a confirmed booking with a professional hill-trained chauffeur.\n\nThe journey covers roughly 540 km each way along NH-44 and NH-3, climbing from the Delhi plains through Chandigarh, Bilaspur, Mandi and the Kullu Valley to the resort town of Manali at 6,725 ft. Day 1 is a long but scenic transfer day: we pick you up early from your Delhi or Gurgaon/Noida address, cruise past Chandigarh for breakfast, follow the Beas River through Mandi and Pandoh Dam, and reach Manali by evening to check into your hotel. Day 2 is the headline sightseeing day around Manali and the Solang/Atal Tunnel belt. Day 3 covers local Old Manali, Vashisht and the Mall Road before the return drive to Delhi (or an optional overnight extension if you prefer to break the journey).\n\nIn and around Manali you will visit the 16th-century Hidimba Devi Temple set among towering deodar cedars, the natural sulphur springs and stone temple at Vashisht, the buzzing Mall Road for shopping and cafes, and Nehru Kund, the cold natural spring on the Manali-Keylong road. The big-ticket excursion is Solang Valley, the adventure bowl famous for paragliding, zorbing, the ropeway and winter skiing, with the option to continue to the engineering marvel of the Atal Tunnel (the world's longest highway tunnel above 10,000 ft) and onward toward Sissu and the Lahaul side. In season, an optional Rohtang Pass permit run to 13,050 ft delivers panoramic Himalayan views and snow play - we help arrange the permit and a local cab where private vehicles are restricted. Other stops your driver can weave in include the Kullu Valley shawl and angora workshops, Rahala Falls on the Rohtang road, the apple-country detour toward Naggar Castle, and the buzzing Old Manali cafe lane across the Manaslu bridge.\n\nBecause this is a hill route with steep gradients and hairpin bends, we strongly recommend the SUV (Toyota Innova Crysta / Ertiga) for couples and small families, and the Tempo Traveller for groups of 7-15. The Sedan (Dzire/Etios) is perfectly comfortable for two travellers on a budget, but the extra ground clearance and power of an SUV makes the Solang and Atal Tunnel climbs noticeably smoother. Every vehicle comes with an experienced mountain driver who knows the Mandi-Kullu stretch in fog and rain, carries the documents for inter-state travel, and stops wherever you want for photos, chai and meals. All toll, parking, state permits for the cab, driver allowance, night halt charges and fuel are built into the package price - no surprise add-ons at the end.\n\nPickup is genuinely door-to-door. Tell us your hotel or home address anywhere in Delhi NCR (including IGI Airport and the railway stations) and your car arrives at the time you choose on Day 1. The same vehicle and driver stay with you for all three days, so you are never re-negotiating or hunting for local taxis in Manali. This continuity matters on a multi-day hill trip: your driver becomes your local fixer for restaurant recommendations, viewpoint timings, and beating the Solang traffic by leaving early.\n\nWhy book this package with Triveni Cabs? We are a North-India specialist fleet running thousands of Delhi-to-hills trips a year, with a published phone line you can actually reach. Our pricing is fixed and written down - you approve the fleet and the total before you travel, pay a small refundable token to confirm, and settle the balance during the trip. There are no commission games, no last-minute vehicle downgrades, and no mystery \"mountain surcharge\". Our drivers are salaried professionals, not random aggregator partners, and our cars are regularly serviced for high-altitude running with proper brakes, tyres and heaters.\n\nThis package complements - rather than repeats - our free Delhi-to-Manali road-trip travel guide and our individual Manali, Solang and Atal Tunnel sightseeing pages. Use those guides to plan, dream and compare; use this page to lock in a hassle-free, all-inclusive cab holiday with a fixed itinerary and a real human on the other end of the phone. Itineraries are flexible: want to add Kasol/Manikaran, Naggar, or a Shimla night on the way back? Just ask and we will re-quote on the same transparent basis.\n\nReady to confirm your seats? Call or WhatsApp Triveni Cabs on 7668570551 (wa.me/917668570551) with your travel dates, number of passengers and preferred vehicle, and we will send back a written quote, the exact pickup time, and the day-by-day plan within minutes. Snow season (December-February) and the summer peak (April-June) fill fast, so book early to secure your preferred SUV or Tempo Traveller for the Delhi to Manali tour.",
+          "duration": "3 Days / 2 Nights",
+          "price": {
+                "sedan": 19500,
+                "suv": 26500,
+                "tempoTraveller": 38000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Hidimba Devi Temple - 16th-century cedar-wood shrine among deodar forests",
+                "Solang Valley - paragliding, zorbing, ropeway and winter ski slopes",
+                "Atal Tunnel - drive the world's longest high-altitude highway tunnel",
+                "Vashisht - natural sulphur hot springs and ancient stone temple",
+                "Mall Road Manali - cafes, woollens and Tibetan-market shopping",
+                "Optional Rohtang Pass - snow play and views at 13,050 ft (permit assisted)",
+                "Old Manali & Manaslu bridge - riverside cafe lane and apple orchards",
+                "Scenic Beas River drive via Mandi, Pandoh Dam and Kullu Valley"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Early Morning",
+                      "activity": "Delhi NCR pickup and departure",
+                      "duration": "2 hours",
+                      "description": "Door-to-door pickup from your Delhi/Gurgaon/Noida address by 5-6 AM. Drive out on NH-44 toward Chandigarh."
+                },
+                {
+                      "time": "Day 1 - Midday",
+                      "activity": "Chandigarh breakfast halt",
+                      "duration": "1 hour",
+                      "description": "Breakfast and refresh stop around Chandigarh/Zirakpur before climbing into the hills."
+                },
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Mandi, Pandoh Dam & Kullu Valley drive",
+                      "duration": "4 hours",
+                      "description": "Follow the Beas River past Bilaspur, Mandi and the turquoise Pandoh Dam reservoir into the Kullu Valley."
+                },
+                {
+                      "time": "Day 1 - Evening",
+                      "activity": "Arrive Manali, hotel check-in",
+                      "duration": "1 hour",
+                      "description": "Reach Manali by evening, check into your hotel and relax. Optional short Mall Road stroll."
+                },
+                {
+                      "time": "Day 2 - Morning",
+                      "activity": "Solang Valley excursion",
+                      "duration": "4 hours",
+                      "description": "Drive up to Solang Valley for paragliding, zorbing, ropeway rides and snow activities in season."
+                },
+                {
+                      "time": "Day 2 - Midday",
+                      "activity": "Atal Tunnel & Sissu (optional)",
+                      "duration": "3 hours",
+                      "description": "Continue through the Atal Tunnel toward Sissu/Lahaul valley for dramatic snow-capped scenery."
+                },
+                {
+                      "time": "Day 2 - Late Afternoon",
+                      "activity": "Nehru Kund & Rahala Falls",
+                      "duration": "1 hour",
+                      "description": "Stop at Nehru Kund natural spring and the cascading Rahala Falls on the way back to town."
+                },
+                {
+                      "time": "Day 2 - Evening",
+                      "activity": "Mall Road & Tibetan market",
+                      "duration": "2 hours",
+                      "description": "Shopping for woollens, Kullu shawls and souvenirs, plus dinner at a Mall Road cafe."
+                },
+                {
+                      "time": "Day 3 - Morning",
+                      "activity": "Hidimba Temple & Vashisht springs",
+                      "duration": "2.5 hours",
+                      "description": "Visit Hidimba Devi Temple in the cedar forest and the hot sulphur springs at Vashisht."
+                },
+                {
+                      "time": "Day 3 - Late Morning",
+                      "activity": "Old Manali & Manaslu bridge",
+                      "duration": "1.5 hours",
+                      "description": "Cross to Old Manali's riverside cafe lane and apple orchards before checkout."
+                },
+                {
+                      "time": "Day 3 - Afternoon",
+                      "activity": "Begin return drive to Delhi",
+                      "duration": "5 hours",
+                      "description": "Depart Manali after lunch, descending via Kullu and Mandi with photo and tea breaks."
+                },
+                {
+                      "time": "Day 3 - Late Night",
+                      "activity": "Arrive back in Delhi NCR",
+                      "duration": "5 hours",
+                      "description": "Drop-off at your Delhi NCR address late night. Optional overnight halt at Chandigarh on request."
+                }
+          ],
+          "inclusions": [
+                "Private air-conditioned vehicle (Sedan/SUV/Tempo Traveller) for all 3 days",
+                "Experienced hill-route driver with night-halt allowance",
+                "All fuel, toll taxes, parking and inter-state cab permits",
+                "Door-to-door Delhi NCR pickup and drop-off",
+                "Driver assistance for Rohtang/Atal Tunnel permits and local arrangements",
+                "Unlimited photo, tea and meal stops along the route"
+          ],
+          "exclusions": [
+                "Hotel accommodation and meals (we can arrange on request)",
+                "Rohtang Pass permit fees and local Rohtang taxi (where private vehicles restricted)",
+                "Adventure activity charges (paragliding, zorbing, ropeway, skiing)",
+                "Monument/temple entry fees and personal expenses",
+                "Anything not explicitly listed under inclusions"
+          ],
+          "bestTimeToVisit": "March to June and September to February (snow December-February)",
+          "difficulty": "Moderate",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Manali/Manali_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Manali/Manali_hero_section.jpg",
+                "/images/sightseeing/Manali/Hidimba Temple.jpg",
+                "/images/sightseeing/Manali/Solang Valley.jpg",
+                "/images/sightseeing/Manali/Atal tunnel ,.jpg",
+                "/images/sightseeing/Manali/Vashisht , manali.jpg",
+                "/images/sightseeing/Manali/Mall_Road.jpg"
+          ],
+          "tips": [
+                "Choose the SUV or Tempo Traveller for the steep Solang and Atal Tunnel climbs",
+                "Carry warm layers even in summer - Solang and the tunnel side stay cold",
+                "Book December-February early if you want guaranteed snow at Solang",
+                "Start Day 2 by 8 AM to beat Solang Valley traffic and parking queues",
+                "Keep ID copies handy for inter-state and Atal Tunnel/Rohtang checkpoints"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 1640
+          },
+          "coordinates": {
+                "latitude": 32.2396,
+                "longitude": 77.1887
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Hill terrain with steep roads; SUV/Tempo recommended for comfort",
+          "keywords": [
+                "delhi to manali tour package",
+                "delhi to manali tour 3 days",
+                "manali tour package by car",
+                "delhi manali cab package",
+                "manali holiday package from delhi",
+                "delhi to manali taxi 3 days 2 nights",
+                "manali trip from delhi by car",
+                "solang valley tour package",
+                "atal tunnel tour from delhi",
+                "manali sightseeing package",
+                "delhi to manali innova package",
+                "delhi to manali tempo traveller",
+                "manali honeymoon package from delhi by car",
+                "how much does a delhi to manali trip cost",
+                "best vehicle for delhi to manali trip",
+                "manali package with private cab",
+                "delhi to manali road trip package",
+                "manali tour with driver",
+                "rohtang pass tour from delhi",
+                "delhi to manali 3 day itinerary",
+                "manali family package from delhi",
+                "delhi manali sedan suv tempo package"
+          ]
+    },
+    {
+          "id": 214,
+          "slug": "delhi-to-shimla-tour-3-days",
+          "name": "Delhi to Shimla Tour Package - 3 Days / 2 Nights by Car",
+          "shortDescription": "Book a 3-day Delhi to Shimla cab package with private car, Kufri & Mall Road sightseeing, hotel pickup and transparent fleet pricing.",
+          "fullDescription": "Escape the Delhi heat to the colonial-era charm of the Himachal capital on this 3 Days / 2 Nights Delhi to Shimla tour package from Triveni Cabs. Built as a ready-to-book holiday rather than a planning guide, it bundles a fixed door-to-door itinerary, a transparently priced fleet of Sedan, SUV and Tempo Traveller options, and clear inclusions/exclusions so the total you approve in Delhi is the total you pay. If you have browsed our in-depth Delhi-to-Shimla road-trip travel guide and decided you would rather sit back and enjoy the deodar forests than drive the hairpins yourself, this package converts that plan into a confirmed booking with a seasoned hill chauffeur.\n\nThe route runs roughly 350 km each way, climbing from Delhi via NH-44 to Chandigarh and then up the famous Kalka-Shimla mountain road through Solan and the Himalayan Queen viewpoints to Shimla at 7,200 ft. Day 1 is a comfortable transfer: an early Delhi NCR pickup, a breakfast halt near Chandigarh, the scenic ascent past Solan's pine slopes and apple country, and an evening arrival at your Shimla hotel with time for a first walk on the Mall Road. Day 2 is the big sightseeing day across the Kufri-Naldehra-Chail belt. Day 3 covers central Shimla's heritage core before the return drive to Delhi, with an optional Chail or Chandigarh extension if you want to stretch the trip.\n\nIn Shimla itself you will explore the pedestrian Mall Road and the open Ridge with its sweeping valley panorama and the neo-Gothic Christ Church, one of North India's oldest. A short climb or ropeway leads to the Jakhoo Temple, crowned by a towering Hanuman statue and home to a famously cheeky troop of monkeys. The headline excursion is Kufri, the little hill resort at 8,600 ft known for the Himalayan Nature Park, horse rides up to Mahasu Peak and the Green Valley viewpoints, with winter snow play when the season delivers. Your driver can also weave in Naldehra, home to a historic 9-hole golf course laid out by Lord Curzon among cedar groves, the peaceful nature trails and apple orchards around Mashobra, the sulphur-rich Tattapani hot springs down on the Sutlej, and the quiet royal retreat of Chail with its high cricket ground. Photography stops on the scenic deodar-and-pine drives between these points are part of the fun.\n\nBecause the Kalka-Shimla and Kufri roads are steep, narrow and busy in season, we recommend the SUV (Innova Crysta / Ertiga) for couples and families and the Tempo Traveller for groups of 7-15. The Sedan is a comfortable, economical choice for two travellers, while the SUV's extra power and clearance make the climbs to Kufri and Naldehra noticeably easier. Every vehicle is paired with an experienced mountain driver who knows the Solan-Shimla stretch in fog, carries the documents for inter-state travel, and stops freely for photos, chai and meals. The package price already covers fuel, toll, parking, the cab's state permits, driver allowance and night-halt charges - there are no surprise mountain surcharges at the end.\n\nPickup is genuinely door-to-door anywhere in Delhi NCR, including IGI Airport and the city railway stations. The same car and driver stay with you across all three days, so you are never bargaining for local taxis or re-explaining your plan in Shimla. On a hill holiday that continuity is valuable: your driver becomes the local fixer who knows when the Kufri queues build up, which Mall Road eateries are worth the stop, and the quietest time to photograph the Ridge.\n\nWhy Triveni Cabs? We are a North-India specialist running thousands of Delhi-to-hills trips every season, with a real phone line and salaried, hill-trained drivers rather than random aggregator partners. Our pricing is written down and fixed before you travel; you approve the fleet and the total, pay a small refundable token to confirm, and settle the balance during the trip. Cars are serviced for high-altitude running with sound brakes, tyres and heaters, and we never downgrade your vehicle at the last minute.\n\nThis package complements - rather than rehashes - our free Delhi-to-Shimla road-trip travel guide and our individual Shimla, Kufri, Naldehra and Chail sightseeing pages. Use those guides to research and compare; use this page to lock in an all-inclusive, fixed-itinerary cab holiday. The plan is flexible too: want to add a Narkanda/Hatu Peak day, a Chail night, or a longer Tattapani detour? Just tell us and we will re-quote on the same transparent basis.\n\nTo confirm your dates, call or WhatsApp Triveni Cabs on 7668570551 (wa.me/917668570551) with your travel dates, passenger count and preferred vehicle. We will send a written quote, the exact Day 1 pickup time and the full day-by-day plan within minutes. Summer (April-June) and the Christmas-New Year snow window fill quickly, so book early to lock your preferred SUV or Tempo Traveller for the Delhi to Shimla tour.",
+          "duration": "3 Days / 2 Nights",
+          "price": {
+                "sedan": 18000,
+                "suv": 24500,
+                "tempoTraveller": 35500,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Mall Road & The Ridge - pedestrian heart of colonial Shimla with valley views",
+                "Christ Church - neo-Gothic landmark, one of North India's oldest churches",
+                "Kufri - Himalayan Nature Park, Mahasu Peak rides and winter snow play",
+                "Jakhoo Temple - hilltop Hanuman shrine with panoramic Shimla views",
+                "Naldehra - historic 9-hole golf course among cedar groves",
+                "Chail - royal retreat and the world's highest cricket ground",
+                "Tattapani - natural sulphur hot springs on the Sutlej (optional)",
+                "Scenic Kalka-Shimla drive through Solan pine and apple country"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Early Morning",
+                      "activity": "Delhi NCR pickup and departure",
+                      "duration": "2 hours",
+                      "description": "Door-to-door pickup from your Delhi/Gurgaon/Noida address by 5-6 AM and drive toward Chandigarh on NH-44."
+                },
+                {
+                      "time": "Day 1 - Midday",
+                      "activity": "Chandigarh / Pinjore breakfast halt",
+                      "duration": "1 hour",
+                      "description": "Breakfast stop near Chandigarh or the Pinjore gardens before the Kalka climb."
+                },
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Kalka-Shimla ascent via Solan",
+                      "duration": "3.5 hours",
+                      "description": "Climb the scenic mountain road through Solan's pine slopes and apple orchards with viewpoint stops."
+                },
+                {
+                      "time": "Day 1 - Evening",
+                      "activity": "Arrive Shimla, hotel check-in",
+                      "duration": "1 hour",
+                      "description": "Reach Shimla by evening, check in and enjoy a first stroll on the Mall Road and Ridge."
+                },
+                {
+                      "time": "Day 2 - Morning",
+                      "activity": "Kufri excursion",
+                      "duration": "3.5 hours",
+                      "description": "Drive to Kufri for the Himalayan Nature Park, Mahasu Peak rides, Green Valley views and snow play in season."
+                },
+                {
+                      "time": "Day 2 - Afternoon",
+                      "activity": "Naldehra & Mashobra",
+                      "duration": "3 hours",
+                      "description": "Visit the cedar-fringed Naldehra golf course and the apple orchards and nature trails around Mashobra."
+                },
+                {
+                      "time": "Day 2 - Evening",
+                      "activity": "Mall Road & The Ridge",
+                      "duration": "2 hours",
+                      "description": "Evening shopping, cafes and people-watching on the Mall Road with Christ Church lit up on the Ridge."
+                },
+                {
+                      "time": "Day 3 - Morning",
+                      "activity": "Jakhoo Temple & Christ Church",
+                      "duration": "2 hours",
+                      "description": "Visit the hilltop Jakhoo Hanuman temple and the historic Christ Church before checkout."
+                },
+                {
+                      "time": "Day 3 - Late Morning",
+                      "activity": "Chail / Tattapani detour (optional)",
+                      "duration": "2 hours",
+                      "description": "Optional drive to the royal retreat of Chail or the Tattapani hot springs on the Sutlej."
+                },
+                {
+                      "time": "Day 3 - Afternoon",
+                      "activity": "Begin return drive to Delhi",
+                      "duration": "4 hours",
+                      "description": "Depart Shimla after lunch, descending via Solan and Chandigarh with tea and photo breaks."
+                },
+                {
+                      "time": "Day 3 - Evening/Night",
+                      "activity": "Arrive back in Delhi NCR",
+                      "duration": "4 hours",
+                      "description": "Drop-off at your Delhi NCR address. Optional Chandigarh overnight halt available on request."
+                }
+          ],
+          "inclusions": [
+                "Private air-conditioned vehicle (Sedan/SUV/Tempo Traveller) for all 3 days",
+                "Experienced hill-route driver with night-halt allowance",
+                "All fuel, toll taxes, parking and inter-state cab permits",
+                "Door-to-door Delhi NCR pickup and drop-off",
+                "Flexible sightseeing stops across Shimla, Kufri, Naldehra and Chail",
+                "Unlimited photo, tea and meal stops along the route"
+          ],
+          "exclusions": [
+                "Hotel accommodation and meals (we can arrange on request)",
+                "Kufri horse rides, Nature Park and adventure activity charges",
+                "Monument, temple and Ridge attraction entry fees",
+                "Personal expenses, shopping and tips",
+                "Anything not explicitly listed under inclusions"
+          ],
+          "bestTimeToVisit": "March to June and September to January (snow December-January)",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+                "/images/sightseeing/Shimla/the ridge shimla.jpg",
+                "/images/sightseeing/Shimla/Mall road shimla.jpg",
+                "/images/sightseeing/Shimla/jakhoo_temple.jpg",
+                "/images/sightseeing/Kufri/Mahasu_Peak.jpg",
+                "/images/sightseeing/Shimla/Naldehra Golf Course_Historic 9-hole course designed by Lord Curzon.jpg"
+          ],
+          "tips": [
+                "Pick the SUV or Tempo Traveller for the steep Kufri and Naldehra climbs",
+                "Reach Kufri early - parking and horse-ride queues build up by late morning",
+                "Carry warm layers year-round; Kufri and the Ridge stay cool even in summer",
+                "Book the Christmas-New Year window early for the best snow chances",
+                "Mall Road is vehicle-free - your driver drops you at the lift/Cart Road point"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 1490
+          },
+          "coordinates": {
+                "latitude": 31.1048,
+                "longitude": 77.1734
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Hill terrain with steep roads; Mall Road is pedestrian-only",
+          "keywords": [
+                "delhi to shimla tour package",
+                "delhi to shimla tour 3 days",
+                "shimla tour package by car",
+                "delhi shimla cab package",
+                "shimla holiday package from delhi",
+                "delhi to shimla taxi 3 days 2 nights",
+                "shimla kufri tour package",
+                "shimla trip from delhi by car",
+                "kufri tour from delhi",
+                "shimla sightseeing package",
+                "delhi to shimla innova package",
+                "delhi to shimla tempo traveller",
+                "shimla honeymoon package from delhi by car",
+                "how much does a delhi to shimla trip cost",
+                "best vehicle for delhi to shimla trip",
+                "shimla package with private cab",
+                "delhi to shimla road trip package",
+                "shimla tour with driver",
+                "naldehra chail tour from delhi",
+                "delhi to shimla 3 day itinerary",
+                "shimla family package from delhi",
+                "delhi shimla sedan suv tempo package"
+          ]
+    },
+    {
+          "id": 215,
+          "slug": "delhi-to-kashmir-tour-6-days",
+          "name": "Delhi to Kashmir Tour Package - 6 Days / 5 Nights",
+          "shortDescription": "Book a 6-day Delhi to Kashmir package covering Srinagar, Gulmarg, Pahalgam & Sonamarg with private cab, shikara ride and fixed pricing.",
+          "fullDescription": "Experience the full sweep of the Kashmir Valley on this 6 Days / 5 Nights Delhi to Kashmir tour package from Triveni Cabs - Srinagar's Dal Lake, the meadows of Gulmarg, the pine valleys of Pahalgam and the glacier country of Sonamarg, all stitched together with a private cab and a clear, fixed itinerary. This is a transactional, ready-to-book holiday rather than a planning article: you approve a written fleet quote (Sedan, SUV or Tempo Traveller), the exact day-by-day plan and transparent inclusions/exclusions before you travel, then sit back while a Valley-experienced chauffeur handles the rest. If you have read our Delhi-to-Kashmir road-trip travel guide and want a confirmed, all-arranged version, this is it.\n\nBecause Kashmir sits ~800 km from Delhi over the Jawahar Tunnel, most travellers prefer to fly Delhi-Srinagar and use our cab for all in-Valley touring; we can also arrange the full overland drive via Jammu and the Banihal road for those who want the journey itself - just tell us your preference and we will price accordingly. Either way, your private vehicle and driver stay with you for all five Valley nights, so there is no haggling for local taxis at every stop.\n\nDay 1 settles you into a Srinagar houseboat or hotel with a sunset shikara ride across the Dal Lake, gliding past floating gardens, vendor boats and the Mughal-era waterfront. Day 2 covers Srinagar's classic Mughal Gardens - Nishat Bagh and Shalimar Bagh terraced against the Zabarwan hills - plus the lakeside Hazratbal shrine and the hilltop Shankaracharya Temple for a panoramic valley view. Day 3 is the Gulmarg excursion: the \"Meadow of Flowers\" at 8,700 ft, home to the famous Gulmarg Gondola (one of the world's highest cable cars) rising toward Apharwat Peak, the high-altitude golf course, and alpine meadows that turn into ski slopes in winter. Day 4 heads to Pahalgam through saffron fields and the Anantnag belt, exploring the Betaab Valley, Aru Valley and Chandanwari along the Lidder River - the gateway country for the Amarnath trek. Day 5 takes you to Sonamarg, the \"Meadow of Gold,\" for the Thajiwas Glacier, Krishnasar lake views and the dramatic approach to the Zoji La pass. Day 6 wraps with any remaining Srinagar shopping - Pashmina, walnut wood, saffron and dry fruits - before your airport transfer or the start of the return drive.\n\nFor Kashmir's valley roads and the climbs toward Gulmarg and Sonamarg, we recommend the SUV (Innova Crysta / Ertiga) for couples and families and the Tempo Traveller for groups of 7-15; the Sedan suits two budget travellers on the smoother Srinagar-Pahalgam runs. Note that the final stretches up to the Gulmarg Gondola base and the Thajiwas Glacier are often covered by local union ponies/sledges or short local taxis - your Triveni driver drops you at the designated point and helps coordinate these local arrangements. Every car comes with a courteous, Valley-experienced driver who knows the checkpoints, the best photo timings and the reliable local eateries.\n\nThe package price covers your private air-conditioned vehicle for the full Valley itinerary, fuel, toll, parking, driver allowance and all night-halt charges, plus the Day 1 sunset shikara ride and door-to-door coordination. Flights or the overland Jammu drive, hotels/houseboats, Gulmarg Gondola tickets, pony and local-taxi charges, and entry fees are kept separate and transparent so you only pay for what you choose - and we are happy to bundle hotels and houseboats on request.\n\nWhy book with Triveni Cabs? We are a North-India specialist with salaried, properly briefed drivers, a real phone line, and fixed written pricing - no aggregator surprises, no last-minute vehicle downgrades, and no inflated \"Valley surcharge.\" Our Kashmir itinerary is built from years of running this circuit, so the day order minimises backtracking and keeps Gulmarg and Sonamarg on their best-light days.\n\nThis package complements - rather than repeats - our free Delhi-to-Kashmir road-trip travel guide and our individual Srinagar, Gulmarg, Pahalgam and Sonamarg sightseeing pages. Use those to dream and compare; use this page to lock in a fixed-itinerary, all-coordinated Kashmir holiday with a private cab. The plan flexes easily too - add a Doodhpathri or Yusmarg day, a second Pahalgam night, or a Vaishno Devi stopover on an overland return, and we will re-quote on the same transparent basis.\n\nTo confirm, call or WhatsApp Triveni Cabs on 7668570551 (wa.me/917668570551) with your dates, passenger count, fly-or-drive preference and preferred vehicle. We will send a written quote, the exact pickup/airport-transfer time and the full 6-day plan within minutes. The tulip-bloom spring window and the summer peak fill fast, so book early to secure your SUV or Tempo Traveller for the Delhi to Kashmir tour.",
+          "duration": "6 Days / 5 Nights",
+          "price": {
+                "sedan": 38000,
+                "suv": 49000,
+                "tempoTraveller": 72000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Dal Lake shikara ride - sunset glide past floating gardens in Srinagar",
+                "Gulmarg Gondola - one of the world's highest cable cars toward Apharwat",
+                "Mughal Gardens - Nishat Bagh & Shalimar Bagh terraced on the Zabarwan hills",
+                "Pahalgam - Betaab, Aru and Chandanwari valleys along the Lidder River",
+                "Sonamarg & Thajiwas Glacier - the 'Meadow of Gold' below Zoji La",
+                "Shankaracharya Temple & Hazratbal - panoramic and sacred Srinagar landmarks",
+                "Saffron fields & Pashmina shopping - Anantnag belt and Srinagar markets",
+                "Private cab for the full valley circuit with a Kashmir-experienced driver"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Arrive Srinagar & Dal Lake shikara",
+                      "duration": "3 hours",
+                      "description": "Airport/overland arrival, houseboat or hotel check-in, and a sunset shikara ride across the Dal Lake."
+                },
+                {
+                      "time": "Day 2 - Full Day",
+                      "activity": "Srinagar Mughal Gardens & shrines",
+                      "duration": "7 hours",
+                      "description": "Nishat Bagh, Shalimar Bagh, Hazratbal shrine and the hilltop Shankaracharya Temple with valley views."
+                },
+                {
+                      "time": "Day 3 - Full Day",
+                      "activity": "Gulmarg excursion & Gondola",
+                      "duration": "8 hours",
+                      "description": "Drive to Gulmarg for the Gondola toward Apharwat Peak, alpine meadows, golf course and snow play in season."
+                },
+                {
+                      "time": "Day 4 - Morning",
+                      "activity": "Drive Srinagar to Pahalgam",
+                      "duration": "3 hours",
+                      "description": "Travel through saffron fields and the Anantnag belt to Pahalgam on the Lidder River."
+                },
+                {
+                      "time": "Day 4 - Afternoon",
+                      "activity": "Betaab, Aru & Chandanwari valleys",
+                      "duration": "4 hours",
+                      "description": "Local sightseeing of Betaab Valley, Aru Valley and Chandanwari (local taxi for inner points)."
+                },
+                {
+                      "time": "Day 5 - Morning",
+                      "activity": "Drive Pahalgam to Sonamarg",
+                      "duration": "4 hours",
+                      "description": "Scenic transfer to Sonamarg, the 'Meadow of Gold', via Srinagar bypass roads."
+                },
+                {
+                      "time": "Day 5 - Afternoon",
+                      "activity": "Thajiwas Glacier & Zoji La viewpoint",
+                      "duration": "4 hours",
+                      "description": "Pony/local-taxi ride to Thajiwas Glacier and the dramatic Zoji La pass approach."
+                },
+                {
+                      "time": "Day 5 - Evening",
+                      "activity": "Return to Srinagar",
+                      "duration": "2.5 hours",
+                      "description": "Drive back to Srinagar for the night, with a riverside or lakeside dinner."
+                },
+                {
+                      "time": "Day 6 - Morning",
+                      "activity": "Srinagar shopping & local markets",
+                      "duration": "2.5 hours",
+                      "description": "Pashmina, walnut wood, saffron and dry-fruit shopping in the old city and Lal Chowk area."
+                },
+                {
+                      "time": "Day 6 - Midday",
+                      "activity": "Departure transfer",
+                      "duration": "1 hour",
+                      "description": "Airport drop for your return flight, or start of the overland drive back toward Jammu/Delhi."
+                }
+          ],
+          "inclusions": [
+                "Private air-conditioned vehicle for the full 6-day valley circuit",
+                "Kashmir-experienced driver with all night-halt allowances",
+                "Sunset shikara ride on the Dal Lake (Day 1)",
+                "All in-valley fuel, toll, parking and driver charges",
+                "Door-to-door / airport-transfer coordination in Srinagar",
+                "Flexible sightseeing across Srinagar, Gulmarg, Pahalgam and Sonamarg"
+          ],
+          "exclusions": [
+                "Delhi-Srinagar flights or overland Jammu drive fuel (priced separately)",
+                "Hotels, houseboats and meals (we can arrange on request)",
+                "Gulmarg Gondola tickets and pony/local-taxi charges at inner points",
+                "Garden, shrine and attraction entry fees",
+                "Personal expenses, shopping and tips"
+          ],
+          "bestTimeToVisit": "March to October (tulips in April; snow December to February)",
+          "difficulty": "Moderate",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg",
+                "/images/sightseeing/Srinagar/Dal_Lake_Shikara.jpg",
+                "/images/sightseeing/Gulmarg/Gondola_Cable_Car.jpg",
+                "/images/sightseeing/Pahalgam/Betaab_Valley.jpg",
+                "/images/sightseeing/Sonamarg/Thajiwas_Glacier.jpg",
+                "/images/sightseeing/Srinagar/Mughal_Gardens.jpg"
+          ],
+          "tips": [
+                "Flying Delhi-Srinagar saves two long days versus the overland drive",
+                "Pick the SUV or Tempo Traveller for the Gulmarg and Sonamarg climbs",
+                "Carry warm layers all year - Gulmarg and Thajiwas stay cold even in summer",
+                "Book the April tulip-festival window early; Srinagar hotels fill fast",
+                "Budget separately for Gondola tickets and union pony/local-taxi at inner points"
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 1280
+          },
+          "coordinates": {
+                "latitude": 34.0837,
+                "longitude": 74.7973
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Valley roads good; inner points use ponies/local taxis",
+          "keywords": [
+                "delhi to kashmir tour package",
+                "delhi to kashmir tour 6 days",
+                "kashmir tour package from delhi",
+                "srinagar gulmarg pahalgam tour package",
+                "kashmir holiday package by car",
+                "delhi to srinagar cab package",
+                "kashmir 6 days 5 nights package",
+                "kashmir family package from delhi",
+                "dal lake shikara tour package",
+                "gulmarg gondola tour package",
+                "kashmir sightseeing package from delhi",
+                "kashmir tour with private cab",
+                "kashmir honeymoon package from delhi",
+                "how much does a kashmir trip from delhi cost",
+                "best time for delhi to kashmir tour",
+                "srinagar to pahalgam sonamarg package",
+                "kashmir valley tour with driver",
+                "delhi to kashmir innova package",
+                "kashmir tempo traveller package",
+                "kashmir tulip festival tour package",
+                "delhi to kashmir 6 day itinerary",
+                "kashmir package sedan suv tempo"
+          ]
+    },
+    {
+          "id": 216,
+          "slug": "delhi-to-leh-ladakh-expedition-7-days",
+          "name": "Delhi to Leh Ladakh Expedition - 7 Days / 6 Nights",
+          "shortDescription": "Book a 7-day Leh Ladakh expedition covering Pangong, Nubra, Khardung La & Leh with private SUV/Tempo, acclimatisation and fixed pricing.",
+          "fullDescription": "Take on the ultimate high-Himalayan road adventure with this 7 Days / 6 Nights Delhi to Leh Ladakh expedition from Triveni Cabs - Pangong Tso, the Nubra dunes, the legendary Khardung La pass, Magnetic Hill and old-town Leh, all run on a fixed itinerary with a private mountain vehicle and an altitude-experienced driver. This is a transactional, ready-to-book expedition package, not a planning article: you approve a written fleet quote, the exact day-by-day plan and transparent inclusions/exclusions before you go. If you have devoured our Delhi-to-Leh road-trip travel guide and want the confirmed, fully-coordinated version with permits and acclimatisation built in, this is the booking page.\n\nBecause Ladakh sits at extreme altitude (Leh itself is 11,500 ft, Khardung La 17,580 ft), most travellers fly Delhi-Leh and use our cab for the circuit, which makes acclimatisation safer and saves the two-day overland haul; we can also arrange the classic Manali-Leh or Srinagar-Leh overland drive for hardened road-trippers - just state your preference and we will price it. Either way the itinerary is paced deliberately around your body's acclimatisation, because rushing altitude is the single biggest mistake on this route.\n\nDay 1 lands you in Leh and is kept gentle - check in, rest, and let your body adjust to the thin air with only a short evening stroll. Day 2 is a local acclimatisation day covering Leh Palace above the old town, the Shanti Stupa, Magnetic Hill (the famous \"gravity-defying\" stretch), the Gurudwara Pathar Sahib and the Sangam confluence of the Indus and Zanskar rivers. Day 3 climbs over Khardung La - among the world's highest motorable passes at 17,580 ft - and descends into the Nubra Valley, where you overnight at Hunder among cold-desert sand dunes with their double-humped Bactrian camels. Day 4 explores Nubra's Diskit Monastery and the Turtuk/Sumur side before the dramatic Shyok-river drive toward Pangong. Day 5 reaches Pangong Tso, the surreal colour-shifting lake straddling the India-China line at 14,000 ft, for a lakeside overnight under one of the clearest night skies on earth. Day 6 returns to Leh over the Chang La pass with monastery and viewpoint stops, leaving Day 7 for any last Leh-market shopping - Pashmina, apricots, Tibetan handicrafts - before your departure transfer.\n\nThis is high-clearance terrain, so we run only SUV (Innova Crysta / 4x4 where needed) and Tempo Traveller options on this expedition - a standard Sedan is not suitable for Khardung La, Pangong and the Nubra approaches. Every vehicle comes with a Ladakh-experienced driver who knows the passes, the oxygen-thin gradients, the river crossings and the realistic timings, and who carries the documents for the inner-line checkpoints. We assist with the Inner Line Permits required for Nubra, Pangong and the border areas as part of the coordination.\n\nThe package price covers your private high-altitude vehicle for the full circuit, fuel, toll, parking, driver allowance and all night-halt charges across Leh, Nubra and Pangong, plus Inner Line Permit assistance and door-to-door / airport-transfer coordination. Flights or the overland Manali/Srinagar drive, hotels and camps, monastery entry fees, oxygen cans and personal gear are kept separate and transparent - and we are happy to bundle vetted hotels and Pangong/Nubra camps on request.\n\nWhy book with Triveni Cabs? Ladakh is unforgiving, and the difference between a great trip and a miserable one is the operator. We field salaried, altitude-seasoned drivers, mechanically prepared vehicles, a real phone line and fixed written pricing - no aggregator gambles, no last-minute downgrades, and an itinerary genuinely paced for acclimatisation rather than crammed for a brochure. We will honestly flag if your chosen dates clash with pass closures or permit conditions.\n\nThis package complements - rather than repeats - our free Delhi-to-Leh road-trip travel guide and our individual Pangong, Nubra, Khardung La and Leh sightseeing pages. Use those to research and prepare; use this page to lock in a fixed-itinerary, permit-assisted expedition with a private mountain vehicle. The plan flexes too - add a Tso Moriri/Hanle night, a Lamayuru moonland day, or extend the Nubra stay, and we will re-quote transparently.\n\nTo confirm, call or WhatsApp Triveni Cabs on 7668570551 (wa.me/917668570551) with your dates, passenger count, fly-or-drive preference and group size. We will send a written quote, the permit checklist, the exact arrival-transfer time and the full 7-day plan. The short Ladakh season (May-September for the high passes) and limited Pangong camps fill very early, so book well ahead to secure your SUV or Tempo Traveller for the Leh Ladakh expedition.",
+          "duration": "7 Days / 6 Nights",
+          "price": {
+                "sedan": 0,
+                "suv": 62000,
+                "tempoTraveller": 92000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Khardung La - cross one of the world's highest motorable passes at 17,580 ft",
+                "Pangong Tso - colour-shifting high-altitude lake on the India-China line",
+                "Nubra Valley - cold-desert dunes and Bactrian camels at Hunder",
+                "Magnetic Hill - the famous gravity-defying stretch near Leh",
+                "Leh Palace & old town - nine-storey Namgyal-era royal palace",
+                "Sangam - Indus and Zanskar river confluence near Nimmu",
+                "Acclimatisation-paced itinerary with Inner Line Permit assistance",
+                "Private high-clearance SUV/Tempo with a Ladakh-experienced driver"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Arrival",
+                      "activity": "Arrive Leh, rest & acclimatise",
+                      "duration": "Half day",
+                      "description": "Land in Leh (11,500 ft), check in and rest fully to acclimatise; short easy evening stroll only."
+                },
+                {
+                      "time": "Day 2 - Full Day",
+                      "activity": "Leh local acclimatisation tour",
+                      "duration": "7 hours",
+                      "description": "Leh Palace, Shanti Stupa, Magnetic Hill, Gurudwara Pathar Sahib and the Indus-Zanskar Sangam."
+                },
+                {
+                      "time": "Day 3 - Full Day",
+                      "activity": "Leh to Nubra via Khardung La",
+                      "duration": "6 hours",
+                      "description": "Cross Khardung La (17,580 ft) into the Nubra Valley; overnight at Hunder among the sand dunes."
+                },
+                {
+                      "time": "Day 4 - Full Day",
+                      "activity": "Nubra to Pangong via Shyok",
+                      "duration": "7 hours",
+                      "description": "Diskit Monastery and dunes, then the Shyok-river route toward Pangong Tso for a lakeside overnight."
+                },
+                {
+                      "time": "Day 5 - Full Day",
+                      "activity": "Pangong Tso & return drive",
+                      "duration": "6 hours",
+                      "description": "Sunrise at Pangong Tso (14,000 ft), then drive back over Chang La toward Leh with viewpoint stops."
+                },
+                {
+                      "time": "Day 6 - Full Day",
+                      "activity": "Monasteries & Sham Valley",
+                      "duration": "6 hours",
+                      "description": "Thiksey and Hemis monasteries or the Sham Valley loop (Alchi/Likir) depending on season and energy."
+                },
+                {
+                      "time": "Day 7 - Morning",
+                      "activity": "Leh market & departure",
+                      "duration": "2 hours",
+                      "description": "Last shopping for Pashmina, apricots and Tibetan handicrafts, then airport transfer for your flight."
+                }
+          ],
+          "inclusions": [
+                "Private high-clearance SUV/Tempo Traveller for the full Ladakh circuit",
+                "Altitude-experienced Ladakh driver with all night-halt allowances",
+                "Inner Line Permit assistance for Nubra, Pangong and border areas",
+                "All fuel, toll, parking and driver charges across Leh, Nubra and Pangong",
+                "Acclimatisation-paced itinerary and airport-transfer coordination",
+                "Flexible sightseeing across Leh, Nubra, Pangong and the monasteries"
+          ],
+          "exclusions": [
+                "Delhi-Leh flights or overland Manali/Srinagar drive (priced separately)",
+                "Hotels, Nubra/Pangong camps and meals (we can arrange on request)",
+                "Inner Line Permit government fees and monastery entry charges",
+                "Oxygen cans, personal trekking gear and travel insurance",
+                "Personal expenses, shopping and tips"
+          ],
+          "bestTimeToVisit": "May to September (high passes closed in winter)",
+          "difficulty": "Moderate",
+          "category": "Adventure & Road Trip",
+          "heroImage": "/images/sightseeing/Ladakh/Ladakh_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Ladakh/Ladakh_hero_section.jpg",
+                "/images/sightseeing/Ladakh/Pangong_Lake.jpg",
+                "/images/sightseeing/Ladakh/Nubra_Valley.jpg",
+                "/images/sightseeing/Ladakh/Khardung_La.jpg",
+                "/images/sightseeing/Ladakh/Magnetic_Hill.jpg",
+                "/images/sightseeing/Ladakh/Leh_Palace.jpg"
+          ],
+          "tips": [
+                "Fly into Leh and rest fully on Day 1 - acclimatisation prevents altitude sickness",
+                "Only SUV/Tempo run this route; a Sedan cannot handle Khardung La or Pangong",
+                "Carry warm layers, sunscreen and any prescribed altitude medication",
+                "Keep multiple ID copies - Inner Line checkpoints check permits repeatedly",
+                "Mobile network is limited; download offline maps and inform family in advance"
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 940
+          },
+          "coordinates": {
+                "latitude": 34.1526,
+                "longitude": 77.5771
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Extreme high altitude; not advised for serious heart/lung conditions",
+          "keywords": [
+                "delhi to leh ladakh tour package",
+                "leh ladakh expedition 7 days",
+                "ladakh tour package from delhi",
+                "pangong nubra khardung la package",
+                "leh ladakh trip by car",
+                "delhi to leh cab package",
+                "ladakh 7 days 6 nights itinerary",
+                "leh ladakh family package",
+                "pangong lake tour package",
+                "nubra valley tour package",
+                "khardung la tour package",
+                "ladakh sightseeing package from delhi",
+                "leh ladakh tour with private suv",
+                "how much does a leh ladakh trip cost",
+                "best time for leh ladakh tour",
+                "ladakh inner line permit assistance",
+                "leh ladakh tempo traveller package",
+                "ladakh adventure road trip package",
+                "delhi to leh ladakh innova package",
+                "leh ladakh acclimatisation itinerary",
+                "ladakh tour with experienced driver",
+                "leh ladakh 7 day expedition"
+          ]
+    },
+    {
+          "id": 217,
+          "slug": "delhi-to-spiti-valley-circuit-7-days",
+          "name": "Delhi to Spiti Valley Circuit - 7 Days / 6 Nights",
+          "shortDescription": "Book a 7-day Spiti Valley circuit via Shimla, Kalpa, Kaza & Chandratal with private SUV/Tempo, monasteries and transparent fixed pricing.",
+          "fullDescription": "Cross the cold-desert moonscape of the Himalayas on this 7 Days / 6 Nights Delhi to Spiti Valley circuit from Triveni Cabs - the gentle Shimla-Kinnaur ascent, the apple orchards of Kalpa, the monastery towns of Tabo, Dhankar and Kaza, the world's-highest villages around Kibber and Langza, and the crescent of Chandratal lake, all run on a fixed itinerary with a private mountain vehicle and a Spiti-experienced driver. This is a transactional, ready-to-book circuit package rather than a planning guide: you approve a written fleet quote, the day-by-day plan and transparent inclusions/exclusions before departure. If you have read our Delhi-to-Spiti road-trip travel guide and want the confirmed, fully-coordinated version, this is the booking page.\n\nWe deliberately run the circuit the \"easy-acclimatisation\" way - up the gradual Shimla-Kinnaur side and out over the higher Kunzum Pass-Manali side - so your body climbs altitude slowly instead of being thrown straight to 12,000 ft. The full loop covers roughly 1,100-1,200 km of dramatic mountain driving and ends back near Manali/Chandigarh for the run to Delhi.\n\nDay 1 drives from Delhi up to Shimla (or Narkanda) for the first hill night. Day 2 follows the Sutlej through Kinnaur's hanging cliff-roads to Kalpa, with its grandstand view of the Kinner Kailash range above terraced apple orchards. Day 3 enters Spiti proper, stopping at the thousand-year-old Tabo Monastery (the \"Ajanta of the Himalayas\") and the cliff-clinging Dhankar Monastery before reaching Kaza, the valley's small capital. Day 4 explores the high-altitude cluster above Kaza - Key Monastery (Kye Gompa) stacked on its conical hill, Kibber and Komic among the world's highest motorable villages, Langza with its fossil fields and giant Buddha, and Hikkim's famous high-altitude post office. Day 5 crosses toward Chandratal, the \"Moon Lake,\" for a camp night beside the crescent-shaped glacial lake under brilliant stars. Day 6 traverses the Kunzum Pass and the Batal-Gramphu rough road down to Manali. Day 7 completes the descent from Manali back to Delhi. Side options your driver can weave in include the Pin Valley National Park, Tabo caves and the Gue mummy detour, season permitting.\n\nThis is demanding high-clearance terrain with river crossings and unpaved stretches, so we run only SUV (Innova Crysta / 4x4 where needed) and Tempo Traveller options on this circuit - a standard Sedan is unsuitable for the Kaza-Kunzum-Batal roads. Every vehicle comes with a Spiti-experienced driver who knows the cliff sections, the water crossings, the realistic stage timings and the acclimatisation logic of climbing via Kinnaur first. The package price covers your private mountain vehicle for the full loop, fuel, toll, parking, driver allowance and all night-halt charges across Shimla/Narkanda, Kalpa, Kaza, Chandratal and Manali, plus door-to-door Delhi NCR coordination.\n\nKept separate and transparent are hotels, homestays and the Chandratal camp, meals, monastery donations/entry, any seasonal permits, and personal gear - we are happy to bundle vetted Spiti homestays and the Chandratal camp on request so you have one point of contact.\n\nWhy book with Triveni Cabs? Spiti is remote, network-thin and weather-dependent, and the operator makes or breaks the trip. We field salaried, high-altitude-seasoned drivers, mechanically prepared vehicles, a real phone line and fixed written pricing - no aggregator gambles, no last-minute downgrades, and a route genuinely paced for acclimatisation. We will honestly flag if your dates clash with Kunzum Pass opening, Chandratal access or snow closures, and re-route or re-time accordingly.\n\nThis package complements - rather than repeats - our free Delhi-to-Spiti road-trip travel guide and our individual Kaza, Key Monastery, Chandratal and Kinnaur sightseeing pages. Use those to research, pack and prepare; use this page to lock in a fixed-itinerary, fully-coordinated circuit with a private mountain vehicle. The loop flexes too - add a Pin Valley night, extend Kaza for the Komic/Hikkim cluster, or reverse the direction late in the season - and we will re-quote on the same transparent basis.\n\nTo confirm, call or WhatsApp Triveni Cabs on 7668570551 (wa.me/917668570551) with your dates, passenger count and group size. We will send a written quote, a packing and acclimatisation note, the exact Day 1 pickup time and the full 7-day plan. The Spiti circuit season is short (the Kunzum/Chandratal side typically opens June and closes with the first heavy snow), and homestays and the Chandratal camp are limited, so book early to secure your SUV or Tempo Traveller for the Delhi to Spiti Valley circuit.",
+          "duration": "7 Days / 6 Nights",
+          "price": {
+                "sedan": 0,
+                "suv": 58000,
+                "tempoTraveller": 86000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Key Monastery (Kye Gompa) - Spiti's iconic hilltop Buddhist monastery",
+                "Chandratal Lake - the crescent-shaped 'Moon Lake' camp under the stars",
+                "Tabo Monastery - thousand-year-old 'Ajanta of the Himalayas'",
+                "Kalpa & Kinner Kailash - apple orchards beneath a soaring sacred range",
+                "Kibber, Komic & Langza - among the world's highest motorable villages",
+                "Kunzum Pass - high crossing between Spiti and Lahaul at ~15,000 ft",
+                "Dhankar Monastery - cliff-clinging gompa above the Spiti-Pin confluence",
+                "Private SUV/Tempo with a Spiti-experienced mountain driver"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Full Day",
+                      "activity": "Delhi to Shimla / Narkanda",
+                      "duration": "8 hours",
+                      "description": "Door-to-door Delhi NCR pickup and drive up via Chandigarh and Solan to Shimla or Narkanda for the night."
+                },
+                {
+                      "time": "Day 2 - Full Day",
+                      "activity": "Shimla to Kalpa via Kinnaur",
+                      "duration": "7 hours",
+                      "description": "Follow the Sutlej through Kinnaur's cliff-roads to Kalpa, facing the Kinner Kailash range."
+                },
+                {
+                      "time": "Day 3 - Full Day",
+                      "activity": "Kalpa to Kaza via Tabo & Dhankar",
+                      "duration": "7 hours",
+                      "description": "Enter Spiti, visit the ancient Tabo Monastery and cliff-top Dhankar, then reach Kaza for the night."
+                },
+                {
+                      "time": "Day 4 - Full Day",
+                      "activity": "Kaza high-village cluster",
+                      "duration": "7 hours",
+                      "description": "Key Monastery, Kibber, Komic, Langza fossil fields and Hikkim's high-altitude post office."
+                },
+                {
+                      "time": "Day 5 - Full Day",
+                      "activity": "Kaza to Chandratal",
+                      "duration": "6 hours",
+                      "description": "Drive across to Chandratal, the 'Moon Lake', for a camp night beside the crescent glacial lake."
+                },
+                {
+                      "time": "Day 6 - Full Day",
+                      "activity": "Chandratal to Manali via Kunzum",
+                      "duration": "7 hours",
+                      "description": "Cross Kunzum Pass and the Batal-Gramphu road, descending past Atal Tunnel side to Manali."
+                },
+                {
+                      "time": "Day 7 - Full Day",
+                      "activity": "Manali to Delhi",
+                      "duration": "8 hours",
+                      "description": "Descend via Kullu and Mandi with photo and tea breaks, reaching your Delhi NCR address by night."
+                }
+          ],
+          "inclusions": [
+                "Private high-clearance SUV/Tempo Traveller for the full Spiti loop",
+                "Spiti-experienced mountain driver with all night-halt allowances",
+                "All fuel, toll, parking and driver charges across the circuit",
+                "Door-to-door Delhi NCR pickup and drop-off",
+                "Acclimatisation-paced routing via Kinnaur and out over Kunzum",
+                "Packing/acclimatisation guidance and flexible sightseeing stops"
+          ],
+          "exclusions": [
+                "Hotels, homestays and the Chandratal camp (we can arrange on request)",
+                "All meals and monastery donations/entry fees",
+                "Seasonal permits and personal trekking gear",
+                "Anything requiring a local pony/shared jeep at restricted points",
+                "Personal expenses, shopping and tips"
+          ],
+          "bestTimeToVisit": "June to October (Kunzum/Chandratal side closed in winter)",
+          "difficulty": "Moderate",
+          "category": "Adventure & Road Trip",
+          "heroImage": "/images/sightseeing/Spiti_Valley/Key Monastery (Kye Gompa) in Spiti Valley.jpg",
+          "images": [
+                "/images/sightseeing/Spiti_Valley/Key Monastery (Kye Gompa) in Spiti Valley.jpg",
+                "/images/sightseeing/Spiti_Valley/Chandratal Lake (Moon Lake) is a stunning, crescent-shaped high-altitude lake in the Spiti Valley, Himachal Pradesh, India.jpg",
+                "/images/sightseeing/Spiti_Valley/Tabo Monastery.jpg",
+                "/images/sightseeing/Spiti_Valley/Kaza Town_Capital of Spiti Valley.jpg",
+                "/images/sightseeing/Spiti_Valley/Kibber Village_One of world's highest villages.jpg",
+                "/images/sightseeing/Spiti_Valley/Kunzum Pass.jpg"
+          ],
+          "tips": [
+                "Climb via Kinnaur first - this routing acclimatises you gradually to Spiti's altitude",
+                "Only SUV/Tempo run this loop; Sedans cannot handle the Kunzum-Batal roads",
+                "Carry cash - ATMs and card payments are unreliable beyond Kalpa",
+                "Network is patchy; download offline maps and inform family of your plan",
+                "Pack warm layers and a sleeping-bag liner for the Chandratal camp night"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 760
+          },
+          "coordinates": {
+                "latitude": 32.227,
+                "longitude": 78.0719
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Remote high-altitude circuit; rough unpaved stretches and river crossings",
+          "keywords": [
+                "delhi to spiti valley tour package",
+                "spiti valley circuit 7 days",
+                "spiti valley package from delhi",
+                "shimla kalpa kaza chandratal package",
+                "spiti valley trip by car",
+                "delhi to spiti cab package",
+                "spiti 7 days 6 nights itinerary",
+                "spiti valley road trip package",
+                "chandratal lake tour package",
+                "key monastery kaza tour package",
+                "spiti circuit with private suv",
+                "spiti sightseeing package from delhi",
+                "how much does a spiti valley trip cost",
+                "best time for spiti valley tour",
+                "spiti valley tempo traveller package",
+                "kinnaur spiti circuit package",
+                "spiti valley adventure tour from delhi",
+                "delhi to spiti innova package",
+                "spiti valley tour with experienced driver",
+                "spiti acclimatisation itinerary",
+                "spiti valley 7 day circuit",
+                "tabo dhankar monastery tour package"
+          ]
+    },
+    {
       id: 1,
       name: "Delhi Full Day City Tour",
       slug: "delhi-full-day-city-tour",
@@ -3667,6 +4419,308 @@ export const sightseeingTours = {
 
   jaipur: [
     {
+          "id": 306,
+          "slug": "jaipur-to-jaisalmer-3-days",
+          "name": "Jaipur to Jaisalmer 3 Days Tour",
+          "shortDescription": "Journey from the Pink City to the Golden City on a 3-day private cab tour covering Jaipur's forts, Jaisalmer's Sonar Fort and a Sam Dunes desert safari with Triveni Cabs.",
+          "fullDescription": "From the rose-pink palaces of Jaipur to the golden sandstone ramparts of Jaisalmer rising out of the Thar Desert, this three-day journey is Rajasthan at its most romantic and cinematic. It threads together two of India's most beautiful cities with a spectacular desert safari at Sam Sand Dunes, delivering the full sweep of Rajput grandeur, living heritage and desert magic in one seamless trip. Triveni Cabs' Jaipur to Jaisalmer 3 Days / 2 Nights Tour is a fully private, chauffeur-driven experience in a comfortable air-conditioned vehicle, so you travel on your own schedule, stop wherever you please, and never worry about a single logistic. To book, call 7668570551 or WhatsApp wa.me/917668570551.\n\nDay one begins in Jaipur, the magnificent Pink City and capital of Rajasthan, a UNESCO World Heritage city founded in 1727 by Maharaja Sawai Jai Singh II. The day's crown jewel is the majestic Amber Fort, a honey-and-pink sandstone-and-marble citadel rising above Maota Lake, its Sheesh Mahal glittering with thousands of tiny mirrors. In the city itself, you will see the iconic Hawa Mahal, the five-storey 'Palace of Winds' with its honeycomb of 953 windows; the City Palace, still home to Jaipur's royal family, with its museums and ornate courtyards; and the Jantar Mantar, an astonishing 18th-century astronomical observatory of giant stone instruments, also a UNESCO site. Time permitting, we include the floating Jal Mahal, the hilltop Nahargarh Fort, and a stroll through the colourful bazaars of Johari and Bapu for gems, textiles and handicrafts. Overnight in Jaipur.\n\nDay two is the great drive west into the desert. The long but scenic journey from Jaipur to Jaisalmer - roughly 560 kilometres - unfolds across the changing landscapes of Rajasthan, from farmland and small towns to the increasingly arid, open expanses of the Thar. In your private Triveni vehicle you set the pace, with comfort stops for meals and chai along the way, and your driver handling every kilometre. We can break the journey with a stop at Pokhran or a roadside dhaba for authentic Rajasthani flavours. Arriving in Jaisalmer by evening, you check in and settle into the magical atmosphere of the Golden City, perhaps enjoying dinner at a rooftop restaurant with the illuminated fort glowing above. Overnight in Jaisalmer.\n\nDay three is pure desert enchantment. The morning is devoted to the extraordinary Jaisalmer Fort, or Sonar Quila - one of the very few living forts in the world, where thousands of people still live and work within its golden ramparts. Inside its winding lanes you will discover ornate Jain temples, the Raj Mahal palace, and viewpoints over the honey-coloured city below. Nearby stand the exquisitely carved Patwon Ki Haveli, a cluster of five merchant mansions considered the finest havelis in Rajasthan, and the serene Gadisar Lake, a man-made reservoir ringed by temples and ghats. As the day cools, the tour heads out to the Sam Sand Dunes, about 40 kilometres from the city, for the highlight of the trip - a camel or jeep safari across the rippling golden dunes, a spectacular desert sunset, and, for those who wish, an evening of Rajasthani folk music and dance at a desert camp. It is an unforgettable finale before your return.\n\nWhy book this journey with Triveni Cabs? Because a multi-day Rajasthan road trip is only as good as the vehicle and driver behind it. Our air-conditioned Sedans, SUVs and 12-15 seater Tempo Travellers are chosen and maintained for long-distance desert comfort, and our drivers are seasoned on these routes, doubling as informal guides who know the best photo stops, dhabas and timings. Unlike rigid group tours or the hassle of trains and local taxis, a private Triveni cab means doorstep pickups, a flexible itinerary you control, and one trusted team handling the whole trip. Our fares are transparent and all-inclusive of fuel, tolls and driver charges, with no hidden extras and 24x7 support throughout.\n\nThe tour is fully customisable to your interests and pace. Prefer to spend longer among Jaipur's forts, or reach Jaisalmer sooner for more desert time? We will adjust. Want an overnight stay at a luxury desert camp under the stars at Sam, rather than returning to the city? We can arrange it. Interested in adding Jodhpur, the Blue City, as a stop between Jaipur and Jaisalmer? Just ask. Families, couples and groups of friends all find this itinerary easy to shape around their needs, and your driver will happily rearrange the day-to-day flow as you go.\n\nThe ideal time for this tour is from October to March, when Rajasthan's days are pleasantly warm and its desert nights cool and clear - perfect for sightseeing and dune safaris alike. The famous Jaisalmer Desert Festival, held in winter, is a spectacular time to visit, with camel races, folk performances and turban-tying competitions. The summer months from April to June bring intense desert heat, so if you travel then we recommend early starts and rely on your air-conditioned vehicle for comfort between stops. Whatever the season, Triveni Cabs ensures the journey itself is a pleasure.\n\nReserving your Jaipur to Jaisalmer 3 Days Tour is simple. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your travel dates, group size and preferred vehicle, and we will confirm an all-inclusive itinerary and fare with no hidden charges. From the pink palaces of Jaipur to a golden sunset over the Sam dunes, let Triveni Cabs handle every mile and every detail, so all you carry home are the memories of Rajasthan at its most magnificent.",
+          "duration": "3 Days / 2 Nights",
+          "price": {
+                "sedan": 16500,
+                "suv": 22500,
+                "tempoTraveller": 32000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Amber Fort - Jaipur's hilltop citadel with the dazzling Sheesh Mahal",
+                "Hawa Mahal & City Palace - icons of the Pink City",
+                "Jaisalmer Fort - the living 'Golden Fort' (Sonar Quila)",
+                "Patwon Ki Haveli - Rajasthan's finest carved merchant mansions",
+                "Sam Sand Dunes - camel/jeep safari and desert sunset",
+                "Rajasthani folk music and dance at a desert camp",
+                "Gadisar Lake - serene temple-ringed reservoir in Jaisalmer",
+                "Scenic private drive across the Thar Desert"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Morning",
+                      "activity": "Jaipur pickup & Amber Fort",
+                      "duration": "3 hours",
+                      "description": "Doorstep pickup and exploration of the majestic Amber Fort above Maota Lake."
+                },
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Hawa Mahal, City Palace & Jantar Mantar",
+                      "duration": "4 hours",
+                      "description": "Tour the Pink City's iconic palaces and astronomical observatory."
+                },
+                {
+                      "time": "Day 1 - Evening",
+                      "activity": "Johari Bazaar & Jal Mahal",
+                      "duration": "2 hours",
+                      "description": "Shop the vibrant bazaars and see the floating palace before overnight in Jaipur."
+                },
+                {
+                      "time": "Day 2 - Morning",
+                      "activity": "Drive Jaipur to Jaisalmer",
+                      "duration": "5 hours",
+                      "description": "Begin the scenic long drive west across Rajasthan with comfort stops."
+                },
+                {
+                      "time": "Day 2 - Afternoon",
+                      "activity": "Continue to Jaisalmer via Pokhran",
+                      "duration": "4 hours",
+                      "description": "Enjoy changing desert landscapes and a Rajasthani lunch en route."
+                },
+                {
+                      "time": "Day 2 - Evening",
+                      "activity": "Arrive Jaisalmer & rooftop dinner",
+                      "duration": "2 hours",
+                      "description": "Check in and enjoy the illuminated fort views over dinner. Overnight in Jaisalmer."
+                },
+                {
+                      "time": "Day 3 - Morning",
+                      "activity": "Jaisalmer Fort & Patwon Ki Haveli",
+                      "duration": "3 hours",
+                      "description": "Explore the living Golden Fort, Jain temples and the finest havelis."
+                },
+                {
+                      "time": "Day 3 - Midday",
+                      "activity": "Gadisar Lake & lunch",
+                      "duration": "2 hours",
+                      "description": "Visit the tranquil temple-ringed lake and enjoy lunch in the city."
+                },
+                {
+                      "time": "Day 3 - Afternoon",
+                      "activity": "Drive to Sam Sand Dunes",
+                      "duration": "1.5 hours",
+                      "description": "Transfer to the golden dunes about 40 km from the city."
+                },
+                {
+                      "time": "Day 3 - Evening",
+                      "activity": "Desert safari & sunset",
+                      "duration": "3 hours",
+                      "description": "Camel or jeep safari, sunset over the dunes and folk performance to conclude."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for all 3 days",
+                "Experienced driver for city touring and desert routes",
+                "Doorstep pickup and drop across the itinerary",
+                "All fuel, tolls, parking, driver charges and night halt charges",
+                "Fully flexible day-by-day itinerary",
+                "24x7 booking and on-trip support"
+          ],
+          "exclusions": [
+                "Hotel accommodation and meals",
+                "Monument, fort and haveli entry fees",
+                "Camel/jeep desert safari and camp charges at Sam",
+                "Camera fees and guide charges",
+                "Personal expenses and shopping"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Desert & Forts",
+          "heroImage": "/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Jaipur/amber_fort.jpg",
+                "/images/sightseeing/Jaipur/Hawa_Mahal.jpg",
+                "/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg",
+                "/images/sightseeing/Jaisalmer/Patwon_Ki_Haveli.jpg",
+                "/images/sightseeing/Jaisalmer/Sam_Sand_Dunes.jpg",
+                "/images/sightseeing/Jaisalmer/Desert_Safari.jpg"
+          ],
+          "tips": [
+                "The Jaipur-Jaisalmer drive is long, so start day two early for comfort",
+                "Carry light layers - desert days are warm but nights turn cold",
+                "Book a Sam desert camp in advance during the winter festival season",
+                "Keep sunglasses, sunscreen and a scarf handy for the dunes",
+                "Pre-book fort and haveli entries in peak season to save time"
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 1874
+          },
+          "coordinates": {
+                "latitude": 26.9157,
+                "longitude": 70.9083
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Comfortable for most travellers; forts and dunes involve walking and uneven ground",
+          "keywords": [
+                "Jaipur to Jaisalmer 3 days tour",
+                "Jaipur Jaisalmer tour package",
+                "Jaipur to Jaisalmer taxi",
+                "Jaisalmer desert safari tour",
+                "Jaipur Jaisalmer cab booking",
+                "Rajasthan 3 day tour package",
+                "Sam Sand Dunes tour",
+                "Jaisalmer Fort tour",
+                "Jaipur to Jaisalmer road trip",
+                "Golden City tour package",
+                "Jaipur Jaisalmer private car tour",
+                "Jaipur to Jaisalmer distance by car",
+                "Rajasthan desert tour from Jaipur",
+                "Jaisalmer camel safari package",
+                "Pink City to Golden City tour",
+                "hire car Jaipur to Jaisalmer",
+                "Jaipur Jaisalmer 3 days 2 nights",
+                "Rajasthan road trip package price",
+                "Jaisalmer tour from Jaipur",
+                "best Rajasthan desert itinerary",
+                "Triveni Cabs Jaipur Jaisalmer",
+                "Jaipur Jaisalmer tour cost"
+          ]
+    },
+    {
+          "id": 307,
+          "slug": "jaipur-to-udaipur-2-days",
+          "name": "Jaipur to Udaipur 2 Days Tour",
+          "shortDescription": "Travel from the Pink City to the City of Lakes on a 2-day private cab tour featuring Udaipur's City Palace, Lake Pichola and Jag Mandir with Triveni Cabs.",
+          "fullDescription": "From the rose-hued grandeur of Jaipur to the shimmering lakes and marble palaces of Udaipur, this two-day journey links two of Rajasthan's most beloved cities into one perfectly paced escape. Jaipur dazzles with its Rajput forts and bustling bazaars; Udaipur, the ethereal 'City of Lakes' and the 'Venice of the East', enchants with its serene waters, island palaces and romantic sunsets. Triveni Cabs' Jaipur to Udaipur 2 Days / 1 Night Tour is a fully private, chauffeur-driven experience in a comfortable air-conditioned vehicle, letting you savour both cities at your own rhythm without a single logistical worry. To book, call 7668570551 or WhatsApp wa.me/917668570551.\n\nDay one is dedicated to Jaipur, the magnificent Pink City founded in 1727 and a UNESCO World Heritage site. The highlight is the majestic Amber Fort, its honey-coloured ramparts rising above Maota Lake and its interiors gleaming with the mirror-work of the Sheesh Mahal. In the heart of the city you will see the iconic Hawa Mahal, the 'Palace of Winds' with its lattice of 953 windows; the grand City Palace, still home to Jaipur's royal family; and the extraordinary Jantar Mantar observatory, a UNESCO-listed collection of giant astronomical instruments. If time allows, we take in the floating Jal Mahal, the hilltop Nahargarh Fort with its city panorama, and the vibrant Johari Bazaar for gemstones, jewellery and block-printed textiles. After a full day of Pink City splendour, you either overnight in Jaipur before an early start, or begin the drive toward Udaipur - your itinerary, your choice.\n\nDay two carries you south and west to Udaipur, roughly 400 kilometres away, through the Aravalli hills and the changing Rajasthani countryside. In your private Triveni vehicle the journey is comfortable and flexible, with stops for meals and photos as you please, and we can break the drive at Chittorgarh - the mighty UNESCO fort - or Nathdwara's Srinathji temple for those who wish. Arriving in Udaipur, you step into a world of water and marble. The magnificent City Palace of Udaipur, a sprawling complex of courtyards, balconies and museums rising above Lake Pichola, tells the story of the Mewar dynasty across four centuries; its rooftop terraces offer some of the most romantic views in India.\n\nNo visit to Udaipur is complete without a boat ride on Lake Pichola, gliding past the gleaming white Lake Palace (Taj Lake Palace) that seems to float on the water, and stopping at the exquisite island garden-palace of Jag Mandir, whose domed pavilions and carved elephants once sheltered Mughal princes and inspired parts of the Taj Mahal's design. As the sun sets over the lake, painting the palaces and the surrounding hills in gold and rose, you will understand why Udaipur is considered one of the most beautiful cities in the world. Time permitting, we also include the serene Jagdish Temple, the sprawling Fateh Sagar Lake, and the lush Saheliyon Ki Bari gardens.\n\nWhy book this journey with Triveni Cabs? Because a two-city Rajasthan tour depends entirely on a reliable vehicle and an experienced driver. Our air-conditioned Sedans, SUVs and 12-15 seater Tempo Travellers are maintained for long-distance comfort, and our drivers know these routes intimately, doubling as informal guides who can point you to the best viewpoints, dhabas and timings. Unlike fixed group tours or the hassle of trains and local cabs, a private Triveni cab means doorstep pickups, a flexible itinerary you control, and one trusted team handling everything. Our fares are transparent and all-inclusive of fuel, tolls and driver charges, with no hidden extras and 24x7 support throughout.\n\nThis tour is easily tailored to your interests. Prefer to devote more time to Udaipur's lakes and palaces and streamline Jaipur? We will rebalance the days. Want to add a heritage lunch at a palace hotel, a sunset dinner cruise, or a stop at Chittorgarh or Nathdwara on the drive? Just ask. Couples often request extra time for a romantic Lake Pichola sunset boat ride, while families and groups appreciate the flexible pace. Your driver will happily adjust the flow of each day as you go, ensuring the trip fits you rather than the other way around.\n\nThe best time to enjoy this tour is from October to March, when both cities bask in pleasant, sunny days and cool evenings ideal for sightseeing and lake cruises. Udaipur is especially magical in the cooler months, and the winter light on the lakes is unbeatable for photography. The monsoon from July to September fills the lakes to their brimming, romantic best and turns the Aravalli hills lush green, a favourite season for many. Summers from April to June can be hot, so early starts and the comfort of your air-conditioned vehicle are advisable. Whatever the season, Triveni Cabs makes the journey a pleasure.\n\nReserving your Jaipur to Udaipur 2 Days Tour is quick and easy. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your travel dates, group size and preferred vehicle, and we will confirm an all-inclusive itinerary and fare with no hidden charges. From the pink forts of Jaipur to a golden sunset over Lake Pichola, let Triveni Cabs take care of every mile and every detail, so all you have to do is fall in love with Rajasthan's most romantic cities.",
+          "duration": "2 Days / 1 Night",
+          "price": {
+                "sedan": 11500,
+                "suv": 15500,
+                "tempoTraveller": 22000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Amber Fort - Jaipur's hilltop citadel with the Sheesh Mahal",
+                "Hawa Mahal & City Palace - icons of the Pink City",
+                "City Palace of Udaipur - grand Mewar complex above Lake Pichola",
+                "Lake Pichola boat ride - past the floating Lake Palace",
+                "Jag Mandir - exquisite island garden-palace",
+                "Jagdish Temple - ornate Indo-Aryan temple in Udaipur",
+                "Fateh Sagar Lake - serene lakeside setting",
+                "Scenic Aravalli drive between the two cities"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Morning",
+                      "activity": "Jaipur pickup & Amber Fort",
+                      "duration": "3 hours",
+                      "description": "Doorstep pickup and exploration of the majestic Amber Fort above Maota Lake."
+                },
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Hawa Mahal, City Palace & Jantar Mantar",
+                      "duration": "4 hours",
+                      "description": "Tour the Pink City's iconic palaces and astronomical observatory."
+                },
+                {
+                      "time": "Day 1 - Evening",
+                      "activity": "Johari Bazaar & Jal Mahal",
+                      "duration": "2 hours",
+                      "description": "Shop the bazaars and see the floating palace. Overnight in Jaipur."
+                },
+                {
+                      "time": "Day 2 - Early Morning",
+                      "activity": "Drive Jaipur to Udaipur",
+                      "duration": "4 hours",
+                      "description": "Scenic drive south through the Aravalli hills with comfort stops."
+                },
+                {
+                      "time": "Day 2 - Midday",
+                      "activity": "Optional Chittorgarh/Nathdwara stop & lunch",
+                      "duration": "2 hours",
+                      "description": "Break the journey at the UNESCO fort or Srinathji temple, then lunch."
+                },
+                {
+                      "time": "Day 2 - Afternoon",
+                      "activity": "Udaipur City Palace",
+                      "duration": "2 hours",
+                      "description": "Explore the sprawling Mewar palace complex and its lake-view terraces."
+                },
+                {
+                      "time": "Day 2 - Late Afternoon",
+                      "activity": "Jagdish Temple & old city",
+                      "duration": "1 hour",
+                      "description": "Visit the ornate temple and wander the atmospheric old city lanes."
+                },
+                {
+                      "time": "Day 2 - Evening",
+                      "activity": "Lake Pichola boat ride & Jag Mandir",
+                      "duration": "2 hours",
+                      "description": "Cruise past the Lake Palace and visit the island palace of Jag Mandir."
+                },
+                {
+                      "time": "Day 2 - Sunset",
+                      "activity": "Sunset views & Fateh Sagar Lake",
+                      "duration": "1 hour",
+                      "description": "Soak in the golden lake sunset before concluding the tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for both days",
+                "Experienced driver for city touring and highway routes",
+                "Doorstep pickup and drop across the itinerary",
+                "All fuel, tolls, parking, driver charges and night halt charges",
+                "Fully flexible day-by-day itinerary",
+                "24x7 booking and on-trip support"
+          ],
+          "exclusions": [
+                "Hotel accommodation and meals",
+                "Monument and palace entry fees",
+                "Lake Pichola boat ride and Jag Mandir charges",
+                "Camera fees and guide charges",
+                "Personal expenses and shopping"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Heritage & Culture",
+          "heroImage": "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Jaipur/amber_fort.jpg",
+                "/images/sightseeing/Jaipur/Hawa_Mahal.jpg",
+                "/images/sightseeing/Udaipur/City_Palace.jpg",
+                "/images/sightseeing/Udaipur/Lake_Pichola.jpg",
+                "/images/sightseeing/Udaipur/Jag_Mandir.jpg",
+                "/images/sightseeing/Udaipur/Fateh_Sagar_Lake.jpg"
+          ],
+          "tips": [
+                "Start day two early as Udaipur is around 400 km from Jaipur",
+                "Book the Lake Pichola sunset boat ride in advance for the best slot",
+                "Carry a light jacket for cool winter evenings by the lakes",
+                "Consider a stop at Chittorgarh to break the long drive",
+                "Pre-book palace entries in peak season to avoid queues"
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 1638
+          },
+          "coordinates": {
+                "latitude": 24.5854,
+                "longitude": 73.7125
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Comfortable for most travellers; palaces and forts involve steps and walking",
+          "keywords": [
+                "Jaipur to Udaipur 2 days tour",
+                "Jaipur Udaipur tour package",
+                "Jaipur to Udaipur taxi",
+                "Udaipur City Palace tour",
+                "Jaipur Udaipur cab booking",
+                "Rajasthan 2 day tour package",
+                "Lake Pichola boat ride tour",
+                "Jag Mandir Udaipur",
+                "Jaipur to Udaipur road trip",
+                "City of Lakes tour package",
+                "Jaipur Udaipur private car tour",
+                "Jaipur to Udaipur distance by car",
+                "Udaipur tour from Jaipur",
+                "Pink City to City of Lakes tour",
+                "hire car Jaipur to Udaipur",
+                "Jaipur Udaipur 2 days 1 night",
+                "Rajasthan lake tour package price",
+                "Udaipur sightseeing from Jaipur",
+                "best Jaipur Udaipur itinerary",
+                "Jaipur Udaipur weekend tour",
+                "Triveni Cabs Jaipur Udaipur",
+                "Jaipur Udaipur tour cost"
+          ]
+    },
+    {
       id: 11,
       name: "Jaipur Full Day City Tour",
       slug: "jaipur-full-day-city-tour",
@@ -6315,6 +7369,313 @@ export const sightseeingTours = {
 
   chandigarh: [
     {
+          "id": 308,
+          "slug": "chandigarh-to-manali-3-days",
+          "name": "Chandigarh to Manali 3 Days Tour",
+          "shortDescription": "Escape from Chandigarh to the Himalayas on a 3-day private cab tour covering Solang Valley, Hadimba Temple and the Atal Tunnel with Triveni Cabs.",
+          "fullDescription": "There is no more classic Himalayan escape from the plains than the journey from Chandigarh up into the mountains of Manali. Cradled in the Kullu Valley on the banks of the rushing Beas River, Manali is a land of snow-dusted peaks, apple orchards, pine forests, ancient temples and adventure - the gateway to some of the most dramatic landscapes in Himachal Pradesh. Triveni Cabs' Chandigarh to Manali 3 Days / 2 Nights Tour packages the whole experience into one comfortable, fully private, chauffeur-driven trip in an air-conditioned vehicle, so you enjoy the mountains while an expert driver handles every hairpin bend. To book, call 7668570551 or WhatsApp wa.me/917668570551.\n\nDay one is the great ascent from Chandigarh to Manali, a journey of around 300 kilometres and eight to nine hours that is a scenic adventure in its own right. Leaving the orderly avenues of Chandigarh, the road climbs alongside the Beas River through Bilaspur, Sundernagar, Mandi and the Kullu Valley, the landscape transforming from plains to terraced hillsides to towering pine-clad mountains. We stop for photos at the emerald Pandoh Dam and the sparkling Beas riverside, and pause for meals at scenic dhabas along the way. Your private Triveni vehicle means you travel at your own pace with all the comfort stops you need. Arriving in Manali by evening, you check in and settle into the crisp mountain air, perhaps with an evening stroll along the lively Mall Road. Overnight in Manali.\n\nDay two is devoted to the highlights of Manali and the breathtaking Solang Valley. The morning takes you to the ancient Hadimba Devi Temple, a striking four-tiered wooden pagoda built in 1553, set amid towering deodar cedars and dedicated to Hidimba, wife of the Pandava Bheem - one of the most atmospheric temples in the Himalayas. Nearby lies the quaint hamlet of Old Manali and the sacred Vashisht hot springs and temple. Then the day heads to the spectacular Solang Valley, an alpine wonderland about 14 kilometres from town, ringed by snow peaks and glaciers. Depending on the season, Solang is a playground of adventure - paragliding, zorbing, ropeway rides, and in winter, skiing, snowboarding and sledding across pristine snow. It is one of the most exhilarating and photogenic spots in all of Himachal. Overnight in Manali.\n\nDay three ventures toward the engineering marvel of the Atal Tunnel and the high country beyond. At 9.02 kilometres, the Atal Tunnel is the world's longest highway tunnel above 10,000 feet, a breathtaking passage beneath the Rohtang massif that connects the Manali side to the stunning Lahaul Valley. Emerging on the far side into a landscape of stark, snow-clad mountains and the villages of Sissu and Koksar feels like stepping into another world. Subject to weather and permits, this drive is one of the most spectacular in the Himalayas. On the way back we can include the Nehru Kund natural spring, the Club House, and Van Vihar, before returning to Manali. Depending on your schedule, day three can be shaped as a full excursion before you either overnight again or begin your onward journey.\n\nWhy book this Himalayan tour with Triveni Cabs? Because mountain travel demands an experienced hill driver and a reliable, well-maintained vehicle - never something to leave to crowded buses or shared cabs on their own schedule. Our drivers are seasoned on the Himachal ghats and the Atal Tunnel route, our Sedans, SUVs and 12-15 seater Tempo Travellers are chosen for mountain comfort and safety, and our fares are transparent and all-inclusive of fuel, tolls and driver charges. A private Triveni cab means doorstep pickup from Chandigarh, a flexible itinerary you control, and one trusted team for the whole trip, with 24x7 support throughout.\n\nThis tour is fully customisable. Prefer more adventure time at Solang, or a slower, more scenic pace? We will adjust. Want to add Naggar Castle, the Great Himalayan sights, Manikaran's hot springs and gurudwara, or a river-rafting session on the Beas? Just ask. Families with children often build in extra time for snow play and the ropeway, while couples and friends love the flexibility to linger over the views. Note that access to the Atal Tunnel and Lahaul side depends on weather and road conditions, and our drivers always prioritise safety - if high-altitude roads are closed, we substitute equally beautiful alternatives.\n\nThe best time for this tour depends on your dreams. From March to June the weather is pleasant, the valleys green and the adventure activities in full swing - ideal for first-timers and families. October to February brings snow to Solang and the higher reaches, turning Manali into a glittering winter wonderland perfect for snow lovers, though some high roads like the Rohtang side may close. The monsoon from July to September is lush but can bring landslides, so we monitor conditions closely. Whatever the season, an air-conditioned Triveni vehicle and an experienced driver keep your journey comfortable and safe.\n\nReserving your Chandigarh to Manali 3 Days Tour is simple. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your travel dates, group size and preferred vehicle, and we will confirm an all-inclusive itinerary and fare with no hidden charges. From the winding climb along the Beas to the snows of Solang and the marvel of the Atal Tunnel, let Triveni Cabs handle every mile of mountain road, so all you have to do is breathe the Himalayan air and make memories that last a lifetime.",
+          "duration": "3 Days / 2 Nights",
+          "price": {
+                "sedan": 15000,
+                "suv": 20000,
+                "tempoTraveller": 29000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Scenic Beas River drive from Chandigarh into the Kullu Valley",
+                "Hadimba Devi Temple - 1553 wooden pagoda amid deodar forest",
+                "Solang Valley - alpine adventure hub with paragliding and snow sports",
+                "Atal Tunnel - world's longest high-altitude highway tunnel",
+                "Lahaul Valley - stark snow-clad landscapes beyond the tunnel",
+                "Mall Road Manali - lively promenade for shopping and cafes",
+                "Vashisht hot springs and Old Manali charm",
+                "Pandoh Dam and Beas riverside photo stops"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Morning",
+                      "activity": "Chandigarh pickup & drive begins",
+                      "duration": "3 hours",
+                      "description": "Doorstep pickup and ascent along the Beas River via Bilaspur and Mandi."
+                },
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Continue to Manali via Kullu Valley",
+                      "duration": "4 hours",
+                      "description": "Scenic drive with photo stops at Pandoh Dam and riverside dhabas."
+                },
+                {
+                      "time": "Day 1 - Evening",
+                      "activity": "Arrive Manali & Mall Road stroll",
+                      "duration": "2 hours",
+                      "description": "Check in and explore the lively Mall Road. Overnight in Manali."
+                },
+                {
+                      "time": "Day 2 - Morning",
+                      "activity": "Hadimba Temple & Old Manali",
+                      "duration": "2.5 hours",
+                      "description": "Visit the ancient wooden pagoda temple, Vashisht springs and Old Manali."
+                },
+                {
+                      "time": "Day 2 - Afternoon",
+                      "activity": "Solang Valley adventure",
+                      "duration": "3.5 hours",
+                      "description": "Enjoy paragliding, ropeway, zorbing or seasonal snow activities."
+                },
+                {
+                      "time": "Day 2 - Evening",
+                      "activity": "Return to Manali & leisure",
+                      "duration": "1.5 hours",
+                      "description": "Relax in town with shopping or cafes. Overnight in Manali."
+                },
+                {
+                      "time": "Day 3 - Morning",
+                      "activity": "Drive to Atal Tunnel",
+                      "duration": "2 hours",
+                      "description": "Ascend toward the world's longest high-altitude tunnel via Nehru Kund."
+                },
+                {
+                      "time": "Day 3 - Midday",
+                      "activity": "Atal Tunnel & Sissu/Lahaul",
+                      "duration": "2.5 hours",
+                      "description": "Cross into the stunning Lahaul Valley for snow views (weather permitting)."
+                },
+                {
+                      "time": "Day 3 - Afternoon",
+                      "activity": "Return via Club House & Van Vihar",
+                      "duration": "2 hours",
+                      "description": "Stop at local attractions on the drive back to Manali."
+                },
+                {
+                      "time": "Day 3 - Evening",
+                      "activity": "Tour conclusion / onward transfer",
+                      "duration": "1 hour",
+                      "description": "Conclude the tour or continue to your onward destination."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for all 3 days",
+                "Experienced hill-road driver for the Manali and Atal Tunnel routes",
+                "Doorstep pickup from Chandigarh and local drop",
+                "All fuel, tolls, parking, driver charges and night halt charges",
+                "Fully flexible day-by-day itinerary",
+                "24x7 booking and on-trip support"
+          ],
+          "exclusions": [
+                "Hotel accommodation and meals",
+                "Adventure activity charges at Solang Valley",
+                "Atal Tunnel/Rohtang permits and any local taxi charges where private vehicles are restricted",
+                "Temple, monument and camera fees",
+                "Personal expenses and shopping"
+          ],
+          "bestTimeToVisit": "March to June and October to February for snow",
+          "difficulty": "Moderate",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Manali/Manali_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Manali/Solang Valley.jpg",
+                "/images/sightseeing/Manali/Hidimba Temple.jpg",
+                "/images/sightseeing/Manali/Atal tunnel ,.jpg",
+                "/images/sightseeing/Manali/Mall_Road.jpg",
+                "/images/sightseeing/Manali/Kullu Valley.jpg",
+                "/images/sightseeing/Manali/Rohtang Pass_13,050 ft elevation with panoramic Himalayan views.jpg"
+          ],
+          "tips": [
+                "Carry warm clothing year-round as Solang and the tunnel area stay cold",
+                "Check Atal Tunnel and Rohtang road status, as weather can cause closures",
+                "Start each mountain day early to make the most of daylight",
+                "Local taxis may be required for the last stretch to Solang/Rohtang in peak season",
+                "Keep motion-sickness remedies handy for the winding ghat roads"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 1789
+          },
+          "coordinates": {
+                "latitude": 32.2432,
+                "longitude": 77.1892
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Involves long mountain drives and some walking; not ideal for severe mobility limits",
+          "keywords": [
+                "Chandigarh to Manali 3 days tour",
+                "Chandigarh Manali tour package",
+                "Chandigarh to Manali taxi",
+                "Manali tour package from Chandigarh",
+                "Chandigarh Manali cab booking",
+                "Solang Valley tour",
+                "Atal Tunnel tour Manali",
+                "Chandigarh to Manali road trip",
+                "Manali 3 day itinerary",
+                "Hadimba Temple Manali",
+                "Chandigarh Manali private car tour",
+                "Chandigarh to Manali distance by car",
+                "Manali hill station tour package",
+                "Himachal tour from Chandigarh",
+                "hire car Chandigarh to Manali",
+                "Chandigarh Manali 3 days 2 nights",
+                "Manali snow tour package price",
+                "Manali sightseeing from Chandigarh",
+                "best Chandigarh Manali itinerary",
+                "Chandigarh Manali family tour",
+                "Triveni Cabs Chandigarh Manali",
+                "Chandigarh Manali tour cost"
+          ]
+    },
+    {
+          "id": 309,
+          "slug": "chandigarh-to-shimla-2-days",
+          "name": "Chandigarh to Shimla 2 Days Tour",
+          "shortDescription": "Head into the hills from Chandigarh on a 2-day private cab tour covering Shimla's Mall Road, the Ridge, Kufri and Jakhoo Temple with Triveni Cabs.",
+          "fullDescription": "Once the summer capital of British India, Shimla remains the queen of Himalayan hill stations - a graceful sweep of colonial mansions, church spires, toy-train tracks and pine-clad ridges spread across the lower Himalayas. Cool, green and endlessly charming, it is the perfect short mountain escape from the plains, and there is no more classic gateway to it than the scenic drive up from Chandigarh. Triveni Cabs' Chandigarh to Shimla 2 Days / 1 Night Tour bundles the best of Shimla and nearby Kufri into one comfortable, fully private, chauffeur-driven trip in an air-conditioned vehicle, so you can enjoy the hills while an expert driver handles the winding roads. To book, call 7668570551 or WhatsApp wa.me/917668570551.\n\nDay one is the delightful climb from Chandigarh to Shimla, a journey of around 115 kilometres that ascends through pine and deodar forests along one of the most scenic highways in North India. As the road winds up past Kalka, Parwanoo, Solan and Kandaghat - roughly shadowing the famous UNESCO-listed Kalka-Shimla toy-train line - the air grows crisp and the views open onto layered green ridges. We stop for photos and a bite at scenic viewpoints and roadside cafes along the way. Your private Triveni vehicle lets you travel at your own pace with all the comfort stops you need. Reaching Shimla by afternoon, you check in and head straight to the town's beating heart: the Mall Road and the Ridge. The Ridge is a wide, open promenade offering sweeping mountain views, flanked by the neo-Gothic Christ Church - the second-oldest church in North India and Shimla's most iconic landmark - and the mock-Tudor Gaiety Theatre. The adjoining Mall Road is a bustling, traffic-free promenade lined with shops, cafes, bakeries and the lively Lakkar Bazaar, famous for its wooden crafts. An evening stroll here, perhaps with a hot coffee as the lights twinkle on, is quintessential Shimla. Overnight in Shimla.\n\nDay two ventures out to the scenic hamlet of Kufri and up to the hilltop Jakhoo Temple. Kufri, about 16 kilometres from Shimla at over 8,600 feet, is a charming resort spot famed for its panoramic Himalayan vistas, pony rides and, in winter, snow. The Himalayan Nature Park here shelters species like the elusive snow leopard, musk deer and monal pheasant, and from the Mahasu Peak nearby the views of the snow-capped ranges are magnificent. On the way back, we visit the revered Jakhoo Temple, perched atop Shimla's highest peak at around 8,000 feet and dedicated to Lord Hanuman - marked by a towering 108-foot statue visible from across the town. The temple, surrounded by cedar forest and famously home to bands of monkeys, offers some of the finest panoramic views over Shimla and the valleys beyond. Depending on time, we can also include the Viceregal Lodge (Rashtrapati Niwas), a magnificent Scottish-baronial mansion set in manicured gardens where much of India's history was decided, before you begin your journey home.\n\nWhy book this hill tour with Triveni Cabs? Because mountain travel calls for an experienced hill driver and a reliable, well-maintained vehicle - not the uncertainty of crowded buses or shared cabs. Our drivers are seasoned on the Kalka-Shimla ghats, our Sedans, SUVs and 12-15 seater Tempo Travellers are chosen for mountain comfort and safety, and our fares are transparent and all-inclusive of fuel, tolls and driver charges. A private Triveni cab means doorstep pickup from Chandigarh, a flexible itinerary you control, and one trusted team for the whole trip, with 24x7 support throughout. Note that private vehicles have restricted access to parts of central Shimla and to Kufri's final stretch, and our drivers know exactly where to park and how to arrange the short local transfers where needed.\n\nThis tour is easily customised to your interests. Prefer to spend more time on the Ridge and Mall Road, or head out early to beat the crowds at Kufri? We will adjust. Want to add the Kalka-Shimla toy-train experience for a stretch, a visit to the Himachal State Museum, Chadwick Falls, or the Tara Devi Temple? Just ask. Families love the pony rides and snow play at Kufri, honeymooners enjoy the leisurely Mall Road evenings, and groups appreciate the flexible pace. Your driver will happily reshape the flow of each day around your wishes.\n\nShimla is a joy for much of the year. From March to June the weather is pleasantly cool and the hills lush, making it a favourite summer retreat from the northern plains. From December to February, snowfall can blanket Kufri and Shimla in white, drawing snow lovers for a magical winter escape - though the roads then demand careful, experienced driving, which our team is well-prepared for. The monsoon from July to September brings misty, green beauty but occasional landslides, so we monitor conditions closely. Whatever the season, an air-conditioned Triveni vehicle and a skilled driver keep your journey comfortable and safe.\n\nReserving your Chandigarh to Shimla 2 Days Tour is quick and easy. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your travel dates, group size and preferred vehicle, and we will confirm an all-inclusive itinerary and fare with no hidden charges. From the pine-scented climb up from Chandigarh to the colonial charm of the Ridge, the snows of Kufri and the sweeping views from Jakhoo, let Triveni Cabs take care of every mile of mountain road, so all you have to do is relax and soak in the timeless magic of Shimla.",
+          "duration": "2 Days / 1 Night",
+          "price": {
+                "sedan": 9500,
+                "suv": 13000,
+                "tempoTraveller": 18500,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Scenic Kalka-Shimla drive through pine and deodar forests",
+                "The Ridge - open promenade with sweeping mountain views",
+                "Christ Church - Shimla's iconic neo-Gothic landmark",
+                "Mall Road - lively traffic-free shopping promenade",
+                "Kufri - hilltop resort with pony rides and Himalayan views",
+                "Jakhoo Temple - hilltop Hanuman shrine with 108-foot statue",
+                "Himalayan Nature Park at Kufri",
+                "Optional Viceregal Lodge and colonial heritage"
+          ],
+          "itinerary": [
+                {
+                      "time": "Day 1 - Morning",
+                      "activity": "Chandigarh pickup & drive to Shimla",
+                      "duration": "2.5 hours",
+                      "description": "Doorstep pickup and scenic climb via Kalka, Parwanoo and Solan."
+                },
+                {
+                      "time": "Day 1 - Midday",
+                      "activity": "Continue ascent with viewpoints",
+                      "duration": "1.5 hours",
+                      "description": "Photo and lunch stops along the toy-train route to Shimla."
+                },
+                {
+                      "time": "Day 1 - Afternoon",
+                      "activity": "Check in & the Ridge",
+                      "duration": "2 hours",
+                      "description": "Settle in and explore the Ridge, Christ Church and Gaiety Theatre."
+                },
+                {
+                      "time": "Day 1 - Evening",
+                      "activity": "Mall Road & Lakkar Bazaar",
+                      "duration": "2 hours",
+                      "description": "Stroll the lively promenade for shopping, cafes and wooden crafts. Overnight in Shimla."
+                },
+                {
+                      "time": "Day 2 - Morning",
+                      "activity": "Drive to Kufri",
+                      "duration": "1 hour",
+                      "description": "Head out to the hilltop resort of Kufri, about 16 km from Shimla."
+                },
+                {
+                      "time": "Day 2 - Late Morning",
+                      "activity": "Kufri & Himalayan Nature Park",
+                      "duration": "2.5 hours",
+                      "description": "Enjoy pony rides, Mahasu Peak views, snow play and the nature park."
+                },
+                {
+                      "time": "Day 2 - Midday",
+                      "activity": "Lunch & return toward Shimla",
+                      "duration": "1.5 hours",
+                      "description": "Lunch at a scenic spot and drive back toward town."
+                },
+                {
+                      "time": "Day 2 - Afternoon",
+                      "activity": "Jakhoo Temple",
+                      "duration": "1.5 hours",
+                      "description": "Visit the hilltop Hanuman temple with its 108-foot statue and valley views."
+                },
+                {
+                      "time": "Day 2 - Late Afternoon",
+                      "activity": "Optional Viceregal Lodge",
+                      "duration": "1 hour",
+                      "description": "See the grand colonial mansion and gardens if time allows."
+                },
+                {
+                      "time": "Day 2 - Evening",
+                      "activity": "Return drive / onward transfer",
+                      "duration": "1 hour",
+                      "description": "Begin the journey back to Chandigarh, concluding the tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for both days",
+                "Experienced hill-road driver for the Kalka-Shimla route",
+                "Doorstep pickup from Chandigarh and local drop",
+                "All fuel, tolls, parking, driver charges and night halt charges",
+                "Fully flexible day-by-day itinerary",
+                "24x7 booking and on-trip support"
+          ],
+          "exclusions": [
+                "Hotel accommodation and meals",
+                "Pony rides, snow activities and nature park charges at Kufri",
+                "Local taxi charges where private vehicles are restricted (Kufri/central Shimla)",
+                "Temple, monument and camera fees",
+                "Personal expenses and shopping"
+          ],
+          "bestTimeToVisit": "March to June and December to February for snow",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Shimla/the ridge shimla.jpg",
+                "/images/sightseeing/Shimla/christ church shimla.jpg",
+                "/images/sightseeing/Shimla/Mall road shimla.jpg",
+                "/images/sightseeing/Shimla/kurif_adventure_park.jpg",
+                "/images/sightseeing/Shimla/jakhoo_temple.jpg"
+          ],
+          "tips": [
+                "Carry warm clothing as Shimla and Kufri stay cool even in summer",
+                "Private vehicles are restricted in central Shimla and near Kufri - use local transfers where needed",
+                "Start early on day two to enjoy Kufri before the crowds",
+                "Check road status in winter as snow can affect the Kufri stretch",
+                "Wear sturdy shoes for the walk up to Jakhoo Temple"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 2015
+          },
+          "coordinates": {
+                "latitude": 31.1048,
+                "longitude": 77.1734
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Mall Road and Ridge are walkable; Kufri and Jakhoo involve climbs and pony rides",
+          "keywords": [
+                "Chandigarh to Shimla 2 days tour",
+                "Chandigarh Shimla tour package",
+                "Chandigarh to Shimla taxi",
+                "Shimla tour package from Chandigarh",
+                "Chandigarh Shimla cab booking",
+                "Kufri tour Shimla",
+                "Jakhoo Temple Shimla",
+                "Chandigarh to Shimla road trip",
+                "Shimla 2 day itinerary",
+                "Mall Road Shimla tour",
+                "Chandigarh Shimla private car tour",
+                "Chandigarh to Shimla distance by car",
+                "Shimla hill station tour package",
+                "Himachal tour from Chandigarh",
+                "hire car Chandigarh to Shimla",
+                "Chandigarh Shimla 2 days 1 night",
+                "Shimla snow tour package price",
+                "Shimla sightseeing from Chandigarh",
+                "best Chandigarh Shimla itinerary",
+                "Shimla weekend tour from Chandigarh",
+                "Triveni Cabs Chandigarh Shimla",
+                "Chandigarh Shimla tour cost"
+          ]
+    },
+    {
       id: 21,
       name: "Chandigarh City Tour",
       slug: "chandigarh-city-tour",
@@ -7820,6 +9181,165 @@ export const sightseeingTours = {
 
   shimla: [
     {
+          "id": 208,
+          "slug": "shimla-full-day-city-tour",
+          "name": "Shimla Full Day City Tour",
+          "shortDescription": "Full-day Shimla sightseeing by private cab covering The Ridge, Mall Road, Jakhoo Temple, Christ Church and Kufri.",
+          "fullDescription": "Shimla, the elegant former summer capital of British India and the present capital of Himachal Pradesh, is the queen of North Indian hill stations. Cascading down a series of pine- and deodar-clad ridges at around 2,200 metres, the town blends colonial architecture, breezy promenades, snow-dusted viewpoints, and an unmistakably old-world charm. A full-day Shimla city tour with Triveni Cabs is the most comfortable way to cover its spread-out attractions, from the heart of the Ridge to the apple-orchard slopes of Kufri, without exhausting yourself on the steep walks or worrying about Shimla's notoriously limited and restricted vehicle access in the core area.\n\nYour day starts with a hotel or bus-stand pickup in an air-conditioned car driven by a local chauffeur who knows the hill roads, the parking rules, and exactly where to drop you for each sight. Because private vehicles are not permitted on the pedestrianised **Mall Road** and **The Ridge**, your driver will park at the authorised lots (Lift, Victory Tunnel, or Cart Road) and guide you to the lift or walking access — a small detail that saves first-time visitors a great deal of confusion. **The Ridge** is the broad, open esplanade at the town's heart, offering uninterrupted views of the surrounding mountain ranges and serving as the social hub of Shimla, lined with landmark buildings. Adjoining it is the iconic neo-Gothic **Christ Church**, the second-oldest church in North India, whose yellow facade and stained-glass windows are among the most photographed sights in the Himalayas.\n\nA leisurely stroll down **Mall Road** — the bustling, car-free spine of Shimla — takes you past colonial-era buildings, the Gaiety Theatre, Town Hall, cafes, woollens shops, and bookstores. From the Ridge a short uphill walk or pony ride leads to **Jakhoo Temple**, perched on Shimla's highest peak at 2,455 metres and crowned by a towering 108-foot statue of Lord Hanuman that is visible from much of the town; the temple is famous for its resident monkeys and spectacular sunrise and sunset views. After exploring the town centre, your cab heads about 16 kilometres out to **Kufri**, a charming high-altitude resort known for its winter snow, the Himalayan Nature Park, adventure activities, pony rides up to Mahasu Peak, and panoramic views of the snow-capped greater Himalayas — a highlight especially between December and February.\n\nThe tour also includes the magnificent **Viceregal Lodge (Rashtrapati Niwas)** on Observatory Hill, a Scottish-baronial mansion built in 1888 that once housed the British Viceroy and witnessed key decisions leading to India's independence and Partition; its manicured lawns and historic interiors are open to visitors. Depending on time and your interests, your driver can also include the **Indian Institute of Advanced Study** grounds, the **Himachal State Museum**, **Sankat Mochan Temple**, **Tara Devi Temple**, or the scenic apple-orchard drive towards **Mashobra** and **Naldehra**, home to one of India's oldest golf courses laid out by Lord Curzon. The route between these spots winds through fragrant pine and deodar forests with frequent photo-worthy valley vistas.\n\nTriveni Cabs offers vehicles to suit every group. A **Sedan** such as a Swift Dzire comfortably carries couples and small families of up to 4 and is the most economical and nimble choice on Shimla's tight bends. An **SUV** like an Ertiga or Innova seats 6 to 7 with extra legroom and luggage capacity, ideal for families heading to Kufri with winter gear. Larger groups can opt for a **Tempo Traveller** seating up to 15, perfect for friends' trips and joint families. Every car is clean, well-maintained, and fitted with heaters for the cold months, and our drivers are courteous, punctual, and experienced on Himachal's mountain highways.\n\nA typical Shimla full-day tour runs 8 to 10 hours and is fully flexible — start earlier to maximise daylight, or rearrange the order to chase clear weather at Kufri. Your driver can recommend the best viewpoints for photography, the most authentic local eateries for Himachali dham, siddu, and chana madra, and the warmest cafes along Mall Road for coffee and bun-samosa. Shopping is a pleasure here: pick up Kullu shawls, Himachali caps, pine-nut and walnut snacks, woollens, and locally grown apples and apple-based products.\n\nBooking is straightforward and transparent. Your quoted fare covers fuel, driver allowance, and taxes, while parking, entry tickets (Viceregal Lodge, Kufri activities), and pony/adventure charges are payable directly so you pay only for what you use. We operate year-round, and during the snow season our drivers carry chains and know which stretches towards Kufri may require them. Pickup is punctual and all vehicles are GPS-tracked for your safety.\n\nTo reserve your air-conditioned cab for a full-day Shimla city tour, call or WhatsApp Triveni Cabs at **7668570551** (wa.me/917668570551). Tell us your pickup point, group size, and preferred vehicle, and we will confirm a clean car with a friendly local driver who will help you experience the colonial charm, mountain panoramas, and crisp pine air of the Queen of Hills in complete comfort.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 3200,
+                "suv": 4200,
+                "tempoTraveller": 6000,
+                "currency": "INR"
+          },
+          "highlights": [
+                "The Ridge - open esplanade at Shimla's heart with sweeping Himalayan views",
+                "Mall Road - colonial car-free promenade lined with cafes, theatres and woollens shops",
+                "Jakhoo Temple - hilltop Hanuman temple with a 108-foot statue and panoramic vistas",
+                "Christ Church - iconic neo-Gothic church, the second oldest in North India",
+                "Kufri - snow-and-adventure hill resort with pony rides to Mahasu Peak",
+                "Viceregal Lodge - grand 1888 colonial mansion on Observatory Hill",
+                "Naldehra & Mashobra - apple-orchard drives and Lord Curzon's historic golf course",
+                "Scenic deodar-pine forest drives with frequent valley viewpoints"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup",
+                      "duration": "0.5 hours",
+                      "description": "Meet your Triveni Cabs driver and set off in a heated AC vehicle for the day."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Viceregal Lodge",
+                      "duration": "1.25 hours",
+                      "description": "Tour the historic Scottish-baronial mansion and gardens on Observatory Hill."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "The Ridge & Christ Church",
+                      "duration": "1.25 hours",
+                      "description": "Stroll the open esplanade and photograph the iconic neo-Gothic church."
+                },
+                {
+                      "time": "11:45 AM",
+                      "activity": "Mall Road walk",
+                      "duration": "1 hour",
+                      "description": "Explore the car-free promenade, cafes, Gaiety Theatre and woollens shops."
+                },
+                {
+                      "time": "12:45 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy Himachali dham or cafe fare along Mall Road."
+                },
+                {
+                      "time": "01:45 PM",
+                      "activity": "Jakhoo Temple",
+                      "duration": "1 hour",
+                      "description": "Visit the hilltop Hanuman temple with its giant statue and town-wide views."
+                },
+                {
+                      "time": "03:00 PM",
+                      "activity": "Drive to Kufri",
+                      "duration": "0.75 hours",
+                      "description": "Scenic 16 km drive through pine forests to the high-altitude resort."
+                },
+                {
+                      "time": "03:45 PM",
+                      "activity": "Kufri & Mahasu Peak",
+                      "duration": "1.5 hours",
+                      "description": "Pony ride or walk to viewpoints, Himalayan Nature Park and snow activities in season."
+                },
+                {
+                      "time": "05:15 PM",
+                      "activity": "Mashobra / Naldehra detour",
+                      "duration": "1 hour",
+                      "description": "Optional apple-orchard drive to Naldehra's historic golf course and valley views."
+                },
+                {
+                      "time": "06:15 PM",
+                      "activity": "Shopping & cafe stop",
+                      "duration": "0.75 hours",
+                      "description": "Pick up Kullu shawls, caps and apple products before heading back."
+                },
+                {
+                      "time": "07:00 PM",
+                      "activity": "Drop back",
+                      "duration": "0.5 hours",
+                      "description": "Return to your hotel, concluding the full-day Shimla city tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned, heater-equipped vehicle for full-day use",
+                "Experienced local hill-driving chauffeur familiar with Shimla parking rules",
+                "Fuel, driver allowance and all applicable taxes",
+                "Hotel or bus-stand pickup and drop within Shimla",
+                "Bottled water and round-the-clock Triveni Cabs trip support"
+          ],
+          "exclusions": [
+                "Entry tickets (Viceregal Lodge, Kufri Nature Park, adventure activities)",
+                "Pony rides, adventure sports and personal expenses",
+                "Meals, snacks and beverages",
+                "Parking fees and any toll charges",
+                "Anything not listed under inclusions"
+          ],
+          "bestTimeToVisit": "March to June and December to February for snow",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Shimla/shimla_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Shimla/the ridge shimla.jpg",
+                "/images/sightseeing/Shimla/Mall road shimla.jpg",
+                "/images/sightseeing/Shimla/jakhoo_temple.jpg",
+                "/images/sightseeing/Shimla/christ church shimla.jpg",
+                "/images/sightseeing/Shimla/kurif_adventure_park.jpg",
+                "/images/sightseeing/Shimla/Naldehra Golf Course_Historic 9-hole course designed by Lord Curzon.jpg"
+          ],
+          "tips": [
+                "Private cars cannot enter Mall Road and the Ridge; your driver will park at authorised lots nearby.",
+                "Carry warm layers even in summer as evenings and Kufri stay cold.",
+                "Start early to reach Kufri before afternoon clouds or crowds build up.",
+                "Wear comfortable non-slip shoes for the walk and pony tracks at Jakhoo and Kufri.",
+                "Check snow-season road conditions; your driver will advise if chains are needed."
+          ],
+          "reviews": {
+                "averageRating": 4.7,
+                "totalReviews": 3120
+          },
+          "coordinates": {
+                "latitude": 31.1048,
+                "longitude": 77.1734
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Town centre involves walking and steps; Kufri and Jakhoo have pony options",
+          "keywords": [
+                "Shimla full day city tour",
+                "Shimla sightseeing by cab",
+                "Shimla taxi for local sightseeing",
+                "Shimla Kufri tour package",
+                "Mall Road Ridge Shimla tour",
+                "Jakhoo Temple cab",
+                "Shimla one day tour by car",
+                "Shimla local tour with driver",
+                "Christ Church Shimla sightseeing",
+                "Viceregal Lodge tour Shimla",
+                "best places to visit in Shimla",
+                "Shimla private cab tour",
+                "Shimla AC taxi sightseeing",
+                "Kufri snow point taxi",
+                "Naldehra Mashobra cab tour",
+                "how to see Shimla in one day",
+                "Shimla cab booking",
+                "Shimla city tour package",
+                "what to do in Shimla in a day",
+                "Shimla hill station taxi",
+                "Triveni Cabs Shimla",
+                "Shimla sightseeing car rental"
+          ]
+    },
+    {
       id: 27,
       name: "Shimla Kufri Tour",
       slug: "shimla-kufri-tour",
@@ -8831,6 +10351,165 @@ export const sightseeingTours = {
   ],
 
   manali: [
+    {
+          "id": 209,
+          "slug": "manali-full-day-city-tour",
+          "name": "Manali Full Day City Tour",
+          "shortDescription": "Full-day Manali sightseeing by private cab covering Hadimba Temple, Solang Valley, Vashisht springs, Old Manali and Atal Tunnel.",
+          "fullDescription": "Manali, cradled in the lush Beas River valley at around 2,050 metres, is the adventure and honeymoon capital of Himachal Pradesh and one of the most beloved hill destinations in North India. Surrounded by snow-capped peaks, apple orchards, deodar forests, and gushing mountain streams, it offers an irresistible mix of ancient temples, hot springs, bohemian cafes, snow points, and adrenaline sports. A full-day Manali city tour with Triveni Cabs is the smartest way to weave together its scattered attractions — from the cedar-shaded Hadimba Temple to the snowfields of Solang Valley and the engineering marvel of the Atal Tunnel — in one comfortable, well-paced day with a local driver at the wheel.\n\nThe day opens with a hotel pickup in an air-conditioned vehicle. First stop is usually the atmospheric **Hadimba (Hidimba) Devi Temple**, a 1553 wooden pagoda shrine set in a fragrant cedar grove, dedicated to the demoness-turned-goddess from the Mahabharata; its intricately carved doorway, multi-tiered roof, and serene forest setting make it Manali's most iconic landmark. A short walk away is the **Ghatotkach Temple** and the **Manu Temple** in Old Manali, the latter honouring the sage Manu, considered the creator of human life. **Old Manali** itself, across the Manalsu stream, is a laid-back enclave of cafes, guesthouses, orchards, and live-music spots that perfectly captures the town's hippie-trail heritage.\n\nNext, the tour heads about 6 kilometres to **Vashisht**, famous for its natural **hot sulphur springs** and the stone **Vashisht Temple** dedicated to the sage Vashisht, where pilgrims and travellers alike bathe in the steaming, mineral-rich waters. From here, the route climbs roughly 14 kilometres to **Solang Valley**, the adventure heartland of Manali, where you can enjoy paragliding, zorbing, ropeway rides, ATV and snow activities against a backdrop of glittering peaks; in winter it transforms into a snow-sports playground, and in summer the green meadows are ideal for gentle walks and joyrides. Depending on the season, conditions, and permits, your driver can continue past Solang toward **Gulaba** snow point or, when open, through the spectacular **Atal Tunnel** — at 9.02 kilometres one of the world's longest high-altitude highway tunnels — emerging into the stark, beautiful Lahaul valley near Sissu, a bucket-list drive in itself.\n\nA full Manali day can also fold in a leisurely stroll along **Mall Road** for shopping and street food, the **Tibetan Monastery** with its colourful prayer wheels and handicraft market, the **Van Vihar** lakeside park, and **Club House** by the Manalsu nala. For those wanting to extend the experience, your cab can include a scenic detour towards the **Kullu Valley** — about 40 kilometres south — to see the river-rafting points on the Beas, the shawl-weaving workshops, and the famous Naggar Castle, a 500-year-old stone-and-wood fort that once served as the royal seat of Kullu. The drives between these spots are themselves a highlight, winding past apple orchards, pine slopes, and the turquoise Beas with frequent photo stops.\n\nTriveni Cabs offers a range of vehicles to match your group and the terrain. A **Sedan** like a Swift Dzire suits couples and small families of up to 4 and is the most budget-friendly. An **SUV** such as an Ertiga or Innova seats 6 to 7 with the higher clearance and grip that the climb to Solang and the Atal Tunnel road reward, making it a favourite for families carrying winter gear. Groups of friends and joint families can choose a **Tempo Traveller** seating up to 15. All vehicles are clean, well-serviced, and heater-equipped for the cold, and our chauffeurs are seasoned on Himachal's mountain roads, courteous, and knowledgeable about the best snow points, viewpoints, and cafes.\n\nA typical Manali full-day tour runs 8 to 10 hours and is fully customisable. Because access beyond Solang towards Rohtang and parts of Lahaul can require permits and is weather-dependent, your driver will advise the best feasible itinerary on the day and help arrange any necessary permits and snow gear. He can recommend authentic spots for Himachali siddu, trout, and Tibetan thukpa and momos, and point you to the best deals on Kullu shawls, caps, woollens, and dry fruits along Mall Road and the Tibetan market.\n\nBooking with Triveni Cabs is transparent and stress-free. Your quoted fare includes fuel, driver allowance, and taxes; activity charges (paragliding, zorbing, ropeway), permits, and entry tickets are paid directly so you only pay for what you choose. We operate year-round, and in the snow season our drivers carry the right tyres and chains and know which stretches are open. Pickup is punctual and every vehicle is GPS-tracked.\n\nTo book your air-conditioned cab for a Manali full-day city tour, call or WhatsApp Triveni Cabs at **7668570551** (wa.me/917668570551). Share your pickup point, group size, and preferred vehicle, and we will confirm a clean car with an expert local driver who will help you experience the temples, hot springs, snowfields, and tunnel-pierced peaks of Manali safely and in complete comfort.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 3500,
+                "suv": 4500,
+                "tempoTraveller": 6500,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Hadimba Devi Temple - 1553 wooden pagoda shrine in a fragrant cedar grove",
+                "Solang Valley - adventure hub for paragliding, zorbing, ropeway and snow sports",
+                "Vashisht hot springs - natural sulphur baths and ancient stone temple",
+                "Old Manali - bohemian cafes, orchards and the Manu Temple across the stream",
+                "Atal Tunnel - 9.02 km engineering marvel into the dramatic Lahaul valley",
+                "Mall Road & Tibetan Monastery - shopping, street food and prayer-wheel market",
+                "Kullu Valley & Naggar Castle - optional detour to rafting points and a 500-year-old fort",
+                "Scenic Beas-valley drives past apple orchards and snow-capped peaks"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:00 AM",
+                      "activity": "Hotel pickup",
+                      "duration": "0.5 hours",
+                      "description": "Meet your Triveni Cabs driver and depart in a heated AC vehicle."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hadimba Devi Temple",
+                      "duration": "1 hour",
+                      "description": "Explore the iconic wooden pagoda temple set in a cedar forest."
+                },
+                {
+                      "time": "09:45 AM",
+                      "activity": "Old Manali & Manu Temple",
+                      "duration": "1 hour",
+                      "description": "Wander the cafe-lined lanes and visit the temple to sage Manu."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Vashisht hot springs & temple",
+                      "duration": "1 hour",
+                      "description": "See the ancient stone temple and the natural sulphur springs."
+                },
+                {
+                      "time": "12:15 PM",
+                      "activity": "Drive to Solang Valley",
+                      "duration": "0.75 hours",
+                      "description": "Climb the scenic mountain road to the adventure heartland of Manali."
+                },
+                {
+                      "time": "01:00 PM",
+                      "activity": "Solang Valley activities",
+                      "duration": "2 hours",
+                      "description": "Paragliding, zorbing, ropeway and snow play with lunch in the valley."
+                },
+                {
+                      "time": "03:15 PM",
+                      "activity": "Atal Tunnel drive",
+                      "duration": "1.5 hours",
+                      "description": "Season permitting, drive through the 9 km tunnel toward the Lahaul valley and back."
+                },
+                {
+                      "time": "04:45 PM",
+                      "activity": "Tibetan Monastery",
+                      "duration": "0.5 hours",
+                      "description": "Spin the prayer wheels and browse the handicraft market."
+                },
+                {
+                      "time": "05:15 PM",
+                      "activity": "Mall Road shopping",
+                      "duration": "1 hour",
+                      "description": "Shop for Kullu shawls, caps, woollens and dry fruits; try local street food."
+                },
+                {
+                      "time": "06:15 PM",
+                      "activity": "Van Vihar / Club House stop",
+                      "duration": "0.5 hours",
+                      "description": "Relax by the Beas at Van Vihar park before heading back."
+                },
+                {
+                      "time": "06:45 PM",
+                      "activity": "Drop back",
+                      "duration": "0.5 hours",
+                      "description": "Return to your hotel, concluding the full-day Manali city tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned, heater-equipped vehicle for full-day use",
+                "Experienced local mountain-driving chauffeur",
+                "Fuel, driver allowance and all applicable taxes",
+                "Hotel pickup and drop within Manali town",
+                "Bottled water and 24x7 Triveni Cabs trip support"
+          ],
+          "exclusions": [
+                "Adventure activity charges (paragliding, zorbing, ropeway, ATV)",
+                "Permits and entry tickets for Atal Tunnel / Rohtang area where applicable",
+                "Snow gear rental, meals and personal expenses",
+                "Parking fees and any toll charges",
+                "Anything not mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "March to June and December to February for snow",
+          "difficulty": "Moderate",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Manali/Manali_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Manali/Hidimba Temple.jpg",
+                "/images/sightseeing/Manali/Solang Valley.jpg",
+                "/images/sightseeing/Manali/Vashisht , manali.jpg",
+                "/images/sightseeing/Manali/Old Manali.jpg",
+                "/images/sightseeing/Manali/Atal tunnel ,.jpg",
+                "/images/sightseeing/Manali/Kullu Valley.jpg"
+          ],
+          "tips": [
+                "Access beyond Solang towards Rohtang and Lahaul can need permits and depends on weather; your driver will advise.",
+                "Rent snow boots and jackets near Solang in winter rather than carrying your own.",
+                "Start early as the Solang and Atal Tunnel roads get busy and weather can change by afternoon.",
+                "Carry sunscreen, sunglasses and warm layers regardless of season at high altitude.",
+                "Negotiate adventure-activity rates upfront and use registered operators only."
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 2980
+          },
+          "coordinates": {
+                "latitude": 32.2432,
+                "longitude": 77.1892
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Some sights involve walking and steps; high-altitude points may be strenuous",
+          "keywords": [
+                "Manali full day city tour",
+                "Manali sightseeing by cab",
+                "Manali taxi for local sightseeing",
+                "Manali Solang Valley tour package",
+                "Hadimba Temple cab Manali",
+                "Atal Tunnel taxi tour",
+                "Manali one day tour by car",
+                "Vashisht hot springs taxi",
+                "Old Manali sightseeing",
+                "Solang Valley adventure cab",
+                "best places to visit in Manali",
+                "Manali local tour with driver",
+                "Manali private cab tour",
+                "Manali AC taxi sightseeing",
+                "Kullu Manali day tour",
+                "how to see Manali in one day",
+                "Manali cab booking",
+                "Manali city tour package",
+                "what to do in Manali in a day",
+                "Manali snow point taxi",
+                "Triveni Cabs Manali",
+                "Manali sightseeing car rental"
+          ]
+    },
     {
       id: 28,
       name: "Manali Solang Valley Tour",
@@ -9845,6 +11524,164 @@ export const sightseeingTours = {
   ],
 
   haridwar: [
+    {
+          "id": 207,
+          "slug": "haridwar-full-day-city-tour",
+          "name": "Haridwar Full Day City Tour",
+          "shortDescription": "Full-day Haridwar sightseeing by private cab covering Har Ki Pauri, Mansa Devi ropeway, Chandi Devi and the Ganga Aarti.",
+          "fullDescription": "Haridwar, the \"Gateway to God,\" is one of the seven holiest cities of Hinduism and the point where the sacred Ganga descends from the Himalayas onto the plains of North India. A full-day Haridwar city tour with Triveni Cabs lets you experience the spiritual heart of Uttarakhand at a relaxed pace, with an air-conditioned car and an experienced local driver who knows exactly when to reach each temple to beat the crowds and where to park near the famously congested ghats. Whether you are a pilgrim, a first-time visitor, or a family wanting a comfortable darshan circuit, this private cab tour removes the stress of navigation, parking, and the long uphill walks so you can focus on the experience itself.\n\nThe day begins with a convenient pickup from your hotel, the Haridwar Railway Station, or the Rishikesh/Dehradun side if you are travelling in. The undisputed centerpiece of any Haridwar visit is **Har Ki Pauri**, the most revered ghat on the banks of the Ganga, believed to bear the footprint of Lord Vishnu. Here pilgrims take a holy dip in the cool, fast-flowing river, and in the evening the ghat hosts the world-famous **Ganga Aarti** — a hypnotic ceremony of fire lamps, ringing bells, conch shells, and chanting priests as hundreds of leaf-boat diyas float downstream. Your driver will time the day so you can return to a good vantage point for this aarti, one of the most moving spiritual spectacles in India.\n\nFrom the river, the tour heads to **Mansa Devi Temple**, perched atop Bilwa Parvat. You can ride the Mansa Devi Udan Khatola (cable car / ropeway) to the hilltop shrine of the wish-fulfilling goddess, with sweeping views over the entire city and the silver ribbon of the Ganga below. Across the valley sits **Chandi Devi Temple** on Neel Parvat, another Siddh Peeth reached by its own ropeway or a scenic 3-kilometre trek; together with Mansa Devi and Maya Devi it forms the revered triad of Haridwar's Shakti shrines. **Maya Devi Temple**, an 11th-century temple dedicated to the presiding deity of Haridwar, is one of the oldest in the city and a designated Shakti Peeth where the heart and navel of Goddess Sati are said to have fallen.\n\nThe itinerary also includes **Bharat Mata Mandir**, an unusual eight-storey temple dedicated to Mother India, with each floor honouring saints, freedom fighters, and deities — a quietly patriotic and architectural highlight. Time permitting, the tour can add the tranquil **Daksheswara Mahadev Temple** in Kankhal, **Pawan Dham**, **Sapt Rishi Ashram**, or **Shantikunj**, the global headquarters of the Gayatri Pariwar. Most of Haridwar's key sights lie within a compact 6-to-10 kilometre radius, but the one-way lanes, pedestrian-only ghat zones, and steep temple approaches make a private cab with a knowledgeable driver invaluable — he handles the parking and meets you at the most convenient drop and pickup points.\n\nTriveni Cabs offers a choice of vehicles to match your group. A **Sedan** (Swift Dzire or similar) is ideal for couples and small families of up to 4 passengers and is the most economical option. For larger families or those wanting extra luggage space and a higher seating position on the hilly approaches, an **SUV** (Ertiga or Innova) seats 6 to 7 in comfort. Groups, joint families, and pilgrimage parties can book a **Tempo Traveller** seating up to 15, perfect for a multi-generation darshan trip with ample room. All vehicles are clean, sanitised, and driven by polite, verified chauffeurs who are well-versed in the temple timings, aarti schedule, and the best vegetarian eateries near Har Ki Pauri and Moti Bazaar.\n\nA typical full-day tour runs about 8 to 10 hours and is fully customisable. If you wish, your driver can combine Haridwar with a short extension to nearby **Rishikesh** (about 25 km away) to see Lakshman Jhula, Ram Jhula, and the Triveni Ghat aarti, making for a rich Char Dham-foothills day out. Many guests also like to stop at the Chandi Devi or Mansa Devi rope-car ticket counters early to secure smooth boarding. Shopping enthusiasts will enjoy a stroll through **Bara Bazaar** and **Moti Bazaar** for rudraksha malas, brass puja items, Ayurvedic herbs, gangajal containers, and famous Haridwar sweets and chenna.\n\nBooking your Haridwar city tour with Triveni Cabs is simple and transparent. There are no hidden charges — your quoted fare includes fuel, driver allowance, and all taxes, with parking and temple ropeway tickets payable directly so you only pay for what you use. Pickup is punctual, vehicles are GPS-tracked, and our drivers carry sanitiser and bottled water. We operate 365 days a year, including during the peak Kanwar Yatra season and major festivals like Kumbh and Ardh Kumbh, when local knowledge of road diversions and crowd-control routes truly pays off.\n\nTo reserve your air-conditioned cab for a Haridwar full-day sightseeing tour, call or WhatsApp Triveni Cabs at **7668570551** (wa.me/917668570551). Share your pickup point, group size, and preferred vehicle, and our team will confirm a clean car and a courteous local driver who will make your spiritual day in the Gateway to God smooth, safe, and memorable. Let Triveni Cabs handle the roads while you soak in the timeless devotion of Haridwar.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2800,
+                "suv": 3800,
+                "tempoTraveller": 5500,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Har Ki Pauri - holiest ghat on the Ganga and site of the evening Ganga Aarti",
+                "Ganga Aarti - mesmerising lamp-and-fire ceremony with floating diyas at dusk",
+                "Mansa Devi Temple - hilltop wish-fulfilling shrine reached by Udan Khatola ropeway",
+                "Chandi Devi Temple - Shakti Peeth on Neel Parvat with ropeway and valley views",
+                "Maya Devi Temple - ancient 11th-century Shakti Peeth, the presiding deity of Haridwar",
+                "Bharat Mata Mandir - unique eight-storey temple dedicated to Mother India",
+                "Daksheswara Mahadev & Kankhal - serene Shiva temple cluster away from the crowds",
+                "Moti Bazaar shopping - rudraksha, brass puja items, gangajal and local sweets"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:00 AM",
+                      "activity": "Hotel / station pickup",
+                      "duration": "0.5 hours",
+                      "description": "Meet your Triveni Cabs driver and depart in an AC vehicle for the day's sightseeing."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "Maya Devi Temple",
+                      "duration": "0.75 hours",
+                      "description": "Begin at the ancient Shakti Peeth, one of Haridwar's oldest temples, before the morning rush."
+                },
+                {
+                      "time": "09:30 AM",
+                      "activity": "Mansa Devi Temple via ropeway",
+                      "duration": "1.5 hours",
+                      "description": "Ride the Udan Khatola cable car to the hilltop wish-goddess shrine with panoramic city views."
+                },
+                {
+                      "time": "11:15 AM",
+                      "activity": "Chandi Devi Temple",
+                      "duration": "1.5 hours",
+                      "description": "Take the ropeway or scenic trek up Neel Parvat to this revered Siddh Peeth."
+                },
+                {
+                      "time": "01:00 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Vegetarian thali or local snacks at a recommended eatery near the ghats."
+                },
+                {
+                      "time": "02:15 PM",
+                      "activity": "Bharat Mata Mandir",
+                      "duration": "1 hour",
+                      "description": "Explore the eight-storey temple honouring deities, saints and freedom fighters."
+                },
+                {
+                      "time": "03:30 PM",
+                      "activity": "Daksheswara Mahadev, Kankhal",
+                      "duration": "1 hour",
+                      "description": "Visit the peaceful Shiva temple linked to the legend of Daksha's yagna."
+                },
+                {
+                      "time": "04:45 PM",
+                      "activity": "Moti Bazaar shopping",
+                      "duration": "1 hour",
+                      "description": "Browse for rudraksha malas, puja items, Ayurvedic herbs and Haridwar sweets."
+                },
+                {
+                      "time": "06:00 PM",
+                      "activity": "Har Ki Pauri & holy dip",
+                      "duration": "1 hour",
+                      "description": "Take a sacred dip and find a good spot along the ghat for the evening aarti."
+                },
+                {
+                      "time": "07:00 PM",
+                      "activity": "Ganga Aarti",
+                      "duration": "0.75 hours",
+                      "description": "Witness the spectacular fire-lamp Ganga Aarti with floating diyas at Har Ki Pauri."
+                },
+                {
+                      "time": "07:45 PM",
+                      "activity": "Drop back",
+                      "duration": "0.5 hours",
+                      "description": "Return to your hotel or station, concluding the full-day Haridwar tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for full-day use",
+                "Experienced local driver familiar with temple timings and aarti schedule",
+                "Fuel, driver allowance and all applicable taxes",
+                "Hotel or railway station pickup and drop within Haridwar",
+                "Bottled water and on-call trip support from Triveni Cabs"
+          ],
+          "exclusions": [
+                "Ropeway / cable car tickets for Mansa Devi and Chandi Devi",
+                "Temple donations, pooja charges and personal expenses",
+                "Meals, snacks and beverages",
+                "Parking fees and any toll charges",
+                "Anything not mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Spiritual & Pilgrimage",
+          "heroImage": "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg",
+                "/images/sightseeing/Haridwar/Ganga_Aarti.jpg",
+                "/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg",
+                "/images/sightseeing/Haridwar/Chandi_Devi_Temple.jpg",
+                "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg"
+          ],
+          "tips": [
+                "Reach Har Ki Pauri at least 45 minutes before the Ganga Aarti to get a good riverside spot.",
+                "Carry a small bag for shoes as you must walk barefoot in temple and ghat areas.",
+                "Buy ropeway tickets early in the day to avoid long queues at Mansa Devi and Chandi Devi.",
+                "Dress modestly and conservatively as this is a deeply religious city.",
+                "Keep valuables secure and avoid carrying large amounts of cash in crowded ghat zones."
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 2640
+          },
+          "coordinates": {
+                "latitude": 29.9457,
+                "longitude": 78.1642
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Ropeway access available; some ghats and temples involve steps and barefoot walking",
+          "keywords": [
+                "Haridwar full day city tour",
+                "Haridwar sightseeing by cab",
+                "Haridwar taxi for sightseeing",
+                "Har Ki Pauri Ganga Aarti tour",
+                "Mansa Devi ropeway taxi",
+                "Chandi Devi temple cab",
+                "Haridwar local tour package",
+                "Haridwar one day tour",
+                "Haridwar darshan taxi",
+                "Haridwar temple tour by car",
+                "best places to visit in Haridwar",
+                "Haridwar city tour with driver",
+                "Haridwar private cab tour",
+                "Maya Devi temple Haridwar",
+                "Bharat Mata Mandir Haridwar",
+                "how to do Haridwar sightseeing in one day",
+                "Haridwar cab booking",
+                "Haridwar AC taxi tour",
+                "Haridwar Rishikesh day tour",
+                "what to see in Haridwar in one day",
+                "Triveni Cabs Haridwar",
+                "Haridwar pilgrimage cab tour"
+          ]
+    },
     {
       id: 29,
       name: "Haridwar Spiritual Tour",
@@ -10970,6 +12807,158 @@ export const sightseeingTours = {
   ],
 
   rishikesh: [
+    {
+          "id": 206,
+          "slug": "rishikesh-full-day-city-tour",
+          "name": "Rishikesh Full Day City Tour by Cab",
+          "shortDescription": "Private full-day Rishikesh sightseeing cab covering Laxman Jhula, Ram Jhula, Triveni Ghat aarti, the Beatles Ashram and rafting with driver.",
+          "fullDescription": "Rishikesh, the Yoga Capital of the World nestled in the Himalayan foothills where the holy Ganges rushes out of the mountains onto the plains, is a heady blend of spirituality and adventure, ancient temples and ashrams sit alongside white-water rafting, riverside cafés and the soul-stirring evening Ganga Aarti. The most relaxed way to experience its iconic suspension bridges, ghats, ashrams and adrenaline activities in one day is a private full-day city tour by cab with Triveni Cabs, driven by a friendly local who knows where to park near the car-free bridge areas, the best riverside viewpoints, and how to fit in a rafting run without missing the evening aarti. To book, just call 7668570551 or message us on WhatsApp at wa.me/917668570551, and we will pick you up from your hotel or from Dehradun's Jolly Grant Airport, about 20 km away, or arrange transfers from Haridwar, roughly 25 km away.\n\nA typical day begins with a hotel pickup around 8:30 AM and a visit to the twin icons of Rishikesh, the Laxman Jhula and Ram Jhula suspension bridges spanning the emerald Ganges. Laxman Jhula, traditionally an iron suspension bridge said to mark the spot where Lakshmana crossed the river, is surrounded by the towering 13-storey Trimbakeshwar (Tera Manzil) Temple and a warren of shops, cafés and temples, while Ram Jhula a little downstream connects the famous Sivananda and Parmarth Niketan ashrams. As vehicles cannot cross these pedestrian bridges, your Triveni Cabs driver will drop you at one end and meet you at the other, letting you wander freely, browse the bazaars for rudraksha beads, singing bowls and Ayurvedic goods, and pause at a riverside café overlooking the rapids.\n\nClose to Ram Jhula lies the Parmarth Niketan ashram and a cluster of temples, while a short, scenic walk or drive away is the famous Beatles Ashram (Chaurasi Kutia), the abandoned Maharishi Mahesh Yogi ashram where the Beatles stayed in 1968 and wrote much of the White Album. Now part of the Rajaji Tiger Reserve and adorned with vibrant psychedelic murals and graffiti, its dome-shaped meditation huts and overgrown courtyards make a wonderfully atmospheric and photogenic stop of around an hour. Allow time to explore the painted halls and the forested riverside setting.\n\nBy late morning, adventure-seekers can take to the river for white-water rafting, Rishikesh is India's rafting capital, with exhilarating stretches running from Shivpuri (about 16 km upstream) and Brahmapuri down to Rishikesh, featuring rapids with names like Roller Coaster, Golf Course and The Wall. A standard rafting run takes two to three hours including the drive upstream, and your driver can coordinate with the rafting operator and meet you at the exit point. For those who prefer to stay dry, this time can be spent visiting the Triveni Ghat, the city's main bathing ghat, or simply relaxing at a German Bakery-style café. After the morning's activity, your driver can recommend a wholesome vegetarian or organic café for lunch, note that Rishikesh is a sacred town where alcohol and non-vegetarian food are prohibited.\n\nIn the afternoon, the tour can include the Neelkanth Mahadev Temple, one of the most revered Shiva shrines in the region, set high in the hills about 32 km from town amid forest and offering lovely views, a worthwhile excursion for those with a spiritual bent (the winding drive takes around an hour each way). Closer options include the Bharat Mandir (the oldest temple in Rishikesh), the Kunjapuri Devi Temple for panoramic Himalayan sunrise/sunset views, or simply more time among the ashrams and yoga centres for which the town is world-famous. Your itinerary is fully flexible, just tell your driver your priorities and the route adapts at no extra cost.\n\nAs evening falls, the day's spiritual highlight is the Ganga Aarti at Triveni Ghat (and the equally beautiful aarti at Parmarth Niketan), where lamps are floated on the river, conch shells sound, and devotees and travellers gather on the steps to sing and pray as the Ganges glows with hundreds of tiny flames. Arriving early by cab ensures you get a comfortable spot for this deeply moving ceremony, a serene and uplifting end to the day. Your Triveni Cabs driver waits nearby and brings you back to your hotel in comfort afterwards.\n\nFor vehicle options, Triveni Cabs offers an air-conditioned Sedan (Swift Dzire or similar) for couples and solo travellers, a spacious SUV (Toyota Innova or Ertiga) ideal for families and the hilly road to Neelkanth, and a 12- to 15-seater Tempo Traveller for larger groups. Every booking includes an experienced local hill-driver, transparent fixed pricing with fuel and driver allowance built in, no hidden charges, GPS-tracked sanitised vehicles, and 24x7 support. Because Rishikesh spreads along both banks of the Ganges with car-free bridge zones and hilly temple roads, a dedicated cab and driver make the day effortless.\n\nTriveni Cabs is a trusted North-India travel operator with thousands of happy customers and round-the-clock assistance. Beyond the city tour we can arrange day trips to Haridwar for the famous Har Ki Pauri aarti, excursions to Devprayag and the Char Dham route, or onward transfers to Mussoorie, Dehradun and Delhi. Whether you come for yoga and spirituality, the thrill of the rapids, or the peace of the riverside aarti, our Rishikesh Full Day City Tour blends it all beautifully. To reserve your tour, secure today's best fare or customise the itinerary, just call 7668570551 or send a WhatsApp message to wa.me/917668570551 and our team will confirm your booking within minutes.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2400,
+                "suv": 3100,
+                "tempoTraveller": 4700,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Laxman Jhula - iconic Ganges suspension bridge and Tera Manzil Temple",
+                "Ram Jhula - gateway to the Sivananda and Parmarth Niketan ashrams",
+                "Triveni Ghat Ganga Aarti - serene evening river ceremony of floating lamps",
+                "Beatles Ashram (Chaurasi Kutia) - psychedelic murals and meditation huts",
+                "White-water rafting - thrilling Ganga rapids from Shivpuri to Rishikesh",
+                "Neelkanth Mahadev Temple - revered hilltop Shiva shrine (optional)",
+                "Parmarth Niketan - riverside ashram and its own evening aarti",
+                "Riverside cafés & bazaars - rudraksha, singing bowls and Ayurvedic goods"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup in air-conditioned cab",
+                      "duration": "30 mins",
+                      "description": "Meet your Triveni Cabs driver and head to the bridges."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Laxman Jhula & Tera Manzil Temple",
+                      "duration": "1.5 hours",
+                      "description": "Cross the bridge and explore temples, cafés and bazaars."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "Ram Jhula & Parmarth Niketan ashram",
+                      "duration": "1 hour",
+                      "description": "Visit the ashram precinct and riverside ghats."
+                },
+                {
+                      "time": "11:30 AM",
+                      "activity": "Beatles Ashram (Chaurasi Kutia)",
+                      "duration": "1 hour",
+                      "description": "Wander the mural-covered meditation huts in the forest."
+                },
+                {
+                      "time": "12:30 PM",
+                      "activity": "Organic café lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy a vegetarian riverside lunch (no alcohol / non-veg in town)."
+                },
+                {
+                      "time": "01:30 PM",
+                      "activity": "White-water rafting (optional)",
+                      "duration": "2.5 hours",
+                      "description": "Raft the Ganga rapids from Shivpuri or Brahmapuri."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Neelkanth Mahadev Temple or local temples",
+                      "duration": "1.5 hours",
+                      "description": "Drive to the hilltop Shiva shrine or explore nearby temples."
+                },
+                {
+                      "time": "05:45 PM",
+                      "activity": "Triveni Ghat arrival",
+                      "duration": "30 mins",
+                      "description": "Reach the main ghat in good time for the aarti."
+                },
+                {
+                      "time": "06:15 PM",
+                      "activity": "Ganga Aarti at Triveni Ghat",
+                      "duration": "1 hour",
+                      "description": "Witness the lamp-lit evening river ceremony."
+                },
+                {
+                      "time": "07:15 PM",
+                      "activity": "Drop back to hotel",
+                      "duration": "30 mins",
+                      "description": "Return to your hotel, concluding the full-day Rishikesh tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for the full day",
+                "Experienced English- and Hindi-speaking hill driver",
+                "Fuel, driver allowance, tolls and parking charges",
+                "Hotel / airport / railway station pickup and drop within Rishikesh",
+                "Flexible, fully customisable sightseeing itinerary",
+                "All applicable taxes and 24x7 customer support"
+          ],
+          "exclusions": [
+                "White-water rafting and adventure activity charges",
+                "Temple donations and any entry fees",
+                "Meals, snacks and personal expenses",
+                "Guide charges (arranged on request at extra cost)",
+                "Anything not explicitly mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "September to November and February to May",
+          "difficulty": "Easy",
+          "category": "Spiritual & Pilgrimage",
+          "heroImage": "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg",
+                "/images/sightseeing/Rishikesh/Ram_Jhula.jpg",
+                "/images/sightseeing/Rishikesh/Triveni_Ghat.jpg",
+                "/images/sightseeing/Rishikesh/Beatles_Ashram.jpg",
+                "/images/sightseeing/Rishikesh/River_Rafting.jpg",
+                "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg"
+          ],
+          "tips": [
+                "Note that Rishikesh is a sacred town where alcohol and non-vegetarian food are not permitted.",
+                "Book rafting in the morning when water conditions and light are best; rafting pauses during the monsoon.",
+                "Wear quick-dry clothes and secure footwear if you plan to raft, and leave valuables with your driver.",
+                "Reach Triveni Ghat at least 30 minutes before the aarti to find a comfortable seat on the steps.",
+                "Carry a light jacket for the evening and the breezy bridge areas, even in summer."
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 2890
+          },
+          "coordinates": {
+                "latitude": 30.0869,
+                "longitude": 78.2676
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Moderate; pedestrian bridges and ghats involve walking and steps",
+          "keywords": [
+                "Rishikesh full day city tour",
+                "Rishikesh sightseeing cab",
+                "Rishikesh taxi for sightseeing",
+                "Rishikesh city tour package",
+                "Laxman Jhula Ram Jhula tour",
+                "Triveni Ghat Ganga Aarti Rishikesh",
+                "Beatles Ashram Rishikesh tour",
+                "river rafting Rishikesh cab",
+                "Rishikesh local sightseeing by car",
+                "best places to visit in Rishikesh in one day",
+                "Rishikesh private cab tour",
+                "Rishikesh full day taxi package",
+                "things to do in Rishikesh in a day",
+                "Rishikesh car rental with driver",
+                "Neelkanth Mahadev Temple taxi",
+                "Parmarth Niketan Rishikesh",
+                "how to see Rishikesh in one day",
+                "Rishikesh tour by Triveni Cabs",
+                "yoga capital Rishikesh sightseeing",
+                "Rishikesh hotel pickup sightseeing tour"
+          ]
+    },
     {
       id: 30,
       name: "Rishikesh Adventure & Spiritual Tour",
@@ -12582,6 +14571,157 @@ export const sightseeingTours = {
 
   amritsar: [
     {
+          "id": 203,
+          "slug": "amritsar-full-day-city-tour",
+          "name": "Amritsar Full Day City Tour by Cab",
+          "shortDescription": "Private full-day Amritsar sightseeing cab covering the Golden Temple, Jallianwala Bagh and the Wagah Border ceremony with driver.",
+          "fullDescription": "Amritsar, the spiritual heart of Sikhism and one of Punjab's most moving cities, packs an extraordinary amount of emotion into a single day, from the serene golden glow of the Harmandir Sahib reflected in the Amrit Sarovar to the goosebump-inducing patriotism of the Wagah Border ceremony. The smartest way to experience it all without missing the timing of the border parade is a private full-day city tour by cab with Triveni Cabs, guided by a courteous local driver who knows exactly when to set off for Wagah, where to park near the Golden Temple, and how to weave the city's landmarks into one smooth, comfortable day. To book, simply call 7668570551 or message us on WhatsApp at wa.me/917668570551, and we will pick you up from your hotel or from Sri Guru Ram Dass Jee International Airport, about 11 km from the city centre.\n\nMost travellers begin with an early hotel pickup around 8:00 AM and head straight to the Golden Temple (Harmandir Sahib), the holiest shrine in Sikhism. Covering your head and removing your shoes, you walk the marble parikrama around the shimmering sacred tank to the gold-leafed central sanctum, where continuous kirtan (devotional singing) fills the air. Plan for two to three hours to fully absorb the atmosphere, visit the Akal Takht, and, if you wish, partake in the langar, the world's largest free community kitchen, which serves tens of thousands of meals a day to people of every faith. The experience is humbling and unforgettable, and many visitors return for a second, quieter visit after dark when the temple is lit up.\n\nA short five-minute walk from the Golden Temple is Jallianwala Bagh, the deeply poignant memorial garden where, in 1919, hundreds of unarmed Indians were killed in a colonial massacre. The bullet-marked walls, the martyrs' well and the eternal flame make for a sombre, reflective stop of around 45 minutes that is essential to understanding India's freedom struggle. Adjacent to the complex is the Partition Museum, the world's first museum dedicated to the 1947 Partition, whose oral histories, photographs and personal artefacts offer a powerful, intimate account of one of history's largest human migrations.\n\nAfter lunch, your driver can recommend an authentic Punjabi dhaba for the famous Amritsari kulcha, sarson da saag with makki di roti, or a thali bursting with flavour, fuel for the afternoon. Mid-afternoon, the tour drives about 28 km to the Attari–Wagah Border, the only road crossing between India and Pakistan, for the legendary Beating Retreat ceremony held every evening before sunset. The synchronised high-kicking drill of the Border Security Force, the roaring crowds waving the tricolour, and the lowering of the two nations' flags create a spectacle of patriotism unlike anything else in India. Arriving by private cab means you reach early enough to get good seating and avoid the chaotic parking that frustrates day-trippers on public transport, your Triveni Cabs driver knows precisely when to leave the city to make this happen.\n\nIf time allows on the way to or from Wagah, the tour can include the Durgiana Temple, a beautiful Hindu temple built in the architectural style of the Golden Temple, sitting amid its own sacred tank and revered for its silver-doored sanctum. Other optional stops include the Gobindgarh Fort (with its sound-and-light show and cultural performances), Maharaja Ranjit Singh's summer palace and museum, and the bustling Hall Bazaar for Phulkari embroidery, juttis and Punjabi sweets. Your itinerary is completely flexible, just tell your driver what you would like to add and the route adapts at no extra cost.\n\nFor vehicle options, Triveni Cabs offers a comfortable air-conditioned Sedan (Swift Dzire or similar) for couples and solo travellers, a roomy SUV (Toyota Innova or Ertiga) for families and groups up to 6, and a 12- to 15-seater Tempo Traveller for larger families and friend groups, ideal for the Wagah run where everyone wants to travel together. Every booking includes an experienced local driver, transparent fixed pricing with fuel and driver allowance built in, no hidden charges, GPS-tracked sanitised vehicles, and 24x7 support. Given that the Golden Temple area is congested and the Wagah ceremony is strictly time-bound, a dedicated cab and driver remove all the stress from the day.\n\nTriveni Cabs is a trusted North-India travel operator with thousands of happy customers and round-the-clock assistance. Beyond the city tour we can arrange day trips to the Pul Kanjri heritage site, the holy town of Tarn Taran, or onward transfers to Dharamshala, Chandigarh and Delhi. Whether your priority is spiritual reflection at the Golden Temple, the history of Jallianwala Bagh and Partition, or the electric energy of Wagah, our Amritsar Full Day City Tour brings it all together seamlessly. To reserve your tour, secure today's best fare or customise the plan, just call 7668570551 or send a WhatsApp message to wa.me/917668570551 and our team will confirm your booking within minutes.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2300,
+                "suv": 3000,
+                "tempoTraveller": 4600,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Golden Temple (Harmandir Sahib) - Sikhism's holiest shrine and free langar",
+                "Jallianwala Bagh - poignant 1919 massacre memorial garden",
+                "Wagah Border - electrifying Beating Retreat ceremony at sunset",
+                "Partition Museum - powerful 1947 oral histories and artefacts",
+                "Durgiana Temple - silver-doored Hindu shrine in Golden Temple style",
+                "Punjabi food trail - Amritsari kulcha and sarson da saag",
+                "Gobindgarh Fort - heritage fort with sound-and-light show (optional)",
+                "Hall Bazaar - Phulkari embroidery, juttis and Punjabi sweets"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:00 AM",
+                      "activity": "Hotel pickup in air-conditioned cab",
+                      "duration": "30 mins",
+                      "description": "Meet your Triveni Cabs driver and head to the Golden Temple."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "Golden Temple (Harmandir Sahib)",
+                      "duration": "2.5 hours",
+                      "description": "Walk the parikrama, visit the sanctum and optionally join the langar."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Jallianwala Bagh",
+                      "duration": "45 mins",
+                      "description": "Reflect at the martyrs' memorial and bullet-marked walls."
+                },
+                {
+                      "time": "11:45 AM",
+                      "activity": "Partition Museum",
+                      "duration": "1 hour",
+                      "description": "Explore moving accounts of the 1947 Partition."
+                },
+                {
+                      "time": "12:45 PM",
+                      "activity": "Punjabi lunch break",
+                      "duration": "1 hour",
+                      "description": "Savour Amritsari kulcha or a hearty thali at a local dhaba."
+                },
+                {
+                      "time": "01:45 PM",
+                      "activity": "Durgiana Temple",
+                      "duration": "45 mins",
+                      "description": "Visit the Golden Temple-style Hindu shrine and its sacred tank."
+                },
+                {
+                      "time": "02:45 PM",
+                      "activity": "Drive to Wagah Border",
+                      "duration": "1 hour",
+                      "description": "Travel roughly 28 km to reach the border in good time."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Wagah Border Beating Retreat ceremony",
+                      "duration": "2 hours",
+                      "description": "Witness the BSF drill and flag-lowering spectacle at sunset."
+                },
+                {
+                      "time": "06:00 PM",
+                      "activity": "Drive back to Amritsar city",
+                      "duration": "1 hour",
+                      "description": "Return to the city after the ceremony."
+                },
+                {
+                      "time": "07:00 PM",
+                      "activity": "Drop back to hotel (or night Golden Temple visit)",
+                      "duration": "30 mins",
+                      "description": "Return to your hotel, optionally stopping for the illuminated temple."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for the full day",
+                "Experienced English-, Hindi- and Punjabi-speaking driver",
+                "Fuel, driver allowance, tolls and parking charges",
+                "Hotel / airport / railway station pickup and drop within Amritsar",
+                "Wagah Border round-trip transfer with correct timing",
+                "All applicable taxes and 24x7 customer support"
+          ],
+          "exclusions": [
+                "Monument and museum entry tickets",
+                "Meals, snacks and personal expenses",
+                "Guide charges (arranged on request at extra cost)",
+                "Wagah Border VIP / reserved seating if opted",
+                "Anything not explicitly mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Spiritual & Pilgrimage",
+          "heroImage": "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Amritsar/Golden_Temple.jpg",
+                "/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg",
+                "/images/sightseeing/Amritsar/Wagah_Border.jpg",
+                "/images/sightseeing/Amritsar/Partition_Museum.jpg",
+                "/images/sightseeing/Amritsar/Amristar_hero_section.jpg"
+          ],
+          "tips": [
+                "Carry a scarf or head covering for the Golden Temple; shoes and socks must be removed before entry.",
+                "Leave for the Wagah Border early, as gates close before the ceremony and seating fills fast.",
+                "Avoid carrying large bags or backpacks to Wagah, as security restrictions are strict.",
+                "Try the langar at the Golden Temple for a humbling, free community meal experience.",
+                "Revisit the Golden Temple after dark to see it beautifully illuminated and far less crowded."
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 2470
+          },
+          "coordinates": {
+                "latitude": 31.634,
+                "longitude": 74.8723
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Easy; wheelchair access at Golden Temple and ramped seating at Wagah",
+          "keywords": [
+                "Amritsar full day city tour",
+                "Amritsar sightseeing cab",
+                "Amritsar taxi for sightseeing",
+                "Amritsar city tour package",
+                "Golden Temple tour Amritsar",
+                "Wagah Border ceremony tour",
+                "Jallianwala Bagh Amritsar",
+                "Partition Museum Amritsar",
+                "Amritsar local sightseeing by car",
+                "best places to visit in Amritsar in one day",
+                "Amritsar private cab tour",
+                "Amritsar full day taxi package",
+                "things to do in Amritsar in a day",
+                "Amritsar car rental with driver",
+                "Wagah Border taxi from Amritsar",
+                "Durgiana Temple Amritsar",
+                "how to see Amritsar in one day",
+                "Amritsar tour by Triveni Cabs",
+                "Amritsar Golden Temple and Wagah tour",
+                "Amritsar hotel pickup sightseeing tour"
+          ]
+    },
+    {
       id: 32,
       name: "Amritsar Golden Temple & Wagah Border Tour",
       slug: "amritsar-golden-temple-wagah-border-tour",
@@ -13284,6 +15424,158 @@ export const sightseeingTours = {
 
   jodhpur: [
     {
+          "id": 202,
+          "slug": "jodhpur-full-day-city-tour",
+          "name": "Jodhpur Full Day City Tour by Cab",
+          "shortDescription": "Private full-day Jodhpur sightseeing cab covering Mehrangarh Fort, Umaid Bhawan, Jaswant Thada and the Blue City with driver.",
+          "fullDescription": "Jodhpur, the Blue City and the gateway to the Thar Desert, is one of Rajasthan's most photogenic destinations, where a colossal hilltop fort looms over a sea of indigo-painted houses and a living royal palace still shelters a maharaja. The best and most comfortable way to take in all of Jodhpur's landmarks in a single day is a private full-day city tour by cab with Triveni Cabs, complete with a knowledgeable local driver who navigates the maze-like old-city lanes, knows where to park near the fort ramparts, and times your visit to the Blue City for the softest afternoon light. Booking is effortless, just call 7668570551 or message us on WhatsApp at wa.me/917668570551, and we will pick you up directly from your hotel, the railway station or Jodhpur Airport, about 5 km from the city centre.\n\nYour day typically starts with a hotel pickup around 8:00 AM and a short drive up the winding road to the mighty Mehrangarh Fort, one of the largest and best-preserved forts in India, standing 125 metres above the city on a sheer rocky outcrop. Plan for two to three hours here, the fort's burnished sandstone walls, the opulent palaces within (Moti Mahal, Phool Mahal, Sheesh Mahal and the Zenana), the excellent museum of palanquins, arms and miniature paintings, and the breathtaking ramparts overlooking the blue city below make this the undisputed highlight of any Jodhpur tour. The optional zip-line (Flying Fox) over the fort's lakes is a thrilling add-on for the adventurous.\n\nJust a few hundred metres from Mehrangarh, an easy stop on the way down, is Jaswant Thada, a serene white-marble cenotaph built in 1899 in memory of Maharaja Jaswant Singh II. Often called the Taj Mahal of Marwar, its delicately carved marble lattice, manicured gardens and tranquil lake make a lovely 30- to 45-minute pause away from the crowds. From here it is roughly a 9 km drive across the city to Umaid Bhawan Palace, one of the world's largest private residences and a magnificent example of Indo-Deco architecture completed in 1943. A portion now operates as a Taj heritage hotel, while another houses a museum displaying vintage cars, clocks and royal memorabilia, with the palace's golden-yellow sandstone dome dominating the skyline.\n\nAfter lunch (your driver can suggest authentic Marwari thali restaurants or a rooftop café with fort views), the tour heads about 9 km north to the Mandore Gardens, the ancient capital of Marwar before Jodhpur. Here you will find beautifully sculpted royal cenotaphs in a temple-like style, the Hall of Heroes carved from a single rock, lush gardens and resident langurs, a peaceful and green contrast to the desert hues of the city. On the way back, your driver brings you into the heart of the old town to the Clock Tower (Ghanta Ghar) and the bustling Sardar Market, a riot of colour, spices, textiles, bandhani fabrics, lac bangles, antiques and the famous makhaniya lassi served in clay cups, the perfect place to experience everyday Jodhpur life and pick up souvenirs.\n\nNo Jodhpur tour is complete without time in the Blue City itself, the labyrinth of indigo-washed Brahmin houses tumbling down the slopes beneath Mehrangarh. Your Triveni Cabs driver knows the best vantage points and quiet lanes for those iconic blue-wall photographs, and can drop and collect you so you can wander on foot without worrying about directions. Distances in Jodhpur are short and the sights cluster naturally, so a private cab lets you cover everything comfortably in eight to ten hours with time to spare for tea and photographs.\n\nFor vehicles, Triveni Cabs offers an air-conditioned Sedan (Swift Dzire or similar) for couples and solo travellers, a spacious SUV (Toyota Innova or Ertiga) for families and groups up to 6, and a 12- to 15-seater Tempo Traveller for larger parties travelling together. Every booking comes with an experienced local driver, transparent fixed fares with fuel and driver allowance included, no hidden charges, GPS-tracked and sanitised vehicles, and a flexible itinerary you can reshuffle at any time. Because the old-city lanes are narrow and parking near the fort and market is limited, having a dedicated driver who handles all the logistics genuinely transforms the day.\n\nTriveni Cabs is a trusted North-India travel operator with thousands of satisfied customers, courteous drivers and 24x7 support. Beyond the city tour, we can arrange excursions to the Osian temples and desert camps, Bishnoi village safaris, Kumbhalgarh and Ranakpur, or onward transfers to Jaisalmer, Udaipur and Mount Abu. Whether you want a fast-paced highlights run or a relaxed day blending forts, palaces, gardens and bazaars, our Jodhpur Full Day City Tour delivers the very best of the Sun City. To reserve your tour, get today's best fare or customise the route, simply call 7668570551 or send a WhatsApp message to wa.me/917668570551 and our team will confirm your booking in minutes.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2400,
+                "suv": 3100,
+                "tempoTraveller": 4700,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Mehrangarh Fort - towering hilltop citadel with palaces and museum",
+                "Umaid Bhawan Palace - one of the world's largest private royal residences",
+                "Jaswant Thada - the marble 'Taj Mahal of Marwar' cenotaph",
+                "Mandore Gardens - sculpted royal cenotaphs and the Hall of Heroes",
+                "Clock Tower & Sardar Market - spices, textiles and makhaniya lassi",
+                "Blue City - iconic indigo lanes beneath the fort",
+                "Flying Fox zip-line - optional adventure over Mehrangarh's lakes",
+                "Old City bazaars - bandhani, lac bangles and Marwari handicrafts"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:00 AM",
+                      "activity": "Hotel pickup in air-conditioned cab",
+                      "duration": "30 mins",
+                      "description": "Meet your Triveni Cabs driver and head up to the fort."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "Mehrangarh Fort",
+                      "duration": "2.5 hours",
+                      "description": "Explore the palaces, museum and ramparts overlooking the Blue City."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Jaswant Thada",
+                      "duration": "45 mins",
+                      "description": "Visit the white-marble royal cenotaph and its tranquil gardens."
+                },
+                {
+                      "time": "11:45 AM",
+                      "activity": "Drive to Umaid Bhawan Palace",
+                      "duration": "30 mins",
+                      "description": "Cross the city to the grand Indo-Deco palace."
+                },
+                {
+                      "time": "12:15 PM",
+                      "activity": "Umaid Bhawan Palace museum",
+                      "duration": "1 hour",
+                      "description": "See vintage cars, clocks and royal memorabilia."
+                },
+                {
+                      "time": "01:15 PM",
+                      "activity": "Marwari lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy a traditional thali or rooftop lunch with fort views."
+                },
+                {
+                      "time": "02:15 PM",
+                      "activity": "Mandore Gardens",
+                      "duration": "1 hour",
+                      "description": "Wander the cenotaphs, Hall of Heroes and shaded gardens."
+                },
+                {
+                      "time": "03:30 PM",
+                      "activity": "Clock Tower & Sardar Market",
+                      "duration": "1 hour",
+                      "description": "Shop for spices, textiles and the famous makhaniya lassi."
+                },
+                {
+                      "time": "04:30 PM",
+                      "activity": "Blue City photo walk",
+                      "duration": "1 hour",
+                      "description": "Capture the indigo lanes from the best vantage points."
+                },
+                {
+                      "time": "05:30 PM",
+                      "activity": "Drop back to hotel",
+                      "duration": "30 mins",
+                      "description": "Return to your hotel, concluding the full-day Jodhpur tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for the full day",
+                "Experienced English- and Hindi-speaking driver",
+                "Fuel, driver allowance, tolls and parking charges",
+                "Hotel / airport / railway station pickup and drop within Jodhpur",
+                "Flexible, fully customisable sightseeing itinerary",
+                "All applicable taxes and 24x7 customer support"
+          ],
+          "exclusions": [
+                "Monument and museum entry tickets",
+                "Mehrangarh Flying Fox zip-line charges",
+                "Meals, snacks and personal expenses",
+                "Guide charges (arranged on request at extra cost)",
+                "Anything not explicitly mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Heritage & Culture",
+          "heroImage": "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+          "images": [
+                "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg",
+                "/images/sightseeing/Jodhpur/Umaid Bhawan Palace.jpg",
+                "/images/sightseeing/Jodhpur/Jaswant Thada.jpg",
+                "/images/sightseeing/Jodhpur/Mandore Gardens jodhpur.jpg",
+                "/images/sightseeing/Jodhpur/Clock Tower _Bustling Sardar Market in Jodhpur.jpg",
+                "/images/sightseeing/Jodhpur/Blue City_Iconic blue-painted houses in jodhpur.jpg"
+          ],
+          "tips": [
+                "Start at Mehrangarh Fort early to beat both the heat and the tour-bus crowds.",
+                "Carry cash for the Sardar Market and a cup of the legendary makhaniya lassi near the Clock Tower.",
+                "Wear comfortable shoes and a hat as the fort and Mandore involve walking and open sun.",
+                "For the best Blue City photos visit the lanes in the soft light of late afternoon.",
+                "Pre-book the Flying Fox zip-line if you want the adventure slot, as it can fill up in peak season."
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 1520
+          },
+          "coordinates": {
+                "latitude": 26.2389,
+                "longitude": 73.0243
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Moderate at the fort (stairs and ramps); cab drops close to each site",
+          "keywords": [
+                "Jodhpur full day city tour",
+                "Jodhpur sightseeing cab",
+                "Jodhpur taxi for sightseeing",
+                "Jodhpur city tour package",
+                "Mehrangarh Fort tour",
+                "Umaid Bhawan Palace Jodhpur",
+                "Jaswant Thada Jodhpur",
+                "Blue City Jodhpur tour",
+                "Jodhpur local sightseeing by car",
+                "best places to visit in Jodhpur in one day",
+                "Jodhpur private cab tour",
+                "Jodhpur full day taxi package",
+                "things to do in Jodhpur in a day",
+                "Jodhpur car rental with driver",
+                "Mandore Gardens Jodhpur",
+                "Sardar Market Clock Tower Jodhpur",
+                "how to see Jodhpur in one day",
+                "Jodhpur tour by Triveni Cabs",
+                "Sun City Jodhpur sightseeing",
+                "Jodhpur hotel pickup sightseeing tour"
+          ]
+    },
+    {
       id: 33,
       name: "Jodhpur Blue City Tour",
       slug: "jodhpur-blue-city-tour",
@@ -13793,6 +16085,164 @@ export const sightseeingTours = {
   ],
 
   udaipur: [
+    {
+          "id": 201,
+          "slug": "udaipur-full-day-city-tour",
+          "name": "Udaipur Full Day City Tour by Cab",
+          "shortDescription": "Private full-day Udaipur sightseeing cab covering City Palace, Lake Pichola, Saheliyon-ki-Bari and Monsoon Palace with driver.",
+          "fullDescription": "Udaipur, the City of Lakes, is the most romantic city in Rajasthan and arguably in all of India, and a full day city tour by private cab is by far the best way to experience its palaces, lakes, temples and hilltop sunsets without the stress of haggling with auto-rickshaws or waiting for crowded local transport. Triveni Cabs offers a comfortable, door-to-door Udaipur Full Day City Tour with a professional, English- and Hindi-speaking driver who knows every shortcut through the narrow old-city lanes, the best photo stops along Lake Pichola, and the perfect timing to reach Sajjangarh before the sun goes down. Book in seconds by calling 7668570551 or messaging on WhatsApp at wa.me/917668570551, and we will pick you up directly from your hotel, guest house or the Maharana Pratap Airport (Dabok), roughly 22 km from the city centre.\n\nA typical day begins with a hotel pickup around 8:00 AM, after which your first stop is the magnificent City Palace, the largest palace complex in Rajasthan, rising in a sweep of balconies, cupolas and arches above the eastern bank of Lake Pichola. Allow around two hours here to wander the Mor Chowk (Peacock Courtyard), the Sheesh Mahal, the Crystal Gallery and the museum, all while soaking in jaw-dropping views of the lake and the floating Lake Palace (Taj Lake Palace) below. Just a few minutes' walk uphill from the palace is the 17th-century Jagdish Temple, a beautifully carved Indo-Aryan shrine to Lord Vishnu where the morning aarti and the intricate elephant and musician carvings make a worthwhile half-hour stop.\n\nFrom the City Palace jetty you can board a boat ride on Lake Pichola (ticket not included, optional), gliding past the Lake Palace to Jag Mandir, the 17th-century island palace of yellow sandstone and marble where Shah Jahan is said to have taken refuge and drawn inspiration for the Taj Mahal. Your driver will wait at the jetty while you enjoy the roughly one-hour cruise. Distances within Udaipur are short, City Palace to Saheliyon-ki-Bari is only about 5 km, so the cab makes it easy to string together many sights without fatigue.\n\nNext, head to Saheliyon-ki-Bari (the Garden of the Maidens), a serene 18th-century garden built for the queen and her ladies-in-waiting, famous for its lotus pools, marble elephants, kiosks and rain-dance fountains powered entirely by gravity. A short 3 km drive away lies Fateh Sagar Lake, the second of Udaipur's great lakes, ringed by the Aravalli hills and dotted with three islands including Nehru Park. The lakeside promenade is the perfect place for a relaxed lunch break (your driver can recommend rooftop restaurants with lake views) and a cup of Rajasthani chai.\n\nIn the afternoon the tour climbs to the Sajjangarh Monsoon Palace, perched dramatically on the Bansdara peak about 9 km from the city. Built by Maharana Sajjan Singh in 1884, this hilltop palace offers a panoramic 360-degree sweep over Udaipur's lakes, the Aravalli ranges and the sprawling Sajjangarh Wildlife Sanctuary below, it is the single best sunset spot in the city, and arriving by cab means you avoid the steep, tiring climb. Photographers should plan to be here around an hour before sunset.\n\nDepending on your pace and interests, the day can also weave in Bagore Ki Haveli at Gangaur Ghat (which hosts the evening Dharohar folk-dance show), the cenotaphs of Ahar, the Vintage Car Museum, or a stroll through the colourful bazaars of the old city for miniature paintings, silver jewellery and Pichwai art. Your itinerary is fully flexible, simply tell your Triveni Cabs driver what matters most to you and the route is rearranged on the spot at no extra cost.\n\nFor vehicle options, Triveni Cabs offers a clean air-conditioned Sedan (Swift Dzire or similar) ideal for couples and solo travellers, a roomy SUV (Toyota Innova or Ertiga) perfect for families and small groups of up to 6, and a 12- to 15-seater Tempo Traveller for larger families and friend groups who want to travel together. All vehicles come with experienced local drivers, transparent fixed pricing with no hidden charges, fuel and driver allowance built in, and the freedom to start early and stay out late. Because Udaipur's attractions are spread between the lakefront, the gardens to the north and the hilltop palace to the west, a private cab genuinely saves hours compared with public transport and lets you set your own rhythm.\n\nTriveni Cabs is a trusted North-India travel operator with thousands of happy customers, GPS-tracked vehicles, sanitised interiors, courteous drivers and round-the-clock support. We can also extend your Udaipur trip into day excursions to Eklingji and Nathdwara temples, the Kumbhalgarh Fort and Ranakpur Jain temples, or onward transfers to Mount Abu, Chittorgarh and Jaipur. Whether you have a single day to capture the highlights or want a relaxed lake-side experience, our full-day city tour balances heritage, nature and that famous Udaipuri romance perfectly. To reserve your Udaipur Full Day City Tour, lock in today's best fare, or customise the itinerary, just call 7668570551 or send a WhatsApp message to wa.me/917668570551 and our team will confirm your booking within minutes.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2500,
+                "suv": 3200,
+                "tempoTraveller": 4800,
+                "currency": "INR"
+          },
+          "highlights": [
+                "City Palace - Rajasthan's largest palace complex overlooking Lake Pichola",
+                "Lake Pichola & Jag Mandir - boat cruise past the floating island palaces",
+                "Jagdish Temple - exquisitely carved 17th-century Vishnu shrine",
+                "Saheliyon-ki-Bari - royal garden of fountains, lotus pools and marble elephants",
+                "Fateh Sagar Lake - serene Aravalli-ringed lake with island gardens",
+                "Sajjangarh Monsoon Palace - hilltop sunset views over the City of Lakes",
+                "Old City Bazaars - miniature paintings, silver and Pichwai art",
+                "Bagore Ki Haveli - heritage mansion with evening folk-dance show"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:00 AM",
+                      "activity": "Hotel pickup in air-conditioned cab",
+                      "duration": "30 mins",
+                      "description": "Meet your Triveni Cabs driver and depart for the day's sightseeing."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "City Palace complex",
+                      "duration": "2 hours",
+                      "description": "Explore the courtyards, Sheesh Mahal, Crystal Gallery and museum with lake views."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "Jagdish Temple",
+                      "duration": "30 mins",
+                      "description": "Admire the carved Indo-Aryan architecture and morning devotions."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Lake Pichola & Jag Mandir boat ride",
+                      "duration": "1.5 hours",
+                      "description": "Optional cruise past the Lake Palace to the Jag Mandir island palace."
+                },
+                {
+                      "time": "12:30 PM",
+                      "activity": "Saheliyon-ki-Bari garden",
+                      "duration": "45 mins",
+                      "description": "Stroll among fountains, lotus pools and marble pavilions."
+                },
+                {
+                      "time": "01:15 PM",
+                      "activity": "Lunch break at Fateh Sagar Lake",
+                      "duration": "1 hour",
+                      "description": "Relax at a lakeside or rooftop restaurant recommended by your driver."
+                },
+                {
+                      "time": "02:15 PM",
+                      "activity": "Fateh Sagar Lake promenade",
+                      "duration": "45 mins",
+                      "description": "Enjoy the lakefront, island views and Aravalli backdrop."
+                },
+                {
+                      "time": "03:30 PM",
+                      "activity": "Drive to Sajjangarh Monsoon Palace",
+                      "duration": "30 mins",
+                      "description": "Ascend the Bansdara peak by cab for hilltop panoramas."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Sajjangarh Monsoon Palace",
+                      "duration": "1.5 hours",
+                      "description": "360-degree views over lakes, hills and the wildlife sanctuary at sunset."
+                },
+                {
+                      "time": "05:45 PM",
+                      "activity": "Old city bazaar stroll (optional)",
+                      "duration": "45 mins",
+                      "description": "Shop for miniature paintings, silver jewellery and handicrafts."
+                },
+                {
+                      "time": "06:30 PM",
+                      "activity": "Drop back to hotel",
+                      "duration": "30 mins",
+                      "description": "Return to your hotel, concluding the full-day Udaipur tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for the full day",
+                "Experienced English- and Hindi-speaking driver",
+                "Fuel, driver allowance, tolls and parking charges",
+                "Hotel / airport / railway station pickup and drop within Udaipur",
+                "Flexible, fully customisable sightseeing itinerary",
+                "All applicable taxes and 24x7 customer support"
+          ],
+          "exclusions": [
+                "Monument entry tickets and museum fees",
+                "Lake Pichola / Jag Mandir boat ride tickets",
+                "Meals, snacks and personal expenses",
+                "Guide charges (arranged on request at extra cost)",
+                "Anything not explicitly mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Heritage & Culture",
+          "heroImage": "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Udaipur/City_Palace.jpg",
+                "/images/sightseeing/Udaipur/Lake_Pichola.jpg",
+                "/images/sightseeing/Udaipur/Jag_Mandir.jpg",
+                "/images/sightseeing/Udaipur/Jagdish_Temple.jpg",
+                "/images/sightseeing/Udaipur/Fateh_Sagar_Lake.jpg",
+                "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg"
+          ],
+          "tips": [
+                "Reach Sajjangarh Monsoon Palace about an hour before sunset for the best light and panoramas.",
+                "Carry cash for monument tickets and the optional Lake Pichola boat ride, which can be busy in peak season.",
+                "Wear comfortable walking shoes as the City Palace involves a fair amount of stairs and walking.",
+                "Book the boat ride early in the day as afternoon slots near sunset sell out quickly.",
+                "Ask your driver to recommend a rooftop restaurant at Fateh Sagar or Lake Pichola for a memorable lunch view."
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 1840
+          },
+          "coordinates": {
+                "latitude": 24.5854,
+                "longitude": 73.7125
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Mostly easy with some palace stairs; cab drops close to each attraction",
+          "keywords": [
+                "Udaipur full day city tour",
+                "Udaipur sightseeing cab",
+                "Udaipur taxi for sightseeing",
+                "Udaipur city tour package",
+                "City Palace Udaipur tour",
+                "Lake Pichola boat ride Udaipur",
+                "Sajjangarh Monsoon Palace tour",
+                "Saheliyon ki Bari Udaipur",
+                "Udaipur local sightseeing by car",
+                "best places to visit in Udaipur in one day",
+                "Udaipur private cab tour",
+                "Udaipur full day taxi package",
+                "things to do in Udaipur in a day",
+                "Udaipur car rental with driver",
+                "Fateh Sagar Lake Udaipur",
+                "Jagdish Temple Udaipur tour",
+                "how to see Udaipur in one day",
+                "Udaipur tour by Triveni Cabs",
+                "Udaipur lake city sightseeing",
+                "Udaipur hotel pickup sightseeing tour"
+          ]
+    },
     {
       id: 34,
       name: "Udaipur City of Lakes Tour",
@@ -15836,6 +18286,164 @@ export const sightseeingTours = {
   ],
 
   jaisalmer: [
+    {
+          "id": 205,
+          "slug": "jaisalmer-full-day-city-tour",
+          "name": "Jaisalmer Full Day City Tour by Cab",
+          "shortDescription": "Private full-day Jaisalmer sightseeing cab covering Sonar Quila, Patwon Ki Haveli, Gadisar Lake and the Sam Sand Dunes safari with driver.",
+          "fullDescription": "Jaisalmer, the Golden City rising like a mirage from the Thar Desert, is the crown jewel of western Rajasthan, where honey-coloured sandstone fort walls, intricately carved havelis and rolling sand dunes combine into one of the most atmospheric destinations in India. The ideal way to take in its living fort, ornate merchant mansions, serene lake and a magical desert sunset all in one day is a private full-day city tour by cab with Triveni Cabs, driven by a friendly local who knows the fort's narrow gates, the best haveli viewpoints and exactly when to set off for the Sam Sand Dunes to catch the camels silhouetted against the setting sun. To book, just call 7668570551 or message us on WhatsApp at wa.me/917668570551, and we will pick you up from your hotel or from Jaisalmer Airport, about 17 km from the city centre.\n\nThe day usually begins with a hotel pickup around 8:30 AM and a drive to the magnificent Jaisalmer Fort, locally called Sonar Quila or the Golden Fort, one of the very few living forts in the world where thousands of people still live within the ramparts. Built in 1156 from yellow sandstone that glows golden at sunrise and sunset, the fort is a labyrinth of temples, palaces, shops and havelis. Plan two to three hours to explore the Raj Mahal (royal palace), the exquisitely carved Jain temples dating from the 12th to 15th centuries, the Laxminath Temple, and the bustling lanes lined with handicraft and textile shops, all while enjoying sweeping views over the desert city from the bastions.\n\nDescending from the fort, the tour visits the celebrated Patwon Ki Haveli, a cluster of five grand merchant mansions built in the early 19th century and considered the finest of Jaisalmer's havelis. Their façades are a masterpiece of jharokhas (carved balconies), arched gateways and lattice screens of staggering intricacy, a 45-minute to one-hour stop that reveals the immense wealth of the city's old silk-route traders. Close by lie two more architectural gems, the Nathmal Ki Haveli and the Salim Singh Ki Haveli with its distinctive peacock-shaped upper storeys, both worth a quick look as your driver moves you between them through the old city.\n\nA short drive away is the tranquil Gadisar Lake, a man-made reservoir built in the 14th century that was once the city's sole water source. Ringed by sandstone ghats, ornate gateways, small temples and shrines, and alive with migratory birds in winter, it is a beautifully peaceful spot for a stroll, a boat ride (optional) and photographs, especially lovely in the soft morning or late-afternoon light. After lunch (your driver can recommend a rooftop café with fort views serving Rajasthani specialities), the tour heads about 6 km out to Bada Bagh, a set of royal cenotaphs (chhatris) set on a hillside amid a working wind farm, where the domed memorials of Jaisalmer's rulers frame some of the most spectacular sunset photographs in the region.\n\nThe grand finale of the day is the drive roughly 42 km west to the Sam Sand Dunes, the heart of the Thar Desert experience. Here you can enjoy a camel safari or a thrilling jeep dune-bash across the rippling sands, watch the sun melt into the horizon over an endless ocean of dunes, and, if you wish, stay on for an evening of Rajasthani folk music and dance with dinner at a desert camp (optional). Arriving by private cab means you reach in good time for sunset and travel back to your hotel in comfort afterwards, with no worry about return transport in the dark. Your Triveni Cabs driver handles all the timing so you simply relax and soak in the magic.\n\nFor vehicle options, Triveni Cabs offers an air-conditioned Sedan (Swift Dzire or similar) for couples and solo travellers, a roomy SUV (Toyota Innova or Ertiga) for families and groups up to 6, and a 12- to 15-seater Tempo Traveller for larger families and friend groups heading to the dunes together. Every booking includes an experienced local driver, transparent fixed pricing with fuel and driver allowance built in, no hidden charges, GPS-tracked sanitised vehicles, and 24x7 support. Given the distances between the fort, the lake, Bada Bagh and the far-flung Sam dunes, a dedicated cab is genuinely the only practical way to see it all comfortably in a single day.\n\nTriveni Cabs is a trusted North-India travel operator with thousands of happy customers and round-the-clock assistance. Beyond the city tour we can arrange excursions to the Kuldhara abandoned village, the Tanot Mata Temple near the border, Khuri's quieter dunes, or onward transfers to Jodhpur, Bikaner and Mount Abu. Whether you crave heritage, desert adventure, or that legendary golden sunset, our Jaisalmer Full Day City Tour delivers the very best of the Thar. To reserve your tour, secure today's best fare or customise the itinerary, just call 7668570551 or send a WhatsApp message to wa.me/917668570551 and our team will confirm your booking within minutes.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2600,
+                "suv": 3300,
+                "tempoTraveller": 4900,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Jaisalmer Fort (Sonar Quila) - golden living fort with Jain temples",
+                "Patwon Ki Haveli - the finest of Jaisalmer's carved merchant mansions",
+                "Gadisar Lake - serene 14th-century reservoir with ghats and shrines",
+                "Sam Sand Dunes - camel safari and desert sunset in the Thar",
+                "Bada Bagh - royal cenotaphs framing spectacular sunsets",
+                "Nathmal & Salim Singh Havelis - peacock balconies and lattice façades",
+                "Raj Mahal - the royal palace within the fort ramparts",
+                "Desert camp evening - Rajasthani folk music and dance (optional)"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup in air-conditioned cab",
+                      "duration": "30 mins",
+                      "description": "Meet your Triveni Cabs driver and head to the Golden Fort."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Jaisalmer Fort (Sonar Quila)",
+                      "duration": "2.5 hours",
+                      "description": "Explore the Raj Mahal, Jain temples and fort lanes with desert views."
+                },
+                {
+                      "time": "11:30 AM",
+                      "activity": "Patwon Ki Haveli",
+                      "duration": "1 hour",
+                      "description": "Admire the intricately carved five-mansion haveli complex."
+                },
+                {
+                      "time": "12:30 PM",
+                      "activity": "Nathmal & Salim Singh Havelis",
+                      "duration": "30 mins",
+                      "description": "View the peacock balconies and ornate façades en route."
+                },
+                {
+                      "time": "01:00 PM",
+                      "activity": "Lunch break with fort views",
+                      "duration": "1 hour",
+                      "description": "Enjoy Rajasthani specialities at a recommended rooftop café."
+                },
+                {
+                      "time": "02:00 PM",
+                      "activity": "Gadisar Lake",
+                      "duration": "1 hour",
+                      "description": "Stroll the ghats and shrines and take an optional boat ride."
+                },
+                {
+                      "time": "03:15 PM",
+                      "activity": "Bada Bagh cenotaphs",
+                      "duration": "1 hour",
+                      "description": "Photograph the royal chhatris amid the desert wind farm."
+                },
+                {
+                      "time": "04:30 PM",
+                      "activity": "Drive to Sam Sand Dunes",
+                      "duration": "1 hour",
+                      "description": "Travel about 42 km west to the heart of the Thar Desert."
+                },
+                {
+                      "time": "05:30 PM",
+                      "activity": "Camel / jeep safari & desert sunset",
+                      "duration": "1.5 hours",
+                      "description": "Ride the dunes and watch the sun set over the sands."
+                },
+                {
+                      "time": "07:00 PM",
+                      "activity": "Optional desert camp folk evening",
+                      "duration": "1.5 hours",
+                      "description": "Stay for Rajasthani music, dance and dinner (optional)."
+                },
+                {
+                      "time": "08:30 PM",
+                      "activity": "Drive back to hotel",
+                      "duration": "1 hour",
+                      "description": "Return to your hotel in comfort, concluding the tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for the full day",
+                "Experienced English- and Hindi-speaking driver",
+                "Fuel, driver allowance, tolls and parking charges",
+                "Hotel / airport / railway station pickup and drop within Jaisalmer",
+                "Round-trip transfer to the Sam Sand Dunes",
+                "All applicable taxes and 24x7 customer support"
+          ],
+          "exclusions": [
+                "Monument and haveli entry tickets",
+                "Camel safari, jeep safari and desert camp charges",
+                "Gadisar Lake boat ride tickets",
+                "Meals, snacks and personal expenses",
+                "Anything not explicitly mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Desert & Forts",
+          "heroImage": "/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg",
+                "/images/sightseeing/Jaisalmer/Patwon_Ki_Haveli.jpg",
+                "/images/sightseeing/Jaisalmer/Gadisar_Lake.jpg",
+                "/images/sightseeing/Jaisalmer/Sam_Sand_Dunes.jpg",
+                "/images/sightseeing/Jaisalmer/Desert_Safari.jpg",
+                "/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg"
+          ],
+          "tips": [
+                "Time your drive to the Sam Sand Dunes to arrive about 90 minutes before sunset for the best light.",
+                "Carry a scarf, sunglasses and sunscreen for the desert, where wind and sun are strong.",
+                "Wear comfortable shoes for the fort's cobbled lanes and the haveli stairs.",
+                "Carry cash for camel and jeep safaris and for shopping in the fort's handicraft lanes.",
+                "Evenings in the desert can get chilly in winter, so bring a light jacket if staying for the camp."
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 1360
+          },
+          "coordinates": {
+                "latitude": 26.9157,
+                "longitude": 70.9083
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Moderate; fort and havelis involve steps, dunes require soft-sand walking",
+          "keywords": [
+                "Jaisalmer full day city tour",
+                "Jaisalmer sightseeing cab",
+                "Jaisalmer taxi for sightseeing",
+                "Jaisalmer city tour package",
+                "Jaisalmer Fort Sonar Quila tour",
+                "Sam Sand Dunes safari Jaisalmer",
+                "Patwon Ki Haveli Jaisalmer",
+                "Gadisar Lake Jaisalmer",
+                "Jaisalmer local sightseeing by car",
+                "best places to visit in Jaisalmer in one day",
+                "Jaisalmer private cab tour",
+                "Jaisalmer full day taxi package",
+                "things to do in Jaisalmer in a day",
+                "Jaisalmer car rental with driver",
+                "desert safari Jaisalmer cab",
+                "Bada Bagh Jaisalmer",
+                "how to see Jaisalmer in one day",
+                "Jaisalmer tour by Triveni Cabs",
+                "Golden City Jaisalmer sightseeing",
+                "Jaisalmer hotel pickup sightseeing tour"
+          ]
+    },
     {
       id: 53,
       name: "Jaisalmer Golden City Tour",
@@ -20764,6 +23372,164 @@ export const sightseeingTours = {
   // Rajasthan New Tours
   pushkar: [
     {
+          "id": 212,
+          "slug": "pushkar-full-day-city-tour",
+          "name": "Pushkar Full Day City Tour",
+          "shortDescription": "Full-day Pushkar sightseeing by private cab covering the Brahma Temple, Pushkar Lake ghats, Savitri Temple ropeway and Ajmer Sharif.",
+          "fullDescription": "Pushkar, set on the edge of the Thar Desert in Rajasthan, is one of the oldest and most sacred towns in India — a place of blue-washed lanes, 52 bathing ghats, and the only major temple in the world dedicated to Lord Brahma, the creator. Wrapped around the holy **Pushkar Lake** and overlooked by the Aravalli hills, it is famous for its spiritual intensity, its bohemian rooftop cafes, and the legendary annual **Pushkar Camel Fair**. A full-day Pushkar city tour with Triveni Cabs is the most rewarding way to experience its temples, ghats, and viewpoints — often combined with the great Sufi shrine of **Ajmer Sharif Dargah** just 15 kilometres away — all with a local driver who knows the narrow lanes, the parking, and the rhythm of the holy town.\n\nThe day typically begins with a hotel or Ajmer-side pickup in an air-conditioned car. The spiritual heart of the tour is the **Jagatpita Brahma Temple**, a 14th-century shrine with its distinctive red spire and marble steps, revered as one of very few temples anywhere dedicated to Brahma; legend ties its location to a yagna performed by the creator god, and a pilgrimage to Pushkar is considered incomplete without darshan here. A few steps away lies **Pushkar Lake** itself, a sacred body of water said to have formed where a lotus fell from Brahma's hand, ringed by **52 ghats** where pilgrims bathe to wash away sins; the lakeside is especially magical at sunrise and sunset, when temple bells ring and the water glows. Your driver will guide you to the most accessible ghats and the best vantage points for photographs.\n\nFor panoramic views, the tour heads to the **Savitri Temple**, perched atop Ratnagiri hill and dedicated to Brahma's first wife; you can reach it by a thrilling **ropeway (cable car)** or by climbing the long flight of steps, and from the top you are rewarded with sweeping vistas over the lake, the town, and the surrounding desert and Aravalli ranges — the sunrise view is unforgettable. Across the valley stands the **Gayatri (Pap Mochani) Temple** on another hill, and within the town are the ancient **Varah Temple**, dedicated to Vishnu's boar avatar, the **Rangji Temple** with its South-Indian-style architecture, and the **Apteshwar Mahadev** temple. A walk through the bustling **Pushkar Bazaar** is a sensory delight, with stalls selling silver jewellery, embroidered textiles, leather mojaris, brassware, rose products, and the town's famous malpua and rose-flavoured treats.\n\nJust outside town lie the vast **Camel Fair grounds (Mela Maidan)**, which for a few days each year transform into one of the world's largest livestock fairs, drawing thousands of camels, horses, traders, folk performers, and travellers in a riot of colour; even outside fair season the grounds and the surrounding sand dunes are worth a stop, and your driver can arrange a short camel or jeep ride on the dunes for a desert taste. Many visitors combine Pushkar with a visit to **Ajmer**, just over the hill, to pay respects at the **Ajmer Sharif Dargah** — the revered Sufi shrine of Khwaja Moinuddin Chishti, one of the most important pilgrimage sites for Muslims in South Asia — and to see the **Ana Sagar Lake**, a serene 12th-century artificial lake with marble pavilions built by Shah Jahan. Triveni Cabs makes this twin-town circuit effortless.\n\nWe offer vehicles to suit every group. A **Sedan** such as a Swift Dzire is ideal for couples and small families of up to 4 and is the most economical choice. An **SUV** like an Ertiga or Innova seats 6 to 7 with extra comfort and luggage room, well-suited to families doing the Pushkar-Ajmer circuit. Larger groups, pilgrimage parties, and joint families can book a **Tempo Traveller** seating up to 15. Every vehicle is clean, air-conditioned, and well-maintained, and our drivers are courteous, punctual, and familiar with temple and dargah timings, the best ghats, and the most reliable shops and eateries.\n\nA typical Pushkar full-day tour runs 8 to 10 hours and is fully customisable. Because the core of Pushkar around the Brahma Temple and main ghats is largely pedestrian, your driver will park at authorised lots and guide you on foot through the lanes, then meet you at convenient pickup points. He can advise on the strict customs at the ghats (where leather items and photography may be restricted), recommend the best rooftop cafes for lake views and Rajasthani thali, and time the Savitri ropeway to catch the magical light. Note that Pushkar is a vegetarian and alcohol-free holy town, which adds to its serene, devotional atmosphere.\n\nBooking with Triveni Cabs is transparent and easy. Your quoted fare includes fuel, driver allowance, and taxes, while the Savitri ropeway, camel or jeep rides, dargah offerings, and any entry charges are paid directly so you only pay for what you use. We operate year-round, including the spectacular Camel Fair period (usually around Kartik Purnima in October–November), when our local route knowledge is invaluable amid the crowds and diversions. Pickup is punctual and every vehicle is GPS-tracked.\n\nTo reserve your air-conditioned cab for a full-day Pushkar city tour — with or without the Ajmer Sharif extension — call or WhatsApp Triveni Cabs at **7668570551** (wa.me/917668570551). Share your pickup point, group size, and preferred vehicle, and our team will confirm a clean car with a friendly local driver who will help you experience the temples, ghats, dunes, and timeless spirituality of Pushkar in complete comfort.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2800,
+                "suv": 3800,
+                "tempoTraveller": 5500,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Jagatpita Brahma Temple - rare 14th-century shrine to the creator god Brahma",
+                "Pushkar Lake & 52 ghats - sacred lake ringed by bathing ghats, magical at sunrise",
+                "Savitri Temple - hilltop shrine reached by ropeway with sweeping desert views",
+                "Pushkar Camel Fair grounds - vast Mela Maidan and surrounding sand dunes",
+                "Varah & Rangji Temples - ancient Vishnu shrine and South-Indian-style temple",
+                "Pushkar Bazaar - silver jewellery, textiles, mojaris, rose products and malpua",
+                "Ajmer Sharif Dargah - revered Sufi shrine of Khwaja Moinuddin Chishti (optional)",
+                "Ana Sagar Lake - serene 12th-century lake with Shah Jahan's marble pavilions"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:00 AM",
+                      "activity": "Hotel pickup",
+                      "duration": "0.5 hours",
+                      "description": "Meet your Triveni Cabs driver and depart in an AC vehicle."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "Pushkar Lake & ghats",
+                      "duration": "1 hour",
+                      "description": "Walk the sacred ghats in the soft morning light and soak in the atmosphere."
+                },
+                {
+                      "time": "09:45 AM",
+                      "activity": "Brahma Temple",
+                      "duration": "1 hour",
+                      "description": "Darshan at the rare temple dedicated to Lord Brahma the creator."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Savitri Temple via ropeway",
+                      "duration": "1.5 hours",
+                      "description": "Ride the cable car up Ratnagiri hill for panoramic lake and desert views."
+                },
+                {
+                      "time": "12:45 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Rajasthani thali or rooftop cafe with lake views."
+                },
+                {
+                      "time": "01:45 PM",
+                      "activity": "Varah & Rangji Temples + bazaar",
+                      "duration": "1.25 hours",
+                      "description": "Visit the ancient temples and stroll the colourful Pushkar Bazaar."
+                },
+                {
+                      "time": "03:15 PM",
+                      "activity": "Camel Fair grounds & dunes",
+                      "duration": "1 hour",
+                      "description": "See the Mela Maidan and enjoy an optional camel or jeep ride on the dunes."
+                },
+                {
+                      "time": "04:30 PM",
+                      "activity": "Drive to Ajmer",
+                      "duration": "0.5 hours",
+                      "description": "Scenic 15 km drive over the hill to Ajmer."
+                },
+                {
+                      "time": "05:00 PM",
+                      "activity": "Ajmer Sharif Dargah",
+                      "duration": "1.25 hours",
+                      "description": "Pay respects at the revered Sufi shrine of Khwaja Moinuddin Chishti."
+                },
+                {
+                      "time": "06:30 PM",
+                      "activity": "Ana Sagar Lake",
+                      "duration": "0.5 hours",
+                      "description": "Relax by the 12th-century lake and Shah Jahan's marble pavilions at dusk."
+                },
+                {
+                      "time": "07:00 PM",
+                      "activity": "Drop back",
+                      "duration": "0.5 hours",
+                      "description": "Return to your hotel, concluding the full-day Pushkar tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for full-day use",
+                "Experienced local driver familiar with temple and dargah timings",
+                "Fuel, driver allowance and all applicable taxes",
+                "Hotel pickup and drop within Pushkar / Ajmer",
+                "Bottled water and 24x7 Triveni Cabs trip support"
+          ],
+          "exclusions": [
+                "Savitri Temple ropeway, camel and jeep rides",
+                "Dargah offerings, donations and personal expenses",
+                "Meals, snacks and beverages",
+                "Parking fees and any toll charges",
+                "Anything not mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Spiritual & Pilgrimage",
+          "heroImage": "/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Ajmer_Pushkar/Brahma_Temple_Pushkar.jpg",
+                "/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg",
+                "/images/sightseeing/Ajmer_Pushkar/Pushkar_Camel_Fair.jpg",
+                "/images/sightseeing/Ajmer_Pushkar/Ana_Sagar_Lake_Ajmer.jpg",
+                "/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg"
+          ],
+          "tips": [
+                "Pushkar is a vegetarian, alcohol-free holy town; dress modestly and respect ghat customs.",
+                "Visit the ghats and Savitri Temple at sunrise or sunset for the most magical light.",
+                "Beware of unsolicited 'Pushkar passport' flower-offering touts at the main ghats.",
+                "Remove leather items before entering the ghats and certain temples.",
+                "Carry a head covering for the Ajmer Sharif Dargah visit."
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 2150
+          },
+          "coordinates": {
+                "latitude": 26.4899,
+                "longitude": 74.5511
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Ropeway available at Savitri Temple; ghats and lanes involve walking and steps",
+          "keywords": [
+                "Pushkar full day city tour",
+                "Pushkar sightseeing by cab",
+                "Pushkar taxi for local sightseeing",
+                "Brahma Temple Pushkar tour",
+                "Pushkar Lake ghats tour",
+                "Savitri Temple ropeway taxi",
+                "Pushkar Ajmer day tour",
+                "Ajmer Sharif Dargah cab",
+                "Pushkar one day tour by car",
+                "Pushkar Camel Fair grounds tour",
+                "best places to visit in Pushkar",
+                "Pushkar local tour with driver",
+                "Pushkar private cab tour",
+                "Pushkar AC taxi sightseeing",
+                "Ana Sagar Lake Ajmer tour",
+                "how to see Pushkar in one day",
+                "Pushkar cab booking",
+                "Pushkar city tour package",
+                "what to do in Pushkar in a day",
+                "Pushkar Rajasthan taxi tour",
+                "Triveni Cabs Pushkar",
+                "Pushkar sightseeing car rental"
+          ]
+    },
+    {
       id: 91,
       name: "Pushkar & Ajmer Sharif Same Day Tour",
       slug: "pushkar-ajmer-same-day",
@@ -20813,6 +23579,160 @@ export const sightseeingTours = {
   ],
 
   bikaner: [
+    {
+          "id": 301,
+          "slug": "bikaner-full-day-city-tour",
+          "name": "Bikaner Full Day City Tour",
+          "shortDescription": "Explore Bikaner's Junagarh Fort, Karni Mata Temple, Lallgarh Palace and camel country in a comfortable full-day private cab tour with Triveni Cabs.",
+          "fullDescription": "Bikaner is one of Rajasthan's most underrated desert jewels, a walled city founded in 1488 by Rao Bika that still wears its Rajput soul on its sleeve. Where Jaipur and Jodhpur draw the crowds, Bikaner rewards the traveller who wants forts without the queues, havelis without the hawkers, and a genuine taste of the Thar Desert. Triveni Cabs' Bikaner Full Day City Tour is designed to cover the very best of this golden-red sandstone city in a single, relaxed 8-10 hour day, with an air-conditioned private vehicle and a driver who knows every lane of the old town. Whether you are booking a Sedan for a couple, an SUV for a family, or a Tempo Traveller for a group of friends, this tour puts the whole of Bikaner within easy, comfortable reach. To reserve, simply call 7668570551 or message us on WhatsApp at wa.me/917668570551.\n\nThe undisputed highlight of any Bikaner day is Junagarh Fort, a formidable low-lying fortress built in 1589 by Raja Rai Singh, one of Emperor Akbar's most trusted generals. Unlike most Rajasthani forts perched on hilltops, Junagarh sits on the plains, protected by a moat and a 986-metre wall studded with 37 bastions. Inside, a labyrinth of courtyards opens into some of the most exquisitely decorated palaces in India - Anup Mahal with its gold-leaf lacquer work, Phool Mahal with its mirror inlays, Karan Mahal, Chandra Mahal, and the astonishing Badal Mahal, painted with cloud and rain motifs to conjure the monsoon a desert city so rarely sees. Your Triveni driver will drop you right at the fort gate so you save your energy for the walk through history rather than the walk from the parking lot.\n\nA short drive of about 30 kilometres south brings you to Deshnok and the extraordinary Karni Mata Temple, one of the most unusual pilgrimage sites on earth. Known as the Temple of Rats, this 20th-century marble shrine is home to some 25,000 sacred black rats called kabbas, believed to be reincarnations of Karni Mata's devotees. Spotting one of the rare white rats is considered deeply auspicious. The silver gates, marble carvings and the sheer devotion on display make this a stop you will never forget, whatever your feelings about its residents. Having a private cab waiting means you can visit at your own pace and time your journey to avoid the midday heat.\n\nBack in the city, the tour takes in Lallgarh Palace, a magnificent red-sandstone palace built by Maharaja Ganga Singh between 1902 and 1926 in honour of his father, Maharaja Lall Singh. Designed by the British architect Sir Samuel Swinton Jacob, it is a masterful blend of Rajput, Mughal and European styles, its filigree stonework so delicate it seems to defy the hardness of the stone. Part of it now houses a heritage hotel and a museum with one of the largest private collections of Sardar Ganga Singh memorabilia. Nearby, the Rampuria Havelis - a cluster of ornate merchant mansions in the old city - are considered the pride of Bikaner, their dusky-red Dulmera sandstone facades carved with jharokhas, jaali screens and floral motifs that have earned them the nickname the 'Pride of Bikaner'.\n\nNo trip to Bikaner is complete without meeting its most famous residents on four legs. A visit to the National Research Centre on Camel, the Bikaner Camel Farm on the city's outskirts, offers an insight into the ship of the desert that shaped this region's economy and culture. You can see different breeds, learn about camel husbandry, enjoy a short camel ride, and even sample camel-milk products including lassi and ice cream. It is a favourite with children and a wonderful, offbeat contrast to the forts and temples. For temple lovers, we can also include the beautiful Bhandasar Jain Temple, a 15th-century shrine famous for its mirror work, gold-leaf frescoes and the local legend that ghee was used in its foundations.\n\nWhy book this tour with Triveni Cabs rather than piecing together autos and shared jeeps? Because Bikaner's attractions are genuinely spread out - Deshnok alone is a 60-kilometre round trip - and the desert sun is unforgiving. Our air-conditioned vehicles give you a cool, private refuge between stops, our drivers double as informal guides who can recommend the best Bikaneri bhujia and rasgulla shops, and our transparent pricing means no haggling at every turn. We offer clean, well-maintained Sedans (ideal for 1-3 travellers), spacious SUVs for families who want extra comfort on the desert roads, and 12-15 seater Tempo Travellers for larger groups and multi-generational families. Every booking includes doorstep pickup from your Bikaner hotel, guesthouse or the railway station, and a driver who speaks Hindi and workable English.\n\nThe tour is fully customisable. If you want to add the Prachina Cultural Centre and Museum inside Junagarh, the Laxmi Niwas Palace, or a shopping stop for Bikaner's famous handcrafted usta art and leather goods, just tell your driver. Photographers often ask to time the fort visit for the softer morning light and the havelis for late afternoon, and we are happy to reorder the day around that. Families with elderly members can take the tour at a gentle pace with plenty of rest stops, while enthusiasts can pack in every last monument. This flexibility is exactly why a private Triveni cab beats any fixed group tour.\n\nBikaner is best explored between October and March, when daytime temperatures are pleasant and the desert light is golden and clear. The Camel Festival in January is a spectacular time to visit, with decorated camels, folk music and dance filling the streets. Summers from April to June can be intensely hot, so if you travel then we recommend an early start, which our drivers are happy to accommodate. Whatever the season, an air-conditioned Triveni vehicle keeps you comfortable throughout.\n\nBooking is effortless. Call our team at 7668570551 or send a quick WhatsApp message to wa.me/917668570551 with your date, hotel and preferred vehicle, and we will confirm your Bikaner Full Day City Tour with an upfront, all-inclusive fare. There are no hidden charges, no last-minute surprises, and no pressure to rush. Just a comfortable, memorable day discovering one of the Thar Desert's greatest cities, delivered with the reliability and care that have made Triveni Cabs a trusted name across North India. Come and see why Bikaner deserves a place on every Rajasthan itinerary - and let us do the driving while you soak up the history.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2800,
+                "suv": 3800,
+                "tempoTraveller": 5500,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Junagarh Fort - unconquered plains fortress with gold-leaf palaces",
+                "Karni Mata Temple - the legendary Temple of Rats at Deshnok",
+                "Lallgarh Palace - Ganga Singh's red-sandstone architectural marvel",
+                "Rampuria Havelis - the ornate 'Pride of Bikaner' mansions",
+                "Bikaner Camel Farm - meet the ship of the desert and taste camel-milk lassi",
+                "Bhandasar Jain Temple - 15th-century shrine with gold and mirror work",
+                "Badal Mahal - cloud-and-rain painted palace inside Junagarh",
+                "Old city bazaars - Bikaneri bhujia, rasgulla and usta handicrafts"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup & drive to Junagarh Fort",
+                      "duration": "0.5 hours",
+                      "description": "Doorstep pickup from your Bikaner hotel or railway station in your private air-conditioned vehicle."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Explore Junagarh Fort",
+                      "duration": "2 hours",
+                      "description": "Wander the courtyards, Anup Mahal, Phool Mahal and Badal Mahal of this magnificent plains fortress."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Drive to Deshnok for Karni Mata Temple",
+                      "duration": "1 hour",
+                      "description": "Scenic 30 km desert drive to the famous Temple of Rats."
+                },
+                {
+                      "time": "12:00 PM",
+                      "activity": "Visit Karni Mata Temple",
+                      "duration": "1 hour",
+                      "description": "Experience the silver gates and 25,000 sacred rats of this unique pilgrimage site."
+                },
+                {
+                      "time": "01:00 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy authentic Rajasthani or Bikaneri cuisine at a recommended local restaurant."
+                },
+                {
+                      "time": "02:00 PM",
+                      "activity": "Lallgarh Palace",
+                      "duration": "1 hour",
+                      "description": "Admire the filigree red-sandstone architecture and heritage museum."
+                },
+                {
+                      "time": "03:00 PM",
+                      "activity": "Rampuria Havelis walk",
+                      "duration": "1 hour",
+                      "description": "Stroll the old city to see the carved facades of Bikaner's finest merchant mansions."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Bikaner Camel Farm",
+                      "duration": "1.5 hours",
+                      "description": "Meet different camel breeds, enjoy a short ride and taste camel-milk products."
+                },
+                {
+                      "time": "05:30 PM",
+                      "activity": "Bhandasar Jain Temple & bazaar",
+                      "duration": "1 hour",
+                      "description": "Visit the gold-leaf Jain temple and shop for Bikaneri bhujia and sweets."
+                },
+                {
+                      "time": "06:30 PM",
+                      "activity": "Return drop to hotel",
+                      "duration": "0.5 hours",
+                      "description": "Comfortable transfer back to your hotel or station, concluding the tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for the full day",
+                "Experienced local driver with city knowledge",
+                "Doorstep pickup and drop from Bikaner hotel or railway station",
+                "All fuel, tolls, parking and driver charges",
+                "Flexible itinerary with unlimited stops within the city",
+                "24x7 booking and on-call support"
+          ],
+          "exclusions": [
+                "Monument and temple entry fees",
+                "Camel ride and camel farm entry charges",
+                "Lunch, snacks and personal expenses",
+                "Still and video camera fees at monuments",
+                "Any guide fees if a licensed guide is requested"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Heritage & Culture",
+          "heroImage": "/images/sightseeing/Bikaner/Bikaner_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Bikaner/Junagarh Fort.jpg",
+                "/images/sightseeing/Bikaner/Karni Mata Temple.jpg",
+                "/images/sightseeing/Bikaner/Lallgarh Palace.jpg",
+                "/images/sightseeing/Bikaner/Rampuria Havelis.jpg",
+                "/images/sightseeing/Bikaner/Bikaner_Camel_Farm.jpg",
+                "/images/sightseeing/Bikaner/Bhandasar_Jain_Temple.jpg"
+          ],
+          "tips": [
+                "Start early between October and March to enjoy the fort in soft morning light",
+                "Carry socks for the temple visits as shoes must be removed",
+                "Try Bikaneri bhujia and rasgulla from the old-city shops your driver recommends",
+                "Keep water and a hat handy for the camel farm and outdoor stops",
+                "Photography fees apply separately at Junagarh Fort and some temples"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 964
+          },
+          "coordinates": {
+                "latitude": 28.0229,
+                "longitude": 73.3119
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Most sites are wheelchair-accessible at ground level; some fort interiors have steps",
+          "keywords": [
+                "Bikaner full day city tour",
+                "Bikaner sightseeing tour",
+                "Bikaner taxi package",
+                "Junagarh Fort tour",
+                "Karni Mata Temple tour",
+                "Bikaner cab booking",
+                "Bikaner one day tour",
+                "Lallgarh Palace Bikaner",
+                "Bikaner camel farm visit",
+                "Rampuria Havelis Bikaner",
+                "Bikaner private car tour",
+                "Bikaner local sightseeing taxi",
+                "best places to visit in Bikaner",
+                "Bikaner city tour package price",
+                "how to visit Bikaner in one day",
+                "Bikaner tour from railway station",
+                "Bikaner Rajasthan sightseeing",
+                "hire car for Bikaner tour",
+                "Bikaner desert tour",
+                "things to do in Bikaner",
+                "Triveni Cabs Bikaner",
+                "Bikaner full day taxi fare"
+          ]
+    },
     {
       id: 92,
       name: "Bikaner Full Day — Junagarh Fort & Camels",
@@ -20865,6 +23785,159 @@ export const sightseeingTours = {
 
   "mount-abu": [
     {
+          "id": 302,
+          "slug": "mount-abu-full-day-city-tour",
+          "name": "Mount Abu Full Day City Tour",
+          "shortDescription": "Discover Mount Abu's Dilwara Temples, Nakki Lake, Guru Shikhar and Sunset Point on a relaxed full-day private cab tour with Triveni Cabs.",
+          "fullDescription": "Perched at 1,220 metres in the Aravalli Range, Mount Abu is Rajasthan's only hill station and one of the most soul-soothing destinations in North India. It is a place of pine-clad slopes, cool mountain air, sacred temples and a shimmering lake, a green oasis rising improbably from the desert plains. For centuries it has drawn sages, kings and honeymooners alike, and today it remains a favourite escape for travellers who want to trade the heat and dust of Rajasthan for something altogether gentler. Triveni Cabs' Mount Abu Full Day City Tour brings together every essential sight of this hill town in one comfortable 8-10 hour day, with a private air-conditioned vehicle and a driver who knows the winding ghat roads intimately. Book by calling 7668570551 or messaging wa.me/917668570551.\n\nThe spiritual and architectural crown of Mount Abu is the Dilwara Temples, a group of five Jain temples built between the 11th and 13th centuries that are, quite simply, among the finest examples of marble carving anywhere in the world. From the outside they appear modest, almost plain, but step inside the Vimal Vasahi and Luna Vasahi shrines and you enter a universe of translucent white marble worked into lotus ceilings, dancing figures, pendants and jaali screens so fine that light seems to pass straight through the stone. Artisans are said to have been paid by the weight of the marble dust they removed, which explains the almost obsessive delicacy. Your Triveni driver will drop you close to the entrance and advise on the visiting hours reserved for non-Jain tourists, so you plan your day around them without stress.\n\nAt the heart of the town lies Nakki Lake, a serene body of water wrapped in legend - said to have been dug out by the gods using only their nails, or nakh. Ringed by hills and dotted with curious rock formations like the famous Toad Rock, it is the social hub of Mount Abu. You can enjoy a gentle pedal-boat or shikara ride, stroll the promenade, browse the handicraft stalls, or simply sit and watch the light change on the water. It was beside this lake that Mahatma Gandhi's ashes were once immersed, giving it a quiet historical resonance too.\n\nFor the highest views in Rajasthan, the tour climbs to Guru Shikhar, the loftiest peak of the Aravalli Range at 1,722 metres. A short flight of steps leads to a small temple dedicated to Dattatreya, and on a clear day the panorama across the ranges and the plains below is breathtaking. The ancient brass bell at the summit, inscribed with a date from the 1400s, adds to the timeless atmosphere. Not far away, Achalgarh Fort rewards visitors with a rugged Rajput fortress built by the Paramara dynasty and later restored by Maharana Kumbha, alongside the atmospheric Achaleshwar Mahadev Temple, famous for a toe-print of Lord Shiva and a brass Nandi.\n\nAs the day mellows, there is only one place to be - Sunset Point, where crowds gather each evening to watch the sun sink into the western horizon in a blaze of orange and gold over the plains. The gentle walk to the viewpoint, the vendors selling roasted corn and chai, and the collective hush as the sky ignites make for a perfect end to a Mount Abu day. Your Triveni cab will have you there in good time, with a warm vehicle waiting for the cool descent afterwards.\n\nWhy choose Triveni Cabs for Mount Abu? The town's attractions are scattered across steep, winding hill roads that are tiring and time-consuming to navigate by public transport or on foot, and the local shared jeeps run on their own schedules. A private cab lets you set your own rhythm, linger at the sights that move you, and skip the ones that do not. Our drivers are experienced on the Aravalli ghats, our vehicles are well-maintained and air-conditioned for the drive up from the plains, and our fares are fixed and transparent with no per-stop bargaining. Choose a Sedan for couples and small families, a roomy SUV for extra comfort on the hill roads, or a 12-15 seater Tempo Traveller for groups. Every tour begins with a convenient pickup from your Mount Abu hotel.\n\nThe tour is easily tailored to your interests. Nature lovers can add the Trevor's Tank wildlife spot or a walk in the Mount Abu Wildlife Sanctuary; the devout can include the Adhar Devi Temple, reached by a climb of 365 steps; families often add the Peace Park and the Brahma Kumaris centres for which Mount Abu is world-famous. Honeymooners frequently ask us to slow the pace and build in extra time at Nakki Lake and Sunset Point. Whatever your priorities, simply tell your driver at the start of the day and we will shape the itinerary around you.\n\nMount Abu is a delight for most of the year, but it is at its finest from October to March when the days are crisp and clear and the evenings pleasantly cool. The monsoon from July to September cloaks the hills in lush green and swells the waterfalls, though the ghat roads can be slippery. The summer months of April to June are mercifully cooler here than in the plains, making Mount Abu a genuine hot-season refuge - which is exactly why the Rajput royals built their retreats here. Whichever season you choose, an air-conditioned Triveni vehicle keeps the drive comfortable.\n\nReserving your Mount Abu Full Day City Tour could not be simpler. Call 7668570551 or send us a WhatsApp message at wa.me/917668570551 with your travel date, hotel name and preferred vehicle, and we will confirm an all-inclusive fare with no hidden costs. From the marble wonders of Dilwara to the golden glow of Sunset Point, let Triveni Cabs handle the hairpin bends and the logistics while you simply enjoy Rajasthan's coolest, greenest and most spiritual retreat. It is a day of temples, lakes, peaks and sunsets that stays with you long after you have driven back down to the plains.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2600,
+                "suv": 3600,
+                "tempoTraveller": 5200,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Dilwara Temples - world-famous 11th-century marble Jain carvings",
+                "Nakki Lake - legendary hill lake with boating and Toad Rock",
+                "Guru Shikhar - the highest peak of the Aravalli Range",
+                "Sunset Point - iconic evening viewpoint over the plains",
+                "Achalgarh Fort - rugged Paramara-era hill fortress",
+                "Achaleshwar Mahadev Temple - Shiva toe-print and brass Nandi",
+                "Adhar Devi Temple - cave shrine reached by 365 steps",
+                "Cool Aravalli air - Rajasthan's only hill station retreat"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup & Dilwara Temples",
+                      "duration": "0.5 hours",
+                      "description": "Doorstep pickup and short drive to the Dilwara Jain temple complex."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Explore Dilwara Temples",
+                      "duration": "1.5 hours",
+                      "description": "Marvel at the intricate marble carvings of Vimal Vasahi and Luna Vasahi."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "Drive to Guru Shikhar",
+                      "duration": "1 hour",
+                      "description": "Ascend to the highest peak of the Aravallis for panoramic views."
+                },
+                {
+                      "time": "11:30 AM",
+                      "activity": "Guru Shikhar summit",
+                      "duration": "1 hour",
+                      "description": "Climb to the Dattatreya temple and ancient brass bell at the top."
+                },
+                {
+                      "time": "12:30 PM",
+                      "activity": "Achalgarh Fort & Achaleshwar Temple",
+                      "duration": "1 hour",
+                      "description": "Visit the Paramara fort and the revered Shiva temple nearby."
+                },
+                {
+                      "time": "01:30 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy Rajasthani or Gujarati thali at a recommended restaurant."
+                },
+                {
+                      "time": "02:30 PM",
+                      "activity": "Nakki Lake",
+                      "duration": "1.5 hours",
+                      "description": "Boating, Toad Rock, promenade stroll and handicraft shopping."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Adhar Devi Temple",
+                      "duration": "1 hour",
+                      "description": "Optional climb to the cave shrine carved into the rock."
+                },
+                {
+                      "time": "05:00 PM",
+                      "activity": "Drive to Sunset Point",
+                      "duration": "0.5 hours",
+                      "description": "Transfer to the town's famous evening viewpoint."
+                },
+                {
+                      "time": "05:30 PM",
+                      "activity": "Sunset Point",
+                      "duration": "1 hour",
+                      "description": "Watch the sun set over the plains before returning to your hotel."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for the full day",
+                "Skilled hill-road driver experienced on Aravalli ghats",
+                "Doorstep pickup and drop from Mount Abu hotel",
+                "All fuel, tolls, parking and driver charges",
+                "Flexible itinerary with unlimited local stops",
+                "24x7 booking and on-call assistance"
+          ],
+          "exclusions": [
+                "Temple and monument entry fees",
+                "Boating charges at Nakki Lake",
+                "Lunch, snacks and personal expenses",
+                "Camera fees where applicable",
+                "Licensed guide fee if requested"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Mount_Abu/Dilwara_Temple_Interior.jpg",
+                "/images/sightseeing/Mount_Abu/Nakki_Lake.jpg",
+                "/images/sightseeing/Mount_Abu/Guru_Shikhar.jpg",
+                "/images/sightseeing/Mount_Abu/Sunset_Point_Mount_Abu.jpg",
+                "/images/sightseeing/Mount_Abu/Achalgarh_Fort.jpg"
+          ],
+          "tips": [
+                "Check Dilwara Temple visiting hours for tourists in advance, as they are limited",
+                "Carry a light jacket even in summer as evenings turn cool",
+                "Reach Sunset Point early to grab a good viewing spot",
+                "Photography is restricted inside the Dilwara Temples",
+                "Wear comfortable shoes for the steps at Adhar Devi and Guru Shikhar"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 1187
+          },
+          "coordinates": {
+                "latitude": 24.5926,
+                "longitude": 72.7156
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Lake and viewpoints are easy; temples and peaks involve steps and climbs",
+          "keywords": [
+                "Mount Abu full day city tour",
+                "Mount Abu sightseeing tour",
+                "Mount Abu taxi package",
+                "Dilwara Temples tour",
+                "Nakki Lake Mount Abu",
+                "Guru Shikhar tour",
+                "Mount Abu cab booking",
+                "Mount Abu one day tour",
+                "Sunset Point Mount Abu",
+                "Mount Abu private car tour",
+                "Mount Abu local sightseeing taxi",
+                "best places to visit in Mount Abu",
+                "Mount Abu tour package price",
+                "how to visit Mount Abu in one day",
+                "Mount Abu hill station tour",
+                "Achalgarh Fort Mount Abu",
+                "hire car for Mount Abu sightseeing",
+                "Mount Abu Rajasthan tour",
+                "things to do in Mount Abu",
+                "Mount Abu honeymoon sightseeing",
+                "Triveni Cabs Mount Abu",
+                "Mount Abu full day taxi fare"
+          ]
+    },
+    {
       id: 93,
       name: "Mount Abu Hill Station Full Day Tour",
       slug: "mount-abu-full-day-tour",
@@ -20916,6 +23989,159 @@ export const sightseeingTours = {
 
   ranthambore: [
     {
+          "id": 304,
+          "slug": "ranthambore-full-day-safari-tour",
+          "name": "Ranthambore Full Day Safari Tour",
+          "shortDescription": "Track wild tigers across Ranthambore's safari zones and explore its historic fort on a thrilling full-day private cab and safari tour with Triveni Cabs.",
+          "fullDescription": "Ranthambore is where the wild heart of Rajasthan beats loudest. Once the private hunting ground of the Maharajas of Jaipur, this rugged expanse of dry deciduous forest, rocky ridges, lakes and ancient ruins is today one of the finest places on the planet to see the Royal Bengal tiger in the wild. Add to that a thousand-year-old hilltop fort brooding over the jungle, and you have a destination that thrills wildlife lovers and history buffs in equal measure. Triveni Cabs' Ranthambore Full Day Safari Tour is designed to make the most of your day in the park - combining an exhilarating jungle safari with a visit to the majestic Ranthambore Fort and time for wildlife and bird photography - all supported by a comfortable private vehicle and a driver who knows the region well. To book, call 7668570551 or message wa.me/917668570551.\n\nThe undisputed highlight is the tiger safari itself. Ranthambore National Park is divided into several safari zones, each with its own terrain and resident tigers, and drives are conducted in forest-department Gypsies and Canters at fixed morning and afternoon slots. Beyond the celebrated tigers, the park teems with life - leopards, sloth bears, striped hyenas, marsh crocodiles basking beside the lakes, sambar and spotted deer, nilgai, wild boar, langurs and mongoose. The atmosphere on a safari is electric: every alarm call from a deer or monkey could signal a big cat on the move, and the guides read the jungle like a book. While the safari vehicle and permits are arranged through the official forest department, Triveni Cabs handles all your transfers to and from the safari gate and coordinates your day so nothing is left to chance.\n\nTowering above the jungle is the spectacular Ranthambore Fort, a UNESCO World Heritage Site dating back to the 10th century and one of the oldest forts in Rajasthan. Reached by a winding road and a flight of steps, the fort commands breathtaking views over the national park, its ramparts, palaces, temples, tanks and the famous Trinetra Ganesh Temple - one of the oldest Ganesh shrines in Rajasthan - drawing pilgrims and history lovers alike. Langurs and peacocks roam the ruins freely, and it is not unheard of for lucky visitors to spot a tiger from the fort walls. A visit here adds a rich historical dimension to your wildlife day, and your Triveni driver will have you at the base of the fort in comfort.\n\nFor photographers and birdwatchers, Ranthambore is a paradise. The park's lakes - Padam Talao, Rajbagh and Malik Talao - attract over 300 species of birds, from crested serpent eagles and painted storks to kingfishers, owls and the vividly coloured Indian pitta. Whether you are chasing that once-in-a-lifetime tiger portrait or simply revelling in the birdlife, the changing light across the forest and water is endlessly rewarding. Our tour leaves ample time for you to soak in the wilderness at your own pace.\n\nWhy book your Ranthambore day with Triveni Cabs? Because a great safari day is all about timing and logistics - reaching the safari gate on schedule for your slot, transferring between the park, the fort and your hotel efficiently, and travelling in cool comfort between the action. Our air-conditioned vehicles and reliable drivers take the stress out of the day, our fares are transparent and all-inclusive of transfers, and our team is available around the clock to help with your plans. Choose a Sedan for couples, a rugged SUV for families who want extra space and comfort on the country roads, or a 12-15 seater Tempo Traveller for groups travelling together. Every booking includes doorstep pickup from your Sawai Madhopur or Ranthambore hotel.\n\nImportant to note: the forest-department safari permit, the shared or private Gypsy/Canter safari vehicle, and the entry to the national park are booked separately through official channels, and Triveni Cabs is glad to guide you on how and when to reserve these - ideally well in advance, as slots sell out in peak season. Our tour covers all your road transfers, the fort visit and a smoothly coordinated day around your chosen safari timings. If you wish to do both a morning and an afternoon safari, we can build the day around both slots with a restful break in between.\n\nRanthambore is open to visitors from October to June, and the best time to visit depends on what you want. October to March offers pleasant weather, lush post-monsoon greenery and comfortable safaris, ideal for first-timers and families. The hotter months of April to June, while harsh, are statistically the best for tiger sightings, as the big cats gather around the shrinking waterholes and are far easier to spot. The park typically closes during the monsoon from July to September for breeding season. Whatever window you choose, an air-conditioned Triveni vehicle keeps your transfers comfortable.\n\nReserving your Ranthambore Full Day Safari Tour is quick and easy. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your travel date, hotel and preferred vehicle, and we will confirm an all-inclusive transfer fare and help you coordinate your safari timings. There are few experiences in India as heart-stopping as locking eyes with a wild tiger, and few as evocative as watching the sun set over a thousand-year-old fort surrounded by jungle. Let Triveni Cabs take care of every mile on the road, so all you have to do is watch the wilderness reveal its secrets.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 3000,
+                "suv": 4000,
+                "tempoTraveller": 5800,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Tiger safari - track wild Royal Bengal tigers across the park zones",
+                "Ranthambore Fort - 10th-century UNESCO hilltop fortress over the jungle",
+                "Trinetra Ganesh Temple - one of Rajasthan's oldest Ganesh shrines",
+                "Padam, Rajbagh & Malik Talao lakes - crocodiles and prolific birdlife",
+                "Bird watching - over 300 species including eagles, storks and kingfishers",
+                "Wildlife photography - leopards, sloth bears, deer and more",
+                "Coordinated transfers around your official safari slots",
+                "Panoramic fort views over Ranthambore National Park"
+          ],
+          "itinerary": [
+                {
+                      "time": "06:00 AM",
+                      "activity": "Early pickup for morning safari",
+                      "duration": "0.5 hours",
+                      "description": "Doorstep pickup and transfer to the safari assembly point for your morning slot."
+                },
+                {
+                      "time": "06:30 AM",
+                      "activity": "Morning tiger safari",
+                      "duration": "3 hours",
+                      "description": "Explore the jungle zones in a forest Gypsy or Canter in search of tigers and wildlife."
+                },
+                {
+                      "time": "09:30 AM",
+                      "activity": "Return & breakfast",
+                      "duration": "1 hour",
+                      "description": "Transfer back for breakfast and a restful break at your hotel."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "Drive to Ranthambore Fort",
+                      "duration": "0.5 hours",
+                      "description": "Transfer to the base of the historic hilltop fort."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Explore Ranthambore Fort",
+                      "duration": "2 hours",
+                      "description": "Visit the ramparts, palaces and Trinetra Ganesh Temple with jungle views."
+                },
+                {
+                      "time": "01:00 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy a relaxed lunch at a recommended local restaurant."
+                },
+                {
+                      "time": "02:00 PM",
+                      "activity": "Transfer for afternoon safari",
+                      "duration": "0.5 hours",
+                      "description": "Head back to the assembly point for the afternoon safari slot."
+                },
+                {
+                      "time": "02:30 PM",
+                      "activity": "Afternoon tiger safari",
+                      "duration": "3 hours",
+                      "description": "A second drive through the zones for more sightings and photography."
+                },
+                {
+                      "time": "05:30 PM",
+                      "activity": "Wildlife photography & lakes",
+                      "duration": "0.5 hours",
+                      "description": "Final chances to capture birdlife and the golden evening light."
+                },
+                {
+                      "time": "06:00 PM",
+                      "activity": "Return drop to hotel",
+                      "duration": "0.5 hours",
+                      "description": "Comfortable transfer back to your hotel, concluding the tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for all road transfers",
+                "Experienced driver familiar with the Ranthambore region",
+                "Doorstep pickup and drop from Sawai Madhopur or Ranthambore hotel",
+                "Coordination of your day around official safari timings",
+                "All fuel, tolls, parking and driver charges",
+                "24x7 booking and on-call assistance"
+          ],
+          "exclusions": [
+                "Forest-department safari permit and Gypsy/Canter charges",
+                "National park entry fees",
+                "Ranthambore Fort and temple charges, if any",
+                "Meals, snacks and personal expenses",
+                "Camera fees and naturalist guide charges"
+          ],
+          "bestTimeToVisit": "October to June (April-June best for tiger sightings)",
+          "difficulty": "Easy",
+          "category": "Wildlife & Nature",
+          "heroImage": "/images/sightseeing/Ranthambore/Rathambore day safari.jpg",
+          "images": [
+                "/images/sightseeing/Ranthambore/Rathambore day safari.jpg",
+                "/images/sightseeing/Ranthambore/Rathambore day safari (1).jpg",
+                "/images/sightseeing/Ranthambore/Ranthambore Fort.jpg",
+                "/images/sightseeing/Ranthambore/Bird Watching_Over 300 species of birds.jpg",
+                "/images/sightseeing/Ranthambore/Wildlife Photography.jpg"
+          ],
+          "tips": [
+                "Book your forest-department safari permit well in advance, especially in peak season",
+                "April to June offers the best tiger sightings around the waterholes",
+                "Carry neutral-coloured clothing, binoculars and a zoom lens for safaris",
+                "Morning safaris are cold in winter - bring a warm layer",
+                "Keep noise to a minimum inside the park to improve sighting chances"
+          ],
+          "reviews": {
+                "averageRating": 4.9,
+                "totalReviews": 2143
+          },
+          "coordinates": {
+                "latitude": 26.0173,
+                "longitude": 76.5026
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Road transfers are comfortable; safaris and the fort involve rugged terrain and steps",
+          "keywords": [
+                "Ranthambore full day safari tour",
+                "Ranthambore tiger safari",
+                "Ranthambore sightseeing tour",
+                "Ranthambore taxi package",
+                "Ranthambore National Park safari",
+                "Ranthambore Fort tour",
+                "Ranthambore cab booking",
+                "Ranthambore one day tour",
+                "tiger safari Rajasthan",
+                "Ranthambore private car tour",
+                "Ranthambore safari transfers taxi",
+                "best time for Ranthambore tiger safari",
+                "Ranthambore tour package price",
+                "how to plan Ranthambore safari",
+                "Sawai Madhopur safari taxi",
+                "Trinetra Ganesh Temple Ranthambore",
+                "hire car for Ranthambore safari",
+                "Ranthambore wildlife photography tour",
+                "things to do in Ranthambore",
+                "Ranthambore bird watching tour",
+                "Triveni Cabs Ranthambore",
+                "Ranthambore safari day trip fare"
+          ]
+    },
+    {
       id: 94,
       name: "Ranthambore Tiger Safari Day Trip",
       slug: "ranthambore-safari-day-trip",
@@ -20963,6 +24189,158 @@ export const sightseeingTours = {
   ],
 
   chittorgarh: [
+    {
+          "id": 303,
+          "slug": "chittorgarh-full-day-city-tour",
+          "name": "Chittorgarh Full Day City Tour",
+          "shortDescription": "Walk through Rajput valour at Chittorgarh Fort, Vijay Stambh, Rana Kumbha Palace and Padmini Palace on a full-day private cab tour with Triveni Cabs.",
+          "fullDescription": "Chittorgarh is not merely a fort - it is the beating heart of Rajput pride, a place where honour, sacrifice and legend are carved into every stone. Spread across a 180-metre-high hill overlooking the Berach River, Chittorgarh Fort is the largest fort in India and a UNESCO World Heritage Site, encircling within its 700 acres a whole self-contained world of palaces, towers, temples and reservoirs. This was the capital of Mewar, the stage on which Rani Padmini's legendary jauhar, Maharana Kumbha's victories and Maharana Pratap's lineage all unfolded. Triveni Cabs' Chittorgarh Full Day City Tour lets you explore this epic citadel and its surroundings at a dignified, unhurried pace across a full 8-10 hour day, with a comfortable private vehicle and a driver who understands the fort's sprawling geography. To book, call 7668570551 or WhatsApp wa.me/917668570551.\n\nThe tour is built around the mighty Chittorgarh Fort itself, entered through a series of seven fortified gates, or pols, that climb the hillside. Because the fort is so vast - the internal road runs for kilometres - having a private cab that can drive you between the major monuments inside makes an enormous difference, saving your energy for exploration rather than the long walks between sights. This is a key reason travellers choose a Triveni vehicle over the local options.\n\nThe most iconic structure within is the Vijay Stambh, or Tower of Victory, a magnificent nine-storey sandstone-and-marble tower rising 37 metres, built by Maharana Kumbha between 1442 and 1449 to commemorate his triumph over the Sultans of Malwa and Gujarat. Its exterior is covered in exquisite sculptures of Hindu deities, and a narrow internal staircase of 157 steps climbs to a viewing gallery with sweeping views over the fort and plains. Nearby stands the older Kirti Stambh, or Tower of Fame, a 22-metre 12th-century tower dedicated to Adinath, the first Jain Tirthankara, adorned with figures of the Jain pantheon - a quieter but equally moving monument.\n\nAt the fort's centre lies the Rana Kumbha Palace, the oldest and grandest of Chittorgarh's palaces, now a romantic ruin of stone canopies, elephant and horse stables, and underground chambers. It was here, according to legend, that Rani Padmini and the women of the fort performed jauhar - mass self-immolation - to escape dishonour when Alauddin Khilji laid siege in 1303. Standing among these silent walls, the weight of that history is palpable. A short distance away, the Padmini Palace sits beside a serene lotus pool, its central pavilion the very spot from which, legend says, Alauddin was allowed a single reflected glimpse of the famed queen in a mirror - a glimpse that set a kingdom to war.\n\nThe fort holds much more to discover. The Kalika Mata Temple, the Meera Temple associated with the mystic-poetess Meera Bai, the Kumbha Shyam Temple, the vast Gaumukh Reservoir fed by a natural spring, and the Fateh Prakash Palace museum all reward the curious visitor. Your Triveni driver can help you prioritise based on your interests and the time available, ensuring you see the very best without feeling rushed.\n\nWhy is a private Triveni cab the ideal way to experience Chittorgarh? Because the fort's scale simply overwhelms visitors on foot, and public transport does not run within it. Our air-conditioned vehicles carry you comfortably between the widely spaced monuments, our drivers know exactly where to park and where the best photo stops are, and our transparent, all-inclusive fares mean no negotiating in the heat. We offer clean Sedans for couples and small groups, spacious SUVs for families who value comfort, and 12-15 seater Tempo Travellers for larger parties and multi-generational trips. Every tour starts with a doorstep pickup from your Chittorgarh hotel or the railway station, and our team is reachable around the clock.\n\nThe itinerary is flexible and can be customised to your pace and passions. History enthusiasts may want extra time at the Vijay Stambh and the archaeological museum; the devout can add longer stops at the Meera and Kalika Mata temples; photographers often ask to time the towers for the golden light of late afternoon. If you are travelling onward to Udaipur or Bundi, we can also arrange the day to end with a comfortable transfer. Just share your wishes with your driver at the start and we will adjust accordingly.\n\nChittorgarh is best visited between October and March, when the weather is cool and ideal for walking the fort's expanses and climbing its towers. The monsoon months from July to September dress the hillsides in green and fill the reservoirs, lending the ruins a moody beauty, though the stone steps can be slippery. Summers from April to June are hot, so if you travel then we recommend starting early - which our drivers happily arrange - and relying on the air-conditioned comfort of your vehicle between stops. The Jauhar Mela, held annually to honour the fort's sacrifices, is a particularly stirring time to visit.\n\nBooking your Chittorgarh Full Day City Tour with Triveni Cabs takes just a moment. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your date, hotel and preferred vehicle, and we will confirm an upfront, all-inclusive fare with no hidden charges. Few places in India tell the Rajput story as powerfully as Chittorgarh, and few ways of seeing it are as comfortable and stress-free as a private Triveni cab. Let us handle the driving, the parking and the logistics of this enormous fort, so you can give your full attention to the towers, palaces and legends that have inspired poets and warriors for seven centuries.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2700,
+                "suv": 3700,
+                "tempoTraveller": 5300,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Chittorgarh Fort - India's largest fort and a UNESCO World Heritage Site",
+                "Vijay Stambh - 37-metre Tower of Victory built by Maharana Kumbha",
+                "Kirti Stambh - 12th-century Jain Tower of Fame",
+                "Rana Kumbha Palace - romantic ruins tied to the jauhar legend",
+                "Padmini Palace - lakeside pavilion of the legendary queen",
+                "Kalika Mata & Meera Temples - revered shrines within the fort",
+                "Gaumukh Reservoir - sacred spring-fed water tank",
+                "Panoramic hilltop views over the Berach River plains"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup & drive to the fort",
+                      "duration": "0.5 hours",
+                      "description": "Doorstep pickup and ascent through the seven historic gates of Chittorgarh Fort."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Rana Kumbha Palace",
+                      "duration": "1 hour",
+                      "description": "Explore the oldest palace and the site of the legendary jauhar."
+                },
+                {
+                      "time": "10:00 AM",
+                      "activity": "Vijay Stambh",
+                      "duration": "1.5 hours",
+                      "description": "Admire and climb the nine-storey Tower of Victory for sweeping views."
+                },
+                {
+                      "time": "11:30 AM",
+                      "activity": "Kirti Stambh",
+                      "duration": "1 hour",
+                      "description": "Visit the 12th-century Jain Tower of Fame and its carvings."
+                },
+                {
+                      "time": "12:30 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy Rajasthani cuisine at a recommended local restaurant."
+                },
+                {
+                      "time": "01:30 PM",
+                      "activity": "Padmini Palace",
+                      "duration": "1 hour",
+                      "description": "See the lakeside pavilion linked to the legend of Rani Padmini."
+                },
+                {
+                      "time": "02:30 PM",
+                      "activity": "Kalika Mata & Meera Temples",
+                      "duration": "1 hour",
+                      "description": "Visit the revered temples within the fort complex."
+                },
+                {
+                      "time": "03:30 PM",
+                      "activity": "Gaumukh Reservoir & Fateh Prakash Museum",
+                      "duration": "1 hour",
+                      "description": "See the sacred spring-fed tank and the fort's archaeological museum."
+                },
+                {
+                      "time": "04:30 PM",
+                      "activity": "Kumbha Shyam Temple & viewpoints",
+                      "duration": "1 hour",
+                      "description": "Round off with temple visits and golden-hour photography."
+                },
+                {
+                      "time": "05:30 PM",
+                      "activity": "Return drop to hotel",
+                      "duration": "0.5 hours",
+                      "description": "Comfortable transfer back to your hotel or railway station."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for the full day",
+                "Experienced driver familiar with the fort's layout",
+                "Doorstep pickup and drop from Chittorgarh hotel or railway station",
+                "All fuel, tolls, parking and driver charges",
+                "In-fort driving between the widely spaced monuments",
+                "24x7 booking and on-call support"
+          ],
+          "exclusions": [
+                "Fort and monument entry fees",
+                "Tower climbing and museum charges",
+                "Lunch, snacks and personal expenses",
+                "Still and video camera fees",
+                "Licensed guide fee if requested"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Moderate",
+          "category": "Heritage & Culture",
+          "heroImage": "/images/sightseeing/Chittorgarh/chittogarh_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Chittorgarh/Vijay_Stambh.jpg",
+                "/images/sightseeing/Chittorgarh/Kirti_Stambh.jpg",
+                "/images/sightseeing/Chittorgarh/Rana_Kumbha_Palace.jpg",
+                "/images/sightseeing/Chittorgarh/Padmini_Palace.jpg"
+          ],
+          "tips": [
+                "Wear comfortable walking shoes as the fort is vast and involves climbs",
+                "Start early to cover the whole fort comfortably in one day",
+                "Carry water and sun protection, especially between October and March middays",
+                "The Vijay Stambh staircase is narrow - not ideal for those uneasy with heights",
+                "Hire a local guide at the fort gate for the richest telling of the legends"
+          ],
+          "reviews": {
+                "averageRating": 4.7,
+                "totalReviews": 842
+          },
+          "coordinates": {
+                "latitude": 24.8887,
+                "longitude": 74.6269
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Fort grounds are drivable but towers and palaces involve steps and uneven paths",
+          "keywords": [
+                "Chittorgarh full day city tour",
+                "Chittorgarh sightseeing tour",
+                "Chittorgarh Fort tour",
+                "Chittorgarh taxi package",
+                "Vijay Stambh tour",
+                "Padmini Palace Chittorgarh",
+                "Chittorgarh cab booking",
+                "Chittorgarh one day tour",
+                "Rana Kumbha Palace",
+                "Chittorgarh private car tour",
+                "Chittorgarh local sightseeing taxi",
+                "best places to visit in Chittorgarh",
+                "Chittorgarh tour package price",
+                "how to visit Chittorgarh Fort in one day",
+                "Chittorgarh UNESCO fort tour",
+                "Kirti Stambh Chittorgarh",
+                "hire car for Chittorgarh sightseeing",
+                "Chittorgarh Rajasthan tour",
+                "things to do in Chittorgarh",
+                "Chittorgarh fort taxi from station",
+                "Triveni Cabs Chittorgarh",
+                "Chittorgarh full day taxi fare"
+          ]
+    },
     {
       id: 95,
       name: "Chittorgarh Fort Full Day Tour",
@@ -21014,6 +24392,165 @@ export const sightseeingTours = {
   // Uttarakhand New Tours
   mussoorie: [
     {
+          "id": 211,
+          "slug": "mussoorie-full-day-city-tour",
+          "name": "Mussoorie Full Day City Tour",
+          "shortDescription": "Full-day Mussoorie sightseeing by private cab covering Kempty Falls, Gun Hill ropeway, Mall Road, Lal Tibba and Camel's Back Road.",
+          "fullDescription": "Mussoorie, the \"Queen of the Hills,\" sits at around 2,000 metres on a horseshoe-shaped ridge in the Garhwal Himalayas of Uttarakhand, just above Dehradun. Famous for its colonial charm, misty deodar forests, cascading waterfalls, and sweeping views of the Doon Valley and the snow-capped peaks beyond, it has been a favourite summer retreat since British times. A full-day Mussoorie city tour with Triveni Cabs is the most comfortable way to take in its waterfalls, ridgetop viewpoints, and the lively Mall Road in one well-planned day, with a local driver who knows the steep switchbacks, the parking situation, and the timing tricks that keep your day smooth and unhurried.\n\nThe day usually begins with a hotel or Dehradun-side pickup in an air-conditioned car and an early run to **Kempty Falls**, Mussoorie's most famous cascade, about 15 kilometres from town. Tumbling down five tiers from a height of around 40 feet amid green hills, Kempty is a refreshing spot where visitors can wade and bathe in the pools at its base; a ropeway and steps connect the road to the falls. Reaching it early beats the crowds and lets you enjoy the cool spray in relative calm. On the way back, your driver can pause at scenic viewpoints over the terraced valley.\n\nBack in town, the tour heads to **Gun Hill**, Mussoorie's second-highest point at about 2,024 metres, reached by a short but thrilling **cable car (ropeway)** ride from Mall Road — or by a bridle path on foot. From the top, on a clear day, you get a magnificent sweep of Himalayan ranges including Bandarpunch and the surrounding peaks, plus a bird's-eye view of Mussoorie's rooftops. A leisurely stroll along the bustling **Mall Road** — the social and shopping heart of Mussoorie — takes you past colonial buildings, the Cambridge Book Depot, cafes, the Methodist Church, and stalls selling woollens, walking sticks, antiques, and local snacks. Connecting to it is the tranquil **Camel's Back Road**, a roughly 3-kilometre walking and bridle path named after a camel-shaped rock formation, offering some of the best sunset views over the valley and a peaceful escape from the Mall's bustle.\n\nFor the finest panoramas, the tour climbs to **Lal Tibba**, the highest point in Mussoorie at around 2,275 metres in the old Landour cantonment, where a telescope at the viewpoint brings the distant snow peaks of Kedarnath, Badrinath, and Banderpunch within reach on a clear day. The charming **Landour** area, with its colonial bungalows, Char Dukan eateries, St Paul's Church, and quiet pine-scented lanes, is a delight to drive and walk through. The tour also includes the **Company Garden (Municipal Garden)**, a colourful landscaped park with flower beds, a small lake with boating, and an amusement area popular with families. Time permitting, your driver can add **Mussoorie Lake**, the **Jwala Devi Temple** on Benog Hill, **Cloud's End**, or the **Mussoorie Heritage Centre**.\n\nTriveni Cabs offers vehicles to suit every group and the hill terrain. A **Sedan** like a Swift Dzire is perfect for couples and small families of up to 4 and is the most economical, nimble choice on Mussoorie's tight bends. An **SUV** such as an Ertiga or Innova seats 6 to 7 with extra comfort and luggage room, ideal for families combining Kempty Falls with Landour. Larger groups and joint families can choose a **Tempo Traveller** seating up to 15. Every vehicle is clean, heater-equipped, and well-maintained, and our drivers are courteous, punctual, and well-versed in the best viewpoints, photo stops, and cafes.\n\nA typical Mussoorie full-day tour runs 8 to 10 hours and is fully customisable. During peak season parts of Mall Road may be vehicle-restricted in the evenings, and your driver will park at authorised lots and guide you to the ropeway or walking access as needed. He can recommend the best spots for Garhwali fare, Char Dukan's famous maggi and pancakes in Landour, and the most authentic shops for woollens, candles, and souvenirs. The drives between Kempty, the town, and Landour wind through fragrant deodar and oak forest with frequent valley vistas that are highlights in themselves.\n\nBooking with Triveni Cabs is transparent and hassle-free. Your quoted fare includes fuel, driver allowance, and taxes, while the Gun Hill ropeway, Company Garden entry, boating, and any activity charges are paid directly so you only pay for what you use. We operate year-round, including the lush monsoon season when the waterfalls are in full flow and the hills turn emerald. Pickup is punctual and every vehicle is GPS-tracked for your safety and convenience.\n\nTo book your air-conditioned cab for a full-day Mussoorie city tour, call or WhatsApp Triveni Cabs at **7668570551** (wa.me/917668570551). Share your pickup point, group size, and preferred vehicle, and our team will confirm a clean car with a friendly local driver who will help you enjoy the waterfalls, ridgetop views, and colonial charm of the Queen of the Hills in complete comfort.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 3000,
+                "suv": 4000,
+                "tempoTraveller": 5800,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Kempty Falls - Mussoorie's famous five-tier cascade with bathing pools",
+                "Gun Hill - second-highest point reached by a thrilling ropeway, with Himalayan views",
+                "Mall Road - colonial promenade with cafes, bookshops and woollens stalls",
+                "Lal Tibba - highest point in Landour with a telescope on the snow peaks",
+                "Camel's Back Road - peaceful 3 km bridle path with the best sunset views",
+                "Company Garden - landscaped park with flower beds, lake boating and amusements",
+                "Landour - colonial bungalows, Char Dukan eateries and pine-scented lanes",
+                "Scenic deodar-forest drives with sweeping Doon Valley vistas"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup",
+                      "duration": "0.5 hours",
+                      "description": "Meet your Triveni Cabs driver and depart in a heated AC vehicle."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Kempty Falls",
+                      "duration": "1.75 hours",
+                      "description": "Early drive to the five-tier waterfall to enjoy the pools before the crowds."
+                },
+                {
+                      "time": "11:00 AM",
+                      "activity": "Company Garden",
+                      "duration": "1 hour",
+                      "description": "Stroll the landscaped park with flower beds and lake boating."
+                },
+                {
+                      "time": "12:15 PM",
+                      "activity": "Gun Hill via ropeway",
+                      "duration": "1.25 hours",
+                      "description": "Ride the cable car for panoramic Himalayan and rooftop views."
+                },
+                {
+                      "time": "01:30 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Garhwali thali or cafe fare along Mall Road."
+                },
+                {
+                      "time": "02:30 PM",
+                      "activity": "Mall Road walk",
+                      "duration": "1 hour",
+                      "description": "Explore the promenade, bookshops, church and woollens stalls."
+                },
+                {
+                      "time": "03:30 PM",
+                      "activity": "Lal Tibba & Landour",
+                      "duration": "1.5 hours",
+                      "description": "Drive up to the highest point, use the telescope and explore Landour's lanes."
+                },
+                {
+                      "time": "05:00 PM",
+                      "activity": "Char Dukan stop",
+                      "duration": "0.5 hours",
+                      "description": "Tea, maggi and pancakes at Landour's famous Char Dukan."
+                },
+                {
+                      "time": "05:45 PM",
+                      "activity": "Camel's Back Road",
+                      "duration": "0.75 hours",
+                      "description": "Walk the bridle path for the finest sunset views over the valley."
+                },
+                {
+                      "time": "06:30 PM",
+                      "activity": "Shopping & souvenirs",
+                      "duration": "0.5 hours",
+                      "description": "Pick up woollens, candles and souvenirs before heading back."
+                },
+                {
+                      "time": "07:00 PM",
+                      "activity": "Drop back",
+                      "duration": "0.5 hours",
+                      "description": "Return to your hotel, concluding the full-day Mussoorie city tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned, heater-equipped vehicle for full-day use",
+                "Experienced local hill-driving chauffeur",
+                "Fuel, driver allowance and all applicable taxes",
+                "Hotel pickup and drop within Mussoorie",
+                "Bottled water and 24x7 Triveni Cabs trip support"
+          ],
+          "exclusions": [
+                "Gun Hill ropeway and Company Garden entry tickets",
+                "Boating, telescope and any activity charges",
+                "Meals, snacks and personal expenses",
+                "Parking fees and any toll charges",
+                "Anything not mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "March to June and September to November",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Mussoorie/Kempty_Falls.jpg",
+                "/images/sightseeing/Mussoorie/Gun_Hill.jpg",
+                "/images/sightseeing/Mussoorie/Mall_road.jpg",
+                "/images/sightseeing/Mussoorie/Lal_tibba.jpg",
+                "/images/sightseeing/Mussoorie/camel_back_road.jpg",
+                "/images/sightseeing/Mussoorie/company_garden.jpg"
+          ],
+          "tips": [
+                "Visit Kempty Falls early in the morning to enjoy the pools before the crowds arrive.",
+                "Carry a change of clothes if you plan to bathe at Kempty Falls.",
+                "Use the telescope at Lal Tibba on a clear morning for views of the snow peaks.",
+                "Mall Road may be vehicle-restricted in the evenings; your driver will park nearby and guide you.",
+                "Wear comfortable shoes and carry a light jacket for the breezy ridgetop walks."
+          ],
+          "reviews": {
+                "averageRating": 4.7,
+                "totalReviews": 1980
+          },
+          "coordinates": {
+                "latitude": 30.4598,
+                "longitude": 78.0644
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Ropeway available at Gun Hill; some sights involve steps and walking paths",
+          "keywords": [
+                "Mussoorie full day city tour",
+                "Mussoorie sightseeing by cab",
+                "Mussoorie taxi for local sightseeing",
+                "Kempty Falls tour package",
+                "Gun Hill ropeway taxi",
+                "Mall Road Mussoorie tour",
+                "Mussoorie one day tour by car",
+                "Lal Tibba Landour sightseeing",
+                "Camel's Back Road Mussoorie",
+                "Mussoorie local tour with driver",
+                "best places to visit in Mussoorie",
+                "Mussoorie private cab tour",
+                "Mussoorie AC taxi sightseeing",
+                "Company Garden Mussoorie tour",
+                "Mussoorie waterfall tour",
+                "how to see Mussoorie in one day",
+                "Mussoorie cab booking",
+                "Mussoorie city tour package",
+                "what to do in Mussoorie in a day",
+                "Mussoorie hill station taxi",
+                "Triveni Cabs Mussoorie",
+                "Mussoorie sightseeing car rental"
+          ]
+    },
+    {
       id: 96,
       name: "Mussoorie Full Day Sightseeing Tour",
       slug: "mussoorie-full-day-tour",
@@ -21063,6 +24600,165 @@ export const sightseeingTours = {
   ],
 
   nainital: [
+    {
+          "id": 210,
+          "slug": "nainital-full-day-city-tour",
+          "name": "Nainital Full Day City Tour",
+          "shortDescription": "Full-day Nainital sightseeing by private cab covering Naini Lake boating, Naina Devi Temple, Snow View Point and Tiffin Top.",
+          "fullDescription": "Nainital, the jewel of the Kumaon hills in Uttarakhand, is one of North India's most romantic and family-friendly hill stations. Built around the shimmering emerald-green **Naini Lake** at 2,084 metres, the town is ringed by seven forested hills and crowned with viewpoints that frame the snowy Himalayan giants on a clear day. A full-day Nainital city tour with Triveni Cabs is the most relaxing way to enjoy its lake, temples, cable-car viewpoints, and the nearby lakes of the Bhimtal cluster — all with a knowledgeable local driver who handles Nainital's steep, narrow, and often-congested roads and parking so you can simply enjoy the crisp mountain air.\n\nThe day begins with a hotel or bus-stand pickup in an air-conditioned car. The centrepiece of any Nainital visit is the **Naini Lake** itself — a crescent-shaped body of water whose name comes from the goddess Naina Devi. A gentle **boat ride** (paddle, row, or yacht) across its calm surface, with colourful hills mirrored in the water, is the quintessential Nainital experience. At the northern end of the lake stands the revered **Naina Devi Temple**, one of the 51 Shakti Peethas, where the eyes (nain) of Goddess Sati are said to have fallen; its lakeside setting beside the Gurudwara and Jama Masjid makes the Flats area a peaceful, multi-faith hub.\n\nFrom the lake, your cab climbs to **Snow View Point** at about 2,270 metres, reached by an aerial ropeway (or by road) — on a clear morning it offers a breathtaking panorama of the Nanda Devi, Nanda Kot, and Trishul peaks. Another classic viewpoint is **Tiffin Top (Dorothy's Seat)**, a rocky promontory reached by a short pony ride or pleasant forest walk, delivering 360-degree views over Nainital and the plains; energetic visitors can continue to **Naina Peak (China Peak)**, the highest point around the lake at 2,615 metres. A stroll along the lakeside **Mall Road** and the busy **Tibetan Market** at the Flats rounds out the town experience, with shops selling candles, woollens, Kumaoni handicrafts, and local snacks.\n\nThe tour also covers the spiritual and natural sights around town: the **Naina Devi** circuit, the **Hanuman Garhi** temple complex with its sunset views and the Pashan Devi shrine, the **Gurney House** (Jim Corbett's former home), the **High Altitude Zoo** with Himalayan species, and **Eco Cave Gardens**, a network of interconnected caves popular with children. For a fuller day, your driver can include the serene **Bhimtal**, about 22 kilometres away — a larger, quieter lake with a central island and aquarium — along with the seven-cornered **Naukuchiatal** and the lotus-filled **Sattal** cluster, a birdwatcher's paradise of interconnected freshwater lakes set amid oak and pine forest.\n\nTriveni Cabs offers vehicles to match every group and the hilly terrain. A **Sedan** such as a Swift Dzire is ideal for couples and small families of up to 4 and is the most economical and agile choice on Nainital's tight lanes. An **SUV** like an Ertiga or Innova seats 6 to 7 with extra comfort and luggage space, well-suited to families exploring the Bhimtal lakes. Larger groups and joint families can book a **Tempo Traveller** seating up to 15. Every vehicle is clean, heater-equipped, and well-maintained, and our drivers are courteous, punctual, and experienced on Kumaon's winding roads, knowing the best times to reach viewpoints before the clouds and crowds.\n\nA typical Nainital full-day tour runs 8 to 10 hours and is fully customisable. Note that during peak season the Mallital and lakeside areas can be vehicle-restricted, and your driver will park at authorised lots and guide you on foot or to the ropeway as needed. He can recommend the best lakeside cafes for Kumaoni thali, bal mithai, and momos, and point you to the most reliable boating ticket counters and ropeway timings to minimise queues. The forest drives between Nainital, Sattal, and Bhimtal are scenic highlights in themselves, threading through oak woods alive with birdsong.\n\nBooking with Triveni Cabs is transparent and easy. Your quoted fare includes fuel, driver allowance, and taxes, while boating charges, the ropeway, zoo and cave entry tickets, and pony rides are paid directly so you only pay for what you use. We operate year-round, including the misty monsoon and the crisp post-monsoon weeks when the Himalayan views are at their best. Pickup is punctual and every vehicle is GPS-tracked for your peace of mind.\n\nTo reserve your air-conditioned cab for a full-day Nainital city tour, call or WhatsApp Triveni Cabs at **7668570551** (wa.me/917668570551). Just share your pickup point, group size, and preferred vehicle, and our team will confirm a clean car with a friendly local driver who will help you savour the lake, the viewpoints, and the gentle charm of the Lake District of India in complete comfort.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 3000,
+                "suv": 4000,
+                "tempoTraveller": 5800,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Naini Lake boating - paddle, row or yacht across the emerald crescent lake",
+                "Naina Devi Temple - lakeside Shakti Peeth at the heart of Nainital",
+                "Snow View Point - ropeway viewpoint with panoramas of Nanda Devi and Trishul",
+                "Tiffin Top (Dorothy's Seat) - 360-degree views via a short pony ride or forest walk",
+                "Naina Peak - highest viewpoint around the lake at 2,615 metres",
+                "Mall Road & Tibetan Market - lakeside promenade, woollens and Kumaoni handicrafts",
+                "Bhimtal, Sattal & Naukuchiatal - tranquil lake cluster and birdwatching paradise",
+                "Hanuman Garhi & High Altitude Zoo - sunset temple views and Himalayan wildlife"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup",
+                      "duration": "0.5 hours",
+                      "description": "Meet your Triveni Cabs driver and depart in a heated AC vehicle."
+                },
+                {
+                      "time": "09:00 AM",
+                      "activity": "Naini Lake boating",
+                      "duration": "1 hour",
+                      "description": "Enjoy a scenic boat ride across the emerald lake ringed by hills."
+                },
+                {
+                      "time": "10:15 AM",
+                      "activity": "Naina Devi Temple",
+                      "duration": "0.75 hours",
+                      "description": "Visit the revered lakeside Shakti Peeth at the Flats."
+                },
+                {
+                      "time": "11:15 AM",
+                      "activity": "Snow View Point via ropeway",
+                      "duration": "1.25 hours",
+                      "description": "Ride the aerial cable car for Himalayan peak panoramas."
+                },
+                {
+                      "time": "12:45 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Kumaoni thali or cafe fare along Mall Road."
+                },
+                {
+                      "time": "01:45 PM",
+                      "activity": "Tiffin Top (Dorothy's Seat)",
+                      "duration": "1.25 hours",
+                      "description": "Pony ride or forest walk to the 360-degree viewpoint."
+                },
+                {
+                      "time": "03:15 PM",
+                      "activity": "Hanuman Garhi & High Altitude Zoo",
+                      "duration": "1 hour",
+                      "description": "See the temple complex and Himalayan wildlife at the zoo."
+                },
+                {
+                      "time": "04:30 PM",
+                      "activity": "Drive to Bhimtal & Sattal",
+                      "duration": "0.75 hours",
+                      "description": "Scenic forest drive to the quieter lake cluster."
+                },
+                {
+                      "time": "05:15 PM",
+                      "activity": "Bhimtal lake & island",
+                      "duration": "1 hour",
+                      "description": "Relax by the larger lake, visit the island aquarium, optional boating."
+                },
+                {
+                      "time": "06:15 PM",
+                      "activity": "Tibetan Market shopping",
+                      "duration": "0.5 hours",
+                      "description": "Shop for candles, woollens and Kumaoni handicrafts on the way back."
+                },
+                {
+                      "time": "06:45 PM",
+                      "activity": "Drop back",
+                      "duration": "0.5 hours",
+                      "description": "Return to your hotel, concluding the full-day Nainital city tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned, heater-equipped vehicle for full-day use",
+                "Experienced local Kumaon-hills chauffeur",
+                "Fuel, driver allowance and all applicable taxes",
+                "Hotel or bus-stand pickup and drop within Nainital",
+                "Bottled water and 24x7 Triveni Cabs trip support"
+          ],
+          "exclusions": [
+                "Boating charges, ropeway and pony rides",
+                "Zoo, cave garden and other entry tickets",
+                "Meals, snacks and personal expenses",
+                "Parking fees and any toll charges",
+                "Anything not listed under inclusions"
+          ],
+          "bestTimeToVisit": "March to June and September to November",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Nainital/Nainital_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Nainital/Naini_Lake.jpg",
+                "/images/sightseeing/Nainital/Naina_devi_temple.jpg",
+                "/images/sightseeing/Nainital/Snow_View_Point.jpg",
+                "/images/sightseeing/Nainital/Naina_Peak.jpg",
+                "/images/sightseeing/Nainital/Mall_Road_Nainital.jpg",
+                "/images/sightseeing/Nainital/Bhimtal_Lake.jpg"
+          ],
+          "tips": [
+                "Reach Snow View Point and Tiffin Top early for clear Himalayan views before the clouds roll in.",
+                "Buy boating and ropeway tickets at official counters and confirm timings to avoid queues.",
+                "Carry warm layers as Nainital stays cool even in summer evenings.",
+                "Peak-season lakeside areas can be vehicle-restricted; your driver will park nearby and guide you.",
+                "Wear comfortable shoes for the short walks and pony tracks to the viewpoints."
+          ],
+          "reviews": {
+                "averageRating": 4.7,
+                "totalReviews": 2310
+          },
+          "coordinates": {
+                "latitude": 29.3919,
+                "longitude": 79.4542
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Ropeway and pony options available; some viewpoints involve walking and steps",
+          "keywords": [
+                "Nainital full day city tour",
+                "Nainital sightseeing by cab",
+                "Nainital taxi for local sightseeing",
+                "Naini Lake boating tour",
+                "Naina Devi Temple cab",
+                "Snow View Point ropeway taxi",
+                "Nainital one day tour by car",
+                "Tiffin Top Dorothy's Seat tour",
+                "Nainital local tour with driver",
+                "Bhimtal Sattal day tour",
+                "best places to visit in Nainital",
+                "Nainital private cab tour",
+                "Nainital AC taxi sightseeing",
+                "Naina Peak China Peak tour",
+                "Nainital lake tour package",
+                "how to see Nainital in one day",
+                "Nainital cab booking",
+                "Nainital city tour package",
+                "what to do in Nainital in a day",
+                "Nainital hill station taxi",
+                "Triveni Cabs Nainital",
+                "Nainital sightseeing car rental"
+          ]
+    },
     {
       id: 97,
       name: "Nainital Full Day Lake District Tour",
@@ -21266,6 +24962,160 @@ export const sightseeingTours = {
 
   "dalhousie-khajjiar": [
     {
+          "id": 305,
+          "slug": "dalhousie-full-day-city-tour",
+          "name": "Dalhousie & Khajjiar Full Day City Tour",
+          "shortDescription": "Discover colonial Dalhousie and the 'Mini Switzerland' meadows of Khajjiar with St John's Church, Panchpula and Dainkund on a full-day private cab tour with Triveni Cabs.",
+          "fullDescription": "Draped across five hills in the Chamba district of Himachal Pradesh, Dalhousie is a serene colonial-era hill station where Scottish and Victorian architecture nestles among cedar and pine forests, and the snow-capped Dhauladhar range floats on the horizon. Established by the British in the mid-19th century and named after Lord Dalhousie, it retains a wonderfully old-world, unhurried charm - all whitewashed churches, winding tree-lined promenades and sweeping valley views. Pair it with nearby Khajjiar, the emerald saucer-shaped meadow famously dubbed the 'Mini Switzerland of India', and you have one of the most beautiful day tours in North India. Triveni Cabs' Dalhousie and Khajjiar Full Day City Tour brings together the best of both in one comfortable 8-10 hour day, with a private air-conditioned vehicle and a driver expert on the mountain roads. To book, call 7668570551 or WhatsApp wa.me/917668570551.\n\nThe jewel of the tour is undoubtedly Khajjiar, a large green meadow ringed by dense deodar forest, with a small lake at its centre and a floating island of vegetation - a landscape so reminiscent of the Alps that a Swiss diplomat once officially declared it India's own Switzerland, complete with a marker stone. At around 6,500 feet, the meadow is a place to simply breathe, wander, and take in the mountain air. You can enjoy a horse ride around the grassland, try zorbing or paragliding when available, visit the ancient Khajji Nag temple dedicated to the serpent god, or just picnic beneath the towering cedars. The roughly 24-kilometre drive from Dalhousie to Khajjiar is itself a highlight, winding through the emerald canopy of the Kalatop forest. Having a private Triveni cab means you can stop wherever the views take your breath away.\n\nBack in Dalhousie, the tour explores the town's colonial soul. St John's Church, built in 1863, is the oldest church in Dalhousie, a handsome stone building perched near Gandhi Chowk with beautiful stained glass, wooden interiors and a library of old books - a peaceful reminder of the town's British heritage. The bustling malls of Gandhi Chowk and Subhash Chowk invite a leisurely stroll past craft shops, cafes and Tibetan handicraft stalls, with panoramic viewpoints at every turn.\n\nNature lovers will delight in Panchpula, a scenic spot whose name means 'five bridges', where a cascading stream tumbles over rocks and a memorial to the freedom fighter Sardar Ajit Singh stands beside the water. It is a lovely place for a short walk and a cup of chai amid the greenery. Also on the itinerary is the Kalatop Wildlife Sanctuary, a pristine stretch of oak and deodar forest that is home to Himalayan black bears, deer, langurs and a rich variety of birds, offering gentle nature trails and forest stillness.\n\nFor the most dramatic vistas of the tour, the road climbs to Dainkund Peak, the highest point around Dalhousie at nearly 9,000 feet. A short trek from the road leads to the Pholani Devi Temple, and from the ridge - often called the 'Singing Hill' for the whistling of the wind through the trees - you are rewarded with a jaw-dropping 360-degree panorama of the Dhauladhar, Pir Panjal and Chamba valleys. On a clear day, the layered mountain ranges seem to roll on forever.\n\nWhy choose Triveni Cabs for this tour? Because Dalhousie and Khajjiar are connected by narrow, twisting mountain roads that demand an experienced driver and a reliable, comfortable vehicle - not something to leave to crowded shared taxis running to their own timetable. Our drivers are seasoned on these Himachal ghats, our vehicles are well-maintained and air-conditioned for the journey, and our fares are fixed and transparent with no roadside haggling. Choose a Sedan for couples and small families, a sturdy SUV for extra comfort and luggage space on the hill roads, or a 12-15 seater Tempo Traveller for groups. Every tour begins with a convenient doorstep pickup from your Dalhousie hotel or homestay.\n\nThe itinerary is fully flexible and easily tailored. Some travellers want to spend the bulk of the day soaking in Khajjiar's meadow and skip the busier town stops; others prefer to linger over Dalhousie's colonial charm and viewpoints. Families with children often add extra time for horse rides and the meadow activities, while photographers ask us to time Dainkund for the clearest light. If you are combining the trip with Chamba town or the Bakrota Hills, just let your driver know and we will shape the day around it. This freedom is exactly why a private Triveni cab beats any fixed group tour.\n\nDalhousie and Khajjiar are enchanting through much of the year. The months from March to June bring pleasant, mild weather ideal for the meadows and forest walks, making it a popular summer escape. The monsoon from July to September cloaks everything in lush green, though mountain roads can be affected by rain. From late December to February, snowfall can transform Khajjiar and Dalhousie into a glistening white wonderland - magical, but requiring careful driving, which our experienced drivers are well-prepared for. Whatever the season, an air-conditioned Triveni vehicle keeps your journey comfortable and safe.\n\nBooking your Dalhousie and Khajjiar Full Day City Tour is effortless. Call 7668570551 or send a WhatsApp message to wa.me/917668570551 with your travel date, hotel and preferred vehicle, and we will confirm an all-inclusive fare with no hidden charges. From the alpine meadows of 'Mini Switzerland' to the colonial calm of St John's Church and the soaring views from Dainkund Peak, let Triveni Cabs take care of every hairpin bend while you simply lose yourself in the beauty of the Himachal hills. It is a day of meadows, forests, churches and mountain panoramas that lingers in the memory long after you head home.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2900,
+                "suv": 3900,
+                "tempoTraveller": 5600,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Khajjiar Meadow - the emerald 'Mini Switzerland of India'",
+                "St John's Church - Dalhousie's oldest 1863 colonial church",
+                "Panchpula - scenic five-bridge waterfall and stream",
+                "Kalatop Wildlife Sanctuary - deodar forest trails and birdlife",
+                "Dainkund Peak - 360-degree Himalayan panorama from the 'Singing Hill'",
+                "Khajji Nag Temple - ancient serpent-god shrine at Khajjiar",
+                "Gandhi Chowk & Subhash Chowk - colonial malls and handicraft shops",
+                "Scenic forest drive through the Kalatop cedar canopy"
+          ],
+          "itinerary": [
+                {
+                      "time": "08:30 AM",
+                      "activity": "Hotel pickup & St John's Church",
+                      "duration": "1 hour",
+                      "description": "Doorstep pickup and a visit to Dalhousie's oldest colonial church at Gandhi Chowk."
+                },
+                {
+                      "time": "09:30 AM",
+                      "activity": "Panchpula",
+                      "duration": "1 hour",
+                      "description": "Walk to the five-bridge waterfall and Ajit Singh memorial amid the greenery."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "Drive to Khajjiar via Kalatop",
+                      "duration": "1 hour",
+                      "description": "Wind through the deodar forest on the scenic road to Khajjiar."
+                },
+                {
+                      "time": "11:30 AM",
+                      "activity": "Khajjiar Meadow",
+                      "duration": "2.5 hours",
+                      "description": "Explore the 'Mini Switzerland' meadow, lake, Khajji Nag Temple and activities."
+                },
+                {
+                      "time": "02:00 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Enjoy Himachali or North Indian cuisine at a recommended restaurant."
+                },
+                {
+                      "time": "03:00 PM",
+                      "activity": "Kalatop Wildlife Sanctuary",
+                      "duration": "1 hour",
+                      "description": "Take a gentle nature trail through the pristine oak and cedar forest."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Drive to Dainkund Peak",
+                      "duration": "0.5 hours",
+                      "description": "Transfer toward the highest viewpoint around Dalhousie."
+                },
+                {
+                      "time": "04:30 PM",
+                      "activity": "Dainkund Peak & Pholani Devi Temple",
+                      "duration": "1.5 hours",
+                      "description": "Short trek to the ridge for sweeping Dhauladhar and Pir Panjal views."
+                },
+                {
+                      "time": "06:00 PM",
+                      "activity": "Gandhi Chowk stroll & shopping",
+                      "duration": "0.5 hours",
+                      "description": "Browse the colonial mall for Tibetan handicrafts and souvenirs."
+                },
+                {
+                      "time": "06:30 PM",
+                      "activity": "Return drop to hotel",
+                      "duration": "0.5 hours",
+                      "description": "Comfortable transfer back to your Dalhousie hotel, concluding the tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned private vehicle for the full day",
+                "Skilled hill-road driver experienced on Himachal ghats",
+                "Doorstep pickup and drop from Dalhousie hotel or homestay",
+                "All fuel, tolls, parking and driver charges",
+                "Flexible itinerary covering both Dalhousie and Khajjiar",
+                "24x7 booking and on-call assistance"
+          ],
+          "exclusions": [
+                "Sanctuary and any monument entry fees",
+                "Horse rides, zorbing, paragliding and activity charges at Khajjiar",
+                "Lunch, snacks and personal expenses",
+                "Camera fees where applicable",
+                "Any parking or permit fees at protected areas"
+          ],
+          "bestTimeToVisit": "March to June and December to February for snow",
+          "difficulty": "Easy",
+          "category": "Hill Station & Nature",
+          "heroImage": "/images/sightseeing/Dalhousie/dalhousie_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Dalhousie/Khajjiar_Meadow.jpg",
+                "/images/sightseeing/Dalhousie/St_Johns_Church.jpg",
+                "/images/sightseeing/Dalhousie/Panchpula_Waterfall.jpg",
+                "/images/sightseeing/Dalhousie/Kalatop_Wildlife.jpg",
+                "/images/sightseeing/Dalhousie/Dainkund_Peak.jpg",
+                "/images/sightseeing/Khajjiar/Mini_Switzerland_View.jpg"
+          ],
+          "tips": [
+                "Carry a warm layer even in summer as the peaks and evenings are chilly",
+                "Wear comfortable shoes for the short trek to Dainkund Peak",
+                "Check road conditions in winter as snow can affect the Khajjiar route",
+                "Start early to enjoy Khajjiar meadow before the afternoon crowds",
+                "Keep cash handy for horse rides and meadow activities at Khajjiar"
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 1526
+          },
+          "coordinates": {
+                "latitude": 32.5387,
+                "longitude": 75.9707
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Town sights are easy; Dainkund and forest trails involve walking and light trekking",
+          "keywords": [
+                "Dalhousie full day city tour",
+                "Dalhousie Khajjiar sightseeing tour",
+                "Dalhousie taxi package",
+                "Khajjiar Mini Switzerland tour",
+                "Dalhousie cab booking",
+                "Dalhousie one day tour",
+                "St John's Church Dalhousie",
+                "Dainkund Peak tour",
+                "Dalhousie private car tour",
+                "Dalhousie local sightseeing taxi",
+                "best places to visit in Dalhousie",
+                "Dalhousie Khajjiar tour package price",
+                "how to visit Dalhousie in one day",
+                "Khajjiar meadow tour",
+                "Panchpula Dalhousie",
+                "hire car for Dalhousie sightseeing",
+                "Dalhousie Himachal tour",
+                "Kalatop Wildlife Sanctuary tour",
+                "things to do in Dalhousie",
+                "Dalhousie hill station taxi",
+                "Triveni Cabs Dalhousie",
+                "Dalhousie full day taxi fare"
+          ]
+    },
+    {
       id: 101,
       name: "Dalhousie & Khajjiar Mini Switzerland Tour",
       slug: "dalhousie-khajjiar-tour",
@@ -21366,6 +25216,164 @@ export const sightseeingTours = {
 
   // UP Spiritual New Tours
   "varanasi-spiritual": [
+    {
+          "id": 204,
+          "slug": "varanasi-full-day-city-tour",
+          "name": "Varanasi Full Day City Tour by Cab",
+          "shortDescription": "Private full-day Varanasi sightseeing cab covering Kashi Vishwanath, the Ganga Aarti, sunrise boat ride and Sarnath with driver.",
+          "fullDescription": "Varanasi, also known as Kashi and Banaras, is one of the oldest continuously inhabited cities on earth and the spiritual capital of India, a place where life and death, devotion and daily ritual play out along the ghats of the holy Ganges. Experiencing its sunrise boat rides, ancient temples, the riverside cremation ghats and the mesmerising evening Ganga Aarti in a single day is best done with a private full-day city tour by cab from Triveni Cabs, paired with a respectful local driver who understands the rhythms of the city, where to drop you for the ghats, and how to time the boat ride and the aarti perfectly. To book, just call 7668570551 or message us on WhatsApp at wa.me/917668570551, and we will pick you up from your hotel or from Lal Bahadur Shastri International Airport (Babatpur), around 25 km from the ghats.\n\nFor the full Varanasi experience, many travellers begin before dawn with a hotel pickup around 5:30 AM to catch the sunrise boat ride on the Ganges, widely regarded as the most magical experience in the city. As the cab drops you near Dashashwamedh or Assi Ghat, you board a small boat and glide along the riverfront just as the first light breaks over the eastern bank, watching pilgrims perform their morning ablutions, priests offer prayers to the rising sun, and the tiered ghats glow amber. The roughly 90-minute cruise passes the famous Manikarnika and Harishchandra cremation ghats and offers an unmatched perspective on the timeless life of the river. (For those who prefer a later start, the boat ride can be moved to the evening or skipped.)\n\nAfter the boat ride and a chai-and-kachori breakfast in the old town, the tour visits the Kashi Vishwanath Temple, one of the twelve sacred Jyotirlingas of Lord Shiva and the most revered shrine in the city, now part of the grand new Kashi Vishwanath Corridor connecting the temple directly to the Ganges. The atmosphere of devotion here is intense and deeply moving; do plan for security checks and queues, and note that cameras and phones are not allowed inside the inner sanctum. Nearby lie a cluster of other temples and the labyrinthine galis (lanes) of old Banaras, brimming with silk shops, sweet stalls and the city's famous Banarasi paan.\n\nBy mid-morning the tour drives about 10 km north-east to Sarnath, the tranquil site where Lord Buddha delivered his first sermon after attaining enlightenment, one of the four holiest sites in Buddhism. Here you can explore the towering Dhamek Stupa, the ruins of ancient monasteries, the Ashokan pillar remains, and the excellent Sarnath Archaeological Museum which houses the original Lion Capital of Ashoka, India's national emblem. The peaceful, green setting is a striking contrast to the intensity of the ghats and makes a perfect mid-day stop. Your driver can also recommend a quiet restaurant nearby for lunch.\n\nIn the afternoon, the tour can include the Banaras Hindu University (BHU), one of Asia's largest residential universities, whose sprawling green campus is home to the beautiful New Vishwanath Temple (Birla Temple) and the Bharat Kala Bhavan museum of art and antiquities. A stroll or slow drive through the campus is a serene way to pass the warmer afternoon hours. As evening approaches, your Triveni Cabs driver brings you back to the riverfront for the grand finale, the Ganga Aarti at Dashashwamedh Ghat. Held every evening, this elaborately choreographed ceremony sees young priests in saffron robes swing huge flaming lamps in perfect synchrony to chanting, drums and conch shells, while thousands of devotees and visitors watch from the steps and from boats on the water. Arriving early by cab ensures you get a good vantage point for this unforgettable spectacle.\n\nIf time and interest allow, the day can also weave in Assi Ghat (a calmer, southern ghat popular for its own morning aarti and relaxed cafés), the Tulsi Manas Temple, the Durga Temple (Monkey Temple) and the Sankat Mochan Hanuman Temple. Your itinerary is entirely flexible, simply tell your driver your priorities and the plan adapts at no extra cost.\n\nFor vehicles, Triveni Cabs offers an air-conditioned Sedan (Swift Dzire or similar) for couples and solo travellers, a spacious SUV (Toyota Innova or Ertiga) for families and groups up to 6, and a 12- to 15-seater Tempo Traveller for larger groups. Note that the cab cannot enter the narrowest ghat-side lanes, so your driver will drop and collect you at the nearest accessible point, a huge convenience in a city where navigation on foot can be bewildering. Every booking includes an experienced local driver, transparent fixed pricing with fuel and driver allowance included, no hidden charges, GPS-tracked sanitised vehicles, and 24x7 support.\n\nTriveni Cabs is a trusted North-India travel operator with thousands of happy customers and round-the-clock assistance. Beyond the city tour we can arrange day trips to Allahabad (Prayagraj) and the Triveni Sangam, Vindhyachal, or onward transfers to Bodh Gaya, Lucknow and Ayodhya. Whether you seek the spiritual intensity of the ghats, the calm of Sarnath, or the spectacle of the Ganga Aarti, our Varanasi Full Day City Tour captures the soul of Kashi. To reserve your tour, get today's best fare or customise the route, just call 7668570551 or send a WhatsApp message to wa.me/917668570551 and our team will confirm your booking within minutes.",
+          "duration": "8-10 hours",
+          "price": {
+                "sedan": 2300,
+                "suv": 3000,
+                "tempoTraveller": 4600,
+                "currency": "INR"
+          },
+          "highlights": [
+                "Kashi Vishwanath Temple - sacred Shiva Jyotirlinga and grand corridor",
+                "Dashashwamedh Ghat Ganga Aarti - mesmerising evening fire ceremony",
+                "Sunrise Ganges boat ride - golden light over the ancient ghats",
+                "Sarnath - where Buddha gave his first sermon, Dhamek Stupa & museum",
+                "Assi Ghat - calmer southern ghat with morning aarti and cafés",
+                "Banaras Hindu University - green campus, Birla Temple & art museum",
+                "Old Banaras galis - silk shops, sweets and famous Banarasi paan",
+                "Lion Capital of Ashoka - India's national emblem at Sarnath Museum"
+          ],
+          "itinerary": [
+                {
+                      "time": "05:30 AM",
+                      "activity": "Early hotel pickup in air-conditioned cab",
+                      "duration": "30 mins",
+                      "description": "Meet your Triveni Cabs driver and head to the ghats for sunrise."
+                },
+                {
+                      "time": "06:00 AM",
+                      "activity": "Sunrise boat ride on the Ganges",
+                      "duration": "1.5 hours",
+                      "description": "Cruise past the ghats as the sun rises over the river."
+                },
+                {
+                      "time": "07:30 AM",
+                      "activity": "Breakfast in old Banaras",
+                      "duration": "45 mins",
+                      "description": "Enjoy kachori-sabzi and chai in the old town lanes."
+                },
+                {
+                      "time": "08:30 AM",
+                      "activity": "Kashi Vishwanath Temple",
+                      "duration": "1.5 hours",
+                      "description": "Visit the sacred Jyotirlinga via the Vishwanath Corridor."
+                },
+                {
+                      "time": "10:30 AM",
+                      "activity": "Drive to Sarnath",
+                      "duration": "45 mins",
+                      "description": "Travel about 10 km to the Buddhist pilgrimage site."
+                },
+                {
+                      "time": "11:15 AM",
+                      "activity": "Sarnath stupas & museum",
+                      "duration": "1.5 hours",
+                      "description": "See the Dhamek Stupa, ruins and the Lion Capital of Ashoka."
+                },
+                {
+                      "time": "12:45 PM",
+                      "activity": "Lunch break",
+                      "duration": "1 hour",
+                      "description": "Relax over lunch at a recommended restaurant."
+                },
+                {
+                      "time": "02:00 PM",
+                      "activity": "Banaras Hindu University & Birla Temple",
+                      "duration": "1.5 hours",
+                      "description": "Stroll the green campus and visit the New Vishwanath Temple."
+                },
+                {
+                      "time": "04:00 PM",
+                      "activity": "Assi Ghat & old city",
+                      "duration": "1.5 hours",
+                      "description": "Explore the calmer southern ghat and silk-weaving lanes."
+                },
+                {
+                      "time": "06:00 PM",
+                      "activity": "Ganga Aarti at Dashashwamedh Ghat",
+                      "duration": "1.5 hours",
+                      "description": "Witness the grand synchronised evening fire ceremony."
+                },
+                {
+                      "time": "07:30 PM",
+                      "activity": "Drop back to hotel",
+                      "duration": "30 mins",
+                      "description": "Return to your hotel, concluding the full-day Varanasi tour."
+                }
+          ],
+          "inclusions": [
+                "Air-conditioned vehicle (Sedan / SUV / Tempo Traveller) for the full day",
+                "Experienced English- and Hindi-speaking driver",
+                "Fuel, driver allowance, tolls and parking charges",
+                "Hotel / airport / railway station pickup and drop within Varanasi",
+                "Flexible itinerary including Sarnath excursion",
+                "All applicable taxes and 24x7 customer support"
+          ],
+          "exclusions": [
+                "Boat ride charges on the Ganges",
+                "Temple and museum entry / donation",
+                "Meals, snacks and personal expenses",
+                "Guide and priest charges (arranged on request)",
+                "Anything not explicitly mentioned under inclusions"
+          ],
+          "bestTimeToVisit": "October to March",
+          "difficulty": "Easy",
+          "category": "Spiritual & Pilgrimage",
+          "heroImage": "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
+          "images": [
+                "/images/sightseeing/Varanasi/Kashi_Vishwanath_Temple.jpg",
+                "/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg",
+                "/images/sightseeing/Varanasi/Boat_Ride_Ganges.jpg",
+                "/images/sightseeing/Varanasi/Sarnath.jpg",
+                "/images/sightseeing/Varanasi/Assi_Ghat.jpg",
+                "/images/sightseeing/Varanasi/varanasi_hero_section.jpg"
+          ],
+          "tips": [
+                "Book the sunrise boat ride for the most magical light; arrive at the ghat before dawn.",
+                "Leave phones and cameras with your driver before entering Kashi Vishwanath, as they are not allowed inside.",
+                "Dress modestly and remove shoes before entering temples; carry socks for hot or wet floors.",
+                "Reach Dashashwamedh Ghat at least 45 minutes early to secure a good spot for the Ganga Aarti.",
+                "Be respectful and avoid photographing the cremation ghats out of consideration for grieving families."
+          ],
+          "reviews": {
+                "averageRating": 4.8,
+                "totalReviews": 2030
+          },
+          "coordinates": {
+                "latitude": 25.3176,
+                "longitude": 82.9739
+          },
+          "groupSize": "1-15 persons",
+          "accessibility": "Moderate; ghats involve steps and narrow lanes, cab drops at nearest access point",
+          "keywords": [
+                "Varanasi full day city tour",
+                "Varanasi sightseeing cab",
+                "Varanasi taxi for sightseeing",
+                "Varanasi city tour package",
+                "Kashi Vishwanath Temple tour",
+                "Ganga Aarti Varanasi tour",
+                "sunrise boat ride Varanasi",
+                "Sarnath tour from Varanasi",
+                "Varanasi local sightseeing by car",
+                "best places to visit in Varanasi in one day",
+                "Varanasi private cab tour",
+                "Varanasi full day taxi package",
+                "things to do in Varanasi in a day",
+                "Varanasi car rental with driver",
+                "Dashashwamedh Ghat aarti timing",
+                "Assi Ghat Varanasi",
+                "how to see Varanasi in one day",
+                "Varanasi tour by Triveni Cabs",
+                "Kashi Banaras sightseeing tour",
+                "Varanasi hotel pickup sightseeing tour"
+          ]
+    },
     {
       id: 103,
       name: "Varanasi Ganga Aarti Spiritual Tour",

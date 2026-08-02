@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi Food Tour 2026 | Chandni Chowk, Paranthe Wali Gali & Street Food Guide',
-  description: 'Delhi food & culinary tour. Famous Chole Bhature, Paranthe Wali Gali, Butter Chicken, Chaat, Jalebi. Street food itinerary, best restaurants. By Delhi locals. Call 7668570551.',
+  title: 'Delhi Food Tour 2026 | Chandni Chowk & Paranthe Wali Gali',
+  description: 'Delhi food guide — Chole Bhature, Paranthe Wali Gali, Butter Chicken, Chaat. Street food itinerary, best restaurants, by locals. Call 7668570551.',
   keywords: 'delhi food tour, delhi street food, chandni chowk food, paranthe wali gali, butter chicken delhi, karim delhi, delhi food guide, old delhi food walk',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function DelhiFoodTourPage() {
     { question: "What is the history of Butter Chicken?", answer: "Butter Chicken was invented in 1947 at Moti Mahal in Daryaganj by Kundan Lal Gujral. He mixed leftover tandoori chicken with a tomato-butter-cream gravy. It became Delhi&apos;s most famous dish and spread worldwide. The original Moti Mahal still operates in Daryaganj." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function DelhiFoodTourPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const famousFoods = [
     { name: "Chole Bhature", desc: "Delhi&apos;s signature breakfast. Fluffy fried bread with spicy chickpea curry, onion, pickle, and a glass of lassi. Sita Ram Diwan Chand in Paharganj and Nagpal Chole Bhature in Lajpat Nagar are legendary. Every Delhiite has their favourite spot.", price: "₹60-120 per plate", mustTry: true, heat: 1 },
@@ -106,6 +107,19 @@ export default function DelhiFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "delhi-food-tour",
+    headline: "Delhi Food Tour 2026 — Best Street Food, Restaurants & Markets",
+    description: "Complete Delhi food tour guide. Chandni Chowk, Connaught Place, Old Delhi parathas, kebabs at Karim Hotel, chaat at UPSC, regional cuisines, food walks.",
+    image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("delhi", { idSlug: "delhi-food-tour" });
+
 
   return (
     <>
@@ -123,6 +137,8 @@ export default function DelhiFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = "spiti-valley-road-trip-from-delhi";
+
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Spiti Valley Road Trip from Delhi 2026 | 8-10 Day Plan | Triveni Cabs',
+  title: 'Spiti Valley Road Trip from Delhi 2026 | 8-10 Day Plan',
   description: 'Spiti Valley road trip from Delhi: 8-10 day plan via Shimla & Manali. Route, permits, altitude tips, road conditions. SUV ₹65,000. Call 7668570551.',
   keywords: 'spiti valley road trip from delhi plan, delhi to spiti valley by car, spiti valley tour itinerary, spiti valley road conditions, spiti valley permit',
   authors: [{ name: 'Triveni Cabs' }],
@@ -44,7 +47,7 @@ export default function SpitiValleyRoadTripPage() {
     "@context": "https://schema.org", "@type": "TouristTrip",
     "name": "Spiti Valley Road Trip from Delhi",
     "description": "8-10 day road trip from Delhi to Spiti Valley via Shimla, returning via Manali",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "65000", "highPrice": "100000", "priceCurrency": "INR" }
   };
   const breadcrumbSchema = {
@@ -54,6 +57,11 @@ export default function SpitiValleyRoadTripPage() {
       { "@type": "ListItem", "position": 2, "name": "Spiti Valley Road Trip", "item": "https://www.trivenicabs.in/spiti-valley-road-trip-from-delhi" }
     ]
   };
+  const serviceSchema = buildStaticService({ slug: SLUG, name: "Spiti Valley Road Trip Cab Service from Delhi", description: "Spiti Valley Road Trip from Delhi with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 65000, highPrice: 100000, serviceType: 'Multi-Day Road Trip Cab Service' });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "Spiti Valley Road Trip from Delhi 2026", description: "Spiti Valley Road Trip from Delhi itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const howToSchema = getHowToSchema({ name: "How to Plan a Spiti Valley Road Trip from Delhi", description: "Step-by-step day-wise plan for the Spiti Valley Road Trip from Delhi by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 65000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
+  const placeSchemas = buildPlaceSchemas(["delhi","shimla","manali","kasol"], SLUG, '/images/triveni-cabs-og.jpg');
+
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
   return (
@@ -61,6 +69,12 @@ export default function SpitiValleyRoadTripPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {placeSchemas.map((sc, idx) => (
+        <script key={`place-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sc) }} />
+      ))}
 
       <div className="min-h-screen bg-gradient-to-b from-slate-50 to-stone-100">
         <section className="relative bg-gradient-to-br from-slate-800 via-stone-700 to-amber-900 text-white py-20 px-4">
@@ -68,8 +82,8 @@ export default function SpitiValleyRoadTripPage() {
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full mb-6">
               <Calendar className="w-4 h-4" /><span className="text-sm font-medium">10 Days | 4,590 m Peak | High-Altitude Adventure</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Spiti Valley Road Trip<br />from Delhi</h1>
-            <p className="text-xl text-stone-200 mb-4 max-w-3xl mx-auto">Delhi &rarr; Shimla &rarr; Kinnaur &rarr; Spiti &rarr; Chandratal &rarr; Manali &rarr; Delhi — the ultimate high-altitude adventure through India&apos;s cold desert.</p>
+            <h1 className="speakable-headline text-4xl md:text-6xl font-bold mb-6 leading-tight">Spiti Valley Road Trip<br />from Delhi</h1>
+            <p className="speakable-lead text-xl text-stone-200 mb-4 max-w-3xl mx-auto">A Spiti Valley road trip from Delhi is a 10-day high-altitude circuit — Delhi &rarr; Shimla &rarr; Kinnaur &rarr; Spiti &rarr; Chandratal &rarr; Manali &rarr; Delhi — costing from Rs 65,000 (SUV) to Rs 80,000 (Innova Crysta) with Triveni Cabs, all-inclusive of fuel, tolls, permits and an experienced high-altitude driver. The ultimate adventure through India&apos;s cold desert, best done June to October.</p>
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span className="bg-white/10 px-4 py-2 rounded-full text-sm">SUV from ₹65,000</span>
               <span className="bg-white/10 px-4 py-2 rounded-full text-sm">Crysta from ₹80,000</span>
@@ -191,7 +205,7 @@ export default function SpitiValleyRoadTripPage() {
               {faqData.map((faq, i) => (
                 <details key={i} className="bg-stone-50 rounded-xl p-6 group">
                   <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">{faq.question}<ChevronRight className="w-5 h-5 text-amber-600 group-open:rotate-90 transition-transform flex-shrink-0" /></summary>
-                  <p className="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
+                  <p className={`mt-4 text-gray-700 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                 </details>
               ))}
             </div>

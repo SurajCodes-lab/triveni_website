@@ -1,756 +1,392 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
 import Link from 'next/link';
-// Centralized icon imports for better bundle optimization
+import Image from 'next/image';
 import {
-  Plane,
-  Clock,
-  Shield,
-  MapPin,
-  Car,
-  ChevronRight,
-  CheckCircle,
-  Phone,
-  Calendar,
-  Luggage,
-  Star,
-  Users,
-  Award,
-  Navigation,
-  Home
+  Plane, Clock, Shield, MapPin, Car, ChevronRight, ChevronDown, CheckCircle2,
+  Phone, Luggage, Star, Users, Navigation, Camera, Award, ArrowRight,
 } from '@/components/ui/icons';
-
-import dynamic from 'next/dynamic';
-
-// Dynamically import FareCalculator (client-only, below fold)
-const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
-
-// SEO Components
-import { FAQSection } from '@/components/seo/FAQSection';
-import { CrossServiceLinks, PopularRoutes, NearbyDestinations } from '@/components/seo/RelatedContent';
-import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import { WhatsAppIcon } from '@/components/ui/icons';
 import { generateAirportFAQs } from '@/lib/seo/faq-generator';
-import { getRelatedRoutes, getNearbyDestinations } from '@/utilis/linkingHelper';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import {
+  AirportShell, AirportBackdrop, AirportCrumb, FlightStatusPill, SectionKicker,
+  TerminalBadge, RouteArc, BoardRow, Barcode, getAccent, HeroPhoto,
+} from '@/components/airport/AirportKit';
+import { getCityImage } from '@/utilis/imageUtils';
+
+const PHONE = '+917668570551';
+const wa = (text) => `https://wa.me/917668570551?text=${encodeURIComponent(text)}`;
+const routeSlug = (a, b) => `/${a.toLowerCase().replace(/\s+/g, '-')}-to-${b.toLowerCase().replace(/\s+/g, '-')}`;
+
+const FLEET = [
+  { name: 'Sedan', cars: 'Dzire · Etios', seats: '1–4', bags: '2–3', mult: 1, tag: null, img: '/images/car/swift_dzire.jpg' },
+  { name: 'SUV', cars: 'Innova · Ertiga', seats: '1–6', bags: '4', mult: 1.4, tag: 'Most Booked', img: '/images/car/innova_crysta.jpg' },
+  { name: 'Tempo', cars: '12–16 Seater', seats: '7–16', bags: '12+', mult: 2.2, tag: null, img: '/images/tempo/16_seater.jpg' },
+];
+
+const INCLUDES = [
+  { icon: Navigation, t: 'Meet & greet at arrivals' },
+  { icon: Plane, t: 'Real-time flight tracking' },
+  { icon: Car, t: 'Clean, sanitised AC vehicle' },
+  { icon: Luggage, t: 'Free luggage assistance' },
+  { icon: Clock, t: 'Up to 60 min free waiting' },
+  { icon: Shield, t: 'Fixed fare — no hidden charges' },
+];
 
 export default function CityAirportServiceClient({ city, citySlug, cityTours = [] }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    pickupLocation: '',
-    dropLocation: city.airport,
-    pickupDate: '',
-    pickupTime: '',
-    passengers: '1',
-    vehicleType: 'sedan',
-    flightNumber: ''
-  });
+  const [openFaq, setOpenFaq] = useState(0);
+  const accent = getAccent(citySlug);
+  const base = 11; // ₹/km
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const message =
-      `🚖 *${city.name} Airport Transfer Booking*\n\n` +
-      `👤 *Name:* ${formData.name}\n` +
-      `📞 *Phone:* ${formData.phone}\n` +
-      `📧 *Email:* ${formData.email || 'Not provided'}\n\n` +
-      `📍 *Pickup:* ${formData.pickupLocation}\n` +
-      `✈️ *Drop:* ${formData.dropLocation}\n` +
-      `📅 *Date:* ${formData.pickupDate}\n` +
-      `🕐 *Time:* ${formData.pickupTime}\n` +
-      `👥 *Passengers:* ${formData.passengers}\n` +
-      `🚗 *Vehicle:* ${formData.vehicleType}\n` +
-      `✈️ *Flight Number:* ${formData.flightNumber || 'Not provided'}\n\n` +
-      `*Airport:* ${city.airport} (${city.airportCode})\n` +
-      `*Distance:* ${city.distance}\n\n` +
-      `*Services Included:*\n` +
-      `✓ Real-time flight tracking\n` +
-      `✓ Professional chauffeur\n` +
-      `✓ Meet & greet at ${city.airport}\n` +
-      `✓ Luggage assistance\n` +
-      `✓ On-time guarantee\n` +
-      `✓ Fixed rates - No hidden charges\n\n` +
-      `Please confirm availability and share the fare for ${city.name} airport transfer. Thank you!`;
+  const heroWa = `Hi Triveni Cabs, I need an airport taxi in ${city.name} (${city.airport}) with flight tracking. Please share availability and fare.`;
+  const faqs = generateAirportFAQs({ city: city.name, airportName: city.airport, price: base, distance: (city.distance || '').replace(/[^0-9]/g, '') || '15' });
 
-    const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // SEO internal linking data
-  const relatedRoutes = getRelatedRoutes(city.name);
-
-  // Helper function to create route slug - handles multi-word city names
-  const createRouteSlug = (cityName, destination) => {
-    if (!cityName || !destination) return null;
-    return `/${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
-  };
-
-  // Helper function to get route link from destination name
-  const getDestinationLink = (destName) => {
-    // Check if this is an outstation destination (in routes)
-    const routeMatch = city.routes.find(route =>
-      route.toLowerCase().includes(destName.toLowerCase()) ||
-      destName.toLowerCase().includes(route.split(' to ')[1]?.toLowerCase())
-    );
-
-    if (routeMatch) {
-      const parts = routeMatch.split(' to ');
-      return createRouteSlug(parts[0], parts[1]);
-    }
-
-    // For local destinations, link to city page or sightseeing
-    const destSlug = destName.toLowerCase().replace(/\s+/g, '-');
-    return `/${citySlug}#${destSlug}`;
-  };
-
-  const features = useMemo(() => [
-    {
-      icon: Plane,
-      title: 'Flight Tracking',
-      description: 'Real-time flight monitoring for timely pickups'
-    },
-    {
-      icon: Clock,
-      title: '24/7 Service',
-      description: 'Available round the clock for all flights'
-    },
-    {
-      icon: Shield,
-      title: 'Safe & Secure',
-      description: 'Verified drivers and GPS-tracked vehicles'
-    },
-    {
-      icon: Luggage,
-      title: 'Luggage Assistance',
-      description: 'Help with loading and unloading baggage'
-    }
-  ], []);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white min-h-screen">
-      {/* Hero Section with Background Image */}
-      <section
-        className="relative bg-cover bg-center bg-no-repeat py-28"
-        style={{
-          backgroundImage: "url('/images/airport_section.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/85 to-black/65"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="inline-flex items-center space-x-1 md:space-x-3">
-              <li className="inline-flex items-center">
-                <Link
-                  href="/"
-                  className="text-white hover:text-yellow-400 transition-colors duration-200 flex items-center"
-                >
-                  <Home className="w-4 h-4 mr-1" />
-                  Home
-                </Link>
-              </li>
-              <li>
-                <div className="flex items-center">
-                  <ChevronRight className="w-4 h-4 mx-2 text-white" />
-                  <Link
-                    href="/airport-service"
-                    className="text-white hover:text-yellow-400 transition-colors duration-200"
-                  >
-                    Airport Service
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center font-semibold">
-                  <ChevronRight className="w-4 h-4 mx-2 text-white" />
-                  <span className="text-yellow-400 text-xl">{city.name}</span>
-                </div>
-              </li>
-            </ol>
-          </nav>
+    <AirportShell accent={accent}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SetStickyCta price="From ₹11/km" label={`${city.name} Airport Taxi`} whatsappText={heroWa} />
 
-          <div className="max-w-4xl">
-            <div className="inline-block bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-2 mr-2">
-              Starting from ₹11/km
-            </div>
-            <div className="inline-block bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              {city.airportCode} Airport Transfer
-            </div>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              {city.name} Airport Taxi Service - Book {city.airport} Cab in 60 Seconds
-            </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl text-yellow-400 font-semibold mb-4">
-              24/7 Premium {city.name} Airport Transfer | Flight Tracking + On-Time Guarantee
-            </h2>
-            <p className="text-lg md:text-xl text-gray-200 mb-6 leading-relaxed">
-              {city.description} <strong>Pre-book now</strong> for guaranteed rates starting ₹11/km!
-            </p>
-            <div className="flex flex-wrap gap-4 mb-6">
-              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center">
-                <MapPin className="w-5 h-5 mr-2 text-yellow-400" />
-                <span className="text-white">{city.distance}</span>
+      {/* ══ HERO ══ */}
+      <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pb-24">
+        <HeroPhoto src={getCityImage(city.name)} />
+        <AirportBackdrop variant="full" />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <AirportCrumb trail={[
+            { label: 'Home', href: '/' },
+            { label: 'Airport Service', href: '/airport-service' },
+            { label: `${city.name} Airport` },
+          ]} />
+
+          <div className="grid items-start gap-10 lg:grid-cols-5">
+            <div className="lg:col-span-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <TerminalBadge code={city.airportCode} sub="IATA" accentName={(city.terminals || '').replace(/[^0-9]/g, '') ? `${(city.terminals || '').replace(/[^0-9]/g, '')} TERM` : 'TERM'} />
+                <FlightStatusPill label="24/7 Pickup" />
               </div>
-              <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center">
-                <Plane className="w-5 h-5 mr-2 text-yellow-400" />
-                <span className="text-white">{city.terminals}</span>
+
+              <h1 className="mt-7 text-3xl font-black leading-[1.12] tracking-tight sm:text-5xl md:text-7xl">
+                <span className="block text-white">{city.name}</span>
+                <span className="block bg-gradient-to-r from-[var(--air-accent)] via-[var(--air-accent2)] to-[var(--air-accent)] bg-clip-text text-transparent">
+                  Airport Taxi
+                </span>
+              </h1>
+              <p className="mt-2 font-mono text-sm tracking-wide text-slate-400">{city.airport}</p>
+
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">{city.description}</p>
+
+              {/* quick facts */}
+              <div className="mt-7 flex flex-wrap gap-3">
+                {[
+                  { icon: MapPin, l: 'From airport', v: city.distance },
+                  { icon: Plane, l: 'Terminals', v: city.terminals },
+                  { icon: Car, l: 'Starts at', v: '₹11/km' },
+                ].map((s) => (
+                  <div key={s.l} className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-3 backdrop-blur-xl">
+                    <s.icon className="h-5 w-5 text-[color:var(--air-accent)]" />
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-slate-500">{s.l}</div>
+                      <div className="text-sm font-bold text-white">{s.v}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href={`tel:${PHONE}`} onClick={() => trackPhoneCall('city_airport_hero')}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-7 py-4 text-lg font-bold text-black transition-transform hover:scale-[1.02]"
+                  style={{ background: 'linear-gradient(135deg, var(--air-accent), var(--air-accent2))', boxShadow: '0 12px 36px var(--air-glow)' }}>
+                  <Phone className="h-5 w-5" /> Call +91 7668570551
+                </a>
+                <a href={wa(heroWa)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('city_airport_hero')}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-7 py-4 text-lg font-bold text-white backdrop-blur-xl transition-colors hover:border-[color:var(--air-accent)]/40 hover:bg-white/[0.08]">
+                  <WhatsAppIcon className="h-5 w-5 text-emerald-400" /> WhatsApp
+                </a>
+              </div>
+
+              <RouteArc from={city.airportCode} to={city.name.toUpperCase()} className="mt-10 max-w-md" />
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                onClick={() => trackPhoneCall('city_airport_service')} href="tel:+917668570551"
-                className="bg-yellow-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-700 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call: +91 7668570551
-              </a>
-              <a
-                href="#booking-form"
-                className="bg-white text-gray-900 px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center font-semibold text-lg"
-              >
-                <Calendar className="w-5 h-5 mr-2" />
-                Book {city.name} Airport Taxi Now
-              </a>
+
+            <div className="lg:col-span-2">
+              <div className="rounded-3xl border border-[color:var(--air-accent)]/20 bg-white/[0.04] p-1.5 backdrop-blur-xl">
+                <div className="mb-1 flex items-center justify-between px-4 pt-3">
+                  <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--air-accent)]">{city.name} Desk</span>
+                  <FlightStatusPill label="Open" />
+                </div>
+                <QuickEnquiryForm toCity={city.name} pageType="airport_transfer" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust Strip */}
-      <div className="bg-white border-b border-gray-100 py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
-            <span className="flex items-center gap-1.5 font-medium">
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" /> 4.9★ Google Rating
-            </span>
-            <span className="flex items-center gap-1.5 font-medium">
-              <Users className="w-4 h-4 text-blue-500" /> 10,000+ Trips
-            </span>
-            <span className="flex items-center gap-1.5 font-medium">
-              <Shield className="w-4 h-4 text-green-500" /> Since 2018
-            </span>
-            <span className="flex items-center gap-1.5 font-medium">
-              <MapPin className="w-4 h-4 text-red-500" /> 500+ Cities
-            </span>
+      {/* ══ TRUST BOARD ══ */}
+      <section className="relative px-4 py-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-black/30 backdrop-blur-xl">
+            <div className="grid grid-cols-2 divide-x divide-white/[0.05] sm:grid-cols-4">
+              {[
+                { v: '4.9★', l: 'Rated by Flyers' },
+                { v: '60 min', l: 'Free Waiting' },
+                { v: '24/7', l: 'Live Dispatch' },
+                { v: '₹0', l: 'Surge / Hidden' },
+              ].map((s, i) => (
+                <div key={i} className="px-4 py-5 text-center">
+                  <div className="font-mono text-xl font-black text-[color:var(--air-accent)] sm:text-3xl">{s.v}</div>
+                  <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">{s.l}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* SEO Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 py-3">
-        <SEOBreadcrumb
-          items={[
-            { name: 'Airport Service', url: '/airport-service' },
-            { name: `${city.name} Airport`, url: '' }
-          ]}
-          variant="minimal"
-        />
-      </div>
+      {/* ══ POPULAR DESTINATIONS — departure board ══ */}
+      {Array.isArray(city.popularDestinations) && city.popularDestinations.length > 0 && (
+        <section className="relative overflow-hidden px-4 py-16">
+          <AirportBackdrop variant="grid" />
+          <div className="relative z-10 mx-auto max-w-5xl">
+            <div className="mb-10 text-center">
+              <SectionKicker center>Departures from {city.airportCode}</SectionKicker>
+              <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Popular drop points</h2>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-[color:var(--air-accent)]/15 bg-black/30 backdrop-blur-xl">
+              <div className="min-w-[560px]">
+              <BoardRow head cols={[
+                { v: 'Destination', w: '2fr' }, { v: 'Distance', w: '1fr' }, { v: 'Drive Time', w: '1fr' }, { v: '', w: '0.7fr', right: true },
+              ]} />
+              {city.popularDestinations.map((d, i) => (
+                <div key={i} className="grid items-center gap-3 border-b border-white/[0.04] px-4 py-4 transition-colors hover:bg-[color:var(--air-accent)]/[0.04] sm:px-6"
+                  style={{ gridTemplateColumns: '2fr 1fr 1fr 0.7fr' }}>
+                  <span className="flex items-center gap-2 text-sm font-semibold text-white">
+                    <MapPin className="h-4 w-4 shrink-0 text-[color:var(--air-accent)]" /> {d.name}
+                  </span>
+                  <span className="font-mono text-sm text-slate-300">{d.distance}</span>
+                  <span className="font-mono text-sm text-slate-400">{d.time}</span>
+                  <a href={wa(`Hi, I need an airport taxi from ${city.airport} to ${d.name}. Please share the fare.`)} target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick('city_airport_dest')}
+                    className="justify-self-end rounded-lg border border-[color:var(--air-accent)]/30 bg-[color:var(--air-accent)]/[0.1] px-3 py-1.5 text-xs font-semibold text-[color:var(--air-accent)] transition-colors hover:bg-[color:var(--air-accent)]/20">
+                    Book
+                  </a>
+                </div>
+              ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
-      {/* Features Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200 hover:shadow-lg transition-all"
-              >
-                <feature.icon className="w-10 h-10 text-yellow-600 mb-3" />
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+      {/* ══ FLEET ══ */}
+      <section className="relative px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <SectionKicker center>Cabin Class</SectionKicker>
+            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Choose your ride</h2>
+            <p className="mt-3 text-slate-400">{city.name} airport transfers — all-inclusive per-km pricing.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {FLEET.map((v) => (
+              <div key={v.name} className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.02] transition-all duration-300 hover:-translate-y-1.5 hover:border-[color:var(--air-accent)]/40">
+                <div className="relative h-36 w-full overflow-hidden">
+                  <Image src={v.img} alt={`${v.name} for ${city.name} airport transfer`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--air-deep)] via-transparent to-transparent" />
+                </div>
+                <div className="flex items-center justify-between border-b border-dashed border-white/10 px-5 py-4">
+                  <div className="flex items-center gap-2"><Car className="h-5 w-5 text-[color:var(--air-accent)]" /><span className="font-bold text-white">{v.name}</span></div>
+                  {v.tag && <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase text-black" style={{ background: 'linear-gradient(135deg, var(--air-accent), var(--air-accent2))' }}>{v.tag}</span>}
+                </div>
+                <div className="relative">
+                  <span className="absolute -left-2 top-0 h-4 w-4 -translate-y-1/2 rounded-full" style={{ backgroundColor: 'var(--air-deep)' }} />
+                  <span className="absolute -right-2 top-0 h-4 w-4 -translate-y-1/2 rounded-full" style={{ backgroundColor: 'var(--air-deep)' }} />
+                </div>
+                <div className="px-5 py-5">
+                  <p className="text-sm text-slate-400">{v.cars}</p>
+                  <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                    <div><div className="text-[10px] uppercase tracking-widest text-slate-500">Seats</div><div className="font-mono font-bold text-white">{v.seats}</div></div>
+                    <div><div className="text-[10px] uppercase tracking-widest text-slate-500">Bags</div><div className="font-mono font-bold text-white">{v.bags}</div></div>
+                  </div>
+                  <div className="mt-5 flex items-end justify-between">
+                    <div><div className="text-[10px] uppercase tracking-widest text-slate-500">From</div><div className="font-mono text-2xl font-black text-[color:var(--air-accent)]">₹{Math.round(base * v.mult)}/km</div></div>
+                    <Barcode />
+                  </div>
+                  <a href={wa(`Hi, I want to book a ${v.name} from ${city.airport}. Please confirm.`)} target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackWhatsAppClick(`city_airport_fleet_${v.name.toLowerCase()}`)}
+                    className="mt-5 block rounded-xl border border-[color:var(--air-accent)]/30 bg-[color:var(--air-accent)]/[0.1] py-2.5 text-center text-sm font-semibold text-[color:var(--air-accent)] transition-colors hover:bg-[color:var(--air-accent)]/20">
+                    Book {v.name}
+                  </a>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Popular Destinations */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Popular Destinations from {city.name} Airport ({city.airportCode})
-            </h2>
-            <p className="text-lg text-gray-600">
-              Book <strong>{city.name} airport taxi</strong> to these popular destinations with guaranteed on-time pickup
-            </p>
+      {/* ══ WHAT'S INCLUDED ══ */}
+      <section className="relative px-4 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <SectionKicker center>Every Ride Includes</SectionKicker>
+            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">No surprises, ever</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {city.popularDestinations.map((dest, index) => {
-              const destLink = getDestinationLink(dest.name);
-              return (
-                <Link
-                  key={index}
-                  href={destLink || '#'}
-                  className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all hover:-translate-y-1 group"
-                >
-                  <Navigation className="w-8 h-8 text-yellow-600 mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{dest.name}</h3>
-                  <div className="space-y-2 text-gray-600">
-                    <p className="flex items-center">
-                      <MapPin className="w-4 h-4 mr-2 text-yellow-600" />
-                      {dest.distance}
-                    </p>
-                    <p className="flex items-center">
-                      <Clock className="w-4 h-4 mr-2 text-yellow-600" />
-                      {dest.time}
-                    </p>
-                  </div>
-                  <div className="flex items-center text-yellow-600 font-semibold text-sm mt-4">
-                    View Cab Options
-                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-              );
-            })}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {INCLUDES.map((it) => (
+              <div key={it.t} className="flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 transition-colors hover:border-[color:var(--air-accent)]/25">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[color:var(--air-accent)]/20 bg-[color:var(--air-accent)]/[0.1]">
+                  <it.icon className="h-5 w-5 text-[color:var(--air-accent)]" />
+                </div>
+                <span className="font-medium text-slate-200">{it.t}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Sightseeing Tours in City */}
-      {cityTours.length > 0 && (
-        <section className="py-16 px-4 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                {city.name} Sightseeing Tours from Airport
-              </h2>
-              <p className="text-lg text-gray-600">
-                Explore top attractions and destinations after your airport transfer
-              </p>
+      {/* ══ NEARBY ATTRACTIONS ══ */}
+      {Array.isArray(city.nearbyAttractions) && city.nearbyAttractions.length > 0 && (
+        <section className="relative overflow-hidden px-4 py-16">
+          <AirportBackdrop variant="grid" />
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="mb-10 text-center">
+              <SectionKicker center>After You Land</SectionKicker>
+              <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Explore {city.name}</h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {cityTours.slice(0, 6).map((tour) => (
-                <Link
-                  key={tour.id}
-                  href={`/sightseeing/${tour.slug}`}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2 group"
-                >
-                  <div className="relative h-56 overflow-hidden">
-                    <Image
-                      src={tour.heroImage}
-                      alt={tour.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {tour.duration}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">
-                      {tour.name}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">
-                      {tour.shortDescription}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-gray-600">
-                        <Star className="w-4 h-4 text-yellow-600 mr-1" />
-                        <span className="text-sm font-semibold">{tour.reviews?.averageRating || '4.8'}</span>
-                        <span className="text-sm ml-1">({tour.reviews?.totalReviews || 0})</span>
-                      </div>
-                      <div className="text-yellow-600 font-bold">
-                        ₹{tour.price?.sedan || tour.price}
-                      </div>
-                    </div>
-                    <div className="flex items-center text-yellow-600 font-semibold text-sm mt-4">
-                      View Tour Details
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                </Link>
+            <div className="flex flex-wrap justify-center gap-3">
+              {city.nearbyAttractions.map((a) => (
+                <span key={a} className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-[color:var(--air-accent)]/30">
+                  <Camera className="h-4 w-4 text-[color:var(--air-accent)]" /> {a}
+                </span>
               ))}
             </div>
-            {cityTours.length > 6 && (
-              <div className="text-center mt-8">
-                <Link
-                  href={`/sightseeing?city=${citySlug}`}
-                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all"
-                >
-                  <MapPin className="w-5 h-5 mr-2" />
-                  View All {city.name} Tours ({cityTours.length})
-                  <ChevronRight className="w-5 h-5 ml-2" />
-                </Link>
-              </div>
-            )}
           </div>
         </section>
       )}
 
-      {/* Popular Routes */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Popular Outstation Routes from {city.name}
-            </h2>
-            <p className="text-lg text-gray-600">
-              Book outstation cabs for these popular routes
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {city.routes.map((route, index) => {
-              const parts = route.split(' to ');
-              const routeLink = parts.length === 2 ? createRouteSlug(parts[0], parts[1]) : '#';
-              return (
-                <Link
-                  key={index}
-                  href={routeLink}
-                  className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all flex items-center justify-between group"
-                >
-                  <div>
-                    <Car className="w-8 h-8 text-yellow-600 mb-2" />
-                    <h3 className="text-lg font-bold text-gray-900">{route}</h3>
-                    <p className="text-sm text-gray-600 mt-1">View pricing & book now</p>
-                  </div>
-                  <ChevronRight className="w-6 h-6 text-gray-400 group-hover:text-yellow-600 group-hover:translate-x-1 transition-all" />
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Form */}
-      <section id="booking-form" className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-yellow-200">
-            <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Book Your {city.name} Airport Transfer
-              </h2>
-              <p className="text-gray-600">
-                Fill the form below for instant booking confirmation via WhatsApp
-              </p>
+      {/* ══ POPULAR ROUTES FROM CITY ══ */}
+      {Array.isArray(city.routes) && city.routes.length > 0 && (
+        <section className="relative px-4 py-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-10 text-center">
+              <SectionKicker center>Onward Journeys</SectionKicker>
+              <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Outstation from {city.name}</h2>
             </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {city.routes.map((r) => {
+                const parts = r.split(' to ');
+                const href = parts.length === 2 ? routeSlug(parts[0], parts[1]) : '#';
+                return (
+                  <Link key={r} href={href}
+                    className="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white/[0.03] px-6 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--air-accent)]/30">
+                    <span className="flex items-center gap-3 font-semibold text-white">
+                      <Navigation className="h-5 w-5 text-[color:var(--air-accent)]" /> {r}
+                    </span>
+                    <ArrowRight className="h-5 w-5 text-[color:var(--air-accent)] transition-transform group-hover:translate-x-1.5" />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Enter your name"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Enter your phone"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                    required
-                  />
-                </div>
+      {/* ══ CITY TOURS ══ */}
+      {cityTours.length > 0 && (
+        <section className="relative px-4 py-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-10 text-center">
+              <SectionKicker center>Land &amp; Explore</SectionKicker>
+              <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">{city.name} sightseeing tours</h2>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {cityTours.map((t) => (
+                <Link key={t.slug} href={`/sightseeing/${t.slug}`}
+                  className="group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--air-accent)]/30">
+                  <div className="flex items-center gap-2 text-[color:var(--air-accent)]"><Star className="h-4 w-4 fill-current" /><span className="text-xs font-bold uppercase tracking-wide">Guided Tour</span></div>
+                  <h3 className="mt-3 font-bold text-white group-hover:text-[color:var(--air-accent)]">{t.title || t.name}</h3>
+                  {t.duration && <p className="mt-1 text-sm text-slate-400">{t.duration}</p>}
+                  <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-[color:var(--air-accent)]">View tour <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ══ HOW IT WORKS ══ */}
+      <section className="relative overflow-hidden px-4 py-16">
+        <AirportBackdrop variant="grid" />
+        <div className="relative z-10 mx-auto max-w-5xl">
+          <div className="mb-12 text-center">
+            <SectionKicker center>3 Steps to Touchdown</SectionKicker>
+            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">How {city.name} pickup works</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { n: '01', t: 'Share your flight', d: `Send your flight number & drop address for ${city.airport}. Call or WhatsApp, 24/7.` },
+              { n: '02', t: 'We track it live', d: 'Driver is dispatched on your real landing time — delays cost you nothing.' },
+              { n: '03', t: 'Meet at the gate', d: 'Spot your name on the placard, hand over the bags, ride away in a clean AC cab.' },
+            ].map((s) => (
+              <div key={s.n} className="relative overflow-hidden rounded-2xl border border-[color:var(--air-accent)]/12 bg-white/[0.03] p-7">
+                <div className="absolute right-5 top-3 font-mono text-6xl font-black text-[color:var(--air-accent)]/10">{s.n}</div>
+                <div className="relative z-10"><h3 className="text-xl font-bold text-white">{s.t}</h3><p className="mt-2 text-sm leading-relaxed text-slate-400">{s.d}</p></div>
               </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="pickupLocation" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Pickup Location *
-                  </label>
-                  <input
-                    type="text"
-                    id="pickupLocation"
-                    name="pickupLocation"
-                    value={formData.pickupLocation}
-                    onChange={handleChange}
-                    placeholder="Enter pickup address"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="dropLocation" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Drop Location *
-                  </label>
-                  <input
-                    type="text"
-                    id="dropLocation"
-                    name="dropLocation"
-                    value={formData.dropLocation}
-                    onChange={handleChange}
-                    placeholder="Enter drop address"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="pickupDate" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Pickup Date *
-                  </label>
-                  <input
-                    type="date"
-                    id="pickupDate"
-                    name="pickupDate"
-                    value={formData.pickupDate}
-                    onChange={handleChange}
-                    min={new Date().toISOString().split('T')[0]}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="pickupTime" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Pickup Time *
-                  </label>
-                  <input
-                    type="time"
-                    id="pickupTime"
-                    name="pickupTime"
-                    value={formData.pickupTime}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <label htmlFor="passengers" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Passengers
-                  </label>
-                  <select
-                    id="passengers"
-                    name="passengers"
-                    value={formData.passengers}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                  >
-                    <option value="1">1 Person</option>
-                    <option value="2">2 People</option>
-                    <option value="3">3 People</option>
-                    <option value="4">4 People</option>
-                    <option value="5+">5+ People</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="vehicleType" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Vehicle Type
-                  </label>
-                  <select
-                    id="vehicleType"
-                    name="vehicleType"
-                    value={formData.vehicleType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                  >
-                    <option value="sedan">Sedan</option>
-                    <option value="suv">SUV</option>
-                    <option value="luxury">Luxury</option>
-                    <option value="tempo">Tempo Traveller</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="flightNumber" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Flight Number
-                  </label>
-                  <input
-                    type="text"
-                    id="flightNumber"
-                    name="flightNumber"
-                    value={formData.flightNumber}
-                    onChange={handleChange}
-                    placeholder="e.g., AI 101"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:ring-4 focus:ring-yellow-100 transition-all outline-none"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white text-lg font-bold py-4 px-8 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <Plane className="w-5 h-5 inline mr-2" />
-                Book Your {city.name} Airport Cab Now
-              </button>
-              <p className="text-center text-sm text-gray-600 mt-4">
-                <Shield className="w-4 h-4 inline mr-1" />
-                Instant confirmation • No payment required • Free cancellation
-              </p>
-            </form>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Fare Calculator */}
-      <section className="py-16 px-4 bg-gray-50" id="fare-calculator">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Calculate Your {city.name} Airport Transfer Fare
-            </h2>
-            <p className="text-gray-600 text-lg">Get an instant price estimate for your airport trip</p>
+      {/* ══ FAQ ══ */}
+      <section className="relative px-4 py-16">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-10 text-center">
+            <SectionKicker center>Traveller Help</SectionKicker>
+            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">{city.name} airport FAQs</h2>
           </div>
-          <FareCalculator variant="compact" defaultFrom={city.name} className="max-w-md mx-auto" />
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02]">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}
+                  className="flex w-full items-center justify-between gap-4 p-5 text-left">
+                  <span className="font-semibold text-white">{faq.question}</span>
+                  <ChevronDown className={`h-5 w-5 shrink-0 text-[color:var(--air-accent)] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                </button>
+                {openFaq === i && <div className="border-t border-white/[0.05] px-5 pb-5 pt-4 leading-relaxed text-slate-300">{faq.answer}</div>}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-yellow-600 to-orange-600">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Need Immediate Airport Transfer?
+      {/* ══ FINAL CTA ══ */}
+      <section className="relative overflow-hidden px-4 py-20">
+        <AirportBackdrop variant="full" />
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <FlightStatusPill label="Now Boarding" className="mx-auto" />
+          <h2 className="mt-6 text-4xl font-black leading-tight text-white md:text-6xl">
+            Book your <span className="bg-gradient-to-r from-[var(--air-accent)] to-[var(--air-accent2)] bg-clip-text text-transparent">{city.name} airport cab</span>
           </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Call us now for instant booking and on-the-spot service!
-          </p>
-          <a
-            onClick={() => trackPhoneCall('city_airport_service')} href="tel:+917668570551"
-            className="inline-flex items-center bg-white text-gray-900 px-10 py-5 rounded-lg font-bold text-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
-          >
-            <Phone className="w-6 h-6 mr-3" />
-            Call: +91 7668570551
-          </a>
-          <p className="mt-6 text-sm opacity-90">
-            <CheckCircle className="w-4 h-4 inline mr-1" />
-            Available 24/7 • Instant Confirmation • Best Rates Guaranteed
-          </p>
-        </div>
-      </section>
-
-      {/* SEO: FAQ Section */}
-      <FAQSection
-        faqs={generateAirportFAQs({
-          city: city.name,
-          airportName: city.airport,
-          price: '11'
-        })}
-        title={`Frequently Asked Questions - ${city.name} Airport Taxi`}
-        subtitle={`Get answers to common questions about ${city.airport} taxi service`}
-        variant="cards"
-      />
-
-      {/* SEO: Nearby Destinations */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <NearbyDestinations
-            currentCity={city.name}
-            destinations={getNearbyDestinations(city.name, 6)}
-            title="Airport Service in Nearby Cities"
-            limit={6}
-          />
-        </div>
-      </section>
-
-      {/* More Services Section - Internal Linking */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Explore More Services in {city.name}
-            </h2>
-            <p className="text-lg text-gray-600">
-              We offer comprehensive taxi and tour services across {city.name}
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* City Taxi Service Link */}
-            <Link
-              href={`/${citySlug}`}
-              className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group border-2 border-blue-200"
-            >
-              <Car className="w-12 h-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                {city.name} Taxi Service
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Complete taxi and cab rental services in {city.name} for local sightseeing, outstation trips, and more
-              </p>
-              <div className="flex items-center text-blue-600 font-semibold">
-                Explore Services
-                <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </Link>
-
-            {/* Sightseeing Tours Link */}
-            <Link
-              href="/sightseeing"
-              className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group border-2 border-green-200"
-            >
-              <MapPin className="w-12 h-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                {city.name} Sightseeing Tours
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Discover top attractions and landmarks in {city.name} with our guided sightseeing tours
-              </p>
-              <div className="flex items-center text-green-600 font-semibold">
-                View Tours
-                <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </Link>
-
-            {/* All Airport Services Link */}
-            <Link
-              href="/airport-service"
-              className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group border-2 border-yellow-200"
-            >
-              <Plane className="w-12 h-12 text-yellow-600 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                All Airport Services
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Explore airport taxi services in other cities across India with 24/7 availability
-              </p>
-              <div className="flex items-center text-yellow-600 font-semibold">
-                View All Cities
-                <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </Link>
+          <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">Fixed fare from ₹11/km · flight tracking · meet &amp; greet · 24/7.</p>
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href={`tel:${PHONE}`} onClick={() => trackPhoneCall('city_airport_cta')}
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-9 py-4 text-lg font-bold text-black transition-transform hover:scale-[1.02]"
+              style={{ background: 'linear-gradient(135deg, var(--air-accent), var(--air-accent2))', boxShadow: '0 12px 36px var(--air-glow)' }}>
+              <Phone className="h-5 w-5" /> Call +91 7668570551
+            </a>
+            <a href={wa(heroWa)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('city_airport_cta')}
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-9 py-4 text-lg font-bold text-white backdrop-blur-xl transition-colors hover:border-[color:var(--air-accent)]/40">
+              <WhatsAppIcon className="h-5 w-5 text-emerald-400" /> WhatsApp Booking
+            </a>
           </div>
         </div>
       </section>
-
-      {/* SEO: Popular Routes */}
-      <PopularRoutes city={city.name} routes={relatedRoutes} title={`Popular Routes from ${city.name}`} />
-
-      {/* SEO: Cross-Service Links */}
-      <CrossServiceLinks city={city.name} title={`More Services in ${city.name}`} />
-    </div>
+    </AirportShell>
   );
 }

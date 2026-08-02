@@ -1,10 +1,11 @@
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import ServicesClient from './ServicesClient';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Cab Service India ₹11/km — 50+ Cities 4.9★ | Book Now',
-  description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
+  description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹20/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
   keywords: [
     // Primary Service Keywords
     'cab services India',
@@ -72,8 +73,8 @@ export const metadata = {
     canonical: 'https://www.trivenicabs.in/services'
   },
   openGraph: {
-    title: 'Cab Service India ₹11/km — 50+ Cities, All Vehicle Types | Triveni Cabs',
-    description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
+    title: 'Cab Service India ₹11/km — 50+ Cities, All Vehicle Types',
+    description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹20/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Triveni Cabs',
@@ -90,7 +91,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Cab Service India ₹11/km — 50+ Cities 4.9★ | Book Now',
-    description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
+    description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹20/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
     images: ['/images/about/about_banner.webp'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs'
@@ -207,7 +208,7 @@ export default function ServicesPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount('services')),
       "bestRating": "5",
       "worstRating": "1"
     },

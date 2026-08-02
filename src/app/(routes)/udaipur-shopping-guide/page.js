@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Udaipur Shopping Guide 2026 | Miniature Paintings, Silver & Crafts',
-  description: 'Udaipur shopping guide. Miniature paintings, Pichwai art, silver jewelry, puppets, marble crafts, Bandhani. Hathi Pol, Bada Bazaar, Shilpgram. Prices & tips. Call 7668570551.',
+  title: 'Udaipur Shopping 2026 | Miniature Paintings & Silver',
+  description: 'Udaipur shopping guide. Miniature paintings, Pichwai art, silver jewelry, puppets, marble crafts, Bandhani. Hathi Pol, Bada Bazaar, Shilpgram. Prices & tips.',
   keywords: 'udaipur shopping guide, shopping in udaipur, hathi pol udaipur, udaipur miniature paintings, pichwai paintings, udaipur silver jewelry, shilpgram udaipur',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function UdaipurShoppingGuidePage() {
     { question: "What food items can I buy from Udaipur?", answer: "Udaipur&apos;s edible souvenirs include: Mewari spice mixes (dal-bati masala), Rajasthani pickles (keri, garlic, chili), dry fruit mixes from Bada Bazaar, local honey, Ghewar sweets (seasonal), and herbal teas. The shops near Clock Tower market have the best selection of packaged spices and pickles for travel." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function UdaipurShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -151,11 +152,26 @@ export default function UdaipurShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "udaipur-shopping-guide",
+    headline: "Udaipur Shopping Guide 2026 — Markets, Bazaars & What to Buy",
+    description: "Complete Udaipur shopping guide. Best markets, bazaars, what to buy, bargaining tips, local crafts, branded shopping, market timings.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("udaipur", { idSlug: "udaipur-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

@@ -4,8 +4,8 @@ import RentalPackageClient from '@/components/rental/RentalPackageClient';
 const rental = getRentalBySlug('monthly-car-rental');
 
 export const metadata = {
-  title: 'Monthly Car Rental with Driver | Sedan Rs 35,000/Month | Triveni Cabs',
-  description: 'Book monthly car rental with driver. Sedan Rs 35,000/month, SUV Rs 50,000, Innova Rs 60,000. 2,500 km included. Corporate, film shoots, long-term. Call 7668570551.',
+  title: 'Monthly Car Rental with Driver | Sedan Rs 35,000/Month',
+  description: 'Book monthly car rental with driver. Sedan Rs 35,000/month, SUV Rs 50,000, Innova Rs 60,000. 2,500 km included. Corporate, film shoots, long-term.',
   keywords: 'monthly car rental, car on monthly rent, monthly cab hire, long term car rental, corporate car rental, monthly driver hire, car lease with driver',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -30,4 +30,4 @@ export default function MonthlyCarRentalPage() {
   );
 }
 
-export const revalidate = false;
+export const revalidate = 3600;

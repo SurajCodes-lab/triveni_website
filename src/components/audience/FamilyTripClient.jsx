@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Baby, TreePine, Hotel, Heart, Coffee, Route, Compass, HelpCircle } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function FamilyTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -14,8 +16,15 @@ export default function FamilyTripClient({ data }) {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const stickyWhatsappText = `Hi, I'd like to plan a family trip to ${data.destination} from Delhi. Please share package details and best rates.`;
+
   return (
     <main className="min-h-screen bg-amber-950 text-white overflow-hidden">
+      <SetStickyCta
+        price={`Rs ${data.price.sedan.toLocaleString()}`}
+        label={`Family Trip to ${data.destination}`}
+        whatsappText={stickyWhatsappText}
+      />
       <style jsx>{`
         @keyframes shimmer {
           0% { background-position: -200% center; }
@@ -153,14 +162,17 @@ export default function FamilyTripClient({ data }) {
             </div>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+          <h1 className="speakable-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
             Family Trip to{' '}
             <span className="shimmer-amber">{data.destination}</span>
             <br />
             <span className="text-white/80 text-2xl sm:text-3xl lg:text-4xl">from Delhi by Car</span>
           </h1>
-          <p className="text-lg sm:text-xl text-amber-100/70 mb-10 max-w-3xl leading-relaxed">
-            {data.tagline}. Safe, comfortable {data.vehicle.name} ride with kid-friendly stops and experienced drivers.
+          <p className="speakable-lead text-lg sm:text-xl text-amber-100/70 mb-6 max-w-3xl leading-relaxed">
+            A family trip to {data.destination} from Delhi by car covers {data.distance} in about {data.duration}. Triveni Cabs offers a private {data.vehicle.name} from Rs {data.price.sedan.toLocaleString()} (sedan) to Rs {data.price.suv.toLocaleString()} (SUV), all-inclusive of toll, parking and driver allowance, with kid-friendly stops, child seats on request and verified drivers.
+          </p>
+          <p className="text-base text-amber-100/55 mb-10 max-w-3xl leading-relaxed">
+            {data.tagline}. Safe, comfortable {data.vehicle.name} ride with experienced drivers who know family-friendly routes and rest breaks.
           </p>
 
           {/* Animated stat badges */}
@@ -183,24 +195,42 @@ export default function FamilyTripClient({ data }) {
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              onClick={() => trackPhoneCall('family_trip')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98]"
-              style={{ animation: 'pulse-warm 3s ease-in-out infinite' }}
-            >
-              <Phone className="w-5 h-5" />
-              Call Now - {phoneNumber}
-            </a>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600/90 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-green-500/20 hover:scale-[1.02] active:scale-[0.98] border border-green-500/30"
-            >
-              WhatsApp Enquiry
-            </a>
+          {/* CTA + Lead Capture */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div>
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <a
+                  onClick={() => trackPhoneCall('family_trip_hero')} href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                  style={{ animation: 'pulse-warm 3s ease-in-out infinite' }}
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Now - {phoneNumber}
+                </a>
+                <a
+                  onClick={() => trackWhatsAppClick('family_trip_hero', stickyWhatsappText)}
+                  href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-green-600/90 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-green-500/20 hover:scale-[1.02] active:scale-[0.98] border border-green-500/30"
+                >
+                  WhatsApp Enquiry
+                </a>
+              </div>
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-amber-100/70">
+                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400 fill-current" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-amber-400" /> 10,000+ trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-amber-400" /> Verified drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-amber-400" /> No advance payment</span>
+                <span className="flex items-center gap-1.5"><Route className="w-4 h-4 text-amber-400" /> Customizable itinerary</span>
+              </div>
+            </div>
+            {/* Quick Enquiry Form */}
+            <div className="lg:justify-self-end w-full">
+              <QuickEnquiryForm fromCity="Delhi" toCity={data.destination} pageType="route" />
+            </div>
           </div>
         </div>
       </section>
@@ -369,6 +399,34 @@ export default function FamilyTripClient({ data }) {
         </div>
       </section>
 
+      {/* Mid-page CTA strip */}
+      <section className="relative py-12 bg-amber-950">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="glass-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 border-amber-500/20">
+            <div>
+              <h3 className="text-xl font-bold text-white">Ready to plan your family trip to {data.destination}?</h3>
+              <p className="text-amber-200/60 text-sm mt-1">Free quote in ~2 minutes &middot; No advance payment</p>
+            </div>
+            <div className="flex gap-3 w-full sm:w-auto">
+              <a
+                onClick={() => trackPhoneCall('family_trip_mid')} href={`tel:${phoneNumber}`}
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 min-h-[48px] bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-xl font-bold transition-all hover:scale-[1.02]"
+              >
+                <Phone className="w-5 h-5" /> Call
+              </a>
+              <a
+                onClick={() => trackWhatsAppClick('family_trip_mid', stickyWhatsappText)}
+                href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
+                target="_blank" rel="noopener noreferrer"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 min-h-[48px] bg-green-600/90 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold transition-all border border-green-500/30 hover:scale-[1.02]"
+              >
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hotel Areas */}
       <section className="relative py-20 bg-orange-950/30">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(245,158,11,0.05)_0%,transparent_60%)]" />
@@ -497,7 +555,7 @@ export default function FamilyTripClient({ data }) {
                   }`}
                 >
                   <div className="px-5 sm:px-6 pb-6 pl-[4.5rem]">
-                    <p className="text-amber-100/60 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-amber-100/60 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </div>
               </div>
@@ -564,7 +622,7 @@ export default function FamilyTripClient({ data }) {
           </p>
           <div className="flex flex-wrap justify-center gap-5">
             <a
-              onClick={() => trackPhoneCall('family_trip')} href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('family_trip_footer')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-[1.03] active:scale-[0.98]"
               style={{ animation: 'pulse-warm 3s ease-in-out infinite' }}
             >
@@ -572,7 +630,8 @@ export default function FamilyTripClient({ data }) {
               Call {phoneNumber}
             </a>
             <a
-              href={whatsappLink}
+              onClick={() => trackWhatsAppClick('family_trip_footer', stickyWhatsappText)}
+              href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-green-600/90 hover:bg-green-500 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all border border-green-500/30 hover:shadow-lg hover:shadow-green-500/20 hover:scale-[1.03] active:scale-[0.98]"

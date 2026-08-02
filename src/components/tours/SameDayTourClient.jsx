@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee, Landmark, Compass, Sparkles } from '@/components/ui/icons';
 import { getRelatedTours } from '@/utilis/sameDayTourData';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const iconMap = {
   car: Car,
@@ -16,14 +18,20 @@ const iconMap = {
 
 export default function SameDayTourClient({ tour }) {
   const related = getRelatedTours(tour.slug, 6);
+  const stickyWhatsappText = `I want to book a ${tour.title} from ${tour.origin}. Please share package details and best fare.`;
 
   return (
     <div className="min-h-screen bg-amber-50/30">
+      <SetStickyCta
+        price={`₹${tour.fares.sedan}`}
+        label={`${tour.destination} Day Tour`}
+        whatsappText={stickyWhatsappText}
+      />
 
       {/* ====================================================================
           HERO - Vintage Travel Poster with Animated Sunrise Gradient
       ==================================================================== */}
-      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Animated sunrise gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-orange-950 via-amber-900 to-yellow-900" />
 
@@ -105,16 +113,24 @@ export default function SameDayTourClient({ tour }) {
 
           {/* CTA Buttons with glow */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link onClick={() => trackPhoneCall('same_day_tour')} href="tel:+917668570551" className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
+            <Link onClick={() => trackPhoneCall('same_day_tour_hero')} href="tel:+917668570551" className="group relative inline-flex items-center justify-center gap-3 min-h-[52px] px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 rounded-2xl shadow-2xl shadow-amber-500/30 group-hover:shadow-amber-500/50 transition-shadow" />
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity" />
               <Phone className="w-5 h-5 relative z-10 text-stone-900 group-hover:animate-pulse" />
               <span className="relative z-10 text-stone-900">Call: 7668570551</span>
             </Link>
-            <Link onClick={() => trackWhatsAppClick('same_day_tour')} href={`https://wa.me/917668570551?text=I want to book a ${tour.title}`} className="group inline-flex items-center gap-3 bg-white/[0.06] backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-amber-400/20 hover:bg-white/[0.12] hover:border-amber-400/50 transition-all duration-500">
+            <Link onClick={() => trackWhatsAppClick('same_day_tour_hero', stickyWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(stickyWhatsappText)}`} className="group inline-flex items-center justify-center gap-3 min-h-[52px] bg-white/[0.06] backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-amber-400/20 hover:bg-white/[0.12] hover:border-amber-400/50 transition-all duration-500">
               WhatsApp Booking
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
+          </div>
+
+          {/* Trust row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-7 text-sm text-amber-200/70">
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-300" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-amber-300" /> 10,000+ trips</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-amber-300" /> Verified drivers</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-amber-300" /> No advance payment</span>
           </div>
         </div>
 
@@ -161,6 +177,19 @@ export default function SameDayTourClient({ tour }) {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Quick Enquiry Form */}
+          <div className="mt-8 bg-gradient-to-br from-orange-950 to-amber-900 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-amber-900/20">
+            <div className="grid lg:grid-cols-2 gap-6 items-center">
+              <div className="text-center lg:text-left">
+                <h3 className="text-2xl font-black text-white mb-2">Get a free quote for your {tour.destination} day trip</h3>
+                <p className="text-amber-200/70">Sedan from ₹{tour.fares.sedan} &middot; Reply in ~2 minutes &middot; No advance payment</p>
+              </div>
+              <div className="flex justify-center lg:justify-end">
+                <QuickEnquiryForm fromCity={tour.origin} toCity={tour.destination} pageType="route" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -657,13 +686,13 @@ export default function SameDayTourClient({ tour }) {
           <p className="text-amber-100/80 mb-12 text-lg max-w-2xl mx-auto">Book your {tour.title} now. Comfortable AC cabs, experienced drivers, all-inclusive pricing.</p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link onClick={() => trackPhoneCall('same_day_tour')} href="tel:+917668570551" className="group relative inline-flex items-center justify-center gap-3 px-12 py-5 rounded-2xl font-black text-lg transition-all duration-300 hover:scale-105">
+            <Link onClick={() => trackPhoneCall('same_day_tour_footer')} href="tel:+917668570551" className="group relative inline-flex items-center justify-center gap-3 px-12 py-5 rounded-2xl font-black text-lg transition-all duration-300 hover:scale-105">
               <div className="absolute inset-0 bg-white rounded-2xl shadow-2xl" />
               <div className="absolute inset-0 bg-white rounded-2xl blur-xl opacity-30" />
               <Phone className="w-5 h-5 relative z-10 text-amber-700" />
               <span className="relative z-10 text-amber-700">Call: 7668570551</span>
             </Link>
-            <Link onClick={() => trackWhatsAppClick('same_day_tour')} href={`https://wa.me/917668570551?text=I want to book a ${tour.title}`} className="group inline-flex items-center justify-center gap-3 bg-amber-900/40 backdrop-blur-2xl text-white px-12 py-5 rounded-2xl font-black text-lg border border-amber-300/30 hover:bg-amber-900/60 hover:border-amber-300/50 transition-all duration-500">
+            <Link onClick={() => trackWhatsAppClick('same_day_tour_footer', stickyWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(stickyWhatsappText)}`} className="group inline-flex items-center justify-center gap-3 bg-amber-900/40 backdrop-blur-2xl text-white px-12 py-5 rounded-2xl font-black text-lg border border-amber-300/30 hover:bg-amber-900/60 hover:border-amber-300/50 transition-all duration-500">
               WhatsApp Booking
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>

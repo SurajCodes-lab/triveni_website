@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Lucknow Shopping Guide 2026 | Chikankari, Zardozi & Ittar',
-  description: 'Lucknow shopping guide. Chikankari embroidery, Zardozi, Ittar perfumes, Nawabi jewelry, Lucknowi kurtas. Aminabad, Hazratganj, Chowk. Prices & tips. Call 7668570551.',
+  description: 'Lucknow shopping guide. Chikankari embroidery, Zardozi, Ittar perfumes, Nawabi jewelry, Lucknowi kurtas. Aminabad, Hazratganj, Chowk. Prices & tips.',
   keywords: 'lucknow shopping guide, shopping in lucknow, chikankari lucknow, aminabad market, hazratganj shopping, lucknow ittar, zardozi lucknow, lucknowi kurta',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function LucknowShoppingGuidePage() {
     { question: "What food items can I carry back from Lucknow?", answer: "Lucknow&apos;s edible souvenirs include: Tunday Kebabi&apos;s spice mixes, Makhan Malai (winter specialty, seasonal), Revdi and Gazak (sesame sweets), Lucknowi Paan ingredients, special Biryani masala, and dry fruit mixes from Aminabad. Sharmaji Ki Chai mix is also popular. Pack in airtight containers for travel." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function LucknowShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -151,11 +152,26 @@ export default function LucknowShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "lucknow-shopping-guide",
+    headline: "Lucknow Shopping Guide 2026 — Markets, Bazaars & What to Buy",
+    description: "Complete Lucknow shopping guide. Best markets, bazaars, what to buy, bargaining tips, local crafts, branded shopping, market timings.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("lucknow", { idSlug: "lucknow-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

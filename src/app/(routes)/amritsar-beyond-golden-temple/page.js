@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Amritsar Beyond Golden Temple | Hidden Gems & Heritage | 2026',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/amritsar-beyond-golden-temple',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/amritsar-hero.jpg', width: 1200, height: 630, alt: 'Amritsar Beyond Golden Temple' }],
+    images: [{ url: '/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg', width: 1200, height: 630, alt: 'Amritsar Beyond Golden Temple' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Forts, heritage villages, walled city walks, and Sikh history. By Amritsar locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/amritsar-hero.jpg'],
+    images: ['/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

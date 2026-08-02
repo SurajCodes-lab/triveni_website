@@ -2,25 +2,176 @@ import Link from "next/link";
 import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import { Users, Fuel, Car, Check, X, ArrowRight, Phone, MapPin } from "@/components/ui/icons";
+import { getRatingAndReviews } from "@/lib/seo/review-helpers";
+import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from "@/lib/seo/speakable-helpers";
 
-export const revalidate = false;
+const SLUG = "tempo-vs-bus";
+const SITE = "https://www.trivenicabs.in";
+const PAGE_URL = `${SITE}/${SLUG}`;
+const OG_IMAGE = "/images/bus/35_SEATER_BUS.jpg";
+
+export const revalidate = 3600;
 
 export const metadata = {
-  title: "Tempo Traveller vs Bus: Which to Rent for Group Travel? | Triveni Cabs",
-  description: "Tempo Traveller or Bus rental? Compare capacity (12-26 vs 28-55 seats), pricing, comfort & best use cases. Tempo from ₹22/km, Bus from ₹55/km. Choose the right group vehicle!",
-  keywords: "tempo traveller vs bus rental, which group vehicle to rent, tempo or bus for trip, group travel comparison india, tempo traveller bus difference, best vehicle for large group",
-  alternates: {
-    canonical: "https://www.trivenicabs.in/tempo-vs-bus"
-  },
+  title: "Tempo vs Bus for Group Travel (2026) | Triveni Cabs",
+  description:
+    "Tempo traveller vs bus for group travel: capacity, price per km, comfort & best-for. Verdict: tempo for 12-26, bus for 30-55. Tempo ₹22/km. Call 7668570551.",
+  keywords:
+    "tempo vs bus, tempo traveller vs bus, tempo or bus for group travel, which is better tempo or bus, tempo traveller vs bus rental, tempo vs bus price comparison, tempo vs bus for trip, group travel comparison india, tempo traveller bus difference, best vehicle for large group, tempo vs bus cost per person, bus vs tempo for tour, 17 seater tempo vs 35 seater bus, tempo or bus for pilgrimage, tempo or bus for hill station",
+  authors: [{ name: "Triveni Cabs" }],
+  metadataBase: new URL(SITE),
+  alternates: { canonical: PAGE_URL, languages: { "en-IN": `/${SLUG}` } },
   openGraph: {
-    title: "Tempo Traveller vs Bus: Which Vehicle for Your Group?",
-    description: "Complete comparison guide to help you choose between Tempo Traveller and Bus for group travel.",
+    title: "Tempo Traveller vs Bus — Which Vehicle Is Better for Your Group? (2026 Guide)",
+    description:
+      "Capacity, price per km, comfort and best-for compared side by side. The honest verdict on whether a tempo traveller or a bus suits your group trip.",
     type: "article",
     locale: "en_IN",
-    url: "https://www.trivenicabs.in/tempo-vs-bus",
-    siteName: "Triveni Cabs"
-  }
+    url: PAGE_URL,
+    siteName: "Triveni Cabs",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Tempo Traveller vs Bus — side-by-side group travel comparison" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tempo vs Bus for Group Travel — Which Is Better? (2026)",
+    description: "Capacity, price per km, comfort and best-for compared. Get the verdict before you book your group vehicle.",
+    creator: "@trivenicabs",
+    site: "@trivenicabs",
+    images: [OG_IMAGE],
+  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
 };
+
+const COMPARISON_ROWS = [
+  { feature: "Seating capacity", v1: "12-26 passengers", v2: "28-55 passengers" },
+  { feature: "Price per km", v1: "₹22/km", v2: "₹55/km" },
+  { feature: "Per-person cost (full)", v1: "~₹724 (17 pax, 500 km)", v2: "~₹843 (35 pax, 500 km)" },
+  { feature: "Luggage space", v1: "Ample boot", v2: "Large cargo hold" },
+  { feature: "Mileage", v1: "8-10 km/l", v2: "4-6 km/l" },
+  { feature: "Hill / narrow roads", v1: "Excellent access", v2: "Limited — wide roads only" },
+  { feature: "Comfort", v1: "Excellent (push-back)", v2: "Good to excellent (luxury)" },
+  { feature: "Onboard washroom", v1: "No", v2: "Yes (luxury Volvo)" },
+  { feature: "Best for", v1: "Medium groups 12-26, hills, pilgrimage", v2: "Large groups 30-55, weddings, school trips" },
+];
+
+const TEMPO_VS_BUS_FAQS = [
+  {
+    question: "Is a tempo traveller or a bus cheaper for group travel?",
+    answer:
+      "A tempo traveller is cheaper for groups up to 26 people. At about ₹22/km versus ₹55/km for a bus, a 17-seater tempo on a 500 km trip costs roughly ₹12,300 total (about ₹724 per person), while a 35-seater bus costs around ₹29,500 (about ₹843 per person). A bus only becomes cost-effective per head when you genuinely have 30+ travellers to fill it.",
+  },
+  {
+    question: "Can a bus go to hill stations like Manali or Shimla?",
+    answer:
+      "Large buses are not recommended for Manali, Shimla or other Himalayan routes because of narrow roads, hairpin bends and steep inclines. For hill stations, a tempo traveller (12-26 seater) is the safe choice. For very large groups heading to the hills, two tempo travellers are safer and more flexible than one bus.",
+  },
+  {
+    question: "How many passengers can a tempo traveller carry versus a bus?",
+    answer:
+      "Tempo travellers seat 12 to 26 passengers depending on the variant (12, 17, 20 or 26 seater). Buses seat 28 to 55 passengers (28, 35, 45 seater and 55-seater Volvo). Choose a tempo for groups up to 26 and a bus for 30 or more.",
+  },
+  {
+    question: "Which is more comfortable, a tempo traveller or a bus?",
+    answer:
+      "For medium groups, tempo travellers feel more comfortable thanks to push-back reclining seats and a more personal cabin. Luxury Volvo buses match or exceed that comfort for large groups, adding entertainment systems and an onboard washroom on premium variants. For 12-26 people, a tempo is the comfort sweet spot.",
+  },
+  {
+    question: "Should I book a tempo traveller or a bus for a wedding?",
+    answer:
+      "For a wedding with 40+ guests moving together, a bus is the most economical single vehicle. For a baraat of 15-25, a decorated tempo traveller with DJ setup is the traditional choice. Many weddings combine both — a bus for bulk guest transport plus tempos for the baraat and close family.",
+  },
+  {
+    question: "Which is better for a pilgrimage like Char Dham Yatra?",
+    answer:
+      "Tempo travellers are strongly recommended for Char Dham Yatra and most Himalayan pilgrimages because the mountain roads to Kedarnath, Badrinath, Gangotri and Yamunotri are narrow. A bus cannot safely navigate these stretches, so even large pilgrimage groups are split across multiple tempo travellers.",
+  },
+];
+
+// Structured data — full AEO/GEO schema suite
+function buildSchemas() {
+  const rr = getRatingAndReviews(SLUG, "tempo");
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/" },
+      { "@type": "ListItem", "position": 2, "name": "Vehicles", "item": SITE + "/vehicles" },
+      { "@type": "ListItem", "position": 3, "name": "Tempo vs Bus", "item": PAGE_URL },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": TEMPO_VS_BUS_FAQS.map((f) => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+    })),
+  };
+
+  const comparison = getComparisonSchema({
+    slug: SLUG,
+    title: "Tempo Traveller vs Bus — Attribute Comparison",
+    description:
+      "Side-by-side comparison of tempo traveller and bus across capacity, price per km, comfort, luggage, mileage and ideal group size.",
+    rows: COMPARISON_ROWS,
+    mentions: ["Tempo Traveller", "Bus", "Volvo Bus", "Group Travel", "Hill Station Trip", "Pilgrimage"],
+  });
+
+  const howTo = getHowToSchema({
+    name: "How to Choose Between a Tempo Traveller and a Bus",
+    description: "A quick decision framework for picking the right group vehicle for your route and party size.",
+    totalTime: "PT5M",
+    steps: [
+      { name: "Count your group", text: "Up to 26 passengers fit a tempo traveller; 28-55 need a bus." },
+      { name: "Check the terrain", text: "Hill stations and narrow roads rule out a bus — choose a tempo traveller." },
+      { name: "Weigh luggage and amenities", text: "Need a washroom or huge cargo hold for a long highway tour? A luxury bus delivers." },
+      { name: "Compare per-head cost", text: "A near-full bus is cheaper per person for 30+ travellers; a tempo wins for smaller groups." },
+      { name: "Book with Triveni Cabs", text: "Call 7668570551 or WhatsApp to confirm vehicle, AC and driver for your dates." },
+    ],
+  });
+
+  const article = getArticleSchema({
+    slug: SLUG,
+    headline: "Tempo Traveller vs Bus: Which Vehicle Should You Rent for Group Travel in 2026?",
+    description:
+      "An experience-based comparison of tempo travellers and buses covering capacity, per-km price, comfort, luggage and the right pick for your group size and route.",
+    image: OG_IMAGE,
+    datePublished: "2024-06-01",
+    dateModified: getTodayDate(),
+    speakableSelectors: [".speakable-headline", ".speakable-lead", ".speakable-faq-first"],
+  });
+
+  const service = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": PAGE_URL + "#service",
+    "name": "Tempo Traveller & Bus Hire for Group Travel",
+    "serviceType": "Group Vehicle Rental",
+    "description":
+      "AC tempo traveller (12-26 seater) and bus (28-55 seater) hire with professional drivers for group tours, pilgrimage, weddings, school and corporate travel across North India.",
+    "url": PAGE_URL,
+    "areaServed": { "@type": "Country", "name": "India" },
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "provider": { "@type": "TravelAgency", "@id": SITE + "/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551" },
+    "aggregateRating": rr.aggregateRating,
+    "review": rr.review,
+  };
+
+  const speakable = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": PAGE_URL + "#webpage",
+    "name": "Tempo Traveller vs Bus",
+    "url": PAGE_URL,
+    "dateModified": getTodayDate(),
+    "speakable": getSpeakableSchema([".speakable-headline", ".speakable-lead", ".speakable-faq-first"]),
+  };
+
+  return [breadcrumb, faqSchema, ...comparison, howTo, article, service, speakable];
+}
 
 const comparisonData = {
   tempo: {
@@ -75,39 +226,13 @@ const comparisonData = {
   }
 };
 
-// Structured data
-function generateStructuredData() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Tempo Traveller vs Bus: Which Vehicle Should You Rent for Group Travel?",
-    "description": "Complete comparison guide between Tempo Traveller and Bus rentals to help you make the right choice for group travel.",
-    "author": {
-      "@type": "Organization",
-      "name": "Triveni Cabs"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Triveni Cabs",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.trivenicabs.in/images/logo.webp"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://www.trivenicabs.in/tempo-vs-bus"
-    }
-  };
-}
-
 export default function TempoVsBusPage() {
+  const schemas = buildSchemas();
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateStructuredData()) }}
-      />
+      {schemas.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
@@ -122,11 +247,14 @@ export default function TempoVsBusPage() {
                 <li className="text-yellow-400">Tempo vs Bus</li>
               </ol>
             </nav>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Tempo Traveller vs Bus: <span className="text-yellow-400">Group Travel Guide</span>
+            <h1 className="speakable-headline text-4xl md:text-5xl font-bold text-white mb-4">
+              Tempo Traveller vs Bus: <span className="text-yellow-400">Which Is Better for Group Travel?</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Choosing the perfect vehicle for your group? Compare features, capacity, and costs.
+            <p className="speakable-lead text-lg text-gray-200 max-w-3xl mx-auto bg-white/10 border border-white/15 rounded-xl px-5 py-4">
+              Short answer: book a <strong>tempo traveller</strong> for groups of 12-26 — it is cheaper (about ₹22/km vs
+              ₹55/km), more comfortable on push-back seats, and the only safe choice for hill stations and narrow roads.
+              Book a <strong>bus</strong> only when your group is 30-55 people travelling on highways, where its huge
+              capacity and cargo hold make it the lowest cost per head.
             </p>
           </div>
         </section>
@@ -253,13 +381,17 @@ export default function TempoVsBusPage() {
                       </div>
                     </div>
 
-                    <Link
-                      href={vehicle.link}
+                    <a
+                      href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                        `Hi, I want to book a ${vehicle.name} (${vehicle.capacity}, from ${vehicle.price}). Please share availability and a quote.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-yellow-500 hover:text-black transition-all w-full justify-center"
                     >
-                      Book {vehicle.name}
+                      Book {vehicle.name} on WhatsApp
                       <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
               ))}
@@ -398,9 +530,50 @@ export default function TempoVsBusPage() {
                 <Phone className="w-5 h-5" />
                 Call: +91 76685 70551
               </a>
-              <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full font-bold hover:bg-green-700">
+              <a href={`https://wa.me/917668570551?text=${encodeURIComponent("Hi, help me choose between a tempo traveller and a bus for my group trip. Please share a quote.")}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full font-bold hover:bg-green-700">
                 WhatsApp Us
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-12 px-4 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Tempo vs Bus: Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {TEMPO_VS_BUS_FAQS.map((f, idx) => (
+                <div key={f.question} className="bg-gray-50 rounded-xl border border-gray-200 p-6">
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">{f.question}</h3>
+                  <p className={`text-gray-600${idx === 0 ? " speakable-faq-first" : ""}`}>{f.answer}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Post-FAQ CTA */}
+            <div className="mt-10 bg-gray-900 rounded-2xl p-6 md:p-8 text-center">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                Still unsure which one to book?
+              </h3>
+              <p className="text-gray-300 mb-6">
+                Tell us your group size and route — we will recommend the right vehicle and share an instant quote.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a
+                  href="tel:+917668570551"
+                  className="inline-flex items-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-full font-bold hover:bg-yellow-300 transition"
+                >
+                  <Phone className="w-5 h-5" /> Call: +91 76685 70551
+                </a>
+                <a
+                  href={`https://wa.me/917668570551?text=${encodeURIComponent("Hi, help me choose between a tempo traveller and a bus for my group trip. Please share a quote.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full font-bold hover:bg-green-700 transition"
+                >
+                  WhatsApp a Recommendation
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -410,10 +583,12 @@ export default function TempoVsBusPage() {
           <div className="max-w-6xl mx-auto">
             <h3 className="font-bold text-gray-700 mb-4">Related Comparisons:</h3>
             <div className="flex flex-wrap gap-4">
-              <Link href="/sedan-vs-suv" className="text-yellow-600 hover:underline">Sedan vs SUV</Link>
-              <Link href="/vehicles" className="text-yellow-600 hover:underline">View All Vehicles</Link>
+              <Link href="/tempo-traveller-vs-mini-bus" className="text-yellow-600 hover:underline">Tempo Traveller vs Mini Bus</Link>
+              <Link href="/12-seater-vs-17-seater-tempo" className="text-yellow-600 hover:underline">12 vs 17 Seater Tempo</Link>
+              <Link href="/bus-vs-tempo-for-wedding" className="text-yellow-600 hover:underline">Bus vs Tempo for Wedding</Link>
               <Link href="/tempo-traveller" className="text-yellow-600 hover:underline">Tempo Traveller Routes</Link>
               <Link href="/bus-routes" className="text-yellow-600 hover:underline">Bus Routes</Link>
+              <Link href="/chardham-yatra" className="text-yellow-600 hover:underline">Char Dham Yatra</Link>
             </div>
           </div>
         </section>

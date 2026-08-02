@@ -910,6 +910,200 @@ export const railwayStations = {
       "For Lucknow trips, the expressway is fast and smooth - takes just 1.5 hours",
       "Kanpur has extreme weather - very hot summers (45+ degrees C) and cold winters - plan accordingly"
     ]
+  },
+
+  "katra": {
+    name: "Shri Mata Vaishno Devi Katra Railway Station",
+    city: "Katra",
+    stationCode: "SVDK",
+    description: "Shri Mata Vaishno Devi Katra (station code SVDK) is the base station for the holy Vaishno Devi shrine in Jammu & Kashmir, and the northernmost passenger terminus on the Indian broad-gauge network in this region. Opened in 2014, the station brought the railway right to the foothills of the Trikuta Mountains, just 1.5 km from the Katra base camp where the 13 km trek to the Bhawan begins. It handles millions of pilgrims annually, including dedicated trains like the Vande Bharat and Shri Shakti Express from across India.",
+    platforms: 3,
+    majorTrains: ["Vande Bharat Express", "Shri Shakti Express", "Sarvodaya Express", "Katra-Kalka Express", "Bandra Terminus-Katra Express", "Uttar Sampark Kranti Express"],
+    cabWaitingPoint: "Main exit on Katra-Jammu Road, near the taxi union stand and the SMVDSB pilgrim assistance counter outside the terminal",
+    nearbyLandmarks: ["Vaishno Devi Base Camp (1.5 km)", "Banganga Temple (2 km)", "Ardhkuwari (6 km trek)", "Bhairon Temple (15 km trek)"],
+    destinations: [
+      { name: "Vaishno Devi Base Camp", distance: "1.5 km", sedanFare: 150, suvFare: 250, time: "10 min" },
+      { name: "Jammu Tawi Station", distance: "48 km", sedanFare: 1200, suvFare: 1800, time: "1.5 hrs" },
+      { name: "Jammu Airport", distance: "50 km", sedanFare: 1300, suvFare: 1900, time: "1.5 hrs" },
+      { name: "Patnitop", distance: "75 km", sedanFare: 2000, suvFare: 3000, time: "2.5 hrs" },
+      { name: "Shiv Khori", distance: "75 km", sedanFare: 2000, suvFare: 3000, time: "2.5 hrs" },
+      { name: "Srinagar", distance: "230 km", sedanFare: 4800, suvFare: 7000, time: "6-7 hrs" },
+      { name: "Amritsar", distance: "260 km", sedanFare: 4000, suvFare: 5800, time: "5 hrs" }
+    ],
+    faqs: [
+      { question: "How far is the Vaishno Devi base camp from Katra station?", answer: "The Vaishno Devi base camp (Katra town) is only 1.5 km from SVDK station. A taxi costs ₹150 and takes 10 minutes. From the base camp, the 13 km trek to the Bhawan begins. Battery cars, ponies, palki, and helicopter services are also available from the base camp." },
+      { question: "Do I need to go to Jammu first or can I reach Katra directly by train?", answer: "Katra has its own railway station (SVDK), so you can travel directly without stopping at Jammu Tawi. Trains like the Vande Bharat and Shri Shakti Express terminate at Katra. If your train only goes up to Jammu, we provide a 48 km taxi transfer to Katra for ₹1,200." },
+      { question: "Is taxi service available at Katra station at night?", answer: "Yes, Triveni Cabs operates 24/7 at Katra station. Many pilgrim trains arrive late at night or early morning. Pre-book your taxi so the driver is waiting at the exit to take you to your hotel or directly to the yatra registration counter." },
+      { question: "Can I get a taxi from Katra to Patnitop or Srinagar?", answer: "Yes, after darshan many pilgrims continue to Patnitop (75 km, ₹2,000) or onward to Srinagar (230 km, ₹4,800). The Jammu-Srinagar highway passes near Katra. Check highway and weather status before booking the Srinagar route." },
+      { question: "Where do I register for the Vaishno Devi yatra?", answer: "Yatra registration (RFID card) is done at the Katra base camp counters near the bus stand, about 1.5 km from the station. Carry valid photo ID. Our driver drops you right at the registration area so you can start your trek without delay." }
+    ],
+    tips: [
+      "Collect your free RFID yatra slip at the Katra base camp before starting the trek - it is mandatory",
+      "Cloakrooms are available at the base camp to store luggage while you complete the darshan",
+      "The new Tarakote Marg route is less steep and good for senior pilgrims; the old Banganga route is shorter",
+      "Helicopter tickets from Katra to Sanjichhat should be booked online well in advance during Navratri",
+      "Katra is a vegetarian and alcohol-free town - plan your meals accordingly"
+    ]
+  },
+
+  "bikaner": {
+    name: "Bikaner Junction Railway Station",
+    city: "Bikaner",
+    stationCode: "BKN",
+    description: "Bikaner Junction (station code BKN) is the main railway station of Bikaner, the desert city in northern Rajasthan famous for its sandstone Junagarh Fort, the unique Karni Mata (Rat) Temple, and its world-renowned bhujia and namkeen. The station connects Bikaner to Delhi, Jaipur, Jodhpur, and Howrah, and serves as a key gateway to the Thar Desert and the camel country of western Rajasthan.",
+    platforms: 5,
+    majorTrains: ["Bikaner-Delhi Superfast", "Ranakpur Express", "Bikaner-Howrah Express", "Bikaner Intercity", "Bikaner-Dadar Express", "Suratgarh Passenger"],
+    cabWaitingPoint: "Main exit on Station Road, near the prepaid auto stand opposite the station building",
+    nearbyLandmarks: ["Junagarh Fort (3 km)", "Lalgarh Palace (4 km)", "Karni Mata Temple (32 km)", "National Research Centre on Camel (10 km)"],
+    destinations: [
+      { name: "Junagarh Fort", distance: "3 km", sedanFare: 200, suvFare: 350, time: "12 min" },
+      { name: "Karni Mata Temple (Deshnok)", distance: "32 km", sedanFare: 900, suvFare: 1400, time: "45 min" },
+      { name: "Camel Research Centre", distance: "10 km", sedanFare: 400, suvFare: 650, time: "25 min" },
+      { name: "Jodhpur", distance: "250 km", sedanFare: 4000, suvFare: 5800, time: "4.5 hrs" },
+      { name: "Jaipur", distance: "335 km", sedanFare: 5000, suvFare: 7200, time: "6 hrs" },
+      { name: "Jaisalmer", distance: "330 km", sedanFare: 5000, suvFare: 7200, time: "5.5 hrs" },
+      { name: "Delhi", distance: "450 km", sedanFare: 6500, suvFare: 9500, time: "7-8 hrs" }
+    ],
+    faqs: [
+      { question: "How much is a taxi from Bikaner station to Junagarh Fort?", answer: "A sedan taxi from Bikaner Junction to Junagarh Fort costs ₹200 and takes about 12 minutes. Junagarh Fort is one of the few major forts in Rajasthan not built on a hilltop, with stunning courtyards and palaces. We also offer full-day Bikaner sightseeing." },
+      { question: "Can I visit the Karni Mata Rat Temple from Bikaner station?", answer: "Yes! The famous Karni Mata Temple at Deshnok, home to thousands of holy rats (kabas), is 32 km from Bikaner Junction. A sedan taxi costs ₹900 and takes about 45 minutes. It is one of the most unusual temples in India and a must-visit." },
+      { question: "Is there a taxi to Jaisalmer from Bikaner?", answer: "Yes, Bikaner to Jaisalmer is 330 km (about 5.5 hours) across the Thar Desert. A sedan costs ₹5,000. This is a popular route for tourists doing the desert circuit of Rajasthan. Start early to arrive in Jaisalmer with daylight." },
+      { question: "What is Bikaner famous for?", answer: "Bikaner is famous for Junagarh Fort, the Karni Mata Temple, its camels and the camel research centre, the grand Lalgarh Palace, and above all its bhujia and namkeen snacks. Many visitors buy authentic Bikaneri bhujia near the station before departing." }
+    ],
+    tips: [
+      "Junagarh Fort opens at 10 AM - the morning light is perfect for photography of the sandstone facades",
+      "At Karni Mata Temple, spotting a white rat is considered highly auspicious - remove shoes before entering",
+      "Bikaner gets extremely hot from April to June - carry water and visit outdoor sites early morning",
+      "Buy authentic Bikaneri bhujia and rasgulla from the old city shops near the station before you leave"
+    ]
+  },
+
+  "jaisalmer": {
+    name: "Jaisalmer Railway Station",
+    city: "Jaisalmer",
+    stationCode: "JSM",
+    description: "Jaisalmer (station code JSM) is the railway station of the Golden City, the westernmost major town of Rajasthan rising out of the Thar Desert. Famous for its living sandstone Jaisalmer Fort (Sonar Quila), ornate havelis, and the Sam Sand Dunes, Jaisalmer is a top destination for desert safaris and camel rides. The station connects this remote desert outpost to Jodhpur, Jaipur, and Delhi.",
+    platforms: 3,
+    majorTrains: ["Jaisalmer-Delhi Express", "Ranikhet Express", "Jaisalmer-Jaipur Express", "Howrah-Jaisalmer Express", "Jaisalmer Intercity", "Jodhpur-Jaisalmer Passenger"],
+    cabWaitingPoint: "Main exit on Station Road, near the taxi stand opposite the station building",
+    nearbyLandmarks: ["Jaisalmer Fort (2 km)", "Patwon Ki Haveli (3 km)", "Gadisar Lake (2.5 km)", "Sam Sand Dunes (42 km)"],
+    destinations: [
+      { name: "Jaisalmer Fort", distance: "2 km", sedanFare: 200, suvFare: 350, time: "10 min" },
+      { name: "Sam Sand Dunes", distance: "42 km", sedanFare: 1200, suvFare: 1800, time: "1 hr" },
+      { name: "Kuldhara Abandoned Village", distance: "20 km", sedanFare: 700, suvFare: 1100, time: "30 min" },
+      { name: "Tanot Mata Temple", distance: "120 km", sedanFare: 2800, suvFare: 4000, time: "2.5 hrs" },
+      { name: "Jodhpur", distance: "285 km", sedanFare: 4500, suvFare: 6500, time: "5 hrs" },
+      { name: "Bikaner", distance: "330 km", sedanFare: 5000, suvFare: 7200, time: "5.5 hrs" },
+      { name: "Jaipur", distance: "560 km", sedanFare: 8000, suvFare: 11500, time: "9-10 hrs" }
+    ],
+    faqs: [
+      { question: "How do I get from Jaisalmer station to the Sam Sand Dunes?", answer: "The Sam Sand Dunes, the heart of the desert safari experience, are 42 km from Jaisalmer station. A sedan taxi costs ₹1,200 and takes about 1 hour. We can also arrange a sunset desert safari package with camel rides and a drop to your desert camp." },
+      { question: "How far is Jaisalmer Fort from the railway station?", answer: "Jaisalmer Fort (Sonar Quila) is just 2 km from the station. A taxi costs ₹200 and takes 10 minutes. It is one of the very few living forts in the world, with shops, havelis, and homes still inside the golden sandstone walls." },
+      { question: "Can I visit the haunted Kuldhara village from Jaisalmer?", answer: "Yes! Kuldhara, the mysterious abandoned village, is 20 km from Jaisalmer station. A taxi costs ₹700 and takes about 30 minutes. It is often combined with a Sam Sand Dunes sunset trip in a half-day or full-day package." },
+      { question: "Is there a taxi to Jodhpur from Jaisalmer station?", answer: "Yes, Jaisalmer to Jodhpur is 285 km (about 5 hours) through the desert. A sedan costs ₹4,500. This is the most common route for tourists continuing the Rajasthan circuit. We recommend an early start to reach Jodhpur comfortably." }
+    ],
+    tips: [
+      "Book a sunset camel safari at Sam Sand Dunes - the golden-hour desert views are unforgettable",
+      "Jaisalmer Fort is a living fort - stay or dine inside for a unique heritage experience",
+      "Carry cash as some desert camps and remote spots have limited card or UPI connectivity",
+      "Summers (April-June) are scorching in the desert - October to March is the ideal time to visit"
+    ]
+  },
+
+  "jhansi": {
+    name: "Jhansi Junction Railway Station",
+    city: "Jhansi",
+    stationCode: "VGLJ",
+    description: "Virangana Lakshmibai Jhansi Junction (station code VGLJ, formerly JHS) is a major railway junction in Bundelkhand, Uttar Pradesh, on the Delhi-Chennai and Delhi-Mumbai grand trunk routes. Named after the legendary queen Rani Lakshmibai of Jhansi, the station is the gateway to the medieval town of Orchha and the UNESCO World Heritage temples of Khajuraho. It handles premium trains including the Shatabdi and Gatimaan Express.",
+    platforms: 8,
+    majorTrains: ["Bhopal Shatabdi", "Gatimaan Express", "Tamil Nadu Express", "Karnataka Express", "Jhelum Express", "Punjab Mail"],
+    cabWaitingPoint: "Main exit on Station Road, near the prepaid auto stand and the city bus stop",
+    nearbyLandmarks: ["Jhansi Fort (4 km)", "Rani Mahal (5 km)", "Orchha (16 km)", "Khajuraho (175 km)"],
+    destinations: [
+      { name: "Jhansi Fort", distance: "4 km", sedanFare: 250, suvFare: 400, time: "12 min" },
+      { name: "Orchha", distance: "16 km", sedanFare: 600, suvFare: 900, time: "30 min" },
+      { name: "Khajuraho", distance: "175 km", sedanFare: 3500, suvFare: 5000, time: "4 hrs" },
+      { name: "Gwalior", distance: "100 km", sedanFare: 1800, suvFare: 2800, time: "2 hrs" },
+      { name: "Datia", distance: "30 km", sedanFare: 800, suvFare: 1200, time: "45 min" },
+      { name: "Agra", distance: "215 km", sedanFare: 3500, suvFare: 5000, time: "3.5 hrs" },
+      { name: "Chitrakoot", distance: "210 km", sedanFare: 3500, suvFare: 5000, time: "4 hrs" }
+    ],
+    faqs: [
+      { question: "How far is Orchha from Jhansi station?", answer: "Orchha is just 16 km from Jhansi Junction. A sedan taxi costs ₹600 and takes about 30 minutes. Orchha is a hidden gem on the Betwa River with stunning medieval palaces, the Ram Raja Temple, and royal cenotaphs (chhatris). Many tourists base themselves in Jhansi and day-trip to Orchha." },
+      { question: "Can I reach Khajuraho from Jhansi station by taxi?", answer: "Yes, Khajuraho is 175 km from Jhansi (about 4 hours). A sedan costs ₹3,500. Jhansi is the nearest major railhead with premium train connectivity to the famous UNESCO World Heritage Khajuraho temples known for their intricate sculptures." },
+      { question: "Is Jhansi station the same as the old JHS code?", answer: "Yes. Jhansi Junction was renamed Virangana Lakshmibai Jhansi Junction and the code updated to VGLJ, though many travelers and older tickets still show JHS. It is the same major Bundelkhand junction. We provide taxi service regardless of which code your ticket shows." },
+      { question: "Can I do a same-day Orchha trip from Jhansi station?", answer: "Absolutely! Many travelers arriving at Jhansi take a taxi to Orchha (30 min), spend half a day exploring the Jehangir Mahal, Ram Raja Temple, and the riverside cenotaphs, and return to catch an evening train. A half-day Orchha taxi package is very popular." }
+    ],
+    tips: [
+      "Combine Jhansi Fort with a half-day trip to Orchha - the two make a perfect history-filled day",
+      "The Orchha riverside cenotaphs (chhatris) glow beautifully at sunset - time your visit for golden hour",
+      "For Khajuraho, start early morning to spend the full afternoon at the Western and Eastern temple groups",
+      "Jhansi can be very hot in summer (April-June) - carry water and sun protection for fort visits"
+    ]
+  },
+
+  "moradabad": {
+    name: "Moradabad Junction Railway Station",
+    city: "Moradabad",
+    stationCode: "MB",
+    description: "Moradabad Junction (station code MB) is a major railway junction in western Uttar Pradesh on the Delhi-Lucknow main line, serving the city famously known as Pital Nagri (Brass City) for its world-renowned brassware and metal handicraft exports. The station is a key transit point for trains heading toward the Kumaon hills, Nainital, and the Jim Corbett region, as well as Delhi, Lucknow, and Bareilly.",
+    platforms: 7,
+    majorTrains: ["Nanda Devi Express", "Ranikhet Express", "Kumaon Express", "Moradabad-Delhi Intercity", "Bagh Express", "Sampark Kranti Express"],
+    cabWaitingPoint: "Main exit on Station Road (Civil Lines side), near the prepaid auto stand outside the main building",
+    nearbyLandmarks: ["Sai Temple (3 km)", "Jama Masjid (2 km)", "Prince Road Brass Market (2.5 km)", "Gandhi Nagar (4 km)"],
+    destinations: [
+      { name: "Brass Market (Peetal Mandi)", distance: "2.5 km", sedanFare: 200, suvFare: 350, time: "12 min" },
+      { name: "Rampur", distance: "30 km", sedanFare: 800, suvFare: 1200, time: "45 min" },
+      { name: "Kathgodam", distance: "130 km", sedanFare: 2500, suvFare: 3800, time: "3 hrs" },
+      { name: "Nainital", distance: "150 km", sedanFare: 3000, suvFare: 4500, time: "3.5 hrs" },
+      { name: "Jim Corbett Park", distance: "90 km", sedanFare: 2000, suvFare: 3000, time: "2.5 hrs" },
+      { name: "Bareilly", distance: "90 km", sedanFare: 1800, suvFare: 2800, time: "2 hrs" },
+      { name: "Delhi", distance: "165 km", sedanFare: 3000, suvFare: 4500, time: "3.5 hrs" }
+    ],
+    faqs: [
+      { question: "Why is Moradabad called the Brass City?", answer: "Moradabad is known as Pital Nagri (Brass City) for its centuries-old brass and metal handicraft industry, exported worldwide. The Peetal Mandi (brass market) on Prince Road is 2.5 km from the station and a taxi costs ₹200. Visitors love buying decorative brassware here." },
+      { question: "Can I get a taxi from Moradabad station to Nainital?", answer: "Yes! Moradabad to Nainital is 150 km (about 3.5 hours). A sedan costs ₹3,000. Moradabad is a convenient road gateway to the Kumaon hills. We recommend an early start to enjoy the mountain drive in daylight." },
+      { question: "Is there a taxi to Jim Corbett National Park from Moradabad?", answer: "Yes, Jim Corbett National Park (Ramnagar) is about 90 km from Moradabad station, roughly 2.5 hours. A sedan costs ₹2,000. Remember to book your park safari permits separately in advance." },
+      { question: "Is taxi service available at Moradabad station at night?", answer: "Yes, Triveni Cabs operates 24/7 at Moradabad Junction. Many overnight trains pass through here. Pre-book to ensure a driver with a clean AC vehicle is waiting at the station exit when you arrive." }
+    ],
+    tips: [
+      "Visit the Peetal Mandi brass market to buy authentic Moradabadi brassware and handicrafts",
+      "Moradabad is a major road gateway to Kumaon - good base for Nainital and Jim Corbett trips",
+      "Delhi-Lucknow highway traffic can be heavy - allow extra time during peak hours",
+      "Pre-book your taxi as auto-rickshaws outside the busy junction often overcharge"
+    ]
+  },
+
+  "bareilly": {
+    name: "Bareilly Junction Railway Station",
+    city: "Bareilly",
+    stationCode: "BE",
+    description: "Bareilly Junction (station code BE) is the main railway station of Bareilly, a historic city in the Rohilkhand region of western Uttar Pradesh, immortalized in the folk song 'Jhumka Gira Re Bareilly Ke Bazaar Mein'. The city is known for its Nath temples (the four ancient Shiva shrines), the Dargah Aala Hazrat, and its surma and zari-zardozi crafts. The junction connects Bareilly to Delhi, Lucknow, and the Kumaon foothills.",
+    platforms: 6,
+    majorTrains: ["Nanda Devi Express", "Ranikhet Express", "Bareilly-Delhi Intercity", "Kumaon Express", "Bagh Express", "Triveni Express"],
+    cabWaitingPoint: "Main exit on Station Road (Junction side), near the prepaid auto stand and city bus stop",
+    nearbyLandmarks: ["Alakhnath Temple (4 km)", "Dargah Aala Hazrat (3 km)", "Trivati Nath Temple (5 km)", "Bareilly Bazaar (2 km)"],
+    destinations: [
+      { name: "Alakhnath Temple", distance: "4 km", sedanFare: 250, suvFare: 400, time: "15 min" },
+      { name: "Dargah Aala Hazrat", distance: "3 km", sedanFare: 200, suvFare: 350, time: "12 min" },
+      { name: "Nainital", distance: "140 km", sedanFare: 2800, suvFare: 4200, time: "3.5 hrs" },
+      { name: "Kathgodam", distance: "120 km", sedanFare: 2500, suvFare: 3800, time: "3 hrs" },
+      { name: "Moradabad", distance: "90 km", sedanFare: 1800, suvFare: 2800, time: "2 hrs" },
+      { name: "Lucknow", distance: "250 km", sedanFare: 4000, suvFare: 5800, time: "4.5 hrs" },
+      { name: "Delhi", distance: "250 km", sedanFare: 4000, suvFare: 5800, time: "5 hrs" }
+    ],
+    faqs: [
+      { question: "What are the famous Nath temples in Bareilly?", answer: "Bareilly is known as the city of the Nath temples - four ancient Shiva shrines: Alakhnath, Madhinath, Trivatinath, and Dhopeshwarnath, believed to protect the city in four directions. The Alakhnath Temple, 4 km from the station, is the most visited. A taxi costs ₹250." },
+      { question: "Can I get a taxi from Bareilly station to Nainital?", answer: "Yes! Bareilly to Nainital is 140 km (about 3.5 hours). A sedan costs ₹2,800. Bareilly is a convenient railhead for the Kumaon hills. Start in the morning to enjoy the scenic uphill drive and arrive in Nainital with daylight." },
+      { question: "Is there taxi service at Bareilly Junction at night?", answer: "Yes, Triveni Cabs operates 24/7 at Bareilly Junction. Several overnight trains stop here. Pre-book your taxi so the driver is waiting at the station exit with a clean AC vehicle, especially important for late arrivals." },
+      { question: "What is Bareilly famous for?", answer: "Bareilly is famous for the folk song 'Jhumka Gira Re Bareilly Ke Bazaar Mein', its four Nath Shiva temples, the Dargah Aala Hazrat (a major center of the Barelvi movement), and its surma and zari-zardozi embroidery crafts sold in the local bazaars." }
+    ],
+    tips: [
+      "Visit the four ancient Nath Shiva temples that guard the city in all four directions",
+      "Bareilly is a good rail gateway to the Kumaon hills - Nainital and Kathgodam are a few hours away",
+      "Pick up the famous Bareilly surma and zari-zardozi embroidery from the local bazaars",
+      "Pre-book your taxi as the junction is busy and auto-rickshaws often overcharge new arrivals"
+    ]
   }
 };
 
@@ -935,7 +1129,7 @@ export const getNearbyStations = (currentSlug) => {
     "haridwar": ["rishikesh", "dehradun", "ambala", "new-delhi"],
     "dehradun": ["haridwar", "rishikesh", "ambala", "kathgodam"],
     "amritsar": ["pathankot", "jammu", "chandigarh", "ambala"],
-    "jodhpur": ["jaipur", "udaipur", "ajmer", "agra-cantt"],
+    "jodhpur": ["jaisalmer", "bikaner", "jaipur", "udaipur"],
     "udaipur": ["jodhpur", "ajmer", "jaipur", "agra-cantt"],
     "ayodhya": ["lucknow", "varanasi", "prayagraj", "kanpur"],
     "mathura": ["agra-cantt", "agra-fort", "new-delhi", "jaipur"],
@@ -944,11 +1138,17 @@ export const getNearbyStations = (currentSlug) => {
     "kalka": ["chandigarh", "ambala", "pathankot", "new-delhi"],
     "prayagraj": ["varanasi", "lucknow", "ayodhya", "kanpur"],
     "ajmer": ["jaipur", "jodhpur", "udaipur", "new-delhi"],
-    "jammu": ["pathankot", "amritsar", "chandigarh", "new-delhi"],
+    "jammu": ["katra", "pathankot", "amritsar", "chandigarh"],
     "pathankot": ["amritsar", "jammu", "chandigarh", "kalka"],
-    "gwalior": ["agra-cantt", "jaipur", "new-delhi", "kanpur"],
+    "gwalior": ["agra-cantt", "jhansi", "jaipur", "kanpur"],
     "ambala": ["chandigarh", "kalka", "new-delhi", "amritsar"],
-    "kanpur": ["lucknow", "prayagraj", "agra-cantt", "varanasi"]
+    "kanpur": ["lucknow", "prayagraj", "agra-cantt", "varanasi"],
+    "katra": ["jammu", "pathankot", "amritsar", "chandigarh"],
+    "bikaner": ["jodhpur", "jaisalmer", "jaipur", "ajmer"],
+    "jaisalmer": ["jodhpur", "bikaner", "jaipur", "ajmer"],
+    "jhansi": ["gwalior", "agra-cantt", "kanpur", "prayagraj"],
+    "moradabad": ["bareilly", "kathgodam", "new-delhi", "lucknow"],
+    "bareilly": ["moradabad", "kathgodam", "lucknow", "new-delhi"]
   };
 
   return (regionMap[currentSlug] || [])

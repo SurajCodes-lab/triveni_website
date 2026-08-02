@@ -3,11 +3,16 @@
 import { busFleet, busRoutes, localSightseeing, delhiToAgraRoute, busRouteDescriptions } from '@/utilis/busRoutesData';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
+import { getCorridorLinks } from '@/utilis/corridorLinks';
+import RelatedLinks from '@/components/seo/RelatedLinks';
+import { getMoneyPageLinks, getSiloHubLinks } from '@/lib/seo/linkingHelper';
 import { generateBusMetadata } from '@/lib/seo/metadata-factory';
 import { generateBusServiceSchema } from '@/lib/seo/schema-generators';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getArticleSchema, getSpeakableSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
 
 // Viewport export (moved from metadata for Next.js 15 compatibility)
@@ -182,14 +187,15 @@ export default async function BusRoutePage({ params }) {
     fleet: busFleet,
     detailedRouteInfo: detailedRouteInfo,
     routeDescription: routeDescription,
-    relatedRoutes: relatedRoutes
+    relatedRoutes: relatedRoutes,
+    corridorLinks: getCorridorLinks(route, 'bus-routes')
   };
 
   // JSON-LD Structured Data for specific route
   const busRouteSchema = {
     "@context": "https://schema.org",
     "@type": "TravelAction",
-    "name": `${originFormatted} to ${destinationFormatted} Bus Service`,
+    "name": `${originFormatted} to ${destinationFormatted} Bus Service by Triveni Cabs`,
     "description": `Premium luxury bus rental service from ${originFormatted} to ${destinationFormatted}. Choose from 22 to 56 seater Volvo and AC buses with professional drivers, GPS tracking, and modern amenities.`,
     "fromLocation": {
       "@type": "Place",
@@ -209,6 +215,7 @@ export default async function BusRoutePage({ params }) {
     },
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -218,10 +225,54 @@ export default async function BusRoutePage({ params }) {
     ...(routeData.duration !== 'Contact for details' && { "duration": routeData.duration })
   };
 
+  // ─── DEEPER GEO: geo-located City Place entities + bus-native BusTrip ───
+  const toCitySlug = (s) => s.toLowerCase().replace(/\s+/g, '-');
+  const originPlace = getCityPlaceSchema(toCitySlug(originFormatted), { idSlug: `bus-routes/${route}#origin` });
+  const destPlace = getCityPlaceSchema(toCitySlug(destinationFormatted), { idSlug: `bus-routes/${route}#destination` });
+
+  // Enrich the TravelAction endpoints with real coordinates + full address
+  if (originPlace) { busRouteSchema.fromLocation.geo = originPlace.geo; busRouteSchema.fromLocation.address = originPlace.address; }
+  if (destPlace) { busRouteSchema.toLocation.geo = destPlace.geo; busRouteSchema.toLocation.address = destPlace.address; }
+
+  const isoDuration = (() => {
+    const m = (routeData.duration || '').match(/\d+/);
+    return m ? `PT${m[0]}H` : null;
+  })();
+  const distanceKmNum = (() => {
+    const m = (routeData.distance || '').match(/\d+/);
+    return m ? parseInt(m[0], 10) : null;
+  })();
+  const busStation = (place, cityName) => ({
+    "@type": "BusStation",
+    "name": `${cityName} Bus Stand`,
+    ...(place
+      ? { "address": place.address, "geo": place.geo }
+      : { "address": { "@type": "PostalAddress", "addressLocality": cityName, "addressCountry": "IN" } }),
+  });
+  const busTripSchema = {
+    "@context": "https://schema.org",
+    "@type": "BusTrip",
+    "name": `${originFormatted} to ${destinationFormatted} Bus`,
+    "description": `Chartered bus service from ${originFormatted} to ${destinationFormatted} — 22 to 56 seater AC and Volvo coaches with a professional driver.`,
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs" },
+    "departureBusStop": busStation(originPlace, originFormatted),
+    "arrivalBusStop": busStation(destPlace, destinationFormatted),
+    ...(distanceKmNum ? { "distance": `${distanceKmNum} km` } : {}),
+    ...(isoDuration ? { "estimatedDuration": isoDuration } : {}),
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": "30",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "price": "30", "priceCurrency": "INR", "unitText": "per km" },
+      "availability": "https://schema.org/InStock",
+      "url": `https://www.trivenicabs.in/bus-routes/${route}`,
+    },
+  };
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": `${originFormatted} to ${destinationFormatted} Bus Rental Service`,
+    "name": `${originFormatted} to ${destinationFormatted} Bus Rental — Triveni Cabs`,
     "description": `Book luxury buses from ${originFormatted} to ${destinationFormatted}. Available in 22, 25, 27, 32, 35, 41, 45, 49, 52, and 56 seater options. All buses equipped with AC, reclining seats, entertainment systems, and GPS tracking.`,
     "brand": {
       "@type": "Brand",
@@ -242,16 +293,11 @@ export default async function BusRoutePage({ params }) {
       "url": `https://www.trivenicabs.in/bus-routes/${route}`,
       "seller": {
         "@type": "Organization",
+        "@id": "https://www.trivenicabs.in/#organization",
         "name": "Triveni Cabs"
       }
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.7",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    ...getRatingAndReviews(route, 'bus')
   };
 
   const breadcrumbSchema = {
@@ -282,6 +328,7 @@ export default async function BusRoutePage({ params }) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
     "mainEntity": [
       {
         "@type": "Question",
@@ -388,6 +435,19 @@ export default async function BusRoutePage({ params }) {
     ]
   };
 
+  // Article schema — editorial entity for AEO/GEO + freshness signal, Speakable
+  // wired to the route H1, direct-answer lead and first FAQ answer.
+  const articleSchema = getArticleSchema({
+    slug: `bus-routes/${route}`,
+    headline: `${originFormatted} to ${destinationFormatted} Bus Hire (2026) — Fares, Bus Sizes & Booking Guide`,
+    description: `How to charter a bus from ${originFormatted} to ${destinationFormatted}: 22-56 seater AC coach fares from ₹30/km${routeData.distance !== 'Contact for details' ? `, ${routeData.distance} distance` : ''}, what is included, and how to book for weddings, corporate and group tours.`,
+    image: '/images/bus/hero_section_image.webp',
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
   return (
     <>
       <script
@@ -412,10 +472,44 @@ export default async function BusRoutePage({ params }) {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBusServiceSchema(originFormatted, destinationFormatted, '30', '22-56')) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          ...generateBusServiceSchema(originFormatted, destinationFormatted, '30', '22-56'),
+          brand: { "@type": "Brand", "name": "Triveni Cabs" },
+          ...getRatingAndReviews(route, 'bus')
+        }) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(busTripSchema) }}
+      />
+      {originPlace && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(originPlace) }}
+        />
+      )}
+      {destPlace && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(destPlace) }}
+        />
+      )}
       <AEOHead pageType="route" data={{ url: `/bus-routes/${route}`, title: `${originFormatted} to ${destinationFormatted} Bus Service` }} />
+
       <DynamicBusRoutesClient data={pageData} />
+
+      <div className="container mx-auto px-4 pb-12">
+        <RelatedLinks
+          heading="Related services"
+          links={getSiloHubLinks('bus', 6)}
+          ariaLabel="Other Triveni Cabs services"
+          tone="slate"
+        />
+      </div>
     </>
   );
 }

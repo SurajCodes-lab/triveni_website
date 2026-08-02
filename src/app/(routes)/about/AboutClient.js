@@ -227,7 +227,7 @@ export default function AboutClient() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-6"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight tracking-tight">
+            <h1 className="speakable-headline text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight tracking-tight">
               <span className="block text-white drop-shadow-lg">Welcome to</span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -257,7 +257,7 @@ export default function AboutClient() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
+            className="speakable-lead text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
           >
             A brand born out of passion, discipline, and the belief that travel should be simple, safe, and genuinely customer-focused.
           </motion.p>

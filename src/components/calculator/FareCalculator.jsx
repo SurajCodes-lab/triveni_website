@@ -97,7 +97,7 @@ const vehicleTypes = [
     name: 'Tempo 12-Seater',
     description: 'Force Traveller AC',
     seats: 12,
-    pricePerKm: 23,
+    pricePerKm: 20,
     minKmPerDay: 250,
     driverAllowance: 400,
   },
@@ -106,6 +106,15 @@ const vehicleTypes = [
     name: 'Tempo 17-Seater',
     description: 'Force Traveller Deluxe',
     seats: 17,
+    pricePerKm: 24,
+    minKmPerDay: 250,
+    driverAllowance: 450,
+  },
+  {
+    id: 'tempo20',
+    name: 'Tempo 20-Seater',
+    description: 'Force Traveller Deluxe',
+    seats: 20,
     pricePerKm: 26,
     minKmPerDay: 250,
     driverAllowance: 450,
@@ -115,7 +124,7 @@ const vehicleTypes = [
     name: 'Tempo 26-Seater',
     description: 'Force Traveller Maharaja',
     seats: 26,
-    pricePerKm: 26,
+    pricePerKm: 28,
     minKmPerDay: 250,
     driverAllowance: 450,
   },
@@ -150,12 +159,26 @@ const FareCalculator = ({
   variant = 'full', // 'full' | 'compact' | 'inline'
   defaultFrom = '',
   defaultTo = '',
+  // Which vehicle the calculator starts on. MUST match the page context —
+  // a tempo traveller page has to open on a tempo, not a sedan.
+  defaultVehicle = 'sedan',
+  // Restrict the selectable vehicles to the page context, e.g. only tempo
+  // seaters on a tempo page. Pass an array of vehicle ids; omit for all.
+  vehicleOptions = null,
   phoneNumber = '7668570551',
   className = ''
 }) => {
+  const availableVehicles = useMemo(
+    () => (vehicleOptions?.length ? vehicleTypes.filter(v => vehicleOptions.includes(v.id)) : vehicleTypes),
+    [vehicleOptions]
+  );
+  const initialVehicle = availableVehicles.some(v => v.id === defaultVehicle)
+    ? defaultVehicle
+    : (availableVehicles[0]?.id || 'sedan');
+
   const [fromCity, setFromCity] = useState(defaultFrom);
   const [toCity, setToCity] = useState(defaultTo);
-  const [selectedVehicle, setSelectedVehicle] = useState('sedan');
+  const [selectedVehicle, setSelectedVehicle] = useState(initialVehicle);
   const [tripType, setTripType] = useState('oneway');
   const [isCalculated, setIsCalculated] = useState(false);
 
@@ -169,10 +192,16 @@ const FareCalculator = ({
     const vehicle = vehicleTypes.find(v => v.id === selectedVehicle);
     if (!vehicle) return null;
 
-    const totalDistance = tripType === 'roundtrip' ? distance * 2 : distance;
+    // Tempo Traveller & Bus: one-way is charged the same as round-trip (no
+    // one-way discount) — bill both legs even when the trip is one-way. Cars
+    // (sedan/SUV) keep the one-way discount.
+    const isLargeVehicle = /^(tempo|bus)/.test(vehicle.id);
+    const billBothWays = tripType === 'roundtrip' || isLargeVehicle;
+
+    const totalDistance = billBothWays ? distance * 2 : distance;
     const billableKm = Math.max(totalDistance, vehicle.minKmPerDay);
     const baseFare = billableKm * vehicle.pricePerKm;
-    const driverAllowance = tripType === 'roundtrip' ? vehicle.driverAllowance * 2 : vehicle.driverAllowance;
+    const driverAllowance = billBothWays ? vehicle.driverAllowance * 2 : vehicle.driverAllowance;
     const tollEstimate = Math.round(distance * 0.8);
     const totalFare = baseFare + driverAllowance + tollEstimate;
 
@@ -255,11 +284,51 @@ const FareCalculator = ({
             </select>
           </div>
         </div>
+        {/* Vehicle / seater selector — the fare must match the vehicle the
+            visitor actually wants on this page (tempo seaters, bus sizes…). */}
+        <div className="mb-3">
+          <label htmlFor="compact-vehicle" className="sr-only">Vehicle</label>
+          <select
+            id="compact-vehicle"
+            value={selectedVehicle}
+            onChange={(e) => { setSelectedVehicle(e.target.value); }}
+            className="w-full p-2.5 border rounded-lg text-sm touch-manipulation"
+            aria-label="Select vehicle or seater"
+          >
+            {availableVehicles.map(v => (
+              <option key={v.id} value={v.id}>{v.name} — ₹{v.pricePerKm}/km</option>
+            ))}
+          </select>
+        </div>
+        <button
+          onClick={() => { if (fromCity && toCity) setIsCalculated(true); }}
+          disabled={!fromCity || !toCity}
+          className="w-full py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-bold text-sm shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed mb-3"
+        >
+          Calculate Fare
+        </button>
         {fareDetails && (
           <div className="bg-amber-50 rounded-lg p-3 text-center">
-            <p className="text-sm text-gray-600">Estimated Fare (Sedan)</p>
+            <p className="text-sm text-gray-600">Estimated Fare ({fareDetails.vehicle.name})</p>
             <p className="text-2xl font-bold text-amber-600">₹{fareDetails.totalFare.toLocaleString()}</p>
-            <p className="text-xs text-gray-500">{fareDetails.distance} km | ₹{fareDetails.pricePerKm}/km</p>
+            <p className="text-xs text-gray-500">
+              {fareDetails.distance} km | ₹{fareDetails.pricePerKm}/km
+              {tripType !== 'roundtrip' && /^(tempo|bus)/.test(fareDetails.vehicle.id) && ' · billed both ways'}
+            </p>
+            <div className="mt-2 flex gap-2">
+              <button
+                onClick={handleWhatsApp}
+                className="flex-1 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold hover:bg-green-600 transition-colors"
+              >
+                Book on WhatsApp
+              </button>
+              <button
+                onClick={handleCall}
+                className="flex-1 py-2 bg-blue-500 text-white rounded-lg text-xs font-semibold hover:bg-blue-600 transition-colors"
+              >
+                Call Now
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -465,6 +534,9 @@ const FareCalculator = ({
                   </div>
                   {tripType === 'roundtrip' && (
                     <div className="text-xs sm:text-sm opacity-80">Round Trip: {fareDetails.totalDistance} km total</div>
+                  )}
+                  {tripType !== 'roundtrip' && /^(tempo|bus)/.test(fareDetails.vehicle.id) && (
+                    <div className="text-xs sm:text-sm opacity-80">Billed both ways: {fareDetails.totalDistance} km total (one-way = round-trip for Tempo/Bus)</div>
                   )}
                 </div>
 

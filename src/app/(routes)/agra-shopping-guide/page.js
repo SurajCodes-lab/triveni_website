@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Agra Shopping Guide 2026 | Marble, Leather & Handicrafts',
@@ -19,7 +20,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-shopping-guide',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Agra Shopping Guide' }],
+    images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Shopping Guide' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +28,7 @@ export const metadata = {
     description: 'Marble inlay, leather, handicrafts. Best markets & bargaining tips.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Agra/Taj_mahal.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +54,7 @@ export default function AgraShoppingGuidePage() {
     { question: "How do I ship large marble items home?", answer: "Most marble shops offer shipping services (domestic and international). They pack items in wooden crates with foam padding. Get a receipt with shop details. For international shipping, they handle customs documentation. Typical shipping: ₹500-2,000 domestic, varies for international." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function AgraShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -131,11 +132,26 @@ export default function AgraShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "agra-shopping-guide",
+    headline: "Agra Shopping Guide 2026 — Marble Inlay, Leather, Petha, Bargains",
+    description: "Complete Agra shopping guide. Marble inlay handicrafts, leather, zari embroidery, Petha sweets. Sadar Bazaar, Kinari Bazaar, government emporiums vs private shops.",
+    image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("agra", { idSlug: "agra-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

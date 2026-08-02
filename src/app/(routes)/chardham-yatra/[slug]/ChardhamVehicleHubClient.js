@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, Clock, Sun, Award } from '@/components/ui/icons';
+import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award } from '@/components/ui/icons';
+import { inclusions, exclusions, openingDates2026, registrationSteps } from '@/utilis/chardhamYatraData';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function ChardhamVehicleHubClient({ data }) {
   const [mounted, setMounted] = useState(false);
@@ -22,7 +24,7 @@ export default function ChardhamVehicleHubClient({ data }) {
   return (
     <div className="min-h-screen bg-stone-950">
       {/* ===== HERO: Vehicle Spotlight ===== */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950 to-stone-900" />
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(45deg, #B87333 25%, transparent 25%, transparent 75%, #B87333 75%), linear-gradient(45deg, #B87333 25%, transparent 25%, transparent 75%, #B87333 75%)', backgroundSize: '40px 40px', backgroundPosition: '0 0, 20px 20px' }} />
 
@@ -43,7 +45,10 @@ export default function ChardhamVehicleHubClient({ data }) {
                 <span className="text-amber-400 text-xs font-bold uppercase tracking-wider">{vehicle.category} | {vehicle.seats} Seater</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif mb-4 leading-tight">{title}</h1>
+              <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif mb-3 leading-tight">{title}</h1>
+              <p className="speakable-lead text-indigo-200/75 text-base md:text-lg mb-3 max-w-2xl leading-relaxed">
+                Book the {vehicle.name} ({vehicle.seats}-seater, AC) for Char Dham Yatra 2026 at ₹{vehicle.perKm}/km — about {estimatedPrice} for the full circuit, with experienced Garhwal hill drivers.
+              </p>
               <p className="text-amber-400/80 italic text-lg mb-8">{vehicle.tagline}</p>
 
               {/* Key Stats */}
@@ -73,6 +78,17 @@ export default function ChardhamVehicleHubClient({ data }) {
                   <MessageCircle className="w-5 h-5 text-green-400" /> WhatsApp
                 </a>
               </div>
+
+              {/* Trust Row */}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-7 text-stone-300/90 text-sm">
+                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400" /> 4.9&#9733; Rated</span>
+                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> 10,000+ trips</span>
+                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-cyan-400" /> Verified hill drivers</span>
+                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No advance payment</span>
+              </div>
             </motion.div>
 
             {/* Right - Vehicle Image */}
@@ -88,6 +104,19 @@ export default function ChardhamVehicleHubClient({ data }) {
               <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur text-amber-400 text-sm font-bold px-3 py-1.5 rounded-full">₹{vehicle.perKm}/km</div>
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur text-stone-300 text-xs px-3 py-1.5 rounded-full">{vehicle.fuelType}</div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Quick Enquiry Form ===== */}
+      <section className="py-14 px-4 bg-stone-950">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Book Your {vehicle.name} for Char Dham</h2>
+            <p className="text-stone-400 leading-relaxed">Share your dates and group size — we send a transparent, all-inclusive quote within minutes. No advance payment needed to reserve.</p>
+          </div>
+          <div className="flex lg:justify-end">
+            <QuickEnquiryForm pageType="chardham" />
           </div>
         </div>
       </section>
@@ -180,6 +209,19 @@ export default function ChardhamVehicleHubClient({ data }) {
               );
             })}
           </div>
+
+          {/* Section CTA strip */}
+          <div className="mt-10 bg-gradient-to-r from-amber-600/15 to-amber-700/10 border border-amber-500/25 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-white font-semibold text-center sm:text-left">Ready to book the {vehicle.name} or compare another vehicle? Get a free Char Dham quote.</p>
+            <div className="flex items-center gap-3">
+              <a href="tel:+917668570551" className="flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-all">
+                <Phone className="w-4 h-4" /> Call Now
+              </a>
+              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white/10 border border-amber-500/30 text-amber-200 px-6 py-3 rounded-full font-bold text-sm hover:bg-white/20 transition-all">
+                <MessageCircle className="w-4 h-4 text-green-400" /> WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -247,6 +289,77 @@ export default function ChardhamVehicleHubClient({ data }) {
         </div>
       </section>
 
+      {/* ===== 2026 Opening Dates ===== */}
+      <section className="py-16 px-4 bg-gradient-to-b from-stone-950 to-stone-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-white font-serif text-center mb-3">Char Dham Yatra 2026 Opening Dates</h2>
+          <p className="text-stone-400 text-center mb-10">Plan your {vehicle.name} booking around the kapat opening dates</p>
+          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.03]">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/[0.04]">
+                  <th className="py-3 px-4 text-stone-400 font-medium">Dham</th>
+                  <th className="py-3 px-4 text-stone-400 font-medium">Altitude</th>
+                  <th className="py-3 px-4 text-stone-400 font-medium">Opening 2026</th>
+                  <th className="py-3 px-4 text-stone-400 font-medium">Closing 2026</th>
+                  <th className="py-3 px-4 text-stone-400 font-medium">Base Camp</th>
+                </tr>
+              </thead>
+              <tbody>
+                {openingDates2026.map((d, i) => (
+                  <tr key={i} className="border-b border-white/5 hover:bg-white/[0.03] transition-colors">
+                    <td className="py-4 px-4 text-white font-semibold">{d.dham}</td>
+                    <td className="py-4 px-4 text-amber-400 font-bold">{d.altitude}</td>
+                    <td className="py-4 px-4 text-emerald-300/90">{d.opening}</td>
+                    <td className="py-4 px-4 text-rose-300/80">{d.closing}</td>
+                    <td className="py-4 px-4 text-stone-300/80">{d.base}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== What's Included + Registration ===== */}
+      <section className="py-16 px-4 bg-stone-950">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">What&apos;s Included with Your {vehicle.name}</h2>
+            <div className="bg-white/[0.03] border border-emerald-500/20 rounded-xl p-5 mb-4">
+              <h3 className="text-emerald-400 font-bold mb-3 flex items-center gap-2 text-sm"><CheckCircle className="w-4 h-4" /> Included</h3>
+              <ul className="space-y-2">
+                {inclusions.slice(0, 6).map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-stone-300/80 text-sm"><CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white/[0.03] border border-rose-500/20 rounded-xl p-5">
+              <h3 className="text-rose-400 font-bold mb-3 flex items-center gap-2 text-sm"><XCircle className="w-4 h-4" /> Not Included</h3>
+              <ul className="space-y-2">
+                {exclusions.slice(0, 5).map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-stone-300/80 text-sm"><XCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">Registration &amp; Biometric (2026)</h2>
+            <div className="space-y-3">
+              {registrationSteps.map((step, i) => (
+                <div key={i} className="flex gap-3 bg-white/[0.03] border border-white/10 rounded-xl p-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-amber-600 to-amber-700 flex items-center justify-center text-white font-bold text-xs">{i + 1}</div>
+                  <div>
+                    <h3 className="text-white font-semibold text-sm mb-1">{step.name}</h3>
+                    <p className="text-stone-400 text-xs leading-relaxed">{step.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== FAQs ===== */}
       <section className="py-16 px-4 bg-stone-900/30">
         <div className="max-w-3xl mx-auto">
@@ -261,7 +374,7 @@ export default function ChardhamVehicleHubClient({ data }) {
                 <AnimatePresence>
                   {expandedFaq === idx && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                      <p className="px-5 pb-5 text-stone-400 text-sm leading-relaxed">{faq.answer}</p>
+                      <p className={`px-5 pb-5 text-stone-400 text-sm leading-relaxed${idx === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

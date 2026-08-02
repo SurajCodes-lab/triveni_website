@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Udaipur Beyond City Palace | Hidden Gems & Day Trips | 2026',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/udaipur-beyond-city-palace',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/udaipur-hero.jpg', width: 1200, height: 630, alt: 'Udaipur Beyond City Palace' }],
+    images: [{ url: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg', width: 1200, height: 630, alt: 'Udaipur Beyond City Palace' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Hidden lakes, craft villages, mighty forts, and temple towns. By Udaipur locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/udaipur-hero.jpg'],
+    images: ['/images/sightseeing/Udaipur/Udaipur_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

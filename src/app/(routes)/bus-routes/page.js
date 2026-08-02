@@ -2,13 +2,16 @@
 
 import { busFleet, busRoutes } from '@/utilis/busRoutesData';
 import BusMainClient from '@/components/BusMainClient';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getArticleSchema, getSpeakableSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   title: 'Bus Hire India ₹35/km — 22-56 Seater AC 4.9★ | Book Now',
   description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
+  keywords: 'bus hire India, luxury bus rental, 22 seater bus, 35 seater Volvo, 45 seater AC bus, 56 seater coach, group travel bus, wedding bus rental, corporate bus service, pilgrimage bus, Triveni Cabs',
   alternates: {
     canonical: 'https://www.trivenicabs.in/bus-routes'
   },
@@ -33,7 +36,7 @@ export const metadata = {
     address: true
   },
   openGraph: {
-    title: 'Bus Hire India ₹35/km — 22-56 Seater Volvo AC for Groups | Triveni Cabs',
+    title: 'Bus Hire India ₹35/km — 22-56 Seater Volvo AC for Groups',
     description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
     url: 'https://www.trivenicabs.in/bus-routes',
     type: 'website',
@@ -117,9 +120,12 @@ export default function BusRoutesPage() {
     "@context": "https://schema.org",
     "@type": "BusOrCoach",
     "name": "Triveni Cabs Luxury Bus Rental Service",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": "Premium luxury bus rental services from 22 to 56 seater Volvo and AC buses for corporate events, weddings, tours, and pilgrimages across India",
+    ...getRatingAndReviews('bus-routes-hub', 'bus'),
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -225,6 +231,7 @@ export default function BusRoutesPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
     "mainEntity": [
       {
         "@type": "Question",
@@ -288,6 +295,46 @@ export default function BusRoutesPage() {
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes, night charges apply for travel between 10 PM to 6 AM. Driver allowance increases by ₹200-300 for overnight journeys. Multi-day trips include driver accommodation and meals as per standard industry practice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many people can fit in a 35 seater vs a 45 seater bus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 35 seater bus comfortably seats 35 passengers plus luggage and is ideal for medium wedding groups, school trips, and corporate teams. A 45 seater bus seats 45 passengers and suits larger pilgrimage groups and conferences. For groups of 50-56, choose the 52 or 56 seater luxury Volvo coach. For small groups of 12-26, a tempo traveller or 22 seater mini bus is more economical."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a Volvo bus and a regular AC bus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Volvo (or Scania) luxury coach has air-suspension for a smoother ride, push-back recliner seats, better insulation and quieter AC, and is best for long-distance and overnight journeys. A regular AC bus is more budget-friendly at ₹30-45/km and works well for shorter day trips and local group transfers. Volvo coaches cost ₹55-65/km but deliver premium comfort over 300+ km routes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide buses for school trips and educational tours?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our school-trip buses come with speed governors, first-aid kits, GPS tracking shared with the school, and experienced drivers verified for student transport. We provide 22 to 56 seater options for day picnics, educational tours, and inter-school events with teacher-coordinated pickup and drop."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a driver and fuel included in the bus rental price?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, the per-km rate includes the bus, fuel, and a professional driver. Toll taxes, state permits, parking, and driver night allowance (₹800-1200/day) are charged extra at actuals. You receive a transparent quote before booking with all inclusions and exclusions listed clearly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get a GST invoice for a corporate bus booking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide a proper GST invoice for all corporate and business bus bookings, along with a single point of contact for multi-vehicle coordination. This makes Triveni Cabs ideal for company offsites, conferences, and employee transportation that require compliant billing and reimbursement."
         }
       }
     ]
@@ -358,6 +405,36 @@ export default function BusRoutesPage() {
     ]
   };
 
+  // Seater comparison rows — drive both the Comparison schema and the visible table
+  const seaterComparison = [
+    { size: '22 Seater Mini Bus', capacity: '22', bestFor: 'Small groups, family pilgrimage, hill routes', pricePerKm: '₹30-38/km', ac: 'AC' },
+    { size: '35 Seater Bus', capacity: '35', bestFor: 'Wedding baraat, school trips, corporate teams', pricePerKm: '₹40-48/km', ac: 'AC' },
+    { size: '45 Seater Bus', capacity: '45', bestFor: 'Large pilgrimage groups, college trips, events', pricePerKm: '₹48-58/km', ac: 'AC' },
+    { size: '56 Seater Volvo Coach', capacity: '56', bestFor: 'Long-distance tours, conferences, big groups', pricePerKm: '₹55-65/km', ac: 'AC Volvo' },
+  ];
+
+  // Article schema — editorial entity for AEO/GEO + freshness signal, Speakable wired to hero + lead + first FAQ.
+  const articleSchema = getArticleSchema({
+    slug: 'bus-routes',
+    headline: 'Bus Hire in India (2026) — 22 to 56 Seater AC Coach Rental Fares, Sizes & Booking Guide',
+    description: 'Complete guide to renting a bus in India: 22-56 seater AC coaches from ₹30/km, seater-size comparison, Volvo vs AC bus, what is included, and how to book for weddings, corporate, pilgrimage and group tours.',
+    image: '/images/bus/hero_section_image.webp',
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  // Comparison schema — bus seater-size comparison (Table + Article) for featured-snippet capture.
+  const comparisonSchema = getComparisonSchema({
+    slug: 'bus-routes',
+    title: 'Bus Seater Size Comparison — 22 vs 35 vs 45 vs 56 Seater',
+    description: 'Compare 22, 35, 45 and 56 seater buses on passenger capacity, best use-case, price per km and AC type to choose the right coach for your group.',
+    rows: seaterComparison.map(r => ({ feature: r.size })),
+    mentions: ['22 Seater Mini Bus', '35 Seater Bus', '45 Seater Bus', '56 Seater Volvo Coach', 'Bus rental per km', 'Group travel']
+  });
+
+  // Inject the dynamic schema list + comparison data into the client page object
+  pageData.seaterComparison = seaterComparison;
+
   return (
     <>
       <script
@@ -368,7 +445,9 @@ export default function BusRoutesPage() {
           routesListSchema,
           faqSchema,
           organizationSchema,
-          howToBookSchema
+          howToBookSchema,
+          articleSchema,
+          ...comparisonSchema
         ]) }}
       />
       <BusMainClient data={pageData} />

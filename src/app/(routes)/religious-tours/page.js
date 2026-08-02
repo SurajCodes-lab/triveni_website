@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import { religiousTours } from '@/utilis/religiousTourData';
 // Centralized icon imports for better bundle optimization
 import { Calendar, MapPin, Star, ChevronRight, Phone, Shield, Clock, Users, Heart } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Pilgrimage Tours 2026 | Char Dham from ₹45,000 | AC Transport & Guide',
-  description: 'Book pilgrimage tours from Delhi with AC transport. Char Dham Yatra ₹45K, Vaishno Devi ₹8K, Haridwar ₹4K. 3000+ pilgrims served. Expert guides + 24/7 support. Call 7668570551.',
+  title: 'Pilgrimage Tours 2026 | Char Dham ₹45,000 | AC Transport',
+  description: 'Book pilgrimage tours from Delhi with AC transport. Char Dham Yatra ₹45K, Vaishno Devi ₹8K, Haridwar ₹4K. 3000+ pilgrims served. Expert guides + 24/7 support.',
+  keywords: 'religious tours, tour package india, sightseeing tour, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -71,7 +73,7 @@ export default function ReligiousToursPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount('religious-tours')),
       "bestRating": "5"
     }
   };

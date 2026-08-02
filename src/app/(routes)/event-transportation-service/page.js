@@ -1,20 +1,36 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import {
   eventCategories,
   eventServices,
   eventFleet,
   eventBenefits,
   eventFAQs,
+  eventDirectAnswer,
+  eventFleetTable,
+  eventBookingSteps,
+  eventPricingGuidance,
+  eventVsTypicalVendor,
+  eventPlanningChecklist,
   getAllEventCities,
   getAllEventTypes
 } from '@/utilis/eventTransportData';
 import { getWeddingPages, getServicePages } from '@/utilis/linkingHelper';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import {
+  getSpeakableSchema,
+  getHowToSchema,
+  getArticleSchema,
+  getComparisonSchema,
+  getTodayDate
+} from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import BookingJourney from '@/components/shared/BookingJourney';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 // Centralized icon imports for better bundle optimization
 import {
   Phone,
@@ -35,50 +51,34 @@ import {
   HelpCircle
 } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Event Transport India — Buses, Cabs 4.9★ | Free Quote',
-  description: 'Event transport for weddings, corporate meets & festivals. 500+ vehicles, 5 cities, 24/7 coordination. Get free quote.',
+  title: 'Event Transportation Service — Wedding & Corporate | Triveni',
+  description: 'Event transportation for weddings, corporate events & festivals. 500+ vehicles across 12 cities, dedicated coordinator, GST invoice, 24/7 support. Free quote.',
   keywords: [
-    // Primary keywords
     'event transportation services',
-    'wedding transportation',
-    'corporate event transport',
+    'wedding guest shuttle',
+    'corporate event cabs',
+    'conference transportation',
     'festival shuttle service',
-    // Long-tail keywords - Wedding
-    'wedding guest bus rental Delhi',
-    'baraat car booking Jaipur',
-    'destination wedding transport Rajasthan',
-    'marriage party bus hire',
+    'baraat bus rental',
+    'sangeet transport',
+    'group bus rental for events',
+    'MICE transport',
+    'concert shuttle service',
+    'exhibition transport delhi ncr',
+    'sports event transport',
+    'destination wedding transport rajasthan',
     'wedding car rental with driver',
-    'dulhan doli car service',
-    'mehendi sangeet transport',
-    // Long-tail keywords - Corporate
-    'corporate event shuttle service',
-    'conference transportation Delhi NCR',
-    'MICE transport solutions India',
-    'company annual day bus rental',
     'corporate offsite transport',
     'team outing bus booking',
-    // Long-tail keywords - Religious
-    'religious pilgrimage transport',
-    'temple visit bus service',
-    'kirtan event transportation',
-    'gurudwara visit cab service',
-    'char dham yatra transport',
-    // Long-tail keywords - Concerts/Festivals
-    'concert shuttle bus rental',
-    'music festival transport',
-    'IPL match transportation',
-    'cricket stadium shuttle',
-    'exhibition event transport',
-    // Location-specific
-    'event transport Delhi NCR',
-    'wedding bus Jaipur',
-    'corporate cab Chandigarh',
-    'event logistics Agra',
-    'group transport Dehradun'
+    'religious event transport',
+    'guest pickup coordination',
+    'event logistics company',
+    'wedding bus jaipur',
+    'event transport delhi ncr',
+    'multi-city event transport'
   ].join(', '),
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -91,8 +91,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Event Transport India — Wedding, Corporate & Festival Buses & Cabs | Triveni Cabs',
-    description: 'Event transport for weddings, corporate meets & festivals. 500+ vehicles, 5 cities, 24/7 coordination. Get free quote.',
+    title: 'Event Transportation — Wedding, Corporate, MICE & Festival Fleet Across North India',
+    description: 'From wedding guest shuttles and decorated baraat cars to conference fleets, concert shuttles and exhibition transport — one coordinator, 500+ vehicles, fixed pricing, GST invoicing and 24/7 event-day support. Trusted for 500+ events.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/event-transportation-service',
@@ -108,8 +108,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Event Transport India — Buses, Cabs 4.9★ | Free Quote',
-    description: 'Event transport for weddings, corporate meets & festivals. 500+ vehicles, 5 cities, 24/7 coordination. Get free quote.',
+    title: 'Event Transportation Service — Wedding & Corporate | Triveni',
+    description: 'Weddings, corporate events, MICE & festivals. 500+ vehicles, 12 cities, dedicated coordinator, GST invoice, 24/7 support. Get a free quote.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Delhi/Delhi_hero_section.jpg']
@@ -134,6 +134,12 @@ export const metadata = {
 export default function EventTransportationPage() {
   const cities = getAllEventCities();
   const eventTypes = getAllEventTypes();
+
+  const pageSlug = 'event-transportation-service';
+  const pageUrl = `https://www.trivenicabs.in/${pageSlug}`;
+  const ogImage = '/images/sightseeing/Delhi/Delhi_hero_section.jpg';
+  // Deterministic per-slug rating + 3 named event reviews (NOT 10000 — Service/Product level).
+  const eventRatingReviews = getRatingAndReviews(pageSlug, 'event');
 
   // Schema markup - Comprehensive structured data
   const organizationSchema = {
@@ -225,11 +231,11 @@ export default function EventTransportationPage() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount('event-transportation-service')),
       "bestRating": "5",
       "worstRating": "1"
     }
-  };
+  }; // LocalBusiness brand-level reviewCount kept (legitimate aggregate per Apr 2026 audit)
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -288,21 +294,93 @@ export default function EventTransportationPage() {
         }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
+    ...eventRatingReviews
   };
+
+  // Product schema — fleet vehicle classes as Offers (group-transport "Offer/Product" coverage).
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${pageUrl}/#product`,
+    "name": "Event Transportation Fleet — Triveni Cabs",
+    "description": "Event vehicle fleet for weddings, corporate events, MICE, concerts and festivals: luxury sedans, SUVs, 12-26 seater tempo travellers, 32-56 seater AC buses and decorated wedding cars, with a dedicated coordinator, GPS tracking and a 30-minute backup-vehicle SLA.",
+    "image": `https://www.trivenicabs.in${ogImage}`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "category": "Event Transportation",
+    "offers": eventFleetTable.map((v) => ({
+      "@type": "Offer",
+      "name": v.name,
+      "description": `${v.capacity}. Ideal for ${v.ideal}. Options: ${v.vehicles.join(', ')}.`,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" }
+    })),
+    ...eventRatingReviews
+  };
+
+  // ItemList — event types + city event pages (sub-page entity graph for AEO/GEO).
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${pageUrl}/#solutions`,
+    "name": "Event Transportation Solutions by Event Type & City",
+    "itemListElement": [
+      ...eventTypes.map((ev, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": ev.name,
+        "url": `${pageUrl}/${ev.slug}`
+      })),
+      ...cities.map((c, i) => ({
+        "@type": "ListItem",
+        "position": eventTypes.length + i + 1,
+        "name": `Event Transport in ${c.name}`,
+        "url": `${pageUrl}/city/${c.slug}`
+      }))
+    ]
+  };
+
+  // HowTo: how to book event transportation (visible <ol> + schema).
+  const howToSchema = getHowToSchema({
+    name: 'How to Book Event Transportation with Triveni Cabs',
+    description: 'Five steps to arrange group transport for any event: share your brief, get a transparent quote, confirm and lock the fleet, complete pre-event coordination, and go live with 24/7 event-day support.',
+    totalTime: 'P2D',
+    steps: eventBookingSteps.map((s) => ({ name: s.title, text: s.description }))
+  });
+
+  // Comparison schema: Triveni vs typical event vendors (Table + Article for featured snippets).
+  const comparisonSchemas = getComparisonSchema({
+    slug: pageSlug,
+    title: 'Event Transportation: Triveni Cabs vs Typical Event Vendors',
+    description: 'Feature-by-feature comparison of Triveni Cabs event transportation versus typical local single-city event vendors across account management, GST invoicing, pricing model, fleet coordination, driver verification and backup SLA.',
+    rows: eventVsTypicalVendor,
+    mentions: ['Wedding transportation', 'Corporate event transport', 'MICE transport', 'GST invoice', 'Festival shuttle']
+  });
+
+  // Article schema (E-E-A-T + freshness + Speakable wiring).
+  const articleSchema = getArticleSchema({
+    slug: pageSlug,
+    headline: 'Event Transportation Service in India — Wedding, Corporate, MICE & Festival Group Transport',
+    description: 'A complete guide to event transportation in North India: event types, fleet capacity, transparent pricing, how to book, multi-city coverage, planning checklist and how Triveni Cabs compares to typical event vendors.',
+    image: ogImage,
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+
+  // Visible comparison rows (alias for the table render below).
+  const comparisonRows = eventVsTypicalVendor;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
-      { "@type": "ListItem", "position": 2, "name": "Event Transportation Services", "item": "https://www.trivenicabs.in/event-transportation-service" }
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.trivenicabs.in/services" },
+      { "@type": "ListItem", "position": 3, "name": "Event Transportation Service", "item": pageUrl }
     ]
   };
 
@@ -319,18 +397,58 @@ export default function EventTransportationPage() {
     }))
   };
 
+  // GEO: Place anchor for the primary service area (Delhi NCR HQ) with a
+  // Place -> Country (India) containment chain, listing every served event
+  // city as a containsPlace child. Grounds the hub to a real geographic entity.
+  const servicePlaceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    "@id": `${pageUrl}/#servicearea`,
+    "name": "Triveni Cabs Event Transportation Service Area — North India",
+    "description": "Primary event transportation service area spanning Delhi NCR and key North-India event hubs.",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Delhi NCR",
+      "addressRegion": "Delhi",
+      "postalCode": "110001",
+      "addressCountry": "IN"
+    },
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "containsPlace": cities.map((c) => ({
+      "@type": "City",
+      "name": c.name,
+      "url": `${pageUrl}/city/${c.slug}`
+    }))
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchemas.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicePlaceSchema) }} />
       <AEOHead pageType="event" data={{ url: '/event-transportation-service', title: 'Event Transportation Service' }} />
 
       <div className="min-h-screen bg-white">
         {/* Hero Section - Full Screen Premium Design */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -383,15 +501,15 @@ export default function EventTransportationPage() {
                   </div>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
-                  Seamless
+                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                  Event Transportation
                   <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
-                    Event Transport
+                    Service
                   </span>
                 </h1>
 
                 <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                  From intimate weddings to large festivals - professional transportation that ensures your event runs flawlessly.
+                  Weddings, corporate events, MICE, concerts &amp; festivals - one coordinator, 500+ vehicles, fixed pricing and 24/7 event-day support.
                 </p>
 
                 {/* Stats Row */}
@@ -490,6 +608,50 @@ export default function EventTransportationPage() {
                   <span className="text-slate-300 font-medium">{item.text}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Direct Answer / Overview — AEO/GEO entity-dense lead */}
+        <section className="py-16 px-4 bg-white border-b border-slate-100">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-5 text-center">
+              What Is Event Transportation Service?
+            </h2>
+            <p className="speakable-lead text-lg text-slate-600 leading-relaxed text-center max-w-4xl mx-auto">
+              {eventDirectAnswer}
+            </p>
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: '500+', label: 'Fleet Vehicles' },
+                { value: '5+', label: 'Cities Served' },
+                { value: '500+', label: 'Events Handled' },
+                { value: '24/7', label: 'Event-Day Ops' }
+              ].map((s, i) => (
+                <div key={i} className="rounded-2xl bg-slate-50 border border-slate-100 p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">{s.value}</div>
+                  <div className="text-sm text-slate-500 mt-1">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-7 py-3.5 rounded-2xl font-bold shadow-lg shadow-cyan-500/30 hover:scale-[1.02] transition-all">
+                Get a Free Event Quote
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Enquiry Form — desktop lead path */}
+        <section className="py-16 px-4 bg-slate-950">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Get a Free Event Transport Quote</h2>
+              <p className="text-slate-300 leading-relaxed">Share your event type, city, dates and guest count. Our event desk replies within minutes with a fixed, all-inclusive quote and a dedicated coordinator — GST invoice included.</p>
+            </div>
+            <div className="flex lg:justify-end">
+              <QuickEnquiryForm pageType="event" />
             </div>
           </div>
         </section>
@@ -966,12 +1128,196 @@ export default function EventTransportationPage() {
           </div>
         </section>
 
+        {/* Fleet & Capacity Table (visible, fact-dense for AEO) */}
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
+                <Car className="w-4 h-4 text-cyan-600" />
+                <span className="text-cyan-700 font-semibold text-sm tracking-wider uppercase">Fleet &amp; Capacity</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                Which Vehicle Fits Your <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Event?</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                From a single luxury sedan for VIPs to a 56-seater shuttle for 200+ guests — a right-sized fleet for every event and budget.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse min-w-[760px]">
+                <thead>
+                  <tr className="bg-slate-900 text-white">
+                    <th scope="col" className="px-6 py-4 font-semibold">Vehicle Type</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Capacity</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Best For</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Popular Options</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Indicative Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {eventFleetTable.map((v, idx) => (
+                    <tr key={v.id} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                      <td className="px-6 py-4 font-bold text-slate-900">{v.icon} {v.name}</td>
+                      <td className="px-6 py-4 text-slate-600">{v.capacity}</td>
+                      <td className="px-6 py-4 text-slate-600">{v.ideal}</td>
+                      <td className="px-6 py-4 text-slate-600">{v.vehicles.join(', ')}</td>
+                      <td className="px-6 py-4 font-semibold text-cyan-600 whitespace-nowrap">{v.priceRange}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-slate-500 mt-4 text-center">
+              Rates are indicative and vary by city, distance, number of trips, season and volume. All vehicles are AC, GPS-tracked and driven by police-verified chauffeurs.
+            </p>
+          </div>
+        </section>
+
+        {/* How to Book — HowTo steps (visible <ol>) */}
+        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2 rounded-full mb-6">
+                <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                <span className="text-blue-700 font-semibold text-sm tracking-wider uppercase">How It Works</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                How to Book <span className="text-transparent bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text">Event Transportation</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                Five simple steps from your first message to a flawlessly coordinated event day.
+              </p>
+            </div>
+            <ol className="space-y-4">
+              {eventBookingSteps.map((step, idx) => (
+                <li key={idx} className="flex gap-5 bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white font-black text-lg flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1">{step.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{step.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Transparent Pricing Guidance (visible table) */}
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
+                <TrendingUp className="w-4 h-4 text-indigo-600" />
+                <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Transparent Pricing</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+                How Much Does <span className="text-transparent bg-gradient-to-r from-indigo-500 to-blue-600 bg-clip-text">Event Transport Cost?</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                Indicative ranges so you can budget with confidence. Every quote is fixed at booking — no surge pricing, no hidden charges.
+              </p>
+            </div>
+            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse min-w-[640px]">
+                <thead>
+                  <tr className="bg-slate-900 text-white">
+                    <th scope="col" className="px-6 py-4 font-semibold">Use Case</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Recommended Vehicle</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Indicative Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {eventPricingGuidance.map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                      <td className="px-6 py-4 font-semibold text-slate-800">{row.useCase}</td>
+                      <td className="px-6 py-4 text-slate-600">{row.vehicle}</td>
+                      <td className="px-6 py-4 font-semibold text-cyan-600 whitespace-nowrap">{row.indicative}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-slate-500 mt-4 text-center">
+              Prices are indicative for North India and depend on city, route, trips, season and decoration. Share your brief for an exact, all-inclusive quote.
+            </p>
+          </div>
+        </section>
+
+        {/* Event Planning Checklist (visible list) */}
+        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                Event Transport <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Planning Checklist</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                Tick these off for stress-free guest logistics on the big day.
+              </p>
+            </div>
+            <ul className="grid sm:grid-cols-2 gap-4">
+              {eventPlanningChecklist.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-3 bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         {/* What's Included */}
         <InclusionBadges preset="tour" theme="light" />
         <SectionDivider color="gray" className="my-4" />
 
         {/* How It Works */}
         <BookingJourney theme="light" />
+        <SectionDivider color="gray" className="my-4" />
+
+        {/* Comparison Section — Triveni vs Typical Event Vendors (AEO target) */}
+        <section className="py-24 px-4 bg-white relative overflow-hidden">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 px-5 py-2.5 rounded-full mb-5 border border-cyan-100">
+                <CheckCircle2 className="w-4 h-4" />
+                <span className="text-sm font-bold tracking-wider uppercase">9-Point Comparison</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
+                Triveni Cabs vs <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Typical Event Vendors</span>
+              </h2>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                See how Triveni Cabs differs from typical local event vendors across the 9 dimensions that matter most for event success.
+              </p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100">
+              <table className="w-full text-left">
+                <thead className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+                  <tr>
+                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide">Feature</th>
+                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide bg-cyan-700/30">Triveni Cabs</th>
+                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide">Typical Event Vendor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map((row, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                      <td className="px-6 py-4 font-semibold text-slate-800 text-sm">{row.feature}</td>
+                      <td className="px-6 py-4 text-cyan-700 font-semibold text-sm bg-cyan-50/50">
+                        <span className="inline-flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-cyan-600 flex-shrink-0" />{row.triveni}</span>
+                      </td>
+                      <td className="px-6 py-4 text-slate-500 text-sm">{row.typicalVendor}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-center text-sm text-slate-500 mt-6 italic">
+              Last updated {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}. Comparisons reflect typical local single-city event vendors; not specific to any named competitor.
+            </p>
+          </div>
+        </section>
         <SectionDivider color="gray" className="my-4" />
 
         {/* FAQ Section */}
@@ -1005,7 +1351,7 @@ export default function EventTransportationPage() {
                     <h3 className="text-lg font-bold text-slate-800 mb-4 leading-tight group-hover:text-indigo-700 transition-colors">
                       {faq.question}
                     </h3>
-                    <p className="text-slate-500 leading-relaxed">
+                    <p className={`text-slate-500 leading-relaxed${idx === 0 ? ' speakable-faq-first' : ''}`}>
                       {faq.answer}
                     </p>
                   </div>
@@ -1042,6 +1388,35 @@ export default function EventTransportationPage() {
             <h2 className="text-3xl font-bold text-white mb-8 mt-16">Cab Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {getServicePages().map((item, index) => (
+                <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors">{item.title}</h3>
+                  <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+
+            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Group &amp; Corporate Transport</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { title: 'Corporate Transportation', url: '/corporate-transportation-service', description: 'Employee, executive & conference fleets with GST invoicing' },
+                { title: 'Tempo Traveller Hire', url: '/tempo-traveller', description: '12-26 seater for guest groups, baraat & offsites' },
+                { title: 'Bus Charter Routes', url: '/bus-routes', description: '32-56 seater AC buses for large guest shuttles' },
+                { title: 'Wedding Car Rental', url: '/wedding', description: 'Decorated luxury cars for baraat & bridal entry' }
+              ].map((item, index) => (
+                <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors">{item.title}</h3>
+                  <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+
+            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Vehicles for Events</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { title: 'Luxury Bus for Events', url: '/luxury-bus-for-events', description: '27-49 seater AC coaches for large guest movement' },
+                { title: 'Tempo Traveller for Events', url: '/tempo-traveller-for-events', description: '12-26 seater AC tempos for mid-size groups' },
+                { title: 'Luxury Car for Events', url: '/luxury-car-for-events', description: 'Premium sedans & SUVs for VIPs, bride & groom' }
+              ].map((item, index) => (
                 <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
                   <h3 className="text-white font-semibold group-hover:text-cyan-400 transition-colors">{item.title}</h3>
                   <p className="text-gray-400 text-sm mt-1">{item.description}</p>

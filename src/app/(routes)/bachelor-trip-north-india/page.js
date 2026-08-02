@@ -5,7 +5,7 @@ const data = friendsTripData['bachelor'];
 
 export const metadata = {
   title: 'Bachelor Trip North India by Car | Rs 815/Person | 2026',
-  description: 'Book Tempo Traveller for bachelor trip in North India. Rs 815/person. Rishikesh, Manali, Kasol, Jaisalmer. Rafting, bungee, camping. 17-27 seater. Call 7668570551.',
+  description: 'Book Tempo Traveller for bachelor trip in North India. Rs 815/person. Rishikesh, Manali, Kasol, Jaisalmer. Rafting, bungee, camping. 17-27 seater.',
   keywords: 'bachelor trip north india, bachelor party trip, bachelor trip rishikesh, bachelor trip manali, bachelorette trip india, pre wedding trip tempo traveller',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -23,4 +23,4 @@ export default function BachelorTripNorthIndiaPage() {
   return (<><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><FriendsTripClient data={data} /></>);
 }
 
-export const revalidate = false;
+export const revalidate = 3600;

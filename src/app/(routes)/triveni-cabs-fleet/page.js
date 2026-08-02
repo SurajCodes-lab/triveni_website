@@ -1,4 +1,6 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
 
 export const revalidate = 3600;
 
@@ -43,7 +45,41 @@ export default function FleetPage() {
     "name": "Triveni Cabs Fleet — Premium Vehicles for Every Journey",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...getRatingAndReviews(slug, 'city')
+  };
+  const articleSchema = getArticleSchema({
+    slug,
+    headline: 'Triveni Cabs Fleet: Sedans, SUVs & Tempo Travellers',
+    description: pageDesc,
+    image: '/images/citypage_hero_section_image.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+  const speakableSchema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `https://www.trivenicabs.in/${slug}#webpage`, "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']) };
+  // ItemList of fleet vehicle classes as Product entities for rich-result eligibility.
+  const fleetVehicles = [
+    { name: 'AC Sedan (Swift Dzire / Toyota Etios)', desc: 'Comfortable 4-seater sedans for couples, solo travellers and small families.', price: '9' },
+    { name: 'AC SUV (Maruti Ertiga / Toyota Innova)', desc: 'Spacious 6-7 seater SUVs for families and group travel with ample luggage space.', price: '12' },
+    { name: 'Toyota Innova Crysta', desc: 'Premium SUV with luxury interiors and superior comfort for long outstation trips.', price: '16' },
+    { name: 'Tempo Traveller (12-26 seater)', desc: 'Group transport with pushback seats, AC and music system for tours and weddings.', price: '18' },
+  ];
+  const fleetItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Triveni Cabs Vehicle Fleet",
+    "description": "Sedans, SUVs, Innova Crysta and Tempo Travellers available for hire across North India.",
+    "numberOfItems": fleetVehicles.length,
+    "itemListElement": fleetVehicles.map((v, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Product",
+        "name": v.name,
+        "description": v.desc,
+        "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+        "offers": { "@type": "Offer", "priceCurrency": "INR", "price": v.price, "availability": "https://schema.org/InStock" },
+        ...getRatingAndReviews(`${slug}-${i}`, 'city')
+      }
+    }))
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -60,6 +96,9 @@ export default function FleetPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(fleetItemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TrustPageClient

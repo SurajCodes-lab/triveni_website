@@ -11,10 +11,10 @@ import {
 } from "@/components/ui/icons";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { phoneNumber } from "@/utilis/data";
-import MobileStickyBar from "@/components/ui/MobileStickyBar";
 import LiveActivityBadge from "@/components/shared/LiveActivityBadge";
 import GoogleReviewsBadge from "@/components/shared/GoogleReviewsBadge";
 import { trackWhatsAppClick, trackPhoneCall } from "@/utilis/analytics";
+import { SetStickyCta } from "@/components/ui/StickyCtaContext";
 
 /* ═══════════════════════════════════════════════════════
    DATA
@@ -26,9 +26,16 @@ const SERVICE_CATEGORIES = [
   { name: "Sightseeing Tours", desc: "Guided city tours across India", icon: Compass, image: "/images/sightseeing/Sightseeingpage_hero_section_image.jpg", href: "/sightseeing", gradient: "from-emerald-500 to-teal-600", accent: "#059669", count: "6 tours", price: "\u20B92,500+" },
   { name: "Same-Day Tours", desc: "Explore & return the same day", icon: Sunrise, image: "/images/sightseeing/Agra/Taj_mahal.jpg", href: "/same-day-agra-tour-from-delhi", gradient: "from-amber-500 to-orange-600", accent: "#d97706", count: "6 tours", price: "\u20B94,500+" },
   { name: "Tempo Traveller", desc: "12-26 seater for group trips", icon: Bus, image: "/images/tempo/17_seater.jpg", href: "/tempo-traveller", gradient: "from-orange-500 to-red-600", accent: "#ea580c", count: "4 options", price: "\u20B920/km" },
-  { name: "Trip Planning", desc: "Honeymoon, family & friends trips", icon: Map, image: "/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg", href: "/tour-package/golden-triangle-tour", gradient: "from-violet-500 to-purple-600", accent: "#7c3aed", count: "6 packages", price: "\u20B98,000+" },
+  { name: "Trip Planning", desc: "Honeymoon, family & friends trips", icon: Map, image: "/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg", href: "/tour-package", gradient: "from-violet-500 to-purple-600", accent: "#7c3aed", count: "6 packages", price: "\u20B98,000+" },
   { name: "Corporate Travel", desc: "Professional employee transport", icon: Building2, image: "/images/car/premium_suv.jpg", href: "/corporate-transportation-service", gradient: "from-sky-500 to-indigo-600", accent: "#0284c7", count: "Custom plans", price: "Custom" },
   { name: "Specialty Services", desc: "Women safety, pet-friendly & more", icon: ShieldCheck, image: "/images/car/swift_dzire.jpg", href: "/women-safety-cab-service", gradient: "from-teal-500 to-emerald-600", accent: "#0d9488", count: "5 services", price: "\u20B911/km" },
+  // \u2500\u2500 Major service lines that were missing from this page \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+  { name: "One-Way Cab", desc: "Pay one side only \u2014 no return charge", icon: Navigation, image: "/images/car/swift_dzire.jpg", href: "/one-way-cab", gradient: "from-amber-500 to-yellow-600", accent: "#d97706", count: "130+ routes", price: "\u20B911/km" },
+  { name: "Round Trip Cabs", desc: "Driver stays with you, return included", icon: Route, image: "/images/car/ertiga.jpg", href: "/round-trip", gradient: "from-indigo-500 to-violet-600", accent: "#6366f1", count: "50+ routes", price: "\u20B911/km" },
+  { name: "Bus Hire", desc: "22-56 seater AC coaches for big groups", icon: Bus, image: "/images/bus/27_SEATER_BUS.jpg", href: "/bus-routes", gradient: "from-rose-500 to-red-600", accent: "#e11d48", count: "22-56 seater", price: "\u20B930/km" },
+  { name: "Cab Rentals", desc: "Half-day, full-day, multi-day & monthly", icon: Clock, image: "/images/car/innova_crysta.jpg", href: "/full-day-cab-rental", gradient: "from-lime-500 to-emerald-600", accent: "#65a30d", count: "4 packages", price: "\u20B911/km" },
+  { name: "Event Transport", desc: "Guest shuttles for events & functions", icon: Sparkles, image: "/images/bus/35_SEATER_BUS.jpg", href: "/event-transportation-service", gradient: "from-fuchsia-500 to-purple-600", accent: "#c026d3", count: "Custom fleet", price: "Custom" },
+  { name: "Railway Station Taxi", desc: "Station pickup & drop, train-time tracked", icon: MapPin, image: "/images/car/swift_dzire.jpg", href: "/railway-station-taxi", gradient: "from-slate-500 to-slate-700", accent: "#475569", count: "Major stations", price: "\u20B911/km" },
 ];
 
 const POPULAR_SERVICES = [
@@ -57,6 +64,11 @@ const COMPARISON_GUIDES = [
   { title: "Rishikesh vs Manali", href: "/rishikesh-vs-manali", icon: Mountain },
   { title: "Kashmir vs Ladakh", href: "/kashmir-vs-ladakh", icon: Compass },
   { title: "Jaipur vs Udaipur", href: "/jaipur-vs-udaipur", icon: MapPin },
+  // Planning tools & hubs that had no entry point from this page
+  { title: "Distance Calculator", href: "/distance", icon: Navigation },
+  { title: "Toll Cost Guide", href: "/toll-cost", icon: Route },
+  { title: "Our Fleet", href: "/vehicles", icon: Car },
+  { title: "Tours with Guide", href: "/tours-with-guide", icon: Compass },
 ];
 
 const TOP_CITIES = [
@@ -925,12 +937,16 @@ function CitiesCTASection() {
 export default function ServicesClient() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8faff] via-white to-[#f8faff] text-gray-900">
+      <SetStickyCta
+        price="₹11/km"
+        label="All Cab Services"
+        whatsappText="Hello! I'm interested in booking. Please share a quote."
+      />
       <HeroSection />
       <ServiceCategoriesSection />
       <PopularServicesSection />
       <TrustSection />
       <CitiesCTASection />
-      <MobileStickyBar />
     </div>
   );
 }

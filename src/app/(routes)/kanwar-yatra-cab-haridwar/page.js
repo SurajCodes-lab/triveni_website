@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Droplets } from '@/components/ui/icons';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Kanwar Yatra Cab to Haridwar 2026 | AC Vehicle from ₹4,000 | Safe Transport',
+  title: 'Kanwar Yatra Cab to Haridwar 2026 | AC Vehicle ₹4,000',
   description: 'Book Kanwar Yatra cab to Haridwar from Delhi, Noida, Ghaziabad. AC sedan, SUV, Tempo Traveller. Safe transport for Kanwariyas. Group discounts. Call 7668570551.',
+  keywords: 'kanwar yatra cab haridwar, kanwar cab service, kanwar taxi, kanwar transport, book cab kanwar, book cab online, taxi service india, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -31,14 +33,16 @@ export default function KanwarYatraCabHaridwar() {
   const serviceSchema = {
     "@context": "https://schema.org", "@type": "Service",
     "serviceType": "Kanwar Yatra Transport Service",
-    "name": "Kanwar Yatra Cab to Haridwar",
+    "name": "Kanwar Yatra Cab to Haridwar — Triveni Cabs",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": "Specialized transport service for Kanwar Yatra from Delhi, Noida, Ghaziabad to Haridwar. AC vehicles, Tempo Travellers, and group buses available.",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@type": "LocalBusiness", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": [
       { "@type": "City", "name": "Delhi" },
       { "@type": "City", "name": "Noida" },
       { "@type": "City", "name": "Ghaziabad" }
-    ]
+    ],
+    ...getRatingAndReviews('kanwar-yatra-cab-haridwar', 'yatra')
   };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },

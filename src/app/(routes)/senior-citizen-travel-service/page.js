@@ -4,8 +4,8 @@ import SpecialTransportClient from '@/components/special/SpecialTransportClient'
 const service = getSpecialTransportBySlug('senior-citizen-travel-service');
 
 export const metadata = {
-  title: 'Senior Citizen Travel Service | Elderly-Friendly Cabs | Triveni Cabs',
-  description: 'Book senior citizen cab service. Patient drivers, gentle driving, door-to-door assistance. Sedan from Rs 12/km. Regular packages for temple visits. Call 7668570551.',
+  title: 'Senior Citizen Travel Service | Elderly-Friendly Cabs',
+  description: 'Book senior citizen cab service. Patient drivers, gentle driving, door-to-door assistance. Sedan from Rs 12/km. Regular packages for temple visits.',
   keywords: 'senior citizen cab, elderly cab service, senior citizen travel, elderly transport, old age cab, senior citizen taxi, elderly friendly cab, senior citizen car service',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function SeniorCitizenTravelPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Senior Citizen Travel Service", "name": "Senior Citizen Travel Service - Elderly-Friendly Cabs", "description": "Cab service designed for senior citizens with patient drivers, gentle driving, and door-to-door assistance.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

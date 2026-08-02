@@ -135,8 +135,8 @@ export const corporateTransportBlogs = [
     ],
     featured: true,
     views: 2150,
-    metaTitle: "Ultimate Guide to Corporate Transportation Services in India 2026 | Triveni Cabs",
-    metaDescription: "Complete guide to corporate transportation in India. Learn about employee transport, executive car rental, fleet management, and how to choose the right corporate cab partner. Call 7668570551."
+    metaTitle: "Ultimate Guide to Corporate Transportation Services in India 2026",
+    metaDescription: "Complete guide to corporate transportation in India. Learn about employee transport, executive car rental, fleet management."
   },
   {
     id: 502,
@@ -282,8 +282,8 @@ export const corporateTransportBlogs = [
     ],
     featured: true,
     views: 1890,
-    metaTitle: "Wedding Transportation: Complete Planning Guide for Your Big Day | Triveni Cabs",
-    metaDescription: "Plan perfect wedding transportation with our guide. Baraat cars, guest shuttles, destination wedding transport. Professional service across Delhi, Jaipur, Udaipur. Call 7668570551."
+    metaTitle: "Wedding Transportation: Complete Planning Guide for Your Big Day",
+    metaDescription: "Plan perfect wedding transportation with our guide. Baraat cars, guest shuttles, destination wedding transport."
   },
   {
     id: 503,
@@ -419,8 +419,8 @@ export const corporateTransportBlogs = [
     ],
     featured: false,
     views: 1650,
-    metaTitle: "Employee Transport Solutions: Why Companies Are Switching to Dedicated Services | Triveni Cabs",
-    metaDescription: "Learn why leading companies prefer dedicated employee transport over aggregators. Cost savings, better safety, GST compliance, and improved employee satisfaction. Call 7668570551."
+    metaTitle: "Employee Transport Solutions: Why Companies Are Switching",
+    metaDescription: "Learn why leading companies prefer dedicated employee transport over aggregators. Cost savings, better safety, GST compliance."
   },
   {
     id: 504,
@@ -553,8 +553,8 @@ export const corporateTransportBlogs = [
     ],
     featured: true,
     views: 2340,
-    metaTitle: "Corporate Cab vs Ola Uber: Detailed Comparison for Businesses 2026 | Triveni Cabs",
-    metaDescription: "Compare corporate cab services with Ola and Uber for business use. Learn about pricing, reliability, safety, GST compliance, and why dedicated transport saves 15-25%. Call 7668570551."
+    metaTitle: "Corporate Cab vs Ola Uber: Detailed Comparison for",
+    metaDescription: "Compare corporate cab services with Ola and Uber for business use. Learn about pricing, reliability, safety, GST compliance."
   },
   {
     id: 505,
@@ -687,8 +687,8 @@ export const corporateTransportBlogs = [
     ],
     featured: false,
     views: 1420,
-    metaTitle: "Event Transportation Planning: Complete Guide for Organizers 2026 | Triveni Cabs",
-    metaDescription: "Master event transportation with our complete guide. Corporate conferences, festivals, weddings - learn planning, execution, and management. Call 7668570551 for event transport quotes."
+    metaTitle: "Event Transportation Planning: Complete Guide for Organizers 2026",
+    metaDescription: "Master event transportation with our complete guide. Corporate conferences, festivals, weddings - learn planning, execution, and management."
   },
   {
     id: 506,
@@ -743,7 +743,7 @@ export const corporateTransportBlogs = [
         <p>Night shift routes need different optimization than day routes. While traffic is minimal, safety considerations become paramount. Well-lit, populated routes are preferred over shortcuts through isolated areas. Female employees should be dropped in optimal sequence – either first (minimizing their time alone in the vehicle) or with attention to ensuring other passengers remain until their drop.</p>
 
         <h3>Zone-Based Planning</h3>
-        <p>Organize routes by zones based on employee residential clusters. Each zone should have vehicles allocated based on headcount and geographic spread. This zoning reduces travel time and allows focused route management. For cities like Delhi NCR where employees might live across Noida, Gurgaon, and Delhi, zone-based planning is essential. Learn more about our <a href="/corporate-transportation-service/city/noida">Noida corporate transport</a> and <a href="/corporate-transportation-service/city/gurgaon">Gurgaon corporate transport</a> services.</p>
+        <p>Organize routes by zones based on employee residential clusters. Each zone should have vehicles allocated based on headcount and geographic spread. This zoning reduces travel time and allows focused route management. For cities like Delhi NCR where employees might live across Noida, Gurgaon, and Delhi, zone-based planning is essential. Learn more about our <a href="/corporate-transportation-service/noida">Noida corporate transport</a> and <a href="/corporate-transportation-service/gurgaon">Gurgaon corporate transport</a> services.</p>
 
         <h3>Schedule Flexibility</h3>
         <p>Night shifts don't always end on time. Projects run late, calls extend, and sudden overtime happens. Transport services should accommodate reasonable delays without leaving employees stranded. Shift managers should have clear communication channels with transport coordinators for schedule adjustments.</p>
@@ -813,8 +813,8 @@ export const corporateTransportBlogs = [
     ],
     featured: false,
     views: 1870,
-    metaTitle: "Night Shift Transport Solutions for IT and BPO Companies 2026 | Triveni Cabs",
-    metaDescription: "Ensure safe night shift transportation for employees. GPS tracking, verified drivers, security guards, emergency systems. Specialized BPO and IT transport solutions. Call 7668570551."
+    metaTitle: "Night Shift Transport Solutions for IT and BPO Companies 2026",
+    metaDescription: "Ensure safe night shift transportation for employees. GPS tracking, verified drivers, security guards, emergency systems."
   },
   {
     id: 507,
@@ -844,7 +844,7 @@ export const corporateTransportBlogs = [
         <p>The passenger profile also shapes requirements. C-suite executives expect luxury vehicles and premium service. Visiting clients need impressive yet comfortable transfers. Employee groups might travel together, requiring larger vehicles. International visitors may need assistance with luggage and local orientation.</p>
 
         <h3>Major Indian Airport Considerations</h3>
-        <p>Each major Indian airport has specific characteristics affecting transfers. Delhi IGI Airport is India's busiest, with domestic terminals (T1, T2, T3) and international operations (T3). Traffic to central Delhi varies dramatically by time – 30 minutes at night, 90+ minutes during rush hours. For <a href="/corporate-transportation-service/city/delhi">Delhi airport transfers</a>, precise timing and traffic awareness are crucial.</p>
+        <p>Each major Indian airport has specific characteristics affecting transfers. Delhi IGI Airport is India's busiest, with domestic terminals (T1, T2, T3) and international operations (T3). Traffic to central Delhi varies dramatically by time – 30 minutes at night, 90+ minutes during rush hours. For <a href="/corporate-transportation-service/delhi">Delhi airport transfers</a>, precise timing and traffic awareness are crucial.</p>
 
         <p>Mumbai CSIA serves both domestic (T1) and international (T2) passengers. Bangalore KIA is relatively distant from the city center – about 40 km from most business districts. Each metro has unique traffic patterns requiring local expertise.</p>
 
@@ -926,8 +926,8 @@ export const corporateTransportBlogs = [
     ],
     featured: false,
     views: 1560,
-    metaTitle: "Airport Corporate Transfer: Executive Travel Guide 2026 | Triveni Cabs",
-    metaDescription: "Ensure punctual executive airport transfers with flight tracking, meet-and-greet, premium vehicles. Professional corporate airport service across India. Call 7668570551."
+    metaTitle: "Airport Corporate Transfer: Executive Travel Guide 2026",
+    metaDescription: "Ensure punctual executive airport transfers with flight tracking, meet-and-greet, premium vehicles. Professional corporate airport service across India."
   },
   {
     id: 508,
@@ -1030,7 +1030,7 @@ export const corporateTransportBlogs = [
     ],
     featured: false,
     views: 1320,
-    metaTitle: "Fleet Management Solutions for Modern Businesses 2026 | Triveni Cabs",
+    metaTitle: "Fleet Management Solutions for Modern Businesses 2026",
     metaDescription: "Comprehensive fleet management for corporate transportation. Vehicle allocation, driver management, GPS tracking, maintenance scheduling. Call 7668570551."
   },
   {
@@ -1089,7 +1089,7 @@ export const corporateTransportBlogs = [
         <h2>Case Study: IT Company Transformation</h2>
         <p>Consider a typical IT company with 500 employees across Noida offices. Before optimization, they used a mix of reimbursements and aggregator services costing approximately ₹18 lakhs monthly.</p>
 
-        <p>After switching to dedicated <a href="/corporate-transportation-service/city/noida">corporate transport service in Noida</a>, monthly costs reduced to ₹14 lakhs – a 22% reduction. Employee satisfaction improved significantly. For night shift requirements, they implemented solutions from our <a href="/blog/night-shift-transport-solutions-it-bpo">night shift transport guide</a>.</p>
+        <p>After switching to dedicated <a href="/corporate-transportation-service/noida">corporate transport service in Noida</a>, monthly costs reduced to ₹14 lakhs – a 22% reduction. Employee satisfaction improved significantly. For night shift requirements, they implemented solutions from our <a href="/blog/night-shift-transport-solutions-it-bpo">night shift transport guide</a>.</p>
 
         <h2>Measuring Transportation ROI</h2>
 
@@ -1131,7 +1131,7 @@ export const corporateTransportBlogs = [
     ],
     featured: true,
     views: 1780,
-    metaTitle: "How Corporate Transportation Reduces Operational Costs | Triveni Cabs",
+    metaTitle: "How Corporate Transportation Reduces Operational Costs",
     metaDescription: "Proven strategies for reducing corporate transportation costs by 15-25%. Route optimization, GST benefits, volume discounts. Call 7668570551."
   },
   {
@@ -1250,7 +1250,7 @@ export const corporateTransportBlogs = [
     ],
     featured: false,
     views: 1450,
-    metaTitle: "Choosing the Right Corporate Cab Partner: Key Factors | Triveni Cabs",
+    metaTitle: "Choosing the Right Corporate Cab Partner: Key Factors",
     metaDescription: "Select the best corporate transportation partner. Evaluate fleet quality, driver standards, technology, safety, pricing. Call 7668570551."
   }
 ];

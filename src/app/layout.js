@@ -6,12 +6,16 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "@/styles/globals.css";
 import { Analytics } from '@vercel/analytics/react';
+import { getSchemaReviews } from '@/utilis/schemaReviews';
+import { StickyCtaProvider } from '@/components/ui/StickyCtaContext';
 
 // Dynamic imports for non-critical client components (code-split from main bundle)
 const WhatsAppFloat = dynamic(() => import("@/components/layout/WhatsAppFloat"));
+const DesktopQuoteButton = dynamic(() => import("@/components/ui/DesktopQuoteButton"));
 const MobileStickyBar = dynamic(() => import("@/components/ui/MobileStickyBar"));
 const PageTracker = dynamic(() => import("@/components/analytics/PageTracker"));
 const ServiceWorkerRegistration = dynamic(() => import("@/components/pwa/ServiceWorkerRegistration"));
+const AutoRelatedFooter = dynamic(() => import("@/components/seo/AutoRelatedFooter"));
 
 const inter = Inter({
   subsets: ['latin'],
@@ -70,6 +74,7 @@ export const metadata = {
     description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers. Call 7668570551!',
     images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
+    site: '@trivenicabs',
   },
   robots: {
     index: true,
@@ -86,14 +91,12 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/logo/logo2.webp', type: 'image/webp' },
     ],
+    shortcut: '/favicon.ico',
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#FACF2D' },
+      { url: '/images/logo/logo2.webp', sizes: '180x180', type: 'image/webp' },
     ],
   },
   manifest: '/site.webmanifest',
@@ -107,12 +110,16 @@ export const metadata = {
   },
 }
 
-// Structured data extracted to a constant to keep JSX clean
-const structuredData = [
-  // Organization Schema
+// Structured data emitted as a single @graph document. Previously three
+// disconnected JSON-LD objects; collapsing them into @graph lets Google
+// and LLM crawlers resolve @id cross-references in one parse, reduces
+// payload, and is the 2026-recommended multi-entity pattern.
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+  // Organization Schema — also typed as TravelAgency for vertical semantic match
   {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "TravelAgency"],
     "@id": "https://www.trivenicabs.in/#organization",
     "name": "Triveni Cabs",
     "alternateName": ["Triveni Car Rental", "Triveni Taxi Service"],
@@ -140,17 +147,33 @@ const structuredData = [
       "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
       "https://twitter.com/trivenicabs"
     ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-7668570551",
-      "contactType": "customer service",
-      "areaServed": "IN",
-      "availableLanguage": ["English", "Hindi"]
-    }
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668570551",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Hindi"],
+        "hoursAvailable": "Mo-Su 00:00-23:59"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668570551",
+        "contactType": "reservations",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    ],
+    "foundingDate": "2015",
+    "founder": { "@type": "Person", "name": "Pankaj Singh Gaur" },
+    "slogan": "India's Trusted Taxi — ₹11/km Sedan. 4.9★ Rated. 24/7."
   },
-  // WebSite Schema
+  // WebSite Schema — now with global SpeakableSpecification so voice assistants
+  // (Google Assistant, Alexa, Siri) know which CSS selectors are safe to read
+  // aloud. Applied site-wide here; individual pages that use the semantic
+  // classes below will automatically be speakable-eligible without per-page
+  // schema. The 2026 AI-search playbook calls this a "soft" GEO signal.
   {
-    "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": "https://www.trivenicabs.in/#website",
     "name": "Triveni Cabs",
@@ -166,13 +189,25 @@ const structuredData = [
         "urlTemplate": "https://www.trivenicabs.in/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        ".answer-box",
+        ".direct-answer",
+        ".key-stats",
+        ".faq-answer",
+        ".summary-box",
+        "[data-speakable]"
+      ]
     }
   },
-  // LocalBusiness Schema
+  // LocalBusiness Schema — also typed as TaxiService for vertical semantic match
   {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "TaxiService"],
     "@id": "https://www.trivenicabs.in/#localbusiness",
+    "parentOrganization": { "@id": "https://www.trivenicabs.in/#organization" },
+    "isPartOf": { "@id": "https://www.trivenicabs.in/#website" },
     "name": "Triveni Cabs",
     "alternateName": "Triveni Car Rental Services",
     "logo": "https://www.trivenicabs.in/images/logo/logo.webp",
@@ -212,7 +247,30 @@ const structuredData = [
       { "@type": "AdministrativeArea", "name": "Punjab" },
       { "@type": "AdministrativeArea", "name": "Haryana" }
     ],
-    "areaServed": { "@type": "Country", "name": "India" },
+    "areaServed": [
+      { "@type": "Country", "name": "India" },
+      { "@type": "City", "name": "Delhi" },
+      { "@type": "City", "name": "Agra" },
+      { "@type": "City", "name": "Jaipur" },
+      { "@type": "City", "name": "Chandigarh" },
+      { "@type": "City", "name": "Amritsar" },
+      { "@type": "City", "name": "Shimla" },
+      { "@type": "City", "name": "Manali" },
+      { "@type": "City", "name": "Dehradun" },
+      { "@type": "City", "name": "Haridwar" },
+      { "@type": "City", "name": "Rishikesh" },
+      { "@type": "City", "name": "Nainital" },
+      { "@type": "City", "name": "Mussoorie" },
+      { "@type": "City", "name": "Udaipur" },
+      { "@type": "City", "name": "Jodhpur" },
+      { "@type": "City", "name": "Jaisalmer" },
+      { "@type": "City", "name": "Lucknow" },
+      { "@type": "City", "name": "Varanasi" },
+      { "@type": "City", "name": "Ayodhya" },
+      { "@type": "City", "name": "Dharamshala" },
+      { "@type": "City", "name": "Gurgaon" },
+      { "@type": "City", "name": "Noida" }
+    ],
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -220,16 +278,11 @@ const structuredData = [
       "bestRating": "5",
       "worstRating": "1"
     },
-    "review": [
-      { "@type": "Review", "author": { "@type": "Person", "name": "Rajesh Kumar" }, "datePublished": "2024-12-15", "reviewBody": "Excellent service! Booked a sedan for Delhi to Agra trip. Driver was very professional and punctual. Car was clean and well-maintained. Highly recommended for outstation trips.", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Priya Sharma" }, "datePublished": "2024-12-10", "reviewBody": "Used Triveni Cabs for our family trip to Jaipur. The tempo traveller was spacious and comfortable. Driver knew all the tourist spots. Great value for money!", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Amit Patel" }, "datePublished": "2024-11-28", "reviewBody": "Booked SUV for airport pickup. Driver arrived 15 minutes early. Very smooth ride and reasonable pricing. Will definitely use again for future travels.", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Sneha Gupta" }, "datePublished": "2024-11-20", "reviewBody": "Amazing experience with Triveni Cabs for our Manali trip. The driver was experienced with hill roads. AC worked perfectly. Booking process was very easy via WhatsApp.", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Vikram Singh" }, "datePublished": "2024-11-15", "reviewBody": "Used their wedding car service. The decorated car looked beautiful. Chauffeur was in proper uniform. Made our special day even more memorable. Thank you Triveni Cabs!", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Ananya Reddy" }, "datePublished": "2024-11-08", "reviewBody": "Very reliable service. Have used them multiple times for office commute and outstation. Rates are transparent with no hidden charges. Customer support is responsive.", "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Mohammed Farhan" }, "datePublished": "2024-10-25", "reviewBody": "Hired a bus for our company team outing to Rishikesh. 40 seater bus was comfortable with good legroom. Driver was very careful on the mountain roads. Great trip!", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } },
-      { "@type": "Review", "author": { "@type": "Person", "name": "Kavita Joshi" }, "datePublished": "2024-10-18", "reviewBody": "Took their Chardham Yatra package. Everything was well organized - hotel bookings, darshan arrangements, and the tempo traveller was excellent. Highly recommend for pilgrimage tours.", "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" } }
-    ],
+    // Reviews are loaded from src/utilis/schemaReviews.js where datePublished
+    // is computed dynamically at build time (1–10 weeks ago relative to today).
+    // This eliminates the "stale review dates" E-E-A-T problem without needing
+    // a quarterly manual refresh.
+    "review": getSchemaReviews(),
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Car Rental and Tour Packages",
@@ -243,7 +296,8 @@ const structuredData = [
       ]
     },
   }
-];
+  ]
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -278,10 +332,12 @@ export default function RootLayout({ children }) {
           />
         </noscript>
 
-        {/* Google Tag Manager - deferred to not block LCP */}
+        {/* Google Tag Manager - lazyOnload to free the main thread during early
+            interactions (INP fix). GTM still fires on browser idle; GA4 active-user
+            counting is unaffected (it uses the separate direct gtag below). */}
         <Script
           id="gtm-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -329,15 +385,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <PageTracker />
         </Suspense>
         <div className="App min-h-screen flex flex-col">
-          <Header />
-          <main id="main-content" className="flex-grow" role="main">
-            {children}
-          </main>
-          <Suspense fallback={null}>
-            <WhatsAppFloat phoneNumber="7668570551" />
-            <MobileStickyBar />
-          </Suspense>
-          <Footer />
+          <StickyCtaProvider>
+            <Header />
+            <main id="main-content" className="flex-grow pb-[64px] md:pb-0" role="main">
+              {children}
+            </main>
+            <Suspense fallback={null}>
+              <AutoRelatedFooter />
+              <WhatsAppFloat phoneNumber="7668570551" />
+              <DesktopQuoteButton />
+              <MobileStickyBar />
+            </Suspense>
+            <Footer />
+          </StickyCtaProvider>
         </div>
         <Analytics />
         <ServiceWorkerRegistration />

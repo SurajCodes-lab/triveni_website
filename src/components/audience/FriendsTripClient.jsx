@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, ChevronDown, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Mountain, Tent, Flame, Music, Compass, HelpCircle, Zap, UsersRound, Route } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function FriendsTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -13,8 +15,17 @@ export default function FriendsTripClient({ data }) {
   // Bachelor page has a special "topDestinations" section
   const isBachelor = !!data.topDestinations;
 
+  const tripName = isBachelor ? 'Bachelor Trip North India' : `Friends Trip to ${data.destination}`;
+  const perPersonPrice = (data.price.perPerson17 || data.price.perPerson27 || 815).toLocaleString();
+  const stickyWhatsappText = `Hi, I'd like to plan a ${tripName.toLowerCase()} for my group. Please share Tempo Traveller package details and best rates.`;
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <SetStickyCta
+        price={`Rs ${perPersonPrice}/person`}
+        label={tripName}
+        whatsappText={stickyWhatsappText}
+      />
       <style jsx>{`
         @keyframes shimmer {
           0% { background-position: -200% center; }
@@ -167,14 +178,17 @@ export default function FriendsTripClient({ data }) {
           </div>
 
           {/* H1 with shimmer */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1] tracking-tight">
+          <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1] tracking-tight">
             {isBachelor
               ? <><span className="shimmer-gold">Bachelor Trip</span><br /><span className="text-white/90">North India Adventures</span></>
               : <><span className="text-white/90">Friends Trip to</span><br /><span className="shimmer-gold">{data.destination}</span></>
             }
           </h1>
 
-          <p className="text-lg sm:text-xl text-amber-100/80 mb-10 max-w-3xl leading-relaxed">
+          <p className="speakable-lead text-lg sm:text-xl text-amber-100/80 mb-4 max-w-3xl leading-relaxed">
+            A friends trip to {data.destination} from Delhi by Tempo Traveller starts at around Rs {(data.price.perPerson17 || data.price.perPerson12 || 0).toLocaleString()} per person (12-17 seater AC). The full {data.vehicle.type} Tempo Traveller is Rs {(data.price.tempo12 || 0).toLocaleString()} to Rs {(data.price.tempo17 || 0).toLocaleString()}, all-inclusive of toll, parking and driver allowance, with a music system, reclining seats and luggage space for the whole gang.
+          </p>
+          <p className="text-base text-amber-100/65 mb-10 max-w-3xl leading-relaxed">
             {data.tagline}. {data.vehicle.type} Tempo Traveller with music system, reclining seats, and space for your entire gang.
           </p>
 
@@ -203,24 +217,40 @@ export default function FriendsTripClient({ data }) {
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              onClick={() => trackPhoneCall('friends_trip')} href={`tel:${phoneNumber}`}
-              className="group relative inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-amber-600/25 hover:shadow-amber-500/40 hover:scale-[1.02]"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
-              <Phone className="w-5 h-5 relative" />
-              <span className="relative">Call Now - {phoneNumber}</span>
-            </a>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-green-600/90 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-green-500/25 backdrop-blur-sm border border-green-500/20 hover:scale-[1.02]"
-            >
-              WhatsApp Group Booking
-            </a>
+          {/* CTA + Lead Capture */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  onClick={() => trackPhoneCall('friends_trip_hero')} href={`tel:${phoneNumber}`}
+                  className="group relative inline-flex items-center justify-center gap-2.5 min-h-[52px] bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-amber-600/25 hover:shadow-amber-500/40 hover:scale-[1.02]"
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
+                  <Phone className="w-5 h-5 relative" />
+                  <span className="relative">Call Now - {phoneNumber}</span>
+                </a>
+                <a
+                  onClick={() => trackWhatsAppClick('friends_trip_hero', stickyWhatsappText)}
+                  href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2.5 min-h-[52px] bg-green-600/90 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-green-500/25 backdrop-blur-sm border border-green-500/20 hover:scale-[1.02]"
+                >
+                  WhatsApp Group Booking
+                </a>
+              </div>
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-amber-100/80">
+                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400 fill-current" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-amber-400" /> 10,000+ trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-amber-400" /> Verified drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-amber-400" /> No advance payment</span>
+                <span className="flex items-center gap-1.5"><Route className="w-4 h-4 text-amber-400" /> Customizable itinerary</span>
+              </div>
+            </div>
+            <div className="lg:justify-self-end w-full">
+              <QuickEnquiryForm fromCity="Delhi" toCity={data.destination || 'North India'} pageType="route" />
+            </div>
           </div>
         </div>
       </section>
@@ -731,7 +761,7 @@ export default function FriendsTripClient({ data }) {
                   }`}
                   style={{ overflow: 'hidden' }}
                 >
-                  <div className="px-6 pb-6 pl-[5.5rem] text-amber-100/70 leading-relaxed">
+                  <div className={`px-6 pb-6 pl-[5.5rem] text-amber-100/70 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>
                     {faq.answer}
                   </div>
                 </div>
@@ -835,7 +865,7 @@ export default function FriendsTripClient({ data }) {
 
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              onClick={() => trackPhoneCall('friends_trip')} href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('friends_trip_footer')} href={`tel:${phoneNumber}`}
               className="group relative inline-flex items-center gap-3 bg-white text-amber-700 px-10 py-5 rounded-2xl font-black text-lg hover:bg-amber-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:scale-[1.03]"
             >
               <div className="absolute inset-0 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.3)] opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -843,7 +873,8 @@ export default function FriendsTripClient({ data }) {
               <span className="relative">Call {phoneNumber}</span>
             </a>
             <a
-              href={whatsappLink}
+              onClick={() => trackWhatsAppClick('friends_trip_footer', stickyWhatsappText)}
+              href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-10 py-5 rounded-2xl font-black text-lg transition-all duration-300 shadow-2xl hover:shadow-green-500/30 hover:scale-[1.03] border border-green-500/30"

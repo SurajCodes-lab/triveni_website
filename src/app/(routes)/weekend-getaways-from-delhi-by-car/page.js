@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = 'weekend-getaways-from-delhi-by-car';
+
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Top 20 Weekend Getaways from Delhi by Car 2026 | Triveni Cabs',
-  description: 'Best weekend trips from Delhi by car in 2026. Distance, drive time, costs & itineraries for Agra, Jaipur, Rishikesh, Mussoorie & 16 more. Book AC cab from ₹9/km. Call 7668570551.',
+  description: 'Best weekend trips from Delhi by car in 2026. Distance, drive time, costs & itineraries for Agra, Jaipur, Rishikesh, Mussoorie & 16 more.',
   keywords: 'weekend trips from delhi by car 2026, weekend getaways from delhi, short trips from delhi, road trips from delhi, weekend destinations near delhi, places to visit near delhi by car',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -57,13 +60,54 @@ const faqData = [
 ];
 
 export default function WeekendGetawaysFromDelhiPage() {
-  const serviceSchema = {
+  const tripSchema = {
     "@context": "https://schema.org", "@type": "TouristTrip",
+    "@id": `https://www.trivenicabs.in/${SLUG}#trip`,
     "name": "Weekend Getaways from Delhi by Car",
-    "description": "Top 20 weekend road trip destinations from Delhi with cab service",
+    "description": "Top 20 weekend road trip destinations from Delhi with all-inclusive cab service",
     "touristType": "Weekend Travelers",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" }
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
+    "offers": { "@type": "AggregateOffer", "lowPrice": "1500", "highPrice": "11000", "priceCurrency": "INR" }
   };
+  const serviceSchema = buildStaticService({
+    slug: SLUG,
+    name: 'Weekend Getaway Cab Service from Delhi',
+    description: 'Outstation weekend cab service from Delhi to 20+ destinations. AC sedans from Rs 9/km, SUVs from Rs 12/km, all-inclusive of fuel, toll and driver allowance.',
+    lowPrice: 1500,
+    highPrice: 11000,
+  });
+  const articleSchema = getArticleSchema({
+    slug: SLUG,
+    headline: 'Top 20 Weekend Getaways from Delhi by Car 2026',
+    description: 'Best weekend trips from Delhi by car with distance, drive time, costs and itineraries for 20 destinations.',
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2025-03-01',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
+  });
+  const howToSchema = getHowToSchema({
+    name: 'How to Plan a Weekend Getaway from Delhi by Car',
+    description: 'Step-by-step guide to choosing a weekend destination near Delhi and booking an all-inclusive outstation cab.',
+    totalTime: 'PT5M',
+    estimatedCost: { currency: 'INR', value: 1500 },
+    steps: [
+      { name: 'Pick a destination by drive time', text: 'Choose a quick escape under 3.5 hours (Neemrana, Mathura, Alwar), a medium 3.5-5.5 hour trip (Jaipur, Rishikesh, Jim Corbett) or a longer hill drive (Mussoorie, Shimla, Nainital).' },
+      { name: 'Choose your vehicle', text: 'A sedan suits 2-3 travellers from Rs 9/km; an SUV (Innova/Ertiga) fits families of 4-6 from Rs 12/km; a Tempo Traveller covers groups of 8-12.' },
+      { name: 'Get an all-inclusive quote', text: 'Call or WhatsApp 7668570551 with your destination, dates and group size. Fares include fuel, tolls, parking and driver allowance with no hidden charges.' },
+      { name: 'Confirm and travel', text: 'No advance payment required. Your verified driver reaches your Delhi NCR doorstep at the scheduled time for the weekend trip.' },
+    ],
+  });
+  const comparisonSchema = getComparisonSchema({
+    slug: SLUG,
+    title: 'Quick vs Medium vs Long Weekend Getaways from Delhi',
+    description: 'Comparison of weekend getaway types from Delhi by drive time, ideal traveller and starting cab fare.',
+    rows: [
+      { feature: 'Quick escapes (under 3.5 hrs)' },
+      { feature: 'Medium trips (3.5-5.5 hrs)' },
+      { feature: 'Long hill drives (over 5.5 hrs)' },
+    ],
+    mentions: ['Neemrana', 'Jaipur', 'Rishikesh', 'Mussoorie', 'Shimla', 'Nainital', 'Agra'],
+  });
+  const placeSchemas = buildPlaceSchemas(['agra', 'jaipur', 'rishikesh', 'mussoorie', 'nainital', 'haridwar', 'shimla', 'chandigarh', 'amritsar', 'dehradun'], SLUG, '/images/triveni-cabs-og.jpg');
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     "itemListElement": [
@@ -88,10 +132,19 @@ export default function WeekendGetawaysFromDelhiPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      {placeSchemas.map((s, i) => (
+        <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
 
       <div className="min-h-screen bg-stone-950 text-white">
         {/* Hero - Topographic Adventure Map Style */}
@@ -111,15 +164,15 @@ export default function WeekendGetawaysFromDelhiPage() {
                   <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                   <span className="text-emerald-300 text-sm font-medium tracking-wide uppercase">20 Handpicked Destinations</span>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black mb-6 leading-[0.9] tracking-tight">
+                <h1 className="speakable-headline text-5xl md:text-7xl font-black mb-6 leading-[0.9] tracking-tight">
                   <span className="text-transparent bg-gradient-to-r from-emerald-300 via-teal-200 to-green-300 bg-clip-text">Weekend</span>
                   <br />
                   <span className="text-white">Getaways</span>
                   <br />
                   <span className="text-stone-400 text-4xl md:text-5xl">from Delhi by Car</span>
                 </h1>
-                <p className="text-stone-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed">
-                  Escape the city every weekend. From 1.5-hour drives to 7-hour adventures — your complete destination guide with costs and itineraries.
+                <p className="speakable-lead text-stone-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed">
+                  The best weekend getaways from Delhi by car include Agra (230 km), Jaipur (280 km), Rishikesh (250 km) and Mussoorie (290 km). Triveni Cabs runs all-inclusive outstation cabs from Rs 9/km (sedan) and Rs 12/km (SUV) covering fuel, tolls and driver allowance — from 1.5-hour quick escapes to 7-hour hill adventures.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a href="tel:7668570551" className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40">
@@ -390,7 +443,7 @@ export default function WeekendGetawaysFromDelhiPage() {
                     <ChevronRight className="w-5 h-5 text-emerald-400 group-open:rotate-90 transition-transform duration-300 flex-shrink-0" />
                   </summary>
                   <div className="px-6 pb-6 -mt-2">
-                    <p className="text-stone-400 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-stone-400 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </details>
               ))}

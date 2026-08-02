@@ -147,6 +147,31 @@ export default function QuickEnquiryForm({ fromCity = '', toCity = '', pageType 
     setIsSubmitting(true);
     formStarted.current = false; // Prevent abandonment tracking
 
+    // Persist the lead server-side BEFORE the WhatsApp handoff, so the name +
+    // phone is captured even if the user never completes the WhatsApp send.
+    // Fire-and-forget + keepalive so it survives the tab opening WhatsApp and
+    // never blocks the booking flow.
+    try {
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({
+          type: 'form_lead',
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          date: formData.date,
+          passengers: formData.passengers,
+          flexibleDate,
+          fromCity,
+          toCity,
+          pageType,
+          source: typeof window !== 'undefined' ? window.location.pathname : '',
+        }),
+      }).catch(() => {});
+    } catch { /* never block the WhatsApp handoff */ }
+
     trackFormSubmission('quick_enquiry', {
       serviceType: pageType,
       fromCity,

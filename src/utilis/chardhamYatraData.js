@@ -194,11 +194,11 @@ const allCarOptions = [
 
 // Tempo options for cross-linking
 const tempoOptions = [
-  { name: '12-Seater Tempo', seats: 12, perKm: 23, image: '/images/tempo/12_seater.jpg' },
-  { name: '16-Seater Tempo', seats: 16, perKm: 25, image: '/images/tempo/16_seater.jpg' },
-  { name: '17-Seater Tempo', seats: 17, perKm: 26, image: '/images/tempo/17_seater.jpg' },
-  { name: '20-Seater Tempo', seats: 20, perKm: 27, image: '/images/tempo/20_seater.jpg' },
-  { name: '26-Seater Maharaja', seats: 26, perKm: 26, image: '/images/tempo/26_seater.jpg' },
+  { name: '12-Seater Tempo', seats: 12, perKm: 20, image: '/images/tempo/12_seater.jpg' },
+  { name: '16-Seater Tempo', seats: 16, perKm: 22, image: '/images/tempo/16_seater.jpg' },
+  { name: '17-Seater Tempo', seats: 17, perKm: 24, image: '/images/tempo/17_seater.jpg' },
+  { name: '20-Seater Tempo', seats: 20, perKm: 26, image: '/images/tempo/20_seater.jpg' },
+  { name: '26-Seater Maharaja', seats: 26, perKm: 28, image: '/images/tempo/26_seater.jpg' },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1345,3 +1345,164 @@ export function getRelatedRoutes(slug) {
   if (!route) return [];
   return route.relatedRoutes.map(s => getRouteBySlug(s)).filter(Boolean);
 }
+
+// ===========================================================================
+// 14. DEEP SEO/AEO/GEO CONTENT (added April 2026 — Char Dham deep enhancement)
+// Entity-rich, fact-dense, AI-citation-friendly content arrays. Used by hub
+// and detail clients to lift visible word count to 1,800-2,500+ per page and
+// to capture featured snippets + AI/voice answers.
+// ===========================================================================
+
+// --- 14a. 2026 Opening / Kapat Dates (Akshaya Tritiya / Vaishakh based) ---
+// Authoritative facts LLMs can quote. Dates per Uttarakhand Char Dham Devasthanam
+// Management Board pattern (kapat open late-Apr/early-May, close around Diwali/Nov).
+export const openingDates2026 = [
+  {
+    dham: 'Yamunotri',
+    deity: 'Goddess Yamuna',
+    altitudeM: 3293,
+    altitude: '3,293 m',
+    opening: 'Apr 30, 2026 (Akshaya Tritiya)',
+    closing: 'Nov 2, 2026 (Bhai Dooj)',
+    trek: '5–6 km trek from Janki Chatti (pony/palki available)',
+    river: 'River Yamuna source',
+    base: 'Barkot / Janki Chatti',
+    note: 'Traditional first Dham of the clockwise circuit. Surya Kund hot spring lets pilgrims cook rice as prasad.',
+  },
+  {
+    dham: 'Gangotri',
+    deity: 'Goddess Ganga',
+    altitudeM: 3100,
+    altitude: '3,100 m',
+    opening: 'Apr 30, 2026 (Akshaya Tritiya)',
+    closing: 'Nov 2, 2026 (Annakut / Govardhan Puja)',
+    trek: 'Road access to temple; Gaumukh glacier 18 km trek (optional)',
+    river: 'River Bhagirathi (origin of the Ganga)',
+    base: 'Uttarkashi / Harsil',
+    note: 'White granite temple by the Bhagirathi. The Submerged Shivling is visible in early/late season low water.',
+  },
+  {
+    dham: 'Kedarnath',
+    deity: 'Lord Shiva (Jyotirlinga)',
+    altitudeM: 3583,
+    altitude: '3,583 m',
+    opening: 'May 2, 2026',
+    closing: 'Nov 2026 (Bhai Dooj)',
+    trek: '16 km trek from Gaurikund (or helicopter from Phata/Sersi/Guptkashi)',
+    river: 'River Mandakini',
+    base: 'Guptkashi / Sonprayag / Gaurikund',
+    note: 'Highest of the four Dhams and one of 12 Jyotirlingas. The most physically demanding leg of the yatra.',
+  },
+  {
+    dham: 'Badrinath',
+    deity: 'Lord Vishnu (Badrinarayan)',
+    altitudeM: 3300,
+    altitude: '3,300 m',
+    opening: 'May 4, 2026',
+    closing: 'Nov 2026 (after Vijayadashami announcement)',
+    trek: 'Road access directly to temple (most accessible Dham)',
+    river: 'River Alaknanda',
+    base: 'Joshimath / Pandukeshwar',
+    note: 'Final Dham of the circuit. Tapt Kund hot spring at the entrance; Mana — the last Indian village — is 3 km away.',
+  },
+];
+
+// --- 14b. Do Dham vs Char Dham vs Ek Dham comparison (featured-snippet table) ---
+export const yatraTypeComparison = [
+  { type: 'Ek Dham (Kedarnath)', dhams: 'Kedarnath only', dhamCount: 1, days: '5–6 days', distanceFromDelhi: '~920 km round trip', idealFor: 'Shiva devotees, short on time', fromCost: '₹11,040' },
+  { type: 'Ek Dham (Badrinath)', dhams: 'Badrinath only', dhamCount: 1, days: '5–6 days', distanceFromDelhi: '~1,060 km round trip', idealFor: 'Vishnu devotees, elderly (road access)', fromCost: '₹12,720' },
+  { type: 'Do Dham', dhams: 'Kedarnath + Badrinath', dhamCount: 2, days: '7–8 days', distanceFromDelhi: '~1,400 km round trip', idealFor: 'Most popular balance of time & blessings', fromCost: '₹16,800' },
+  { type: 'Char Dham', dhams: 'Yamunotri + Gangotri + Kedarnath + Badrinath', dhamCount: 4, days: '11–12 days', distanceFromDelhi: '~3,200 km round trip', idealFor: 'Complete moksha circuit, full pilgrimage', fromCost: '₹38,400' },
+];
+
+// --- 14c. Distances & driving-time matrix (key Char Dham legs) ---
+export const distanceMatrix = [
+  { leg: 'Delhi → Haridwar', km: 230, hrs: '5–6 hrs', terrain: 'Plains / expressway' },
+  { leg: 'Haridwar → Barkot', km: 200, hrs: '6–7 hrs', terrain: 'Hill (Mussoorie)' },
+  { leg: 'Barkot → Yamunotri (Janki Chatti) + 5 km trek', km: 40, hrs: '2 hrs drive + trek', terrain: 'Hill + trek' },
+  { leg: 'Barkot → Uttarkashi', km: 100, hrs: '4–5 hrs', terrain: 'Hill' },
+  { leg: 'Uttarkashi → Gangotri', km: 100, hrs: '3–4 hrs', terrain: 'Hill' },
+  { leg: 'Uttarkashi → Guptkashi', km: 220, hrs: '8–9 hrs', terrain: 'Hill (Tehri Dam)' },
+  { leg: 'Guptkashi → Sonprayag + 16 km trek to Kedarnath', km: 30, hrs: '1 hr drive + trek', terrain: 'Hill + steep trek' },
+  { leg: 'Guptkashi → Badrinath', km: 200, hrs: '7–8 hrs', terrain: 'Hill (Chopta, Joshimath)' },
+  { leg: 'Badrinath → Rudraprayag', km: 160, hrs: '5–6 hrs', terrain: 'Hill (5 Prayags)' },
+  { leg: 'Rudraprayag → Haridwar (via Devprayag)', km: 165, hrs: '5–6 hrs', terrain: 'Hill → plains' },
+];
+
+// --- 14d. What's included / excluded (transparent fare clarity for AEO) ---
+export const inclusions = [
+  'Well-maintained AC vehicle for the entire circuit',
+  'Experienced Char Dham hill-route driver (10+ years)',
+  'Fuel for the complete journey',
+  'All toll taxes, state border taxes & green tax',
+  'Driver night allowance & accommodation',
+  '24/7 on-trip coordinator support',
+  'Char Dham registration assistance (no extra charge)',
+];
+export const exclusions = [
+  'Hotel / dharamshala accommodation (we can arrange at discounted rates)',
+  'Meals, snacks & bottled water',
+  'Pony, palki, doli or helicopter charges (Kedarnath/Yamunotri)',
+  'Temple VIP darshan / aarti tickets',
+  'GST (5%) on the total fare',
+  'Personal expenses & shopping',
+  'Anything not explicitly listed under inclusions',
+];
+
+// --- 14e. What to pack / altitude & safety tips ---
+export const packingTips = [
+  { title: 'Warm Layers', desc: 'Even in May–June, temperatures at Kedarnath/Badrinath drop near 0–5°C at night. Carry a heavy jacket, thermals, woollen cap and gloves.' },
+  { title: 'Rain Protection', desc: 'A waterproof poncho/raincoat and trek shoes with grip are essential — mountain weather changes within minutes.' },
+  { title: 'Medicines', desc: 'Carry personal medication, Diamox (consult doctor) for altitude, ORS, painkillers, and a basic first-aid kit. Kedarnath sits at 3,583 m.' },
+  { title: 'Light Trek Gear', desc: 'A small daypack, walking stick, torch and power bank for the 16 km Kedarnath and 5 km Yamunotri treks.' },
+  { title: 'Documents', desc: 'Original photo ID, Char Dham registration QR/slip, and medical fitness certificate for senior citizens.' },
+  { title: 'Cash', desc: 'ATMs and network are unreliable beyond Guptkashi/Uttarkashi — keep enough cash for ponies, prasad and meals.' },
+];
+
+// --- 14f. Registration & biometric steps (HowTo-ready, GEO fact source) ---
+export const registrationSteps = [
+  { name: 'Register online', text: 'Register every pilgrim free on the official Uttarakhand portal (registrationandtouristcare.uk.gov.in) or the Tourist Care Uttarakhand app before travel. Mandatory for all four Dhams in 2026.' },
+  { name: 'Get the Yatra QR/slip', text: 'Download the Char Dham Yatra registration slip with a unique QR code for each traveller. Keep a printout and a phone copy.' },
+  { name: 'Biometric verification', text: 'Complete physical/biometric verification at Haridwar, Rishikesh or Dehradun registration counters before ascending. Our driver guides you to the nearest counter.' },
+  { name: 'Medical fitness (seniors)', text: 'Pilgrims above 75, or those with heart/respiratory conditions, should carry a recent medical fitness certificate. Health check-up points operate at Sonprayag and Gaurikund for Kedarnath.' },
+  { name: 'Carry originals', text: 'Always keep an original government photo ID (Aadhaar/Passport/Voter ID) — it is checked with the registration QR at multiple points.' },
+];
+
+// --- 14g. How-to-book steps (HowTo schema source on hub) ---
+export const howToBookSteps = [
+  { name: 'Pick your circuit & origin', text: 'Decide Char Dham, Do Dham or a single Dham, and your starting city (Delhi, Haridwar, Rishikesh or Dehradun). Haridwar/Rishikesh save 1–2 days versus Delhi.' },
+  { name: 'Choose your vehicle', text: 'Select Sedan (₹12/km), Ertiga (₹15/km), Innova Crysta (₹18/km), Fortuner (₹25/km) or a 22–56 seater bus based on group size and budget.' },
+  { name: 'Get a transparent quote', text: 'Call 7668570551 or WhatsApp us with dates and passenger count. We share an all-inclusive fare (vehicle, fuel, driver, tolls) with no hidden charges.' },
+  { name: 'Confirm with advance', text: 'Block your vehicle for the 2026 season with a small advance. Early booking is advised for May–June peak slots.' },
+  { name: 'Complete Yatra registration', text: 'We assist you with the mandatory Char Dham online registration and biometric verification at Haridwar/Rishikesh at no extra cost.' },
+  { name: 'Begin your yatra', text: 'Your experienced hill driver picks you up on day one. Enjoy daytime-only driving, planned halts and 24/7 support through the circuit.' },
+];
+
+// --- 14h. People-Also-Ask (extra AEO questions beyond per-page FAQs) ---
+export const peopleAlsoAsk = [
+  { q: 'How many days are enough for Char Dham Yatra by car?', a: 'A complete Char Dham Yatra by car needs 10–12 days from Delhi, or 9–10 days from Haridwar/Rishikesh. The circuit covers about 3,200 km round trip from Delhi with daytime-only mountain driving, so the days cannot be safely compressed much further.' },
+  { q: 'What is the total distance of Char Dham Yatra?', a: 'From Delhi, the full Char Dham circuit (Yamunotri → Gangotri → Kedarnath → Badrinath and back) is roughly 3,200 km round trip. From Haridwar it is about 2,700 km and from Rishikesh about 2,600 km.' },
+  { q: 'Is Char Dham Yatra suitable for senior citizens?', a: 'Yes. Badrinath and Gangotri have direct road access. For Kedarnath (16 km trek) and Yamunotri (5 km trek), seniors can use ponies, palki/doli or helicopter. Carry a medical fitness certificate for travellers above 75 and keep altitude in mind (Kedarnath 3,583 m).' },
+  { q: 'Do I need registration for Char Dham Yatra 2026?', a: 'Yes, online Char Dham Yatra registration plus biometric verification is mandatory for all pilgrims in 2026. Registration is free on the official Uttarakhand portal; Triveni Cabs assists you through the process at no extra charge.' },
+  { q: 'Which Dham should I visit first?', a: 'The traditional clockwise order is Yamunotri, then Gangotri, then Kedarnath, and finally Badrinath. This sequence follows the geography of the Garhwal Himalayas and is the route our itineraries are built around.' },
+  { q: 'What is the difference between Char Dham and Chota Char Dham?', a: 'In Uttarakhand, "Char Dham" usually refers to the Chota Char Dham — Yamunotri, Gangotri, Kedarnath and Badrinath. The original "Char Dham" of India (by Adi Shankaracharya) is Badrinath, Dwarka, Puri and Rameshwaram. This page covers the Uttarakhand Garhwal circuit.' },
+];
+
+// --- 14i. Seasonal / weather guidance ---
+export const seasonGuide = [
+  { period: 'Late Apr – Jun', label: 'Peak Season', desc: 'Kapat opening, pleasant days (15–25°C), cold nights. Best darshan weather but heaviest crowds — book vehicles early.' },
+  { period: 'Jul – Aug', label: 'Monsoon (Avoid)', desc: 'Heavy rain, landslides and frequent road closures in Garhwal. Not recommended for elderly or first-timers.' },
+  { period: 'Sep – Oct', label: 'Post-Monsoon (Ideal)', desc: 'Clear skies, washed-green valleys, fewer crowds and stable roads — the best photography and comfort window.' },
+  { period: 'Nov', label: 'Closing Season', desc: 'Temples close around Diwali/Bhai Dooj. Very cold; only early November is viable before kapat closes.' },
+];
+
+export const chardhamFacts = {
+  totalDistanceDelhi: '~3,200 km round trip',
+  totalDistanceHaridwar: '~2,700 km round trip',
+  duration: '10–12 days (Delhi) / 9–10 days (Haridwar)',
+  founder: 'Adi Shankaracharya (8th century)',
+  region: 'Garhwal Himalayas, Uttarakhand',
+  annualPilgrims: '40+ lakh devotees per season',
+  highestDham: 'Kedarnath (3,583 m)',
+  registrationPortal: 'registrationandtouristcare.uk.gov.in',
+};

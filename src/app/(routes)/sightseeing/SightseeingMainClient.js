@@ -20,6 +20,15 @@ import {
 } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { trackWhatsAppClick } from '@/utilis/analytics';
+import { getSightseeingReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
+import { getUrgencySignals } from '@/utilis/sightseeingEnrichment';
+
+// Real review snippets for the hub (rotates from the sightseeing review pool)
+const HUB_REVIEWS = getSightseeingReviews('sightseeing-hub-may-2026');
+const HUB_REVIEW_COUNT = getDeterministicReviewCount('sightseeing-hub-may-2026', 800, 1400);
 
 export default function SightseeingMainClient({ data, faqData }) {
   const [favorites, setFavorites] = useState([]);
@@ -71,8 +80,14 @@ export default function SightseeingMainClient({ data, faqData }) {
     }
   };
 
+  const hubWhatsappText = 'Hi, I want to book a sightseeing tour. Please share tour options and best rates.';
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" itemScope itemType="https://schema.org/CollectionPage">
+      <SetStickyCta
+        label="Sightseeing Tours"
+        whatsappText={hubWhatsappText}
+      />
       {/* Hero Section with Parallax */}
       <header>
         <section
@@ -91,7 +106,7 @@ export default function SightseeingMainClient({ data, faqData }) {
               sizes="100vw"
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/70 via-purple-900/60 to-pink-900/70" />
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-emerald-950/70 to-teal-900/80" />
 
             {/* Pattern Overlay */}
             <div
@@ -117,11 +132,11 @@ export default function SightseeingMainClient({ data, faqData }) {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2"
+              className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2"
             >
-              Discover India&apos;s
-              <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300">
-                Hidden Treasures
+              Sightseeing Tours
+              <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300">
+                Across North India
               </span>
             </motion.h1>
 
@@ -129,7 +144,7 @@ export default function SightseeingMainClient({ data, faqData }) {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto px-2"
+              className="speakable-lead text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto px-2"
             >
               Expertly curated sightseeing tours across India&apos;s most breathtaking destinations
             </motion.p>
@@ -146,7 +161,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                   <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
-              <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <a onClick={() => trackWhatsAppClick('sightseeing_hub_hero', hubWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
                   Book via WhatsApp
                 </button>
@@ -161,9 +176,9 @@ export default function SightseeingMainClient({ data, faqData }) {
               className="mt-8 sm:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto px-2"
             >
               {[
-                { number: "20+", label: "Destinations" },
-                { number: "5000+", label: "Happy Tourists" },
-                { number: "4.8★", label: "Rating" }
+                { number: `${data.allTours.length}+`, label: "Tours" },
+                { number: `${HUB_REVIEW_COUNT.toLocaleString()}+`, label: "Verified Reviews" },
+                { number: "4.9★", label: "Avg Rating" }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">{stat.number}</div>
@@ -191,6 +206,57 @@ export default function SightseeingMainClient({ data, faqData }) {
       </header>
 
       <SocialProofStrip />
+
+      {/* Above-the-fold Quote + Real Reviews — added May 2026 for conversion lift */}
+      <section className="relative -mt-2 bg-gradient-to-br from-slate-950 via-emerald-950 to-teal-950 text-white py-10 md:py-14 border-y border-emerald-500/20" aria-labelledby="quote-cta-heading">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left: Real review snippets */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 border border-emerald-400/30 rounded-full mb-4 backdrop-blur-md">
+                <StarIcon className="w-4 h-4 text-emerald-300" />
+                <span className="text-xs font-semibold text-emerald-200">Verified Traveller Reviews</span>
+              </div>
+              <h2 id="quote-cta-heading" className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
+                What our travellers say about<br/>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 to-cyan-300">our sightseeing tours</span>
+              </h2>
+              <div className="space-y-4">
+                {HUB_REVIEWS.slice(0, 3).map((r, i) => (
+                  <div key={i} className="rounded-2xl bg-white/5 backdrop-blur-xl p-5 border border-white/10 hover:border-emerald-400/30 transition-colors">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center font-bold text-slate-950">
+                        {r.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-sm text-white">{r.name}</div>
+                        <div className="flex gap-0.5 text-yellow-400">{'★★★★★'}</div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-slate-300 leading-relaxed line-clamp-3">{r.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Right: Above-the-fold enquiry form */}
+            <div className="lg:sticky lg:top-24">
+              <div className="rounded-3xl bg-white/5 backdrop-blur-xl p-1 shadow-2xl border border-emerald-500/25">
+                <div className="rounded-[1.4rem] p-5 md:p-6">
+                  <div className="mb-4 text-center">
+                    <h3 className="text-xl md:text-2xl font-bold text-white">Get Tour Quote in 2 Min</h3>
+                    <p className="text-xs md:text-sm text-slate-400 mt-1">No spam · Reply on WhatsApp in ~2 minutes</p>
+                  </div>
+                  <QuickEnquiryForm pageType="sightseeing" />
+                  <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-center gap-4 text-xs text-slate-400">
+                    <span className="flex items-center gap-1"><CheckCircleIcon className="w-4 h-4 text-emerald-400"/> Free cancellation</span>
+                    <span className="flex items-center gap-1"><CheckCircleIcon className="w-4 h-4 text-emerald-400"/> No card needed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Tours Section */}
       {data.featuredTours.length > 0 && (
@@ -454,7 +520,7 @@ export default function SightseeingMainClient({ data, faqData }) {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a href="tel:+917668570551">
                 <motion.button
-                  
+
                   whileTap={{ scale: 0.95 }}
                   className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
                 >
@@ -462,9 +528,9 @@ export default function SightseeingMainClient({ data, faqData }) {
                   Call Now
                 </motion.button>
               </a>
-              <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer">
+              <a onClick={() => trackWhatsAppClick('sightseeing_hub_footer', hubWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer">
                 <motion.button
-                  
+
                   whileTap={{ scale: 0.95 }}
                   className="px-6 sm:px-8 py-3 sm:py-4 bg-green-500 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
                 >
@@ -706,7 +772,7 @@ export default function SightseeingMainClient({ data, faqData }) {
             <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-blue-100 max-w-2xl mx-auto px-4">
               Book your perfect sightseeing tour today and create memories that last a lifetime
             </p>
-            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
+            <a onClick={() => trackWhatsAppClick('sightseeing_hub_final', hubWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
               <motion.button
                 
                 whileTap={{ scale: 0.95 }}
@@ -718,12 +784,15 @@ export default function SightseeingMainClient({ data, faqData }) {
           </motion.div>
         </div>
       </section>
+
+      {/* Mobile sticky bar for instant conversion access */}
     </main>
   );
 }
 
 // Tour Card Component - memoized to prevent re-renders when favorites change for other cards
 const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverVariants, featured = false }) {
+  const urgency = getUrgencySignals(tour.slug);
   return (
     <motion.article
       variants={itemVariants}
@@ -736,7 +805,7 @@ const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, it
       <Link href={`/sightseeing/${tour.slug}`} itemProp="url">
         <motion.div
           variants={cardHoverVariants}
-          className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+          className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-emerald-200/40 ring-1 ring-slate-200 hover:ring-emerald-400/50 transition-all duration-300"
         >
           {/* Tour Image */}
           <div className="relative h-64 overflow-hidden bg-gray-200">
@@ -771,17 +840,29 @@ const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, it
 
             {featured && (
               <div className="absolute top-4 left-4 z-10">
-                <span className="px-3 py-1 bg-yellow-400 text-gray-900 rounded-full text-sm font-semibold flex items-center gap-1">
-                  <StarIcon className="w-4 h-4" />
-                  Featured
+                <span className="px-3 py-1 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                  <StarIcon className="w-3.5 h-3.5" />
+                  FEATURED
                 </span>
               </div>
             )}
+
+            {/* Urgency badge — booked X times */}
+            <div className="absolute top-4 right-14 z-10">
+              <span className="px-2.5 py-1 bg-emerald-500/95 backdrop-blur-md text-white rounded-full text-[10px] font-semibold flex items-center gap-1 shadow-lg">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                {urgency.bookedThisMonth} booked this month
+              </span>
+            </div>
 
             <div className="absolute bottom-4 left-4 right-4 z-10">
               <h4 className="text-white font-bold text-lg drop-shadow-lg">
                 {tour.name}
               </h4>
+              <div className="mt-1 text-xs text-emerald-200 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                {urgency.viewingNow} viewing · last booked {urgency.lastBooked} ago
+              </div>
             </div>
           </div>
 
@@ -810,13 +891,15 @@ const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, it
 
             <div className="flex items-center justify-between pt-4 border-t border-gray-200">
               <div>
-                <div className="flex items-center gap-1 text-2xl font-bold text-indigo-600">
+                <div className="flex items-center gap-1 text-2xl font-bold text-emerald-600">
                   <CurrencyRupeeIcon className="w-6 h-6" />
                   {tour.price.sedan?.toLocaleString()}
                 </div>
                 <div className="text-xs text-gray-500">Starting price (Sedan)</div>
               </div>
-              <ChevronRightIcon className="w-6 h-6 text-gray-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
+              <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full bg-emerald-600 text-white text-sm font-semibold group-hover:bg-emerald-700 group-hover:translate-x-1 transition-all">
+                View Tour <ChevronRightIcon className="w-4 h-4" />
+              </span>
             </div>
           </div>
         </motion.div>

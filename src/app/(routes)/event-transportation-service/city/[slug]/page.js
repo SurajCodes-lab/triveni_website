@@ -9,11 +9,14 @@ import {
   eventServices,
   eventFleet,
   eventFAQs,
-  getAllEventTypes
+  getAllEventTypes,
+  getEventCityGeoSchema
 } from '@/utilis/eventTransportData';
+import { getRatingAndReviews, getCityPlaceSchema } from '@/lib/seo/review-helpers';
+import { getArticleSchema } from '@/lib/seo/speakable-helpers';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 // Centralized icon imports for better bundle optimization
 import {
@@ -109,10 +112,12 @@ export default async function EventCityPage({ params }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Event Transportation",
-    "name": city.title,
+    "name": `${city.title} | Triveni Cabs`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": city.description,
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -120,9 +125,19 @@ export default async function EventCityPage({ params }) {
     },
     "areaServed": {
       "@type": "City",
-      "name": city.name
-    }
+      "name": city.name,
+      "containedInPlace": { "@type": "Country", "name": "India" }
+    },
+    ...getRatingAndReviews(slug, 'event')
   };
+
+  // City Place (GEO) schema — enriched builder emits GeoCoordinates,
+  // City -> State -> India containedInPlace chain, and popularVenues as
+  // containsPlace children with per-venue locality addresses. Falls back to the
+  // shared helper if a city has no geo anchor.
+  const cityPlaceSchema =
+    getEventCityGeoSchema(slug, city) ||
+    getCityPlaceSchema(slug, city.name, city.popularVenues || []);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -147,9 +162,23 @@ export default async function EventCityPage({ params }) {
     }))
   };
 
+  // Phase 4 AEO/GEO gap-fill: Article + Speakable (event-city had FAQ/Service/Place
+  // but no Article/Speakable). Speakable selectors target the page's headline/lead.
+  const articleSchema = getArticleSchema({
+    slug: `event-transportation-service/city/${slug}`,
+    headline: city.title,
+    description: city.description,
+    image: '/images/citypage_hero_section_image.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
+  });
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      {cityPlaceSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AEOHead pageType="event" data={{ url: `/event-transportation-service/city/${slug}`, title: city.name || '', city: city.name || '' }} />
@@ -385,7 +414,7 @@ export default async function EventCityPage({ params }) {
             {/* All Event Types Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {getAllEventTypes().map((event, idx) => (
-                <Link key={event.slug} href={`/event-transportation-service/${event.slug}`}>
+                <Link key={event.slug} href={`/event-transportation-service/${event.slug}/${city.slug}`}>
                   <div className="group relative h-full">
                     <div className={`absolute inset-0 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 ${
                       idx % 6 === 0 ? 'bg-cyan-500' :

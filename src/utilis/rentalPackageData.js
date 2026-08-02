@@ -21,6 +21,13 @@ export const rentalPackageData = [
     inclusions: ["AC vehicle", "Experienced driver", "Fuel charges", "40 km distance", "4 hours duration"],
     exclusions: ["Toll charges (if applicable)", "Parking charges", "Extra km/hour charges", "Night charges (after 10 PM)"],
     description: "Need a cab for a few hours? Our half-day cab rental package gives you a dedicated AC vehicle with driver for 4 hours and 40 km at a flat rate. Perfect for quick errands, shopping trips, doctor visits, or business meetings within the city.\n\nNo surge pricing, no waiting for rides, no shared cabs. Your driver waits while you shop, visit the doctor, or attend meetings. The vehicle is exclusively yours for the entire 4-hour duration.\n\nAvailable across all major cities including Delhi NCR, Agra, Jaipur, and Lucknow. Book a sedan for solo or couple trips, SUV for families, or Innova for maximum comfort. All vehicles are AC and well-maintained with professional drivers.",
+    speakableLead: "A half-day cab rental gives you a dedicated AC car and driver for 4 hours and 40 km at a flat rate \u2014 \u20B91,500 for a Sedan, \u20B92,200 for an SUV, and \u20B92,800 for an Innova Crysta. The driver waits at every stop with no surge pricing, making it ideal for shopping, doctor visits, and short meetings. Book in under 2 minutes on 7668570551.",
+    relatedLinks: [
+      { href: "/full-day-cab-rental", label: "Full Day Cab Rental (8hr/80km)", desc: "Better value for a full day out" },
+      { href: "/local-taxi", label: "Local Taxi by the Hour", desc: "Hourly packages in 50+ cities" },
+      { href: "/outstation-cabs", label: "Outstation Cab Service", desc: "Intercity trips from \u20B911/km" },
+      { href: "/airport-city-tour-combo", label: "Airport + City Tour Combo", desc: "12hr / 120km arrival day package" }
+    ],
     faqs: [
       { question: "What is the half-day cab rental fare?", answer: "Half-day (4 hours/40 km) cab rental starts at \u20B91,500 for sedan, \u20B92,200 for SUV, and \u20B92,800 for Innova Crysta. Extra km at \u20B912-18/km and extra hour at \u20B9200-350/hr." },
       { question: "What happens if I exceed 4 hours or 40 km?", answer: "Extra hours are charged at \u20B9200-350 per hour depending on vehicle. Extra km at \u20B912-18 per km. Billing is based on whichever limit is exceeded first." },
@@ -29,7 +36,11 @@ export const rentalPackageData = [
       { question: "Can I book half-day rental for tomorrow?", answer: "Yes! Book anytime for next-day or same-day rental. Same-day bookings depend on vehicle availability. We recommend booking at least a few hours in advance." },
       { question: "What vehicles are available for half-day rental?", answer: "Sedan (Swift Dzire, Honda Amaze), SUV (Ertiga, Innova), and Premium (Innova Crysta, Fortuner). All vehicles are AC with clean interiors." },
       { question: "Is fuel included in the half-day package?", answer: "Yes, fuel is included for the 40 km limit. Extra km fuel is covered in the per-km charges. No hidden fuel surcharges." },
-      { question: "Can I extend the half-day package to full day?", answer: "Yes! You can extend on the spot. The difference between half-day and full-day rate will be adjusted. Or book our full-day package directly for better value." }
+      { question: "Can I extend the half-day package to full day?", answer: "Yes! You can extend on the spot. The difference between half-day and full-day rate will be adjusted. Or book our full-day package directly for better value." },
+      { question: "Is a half-day rental cheaper than booking multiple Ola/Uber rides?", answer: "For a multi-stop half day, yes. App cabs charge per ride plus surge and you re-book at every stop. A 4hr/40km half-day rental at \u20B91,500 keeps one car and driver waiting throughout \u2014 usually cheaper than 3-4 separate app rides for a shopping or hospital morning." },
+      { question: "How do I pay for a half-day cab rental?", answer: "Pay the driver at the end of the trip by cash or UPI (Google Pay/PhonePe/Paytm). No advance is needed for most local half-day bookings. GST invoices are available for corporate clients." },
+      { question: "Which cities is half-day cab rental available in?", answer: "Half-day rental is available in Delhi, Agra, Jaipur, Noida, Gurgaon, Ghaziabad, Faridabad, and Lucknow, with more North India cities on request. Call 7668570551 to confirm your city." },
+      { question: "Can I get the same driver and car for the whole 4 hours?", answer: "Yes. The vehicle and a single verified driver are exclusively yours for the entire 4-hour package. The driver waits at every stop \u2014 there is no re-assignment and no extra waiting charge within the package." }
     ]
   },
   {
@@ -54,6 +65,13 @@ export const rentalPackageData = [
     inclusions: ["AC vehicle", "Experienced driver", "Fuel charges", "80 km distance", "8 hours duration", "Multiple stops allowed"],
     exclusions: ["Toll charges (if applicable)", "Parking charges", "Extra km/hour charges", "Night charges (after 10 PM)"],
     description: "Our full-day cab rental gives you a dedicated vehicle and driver for 8 hours and 80 km. This is our most popular rental package, perfect for city sightseeing, business travel, wedding functions, or any day when you need reliable transport at your disposal.\n\nWith 8 hours and 80 km, you have ample time and distance for a full day of activities. The driver waits at each stop and takes you wherever you need to go within the city. No app-based surge pricing, no ride cancellations, and no sharing your cab.\n\nIdeal for tourists exploring Delhi, Agra, or Jaipur in a single day. Also perfect for locals who need a reliable car for wedding preparations, business meetings, or family outings.",
+    speakableLead: "A full-day cab rental gives you a dedicated AC car and driver for 8 hours and 80 km at a flat rate \u2014 \u20B92,500 for a Sedan, \u20B93,500 for an SUV, and \u20B94,500 for an Innova Crysta. The driver waits at every stop with no surge pricing, making it ideal for full-day city sightseeing, business travel, and wedding functions. Book in under 2 minutes on 7668570551.",
+    relatedLinks: [
+      { href: "/half-day-cab-rental", label: "Half Day Cab Rental (4hr/40km)", desc: "From \u20B91,500 for shorter trips" },
+      { href: "/local-taxi", label: "Local Taxi by the Hour", desc: "Flexible hourly packages, 50+ cities" },
+      { href: "/outstation-cabs", label: "Outstation Cab Service", desc: "Intercity trips from \u20B911/km" },
+      { href: "/airport-city-tour-combo", label: "Airport + City Tour Combo", desc: "12hr / 120km arrival day package" }
+    ],
     faqs: [
       { question: "What is the full-day cab rental fare?", answer: "Full-day (8 hours/80 km) rental starts at \u20B92,500 for sedan, \u20B93,500 for SUV, and \u20B94,500 for Innova Crysta. One of the best rates in the market for a dedicated car with driver." },
       { question: "Can I use full-day rental for sightseeing?", answer: "Yes! Full-day rental is perfect for city sightseeing. Cover all major attractions in Delhi, Agra, or Jaipur within 8 hours. Our drivers double as informal guides for popular tourist spots." },
@@ -62,7 +80,11 @@ export const rentalPackageData = [
       { question: "Can I use full-day cab for outstation trips?", answer: "Full-day packages are for local/city use. For outstation trips, our outstation cab packages offer better value with higher km limits and driver accommodation included." },
       { question: "Do you provide full-day rental for corporate clients?", answer: "Yes! We offer corporate accounts with monthly billing, dedicated vehicles, and priority service. Special rates for regular corporate bookings. Call for corporate pricing." },
       { question: "Is the driver available for the entire 8 hours?", answer: "Yes, the driver and vehicle are exclusively yours for the full 8 hours. They wait at every stop. No minimum stop time, no extra waiting charges within the package." },
-      { question: "Can I book full-day rental for multiple consecutive days?", answer: "Yes! For 2-3 day local rentals, we offer multi-day packages with better daily rates. For 7+ days, see our monthly rental options for the best value." }
+      { question: "Can I book full-day rental for multiple consecutive days?", answer: "Yes! For 2-3 day local rentals, we offer multi-day packages with better daily rates. For 7+ days, see our monthly rental options for the best value." },
+      { question: "How many tourist spots can I cover in a full-day 8-hour rental?", answer: "Typically 5-7 major attractions in a city like Delhi, Agra, or Jaipur. For example in Delhi: India Gate, Red Fort, Qutub Minar, Humayun's Tomb, Lotus Temple and Akshardham. The driver suggests the most efficient routing to avoid traffic." },
+      { question: "How do I pay for a full-day cab rental?", answer: "Pay the driver at the end of the day by cash or UPI (Google Pay/PhonePe/Paytm). No advance is needed for most local full-day bookings. GST invoices are available for corporate and tour bookings." },
+      { question: "Which cities is full-day cab rental available in?", answer: "Full-day rental is available in Delhi, Agra, Jaipur, Noida, Gurgaon, Ghaziabad, Faridabad, Lucknow, Chandigarh, and Dehradun, with more North India cities on request. Call 7668570551 to confirm your city." },
+      { question: "Can I get the same driver and car for the whole 8 hours?", answer: "Yes. The vehicle and a single verified, GPS-tracked driver are exclusively yours for the full 8-hour package. The driver waits at every stop, so there is no re-assignment and no extra waiting charge within the package limits." }
     ]
   },
   {

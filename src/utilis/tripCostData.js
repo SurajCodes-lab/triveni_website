@@ -2,7 +2,7 @@ export const tripCostData = [
   {
     slug: "agra-trip-cost-from-delhi",
     title: "Agra Trip Cost from Delhi — Complete Budget Breakdown 2026",
-    metaDescription: "Plan your Agra trip from Delhi with our complete cost guide. Budget ₹3,000-15,000 for cab, hotel, food, entry fees. Book Triveni Cabs sedan at ₹11/km. Call 7668570551.",
+    metaDescription: "Plan your Agra trip from Delhi with our complete cost guide. Budget ₹3,000-15,000 for cab, hotel, food, entry fees. Book Triveni Cabs sedan at ₹11/km.",
     keywords: "agra trip cost from delhi, delhi to agra trip budget, agra tour expenses, taj mahal trip cost, agra travel cost by car",
     origin: "Delhi",
     destination: "Agra",
@@ -441,8 +441,8 @@ The best time to visit Udaipur is September-October, right after monsoon when th
   },
   {
     slug: "chardham-yatra-cost-by-car",
-    title: "Chardham Yatra Cost by Car — Complete Budget Guide 2026",
-    metaDescription: "Complete Chardham Yatra cost by car from Delhi/Haridwar. Budget ₹25,000-70,000 for 10-12 days. Cab at ₹11/km for the sacred circuit. Call 7668570551.",
+    title: "Char Dham Yatra Cost by Car 2026: ₹25,000–70,000 (10–12 Days)",
+    metaDescription: "Char Dham Yatra package cost by car: ₹25,000–70,000 for the full 10–12 day circuit (Yamunotri, Gangotri, Kedarnath, Badrinath) from Delhi/Haridwar. Sedan/SUV/Tempo rates, day-wise budget. Call 7668570551.",
     keywords: "chardham yatra cost by car, chardham trip budget, char dham yatra expenses, chardham yatra car rental cost, uttarakhand chardham cost",
     origin: "Delhi/Haridwar",
     destination: "Chardham (Yamunotri, Gangotri, Kedarnath, Badrinath)",

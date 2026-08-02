@@ -6,7 +6,7 @@ const data = getItinerary('amritsar-in-2-days-itinerary');
 
 if (!data) notFound();
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: data.metaTitle,
@@ -24,6 +24,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/amritsar-in-2-days-itinerary',
     siteName: 'Triveni Cabs',
+    images: [{ url: '/images/sightseeing/Amritsar/Golden_Temple.jpg', width: 1200, height: 630, alt: 'Amritsar 2-Day Itinerary — Golden Temple — Triveni Cabs' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -31,6 +32,7 @@ export const metadata = {
     description: data.metaDescription,
     creator: '@trivenicabs',
     site: '@trivenicabs',
+    images: ['/images/sightseeing/Amritsar/Golden_Temple.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

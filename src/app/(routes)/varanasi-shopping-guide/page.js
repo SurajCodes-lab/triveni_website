@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Varanasi Shopping Guide 2026 | Banarasi Silk, Brassware & Crafts',
-  description: 'Varanasi shopping guide. Banarasi silk sarees, brassware, wooden toys, Rudraksha beads, gulabi minakari. Vishwanath Gali, Thatheri Bazaar, Chowk. Call 7668570551.',
+  description: 'Varanasi shopping guide. Banarasi silk sarees, brassware, wooden toys, Rudraksha beads, gulabi minakari. Vishwanath Gali, Thatheri Bazaar, Chowk.',
   keywords: 'varanasi shopping guide, shopping in varanasi, banarasi silk saree, varanasi brassware, thatheri bazaar, vishwanath gali shopping, rudraksha beads varanasi',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function VaranasiShoppingGuidePage() {
     { question: "What is the best time to shop in Varanasi?", answer: "Morning (10 AM - 1 PM) is best for serious shopping -- shops are fresh, owners are attentive, and lanes are less crowded. Avoid ghat-area shops during evening aarti time (high tourist markup). The main bazaars (Chowk, Thatheri, Vishwanath Gali) are busiest 4-7 PM. Many shops close on Mondays or have half days." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function VaranasiShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -151,11 +152,26 @@ export default function VaranasiShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "varanasi-shopping-guide",
+    headline: "Varanasi Shopping Guide 2026 — Markets, Bazaars & What to Buy",
+    description: "Complete Varanasi shopping guide. Best markets, bazaars, what to buy, bargaining tips, local crafts, branded shopping, market timings.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("varanasi", { idSlug: "varanasi-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

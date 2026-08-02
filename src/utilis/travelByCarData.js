@@ -19,13 +19,21 @@ function calcFares(distanceKm) {
 }
 
 function generateFaqs(origin, dest, distKm, drivingTime, bestCarType, sedanFare) {
+  const suvFare = Math.max(distKm, 300) * 14;
+  const tempoFare = Math.max(distKm, 300) * 20;
   return [
     { question: `How far is ${dest} from ${origin} by car?`, answer: `${dest} is approximately ${distKm} km from ${origin} by road. The drive takes around ${drivingTime} depending on traffic, road conditions, and stops. Starting early (5-6 AM) is recommended for the best experience.` },
+    { question: `How long does it take to drive from ${origin} to ${dest}?`, answer: `The ${origin} to ${dest} drive takes about ${drivingTime} for the ${distKm} km journey, including short breaks. Early-morning departures avoid city traffic and, on hill routes, let you cover the mountain stretches in daylight.` },
     { question: `What is the best car for a ${origin} to ${dest} road trip?`, answer: `For the ${origin} to ${dest} drive, a ${bestCarType} is recommended. For families, an SUV like Innova/Ertiga offers more space and comfort. Solo travellers or couples can opt for a sedan like Swift Dzire.` },
-    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC Sedan (₹11/km). SUV starts at ₹${Math.max(distKm, 300) * 14} (₹14/km). Tempo Traveller at ₹${Math.max(distKm, 300) * 20} (₹20/km). Toll and state tax extra.` },
+    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC Sedan (₹11/km). SUV starts at ₹${suvFare.toLocaleString('en-IN')} (₹14/km). Tempo Traveller at ₹${tempoFare.toLocaleString('en-IN')} (₹20/km). Toll and state tax extra.` },
+    { question: `What is the best route from ${origin} to ${dest} by car?`, answer: `The recommended driving route from ${origin} to ${dest} follows the main national highways and expressways for the smoothest, fastest journey across ${distKm} km. Our drivers know the optimal route, real-time diversions, and the cleanest rest stops along the way.` },
     { question: `Is the ${origin} to ${dest} road safe for driving?`, answer: `Yes, the ${origin} to ${dest} route is generally safe with well-maintained highways for most stretches. However, mountain sections (if any) require careful driving. We recommend experienced drivers for hill routes, especially during monsoon and winter.` },
     { question: `Where should I stop for food on the ${origin} to ${dest} drive?`, answer: `Popular food stops on the ${origin} to ${dest} route include highway dhabas and restaurants at major towns en route. Our drivers know the best clean and hygienic food stops. We recommend stopping every 2-3 hours for refreshments.` },
+    { question: `When is the best time to drive from ${origin} to ${dest}?`, answer: `October to March is generally the most comfortable window for the ${origin} to ${dest} drive, with pleasant weather and clear roads. Avoid peak monsoon on hill routes due to landslide risk, and start at 5-6 AM year-round to beat traffic and heat.` },
+    { question: `Should I book a one-way or round-trip cab from ${origin} to ${dest}?`, answer: `A one-way cab from ${origin} to ${dest} is cheapest if you are not returning, saving up to 50% versus round-trip. Choose round-trip if you plan to come back within a day or two and want the same driver and vehicle waiting for you.` },
+    { question: `How many fuel and rest stops are there from ${origin} to ${dest}?`, answer: `There are several fuel stations and rest stops spaced along the ${origin} to ${dest} highway. On remote or hill stretches, pumps thin out, so our drivers top up the tank in advance and plan rest breaks every 2-3 hours.` },
     { question: `Can I book a one-way cab from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs offers both one-way and round-trip cab service from ${origin} to ${dest}. One-way booking saves up to 50% compared to round-trip. Call 7668570551 or WhatsApp for instant quotes.` },
+    { question: `Is it better to drive or take a train/flight from ${origin} to ${dest}?`, answer: `Driving from ${origin} to ${dest} gives door-to-door convenience, luggage freedom, and the ability to stop at sights and dhabas en route — ideal for families and groups. A train or flight may be faster for very long distances, but loses the flexibility and scenic experience of a road trip. A chauffeur cab removes driving fatigue while keeping all the road-trip benefits.` },
   ];
 }
 
@@ -1130,6 +1138,19 @@ export const travelByCarRoutes = {
 // ═══════════════════════════════════════════
 // EXPORT FUNCTIONS
 // ═══════════════════════════════════════════
+
+// Normalise a city display name (e.g. "Srinagar (Kashmir)", "Jim Corbett
+// National Park", "Kaza (Spiti Valley)") into a lowercase slug that matches
+// the _CITY_PLACES geo map in speakable-helpers.
+export function cityNameToGeoSlug(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/\(.*?\)/g, '')
+    .replace(/national park/g, '')
+    .split(/[-/]/)[0]
+    .trim()
+    .replace(/\s+/g, '-');
+}
 
 export function getTravelByCarRoute(slug) {
   return travelByCarRoutes[slug] || null;

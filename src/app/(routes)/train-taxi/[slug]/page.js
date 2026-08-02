@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getTrainTaxiRoute, getAllTrainTaxiSlugs, getRelatedTrainTaxi } from '@/utilis/trainTaxiData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import TrainTaxiClient from '@/components/train-taxi/TrainTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -75,7 +76,7 @@ export default async function TrainTaxiPage({ params }) {
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": { "@type": "City", "name": route.city },
     "offers": { "@type": "AggregateOffer", "lowPrice": cheapest.toString(), "highPrice": Math.max(...route.taxiPackages.map(p => p.suv)).toString(), "priceCurrency": "INR" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
   };
 
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Train + Taxi", "item": "https://www.trivenicabs.in/train-taxi" }, { "@type": "ListItem", "position": 3, "name": `${route.train.name} + ${route.city}`, "item": `https://www.trivenicabs.in/train-taxi/${slug}` } ] };

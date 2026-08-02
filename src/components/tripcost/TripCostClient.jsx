@@ -6,6 +6,8 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { useState, useMemo } from 'react';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function TripCostClient({ data }) {
   // Map {q, a} format to {question, answer} for FAQSection
@@ -107,13 +109,13 @@ export default function TripCostClient({ data }) {
               <Receipt className="w-12 h-12 text-amber-400" />
             </div>
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-4">
+              <h1 className="speakable-headline text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-4">
                 <span className="shimmer-text">{data.destination}</span>
                 <br />
                 <span className="text-white/90">Trip Cost Guide</span>
               </h1>
-              <p className="text-lg md:text-xl text-amber-200/80 max-w-2xl">
-                Complete 2026 budget breakdown for your {data.destination} trip from {data.origin} — cab, hotel, food, sightseeing, everything.
+              <p className="speakable-lead text-lg md:text-xl text-amber-200/80 max-w-2xl">
+                A {data.destination} trip from {data.origin} costs from {data.totalBudget?.budget || ''} per person on a budget, covering a {data.distance} cab ride (sedan around {data.cabCost?.sedan?.perKm || ''}/km), hotel, food and sightseeing. This complete 2026 budget breakdown from Triveni Cabs details every cost — cab, hotel, food, monument tickets and tolls — so you can plan accurately.
               </p>
             </div>
           </div>
@@ -134,6 +136,36 @@ export default function TripCostClient({ data }) {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Above-the-fold CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-8">
+            <a
+              onClick={() => trackPhoneCall('trip_cost_hero')} href="tel:+917668570551"
+              className="inline-flex items-center justify-center gap-2 bg-white text-amber-800 font-bold px-7 py-4 rounded-2xl hover:scale-[1.02] transition-all duration-300 shadow-lg"
+            >
+              <Phone className="w-5 h-5" /> Call 7668570551
+            </a>
+            <a
+              onClick={() => trackWhatsAppClick('trip_cost_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(`Hi, I'd like a trip cost quote for ${data.destination} from ${data.origin}.`)}`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-amber-500 text-white font-bold px-7 py-4 rounded-2xl hover:bg-amber-400 transition-all duration-300 shadow-lg"
+            >
+              <WhatsAppIcon className="w-5 h-5" /> WhatsApp Quote
+            </a>
+          </div>
+
+          {/* Trust row */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6 text-sm text-amber-200/80">
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-yellow-300 fill-yellow-300" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> 10,000+ Trips</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4" /> Verified Drivers</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> No Advance Payment</span>
+          </div>
+
+          {/* Quick enquiry form */}
+          <div className="mt-10">
+            <QuickEnquiryForm fromCity={data.origin} toCity={data.destination} pageType="route" />
           </div>
         </div>
 
@@ -487,6 +519,12 @@ export default function TripCostClient({ data }) {
           showContactCTA={true}
         />
       )}
+
+      <SetStickyCta
+        price={data.cabCost?.sedan?.perKm ? `${data.cabCost.sedan.perKm}/km` : undefined}
+        label={`${data.destination} Cab`}
+        whatsappText={`Hi, I'd like a trip cost quote for ${data.destination} from ${data.origin}.`}
+      />
     </div>
   );
 }

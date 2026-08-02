@@ -7,7 +7,7 @@ export const busBlogs = [
   {
     id: 'bus-1',
     slug: 'spiti-valley-bus-tour-complete-adventure-guide-2026',
-    title: 'Spiti Valley by Bus: Complete Adventure Guide 2026 - Route, Cost & Tips',
+    title: 'Spiti Valley by Bus: Adventure Guide 2026- Route, Cost& Tips',
     excerpt: 'Plan your Spiti Valley bus tour from Delhi/Chandigarh. 45-56 seater Volvo options, route map, permits, best time, cost breakdown. Book group tour now!',
 
     relatedTours: [
@@ -159,7 +159,7 @@ export const busBlogs = [
   {
     id: 'bus-2',
     slug: 'rajasthan-royal-bus-tour-jaipur-udaipur-jodhpur-2026',
-    title: 'Rajasthan Royal Bus Tour 2026: Jaipur, Udaipur, Jodhpur Complete Guide',
+    title: 'Rajasthan Royal Bus Tour 2026: Jaipur, Udaipur, Jodhpur Guide',
     excerpt: 'Explore royal Rajasthan by luxury bus. Visit Jaipur, Udaipur, Jodhpur, Jaisalmer with comfortable group travel. Best routes, costs, and booking tips.',
 
     relatedTours: [

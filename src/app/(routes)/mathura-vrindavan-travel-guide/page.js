@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 
-export const metadata = { title: 'Mathura-Vrindavan Travel Guide 2026 | Krishna Birthplace & Sacred Twin Cities', description: 'Complete Mathura-Vrindavan travel guide 2026. Krishna Janmabhoomi, Banke Bihari Temple, ISKCON, Prem Mandir, Govardhan Hill. Book cab 7668570551.', keywords: 'mathura vrindavan travel guide, krishna janmabhoomi, banke bihari temple, iskcon vrindavan, prem mandir, govardhan hill, mathura tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/mathura-vrindavan-travel-guide' }, openGraph: { title: 'Mathura-Vrindavan Travel Guide 2026 | Krishna Birthplace & Sacred Twin Cities', description: 'Everything about visiting Mathura-Vrindavan. Temples, festivals, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mathura-vrindavan-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/mathura-vrindavan-hero.jpg', width: 1200, height: 630, alt: 'Mathura-Vrindavan Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Mathura-Vrindavan Travel Guide 2026', description: 'Complete Mathura-Vrindavan guide. Temples, Holi, food, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/mathura-vrindavan-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Mathura-Vrindavan Travel Guide 2026 | Krishna Birthplace', description: 'Complete Mathura-Vrindavan travel guide 2026. Krishna Janmabhoomi, Banke Bihari Temple, ISKCON, Prem Mandir, Govardhan Hill. Book cab 7668570551.', keywords: 'mathura vrindavan travel guide, krishna janmabhoomi, banke bihari temple, iskcon vrindavan, prem mandir, govardhan hill, mathura tourism 2026', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/mathura-vrindavan-travel-guide' }, openGraph: { title: 'Mathura-Vrindavan Travel Guide 2026 | Krishna Birthplace & Sacred Twin Cities', description: 'Everything about visiting Mathura-Vrindavan. Temples, festivals, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mathura-vrindavan-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png', width: 1200, height: 630, alt: 'Mathura-Vrindavan Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Mathura-Vrindavan Travel Guide 2026', description: 'Complete Mathura-Vrindavan guide. Temples, Holi, food, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function MathuraVrindavanTravelGuidePage() {
+  const heroImage = "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png";
+  const cityName = "Mathura-Vrindavan";
+  const whatsappMsg = "I want to book a cab for Mathura Vrindavan trip";
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Mathura-Vrindavan Travel Guide", "item": "https://www.trivenicabs.in/mathura-vrindavan-travel-guide" }] };
   const faqData = [
     { question: "How many days do I need in Mathura-Vrindavan?", answer: "2 days is ideal. Day 1: Mathura -- Krishna Janmabhoomi Temple, Dwarkadhish Temple, Vishram Ghat, Mathura Museum. Day 2: Vrindavan -- Banke Bihari Temple (morning), ISKCON Temple, Prem Mandir, Nidhivan. Add Day 3 for Govardhan Hill parikrama, Radha Kund, and Kusum Sarovar." },
@@ -18,12 +23,12 @@ export default function MathuraVrindavanTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Krishna Janmabhoomi Temple", desc: "The most sacred site in Mathura -- the exact birthplace of Lord Krishna. The prison cell (garbha griha) where Krishna was born is the holiest spot. Surrounded by multiple temples, including the grand Keshav Dev Temple. Security is tight due to the adjacent Shahi Idgah mosque.", entry: "Free", timing: "5:00 AM - 12:00 PM, 4:00 - 9:30 PM", duration: "1-2 hours", icon: Landmark },
+    { name: "Krishna Janmabhoomi Temple", desc: "The most sacred site in Mathura -- the exact birthplace of Lord Krishna. The prison cell (garbha griha) where Krishna was born is the holiest spot. Surrounded by multiple temples, including the grand Keshav Dev Temple. Security is tight due to the adjacent Shahi Idgah mosque.", entry: "Free", timing: "5:00 AM - 12:00 PM, 4:00 - 9:30 PM", duration: "1-2 hours", icon: Landmark, img: "/images/sightseeing/Mathura_Vrindavan/Krishna_Janmabhoomi.jpg" },
     { name: "Dwarkadhish Temple", desc: "Mathura&apos;s most beautiful temple, built in 1814 by Seth Gokul Das. Dedicated to Lord Krishna as the King of Dwarka. Stunning Rajasthani architecture with intricate carvings and paintings. The swing festival (Jhulan Yatra) in monsoon is extraordinary.", entry: "Free", timing: "6:30 AM - 12:30 PM, 4:00 - 9:30 PM", duration: "1 hour", icon: Landmark },
-    { name: "Banke Bihari Temple (Vrindavan)", desc: "The most visited temple in Vrindavan, attracting millions of devotees annually. The enchanting deity of Krishna in his tribhanga (three-fold bending) pose. Unique tradition of curtain darshan (jhankis). Electrifying atmosphere during Holi and Janmashtami.", entry: "Free", timing: "7:45 AM - 12:00 PM, 5:30 - 9:30 PM", duration: "1-2 hours", icon: Landmark },
-    { name: "ISKCON Temple (Vrindavan)", desc: "The Krishna-Balaram Mandir, founded by Srila Prabhupada in 1975. Marble architecture, international devotees, and beautiful deity worship. The samadhi (memorial) of Prabhupada is here. Free prasadam served daily.", entry: "Free", timing: "4:30 AM - 1:00 PM, 4:15 - 8:30 PM", duration: "1-1.5 hours", icon: Landmark },
-    { name: "Prem Mandir (Vrindavan)", desc: "A magnificent white marble temple built by Jagadguru Kripalu Maharaj, completed in 2012. Stunning illumination at night with coloured lights. Depicts Krishna&apos;s leelas (divine play) in exquisite marble carvings across multiple floors. A modern architectural marvel.", entry: "Free", timing: "5:30 AM - 12:00 PM, 4:30 - 8:30 PM", duration: "1-1.5 hours", icon: Camera },
-    { name: "Govardhan Hill", desc: "The sacred hill that Lord Krishna lifted on his little finger to protect the people of Vrindavan from Indra&apos;s wrath. A 21 km parikrama (circumambulation) is one of the holiest pilgrimages. Radha Kund, Kusum Sarovar, and Mansi Ganga are key stops.", entry: "Free", timing: "Open all day", duration: "3-6 hours (full parikrama)", icon: Compass },
+    { name: "Banke Bihari Temple (Vrindavan)", desc: "The most visited temple in Vrindavan, attracting millions of devotees annually. The enchanting deity of Krishna in his tribhanga (three-fold bending) pose. Unique tradition of curtain darshan (jhankis). Electrifying atmosphere during Holi and Janmashtami.", entry: "Free", timing: "7:45 AM - 12:00 PM, 5:30 - 9:30 PM", duration: "1-2 hours", icon: Landmark, img: "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg" },
+    { name: "ISKCON Temple (Vrindavan)", desc: "The Krishna-Balaram Mandir, founded by Srila Prabhupada in 1975. Marble architecture, international devotees, and beautiful deity worship. The samadhi (memorial) of Prabhupada is here. Free prasadam served daily.", entry: "Free", timing: "4:30 AM - 1:00 PM, 4:15 - 8:30 PM", duration: "1-1.5 hours", icon: Landmark, img: "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg" },
+    { name: "Prem Mandir (Vrindavan)", desc: "A magnificent white marble temple built by Jagadguru Kripalu Maharaj, completed in 2012. Stunning illumination at night with coloured lights. Depicts Krishna&apos;s leelas (divine play) in exquisite marble carvings across multiple floors. A modern architectural marvel.", entry: "Free", timing: "5:30 AM - 12:00 PM, 4:30 - 8:30 PM", duration: "1-1.5 hours", icon: Camera, img: "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg" },
+    { name: "Govardhan Hill", desc: "The sacred hill that Lord Krishna lifted on his little finger to protect the people of Vrindavan from Indra&apos;s wrath. A 21 km parikrama (circumambulation) is one of the holiest pilgrimages. Radha Kund, Kusum Sarovar, and Mansi Ganga are key stops.", entry: "Free", timing: "Open all day", duration: "3-6 hours (full parikrama)", icon: Compass, img: "/images/sightseeing/Mathura_Vrindavan/Govardhan_Hill.jpg" },
     { name: "Radha Kund & Kusum Sarovar", desc: "Radha Kund is considered the holiest water body in the Krishna tradition. Adjacent Kusum Sarovar is an ornate bathing ghat with cenotaphs and beautiful architecture. Both are on the Govardhan parikrama route, 26 km from Mathura.", entry: "Free", timing: "Open all day", duration: "1-1.5 hours", icon: Sunrise },
     { name: "Nidhivan (Vrindavan)", desc: "A mystical sacred grove where Lord Krishna is believed to perform Raas Leela (divine dance) with Radha every night. The trees appear to bow in pairs. Strictly closed after sunset -- locals believe no living being can witness the divine play. Deeply atmospheric.", entry: "Free", timing: "6:00 AM - Sunset", duration: "30-45 min", icon: Shield },
   ];
@@ -63,6 +68,16 @@ export default function MathuraVrindavanTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: MapPin, title: "Braj Region Specialists", desc: "Krishna circuit experts" }, { icon: Landmark, title: "Sacred Twin Cities", desc: "Krishna&apos;s birthplace" }, { icon: Users, title: "8000+ Pilgrims Served", desc: "Temple tour experts" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "8+ Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "mathura-vrindavan-travel-guide",
+    headline: "Mathura Vrindavan Travel Guide",
+    description: "Mathura Vrindavan Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -78,12 +93,14 @@ export default function MathuraVrindavanTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -119,6 +136,23 @@ export default function MathuraVrindavanTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Mathura-Vrindavan trip?"
+            answer="Mathura and Vrindavan are best visited from October to March, when the weather stays a pleasant 12-28 degrees Celsius. Two days is ideal: Krishna Janmabhoomi, Dwarkadhish Temple and Vishram Ghat in Mathura, then Banke Bihari, ISKCON and Prem Mandir in Vrindavan. Delhi is 160 km away on the Yamuna Expressway, about 3 hours by car, which makes a same-day return trip easy."
+            facts={[
+              { label: 'Best time', value: 'Oct to Mar' },
+              { label: 'Ideal duration', value: '2 days' },
+              { label: 'Top sight', value: 'Banke Bihari Temple' },
+              { label: 'Cab from Delhi', value: '160 km · ₹11/km' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -140,9 +174,9 @@ export default function MathuraVrindavanTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to the Sacred Twin Cities</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Mathura and Vrindavan, the sacred twin cities of the Braj region, hold a place of unparalleled significance in Hindu spirituality. Mathura is the birthplace of Lord Krishna, the eighth avatar of Vishnu, born in a prison cell over 5,000 years ago. The Krishna Janmabhoomi Temple marks this holiest of spots, drawing millions of devotees each year. Just 15 kilometres away, Vrindavan is where Krishna spent his childhood -- playing in its groves, grazing cows along the Yamuna, and performing the divine Raas Leela with Radha and the gopis. The twin cities contain over 5,000 temples, from ancient shrines to modern marvels like the illuminated Prem Mandir. The Banke Bihari Temple in Vrindavan, with its unique curtain-darshan tradition, creates an atmosphere of intense devotion. ISKCON&apos;s Krishna-Balaram Mandir attracts devotees from across the globe. During Holi, Mathura transforms into the most colourful place on Earth -- the Lathmar Holi of Barsana and the flower Holi at Banke Bihari are experiences found nowhere else. Janmashtami (Krishna&apos;s birthday) sees midnight celebrations that are deeply moving. With the nearby Govardhan Hill parikrama and the mystical groves of Nidhivan, Mathura-Vrindavan is India&apos;s most profound spiritual destination.</p>
@@ -189,9 +223,16 @@ export default function MathuraVrindavanTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -207,6 +248,53 @@ export default function MathuraVrindavanTravelGuidePage() {
           </div>
         </div>
       </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
+            </div>
+          </div>
+        </section>
 
       {/* FOOD */}
       <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">

@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Calendar, Route, Zap, Navigation } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import TrackedCta from '@/components/ui/TrackedCta';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Outstation Cab Booking 2026 | Sedan ₹11/km, SUV ₹15/km | 500+ Routes',
-  description: 'Book outstation cabs from Delhi, Agra, Jaipur at ₹11/km. One-way & round trip. 500+ routes, verified drivers, AC vehicles. 10,000+ trips completed. Call 7668570551.',
-  keywords: 'outstation cab booking, outstation taxi, intercity cab, outstation cab service, outstation taxi booking, one way outstation cab, round trip cab booking, Delhi to Agra cab, Delhi to Jaipur taxi, Delhi to Manali cab, outstation cab near me, cheap outstation cab, best outstation cab service, outstation cab with driver, long distance taxi India, intercity taxi service, outstation car rental, cab booking for outstation, affordable outstation cab, outstation cab rates',
+  title: 'Outstation Cab Booking 2026 | ₹11/km Sedan | 500+ Routes',
+  description: 'Book outstation cabs from Delhi, Agra, Jaipur at ₹11/km. One-way & round trip. 500+ routes, verified drivers, AC vehicles. 10,000+ trips completed.',
+  keywords: 'outstation cab booking, outstation taxi, intercity cab, outstation cab service, one way outstation cab, round trip cab booking, outstation cab near me, cheap outstation cab, outstation cab with driver, long distance taxi India, outstation car rental, outstation cab rates',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -29,29 +33,93 @@ export const metadata = {
 
 export default function OutstationCabsPage() {
   /* ──────── SCHEMA MARKUP ──────── */
+  // Provider references the global LocalBusiness via @id to avoid entity duplication.
+  // The global entity is defined in src/app/layout.js and contains the full NAP.
+  const hubRatingAndReviews = getRatingAndReviews('outstation-cabs-hub', 'outstation');
   const serviceSchema = {
     "@context": "https://schema.org", "@type": "Service",
+    "@id": "https://www.trivenicabs.in/outstation-cabs/#service",
     "serviceType": "Outstation Cab Booking Service",
     "name": "Outstation Cab Booking - One Way & Round Trip",
     "description": "Book outstation cabs across India starting at ₹11/km. One-way and round trip options to 500+ destinations with verified drivers and AC vehicles.",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" },
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "areaServed": { "@type": "Country", "name": "India" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "11", "highPrice": "24", "priceCurrency": "INR", "offerCount": "500" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...hubRatingAndReviews
+  };
+  // Product / AggregateOffer for the outstation fleet (rich fare snippets)
+  const productSchema = {
+    "@context": "https://schema.org", "@type": "Product",
+    "@id": "https://www.trivenicabs.in/outstation-cabs/#product",
+    "name": "Outstation Cab Booking - Sedan, SUV & Tempo Traveller",
+    "description": "Book outstation cabs across India. Sedan ₹11/km (Swift Dzire, Etios), SUV ₹15/km (Innova Crysta, Ertiga), Tempo Traveller ₹24/km (12-26 seater). 500+ one-way and round-trip routes.",
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
+    "image": "https://www.trivenicabs.in/images/citypage_hero_section_image.jpg",
+    "offers": {
+      "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "11", "highPrice": "24", "offerCount": "500",
+      "offers": [
+        { "@type": "Offer", "name": "Sedan (Swift Dzire / Toyota Etios)", "price": "11", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "url": "https://www.trivenicabs.in/outstation-cabs", "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" } },
+        { "@type": "Offer", "name": "SUV (Innova Crysta / Maruti Ertiga)", "price": "15", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "url": "https://www.trivenicabs.in/outstation-cabs", "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" } },
+        { "@type": "Offer", "name": "Tempo Traveller (12-26 Seater)", "price": "24", "priceCurrency": "INR", "availability": "https://schema.org/InStock", "url": "https://www.trivenicabs.in/outstation-cabs", "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" } }
+      ]
+    },
+    ...hubRatingAndReviews
   };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Outstation Cabs", "item": "https://www.trivenicabs.in/outstation-cabs" }] };
   const faqData = [
     { question: "What is the cost of outstation cab booking?", answer: "Outstation cab rates start from ₹11/km for Sedan (Swift Dzire, Etios), ₹15/km for SUV (Innova Crysta, Ertiga), and ₹24/km for Tempo Traveller (12-26 seater). Minimum billing of 250 km/day for round trips and 300 km for one-way trips. Toll, parking, and state tax extra." },
     { question: "Can I book a one-way outstation cab?", answer: "Yes, we offer one-way outstation cabs on all major routes. One-way pricing means you pay only for a single journey, saving up to 50% compared to round-trip charges. Available on Delhi-Agra, Delhi-Jaipur, Delhi-Chandigarh, and 200+ routes." },
+    { question: "What is the difference between one-way and round-trip outstation cabs?", answer: "A one-way outstation cab charges only for the single direction of travel with a 300 km minimum, ideal when you do not need a return. A round-trip cab keeps the same driver and vehicle for your entire journey, bills at 250 km per day minimum, and is best for multi-day trips and local sightseeing at the destination. One-way saves up to 50% for single journeys; round trip is more economical for stays of 2+ days." },
     { question: "What is included in outstation cab fare?", answer: "Our outstation cab fare includes driver charges, fuel cost, and vehicle usage. Toll charges, state taxes, parking fees, and driver allowance (₹300/night for trips beyond 10 PM) are extra. No hidden charges - you get a detailed fare breakdown before booking." },
     { question: "How far in advance should I book an outstation cab?", answer: "We recommend booking at least 6-12 hours in advance for guaranteed availability. During peak season (holidays, festivals), book 2-3 days ahead. Instant booking available subject to vehicle availability. Call 7668570551 for same-day bookings." },
     { question: "What vehicles are available for outstation travel?", answer: "We offer Sedan (Swift Dzire, Toyota Etios) for 1-4 passengers, SUV (Innova Crysta, Maruti Ertiga) for 4-7 passengers, and Tempo Traveller (12, 17, 20, 26 seater) for groups. All vehicles are AC, GPS-tracked, and regularly maintained." },
     { question: "Is there a minimum km charge for outstation trips?", answer: "Yes, minimum billing is 250 km/day for round trips and 300 km for one-way trips. For example, a Delhi to Agra round trip (400 km actual) would be billed for 400 km. Extra km beyond daily limit charged at per-km rate." },
     { question: "Can I make stops during an outstation trip?", answer: "Yes, you can make multiple stops during your outstation journey. For one-way trips, up to 2 stops are included. For round trips, unlimited stops are allowed within your route. Additional detours may incur extra km charges." },
-    { question: "What is the cancellation policy for outstation cabs?", answer: "Free cancellation up to 6 hours before pickup. Cancellation within 6 hours incurs 25% charge. No-show or last-minute cancellation is charged at 50%. For special occasions and peak dates, cancellation policies may vary." }
+    { question: "Are outstation cab drivers verified and experienced?", answer: "Yes. Every Triveni Cabs driver is police-verified, has a valid commercial licence, and carries 5+ years of highway driving experience. Drivers are re-verified annually and trained for long-distance and hill-route travel. All vehicles are GPS-tracked and sanitized after each trip for your safety." },
+    { question: "Do outstation cabs have toll and FASTag included?", answer: "All our outstation cabs are FASTag-equipped for seamless toll passage. Toll charges, state entry taxes, and parking are billed at actuals with receipts shown on request. There is no markup on tolls — you pay exactly what the toll plaza charges." },
+    { question: "Can I book an outstation cab for a multi-day road trip?", answer: "Absolutely. We run multi-day round-trip packages such as the Golden Triangle (Delhi-Agra-Jaipur), Rajasthan circuit, and Himachal hill-station tours. The same driver and vehicle stay with you throughout, billed at 250 km per day plus driver night allowance of ₹300-500. Contact us for a custom daily-rate quote." },
+    { question: "What is the cancellation policy for outstation cabs?", answer: "Free cancellation up to 6 hours before pickup. Cancellation within 6 hours incurs 25% charge. No-show or last-minute cancellation is charged at 50%. For special occasions and peak dates, cancellation policies may vary." },
+    { question: "Is outstation cab booking cheaper than a train or flight?", answer: "For groups of 3 or more and routes under 600 km, an outstation cab is often cheaper and far more convenient than multiple train or flight tickets — you get door-to-door pickup, unlimited luggage, and the freedom to stop anywhere. For a family of four, a Delhi-Jaipur sedan at ₹3,080 typically beats four train tickets plus local transfers at both ends." }
   ];
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
-  const howToSchema = { "@context": "https://schema.org", "@type": "HowTo", "name": "How to Book an Outstation Cab with Triveni Cabs", "description": "Simple 4-step process to book an outstation cab for your intercity travel needs", "totalTime": "PT3M", "step": [{ "@type": "HowToStep", "position": 1, "name": "Choose Your Route", "text": "Select your pickup city, destination, and travel date. Choose between one-way or round trip options." }, { "@type": "HowToStep", "position": 2, "name": "Select Your Vehicle", "text": "Pick from Sedan (₹11/km), SUV (₹15/km), or Tempo Traveller (₹24/km) based on group size and comfort preference." }, { "@type": "HowToStep", "position": 3, "name": "Confirm Booking", "text": "Call 7668570551 or WhatsApp to confirm your booking. Get instant confirmation with driver details and exact fare." }, { "@type": "HowToStep", "position": 4, "name": "Enjoy Your Trip", "text": "Your verified driver arrives on time with a clean, sanitized AC vehicle. Track your ride with GPS and enjoy 24/7 support." }] };
+  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })), "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']) };
+  const howToSchema = getHowToSchema({
+    name: "How to Book an Outstation Cab with Triveni Cabs",
+    description: "Simple 4-step process to book an outstation cab for your intercity travel needs",
+    totalTime: "PT3M",
+    estimatedCost: { currency: "INR", value: "11" },
+    steps: [
+      { name: "Choose Your Route", text: "Select your pickup city, destination, and travel date. Choose between one-way or round trip options." },
+      { name: "Select Your Vehicle", text: "Pick from Sedan (₹11/km), SUV (₹15/km), or Tempo Traveller (₹24/km) based on group size and comfort preference." },
+      { name: "Confirm Booking", text: "Call 7668570551 or WhatsApp to confirm your booking. Get instant confirmation with driver details and exact fare." },
+      { name: "Enjoy Your Trip", text: "Your verified driver arrives on time with a clean, sanitized AC vehicle. Track your ride with GPS and enjoy 24/7 support." }
+    ]
+  });
+  const articleSchema = getArticleSchema({
+    slug: 'outstation-cabs',
+    headline: 'Outstation Cab Booking 2026 — One-Way & Round Trip Across India',
+    description: 'Complete guide to outstation cab booking in India: fares from ₹11/km, one-way vs round-trip comparison, vehicle options, and 500+ routes from Delhi, Agra, Jaipur and more.',
+    image: '/images/citypage_hero_section_image.jpg',
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
+  // Comparison: One-Way vs Round-Trip outstation (Table + Article for snippet capture)
+  const comparisonRows = [
+    { feature: "Billing basis", oneWay: "Single direction, 300 km minimum", roundTrip: "250 km per day minimum" },
+    { feature: "Driver & vehicle", oneWay: "Drops you and returns separately", roundTrip: "Same driver stays for whole trip" },
+    { feature: "Toll & taxes", oneWay: "Charged for one side only", roundTrip: "Charged for both directions" },
+    { feature: "Best for", oneWay: "One-time relocation or single journey", roundTrip: "Multi-day trips & local sightseeing" },
+    { feature: "Typical saving", oneWay: "Up to 50% vs round-trip for single trips", roundTrip: "Cheaper per-km on 2+ day itineraries" },
+    { feature: "Night allowance", oneWay: "Usually not applicable on day drops", roundTrip: "₹300-500/night for overnight stays" }
+  ];
+  const comparisonSchema = getComparisonSchema({
+    slug: 'outstation-cabs',
+    title: 'One-Way vs Round-Trip Outstation Cab — Which Should You Book?',
+    description: 'Side-by-side comparison of one-way and round-trip outstation cab booking: billing, toll, driver, savings and best use cases.',
+    rows: comparisonRows,
+    mentions: ['One-way cab', 'Round-trip cab', 'Outstation taxi', 'Intercity cab booking']
+  });
 
   /* ──────── DATA ──────── */
   const popularRoutes = [
@@ -72,15 +140,20 @@ export default function OutstationCabsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
 
       {/* ===== DESIGN: Dark futuristic with gradient mesh, glassmorphism, grid overlay ===== */}
       <div className="min-h-screen bg-[#07070d] text-white">
 
         {/* ─── HERO: Split layout with glassmorphism pricing card ─── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section className="relative min-h-[80vh] flex items-center overflow-hidden">
           {/* Gradient mesh */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-yellow-500/25 rounded-full blur-[128px]" />
@@ -98,13 +171,13 @@ export default function OutstationCabsPage() {
                 <span className="text-yellow-300/90 font-medium text-sm tracking-wide">500+ Outstation Routes</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.08] tracking-tight">
+              <h1 className="speakable-headline text-5xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.08] tracking-tight">
                 Outstation<br />
                 <span className="text-transparent bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-400 bg-clip-text">Cab Booking</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-white/50 mb-10 max-w-lg leading-relaxed">
-                One-way & round trip cabs across India. Transparent pricing, verified drivers, AC vehicles from <strong className="text-yellow-400 font-bold">₹11/km</strong>.
+              <p className="speakable-lead text-lg md:text-xl text-white/50 mb-10 max-w-lg leading-relaxed">
+                Book an <strong className="text-yellow-400 font-bold">outstation cab</strong> across India from <strong className="text-yellow-400 font-bold">₹11/km</strong>. One-way and round-trip taxis to 500+ destinations with verified drivers, FASTag-equipped AC vehicles, and transparent per-km pricing. Call 7668570551 for an instant quote.
               </p>
 
               {/* Mini stats */}
@@ -119,12 +192,12 @@ export default function OutstationCabsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-7 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-500/20 hover:shadow-yellow-500/35 hover:scale-[1.02] transition-all">
+                <TrackedCta type="call" location="outstation_hub_hero" className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-7 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-500/20 hover:shadow-yellow-500/35 hover:scale-[1.02] transition-all">
                   <Phone className="w-5 h-5" /> Call: 7668570551
-                </Link>
-                <Link href="https://wa.me/917668570551?text=I want to book an outstation cab" className="inline-flex items-center gap-2 bg-white/[0.06] backdrop-blur-xl text-white px-7 py-4 rounded-2xl font-bold text-lg border border-white/[0.1] hover:bg-white/[0.1] transition-all">
+                </TrackedCta>
+                <TrackedCta type="whatsapp" location="outstation_hub_hero" href="https://wa.me/917668570551?text=I want to book an outstation cab" message="I want to book an outstation cab" className="inline-flex items-center gap-2 bg-white/[0.06] backdrop-blur-xl text-white px-7 py-4 rounded-2xl font-bold text-lg border border-white/[0.1] hover:bg-white/[0.1] transition-all">
                   WhatsApp <ArrowRight className="w-5 h-5" />
-                </Link>
+                </TrackedCta>
               </div>
             </div>
 
@@ -165,6 +238,10 @@ export default function OutstationCabsPage() {
                 <Link href="/pricing" className="mt-5 w-full inline-flex items-center justify-center gap-2 bg-white/[0.06] text-white/70 py-3 rounded-xl text-sm font-semibold hover:bg-white/[0.1] hover:text-white transition-all border border-white/[0.06]">
                   View Full Pricing <ArrowRight className="w-4 h-4" />
                 </Link>
+              </div>
+              {/* Above-fold lead-capture form */}
+              <div className="relative mt-4 max-w-md mx-auto lg:mx-0">
+                <QuickEnquiryForm pageType="route" />
               </div>
             </div>
           </div>
@@ -322,6 +399,34 @@ export default function OutstationCabsPage() {
                 </div>
               </Link>
             </div>
+
+            {/* Visible comparison table for featured-snippet capture */}
+            <div className="mt-12 bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/[0.06] overflow-hidden">
+              <h3 className="text-lg font-bold px-6 pt-6 pb-2">One-Way vs Round-Trip Outstation Cab — Quick Comparison</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm min-w-[640px]">
+                  <thead>
+                    <tr className="bg-yellow-500/[0.08] text-white/50 text-xs uppercase tracking-wider">
+                      <th className="px-5 py-3 text-left font-semibold">Factor</th>
+                      <th className="px-5 py-3 text-left font-semibold text-emerald-400/80">One-Way Cab</th>
+                      <th className="px-5 py-3 text-left font-semibold text-violet-400/80">Round Trip Cab</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comparisonRows.map((row, i) => (
+                      <tr key={i} className={`border-b border-white/[0.04] ${i % 2 ? 'bg-white/[0.01]' : ''}`}>
+                        <td className="px-5 py-4 font-semibold text-white/80">{row.feature}</td>
+                        <td className="px-5 py-4 text-white/50">{row.oneWay}</td>
+                        <td className="px-5 py-4 text-white/50">{row.roundTrip}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-white/25 text-xs px-6 py-4">
+                Still unsure? <Link href="/one-way-cab" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">Compare one-way fares</Link> or <Link href="/round-trip-cab" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">round-trip packages</Link> — or call 7668570551 and we&apos;ll recommend the cheaper option for your route.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -398,7 +503,7 @@ export default function OutstationCabsPage() {
                     <span className="text-yellow-400/30 text-xs font-mono mt-1 flex-shrink-0">0{i + 1}</span>
                     <span>{faq.question}</span>
                   </h3>
-                  <p className="text-white/35 text-sm leading-relaxed ml-8">{faq.answer}</p>
+                  <p className={`text-white/35 text-sm leading-relaxed ml-8${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -544,12 +649,12 @@ export default function OutstationCabsPage() {
             <h2 className="text-4xl md:text-5xl font-black mb-4">Ready to <span className="text-transparent bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text">Hit the Road?</span></h2>
             <p className="text-white/35 mb-10 text-lg">Instant fare quotes. Book in under 2 minutes.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-500/20 hover:shadow-yellow-500/35 hover:scale-[1.02] transition-all">
+              <TrackedCta type="call" location="outstation_hub_footer" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-500/20 hover:shadow-yellow-500/35 hover:scale-[1.02] transition-all">
                 <Phone className="w-5 h-5" /> Call: 7668570551
-              </Link>
-              <Link href="https://wa.me/917668570551?text=I want to book an outstation cab" className="inline-flex items-center justify-center gap-2 bg-white/[0.06] backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/[0.1] hover:bg-white/[0.1] transition-all">
+              </TrackedCta>
+              <TrackedCta type="whatsapp" location="outstation_hub_footer" href="https://wa.me/917668570551?text=I want to book an outstation cab" message="I want to book an outstation cab" className="inline-flex items-center justify-center gap-2 bg-white/[0.06] backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/[0.1] hover:bg-white/[0.1] transition-all">
                 WhatsApp Booking <ChevronRight className="w-5 h-5" />
-              </Link>
+              </TrackedCta>
             </div>
           </div>
         </section>

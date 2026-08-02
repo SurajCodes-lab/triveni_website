@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Sunrise Taj Mahal Tour from Delhi | 2-3 AM Start | 2026',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/sunrise-taj-mahal-tour-from-delhi',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/taj-mahal-hero.jpg', width: 1200, height: 630, alt: 'Sunrise at Taj Mahal Tour from Delhi' }],
+    images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Sunrise at Taj Mahal Tour from Delhi' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Catch the magical sunrise at Taj Mahal. Depart Delhi 2-3 AM. Photography tips included.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/taj-mahal-hero.jpg'],
+    images: ['/images/sightseeing/Agra/Taj_mahal.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

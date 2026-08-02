@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Varanasi Food Tour 2026 | Kachori Sabzi, Tamatar Chaat & Banarasi Cuisine Guide',
-  description: 'Varanasi food & culinary tour. Famous Kachori Sabzi, Tamatar Chaat, Banarasi Paan, Thandai, Malaiyo. Street food itinerary, best restaurants. By Varanasi locals. Call 7668570551.',
+  title: 'Varanasi Food Tour 2026 | Kachori Sabzi & Banarasi Cuisine',
+  description: 'Varanasi food & culinary tour. Famous Kachori Sabzi, Tamatar Chaat, Banarasi Paan, Thandai, Malaiyo. Street food itinerary, best restaurants.',
   keywords: 'varanasi food tour, varanasi street food, banarasi food, kachori sabzi varanasi, tamatar chaat, banarasi paan, thandai varanasi, malaiyo, varanasi food guide',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function VaranasiFoodTourPage() {
     { question: "How much does a Varanasi food tour cost?", answer: "Street food budget: ₹150-350 per person for a full tour. Restaurant meals: ₹200-500 per person. Our food tour with cab: ₹1,200 (sedan) for half-day covering 5-6 stops plus ghat visits. We handle transport between all food spots." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function VaranasiFoodTourPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const famousFoods = [
     { name: "Kachori Sabzi", desc: "Varanasi&apos;s quintessential breakfast. Crispy, flaky kachoris served with spicy aloo sabzi (potato curry) and tangy chutney. Every gali (lane) has its own kachori vendor, but the ones near Dashashwamedh Ghat are legendary.", price: "₹20-40 per plate", mustTry: true, heat: 1 },
@@ -106,6 +107,19 @@ export default function VaranasiFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "varanasi-food-tour",
+    headline: "Varanasi Food Tour 2026 — Best Street Food, Restaurants & Local Specialties",
+    description: "Complete Varanasi food tour. Local specialties, street food trails, best restaurants, dessert spots, regional cuisine highlights, where to eat in Varanasi.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("varanasi", { idSlug: "varanasi-food-tour" });
+
 
   return (
     <>
@@ -123,6 +137,8 @@ export default function VaranasiFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

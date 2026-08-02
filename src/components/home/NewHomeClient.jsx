@@ -9,7 +9,6 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import CabSearchWidget from './CabSearchWidget';
 import { getPopularRoutes } from '@/lib/searchUtils';
 import { phoneNumber } from '@/utilis/data';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import LiveActivityBadge from '@/components/shared/LiveActivityBadge';
 import GoogleReviewsBadge from '@/components/shared/GoogleReviewsBadge';
@@ -209,6 +208,8 @@ function PopularRoutes() {
 }
 
 // ─── FOLD 3: Services Grid — Discover ────────────────────────────────────────
+// SEO: Links to all 8 money pages with descriptive, keyword-rich anchor text.
+// Homepage is the highest PageRank page — every link here passes maximum equity.
 const SERVICES = [
   {
     title: 'Outstation Cabs',
@@ -238,13 +239,22 @@ const SERVICES = [
     image: '/images/wedding_car.jpg',
   },
   {
-    title: 'Tour Packages',
+    title: 'Sightseeing Tours',
     desc: 'Golden Triangle, Rajasthan, Kashmir',
     price: 'From ₹3,500',
     icon: MapPin,
-    href: '/services',
+    href: '/sightseeing',
     gradient: 'from-emerald-500 to-teal-600',
     image: '/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg',
+  },
+  {
+    title: 'Tempo Traveller',
+    desc: '12-26 seater for family & groups',
+    price: 'From ₹20/km',
+    icon: Users,
+    href: '/tempo-traveller',
+    gradient: 'from-amber-500 to-orange-600',
+    image: '/images/tempo/26_seater.jpg',
   },
   {
     title: 'Bus Rental',
@@ -256,13 +266,22 @@ const SERVICES = [
     image: '/images/bus/hero_section_image.webp',
   },
   {
-    title: 'Tempo Traveller',
-    desc: '12-26 seater for family & groups',
-    price: 'From ₹20/km',
-    icon: Users,
-    href: '/tempo-traveller',
-    gradient: 'from-amber-500 to-orange-600',
-    image: '/images/tempo/26_seater.jpg',
+    title: 'Corporate Transport',
+    desc: 'Employee cabs, GPS-tracked, monthly plans',
+    price: 'From ₹11/km',
+    icon: ShieldCheck,
+    href: '/corporate-transportation-service',
+    gradient: 'from-slate-600 to-gray-700',
+    image: '/images/car/premium_suv.jpg',
+  },
+  {
+    title: 'Event Transportation',
+    desc: 'Conferences, concerts, group travel',
+    price: 'Custom Quote',
+    icon: Sparkles,
+    href: '/event-transportation-service',
+    gradient: 'from-fuchsia-500 to-pink-600',
+    image: '/images/bus/45_SEATER_BUS.jpg',
   },
 ];
 
@@ -276,7 +295,7 @@ function ServicesSection() {
           <p className="text-gray-500 text-sm mt-2 max-w-lg mx-auto">From outstation cabs to luxury wedding cars — everything under one roof</p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {SERVICES.map((s, idx) => (
             <motion.div
               key={idx}
@@ -436,12 +455,12 @@ function FinalSection() {
           <div className="relative px-6 py-10 sm:py-12 text-center">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 py-1.5 mb-4">
               <Sparkles className="w-3.5 h-3.5 text-gray-900/60" />
-              <span className="text-xs font-bold text-gray-900/60">Ready to Travel?</span>
+              <span className="text-xs font-bold text-gray-900/80">Ready to Travel?</span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 leading-tight">
               Book Your Cab Now
             </h2>
-            <p className="text-gray-900/50 text-sm sm:text-base mt-2 max-w-md mx-auto">
+            <p className="text-gray-900/80 text-sm sm:text-base mt-2 max-w-md mx-auto">
               Get instant quotes. No app needed. Just call or WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6 max-w-md mx-auto">
@@ -462,7 +481,7 @@ function FinalSection() {
                 <WhatsAppIcon className="w-4 h-4" /> WhatsApp Us
               </a>
             </div>
-            <div className="flex items-center justify-center gap-3 mt-4 text-[11px] text-gray-900/40 font-semibold flex-wrap">
+            <div className="flex items-center justify-center gap-3 mt-4 text-[11px] text-gray-900/70 font-semibold flex-wrap">
               <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" /> 24/7 Available</span>
               <span className="w-1 h-1 rounded-full bg-gray-900/20" />
               <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Instant Confirmation</span>
@@ -626,6 +645,88 @@ function TrendingSearchesSection() {
   );
 }
 
+// ─── Airport Transfer Hero Banner — photo backdrop entry point ───────────────
+function AirportHeroBanner() {
+  const waText = 'Hi Triveni Cabs, I need an airport taxi with flight tracking & meet-and-greet. Please share availability and fare.';
+  const waUrl = `https://wa.me/917668570551?text=${encodeURIComponent(waText)}`;
+  return (
+    <section className="relative overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center">
+      {/* Airport backdrop image */}
+      <Image
+        src="/images/airport_section.jpg"
+        alt="Airport taxi transfer — flight tracking and meet & greet at arrivals"
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        quality={80}
+      />
+      {/* Dark cinematic overlay — keep the left text column solidly dark for legibility over the bright photo */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+      {/* Airline gold accent line */}
+      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FACF2D] to-transparent z-10" />
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-4 py-14 sm:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl"
+        >
+          {/* Live flight-status pill */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/30 bg-[#FACF2D]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FACF2D] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FACF2D]" />
+            </span>
+            Airport Transfers · 24/7
+          </div>
+
+          <h2 className="mt-5 text-3xl sm:text-5xl font-black text-white leading-[1.05] drop-shadow-lg">
+            Land. Step out.{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-amber-400">Your cab is waiting.</span>
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-white/80 max-w-xl">
+            Live flight tracking, a driver holding your name at arrivals, and a fixed fare with zero surge. Delhi IGI, Jaipur, Chandigarh, Noida Jewar &amp; 50+ airports.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
+            <span className="flex items-center gap-1.5"><Plane className="w-4 h-4 text-[#FACF2D]" /> Flight Tracking</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-[#FACF2D]" /> Meet &amp; Greet</span>
+            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#FACF2D]" /> 60 min Free Wait</span>
+          </div>
+
+          <div className="mt-7 flex flex-col sm:flex-row gap-3">
+            <Link
+              href="/airport-service"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FACF2D] to-amber-500 px-7 py-3.5 text-base font-bold text-slate-950 shadow-lg shadow-[#FACF2D]/25 hover:scale-[1.02] transition-transform"
+            >
+              Book Airport Taxi <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('home_airport_banner')}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-base font-bold text-white backdrop-blur-md hover:bg-white/20 transition-colors"
+            >
+              <Phone className="w-4 h-4" /> Call Now
+            </a>
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('home_airport_banner')}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-base font-bold text-white backdrop-blur-md hover:bg-white/20 transition-colors"
+            >
+              <WhatsAppIcon className="w-4 h-4 text-emerald-400" /> WhatsApp
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Main Component ────────────────────────────────────────────────────────
 export default function NewHomeClient() {
   return (
@@ -633,11 +734,11 @@ export default function NewHomeClient() {
       <HeroSection />
       <PopularRoutes />
       <ServicesSection />
+      <AirportHeroBanner />
       <TrustSection />
       <FinalSection />
       <InternationalTravellersSection />
       <TrendingSearchesSection />
-      <MobileStickyBar />
     </>
   );
 }

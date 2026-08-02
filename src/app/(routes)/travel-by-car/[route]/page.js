@@ -1,10 +1,15 @@
 import { notFound } from 'next/navigation';
-import { getTravelByCarRoute, getAllTravelByCarSlugs, getRelatedTravelByCarRoutes } from '@/utilis/travelByCarData';
+import { getTravelByCarRoute, getAllTravelByCarSlugs, getRelatedTravelByCarRoutes, cityNameToGeoSlug } from '@/utilis/travelByCarData';
 import TravelByCarClient from '@/components/travel-by-car/TravelByCarClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import {
+  getSpeakableSchema, getArticleSchema, getHowToSchema,
+  getComparisonSchema, getCityPlaceSchema,
+} from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -83,6 +88,10 @@ export default async function TravelByCarPage({ params }) {
 
   const relatedRoutes = getRelatedTravelByCarRoutes(slug);
 
+  const pageUrl = `https://www.trivenicabs.in/travel-by-car/${slug}`;
+  const ogImage = getOgImageForSlug(slug);
+  const ratingAndReviews = getRatingAndReviews(slug, 'city');
+
   // JSON-LD: TravelAction Schema
   const travelActionSchema = {
     "@context": "https://schema.org",
@@ -109,8 +118,10 @@ export default async function TravelByCarPage({ params }) {
     "serviceType": `Cab Service ${route.origin} to ${route.destination}`,
     "name": `${route.origin} to ${route.destination} Cab — ${route.totalDistance} km Road Trip`,
     "description": `Book AC cab from ${route.origin} to ${route.destination}. ${route.totalDistance} km, ${route.drivingTime} drive. Sedan from ${route.cabFares.sedan}. Experienced drivers, GPS tracking, 24/7 support.`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#localbusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -135,12 +146,7 @@ export default async function TravelByCarPage({ params }) {
       "priceCurrency": "INR",
       "offerCount": "3"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5"
-    }
+    ...ratingAndReviews,
   };
 
   // JSON-LD: Breadcrumb
@@ -150,14 +156,15 @@ export default async function TravelByCarPage({ params }) {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
       { "@type": "ListItem", "position": 2, "name": "Travel by Car", "item": "https://www.trivenicabs.in/travel-by-car" },
-      { "@type": "ListItem", "position": 3, "name": `${route.origin} to ${route.destination}`, "item": `https://www.trivenicabs.in/travel-by-car/${slug}` }
+      { "@type": "ListItem", "position": 3, "name": `${route.origin} to ${route.destination}`, "item": pageUrl }
     ]
   };
 
-  // JSON-LD: FAQ
+  // JSON-LD: FAQ (+ Speakable for voice answers)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
     "mainEntity": route.faqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,
@@ -165,12 +172,64 @@ export default async function TravelByCarPage({ params }) {
     }))
   };
 
+  // JSON-LD: Article (freshness + voice search)
+  const articleSchema = getArticleSchema({
+    slug: `travel-by-car/${slug}`,
+    headline: `${route.origin} to ${route.destination} by Car — ${route.totalDistance} km Road Trip Guide`,
+    description: `Complete ${route.origin} to ${route.destination} driving guide: ${route.totalDistance} km, ${route.drivingTime}, segment-by-segment road map, fuel and food stops, seasonal road conditions, and cab fares from ${route.cabFares.sedan}.`,
+    image: ogImage,
+    speakableSelectors: ['.speakable-headline', '.speakable-lead'],
+  });
+
+  // JSON-LD: HowTo — drive this route
+  const howToSchema = getHowToSchema({
+    name: `How to Drive from ${route.origin} to ${route.destination}`,
+    description: `Step-by-step guide to driving the ${route.totalDistance} km ${route.origin}–${route.destination} route in ${route.drivingTime}.`,
+    totalTime: 'PT10M',
+    estimatedCost: { currency: 'INR', value: route.sedanRaw },
+    steps: [
+      { name: 'Start early', text: `Leave ${route.origin} by 5-6 AM to beat city traffic and, on hill routes, cover the mountain stretches in daylight. Total drive: about ${route.drivingTime}.` },
+      { name: 'Follow the highway route', text: `Take the main highway through ${route.roadMap.slice(0, 3).map(s => s.segment.split(' to ')[1] || s.segment).join(', ')} toward ${route.destination}.` },
+      { name: 'Fuel up and rest', text: `Plan fuel stops (about ${route.petrolStops} stations en route) and food breaks every 2-3 hours at ${route.foodStops.slice(0, 2).join(' and ')}.` },
+      { name: 'Drive for the season', text: 'Check seasonal road conditions before you go — hill sections can have snow in winter and landslide risk in monsoon.' },
+      { name: 'Or book a chauffeur cab', text: `Book a Triveni cab from ${route.cabFares.sedan} (sedan) and skip the driving fatigue — the driver handles navigation, tolls and parking.` },
+    ],
+  });
+
+  // JSON-LD: Comparison — car vs train/bus/flight
+  const comparisonSchema = getComparisonSchema({
+    slug: `travel-by-car/${slug}`,
+    title: `Car vs Train, Bus or Flight from ${route.origin} to ${route.destination}`,
+    description: `Compare travelling by car, train, bus and flight from ${route.origin} to ${route.destination} (${route.totalDistance} km) — door-to-door convenience, luggage freedom, cost and flexibility.`,
+    rows: [
+      { feature: 'Door-to-door convenience' },
+      { feature: 'Luggage freedom' },
+      { feature: 'Stops & sightseeing en route' },
+      { feature: 'Total travel time' },
+      { feature: 'Cost for a group' },
+    ],
+    mentions: ['Car / cab', 'Train', 'Bus', 'Flight', route.origin, route.destination],
+  });
+
+  // JSON-LD: GEO Place entities for origin + destination
+  const originPlace = getCityPlaceSchema(cityNameToGeoSlug(route.origin), { idSlug: `travel-by-car/${slug}` });
+  const destPlace = getCityPlaceSchema(cityNameToGeoSlug(route.destination), { idSlug: `travel-by-car/${slug}` });
+  const placeSchemas = [originPlace, destPlace].filter(Boolean);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(travelActionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      {placeSchemas.map((s, i) => (
+        <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <AEOHead pageType="route" data={{ url: `/travel-by-car/${slug}`, title: `${route.origin} to ${route.destination} by Car`, origin: route.origin, destination: route.destination, city: route.origin }} />
       <TravelByCarClient route={route} relatedRoutes={relatedRoutes} />
     </>

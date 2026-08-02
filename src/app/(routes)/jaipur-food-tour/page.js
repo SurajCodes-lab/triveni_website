@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaipur Food Tour 2026 | Dal Baati Churma, Pyaaz Kachori & Rajasthani Cuisine Guide',
-  description: 'Jaipur food & culinary tour. Famous Dal Baati Churma, Pyaaz Kachori, Laal Maas, Ghewar, Lassi. Street food itinerary, best restaurants. By Jaipur locals. Call 7668570551.',
+  title: 'Jaipur Food Tour 2026 | Dal Baati Churma & Pyaaz Kachori',
+  description: 'Jaipur food & culinary tour. Famous Dal Baati Churma, Pyaaz Kachori, Laal Maas, Ghewar, Lassi. Street food itinerary, best restaurants. By Jaipur locals.',
   keywords: 'jaipur food tour, jaipur street food, jaipur famous food, dal baati churma, pyaaz kachori jaipur, laal maas, ghewar jaipur, jaipur food guide, rajasthani food jaipur',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function JaipurFoodTourPage() {
     { question: "What sweets should I buy from Jaipur?", answer: "Ghewar (especially during Teej and monsoon season), Mawa Kachori from Rawat Mishtan Bhandar, Mishri Mawa, Balushahi, and Rajasthani Churma Ladoo. LMB and Rawat are the most trusted shops. Ghewar is Jaipur's signature gift sweet." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function JaipurFoodTourPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const famousFoods = [
     { name: "Dal Baati Churma", desc: "Rajasthan&apos;s most iconic dish. Baked wheat balls (baati) dipped in ghee, served with panchmel dal (five-lentil mix) and sweet churma (crushed baati with jaggery and ghee). LMB on Johari Bazaar serves the definitive version.", price: "₹150-300 per thali", mustTry: true, heat: 1 },
@@ -106,6 +107,19 @@ export default function JaipurFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "jaipur-food-tour",
+    headline: "Jaipur Food Tour 2026 — Dal Baati, Laal Maas, Pyaaz Kachori",
+    description: "Complete Jaipur food tour. Dal Baati Churma, Laal Maas, Pyaaz Kachori at Rawat Mishtan Bhandar, Ghewar, royal Rajasthani thalis. Best restaurants & street food.",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("jaipur", { idSlug: "jaipur-food-tour" });
+
 
   return (
     <>
@@ -123,6 +137,8 @@ export default function JaipurFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

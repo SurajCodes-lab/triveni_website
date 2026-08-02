@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getLocalTaxiCity, getAllLocalTaxiSlugs, getRelatedLocalTaxiCities } from '@/utilis/localTaxiCityData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import LocalTaxiCityClient from '@/components/local-taxi/LocalTaxiCityClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -118,7 +119,7 @@ export default async function LocalTaxiCityPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5"
     }
   };
@@ -163,7 +164,7 @@ export default async function LocalTaxiCityPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000"
+      "reviewCount": String(getDeterministicReviewCount(slug))
     }
   };
 

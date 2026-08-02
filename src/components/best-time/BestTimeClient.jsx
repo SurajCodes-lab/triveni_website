@@ -13,7 +13,9 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import FleetShowcase from '@/components/shared/FleetShowcase';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
@@ -33,6 +35,11 @@ export default function BestTimeClient({ data, relatedDestinations }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta
+        price="₹11/km"
+        label={`Cab to ${data.destination}`}
+        whatsappText={whatsappMsg}
+      />
 
       {/* ━━━ HERO: Travel calendar aesthetic ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
@@ -69,10 +76,19 @@ export default function BestTimeClient({ data, relatedDestinations }) {
                   {WA} WhatsApp Booking
                 </a>
               </div>
+
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 text-white/70 text-xs sm:text-sm font-medium">
+                <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-[#FACF2D] fill-[#FACF2D]" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-emerald-400" /> 10,000+ Trips</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Verified Drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> No Advance Payment</span>
+              </div>
             </div>
 
+            <div className="w-full lg:w-72 flex-shrink-0 space-y-4">
             {/* Floating quick facts card */}
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Peak Season</p>
@@ -95,6 +111,8 @@ export default function BestTimeClient({ data, relatedDestinations }) {
                 <div className="flex -space-x-1">{[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}</div>
                 <span className="text-[11px] text-white/40 font-medium">4.9 · 10,000+ trips</span>
               </div>
+            </div>
+            <QuickEnquiryForm toCity={data.destination} pageType="best-time" />
             </div>
           </div>
         </div>
@@ -329,6 +347,25 @@ export default function BestTimeClient({ data, relatedDestinations }) {
         </div>
       </section>
 
+      {/* ━━━ DESTINATION IMAGE ━━━ */}
+      <section className="relative h-64 sm:h-80 overflow-hidden">
+        <Image src={getCityImage(data.destination)} alt={`${data.destination} city`} fill className="object-cover" sizes="100vw" quality={80} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Your Destination</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-white">{data.destination}</h2>
+        </div>
+      </section>
+
+      {/* ━━━ FLEET ━━━ */}
+      <FleetShowcase
+        theme="light"
+        accentColor="emerald"
+        whatsappMessage={`Hi, planning to visit ${data.destination}. Need cab service.`}
+        title="Our Fleet"
+        subtitle="Choose Your Ride"
+      />
+
       {/* ━━━ FAQ ━━━ */}
       <FaqAccordion heading={`Common Questions about ${data.destination}`} faqs={data.faqs} />
 
@@ -364,7 +401,6 @@ export default function BestTimeClient({ data, relatedDestinations }) {
       )}
 
       <CTASection heading={`Plan Your ${data.destination} Trip`} subheading={`Best time: ${data.peakSeason}. AC cabs from Rs 11/km with verified drivers and 24/7 booking.`} />
-      <MobileStickyBar />
     </div>
   );
 }

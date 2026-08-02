@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getMonthData, getAllMonthSlugs, getAdjacentMonths } from '@/utilis/monthlyCalendarData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import MonthlyCalendarClient from '@/components/monthly-calendar/MonthlyCalendarClient';
 import AEOHead from '@/components/seo/AEOHead';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -75,7 +76,7 @@ export default async function WhereToGoPage({ params }) {
     "description": `Top ${data.destinations.length} destinations to visit in ${data.month}: ${data.destinations.map(d => d.name).join(', ')}. Complete weather, cost, and festival guide.`,
     "touristType": "Leisure Travelers",
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" } },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
   };
 
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Where to Go", "item": "https://www.trivenicabs.in/where-to-go" }, { "@type": "ListItem", "position": 3, "name": data.month, "item": `https://www.trivenicabs.in/where-to-go/${slug}` } ] };

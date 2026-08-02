@@ -1,10 +1,10 @@
 import CancellationClient from "./CancellationClient";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Cancellation & Refund Policy | Triveni Cabs",
-  description: "Learn about Triveni Cabs cancellation and refund policy. Fair, transparent, and customer-friendly terms. Full refund for 7+ days advance cancellation, 50% for 3-6 days, no refund within 72 hours.",
+  description: "Learn about Triveni Cabs cancellation and refund policy. Fair, transparent, and customer-friendly terms.",
   keywords: "Triveni Cabs cancellation policy, taxi refund policy, cab booking cancellation, travel refund terms, cab service cancellation, taxi cancellation charges, refund process India",
   alternates: {
     canonical: "https://www.trivenicabs.in/cancellation-and-refund-policy"
@@ -35,6 +35,24 @@ export const metadata = {
   },
 };
 
+// BreadcrumbList schema — makes the page eligible for breadcrumb SERP display
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+    { "@type": "ListItem", "position": 2, "name": "Cancellation & Refund Policy", "item": "https://www.trivenicabs.in/cancellation-and-refund-policy" }
+  ]
+};
+
 export default function CancellationRefundPolicyPage() {
-  return <CancellationClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <CancellationClient />
+    </>
+  );
 }

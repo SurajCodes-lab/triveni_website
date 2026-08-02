@@ -17,11 +17,11 @@ import {
   Headphones
 } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Corporate Cab Service vs Ola/Uber 2026 | Complete Comparison Guide | Triveni Cabs',
-  description: 'In-depth comparison: Dedicated corporate cab service vs Ola/Uber for business. Fixed rates vs surge pricing, dedicated drivers vs random, GST invoicing, accountability. Why 500+ companies switched to dedicated transport. Call 7668570551.',
+  title: 'Corporate Cab vs Ola/Uber 2026 | Complete Comparison',
+  description: 'In-depth comparison: Dedicated corporate cab service vs Ola/Uber for business. Fixed rates vs surge pricing, dedicated drivers vs random, GST invoicing.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -33,7 +33,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Corporate Cab vs Ola/Uber: Complete 2024 Comparison | Triveni Cabs',
+    title: 'Corporate Cab vs Ola/Uber: Complete 2024 Comparison',
     description: 'Detailed comparison of dedicated corporate transport vs ride aggregators. Fixed pricing, dedicated drivers, GST compliant invoicing.',
     type: 'article',
     locale: 'en_IN',
@@ -551,7 +551,7 @@ export default function ComparisonPage() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                <span className="text-sm">5 Cities</span>
+                <span className="text-sm">9 Cities</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5" />

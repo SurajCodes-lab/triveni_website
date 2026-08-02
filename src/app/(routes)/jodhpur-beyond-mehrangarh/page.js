@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jodhpur Beyond Mehrangarh | Hidden Gems & Blue City Secrets | 2026',
-  description: 'Discover Jodhpur beyond Mehrangarh Fort. Mandore Gardens, Rao Jodha Desert Rock Park, Toorji Ka Jhalra stepwell, Bishnoi Village Safari, Clock Tower Market, Masuria Hill, Balsamand & Kaylana Lake. Call 7668570551.',
+  title: 'Jodhpur Beyond Mehrangarh | Hidden Gems & Blue City',
+  description: 'Discover Jodhpur beyond Mehrangarh Fort. Mandore Gardens, Rao Jodha Desert Rock Park, Toorji Ka Jhalra stepwell, Bishnoi Village Safari.',
   keywords: 'jodhpur beyond mehrangarh, jodhpur hidden gems, mandore gardens jodhpur, rao jodha desert rock park, toorji ka jhalra, bishnoi village safari, jodhpur secret spots, blue city jodhpur',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',

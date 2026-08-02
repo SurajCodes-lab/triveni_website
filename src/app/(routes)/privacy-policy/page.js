@@ -1,9 +1,9 @@
 import PrivacyClient from "./PrivacyClient";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: "Privacy Policy | Triveni Cabs",
+  title: "Privacy Policy | Triveni Cabs - Data Protection",
   description: "Read Triveni Cabs privacy policy. Learn how we collect, use, and protect your personal information when you use our taxi and car rental services across India.",
   keywords: "Triveni Cabs privacy policy, taxi service privacy, cab booking data protection, customer data policy, taxi booking privacy India, car rental privacy policy",
   alternates: {
@@ -35,6 +35,24 @@ export const metadata = {
   },
 };
 
+// BreadcrumbList schema — makes the page eligible for breadcrumb SERP display
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+    { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://www.trivenicabs.in/privacy-policy" }
+  ]
+};
+
 export default function PrivacyPolicyPage() {
-  return <PrivacyClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <PrivacyClient />
+    </>
+  );
 }

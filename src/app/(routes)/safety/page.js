@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Phone, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShieldCheck, UserCheck, MapPin, Car, Fingerprint, Lock } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Safety Standards 2026 | Verified Drivers | GPS Tracking | Women Safety',
-  description: 'Triveni Cabs safety: background-checked drivers, GPS tracking, SOS support, 24/7 helpline, sanitized vehicles, women safety features. 100% verified fleet. Call 7668570551.',
+  title: 'Safety Standards 2026 | Verified Drivers, GPS, Women Safe',
+  description: 'Triveni Cabs safety: background-checked drivers, GPS tracking, SOS support, 24/7 helpline, sanitized vehicles, women safety features. 100% verified fleet.',
   keywords: 'safe cab service, safe taxi India, verified cab drivers, GPS tracked cab, women safe cab, cab safety features, safe taxi service, cab driver verification, vehicle safety standards, cab SOS feature, safe travel India, trusted cab company, verified taxi service, cab safety protocols, safe cab for women, night safe taxi, sanitized cab, clean cab service, safe outstation cab, safe airport taxi',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',

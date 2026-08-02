@@ -5,7 +5,7 @@ import { touristAttractions, getCitiesWithAttractions } from '@/utilis/touristAt
 import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -47,12 +47,20 @@ export async function generateMetadata({ params }) {
       `${cityName.toLowerCase()} places to see`,
       `${cityName.toLowerCase()} vacation spots`
     ].join(', '),
+    alternates: { canonical: `https://www.trivenicabs.in/tourist-attractions/${city}` },
     openGraph: {
       title: `Tourist Attractions in ${cityName} | Complete Travel Guide`,
       description: `Complete guide to ${attractions.length} must-visit attractions in ${cityName}. Historical sites, temples, forts and more.`,
       url: `/tourist-attractions/${city}`,
       type: 'website',
-    }
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Tourist Attractions in ${cityName} | Complete Travel Guide`,
+      description: `${attractions.length} must-visit attractions in ${cityName}. Historical sites, temples, forts and more.`,
+      creator: '@trivenicabs',
+      site: '@trivenicabs',
+    },
   };
 }
 

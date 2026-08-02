@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Jaipur Shopping Guide 2026 | Jewelry, Block Print & Handicrafts',
-  description: 'Jaipur shopping guide. Kundan jewelry, block print, Blue Pottery, Bandhani textiles, gemstones. Johari Bazaar, Bapu Bazaar, Tripolia Bazaar. Prices & tips. Call 7668570551.',
+  description: 'Jaipur shopping guide. Kundan jewelry, block print, Blue Pottery, Bandhani textiles, gemstones. Johari Bazaar, Bapu Bazaar, Tripolia Bazaar. Prices & tips.',
   keywords: 'jaipur shopping guide, shopping in jaipur, johari bazaar jaipur, jaipur jewelry market, jaipur block print, blue pottery jaipur, bandhani jaipur, jaipur handicrafts',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function JaipurShoppingGuidePage() {
     { question: "How do I get around Jaipur&apos;s bazaars?", answer: "Jaipur&apos;s main bazaars (Johari, Bapu, Tripolia, Nehru) are all in the Pink City walled area within walking distance of each other. However, the lanes are crowded. Best approach: hire a cab for the day, park near Hawa Mahal, and walk through the bazaars. Our drivers can wait while you shop and help carry purchases back to the car." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function JaipurShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -151,11 +152,26 @@ export default function JaipurShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "jaipur-shopping-guide",
+    headline: "Jaipur Shopping Guide 2026 — Gemstones, Block Print, Mojari, Bandhani",
+    description: "Complete Jaipur shopping guide. Johari Bazaar gemstones, Sanganer block prints, Tripolia Bazaar lac bangles, Bapu Bazaar Mojari shoes, blue pottery, miniature paintings.",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("jaipur", { idSlug: "jaipur-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

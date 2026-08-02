@@ -10,10 +10,10 @@ function createCity({ slug, city, tagline, serviceOverrides, fleetOverrides, pop
   ];
 
   const defaultFleet = [
-    { type: 'Sedan', model: 'Swift Dzire / Etios', perKm: 11, seats: 4 },
-    { type: 'SUV', model: 'Innova Crysta / Ertiga', perKm: 14, seats: 6 },
-    { type: 'Luxury', model: 'BMW / Mercedes', perKm: 35, seats: 4 },
-    { type: 'Tempo Traveller', model: 'Force Traveller 12-Seater', perKm: 20, seats: 12 },
+    { type: 'Sedan', model: 'Swift Dzire / Etios', perKm: 11, seats: 4, img: '/images/car/swift_dzire.jpg' },
+    { type: 'SUV', model: 'Innova Crysta / Ertiga', perKm: 14, seats: 6, img: '/images/car/innova_crysta.jpg' },
+    { type: 'Luxury', model: 'BMW / Mercedes', perKm: 35, seats: 4, img: '/images/wedding/luxury_car.jpg' },
+    { type: 'Tempo Traveller', model: 'Force Traveller 12-Seater', perKm: 20, seats: 12, img: '/images/tempo/12_seater.jpg' },
   ];
 
   const services = serviceOverrides || defaultServices;
@@ -203,6 +203,149 @@ const cabServiceCities = {
       { to: 'Dehradun', distance: '45 km', fare: '₹1,500', time: '1 hr' },
       { to: 'Mussoorie', distance: '75 km', fare: '₹1,500', time: '2.5 hrs' },
       { to: 'Chopta', distance: '190 km', fare: '₹2,090', time: '6 hrs' },
+    ],
+  }),
+  "ayodhya": createCity({
+    slug: "ayodhya", city: "Ayodhya",
+    tagline: "Ayodhya Cab Service — Ram Mandir Darshan, Saryu Ghat & Temple Town Tours",
+    popularRoutes: [
+      { to: 'Lucknow', distance: '135 km', fare: '₹1,500', time: '3 hrs' },
+      { to: 'Varanasi', distance: '200 km', fare: '₹2,200', time: '4 hrs' },
+      { to: 'Prayagraj', distance: '170 km', fare: '₹1,870', time: '3.5 hrs' },
+      { to: 'Gorakhpur', distance: '140 km', fare: '₹1,540', time: '3 hrs' },
+      { to: 'Naimisharanya', distance: '155 km', fare: '₹1,705', time: '3.5 hrs' },
+    ],
+  }),
+  "mathura": createCity({
+    slug: "mathura", city: "Mathura",
+    tagline: "Mathura Cab Service — Krishna Janmabhoomi, Vrindavan Temples & Braj Yatra",
+    popularRoutes: [
+      { to: 'Vrindavan', distance: '12 km', fare: '₹499', time: '30 min' },
+      { to: 'Agra', distance: '58 km', fare: '₹1,500', time: '1.5 hrs' },
+      { to: 'Delhi', distance: '150 km', fare: '₹1,650', time: '2.5 hrs' },
+      { to: 'Govardhan', distance: '22 km', fare: '₹999', time: '45 min' },
+      { to: 'Gokul', distance: '15 km', fare: '₹999', time: '40 min' },
+    ],
+  }),
+  "nainital": createCity({
+    slug: "nainital", city: "Nainital",
+    tagline: "Nainital Taxi Service — Lake District Tours, Kumaon Hills & Mall Road Trips",
+    popularRoutes: [
+      { to: 'Kainchi Dham', distance: '17 km', fare: '₹999', time: '45 min' },
+      { to: 'Bhimtal', distance: '22 km', fare: '₹999', time: '45 min' },
+      { to: 'Mukteshwar', distance: '50 km', fare: '₹1,500', time: '2 hrs' },
+      { to: 'Delhi', distance: '300 km', fare: '₹3,300', time: '7 hrs' },
+      { to: 'Ranikhet', distance: '60 km', fare: '₹1,500', time: '2.5 hrs' },
+    ],
+  }),
+  "mussoorie": createCity({
+    slug: "mussoorie", city: "Mussoorie",
+    tagline: "Mussoorie Cab Service — Queen of Hills Tours, Kempty Falls & Mall Road Trips",
+    popularRoutes: [
+      { to: 'Dehradun', distance: '35 km', fare: '₹999', time: '1.5 hrs' },
+      { to: 'Kempty Falls', distance: '15 km', fare: '₹999', time: '40 min' },
+      { to: 'Dhanaulti', distance: '60 km', fare: '₹1,500', time: '2 hrs' },
+      { to: 'Rishikesh', distance: '75 km', fare: '₹1,500', time: '2.5 hrs' },
+      { to: 'Delhi', distance: '290 km', fare: '₹3,190', time: '6.5 hrs' },
+    ],
+  }),
+  "jaisalmer": createCity({
+    slug: "jaisalmer", city: "Jaisalmer",
+    tagline: "Jaisalmer Taxi Service — Golden Fort Tours, Sam Desert Safaris & Dune Camps",
+    popularRoutes: [
+      { to: 'Sam Sand Dunes', distance: '42 km', fare: '₹1,500', time: '1 hr' },
+      { to: 'Jodhpur', distance: '285 km', fare: '₹3,135', time: '5 hrs' },
+      { to: 'Bikaner', distance: '330 km', fare: '₹3,630', time: '5.5 hrs' },
+      { to: 'Khuri Dunes', distance: '50 km', fare: '₹1,500', time: '1.5 hrs' },
+      { to: 'Jaipur', distance: '560 km', fare: '₹6,160', time: '9 hrs' },
+    ],
+  }),
+  "pushkar": createCity({
+    slug: "pushkar", city: "Pushkar",
+    tagline: "Pushkar Cab Service — Brahma Temple, Holy Lake & Camel Fair Tours",
+    popularRoutes: [
+      { to: 'Ajmer', distance: '15 km', fare: '₹999', time: '30 min' },
+      { to: 'Jaipur', distance: '145 km', fare: '₹1,595', time: '3 hrs' },
+      { to: 'Kishangarh', distance: '40 km', fare: '₹1,500', time: '1 hr' },
+      { to: 'Udaipur', distance: '290 km', fare: '₹3,190', time: '5 hrs' },
+      { to: 'Jodhpur', distance: '200 km', fare: '₹2,200', time: '4 hrs' },
+    ],
+  }),
+  "ajmer": createCity({
+    slug: "ajmer", city: "Ajmer",
+    tagline: "Ajmer Cab Service — Dargah Sharif, Ana Sagar Lake & Pushkar Pilgrimage",
+    popularRoutes: [
+      { to: 'Pushkar', distance: '15 km', fare: '₹999', time: '30 min' },
+      { to: 'Jaipur', distance: '135 km', fare: '₹1,500', time: '2.5 hrs' },
+      { to: 'Kishangarh', distance: '27 km', fare: '₹999', time: '45 min' },
+      { to: 'Udaipur', distance: '290 km', fare: '₹3,190', time: '5 hrs' },
+      { to: 'Bhilwara', distance: '130 km', fare: '₹1,500', time: '2.5 hrs' },
+    ],
+  }),
+  "bikaner": createCity({
+    slug: "bikaner", city: "Bikaner",
+    tagline: "Bikaner Taxi Service — Junagarh Fort, Karni Mata Temple & Camel Country Tours",
+    popularRoutes: [
+      { to: 'Deshnok (Karni Mata)', distance: '30 km', fare: '₹999', time: '45 min' },
+      { to: 'Jaisalmer', distance: '330 km', fare: '₹3,630', time: '5.5 hrs' },
+      { to: 'Jodhpur', distance: '250 km', fare: '₹2,750', time: '4.5 hrs' },
+      { to: 'Jaipur', distance: '335 km', fare: '₹3,685', time: '6 hrs' },
+      { to: 'Mandawa', distance: '190 km', fare: '₹2,090', time: '3.5 hrs' },
+    ],
+  }),
+  "mount-abu": createCity({
+    slug: "mount-abu", city: "Mount Abu",
+    tagline: "Mount Abu Cab Service — Dilwara Temples, Nakki Lake & Rajasthan Hill Tours",
+    popularRoutes: [
+      { to: 'Guru Shikhar', distance: '15 km', fare: '₹999', time: '40 min' },
+      { to: 'Udaipur', distance: '165 km', fare: '₹1,815', time: '3 hrs' },
+      { to: 'Abu Road', distance: '28 km', fare: '₹999', time: '45 min' },
+      { to: 'Jodhpur', distance: '265 km', fare: '₹2,915', time: '4.5 hrs' },
+      { to: 'Ahmedabad', distance: '225 km', fare: '₹2,475', time: '4 hrs' },
+    ],
+  }),
+  "dharamshala": createCity({
+    slug: "dharamshala", city: "Dharamshala",
+    tagline: "Dharamshala Taxi Service — McLeod Ganj, Triund Trek & Kangra Valley Tours",
+    popularRoutes: [
+      { to: 'McLeod Ganj', distance: '9 km', fare: '₹499', time: '30 min' },
+      { to: 'Dalhousie', distance: '120 km', fare: '₹1,500', time: '4 hrs' },
+      { to: 'Amritsar', distance: '190 km', fare: '₹2,090', time: '4 hrs' },
+      { to: 'Chandigarh', distance: '240 km', fare: '₹2,640', time: '5 hrs' },
+      { to: 'Manali', distance: '230 km', fare: '₹2,530', time: '6 hrs' },
+    ],
+  }),
+  "manali": createCity({
+    slug: "manali", city: "Manali",
+    tagline: "Manali Taxi Service — Rohtang Pass, Solang Valley & Himachal Adventure Tours",
+    popularRoutes: [
+      { to: 'Solang Valley', distance: '14 km', fare: '₹999', time: '40 min' },
+      { to: 'Rohtang Pass', distance: '50 km', fare: '₹1,500', time: '2 hrs' },
+      { to: 'Shimla', distance: '250 km', fare: '₹2,750', time: '7 hrs' },
+      { to: 'Chandigarh', distance: '310 km', fare: '₹3,410', time: '7 hrs' },
+      { to: 'Delhi', distance: '530 km', fare: '₹5,830', time: '12 hrs' },
+    ],
+  }),
+  "faridabad": createCity({
+    slug: "faridabad", city: "Faridabad",
+    tagline: "Faridabad Cab Service — NCR Local Taxi, Delhi Airport Transfers & Outstation Cabs",
+    popularRoutes: [
+      { to: 'Delhi Airport', distance: '35 km', fare: '₹999', time: '1 hr' },
+      { to: 'Agra', distance: '180 km', fare: '₹1,980', time: '3 hrs' },
+      { to: 'Mathura', distance: '110 km', fare: '₹1,500', time: '2 hrs' },
+      { to: 'Jaipur', distance: '255 km', fare: '₹2,805', time: '4.5 hrs' },
+      { to: 'Haridwar', distance: '240 km', fare: '₹2,640', time: '5 hrs' },
+    ],
+  }),
+  "ghaziabad": createCity({
+    slug: "ghaziabad", city: "Ghaziabad",
+    tagline: "Ghaziabad Cab Service — NCR Local Cabs, Airport Pickup & Outstation Taxi",
+    popularRoutes: [
+      { to: 'Delhi Airport', distance: '45 km', fare: '₹1,500', time: '1.5 hrs' },
+      { to: 'Meerut', distance: '55 km', fare: '₹1,500', time: '1.5 hrs' },
+      { to: 'Agra', distance: '215 km', fare: '₹2,365', time: '3.5 hrs' },
+      { to: 'Haridwar', distance: '190 km', fare: '₹2,090', time: '4 hrs' },
+      { to: 'Mathura', distance: '170 km', fare: '₹1,870', time: '3 hrs' },
     ],
   }),
 };

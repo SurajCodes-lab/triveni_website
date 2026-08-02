@@ -349,6 +349,150 @@ export const airportCityData = {
       "Hazratbal Shrine",
       "Nigeen Lake"
     ]
+  },
+  lucknow: {
+    name: "Lucknow",
+    airport: "Chaudhary Charan Singh International Airport",
+    airportCode: "LKO",
+    description: "Lucknow airport taxi service from Chaudhary Charan Singh International Airport (Amausi Airport). 24/7 cab booking to Hazratganj, Gomti Nagar, Bara Imambara, hotels, Ayodhya and Kanpur. City of Nawabs airport transfer with courteous drivers.",
+    keywords: "lucknow airport taxi, chaudhary charan singh airport cab, amausi airport taxi, lucknow airport pickup, lucknow airport drop, lucknow airport transfer, lucknow airport cab booking, lucknow airport to hazratganj taxi, lucknow airport to gomti nagar cab, cheap airport taxi lucknow, best lucknow airport taxi, lucknow airport taxi service near me, pre book lucknow airport cab, lucknow airport cab fare, lucknow airport to bara imambara taxi, reliable airport taxi lucknow, lucknow airport to ayodhya cab, lucknow airport to kanpur taxi, lucknow airport outstation cab, lucknow airport private taxi, LKO airport taxi service, lucknow international airport cab, city of nawabs airport taxi, lucknow airport 24x7 taxi",
+    routes: ["Lucknow to Ayodhya", "Lucknow to Kanpur", "Lucknow to Varanasi", "Lucknow to Prayagraj", "Lucknow to Agra"],
+    distance: "14 km from city center",
+    terminals: "2 Terminals (T1 Domestic, T2 International)",
+    popularDestinations: [
+      { name: "Hazratganj", distance: "16 km", time: "35 mins" },
+      { name: "Gomti Nagar", distance: "20 km", time: "40 mins" },
+      { name: "Bara Imambara", distance: "18 km", time: "40 mins" },
+      { name: "Ayodhya", distance: "140 km", time: "3 hours" },
+      { name: "Kanpur", distance: "85 km", time: "2 hours" }
+    ],
+    nearbyAttractions: [
+      "Bara Imambara",
+      "Chota Imambara",
+      "Rumi Darwaza",
+      "British Residency",
+      "Ambedkar Memorial Park"
+    ]
+  },
+  varanasi: {
+    name: "Varanasi",
+    airport: "Lal Bahadur Shastri International Airport",
+    airportCode: "VNS",
+    description: "Varanasi airport taxi service from Lal Bahadur Shastri International Airport (Babatpur Airport). 24/7 cab from airport to Dashashwamedh Ghat, Kashi Vishwanath Temple, Sarnath, hotels and Prayagraj. Spiritual city airport transfer with experienced drivers.",
+    keywords: "varanasi airport taxi, lal bahadur shastri airport cab, babatpur airport taxi, varanasi airport pickup, varanasi airport drop, varanasi airport transfer, varanasi airport cab booking, varanasi airport to ghat taxi, varanasi airport to kashi vishwanath cab, cheap airport taxi varanasi, best varanasi airport taxi, varanasi airport taxi service near me, pre book varanasi airport cab, varanasi airport cab fare, varanasi airport to dashashwamedh ghat taxi, reliable airport taxi varanasi, varanasi airport to sarnath cab, varanasi airport to prayagraj taxi, varanasi airport outstation cab, varanasi airport private taxi, VNS airport taxi service, banaras airport taxi, kashi airport taxi, varanasi airport 24x7 taxi",
+    routes: ["Varanasi to Sarnath", "Varanasi to Prayagraj", "Varanasi to Ayodhya", "Varanasi to Bodh Gaya", "Varanasi to Lucknow"],
+    distance: "26 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Dashashwamedh Ghat", distance: "28 km", time: "1 hour" },
+      { name: "Kashi Vishwanath Temple", distance: "28 km", time: "1 hour" },
+      { name: "Sarnath", distance: "30 km", time: "1 hour" },
+      { name: "Prayagraj", distance: "125 km", time: "3 hours" },
+      { name: "Bodh Gaya", distance: "260 km", time: "5-6 hours" }
+    ],
+    nearbyAttractions: [
+      "Kashi Vishwanath Temple",
+      "Dashashwamedh Ghat",
+      "Sarnath",
+      "Assi Ghat",
+      "Manikarnika Ghat"
+    ]
+  },
+  gwalior: {
+    name: "Gwalior",
+    airport: "Rajmata Vijaya Raje Scindia Air Terminal",
+    airportCode: "GWL",
+    description: "Gwalior airport taxi service from Rajmata Vijaya Raje Scindia Air Terminal (Maharajpura Airport). Cab booking to Gwalior Fort, Jai Vilas Palace, city hotels, Agra and Jhansi. Reliable airport transfer with professional drivers.",
+    keywords: "gwalior airport taxi, rajmata vijaya raje scindia airport cab, maharajpura airport taxi, gwalior airport pickup, gwalior airport drop, gwalior airport transfer, gwalior airport cab booking, gwalior airport to fort taxi, gwalior airport to jai vilas palace cab, cheap airport taxi gwalior, best gwalior airport taxi, gwalior airport taxi service near me, pre book gwalior airport cab, gwalior airport cab fare, gwalior airport to city taxi, reliable airport taxi gwalior, gwalior airport to agra cab, gwalior airport to jhansi taxi, gwalior airport outstation cab, gwalior airport private taxi, GWL airport taxi service, gwalior airport to orchha taxi",
+    routes: ["Gwalior to Agra", "Gwalior to Jhansi", "Gwalior to Orchha", "Gwalior to Datia", "Gwalior to Shivpuri"],
+    distance: "10 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Gwalior Fort", distance: "12 km", time: "30 mins" },
+      { name: "Jai Vilas Palace", distance: "11 km", time: "25 mins" },
+      { name: "Agra", distance: "120 km", time: "2-3 hours" },
+      { name: "Jhansi", distance: "100 km", time: "2 hours" },
+      { name: "Orchha", distance: "120 km", time: "2.5 hours" }
+    ],
+    nearbyAttractions: [
+      "Gwalior Fort",
+      "Jai Vilas Palace",
+      "Sas Bahu Temple",
+      "Tansen Tomb",
+      "Teli Ka Mandir"
+    ]
+  },
+  bikaner: {
+    name: "Bikaner",
+    airport: "Nal Airport",
+    airportCode: "BKB",
+    description: "Bikaner airport taxi service from Nal Airport. Cab booking to Junagarh Fort, Karni Mata Temple, city hotels, Jaisalmer and Jodhpur. Camel country airport transfer with reliable desert drivers.",
+    keywords: "bikaner airport taxi, nal airport cab, bikaner airport pickup, bikaner airport drop, bikaner airport transfer, bikaner airport cab booking, bikaner airport to junagarh fort taxi, bikaner airport to city cab, cheap airport taxi bikaner, best bikaner airport taxi, bikaner airport taxi service near me, pre book bikaner airport cab, bikaner airport cab fare, nal airport to bikaner taxi, reliable airport taxi bikaner, bikaner airport to karni mata temple cab, bikaner airport to jaisalmer taxi, bikaner airport to jodhpur cab, bikaner airport outstation taxi, bikaner airport private cab, BKB airport taxi service, deshnok temple airport taxi",
+    routes: ["Bikaner to Jaisalmer", "Bikaner to Jodhpur", "Bikaner to Jaipur", "Bikaner to Deshnok", "Bikaner to Mandawa"],
+    distance: "16 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Junagarh Fort", distance: "18 km", time: "35 mins" },
+      { name: "Karni Mata Temple", distance: "45 km", time: "1 hour" },
+      { name: "Jaisalmer", distance: "330 km", time: "5-6 hours" },
+      { name: "Jodhpur", distance: "250 km", time: "4-5 hours" },
+      { name: "Jaipur", distance: "335 km", time: "6 hours" }
+    ],
+    nearbyAttractions: [
+      "Junagarh Fort",
+      "Karni Mata Temple",
+      "Lalgarh Palace",
+      "Rampuria Havelis",
+      "National Research Centre on Camel"
+    ]
+  },
+  jaisalmer: {
+    name: "Jaisalmer",
+    airport: "Jaisalmer Airport",
+    airportCode: "JSA",
+    description: "Jaisalmer airport taxi service from Jaisalmer Airport. Cab booking to Sonar Quila (Golden Fort), Sam Sand Dunes, hotels, desert camps and Jodhpur. Golden City airport transfer with experienced desert drivers.",
+    keywords: "jaisalmer airport taxi, jaisalmer airport cab, jaisalmer airport pickup, jaisalmer airport drop, jaisalmer airport transfer, jaisalmer airport cab booking, jaisalmer airport to golden fort taxi, jaisalmer airport to sam sand dunes cab, cheap airport taxi jaisalmer, best jaisalmer airport taxi, jaisalmer airport taxi service near me, pre book jaisalmer airport cab, jaisalmer airport cab fare, jaisalmer airport to sonar quila taxi, reliable airport taxi jaisalmer, jaisalmer airport to desert camp cab, jaisalmer airport to jodhpur taxi, jaisalmer airport outstation cab, jaisalmer airport private taxi, JSA airport taxi service, golden city airport taxi, jaisalmer airport to bikaner cab",
+    routes: ["Jaisalmer to Jodhpur", "Jaisalmer to Bikaner", "Jaisalmer to Sam Sand Dunes", "Jaisalmer to Jaipur"],
+    distance: "5 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Jaisalmer Fort (Sonar Quila)", distance: "7 km", time: "20 mins" },
+      { name: "Sam Sand Dunes", distance: "45 km", time: "1 hour" },
+      { name: "Patwon Ki Haveli", distance: "6 km", time: "15 mins" },
+      { name: "Jodhpur", distance: "285 km", time: "5 hours" },
+      { name: "Bikaner", distance: "330 km", time: "5-6 hours" }
+    ],
+    nearbyAttractions: [
+      "Jaisalmer Fort",
+      "Sam Sand Dunes",
+      "Patwon Ki Haveli",
+      "Gadisar Lake",
+      "Kuldhara Village"
+    ]
+  },
+  prayagraj: {
+    name: "Prayagraj",
+    airport: "Prayagraj Airport (Bamrauli)",
+    airportCode: "IXD",
+    description: "Prayagraj airport taxi service from Prayagraj Airport (Bamrauli Airport). Cab booking to Triveni Sangam, Allahabad Fort, hotels, Varanasi and Ayodhya. Kumbh city airport transfer with reliable drivers.",
+    keywords: "prayagraj airport taxi, bamrauli airport cab, allahabad airport taxi, prayagraj airport pickup, prayagraj airport drop, prayagraj airport transfer, prayagraj airport cab booking, prayagraj airport to sangam taxi, prayagraj airport to city cab, cheap airport taxi prayagraj, best prayagraj airport taxi, prayagraj airport taxi service near me, pre book prayagraj airport cab, prayagraj airport cab fare, prayagraj airport to triveni sangam taxi, reliable airport taxi prayagraj, prayagraj airport to varanasi cab, prayagraj airport to ayodhya taxi, prayagraj airport outstation cab, prayagraj airport private taxi, IXD airport taxi service, allahabad airport cab service, kumbh city airport taxi",
+    routes: ["Prayagraj to Varanasi", "Prayagraj to Ayodhya", "Prayagraj to Lucknow", "Prayagraj to Chitrakoot", "Prayagraj to Kanpur"],
+    distance: "12 km from city center",
+    terminals: "1 Terminal",
+    popularDestinations: [
+      { name: "Triveni Sangam", distance: "20 km", time: "45 mins" },
+      { name: "Allahabad Fort", distance: "18 km", time: "40 mins" },
+      { name: "Anand Bhavan", distance: "16 km", time: "35 mins" },
+      { name: "Varanasi", distance: "125 km", time: "3 hours" },
+      { name: "Ayodhya", distance: "170 km", time: "3.5 hours" }
+    ],
+    nearbyAttractions: [
+      "Triveni Sangam",
+      "Allahabad Fort",
+      "Anand Bhavan",
+      "Khusro Bagh",
+      "All Saints Cathedral"
+    ]
   }
 };
 

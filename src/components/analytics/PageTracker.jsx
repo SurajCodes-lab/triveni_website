@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { trackPageView } from '@/utilis/analytics';
+import { trackPageView, trackAIBotVisit } from '@/utilis/analytics';
 
 /**
  * PageTracker Component
@@ -12,6 +12,13 @@ import { trackPageView } from '@/utilis/analytics';
  */
 export default function PageTracker() {
   const pathname = usePathname();
+
+  // AEO/GEO instrumentation: fire `ai_bot_visit` GA4 event once per session
+  // if an AI crawler with JS execution lands on this page. No-op for humans
+  // and most non-rendering bots. See trackAIBotVisit JSDoc for rationale.
+  useEffect(() => {
+    trackAIBotVisit();
+  }, []);
 
   useEffect(() => {
     const pageName = pathname === '/'

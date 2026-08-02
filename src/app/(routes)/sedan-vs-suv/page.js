@@ -3,11 +3,11 @@ import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import { Users, Fuel, Car, Star, Check, X, ArrowRight, Phone } from "@/components/ui/icons";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: "Sedan vs SUV: Which Car to Rent? | Complete Comparison Guide | Triveni Cabs",
-  description: "Confused between Sedan and SUV rental? Compare capacity, comfort, pricing, fuel efficiency & best use cases. Sedan from ₹11/km, SUV from ₹15/km. Make the right choice for your trip!",
+  title: "Sedan vs SUV: Which Car to Rent? | Complete Comparison Guide",
+  description: "Confused between Sedan and SUV rental? Compare capacity, comfort, pricing, fuel efficiency & best use cases. Sedan from ₹11/km, SUV from ₹15/km.",
   keywords: "sedan vs suv rental, which car to rent, sedan or suv for trip, car comparison india, innova vs dzire, family car rental, sedan suv difference, best car for outstation",
   alternates: {
     canonical: "https://www.trivenicabs.in/sedan-vs-suv"
@@ -20,6 +20,14 @@ export const metadata = {
     url: "https://www.trivenicabs.in/sedan-vs-suv",
     siteName: "Triveni Cabs"
   }
+,
+  twitter: {
+    card: 'summary_large_image',
+    title: "Sedan vs SUV: Which Car Should You Rent?",
+    description: "Complete comparison guide to help you choose between Sedan and SUV for your next trip.",
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+  },
 };
 
 const comparisonData = {

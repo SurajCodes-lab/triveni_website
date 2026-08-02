@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, IndianRupee, Sparkles, Navigation } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Ayodhya Ram Mandir Tour from Delhi | Sedan ₹8,500 | 2-3 Day Packages',
+  title: 'Ayodhya Ram Mandir Tour from Delhi | Sedan ₹8,500 | 2-3 Day',
   description: 'Book Ayodhya Ram Mandir tour from Delhi. 530km, 9-10 hrs drive. Sedan ₹8,500, SUV ₹12,000. Ram Mandir darshan, Hanuman Garhi, Saryu Ghat. Call 7668570551.',
+  keywords: 'ayodhya ram mandir tour from delhi, tour package india, sightseeing tour, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
   publisher: 'Triveni Cabs',
@@ -17,12 +18,19 @@ export const metadata = {
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-ram-mandir-tour-from-delhi',
     siteName: 'Triveni Cabs',
+    images: [{
+      url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
+      width: 1200, height: 630,
+      alt: 'Delhi to Ayodhya Ram Mandir Tour — 530 km, 2-3 day sacred Darshan package',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Delhi to Ayodhya Ram Mandir Tour | From ₹8,500',
     description: 'Delhi to Ayodhya cab. 2-3 day Ram Mandir packages. AC vehicle, expert drivers. Book now!',
     site: '@trivenicabs',
+    creator: '@trivenicabs',
+    images: ['/images/sightseeing/Ayodhya/ayodha_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

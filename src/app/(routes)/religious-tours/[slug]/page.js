@@ -4,7 +4,7 @@ import ReligiousTourClient from '@/components/religious/ReligiousTourClient';
 import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 // Generate static params for all tours

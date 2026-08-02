@@ -9,41 +9,67 @@ import {
   Camera, Award, CreditCard, Headphones, MapPinned, Sparkles, Zap, Heart,
   Mountain, Sun, Wind, ChevronDown, Play, Gift, Crown, Gem
 } from '@/components/ui/icons';
-import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 import { routeDescriptions } from '@/utilis/tempoTravellerData';
 import { getTypeColor, formatDestinationForDisplay } from '@/utilis/tempoColors';
 import dynamic from 'next/dynamic';
+// Rich UI + ranking-lift components — wired May 23 2026
+import InfographicPanel from '@/components/seo/InfographicPanel';
+import PriceCalculator from '@/components/seo/PriceCalculator';
+import OutboundCitations from '@/components/seo/OutboundCitations';
+import ExpertQuote from '@/components/seo/ExpertQuote';
+import LongTailFAQ from '@/components/seo/LongTailFAQ';
+import { getCitationsForRoute } from '@/utilis/outboundCitations';
+import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
+import LeadQuoteSection from '@/components/shared/LeadQuoteSection';
+import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
+import CorridorLinks from '@/components/seo/CorridorLinks';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 
 const TypeAnimation = dynamic(
   () => import('react-type-animation').then(mod => mod.TypeAnimation),
   { ssr: false, loading: () => <span>Premium Tempo Traveller</span> }
 );
-const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 
 export default function DynamicTempoRoutesClient({ data }) {
-  const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [mounted, setMounted] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
-  const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet, relatedRoutes } = data;
+  const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet, relatedRoutes, corridorLinks = [] } = data;
 
   const routeDescription = routeDescriptions[routeSlug] || null;
   const displayDestination = formatDestinationForDisplay(destination);
+  // Phase 3: unique, entity-rich, slug-seeded intro so each tempo route page reads differently.
+  const uniqueIntro = generateUniqueIntro({
+    origin,
+    destination: displayDestination,
+    distance: routeData?.distance,
+    time: routeData?.duration,
+    highway: '',
+    attractions: Array.isArray(localSightseeing)
+      ? localSightseeing.slice(0, 2).map((s) => (typeof s === 'string' ? s : (s.title || s.name || s.place || ''))).filter(Boolean)
+      : [],
+    vehicleType: 'tempo traveller',
+    slug: routeSlug,
+  });
   const shouldReduceMotion = useShouldReduceMotion();
 
   useEffect(() => {
     setMounted(true);
 
-    // Auto-rotate features
+    // Auto-rotate features — skip when user prefers reduced motion
+    if (shouldReduceMotion) return;
     const interval = setInterval(() => {
       setActiveFeature(prev => (prev + 1) % 4);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [shouldReduceMotion]);
 
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
@@ -58,7 +84,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           `Tempo Traveller from ${origin} to ${destination}`,
           `${origin} ${destination} Tempo Traveller Hire`
         ],
-        "description": `Book 12, 17, 20, 26 seater AC tempo traveller from ${origin} to ${destination}. Professional drivers, pushback seats, GPS tracking, music system. Best rates starting ₹23/km. Call +917668570551 for instant booking.`,
+        "description": `Book 12, 17, 20, 26 seater AC tempo traveller from ${origin} to ${destination}. Professional drivers, pushback seats, GPS tracking, music system. Best rates starting ₹20/km. Call +917668570551 for instant booking.`,
         "provider": {
           "@type": "LocalBusiness",
           "name": "Triveni Cabs",
@@ -80,7 +106,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           "@type": "AggregateOffer",
           "priceCurrency": "INR",
           "lowPrice": "23",
-          "highPrice": "27",
+          "highPrice": "35",
           "offerCount": "5",
           "availability": "https://schema.org/InStock",
           "priceSpecification": {
@@ -90,20 +116,15 @@ export default function DynamicTempoRoutesClient({ data }) {
             "unitText": "per kilometer"
           }
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "10000",
-          "bestRating": "5"
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": `${origin} to ${destination} Tempo Traveller Options`,
           "itemListElement": [
             { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "12 Seater Tempo Traveller" }, "price": "23", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "17 Seater Tempo Traveller" }, "price": "25", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "20 Seater Tempo Traveller" }, "price": "26", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "26 Seater Maharaja Tempo" }, "price": "27", "priceCurrency": "INR" }
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "16 Seater Tempo Traveller" }, "price": "25", "priceCurrency": "INR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "17 Seater Tempo Traveller" }, "price": "26", "priceCurrency": "INR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "20 Seater Tempo Traveller" }, "price": "30", "priceCurrency": "INR" },
+            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "26 Seater Maharaja Tempo" }, "price": "35", "priceCurrency": "INR" }
           ]
         }
       },
@@ -123,7 +144,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             "name": `How much does tempo traveller cost from ${origin} to ${destination}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `Tempo traveller rates from ${origin} to ${destination} start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking.`
+              "text": `Tempo traveller rates from ${origin} to ${destination} start from ₹20/km for 12-seater and go up to ₹28/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking.`
             }
           },
           {
@@ -157,10 +178,11 @@ export default function DynamicTempoRoutesClient({ data }) {
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <article className="min-h-screen bg-white overflow-hidden" itemScope itemType="https://schema.org/TravelAction">
+      <SetStickyCta price="From ₹20/km" label="Tempo Traveller" whatsappText="Hi, I want to book a Tempo Traveller. Please share availability and fare." />
       {/* ============================================ */}
       {/* HERO SECTION - Ultra Premium Design */}
       {/* ============================================ */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <Image
@@ -261,7 +283,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mb-6"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight">
+            <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight">
               <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
                 {origin}
               </span>
@@ -296,8 +318,19 @@ export default function DynamicTempoRoutesClient({ data }) {
                 ]}
                 wrapper="span"
                 speed={50}
-                repeat={Infinity}
+                repeat={shouldReduceMotion ? 0 : Infinity}
               />
+            </motion.div>
+
+            {/* Price chip — surface starting rate above the fold */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="mt-6 inline-flex items-center gap-2 bg-amber-400 text-black px-5 py-2.5 rounded-full font-bold shadow-2xl"
+            >
+              <Zap className="w-4 h-4" />
+              Starting ₹20/km · All-inclusive
             </motion.div>
           </motion.div>
 
@@ -386,6 +419,26 @@ export default function DynamicTempoRoutesClient({ data }) {
           </motion.div>
         </div>
       </section>
+      <LeadQuoteSection fromCity={origin} toCity={displayDestination} pageType="route" />
+
+      {/* ============================================ */}
+      {/* AEO QUICK ANSWER — above-the-fold extractable answer */}
+      {/* ============================================ */}
+      <section className="bg-slate-950 px-4 sm:px-6 pb-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="dark"
+            question={`How much does a tempo traveller from ${origin} to ${displayDestination} cost?`}
+            answer={`A tempo traveller from ${origin} to ${displayDestination} is charged per kilometre: ₹20/km for a 12 seater, ₹22/km for a 16 seater, ₹24/km for a 17 seater, ₹26/km for a 20 seater and ₹28/km for a 26 seater Maharaja edition${routeData?.distance ? `, over roughly ${routeData.distance}` : ''}${routeData?.duration ? ` and about ${routeData.duration} of driving` : ''}. Tempo travellers cost the same for a one-way drop as for a round trip, because the vehicle has to return to base either way — there is no one-way discount on tempo. Every tempo is AC with pushback seats, a music system and charging points, and the rate covers fuel and driver; tolls, parking, state permits and the night driver allowance are billed extra.`}
+            facts={[
+              { label: 'Distance', value: routeData?.distance || 'On request' },
+              { label: 'Drive time', value: routeData?.duration || 'On request' },
+              { label: 'From (12 seater)', value: '₹20/km' },
+              { label: 'Seating', value: '12 to 26 seats' },
+            ]}
+          />
+        </div>
+      </section>
 
       {/* ============================================ */}
       {/* ROUTE INFO SECTION - Clean White Cards */}
@@ -412,7 +465,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-amber-700 font-bold text-sm tracking-wider">JOURNEY DETAILS</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Tempo Traveller</span> Journey
+              Why book a <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">tempo traveller</span> for {origin} to {displayDestination}?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Book tempo traveller from {origin} to {destination} with complete route details, distance, travel time and best pricing
@@ -705,7 +758,7 @@ export default function DynamicTempoRoutesClient({ data }) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
-              {origin} to {destination} Tempo Traveller — Quick Summary
+              How much is a {origin} to {destination} tempo traveller in 2026?
             </h2>
             <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
@@ -718,21 +771,26 @@ export default function DynamicTempoRoutesClient({ data }) {
               </div>
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
                 <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Rate</p>
-                <p className="text-xl font-black text-green-700">₹23/km</p>
+                <p className="text-xl font-black text-green-700">₹20/km</p>
               </div>
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
                 <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Capacity</p>
                 <p className="text-xl font-black text-slate-900">12-26 Seat</p>
               </div>
             </div>
-            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
-              Tempo traveller hire from <strong>{origin} to {destination}</strong> starts at <strong>₹23/km</strong> for a 12-seater AC tempo.
+            <p className="faq-answer speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
+              Tempo traveller hire from <strong>{origin} to {destination}</strong> starts at <strong>₹20/km</strong> for a 12-seater AC tempo.
               {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
               Triveni Cabs offers 12, 16, 17, 20, and 26 seater Maharaja tempo travellers with pushback seats,
               AC, music system, charging points, and ample luggage space. Perfect for family trips, pilgrimages,
               wedding groups, and corporate outings. Book by calling <strong>+91-7668570551</strong> or WhatsApp.
-              4.9★ rated with 10,000+ group trips completed.
+              4.9★ rated with 2,500+ group trips completed.
             </p>
+            {uniqueIntro && (
+              <p className="mt-4 text-slate-600 leading-relaxed text-base md:text-lg">
+                {uniqueIntro}
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -758,7 +816,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-amber-700 font-bold text-sm tracking-wider">PREMIUM FLEET</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Tempo Traveller Fleet</span>
+              Which <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">tempo traveller size</span> should I book for {origin} to {displayDestination}?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Choose from 12, 17, 20, 26 seater AC tempo traveller for your {origin} to {destination} trip - pushback seats, music system included
@@ -863,21 +921,72 @@ export default function DynamicTempoRoutesClient({ data }) {
                       </div>
                     </div>
 
-                    {/* Book Button */}
-                    <motion.button
-                      
+                    {/* Book Button — direct WhatsApp deep-link */}
+                    <motion.a
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => setSelectedVehicle(vehicle)}
+                      href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                        `Hi, I want to book ${vehicle.name} from ${origin} to ${destination}. Please share quote.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-amber-500 hover:to-orange-500 text-white hover:text-black font-bold py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
                     >
                       Book {vehicle.name}
                       <ArrowRight className="w-4 h-4" />
-                    </motion.button>
+                    </motion.a>
+                    {(() => {
+                      const m = (vehicle.name || '').match(/^(\d+)/);
+                      return m ? (
+                        <Link
+                          href={`/${m[1]}-seater-tempo-traveller`}
+                          className="mt-3 block text-center text-sm font-semibold text-amber-600 hover:text-amber-700"
+                        >
+                          View {m[1]} seater details, specs &amp; routes →
+                        </Link>
+                      ) : null;
+                    })()}
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Machine-readable fare chart — same data as the cards above */}
+          {fleet && fleet.length > 0 && (
+            <div className="mt-12 md:mt-16">
+              <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-4">
+                {origin} to {displayDestination} tempo traveller fare chart
+              </h3>
+              <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <table className="w-full min-w-[560px] text-left text-sm">
+                  <caption className="px-4 pt-4 pb-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Tempo traveller rates from {origin} to {displayDestination}, 2026 — one way and round trip are priced the same
+                  </caption>
+                  <thead className="bg-gray-50 text-gray-700">
+                    <tr>
+                      <th scope="col" className="px-4 py-3 font-bold">Tempo traveller</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Seating</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Outstation rate</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Local (8 hrs / 80 km)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {fleet.map((vehicle) => (
+                      <tr key={`fare-${vehicle.id}`} className="hover:bg-amber-50/60 transition-colors">
+                        <th scope="row" className="px-4 py-3 text-left font-semibold text-gray-900">{vehicle.name}</th>
+                        <td className="px-4 py-3 text-gray-700">{vehicle.capacity}</td>
+                        <td className="px-4 py-3 font-bold text-amber-700">{vehicle.outstationRate}</td>
+                        <td className="px-4 py-3 text-gray-700">{vehicle.localRate}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-gray-500">
+                Rates include fuel, driver and AC. Tolls, parking, state permits and the night driver allowance are extra. A tempo traveller costs the same for a one-way drop as for a round trip.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -907,7 +1016,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-amber-400 font-bold text-sm tracking-wider">WHY TRIVENI CABS</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-              Why Book {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Tempo Traveller</span>
+              Why book a {origin} to {displayDestination} <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">tempo traveller</span> with us?
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto">
               Best tempo traveller service for {origin} to {destination} - safe drivers, GPS tracking, 24/7 support, transparent pricing
@@ -995,7 +1104,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              {origin} to {displayDestination} Tempo Traveller <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Amenities</span>
+              What <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">amenities</span> does the {origin} to {displayDestination} tempo include?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               AC tempo traveller with pushback seats, music system, GPS tracking, charging points for {origin} to {destination} journey
@@ -1070,7 +1179,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="text-blue-700 font-bold text-sm tracking-wider">FREQUENTLY ASKED</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4">
-              {origin} to {displayDestination} Tempo Traveller <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">FAQ</span>
+              Frequently asked <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">questions</span> about {origin} to {displayDestination} tempo
             </h2>
             <p className="text-lg text-gray-600">
               Common questions about {origin} to {destination} tempo traveller booking, price, seating and more
@@ -1081,7 +1190,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             {[
               {
                 question: `How much does tempo traveller cost from ${origin} to ${displayDestination}?`,
-                answer: `Tempo traveller rates from ${origin} to ${displayDestination} start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking. Call +917668570551 for instant quote.`
+                answer: `Tempo traveller rates from ${origin} to ${displayDestination} start from ₹20/km for 12-seater and go up to ₹28/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking. Call +917668570551 for instant quote.`
               },
               {
                 question: `What seater options are available for ${origin} to ${displayDestination}?`,
@@ -1119,7 +1228,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                     <h3 className="text-base md:text-lg font-bold text-gray-900 leading-tight">{faq.question}</h3>
                   </div>
                   <div className="pl-11">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-gray-600 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </div>
               </motion.div>
@@ -1344,19 +1453,18 @@ export default function DynamicTempoRoutesClient({ data }) {
         </div>
       </section>
 
-      {/* Fare Calculator */}
-      <section className="py-12 bg-gray-50" id="fare-calculator">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-              Calculate Your {origin} to {displayDestination} Fare
-            </h2>
-            <p className="text-gray-600">Get an instant price estimate for your tempo traveller trip</p>
-          </div>
-          <FareCalculator variant="compact" defaultFrom={origin} defaultTo={displayDestination} className="max-w-md mx-auto" />
-        </div>
-      </section>
 
+
+      {/* ============================================ */}
+      {/* Corridor cluster — same route in other formats */}
+      {/* ============================================ */}
+      {corridorLinks.length > 0 && (
+        <section className="py-10 md:py-14 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CorridorLinks links={corridorLinks} fromLabel={origin} toLabel={destination} theme="light" />
+          </div>
+        </section>
+      )}
 
       {/* ============================================ */}
       {/* Related Routes from Same Origin — Internal Linking */}
@@ -1382,7 +1490,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                     <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">
                       {origin} to {r.name}
                     </h3>
-                    <p className="text-xs text-gray-500">{r.type} • Tempo Traveller from ₹23/km</p>
+                    <p className="text-xs text-gray-500">{r.type} • Tempo Traveller from ₹20/km</p>
                   </div>
                   <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
                 </Link>
@@ -1407,7 +1515,7 @@ export default function DynamicTempoRoutesClient({ data }) {
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
-            Other Ways to Travel {origin} to {displayDestination}
+            What are other ways to travel from {origin} to {displayDestination}?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link
@@ -1458,7 +1566,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           <p className="text-gray-700 leading-relaxed">
             Book a comfortable AC tempo traveller from {origin} to {displayDestination} with Triveni Cabs. We offer 12-seater,
             17-seater, 20-seater, and 26-seater Maharaja tempo travellers with professional drivers, GPS tracking, pushback
-            recliner seats, music system, and charging points. Our rates start at just <strong>₹23/km</strong> for a 12-seater —
+            recliner seats, music system, and charging points. Our rates start at just <strong>₹20/km</strong> for a 12-seater —
             making group travel affordable and comfortable.
           </p>
           <p className="text-gray-700 leading-relaxed">
@@ -1476,98 +1584,98 @@ export default function DynamicTempoRoutesClient({ data }) {
         </div>
       </section>
 
-      {/* VEHICLE BOOKING MODAL */}
-      {/* ============================================ */}
-      <AnimatePresence>
-        {selectedVehicle && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[100]"
-            onClick={() => setSelectedVehicle(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 50 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 50 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-black text-gray-900">Book {selectedVehicle.name}</h3>
-                <button
-                  onClick={() => setSelectedVehicle(null)}
-                  className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* Vehicle Image */}
-              <div className="relative h-40 rounded-2xl overflow-hidden mb-6 bg-gradient-to-r from-amber-400 to-orange-500">
-                <Image
-                  src={selectedVehicle.image}
-                  alt={selectedVehicle.name}
-                  fill
-                  className="object-cover"
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
-              </div>
-
-              {/* Details */}
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
-                  <span className="text-gray-600">Route</span>
-                  <span className="font-bold text-gray-900">{origin} → {displayDestination}</span>
-                </div>
-                <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl">
-                  <span className="text-gray-600">Capacity</span>
-                  <span className="font-bold text-gray-900">{selectedVehicle.capacity}</span>
-                </div>
-                <div className="flex justify-between items-center p-4 bg-amber-50 rounded-xl border border-amber-200">
-                  <span className="text-amber-700">Outstation Rate</span>
-                  <span className="font-black text-2xl text-amber-600">{selectedVehicle.outstationRate}</span>
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="mb-6">
-                <p className="text-sm font-bold text-gray-700 mb-3">Included Features:</p>
-                <div className="flex flex-wrap gap-2">
-                  {selectedVehicle.features.map((feature, idx) => (
-                    <span key={idx} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm flex items-center gap-1">
-                      <CheckCircle className="w-3 h-3" />
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* CTAs */}
-              <div className="space-y-3">
-                <a
-                  href="tel:+917668570551"
-                  className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg"
-                >
-                  <Phone className="w-5 h-5" />
-                  Call to Book
-                </a>
-                <a
-                  href={`https://wa.me/917668570551?text=Hi, I want to book ${selectedVehicle.name} from ${origin} to ${destination}. Please share quote.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp to Book
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* RICH-UI + RANKING BLOCK — May 23 sprint (Tempo route variant) */}
+      <TempoRouteRichBlock origin={origin} destination={destination} displayDestination={displayDestination} routeData={routeData} routeSlug={routeSlug} />
     </article>
     </MotionConfig>
+  );
+}
+
+/**
+ * TempoRouteRichBlock — dark cinematic block injected at end of tempo route
+ * pages. Mirrors the OneWay/Round-Trip/TravelByCar/Sightseeing rich UI for
+ * visual consistency + ranking lift.
+ */
+function TempoRouteRichBlock({ origin, destination, displayDestination, routeData, routeSlug }) {
+  const distanceKm = parseFloat(((routeData?.distance) || '').toString().replace(/[^0-9.]/g, '')) || 300;
+  const durationHrs = parseFloat(((routeData?.duration) || '').toString().replace(/[^0-9.]/g, '')) || 6;
+  const seater12 = 23;
+  const seater17 = 26;
+
+  const stats = [
+    { value: distanceKm, suffix: ' km', label: 'Distance', sublabel: 'one-way' },
+    { value: durationHrs, suffix: ' hr', label: 'Drive time', sublabel: 'approx.', format: 'decimal' },
+    { value: seater12, prefix: '₹', suffix: '/km', label: '12-seater', sublabel: 'starting rate' },
+    { value: seater17, prefix: '₹', suffix: '/km', label: '17-seater', sublabel: 'starting rate' },
+  ];
+
+  const longTailFaqs = generateLongTailFaqs({
+    mode: 'tempo',
+    origin,
+    destination: displayDestination,
+    distanceKm,
+    durationText: routeData?.duration,
+  });
+
+  const founderQuote = getFounderQuoteForContext('tempo');
+  const citations = getCitationsForRoute({ from: origin, to: displayDestination, context: 'outstation' });
+
+  return (
+    <div className="bg-slate-950 text-white">
+      <section className="py-12 md:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+          <div className="lg:col-span-3">
+            <InfographicPanel
+              title={`The ${origin} to ${displayDestination} tempo traveller by the numbers`}
+              subtitle="Per-km rates by seater size, distance, and approximate drive time. Pricing refreshed weekly against actual driver invoices for this route."
+              stats={stats}
+              tone="amber"
+            />
+          </div>
+          <div className="lg:col-span-2">
+            <PriceCalculator
+              distanceKm={distanceKm}
+              mode="one-way"
+              oneWayEqualsRoundTrip
+              vehicles={[
+                { key: 'tempo12', label: '12-Seater', ratePerKm: 20 },
+                { key: 'tempo17', label: '17-Seater', ratePerKm: 24 },
+                { key: 'tempo20', label: '20-Seater', ratePerKm: 26 },
+                { key: 'tempo26', label: '26-Seater', ratePerKm: 28 },
+              ]}
+              tone="amber"
+              originName={origin}
+              destinationName={displayDestination}
+            />
+          </div>
+        </div>
+      </section>
+
+      {founderQuote && (
+        <section className="py-10 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <ExpertQuote quote={founderQuote.quote} authorName={founderQuote.author} authorTitle={founderQuote.title} authorOrg={founderQuote.org} tone="dark" />
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Tempo Q&amp;A</span>
+            <h2 className="text-2xl sm:text-4xl font-black mt-3 tracking-tight">More about hiring a tempo traveller from {origin} to {displayDestination}</h2>
+          </div>
+          <LongTailFAQ faqs={longTailFaqs} tone="dark" />
+        </div>
+      </section>
+
+      {citations.length > 0 && (
+        <section className="py-12 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <OutboundCitations sources={citations} tone="dark" heading="Verified against these sources" />
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

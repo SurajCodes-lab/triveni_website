@@ -8,10 +8,12 @@ import {
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import FleetShowcase from '@/components/shared/FleetShowcase';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>;
 
@@ -23,6 +25,11 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta
+        price={`₹${cheapest}`}
+        label={`${route.city} Station Taxi`}
+        whatsappText={whatsappMsg}
+      />
 
       {/* ━━━ HERO: Connected journey ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
@@ -63,31 +70,36 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Train</p>
-                  <p className="text-sm font-bold text-white truncate">{route.train.number}</p>
+            <div className="flex flex-col gap-4 lg:w-80 flex-shrink-0">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Train</p>
+                    <p className="text-sm font-bold text-white truncate">{route.train.number}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Duration</p>
+                    <p className="text-sm font-bold text-white">{route.train.duration}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Cab From</p>
+                    <p className="text-sm font-bold text-[#FACF2D]">{'\u20B9'}{cheapest}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Rating</p>
+                    <p className="text-sm font-bold text-white/80">4.9/5</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Duration</p>
-                  <p className="text-sm font-bold text-white">{route.train.duration}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Cab From</p>
-                  <p className="text-sm font-bold text-[#FACF2D]">{'\u20B9'}{cheapest}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Rating</p>
-                  <p className="text-sm font-bold text-white/80">4.9/5</p>
+                <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
+                  <div className="flex -space-x-1">
+                    {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}
+                  </div>
+                  <span className="text-[11px] text-white/40 font-medium">10,000+ station pickups</span>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
-                <div className="flex -space-x-1">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}
-                </div>
-                <span className="text-[11px] text-white/40 font-medium">10,000+ station pickups</span>
-              </div>
+
+              {/* Quick Enquiry Form */}
+              <QuickEnquiryForm toCity={`${route.city} Station`} pageType="station_taxi" />
             </div>
           </div>
         </div>
@@ -144,6 +156,16 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
               </div>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ━━━ DESTINATION IMAGE ━━━ */}
+      <section className="relative h-64 sm:h-80 overflow-hidden">
+        <Image src={getCityImage(route.city)} alt={`${route.city} city`} fill className="object-cover" sizes="100vw" quality={80} />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Your Destination</p>
+          <h2 className="text-2xl sm:text-3xl font-black text-white">{route.city}</h2>
         </div>
       </section>
 
@@ -211,6 +233,15 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
         </div>
       </section>
 
+      {/* ━━━ FLEET ━━━ */}
+      <FleetShowcase
+        theme="light"
+        accentColor="cyan"
+        whatsappMessage={`Hi, arriving by ${route.train.name} at ${route.city}. Need taxi.`}
+        title="Our Fleet"
+        subtitle="Choose Your Ride"
+      />
+
       <FaqAccordion heading={`${route.train.name} + ${route.city} Taxi FAQs`} faqs={route.faqs} />
 
       {relatedRoutes?.length > 0 && (
@@ -236,7 +267,6 @@ export default function TrainTaxiClient({ route, relatedRoutes }) {
       )}
 
       <CTASection heading={`Book Station Pickup at ${route.city}`} subheading={`Pre-booked taxi for ${route.train.name} passengers at ${route.city}. From \u20B9${cheapest}.`} />
-      <MobileStickyBar />
     </div>
   );
 }

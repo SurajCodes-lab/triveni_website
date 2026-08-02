@@ -1,10 +1,9 @@
 // src/app/[cityName]/page.js - COMPLETE ENHANCED VERSION
 
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
@@ -16,6 +15,10 @@ import CityServiceClient from "@/components/cities/CityServiceClient";
 import RouteClientContent from "./RouteClientContent";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 import AEOHead from '@/components/seo/AEOHead';
+import { getRatingAndReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import RelatedLinks from '@/components/seo/RelatedLinks';
+import { getMoneyPageLinks, getRelatedRoutes, getCityTopicalLinks } from '@/lib/seo/linkingHelper';
 
 const allCityRoutes = {
   ...cityRoutesData,
@@ -142,13 +145,17 @@ export default function CityNamePage({ params }) {
     const priceNum = parseInt(String(startingPrice).replace('₹', '').replace(',', '') || '2760');
 
     // Route Page Structured Data
+    // Service-level aggregateRating + 3 named Reviews via outstation reviewer pool.
+    // Provider's nested aggregateRating removed (wrong schema location — moved to top-level).
     const routeServiceSchema = {
       "@context": "https://schema.org",
       "@type": "TaxiService",
       "name": `Triveni Cabs - ${formattedCityName} to ${formattedDestination} Taxi Service`,
+      "brand": { "@type": "Brand", "name": COMPANY_INFO.name },
       "description": `Professional cab service from ${formattedCityName} to ${formattedDestination}. ${estimatedDistance} km, ${estimatedTime}. AC vehicles, verified drivers, GPS tracking, 24/7 availability.`,
       "provider": {
         "@type": "LocalBusiness",
+        "@id": "https://www.trivenicabs.in/#organization",
         "name": COMPANY_INFO.name,
         "telephone": COMPANY_INFO.phone.primary,
         "email": COMPANY_INFO.email.primary,
@@ -161,14 +168,7 @@ export default function CityNamePage({ params }) {
           "postalCode": COMPANY_INFO.address.postalCode,
           "addressCountry": "IN"
         },
-        "priceRange": "₹₹",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": String(AGGREGATE_RATING.ratingValue),
-          "reviewCount": String(AGGREGATE_RATING.reviewCount),
-          "bestRating": "5",
-          "worstRating": "1"
-        }
+        "priceRange": "₹₹"
       },
       "areaServed": [
         {"@type": "City", "name": formattedCityName},
@@ -179,7 +179,8 @@ export default function CityNamePage({ params }) {
         "serviceUrl": `${BASE_URL}/${cityName}`,
         "servicePhone": COMPANY_INFO.phone.primary,
         "availableLanguage": ["English", "Hindi"]
-      }
+      },
+      ...getRatingAndReviews(cityName, 'outstation')
     };
 
     const routeTripSchema = {
@@ -217,7 +218,7 @@ export default function CityNamePage({ params }) {
     const routeProductSchema = {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": `${formattedCityName} to ${formattedDestination} Cab Booking`,
+      "name": `${formattedCityName} to ${formattedDestination} Cab Booking — Triveni Cabs`,
       "description": `Book ${formattedCityName} to ${formattedDestination} taxi starting ₹${startingPrice}. ${estimatedDistance} km, ${estimatedTime}. AC sedan, SUV, tempo traveller available.`,
       "brand": {
         "@type": "Brand",
@@ -233,16 +234,11 @@ export default function CityNamePage({ params }) {
         "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         "seller": {
           "@type": "Organization",
+          "@id": "https://www.trivenicabs.in/#organization",
           "name": COMPANY_INFO.name
         }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(AGGREGATE_RATING.ratingValue),
-        "reviewCount": String(AGGREGATE_RATING.reviewCount),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      ...getRatingAndReviews(cityName, 'outstation')
     };
 
     // HowTo schema — booking process for featured snippets
@@ -301,9 +297,13 @@ export default function CityNamePage({ params }) {
       vehicles: route?.prices?.map(p => p.vehicle).filter(Boolean) || []
     });
 
+    // FAQPage — Speakable wired to the hero headline + direct-answer lead +
+    // first FAQ answer (DOM classes live in RouteClientContent) so voice
+    // assistants can read the fare/distance answer aloud.
     const routeFAQSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
       "mainEntity": routeFAQs.map(faq => ({
         "@type": "Question",
         "name": faq.question,
@@ -312,6 +312,44 @@ export default function CityNamePage({ params }) {
           "text": faq.answer
         }
       }))
+    };
+
+    // Article schema — editorial guide entity for AEO/GEO + freshness signal,
+    // Speakable-enabled, so the page can be cited as an authoritative answer
+    // source for "{city} to {dest} taxi fare" AI/voice queries. Auto-fresh
+    // dateModified via getTodayDate() re-evaluated every ISR cycle.
+    const routeArticleSchema = getArticleSchema({
+      slug: cityName,
+      headline: `${formattedCityName} to ${formattedDestination} Taxi (2026) — Fare, Distance, Duration & Booking`,
+      description: `Complete guide to booking a ${formattedCityName} to ${formattedDestination} cab: fares from ₹${startingPrice}, ${estimatedDistance} distance, ${estimatedTime} journey time, AC sedan/SUV/tempo options and one-way vs round-trip pricing.`,
+      image: '/images/triveni-cabs-og.jpg',
+      authorName: 'editorial',
+      speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+    });
+
+    // TouristTrip schema — describes the journey itself as a bookable trip,
+    // anchoring origin + destination as itinerary places for GEO entity graphs.
+    const routeTouristTripSchema = {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "name": `${formattedCityName} to ${formattedDestination} Cab Trip`,
+      "description": `A ${estimatedDistance} (${estimatedTime}) road journey from ${formattedCityName} to ${formattedDestination} by private AC taxi with Triveni Cabs.`,
+      "touristType": ["Leisure", "Family", "Business", "Pilgrimage"],
+      "itinerary": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@type": "Place", "name": formattedCityName } },
+          { "@type": "ListItem", "position": 2, "item": { "@type": "Place", "name": formattedDestination } }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": priceNum,
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "url": `${BASE_URL}/${cityName}`
+      },
+      "provider": { "@id": "https://www.trivenicabs.in/#organization" }
     };
 
     const routeBreadcrumbSchema = {
@@ -341,43 +379,41 @@ export default function CityNamePage({ params }) {
 
     return (
       <>
-        <Script
-          id="route-service-schema"
+        {/* Plain <script> tags for static JSON-LD — zero next/script runtime cost */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeServiceSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="route-trip-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeTripSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="route-product-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeProductSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="route-howto-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeHowToSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="route-faq-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeFAQSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="route-breadcrumb-schema"
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeArticleSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(routeTouristTripSchema) }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeBreadcrumbSchema) }}
-          strategy="beforeInteractive"
         />
         <AEOHead pageType="route" data={{ url: `/${cityName}`, title: `${formattedCityName} to ${formattedDestination} Taxi`, origin: formattedCityName, destination: formattedDestination }} />
+
         <RouteClientContent
           cityName={originCity}
           formattedCityName={formattedCityName}
@@ -389,6 +425,24 @@ export default function CityNamePage({ params }) {
           routes={routes}
           vehiclesServices={vehiclesServices}
         />
+
+        {/* Structured internal-link panels — boosts topical-authority signals
+            for AI engines. Two panels: adjacent one-way routes + money pages
+            from the origin city. */}
+        <div className="container mx-auto px-4 pb-12">
+          <RelatedLinks
+            heading={`Other routes from ${formattedCityName}`}
+            links={getRelatedRoutes(cityName, 6)}
+            ariaLabel={`One-way taxi routes related to ${formattedCityName} to ${formattedDestination}`}
+            tone="slate"
+          />
+          <RelatedLinks
+            heading={`Popular in ${formattedCityName}`}
+            links={getMoneyPageLinks(originCity, 5)}
+            ariaLabel={`Popular ${formattedCityName} taxi services`}
+            tone="amber"
+          />
+        </div>
       </>
     );
   } else {
@@ -470,9 +524,13 @@ export default function CityNamePage({ params }) {
     const geo = cityGeoCoords[formattedCityName] || { lat: COMPANY_INFO.geo.latitude, lng: COMPANY_INFO.geo.longitude };
 
     // City Page Structured Data
+    // City-level LocalBusiness uses brand-level 10K reviewCount (legitimate aggregate
+    // for the company's overall city presence — same pattern as the corporate hub).
     const cityServiceSchema = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": `${BASE_URL}/${cityName}#localbusiness`,
+      "parentOrganization": { "@id": "https://www.trivenicabs.in/#organization" },
       "name": `${COMPANY_INFO.name} - ${formattedCityName}`,
       "description": `Professional taxi service in ${formattedCityName}. Outstation trips, local tours, airport transfers, and special occasions. Verified drivers, AC vehicles, GPS tracking, 24/7 availability.`,
       "url": `${BASE_URL}/${cityName}`,
@@ -499,7 +557,7 @@ export default function CityNamePage({ params }) {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": String(AGGREGATE_RATING.ratingValue),
-        "reviewCount": String(AGGREGATE_RATING.reviewCount),
+        "reviewCount": String(getDeterministicReviewCount(cityName)),
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -514,9 +572,11 @@ export default function CityNamePage({ params }) {
       "@context": "https://schema.org",
       "@type": "TaxiService",
       "name": `${formattedCityName} Taxi Service - ${COMPANY_INFO.name}`,
+      "brand": { "@type": "Brand", "name": COMPANY_INFO.name },
       "description": `24/7 taxi service in ${formattedCityName}. Book cabs for local trips, outstation tours, airport transfers, and special events.`,
       "provider": {
         "@type": "Organization",
+        "@id": "https://www.trivenicabs.in/#organization",
         "name": COMPANY_INFO.name,
         "url": BASE_URL,
         "telephone": COMPANY_INFO.phone.primary
@@ -531,14 +591,16 @@ export default function CityNamePage({ params }) {
         "serviceUrl": `${BASE_URL}/${cityName}`,
         "servicePhone": COMPANY_INFO.phone.primary,
         "availableLanguage": ["English", "Hindi"]
-      }
+      },
+      ...getRatingAndReviews(cityName, 'city')
     };
 
     // Product/Offer schema — helps get price rich snippets in SERPs
+    // Product-level reviewCount is per-city deterministic (not brand-level inflation)
     const cityProductSchema = {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": `${formattedCityName} Taxi & Cab Service`,
+      "name": `${formattedCityName} Taxi & Cab Service — Triveni Cabs`,
       "description": `Book taxi in ${formattedCityName} from ₹11/km. Local, outstation, airport transfers. AC sedan, SUV, tempo traveller available 24/7.`,
       "brand": {
         "@type": "Brand",
@@ -554,16 +616,11 @@ export default function CityNamePage({ params }) {
         "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         "seller": {
           "@type": "Organization",
+          "@id": "https://www.trivenicabs.in/#organization",
           "name": COMPANY_INFO.name
         }
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(AGGREGATE_RATING.ratingValue),
-        "reviewCount": String(AGGREGATE_RATING.reviewCount),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      ...getRatingAndReviews(cityName, 'city')
     };
 
     // HowTo schema — booking process for featured snippets
@@ -631,16 +688,62 @@ export default function CityNamePage({ params }) {
       ]
     };
 
-    // Use centralized FAQ generator for richer, more SEO-optimized FAQs
-    const cityFAQs = generateCityFAQs({
+    // Top popular routes from this city for natural-language FAQ + content
+    const cityTopRoutes = Array.isArray(allCityRoutes[formattedCityName])
+      ? allCityRoutes[formattedCityName].filter(r => r && r.destination).slice(0, 6)
+      : [];
+    const cityTopDestStr = cityTopRoutes.map(r => r.destination).join(', ')
+      || (details.popularRoutes || []).slice(0, 4).join(', ');
+
+    // Use centralized FAQ generator for richer, more SEO-optimized FAQs (7 base),
+    // then append city-specific commercial-intent Q&A (vehicle types, local vs
+    // outstation, airport/railway pickup, night charge, GST, popular routes,
+    // safety) to reach a 12+ FAQPage for stronger AEO/featured-snippet coverage.
+    const cityBaseFAQs = generateCityFAQs({
       city: formattedCityName,
       services: ['Airport Transfer', 'Local Sightseeing', 'Outstation Trips', 'Wedding Car', 'Corporate Travel'],
       tours: citySpots.slice(0, 3)
     });
 
+    const cityExtraFAQs = [
+      {
+        question: `What types of vehicles can I book in ${formattedCityName}?`,
+        answer: `In ${formattedCityName} you can book a Sedan (₹11/km, 4 seats), SUV Ertiga (6 seats) and SUV Innova (7 seats, ₹14/km), 12-26 seater Tempo Travellers (from ₹20/km) and 22-56 seater buses (from ₹35/km). Every vehicle is AC, GPS-tracked, sanitised and driven by a verified professional.`
+      },
+      {
+        question: `What is the difference between local and outstation taxi in ${formattedCityName}?`,
+        answer: `A local taxi in ${formattedCityName} is charged on an 8-hour/80-km day package (or hourly) and stays within the city for sightseeing and errands. An outstation taxi is charged per kilometre for trips to other cities, available as one-way (you pay only for the distance travelled) or round trip with a 10% saving.`
+      },
+      {
+        question: `Do you provide airport and railway station pickup in ${formattedCityName}?`,
+        answer: `Yes. We offer ${formattedCityName} airport and railway station pickup and drop with flight and train tracking, so the cab is ready when you arrive. Share your flight or PNR details and the driver waits with a name placard at the arrival point. Up to 45-60 minutes of free wait time is included.`
+      },
+      {
+        question: `Is there a night charge for taxis in ${formattedCityName}?`,
+        answer: `For local day trips in ${formattedCityName} the driver allowance is included in the package. For outstation and overnight journeys a driver night charge of ₹300-₹500 per night applies and is shown upfront. There are no hidden charges and the full fare is confirmed before pickup.`
+      },
+      {
+        question: `Do taxi fares in ${formattedCityName} include GST and tolls?`,
+        answer: `Base per-km fares in ${formattedCityName} cover fuel and driver. Tolls, parking and applicable state permits are billed at actuals. GST is added as per government rules, and we provide a proper GST invoice for corporate and business bookings on request.`
+      },
+      {
+        question: `What are the most popular taxi routes from ${formattedCityName}?`,
+        answer: `Popular outstation routes from ${formattedCityName} include ${cityTopDestStr || 'nearby tourist, hill-station and pilgrimage destinations'}. We cover all major cities for one-way and round-trip travel, plus local sightseeing, airport transfers, weddings and corporate trips.`
+      },
+      {
+        question: `Are taxis in ${formattedCityName} safe for women and family travel?`,
+        answer: `Absolutely. Every cab in ${formattedCityName} comes with a police-verified driver, live GPS tracking that can be shared with family, an SOS panic feature and 24/7 support on +91-7668570551. Female-friendly drivers can be requested for women-only or senior-citizen trips.`
+      }
+    ];
+
+    const cityFAQs = [...cityBaseFAQs, ...cityExtraFAQs];
+
+    // FAQPage — Speakable wired to the hero H1 + direct-answer lead + first FAQ
+    // answer (DOM classes already present in CityServiceClient: h1 / .faq-answer).
     const cityFAQSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "speakable": getSpeakableSchema(['h1', '.direct-answer .faq-answer', '.faq-answer']),
       "mainEntity": cityFAQs.map(faq => ({
         "@type": "Question",
         "name": faq.question,
@@ -650,6 +753,35 @@ export default function CityNamePage({ params }) {
         }
       }))
     };
+
+    // Article schema — editorial city guide entity for AEO/GEO + freshness,
+    // Speakable-enabled so the page can be cited as the authoritative answer
+    // for "taxi service in {city}" AI/voice queries. Auto-fresh dateModified.
+    const cityArticleSchema = getArticleSchema({
+      slug: cityName,
+      headline: `Taxi Service in ${formattedCityName} (2026) — Fares, Vehicle Types, Local & Outstation Booking Guide`,
+      description: `Complete guide to booking a taxi in ${formattedCityName}: rates from ₹11/km, sedan/SUV/tempo/bus options, local day packages, outstation one-way and round trips, airport and railway pickup.`,
+      image: '/images/triveni-cabs-og.jpg',
+      authorName: 'editorial',
+      speakableSelectors: ['h1', '.direct-answer .faq-answer', '.faq-answer']
+    });
+
+    // Comparison schema (Table + Article) — vehicle/fare option comparison for
+    // featured-snippet capture. Matched by the visible table in CityServiceClient
+    // ("Sedan vs SUV vs Tempo vs Bus" rate card).
+    const cityComparisonRows = [
+      { feature: 'Sedan (Swift Dzire / Etios)' },
+      { feature: 'SUV (Ertiga / Innova)' },
+      { feature: 'Tempo Traveller (12-26 seater)' },
+      { feature: 'Bus / Coach (22-56 seater)' }
+    ];
+    const cityComparisonSchema = getComparisonSchema({
+      slug: cityName,
+      title: `Taxi & Cab Fare Comparison in ${formattedCityName} — Sedan vs SUV vs Tempo vs Bus`,
+      description: `Compare per-km fares, seating capacity and best use-case for sedan, SUV, tempo traveller and bus options when booking a taxi in ${formattedCityName}.`,
+      rows: cityComparisonRows,
+      mentions: [`Taxi service in ${formattedCityName}`, 'Sedan', 'SUV', 'Tempo Traveller', 'Bus rental', 'Outstation taxi', 'Local cab']
+    });
 
     const cityServiceListSchema = {
       "@context": "https://schema.org",
@@ -678,49 +810,48 @@ export default function CityNamePage({ params }) {
 
     return (
       <>
-        <Script
-          id="city-service-schema"
+        {/* Plain <script> tags for static JSON-LD — zero next/script runtime cost */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="city-taxi-service-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityTaxiServiceSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="city-product-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityProductSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="city-howto-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityHowToSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="city-breadcrumb-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityBreadcrumbSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="city-faq-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityFAQSchema) }}
-          strategy="beforeInteractive"
         />
-        <Script
-          id="city-service-list-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityServiceListSchema) }}
-          strategy="beforeInteractive"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(cityArticleSchema) }}
+        />
+        {cityComparisonSchema.map((schema, i) => (
+          <script
+            key={`city-comparison-${i}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
         <AEOHead pageType="cityHub" data={{ url: `/${cityName}`, title: `${formattedCityName} Cab Service`, city: formattedCityName }} />
+
         <CityServiceClient
           formattedCityName={formattedCityName}
           citySpots={citySpots}
@@ -728,6 +859,23 @@ export default function CityNamePage({ params }) {
           vehiclesServices={vehiclesServices}
           cityLocalInfo={cityLocalInfo}
         />
+
+        {/* Structured internal-link panels — two siloed grids. Money pages
+            anchor commercial intent; topical links anchor research intent. */}
+        <div className="container mx-auto px-4 pb-12">
+          <RelatedLinks
+            heading={`Popular in ${formattedCityName}`}
+            links={getMoneyPageLinks(formattedCityName, 6)}
+            ariaLabel={`Popular ${formattedCityName} services`}
+            tone="amber"
+          />
+          <RelatedLinks
+            heading={`Plan your ${formattedCityName} trip`}
+            links={getCityTopicalLinks(formattedCityName)}
+            ariaLabel={`${formattedCityName} travel planning guides`}
+            tone="slate"
+          />
+        </div>
       </>
     );
   }

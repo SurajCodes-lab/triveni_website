@@ -15,6 +15,9 @@ import {
   CalendarIcon
 } from '@heroicons/react/24/outline';
 
+// Shared Components
+import SocialProofStrip from '@/components/shared/SocialProofStrip';
+
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
@@ -183,25 +186,8 @@ export default function CityToursPage({ city }) {
         </div>
       </div>
 
-      {/* Trust Strip */}
-      <div className="bg-slate-900 border-b border-white/10 py-3">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-slate-400 flex-wrap">
-            <span className="flex items-center gap-1.5 font-medium">
-              <StarIcon className="w-4 h-4 text-yellow-500" /> 4.9★ Rated
-            </span>
-            <span className="flex items-center gap-1.5 font-medium">
-              <UserGroupIcon className="w-4 h-4 text-emerald-400" /> 10,000+ Trips
-            </span>
-            <span className="flex items-center gap-1.5 font-medium">
-              <SparklesIcon className="w-4 h-4 text-teal-400" /> Since 2018
-            </span>
-            <span className="flex items-center gap-1.5 font-medium">
-              <MapPinIcon className="w-4 h-4 text-cyan-400" /> 500+ Cities
-            </span>
-          </div>
-        </div>
-      </div>
+      {/* Social Proof Strip */}
+      <SocialProofStrip theme="dark" />
 
       {/* Tours Grid Section */}
       <section id="tours" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative" aria-labelledby="city-tours-heading" itemScope itemType="https://schema.org/ItemList">

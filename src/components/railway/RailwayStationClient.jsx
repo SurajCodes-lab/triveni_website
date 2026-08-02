@@ -11,6 +11,8 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import { getNearbyStations } from '@/utilis/railwayStationData';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import StickyPriceBar from '@/components/shared/StickyPriceBar';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import SectionDivider from '@/components/shared/SectionDivider';
@@ -83,6 +85,11 @@ export default function RailwayStationClient({ station, slug }) {
         price={`₹${lowestFare}`}
         whatsappMessage={`Hi, I need a taxi from ${station.name}`}
       />
+      <SetStickyCta
+        price={`₹${lowestFare}`}
+        label={`${station.name} Taxi`}
+        whatsappText={`Hi, I need a taxi from ${station.name} (${station.stationCode}). Please share rates and availability.`}
+      />
 
       {/* === HERO SECTION - Dramatic Railway Terminal === */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
@@ -143,6 +150,9 @@ export default function RailwayStationClient({ station, slug }) {
                   <WhatsAppIcon className="w-5 h-5" /> WhatsApp Booking
                 </Link>
               </div>
+
+              {/* Quick Enquiry Form */}
+              <QuickEnquiryForm fromCity={station.name} toCity={station.city} pageType="station_taxi" />
             </div>
 
             {/* Right: Train Ticket Style Info Card (2 cols) */}

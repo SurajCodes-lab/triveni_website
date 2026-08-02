@@ -1,4 +1,6 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
 
 export const revalidate = 3600;
 
@@ -16,7 +18,7 @@ export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
-    title: 'How Triveni Cabs Verifies Every Driver — 7-Step Safety Process | Triveni Cabs',
+    title: 'How Triveni Cabs Verifies Every Driver — 7-Step Safety Process',
     description: pageDesc,
     type: 'website',
     locale: 'en_IN',
@@ -43,8 +45,30 @@ export default function DriverVerificationPage() {
     "name": "Triveni Cabs Driver Verification Process",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...getRatingAndReviews(slug, 'city')
   };
+  const articleSchema = getArticleSchema({
+    slug,
+    headline: 'Triveni Cabs Driver Verification: 7-Step Background Check Process',
+    description: pageDesc,
+    image: '/images/citypage_hero_section_image.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+  const speakableSchema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `https://www.trivenicabs.in/${slug}#webpage`, "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']) };
+  const howToSchema = getHowToSchema({
+    name: 'How Triveni Cabs Verifies Every Driver',
+    description: 'The 7-step process every Triveni Cabs driver completes before being assigned a trip.',
+    totalTime: 'P30D',
+    steps: [
+      { name: 'Document Verification', text: 'Driving licence, Aadhaar, PAN and address proof are verified against government databases.' },
+      { name: 'Police Background Check', text: 'Comprehensive criminal background check through local police station verification.' },
+      { name: 'Driving Skill Assessment', text: 'Practical driving test covering highway, city, and hill road handling. Minimum 5 years experience required.' },
+      { name: 'Medical Fitness Test', text: 'Vision, hearing and general health assessment for long-distance driving fitness.' },
+      { name: 'Customer Service Training', text: '3-day training on passenger etiquette, language, cleanliness and route knowledge.' },
+      { name: 'Probation Period', text: '30-day probation with monitored trips. Drivers must maintain a 4.5+ rating to pass.' },
+      { name: 'Ongoing Performance Reviews', text: 'Monthly rating reviews, quarterly refresher training and annual re-verification.' }
+    ]
+  });
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     "itemListElement": [
@@ -60,6 +84,9 @@ export default function DriverVerificationPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TrustPageClient

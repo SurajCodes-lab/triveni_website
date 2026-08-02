@@ -6,7 +6,7 @@ const data = getItinerary('ayodhya-1-day-package');
 
 if (!data) notFound();
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: data.metaTitle,
@@ -24,6 +24,11 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-1-day-package',
     siteName: 'Triveni Cabs',
+    images: [{
+      url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
+      width: 1200, height: 630,
+      alt: 'Ayodhya Ram Mandir 1-day package — sacred Darshan tour with Triveni Cabs',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -31,6 +36,7 @@ export const metadata = {
     description: data.metaDescription,
     creator: '@trivenicabs',
     site: '@trivenicabs',
+    images: ['/images/sightseeing/Ayodhya/ayodha_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

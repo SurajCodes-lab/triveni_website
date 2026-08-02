@@ -9,6 +9,11 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 export default function ComparisonClient({ data }) {
   const { vehicle1: v1, vehicle2: v2, comparisonPoints, faqs, verdict } = data;
 
+  // Carry the two compared vehicles into the WhatsApp prefill for better lead context
+  const waCompareMsg = encodeURIComponent(
+    `Hi, I am comparing ${v1.name} vs ${v2.name}. Please help me choose the right one for my trip and share a quote.`
+  );
+
   return (
     <div className="min-h-screen bg-slate-950">
       {/* Hero Section - VS Style */}
@@ -46,7 +51,7 @@ export default function ComparisonClient({ data }) {
             <a onClick={() => trackPhoneCall('comparison_page')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/20 hover:scale-105 transition-all">
               <Phone className="w-5 h-5" /> Call: 7668570551
             </a>
-            <a onClick={() => trackWhatsAppClick('comparison_page')} href="https://wa.me/917668570551?text=I need help choosing between vehicles for my trip" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold border border-amber-400/20 hover:bg-white/10 transition-all">
+            <a onClick={() => trackWhatsAppClick('comparison_page')} href={`https://wa.me/917668570551?text=${waCompareMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold border border-amber-400/20 hover:bg-white/10 transition-all">
               <WhatsAppIcon className="w-5 h-5" /> WhatsApp Us
             </a>
           </div>
@@ -287,7 +292,7 @@ export default function ComparisonClient({ data }) {
               <a onClick={() => trackPhoneCall('comparison_page')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all">
                 <Phone className="w-5 h-5" /> Get Expert Advice
               </a>
-              <a onClick={() => trackWhatsAppClick('comparison_page')} href="https://wa.me/917668570551?text=Help me choose between vehicles" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-700 transition-all">
+              <a onClick={() => trackWhatsAppClick('comparison_page')} href={`https://wa.me/917668570551?text=${waCompareMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-700 transition-all">
                 <WhatsAppIcon className="w-5 h-5" /> WhatsApp
               </a>
             </div>
@@ -323,7 +328,7 @@ export default function ComparisonClient({ data }) {
             <a onClick={() => trackPhoneCall('comparison_page')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-900 transition-all">
               <Phone className="w-5 h-5" /> Call: 7668570551
             </a>
-            <a onClick={() => trackWhatsAppClick('comparison_page')} href="https://wa.me/917668570551?text=I need help choosing a vehicle for my trip" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/90 text-black px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all">
+            <a onClick={() => trackWhatsAppClick('comparison_page')} href={`https://wa.me/917668570551?text=${waCompareMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/90 text-black px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white transition-all">
               <WhatsAppIcon className="w-5 h-5" /> WhatsApp Us
             </a>
           </div>

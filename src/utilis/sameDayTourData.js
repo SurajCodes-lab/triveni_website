@@ -987,7 +987,164 @@ Do not miss the Neemrana Baori, a spectacular nine-storied stepwell that is one 
       { question: "What is the Neemrana Baori?", answer: "It is a magnificent nine-storied stepwell (baori) near the fort. It is free to visit and a stunning example of ancient water architecture." },
       { question: "Is Neemrana good for a family trip?", answer: "Yes, Neemrana is excellent for families. The fort tour, zip-lining, and dining options appeal to all age groups." }
     ]
-  }
+  },
+  "same-day-kasauli-from-chandigarh": {
+    slug: "same-day-kasauli-from-chandigarh",
+    title: "Same Day Kasauli Tour from Chandigarh",
+    h1: "Same Day Kasauli Tour from Chandigarh",
+    origin: "Chandigarh",
+    destination: "Kasauli",
+    distance: "65 km one way",
+    totalDuration: "8-10 hours",
+    driveTime: "1.5-2 hours one way",
+    route: "NH5 via Pinjore, Dharampur",
+    departureTime: "7:00-8:00 AM",
+    returnTime: "5:00-7:00 PM",
+    fares: { sedan: "2,500", suv: "3,800", tempo: "7,500" },
+    itinerary: [
+      { time: "7:30 AM", activity: "Pickup from Chandigarh hotel/location", duration: "15 min", icon: "car" },
+      { time: "7:45 AM", activity: "Drive towards Kasauli, stop at Pinjore Gardens", duration: "45 min", icon: "route" },
+      { time: "8:30 AM", activity: "Stroll through the Mughal-era Pinjore Gardens", duration: "45 min", icon: "camera" },
+      { time: "9:15 AM", activity: "Continue scenic climb to Kasauli", duration: "1 hour", icon: "route" },
+      { time: "10:15 AM", activity: "Visit Christ Church and Upper Mall Road", duration: "1 hour", icon: "landmark" },
+      { time: "11:15 AM", activity: "Walk the pine-scented Gilbert Trail", duration: "1 hour", icon: "camera" },
+      { time: "12:15 PM", activity: "Lunch at a hilltop cafe on Mall Road", duration: "1 hour", icon: "coffee" },
+      { time: "1:15 PM", activity: "Sunset Point and Monkey Point (Manki Point)", duration: "1.5 hours", icon: "camera" },
+      { time: "2:45 PM", activity: "Quick stop at Kasauli Brewery viewpoint", duration: "30 min", icon: "landmark" },
+      { time: "3:15 PM", activity: "Return drive to Chandigarh", duration: "1.5 hours", icon: "car" },
+      { time: "5:00 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
+    ],
+    placesToVisit: [
+      { name: "Mall Road", desc: "Kasauli's quiet, tree-lined promenade with colonial cottages, tiny cafes, and bakeries away from the crowds." },
+      { name: "Christ Church", desc: "A charming neo-Gothic church built in 1853, with stained glass and a sundial set amid towering deodars." },
+      { name: "Gilbert Trail", desc: "An easy 1.5 km nature walk through pine and oak forest, popular for birdwatching and valley views." },
+      { name: "Sunset Point", desc: "A peaceful viewpoint offering sweeping views of the Sutlej plains glowing at dusk." },
+      { name: "Monkey Point (Manki Point)", desc: "Kasauli's highest point with a Hanuman temple and 360-degree views; inside an Air Force area, ID required." }
+    ],
+    inclusions: ["AC cab round trip Chandigarh-Kasauli-Chandigarh", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
+    exclusions: ["Pinjore Gardens entry", "Kasauli Brewery tour/tasting", "Meals", "Monkey Point entry formalities", "Personal expenses"],
+    bestTime: "March to June, September to November",
+    tips: ["Carry a valid photo ID -- Monkey Point falls inside an Air Force station", "Mobiles and cameras are not allowed at Monkey Point", "The town is best explored on foot at a relaxed pace", "Carry a light jacket as evenings get cool even in summer", "Combine with Pinjore Gardens which lies right on the route"],
+    closedDay: "None",
+    description: `Trade the city heat for cool pine forests on our same day Kasauli tour from Chandigarh. Just 65 km away, this sleepy little cantonment town is the easiest mountain escape from the city -- close enough for a relaxed half or full day, yet far enough to feel a world apart.
+
+The drive climbs gently through Pinjore and Dharampur, and we time it so you can stretch your legs at the beautiful Mughal-era Pinjore Gardens on the way up. In Kasauli itself, there are no crowds and no rush: just the old Christ Church, a quiet Mall Road, the leafy Gilbert Trail, and big views from Sunset Point and Monkey Point.
+
+Our drivers know these narrow hill lanes well and handle the climb with ease. Kasauli is ideal for travellers who want fresh air, gentle walks, and a slow afternoon rather than a packed sightseeing checklist.`,
+    faqs: [
+      { question: "How far is Kasauli from Chandigarh?", answer: "Kasauli is approximately 65 km from Chandigarh, about 1.5 to 2 hours by road via NH5 through Pinjore and Dharampur." },
+      { question: "What is the cost of Chandigarh to Kasauli day trip?", answer: "An AC sedan costs Rs 2,500, SUV Rs 3,800, and Tempo Traveller Rs 7,500 for the round trip." },
+      { question: "Is Kasauli good for a one day trip?", answer: "Yes. At just 65 km, Kasauli is one of the easiest day trips from Chandigarh. You can comfortably spend 4-5 hours exploring the town." },
+      { question: "Do I need an ID for Monkey Point in Kasauli?", answer: "Yes. Monkey Point is inside an Air Force station, so a valid photo ID is required and cameras and mobile phones are not permitted." },
+      { question: "Can I visit Pinjore Gardens on the way to Kasauli?", answer: "Yes, Pinjore Gardens lies right on the route about 22 km from Chandigarh and makes a perfect short stop on the way up." },
+      { question: "What is the best time to visit Kasauli?", answer: "March to June for pleasant weather and September to November for clear post-monsoon views. Winters are cold but very scenic." }
+    ]
+  },
+
+  "same-day-dharamshala-from-chandigarh": {
+    slug: "same-day-dharamshala-from-chandigarh",
+    title: "Same Day Dharamshala Tour from Chandigarh",
+    h1: "Same Day Dharamshala & McLeodganj Tour from Chandigarh",
+    origin: "Chandigarh",
+    destination: "Dharamshala",
+    distance: "245 km one way",
+    totalDuration: "15-17 hours",
+    driveTime: "5.5-6.5 hours one way",
+    route: "NH5/NH205 via Ropar, Una, Kangra",
+    departureTime: "4:00-4:30 AM",
+    returnTime: "8:00-10:00 PM",
+    fares: { sedan: "5,500", suv: "7,500", tempo: "14,000" },
+    itinerary: [
+      { time: "4:00 AM", activity: "Pre-dawn pickup from Chandigarh hotel/location", duration: "15 min", icon: "car" },
+      { time: "4:15 AM", activity: "Long drive to Dharamshala via Una and Kangra", duration: "5.5 hours", icon: "route" },
+      { time: "9:45 AM", activity: "Stop en route at Kangra Fort", duration: "1 hour", icon: "landmark" },
+      { time: "11:00 AM", activity: "Drive up to McLeodganj", duration: "45 min", icon: "route" },
+      { time: "11:45 AM", activity: "Dalai Lama Temple (Tsuglagkhang Complex)", duration: "1 hour", icon: "landmark" },
+      { time: "12:45 PM", activity: "Lunch at a McLeodganj Tibetan cafe", duration: "45 min", icon: "coffee" },
+      { time: "1:30 PM", activity: "Short trek to Bhagsunag Falls and temple", duration: "1.5 hours", icon: "camera" },
+      { time: "3:00 PM", activity: "HPCA Stadium viewpoint and Kotwali Bazaar", duration: "1 hour", icon: "camera" },
+      { time: "4:00 PM", activity: "Begin return drive to Chandigarh", duration: "6 hours", icon: "car" },
+      { time: "10:00 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
+    ],
+    placesToVisit: [
+      { name: "McLeodganj", desc: "The 'Little Lhasa' of India, a lively Tibetan town with monasteries, prayer flags, cafes, and Himalayan views." },
+      { name: "Dalai Lama Temple (Tsuglagkhang)", desc: "The spiritual heart of Tibetan Buddhism in exile, home to the main temple and the Tibet Museum." },
+      { name: "Bhagsunag Falls", desc: "A scenic waterfall reached by a short trek past the ancient Bhagsunag Temple and popular cafes." },
+      { name: "HPCA Stadium", desc: "One of the world's most picturesque cricket stadiums, framed by snow-capped Dhauladhar peaks." },
+      { name: "Kangra Fort", desc: "One of India's oldest and largest forts, perched above the Banganga river on the route to Dharamshala." }
+    ],
+    inclusions: ["AC cab round trip Chandigarh-Dharamshala-Chandigarh", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
+    exclusions: ["Kangra Fort entry", "Tibet Museum donation", "Meals", "Trek/guide charges", "Personal expenses"],
+    bestTime: "March to June, September to November",
+    tips: ["A very early 4:00 AM start is essential -- this is a long full-day trip", "Distances are deceptive in the hills; the last stretch is slow and winding", "Carry warm layers as Dharamshala is cooler than the plains", "Keep sightseeing focused -- pick 3-4 spots rather than rushing all of them", "For a relaxed pace, consider this as an overnight rather than a single day"],
+    closedDay: "None (Dalai Lama Temple open daily)",
+    description: `Reach the spiritual mountain town of Dharamshala and McLeodganj from Chandigarh in a single, well-planned day. At around 245 km, this is a long full-day journey, so we start before dawn to give you enough time on the hills before the return drive -- be honest with yourself, it's an early morning and a late night, but the reward is worth it.
+
+The route winds through Ropar, Una and the Kangra valley, with a chance to stop at the historic Kangra Fort along the way. Up in McLeodganj you can sit quietly at the Dalai Lama Temple, trek to the pretty Bhagsunag Falls, take in the famous Dhauladhar-backed HPCA cricket stadium, and browse the Tibetan markets of Kotwali Bazaar.
+
+Because of the distance, we keep the itinerary tight and our drivers handle the long mountain stretch with care. If you would rather not rush, this same trip also works beautifully as an overnight -- just let us know and we'll plan accordingly.`,
+    faqs: [
+      { question: "How far is Dharamshala from Chandigarh?", answer: "Dharamshala is approximately 245 km from Chandigarh. The drive takes around 5.5 to 6.5 hours one way via Una and Kangra." },
+      { question: "Is a same day Dharamshala trip from Chandigarh possible?", answer: "Yes, but it is a long day. With an early 4:00 AM start you get roughly 4-5 hours in Dharamshala and McLeodganj before the return drive." },
+      { question: "What is the cost of Chandigarh to Dharamshala day trip?", answer: "An AC sedan costs Rs 5,500, SUV Rs 7,500, and Tempo Traveller Rs 14,000 for the round trip with tolls and parking included." },
+      { question: "Why does the Dharamshala trip start so early?", answer: "The 245 km hill drive takes over 6 hours each way. A 4:00 AM departure is essential so you have meaningful sightseeing time and return at a reasonable hour." },
+      { question: "Should I do Dharamshala as a day trip or overnight?", answer: "A day trip is doable for the key sights, but an overnight is more relaxing and lets you enjoy McLeodganj, Bhagsunag and Triund at a comfortable pace." },
+      { question: "What are the main attractions in McLeodganj?", answer: "The Dalai Lama Temple, Bhagsunag Falls, the HPCA cricket stadium, Kotwali Bazaar, and the surrounding Tibetan monasteries and cafes." }
+    ]
+  },
+
+  "same-day-chail-from-chandigarh": {
+    slug: "same-day-chail-from-chandigarh",
+    title: "Same Day Chail Tour from Chandigarh",
+    h1: "Same Day Chail Tour from Chandigarh",
+    origin: "Chandigarh",
+    destination: "Chail",
+    distance: "110 km one way",
+    totalDuration: "11-13 hours",
+    driveTime: "3-3.5 hours one way",
+    route: "NH5 via Solan, Kandaghat, Sadhupul",
+    departureTime: "6:00-7:00 AM",
+    returnTime: "6:00-8:00 PM",
+    fares: { sedan: "3,800", suv: "5,200", tempo: "10,000" },
+    itinerary: [
+      { time: "6:00 AM", activity: "Pickup from Chandigarh hotel/location", duration: "15 min", icon: "car" },
+      { time: "6:15 AM", activity: "Drive towards Chail via Solan and Kandaghat", duration: "2.5 hours", icon: "route" },
+      { time: "8:45 AM", activity: "Riverside stop at Sadhupul", duration: "45 min", icon: "camera" },
+      { time: "9:30 AM", activity: "Continue to Chail through deodar forest", duration: "45 min", icon: "route" },
+      { time: "10:15 AM", activity: "Visit Chail Palace grounds", duration: "1 hour", icon: "landmark" },
+      { time: "11:15 AM", activity: "World's highest cricket ground (Army area)", duration: "45 min", icon: "camera" },
+      { time: "12:00 PM", activity: "Lunch at Chail Palace or local restaurant", duration: "1 hour", icon: "coffee" },
+      { time: "1:00 PM", activity: "Drive and short walk to Kali Ka Tibba temple", duration: "1.5 hours", icon: "landmark" },
+      { time: "2:30 PM", activity: "Sanctuary viewpoint and forest walk", duration: "45 min", icon: "camera" },
+      { time: "3:15 PM", activity: "Return drive to Chandigarh", duration: "3 hours", icon: "car" },
+      { time: "6:15 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
+    ],
+    placesToVisit: [
+      { name: "Chail Palace", desc: "The former summer retreat of the Maharaja of Patiala, a grand colonial-era palace set in pine and cedar forest." },
+      { name: "World's Highest Cricket Ground", desc: "Built in 1893 at 2,444 m, this Army-maintained ground is the highest cricket and polo field in the world." },
+      { name: "Kali Ka Tibba", desc: "A hilltop temple dedicated to Goddess Kali offering spectacular 360-degree Himalayan views." },
+      { name: "Sadhupul", desc: "A pretty riverside spot between Kandaghat and Chail, famous for cafe tables set right in the shallow stream." },
+      { name: "Kandaghat", desc: "A small junction town on the route, surrounded by orchards and pine slopes, perfect for a quick chai break." }
+    ],
+    inclusions: ["AC cab round trip Chandigarh-Chail-Chandigarh", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
+    exclusions: ["Chail Palace entry/grounds fee", "Cricket ground entry permissions", "Meals", "Guide charges", "Personal expenses"],
+    bestTime: "March to June, September to November",
+    tips: ["Chail is far quieter than Shimla -- ideal for a peaceful day out", "The cricket ground sits inside an Army area; entry depends on permissions on the day", "Kali Ka Tibba involves a short uphill walk -- wear comfortable shoes", "Stop at Sadhupul for the popular in-the-river cafe seating", "Carry a light jacket as the forest stays cool even in summer"],
+    closedDay: "None",
+    description: `Discover the quiet, forested charm of Chail on our same day tour from Chandigarh. Just 110 km away and tucked into the hills near Shimla, Chail is the calmer alternative to its famous neighbour -- dense deodar woods, a royal palace, and the world's highest cricket ground, all without the crowds.
+
+The drive climbs through Solan and Kandaghat, with a lovely riverside pause at Sadhupul where cafes set their tables right in the stream. In Chail you can wander the grounds of the Maharaja of Patiala's old summer palace, see the historic high-altitude cricket ground, and climb up to the Kali Ka Tibba temple for some of the best valley views in the region.
+
+Our drivers are at home on these winding forest roads, so you can simply relax and soak in the pine-scented air. Chail is perfect for travellers wanting a slow, scenic day rather than a busy tourist circuit.`,
+    faqs: [
+      { question: "How far is Chail from Chandigarh?", answer: "Chail is approximately 110 km from Chandigarh, about 3 to 3.5 hours by road via Solan, Kandaghat and Sadhupul." },
+      { question: "What is the cost of Chandigarh to Chail day trip?", answer: "An AC sedan costs Rs 3,800, SUV Rs 5,200, and Tempo Traveller Rs 10,000 for the round trip." },
+      { question: "What is Chail famous for?", answer: "Chail is famous for the Chail Palace, the world's highest cricket and polo ground, the Kali Ka Tibba temple, and its peaceful deodar forests." },
+      { question: "Can I visit the world's highest cricket ground in Chail?", answer: "Yes, the ground is maintained by the Army. Entry is usually allowed but depends on permissions on the day, so it is best to check on arrival." },
+      { question: "Is Chail better than Shimla for a day trip?", answer: "Chail is much quieter and greener than Shimla, ideal if you want calm and nature. Shimla offers more shopping, cafes and bustle." },
+      { question: "What is the best time to visit Chail?", answer: "March to June for pleasant weather and September to November for clear post-monsoon views. Winters are cold with occasional light snow." }
+    ]
+  },
 };
 
 // Helper function to get all tour slugs

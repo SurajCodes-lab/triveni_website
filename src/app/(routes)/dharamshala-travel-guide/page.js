@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll, Mountain, TreePine } from '@/components/ui/icons';
 
-export const metadata = { title: 'Dharamshala Travel Guide 2026 | Little Lhasa, Dalai Lama & Himalayan Paradise', description: 'Complete Dharamshala travel guide 2026. Tsuglagkhang Complex, McLeod Ganj, Bhagsu Waterfall, Triund Trek, Tibetan culture. Call 7668570551.', keywords: 'dharamshala travel guide, mcleod ganj, dalai lama temple, little lhasa, triund trek, dharamshala tourism, tibetan culture, kangra fort, himachal pradesh tourism', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/dharamshala-travel-guide' }, openGraph: { title: 'Dharamshala Travel Guide 2026 | Little Lhasa & Beyond', description: 'Everything about visiting Dharamshala. Dalai Lama temple, McLeod Ganj, treks, Tibetan food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/dharamshala-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/dharamshala-hero.jpg', width: 1200, height: 630, alt: 'Dharamshala Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Dharamshala Travel Guide 2026', description: 'Complete Dharamshala guide. Dalai Lama temple, Tibetan culture, treks, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/dharamshala-hero.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
+export const metadata = { title: 'Dharamshala Travel Guide 2026: Best Time, Cost & Sights', description: 'Best time to visit Dharamshala: Mar-Jun & Sep-Nov; snow in Dec-Feb. Plan 2-3 days for McLeod Ganj, Triund Trek, Bhagsu Falls & Dalai Lama temple. 480 km from Delhi + cab tips. Call 7668570551.', keywords: 'dharamshala travel guide, mcleod ganj, dalai lama temple, little lhasa, triund trek, dharamshala tourism, tibetan culture, kangra fort, himachal pradesh tourism', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/dharamshala-travel-guide' }, openGraph: { title: 'Dharamshala Travel Guide 2026 | Little Lhasa & Beyond', description: 'Everything about visiting Dharamshala. Dalai Lama temple, McLeod Ganj, treks, Tibetan food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/dharamshala-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg', width: 1200, height: 630, alt: 'Dharamshala Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Dharamshala Travel Guide 2026', description: 'Complete Dharamshala guide. Dalai Lama temple, Tibetan culture, treks, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
+export const revalidate = 3600;
 
 export default function DharamshalaTravelGuidePage() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Dharamshala Travel Guide", "item": "https://www.trivenicabs.in/dharamshala-travel-guide" }] };
@@ -18,14 +20,14 @@ export default function DharamshalaTravelGuidePage() {
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
-    { name: "Tsuglagkhang Complex (Dalai Lama Temple)", desc: "The official residence of His Holiness the 14th Dalai Lama and the spiritual heart of Tibetan Buddhism in exile. Includes the main temple, Tibet Museum, Namgyal Monastery, and peaceful meditation gardens.", entry: "Free", timing: "5:00 AM - 8:00 PM", duration: "2-3 hours", icon: Landmark },
-    { name: "McLeod Ganj", desc: "The vibrant hilltop town known as Little Lhasa. Bustling with Tibetan restaurants, backpacker cafes, handicraft shops, and Buddhist monasteries. The main square is the social hub of the Tibetan exile community.", entry: "Free", timing: "All day", duration: "Half day", icon: MapPin },
-    { name: "Bhagsu Waterfall", desc: "A stunning 20-metre waterfall just 2 km from McLeod Ganj. Easy trek through pine forests. The ancient Bhagsunag Temple at the base is dedicated to Lord Shiva. Best visited after monsoon when flow is strongest.", entry: "Free", timing: "All day (morning best)", duration: "2-3 hours", icon: Sunrise },
+    { name: "Tsuglagkhang Complex (Dalai Lama Temple)", desc: "The official residence of His Holiness the 14th Dalai Lama and the spiritual heart of Tibetan Buddhism in exile. Includes the main temple, Tibet Museum, Namgyal Monastery, and peaceful meditation gardens.", entry: "Free", timing: "5:00 AM - 8:00 PM", duration: "2-3 hours", icon: Landmark, img: "/images/sightseeing/Dharamshala/Dalai_Lama_Temple.jpg" },
+    { name: "McLeod Ganj", desc: "The vibrant hilltop town known as Little Lhasa. Bustling with Tibetan restaurants, backpacker cafes, handicraft shops, and Buddhist monasteries. The main square is the social hub of the Tibetan exile community.", entry: "Free", timing: "All day", duration: "Half day", icon: MapPin, img: "/images/sightseeing/Dharamshala/McLeod_Ganj.jpg" },
+    { name: "Bhagsu Waterfall", desc: "A stunning 20-metre waterfall just 2 km from McLeod Ganj. Easy trek through pine forests. The ancient Bhagsunag Temple at the base is dedicated to Lord Shiva. Best visited after monsoon when flow is strongest.", entry: "Free", timing: "All day (morning best)", duration: "2-3 hours", icon: Sunrise, img: "/images/sightseeing/Dharamshala/Bhagsunag_Waterfall.jpg" },
     { name: "Triund Trek", desc: "The most popular trek in Dharamshala -- 9 km trail from McLeod Ganj to a ridge at 2,875 metres. Panoramic views of the Dhauladhar range and Kangra Valley. Camp overnight for a magical sunrise experience.", entry: "Free (camping &#8377;500-1,500)", timing: "Start early morning", duration: "Full day / overnight", icon: Mountain },
     { name: "Kangra Fort", desc: "One of the oldest and largest forts in India, dating back to the Trigarta Kingdom mentioned in the Mahabharata. Spread over 4 km of ramparts with stunning valley views. 20 km from Dharamshala.", entry: "&#8377;25 Indian / &#8377;200 Foreign", timing: "9:00 AM - 5:00 PM", duration: "1.5-2 hours", icon: Shield },
     { name: "Dal Lake", desc: "A serene lake surrounded by deodar cedars, not to be confused with Kashmir&apos;s famous namesake. Small but picturesque with a Shiva temple on its banks. Popular for picnics and quiet walks.", entry: "Free", timing: "All day", duration: "1 hour", icon: Camera },
     { name: "TIPA (Tibetan Institute of Performing Arts)", desc: "Founded in 1959 to preserve Tibetan opera, dance, and music. Hosts performances and the annual Shoton Festival. A rare window into Tibetan performing arts traditions kept alive in exile.", entry: "Free (performances &#8377;100-300)", timing: "Check schedule", duration: "1-2 hours", icon: Compass },
-    { name: "Dharamshala Cricket Stadium (HPCA)", desc: "One of the world&apos;s most scenic cricket grounds at 1,457 metres elevation. Snow-capped Dhauladhar mountains form the backdrop. Hosts IPL matches and international cricket. Museum and cafe inside.", entry: "&#8377;50 (match days vary)", timing: "9:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Star },
+    { name: "Dharamshala Cricket Stadium (HPCA)", desc: "One of the world&apos;s most scenic cricket grounds at 1,457 metres elevation. Snow-capped Dhauladhar mountains form the backdrop. Hosts IPL matches and international cricket. Museum and cafe inside.", entry: "&#8377;50 (match days vary)", timing: "9:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: Star, img: "/images/sightseeing/Dharamshala/HPCA_Stadium.jpg" },
   ];
   const monthlyGuide = [
     { month: "Jan", temp: "-2-10°C", weather: "Snow, cold", crowd: "Low", verdict: "OK (snow)", color: "bg-blue-100 text-blue-800", bar: 35 },
@@ -63,6 +65,19 @@ export default function DharamshalaTravelGuidePage() {
   ];
   const trustFeatures = [{ icon: Mountain, title: "Himalayan Experts", desc: "Hill station specialists" }, { icon: Landmark, title: "Little Lhasa", desc: "Tibetan spiritual hub" }, { icon: Users, title: "4000+ Trips Done", desc: "Dharamshala tour experts" }, { icon: Star, title: "4.9 Google Rating", desc: "Verified reviews" }];
   const chapters = [{ title: "Attractions", icon: Landmark, count: "8 Sites" }, { title: "Best Time", icon: Thermometer, count: "12 Months" }, { title: "Food Guide", icon: Coffee, count: "6 Specialties" }, { title: "Shopping", icon: ShoppingBag, count: "4 Categories" }, { title: "Stay Guide", icon: Hotel, count: "4 Areas" }, { title: "Transport", icon: Car, count: "4 Options" }];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "dharamshala-travel-guide",
+    headline: "Dharamshala Travel Guide",
+    description: "Dharamshala Travel Guide — complete travel guide.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  const heroImage = "/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg";
+  const cityName = "Dharamshala";
+  const whatsappMsg = "I want to book a cab for Dharamshala trip";
 
   return (<>
     <style dangerouslySetInnerHTML={{ __html: `
@@ -78,12 +93,14 @@ export default function DharamshalaTravelGuidePage() {
     ` }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
     <div className="min-h-screen bg-amber-50/30">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
       {/* HERO */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+        <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
         <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-orange-500/20 rounded-full blur-[120px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/15 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -119,6 +136,23 @@ export default function DharamshalaTravelGuidePage() {
         </div>
       </section>
 
+      {/* AEO QUICK ANSWER */}
+      <section className="px-4 pt-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question="Planning a Dharamshala trip?"
+            answer="Dharamshala is best visited from March to June and September to November for clear Himalayan views, with snowfall in McLeod Ganj from December to February. Two to three days covers the Dalai Lama's Tsuglagkhang Complex, Bhagsu Waterfall, Dharamkot and the Triund trek. Delhi is 480 km away, about 9 to 10 hours by car via NH44 and NH503."
+            facts={[
+              { label: 'Best time', value: 'Mar-Jun, Sep-Nov' },
+              { label: 'Ideal duration', value: '2 to 3 days' },
+              { label: 'Top sight', value: 'Tsuglagkhang Complex' },
+              { label: 'Cab from Delhi', value: '480 km · ₹11/km' },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* TABLE OF CONTENTS */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -140,9 +174,9 @@ export default function DharamshalaTravelGuidePage() {
       {/* WELCOME */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative glass-card-light rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full" />
+          <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-tl-full rounded-br-3xl" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
             <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">Welcome to Little Lhasa</h2>
             <p className="text-lg text-stone-600 leading-relaxed text-center relative">Dharamshala, nestled in the Kangra Valley at the foot of the mighty Dhauladhar range, is a place where Himalayan grandeur meets Tibetan spiritual depth. Since 1960, when His Holiness the 14th Dalai Lama established the Tibetan Government-in-Exile here, Dharamshala -- particularly its upper town McLeod Ganj -- has become the global centre of Tibetan Buddhism and culture. Known as Little Lhasa, this hillside sanctuary hums with the sound of prayer wheels, the aroma of steaming momos, and the quiet devotion of monks in maroon robes. The Tsuglagkhang Complex, the Dalai Lama&apos;s official residence and temple, draws seekers from around the world. Beyond the spiritual, Dharamshala offers some of Himachal Pradesh&apos;s finest trekking -- the Triund ridge trail rewards with panoramic views of snow-capped peaks and the Kangra Valley stretching to the plains below. The ancient Kangra Fort, one of India&apos;s oldest, adds historical depth to a destination that is at once peaceful, adventurous, and profoundly meaningful. Whether you come for meditation, trekking, cafe hopping, or simply the crisp mountain air, Dharamshala leaves an indelible mark on every traveller.</p>
@@ -189,9 +223,16 @@ export default function DharamshalaTravelGuidePage() {
             {attractions.map((a, idx) => (
               <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                 <div className="flex flex-col md:flex-row">
-                  <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
-                    <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
+                  {a.img ? (
+                    <div className="md:w-56 relative shrink-0 overflow-hidden">
+                      <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  ) : (
+                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-yellow-600 flex items-center justify-center py-4 md:py-0">
+                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                    </div>
+                  )}
                   <div className="flex-1 p-6">
                     <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2"><a.icon className="w-5 h-5 text-amber-600" /> {a.name}</h3>
                     <p className="text-stone-600 mb-4">{a.desc}</p>
@@ -204,6 +245,53 @@ export default function DharamshalaTravelGuidePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOK / SELL */}
+      <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+              <Car className="w-4 h-4 text-amber-300" />
+              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+            <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+              { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+              { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+            ].map((v, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                <div className="h-44 overflow-hidden relative">
+                  <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                    <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                  </div>
+                  <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                  <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                    Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+              <Phone className="w-5 h-5" /> Call Now: 7668570551
+            </Link>
+            <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+              Get a Free Quote
+            </Link>
           </div>
         </div>
       </section>

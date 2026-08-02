@@ -1,0 +1,416 @@
+Total pages: 385
+Pages with issues: 131
+
+Issue counts:
+  DESC_DATA_SOURCED              129
+  TITLE_DATA_SOURCED             120
+  NO_OG                          1
+  NO_TWITTER                     1
+
+--- DETAILS ---
+
+src\app\(routes)\12-seater-vs-17-seater-tempo\page.js (59L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\agra-in-1-day-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\agra-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\agra-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\airport-service\delhi\igi-terminal-1-domestic\page.js (684L)
+  issues: TITLE_DATA_SOURCED:specific pickup gate + fixed-fare + trust anchor + urgency.
+  desc:  [133] T1 domestic terminal taxi — Arrival Gate 1-4 pickup. Connaught Place ₹450, Gurgaon ₹550. 60 min free wait, no surge. Call 7668570551.
+
+src\app\(routes)\amritsar-in-2-days-itinerary\page.js (96L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\amritsar-trip-cost-from-delhi\page.js (67L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\ayodhya-1-day-package\page.js (100L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\ayodhya-trip-cost-from-delhi\page.js (71L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\best-time-to-visit\[destination]\page.js (178L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\blog\[slug]\page.js (141L)
+  issues: TITLE_DATA_SOURCED:post.metaTitle || post.title || 'Blog Post', DESC_DATA_SOURCED:post.metaDescription || post.excerpt || ''
+
+src\app\(routes)\bus-stand-taxi\[stand]\page.js (220L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\bus-vs-cab\[route]\page.js (157L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\bus-vs-tempo-for-wedding\page.js (54L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\cab-service\[city]\page.js (172L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\chandigarh-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\chardham-yatra\[slug]\page.js (226L)
+  issues: TITLE_DATA_SOURCED:route.seo.title, DESC_DATA_SOURCED:route.seo.description
+
+src\app\(routes)\chardham-yatra-cost-by-car\page.js (75L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\christmas-new-year-cab-packages\page.js (90L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\corporate-transportation-service\industry\[slug]\page.js (775L)
+  issues: TITLE_DATA_SOURCED:industry.metaTitle, DESC_DATA_SOURCED:industry.metaDescription
+
+src\app\(routes)\corporate-transportation-service\use-case\[slug]\page.js (961L)
+  issues: TITLE_DATA_SOURCED:useCase.metaTitle, DESC_DATA_SOURCED:useCase.metaDescription
+
+src\app\(routes)\corporate-transportation-service\[city]\page.js (672L)
+  issues: TITLE_DATA_SOURCED:cityData.metaTitle, DESC_DATA_SOURCED:cityData.metaDescription
+
+src\app\(routes)\dehradun-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\delhi-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\dharamshala-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\dharamshala-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\dharamshala-vs-dalhousie\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\distance\[route]\page.js (177L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\durga-puja-travel-transport\page.js (90L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\dzire-hire\[route]\page.js (132L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\ertiga-hire\[route]\page.js (132L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\event-transportation-service\city\[slug]\page.js (651L)
+  issues: TITLE_DATA_SOURCED:city.metaTitle, DESC_DATA_SOURCED:city.metaDescription
+
+src\app\(routes)\event-transportation-service\[slug]\page.js (724L)
+  issues: TITLE_DATA_SOURCED:eventType.metaTitle, DESC_DATA_SOURCED:eventType.metaDescription
+
+src\app\(routes)\fortuner-hire\[route]\page.js (132L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\fortuner-vs-innova-crysta\page.js (53L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\golden-triangle-tour-cost\page.js (75L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\gulmarg-vs-manali\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\guru-purab-amritsar-transport\page.js (90L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\haridwar-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\haridwar-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\honeymoon-trip-cost-shimla-manali\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\how-to-reach\[route]\page.js (172L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\how-to-reach-[city]\page.js (77L)
+  issues: TITLE_DATA_SOURCED:cityData.title, DESC_DATA_SOURCED:cityData.metaDescription
+
+src\app\(routes)\innova-crysta-hire\[route]\page.js (132L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\innova-hire\[route]\page.js (155L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\innova-vs-ertiga-for-outstation\page.js (53L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\jaipur-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jaipur-in-3-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jaipur-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jaipur-vs-udaipur\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jaisalmer-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jaisalmer-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jaisalmer-vs-jodhpur\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jim-corbett-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jodhpur-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\jodhpur-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\kashmir-in-5-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\kashmir-in-7-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\kashmir-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\kashmir-vs-ladakh\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\kasol-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\ladakh-in-7-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\leh-ladakh-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\local-taxi\[city]\page.js (181L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\long-weekend-getaway-packages-2026\page.js (90L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\lucknow-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\lucknow-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\manali-in-3-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\manali-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\mathura-vrindavan-1-day-package\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\mussoorie-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\mussoorie-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\mussoorie-vs-nainital\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\nainital-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\nainital-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\nainital-vs-jim-corbett\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\one-way-cab\[route]\page.js (256L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\one-way-vs-round-trip-cab\page.js (53L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\outstation-cabs\[city]\page.js (183L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\packages\[slug]\page.js (158L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\pushkar-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\railway-station-taxi\[station]\page.js (228L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\rajasthan-in-5-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\rajasthan-in-7-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\rajasthan-trip-cost-budget\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\religious-tours\[slug]\page.js (160L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDescription
+
+src\app\(routes)\republic-day-delhi-cab\page.js (90L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\rishikesh-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\rishikesh-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\rishikesh-vs-manali\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\road-trip\[slug]\page.js (161L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\round-trip\[route]\page.js (184L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\search\page.js (53L)
+  issues: NO_OG, NO_TWITTER
+  title: [76] ${fromDisplay} to ${toDisplay} Cab — ${tripLabel} from ₹11/km | Triveni Cabs
+  desc:  [187] Book ${fromDisplay} to ${toDisplay} ${tripLabel.toLowerCase()} cab at lowest prices. Sedan, SUV, Tempo Traveller & Bus options available. 24/7 service, no hidden charges. Call 7668570551.
+
+src\app\(routes)\sedan-vs-suv-for-hill-stations\page.js (53L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\self-drive-vs-chauffeur\page.js (53L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\shimla-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\shimla-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\shimla-vs-manali\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\spiti-in-7-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\summer-vacation-cab-packages-2026\page.js (90L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\taxi-fare\[city]\page.js (196L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\tempo-traveller-vs-mini-bus\page.js (53L)
+  issues: DESC_DATA_SOURCED:data.metaDescription
+  title: [28] ${data.title} | Triveni Cabs
+
+src\app\(routes)\toll-cost\[route]\page.js (158L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\tour-package\[slug]\book\page.js (484L)
+  issues: DESC_DATA_SOURCED:metaDescription
+  title: [54] ${content.title} | ${packageInfo.price} | Triveni Cabs
+
+src\app\(routes)\tour-package\[slug]\page.js (772L)
+  issues: DESC_DATA_SOURCED:metaDescription
+  title: [80] ${content.title} | ${packageInfo.price} | ${packageInfo.duration} | Triveni Cabs
+
+src\app\(routes)\train-taxi\[slug]\page.js (95L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\travel-by-car\[route]\page.js (179L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\travel-options\[route]\page.js (133L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\traveller-12-seater\[route]\page.js (132L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\triveni-cabs-driver-verification\page.js (113L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-fleet\page.js (121L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-pricing-transparency\page.js (126L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-safety-features\page.js (124L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-vs-cabbazar\page.js (97L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-vs-makemytrip-cabs\page.js (97L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-vs-ola\page.js (97L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-vs-savaari\page.js (97L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\triveni-cabs-vs-uber\page.js (97L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc
+
+src\app\(routes)\udaipur-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\udaipur-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\varanasi-in-2-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\varanasi-in-3-days-itinerary\page.js (94L)
+  issues: TITLE_DATA_SOURCED:data.metaTitle, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\varanasi-trip-cost-from-delhi\page.js (65L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\varanasi-vs-haridwar\page.js (64L)
+  issues: TITLE_DATA_SOURCED:data.title, DESC_DATA_SOURCED:data.metaDescription
+
+src\app\(routes)\vehicles\[slug]\page.js (231L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\wedding\baraat-tempo-traveller\page.js (497L)
+  issues: TITLE_DATA_SOURCED:service?.metaTitle || 'Baraat Tempo Traveller | Triveni Cabs', DESC_DATA_SOURCED:service?.metaDescription || 'Book baraat tempo traveller with DJ for your wedding.'
+
+src\app\(routes)\wedding\car-decoration-packages\page.js (498L)
+  issues: TITLE_DATA_SOURCED:service?.metaTitle || 'Wedding Car Decoration Packages | Triveni Cabs', DESC_DATA_SOURCED:service?.metaDescription || 'Wedding car decoration packages with fresh flowers.'
+
+src\app\(routes)\wedding\cars\[slug]\page.js (613L)
+  issues: TITLE_DATA_SOURCED:carModel.metaTitle, DESC_DATA_SOURCED:carModel.metaDescription
+
+src\app\(routes)\wedding\doli-car-rental\page.js (506L)
+  issues: TITLE_DATA_SOURCED:service?.metaTitle || 'Doli Car Rental | Triveni Cabs', DESC_DATA_SOURCED:service?.metaDescription || 'Book doli car for bride vidai ceremony.'
+
+src\app\(routes)\where-to-go\[month]\page.js (95L)
+  issues: TITLE_DATA_SOURCED:shorthand:title, DESC_DATA_SOURCED:shorthand:description
+
+src\app\(routes)\why-triveni-cabs\page.js (116L)
+  issues: TITLE_DATA_SOURCED:pageTitle, DESC_DATA_SOURCED:pageDesc

@@ -2,12 +2,15 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 // Centralized icon imports for better bundle optimization
-import { ChevronRight, Phone, MapPin, Globe, Languages, Award, Users, Star, Sparkles, BookOpen, Compass, Camera, Heart, CheckCircle, BadgeCheck, Clock, Shield, ArrowRight, Navigation } from '@/components/ui/icons';
+import { ChevronRight, Phone, MapPin, Globe, Languages, Award, Users, Star, Sparkles, BookOpen, Compass, Camera, Heart, CheckCircle, BadgeCheck, Clock, HelpCircle, ArrowRight, Navigation } from '@/components/ui/icons';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Image from 'next/image';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
+import { captureLead } from '@/utilis/captureLead';
 
 // Define constants
 const availableLocations = [
@@ -66,7 +69,13 @@ const tourGuideFeatures = [
   }
 ];
 
-export default function TourGuideClient() {
+// Fallback FAQ set if no props are passed (keeps component self-contained).
+const FALLBACK_FAQS = [
+  { question: 'What languages do your tour guides speak?', answer: 'Our certified guides speak English, Hindi, French, Spanish, German and Chinese fluently.' },
+  { question: 'Are your tour guides certified and licensed?', answer: 'Yes, all guides are certified by the Ministry of Tourism, Government of India.' },
+];
+
+export default function TourGuideClient({ faqs = FALLBACK_FAQS, languageRows = [], compareRows = [] }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -92,6 +101,16 @@ export default function TourGuideClient() {
 
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
+    trackWhatsAppClick('tour_guide_form', `${formData.city || ''} ${formData.language || ''}`.trim());
+
+    // Capture the lead to the Sheet before the WhatsApp handoff.
+    captureLead({
+      name: formData.name,
+      phone: formData.phoneNumber,
+      email: formData.email,
+      fromCity: formData.city,
+      pageType: 'tour_guide',
+    });
 
     // Create formatted message with form data
     const message = `🎯 *Tour Guide Booking Request*
@@ -158,9 +177,9 @@ Please confirm my booking. Thank you!`;
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-3"
+              className="speakable-headline text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-3"
             >
-              Your Journey,
+              Your Journey, Guided by Licensed Local Experts
             </motion.h1>
             <motion.h1
               initial={{ y: 100, opacity: 0 }}
@@ -202,8 +221,10 @@ Please confirm my booking. Thank you!`;
             className="flex flex-wrap gap-3 justify-center mb-8"
           >
             <motion.a
+              onClick={() => trackWhatsAppClick('tour_guide_hero')}
               href={`https://wa.me/${phoneNumber}?text=Hello!%20I%27m%20interested%20in%20booking%20a%20tour%20guide.`}
               target="_blank"
+              rel="noopener noreferrer"
               whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-8 py-4 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(250,207,45,0.5)] transition-shadow"
             >
@@ -214,8 +235,8 @@ Please confirm my booking. Thank you!`;
             </motion.a>
 
             <motion.a
+              onClick={() => trackPhoneCall('tour_guide_hero')}
               href={`tel:+91${phoneNumber}`}
-              
               whileTap={{ scale: 0.95 }}
               className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-base md:text-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 shadow-xl"
             >
@@ -365,6 +386,197 @@ Please confirm my booking. Thank you!`;
           </motion.div>
         </div>
       </section>
+
+      {/* ===== DIRECT-ANSWER LEAD (AEO/Voice) ===== */}
+      <section className="py-16 bg-gradient-to-b from-white to-orange-50/40">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="relative overflow-hidden bg-white rounded-3xl shadow-xl border-2 border-orange-100 p-8 md:p-10 pl-9 md:pl-12">
+            <span aria-hidden className="absolute inset-y-6 left-0 w-1.5 rounded-full bg-gradient-to-b from-[#FACF2D] via-orange-500 to-[#FACF2D]" />
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-amber-100 px-4 py-2 rounded-full mb-5 border border-orange-200">
+              <BadgeCheck className="w-4 h-4 text-orange-600" />
+              <span className="text-orange-600 font-bold text-xs tracking-wider">QUICK ANSWER</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">
+              How do I hire a licensed tour guide in India?
+            </h2>
+            <p className="speakable-lead text-lg text-gray-700 leading-relaxed">
+              To hire a licensed tour guide in India, choose your city and preferred language, then book a
+              Ministry-of-Tourism certified guide through Triveni Cabs. Day rates start at
+              <strong> ₹1,200/day for Hindi and ₹1,500/day for English</strong> guides, with French, Spanish,
+              German and Chinese guides from ₹2,000–₹2,500/day. Every guide holds a valid government licence and
+              photo-ID — shared on WhatsApp before your tour begins — and can be booked on its own or
+              <strong> bundled with an AC vehicle</strong>. Call +91 7668570551 or message on WhatsApp to confirm
+              an available guide within minutes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== GUIDE LANGUAGES & FEES TABLE ===== */}
+      {languageRows.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+                What does a tour guide cost per day?
+              </h2>
+              <p className="text-gray-600">Fixed day rates by language — confirmed at booking, no hidden charges.</p>
+            </div>
+            {/* Desktop / tablet — polished table */}
+            <div className="hidden sm:block overflow-hidden rounded-2xl border-2 border-orange-100 shadow-lg">
+              <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+              <table className="w-full text-left border-collapse">
+                <caption className="sr-only">Tour guide day rates by language with best traveller use case</caption>
+                <thead className="bg-gradient-to-r from-orange-500 to-amber-500 text-white">
+                  <tr>
+                    <th scope="col" className="p-4 font-black text-sm md:text-base"><span className="inline-flex items-center gap-1.5"><Languages className="w-4 h-4" /> Guide Language</span></th>
+                    <th scope="col" className="p-4 font-black text-sm md:text-base">Day Rate</th>
+                    <th scope="col" className="p-4 font-black text-sm md:text-base">Best For</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {languageRows.map((r, i) => {
+                    const popular = r.feature === 'English';
+                    return (
+                      <tr key={r.feature} className={`border-b border-orange-100 last:border-0 ${popular ? 'bg-amber-50' : i % 2 === 0 ? 'bg-white' : 'bg-orange-50/40'} hover:bg-amber-50/70 transition-colors`}>
+                        <th scope="row" className="p-4 font-bold text-gray-900">
+                          <span className="flex items-center gap-2">
+                            <Languages className="w-4 h-4 text-orange-500" /> {r.feature}
+                            {popular && <span className="inline-flex items-center rounded-full bg-green-100 border border-green-300 text-green-700 text-[10px] uppercase tracking-wide font-black px-2 py-0.5">Most asked</span>}
+                          </span>
+                        </th>
+                        <td className="p-4 font-black text-orange-600">{r.day}</td>
+                        <td className="p-4 text-gray-600 text-sm">{r.bestFor}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              </div>
+            </div>
+            {/* Mobile — stacked cards */}
+            <div className="sm:hidden space-y-3">
+              {languageRows.map((r) => {
+                const popular = r.feature === 'English';
+                return (
+                  <div key={r.feature} className={`rounded-2xl border-2 p-5 shadow-sm ${popular ? 'border-green-300 bg-amber-50' : 'border-orange-100 bg-white'}`}>
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="font-bold text-gray-900 flex items-center gap-2 flex-wrap">
+                        <Languages className="w-4 h-4 text-orange-500 shrink-0" /> {r.feature}
+                        {popular && <span className="inline-flex items-center rounded-full bg-green-100 border border-green-300 text-green-700 text-[9px] uppercase tracking-wide font-black px-1.5 py-0.5">Popular</span>}
+                      </p>
+                      <p className="font-black text-orange-600 shrink-0">{r.day}</p>
+                    </div>
+                    <p className="mt-2 text-sm text-gray-600 leading-relaxed">{r.bestFor}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-center text-xs text-gray-500 mt-4">
+              Day rate covers a full 8–10 hour touring day. Monument entry tickets are paid separately. Less-common
+              languages (Italian, Japanese, Russian, Portuguese, Korean, Arabic) available on request.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ===== HOW TO BOOK STEPS ===== */}
+      <section className="py-16 bg-gradient-to-b from-orange-50/40 to-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+              How to book a licensed tour guide in 5 steps
+            </h2>
+            <p className="text-gray-600">Verify the government licence before your tour begins.</p>
+          </div>
+          <ol className="grid md:grid-cols-5 gap-4">
+            {[
+              { n: '1', icon: MapPin, t: 'Choose your city', d: 'Delhi, Agra, Jaipur or any of 14+ cities — each has region-licensed guides.' },
+              { n: '2', icon: Languages, t: 'Pick a language', d: 'English, Hindi, French, Spanish, German or Chinese — rates from ₹1,200/day.' },
+              { n: '3', icon: BsWhatsapp, t: 'Send request', d: 'WhatsApp or call +91 7668570551 with dates, group size and interests.' },
+              { n: '4', icon: BadgeCheck, t: 'Verify licence', d: 'We share the guide’s Ministry of Tourism licence and photo-ID upfront.' },
+              { n: '5', icon: CheckCircle, t: 'Confirm & tour', d: 'Lock the fixed rate, optionally add a vehicle, meet your guide.' },
+            ].map((s) => (
+              <li key={s.n} className="relative bg-white rounded-2xl p-6 pt-7 shadow-md border-2 border-orange-100 hover:border-orange-300 hover:shadow-lg transition-all text-center">
+                {/* Gold numbered step badge */}
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-gradient-to-br from-[#FACF2D] to-orange-500 text-black text-sm font-black flex items-center justify-center shadow-lg ring-4 ring-white">
+                  {s.n}
+                </span>
+                <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center mb-3 shadow">
+                  <s.icon className="w-6 h-6 text-white" />
+                </div>
+                <p className="text-[10px] font-black text-orange-500 tracking-widest mb-1">STEP {s.n}</p>
+                <h3 className="font-black text-gray-900 mb-2 text-sm">{s.t}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{s.d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ===== LICENSED vs UNLICENSED COMPARISON ===== */}
+      {compareRows.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+                Why choose a licensed guide over a freelance one?
+              </h2>
+              <p className="text-gray-600">A Ministry-certified guide protects your money, your time and your access.</p>
+            </div>
+            {/* Desktop / tablet — polished table, licensed column highlighted */}
+            <div className="hidden sm:block overflow-hidden rounded-2xl border-2 border-orange-100 shadow-lg">
+              <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+              <table className="w-full text-left border-collapse">
+                <caption className="sr-only">Licensed Triveni guide compared against an unlicensed or freelance guide across key factors</caption>
+                <thead className="bg-gradient-to-r from-orange-500 to-amber-500 text-white">
+                  <tr>
+                    <th scope="col" className="p-4 font-black text-sm">Factor</th>
+                    <th scope="col" className="p-4 font-black text-sm"><span className="inline-flex items-center gap-1.5"><BadgeCheck className="w-4 h-4" /> Licensed Guide (Triveni)</span></th>
+                    <th scope="col" className="p-4 font-black text-sm">Unlicensed / Freelance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((r, i) => (
+                    <tr key={r.feature} className={`border-b border-orange-100 last:border-0 ${i % 2 === 0 ? 'bg-white' : 'bg-orange-50/40'} hover:bg-amber-50/60 transition-colors`}>
+                      <th scope="row" className="p-4 font-bold text-gray-900 text-sm">{r.feature}</th>
+                      <td className="p-4 text-green-700 text-sm font-medium bg-green-50/40">
+                        <span className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />{r.licensed}</span>
+                      </td>
+                      <td className="p-4 text-gray-500 text-sm">{r.unlicensed}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              </div>
+            </div>
+            {/* Mobile — stacked cards */}
+            <div className="sm:hidden space-y-3">
+              {compareRows.map((r) => (
+                <div key={r.feature} className="rounded-2xl border-2 border-orange-100 bg-white p-5 shadow-sm">
+                  <p className="font-black text-gray-900 text-sm mb-3">{r.feature}</p>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2 rounded-xl bg-green-50 border border-green-200 p-3">
+                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-wide text-green-700">Licensed (Triveni)</p>
+                        <p className="text-sm text-green-800 font-medium">{r.licensed}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2 rounded-xl bg-gray-50 border border-gray-200 p-3">
+                      <span className="w-4 h-4 mt-0.5 shrink-0 text-gray-400 font-black leading-none">—</span>
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-wide text-gray-500">Unlicensed / Freelance</p>
+                        <p className="text-sm text-gray-500">{r.unlicensed}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Booking Form Section - Modern Tourist Design */}
       <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
@@ -520,8 +732,8 @@ Please confirm my booking. Thank you!`;
 
                 <div className="flex items-center justify-center gap-4 pt-4">
                   <motion.a
+                    onClick={() => trackPhoneCall('tour_guide_form')}
                     href={`tel:+91${phoneNumber}`}
-                    
                     whileTap={{ scale: 0.95 }}
                     className="bg-black text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-all font-semibold shadow-lg"
                   >
@@ -638,7 +850,7 @@ Please confirm my booking. Thank you!`;
                 <div>
                   <h3 className="text-2xl font-black text-[#FACF2D] mb-3">24/7 Support</h3>
                   <p className="text-gray-300 text-lg mb-2">
-                    <a href={`tel:+91${phoneNumber}`} className="hover:text-[#FACF2D] transition-colors">
+                    <a onClick={() => trackPhoneCall('tour_guide_contact')} href={`tel:+91${phoneNumber}`} className="hover:text-[#FACF2D] transition-colors">
                       +91 {phoneNumber}
                     </a>
                   </p>
@@ -651,7 +863,7 @@ Please confirm my booking. Thank you!`;
       </section>
 
       {/* FAQ Section - Optimized Content */}
-      <section className="py-20 bg-white">
+      <section className="faq-section py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -676,57 +888,54 @@ Please confirm my booking. Thank you!`;
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                question: 'What languages do your tour guides speak?',
-                answer: 'Our certified tour guides are fluent in English, Hindi, French, Spanish, German, and Chinese. This ensures clear communication and a rich cultural experience regardless of where you\'re from. Each guide is carefully selected for their language proficiency and communication skills.',
-                icon: Languages
-              },
-              {
-                question: 'Are your tour guides certified and licensed?',
-                answer: 'Absolutely! All our tour guides are officially certified by the Ministry of Tourism, Government of India. They undergo rigorous training and examinations covering history, archaeology, culture, and hospitality. They also hold valid licenses and identity cards issued by tourism authorities.',
-                icon: BadgeCheck
-              },
-              {
-                question: 'How do I book a tour guide?',
-                answer: 'Booking is simple and instant! Just fill out our online form above, select your preferred language and destination city. We\'ll connect you with an expert guide via WhatsApp within minutes. You can also call us directly at +91 7668570551 for immediate assistance.',
-                icon: BookOpen
-              },
-              {
-                question: 'What\'s included in the tour guide service?',
-                answer: 'Our comprehensive service includes expert historical and cultural commentary, personalized itinerary planning, photography assistance, restaurant recommendations, entrance fee guidance, local market tours, and assistance with local interactions. We ensure an authentic, enriching experience tailored to your interests.',
-                icon: CheckCircle
-              },
-              {
-                question: 'Can I customize my tour itinerary?',
-                answer: 'Yes! We pride ourselves on flexibility. Our guides work with you to create a personalized experience based on your interests, pace, and time constraints. Whether you\'re interested in history, food, photography, spirituality, or adventure - we\'ll tailor the tour to match your preferences perfectly.',
-                icon: Compass
-              },
-              {
-                question: 'What are the payment terms and cancellation policy?',
-                answer: 'Payment can be made in cash to the guide or via online transfer. We require 24 hours notice for cancellations to provide a full refund. For same-day cancellations, a 50% fee applies. We offer transparent pricing with no hidden charges - what you see is what you pay.',
-                icon: Shield
-              }
-            ].map((faq, index) => (
-              <motion.div
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+            {faqs.map((faq, index) => (
+              <motion.details
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-orange-200 transition-all"
+                transition={{ duration: 0.5, delay: Math.min(index, 4) * 0.06 }}
+                className="group bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-lg open:shadow-2xl border-2 border-gray-100 open:border-orange-300 hover:border-orange-200 transition-all"
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center">
-                    <faq.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-black text-gray-900 leading-tight">{faq.question}</h3>
-                </div>
-                <p className="text-gray-600 leading-relaxed pl-0 md:pl-16 text-sm md:text-base">{faq.answer}</p>
-              </motion.div>
+                <summary className="flex items-center gap-4 cursor-pointer list-none p-6 md:p-7 min-h-[44px] rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400">
+                  <span className="flex-shrink-0 w-11 h-11 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center shadow">
+                    <HelpCircle className="w-5 h-5 text-white" />
+                  </span>
+                  <h3 className="flex-1 text-lg md:text-xl font-black text-gray-900 leading-tight">{faq.question}</h3>
+                  <span aria-hidden className="flex-shrink-0 w-8 h-8 rounded-full border-2 border-orange-200 bg-orange-50 text-orange-500 flex items-center justify-center group-open:rotate-180 group-open:bg-orange-100 transition-transform duration-300">
+                    <ChevronRight className="w-4 h-4 rotate-90" />
+                  </span>
+                </summary>
+                <p className={`text-gray-600 leading-relaxed px-6 md:px-7 pb-6 md:pb-7 pl-[4.75rem] md:pl-[5.25rem] text-sm md:text-base ${index === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
+              </motion.details>
             ))}
+          </div>
+
+          {/* ===== INTERNAL LINKS ===== */}
+          <div className="mt-16 bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-8 border-2 border-orange-100">
+            <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">
+              Explore guided tours &amp; city guides
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { href: '/tours-with-guide', label: 'Tours With Guide (Vehicle + Guide bundles)' },
+                { href: '/tours-with-guide/by-guide-language', label: 'Hire a Guide by Language' },
+                { href: '/tours-with-guide/by-vehicle', label: 'Tours With Guide by Vehicle' },
+                { href: '/agra-travel-guide', label: 'Agra Travel Guide' },
+                { href: '/amritsar-travel-guide', label: 'Amritsar Travel Guide' },
+                { href: '/sightseeing', label: 'Sightseeing Tours' },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="group flex items-center justify-between gap-2 bg-white rounded-xl p-4 shadow-sm border border-orange-200 hover:border-orange-400 hover:shadow-md transition-all"
+                >
+                  <span className="text-sm font-bold text-gray-800 group-hover:text-orange-600 transition-colors">{l.label}</span>
+                  <ArrowRight className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -757,8 +966,10 @@ Please confirm my booking. Thank you!`;
 
           <div className="flex flex-wrap justify-center gap-6">
             <motion.a
+              onClick={() => trackWhatsAppClick('tour_guide_final_cta')}
               href={`https://wa.me/${phoneNumber}?text=Hello!%20I%27m%20ready%20to%20book%20a%20tour%20guide.`}
               target="_blank"
+              rel="noopener noreferrer"
               whileTap={{ scale: 0.95 }}
               className="bg-black text-[#FACF2D] px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-shadow"
             >
@@ -767,6 +978,7 @@ Please confirm my booking. Thank you!`;
             </motion.a>
 
             <motion.a
+              onClick={() => trackPhoneCall('tour_guide_final_cta')}
               href={`tel:+91${phoneNumber}`}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-black px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-shadow"
@@ -777,6 +989,11 @@ Please confirm my booking. Thank you!`;
           </div>
         </div>
       </section>
+
+      <SetStickyCta
+        label="Book Tour Guide"
+        whatsappText="Hello! I'm interested in booking a certified tour guide. Please share details."
+      />
     </div>
   );
 }

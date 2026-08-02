@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = 'weekend-getaways-from-jaipur-by-car';
+
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Top 20 Weekend Getaways from Jaipur by Car 2026 | Triveni Cabs',
@@ -58,11 +61,50 @@ export default function WeekendGetawaysFromJaipurPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
+    "@id": `https://www.trivenicabs.in/${SLUG}#trip`,
     "name": "Weekend Getaways from Jaipur by Car",
-    "description": "Top 20 weekend road trip destinations from Jaipur with cab service",
+    "description": "Top 20 weekend road trip destinations from Jaipur with all-inclusive cab service",
     "touristType": "Weekend Travelers",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" }
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" }
   };
+  const cabServiceSchema = buildStaticService({
+    slug: SLUG,
+    name: 'Weekend Getaway Cab Service from Jaipur',
+    description: 'Outstation weekend cab service from Jaipur to Udaipur, Pushkar, Jodhpur, Ranthambore, Mount Abu and more. AC cabs with all-inclusive fares.',
+    lowPrice: 1500,
+    highPrice: 14000,
+  });
+  const articleSchema = getArticleSchema({
+    slug: SLUG,
+    headline: 'Top 20 Weekend Getaways from Jaipur by Car 2026',
+    description: 'Best weekend trips from Jaipur by car: Udaipur, Pushkar, Jodhpur, Ranthambore, Mount Abu, Bundi and more with distance, cost and best time.',
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2025-03-01',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
+  });
+  const howToSchema = getHowToSchema({
+    name: 'How to Plan a Weekend Getaway from Jaipur by Car',
+    description: 'Step-by-step guide to picking a royal Rajasthan weekend destination near Jaipur and booking an all-inclusive cab.',
+    totalTime: 'PT5M',
+    estimatedCost: { currency: 'INR', value: 1500 },
+    steps: [
+      { name: 'Pick a destination by drive time', text: 'Choose a quick royal escape (Pushkar, Ajmer, Ranthambore, Bundi) or a longer heritage drive (Udaipur, Jodhpur, Mount Abu, Jaisalmer).' },
+      { name: 'Choose your vehicle', text: 'A sedan suits couples; an Innova or Ertiga SUV is ideal for desert highways and families of 4-6. Tempo Travellers cover larger groups visiting multiple forts.' },
+      { name: 'Get an all-inclusive quote', text: 'Call or WhatsApp 7668570551 with your destination, dates and group size for a transparent fare covering fuel, tolls, parking and driver allowance.' },
+      { name: 'Confirm and travel', text: 'No advance payment required. A verified driver picks you up from anywhere in Jaipur for the weekend road trip.' },
+    ],
+  });
+  const comparisonSchema = getComparisonSchema({
+    slug: SLUG,
+    title: 'Quick vs Long Weekend Getaways from Jaipur',
+    description: 'Comparison of Rajasthan weekend getaways from Jaipur by drive time, theme and starting cab fare.',
+    rows: [
+      { feature: 'Quick royal escapes (under 3 hrs)' },
+      { feature: 'Long heritage drives (over 3 hrs)' },
+    ],
+    mentions: ['Udaipur', 'Pushkar', 'Jodhpur', 'Ranthambore', 'Mount Abu', 'Jaisalmer', 'Agra'],
+  });
+  const placeSchemas = buildPlaceSchemas(['udaipur', 'pushkar', 'ajmer', 'ranthambore', 'jodhpur', 'mount-abu', 'bikaner', 'jaisalmer', 'agra', 'jaipur'], SLUG, '/images/triveni-cabs-og.jpg');
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -92,9 +134,18 @@ export default function WeekendGetawaysFromJaipurPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cabServiceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      {placeSchemas.map((s, i) => (
+        <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
 
       <div className="min-h-screen bg-amber-950 text-white">
         {/* Hero - Royal Desert Palace Theme */}
@@ -114,7 +165,7 @@ export default function WeekendGetawaysFromJaipurPage() {
                 <span className="text-amber-300 text-sm font-medium tracking-widest uppercase">20 Royal Destinations</span>
               </div>
 
-              <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.85] tracking-tight">
+              <h1 className="speakable-headline text-5xl md:text-8xl font-black mb-8 leading-[0.85] tracking-tight">
                 <span className="text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300 bg-clip-text">Weekend</span>
                 <br />
                 <span className="text-transparent bg-gradient-to-r from-orange-300 via-amber-200 to-yellow-300 bg-clip-text">Getaways</span>
@@ -122,8 +173,8 @@ export default function WeekendGetawaysFromJaipurPage() {
                 <span className="text-amber-600/60 text-3xl md:text-5xl font-light tracking-wide">from the Pink City</span>
               </h1>
 
-              <p className="text-amber-200/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-                Desert forts, lake palaces, tiger safaris, and sacred temples. Every weekend from Jaipur is a royal expedition waiting to unfold.
+              <p className="speakable-lead text-amber-200/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                The best weekend getaways from Jaipur by car include Udaipur, Pushkar, Jodhpur, Ranthambore and Mount Abu. Triveni Cabs runs all-inclusive AC cabs covering fuel, tolls and driver allowance to desert forts, lake palaces, tiger safaris and sacred temples across royal Rajasthan.
               </p>
 
               {/* Neumorphic stat cards */}
@@ -316,7 +367,7 @@ export default function WeekendGetawaysFromJaipurPage() {
                     <ChevronRight className="w-5 h-5 text-amber-500 group-open:rotate-90 transition-transform flex-shrink-0" />
                   </summary>
                   <div className="px-6 pb-6 -mt-1">
-                    <p className="text-amber-200/50 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-amber-200/50 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </details>
               ))}

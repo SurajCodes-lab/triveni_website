@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Jaipur Beyond Hawa Mahal | Hidden Gems & Secret Spots | 2026',
@@ -19,7 +20,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jaipur-beyond-hawa-mahal',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/jaipur-hero.jpg', width: 1200, height: 630, alt: 'Jaipur Beyond Hawa Mahal' }],
+    images: [{ url: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', width: 1200, height: 630, alt: 'Jaipur Beyond Hawa Mahal' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +28,7 @@ export const metadata = {
     description: 'Stepwells, monkey temples, ghost forts, elephant sanctuaries. By Jaipur locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/jaipur-hero.jpg'],
+    images: ['/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +54,7 @@ export default function JaipurBeyondHawaMahalPage() {
     { question: "Is Galtaji (Monkey Temple) safe to visit?", answer: "Yes, Galtaji is safe. The monkeys are habituated to visitors and generally peaceful. Avoid carrying food openly and keep bags zipped. The temple complex has natural spring water kunds and beautiful painted walls. It is about 10 km from Jaipur city center. Best visited early morning when the monkeys are most active." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function JaipurBeyondHawaMahalPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const hiddenGems = [
     { name: "Panna Meena Ka Kund", desc: "A breathtaking 16th-century stepwell with a mesmerizing geometric zigzag pattern of steps. This Instagram-famous marvel near Amber Fort features perfectly symmetrical staircases descending into the water. Free entry and rarely crowded in early morning.", distance: "11 km from Hawa Mahal", timing: "Sunrise to sunset, best at 7-9 AM", whyVisit: "One of India&apos;s most photogenic stepwells, with a geometric design that looks almost impossible", cabTip: "Combine with Amber Fort visit -- it is just 5 minutes away" },
@@ -157,6 +158,16 @@ export default function JaipurBeyondHawaMahalPage() {
   const linksTitle = "More Jaipur Guides & Tours";
   const ctaTitle = "Explore the Real Jaipur with Locals";
   const ctaSubtitle = "We show you the Jaipur that guidebooks miss. Stepwells, ghost forts, elephant sanctuaries, and royal palaces.";
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "jaipur-beyond-hawa-mahal",
+    headline: "Jaipur Beyond Hawa Mahal — 8 Hidden Gems & Offbeat Attractions 2026",
+    description: "Jaipur beyond Hawa Mahal. Galta Ji Monkey Temple, Patrika Gate, Anokhi Museum, Sambhar Lake, Bhangarh Fort, Chand Baori. Hidden corners of Pink City.",
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
+    datePublished: "2026-01-15",
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
 
   return (
     <>
@@ -177,6 +188,7 @@ export default function JaipurBeyondHawaMahalPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <div className="min-h-screen bg-teal-50/30">
         <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 Q75 70 100 50' fill='none' stroke='%230d9488' stroke-width='0.5'/%3E%3Cpath d='M0 30 Q25 10 50 30 Q75 50 100 30' fill='none' stroke='%230d9488' stroke-width='0.3'/%3E%3Cpath d='M0 70 Q25 50 50 70 Q75 90 100 70' fill='none' stroke='%230d9488' stroke-width='0.3'/%3E%3C/svg%3E")` }} />

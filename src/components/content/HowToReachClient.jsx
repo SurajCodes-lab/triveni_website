@@ -12,6 +12,8 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -133,6 +135,39 @@ export default function HowToReachClient({ cityData }) {
                   </div>
                 </div>
               )}
+            </motion.div>
+
+            {/* Above-the-fold CTAs */}
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 mt-8">
+              <a
+                onClick={() => trackPhoneCall('how_to_reach_hero')}
+                href={`tel:${COMPANY_INFO.phone.primary}`}
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-4 rounded-xl font-semibold transition-colors"
+              >
+                <Phone className="w-5 h-5" /> Call {COMPANY_INFO.phone.display}
+              </a>
+              <a
+                onClick={() => trackWhatsAppClick('how_to_reach_hero')}
+                href={`https://wa.me/${COMPANY_INFO.phone.whatsapp}?text=${encodeURIComponent(`Hi, I need a cab to ${name}. Please share details.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-7 py-4 rounded-xl font-semibold transition-colors"
+              >
+                <WhatsAppIcon className="w-5 h-5" /> WhatsApp Us
+              </a>
+            </motion.div>
+
+            {/* Trust row */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6 text-sm text-slate-400">
+              <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9&#9733; Rated</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> 10,000+ Trips</span>
+              <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-emerald-400" /> Verified Drivers</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No Advance Payment</span>
+            </motion.div>
+
+            {/* Lead capture form */}
+            <motion.div variants={fadeInUp} className="mt-8">
+              <QuickEnquiryForm toCity={name} pageType="route" />
             </motion.div>
           </motion.div>
         </div>
@@ -559,6 +594,11 @@ export default function HowToReachClient({ cityData }) {
           </motion.div>
         </div>
       </section>
+
+      <SetStickyCta
+        label={`Cab to ${name}`}
+        whatsappText={`Hi, I need a cab to ${name}. Please share details.`}
+      />
     </div>
   );
 }

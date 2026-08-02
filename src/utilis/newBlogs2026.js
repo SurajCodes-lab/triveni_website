@@ -82,7 +82,7 @@ const newBlogs2026 = [
   {
     id: 'blog-159',
     slug: 'best-time-to-visit-taj-mahal-2026',
-    title: 'Best Time to Visit Taj Mahal in 2026: Month-by-Month Guide with Sunrise & Sunset Times',
+    title: 'Best Time to Visit Taj Mahal in 2026: Month-by-Month Guide',
     excerpt: 'Complete month-by-month Taj Mahal visit guide with sunrise times, crowd levels, weather, ticket prices and photography tips for 2026.',
     relatedTours: [
       { id: "agra-day", name: "Agra Same Day Tour", slug: "agra-same-day-tour", city: "delhi", price: "₹3,500" },
@@ -324,8 +324,8 @@ const newBlogs2026 = [
     tags: ["taj mahal", "agra", "best time to visit", "sunrise", "photography", "travel guide", "2026"],
     keywords: ["best time to visit taj mahal", "taj mahal sunrise time", "taj mahal ticket price 2026", "taj mahal photography tips", "taj mahal visiting hours", "agra tour from delhi", "taj mahal crowd levels", "taj mahal month by month guide", "taj mahal weather", "when to visit taj mahal"],
     featured: true,
-    metaTitle: "Best Time to Visit Taj Mahal 2026: Month-by-Month Guide | Sunrise Times & Tips",
-    metaDescription: "Complete 2026 guide to visiting Taj Mahal - month-by-month weather, sunrise/sunset times, crowd levels, ticket prices, photography tips. Book Agra tour from Delhi."
+    metaTitle: "Best Time to Visit Taj Mahal 2026: Month-by-Month Guide",
+    metaDescription: "Complete 2026 guide to visiting Taj Mahal - month-by-month weather, sunrise/sunset times, crowd levels, ticket prices, photography tips."
   },
 
   {
@@ -496,7 +496,7 @@ const newBlogs2026 = [
   {
     id: 'blog-161',
     slug: 'top-10-road-trips-from-delhi-2026',
-    title: 'Top 10 Road Trips from Delhi in 2026: Routes, Costs & Travel Guide',
+    title: 'Top 10 Road Trips from Delhi in 2026: Routes, Costs& Travel Guide',
     excerpt: 'Discover the 10 best road trips from Delhi with distances, durations, costs, highlights and best seasons to travel in 2026.',
     relatedTours: [
       { id: "manali", name: "Delhi to Manali Tour", slug: "manali", city: "delhi", price: "₹18,000" },
@@ -757,7 +757,7 @@ const newBlogs2026 = [
   {
     id: 'blog-162',
     slug: 'top-10-road-trips-from-jaipur-2026',
-    title: 'Top 10 Road Trips from Jaipur in 2026: Routes, Costs & Expert Tips',
+    title: 'Top 10 Road Trips from Jaipur in 2026: Routes, Costs& Expert Tips',
     excerpt: 'Explore 10 amazing road trips from Jaipur with distances, costs, highlights and seasonal tips for your 2026 Rajasthan adventure.',
     relatedTours: [
       { id: "udaipur", name: "Jaipur to Udaipur Tour", slug: "udaipur", city: "jaipur", price: "₹6,500" },
@@ -956,7 +956,7 @@ const newBlogs2026 = [
   {
     id: 'blog-163',
     slug: 'family-trip-delhi-jaipur-with-kids',
-    title: 'Family Trip to Jaipur with Kids: Complete Guide to Kid-Friendly Activities & Hotels',
+    title: 'Family Trip to Jaipur with Kids: Complete Guide to',
     excerpt: 'Plan the perfect family trip to Jaipur with kids. Age-appropriate activities, family hotels, food tips and travel advice for 2026.',
     relatedTours: [
       { id: "jaipur", name: "Jaipur City Tour", slug: "jaipur-city-tour", city: "jaipur", price: "₹2,500" },
@@ -1110,8 +1110,8 @@ const newBlogs2026 = [
     tags: ["jaipur", "family trip", "kids", "travel with children", "rajasthan", "family vacation"],
     keywords: ["jaipur trip with kids", "family trip jaipur", "kid friendly jaipur", "jaipur with children", "family activities jaipur", "jaipur family hotels", "things to do in jaipur with kids"],
     featured: false,
-    metaTitle: "Family Trip to Jaipur with Kids 2026: Kid-Friendly Activities & Hotels Guide",
-    metaDescription: "Complete family guide to Jaipur with kids - age-appropriate activities, best family hotels, food tips, 3-day itinerary. Plan your perfect Jaipur family vacation."
+    metaTitle: "Family Trip to Jaipur with Kids 2026: Kid-Friendly",
+    metaDescription: "Complete family guide to Jaipur with kids - age-appropriate activities, best family hotels, food tips, 3-day itinerary."
   },
 
   {
@@ -1296,8 +1296,8 @@ const newBlogs2026 = [
     tags: ["solo female travel", "women safety", "north india", "travel tips", "safety guide", "solo trip"],
     keywords: ["solo female travel north india", "women safety india travel", "solo women travel tips india", "safest places women india", "solo female backpacking india", "safe destinations north india women"],
     featured: true,
-    metaTitle: "Solo Female Travel in North India: Safety Guide & Recommended Routes 2026",
-    metaDescription: "Complete safety guide for solo female travelers in North India. Safe destinations, recommended routes, trusted transport, emergency contacts. Travel confidently."
+    metaTitle: "Solo Female Travel in North India: Safety Guide &",
+    metaDescription: "Complete safety guide for solo female travelers in North India. Safe destinations, recommended routes, trusted transport, emergency contacts."
   },
 
   // ============================================================
@@ -1307,7 +1307,7 @@ const newBlogs2026 = [
   {
     id: 'blog-165',
     slug: 'holi-in-mathura-vrindavan-travel-guide',
-    title: 'Holi in Mathura & Vrindavan 2026: Complete Travel Guide with Dates & Safety Tips',
+    title: 'Holi in Mathura& Vrindavan 2026: Travel Guide with Dates& Safety',
     excerpt: 'Complete guide to celebrating Holi in Mathura-Vrindavan with festival dates, Lathmar Holi, how to reach, where to stay and safety tips.',
     relatedTours: [
       { id: "mathura", name: "Mathura-Vrindavan Tour", slug: "mathura-vrindavan", city: "delhi", price: "₹3,500" },
@@ -1457,14 +1457,14 @@ const newBlogs2026 = [
     tags: ["holi", "mathura", "vrindavan", "festival", "lathmar holi", "2026", "travel guide"],
     keywords: ["holi mathura vrindavan 2026", "lathmar holi barsana", "holi celebration mathura", "how to reach mathura for holi", "holi travel guide", "mathura vrindavan holi dates"],
     featured: true,
-    metaTitle: "Holi in Mathura & Vrindavan 2026: Complete Travel Guide | Dates & Safety Tips",
+    metaTitle: "Holi in Mathura & Vrindavan 2026: Complete Travel Guide",
     metaDescription: "Complete guide to Holi 2026 in Mathura-Vrindavan. Lathmar Holi dates, Phoolon ki Holi, how to reach, where to stay, safety tips. Book cab from Delhi."
   },
 
   {
     id: 'blog-166',
     slug: 'diwali-trip-ideas-north-india-2026',
-    title: 'Best Diwali Trip Ideas in North India 2026: Where to Celebrate the Festival of Lights',
+    title: 'Best Diwali Trip Ideas in North India 2026: Where to',
     excerpt: 'Top Diwali travel destinations in North India for 2026 - Varanasi, Jaipur, Amritsar, Udaipur with events, travel packages and tips.',
     relatedTours: [
       { id: "varanasi", name: "Varanasi Tour Package", slug: "varanasi", city: "delhi", price: "₹12,000" },
@@ -1609,7 +1609,7 @@ const newBlogs2026 = [
     tags: ["diwali", "festival", "varanasi", "jaipur", "amritsar", "2026", "north india", "travel"],
     keywords: ["diwali trip 2026 north india", "best diwali destinations", "diwali in varanasi", "dev deepawali", "diwali jaipur", "diwali golden temple amritsar", "festival travel india"],
     featured: false,
-    metaTitle: "Best Diwali Trip Ideas North India 2026: Varanasi, Jaipur, Amritsar | Travel Guide",
+    metaTitle: "Best Diwali Trip Ideas North India 2026: Varanasi, Jaipur,",
     metaDescription: "Top Diwali 2026 destinations in North India - Varanasi Dev Deepawali, Jaipur fort illumination, Amritsar Golden Temple. Events, costs, travel packages."
   },
 
@@ -1767,7 +1767,7 @@ const newBlogs2026 = [
     tags: ["new year", "NYE 2027", "delhi", "manali", "jaipur", "rishikesh", "holiday trip"],
     keywords: ["new year trip from delhi 2027", "NYE destinations from delhi", "new year party manali", "new year jaipur celebration", "new year camping rishikesh", "best new year trips india"],
     featured: false,
-    metaTitle: "New Year Trip from Delhi 2027: Best NYE Destinations & Party Spots",
+    metaTitle: "New Year Trip from Delhi 2027: Best NYE Destinations &",
     metaDescription: "Best New Year 2027 trips from Delhi - Manali snow parties, Jaipur royal NYE, Rishikesh camping, Shimla winter charm. Cab packages, party spots, travel tips."
   },
 
@@ -1925,14 +1925,14 @@ const newBlogs2026 = [
     tags: ["summer", "hill station", "delhi", "shimla", "manali", "mussoorie", "nainital", "cool destinations"],
     keywords: ["summer hill station trips from delhi", "best hill stations from delhi", "cool places near delhi summer", "hill station temperature guide", "escape delhi heat", "summer getaway from delhi"],
     featured: true,
-    metaTitle: "Top 10 Summer Hill Station Trips from Delhi: Temperature Guide & Best Times",
+    metaTitle: "Top 10 Summer Hill Station Trips from Delhi: Temperature",
     metaDescription: "10 best summer hill stations from Delhi with temperature charts, crowd levels, best visit times. Shimla, Manali, Mussoorie, Nainital & more. Book cab today."
   },
 
   {
     id: 'blog-169',
     slug: 'monsoon-road-trips-north-india',
-    title: 'Best Monsoon Road Trips in North India 2026: Scenic Routes, Safety Tips & What to Pack',
+    title: 'Best Monsoon Road Trips in North India 2026: Scenic Routes,',
     excerpt: 'Top monsoon road trip destinations in North India with scenic routes, driving safety tips and essential packing list for rainy season travel.',
     relatedTours: [
       { id: "udaipur", name: "Udaipur Monsoon Package", slug: "udaipur", city: "delhi", price: "₹18,000" },
@@ -2084,14 +2084,14 @@ const newBlogs2026 = [
     tags: ["monsoon", "road trip", "rainy season", "north india", "safety tips", "2026"],
     keywords: ["monsoon road trips north india", "rainy season travel india 2026", "monsoon destinations north india", "monsoon driving tips", "best places to visit in monsoon", "monsoon road trip packing list"],
     featured: false,
-    metaTitle: "Best Monsoon Road Trips North India 2026: Scenic Routes & Safety Tips",
+    metaTitle: "Best Monsoon Road Trips North India 2026: Scenic Routes &",
     metaDescription: "Top monsoon road trip destinations in North India with scenic routes, driving safety tips, what to avoid, and packing essentials. Book monsoon-ready cab."
   },
 
   {
     id: 'blog-170',
     slug: 'pushkar-mela-travel-guide',
-    title: 'Pushkar Camel Fair 2026: Complete Travel Guide by Car with Dates, Stay & Tips',
+    title: 'Pushkar Camel Fair 2026: Travel Guide by Car with Dates, Stay&',
     excerpt: 'Everything you need for the Pushkar Camel Fair 2026 - dates, how to reach by car, where to stay, what to see and essential tips.',
     relatedTours: [
       { id: "pushkar", name: "Jaipur to Pushkar Tour", slug: "pushkar", city: "jaipur", price: "₹3,000" },
@@ -2249,7 +2249,7 @@ const newBlogs2026 = [
     tags: ["pushkar", "camel fair", "mela", "rajasthan", "festival", "2026", "travel guide"],
     keywords: ["pushkar fair travel guide", "pushkar camel fair 2026", "pushkar mela by car", "how to reach pushkar", "pushkar fair dates", "pushkar fair where to stay"],
     featured: false,
-    metaTitle: "Pushkar Camel Fair 2026: Complete Travel Guide by Car | Dates, Stay & Tips",
+    metaTitle: "Pushkar Camel Fair 2026: Complete Travel Guide by Car",
     metaDescription: "Everything about Pushkar Camel Fair 2026 - dates, how to reach by car from Jaipur/Delhi, where to stay, what to see, essential tips. Book your cab today."
   },
 
@@ -2446,7 +2446,7 @@ const newBlogs2026 = [
     tags: ["tempo traveller", "booking guide", "group travel", "how to", "first time", "tips"],
     keywords: ["how to book tempo traveller", "tempo traveller booking guide", "tempo traveller pricing", "tempo traveller for trip", "group travel vehicle", "tempo traveller rates per km"],
     featured: false,
-    metaTitle: "How to Book a Tempo Traveller: Complete Guide for First-Timers 2026",
+    metaTitle: "How to Book a Tempo Traveller: Complete Guide for First-Timers",
     metaDescription: "Step-by-step guide to booking a tempo traveller - sizes, pricing, what to check, common mistakes. Transparent pricing and tips for first-time group travelers."
   },
 
@@ -2629,14 +2629,14 @@ const newBlogs2026 = [
     tags: ["outstation cab", "booking tips", "first time", "travel guide", "checklist", "pricing"],
     keywords: ["outstation cab booking tips", "first time cab booking", "outstation cab pricing guide", "how to book outstation cab", "cab booking checklist", "outstation travel tips"],
     featured: false,
-    metaTitle: "Outstation Cab Booking Tips for First-Timers 2026: Complete Checklist & Guide",
-    metaDescription: "Essential guide for first-time outstation cab bookers - pricing explained, pre-booking checklist, what to expect, common mistakes to avoid. Book with confidence."
+    metaTitle: "Outstation Cab Booking Tips for First-Timers 2026: Complete",
+    metaDescription: "Essential guide for first-time outstation cab bookers - pricing explained, pre-booking checklist, what to expect, common mistakes to avoid."
   },
 
   {
     id: 'blog-173',
     slug: 'wedding-car-booking-checklist',
-    title: 'Wedding Car Booking Checklist India: Complete Guide to Decoration, Timeline & Tips',
+    title: 'Wedding Car Booking Checklist India: to Decoration, Timeline&',
     excerpt: 'Complete checklist for booking wedding cars in India - timeline, decoration options, what to ask vendors, and tips for a perfect wedding ride.',
     relatedTours: [
       { id: "wedding", name: "Wedding Car Service", slug: "wedding-cars", city: "delhi", price: "₹5,000" }
@@ -2805,7 +2805,7 @@ const newBlogs2026 = [
     tags: ["wedding car", "wedding", "booking checklist", "decoration", "luxury car", "india"],
     keywords: ["wedding car booking checklist india", "wedding car decoration", "wedding car rental", "wedding car tips", "how to book wedding car", "wedding car price india"],
     featured: false,
-    metaTitle: "Wedding Car Booking Checklist India: Decoration, Timeline & Expert Tips",
+    metaTitle: "Wedding Car Booking Checklist India: Decoration, Timeline &",
     metaDescription: "Complete wedding car booking checklist - timeline, decoration options, car types and prices, questions to ask vendors. Make your wedding ride perfect."
   },
 
@@ -2997,14 +2997,14 @@ const newBlogs2026 = [
     tags: ["road trip", "packing list", "checklist", "travel essentials", "india", "documents"],
     keywords: ["road trip packing list india", "road trip checklist india", "what to pack road trip", "road trip essentials india", "travel packing checklist", "car trip packing list"],
     featured: false,
-    metaTitle: "Road Trip Packing Checklist India: Documents, Essentials & Emergency Kit",
+    metaTitle: "Road Trip Packing Checklist India: Documents, Essentials &",
     metaDescription: "Complete road trip packing checklist for India - documents, clothing, snacks, tech, emergency kit, vehicle checklist. Print this list before your next trip."
   },
 
   {
     id: 'blog-175',
     slug: 'toll-charges-delhi-agra-jaipur-2026',
-    title: 'Toll Charges Delhi-Agra-Jaipur Routes 2026: Complete Booth Locations & Cost Breakdown',
+    title: 'Toll Charges Delhi-Agra-Jaipur Routes 2026: Complete Booth',
     excerpt: 'Exact toll booth locations and charges for Delhi-Agra and Delhi-Jaipur routes in 2026 with FASTag info and total cost breakdown.',
     relatedTours: [
       { id: "agra", name: "Delhi to Agra Tour", slug: "agra-same-day-tour", city: "delhi", price: "₹3,500" },
@@ -3173,7 +3173,7 @@ const newBlogs2026 = [
     tags: ["toll charges", "delhi agra", "delhi jaipur", "golden triangle", "FASTag", "2026", "route guide"],
     keywords: ["toll charges delhi agra jaipur", "yamuna expressway toll 2026", "delhi jaipur toll charges", "golden triangle toll cost", "FASTag toll charges", "toll booth locations delhi agra"],
     featured: false,
-    metaTitle: "Toll Charges Delhi-Agra-Jaipur Routes 2026: Booth Locations & Cost Breakdown",
+    metaTitle: "Toll Charges Delhi-Agra-Jaipur Routes 2026: Booth Locations",
     metaDescription: "Exact toll booth locations and charges for Delhi-Agra (Yamuna Expressway), Delhi-Jaipur, Agra-Jaipur routes. FASTag info, Golden Triangle total toll cost."
   },
 ];

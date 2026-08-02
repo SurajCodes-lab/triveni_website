@@ -3,12 +3,14 @@ import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import { Car, Users, Fuel, Star, ArrowRight, Shield, Clock, Phone } from "@/components/ui/icons";
 import { vehicleDetails } from "@/utilis/data";
+import { getArticleSchema, getSpeakableSchema } from "@/lib/seo/speakable-helpers";
+import { getRatingAndReviews } from "@/lib/seo/review-helpers";
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: "Car Rental Fleet | Sedan, SUV, Tempo Traveller, Bus Hire India | Triveni Cabs",
-  description: "Browse our complete vehicle fleet for rental across India. Sedan from ₹11/km, SUV from ₹15/km, Tempo Traveller from ₹23/km, Bus from ₹30/km. Professional drivers, AC vehicles, 24/7 booking.",
+  title: "Car Rental Fleet | Sedan, SUV, Tempo Traveller, Bus Hire India",
+  description: "Browse our complete vehicle fleet for rental across India. Sedan from ₹11/km, SUV from ₹15/km, Tempo Traveller from ₹20/km, Bus from ₹30/km.",
   keywords: "car rental india, vehicle hire, sedan rental, suv booking, tempo traveller hire, 12 seater tempo, 17 seater tempo, bus rental india, 27 seater bus, 45 seater volvo, cab fleet, taxi service",
   alternates: {
     canonical: "https://www.trivenicabs.in/vehicles"
@@ -74,7 +76,7 @@ const vehicleCategories = [
     description: "Comfortable 12-26 seater tempo travellers with luxury pushback seats, LED TV, and GPS tracking. Perfect for pilgrimages, corporate tours, and wedding parties.",
     capacity: "12-26 Passengers",
     luggage: "Ample Luggage Space",
-    priceStart: "₹23/km",
+    priceStart: "₹20/km",
     variants: ["12 Seater", "16 Seater", "17 Seater", "20 Seater Luxury", "26 Seater Maharaja"],
     features: ["AC", "Luxury Pushback Seats", "LED TV", "Music System", "GPS Tracking", "Charging Points"],
     image: "/images/tempo/17_seater.jpg",
@@ -134,14 +136,62 @@ function generateStructuredData() {
           "priceCurrency": "INR",
           "price": vehicle.priceStart.replace(/[₹\/km]/g, ""),
           "availability": "https://schema.org/InStock"
-        }
+        },
+        ...getRatingAndReviews(`vehicles-${vehicle.slug}`, 'city')
       }
     }))
   };
 }
 
+// FAQ data for the fleet page (AEO/featured snippet capture)
+const vehicleFaqs = [
+  { q: "Which vehicle types can I rent from Triveni Cabs?", a: "Triveni Cabs offers sedans (from ₹11/km), SUVs (from ₹15/km), 12-26 seater tempo travellers (from ₹20/km), and 22-56 seater buses (from ₹30/km). All vehicles are AC, well-maintained, and come with a professional driver." },
+  { q: "Which car is best for a family trip?", a: "For a family of 4 a sedan like the Swift Dzire is comfortable and economical. For families of 5-7 or those with heavy luggage, a Toyota Innova or Ertiga SUV offers more space. Groups of 8 or more should choose a tempo traveller." },
+  { q: "Do all Triveni Cabs vehicles have AC and a driver?", a: "Yes. Every vehicle in the Triveni Cabs fleet is air-conditioned, regularly sanitized, GPS-tracked, and comes with an experienced, background-verified driver included in the fare." },
+  { q: "How much does a tempo traveller or bus cost?", a: "Tempo travellers (12-26 seater) start at ₹20/km and buses (22-56 seater) start at ₹30/km. Exact pricing depends on the route, duration, and vehicle. Call 7668570551 or WhatsApp for an all-inclusive quote." },
+  { q: "Can I book a luxury vehicle for a wedding or VIP travel?", a: "Yes, Triveni Cabs offers premium and luxury vehicles including Innova Crysta, premium sedans, and decorated wedding cars for weddings, corporate VIP travel, and special occasions across 50+ cities." },
+];
+
+// BreadcrumbList schema for SERP display
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+    { "@type": "ListItem", "position": 2, "name": "Vehicles", "item": "https://www.trivenicabs.in/vehicles" }
+  ]
+};
+
 export default function VehiclesPage() {
   const structuredData = generateStructuredData();
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.trivenicabs.in/vehicles#webpage",
+    "name": "Triveni Cabs Vehicle Fleet — Sedan, SUV, Tempo Traveller & Bus",
+    "description": "Browse the complete Triveni Cabs vehicle fleet for rental across India: sedans, SUVs, tempo travellers, and buses with professional drivers.",
+    "url": "https://www.trivenicabs.in/vehicles",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first'])
+  };
+
+  const articleSchema = getArticleSchema({
+    slug: 'vehicles',
+    headline: 'Triveni Cabs Vehicle Fleet — Sedan, SUV, Tempo Traveller & Bus Hire',
+    description: 'Complete vehicle fleet for hire across India: sedan from ₹11/km, SUV from ₹15/km, tempo traveller from ₹20/km, bus from ₹30/km.',
+    image: '/images/car/innova_crysta.jpg',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": vehicleFaqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  };
 
   return (
     <>
@@ -149,6 +199,22 @@ export default function VehiclesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -173,10 +239,10 @@ export default function VehiclesPage() {
               </ol>
             </nav>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="speakable-headline text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Our Vehicle <span className="text-yellow-400">Fleet</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="speakable-lead text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Choose from our wide range of well-maintained vehicles for any travel need.
               From compact sedans to luxury buses, we have the perfect ride for you.
             </p>
@@ -186,7 +252,7 @@ export default function VehiclesPage() {
               {[
                 { number: "500+", label: "Vehicles" },
                 { number: "50+", label: "Cities Served" },
-                { number: "4.8", label: "Rating", icon: Star },
+                { number: "4.9", label: "Rating", icon: Star },
                 { number: "24/7", label: "Support" }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
@@ -391,6 +457,26 @@ export default function VehiclesPage() {
               >
                 WhatsApp Booking
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="faq-section py-16 px-4 bg-white">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
+              Vehicle Fleet — Frequently Asked Questions
+            </h2>
+            <div className="space-y-3">
+              {vehicleFaqs.map((faq, index) => (
+                <details key={index} className="bg-gray-50 rounded-xl border border-gray-200 p-5 group">
+                  <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">
+                    {faq.q}
+                    <ArrowRight className="w-4 h-4 text-yellow-500 group-open:rotate-90 transition-transform flex-shrink-0" />
+                  </summary>
+                  <p className={`text-gray-600 text-sm leading-relaxed mt-3 ${index === 0 ? 'speakable-faq-first' : ''}`}>{faq.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>

@@ -14,8 +14,11 @@ import InclusionBadges from '@/components/shared/InclusionBadges';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import SectionDivider from '@/components/shared/SectionDivider';
 
-export default function BusStandClient({ stand, slug, allStands }) {
+export default function BusStandClient({ stand, slug, allStands, faqs }) {
   const [openFaq, setOpenFaq] = useState(null);
+  // Rich FAQ set passed from the server (10-12 stand-specific Qs). Falls back
+  // to the curated stand.faqs if the prop is not provided.
+  const faqList = Array.isArray(faqs) && faqs.length ? faqs : (stand.faqs || []);
 
   return (
     <article className="min-h-screen bg-slate-950 text-white" itemScope itemType="https://schema.org/TaxiService">
@@ -26,15 +29,15 @@ export default function BusStandClient({ stand, slug, allStands }) {
       />
 
       {/* Hero Section - Dramatic Bus Terminal Design */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[72vh] flex items-center">
         {/* Animated gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-amber-950/80 to-slate-950" />
 
         {/* Animated glowing orbs */}
         <div className="absolute inset-0">
-          <div className="absolute top-16 left-[10%] w-80 h-80 bg-amber-500/15 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-yellow-400/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-16 left-[10%] w-80 h-80 bg-amber-500/15 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
+          <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-yellow-400/8 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" style={{ animationDelay: '2s' }} />
         </div>
 
         {/* Road-lines decorative pattern */}
@@ -43,10 +46,10 @@ export default function BusStandClient({ stand, slug, allStands }) {
         </div>
 
         {/* Floating bus route numbers */}
-        <div className="absolute top-24 right-12 bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-2 text-amber-400/40 font-mono text-sm animate-bounce hidden lg:block" style={{ animationDuration: '3s' }}>
+        <div className="absolute top-24 right-12 bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-2 text-amber-400/40 font-mono text-sm animate-bounce motion-reduce:animate-none hidden lg:block" style={{ animationDuration: '3s' }}>
           ROUTE 01
         </div>
-        <div className="absolute bottom-32 left-16 bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-green-400/30 font-mono text-sm animate-bounce hidden lg:block" style={{ animationDuration: '4s', animationDelay: '1s' }}>
+        <div className="absolute bottom-32 left-16 bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-green-400/30 font-mono text-sm animate-bounce motion-reduce:animate-none hidden lg:block" style={{ animationDuration: '4s', animationDelay: '1s' }}>
           PLATFORM 3
         </div>
 
@@ -68,7 +71,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
                 <span className="text-amber-400 text-sm font-semibold tracking-wide uppercase">{stand.city} Bus Terminal</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
+              <h1 className="speakable-headline text-3xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
                 <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
                   {stand.name}
                 </span>
@@ -185,7 +188,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
         <div className="max-w-4xl mx-auto">
           <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-amber-500/20" data-snippet-type="direct-answer">
             <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
-              {stand.name} Taxi — Quick Info
+              How do I get a taxi from {stand.name}?
             </h2>
             <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
@@ -205,12 +208,12 @@ export default function BusStandClient({ stand, slug, allStands }) {
                 <p className="text-xl font-black text-amber-400">4.9★</p>
               </div>
             </div>
-            <p className="faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
+            <p className="speakable-lead faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
               Taxi from <strong className="text-white">{stand.name}, {stand.city}</strong> starts at just <strong className="text-amber-400">{stand.destinations?.[0]?.fare || '₹300'}</strong> for AC sedan.
               Our drivers wait at the <strong className="text-white">bus stand exit gate</strong> — no surge pricing, no meter tampering.
               Fixed fares to {stand.destinations.slice(0, 3).map(d => d.name).join(', ')} and {Math.max(0, stand.destinations.length - 3)}+ more destinations.
               AC sedan and SUV with verified drivers, GPS tracking, and 24/7 availability.
-              Call <strong className="text-white">+91-7668570551</strong> or WhatsApp to book instantly. 4.9★ rated, 10,000+ trips completed.
+              Call <strong className="text-white">+91-7668570551</strong> or WhatsApp to book instantly. 4.9★ rated by verified travellers.
             </p>
           </div>
         </div>
@@ -225,7 +228,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
               <span className="text-amber-400 text-sm font-semibold">Transparent Pricing</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Taxi Fares from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>
+              What does a taxi from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span> cost?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">Fixed fares with no hidden charges. All prices for AC sedan (Swift Dzire / Honda Amaze).</p>
           </div>
@@ -256,14 +259,28 @@ export default function BusStandClient({ stand, slug, allStands }) {
                       </div>
                     </div>
 
-                    <a
-                      href="tel:7668570551"
-                      onClick={() => trackPhoneCall('bus_stand')}
-                      className="w-full flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-sm font-semibold px-4 py-2.5 rounded-xl border border-amber-500/20 hover:border-amber-500/40 transition-all duration-300"
-                    >
-                      <Phone className="w-3.5 h-3.5" />
-                      Book Now
-                    </a>
+                    <div className="grid grid-cols-2 gap-2">
+                      <a
+                        href="tel:7668570551"
+                        onClick={() => trackPhoneCall('bus_stand')}
+                        className="flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-sm font-semibold px-3 py-2.5 rounded-xl border border-amber-500/20 hover:border-amber-500/40 transition-all duration-300"
+                      >
+                        <Phone className="w-3.5 h-3.5" />
+                        Call
+                      </a>
+                      <a
+                        href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                          `Hi, I need a taxi from ${stand.name} to ${dest.name} (${dest.fare}). Please confirm.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackWhatsAppClick('bus_stand')}
+                        className="flex items-center justify-center gap-2 bg-green-500/15 hover:bg-green-500/25 text-green-400 text-sm font-semibold px-3 py-2.5 rounded-xl border border-green-500/25 hover:border-green-500/50 transition-all duration-300"
+                      >
+                        <WhatsAppIcon className="w-3.5 h-3.5" />
+                        WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -279,7 +296,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Bus Operators at <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{stand.name}</span>
+              Which bus operators run from <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{stand.name}</span>?
             </h2>
             <p className="text-gray-400 text-lg">Major bus services operating from this terminal</p>
           </div>
@@ -389,7 +406,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
               <span className="text-amber-400 text-sm font-semibold">Bus Routes Served</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Major Bus Routes from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>
+              Which major bus routes run from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>?
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">Popular bus routes with premium cab alternatives. Skip the bus, travel in comfort with Triveni Cabs.</p>
           </div>
@@ -433,7 +450,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 p-8 md:p-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
-              Complete Guide to Cab Service from <span className="text-amber-400">{stand.name}, {stand.city}</span>
+              How do I book a cab from <span className="text-amber-400">{stand.name}, {stand.city}</span>?
             </h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
@@ -467,7 +484,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
-              Travel Tips for <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>
+              What are the best travel tips for <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>?
             </h2>
             <p className="text-gray-400 text-lg">Insider tips for a smooth journey from {stand.name}</p>
           </div>
@@ -488,18 +505,18 @@ export default function BusStandClient({ stand, slug, allStands }) {
       <SectionDivider color="amber" className="my-8" />
 
       {/* FAQ Section */}
-      <section className="py-14 md:py-20 lg:py-24 relative">
+      <section className="faq-section py-14 md:py-20 lg:py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
               Frequently Asked <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">Questions</span>
             </h2>
-            <p className="text-gray-400 text-lg">Common queries about cab service from {stand.name}</p>
+            <p className="text-gray-400 text-lg">Common queries about taxi service from {stand.name}, {stand.city}</p>
           </div>
 
           <div className="space-y-4">
-            {stand.faqs.map((faq, i) => (
+            {faqList.map((faq, i) => (
               <div key={i} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 overflow-hidden transition-all duration-300">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -512,8 +529,8 @@ export default function BusStandClient({ stand, slug, allStands }) {
                     <ChevronDown className="w-4 h-4 text-amber-400" />
                   </div>
                 </button>
-                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-96 pb-7' : 'max-h-0'}`}>
-                  <p className="px-7 text-gray-300 leading-relaxed">{faq.answer}</p>
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-[32rem] pb-7' : 'max-h-0'}`}>
+                  <p className={`px-7 text-gray-300 leading-relaxed ${i === 0 ? 'speakable-faq-first faq-answer-1' : ''}`}>{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -527,7 +544,7 @@ export default function BusStandClient({ stand, slug, allStands }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
-              Other Travel Options from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.city}</span>
+              What are other travel options from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.city}</span>?
             </h2>
             <p className="text-gray-400 text-lg">Explore more ways to travel from {stand.city}</p>
           </div>

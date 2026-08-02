@@ -5,21 +5,30 @@ import { Car, Users, Truck, Bus, Shield, Clock, MapPin, Phone, CheckCircle, Star
 import FareCalculator from '@/components/calculator/FareCalculator';
 import { COMPANY_INFO } from '@/lib/seo/constants';
 import { generatePricingTableSchema, generateSpeakableSchema } from '@/lib/seo/aeo-generators';
+import { getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Transparent Fares',
-  description: 'Triveni Cabs pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23-26/km, Bus ₹30-42/km. No hidden charges. Includes driver, fuel, toll. Get instant fare estimates. Call 7668570551!',
+  title: 'Taxi Rates 2026 — Sedan ₹11/km, SUV ₹15/km, Transparent',
+  description: 'Triveni Cabs pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km, Bus ₹30-42/km. No hidden charges. Includes driver, fuel, toll.',
   keywords: 'taxi rates India, cab fare calculator, taxi price per km, sedan rental rates, SUV hire price, tempo traveller rates, bus rental cost, outstation taxi fare, airport taxi rates, transparent taxi pricing',
   openGraph: {
     title: 'Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Triveni Cabs',
-    description: 'Transparent taxi pricing. Sedan ₹11/km, SUV ₹15/km, Tempo ₹23-26/km. No hidden charges. Get instant fare estimates.',
+    description: 'Transparent taxi pricing. Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km. No hidden charges. Get instant fare estimates.',
     url: 'https://www.trivenicabs.in/pricing',
   },
   alternates: {
     canonical: '/pricing',
   }
+,
+  twitter: {
+    card: 'summary_large_image',
+    title: "Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Triveni Cabs",
+    description: "Transparent taxi pricing. Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km. No hidden charges. Get instant fare estimates.",
+    creator: '@trivenicabs',
+    site: '@trivenicabs',
+  },
 };
 
 // Vehicle pricing data - ACTUAL Triveni Cabs Rates
@@ -134,10 +143,10 @@ export default function PricingPage() {
               <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="font-medium">100% Transparent Pricing</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+            <h1 className="speakable-headline text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
               Taxi Rates & Pricing
             </h1>
-            <p className="text-base sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 px-4">
+            <p className="speakable-lead text-base sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 px-4">
               Sedan from <span className="font-bold">₹11/km</span> • SUV from <span className="font-bold">₹15/km</span> • No Hidden Charges
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -150,7 +159,7 @@ export default function PricingPage() {
               </a>
               <div className="flex items-center gap-1 text-white/90 text-sm sm:text-base">
                 <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-                <span className="font-semibold">4.8</span>
+                <span className="font-semibold">4.9</span>
                 <span className="text-white/70">• 10,000+ Happy Customers</span>
               </div>
             </div>
@@ -390,7 +399,7 @@ export default function PricingPage() {
           </p>
           <p className="text-gray-700 leading-relaxed">
             For group travel, our <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller fleet</Link> ranges
-            from 12-seater to 26-seater Maharaja models at <strong>₹23–27/km</strong>, making them the most affordable option for
+            from 12-seater to 26-seater Maharaja models at <strong>₹20–28/km</strong>, making them the most affordable option for
             pilgrimages, corporate outings, and family reunions. Large groups can book our{' '}
             <Link href="/bus-routes" className="text-blue-600 hover:underline">AC buses (22–56 seater)</Link> starting
             at <strong>₹30/km</strong> for events, weddings, and tour operators.
@@ -429,6 +438,37 @@ export default function PricingPage() {
           })
         }}
       />
+      {/* Article schema (E-E-A-T) for the pricing guide */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getArticleSchema({
+            slug: 'pricing',
+            headline: 'Triveni Cabs Taxi Rates 2026 — Transparent Per-KM Pricing',
+            description: 'Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km, Bus ₹30-42/km. All-inclusive fares with no hidden charges.',
+            image: '/images/citypage_hero_section_image.jpg',
+            speakableSelectors: ['.speakable-headline', '.speakable-lead']
+          }))
+        }}
+      />
+      {/* HowTo: how Triveni Cabs pricing works */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getHowToSchema({
+            name: 'How Triveni Cabs Pricing Works',
+            description: 'How to calculate and confirm an all-inclusive cab fare with Triveni Cabs.',
+            totalTime: 'PT5M',
+            estimatedCost: { currency: 'INR', value: 2999 },
+            steps: [
+              { name: 'Pick your vehicle', text: 'Choose a sedan (₹11/km), SUV (₹15/km), tempo traveller (₹20-28/km) or bus (₹30-42/km) based on group size.' },
+              { name: 'Multiply by distance', text: 'Per-km rate × trip distance, with a minimum of 250 km/day for outstation trips (300 km for Volvo coaches).' },
+              { name: 'Add driver allowance', text: 'A fixed per-day driver allowance applies; fuel, AC and GST are already included in the rate.' },
+              { name: 'Confirm your fixed quote', text: 'Call 7668570551 or WhatsApp for a fixed all-inclusive quote. Toll and parking are billed as actuals; there is no surge pricing.' }
+            ]
+          }))
+        }}
+      />
       {/* Schema Markup - Pricing Table for Featured Snippets */}
       <script
         type="application/ld+json"
@@ -440,7 +480,7 @@ export default function PricingPage() {
             "priceCurrency": "INR",
             "price": "11",
             "unitText": "per kilometer",
-            "description": "Sedan taxi rates starting from ₹11 per kilometer. SUV from ₹15/km, Tempo Traveller from ₹23/km.",
+            "description": "Sedan taxi rates starting from ₹11 per kilometer. SUV from ₹15/km, Tempo Traveller from ₹20/km.",
             "eligibleQuantity": {
               "@type": "QuantitativeValue",
               "minValue": 250,
@@ -480,7 +520,7 @@ export default function PricingPage() {
                 "name": "What is the taxi rate per km in India?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs: Sedan costs ₹11-14/km, SUV costs ₹14-18/km, Tempo Traveller costs ₹23-27/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
+                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs: Sedan costs ₹11-14/km, SUV costs ₹14-18/km, Tempo Traveller costs ₹20-28/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
                 }
               },
               {

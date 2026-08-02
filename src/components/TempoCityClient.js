@@ -6,19 +6,31 @@ import Image from 'next/image';
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
   ArrowRight, Route, Navigation, Search, Award, Headphones, CreditCard,
-  Compass, Sparkles, ChevronDown, Crown, Gem, ArrowLeft, Map, Plane
+  Compass, Sparkles, ChevronDown, Crown, Gem, ArrowLeft, Map, Plane, Info
 } from '@/components/ui/icons';
 import { motion, MotionConfig } from 'framer-motion';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 import { getTypeColor, getTypeBadgeColor, getTypeIcon, formatDestinationForDisplay } from '@/utilis/tempoColors';
+// Rich UI + ranking-lift components — wired May 23 2026
+import InfographicPanel from '@/components/seo/InfographicPanel';
+import PriceCalculator from '@/components/seo/PriceCalculator';
+import OutboundCitations from '@/components/seo/OutboundCitations';
+import ExpertQuote from '@/components/seo/ExpertQuote';
+import LongTailFAQ from '@/components/seo/LongTailFAQ';
+import { getCitationsForRoute } from '@/utilis/outboundCitations';
+import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
+import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
 export default function TempoCityClient({ data }) {
   const [mounted, setMounted] = useState(false);
   const [hoveredRoute, setHoveredRoute] = useState(null);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
 
-  const { cityData, routes, fleet } = data;
+  const { cityData, routes, fleet, cityFaqs = [], topDestinations = [] } = data;
   const shouldReduceMotion = useShouldReduceMotion();
+  const [openFaq, setOpenFaq] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -27,6 +39,7 @@ export default function TempoCityClient({ data }) {
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <div className="min-h-screen bg-white overflow-hidden">
+      <SetStickyCta price="From ₹20/km" label={`${data.city} Tempo Traveller`} whatsappText={`Hi, I want to book a Tempo Traveller in ${data.city}. Please share availability and fare.`} />
       {/* ============================================ */}
       {/* HERO SECTION - City Specific */}
       {/* ============================================ */}
@@ -131,10 +144,10 @@ export default function TempoCityClient({ data }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 tracking-tight"
+            className="speakable-headline text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 tracking-tight"
             style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}
           >
-            Tempo Traveller from
+            Tempo Traveller in
             <br />
             <span className="inline-block text-amber-400" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
               {cityData.name}
@@ -187,7 +200,7 @@ export default function TempoCityClient({ data }) {
                   <Star className="w-5 h-5 text-purple-300" />
                 </div>
                 <div className="text-left">
-                  <p className="text-white font-black text-xl">4.8</p>
+                  <p className="text-white font-black text-xl">4.9</p>
                   <p className="text-white/60 text-xs">Rating</p>
                 </div>
               </div>
@@ -241,6 +254,63 @@ export default function TempoCityClient({ data }) {
             <ChevronDown className="w-5 h-5 animate-bounce" />
           </div>
         </motion.div>
+      </section>
+
+      {/* ============================================ */}
+      {/* DIRECT ANSWER + SEATER TABLE (AEO / Featured Snippet target) */}
+      {/* ============================================ */}
+      <section className="py-12 md:py-16 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
+              How much does a tempo traveller cost in {cityData.name}?
+            </h2>
+            <p className="speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
+              A <strong>tempo traveller in {cityData.name}</strong> starts at <strong>₹20/km</strong> for a 12-seater AC tempo and
+              goes up to <strong>₹28/km</strong> for a 26-seater Maharaja edition, with local 8-hour/80-km day packages from
+              <strong> ₹6,000</strong>. Triveni Cabs offers 12, 16, 17, 20 and 26 seater AC tempo travellers in {cityData.name} with
+              pushback seats, music system, charging points and GPS tracking — ideal for family trips, pilgrimages, weddings and
+              corporate outings to {cityData.popularDestinations?.slice(0, 3).join(', ')} and {routes.length}+ destinations. Book by
+              calling <strong>+91-7668570551</strong> or WhatsApp.
+            </p>
+
+            {/* Visible seater / fare table */}
+            <div className="mt-6 overflow-x-auto">
+              <table className="w-full text-left border-collapse bg-white rounded-xl overflow-hidden">
+                <caption className="sr-only">Tempo traveller fares and seating in {cityData.name}</caption>
+                <thead>
+                  <tr className="bg-slate-900 text-white text-sm">
+                    <th className="px-4 py-3 font-semibold">Tempo Traveller</th>
+                    <th className="px-4 py-3 font-semibold">Seating</th>
+                    <th className="px-4 py-3 font-semibold">Starting Rate</th>
+                    <th className="px-4 py-3 font-semibold">Best For</th>
+                  </tr>
+                </thead>
+                <tbody className="text-sm text-slate-700">
+                  {[
+                    { v: '12 Seater Tempo', s: '10-12', r: '₹20/km', b: 'Small families' },
+                    { v: '17 Seater Tempo', s: '15-17', r: '₹24/km', b: 'Most popular — groups' },
+                    { v: '20 Seater Tempo', s: '18-20', r: '₹26/km', b: 'Large groups with LED TV' },
+                    { v: '26 Seater Maharaja', s: '24-26', r: '₹28/km', b: 'Weddings & big groups' },
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-amber-50/40'}>
+                      <td className="px-4 py-3 font-bold text-slate-900">{row.v}</td>
+                      <td className="px-4 py-3">{row.s}</td>
+                      <td className="px-4 py-3 font-bold text-green-700">{row.r}</td>
+                      <td className="px-4 py-3">{row.b}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="text-xs text-slate-500 mt-2">Rates in {cityData.name} include fuel &amp; driver. Tolls, parking &amp; state taxes extra. GST as applicable.</p>
+            </div>
+          </div>
+
+          {/* Quick enquiry — capture lead near the fold */}
+          <div className="mt-8 max-w-xl mx-auto rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-2 shadow-xl">
+            <QuickEnquiryForm fromCity={cityData.name} pageType="tempo" />
+          </div>
+        </div>
       </section>
 
       {/* ============================================ */}
@@ -346,7 +416,7 @@ export default function TempoCityClient({ data }) {
                           </div>
                           <div className="flex items-center gap-1 text-amber-500">
                             <Star className="w-4 h-4 fill-current" />
-                            <span className="font-bold">4.8</span>
+                            <span className="font-bold">4.9</span>
                           </div>
                         </div>
 
@@ -372,10 +442,8 @@ export default function TempoCityClient({ data }) {
       {/* FLEET SECTION */}
       {/* ============================================ */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-        {/* Animated Background */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        {/* Static decorative background (removed infinite 60s rotate for CRO/perf) */}
+        <div
           className={`absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic ${cityData.color} opacity-5`}
         />
 
@@ -792,7 +860,7 @@ export default function TempoCityClient({ data }) {
             >
               {[
                 { icon: Shield, label: 'Safe & Secure' },
-                { icon: Star, label: '4.8 Rating' },
+                { icon: Star, label: '4.9 Rating' },
                 { icon: Clock, label: '24/7 Support' },
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-2 text-white/70">
@@ -804,6 +872,95 @@ export default function TempoCityClient({ data }) {
           </motion.div>
         </div>
       </section>
+      {/* ============================================ */}
+      {/* POPULAR ROUTES FROM CITY — internal-link grid */}
+      {/* ============================================ */}
+      {topDestinations.length > 0 && (
+        <section className="py-14 md:py-20 bg-white border-t border-gray-100">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-100 px-5 py-2.5 rounded-full mb-5 border border-amber-200">
+                <Route className="w-4 h-4 text-amber-600" />
+                <span className="text-amber-700 font-bold text-xs tracking-wider">POPULAR ROUTES</span>
+              </div>
+              <h2 className="text-2xl md:text-4xl font-black text-gray-900 mb-3">
+                Popular tempo traveller routes from {cityData.name}
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Book a 12-26 seater AC tempo traveller from {cityData.name} to these top destinations — all-inclusive per-km fares.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {topDestinations.map((dest, i) => (
+                <Link
+                  key={i}
+                  href={`/tempo-traveller/${dest.slug}`}
+                  className="group flex items-center justify-between gap-3 bg-gray-50 hover:bg-amber-50 border border-gray-200 hover:border-amber-300 rounded-2xl px-5 py-4 transition-all"
+                >
+                  <span className="flex items-center gap-3">
+                    <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white">
+                      <MapPin className="w-4 h-4" />
+                    </span>
+                    <span className="font-bold text-gray-900">
+                      {cityData.name} to {formatDestinationForDisplay(dest.name)}
+                      <span className="block text-xs font-medium text-gray-500">Tempo Traveller • from ₹20/km</span>
+                    </span>
+                  </span>
+                  <ArrowRight className="w-5 h-5 text-amber-500 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================ */}
+      {/* CITY FAQ ACCORDION (visible DOM for FAQPage + Speakable schema) */}
+      {/* ============================================ */}
+      {cityFaqs.length > 0 && (
+        <section className="py-14 md:py-20 bg-gradient-to-b from-gray-50 to-white border-t border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2.5 rounded-full mb-5 border border-blue-200">
+                <Info className="w-4 h-4 text-blue-600" />
+                <span className="text-blue-700 font-bold text-xs tracking-wider">FREQUENTLY ASKED</span>
+              </div>
+              <h2 className="text-2xl md:text-4xl font-black text-gray-900 mb-3">
+                Tempo traveller in {cityData.name} — frequently asked questions
+              </h2>
+              <p className="text-gray-600">
+                Fares, seater options, routes, night charges, GST and booking for tempo traveller hire in {cityData.name}.
+              </p>
+            </div>
+            <div className="space-y-3">
+              {cityFaqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
+                    className="w-full flex items-center justify-between gap-4 text-left px-5 md:px-6 py-4 hover:bg-amber-50/40 transition-colors"
+                    aria-expanded={openFaq === index}
+                  >
+                    <span className="font-bold text-gray-900">{faq.question}</span>
+                    <ChevronDown className={`w-5 h-5 flex-shrink-0 text-amber-500 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openFaq === index && (
+                    <div className="px-5 md:px-6 pb-5">
+                      <p className={`text-gray-600 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* SEO Content Section */}
       <section className="py-16 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
@@ -813,7 +970,7 @@ export default function TempoCityClient({ data }) {
           <p className="text-gray-700 leading-relaxed">
             Looking for a tempo traveller in {cityData.name}? Triveni Cabs offers 12 to 26 seater AC tempo travellers
             with professional drivers for outstation trips, local sightseeing, pilgrimages, corporate events, and weddings
-            from {cityData.name}. {cityData.description} Our outstation rates start from <strong>₹23/km</strong> and local
+            from {cityData.name}. {cityData.description} Our outstation rates start from <strong>₹20/km</strong> and local
             day packages from <strong>₹6,000/day</strong>.
           </p>
           <p className="text-gray-700 leading-relaxed">
@@ -823,7 +980,7 @@ export default function TempoCityClient({ data }) {
             verified backgrounds.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            With 2500+ completed group trips, a 4.8-star rating, and 24/7 availability, Triveni Cabs is {cityData.name}&apos;s
+            With 2500+ completed group trips, a 4.9-star rating, and 24/7 availability, Triveni Cabs is {cityData.name}&apos;s
             trusted tempo traveller rental service. View all{' '}
             <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller options and routes</Link>,
             check our <Link href="/pricing" className="text-blue-600 hover:underline">transparent pricing</Link>, or{' '}
@@ -831,7 +988,90 @@ export default function TempoCityClient({ data }) {
           </p>
         </div>
       </section>
+
+      {/* RICH-UI + RANKING BLOCK — May 23 sprint (Tempo city variant) */}
+      <TempoCityRichBlock cityData={cityData} />
     </div>
     </MotionConfig>
+  );
+}
+
+function TempoCityRichBlock({ cityData }) {
+  const city = cityData?.name || '';
+  const stats = [
+    { value: 12, label: '12-seater available', sublabel: 'starting fleet' },
+    { value: 17, label: '17-seater popular', sublabel: 'most-booked size' },
+    { value: 26, label: '26-seater Maharaja', sublabel: 'for large groups' },
+    { value: 4.9, suffix: ' / 5', label: 'City rating', sublabel: 'verified reviews', format: 'decimal' },
+  ];
+
+  const longTailFaqs = generateLongTailFaqs({
+    mode: 'tempo',
+    origin: city,
+    destination: 'any destination',
+    distanceKm: 250,
+    durationText: '6 hr',
+  });
+
+  const founderQuote = getFounderQuoteForContext('tempo');
+  const citations = getCitationsForRoute({ from: city, to: '', context: 'outstation' });
+
+  return (
+    <div className="bg-slate-950 text-white">
+      <section className="py-12 md:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+          <div className="lg:col-span-3">
+            <InfographicPanel
+              title={`Tempo Traveller in ${city} by the numbers`}
+              subtitle={`Fleet sizes available in ${city}, per-km starting rates, and verified rating. Pricing reflects actual driver invoices.`}
+              stats={stats}
+              tone="amber"
+            />
+          </div>
+          <div className="lg:col-span-2">
+            <PriceCalculator
+              distanceKm={250}
+              mode="one-way"
+              oneWayEqualsRoundTrip
+              vehicles={[
+                { key: 'tempo12', label: '12-Seater', ratePerKm: 20 },
+                { key: 'tempo17', label: '17-Seater', ratePerKm: 24 },
+                { key: 'tempo20', label: '20-Seater', ratePerKm: 26 },
+                { key: 'tempo26', label: '26-Seater', ratePerKm: 28 },
+              ]}
+              tone="amber"
+              originName={city}
+              destinationName=""
+            />
+          </div>
+        </div>
+      </section>
+
+      {founderQuote && (
+        <section className="py-10 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <ExpertQuote quote={founderQuote.quote} authorName={founderQuote.author} authorTitle={founderQuote.title} authorOrg={founderQuote.org} tone="dark" />
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Tempo in {city}</span>
+            <h2 className="text-2xl sm:text-4xl font-black mt-3 tracking-tight">More about hiring a tempo traveller in {city}</h2>
+          </div>
+          <LongTailFAQ faqs={longTailFaqs} tone="dark" />
+        </div>
+      </section>
+
+      {citations.length > 0 && (
+        <section className="py-12 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <OutboundCitations sources={citations} tone="dark" heading="Verified against these sources" />
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

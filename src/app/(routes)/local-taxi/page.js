@@ -1,12 +1,14 @@
 import Link from 'next/link';
-import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Zap, ShieldCheck, UserCheck, Calendar } from '@/components/ui/icons';
+import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Zap, ShieldCheck, UserCheck, Calendar, WhatsAppIcon } from '@/components/ui/icons';
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Local Taxi Service 2026 | 4hr/40km from ₹1,200 | Hourly Packages',
-  description: 'Book local taxi service in Delhi, Agra, Jaipur & 50+ cities. Hourly packages: 4hr/40km ₹1,200, 8hr/80km ₹2,200. Verified drivers, AC cabs, GPS tracked. Call 7668570551.',
+  description: 'Book local taxi service in Delhi, Agra, Jaipur & 50+ cities. Hourly packages: 4hr/40km ₹1,200, 8hr/80km ₹2,200. Verified drivers, AC cabs, GPS tracked.',
   keywords: 'local taxi service, local taxi near me, local cab booking, hourly taxi, taxi service near me, local cab service, city taxi booking, hire taxi for local use, local taxi for shopping, local taxi for hospital, local taxi for meetings, local sightseeing taxi, hourly cab rental, 4 hour taxi package, 8 hour taxi package, local taxi Delhi, local taxi Agra, local taxi Jaipur, cheap local taxi, affordable local cab, best local taxi service, AC local taxi, GPS tracked taxi, safe local cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -23,8 +25,12 @@ export const metadata = {
 
 export default function LocalTaxiPage() {
   /* ──── SCHEMAS ──── */
-  const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Local Taxi Service", "name": "Local Taxi & Hourly Cab Rental Service", "description": "Book local taxi service by the hour in 50+ cities across India. Hourly packages starting from ₹1,200 for 4hr/40km with AC vehicles and verified drivers.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" }, "geo": { "@type": "GeoCoordinates", "latitude": "27.1767", "longitude": "78.0081" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Agra" }, { "@type": "City", "name": "Jaipur" }, { "@type": "City", "name": "Chandigarh" }], "offers": { "@type": "AggregateOffer", "lowPrice": "1200", "highPrice": "7200", "priceCurrency": "INR" }, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" } };
-  const localBusinessSchema = { "@context": "https://schema.org", "@type": "LocalBusiness", "name": "Triveni Cabs - Local Taxi Service", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in/local-taxi", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "Uttar Pradesh", "postalCode": "282006", "addressCountry": "IN" }, "priceRange": "$$" };
+  // Service provider references the global LocalBusiness via @id (defined in layout.js)
+  // instead of duplicating the NAP block. The separate localBusinessSchema below has been
+  // removed — the global entity is rendered site-wide already.
+  // Deterministic rating + named reviews (replaces inflated reviewCount: 10000)
+  const ratingAndReviews = getRatingAndReviews('local-taxi-hub', 'city');
+  const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "@id": "https://www.trivenicabs.in/local-taxi/#service", "serviceType": "Local Taxi Service", "name": "Local Taxi & Hourly Cab Rental Service", "description": "Book local taxi service by the hour in 50+ cities across India. Hourly packages starting from ₹1,200 for 4hr/40km with AC vehicles and verified drivers.", "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" }, "brand": { "@type": "Brand", "name": "Triveni Cabs" }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Agra" }, { "@type": "City", "name": "Jaipur" }, { "@type": "City", "name": "Chandigarh" }], "offers": { "@type": "AggregateOffer", "lowPrice": "1200", "highPrice": "7200", "priceCurrency": "INR" }, ...ratingAndReviews };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Local Taxi", "item": "https://www.trivenicabs.in/local-taxi" }] };
   const faqData = [
     { question: "How much does a local taxi cost per hour?", answer: "Local taxi packages start from ₹1,200 for 4 hours/40 km (Sedan). SUV packages start at ₹1,800 for 4hr/40km. Extra km charged at ₹11/km (Sedan) or ₹15/km (SUV). Extra hours charged at ₹150-200/hr based on vehicle type." },
@@ -34,9 +40,56 @@ export default function LocalTaxiPage() {
     { question: "Can I use local taxi for shopping and multiple stops?", answer: "Absolutely! Our hourly packages are designed for multiple stops. Go shopping, visit markets, run errands - the driver waits at each stop. Perfect for wedding shopping, grocery runs, or a day of errands." },
     { question: "What cities have local taxi service available?", answer: "We provide local taxi service in Delhi NCR, Agra, Jaipur, Chandigarh, Shimla, Manali, Haridwar, Rishikesh, Amritsar, Udaipur, Jodhpur, Dehradun, Lucknow, and 40+ more cities across North India." },
     { question: "How quickly can I get a local taxi?", answer: "We can arrange a local taxi within 30-60 minutes for same-day bookings in major cities. For guaranteed availability and your preferred vehicle, book 2-4 hours in advance. Call or WhatsApp 7668570551." },
-    { question: "Are local taxi drivers verified and safe?", answer: "Yes, all our drivers undergo background verification, license validation, and driving test. Vehicles are GPS-tracked and regularly sanitized. We offer women safety features including trip sharing and SOS support." }
+    { question: "Are local taxi drivers verified and safe?", answer: "Yes, all our drivers undergo background verification, license validation, and driving test. Vehicles are GPS-tracked and regularly sanitized. We offer women safety features including trip sharing and SOS support." },
+    { question: "Is a local taxi cheaper than Ola or Uber for a half day?", answer: "For multi-stop or half/full-day use, yes. App cabs charge per ride plus surge pricing and you re-book (and re-pay) at every stop. A 4hr/40km local taxi at ₹1,200 keeps the same car and driver waiting at no extra charge — typically 30-40% cheaper than 4-5 separate app rides for shopping or hospital days." },
+    { question: "Can I keep the same driver and car for the whole booking?", answer: "Yes. Unlike app cabs that assign a new driver each ride, your local taxi gives you one dedicated, verified driver and one AC vehicle for the entire package duration. The driver waits at every stop — markets, clinics, offices — so you never re-book." },
+    { question: "How do I pay for a local taxi — cash, UPI or card?", answer: "We accept cash, UPI (Google Pay/PhonePe/Paytm), and bank transfer. There is no advance for most local packages — pay the driver at the end of the trip. For corporate accounts we offer monthly GST invoicing." },
+    { question: "Can I book a local taxi for outstation or one-way after my city errands?", answer: "Yes. You can extend a local package into an outstation cab on the spot, or pre-book a one-way drop to another city. The same operator handles both, so there is no need to juggle separate vendors. Call 7668570551 to combine." }
   ];
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
+  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })), "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-answer-1']) };
+
+  // Article schema (E-E-A-T + freshness) + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: 'local-taxi',
+    headline: 'Local Taxi Service — Hourly Cab Rental from ₹1,200 (4hr/40km)',
+    description: 'How local taxi hourly packages work, fares by vehicle, and how they compare to app cabs and autos across 50+ Indian cities.',
+    image: '/images/about/about_banner.webp',
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-answer-1'],
+  });
+
+  // HowTo: book a local taxi in under 2 minutes
+  const howToSchema = getHowToSchema({
+    name: 'How to Book a Local Taxi by the Hour',
+    description: 'Book a dedicated hourly cab with verified driver in under 2 minutes by phone or WhatsApp.',
+    totalTime: 'PT2M',
+    estimatedCost: { currency: 'INR', value: '1200' },
+    steps: [
+      { name: 'Call or WhatsApp', text: 'Call 7668570551 or message on WhatsApp with your city, pickup point, and the date/time you need the cab.' },
+      { name: 'Pick a package & vehicle', text: 'Choose 4hr/40km, 8hr/80km, or 12hr/120km and select Sedan, SUV, or Tempo Traveller. We confirm the flat fare upfront — no surge.' },
+      { name: 'Get driver details', text: 'Receive your confirmed booking with driver name and vehicle number within 15 minutes.' },
+      { name: 'Ride & pay after', text: 'The driver arrives at your doorstep, waits at every stop, and you pay by cash/UPI at the end of the package.' },
+    ],
+  });
+
+  // Comparison: Local taxi (hourly) vs App cab vs Auto-rickshaw — for featured snippet
+  const comparisonRows = [
+    { feature: 'Pricing model' },
+    { feature: 'Surge pricing' },
+    { feature: 'Same driver all day' },
+    { feature: 'Waits at multiple stops' },
+    { feature: 'AC & verified driver' },
+    { feature: 'Best for' },
+  ];
+  const comparisonSchema = getComparisonSchema({
+    slug: 'local-taxi',
+    title: 'Local Taxi (Hourly) vs App Cab vs Auto-Rickshaw',
+    description: 'How a dedicated hourly local taxi compares to ride-hailing apps and autos for multi-stop city travel.',
+    rows: comparisonRows,
+    mentions: ['Local Taxi', 'Ola', 'Uber', 'Auto-rickshaw', 'Hourly cab rental'],
+  });
 
   /* ──── DATA ──── */
   const hourlyPackages = [
@@ -56,9 +109,11 @@ export default function LocalTaxiPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }} />
 
       {/* ===== DESIGN: Warm cream/sand with neumorphic cards, soft shadows ===== */}
       <div className="min-h-screen bg-[#f5f0e8] text-stone-900">
@@ -77,14 +132,21 @@ export default function LocalTaxiPage() {
                 <span className="text-white font-semibold text-sm">Hourly Taxi Packages</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">
+              <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[1.1]">
                 Local Taxi<br />
                 <span className="text-stone-900/80">By the Hour</span>
               </h1>
 
-              <p className="text-xl text-white/80 mb-10 max-w-xl">
+              <p className="text-xl text-white/80 mb-6 max-w-xl">
                 Multiple stops, flexible schedule, AC vehicle with verified driver. Packages from <strong className="text-white">₹1,200 for 4 hours</strong> in 50+ cities.
               </p>
+
+              {/* Price chip near CTAs */}
+              <div className="inline-flex items-center gap-2 bg-stone-900/90 text-white px-5 py-2.5 rounded-full mb-6 shadow-lg">
+                <IndianRupee className="w-4 h-4 text-amber-400" />
+                <span className="font-bold text-base">from ₹1,200 / 4hr</span>
+                <span className="text-white/50 text-sm">· Sedan</span>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="tel:+917668570551" className="inline-flex items-center gap-2 bg-stone-900 text-white px-7 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:bg-stone-800 hover:scale-[1.02] transition-all">
@@ -109,7 +171,8 @@ export default function LocalTaxiPage() {
               Local Taxi Service — Hourly Car Rental for City Travel
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
-              <p>Need a <strong className="text-stone-800">local taxi service near you</strong> for errands, hospital visits, shopping trips, or a half-day city tour? Triveni Cabs offers flexible <strong className="text-stone-800">hourly cab rental packages</strong> starting at just ₹799 — available in 50+ cities across North India including Delhi, Agra, Jaipur, Chandigarh, Lucknow, Haridwar, and Dehradun.</p>
+              <p className="speakable-lead text-stone-700 font-medium">A <strong className="text-stone-800">local taxi</strong> in India costs from <strong className="text-stone-800">₹1,200 for a 4-hour / 40 km package</strong> (Sedan), ₹2,200 for 8 hours / 80 km, and ₹3,200 for 12 hours / 120 km. You get one dedicated AC car and verified driver for the entire booking, with the driver waiting at every stop — no surge pricing and no re-booking. Book in under 2 minutes by calling 7668570551.</p>
+              <p>Need a <strong className="text-stone-800">local taxi service near you</strong> for errands, hospital visits, shopping trips, or a half-day city tour? Triveni Cabs offers flexible <strong className="text-stone-800">hourly cab rental packages</strong> available in 50+ cities across North India including Delhi, Agra, Jaipur, Chandigarh, Lucknow, Haridwar, and Dehradun.</p>
               <p>Unlike ride-hailing apps that charge per ride with unpredictable surge pricing, our <strong className="text-stone-800">local taxi booking</strong> works on transparent hourly packages — 4 hours / 40 km, 8 hours / 80 km, or 12 hours / 120 km. You get a dedicated car and driver for the entire duration, making multiple stops without rebooking or waiting for a new cab each time. Ideal for business meetings, wedding errands, city sightseeing, airport runs, and medical appointments.</p>
               <p>Every vehicle in our <strong className="text-stone-800">local cab service</strong> fleet is GPS-tracked, fully air-conditioned, and driven by a verified, trained professional. Whether you choose a sedan for personal use, an SUV for family outings, or a tempo traveller for group travel, the rate is fixed with no hidden charges. Extra kilometres and hours are billed at a transparent per-unit rate.</p>
               <p>Families with children, senior citizens requiring hospital visits, corporate professionals with back-to-back meetings, and tourists exploring city attractions — all trust Triveni Cabs as their <strong className="text-stone-800">go-to local taxi service</strong>. Book instantly via call or WhatsApp and your car arrives at your doorstep within 30 minutes.</p>
@@ -147,14 +210,61 @@ export default function LocalTaxiPage() {
 
                   <p className={`text-sm mb-6 ${pkg.popular ? 'text-white/70' : 'text-stone-400'}`}>Best for: {pkg.best}</p>
 
-                  <Link href="tel:+917668570551" className={`w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold transition-all ${pkg.popular ? 'bg-white text-amber-600 hover:bg-white/90' : 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:shadow-lg'}`}>
-                    <Phone className="w-4 h-4" /> Book Now
-                  </Link>
+                  <div className="grid grid-cols-[1fr_auto] gap-2">
+                    <Link href="tel:+917668570551" className={`inline-flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold transition-all ${pkg.popular ? 'bg-white text-amber-600 hover:bg-white/90' : 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:shadow-lg'}`}>
+                      <Phone className="w-4 h-4" /> Book Now
+                    </Link>
+                    <a href={`https://wa.me/917668570551?text=${encodeURIComponent(`Hi, I want to book a local taxi (${pkg.name} package). Please share availability.`)}`} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp to book ${pkg.name}`}
+                      className={`inline-flex items-center justify-center px-4 rounded-xl font-bold transition-all ${pkg.popular ? 'bg-white/20 text-white hover:bg-white/30' : 'bg-green-600 text-white hover:bg-green-700'}`}>
+                      <WhatsAppIcon className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
 
             <p className="text-stone-400 text-sm mt-6 text-center">Extra km: Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. Extra hours: ₹150-250/hr.</p>
+          </div>
+        </section>
+
+        {/* ─── COMPARISON: Local taxi vs App cab vs Auto ─── */}
+        <section className="py-20 px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Honest Comparison</span>
+              <h2 className="text-3xl md:text-4xl font-black mt-2 text-stone-800">Local Taxi vs App Cab vs Auto — Which Is Cheaper?</h2>
+              <p className="text-stone-500 mt-3 max-w-2xl mx-auto">For multi-stop or half/full-day travel, a dedicated hourly local taxi almost always beats app cabs and autos on total cost and convenience.</p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl shadow-[8px_8px_24px_rgba(0,0,0,0.06),-8px_-8px_24px_rgba(255,255,255,0.9)] bg-white">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="bg-stone-900 text-white">
+                    <th className="p-4 font-bold">Feature</th>
+                    <th className="p-4 font-bold text-amber-300">Local Taxi (Hourly)</th>
+                    <th className="p-4 font-bold">App Cab (Ola/Uber)</th>
+                    <th className="p-4 font-bold">Auto-Rickshaw</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {[
+                    ["Pricing model", "Flat hourly package (₹1,200 / 4hr)", "Per-ride + surge", "Per-ride, meter/haggle"],
+                    ["Surge pricing", "Never — fixed rate", "Yes, peak hours & rain", "Negotiated, unpredictable"],
+                    ["Same driver all day", "Yes — one dedicated driver", "No — new driver each ride", "No"],
+                    ["Waits at multiple stops", "Yes, free within package", "No — re-book & re-pay", "Rarely, extra charge"],
+                    ["AC & verified driver", "Always AC + background-checked", "Varies by category", "No AC"],
+                    ["Best for", "Shopping, hospital, half/full day", "Single point-to-point ride", "Very short local hops"],
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 ? "bg-stone-50/50" : "bg-white"}>
+                      <td className="p-4 font-semibold text-stone-800">{row[0]}</td>
+                      <td className="p-4 text-stone-700 font-medium bg-amber-50/40">{row[1]}</td>
+                      <td className="p-4 text-stone-500">{row[2]}</td>
+                      <td className="p-4 text-stone-500">{row[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-stone-400 text-xs mt-4 text-center">Example: a 4-hour shopping day with 5 stops costs ~₹1,200 by local taxi vs ₹1,700-2,200 across 5 separate app rides with waiting and surge.</p>
           </div>
         </section>
 
@@ -263,7 +373,7 @@ export default function LocalTaxiPage() {
               {faqData.map((faq, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 shadow-[4px_4px_16px_rgba(0,0,0,0.05),-4px_-4px_16px_rgba(255,255,255,0.8)] hover:shadow-[6px_6px_20px_rgba(0,0,0,0.07)] transition-all">
                   <h3 className="font-bold text-stone-800 mb-2">{faq.question}</h3>
-                  <p className="text-stone-500 text-sm leading-relaxed">{faq.answer}</p>
+                  <p className={`text-stone-500 text-sm leading-relaxed ${i === 0 ? 'faq-answer-1' : ''}`}>{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -276,7 +386,7 @@ export default function LocalTaxiPage() {
             <h2 className="text-3xl md:text-4xl font-black text-stone-800 mb-6 text-center">Local Taxi Service — Hourly Cab Rental Made Simple</h2>
             <div className="space-y-4 text-stone-600 text-lg leading-relaxed">
               <p>
-                Need a <strong className="text-stone-800">local taxi</strong> for shopping, hospital visits, or city sightseeing? Triveni Cabs offers flexible hourly cab rental packages in <Link href="/delhi" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Delhi</Link>, <Link href="/agra" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Agra</Link>, <Link href="/jaipur" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Jaipur</Link>, and 50+ cities across North India. With <Link href="/reviews" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">2,847+ happy customers rating us 4.8/5</Link>, our local taxi service delivers comfort, punctuality, and transparent pricing every single time.
+                Need a <strong className="text-stone-800">local taxi</strong> for shopping, hospital visits, or city sightseeing? Triveni Cabs offers flexible hourly cab rental packages in <Link href="/delhi" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Delhi</Link>, <Link href="/agra" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Agra</Link>, <Link href="/jaipur" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Jaipur</Link>, and 50+ cities across North India. With <Link href="/reviews" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">thousands of happy customers rating us 4.9/5</Link>, our local taxi service delivers comfort, punctuality, and transparent pricing every single time.
               </p>
               <p>
                 Unlike ride-hailing apps with unpredictable surge pricing, our <strong className="text-stone-800">hourly taxi packages</strong> give you a <Link href="/safety" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">verified, GPS-tracked driver</Link> at a fixed rate — starting at just ₹1,200 for 4 hours. Perfect for multi-stop errands, <Link href="/sightseeing/delhi-sightseeing-tour" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">local sightseeing tours</Link>, wedding shopping trips, or <Link href="/corporate-transportation-service" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">corporate meetings</Link>. Check our <Link href="/pricing" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">complete fare chart</Link> for all vehicle options.

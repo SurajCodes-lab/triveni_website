@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Shimla Beyond Mall Road | Hidden Gems & Day Trips | 2026',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/shimla-beyond-mall-road',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/shimla-hero.jpg', width: 1200, height: 630, alt: 'Shimla Beyond Mall Road' }],
+    images: [{ url: '/images/sightseeing/Shimla/shimla_hero_section.jpg', width: 1200, height: 630, alt: 'Shimla Beyond Mall Road' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Apple orchards, hot springs, highest cricket ground, ski slopes. By Shimla locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/shimla-hero.jpg'],
+    images: ['/images/sightseeing/Shimla/shimla_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

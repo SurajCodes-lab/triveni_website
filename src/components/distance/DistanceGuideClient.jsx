@@ -7,22 +7,44 @@ import {
   Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2,
   Route, MapPin, Navigation, Star, Coffee, Info,
   ChevronRight, Calendar, Sparkles, Award,
+  TrainFront, Bus, Plane, Fuel, IndianRupee,
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
+import LeadQuoteSection from '@/components/shared/LeadQuoteSection';
+import CorridorLinks from '@/components/seo/CorridorLinks';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>;
 
-export default function DistanceGuideClient({ route, relatedRoutes }) {
+export default function DistanceGuideClient({ route, relatedRoutes, corridorLinks = [] }) {
   const [showAllStops, setShowAllStops] = useState(false);
+  // Phase 3: unique, entity-rich, slug-seeded intro so no two distance pages read alike.
+  const uniqueIntro = generateUniqueIntro({
+    origin: route.origin,
+    destination: route.destination,
+    distance: `${route.distance.km} km`,
+    time: route.duration,
+    highway: route.highway,
+    attractions: route.attractions || route.topAttractions || [],
+    vehicleType: 'AC sedan or SUV',
+    slug: route.slug || `${route.origin}-${route.destination}`,
+  });
   const whatsappMsg = `Hi, I want to book a cab from ${route.origin} to ${route.destination} (${route.distance.km} km)`;
   const totalToll = route.tollPlazas.reduce((sum, t) => sum + t.cost, 0);
   const heroImage = getCityImage(route.destination) || getCityImage(route.origin);
   const visibleStops = showAllStops ? route.majorStops : route.majorStops.slice(0, 4);
+  const travelModes = route.travelModes || [];
+  const modeIcons = { 'Cab / Taxi': Car, Train: TrainFront, Bus: Bus, Flight: Plane };
+  const fareRows = [
+    { name: 'AC Sedan', sub: 'Swift Dzire / Etios · 4 seater', fare: route.cabFares.sedan, perKm: '₹11/km' },
+    { name: 'SUV', sub: 'Innova Crysta / Ertiga · 6-7 seater', fare: route.cabFares.suv, perKm: '₹14/km' },
+    { name: 'Tempo Traveller', sub: '12-seater AC', fare: route.cabFares.tempo, perKm: '₹20/km' },
+  ];
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
@@ -49,7 +71,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Distance &amp; Travel Guide</span>
               </div>
               <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">Journey Planner</p>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+              <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
                 {route.origin}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-blue-400">
                   {route.destination}
@@ -97,6 +119,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+      <LeadQuoteSection fromCity={route.origin} toCity={route.destination} pageType="route" />
 
       {/* ---- VISUAL ROUTE STRIP: Origin -> Stops -> Destination ---- */}
       <section className="bg-slate-900 py-6 sm:py-8 px-4 sm:px-6 overflow-hidden">
@@ -149,6 +172,125 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+
+      {/* ---- DIRECT ANSWER LEAD (voice / AEO) ---- */}
+      <section className="py-10 sm:py-14 px-4 sm:px-6 bg-white border-b border-slate-100">
+        <div className="max-w-4xl mx-auto">
+          <ScrollReveal>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-4">
+              How far is {route.destination} from {route.origin}?
+            </h2>
+            <p className="speakable-lead text-base sm:text-lg text-slate-700 leading-relaxed">
+              {route.directAnswer}
+            </p>
+            {uniqueIntro && (
+              <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+                {uniqueIntro}
+              </p>
+            )}
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { Icon: Route, label: 'By Road', value: `${route.distance.km} km` },
+                { Icon: Clock, label: 'Drive Time', value: route.duration },
+                { Icon: IndianRupee, label: 'Cab From', value: route.cabFares.sedan },
+                { Icon: Fuel, label: 'Fuel (self-drive)', value: `₹${(route.fuelCost || 0).toLocaleString('en-IN')}` },
+              ].map((s, i) => (
+                <div key={i} className="bg-[#f8f7f4] rounded-xl p-4 border border-slate-100">
+                  <s.Icon className="w-4 h-4 text-blue-600 mb-2" />
+                  <p className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">{s.label}</p>
+                  <p className="text-base font-black text-slate-900">{s.value}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ---- DISTANCE / TIME / FARE TABLE ---- */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1">At a Glance</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6">{route.origin} to {route.destination} Distance, Time &amp; Cab Fare</h2>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="overflow-x-auto rounded-2xl border border-slate-200/70 bg-white">
+              <table className="w-full text-left text-sm">
+                <tbody className="divide-y divide-slate-100">
+                  <tr>
+                    <th scope="row" className="px-5 py-3.5 font-semibold text-slate-500 w-1/2">Road distance</th>
+                    <td className="px-5 py-3.5 font-bold text-slate-900">{route.distance.km} km ({route.distance.miles} miles)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-3.5 font-semibold text-slate-500">Drive time by cab</th>
+                    <td className="px-5 py-3.5 font-bold text-slate-900">{route.duration}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="px-5 py-3.5 font-semibold text-slate-500">Best route / highway</th>
+                    <td className="px-5 py-3.5 font-bold text-slate-900">{route.highway}</td>
+                  </tr>
+                  {fareRows.map((v, i) => (
+                    <tr key={i}>
+                      <th scope="row" className="px-5 py-3.5 font-semibold text-slate-500">{v.name} cab fare <span className="block text-[11px] font-normal text-slate-400">{v.sub}</span></th>
+                      <td className="px-5 py-3.5 font-bold text-slate-900">{v.fare} <span className="text-xs font-medium text-slate-400">({v.perKm})</span></td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <th scope="row" className="px-5 py-3.5 font-semibold text-slate-500">Approx. fuel cost (self-drive)</th>
+                    <td className="px-5 py-3.5 font-bold text-slate-900">₹{(route.fuelCost || 0).toLocaleString('en-IN')} one-way</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-slate-400 text-xs mt-3">* Cab fares are one-way and include fuel &amp; driver. Toll and state tax are extra at actual.</p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ---- TRAVEL MODES COMPARISON ---- */}
+      {travelModes.length > 0 && (
+        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <ScrollReveal>
+              <p className="text-[10px] font-bold text-violet-600 uppercase tracking-widest mb-1">Compare Options</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">How to Travel from {route.origin} to {route.destination}: Cab vs Train vs Bus vs Flight</h2>
+              <p className="text-slate-500 text-sm mb-6 max-w-2xl">A quick comparison of travel time, cost and comfort for the {route.distance.km} km journey to help you choose the right mode.</p>
+            </ScrollReveal>
+            <ScrollReveal>
+              <div className="overflow-x-auto rounded-2xl border border-slate-200/70">
+                <table className="w-full text-left text-sm min-w-[640px]">
+                  <thead className="bg-slate-900 text-white">
+                    <tr>
+                      <th className="px-4 py-3 font-bold">Mode</th>
+                      <th className="px-4 py-3 font-bold">Travel Time</th>
+                      <th className="px-4 py-3 font-bold">Cost</th>
+                      <th className="px-4 py-3 font-bold">Comfort</th>
+                      <th className="px-4 py-3 font-bold">Best For</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {travelModes.map((m, i) => {
+                      const Icon = modeIcons[m.mode] || Car;
+                      return (
+                        <tr key={i} className={i === 0 ? 'bg-amber-50/60' : ''}>
+                          <td className="px-4 py-3.5 font-bold text-slate-900 whitespace-nowrap">
+                            <span className="inline-flex items-center gap-2"><Icon className="w-4 h-4 text-blue-600" />{m.mode}</span>
+                          </td>
+                          <td className="px-4 py-3.5 text-slate-700">{m.time}</td>
+                          <td className="px-4 py-3.5 text-slate-700">{m.cost}</td>
+                          <td className="px-4 py-3.5 text-slate-600">{m.comfort}</td>
+                          <td className="px-4 py-3.5 text-slate-600">{m.best}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-slate-400 text-xs mt-3">For {route.origin} to {route.destination}, a private cab offers door-to-door pickup, no fixed timetable and the freedom to stop anywhere en route.</p>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
 
       {/* ---- BENTO GRID: Route overview ---- */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
@@ -393,7 +535,7 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
             {[
               { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: route.cabFares.sedan, seats: '4', perKm: '\u20B911/km', img: '/images/car/swift_dzire.jpg', pop: false },
               { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '\u20B914/km', img: '/images/car/innova_crysta.jpg', pop: true },
-              { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '\u20B920/km', img: '/images/car/premium_suv.jpg', pop: false },
+              { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '\u20B920/km', img: '/images/tempo/12_seater.jpg', pop: false },
             ].map((v, i) => (
               <ScrollReveal key={i} stagger={i * 100}>
                 <div className={`relative rounded-2xl overflow-hidden group ${v.pop ? 'ring-2 ring-[#FACF2D]/50' : ''}`}>
@@ -518,7 +660,95 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
       </section>
 
       {/* ---- FAQ ---- */}
+      <section className="pt-12 sm:pt-16 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 text-center">Quick Answer</p>
+          <p className="speakable-faq-first text-base sm:text-lg text-slate-700 leading-relaxed text-center">
+            {route.faqs[0]?.answer}
+          </p>
+        </div>
+      </section>
       <FaqAccordion heading={`${route.origin} to ${route.destination} FAQs`} faqs={route.faqs} />
+
+      {/* ---- PLAN YOUR TRIP: internal links to booking + city hubs ---- */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1">Plan Your Trip</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6">Book {route.origin} to {route.destination} or Explore the Cities</h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {route.oneWaySlug && (
+              <ScrollReveal>
+                <Link href={`/one-way-cab/${route.oneWaySlug}`} className="group flex items-center gap-4 bg-amber-50 rounded-xl p-4 border border-amber-100 hover:shadow-lg hover:border-amber-200 transition-all">
+                  <div className="w-10 h-10 rounded-lg bg-[#FACF2D] flex items-center justify-center flex-shrink-0">
+                    <Car className="w-4 h-4 text-slate-900" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-slate-900 text-sm">Book one-way cab</p>
+                    <p className="text-xs text-slate-500 truncate">{route.origin} to {route.destination} from {route.cabFares.sedan}</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                </Link>
+              </ScrollReveal>
+            )}
+            {route.originHub && (
+              <ScrollReveal stagger={60}>
+                <Link href={`/${route.originHub}`} className="group flex items-center gap-4 bg-[#f8f7f4] rounded-xl p-4 border border-transparent hover:bg-white hover:shadow-lg hover:border-slate-200 transition-all">
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-slate-900 text-sm">{route.origin} taxi service</p>
+                    <p className="text-xs text-slate-500">Local &amp; outstation cabs in {route.origin}</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-500 flex-shrink-0" />
+                </Link>
+              </ScrollReveal>
+            )}
+            {route.destinationHub && (
+              <ScrollReveal stagger={120}>
+                <Link href={`/${route.destinationHub}`} className="group flex items-center gap-4 bg-[#f8f7f4] rounded-xl p-4 border border-transparent hover:bg-white hover:shadow-lg hover:border-slate-200 transition-all">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-slate-900 text-sm">{route.destination} taxi service</p>
+                    <p className="text-xs text-slate-500">Sightseeing &amp; cabs in {route.destination}</p>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-500 flex-shrink-0" />
+                </Link>
+              </ScrollReveal>
+            )}
+            <ScrollReveal stagger={180}>
+              <Link href="/distance" className="group flex items-center gap-4 bg-[#f8f7f4] rounded-xl p-4 border border-transparent hover:bg-white hover:shadow-lg hover:border-slate-200 transition-all">
+                <div className="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center flex-shrink-0">
+                  <Route className="w-4 h-4 text-violet-600" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-bold text-slate-900 text-sm">All distance guides</p>
+                  <p className="text-xs text-slate-500">Browse 100+ route distance &amp; fare guides</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-violet-500 flex-shrink-0" />
+              </Link>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- CORRIDOR CLUSTER: book this route ---- */}
+      {corridorLinks.length > 0 && (
+        <section className="py-10 sm:py-14 px-4 sm:px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <CorridorLinks
+              links={corridorLinks}
+              fromLabel={route.origin}
+              toLabel={route.destination}
+              theme="light"
+            />
+          </div>
+        </section>
+      )}
 
       {/* ---- RELATED ROUTES ---- */}
       {relatedRoutes.length > 0 && (
@@ -552,7 +782,11 @@ export default function DistanceGuideClient({ route, relatedRoutes }) {
         heading={`Book ${route.origin} to ${route.destination} Cab`}
         subheading={`${route.distance.km} km · From ${route.cabFares.sedan} · AC vehicles, verified drivers, 24/7 support`}
       />
-      <MobileStickyBar />
+      <SetStickyCta
+        price={route.cabFares.sedan}
+        label={`${route.origin} to ${route.destination} cab`}
+        whatsappText={whatsappMsg}
+      />
     </div>
   );
 }

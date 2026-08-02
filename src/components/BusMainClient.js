@@ -10,6 +10,7 @@ import { useInView as useInViewObserver } from 'react-intersection-observer';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 // Import from smaller utility file to reduce bundle size
 import { additionalInfo, whyChooseUs } from '@/utilis/busUtilsData';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
 export default function BusMainClient({ data }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,7 +20,7 @@ export default function BusMainClient({ data }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [openFaq, setOpenFaq] = useState(null);
 
-  const { popularRoutes, allRoutes, fleet, cities } = data;
+  const { popularRoutes, allRoutes, fleet, cities, seaterComparison = [] } = data;
 
   const heroRef = useRef(null);
   const fleetSectionRef = useRef(null);
@@ -84,6 +85,7 @@ export default function BusMainClient({ data }) {
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <SetStickyCta price="From ₹25/km" label="Bus Hire" whatsappText="Hi, I want to book a bus on rent. Please share availability and fare." />
 
         {/* Hero Section - Ultra Modern */}
         <motion.section
@@ -141,15 +143,28 @@ export default function BusMainClient({ data }) {
               <Sparkles className="w-5 h-5 text-[#FACF2D]" />
             </motion.div>
 
+            {/* Trust badge — 4.9 stars / 10,000+ trips */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="flex justify-center mb-6"
+            >
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full">
+                <Star className="w-4 h-4 text-[#FACF2D]" fill="#FACF2D" />
+                <span className="text-white font-bold text-sm">4.9&#9733; · 10,000+ trips</span>
+              </div>
+            </motion.div>
+
             {/* Main Title - SEO Optimized H1 */}
             <div className="mb-8 overflow-hidden">
               <motion.h1
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="hero-title text-4xl md:text-6xl font-black text-white leading-tight mb-4"
+                className="speakable-headline hero-title text-4xl md:text-6xl font-black text-white leading-tight mb-4"
               >
-                Luxury Bus Rental Service
+                Bus Hire in India — Luxury Bus Rental Service
               </motion.h1>
               <motion.div
                 initial={{ y: 100, opacity: 0 }}
@@ -215,12 +230,26 @@ export default function BusMainClient({ data }) {
 
         {/* SEO-Rich Introduction Section */}
         <section className="py-16 bg-white relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="speakable-lead bg-gradient-to-br from-[#FFF9E6] to-orange-50 rounded-2xl border border-[#FACF2D]/40 shadow-sm p-6 md:p-8 mb-12"
+            >
+              <p className="text-gray-800 text-base md:text-lg leading-relaxed">
+                <strong>Bus on rent in India</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus and goes up to <strong>₹65/km</strong> for a 56-seater luxury Volvo coach. Triveni Cabs offers <strong>22, 25, 27, 32, 35, 41, 45, 49, 52 and 56 seater AC buses</strong> for hire, all with pushback recliner seats, entertainment systems, GPS tracking and professional drivers. The per-km rate includes the bus, fuel and driver; tolls, state permits, parking and driver night allowance (₹800-1200/day) are extra at actuals. Buses are available across <strong>Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Udaipur</strong> and 100+ routes for <strong>weddings, corporate offsites, pilgrimage groups, school trips and tours</strong>. Book in 2 minutes by calling <strong>+91 76685 70551</strong> or on WhatsApp — 4.9&#9733; rated.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
             >
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
                 Looking for reliable <strong>bus rental services in India</strong>? Triveni Cabs offers premium <strong>luxury bus hire</strong> from <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>. Perfect for corporate events, weddings, pilgrimage tours, and group travel.
@@ -229,6 +258,87 @@ export default function BusMainClient({ data }) {
                 Book <strong>AC buses</strong> with <strong>professional drivers</strong> for <strong>Delhi, Mumbai, Jaipur</strong>, and all major routes across India. All vehicles feature pushback seats, entertainment systems, GPS tracking, and spacious luggage storage for comfortable long-distance travel.
               </p>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Seater Comparison Table — grounds the Comparison schema */}
+        {seaterComparison.length > 0 && (
+          <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-2 bg-[#FACF2D]/10 px-6 py-3 rounded-full mb-4">
+                  <Bus className="w-5 h-5 text-[#FACF2D]" />
+                  <span className="text-[#FACF2D] font-bold text-sm tracking-wider">COMPARE BUS SIZES</span>
+                </div>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4">
+                  Which bus size should I rent? <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">22 vs 35 vs 45 vs 56 Seater</span>
+                </h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  Compare capacity, best use-case and per-km price to pick the right coach for your group size.
+                </p>
+              </div>
+
+              <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-lg">
+                <table className="w-full text-sm text-left bg-white">
+                  <caption className="sr-only">Comparison of 22, 35, 45 and 56 seater buses by capacity, best use-case, price per km and AC type</caption>
+                  <thead>
+                    <tr className="bg-gray-900 text-white">
+                      <th scope="col" className="px-4 py-3.5 font-bold">Bus Size</th>
+                      <th scope="col" className="px-4 py-3.5 font-bold text-[#FACF2D]">Capacity</th>
+                      <th scope="col" className="px-4 py-3.5 font-bold">Best For</th>
+                      <th scope="col" className="px-4 py-3.5 font-bold">Price / km</th>
+                      <th scope="col" className="px-4 py-3.5 font-bold">AC Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {seaterComparison.map((row, i) => (
+                      <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                        <th scope="row" className="px-4 py-3 font-semibold text-gray-900 align-top">{row.size}</th>
+                        <td className="px-4 py-3 text-gray-700 align-top font-bold">{row.capacity}</td>
+                        <td className="px-4 py-3 text-gray-600 align-top">{row.bestFor}</td>
+                        <td className="px-4 py-3 text-green-700 font-bold align-top">{row.pricePerKm}</td>
+                        <td className="px-4 py-3 text-gray-600 align-top">{row.ac}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-gray-500 mt-4 text-center">
+                For groups of 12-26, a <Link href="/tempo-traveller" className="text-orange-600 font-semibold underline underline-offset-2">tempo traveller</Link> may be more economical. Call <a href="tel:+917668570551" className="text-orange-600 font-semibold">7668570551</a> for a tailored quote.
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* Mid-page CTA strip */}
+        <section className="bg-gray-900">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+              <h2 className="text-2xl font-black text-white mb-1">
+                Not sure which bus fits your group?
+              </h2>
+              <p className="text-gray-300">
+                Tell us your group size and route — get an instant all-inclusive quote.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="tel:+917668570551"
+                className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-7 py-3.5 rounded-full font-bold hover:bg-yellow-400 transition"
+              >
+                <Phone className="w-5 h-5" /> Call: +91 76685 70551
+              </a>
+              <a
+                href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                  "Hi, I need a bus on rent. Please help me pick the right size and share a quote."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-7 py-3.5 rounded-full font-bold hover:bg-white/20 transition"
+              >
+                <MessageCircle className="w-5 h-5" /> WhatsApp Quote
+              </a>
+            </div>
           </div>
         </section>
 
@@ -393,22 +503,25 @@ export default function BusMainClient({ data }) {
                         ))}
                       </div>
 
-                      {/* Cute CTA Button */}
-                      <Link href={`/bus-routes/delhi-to-agra?bus=${bus.id}`}>
-                        <motion.button
-                          
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black py-4 rounded-2xl font-black text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300"
+                      {/* CTA Button — direct WhatsApp booking with bus name */}
+                      <motion.a
+                        whileTap={{ scale: 0.95 }}
+                        href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                          `Hi, I want to book the ${bus.name} (${bus.capacity}). Please share rates and availability.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black py-4 rounded-2xl font-black text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300"
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                        BOOK ON WHATSAPP
+                        <motion.div
+                          animate={shouldReduceMotion ? {} : { x: [0, 8, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
                         >
-                          VIEW DETAILS
-                          <motion.div
-                            animate={{ x: [0, 8, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <ArrowRight className="w-5 h-5" />
-                          </motion.div>
-                        </motion.button>
-                      </Link>
+                          <ArrowRight className="w-5 h-5" />
+                        </motion.div>
+                      </motion.a>
                     </div>
 
                     {/* Cute Sparkle Effect */}
@@ -514,7 +627,7 @@ export default function BusMainClient({ data }) {
                 >
                   <Link href={`/bus-routes/${route.slug}`}>
                     <div
-                      className="group relative bg-white rounded-[1.5rem] p-7 shadow-2xl hover:shadow-[0_25px_50px_rgba(250,207,45,0.35)] hover:-translate-y-2 border-3 border-gradient overflow-hidden cursor-pointer h-full transition-all duration-300"
+                      className="group relative bg-white rounded-[1.5rem] p-7 shadow-2xl hover:shadow-[0_25px_50px_rgba(250,207,45,0.35)] hover:-translate-y-2 border-2 border-gradient overflow-hidden cursor-pointer h-full transition-all duration-300"
                       style={{
                         borderImage: 'linear-gradient(135deg, rgba(250,207,45,0.3), rgba(255,165,0,0.3)) 1'
                       }}
@@ -823,6 +936,26 @@ export default function BusMainClient({ data }) {
                 {
                   question: "How far in advance should I book a bus?",
                   answer: "We recommend booking at least 7-15 days in advance for popular routes and peak season. However, we also accept same-day and next-day bookings subject to availability. For large groups and special events, advance booking of 1 month is advisable."
+                },
+                {
+                  question: "How many people can fit in a 35 seater vs a 45 seater bus?",
+                  answer: "A 35 seater bus comfortably seats 35 passengers plus luggage and is ideal for medium wedding groups, school trips, and corporate teams. A 45 seater bus seats 45 passengers and suits larger pilgrimage groups and conferences. For groups of 50-56, choose the 52 or 56 seater luxury Volvo coach. For small groups of 12-26, a tempo traveller or 22 seater mini bus is more economical."
+                },
+                {
+                  question: "What is the difference between a Volvo bus and a regular AC bus?",
+                  answer: "A Volvo (or Scania) luxury coach has air-suspension for a smoother ride, push-back recliner seats, better insulation and quieter AC, and is best for long-distance and overnight journeys. A regular AC bus is more budget-friendly at ₹30-45/km and works well for shorter day trips and local group transfers. Volvo coaches cost ₹55-65/km but deliver premium comfort over 300+ km routes."
+                },
+                {
+                  question: "Do you provide buses for school trips and educational tours?",
+                  answer: "Yes. Our school-trip buses come with speed governors, first-aid kits, GPS tracking shared with the school, and experienced drivers verified for student transport. We provide 22 to 56 seater options for day picnics, educational tours, and inter-school events with teacher-coordinated pickup and drop."
+                },
+                {
+                  question: "Is a driver and fuel included in the bus rental price?",
+                  answer: "Yes, the per-km rate includes the bus, fuel, and a professional driver. Toll taxes, state permits, parking, and driver night allowance (₹800-1200/day) are charged extra at actuals. You receive a transparent quote before booking with all inclusions and exclusions listed clearly."
+                },
+                {
+                  question: "Can I get a GST invoice for a corporate bus booking?",
+                  answer: "Yes, we provide a proper GST invoice for all corporate and business bus bookings, along with a single point of contact for multi-vehicle coordination. This makes Triveni Cabs ideal for company offsites, conferences, and employee transportation that require compliant billing and reimbursement."
                 }
               ].map((faq, index) => (
                 <motion.div
@@ -859,7 +992,7 @@ export default function BusMainClient({ data }) {
                     className="overflow-hidden"
                   >
                     <div className="px-8 pb-6">
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className={`text-gray-700 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>
                         {faq.answer}
                       </p>
                     </div>

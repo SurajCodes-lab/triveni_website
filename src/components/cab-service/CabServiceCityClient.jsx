@@ -7,15 +7,15 @@ import {
   Route, MapPin, Star, Users, Navigation, ChevronRight, Award
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>;
 
-export default function CabServiceCityClient({ data, relatedCities }) {
+export default function CabServiceCityClient({ data, relatedCities, reviewCount = 120 }) {
   const whatsappMsg = `Hi, I need a cab service in ${data.city}. Please share rates.`;
   const whatsappUrl = `https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`;
   const cheapest = Math.min(...data.services.map(s => s.startingPrice));
@@ -23,6 +23,7 @@ export default function CabServiceCityClient({ data, relatedCities }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta price="From ₹11/km" label={`${data.city} Taxi`} whatsappText={`Hi, I need a taxi in ${data.city}. Please share availability and fare.`} />
 
       {/* ━━━ HERO: City service hub ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
@@ -45,11 +46,12 @@ export default function CabServiceCityClient({ data, relatedCities }) {
                 <MapPin className="w-3.5 h-3.5 text-[#FACF2D]" />
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Service Directory</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+              <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
                 {data.city}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-amber-300">Cab Service</span>
               </h1>
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{data.tagline}</p>
+              <p className="speakable-lead text-white/70 mt-4 text-sm sm:text-base max-w-xl leading-relaxed">Cab service in {data.city} starts from {'₹'}{cheapest}, with Sedan from {'₹'}11/km and SUV from {'₹'}14/km. Triveni Cabs offers local taxi, outstation cabs, airport transfers and railway station pickup 24/7 with verified, GPS-tracked drivers and no surge pricing. Book in under 2 minutes on 7668570551.</p>
 
               <div className="flex flex-wrap gap-3 mt-6">
                 <a onClick={() => trackPhoneCall('cab_service_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
@@ -84,7 +86,7 @@ export default function CabServiceCityClient({ data, relatedCities }) {
                 <div className="flex -space-x-1">
                   {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}
                 </div>
-                <span className="text-[11px] text-white/40 font-medium">10,000+ reviews</span>
+                <span className="text-[11px] text-white/40 font-medium">{reviewCount}+ verified reviews</span>
               </div>
             </div>
           </div>
@@ -143,12 +145,20 @@ export default function CabServiceCityClient({ data, relatedCities }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {data.fleet.map((vehicle, i) => (
               <ScrollReveal key={i} stagger={i * 60}>
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 text-center hover:border-[#FACF2D]/30 transition-all">
-                  <div className="w-12 h-12 mx-auto rounded-xl bg-white/10 flex items-center justify-center mb-4"><Car className="w-6 h-6 text-[#FACF2D]" /></div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden text-center hover:border-[#FACF2D]/30 transition-all">
+                  {vehicle.img ? (
+                    <div className="relative w-full h-36">
+                      <Image src={vehicle.img} alt={`${vehicle.type} - ${vehicle.model}`} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-white/10 flex items-center justify-center mt-6 mb-4"><Car className="w-6 h-6 text-[#FACF2D]" /></div>
+                  )}
+                  <div className="p-6 pt-4">
                   <h3 className="text-lg font-black text-white mb-0.5">{vehicle.type}</h3>
                   <p className="text-sm text-white/40 mb-3">{vehicle.model}</p>
                   <div className="text-2xl font-black text-[#FACF2D] mb-1">{'\u20B9'}{vehicle.perKm}<span className="text-sm text-white/30 font-normal">/km</span></div>
                   <p className="text-xs text-white/30">{vehicle.seats} Seater &middot; AC</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -194,7 +204,7 @@ export default function CabServiceCityClient({ data, relatedCities }) {
               { icon: Shield, title: 'Verified Drivers', desc: 'Background-checked, trained chauffeurs' },
               { icon: Clock, title: '24/7 Available', desc: 'Round-the-clock booking support' },
               { icon: Award, title: 'Best Prices', desc: 'Transparent, no hidden charges' },
-              { icon: Star, title: '4.9 Rated', desc: '10,000+ verified reviews' },
+              { icon: Star, title: '4.9 Rated', desc: `${reviewCount}+ verified reviews` },
             ].map((f, i) => (
               <ScrollReveal key={i} stagger={i * 60}>
                 <div className="bg-[#f8f7f4] rounded-2xl p-5 text-center hover:shadow-md transition-all border border-slate-100">
@@ -232,7 +242,6 @@ export default function CabServiceCityClient({ data, relatedCities }) {
       )}
 
       <CTASection heading={`Book a Cab in ${data.city}`} subheading="Professional drivers, GPS-tracked vehicles, transparent pricing. Available 24/7." />
-      <MobileStickyBar />
     </div>
   );
 }

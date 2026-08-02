@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getHowToReachRoute, getAllHowToReachSlugs, getRelatedHowToReachRoutes } from '@/utilis/howToReachRouteData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import HowToReachClient from '@/components/how-to-reach/HowToReachClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -131,7 +132,7 @@ export default async function HowToReachRoutePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5"
     }
   };

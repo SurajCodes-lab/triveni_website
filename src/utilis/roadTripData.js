@@ -282,8 +282,45 @@ const roadTrips = {
   },
 };
 
+// Generic, trip-aware FAQs appended to every road trip so each page surfaces
+// 10-12 questions for AEO/voice coverage without editing all 9 inline blocks.
+function commonRoadTripFaqs(trip) {
+  const cities = trip.stops.map(s => s.city);
+  const uniqueCities = [...new Set(cities)];
+  const route = uniqueCities.join(' → ');
+  const startCity = cities[0];
+  const sedan = trip.totalCost.sedan.toLocaleString('en-IN');
+  const suv = trip.totalCost.suv.toLocaleString('en-IN');
+  return [
+    { question: `How do I plan the ${trip.name} road trip?`, answer: `Plan the ${trip.name} as a ${trip.totalDays}-day circuit covering ${trip.totalDistance} km via ${route}. Book a chauffeur-driven cab from ₹${sedan} (sedan) or ₹${suv} (SUV), confirm hotels at each overnight stop, keep a flexible day-1 start (5-6 AM) and let the driver handle navigation, tolls and parking. Call 7668570551 to lock dates.` },
+    { question: `Is self-drive or a chauffeur-driven cab better for the ${trip.name}?`, answer: `For the ${trip.name}, a chauffeur-driven cab is usually better: no fatigue across ${trip.totalDistance} km, a driver who knows the hill bends and shortcuts, and no one-way drop charges to worry about. Self-drive suits experienced drivers who want full flexibility but adds fuel, tolls, and the stress of unfamiliar mountain or highway roads.` },
+    { question: `What is included in the ${trip.name} cab package?`, answer: `Your ${trip.name} cab fare (from ₹${sedan}) includes the AC vehicle, fuel, an experienced driver, GPS tracking, and 24/7 support. Toll, parking, state taxes, and driver night allowance (₹300/night) are charged separately at actuals. There are no hidden charges.` },
+    { question: `When is the best time to do the ${trip.name}?`, answer: `${trip.bestSeason} Booking your cab and hotels in advance during this window ensures availability and better rates.` },
+    { question: `Can the ${trip.name} itinerary be customised?`, answer: `Yes — the ${trip.name} can be extended, shortened, or combined with nearby add-on destinations. You can add or drop overnight halts, change the start city from ${startCity}, or upgrade to an SUV/tempo for larger groups. Call 7668570551 or WhatsApp to tailor the route.` },
+  ];
+}
+
 export function getRoadTrip(slug) {
-  return roadTrips[slug] || null;
+  const trip = roadTrips[slug];
+  if (!trip) return null;
+  // Append generic trip-aware FAQs (idempotent — only add once).
+  if (!trip._faqsExpanded) {
+    trip.faqs = [...trip.faqs, ...commonRoadTripFaqs(trip)];
+    trip._faqsExpanded = true;
+  }
+  return trip;
+}
+
+// Normalise a stop's display name (e.g. "Mathura-Vrindavan", "Jim Corbett")
+// into a lowercase slug that matches the _CITY_PLACES geo map.
+export function stopNameToGeoSlug(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/\(.*?\)/g, '')
+    .replace(/national park/g, '')
+    .split(/[-/]/)[0]            // "Mathura-Vrindavan" -> "mathura"
+    .trim()
+    .replace(/\s+/g, '-');
 }
 
 export function getAllRoadTripSlugs() {

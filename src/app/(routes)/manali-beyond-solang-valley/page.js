@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Manali Beyond Solang Valley | Hidden Gems & Secret Spots | 2026',
@@ -19,7 +19,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/manali-beyond-solang-valley',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/manali-hero.jpg', width: 1200, height: 630, alt: 'Manali Beyond Solang Valley' }],
+    images: [{ url: '/images/sightseeing/Manali/Manali_hero_section.jpg', width: 1200, height: 630, alt: 'Manali Beyond Solang Valley' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +27,7 @@ export const metadata = {
     description: 'Waterfalls, castles, national parks, hot springs, and secret villages. By Manali locals.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/manali-hero.jpg'],
+    images: ['/images/sightseeing/Manali/Manali_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

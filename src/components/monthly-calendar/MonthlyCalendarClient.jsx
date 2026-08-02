@@ -13,7 +13,9 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import FleetShowcase from '@/components/shared/FleetShowcase';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function MonthlyCalendarClient({ data, prev, next }) {
   const [activeDest, setActiveDest] = useState(-1);
@@ -23,6 +25,7 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta label={`${data.month} Trip Planning`} whatsappText={whatsappMsg} />
 
       {/* ━━━ HERO: Travel almanac ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
@@ -65,9 +68,18 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
                   <Phone className="w-4 h-4" /> Call Now
                 </a>
               </div>
+
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 text-white/70 text-xs sm:text-sm font-medium">
+                <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-[#FACF2D] fill-[#FACF2D]" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-emerald-400" /> 10,000+ Trips</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Verified Drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> No Advance Payment</span>
+              </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
+            <div className="w-full lg:w-72 flex-shrink-0 space-y-4">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Destinations</p>
@@ -86,6 +98,8 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
                   <p className="text-sm font-bold text-white/80">24/7</p>
                 </div>
               </div>
+            </div>
+            <QuickEnquiryForm fromCity={firstCity} pageType="trip-planning" />
             </div>
           </div>
         </div>
@@ -222,6 +236,7 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
         </div>
       </section>
 
+      <FleetShowcase theme="light" accentColor="emerald" whatsappMessage="Hi, I'm planning a trip. Need cab service." title="Our Fleet" subtitle="Reliable vehicles for your travel plans" />
       <FaqAccordion heading={`FAQs for ${data.month} Travel`} faqs={data.faqs} />
 
       {/* ━━━ MONTH NAVIGATION ━━━ */}
@@ -245,7 +260,6 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
       </section>
 
       <CTASection heading={`Plan Your ${data.month} Trip`} subheading={`Tell us your dates and preferences. We'll plan the perfect ${data.month} getaway with cab, hotel, and sightseeing.`} />
-      <MobileStickyBar />
     </div>
   );
 }

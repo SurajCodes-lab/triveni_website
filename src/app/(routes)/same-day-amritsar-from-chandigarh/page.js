@@ -3,7 +3,7 @@ import SameDayTourClient from '@/components/tours/SameDayTourClient';
 
 const tour = getSameDayTourBySlug('same-day-amritsar-from-chandigarh');
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Same Day Amritsar Tour from Chandigarh | ₹5,000 AC Cab | 2026',
@@ -16,8 +16,9 @@ export const metadata = {
     title: 'Same Day Amritsar Tour from Chandigarh | Golden Temple ₹5,000',
     description: 'Chandigarh to Amritsar day trip. Golden Temple, Wagah Border ceremony. AC sedan ₹5,000.',
     type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/same-day-amritsar-from-chandigarh', siteName: 'Triveni Cabs',
+    images: [{ url: '/images/sightseeing/Amritsar/Golden_Temple.jpg', width: 1200, height: 630, alt: 'Same-Day Amritsar Tour from Chandigarh — Triveni Cabs' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Amritsar Day Trip from Chandigarh | ₹5,000', description: 'Golden Temple & Wagah Border in one day. Book now!' },
+  twitter: { card: 'summary_large_image', title: 'Amritsar Day Trip from Chandigarh | ₹5,000', description: 'Golden Temple & Wagah Border in one day. Book now!', images: ['/images/sightseeing/Amritsar/Golden_Temple.jpg'], creator: '@trivenicabs' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 

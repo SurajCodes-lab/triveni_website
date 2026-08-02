@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
+import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Jaipur Travel Guide 2026 | Pink City Attractions, Food & Tips',
@@ -19,7 +21,7 @@ export const metadata = {
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jaipur-travel-guide',
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/jaipur-hero.jpg', width: 1200, height: 630, alt: 'Jaipur Travel Guide 2026' }],
+    images: [{ url: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', width: 1200, height: 630, alt: 'Jaipur Travel Guide 2026' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,7 +29,7 @@ export const metadata = {
     description: 'Complete Jaipur guide. Attractions, food, shopping, transport.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/jaipur-hero.jpg'],
+    images: ['/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -53,7 +55,7 @@ export default function JaipurTravelGuidePage() {
     { question: "Can I combine Jaipur with Agra and Delhi?", answer: "Absolutely! The Golden Triangle (Delhi-Agra-Jaipur) is India&apos;s most popular tourist circuit. We offer 4-6 day Golden Triangle packages starting from 12,000 rupees. Jaipur to Agra is 240 km (4.5 hrs) with an optional Fatehpur Sikri stop." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,16 +63,29 @@ export default function JaipurTravelGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
+
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: 'jaipur-travel-guide',
+    headline: 'Jaipur Travel Guide 2026 — Pink City Attractions, Food, Shopping & Tips',
+    description: 'Complete Jaipur travel guide. Amber Fort, Hawa Mahal, City Palace, Nahargarh, monthly weather, food specialties, shopping, transport, day trips. Updated for 2026.',
+    image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("jaipur", { idSlug: "jaipur-travel-guide" });
 
   const attractions = [
-    { name: "Amber Fort", desc: "Magnificent hilltop fortress overlooking Maota Lake. Stunning Sheesh Mahal (Mirror Palace), Diwan-i-Aam, and Ganesh Pol gateway. UNESCO World Heritage Site.", entry: "₹100 Indian / ₹500 Foreign", timing: "8:00 AM - 5:30 PM", duration: "2-3 hours", icon: Shield },
-    { name: "Hawa Mahal", desc: "Iconic Palace of Winds with 953 jharokhas (windows). Built in 1799 by Maharaja Sawai Pratap Singh. Best photographed from the street at sunrise.", entry: "₹50 Indian / ₹200 Foreign", timing: "9:00 AM - 5:00 PM", duration: "45 min - 1 hr", icon: Camera },
-    { name: "City Palace", desc: "Royal residence with Chandra Mahal (still occupied by royals) and Mubarak Mahal. Houses textile museum, armoury, and the world&apos;s largest sterling silver vessels.", entry: "₹200 Indian / ₹700 Foreign", timing: "9:30 AM - 5:00 PM", duration: "1.5-2 hours", icon: Landmark },
-    { name: "Nahargarh Fort", desc: "Perched on Aravalli hills overlooking the city. Built in 1734 as a retreat. Offers the best panoramic sunset views of Jaipur. Popular Padao restaurant inside.", entry: "₹50 Indian / ₹200 Foreign", timing: "10:00 AM - 5:30 PM", duration: "1.5-2 hours", icon: Compass },
-    { name: "Jantar Mantar", desc: "UNESCO World Heritage astronomical observation site. Built by Maharaja Sawai Jai Singh II in 1734. World&apos;s largest stone sundial (Samrat Yantra).", entry: "₹50 Indian / ₹200 Foreign", timing: "9:00 AM - 4:30 PM", duration: "1 hour", icon: Star },
-    { name: "Jal Mahal", desc: "Stunning Water Palace in the middle of Man Sagar Lake. Cannot be entered but the view from shore is iconic. Best visited at sunset or during monsoon.", entry: "Free (exterior only)", timing: "All day (exterior)", duration: "30-45 min", icon: Sunrise },
-    { name: "Albert Hall Museum", desc: "Rajasthan&apos;s oldest museum in Indo-Saracenic architecture. Egyptian mummy, decorative arts, and the famous illuminated facade at night.", entry: "₹40 Indian / ₹300 Foreign", timing: "9:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: BookOpen },
+    { name: "Amber Fort", desc: "Magnificent hilltop fortress overlooking Maota Lake. Stunning Sheesh Mahal (Mirror Palace), Diwan-i-Aam, and Ganesh Pol gateway. UNESCO World Heritage Site.", entry: "₹100 Indian / ₹500 Foreign", timing: "8:00 AM - 5:30 PM", duration: "2-3 hours", icon: Shield, img: "/images/sightseeing/Jaipur/amber_fort.jpg" },
+    { name: "Hawa Mahal", desc: "Iconic Palace of Winds with 953 jharokhas (windows). Built in 1799 by Maharaja Sawai Pratap Singh. Best photographed from the street at sunrise.", entry: "₹50 Indian / ₹200 Foreign", timing: "9:00 AM - 5:00 PM", duration: "45 min - 1 hr", icon: Camera, img: "/images/sightseeing/Jaipur/Hawa_Mahal.jpg" },
+    { name: "City Palace", desc: "Royal residence with Chandra Mahal (still occupied by royals) and Mubarak Mahal. Houses textile museum, armoury, and the world&apos;s largest sterling silver vessels.", entry: "₹200 Indian / ₹700 Foreign", timing: "9:30 AM - 5:00 PM", duration: "1.5-2 hours", icon: Landmark, img: "/images/sightseeing/Jaipur/city_palace.jpg" },
+    { name: "Nahargarh Fort", desc: "Perched on Aravalli hills overlooking the city. Built in 1734 as a retreat. Offers the best panoramic sunset views of Jaipur. Popular Padao restaurant inside.", entry: "₹50 Indian / ₹200 Foreign", timing: "10:00 AM - 5:30 PM", duration: "1.5-2 hours", icon: Compass, img: "/images/sightseeing/Jaipur/Nahargarh_Fort.jpg" },
+    { name: "Jantar Mantar", desc: "UNESCO World Heritage astronomical observation site. Built by Maharaja Sawai Jai Singh II in 1734. World&apos;s largest stone sundial (Samrat Yantra).", entry: "₹50 Indian / ₹200 Foreign", timing: "9:00 AM - 4:30 PM", duration: "1 hour", icon: Star, img: "/images/sightseeing/Jaipur/jantar_mantar.jpg" },
+    { name: "Jal Mahal", desc: "Stunning Water Palace in the middle of Man Sagar Lake. Cannot be entered but the view from shore is iconic. Best visited at sunset or during monsoon.", entry: "Free (exterior only)", timing: "All day (exterior)", duration: "30-45 min", icon: Sunrise, img: "/images/sightseeing/Jaipur/Jal_Mahal.jpg" },
+    { name: "Albert Hall Museum", desc: "Rajasthan&apos;s oldest museum in Indo-Saracenic architecture. Egyptian mummy, decorative arts, and the famous illuminated facade at night.", entry: "₹40 Indian / ₹300 Foreign", timing: "9:00 AM - 5:00 PM", duration: "1-1.5 hours", icon: BookOpen, img: "/images/sightseeing/Jaipur/Albert_Hall_Museum.jpg" },
     { name: "Jaigarh Fort", desc: "Massive military fortress above Amber Fort with the world&apos;s largest cannon on wheels -- Jaivana. Connected to Amber Fort via underground passage.", entry: "₹100 Indian / ₹200 Foreign", timing: "9:00 AM - 4:30 PM", duration: "1-1.5 hours", icon: Shield },
   ];
 
@@ -128,6 +143,7 @@ export default function JaipurTravelGuidePage() {
     { title: "Transport", icon: Car, count: "5 Options" },
   ];
 
+  const heroImage = "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg";
   const cityName = "Jaipur";
   const cityTagline = "Your complete guide to the Pink City -- majestic forts, vibrant bazaars, royal palaces, and Rajasthani cuisine. Everything you need for an unforgettable Jaipur experience.";
   const welcomeTitle = "Welcome to the Pink City";
@@ -172,13 +188,16 @@ export default function JaipurTravelGuidePage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-amber-50/30">
         <div className="fixed inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23b45309'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23b45309'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23b45309'/%3E%3C/svg%3E")` }} />
 
         {/* HERO */}
         <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-950 via-stone-900 to-yellow-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
+          <div className="absolute inset-0"><img src={heroImage} alt={`${cityName} travel guide`} className="w-full h-full object-cover" /></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/75 via-stone-900/55 to-amber-950/85" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/20 rounded-full blur-[120px]" style={{ animation: 'float 8s ease-in-out infinite' }} />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-600/15 rounded-full blur-[100px]" style={{ animation: 'float 10s ease-in-out infinite 2s' }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px]" style={{ animation: 'float 12s ease-in-out infinite 4s' }} />
@@ -227,6 +246,23 @@ export default function JaipurTravelGuidePage() {
           </div>
         </section>
 
+        {/* AEO QUICK ANSWER */}
+        <section className="px-4 pt-10">
+          <div className="max-w-4xl mx-auto">
+            <QuickAnswer
+              tone="light"
+              question="Planning a Jaipur trip?"
+              answer="Jaipur is best visited from October to March, when days stay a comfortable 15-25 degrees Celsius; April to June is extremely hot at 40-45 degrees. Two days covers Amber Fort, Hawa Mahal, City Palace, Jantar Mantar and Nahargarh Fort, and a third adds Jal Mahal, Albert Hall Museum and the bazaars. Delhi is 270 km away on NH48, about 5 to 6 hours by car."
+              facts={[
+                { label: 'Best time', value: 'Oct to Mar' },
+                { label: 'Ideal duration', value: '2 to 3 days' },
+                { label: 'Top sight', value: 'Amber Fort' },
+                { label: 'Cab from Delhi', value: '270 km · ₹11/km' },
+              ]}
+            />
+          </div>
+        </section>
+
         {/* TABLE OF CONTENTS */}
         <section className="py-16 px-4">
           <div className="max-w-5xl mx-auto">
@@ -251,9 +287,9 @@ export default function JaipurTravelGuidePage() {
         {/* WELCOME */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full" />
+            <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-orange-200/40 to-transparent rounded-tl-full rounded-br-3xl" />
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wider shadow-lg">CHAPTER 0</div>
               <h2 className="text-3xl font-bold text-stone-800 mb-6 text-center mt-4 relative">{welcomeTitle}</h2>
               <p className="text-lg text-stone-600 leading-relaxed text-center relative" dangerouslySetInnerHTML={{ __html: welcomeText }} />
@@ -314,9 +350,16 @@ export default function JaipurTravelGuidePage() {
               {attractions.map((a, idx) => (
                 <div key={idx} className="glass-card-light rounded-3xl overflow-hidden hover-lift group">
                   <div className="flex flex-col md:flex-row">
-                    <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
-                      <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                    </div>
+                    {a.img ? (
+                      <div className="md:w-56 relative shrink-0 overflow-hidden">
+                        <img src={a.img} alt={a.name} className="w-full h-44 md:h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <span className="absolute top-2 left-2 bg-amber-600/90 text-white text-sm font-bold px-2.5 py-1 rounded-lg shadow-lg">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    ) : (
+                      <div className="md:w-20 bg-gradient-to-b from-amber-600 to-orange-600 flex items-center justify-center py-4 md:py-0">
+                        <span className="text-3xl font-bold text-white/80">{String(idx + 1).padStart(2, '0')}</span>
+                      </div>
+                    )}
                     <div className="flex-1 p-6">
                       <h3 className="text-xl font-bold text-stone-800 flex items-center gap-2 mb-2">
                         <a.icon className="w-5 h-5 text-amber-600" /> {a.name}
@@ -331,6 +374,53 @@ export default function JaipurTravelGuidePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* BOOK / SELL */}
+        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
+                <Car className="w-4 h-4 text-amber-300" />
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
+              <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {[
+                { name: "Swift Dzire", cls: "Sedan · 4 seats", price: "₹11/km", img: "/images/car/swift_dzire.jpg", best: "Best for couples" },
+                { name: "Maruti Ertiga", cls: "SUV · 6 seats", price: "₹15/km", img: "/images/car/ertiga.jpg", best: "Best for families" },
+                { name: "Toyota Innova Crysta", cls: "Premium SUV · 7 seats", price: "₹18/km", img: "/images/car/innova_crysta.jpg", best: "Most comfortable" },
+              ].map((v, i) => (
+                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden hover-lift group">
+                  <div className="h-44 overflow-hidden relative">
+                    <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <span className="absolute top-3 right-3 bg-amber-500 text-stone-900 text-xs font-bold px-3 py-1 rounded-full">{v.best}</span>
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg font-bold text-white">{v.name}</h3>
+                      <span className="text-amber-400 font-bold text-lg">{v.price}</span>
+                    </div>
+                    <p className="text-amber-100/50 text-sm mb-4">{v.cls}</p>
+                    <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(`I want to book a ${v.name} for ${cityName} trip`)}`} className="flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 text-stone-900 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform">
+                      Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+                <Phone className="w-5 h-5" /> Call Now: 7668570551
+              </Link>
+              <Link href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center justify-center gap-2 bg-amber-500/20 text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/40 hover:bg-amber-500/30 transition-colors">
+                Get a Free Quote
+              </Link>
             </div>
           </div>
         </section>

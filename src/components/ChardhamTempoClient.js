@@ -10,21 +10,47 @@ import {
 import { motion, MotionConfig } from 'framer-motion';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 import dynamic from 'next/dynamic';
+// Rich UI + ranking-lift components — wired May 23 2026
+import InfographicPanel from '@/components/seo/InfographicPanel';
+import PriceCalculator from '@/components/seo/PriceCalculator';
+import OutboundCitations from '@/components/seo/OutboundCitations';
+import ExpertQuote from '@/components/seo/ExpertQuote';
+import LongTailFAQ from '@/components/seo/LongTailFAQ';
+import { getCitationsForRoute } from '@/utilis/outboundCitations';
+import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
+import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
+import {
+    DHAM_FACTS, OPENING_DATES_2026, SEATER_COMPARISON, CHARTER_INCLUSIONS,
+    CHARTER_EXCLUSIONS, ROAD_ALTITUDE_TIPS, GROUP_SEATING_GUIDANCE, WHY_TEMPO_ROWS,
+    ORIGIN_DISTANCES, getChardhamFareBreakdown, getChardhamExtendedFaqs,
+    getSiblingChardhamLinks,
+} from '@/utilis/chardhamData';
 
 const TypeAnimation = dynamic(
   () => import('react-type-animation').then(mod => mod.TypeAnimation),
   { ssr: false, loading: () => <span>Journey to Moksha</span> }
 );
 
-export default function ChardhamTempoClient({ data }) {
+export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 0 }) {
     const [activeDay, setActiveDay] = useState(0);
     const [mounted, setMounted] = useState(false);
     const shouldReduceMotion = useShouldReduceMotion();
-    const { title, origin, destination, duration, intro, whyChoose, packages, itinerary, features, faqs, images } = data;
+    const { title, origin, destination, duration, intro, whyChoose, packages, itinerary, features, faqs, images, slug } = data;
 
     useEffect(() => {
         setMounted(true);
     }, []);
+
+    // ---- Derived AEO/GEO content (computed once per render, no extra fetch) ----
+    const startPrice = packages?.[0]?.price || '₹70,000';
+    const seventeenPrice = packages?.find(p => /17/.test(p.vehicle))?.price || '₹85,000';
+    const allFaqs = getChardhamExtendedFaqs(data);
+    const fareRows = getChardhamFareBreakdown(data);
+    const siblings = getSiblingChardhamLinks(slug || data.slug);
+    const dist = ORIGIN_DISTANCES[origin] || null;
+    const isFullCircuit = destination === 'Chardham Yatra';
+    // Direct-answer lead — 40-55 words, fact-dense, for featured snippet + voice.
+    const leadAnswer = `The ${title} by tempo traveller is a ${duration} ${isFullCircuit ? 'four-dham' : ''} pilgrimage covering ${isFullCircuit ? 'Yamunotri, Gangotri, Kedarnath and Badrinath' : destination}. Charters start from ${startPrice} (12-seater) to the 26-seater Maharaja, with the popular 17-seater around ${seventeenPrice} — all-inclusive of an AC tempo, hill driver, fuel, tolls and parking.`;
 
     return (
         <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
@@ -108,8 +134,8 @@ export default function ChardhamTempoClient({ data }) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
                     >
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl leading-tight font-serif">
-                            {title}
+                        <h1 className="speakable-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl leading-tight font-serif">
+                            {title} by Tempo Traveller
                         </h1>
 
                         <div className="text-xl md:text-3xl text-orange-100 mb-8 font-light max-w-3xl mx-auto flex flex-col gap-2">
@@ -135,22 +161,33 @@ export default function ChardhamTempoClient({ data }) {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
                             <motion.div  whileTap={{ scale: 0.95 }}>
-                                <Link
+                                <a
                                     href="tel:+917668570551"
                                     className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-10 py-5 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(249,115,22,0.5)] hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] transition-all flex items-center gap-2 border border-orange-400/50"
                                 >
                                     <Phone className="w-5 h-5" /> Book Your Yatra
-                                </Link>
+                                </a>
                             </motion.div>
 
                             <motion.div  whileTap={{ scale: 0.95 }}>
-                                <Link
-                                    href="https://wa.me/917668570551?text=Jai Bhole! I am interested in Chardham Yatra package."
+                                <a
+                                    href="https://wa.me/917668570551?text=Jai%20Bhole!%20I%20am%20interested%20in%20Chardham%20Yatra%20package."
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="bg-white/10 backdrop-blur-md text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center gap-2 border border-white/30"
                                 >
                                     <MessageCircle className="w-5 h-5 text-green-400" /> WhatsApp Inquiry
-                                </Link>
+                                </a>
                             </motion.div>
+                        </div>
+
+                        {/* Mobile compact trust strip (desktop uses the floating stats strip below) */}
+                        <div className="md:hidden mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-white/85 text-sm">
+                            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400" /> 4.9&#9733;</span>
+                            <span className="w-1 h-1 rounded-full bg-white/30" />
+                            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-orange-400" /> {duration}</span>
+                            <span className="w-1 h-1 rounded-full bg-white/30" />
+                            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-orange-400" /> Verified hill drivers</span>
                         </div>
                     </motion.div>
                 </div>
@@ -193,8 +230,44 @@ export default function ChardhamTempoClient({ data }) {
             </section>
 
             {/* ============================================ */}
-            {/* INTRO & WHY CHOOSE US */}
+            {/* DIRECT-ANSWER LEAD (AEO / voice / snippet) */}
             {/* ============================================ */}
+            <section className="py-12 md:py-16 bg-white border-b border-stone-100">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-6 md:p-10 border border-orange-100 shadow-sm">
+                        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-orange-100 border border-orange-200">
+                            <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+                            <span className="text-orange-700 font-bold uppercase tracking-wider text-xs">Quick Answer</span>
+                        </div>
+                        <p className="speakable-lead text-lg md:text-xl text-stone-800 leading-relaxed font-medium">
+                            {leadAnswer}
+                        </p>
+                        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div className="bg-white rounded-xl p-3 border border-orange-100 text-center">
+                                <Clock className="w-5 h-5 text-orange-500 mx-auto mb-1" />
+                                <div className="text-xs text-stone-400 uppercase tracking-wide">Duration</div>
+                                <div className="font-bold text-stone-900 text-sm">{duration}</div>
+                            </div>
+                            <div className="bg-white rounded-xl p-3 border border-orange-100 text-center">
+                                <Users className="w-5 h-5 text-orange-500 mx-auto mb-1" />
+                                <div className="text-xs text-stone-400 uppercase tracking-wide">Seating</div>
+                                <div className="font-bold text-stone-900 text-sm">12-26 Seater</div>
+                            </div>
+                            <div className="bg-white rounded-xl p-3 border border-orange-100 text-center">
+                                <Star className="w-5 h-5 text-orange-500 mx-auto mb-1" />
+                                <div className="text-xs text-stone-400 uppercase tracking-wide">Starts At</div>
+                                <div className="font-bold text-stone-900 text-sm">{startPrice}</div>
+                            </div>
+                            <div className="bg-white rounded-xl p-3 border border-orange-100 text-center">
+                                <Mountain className="w-5 h-5 text-orange-500 mx-auto mb-1" />
+                                <div className="text-xs text-stone-400 uppercase tracking-wide">Dhams</div>
+                                <div className="font-bold text-stone-900 text-sm">{isFullCircuit ? 'All 4' : destination}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* ============================================ */}
             {/* INTRO & WHY CHOOSE US */}
             {/* ============================================ */}
@@ -316,6 +389,110 @@ export default function ChardhamTempoClient({ data }) {
             </section>
 
             {/* ============================================ */}
+            {/* SEATER COMPARISON (12 / 16 / 17 / 20 / 26) */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-white">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1 rounded-full bg-orange-50 border border-orange-100">
+                            <Users className="w-3.5 h-3.5 text-orange-600" />
+                            <span className="text-orange-600 font-bold uppercase tracking-wider text-xs">Choose Your Vehicle</span>
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-serif">12 vs 17 vs 26 Seater Tempo</h2>
+                        <p className="text-stone-600 max-w-2xl mx-auto">Compare seating capacity, luggage space and per-km rates to pick the right tempo traveller for your {origin} Char Dham group.</p>
+                    </div>
+                    <div className="overflow-x-auto rounded-2xl border border-stone-200 shadow-sm">
+                        <table className="w-full text-left text-sm md:text-base">
+                            <thead>
+                                <tr className="bg-stone-900 text-white">
+                                    <th className="p-4 font-bold">Seater</th>
+                                    <th className="p-4 font-bold">Ideal Group</th>
+                                    <th className="p-4 font-bold hidden md:table-cell">Luggage</th>
+                                    <th className="p-4 font-bold hidden lg:table-cell">Best For</th>
+                                    <th className="p-4 font-bold">Approx Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {SEATER_COMPARISON.map((row, i) => (
+                                    <tr key={i} className={`border-t border-stone-100 ${i === 2 ? 'bg-orange-50' : 'bg-white'}`}>
+                                        <td className="p-4 font-bold text-stone-900">
+                                            {row.seater}
+                                            {i === 2 && <span className="ml-2 text-[10px] bg-orange-500 text-white px-2 py-0.5 rounded-full uppercase tracking-wide">Popular</span>}
+                                        </td>
+                                        <td className="p-4 text-stone-700">{row.ideal}</td>
+                                        <td className="p-4 text-stone-600 hidden md:table-cell">{row.luggage}</td>
+                                        <td className="p-4 text-stone-600 hidden lg:table-cell">{row.bestFor}</td>
+                                        <td className="p-4 font-semibold text-orange-600">{row.perKm}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {/* Seating & luggage guidance for group profiles */}
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {GROUP_SEATING_GUIDANCE.map((g, i) => (
+                            <div key={i} className="bg-stone-50 rounded-2xl p-6 border border-stone-100">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                                        <Users className="w-4 h-4 text-orange-600" />
+                                    </div>
+                                    <h3 className="font-bold text-stone-900">{g.profile}</h3>
+                                </div>
+                                <p className="text-sm text-stone-600 leading-relaxed">{g.advice}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ============================================ */}
+            {/* THE FOUR DHAMS — FACTS + 2026 OPENING DATES */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-stone-50">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1 rounded-full bg-orange-50 border border-orange-100">
+                            <Mountain className="w-3.5 h-3.5 text-orange-600" />
+                            <span className="text-orange-600 font-bold uppercase tracking-wider text-xs">The Four Dhams</span>
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-serif">Altitudes &amp; 2026 Opening Dates</h2>
+                        <p className="text-stone-600 max-w-2xl mx-auto">Each dham, its presiding deity, river and altitude — plus the 2026 kapat (gate-opening) dates for planning your Yatra.</p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {DHAM_FACTS.map((d, i) => {
+                            const opening = OPENING_DATES_2026.find(o => o.dham === d.name);
+                            return (
+                                <div key={i} className="bg-white rounded-2xl p-6 border-t-4 border-orange-500 shadow-md hover:shadow-lg transition-shadow">
+                                    <div className="flex items-center justify-between mb-3">
+                                        <h3 className="text-xl font-bold text-stone-900 font-serif">{d.name}</h3>
+                                        <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-full">{d.altitude}</span>
+                                    </div>
+                                    <dl className="space-y-1.5 text-sm">
+                                        <div className="flex justify-between gap-2"><dt className="text-stone-400">Deity</dt><dd className="text-stone-700 font-medium text-right">{d.deity}</dd></div>
+                                        <div className="flex justify-between gap-2"><dt className="text-stone-400">River</dt><dd className="text-stone-700 font-medium text-right">{d.river}</dd></div>
+                                        <div className="flex justify-between gap-2"><dt className="text-stone-400">District</dt><dd className="text-stone-700 font-medium text-right">{d.district}</dd></div>
+                                        <div className="flex justify-between gap-2"><dt className="text-stone-400">Access</dt><dd className="text-stone-700 font-medium text-right">{d.trek}</dd></div>
+                                        {opening && <div className="flex justify-between gap-2 pt-1.5 border-t border-stone-100"><dt className="text-stone-400">2026 Opens</dt><dd className="text-orange-600 font-semibold text-right">{opening.opens}</dd></div>}
+                                    </dl>
+                                    <p className="text-xs text-stone-500 leading-relaxed mt-3 pt-3 border-t border-stone-100">{d.note}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    {dist && (
+                        <div className="mt-10 bg-white rounded-2xl p-6 border border-stone-200 flex flex-col md:flex-row items-center justify-around gap-4 text-center">
+                            <div><div className="text-xs text-stone-400 uppercase tracking-wide">{origin} → Haridwar</div><div className="font-bold text-stone-900 text-lg">{dist.toHaridwar}</div></div>
+                            <div className="hidden md:block w-px h-10 bg-stone-200"></div>
+                            <div><div className="text-xs text-stone-400 uppercase tracking-wide">{origin} → Kedarnath base</div><div className="font-bold text-stone-900 text-lg">{dist.toKedarnath}</div></div>
+                            <div className="hidden md:block w-px h-10 bg-stone-200"></div>
+                            <div><div className="text-xs text-stone-400 uppercase tracking-wide">Full circuit</div><div className="font-bold text-stone-900 text-lg">{dist.circuit}</div></div>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            {/* ============================================ */}
             {/* ITINERARY */}
             {/* ============================================ */}
             <section className="py-16 md:py-24 bg-white">
@@ -344,6 +521,127 @@ export default function ChardhamTempoClient({ data }) {
                 </div>
             </section>
 
+            {/* ============================================ */}
+            {/* WHAT'S INCLUDED / EXCLUDED */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-stone-50">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-serif">What&apos;s Included &amp; Excluded</h2>
+                        <p className="text-stone-600 max-w-2xl mx-auto">Our tempo traveller charter is a transparent vehicle-only package. Here is exactly what your fare covers.</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="bg-white rounded-2xl p-6 md:p-8 border border-green-100 shadow-sm">
+                            <h3 className="font-bold text-lg text-stone-900 mb-4 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-green-500" /> Included in the Charter</h3>
+                            <ul className="space-y-3">
+                                {CHARTER_INCLUSIONS.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-sm text-stone-700">
+                                        <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" /> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="bg-white rounded-2xl p-6 md:p-8 border border-orange-100 shadow-sm">
+                            <h3 className="font-bold text-lg text-stone-900 mb-4 flex items-center gap-2"><Navigation className="w-5 h-5 text-orange-500" /> Not Included (Pay Direct)</h3>
+                            <ul className="space-y-3">
+                                {CHARTER_EXCLUSIONS.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-sm text-stone-600">
+                                        <span className="text-orange-400 mt-0.5 flex-shrink-0 font-bold">×</span> {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ============================================ */}
+            {/* FARE BREAKDOWN TABLE (AEO) */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-white">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-serif">{title} Fare Breakdown</h2>
+                        <p className="text-stone-600 max-w-2xl mx-auto">Estimated 2026 cost components so you can budget the full {duration} Yatra for your group.</p>
+                    </div>
+                    <div className="overflow-x-auto rounded-2xl border border-stone-200 shadow-sm">
+                        <table className="w-full text-left text-sm md:text-base">
+                            <thead>
+                                <tr className="bg-orange-600 text-white">
+                                    <th className="p-4 font-bold">Cost Component</th>
+                                    <th className="p-4 font-bold hidden md:table-cell">Details</th>
+                                    <th className="p-4 font-bold text-right">Estimate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {fareRows.map((row, i) => (
+                                    <tr key={i} className={`border-t border-stone-100 ${i % 2 ? 'bg-stone-50' : 'bg-white'}`}>
+                                        <td className="p-4 font-semibold text-stone-900">{row.component}</td>
+                                        <td className="p-4 text-stone-600 hidden md:table-cell">{row.detail}</td>
+                                        <td className="p-4 text-right font-semibold text-orange-600 whitespace-nowrap">{row.amount}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p className="text-xs text-stone-400 mt-4 text-center">Estimates for 2026. The tempo charter is fixed per package; accommodation, meals and optional trek transport vary by choice. Call 7668570551 for a firm quote.</p>
+                </div>
+            </section>
+
+            {/* ============================================ */}
+            {/* WHY TEMPO TRAVELLER FOR GROUPS */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-stone-50">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-serif">Why a Tempo Traveller for Char Dham Groups?</h2>
+                        <p className="text-stone-600 max-w-2xl mx-auto">A tempo traveller beats both a car and a full-size bus for a 12-24 pilgrim group on Uttarakhand hill roads.</p>
+                    </div>
+                    <div className="overflow-x-auto rounded-2xl border border-stone-200 shadow-sm">
+                        <table className="w-full text-left text-sm md:text-base">
+                            <thead>
+                                <tr className="bg-stone-900 text-white">
+                                    <th className="p-4 font-bold">Factor</th>
+                                    <th className="p-4 font-bold text-orange-300">Tempo Traveller</th>
+                                    <th className="p-4 font-bold hidden md:table-cell">Car / SUV</th>
+                                    <th className="p-4 font-bold hidden md:table-cell">Full Bus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {WHY_TEMPO_ROWS.map((row, i) => (
+                                    <tr key={i} className={`border-t border-stone-100 ${i % 2 ? 'bg-stone-50' : 'bg-white'}`}>
+                                        <td className="p-4 font-semibold text-stone-900">{row.factor}</td>
+                                        <td className="p-4 text-stone-800 font-medium bg-orange-50/50">{row.tempo}</td>
+                                        <td className="p-4 text-stone-500 hidden md:table-cell">{row.car}</td>
+                                        <td className="p-4 text-stone-500 hidden md:table-cell">{row.bus}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            {/* ============================================ */}
+            {/* ROAD & ALTITUDE TIPS */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-white">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-serif">Road &amp; Altitude Tips for Pilgrims</h2>
+                        <p className="text-stone-600 max-w-2xl mx-auto">High-altitude darshan at 3,000 m+ needs preparation. Follow these tips for a safe, comfortable Char Dham Yatra.</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {ROAD_ALTITUDE_TIPS.map((tip, i) => (
+                            <div key={i} className="flex items-start gap-4 bg-stone-50 rounded-2xl p-5 border border-stone-100">
+                                <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 font-bold flex items-center justify-center flex-shrink-0 text-sm">{i + 1}</div>
+                                <p className="text-sm text-stone-700 leading-relaxed">{tip}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {features && features.length > 0 && (
                 <section className="py-16 bg-stone-900 text-white">
                     <div className="max-w-7xl mx-auto px-4 text-center">
@@ -360,23 +658,114 @@ export default function ChardhamTempoClient({ data }) {
             )}
 
             {/* ============================================ */}
-            {/* FAQ */}
+            {/* FAQ (10-12 Q — rich, speakable) */}
             {/* ============================================ */}
-            {faqs && faqs.length > 0 && (
-                <section className="py-16 bg-white">
+            {allFaqs && allFaqs.length > 0 && (
+                <section className="faq-section py-16 md:py-24 bg-stone-50">
                     <div className="max-w-3xl mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-10 font-serif">Pilgrim Queries</h2>
+                        <div className="text-center mb-10">
+                            <span className="text-orange-600 font-bold uppercase tracking-widest text-xs">Pilgrim Queries</span>
+                            <h2 className="text-3xl md:text-4xl font-bold mt-3 font-serif text-stone-900">{title} — FAQs</h2>
+                        </div>
                         <div className="space-y-4">
-                            {faqs.map((faq, idx) => (
-                                <div key={idx} className="border border-stone-200 rounded-xl p-6 hover:shadow-md transition-shadow">
-                                    <h3 className="font-bold text-lg text-stone-900 mb-2">Q. {faq.question}</h3>
-                                    <p className="text-stone-600">A. {faq.answer}</p>
+                            {allFaqs.map((faq, idx) => (
+                                <details key={idx} className="group border border-stone-200 rounded-xl bg-white p-6 hover:shadow-md transition-shadow" {...(idx === 0 ? { open: true } : {})}>
+                                    <summary className="font-bold text-lg text-stone-900 cursor-pointer list-none flex items-start justify-between gap-3">
+                                        <span>Q. {faq.question}</span>
+                                        <ChevronDown className="w-5 h-5 text-orange-500 flex-shrink-0 transition-transform group-open:rotate-180" />
+                                    </summary>
+                                    <p className={`text-stone-600 mt-3 leading-relaxed ${idx === 0 ? 'speakable-faq-first' : ''} faq-answer-${idx + 1}`}>{faq.answer}</p>
+                                </details>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* ============================================ */}
+            {/* PILGRIM TESTIMONIALS (E-E-A-T — matches Review schema) */}
+            {/* ============================================ */}
+            {reviews && reviews.length > 0 && (
+                <section className="py-16 md:py-24 bg-stone-900 text-white">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 mb-4 px-4 py-1 rounded-full bg-orange-500/20 border border-orange-400/30">
+                                <Star className="w-3.5 h-3.5 text-orange-400" />
+                                <span className="text-orange-300 font-bold uppercase tracking-wider text-xs">Verified Pilgrim Reviews</span>
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">What Yatris Say About Their Tempo Yatra</h2>
+                            <div className="flex items-center justify-center gap-2 text-orange-200">
+                                <div className="flex">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />
+                                    ))}
+                                </div>
+                                <span className="font-bold text-white">4.9</span>
+                                <span className="text-stone-400">/ 5 from {reviewCount > 0 ? reviewCount : '100+'} pilgrim reviews</span>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {reviews.map((r, i) => (
+                                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-orange-500/30 transition-colors">
+                                    <div className="flex mb-3">
+                                        {[...Array(5)].map((_, s) => (
+                                            <Star key={s} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                                        ))}
+                                    </div>
+                                    <p className="text-stone-200 text-sm leading-relaxed mb-4">&ldquo;{r.body}&rdquo;</p>
+                                    <div className="flex items-center gap-2 pt-3 border-t border-white/10">
+                                        <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                                            <User className="w-4 h-4 text-orange-400" />
+                                        </div>
+                                        <span className="font-semibold text-white text-sm">{r.name}</span>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
             )}
+
+            {/* ============================================ */}
+            {/* RELATED LINKS (internal linking / silo) */}
+            {/* ============================================ */}
+            <section className="py-16 md:py-24 bg-white border-t border-stone-100">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-2xl md:text-4xl font-bold text-stone-900 mb-3 font-serif">Plan Your Char Dham Yatra</h2>
+                        <p className="text-stone-600">Explore other origins, the Char Dham hub and tempo traveller options.</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+                        <Link href="/chardham-yatra" className="group bg-orange-50 rounded-2xl p-6 border border-orange-100 hover:border-orange-300 hover:shadow-md transition-all">
+                            <Mountain className="w-7 h-7 text-orange-600 mb-3" />
+                            <h3 className="font-bold text-stone-900 mb-1 group-hover:text-orange-600 transition-colors">Char Dham Yatra Hub</h3>
+                            <p className="text-sm text-stone-500">All packages, vehicles and dham guides in one place.</p>
+                        </Link>
+                        <Link href="/chardham-yatra-cost-by-car" className="group bg-orange-50 rounded-2xl p-6 border border-orange-100 hover:border-orange-300 hover:shadow-md transition-all">
+                            <Star className="w-7 h-7 text-orange-600 mb-3" />
+                            <h3 className="font-bold text-stone-900 mb-1 group-hover:text-orange-600 transition-colors">Char Dham Cost by Car</h3>
+                            <p className="text-sm text-stone-500">Compare car/SUV fares for smaller pilgrim groups.</p>
+                        </Link>
+                        <Link href="/tempo-traveller" className="group bg-orange-50 rounded-2xl p-6 border border-orange-100 hover:border-orange-300 hover:shadow-md transition-all">
+                            <Users className="w-7 h-7 text-orange-600 mb-3" />
+                            <h3 className="font-bold text-stone-900 mb-1 group-hover:text-orange-600 transition-colors">Tempo Traveller Fleet</h3>
+                            <p className="text-sm text-stone-500">12-26 seater AC tempo travellers for any route.</p>
+                        </Link>
+                    </div>
+                    {siblings && siblings.length > 0 && (
+                        <div>
+                            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-wider mb-4 text-center">Char Dham Tempo from Other Origins</h3>
+                            <div className="flex flex-wrap justify-center gap-3">
+                                {siblings.map((s, i) => (
+                                    <Link key={i} href={s.href} className="inline-flex items-center gap-2 bg-stone-100 hover:bg-orange-100 text-stone-700 hover:text-orange-700 px-4 py-2 rounded-full text-sm font-medium transition-colors border border-stone-200">
+                                        <MapPin className="w-3.5 h-3.5" /> {s.anchor}{s.price ? ` — ${s.price}` : ''}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </section>
 
             {/* ============================================ */}
             {/* FINAL CTA */}
@@ -423,7 +812,89 @@ export default function ChardhamTempoClient({ data }) {
                     </p>
                 </div>
             </section>
+
+            {/* RICH-UI + RANKING BLOCK — May 23 sprint (Chardham variant) */}
+            <ChardhamRichBlock title={title} origin={origin} destination={destination} duration={duration} />
         </div>
         </MotionConfig>
     );
+}
+
+function ChardhamRichBlock({ title, origin, destination, duration }) {
+  const durationDays = parseFloat((duration || '10').toString().replace(/[^0-9.]/g, '')) || 10;
+  const stats = [
+    { value: durationDays, suffix: ' days', label: 'Yatra duration', sublabel: 'incl. all dhams' },
+    { value: 4, label: 'Dhams covered', sublabel: 'Yamunotri, Gangotri, Kedarnath, Badrinath' },
+    { value: 28, prefix: '₹', suffix: '/km', label: '17-seater', sublabel: 'starting rate' },
+    { value: 4.9, suffix: ' / 5', label: 'Pilgrim rating', sublabel: 'verified reviews', format: 'decimal' },
+  ];
+
+  const longTailFaqs = generateLongTailFaqs({
+    mode: 'tempo',
+    origin: origin || 'Haridwar',
+    destination: destination || 'Char Dham',
+    distanceKm: 1600,
+    durationText: `${durationDays} days`,
+  });
+
+  const founderQuote = getFounderQuoteForContext('tempo');
+  const citations = getCitationsForRoute({ from: origin || 'Haridwar', to: 'Kedarnath', context: 'outstation' });
+
+  return (
+    <div className="bg-slate-950 text-white">
+      <section className="py-12 md:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+          <div className="lg:col-span-3">
+            <InfographicPanel
+              title={`${title} by the numbers`}
+              subtitle="Duration, dham coverage, per-km rates by seater size, and verified pilgrim rating. All-inclusive tempo charter for the full circuit."
+              stats={stats}
+              tone="amber"
+            />
+          </div>
+          <div className="lg:col-span-2">
+            <PriceCalculator
+              distanceKm={1600}
+              mode="round-trip"
+              vehicles={[
+                { key: 'tempo12', label: '12-Seater', ratePerKm: 20 },
+                { key: 'tempo17', label: '17-Seater', ratePerKm: 24 },
+                { key: 'tempo20', label: '20-Seater', ratePerKm: 26 },
+                { key: 'tempo26', label: '26-Seater', ratePerKm: 28 },
+              ]}
+              tone="amber"
+              originName={origin || 'Haridwar'}
+              destinationName={destination || 'Char Dham'}
+            />
+          </div>
+        </div>
+      </section>
+
+      {founderQuote && (
+        <section className="py-10 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <ExpertQuote quote={founderQuote.quote} authorName={founderQuote.author} authorTitle={founderQuote.title} authorOrg={founderQuote.org} tone="dark" />
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Yatra Q&amp;A</span>
+            <h2 className="text-2xl sm:text-4xl font-black mt-3 tracking-tight">More about the {title}</h2>
+          </div>
+          <LongTailFAQ faqs={longTailFaqs} tone="dark" />
+        </div>
+      </section>
+
+      {citations.length > 0 && (
+        <section className="py-12 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <OutboundCitations sources={citations} tone="dark" heading="Verified against these sources" />
+          </div>
+        </section>
+      )}
+    </div>
+  );
 }

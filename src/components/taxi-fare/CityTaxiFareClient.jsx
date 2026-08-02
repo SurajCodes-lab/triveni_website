@@ -10,10 +10,12 @@ import {
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import FleetShowcase from '@/components/shared/FleetShowcase';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
@@ -33,6 +35,11 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta
+        price={`₹${city.baseFare.sedan}/km`}
+        label={`${city.city} Taxi`}
+        whatsappText={whatsappMsg}
+      />
 
       {/* ━━━ HERO: Pricing dashboard cinematic ━━━ */}
       <section className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-end overflow-hidden">
@@ -73,30 +80,35 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
               </div>
             </div>
 
-            {/* Stat card */}
-            <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6 lg:w-72 flex-shrink-0">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Sedan</p>
-                  <p className="text-2xl font-black text-white leading-tight">Rs {city.baseFare.sedan}<span className="text-sm text-white/40">/km</span></p>
+            {/* Stat card + Quick Enquiry Form */}
+            <div className="flex flex-col gap-4 lg:w-80 flex-shrink-0">
+              <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 sm:p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Sedan</p>
+                    <p className="text-2xl font-black text-white leading-tight">Rs {city.baseFare.sedan}<span className="text-sm text-white/40">/km</span></p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">SUV</p>
+                    <p className="text-2xl font-black text-white leading-tight">Rs {city.baseFare.suv}<span className="text-sm text-white/40">/km</span></p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Min Fare</p>
+                    <p className="text-sm font-bold text-[#FACF2D]">Rs {city.minimumFare}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Rating</p>
+                    <p className="text-sm font-bold text-white/80">4.9/5</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">SUV</p>
-                  <p className="text-2xl font-black text-white leading-tight">Rs {city.baseFare.suv}<span className="text-sm text-white/40">/km</span></p>
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Min Fare</p>
-                  <p className="text-sm font-bold text-[#FACF2D]">Rs {city.minimumFare}</p>
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/30 uppercase tracking-widest font-semibold">Rating</p>
-                  <p className="text-sm font-bold text-white/80">4.9/5</p>
+                <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
+                  <div className="flex -space-x-1">{[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}</div>
+                  <span className="text-[11px] text-white/40">10,000+ rides</span>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-2">
-                <div className="flex -space-x-1">{[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}</div>
-                <span className="text-[11px] text-white/40">10,000+ rides</span>
-              </div>
+
+              {/* Quick Enquiry Form */}
+              <QuickEnquiryForm fromCity={city.city} pageType="city_taxi" />
             </div>
           </div>
         </div>
@@ -315,6 +327,14 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
         </div>
       </section>
 
+      <FleetShowcase
+        theme="light"
+        accentColor="amber"
+        whatsappMessage={`Hi, I need taxi fare info for ${city.city}`}
+        title={`Our Fleet in ${city.city}`}
+        subtitle="Transparent per-km rates for every vehicle in our fleet"
+      />
+
       {/* ━━━ FAQS ━━━ */}
       <FaqAccordion heading={`${city.city} Taxi Fare FAQs`} faqs={city.faqs} />
 
@@ -347,7 +367,6 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
       )}
 
       <CTASection heading={`Need a Taxi in ${city.city}?`} subheading={`Skip surge pricing. Book a Triveni cab at flat Rs ${city.baseFare.sedan}/km and save up to ${city.comparisonWithOla.savings} on every ride.`} />
-      <MobileStickyBar />
     </div>
   );
 }

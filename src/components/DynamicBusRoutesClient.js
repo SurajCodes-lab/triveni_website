@@ -13,17 +13,40 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 // Import from smaller utility file to reduce bundle size
 import { additionalInfo } from '@/utilis/busUtilsData';
-import dynamic from 'next/dynamic';
 
-// Dynamically import FareCalculator (client-only, below fold)
-const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import InclusionBadges from '@/components/shared/InclusionBadges';
+// Rich UI + ranking-lift components — wired May 23 2026
+import InfographicPanel from '@/components/seo/InfographicPanel';
+import PriceCalculator from '@/components/seo/PriceCalculator';
+import OutboundCitations from '@/components/seo/OutboundCitations';
+import ExpertQuote from '@/components/seo/ExpertQuote';
+import LongTailFAQ from '@/components/seo/LongTailFAQ';
+import { getCitationsForRoute } from '@/utilis/outboundCitations';
+import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
+import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
+import CorridorLinks from '@/components/seo/CorridorLinks';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 
 export default function DynamicBusRoutesClient({ data }) {
-  const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription, relatedRoutes } = data;
+  const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription, relatedRoutes, corridorLinks = [] } = data;
+  // Phase 3: unique, entity-rich, slug-seeded intro so each bus route page reads differently.
+  const uniqueIntro = generateUniqueIntro({
+    origin,
+    destination,
+    distance: routeData?.distance,
+    time: routeData?.duration,
+    highway: '',
+    attractions: Array.isArray(localSightseeing)
+      ? localSightseeing.slice(0, 2).map((s) => (typeof s === 'string' ? s : (s.title || s.name || s.place || ''))).filter(Boolean)
+      : [],
+    vehicleType: 'AC bus or mini-bus',
+    slug: routeSlug,
+  });
 
   const [selectedBus, setSelectedBus] = useState(null);
   const [mounted, setMounted] = useState(false);
@@ -35,6 +58,7 @@ export default function DynamicBusRoutesClient({ data }) {
 
   return (
     <article className="min-h-screen bg-white" itemScope itemType="https://schema.org/TravelAction">
+      <SetStickyCta price="From ₹25/km" label={`${data.city || 'Bus'} Bus Hire`} whatsappText={`Hi, I want to book a bus${data.city ? ' from ' + data.city : ''}. Please share availability and fare.`} />
 
       {/* Hero Section - Ultra Modern */}
       <motion.section
@@ -90,7 +114,7 @@ export default function DynamicBusRoutesClient({ data }) {
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-3 md:mb-4"
+              className="speakable-headline text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-3 md:mb-4"
             >
               {origin} <span className="text-[#FACF2D]">to</span> {destination} Bus
             </motion.h1>
@@ -213,6 +237,25 @@ export default function DynamicBusRoutesClient({ data }) {
         </div>
       </motion.section>
 
+      {/* ============================================ */}
+      {/* AEO QUICK ANSWER — above-the-fold extractable answer */}
+      {/* ============================================ */}
+      <section className="bg-slate-950 px-4 sm:px-6 py-8 md:py-10">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="dark"
+            question={`How much does it cost to hire a bus from ${origin} to ${destination}?`}
+            answer={`Chartering a bus from ${origin} to ${destination} starts at ₹30/km for a 22 seater AC mini bus and rises to about ₹65/km for a 56 seater luxury Volvo coach${routeData?.distance ? `, covering roughly ${routeData.distance}` : ''}${routeData?.duration ? ` in around ${routeData.duration}` : ''}. A bus is priced the same whether you book a one-way drop or a round trip, since the coach returns to base either way — there is no one-way discount on bus charter. Every coach is AC with pushback seats and the rate covers fuel and driver; tolls, parking, state permits and the driver night allowance are billed extra.`}
+            facts={[
+              { label: 'Distance', value: routeData?.distance || 'On request' },
+              { label: 'Drive time', value: routeData?.duration || 'On request' },
+              { label: 'From (22 seater)', value: '₹30/km' },
+              { label: 'Seating', value: '22 to 56 seats' },
+            ]}
+          />
+        </div>
+      </section>
+
       <SocialProofStrip theme="dark" />
 
       {/* Trust Strip */}
@@ -242,7 +285,7 @@ export default function DynamicBusRoutesClient({ data }) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
-              {origin} to {destination} Bus Hire — Quick Summary
+              How much does a {origin} to {destination} bus charter cost in 2026?
             </h2>
             <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
@@ -262,7 +305,7 @@ export default function DynamicBusRoutesClient({ data }) {
                 <p className="text-xl font-black text-slate-900">22-56 Seat</p>
               </div>
             </div>
-            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
+            <p className="faq-answer speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
               Bus hire from <strong>{origin} to {destination}</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus.
               {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
               Triveni Cabs offers 22, 25, 27, 35, 41, 45, 52, and 56 seater AC luxury buses with pushback seats,
@@ -270,6 +313,11 @@ export default function DynamicBusRoutesClient({ data }) {
               pilgrimages, and school trips. Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
               4.9★ rated with 10,000+ group trips completed.
             </p>
+            {uniqueIntro && (
+              <p className="mt-4 text-slate-600 leading-relaxed text-base md:text-lg">
+                {uniqueIntro}
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -458,7 +506,7 @@ export default function DynamicBusRoutesClient({ data }) {
               🚌 Available Buses
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
-              Luxury Bus Rental Options - <span className="text-[#FACF2D]">{origin} to {destination} Route</span>
+              Which luxury bus options are available for <span className="text-[#FACF2D]">{origin} to {destination}</span>?
             </h2>
             <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
               <strong>Select from our premium fleet</strong> for your journey from {origin} to {destination}
@@ -550,22 +598,75 @@ export default function DynamicBusRoutesClient({ data }) {
                     ))}
                   </div>
 
-                  {/* Book Button */}
-                  <button
-                    onClick={() => {
-                      setSelectedBus(bus);
-                      trackPhoneCall('bus_routes');
-                      window.location.href = `tel:+917668570551`;
-                    }}
-                    className="w-full bg-black text-[#FACF2D] py-3 md:py-4 rounded-lg font-bold text-sm md:text-base hover:bg-gray-900 transition-all duration-300 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-[#FACF2D]/20"
-                  >
-                    📞 Book Now
-                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  {/* Book Buttons — Call + direct WhatsApp deep-link */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => {
+                        setSelectedBus(bus);
+                        trackPhoneCall('bus_routes');
+                        window.location.href = `tel:+917668570551`;
+                      }}
+                      className="bg-black text-[#FACF2D] py-3 md:py-4 rounded-lg font-bold text-sm md:text-base hover:bg-gray-900 transition-all duration-300 flex items-center justify-center"
+                    >
+                      <Phone className="w-4 h-4 mr-1.5" />
+                      Call
+                    </button>
+                    <a
+                      onClick={() => trackWhatsAppClick('bus_routes')}
+                      href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                        `Hi, I want to book the ${bus.name} for ${origin} to ${destination}. Please share rates.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-500 text-white py-3 md:py-4 rounded-lg font-bold text-sm md:text-base hover:bg-green-600 transition-all duration-300 flex items-center justify-center"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-1.5" />
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Machine-readable fare chart — same data as the cards above */}
+          {fleet && fleet.length > 0 && (
+            <div className="mt-10 md:mt-14">
+              <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-4">
+                {origin} to {destination} bus hire fare chart
+              </h3>
+              <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
+                <table className="w-full min-w-[640px] text-left text-sm">
+                  <caption className="px-4 pt-4 pb-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Bus charter rates from {origin} to {destination}, 2026 — one way and round trip are priced the same
+                  </caption>
+                  <thead className="bg-gray-50 text-gray-700">
+                    <tr>
+                      <th scope="col" className="px-4 py-3 font-bold">Bus</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Capacity</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Rate per km</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Minimum charge</th>
+                      <th scope="col" className="px-4 py-3 font-bold">Driver allowance</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {fleet.map((bus) => (
+                      <tr key={`fare-${bus.id}`} className="hover:bg-amber-50/60 transition-colors">
+                        <th scope="row" className="px-4 py-3 text-left font-semibold text-gray-900">{bus.name}</th>
+                        <td className="px-4 py-3 text-gray-700">{bus.capacity}</td>
+                        <td className="px-4 py-3 font-bold text-amber-700">{bus.ratePerKm}</td>
+                        <td className="px-4 py-3 text-gray-700">{bus.minimumCharge}</td>
+                        <td className="px-4 py-3 text-gray-700">{bus.driverAllowance}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-gray-500">
+                Rates include fuel, driver and AC. Tolls, parking, state permits and interstate taxes are extra. A bus charter costs the same for a one-way drop as for a round trip.
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -579,7 +680,7 @@ export default function DynamicBusRoutesClient({ data }) {
                 📍 Tourist Attractions
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
-                Tourist Attractions in <span className="text-[#FACF2D]">{destination}</span> - Bus Tour Guide
+                What can you visit in <span className="text-[#FACF2D]">{destination}</span> on a bus tour?
               </h2>
               <p className="text-base md:text-lg lg:text-xl text-gray-600 px-4">
                 <strong>Explore popular sightseeing spots</strong> with our luxury bus tours in {destination}
@@ -609,7 +710,7 @@ export default function DynamicBusRoutesClient({ data }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-4 px-4">
-              Why Choose Our <span className="text-[#FACF2D]">{origin} to {destination}</span> Bus Service
+              Why choose our <span className="text-[#FACF2D]">{origin} to {destination}</span> bus service?
             </h2>
             <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
               <strong>Your trusted travel partner</strong> for safe and comfortable bus journeys
@@ -659,7 +760,7 @@ export default function DynamicBusRoutesClient({ data }) {
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
-              {origin} to {destination} <span className="text-[#FACF2D]">Bus Rental FAQs</span>
+              Frequently asked questions about {origin} to {destination} <span className="text-[#FACF2D]">bus rental</span>
             </h2>
             <p className="text-base md:text-lg text-gray-600">Everything you need to know about our bus hire service</p>
           </motion.div>
@@ -689,6 +790,18 @@ export default function DynamicBusRoutesClient({ data }) {
               {
                 question: `Can I book a bus online for ${origin} to ${destination}?`,
                 answer: `Yes, you can book a bus online for ${origin} to ${destination} through our website or by calling +91-7668570551. We provide instant confirmation, flexible booking options, and 24/7 customer support for all your bus rental needs.`
+              },
+              {
+                question: `What amenities are included in the bus from ${origin} to ${destination}?`,
+                answer: `All buses on the ${origin} to ${destination} route include AC, pushback/reclining seats, an entertainment system, GPS tracking, charging points, reading lights, and spacious luggage storage. Premium Volvo coaches offer additional amenities like WiFi and an onboard washroom for long journeys.`
+              },
+              {
+                question: `Is advance booking required for the ${origin} to ${destination} bus?`,
+                answer: `We recommend booking 7-15 days in advance for the ${origin} to ${destination} route, especially during peak season, weddings, and festival dates. However, same-day and next-day bookings are also accepted subject to availability. Call +91-7668570551 to confirm.`
+              },
+              {
+                question: `What is the cancellation policy for ${origin} to ${destination} bus booking?`,
+                answer: `Cancellations made 48 or more hours before departure receive a full refund. Cancellations within 24-48 hours receive a 50% refund, and there is no refund for cancellations within 24 hours of departure. Terms may vary during peak season and for special events.`
               }
             ].map((faq, index) => (
               <motion.div
@@ -725,7 +838,7 @@ export default function DynamicBusRoutesClient({ data }) {
                   className="overflow-hidden"
                 >
                   <div className="px-5 md:px-8 pb-4 md:pb-6">
-                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                    <p className={`text-sm md:text-base text-gray-700 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>
                       {faq.answer}
                     </p>
                   </div>
@@ -735,6 +848,15 @@ export default function DynamicBusRoutesClient({ data }) {
           </div>
         </div>
       </section>
+
+      {/* Corridor cluster — same route in other formats */}
+      {corridorLinks.length > 0 && (
+        <section className="py-10 md:py-14 bg-gray-50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CorridorLinks links={corridorLinks} fromLabel={origin} toLabel={destination} theme="light" />
+          </div>
+        </section>
+      )}
 
       {/* Related Routes from Same Origin */}
       {relatedRoutes && relatedRoutes.length > 0 && (
@@ -781,7 +903,7 @@ export default function DynamicBusRoutesClient({ data }) {
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
-            Other Ways to Travel {origin} to {destination}
+            What are other ways to travel from {origin} to {destination}?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link
@@ -790,7 +912,7 @@ export default function DynamicBusRoutesClient({ data }) {
             >
               <div className="text-2xl mb-2">🚐</div>
               <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{origin} to {destination} Tempo</h3>
-              <p className="text-sm text-gray-500 mt-1">12-26 seater AC tempo from ₹23/km</p>
+              <p className="text-sm text-gray-500 mt-1">12-26 seater AC tempo from ₹20/km</p>
             </Link>
             <Link
               href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
@@ -820,18 +942,6 @@ export default function DynamicBusRoutesClient({ data }) {
         </div>
       </section>
 
-      {/* Fare Calculator */}
-      <section className="py-12 bg-gray-50" id="fare-calculator">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-              Calculate Your {origin} to {destination} Bus Fare
-            </h2>
-            <p className="text-gray-600">Get an instant price estimate for your group trip</p>
-          </div>
-          <FareCalculator variant="compact" defaultFrom={origin} defaultTo={destination} className="max-w-md mx-auto" />
-        </div>
-      </section>
 
       {/* Sticky Bottom CTA */}
       <div className="sticky bottom-0 left-0 right-0 bg-white border-t-4 border-[#FACF2D] shadow-2xl z-50 py-2 sm:py-3 md:py-4">
@@ -896,6 +1006,90 @@ export default function DynamicBusRoutesClient({ data }) {
           animation: fadeIn 0.5s ease-out forwards;
         }
       `}</style>
+
+      {/* RICH-UI + RANKING BLOCK — May 23 sprint (Bus route variant) */}
+      <BusRouteRichBlock origin={origin} destination={destination} routeData={routeData} />
     </article>
+  );
+}
+
+function BusRouteRichBlock({ origin, destination, routeData }) {
+  const distanceKm = parseFloat(((routeData?.distance) || '').toString().replace(/[^0-9.]/g, '')) || 400;
+  const durationHrs = parseFloat(((routeData?.duration) || '').toString().replace(/[^0-9.]/g, '')) || 8;
+  const stats = [
+    { value: distanceKm, suffix: ' km', label: 'Distance', sublabel: 'one-way' },
+    { value: durationHrs, suffix: ' hr', label: 'Drive time', sublabel: 'approx.', format: 'decimal' },
+    { value: 30, prefix: '₹', suffix: '/km', label: '22-seater', sublabel: 'starting' },
+    { value: 65, prefix: '₹', suffix: '/km', label: '56-seater', sublabel: 'luxury Volvo' },
+  ];
+
+  const longTailFaqs = generateLongTailFaqs({
+    mode: 'bus',
+    origin,
+    destination,
+    distanceKm,
+    durationText: routeData?.duration,
+  });
+
+  const founderQuote = getFounderQuoteForContext('all');
+  const citations = getCitationsForRoute({ from: origin, to: destination, context: 'outstation' });
+
+  return (
+    <div className="bg-slate-950 text-white">
+      <section className="py-12 md:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+          <div className="lg:col-span-3">
+            <InfographicPanel
+              title={`The ${origin} to ${destination} bus charter by the numbers`}
+              subtitle="Per-km rates by bus size, distance, and approximate drive time. Pricing reflects actual operator invoices on this corridor."
+              stats={stats}
+              tone="cyan"
+            />
+          </div>
+          <div className="lg:col-span-2">
+            <PriceCalculator
+              distanceKm={distanceKm}
+              mode="one-way"
+              oneWayEqualsRoundTrip
+              vehicles={[
+                { key: 'bus22', label: '22-Seater', ratePerKm: 30 },
+                { key: 'bus35', label: '35-Seater', ratePerKm: 42 },
+                { key: 'bus45', label: '45-Seater', ratePerKm: 52 },
+                { key: 'bus56', label: '56-Seater', ratePerKm: 65 },
+              ]}
+              tone="cyan"
+              originName={origin}
+              destinationName={destination}
+            />
+          </div>
+        </div>
+      </section>
+
+      {founderQuote && (
+        <section className="py-10 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <ExpertQuote quote={founderQuote.quote} authorName={founderQuote.author} authorTitle={founderQuote.title} authorOrg={founderQuote.org} tone="dark" />
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-cyan-400 font-semibold text-sm tracking-widest uppercase">Bus Charter Q&amp;A</span>
+            <h2 className="text-2xl sm:text-4xl font-black mt-3 tracking-tight">More about chartering a bus from {origin} to {destination}</h2>
+          </div>
+          <LongTailFAQ faqs={longTailFaqs} tone="dark" />
+        </div>
+      </section>
+
+      {citations.length > 0 && (
+        <section className="py-12 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <OutboundCitations sources={citations} tone="dark" heading="Verified against these sources" />
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

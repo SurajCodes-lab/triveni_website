@@ -1,450 +1,344 @@
-// src/app/tempo-traveller/page.js
+// app/tempo-traveller/page.js
+import TempoMainClient from "@/components/TempoMainClient";
+import { getRatingAndReviews } from "@/lib/seo/review-helpers";
+import {
+  getSpeakableSchema,
+  getHowToSchema,
+  getArticleSchema,
+  getComparisonSchema,
+  getTodayDate,
+} from "@/lib/seo/speakable-helpers";
 
-import { tempoFleet, tempoRoutes, tempoCities } from '@/utilis/tempoTravellerData';
-import TempoMainClient from '@/components/TempoMainClient';
-import AEOHead from '@/components/seo/AEOHead';
+export const revalidate = 3600;
 
-export const revalidate = false;
+const SITE_URL = "https://www.trivenicabs.in";
 
 export const metadata = {
-  // Title under 60 chars per Google guidelines - CTR optimized
-  title: 'Tempo Traveller ₹23/km — 12-26 Seater AC 4.9★ | Book',
-  description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
-  applicationName: 'Triveni Cabs',
-  metadataBase: new URL('https://www.trivenicabs.in'),
-  alternates: {
-    canonical: '/tempo-traveller',
-  },
+  title: "Tempo Traveller ₹20/km — 12-26 Seater AC 4.9★ | Book",
+  description:
+    "Book AC tempo travellers (12, 17, 20, 26 seater) with experienced drivers across North India. Transparent ₹/km pricing, 24/7 support, clean fleet. Get instant quote.",
+  keywords:
+    "tempo traveller on rent, tempo traveller hire, 12 seater tempo traveller, 17 seater tempo traveller, 20 seater tempo traveller, 26 seater tempo traveller, AC tempo traveller with driver, tempo traveller for outstation, tempo traveller for wedding, tempo traveller for group tour, luxury tempo traveller, maharaja tempo traveller, tempo traveller price per km, tempo traveller booking, Delhi to Manali tempo traveller, tempo traveller for Chardham yatra, tempo traveller rental near me, mini bus on rent, 16 seater tempo traveller, tempo traveller for school trip",
+  alternates: { canonical: `${SITE_URL}/tempo-traveller` },
   openGraph: {
-    title: 'Tempo Traveller ₹23/km — 12-26 Seater AC for Group Travel | Triveni Cabs',
-    description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
-    url: 'https://www.trivenicabs.in/tempo-traveller',
-    siteName: 'Triveni Cabs',
-    type: 'website',
-    locale: 'en_IN',
+    title: "Tempo Traveller on Rent — 12 to 26 Seater AC with Driver",
+    description:
+      "North India's trusted tempo traveller rental. 12-26 seater AC vehicles, experienced drivers, transparent pricing. Outstation, wedding, group tours.",
+    url: `${SITE_URL}/tempo-traveller`,
+    siteName: "Triveni Cabs",
+    type: "website",
     images: [
       {
-        url: '/images/tempo/17_seater.jpg',
+        url: `${SITE_URL}/images/tempo/17_seater.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles with Professional Drivers - Triveni Cabs India',
-        type: 'image/jpeg',
+        alt: "Tempo Traveller on Rent - Triveni Cabs",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Tempo Traveller ₹23/km — 12-26 Seater AC 4.9★ | Book',
-    description: '12-26 seater AC tempo from ₹23/km. Delhi to Manali, Shimla, Jaipur. 5,000+ trips, GPS tracking, pro drivers. Book in 2 min.',
-    site: '@trivenicabs',
-    images: ['/images/tempo/17_seater.jpg'],
+    card: "summary_large_image",
+    title: "Tempo Traveller on Rent — 12 to 26 Seater AC with Driver",
+    description:
+      "North India's trusted tempo traveller rental. 12-26 seater AC, experienced drivers, transparent pricing.",
+    images: [`${SITE_URL}/images/tempo/17_seater.jpg`],
   },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  category: 'Travel & Transportation',
 };
 
 export default function TempoTravellerPage() {
-  // Prepare data on server side for SEO
-  const getAllRoutes = () => {
-    const routes = [];
-    Object.entries(tempoRoutes).forEach(([origin, destinations]) => {
-      destinations.forEach(dest => {
-        routes.push({
-          origin,
-          destination: dest.name,
-          type: dest.type,
-          slug: `${origin.toLowerCase().replace(/\s+/g, '-')}-to-${dest.name.toLowerCase().replace(/\s+/g, '-')}`
-        });
-      });
-    });
-    return routes;
-  };
+  const { aggregateRating, review } = getRatingAndReviews(
+    "tempo-traveller-hub",
+    "tempo"
+  );
 
-  const getPopularRoutes = () => {
-    const routes = getAllRoutes();
-    // Return first 8 routes as popular
-    return routes.slice(0, 8);
-  };
+  const today = getTodayDate();
 
-  // Prepare cities data with route counts
-  const getCitiesWithData = () => {
-    return Object.entries(tempoCities).map(([cityName, cityData]) => {
-      const routes = tempoRoutes[cityName] || [];
-      return {
-        ...cityData,
-        routeCount: routes.length,
-        routes: routes
-      };
-    });
-  };
+  const faqData = [
+    {
+      question: "How much does a tempo traveller cost per km?",
+      answer:
+        "Tempo traveller rentals start at ₹20/km for a 12-seater and go up to ₹28/km for a 26-seater luxury model. Final pricing depends on the route, season, and vehicle type. We provide transparent per-km quotes with no hidden charges.",
+    },
+    {
+      question: "Which tempo traveller seater should I choose?",
+      answer:
+        "Choose a 12-seater for families and small friend groups (up to 11 passengers), a 17-seater for mid-size groups and corporate outings, a 20-seater for larger tour groups, and a 26-seater for very large groups, weddings, and events. All sizes are AC and come with a driver.",
+    },
+    {
+      question: "Are the tempo travellers air-conditioned?",
+      answer:
+        "Yes, all our tempo travellers are fully air-conditioned with push-back seats, ample luggage space, and entertainment systems for a comfortable journey, including hill stations.",
+    },
+    {
+      question: "Do you provide tempo travellers for outstation trips?",
+      answer:
+        "Yes, we provide tempo travellers for outstation trips across North India including Chardham Yatra, Himachal, Rajasthan, and more. Multi-day packages are available with overnight driver arrangements.",
+    },
+    {
+      question: "Is a driver included with the tempo traveller?",
+      answer:
+        "Yes, every tempo traveller comes with an experienced, professional driver who knows the routes well. The driver is included in every package.",
+    },
+    {
+      question: "Is there a minimum kilometres per day on outstation trips?",
+      answer:
+        "For outstation tempo traveller bookings we apply a minimum of 250 km per day. If your actual running is less, the day is billed at 250 km. Local same-city packages are billed on an hourly or fixed-package basis instead.",
+    },
+    {
+      question: "Are driver allowance and night charges extra?",
+      answer:
+        "Multi-day trips include a driver allowance (driver bata) of around ₹400–₹600 per night to cover the driver's food and stay, plus a night-driving charge if travel continues past 11 PM. These are quoted upfront so there are no surprises.",
+    },
+    {
+      question: "Are tolls, parking and state taxes included in the fare?",
+      answer:
+        "Our per-km rate covers the vehicle, fuel and driver. Tolls, parking fees, and interstate permit/state taxes are charged at actuals or can be bundled into an all-inclusive package on request. We always confirm this before booking.",
+    },
+    {
+      question: "Do you provide tempo travellers for weddings?",
+      answer:
+        "Yes. We supply 12 to 26 seater tempo travellers for baraat, guest pick-up and drop, and multi-venue wedding logistics. Decorated tempo travellers and fleet bookings for large guest movements are available.",
+    },
+    {
+      question: "Do you provide a GST invoice?",
+      answer:
+        "Yes, we issue a proper GST invoice on request, which makes our tempo travellers ideal for corporate outings, company offsites, and business travel that needs valid tax documentation.",
+    },
+    {
+      question: "How is one-way priced versus round-trip?",
+      answer:
+        "Round trips are billed on total kilometres run with a per-day minimum. One-way (drop only) bookings are charged on a point-to-point basis that factors in the driver's return journey, so a one-way fare is usually higher than half the round-trip distance.",
+    },
+    {
+      question: "How much luggage can a tempo traveller carry?",
+      answer:
+        "A 12-seater comfortably carries 8–10 large bags, a 17-seater 12–14 bags, and the 20/26-seater models have a dedicated rear luggage cabin for big-group travel. Let us know your luggage load and we'll recommend the right size.",
+    },
+    {
+      question: "Can a tempo traveller go to hill stations like Manali or Shimla?",
+      answer:
+        "Yes. Our drivers are experienced on hill routes and our tempo travellers are maintained for mountain driving to Manali, Shimla, Nainital, Mussoorie, and the Chardham circuit. For very steep last-mile stretches we'll advise the best vehicle size.",
+    },
+    {
+      question: "What is the cancellation policy?",
+      answer:
+        "Cancellations made well in advance are fully refundable as per our policy. For last-minute cancellations a small fee may apply to cover driver allocation. Date changes are usually accommodated free of charge subject to availability.",
+    },
+    {
+      question: "How do I book a tempo traveller?",
+      answer:
+        "You can book by calling 7668570551, sending a WhatsApp message, or filling out the enquiry form. Share your route, dates, and group size and we confirm availability and send a transparent quote instantly.",
+    },
+  ];
 
-  const pageData = {
-    popularRoutes: getPopularRoutes(),
-    allRoutes: getAllRoutes(),
-    fleet: tempoFleet,
-    cities: Object.keys(tempoRoutes),
-    citiesData: getCitiesWithData()
-  };
+  const speakable = getSpeakableSchema([
+    ".speakable-headline",
+    ".speakable-lead",
+    ".speakable-faq-first",
+  ]);
 
-  // Enhanced Structured Data with @graph for comprehensive SEO
-  const serviceSchema = {
+  const howTo = getHowToSchema({
+    name: "How to Book a Tempo Traveller with Triveni Cabs",
+    description:
+      "Book a 12 to 26 seater AC tempo traveller with an experienced driver across North India in four simple steps.",
+    totalTime: "PT5M",
+    steps: [
+      {
+        name: "Share your trip details",
+        text: "Call 7668570551 or WhatsApp us with your route, travel dates, and group size so we can recommend the right seater.",
+      },
+      {
+        name: "Get a transparent quote",
+        text: "Receive an instant per-km quote with the vehicle size, inclusions, and any toll or driver-allowance details clearly listed — no hidden charges.",
+      },
+      {
+        name: "Confirm your booking",
+        text: "Approve the quote and confirm with a small advance. We lock in your AC tempo traveller and assign an experienced driver.",
+      },
+      {
+        name: "Travel comfortably",
+        text: "Your tempo traveller arrives on time at the pick-up point. Enjoy AC comfort, push-back seats, and 24/7 support throughout the journey.",
+      },
+    ],
+  });
+
+  const comparison = getComparisonSchema({
+    slug: "tempo-traveller",
+    title: "Tempo Traveller Seater Comparison — 12 vs 17 vs 20 vs 26",
+    description:
+      "Compare 12, 17, 20, and 26 seater tempo travellers by passenger capacity, best use case, price per km, and popular trips to pick the right size.",
+    rows: [
+      { name: "12 Seater Tempo Traveller (from ₹20/km)" },
+      { name: "17 Seater Tempo Traveller (from ₹24/km)" },
+      { name: "20 Seater Tempo Traveller (from ₹26/km)" },
+      { name: "26 Seater Tempo Traveller (from ₹28/km)" },
+    ],
+    mentions: [
+      "Tempo Traveller",
+      "12 Seater Tempo Traveller",
+      "17 Seater Tempo Traveller",
+      "20 Seater Tempo Traveller",
+      "26 Seater Tempo Traveller",
+    ],
+  });
+
+  const article = getArticleSchema({
+    slug: "tempo-traveller",
+    headline:
+      "Tempo Traveller on Rent in North India — Sizes, Pricing & Booking Guide",
+    description:
+      "Complete guide to renting a 12 to 26 seater AC tempo traveller with driver across North India — per-km pricing, what's included, popular routes, and how to book.",
+    image: "/images/tempo/17_seater.jpg",
+    datePublished: "2024-01-15",
+    dateModified: today,
+    authorName: "editorial",
+    speakableSelectors: [
+      ".speakable-headline",
+      ".speakable-lead",
+      ".speakable-faq-first",
+    ],
+  });
+
+  const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://www.trivenicabs.in/tempo-traveller#webpage",
-        "url": "https://www.trivenicabs.in/tempo-traveller",
-        "name": "Tempo Traveller on Rent India | 12-26 Seater AC with Driver",
-        "description": "Book tempo traveller on rent for group travel across India. 12, 16, 17, 20, 26 seater AC tempo traveller with professional drivers. Popular routes: Delhi to Manali, Delhi to Shimla, Delhi to Jaipur. Best rates ₹23-27/km all-inclusive.",
-        "inLanguage": "en-IN",
-        "isPartOf": {
-          "@id": "https://www.trivenicabs.in#website"
-        },
-        "breadcrumb": {
-          "@id": "https://www.trivenicabs.in/tempo-traveller#breadcrumb"
-        },
-        "potentialAction": {
-          "@type": "ReadAction",
-          "target": ["https://www.trivenicabs.in/tempo-traveller"]
-        },
-        "datePublished": "2024-01-15T00:00:00+05:30",
-        "dateModified": new Date().toISOString(),
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://www.trivenicabs.in/images/tempo/17_seater.jpg",
-          "width": 1200,
-          "height": 630,
-          "caption": "Tempo Traveller on Rent - 12 to 26 Seater AC Vehicles - Triveni Cabs"
-        }
+        "@id": `${SITE_URL}/tempo-traveller#webpage`,
+        url: `${SITE_URL}/tempo-traveller`,
+        name: "Tempo Traveller on Rent — 12 to 26 Seater AC with Driver",
+        description:
+          "Book AC tempo travellers (12, 17, 20, 26 seater) with experienced drivers across North India.",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        breadcrumb: { "@id": `${SITE_URL}/tempo-traveller#breadcrumb` },
+        inLanguage: "en-IN",
+        speakable,
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://www.trivenicabs.in/tempo-traveller#breadcrumb",
-        "itemListElement": [
+        "@id": `${SITE_URL}/tempo-traveller#breadcrumb`,
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.trivenicabs.in"
+            position: 1,
+            name: "Home",
+            item: SITE_URL,
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Tempo Traveller on Rent",
-            "item": "https://www.trivenicabs.in/tempo-traveller"
-          }
-        ]
+            position: 2,
+            name: "Tempo Traveller",
+            item: `${SITE_URL}/tempo-traveller`,
+          },
+        ],
       },
       {
         "@type": "FAQPage",
-        "@id": "https://www.trivenicabs.in/tempo-traveller#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What seater options are available?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does tempo traveller rental cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Rates start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater. Local packages (8hrs/80km) range from ₹6,000 to ₹11,000. All prices include fuel, driver, tolls, and parking."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are drivers provided with the rental?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! All tempo travellers come with experienced professional drivers having 5+ years experience, police verification, and valid commercial licenses. Driver charges are included in the price."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Which routes are covered?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We cover 100+ routes including Delhi to Manali, Shimla, Jaipur, Agra, Haridwar, Rishikesh, and all major tourist destinations across North India. Custom routes are also available."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I book a tempo traveller?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Simply call +917668570551 or WhatsApp with your pickup location, destination, travel date, and group size. Get instant quote and confirm with a small advance payment."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is one-way booking available?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip bookings are generally more economical with package rates."
-            }
-          }
-        ]
+        "@id": `${SITE_URL}/tempo-traveller#faq`,
+        speakable,
+        mainEntity: faqData.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
       },
+      howTo,
+      ...comparison,
+      article,
       {
         "@type": "Service",
-        "@id": "https://www.trivenicabs.in/tempo-traveller#service",
-        "serviceType": "Tempo Traveller Rental Service",
-        "name": "Tempo Traveller on Rent India - 12 to 26 Seater AC Vehicles with Driver",
-        "description": "Premium tempo traveller rental service for group travel across India. Book 12, 16, 17, 20, 26 seater AC tempo travellers with professional drivers for outstation tours, family trips, corporate events, pilgrimages, and weddings. All-inclusive pricing from ₹23-27/km covering Delhi to Manali, Delhi to Shimla, Delhi to Jaipur, Chandigarh to Manali and 100+ more routes.",
-        "provider": {
-          "@type": "LocalBusiness",
-          "@id": "https://www.trivenicabs.in#organization",
-          "name": "Triveni Cabs",
-          "image": "https://www.trivenicabs.in/images/logo.png",
-          "telephone": "+91-7668570551",
-          "email": "cabstriveni@gmail.com",
-          "url": "https://www.trivenicabs.in",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "IN",
-            "addressRegion": "Delhi",
-            "addressLocality": "New Delhi"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "28.6139",
-            "longitude": "77.2090"
-          },
-          "priceRange": "₹₹",
-          "sameAs": [
-            "https://www.facebook.com/trivenicabs",
-            "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
-          ]
+        "@id": `${SITE_URL}/tempo-traveller#service`,
+        serviceType: "Tempo Traveller Rental",
+        name: "Tempo Traveller on Rent",
+        description:
+          "AC tempo traveller rental service (12, 17, 20, 26 seater) with experienced drivers across North India for outstation trips, weddings, group tours, and pilgrimages.",
+        provider: {
+          "@type": "TravelAgency",
+          "@id": `${SITE_URL}/#organization`,
+          name: "Triveni Cabs",
         },
-        "areaServed": [
-          {
-            "@type": "Country",
-            "name": "India"
-          },
-          {
-            "@type": "State",
-            "name": "Delhi"
-          },
-          {
-            "@type": "State",
-            "name": "Himachal Pradesh"
-          },
-          {
-            "@type": "State",
-            "name": "Uttarakhand"
-          },
-          {
-            "@type": "State",
-            "name": "Rajasthan"
-          },
-          {
-            "@type": "State",
-            "name": "Punjab"
-          },
-          {
-            "@type": "State",
-            "name": "Haryana"
-          },
-          {
-            "@type": "State",
-            "name": "Uttar Pradesh"
-          }
+        brand: {
+          "@type": "Brand",
+          name: "Triveni Cabs",
+        },
+        areaServed: [
+          { "@type": "State", name: "Delhi NCR" },
+          { "@type": "State", name: "Uttar Pradesh" },
+          { "@type": "State", name: "Uttarakhand" },
+          { "@type": "State", name: "Rajasthan" },
+          { "@type": "State", name: "Himachal Pradesh" },
+          { "@type": "State", name: "Punjab" },
         ],
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "INR",
-          "lowPrice": "23",
-          "highPrice": "27",
-          "offerCount": "5",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "priceCurrency": "INR",
-            "price": "23-27",
-            "unitText": "per kilometer"
-          },
-          "availability": "https://schema.org/InStock",
-          "url": "https://www.trivenicabs.in/tempo-traveller",
-          "validFrom": new Date().toISOString()
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "10000",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Tempo Traveller Fleet Options",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": "12 Seater Tempo Traveller on Rent",
-                "description": "AC tempo traveller with pushback seats, music system, GPS tracking for 12 passengers. Ideal for small family groups and corporate teams.",
-                "image": "https://www.trivenicabs.in/images/tempo/12_seater.jpg",
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Force Motors"
-                }
-              },
-              "priceCurrency": "INR",
-              "price": "23",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "23",
-                "priceCurrency": "INR",
-                "unitText": "per kilometer"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": "17 Seater Tempo Traveller on Rent",
-                "description": "Luxury AC tempo traveller with pushback recliner seats, music system, charging points for 17 passengers. Most popular choice for group travel.",
-                "image": "https://www.trivenicabs.in/images/tempo/17_seater.jpg",
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Force Motors"
-                }
-              },
-              "priceCurrency": "INR",
-              "price": "25",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "25",
-                "priceCurrency": "INR",
-                "unitText": "per kilometer"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": "20 Seater Tempo Traveller on Rent",
-                "description": "Spacious AC tempo with LED TV, music system, pushback seats for 20 passengers. Perfect for large group tours and wedding parties.",
-                "image": "https://www.trivenicabs.in/images/tempo/20_seater.jpg",
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Force Motors"
-                }
-              },
-              "priceCurrency": "INR",
-              "price": "26",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "26",
-                "priceCurrency": "INR",
-                "unitText": "per kilometer"
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": "26 Seater Tempo Traveller Maharaja on Rent",
-                "description": "Premium luxury Maharaja tempo traveller with super deluxe recliner seats, LED TV, powerful AC for 26 passengers. Top choice for comfort travel.",
-                "image": "https://www.trivenicabs.in/images/tempo/26_seater.jpg",
-                "brand": {
-                  "@type": "Brand",
-                  "name": "Force Motors"
-                }
-              },
-              "priceCurrency": "INR",
-              "price": "27",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "27",
-                "priceCurrency": "INR",
-                "unitText": "per kilometer"
-              }
-            }
-          ]
-        },
-        "availableChannel": {
-          "@type": "ServiceChannel",
-          "serviceUrl": "https://www.trivenicabs.in/tempo-traveller",
-          "servicePhone": "+91-7668570551",
-          "availableLanguage": ["English", "Hindi", "Punjabi"]
-        },
-        "hoursAvailable": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "00:00",
-          "closes": "23:59"
-        },
-        "termsOfService": "https://www.trivenicabs.in/terms-and-conditions",
-        "knowsAbout": [
+        knowsAbout: [
           "Tempo Traveller Rental",
-          "Group Travel India",
-          "Outstation Tempo Traveller",
-          "Delhi to Manali Tempo Traveller",
-          "Delhi to Shimla Tempo Traveller",
-          "Delhi to Jaipur Tempo Traveller",
-          "AC Tempo Traveller with Driver",
-          "12 Seater Tempo Traveller",
-          "17 Seater Tempo Traveller",
-          "20 Seater Tempo Traveller",
-          "26 Seater Tempo Traveller"
-        ]
-      }
-    ]
+          "Group Travel",
+          "Outstation Tours",
+          "Chardham Yatra",
+          "Wedding Transportation",
+        ],
+        aggregateRating,
+        review,
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Tempo Traveller Fleet",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "12 Seater Tempo Traveller",
+              },
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "23",
+                priceCurrency: "INR",
+                unitText: "per km",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "17 Seater Tempo Traveller",
+              },
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "26",
+                priceCurrency: "INR",
+                unitText: "per km",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "20 Seater Tempo Traveller",
+              },
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "30",
+                priceCurrency: "INR",
+                unitText: "per km",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "26 Seater Tempo Traveller",
+              },
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: "35",
+                priceCurrency: "INR",
+                unitText: "per km",
+              },
+            },
+          ],
+        },
+      },
+    ],
   };
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      <AEOHead pageType="tempo" data={{ url: '/tempo-traveller', title: 'Tempo Traveller Rental India' }} />
-      <TempoMainClient data={pageData} faqData={[
-        {
-          question: 'What seater options are available?',
-          answer: 'We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points.'
-        },
-        {
-          question: 'How much does tempo traveller rental cost?',
-          answer: 'Rates start from ₹23/km for 12-seater and go up to ₹27/km for 26-seater. Local packages (8hrs/80km) range from ₹6,000 to ₹11,000. All prices include fuel, driver, tolls, and parking.'
-        },
-        {
-          question: 'Are drivers provided with the rental?',
-          answer: 'Yes! All tempo travellers come with experienced professional drivers having 5+ years experience, police verification, and valid commercial licenses. Driver charges are included in the price.'
-        },
-        {
-          question: 'Which routes are covered?',
-          answer: 'We cover 100+ routes including Delhi to Manali, Shimla, Jaipur, Agra, Haridwar, Rishikesh, and all major tourist destinations across North India. Custom routes are also available.'
-        },
-        {
-          question: 'How do I book a tempo traveller?',
-          answer: 'Simply call +917668570551 or WhatsApp with your pickup location, destination, travel date, and group size. Get instant quote and confirm with a small advance payment.'
-        },
-        {
-          question: 'Is one-way booking available?',
-          answer: 'Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip bookings are generally more economical with package rates.'
-        }
-      ]} />
-    </>
-  );
+  return <TempoMainClient faqData={faqData} jsonLd={jsonLd} />;
 }

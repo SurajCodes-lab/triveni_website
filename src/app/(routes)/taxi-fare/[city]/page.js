@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getTaxiFareCity, getAllTaxiFareSlugs, getRelatedTaxiFareCities } from '@/utilis/taxiFareData';
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import CityTaxiFareClient from '@/components/taxi-fare/CityTaxiFareClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -114,7 +115,7 @@ export default async function TaxiFarePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5"
     }
   };
@@ -155,7 +156,7 @@ export default async function TaxiFarePage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(slug)),
       "bestRating": "5"
     }
   };

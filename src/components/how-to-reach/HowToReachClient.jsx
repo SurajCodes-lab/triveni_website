@@ -7,7 +7,6 @@ import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
 import {
   Phone, ArrowRight, ChevronRight, ChevronDown, Clock, Car, Bus, Plane, TrainFront,
   CheckCircle2, Route, MapPin, Navigation, Star, Users, Zap, Info,
@@ -373,7 +372,7 @@ export default function HowToReachClient({ route, relatedRoutes }) {
               {[
                 { key: 'sedan', name: 'Sedan', sub: route.cabPricing.sedan.type, fare: route.cabPricing.sedan.price, perKm: route.cabPricing.sedan.perKm, seats: '4 Seater', pop: false, img: '/images/car/swift_dzire.jpg' },
                 { key: 'suv',   name: 'SUV',   sub: route.cabPricing.suv.type,   fare: route.cabPricing.suv.price,   perKm: route.cabPricing.suv.perKm,   seats: '6-7 Seater', pop: true,  img: '/images/car/innova_crysta.jpg' },
-                { key: 'tempo', name: 'Tempo Traveller', sub: route.cabPricing.tempo.type, fare: route.cabPricing.tempo.price, perKm: route.cabPricing.tempo.perKm, seats: '12 Seater', pop: false, img: '/images/car/premium_suv.jpg' },
+                { key: 'tempo', name: 'Tempo Traveller', sub: route.cabPricing.tempo.type, fare: route.cabPricing.tempo.price, perKm: route.cabPricing.tempo.perKm, seats: '12 Seater', pop: false, img: '/images/tempo/12_seater.jpg' },
               ].map((v, i) => (
                 <ScrollReveal key={i} stagger={i * 100}>
                   <div className={`relative rounded-2xl overflow-hidden group ${v.pop ? 'ring-2 ring-[#FACF2D]/50' : ''}`}>
@@ -447,7 +446,6 @@ export default function HowToReachClient({ route, relatedRoutes }) {
       )}
 
       <CTASection heading="Ready to Travel?" subheading={`Book your ${route.origin} to ${route.destination} cab. AC vehicles, verified drivers, 24/7 booking.`} />
-      <MobileStickyBar />
     </div>
   );
 }

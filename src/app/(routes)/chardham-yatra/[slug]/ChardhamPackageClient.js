@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, Clock, Sun, Award, Crown, Zap, Heart, Package, Bus, Fuel, Route, Compass } from '@/components/ui/icons';
+import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award, Crown, Zap, Heart, Package, Bus, Fuel, Route, Compass } from '@/components/ui/icons';
+import { registrationSteps, packingTips, seasonGuide, exclusions } from '@/utilis/chardhamYatraData';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 // ============================================================================
 // CHARDHAM PACKAGE CLIENT — "Royal Yatra" Design
@@ -160,7 +162,7 @@ export default function ChardhamPackageClient({ data }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-serif mb-3 leading-tight"
+                className="speakable-headline text-3xl sm:text-4xl md:text-5xl font-bold text-white font-serif mb-3 leading-tight"
               >
                 {title}
               </motion.h1>
@@ -168,7 +170,16 @@ export default function ChardhamPackageClient({ data }) {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 }}
+                transition={{ delay: 0.13 }}
+                className="speakable-lead text-white/75 text-base md:text-lg mb-3 max-w-2xl leading-relaxed"
+              >
+                This {theme.name.toLowerCase()} Char Dham Yatra 2026 package uses the {vehicle.name} ({vehicle.seats}-seater) at ₹{vehicle.perKm}/km — from {estimatedPrice} for the full {duration} circuit covering all four Dhams. Includes vehicle, fuel, driver, tolls and 24/7 support with experienced hill drivers.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.16 }}
                 className={`${theme.textMuted} text-lg italic mb-8`}
               >
                 {theme.tagline}
@@ -226,6 +237,22 @@ export default function ChardhamPackageClient({ data }) {
                   <MessageCircle className="w-5 h-5" /> WhatsApp
                 </a>
               </motion.div>
+
+              {/* Trust Row */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-7 text-white/80 text-sm"
+              >
+                <span className="flex items-center gap-1.5"><Star className={`w-4 h-4 ${theme.text}`} /> 4.9&#9733; Rated</span>
+                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> 10,000+ trips</span>
+                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-cyan-400" /> Verified hill drivers</span>
+                <span className="w-1 h-1 rounded-full bg-white/30" />
+                <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No advance payment</span>
+              </motion.div>
             </div>
 
             {/* Right: Vehicle Image */}
@@ -244,6 +271,19 @@ export default function ChardhamPackageClient({ data }) {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Quick Enquiry Form ===== */}
+      <section className="py-14">
+        <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Reserve the {theme.name} Package</h2>
+            <p className="text-white/70 leading-relaxed">Share your dates and group size for a transparent, all-inclusive quote within minutes. Reserve with a small refundable token — pay the balance on arrival.</p>
+          </div>
+          <div className="flex lg:justify-end">
+            <QuickEnquiryForm pageType="chardham" />
           </div>
         </div>
       </section>
@@ -517,7 +557,7 @@ export default function ChardhamPackageClient({ data }) {
                 <strong className="text-white">Route covered:</strong> Delhi → Haridwar → Barkot → Yamunotri → Uttarkashi → Gangotri → Guptkashi → Kedarnath → Badrinath → Rudraprayag → Haridwar → Delhi. The exact itinerary is customizable based on your preferences.
               </p>
               <p>
-                <strong className="text-white">Booking process:</strong> Call <strong className={theme.text}>7668570551</strong> or WhatsApp us to discuss your preferred dates, group size, and any customizations. We provide a detailed quotation within 1 hour. Booking requires a 30% advance, with the balance payable before departure.
+                <strong className="text-white">Booking process:</strong> Call <strong className={theme.text}>7668570551</strong> or WhatsApp us to discuss your preferred dates, group size, and any customizations. We provide a detailed quotation within 1 hour. Reserve your vehicle with a small refundable token — the balance is payable on arrival, so there is no large advance required.
               </p>
             </div>
 
@@ -541,6 +581,69 @@ export default function ChardhamPackageClient({ data }) {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ===== SECTION: Registration & Biometric ===== */}
+      <section className="py-20 bg-black/20">
+        <div className="max-w-5xl mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>Mandatory in 2026</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Registration &amp; Biometric Steps</h2>
+            <p className="text-gray-400 mt-3">Free with this package — we handle the paperwork for you</p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {registrationSteps.map((step, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className={`bg-white/5 border border-white/10 rounded-2xl p-6 ${theme.hoverBorder} transition-all`}
+              >
+                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${theme.gradient} flex items-center justify-center text-white font-bold text-sm mb-3`}>{i + 1}</div>
+                <h3 className="text-white font-semibold mb-2">{step.name}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{step.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SECTION: Packing, Season & Exclusions ===== */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">What to Pack &amp; Altitude Tips</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {packingTips.map((tip, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <h3 className={`font-semibold text-sm mb-1 ${theme.text}`}>{tip.title}</h3>
+                    <p className="text-gray-400 text-xs leading-relaxed">{tip.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">Best Time to Travel</h2>
+              <div className="space-y-3">
+                {seasonGuide.map((s, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-white font-semibold text-sm">{s.period}</span>
+                      <span className={`text-xs font-bold ${theme.text}`}>{s.label}</span>
+                    </div>
+                    <p className="text-gray-400 text-sm">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="bg-white/5 border border-rose-500/20 rounded-xl p-5 max-w-3xl mx-auto">
+            <h3 className="text-rose-400 font-bold mb-3 flex items-center gap-2 text-sm"><XCircle className="w-4 h-4" /> Not Included in This Package</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {exclusions.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-gray-300/80 text-sm"><XCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -577,7 +680,7 @@ export default function ChardhamPackageClient({ data }) {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-gray-300/70 leading-relaxed">{faq.answer}</p>
+                      <p className={`px-5 pb-5 text-gray-300/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -19,7 +19,7 @@ export default function FaqAccordion({ heading = 'Frequently Asked Questions', f
   if (!faqs.length) return null;
 
   return (
-    <section className="py-12 sm:py-16 px-4 sm:px-6 bg-gray-50">
+    <section className="faq-section py-12 sm:py-16 px-4 sm:px-6 bg-gray-50">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">FAQ</p>
@@ -53,7 +53,7 @@ export default function FaqAccordion({ heading = 'Frequently Asked Questions', f
                 <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="px-5 pb-5">
                     <div className="h-px bg-gray-100 mb-4" />
-                    <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+                    <p className={`text-gray-600 text-sm leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </div>
               </div>

@@ -1,7 +1,9 @@
 import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
+import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
-const data = friendsTripData['kasol'];
+const SLUG = "friends-trip-kasol";
+const data = friendsTripData["kasol"];
 
 export const metadata = {
   title: 'Friends Trip to Kasol by Tempo Traveller | Rs 1,175/Person | 2026',
@@ -15,12 +17,34 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export default function FriendsTripKasolPage() {
-  const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Friends Trip to Kasol", "item": "https://www.trivenicabs.in/friends-trip-kasol" }] };
-  const tripSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": "Friends Trip to Kasol by Tempo Traveller", "description": data.tagline, "touristType": "Friends Group", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551" }, "offers": { "@type": "AggregateOffer", "lowPrice": "4000", "highPrice": "10000", "priceCurrency": "INR" } };
-  const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": data.faqs.map(faq => ({ "@type": "Question", "name": faq.question, "acceptedAnswer": { "@type": "Answer", "text": faq.answer } })) };
+export default function FriendsTripPage() {
+  const lowPrice = data.price.tempo12 || data.price.tempo17 || 0;
+  const highPrice = data.price.tempo17 || data.price.minibus || lowPrice;
+  const schemaGraph = buildTripSchemaGraph({
+    data,
+    slug: SLUG,
+    touristType: 'Friends Group',
+    citySlug: "kasol",
+    breadcrumbTrail: [
+      { name: 'Home', url: 'https://www.trivenicabs.in' },
+      { name: 'Friends Trip to Kasol', url: `https://www.trivenicabs.in/${SLUG}` },
+    ],
+    image: '/images/triveni-cabs-og.jpg',
+    lowPrice,
+    highPrice,
+    tripName: 'Friends Trip to Kasol by Tempo Traveller from Delhi',
+    howToName: 'How to Plan a Friends Group Trip to Kasol from Delhi',
+    howToDesc: 'Step-by-step guide to booking a Tempo Traveller for a friends group trip to Kasol from Delhi with Triveni Cabs.',
+  });
 
-  return (<><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><FriendsTripClient data={data} /></>);
+  return (
+    <>
+      {schemaGraph.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      <FriendsTripClient data={data} />
+    </>
+  );
 }
 
-export const revalidate = false;
+export const revalidate = 3600;

@@ -7,7 +7,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2001,
     slug: "best-weekend-getaways-from-delhi-tempo-traveller-2026",
-    title: "15 Best Weekend Getaways from Delhi by Tempo Traveller 2026 - Complete Guide",
+    title: "15 Best Weekend Getaways from Delhi by Tempo Traveller 2026",
     excerpt: "Escape the Delhi chaos! Discover 15 stunning weekend destinations perfect for group travel by tempo traveller. From hill stations to heritage cities - plan your perfect weekend trip.",
 
     relatedTours: [
@@ -446,15 +446,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: false,
     views: 0,
-    metaTitle: "15 Best Weekend Getaways from Delhi by Tempo Traveller 2026 | Group Travel Guide",
-    metaDescription: "Discover 15 amazing weekend destinations from Delhi perfect for tempo traveller trips. From Nainital to Rishikesh, plan your group getaway with our complete guide."
+    metaTitle: "15 Best Weekend Getaways from Delhi by Tempo Traveller 2026",
+    metaDescription: "Discover 15 amazing weekend destinations from Delhi perfect for tempo traveller trips. From Nainital to Rishikesh."
   },
 
   // Blog 2: Shimla Manali Complete Tour Guide
   {
     id: 2002,
     slug: "shimla-manali-tour-complete-guide-2026",
-    title: "Shimla Manali Tour Package 2026: Complete Itinerary, Costs & Travel Tips",
+    title: "Shimla Manali Tour Package 2026: Itinerary, Costs& Travel Tips",
     excerpt: "Planning a Shimla Manali trip? Get the ultimate guide with detailed itineraries, costs, best time to visit, and insider tips for an unforgettable Himachal Pradesh adventure.",
 
     relatedTours: [
@@ -825,7 +825,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: false,
     views: 0,
-    metaTitle: "Shimla Manali Tour Package 2026: Complete Itinerary & Travel Guide | Triveni Cabs",
+    metaTitle: "Shimla Manali Tour Package 2026: Complete Itinerary &",
     metaDescription: "Plan your perfect Shimla Manali trip with our complete 2026 guide. Detailed itineraries, costs, best time to visit, adventure activities & insider tips."
   },
 
@@ -1188,7 +1188,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: false,
     views: 0,
-    metaTitle: "Amritsar Golden Temple & Wagah Border 2026: Complete Travel Guide | Triveni Cabs",
+    metaTitle: "Amritsar Golden Temple & Wagah Border 2026: Complete Travel Guide",
     metaDescription: "Plan your Amritsar trip with our complete guide. Golden Temple darshan timings, Wagah Border ceremony, famous food, and insider tips for 2026."
   },
 
@@ -1196,7 +1196,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2004,
     slug: "kashmir-valley-paradise-complete-guide-2026",
-    title: "Kashmir Valley 2026: Ultimate Paradise Guide - Srinagar, Gulmarg, Pahalgam & Sonmarg",
+    title: "Kashmir Valley 2026: Ultimate Paradise Guide - Srinagar,",
     excerpt: "Experience Heaven on Earth! Complete Kashmir travel guide covering Srinagar houseboats, Gulmarg skiing, Pahalgam valleys, and Sonmarg glaciers. Includes best time, costs, itineraries, and safety tips for 2026.",
 
     relatedTours: [
@@ -1700,15 +1700,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Kashmir Valley 2026: Complete Travel Guide - Srinagar, Gulmarg, Pahalgam, Sonmarg | Triveni Cabs",
-    metaDescription: "Plan your Kashmir trip with our ultimate 2026 guide. Dal Lake houseboats, Gulmarg gondola, Pahalgam valleys, Sonmarg glacier - itineraries, costs, best time & tips."
+    metaTitle: "Kashmir Valley 2026: Complete Travel Guide - Srinagar,",
+    metaDescription: "Plan your Kashmir trip with our ultimate 2026 guide. Dal Lake houseboats, Gulmarg gondola, Pahalgam valleys, Sonmarg glacier - itineraries, costs."
   },
 
   // Blog 5: Haridwar Rishikesh Spiritual Guide
   {
     id: 2005,
     slug: "haridwar-rishikesh-spiritual-tour-guide-2026",
-    title: "Haridwar & Rishikesh 2026: Complete Spiritual & Adventure Travel Guide",
+    title: "Haridwar& Rishikesh 2026: Spiritual& Adventure Travel Guide",
     excerpt: "Discover the spiritual heart of India! Complete guide to Haridwar Ganga Aarti, Rishikesh yoga, rafting adventures, temples, ashrams, and the sacred Ganges. Perfect planning tips for 2026.",
 
     relatedTours: [
@@ -2189,7 +2189,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Haridwar & Rishikesh 2026: Complete Spiritual & Adventure Guide | Triveni Cabs",
+    metaTitle: "Haridwar & Rishikesh 2026: Complete Spiritual & Adventure Guide",
     metaDescription: "Plan your Haridwar Rishikesh trip with our complete 2026 guide. Ganga Aarti timings, yoga ashrams, rafting adventures, temples, and insider tips."
   },
 
@@ -2197,7 +2197,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2006,
     slug: "jaipur-pink-city-complete-travel-guide-2026",
-    title: "Jaipur Pink City 2026: Complete Travel Guide - Forts, Palaces, Culture & Hidden Gems",
+    title: "Jaipur Pink City 2026: Complete Travel Guide - Forts,",
     excerpt: "Explore the majestic Pink City! Complete Jaipur travel guide covering Amber Fort, Hawa Mahal, City Palace, local markets, Rajasthani cuisine, and insider tips for an unforgettable royal experience in 2026.",
 
     relatedTours: [
@@ -2651,7 +2651,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Jaipur Pink City 2026: Complete Travel Guide - Forts, Palaces, Shopping | Triveni Cabs",
+    metaTitle: "Jaipur Pink City 2026: Complete Travel Guide - Forts,",
     metaDescription: "Plan your Jaipur trip with our complete 2026 guide. Amber Fort, Hawa Mahal, City Palace, markets, food, and insider tips for the Pink City experience."
   },
 
@@ -3114,7 +3114,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Golden Triangle India 2026: Delhi-Agra-Jaipur Complete Tour Guide | Triveni Cabs",
+    metaTitle: "Golden Triangle India 2026: Delhi-Agra-Jaipur Complete Tour Guide",
     metaDescription: "Plan your Golden Triangle trip with our 2026 guide. Taj Mahal, Red Fort, Amber Fort - best itineraries, costs, transport options & insider tips."
   },
 
@@ -3122,7 +3122,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2008,
     slug: "udaipur-city-of-lakes-complete-guide-2026",
-    title: "Udaipur 2026: Complete Guide to the City of Lakes - Palaces, Romance & Royal Heritage",
+    title: "Udaipur 2026: Complete Guide to the City of Lakes -",
     excerpt: "Discover the Venice of the East! Complete Udaipur travel guide covering Lake Pichola, City Palace, Jag Mandir, romantic experiences, Mewar heritage, and insider tips for the most romantic city in India.",
 
     relatedTours: [
@@ -3558,15 +3558,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Udaipur 2026: Complete City of Lakes Travel Guide - Palaces, Romance & Heritage | Triveni Cabs",
-    metaDescription: "Plan your Udaipur trip with our complete 2026 guide. Lake Pichola, City Palace, Taj Lake Palace, romantic experiences, and insider tips for the Venice of the East."
+    metaTitle: "Udaipur 2026: Complete City of Lakes Travel Guide -",
+    metaDescription: "Plan your Udaipur trip with our complete 2026 guide. Lake Pichola, City Palace, Taj Lake Palace, romantic experiences."
   },
 
   // Blog 9: Ranthambore National Park Safari Guide
   {
     id: 2009,
     slug: "ranthambore-national-park-tiger-safari-guide-2026",
-    title: "Ranthambore National Park 2026: Complete Tiger Safari Guide - Zones, Best Time & Tips",
+    title: "Ranthambore National Park 2026: Complete Tiger Safari Guide",
     excerpt: "Witness the Royal Bengal Tiger in its natural habitat! Complete Ranthambore safari guide covering all zones, safari timings, booking tips, best time to visit, the iconic Ranthambore Fort, and insider tips for Rajasthan's premier wildlife destination.",
 
     relatedTours: [
@@ -4001,7 +4001,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Ranthambore National Park 2026: Complete Tiger Safari Guide - Zones, Booking | Triveni Cabs",
+    metaTitle: "Ranthambore National Park 2026: Complete Tiger Safari Guide",
     metaDescription: "Plan your Ranthambore safari with our complete 2026 guide. Zone info, safari timings, tiger spotting tips, Ranthambore Fort, and insider secrets."
   },
 
@@ -4009,7 +4009,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2010,
     slug: "jodhpur-blue-city-complete-travel-guide-2026",
-    title: "Jodhpur 2026: Complete Guide to the Blue City - Mehrangarh Fort, Blue Houses & Royal Heritage",
+    title: "Jodhpur 2026: Complete Guide to the Blue City - Mehrangarh",
     excerpt: "Discover the majestic Blue City! From towering Mehrangarh Fort to blue-washed old city houses, spicy Mirchi Vada to royal palaces - your complete Jodhpur travel guide for 2026.",
 
     relatedTours: [
@@ -4544,15 +4544,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Jodhpur 2026: Complete Guide to the Blue City - Mehrangarh Fort, Blue Houses & Royal Heritage | Triveni Cabs",
-    metaDescription: "Plan your Jodhpur trip with our ultimate 2026 guide. Mehrangarh Fort, Blue City heritage walk, local food, shopping, costs, and insider tips for the perfect visit."
+    metaTitle: "Jodhpur 2026: Complete Guide to the Blue City - Mehrangarh",
+    metaDescription: "Plan your Jodhpur trip with our ultimate 2026 guide. Mehrangarh Fort, Blue City heritage walk, local food, shopping, costs."
   },
 
   // Blog 11: Ayodhya Ram Mandir Guide
   {
     id: 2011,
     slug: "ayodhya-ram-mandir-complete-travel-guide-2026",
-    title: "Ayodhya 2026: Complete Ram Mandir Darshan Guide - Temple Timings, Booking & Spiritual Journey",
+    title: "Ayodhya 2026: Complete Ram Mandir Darshan Guide - Temple",
     excerpt: "Experience the divine! Complete guide to Ram Mandir darshan in Ayodhya - temple timings, online booking, what to expect, nearby attractions & travel tips for pilgrims in 2026.",
 
     relatedTours: [
@@ -5055,7 +5055,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2012,
     slug: "nainital-lake-district-complete-travel-guide-2026",
-    title: "Nainital 2026: Complete Guide to the Lake District - Naini Lake, Boating, Snow View & Best Things to Do",
+    title: "Nainital 2026: Complete Guide to the Lake District - Naini",
     excerpt: "Escape to the enchanting Lake District of Uttarakhand! Complete Nainital guide covering Naini Lake, boating, cable car rides, Mall Road shopping, nearby attractions & travel tips for 2026.",
 
     relatedTours: [
@@ -5573,15 +5573,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Nainital 2026: Complete Guide to the Lake District - Naini Lake, Boating, Snow View & Tips | Triveni Cabs",
-    metaDescription: "Plan your Nainital trip with our complete 2026 guide. Naini Lake boating, Snow View ropeway, Mall Road, nearby lakes, costs & insider tips for the Lake District."
+    metaTitle: "Nainital 2026: Complete Guide to the Lake District - Naini",
+    metaDescription: "Plan your Nainital trip with our complete 2026 guide. Naini Lake boating, Snow View ropeway, Mall Road, nearby lakes."
   },
 
   // Blog 13: Mussoorie Queen of Hills Guide
   {
     id: 2013,
     slug: "mussoorie-queen-of-hills-complete-travel-guide-2026",
-    title: "Mussoorie 2026: Complete Guide to the Queen of Hills - Kempty Falls, Mall Road & Himalayan Views",
+    title: "Mussoorie 2026: Complete Guide to the Queen of Hills -",
     excerpt: "Experience the charm of India's beloved hill station! Complete Mussoorie guide covering Kempty Falls, Gun Hill, Landour, Mall Road, adventure activities & travel tips for 2026.",
 
     relatedTours: [
@@ -6092,15 +6092,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Mussoorie 2026: Complete Guide to the Queen of Hills - Kempty Falls, Mall Road & Tips | Triveni Cabs",
-    metaDescription: "Plan your Mussoorie trip with our complete 2026 guide. Kempty Falls, Gun Hill, Landour, Mall Road, adventure activities, costs & insider tips for the Queen of Hills."
+    metaTitle: "Mussoorie 2026: Complete Guide to the Queen of Hills -",
+    metaDescription: "Plan your Mussoorie trip with our complete 2026 guide. Kempty Falls, Gun Hill, Landour, Mall Road, adventure activities."
   },
 
   // Blog 14: Mathura Vrindavan Krishna Pilgrimage Guide
   {
     id: 2014,
     slug: "mathura-vrindavan-krishna-pilgrimage-guide-2026",
-    title: "Mathura Vrindavan 2026: Complete Krishna Pilgrimage Guide - Temples, Holi, Janmashtami & Spiritual Journey",
+    title: "Mathura Vrindavan 2026: Complete Krishna Pilgrimage Guide -",
     excerpt: "Walk in Lord Krishna's footsteps! Complete guide to Mathura and Vrindavan pilgrimage - sacred temples, Janmashtami celebrations, Holi festival, darshan timings & travel tips for 2026.",
 
     relatedTours: [
@@ -6541,7 +6541,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Mathura Vrindavan 2026: Complete Krishna Pilgrimage Guide - Temples, Holi & Tips | Triveni Cabs",
+    metaTitle: "Mathura Vrindavan 2026: Complete Krishna Pilgrimage Guide -",
     metaDescription: "Plan your Mathura Vrindavan pilgrimage with our 2026 guide. Krishna Janmabhoomi, Banke Bihari, Prem Mandir, festival tips & spiritual journey insights."
   },
 
@@ -6549,7 +6549,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2015,
     slug: "vaishno-devi-pilgrimage-complete-guide-2026",
-    title: "Vaishno Devi 2026: Complete Pilgrimage Guide - Yatra Route, Helicopter Booking, Darshan Tips & Travel",
+    title: "Vaishno Devi 2026: Complete Pilgrimage Guide - Yatra Route,",
     excerpt: "Embark on the sacred journey to Mata Vaishno Devi! Complete yatra guide covering trek routes, helicopter booking, pony/palki options, darshan timings, accommodation & essential tips for 2026.",
 
     relatedTours: [
@@ -7081,7 +7081,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2016,
     slug: "group-travel-tempo-traveller-guide-india-2026",
-    title: "Group Travel 2026: Complete Tempo Traveller Rental Guide for Family Trips, Corporate Tours & Pilgrimages in India",
+    title: "Group Travel 2026: Complete Tempo Traveller Rental Guide",
     excerpt: "Planning a group trip? Discover everything about tempo traveller rentals in India - from 9-seater luxury minivans to 26-seater coaches. Expert tips on booking, routes, costs, and making your group travel memorable and hassle-free.",
     relatedTours: [
       {
@@ -7187,7 +7187,7 @@ export const sightseeingBlogPosts = [
             <li>✓ Seating: 17 reclining seats</li>
             <li>✓ Features: AC, LED TV option</li>
             <li>✓ Luggage: Extra-large carrier</li>
-            <li>✓ Rate: ₹22-26/km</li>
+            <li>✓ Rate: ₹24-26/km</li>
             <li>✓ Ideal trips: Multi-day tours</li>
           </ul>
         </div>
@@ -7725,15 +7725,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Group Travel & Tempo Traveller Rental Guide 2026: Types, Rates & Booking Tips | Triveni Cabs",
-    metaDescription: "Complete tempo traveller rental guide for 2026. Compare 9, 12, 17, 26 seater options, pricing, routes & expert tips for family, corporate & pilgrimage group travel."
+    metaTitle: "Group Travel & Tempo Traveller Rental Guide 2026: Types,",
+    metaDescription: "Complete tempo traveller rental guide for 2026. Compare 9, 12, 17, 26 seater options, pricing, routes & expert tips for family."
   },
 
   // Blog 17: Honeymoon Destinations North India
   {
     id: 2017,
     slug: "best-honeymoon-destinations-north-india-2026",
-    title: "Romantic North India 2026: 15 Dreamy Honeymoon Destinations for Newlyweds | Complete Planning Guide",
+    title: "Romantic North India 2026: 15 Dreamy Honeymoon Destinations",
     excerpt: "Begin your forever journey in the most romantic settings of North India. From snow-capped Himalayan retreats to royal Rajasthani palaces, discover perfect honeymoon destinations with detailed itineraries, couple-friendly stays, and intimate experiences.",
     relatedTours: [
       {
@@ -8311,7 +8311,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2018,
     slug: "corporate-team-outing-destinations-north-india-2026",
-    title: "Corporate Team Outing 2026: Best Destinations, Activities & Planning Guide for Office Trips Near Delhi NCR",
+    title: "Corporate Team Outing 2026: Best Destinations, Activities &",
     excerpt: "Transform your team with the perfect offsite! Discover top corporate outing destinations near Delhi NCR, adventure activities, team-building programs, and expert tips for planning memorable office trips that boost morale and productivity.",
     relatedTours: [
       {
@@ -8663,7 +8663,7 @@ export const sightseeingBlogPosts = [
           <ul class="space-y-2 text-gray-700">
             <li><strong>Best For:</strong> Teams of 12-15 people</li>
             <li><strong>Features:</strong> AC, reclining seats, LED TV</li>
-            <li><strong>Rate:</strong> ₹22-26/km</li>
+            <li><strong>Rate:</strong> ₹24-26/km</li>
             <li><strong>Ideal:</strong> Department outings</li>
           </ul>
         </div>
@@ -8856,7 +8856,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Corporate Team Outing Destinations Near Delhi 2026 | Team Building Activities & Planning Guide | Triveni Cabs",
+    metaTitle: "Corporate Team Outing Destinations Near Delhi 2026",
     metaDescription: "Plan the perfect corporate outing! Top destinations near Delhi NCR, team-building activities, budget breakdown & expert tips for memorable office trips in 2026."
   },
 
@@ -8864,7 +8864,7 @@ export const sightseeingBlogPosts = [
   {
     id: 2019,
     slug: "budget-travel-tips-india-2026-money-saving-guide",
-    title: "Budget Travel India 2026: 50+ Money-Saving Tips, Hacks & Complete Guide to Affordable Travel",
+    title: "Budget Travel India 2026: 50+ Money-Saving Tips, Hacks &",
     excerpt: "Travel more, spend less! Master the art of budget travel in India with insider tips on cheap transportation, affordable accommodation, food hacks, and smart booking strategies. Explore incredible India without burning a hole in your pocket.",
     relatedTours: [
       {
@@ -9429,15 +9429,15 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Budget Travel India 2026: 50+ Money-Saving Tips & Hacks for Affordable Travel | Triveni Cabs",
-    metaDescription: "Master budget travel in India! Complete guide with 50+ tips on cheap transport, affordable stays, food hacks, and smart booking strategies. Travel more, spend less!"
+    metaTitle: "Budget Travel India 2026: 50+ Money-Saving Tips & Hacks for",
+    metaDescription: "Master budget travel in India! Complete guide with 50+ tips on cheap transport, affordable stays, food hacks, and smart booking strategies."
   },
 
   // Blog 20: Road Safety & Highway Travel Guide
   {
     id: 2020,
     slug: "road-safety-highway-travel-tips-india-2026",
-    title: "Road Safety India 2026: Complete Highway Travel Guide, Safety Tips & Emergency Protocols for Long Distance Travel",
+    title: "Road Safety India 2026: Complete Highway Travel Guide,",
     excerpt: "Stay safe on Indian highways! Essential road safety tips, emergency protocols, night driving guidelines, monsoon travel precautions, and everything you need to know for safe long-distance travel across India's diverse terrains.",
     relatedTours: [
       {
@@ -10017,7 +10017,7 @@ export const sightseeingBlogPosts = [
     ],
     featured: true,
     views: 0,
-    metaTitle: "Road Safety India 2026: Complete Highway Travel & Driving Safety Guide | Triveni Cabs",
+    metaTitle: "Road Safety India 2026: Complete Highway Travel & Driving",
     metaDescription: "Stay safe on Indian highways! Complete guide on road safety, night driving tips, monsoon precautions, emergency protocols & mountain road guidelines for 2026."
   },
 

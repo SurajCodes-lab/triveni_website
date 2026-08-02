@@ -1,3 +1,4 @@
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
 
 export const revalidate = 3600;
@@ -16,15 +17,15 @@ export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
-    title: 'Guru Purab 2026 — Amritsar & Golden Temple Cab Service | Triveni Cabs',
+    title: 'Guru Purab 2026 — Amritsar & Golden Temple Cab Service',
     description: pageDesc,
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
     siteName: 'Triveni Cabs',
-    images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Guru Purab Amritsar Cab Service' }],
+    images: [{ url: '/images/sightseeing/Amritsar/Golden_Temple.jpg', width: 1200, height: 630, alt: 'Guru Purab Amritsar Cab Service' }],
   },
-  twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
+  twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Amritsar/Golden_Temple.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -44,7 +45,7 @@ export default function GuruPurabPage() {
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Amritsar" }],
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('guru-purab-amritsar-transport')), "bestRating": "5" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

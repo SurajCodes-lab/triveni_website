@@ -33,7 +33,7 @@ const RentalPackageClient = ({ rental }) => {
       `}</style>
 
       {/* HERO SECTION - Clean professional blue */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'linear-gradient(rgba(245,158,11,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.5) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
@@ -67,11 +67,18 @@ const RentalPackageClient = ({ rental }) => {
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
+          <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
             <span className="text-white drop-shadow-lg">{rental.duration}</span>
             <br />
             <span className="shimmer-blue">Cab Rental Package</span>
           </h1>
+
+          {/* Direct-answer lead (voice/AEO) — data-driven, only when provided */}
+          {rental.speakableLead && (
+            <p className="speakable-lead text-white/80 text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed">
+              {rental.speakableLead}
+            </p>
+          )}
 
           {/* Duration + KM pill */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -97,6 +104,15 @@ const RentalPackageClient = ({ rental }) => {
                 <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 bg-clip-text text-transparent">{rental.fares.sedan}</span>
                 <span className="text-white/50 text-lg text-left">Sedan<br/>{rental.km}</span>
               </div>
+            </div>
+            {/* Trust microbar */}
+            <div className="mt-4 inline-flex items-center gap-3 text-sm text-white/70">
+              <span className="flex items-center gap-1 font-semibold text-amber-300">
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
+                <span className="ml-1 text-white/80">4.9</span>
+              </span>
+              <span className="text-white/30">·</span>
+              <span className="font-medium">10,000+ trips</span>
             </div>
           </div>
 
@@ -155,11 +171,17 @@ const RentalPackageClient = ({ rental }) => {
                   <div className="text-4xl font-black bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent mb-2">{v.fare}</div>
                   <p className="text-gray-400 text-xs mb-1">Extra km: {v.extra}</p>
                   <p className="text-gray-400 text-xs mb-6">Extra hour: {v.extraHr}</p>
-                  <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-white px-6 py-3.5 rounded-xl font-bold text-sm w-full justify-center transition-all duration-300 shadow-lg shadow-amber-500/20">
-                    <BsWhatsapp className="w-4 h-4" />
-                    Book Now
-                  </a>
+                  <div className="grid grid-cols-[1fr_auto] gap-2">
+                    <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-white px-6 py-3.5 rounded-xl font-bold text-sm justify-center transition-all duration-300 shadow-lg shadow-amber-500/20">
+                      <BsWhatsapp className="w-4 h-4" />
+                      Book Now
+                    </a>
+                    <a onClick={() => trackPhoneCall('rental_vehicle_card')} href={`tel:+91${phoneNumber}`} aria-label={`Call to book ${v.type}`}
+                      className="inline-flex items-center justify-center px-4 rounded-xl font-bold text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 transition-all duration-300">
+                      <Phone className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -213,6 +235,45 @@ const RentalPackageClient = ({ rental }) => {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FARE TABLE - How much does it cost? (AEO featured-snippet target) */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
+              How Much Does a <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">{rental.duration} Cab</span> Cost?
+            </h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Flat-rate fares for {rental.duration} / {rental.km}. No surge pricing — extra km and hours billed transparently only if you exceed the package.</p>
+          </div>
+          <div className="overflow-x-auto rounded-3xl border border-gray-100 shadow-xl">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="bg-gray-900 text-white">
+                  <th className="p-4 font-bold">Vehicle</th>
+                  <th className="p-4 font-bold text-amber-300">Package Fare</th>
+                  <th className="p-4 font-bold">Extra km</th>
+                  <th className="p-4 font-bold">Extra hour</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 bg-white">
+                {[
+                  { type: "Sedan (4 seater)", fare: rental.fares.sedan, km: rental.extraKm.sedan, hr: rental.extraHour.sedan },
+                  { type: "SUV (6 seater)", fare: rental.fares.suv, km: rental.extraKm.suv, hr: rental.extraHour.suv },
+                  { type: "Innova Crysta (6 seater)", fare: rental.fares.innova, km: rental.extraKm.innova, hr: rental.extraHour.innova },
+                ].map((r, i) => (
+                  <tr key={i} className={i % 2 ? "bg-amber-50/30" : "bg-white"}>
+                    <td className="p-4 font-semibold text-gray-800">{r.type}</td>
+                    <td className="p-4 font-black text-amber-600">{r.fare}</td>
+                    <td className="p-4 text-gray-500">{r.km}</td>
+                    <td className="p-4 text-gray-500">{r.hr}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-gray-400 text-xs mt-4 text-center">Fares include AC vehicle, fuel and driver. Toll, parking and night charges (after 10 PM) are extra at actuals.</p>
         </div>
       </section>
 
@@ -290,7 +351,7 @@ const RentalPackageClient = ({ rental }) => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { icon: Shield, title: "No Hidden Charges", desc: "Transparent pricing, no surprises" },
-              { icon: Star, title: "4.8 Rating", desc: "2,800+ happy customers" },
+              { icon: Star, title: "4.9 Rating", desc: "Thousands of happy customers" },
               { icon: Clock, title: "Punctual Pickup", desc: "Driver arrives on time, every time" },
               { icon: Car, title: "Clean AC Cars", desc: "Well-maintained fleet" }
             ].map((item, i) => (
@@ -326,7 +387,7 @@ const RentalPackageClient = ({ rental }) => {
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
+            {(rental.relatedLinks || [
               { href: '/full-day-cab-rental', label: 'Full Day Cab Rental' },
               { href: '/half-day-cab-rental', label: 'Half Day Cab Rental' },
               { href: '/multi-day-cab-hire', label: 'Multi-Day Cab Hire' },
@@ -335,10 +396,13 @@ const RentalPackageClient = ({ rental }) => {
               { href: '/tour-package', label: 'Tour Packages from Delhi' },
               { href: '/tempo-traveller', label: 'Tempo Traveller Hire' },
               { href: '/airport-city-tour-combo', label: 'Airport + City Tour Combo' },
-            ].map((link, i) => (
-              <Link key={i} href={link.href} className="group flex items-center gap-3 bg-white rounded-2xl border border-gray-100 hover:border-amber-300 p-4 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
-                <ArrowRight className="w-4 h-4 text-amber-600 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-                <span className="text-gray-700 text-sm font-medium group-hover:text-gray-900 transition-colors">{link.label}</span>
+            ]).map((link, i) => (
+              <Link key={i} href={link.href} className="group flex items-start gap-3 bg-white rounded-2xl border border-gray-100 hover:border-amber-300 p-4 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
+                <ArrowRight className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5 group-hover:translate-x-1 transition-transform" />
+                <span className="min-w-0">
+                  <span className="block text-gray-700 text-sm font-medium group-hover:text-gray-900 transition-colors">{link.label}</span>
+                  {link.desc && <span className="block text-gray-400 text-xs mt-0.5">{link.desc}</span>}
+                </span>
               </Link>
             ))}
           </div>

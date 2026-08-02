@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
 
-export const revalidate = false;
+const SLUG = "kashmir-road-trip-from-delhi";
+
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi to Kashmir Road Trip Plan 2026 | 7-8 Day Itinerary | Triveni Cabs',
-  description: 'Delhi to Kashmir road trip plan covering Srinagar, Gulmarg, Pahalgam & Sonmarg. 7-8 day itinerary, road conditions, permits. Sedan ₹45,000, SUV ₹65,000. Call 7668570551.',
+  title: 'Delhi to Kashmir Road Trip Plan 2026 | 7-8 Day Itinerary',
+  description: 'Delhi to Kashmir road trip plan covering Srinagar, Gulmarg, Pahalgam & Sonmarg. 7-8 day itinerary, road conditions, permits. Sedan ₹45,000, SUV ₹65,000.',
   keywords: 'delhi to kashmir road trip plan, kashmir road trip from delhi, srinagar gulmarg pahalgam tour by car, kashmir by car from delhi, kashmir tour itinerary',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -47,7 +50,7 @@ export default function KashmirRoadTripPage() {
     "@context": "https://schema.org", "@type": "TouristTrip",
     "name": "Delhi to Kashmir Road Trip",
     "description": "7-8 day road trip from Delhi to Kashmir covering Srinagar, Gulmarg, Pahalgam, and Sonmarg",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
+    "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
     "offers": { "@type": "AggregateOffer", "lowPrice": "45000", "highPrice": "90000", "priceCurrency": "INR" }
   };
   const breadcrumbSchema = {
@@ -57,6 +60,11 @@ export default function KashmirRoadTripPage() {
       { "@type": "ListItem", "position": 2, "name": "Kashmir Road Trip from Delhi", "item": "https://www.trivenicabs.in/kashmir-road-trip-from-delhi" }
     ]
   };
+  const serviceSchema = buildStaticService({ slug: SLUG, name: "Kashmir Road Trip Cab Service from Delhi", description: "Kashmir Road Trip from Delhi with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 45000, highPrice: 90000, serviceType: 'Multi-Day Road Trip Cab Service' });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "Kashmir Road Trip from Delhi 2026", description: "Kashmir Road Trip from Delhi itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const howToSchema = getHowToSchema({ name: "How to Plan a Kashmir Road Trip from Delhi", description: "Step-by-step day-wise plan for the Kashmir Road Trip from Delhi by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 45000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
+  const placeSchemas = buildPlaceSchemas(["delhi"], SLUG, '/images/triveni-cabs-og.jpg');
+
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
   return (
@@ -64,6 +72,12 @@ export default function KashmirRoadTripPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {placeSchemas.map((sc, idx) => (
+        <script key={`place-${idx}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sc) }} />
+      ))}
 
       <div className="min-h-screen bg-blue-950 text-white">
         {/* Hero - Icy Paradise with Floating Ice Crystals */}
@@ -83,7 +97,7 @@ export default function KashmirRoadTripPage() {
                 <span className="text-blue-300 text-sm font-medium tracking-widest uppercase">8 Days | 2,200 km | Paradise on Earth</span>
               </div>
 
-              <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[0.85]">
+              <h1 className="speakable-headline text-5xl md:text-8xl font-black mb-8 leading-[0.85]">
                 <span className="text-white">Delhi to</span>
                 <br />
                 <span className="text-transparent bg-gradient-to-r from-blue-300 via-sky-200 to-indigo-300 bg-clip-text">Kashmir</span>
@@ -91,8 +105,8 @@ export default function KashmirRoadTripPage() {
                 <span className="text-blue-500/40 text-3xl md:text-4xl font-light">Road Trip Plan 2026</span>
               </h1>
 
-              <p className="text-blue-200/40 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-                Dal Lake houseboats, Gulmarg gondola rides, Pahalgam meadows, Sonmarg glaciers. Experience Paradise on Earth by road.
+              <p className="speakable-lead text-blue-200/40 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                A Kashmir road trip from Delhi costs from Rs 45,000 (sedan) to Rs 90,000 (premium SUV) with Triveni Cabs, all-inclusive of fuel, tolls and an experienced mountain driver. Experience Dal Lake houseboats, Gulmarg gondola rides, Pahalgam meadows and Sonmarg glaciers — Paradise on Earth by road.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -255,7 +269,7 @@ export default function KashmirRoadTripPage() {
                     <ChevronRight className="w-5 h-5 text-blue-500 group-open:rotate-90 transition-transform flex-shrink-0" />
                   </summary>
                   <div className="px-6 pb-6 -mt-1">
-                    <p className="text-blue-200/40 leading-relaxed">{faq.answer}</p>
+                    <p className={`text-blue-200/40 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </details>
               ))}

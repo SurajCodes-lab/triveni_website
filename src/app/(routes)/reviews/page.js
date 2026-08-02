@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Car, MapPin, ThumbsUp, Award, Quote } from '@/components/ui/icons';
+import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'Triveni Cabs Reviews | 4.8★ Rating | 2,847+ Customer Reviews 2026',
-  description: 'Read 2,847+ genuine Triveni Cabs reviews. 4.8/5 rating. Customer feedback on outstation cabs, airport taxi, wedding cars & more. Verified reviews from real travelers.',
+  description: 'Read 2,847+ genuine Triveni Cabs reviews. 4.8/5 rating. Customer feedback on outstation cabs, airport taxi, wedding cars & more.',
   keywords: 'Triveni Cabs reviews, Triveni Cabs rating, cab service reviews, taxi service rating, customer feedback Triveni Cabs, Triveni Cabs testimonials, outstation cab reviews, airport taxi reviews, wedding car reviews, best cab service reviews India, Triveni Cabs customer experience, Triveni Cabs feedback, reliable cab reviews, safe cab service reviews',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -75,8 +76,8 @@ export default function ReviewsPage() {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "ratingValue": "4.8",
+      "reviewCount": "2847",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -126,6 +127,21 @@ export default function ReviewsPage() {
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
       { "@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://www.trivenicabs.in/reviews" }
     ]
+  };
+
+  const articleSchema = getArticleSchema({
+    slug: 'reviews',
+    headline: 'Triveni Cabs Reviews — 4.8/5 from 2,847+ Verified Customers',
+    description: 'Genuine Triveni Cabs customer reviews. 4.8/5 average rating across outstation, airport, wedding, and corporate cab services.',
+    image: '/images/about/about_banner.webp',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.trivenicabs.in/reviews#webpage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first'])
   };
 
   const faqData = [
@@ -316,6 +332,8 @@ export default function ReviewsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -355,11 +373,11 @@ export default function ReviewsPage() {
               ))}
             </div>
 
-            <p className="text-xl md:text-2xl text-rose-100/70 mb-4 max-w-2xl mx-auto">
-              Based on <strong className="text-white font-bold">2,847+</strong> verified customer reviews
+            <p className="speakable-headline text-xl md:text-2xl text-rose-100/70 mb-4 max-w-2xl mx-auto">
+              Triveni Cabs is rated 4.8 out of 5 based on <strong className="text-white font-bold">2,847+</strong> verified customer reviews
             </p>
 
-            <p className="text-rose-200/50 max-w-lg mx-auto text-sm">
+            <p className="speakable-lead text-rose-200/50 max-w-lg mx-auto text-sm">
               Real feedback from real travelers who trust Triveni Cabs for outstation, airport, wedding, and local cab services across North India.
             </p>
           </div>
@@ -589,7 +607,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── FAQ: Warm cards ─── */}
-        <section className="py-20 px-4 bg-white">
+        <section className="faq-section py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-rose-600 bg-rose-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">FAQ</span>
@@ -610,7 +628,7 @@ export default function ReviewsPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-[#1c1017] mb-2">{faq.question}</h3>
-                      <p className="text-stone-600 text-sm leading-relaxed">{faq.answer}</p>
+                      <p className={`text-stone-600 text-sm leading-relaxed ${idx === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                     </div>
                   </div>
                 </div>

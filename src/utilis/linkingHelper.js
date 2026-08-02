@@ -301,31 +301,33 @@ export function searchRelatedTours(keyword, limit = 4) {
 
 /**
  * Get related routes from a city
+ * Expanded 2026-04-08: limit 6 → 12, reverse-route exclusion added (don't suggest
+ * Agra→Delhi on Delhi→Agra page — that's a U-turn, not a related route).
  * @param {string} origin - Origin city name
- * @param {string} destination - Current destination (to exclude)
+ * @param {string} destination - Current destination (to exclude + reverse-exclude)
  * @param {number} limit - Max routes to return
  */
-export function getRelatedRoutes(origin, destination = '', limit = 6) {
+export function getRelatedRoutes(origin, destination = '', limit = 12) {
   // Null check to prevent toLowerCase errors
   if (!origin) return [];
 
   const popularDestinations = {
-    delhi: ['agra', 'jaipur', 'chandigarh', 'haridwar', 'rishikesh', 'shimla', 'manali', 'amritsar', 'dehradun', 'mathura'],
-    jaipur: ['delhi', 'agra', 'udaipur', 'jodhpur', 'ajmer', 'pushkar', 'bikaner', 'mount-abu', 'ranthambore', 'jaisalmer'],
-    agra: ['delhi', 'jaipur', 'mathura', 'vrindavan', 'fatehpur-sikri', 'bharatpur', 'gwalior', 'lucknow', 'varanasi', 'khajuraho'],
-    chandigarh: ['delhi', 'shimla', 'manali', 'amritsar', 'dharamshala', 'kasauli', 'patiala', 'ludhiana', 'pathankot', 'mcleodganj'],
-    shimla: ['delhi', 'chandigarh', 'manali', 'kullu', 'kasauli', 'dharamshala', 'dalhousie', 'kufri', 'chail', 'narkanda'],
-    manali: ['delhi', 'chandigarh', 'shimla', 'leh', 'kullu', 'dharamshala', 'kasol', 'rohtang', 'solang', 'sissu'],
-    amritsar: ['delhi', 'chandigarh', 'dharamshala', 'mcleodganj', 'pathankot', 'wagah', 'jalandhar', 'ludhiana', 'dalhousie', 'kasauli'],
-    haridwar: ['delhi', 'rishikesh', 'dehradun', 'mussoorie', 'nainital', 'auli', 'badrinath', 'kedarnath', 'gangotri', 'yamunotri'],
-    rishikesh: ['delhi', 'haridwar', 'dehradun', 'mussoorie', 'nainital', 'auli', 'badrinath', 'kedarnath', 'gangotri', 'yamunotri'],
-    dehradun: ['delhi', 'haridwar', 'rishikesh', 'mussoorie', 'nainital', 'auli', 'chandigarh', 'shimla', 'gangotri', 'yamunotri'],
-    udaipur: ['jaipur', 'jodhpur', 'mount-abu', 'ajmer', 'chittorgarh', 'nathdwara', 'kumbhalgarh', 'ranakpur', 'ahmedabad', 'mumbai'],
-    varanasi: ['delhi', 'agra', 'lucknow', 'allahabad', 'bodhgaya', 'ayodhya', 'sarnath', 'khajuraho', 'patna', 'kolkata'],
-    lucknow: ['delhi', 'agra', 'varanasi', 'allahabad', 'ayodhya', 'kanpur', 'jaipur', 'mathura', 'khajuraho', 'gorakhpur'],
-    ahmedabad: ['udaipur', 'mumbai', 'rajkot', 'jamnagar', 'somnath', 'dwarka', 'kutch', 'vadodara', 'surat', 'mount-abu'],
-    noida: ['agra', 'jaipur', 'haridwar', 'rishikesh', 'shimla', 'manali', 'chandigarh', 'mathura', 'varanasi', 'lucknow'],
-    ghaziabad: ['agra', 'jaipur', 'haridwar', 'rishikesh', 'shimla', 'manali', 'chandigarh', 'mathura', 'varanasi', 'lucknow'],
+    delhi: ['agra', 'jaipur', 'chandigarh', 'haridwar', 'rishikesh', 'shimla', 'manali', 'amritsar', 'dehradun', 'mathura', 'nainital', 'mussoorie', 'jim-corbett', 'kasauli', 'dharamshala'],
+    jaipur: ['delhi', 'agra', 'udaipur', 'jodhpur', 'ajmer', 'pushkar', 'bikaner', 'mount-abu', 'ranthambore', 'jaisalmer', 'chittorgarh', 'bharatpur', 'alwar', 'kota'],
+    agra: ['delhi', 'jaipur', 'mathura', 'vrindavan', 'fatehpur-sikri', 'bharatpur', 'gwalior', 'lucknow', 'varanasi', 'khajuraho', 'ayodhya', 'haridwar', 'rishikesh'],
+    chandigarh: ['delhi', 'shimla', 'manali', 'amritsar', 'dharamshala', 'kasauli', 'patiala', 'ludhiana', 'pathankot', 'mcleodganj', 'dalhousie', 'kullu', 'haridwar', 'rishikesh'],
+    shimla: ['delhi', 'chandigarh', 'manali', 'kullu', 'kasauli', 'dharamshala', 'dalhousie', 'kufri', 'chail', 'narkanda', 'tattapani', 'fagu', 'mashobra'],
+    manali: ['delhi', 'chandigarh', 'shimla', 'leh', 'kullu', 'dharamshala', 'kasol', 'rohtang', 'solang', 'sissu', 'spiti', 'mcleodganj', 'dalhousie'],
+    amritsar: ['delhi', 'chandigarh', 'dharamshala', 'mcleodganj', 'pathankot', 'wagah', 'jalandhar', 'ludhiana', 'dalhousie', 'kasauli', 'shimla', 'manali'],
+    haridwar: ['delhi', 'rishikesh', 'dehradun', 'mussoorie', 'nainital', 'auli', 'badrinath', 'kedarnath', 'gangotri', 'yamunotri', 'chopta', 'joshimath'],
+    rishikesh: ['delhi', 'haridwar', 'dehradun', 'mussoorie', 'nainital', 'auli', 'badrinath', 'kedarnath', 'gangotri', 'yamunotri', 'chopta', 'joshimath'],
+    dehradun: ['delhi', 'haridwar', 'rishikesh', 'mussoorie', 'nainital', 'auli', 'chandigarh', 'shimla', 'gangotri', 'yamunotri', 'chakrata', 'dhanaulti'],
+    udaipur: ['jaipur', 'jodhpur', 'mount-abu', 'ajmer', 'chittorgarh', 'nathdwara', 'kumbhalgarh', 'ranakpur', 'ahmedabad', 'mumbai', 'pushkar', 'bikaner'],
+    varanasi: ['delhi', 'agra', 'lucknow', 'allahabad', 'bodhgaya', 'ayodhya', 'sarnath', 'khajuraho', 'patna', 'kolkata', 'gaya', 'prayagraj'],
+    lucknow: ['delhi', 'agra', 'varanasi', 'allahabad', 'ayodhya', 'kanpur', 'jaipur', 'mathura', 'khajuraho', 'gorakhpur', 'prayagraj', 'sitapur'],
+    ahmedabad: ['udaipur', 'mumbai', 'rajkot', 'jamnagar', 'somnath', 'dwarka', 'kutch', 'vadodara', 'surat', 'mount-abu', 'gandhinagar', 'bhavnagar'],
+    noida: ['agra', 'jaipur', 'haridwar', 'rishikesh', 'shimla', 'manali', 'chandigarh', 'mathura', 'varanasi', 'lucknow', 'nainital', 'mussoorie'],
+    ghaziabad: ['agra', 'jaipur', 'haridwar', 'rishikesh', 'shimla', 'manali', 'chandigarh', 'mathura', 'varanasi', 'lucknow', 'nainital', 'mussoorie'],
   };
 
   const originKey = origin.toLowerCase().replace(/\s+/g, '-');
@@ -333,7 +335,13 @@ export function getRelatedRoutes(origin, destination = '', limit = 6) {
   const destinations = popularDestinations[originKey] || [];
 
   return destinations
+    // Exclude the current destination (was already done)
     .filter(dest => dest !== destKey)
+    // NEW: Exclude the reverse route — if user is on Delhi→Agra, don't suggest "Agra to Delhi"
+    // because clicking that would just be a U-turn, not a related route discovery.
+    // The reverse is: origin becomes dest, so exclude any candidate whose slug equals originKey
+    // ONLY when we have a destKey context (i.e., we're on a route page, not a city hub).
+    .filter(dest => !destKey || dest !== originKey)
     .slice(0, limit)
     .map(dest => {
       const destName = dest.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
@@ -930,6 +938,47 @@ export function getMoneyPageLinks(city, limit = 8) {
     .slice(0, limit);
 }
 
+/**
+ * Get Tours-With-Guide links for a given city, so blogs and city hubs auto-link
+ * into the new section without manual <a> tags.
+ *
+ * @param {string} cityName - 'Agra' | 'Delhi' | 'Jaipur' | 'Golden Triangle'
+ * @param {number} limit
+ * @returns {Array<{text, url, vehicle, fare}>}
+ */
+export function getToursWithGuideForCity(cityName, limit = 6) {
+  if (!cityName) return [];
+  const cityKey = cityName.toLowerCase().replace(/[^a-z]/g, '');
+  // Static map matching keys used in toursWithGuideData
+  const cityKeyMap = {
+    agra: 'agra',
+    delhi: 'delhi',
+    jaipur: 'jaipur',
+    fatehpursikri: 'agra',
+    goldentriangle: 'goldentriangle',
+    delhitoagra: 'delhi',
+    delhiagra: 'delhi',
+  };
+  const targetKey = cityKeyMap[cityKey] || cityKey;
+
+  // Lazy import — module is heavy; only load when needed
+  let toursModule;
+  try {
+    toursModule = require('@/utilis/toursWithGuideData');
+  } catch {
+    return [];
+  }
+  const all = toursModule.getToursByCity ? toursModule.getToursByCity(targetKey) : [];
+  return all.slice(0, limit).map(t => ({
+    text: t.headline,
+    url: `/tours-with-guide/${t.slug}`,
+    vehicle: t.vehicle,
+    fare: t.bundledFare,
+    duration: t.duration,
+    image: t.heroImage,
+  }));
+}
+
 function getDefaultMoneyPages() {
   return [
     { text: 'Delhi Taxi Service', url: '/delhi', type: 'city', priority: 1 },
@@ -970,4 +1019,6 @@ export default {
   getWeddingPages,
   // Money page linking
   getMoneyPageLinks,
+  // Tours-with-guide linking
+  getToursWithGuideForCity,
 };

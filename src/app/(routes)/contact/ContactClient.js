@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useCallback, useMemo, useEffect } from "react";
+import { captureLead } from "@/utilis/captureLead";
 import { motion, useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 // Centralized icon imports for better bundle optimization
@@ -432,6 +433,15 @@ export default function ContactClient() {
     setErrors({});
     setSubmitStatus(null);
 
+    // Capture the contact lead to the Sheet (previously these went nowhere).
+    captureLead({
+      name: `${formData.firstName || ''} ${formData.lastName || ''}`.trim(),
+      phone: formData.phone,
+      email: formData.email,
+      pageType: 'contact',
+      toCity: formData.serviceType || formData.subject || '',
+    });
+
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -517,7 +527,7 @@ export default function ContactClient() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-6"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight tracking-tight">
+            <h1 className="speakable-headline text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight tracking-tight">
               <span className="block text-white drop-shadow-lg">Contact</span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -547,7 +557,7 @@ export default function ContactClient() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
+            className="speakable-lead text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
           >
             We&apos;re here to help you 24/7. Reach out to us for bookings, inquiries, or any assistance you need.
           </motion.p>

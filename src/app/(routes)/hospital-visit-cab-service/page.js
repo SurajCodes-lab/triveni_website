@@ -5,7 +5,7 @@ const service = getSpecialTransportBySlug('hospital-visit-cab-service');
 
 export const metadata = {
   title: 'Hospital Visit Cab Service | Medical Transport | Triveni Cabs',
-  description: 'Book hospital visit cab service. Sanitized vehicles, punctual drivers, patient-friendly driving. From Rs 500. Regular dialysis/chemo transport available. Call 7668570551.',
+  description: 'Book hospital visit cab service. Sanitized vehicles, punctual drivers, patient-friendly driving. From Rs 500. Regular dialysis/chemo transport available.',
   keywords: 'hospital visit cab, medical transport cab, hospital cab service, dialysis transport, chemotherapy transport, doctor visit cab, patient cab service, medical taxi',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -15,7 +15,7 @@ export const metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export default function HospitalVisitCabPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Hospital Visit Cab Service", "name": "Hospital Visit Cab Service - Medical Transport", "description": "Reliable cab service for hospital visits with sanitized vehicles, punctual drivers, and patient-friendly driving.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "Country", "name": "India" } };

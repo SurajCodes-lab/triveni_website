@@ -3,12 +3,13 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import AEOHead from '@/components/seo/AEOHead';
 import { getWeddingCarModel, getAllWeddingCarModelSlugs } from '@/utilis/weddingCarModels';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import {
   Phone, ChevronRight, CheckCircle2, ArrowRight, Shield, Clock,
   Car, Heart, Star, Sparkles, Crown, Award, Users, Zap
 } from '@/components/ui/icons';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -71,7 +72,7 @@ export default async function WeddingCarModelPage({ params }) {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": carModel.title,
+    "name": `${carModel.title} | Triveni Cabs`,
     "description": carModel.description,
     "brand": { "@type": "Brand", "name": carModel.brand },
     "image": `https://www.trivenicabs.in${carModel.heroImage}`,
@@ -81,9 +82,10 @@ export default async function WeddingCarModelPage({ params }) {
       "lowPrice": carModel.models[0].pricePerDay.split('-')[0].trim().replace('₹', '').replace(',', ''),
       "highPrice": carModel.models[carModel.models.length - 1].pricePerDay.split('-')[1]?.trim().split(' ')[0].replace('₹', '').replace(',', '') || '50000',
       "offerCount": String(carModel.models.length),
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs" }
     },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "10000", "bestRating": "5" }
+    ...getRatingAndReviews(slug, 'wedding')
   };
 
   const breadcrumbSchema = {

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
+import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Safe Travel Tips India for Foreign Tourists 2026 | Complete Safety Guide',
-  description: 'Comprehensive safety guide for foreign tourists in India 2026. Transportation safety, health tips, scam awareness, emergency numbers, women safety, solo travel tips.',
+  title: 'Safe Travel Tips India for Foreign Tourists 2026',
+  description: 'Comprehensive safety guide for foreign tourists in India 2026. Transportation safety, health tips, scam awareness, emergency numbers, women safety.',
   keywords: 'safe travel tips india for foreign tourists, india safety guide, india travel safety, is india safe for tourists, india solo travel safety, women safety india',
   authors: [{ name: 'Triveni Cabs' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
@@ -111,12 +112,19 @@ const textColorMap = {
 };
 
 export default function SafeTravelIndiaPage() {
-  const guideSchema = {
-    "@context": "https://schema.org", "@type": "Article",
-    "headline": "Safe Travel Tips India for Foreign Tourists 2026",
-    "description": "Comprehensive safety guide for international tourists visiting India",
-    "author": { "@type": "Organization", "name": "Triveni Cabs" },
-    "publisher": { "@type": "Organization", "name": "Triveni Cabs", "url": "https://www.trivenicabs.in" }
+  const guideSchema = getArticleSchema({
+    slug: 'safe-travel-india-for-tourists',
+    headline: 'Safe Travel Tips India for Foreign Tourists 2026',
+    description: 'Comprehensive safety guide for international tourists visiting India: transportation, health, scam awareness, emergency numbers, women & solo travel safety.',
+    image: '/images/citypage_hero_section_image.jpg',
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
+  });
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.trivenicabs.in/safe-travel-india-for-tourists#webpage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first'])
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -130,6 +138,7 @@ export default function SafeTravelIndiaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -151,14 +160,14 @@ export default function SafeTravelIndiaPage() {
               <span className="text-amber-300 font-bold text-sm tracking-wider uppercase">Expert-Verified Travel Safety Guide</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6">
+            <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6">
               Safe Travel India
               <span className="block mt-2 text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">
                 for Foreign Tourists
               </span>
             </h1>
 
-            <p className="text-xl text-stone-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="speakable-lead text-xl text-stone-300 mb-8 max-w-3xl mx-auto leading-relaxed">
               Your comprehensive safety handbook for traveling in India. Transportation, health, scam awareness, emergency numbers, women safety, and solo travel tips.
             </p>
           </div>
@@ -261,7 +270,7 @@ export default function SafeTravelIndiaPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="faq-section py-20 px-4 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -277,7 +286,7 @@ export default function SafeTravelIndiaPage() {
                     {faq.question}
                     <ChevronRight className="w-5 h-5 text-amber-400 group-open:rotate-90 transition-transform flex-shrink-0" />
                   </summary>
-                  <p className="px-6 pb-6 text-stone-400 leading-relaxed">{faq.answer}</p>
+                  <p className={`px-6 pb-6 text-stone-400 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                 </details>
               ))}
             </div>

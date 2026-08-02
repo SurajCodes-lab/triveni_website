@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaisalmer Shopping Guide 2026 | Rajasthani Crafts, Mirror Work & Desert Souvenirs',
-  description: 'Jaisalmer shopping guide. Mirror work embroidery, leather mojaris, patchwork textiles, silver jewelry, Rajasthani paintings, camel leather products. Sadar Bazaar, Fort Market. Prices & tips. Call 7668570551.',
+  title: 'Jaisalmer Shopping Guide 2026 | Mirror Work & Desert Crafts',
+  description: 'Jaisalmer shopping guide. Mirror work embroidery, leather mojaris, patchwork textiles, silver jewelry, Rajasthani paintings, camel leather products.',
   keywords: 'jaisalmer shopping guide, shopping in jaisalmer, jaisalmer fort market, sadar bazaar jaisalmer, jaisalmer mirror work, jaisalmer leather mojaris, rajasthani crafts jaisalmer, jaisalmer souvenirs',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function JaisalmerShoppingGuidePage() {
     { question: "What are the best food souvenirs from Jaisalmer?", answer: "Top edible souvenirs from Jaisalmer include: ker sangri (desert beans and berries -- Rajasthani delicacy), Rajasthani spice mixes (especially red chili powder from Mathania), papad and mangodi (sun-dried snacks), desert honey, and Rajasthani sweets like ghewar and mawa kachori. Sadar Bazaar spice shops have pre-packed gift boxes." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function JaisalmerShoppingGuidePage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const shoppingCategories = [
     {
@@ -150,11 +151,26 @@ export default function JaisalmerShoppingGuidePage() {
     { icon: Shield, title: "No Commission", desc: "We never take shop kickbacks" },
     { icon: Star, title: "4.9 Rating", desc: "Trusted by tourists" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "jaisalmer-shopping-guide",
+    headline: "Jaisalmer Shopping Guide 2026 — Markets, Bazaars & What to Buy",
+    description: "Complete Jaisalmer shopping guide. Best markets, bazaars, what to buy, bargaining tips, local crafts, branded shopping, market timings.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("jaisalmer", { idSlug: "jaisalmer-shopping-guide" });
+
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }

@@ -20,6 +20,8 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks } from '@/components/seo/RelatedContent';
 import { generateTourFAQs } from '@/lib/seo/faq-generator';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 
@@ -35,10 +37,17 @@ const ReligiousTourClient = ({ tour }) => {
     window.open(whatsappURL, '_blank');
   }, [tour.title]);
 
+  const stickyWhatsappText = `Hi! I want to book ${tour.title}. Please share package details and best fare.`;
+
   return (
     <div className="min-h-screen bg-white overflow-hidden">
+      <SetStickyCta
+        price={tour.pricing?.starting || ''}
+        label={tour.title.split('–')[0].trim()}
+        whatsappText={stickyWhatsappText}
+      />
       {/* HERO SECTION */}
-      <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -172,17 +181,30 @@ const ReligiousTourClient = ({ tour }) => {
               </span>
             </motion.button>
 
-            <a onClick={() => trackPhoneCall('religious_tour')} href={`tel:+91${phoneNumber}`} className="w-full sm:w-auto">
+            <a onClick={() => trackPhoneCall('religious_tour_hero')} href={`tel:+91${phoneNumber}`} className="w-full sm:w-auto">
               <motion.span
-                
+
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-orange-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-orange-50 hover:border-orange-400 transition-all"
+                className="w-full sm:w-auto min-h-[48px] px-6 md:px-8 py-3 md:py-4 bg-white border-2 md:border-3 border-orange-300 text-gray-800 font-bold text-sm md:text-base rounded-full shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:bg-orange-50 hover:border-orange-400 transition-all"
               >
                 <Phone className="w-5 h-5 md:w-6 md:h-6" />
                 <span className="truncate">Call: {phoneNumber}</span>
               </motion.span>
             </a>
           </motion.div>
+
+          {/* Trust row */}
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-white font-medium">
+            <span className="flex items-center gap-1.5 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/15"><Star className="w-4 h-4 text-amber-300" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/15"><Users className="w-4 h-4 text-amber-300" /> 10,000+ trips</span>
+            <span className="flex items-center gap-1.5 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/15"><Shield className="w-4 h-4 text-amber-300" /> Verified drivers</span>
+            <span className="flex items-center gap-1.5 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/15"><Check className="w-4 h-4 text-amber-300" /> No advance payment</span>
+          </div>
+
+          {/* Quick Enquiry Form */}
+          <div className="mt-8 flex justify-center">
+            <QuickEnquiryForm fromCity="Delhi" toCity={tour.title.split('–')[0].trim()} pageType="route" />
+          </div>
         </div>
 
         {/* Scroll Indicator */}
@@ -595,7 +617,7 @@ const ReligiousTourClient = ({ tour }) => {
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <a onClick={() => trackPhoneCall('religious_tour')} href={`tel:+91${phoneNumber}`}>
+              <a onClick={() => trackPhoneCall('religious_tour_footer')} href={`tel:+91${phoneNumber}`}>
                 <span className="px-8 md:px-10 py-4 md:py-5 bg-white border-2 md:border-3 border-orange-300 text-gray-800 font-bold text-base md:text-lg rounded-full hover:bg-orange-50 hover:border-orange-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 md:gap-3">
                   <Phone className="w-5 h-5 md:w-6 md:h-6" />
                   <span className="truncate">Call Now: {phoneNumber}</span>

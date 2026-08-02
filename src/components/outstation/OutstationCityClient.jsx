@@ -13,7 +13,12 @@ import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import FleetShowcase from '@/components/shared/FleetShowcase';
+import { getAllOneWayRouteSlugs } from '@/utilis/oneWayCabData';
+
+// Slugs that have a dedicated bookable /one-way-cab/{slug} page (dynamicParams=false)
+const ONE_WAY_SLUGS = new Set(getAllOneWayRouteSlugs());
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>;
 
@@ -49,11 +54,11 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">City Hub</span>
               </div>
               <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">Outstation Cabs from</p>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+              <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
                 {cityData.city}
               </h1>
-              <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">
-                {cityData.tagline} -- Starting from <span className="text-[#FACF2D] font-bold">{'\u20B9'}{lowestFare.toLocaleString('en-IN')}</span>
+              <p className="speakable-lead text-white/55 mt-4 text-sm sm:text-base max-w-xl leading-relaxed">
+                Book an outstation cab from <strong className="text-white">{cityData.city}</strong> starting at <span className="text-[#FACF2D] font-bold">{'\u20B9'}{lowestFare.toLocaleString('en-IN')}</span>. One-way and round-trip taxis to {cityData.popularRoutes.length}0+ destinations &mdash; Sedan {'\u20B9'}11/km, SUV {'\u20B9'}15/km, Tempo Traveller {'\u20B9'}24/km. Verified drivers, FASTag-equipped AC vehicles, and 24/7 support. Call 7668570551 for an instant quote.
               </p>
 
               <div className="flex flex-wrap gap-3 mt-6">
@@ -102,7 +107,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
           <p className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-4 text-center">Top Departures from {cityData.city}</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {cityData.popularRoutes.slice(0, 6).map((route, i) => (
-              <Link key={i} href={`/distance/${route.slug}`} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-3 hover:border-[#FACF2D]/30 transition-all text-center">
+              <Link key={i} href={ONE_WAY_SLUGS.has(route.slug) ? `/one-way-cab/${route.slug}` : `/distance/${route.slug}`} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-3 hover:border-[#FACF2D]/30 transition-all text-center">
                 <p className="text-xs font-bold text-white truncate group-hover:text-[#FACF2D] transition-colors">{route.destination}</p>
                 <p className="text-[10px] text-white/30 mt-1">{route.distance} km &middot; {route.duration}</p>
                 <p className="text-sm font-black text-[#FACF2D] mt-1">{'\u20B9'}{route.fare.toLocaleString('en-IN')}</p>
@@ -124,34 +129,48 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {cityData.popularRoutes.map((route, i) => (
+            {cityData.popularRoutes.map((route, i) => {
+              const hasBooking = ONE_WAY_SLUGS.has(route.slug);
+              const bookingHref = hasBooking ? `/one-way-cab/${route.slug}` : `/distance/${route.slug}`;
+              const routeWhatsapp = `https://wa.me/917668570551?text=${encodeURIComponent(`Hi, I want to book an outstation cab from ${cityData.city} to ${route.destination}. Please share rates.`)}`;
+              return (
               <ScrollReveal key={i} delay={i * 50}>
-                <Link href={`/distance/${route.slug}`} className="group bg-white rounded-2xl border border-slate-100 p-5 hover:border-blue-200 hover:shadow-lg transition-all duration-300 block">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2 mb-1 text-sm">
-                        <span className="text-blue-600 font-bold">{cityData.city}</span>
-                        <ArrowRight className="w-3 h-3 text-blue-400/50" />
-                        <span className="text-slate-700 font-bold truncate">{route.destination}</span>
+                <div className="group bg-white rounded-2xl border border-slate-100 p-5 hover:border-blue-200 hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+                  <Link href={bookingHref} className="block">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 mb-1 text-sm">
+                          <span className="text-blue-600 font-bold">{cityData.city}</span>
+                          <ArrowRight className="w-3 h-3 text-blue-400/50" />
+                          <span className="text-slate-700 font-bold truncate">{route.destination}</span>
+                        </div>
+                        <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors">{route.destination}</h3>
                       </div>
-                      <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-600 transition-colors">{route.destination}</h3>
+                      <div className="bg-blue-50 p-2 rounded-xl group-hover:bg-blue-100 transition-colors flex-shrink-0">
+                        <MapPinned className="w-5 h-5 text-blue-500" />
+                      </div>
                     </div>
-                    <div className="bg-blue-50 p-2 rounded-xl group-hover:bg-blue-100 transition-colors flex-shrink-0">
-                      <MapPinned className="w-5 h-5 text-blue-500" />
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      <div className="bg-slate-50 rounded-lg px-3 py-2 text-center"><div className="text-blue-600 font-bold text-sm">{route.distance} km</div><div className="text-slate-400 text-[10px] uppercase tracking-wider">Distance</div></div>
+                      <div className="bg-slate-50 rounded-lg px-3 py-2 text-center"><div className="text-indigo-600 font-bold text-sm">{route.duration}</div><div className="text-slate-400 text-[10px] uppercase tracking-wider">Duration</div></div>
+                      <div className="bg-slate-50 rounded-lg px-3 py-2 text-center"><div className="text-amber-600 font-bold text-sm">{'\u20B9'}{route.fare.toLocaleString('en-IN')}</div><div className="text-slate-400 text-[10px] uppercase tracking-wider">From</div></div>
                     </div>
+                  </Link>
+                  <div className="mt-auto pt-3 border-t border-slate-100 flex items-center gap-2">
+                    <Link href={bookingHref} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold py-2.5 rounded-xl transition-all">
+                      {hasBooking ? 'Book Cab' : 'View Route'} <ChevronRight className="w-4 h-4" />
+                    </Link>
+                    <a onClick={() => trackWhatsAppClick('outstation_route_card')} href={routeWhatsapp} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp quote for ${cityData.city} to ${route.destination}`} className="inline-flex items-center justify-center w-11 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition-all">
+                      {WA}
+                    </a>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    <div className="bg-slate-50 rounded-lg px-3 py-2 text-center"><div className="text-blue-600 font-bold text-sm">{route.distance} km</div><div className="text-slate-400 text-[10px] uppercase tracking-wider">Distance</div></div>
-                    <div className="bg-slate-50 rounded-lg px-3 py-2 text-center"><div className="text-indigo-600 font-bold text-sm">{route.duration}</div><div className="text-slate-400 text-[10px] uppercase tracking-wider">Duration</div></div>
-                    <div className="bg-slate-50 rounded-lg px-3 py-2 text-center"><div className="text-amber-600 font-bold text-sm">{'\u20B9'}{route.fare.toLocaleString('en-IN')}</div><div className="text-slate-400 text-[10px] uppercase tracking-wider">From</div></div>
-                  </div>
-                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                    <span className="text-slate-400 text-xs">Sedan starting fare</span>
-                    <span className="flex items-center gap-1 text-blue-600 text-sm font-semibold group-hover:gap-2 transition-all">View Route <ChevronRight className="w-4 h-4" /></span>
-                  </div>
-                </Link>
+                  {hasBooking && (
+                    <Link href={`/distance/${route.slug}`} className="mt-2 text-center text-[11px] text-slate-400 hover:text-blue-500 transition-colors">Distance &amp; route guide</Link>
+                  )}
+                </div>
               </ScrollReveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -255,6 +274,26 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
         </div>
       </section>
 
+      <FleetShowcase
+        theme="light"
+        accentColor="amber"
+        whatsappMessage={`Hi, I need outstation cab from ${cityData.city}`}
+        title={`Our Fleet for Outstation from ${cityData.city}`}
+        subtitle="Comfortable, well-maintained vehicles for your outstation journey"
+      />
+
+      {/* ━━━ FAQ direct-answer lead (voice search / featured snippet) ━━━ */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-4">
+            How much does an outstation cab from {cityData.city} cost?
+          </h2>
+          <p className="speakable-faq-first text-slate-600 leading-relaxed text-base">
+            {cityData.faqs[0]?.answer}
+          </p>
+        </div>
+      </section>
+
       <FaqAccordion heading={`Outstation Cabs from ${cityData.city} - FAQs`} faqs={cityData.faqs} />
 
       {relatedCities?.length > 0 && (
@@ -279,8 +318,40 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
         </section>
       )}
 
+      {/* ━━━ INTERNAL LINKS: keyword-rich route anchors ━━━ */}
+      <section className="py-12 px-4 sm:px-6 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1">Quick Links</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6">Popular Outstation Cab Routes from {cityData.city}</h2>
+          </ScrollReveal>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {cityData.popularRoutes.map((route, i) => (
+              <Link
+                key={i}
+                href={`/distance/${route.slug}`}
+                className="bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-xs font-medium transition-all"
+              >
+                {cityData.city} to {route.destination} Cab
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/outstation-cabs" className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full text-xs font-semibold transition-all">All Outstation Cabs</Link>
+            <Link href="/one-way-cab" className="bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-xs font-medium transition-all">One-Way Cab Booking</Link>
+            <Link href="/round-trip-cab" className="bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-xs font-medium transition-all">Round Trip Cab</Link>
+            <Link href="/tempo-traveller" className="bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-xs font-medium transition-all">Tempo Traveller Rental</Link>
+            <Link href="/pricing" className="bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-xs font-medium transition-all">Fare Chart & Pricing</Link>
+          </div>
+        </div>
+      </section>
+
       <CTASection heading={`Ready to Travel from ${cityData.city}?`} subheading="Book your outstation cab now. Instant confirmation, transparent pricing, verified drivers." />
-      <MobileStickyBar />
+      <SetStickyCta
+        price={`₹${lowestFare.toLocaleString('en-IN')}`}
+        label={`Outstation cab from ${cityData.city}`}
+        whatsappText={whatsappMsg}
+      />
     </div>
   );
 }

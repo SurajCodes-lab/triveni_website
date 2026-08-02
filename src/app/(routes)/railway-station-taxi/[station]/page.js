@@ -4,8 +4,10 @@ import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import RailwayStationClient from '@/components/railway/RailwayStationClient';
 import AEOHead from '@/components/seo/AEOHead';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getSpeakableSchema, getArticleSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -69,6 +71,15 @@ export default async function RailwayStationPage({ params }) {
   const lowestFare = station.destinations.reduce((min, d) => Math.min(min, d.sedanFare), Infinity);
   const highestFare = station.destinations.reduce((max, d) => Math.max(max, d.suvFare), 0);
 
+  // Deterministic per-slug rating + named reviews (NOT the brand-level 10K).
+  const ratingReviews = getRatingAndReviews(slug, 'bus');
+  // City geo grounding for AEO/GEO.
+  const citySlug = String(station.city || '').toLowerCase().replace(/\s+/g, '-');
+  const cityPlaceSchema = getCityPlaceSchema(citySlug, {
+    idSlug: `railway-station-taxi/${slug}`,
+    description: `${station.name} (${station.stationCode}) railway station in ${station.city}, India. Triveni Cabs provides 24/7 fixed-fare taxi pickup at the platform exit.`,
+  });
+
   // JSON-LD Schemas
   const taxiServiceSchema = {
     "@context": "https://schema.org",
@@ -99,13 +110,7 @@ export default async function RailwayStationPage({ params }) {
       "priceCurrency": "INR",
     },
     "serviceType": "Railway Station Taxi",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    ...ratingReviews,
     "availableChannel": {
       "@type": "ServiceChannel",
       "servicePhone": {
@@ -130,6 +135,7 @@ export default async function RailwayStationPage({ params }) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
     "mainEntity": station.faqs.map((faq) => ({
       "@type": "Question",
       "name": faq.question,
@@ -186,13 +192,7 @@ export default async function RailwayStationPage({ params }) {
       "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       "seller": { "@type": "Organization", "name": COMPANY_INFO.name }
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": String(AGGREGATE_RATING.ratingValue),
-      "reviewCount": String(AGGREGATE_RATING.reviewCount),
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    ...ratingReviews
   };
 
   // HowTo schema — booking process
@@ -211,14 +211,52 @@ export default async function RailwayStationPage({ params }) {
     ]
   };
 
+  // Station-native GEO: the railway station as a TrainStation entity, grounded
+  // to the city's real coordinates and chained into the City place.
+  const trainStationSchema = {
+    "@context": "https://schema.org",
+    "@type": "TrainStation",
+    "@id": `https://www.trivenicabs.in/railway-station-taxi/${slug}#trainstation`,
+    "name": station.name,
+    ...(station.stationCode ? { "alternateName": station.stationCode } : {}),
+    "description": `${station.name} (${station.stationCode || ''}) — railway station in ${station.city}. Triveni Cabs offers 24/7 fixed-fare taxi pickup at the platform exit.`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": station.city,
+      ...(cityPlaceSchema?.address?.addressRegion ? { "addressRegion": cityPlaceSchema.address.addressRegion } : {}),
+      "addressCountry": "IN",
+    },
+    ...(cityPlaceSchema?.geo ? { "geo": cityPlaceSchema.geo } : {}),
+    ...(cityPlaceSchema ? { "containedInPlace": { "@id": cityPlaceSchema["@id"] } } : {}),
+    "publicAccess": true,
+  };
+
+  // Article schema — editorial entity for AEO/GEO + freshness, Speakable-wired.
+  const articleSchema = getArticleSchema({
+    slug: `railway-station-taxi/${slug}`,
+    headline: `${station.name} Taxi — Fixed Fares, Platform Pickup & 24/7 Cabs in ${station.city}`,
+    description: `How to book a taxi from ${station.name} (${station.stationCode || ''}), ${station.city}: fixed fares from ₹${lowestFare}, prepaid platform pickup, night availability, AC sedan & SUV options and verified drivers.`,
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    type: 'Article',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
+  });
+
   return (
     <>
-      <Script id="station-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="beforeInteractive" />
-      <Script id="station-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="beforeInteractive" />
-      <Script id="station-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="beforeInteractive" />
-      <Script id="station-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="beforeInteractive" />
-      <Script id="station-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="beforeInteractive" />
-      <Script id="station-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="beforeInteractive" />
+      <Script id="station-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="afterInteractive" />
+      <Script id="station-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="afterInteractive" />
+      <Script id="station-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="afterInteractive" />
+      <Script id="station-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="afterInteractive" />
+      <Script id="station-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="afterInteractive" />
+      <Script id="station-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="afterInteractive" />
+      <Script id="station-trainstation-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trainStationSchema) }} strategy="afterInteractive" />
+      <Script id="station-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} strategy="afterInteractive" />
+      {cityPlaceSchema && (
+        <Script id="station-place-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} strategy="afterInteractive" />
+      )}
 
       <AEOHead pageType="station" data={{ url: `/railway-station-taxi/${slug}`, title: `${station.name} Taxi Service`, city: station.city }} />
       <RailwayStationClient station={station} slug={slug} />

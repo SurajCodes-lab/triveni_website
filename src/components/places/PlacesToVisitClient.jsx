@@ -9,6 +9,9 @@ import {
   MapPinned, Milestone, Target
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import ExploreByCabCTA from '@/components/seo/ExploreByCabCTA';
 
 /* ── inline keyframes for animations ── */
 const animStyles = `
@@ -49,12 +52,19 @@ export default function PlacesToVisitClient({ data, allCities }) {
 
   const otherCities = allCities.filter(c => c.slug !== data.slug);
 
+  // Top one-way route links for the commercial CTA block — reuse on-page
+  // destination bookingSlugs (same existence guarantee as the cards above).
+  const exploreLinks = data.destinations
+    .filter(d => d.bookingSlug && d.bookingSlug.startsWith('/'))
+    .slice(0, 4)
+    .map(d => ({ label: `${data.city} to ${d.name} Cab`, href: d.bookingSlug }));
+
   return (
     <div className="min-h-screen bg-white text-stone-900">
       <style dangerouslySetInnerHTML={{ __html: animStyles }} />
 
       {/* ━━━ HERO: Topographic Map Explorer Theme ━━━ */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         {/* Animated gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-teal-900 via-emerald-900 to-green-950" />
 
@@ -142,6 +152,14 @@ export default function PlacesToVisitClient({ data, allCities }) {
               WhatsApp Us <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
+
+          {/* Trust row */}
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-7 text-sm text-white/60">
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-emerald-400 fill-emerald-400" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> 10,000+ Trips</span>
+            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-400" /> Verified Drivers</span>
+            <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No Advance Payment</span>
+          </div>
         </div>
       </section>
 
@@ -189,6 +207,11 @@ export default function PlacesToVisitClient({ data, allCities }) {
                   <div className="text-xs text-white/40 mt-1 uppercase tracking-wider">{stat.label}</div>
                 </div>
               ))}
+            </div>
+
+            {/* Lead capture form */}
+            <div className="relative z-10 mt-8 flex justify-center">
+              <QuickEnquiryForm fromCity={data.city} pageType="route" />
             </div>
           </div>
         </div>
@@ -315,6 +338,9 @@ export default function PlacesToVisitClient({ data, allCities }) {
           )}
         </div>
       </section>
+
+      {/* ━━━ EXPLORE BY CAB: Commercial CTA + authority flow to city hub & one-way routes ━━━ */}
+      <ExploreByCabCTA cityName={data.city} citySlug={data.slug} links={exploreLinks} />
 
       {/* ━━━ BUDGET PLANNING: Receipt-style cards ━━━ */}
       <section className="py-20 md:py-28 px-4 sm:px-6 bg-gradient-to-b from-stone-50 to-white">
@@ -636,6 +662,12 @@ export default function PlacesToVisitClient({ data, allCities }) {
           </div>
         </div>
       </section>
+
+      <SetStickyCta
+        price="₹11/km"
+        label={`Trips from ${data.city}`}
+        whatsappText={`Hi, I want to explore places near ${data.city}. Please share cab fares.`}
+      />
     </div>
   );
 }

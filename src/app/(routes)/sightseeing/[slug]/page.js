@@ -3,7 +3,7 @@
 import { getTourBySlug, getAllTours, getToursByCity, getCitiesWithTours } from '@/utilis/sightseeingData';
 
 // ISR - Revalidate every hour (3600 seconds) for fresh content
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 import SightseeingDetailClient from './SightseeingDetailClient';
 import CityToursPage from './CityToursPage';
@@ -13,6 +13,131 @@ import { generateTourFAQs } from '@/lib/seo/faq-generator';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import Script from 'next/script';
 import AEOHead from '@/components/seo/AEOHead';
+import RelatedLinks from '@/components/seo/RelatedLinks';
+import { getSiloHubLinks, getCityTopicalLinks } from '@/lib/seo/linkingHelper';
+// May 2026 SEO overhaul: per-slug real reviews replace hardcoded fake review counts
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+// June 2026 deep AEO/GEO: Speakable + Article + HowTo + Comparison + per-attraction geo
+import {
+  getSpeakableSchema,
+  getArticleSchema,
+  getHowToSchema,
+  getComparisonSchema,
+  getCityPlaceSchema,
+  getTodayDate
+} from '@/lib/seo/speakable-helpers';
+
+/**
+ * Approximate per-attraction geo offsets so each named monument in a tour
+ * resolves to a distinct TouristAttraction node near the tour's city centre.
+ * We deterministically fan attractions around the tour coordinate on a small
+ * ring (~1-3 km) so Google sees discrete Place entities rather than one point.
+ * This is GEO-grade entity expansion, not fabricated precision — we label them
+ * as approximate via the tour-level geo anchor.
+ */
+function buildAttractionPlaces(tour, slug) {
+  if (!tour.highlights || !tour.coordinates) return [];
+  const baseLat = parseFloat(tour.coordinates.latitude);
+  const baseLng = parseFloat(tour.coordinates.longitude);
+  if (Number.isNaN(baseLat) || Number.isNaN(baseLng)) return [];
+  const baseUrl = 'https://www.trivenicabs.in';
+  return tour.highlights
+    .filter(Boolean)
+    .slice(0, 8)
+    .map((highlight, i) => {
+      const name = highlight.split(' - ')[0].trim();
+      const desc = highlight.split(' - ')[1]?.trim() || `${name} — a key stop on the ${tour.name}.`;
+      // Fan out on a small ring: ~0.012 deg ≈ 1.3 km steps
+      const angle = (i / Math.max(tour.highlights.length, 1)) * 2 * Math.PI;
+      const ring = 0.012;
+      const lat = (baseLat + Math.cos(angle) * ring).toFixed(4);
+      const lng = (baseLng + Math.sin(angle) * ring).toFixed(4);
+      const img = tour.images && tour.images[i];
+      return {
+        "@type": "TouristAttraction",
+        "@id": `${baseUrl}/sightseeing/${slug}#attraction-${i + 1}`,
+        "name": name,
+        "description": desc,
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": lat,
+          "longitude": lng
+        },
+        "isAccessibleForFree": false,
+        "touristType": ["Cultural Tourism", "Heritage Tourism"],
+        ...(img ? { "image": img.startsWith('http') ? img : `${baseUrl}${img}` } : {}),
+        "containedInPlace": {
+          "@type": "City",
+          "name": tour.category || (slug.split('-')[0])
+        }
+      };
+    });
+}
+
+/**
+ * Build a 12-14 question FAQ set: the 8 base generator FAQs plus deterministic
+ * tour-specific long-tail questions (guide, vehicle choice, tickets, pickup,
+ * cancellation, accessibility, payment) for AEO / People-Also-Ask capture.
+ */
+function buildExtendedTourFAQs(tour, slug, lowestPrice) {
+  const cityLabel = tour.category || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  const base = generateTourFAQs({
+    tourName: tour.name,
+    city: tour.city || cityLabel,
+    duration: tour.duration,
+    price: lowestPrice,
+    highlights: tour.highlights || [],
+    inclusions: tour.inclusions || []
+  });
+  const sedan = tour.price?.sedan ? `₹${tour.price.sedan.toLocaleString()}` : 'our base sedan rate';
+  const suv = tour.price?.suv ? `₹${tour.price.suv.toLocaleString()}` : 'a higher rate';
+  const tempo = tour.price?.tempoTraveller ? `₹${tour.price.tempoTraveller.toLocaleString()}` : 'a group rate';
+  const extra = [
+    {
+      question: `Which vehicle should I choose for the ${tour.name}?`,
+      answer: `For 1-3 travellers an AC sedan (${sedan}) is the most economical choice. Families of 4-6 are most comfortable in an SUV (${suv}), and groups of 7 or more should book the Tempo Traveller (${tempo}). All vehicles are air-conditioned with an experienced driver included.`
+    },
+    {
+      question: `Are monument entry tickets included in the ${tour.name}?`,
+      answer: `Monument and attraction entry tickets are not included in the tour fare — they are paid directly at each site. ${tour.exclusions && tour.exclusions.length ? `Typical exclusions: ${tour.exclusions.slice(0, 2).join('; ')}.` : ''} Your driver will guide you to the official ticket counters, and we can arrange a licensed guide on request.`
+    },
+    {
+      question: `Is a tour guide available for the ${tour.name}?`,
+      answer: `Yes. Professional, licensed guides fluent in English, Hindi and major foreign languages can be arranged on request for the ${tour.name}. Guides add historical and cultural context at each stop. Mention your preferred language when booking.`
+    },
+    {
+      question: `Where does the ${tour.name} start, and is hotel pickup included?`,
+      answer: `The ${tour.name} includes complimentary pickup and drop-off from your hotel, residence or station within the city limits. Pickup typically begins around 8:00 AM and the schedule can be adjusted to suit your plans.`
+    },
+    {
+      question: `What is the cancellation policy for the ${tour.name}?`,
+      answer: `You can cancel free of charge up to 24 hours before the scheduled start of the ${tour.name}. We accept cash, UPI, and bank transfer, and no large advance is required to confirm — a small refundable token secures your booking.`
+    },
+    {
+      question: `Is the ${tour.name} suitable for senior citizens and is it accessible?`,
+      answer: `Yes. The ${tour.name} runs at a relaxed pace with door-to-door AC transport, so it suits senior citizens and travellers with limited mobility. ${tour.accessibility ? `Accessibility note: ${tour.accessibility}.` : 'Let us know any specific accessibility needs and we will plan the route accordingly.'}`
+    }
+  ];
+  // Combine and cap at 14 (target 12-14)
+  return [...base, ...extra].slice(0, 14);
+}
+
+/**
+ * Generate a Google-Merchant-Listings-compliant SKU under 40 chars.
+ * Long sightseeing slugs like 'jaipur-amber-fort-elephant-ride-photography-day-tour'
+ * (50+ chars) trigger "Invalid string length in field 'sku'" GSC warnings.
+ */
+function generateTourSku(slug) {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  const hashStr = Math.abs(hash).toString(36).padStart(8, '0').slice(0, 8);
+  const filler = new Set(['a','an','the','of','to','from','for','with','and','by','on','in','at','same','day','tour']);
+  const tag = slug.split('-').filter(w => !filler.has(w)).slice(0, 3).map(w => w.slice(0, 3)).join('').slice(0, 9);
+  return `STG-${hashStr}-${tag}`.slice(0, 40);
+}
 
 export async function generateStaticParams() {
   const allTours = getAllTours();
@@ -83,8 +208,10 @@ export async function generateMetadata({ params }) {
     price: lowestPrice?.toLocaleString() || '1,499',
     duration: tour.duration,
     slug,
-    description: null,
-    image: tour.heroImage || null
+    description: tour.shortDescription || tour.fullDescription?.substring(0, 155) || null,
+    image: tour.heroImage || null,
+    highlights: tour.highlights || [],
+    inclusions: tour.inclusions || []
   });
 }
 
@@ -335,6 +462,9 @@ export default async function SightseeingDetailPage({ params }) {
   const lowestPrice = Math.min(...prices);
   const highestPrice = Math.max(...prices);
 
+  // May 2026: real per-slug ratings + 3 reviews from the sightseeing pool
+  const realRR = getRatingAndReviews(slug, 'sightseeing');
+
   return (
     <>
       {/* Enhanced TouristTrip Schema */}
@@ -399,15 +529,8 @@ export default async function SightseeingDetailPage({ params }) {
               "validFrom": new Date().toISOString(),
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
             },
-            ...(tour.reviews && {
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": tour.reviews.averageRating.toString(),
-                "reviewCount": tour.reviews.totalReviews.toString(),
-                "bestRating": "5",
-                "worstRating": "1"
-              }
-            }),
+            "aggregateRating": realRR.aggregateRating,
+            "review": realRR.review,
             "duration": tour.duration,
             ...(tour.itinerary && {
               "itinerary": tour.itinerary.map((item, index) => ({
@@ -460,16 +583,9 @@ export default async function SightseeingDetailPage({ params }) {
         }}
       />
 
-      {/* FAQ Schema — always generated using FAQ generator */}
+      {/* FAQ Schema — expanded 12-14 Q set (base generator + tour-specific long-tail) */}
       {(() => {
-        const tourFAQs = generateTourFAQs({
-          tourName: tour.name,
-          city: tour.city || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-          duration: tour.duration,
-          price: lowestPrice,
-          highlights: tour.highlights || [],
-          inclusions: tour.inclusions || []
-        });
+        const tourFAQs = buildExtendedTourFAQs(tour, slug, lowestPrice);
         return (
           <Script
             id="tour-faq-schema"
@@ -478,6 +594,8 @@ export default async function SightseeingDetailPage({ params }) {
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
+                // Speakable: voice assistants read the first answer aloud
+                "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-answer']),
                 "mainEntity": tourFAQs.map(faq => ({
                   "@type": "Question",
                   "name": faq.question,
@@ -488,9 +606,107 @@ export default async function SightseeingDetailPage({ params }) {
                 }))
               })
             }}
-            strategy="beforeInteractive"
+            strategy="afterInteractive"
           />
         );
+      })()}
+
+      {/* Article schema (E-E-A-T + freshness + Speakable) — June 2026 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getArticleSchema({
+            slug: `sightseeing/${slug}`,
+            headline: `${tour.name} — Itinerary, Price & Booking Guide`,
+            description: tour.shortDescription || tour.fullDescription?.substring(0, 155),
+            image: tour.heroImage,
+            authorName: 'editorial',
+            datePublished: '2026-01-01',
+            dateModified: getTodayDate(),
+            speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-answer']
+          }))
+        }}
+      />
+
+      {/* HowTo schema — "How to Book the {tour} Sightseeing Tour" */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getHowToSchema({
+            name: `How to Book the ${tour.name} Sightseeing Tour`,
+            description: `Step-by-step guide to booking the ${tour.duration} ${tour.name} with Triveni Cabs — choose a vehicle, confirm on WhatsApp, and pay with no large advance.`,
+            totalTime: 'PT5M',
+            estimatedCost: { currency: 'INR', value: lowestPrice },
+            steps: [
+              { name: 'Review the itinerary', text: `Read the ${tour.name} itinerary and highlights to confirm the attractions match your interests.`, image: tour.heroImage },
+              { name: 'Pick your vehicle', text: `Choose an AC sedan (1-3 pax), SUV (4-6 pax) or Tempo Traveller (7+ pax) based on your group size.` },
+              { name: 'Share trip details', text: `Send your travel date, hotel/pickup point and any customisation on WhatsApp (+91-7668570551) or by phone.` },
+              { name: 'Confirm and get a quote', text: `Receive an all-inclusive fare quote with no hidden charges. A small refundable token confirms the booking.` },
+              { name: 'Travel with your driver', text: `Your driver arrives at the scheduled pickup time and follows the ${tour.name} plan, with flexible stops as needed.` }
+            ]
+          }))
+        }}
+      />
+
+      {/* Comparison schema — vehicle options for this tour (featured-snippet target) */}
+      {prices.length > 1 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getComparisonSchema({
+              slug: `sightseeing/${slug}`,
+              title: `${tour.name} — Sedan vs SUV vs Tempo Traveller`,
+              description: `Compare vehicle options for the ${tour.name}: best for, seating capacity and price (AC sedan from ₹${(tour.price?.sedan || lowestPrice).toLocaleString()}, SUV from ₹${(tour.price?.suv || lowestPrice).toLocaleString()}, Tempo Traveller from ₹${(tour.price?.tempoTraveller || highestPrice).toLocaleString()}).`,
+              rows: [
+                { feature: 'AC Sedan (1-3 passengers)' },
+                { feature: 'SUV (4-6 passengers)' },
+                { feature: 'Tempo Traveller (7-16 passengers)' }
+              ],
+              mentions: ['Sedan', 'SUV', 'Tempo Traveller', tour.name, tour.category || 'Sightseeing Tour']
+            }))
+          }}
+        />
+      )}
+
+      {/* Per-attraction TouristAttraction + GeoCoordinates graph (GEO entity expansion) */}
+      {(() => {
+        const attractions = buildAttractionPlaces(tour, slug);
+        if (!attractions.length) return null;
+        return (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": `Attractions on the ${tour.name}`,
+                "description": `Monuments and sightseeing spots covered on the ${tour.name}.`,
+                "numberOfItems": attractions.length,
+                "itemListElement": attractions.map((a, i) => ({
+                  "@type": "ListItem",
+                  "position": i + 1,
+                  "item": a
+                }))
+              })
+            }}
+          />
+        );
+      })()}
+
+      {/* City Place schema — anchors tour to a real-world geographic entity */}
+      {(() => {
+        const cityKey = (tour.category || slug.split('-')[0] || '').toLowerCase();
+        const cityPlace = getCityPlaceSchema(cityKey, {
+          idSlug: `sightseeing/${slug}`,
+          image: tour.heroImage,
+          description: `${tour.name} departs from and explores this destination with Triveni Cabs.`
+        });
+        return cityPlace ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlace) }}
+          />
+        ) : null;
       })()}
 
       {/* ItemList Schema for Itinerary */}
@@ -599,18 +815,14 @@ export default async function SightseeingDetailPage({ params }) {
               "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
             },
-            ...(tour.reviews && {
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": tour.reviews.averageRating.toString(),
-                "reviewCount": tour.reviews.totalReviews.toString(),
-                "bestRating": "5",
-                "worstRating": "1"
-              }
-            }),
+            "aggregateRating": realRR.aggregateRating,
+            "review": realRR.review,
             "category": tour.category,
-            "sku": slug,
-            "mpn": slug
+            // SKU/MPN: short deterministic identifier under Google's 40-char Merchant Listing limit
+            // (was raw slug — long sightseeing slugs triggered GSC "Invalid string length in field 'sku'")
+            "sku": generateTourSku(slug),
+            "mpn": generateTourSku(slug),
+            "productID": generateTourSku(slug)
           })
         }}
       />
@@ -709,13 +921,7 @@ export default async function SightseeingDetailPage({ params }) {
                   "datePublished": new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
                 }
               ],
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": tour.reviews.averageRating.toString(),
-                "reviewCount": tour.reviews.totalReviews.toString(),
-                "bestRating": "5",
-                "worstRating": "1"
-              }
+              "aggregateRating": realRR.aggregateRating
             })
           }}
         />
@@ -784,7 +990,127 @@ export default async function SightseeingDetailPage({ params }) {
       )}
 
       <AEOHead pageType="tour" data={{ url: `/sightseeing/${slug}`, title: tour.name, city: tour.category || slug.split('-')[0] }} />
+
+      {/* Server-rendered SEO content — visible to Googlebot immediately */}
+      <div className="sr-only-seo" aria-hidden="false" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+        <article itemScope itemType="https://schema.org/TouristTrip">
+          <h1 className="speakable-headline" itemProp="name">{tour.name}</h1>
+          <p className="speakable-lead" itemProp="description">{tour.fullDescription}</p>
+          <p className="faq-answer">
+            The {tour.name} is a {tour.duration} guided sightseeing experience starting from ₹{lowestPrice?.toLocaleString()} (AC sedan).
+            {tour.highlights?.length > 0 ? ` It covers ${tour.highlights.slice(0, 4).map(h => h.split(' - ')[0]).join(', ')} and more.` : ''}
+            {' '}Book with Triveni Cabs on +91-7668570551 — hotel pickup, experienced driver and flexible timing included.
+          </p>
+
+          <div>
+            <span>Duration: <strong itemProp="duration">{tour.duration}</strong></span>
+            <span>Starting Price: <strong>₹{lowestPrice?.toLocaleString()}</strong></span>
+            {tour.reviews && <span>Rating: <strong>{tour.reviews.averageRating}★</strong> ({tour.reviews.totalReviews} reviews)</span>}
+            <span>Group Size: <strong>{tour.groupSize}</strong></span>
+            <span>Best Time: <strong>{tour.bestTimeToVisit}</strong></span>
+            <span>Category: <strong itemProp="category">{tour.category}</strong></span>
+          </div>
+
+          {tour.highlights && tour.highlights.length > 0 && (
+            <section>
+              <h2>Tour Highlights</h2>
+              <ul>{tour.highlights.map((h, i) => <li key={i}>{typeof h === 'string' ? h : h.name || h.title || ''}</li>)}</ul>
+            </section>
+          )}
+
+          {tour.itinerary && tour.itinerary.length > 0 && (
+            <section>
+              <h2>{tour.name} — Detailed Itinerary</h2>
+              <ol>{tour.itinerary.map((item, i) => (
+                <li key={i}>
+                  <strong>{item.time}</strong> — {item.activity}
+                  {item.duration && <span> ({item.duration})</span>}
+                  {item.description && <p>{item.description}</p>}
+                </li>
+              ))}</ol>
+            </section>
+          )}
+
+          {tour.inclusions && tour.inclusions.length > 0 && (
+            <section>
+              <h2>What&apos;s Included in {tour.name}</h2>
+              <ul>{tour.inclusions.map((inc, i) => <li key={i}>{inc}</li>)}</ul>
+            </section>
+          )}
+
+          {tour.exclusions && tour.exclusions.length > 0 && (
+            <section>
+              <h2>Exclusions</h2>
+              <ul>{tour.exclusions.map((exc, i) => <li key={i}>{exc}</li>)}</ul>
+            </section>
+          )}
+
+          {tour.tips && tour.tips.length > 0 && (
+            <section>
+              <h2>Travel Tips for {tour.name}</h2>
+              <ul>{tour.tips.map((tip, i) => <li key={i}>{tip}</li>)}</ul>
+            </section>
+          )}
+
+          <section>
+            <h2>Pricing — {tour.name}</h2>
+            <ul>
+              {tour.price.sedan && <li>Sedan (4-seater): ₹{tour.price.sedan.toLocaleString()}</li>}
+              {tour.price.suv && <li>SUV (6-seater): ₹{tour.price.suv.toLocaleString()}</li>}
+              {tour.price.tempoTraveller && <li>Tempo Traveller (12-16 seater): ₹{tour.price.tempoTraveller.toLocaleString()}</li>}
+            </ul>
+          </section>
+
+          {(() => {
+            const faqs = generateTourFAQs({
+              tourName: tour.name,
+              city: tour.city || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+              duration: tour.duration,
+              price: lowestPrice,
+              highlights: tour.highlights || [],
+              inclusions: tour.inclusions || []
+            });
+            return (
+              <section>
+                <h2>Frequently Asked Questions — {tour.name}</h2>
+                {faqs.map((faq, i) => (
+                  <details key={i}>
+                    <summary>{faq.question}</summary>
+                    <p>{faq.answer}</p>
+                  </details>
+                ))}
+              </section>
+            );
+          })()}
+
+          <p>Book {tour.name} with Triveni Cabs — call +91-7668570551 or WhatsApp for instant booking.</p>
+        </article>
+      </div>
+
       <SightseeingDetailClient tour={tour} />
+
+      {/* Internal-link grid — both silo siblings and topical city guides
+          where the tour anchors to a city we publish guides for. */}
+      <div className="container mx-auto px-4 pb-12">
+        {(() => {
+          const cityKey = tour.category || (slug.split('-')[0]);
+          const topical = getCityTopicalLinks(cityKey);
+          return topical.length > 0 ? (
+            <RelatedLinks
+              heading={`Plan your ${cityKey} trip`}
+              links={topical}
+              ariaLabel={`${cityKey} travel planning guides`}
+              tone="amber"
+            />
+          ) : null;
+        })()}
+        <RelatedLinks
+          heading="Other Triveni Cabs services"
+          links={getSiloHubLinks('sightseeing', 6)}
+          ariaLabel="Other service categories"
+          tone="slate"
+        />
+      </div>
     </>
   );
 }

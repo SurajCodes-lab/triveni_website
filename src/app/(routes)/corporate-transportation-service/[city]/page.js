@@ -7,12 +7,17 @@ import {
   corporateBenefits,
   corporateFAQs,
   getCorporateCityBySlug,
-  getAllCorporateSlugs
+  getAllCorporateSlugs,
+  getCorporateCityPlaceSchema
 } from '@/utilis/corporateTransportData';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { getArticleSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { getAllIndustries } from '@/utilis/corporateIndustryData';
+import { getAllUseCases } from '@/utilis/corporateUseCaseData';
 import AEOHead from '@/components/seo/AEOHead';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 // Centralized icon imports for better bundle optimization
 import {
@@ -114,10 +119,12 @@ export default async function CorporateCityPage({ params }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Corporate Transportation Service",
-    "name": cityData.title,
+    "name": `${cityData.title} | Triveni Cabs`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": cityData.description,
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -126,8 +133,26 @@ export default async function CorporateCityPage({ params }) {
     "areaServed": {
       "@type": "City",
       "name": cityData.name
-    }
+    },
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
+    ...getRatingAndReviews(city, 'corporate')
   };
+
+  // GEO/AEO: City Place schema with business districts / tech parks as
+  // containsPlace children (each with GeoCoordinates) + city → state → India graph.
+  const cityPlaceSchema = getCorporateCityPlaceSchema(city);
+
+  // Article schema for E-E-A-T + freshness + voice search.
+  const articleSchema = getArticleSchema({
+    slug: `corporate-transportation-service/${city}`,
+    headline: `Corporate Transportation Service in ${cityData.name} — Employee & Executive Fleet`,
+    description: cityData.metaDescription,
+    image: cityData.heroImage,
+    datePublished: '2026-01-01',
+    dateModified: getTodayDate(),
+    authorName: 'editorial',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
+  });
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -155,6 +180,8 @@ export default async function CorporateCityPage({ params }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      {cityPlaceSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AEOHead pageType="corporate" data={{ url: `/corporate-transportation-service/${city}`, title: `${cityData.name} Corporate Transport`, city: cityData.name }} />
@@ -200,7 +227,7 @@ export default async function CorporateCityPage({ params }) {
                   <span className="text-cyan-300 font-medium text-sm tracking-widest uppercase">{cityData.tagline}</span>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
                   Corporate
                   <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
                     Transportation
@@ -208,7 +235,7 @@ export default async function CorporateCityPage({ params }) {
                   <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-light text-white/80">in {cityData.name}</span>
                 </h1>
 
-                <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                <p className="speakable-lead text-xl text-slate-300 max-w-lg leading-relaxed">
                   {cityData.subtitle}
                 </p>
 
@@ -559,9 +586,33 @@ export default async function CorporateCityPage({ params }) {
                     <h3 className="text-lg font-bold text-slate-800 mb-4 leading-tight group-hover:text-indigo-700 transition-colors">
                       {faq.question}
                     </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{faq.answer}</p>
+                    <p className={`text-slate-500 text-sm leading-relaxed ${idx === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</p>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Combo links — industry & use-case transport in this city */}
+        <section className="bg-slate-50 border-y border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 py-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-600">By industry</p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black text-slate-900">Corporate transport by industry in {cityData.name}</h2>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {getAllIndustries().map((ind) => (
+                <Link key={ind.slug} href={`/corporate-transportation-service/${city}/${ind.slug}`} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-cyan-300 hover:text-cyan-700 hover:shadow-sm transition">
+                  <span>{ind.icon}</span> {ind.name} in {cityData.name}
+                </Link>
+              ))}
+            </div>
+            <p className="mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-600">By service</p>
+            <h2 className="mt-2 text-2xl md:text-3xl font-black text-slate-900">Corporate services in {cityData.name}</h2>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {getAllUseCases().map((uc) => (
+                <Link key={uc.slug} href={`/corporate-transportation-service/${city}/${uc.slug}`} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-cyan-300 hover:text-cyan-700 hover:shadow-sm transition">
+                  <span>{uc.icon}</span> {uc.name} in {cityData.name}
+                </Link>
               ))}
             </div>
           </div>

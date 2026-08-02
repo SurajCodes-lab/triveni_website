@@ -6,12 +6,13 @@ import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
-import MobileStickyBar from '@/components/ui/MobileStickyBar';
 import {
   Phone, ArrowRight, Shield, Clock, Car, CheckCircle2,
   MapPin, Star, Users, Zap, Award, Calendar, ChevronRight
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 const ACCENT = {
   summer:    { text: 'text-amber-600',   bg: 'bg-amber-50',   badge: 'bg-amber-100 text-amber-700', strip: 'from-amber-400 via-orange-400 to-rose-400', dark: 'text-amber-400' },
@@ -31,9 +32,13 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
   const a = ACCENT[theme] || ACCENT.christmas;
   const heroImage = getCityImage(destinations[0]?.name?.split(' to ').pop() || 'delhi');
   const whatsappMsg = `Hi, I'm interested in ${title}. Please share details and pricing.`;
+  const firstPkg = packages[0];
+  const stickyLabel = firstPkg?.name ? `${firstPkg.name}` : (title || 'Seasonal Trip');
+  const stickyPrice = firstPkg?.price || destinations.find(d => d.price)?.price || '';
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
+      <SetStickyCta price={stickyPrice} label={stickyLabel} whatsappText={whatsappMsg} />
 
       {/* ━━━ HERO ━━━ */}
       <section className="relative min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-end overflow-hidden">
@@ -42,21 +47,35 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
         <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${a.strip} z-20`} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pb-8 sm:pb-12">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
-              <Calendar className={`w-3.5 h-3.5 ${a.dark}`} />
-              <span className={`text-[11px] font-bold ${a.dark} uppercase tracking-widest`}>{subtitle || 'Seasonal Travel'}</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">{title}</h1>
-            <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{description}</p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 mb-5">
+                <Calendar className={`w-3.5 h-3.5 ${a.dark}`} />
+                <span className={`text-[11px] font-bold ${a.dark} uppercase tracking-widest`}>{subtitle || 'Seasonal Travel'}</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">{title}</h1>
+              <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{description}</p>
 
-            <div className="flex flex-wrap gap-3 mt-6">
-              <Link onClick={() => trackPhoneCall('seasonal_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
-                <Phone className="w-4 h-4" /> Call 7668570551
-              </Link>
-              <Link onClick={() => trackWhatsAppClick('seasonal_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3.5 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">
-                {WA} WhatsApp Quote
-              </Link>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <Link onClick={() => trackPhoneCall('seasonal_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
+                  <Phone className="w-4 h-4" /> Call 7668570551
+                </Link>
+                <Link onClick={() => trackWhatsAppClick('seasonal_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3.5 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">
+                  {WA} WhatsApp Quote
+                </Link>
+              </div>
+
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-5 text-white/70 text-xs sm:text-sm font-medium">
+                <span className="flex items-center gap-1.5"><Star className={`w-3.5 h-3.5 ${a.dark} fill-current`} /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-emerald-400" /> 10,000+ Trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-emerald-400" /> Verified Drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> No Advance Payment</span>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-auto lg:flex-shrink-0">
+              <QuickEnquiryForm toCity={destinations[0]?.name?.split(' to ').pop() || ''} pageType="seasonal" />
             </div>
           </div>
         </div>
@@ -208,7 +227,6 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
 
       <FaqAccordion faqs={faqs} />
       <CTASection heading="Ready to Book Your Trip?" subheading="Get instant quotes, transparent pricing, and 24/7 support. Over 10,000 happy travelers trust Triveni Cabs." />
-      <MobileStickyBar />
     </div>
   );
 }

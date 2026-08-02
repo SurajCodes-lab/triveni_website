@@ -1,10 +1,16 @@
 import { notFound } from 'next/navigation';
-import { getTollCostRoute, getAllTollCostSlugs, getRelatedTollCostRoutes } from '@/utilis/tollCostData';
+import { getTollCostRoute, getAllTollCostSlugs, getRelatedTollCostRoutes, cityNameToGeoSlug } from '@/utilis/tollCostData';
 import TollCostClient from '@/components/toll-cost/TollCostClient';
+import { getCorridorLinks } from '@/utilis/corridorLinks';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import {
+  getSpeakableSchema, getArticleSchema, getHowToSchema,
+  getComparisonSchema, getCityPlaceSchema, getTodayDate,
+} from '@/lib/seo/speakable-helpers';
 
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -83,15 +89,21 @@ export default async function TollCostPage({ params }) {
 
   const relatedRoutes = getRelatedTollCostRoutes(slug);
 
-  // JSON-LD: Service Schema
+  const pageUrl = `https://www.trivenicabs.in/toll-cost/${slug}`;
+  const ogImage = getOgImageForSlug(slug);
+  const ratingAndReviews = getRatingAndReviews(slug, 'city');
+
+  // JSON-LD: Service Schema (deterministic rating + 3 reviews + brand via helper)
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": `Cab Service ${route.origin} to ${route.destination}`,
     "name": `${route.origin} to ${route.destination} Cab — Toll Cost ₹${route.totalTollCost.car}`,
     "description": `Book AC cab from ${route.origin} to ${route.destination}. ${route.totalDistance} km route with ${route.tollPlazas.length} toll plaza(s). Total toll: ₹${route.totalTollCost.car} (car). Cab fare from ₹${route.cabFare.toLocaleString('en-IN')}.`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#localbusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -115,12 +127,7 @@ export default async function TollCostPage({ params }) {
       "priceCurrency": "INR",
       "description": `Sedan cab fare from ${route.origin} to ${route.destination}. Toll charges extra at actual.`
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5"
-    }
+    ...ratingAndReviews,
   };
 
   // JSON-LD: Breadcrumb
@@ -130,14 +137,15 @@ export default async function TollCostPage({ params }) {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
       { "@type": "ListItem", "position": 2, "name": "Toll Cost Guide", "item": "https://www.trivenicabs.in/toll-cost" },
-      { "@type": "ListItem", "position": 3, "name": `${route.origin} to ${route.destination} Toll Cost`, "item": `https://www.trivenicabs.in/toll-cost/${slug}` }
+      { "@type": "ListItem", "position": 3, "name": `${route.origin} to ${route.destination} Toll Cost`, "item": pageUrl }
     ]
   };
 
-  // JSON-LD: FAQ
+  // JSON-LD: FAQ (+ Speakable for voice answers)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
     "mainEntity": route.faqs.map(faq => ({
       "@type": "Question",
       "name": faq.question,
@@ -145,13 +153,64 @@ export default async function TollCostPage({ params }) {
     }))
   };
 
+  // JSON-LD: Article (freshness + voice search)
+  const articleSchema = getArticleSchema({
+    slug: `toll-cost/${slug}`,
+    headline: `${route.origin} to ${route.destination} Toll Cost & Plaza List 2026`,
+    description: `Plaza-by-plaza toll breakdown for the ${route.totalDistance} km ${route.origin}–${route.destination} highway: ₹${route.totalTollCost.car} car, ₹${route.totalTollCost.suv} SUV across ${route.tollPlazas.length} plaza(s), with FASTag tips and toll-inclusive cab fares.`,
+    image: ogImage,
+    speakableSelectors: ['.speakable-headline', '.speakable-lead'],
+  });
+
+  // JSON-LD: HowTo — paying tolls on this route
+  const howToSchema = getHowToSchema({
+    name: `How to Pay Tolls on the ${route.origin} to ${route.destination} Route`,
+    description: `Step-by-step guide to paying the ${route.tollPlazas.length} toll plaza(s) between ${route.origin} and ${route.destination} using FASTag or cash.`,
+    totalTime: 'PT5M',
+    estimatedCost: { currency: 'INR', value: route.totalTollCost.car },
+    steps: [
+      { name: 'Fit a FASTag', text: `Affix an active FASTag RFID sticker on your windshield and keep at least ₹${Math.max(route.totalTollCost.car * 2, 500)} balance before starting from ${route.origin}.` },
+      { name: 'Use the FASTag lane', text: `At each of the ${route.tollPlazas.length} plaza(s), drive through the dedicated FASTag lane — the toll is auto-debited without stopping.` },
+      { name: 'Keep cash as backup', text: 'Carry a small amount of cash in case a FASTag reader fails; cash lanes are available at most plazas but have longer queues.' },
+      { name: 'Verify the debit SMS', text: `Confirm each toll debit via the SMS alert. Total car toll for ${route.origin} to ${route.destination} should be about ₹${route.totalTollCost.car}.` },
+      { name: 'Or book a cab', text: 'Book a Triveni Cab and the FASTag-equipped driver handles every toll for you — you simply settle the actual toll amount at the end.' },
+    ],
+  });
+
+  // JSON-LD: Comparison — FASTag vs Cash payment
+  const comparisonSchema = getComparisonSchema({
+    slug: `toll-cost/${slug}`,
+    title: `FASTag vs Cash: Paying Tolls from ${route.origin} to ${route.destination}`,
+    description: `Compare FASTag and cash payment for the ${route.tollPlazas.length} toll plaza(s) on the ${route.origin}–${route.destination} highway — wait time, discounts and convenience.`,
+    rows: [
+      { feature: 'Wait time at plaza' },
+      { feature: 'Discount / cashback' },
+      { feature: 'Queue length' },
+      { feature: 'Digital expense record' },
+    ],
+    mentions: ['FASTag', 'Cash toll', route.origin, route.destination, 'NHAI'],
+  });
+
+  // JSON-LD: GEO Place entities for origin + destination
+  const originPlace = getCityPlaceSchema(cityNameToGeoSlug(route.origin), { idSlug: `toll-cost/${slug}` });
+  const destPlace = getCityPlaceSchema(cityNameToGeoSlug(route.destination), { idSlug: `toll-cost/${slug}` });
+  const placeSchemas = [originPlace, destPlace].filter(Boolean);
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {comparisonSchema.map((s, i) => (
+        <script key={`cmp-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+      {placeSchemas.map((s, i) => (
+        <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <AEOHead pageType="route" data={{ url: `/toll-cost/${slug}`, title: `${route.origin} to ${route.destination} Toll Cost`, origin: route.origin, destination: route.destination, city: route.origin }} />
-      <TollCostClient route={route} relatedRoutes={relatedRoutes} />
+      <TollCostClient route={route} relatedRoutes={relatedRoutes} corridorLinks={getCorridorLinks(slug, 'toll-cost')} />
     </>
   );
 }

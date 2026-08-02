@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Heart, Camera, Hotel, Coffee, Route, Compass, HelpCircle, Gift, Sparkles } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
 export default function HoneymoonTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -14,8 +16,15 @@ export default function HoneymoonTripClient({ data }) {
     return <HoneymoonHubPage data={data} phoneNumber={phoneNumber} whatsappLink={whatsappLink} />;
   }
 
+  const stickyWhatsappText = `Hi, I'd like to plan a honeymoon trip to ${data.destination} by car from Delhi. Please share package details and best rates.`;
+
   return (
     <main className="min-h-screen bg-rose-950 text-white">
+      <SetStickyCta
+        price={`Rs ${data.price.sedan.toLocaleString()}`}
+        label={`${data.destination} Honeymoon`}
+        whatsappText={stickyWhatsappText}
+      />
       <style jsx>{`
         @keyframes heart-float {
           0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
@@ -169,12 +178,15 @@ export default function HoneymoonTripClient({ data }) {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="shimmer-rose">{data.destination}</span>
             <br />
             <span className="text-white/90 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Honeymoon by Car</span>
           </h1>
-          <p className="text-lg sm:text-xl text-rose-200/90 mb-10 max-w-3xl leading-relaxed">
+          <p className="speakable-lead text-lg sm:text-xl text-rose-200/90 mb-4 max-w-3xl leading-relaxed">
+            A {data.destination} honeymoon by car from Delhi starts at Rs {data.price.sedan.toLocaleString()} for a private sedan, all-inclusive of toll, parking and driver allowance. Triveni Cabs offers a complimentary decorated car option, experienced couple-friendly drivers and scenic romantic stops for an intimate getaway.
+          </p>
+          <p className="text-base text-rose-200/70 mb-10 max-w-3xl leading-relaxed">
             {data.tagline}. Private {data.vehicle.type.toLowerCase()} ride with decorated car option and scenic stops.
           </p>
 
@@ -198,19 +210,39 @@ export default function HoneymoonTripClient({ data }) {
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
-              style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
-            >
-              <Phone className="w-5 h-5" />
-              Call Now - {phoneNumber}
-            </a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600/90 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 backdrop-blur-sm border border-green-500/30 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/15">
-              WhatsApp Enquiry
-            </a>
+          {/* CTA + Lead Capture */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  onClick={() => trackPhoneCall('honeymoon_trip_hero')} href={`tel:${phoneNumber}`}
+                  className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
+                  style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Now - {phoneNumber}
+                </a>
+                <a
+                  onClick={() => trackWhatsAppClick('honeymoon_trip_hero', stickyWhatsappText)}
+                  href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-green-600/90 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 backdrop-blur-sm border border-green-500/30 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/15"
+                >
+                  WhatsApp Enquiry
+                </a>
+              </div>
+              {/* Trust row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-rose-100/80">
+                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-rose-300 fill-current" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-rose-300" /> 10,000+ trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-rose-300" /> Verified drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-rose-300" /> No advance payment</span>
+                <span className="flex items-center gap-1.5"><Gift className="w-4 h-4 text-rose-300" /> Decorated car option</span>
+              </div>
+            </div>
+            <div className="lg:justify-self-end w-full">
+              <QuickEnquiryForm fromCity="Delhi" toCity={data.destination} pageType="route" />
+            </div>
           </div>
         </div>
       </section>
@@ -514,7 +546,7 @@ export default function HoneymoonTripClient({ data }) {
                   <h3 className="font-semibold text-white pr-4 text-lg">{faq.question}</h3>
                   <ChevronRight className="w-5 h-5 text-rose-400 group-open:rotate-90 transition-transform duration-300 flex-shrink-0" />
                 </summary>
-                <div className="px-6 pb-6 text-rose-200/80 leading-relaxed">
+                <div className={`px-6 pb-6 text-rose-200/80 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>
                   {faq.answer}
                 </div>
               </details>
@@ -603,14 +635,14 @@ export default function HoneymoonTripClient({ data }) {
           </p>
           <div className="flex flex-wrap justify-center gap-5">
             <a
-              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_trip_footer')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-white text-rose-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
               <Phone className="w-6 h-6" />
               Call {phoneNumber}
             </a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl border border-green-500/30">
+            <a onClick={() => trackWhatsAppClick('honeymoon_trip_footer', stickyWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl border border-green-500/30">
               WhatsApp Booking
             </a>
           </div>
@@ -624,8 +656,14 @@ export default function HoneymoonTripClient({ data }) {
 }
 
 function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
+  const hubWhatsappText = 'Hi, I want to plan a honeymoon trip by car from Delhi. Please share destinations and package details.';
   return (
     <main className="min-h-screen bg-rose-950 text-white">
+      <SetStickyCta
+        price="Rs 4,500"
+        label="Honeymoon Trip by Car"
+        whatsappText={hubWhatsappText}
+      />
       <style jsx>{`
         @keyframes heart-float {
           0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
@@ -780,12 +818,12 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
             Honeymoon Road Trips
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="speakable-headline text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="shimmer-rose">Honeymoon Trip by Car</span>
             <br />
             <span className="text-white/90">from Delhi</span>
           </h2>
-          <p className="text-lg sm:text-xl text-rose-200/90 mb-10 max-w-3xl leading-relaxed">
+          <p className="speakable-lead text-lg sm:text-xl text-rose-200/90 mb-10 max-w-3xl leading-relaxed">
             {data.heroDescription}
           </p>
 
@@ -810,16 +848,23 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
 
           <div className="flex flex-wrap gap-4">
             <a
-              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
+              onClick={() => trackPhoneCall('honeymoon_hub_hero')} href={`tel:${phoneNumber}`}
+              className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
               <Phone className="w-5 h-5" />
               Call Now - {phoneNumber}
             </a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600/90 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 backdrop-blur-sm border border-green-500/30 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/15">
+            <a onClick={() => trackWhatsAppClick('honeymoon_hub_hero', hubWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-green-600/90 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 backdrop-blur-sm border border-green-500/30 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/15">
               WhatsApp Enquiry
             </a>
+          </div>
+          {/* Trust row */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-rose-100/80">
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-rose-300 fill-current" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-rose-300" /> 10,000+ trips</span>
+            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-rose-300" /> Verified drivers</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-rose-300" /> No advance payment</span>
           </div>
         </div>
       </section>
@@ -919,7 +964,7 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
                   <h3 className="font-semibold text-white pr-4 text-lg">{faq.question}</h3>
                   <ChevronRight className="w-5 h-5 text-rose-400 group-open:rotate-90 transition-transform duration-300 flex-shrink-0" />
                 </summary>
-                <div className="px-6 pb-6 text-rose-200/80 leading-relaxed">{faq.answer}</div>
+                <div className={`px-6 pb-6 text-rose-200/80 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</div>
               </details>
             ))}
           </div>
@@ -999,14 +1044,14 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
           <p className="text-lg text-rose-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">Private car, decorated option, experienced drivers. Your love story begins on the road.</p>
           <div className="flex flex-wrap justify-center gap-5">
             <a
-              onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
+              onClick={() => trackPhoneCall('honeymoon_hub_footer')} href={`tel:${phoneNumber}`}
               className="inline-flex items-center gap-2 bg-white text-rose-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
               style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
             >
               <Phone className="w-6 h-6" />
               Call {phoneNumber}
             </a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl border border-green-500/30">
+            <a onClick={() => trackWhatsAppClick('honeymoon_hub_footer', hubWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl border border-green-500/30">
               WhatsApp Booking
             </a>
           </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 // Centralized icon imports for better bundle optimization
@@ -21,9 +21,14 @@ import dynamic from 'next/dynamic';
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import CityRouteHero from '@/components/cityroute/CityRouteHero';
+import CityRouteVehicles from '@/components/cityroute/CityRouteVehicles';
+import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
 
 // SEO Components
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { getRelatedContent, getRelatedRoutes, getServiceCrossLinks } from '@/utilis/linkingHelper';
 
 // City hero images
@@ -104,12 +109,18 @@ export default function RouteClientContent({
   const [tripType, setTripType] = useState('oneWay');
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [expandedFaq, setExpandedFaq] = useState(0);
-  const [mounted, setMounted] = useState(false);
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Phase 3: unique, entity-rich, slug-seeded intro so each city-route page reads differently.
+  const uniqueIntro = generateUniqueIntro({
+    origin: formattedCityName || cityName,
+    destination: formattedDestination || destination,
+    distance: (route && route.distance) || estimatedDistance,
+    time: (route && route.time) || estimatedTime,
+    highway: (route && (route.routeHighlights || route.highway)) || '',
+    attractions: (route && (route.popularStops || route.attractions)) || [],
+    vehicleType: 'AC sedan, SUV or tempo',
+    slug: createRouteSlug(cityName, destination),
+  });
 
   const routeOffices = useMemo(() =>
     getRouteOffices(formattedCityName, formattedDestination),
@@ -117,12 +128,22 @@ export default function RouteClientContent({
   );
 
   const handleCallNow = useCallback(() => {
-    window.open(`tel:+91${phoneNumber}`, '_blank');
+    window.location.href = `tel:+91${phoneNumber}`;
   }, []);
 
+  const whatsappMessage = useMemo(
+    () => `Hi, I want to book a ${tripType === 'roundTrip' ? 'round trip' : 'one-way'} cab from ${formattedCityName} to ${formattedDestination}. Please share pricing and availability.`,
+    [formattedCityName, formattedDestination, tripType]
+  );
+
   const handleWhatsApp = useCallback(() => {
-    const message = `Hi, I want to book a ${tripType === 'roundTrip' ? 'round trip' : 'one-way'} cab from ${formattedCityName} to ${formattedDestination}. Please share pricing and availability.`;
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+  }, [whatsappMessage]);
+
+  // Vehicle-specific booking — richer lead than the generic route message.
+  const handleVehicleBook = useCallback((v) => {
+    const msg = `Hi, I want to book a ${v?.name || 'cab'} from ${formattedCityName} to ${formattedDestination} (${tripType === 'roundTrip' ? 'round trip' : 'one way'})${v?.price ? ` — ${v.price}` : ''}. Please share availability.`;
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
   }, [formattedCityName, formattedDestination, tripType]);
 
   const cityData = cityHeroData[formattedCityName] || {
@@ -163,6 +184,21 @@ export default function RouteClientContent({
     return route.prices.filter(p => p.vehicle && isLargeVehicle(p.vehicle) && !isCarVehicle(p.vehicle));
   }, [route?.prices]);
 
+  // Shape the priced vehicle list for the redesigned VehicleCard grid.
+  // Product images render object-contain there, so nothing gets cropped.
+  const displayVehicles = useMemo(() => {
+    return filteredVehicles.map((v) => {
+      const info = vehicleCapacityMap[v.vehicle] || {};
+      const seatMatch = String(v.vehicle).match(/(\d+)\s*seater/i);
+      return {
+        name: v.vehicle,
+        image: vehicleImageMap[v.vehicle] || '/images/car/swift_dzire.jpg',
+        seats: info.seats || (seatMatch ? seatMatch[1] : '4'),
+        price: tripType === 'oneWay' ? v.price : v.roundTrip,
+      };
+    });
+  }, [filteredVehicles, tripType]);
+
   const startingPrice = useMemo(() => {
     if (!filteredVehicles.length) return "2,760";
     const prices = filteredVehicles.map(p => {
@@ -171,6 +207,24 @@ export default function RouteClientContent({
     });
     return Math.min(...prices).toLocaleString();
   }, [filteredVehicles, tripType]);
+
+  // Stable, tripType-independent figures for the Quick Answer block so the
+  // extractable text does not change when the visitor flips the trip toggle.
+  const answerFares = useMemo(() => {
+    const prices = route?.prices || [];
+    const pick = (re) => prices.find((p) => p.vehicle && re.test(p.vehicle));
+    const sedan = pick(/sedan/i);
+    const suv = pick(/innova/i) || pick(/suv|ertiga/i);
+    const tempo = prices.find((p) => p.vehicle && /tempo|seater/i.test(p.vehicle) && !isCarVehicle(p.vehicle));
+    return {
+      sedanOneWay: sedan?.price || null,
+      sedanRoundTrip: sedan?.roundTrip || null,
+      suvName: suv?.vehicle || null,
+      suvOneWay: suv?.price || null,
+      tempoName: tempo?.vehicle || null,
+      tempoFare: tempo?.roundTrip || tempo?.price || null,
+    };
+  }, [route?.prices]);
 
   const faqs = [
     {
@@ -210,232 +264,45 @@ export default function RouteClientContent({
   return (
     <article className="min-h-screen bg-[#FAFAFA]" itemScope itemType="https://schema.org/TravelAction">
 
-      {/* ==================== HERO SECTION - BENTO STYLE ==================== */}
-      <section className="relative min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+      {/* ==================== HERO SECTION — AURORA REDESIGN ==================== */}
+      <div className="bg-aurora grain-overlay relative overflow-hidden">
+        {/* soft top hairline in brand gold */}
+        <div className="absolute inset-x-0 top-0 z-20 h-[3px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
 
-        {/* Gradient Orbs */}
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#FACF2D]/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2" />
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
+          <ol className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
+            <li><Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link></li>
+            <ChevronRight className="w-4 h-4 text-white/40" />
+            <li><Link href={`/${cityName}`} className="text-white/60 hover:text-white transition-colors">{formattedCityName}</Link></li>
+            <ChevronRight className="w-4 h-4 text-white/40" />
+            <li className="text-[#FACF2D] font-medium truncate max-w-[45vw]">{formattedDestination}</li>
+          </ol>
+        </nav>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 md:pt-8 md:pb-28">
+        <CityRouteHero
+          from={formattedCityName}
+          to={formattedDestination}
+          distance={route.distance || estimatedDistance}
+          time={route.time || estimatedTime}
+          startingPrice={startingPrice}
+          tripType={tripType}
+          onToggleTrip={setTripType}
+          onWhatsApp={handleWhatsApp}
+          phone={phoneNumber}
+          rating="4.9"
+        />
 
-          {/* Breadcrumb */}
-          <motion.nav
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mb-8"
-          >
-            <ol className="flex items-center gap-2 text-sm">
-              <li>
-                <Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link>
-              </li>
-              <ChevronRight className="w-4 h-4 text-white/40" />
-              <li>
-                <Link href={`/${cityName}`} className="text-white/60 hover:text-white transition-colors">{formattedCityName}</Link>
-              </li>
-              <ChevronRight className="w-4 h-4 text-white/40" />
-              <li className="text-[#FACF2D] font-medium">{formattedDestination}</li>
-            </ol>
-          </motion.nav>
-
-          {/* BENTO GRID HERO */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
-
-            {/* Main Content Card - Left Side */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-7 xl:col-span-8"
-            >
-              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 md:p-10 border border-white/10 h-full">
-
-                {/* Route Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#FACF2D] px-4 py-2 rounded-full mb-6">
-                  <Route className="w-4 h-4 text-black" />
-                  <span className="text-black font-bold text-sm">OUTSTATION TAXI</span>
-                </div>
-
-                {/* Price Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-4 py-2 rounded-full font-bold text-base md:text-lg mb-4">
-                  Starting from ₹{startingPrice}
-                </div>
-
-                {/* Main Title */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
-                  {formattedCityName}
-                  <span className="text-[#FACF2D]"> to </span>
-                  {formattedDestination} Cab
-                </h1>
-
-                <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
-                  Book {formattedCityName} to {formattedDestination} cab &amp; taxi with AC sedan, SUV or tempo traveller. One way &amp; round trip available.
-                </p>
-
-                {/* Quick Stats Row */}
-                <div className="flex flex-wrap gap-3 mb-8">
-                  <div className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                        <Navigation className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">{route.distance || estimatedDistance}</p>
-                        <p className="text-white/50 text-xs">Distance</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
-                        <Timer className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">{route.time || estimatedTime}</p>
-                        <p className="text-white/50 text-xs">Duration</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
-                        <Star className="w-5 h-5 text-white" fill="white" />
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">4.9</p>
-                        <p className="text-white/50 text-xs">Rating</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.button
-                    onClick={handleCallNow}
-                    
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
-                  >
-                    <Phone className="w-5 h-5" />
-                    Call Now
-                  </motion.button>
-
-                  <motion.button
-                    onClick={handleWhatsApp}
-                    
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-white/10 hover:bg-white/15 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 border border-white/20 transition-colors"
-                  >
-                    <BsWhatsapp className="w-5 h-5" />
-                    WhatsApp
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Side Cards */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
-            >
-              {/* Price Card */}
-              <div className="bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 md:p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
-
-                <div className="relative z-10">
-                  <p className="text-black/60 font-medium mb-1">Starting from</p>
-                  <div className="flex items-baseline gap-1 mb-4">
-                    <span className="text-black text-4xl md:text-5xl lg:text-6xl font-black">₹{startingPrice}</span>
-                    <span className="text-black/60 font-medium">/{tripType === 'roundTrip' ? 'round trip' : 'one way'}</span>
-                  </div>
-
-                  {/* Trip Type Toggle */}
-                  <div className="bg-black/10 rounded-xl p-1 flex gap-1">
-                    <button
-                      onClick={() => setTripType('oneWay')}
-                      className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all ${
-                        tripType === 'oneWay'
-                          ? 'bg-black text-[#FACF2D]'
-                          : 'text-black/70 hover:text-black'
-                      }`}
-                    >
-                      One Way
-                    </button>
-                    <button
-                      onClick={() => setTripType('roundTrip')}
-                      className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all ${
-                        tripType === 'roundTrip'
-                          ? 'bg-black text-[#FACF2D]'
-                          : 'text-black/70 hover:text-black'
-                      }`}
-                    >
-                      Round Trip
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Route Visual Card */}
-              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10 flex-1">
-                <div className="flex items-start gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-lg">
-                      {cityData.icon}
-                    </div>
-                    <div className="w-0.5 h-16 bg-gradient-to-b from-emerald-500 to-blue-500 my-2" />
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-lg">
-                      📍
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="mb-6">
-                      <p className="text-white/50 text-xs font-medium mb-1">PICKUP</p>
-                      <p className="text-white font-bold text-lg">{formattedCityName}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50 text-xs font-medium mb-1">DROP</p>
-                      <p className="text-white font-bold text-lg">{formattedDestination}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-white/50">Estimated journey</span>
-                    <span className="text-white font-bold">{route.time || estimatedTime}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Enquiry Form */}
-              <QuickEnquiryForm
-                fromCity={formattedCityName}
-                toCity={formattedDestination}
-                pageType="route"
-              />
-            </motion.div>
-
+        {/* Inline lead form (preserved) + trust badges */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <div className="mx-auto max-w-xl">
+            <QuickEnquiryForm
+              fromCity={formattedCityName}
+              toCity={formattedDestination}
+              pageType="route"
+            />
           </div>
-
-          {/* Trust Badges - Below Bento */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10"
-          >
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-10">
             {[
               { icon: BadgeCheck, label: 'Verified Drivers' },
               { icon: Shield, label: 'GPS Tracking' },
@@ -447,12 +314,29 @@ export default function RouteClientContent({
                 <span className="text-sm font-medium">{item.label}</span>
               </div>
             ))}
-          </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* ==================== AEO QUICK ANSWER — above-the-fold extractable answer ==================== */}
+      <section className="bg-white px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="max-w-4xl mx-auto">
+          <QuickAnswer
+            tone="light"
+            question={`How much is a cab from ${formattedCityName} to ${formattedDestination}?`}
+            answer={`A ${formattedCityName} to ${formattedDestination} cab starts at ${answerFares.sedanOneWay || `₹${startingPrice}`} one way in an AC sedan${answerFares.suvOneWay && answerFares.suvName ? `, and ${answerFares.suvOneWay} in a ${answerFares.suvName}` : ''}${answerFares.sedanRoundTrip ? `; the same sedan is ${answerFares.sedanRoundTrip} as a round trip with the driver waiting for you` : ''}. The road distance is about ${route.distance || estimatedDistance} and the drive takes around ${route.time || estimatedTime}.${answerFares.tempoFare && answerFares.tempoName ? ` Group travellers can book a ${answerFares.tempoName} from ${answerFares.tempoFare}.` : ''} Fares cover fuel, driver and GST; tolls, parking and state permits are charged as per actuals.`}
+            facts={[
+              { label: 'Distance', value: route.distance || estimatedDistance },
+              { label: 'Drive time', value: route.time || estimatedTime },
+              { label: 'Sedan one way', value: answerFares.sedanOneWay || `₹${startingPrice}` },
+              { label: 'Vehicles', value: '4 to 56 seats' },
+            ]}
+          />
         </div>
       </section>
 
       {/* Trust Strip */}
-      <div className="bg-white border-b border-gray-100 py-3">
+      <div className="bg-white border-b border-gray-100 py-3 mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-6 md:gap-10 text-sm text-gray-600 flex-wrap">
             <span className="flex items-center gap-1.5 font-medium">
@@ -476,7 +360,7 @@ export default function RouteClientContent({
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
-              {formattedCityName} to {formattedDestination} Cab — Quick Summary
+              How much is a {formattedCityName} to {formattedDestination} taxi in 2026?
             </h2>
             <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
@@ -496,7 +380,7 @@ export default function RouteClientContent({
                 <p className="text-xl font-black text-amber-600">4.9★</p>
               </div>
             </div>
-            <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
+            <p className="speakable-lead faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
               The {formattedCityName} to {formattedDestination} taxi fare starts from <strong>₹{startingPrice}</strong> for a sedan (one way).
               The road distance is approximately <strong>{route.distance || estimatedDistance}</strong> and the journey takes around <strong>{route.time || estimatedTime}</strong>.
               {route.routeHighlights ? ` The route goes ${route.routeHighlights.toLowerCase()}.` : ''}
@@ -504,6 +388,11 @@ export default function RouteClientContent({
               Triveni Cabs offers AC sedan, SUV, tempo traveller, and bus options with verified professional drivers, GPS tracking, and 24/7 booking.
               Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
             </p>
+            {uniqueIntro && (
+              <p className="mt-4 text-slate-600 leading-relaxed text-base md:text-lg">
+                {uniqueIntro}
+              </p>
+            )}
           </div>
 
           {/* Route Tags — keyword signals */}
@@ -525,253 +414,87 @@ export default function RouteClientContent({
         </div>
       </section>
 
-      {/* ==================== VEHICLE SELECTION SECTION ==================== */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ==================== VEHICLE SELECTION — AURORA REDESIGN ==================== */}
+      <CityRouteVehicles
+        from={formattedCityName}
+        to={formattedDestination}
+        vehicles={displayVehicles}
+        tripType={tripType}
+        onBook={handleVehicleBook}
+      />
 
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center gap-2 bg-slate-900 text-[#FACF2D] px-5 py-2.5 rounded-full mb-6">
-              <Car className="w-4 h-4" />
-              <span className="text-sm font-bold">CHOOSE YOUR RIDE</span>
-            </div>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              Select Your Vehicle
-            </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              All vehicles include AC, GPS tracking, professional driver, and complimentary water bottles
-            </p>
-          </motion.div>
-
-          {/* Vehicle Grid - Modern Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {filteredVehicles.length > 0 ? filteredVehicles.map((vehicle, index) => {
-              // Extract seats from vehicle name if not in map
-              const getDefaultVehicleInfo = (name) => {
-                const match = name.match(/(\d+)\s*seater/i);
-                if (match) {
-                  const seats = match[1];
-                  const isBus = name.toLowerCase().includes('bus') || name.toLowerCase().includes('coach');
-                  return { seats, bags: seats, icon: isBus ? Bus : Users, type: isBus ? 'bus' : 'tempo' };
-                }
-                return { seats: '4', bags: '2', icon: Car, type: 'car' };
-              };
-              const vehicleInfo = vehicleCapacityMap[vehicle.vehicle] || getDefaultVehicleInfo(vehicle.vehicle);
-              const isSelected = selectedVehicle === index;
-              const isHovered = hoveredVehicle === index;
-              const currentPrice = tripType === 'oneWay' ? vehicle.price : vehicle.roundTrip;
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  onMouseEnter={() => setHoveredVehicle(index)}
-                  onMouseLeave={() => setHoveredVehicle(null)}
-                  onClick={() => setSelectedVehicle(isSelected ? null : index)}
-                  className="group relative cursor-pointer"
-                >
-                  <div className={`relative bg-white rounded-2xl border-2 overflow-hidden transition-all duration-500 ${
-                    isSelected
-                      ? 'border-[#FACF2D] shadow-2xl shadow-[#FACF2D]/30 -translate-y-2'
-                      : isHovered
-                        ? 'border-[#FACF2D] shadow-2xl shadow-[#FACF2D]/20 -translate-y-2'
-                        : 'border-slate-100 shadow-lg hover:shadow-xl'
-                  }`}>
-
-                    {/* Top Gradient Bar */}
-                    <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
-
-                    {/* Selection Badge */}
-                    {isSelected && (
-                      <div className="absolute top-6 right-4 z-20">
-                        <div className="bg-[#FACF2D] text-black px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
-                          <CheckCircle className="w-4 h-4" />
-                          <span className="text-xs font-bold">Selected</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Best Value Badge for first vehicle */}
-                    {index === 0 && !isSelected && (
-                      <div className="absolute top-6 right-4 z-20">
-                        <div className="bg-green-500 text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg">
-                          <Zap className="w-3 h-3" />
-                          <span className="text-xs font-bold">Best Value</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Image Section */}
-                    <div className="relative h-52 bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden">
-                      <Image
-                        src={vehicleImageMap[vehicle.vehicle] || '/images/car/swift_dzire.jpg'}
-                        alt={`${vehicle.vehicle} cab`}
-                        fill
-                        className={`object-contain p-6 transition-transform duration-500 ${isHovered ? 'scale-110' : ''}`}
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                      {/* Subtle gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5">
-                      {/* Vehicle Name & Rating */}
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
-                          <h3 className="text-xl font-black text-slate-900">{vehicle.vehicle}</h3>
-                          <div className="flex items-center gap-3 mt-1">
-                            <span className="flex items-center gap-1 text-slate-500 text-sm">
-                              <Users className="w-4 h-4" />
-                              {vehicleInfo.seats} Seats
-                            </span>
-                            <span className="text-slate-300">•</span>
-                            <span className="flex items-center gap-1 text-slate-500 text-sm">
-                              <Snowflake className="w-4 h-4" />
-                              AC
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-1 bg-amber-50 text-amber-700 px-2 py-1 rounded-lg border border-amber-200">
-                          <Star className="w-3.5 h-3.5" fill="currentColor" />
-                          <span className="font-bold text-sm">4.9</span>
-                        </div>
-                      </div>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {[
-                          { icon: '📍', text: 'GPS' },
-                          { icon: '🎵', text: 'Music' },
-                          { icon: '🔌', text: 'Charger' },
-                          { icon: '💧', text: 'Water' }
-                        ].map((f, i) => (
-                          <span key={i} className="bg-slate-50 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-100 flex items-center gap-1">
-                            <span>{f.icon}</span>
-                            {f.text}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Price Section */}
-                      <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-xl p-4 mb-4">
-                        <div className="flex items-end justify-between">
-                          <div>
-                            <p className="text-xs text-slate-500 mb-1">
-                              {tripType === 'roundTrip' ? 'Round Trip' : 'One Way'} Price
-                            </p>
-                            <div className="flex items-baseline gap-1">
-                              <span className="text-3xl font-black text-slate-900">{currentPrice}</span>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-xs text-slate-400">Includes</p>
-                            <p className="text-xs text-green-600 font-semibold">Driver + Fuel + AC</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* CTA Button */}
-                      <motion.button
-                        onClick={(e) => { e.stopPropagation(); handleWhatsApp(); }}
-                        
-                        whileTap={{ scale: 0.98 }}
-                        className={`w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
-                          isSelected || isHovered
-                            ? 'bg-[#FACF2D] text-black shadow-lg shadow-[#FACF2D]/25'
-                            : 'bg-slate-900 text-white hover:bg-slate-800'
-                        }`}
-                      >
-                        <BsWhatsapp className="w-4 h-4" />
-                        Book on WhatsApp
-                      </motion.button>
-                    </div>
-
-                    {/* Shine Effect on Hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full transition-transform duration-700 pointer-events-none ${
-                      isHovered ? 'translate-x-full' : ''
-                    }`} />
-                  </div>
-                </motion.div>
-              );
-            }) : (
-              // Fallback vehicles with same modern style
-              [
-                { name: 'Sedan', price: '₹2,760', seats: '4', image: '/images/car/swift_dzire.jpg' },
-                { name: 'SUV Ertiga', price: '₹3,450', seats: '6', image: '/images/car/ertiga.jpg' },
-                { name: 'SUV Innova', price: '₹4,140', seats: '7', image: '/images/car/innova_crysta.jpg' }
-              ].map((v, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="group relative"
-                >
-                  <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden shadow-lg hover:shadow-2xl hover:border-[#FACF2D] hover:-translate-y-2 transition-all duration-500">
-                    <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
-                    <div className="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100">
-                      <Image src={v.image} alt={v.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-500" />
-                    </div>
-                    <div className="p-5">
-                      <h3 className="text-xl font-black text-slate-900 mb-2">{v.name}</h3>
-                      <div className="flex items-center gap-3 mb-4 text-sm text-slate-500">
-                        <span className="flex items-center gap-1"><Users className="w-4 h-4" />{v.seats} Seats</span>
-                        <span className="flex items-center gap-1"><Snowflake className="w-4 h-4" />AC</span>
-                      </div>
-                      <div className="bg-slate-50 rounded-xl p-4 mb-4">
-                        <p className="text-3xl font-black text-slate-900">{v.price}</p>
-                      </div>
-                      <button onClick={handleWhatsApp} className="w-full bg-slate-900 hover:bg-[#FACF2D] text-white hover:text-black py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
-                        <BsWhatsapp className="w-4 h-4" />
-                        Book on WhatsApp
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              ))
-            )}
-          </div>
-
-          {/* Group Travel Notice */}
-          {tripType === 'oneWay' && tempoAndBusVehicles.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 border border-blue-100"
-            >
-              <div className="flex flex-col md:flex-row md:items-center gap-6">
+      {/* Group Travel Notice */}
+      {tripType === 'oneWay' && tempoAndBusVehicles.length > 0 && (
+        <section className="bg-aurora-light pb-14 sm:pb-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-amber-200 bg-white p-5 shadow-sm sm:p-7">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Users className="w-5 h-5 text-blue-600" />
-                    <h3 className="font-bold text-blue-900">Travelling in a Group?</h3>
+                  <div className="mb-2 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-amber-600" />
+                    <h3 className="font-black text-slate-900">Travelling in a group?</h3>
                   </div>
-                  <p className="text-blue-700 text-sm">
-                    We have Tempo Travellers (12-26 seater) and Buses (22-56 seater) available for round-trip bookings.
-                    Perfect for family tours, corporate outings, and group pilgrimages.
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    Tempo Travellers (12&ndash;26 seater) and Buses (22&ndash;56 seater) are available on this route &mdash; ideal for family tours, corporate outings and group pilgrimages.
                   </p>
                 </div>
                 <button
                   onClick={() => setTripType('roundTrip')}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-sm transition-colors whitespace-nowrap"
+                  className="sheen shrink-0 rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-slate-800"
                 >
                   View Group Vehicles
                 </button>
               </div>
-            </motion.div>
-          )}
-        </div>
-      </section>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ==================== FARE TABLE — machine-readable version of the vehicle cards ==================== */}
+      {route?.prices && route.prices.length > 0 && (
+        <section className="bg-white py-12 md:py-16">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-2">
+              {formattedCityName} to {formattedDestination} fare chart
+            </h2>
+            <p className="text-slate-600 mb-5">
+              All-inclusive fares for every vehicle on this route. Tolls, parking and state permits are extra.
+            </p>
+            <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+              <table className="w-full min-w-[560px] text-left text-sm">
+                <caption className="px-4 pt-4 pb-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  Taxi, tempo traveller and bus fares from {formattedCityName} to {formattedDestination}, 2026
+                </caption>
+                <thead className="bg-slate-50 text-slate-700">
+                  <tr>
+                    <th scope="col" className="px-4 py-3 font-bold">Vehicle</th>
+                    <th scope="col" className="px-4 py-3 font-bold">Seats</th>
+                    <th scope="col" className="px-4 py-3 font-bold">One way</th>
+                    <th scope="col" className="px-4 py-3 font-bold">Round trip</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {route.prices.map((p, i) => {
+                    const info = vehicleCapacityMap[p.vehicle] || {};
+                    const seatMatch = String(p.vehicle).match(/(\d+)\s*seater/i);
+                    return (
+                      <tr key={`fare-${i}`} className="hover:bg-amber-50/60 transition-colors">
+                        <th scope="row" className="px-4 py-3 text-left font-semibold text-slate-900">{p.vehicle}</th>
+                        <td className="px-4 py-3 text-slate-700">{info.seats || (seatMatch ? seatMatch[1] : '4')}</td>
+                        <td className="px-4 py-3 font-bold text-slate-900">{p.price || '—'}</td>
+                        <td className="px-4 py-3 font-bold text-amber-700">{p.roundTrip || '—'}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs text-slate-500">
+              Sedan and SUV fares include a one-way rate. Tempo travellers and buses cost the same one way as round trip, because the vehicle returns to base either way.
+            </p>
+          </div>
+        </section>
+      )}
 
 
       {/* ==================== WHY CHOOSE US - BENTO GRID ==================== */}
@@ -785,7 +508,7 @@ export default function RouteClientContent({
             className="text-center mb-12"
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              Why Book {formattedCityName} to {formattedDestination} Cab With Us?
+              Why book a {formattedCityName} to {formattedDestination} cab with Triveni Cabs?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Trusted by 50,000+ customers for reliable {formattedCityName} to {formattedDestination} taxi service
@@ -926,7 +649,7 @@ export default function RouteClientContent({
               <span className="text-sm font-semibold text-[#D4A017]">ROUTE GUIDE</span>
             </div>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span> Route Guide
+              What route does the {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span> cab take?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Distance, travel time, stops &amp; fare for {formattedCityName} to {formattedDestination} by car
@@ -1071,7 +794,7 @@ export default function RouteClientContent({
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              {formattedCityName} to {formattedDestination} — Route Guide
+              How long does the {formattedCityName} to {formattedDestination} drive take?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gray-50 rounded-xl p-6">
@@ -1123,7 +846,7 @@ export default function RouteClientContent({
       <section className="py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-6">
-            Complete Guide: {formattedCityName} to {formattedDestination} by Cab
+            Complete guide — how to plan a {formattedCityName} to {formattedDestination} trip by cab
           </h2>
           <div className="prose prose-lg prose-slate max-w-none" data-snippet-type="travel-guide">
             <p>
@@ -1184,7 +907,7 @@ export default function RouteClientContent({
         <section className="py-12 md:py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-3">
-              Things to Do in {formattedDestination}
+              What can you do in {formattedDestination} after you arrive?
             </h2>
             <p className="text-slate-600 text-lg mb-8 max-w-3xl">
               {destinationInfo.description || `Explore the best of ${formattedDestination} after your cab ride from ${formattedCityName}.`}
@@ -1276,7 +999,7 @@ export default function RouteClientContent({
               <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
             </div>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              {formattedCityName} to {formattedDestination} Cab <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">FAQs</span>
+              Frequently asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">questions</span> about {formattedCityName} to {formattedDestination} cab
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Fare, booking &amp; travel info for {formattedCityName} to {formattedDestination} cab service
@@ -1309,7 +1032,7 @@ export default function RouteClientContent({
                     {/* Answer */}
                     <div className="pl-0 md:pl-14 lg:pl-16">
                       <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-3 md:p-4 border border-slate-100">
-                        <p className="text-slate-600 leading-relaxed text-sm md:text-base">{faq.a}</p>
+                        <p className={`text-slate-600 leading-relaxed text-sm md:text-base${index === 0 ? ' speakable-faq-first' : ''}`}>{faq.a}</p>
                       </div>
                     </div>
                   </div>
@@ -1377,7 +1100,7 @@ export default function RouteClientContent({
               <span className="text-sm font-semibold text-[#D4A017]">EXPLORE MORE</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3">
-              More Routes from <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedCityName}</span>
+              Which other routes can I book from <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedCityName}</span>?
             </h2>
             <p className="text-slate-600 mb-6">
               Explore other popular destinations with transparent pricing
@@ -1451,7 +1174,7 @@ export default function RouteClientContent({
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-              Book <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> Cab Now
+              Ready to book a <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> cab?
             </h2>
             <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
               Instant confirmation. AC vehicles. One way &amp; round trip. Best price guaranteed. 24/7 available.
@@ -1495,7 +1218,7 @@ export default function RouteClientContent({
         return relatedContent && relatedContent.length > 0 && (
           <section className="py-12 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Travel Guides & Tours</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Want more travel guides &amp; tours?</h2>
               <p className="text-gray-600 mb-6">Plan your trip with our detailed guides</p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {relatedContent.slice(0, 6).map((item, index) => (
@@ -1533,7 +1256,7 @@ export default function RouteClientContent({
               )}
               {services.length > 0 && (
                 <>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Services in {formattedCityName}</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">What other services do we offer in {formattedCityName}?</h2>
                   <p className="text-gray-600 mb-6">Other taxi services available</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     {services.slice(0, 8).map((service, index) => (
@@ -1550,35 +1273,12 @@ export default function RouteClientContent({
         );
       })()}
 
-      {/* ==================== FLOATING MOBILE CTA ==================== */}
-      {mounted && (
-        <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 p-4 md:hidden shadow-lg"
-        >
-          <div className="flex items-center gap-3">
-            <div className="flex-1">
-              <p className="text-xs text-slate-500">Starting from</p>
-              <p className="text-xl font-black text-slate-900">₹{startingPrice}</p>
-            </div>
-            <button
-              onClick={handleCallNow}
-              className="bg-[#FACF2D] text-black px-5 py-3 rounded-xl font-bold flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4" />
-              Call
-            </button>
-            <button
-              onClick={handleWhatsApp}
-              className="bg-slate-900 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2"
-            >
-              <BsWhatsapp className="w-4 h-4" />
-              Book
-            </button>
-          </div>
-        </motion.div>
-      )}
+      {/* Global mobile sticky bar becomes price/route-aware (replaces the old custom bar) */}
+      <SetStickyCta
+        price={`₹${startingPrice}`}
+        label={`${formattedCityName} to ${formattedDestination} cab`}
+        whatsappText={whatsappMessage}
+      />
 
     </article>
   );

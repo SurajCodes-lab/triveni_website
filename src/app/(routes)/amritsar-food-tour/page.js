@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
-export const revalidate = false;
+import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Amritsar Food Tour 2026 | Amritsari Kulcha, Lassi & Punjabi Street Food Guide',
-  description: 'Amritsar food & culinary tour. Famous Amritsari Kulcha, Lassi, Chole Bhature, Jalebi, Fish Fry. Street food itinerary, best restaurants. By Amritsar locals. Call 7668570551.',
+  title: 'Amritsar Food Tour 2026 | Kulcha, Lassi & Punjabi Street Food',
+  description: 'Amritsar food guide — Amritsari Kulcha, Lassi, Chole Bhature, Fish Fry. Street food itinerary, best restaurants, by locals. Call 7668570551.',
   keywords: 'amritsar food tour, amritsar street food, amritsari kulcha, amritsar lassi, chole bhature amritsar, amritsar fish fry, punjabi food amritsar, amritsar food guide',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',
@@ -53,7 +54,7 @@ export default function AmritsarFoodTourPage() {
     { question: "How much does an Amritsar food tour cost?", answer: "Street food budget: ₹200-500 per person for a full tour. Restaurant meals: ₹300-600 per person. Our food tour with cab: ₹1,500 (sedan) for half-day covering 5-6 stops. Full day with Wagah Border: ₹2,500. Golden Temple Langar is free." },
   ];
 
-  const faqSchema = {
+  const faqSchema = withSpeakableFAQ({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqData.map(item => ({
@@ -61,7 +62,7 @@ export default function AmritsarFoodTourPage() {
       "name": item.question,
       "acceptedAnswer": { "@type": "Answer", "text": item.answer },
     })),
-  };
+  });
 
   const famousFoods = [
     { name: "Amritsari Kulcha", desc: "Amritsar&apos;s crown jewel. Stuffed flatbread (aloo, paneer, or mixed) baked in a clay tandoor until golden and crispy. Served with chole (chickpea curry), imli chutney, and raw onion. Kesar Da Dhaba and Bharawan Da Dhaba are the undisputed kings.", price: "₹80-150 per plate", mustTry: true, heat: 1 },
@@ -106,6 +107,19 @@ export default function AmritsarFoodTourPage() {
     { icon: Users, title: "500+ Food Tours", desc: "Happy food travelers" },
     { icon: Star, title: "4.9 Rating", desc: "Google reviews" },
   ];
+  // Article schema with auto-fresh dateModified + Speakable for voice search
+  const articleSchema = getArticleSchema({
+    slug: "amritsar-food-tour",
+    headline: "Amritsar Food Tour 2026 — Best Street Food, Restaurants & Local Specialties",
+    description: "Complete Amritsar food tour. Local specialties, street food trails, best restaurants, dessert spots, regional cuisine highlights, where to eat in Amritsar.",
+    image: '/images/triveni-cabs-og.jpg',
+    datePublished: '2026-01-15',
+    speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .faq-answer-1']
+  });
+
+  // Place schema — anchors content to real-world geographic entity
+  const placeSchema = getCityPlaceSchema("amritsar", { idSlug: "amritsar-food-tour" });
+
 
   return (
     <>
@@ -123,6 +137,8 @@ export default function AmritsarFoodTourPage() {
       ` }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {placeSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />}
 
       <div className="min-h-screen bg-orange-50">
         <div className="fixed inset-0 pointer-events-none opacity-[0.04]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23c2410c'/%3E%3Ccircle cx='4' cy='4' r='1' fill='%23c2410c'/%3E%3Ccircle cx='36' cy='36' r='1' fill='%23c2410c'/%3E%3C/svg%3E")` }} />

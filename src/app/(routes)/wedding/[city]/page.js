@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import CityWeddingPageClient from "@/components/wedding/CityWeddingPageClient";
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import { getWeddingCityData, getAllWeddingCitySlugs } from "@/utilis/weddingCityData";
 import { generateWeddingMetadata } from "@/lib/seo/metadata-factory";
 import AEOHead from '@/components/seo/AEOHead';
+import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 
 // ISR: Revalidate every hour for better SEO and performance
-export const revalidate = false;
+export const revalidate = 3600;
 export const dynamicParams = false;
 
 // Generate metadata for each city page
@@ -45,10 +47,12 @@ export default function CityWeddingPage({ params }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "Wedding Car Rental Service",
-    "name": `${city.name} Wedding Car Rental`,
+    "name": `${city.name} Wedding Car Rental — Triveni Cabs`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": city.description,
     "provider": {
       "@type": "LocalBusiness",
+      "@id": "https://www.trivenicabs.in/#organization",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
@@ -73,13 +77,7 @@ export default function CityWeddingPage({ params }) {
       "highPrice": city.priceRange.split('-')[1].trim().split(' ')[0].replace('₹', '').replace(',', ''),
       "offerCount": "5"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    ...getRatingAndReviews(params.city, 'wedding'),
     "availableChannel": {
       "@type": "ServiceChannel",
       "serviceUrl": `https://www.trivenicabs.in/wedding/${params.city}`,
@@ -169,7 +167,7 @@ export default function CityWeddingPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(params.city)),
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -203,7 +201,7 @@ export default function CityWeddingPage({ params }) {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": String(getDeterministicReviewCount(params.city)),
       "bestRating": "5",
       "worstRating": "1"
     }
