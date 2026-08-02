@@ -1,5 +1,6 @@
 import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
 const SLUG = "family-trip-auli-from-delhi";
@@ -47,6 +48,20 @@ export default function FamilyTripPage() {
       {schemaGraph.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
+      <div className="bg-amber-950 px-4 pt-5 pb-1">
+        <QuickAnswer
+          tone="dark"
+          className="mx-auto max-w-4xl"
+          question={'How much does a family trip to Auli from Delhi cost?'}
+          answer={'A family trip to Auli runs 4-5 days and covers 500 km from Delhi. Triveni Cabs prices it from Rs 14,000 in a sedan, Rs 18,000 in a Toyota Innova Crysta, and Rs 26,000 in a Tempo Traveller, sized for a family of 4-6 members. The best season to go is December to March (snow), April to June (meadows).'}
+          facts={[
+            { label: 'Distance', value: '500 km' },
+            { label: 'Duration', value: '4-5 Days' },
+            { label: 'Sedan', value: 'Rs 14,000' },
+            { label: 'Innova Crysta', value: 'Rs 18,000' },
+          ]}
+        />
+      </div>
       <FamilyTripClient data={data} />
     </>
   );

@@ -1,5 +1,6 @@
 import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
 const SLUG = "family-trip-mussoorie-from-delhi";
@@ -40,6 +41,20 @@ export default function FamilyTripPage() {
       {schemaGraph.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
+      <div className="bg-amber-950 px-4 pt-5 pb-1">
+        <QuickAnswer
+          tone="dark"
+          className="mx-auto max-w-4xl"
+          question={'How much does a family trip to Mussoorie from Delhi cost?'}
+          answer={'A family trip to Mussoorie runs 2-3 days and covers 290 km from Delhi. Triveni Cabs prices it from Rs 6,500 in a sedan, Rs 9,000 in a Toyota Innova Crysta, and Rs 13,000 in a Tempo Traveller, sized for a family of 4-6 members. The best season to go is March to June, September to November.'}
+          facts={[
+            { label: 'Distance', value: '290 km' },
+            { label: 'Duration', value: '2-3 Days' },
+            { label: 'Sedan', value: 'Rs 6,500' },
+            { label: 'Innova Crysta', value: 'Rs 9,000' },
+          ]}
+        />
+      </div>
       <FamilyTripClient data={data} />
     </>
   );

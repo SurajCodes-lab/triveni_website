@@ -1,6 +1,7 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import { getPostMonsoonBySlug } from '@/utilis/season/postMonsoonSeason';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { Hourglass } from '@/components/ui/icons';
 
 const festival = getFestivalBySlug('september-long-weekend-trips-2026') || getPostMonsoonBySlug('september-long-weekend-trips-2026');
 
@@ -30,11 +31,30 @@ export default function SeptemberLongWeekendTrips2026Page() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Long Weekend Getaway Packages", "item": "https://www.trivenicabs.in/long-weekend-getaway-packages-2026" }, { "@type": "ListItem", "position": 3, "name": "September 2026 Long Weekend Trips", "item": "https://www.trivenicabs.in/september-long-weekend-trips-2026" }] };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": festival.faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) };
 
+  // Season banner: shows only while the window below is still ahead of us.
+  // Evaluated per render; `revalidate = 3600` regenerates the static page hourly,
+  // so the banner drops itself within an hour of the window closing.
+  const now = new Date();
+  const seasonBanner = [
+    { end: '2026-09-06T23:59:59+05:30', head: 'Next September long weekend, Janmashtami 4-6 September 2026:', body: 'cabs for the long weekend get booked out early. Reserve by 1 September.' },
+    { end: '2026-09-14T23:59:59+05:30', head: 'Next September long weekend, Ganesh Chaturthi 12-14 September 2026:', body: 'cabs for the long weekend get booked out early. Reserve by 9 September.' },
+  ].find((w) => now <= new Date(w.end));
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {seasonBanner && (
+        <div className="border-b border-amber-500/40 bg-amber-400 text-slate-900">
+          <div className="mx-auto flex max-w-5xl items-start justify-center gap-2 px-4 py-2.5 sm:items-center">
+            <Hourglass className="mt-[3px] h-4 w-4 shrink-0 sm:mt-0" aria-hidden="true" />
+            <p className="text-[0.78rem] font-semibold leading-snug sm:text-center sm:text-sm">
+              <span className="font-black">{seasonBanner.head}</span> {seasonBanner.body}
+            </p>
+          </div>
+        </div>
+      )}
       <FestivalTripClient festival={festival} />
     </>
   );

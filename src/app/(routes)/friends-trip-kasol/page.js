@@ -1,5 +1,6 @@
 import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
 const SLUG = "friends-trip-kasol";
@@ -42,6 +43,20 @@ export default function FriendsTripPage() {
       {schemaGraph.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
+      <div className="bg-slate-950 px-4 pt-5 pb-1">
+        <QuickAnswer
+          tone="dark"
+          className="mx-auto max-w-4xl"
+          question={'How much does a friends trip to Kasol from Delhi cost?'}
+          answer={'A friends trip to Kasol runs 3-4 days and covers 520 km from Delhi, planned for a group of 8-15 people. Triveni Cabs prices it at Rs 16,000 for a 12-seater Tempo Traveller and Rs 20,000 for a 17-seater, which works out to about Rs 1,335 per person in the 12-seater. The best season to go is March to June, September to November.'}
+          facts={[
+            { label: 'Distance', value: '520 km from Delhi' },
+            { label: 'Duration', value: '3-4 Days' },
+            { label: 'Group size', value: '8-15 people' },
+            { label: 'Per person (12-seater)', value: 'Rs 1,335' },
+          ]}
+        />
+      </div>
       <FriendsTripClient data={data} />
     </>
   );

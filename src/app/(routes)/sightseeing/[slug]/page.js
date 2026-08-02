@@ -1,6 +1,11 @@
 // src/app/sightseeing/[slug]/page.js
 
 import { getTourBySlug, getAllTours, getToursByCity, getCitiesWithTours } from '@/utilis/sightseeingData';
+// Week 41: membership-checked money links (zero 404s) — every href below is
+// verified against the real route data before it is rendered.
+import { getAllOneWayRouteSlugs } from '@/utilis/oneWayCabData';
+import { getAllRoundTripSlugs } from '@/utilis/roundTripData';
+import { cities as serviceCities } from '@/utilis/data';
 
 // ISR - Revalidate every hour (3600 seconds) for fresh content
 export const revalidate = 3600;
@@ -8,6 +13,7 @@ export const dynamicParams = false;
 import SightseeingDetailClient from './SightseeingDetailClient';
 import CityToursPage from './CityToursPage';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { generateTourMetadata, generateSightseeingCityMetadata } from '@/lib/seo/metadata-factory';
 import { generateTourFAQs } from '@/lib/seo/faq-generator';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
@@ -26,6 +32,152 @@ import {
   getCityPlaceSchema,
   getTodayDate
 } from '@/lib/seo/speakable-helpers';
+
+/* ------------------------------------------------------------------ *
+ * Money-page linking (Week 41)
+ *
+ * Sightseeing pages sit at the top of the funnel; these links push the
+ * reader into the pages that actually convert. Everything is resolved
+ * against live route data at build time, so a city with no matching
+ * route simply renders fewer links rather than a broken one.
+ * ------------------------------------------------------------------ */
+
+// Every published city-guide page, enumerated from src/app/(routes).
+// getCityTopicalLinks() synthesises hrefs by convention and over-reaches
+// (e.g. /jaipur-in-1-day-itinerary does not exist), so its output is
+// filtered through this set before rendering.
+const TOPICAL_PAGE_SLUGS = new Set([
+  'agra-food-tour', 'agra-in-1-day-itinerary', 'agra-in-2-days-itinerary', 'agra-shopping-guide', 'agra-travel-guide',
+  'ajmer-travel-guide',
+  'amritsar-food-tour', 'amritsar-in-2-days-itinerary', 'amritsar-shopping-guide', 'amritsar-travel-guide',
+  'ayodhya-travel-guide',
+  'chandigarh-food-tour', 'chandigarh-shopping-guide', 'chandigarh-travel-guide',
+  'dalhousie-travel-guide', 'dehradun-travel-guide',
+  'delhi-food-tour', 'delhi-in-2-days-itinerary', 'delhi-shopping-guide',
+  'dharamshala-in-2-days-itinerary', 'dharamshala-travel-guide',
+  'haridwar-food-tour', 'haridwar-in-2-days-itinerary', 'haridwar-travel-guide',
+  'jaipur-food-tour', 'jaipur-in-2-days-itinerary', 'jaipur-shopping-guide', 'jaipur-travel-guide',
+  'jaisalmer-in-2-days-itinerary', 'jaisalmer-shopping-guide', 'jaisalmer-travel-guide',
+  'jodhpur-food-tour', 'jodhpur-in-2-days-itinerary', 'jodhpur-shopping-guide', 'jodhpur-travel-guide',
+  'kashmir-travel-guide',
+  'lucknow-food-tour', 'lucknow-in-2-days-itinerary', 'lucknow-shopping-guide', 'lucknow-travel-guide',
+  'manali-travel-guide',
+  'mathura-food-tour', 'mathura-vrindavan-travel-guide', 'mount-abu-travel-guide',
+  'mussoorie-in-2-days-itinerary', 'mussoorie-travel-guide',
+  'nainital-in-2-days-itinerary', 'nainital-travel-guide',
+  'pushkar-food-tour', 'pushkar-travel-guide',
+  'rishikesh-in-2-days-itinerary', 'rishikesh-travel-guide',
+  'shimla-in-2-days-itinerary', 'shimla-shopping-guide', 'shimla-travel-guide',
+  'udaipur-food-tour', 'udaipur-in-2-days-itinerary', 'udaipur-shopping-guide', 'udaipur-travel-guide',
+  'varanasi-food-tour', 'varanasi-in-2-days-itinerary', 'varanasi-shopping-guide', 'varanasi-travel-guide'
+]);
+
+// /<city> hub pages come from the same `cities` array that drives
+// generateStaticParams in src/app/(routes)/[cityName]/page.js.
+const CITY_HUB_SLUGS = new Set(
+  (serviceCities || []).map((c) => String(c?.name || '').toLowerCase().replace(/\s+/g, '-')).filter(Boolean)
+);
+
+const ONE_WAY_SLUGS = new Set(getAllOneWayRouteSlugs());
+const ROUND_TRIP_SLUGS = new Set(getAllRoundTripSlugs());
+
+function titleCaseSlug(slug) {
+  return String(slug)
+    .split('-')
+    .map((w) => (w === 'to' ? 'to' : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ');
+}
+
+/**
+ * Resolve a tour slug to the sightseeingData city bucket it belongs to.
+ * Tour names are unreliable here ("Delhi to Manali Tour Package" would
+ * resolve to Delhi), so we go back to the data grouping instead.
+ */
+function resolveTourCity(tourSlug) {
+  for (const city of getCitiesWithTours()) {
+    if (getToursByCity(city).some((t) => t.slug === tourSlug)) return city;
+  }
+  return null;
+}
+
+/**
+ * Build the booking-page link set for a city. `excludeSightseeingHub` is set
+ * on the city hub itself so it does not link to its own URL.
+ */
+function buildMoneyLinks(citySlug, { excludeSightseeingHub = false } = {}) {
+  if (!citySlug) return [];
+  const city = String(citySlug).toLowerCase();
+  const cityLabel = titleCaseSlug(city);
+  const links = [];
+  const seen = new Set();
+  const push = (href, anchor) => {
+    if (!href || seen.has(href)) return;
+    seen.add(href);
+    links.push({ href, anchor });
+  };
+
+  if (CITY_HUB_SLUGS.has(city)) push(`/${city}`, `${cityLabel} taxi service — fares & fleet`);
+  if (TOPICAL_PAGE_SLUGS.has(`${city}-travel-guide`)) push(`/${city}-travel-guide`, `${cityLabel} travel guide`);
+
+  const arrivals = [...ONE_WAY_SLUGS].filter((s) => s.endsWith(`-to-${city}`));
+  const departures = [...ONE_WAY_SLUGS].filter((s) => s.startsWith(`${city}-to-`));
+  arrivals.slice(0, 3).forEach((s) => push(`/one-way-cab/${s}`, `${titleCaseSlug(s)} one-way cab`));
+  departures.slice(0, 2).forEach((s) => push(`/one-way-cab/${s}`, `${titleCaseSlug(s)} one-way cab`));
+
+  [...ROUND_TRIP_SLUGS]
+    .filter((s) => s.endsWith(`-to-${city}`) || s.startsWith(`${city}-to-`))
+    .slice(0, 2)
+    .forEach((s) => push(`/round-trip/${s}`, `${titleCaseSlug(s)} round trip`));
+
+  if (!excludeSightseeingHub && getCitiesWithTours().includes(city)) {
+    push(`/sightseeing/${city}`, `All ${cityLabel} sightseeing tours`);
+  }
+
+  // A handful of destinations (Ladakh, Chopta, Shekhawati…) have no dedicated
+  // hub or point-to-point route yet. Top those up with the category hubs so
+  // the band still gives the reader somewhere useful to go.
+  if (links.length < 4) {
+    push('/outstation-cabs', 'Outstation cab booking');
+    push('/one-way-cab', 'One-way cab routes & fares');
+    push('/round-trip', 'Round-trip cab packages');
+    push('/tempo-traveller', 'Tempo Traveller hire for groups');
+  }
+
+  return links.slice(0, 8);
+}
+
+/** Emerald/teal link band matching the sightseeing design language. */
+function MoneyLinksBand({ cityLabel, links }) {
+  if (!links || links.length === 0) return null;
+  return (
+    <section className="bg-slate-950 px-4 py-12">
+      <nav
+        aria-label={`${cityLabel} cab booking pages`}
+        className="max-w-5xl mx-auto rounded-3xl border border-emerald-500/25 bg-white/5 backdrop-blur-xl p-6 sm:p-8"
+      >
+        <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">
+          Book your {cityLabel} cab
+        </h2>
+        <p className="text-slate-400 mb-6 text-sm sm:text-base">
+          Fixed fares, no surge, and the same driver all day — pick the service you need.
+        </p>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 list-none">
+          {links.map(({ href, anchor }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="group inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200 hover:underline py-1"
+              >
+                <span aria-hidden="true" className="text-teal-400 transition-transform group-hover:translate-x-0.5">→</span>
+                <span>{anchor}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </section>
+  );
+}
 
 /**
  * Approximate per-attraction geo offsets so each named monument in a tour
@@ -441,6 +593,10 @@ export default async function SightseeingDetailPage({ params }) {
 
         <AEOHead pageType="tour" data={{ url: `/sightseeing/${slug}`, title: `${cityName} Sightseeing Tours`, city: cityName }} />
         <CityToursPage city={slug} />
+        <MoneyLinksBand
+          cityLabel={cityName}
+          links={buildMoneyLinks(slug, { excludeSightseeingHub: true })}
+        />
       </>
     );
   }
@@ -464,6 +620,11 @@ export default async function SightseeingDetailPage({ params }) {
 
   // May 2026: real per-slug ratings + 3 reviews from the sightseeing pool
   const realRR = getRatingAndReviews(slug, 'sightseeing');
+
+  // The sightseeingData bucket this tour belongs to — drives both the pickup
+  // wording in the Quick Answer and the money-link band below.
+  const tourCitySlug = resolveTourCity(slug);
+  const tourCityLabel = tourCitySlug ? titleCaseSlug(tourCitySlug) : null;
 
   return (
     <>
@@ -595,7 +756,7 @@ export default async function SightseeingDetailPage({ params }) {
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
                 // Speakable: voice assistants read the first answer aloud
-                "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-answer']),
+                "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-answer', '.faq-answer']),
                 "mainEntity": tourFAQs.map(faq => ({
                   "@type": "Question",
                   "name": faq.question,
@@ -1087,19 +1248,33 @@ export default async function SightseeingDetailPage({ params }) {
         </article>
       </div>
 
-      <SightseeingDetailClient tour={tour} />
+      <SightseeingDetailClient tour={tour} cityLabel={tourCityLabel} />
+
+      {/* Money links — booking pages for the city this tour belongs to.
+          Resolved from the sightseeingData grouping (not the tour name) and
+          membership-checked against the real route data. */}
+      {tourCitySlug && (
+        <MoneyLinksBand
+          cityLabel={tourCityLabel}
+          links={buildMoneyLinks(tourCitySlug)}
+        />
+      )}
 
       {/* Internal-link grid — both silo siblings and topical city guides
           where the tour anchors to a city we publish guides for. */}
       <div className="container mx-auto px-4 pb-12">
         {(() => {
-          const cityKey = tour.category || (slug.split('-')[0]);
-          const topical = getCityTopicalLinks(cityKey);
+          // tour.category holds a theme ("Hill Station & Nature"), never a city,
+          // so resolve the real city bucket before asking for topical links.
+          const cityKey = tourCitySlug || slug.split('-')[0];
+          const cityLabel = titleCaseSlug(cityKey);
+          const topical = getCityTopicalLinks(cityKey)
+            .filter((l) => TOPICAL_PAGE_SLUGS.has(l.href.replace(/^\//, '')));
           return topical.length > 0 ? (
             <RelatedLinks
-              heading={`Plan your ${cityKey} trip`}
+              heading={`Plan your ${cityLabel} trip`}
               links={topical}
-              ariaLabel={`${cityKey} travel planning guides`}
+              ariaLabel={`${cityLabel} travel planning guides`}
               tone="amber"
             />
           ) : null;

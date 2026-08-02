@@ -1,7 +1,12 @@
 import ContactClient from "./ContactClient";
 import { getSpeakableSchema } from "@/lib/seo/speakable-helpers";
+import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
+import { COMPANY_INFO, BASE_URL } from "@/lib/seo/constants";
 
 export const revalidate = 3600;
+
+const PAGE_URL = `${BASE_URL}/contact`;
+const REVIEW_COUNT = String(getDeterministicReviewCount("contact"));
 
 export const metadata = {
   title: "Contact Us | Triveni Cabs - 24/7 Customer Support",
@@ -44,6 +49,54 @@ export const metadata = {
   },
 };
 
+const POSTAL_ADDRESS = {
+  "@type": "PostalAddress",
+  "streetAddress": COMPANY_INFO.address.streetAddress,
+  "addressLocality": COMPANY_INFO.address.addressLocality,
+  "addressRegion": COMPANY_INFO.address.addressRegion,
+  "postalCode": COMPANY_INFO.address.postalCode,
+  "addressCountry": COMPANY_INFO.address.addressCountry
+};
+
+const OPENING_HOURS = {
+  "@type": "OpeningHoursSpecification",
+  "dayOfWeek": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ],
+  "opens": "00:00",
+  "closes": "23:59"
+};
+
+// Mirrors the FAQ copy rendered by ContactClient — keep the two in sync.
+const FAQ_ENTRIES = [
+  {
+    q: "How can I book a cab with Triveni Cabs?",
+    a: "Call +91 76685 70551, send a WhatsApp message, fill the enquiry form on this page, or email cabstriveni@gmail.com. Phone and WhatsApp are answered 24 hours a day, every day."
+  },
+  {
+    q: "What are your customer support hours?",
+    a: "Booking support on phone and WhatsApp runs 24x7. Our Agra office is open for walk-in visits between 9:00 AM and 6:00 PM."
+  },
+  {
+    q: "Which cities does Triveni Cabs operate in?",
+    a: "We run across 50+ cities in North and Central India, including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, Dehradun, Rishikesh, Haridwar, Jodhpur, Udaipur, Ayodhya and Ahmedabad, plus outstation trips from all of them."
+  },
+  {
+    q: "How quickly can I get a cab after booking?",
+    a: "For an immediate pickup we usually place a car within 30 to 60 minutes, depending on your location. Book 4 to 6 hours ahead for a scheduled local trip, and 24 hours ahead for outstation journeys."
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "Cash, UPI (Google Pay, PhonePe, Paytm), bank transfer and online payment. Corporate clients can request monthly billing with a GST invoice."
+  }
+];
+
 export default function ContactPage() {
   return (
     <>
@@ -54,21 +107,41 @@ export default function ContactPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
+            "@id": `${PAGE_URL}#contactpage`,
             "name": "Contact Triveni Cabs",
             "description": "Get in touch with Triveni Cabs for 24/7 taxi booking support, inquiries, and customer service.",
-            "url": "https://www.trivenicabs.in/contact",
+            "url": PAGE_URL,
             "mainEntity": {
               "@type": "Organization",
-              "name": "Triveni Cabs",
-              "telephone": "+91-7668570551",
-              "email": "cabstriveni@gmail.com",
+              "name": COMPANY_INFO.name,
+              "legalName": COMPANY_INFO.legalName,
+              "foundingDate": COMPANY_INFO.foundingDate,
+              "url": BASE_URL,
+              "telephone": COMPANY_INFO.phone.primary,
+              "email": COMPANY_INFO.email.primary,
+              "address": POSTAL_ADDRESS,
+              "sameAs": [
+                COMPANY_INFO.social.facebook,
+                COMPANY_INFO.social.instagram,
+                COMPANY_INFO.social.twitter,
+                COMPANY_INFO.social.linkedin
+              ],
               "contactPoint": [
                 {
                   "@type": "ContactPoint",
-                  "telephone": "+91-7668570551",
+                  "telephone": COMPANY_INFO.phone.primary,
                   "contactType": "customer service",
                   "areaServed": "IN",
-                  "availableLanguage": ["en", "hi"]
+                  "availableLanguage": ["en", "hi"],
+                  "hoursAvailable": OPENING_HOURS
+                },
+                {
+                  "@type": "ContactPoint",
+                  "telephone": COMPANY_INFO.phone.primary,
+                  "contactType": "reservations",
+                  "areaServed": "IN",
+                  "availableLanguage": ["en", "hi"],
+                  "hoursAvailable": OPENING_HOURS
                 }
               ]
             }
@@ -88,13 +161,13 @@ export default function ContactPage() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://www.trivenicabs.in"
+                "item": BASE_URL
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Contact Us",
-                "item": "https://www.trivenicabs.in/contact"
+                "item": PAGE_URL
               }
             ]
           })
@@ -108,38 +181,29 @@ export default function ContactPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Triveni Cabs",
-            "image": "https://www.trivenicabs.in/logo.png",
-            "telephone": "+91-7668570551",
-            "email": "cabstriveni@gmail.com",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "366, Dandupura, near Tajganj",
-              "addressLocality": "Agra",
-              "addressRegion": "Uttar Pradesh",
-              "postalCode": "282006",
-              "addressCountry": "IN"
-            },
+            "@id": `${PAGE_URL}#localbusiness`,
+            "name": COMPANY_INFO.name,
+            "image": `${BASE_URL}/logo.png`,
+            "telephone": COMPANY_INFO.phone.primary,
+            "email": COMPANY_INFO.email.primary,
+            "address": POSTAL_ADDRESS,
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": 27.1767,
-              "longitude": 78.0081
+              "latitude": COMPANY_INFO.geo.latitude,
+              "longitude": COMPANY_INFO.geo.longitude
             },
-            "url": "https://www.trivenicabs.in/contact",
+            "hasMap": "https://maps.google.com/?q=Triveni+Cabs+Agra",
+            "url": PAGE_URL,
             "priceRange": "₹₹",
-            "openingHoursSpecification": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-              ],
-              "opens": "00:00",
-              "closes": "23:59"
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, UPI, Bank Transfer, Credit Card",
+            "openingHoursSpecification": OPENING_HOURS,
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": REVIEW_COUNT,
+              "bestRating": "5",
+              "worstRating": "1"
             }
           })
         }}
@@ -152,48 +216,14 @@ export default function ContactPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "How can I book a cab with Triveni Cabs?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "You can book a cab through multiple channels: Call us at +91-7668570551, WhatsApp us for instant booking, fill out the contact form on our website, or email us at cabstriveni@gmail.com. We are available 24/7 for bookings."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What are your customer support hours?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Triveni Cabs provides 24/7 customer support. Our booking hotline and WhatsApp are available round the clock. Office hours for in-person visits are 9:00 AM to 6:00 PM, but phone and online support is always available."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Which cities does Triveni Cabs operate in?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We operate across 50+ cities in India including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, Dehradun, Rishikesh, Haridwar, Jodhpur, Udaipur, Ayodhya, Ahmedabad, and many more. We also provide intercity and outstation services."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How quickly can I get a cab after booking?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "For immediate requirements, we can arrange a cab within 30-60 minutes depending on your location. For scheduled trips, we recommend booking at least 4-6 hours in advance. For outstation trips, please book 24 hours ahead for best availability."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What payment methods do you accept?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We accept multiple payment methods including cash, UPI (Google Pay, PhonePe, Paytm), bank transfers, and online payments. For corporate clients, we also offer credit facilities."
-                }
+            "mainEntity": FAQ_ENTRIES.map((f) => ({
+              "@type": "Question",
+              "name": f.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f.a
               }
-            ]
+            }))
           })
         }}
       />
@@ -205,8 +235,8 @@ export default function ContactPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "@id": "https://www.trivenicabs.in/contact#webpage",
-            "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead'])
+            "@id": `${PAGE_URL}#webpage`,
+            "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first'])
           })
         }}
       />

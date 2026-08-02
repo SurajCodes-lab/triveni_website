@@ -95,8 +95,17 @@ export default function RoundTripClient({ route, relatedRoutes, corridorLinks = 
               </div>
               <p className="text-white/40 mt-2 text-sm sm:text-base max-w-lg">{route.distanceKm} km one-way · From {route.cabFares.sedan} round trip · Driver stays with you</p>
 
+              {/* Trust row sits with the fare above, where the decision is made */}
+              <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] sm:text-xs text-white/45">
+                <Star className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" aria-hidden="true" />
+                <span className="font-semibold text-white/70">4.9</span>
+                <span aria-hidden="true">·</span><span>Since 2015</span>
+                <span aria-hidden="true">·</span><span>No hidden charges</span>
+                <span aria-hidden="true">·</span><span>Pay after trip</span>
+              </p>
+
               <div className="flex flex-wrap gap-3 mt-6">
-                <a onClick={() => trackWhatsAppClick('roundtrip_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#FACF2D] text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
+                <a onClick={() => trackWhatsAppClick('roundtrip_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
                   Get Free Quote <ArrowRight className="w-4 h-4" />
                 </a>
                 <a onClick={() => trackPhoneCall('roundtrip_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">

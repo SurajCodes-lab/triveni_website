@@ -9,7 +9,7 @@ import { Calendar, Clock, Eye, Tag, Share2, Facebook, Twitter, Linkedin, ArrowLe
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import WhatsAppCTA from '@/components/blog/WhatsAppCTA';
 
-export default function BlogPostPageClient({ post }) {
+export default function BlogPostPageClient({ post, tripCTA }) {
   const [mounted, setMounted] = useState(false);
   const heroRef = useRef(null);
   const contentRef = useRef(null);
@@ -350,17 +350,56 @@ export default function BlogPostPageClient({ post }) {
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
-            {/* WhatsApp CTA with Animation */}
+            {/* Route-aware "Book this trip" box (server-resolved real fare) —
+                falls back to the generic WhatsApp CTA when no route matched. */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <WhatsAppCTA
-                variant="primary"
-                message={`Hi! I read about "${post.title}" on your blog and I'm interested in booking a trip. Can you help me?`}
-              />
+              {tripCTA ? (
+                <section
+                  aria-label={tripCTA.heading}
+                  className="relative overflow-hidden rounded-2xl border-2 border-[#FACF2D]/60 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white p-6 md:p-8 shadow-2xl"
+                >
+                  <div className="absolute -top-14 -right-14 w-48 h-48 rounded-full bg-[#FACF2D]/15 blur-3xl" aria-hidden="true" />
+                  <p className="text-[11px] font-bold tracking-widest uppercase text-[#FACF2D] mb-2">Triveni Cabs · Book This Trip</p>
+                  <h2 className="text-2xl md:text-3xl font-black leading-tight mb-2">{tripCTA.heading}</h2>
+                  <p className="text-slate-300 text-sm md:text-base max-w-2xl mb-4">{tripCTA.blurb}</p>
+                  <div className="flex flex-wrap items-center gap-2 mb-5 text-xs">
+                    {tripCTA.fare && (
+                      <span className="px-3 py-1.5 rounded-full bg-[#FACF2D] text-black font-extrabold text-sm">
+                        Sedan from {tripCTA.fare}
+                      </span>
+                    )}
+                    {tripCTA.distance && <span className="px-2.5 py-1 rounded-full border border-white/20 text-white/80">{tripCTA.distance}</span>}
+                    {tripCTA.duration && <span className="px-2.5 py-1 rounded-full border border-white/20 text-white/80">~{tripCTA.duration}</span>}
+                    <span className="px-2.5 py-1 rounded-full border border-white/20 text-white/80">4.9★ · Pay after trip</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link
+                      href={tripCTA.ctaHref}
+                      className="text-center px-6 py-3.5 rounded-xl bg-[#FACF2D] text-black font-extrabold hover:bg-amber-300 transition-all active:scale-[0.98]"
+                    >
+                      {tripCTA.ctaText}
+                    </Link>
+                    <a
+                      href={`https://wa.me/917668570551?text=${encodeURIComponent(tripCTA.waMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-center px-6 py-3.5 rounded-xl border-2 border-emerald-400/70 text-emerald-300 font-extrabold hover:bg-emerald-400/10 transition-all"
+                    >
+                      WhatsApp Instant Quote
+                    </a>
+                  </div>
+                </section>
+              ) : (
+                <WhatsAppCTA
+                  variant="primary"
+                  message={`Hi! I read about "${post.title}" on your blog and I'm interested in booking a trip. Can you help me?`}
+                />
+              )}
             </motion.div>
 
             {/* Tags with 3D Animation */}
@@ -480,9 +519,9 @@ export default function BlogPostPageClient({ post }) {
                 <ul className="space-y-3">
                   {[
                     { href: '/about', text: 'About Triveni Cabs' },
-                    { href: '/booking', text: 'Book a Taxi' },
-                    { href: '/services/one-way', text: 'One Way Service' },
-                    { href: '/services/round-trip', text: 'Round Trip Service' },
+                    { href: '/one-way-cab', text: 'One Way Cab' },
+                    { href: '/round-trip', text: 'Round Trip Cab' },
+                    { href: '/tempo-traveller', text: 'Tempo Traveller' },
                   ].map((link, index) => (
                     <motion.li
                       key={index}

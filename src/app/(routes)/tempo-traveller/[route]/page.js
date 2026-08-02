@@ -17,6 +17,31 @@ import ChardhamTempoClient from '@/components/ChardhamTempoClient';
 import AEOHead from '@/components/seo/AEOHead';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks, getSiloHubLinks } from '@/lib/seo/linkingHelper';
+// Server-only: pulls in the large blog dataset, never import from a client component.
+import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
+
+// Some routeDescriptions carry prose-y distances ("1000 km (one way via Manali,
+// ~2000 km circuit)") that would eat the whole snippet — keep only the number.
+const compactKm = (d) => {
+  const m = /(\d[\d,]*)\s*km/i.exec(d || '');
+  return m ? `${m[1]} km` : null;
+};
+const compactTravelTime = (t) => {
+  const s = String(t || '').split('(')[0].trim();
+  return s && s.length <= 20 ? s : null;
+};
+
+// Fare-first meta description: numbers lead, softer segments drop off the end
+// until the line fits inside Google's ~160-char snippet.
+function buildFareFirstDescription(segments, limit = 160) {
+  const parts = segments.filter(Boolean);
+  let out = parts.join(' · ');
+  while (out.length > limit && parts.length > 1) {
+    parts.pop();
+    out = parts.join(' · ');
+  }
+  return out.length > limit ? out.slice(0, limit) : out;
+}
 
 // Helper to check if slug is a Chardham route
 function isChardhamSlug(slug) {
@@ -92,11 +117,14 @@ export async function generateMetadata({ params }) {
     if (pageTitle.length > 60) pageTitle = `${origin} to ${destShort} Tempo Traveller 2026 | ${startingPrice}`;
     if (pageTitle.length > 60) pageTitle = `${origin} to ${destShort} Tempo 2026 | ${startingPrice}`;
 
-    // Meta description under 158 chars with seats/price/duration + CTA
-    let pageDescription = `${origin} to ${destShort} by tempo traveller, ${chardhamData.duration}. 12-26 seater AC tempo from ${startingPrice}, hill driver, fuel & tolls included. Call 7668570551.`;
-    if (pageDescription.length > 158) {
-      pageDescription = `${origin} to ${destShort} tempo traveller, ${chardhamData.duration}. 12-26 seater AC from ${startingPrice}, driver+tolls included. Call 7668570551.`;
-    }
+    // Fare-first meta description: package price leads, then duration + inclusions
+    const pageDescription = buildFareFirstDescription([
+      `12-26 seater tempo from ${startingPrice}`,
+      `${origin} to ${destShort} ${chardhamData.duration}`,
+      'hill driver, fuel & tolls included',
+      '4.9★',
+      'call 7668570551'
+    ]);
 
     // Keyword set (15-22 focused terms): vehicle + origin + intent + entity
     const chardhamKeywords = [
@@ -178,7 +206,13 @@ export async function generateMetadata({ params }) {
     return {
       // Title under 60 chars, Description under 155 chars
       title: `Tempo Traveller in ${cityData.name} | 12-26 Seater ₹20/km`,
-      description: `Book tempo traveller in ${cityData.name}. 12-26 seater AC vehicles, ₹20-28/km. ${routeCount}+ routes available. Call 7668570551.`,
+      description: buildFareFirstDescription([
+        '12-26 seater tempo ₹20-₹28/km',
+        `${routeCount}+ routes from ${cityData.name}`,
+        'driver + fuel included',
+        '4.9★',
+        'call 7668570551'
+      ]),
       applicationName: 'Triveni Cabs',
       metadataBase: new URL('https://www.trivenicabs.in'),
       alternates: {
@@ -245,13 +279,26 @@ export async function generateMetadata({ params }) {
   const originFormatted = formatCityName(origin);
   const destinationFormatted = formatCityName(destination);
 
-  return generateTempoMetadata({
+  const routeMeta = routeDescriptions[route] || null;
+  const baseMeta = generateTempoMetadata({
     origin: originFormatted,
     destination: destinationFormatted,
     price: '20/km',
     seats: '12-26',
     slug: route
   });
+
+  return {
+    ...baseMeta,
+    description: buildFareFirstDescription([
+      '12-26 seater tempo from ₹20/km',
+      `${originFormatted} to ${destinationFormatted}${compactKm(routeMeta?.distance) ? ` ${compactKm(routeMeta.distance)}` : ''}`,
+      compactTravelTime(routeMeta?.travelTime),
+      'driver + fuel included',
+      '4.9★',
+      'call 7668570551'
+    ])
+  };
 }
 
 export default async function TempoTravellerRoutePage({ params }) {
@@ -743,6 +790,13 @@ export default async function TempoTravellerRoutePage({ params }) {
   // Get route description for enriched schema data
   const routeDesc = routeDescriptions[route] || null;
 
+  // Blog posts covering this corridor — links money page back to editorial content.
+  const tempoBlogLinks = getRelatedBlogPosts([originFormatted, destinationFormatted], 3)
+    .map((p) => ({
+      href: `/blog/${p.slug}`,
+      anchor: p.readTime ? `${p.title} · ${p.readTime}` : p.title
+    }));
+
   // TravelAction schema
   const travelActionSchema = {
     "@context": "https://schema.org",
@@ -881,20 +935,19 @@ export default async function TempoTravellerRoutePage({ params }) {
     ]
   };
 
-  // HowTo schema for booking
-  const howToSchema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": `How to Book Tempo Traveller from ${originFormatted} to ${destinationFormatted}`,
-    "description": `Step-by-step guide to book tempo traveller for ${originFormatted} to ${destinationFormatted} trip`,
-    "totalTime": "PT5M",
-    "step": [
-      { "@type": "HowToStep", "position": 1, "name": "Choose Your Vehicle", "text": `Select from 12 to 26 seater tempo travellers for your ${originFormatted} to ${destinationFormatted} journey based on group size` },
-      { "@type": "HowToStep", "position": 2, "name": "Call or WhatsApp", "text": "Contact us at +91-7668570551 or WhatsApp for instant booking and price quote" },
-      { "@type": "HowToStep", "position": 3, "name": "Share Trip Details", "text": `Provide travel date, pickup location in ${originFormatted}, number of passengers, and any sightseeing stops` },
-      { "@type": "HowToStep", "position": 4, "name": "Get Instant Confirmation", "text": "Receive booking confirmation with driver name, photo, vehicle number, and GPS tracking link within 15 minutes" }
+  // HowTo schema for booking — same helper the Chardham and city branches use,
+  // so all three tempo page types emit an identical HowTo shape.
+  const howToSchema = getHowToSchema({
+    name: `How to Book a Tempo Traveller from ${originFormatted} to ${destinationFormatted}`,
+    description: `Step-by-step guide to booking a 12-26 seater AC tempo traveller for the ${originFormatted} to ${destinationFormatted} trip${routeDesc?.distance ? ` (${routeDesc.distance})` : ''}.`,
+    totalTime: 'PT5M',
+    steps: [
+      { name: 'Choose your seater', text: `Pick a 12, 16, 17, 20 or 26 seater tempo traveller for your ${originFormatted} to ${destinationFormatted} journey based on group size — the 17 seater offers the best value per seat.` },
+      { name: 'Call or WhatsApp', text: 'Contact +91-7668570551 or WhatsApp for an instant booking and price quote.' },
+      { name: 'Share trip details', text: `Provide travel date, pickup location in ${originFormatted}, number of passengers and any sightseeing stops.` },
+      { name: 'Get instant confirmation', text: 'Receive booking confirmation with driver name, photo, vehicle number and GPS tracking link within 15 minutes.' }
     ]
-  };
+  });
 
   // Article schema — editorial guide entity for AEO/GEO + freshness signal,
   // with Speakable wired to the hero headline + direct-answer lead. Helps the
@@ -988,6 +1041,14 @@ export default async function TempoTravellerRoutePage({ params }) {
           ariaLabel={`Popular ${originFormatted} services`}
           tone="slate"
         />
+        {tempoBlogLinks.length > 0 && (
+          <RelatedLinks
+            heading="Trip guides & tips"
+            links={tempoBlogLinks}
+            ariaLabel={`${originFormatted} to ${destinationFormatted} travel guides`}
+            tone="amber"
+          />
+        )}
       </div>
     </>
   );

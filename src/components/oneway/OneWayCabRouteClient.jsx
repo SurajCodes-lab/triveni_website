@@ -56,6 +56,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
   const allFaqs = [...route.faqs, ...extendedFaqs];
   const fromCityImage = getCityImage(route.from);
   const toCityImage = getCityImage(route.to);
+  const heroWhatsappMessage = `Hi, I want to book a one-way cab from ${route.from} to ${route.to} (${route.distance}). Sedan is quoted at ${route.oneWayFares.sedan} — please confirm availability.`;
 
   // Rich UI + ranking-lift derived data (May 2026 sprint)
   const distanceKm = parseInt((route.distance || '').replace(/[^0-9]/g, ''), 10) || 233;
@@ -195,9 +196,53 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
             <span className="sr-only"> One Way Cab — book from {route.oneWayFares.sedan}</span>
           </h1>
 
+          {/* Mobile-only conversion row. The full CTA block further down this hero
+              lands past the fold on a 360px screen, so the fare and both tap
+              targets repeat here. Fixed button heights keep it CLS-free. */}
+          <div className="md:hidden mb-6 rounded-2xl border border-amber-500/25 bg-slate-950/60 backdrop-blur-xl p-4">
+            <div className="flex items-baseline gap-2">
+              <span className="text-3xl font-black text-amber-400">{route.oneWayFares.sedan}</span>
+              <span className="text-xs text-white/50">sedan &middot; one-way</span>
+            </div>
+            <p className="mt-1.5 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] text-white/45">
+              <Star className="w-3 h-3 text-amber-400 fill-amber-400" aria-hidden="true" />
+              <span className="font-semibold text-white/70">4.9</span>
+              <span aria-hidden="true">&middot;</span><span>Since 2015</span>
+              <span aria-hidden="true">&middot;</span><span>No hidden charges</span>
+              <span aria-hidden="true">&middot;</span><span>Pay after trip</span>
+            </p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <a
+                onClick={() => trackWhatsAppClick('oneway_hero_mobile', heroWhatsappMessage)}
+                href={`https://wa.me/917668570551?text=${encodeURIComponent(heroWhatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 font-bold text-white shadow-lg shadow-amber-500/20 active:scale-[0.97] transition-transform"
+              >
+                WhatsApp <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                onClick={() => trackPhoneCall('oneway_hero_mobile')}
+                href="tel:+917668570551"
+                className="flex h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 font-bold text-white active:scale-[0.97] transition-transform"
+              >
+                <Phone className="w-4 h-4" /> Call Now
+              </a>
+            </div>
+          </div>
+
           {/* Subtitle / lead — direct-answer paragraph (voice/AI answer target) */}
           <p className="speakable-lead text-xl md:text-2xl lg:text-3xl text-white/70 mb-6 max-w-3xl font-medium">
             A one-way cab from {route.from} to {route.to} costs <span className="text-amber-400 font-black">{route.oneWayFares.sedan}</span> for a Sedan ({route.distance} in {route.time} via {route.highway}), saving {route.savingsPercent} versus a round trip — you pay only the one-way distance, with FASTag and a verified driver included.
+          </p>
+
+          {/* Trust row sits with the fare above, where the decision is made */}
+          <p className="hidden md:flex flex-wrap items-center gap-x-2 gap-y-1 mb-8 text-sm text-white/45">
+            <Star className="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true" />
+            <span className="font-semibold text-white/70">4.9</span>
+            <span aria-hidden="true">&middot;</span><span>Since 2015</span>
+            <span aria-hidden="true">&middot;</span><span>No hidden charges</span>
+            <span aria-hidden="true">&middot;</span><span>Pay after trip</span>
           </p>
 
           {/* Info pills */}
@@ -1025,10 +1070,13 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
               distanceKm={distanceKm}
               mode="one-way"
               vehicles={[
-                { key: 'sedan', label: 'Sedan', ratePerKm: 11 },
-                { key: 'suv', label: 'SUV', ratePerKm: 14 },
-                { key: 'tempo12', label: '12-Seater', ratePerKm: 20 },
-                { key: 'tempo17', label: '17-Seater', ratePerKm: 24 },
+                // minKm mirrors the 300 km billing floor in calcFares(), so the
+                // calculator's default sedan estimate matches the fare quoted in
+                // the hero, the QuickAnswer and the vehicle cards.
+                { key: 'sedan', label: 'Sedan', ratePerKm: 11, minKm: 300 },
+                { key: 'suv', label: 'SUV', ratePerKm: 14, minKm: 300 },
+                { key: 'tempo12', label: '12-Seater', ratePerKm: 20, minKm: 300 },
+                { key: 'tempo17', label: '17-Seater', ratePerKm: 24, minKm: 300 },
               ]}
               tone="amber"
               originName={route.from}

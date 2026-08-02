@@ -1,5 +1,6 @@
 import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 
 const data = friendsTripData['bachelor'];
 
@@ -20,7 +21,7 @@ export default function BachelorTripNorthIndiaPage() {
   const tripSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": "Bachelor Trip North India by Tempo Traveller", "description": data.tagline, "touristType": "Bachelor Group", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551" }, "offers": { "@type": "AggregateOffer", "lowPrice": "5000", "highPrice": "20000", "priceCurrency": "INR" } };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": data.faqs.map(faq => ({ "@type": "Question", "name": faq.question, "acceptedAnswer": { "@type": "Answer", "text": faq.answer } })) };
 
-  return (<><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><FriendsTripClient data={data} /></>);
+  return (<><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><div className="bg-slate-950 px-4 pt-5 pb-1"> <QuickAnswer tone="dark" className="mx-auto max-w-4xl" question={'How much does a bachelor trip from Delhi cost?'} answer={'A bachelor trip across North India runs 3-5 days, planned for a group of 10-20 people. Triveni Cabs prices it at Rs 16,000 for a 17-seater Tempo Traveller and Rs 22,000 for a mini bus, which works out to about Rs 940 per person in the 17-seater. The best season to go is September to June. Base price for Rishikesh. Varies by destination.'} facts={[ { label: 'Distance', value: 'Varies by destination' }, { label: 'Duration', value: '3-5 Days' }, { label: 'Group size', value: '10-20 people' }, { label: 'Per person (17-seater)', value: 'Rs 940' }, ]} /> </div><FriendsTripClient data={data} /></>);
 }
 
 export const revalidate = 3600;

@@ -19,6 +19,7 @@ import {
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 
 // SEO Components
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
@@ -45,6 +46,71 @@ export default function CityToursPage({ city }) {
   }
 
   const heroImage = tours[0]?.heroImage || `/images/destinations/${city}.jpg`;
+
+  // --- Quick Answer (AEO/GEO) — fact-first, built only from sightseeingData ---
+  //
+  // A city bucket holds every tour that *departs* from the city, so the
+  // multi-day entries ("Jaipur to Jaisalmer 3 Days") carry highlights in
+  // other cities. Rank by rough duration so the in-city day tours lead, and
+  // only quote spots from those — otherwise "things to do in Jaipur" ends up
+  // listing Jaisalmer Fort.
+  const durationHours = (d) => {
+    const text = String(d || '');
+    const days = text.match(/(\d+)\s*days?/i);
+    if (days) return parseInt(days[1], 10) * 24;
+    if (/^half day/i.test(text)) return 5;
+    const hours = text.match(/(\d+(?:\.\d+)?)\s*hours?/i);
+    if (hours) return parseFloat(hours[1]);
+    return 12;
+  };
+  const fareOf = (t) => {
+    const f = [t.price?.sedan, t.price?.suv, t.price?.tempoTraveller, t.price?.carRental].filter(Boolean);
+    return f.length ? Math.min(...f) : null;
+  };
+  const byLength = [...tours].sort((a, b) => durationHours(a.duration) - durationHours(b.duration));
+  const dayTours = byLength.filter((t) => durationHours(t.duration) <= 24);
+  const spotSource = dayTours.length ? dayTours : byLength;
+  const dayFares = spotSource.map(fareOf).filter(Boolean);
+  const allFares = tours.map(fareOf).filter(Boolean);
+  const fromFare = dayFares.length ? Math.min(...dayFares) : (allFares.length ? Math.min(...allFares) : null);
+  // Highlights read "Name - description", but some entries are plain selling
+  // points ("Golden hour photography paradise"). Prefer the "Name - …" form so
+  // we quote places, and drop entries already covered by a longer one
+  // ("City Palace" under "Hawa Mahal & City Palace").
+  const placeNames = (t) => {
+    const hs = (t.highlights || []).map(String);
+    const structured = hs.filter((h) => h.includes(' - '));
+    return (structured.length ? structured : hs).slice(0, 4).map((h) => h.split(' - ')[0].trim());
+  };
+  const topSpots = spotSource
+    .slice(0, 3)
+    .flatMap(placeNames)
+    .filter(Boolean)
+    .reduce((acc, spot) => {
+      const lower = spot.toLowerCase();
+      if (acc.some((s) => s.toLowerCase().includes(lower) || lower.includes(s.toLowerCase()))) return acc;
+      acc.push(spot);
+      return acc;
+    }, [])
+    .slice(0, 6);
+  const multiDayCount = tours.length - dayTours.length;
+  const farePhrase = fromFare
+    ? `, ${dayTours.length ? 'with day tours from' : 'from'} ₹${fromFare.toLocaleString()} for an AC sedan`
+    : '';
+  const cityQuickAnswer = [
+    `Triveni Cabs runs ${tours.length} ready-to-book ${cityName} sightseeing tour${tours.length === 1 ? '' : 's'}${farePhrase}.`,
+    topSpots.length ? ` The most-visited stops are ${topSpots.join(', ')}.` : '',
+    dayTours.length && multiDayCount > 0
+      ? ` ${multiDayCount} multi-day package${multiDayCount > 1 ? 's run' : ' runs'} onward from ${cityName} as well.`
+      : '',
+    ` Every tour is a private car with a driver — fuel, tolls and parking included — with free pickup from your ${cityName} hotel, home or station. Call +91-7668570551 or WhatsApp to confirm dates.`
+  ].join('');
+  const cityQuickFacts = [
+    { label: 'Tours available', value: `${tours.length}` },
+    fromFare ? { label: dayTours.length ? 'Day tour from' : 'Tours from', value: `₹${fromFare.toLocaleString()}` } : null,
+    spotSource[0]?.duration ? { label: 'Typical length', value: spotSource[0].duration } : null,
+    { label: 'Pickup', value: `Free ${cityName} pickup` }
+  ].filter(Boolean).slice(0, 4);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -185,6 +251,19 @@ export default function CityToursPage({ city }) {
           />
         </div>
       </div>
+
+      {/* === QUICK ANSWER (AEO/GEO) — fact-first, kept high on the page === */}
+      <section className="bg-slate-950 px-4 pt-6 pb-2">
+        <div className="max-w-4xl mx-auto rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10 p-1.5">
+          <QuickAnswer
+            question={`What are the top things to do in ${cityName}, and what does a day tour cost?`}
+            answer={cityQuickAnswer}
+            facts={cityQuickFacts}
+            tone="dark"
+            className="border-emerald-500/20"
+          />
+        </div>
+      </section>
 
       {/* Social Proof Strip */}
       <SocialProofStrip theme="dark" />

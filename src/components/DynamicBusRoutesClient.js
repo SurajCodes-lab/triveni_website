@@ -52,13 +52,37 @@ export default function DynamicBusRoutesClient({ data }) {
   const [mounted, setMounted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
+  // Seat range and entry rate are read off this route's own fleet so the answer copy
+  // can never drift from the fare cards and fare chart further down the page.
+  const seatCounts = (Array.isArray(fleet) ? fleet : [])
+    .map((b) => Number(String(b?.capacity || b?.name || '').match(/\d+/)?.[0]))
+    .filter((n) => Number.isFinite(n))
+    .sort((a, b) => a - b);
+  const minSeats = seatCounts[0] || 22;
+  const maxSeats = seatCounts[seatCounts.length - 1] || 56;
+  const rateNumbers = (Array.isArray(fleet) ? fleet : [])
+    .flatMap((b) => String(b?.ratePerKm || '').match(/\d+/g) || [])
+    .map(Number)
+    .filter((n) => Number.isFinite(n));
+  const minRate = rateNumbers.length ? Math.min(...rateNumbers) : 30;
+  const maxRate = rateNumbers.length ? Math.max(...rateNumbers) : 65;
+
+  // Hero CTA: pre-fill WhatsApp with the route and the coach size the enquiry is for.
+  const heroWhatsAppHref = `https://wa.me/917668570551?text=${encodeURIComponent(
+    `Hi, I need a bus from ${origin} to ${destination}. Please share fares for ${minSeats} to ${maxSeats} seater coaches and availability.`
+  )}`;
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
   return (
     <article className="min-h-screen bg-white" itemScope itemType="https://schema.org/TravelAction">
-      <SetStickyCta price="From ₹25/km" label={`${data.city || 'Bus'} Bus Hire`} whatsappText={`Hi, I want to book a bus${data.city ? ' from ' + data.city : ''}. Please share availability and fare.`} />
+      <SetStickyCta
+        price={`From ₹${minRate}/km`}
+        label={`${data.city || 'Bus'} Bus Hire`}
+        whatsappText={`Hi, I want to book a bus from ${origin} to ${destination}. Please share availability and fare.`}
+      />
 
       {/* Hero Section - Ultra Modern */}
       <motion.section
@@ -103,9 +127,14 @@ export default function DynamicBusRoutesClient({ data }) {
             <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#FACF2D]" />
           </motion.div>
 
-          {/* Price Badge */}
-          <div className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-3">
-            Starting from ₹30/km
+          {/* Price + trust, static so it paints with the hero and shifts nothing */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-3">
+            <span className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+              Starting from ₹{minRate}/km
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold text-white/80 text-center leading-snug">
+              4.9★ · Since 2015 · No hidden charges · Pay after trip
+            </span>
           </div>
 
           {/* Main Title with TypeAnimation */}
@@ -138,6 +167,31 @@ export default function DynamicBusRoutesClient({ data }) {
                 repeat={Infinity}
               />
             </motion.h2>
+          </div>
+
+          {/* Mobile-only compact CTA row — keeps price, call and WhatsApp tappable
+              above the fold at 360px. Desktop keeps the full-size buttons below. */}
+          <div className="grid grid-cols-2 gap-2 w-full max-w-xs mx-auto mb-6 md:hidden">
+            <a
+              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('bus_route_hero')}
+              className="min-h-[48px] flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] text-black font-bold text-sm shadow-lg active:scale-95 transition-transform"
+              aria-label={`Call Triveni Cabs for a ${origin} to ${destination} bus`}
+            >
+              <Phone className="w-4 h-4" />
+              Call
+            </a>
+            <a
+              href={heroWhatsAppHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('bus_route_hero')}
+              className="min-h-[48px] flex items-center justify-center gap-2 rounded-xl bg-green-500 text-white font-bold text-sm shadow-lg active:scale-95 transition-transform"
+              aria-label={`WhatsApp Triveni Cabs for a ${origin} to ${destination} bus`}
+            >
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp
+            </a>
           </div>
 
           {/* Route Stats - Cute Cards */}
@@ -194,7 +248,7 @@ export default function DynamicBusRoutesClient({ data }) {
           >
             <motion.a
               href="tel:+917668570551"
-              
+              onClick={() => trackPhoneCall('bus_route_hero_primary')}
               whileTap={{ scale: 0.95 }}
               className="group relative bg-[#FACF2D] text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg overflow-hidden shadow-2xl text-center"
               aria-label={`Call Triveni Cabs for ${origin} to ${destination} bus booking`}
@@ -213,8 +267,10 @@ export default function DynamicBusRoutesClient({ data }) {
             </motion.a>
 
             <motion.a
-              href="https://wa.me/917668570551"
-              
+              href={heroWhatsAppHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('bus_route_hero_primary')}
               whileTap={{ scale: 0.95 }}
               className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base md:text-lg hover:bg-white/20 transition-all duration-300 shadow-2xl text-center"
               aria-label={`Contact Triveni Cabs on WhatsApp for ${origin} to ${destination} bus booking`}
@@ -244,13 +300,13 @@ export default function DynamicBusRoutesClient({ data }) {
         <div className="max-w-4xl mx-auto">
           <QuickAnswer
             tone="dark"
-            question={`How much does it cost to hire a bus from ${origin} to ${destination}?`}
-            answer={`Chartering a bus from ${origin} to ${destination} starts at ₹30/km for a 22 seater AC mini bus and rises to about ₹65/km for a 56 seater luxury Volvo coach${routeData?.distance ? `, covering roughly ${routeData.distance}` : ''}${routeData?.duration ? ` in around ${routeData.duration}` : ''}. A bus is priced the same whether you book a one-way drop or a round trip, since the coach returns to base either way — there is no one-way discount on bus charter. Every coach is AC with pushback seats and the rate covers fuel and driver; tolls, parking, state permits and the driver night allowance are billed extra.`}
+            question={`${origin} to ${destination} bus: what does it cost to hire one?`}
+            answer={`${origin} to ${destination} bus hire: ${minSeats}–${maxSeats} seater AC coaches from ₹${minRate}/km, rising to about ₹${maxRate}/km for the largest luxury Volvo${routeData?.distance ? `, covering roughly ${routeData.distance}` : ''}${routeData?.duration ? ` in around ${routeData.duration}` : ''}. One-way is billed as a round trip, since the coach returns to base either way — there is no one-way discount on bus charter. For groups under 26, a tempo traveller (₹20–28/km depending on seater) usually works out cheaper per seat. Every coach is AC with pushback seats and the rate covers fuel and driver; tolls, parking, state permits and the driver night allowance are billed extra. This is a private charter for your group, not a scheduled seat-booking service.`}
             facts={[
               { label: 'Distance', value: routeData?.distance || 'On request' },
               { label: 'Drive time', value: routeData?.duration || 'On request' },
-              { label: 'From (22 seater)', value: '₹30/km' },
-              { label: 'Seating', value: '22 to 56 seats' },
+              { label: `From (${minSeats} seater)`, value: `₹${minRate}/km` },
+              { label: 'Seating', value: `${minSeats} to ${maxSeats} seats` },
             ]}
           />
         </div>
@@ -269,7 +325,7 @@ export default function DynamicBusRoutesClient({ data }) {
               <Users className="w-4 h-4 text-blue-500" /> 10,000+ Trips
             </span>
             <span className="flex items-center gap-1.5 font-medium">
-              <Shield className="w-4 h-4 text-green-500" /> Since 2018
+              <Shield className="w-4 h-4 text-green-500" /> Since 2015
             </span>
             <span className="flex items-center gap-1.5 font-medium">
               <MapPin className="w-4 h-4 text-red-500" /> 500+ Cities
@@ -285,7 +341,7 @@ export default function DynamicBusRoutesClient({ data }) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
-              How much does a {origin} to {destination} bus charter cost in 2026?
+              {origin} to {destination} bus hire — what does it cost in 2026?
             </h2>
             <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
@@ -298,19 +354,22 @@ export default function DynamicBusRoutesClient({ data }) {
               </div>
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
                 <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Rate</p>
-                <p className="text-xl font-black text-green-700">₹30/km</p>
+                <p className="text-xl font-black text-green-700">₹{minRate}/km</p>
               </div>
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
                 <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Bus Sizes</p>
-                <p className="text-xl font-black text-slate-900">22-56 Seat</p>
+                <p className="text-xl font-black text-slate-900">{minSeats}-{maxSeats} Seat</p>
               </div>
             </div>
             <p className="faq-answer speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
-              Bus hire from <strong>{origin} to {destination}</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus.
+              <strong>{origin} to {destination} bus hire</strong> starts at <strong>₹{minRate}/km</strong> for a {minSeats} seater AC mini bus and
+              runs to about <strong>₹{maxRate}/km</strong> for a {maxSeats} seater luxury Volvo.
               {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
-              Triveni Cabs offers 22, 25, 27, 35, 41, 45, 52, and 56 seater AC luxury buses with pushback seats,
-              entertainment systems, GPS tracking, and professional drivers. Ideal for corporate outings, wedding groups,
-              pilgrimages, and school trips. Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
+              A one-way drop is billed as a round trip, because the coach returns to base either way.
+              Triveni Cabs runs {minSeats} to {maxSeats} seater AC coaches with pushback seats,
+              entertainment systems, GPS tracking and professional drivers — ideal for corporate outings, wedding groups,
+              pilgrimages and school trips. For a group under 26, a <strong>tempo traveller at ₹20–28/km</strong> depending on seater
+              usually costs less per seat. Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
               4.9★ rated with 10,000+ group trips completed.
             </p>
             {uniqueIntro && (
@@ -785,7 +844,7 @@ export default function DynamicBusRoutesClient({ data }) {
               },
               {
                 question: `How much does it cost to rent a bus from ${origin} to ${destination}?`,
-                answer: `Bus rental rates from ${origin} to ${destination} start from ₹30/km for 22 seater mini buses and go up to ₹65/km for 56 seater luxury Volvo buses. Final cost depends on bus size, season, and booking duration. Contact us at +91-7668570551 for exact quotes.`
+                answer: `Bus rental rates from ${origin} to ${destination} start from ₹${minRate}/km for a ${minSeats} seater mini bus and go up to ₹${maxRate}/km for a ${maxSeats} seater luxury Volvo. A one-way drop is billed at the same rate as a round trip, since the coach returns to base either way. Final cost depends on bus size, season and booking duration. Contact us at +91-7668570551 for exact quotes.`
               },
               {
                 question: `Can I book a bus online for ${origin} to ${destination}?`,

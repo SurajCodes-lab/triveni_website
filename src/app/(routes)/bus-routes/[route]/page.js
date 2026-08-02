@@ -14,6 +14,31 @@ import { generateBusServiceSchema } from '@/lib/seo/schema-generators';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getSpeakableSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
+// Server-only: pulls in the large blog dataset, never import from a client component.
+import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
+
+// Keep only the numeric part of a distance / duration so a long-form value
+// cannot eat the whole snippet.
+const compactKm = (d) => {
+  const m = /(\d[\d,]*)\s*km/i.exec(d || '');
+  return m ? `${m[1]} km` : null;
+};
+const compactDuration = (t) => {
+  const s = String(t || '').split('(')[0].trim();
+  return s && s.length <= 20 ? s : null;
+};
+
+// Fare-first meta description: numbers lead, softer segments drop off the end
+// until the line fits inside Google's ~160-char snippet.
+function buildFareFirstDescription(segments, limit = 160) {
+  const parts = segments.filter(Boolean);
+  let out = parts.join(' · ');
+  while (out.length > limit && parts.length > 1) {
+    parts.pop();
+    out = parts.join(' · ');
+  }
+  return out.length > limit ? out.slice(0, limit) : out;
+}
 
 // Viewport export (moved from metadata for Next.js 15 compatibility)
 export const viewport = {
@@ -75,13 +100,29 @@ export async function generateMetadata({ params }) {
   const originFormatted = formatCityName(origin);
   const destinationFormatted = formatCityName(destination);
 
-  return generateBusMetadata({
+  // Distance / duration come straight from the busRoutes entry when the pair exists.
+  const routeEntry = (busRoutes[originFormatted] || []).find(
+    (r) => r.name.toLowerCase() === destinationFormatted.toLowerCase()
+  );
+  const baseMeta = generateBusMetadata({
     origin: originFormatted,
     destination: destinationFormatted,
     price: '30/km',
     seats: '22-56',
     slug: route
   });
+
+  return {
+    ...baseMeta,
+    description: buildFareFirstDescription([
+      '22-56 seater bus from ₹30/km',
+      `${originFormatted} to ${destinationFormatted}${compactKm(routeEntry?.distance) ? ` ${compactKm(routeEntry.distance)}` : ''}`,
+      compactDuration(routeEntry?.duration),
+      'driver + fuel included',
+      '4.9★',
+      'call 7668570551'
+    ])
+  };
 }
 
 export default async function BusRoutePage({ params }) {
@@ -165,6 +206,13 @@ export default async function BusRoutePage({ params }) {
 
   // Get route-specific description if available
   const routeDescription = busRouteDescriptions?.[route] || null;
+
+  // Blog posts covering this corridor — links money page back to editorial content.
+  const busBlogLinks = getRelatedBlogPosts([originFormatted, destinationFormatted], 3)
+    .map((p) => ({
+      href: `/blog/${p.slug}`,
+      anchor: p.readTime ? `${p.title} · ${p.readTime}` : p.title
+    }));
 
   // Get related routes from the same origin for internal linking
   const relatedRoutes = (busRoutes[originFormatted] || [])
@@ -509,6 +557,14 @@ export default async function BusRoutePage({ params }) {
           ariaLabel="Other Triveni Cabs services"
           tone="slate"
         />
+        {busBlogLinks.length > 0 && (
+          <RelatedLinks
+            heading="Trip guides & tips"
+            links={busBlogLinks}
+            ariaLabel={`${originFormatted} to ${destinationFormatted} travel guides`}
+            tone="amber"
+          />
+        )}
       </div>
     </>
   );

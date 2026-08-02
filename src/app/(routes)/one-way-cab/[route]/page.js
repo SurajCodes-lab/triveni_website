@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { getOneWayRoute, getAllOneWayRouteSlugs, getRelatedRoutes, cityToGeoSlug } from '@/utilis/oneWayCabData';
 import { getReviews, getExtendedFaqs } from '@/utilis/oneWayCabEnrichment';
 import OneWayCabRouteClient from '@/components/oneway/OneWayCabRouteClient';
@@ -8,6 +9,10 @@ import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks } from '@/lib/seo/linkingHelper';
 import { getArticleSchema, getSpeakableSchema, getCityPlaceSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+// Server-only: pulls in the large blog dataset. Never pass the result into a
+// client component or blog.js lands in the browser bundle.
+import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
+import { BookOpen, Clock, ArrowRight } from '@/components/ui/icons';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -42,7 +47,11 @@ export async function generateMetadata({ params }) {
   const h = [...slug].reduce((a, c) => (a * 31 + c.charCodeAt(0)) | 0, 0);
   const title = titleVariants[Math.abs(h) % titleVariants.length];
 
-  const description = `One way cab from ${route.from} to ${route.to} at ${route.oneWayFares.sedan} (Sedan) — ${route.distance} in ${route.time} via ${route.highway}. Doorstep pickup, free stops at ${(route.popularStops || []).slice(0, 2).join(' & ') || 'en-route cities'}, FASTag included. Save ${route.savingsPercent} vs round trip. Call 7668570551.`;
+  // Fare-first snippet: the concrete numbers lead so the SERP result answers
+  // "how much / how far / how long" before the click. Parentheticals are
+  // stripped from route.time to keep the whole line inside ~160 characters.
+  const snippetTime = String(route.time).replace(/\s*\([^)]*\)\s*/g, ' ').trim();
+  const description = `Sedan ${route.oneWayFares.sedan} · ${route.distance} · ${snippetTime} · fuel, driver & AC included · 4.9★ Triveni Cabs. Doorstep pickup, no return fare.`;
 
   const keywords = [
     `one way cab ${route.from} to ${route.to}`,
@@ -109,6 +118,7 @@ export default async function OneWayCabRoutePage({ params }) {
   }
 
   const relatedRoutes = getRelatedRoutes(slug);
+  const relatedBlogPosts = getRelatedBlogPosts([route.from, route.to], 3);
   const reviews = getReviews(route);
   const extendedFaqs = getExtendedFaqs(route);
   const allFaqs = [...route.faqs, ...extendedFaqs];
@@ -353,6 +363,46 @@ export default async function OneWayCabRoutePage({ params }) {
           tone="slate"
         />
       </div>
+
+      {/* Money page → blog. Rendered server-side so the blog dataset stays out
+          of the client bundle. Dark band matches the client sections above and
+          the site footer below. */}
+      {relatedBlogPosts.length > 0 && (
+        <section className="bg-slate-950 text-white py-14 px-4 sm:px-6" aria-labelledby="trip-guides-heading">
+          <div className="max-w-6xl mx-auto">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <BookOpen className="w-4 h-4 text-amber-400" />
+              <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Trip guides &amp; tips</span>
+            </div>
+            <h2 id="trip-guides-heading" className="text-2xl sm:text-3xl font-black tracking-tight mb-8">
+              Read before you drive {route.from} to {route.to}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedBlogPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 hover:bg-white/[0.07] p-5 transition-all duration-300"
+                >
+                  <h3 className="font-bold text-white text-base leading-snug mb-4">{post.title}</h3>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="inline-flex items-center gap-1.5 text-white/50">
+                      {post.readTime ? (
+                        <>
+                          <Clock className="w-3.5 h-3.5" /> {post.readTime}
+                        </>
+                      ) : null}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-amber-400 font-bold group-hover:translate-x-1 transition-transform">
+                      Read guide <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

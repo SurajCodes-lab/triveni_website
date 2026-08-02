@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { getRoundTripRoute, getAllRoundTripSlugs, getRelatedRoundTripRoutes, cityToGeoSlug } from '@/utilis/roundTripData';
 import RoundTripClient from '@/components/round-trip/RoundTripClient';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
@@ -8,6 +9,10 @@ import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks } from '@/lib/seo/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+// Server-only: pulls in the large blog dataset. Never pass the result into a
+// client component or blog.js lands in the browser bundle.
+import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
+import { BookOpen, Clock, ArrowRight } from '@/components/ui/icons';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -26,7 +31,14 @@ export async function generateMetadata({ params }) {
   }
 
   const title = `${route.origin} to ${route.destination} Round Trip Cab | ₹${route.sedanRaw.toLocaleString('en-IN')} — Driver Stays With You — 4.9★`;
-  const description = `Book ${route.origin} to ${route.destination} round trip cab from ₹${route.sedanRaw.toLocaleString('en-IN')}. ${route.distanceKm} km one-way via ${route.highway}. Driver stays with you. ${route.nightHalt ? 'Night halt included.' : 'Same day return.'} 10% round trip discount. AC sedan, SUV, Tempo Traveller. Call 7668570551.`;
+  // Fare-first snippet: the concrete numbers lead so the SERP result answers
+  // "how much / how far / how long" before the click. Parentheticals are
+  // stripped from route.duration to keep the whole line inside ~160 characters.
+  const snippetDuration = String(route.duration).replace(/\s*\([^)]*\)\s*/g, ' ').trim();
+  const description = `Sedan ₹${route.sedanRaw.toLocaleString('en-IN')} round trip · ${route.distanceKm.toLocaleString('en-IN')} km each way · ${snippetDuration} · 4.9★ Triveni Cabs. Same driver throughout, 10% off.`;
+  // Social cards are not length-capped the way a SERP snippet is, so they keep
+  // the fuller pitch.
+  const socialDescription = `Book ${route.origin} to ${route.destination} round trip cab from ₹${route.sedanRaw.toLocaleString('en-IN')}. ${route.distanceKm} km one-way via ${route.highway}. Driver stays with you. ${route.nightHalt ? 'Night halt included.' : 'Same day return.'} 10% round trip discount. AC sedan, SUV, Tempo Traveller. Call 7668570551.`;
   const ogTitle = `${route.origin} ⟷ ${route.destination} Round Trip Cab — ₹${route.sedanRaw.toLocaleString('en-IN')} | Driver Stays With You | Triveni Cabs`;
 
   const o = route.origin.toLowerCase();
@@ -59,7 +71,7 @@ export async function generateMetadata({ params }) {
     alternates: { canonical: `/round-trip/${slug}` },
     openGraph: {
       title: ogTitle,
-      description,
+      description: socialDescription,
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/round-trip/${slug}`,
@@ -69,7 +81,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title: ogTitle,
-      description,
+      description: socialDescription,
       creator: '@trivenicabs',
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
@@ -88,6 +100,7 @@ export default async function RoundTripPage({ params }) {
   }
 
   const relatedRoutes = getRelatedRoundTripRoutes(slug);
+  const relatedBlogPosts = getRelatedBlogPosts([route.origin, route.destination], 3);
 
   // GEO: resolve origin + destination to real-world Place/City entities with
   // GeoCoordinates from the shared _CITY_PLACES map. Null-safe.
@@ -274,6 +287,46 @@ export default async function RoundTripPage({ params }) {
           tone="slate"
         />
       </div>
+
+      {/* Money page → blog. Rendered server-side so the blog dataset stays out
+          of the client bundle. Dark band matches the client sections above and
+          the site footer below. */}
+      {relatedBlogPosts.length > 0 && (
+        <section className="bg-[#0A0A0E] text-white py-14 px-4 sm:px-6" aria-labelledby="trip-guides-heading">
+          <div className="max-w-6xl mx-auto">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <BookOpen className="w-4 h-4 text-amber-400" />
+              <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Trip guides &amp; tips</span>
+            </div>
+            <h2 id="trip-guides-heading" className="text-2xl sm:text-3xl font-black tracking-tight mb-8">
+              Plan your {route.origin} to {route.destination} round trip
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedBlogPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 hover:bg-white/[0.07] p-5 transition-all duration-300"
+                >
+                  <h3 className="font-bold text-white text-base leading-snug mb-4">{post.title}</h3>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="inline-flex items-center gap-1.5 text-white/50">
+                      {post.readTime ? (
+                        <>
+                          <Clock className="w-3.5 h-3.5" /> {post.readTime}
+                        </>
+                      ) : null}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-amber-400 font-bold group-hover:translate-x-1 transition-transform">
+                      Read guide <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

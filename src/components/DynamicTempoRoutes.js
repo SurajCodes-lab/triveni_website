@@ -29,6 +29,7 @@ import LeadQuoteSection from '@/components/shared/LeadQuoteSection';
 import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
 import CorridorLinks from '@/components/seo/CorridorLinks';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const TypeAnimation = dynamic(
   () => import('react-type-animation').then(mod => mod.TypeAnimation),
@@ -59,6 +60,33 @@ export default function DynamicTempoRoutesClient({ data }) {
   });
   const shouldReduceMotion = useShouldReduceMotion();
 
+  // Seater rates come straight off the route's own fleet so nothing on the page can
+  // contradict the fare cards or the fare chart below.
+  const seaterRates = useMemo(() => (Array.isArray(fleet) ? fleet : [])
+    .map((v) => {
+      const seats = (v?.name || '').match(/^(\d+)/);
+      return seats && v?.outstationRate ? { seats: seats[1], rate: v.outstationRate } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => Number(a.seats) - Number(b.seats)), [fleet]);
+
+  const lowestRate = seaterRates[0]?.rate || '₹20/km';
+  const highestRate = seaterRates[seaterRates.length - 1]?.rate || '₹28/km';
+  const seaterRateSentence = seaterRates.length
+    ? seaterRates.map((s) => `${s.rate} for a ${s.seats} seater`).join(', ')
+    : '₹20/km for a 12 seater, ₹22/km for a 16 seater, ₹24/km for a 17 seater, ₹26/km for a 20 seater, ₹28/km for a 26 seater';
+  const seaterList = seaterRates.length
+    ? seaterRates.map((s) => `${s.seats}-seat ${s.rate}`).join(' · ')
+    : '12-seat ₹20/km · 16-seat ₹22/km · 17-seat ₹24/km · 20-seat ₹26/km · 26-seat ₹28/km';
+
+  // Hero CTA: pre-fill WhatsApp with the route and the seater most groups pick.
+  const heroSeater = (Array.isArray(fleet) ? fleet : []).find((v) => v?.popular)?.name
+    || (Array.isArray(fleet) ? fleet : [])[0]?.name
+    || '17 Seater Tempo Traveller';
+  const heroWhatsAppHref = `https://wa.me/917668570551?text=${encodeURIComponent(
+    `Hi, I need a ${heroSeater} from ${origin} to ${displayDestination}. Please share the fare and availability.`
+  )}`;
+
   useEffect(() => {
     setMounted(true);
 
@@ -84,7 +112,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           `Tempo Traveller from ${origin} to ${destination}`,
           `${origin} ${destination} Tempo Traveller Hire`
         ],
-        "description": `Book 12, 17, 20, 26 seater AC tempo traveller from ${origin} to ${destination}. Professional drivers, pushback seats, GPS tracking, music system. Best rates starting ₹20/km. Call +917668570551 for instant booking.`,
+        "description": `Book 12, 17, 20, 26 seater AC tempo traveller from ${origin} to ${destination}. Professional drivers, pushback seats, GPS tracking, music system. Best rates starting ${lowestRate}. Call +917668570551 for instant booking.`,
         "provider": {
           "@type": "LocalBusiness",
           "name": "Triveni Cabs",
@@ -105,13 +133,13 @@ export default function DynamicTempoRoutesClient({ data }) {
         "offers": {
           "@type": "AggregateOffer",
           "priceCurrency": "INR",
-          "lowPrice": "23",
-          "highPrice": "35",
-          "offerCount": "5",
+          "lowPrice": lowestRate.replace(/[^\d]/g, ''),
+          "highPrice": highestRate.replace(/[^\d]/g, ''),
+          "offerCount": String(seaterRates.length || 5),
           "availability": "https://schema.org/InStock",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "23-27",
+            "price": `${lowestRate.replace(/[^\d]/g, '')}-${highestRate.replace(/[^\d]/g, '')}`,
             "priceCurrency": "INR",
             "unitText": "per kilometer"
           }
@@ -119,13 +147,12 @@ export default function DynamicTempoRoutesClient({ data }) {
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": `${origin} to ${destination} Tempo Traveller Options`,
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "12 Seater Tempo Traveller" }, "price": "23", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "16 Seater Tempo Traveller" }, "price": "25", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "17 Seater Tempo Traveller" }, "price": "26", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "20 Seater Tempo Traveller" }, "price": "30", "priceCurrency": "INR" },
-            { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "26 Seater Maharaja Tempo" }, "price": "35", "priceCurrency": "INR" }
-          ]
+          "itemListElement": (Array.isArray(fleet) ? fleet : []).map((v) => ({
+            "@type": "Offer",
+            "itemOffered": { "@type": "Product", "name": v?.name },
+            "price": String(v?.outstationRate || '').replace(/[^\d]/g, ''),
+            "priceCurrency": "INR"
+          }))
         }
       },
       {
@@ -144,7 +171,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             "name": `How much does tempo traveller cost from ${origin} to ${destination}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `Tempo traveller rates from ${origin} to ${destination} start from ₹20/km for 12-seater and go up to ₹28/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking.`
+              "text": `Tempo traveller rates from ${origin} to ${destination} are charged per kilometre: ${seaterRateSentence}. The rate covers fuel, driver and AC; tolls, parking, state permits and the night driver allowance are extra. A one-way drop is billed at the same rate as a round trip.`
             }
           },
           {
@@ -152,7 +179,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             "name": `What seater options are available for ${origin} to ${destination}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats."
+              "text": `We offer ${seaterList}. All vehicles are AC equipped with pushback seats, a music system and charging points.`
             }
           },
           {
@@ -160,13 +187,13 @@ export default function DynamicTempoRoutesClient({ data }) {
             "name": `How do I book tempo traveller from ${origin} to ${destination}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Call +917668570551 or WhatsApp with your travel date, pickup location, and group size. Get instant quote and confirm with small advance payment."
+              "text": "Call +917668570551 or WhatsApp with your travel date, pickup location and group size. You get an instant quote and confirm the booking on call or WhatsApp."
             }
           }
         ]
       }
     ]
-  }), [origin, destination, routeSlug]);
+  }), [origin, destination, routeSlug, fleet, lowestRate, highestRate, seaterRates, seaterRateSentence, seaterList]);
 
   const journeyFeatures = [
     { icon: Shield, title: 'Safe Journey', subtitle: 'GPS Tracked & Insured', color: 'from-emerald-500 to-green-600' },
@@ -178,7 +205,11 @@ export default function DynamicTempoRoutesClient({ data }) {
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <article className="min-h-screen bg-white overflow-hidden" itemScope itemType="https://schema.org/TravelAction">
-      <SetStickyCta price="From ₹20/km" label="Tempo Traveller" whatsappText="Hi, I want to book a Tempo Traveller. Please share availability and fare." />
+      <SetStickyCta
+        price={`From ${lowestRate}`}
+        label="Tempo Traveller"
+        whatsappText={`Hi, I want to book a tempo traveller from ${origin} to ${displayDestination}. Please share availability and fare.`}
+      />
       {/* ============================================ */}
       {/* HERO SECTION - Ultra Premium Design */}
       {/* ============================================ */}
@@ -322,16 +353,43 @@ export default function DynamicTempoRoutesClient({ data }) {
               />
             </motion.div>
 
-            {/* Price chip — surface starting rate above the fold */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="mt-6 inline-flex items-center gap-2 bg-amber-400 text-black px-5 py-2.5 rounded-full font-bold shadow-2xl"
-            >
-              <Zap className="w-4 h-4" />
-              Starting ₹20/km · All-inclusive
-            </motion.div>
+            {/* Price + trust + compact CTAs — kept static so they paint with the hero
+                and stay tappable above the fold on a 360px screen. */}
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+                <span className="inline-flex items-center gap-2 bg-amber-400 text-black px-5 py-2.5 rounded-full font-bold shadow-2xl">
+                  <Zap className="w-4 h-4" />
+                  Starting {lowestRate} · All-inclusive
+                </span>
+                <span className="text-[11px] sm:text-xs font-semibold text-white/80 text-center leading-snug">
+                  4.9★ · Since 2015 · No hidden charges · Pay after trip
+                </span>
+              </div>
+
+              {/* Mobile-only compact CTA row; desktop keeps the full-size buttons below. */}
+              <div className="grid grid-cols-2 gap-2 w-full max-w-xs md:hidden">
+                <a
+                  href="tel:+917668570551"
+                  onClick={() => trackPhoneCall('tempo_route_hero')}
+                  className="min-h-[48px] flex items-center justify-center gap-2 rounded-xl bg-green-500 text-white font-bold text-sm shadow-lg active:scale-95 transition-transform"
+                  aria-label={`Call Triveni Cabs for a ${origin} to ${displayDestination} tempo traveller`}
+                >
+                  <Phone className="w-4 h-4" />
+                  Call
+                </a>
+                <a
+                  href={heroWhatsAppHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('tempo_route_hero')}
+                  className="min-h-[48px] flex items-center justify-center gap-2 rounded-xl bg-white text-slate-900 font-bold text-sm shadow-lg active:scale-95 transition-transform"
+                  aria-label={`WhatsApp Triveni Cabs for a ${origin} to ${displayDestination} tempo traveller`}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
           </motion.div>
 
           {/* Animated Feature Cards */}
@@ -374,7 +432,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           >
             <motion.a
               href="tel:+917668570551"
-              
+              onClick={() => trackPhoneCall('tempo_route_hero_primary')}
               whileTap={{ scale: 0.95 }}
               className="group relative bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg overflow-hidden shadow-2xl"
             >
@@ -391,10 +449,10 @@ export default function DynamicTempoRoutesClient({ data }) {
             </motion.a>
 
             <motion.a
-              href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${origin} to ${destination}. Please share rates.`}
+              href={heroWhatsAppHref}
               target="_blank"
               rel="noopener noreferrer"
-              
+              onClick={() => trackWhatsAppClick('tempo_route_hero_primary')}
               whileTap={{ scale: 0.95 }}
               className="group bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg hover:bg-white/20 hover:border-amber-400/50 transition-all duration-300 shadow-2xl"
             >
@@ -429,12 +487,12 @@ export default function DynamicTempoRoutesClient({ data }) {
           <QuickAnswer
             tone="dark"
             question={`How much does a tempo traveller from ${origin} to ${displayDestination} cost?`}
-            answer={`A tempo traveller from ${origin} to ${displayDestination} is charged per kilometre: ₹20/km for a 12 seater, ₹22/km for a 16 seater, ₹24/km for a 17 seater, ₹26/km for a 20 seater and ₹28/km for a 26 seater Maharaja edition${routeData?.distance ? `, over roughly ${routeData.distance}` : ''}${routeData?.duration ? ` and about ${routeData.duration} of driving` : ''}. Tempo travellers cost the same for a one-way drop as for a round trip, because the vehicle has to return to base either way — there is no one-way discount on tempo. Every tempo is AC with pushback seats, a music system and charging points, and the rate covers fuel and driver; tolls, parking, state permits and the night driver allowance are billed extra.`}
+            answer={`${origin} to ${displayDestination} tempo traveller hire is charged per kilometre by seater: ${seaterRateSentence}${routeData?.distance ? `, over roughly ${routeData.distance}` : ''}${routeData?.duration ? ` and about ${routeData.duration} of driving` : ''}. A tempo traveller costs the same for a one-way drop as for a round trip, because the vehicle has to return to base either way — there is no one-way discount on tempo. Every tempo is AC with pushback seats, a music system and charging points, and the rate covers fuel and driver; tolls, parking, state permits and the night driver allowance are billed extra.`}
             facts={[
               { label: 'Distance', value: routeData?.distance || 'On request' },
               { label: 'Drive time', value: routeData?.duration || 'On request' },
-              { label: 'From (12 seater)', value: '₹20/km' },
-              { label: 'Seating', value: '12 to 26 seats' },
+              { label: `From (${seaterRates[0]?.seats || 12} seater)`, value: lowestRate },
+              { label: 'Seating', value: `${seaterRates[0]?.seats || 12} to ${seaterRates[seaterRates.length - 1]?.seats || 26} seats` },
             ]}
           />
         </div>
@@ -568,13 +626,14 @@ export default function DynamicTempoRoutesClient({ data }) {
 
                 {/* Price Highlight */}
                 <div className="bg-white rounded-2xl p-6 mb-6 shadow-lg">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3">
                     <span className="text-gray-600">Starting From</span>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-black bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">₹23</span>
+                      <span className="text-4xl font-black bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">{lowestRate.replace('/km', '')}</span>
                       <span className="text-gray-500">/km</span>
                     </div>
                   </div>
+                  <p className="text-xs font-semibold text-gray-500 mb-3">4.9★ · Since 2015 · No hidden charges · Pay after trip</p>
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium border border-green-200">✓ All Inclusive</span>
                     <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium border border-blue-200">✓ No Hidden Charges</span>
@@ -585,7 +644,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                 <div className="space-y-3">
                   <motion.a
                     href="tel:+917668570551"
-                    
+                    onClick={() => trackPhoneCall('tempo_route_quote_card')}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all"
                   >
@@ -594,10 +653,10 @@ export default function DynamicTempoRoutesClient({ data }) {
                   </motion.a>
 
                   <motion.a
-                    href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${origin} to ${destination}. Please share the rates and availability.`}
+                    href={heroWhatsAppHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    
+                    onClick={() => trackWhatsAppClick('tempo_route_quote_card')}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-white text-gray-900 font-bold py-4 rounded-2xl flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all border-2 border-white/50"
                   >
@@ -771,19 +830,22 @@ export default function DynamicTempoRoutesClient({ data }) {
               </div>
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
                 <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Rate</p>
-                <p className="text-xl font-black text-green-700">₹20/km</p>
+                <p className="text-xl font-black text-green-700">{lowestRate}</p>
               </div>
               <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
                 <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Capacity</p>
-                <p className="text-xl font-black text-slate-900">12-26 Seat</p>
+                <p className="text-xl font-black text-slate-900">
+                  {seaterRates[0]?.seats || 12}-{seaterRates[seaterRates.length - 1]?.seats || 26} Seat
+                </p>
               </div>
             </div>
             <p className="faq-answer speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
-              Tempo traveller hire from <strong>{origin} to {destination}</strong> starts at <strong>₹20/km</strong> for a 12-seater AC tempo.
+              Tempo traveller hire from <strong>{origin} to {destination}</strong> starts at <strong>{lowestRate}</strong> for a {seaterRates[0]?.seats || 12} seater AC tempo.
               {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
-              Triveni Cabs offers 12, 16, 17, 20, and 26 seater Maharaja tempo travellers with pushback seats,
-              AC, music system, charging points, and ample luggage space. Perfect for family trips, pilgrimages,
-              wedding groups, and corporate outings. Book by calling <strong>+91-7668570551</strong> or WhatsApp.
+              Rates are per kilometre and set by seater — <strong>{seaterList}</strong> — and a one-way drop is billed at the
+              same rate as a round trip. Every tempo has pushback seats, AC, a music system, charging points and ample
+              luggage space. Perfect for family trips, pilgrimages, wedding groups and corporate outings.
+              Book by calling <strong>+91-7668570551</strong> or WhatsApp.
               4.9★ rated with 2,500+ group trips completed.
             </p>
             {uniqueIntro && (
@@ -1190,19 +1252,19 @@ export default function DynamicTempoRoutesClient({ data }) {
             {[
               {
                 question: `How much does tempo traveller cost from ${origin} to ${displayDestination}?`,
-                answer: `Tempo traveller rates from ${origin} to ${displayDestination} start from ₹20/km for 12-seater and go up to ₹28/km for 26-seater Maharaja Edition. Prices include fuel, driver, tolls, and parking. Call +917668570551 for instant quote.`
+                answer: `Tempo traveller rates from ${origin} to ${displayDestination} are set per kilometre by seater: ${seaterRateSentence}. The rate covers fuel, driver and AC; tolls, parking, state permits and the night driver allowance are billed extra. Call +917668570551 for an instant quote.`
               },
               {
                 question: `What seater options are available for ${origin} to ${displayDestination}?`,
-                answer: `We offer 12-seater, 16-seater, 17-seater (most popular), 20-seater with LED TV, and 26-seater Maharaja Edition. All vehicles are AC equipped with pushback seats, music system, and charging points.`
+                answer: `We offer ${seaterList}. The 17 seater is the one most groups pick. All vehicles are AC with pushback seats, music system and charging points.`
               },
               {
                 question: `How do I book tempo traveller from ${origin} to ${displayDestination}?`,
-                answer: `Simply call +917668570551 or WhatsApp with your travel date, pickup location, and group size. You'll receive an instant quote with vehicle options. Confirm with a small advance and get driver details via SMS/WhatsApp.`
+                answer: `Simply call +917668570551 or WhatsApp with your travel date, pickup location and group size. You'll receive an instant quote with vehicle options, and driver details reach you on SMS or WhatsApp before the trip.`
               },
               {
                 question: `Is one-way booking available from ${origin} to ${displayDestination}?`,
-                answer: `Yes! We provide both one-way drop and round-trip services. One-way is charged per kilometer. Round-trip includes driver accommodation for overnight stays. Book in advance for best rates.`
+                answer: `Yes, we run both one-way drops and round trips. A tempo traveller is billed at the same per-kilometre rate either way, because the vehicle still has to return to base — there is no one-way discount on tempo. Round trips over more than a day also include the driver's night allowance.`
               },
               {
                 question: `What facilities are included in the tempo traveller?`,
@@ -1524,7 +1586,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             >
               <div className="text-2xl mb-2">🚌</div>
               <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors">{origin} to {displayDestination} Bus</h3>
-              <p className="text-sm text-gray-500 mt-1">22-56 seater luxury buses from ₹35/km</p>
+              <p className="text-sm text-gray-500 mt-1">22-56 seater luxury buses from ₹30/km</p>
             </Link>
             <Link
               href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}

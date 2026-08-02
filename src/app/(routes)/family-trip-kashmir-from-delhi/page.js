@@ -1,5 +1,6 @@
 import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
 const SLUG = "family-trip-kashmir-from-delhi";
@@ -40,6 +41,20 @@ export default function FamilyTripPage() {
       {schemaGraph.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
+      <div className="bg-amber-950 px-4 pt-5 pb-1">
+        <QuickAnswer
+          tone="dark"
+          className="mx-auto max-w-4xl"
+          question={'How much does a family trip to Kashmir from Delhi cost?'}
+          answer={'A family trip to Kashmir runs 5-7 days (Flight + 300 km by road). Triveni Cabs prices it from Rs 22,000 in a sedan, Rs 28,000 in a Toyota Innova Crysta, and Rs 38,000 in a Tempo Traveller, sized for a family of 4-6 members. The best season to go is April to October.'}
+          facts={[
+            { label: 'Distance', value: 'Flight + 300 km by road' },
+            { label: 'Duration', value: '5-7 Days' },
+            { label: 'Sedan', value: 'Rs 22,000' },
+            { label: 'Innova Crysta', value: 'Rs 28,000' },
+          ]}
+        />
+      </div>
       <FamilyTripClient data={data} />
     </>
   );

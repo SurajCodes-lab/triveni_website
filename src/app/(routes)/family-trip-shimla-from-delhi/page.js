@@ -1,5 +1,6 @@
 import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 
 const SLUG = "family-trip-shimla-from-delhi";
@@ -53,6 +54,20 @@ export default function FamilyTripPage() {
       {schemaGraph.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
+      <div className="bg-amber-950 px-4 pt-5 pb-1">
+        <QuickAnswer
+          tone="dark"
+          className="mx-auto max-w-4xl"
+          question={'How much does a family trip to Shimla from Delhi cost?'}
+          answer={'A family trip to Shimla runs 3-4 days and covers 350 km from Delhi. Triveni Cabs prices it from Rs 8,500 in a sedan, Rs 11,500 in a Toyota Innova Crysta, and Rs 16,000 in a Tempo Traveller, sized for a family of 4-6 members. The best season to go is March to June, October to December.'}
+          facts={[
+            { label: 'Distance', value: '350 km' },
+            { label: 'Duration', value: '3-4 Days' },
+            { label: 'Sedan', value: 'Rs 8,500' },
+            { label: 'Innova Crysta', value: 'Rs 11,500' },
+          ]}
+        />
+      </div>
       <FamilyTripClient data={data} />
     </>
   );

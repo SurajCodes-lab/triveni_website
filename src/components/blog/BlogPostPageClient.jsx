@@ -10,6 +10,11 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { generateBlogFAQs } from '@/lib/seo/faq-generator';
 import { PopularRoutes, QuickLinksGrid } from '@/components/seo/RelatedContent';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
+import InlineCTA from '@/components/seo/InlineCTA';
+import { Car, MapPin, Clock, Phone, ArrowRight, WhatsAppIcon } from '@/components/ui/icons';
+
+const PHONE = '7668570551';
+const WA_NUMBER = '917668570551';
 
 // Loading placeholder for blog layouts
 const LayoutLoading = () => (
@@ -100,7 +105,111 @@ function generateBreadcrumbSchema(post) {
   };
 }
 
-export default function BlogPostPageClient({ post }) {
+// Route-aware booking box. Everything it shows is resolved server-side in
+// page.js (buildTripCTA) — fares come from oneWayCabData or are omitted.
+function BookThisTripBox({ trip }) {
+  const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(trip.waMessage)}`;
+  const showRouteLink = trip.routeHref && trip.routeHref !== trip.ctaHref;
+
+  return (
+    <section
+      className="my-10 px-4"
+      aria-label={`Book a cab to ${trip.destination}`}
+    >
+      <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl bg-slate-950 text-white shadow-xl ring-1 ring-white/10">
+        <div className="relative p-6 sm:p-8 md:p-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 -right-20 h-64 w-64 rounded-full bg-[#FACF2D]/20 blur-3xl"
+          />
+          <div className="relative grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+            <div className="md:col-span-3">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] mb-3">
+                Triveni Cabs · Since 2015
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-black leading-tight m-0">
+                {trip.heading}
+              </h2>
+              <p className="mt-3 text-slate-300 text-[15px] sm:text-base leading-relaxed m-0">
+                {trip.blurb}
+              </p>
+
+              {/* Fare is only ever present when page.js matched a real
+                  Delhi-origin route in oneWayCabData. */}
+              {trip.fare && (
+                <p className="mt-5 text-lg sm:text-xl font-bold text-white m-0">
+                  {`Cab from Delhi to ${trip.destination}`}
+                  <span className="text-[#FACF2D]"> from {trip.fare}</span>
+                  <span className="block text-sm font-medium text-slate-400 mt-1">
+                    Sedan, one-way, all-inclusive. SUV and Tempo Traveller also available.
+                  </span>
+                </p>
+              )}
+
+              <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold">
+                {trip.distance && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-slate-200">
+                    <MapPin className="w-3.5 h-3.5 text-[#FACF2D]" />
+                    {trip.distance}
+                  </span>
+                )}
+                {trip.duration && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-slate-200">
+                    <Clock className="w-3.5 h-3.5 text-[#FACF2D]" />
+                    {trip.duration}
+                  </span>
+                )}
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-slate-200">
+                  <Car className="w-3.5 h-3.5 text-[#FACF2D]" />
+                  Sedan · SUV · Tempo
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-slate-200">
+                  No advance deposit
+                </span>
+              </div>
+            </div>
+
+            <div className="md:col-span-2 flex flex-col gap-3">
+              <Link
+                href={trip.ctaHref}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-5 py-4 text-base font-extrabold text-slate-950 shadow-lg transition hover:bg-yellow-300"
+              >
+                {trip.ctaText}
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-400/60 px-5 py-4 text-base font-extrabold text-emerald-300 transition hover:bg-emerald-400/10"
+              >
+                <WhatsAppIcon className="w-5 h-5" />
+                WhatsApp for a Quote
+              </a>
+              <a
+                href={`tel:+91${PHONE}`}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-bold text-slate-200 transition hover:bg-white/5"
+              >
+                <Phone className="w-4 h-4" />
+                Call {PHONE}
+              </a>
+              {showRouteLink && (
+                <Link
+                  href={trip.routeHref}
+                  className="text-center text-xs font-semibold text-slate-400 underline underline-offset-4 transition hover:text-[#FACF2D]"
+                >
+                  See the full Delhi to {trip.destination} fare breakdown
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function BlogPostPageClient({ post, tripCTA = null }) {
   // Safety check
   if (!post) {
     return (
@@ -277,6 +386,23 @@ export default function BlogPostPageClient({ post }) {
 
       <LayoutComponent post={post} relatedLinks={relatedLinks} />
 
+      {/* Conversion unit, prime slot — the reader has just finished the article.
+          Route-aware box when we resolved a destination, generic InlineCTA
+          otherwise, so every post gets exactly one booking unit here. */}
+      {tripCTA ? (
+        <BookThisTripBox trip={tripCTA} />
+      ) : (
+        <div className="max-w-5xl mx-auto px-4">
+          <InlineCTA
+            theme="blog"
+            headline="Planning This Trip? We Drive It Daily."
+            sub="Sedan ₹11/km · SUV ₹15/km · Tempo Traveller from ₹20/km. Fixed all-inclusive fares, no advance deposit."
+            context={`blog_${post.slug}`}
+            waMessage={`Hi Triveni Cabs, I read "${post.title}" on your blog and want to book a cab. Please share fares and availability.`}
+          />
+        </div>
+      )}
+
       {/* Related Service Pages — SEO internal linking based on blog category */}
       <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
         <div className="max-w-5xl mx-auto">
@@ -356,6 +482,25 @@ export default function BlogPostPageClient({ post }) {
 
       {/* SEO: Quick Links Grid */}
       {moneyLinks.length > 0 && <QuickLinksGrid title="Quick Links" links={moneyLinks} />}
+
+      {/* Second conversion unit — catches readers who scrolled past the box
+          above into the FAQ and route links. Skipped when the box above was
+          already the generic InlineCTA, to avoid showing the same card twice. */}
+      {tripCTA && (
+        <div className="max-w-5xl mx-auto px-4">
+          <InlineCTA
+            theme="blog"
+            variant="banner"
+            className="my-10"
+            headline={`Still deciding? Get a ${tripCTA.destination} quote in 2 minutes.`}
+            sub={tripCTA.fare
+              ? `${tripCTA.fromDelhi ? `Delhi to ${tripCTA.destination}` : tripCTA.destination} from ${tripCTA.fare} — all-inclusive, no advance deposit.`
+              : 'Fixed all-inclusive fares, vetted drivers, 24×7 support.'}
+            context={`blog_${post.slug}`}
+            waMessage={tripCTA.waMessage}
+          />
+        </div>
+      )}
 
       {/* Related Posts */}
       <div className="max-w-5xl mx-auto px-4">

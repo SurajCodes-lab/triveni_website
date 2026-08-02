@@ -1,5 +1,11 @@
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/utilis/blog';
+import { getOneWayRoute, getAllOneWayRouteSlugs } from '@/utilis/oneWayCabData';
+import { getAllTours, getCitiesWithTours } from '@/utilis/sightseeingData';
+import { getAllTourSlugs as getReligiousTourSlugs } from '@/utilis/religiousTourData';
+import { getAllTourSlugs as getGuidedTourSlugs } from '@/utilis/toursWithGuideData';
+import { tempoCities, tempoRoutes } from '@/utilis/tempoTravellerData';
+import { cities as hubCities, tourDetails } from '@/utilis/data';
 import BlogPostPageClient from '@/components/blog/BlogPostPageClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getSpeakableSchema, getTodayDate, getCityPlaceSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
@@ -141,6 +147,189 @@ function generateBreadcrumbSchema(post) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// "Book this trip" conversion box
+//
+// Blog posts are the site's biggest content surface but had no route-aware
+// booking affordance — only a generic WhatsApp button. This resolves a real
+// Delhi-origin one-way route for the post so the box can quote a genuine fare.
+// Fares are read from oneWayCabData only; a post with no matching route still
+// gets the box, just without a price. Nothing here invents a number.
+// ---------------------------------------------------------------------------
+
+const DELHI_ALIASES = new Set(['delhi', 'new-delhi', 'delhi-ncr', 'ncr']);
+
+function citySlug(value) {
+  return String(value || '')
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+// Destination names a human actually wrote into the post data.
+function namedDestinations(post) {
+  const names = [];
+  if (post.city) names.push(String(post.city));
+  if (Array.isArray(post.relatedDestinations)) {
+    post.relatedDestinations.forEach((d) => {
+      if (d && d.name) names.push(String(d.name));
+    });
+  }
+  return names;
+}
+
+// Leading segments of a "delhi-to-<city>-<topic>" slug. Good enough to probe
+// the route table with, never good enough to print — "manali tempo traveller"
+// is a valid lookup guess but not a place name.
+function slugDestinationGuesses(post) {
+  const match = String(post.slug || '').match(/^delhi-to-([a-z0-9-]+)/);
+  if (!match) return [];
+  const parts = match[1].split('-');
+  const guesses = [];
+  for (let n = Math.min(parts.length, 3); n >= 1; n--) {
+    guesses.push(parts.slice(0, n).join('-'));
+  }
+  return guesses;
+}
+
+function titleCase(value) {
+  return String(value)
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+// primaryCTA URLs sat unused in the post data until now, so a handful point at
+// dynamic slugs that do not exist (dynamicParams=false makes those a hard 404).
+// Check the ones sitting on a dynamic segment before linking them; unlisted
+// prefixes are static route dirs and pass through.
+const DYNAMIC_ROUTE_SLUGS = (() => {
+  const tempo = new Set(Object.values(tempoCities).map((c) => c.slug));
+  Object.entries(tempoRoutes).forEach(([origin, destinations]) => {
+    destinations.forEach((d) => {
+      tempo.add(`${origin.toLowerCase().replace(/\s+/g, '-')}-to-${d.name.toLowerCase().replace(/\s+/g, '-')}`);
+    });
+  });
+  return {
+    'sightseeing': new Set([...getAllTours().map((t) => t.slug), ...getCitiesWithTours()]),
+    'one-way-cab': new Set(getAllOneWayRouteSlugs()),
+    'religious-tours': new Set(getReligiousTourSlugs()),
+    'tours-with-guide': new Set(getGuidedTourSlugs()),
+    'tour-package': new Set(Object.keys(tourDetails)),
+    'tempo-traveller': tempo,
+    // /airport-service/<city> is shadowed by static child dirs that carry no
+    // page of their own, so it is never safe to link from here.
+    'airport-service': new Set(),
+  };
+})();
+
+const CITY_HUB_SLUGS = new Set(
+  (Array.isArray(hubCities) ? hubCities : [])
+    .filter((c) => c && c.name)
+    .map((c) => citySlug(c.name))
+);
+
+function isLinkableHref(href) {
+  if (typeof href !== 'string' || !href.startsWith('/')) return false;
+  const segments = href.split('?')[0].split('#')[0].split('/').filter(Boolean);
+  if (segments.length === 0) return false;
+  if (segments.length === 1) {
+    // Either a static top-level page or a /<city> hub — only the latter can
+    // be wrong, and it is wrong exactly when the city has no hub entry.
+    return !CITY_HUB_SLUGS.size || CITY_HUB_SLUGS.has(segments[0]) || !isProbablyCityHub(segments[0]);
+  }
+  const known = DYNAMIC_ROUTE_SLUGS[segments[0]];
+  if (!known) return true;
+  return known.has(segments[1]);
+}
+
+// A bare "/foo" is meant as a city hub only when the gazetteer knows it as a
+// place; otherwise it is one of the many static marketing pages.
+function isProbablyCityHub(segment) {
+  return Boolean(getCityPlaceSchema(segment));
+}
+
+// Attraction / timings posts are read by someone planning a visit, not a
+// transfer — the box leads with "getting there" rather than "book this trip".
+const ATTRACTION_HINT = /\b(fort|palace|temple|mandir|mosque|masjid|gurudwara|minar|mahal|tomb|museum|ghat|sahib|timings?|entry fee|opening hours|how to reach|best time to visit|places to visit|things to do)\b/i;
+
+function isAttractionPost(post) {
+  const haystack = [post.title, post.metaTitle, post.category, ...(post.tags || [])]
+    .filter(Boolean)
+    .join(' ');
+  return ATTRACTION_HINT.test(haystack);
+}
+
+function buildTripCTA(post) {
+  const displayNames = namedDestinations(post);
+
+  // Probe the one-way table: human-written names first, slug guesses after.
+  let route = null;
+  let routeSlug = null;
+  for (const candidate of [...displayNames, ...slugDestinationGuesses(post)]) {
+    const slug = citySlug(candidate);
+    if (!slug || DELHI_ALIASES.has(slug)) continue;
+    const found = getOneWayRoute(`delhi-to-${slug}`);
+    if (found) {
+      route = found;
+      routeSlug = `delhi-to-${slug}`;
+      break;
+    }
+  }
+
+  // Without a route, only name a destination the city gazetteer recognises —
+  // otherwise entries like "Delhi Wedding Cars" become a "trip destination".
+  let destination = route ? route.to : null;
+  if (!destination) {
+    const known = displayNames.find((n) => getCityPlaceSchema(citySlug(n)));
+    if (known) destination = titleCase(known.trim());
+  }
+  if (!destination) return null;
+
+  const fromDelhi = !DELHI_ALIASES.has(citySlug(destination));
+  const attraction = isAttractionPost(post);
+  const routeHref = routeSlug ? `/one-way-cab/${routeSlug}` : null;
+  const postHref = post.primaryCTA?.url || post.primaryCTA?.link;
+  const ctaHref = (isLinkableHref(postHref) && postHref) || routeHref || '/one-way-cab';
+  // Only keep the post's own CTA wording if we are honouring its link.
+  const ctaText =
+    (ctaHref === postHref && post.primaryCTA?.text) ||
+    (fromDelhi ? `Book Delhi to ${destination} Cab` : `Book a ${destination} Cab`);
+
+  let heading;
+  let blurb;
+  if (attraction && fromDelhi) {
+    heading = `Getting to ${destination} by Cab`;
+    blurb = `Planning the visit is the easy part — getting there is what we do. We run the Delhi to ${destination} road every week, with vetted drivers, fixed all-inclusive fares and no advance deposit.`;
+  } else if (attraction) {
+    heading = `Getting Around ${destination} by Cab`;
+    blurb = `Planning the visit is the easy part — getting around is what we do. Our ${destination} drivers know every gate, parking bay and shortcut, on a fixed all-inclusive fare with no advance deposit.`;
+  } else if (fromDelhi) {
+    heading = `Book Your ${destination} Trip`;
+    blurb = `We drive Delhi to ${destination} every week. Fixed all-inclusive fares, vetted drivers and 24×7 support — tell us your dates and we will confirm in minutes.`;
+  } else {
+    heading = `Book Your ${destination} Cab`;
+    blurb = `We run ${destination} every day. Fixed all-inclusive fares, vetted drivers and 24×7 support — tell us your dates and we will confirm in minutes.`;
+  }
+
+  return {
+    destination,
+    fromDelhi,
+    fare: route?.oneWayFares?.sedan || null,
+    distance: route?.distance || null,
+    duration: route?.time || null,
+    routeHref,
+    ctaHref,
+    ctaText,
+    heading,
+    blurb,
+    waMessage: `Hi Triveni Cabs, I just read "${post.title}" on your blog and want to book a cab${fromDelhi ? ` from Delhi to ${destination}` : ` in ${destination}`}. Please share fares and availability.`,
+  };
+}
+
 // Generate static params for all blog posts
 export async function generateStaticParams() {
   return blogPosts
@@ -197,6 +386,9 @@ export default async function BlogPostPage({ params }) {
   const breadcrumbSchema = generateBreadcrumbSchema(post);
   const howToSchema = isHowToPost(post) ? generateHowToSchema(post) : null;
   const faqSchema = post.faqs?.length > 0 ? generateFaqSchema(post) : null;
+  // Route-aware booking box — resolved server-side so the fare comes straight
+  // from oneWayCabData and the client only receives a few plain strings.
+  const tripCTA = buildTripCTA(post);
 
   return (
     <>
@@ -226,7 +418,7 @@ export default async function BlogPostPage({ params }) {
       )}
       <AEOHead pageType="tour" data={{ url: `/blog/${slug}`, title: post.title || '' }} />
 
-      <BlogPostPageClient post={post} />
+      <BlogPostPageClient post={post} tripCTA={tripCTA} />
     </>
   );
 }

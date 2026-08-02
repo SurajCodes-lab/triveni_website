@@ -25,6 +25,29 @@ REMOTE="/tmp/${TARBALL_NAME}"
 LOCAL_BYTES=$(stat -c%s "$TARBALL_LOCAL")
 echo "=== [0/8] $TARBALL_NAME ($LOCAL_BYTES bytes), concurrency=$CONCURRENCY ==="
 
+# --- Content sanity gate (added after 2 Aug 2026 incident: a dev process ---
+# --- clobbered .next mid-pack; the archive was gzip-valid but missing     ---
+# --- most app chunks -> sitewide client-side exception after overlay.     ---
+echo "=== [0b/8] Tarball content sanity ==="
+# List ONCE into a temp file. Never pipe `tar tzf` into `grep -q` here: with
+# pipefail, grep's early exit SIGPIPEs tar and the pipeline "fails" on success.
+TB_LIST=$(mktemp)
+tar tzf "$TARBALL_LOCAL" > "$TB_LIST"
+if ! grep -q "^\.next/BUILD_ID$" "$TB_LIST"; then
+  echo "ERROR: tarball has no .next/BUILD_ID — .next was incomplete when packed. ABORT." >&2; rm -f "$TB_LIST"; exit 1
+fi
+# Compare .js FILES only (raw entry counts include directories and .map files).
+TB_CHUNKS=$(grep -c "^\.next/static/chunks/app/.*\.js$" "$TB_LIST")
+LOCAL_CHUNKS=$(find .next/static/chunks/app -type f -name '*.js' 2>/dev/null | wc -l)
+rm -f "$TB_LIST"
+echo "  app .js chunks: tarball=$TB_CHUNKS local=$LOCAL_CHUNKS"
+if [ "$TB_CHUNKS" -lt 50 ]; then
+  echo "ERROR: tarball contains only $TB_CHUNKS app chunks (healthy build has hundreds). ABORT." >&2; exit 1
+fi
+if [ -f .next/BUILD_ID ] && [ "$TB_CHUNKS" -ne "$LOCAL_CHUNKS" ]; then
+  echo "ERROR: tarball app-chunk count ($TB_CHUNKS) != local .next ($LOCAL_CHUNKS) — packed during a build/dev run? ABORT." >&2; exit 1
+fi
+
 CHUNK_DIR="/tmp/triveni-code-chunks-${TIMESTAMP}"
 mkdir -p "$CHUNK_DIR"
 echo "=== [1/8] Split into 10 chunks ==="
@@ -103,6 +126,20 @@ if [ "$H" != "200" ] || [ "$I" != "200" ]; then
   echo "!!! VERIFICATION FAILED — roll back: ssh -i \"$KEY\" $HOST 'rm -rf $APP_DIR && mv $BACKUP_DIR $APP_DIR && pm2 restart triveni'"
   exit 1
 fi
+# --- Chunk-integrity healthcheck (2 Aug 2026 incident): HTML 200 does NOT ---
+# --- prove the page works — every JS chunk the homepage references must   ---
+# --- itself load, or browsers throw a sitewide client-side exception.     ---
+echo "  chunk integrity:"
+CHUNK_FAILS=0
+for c in $(curl -s "$HOMEPAGE" | grep -o "/_next/static/[a-zA-Z0-9/._-]*\.js" | sort -u | head -40); do
+  CC=$(curl -s -o /dev/null -w "%{http_code}" "https://www.trivenicabs.in$c")
+  if [ "$CC" != "200" ]; then echo "    MISSING CHUNK ($CC): $c"; CHUNK_FAILS=1; fi
+done
+if [ "$CHUNK_FAILS" -ne 0 ]; then
+  echo "!!! CHUNK VERIFICATION FAILED — roll back: ssh -i \"$KEY\" $HOST 'rm -rf $APP_DIR && mv $BACKUP_DIR $APP_DIR && pm2 restart triveni'"
+  exit 1
+fi
+echo "    all homepage chunks 200"
 
 echo "=== [7/8] Cleanup local chunks + prune old server backups (keep 3 newest) ==="
 rm -rf "$CHUNK_DIR"

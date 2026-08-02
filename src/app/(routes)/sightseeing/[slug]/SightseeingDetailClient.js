@@ -48,6 +48,7 @@ import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
 import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
 
 // SEO Components
+import QuickAnswer from '@/components/seo/QuickAnswer';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { RelatedTours, CrossServiceLinks } from '@/components/seo/RelatedContent';
@@ -56,7 +57,7 @@ import { getRelatedToursByCity, getNearbyDestinations, getRelatedContent } from 
 // May 2026: real reviews + urgency signals from sightseeingEnrichment
 import { getReviews as getSightseeingReviewsForSlug, getReviewCount as getSightseeingReviewCountForSlug, getUrgencySignals as getSightseeingUrgency } from '@/utilis/sightseeingEnrichment';
 
-export default function SightseeingDetailClient({ tour }) {
+export default function SightseeingDetailClient({ tour, cityLabel = null }) {
   const [activeTab, setActiveTab] = useState('overview');
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [expandedSection, setExpandedSection] = useState(null);
@@ -66,6 +67,50 @@ export default function SightseeingDetailClient({ tour }) {
   const realReviews = getSightseeingReviewsForSlug(tour.slug);
   const realReviewCount = getSightseeingReviewCountForSlug(tour.slug);
   const urgency = getSightseeingUrgency(tour.slug);
+
+  // --- Quick Answer (AEO/GEO) — fact-first summary built only from tour data ---
+  // cityLabel comes from the sightseeingData grouping; tourCity is a first-word
+  // guess off the tour name and gets it wrong for names like "Amber Fort Tour".
+  const pickupCity = cityLabel || tourCity;
+  const fares = [tour.price?.sedan, tour.price?.suv, tour.price?.tempoTraveller, tour.price?.carRental].filter(Boolean);
+  const fromFare = fares.length ? Math.min(...fares) : null;
+  // Highlights read "Name - description", but some entries are plain selling
+  // points ("Golden hour photography paradise"). Prefer the "Name - …" form so
+  // we quote places, and drop entries already covered by a longer one
+  // ("City Palace" under "Hawa Mahal & City Palace").
+  const rawHighlights = (tour.highlights || []).map(String);
+  const structuredHighlights = rawHighlights.filter((h) => h.includes(' - '));
+  const topSpots = (structuredHighlights.length ? structuredHighlights : rawHighlights)
+    .map((h) => h.split(' - ')[0].trim())
+    .filter(Boolean)
+    .reduce((acc, spot) => {
+      const lower = spot.toLowerCase();
+      if (acc.some((s) => s.toLowerCase().includes(lower) || lower.includes(s.toLowerCase()))) return acc;
+      acc.push(spot);
+      return acc;
+    }, [])
+    .slice(0, 4);
+  const fleetLine = [
+    tour.price?.sedan && `₹${tour.price.sedan.toLocaleString()} sedan`,
+    tour.price?.suv && `₹${tour.price.suv.toLocaleString()} SUV`,
+    tour.price?.tempoTraveller && `₹${tour.price.tempoTraveller.toLocaleString()} Tempo Traveller`
+  ].filter(Boolean).join(', ');
+  // Durations are free text ("8-10 hours", "3 Days / 2 Nights", "Half day"),
+  // so keep the sentence article-free rather than gluing "a" in front.
+  const durationPhrase = /^half day$/i.test(tour.duration || '') ? 'half a day' : tour.duration;
+  const quickAnswerText = [
+    `The ${tour.name} is a private-cab sightseeing tour that takes ${durationPhrase}${fromFare ? ` and starts at ₹${fromFare.toLocaleString()}` : ''}${fleetLine ? ` (${fleetLine})` : ''}.`,
+    topSpots.length ? ` It covers ${topSpots.join(', ')}${rawHighlights.length > topSpots.length ? ' and more' : ''}.` : '',
+    ` The fare covers the vehicle, fuel, tolls, parking and an experienced driver, with free pickup from your ${pickupCity} hotel, home or station. Book on +91-7668570551 or WhatsApp.`
+  ].join('');
+  const quickAnswerFacts = [
+    { label: 'Duration', value: tour.duration },
+    fromFare ? { label: 'Starts from', value: `₹${fromFare.toLocaleString()}` } : null,
+    { label: 'Pickup', value: `Free ${pickupCity} pickup` },
+    tour.reviews?.averageRating
+      ? { label: 'Rating', value: `${tour.reviews.averageRating}★` }
+      : { label: 'Stops covered', value: `${(tour.highlights || []).length}+` }
+  ].filter(Boolean);
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: '🗺️' },
@@ -307,6 +352,19 @@ export default function SightseeingDetailClient({ tour }) {
         </div>
       </div>
 
+      {/* === QUICK ANSWER (AEO/GEO) — fact-first, kept high on the page === */}
+      <section className="bg-slate-950 px-4 pt-6 pb-2">
+        <div className="max-w-4xl mx-auto rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10 p-1.5">
+          <QuickAnswer
+            question={`What does the ${tour.name} include and what does it cost?`}
+            answer={quickAnswerText}
+            facts={quickAnswerFacts}
+            tone="dark"
+            className="border-emerald-500/20"
+          />
+        </div>
+      </section>
+
       {/* Mobile-only Quick Quote Form — fills the lg-sidebar gap */}
       <section className="lg:hidden bg-slate-950 border-b border-emerald-500/20 px-4 py-6">
         <div className="rounded-2xl bg-white/5 backdrop-blur-xl p-5 shadow-2xl border border-emerald-500/25">
@@ -321,12 +379,12 @@ export default function SightseeingDetailClient({ tour }) {
       {/* Social Proof Strip */}
       <SocialProofStrip theme="dark" />
 
-      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) === */}
+      {/* === AT-A-GLANCE (deeper detail; the fact-first Quick Answer sits above) === */}
       <section className="py-8 px-4 bg-slate-900">
         <div className="max-w-4xl mx-auto">
           <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-emerald-500/20" data-snippet-type="direct-answer">
             <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
-              {tour.name} — Quick Summary
+              {tour.name} — At a Glance
             </h2>
             <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
@@ -343,17 +401,16 @@ export default function SightseeingDetailClient({ tour }) {
               </div>
               <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
                 <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Rating</p>
-                <p className="text-xl font-black text-emerald-400">4.9★</p>
+                <p className="text-xl font-black text-emerald-400">{tour.reviews?.averageRating || 4.8}★</p>
               </div>
             </div>
             <p className="faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
-              The <strong className="text-white">{tour.name}</strong> is a {tour.duration} guided experience starting from
-              <strong className="text-emerald-400"> ₹{tour.price?.sedan?.toLocaleString()}</strong> (AC sedan).
-              {tour.highlights?.length > 0 && ` Visit ${tour.highlights.slice(0, 4).join(', ')} and more.`}
-              {tour.inclusions?.length > 0 && ` Includes ${tour.inclusions.slice(0, 3).join(', ').toLowerCase()}.`}
-              {tour.bestTimeToVisit && ` Best time: ${tour.bestTimeToVisit}.`}
-              {' '}All tours include AC vehicle, experienced driver, and flexible timing.
-              Book by calling <strong className="text-white">+91-7668570551</strong> or WhatsApp for instant confirmation.
+              The <strong className="text-white">{tour.name}</strong> follows a fixed itinerary over {durationPhrase} with door-to-door AC transport.
+              {topSpots.length > 0 && ` The route takes in ${topSpots.join(', ')}.`}
+              {tour.inclusions?.length > 0 && ` Your fare includes ${tour.inclusions.slice(0, 3).join(', ').toLowerCase()}.`}
+              {tour.bestTimeToVisit && ` Best time to travel: ${tour.bestTimeToVisit}.`}
+              {tour.groupSize && ` Suitable for ${tour.groupSize}.`}
+              {' '}Timings stay flexible — tell your driver where you want to linger.
             </p>
           </div>
         </div>

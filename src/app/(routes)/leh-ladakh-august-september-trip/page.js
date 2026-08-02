@@ -1,5 +1,6 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { Hourglass } from '@/components/ui/icons';
 
 const festival = getFestivalBySlug('leh-ladakh-august-september-trip');
 
@@ -29,11 +30,29 @@ export default function LehLadakhAugustSeptemberTripPage() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Leh Ladakh August September Trip", "item": "https://www.trivenicabs.in/leh-ladakh-august-september-trip" }] };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": (festival.faqs || []).map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) };
 
+  // Season banner: shows only while the window below is still ahead of us.
+  // Evaluated per render; `revalidate = 3600` regenerates the static page hourly,
+  // so the banner drops itself within an hour of the window closing.
+  const now = new Date();
+  const seasonBanner = [
+    { end: '2026-09-30T23:59:59+05:30', head: 'Leh-Ladakh season, August to September 2026:', body: 'the high passes close around late September into October once snow settles - after mid-September you are gambling on the weather.' },
+  ].find((w) => now <= new Date(w.end));
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {seasonBanner && (
+        <div className="border-b border-amber-500/40 bg-amber-400 text-slate-900">
+          <div className="mx-auto flex max-w-5xl items-start justify-center gap-2 px-4 py-2.5 sm:items-center">
+            <Hourglass className="mt-[3px] h-4 w-4 shrink-0 sm:mt-0" aria-hidden="true" />
+            <p className="text-[0.78rem] font-semibold leading-snug sm:text-center sm:text-sm">
+              <span className="font-black">{seasonBanner.head}</span> {seasonBanner.body}
+            </p>
+          </div>
+        </div>
+      )}
       <FestivalTripClient festival={festival} />
     </>
   );
