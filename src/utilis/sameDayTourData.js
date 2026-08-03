@@ -3,6 +3,7 @@
 export const sameDayTours = {
   "same-day-agra-tour-from-jaipur": {
     slug: "same-day-agra-tour-from-jaipur",
+    heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     title: "Same Day Agra Tour from Jaipur",
     h1: "Same Day Agra Tour from Jaipur",
     origin: "Jaipur",
@@ -26,10 +27,10 @@ export const sameDayTours = {
       { time: "8:00 PM", activity: "Drop at Jaipur hotel", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Taj Mahal", desc: "UNESCO World Heritage Site and one of the Seven Wonders. Built by Shah Jahan in memory of Mumtaz Mahal." },
-      { name: "Agra Fort", desc: "Massive red sandstone fort with stunning Mughal architecture. Houses Diwan-i-Am, Diwan-i-Khas, and Sheesh Mahal." },
-      { name: "Itimad-ud-Daulah (Baby Taj)", desc: "Exquisite marble tomb with intricate inlay work that inspired the design of the Taj Mahal." },
-      { name: "Mehtab Bagh", desc: "Beautiful garden across the Yamuna offering the best panoramic views of the Taj Mahal." }
+      { name: "Taj Mahal", desc: "UNESCO World Heritage Site and one of the Seven Wonders. Built by Shah Jahan in memory of Mumtaz Mahal.", img: "/images/sightseeing/Agra/Taj_mahal.jpg" },
+      { name: "Agra Fort", desc: "Massive red sandstone fort with stunning Mughal architecture. Houses Diwan-i-Am, Diwan-i-Khas, and Sheesh Mahal.", img: "/images/sightseeing/Agra/agra_fort.jpg" },
+      { name: "Itimad-ud-Daulah (Baby Taj)", desc: "Exquisite marble tomb with intricate inlay work that inspired the design of the Taj Mahal.", img: "/images/sightseeing/Agra/Baby_Taj.jpg" },
+      { name: "Mehtab Bagh", desc: "Beautiful garden across the Yamuna offering the best panoramic views of the Taj Mahal.", img: "/images/sightseeing/Agra/Mehtab_Bagh.jpg" }
     ],
     inclusions: ["AC cab round trip Jaipur-Agra-Jaipur", "Toll charges (NH21)", "Parking at all monuments", "Driver allowance", "Fuel charges"],
     exclusions: ["Monument entry tickets", "Meals and refreshments", "Tour guide charges", "Personal expenses", "Camera charges at monuments"],
@@ -63,6 +64,7 @@ For those interested in extending the trip, we also offer add-on visits to Fateh
 
   "same-day-agra-tour-from-lucknow": {
     slug: "same-day-agra-tour-from-lucknow",
+    heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     title: "Same Day Agra Tour from Lucknow",
     h1: "Same Day Agra Tour from Lucknow",
     origin: "Lucknow",
@@ -86,10 +88,10 @@ For those interested in extending the trip, we also offer add-on visits to Fateh
       { time: "9:00 PM", activity: "Drop at Lucknow hotel", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Taj Mahal", desc: "The iconic white marble mausoleum, a UNESCO World Heritage Site and symbol of eternal love." },
-      { name: "Agra Fort", desc: "Imposing red sandstone fort with exquisite Mughal-era palaces, audience halls, and gardens." },
-      { name: "Itimad-ud-Daulah (Baby Taj)", desc: "Delicate marble tomb often called the jewel box, a precursor to the Taj Mahal." },
-      { name: "Mehtab Bagh", desc: "Moonlight Garden across the Yamuna River with stunning Taj Mahal views ideal for photography." }
+      { name: "Taj Mahal", desc: "The iconic white marble mausoleum, a UNESCO World Heritage Site and symbol of eternal love.", img: "/images/sightseeing/Agra/Taj_mahal.jpg" },
+      { name: "Agra Fort", desc: "Imposing red sandstone fort with exquisite Mughal-era palaces, audience halls, and gardens.", img: "/images/sightseeing/Agra/agra_fort.jpg" },
+      { name: "Itimad-ud-Daulah (Baby Taj)", desc: "Delicate marble tomb often called the jewel box, a precursor to the Taj Mahal.", img: "/images/sightseeing/Agra/Baby_Taj.jpg" },
+      { name: "Mehtab Bagh", desc: "Moonlight Garden across the Yamuna River with stunning Taj Mahal views ideal for photography.", img: "/images/sightseeing/Agra/Mehtab_Bagh.jpg" }
     ],
     inclusions: ["AC cab round trip Lucknow-Agra-Lucknow", "Expressway toll charges", "Parking at all monuments", "Driver allowance", "Fuel charges"],
     exclusions: ["Monument entry tickets", "Meals and refreshments", "Tour guide charges", "Personal expenses", "Camera charges"],
@@ -123,6 +125,7 @@ Triveni Cabs also offers one-way cabs from Lucknow to Agra, airport transfers fr
 
   "same-day-agra-tour-from-noida": {
     slug: "same-day-agra-tour-from-noida",
+    heroImage: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     title: "Same Day Agra Tour from Noida",
     h1: "Same Day Agra Tour from Noida",
     origin: "Noida",
@@ -146,10 +149,10 @@ Triveni Cabs also offers one-way cabs from Lucknow to Agra, airport transfers fr
       { time: "6:00 PM", activity: "Drop at Noida location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Taj Mahal", desc: "Marvel at the world-famous white marble monument, best visited in the early morning golden light." },
-      { name: "Agra Fort", desc: "Explore this UNESCO heritage fort featuring stunning Mughal palaces and the iconic Diwan-i-Khas." },
-      { name: "Itimad-ud-Daulah (Baby Taj)", desc: "An ornate marble tomb with delicate pietra dura inlay, often called the draft of the Taj." },
-      { name: "Mehtab Bagh", desc: "A serene garden offering the most photographed view of the Taj Mahal from across the Yamuna." }
+      { name: "Taj Mahal", desc: "Marvel at the world-famous white marble monument, best visited in the early morning golden light.", img: "/images/sightseeing/Agra/Taj_mahal.jpg" },
+      { name: "Agra Fort", desc: "Explore this UNESCO heritage fort featuring stunning Mughal palaces and the iconic Diwan-i-Khas.", img: "/images/sightseeing/Agra/agra_fort.jpg" },
+      { name: "Itimad-ud-Daulah (Baby Taj)", desc: "An ornate marble tomb with delicate pietra dura inlay, often called the draft of the Taj.", img: "/images/sightseeing/Agra/Baby_Taj.jpg" },
+      { name: "Mehtab Bagh", desc: "A serene garden offering the most photographed view of the Taj Mahal from across the Yamuna.", img: "/images/sightseeing/Agra/Mehtab_Bagh.jpg" }
     ],
     inclusions: ["AC cab round trip Noida-Agra-Noida", "Yamuna Expressway toll", "Parking at monuments", "Driver allowance", "Fuel charges"],
     exclusions: ["Monument entry tickets", "Meals and refreshments", "Guide charges", "Personal expenses", "Camera charges"],
@@ -183,6 +186,7 @@ For Noida and Greater Noida residents looking for more North India travel option
 
   "same-day-jaipur-tour-from-delhi": {
     slug: "same-day-jaipur-tour-from-delhi",
+    heroImage: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg",
     title: "Same Day Jaipur Tour from Delhi",
     h1: "Same Day Jaipur Tour from Delhi",
     origin: "Delhi",
@@ -207,11 +211,11 @@ For Noida and Greater Noida residents looking for more North India travel option
       { time: "9:30 PM", activity: "Drop at Delhi hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Amber Fort", desc: "Magnificent hilltop fort with stunning architecture, mirror palace, and panoramic views of Maota Lake." },
-      { name: "Jal Mahal", desc: "Iconic water palace sitting in the middle of Man Sagar Lake, beautiful for photographs." },
-      { name: "Hawa Mahal", desc: "The Palace of Winds with its iconic 953-window pink sandstone facade, a Jaipur landmark." },
-      { name: "City Palace", desc: "Royal residence blending Rajasthani and Mughal architecture with museums and courtyards." },
-      { name: "Jantar Mantar", desc: "UNESCO World Heritage astronomical observatory with the world's largest stone sundial." }
+      { name: "Amber Fort", desc: "Magnificent hilltop fort with stunning architecture, mirror palace, and panoramic views of Maota Lake.", img: "/images/sightseeing/Jaipur/amber_fort.jpg" },
+      { name: "Jal Mahal", desc: "Iconic water palace sitting in the middle of Man Sagar Lake, beautiful for photographs.", img: "/images/sightseeing/Jaipur/Jal_Mahal.jpg" },
+      { name: "Hawa Mahal", desc: "The Palace of Winds with its iconic 953-window pink sandstone facade, a Jaipur landmark.", img: "/images/sightseeing/Jaipur/Hawa_Mahal.jpg" },
+      { name: "City Palace", desc: "Royal residence blending Rajasthani and Mughal architecture with museums and courtyards.", img: "/images/sightseeing/Jaipur/city_palace.jpg" },
+      { name: "Jantar Mantar", desc: "UNESCO World Heritage astronomical observatory with the world's largest stone sundial.", img: "/images/sightseeing/Jaipur/jantar_mantar.jpg" }
     ],
     inclusions: ["AC cab round trip Delhi-Jaipur-Delhi", "Highway toll charges", "Parking at all monuments", "Driver allowance", "Fuel charges"],
     exclusions: ["Monument entry tickets", "Meals and refreshments", "Tour guide charges", "Elephant ride at Amber Fort", "Personal expenses"],
@@ -245,6 +249,7 @@ Triveni Cabs offers competitive fares for the Delhi to Jaipur day trip: Rs 6,000
 
   "same-day-mathura-vrindavan-from-delhi": {
     slug: "same-day-mathura-vrindavan-from-delhi",
+    heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
     title: "Same Day Mathura Vrindavan Tour from Delhi",
     h1: "Same Day Mathura Vrindavan Tour from Delhi",
     origin: "Delhi",
@@ -271,11 +276,11 @@ Triveni Cabs offers competitive fares for the Delhi to Jaipur day trip: Rs 6,000
       { time: "7:00 PM", activity: "Drop at Delhi hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Shri Krishna Janmabhoomi", desc: "The sacred birthplace of Lord Krishna, one of the holiest Hindu pilgrimage sites in India." },
+      { name: "Shri Krishna Janmabhoomi", desc: "The sacred birthplace of Lord Krishna, one of the holiest Hindu pilgrimage sites in India.", img: "/images/sightseeing/Mathura_Vrindavan/Krishna_Janmabhoomi.jpg" },
       { name: "Dwarkadhish Temple", desc: "Ornate temple dedicated to Lord Krishna with intricate carvings and vibrant festivities." },
-      { name: "Banke Bihari Temple", desc: "Famous Vrindavan temple known for its enchanting deity and unique curtain darshan tradition." },
-      { name: "ISKCON Temple Vrindavan", desc: "Grand temple complex with beautiful architecture, spiritual programs, and vegetarian prasadam." },
-      { name: "Prem Mandir", desc: "Stunning white marble temple illuminated at night, depicting scenes from Lord Krishna's life." }
+      { name: "Banke Bihari Temple", desc: "Famous Vrindavan temple known for its enchanting deity and unique curtain darshan tradition.", img: "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg" },
+      { name: "ISKCON Temple Vrindavan", desc: "Grand temple complex with beautiful architecture, spiritual programs, and vegetarian prasadam.", img: "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg" },
+      { name: "Prem Mandir", desc: "Stunning white marble temple illuminated at night, depicting scenes from Lord Krishna's life.", img: "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg" }
     ],
     inclusions: ["AC cab round trip Delhi-Mathura-Vrindavan-Delhi", "Yamuna Expressway toll", "Parking at all temples", "Driver allowance", "Fuel charges"],
     exclusions: ["Temple donations/offerings", "Meals and refreshments", "Guide charges", "Personal expenses", "Pooja items"],
@@ -309,6 +314,7 @@ Triveni Cabs offers the most affordable Mathura Vrindavan day trip from Delhi: R
 
   "same-day-mathura-vrindavan-from-agra": {
     slug: "same-day-mathura-vrindavan-from-agra",
+    heroImage: "/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp",
     title: "Same Day Mathura Vrindavan Tour from Agra",
     h1: "Same Day Mathura Vrindavan Tour from Agra",
     origin: "Agra",
@@ -335,11 +341,11 @@ Triveni Cabs offers the most affordable Mathura Vrindavan day trip from Delhi: R
       { time: "5:00 PM", activity: "Drop at Agra hotel", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Shri Krishna Janmabhoomi", desc: "The sacred prison cell where Lord Krishna was born, surrounded by a grand temple complex." },
+      { name: "Shri Krishna Janmabhoomi", desc: "The sacred prison cell where Lord Krishna was born, surrounded by a grand temple complex.", img: "/images/sightseeing/Mathura_Vrindavan/Krishna_Janmabhoomi.jpg" },
       { name: "Dwarkadhish Temple", desc: "An intricately carved temple in the heart of Mathura with vibrant daily aarti ceremonies." },
-      { name: "Banke Bihari Temple", desc: "Vrindavan's most visited temple known for its unique darshan where the curtain is periodically drawn." },
-      { name: "ISKCON Temple", desc: "A serene, grand temple with beautiful gardens, Krishna-Balarama deities, and peaceful ambiance." },
-      { name: "Prem Mandir", desc: "A magnificent white marble temple that comes alive with colorful light shows in the evening." }
+      { name: "Banke Bihari Temple", desc: "Vrindavan's most visited temple known for its unique darshan where the curtain is periodically drawn.", img: "/images/sightseeing/Mathura_Vrindavan/Banke_Bihari_Temple.jpg" },
+      { name: "ISKCON Temple", desc: "A serene, grand temple with beautiful gardens, Krishna-Balarama deities, and peaceful ambiance.", img: "/images/sightseeing/Mathura_Vrindavan/ISKCON_Vrindavan.jpg" },
+      { name: "Prem Mandir", desc: "A magnificent white marble temple that comes alive with colorful light shows in the evening.", img: "/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg" }
     ],
     inclusions: ["AC cab round trip Agra-Mathura-Vrindavan-Agra", "Toll charges", "Parking at all temples", "Driver allowance", "Fuel charges"],
     exclusions: ["Temple donations", "Meals", "Guide charges", "Personal expenses", "Pooja items"],
@@ -371,6 +377,7 @@ This Agra to Mathura Vrindavan tour is one of our most affordable offerings: Rs 
 
   "same-day-haridwar-from-delhi": {
     slug: "same-day-haridwar-from-delhi",
+    heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
     title: "Same Day Haridwar Tour from Delhi",
     h1: "Same Day Haridwar Tour from Delhi",
     origin: "Delhi",
@@ -395,9 +402,9 @@ This Agra to Mathura Vrindavan tour is one of our most affordable offerings: Rs 
       { time: "10:00 PM", activity: "Drop at Delhi hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Har Ki Pauri", desc: "The most sacred ghat in Haridwar where the evening Ganga Aarti is a mesmerizing spiritual experience." },
-      { name: "Mansa Devi Temple", desc: "Hilltop temple accessible by cable car offering panoramic views of Haridwar and the Ganges." },
-      { name: "Chandi Devi Temple", desc: "Ancient temple atop Neel Parvat hill, reachable by ropeway, dedicated to Goddess Chandi." },
+      { name: "Har Ki Pauri", desc: "The most sacred ghat in Haridwar where the evening Ganga Aarti is a mesmerizing spiritual experience.", img: "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg" },
+      { name: "Mansa Devi Temple", desc: "Hilltop temple accessible by cable car offering panoramic views of Haridwar and the Ganges.", img: "/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg" },
+      { name: "Chandi Devi Temple", desc: "Ancient temple atop Neel Parvat hill, reachable by ropeway, dedicated to Goddess Chandi.", img: "/images/sightseeing/Haridwar/Chandi_Devi_Temple.jpg" },
       { name: "Maya Devi Temple", desc: "One of the Shakti Peeths, this ancient temple is among the holiest shrines in Haridwar." }
     ],
     inclusions: ["AC cab round trip Delhi-Haridwar-Delhi", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
@@ -432,6 +439,7 @@ Triveni Cabs offers competitive pricing for the Delhi to Haridwar day trip: Rs 5
 
   "same-day-haridwar-rishikesh-from-delhi": {
     slug: "same-day-haridwar-rishikesh-from-delhi",
+    heroImage: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
     title: "Same Day Haridwar Rishikesh Tour from Delhi",
     h1: "Same Day Haridwar Rishikesh Tour from Delhi",
     origin: "Delhi",
@@ -459,10 +467,10 @@ Triveni Cabs offers competitive pricing for the Delhi to Haridwar day trip: Rs 5
       { time: "10:30 PM", activity: "Drop at Delhi hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Har Ki Pauri, Haridwar", desc: "The holiest ghat in Haridwar with sacred Ganga waters and the magnificent evening aarti ceremony." },
-      { name: "Mansa Devi Temple", desc: "Wish-fulfilling temple atop Bilwa Parvat, accessible by cable car with stunning aerial views." },
-      { name: "Lakshman Jhula", desc: "Iconic iron suspension bridge over the Ganges in Rishikesh, a symbol of the city." },
-      { name: "Ram Jhula", desc: "Another famous suspension bridge near ashrams and temples with Ganga views." },
+      { name: "Har Ki Pauri, Haridwar", desc: "The holiest ghat in Haridwar with sacred Ganga waters and the magnificent evening aarti ceremony.", img: "/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg" },
+      { name: "Mansa Devi Temple", desc: "Wish-fulfilling temple atop Bilwa Parvat, accessible by cable car with stunning aerial views.", img: "/images/sightseeing/Haridwar/Mansa_Devi_Temple.jpg" },
+      { name: "Lakshman Jhula", desc: "Iconic iron suspension bridge over the Ganges in Rishikesh, a symbol of the city.", img: "/images/sightseeing/Rishikesh/Laxman_Jhula.jpg" },
+      { name: "Ram Jhula", desc: "Another famous suspension bridge near ashrams and temples with Ganga views.", img: "/images/sightseeing/Rishikesh/Ram_Jhula.jpg" },
       { name: "Parmarth Niketan", desc: "One of the largest ashrams in Rishikesh on the Ganges bank, known for yoga and evening aarti." }
     ],
     inclusions: ["AC cab round trip Delhi-Haridwar-Rishikesh-Delhi", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
@@ -487,6 +495,7 @@ This is a long but incredibly rewarding day trip that gives you the best of both
 
   "same-day-shimla-from-chandigarh": {
     slug: "same-day-shimla-from-chandigarh",
+    heroImage: "/images/sightseeing/Shimla/shimla_hero_section.jpg",
     title: "Same Day Shimla Tour from Chandigarh",
     h1: "Same Day Shimla Tour from Chandigarh",
     origin: "Chandigarh",
@@ -511,10 +520,10 @@ This is a long but incredibly rewarding day trip that gives you the best of both
       { time: "7:30 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "The Ridge", desc: "Shimla's iconic open space with panoramic Himalayan views and the historic Christ Church." },
-      { name: "Mall Road", desc: "The vibrant heart of Shimla with colonial-era buildings, shops, restaurants, and cafes." },
-      { name: "Jakhoo Temple", desc: "Hilltop temple dedicated to Lord Hanuman with a 108-ft statue and stunning views." },
-      { name: "Kufri", desc: "A small hill station 16 km from Shimla known for horse riding, skiing, and nature walks." },
+      { name: "The Ridge", desc: "Shimla's iconic open space with panoramic Himalayan views and the historic Christ Church.", img: "/images/sightseeing/Shimla/the ridge shimla.jpg" },
+      { name: "Mall Road", desc: "The vibrant heart of Shimla with colonial-era buildings, shops, restaurants, and cafes.", img: "/images/sightseeing/Shimla/Mall_Road.jpg" },
+      { name: "Jakhoo Temple", desc: "Hilltop temple dedicated to Lord Hanuman with a 108-ft statue and stunning views.", img: "/images/sightseeing/Shimla/jakhoo_temple.jpg" },
+      { name: "Kufri", desc: "A small hill station 16 km from Shimla known for horse riding, skiing, and nature walks.", img: "/images/sightseeing/Kufri/kufri_hero_section.jpg" },
       { name: "Lakkar Bazaar", desc: "Famous market for wooden crafts, toys, and souvenirs unique to Shimla." }
     ],
     inclusions: ["AC cab round trip Chandigarh-Shimla-Chandigarh", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
@@ -539,6 +548,7 @@ Our experienced hill drivers navigate the winding mountain roads with ease, ensu
 
   "same-day-amritsar-from-chandigarh": {
     slug: "same-day-amritsar-from-chandigarh",
+    heroImage: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg",
     title: "Same Day Amritsar Tour from Chandigarh",
     h1: "Same Day Amritsar Tour from Chandigarh",
     origin: "Chandigarh",
@@ -563,10 +573,10 @@ Our experienced hill drivers navigate the winding mountain roads with ease, ensu
       { time: "9:30 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Golden Temple (Harmandir Sahib)", desc: "The holiest shrine in Sikhism, a stunning gold-covered temple set in the sacred Amrit Sarovar pool." },
-      { name: "Jallianwala Bagh", desc: "Historic memorial garden commemorating the 1919 massacre, a moving tribute to India's freedom struggle." },
-      { name: "Wagah Border", desc: "India-Pakistan border where the dramatic flag-lowering ceremony takes place every evening." },
-      { name: "Partition Museum", desc: "India's first museum documenting the 1947 Partition, housed in the historic Town Hall building." }
+      { name: "Golden Temple (Harmandir Sahib)", desc: "The holiest shrine in Sikhism, a stunning gold-covered temple set in the sacred Amrit Sarovar pool.", img: "/images/sightseeing/Amritsar/Golden_Temple.jpg" },
+      { name: "Jallianwala Bagh", desc: "Historic memorial garden commemorating the 1919 massacre, a moving tribute to India's freedom struggle.", img: "/images/sightseeing/Amritsar/Jallianwala_Bagh.jpg" },
+      { name: "Wagah Border", desc: "India-Pakistan border where the dramatic flag-lowering ceremony takes place every evening.", img: "/images/sightseeing/Amritsar/Wagah_Border.jpg" },
+      { name: "Partition Museum", desc: "India's first museum documenting the 1947 Partition, housed in the historic Town Hall building.", img: "/images/sightseeing/Amritsar/Partition_Museum.jpg" }
     ],
     inclusions: ["AC cab round trip Chandigarh-Amritsar-Chandigarh", "Toll charges (NH44)", "Parking", "Wagah Border transfer", "Driver allowance", "Fuel"],
     exclusions: ["Meals", "Guide charges", "Personal expenses", "Camera charges at museums"],
@@ -590,6 +600,7 @@ Our itinerary is carefully timed so you can visit the Golden Temple in the morni
 
   "same-day-fatehpur-sikri-from-agra": {
     slug: "same-day-fatehpur-sikri-from-agra",
+    heroImage: "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
     title: "Same Day Fatehpur Sikri Tour from Agra",
     h1: "Same Day Fatehpur Sikri Tour from Agra",
     origin: "Agra",
@@ -613,9 +624,9 @@ Our itinerary is carefully timed so you can visit the Golden Temple in the morni
       { time: "2:15 PM", activity: "Drop at Agra hotel", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Buland Darwaza", desc: "The Gate of Magnificence, standing 54 meters high -- the tallest gateway in the world." },
-      { name: "Tomb of Salim Chishti", desc: "Exquisite white marble tomb with intricate jali (lattice) screens inside the Jama Masjid courtyard." },
-      { name: "Panch Mahal", desc: "Five-storied palatial structure with 176 columns, each floor smaller than the one below." },
+      { name: "Buland Darwaza", desc: "The Gate of Magnificence, standing 54 meters high -- the tallest gateway in the world.", img: "/images/sightseeing/Fatehpur_Sikri/Buland_Darwaza.jpg" },
+      { name: "Tomb of Salim Chishti", desc: "Exquisite white marble tomb with intricate jali (lattice) screens inside the Jama Masjid courtyard.", img: "/images/sightseeing/Fatehpur_Sikri/Salim_Chishti_Tomb.jpg" },
+      { name: "Panch Mahal", desc: "Five-storied palatial structure with 176 columns, each floor smaller than the one below.", img: "/images/sightseeing/Fatehpur_Sikri/Panch_Mahal.jpg" },
       { name: "Diwan-i-Khas", desc: "The Hall of Private Audience with a unique central pillar and four connecting walkways." }
     ],
     inclusions: ["AC cab round trip Agra-Fatehpur Sikri-Agra", "Parking", "Driver allowance", "Fuel charges"],
@@ -640,6 +651,7 @@ As an Agra-based cab service, we make this trip multiple times daily. Our driver
 
   "same-day-gwalior-from-agra": {
     slug: "same-day-gwalior-from-agra",
+    heroImage: "/images/citypage_hero_section_image.jpg",
     title: "Same Day Gwalior Tour from Agra",
     h1: "Same Day Gwalior Tour from Agra",
     origin: "Agra",
@@ -690,6 +702,7 @@ This day trip is perfect for history enthusiasts visiting Agra who want to explo
 
   "same-day-bharatpur-from-agra": {
     slug: "same-day-bharatpur-from-agra",
+    heroImage: "/images/sightseeing/Bharatpur/Keoladeo_National_Park _Bharatpur_hero_Section.jpg",
     title: "Same Day Bharatpur Tour from Agra",
     h1: "Same Day Bharatpur Bird Sanctuary Tour from Agra",
     origin: "Agra",
@@ -712,8 +725,8 @@ This day trip is perfect for history enthusiasts visiting Agra who want to explo
       { time: "2:00 PM", activity: "Drop at Agra hotel", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Keoladeo National Park", desc: "UNESCO World Heritage bird sanctuary hosting over 350 species, best visited at dawn for migratory birds." },
-      { name: "Lohagarh Fort", desc: "The Iron Fort of Bharatpur, one of the few forts in India that was never conquered by the British." },
+      { name: "Keoladeo National Park", desc: "UNESCO World Heritage bird sanctuary hosting over 350 species, best visited at dawn for migratory birds.", img: "/images/sightseeing/Bharatpur/Bird_Sanctuary.jpg" },
+      { name: "Lohagarh Fort", desc: "The Iron Fort of Bharatpur, one of the few forts in India that was never conquered by the British.", img: "/images/sightseeing/Bharatpur/Lohagarh_Fort.jpg" },
       { name: "Bharatpur Palace", desc: "Royal palace with a museum showcasing Jat dynasty artifacts and local history." }
     ],
     inclusions: ["AC cab round trip Agra-Bharatpur-Agra", "Parking", "Driver allowance", "Fuel charges"],
@@ -738,6 +751,7 @@ Beyond the bird sanctuary, Bharatpur's Lohagarh Fort (Iron Fort) is a testament 
 
   "same-day-mussoorie-from-dehradun": {
     slug: "same-day-mussoorie-from-dehradun",
+    heroImage: "/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg",
     title: "Same Day Mussoorie Tour from Dehradun",
     h1: "Same Day Mussoorie Tour from Dehradun",
     origin: "Dehradun",
@@ -762,11 +776,11 @@ Beyond the bird sanctuary, Bharatpur's Lohagarh Fort (Iron Fort) is a testament 
       { time: "5:00 PM", activity: "Drop at Dehradun hotel/station", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Kempty Falls", desc: "Mussoorie's most famous waterfall cascading from a height of 40 feet into a natural pool." },
-      { name: "Gun Hill Point", desc: "Second highest peak in Mussoorie accessible by cable car, with panoramic Himalayan and Doon Valley views." },
-      { name: "Mall Road", desc: "The vibrant center of Mussoorie with shops, eateries, and beautiful views of the valley." },
-      { name: "Lal Tibba", desc: "The highest point in Mussoorie offering stunning views of Kedarnath, Badrinath, and other Himalayan peaks." },
-      { name: "Company Garden", desc: "Well-maintained botanical garden with colorful flower beds, a mini lake, and walking paths." }
+      { name: "Kempty Falls", desc: "Mussoorie's most famous waterfall cascading from a height of 40 feet into a natural pool.", img: "/images/sightseeing/Mussoorie/Kempty_Falls.jpg" },
+      { name: "Gun Hill Point", desc: "Second highest peak in Mussoorie accessible by cable car, with panoramic Himalayan and Doon Valley views.", img: "/images/sightseeing/Mussoorie/Gun_Hill.jpg" },
+      { name: "Mall Road", desc: "The vibrant center of Mussoorie with shops, eateries, and beautiful views of the valley.", img: "/images/sightseeing/Mussoorie/Mall_road.jpg" },
+      { name: "Lal Tibba", desc: "The highest point in Mussoorie offering stunning views of Kedarnath, Badrinath, and other Himalayan peaks.", img: "/images/sightseeing/Mussoorie/Lal_tibba.jpg" },
+      { name: "Company Garden", desc: "Well-maintained botanical garden with colorful flower beds, a mini lake, and walking paths.", img: "/images/sightseeing/Mussoorie/company_garden.jpg" }
     ],
     inclusions: ["AC cab round trip Dehradun-Mussoorie-Dehradun", "Parking", "Driver allowance", "Fuel charges"],
     exclusions: ["Cable car tickets", "Waterfall entry", "Meals", "Personal expenses", "Adventure activities"],
@@ -790,6 +804,8 @@ Our experienced hill drivers ensure a safe and comfortable journey on the mounta
 
   "same-day-jim-corbett-from-delhi": {
     slug: "same-day-jim-corbett-from-delhi",
+    heroImage: "/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg",
+    galleryImages: [{ src: "/images/sightseeing/Jim_Corbett/Corbett_Falls.jpg", caption: "Corbett Falls" }, { src: "/images/sightseeing/Jim_Corbett/Ramganga_River.jpg", caption: "Ramganga River" }, { src: "/images/sightseeing/Jim_Corbett/elephant_safari.jpg", caption: "Elephant safari" }],
     title: "Same Day Jim Corbett Tour from Delhi",
     h1: "Same Day Jim Corbett National Park Tour from Delhi",
     origin: "Delhi",
@@ -812,7 +828,7 @@ Our experienced hill drivers ensure a safe and comfortable journey on the mounta
       { time: "9:30 PM", activity: "Drop at Delhi hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Jim Corbett National Park", desc: "India's oldest national park, home to Royal Bengal Tigers, elephants, and over 600 bird species." },
+      { name: "Jim Corbett National Park", desc: "India's oldest national park, home to Royal Bengal Tigers, elephants, and over 600 bird species.", img: "/images/sightseeing/Jim_Corbett/Tiger_Safari_Corbett.jpg" },
       { name: "Jhirna Zone", desc: "Open year-round safari zone with excellent chances of spotting elephants, deer, and wild boar." },
       { name: "Corbett Museum", desc: "The bungalow of Jim Corbett in Kaladhungi, preserved as a museum with his belongings and writings." },
       { name: "Garjia Devi Temple", desc: "A sacred temple built on a large rock in the Kosi River, a popular pilgrimage and scenic spot." }
@@ -839,6 +855,7 @@ While a day trip gives you a taste of Corbett, it is a long but rewarding journe
 
   "same-day-ayodhya-from-lucknow": {
     slug: "same-day-ayodhya-from-lucknow",
+    heroImage: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
     title: "Same Day Ayodhya Tour from Lucknow",
     h1: "Same Day Ayodhya Ram Mandir Tour from Lucknow",
     origin: "Lucknow",
@@ -863,10 +880,10 @@ While a day trip gives you a taste of Corbett, it is a long but rewarding journe
       { time: "5:30 PM", activity: "Drop at Lucknow hotel/station", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Shri Ram Janmabhoomi Mandir", desc: "The grand new temple at Lord Ram's birthplace, one of the most significant Hindu temples in the world." },
-      { name: "Hanuman Garhi", desc: "A 10th-century temple dedicated to Lord Hanuman, built like a fort atop a hill with 76 steps." },
-      { name: "Kanak Bhawan", desc: "Beautiful temple gifted to Sita by her mother-in-law, featuring ornate gold and silver decorations." },
-      { name: "Saryu River & Ram Ki Paidi", desc: "Sacred ghats along the Saryu River where pilgrims take holy dips, especially during festivals." }
+      { name: "Shri Ram Janmabhoomi Mandir", desc: "The grand new temple at Lord Ram's birthplace, one of the most significant Hindu temples in the world.", img: "/images/sightseeing/Ayodhya/Ram_Mandir.jpg" },
+      { name: "Hanuman Garhi", desc: "A 10th-century temple dedicated to Lord Hanuman, built like a fort atop a hill with 76 steps.", img: "/images/sightseeing/Ayodhya/Hanuman_Garhi.jpg" },
+      { name: "Kanak Bhawan", desc: "Beautiful temple gifted to Sita by her mother-in-law, featuring ornate gold and silver decorations.", img: "/images/sightseeing/Ayodhya/Kanak_Bhawan.jpg" },
+      { name: "Saryu River & Ram Ki Paidi", desc: "Sacred ghats along the Saryu River where pilgrims take holy dips, especially during festivals.", img: "/images/sightseeing/Ayodhya/Saryu_River_Ghat.jpg" }
     ],
     inclusions: ["AC cab round trip Lucknow-Ayodhya-Lucknow", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
     exclusions: ["Temple donations", "Meals", "Guide charges", "Personal expenses", "Pooja items"],
@@ -890,6 +907,7 @@ Whether you are on a spiritual pilgrimage or visiting as a tourist to see the ar
 
   "same-day-kurukshetra-from-delhi": {
     slug: "same-day-kurukshetra-from-delhi",
+    heroImage: "/images/citypage_hero_section_image.jpg",
     title: "Same Day Kurukshetra Tour from Delhi",
     h1: "Same Day Kurukshetra Tour from Delhi",
     origin: "Delhi",
@@ -942,6 +960,7 @@ Kurukshetra is also home to ancient temples, including the powerful Bhadrakali T
 
   "same-day-neemrana-from-delhi": {
     slug: "same-day-neemrana-from-delhi",
+    heroImage: "/images/sightseeing/Neemrana/Neemrana_hero_section.jpg",
     title: "Same Day Neemrana Tour from Delhi",
     h1: "Same Day Neemrana Fort Palace Tour from Delhi",
     origin: "Delhi",
@@ -964,9 +983,9 @@ Kurukshetra is also home to ancient temples, including the powerful Bhadrakali T
       { time: "5:30 PM", activity: "Drop at Delhi hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Neemrana Fort Palace", desc: "A 15th-century heritage fort converted into a luxury hotel, spread across 14 levels on a hill." },
-      { name: "Neemrana Zip-lining", desc: "One of India's longest zip-lines across the fort valley, offering thrilling aerial views." },
-      { name: "Neemrana Baori", desc: "A beautiful nine-storied stepwell, one of the largest in Rajasthan, a hidden architectural gem." },
+      { name: "Neemrana Fort Palace", desc: "A 15th-century heritage fort converted into a luxury hotel, spread across 14 levels on a hill.", img: "/images/sightseeing/Neemrana/Neemrana_Fort_Palace.jpg" },
+      { name: "Neemrana Zip-lining", desc: "One of India's longest zip-lines across the fort valley, offering thrilling aerial views.", img: "/images/sightseeing/Neemrana/Neemrana_Zip_Line.jpg" },
+      { name: "Neemrana Baori", desc: "A beautiful nine-storied stepwell, one of the largest in Rajasthan, a hidden architectural gem.", img: "/images/sightseeing/Neemrana/Baori_Step_Well.jpg" },
       { name: "Kesroli Fort (Optional)", desc: "A 14th-century hilltop fort and heritage hotel just 25 km from Neemrana, with Aravalli views." }
     ],
     inclusions: ["AC cab round trip Delhi-Neemrana-Delhi", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
@@ -990,6 +1009,7 @@ Do not miss the Neemrana Baori, a spectacular nine-storied stepwell that is one 
   },
   "same-day-kasauli-from-chandigarh": {
     slug: "same-day-kasauli-from-chandigarh",
+    heroImage: "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg",
     title: "Same Day Kasauli Tour from Chandigarh",
     h1: "Same Day Kasauli Tour from Chandigarh",
     origin: "Chandigarh",
@@ -1015,11 +1035,11 @@ Do not miss the Neemrana Baori, a spectacular nine-storied stepwell that is one 
       { time: "5:00 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "Mall Road", desc: "Kasauli's quiet, tree-lined promenade with colonial cottages, tiny cafes, and bakeries away from the crowds." },
-      { name: "Christ Church", desc: "A charming neo-Gothic church built in 1853, with stained glass and a sundial set amid towering deodars." },
+      { name: "Mall Road", desc: "Kasauli's quiet, tree-lined promenade with colonial cottages, tiny cafes, and bakeries away from the crowds.", img: "/images/sightseeing/Kasauli/Kasauli_Mall_Road.jpg" },
+      { name: "Christ Church", desc: "A charming neo-Gothic church built in 1853, with stained glass and a sundial set amid towering deodars.", img: "/images/sightseeing/Kasauli/Kasauli_Christ_Church.jpg" },
       { name: "Gilbert Trail", desc: "An easy 1.5 km nature walk through pine and oak forest, popular for birdwatching and valley views." },
       { name: "Sunset Point", desc: "A peaceful viewpoint offering sweeping views of the Sutlej plains glowing at dusk." },
-      { name: "Monkey Point (Manki Point)", desc: "Kasauli's highest point with a Hanuman temple and 360-degree views; inside an Air Force area, ID required." }
+      { name: "Monkey Point (Manki Point)", desc: "Kasauli's highest point with a Hanuman temple and 360-degree views; inside an Air Force area, ID required.", img: "/images/sightseeing/Kasauli/Kasauli_Monkey_Point.jpg" }
     ],
     inclusions: ["AC cab round trip Chandigarh-Kasauli-Chandigarh", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
     exclusions: ["Pinjore Gardens entry", "Kasauli Brewery tour/tasting", "Meals", "Monkey Point entry formalities", "Personal expenses"],
@@ -1043,6 +1063,7 @@ Our drivers know these narrow hill lanes well and handle the climb with ease. Ka
 
   "same-day-dharamshala-from-chandigarh": {
     slug: "same-day-dharamshala-from-chandigarh",
+    heroImage: "/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg",
     title: "Same Day Dharamshala Tour from Chandigarh",
     h1: "Same Day Dharamshala & McLeodganj Tour from Chandigarh",
     origin: "Chandigarh",
@@ -1067,10 +1088,10 @@ Our drivers know these narrow hill lanes well and handle the climb with ease. Ka
       { time: "10:00 PM", activity: "Drop at Chandigarh hotel/location", duration: "", icon: "check" }
     ],
     placesToVisit: [
-      { name: "McLeodganj", desc: "The 'Little Lhasa' of India, a lively Tibetan town with monasteries, prayer flags, cafes, and Himalayan views." },
-      { name: "Dalai Lama Temple (Tsuglagkhang)", desc: "The spiritual heart of Tibetan Buddhism in exile, home to the main temple and the Tibet Museum." },
-      { name: "Bhagsunag Falls", desc: "A scenic waterfall reached by a short trek past the ancient Bhagsunag Temple and popular cafes." },
-      { name: "HPCA Stadium", desc: "One of the world's most picturesque cricket stadiums, framed by snow-capped Dhauladhar peaks." },
+      { name: "McLeodganj", desc: "The 'Little Lhasa' of India, a lively Tibetan town with monasteries, prayer flags, cafes, and Himalayan views.", img: "/images/sightseeing/Dharamshala/McLeod_Ganj.jpg" },
+      { name: "Dalai Lama Temple (Tsuglagkhang)", desc: "The spiritual heart of Tibetan Buddhism in exile, home to the main temple and the Tibet Museum.", img: "/images/sightseeing/Dharamshala/Dalai_Lama_Temple.jpg" },
+      { name: "Bhagsunag Falls", desc: "A scenic waterfall reached by a short trek past the ancient Bhagsunag Temple and popular cafes.", img: "/images/sightseeing/Dharamshala/Bhagsunag_Waterfall.jpg" },
+      { name: "HPCA Stadium", desc: "One of the world's most picturesque cricket stadiums, framed by snow-capped Dhauladhar peaks.", img: "/images/sightseeing/Dharamshala/HPCA_Stadium.jpg" },
       { name: "Kangra Fort", desc: "One of India's oldest and largest forts, perched above the Banganga river on the route to Dharamshala." }
     ],
     inclusions: ["AC cab round trip Chandigarh-Dharamshala-Chandigarh", "Toll charges", "Parking", "Driver allowance", "Fuel charges"],
@@ -1095,6 +1116,7 @@ Because of the distance, we keep the itinerary tight and our drivers handle the 
 
   "same-day-chail-from-chandigarh": {
     slug: "same-day-chail-from-chandigarh",
+    heroImage: "/images/citypage_hero_section_image.jpg",
     title: "Same Day Chail Tour from Chandigarh",
     h1: "Same Day Chail Tour from Chandigarh",
     origin: "Chandigarh",

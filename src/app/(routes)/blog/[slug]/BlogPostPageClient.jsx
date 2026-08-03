@@ -1,28 +1,17 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import { Calendar, Clock, Eye, Tag, Share2, Facebook, Twitter, Linkedin, ArrowLeft, Sparkles, BookOpen, ChevronRight } from '@/components/ui/icons';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import WhatsAppCTA from '@/components/blog/WhatsAppCTA';
 
 export default function BlogPostPageClient({ post, tripCTA }) {
-  const [mounted, setMounted] = useState(false);
-  const heroRef = useRef(null);
   const contentRef = useRef(null);
   const isContentInView = useInView(contentRef, { once: true, amount: 0.1 });
-
-  const { scrollY } = useScroll();
-  const smoothScrollY = useSpring(scrollY, { stiffness: 100, damping: 30 });
-  const heroOpacity = useTransform(smoothScrollY, [0, 400], [1, 0]);
-  const heroScale = useTransform(smoothScrollY, [0, 400], [1, 0.95]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Safety check: ensure post has required properties
   if (!post) {
@@ -51,11 +40,7 @@ export default function BlogPostPageClient({ post, tripCTA }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       {/* Hero Section with Destination Image */}
-      <motion.section
-        ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[70vh] md:min-h-[85vh] flex items-end overflow-hidden"
-      >
+      <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-end overflow-hidden">
         {/* Hero Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -70,45 +55,27 @@ export default function BlogPostPageClient({ post, tripCTA }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
-          {/* Animated Color Accent Overlay */}
-          <motion.div
-            animate={{
-              background: [
-                'linear-gradient(45deg, rgba(250, 207, 45, 0.1) 0%, transparent 50%)',
-                'linear-gradient(135deg, rgba(250, 207, 45, 0.15) 0%, transparent 50%)',
-                'linear-gradient(45deg, rgba(250, 207, 45, 0.1) 0%, transparent 50%)',
-              ],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+          {/* Brand Colour Accent Overlay */}
+          <div
             className="absolute inset-0"
+            style={{ background: 'linear-gradient(135deg, rgba(250, 207, 45, 0.12) 0%, transparent 50%)' }}
           />
         </div>
 
-        {/* Floating Particles Effect */}
+        {/* Brand Sparkle Dots — CSS pulse only, fixed positions so they render server-side */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {mounted && [...Array(20)].map((_, i) => (
-            <motion.div
+          {[
+            { left: '12%', top: '28%', delay: '0s' },
+            { left: '31%', top: '62%', delay: '0.7s' },
+            { left: '54%', top: '18%', delay: '1.4s' },
+            { left: '73%', top: '48%', delay: '0.35s' },
+            { left: '88%', top: '24%', delay: '1.05s' },
+            { left: '66%', top: '76%', delay: '1.75s' },
+          ].map((dot, i) => (
+            <span
               key={i}
-              className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full bg-[#FACF2D]/40"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [-20, -100, -20],
-                opacity: [0, 1, 0],
-                scale: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 4,
-                ease: "easeInOut",
-              }}
+              className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full bg-[#FACF2D]/40 animate-pulse"
+              style={{ left: dot.left, top: dot.top, animationDelay: dot.delay }}
             />
           ))}
         </div>
@@ -148,12 +115,7 @@ export default function BlogPostPageClient({ post, tripCTA }) {
               
               className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D] to-yellow-400 text-black px-6 py-2.5 rounded-full text-sm font-bold mb-6 shadow-2xl"
             >
-              <motion.span
-                animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              >
-                ⭐
-              </motion.span>
+              <span>⭐</span>
               Featured Guide
             </motion.div>
           )}
@@ -225,13 +187,9 @@ export default function BlogPostPageClient({ post, tripCTA }) {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
           >
             <span className="text-white/60 text-sm font-medium">Scroll to read</span>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2"
-            >
-              <motion.div className="w-1.5 h-1.5 bg-[#FACF2D] rounded-full" />
-            </motion.div>
+            <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2 animate-bounce">
+              <div className="w-1.5 h-1.5 bg-[#FACF2D] rounded-full" />
+            </div>
           </motion.div>
         </div>
 
@@ -246,25 +204,13 @@ export default function BlogPostPageClient({ post, tripCTA }) {
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            <motion.path
+            <path
               d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
               fill="rgb(249, 250, 251)"
-              animate={{
-                d: [
-                  "M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z",
-                  "M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z",
-                  "M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z",
-                ],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
             />
           </motion.svg>
         </div>
-      </motion.section>
+      </section>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
@@ -304,12 +250,7 @@ export default function BlogPostPageClient({ post, tripCTA }) {
               transition={{ delay: 0.5 }}
               className="flex items-center gap-4 mb-8 pb-8 border-b-2 border-gray-200"
             >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <Share2 className="w-6 h-6 text-[#FACF2D]" />
-              </motion.div>
+              <Share2 className="w-6 h-6 text-[#FACF2D]" />
               <span className="text-gray-700 font-bold text-lg">Share:</span>
               {[
                 { platform: 'facebook', icon: Facebook, color: 'bg-blue-600 hover:bg-blue-700' },
@@ -411,12 +352,7 @@ export default function BlogPostPageClient({ post, tripCTA }) {
               className="mt-8 pt-8 border-t-2 border-gray-200"
             >
               <div className="flex items-center gap-3 flex-wrap">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <Tag className="w-6 h-6 text-[#FACF2D]" />
-                </motion.div>
+                <Tag className="w-6 h-6 text-[#FACF2D]" />
                 <span className="text-gray-700 font-bold text-lg">Tags:</span>
                 {post.tags.map((tag, index) => (
                   <motion.span
@@ -475,12 +411,7 @@ export default function BlogPostPageClient({ post, tripCTA }) {
                 className="bg-white rounded-2xl p-6 shadow-xl border-2 border-gray-100"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Sparkles className="w-6 h-6 text-[#FACF2D]" />
-                  </motion.div>
+                  <Sparkles className="w-6 h-6 text-[#FACF2D]" />
                   <h3 className="text-xl font-black text-gray-900">Popular Tags</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -508,12 +439,7 @@ export default function BlogPostPageClient({ post, tripCTA }) {
                 className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 shadow-xl border-2 border-purple-100"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  >
-                    <BookOpen className="w-6 h-6 text-purple-600" />
-                  </motion.div>
+                  <BookOpen className="w-6 h-6 text-purple-600" />
                   <h3 className="text-xl font-black text-gray-900">Quick Links</h3>
                 </div>
                 <ul className="space-y-3">

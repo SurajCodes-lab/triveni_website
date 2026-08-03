@@ -192,7 +192,7 @@ export default function ContactPage() {
               "latitude": COMPANY_INFO.geo.latitude,
               "longitude": COMPANY_INFO.geo.longitude
             },
-            "hasMap": "https://maps.google.com/?q=Triveni+Cabs+Agra",
+            "hasMap": "https://maps.google.com/?q=366+Dandupura+near+Tajganj+Agra+Uttar+Pradesh+282006",
             "url": PAGE_URL,
             "priceRange": "₹₹",
             "currenciesAccepted": "INR",

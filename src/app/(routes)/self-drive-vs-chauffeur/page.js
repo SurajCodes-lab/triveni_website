@@ -6,6 +6,19 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 const SLUG = 'self-drive-vs-chauffeur';
 const data = getComparisonBySlug(SLUG);
 
+const media = {
+  v1: {
+    src: '/images/car/ertiga.jpg',
+    alt: 'Maruti Ertiga MPV of the type commonly rented for self-drive trips',
+    caption: 'You take the wheel, the fuel bill, the parking and the night driving.',
+  },
+  v2: {
+    src: '/images/car/innova_crysta.jpg',
+    alt: 'Toyota Innova Crysta with a professional driver, the Triveni Cabs chauffeur service',
+    caption: 'A driver who knows the route handles traffic, tolls and mountain roads.',
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -48,7 +61,7 @@ export default function SelfDriveVsChauffeurPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       )}
       <SemanticComparison data={data} />
-      <ComparisonClient data={data} />
+      <ComparisonClient data={data} media={media} />
     </>
   );
 }

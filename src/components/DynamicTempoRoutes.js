@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -14,7 +14,6 @@ import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 import { routeDescriptions } from '@/utilis/tempoTravellerData';
 import { getTypeColor, formatDestinationForDisplay } from '@/utilis/tempoColors';
-import dynamic from 'next/dynamic';
 // Rich UI + ranking-lift components — wired May 23 2026
 import InfographicPanel from '@/components/seo/InfographicPanel';
 import PriceCalculator from '@/components/seo/PriceCalculator';
@@ -31,13 +30,7 @@ import CorridorLinks from '@/components/seo/CorridorLinks';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
-const TypeAnimation = dynamic(
-  () => import('react-type-animation').then(mod => mod.TypeAnimation),
-  { ssr: false, loading: () => <span>Premium Tempo Traveller</span> }
-);
-
 export default function DynamicTempoRoutesClient({ data }) {
-  const [mounted, setMounted] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [hoveredVehicle, setHoveredVehicle] = useState(null);
 
@@ -87,17 +80,9 @@ export default function DynamicTempoRoutesClient({ data }) {
     `Hi, I need a ${heroSeater} from ${origin} to ${displayDestination}. Please share the fare and availability.`
   )}`;
 
-  useEffect(() => {
-    setMounted(true);
-
-    // Auto-rotate features — skip when user prefers reduced motion
-    if (shouldReduceMotion) return;
-    const interval = setInterval(() => {
-      setActiveFeature(prev => (prev + 1) % 4);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [shouldReduceMotion]);
+  // The feature cards used to auto-rotate on a 3s interval. That re-rendered this
+  // whole page every 3 seconds for no conversion benefit; the cards stay
+  // click-selectable instead.
 
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
@@ -227,51 +212,10 @@ export default function DynamicTempoRoutesClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-purple-900/60 to-black/80" />
         </div>
 
-        {/* Floating Animated Orbs */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-amber-400/10 to-transparent rounded-full"
-        />
-
-        {/* Animated Particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {mounted && !shouldReduceMotion && [...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ y: '100vh', x: `${Math.random() * 100}%`, opacity: 0 }}
-              animate={{ y: '-10vh', opacity: [0, 1, 0] }}
-              transition={{
-                duration: Math.random() * 15 + 10,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-                ease: "linear"
-              }}
-              className="absolute w-1 h-1 bg-amber-400 rounded-full"
-            />
-          ))}
-        </div>
+        {/* Decorative Colour Orbs — static, purely atmospheric */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-amber-400/10 to-transparent rounded-full opacity-30" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -318,13 +262,9 @@ export default function DynamicTempoRoutesClient({ data }) {
               <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
                 {origin}
               </span>
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="inline-block mx-2 md:mx-4 text-white/50"
-              >
+              <span className="inline-block mx-2 md:mx-4 text-white/50">
                 →
-              </motion.span>
+              </span>
               <span className="inline-block bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
                 {displayDestination}
               </span>
@@ -336,21 +276,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               transition={{ delay: 0.8 }}
               className="text-2xl md:text-4xl font-bold text-white/90"
             >
-              <TypeAnimation
-                sequence={[
-                  '🚐 Premium Tempo Traveller',
-                  2500,
-                  '👨‍👩‍👧‍👦 Perfect for Groups',
-                  2500,
-                  '✨ Luxury Travel Experience',
-                  2500,
-                  '🛣️ Comfortable Journey',
-                  2500,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={shouldReduceMotion ? 0 : Infinity}
-              />
+              <span>🚐 Premium Tempo Traveller</span>
             </motion.div>
 
             {/* Price + trust + compact CTAs — kept static so they paint with the hero
@@ -466,8 +392,8 @@ export default function DynamicTempoRoutesClient({ data }) {
           {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
             <div className="flex flex-col items-center text-white/50">
@@ -606,12 +532,8 @@ export default function DynamicTempoRoutesClient({ data }) {
               className="group"
             >
               <div className="relative bg-gradient-to-br from-amber-500 to-orange-500 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden h-full">
-                {/* Animated Background */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute -top-20 -right-20 w-40 h-40 bg-white/20 rounded-full blur-2xl"
-                />
+                {/* Decorative Glow */}
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/20 rounded-full blur-2xl" />
 
                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                   <div className="p-3 bg-white/20 backdrop-blur rounded-2xl">
@@ -1056,13 +978,9 @@ export default function DynamicTempoRoutesClient({ data }) {
       {/* WHY CHOOSE US - Animated Feature Grid */}
       {/* ============================================ */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 relative overflow-hidden">
-        {/* Animated Background */}
+        {/* Decorative Background Wash */}
         <div className="absolute inset-0">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic from-amber-500/10 via-transparent to-amber-500/10"
-          />
+          <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic from-amber-500/10 via-transparent to-amber-500/10" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1463,16 +1381,8 @@ export default function DynamicTempoRoutesClient({ data }) {
       <section className="relative py-20 md:py-32 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900" />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 12, repeat: Infinity, delay: 2 }}
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
-        />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl opacity-40" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl opacity-30" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div

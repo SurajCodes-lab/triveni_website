@@ -6,6 +6,19 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 const SLUG = 'one-way-vs-round-trip-cab';
 const data = getComparisonBySlug(SLUG);
 
+const media = {
+  v1: {
+    src: '/images/car/swift_dzire.jpg',
+    alt: 'Maruti Swift compact cab of the kind used for one-way city drops',
+    caption: 'Pay for the distance you actually travel — ideal for a single-direction drop.',
+  },
+  v2: {
+    src: '/images/car/innova_crysta.jpg',
+    alt: 'Toyota Innova Crysta kept for the full trip on a round-trip booking',
+    caption: 'The same car and driver stay with you for the whole itinerary.',
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -48,7 +61,7 @@ export default function OneWayVsRoundTripPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       )}
       <SemanticComparison data={data} />
-      <ComparisonClient data={data} />
+      <ComparisonClient data={data} media={media} />
     </>
   );
 }

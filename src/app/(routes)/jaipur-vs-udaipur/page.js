@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('jaipur-vs-udaipur');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', alt: 'Jaipur the Pink City with its Rajput palace architecture' },
+    card: { src: '/images/sightseeing/Jaipur/Hawa_Mahal.jpg', alt: 'Hawa Mahal, the honeycomb palace facade in the old city of Jaipur' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg', alt: 'Udaipur the City of Lakes with palaces rising above the water' },
+    card: { src: '/images/sightseeing/Udaipur/Lake_Pichola.jpg', alt: 'Lake Pichola in Udaipur with the island palaces at sunset' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function JaipurVsUdaipurPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

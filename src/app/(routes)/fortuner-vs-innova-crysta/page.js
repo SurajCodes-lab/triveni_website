@@ -6,6 +6,19 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 const SLUG = 'fortuner-vs-innova-crysta';
 const data = getComparisonBySlug(SLUG);
 
+const media = {
+  v1: {
+    src: '/images/car/premium_suv.jpg',
+    alt: 'Toyota Fortuner premium SUV, the top of the Triveni Cabs outstation fleet',
+    caption: 'Ladder-frame SUV built for long highway runs and rough hill roads.',
+  },
+  v2: {
+    src: '/images/car/innova_crysta.jpg',
+    alt: 'Toyota Innova Crysta seven-seater MUV used for Triveni Cabs family trips',
+    caption: 'Softer ride, more usable third row, noticeably lower per-km rate.',
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -48,7 +61,7 @@ export default function FortunerVsInnovaPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       )}
       <SemanticComparison data={data} />
-      <ComparisonClient data={data} />
+      <ComparisonClient data={data} media={media} />
     </>
   );
 }

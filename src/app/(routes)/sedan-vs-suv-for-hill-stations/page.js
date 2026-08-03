@@ -6,6 +6,19 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 const SLUG = 'sedan-vs-suv-for-hill-stations';
 const data = getComparisonBySlug(SLUG);
 
+const media = {
+  v1: {
+    src: '/images/car/swift_dzire.jpg',
+    alt: 'Maruti Swift compact cab from the Swift Dzire sedan class',
+    caption: 'Cheapest per km and easy on narrow hill roads, but limited ground clearance.',
+  },
+  v2: {
+    src: '/images/car/innova_crysta.jpg',
+    alt: 'Toyota Innova Crysta MUV, the SUV-class option for hill station trips',
+    caption: 'Higher clearance and stronger engine for steep climbs and snow-season roads.',
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -48,7 +61,7 @@ export default function SedanVsSuvHillsPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       )}
       <SemanticComparison data={data} />
-      <ComparisonClient data={data} />
+      <ComparisonClient data={data} media={media} />
     </>
   );
 }

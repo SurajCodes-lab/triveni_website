@@ -120,10 +120,28 @@ Spec being implemented: above-the-fold Call + WhatsApp + 24×7; ≤3-field enqui
 
 ---
 
-## Batch 2 (queued) ⏳
-- **B4 INP sprint:** analytics off the main thread + framer-motion trim on the 5 money templates. Deferred from Batch 1 deliberately: it touches the same client files agents were editing — serialization prevents merge conflicts.
-- **I1 thin-design census:** source-level sweep flagging pages with no hero image/no images/no sell unit; ranked by GSC clicks.
-- **G city hubs:** `[cityName]` Place/Article schema (the schema-thinnest template).
+## Batch 2 — implemented 3 Aug 2026 (build QGwf_Ej6Oy5EgQdTXsQCz, 2,831 pages / 495 chunks)
+
+### B4 INP sprint ✅
+Diagnosis first: GTM/GA were already `lazyOnload`, so scripts weren't the tax — **19 infinite framer-motion animations were**, concentrated in exactly two templates: BlogPostPageClient (9, ×191 pages — 20 JS-animated particles, morphing SVG wave, four perpetually-rotating icons, scroll-linked spring parallax re-computing on every frame) and DynamicTempoRoutes (10, ×225 pages). All 19 removed: particles → 6 fixed-position CSS `animate-pulse` dots (compositor thread, zero JS), wave → static, rotating icons → static, parallax springs (`useScroll/useSpring/useTransform`) → removed entirely. One-shot entrance animations kept (they end). Verified: 0 `repeat: Infinity` in both files; all conversion elements intact.
+
+### GA4 undercount fix ✅ (explains the user's "June 700 → now 150")
+Decomposition: seasonal demand −45% (GSC daily clicks 600→330) accounts for roughly half; the rest was **our own `lazyOnload` GA tag** (since Jul 8) not counting visitors who bounce before full load — plus the Airtel-block week (now resolved) carving the trough deeper. Fix: GA4 counting tag → `afterInteractive` in `src/app/layout.js` (GTM + Ads stay lazy; only counting moved). The INP work above paid for this main-thread cost. Expect GA4 to step back up within ~48h of deploy; GSC remains ground truth.
+
+### G city-hub schema ✅
+`[cityName]/page.js` now emits the full graph both branches lacked: city hubs get Place (GeoCoordinates) + Article + Speakable + BreadcrumbList; x-to-y route slugs get origin AND destination Place nodes + Article + Speakable + breadcrumbs. Verified live marker: GeoCoordinates on /delhi.
+
+### I1 thin-design census + fixes ✅ (49 pages uplifted)
+Census script (`thin_design_census.json`): 405 route dirs scanned for no-image/no-hero/low-prose signals → 58 flagged. Fixed in three clusters, all with disk-verified image paths only:
+- **24 same-day tour pages** — via shared `SameDayTourClient` + `heroImage`/gallery fields per tour in `sameDayTourData.js` (agent initially no-opped; re-instructed with the shared-template architecture, then delivered).
+- **17 vs/cost pages** — destination pages got split two-destination heroes (e.g. Shimla ridge vs Manali valley), vehicle pages got fleet panels, Char Dham/Golden Triangle cost pages got destination heroes; all via props into DestinationCompareClient/ComparisonClient/TripCostClient.
+- **8 service pages** — honest fleet photography (bus shots for school/college hire, Ertiga for pet-friendly — no staged fake photos) via `SpecialTransportClient` hero/fleet props.
+
+### Contact punch-up ✅ (user: "very dull")
+The phone number is now the page hero — display-scale glowing gold `+91 76685 70551` with a highway lane-marking underline (the page signature), brighter photo (45→60% opacity), and the **alternative WhatsApp desk +91 89235 34551 published on the contact page ONLY** (hero secondary button + office card). Map link + LocalBusiness `hasMap` now pin the exact Agra office address (366 Dandupura, near Tajganj, 282006), not a name search.
+
+### Verification-process lesson (recorded)
+Two "agent did nothing" verdicts today were MY broken verification greps (glob+parens false zeros) — the services and vs agents had delivered. Two others (blog, same-day) were genuine agent no-ops caught and fixed. Verify with corrected commands before re-instructing; ground truth is the file content.
 
 ## GSC-sprint deploy — COMPLETE, LIVE (2 Aug 2026) ✅
 
@@ -131,6 +149,19 @@ The July-31 GSC sprint (20 new /distance pages for ~92K imp/mo of proven queries
 - Build `_FLnUAS2BAC62uH5KNms7`, 2,831 pages · deployed 2 Aug · backup `/home/ubuntu/triveni-backup-cro-20260802_213752`.
 - Live-verified: 12/12 sampled new distance pages return 200 (golden-temple-to-wagah-border, kasol-to-chandigarh, delhi-to-jim-corbett, lansdowne-to-delhi, mount-abu-to-jaipur, dharamshala-to-manali, delhi-to-srinagar, delhi-to-spiti-valley, chandigarh-to-kasauli, varanasi-to-gaya, delhi-to-jewar-airport, rohtang-pass-to-manali); "Expressway Toll" phrasing live on /toll-cost/delhi-to-dehradun; Kashmir grounding live on /distance/delhi-to-srinagar.
 - **USER ACTION pending:** GSC → Request indexing for the 20 new /distance URLs (fastest path to first impressions).
+
+## Week 41 Batch 1 — DEPLOYED LIVE (2 Aug 2026, ~23:10 IST) ✅
+
+- Build `lqogNg4j6KmXlNmSoYMOv` (2,831 pages, 495 app chunks) — includes the **GSC-sprint re-ship** (its first deploy was rolled back in the chunk incident) + all 8 Batch-1 workstreams.
+- New deploy gates worked end-to-end: [0b/8] content sanity `tarball=495 local=495` chunks + BUILD_ID present; post-deploy chunk-integrity "all homepage chunks 200". (Gate 0b initially had a pipefail/grep-q false positive — fixed to list-once-then-grep; the abort was on the safe side.)
+- Backup: `/home/ubuntu/triveni-backup-cro-20260802_223657`. Committed locally as `week41-batch1`.
+- **Live-verified:** 4/4 GSC distance pages 200 · season banner "Reserve by 12 August" live · contact page has zero staff names · trust row + "Trip guides" band live on delhi-to-agra · blog Book-This-Trip box live on delhi-to-manali post · all JS chunks 200 on homepage AND a route page.
+
+## Task I3 — Contact page redesign ✅ (verified)
+Named-staff section fully removed (zero matches for any name). ContactPage + LocalBusiness JSON-LD with `hasMap` Google-Maps link and deterministic review count; tel/wa.me CTAs; responsive grids (grid-cols-1→sm:2), overflow-x-auto on wide blocks, 48px tap targets; premium dark-glass design per user request. Two apparent white-on-gold hits were hover-state false positives (gold tint backgrounds, not solid gold).
+
+## Task E — Sightseeing vertical ✅ (verified)
+QuickAnswer on both tour-detail (SightseeingDetailClient) and city-tours (CityToursPage) templates; 25 membership-checked money/guide link references in `sightseeing/[slug]/page.js` (one-way routes, city hubs, travel guides — zero-404 policy).
 
 ## Deploy/verify discipline (unchanged)
 Each batch: single build → detached tarball+deploy (nohup, survives interruptions) → server-side size verification before overlay → live curl verification of changed markers → execution log + this file updated.

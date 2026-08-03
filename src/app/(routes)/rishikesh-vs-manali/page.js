@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('rishikesh-vs-manali');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg', alt: 'Rishikesh on the banks of the Ganges where the river leaves the Himalayan foothills' },
+    card: { src: '/images/sightseeing/Rishikesh/Laxman_Jhula.jpg', alt: 'Laxman Jhula suspension bridge spanning the Ganges at Rishikesh' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Manali/Manali_hero_section.jpg', alt: 'Manali valley framed by snow-capped Himalayan peaks and deodar forest' },
+    card: { src: '/images/sightseeing/Manali/Solang Valley.jpg', alt: 'Solang Valley near Manali, the adventure sports meadow below the snow line' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function RishikeshVsManaliPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

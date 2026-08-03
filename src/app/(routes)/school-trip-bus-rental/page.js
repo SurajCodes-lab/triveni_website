@@ -4,6 +4,17 @@ import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 
 const service = getSpecialTransportBySlug('school-trip-bus-rental');
 
+const heroImage = {
+  src: '/images/bus/hero_section_image.webp',
+  alt: 'Triveni Cabs charter bus of the type provided for school excursions and field trips',
+};
+
+const fleetImages = [
+  { src: '/images/bus/22_SEATER_BUS.jpg', alt: 'Mini bus from the Triveni Cabs fleet, used for smaller school groups with accompanying teachers' },
+  { src: '/images/bus/35_SEATER_BUS.jpg', alt: '35-seater bus from the Triveni Cabs fleet, used for full-class school excursions' },
+  { src: '/images/bus/45_SEATER_BUS.jpg', alt: '45-seater Volvo coach from the Triveni Cabs fleet, used for large school trips and long-distance excursions' },
+];
+
 export const metadata = {
   title: 'School Trip Bus Rental Service | Safe Student Transport',
   description: 'Book school trip bus rental with GPS tracking and verified drivers. 20-seater from Rs 30/km, 35-seater Rs 40/km. First-aid, speed governor, CCTV.',
@@ -11,8 +22,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/school-trip-bus-rental' },
-  openGraph: { title: 'School Trip Bus Rental | Safe Student Transport', description: 'GPS tracked school buses with verified drivers. 20 to 45 seater options.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/school-trip-bus-rental', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'School Trip Bus Rental | Triveni Cabs', description: 'Safe school bus rental. GPS tracking, verified drivers. From Rs 30/km.' },
+  openGraph: { title: 'School Trip Bus Rental | Safe Student Transport', description: 'GPS tracked school buses with verified drivers. 20 to 45 seater options.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/school-trip-bus-rental', siteName: 'Triveni Cabs', images: [{ url: '/images/bus/hero_section_image.webp', width: 1200, height: 630, alt: 'Triveni Cabs charter bus used for school trip rentals' }] },
+  twitter: { card: 'summary_large_image', title: 'School Trip Bus Rental | Triveni Cabs', description: 'Safe school bus rental. GPS tracking, verified drivers. From Rs 30/km.', images: ['/images/bus/hero_section_image.webp'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -28,7 +39,7 @@ export default function SchoolTripBusPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SpecialTransportClient service={service} />
+      <SpecialTransportClient service={service} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

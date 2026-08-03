@@ -3,6 +3,17 @@ import RentalPackageClient from '@/components/rental/RentalPackageClient';
 
 const rental = getRentalBySlug('airport-city-tour-combo');
 
+const heroImage = {
+  src: '/images/airport_section.jpg',
+  alt: 'Airport terminal pickup point where Triveni Cabs drivers meet arriving passengers with a name board',
+};
+
+const fleetImages = [
+  { src: '/images/car/swift_dzire.jpg', alt: 'Swift Dzire sedan from the Triveni Cabs fleet, the entry option for the airport pickup and city tour combo' },
+  { src: '/images/car/ertiga.jpg', alt: 'Ertiga SUV from the Triveni Cabs fleet, with boot space for airport luggage plus a day of sightseeing' },
+  { src: '/images/car/innova_crysta.jpg', alt: 'Innova Crysta from the Triveni Cabs fleet, the most comfortable choice for a 12-hour airport and city tour day' },
+];
+
 export const metadata = {
   title: 'Airport Pickup + City Tour Combo | 12 Hrs Rs 3,500 | Triveni Cabs',
   description: 'Airport pickup with city tour combo package. 12 hours, 120 km. Sedan from Rs 3,500. Flight tracking, name board, sightseeing driver. Call 7668570551.',
@@ -10,8 +21,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/airport-city-tour-combo' },
-  openGraph: { title: 'Airport + City Tour Combo | Rs 3,500 | 12 Hrs', description: 'Airport pickup and city sightseeing in one package. 12 hours, 120 km included.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/airport-city-tour-combo', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'Airport City Tour Combo | Rs 3,500', description: 'Airport pickup + city tour. 12 hours. Sedan from Rs 3,500.' },
+  openGraph: { title: 'Airport + City Tour Combo | Rs 3,500 | 12 Hrs', description: 'Airport pickup and city sightseeing in one package. 12 hours, 120 km included.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/airport-city-tour-combo', siteName: 'Triveni Cabs', images: [{ url: '/images/airport_section.jpg', width: 1200, height: 630, alt: 'Airport pickup point served by Triveni Cabs for the airport plus city tour combo package' }] },
+  twitter: { card: 'summary_large_image', title: 'Airport City Tour Combo | Rs 3,500', description: 'Airport pickup + city tour. 12 hours. Sedan from Rs 3,500.', images: ['/images/airport_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -27,7 +38,7 @@ export default function AirportCityTourComboPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <RentalPackageClient rental={rental} />
+      <RentalPackageClient rental={rental} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

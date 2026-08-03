@@ -1,0 +1,3242 @@
+[
+ {
+  "dir": "airport-city-tour-combo",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "chardham-yatra-cost-by-car",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "college-excursion-bus-hire",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "dharamshala-vs-dalhousie",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "fortuner-vs-innova-crysta",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "golden-triangle-tour-cost",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "gulmarg-vs-manali",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "hospital-visit-cab-service",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "innova-vs-ertiga-for-outstation",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "jaipur-vs-udaipur",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "jaisalmer-vs-jodhpur",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "kashmir-vs-ladakh",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "monthly-car-rental",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "multi-day-cab-hire",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 6
+ },
+ {
+  "dir": "mussoorie-vs-nainital",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "nainital-vs-jim-corbett",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "one-way-vs-round-trip-cab",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "pet-friendly-cab-service",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "rishikesh-vs-manali",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "same-day-agra-tour-from-jaipur",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-agra-tour-from-lucknow",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-agra-tour-from-noida",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-ayodhya-from-lucknow",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-bharatpur-from-agra",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-chail-from-chandigarh",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 2,
+  "score": 6
+ },
+ {
+  "dir": "same-day-dharamshala-from-chandigarh",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 2,
+  "score": 6
+ },
+ {
+  "dir": "same-day-fatehpur-sikri-from-agra",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-gwalior-from-agra",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-haridwar-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-haridwar-rishikesh-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-jaipur-tour-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-jim-corbett-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-kasauli-from-chandigarh",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 2,
+  "score": 6
+ },
+ {
+  "dir": "same-day-kurukshetra-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 6
+ },
+ {
+  "dir": "same-day-mathura-vrindavan-from-agra",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-mathura-vrindavan-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-mussoorie-from-dehradun",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 6
+ },
+ {
+  "dir": "same-day-neemrana-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "same-day-shimla-from-chandigarh",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 6
+ },
+ {
+  "dir": "school-trip-bus-rental",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 6
+ },
+ {
+  "dir": "sedan-vs-suv-for-hill-stations",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "self-drive-vs-chauffeur",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "senior-citizen-travel-service",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "shimla-vs-manali",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "varanasi-vs-haridwar",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 6
+ },
+ {
+  "dir": "wheelchair-accessible-cab",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "women-safety-cab-service",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 6
+ },
+ {
+  "dir": "bachelor-trip-north-india",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 5
+ },
+ {
+  "dir": "privacy-policy",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 23,
+  "score": 5
+ },
+ {
+  "dir": "romantic-trip-agra-taj-mahal",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 5
+ },
+ {
+  "dir": "golden-triangle-english-speaking-driver",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 32,
+  "score": 4
+ },
+ {
+  "dir": "india-road-trip-guide-for-tourists",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 42,
+  "score": 4
+ },
+ {
+  "dir": "kanwar-yatra-cab-haridwar",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 50,
+  "score": 4
+ },
+ {
+  "dir": "prayagraj-sangam-tour",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 48,
+  "score": 4
+ },
+ {
+  "dir": "private-driver-hire-india",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 34,
+  "score": 4
+ },
+ {
+  "dir": "rajasthan-desert-circuit-tour",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 45,
+  "score": 4
+ },
+ {
+  "dir": "taj-mahal-private-tour-from-delhi",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 29,
+  "score": 4
+ },
+ {
+  "dir": "uttarakhand-spiritual-circuit-tour",
+  "hasImage": false,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 43,
+  "score": 4
+ },
+ {
+  "dir": "12-seater-tempo-traveller",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "16-seater-tempo-traveller",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "17-seater-tempo-traveller",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "20-seater-tempo-traveller",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "26-seater-tempo-traveller",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "agra-in-1-day-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "agra-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "agra-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "amritsar-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 3
+ },
+ {
+  "dir": "chandigarh-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "dehradun-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "delhi-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "dharamshala-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "dharamshala-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "haridwar-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "haridwar-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "honeymoon-trip-cost-shimla-manali",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "how-to-reach-[city]",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 3,
+  "score": 3
+ },
+ {
+  "dir": "jaipur-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "jaipur-in-3-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "jaipur-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "jaisalmer-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "jaisalmer-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "jim-corbett-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "jodhpur-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "jodhpur-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "kashmir-in-5-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "kashmir-in-7-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "kashmir-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "kasol-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "ladakh-in-7-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "leh-ladakh-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "lucknow-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "lucknow-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "luxury-bus-for-events",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 3,
+  "score": 3
+ },
+ {
+  "dir": "luxury-car-for-events",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 3,
+  "score": 3
+ },
+ {
+  "dir": "manali-in-3-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "manali-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "mathura-vrindavan-1-day-package",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "mussoorie-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "mussoorie-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "nainital-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "nainital-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "pushkar-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "rajasthan-in-5-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "rajasthan-in-7-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "rajasthan-trip-cost-budget",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 3
+ },
+ {
+  "dir": "rishikesh-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "rishikesh-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "same-day-amritsar-from-chandigarh",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 9,
+  "score": 3
+ },
+ {
+  "dir": "shimla-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "shimla-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "spiti-in-7-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "tempo-traveller-for-events",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 3,
+  "score": 3
+ },
+ {
+  "dir": "tourist-attractions",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 3
+ },
+ {
+  "dir": "udaipur-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "udaipur-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "varanasi-in-2-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "varanasi-in-3-days-itinerary",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 0,
+  "score": 3
+ },
+ {
+  "dir": "varanasi-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 5,
+  "score": 3
+ },
+ {
+  "dir": "12-seater-vs-17-seater-tempo",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 24,
+  "score": 2
+ },
+ {
+  "dir": "amritsar-airport-to-city-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "amritsar-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 2
+ },
+ {
+  "dir": "ayodhya-1-day-package",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "ayodhya-trip-cost-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 6,
+  "score": 2
+ },
+ {
+  "dir": "baisakhi-amritsar-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "cancellation-and-refund-policy",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 17,
+  "score": 2
+ },
+ {
+  "dir": "chandigarh-airport-to-amritsar-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "chandigarh-airport-to-dalhousie-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "chandigarh-airport-to-dharamshala-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "chandigarh-airport-to-kasauli-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "chandigarh-airport-to-manali-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "chandigarh-airport-to-shimla-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "chhath-puja-varanasi-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "christmas-shimla-manali-package",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "dehradun-airport-to-haridwar-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "dehradun-airport-to-mussoorie-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "dehradun-airport-to-rishikesh-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-amritsar-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-chandigarh-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-dehradun-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-gurgaon-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-haridwar-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-jaipur-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-lucknow-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-manali-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-mathura-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-noida-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-rishikesh-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "delhi-airport-to-shimla-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "diwali-ayodhya-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 9,
+  "score": 2
+ },
+ {
+  "dir": "dzire-hire",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 4,
+  "score": 2
+ },
+ {
+  "dir": "ertiga-hire",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 4,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-agra-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-auli-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-chopta-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-jaipur-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-jim-corbett-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-kashmir-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-manali-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-mussoorie-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-nainital-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-rishikesh-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-shimla-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "family-trip-udaipur-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "fortuner-hire",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 4,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-goa-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-jaisalmer",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-jibhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-kasol",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-manali",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-rishikesh",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-spiti",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 12,
+  "score": 2
+ },
+ {
+  "dir": "friends-trip-tirthan-valley",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 12,
+  "score": 2
+ },
+ {
+  "dir": "full-day-cab-rental",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "golden-triangle-tour-from-chandigarh",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 2
+ },
+ {
+  "dir": "half-day-cab-rental",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-dharamshala",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-jaipur-udaipur",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-kashmir-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-manali-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-mussoorie-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-nainital-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-shimla-manali-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-trip-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 11,
+  "score": 2
+ },
+ {
+  "dir": "honeymoon-udaipur-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 2
+ },
+ {
+  "dir": "innova-crysta-hire",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 4,
+  "score": 2
+ },
+ {
+  "dir": "innova-hire",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 4,
+  "score": 2
+ },
+ {
+  "dir": "jaipur-airport-to-agra-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "jaipur-airport-to-city-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "jaipur-airport-to-pushkar-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 9,
+  "score": 2
+ },
+ {
+  "dir": "jaipur-airport-to-udaipur-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "kumbh-mela-prayagraj-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "maha-shivratri-pilgrimage-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 2
+ },
+ {
+  "dir": "navratri-vaishno-devi-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "new-year-road-trip-packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 7,
+  "score": 2
+ },
+ {
+  "dir": "pushkar-mela-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 9,
+  "score": 2
+ },
+ {
+  "dir": "sedan-vs-suv",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 12,
+  "score": 2
+ },
+ {
+  "dir": "srinagar-airport-to-gulmarg-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "srinagar-airport-to-pahalgam-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 9,
+  "score": 2
+ },
+ {
+  "dir": "summer-hill-station-packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "traveller-12-seater",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 4,
+  "score": 2
+ },
+ {
+  "dir": "udaipur-airport-to-city-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 1,
+  "score": 2
+ },
+ {
+  "dir": "where-to-go",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 3,
+  "score": 2
+ },
+ {
+  "dir": "winter-snow-trip-packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 8,
+  "score": 2
+ },
+ {
+  "dir": "10-day-north-india-road-trip",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 41,
+  "score": 1
+ },
+ {
+  "dir": "agra-day-trip-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 28,
+  "score": 1
+ },
+ {
+  "dir": "amritsar-beyond-golden-temple",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 1
+ },
+ {
+  "dir": "august-long-weekend-getaways-delhi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 1
+ },
+ {
+  "dir": "best-time-to-visit",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "bus-stand-taxi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 83,
+  "score": 1
+ },
+ {
+  "dir": "bus-vs-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "cab-service",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "chardham-yatra-september-2026",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "contact",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 35,
+  "score": 1
+ },
+ {
+  "dir": "corporate-cab-vs-aggregators",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 24,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-aligarh-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 17,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-bareilly-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-faridabad-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 19,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-ghaziabad-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-karnal-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 16,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-meerut-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-panipat-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "delhi-airport-to-sonipat-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 17,
+  "score": 1
+ },
+ {
+  "dir": "distance",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 19,
+  "score": 1
+ },
+ {
+  "dir": "faq",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 43,
+  "score": 1
+ },
+ {
+  "dir": "ganesh-chaturthi-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "get-corporate-quote",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 22,
+  "score": 1
+ },
+ {
+  "dir": "hariyali-teej-jaipur-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "holi-mathura-vrindavan-cab-service",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 10,
+  "score": 1
+ },
+ {
+  "dir": "how-to-reach",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 16,
+  "score": 1
+ },
+ {
+  "dir": "independence-day-weekend-packages-2026",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 1
+ },
+ {
+  "dir": "jaipur-airport-to-ajmer-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "jaipur-airport-to-jaisalmer-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "jaipur-airport-to-jodhpur-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "jaipur-airport-to-ranthambore-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 20,
+  "score": 1
+ },
+ {
+  "dir": "janmashtami-mathura-vrindavan-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 1
+ },
+ {
+  "dir": "jodhpur-beyond-mehrangarh",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 1
+ },
+ {
+  "dir": "jodhpur-food-tour",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 1
+ },
+ {
+  "dir": "jodhpur-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 68,
+  "score": 1
+ },
+ {
+  "dir": "kashmir-in-september",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 12,
+  "score": 1
+ },
+ {
+  "dir": "kashmir-road-trip-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 46,
+  "score": 1
+ },
+ {
+  "dir": "kedarnath-september-trip",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "leh-ladakh-august-september-trip",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "lucknow-airport-to-ayodhya-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 19,
+  "score": 1
+ },
+ {
+  "dir": "lucknow-airport-to-varanasi-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 20,
+  "score": 1
+ },
+ {
+  "dir": "monsoon-hill-station-packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "monsoon-road-trip-packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "moonlight-taj-mahal-tour",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 29,
+  "score": 1
+ },
+ {
+  "dir": "packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-agra",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-amritsar",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-chandigarh",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-dehradun",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-delhi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-ghaziabad",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-gurgaon",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-haridwar",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-jaipur",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-lucknow",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-mathura",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-noida",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-rishikesh",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-shimla",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-udaipur",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "places-to-visit-near-varanasi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "railway-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 45,
+  "score": 1
+ },
+ {
+  "dir": "raksha-bandhan-cab-service",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "reviews",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 1
+ },
+ {
+  "dir": "road-trip",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 1
+ },
+ {
+  "dir": "safety",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 1
+ },
+ {
+  "dir": "same-day-agra-tour-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 48,
+  "score": 1
+ },
+ {
+  "dir": "same-day-taj-mahal-tour",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 40,
+  "score": 1
+ },
+ {
+  "dir": "search",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "september-long-weekend-trips-2026",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 1
+ },
+ {
+  "dir": "spiti-valley-august-trip",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 13,
+  "score": 1
+ },
+ {
+  "dir": "spiti-valley-road-trip-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 55,
+  "score": 1
+ },
+ {
+  "dir": "sunrise-taj-mahal-tour-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 35,
+  "score": 1
+ },
+ {
+  "dir": "taj-mahal-tour-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 36,
+  "score": 1
+ },
+ {
+  "dir": "taxi-fare",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "tempo-traveller-vs-mini-bus",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 31,
+  "score": 1
+ },
+ {
+  "dir": "tempo-vs-bus",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 40,
+  "score": 1
+ },
+ {
+  "dir": "terms-and-conditions",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 27,
+  "score": 1
+ },
+ {
+  "dir": "toll-cost",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 18,
+  "score": 1
+ },
+ {
+  "dir": "train-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 15,
+  "score": 1
+ },
+ {
+  "dir": "travel-by-car",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 16,
+  "score": 1
+ },
+ {
+  "dir": "travel-options",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "trust",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "valley-of-flowers-trek-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 14,
+  "score": 1
+ },
+ {
+  "dir": "varanasi-airport-to-ayodhya-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 21,
+  "score": 1
+ },
+ {
+  "dir": "varanasi-airport-to-sarnath-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 19,
+  "score": 1
+ },
+ {
+  "dir": "vehicles",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 64,
+  "score": 1
+ },
+ {
+  "dir": "weekend-getaways-from-delhi-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 1
+ },
+ {
+  "dir": "weekend-getaways-from-jaipur-by-car",
+  "hasImage": true,
+  "hasHeroImg": false,
+  "hasBooking": true,
+  "textVolume": 48,
+  "score": 1
+ },
+ {
+  "dir": "[cityName]",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 35,
+  "score": 0
+ },
+ {
+  "dir": "5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 43,
+  "score": 0
+ },
+ {
+  "dir": "7-day-himachal-tour-by-car",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 58,
+  "score": 0
+ },
+ {
+  "dir": "about",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 33,
+  "score": 0
+ },
+ {
+  "dir": "agra-beyond-taj-mahal",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "agra-cantt-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 45,
+  "score": 0
+ },
+ {
+  "dir": "agra-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 48,
+  "score": 0
+ },
+ {
+  "dir": "agra-fort-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 44,
+  "score": 0
+ },
+ {
+  "dir": "agra-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 56,
+  "score": 0
+ },
+ {
+  "dir": "agra-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 49,
+  "score": 0
+ },
+ {
+  "dir": "airport-service",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 190,
+  "score": 0
+ },
+ {
+  "dir": "ajmer-junction-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 45,
+  "score": 0
+ },
+ {
+  "dir": "ajmer-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 0
+ },
+ {
+  "dir": "amritsar-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 56,
+  "score": 0
+ },
+ {
+  "dir": "amritsar-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 75,
+  "score": 0
+ },
+ {
+  "dir": "amritsar-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 0
+ },
+ {
+  "dir": "ayodhya-ram-mandir-tour-from-agra",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 40,
+  "score": 0
+ },
+ {
+  "dir": "ayodhya-ram-mandir-tour-from-delhi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 48,
+  "score": 0
+ },
+ {
+  "dir": "ayodhya-ram-mandir-tour-from-lucknow",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 47,
+  "score": 0
+ },
+ {
+  "dir": "ayodhya-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 56,
+  "score": 0
+ },
+ {
+  "dir": "blog",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "bus-routes",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 95,
+  "score": 0
+ },
+ {
+  "dir": "bus-vs-tempo-for-wedding",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 32,
+  "score": 0
+ },
+ {
+  "dir": "chandigarh-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 33,
+  "score": 0
+ },
+ {
+  "dir": "chandigarh-rock-garden-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 44,
+  "score": 0
+ },
+ {
+  "dir": "chandigarh-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 36,
+  "score": 0
+ },
+ {
+  "dir": "chandigarh-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 32,
+  "score": 0
+ },
+ {
+  "dir": "chandigarh-vs-mohali",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 34,
+  "score": 0
+ },
+ {
+  "dir": "chardham-yatra",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 107,
+  "score": 0
+ },
+ {
+  "dir": "christmas-new-year-cab-packages",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 31,
+  "score": 0
+ },
+ {
+  "dir": "corporate-transportation-service",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 63,
+  "score": 0
+ },
+ {
+  "dir": "dalhousie-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 0
+ },
+ {
+  "dir": "dehradun-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 45,
+  "score": 0
+ },
+ {
+  "dir": "delhi-airport-to-agra-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 29,
+  "score": 0
+ },
+ {
+  "dir": "delhi-beyond-red-fort",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 56,
+  "score": 0
+ },
+ {
+  "dir": "delhi-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 0
+ },
+ {
+  "dir": "delhi-junction-old-delhi-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 44,
+  "score": 0
+ },
+ {
+  "dir": "delhi-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 73,
+  "score": 0
+ },
+ {
+  "dir": "dharamshala-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 55,
+  "score": 0
+ },
+ {
+  "dir": "durga-puja-travel-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "event-transportation-service",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 59,
+  "score": 0
+ },
+ {
+  "dir": "guru-purab-amritsar-transport",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 31,
+  "score": 0
+ },
+ {
+  "dir": "haridwar-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 55,
+  "score": 0
+ },
+ {
+  "dir": "haridwar-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 0
+ },
+ {
+  "dir": "hazrat-nizamuddin-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 42,
+  "score": 0
+ },
+ {
+  "dir": "jaipur-beyond-hawa-mahal",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 58,
+  "score": 0
+ },
+ {
+  "dir": "jaipur-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "jaipur-junction-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 45,
+  "score": 0
+ },
+ {
+  "dir": "jaipur-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 76,
+  "score": 0
+ },
+ {
+  "dir": "jaipur-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "jaisalmer-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 70,
+  "score": 0
+ },
+ {
+  "dir": "jaisalmer-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 50,
+  "score": 0
+ },
+ {
+  "dir": "jodhpur-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 50,
+  "score": 0
+ },
+ {
+  "dir": "kashmir-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "local-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 69,
+  "score": 0
+ },
+ {
+  "dir": "long-weekend-getaway-packages-2026",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 29,
+  "score": 0
+ },
+ {
+  "dir": "lucknow-beyond-bara-imambara",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 55,
+  "score": 0
+ },
+ {
+  "dir": "lucknow-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 0
+ },
+ {
+  "dir": "lucknow-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 74,
+  "score": 0
+ },
+ {
+  "dir": "lucknow-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 0
+ },
+ {
+  "dir": "manali-beyond-solang-valley",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 59,
+  "score": 0
+ },
+ {
+  "dir": "manali-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 0
+ },
+ {
+  "dir": "mathura-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 0
+ },
+ {
+  "dir": "mathura-junction-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 44,
+  "score": 0
+ },
+ {
+  "dir": "mathura-vrindavan-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 55,
+  "score": 0
+ },
+ {
+  "dir": "mount-abu-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 0
+ },
+ {
+  "dir": "mussoorie-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 0
+ },
+ {
+  "dir": "nainital-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 0
+ },
+ {
+  "dir": "new-delhi-station-taxi",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 43,
+  "score": 0
+ },
+ {
+  "dir": "one-way-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 116,
+  "score": 0
+ },
+ {
+  "dir": "outstation-cabs",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 69,
+  "score": 0
+ },
+ {
+  "dir": "pricing",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 26,
+  "score": 0
+ },
+ {
+  "dir": "pushkar-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 56,
+  "score": 0
+ },
+ {
+  "dir": "pushkar-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 50,
+  "score": 0
+ },
+ {
+  "dir": "religious-tours",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 31,
+  "score": 0
+ },
+ {
+  "dir": "republic-day-delhi-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "rishikesh-beyond-rafting",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 55,
+  "score": 0
+ },
+ {
+  "dir": "rishikesh-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 56,
+  "score": 0
+ },
+ {
+  "dir": "round-trip",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "round-trip-cab",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 72,
+  "score": 0
+ },
+ {
+  "dir": "routes",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "safe-travel-india-for-tourists",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 42,
+  "score": 0
+ },
+ {
+  "dir": "services",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 62,
+  "score": 0
+ },
+ {
+  "dir": "shimla-beyond-mall-road",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 0
+ },
+ {
+  "dir": "shimla-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 70,
+  "score": 0
+ },
+ {
+  "dir": "shimla-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 52,
+  "score": 0
+ },
+ {
+  "dir": "sightseeing",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 76,
+  "score": 0
+ },
+ {
+  "dir": "summer-vacation-cab-packages-2026",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 31,
+  "score": 0
+ },
+ {
+  "dir": "tempo-traveller",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 141,
+  "score": 0
+ },
+ {
+  "dir": "tour-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 88,
+  "score": 0
+ },
+ {
+  "dir": "tour-package",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 169,
+  "score": 0
+ },
+ {
+  "dir": "tourist-spots",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 38,
+  "score": 0
+ },
+ {
+  "dir": "tours-with-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 242,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-driver-verification",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 36,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-fleet",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 44,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-pricing-transparency",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 41,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-safety-features",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 38,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-vs-cabbazar",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-vs-makemytrip-cabs",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-vs-ola",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 27,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-vs-savaari",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "triveni-cabs-vs-uber",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 30,
+  "score": 0
+ },
+ {
+  "dir": "udaipur-beyond-city-palace",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "udaipur-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 53,
+  "score": 0
+ },
+ {
+  "dir": "udaipur-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 74,
+  "score": 0
+ },
+ {
+  "dir": "udaipur-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 0
+ },
+ {
+  "dir": "varanasi-beyond-the-ghats",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "varanasi-food-tour",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 54,
+  "score": 0
+ },
+ {
+  "dir": "varanasi-shopping-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 73,
+  "score": 0
+ },
+ {
+  "dir": "varanasi-travel-guide",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 51,
+  "score": 0
+ },
+ {
+  "dir": "wedding",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 150,
+  "score": 0
+ },
+ {
+  "dir": "weekend-getaways-from-chandigarh-by-car",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 50,
+  "score": 0
+ },
+ {
+  "dir": "why-triveni-cabs",
+  "hasImage": true,
+  "hasHeroImg": true,
+  "hasBooking": true,
+  "textVolume": 37,
+  "score": 0
+ }
+]

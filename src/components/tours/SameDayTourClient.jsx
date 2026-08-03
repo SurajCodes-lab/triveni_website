@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee, Landmark, Compass, Sparkles } from '@/components/ui/icons';
 import { getRelatedTours } from '@/utilis/sameDayTourData';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
@@ -19,6 +20,8 @@ const iconMap = {
 export default function SameDayTourClient({ tour }) {
   const related = getRelatedTours(tour.slug, 6);
   const stickyWhatsappText = `I want to book a ${tour.title} from ${tour.origin}. Please share package details and best fare.`;
+  const heroImage = tour.heroImage;
+  const gallery = tour.galleryImages || [];
 
   return (
     <div className="min-h-screen bg-amber-50/30">
@@ -32,8 +35,25 @@ export default function SameDayTourClient({ tour }) {
           HERO - Vintage Travel Poster with Animated Sunrise Gradient
       ==================================================================== */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Animated sunrise gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-950 via-amber-900 to-yellow-900" />
+        {/* Destination photograph. Absolutely positioned inside the min-h-[80vh]
+            section, so it reserves no layout of its own and cannot shift content. */}
+        {heroImage && (
+          <div className="absolute inset-0">
+            <Image
+              src={heroImage}
+              alt={`${tour.destination} sightseeing on a same day tour from ${tour.origin}`}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        {/* Sunrise wash. Translucent over a photo, opaque when there is none. */}
+        <div className={`absolute inset-0 bg-gradient-to-b ${heroImage
+          ? 'from-orange-950/90 via-amber-900/85 to-yellow-900/90'
+          : 'from-orange-950 via-amber-900 to-yellow-900'}`} />
 
         {/* Animated sun glow */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,146,60,0.08) 40%, transparent 70%)' }} />
@@ -452,14 +472,29 @@ export default function SameDayTourClient({ tour }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {tour.placesToVisit.map((place, idx) => (
+            {tour.placesToVisit.map((place, idx) => {
+              const placeImage = place.img;
+              return (
               <div key={idx} className="group relative">
                 {/* Postcard frame */}
                 <div className="relative bg-gradient-to-br from-amber-50 to-orange-50/50 rounded-2xl p-6 border-2 border-dashed border-amber-200/50 hover:border-amber-400 hover:shadow-2xl hover:shadow-amber-100/50 hover:-translate-y-1 transition-all duration-500">
                   {/* Stamp corner */}
-                  <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl shadow-lg flex items-center justify-center transform rotate-6 group-hover:rotate-0 transition-transform duration-500">
+                  <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl shadow-lg flex items-center justify-center transform rotate-6 group-hover:rotate-0 transition-transform duration-500 z-10">
                     <span className="text-white font-black text-xl">#{idx + 1}</span>
                   </div>
+
+                  {placeImage && (
+                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-amber-100">
+                      <Image
+                        src={placeImage}
+                        alt={`${place.name}, ${tour.destination}`}
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
 
                   <div className="pr-12">
                     <h3 className="text-xl font-black text-stone-800 mb-2 group-hover:text-amber-700 transition-colors">{place.name}</h3>
@@ -473,8 +508,34 @@ export default function SameDayTourClient({ tour }) {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
+
+          {gallery.length > 0 && (
+            <div className="mt-12">
+              <h3 className="text-lg font-black text-stone-800 mb-5 flex items-center gap-2">
+                <Camera className="w-5 h-5 text-amber-500" /> More scenes from {tour.destination}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {gallery.map((shot, i) => (
+                  <figure key={i} className="group relative">
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-amber-100 shadow-lg">
+                      <Image
+                        src={shot.src}
+                        alt={`${shot.caption}, ${tour.destination}`}
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                    <figcaption className="mt-2.5 text-sm font-bold text-stone-600">{shot.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -4,6 +4,18 @@ import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 
 const service = getSpecialTransportBySlug('college-excursion-bus-hire');
 
+const heroImage = {
+  src: '/images/tempo_hero_section.jpg',
+  alt: 'Tempo Traveller from the Triveni Cabs fleet, the budget option for college excursions and study tours',
+};
+
+const fleetImages = [
+  { src: '/images/tempo/12_seater.jpg', alt: '12-seater Tempo Traveller from the Triveni Cabs fleet, used for small college groups' },
+  { src: '/images/tempo/17_seater.jpg', alt: '17-seater Tempo Traveller from the Triveni Cabs fleet, used for mid-size college excursions' },
+  { src: '/images/bus/35_SEATER_BUS.jpg', alt: '35-seater bus from the Triveni Cabs fleet, used for full-batch college trips' },
+  { src: '/images/bus/45_SEATER_BUS.jpg', alt: '45-seater Volvo coach from the Triveni Cabs fleet, used for long-distance college tours and fests' },
+];
+
 export const metadata = {
   title: 'College Excursion Bus Hire | Student Group Transport',
   description: 'Book college excursion bus and Tempo Traveller. 12-seater from Rs 18/km, 45-seater Volvo Rs 48/km. Budget-friendly group trips. Music system. Call 7668570551.',
@@ -11,8 +23,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/college-excursion-bus-hire' },
-  openGraph: { title: 'College Excursion Bus Hire | Budget Group Transport', description: 'Affordable bus hire for college trips. Tempo Traveller and Volvo buses.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/college-excursion-bus-hire', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'College Excursion Bus Hire', description: 'Budget college trip transport. 12-seater from Rs 18/km.' },
+  openGraph: { title: 'College Excursion Bus Hire | Budget Group Transport', description: 'Affordable bus hire for college trips. Tempo Traveller and Volvo buses.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/college-excursion-bus-hire', siteName: 'Triveni Cabs', images: [{ url: '/images/tempo_hero_section.jpg', width: 1200, height: 630, alt: 'Tempo Traveller from the Triveni Cabs fleet used for college excursion bookings' }] },
+  twitter: { card: 'summary_large_image', title: 'College Excursion Bus Hire', description: 'Budget college trip transport. 12-seater from Rs 18/km.', images: ['/images/tempo_hero_section.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -28,7 +40,7 @@ export default function CollegeExcursionBusPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SpecialTransportClient service={service} />
+      <SpecialTransportClient service={service} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

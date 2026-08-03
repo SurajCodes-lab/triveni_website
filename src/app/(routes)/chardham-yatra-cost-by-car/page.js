@@ -3,6 +3,19 @@ import TripCostClient from '@/components/tripcost/TripCostClient';
 
 const data = getTripCostBySlug('chardham-yatra-cost-by-car');
 
+const media = {
+  hero: {
+    src: '/images/sightseeing/Char_Dham/Chardham_hero_section.jpg',
+    alt: 'The Char Dham circuit through the Garhwal Himalayas of Uttarakhand',
+  },
+  gallery: [
+    { src: '/images/sightseeing/Char_Dham/Yamunotri_Temple.jpg', alt: 'Yamunotri Temple, the first stop on the Char Dham circuit', caption: 'Yamunotri' },
+    { src: '/images/sightseeing/Char_Dham/Gangotri_Temple.jpg', alt: 'Gangotri Temple at the source of the Ganges', caption: 'Gangotri' },
+    { src: '/images/sightseeing/Char_Dham/Kedarnath_Temple.jpg', alt: 'Kedarnath Temple below the snow-covered Kedarnath peak', caption: 'Kedarnath' },
+    { src: '/images/sightseeing/Char_Dham/Badrinath_Temple.jpg', alt: 'The painted facade of Badrinath Temple in the Alaknanda valley', caption: 'Badrinath' },
+  ],
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -68,7 +81,7 @@ export default function ChardhamYatraCostPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <TripCostClient data={data} />
+      <TripCostClient data={data} media={media} />
     </>
   );
 }

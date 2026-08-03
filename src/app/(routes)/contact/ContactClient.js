@@ -29,8 +29,12 @@ const PHONE_DISPLAY = "+91 76685 70551";
 const PHONE_TEL = "tel:+917668570551";
 const WA_TEXT = "Hi Triveni Cabs, I want to book a cab";
 const WA_LINK = `https://wa.me/917668570551?text=${encodeURIComponent(WA_TEXT)}`;
+// Alternative WhatsApp desk — published on the contact page ONLY (user request).
+const WA_ALT_DISPLAY = "+91 89235 34551";
+const WA_ALT_LINK = `https://wa.me/918923534551?text=${encodeURIComponent(WA_TEXT)}`;
 const EMAIL = "cabstriveni@gmail.com";
-const MAPS_LINK = "https://maps.google.com/?q=Triveni+Cabs+Agra";
+const MAPS_LINK =
+  "https://maps.google.com/?q=366+Dandupura+near+Tajganj+Agra+Uttar+Pradesh+282006";
 
 // The site-wide WhatsApp interceptor in StickyCtaProvider stops click events on
 // wa.me anchors during the capture phase, so analytics has to fire on pointerdown.
@@ -201,9 +205,9 @@ export default function ContactClient() {
             priority
             sizes="100vw"
             quality={70}
-            className="object-cover opacity-45"
+            className="object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/88 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/55 via-slate-950/80 to-slate-950" />
           {/* Headlight wash */}
           <div className="absolute -left-32 top-0 h-72 w-72 rounded-full bg-[#FACF2D]/15 blur-3xl sm:h-96 sm:w-96" />
           <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-[#FACF2D]/10 blur-3xl" />
@@ -240,18 +244,30 @@ export default function ContactClient() {
                 Booking desk open 24x7
               </span>
 
-              <h1 className="speakable-headline mt-5 text-[2rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Talk to a real
-                <span className="block text-[#FACF2D]">person, right now</span>
+              <h1 className="speakable-headline mt-5 text-xl font-extrabold leading-tight tracking-tight text-white sm:text-2xl">
+                Talk to a real person, right now
               </h1>
 
-              <p className="speakable-lead mt-4 max-w-xl text-base leading-relaxed text-white/65 sm:mt-5 sm:text-lg">
-                One call, one WhatsApp message, one clear fare. Our Agra booking desk
+              {/* THE number — the page's hero. One glance, one tap. */}
+              <a
+                href={PHONE_TEL}
+                onClick={() => trackPhoneCall("contact_hero_number", "+917668570551")}
+                className={`group mt-3 block w-fit rounded-2xl ${FOCUS}`}
+                aria-label={`Call Triveni Cabs at ${PHONE_DISPLAY}`}
+              >
+                <span className="block whitespace-nowrap text-[2.35rem] font-black leading-none tracking-tight text-[#FACF2D] drop-shadow-[0_0_28px_rgba(250,207,45,0.45)] transition-transform duration-200 group-hover:scale-[1.02] sm:text-6xl lg:text-7xl">
+                  {PHONE_DISPLAY}
+                </span>
+                <span className="mt-2 block h-[6px] w-full max-w-full rounded-full bg-[repeating-linear-gradient(90deg,#FACF2D_0_22px,transparent_22px_40px)] opacity-70" aria-hidden="true" />
+              </a>
+
+              <p className="speakable-lead mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:mt-5 sm:text-lg">
+                One call, one WhatsApp message, one clear fare. The Agra booking desk
                 answers round the clock and confirms most trips within minutes, across
                 50+ cities in North India.
               </p>
 
-              {/* Primary CTAs — the visual heroes of the page */}
+              {/* Primary CTAs */}
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href={PHONE_TEL}
@@ -285,6 +301,21 @@ export default function ContactClient() {
                   </span>
                 </a>
               </div>
+
+              {/* Alternative WhatsApp desk — published on this page only */}
+              <a
+                href={WA_ALT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onPointerDown={waTrack("contact_hero_alt_desk")}
+                className={`mt-3 inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-2xl border-2 border-[#25D366]/60 bg-[#25D366]/10 px-5 py-3 text-sm font-bold text-[#4ceb8b] transition-all duration-200 hover:border-[#25D366] hover:bg-[#25D366]/20 sm:w-auto ${FOCUS}`}
+              >
+                <WhatsAppIcon className="h-4 w-4 shrink-0" />
+                <span>
+                  Line busy? Second WhatsApp desk:{" "}
+                  <span className="whitespace-nowrap">{WA_ALT_DISPLAY}</span>
+                </span>
+              </a>
 
               <p className="mt-4 text-xs text-white/40 sm:text-sm">
                 Prefer email? Write to{" "}
@@ -415,6 +446,34 @@ export default function ContactClient() {
                     >
                       {PHONE_DISPLAY}
                     </a>
+                  </div>
+                </div>
+
+                <div className="flex gap-3.5">
+                  <WhatsAppIcon className="mt-0.5 h-5 w-5 shrink-0 text-[#25D366]" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-white">WhatsApp</p>
+                    <p className="mt-1 text-sm leading-relaxed text-white/55">
+                      <a
+                        href={WA_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onPointerDown={waTrack("contact_office")}
+                        className={`underline underline-offset-4 transition-colors hover:text-[#FACF2D] ${FOCUS}`}
+                      >
+                        {PHONE_DISPLAY}
+                      </a>{" "}
+                      <span className="text-white/35">·</span>{" "}
+                      <a
+                        href={WA_ALT_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onPointerDown={waTrack("contact_office_alt")}
+                        className={`underline underline-offset-4 transition-colors hover:text-[#FACF2D] ${FOCUS}`}
+                      >
+                        {WA_ALT_DISPLAY}
+                      </a>
+                    </p>
                   </div>
                 </div>
 

@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('varanasi-vs-haridwar');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg', alt: 'Varanasi ghats stepping down to the Ganges at dawn' },
+    card: { src: '/images/sightseeing/Varanasi/Dashashwamedh_Ghat_Aarti.jpg', alt: 'Evening Ganga Aarti ceremony at Dashashwamedh Ghat in Varanasi' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg', alt: 'Haridwar on the Ganges where the river enters the plains' },
+    card: { src: '/images/sightseeing/Haridwar/Har_Ki_Pauri.jpg', alt: 'Har Ki Pauri ghat in Haridwar, the main bathing and aarti site' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function VaranasiVsHaridwarPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

@@ -3,6 +3,17 @@ import SpecialTransportClient from '@/components/special/SpecialTransportClient'
 
 const service = getSpecialTransportBySlug('hospital-visit-cab-service');
 
+const heroImage = {
+  src: '/images/car/swift_dzire.jpg',
+  alt: 'Swift Dzire sedan from the Triveni Cabs fleet, sanitized and kept ready for hospital appointment pickups',
+};
+
+const fleetImages = [
+  { src: '/images/car/swift_dzire.jpg', alt: 'Swift Dzire sedan from the Triveni Cabs fleet used for hospital visits' },
+  { src: '/images/car/ertiga.jpg', alt: 'Ertiga SUV from the Triveni Cabs fleet, easier to step into for patients travelling with family' },
+  { src: '/images/car/innova_crysta.jpg', alt: 'Innova Crysta from the Triveni Cabs fleet, the most spacious option for patients needing extra legroom' },
+];
+
 export const metadata = {
   title: 'Hospital Visit Cab Service | Medical Transport | Triveni Cabs',
   description: 'Book hospital visit cab service. Sanitized vehicles, punctual drivers, patient-friendly driving. From Rs 500. Regular dialysis/chemo transport available.',
@@ -10,8 +21,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/hospital-visit-cab-service' },
-  openGraph: { title: 'Hospital Visit Cab Service | Medical Transport', description: 'Sanitized cabs for hospital visits. Punctual, gentle driving, wheelchair assistance.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/hospital-visit-cab-service', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'Hospital Visit Cab Service', description: 'Medical transport cab. Sanitized, punctual, patient-friendly.' },
+  openGraph: { title: 'Hospital Visit Cab Service | Medical Transport', description: 'Sanitized cabs for hospital visits. Punctual, gentle driving, wheelchair assistance.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/hospital-visit-cab-service', siteName: 'Triveni Cabs', images: [{ url: '/images/car/swift_dzire.jpg', width: 1200, height: 630, alt: 'Swift Dzire sedan from the Triveni Cabs fleet used for hospital visit bookings' }] },
+  twitter: { card: 'summary_large_image', title: 'Hospital Visit Cab Service', description: 'Medical transport cab. Sanitized, punctual, patient-friendly.', images: ['/images/car/swift_dzire.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -27,7 +38,7 @@ export default function HospitalVisitCabPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SpecialTransportClient service={service} />
+      <SpecialTransportClient service={service} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

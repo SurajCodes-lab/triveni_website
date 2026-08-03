@@ -3,6 +3,17 @@ import SpecialTransportClient from '@/components/special/SpecialTransportClient'
 
 const service = getSpecialTransportBySlug('pet-friendly-cab-service');
 
+const heroImage = {
+  src: '/images/car/ertiga.jpg',
+  alt: 'Ertiga SUV from the Triveni Cabs fleet — the vehicle most often booked for travelling with pets',
+};
+
+const fleetImages = [
+  { src: '/images/car/swift_dzire.jpg', alt: 'Swift Dzire sedan from the Triveni Cabs fleet, fitted with a protective seat cover for pet travel' },
+  { src: '/images/car/ertiga.jpg', alt: 'Ertiga SUV from the Triveni Cabs fleet, recommended for travelling with one or two pets' },
+  { src: '/images/car/innova_crysta.jpg', alt: 'Innova Crysta from the Triveni Cabs fleet, the roomiest option for large pets and carriers' },
+];
+
 export const metadata = {
   title: 'Pet-Friendly Cab Service | Travel with Dogs & Cats | Triveni Cabs',
   description: 'Book pet-friendly cab service. Travel with dogs, cats and pets in sanitized vehicles with pet seat covers. AC cabs from Rs 15/km. Call 7668570551.',
@@ -10,8 +21,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/pet-friendly-cab-service' },
-  openGraph: { title: 'Pet-Friendly Cab Service | Travel with Your Pets', description: 'Pet-friendly cabs with sanitized vehicles, seat covers, and trained drivers. From Rs 15/km.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/pet-friendly-cab-service', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'Pet-Friendly Cab Service | Triveni Cabs', description: 'Travel with pets. Sanitized vehicles, pet seat covers, AC cabs. From Rs 15/km.' },
+  openGraph: { title: 'Pet-Friendly Cab Service | Travel with Your Pets', description: 'Pet-friendly cabs with sanitized vehicles, seat covers, and trained drivers. From Rs 15/km.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/pet-friendly-cab-service', siteName: 'Triveni Cabs', images: [{ url: '/images/car/ertiga.jpg', width: 1200, height: 630, alt: 'Ertiga SUV from the Triveni Cabs fleet used for pet-friendly cab bookings' }] },
+  twitter: { card: 'summary_large_image', title: 'Pet-Friendly Cab Service | Triveni Cabs', description: 'Travel with pets. Sanitized vehicles, pet seat covers, AC cabs. From Rs 15/km.', images: ['/images/car/ertiga.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -27,7 +38,7 @@ export default function PetFriendlyCabPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SpecialTransportClient service={service} />
+      <SpecialTransportClient service={service} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

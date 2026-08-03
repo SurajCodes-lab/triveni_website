@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MapPin, Calendar, Check, Star,
   Sparkles, Shield, ChevronRight, ChevronDown,
@@ -14,7 +15,7 @@ import { phoneNumber } from '@/utilis/data';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
-const RentalPackageClient = ({ rental }) => {
+const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
   const [showAllUses, setShowAllUses] = useState(false);
 
   const whatsappMessage = encodeURIComponent(`Hi! I want to book ${rental.title}. Please share availability and pricing details.`);
@@ -34,6 +35,21 @@ const RentalPackageClient = ({ rental }) => {
 
       {/* HERO SECTION - Clean professional blue */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
+        {/* Real photo behind the gradient wash (optional, per page) */}
+        {heroImage && (
+          <>
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/92 via-amber-950/85 to-yellow-950/88" />
+          </>
+        )}
+
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'linear-gradient(rgba(245,158,11,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.5) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
@@ -158,13 +174,25 @@ const RentalPackageClient = ({ rental }) => {
                   </div>
                 )}
                 <div className={`bg-white rounded-3xl border-2 ${v.popular ? 'border-amber-500 shadow-2xl shadow-amber-500/10' : 'border-gray-100 shadow-xl'} p-8 text-center transition-all duration-500 hover:border-amber-400 hover:shadow-2xl hover:shadow-amber-500/15 hover:scale-105 relative overflow-hidden`}>
-                  {/* Timer ring decoration */}
-                  <div className="w-20 h-20 mx-auto mb-5 relative">
-                    <div className={`absolute inset-0 rounded-full border-4 ${v.popular ? 'border-amber-500' : 'border-gray-200'} group-hover:border-amber-400 transition-colors`} />
-                    <div className="absolute inset-2 rounded-full bg-gradient-to-br from-amber-50 to-yellow-50 flex items-center justify-center">
-                      <Clock className="w-7 h-7 text-amber-600" />
+                  {fleetImages && fleetImages[i] ? (
+                    <div className="relative -mx-8 -mt-8 mb-6 h-44 rounded-t-3xl overflow-hidden bg-slate-100">
+                      <Image
+                        src={fleetImages[i].src}
+                        alt={fleetImages[i].alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    /* Timer ring decoration */
+                    <div className="w-20 h-20 mx-auto mb-5 relative">
+                      <div className={`absolute inset-0 rounded-full border-4 ${v.popular ? 'border-amber-500' : 'border-gray-200'} group-hover:border-amber-400 transition-colors`} />
+                      <div className="absolute inset-2 rounded-full bg-gradient-to-br from-amber-50 to-yellow-50 flex items-center justify-center">
+                        <Clock className="w-7 h-7 text-amber-600" />
+                      </div>
+                    </div>
+                  )}
                   <h3 className="text-gray-900 font-bold text-xl mb-1">{v.type}</h3>
                   <p className="text-gray-400 text-sm mb-1">{v.desc}</p>
                   <p className="text-gray-500 text-sm mb-5">{v.capacity}</p>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MapPin, Calendar, Check, Star,
   Sparkles, Shield, ChevronRight, ChevronDown,
@@ -16,7 +17,7 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
-const SpecialTransportClient = ({ service }) => {
+const SpecialTransportClient = ({ service, heroImage, fleetImages }) => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
 
   const whatsappText = `Hi! I need ${service.title}. Please share details and pricing.`;
@@ -39,6 +40,21 @@ const SpecialTransportClient = ({ service }) => {
 
       {/* HERO SECTION - Warm amber on dark */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
+        {/* Real fleet photo behind the gradient wash (optional, per page) */}
+        {heroImage && (
+          <>
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/92 via-amber-950/85 to-yellow-950/88" />
+          </>
+        )}
+
         {/* Subtle mesh pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
@@ -214,9 +230,21 @@ const SpecialTransportClient = ({ service }) => {
                     <Check className="w-4 h-4 text-amber-600" />
                   </div>
                 </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-100 to-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Car className="w-8 h-8 text-amber-600" />
-                </div>
+                {fleetImages && fleetImages[i] ? (
+                  <div className="relative -mx-8 -mt-8 mb-6 h-44 rounded-t-3xl overflow-hidden bg-slate-100">
+                    <Image
+                      src={fleetImages[i].src}
+                      alt={fleetImages[i].alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-100 to-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Car className="w-8 h-8 text-amber-600" />
+                  </div>
+                )}
                 <h3 className="text-gray-900 font-bold text-xl mb-2">{vehicle.name}</h3>
                 <p className="text-gray-500 text-sm mb-4">{vehicle.capacity}</p>
                 <div className="text-3xl font-black bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent mb-6">{vehicle.rate}</div>

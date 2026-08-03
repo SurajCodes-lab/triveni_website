@@ -347,14 +347,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
 
-        {/* Google Analytics - Lazy loaded */}
+        {/* Google Analytics — afterInteractive (NOT lazyOnload). lazyOnload
+            undercounted fast-bounce mobile visitors (GA4 "active users" showed
+            ~150 vs GSC-implied ~330+/day, Aug 2026). The Week-41 INP work
+            removed the animation main-thread cost, so counting accurately is
+            affordable again. GTM/Ads below stay lazy — only counting moved. */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
             <Script
-              strategy="lazyOnload"
+              strategy="afterInteractive"
               src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
             />
-            <Script strategy="lazyOnload" id="ga-init">
+            <Script strategy="afterInteractive" id="ga-init">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}

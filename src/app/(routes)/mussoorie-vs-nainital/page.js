@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('mussoorie-vs-nainital');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg', alt: 'Mussoorie hill station overlooking the Doon valley from the Garhwal foothills' },
+    card: { src: '/images/sightseeing/Mussoorie/Kempty_Falls.jpg', alt: 'Kempty Falls near Mussoorie cascading down terraced rock ledges' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Nainital/Nainital_hero_section.jpg', alt: 'Nainital town wrapped around its lake in the Kumaon hills' },
+    card: { src: '/images/sightseeing/Nainital/Naini_Lake.jpg', alt: 'Boats on Naini Lake, the centrepiece of Nainital' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function MussoorieVsNainitalPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

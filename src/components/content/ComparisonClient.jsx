@@ -1,13 +1,19 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Check, X, ArrowRight, Star, Users, Shield, ChevronRight, Car, Fuel } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
-export default function ComparisonClient({ data }) {
+export default function ComparisonClient({ data, media }) {
   const { vehicle1: v1, vehicle2: v2, comparisonPoints, faqs, verdict } = data;
+
+  // Optional side-by-side photography. Shape: { v1: {src, alt, caption}, v2: {...} }
+  // Pages that pass nothing render exactly as before.
+  const media1 = media?.v1;
+  const media2 = media?.v2;
 
   // Carry the two compared vehicles into the WhatsApp prefill for better lead context
   const waCompareMsg = encodeURIComponent(
@@ -57,6 +63,46 @@ export default function ComparisonClient({ data }) {
           </div>
         </div>
       </section>
+
+      {/* Side-by-side photography — only rendered for pages that supply media */}
+      {(media1 || media2) && (
+        <section className="px-4 pt-2 pb-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              { m: media1, v: v1, accent: 'amber' },
+              { m: media2, v: v2, accent: 'cyan' },
+            ].map(({ m, v, accent }) => (
+              m ? (
+                <figure key={v.name} className="group relative bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
+                  <div className="relative aspect-[16/10] w-full bg-slate-900">
+                    <Image
+                      src={m.src}
+                      alt={m.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 560px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/15 to-transparent" />
+                    <span className={`absolute top-4 left-4 text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md ${
+                      accent === 'amber'
+                        ? 'bg-amber-500/20 text-amber-200 border border-amber-400/30'
+                        : 'bg-cyan-500/20 text-cyan-200 border border-cyan-400/30'
+                    }`}>
+                      {v.category}
+                    </span>
+                  </div>
+                  <figcaption className="absolute bottom-0 left-0 right-0 p-5">
+                    <h3 className={`text-xl md:text-2xl font-bold ${accent === 'amber' ? 'text-amber-300' : 'text-cyan-300'}`}>
+                      {v.name}
+                    </h3>
+                    {m.caption && <p className="text-slate-300 text-sm mt-1 leading-snug">{m.caption}</p>}
+                  </figcaption>
+                </figure>
+              ) : null
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Quick Comparison Table */}
       <section className="py-16 px-4">

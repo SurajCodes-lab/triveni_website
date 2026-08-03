@@ -3,6 +3,17 @@ import RentalPackageClient from '@/components/rental/RentalPackageClient';
 
 const rental = getRentalBySlug('monthly-car-rental');
 
+const heroImage = {
+  src: '/images/car/innova_crysta.jpg',
+  alt: 'Innova Crysta from the Triveni Cabs fleet, available on a dedicated monthly rental with driver',
+};
+
+const fleetImages = [
+  { src: '/images/car/swift_dzire.jpg', alt: 'Swift Dzire sedan from the Triveni Cabs fleet, the entry option for monthly car rental' },
+  { src: '/images/car/ertiga.jpg', alt: 'Ertiga SUV from the Triveni Cabs fleet, available on monthly rental with a dedicated driver' },
+  { src: '/images/car/innova_crysta.jpg', alt: 'Innova Crysta from the Triveni Cabs fleet, the premium monthly rental option' },
+];
+
 export const metadata = {
   title: 'Monthly Car Rental with Driver | Sedan Rs 35,000/Month',
   description: 'Book monthly car rental with driver. Sedan Rs 35,000/month, SUV Rs 50,000, Innova Rs 60,000. 2,500 km included. Corporate, film shoots, long-term.',
@@ -10,8 +21,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/monthly-car-rental' },
-  openGraph: { title: 'Monthly Car Rental with Driver | From Rs 35,000/Month', description: 'Monthly car rental. Dedicated driver, 2,500 km included. From Rs 35,000/month.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/monthly-car-rental', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'Monthly Car Rental | Rs 35,000/Month', description: 'Monthly car rental with driver. 2,500 km. Sedan, SUV, Innova.' },
+  openGraph: { title: 'Monthly Car Rental with Driver | From Rs 35,000/Month', description: 'Monthly car rental. Dedicated driver, 2,500 km included. From Rs 35,000/month.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/monthly-car-rental', siteName: 'Triveni Cabs', images: [{ url: '/images/car/innova_crysta.jpg', width: 1200, height: 630, alt: 'Innova Crysta from the Triveni Cabs fleet available on monthly car rental with driver' }] },
+  twitter: { card: 'summary_large_image', title: 'Monthly Car Rental | Rs 35,000/Month', description: 'Monthly car rental with driver. 2,500 km. Sedan, SUV, Innova.', images: ['/images/car/innova_crysta.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -25,7 +36,7 @@ export default function MonthlyCarRentalPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <RentalPackageClient rental={rental} />
+      <RentalPackageClient rental={rental} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('dharamshala-vs-dalhousie');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg', alt: 'Dharamshala below the Dhauladhar range in Himachal Pradesh' },
+    card: { src: '/images/sightseeing/Dharamshala/McLeod_Ganj.jpg', alt: 'McLeod Ganj above Dharamshala, home of the Tibetan community' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Dalhousie/dalhousie_hero_section.jpg', alt: 'Dalhousie hill station spread across pine-covered Himachal ridges' },
+    card: { src: '/images/sightseeing/Dalhousie/Khajjiar_Meadow.jpg', alt: 'Khajjiar meadow near Dalhousie, the grassland ringed by deodar forest' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function DharamshalaVsDalhousiePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

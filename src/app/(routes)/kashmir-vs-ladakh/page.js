@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('kashmir-vs-ladakh');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg', alt: 'The Kashmir Valley with green meadows below the Himalayan ranges' },
+    card: { src: '/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg', alt: 'Shikara boats and houseboats on Dal Lake in Srinagar' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Ladakh/Ladakh_hero_section.jpg', alt: 'The high-altitude cold desert landscape of Ladakh' },
+    card: { src: '/images/sightseeing/Ladakh/Pangong_Lake.jpg', alt: 'Pangong Lake in Ladakh with its shifting blue water at 14,000 feet' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function KashmirVsLadakhPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

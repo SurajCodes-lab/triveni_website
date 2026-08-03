@@ -3,6 +3,17 @@ import RentalPackageClient from '@/components/rental/RentalPackageClient';
 
 const rental = getRentalBySlug('multi-day-cab-hire');
 
+const heroImage = {
+  src: '/images/car/premium_suv.jpg',
+  alt: 'Premium SUV from the Triveni Cabs fleet, the kind of vehicle assigned to multi-day road trips',
+};
+
+const fleetImages = [
+  { src: '/images/car/swift_dzire.jpg', alt: 'Swift Dzire sedan from the Triveni Cabs fleet, the entry option for multi-day cab hire' },
+  { src: '/images/car/ertiga.jpg', alt: 'Ertiga SUV from the Triveni Cabs fleet, suited to family road trips over several days' },
+  { src: '/images/car/innova_crysta.jpg', alt: 'Innova Crysta from the Triveni Cabs fleet, the most comfortable choice for long multi-day tours' },
+];
+
 export const metadata = {
   title: 'Multi-Day Cab Hire | 2-7 Day Packages | Rs 2,750/Day',
   description: 'Book multi-day cab hire for 2-7 days. Sedan from Rs 2,750/day, 250 km/day included. Golden Triangle, Rajasthan, Char Dham packages. Call 7668570551.',
@@ -10,8 +21,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/multi-day-cab-hire' },
-  openGraph: { title: 'Multi-Day Cab Hire | Rs 2,750/Day | 250 km/Day', description: 'Multi-day cab for road trips and tours. 250 km/day included. Driver stay covered.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/multi-day-cab-hire', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'Multi-Day Cab Hire | Rs 2,750/Day', description: '2-7 day cab hire. 250 km/day. Driver accommodation included.' },
+  openGraph: { title: 'Multi-Day Cab Hire | Rs 2,750/Day | 250 km/Day', description: 'Multi-day cab for road trips and tours. 250 km/day included. Driver stay covered.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/multi-day-cab-hire', siteName: 'Triveni Cabs', images: [{ url: '/images/car/premium_suv.jpg', width: 1200, height: 630, alt: 'Premium SUV from the Triveni Cabs fleet used for multi-day cab hire' }] },
+  twitter: { card: 'summary_large_image', title: 'Multi-Day Cab Hire | Rs 2,750/Day', description: '2-7 day cab hire. 250 km/day. Driver accommodation included.', images: ['/images/car/premium_suv.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -27,7 +38,7 @@ export default function MultiDayCabHirePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <RentalPackageClient rental={rental} />
+      <RentalPackageClient rental={rental} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }

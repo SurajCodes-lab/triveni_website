@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MapPin, Clock, CheckCircle2, ChevronRight, Star, Shield, Car, HelpCircle, ThumbsUp, ThumbsDown, Award, Route, Trophy, Target } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
@@ -8,7 +9,13 @@ import { useState, useMemo } from 'react';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
-export default function DestinationCompareClient({ data }) {
+export default function DestinationCompareClient({ data, images }) {
+  // Optional per-page photography. Shape:
+  //   { dest1: { hero: {src, alt}, card: {src, alt} }, dest2: { ... } }
+  // Every field is optional — the letter-tile fallback still renders without it.
+  const img1 = images?.dest1;
+  const img2 = images?.dest2;
+
   // Map {q, a} format to {question, answer} for FAQSection
   const normalizedFaqs = useMemo(() =>
     (data.faqs || []).map(faq => ({
@@ -128,50 +135,84 @@ export default function DestinationCompareClient({ data }) {
             <span>Destination Comparison</span>
           </div>
 
-          {/* VS Visual */}
-          <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-12 mb-10">
-            {/* Dest 1 */}
-            <div className="text-center split-card-blue min-w-0">
-              <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40 mx-auto mb-4">
-                <div className="absolute inset-0 bg-blue-500/20 rounded-3xl border-2 border-blue-400/30 backdrop-blur-xl" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-3xl sm:text-5xl md:text-7xl font-black text-blue-400">{data.dest1.name.charAt(0)}</span>
-                </div>
-                {/* Rating Badge */}
-                <div className="absolute -bottom-2 -right-2 bg-blue-500 rounded-xl px-2.5 py-1 flex items-center gap-1 shadow-lg shadow-blue-500/30">
-                  <Star className="w-3 h-3 text-yellow-300 fill-yellow-300" />
-                  <span className="text-white text-xs font-black">{data.dest1.rating}</span>
-                </div>
+          {/* VS Visual — split photo panels with the VS badge centred between them */}
+          <div className="relative grid grid-cols-2 gap-3 sm:gap-6 md:gap-12 mb-5">
+            {/* Dest 1 panel */}
+            <div className="split-card-blue relative aspect-[4/3] sm:aspect-[16/11] w-full">
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-blue-400/30 bg-blue-500/20 backdrop-blur-xl shadow-2xl shadow-blue-950/40">
+                {img1?.hero ? (
+                  <>
+                    <Image
+                      src={img1.hero.src}
+                      alt={img1.hero.alt}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 46vw, 520px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-950/75 via-blue-950/10 to-transparent" />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-3xl sm:text-5xl md:text-7xl font-black text-blue-400">{data.dest1.name.charAt(0)}</span>
+                  </div>
+                )}
               </div>
-              <h2 className="text-lg sm:text-2xl md:text-3xl font-black shimmer-blue mb-1">{data.dest1.name}</h2>
-              <p className="text-blue-300/60 text-sm">{data.dest1.distanceFromDelhi} from Delhi</p>
+              {/* Rating Badge */}
+              <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-10 bg-blue-500 rounded-xl px-2.5 py-1 flex items-center gap-1 shadow-lg shadow-blue-950/40">
+                <Star className="w-3 h-3 text-yellow-300 fill-yellow-300" />
+                <span className="text-white text-xs font-black">{data.dest1.rating}</span>
+              </div>
             </div>
 
-            {/* VS Badge */}
-            <div className="flex-shrink-0">
-              <div className="vs-badge relative w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                <span className="text-xl sm:text-3xl md:text-4xl font-black text-white drop-shadow-lg">VS</span>
+            {/* Dest 2 panel */}
+            <div className="split-card-orange relative aspect-[4/3] sm:aspect-[16/11] w-full">
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-orange-400/30 bg-orange-500/20 backdrop-blur-xl shadow-2xl shadow-orange-950/40">
+                {img2?.hero ? (
+                  <>
+                    <Image
+                      src={img2.hero.src}
+                      alt={img2.hero.alt}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 46vw, 520px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-orange-950/75 via-orange-950/10 to-transparent" />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-3xl sm:text-5xl md:text-7xl font-black text-orange-400">{data.dest2.name.charAt(0)}</span>
+                  </div>
+                )}
+              </div>
+              {/* Rating Badge */}
+              <div className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 z-10 bg-orange-500 rounded-xl px-2.5 py-1 flex items-center gap-1 shadow-lg shadow-orange-950/40">
+                <Star className="w-3 h-3 text-yellow-300 fill-yellow-300" />
+                <span className="text-white text-xs font-black">{data.dest2.rating}</span>
+              </div>
+            </div>
+
+            {/* VS Badge — sits exactly on the seam between the two panels */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="vs-badge relative w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                <span className="text-lg sm:text-3xl md:text-4xl font-black text-white drop-shadow-lg">VS</span>
                 {/* Ring */}
                 <div className="absolute inset-[-4px] rounded-full border-2 border-white/20" />
                 <div className="absolute inset-[-8px] rounded-full border border-white/10" />
               </div>
             </div>
+          </div>
 
-            {/* Dest 2 */}
-            <div className="text-center split-card-orange min-w-0">
-              <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-40 md:h-40 mx-auto mb-4">
-                <div className="absolute inset-0 bg-orange-500/20 rounded-3xl border-2 border-orange-400/30 backdrop-blur-xl" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-3xl sm:text-5xl md:text-7xl font-black text-orange-400">{data.dest2.name.charAt(0)}</span>
-                </div>
-                {/* Rating Badge */}
-                <div className="absolute -bottom-2 -right-2 bg-orange-500 rounded-xl px-2.5 py-1 flex items-center gap-1 shadow-lg shadow-orange-500/30">
-                  <Star className="w-3 h-3 text-yellow-300 fill-yellow-300" />
-                  <span className="text-white text-xs font-black">{data.dest2.rating}</span>
-                </div>
-              </div>
+          {/* Panel captions */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-12 mb-10">
+            <div className="text-center min-w-0">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-black shimmer-blue mb-1">{data.dest1.name}</h2>
+              <p className="text-blue-300/60 text-xs sm:text-sm">{data.dest1.distanceFromDelhi} from Delhi</p>
+            </div>
+            <div className="text-center min-w-0">
               <h2 className="text-lg sm:text-2xl md:text-3xl font-black shimmer-orange mb-1">{data.dest2.name}</h2>
-              <p className="text-orange-300/60 text-sm">{data.dest2.distanceFromDelhi} from Delhi</p>
+              <p className="text-orange-300/60 text-xs sm:text-sm">{data.dest2.distanceFromDelhi} from Delhi</p>
             </div>
           </div>
 
@@ -200,10 +241,23 @@ export default function DestinationCompareClient({ data }) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-6 relative z-20 mb-20">
         <div className="grid md:grid-cols-2 gap-8">
           {[
-            { dest: data.dest1, side: "blue", label: "OPTION A" },
-            { dest: data.dest2, side: "orange", label: "OPTION B" }
-          ].map(({ dest, side, label }) => (
+            { dest: data.dest1, side: "blue", label: "OPTION A", photo: img1?.card },
+            { dest: data.dest2, side: "orange", label: "OPTION B", photo: img2?.card }
+          ].map(({ dest, side, label, photo }) => (
             <div key={dest.name} className={`group bg-white rounded-3xl shadow-2xl border-2 ${side === 'blue' ? 'shadow-blue-500/5 border-blue-100 hover:border-blue-300' : 'shadow-orange-500/5 border-orange-100 hover:border-orange-300'} overflow-hidden transition-all duration-500 hover:-translate-y-1`}>
+              {/* Card Photo */}
+              {photo && (
+                <div className="relative aspect-[16/9] w-full bg-gray-100">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${side === 'blue' ? 'from-blue-700/80' : 'from-orange-500/80'} via-transparent to-transparent`} />
+                </div>
+              )}
               {/* Card Header */}
               <div className={`relative p-6 ${side === 'blue' ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600' : 'bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500'}`}>
                 <div className="absolute top-3 right-4">

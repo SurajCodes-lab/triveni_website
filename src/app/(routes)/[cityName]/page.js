@@ -16,7 +16,7 @@ import RouteClientContent from "./RouteClientContent";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
-import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { getSpeakableSchema, getArticleSchema, getComparisonSchema, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks, getRelatedRoutes, getCityTopicalLinks } from '@/lib/seo/linkingHelper';
 
@@ -42,6 +42,18 @@ function parseRouteSlug(slug) {
   const cityName = parts[0].replace(/-/g, ' ');
   const destination = parts[1].replace(/-/g, ' ');
   return { cityName, destination };
+}
+
+// Normalise a display city name ("Jim Corbett") or URL segment ("jim-corbett")
+// into the lowercase-hyphen key used by _CITY_PLACES in speakable-helpers.
+// Mirrors cityToGeoSlug in roundTripData without importing that large dataset.
+function toGeoSlug(name) {
+  return String(name || '')
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 export function createRouteSlug(cityName, destination) {
@@ -144,6 +156,22 @@ export default function CityNamePage({ params }) {
 
     const priceNum = parseInt(String(startingPrice).replace('₹', '').replace(',', '') || '2760');
 
+    // GEO: resolve origin + destination to real-world Place/City entities with
+    // GeoCoordinates from the shared _CITY_PLACES map. Null-safe — cities that
+    // are not in the map simply emit no Place node and the consuming schemas
+    // fall back to their inline City objects.
+    const routeOriginPlace = getCityPlaceSchema(toGeoSlug(formattedCityName), {
+      idSlug: `${cityName}/origin`,
+      description: `${formattedCityName} — pickup city for the taxi to ${formattedDestination}.`
+    });
+    const routeDestinationPlace = getCityPlaceSchema(toGeoSlug(formattedDestination), {
+      idSlug: `${cityName}/destination`,
+      description: `${formattedDestination} — drop city on the taxi route from ${formattedCityName}.`
+    });
+    const routeOriginPlaceId = routeOriginPlace ? routeOriginPlace['@id'] : null;
+    const routeDestinationPlaceId = routeDestinationPlace ? routeDestinationPlace['@id'] : null;
+    const routeGeoPlaceNodes = [routeOriginPlace, routeDestinationPlace].filter(Boolean);
+
     // Route Page Structured Data
     // Service-level aggregateRating + 3 named Reviews via outstation reviewer pool.
     // Provider's nested aggregateRating removed (wrong schema location — moved to top-level).
@@ -188,7 +216,10 @@ export default function CityNamePage({ params }) {
       "@type": "TravelAction",
       "name": `${formattedCityName} to ${formattedDestination} Cab Service`,
       "description": `Book reliable taxi from ${formattedCityName} to ${formattedDestination}. Distance: ${estimatedDistance}, Duration: ${estimatedTime}`,
-      "fromLocation": {
+      // Prefer an @id reference to the geo-anchored Place node emitted below
+      // (real coordinates + postal code); fall back to the inline Place for
+      // cities absent from _CITY_PLACES.
+      "fromLocation": routeOriginPlaceId ? { "@id": routeOriginPlaceId } : {
         "@type": "Place",
         "name": formattedCityName,
         "address": {
@@ -197,7 +228,7 @@ export default function CityNamePage({ params }) {
           "addressCountry": "IN"
         }
       },
-      "toLocation": {
+      "toLocation": routeDestinationPlaceId ? { "@id": routeDestinationPlaceId } : {
         "@type": "Place",
         "name": formattedDestination,
         "address": {
@@ -338,8 +369,8 @@ export default function CityNamePage({ params }) {
       "itinerary": {
         "@type": "ItemList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "item": { "@type": "Place", "name": formattedCityName } },
-          { "@type": "ListItem", "position": 2, "item": { "@type": "Place", "name": formattedDestination } }
+          { "@type": "ListItem", "position": 1, "item": routeOriginPlaceId ? { "@id": routeOriginPlaceId } : { "@type": "Place", "name": formattedCityName } },
+          { "@type": "ListItem", "position": 2, "item": routeDestinationPlaceId ? { "@id": routeDestinationPlaceId } : { "@type": "Place", "name": formattedDestination } }
         ]
       },
       "offers": {
@@ -412,6 +443,15 @@ export default function CityNamePage({ params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(routeBreadcrumbSchema) }}
         />
+        {/* GEO Place nodes — origin + destination anchored to real coordinates.
+            Referenced by @id from TravelAction and TouristTrip above. */}
+        {routeGeoPlaceNodes.map((node, i) => (
+          <script
+            key={`route-geo-${i}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }}
+          />
+        ))}
         <AEOHead pageType="route" data={{ url: `/${cityName}`, title: `${formattedCityName} to ${formattedDestination} Taxi`, origin: formattedCityName, destination: formattedDestination }} />
 
         <RouteClientContent
@@ -523,6 +563,18 @@ export default function CityNamePage({ params }) {
 
     const geo = cityGeoCoords[formattedCityName] || { lat: COMPANY_INFO.geo.latitude, lng: COMPANY_INFO.geo.longitude };
 
+    // GEO: anchor the hub to the real-world city entity (Place/TouristDestination
+    // with GeoCoordinates, postal code and alternateName) so AI engines can bind
+    // "taxi service in {city}" to the correct place. Distinct from the
+    // LocalBusiness node below, which is our branch, not the city itself.
+    // Null-safe — cities absent from _CITY_PLACES emit no Place node.
+    const cityPlaceSchema = getCityPlaceSchema(toGeoSlug(cityName), {
+      idSlug: cityName,
+      description: `${formattedCityName}, India — service city for Triveni Cabs local, outstation and airport taxi bookings.`,
+      image: '/images/triveni-cabs-og.jpg'
+    });
+    const cityPlaceId = cityPlaceSchema ? cityPlaceSchema['@id'] : null;
+
     // City Page Structured Data
     // City-level LocalBusiness uses brand-level 10K reviewCount (legitimate aggregate
     // for the company's overall city presence — same pattern as the corporate hub).
@@ -565,7 +617,10 @@ export default function CityNamePage({ params }) {
         "@type": "City",
         "name": formattedCityName,
         "addressCountry": "IN"
-      }
+      },
+      // Graph link to the geo-anchored city Place node emitted alongside this
+      // schema, so the branch resolves to a real place rather than a bare name.
+      ...(cityPlaceId ? { "containedInPlace": { "@id": cityPlaceId } } : {})
     };
 
     const cityTaxiServiceSchema = {
@@ -843,6 +898,14 @@ export default function CityNamePage({ params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(cityArticleSchema) }}
         />
+        {/* GEO Place node — the city as a real-world entity. Referenced by
+            @id from the LocalBusiness schema above. */}
+        {cityPlaceSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }}
+          />
+        )}
         {cityComparisonSchema.map((schema, i) => (
           <script
             key={`city-comparison-${i}`}

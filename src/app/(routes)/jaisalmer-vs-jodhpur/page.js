@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('jaisalmer-vs-jodhpur');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg', alt: 'Jaisalmer the Golden City rising from the Thar desert' },
+    card: { src: '/images/sightseeing/Jaisalmer/Sam_Sand_Dunes.jpg', alt: 'Sam Sand Dunes outside Jaisalmer, the desert safari and camp country' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg', alt: 'Mehrangarh Fort standing on the cliff above Jodhpur' },
+    card: { src: '/images/sightseeing/Jodhpur/Blue City_Iconic blue-painted houses in jodhpur.jpg', alt: 'The blue-painted houses of the old city in Jodhpur' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function JaisalmerVsJodhpurPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

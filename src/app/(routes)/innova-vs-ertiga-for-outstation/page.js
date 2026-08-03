@@ -6,6 +6,19 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 const SLUG = 'innova-vs-ertiga-for-outstation';
 const data = getComparisonBySlug(SLUG);
 
+const media = {
+  v1: {
+    src: '/images/car/innova_crysta.jpg',
+    alt: 'Toyota Innova Crysta seven-seater MUV parked on a tree-lined road',
+    caption: 'The default outstation choice for families of six or seven with luggage.',
+  },
+  v2: {
+    src: '/images/car/ertiga.jpg',
+    alt: 'Maruti Ertiga seven-seater MPV, the budget option in the Triveni Cabs fleet',
+    caption: 'Lighter, cheaper per km, best for four to five people on shorter runs.',
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -48,7 +61,7 @@ export default function InnovaVsErtigaPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       )}
       <SemanticComparison data={data} />
-      <ComparisonClient data={data} />
+      <ComparisonClient data={data} media={media} />
     </>
   );
 }

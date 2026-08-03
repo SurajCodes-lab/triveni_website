@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('nainital-vs-jim-corbett');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Nainital/Nainital_hero_section.jpg', alt: 'Nainital town wrapped around its lake in the Kumaon hills' },
+    card: { src: '/images/sightseeing/Nainital/Naini_Lake.jpg', alt: 'Boats on Naini Lake, the centrepiece of Nainital' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg', alt: 'Jim Corbett National Park, the sal forest and grassland tiger reserve' },
+    card: { src: '/images/sightseeing/Jim_Corbett/Tiger_Safari_Corbett.jpg', alt: 'Jeep safari tracking tigers inside Jim Corbett National Park' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function NainitalVsJimCorbettPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

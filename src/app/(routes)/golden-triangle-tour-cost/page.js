@@ -3,6 +3,18 @@ import TripCostClient from '@/components/tripcost/TripCostClient';
 
 const data = getTripCostBySlug('golden-triangle-tour-cost');
 
+const media = {
+  hero: {
+    src: '/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg',
+    alt: 'The Golden Triangle tour circuit linking Delhi, Agra and Jaipur',
+  },
+  gallery: [
+    { src: '/images/sightseeing/Delhi/India_Gate.jpg', alt: 'India Gate on Kartavya Path in Delhi', caption: 'Delhi' },
+    { src: '/images/sightseeing/Agra/Taj_mahal.jpg', alt: 'The Taj Mahal in Agra seen across its reflecting pool', caption: 'Agra' },
+    { src: '/images/sightseeing/Jaipur/Hawa_Mahal.jpg', alt: 'Hawa Mahal, the honeycomb palace facade in the old city of Jaipur', caption: 'Jaipur' },
+  ],
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -68,7 +80,7 @@ export default function GoldenTriangleTourCostPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <TripCostClient data={data} />
+      <TripCostClient data={data} media={media} />
     </>
   );
 }

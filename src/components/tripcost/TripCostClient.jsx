@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, IndianRupee, Car, MapPin, Clock, CheckCircle2, ChevronRight, Star, Shield, Calculator, Banknote, Hotel, Utensils, Ticket, Fuel, HelpCircle, Receipt, TrendingUp, Percent } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { FAQSection } from '@/components/seo/FAQSection';
@@ -9,7 +10,11 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 
-export default function TripCostClient({ data }) {
+export default function TripCostClient({ data, media }) {
+  // Optional destination photography. Shape:
+  //   { hero: {src, alt}, gallery: [{src, alt, caption}] }
+  // Pages that pass nothing render exactly as before.
+
   // Map {q, a} format to {question, answer} for FAQSection
   const normalizedFaqs = useMemo(() =>
     (data.faqs || []).map(faq => ({
@@ -84,6 +89,20 @@ export default function TripCostClient({ data }) {
 
       {/* Hero Section - Financial Dashboard Style */}
       <section className="relative bg-gradient-to-br from-amber-950 via-amber-900 to-yellow-950 text-white overflow-hidden">
+        {/* Destination photograph behind the amber wash */}
+        {media?.hero && (
+          <>
+            <Image
+              src={media.hero.src}
+              alt={media.hero.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-950/92 via-amber-900/72 to-yellow-950/92" />
+          </>
+        )}
         {/* Animated Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -207,6 +226,40 @@ export default function TripCostClient({ data }) {
           ))}
         </div>
       </section>
+
+      {/* Destination gallery — only rendered for pages that supply media */}
+      {media?.gallery?.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-100 rounded-full px-4 py-2 mb-4">
+              <MapPin className="w-4 h-4 text-amber-700" />
+              <span className="text-xs font-bold text-amber-700 uppercase tracking-widest">On the Route</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+              What Your {data.destination} Budget Covers
+            </h2>
+          </div>
+          <div className={`grid grid-cols-2 gap-4 sm:gap-6 ${media.gallery.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'}`}>
+            {media.gallery.map((shot) => (
+              <figure key={shot.src} className="group relative rounded-3xl overflow-hidden border-2 border-amber-100 bg-amber-50 shadow-lg shadow-amber-500/5">
+                <div className="relative aspect-[4/5] w-full">
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    fill
+                    sizes="(max-width: 768px) 45vw, 320px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/10 to-transparent" />
+                </div>
+                <figcaption className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-white font-black text-sm sm:text-base leading-tight">{shot.caption}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Cab Cost Breakdown - Invoice Style */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-20">

@@ -3,6 +3,17 @@ import DestinationCompareClient from '@/components/compare/DestinationCompareCli
 
 const data = getCompareBySlug('shimla-vs-manali');
 
+const images = {
+  dest1: {
+    hero: { src: '/images/sightseeing/Shimla/shimla_hero_section.jpg', alt: 'Shimla hill station with colonial-era buildings on forested Himalayan ridges' },
+    card: { src: '/images/sightseeing/Shimla/the ridge shimla.jpg', alt: 'The Ridge in Shimla, the open promenade at the heart of the town' },
+  },
+  dest2: {
+    hero: { src: '/images/sightseeing/Manali/Manali_hero_section.jpg', alt: 'Manali valley framed by snow-capped Himalayan peaks and deodar forest' },
+    card: { src: '/images/sightseeing/Manali/Solang Valley.jpg', alt: 'Solang Valley near Manali, the adventure sports meadow below the snow line' },
+  },
+};
+
 export const revalidate = 3600;
 
 export const metadata = {
@@ -57,7 +68,7 @@ export default function ShimlaVsManaliPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <DestinationCompareClient data={data} />
+      <DestinationCompareClient data={data} images={images} />
     </>
   );
 }

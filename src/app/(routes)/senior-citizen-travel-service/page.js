@@ -3,6 +3,17 @@ import SpecialTransportClient from '@/components/special/SpecialTransportClient'
 
 const service = getSpecialTransportBySlug('senior-citizen-travel-service');
 
+const heroImage = {
+  src: '/images/car/innova_crysta.jpg',
+  alt: 'Innova Crysta from the Triveni Cabs fleet — the recommended vehicle for senior citizen travel thanks to its high seats and easy entry',
+};
+
+const fleetImages = [
+  { src: '/images/car/swift_dzire.jpg', alt: 'Swift Dzire sedan from the Triveni Cabs fleet used for short senior citizen trips' },
+  { src: '/images/car/ertiga.jpg', alt: 'Ertiga SUV from the Triveni Cabs fleet, comfortable for elders travelling with family' },
+  { src: '/images/car/innova_crysta.jpg', alt: 'Innova Crysta from the Triveni Cabs fleet, the recommended vehicle for elderly passengers on long journeys' },
+];
+
 export const metadata = {
   title: 'Senior Citizen Travel Service | Elderly-Friendly Cabs',
   description: 'Book senior citizen cab service. Patient drivers, gentle driving, door-to-door assistance. Sedan from Rs 12/km. Regular packages for temple visits.',
@@ -10,8 +21,8 @@ export const metadata = {
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/senior-citizen-travel-service' },
-  openGraph: { title: 'Senior Citizen Travel Service | Elderly-Friendly', description: 'Patient drivers, gentle driving, door-to-door assistance for senior citizens.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/senior-citizen-travel-service', siteName: 'Triveni Cabs' },
-  twitter: { card: 'summary_large_image', title: 'Senior Citizen Cab Service', description: 'Elderly-friendly cab service. Patient drivers, smooth driving.' },
+  openGraph: { title: 'Senior Citizen Travel Service | Elderly-Friendly', description: 'Patient drivers, gentle driving, door-to-door assistance for senior citizens.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/senior-citizen-travel-service', siteName: 'Triveni Cabs', images: [{ url: '/images/car/innova_crysta.jpg', width: 1200, height: 630, alt: 'Innova Crysta from the Triveni Cabs fleet used for senior citizen travel bookings' }] },
+  twitter: { card: 'summary_large_image', title: 'Senior Citizen Cab Service', description: 'Elderly-friendly cab service. Patient drivers, smooth driving.', images: ['/images/car/innova_crysta.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -27,7 +38,7 @@ export default function SeniorCitizenTravelPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SpecialTransportClient service={service} />
+      <SpecialTransportClient service={service} heroImage={heroImage} fleetImages={fleetImages} />
     </>
   );
 }
