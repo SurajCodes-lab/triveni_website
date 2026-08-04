@@ -107,4 +107,11 @@ The July guide-pages "alive" uplift (photo hero, attraction images, sell band) i
 - INP work must not remove analytics — move, don't delete.
 
 ## Execution log
-*Appended as batches complete.*
+
+### Batch 1 — DEPLOYED 2 Aug (build lqogNg4j6KmXlNmSoYMOv, backup triveni-backup-cro-20260802_223657, commit week41-batch1)
+A2 fare-first metas (one-way/round-trip/tempo/bus) · B1/B2/B6 CRO on all money templates (trust rows at price, hero CTAs, congruence) · H2 money→blog "Trip guides" bands (new blogLinkHelper.js) · H1/H3 blog Book-This-Trip fare boxes + fixed /booking //services/* 404 links on all 191 posts · I3 contact redesign · Track E sightseeing QuickAnswers + money links · B5 season deadline banners (auto-expiring IST, honest dates) + trips QuickAnswers · tempo generic-branch HowTo · GSC-sprint re-ship. Same day: production incident (chunk-incomplete tarball from a mid-pack dev run) → rollback in minutes → two permanent deploy gates added (tarball BUILD_ID+chunk-count; live chunk-integrity check) → clean redeploy same night.
+
+### Batch 2 — DEPLOYED 3 Aug (build QGwf_Ej6Oy5EgQdTXsQCz, backup triveni-backup-cro-20260803_220022, commit week41-batch2)
+B4 INP: all 19 infinite framer-motion animations removed (blog ×191 pages, tempo ×225) + scroll-spring parallax gone · GA4 tag lazyOnload→afterInteractive (fixes the 700→150 undercount; Airtel block resolved separately per user) · G city-hub schema graph (Place/Article/Speakable/Breadcrumb both branches) · I1 census (405 dirs → 58 flagged) + 49 pages design-uplifted with disk-verified photos (24 same-day, 17 vs/cost, 8 services) · contact punch-up: giant gold hero number + lane motif, alt WhatsApp +91 89235 34551 (contact page ONLY), map pinned to exact Agra office address.
+
+**All live-verified** (markers + per-chunk 200s). Remaining Week-41 items are user-side / data-gated: GSC Request-indexing pass, Friday GSC snapshot vs baseline, A4/A5 title-wave-2 after fresh export, off-page (GMB posting cadence + review velocity).

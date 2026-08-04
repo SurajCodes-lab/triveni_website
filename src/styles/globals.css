@@ -450,3 +450,27 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .sheen::after, .border-gradient-gold::before { transition: none; }
 }
+/* ── Ultra-Premium v2 design system (Aug 2026) ─────────────────────────
+   The "wow" layer: editorial serif display, gold-as-material foil,
+   machined CTA sheen, luxury shadows. Applied via utility classes so
+   every template family inherits without per-page rewrites. */
+
+/* Editorial display face (wired to next/font Fraunces via --font-display) */
+.font-display-serif {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.015em;
+}
+
+/* Gold foil — metallic gradient text for headline accent words & hero figures */
+.text-gold-foil {
+  background-image: linear-gradient(135deg, #ffe9a0 0%, #facf2d 45%, #b8860b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* (CTA sheen already defined earlier in this file — not redefined here) */
+
+/* Luxury depth */
+.shadow-gold-bloom { box-shadow: 0 12px 36px -10px rgba(250, 207, 45, 0.55); }
+.ring-hairline-gold { box-shadow: inset 0 0 0 1px rgba(250, 207, 45, 0.25); }

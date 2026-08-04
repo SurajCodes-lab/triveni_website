@@ -161,7 +161,7 @@ export default function BusMainClient({ data }) {
                 <Star className="h-3.5 w-3.5 text-amber-400" fill="currentColor" />
                 4.9 Rating · 10,000+ Happy Travellers
               </div>
-              <h1 className="speakable-headline text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 <span className="text-gradient-gold">Bus Hire in India</span> — Luxury Bus Rental Service
                 <span className="mt-2 block text-lg font-bold text-white/75 sm:text-2xl">
                   22 to 56 Seater AC Coaches · Driver &amp; Fuel Included · From ₹30/km

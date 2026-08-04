@@ -163,5 +163,13 @@ Named-staff section fully removed (zero matches for any name). ContactPage + Loc
 ## Task E — Sightseeing vertical ✅ (verified)
 QuickAnswer on both tour-detail (SightseeingDetailClient) and city-tours (CityToursPage) templates; 25 membership-checked money/guide link references in `sightseeing/[slug]/page.js` (one-way routes, city hubs, travel guides — zero-404 policy).
 
+## Post-W41 continuation (3–4 Aug): traffic/pull-back sprint + tempo redesign
+See `TRAFFIC_PULLBACK_PLAN_AUG_2026.md` for the full record. Summary of implementation beyond the Week-41 batches:
+- **New assets:** /long-weekend-calendar-2026 (auto-expiring windows, WhatsApp save-loop), /fare-calculator (tool page + canonical rate table), /rss.xml (50-post feed) — all wired into footer/sitemap/llms.txt.
+- **Contact evolution (5 user-feedback rounds):** light-band rhythm restyle → hero number as glowing display + lane motif → alt WhatsApp +91 89235 34551 (contact only) → interactive layer (IST hour-aware desk chip, copy-number, lazy Agra map embed — host fixed to maps.google.com after Google refused the www frame) → India-desk identity + visible India brand hero + smart chips (next-long-weekend via shared longWeekends2026.js; route memory via localStorage written by OneWayCabRouteClient).
+- **Tempo redesign from scratch** (user mandate): DynamicTempoRoutes (225 pages) + TempoMainClient rebuilt in Aurora language via worktree agent — fleet-photo heroes, seater-selector signature (canonical ₹20/22/24/26/28 + live distance×2×rate estimate), framer-motion eliminated from the route template, 3 more stale-rate bugs fixed (₹23 InfographicPanel, hub chips, missing 16-seater); screenshot-reviewed locally before ship; user-polish: compact desktop Book buttons, FAQ 2-per-row.
+- **Bus redesign from scratch**: in flight (worktree agent, tempo pattern + all lessons).
+- **Ops learnings encoded:** straight apostrophes in JSX FAIL the build lint — always typographic (’); Google Maps embeds must use maps.google.com/maps; user-feedback arriving mid-pack → kill-repack beats double-deploy whenever upload hasn't started (applied 3×); design sign-off = local screenshot review with chrome-devtools before deploy.
+
 ## Deploy/verify discipline (unchanged)
 Each batch: single build → detached tarball+deploy (nohup, survives interruptions) → server-side size verification before overlay → live curl verification of changed markers → execution log + this file updated.

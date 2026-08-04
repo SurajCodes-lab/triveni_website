@@ -197,7 +197,7 @@ export default function LongWeekendCalendar2026() {
             <p className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/30 bg-[#FACF2D]/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-[#FACF2D]">
               <Calendar className="h-3.5 w-3.5" /> Bookmark this page
             </p>
-            <h1 className="speakable-headline mt-4 text-3xl font-black leading-tight tracking-tight sm:text-5xl">
+            <h1 className="speakable-headline font-display-serif mt-4 text-3xl font-black leading-tight tracking-tight sm:text-5xl">
               Long Weekend Calendar <span className="text-[#FACF2D]">2026</span>
             </h1>
             <p className="speakable-lead mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">

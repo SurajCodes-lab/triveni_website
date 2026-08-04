@@ -198,7 +198,7 @@ export default function DynamicBusRoutesClient({ data }) {
           <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
             <div className="min-w-0">
               {/* Giant route title */}
-              <h1 className="speakable-headline text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+              <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
                 <span className="text-gradient-gold">{origin}</span>
                 <span className="mx-2 text-white/40 sm:mx-3">→</span>
                 <span className="text-gradient-gold">{destination}</span>

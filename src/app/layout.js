@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import { Inter } from 'next/font/google';
+import { Inter, Fraunces } from 'next/font/google';
 import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -24,6 +24,16 @@ const inter = Inter({
   weight: ['400', '600', '700'],
   variable: '--font-inter',
   preload: true,
+});
+
+// Ultra-Premium v2: editorial display serif for major headlines sitewide
+// (consumed via the .font-display-serif utility → var(--font-display)).
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['600', '700', '900'],
+  variable: '--font-display',
+  preload: false,
 });
 
 export const viewport = {
@@ -302,7 +312,7 @@ const structuredData = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN" className={inter.variable}>
+    <html lang="en-IN" className={`${inter.variable} ${fraunces.variable}`}>
       <head>
         {/* Resource Hints for Performance */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />

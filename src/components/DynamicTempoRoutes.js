@@ -283,7 +283,7 @@ export default function DynamicTempoRoutesClient({ data }) {
 
           <div className="max-w-3xl">
             {/* Giant route title */}
-            <h1 className="speakable-headline text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
               <span className="text-gradient-gold">{origin}</span>
               <span className="mx-2 text-white/40 sm:mx-3">→</span>
               <span className="text-gradient-gold">{displayDestination}</span>

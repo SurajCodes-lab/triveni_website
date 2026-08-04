@@ -270,7 +270,7 @@ export default function TempoMainClient({ faqData = [], jsonLd }) {
                 <FaStar className="h-3.5 w-3.5 text-amber-400" fill="currentColor" />
                 4.9 Rating · 10,000+ Happy Travellers
               </div>
-              <h1 className="speakable-headline text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 <span className="text-gradient-gold">Tempo Traveller</span> on Rent
                 <span className="mt-2 block text-lg font-bold text-white/75 sm:text-2xl">
                   12–26 Seater AC · Driver &amp; Fuel Included · From ₹20/km

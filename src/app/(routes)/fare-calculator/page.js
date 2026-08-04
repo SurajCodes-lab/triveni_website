@@ -74,7 +74,7 @@ export default function FareCalculatorPage() {
             <p className="inline-flex rounded-full border border-[#FACF2D]/30 bg-[#FACF2D]/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-[#FACF2D]">
               Free tool · No sign-up
             </p>
-            <h1 className="speakable-headline mt-4 text-3xl font-black leading-tight tracking-tight sm:text-5xl">
+            <h1 className="speakable-headline font-display-serif mt-4 text-3xl font-black leading-tight tracking-tight sm:text-5xl">
               Taxi Fare <span className="text-[#FACF2D]">Calculator</span>
             </h1>
             <p className="speakable-lead mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">
