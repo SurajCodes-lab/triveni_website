@@ -238,6 +238,18 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/fare-calculator`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/long-weekend-calendar-2026`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/vehicles`,
       lastModified: lastContentUpdate,
       changeFrequency: 'monthly',

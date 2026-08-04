@@ -15,6 +15,7 @@ const Footer = () => {
     { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Pricing", href: "/pricing" },
+    { name: "Fare Calculator", href: "/fare-calculator" },
     { name: "Our Vehicles", href: "/vehicles" },
     { name: "Tour Packages", href: "/tour-package" },
     { name: "Chardham Yatra", href: "/chardham-yatra" },
@@ -94,6 +95,8 @@ const Footer = () => {
   // Aug/Sep 2026 season pages — peak-season money pages; footer link gives them
   // sitewide equity (they previously had zero internal links from core pages).
   const seasonLinks = [
+    { name: "Long Weekend Calendar 2026", href: "/long-weekend-calendar-2026" },
+    { name: "Where to Go in August", href: "/where-to-go/august" },
     { name: "Independence Day Weekend", href: "/independence-day-weekend-packages-2026" },
     { name: "August Long Weekends", href: "/august-long-weekend-getaways-delhi" },
     { name: "September Long Weekends", href: "/september-long-weekend-trips-2026" },

@@ -111,6 +111,8 @@ ${hubLines}
 - [Char Dham Yatra](${BASE}/chardham-yatra): Yamunotri-Gangotri-Kedarnath-Badrinath
 - [Wedding cars](${BASE}/wedding) · [Corporate transport](${BASE}/corporate-transportation-service) · [Event transport](${BASE}/event-transportation-service)
 - [Cab rentals](${BASE}/full-day-cab-rental): half-day, full-day, multi-day, monthly
+- [Taxi fare calculator](${BASE}/fare-calculator): instant all-inclusive fares (Sedan Rs 11/km ... Bus Rs 30+/km)
+- [Long Weekend Calendar 2026](${BASE}/long-weekend-calendar-2026): every 2026 long weekend with the best getaway for each
 
 ## Seasonal & festival transport (${(festivalData || []).length})
 ${festLines}

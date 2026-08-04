@@ -174,21 +174,61 @@ const FAQS = [
   },
 ];
 
-function SectionHeading({ eyebrow, title, lead }) {
+function SectionHeading({ eyebrow, title, lead, tone = "dark" }) {
+  const light = tone === "light";
   return (
     <div className="max-w-2xl">
-      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] sm:text-xs">
+      <p
+        className={`text-[11px] font-bold uppercase tracking-[0.2em] sm:text-xs ${
+          light ? "text-amber-600" : "text-[#FACF2D]"
+        }`}
+      >
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
+      <h2
+        className={`mt-3 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl lg:text-4xl ${
+          light ? "text-slate-900" : "text-white"
+        }`}
+      >
         {title}
       </h2>
       {lead && (
-        <p className="mt-3 text-sm leading-relaxed text-white/60 sm:text-base">{lead}</p>
+        <p
+          className={`mt-3 text-sm leading-relaxed sm:text-base ${
+            light ? "text-slate-500" : "text-white/60"
+          }`}
+        >
+          {lead}
+        </p>
       )}
     </div>
   );
 }
+
+// Per-channel colour identity — the light band's cards must not be triplets.
+const CHANNEL_ACCENTS = {
+  call: {
+    bar: "bg-[#FACF2D]",
+    chip: "bg-amber-100 text-amber-600",
+    value: "text-amber-600",
+    hover: "hover:border-amber-400",
+    cta: "group-hover:text-amber-600",
+  },
+  whatsapp: {
+    bar: "bg-[#25D366]",
+    chip: "bg-emerald-100 text-emerald-600",
+    value: "text-emerald-600",
+    hover: "hover:border-emerald-400",
+    cta: "group-hover:text-emerald-600",
+  },
+  email: {
+    bar: "bg-sky-400",
+    chip: "bg-sky-100 text-sky-600",
+    value: "text-sky-600",
+    hover: "hover:border-sky-400",
+    cta: "group-hover:text-sky-600",
+  },
+};
 
 export default function ContactClient() {
   return (
@@ -262,9 +302,9 @@ export default function ContactClient() {
               </a>
 
               <p className="speakable-lead mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:mt-5 sm:text-lg">
-                One call, one WhatsApp message, one clear fare. The Agra booking desk
-                answers round the clock and confirms most trips within minutes, across
-                50+ cities in North India.
+                One call, one WhatsApp message, one clear fare. The North India booking
+                desk answers round the clock and confirms most trips within minutes,
+                across 50+ cities.
               </p>
 
               {/* Primary CTAs */}
@@ -350,10 +390,13 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------ CHANNELS */}
-      <section className="border-t border-white/5 py-14 sm:py-20">
+      {/* ------------------------------------------------------------ CHANNELS
+          Warm light band — breaks the dark monotony right after the hero. */}
+      <section className="relative bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white py-14 sm:py-20">
+        <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[5px] ${LANE}`} />
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <SectionHeading
+            tone="light"
             eyebrow="Reach us"
             title="Three ways to get a fare"
             lead="Pick whichever is quickest for you. The same desk handles all three, so you never have to repeat your trip details."
@@ -365,6 +408,7 @@ export default function ContactClient() {
               const isEmail = c.key === "email";
               const isWhatsApp = c.key === "whatsapp";
               const href = isEmail ? `mailto:${EMAIL}` : isWhatsApp ? WA_LINK : PHONE_TEL;
+              const accent = CHANNEL_ACCENTS[c.key];
               const linkProps = isWhatsApp
                 ? {
                     target: "_blank",
@@ -380,27 +424,31 @@ export default function ContactClient() {
                   key={c.key}
                   href={href}
                   {...linkProps}
-                  className={`group relative flex flex-col overflow-hidden p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#FACF2D]/40 hover:bg-white/[0.08] sm:p-6 ${GLASS} ${FOCUS} ${
+                  className={`group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl sm:p-6 ${accent.hover} ${FOCUS} ${
                     isEmail ? "sm:col-span-2 lg:col-span-1" : ""
                   }`}
                 >
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-x-0 top-0 h-[3px] opacity-40 transition-opacity duration-200 group-hover:opacity-100 ${LANE}`}
+                    className={`absolute inset-x-0 top-0 h-[4px] ${accent.bar}`}
                   />
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FACF2D]/15 transition-colors duration-200 group-hover:bg-[#FACF2D]/25">
-                    <Icon className="h-5 w-5 text-[#FACF2D]" />
+                  <span
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${accent.chip}`}
+                  >
+                    <Icon className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-5 text-lg font-bold text-white sm:text-xl">
+                  <h3 className="mt-5 text-lg font-bold text-slate-900 sm:text-xl">
                     {c.title}
                   </h3>
-                  <p className="mt-1 break-words text-base font-semibold text-[#FACF2D]">
+                  <p className={`mt-1 break-words text-base font-bold ${accent.value}`}>
                     {c.value}
                   </p>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-500">
                     {c.body}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-white transition-all duration-200 group-hover:gap-3 group-hover:text-[#FACF2D]">
+                  <span
+                    className={`mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-slate-900 transition-all duration-200 group-hover:gap-3 ${accent.cta}`}
+                  >
                     {c.cta}
                     <ChevronRight className="h-4 w-4" />
                   </span>
@@ -551,10 +599,13 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- FLEET */}
-      <section className="py-14 sm:py-20">
+      {/* -------------------------------------------------------------- FLEET
+          Light band — the vehicle photos are the point; they pop on white. */}
+      <section className="relative bg-gradient-to-b from-white via-amber-50/60 to-white py-14 sm:py-20">
+        <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[5px] ${LANE}`} />
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <SectionHeading
+            tone="light"
             eyebrow="The fleet"
             title="Tell us the trip, we have the vehicle"
             lead="Every quote includes the driver allowance and is confirmed in writing before you travel. Nothing extra is added at drop-off."
@@ -566,29 +617,30 @@ export default function ContactClient() {
               return (
                 <div
                   key={v.name}
-                  className={`group overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:border-[#FACF2D]/40 ${GLASS}`}
+                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-[#FACF2D] hover:shadow-xl"
                 >
-                  <div className="relative h-40 w-full overflow-hidden bg-white/5 sm:h-44">
+                  <div className="relative h-40 w-full overflow-hidden sm:h-44">
                     <Image
                       src={v.img}
                       alt={`${v.name} for hire from Triveni Cabs`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      quality={65}
+                      quality={70}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950/80 to-transparent" />
                   </div>
                   <div className="p-4 sm:p-5">
                     <div className="flex items-center gap-2">
-                      <Icon className="h-4 w-4 shrink-0 text-[#FACF2D]" />
-                      <h3 className="text-base font-bold text-white sm:text-lg">
+                      <Icon className="h-4 w-4 shrink-0 text-amber-500" />
+                      <h3 className="text-base font-bold text-slate-900 sm:text-lg">
                         {v.name}
                       </h3>
                     </div>
-                    <p className="mt-1 text-xs text-white/40">{v.models}</p>
-                    <p className="mt-4 text-base font-bold text-[#FACF2D]">{v.rate}</p>
-                    <p className="mt-0.5 text-xs text-white/40">{v.seats}</p>
+                    <p className="mt-1 text-xs text-slate-400">{v.models}</p>
+                    <p className="mt-4 inline-block rounded-full bg-[#FACF2D] px-3 py-1 text-sm font-extrabold text-black">
+                      {v.rate}
+                    </p>
+                    <p className="mt-2 text-xs text-slate-400">{v.seats}</p>
                   </div>
                 </div>
               );
