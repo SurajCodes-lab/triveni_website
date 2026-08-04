@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import QuickEnquiryForm from "@/components/ui/QuickEnquiryForm";
 import { SetStickyCta } from "@/components/ui/StickyCtaContext";
 import { trackPhoneCall, trackWhatsAppClick } from "@/utilis/analytics";
+import { getNextLongWeekend } from "@/utilis/longWeekends2026";
 import {
   Phone,
   Mail,
@@ -231,6 +233,63 @@ const CHANNEL_ACCENTS = {
 };
 
 export default function ContactClient() {
+  // Live desk clock (IST) — one 60s tick; renders only after mount (no
+  // hydration mismatch, no meaningful main-thread cost). The message is
+  // hour-aware so the page reads like a person is actually there.
+  const [desk, setDesk] = useState(null);
+  useEffect(() => {
+    const compute = () => {
+      const now = new Date();
+      const time = now.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Asia/Kolkata",
+      });
+      const hour = Number(
+        now.toLocaleString("en-IN", { hour: "numeric", hour12: false, timeZone: "Asia/Kolkata" })
+      );
+      let msg;
+      if (hour >= 5 && hour < 11) msg = "our cars are already on the road";
+      else if (hour >= 11 && hour < 17) msg = "the desk is answering right now";
+      else if (hour >= 17 && hour < 22) msg = "evening rush — WhatsApp replies fastest";
+      else msg = "night desk is on, calls ring the duty manager";
+      setDesk({ time, msg });
+    };
+    compute();
+    const t = setInterval(compute, 60000);
+    return () => clearInterval(t);
+  }, []);
+
+  // Route memory — if this visitor recently viewed a route page, greet them
+  // with it and pre-fill WhatsApp with that exact trip (localStorage only).
+  const [lastRoute, setLastRoute] = useState(null);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("tc_last_route");
+      if (!raw) return;
+      const r = JSON.parse(raw);
+      if (r && r.from && r.to && Date.now() - (r.ts || 0) < 30 * 86400000) {
+        setLastRoute(r);
+      }
+    } catch {
+      /* storage unavailable — feature silently off */
+    }
+  }, []);
+
+  const nextWeekend = getNextLongWeekend();
+
+  // Click-to-copy on the hero number — small interaction, big utility.
+  const [copied, setCopied] = useState(false);
+  const copyNumber = async () => {
+    try {
+      await navigator.clipboard.writeText("+917668570551");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable — the tel: link still works */
+    }
+  };
+
   return (
     <div className="bg-slate-950">
       <SetStickyCta label="Talk to us 24x7" whatsappText={WA_TEXT} />
@@ -239,15 +298,17 @@ export default function ContactClient() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/about/about_banner.webp"
-            alt="Triveni Cabs vehicles on a North India highway"
+            src="/images/HERO_SECTION_MAIN_PAGE.jpg"
+            alt="Triveni Cabs on the road — outstation taxis across India"
             fill
             priority
             sizes="100vw"
-            quality={70}
-            className="object-cover opacity-60"
+            quality={72}
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/55 via-slate-950/80 to-slate-950" />
+          {/* Scrim sweeps the text side only — the image stays VISIBLE right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/25" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 to-transparent" />
           {/* Headlight wash */}
           <div className="absolute -left-32 top-0 h-72 w-72 rounded-full bg-[#FACF2D]/15 blur-3xl sm:h-96 sm:w-96" />
           <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-[#FACF2D]/10 blur-3xl" />
@@ -300,6 +361,29 @@ export default function ContactClient() {
                 </span>
                 <span className="mt-2 block h-[6px] w-full max-w-full rounded-full bg-[repeating-linear-gradient(90deg,#FACF2D_0_22px,transparent_22px_40px)] opacity-70" aria-hidden="true" />
               </a>
+
+              {/* Live desk status + copy — the page feels awake */}
+              <div className="mt-3 flex flex-wrap items-center gap-2.5">
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70 motion-reduce:animate-none" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                  </span>
+                  {desk ? `${desk.time} IST — ${desk.msg}` : "The India desk is awake"}
+                </span>
+                <button
+                  type="button"
+                  onClick={copyNumber}
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-all duration-200 ${
+                    copied
+                      ? "border-emerald-400/60 bg-emerald-400/15 text-emerald-300"
+                      : "border-white/20 bg-white/5 text-white/70 hover:border-[#FACF2D]/60 hover:text-[#FACF2D]"
+                  } ${FOCUS}`}
+                  aria-live="polite"
+                >
+                  {copied ? "Copied!" : "Copy number"}
+                </button>
+              </div>
 
               <p className="speakable-lead mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:mt-5 sm:text-lg">
                 One call, one WhatsApp message, one clear fare. The North India booking
@@ -356,6 +440,38 @@ export default function ContactClient() {
                   <span className="whitespace-nowrap">{WA_ALT_DISPLAY}</span>
                 </span>
               </a>
+
+              {/* Smart chips: route memory + next long weekend */}
+              {(lastRoute || nextWeekend) && (
+                <div className="mt-4 flex flex-wrap gap-2.5">
+                  {lastRoute && (
+                    <a
+                      href={`https://wa.me/917668570551?text=${encodeURIComponent(
+                        `Hi Triveni Cabs, I was checking ${lastRoute.from} to ${lastRoute.to} — please share the fare and availability.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onPointerDown={waTrack("contact_route_memory")}
+                      className={`inline-flex items-center gap-1.5 rounded-full border border-[#FACF2D]/50 bg-[#FACF2D]/10 px-3.5 py-2 text-xs font-bold text-[#FACF2D] transition-all hover:bg-[#FACF2D]/20 ${FOCUS}`}
+                    >
+                      Continue planning {lastRoute.from} → {lastRoute.to}?
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                  {nextWeekend && (
+                    <Link
+                      href="/long-weekend-calendar-2026"
+                      className={`inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white/75 transition-all hover:border-[#FACF2D]/50 hover:text-[#FACF2D] ${FOCUS}`}
+                    >
+                      Next long weekend:{" "}
+                      {nextWeekend.isLive
+                        ? `${nextWeekend.event} — happening now`
+                        : `${nextWeekend.dates.replace(" 2026", "")} · ${nextWeekend.daysToGo} days away`}
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
+                </div>
+              )}
 
               <p className="mt-4 text-xs text-white/40 sm:text-sm">
                 Prefer email? Write to{" "}
@@ -548,6 +664,19 @@ export default function ContactClient() {
                   Open in Google Maps
                 </a>
               </div>
+
+              {/* Live Google Map of the Agra office — lazy so it costs nothing
+                  until scrolled into view. Address and pin are the same place. */}
+              <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+                <iframe
+                  title="Triveni Cabs office map — 366 Dandupura, near Tajganj, Agra 282006"
+                  src="https://maps.google.com/maps?q=366+Dandupura+near+Tajganj+Agra+Uttar+Pradesh+282006&z=15&output=embed"
+                  className="h-64 w-full border-0 sm:h-72"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
             </div>
 
             <div>
@@ -697,10 +826,11 @@ export default function ContactClient() {
 
       {/* ---------------------------------------------------------------- FAQ */}
       <section className="py-14 sm:py-20">
-        <div className="mx-auto w-full max-w-3xl px-4 sm:px-6">
+        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
           <SectionHeading eyebrow="Before you book" title="Questions we get most" />
 
-          <div className="mt-8 space-y-3">
+          {/* Two per row on desktop (user request), stacked on mobile */}
+          <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2 md:items-start">
             {FAQS.map((f, i) => (
               <details
                 key={f.q}

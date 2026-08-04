@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2, IndianRupee, Route, Zap, MapPin, Navigation, Star, Users } from '@/components/ui/icons';
@@ -57,6 +57,19 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
   const fromCityImage = getCityImage(route.from);
   const toCityImage = getCityImage(route.to);
   const heroWhatsappMessage = `Hi, I want to book a one-way cab from ${route.from} to ${route.to} (${route.distance}). Sedan is quoted at ${route.oneWayFares.sedan} — please confirm availability.`;
+
+  // Route memory: remember the trip this visitor is planning so /contact can
+  // greet them with it and pre-fill WhatsApp (localStorage, no backend).
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        'tc_last_route',
+        JSON.stringify({ from: route.from, to: route.to, ts: Date.now() })
+      );
+    } catch {
+      /* storage unavailable — feature silently off */
+    }
+  }, [route.from, route.to]);
 
   // Rich UI + ranking-lift derived data (May 2026 sprint)
   const distanceKm = parseInt((route.distance || '').replace(/[^0-9]/g, ''), 10) || 233;

@@ -187,28 +187,38 @@ export default function AutoRelatedFooter() {
     })),
   };
 
+  // Premium band: sits between the page and the dark footer, so it reads as
+  // one continuous surface (the old flat-gray strip broke the flow sitewide).
   return (
     <section
       aria-labelledby="related-pages-heading"
-      className="border-t border-gray-200 bg-gray-50/60 py-8 md:py-10"
+      className="relative border-t border-white/5 bg-slate-950 py-10 md:py-12"
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      {/* Highway lane divider — the brand motif */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[3px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)] opacity-50"
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D]">
+          Explore Triveni
+        </p>
         <h2
           id="related-pages-heading"
-          className="text-base md:text-lg font-semibold text-gray-900 mb-4"
+          className="mt-2 mb-5 text-lg font-extrabold tracking-tight text-white md:text-xl"
         >
           Related Triveni Cabs Services
         </h2>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2">
+        <ul className="flex flex-wrap gap-2.5">
           {links.map((l, i) => (
             <li key={i}>
               <Link
                 href={l.href}
-                className="text-sm text-gray-700 hover:text-amber-700 hover:underline transition-colors block py-1 truncate"
+                className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/70 transition-all duration-200 hover:border-[#FACF2D]/50 hover:bg-[#FACF2D]/10 hover:text-[#FACF2D]"
               >
                 {l.label}
               </Link>

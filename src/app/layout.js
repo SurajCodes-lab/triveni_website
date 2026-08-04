@@ -5,7 +5,8 @@ import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "@/styles/globals.css";
-import { Analytics } from '@vercel/analytics/react';
+// @vercel/analytics removed — site runs on Lightsail; the injected
+// /_vercel/insights/script.js 404'd on every page (console error sitewide).
 import { getSchemaReviews } from '@/utilis/schemaReviews';
 import { StickyCtaProvider } from '@/components/ui/StickyCtaContext';
 
@@ -403,7 +404,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <Footer />
           </StickyCtaProvider>
         </div>
-        <Analytics />
         <ServiceWorkerRegistration />
       </body>
     </html>

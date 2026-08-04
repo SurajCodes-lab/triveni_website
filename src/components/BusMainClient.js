@@ -1,16 +1,47 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+// ============================================================================
+// BusMainClient — "Triveni Aurora" redesign (Aug 2026)
+// /bus-routes hub: dark slate-950 + gold, real coach photography, glass
+// panels. Fleet rates come straight from busRoutesData (₹30/km entry, ranges
+// shown exactly as billed — never invented). Search + origin filter, fleet
+// category filter, seater comparison, FAQ (two per row on md+), speakable
+// classes and the honest tempo-traveller cross-sell all preserved.
+// No framer-motion, no infinite animations: CSS-only transitions.
+// All JSON-LD for this page is emitted by page.js and is untouched.
+// ============================================================================
+
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
-import { MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle, ArrowRight, Route, Navigation, Search, Filter, Award, BadgeCheck, TrendingUp, Zap, Sparkles, DollarSign, Info, HelpCircle, ChevronDown } from '@/components/ui/icons';
-import { motion, useInView, MotionConfig } from 'framer-motion';
-import { useInView as useInViewObserver } from 'react-intersection-observer';
-import { useShouldReduceMotion } from '@/hooks/useIsMobile';
+import {
+  MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Bus, CheckCircle,
+  ArrowRight, Route, Search, Filter, Sparkles, ChevronDown,
+  IndianRupee, User, Headphones, ShieldCheck, WhatsAppIcon
+} from '@/components/ui/icons';
 // Import from smaller utility file to reduce bundle size
 import { additionalInfo, whyChooseUs } from '@/utilis/busUtilsData';
+import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import Section from '@/components/ui/Section';
+import AuroraHeading from '@/components/ui/AuroraHeading';
+import DataTable from '@/components/ui/DataTable';
+import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
+
+const PHONE = '7668570551';
+const WHATSAPP = '917668570551';
+const TRUST_ROW = '4.9★ · Since 2015 · No hidden charges · Pay after trip';
+
+// whyChooseUs entries carry an icon key — map it onto the shared icon set.
+const WHY_ICONS = {
+  bus: Bus,
+  driver: User,
+  price: IndianRupee,
+  support: Headphones,
+  safety: ShieldCheck,
+  booking: CheckCircle,
+};
 
 export default function BusMainClient({ data }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,25 +49,14 @@ export default function BusMainClient({ data }) {
   const [showAllRoutes, setShowAllRoutes] = useState(false);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaq, setOpenFaq] = useState(0);
 
-  const { popularRoutes, allRoutes, fleet, cities, seaterComparison = [] } = data;
-
-  const heroRef = useRef(null);
-  const fleetSectionRef = useRef(null);
-
-  const shouldReduceMotion = useShouldReduceMotion();
-
-  const [fleetRef, fleetInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
-  const [routesRef, routesInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
-  const [featuresRef, featuresInView] = useInViewObserver({ triggerOnce: true, threshold: 0.1 });
+  const { allRoutes, fleet, seaterComparison = [] } = data;
 
   const originCities = useMemo(() => {
     const origins = [...new Set(allRoutes.map(route => route.origin))];
     return origins.sort();
   }, [allRoutes]);
-
-  const getOriginCities = useCallback(() => originCities, [originCities]);
 
   const filteredRoutes = useMemo(() => {
     let routes = selectedOrigin
@@ -54,1006 +74,583 @@ export default function BusMainClient({ data }) {
     return routes;
   }, [allRoutes, selectedOrigin, searchTerm]);
 
-  const getFilteredRoutes = useCallback(() => filteredRoutes, [filteredRoutes]);
-
   const filteredFleet = useMemo(() => {
-    if (activeFilter === 'all') return fleet;
     if (activeFilter === 'premium') return fleet.filter(bus => bus.premium);
     if (activeFilter === 'luxury') return fleet.filter(bus => bus.luxury);
     if (activeFilter === 'standard') return fleet.filter(bus => !bus.premium && !bus.luxury);
     return fleet;
   }, [fleet, activeFilter]);
 
-  const getFilteredFleet = useCallback(() => filteredFleet, [filteredFleet]);
+  const displayedRoutes = showAllRoutes ? filteredRoutes : filteredRoutes.slice(0, 8);
+  const displayedVehicles = showAllVehicles ? filteredFleet : filteredFleet.slice(0, 6);
 
-  const getTypeColor = (type) => {
-    const colors = {
-      'Hill Station': 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20',
-      'Adventure': 'bg-orange-500/10 text-orange-700 border-orange-500/20',
-      'Spiritual': 'bg-purple-500/10 text-purple-700 border-purple-500/20',
-      'Heritage': 'bg-amber-500/10 text-amber-700 border-amber-500/20',
-      'Royal': 'bg-rose-500/10 text-rose-700 border-rose-500/20',
-      'Metro': 'bg-blue-500/10 text-blue-700 border-blue-500/20',
-      'Beach': 'bg-cyan-500/10 text-cyan-700 border-cyan-500/20'
-    };
-    return colors[type] || 'bg-gray-500/10 text-gray-700 border-gray-500/20';
-  };
-
-  const displayedRoutes = showAllRoutes ? getFilteredRoutes() : getFilteredRoutes().slice(0, 8);
-  const displayedVehicles = showAllVehicles ? getFilteredFleet() : getFilteredFleet().slice(0, 6);
+  // FAQ content — preserved in full (mirrors the FAQPage JSON-LD in page.js).
+  const faqItems = [
+    {
+      question: 'What bus sizes are available for rental?',
+      answer: 'We offer luxury buses from 22 seater to 56 seater, including 22, 25, 27, 32, 35, 41, 45, 49, 52, and 56 seater options. All buses are AC equipped with pushback/reclining seats and entertainment systems.'
+    },
+    {
+      question: 'Which cities do you provide bus rental services?',
+      answer: 'We provide luxury bus rental services across India including Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Rishikesh, Shimla, Manali, Amritsar, Udaipur, Jodhpur, Jaisalmer, and many more cities. We cover all major tourist destinations, pilgrimage sites, and commercial hubs.'
+    },
+    {
+      question: 'What are the bus rental rates?',
+      answer: 'Bus rental rates start from ₹30/km for 22 seater mini bus and go up to ₹65/km for 56 seater luxury Volvo bus. Rates vary based on bus size, route, duration, and season. Driver allowance is ₹800-1200 per day depending on the vehicle.'
+    },
+    {
+      question: 'What amenities are included in the luxury bus?',
+      answer: 'Our luxury buses include AC, pushback/reclining seats, music/entertainment system, luggage space, curtains, reading lights, charging points, and some premium buses have TV, wifi, and washroom facilities. All buses are GPS tracked with professional drivers.'
+    },
+    {
+      question: 'Can I book a bus for corporate events and weddings?',
+      answer: 'Yes, we specialize in corporate bus rentals for conferences, team outings, and employee transportation. We also provide wedding buses for guest transfers, baraat, and destination weddings. Customized packages available with flexible booking.'
+    },
+    {
+      question: 'How far in advance should I book a bus?',
+      answer: 'We recommend booking at least 7-15 days in advance for popular routes and peak season. However, we also accept same-day and next-day bookings subject to availability. For large groups and special events, advance booking of 1 month is advisable.'
+    },
+    {
+      question: 'How many people can fit in a 35 seater vs a 45 seater bus?',
+      answer: 'A 35 seater bus comfortably seats 35 passengers plus luggage and is ideal for medium wedding groups, school trips, and corporate teams. A 45 seater bus seats 45 passengers and suits larger pilgrimage groups and conferences. For groups of 50-56, choose the 52 or 56 seater luxury Volvo coach. For small groups of 12-26, a tempo traveller or 22 seater mini bus is more economical.'
+    },
+    {
+      question: 'What is the difference between a Volvo bus and a regular AC bus?',
+      answer: 'A Volvo (or Scania) luxury coach has air-suspension for a smoother ride, push-back recliner seats, better insulation and quieter AC, and is best for long-distance and overnight journeys. A regular AC bus is more budget-friendly at ₹30-45/km and works well for shorter day trips and local group transfers. Volvo coaches cost ₹55-65/km but deliver premium comfort over 300+ km routes.'
+    },
+    {
+      question: 'Do you provide buses for school trips and educational tours?',
+      answer: 'Yes. Our school-trip buses come with speed governors, first-aid kits, GPS tracking shared with the school, and experienced drivers verified for student transport. We provide 22 to 56 seater options for day picnics, educational tours, and inter-school events with teacher-coordinated pickup and drop.'
+    },
+    {
+      question: 'Is a driver and fuel included in the bus rental price?',
+      answer: 'Yes, the per-km rate includes the bus, fuel, and a professional driver. Toll taxes, state permits, parking, and driver night allowance (₹800-1200/day) are charged extra at actuals. You receive a transparent quote before booking with all inclusions and exclusions listed clearly.'
+    },
+    {
+      question: 'Can I get a GST invoice for a corporate bus booking?',
+      answer: 'Yes, we provide a proper GST invoice for all corporate and business bus bookings, along with a single point of contact for multi-vehicle coordination. This makes Triveni Cabs ideal for company offsites, conferences, and employee transportation that require compliant billing and reimbursement.'
+    }
+  ];
 
   return (
-    <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <SetStickyCta price="From ₹25/km" label="Bus Hire" whatsappText="Hi, I want to book a bus on rent. Please share availability and fare." />
+    <div className="min-h-screen bg-slate-950 text-white">
+      <SetStickyCta price="From ₹30/km" label="Bus Hire" whatsappText="Hi, I want to book a bus on rent. Please share availability and fare." />
 
-        {/* Hero Section - Ultra Modern */}
-        <motion.section
-          ref={heroRef}
-          className="relative py-12 md:py-16 flex items-center justify-center overflow-hidden"
-        >
-          {/* Animated Background with Parallax */}
-          <div className="absolute inset-0 hero-image">
-            <Image
-              src="/images/bus/hero_section_image.webp"
-              alt="Luxury bus rental services - 22 to 56 seater AC coaches for group travel across India"
-              fill
-              className="object-cover brightness-50"
-              priority
-              fetchPriority="high"
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,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"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
-          </div>
+      {/* ================= HERO — real coach photo + Aurora scrim ================= */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/bus/hero_section_image.webp"
+            alt="Luxury bus rental services — 22 to 56 seater AC coaches for group travel across India"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Scrim only where text sits: left + bottom — photo stays vivid on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/30" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
+          <div className="absolute -top-32 right-10 h-96 w-96 rounded-full bg-amber-400/10 blur-3xl" aria-hidden />
+        </div>
 
-          {/* Animated Gradient Orbs */}
-          {shouldReduceMotion ? (
-            <>
-              <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FACF2D]/30 to-orange-500/30 rounded-full blur-3xl" />
-              <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl" />
-            </>
-          ) : (
-            <>
-              <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-[#FACF2D]/30 to-orange-500/30 rounded-full blur-3xl"
-              />
-              <motion.div
-                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"
-              />
-            </>
-          )}
-
-          {/* Hero Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-            {/* Badge */}
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-              className="hero-badge inline-flex items-center gap-2 bg-[#FACF2D]/20 backdrop-blur-md border border-[#FACF2D]/30 px-6 py-3 rounded-full mb-8"
-            >
-              <Sparkles className="w-5 h-5 text-[#FACF2D]" />
-              <span className="text-[#FACF2D] font-bold text-sm tracking-wider">PREMIUM BUS RENTALS</span>
-              <Sparkles className="w-5 h-5 text-[#FACF2D]" />
-            </motion.div>
-
-            {/* Trust badge — 4.9 stars / 10,000+ trips */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex justify-center mb-6"
-            >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full">
-                <Star className="w-4 h-4 text-[#FACF2D]" fill="#FACF2D" />
-                <span className="text-white font-bold text-sm">4.9&#9733; · 10,000+ trips</span>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <div className="min-w-0">
+              <div className="glass-dark mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold text-white/85 sm:text-sm">
+                <Star className="h-3.5 w-3.5 text-amber-400" fill="currentColor" />
+                4.9 Rating · 10,000+ Happy Travellers
               </div>
-            </motion.div>
-
-            {/* Main Title - SEO Optimized H1 */}
-            <div className="mb-8 overflow-hidden">
-              <motion.h1
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="speakable-headline hero-title text-4xl md:text-6xl font-black text-white leading-tight mb-4"
-              >
-                Bus Hire in India — Luxury Bus Rental Service
-              </motion.h1>
-              <motion.div
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="hero-title text-2xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-[#FACF2D] via-yellow-300 to-orange-400 bg-clip-text text-transparent leading-tight"
-              >
-                22 to 56 Seater Coaches Across India
-              </motion.div>
+              <h1 className="speakable-headline text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <span className="text-gradient-gold">Bus Hire in India</span> — Luxury Bus Rental Service
+                <span className="mt-2 block text-lg font-bold text-white/75 sm:text-2xl">
+                  22 to 56 Seater AC Coaches · Driver &amp; Fuel Included · From ₹30/km
+                </span>
+              </h1>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300/90 sm:text-lg">
+                From 22 seater mini buses to 56 seater luxury Volvo coaches — premium group travel
+                for weddings, corporate offsites, pilgrimages and tours, with professional drivers
+                and transparent per-km pricing.
+              </p>
+              <p className="mt-4 text-xs font-semibold tracking-wide text-white/70 sm:text-sm">
+                {TRUST_ROW}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                    'Hi, I want to hire a bus for my group. Please share rates.'
+                  )}`}
+                  onClick={() => trackWhatsAppClick('bus_hub_hero')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sheen glow-gold inline-flex items-center gap-2.5 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95 sm:text-base"
+                  aria-label="Contact Triveni Cabs on WhatsApp for bus booking"
+                >
+                  <WhatsAppIcon className="h-5 w-5" /> WhatsApp
+                </a>
+                <a
+                  href="tel:+917668570551"
+                  onClick={() => trackPhoneCall('bus_hub_hero')}
+                  className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10 sm:text-base"
+                  aria-label="Call Triveni Cabs at +91 76685 70551 for bus booking"
+                >
+                  <Phone className="h-4 w-4" /> Call: +91 76685 70551
+                </a>
+              </div>
             </div>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
-            >
-              From 22 to 56 seater luxury coaches. Experience premium group travel with cutting-edge fleet and professional service.
-            </motion.p>
+            {/* Enquiry form — QuickEnquiryForm is dark-only, sits on glass */}
+            <div className="border-gradient-gold glass-dark rounded-3xl p-4 sm:p-5">
+              <QuickEnquiryForm pageType="bus" />
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* CTA Buttons with Magnetic Effect */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-wrap gap-4 justify-center"
+      {/* ================= WARM LIGHT BAND — direct answer + intro ================= */}
+      <section className="border-y border-amber-100 bg-gradient-to-b from-amber-50/70 via-white to-white py-12 text-slate-900 md:py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
+          <div className="speakable-lead rounded-2xl border border-[#FACF2D]/40 bg-gradient-to-br from-[#FFF9E6] to-orange-50 p-6 shadow-sm md:p-8">
+            <p className="text-base leading-relaxed text-gray-800 md:text-lg">
+              <strong>Bus on rent in India</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus and goes up to <strong>₹65/km</strong> for a 56-seater luxury Volvo coach. Triveni Cabs offers <strong>22, 25, 27, 32, 35, 41, 45, 49, 52 and 56 seater AC buses</strong> for hire, all with pushback recliner seats, entertainment systems, GPS tracking and professional drivers. The per-km rate includes the bus, fuel and driver; tolls, state permits, parking and driver night allowance (₹800-1200/day) are extra at actuals. Buses are available across <strong>Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Udaipur</strong> and 100+ routes for <strong>weddings, corporate offsites, pilgrimage groups, school trips and tours</strong>. Book in 2 minutes by calling <strong>+91 76685 70551</strong> or on WhatsApp — 4.9★ rated.
+            </p>
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl">
+              Looking for reliable <strong>bus rental services in India</strong>? Triveni Cabs offers premium <strong>luxury bus hire</strong> from <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>. Perfect for corporate events, weddings, pilgrimage tours, and group travel.
+            </p>
+            <p className="text-lg leading-relaxed text-gray-700 md:text-xl">
+              Book <strong>AC buses</strong> with <strong>professional drivers</strong> for <strong>Delhi, Mumbai, Jaipur</strong>, and all major routes across India. All vehicles feature pushback seats, entertainment systems, GPS tracking, and spacious luggage storage for comfortable long-distance travel.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= FLEET — photo cards + category filter ================= */}
+      <Section tone="dark" className="border-t border-white/5">
+        <AuroraHeading
+          tone="dark"
+          eyebrow="The fleet"
+          title="Our Luxury Bus Fleet —"
+          highlight="22 to 56 Seater"
+          subtitle="Explore our premium fleet of AC buses from 22 seater mini buses to 56 seater Volvo coaches. All vehicles feature pushback seats, entertainment systems, and GPS tracking for safe group travel across India."
+        />
+
+        {/* Category filter chips */}
+        <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+          {['all', 'standard', 'premium', 'luxury'].map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`rounded-full px-5 py-2.5 text-xs font-black uppercase tracking-wider transition-colors duration-200 sm:px-6 ${
+                activeFilter === filter
+                  ? 'bg-amber-400 text-slate-900 shadow-lg shadow-amber-400/25'
+                  : 'glass-dark text-white/75 hover:border-amber-400/40 hover:text-amber-400'
+              }`}
             >
-              <motion.a
-                href="tel:+917668570551"
-                
-                whileTap={{ scale: 0.95 }}
-                className="group relative bg-[#FACF2D] text-black px-10 py-5 rounded-full font-bold text-lg overflow-hidden"
-                aria-label="Call Triveni Cabs at +91 76685 70551 for bus booking"
-              >
-                <span className="relative z-10 flex items-center">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call: +91 76685 70551
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
+              {filter}
+            </button>
+          ))}
+        </div>
+
+        {/* Fleet grid */}
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+          {displayedVehicles.map((bus) => (
+            <div
+              key={bus.id}
+              className={`group glass-dark relative flex flex-col overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 ${
+                bus.popular ? 'glow-gold ring-1 ring-amber-400/40' : ''
+              }`}
+            >
+              {/* Fixed-height photo — no CLS */}
+              <div className="relative h-48 w-full overflow-hidden sm:h-52">
+                <Image
+                  src={bus.image}
+                  alt={`${bus.name} — ${bus.capacity}`}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </motion.a>
-
-              <motion.a
-                href="https://wa.me/917668570551"
-                
-                whileTap={{ scale: 0.95 }}
-                className="group bg-white/10 backdrop-blur-md border-2 border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300"
-                aria-label="Contact Triveni Cabs on WhatsApp for bus booking"
-              >
-                <span className="flex items-center">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  WhatsApp Us
-                </span>
-              </motion.a>
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* SEO-Rich Introduction Section */}
-        <section className="py-16 bg-white relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="speakable-lead bg-gradient-to-br from-[#FFF9E6] to-orange-50 rounded-2xl border border-[#FACF2D]/40 shadow-sm p-6 md:p-8 mb-12"
-            >
-              <p className="text-gray-800 text-base md:text-lg leading-relaxed">
-                <strong>Bus on rent in India</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus and goes up to <strong>₹65/km</strong> for a 56-seater luxury Volvo coach. Triveni Cabs offers <strong>22, 25, 27, 32, 35, 41, 45, 49, 52 and 56 seater AC buses</strong> for hire, all with pushback recliner seats, entertainment systems, GPS tracking and professional drivers. The per-km rate includes the bus, fuel and driver; tolls, state permits, parking and driver night allowance (₹800-1200/day) are extra at actuals. Buses are available across <strong>Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Udaipur</strong> and 100+ routes for <strong>weddings, corporate offsites, pilgrimage groups, school trips and tours</strong>. Book in 2 minutes by calling <strong>+91 76685 70551</strong> or on WhatsApp — 4.9&#9733; rated.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                Looking for reliable <strong>bus rental services in India</strong>? Triveni Cabs offers premium <strong>luxury bus hire</strong> from <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>. Perfect for corporate events, weddings, pilgrimage tours, and group travel.
-              </p>
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                Book <strong>AC buses</strong> with <strong>professional drivers</strong> for <strong>Delhi, Mumbai, Jaipur</strong>, and all major routes across India. All vehicles feature pushback seats, entertainment systems, GPS tracking, and spacious luggage storage for comfortable long-distance travel.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Seater Comparison Table — grounds the Comparison schema */}
-        {seaterComparison.length > 0 && (
-          <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 bg-[#FACF2D]/10 px-6 py-3 rounded-full mb-4">
-                  <Bus className="w-5 h-5 text-[#FACF2D]" />
-                  <span className="text-[#FACF2D] font-bold text-sm tracking-wider">COMPARE BUS SIZES</span>
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950/90 to-transparent" />
+                <div className="absolute right-3 top-3 rounded-full bg-amber-400 px-3 py-1 text-xs font-black text-slate-900 shadow-lg sm:text-sm">
+                  {bus.ratePerKm}
                 </div>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4">
-                  Which bus size should I rent? <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">22 vs 35 vs 45 vs 56 Seater</span>
-                </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Compare capacity, best use-case and per-km price to pick the right coach for your group size.
+                {(bus.popular || bus.luxury || bus.premium) && (
+                  <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[0.65rem] font-black uppercase tracking-wide text-amber-400 ring-1 ring-amber-400/40 backdrop-blur-sm">
+                    <Star className="h-3 w-3" fill="currentColor" />
+                    {bus.luxury ? 'Luxury' : bus.premium ? 'Premium' : 'Popular'}
+                  </span>
+                )}
+                <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-slate-950/70 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
+                  <Users className="h-3.5 w-3.5 text-amber-400" />
+                  {bus.capacity}
+                </div>
+              </div>
+
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-lg font-black text-white sm:text-xl">{bus.name}</h3>
+                <p className="mb-3 mt-0.5 text-sm text-slate-400">
+                  <span className="font-bold text-slate-300">Ideal for:</span> {bus.idealFor}
                 </p>
-              </div>
 
-              <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-lg">
-                <table className="w-full text-sm text-left bg-white">
-                  <caption className="sr-only">Comparison of 22, 35, 45 and 56 seater buses by capacity, best use-case, price per km and AC type</caption>
-                  <thead>
-                    <tr className="bg-gray-900 text-white">
-                      <th scope="col" className="px-4 py-3.5 font-bold">Bus Size</th>
-                      <th scope="col" className="px-4 py-3.5 font-bold text-[#FACF2D]">Capacity</th>
-                      <th scope="col" className="px-4 py-3.5 font-bold">Best For</th>
-                      <th scope="col" className="px-4 py-3.5 font-bold">Price / km</th>
-                      <th scope="col" className="px-4 py-3.5 font-bold">AC Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {seaterComparison.map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                        <th scope="row" className="px-4 py-3 font-semibold text-gray-900 align-top">{row.size}</th>
-                        <td className="px-4 py-3 text-gray-700 align-top font-bold">{row.capacity}</td>
-                        <td className="px-4 py-3 text-gray-600 align-top">{row.bestFor}</td>
-                        <td className="px-4 py-3 text-green-700 font-bold align-top">{row.pricePerKm}</td>
-                        <td className="px-4 py-3 text-gray-600 align-top">{row.ac}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                {/* Fare figures — straight from the fleet data */}
+                <div className="mb-4 grid grid-cols-2 gap-2">
+                  <div className="rounded-xl bg-white/[0.04] p-3">
+                    <p className="text-[0.6rem] uppercase tracking-wide text-slate-400">Minimum</p>
+                    <p className="mt-0.5 text-xs font-bold text-white">{bus.minimumCharge}</p>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.04] p-3">
+                    <p className="text-[0.6rem] uppercase tracking-wide text-slate-400">Driver allowance</p>
+                    <p className="mt-0.5 text-xs font-bold text-white">{bus.driverAllowance}</p>
+                  </div>
+                </div>
+
+                {/* Feature chips */}
+                <div className="mb-5 flex flex-wrap gap-1.5">
+                  {bus.features.map((f, idx) => (
+                    <span key={idx} className="inline-flex items-center gap-1 rounded-lg bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 ring-1 ring-white/10">
+                      <CheckCircle className="h-3 w-3 text-emerald-400" />
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Book button — full-width tap target on mobile, compact on desktop */}
+                <div className="mt-auto">
+                  <a
+                    href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                      `Hi, I want to book the ${bus.name} (${bus.capacity}). Please share rates and availability.`
+                    )}`}
+                    onClick={() => trackWhatsAppClick(`bus_fleet_${bus.seaterType || bus.id}`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sheen flex w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-4 py-3 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95 lg:w-auto lg:mx-auto lg:px-6 lg:py-2 lg:text-[13px]"
+                  >
+                    <WhatsAppIcon className="h-4 w-4" /> Book {bus.seaterType || bus.name}
+                  </a>
+                </div>
               </div>
-              <p className="text-sm text-gray-500 mt-4 text-center">
-                For groups of 12-26, a <Link href="/tempo-traveller" className="text-orange-600 font-semibold underline underline-offset-2">tempo traveller</Link> may be more economical. Call <a href="tel:+917668570551" className="text-orange-600 font-semibold">7668570551</a> for a tailored quote.
-              </p>
             </div>
-          </section>
-        )}
+          ))}
+        </div>
 
-        {/* Mid-page CTA strip */}
-        <section className="bg-gray-900">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        {/* Show more */}
+        {!showAllVehicles && filteredFleet.length > 6 && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setShowAllVehicles(true)}
+              className="sheen glow-gold inline-flex items-center gap-3 rounded-full bg-amber-400 px-10 py-4 text-sm font-black uppercase tracking-wider text-slate-900 transition-transform hover:scale-[1.02] active:scale-95"
+            >
+              View All Buses
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+      </Section>
+
+      {/* ================= SEATER COMPARISON TABLE ================= */}
+      <Section tone="dark" pad="sm">
+        <AuroraHeading
+          tone="dark"
+          eyebrow="Compare sizes"
+          title="Which bus size should I rent?"
+          highlight="22 vs 35 vs 45 vs 56 Seater"
+          subtitle="Compare capacity, best use-case and per-km price to pick the right coach for your group size."
+        />
+        {seaterComparison.length > 0 && (
+          <div className="glass-dark mt-10 overflow-hidden rounded-2xl p-1 sm:p-2">
+            <DataTable
+              tone="dark"
+              minWidth={640}
+              caption="Comparison of 22, 35, 45 and 56 seater buses by capacity, best use-case, price per km and AC type"
+              columns={[
+                { key: 'size', label: 'Bus Size' },
+                { key: 'capacity', label: 'Capacity' },
+                { key: 'bestFor', label: 'Best For' },
+                { key: 'pricePerKm', label: 'Price / km' },
+                { key: 'ac', label: 'AC Type' },
+              ]}
+              rows={seaterComparison.map((r) => ({
+                ...r,
+                size: <span className="font-bold text-white">{r.size}</span>,
+                pricePerKm: <span className="font-semibold text-amber-400">{r.pricePerKm}</span>,
+              }))}
+            />
+          </div>
+        )}
+        {/* Honest cross-sell — smaller groups ride cheaper per seat in a tempo */}
+        <p className="mt-5 text-center text-sm text-slate-400">
+          For groups of 12-26, a <Link href="/tempo-traveller" className="font-semibold text-amber-400 underline underline-offset-2 hover:text-amber-300">tempo traveller</Link> at ₹20–28/km may be more economical. Call <a href="tel:+917668570551" onClick={() => trackPhoneCall('bus_hub_comparison')} className="font-semibold text-amber-400 hover:text-amber-300">{PHONE}</a> for a tailored quote.
+        </p>
+      </Section>
+
+      {/* ================= MID-PAGE CTA STRIP ================= */}
+      <section className="bg-slate-950">
+        <div className="mx-auto max-w-5xl px-4 pb-4 sm:px-6">
+          <div className="glass-dark flex flex-col items-center justify-between gap-6 rounded-3xl px-6 py-8 text-center sm:px-10 md:flex-row md:text-left">
             <div>
-              <h2 className="text-2xl font-black text-white mb-1">
+              <h2 className="mb-1 text-2xl font-black text-white">
                 Not sure which bus fits your group?
               </h2>
-              <p className="text-gray-300">
+              <p className="text-white/70">
                 Tell us your group size and route — get an instant all-inclusive quote.
               </p>
             </div>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               <a
-                href="tel:+917668570551"
-                className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-7 py-3.5 rounded-full font-bold hover:bg-yellow-400 transition"
-              >
-                <Phone className="w-5 h-5" /> Call: +91 76685 70551
-              </a>
-              <a
-                href={`https://wa.me/917668570551?text=${encodeURIComponent(
-                  "Hi, I need a bus on rent. Please help me pick the right size and share a quote."
+                href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+                  'Hi, I need a bus on rent. Please help me pick the right size and share a quote.'
                 )}`}
+                onClick={() => trackWhatsAppClick('bus_hub_midcta')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-7 py-3.5 rounded-full font-bold hover:bg-white/20 transition"
+                className="sheen glow-gold inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95"
               >
-                <MessageCircle className="w-5 h-5" /> WhatsApp Quote
+                <WhatsAppIcon className="h-4 w-4" /> WhatsApp Quote
+              </a>
+              <a
+                href="tel:+917668570551"
+                onClick={() => trackPhoneCall('bus_hub_midcta')}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" /> Call: +91 76685 70551
               </a>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Fleet Section - 3D Cards */}
-        <section ref={fleetSectionRef} className="pt-12 pb-32 bg-white relative overflow-hidden">
+      {/* ================= ROUTES — search + origin filter ================= */}
+      <Section tone="aurora">
+        <AuroraHeading
+          tone="dark"
+          eyebrow="Popular routes"
+          title="Popular Bus Routes"
+          highlight="Across India"
+          subtitle="Explore our extensive network of bus routes covering Delhi to Agra, Delhi to Jaipur, Mumbai to Goa, and over 100+ destinations. Book luxury coach services for hill stations, heritage tours, and pilgrimage trips."
+        />
 
-          {/* Background Decoration */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-5">
-            <div className="absolute top-20 right-0 w-96 h-96 bg-[#FACF2D] rounded-full blur-3xl" />
+        {/* Search and origin filter */}
+        <div className="mx-auto mt-10 flex max-w-4xl flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="group relative flex-1">
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-amber-400" />
+            <input
+              type="text"
+              placeholder="Search your destination…"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="glass-dark w-full rounded-2xl py-4 pl-12 pr-5 font-semibold text-white placeholder:text-slate-500 focus:border-amber-400/60 focus:outline-none"
+            />
           </div>
-
-          <div ref={fleetRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={fleetInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-20"
+          <div className="group relative sm:w-60">
+            <Filter className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-amber-400" />
+            <select
+              value={selectedOrigin}
+              onChange={(e) => setSelectedOrigin(e.target.value)}
+              className="glass-dark w-full cursor-pointer appearance-none rounded-2xl bg-slate-950/60 py-4 pl-12 pr-8 font-semibold text-white focus:border-amber-400/60 focus:outline-none"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={fleetInView ? { scale: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-[#FACF2D]/10 px-6 py-3 rounded-full mb-6"
-              >
-                <Bus className="w-5 h-5 text-[#FACF2D]" />
-                <span className="text-[#FACF2D] font-bold text-sm tracking-wider">OUR PREMIUM FLEET</span>
-              </motion.div>
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6">
-                Our Luxury Bus Fleet <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">22 to 56 Seater Options</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Explore our premium fleet of AC buses from 22 seater mini buses to 56 seater Volvo coaches. All vehicles feature pushback seats, entertainment systems, and GPS tracking for safe group travel across India.
-              </p>
-            </motion.div>
-
-            {/* Filter Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={fleetInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap justify-center gap-4 mb-16"
-            >
-              {['all', 'standard', 'premium', 'luxury'].map((filter, idx) => (
-                <motion.button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-8 py-4 rounded-full font-bold text-sm tracking-wider transition-all duration-300 ${activeFilter === filter
-                    ? 'bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black shadow-xl shadow-[#FACF2D]/30'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                >
-                  {filter.toUpperCase()}
-                </motion.button>
+              <option value="">All Cities</option>
+              {originCities.map(city => (
+                <option key={city} value={city}>{city}</option>
               ))}
-            </motion.div>
-
-            {/* Fleet Grid with Cute 3D Effect */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {displayedVehicles.map((bus, index) => (
-                <motion.div
-                  key={bus.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={fleetInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="fleet-card group relative"
-                >
-                  <motion.div
-                    
-                    transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    className="bg-gradient-to-br from-white via-white to-orange-50/30 rounded-[2rem] overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_rgba(250,207,45,0.3)] border-4 border-orange-100/50 relative"
-                  >
-                    {/* Badge with cute styling */}
-                    {(bus.premium || bus.luxury) && (
-                      <div className="absolute top-4 right-4 z-20">
-                        <div
-                          className={`${bus.luxury ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gradient-to-r from-[#FACF2D] to-orange-400'} text-white px-5 py-2.5 rounded-full text-xs font-black flex items-center gap-1.5 shadow-xl`}
-                        >
-                          {bus.luxury ? <Star className="w-4 h-4" fill="white" /> : <Award className="w-4 h-4" />}
-                          {bus.luxury ? 'LUXURY' : 'PREMIUM'}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Image with cute styling */}
-                    <div className="relative h-64 overflow-hidden rounded-t-[1.75rem]">
-                      <div className="w-full h-full hover:scale-105 transition-transform duration-500">
-                        <Image
-                          src={bus.image}
-                          alt={bus.name}
-                          fill
-                          className="object-cover"
-                          loading="lazy"
-                          placeholder="blur"
-                          blurDataURL="data:image/jpeg;base64,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"
-                        />
-                      </div>
-
-                      {/* Soft Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-                      {/* Cute Capacity Badge */}
-                      <div
-                        className="absolute bottom-4 left-4 bg-gradient-to-r from-[#FACF2D] to-orange-400 text-white backdrop-blur-md px-5 py-3 rounded-full flex items-center gap-2 shadow-2xl border-2 border-white/50"
-                      >
-                        <Users className="w-5 h-5" />
-                        <span className="font-black text-base">{bus.capacity}</span>
-                      </div>
-                    </div>
-
-                    {/* Content with cute styling */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-black text-gray-900 mb-4 group-hover:text-[#FACF2D] transition-colors duration-300">
-                        {bus.name}
-                      </h3>
-
-                      {/* Cute Pricing Cards */}
-                      <div className="space-y-3 mb-6">
-                        <div
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl border-2 border-orange-100 shadow-md hover:shadow-lg hover:translate-x-1 transition-all duration-300"
-                        >
-                          <span className="text-xs font-bold text-gray-700 flex items-center gap-2">
-                            <Route className="w-4 h-4 text-orange-500" />
-                            Per KM
-                          </span>
-                          <span className="text-base font-black text-orange-600">{bus.ratePerKm}</span>
-                        </div>
-
-                        <div
-                          className="flex items-center justify-between p-4 bg-gradient-to-r from-[#FACF2D]/20 to-orange-400/20 rounded-2xl border-2 border-[#FACF2D]/30 shadow-md hover:shadow-lg hover:translate-x-1 transition-all duration-300"
-                        >
-                          <span className="text-xs font-bold text-gray-700 flex items-center gap-2">
-                            <Clock className="w-4 h-4 text-[#FACF2D]" />
-                            Minimum
-                          </span>
-                          <span className="text-base font-black text-gray-900">{bus.minimumCharge}</span>
-                        </div>
-                      </div>
-
-                      {/* Ideal For - Cute styling */}
-                      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-2xl mb-6 border-2 border-purple-100">
-                        <p className="text-xs text-gray-700">
-                          <span className="font-black text-purple-600">Perfect for:</span> {bus.idealFor}
-                        </p>
-                      </div>
-
-                      {/* Features with cute badges */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {bus.features.slice(0, 3).map((feature, idx) => (
-                          <motion.span
-                            key={idx}
-                            
-                            className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 text-green-700 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 hover:border-green-400 hover:shadow-lg transition-all duration-300"
-                          >
-                            <CheckCircle className="w-3 h-3" fill="currentColor" />
-                            {feature}
-                          </motion.span>
-                        ))}
-                      </div>
-
-                      {/* CTA Button — direct WhatsApp booking with bus name */}
-                      <motion.a
-                        whileTap={{ scale: 0.95 }}
-                        href={`https://wa.me/917668570551?text=${encodeURIComponent(
-                          `Hi, I want to book the ${bus.name} (${bus.capacity}). Please share rates and availability.`
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black py-4 rounded-2xl font-black text-sm tracking-wide flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl transition-all duration-300"
-                      >
-                        <MessageCircle className="w-5 h-5" />
-                        BOOK ON WHATSAPP
-                        <motion.div
-                          animate={shouldReduceMotion ? {} : { x: [0, 8, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                          <ArrowRight className="w-5 h-5" />
-                        </motion.div>
-                      </motion.a>
-                    </div>
-
-                    {/* Cute Sparkle Effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#FACF2D]/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Show More Button */}
-            {!showAllVehicles && getFilteredFleet().length > 6 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={fleetInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-center mt-16"
-              >
-                <motion.button
-                  onClick={() => setShowAllVehicles(true)}
-                  
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black px-12 py-5 rounded-full font-bold text-lg inline-flex items-center gap-3"
-                >
-                  VIEW ALL BUSES
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
-            )}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-amber-400" />
           </div>
-        </section>
+        </div>
 
-        {/* Routes Section */}
-        <section ref={routesRef} className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={routesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-20"
-            >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={routesInView ? { scale: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-purple-100 px-6 py-3 rounded-full mb-6"
-              >
-                <Navigation className="w-5 h-5 text-purple-600" />
-                <span className="text-purple-600 font-bold text-sm tracking-wider">POPULAR ROUTES</span>
-              </motion.div>
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6">
-                Popular Bus Routes <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Across India</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                Explore our extensive network of bus routes covering Delhi to Agra, Delhi to Jaipur, Mumbai to Goa, and over 100+ destinations. Book luxury coach services for hill stations, heritage tours, and pilgrimage trips.
-              </p>
-
-              {/* Search and Filter */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={routesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 mt-12"
-              >
-                <div className="flex-1 relative group">
-                  <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-[#FACF2D] transition-colors" />
-                  <input
-                    type="text"
-                    placeholder="Search your destination..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-14 pr-6 py-5 rounded-2xl border-2 border-gray-200 focus:border-[#FACF2D] focus:outline-none text-gray-900 font-semibold bg-white shadow-lg hover:shadow-xl transition-all duration-300"
-                  />
+        {/* Routes grid */}
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {displayedRoutes.map((route, index) => (
+            <Link key={`${route.slug}-${index}`} href={`/bus-routes/${route.slug}`} className="group block h-full">
+              <div className="glass-dark flex h-full flex-col rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40">
+                {/* Route motif */}
+                <div className="flex items-center gap-2 text-sm font-black">
+                  <MapPin className="h-4 w-4 shrink-0 text-amber-400" />
+                  <span className="truncate text-white">{route.origin}</span>
+                  <span className="h-px min-w-[12px] flex-1 bg-amber-400/40" aria-hidden />
+                  <ArrowRight className="h-4 w-4 shrink-0 text-amber-400" />
+                  <span className="truncate text-white transition-colors group-hover:text-amber-400">{route.destination}</span>
                 </div>
-                <div className="relative sm:w-64 group">
-                  <Filter className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-[#FACF2D] transition-colors" />
-                  <select
-                    value={selectedOrigin}
-                    onChange={(e) => setSelectedOrigin(e.target.value)}
-                    className="w-full pl-14 pr-6 py-5 rounded-2xl border-2 border-gray-200 focus:border-[#FACF2D] focus:outline-none text-gray-900 font-semibold appearance-none bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  >
-                    <option value="">All Cities</option>
-                    {getOriginCities().map(city => (
-                      <option key={city} value={city}>{city}</option>
-                    ))}
-                  </select>
+
+                <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-amber-400/10 px-3 py-1 text-[0.65rem] font-black uppercase tracking-wide text-amber-400 ring-1 ring-amber-400/25">
+                  <Sparkles className="h-3 w-3" />
+                  {route.type}
+                </span>
+
+                <div className="mt-4 space-y-1.5 text-xs text-white/60">
+                  <p className="flex items-center justify-between">
+                    <span className="inline-flex items-center gap-1.5 font-semibold"><Route className="h-3.5 w-3.5 text-amber-400" /> Distance</span>
+                    <span className="font-bold text-white">{route.distance}</span>
+                  </p>
+                  <p className="flex items-center justify-between">
+                    <span className="inline-flex items-center gap-1.5 font-semibold"><Clock className="h-3.5 w-3.5 text-amber-400" /> Duration</span>
+                    <span className="font-bold text-white">{route.duration}</span>
+                  </p>
                 </div>
-              </motion.div>
-            </motion.div>
 
-            {/* Unique Routes Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {displayedRoutes.map((route, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={routesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  <Link href={`/bus-routes/${route.slug}`}>
-                    <div
-                      className="group relative bg-white rounded-[1.5rem] p-7 shadow-2xl hover:shadow-[0_25px_50px_rgba(250,207,45,0.35)] hover:-translate-y-2 border-2 border-gradient overflow-hidden cursor-pointer h-full transition-all duration-300"
-                      style={{
-                        borderImage: 'linear-gradient(135deg, rgba(250,207,45,0.3), rgba(255,165,0,0.3)) 1'
-                      }}
-                    >
-                      {/* Animated Background Gradient */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{
-                          background: `linear-gradient(135deg, ${route.type === 'Heritage' ? 'rgba(217,119,6,0.1)' : route.type === 'Spiritual' ? 'rgba(168,85,247,0.1)' : route.type === 'Hill Station' ? 'rgba(16,185,129,0.1)' : 'rgba(250,207,45,0.1)'}, transparent)`
-                        }}
-                      />
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-amber-400 transition-colors group-hover:text-amber-300">
+                  Explore Route
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-                      {/* Decorative Corner Element */}
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#FACF2D]/10 to-transparent rounded-bl-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                      <div className="relative z-10">
-                        {/* Origin with Icon */}
-                        <div className="flex items-start mb-4">
-                          <div
-                            className="bg-gradient-to-br from-[#FACF2D] to-orange-400 p-2.5 rounded-2xl mr-3 shadow-lg"
-                          >
-                            <MapPin className="w-5 h-5 text-white" fill="white" />
-                          </div>
-                          <div>
-                            <p className="text-xs text-gray-500 font-semibold mb-1">FROM</p>
-                            <h3 className="font-black text-base text-gray-900 group-hover:text-[#FACF2D] transition-colors">{route.origin}</h3>
-                          </div>
-                        </div>
-
-                        {/* Arrow Connector */}
-                        <div className="flex items-center mb-4 ml-2">
-                          <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="flex items-center"
-                          >
-                            <div className="h-0.5 w-8 bg-gradient-to-r from-[#FACF2D] to-orange-400 mr-2" />
-                            <ArrowRight className="w-5 h-5 text-orange-500 group-hover:text-[#FACF2D] transition-colors" />
-                          </motion.div>
-                        </div>
-
-                        {/* Destination */}
-                        <div className="mb-5 ml-2">
-                          <p className="text-xs text-gray-500 font-semibold mb-1">TO</p>
-                          <span className="font-black text-base text-gray-800 group-hover:text-orange-600 transition-colors">{route.destination}</span>
-                        </div>
-
-                        {/* Type Badge with unique styling */}
-                        <div
-                          className={`inline-flex items-center px-4 py-2 rounded-xl text-xs font-black mb-5 border-2 shadow-md ${getTypeColor(route.type)}`}
-                        >
-                          <Sparkles className="w-3 h-3 mr-1.5" />
-                          {route.type}
-                        </div>
-
-                        {/* Info Cards */}
-                        <div className="space-y-2 mb-5">
-                          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100">
-                            <span className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                              <Route className="w-4 h-4 text-blue-500" />
-                              Distance
-                            </span>
-                            <span className="text-sm font-black text-blue-600">{route.distance}</span>
-                          </div>
-                          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
-                            <span className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                              <Clock className="w-4 h-4 text-green-500" />
-                              Duration
-                            </span>
-                            <span className="text-sm font-black text-green-600">{route.duration}</span>
-                          </div>
-                        </div>
-
-                        {/* CTA with gradient */}
-                        <motion.div
-                          
-                          className="bg-gradient-to-r from-[#FACF2D] to-orange-500 text-black font-black text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg group-hover:shadow-xl transition-all"
-                        >
-                          Explore Route
-                          <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                          >
-                            <ArrowRight className="w-4 h-4" />
-                          </motion.div>
-                        </motion.div>
-                      </div>
-
-                      {/* Shine effect on hover */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Show More Routes */}
-            {!showAllRoutes && getFilteredRoutes().length > 8 && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={routesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-center mt-16"
-              >
-                <motion.button
-                  onClick={() => setShowAllRoutes(true)}
-                  
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-black text-[#FACF2D] px-12 py-5 rounded-full font-bold text-lg inline-flex items-center gap-3 hover:bg-gray-900 transition-colors duration-300"
-                >
-                  VIEW ALL ROUTES
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
-            )}
-          </div>
-        </section>
-
-        {/* Why Choose Us - Premium Design */}
-        <section ref={featuresRef} className="py-32 bg-white relative overflow-hidden">
-
-          {/* Background Decoration */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-20"
+        {/* Show more routes */}
+        {!showAllRoutes && filteredRoutes.length > 8 && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setShowAllRoutes(true)}
+              className="glass-dark inline-flex items-center gap-3 rounded-full px-10 py-4 text-sm font-black uppercase tracking-wider text-white transition-colors hover:border-amber-400/50 hover:text-amber-400"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={featuresInView ? { scale: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-green-100 px-6 py-3 rounded-full mb-6"
-              >
-                <BadgeCheck className="w-5 h-5 text-green-600" />
-                <span className="text-green-600 font-bold text-sm tracking-wider">WHY CHOOSE US</span>
-              </motion.div>
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-6">
-                Why Choose Our <span className="bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Bus Rental Service</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Professional drivers, well-maintained vehicles, and transparent pricing make us India&apos;s trusted bus hire company
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {whyChooseUs.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={featuresInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  
-                  className="group bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-2xl border border-gray-100 hover:border-[#FACF2D] transition-all duration-300 relative overflow-hidden"
-                >
-                  {/* Background Gradient on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FACF2D]/0 to-orange-500/0 group-hover:from-[#FACF2D]/10 group-hover:to-orange-500/10 transition-all duration-500" />
-
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#FACF2D] to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg transition-transform hover:scale-110">
-                      <TrendingUp className="w-8 h-8 text-white" />
-                    </div>
-
-                    <h3 className="text-lg font-black text-gray-900 mb-4 group-hover:text-[#FACF2D] transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+              View All Routes
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
-        </section>
+        )}
+      </Section>
 
-        {/* Additional Info Section - Premium Dark Theme */}
-        <section className="py-32 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
+      {/* ================= WHY CHOOSE US ================= */}
+      <Section tone="dark">
+        <AuroraHeading
+          tone="dark"
+          eyebrow="Why choose us"
+          title="Why Choose Our"
+          highlight="Bus Rental Service"
+          subtitle="Professional drivers, well-maintained vehicles, and transparent pricing make us India’s trusted bus hire company."
+        />
 
-          {/* Background Pattern */}
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: 'linear-gradient(45deg, #FACF2D 25%, transparent 25%, transparent 75%, #FACF2D 75%, #FACF2D), linear-gradient(45deg, #FACF2D 25%, transparent 25%, transparent 75%, #FACF2D 75%, #FACF2D)',
-              backgroundSize: '60px 60px',
-              backgroundPosition: '0 0, 30px 30px'
-            }}
-          />
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {whyChooseUs.map((feature, index) => {
+            const Icon = WHY_ICONS[feature.icon] || BusIconFallback;
+            return (
+              <div
+                key={index}
+                className="glass-dark rounded-3xl p-7 transition-colors duration-300 hover:border-amber-400/40"
+              >
+                <div className="mb-5 inline-flex rounded-2xl bg-amber-400/15 p-4">
+                  <Icon className="h-7 w-7 text-amber-400" />
+                </div>
+                <h3 className="mb-2 text-lg font-black text-white">{feature.title}</h3>
+                <p className="text-sm leading-relaxed text-white/60">{feature.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* ================= ADDITIONAL INFO — pricing & terms ================= */}
+      <Section tone="aurora" pad="sm">
+        <AuroraHeading
+          tone="dark"
+          eyebrow="Additional information"
+          title="Transparent Bus Hire"
+          highlight="Pricing & Terms"
+          subtitle="Clear bus rental rates with no hidden charges — pay only for distance traveled and driver allowance."
+        />
 
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            { icon: Route, label: additionalInfo.outstationTrips.label, value: additionalInfo.outstationTrips.value },
+            { icon: Clock, label: additionalInfo.driverNightCharge.label, value: additionalInfo.driverNightCharge.value },
+            { icon: Shield, label: additionalInfo.extraCharges.label, value: additionalInfo.extraCharges.value },
+            { icon: IndianRupee, label: additionalInfo.localUsage.label, value: additionalInfo.localUsage.value },
+            { icon: CheckCircle, label: additionalInfo.billing.label, value: additionalInfo.billing.value },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="glass-dark rounded-3xl p-7 transition-colors duration-300 hover:border-amber-400/50"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-[#FACF2D]/20 backdrop-blur-md border border-[#FACF2D]/30 px-6 py-3 rounded-full mb-6"
-              >
-                <Info className="w-5 h-5 text-[#FACF2D]" />
-                <span className="text-[#FACF2D] font-bold text-sm tracking-wider">ADDITIONAL INFORMATION</span>
-              </motion.div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4">
-                Transparent Bus Hire <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Pricing & Terms</span>
-              </h2>
-              <p className="text-lg text-gray-400">Clear bus rental rates with no hidden charges - pay only for distance traveled and driver allowance</p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { icon: Route, label: additionalInfo.outstationTrips.label, value: additionalInfo.outstationTrips.value, color: 'from-blue-500 to-cyan-500' },
-                { icon: Clock, label: additionalInfo.driverNightCharge.label, value: additionalInfo.driverNightCharge.value, color: 'from-purple-500 to-pink-500' },
-                { icon: Shield, label: additionalInfo.extraCharges.label, value: additionalInfo.extraCharges.value, color: 'from-green-500 to-emerald-500' },
-                { icon: DollarSign, label: additionalInfo.localUsage.label, value: additionalInfo.localUsage.value, color: 'from-orange-500 to-red-500' },
-                { icon: CheckCircle, label: additionalInfo.billing.label, value: additionalInfo.billing.value, color: 'from-[#FACF2D] to-orange-500' },
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  
-                  className="bg-white/5 backdrop-blur-md border-2 border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-[#FACF2D]/50 transition-all duration-300 group relative overflow-hidden"
-                >
-                  {/* Gradient overlay on hover */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${item.color} transition-opacity duration-500`} />
-
-                  <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-5 shadow-lg transition-transform hover:scale-110`}>
-                    <item.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-base font-black text-[#FACF2D] mb-4 group-hover:text-white transition-colors">{item.label}</h3>
-                  <p className="text-sm text-gray-300 leading-relaxed font-medium">{item.value}</p>
-                </motion.div>
-              ))}
+              <div className="mb-4 inline-flex rounded-2xl bg-amber-400/15 p-3.5">
+                <item.icon className="h-6 w-6 text-amber-400" />
+              </div>
+              <h3 className="mb-2 text-base font-black text-amber-400">{item.label}</h3>
+              <p className="text-sm font-medium leading-relaxed text-slate-300">{item.value}</p>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </Section>
 
-        {/* FAQ Section - SEO Optimized */}
-        <section className="py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* ================= FAQ — two per row on md+, stacked on mobile ================= */}
+      <Section tone="light" className="bg-slate-50">
+        <AuroraHeading
+          eyebrow="Good to know"
+          title="Bus Rental"
+          highlight="FAQs"
+          subtitle="Everything you need to know about our luxury bus hire services."
+        />
 
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:items-start md:gap-6">
+          {faqItems.map((faq, index) => (
+            <div
+              key={index}
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-amber-300 hover:shadow-lg"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 200 }}
-                className="inline-flex items-center gap-2 bg-blue-100 px-6 py-3 rounded-full mb-6"
+              <button
+                onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                aria-expanded={openFaq === index}
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left md:px-6 md:py-5"
               >
-                <HelpCircle className="w-5 h-5 text-blue-600" />
-                <span className="text-blue-600 font-bold text-sm tracking-wider">FREQUENTLY ASKED QUESTIONS</span>
-              </motion.div>
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 mb-4">
-                Bus Rental <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">FAQs</span>
-              </h2>
-              <p className="text-lg text-gray-600">Everything you need to know about our luxury bus hire services</p>
-            </motion.div>
-
-            <div className="space-y-4">
-              {[
-                {
-                  question: "What bus sizes are available for rental?",
-                  answer: "We offer luxury buses from 22 seater to 56 seater, including 22, 25, 27, 32, 35, 41, 45, 49, 52, and 56 seater options. All buses are AC equipped with pushback/reclining seats and entertainment systems."
-                },
-                {
-                  question: "Which cities do you provide bus rental services?",
-                  answer: "We provide luxury bus rental services across India including Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Rishikesh, Shimla, Manali, Amritsar, Udaipur, Jodhpur, Jaisalmer, and many more cities. We cover all major tourist destinations, pilgrimage sites, and commercial hubs."
-                },
-                {
-                  question: "What are the bus rental rates?",
-                  answer: "Bus rental rates start from ₹30/km for 22 seater mini bus and go up to ₹65/km for 56 seater luxury Volvo bus. Rates vary based on bus size, route, duration, and season. Driver allowance is ₹800-1200 per day depending on the vehicle."
-                },
-                {
-                  question: "What amenities are included in the luxury bus?",
-                  answer: "Our luxury buses include AC, pushback/reclining seats, music/entertainment system, luggage space, curtains, reading lights, charging points, and some premium buses have TV, wifi, and washroom facilities. All buses are GPS tracked with professional drivers."
-                },
-                {
-                  question: "Can I book a bus for corporate events and weddings?",
-                  answer: "Yes, we specialize in corporate bus rentals for conferences, team outings, and employee transportation. We also provide wedding buses for guest transfers, baraat, and destination weddings. Customized packages available with flexible booking."
-                },
-                {
-                  question: "How far in advance should I book a bus?",
-                  answer: "We recommend booking at least 7-15 days in advance for popular routes and peak season. However, we also accept same-day and next-day bookings subject to availability. For large groups and special events, advance booking of 1 month is advisable."
-                },
-                {
-                  question: "How many people can fit in a 35 seater vs a 45 seater bus?",
-                  answer: "A 35 seater bus comfortably seats 35 passengers plus luggage and is ideal for medium wedding groups, school trips, and corporate teams. A 45 seater bus seats 45 passengers and suits larger pilgrimage groups and conferences. For groups of 50-56, choose the 52 or 56 seater luxury Volvo coach. For small groups of 12-26, a tempo traveller or 22 seater mini bus is more economical."
-                },
-                {
-                  question: "What is the difference between a Volvo bus and a regular AC bus?",
-                  answer: "A Volvo (or Scania) luxury coach has air-suspension for a smoother ride, push-back recliner seats, better insulation and quieter AC, and is best for long-distance and overnight journeys. A regular AC bus is more budget-friendly at ₹30-45/km and works well for shorter day trips and local group transfers. Volvo coaches cost ₹55-65/km but deliver premium comfort over 300+ km routes."
-                },
-                {
-                  question: "Do you provide buses for school trips and educational tours?",
-                  answer: "Yes. Our school-trip buses come with speed governors, first-aid kits, GPS tracking shared with the school, and experienced drivers verified for student transport. We provide 22 to 56 seater options for day picnics, educational tours, and inter-school events with teacher-coordinated pickup and drop."
-                },
-                {
-                  question: "Is a driver and fuel included in the bus rental price?",
-                  answer: "Yes, the per-km rate includes the bus, fuel, and a professional driver. Toll taxes, state permits, parking, and driver night allowance (₹800-1200/day) are charged extra at actuals. You receive a transparent quote before booking with all inclusions and exclusions listed clearly."
-                },
-                {
-                  question: "Can I get a GST invoice for a corporate bus booking?",
-                  answer: "Yes, we provide a proper GST invoice for all corporate and business bus bookings, along with a single point of contact for multi-vehicle coordination. This makes Triveni Cabs ideal for company offsites, conferences, and employee transportation that require compliant billing and reimbursement."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-gray-100 hover:border-[#FACF2D] transition-all duration-300"
-                >
-                  <button
-                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
-                  >
-                    <h3 className="text-lg font-black text-gray-900 pr-4">
-                      {faq.question}
-                    </h3>
-                    <motion.div
-                      animate={{ rotate: openFaq === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex-shrink-0"
-                    >
-                      <ChevronDown className="w-6 h-6 text-[#FACF2D]" />
-                    </motion.div>
-                  </button>
-
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: openFaq === index ? 'auto' : 0,
-                      opacity: openFaq === index ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-8 pb-6">
-                      <p className={`text-gray-700 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
+                <h3 className="text-sm font-bold text-slate-900 md:text-base">
+                  {faq.question}
+                </h3>
+                <ChevronDown
+                  className={`h-5 w-5 shrink-0 text-amber-500 transition-transform duration-200 ${openFaq === index ? 'rotate-180' : ''}`}
+                />
+              </button>
+              {openFaq === index && (
+                <div className="px-5 pb-4 md:px-6 md:pb-5">
+                  <p className={`text-sm leading-relaxed text-slate-600 md:text-base${index === 0 ? ' speakable-faq-first' : ''}`}>
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </Section>
 
-        {/* Final CTA - Unique Design */}
-        <section className="relative py-32 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-orange-500 overflow-hidden">
+      {/* ================= FINAL CTA ================= */}
+      <Section tone="aurora" className="border-t border-white/5">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-balance text-4xl font-black text-white md:text-6xl">
+            Ready to Start Your <span className="text-gradient-gold">Journey?</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
+            Book your bus now and experience premium group travel — instant confirmation on call or WhatsApp.
+          </p>
+          <p className="mt-4 text-sm font-semibold text-white/60">{TRUST_ROW}</p>
 
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(circle at 20px 20px, black 2px, transparent 0)',
-              backgroundSize: '40px 40px'
-            }} />
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 200 }}
+          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hi, I want to book a bus on rent. Please share rates and availability.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('bus_hub_final')}
+              className="sheen glow-gold-lg flex items-center justify-center gap-3 rounded-full bg-amber-400 px-10 py-5 text-lg font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-black mb-6">
-                Ready to Start Your Journey?
-              </h2>
-              <p className="text-lg text-gray-800 mb-12 font-semibold">
-                Book your bus now and experience premium travel
-              </p>
-            </motion.div>
-
-            <div className="flex flex-wrap justify-center gap-6">
-              <motion.a
-                href="tel:+917668570551"
-                
-                whileTap={{ scale: 0.95 }}
-                className="bg-black text-[#FACF2D] px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
-              >
-                <Phone className="w-6 h-6" />
-                CALL: +91 76685 70551
-              </motion.a>
-
-              <motion.a
-                href="https://wa.me/917668570551"
-                
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-black px-12 py-6 rounded-full font-black text-lg inline-flex items-center gap-3 shadow-2xl"
-              >
-                <MessageCircle className="w-6 h-6" />
-                WHATSAPP US
-              </motion.a>
-            </div>
+              <MessageCircle className="h-6 w-6" />
+              WhatsApp Us
+            </a>
+            <a
+              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('bus_hub_final')}
+              className="flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/5 px-10 py-5 text-lg font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+            >
+              <Phone className="h-6 w-6" />
+              Call: +91 76685 70551
+            </a>
           </div>
-        </section>
-      </div>
-    </MotionConfig>
+        </div>
+      </Section>
+    </div>
   );
+}
+
+// Fallback icon when a whyChooseUs entry carries an unknown icon key.
+function BusIconFallback(props) {
+  return <Bus {...props} />;
 }
