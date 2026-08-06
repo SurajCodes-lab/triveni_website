@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, History, Scroll,
@@ -17,13 +16,11 @@ export default function TimelineLayout({ post, relatedLinks }) {
     day: 'numeric'
   });
 
-  // Split content into sections for timeline effect
-  const contentSections = post.content?.split(/<h2[^>]*>/).filter(Boolean) || [];
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-stone-100 to-stone-50">
+    <div className="min-h-screen bg-gradient-to-b from-[#FACF2D]/10 via-white to-white">
       {/* Vintage-Style Header */}
-      <div className="relative bg-stone-900 text-white overflow-hidden">
+      <div className="relative bg-slate-950 text-white overflow-hidden">
+        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -36,80 +33,61 @@ export default function TimelineLayout({ post, relatedLinks }) {
 
         <div className="relative max-w-6xl mx-auto px-4 py-16">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-stone-400 mb-8">
-            <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8">
+            <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-amber-400 transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-amber-400">{post.category}</span>
+            <span className="text-[#FACF2D]">{post.category}</span>
           </nav>
 
           {/* Title Section */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="flex items-center gap-3 mb-6"
-              >
-                <div className="p-3 bg-amber-500/20 rounded-xl">
-                  <History className="w-6 h-6 text-amber-400" />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-[#FACF2D]/15 ring-1 ring-[#FACF2D]/30 rounded-xl">
+                  <History className="w-6 h-6 text-[#FACF2D]" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-amber-400">Historical Journey</p>
-                  <p className="text-stone-400 text-sm">{post.category}</p>
+                  <p className="text-xs uppercase tracking-widest text-[#FACF2D]">Historical Journey</p>
+                  <p className="text-slate-400 text-sm">{post.category}</p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6"
-              >
+              <h1 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 {post.title}
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="text-lg text-stone-300 leading-relaxed mb-8"
-              >
+              <span
+                aria-hidden="true"
+                className="my-6 block h-[4px] w-28 opacity-80 bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]"
+              />
+
+              <p className="text-lg text-slate-300 leading-relaxed mb-8">
                 {post.excerpt}
-              </motion.p>
+              </p>
 
               {/* Meta */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-wrap gap-4"
-              >
-                <span className="flex items-center gap-2 bg-stone-800 px-4 py-2 rounded-full text-sm">
-                  <Calendar className="w-4 h-4 text-amber-400" />
+              <div className="flex flex-wrap gap-4">
+                <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm backdrop-blur-sm">
+                  <Calendar className="w-4 h-4 text-[#FACF2D]" />
                   {formattedDate}
                 </span>
-                <span className="flex items-center gap-2 bg-stone-800 px-4 py-2 rounded-full text-sm">
-                  <Clock className="w-4 h-4 text-amber-400" />
+                <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm backdrop-blur-sm">
+                  <Clock className="w-4 h-4 text-[#FACF2D]" />
                   {post.readTime}
                 </span>
-                <span className="flex items-center gap-2 bg-stone-800 px-4 py-2 rounded-full text-sm">
-                  <MapPin className="w-4 h-4 text-amber-400" />
+                <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm backdrop-blur-sm">
+                  <MapPin className="w-4 h-4 text-[#FACF2D]" />
                   {post.city}
                 </span>
-              </motion.div>
+              </div>
             </div>
 
             {/* Hero Image with Vintage Frame */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 border-2 border-amber-500/30 rounded-lg" />
-              <div className="absolute -inset-2 border border-amber-500/20 rounded-lg" />
+            <div className="relative">
+              <div className="absolute -inset-4 border-2 border-[#FACF2D]/30 rounded-lg" />
+              <div className="absolute -inset-2 border border-[#FACF2D]/20 rounded-lg" />
               <div className="relative h-[400px] rounded-lg overflow-hidden">
                 <Image
                   src={post.heroImage || post.image}
@@ -118,25 +96,21 @@ export default function TimelineLayout({ post, relatedLinks }) {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent" />
               </div>
               {/* Vintage corner decorations */}
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-amber-500/50" />
-              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-amber-500/50" />
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-amber-500/50" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-amber-500/50" />
-            </motion.div>
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-[#FACF2D]/50" />
+              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#FACF2D]/50" />
+              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-[#FACF2D]/50" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-[#FACF2D]/50" />
+            </div>
           </div>
 
           {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center mt-12 text-stone-500"
-          >
+          <div className="flex flex-col items-center mt-12 text-slate-500">
             <span className="text-xs uppercase tracking-widest mb-2">Scroll to Explore</span>
             <ChevronDown className="w-5 h-5" />
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -145,30 +119,30 @@ export default function TimelineLayout({ post, relatedLinks }) {
         {/* Timeline Line */}
         <div className="relative">
           {/* Center Line */}
-          <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600" />
+          <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#FACF2D] via-amber-500 to-amber-600" />
 
           {/* Timeline Start */}
           <div className="relative flex items-center justify-center mb-16">
-            <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/25 z-10">
-              <Scroll className="w-7 h-7 text-white" />
+            <div className="w-16 h-16 bg-[#FACF2D] rounded-full flex items-center justify-center shadow-lg shadow-amber-500/25 z-10">
+              <Scroll className="w-7 h-7 text-black" />
             </div>
           </div>
 
           {/* Article Content as Timeline */}
           <article className="relative">
             <div
-              className="prose prose-lg max-w-none
+              className="blog-prose prose prose-lg max-w-none
                 prose-headings:relative prose-headings:ml-16 lg:prose-headings:ml-0
-                prose-h2:text-2xl prose-h2:font-bold prose-h2:text-stone-800
+                prose-h2:text-2xl prose-h2:font-bold prose-h2:text-slate-900
                 prose-h2:before:content-[''] prose-h2:before:absolute prose-h2:before:-left-12 lg:prose-h2:before:left-1/2
                 prose-h2:before:transform lg:prose-h2:before:-translate-x-1/2 prose-h2:before:-translate-y-1
-                prose-h2:before:w-6 prose-h2:before:h-6 prose-h2:before:bg-amber-500 prose-h2:before:rounded-full
-                prose-h2:before:border-4 prose-h2:before:border-stone-100 prose-h2:before:shadow-md
-                prose-h3:text-xl prose-h3:text-stone-700
-                prose-p:text-stone-600 prose-p:leading-relaxed prose-p:ml-16 lg:prose-p:ml-0
-                prose-li:text-stone-600 prose-li:ml-16 lg:prose-li:ml-0
-                prose-a:text-amber-600 prose-a:font-semibold
-                prose-strong:text-stone-800"
+                prose-h2:before:w-6 prose-h2:before:h-6 prose-h2:before:bg-[#FACF2D] prose-h2:before:rounded-full
+                prose-h2:before:border-4 prose-h2:before:border-white prose-h2:before:shadow-md
+                prose-h3:text-xl prose-h3:text-slate-800
+                prose-p:text-slate-700 prose-p:leading-relaxed prose-p:ml-16 lg:prose-p:ml-0
+                prose-li:text-slate-700 prose-li:ml-16 lg:prose-li:ml-0
+                prose-a:text-amber-700 prose-a:font-semibold
+                prose-strong:text-slate-900"
             >
               {/* Wrapped Content Sections */}
               <div className="space-y-12">
@@ -179,8 +153,8 @@ export default function TimelineLayout({ post, relatedLinks }) {
 
           {/* Timeline End */}
           <div className="relative flex items-center justify-center mt-16">
-            <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/25 z-10">
-              <Milestone className="w-7 h-7 text-white" />
+            <div className="w-16 h-16 bg-[#FACF2D] rounded-full flex items-center justify-center shadow-lg shadow-amber-500/25 z-10">
+              <Milestone className="w-7 h-7 text-black" />
             </div>
           </div>
         </div>
@@ -188,36 +162,37 @@ export default function TimelineLayout({ post, relatedLinks }) {
 
       {/* Quick Info Cards */}
       {post.attractionData && (
-        <div className="bg-stone-900 py-16">
+        <div className="relative overflow-hidden bg-slate-950 py-16">
+          <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
           <div className="max-w-5xl mx-auto px-4">
-            <h2 className="text-center text-white text-2xl font-bold mb-10">Visitor Information</h2>
+            <h2 className="font-display-serif text-center text-white text-2xl font-bold mb-10">Visitor Information</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-stone-800 p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Clock className="w-5 h-5 text-amber-400" />
+              <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Clock className="w-5 h-5 text-[#FACF2D]" />
                 </div>
-                <p className="text-stone-400 text-xs uppercase tracking-wider mb-1">Timings</p>
-                <p className="text-white font-semibold">{post.attractionData.timings?.open || '9 AM'} - {post.attractionData.timings?.close || '5 PM'}</p>
+                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Timings</p>
+                <p className="text-gold-foil font-semibold">{post.attractionData.timings?.open || '9 AM'} - {post.attractionData.timings?.close || '5 PM'}</p>
               </div>
-              <div className="bg-stone-800 p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Calendar className="w-5 h-5 text-amber-400" />
+              <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Calendar className="w-5 h-5 text-[#FACF2D]" />
                 </div>
-                <p className="text-stone-400 text-xs uppercase tracking-wider mb-1">Best Time</p>
+                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Best Time</p>
                 <p className="text-white font-semibold">{post.attractionData.bestTimeToVisit?.season || 'Oct - Mar'}</p>
               </div>
-              <div className="bg-stone-800 p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <MapPin className="w-5 h-5 text-amber-400" />
+              <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <MapPin className="w-5 h-5 text-[#FACF2D]" />
                 </div>
-                <p className="text-stone-400 text-xs uppercase tracking-wider mb-1">Location</p>
+                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Location</p>
                 <p className="text-white font-semibold">{post.city}</p>
               </div>
-              <div className="bg-stone-800 p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <History className="w-5 h-5 text-amber-400" />
+              <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <History className="w-5 h-5 text-[#FACF2D]" />
                 </div>
-                <p className="text-stone-400 text-xs uppercase tracking-wider mb-1">Duration</p>
+                <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">Duration</p>
                 <p className="text-white font-semibold">{post.attractionData.timeNeeded || '2-3 Hours'}</p>
               </div>
             </div>
@@ -226,13 +201,13 @@ export default function TimelineLayout({ post, relatedLinks }) {
       )}
 
       {/* Tags Section */}
-      <div className="bg-stone-100 py-12">
+      <div className="bg-white py-12">
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {post.tags?.map((tag, i) => (
               <span
                 key={i}
-                className="bg-white text-stone-600 px-5 py-2 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow"
+                className="rounded-full border border-slate-200 bg-slate-50 px-5 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-[#FACF2D] hover:bg-[#FACF2D] hover:text-black cursor-pointer"
               >
                 #{tag}
               </span>
@@ -242,7 +217,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
       </div>
 
       {/* WhatsApp CTA */}
-      <section className="py-12 px-4 bg-stone-50">
+      <section className="py-12 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <WhatsAppCTA
             message={`Hi! I just read about ${post.title}. I'd like to plan a historical tour to ${post.city || 'this destination'}. Can you help?`}
@@ -254,13 +229,14 @@ export default function TimelineLayout({ post, relatedLinks }) {
 
       {/* Book Tour CTA */}
       {relatedLinks?.relatedTours?.length > 0 && (
-        <div className="bg-gradient-to-r from-amber-500 to-amber-600 py-16">
+        <div className="relative overflow-hidden bg-slate-950 ring-1 ring-white/10 py-16">
+          <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
           <div className="max-w-5xl mx-auto px-4">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-white mb-3">
+              <h2 className="font-display-serif text-3xl font-bold text-white mb-3">
                 Experience This Historic Site
               </h2>
-              <p className="text-amber-100 max-w-2xl mx-auto">
+              <p className="text-slate-300 max-w-2xl mx-auto">
                 Explore the rich history and heritage with our guided tours and comfortable transport services.
               </p>
             </div>
@@ -270,12 +246,12 @@ export default function TimelineLayout({ post, relatedLinks }) {
                 <Link
                   key={i}
                   href={tour.url}
-                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-2xl p-6 transition-all group"
+                  className="bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 rounded-2xl p-6 transition-all group"
                 >
-                  <h3 className="font-bold text-xl text-white mb-2 group-hover:text-yellow-300 transition-colors">
+                  <h3 className="font-bold text-xl text-white mb-2 group-hover:text-[#FACF2D] transition-colors">
                     {tour.name}
                   </h3>
-                  <p className="text-amber-100">{tour.price} onwards</p>
+                  <p className="text-slate-400">{tour.price} onwards</p>
                 </Link>
               ))}
             </div>
@@ -283,13 +259,13 @@ export default function TimelineLayout({ post, relatedLinks }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={relatedLinks.cityTours || '/sightseeing'}
-                className="bg-white text-amber-600 px-8 py-4 rounded-xl font-bold hover:bg-amber-50 transition-colors"
+                className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-8 py-3.5 font-extrabold text-black transition hover:bg-[#ffdb4d]"
               >
                 View All Tours
               </Link>
               <a
                 href="tel:+917668570551"
-                className="bg-stone-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-stone-800 transition-colors flex items-center gap-2"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-8 py-3.5 font-bold text-white transition-colors hover:bg-white/15"
               >
                 <Phone className="w-5 h-5" />
                 Call Now
@@ -300,53 +276,53 @@ export default function TimelineLayout({ post, relatedLinks }) {
       )}
 
       {/* Internal Links Section */}
-      <div className="bg-stone-100 py-16">
+      <div className="bg-white py-16">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-stone-800 text-center mb-10">Explore More</h2>
+          <h2 className="text-2xl font-bold text-slate-900 text-center mb-10">Explore More</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {relatedLinks?.cityPage && (
               <Link
                 href={relatedLinks.cityPage}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group border border-slate-200"
               >
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
-                  <MapPin className="w-5 h-5 text-amber-600 group-hover:text-white" />
+                <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#FACF2D] transition-colors">
+                  <MapPin className="w-5 h-5 text-amber-600 group-hover:text-black" />
                 </div>
-                <h3 className="font-bold text-stone-800">Explore {post.city}</h3>
-                <p className="text-stone-500 text-sm mt-1">City Guide & Routes</p>
+                <h3 className="font-bold text-slate-900">Explore {post.city}</h3>
+                <p className="text-slate-500 text-sm mt-1">City Guide & Routes</p>
               </Link>
             )}
             {relatedLinks?.airportService && (
               <Link
                 href={relatedLinks.airportService}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group border border-slate-200"
               >
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
+                <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#FACF2D] transition-colors">
                   <span className="text-xl">✈️</span>
                 </div>
-                <h3 className="font-bold text-stone-800">Airport Transfer</h3>
-                <p className="text-stone-500 text-sm mt-1">Pickup & Drop Service</p>
+                <h3 className="font-bold text-slate-900">Airport Transfer</h3>
+                <p className="text-slate-500 text-sm mt-1">Pickup & Drop Service</p>
               </Link>
             )}
             <Link
               href="/sightseeing"
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group border border-slate-200"
             >
-              <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
-                <Compass className="w-5 h-5 text-amber-600 group-hover:text-white" />
+              <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#FACF2D] transition-colors">
+                <Compass className="w-5 h-5 text-amber-600 group-hover:text-black" />
               </div>
-              <h3 className="font-bold text-stone-800">All Destinations</h3>
-              <p className="text-stone-500 text-sm mt-1">Browse All Tours</p>
+              <h3 className="font-bold text-slate-900">All Destinations</h3>
+              <p className="text-slate-500 text-sm mt-1">Browse All Tours</p>
             </Link>
             <Link
               href="/blog"
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group"
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center group border border-slate-200"
             >
-              <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
-                <History className="w-5 h-5 text-amber-600 group-hover:text-white" />
+              <div className="w-12 h-12 bg-[#FACF2D]/15 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#FACF2D] transition-colors">
+                <History className="w-5 h-5 text-amber-600 group-hover:text-black" />
               </div>
-              <h3 className="font-bold text-stone-800">More Articles</h3>
-              <p className="text-stone-500 text-sm mt-1">Travel Guides & Tips</p>
+              <h3 className="font-bold text-slate-900">More Articles</h3>
+              <p className="text-slate-500 text-sm mt-1">Travel Guides & Tips</p>
             </Link>
           </div>
 
@@ -357,7 +333,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
                 <Link
                   key={index}
                   href={link.href}
-                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-stone-700 hover:bg-amber-50 hover:text-amber-700 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-slate-700 hover:border-[#FACF2D] hover:bg-[#FACF2D]/10 hover:text-amber-700 transition-colors shadow-sm border border-slate-200"
                 >
                   <span>{link.icon}</span>
                   <span className="font-medium text-sm">{link.text}</span>

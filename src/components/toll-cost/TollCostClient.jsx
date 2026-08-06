@@ -5,7 +5,7 @@
 // Template behind /toll-cost/[route] — 25 pages incl. the site's #2 clicked
 // page (/toll-cost/delhi-to-dehradun). Signature element: THE TOLL LEDGER —
 // a receipt-grade semantic table of every plaza (caption, th scope, both car
-// and SUV columns, overflow-x-auto) with a gold-foil all-inclusive total card
+// and SUV columns; stacked cards on mobile) with a gold-foil all-inclusive total card
 // beside it. Every figure comes straight off tollCostData — nothing invented.
 // All JSON-LD is emitted by page.js; this file is presentation + funnel only.
 // No framer-motion, no infinite animations — CSS-only transitions.
@@ -43,7 +43,7 @@ const GOLD_CTA = 'sheen inline-flex items-center justify-center gap-2 bg-[#FACF2
 export default function TollCostClient({ route, relatedRoutes, corridorLinks = [] }) {
   const whatsappMsg = `Hi, I want to book a cab from ${route.origin} to ${route.destination} (${route.totalDistance} km). Please share toll-inclusive fare.`;
   const heroWhatsAppHref = `https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`;
-  const suvFare = Math.max(route.totalDistance, 300) * 14;
+  const suvFare = Math.max(route.totalDistance, 300) * 15;
   const tempoFare = Math.max(route.totalDistance, 300) * 18;
   const heroImage = getCityImage(route.destination);
   const plazaCount = route.tollPlazas.length;
@@ -176,9 +176,75 @@ export default function TollCostClient({ route, relatedRoutes, corridorLinks = [
           <div className="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-[1.5fr_1fr] lg:gap-8">
             {/* Ledger table — semantic, screenshot-worthy */}
             <ScrollReveal>
-              <div className="overflow-hidden rounded-3xl border border-amber-400/25 bg-white shadow-[0_24px_70px_-32px_rgba(184,134,11,0.45)]">
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[600px] text-left text-sm">
+              {/* Mobile: one card per plaza, gold total card last — no sideways scrolling */}
+              <div className="space-y-3 md:hidden">
+                <div>
+                  <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-amber-600">Official-rate ledger</span>
+                  <span className="mt-0.5 block text-sm font-bold text-slate-900">
+                    {route.origin} to {route.destination} toll plazas, 2026 — one-way rates in ₹
+                  </span>
+                </div>
+                {route.tollPlazas.map((toll, i) => (
+                  <div key={`plaza-card-${i}`} className="rounded-2xl border border-amber-400/25 bg-white p-4 shadow-[0_16px_50px_-34px_rgba(184,134,11,0.45)]">
+                    <p className="flex items-baseline gap-2 text-sm font-bold text-slate-900">
+                      <span className="text-xs font-black tabular-nums text-amber-600">{String(i + 1).padStart(2, '0')}</span>
+                      {toll.name}
+                    </p>
+                    <dl className="mt-2.5 space-y-1.5">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Km mark</dt>
+                        <dd className="text-right text-sm tabular-nums text-slate-500">{toll.location} km</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Car / Sedan</dt>
+                        <dd className="text-right text-sm font-bold tabular-nums text-slate-900">₹{fmt(toll.carCost)}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">SUV / MUV</dt>
+                        <dd className="text-right text-sm tabular-nums text-slate-600">₹{fmt(toll.suvCost)}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Payment</dt>
+                        <dd className="text-right">
+                          {toll.acceptsFASTag ? (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700 ring-1 ring-emerald-200">
+                              <CheckCircle2 className="h-3 w-3" /> FASTag
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center rounded-full bg-red-50 px-2.5 py-1 text-[11px] font-bold text-red-600 ring-1 ring-red-200">Cash only</span>
+                          )}
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+                ))}
+                {/* Total card — the tfoot row, as its own gold card */}
+                <div className="rounded-2xl border-2 border-amber-400/60 bg-gradient-to-r from-amber-50 to-yellow-50 p-4">
+                  <p className="text-sm font-black uppercase tracking-wide text-slate-900">Total, one-way</p>
+                  <dl className="mt-2.5 space-y-1.5">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Distance</dt>
+                      <dd className="text-right text-xs font-semibold tabular-nums text-slate-500">{route.totalDistance} km</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Car / Sedan</dt>
+                      <dd className="text-right text-lg font-black tabular-nums text-amber-700">₹{fmt(route.totalTollCost.car)}</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">SUV / MUV</dt>
+                      <dd className="text-right text-base font-black tabular-nums text-slate-700">₹{fmt(route.totalTollCost.suv)}</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Payment</dt>
+                      <dd className="text-right text-[11px] font-bold text-emerald-700">{allFastag ? 'All FASTag' : 'FASTag + cash'}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              {/* Desktop: the ledger table, fits its container */}
+              <div className="hidden overflow-hidden rounded-3xl border border-amber-400/25 bg-white shadow-[0_24px_70px_-32px_rgba(184,134,11,0.45)] md:block">
+                  <table className="w-full text-left text-sm">
                     <caption className="caption-top border-b border-amber-400/20 px-5 py-4 text-left">
                       <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-amber-600">Official-rate ledger</span>
                       <span className="mt-0.5 block text-sm font-bold text-slate-900">
@@ -226,7 +292,6 @@ export default function TollCostClient({ route, relatedRoutes, corridorLinks = [
                       </tr>
                     </tfoot>
                   </table>
-                </div>
               </div>
               <p className="mt-3 text-xs text-slate-400">
                 Return leg crosses the same plazas — budget ₹{fmt(route.totalTollCost.car * 2)} (car) or ₹{fmt(route.totalTollCost.suv * 2)} (SUV) for a round trip.
@@ -466,7 +531,7 @@ export default function TollCostClient({ route, relatedRoutes, corridorLinks = [
               <div className="grid gap-4 sm:grid-cols-3">
                 {[
                   { label: 'Sedan', sub: 'Swift Dzire / Etios', price: route.cabFare, rate: '₹11/km', pop: false, img: '/images/car/swift_dzire.jpg' },
-                  { label: 'SUV', sub: 'Innova / Ertiga', price: suvFare, rate: '₹14/km', pop: true, img: '/images/car/innova_crysta.jpg' },
+                  { label: 'SUV', sub: 'Innova / Ertiga', price: suvFare, rate: '₹15/km', pop: true, img: '/images/car/innova_crysta.jpg' },
                   { label: 'Tempo', sub: '12–16 Seater', price: tempoFare, rate: '₹18/km', pop: false, img: '/images/tempo/12_seater.jpg' },
                 ].map((v, i) => (
                   <ScrollReveal key={i} stagger={i * 80}>

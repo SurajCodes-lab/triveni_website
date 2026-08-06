@@ -342,9 +342,46 @@ export default function RoundTripClient({ route, relatedRoutes, corridorLinks = 
           </div>
           {/* ── Semantic fare table (AEO): the same fares as the cards above, in a
                 real <table> so AI answer engines can extract them as data. ── */}
-          <div className="mt-10 bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm min-w-[680px]" data-speakable="true">
+          {/* Mobile: stacked fare cards — no sideways scrolling */}
+          <div className="mt-10 space-y-3 md:hidden">
+            <p className="text-white/40 text-xs">
+              {route.origin} to {route.destination} round trip cab fares by vehicle ({route.totalRoundTripKm} km round trip, {route.totalBillableKm} km billed, 10% round trip discount applied)
+            </p>
+            {VEHICLES.map((v) => (
+              <div key={`fare-card-${v.key}`} className="bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/10 p-4">
+                <p className="text-white font-bold text-sm">
+                  {v.label}
+                  <span className="block text-white/40 text-xs font-medium mt-0.5">{v.desc}</span>
+                </p>
+                <dl className="mt-3 space-y-1.5">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Seats</dt>
+                    <dd className="text-right text-sm text-white/70">{v.seats}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Rate</dt>
+                    <dd className="text-right text-sm text-white/70">Rs. {v.rate}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Round trip fare</dt>
+                    <dd className="text-right text-sm font-black text-[#FACF2D]">{route.cabFares[v.key]}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Luggage</dt>
+                    <dd className="text-right text-xs leading-relaxed text-white/60">{v.bags}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Best for</dt>
+                    <dd className="text-right text-xs leading-relaxed text-white/60">{v.best}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: true semantic table, fits its container */}
+          <div className="mt-10 hidden bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden md:block">
+            <table className="w-full text-sm" data-speakable="true">
                 <caption className="text-left text-white/40 text-xs px-5 pt-5 pb-3 caption-top">
                   {route.origin} to {route.destination} round trip cab fares by vehicle ({route.totalRoundTripKm} km round trip, {route.totalBillableKm} km billed, 10% round trip discount applied)
                 </caption>
@@ -373,8 +410,7 @@ export default function RoundTripClient({ route, relatedRoutes, corridorLinks = 
                     </tr>
                   ))}
                 </tbody>
-              </table>
-            </div>
+            </table>
           </div>
 
           <p className="mt-6 text-center text-white/20 text-xs">* Toll charges, state tax, parking, and driver night halt ({route.driverAllowance}) extra at actual.</p>

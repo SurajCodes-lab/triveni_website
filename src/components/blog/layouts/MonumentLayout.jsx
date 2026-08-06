@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, Landmark, Globe, BookOpen,
@@ -19,7 +18,7 @@ export default function MonumentLayout({ post, relatedLinks }) {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-amber-50/40 to-white">
       {/* Monument Hero Section with Image */}
       <section className="relative min-h-[80vh] flex items-end overflow-hidden">
         {/* Hero Background Image */}
@@ -33,80 +32,49 @@ export default function MonumentLayout({ post, relatedLinks }) {
             sizes="100vw"
           />
           {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent" />
         </div>
-
-        {/* Floating elements */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-24 right-24 hidden lg:block"
-        >
-          <Globe className="w-24 h-24 text-white/20" />
-        </motion.div>
 
         {/* Hero Content */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-16">
           {/* Breadcrumb */}
-          <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full"
-          >
+          <nav className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full">
             <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <Link href="/blog" className="hover:text-[#FACF2D] transition-colors">Blog</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-[#FACF2D] font-semibold">{post.category || 'Monument'}</span>
-          </motion.nav>
+          </nav>
 
           {/* UNESCO Badge */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-xl"
-          >
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/40 bg-black/40 px-4 py-2 text-sm font-bold text-[#FACF2D] backdrop-blur-sm mb-6">
             <Globe className="w-4 h-4" />
             UNESCO World Heritage Site
-          </motion.div>
+          </div>
 
           {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight max-w-4xl"
-          >
+          <h1 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl">
             {post.title}
-          </motion.h1>
+          </h1>
+          <span aria-hidden="true" className="mt-5 block h-[4px] w-28 opacity-80 bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
 
           {/* Meta */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap items-center gap-4 text-blue-100"
-          >
-            <span className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <Calendar className="w-4 h-4" />
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-white">
+              <Calendar className="w-4 h-4 text-[#FACF2D]" />
               {formattedDate}
             </span>
-            <span className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <Clock className="w-4 h-4" />
+            <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-white">
+              <Clock className="w-4 h-4 text-[#FACF2D]" />
               {post.readTime}
             </span>
-            <span className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <MapPin className="w-4 h-4" />
+            <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-white">
+              <MapPin className="w-4 h-4 text-[#FACF2D]" />
               {post.attractionData?.location || post.city}
             </span>
-          </motion.div>
+          </div>
         </div>
-
-        {/* Wave */}
-        <svg className="absolute bottom-0 left-0 right-0 text-slate-50" viewBox="0 0 1440 100" fill="currentColor">
-          <path d="M0,50 L1440,50 L1440,100 L0,100 Z" />
-        </svg>
       </section>
 
       {/* Quick Facts Bar */}
@@ -114,25 +82,25 @@ export default function MonumentLayout({ post, relatedLinks }) {
         <section className="bg-white border-b shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-3 bg-blue-50 rounded-xl">
-                <Award className="w-5 h-5 mx-auto mb-1 text-blue-600" />
+              <div className="text-center p-3 bg-[#FACF2D]/10 rounded-xl">
+                <Award className="w-5 h-5 mx-auto mb-1 text-amber-600" />
                 <p className="text-xs text-gray-500">Entry Fee (Indian)</p>
-                <p className="font-bold text-blue-900">{post.attractionData.entryFee?.indian || '₹50'}</p>
+                <p className="font-bold text-slate-900">{post.attractionData.entryFee?.indian || '₹50'}</p>
               </div>
-              <div className="text-center p-3 bg-blue-50 rounded-xl">
-                <Award className="w-5 h-5 mx-auto mb-1 text-blue-600" />
+              <div className="text-center p-3 bg-[#FACF2D]/10 rounded-xl">
+                <Award className="w-5 h-5 mx-auto mb-1 text-amber-600" />
                 <p className="text-xs text-gray-500">Entry Fee (Foreign)</p>
-                <p className="font-bold text-blue-900">{post.attractionData.entryFee?.foreign || '₹550'}</p>
+                <p className="font-bold text-slate-900">{post.attractionData.entryFee?.foreign || '₹550'}</p>
               </div>
-              <div className="text-center p-3 bg-blue-50 rounded-xl">
-                <Clock className="w-5 h-5 mx-auto mb-1 text-blue-600" />
+              <div className="text-center p-3 bg-[#FACF2D]/10 rounded-xl">
+                <Clock className="w-5 h-5 mx-auto mb-1 text-amber-600" />
                 <p className="text-xs text-gray-500">Timings</p>
-                <p className="font-bold text-blue-900">{post.attractionData.timings?.open} - {post.attractionData.timings?.close}</p>
+                <p className="font-bold text-slate-900">{post.attractionData.timings?.open} - {post.attractionData.timings?.close}</p>
               </div>
-              <div className="text-center p-3 bg-blue-50 rounded-xl">
-                <Info className="w-5 h-5 mx-auto mb-1 text-blue-600" />
+              <div className="text-center p-3 bg-[#FACF2D]/10 rounded-xl">
+                <Info className="w-5 h-5 mx-auto mb-1 text-amber-600" />
                 <p className="text-xs text-gray-500">Closed On</p>
-                <p className="font-bold text-blue-900">{post.attractionData.timings?.closedOn || 'Open Daily'}</p>
+                <p className="font-bold text-slate-900">{post.attractionData.timings?.closedOn || 'Open Daily'}</p>
               </div>
             </div>
           </div>
@@ -144,30 +112,26 @@ export default function MonumentLayout({ post, relatedLinks }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <main className="lg:col-span-8">
             {/* Historical Timeline Note */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-8 border-l-4 border-blue-500"
-            >
+            <div className="bg-[#FACF2D]/10 rounded-xl p-6 mb-8 border-l-4 border-[#FACF2D]">
               <div className="flex items-start gap-3">
-                <BookOpen className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                <BookOpen className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-bold text-blue-900 mb-1">Historical Significance</h3>
-                  <p className="text-blue-700 text-sm">{post.excerpt}</p>
+                  <h3 className="font-display-serif font-bold text-slate-900 mb-1">Historical Significance</h3>
+                  <p className="text-slate-700 text-sm">{post.excerpt}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Content */}
             <article className="bg-white rounded-2xl p-8 shadow-xl">
               <div
-                className="prose prose-lg max-w-none
-                  prose-headings:text-blue-900 prose-headings:font-bold
-                  prose-h2:text-3xl prose-h2:border-b-2 prose-h2:border-blue-200 prose-h2:pb-3
-                  prose-h3:text-2xl prose-h3:text-blue-800
+                className="blog-prose prose prose-lg max-w-[70ch] mx-auto
+                  prose-headings:text-slate-900 prose-headings:font-bold
+                  prose-h2:text-3xl prose-h2:border-b-2 prose-h2:border-[#FACF2D]/40 prose-h2:pb-3
+                  prose-h3:text-2xl prose-h3:text-slate-900
                   prose-p:text-gray-700 prose-p:leading-relaxed
-                  prose-a:text-blue-600 prose-a:font-semibold
-                  prose-strong:text-blue-900"
+                  prose-a:text-amber-700 prose-a:font-semibold
+                  prose-strong:text-slate-900"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
@@ -181,17 +145,13 @@ export default function MonumentLayout({ post, relatedLinks }) {
 
             {/* Tour CTA */}
             {relatedLinks?.relatedTours?.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="mt-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white"
-              >
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <Landmark className="w-6 h-6" />
+              <div className="relative overflow-hidden mt-8 bg-slate-950 ring-1 ring-white/10 rounded-2xl p-8 text-white">
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
+                <h3 className="font-display-serif text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Landmark className="w-6 h-6 text-[#FACF2D]" />
                   Explore This Heritage Site
                 </h3>
-                <p className="mb-6 text-blue-100">
+                <p className="mb-6 text-slate-300">
                   Book a guided tour with skip-the-line access and expert commentary.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -202,28 +162,28 @@ export default function MonumentLayout({ post, relatedLinks }) {
                       className="bg-white/10 hover:bg-white/20 rounded-xl p-4 transition-all"
                     >
                       <h4 className="font-bold">{tour.name}</h4>
-                      <p className="text-blue-200 text-sm">{tour.price}</p>
+                      <p className="text-[#FACF2D] text-sm">{tour.price}</p>
                     </Link>
                   ))}
                 </div>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link
                     href={relatedLinks.cityTours || '/sightseeing'}
-                    className="bg-white text-blue-700 px-6 py-3 rounded-xl font-bold hover:bg-blue-50"
+                    className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-6 py-3.5 font-extrabold text-black transition hover:bg-[#ffdb4d]"
                   >
                     View All Tours →
                   </Link>
-                  <a href="tel:+917668570551" className="bg-white/20 px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+                  <a href="tel:+917668570551" className="rounded-xl border border-white/20 bg-white/10 px-6 py-3.5 font-bold text-white hover:bg-white/15 transition flex items-center gap-2">
                     <Phone className="w-4 h-4" /> Call Now
                   </a>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {/* Tags */}
             <div className="mt-8 flex flex-wrap gap-2">
               {post.tags?.map((tag, index) => (
-                <span key={index} className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+                <span key={index} className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm font-semibold text-slate-700 transition-colors hover:border-[#FACF2D] hover:bg-[#FACF2D] hover:text-black cursor-pointer">
                   #{tag}
                 </span>
               ))}

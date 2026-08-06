@@ -821,7 +821,7 @@ const defaultFaqs = (dest, data = {}) => {
     },
     {
       question: `Can I book a cab from Delhi, Agra, or Jaipur to ${dest}?`,
-      answer: `Yes — Triveni Cabs operates one-way and round-trip cabs from Delhi, Agra, Jaipur, Chandigarh, and other major North India hubs to ${dest}. Sedan ₹11/km, SUV ₹14/km, Tempo Traveller ₹24/km. Toll, fuel, and driver allowance included. Book at 7668570551 or WhatsApp for instant quote.`,
+      answer: `Yes — Triveni Cabs operates one-way and round-trip cabs from Delhi, Agra, Jaipur, Chandigarh, and other major North India hubs to ${dest}. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km. Toll, fuel, and driver allowance included. Book at 7668570551 or WhatsApp for instant quote.`,
     },
     {
       question: `Is ${dest} good for a weekend trip?`,

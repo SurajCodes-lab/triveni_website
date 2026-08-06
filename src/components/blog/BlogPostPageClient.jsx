@@ -11,19 +11,26 @@ import { generateBlogFAQs } from '@/lib/seo/faq-generator';
 import { PopularRoutes, QuickLinksGrid } from '@/components/seo/RelatedContent';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import InlineCTA from '@/components/seo/InlineCTA';
-import { Car, MapPin, Clock, Phone, ArrowRight, WhatsAppIcon } from '@/components/ui/icons';
+import {
+  Car, MapPin, Clock, Phone, ArrowRight, WhatsAppIcon,
+  Zap, Landmark, Bus, IndianRupee, Plane, Church, Heart,
+} from '@/components/ui/icons';
 
 const PHONE = '7668570551';
 const WA_NUMBER = '917668570551';
 
-// Loading placeholder for blog layouts
+// Highway lane marking — the recurring v2 divider motif (blog family).
+const LANE = 'bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]';
+
+// Loading placeholder for blog layouts — static skeleton (no infinite
+// animation; INP/compositor discipline for the v2 blog family).
 const LayoutLoading = () => (
-  <div className="min-h-screen animate-pulse">
-    <div className="h-64 bg-gray-200" />
+  <div className="min-h-screen">
+    <div className="h-64 bg-slate-200" />
     <div className="max-w-4xl mx-auto p-6 space-y-4">
-      <div className="h-8 bg-gray-200 rounded w-3/4" />
-      <div className="h-4 bg-gray-200 rounded w-full" />
-      <div className="h-4 bg-gray-200 rounded w-5/6" />
+      <div className="h-8 bg-slate-200 rounded w-3/4" />
+      <div className="h-4 bg-slate-200 rounded w-full" />
+      <div className="h-4 bg-slate-200 rounded w-5/6" />
     </div>
   </div>
 );
@@ -116,7 +123,9 @@ function BookThisTripBox({ trip }) {
       className="my-10 px-4"
       aria-label={`Book a cab to ${trip.destination}`}
     >
-      <div className="max-w-5xl mx-auto overflow-hidden rounded-3xl bg-slate-950 text-white shadow-xl ring-1 ring-white/10">
+      <div className="relative max-w-5xl mx-auto overflow-hidden rounded-3xl bg-slate-950 text-white shadow-xl ring-1 ring-white/10">
+        {/* Lane top edge — v2 motif */}
+        <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[4px] ${LANE}`} />
         <div className="relative p-6 sm:p-8 md:p-10">
           <div
             aria-hidden="true"
@@ -127,7 +136,7 @@ function BookThisTripBox({ trip }) {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] mb-3">
                 Triveni Cabs · Since 2015
               </p>
-              <h2 className="text-2xl sm:text-3xl font-black leading-tight m-0">
+              <h2 className="font-display-serif text-2xl sm:text-3xl font-bold leading-tight m-0">
                 {trip.heading}
               </h2>
               <p className="mt-3 text-slate-300 text-[15px] sm:text-base leading-relaxed m-0">
@@ -172,7 +181,7 @@ function BookThisTripBox({ trip }) {
             <div className="md:col-span-2 flex flex-col gap-3">
               <Link
                 href={trip.ctaHref}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-5 py-4 text-base font-extrabold text-slate-950 shadow-lg transition hover:bg-yellow-300"
+                className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-6 py-3.5 text-base font-extrabold text-black shadow-[0_10px_30px_-8px_rgba(250,207,45,0.6)] transition hover:bg-[#ffdb4d] active:scale-[0.99]"
               >
                 {trip.ctaText}
                 <ArrowRight className="w-5 h-5" />
@@ -181,7 +190,7 @@ function BookThisTripBox({ trip }) {
                 href={waHref}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-400/60 px-5 py-4 text-base font-extrabold text-emerald-300 transition hover:bg-emerald-400/10"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-400/60 px-6 py-3.5 text-base font-extrabold text-emerald-300 transition hover:bg-emerald-400/10"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 WhatsApp for a Quote
@@ -372,10 +381,13 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
       {/* Quick Answer — featured-snippet bait for "<attraction> timings/entry fee" intent */}
       {post.quickAnswer && (
         <div className="max-w-5xl mx-auto px-4 mt-4">
-          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-6 shadow-sm">
-            <div className="flex items-center gap-2 mb-2">
-              <span aria-hidden="true" className="text-xl">⚡</span>
-              <h2 className="text-lg sm:text-xl font-bold text-amber-900 m-0">Quick Answer</h2>
+          <div className="relative overflow-hidden rounded-2xl border border-amber-200 bg-gradient-to-br from-[#FFF6DC] to-amber-50 p-5 sm:p-6 shadow-sm">
+            <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[3px] ${LANE}`} />
+            <div className="flex items-center gap-2.5 mb-2">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#FACF2D]/20">
+                <Zap className="h-4 w-4 text-amber-600" />
+              </span>
+              <h2 className="font-display-serif text-lg sm:text-xl font-bold text-amber-900 m-0">Quick Answer</h2>
             </div>
             <p className="blog-summary text-[15px] sm:text-base leading-relaxed text-gray-800 m-0">
               {post.quickAnswer}
@@ -404,71 +416,86 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
       )}
 
       {/* Related Service Pages — SEO internal linking based on blog category */}
-      <section className="py-12 px-4 bg-gray-50 border-t border-gray-200">
+      <section className="relative py-12 px-4 bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white border-t border-amber-100">
+        <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[4px] ${LANE}`} />
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
+          <h2 className="font-display-serif text-xl sm:text-2xl font-bold text-slate-900 mb-6 text-center">
             Related Services for Your {post.city || post.category || 'Travel'} Trip
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {post.city && (
               <Link
                 href={`/sightseeing/${post.city.toLowerCase().replace(/\s+/g, '-')}`}
-                className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+                className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
               >
-                <div className="text-2xl mb-2">🏛️</div>
-                <p className="text-sm font-semibold text-gray-900">{post.city} Sightseeing</p>
-                <p className="text-xs text-gray-500 mt-1">Guided tours</p>
+                <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                  <Landmark className="h-5 w-5 text-amber-600" />
+                </span>
+                <p className="text-sm font-semibold text-slate-900">{post.city} Sightseeing</p>
+                <p className="text-xs text-slate-500 mt-1">Guided tours</p>
               </Link>
             )}
             <Link
               href="/tempo-traveller"
-              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
             >
-              <div className="text-2xl mb-2">🚐</div>
-              <p className="text-sm font-semibold text-gray-900">Tempo Traveller</p>
-              <p className="text-xs text-gray-500 mt-1">12–26 seater from ₹20/km</p>
+              <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                <Bus className="h-5 w-5 text-amber-600" />
+              </span>
+              <p className="text-sm font-semibold text-slate-900">Tempo Traveller</p>
+              <p className="text-xs text-slate-500 mt-1">12–26 seater from ₹20/km</p>
             </Link>
             <Link
               href="/pricing"
-              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
             >
-              <div className="text-2xl mb-2">💰</div>
-              <p className="text-sm font-semibold text-gray-900">View Pricing</p>
-              <p className="text-xs text-gray-500 mt-1">Sedan from ₹11/km</p>
+              <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                <IndianRupee className="h-5 w-5 text-amber-600" />
+              </span>
+              <p className="text-sm font-semibold text-slate-900">View Pricing</p>
+              <p className="text-xs text-slate-500 mt-1">Sedan from ₹11/km</p>
             </Link>
             <Link
               href="/airport-service"
-              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
             >
-              <div className="text-2xl mb-2">✈️</div>
-              <p className="text-sm font-semibold text-gray-900">Airport Transfer</p>
-              <p className="text-xs text-gray-500 mt-1">24/7 pickup & drop</p>
+              <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                <Plane className="h-5 w-5 text-amber-600" />
+              </span>
+              <p className="text-sm font-semibold text-slate-900">Airport Transfer</p>
+              <p className="text-xs text-slate-500 mt-1">24/7 pickup & drop</p>
             </Link>
             {(post.category === 'Pilgrimage' || post.tags?.some(t => ['temple', 'pilgrimage', 'spiritual'].includes(t))) && (
               <Link
                 href="/religious-tours"
-                className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+                className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
               >
-                <div className="text-2xl mb-2">🙏</div>
-                <p className="text-sm font-semibold text-gray-900">Pilgrimage Tours</p>
-                <p className="text-xs text-gray-500 mt-1">Chardham, Vaishno Devi & more</p>
+                <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                  <Church className="h-5 w-5 text-amber-600" />
+                </span>
+                <p className="text-sm font-semibold text-slate-900">Pilgrimage Tours</p>
+                <p className="text-xs text-slate-500 mt-1">Chardham, Vaishno Devi & more</p>
               </Link>
             )}
             <Link
               href="/wedding"
-              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
             >
-              <div className="text-2xl mb-2">💒</div>
-              <p className="text-sm font-semibold text-gray-900">Wedding Cars</p>
-              <p className="text-xs text-gray-500 mt-1">BMW, Audi, Mercedes</p>
+              <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                <Heart className="h-5 w-5 text-amber-600" />
+              </span>
+              <p className="text-sm font-semibold text-slate-900">Wedding Cars</p>
+              <p className="text-xs text-slate-500 mt-1">BMW, Audi, Mercedes</p>
             </Link>
             <Link
               href="/contact"
-              className="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100"
+              className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FACF2D] hover:shadow-lg"
             >
-              <div className="text-2xl mb-2">📞</div>
-              <p className="text-sm font-semibold text-gray-900">Contact Us</p>
-              <p className="text-xs text-gray-500 mt-1">Get a free quote</p>
+              <span className="mx-auto mb-2.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#FACF2D]/15">
+                <Phone className="h-5 w-5 text-amber-600" />
+              </span>
+              <p className="text-sm font-semibold text-slate-900">Contact Us</p>
+              <p className="text-xs text-slate-500 mt-1">Get a free quote</p>
             </Link>
           </div>
         </div>

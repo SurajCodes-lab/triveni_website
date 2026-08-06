@@ -46,7 +46,7 @@ export const metadata = {
 
 const COMPARISON_ROWS = [
   { feature: 'Seating capacity', v1: '10-12 passengers + driver', v2: '15-17 passengers + driver' },
-  { feature: 'Price per km', v1: '₹20-22/km', v2: '₹24-26/km' },
+  { feature: 'Price per km', v1: '₹20/km', v2: '₹24/km' },
   { feature: 'Minimum charge', v1: '₹5,500 (250 km/day)', v2: '₹6,000 (250 km/day)' },
   { feature: 'Luggage space', v1: 'Moderate — 8-10 medium bags', v2: 'Larger boot — 12-15 bags' },
   { feature: 'Legroom per seat', v1: 'More (fewer seats)', v2: 'Standard' },

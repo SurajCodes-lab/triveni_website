@@ -70,4 +70,28 @@ A first-time visitor books at most once. Return visits come from: (1) **a reason
 **Train B (staged, ships after Train A): premium-feel sweep + bus redesign**
 - **Bus pages redesigned from scratch** (worktree-verified): route template (~80 pages) + hub on the approved tempo pattern — bus-size selector signature (8 real coach photos, rates strictly from busFleet data, honest "quote on request"), warm light band mid-page, FAQ 2-per-row, compact desktop CTAs, framer-motion/TypeAnimation/intersection-observer removed (bundle+INP win), hub sticky CTA rate corrected ₹25→₹30, duplicate fixed-bottom bar removed per CRO rule.
 - **Premium strip**: `AutoRelatedFooter` ("Related Triveni Cabs Services", renders on ~2,800 pages) redesigned from a flat gray strip into a dark cohesive band — gold eyebrow, lane-marking divider, glass-pill links with gold hover — so page → strip → footer reads as one continuous premium surface. ItemList schema kept.
-- **QA fixes**: Vercel analytics removal + apple-touch-icon (see §5b).
+- **QA fixes**: Vercel analytics removal + apple-touch-icon.
+
+**Train B — DEPLOYED LIVE 5 Aug** (backup `triveni-backup-cro-20260805_003658`): bus redesign live-verified, premium strip live on money pages, zero `_vercel` requests, apple-touch-icon.png scp'd to server public/ (overlay preserves public — new public files always need direct upload).
+
+**Train C — Ultra-Premium v2, DEPLOYED LIVE 5 Aug** (build `Ahg3MXU--UNBBIjvG9UW8`, backup `triveni-backup-cro-20260805_013145`):
+- v2 design system sitewide: Fraunces editorial serif via next/font (`--font-display` → `.font-display-serif`), `.text-gold-foil` metallic text (FFE9A0→FACF2D→B8860B), gold-bloom shadows (`.sheen`/`.bg-aurora` already existed in Aurora globals and now light up everywhere).
+- Distance guides (101 pages) rebuilt to v2: cinematic 70vh hero, serif+foil headline, TrustSeal emblem, gold sheen one-way funnel CTAs, toll table with tfoot totals — screenshot-approved before ship.
+- Toll-cost guides (25 pages) rebuilt to v2: receipt-grade TOLL LEDGER centerpiece with foil ₹ totals + seal chips — screenshot-approved.
+- Serif hero H1s applied to tempo/bus hubs+routes, calendar, calculator.
+- Live-verified: serif/foil/ledger markers + all sampled URLs 200. Note: Train A (tempo-only) never deployed — `scripts/` had been deleted by an external commit (7d60448); `deploy-code.sh` restored from git (1960660) and Train B/C superseded Train A's content entirely.
+
+**Train D+ — DEPLOYED LIVE 6 Aug** (build `SKRlr2W0GGL0q26eFwvHT`, backup `triveni-backup-cro-20260806_000617`) — Train D's content plus the city v2 rebuild (~400 pages: cinematic serif hero with speakable-headline, photo fare cards, stat tiles, gold stops timeline, FAQ 2-col, framer-motion removed) and the tempo/bus mid-section polish (fare-card vehicle photos, journey stat tiles, gold timeline, real km/hrs in QuickAnswer via dataset-borrowing `resolveRouteMetrics` — no more "Contact Us" facts). Live-verified: new BUILD_ID, "530 km" on tempo delhi-to-manali, city serif hero, zero "from From", new Cache-Control header active.
+
+**Train E — Wave-1 Ultra-Premium v2 + rate canonicalization, DEPLOYED LIVE 6 Aug** (build `btdbRPjo48Whsw6xgNC3j`, backup `triveni-backup-cro-20260806_022331`):
+- Airport family (~75p): kit-level v2 (serif/foil/TrustSeal, 9 infinite keyframes removed, drop-point tables→cards) + hero badge fix (was rendering "3123 TERM").
+- Sightseeing family (170p): emerald-foil identity, hidden tab content flattened into the DOM, QuickAnswers preserved byte-identical.
+- Blog family (192p): hub rewrite, v2 post shell, ALL 12 layouts converted (serif+foil, motion-free), `.blog-prose` serif prose system, dead duplicate shell removed.
+- Rate canonicalization (QA §5d): "Tempo ₹24/km" scrubbed from the sitewide brand metadata + schema + 6 hub pages + 25 recomputed howToReach fares; SUV informational fares aligned ₹14→₹15 (distance/toll/travel-by-car/bus-vs-cab computations, 8 road-trip totals rescaled, taxi-fare city cards) and Innova content → ₹18 — every informational fare now matches the booking pages.
+- Live-verified: family markers + rate strings + zero "3123"/"₹14/km" residue. Visual sign-off: 1440px + 360px screenshot rounds pre-ship (defect #19 caught at this gate).
+
+**Train D (superseded — content shipped inside Train D+):**
+- NO MORE SIDEWAYS SCROLLING: every mobile table across tempo/bus/one-way/round-trip/calculator/toll/distance templates + shared DataTable now renders as stacked label/value cards below md (Toll Ledger = per-plaza cards + gold total card); true full-width tables on desktop; all overflow-x-auto table wrappers eliminated (grep-verified 0 across 7 files).
+- MobileStickyBar double-"from" root-cause fix (was "from From ₹20/km" on tempo/bus hubs).
+- Bus metadata ₹35/km → from ₹30/km (6 occurrences — tab title, OG, twitter).
+- **Browser-cache fix** (`next.config.mjs`): HTML now `max-age=0, must-revalidate` for browsers + `s-maxage=3600` for CDN — users were seeing days-old designs after deploys ("everything looks same"); from this deploy forward every change is visible immediately without hard refresh.

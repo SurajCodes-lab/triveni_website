@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
 
   const cheapest = Math.min(...data.services.map(s => s.startingPrice));
   const title = `${data.city} Cab Service: Taxi from ₹${cheapest} | Local, Outstation, Airport — 4.9★`;
-  const description = `Book cab in ${data.city} from ₹${cheapest}. Local taxi, outstation cabs, airport transfer, railway station pickup. Sedan ₹11/km, SUV ₹14/km. 24/7 service. Call 7668570551.`;
+  const description = `Book cab in ${data.city} from ₹${cheapest}. Local taxi, outstation cabs, airport transfer, railway station pickup. Sedan ₹11/km, SUV ₹15/km. 24/7 service. Call 7668570551.`;
   const ogTitle = `${data.city} Cab Service — Local & Outstation Taxi from ₹${cheapest} | 24/7 Booking | Triveni Cabs`;
 
   return {

@@ -9,8 +9,8 @@ export const revalidate = 3600;
 
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
-  title: 'Bus Hire India ₹35/km — 22-56 Seater AC 4.9★ | Book Now',
-  description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
+  title: 'Bus Hire India from ₹30/km — 22-56 Seater AC 4.9★ | Book Now',
+  description: '22-56 seater AC buses from ₹30/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
   keywords: 'bus hire India, luxury bus rental, 22 seater bus, 35 seater Volvo, 45 seater AC bus, 56 seater coach, group travel bus, wedding bus rental, corporate bus service, pilgrimage bus, Triveni Cabs',
   alternates: {
     canonical: 'https://www.trivenicabs.in/bus-routes'
@@ -36,8 +36,8 @@ export const metadata = {
     address: true
   },
   openGraph: {
-    title: 'Bus Hire India ₹35/km — 22-56 Seater Volvo AC for Groups',
-    description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
+    title: 'Bus Hire India from ₹30/km — 22-56 Seater Volvo AC for Groups',
+    description: '22-56 seater AC buses from ₹30/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
     url: 'https://www.trivenicabs.in/bus-routes',
     type: 'website',
     locale: 'en_IN',
@@ -53,8 +53,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bus Hire India ₹35/km — 22-56 Seater AC 4.9★ | Book Now',
-    description: '22-56 seater AC buses from ₹35/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
+    title: 'Bus Hire India from ₹30/km — 22-56 Seater AC 4.9★ | Book Now',
+    description: '22-56 seater AC buses from ₹30/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
     images: ['https://www.trivenicabs.in/images/bus/hero_section_image.webp']
   },
   robots: {

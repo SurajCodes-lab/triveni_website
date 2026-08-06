@@ -1,5 +1,15 @@
 'use client';
 
+// ============================================================================
+// RouteClientContent — Ultra-Premium v2 uplift (Aug 2026)
+// Covers ~400 pages: city hubs (/delhi) and x-to-y routes (/delhi-to-agra).
+// v2 idiom: cinematic visible destination-photo hero, serif display headlines
+// with gold-foil accent word, glass panels, dark↔warm-light section rhythm,
+// gold lane motif, TrustSeal emblem, sheen gold CTAs with black text.
+// No framer-motion — CSS-only transitions (INP-friendly). 360px-first.
+// All AEO/speakable markup, FAQs, links and data-driven content preserved.
+// ============================================================================
+
 import React, { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,47 +17,27 @@ import Image from "next/image";
 import {
   Phone, MapPin, Car, ChevronRight, Users, ArrowRight, Clock,
   Star, Shield, CheckCircle, Navigation, CreditCard, Headphones,
-  Award, Sparkles, Route, Fuel, Calendar, Zap, Gift, Bus,
-  ChevronDown, Play, BadgeCheck, Timer, Gauge, Wifi, Music,
-  Snowflake, MapPinned, CircleDot, TrendingUp
+  Award, Sparkles, Route, Fuel, Zap, Gift, Bus,
+  BadgeCheck, Snowflake, CircleDot, ShieldCheck
 } from "@/components/ui/icons";
 import { WhatsAppIcon as BsWhatsapp } from "@/components/ui/icons";
 import { phoneNumber } from "@/utilis/data";
 import { getRouteOffices } from "@/utilis/officeLocations";
 import OfficeLocations from "@/components/cities/OfficeLocations";
-import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 
 // Dynamically import FareCalculator (client-only, below fold)
 const FareCalculator = dynamic(() => import('@/components/calculator/FareCalculator'), { ssr: false });
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
-import CityRouteHero from '@/components/cityroute/CityRouteHero';
 import CityRouteVehicles from '@/components/cityroute/CityRouteVehicles';
+import RouteLine from '@/components/ui/RouteLine';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
+import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 
 // SEO Components
-import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { getRelatedContent, getRelatedRoutes, getServiceCrossLinks } from '@/utilis/linkingHelper';
-
-// City hero images
-const cityHeroData = {
-  'Delhi': { image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg', icon: '🏛️', accent: '#4F46E5' },
-  'Jaipur': { image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', icon: '🏰', accent: '#DB2777' },
-  'Chandigarh': { image: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', icon: '🌳', accent: '#059669' },
-  'Agra': { image: '/images/sightseeing/Agra/Agra_Hero_section.jpg', icon: '🕌', accent: '#D97706' },
-  'Shimla': { image: '/images/sightseeing/Shimla/shimla_hero_section.jpg', icon: '🏔️', accent: '#0891B2' },
-  'Dehradun': { image: '/images/chardham/chardham-dehradun-hero.webp', icon: '🌲', accent: '#16A34A' },
-  'Rishikesh': { image: '/images/chardham/chardham-rishikesh-hero.webp', icon: '🧘', accent: '#0D9488' },
-  'Haridwar': { image: '/images/chardham/chardham-haridwar-hero.webp', icon: '🙏', accent: '#EA580C' },
-  'Manali': { image: '/images/packages/manali.webp', icon: '⛷️', accent: '#2563EB' },
-  'Amritsar': { image: '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg', icon: '🛕', accent: '#CA8A04' },
-  'Jodhpur': { image: '/images/packages/rajasthan.webp', icon: '🏯', accent: '#4F46E5' },
-  'Udaipur': { image: '/images/packages/rajasthan.webp', icon: '🚣', accent: '#7C3AED' },
-  'Ayodhya': { image: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.webp', icon: '🛕', accent: '#DC2626' },
-  'Ahmedabad': { image: '/images/destinations/delhi.webp', icon: '🏛️', accent: '#B91C1C' }
-};
 
 // Vehicle image mapping
 const vehicleImageMap = {
@@ -90,9 +80,52 @@ const vehicleCapacityMap = {
   '56 Seater Volvo Bus': { seats: '56', bags: '56', icon: Bus, type: 'bus' }
 };
 
+// Honest photo for any fare-row vehicle: exact map hit first, then derived.
+function getFareVehicleImage(name) {
+  if (vehicleImageMap[name]) return vehicleImageMap[name];
+  const n = String(name || '').toLowerCase();
+  const seatMatch = n.match(/(\d+)\s*seater/);
+  if (seatMatch && ['12', '16', '17', '20', '26'].includes(seatMatch[1]) && !n.includes('bus') && !n.includes('coach')) {
+    return `/images/tempo/${seatMatch[1]}_seater.jpg`;
+  }
+  if (n.includes('ertiga')) return '/images/car/ertiga.jpg';
+  if (n.includes('innova') || n.includes('suv')) return '/images/car/innova_crysta.jpg';
+  if (n.includes('bus') || n.includes('coach')) return '/images/bus/45_SEATER_BUS.jpg';
+  if (n.includes('tempo') || n.includes('maharaja') || n.includes('traveller')) return '/images/tempo/17_seater.jpg';
+  return '/images/car/swift_dzire.jpg';
+}
+
 function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
   return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
+}
+
+// Gold lane divider — the v2 route motif under section headings.
+function LaneDivider({ className = '' }) {
+  return (
+    <div className={`flex items-center justify-center gap-2 ${className}`} aria-hidden="true">
+      <span className="h-[2px] w-14 route-dashed text-amber-400/70" />
+      <CircleDot className="h-3.5 w-3.5 text-amber-400" />
+      <span className="h-[2px] w-14 route-dashed text-amber-400/70" />
+    </div>
+  );
+}
+
+// TrustSeal emblem — compact circular brand seal.
+function TrustSeal({ tone = 'dark' }) {
+  const isDark = tone === 'dark';
+  return (
+    <div className="flex items-center gap-3">
+      <div className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${isDark ? 'border border-amber-400/50 bg-amber-400/10' : 'border border-amber-500/40 bg-amber-400/10'}`}>
+        <div className="absolute inset-1 rounded-full border border-dashed border-amber-400/40" aria-hidden="true" />
+        <Award className={`h-6 w-6 ${isDark ? 'text-amber-400' : 'text-amber-600'}`} />
+      </div>
+      <div className="min-w-0">
+        <p className={`text-[0.65rem] font-black uppercase tracking-[0.22em] ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>Triveni TrustSeal</p>
+        <p className={`text-xs font-semibold ${isDark ? 'text-white/70' : 'text-slate-600'}`}>4.9★ · 10,000+ trips · Since 2018</p>
+      </div>
+    </div>
+  );
 }
 
 export default function RouteClientContent({
@@ -107,9 +140,6 @@ export default function RouteClientContent({
   vehiclesServices
 }) {
   const [tripType, setTripType] = useState('oneWay');
-  const [selectedVehicle, setSelectedVehicle] = useState(null);
-  const [expandedFaq, setExpandedFaq] = useState(0);
-  const [hoveredVehicle, setHoveredVehicle] = useState(null);
   // Phase 3: unique, entity-rich, slug-seeded intro so each city-route page reads differently.
   const uniqueIntro = generateUniqueIntro({
     origin: formattedCityName || cityName,
@@ -146,11 +176,8 @@ export default function RouteClientContent({
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
   }, [formattedCityName, formattedDestination, tripType]);
 
-  const cityData = cityHeroData[formattedCityName] || {
-    image: '/images/about/about_banner.webp',
-    icon: '📍',
-    accent: '#FACF2D'
-  };
+  // Cinematic hero photo — destination first, origin as fallback.
+  const heroImage = getCityImage(formattedDestination) || getCityImage(formattedCityName);
 
   // Helper to check if vehicle is a large vehicle (tempo/bus/coach/maharaja)
   const isLargeVehicle = (vehicleName) => {
@@ -226,6 +253,15 @@ export default function RouteClientContent({
     };
   }, [route?.prices]);
 
+  // Quick Answer facts — omit anything missing or placeholder so the fact strip
+  // never shows "Contact Us" style values.
+  const quickAnswerFacts = useMemo(() => ([
+    { label: 'Distance', value: route.distance || estimatedDistance },
+    { label: 'Drive time', value: route.time || estimatedTime },
+    { label: 'Sedan one way', value: answerFares.sedanOneWay || `₹${startingPrice}` },
+    { label: 'Vehicles', value: '4 to 56 seats' },
+  ].filter((f) => f.value && !/contact\s*us|on\s*request|n\/?a/i.test(String(f.value)))), [route.distance, route.time, estimatedDistance, estimatedTime, answerFares.sedanOneWay, startingPrice]);
+
   const faqs = [
     {
       q: `What is the taxi fare from ${formattedCityName} to ${formattedDestination}?`,
@@ -245,7 +281,7 @@ export default function RouteClientContent({
     },
     {
       q: `How do I book a cab from ${formattedCityName} to ${formattedDestination}?`,
-      a: `Simply call us at ${phoneNumber} or WhatsApp for instant booking. Share your pickup location, date, time, and number of passengers. You'll receive immediate confirmation with driver details.`
+      a: `Simply call us at ${phoneNumber} or WhatsApp for instant booking. Share your pickup location, date, time, and number of passengers. You’ll receive immediate confirmation with driver details.`
     },
     {
       q: `What is included in the fare?`,
@@ -264,8 +300,24 @@ export default function RouteClientContent({
   return (
     <article className="min-h-screen bg-[#FAFAFA]" itemScope itemType="https://schema.org/TravelAction">
 
-      {/* ==================== HERO SECTION — AURORA REDESIGN ==================== */}
-      <div className="bg-aurora grain-overlay relative overflow-hidden">
+      {/* ==================== HERO — CINEMATIC DESTINATION PHOTO (v2) ==================== */}
+      <div className="grain-overlay relative overflow-hidden bg-slate-950">
+        {/* Destination photo backdrop — fixed container, scrim only where text sits */}
+        <div className="absolute inset-0">
+          <Image
+            src={heroImage}
+            alt={`${formattedDestination} — book a cab from ${formattedCityName} to ${formattedDestination}`}
+            fill
+            priority
+            sizes="100vw"
+            quality={80}
+            placeholder="blur"
+            blurDataURL={heroBlurDataURL}
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/30" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-slate-950 to-transparent" />
+        </div>
         {/* soft top hairline in brand gold */}
         <div className="absolute inset-x-0 top-0 z-20 h-[3px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
 
@@ -280,18 +332,116 @@ export default function RouteClientContent({
           </ol>
         </nav>
 
-        <CityRouteHero
-          from={formattedCityName}
-          to={formattedDestination}
-          distance={route.distance || estimatedDistance}
-          time={route.time || estimatedTime}
-          startingPrice={startingPrice}
-          tripType={tripType}
-          onToggleTrip={setTripType}
-          onWhatsApp={handleWhatsApp}
-          phone={phoneNumber}
-          rating="4.9"
-        />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-6 sm:px-6 sm:pt-8 lg:px-8 lg:pb-14 lg:pt-12">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
+            {/* Left: copy */}
+            <div className="min-w-0">
+              {/* trust chip */}
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full glass-dark px-3 py-1.5 text-xs text-white/80">
+                <Star className="h-3.5 w-3.5 text-amber-400" fill="currentColor" />
+                <span className="font-semibold">4.9</span>
+                <span className="mx-1 h-3 w-px bg-white/20" />
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                <span className="text-white/60">Verified drivers</span>
+              </div>
+
+              {/* serif display headline with gold-foil destination */}
+              <h1 className="speakable-headline font-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {formattedCityName}
+                <span className="mx-2 font-sans text-white/40 sm:mx-3">→</span>
+                <span className="text-gradient-gold">{formattedDestination}</span>
+                <span className="mt-2 block font-sans text-lg font-bold text-white/75 sm:text-2xl">Taxi &amp; Cab Service</span>
+              </h1>
+
+              {/* route lane chip */}
+              <div className="mt-5 max-w-md rounded-2xl glass-dark px-4 py-3">
+                <RouteLine from={formattedCityName} to={formattedDestination} tone="dark" />
+                <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-white/60">
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin className="h-3.5 w-3.5 text-amber-400" /> {route.distance || estimatedDistance}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Clock className="h-3.5 w-3.5 text-amber-400" /> {route.time || estimatedTime}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <Users className="h-3.5 w-3.5 text-amber-400" /> 4–56 seats
+                  </span>
+                </div>
+              </div>
+
+              {/* CTAs — full width on mobile, compact on desktop */}
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={handleWhatsApp}
+                  className="sheen glow-gold flex w-full items-center justify-center gap-2 rounded-full bg-amber-400 px-6 py-3.5 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95 sm:w-auto lg:py-2.5"
+                >
+                  <BsWhatsapp className="h-5 w-5" />
+                  Book on WhatsApp
+                </button>
+                <a
+                  href={`tel:+91${phoneNumber}`}
+                  className="flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10 sm:w-auto lg:py-2.5"
+                >
+                  <Phone className="h-4 w-4" /> Call {phoneNumber}
+                </a>
+              </div>
+
+              {/* TrustSeal emblem */}
+              <div className="mt-6">
+                <TrustSeal tone="dark" />
+              </div>
+            </div>
+
+            {/* Right: glass price card */}
+            <div className="relative">
+              <div className="border-gradient-gold group relative overflow-hidden rounded-3xl glass-dark p-6 sm:p-7">
+                <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Fixed all-inclusive fare</p>
+                <div className="mt-2 flex items-end gap-2">
+                  <span className="text-5xl font-black text-white sm:text-6xl">₹{startingPrice}</span>
+                  <span className="mb-2 text-sm text-white/50">
+                    /{tripType === 'roundTrip' ? 'round trip' : 'one way'}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-white/50">Fuel · driver · GST included</p>
+
+                {/* trip toggle */}
+                <div className="mt-5 grid grid-cols-2 gap-1 rounded-xl bg-white/5 p-1">
+                  {[
+                    { k: 'oneWay', label: 'One Way' },
+                    { k: 'roundTrip', label: 'Round Trip' },
+                  ].map((t) => (
+                    <button
+                      key={t.k}
+                      type="button"
+                      onClick={() => setTripType(t.k)}
+                      className={`rounded-lg py-2 text-sm font-bold transition-all ${
+                        tripType === t.k ? 'bg-amber-400 text-slate-900 shadow' : 'text-white/60 hover:text-white'
+                      }`}
+                    >
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleWhatsApp}
+                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-black text-slate-900 transition-colors hover:bg-amber-50"
+                >
+                  Get Instant Quote <ArrowRight className="h-4 w-4" />
+                </button>
+
+                {/* mini trust row */}
+                <div className="mt-4 flex items-center justify-between text-[0.7rem] text-white/50">
+                  <span>✓ No advance</span>
+                  <span>✓ Free cancellation</span>
+                  <span>✓ 24×7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Inline lead form (preserved) + trust badges */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
@@ -325,12 +475,7 @@ export default function RouteClientContent({
             tone="light"
             question={`How much is a cab from ${formattedCityName} to ${formattedDestination}?`}
             answer={`A ${formattedCityName} to ${formattedDestination} cab starts at ${answerFares.sedanOneWay || `₹${startingPrice}`} one way in an AC sedan${answerFares.suvOneWay && answerFares.suvName ? `, and ${answerFares.suvOneWay} in a ${answerFares.suvName}` : ''}${answerFares.sedanRoundTrip ? `; the same sedan is ${answerFares.sedanRoundTrip} as a round trip with the driver waiting for you` : ''}. The road distance is about ${route.distance || estimatedDistance} and the drive takes around ${route.time || estimatedTime}.${answerFares.tempoFare && answerFares.tempoName ? ` Group travellers can book a ${answerFares.tempoName} from ${answerFares.tempoFare}.` : ''} Fares cover fuel, driver and GST; tolls, parking and state permits are charged as per actuals.`}
-            facts={[
-              { label: 'Distance', value: route.distance || estimatedDistance },
-              { label: 'Drive time', value: route.time || estimatedTime },
-              { label: 'Sedan one way', value: answerFares.sedanOneWay || `₹${startingPrice}` },
-              { label: 'Vehicles', value: '4 to 56 seats' },
-            ]}
+            facts={quickAnswerFacts}
           />
         </div>
       </section>
@@ -359,26 +504,25 @@ export default function RouteClientContent({
       <section className="py-8 md:py-12 bg-white border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
-            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl md:text-3xl font-black tracking-tight text-slate-900 mb-4">
               How much is a {formattedCityName} to {formattedDestination} taxi in 2026?
             </h2>
-            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
-                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Distance</p>
-                <p className="text-xl font-black text-slate-900">{route.distance || estimatedDistance}</p>
-              </div>
-              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
-                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Duration</p>
-                <p className="text-xl font-black text-slate-900">{route.time || estimatedTime}</p>
-              </div>
-              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
-                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Starting Fare</p>
-                <p className="text-xl font-black text-green-700">₹{startingPrice}</p>
-              </div>
-              <div className="bg-white rounded-xl p-4 text-center border border-amber-100">
-                <p className="text-xs text-slate-500 uppercase font-semibold mb-1">Rating</p>
-                <p className="text-xl font-black text-amber-600">4.9★</p>
-              </div>
+            {/* v2 stat tiles — gold icon chip + foil key figure */}
+            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+              {[
+                { icon: Navigation, label: 'Distance', value: route.distance || estimatedDistance },
+                { icon: Clock, label: 'Duration', value: route.time || estimatedTime },
+                { icon: CreditCard, label: 'Starting Fare', value: `₹${startingPrice}` },
+                { icon: Star, label: 'Rating', value: '4.9★' },
+              ].map((tile, i) => (
+                <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-amber-100 shadow-sm">
+                  <div className="mb-2 inline-flex rounded-xl bg-amber-400/15 p-2">
+                    <tile.icon className="h-4 w-4 text-amber-600" />
+                  </div>
+                  <p className="text-[0.65rem] text-slate-500 uppercase tracking-wider font-bold mb-0.5">{tile.label}</p>
+                  <p className="text-xl font-black text-gradient-gold">{tile.value}</p>
+                </div>
+              ))}
             </div>
             <p className="speakable-lead faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
               The {formattedCityName} to {formattedDestination} taxi fare starts from <strong>₹{startingPrice}</strong> for a sedan (one way).
@@ -450,18 +594,66 @@ export default function RouteClientContent({
         </section>
       )}
 
-      {/* ==================== FARE TABLE — machine-readable version of the vehicle cards ==================== */}
+      {/* ==================== FARE CHART — photo cards on mobile, true table on md+ ==================== */}
       {route?.prices && route.prices.length > 0 && (
         <section className="bg-white py-12 md:py-16">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-2">
-              {formattedCityName} to {formattedDestination} fare chart
+            <h2 className="font-serif text-2xl md:text-3xl font-black tracking-tight text-slate-900 mb-2">
+              {formattedCityName} to {formattedDestination} <span className="text-gradient-gold">fare chart</span>
             </h2>
-            <p className="text-slate-600 mb-5">
+            <p className="text-slate-600 mb-6">
               All-inclusive fares for every vehicle on this route. Tolls, parking and state permits are extra.
             </p>
-            <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-              <table className="w-full min-w-[560px] text-left text-sm">
+
+            {/* Mobile: stacked photo cards — no sideways scrolling */}
+            <div className="md:hidden space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 pb-1">
+                Taxi, tempo traveller and bus fares from {formattedCityName} to {formattedDestination}, 2026
+              </p>
+              {route.prices.map((p, i) => {
+                const info = vehicleCapacityMap[p.vehicle] || {};
+                const seatMatch = String(p.vehicle).match(/(\d+)\s*seater/i);
+                const seats = info.seats || (seatMatch ? seatMatch[1] : '4');
+                return (
+                  <div key={`fare-card-${i}`} className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                    <div className="flex items-stretch gap-3 p-3">
+                      {/* Vehicle photo — fixed container, no CLS */}
+                      <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+                        <Image
+                          src={getFareVehicleImage(p.vehicle)}
+                          alt={`${p.vehicle} for ${formattedCityName} to ${formattedDestination}`}
+                          fill
+                          sizes="112px"
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="text-sm font-black text-slate-900 leading-tight">{p.vehicle}</h3>
+                          <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-400/15 px-2 py-0.5 text-[0.65rem] font-bold text-amber-700">
+                            <Users className="h-3 w-3" /> {seats}
+                          </span>
+                        </div>
+                        <div className="mt-2 grid grid-cols-2 gap-2">
+                          <div className="rounded-lg bg-slate-50 px-2.5 py-1.5">
+                            <p className="text-[0.6rem] font-bold uppercase tracking-wide text-slate-400">One way</p>
+                            <p className="text-sm font-black text-slate-900">{p.price || '—'}</p>
+                          </div>
+                          <div className="rounded-lg bg-amber-50 px-2.5 py-1.5">
+                            <p className="text-[0.6rem] font-bold uppercase tracking-wide text-amber-600">Round trip</p>
+                            <p className="text-sm font-black text-amber-700">{p.roundTrip || '—'}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Desktop: true table — fits without horizontal scroll */}
+            <div className="hidden md:block rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <table className="w-full text-left text-sm">
                 <caption className="px-4 pt-4 pb-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Taxi, tempo traveller and bus fares from {formattedCityName} to {formattedDestination}, 2026
                 </caption>
@@ -479,7 +671,20 @@ export default function RouteClientContent({
                     const seatMatch = String(p.vehicle).match(/(\d+)\s*seater/i);
                     return (
                       <tr key={`fare-${i}`} className="hover:bg-amber-50/60 transition-colors">
-                        <th scope="row" className="px-4 py-3 text-left font-semibold text-slate-900">{p.vehicle}</th>
+                        <th scope="row" className="px-4 py-3 text-left font-semibold text-slate-900">
+                          <span className="flex items-center gap-3">
+                            <span className="relative h-10 w-14 shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                              <Image
+                                src={getFareVehicleImage(p.vehicle)}
+                                alt={p.vehicle}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                              />
+                            </span>
+                            {p.vehicle}
+                          </span>
+                        </th>
                         <td className="px-4 py-3 text-slate-700">{info.seats || (seatMatch ? seatMatch[1] : '4')}</td>
                         <td className="px-4 py-3 font-bold text-slate-900">{p.price || '—'}</td>
                         <td className="px-4 py-3 font-bold text-amber-700">{p.roundTrip || '—'}</td>
@@ -497,343 +702,299 @@ export default function RouteClientContent({
       )}
 
 
-      {/* ==================== WHY CHOOSE US - BENTO GRID ==================== */}
-      <section className="py-16 md:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ==================== WHY CHOOSE US — DARK GLASS GRID (v2) ==================== */}
+      <section className="bg-aurora grain-overlay relative overflow-hidden py-16 md:py-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              Why book a {formattedCityName} to {formattedDestination} cab with Triveni Cabs?
+          <div className="text-center mb-12">
+            <p className="text-[11px] font-black uppercase tracking-[0.25em] text-amber-400 mb-3">Why Triveni Cabs</p>
+            <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-black tracking-tight text-white mb-4">
+              Why book a {formattedCityName} to {formattedDestination} cab with <span className="text-gradient-gold">Triveni Cabs</span>?
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Trusted by 50,000+ customers for reliable {formattedCityName} to {formattedDestination} taxi service
             </p>
-          </motion.div>
+            <LaneDivider className="mt-5" />
+          </div>
 
-          {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
             {/* Large Card - Safety */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="lg:col-span-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+            <div className="lg:col-span-2 border-gradient-gold group glass-dark rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                  <Shield className="w-7 h-7 text-white" />
+                <div className="mb-6 inline-flex rounded-2xl bg-amber-400/15 p-4">
+                  <Shield className="w-7 h-7 text-amber-400" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-3">100% Safe & Secure Journey</h3>
-                <p className="text-white/80 text-lg mb-6 max-w-xl">
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">100% Safe &amp; Secure Journey</h3>
+                <p className="text-white/70 text-lg mb-6 max-w-xl">
                   All our drivers are police-verified with 5+ years of experience.
                   Real-time GPS tracking, SOS button, and 24/7 monitoring for your safety.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {['Verified Drivers', 'GPS Tracking', 'Live Trip Sharing', 'SOS Support'].map((item, i) => (
-                    <span key={i} className="bg-white/20 px-4 py-2 rounded-full text-sm font-medium">
+                    <span key={i} className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium ring-1 ring-white/10">
                       {item}
                     </span>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Pricing Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200"
-            >
-              <div className="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5">
-                <CreditCard className="w-7 h-7 text-amber-600" />
+            <div className="glass-dark rounded-3xl p-6 md:p-8 transition-colors duration-300 hover:border-amber-400/40">
+              <div className="mb-5 inline-flex rounded-2xl bg-amber-400/15 p-4">
+                <CreditCard className="w-7 h-7 text-amber-400" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Transparent Pricing</h3>
-              <p className="text-slate-600 mb-4">
+              <h3 className="text-xl font-bold text-white mb-2">Transparent Pricing</h3>
+              <p className="text-white/60 mb-4">
                 No hidden charges. Pay per km with clear breakdown of toll, parking, and taxes.
               </p>
-              <div className="flex items-center gap-2 text-emerald-600 font-medium">
+              <div className="flex items-center gap-2 text-emerald-400 font-medium">
                 <CheckCircle className="w-5 h-5" />
                 <span>Fixed rates guaranteed</span>
               </div>
-            </motion.div>
+            </div>
 
             {/* Fleet Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200"
-            >
-              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5">
-                <Car className="w-7 h-7 text-blue-600" />
+            <div className="glass-dark rounded-3xl p-6 md:p-8 transition-colors duration-300 hover:border-amber-400/40">
+              <div className="mb-5 inline-flex rounded-2xl bg-amber-400/15 p-4">
+                <Car className="w-7 h-7 text-amber-400" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Premium Fleet</h3>
-              <p className="text-slate-600 mb-4">
+              <h3 className="text-xl font-bold text-white mb-2">Premium Fleet</h3>
+              <p className="text-white/60 mb-4">
                 Well-maintained AC vehicles from Sedan to 56-seater buses. Clean and sanitized.
               </p>
-              <div className="flex items-center gap-2 text-emerald-600 font-medium">
+              <div className="flex items-center gap-2 text-emerald-400 font-medium">
                 <CheckCircle className="w-5 h-5" />
                 <span>Regular maintenance</span>
               </div>
-            </motion.div>
+            </div>
 
             {/* Support Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-slate-900 rounded-3xl p-6 md:p-8 text-white"
-            >
-              <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-5">
-                <Headphones className="w-7 h-7 text-[#FACF2D]" />
+            <div className="glass-dark rounded-3xl p-6 md:p-8 text-white transition-colors duration-300 hover:border-amber-400/40">
+              <div className="mb-5 inline-flex rounded-2xl bg-amber-400/15 p-4">
+                <Headphones className="w-7 h-7 text-amber-400" />
               </div>
               <h3 className="text-xl font-bold mb-2">24/7 Customer Support</h3>
-              <p className="text-white/70 mb-4">
+              <p className="text-white/60 mb-4">
                 Round-the-clock assistance via call and WhatsApp. We are always here to help.
               </p>
               <a href={`tel:+91${phoneNumber}`} className="text-[#FACF2D] font-bold text-lg">
                 {phoneNumber}
               </a>
-            </motion.div>
+            </div>
 
             {/* Experience Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl p-6 md:p-8 text-white"
-            >
-              <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
-                <Award className="w-7 h-7 text-white" />
+            <div className="border-gradient-gold group glass-dark rounded-3xl p-6 md:p-8 text-white">
+              <div className="mb-5 inline-flex rounded-2xl bg-amber-400/15 p-4">
+                <Award className="w-7 h-7 text-amber-400" />
               </div>
               <h3 className="text-xl font-bold mb-2">50,000+ Happy Trips</h3>
-              <p className="text-white/80 mb-4">
+              <p className="text-white/60 mb-4">
                 Trusted by families, corporates, and tour operators across India.
               </p>
               <div className="flex items-center gap-1">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" />
+                  <Star key={i} className="w-5 h-5 text-amber-400" fill="currentColor" />
                 ))}
                 <span className="ml-2 font-bold">4.9/5</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
 
-      {/* ==================== ROUTE INFORMATION ==================== */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* ==================== ROUTE INFORMATION — v2 STAT TILES ==================== */}
+      <section className="bg-aurora-light py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
-              <Route className="w-4 h-4 text-[#D4A017]" />
-              <span className="text-sm font-semibold text-[#D4A017]">ROUTE GUIDE</span>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-amber-400/15 px-4 py-2 rounded-full mb-4">
+              <Route className="w-4 h-4 text-amber-600" />
+              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-amber-700">Route Guide</span>
             </div>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              What route does the {formattedCityName} to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedDestination}</span> cab take?
+            <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 mb-4">
+              What route does the {formattedCityName} to <span className="text-gradient-gold">{formattedDestination}</span> cab take?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Distance, travel time, stops &amp; fare for {formattedCityName} to {formattedDestination} by car
             </p>
-          </motion.div>
+            <LaneDivider className="mt-5" />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-            {/* Route Details */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="group"
-            >
-              <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
-                <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FACF2D]/20 to-yellow-100 flex items-center justify-center group-hover:bg-[#FACF2D] transition-colors">
-                      <Route className="w-6 h-6 text-[#D4A017] group-hover:text-black transition-colors" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900">Route Details</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl px-4">
-                      <span className="text-slate-600">Distance</span>
-                      <span className="font-bold text-slate-900">{route.distance || estimatedDistance}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl px-4">
-                      <span className="text-slate-600">Duration</span>
-                      <span className="font-bold text-slate-900">{route.time || estimatedTime}</span>
-                    </div>
-                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl px-4">
-                      <span className="text-slate-600">Best Route</span>
-                      <span className="font-bold text-slate-900">NH48 Highway</span>
-                    </div>
-                    <div className="flex justify-between items-center py-3 bg-gradient-to-r from-green-50 to-emerald-50/50 rounded-xl px-4">
-                      <span className="text-slate-600">Road Condition</span>
-                      <span className="font-bold text-emerald-600 flex items-center gap-1">
-                        <CheckCircle className="w-4 h-4" />
-                        Excellent
-                      </span>
-                    </div>
-                  </div>
+          {/* Journey stat tiles — glass, gold icon chips, foil key figures */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-10">
+            {[
+              { icon: Navigation, label: 'Distance', value: route.distance || estimatedDistance },
+              { icon: Clock, label: 'Duration', value: route.time || estimatedTime },
+              { icon: Route, label: 'Best Route', value: 'NH48 Highway' },
+              { icon: CheckCircle, label: 'Road Condition', value: 'Excellent' },
+            ].map((tile, i) => (
+              <div key={i} className="rounded-2xl border border-amber-100 bg-white/70 backdrop-blur-sm p-5 shadow-sm transition-all duration-300 hover:border-amber-300 hover:shadow-lg">
+                <div className="mb-3 inline-flex rounded-xl bg-amber-400/15 p-2.5">
+                  <tile.icon className="h-5 w-5 text-amber-600" />
                 </div>
+                <p className="text-[0.65rem] font-bold uppercase tracking-wider text-slate-500 mb-1">{tile.label}</p>
+                <p className="text-lg md:text-xl font-black text-gradient-gold leading-tight">{tile.value}</p>
               </div>
-            </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* Best Travel Times */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="group"
-            >
-              <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
-                <div className="h-1.5 bg-gradient-to-r from-blue-400 via-sky-400 to-blue-500" />
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-sky-50 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
-                      <Clock className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900">Best Travel Times</h3>
+            <div className="group rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:border-amber-300 hover:shadow-xl h-full">
+              <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-[#D4A017]" />
+              <div className="p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="rounded-xl bg-amber-400/15 p-3">
+                    <Clock className="w-6 h-6 text-amber-600" />
                   </div>
-                  <div className="space-y-3">
-                    <div className="bg-gradient-to-r from-emerald-50 to-green-50/50 rounded-xl p-4 border border-emerald-100">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-bold text-slate-900">Early Morning</span>
-                        <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                          <Zap className="w-3 h-3" />
-                          Fastest
-                        </span>
-                      </div>
-                      <p className="text-slate-600 text-sm">5:00 AM - 7:00 AM</p>
+                  <h3 className="text-xl font-bold text-slate-900">Best Travel Times</h3>
+                </div>
+                <div className="space-y-3">
+                  <div className="bg-gradient-to-r from-emerald-50 to-green-50/50 rounded-xl p-4 border border-emerald-100">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold text-slate-900">Early Morning</span>
+                      <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <Zap className="w-3 h-3" />
+                        Fastest
+                      </span>
                     </div>
-                    <div className="bg-gradient-to-r from-blue-50 to-sky-50/50 rounded-xl p-4 border border-blue-100">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-bold text-slate-900">Late Morning</span>
-                        <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Comfortable</span>
-                      </div>
-                      <p className="text-slate-600 text-sm">10:00 AM - 12:00 PM</p>
+                    <p className="text-slate-600 text-sm">5:00 AM - 7:00 AM</p>
+                  </div>
+                  <div className="bg-gradient-to-r from-blue-50 to-sky-50/50 rounded-xl p-4 border border-blue-100">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold text-slate-900">Late Morning</span>
+                      <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold">Comfortable</span>
                     </div>
-                    <div className="bg-gradient-to-r from-amber-50 to-yellow-50/50 rounded-xl p-4 border border-amber-100">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-bold text-slate-900">Evening</span>
-                        <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">Traffic</span>
-                      </div>
-                      <p className="text-slate-600 text-sm">5:00 PM - 8:00 PM</p>
+                    <p className="text-slate-600 text-sm">10:00 AM - 12:00 PM</p>
+                  </div>
+                  <div className="bg-gradient-to-r from-amber-50 to-yellow-50/50 rounded-xl p-4 border border-amber-100">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold text-slate-900">Evening</span>
+                      <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">Traffic</span>
                     </div>
+                    <p className="text-slate-600 text-sm">5:00 PM - 8:00 PM</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* What's Included */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="group"
-            >
-              <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-1 h-full">
-                <div className="h-1.5 bg-gradient-to-r from-green-400 via-emerald-400 to-green-500" />
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-100 to-emerald-50 flex items-center justify-center group-hover:bg-green-500 transition-colors">
-                      <Gift className="w-6 h-6 text-green-600 group-hover:text-white transition-colors" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900">What&apos;s Included</h3>
+            <div className="group rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:border-amber-300 hover:shadow-xl h-full">
+              <div className="h-1.5 bg-gradient-to-r from-[#D4A017] via-amber-400 to-[#FACF2D]" />
+              <div className="p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="rounded-xl bg-amber-400/15 p-3">
+                    <Gift className="w-6 h-6 text-amber-600" />
                   </div>
-                  <div className="space-y-3">
-                    {[
-                      { icon: Fuel, label: 'Fuel charges', color: 'emerald' },
-                      { icon: Users, label: 'Professional driver', color: 'blue' },
-                      { icon: Snowflake, label: 'Air conditioning', color: 'sky' },
-                      { icon: MapPin, label: 'GPS navigation', color: 'purple' },
-                      { icon: Shield, label: 'Insurance coverage', color: 'amber' },
-                      { icon: Headphones, label: '24/7 support', color: 'green' }
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-xl p-3 border border-slate-100 hover:border-green-200 hover:bg-green-50/30 transition-all">
-                        <div className="w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center">
-                          <item.icon className="w-4 h-4 text-white" />
-                        </div>
-                        <span className="text-slate-700 font-medium">{item.label}</span>
-                        <CheckCircle className="w-4 h-4 text-green-500 ml-auto" />
+                  <h3 className="text-xl font-bold text-slate-900">What’s Included</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    { icon: Fuel, label: 'Fuel charges' },
+                    { icon: Users, label: 'Professional driver' },
+                    { icon: Snowflake, label: 'Air conditioning' },
+                    { icon: MapPin, label: 'GPS navigation' },
+                    { icon: Shield, label: 'Insurance coverage' },
+                    { icon: Headphones, label: '24/7 support' }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-slate-50 rounded-xl p-3 border border-slate-100 hover:border-amber-200 hover:bg-amber-50/40 transition-all">
+                      <div className="w-8 h-8 rounded-lg bg-amber-400/15 flex items-center justify-center shrink-0">
+                        <item.icon className="w-4 h-4 text-amber-600" />
                       </div>
-                    ))}
-                  </div>
+                      <span className="text-slate-700 font-medium text-sm">{item.label}</span>
+                      <CheckCircle className="w-4 h-4 text-emerald-500 ml-auto shrink-0" />
+                    </div>
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
 
-      {/* ==================== ROUTE HIGHLIGHTS SECTION ==================== */}
+      {/* ==================== ROUTE HIGHLIGHTS + GOLD LANE TIMELINE ==================== */}
       {route.routeHighlights && (
-        <section className="py-12 bg-white">
+        <section className="py-12 md:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              How long does the {formattedCityName} to {formattedDestination} drive take?
+            <h2 className="font-serif text-2xl md:text-3xl font-black tracking-tight text-slate-900 mb-8">
+              How long does the {formattedCityName} to <span className="text-gradient-gold">{formattedDestination}</span> drive take?
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                  <Route className="w-5 h-5 text-blue-500" /> Route Highlights
-                </h3>
-                <p className="text-gray-600">{route.routeHighlights}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+              <div className="space-y-5">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-colors hover:border-amber-300">
+                  <h3 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                    <span className="rounded-lg bg-amber-400/15 p-1.5"><Route className="w-4 h-4 text-amber-600" /></span> Route Highlights
+                  </h3>
+                  <p className="text-slate-600">{route.routeHighlights}</p>
+                </div>
+                {route.bestTimeToTravel && (
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-colors hover:border-amber-300">
+                    <h3 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                      <span className="rounded-lg bg-amber-400/15 p-1.5"><Clock className="w-4 h-4 text-amber-600" /></span> Best Time to Travel
+                    </h3>
+                    <p className="text-slate-600">{route.bestTimeToTravel}</p>
+                  </div>
+                )}
+                {route.localTip && (
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-colors hover:border-amber-300">
+                    <h3 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
+                      <span className="rounded-lg bg-amber-400/15 p-1.5"><Sparkles className="w-4 h-4 text-amber-600" /></span> Local Tip
+                    </h3>
+                    <p className="text-slate-600">{route.localTip}</p>
+                  </div>
+                )}
               </div>
-              {route.bestTimeToTravel && (
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-green-500" /> Best Time to Travel
-                  </h3>
-                  <p className="text-gray-600">{route.bestTimeToTravel}</p>
-                </div>
-              )}
-              {route.localTip && (
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-amber-500" /> Local Tip
-                  </h3>
-                  <p className="text-gray-600">{route.localTip}</p>
-                </div>
-              )}
+
+              {/* Gold lane timeline: origin → stops → foil destination badge */}
               {route.popularStops?.length > 0 && (
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-red-500" /> Popular Stops Along the Way
+                <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-6 md:p-8">
+                  <h3 className="font-semibold text-slate-900 mb-6 flex items-center gap-2">
+                    <span className="rounded-lg bg-amber-400/15 p-1.5"><MapPin className="w-4 h-4 text-amber-600" /></span> Popular Stops Along the Way
                   </h3>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {route.popularStops.map(stop => (
-                      <Link
-                        key={stop}
-                        href={`/${stop.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="px-3 py-1.5 bg-white rounded-full text-sm border border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors"
-                      >
-                        {stop}
-                      </Link>
-                    ))}
+                  <div className="relative pl-5">
+                    {/* gold lane line */}
+                    <div className="absolute left-[9px] top-2 bottom-2 w-px border-l-2 border-dashed border-amber-400/50" aria-hidden="true" />
+
+                    {/* origin node */}
+                    <div className="relative mb-4 flex items-center gap-4">
+                      <span className="absolute -left-5 flex h-5 w-5 items-center justify-center rounded-full bg-amber-400 ring-4 ring-amber-100" aria-hidden="true">
+                        <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
+                      </span>
+                      <span className="ml-4 text-sm font-black uppercase tracking-wide text-slate-900">{formattedCityName}</span>
+                    </div>
+
+                    {/* stop cards (links preserved) */}
+                    <div className="space-y-3">
+                      {route.popularStops.map(stop => (
+                        <div key={stop} className="relative flex items-center">
+                          <span className="absolute -left-5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-amber-400 bg-white" aria-hidden="true" />
+                          <Link
+                            href={`/${stop.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="ml-4 flex w-full items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-amber-300 hover:text-amber-700 hover:shadow-md"
+                          >
+                            {stop}
+                            <ArrowRight className="h-4 w-4 text-amber-500 shrink-0" />
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* destination foil badge */}
+                    <div className="relative mt-4 flex items-center gap-4">
+                      <span className="absolute -left-5 flex h-5 w-5 items-center justify-center rounded-full bg-slate-900 ring-4 ring-amber-100" aria-hidden="true">
+                        <MapPin className="h-3 w-3 text-amber-400" />
+                      </span>
+                      <span className="ml-4 inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1.5">
+                        <span className="text-sm font-black text-gradient-gold">{formattedDestination}</span>
+                        <span className="text-[0.6rem] font-bold uppercase tracking-widest text-white/50">Destination</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -845,8 +1006,8 @@ export default function RouteClientContent({
       {/* ==================== DETAILED TRAVEL GUIDE (Unique Prose Content for SEO) ==================== */}
       <section className="py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-6">
-            Complete guide — how to plan a {formattedCityName} to {formattedDestination} trip by cab
+          <h2 className="font-serif text-2xl md:text-4xl font-black tracking-tight text-slate-900 mb-6">
+            Complete guide — how to plan a {formattedCityName} to <span className="text-gradient-gold">{formattedDestination}</span> trip by cab
           </h2>
           <div className="prose prose-lg prose-slate max-w-none" data-snippet-type="travel-guide">
             <p>
@@ -906,18 +1067,18 @@ export default function RouteClientContent({
       {destinationInfo && destinationInfo.localAttractions && destinationInfo.localAttractions.length > 0 && (
         <section className="py-12 md:py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-3">
-              What can you do in {formattedDestination} after you arrive?
+            <h2 className="font-serif text-2xl md:text-4xl font-black tracking-tight text-slate-900 mb-3">
+              What can you do in <span className="text-gradient-gold">{formattedDestination}</span> after you arrive?
             </h2>
             <p className="text-slate-600 text-lg mb-8 max-w-3xl">
               {destinationInfo.description || `Explore the best of ${formattedDestination} after your cab ride from ${formattedCityName}.`}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {destinationInfo.localAttractions.slice(0, 6).map((attraction, index) => (
-                <div key={index} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-amber-300 hover:shadow-md transition-all">
+                <div key={index} className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-300 hover:shadow-lg transition-all duration-300">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-white font-bold text-sm">{index + 1}</span>
+                    <div className="w-9 h-9 rounded-xl bg-amber-400/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-amber-700 font-black text-sm">{index + 1}</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-slate-900 text-base">{attraction.name || attraction}</h3>
@@ -930,7 +1091,7 @@ export default function RouteClientContent({
               ))}
             </div>
             {destinationInfo.travelTips && destinationInfo.travelTips.length > 0 && (
-              <div className="mt-8 bg-amber-50 rounded-xl p-6 border border-amber-200/50">
+              <div className="mt-8 bg-amber-50 rounded-2xl p-6 border border-amber-200/50">
                 <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-amber-600" /> Travel Tips for {formattedDestination}
                 </h3>
@@ -983,92 +1144,73 @@ export default function RouteClientContent({
       />
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FACF2D]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FACF2D]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" aria-hidden="true" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" aria-hidden="true" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-5 py-2.5 rounded-full mb-6">
-              <Sparkles className="w-5 h-5 text-[#D4A017]" />
-              <span className="text-sm font-bold text-[#D4A017]">GOT QUESTIONS?</span>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-amber-400/15 px-5 py-2.5 rounded-full mb-6">
+              <Sparkles className="w-5 h-5 text-amber-600" />
+              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-amber-700">Got Questions?</span>
             </div>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4">
-              Frequently asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">questions</span> about {formattedCityName} to {formattedDestination} cab
+            <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 mb-4">
+              Frequently asked <span className="text-gradient-gold">questions</span> about {formattedCityName} to {formattedDestination} cab
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Fare, booking &amp; travel info for {formattedCityName} to {formattedDestination} cab service
             </p>
-          </motion.div>
+            <LaneDivider className="mt-5" />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="group"
-              >
-                <div className="relative bg-white rounded-3xl border-2 border-slate-100 overflow-hidden transition-all duration-500 hover:border-[#FACF2D] hover:shadow-2xl hover:shadow-[#FACF2D]/20 hover:-translate-y-2 h-full">
+              <div key={index} className="group h-full">
+                <div className="relative bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm transition-all duration-300 hover:border-amber-300 hover:shadow-xl h-full">
                   {/* Gradient accent */}
-                  <div className="h-2 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+                  <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-[#D4A017]" />
 
-                  <div className="p-4 md:p-6 lg:p-8">
+                  <div className="p-4 md:p-6">
                     {/* Question */}
-                    <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-5">
-                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#FACF2D] to-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#FACF2D]/30 group-hover:scale-110 transition-transform">
-                        <span className="text-lg md:text-xl font-black text-black">?</span>
+                    <div className="flex items-start gap-3 md:gap-4 mb-4">
+                      <div className="w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-amber-400 flex items-center justify-center flex-shrink-0 shadow-md shadow-amber-400/30">
+                        <span className="text-base md:text-lg font-black text-slate-900">?</span>
                       </div>
-                      <h3 className="font-bold text-slate-900 text-base md:text-lg leading-snug pt-1.5 md:pt-2 min-w-0">{faq.q}</h3>
+                      <h3 className="font-bold text-slate-900 text-base md:text-lg leading-snug pt-1 min-w-0">{faq.q}</h3>
                     </div>
 
                     {/* Answer */}
-                    <div className="pl-0 md:pl-14 lg:pl-16">
-                      <div className="bg-gradient-to-r from-slate-50 to-slate-100/50 rounded-2xl p-3 md:p-4 border border-slate-100">
+                    <div className="pl-0 md:pl-14">
+                      <div className="bg-slate-50 rounded-2xl p-3 md:p-4 border border-slate-100">
                         <p className={`text-slate-600 leading-relaxed text-sm md:text-base${index === 0 ? ' speakable-faq-first' : ''}`}>{faq.a}</p>
                       </div>
                     </div>
                   </div>
-
-                  {/* Shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Bottom CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
+          <div className="mt-12 text-center">
             <p className="text-slate-500 mb-4">Need more help with your {formattedCityName} to {formattedDestination} trip?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={handleCallNow}
-                className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-3.5 lg:py-2.5 rounded-full font-bold transition-colors"
               >
                 <Phone className="w-5 h-5" />
                 Call Us Now
               </button>
               <button
                 onClick={handleWhatsApp}
-                className="inline-flex items-center justify-center gap-2 bg-[#FACF2D] hover:bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105"
+                className="sheen glow-gold inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 px-8 py-3.5 lg:py-2.5 rounded-full font-black transition-colors"
               >
                 <BsWhatsapp className="w-5 h-5" />
                 WhatsApp Us
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1086,61 +1228,49 @@ export default function RouteClientContent({
 
 
       {/* ==================== RELATED ROUTES ==================== */}
-      <section className="py-16 md:py-24 bg-slate-50">
+      <section className="bg-aurora-light py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FACF2D]/20 to-yellow-100 px-4 py-2 rounded-full mb-4">
-              <Navigation className="w-4 h-4 text-[#D4A017]" />
-              <span className="text-sm font-semibold text-[#D4A017]">EXPLORE MORE</span>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-amber-400/15 px-4 py-2 rounded-full mb-4">
+              <Navigation className="w-4 h-4 text-amber-600" />
+              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-amber-700">Explore More</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3">
-              Which other routes can I book from <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FACF2D]">{formattedCityName}</span>?
+            <h2 className="font-serif text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-3">
+              Which other routes can I book from <span className="text-gradient-gold">{formattedCityName}</span>?
             </h2>
             <p className="text-slate-600 mb-6">
               Explore other popular destinations with transparent pricing
             </p>
             <Link
               href={`/${cityName}`}
-              className="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-800 px-6 py-3 rounded-full font-bold transition-all"
+              className="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-800 px-6 py-3 lg:py-2.5 rounded-full font-bold transition-colors"
             >
               View all routes
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {routes
               .filter(r => r.destination !== formattedDestination)
               .slice(0, 8)
               .map((routeItem, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="group"
-                >
+                <div key={index} className="group">
                   <Link
                     href={`/${createRouteSlug(cityName, routeItem.destination)}`}
-                    className="block relative"
+                    className="block relative h-full"
                   >
-                    <div className="relative bg-white rounded-2xl border-2 border-slate-100 overflow-hidden transition-all duration-500 group-hover:border-[#FACF2D] group-hover:shadow-2xl group-hover:shadow-[#FACF2D]/20 group-hover:-translate-y-2">
-                      <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
+                    <div className="relative h-full bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all duration-300 group-hover:border-amber-300 group-hover:shadow-xl group-hover:-translate-y-1">
+                      <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-[#D4A017]" />
                       <div className="p-5">
                         <div className="flex items-center justify-between mb-4">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FACF2D]/20 to-yellow-100 flex items-center justify-center group-hover:bg-[#FACF2D] transition-colors">
-                            <MapPin className="w-5 h-5 text-[#D4A017] group-hover:text-black transition-colors" />
+                          <div className="w-10 h-10 rounded-xl bg-amber-400/15 flex items-center justify-center group-hover:bg-amber-400 transition-colors">
+                            <MapPin className="w-5 h-5 text-amber-600 group-hover:text-slate-900 transition-colors" />
                           </div>
-                          <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-[#FACF2D] group-hover:translate-x-1 transition-all" />
+                          <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />
                         </div>
-                        <h3 className="font-bold text-slate-900 text-lg mb-3 group-hover:text-[#D4A017] transition-colors">
+                        <h3 className="font-bold text-slate-900 text-lg mb-3 group-hover:text-amber-700 transition-colors">
                           {routeItem.destination}
                         </h3>
                         <div className="flex items-center gap-3 text-sm">
@@ -1154,54 +1284,45 @@ export default function RouteClientContent({
                           </span>
                         </div>
                       </div>
-                      {/* Shine effect on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
           </div>
         </div>
       </section>
 
 
-      {/* ==================== STICKY CTA FOOTER ==================== */}
-      <section className="py-16 md:py-24 bg-slate-900">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-              Ready to book a <span className="text-[#FACF2D]">{formattedCityName} to {formattedDestination}</span> cab?
-            </h2>
-            <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
-              Instant confirmation. AC vehicles. One way &amp; round trip. Best price guaranteed. 24/7 available.
-            </p>
+      {/* ==================== FINAL CTA — DARK AURORA ==================== */}
+      <section className="bg-aurora grain-overlay relative overflow-hidden py-16 md:py-24">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-black tracking-tight text-white mb-4">
+            Ready to book a <span className="text-gradient-gold">{formattedCityName} to {formattedDestination}</span> cab?
+          </h2>
+          <p className="text-white/70 text-lg mb-6 max-w-2xl mx-auto">
+            Instant confirmation. AC vehicles. One way &amp; round trip. Best price guaranteed. 24/7 available.
+          </p>
+          <div className="mb-10 flex justify-center">
+            <TrustSeal tone="dark" />
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                onClick={handleCallNow}
-                
-                whileTap={{ scale: 0.98 }}
-                className="bg-[#FACF2D] hover:bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-[#FACF2D]/25 transition-colors"
-              >
-                <Phone className="w-6 h-6" />
-                Call {phoneNumber}
-              </motion.button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={handleCallNow}
+              className="sheen glow-gold w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-900 px-10 py-4 lg:py-3 rounded-full font-black text-lg flex items-center justify-center gap-3 transition-colors active:scale-[0.98]"
+            >
+              <Phone className="w-6 h-6" />
+              Call {phoneNumber}
+            </button>
 
-              <motion.button
-                onClick={handleWhatsApp}
-                
-                whileTap={{ scale: 0.98 }}
-                className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-colors"
-              >
-                <BsWhatsapp className="w-6 h-6" />
-                WhatsApp Us
-              </motion.button>
-            </div>
-          </motion.div>
+            <button
+              onClick={handleWhatsApp}
+              className="w-full sm:w-auto border border-white/15 bg-white/5 hover:bg-white/10 text-white px-10 py-4 lg:py-3 rounded-full font-bold text-lg flex items-center justify-center gap-3 backdrop-blur-sm transition-colors active:scale-[0.98]"
+            >
+              <BsWhatsapp className="w-6 h-6" />
+              WhatsApp Us
+            </button>
+          </div>
         </div>
       </section>
 

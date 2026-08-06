@@ -1,19 +1,24 @@
 'use client';
 
+// ============================================================================
+// CityToursPage — Ultra-Premium v2 (Aug 2026)
+// Sightseeing family keeps its EMERALD/TEAL identity on slate-950.
+// Foil headline = emerald-tinted gradient (from-emerald-200 via-emerald-400
+// to-teal-600); GOLD is reserved for CTAs and prices only.
+// Zero framer-motion (CSS-only transitions, INP-friendly); icons only from
+// '@/components/ui/icons'; fixed-height image containers (no CLS).
+// ============================================================================
+
+import { useState } from 'react';
 import { getToursByCity } from '@/utilis/sightseeingData';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import {
-  MapPinIcon,
-  ClockIcon,
-  CurrencyRupeeIcon,
-  SparklesIcon,
-  StarIcon,
-  ChevronRightIcon,
-  UserGroupIcon,
-  CalendarIcon
-} from '@heroicons/react/24/outline';
+  MapPin, Clock, Sparkles, Star, ChevronRight, ChevronDown, Users, Calendar,
+  Phone, MessageCircle, Compass
+} from '@/components/ui/icons';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { generateFAQSchema } from '@/lib/seo/schema-generators';
 
 // Shared Components
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
@@ -21,10 +26,99 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 // SEO Components
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
-import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
 import { generateCityFAQs } from '@/lib/seo/faq-generator';
-import { getNearbyDestinations, getServiceCrossLinks, getRelatedContent } from '@/utilis/linkingHelper';
+import { getNearbyDestinations, getRelatedContent } from '@/utilis/linkingHelper';
+
+/* Emerald lane motif — a quiet road-lane divider, this family's signature. */
+function EmeraldLane({ className = '' }) {
+  return (
+    <div className={`flex items-center gap-3 ${className}`} aria-hidden="true">
+      <span className="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400/80" />
+      <span className="h-0 flex-1 border-t-2 border-dashed border-emerald-400/25" />
+      <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-400/60" />
+      <span className="h-0 flex-1 border-t-2 border-dashed border-emerald-400/25" />
+      <span className="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400/80" />
+    </div>
+  );
+}
+
+/* v2 heading: eyebrow + serif/foil headline in this family's emerald foil. */
+function EmeraldHeading({ eyebrow, title, foil, subtitle, align = 'center' }) {
+  const alignCls = align === 'left' ? 'text-left' : 'text-center';
+  return (
+    <div className={`${alignCls} ${align === 'center' ? 'mx-auto max-w-3xl' : 'max-w-3xl'}`}>
+      {eyebrow && (
+        <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.3em] text-emerald-300/90">
+          {eyebrow}
+        </p>
+      )}
+      <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
+        {title}{' '}
+        {foil && (
+          <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+            {foil}
+          </span>
+        )}
+      </h2>
+      {subtitle && (
+        <p className={`mt-4 text-sm leading-relaxed text-slate-400 sm:text-base ${align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-2xl'}`}>
+          {subtitle}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* FAQ — 2-per-row glass accordions (CSS grid-rows transition, no JS animation
+   lib). Emits the same FAQPage schema FAQSection used to emit. */
+function FaqGrid({ faqs, title, subtitle }) {
+  const [open, setOpen] = useState(0);
+  if (!faqs || faqs.length === 0) return null;
+  const schema = generateFAQSchema(faqs);
+  return (
+    <section className="bg-slate-950 px-4 py-14 sm:px-6 md:py-20" aria-labelledby="city-faq-heading">
+      {schema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      )}
+      <div className="mx-auto max-w-6xl">
+        <EmeraldHeading eyebrow="Good to know" title={title} foil="answered" subtitle={subtitle} />
+        <EmeraldLane className="mx-auto mt-8 max-w-xs" />
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {faqs.map((faq, i) => {
+            const isOpen = open === i;
+            return (
+              <div
+                key={i}
+                className={`h-fit rounded-2xl border bg-white/5 backdrop-blur-xl transition-colors duration-300 ${
+                  isOpen ? 'border-emerald-400/40' : 'border-white/10 hover:border-white/20'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  className="flex w-full items-start justify-between gap-4 p-5 text-left"
+                >
+                  <span className="text-sm font-bold leading-snug text-white sm:text-base">{faq.question}</span>
+                  <ChevronDown
+                    className={`mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    aria-hidden="true"
+                  />
+                </button>
+                <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className="overflow-hidden">
+                    <p className="px-5 pb-5 text-sm leading-relaxed text-slate-300">{faq.answer}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function CityToursPage({ city }) {
   const tours = getToursByCity(city);
@@ -33,10 +127,10 @@ export default function CityToursPage({ city }) {
 
   if (!tours || tours.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-slate-950">
         <div className="text-center">
-          <h1 className="text-3xl font-black text-white mb-4">No Tours Found</h1>
-          <p className="text-slate-400 mb-6">We don&apos;t have tours for {cityName} yet.</p>
+          <h1 className="mb-4 text-3xl font-black text-white">No Tours Found</h1>
+          <p className="mb-6 text-slate-400">We don’t have tours for {cityName} yet.</p>
           <Link href="/sightseeing" className="text-emerald-400 hover:underline">
             Browse All Tours →
           </Link>
@@ -46,6 +140,8 @@ export default function CityToursPage({ city }) {
   }
 
   const heroImage = tours[0]?.heroImage || `/images/destinations/${city}.jpg`;
+  const cityWhatsappText = `Hi, I want to book a ${cityName} sightseeing tour. Please share tour options and best rates.`;
+  const cityWhatsappHref = `https://wa.me/917668570551?text=${encodeURIComponent(cityWhatsappText)}`;
 
   // --- Quick Answer (AEO/GEO) — fact-first, built only from sightseeingData ---
   //
@@ -112,135 +208,101 @@ export default function CityToursPage({ city }) {
     { label: 'Pickup', value: `Free ${cityName} pickup` }
   ].filter(Boolean).slice(0, 4);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100 }
-    }
-  };
+  // Hero stat tiles — data-driven only (no placeholder facts).
+  const heroStats = [
+    { label: 'Ready-to-book tours', value: `${tours.length}` },
+    fromFare ? { label: dayTours.length ? 'Day tours from' : 'Tours from', value: `₹${fromFare.toLocaleString()}` } : null,
+    spotSource[0]?.duration ? { label: 'Typical length', value: spotSource[0].duration } : null,
+    { label: 'Hotel pickup', value: 'Free' },
+  ].filter(Boolean).slice(0, 4);
 
   return (
     <main className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/CollectionPage">
-      {/* Hero Section - Explorer Discovery Theme */}
+      {/* ============================================ */}
+      {/* HERO — cinematic city photography            */}
+      {/* ============================================ */}
       <header>
-      <section
-        className="relative h-[55vh] min-h-[380px] flex items-center justify-center overflow-hidden"
-      >
-        {/* Hero Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src={heroImage}
-            alt={`${cityName} Sightseeing Tours`}
-            fill
-            priority
-            quality={90}
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-transparent to-teal-900/40" />
-        </div>
-
-        {/* Floating Orbs */}
-        <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[150px]" />
-        <div className="absolute bottom-20 left-10 w-[300px] h-[300px] bg-teal-400/10 rounded-full blur-[120px]" />
-
-        {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
-          <div className="inline-block mb-4 sm:mb-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl shadow-emerald-500/30 rotate-6">
-              <MapPinIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white -rotate-6" />
-            </div>
+        <section className="relative flex min-h-[72vh] flex-col justify-end overflow-hidden bg-slate-950 sm:min-h-[78vh]">
+          {/* Fixed full-bleed photo — no CLS */}
+          <div className="absolute inset-0">
+            <Image
+              src={heroImage}
+              alt={`${cityName} Sightseeing Tours`}
+              fill
+              priority
+              quality={88}
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/15" />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/45 via-transparent to-teal-950/40" />
           </div>
+          {/* Emerald aurora glows */}
+          <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-emerald-500/15 blur-[130px]" aria-hidden />
+          <div className="pointer-events-none absolute bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/10 blur-[110px]" aria-hidden />
 
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.8 }}
-            className="mb-4"
-          >
-            <span className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-500/20 backdrop-blur-xl rounded-full border border-emerald-500/30 text-emerald-300 font-bold text-sm tracking-wider uppercase">
-              <SparklesIcon className="w-4 h-4" />
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 pt-24 sm:px-6 sm:pb-14 lg:px-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-emerald-300 backdrop-blur-md">
+              <Sparkles className="h-3.5 w-3.5" />
               Explore {cityName}
             </span>
-          </motion.div>
 
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-[1.1] px-2"
-          >
-            Discover {cityName}&apos;s
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-              Hidden Treasures
-            </span>
-          </motion.h1>
+            <h1 className="mt-5 max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              {cityName} sightseeing,
+              <span className="mt-2 block font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+                done the unhurried way.
+              </span>
+            </h1>
 
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-slate-300 max-w-3xl mx-auto px-2"
-          >
-            {tours.length}+ expertly curated sightseeing tours across {cityName}&apos;s most breathtaking destinations
-          </motion.p>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300/90 sm:text-base md:text-lg">
+              {tours.length} curated {cityName} tour{tours.length === 1 ? '' : 's'} — a private AC car, a driver who
+              knows every gate and every queue, and free pickup from your hotel, home or station.
+            </p>
 
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4"
-          >
-            <Link href="#tours" className="group w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full font-bold text-base sm:text-lg shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                Explore {cityName} Tours
-                <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-xl text-white rounded-full font-bold text-base sm:text-lg shadow-xl border border-white/20 hover:bg-white/20 transform hover:scale-105 transition-all duration-300">
-                Book via WhatsApp
-              </button>
-            </a>
-          </motion.div>
+            {/* Compact CTAs — gold, black text, sheen */}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={cityWhatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('sightseeing_city_hero', cityWhatsappText)}
+                className="sheen glow-gold inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Book on WhatsApp
+              </a>
+              <a
+                href="tel:+917668570551"
+                onClick={() => trackPhoneCall('sightseeing_city_hero')}
+                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" />
+                Call 7668570551
+              </a>
+              <Link
+                href="#tours"
+                className="inline-flex min-h-[46px] items-center justify-center gap-1.5 px-3 py-3 text-sm font-semibold text-emerald-300 transition-colors hover:text-emerald-200"
+              >
+                Browse tours <ChevronRight className="h-4 w-4" />
+              </Link>
+            </div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-8 sm:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto px-2"
-          >
-            {[
-              { number: `${tours.length}+`, label: "Tours Available" },
-              { number: "2000+", label: "Happy Tourists" },
-              { number: "4.8", label: "Average Rating" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-emerald-400">{stat.number}</div>
-                <div className="text-xs sm:text-sm md:text-base text-slate-400 mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-      </section>
+            {/* Stat tiles — glass, data-driven */}
+            <div className="mt-8 grid max-w-2xl grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
+              {heroStats.map((s, i) => (
+                <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xl">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-emerald-300/70">{s.label}</p>
+                  <p className="mt-1 text-lg font-black leading-tight text-white sm:text-xl">{s.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </header>
 
       {/* Breadcrumb */}
-      <div className="bg-slate-950 border-b border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 py-4">
+      <div className="border-b border-white/5 bg-slate-950">
+        <div className="container mx-auto px-4 py-4 sm:px-6">
           <SEOBreadcrumb
             items={[
               { name: 'Sightseeing', url: '/sightseeing' },
@@ -254,7 +316,7 @@ export default function CityToursPage({ city }) {
 
       {/* === QUICK ANSWER (AEO/GEO) — fact-first, kept high on the page === */}
       <section className="bg-slate-950 px-4 pt-6 pb-2">
-        <div className="max-w-4xl mx-auto rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10 p-1.5">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10 p-1.5">
           <QuickAnswer
             question={`What are the top things to do in ${cityName}, and what does a day tour cost?`}
             answer={cityQuickAnswer}
@@ -268,33 +330,33 @@ export default function CityToursPage({ city }) {
       {/* Social Proof Strip */}
       <SocialProofStrip theme="dark" />
 
-      {/* Tours Grid Section */}
-      <section id="tours" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative" aria-labelledby="city-tours-heading" itemScope itemType="https://schema.org/ItemList">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[200px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-500/5 rounded-full blur-[150px]" />
+      {/* ============================================ */}
+      {/* TOURS — photo-forward card stack              */}
+      {/* ============================================ */}
+      <section
+        id="tours"
+        className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-14 md:py-20"
+        aria-labelledby="city-tours-heading"
+        itemScope
+        itemType="https://schema.org/ItemList"
+      >
+        <div className="pointer-events-none absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-emerald-500/5 blur-[180px]" aria-hidden />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-[320px] w-[320px] rounded-full bg-teal-500/5 blur-[140px]" aria-hidden />
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <h2 id="city-tours-heading" className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 px-2" itemProp="name">
-              All {cityName} Tours
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-slate-400 px-4">
-              {tours.length} carefully curated sightseeing experiences
-            </p>
-          </motion.div>
+        <div className="container relative z-10 mx-auto px-4 sm:px-6">
+          <p className="text-center text-[11px] font-bold uppercase tracking-[0.3em] text-emerald-300/90">Pick your day</p>
+          <h2 id="city-tours-heading" className="mt-3 text-center text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl" itemProp="name">
+            All {cityName}{' '}
+            <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+              tours
+            </span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-slate-400 sm:text-base">
+            {tours.length} curated sightseeing experience{tours.length === 1 ? '' : 's'} — every fare covers the car, fuel, driver, tolls and parking.
+          </p>
+          <EmeraldLane className="mx-auto mt-8 max-w-sm" />
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-          >
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 sm:gap-7">
             {tours.map((tour) => {
               const lowestPrice = Math.min(
                 tour.price.sedan || Infinity,
@@ -303,162 +365,129 @@ export default function CityToursPage({ city }) {
               );
 
               return (
-                <motion.div
-                  key={tour.id}
-                  variants={itemVariants}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="group relative"
-                >
-                  <Link href={`/sightseeing/${tour.slug}`}>
-                    <div className="bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/10 hover:border-emerald-500/40 transition-all duration-500 shadow-2xl">
-                      {/* Tour Image */}
-                      <div className="relative h-64 overflow-hidden">
-                        {tour.heroImage ? (
-                          <>
-                            <Image
-                              src={tour.heroImage}
-                              alt={tour.name}
-                              fill
-                              className="object-cover group-hover:scale-110 transition-transform duration-700"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
-                          </>
-                        ) : (
-                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600" />
-                        )}
+                <Link key={tour.id} href={`/sightseeing/${tour.slug}`} className="group block">
+                  <article className="h-full overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400/40">
+                    {/* Fixed-height photo — no CLS */}
+                    <div className="relative h-56 w-full overflow-hidden sm:h-60">
+                      {tour.heroImage ? (
+                        <>
+                          <Image
+                            src={tour.heroImage}
+                            alt={tour.name}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent" />
+                        </>
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 via-teal-700 to-cyan-800" />
+                      )}
 
-                        {tour.reviews && (
-                          <div className="absolute top-4 left-4 z-10">
-                            <span className="px-3 py-1.5 bg-yellow-500/20 backdrop-blur-xl text-yellow-300 rounded-full text-sm font-bold flex items-center gap-1 border border-yellow-500/30">
-                              <StarIcon className="w-4 h-4" />
-                              {tour.reviews.averageRating}
-                            </span>
-                          </div>
-                        )}
+                      {tour.reviews && (
+                        <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-slate-950/70 px-3 py-1 text-xs font-bold text-amber-300 backdrop-blur-md">
+                          <Star className="h-3.5 w-3.5" fill="currentColor" />
+                          {tour.reviews.averageRating}
+                        </span>
+                      )}
 
-                        <div className="absolute bottom-4 left-4 right-4 z-10">
-                          <h4 className="text-white font-bold text-lg drop-shadow-lg">
-                            {tour.name}
-                          </h4>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-6">
-                        <p className="text-slate-400 mb-4 line-clamp-2 text-sm">
-                          {tour.shortDescription}
-                        </p>
-
-                        <div className="space-y-2 mb-4">
-                          <div className="flex items-center gap-2 text-sm text-slate-500">
-                            <ClockIcon className="w-4 h-4 text-emerald-500" />
-                            <span>{tour.duration}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-slate-500">
-                            <MapPinIcon className="w-4 h-4 text-teal-500" />
-                            <span>{tour.category}</span>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                          <div>
-                            <div className="flex items-center gap-1 text-2xl font-black text-emerald-400">
-                              <CurrencyRupeeIcon className="w-6 h-6" />
-                              {lowestPrice.toLocaleString()}
-                            </div>
-                            <div className="text-xs text-slate-500">Starting price</div>
-                          </div>
-                          <div className="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-all">
-                            <ChevronRightIcon className="w-5 h-5 text-emerald-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                          </div>
-                        </div>
+                      <div className="absolute bottom-4 left-4 right-4 z-10">
+                        <h3 className="text-lg font-black leading-snug text-white drop-shadow-lg">{tour.name}</h3>
                       </div>
                     </div>
-                  </Link>
-                </motion.div>
+
+                    <div className="p-5 sm:p-6">
+                      <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-slate-400">{tour.shortDescription}</p>
+
+                      <div className="mb-4 flex flex-wrap gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-500/20">
+                          <Clock className="h-3.5 w-3.5" /> {tour.duration}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 ring-1 ring-white/10">
+                          <MapPin className="h-3.5 w-3.5 text-teal-400" /> {tour.category}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                        <div>
+                          <p className="text-2xl font-black leading-tight text-amber-300">
+                            ₹{Number.isFinite(lowestPrice) ? lowestPrice.toLocaleString() : '—'}
+                          </p>
+                          <p className="text-xs text-slate-500">Starting price</p>
+                        </div>
+                        <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 transition-all group-hover:border-emerald-400 group-hover:bg-emerald-500">
+                          <ChevronRight className="h-5 w-5 text-emerald-300 transition-all group-hover:translate-x-0.5 group-hover:text-white" />
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-slate-900/50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent" />
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 px-2">
-              Why Choose Our {cityName} Tours?
-            </h2>
-          </motion.div>
+      {/* ============================================ */}
+      {/* WHY US — glass stat tiles                     */}
+      {/* ============================================ */}
+      <section className="relative overflow-hidden bg-slate-950 py-14 md:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent" aria-hidden />
+        <div className="container relative z-10 mx-auto px-4 sm:px-6">
+          <EmeraldHeading
+            eyebrow="The Triveni difference"
+            title={`Why travellers book ${cityName} with`}
+            foil="Triveni Cabs"
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: UserGroupIcon,
-                title: "Expert Guides",
-                description: `Certified local ${cityName} guides with deep cultural knowledge`,
-                gradient: "from-emerald-500 to-teal-500",
-                shadow: "shadow-emerald-500/30"
+                icon: Users,
+                title: 'Expert Local Guides',
+                description: `Certified ${cityName} guides with deep cultural knowledge, arranged on request`,
               },
               {
-                icon: CalendarIcon,
-                title: "Flexible Booking",
-                description: "Easy online booking with instant confirmation",
-                gradient: "from-teal-500 to-cyan-500",
-                shadow: "shadow-teal-500/30"
+                icon: Calendar,
+                title: 'Flexible Booking',
+                description: 'Confirm on WhatsApp or a call — instant confirmation, free date changes',
               },
               {
-                icon: SparklesIcon,
-                title: "Premium Experience",
-                description: "Comfortable transport and personalized service",
-                gradient: "from-cyan-500 to-blue-500",
-                shadow: "shadow-cyan-500/30"
+                icon: Sparkles,
+                title: 'Premium Experience',
+                description: 'Clean AC cars, courteous chauffeurs and a pace you set yourself',
               },
               {
-                icon: StarIcon,
-                title: "Highly Rated",
-                description: "4.8 average rating from 2000+ tourists",
-                gradient: "from-amber-500 to-orange-500",
-                shadow: "shadow-amber-500/30"
+                icon: Star,
+                title: 'Highly Rated',
+                description: '4.8 average rating from 2000+ travellers across our tours',
               }
             ].map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-emerald-500/30 transition-all"
+                className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-colors duration-300 hover:border-emerald-400/40"
               >
-                <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg ${feature.shadow}`}>
-                  <feature.icon className="w-7 h-7 text-white" />
+                <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-400/10 blur-3xl" aria-hidden />
+                <div className="mb-5 inline-flex rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 p-3.5 ring-1 ring-emerald-400/25">
+                  <feature.icon className="h-6 w-6 text-emerald-300" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-slate-400">{feature.description}</p>
-              </motion.div>
+                <h3 className="mb-2 text-lg font-black text-white">{feature.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-400">{feature.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQSection
+      {/* FAQ — 2-per-row glass grid (same generator + schema as before) */}
+      <FaqGrid
         faqs={generateCityFAQs({
           city: cityName,
           services: ['Airport Transfer', 'Sightseeing Tours', 'Corporate Transport', 'Wedding Cars'],
           tours: tours.slice(0, 5)
         })}
-        title={`Frequently Asked Questions about ${cityName} Tours`}
-        subtitle={`Everything you need to know about sightseeing in ${cityName}`}
-        variant="cards"
-        showSchema={true}
+        title={`${cityName} tours,`}
+        subtitle={`Everything you need to know about sightseeing in ${cityName} — pricing, pickup, guides and timings.`}
       />
 
       {/* Cross-Service Links */}
@@ -476,15 +505,23 @@ export default function CityToursPage({ city }) {
 
       {/* Travel Guides & Articles */}
       {relatedContent && relatedContent.length > 0 && (
-        <section className="py-16 px-4">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-2">Travel Guides & Articles</h2>
-            <p className="text-gray-400 mb-8">Explore more about {cityName}</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <section className="bg-slate-950 px-4 py-14 sm:px-6">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-emerald-300/90">Keep reading</p>
+            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+              Travel guides &{' '}
+              <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">articles</span>
+            </h2>
+            <p className="mb-8 mt-1 text-sm text-slate-400">Explore more about {cityName}</p>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {relatedContent.slice(0, 6).map((item, index) => (
-                <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-emerald-500/30 hover:bg-white/10 transition-all duration-300">
-                  <h3 className="text-white font-semibold group-hover:text-emerald-400 transition-colors">{item.title}</h3>
-                  <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+                <Link
+                  key={index}
+                  href={item.url}
+                  className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/10"
+                >
+                  <h3 className="font-semibold text-white transition-colors group-hover:text-emerald-400">{item.title}</h3>
+                  <p className="mt-1 text-sm text-slate-400">{item.description}</p>
                 </Link>
               ))}
             </div>
@@ -492,38 +529,45 @@ export default function CityToursPage({ city }) {
         </section>
       )}
 
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600" />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-white/10 rounded-full blur-[120px]" />
-        </div>
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '30px 30px'
-        }} />
-        <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 sm:mb-6 px-2">
-              Ready to Explore {cityName}?
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-emerald-100 max-w-2xl mx-auto px-4">
-              Book your perfect {cityName} sightseeing tour today and create memories that last a lifetime
-            </p>
-            <a href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-emerald-700 rounded-full font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
-              >
-                Book Now via WhatsApp
-              </motion.button>
+      {/* ============================================ */}
+      {/* FINAL CTA — night-drive band, gold action     */}
+      {/* ============================================ */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-emerald-950 via-slate-950 to-teal-950" aria-hidden />
+        <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/15 blur-[130px]" aria-hidden />
+        <div className="pointer-events-none absolute bottom-0 right-1/4 h-56 w-56 rounded-full bg-teal-400/10 blur-[110px]" aria-hidden />
+
+        <div className="container relative z-10 mx-auto px-4 text-center sm:px-6">
+          <Compass className="mx-auto mb-5 h-9 w-9 text-emerald-300" aria-hidden />
+          <h2 className="mx-auto max-w-3xl text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
+            Ready to explore{' '}
+            <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+              {cityName}?
+            </span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-emerald-100/70 sm:text-base">
+            Book your {cityName} sightseeing tour today — one message, and your car, driver and itinerary are set.
+          </p>
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href={cityWhatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('sightseeing_city_final', cityWhatsappText)}
+              className="sheen glow-gold inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-amber-400 px-8 py-3.5 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95 sm:w-auto"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Book Now via WhatsApp
             </a>
-          </motion.div>
+            <a
+              href="tel:+917668570551"
+              onClick={() => trackPhoneCall('sightseeing_city_final')}
+              className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10 sm:w-auto"
+            >
+              <Phone className="h-4 w-4" />
+              Call +91 76685 70551
+            </a>
+          </div>
         </div>
       </section>
     </main>

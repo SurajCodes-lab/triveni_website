@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ChevronRight, Phone, Sparkles,
@@ -26,28 +25,28 @@ export default function ModernCardLayout({ post, relatedLinks }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-fuchsia-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-b from-[#FACF2D]/10 via-white to-white">
       {/* Decorative Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-violet-200/40 to-fuchsia-200/40 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-gradient-to-br from-pink-200/40 to-rose-200/40 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-gradient-to-br from-cyan-200/40 to-blue-200/40 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#FACF2D]/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#FACF2D]/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl" />
       </div>
 
       {/* Floating Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-white/20 shadow-sm">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <nav className="flex items-center gap-2 text-sm text-gray-500">
-              <Link href="/" className="hover:text-violet-600 transition-colors">Home</Link>
+            <nav className="flex items-center gap-2 text-sm text-slate-500">
+              <Link href="/" className="hover:text-amber-700 transition-colors">Home</Link>
               <ChevronRight className="w-4 h-4" />
-              <Link href="/blog" className="hover:text-violet-600 transition-colors">Blog</Link>
+              <Link href="/blog" className="hover:text-amber-700 transition-colors">Blog</Link>
               <ChevronRight className="w-4 h-4" />
-              <span className="text-violet-600 font-medium">{post.category}</span>
+              <span className="text-amber-700 font-medium">{post.category}</span>
             </nav>
             <div className="flex items-center gap-3">
-              <button className="p-2 hover:bg-violet-100 rounded-full transition-colors">
-                <Heart className="w-5 h-5 text-gray-500" />
+              <button className="p-2 hover:bg-[#FACF2D]/15 rounded-full transition-colors">
+                <Heart className="w-5 h-5 text-slate-500" />
               </button>
             </div>
           </div>
@@ -56,14 +55,11 @@ export default function ModernCardLayout({ post, relatedLinks }) {
 
       {/* Hero Card */}
       <section className="relative max-w-6xl mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white rounded-[2rem] shadow-2xl shadow-violet-200/50 overflow-hidden"
-        >
-          {/* Gradient Border Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 rounded-[2rem]" />
-          <div className="absolute inset-[3px] bg-white rounded-[1.8rem]" />
+        <div className="relative bg-white rounded-[2rem] shadow-2xl shadow-amber-200/40 overflow-hidden ring-1 ring-[#FACF2D]/30">
+          <span
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 z-10 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]"
+          />
 
           <div className="relative grid lg:grid-cols-2">
             {/* Image Side */}
@@ -72,91 +68,66 @@ export default function ModernCardLayout({ post, relatedLinks }) {
                 src={post.heroImage || post.image}
                 alt={post.title}
                 fill
-                className="object-cover lg:rounded-l-[1.8rem]"
+                className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:bg-gradient-to-r" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent lg:bg-gradient-to-r" />
 
               {/* Floating Stats */}
-              <div className="absolute bottom-6 left-6 right-6 lg:left-auto lg:right-auto lg:bottom-auto lg:top-6 lg:left-6 flex gap-3">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg"
-                >
-                  <span className="flex items-center gap-1.5 text-sm font-semibold text-violet-700">
+              <div className="absolute bottom-6 left-6 right-6 lg:bottom-auto lg:right-auto lg:top-6 flex gap-3">
+                <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                  <span className="flex items-center gap-1.5 text-sm font-semibold text-slate-800">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                     4.9 Rating
                   </span>
-                </motion.div>
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 rounded-full shadow-lg"
-                >
-                  <span className="flex items-center gap-1.5 text-sm font-semibold text-white">
+                </div>
+                <div className="bg-[#FACF2D] px-4 py-2 rounded-full shadow-lg">
+                  <span className="flex items-center gap-1.5 text-sm font-bold text-black">
                     <Sparkles className="w-4 h-4" />
                     Featured
                   </span>
-                </motion.div>
+                </div>
               </div>
             </div>
 
             {/* Content Side */}
             <div className="p-8 lg:p-12 flex flex-col justify-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-100 to-fuchsia-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold w-fit mb-6"
-              >
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/50 bg-[#FACF2D]/10 px-4 py-2 text-sm font-bold text-amber-700 w-fit mb-6">
                 <Globe className="w-4 h-4" />
                 {post.category}
-              </motion.div>
+              </div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-3xl lg:text-4xl font-black text-gray-900 leading-tight mb-4"
-              >
+              <h1 className="font-display-serif text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-4">
                 {post.title}
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-gray-600 leading-relaxed mb-6"
-              >
+              <span
+                aria-hidden="true"
+                className="mb-6 block h-[4px] w-24 opacity-80 bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]"
+              />
+
+              <p className="text-slate-600 leading-relaxed mb-6">
                 {post.excerpt}
-              </motion.p>
+              </p>
 
               {/* Meta Info */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-wrap gap-4 text-sm text-gray-500"
-              >
-                <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full">
-                  <Calendar className="w-4 h-4 text-violet-500" />
+              <div className="flex flex-wrap gap-3 text-sm">
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700">
+                  <Calendar className="w-4 h-4 text-amber-600" />
                   {formattedDate}
                 </span>
-                <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full">
-                  <Clock className="w-4 h-4 text-violet-500" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700">
+                  <Clock className="w-4 h-4 text-amber-600" />
                   {post.readTime}
                 </span>
-                <span className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full">
-                  <MapPin className="w-4 h-4 text-violet-500" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-700">
+                  <MapPin className="w-4 h-4 text-amber-600" />
                   {post.city}
                 </span>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Quick Facts Accordion Cards */}
@@ -164,52 +135,42 @@ export default function ModernCardLayout({ post, relatedLinks }) {
         <section className="max-w-4xl mx-auto px-4 py-8">
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { id: 'timing', icon: Clock, title: 'Timings', value: `${post.attractionData.timings?.open || '9 AM'} - ${post.attractionData.timings?.close || '5 PM'}`, color: 'from-violet-500 to-purple-500' },
-              { id: 'entry', icon: Zap, title: 'Entry Fee', value: post.attractionData.entryFee?.indian || 'Varies', color: 'from-fuchsia-500 to-pink-500' },
-              { id: 'season', icon: Sparkles, title: 'Best Season', value: post.attractionData.bestTimeToVisit?.season || 'Oct - Mar', color: 'from-cyan-500 to-blue-500' },
-              { id: 'duration', icon: Globe, title: 'Duration', value: post.attractionData.timeNeeded || '2-3 Hours', color: 'from-emerald-500 to-teal-500' },
-            ].map((item, idx) => (
-              <motion.div
+              { id: 'timing', icon: Clock, title: 'Timings', value: `${post.attractionData.timings?.open || '9 AM'} - ${post.attractionData.timings?.close || '5 PM'}`, gold: false },
+              { id: 'entry', icon: Zap, title: 'Entry Fee', value: post.attractionData.entryFee?.indian || 'Varies', gold: true },
+              { id: 'season', icon: Sparkles, title: 'Best Season', value: post.attractionData.bestTimeToVisit?.season || 'Oct - Mar', gold: false },
+              { id: 'duration', icon: Globe, title: 'Duration', value: post.attractionData.timeNeeded || '2-3 Hours', gold: false },
+            ].map((item) => (
+              <div
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * idx }}
-                className="bg-white rounded-2xl shadow-lg shadow-violet-100/50 overflow-hidden"
+                className="bg-white rounded-2xl shadow-lg shadow-amber-100/50 overflow-hidden border border-slate-200"
               >
                 <button
                   onClick={() => toggleSection(item.id)}
-                  className="w-full p-5 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full p-5 flex items-center justify-between hover:bg-slate-50 transition-colors"
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center`}>
-                      <item.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 bg-[#FACF2D]/15 ring-1 ring-[#FACF2D]/30 rounded-xl flex items-center justify-center">
+                      <item.icon className="w-6 h-6 text-amber-600" />
                     </div>
                     <div className="text-left">
-                      <p className="text-sm text-gray-500">{item.title}</p>
-                      <p className="font-bold text-gray-900">{item.value}</p>
+                      <p className="text-sm text-slate-500">{item.title}</p>
+                      <p className={item.gold ? 'text-gold-foil font-bold' : 'font-bold text-slate-900'}>{item.value}</p>
                     </div>
                   </div>
                   {expandedSection === item.id ? (
-                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                    <ChevronUp className="w-5 h-5 text-slate-400" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                    <ChevronDown className="w-5 h-5 text-slate-400" />
                   )}
                 </button>
-                <AnimatePresence>
-                  {expandedSection === item.id && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="border-t border-gray-100"
-                    >
-                      <div className="p-5 text-gray-600 text-sm">
-                        Plan your visit accordingly. {item.title} may vary during festivals and holidays.
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                {expandedSection === item.id && (
+                  <div className="border-t border-slate-100">
+                    <div className="p-5 text-slate-600 text-sm">
+                      Plan your visit accordingly. {item.title} may vary during festivals and holidays.
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </section>
@@ -220,37 +181,30 @@ export default function ModernCardLayout({ post, relatedLinks }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Article */}
           <main className="lg:col-span-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-3xl shadow-xl shadow-violet-100/50 p-8 lg:p-12"
-            >
+            <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/50 p-8 lg:p-12">
               <article
-                className="prose prose-lg max-w-none
-                  prose-headings:text-gray-900 prose-headings:font-bold
-                  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b prose-h2:border-violet-100
-                  prose-h3:text-xl prose-h3:text-violet-800
-                  prose-p:text-gray-700 prose-p:leading-relaxed
-                  prose-a:text-violet-600 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-violet-800
-                  prose-strong:text-gray-900
-                  prose-li:text-gray-700
-                  prose-blockquote:border-l-violet-500 prose-blockquote:bg-violet-50 prose-blockquote:rounded-r-2xl prose-blockquote:py-4 prose-blockquote:not-italic"
+                className="blog-prose prose prose-lg max-w-[70ch] mx-auto
+                  prose-headings:text-slate-900 prose-headings:font-bold
+                  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3
+                  prose-h3:text-xl prose-h3:text-slate-800
+                  prose-p:text-slate-700 prose-p:leading-relaxed
+                  prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-amber-800
+                  prose-strong:text-slate-900
+                  prose-li:text-slate-700
+                  prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-slate-50 prose-blockquote:rounded-r-2xl prose-blockquote:py-4 prose-blockquote:not-italic"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
-            </motion.div>
+            </div>
 
             {/* Tags */}
             <div className="mt-8 flex flex-wrap gap-2">
               {post.tags?.map((tag, i) => (
-                <motion.span
+                <span
                   key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.05 * i }}
-                  className="bg-white text-violet-700 px-5 py-2 rounded-full text-sm font-medium shadow-md hover:shadow-lg hover:bg-violet-50 transition-all cursor-pointer"
+                  className="rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:border-[#FACF2D] hover:bg-[#FACF2D] hover:text-black cursor-pointer"
                 >
                   #{tag}
-                </motion.span>
+                </span>
               ))}
             </div>
 
@@ -263,38 +217,33 @@ export default function ModernCardLayout({ post, relatedLinks }) {
 
             {/* CTA Card */}
             {relatedLinks?.relatedTours?.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="mt-8 bg-gradient-to-br from-violet-600 via-fuchsia-600 to-pink-600 rounded-3xl p-8 text-white relative overflow-hidden"
-              >
-                {/* Decorative circles */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+              <div className="mt-8 bg-slate-950 ring-1 ring-white/10 rounded-3xl p-8 text-white relative overflow-hidden">
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
+                {/* Decorative glow */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#FACF2D]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" aria-hidden="true" />
 
                 <div className="relative">
-                  <h3 className="text-2xl font-bold mb-4">Ready to Visit {post.city}?</h3>
-                  <p className="text-white/80 mb-6 max-w-lg">
+                  <h3 className="font-display-serif text-2xl font-bold mb-4">Ready to Visit {post.city}?</h3>
+                  <p className="text-slate-300 mb-6 max-w-lg">
                     Experience this destination with our premium transport services and expert guidance.
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Link
                       href={relatedLinks.cityTours || '/sightseeing'}
-                      className="bg-white text-violet-700 px-8 py-3 rounded-xl font-bold hover:bg-violet-50 transition-colors"
+                      className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-6 py-3.5 font-extrabold text-black transition hover:bg-[#ffdb4d]"
                     >
                       Explore Tours
                     </Link>
                     <a
                       href="tel:+917668570551"
-                      className="bg-white/20 text-white px-8 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors flex items-center gap-2"
+                      className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3.5 font-bold text-white transition-colors hover:bg-white/15"
                     >
                       <Phone className="w-5 h-5" />
                       Call Now
                     </a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
           </main>
 

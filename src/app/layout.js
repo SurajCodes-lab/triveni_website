@@ -49,7 +49,7 @@ export const metadata = {
     default: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
     template: '%s | Triveni Cabs'
   },
-  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
   keywords: 'taxi service India, car rental India, outstation cab booking, airport transfer Delhi, tempo traveller hire, wedding car rental, Delhi taxi 24/7, Agra tour packages, Jaipur cab booking, Triveni Cabs, one way taxi, round trip cab, cab service near me',
   authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
   creator: 'Triveni Cabs Travel Services',
@@ -65,7 +65,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
-    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
     url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
@@ -82,7 +82,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking',
-    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 10,000+ happy customers. Call 7668570551!',
+    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 10,000+ happy customers. Call 7668570551!',
     images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -142,7 +142,7 @@ const structuredData = {
       "height": 315
     },
     "image": "https://www.trivenicabs.in/images/logo/logo.webp",
-    "description": "India's trusted car rental & taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. 50+ cities, 24/7 booking.",
+    "description": "India's trusted car rental & taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 50+ cities, 24/7 booking.",
     "telephone": "+91-7668570551",
     "email": "cabstriveni@gmail.com",
     "address": {
@@ -227,7 +227,7 @@ const structuredData = {
       "https://www.trivenicabs.in/images/car/swift_dzire.jpg",
       "https://www.trivenicabs.in/images/car/premium_suv.jpg"
     ],
-    "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller ₹24/km. Professional drivers, AC vehicles, 24/7 support.",
+    "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km. Professional drivers, AC vehicles, 24/7 support.",
     "url": "https://www.trivenicabs.in",
     "telephone": "+91-7668570551",
     "email": "cabstriveni@gmail.com",
@@ -300,7 +300,7 @@ const structuredData = {
       "itemListElement": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sedan Car Rental", "description": "4 passenger sedan rental starting ₹11/km" }, "price": "11", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "11", "priceCurrency": "INR", "unitText": "per kilometer" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SUV Car Rental", "description": "6-7 passenger SUV rental starting ₹15/km" }, "price": "15", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "15", "priceCurrency": "INR", "unitText": "per kilometer" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tempo Traveller Rental", "description": "12-26 passenger tempo traveller starting ₹24/km" }, "price": "24", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "24", "priceCurrency": "INR", "unitText": "per kilometer" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tempo Traveller Rental", "description": "12-26 passenger tempo traveller starting ₹20/km" }, "price": "20", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "INR", "unitText": "per kilometer" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manali Tour Package", "description": "5 Days 4 Nights Manali tour from Mumbai" }, "price": "9999", "priceCurrency": "INR" },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kashmir Tour Package", "description": "5 Days 4 Nights Kashmir tour from Delhi" }, "price": "16999", "priceCurrency": "INR" },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rajasthan Tour Package", "description": "7 Days 6 Nights Rajasthan tour from Jaipur" }, "price": "19999", "priceCurrency": "INR" }

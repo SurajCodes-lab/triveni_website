@@ -1,6 +1,6 @@
 // src/utilis/tollCostData.js - Complete data for 25 toll cost guide pages
 // Realistic toll plaza data for major North India routes (2026 rates)
-// Pricing: Sedan ₹11/km, SUV ₹14/km (min 300km billing)
+// Pricing: Sedan ₹11/km, SUV ₹15/km (min 300km billing)
 
 function calcCabFare(distanceKm) {
   const billableKm = Math.max(distanceKm, 300);

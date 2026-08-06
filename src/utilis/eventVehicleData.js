@@ -131,7 +131,7 @@ export const eventVehicles = {
     accent: "#4f46e5", // indigo-600
     image: "/images/car/innova_crysta.jpg",
     fallbackImage: "/images/car/innova_crysta.jpg",
-    priceFrom: "₹14/km",
+    priceFrom: "₹15/km",
     tagline: "Premium sedans & SUVs for VIPs, bride & groom and speakers",
     intro:
       "When an event needs a touch of class, a luxury car delivers it — the decorated bridal car for the couple's grand entry, premium sedans for VIP speakers and chief guests at corporate events, or comfortable SUVs for immediate family. Triveni Cabs offers well-maintained premium sedans and SUVs (Innova Crysta, Dzire, Ertiga and luxury options) with professional, well-presented chauffeurs for the people who matter most at your event.",
@@ -145,7 +145,7 @@ export const eventVehicles = {
     specs: [
       ["Vehicle options", "Dzire, Ertiga, Innova Crysta & luxury cars"],
       ["Best for", "1 – 6 VIP passengers per car"],
-      ["Rate", "From ₹14/km (by vehicle class)"],
+      ["Rate", "From ₹15/km (by vehicle class)"],
       ["Configuration", "AC, premium interiors, chauffeur-driven"],
       ["Use cases", "Bridal car, VIPs, family, dignitaries"],
     ],
@@ -159,7 +159,7 @@ export const eventVehicles = {
       {
         question: "How much does a luxury car for events cost?",
         answer:
-          "Premium event cars start from around ₹14/km depending on the vehicle class (sedan, SUV or luxury car). Decorated bridal cars and full event-day packages are quoted separately. We confirm a fixed, GST-invoiced price upfront.",
+          "Premium event cars start from around ₹15/km depending on the vehicle class (sedan, SUV or luxury car). Decorated bridal cars and full event-day packages are quoted separately. We confirm a fixed, GST-invoiced price upfront.",
       },
       {
         question: "Do you provide a decorated car for the wedding?",

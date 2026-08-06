@@ -24,7 +24,7 @@ function createCity({ slug, city, tagline, serviceOverrides, fleetOverrides, pop
     { question: `How do I book a cab in ${city}?`, answer: `Book instantly by calling 7668570551 or WhatsApp. Share your pickup location, destination, date, and time. You'll receive a confirmed booking with driver details within 15 minutes.` },
     { question: `Is Triveni Cabs available 24/7 in ${city}?`, answer: `Yes, Triveni Cabs operates 24 hours a day, 7 days a week in ${city}. Whether you need an early morning airport pickup or late night railway station drop, we're always available.` },
     { question: `What types of cabs are available in ${city}?`, answer: `We offer Sedan (4-seater), SUV (6-seater), Luxury cars (BMW/Mercedes), and Tempo Traveller (12-seater) in ${city}. All vehicles are AC, well-maintained, and GPS-tracked.` },
-    { question: `Do you offer one-way cab from ${city}?`, answer: `Yes, we offer one-way cab service from ${city} to all major cities. One-way saves up to 50% compared to round-trip. Sedan from ₹11/km, SUV from ₹14/km.` },
+    { question: `Do you offer one-way cab from ${city}?`, answer: `Yes, we offer one-way cab service from ${city} to all major cities. One-way saves up to 50% compared to round-trip. Sedan from ₹11/km, SUV from ₹15/km.` },
     { question: `Are toll and parking charges included in ${city} cab fare?`, answer: `Base fare includes driver, fuel, and AC. Toll charges, parking fees, and state tax are extra at actual. For local ${city} trips, parking is usually included.` },
   ];
 

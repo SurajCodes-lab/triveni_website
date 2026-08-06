@@ -118,7 +118,7 @@ export default async function BestTimeToVisitPage({ params }) {
     "@id": `https://www.trivenicabs.in/best-time-to-visit/${slug}#service`,
     "serviceType": `Cab Service to ${data.destination}`,
     "name": `${data.destination} Cab Booking — Triveni Cabs`,
-    "description": `Book AC cab to ${data.destination}. Sedan ₹11/km, SUV ₹14/km. 4.9★ rated, verified drivers. Best time: ${data.peakSeason}.`,
+    "description": `Book AC cab to ${data.destination}. Sedan ₹11/km, SUV ₹15/km. 4.9★ rated, verified drivers. Best time: ${data.peakSeason}.`,
     "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" },
     "offers": {
       "@type": "AggregateOffer",

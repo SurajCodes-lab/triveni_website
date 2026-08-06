@@ -223,7 +223,7 @@ export default function LocalTaxiPage() {
               ))}
             </div>
 
-            <p className="text-stone-400 text-sm mt-6 text-center">Extra km: Sedan ₹11/km, SUV ₹15/km, Tempo ₹24/km. Extra hours: ₹150-250/hr.</p>
+            <p className="text-stone-400 text-sm mt-6 text-center">Extra km: Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. Extra hours: ₹150-250/hr.</p>
           </div>
         </section>
 

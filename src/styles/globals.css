@@ -474,3 +474,18 @@ body {
 /* Luxury depth */
 .shadow-gold-bloom { box-shadow: 0 12px 36px -10px rgba(250, 207, 45, 0.55); }
 .ring-hairline-gold { box-shadow: inset 0 0 0 1px rgba(250, 207, 45, 0.25); }
+
+/* ============================================================
+ * Blog article prose — serif headings + gold hairline underline
+ * for the v2 post shell (scoped; keeps typography-plugin styles).
+ * ============================================================ */
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  letter-spacing: 0.005em;
+}
+.blog-prose h2 {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(250, 207, 45, 0.4);
+}

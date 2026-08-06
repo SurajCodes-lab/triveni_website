@@ -122,7 +122,7 @@ export default function FleetPage() {
             description: 'Perfect for families, groups, and those who prefer extra space and comfort. All SUVs come with powerful AC and ample luggage space.',
             features: [
               { title: 'Maruti Ertiga', description: '7-seater with flexible seating. Great for families with kids. Good boot space and smooth ride. From ₹12/km.' },
-              { title: 'Toyota Innova', description: 'The gold standard of travel SUVs. 7-8 seats, captain seats, powerful engine. Ideal for outstation. From ₹14/km.' },
+              { title: 'Toyota Innova', description: 'The gold standard of travel SUVs. 7-8 seats, captain seats, powerful engine. Ideal for outstation. From ₹18/km.' },
               { title: 'Toyota Innova Crysta', description: 'Premium variant with luxury interiors, better suspension, and superior comfort. Our most requested vehicle. From ₹16/km.' },
             ],
           },

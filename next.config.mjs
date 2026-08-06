@@ -147,7 +147,10 @@ const nextConfig = {
       {
         source: '/:path((?!api|_next|images|fonts).*)',
         headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=604800, stale-while-revalidate=86400' },
+          // max-age=0 forces BROWSERS to revalidate every visit (design updates
+          // appear immediately — users were seeing stale cached HTML for days);
+          // s-maxage=3600 still shields the origin via CDN/shared caches.
+          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate, s-maxage=3600, stale-while-revalidate=86400' },
           // Allow Google to display full-size previews, unlimited-length
           // snippets, and large image thumbnails (critical for travel queries
           // where rich previews drive CTR). Unlimited video-preview is

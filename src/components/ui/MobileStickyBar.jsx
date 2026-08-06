@@ -40,7 +40,7 @@ export default function MobileStickyBar() {
           {hasPrice ? (
             <span className="flex min-w-0 flex-col items-center leading-tight">
               <span className="truncate max-w-full">{`Book ${config.label || 'Now'}`}</span>
-              <span className="text-[10px] font-semibold opacity-90 truncate max-w-full">{`from ${config.price}`}</span>
+              <span className="text-[10px] font-semibold opacity-90 truncate max-w-full">{`from ${String(config.price).replace(/^from\s+/i, '')}`}</span>
             </span>
           ) : (
             <span className="truncate">FREE QUOTE</span>

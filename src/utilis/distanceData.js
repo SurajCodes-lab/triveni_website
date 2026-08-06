@@ -1,10 +1,10 @@
 // src/utilis/distanceData.js - Complete data for 100 distance & travel guide pages
-// Pricing: Sedan ₹11/km, SUV ₹14/km, Tempo ₹20/km (min 300km billing)
+// Pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20/km (min 300km billing)
 
 function calcFares(distanceKm) {
   const billableKm = Math.max(distanceKm, 300);
   const sedan = billableKm * 11;
-  const suv = billableKm * 14;
+  const suv = billableKm * 15;
   const tempo = billableKm * 20;
   return {
     cabFares: {
@@ -31,7 +31,7 @@ function lowerHours(duration) {
 
 function generateFaqs(origin, dest, distKm, duration, highway, sedanFare, bestTime, majorStops) {
   const billableKm = Math.max(distKm, 300);
-  const suvFare = `₹${(billableKm * 14).toLocaleString('en-IN')}`;
+  const suvFare = `₹${(billableKm * 15).toLocaleString('en-IN')}`;
   const tempoFare = `₹${(billableKm * 20).toLocaleString('en-IN')}`;
   const fuelCost = calcFuelCost(distKm);
   const stopsText = (majorStops && majorStops.length)
@@ -41,7 +41,7 @@ function generateFaqs(origin, dest, distKm, duration, highway, sedanFare, bestTi
     { question: `What is the distance from ${origin} to ${dest} by road?`, answer: `The road distance from ${origin} to ${dest} is approximately ${distKm} km via ${highway}. By air the straight-line distance is shorter, but ${distKm} km is the actual driving distance you cover by car, cab or bus.` },
     { question: `How long does it take to drive from ${origin} to ${dest}?`, answer: `The drive from ${origin} to ${dest} takes approximately ${duration} via ${highway} in normal traffic. Starting early morning (5-6 AM) helps you avoid city congestion and reduces total travel time.` },
     { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A one-way cab from ${origin} to ${dest} starts at ${sedanFare} for an AC sedan (Swift Dzire/Etios). An SUV (Innova Crysta/Ertiga) starts at ${suvFare} and a 12-seater Tempo Traveller from ${tempoFare}. Toll and state tax are extra at actual.` },
-    { question: `What is the cab fare for an SUV or Innova from ${origin} to ${dest}?`, answer: `An SUV such as the Innova Crysta or Ertiga from ${origin} to ${dest} starts at ${suvFare} for the ${distKm} km one-way trip, billed at ₹14/km. SUVs are ideal for families of 6-7 and for hill or rough-road sections.` },
+    { question: `What is the cab fare for an SUV or Innova from ${origin} to ${dest}?`, answer: `An SUV such as the Innova Crysta or Ertiga from ${origin} to ${dest} starts at ${suvFare} for the ${distKm} km one-way trip, billed at ₹15/km. SUVs are ideal for families of 6-7 and for hill or rough-road sections.` },
     { question: `What is the best route from ${origin} to ${dest}?`, answer: `The recommended and fastest route from ${origin} to ${dest} is via ${highway}. ${stopsText} Our drivers know all alternative routes and pick the optimal path based on live traffic, road work and weather.` },
     { question: `How much toll do you pay from ${origin} to ${dest}?`, answer: `Toll charges from ${origin} to ${dest} depend on the highway plazas on ${highway} and are paid at actual via FASTag. The driver handles all toll payments and they are added transparently to your final bill — there are no hidden charges.` },
     { question: `What is the approximate fuel cost from ${origin} to ${dest}?`, answer: `If you self-drive, expect roughly ₹${fuelCost.toLocaleString('en-IN')} in petrol/diesel one-way for ${origin} to ${dest} (based on about 14 km/l). Booking a Triveni cab includes fuel in the fare, so you only pay toll and state tax extra.` },

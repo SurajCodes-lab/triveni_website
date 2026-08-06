@@ -7,7 +7,7 @@
 // trust emblem, dark ↔ warm-light band rhythm, glass panels.
 // PRESERVED: speakable-headline / speakable-lead / speakable-faq-first,
 // directAnswer render, full FAQ content, travelModes comparison, tollPlazas
-// (overflow-x-auto), fuelCost, the one-way booking funnel (oneWaySlug — now the
+// (stacked cards on mobile, table at md+), fuelCost, the one-way booking funnel (oneWaySlug — now the
 // most prominent CTA on the page), all analytics handlers. page.js owns all
 // JSON-LD emission. No framer-motion — CSS-only transitions (INP-friendly).
 // ============================================================================
@@ -102,7 +102,7 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
   const modeIcons = { 'Cab / Taxi': Car, Train: TrainFront, Bus, Flight: Plane };
   const fareRows = [
     { name: 'AC Sedan', sub: 'Swift Dzire / Etios · 4 seater', fare: route.cabFares.sedan, perKm: '₹11/km' },
-    { name: 'SUV', sub: 'Innova Crysta / Ertiga · 6-7 seater', fare: route.cabFares.suv, perKm: '₹14/km' },
+    { name: 'SUV', sub: 'Innova Crysta / Ertiga · 6-7 seater', fare: route.cabFares.suv, perKm: '₹15/km' },
     { name: 'Tempo Traveller', sub: '12-seater AC', fare: route.cabFares.tempo, perKm: '₹20/km' },
   ];
   const heroHours = route.duration.split('-')[0].trim();
@@ -301,8 +301,41 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
             />
           </ScrollReveal>
           <ScrollReveal>
-            <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-200/70 bg-white shadow-[0_16px_50px_-30px_rgba(15,23,42,0.35)]">
-              <table className="w-full min-w-[440px] text-left text-sm">
+            {/* Mobile: label/value list — no sideways scrolling */}
+            <div className="mt-8 rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_16px_50px_-30px_rgba(15,23,42,0.35)] md:hidden">
+              <dl className="divide-y divide-slate-100">
+                <div className="flex items-baseline justify-between gap-3 py-2.5 first:pt-0">
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Road distance</dt>
+                  <dd className="text-right text-sm font-bold text-slate-900">{route.distance.km} km ({route.distance.miles} miles)</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3 py-2.5">
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Drive time by cab</dt>
+                  <dd className="text-right text-sm font-bold text-slate-900">{route.duration}</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3 py-2.5">
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Best route / highway</dt>
+                  <dd className="text-right text-sm font-bold text-slate-900">{route.highway}</dd>
+                </div>
+                {fareRows.map((v, i) => (
+                  <div key={`fare-line-${i}`} className="flex items-baseline justify-between gap-3 py-2.5">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      {v.name} cab fare <span className="block text-[11px] font-normal normal-case tracking-normal text-slate-400">{v.sub}</span>
+                    </dt>
+                    <dd className="text-right text-sm font-bold text-slate-900">
+                      {v.fare} <span className="text-xs font-medium text-slate-400">({v.perKm})</span>
+                    </dd>
+                  </div>
+                ))}
+                <div className="flex items-baseline justify-between gap-3 py-2.5 last:pb-0">
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Approx. fuel cost (self-drive)</dt>
+                  <dd className="text-right text-sm font-bold text-slate-900">₹{(route.fuelCost || 0).toLocaleString('en-IN')} one-way</dd>
+                </div>
+              </dl>
+            </div>
+
+            {/* Desktop: true semantic table, fits its container */}
+            <div className="mt-8 hidden overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_16px_50px_-30px_rgba(15,23,42,0.35)] md:block">
+              <table className="w-full text-left text-sm">
                 <tbody className="divide-y divide-slate-100">
                   <tr>
                     <th scope="row" className="w-1/2 px-5 py-4 font-semibold text-slate-500">Road distance</th>
@@ -416,8 +449,48 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
               />
             </ScrollReveal>
             <ScrollReveal>
-              <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-200/70 shadow-[0_16px_50px_-30px_rgba(15,23,42,0.35)]">
-                <table className="w-full min-w-[640px] text-left text-sm">
+              {/* Mobile: one card per mode — no sideways scrolling */}
+              <div className="mt-8 space-y-3 md:hidden">
+                {travelModes.map((m, i) => {
+                  const Icon = modeIcons[m.mode] || Car;
+                  return (
+                    <div
+                      key={`mode-card-${i}`}
+                      className={`rounded-2xl border p-4 shadow-[0_16px_50px_-34px_rgba(15,23,42,0.35)] ${i === 0 ? 'border-amber-300/70 bg-amber-50/70' : 'border-slate-200/70 bg-white'}`}
+                    >
+                      <p className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-900">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-400/15">
+                          <Icon className="h-4 w-4 text-amber-600" />
+                        </span>
+                        {m.mode}
+                        {i === 0 && <span className="rounded-full bg-[#FACF2D] px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-slate-900">Recommended</span>}
+                      </p>
+                      <dl className="mt-3 space-y-1.5">
+                        <div className="flex items-baseline justify-between gap-3">
+                          <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Travel Time</dt>
+                          <dd className="text-right text-sm text-slate-700">{m.time}</dd>
+                        </div>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Cost</dt>
+                          <dd className="text-right text-sm text-slate-700">{m.cost}</dd>
+                        </div>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Comfort</dt>
+                          <dd className="text-right text-sm text-slate-600">{m.comfort}</dd>
+                        </div>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Best For</dt>
+                          <dd className="text-right text-sm text-slate-600">{m.best}</dd>
+                        </div>
+                      </dl>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Desktop: true semantic table, fits its container */}
+              <div className="mt-8 hidden overflow-hidden rounded-2xl border border-slate-200/70 shadow-[0_16px_50px_-30px_rgba(15,23,42,0.35)] md:block">
+                <table className="w-full text-left text-sm">
                   <thead className="bg-slate-950 text-white">
                     <tr>
                       <th className="px-4 py-3.5 font-bold">Mode</th>
@@ -638,7 +711,7 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
       </section>
 
       {/* ================================================================ */}
-      {/* 7 · TOLL PLAZAS — warm-light band, overflow-x-auto table         */}
+      {/* 7 · TOLL PLAZAS — warm-light band, cards on mobile / table md+  */}
       {/* ================================================================ */}
       {route.tollPlazas.length > 0 && (
         <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 sm:px-6 md:py-24">
@@ -658,8 +731,35 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
             </ScrollReveal>
 
             <ScrollReveal>
-              <div className="mt-8 overflow-x-auto rounded-2xl border border-amber-200/70 bg-white shadow-[0_16px_50px_-30px_rgba(180,130,10,0.35)]">
-                <table className="w-full min-w-[440px] text-left text-sm">
+              {/* Mobile: one card per plaza, total card last — no sideways scrolling */}
+              <div className="mt-8 space-y-3 md:hidden">
+                {route.tollPlazas.map((toll, i) => (
+                  <div key={`toll-card-${i}`} className="rounded-2xl border border-amber-200/70 bg-white p-4 shadow-[0_16px_50px_-34px_rgba(180,130,10,0.35)]">
+                    <p className="flex items-baseline gap-2 text-sm font-bold text-slate-900">
+                      <span className="text-xs font-black text-amber-600">{String(i + 1).padStart(2, '0')}</span>
+                      {toll.name}
+                    </p>
+                    <dl className="mt-2.5 space-y-1.5">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">At km</dt>
+                        <dd className="text-right text-sm text-slate-600">{toll.km} km</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Toll (car)</dt>
+                        <dd className="text-right text-sm font-bold text-slate-900">₹{toll.cost}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                ))}
+                <div className="flex items-baseline justify-between gap-3 rounded-2xl border border-amber-200/70 bg-amber-50/80 p-4">
+                  <p className="text-sm font-black text-slate-900">Total one-way toll</p>
+                  <p className="text-base font-black text-amber-700">₹{totalToll}</p>
+                </div>
+              </div>
+
+              {/* Desktop: true semantic table, fits its container */}
+              <div className="mt-8 hidden overflow-hidden rounded-2xl border border-amber-200/70 bg-white shadow-[0_16px_50px_-30px_rgba(180,130,10,0.35)] md:block">
+                <table className="w-full text-left text-sm">
                   <thead className="bg-slate-950 text-white">
                     <tr>
                       <th className="px-5 py-3.5 font-bold">#</th>
@@ -714,7 +814,7 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
           <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
             {[
               { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: route.cabFares.sedan, seats: '4', perKm: '₹11/km', img: '/images/car/swift_dzire.jpg', pop: false },
-              { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '₹14/km', img: '/images/car/innova_crysta.jpg', pop: true },
+              { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '₹15/km', img: '/images/car/innova_crysta.jpg', pop: true },
               { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '₹20/km', img: '/images/tempo/12_seater.jpg', pop: false },
             ].map((v, i) => (
               <ScrollReveal key={i} stagger={i * 100}>

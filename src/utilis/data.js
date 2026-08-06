@@ -892,7 +892,7 @@ import {
       image: "/images/tempo/17_seater.jpg",
       imageAlt: "AC tempo traveller with pushback seats - 12 to 26 seater options available for pilgrimages, weddings, and group tours",
       seating: "12-26 passengers",
-      perKm: "₹24/km",
+      perKm: "from ₹20/km",
       rating: "4.7",
       reviews: "110",
       driverCharges: "₹500 (Per Day)",

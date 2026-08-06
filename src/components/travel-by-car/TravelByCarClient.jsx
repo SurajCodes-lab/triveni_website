@@ -320,7 +320,7 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: route.cabFares.sedan, seats: '4', perKm: '₹11/km', img: '/images/car/swift_dzire.jpg', pop: false },
-              { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '₹14/km', img: '/images/car/innova_crysta.jpg', pop: true },
+              { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '₹15/km', img: '/images/car/innova_crysta.jpg', pop: true },
               { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '₹20/km', img: '/images/tempo/12_seater.jpg', pop: false },
             ].map((v, i) => (
               <ScrollReveal key={i} stagger={i * 100}>

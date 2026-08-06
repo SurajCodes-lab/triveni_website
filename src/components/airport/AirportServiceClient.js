@@ -12,8 +12,9 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import {
-  AirportShell, AirportBackdrop, AirportCrumb, FlightStatusPill, SectionKicker,
-  RouteArc, BoardRow, Barcode, getAccent, HeroPhoto,
+  AirportShell, AirportBackdrop, AirportCrumb, FlightStatusPill,
+  RouteArc, Barcode, getAccent, HeroPhoto,
+  SerifHeading, TrustSeal, LaneStrip, GOLD_BTN, GHOST_BTN, FOIL,
 } from '@/components/airport/AirportKit';
 import { getCityImage } from '@/utilis/imageUtils';
 
@@ -70,21 +71,19 @@ export default function AirportServiceClient({ faqData }) {
       <SetStickyCta price="From ₹11/km" label="Airport Taxi Service"
         whatsappText={heroWa} />
 
-      {/* ══ HERO ══ */}
+      {/* ══ HERO — cinematic photo, serif + gold-foil title ══ */}
       <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pb-24">
         <HeroPhoto src="/images/airport_section.jpg" />
-        <AirportBackdrop variant="full" />
+        <LaneStrip />
         <div className="relative z-10 mx-auto max-w-7xl">
           <AirportCrumb trail={[{ label: 'Home', href: '/' }, { label: 'Airport Service' }]} />
 
           <div className="grid items-start gap-10 lg:grid-cols-5">
             <div className="lg:col-span-3">
               <FlightStatusPill label="24/7 · Arrivals Live" />
-              <h1 className="mt-6 text-3xl font-black leading-[1.12] tracking-tight sm:text-5xl md:text-7xl">
+              <h1 className="mt-6 font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
                 <span className="block text-white">Airport Taxi,</span>
-                <span className="block bg-gradient-to-r from-[var(--air-accent)] via-[var(--air-accent2)] to-[var(--air-accent)] bg-clip-text text-transparent">
-                  arrivals hall to anywhere
-                </span>
+                <span className={`block ${FOIL}`}>arrivals hall to anywhere</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
                 India’s most trusted airport transfer — <strong className="text-white">live flight tracking</strong>,
@@ -99,19 +98,20 @@ export default function AirportServiceClient({ faqData }) {
                 <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-[color:var(--air-accent)]" /> Verified Drivers</span>
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href={`tel:${PHONE}`} onClick={() => trackPhoneCall('airport_hub_hero')}
-                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-7 py-4 text-lg font-bold text-black transition-transform hover:scale-[1.02]"
-                  style={{ background: 'linear-gradient(135deg, var(--air-accent), var(--air-accent2))', boxShadow: '0 12px 36px var(--air-glow)' }}>
+                  className={`${GOLD_BTN} w-full px-7 py-4 text-base lg:w-auto lg:py-2`}>
                   <Phone className="h-5 w-5" /> Call +91 7668570551
                 </a>
                 <a href={wa(heroWa)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('airport_hub_hero')}
-                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-7 py-4 text-lg font-bold text-white backdrop-blur-xl transition-colors hover:border-[color:var(--air-accent)]/40 hover:bg-white/[0.08]">
+                  className={`${GHOST_BTN} w-full px-7 py-4 text-base lg:w-auto lg:py-2`}>
                   <WhatsAppIcon className="h-5 w-5 text-emerald-400" /> WhatsApp Us
                 </a>
               </div>
 
-              <RouteArc from="ANY AIRPORT" to="YOUR DOOR" className="mt-10 max-w-md" />
+              <TrustSeal compact className="mt-6 max-w-md" />
+
+              <RouteArc from="ANY AIRPORT" to="YOUR DOOR" className="mt-8 max-w-md" />
             </div>
 
             {/* enquiry */}
@@ -149,22 +149,25 @@ export default function AirportServiceClient({ faqData }) {
         </div>
       </section>
 
-      {/* ══ WHY US ══ */}
-      <section className="relative px-4 py-16">
+      {/* ══ WHY US — warm-light band ══ */}
+      <section className="relative bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white px-4 py-16 text-slate-900 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <SectionKicker center>Why Triveni at the Terminal</SectionKicker>
-            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">A pickup that just works</h2>
-          </div>
+          <SerifHeading
+            tone="light"
+            center
+            eyebrow="Why Triveni at the Terminal"
+            title="A pickup that just"
+            highlight="works"
+            className="mb-12"
+          />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
-              <div key={f.title} className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--air-accent)]/30">
-                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity group-hover:opacity-100" style={{ background: 'var(--air-glow)' }} />
-                <div className="relative flex h-12 w-12 items-center justify-center rounded-xl border border-[color:var(--air-accent)]/20 bg-[color:var(--air-accent)]/[0.1]">
-                  <f.icon className="h-6 w-6 text-[color:var(--air-accent)]" />
+              <div key={f.title} className="group rounded-2xl border border-amber-200/60 bg-white p-7 shadow-[0_16px_50px_-32px_rgba(15,23,42,0.3)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-400/15">
+                  <f.icon className="h-6 w-6 text-amber-600" />
                 </div>
-                <h3 className="relative mt-5 text-xl font-bold text-white">{f.title}</h3>
-                <p className="relative mt-2 leading-relaxed text-slate-400">{f.desc}</p>
+                <h3 className="mt-5 text-xl font-bold text-slate-900">{f.title}</h3>
+                <p className="mt-2 leading-relaxed text-slate-600">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -172,14 +175,17 @@ export default function AirportServiceClient({ faqData }) {
       </section>
 
       {/* ══ AIRPORTS BY CITY — each card its own accent ══ */}
-      <section className="relative overflow-hidden px-4 py-16">
+      <section className="relative overflow-hidden px-4 py-16 md:py-24">
         <AirportBackdrop variant="grid" />
         <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <SectionKicker center>Departure Board</SectionKicker>
-            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Choose your airport</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-slate-400">Tap a city for terminal-wise pickup points, fares and flight tracking.</p>
-          </div>
+          <SerifHeading
+            center
+            eyebrow="Departure Board"
+            title="Choose your"
+            highlight="airport"
+            subtitle="Tap a city for terminal-wise pickup points, fares and flight tracking."
+            className="mb-12"
+          />
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {CITY_PORTS.map((c) => {
               const a = getAccent(c.slug);
@@ -213,12 +219,15 @@ export default function AirportServiceClient({ faqData }) {
       </section>
 
       {/* ══ FLEET — boarding-pass cards ══ */}
-      <section className="relative px-4 py-16">
+      <section className="relative px-4 py-16 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <SectionKicker center>The Fleet</SectionKicker>
-            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Pick your cabin class</h2>
-          </div>
+          <SerifHeading
+            center
+            eyebrow="The Fleet"
+            title="Pick your"
+            highlight="cabin class"
+            className="mb-12"
+          />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {FLEET.map((v) => (
               <div key={v.name} className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.02] transition-all duration-300 hover:-translate-y-1.5 hover:border-[color:var(--air-accent)]/40">
@@ -265,28 +274,34 @@ export default function AirportServiceClient({ faqData }) {
               </div>
             ))}
           </div>
+          <div className="mt-8 flex justify-center">
+            <TrustSeal />
+          </div>
         </div>
       </section>
 
-      {/* ══ HOW IT WORKS ══ */}
-      <section className="relative overflow-hidden px-4 py-16">
-        <AirportBackdrop variant="grid" />
-        <div className="relative z-10 mx-auto max-w-5xl">
-          <div className="mb-12 text-center">
-            <SectionKicker center>3 Steps to Touchdown</SectionKicker>
-            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">From boarding pass to back seat</h2>
-          </div>
+      {/* ══ HOW IT WORKS — warm-light band ══ */}
+      <section className="relative bg-gradient-to-b from-white via-amber-50/60 to-[#FFF6DC] px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <SerifHeading
+            tone="light"
+            center
+            eyebrow="3 Steps to Touchdown"
+            title="From boarding pass to"
+            highlight="back seat"
+            className="mb-12"
+          />
           <div className="grid gap-6 md:grid-cols-3">
             {[
               { n: '01', t: 'Share your flight', d: 'Send your flight number, arrival time and drop address on WhatsApp or call.' },
               { n: '02', t: 'We track it live', d: 'Driver is dispatched on your real landing time — delays cost you nothing.' },
               { n: '03', t: 'Meet at the gate', d: 'Spot your name on the placard, hand over the bags, settle into a clean AC cab.' },
             ].map((s) => (
-              <div key={s.n} className="relative overflow-hidden rounded-2xl border border-[color:var(--air-accent)]/12 bg-white/[0.03] p-7">
-                <div className="absolute right-5 top-3 font-mono text-6xl font-black text-[color:var(--air-accent)]/10">{s.n}</div>
+              <div key={s.n} className="relative overflow-hidden rounded-2xl border border-amber-200/60 bg-white p-7 shadow-[0_16px_50px_-32px_rgba(15,23,42,0.3)]">
+                <div className="absolute right-5 top-3 font-mono text-6xl font-black text-amber-400/20">{s.n}</div>
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-white">{s.t}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.d}</p>
+                  <h3 className="text-xl font-bold text-slate-900">{s.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.d}</p>
                 </div>
               </div>
             ))}
@@ -295,12 +310,15 @@ export default function AirportServiceClient({ faqData }) {
       </section>
 
       {/* ══ SERVICES ══ */}
-      <section className="relative px-4 py-16">
+      <section className="relative px-4 py-16 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <SectionKicker center>Every Kind of Transfer</SectionKicker>
-            <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">More than a pickup</h2>
-          </div>
+          <SerifHeading
+            center
+            eyebrow="Every Kind of Transfer"
+            title="More than a"
+            highlight="pickup"
+            className="mb-12"
+          />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
               <div key={s.title} className="group overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-colors hover:border-[color:var(--air-accent)]/25">
@@ -322,12 +340,15 @@ export default function AirportServiceClient({ faqData }) {
       </section>
 
       {/* ══ EXPLORE MORE ══ */}
-      <section className="relative px-4 py-16">
+      <section className="relative px-4 py-16 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 text-center">
-            <SectionKicker center>Beyond the Airport</SectionKicker>
-            <h2 className="mt-4 text-3xl font-black text-white md:text-4xl">Complete travel solutions</h2>
-          </div>
+          <SerifHeading
+            center
+            eyebrow="Beyond the Airport"
+            title="Complete travel"
+            highlight="solutions"
+            className="mb-10"
+          />
           <div className="grid gap-6 md:grid-cols-3">
             {[
               { href: '/sightseeing', icon: MapPin, t: 'Sightseeing Tours', d: 'Expert-guided heritage tours across Delhi, Agra & Jaipur.', img: '/images/sightseeing/Golden_Triangle/Golden_triangle_hero_section.jpg' },
@@ -356,24 +377,28 @@ export default function AirportServiceClient({ faqData }) {
         </div>
       </section>
 
-      {/* ══ FAQ ══ */}
+      {/* ══ FAQ — warm-light band, 2-up on md+ ══ */}
       {faqData && faqData.length > 0 && (
-        <section className="relative px-4 py-16">
-          <div className="mx-auto max-w-3xl">
-            <div className="mb-10 text-center">
-              <SectionKicker center>Traveller Help</SectionKicker>
-              <h2 className="mt-4 text-3xl font-black text-white md:text-5xl">Frequently asked</h2>
-            </div>
-            <div className="space-y-3">
+        <section className="relative bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-5xl">
+            <SerifHeading
+              tone="light"
+              center
+              eyebrow="Traveller Help"
+              title="Frequently"
+              highlight="asked"
+              className="mb-10"
+            />
+            <div className="grid items-start gap-3 md:grid-cols-2 md:gap-4">
               {faqData.map((faq, i) => (
-                <div key={i} className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02]">
+                <div key={i} className="overflow-hidden rounded-2xl border border-amber-200/60 bg-white shadow-[0_16px_50px_-34px_rgba(15,23,42,0.3)]">
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}
                     className="flex w-full items-center justify-between gap-4 p-5 text-left">
-                    <span className="font-semibold text-white">{faq.question}</span>
-                    <ChevronDown className={`h-5 w-5 shrink-0 text-[color:var(--air-accent)] transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                    <span className="font-semibold text-slate-900">{faq.question}</span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-amber-500 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                   </button>
                   {openFaq === i && (
-                    <div className="border-t border-white/[0.05] px-5 pb-5 pt-4 leading-relaxed text-slate-300">{faq.answer}</div>
+                    <div className="border-t border-amber-100 px-5 pb-5 pt-4 leading-relaxed text-slate-600">{faq.answer}</div>
                   )}
                 </div>
               ))}
@@ -383,22 +408,21 @@ export default function AirportServiceClient({ faqData }) {
       )}
 
       {/* ══ FINAL CTA ══ */}
-      <section className="relative overflow-hidden px-4 py-20">
+      <section className="relative overflow-hidden px-4 py-20 md:py-24">
         <AirportBackdrop variant="full" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <FlightStatusPill label="Now Boarding" className="mx-auto" />
-          <h2 className="mt-6 text-4xl font-black leading-tight text-white md:text-6xl">
-            Your cab is <span className="bg-gradient-to-r from-[var(--air-accent)] to-[var(--air-accent2)] bg-clip-text text-transparent">cleared for pickup</span>
+          <h2 className="mt-6 font-display-serif text-balance text-4xl font-black leading-tight text-white md:text-6xl">
+            Your cab is <span className={FOIL}>cleared for pickup</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">Fixed fare · flight tracking · verified drivers · 24/7 dispatch.</p>
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a href={`tel:${PHONE}`} onClick={() => trackPhoneCall('airport_hub_cta')}
-              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-9 py-4 text-lg font-bold text-black transition-transform hover:scale-[1.02]"
-              style={{ background: 'linear-gradient(135deg, var(--air-accent), var(--air-accent2))', boxShadow: '0 12px 36px var(--air-glow)' }}>
+              className={`${GOLD_BTN} w-full px-9 py-4 text-base sm:w-auto lg:py-2`}>
               <Phone className="h-5 w-5" /> Call +91 7668570551
             </a>
             <a href={wa(heroWa)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('airport_hub_cta')}
-              className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-9 py-4 text-lg font-bold text-white backdrop-blur-xl transition-colors hover:border-[color:var(--air-accent)]/40">
+              className={`${GHOST_BTN} w-full px-9 py-4 text-base sm:w-auto lg:py-2`}>
               <WhatsAppIcon className="h-5 w-5 text-emerald-400" /> WhatsApp Booking
             </a>
           </div>

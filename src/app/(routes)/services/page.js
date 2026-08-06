@@ -149,7 +149,7 @@ export default function ServicesPage() {
         "name": "What are the rates for different vehicle types?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our rates are transparent and competitive: Sedan starts at ₹11/km, SUV at ₹15/km, Tempo Traveller at ₹24/km. Luxury buses and wedding cars have customized packages. All rates include professional driver, AC, and GPS tracking. No hidden charges."
+          "text": "Our rates are transparent and competitive: Sedan starts at ₹11/km, SUV at ₹15/km, Tempo Traveller from ₹20/km. Luxury buses and wedding cars have customized packages. All rates include professional driver, AC, and GPS tracking. No hidden charges."
         }
       },
       {

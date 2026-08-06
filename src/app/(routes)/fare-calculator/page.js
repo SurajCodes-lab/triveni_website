@@ -110,8 +110,32 @@ export default function FareCalculatorPage() {
             <h2 className="text-2xl font-extrabold sm:text-3xl">
               The rate card behind the calculator
             </h2>
-            <div className="mt-5 overflow-x-auto rounded-2xl border border-white/10">
-              <table className="w-full min-w-[640px] text-sm">
+            {/* Mobile: stacked rate cards — no sideways scrolling */}
+            <div className="mt-5 space-y-3 md:hidden">
+              {RATE_ROWS.map((r) => (
+                <div key={`rate-card-${r[0]}`} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                  <p className="text-sm font-bold text-white">{r[0]}</p>
+                  <dl className="mt-2.5 space-y-1.5">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-white/40">Rate</dt>
+                      <dd className="text-right text-sm font-bold text-[#FACF2D]">{r[1]}</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-white/40">Seats</dt>
+                      <dd className="text-right text-sm text-white/60">{r[2]}</dd>
+                    </div>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-white/40">Billing note</dt>
+                      <dd className="text-right text-sm text-white/60">{r[3]}</dd>
+                    </div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: true semantic table, fits its container */}
+            <div className="mt-5 hidden overflow-hidden rounded-2xl border border-white/10 md:block">
+              <table className="w-full text-sm">
                 <caption className="sr-only">
                   Triveni Cabs per-kilometre rate card, 2026
                 </caption>

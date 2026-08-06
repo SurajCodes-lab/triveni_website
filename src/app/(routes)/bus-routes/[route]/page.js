@@ -7,6 +7,7 @@ export const revalidate = 3600;
 export const dynamicParams = false;
 import DynamicBusRoutesClient from '@/components/DynamicBusRoutesClient';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
+import { resolveRouteMetrics } from '@/utilis/routeMetrics';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks, getSiloHubLinks } from '@/lib/seo/linkingHelper';
 import { generateBusMetadata } from '@/lib/seo/metadata-factory';
@@ -200,7 +201,23 @@ export default async function BusRoutePage({ params }) {
     return null;
   };
 
-  const routeData = findRouteData(originFormatted, destinationFormatted);
+  const routeDataBase = findRouteData(originFormatted, destinationFormatted);
+  // When the busRoutes entry has no distance/drive time, borrow the real figures
+  // for this corridor from the distance / one-way datasets. The 'Contact for
+  // details' sentinel is kept when nothing resolves, so the existing schema
+  // guards below still behave — the client drops the fact rather than showing it.
+  const routeMetrics = resolveRouteMetrics({
+    slug: route,
+    origin: originFormatted,
+    destination: destinationFormatted,
+    distance: routeDataBase.distance,
+    duration: routeDataBase.duration,
+  });
+  const routeData = {
+    ...routeDataBase,
+    distance: routeMetrics.distance || routeDataBase.distance,
+    duration: routeMetrics.duration || routeDataBase.duration,
+  };
   const destinationSightseeing = localSightseeing?.[destinationFormatted] || [];
   const detailedRouteInfo = getDetailedRouteInfo();
 

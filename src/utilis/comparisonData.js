@@ -254,7 +254,7 @@ export const comparisonData = {
       seating: '17 passengers',
       bootSpace: 'Larger boot area',
       acType: 'Roof-mounted AC (powerful)',
-      ratePerKm: '₹24-26/km',
+      ratePerKm: '₹24/km',
       minimumCharge: '₹6,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '8-10 km/l',

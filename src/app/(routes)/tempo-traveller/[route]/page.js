@@ -12,6 +12,7 @@ import { getRatingAndReviews, getYatraReviews, getDeterministicReviewCount } fro
 import { getSpeakableSchema, getHowToSchema, getArticleSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
+import { resolveRouteMetrics } from '@/utilis/routeMetrics';
 import TempoCityClient from '@/components/TempoCityClient';
 import ChardhamTempoClient from '@/components/ChardhamTempoClient';
 import AEOHead from '@/components/seo/AEOHead';
@@ -756,7 +757,23 @@ export default async function TempoTravellerRoutePage({ params }) {
     return spotsAvailable.includes(city);
   };
 
-  const routeData = findRouteData(originFormatted, destinationFormatted);
+  const routeDataBase = findRouteData(originFormatted, destinationFormatted);
+  // tempoRoutes entries carry no distance/drive time of their own, so borrow the
+  // real figures for this corridor from the distance / one-way datasets. Anything
+  // still unresolved stays absent — the client drops the fact rather than
+  // rendering a placeholder.
+  const routeMetrics = resolveRouteMetrics({
+    slug: route,
+    origin: originFormatted,
+    destination: destinationFormatted,
+    distance: routeDataBase.distance,
+    duration: routeDataBase.duration,
+  });
+  const routeData = {
+    ...routeDataBase,
+    ...(routeMetrics.distance ? { distance: routeMetrics.distance } : {}),
+    ...(routeMetrics.duration ? { duration: routeMetrics.duration } : {}),
+  };
   // Phase 2 GEO: geo-located origin/destination City Place entities (GeoCoordinates).
   const _tgeo = (s) => s.toLowerCase().replace(/\s+/g, '-');
   const originPlace = getCityPlaceSchema(_tgeo(originFormatted), { idSlug: `tempo-traveller/${route}#origin` });

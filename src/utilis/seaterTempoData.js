@@ -197,7 +197,7 @@ export const seaterTempoData = {
     specs: [
       ["Seating capacity", "16 passengers + 1 driver"],
       ["Recommended group size", "13 – 16 people"],
-      ["Outstation rate", "From ₹24/km (min 250 km/day)"],
+      ["Outstation rate", "From ₹22/km (min 250 km/day)"],
       ["Local package", "₹9,000 – ₹10,500 for 80 km / 8 hrs"],
       ["Luggage capacity", "12 – 14 large suitcases"],
       ["Vehicle type", "Force Traveller 4020 Luxury, AC"],

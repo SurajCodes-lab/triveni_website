@@ -33,7 +33,7 @@ const costBlogs = [
         <tbody>
           <tr><td class="border border-gray-300 p-3">Sedan (Dzire/Etios)</td><td class="border border-gray-300 p-3">₹2,800-3,200</td><td class="border border-gray-300 p-3">₹3,500-4,500</td><td class="border border-gray-300 p-3">₹9-10</td></tr>
           <tr><td class="border border-gray-300 p-3">Ertiga (7-seater)</td><td class="border border-gray-300 p-3">₹3,500-4,000</td><td class="border border-gray-300 p-3">₹4,500-5,500</td><td class="border border-gray-300 p-3">₹11-12</td></tr>
-          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹4,500-5,500</td><td class="border border-gray-300 p-3">₹6,000-7,500</td><td class="border border-gray-300 p-3">₹14-16</td></tr>
+          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹4,500-5,500</td><td class="border border-gray-300 p-3">₹6,000-7,500</td><td class="border border-gray-300 p-3">₹18</td></tr>
           <tr><td class="border border-gray-300 p-3">Tempo Traveller (12-seat)</td><td class="border border-gray-300 p-3">₹7,000-8,000</td><td class="border border-gray-300 p-3">₹9,000-11,000</td><td class="border border-gray-300 p-3">₹18-20</td></tr>
         </tbody>
       </table>
@@ -136,7 +136,7 @@ const costBlogs = [
         <tbody>
           <tr><td class="border border-gray-300 p-3">Sedan (Dzire)</td><td class="border border-gray-300 p-3">₹6,500-7,500</td><td class="border border-gray-300 p-3">₹15,000-18,000</td><td class="border border-gray-300 p-3">₹9-10</td></tr>
           <tr><td class="border border-gray-300 p-3">Ertiga (7-seater)</td><td class="border border-gray-300 p-3">₹8,000-9,500</td><td class="border border-gray-300 p-3">₹18,000-22,000</td><td class="border border-gray-300 p-3">₹11-12</td></tr>
-          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹10,000-12,000</td><td class="border border-gray-300 p-3">₹25,000-30,000</td><td class="border border-gray-300 p-3">₹14-16</td></tr>
+          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹10,000-12,000</td><td class="border border-gray-300 p-3">₹25,000-30,000</td><td class="border border-gray-300 p-3">₹18</td></tr>
           <tr><td class="border border-gray-300 p-3">Tempo Traveller (12)</td><td class="border border-gray-300 p-3">₹15,000-18,000</td><td class="border border-gray-300 p-3">₹35,000-40,000</td><td class="border border-gray-300 p-3">₹18-20</td></tr>
         </tbody>
       </table>
@@ -207,7 +207,7 @@ const costBlogs = [
         <tbody>
           <tr><td class="border border-gray-300 p-3">Sedan</td><td class="border border-gray-300 p-3">₹4,500-5,500</td><td class="border border-gray-300 p-3">₹6,500-8,000</td><td class="border border-gray-300 p-3">₹9-10</td></tr>
           <tr><td class="border border-gray-300 p-3">Ertiga</td><td class="border border-gray-300 p-3">₹5,500-6,500</td><td class="border border-gray-300 p-3">₹8,000-10,000</td><td class="border border-gray-300 p-3">₹11-12</td></tr>
-          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹7,000-8,500</td><td class="border border-gray-300 p-3">₹10,000-13,000</td><td class="border border-gray-300 p-3">₹14-16</td></tr>
+          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹7,000-8,500</td><td class="border border-gray-300 p-3">₹10,000-13,000</td><td class="border border-gray-300 p-3">₹18</td></tr>
           <tr><td class="border border-gray-300 p-3">Tempo Traveller</td><td class="border border-gray-300 p-3">₹10,000-12,000</td><td class="border border-gray-300 p-3">₹15,000-18,000</td><td class="border border-gray-300 p-3">₹18-20</td></tr>
         </tbody>
       </table>
@@ -586,10 +586,10 @@ const costBlogs = [
     id: 'cost-9',
     slug: 'innova-crysta-outstation-fare-2026',
     title: 'Innova Crysta Outstation Fare 2026: Per Km Rate & Packages',
-    excerpt: 'Innova Crysta outstation fare 2026: ₹14-16/km, min 250 km/day. Delhi to Agra ₹5,500, Jaipur ₹7,000, Manali ₹12,000. Complete fare guide.',
+    excerpt: 'Innova Crysta outstation fare 2026: ₹18/km, min 250 km/day. Delhi to Agra ₹5,500, Jaipur ₹7,000, Manali ₹12,000. Complete fare guide.',
     relatedTours: [],
     relatedDestinations: [],
-    primaryCTA: { text: 'Book Innova Crysta', url: '/vehicles', description: 'Premium outstation travel', price: 'From ₹14/km' },
+    primaryCTA: { text: 'Book Innova Crysta', url: '/vehicles', description: 'Premium outstation travel', price: 'From ₹18/km' },
     content: `
       <p>The <strong>Toyota Innova Crysta</strong> is India's most popular premium family car for outstation travel. Spacious, comfortable, and reliable — it is the top choice for family trips and business travel. Here is the complete <a href="/vehicles" class="text-blue-600 hover:underline font-semibold">Innova Crysta outstation fare</a> guide for 2026.</p>
 
@@ -602,7 +602,7 @@ const costBlogs = [
           <th class="border border-gray-300 p-3 text-left">Driver Allow.</th>
         </tr></thead>
         <tbody>
-          <tr><td class="border border-gray-300 p-3">Outstation (one way)</td><td class="border border-gray-300 p-3">₹14-16</td><td class="border border-gray-300 p-3">250 km</td><td class="border border-gray-300 p-3">₹400/day</td></tr>
+          <tr><td class="border border-gray-300 p-3">Outstation (one way)</td><td class="border border-gray-300 p-3">₹18</td><td class="border border-gray-300 p-3">250 km</td><td class="border border-gray-300 p-3">₹400/day</td></tr>
           <tr><td class="border border-gray-300 p-3">Outstation (round trip)</td><td class="border border-gray-300 p-3">₹13-15</td><td class="border border-gray-300 p-3">250 km/day</td><td class="border border-gray-300 p-3">Included</td></tr>
           <tr><td class="border border-gray-300 p-3">Local (8hrs/80km)</td><td class="border border-gray-300 p-3">₹3,500 flat</td><td class="border border-gray-300 p-3">80 km</td><td class="border border-gray-300 p-3">Included</td></tr>
           <tr><td class="border border-gray-300 p-3">Airport Transfer</td><td class="border border-gray-300 p-3">₹2,500-3,500</td><td class="border border-gray-300 p-3">Flat rate</td><td class="border border-gray-300 p-3">Included</td></tr>
@@ -630,7 +630,7 @@ const costBlogs = [
 
       <div class="my-8 p-6 bg-gradient-to-r from-indigo-50 to-violet-50 border-l-4 border-indigo-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Book Innova Crysta</h3>
-        <p class="mb-4 text-gray-700">Premium comfort from ₹14/km. Perfect for families and business.</p>
+        <p class="mb-4 text-gray-700">Premium comfort from ₹18/km. Perfect for families and business.</p>
         <a href="tel:7668570551" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors shadow-md">Call 7668570551</a>
       </div>
     `,
@@ -642,8 +642,8 @@ const costBlogs = [
     keywords: ['innova crysta outstation fare 2026', 'innova crysta per km rate', 'innova crysta rental cost', 'innova crysta delhi to agra', 'toyota innova hire rate'],
     featured: false,
     views: 3800,
-    metaTitle: 'Innova Crysta Outstation Fare 2026 | ₹14/km',
-    metaDescription: 'Innova Crysta outstation rates 2026: ₹14-16/km, local ₹3,500/8hrs. Delhi-Agra ₹5,500, Jaipur ₹7,000, Manali ₹12,000. All-inclusive.',
+    metaTitle: 'Innova Crysta Outstation Fare 2026 | ₹18/km',
+    metaDescription: 'Innova Crysta outstation rates 2026: ₹18/km, local ₹3,500/8hrs. Delhi-Agra ₹5,500, Jaipur ₹7,000, Manali ₹12,000. All-inclusive.',
     publishDate: '2026-02-03',
   },
   {
@@ -668,7 +668,7 @@ const costBlogs = [
         <tbody>
           <tr><td class="border border-gray-300 p-3">Sedan (Dzire)</td><td class="border border-gray-300 p-3">₹3,500-4,000</td><td class="border border-gray-300 p-3">₹5,000-6,000</td><td class="border border-gray-300 p-3">₹9-10</td></tr>
           <tr><td class="border border-gray-300 p-3">Ertiga</td><td class="border border-gray-300 p-3">₹4,500-5,000</td><td class="border border-gray-300 p-3">₹6,000-7,500</td><td class="border border-gray-300 p-3">₹11-12</td></tr>
-          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹5,500-6,500</td><td class="border border-gray-300 p-3">₹8,000-10,000</td><td class="border border-gray-300 p-3">₹14-16</td></tr>
+          <tr><td class="border border-gray-300 p-3">Innova Crysta</td><td class="border border-gray-300 p-3">₹5,500-6,500</td><td class="border border-gray-300 p-3">₹8,000-10,000</td><td class="border border-gray-300 p-3">₹18</td></tr>
           <tr><td class="border border-gray-300 p-3">Tempo Traveller</td><td class="border border-gray-300 p-3">₹8,000-10,000</td><td class="border border-gray-300 p-3">₹12,000-15,000</td><td class="border border-gray-300 p-3">₹18-20</td></tr>
         </tbody>
       </table>

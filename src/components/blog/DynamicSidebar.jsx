@@ -1,113 +1,76 @@
 'use client';
 
+// ============================================================================
+// DynamicSidebar — Ultra-Premium v2 (Aug 2026)
+// Unified dark glass/gold sidebar cards with lane edges for all 12 blog
+// layouts (the old per-theme pastel palette is retired; the `theme` prop is
+// still accepted for API compatibility). No animation library, no infinite
+// animations — CSS-only hovers (blog family INP discipline).
+// All conditional blocks, links and analytics preserved from v1.
+// ============================================================================
+
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import {
   MapPin, Phone, MessageCircle, Clock, ArrowRight,
-  Compass, Star, Tag, BookOpen
+  Compass, Star, Tag, BookOpen, Plane,
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
-const themeColors = {
-  amber: {
-    bg: 'bg-amber-50',
-    border: 'border-amber-200',
-    text: 'text-amber-800',
-    accent: 'bg-amber-500',
-    button: 'bg-amber-600 hover:bg-amber-700',
-    light: 'bg-amber-100',
-  },
-  orange: {
-    bg: 'bg-orange-50',
-    border: 'border-orange-200',
-    text: 'text-orange-800',
-    accent: 'bg-orange-500',
-    button: 'bg-orange-600 hover:bg-orange-700',
-    light: 'bg-orange-100',
-  },
-  green: {
-    bg: 'bg-green-50',
-    border: 'border-green-200',
-    text: 'text-green-800',
-    accent: 'bg-green-500',
-    button: 'bg-green-600 hover:bg-green-700',
-    light: 'bg-green-100',
-  },
-  blue: {
-    bg: 'bg-blue-50',
-    border: 'border-blue-200',
-    text: 'text-blue-800',
-    accent: 'bg-blue-500',
-    button: 'bg-blue-600 hover:bg-blue-700',
-    light: 'bg-blue-100',
-  },
-  purple: {
-    bg: 'bg-purple-50',
-    border: 'border-purple-200',
-    text: 'text-purple-800',
-    accent: 'bg-purple-500',
-    button: 'bg-purple-600 hover:bg-purple-700',
-    light: 'bg-purple-100',
-  },
-  red: {
-    bg: 'bg-red-50',
-    border: 'border-red-200',
-    text: 'text-red-800',
-    accent: 'bg-red-500',
-    button: 'bg-red-600 hover:bg-red-700',
-    light: 'bg-red-100',
-  },
-};
+// Highway lane marking — the recurring v2 divider motif.
+const LANE = 'bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]';
 
+// Shared card shell — dark glass with a lane top edge.
+const CARD = 'relative overflow-hidden rounded-2xl bg-slate-950 p-6 shadow-xl ring-1 ring-white/10';
+
+function LaneEdge() {
+  return <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[3px] ${LANE}`} />;
+}
+
+// `theme` is accepted for API compatibility with the 12 layouts but no longer
+// varies the palette — every sidebar renders the unified dark glass/gold cards.
 export default function DynamicSidebar({ post, relatedLinks, theme = 'blue' }) {
-  const colors = themeColors[theme] || themeColors.blue;
+  const cityName = post.city ? post.city.charAt(0).toUpperCase() + post.city.slice(1) : null;
 
   return (
     <div className="space-y-6 lg:sticky lg:top-24">
       {/* Quick Booking Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className={`${colors.bg} rounded-2xl p-6 shadow-xl border ${colors.border}`}
-      >
-        <h3 className={`text-xl font-bold ${colors.text} mb-4 flex items-center gap-2`}>
-          <Phone className="w-5 h-5" />
+      <div className={CARD}>
+        <LaneEdge />
+        <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#FACF2D]/10 blur-2xl" aria-hidden="true" />
+        <h3 className="font-display-serif relative mb-2 flex items-center gap-2 text-xl font-bold text-white">
+          <Phone className="h-5 w-5 text-[#FACF2D]" />
           Book Your Trip
         </h3>
-        <p className="text-gray-600 text-sm mb-4">
-          Get the best rates for {post.city ? post.city.charAt(0).toUpperCase() + post.city.slice(1) : 'your'} tours. Instant confirmation!
+        <p className="relative mb-4 text-sm leading-relaxed text-white/60">
+          Get the best rates for {cityName || 'your'} tours. Instant confirmation!
         </p>
-        <div className="space-y-3">
+        <div className="relative space-y-3">
           <a
             href="https://wa.me/917668570551"
             onClick={() => trackWhatsAppClick('blog_sidebar', '', 'sidebar_booking')}
-            className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-xl font-bold transition-colors w-full"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 font-bold text-black transition-colors hover:bg-[#3ae07a]"
           >
-            <MessageCircle className="w-5 h-5" />
+            <MessageCircle className="h-5 w-5" />
             WhatsApp Booking
           </a>
           <a
             href="tel:+917668570551"
             onClick={() => trackPhoneCall('blog_sidebar', '7668570551')}
-            className={`flex items-center justify-center gap-2 ${colors.button} text-white py-3 px-4 rounded-xl font-bold transition-colors w-full`}
+            className="sheen flex w-full items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-4 py-3 font-extrabold text-black transition-colors hover:bg-[#ffdb4d]"
           >
-            <Phone className="w-5 h-5" />
+            <Phone className="h-5 w-5" />
             Call: +91-7668570551
           </a>
         </div>
-      </motion.div>
+      </div>
 
       {/* Related Tours */}
       {relatedLinks?.relatedTours?.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100"
-        >
-          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <Compass className="w-5 h-5 text-gray-600" />
+        <div className={CARD}>
+          <LaneEdge />
+          <h3 className="font-display-serif mb-4 flex items-center gap-2 text-xl font-bold text-white">
+            <Compass className="h-5 w-5 text-[#FACF2D]" />
             Related Tours
           </h3>
           <div className="space-y-3">
@@ -115,14 +78,14 @@ export default function DynamicSidebar({ post, relatedLinks, theme = 'blue' }) {
               <Link
                 key={index}
                 href={tour.url}
-                className={`block p-3 rounded-xl ${colors.light} hover:shadow-md transition-all group`}
+                className="group block rounded-xl border border-white/10 bg-white/5 p-3 transition-colors duration-200 hover:border-[#FACF2D]/50 hover:bg-[#FACF2D]/10"
               >
-                <h4 className={`font-semibold ${colors.text} group-hover:underline text-sm`}>
+                <h4 className="text-sm font-semibold text-white/85 transition-colors group-hover:text-[#FACF2D]">
                   {tour.name}
                 </h4>
-                <div className="flex items-center justify-between mt-1">
-                  <span className="text-xs text-gray-500">{tour.price}</span>
-                  <ArrowRight className={`w-4 h-4 ${colors.text} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                <div className="mt-1 flex items-center justify-between">
+                  <span className="text-xs text-white/45">{tour.price}</span>
+                  <ArrowRight className="h-4 w-4 text-[#FACF2D] opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
               </Link>
             ))}
@@ -130,152 +93,133 @@ export default function DynamicSidebar({ post, relatedLinks, theme = 'blue' }) {
           {relatedLinks.cityTours && (
             <Link
               href={relatedLinks.cityTours}
-              className={`mt-4 inline-flex items-center gap-1 ${colors.text} font-semibold text-sm hover:underline`}
+              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#FACF2D] transition-colors hover:text-amber-300"
             >
-              View All Tours <ArrowRight className="w-4 h-4" />
+              View All Tours <ArrowRight className="h-4 w-4" />
             </Link>
           )}
-        </motion.div>
+        </div>
       )}
 
       {/* Quick Links */}
       {relatedLinks?.quickLinks?.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className={`${colors.bg} rounded-2xl p-6 shadow-xl border ${colors.border}`}
-        >
-          <h3 className={`text-xl font-bold ${colors.text} mb-4 flex items-center gap-2`}>
-            <BookOpen className="w-5 h-5" />
+        <div className={CARD}>
+          <LaneEdge />
+          <h3 className="font-display-serif mb-4 flex items-center gap-2 text-xl font-bold text-white">
+            <BookOpen className="h-5 w-5 text-[#FACF2D]" />
             Quick Links
           </h3>
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {relatedLinks.quickLinks.map((link, index) => (
               <li key={index}>
                 <Link
                   href={link.href}
-                  className="flex items-center gap-2 text-gray-700 hover:text-gray-900 py-2 px-3 rounded-lg hover:bg-white transition-all"
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium text-white/75 transition-colors duration-200 hover:bg-white/5 hover:text-[#FACF2D]"
                 >
                   <span>{link.icon}</span>
-                  <span className="font-medium">{link.text}</span>
+                  <span>{link.text}</span>
                 </Link>
               </li>
             ))}
           </ul>
-        </motion.div>
+        </div>
       )}
 
       {/* Visit Info Card */}
       {post.attractionData && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100"
-        >
-          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <MapPin className="w-5 h-5 text-gray-600" />
+        <div className={CARD}>
+          <LaneEdge />
+          <h3 className="font-display-serif mb-4 flex items-center gap-2 text-xl font-bold text-white">
+            <MapPin className="h-5 w-5 text-[#FACF2D]" />
             Visit Information
           </h3>
           <div className="space-y-3 text-sm">
             {post.attractionData.timings && (
               <div className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-gray-400 mt-0.5" />
+                <Clock className="mt-0.5 h-4 w-4 text-[#FACF2D]" />
                 <div>
-                  <p className="font-medium text-gray-700">Timings</p>
-                  <p className="text-gray-500">
+                  <p className="font-medium text-white/85">Timings</p>
+                  <p className="text-white/50">
                     {post.attractionData.timings.open} - {post.attractionData.timings.close}
                   </p>
                   {post.attractionData.timings.closedOn && (
-                    <p className="text-red-500 text-xs">Closed: {post.attractionData.timings.closedOn}</p>
+                    <p className="text-xs text-red-400">Closed: {post.attractionData.timings.closedOn}</p>
                   )}
                 </div>
               </div>
             )}
             {post.attractionData.entryFee && (
               <div className="flex items-start gap-3">
-                <Tag className="w-4 h-4 text-gray-400 mt-0.5" />
+                <Tag className="mt-0.5 h-4 w-4 text-[#FACF2D]" />
                 <div>
-                  <p className="font-medium text-gray-700">Entry Fee</p>
-                  <p className="text-gray-500">Indian: {post.attractionData.entryFee.indian}</p>
-                  <p className="text-gray-500">Foreign: {post.attractionData.entryFee.foreign}</p>
+                  <p className="font-medium text-white/85">Entry Fee</p>
+                  <p className="text-white/50">Indian: {post.attractionData.entryFee.indian}</p>
+                  <p className="text-white/50">Foreign: {post.attractionData.entryFee.foreign}</p>
                 </div>
               </div>
             )}
             {post.attractionData.timeNeeded && (
               <div className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-gray-400 mt-0.5" />
+                <Clock className="mt-0.5 h-4 w-4 text-[#FACF2D]" />
                 <div>
-                  <p className="font-medium text-gray-700">Time Needed</p>
-                  <p className="text-gray-500">{post.attractionData.timeNeeded}</p>
+                  <p className="font-medium text-white/85">Time Needed</p>
+                  <p className="text-white/50">{post.attractionData.timeNeeded}</p>
                 </div>
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Popular Tags */}
       {post.tags?.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100"
-        >
-          <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <Star className="w-5 h-5 text-gray-600" />
+        <div className={CARD}>
+          <LaneEdge />
+          <h3 className="font-display-serif mb-4 flex items-center gap-2 text-xl font-bold text-white">
+            <Star className="h-5 w-5 text-[#FACF2D]" />
             Related Topics
           </h3>
           <div className="flex flex-wrap gap-2">
             {post.tags.slice(0, 8).map((tag, index) => (
               <span
                 key={index}
-                className={`${colors.light} ${colors.text} px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer hover:opacity-80 transition-opacity`}
+                className="cursor-pointer rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/70 transition-colors duration-200 hover:border-[#FACF2D] hover:bg-[#FACF2D] hover:text-black"
               >
                 {tag}
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* City Page Link */}
       {relatedLinks?.cityPage && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+        <Link
+          href={relatedLinks.cityPage}
+          className="sheen block rounded-2xl bg-[#FACF2D] p-5 text-center font-extrabold text-black shadow-[0_10px_30px_-8px_rgba(250,207,45,0.6)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ffdb4d]"
         >
-          <Link
-            href={relatedLinks.cityPage}
-            className={`block ${colors.button} text-white rounded-2xl p-6 text-center font-bold shadow-xl transition-all hover:shadow-2xl`}
-          >
-            Explore More in {post.city ? post.city.charAt(0).toUpperCase() + post.city.slice(1) : 'India'} →
-          </Link>
-        </motion.div>
+          Explore More in {cityName || 'India'} →
+        </Link>
       )}
 
       {/* Airport Service Link */}
       {relatedLinks?.airportService && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="bg-gray-900 text-white rounded-2xl p-6 shadow-xl"
-        >
-          <h3 className="font-bold mb-2">✈️ Airport Transfer</h3>
-          <p className="text-gray-300 text-sm mb-3">
-            Need airport pickup/drop in {post.city ? post.city.charAt(0).toUpperCase() + post.city.slice(1) : 'your city'}?
+        <div className={CARD}>
+          <LaneEdge />
+          <h3 className="font-display-serif mb-2 flex items-center gap-2 text-lg font-bold text-white">
+            <Plane className="h-5 w-5 text-[#FACF2D]" />
+            Airport Transfer
+          </h3>
+          <p className="mb-3 text-sm text-white/60">
+            Need airport pickup/drop in {cityName || 'your city'}?
           </p>
           <Link
             href={relatedLinks.airportService}
-            className="inline-flex items-center gap-1 text-yellow-400 font-semibold text-sm hover:underline"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-[#FACF2D] transition-colors hover:text-amber-300"
           >
-            Book Airport Taxi <ArrowRight className="w-4 h-4" />
+            Book Airport Taxi <ArrowRight className="h-4 w-4" />
           </Link>
-        </motion.div>
+        </div>
       )}
     </div>
   );

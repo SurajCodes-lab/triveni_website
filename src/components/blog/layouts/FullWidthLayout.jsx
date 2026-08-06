@@ -1,27 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ArrowUp, Eye,
-  ChevronRight, Phone, Heart, Bookmark
+  ChevronRight, Phone, Heart, Bookmark, Plane, Compass
 } from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
 
 export default function FullWidthLayout({ post, relatedLinks }) {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const { scrollYProgress } = useScroll();
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (latest) => {
-      setScrollProgress(Math.round(latest * 100));
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
-
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -34,38 +22,26 @@ export default function FullWidthLayout({ post, relatedLinks }) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Reading Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-400 z-50 origin-left"
-        style={{ scaleX: scrollYProgress }}
-      />
-
       {/* Floating Action Bar */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="bg-white/90 backdrop-blur-xl rounded-full shadow-2xl shadow-black/10 px-6 py-3 flex items-center gap-6 border border-gray-100"
-        >
-          <button className="flex items-center gap-2 text-gray-500 hover:text-teal-600 transition-colors">
+        <div className="bg-white/90 backdrop-blur-xl rounded-full shadow-2xl shadow-black/10 px-6 py-3 flex items-center gap-6 border border-gray-100">
+          <button className="flex items-center gap-2 text-slate-500 hover:text-amber-700 transition-colors">
             <Heart className="w-5 h-5" />
             <span className="text-sm font-medium hidden sm:inline">Like</span>
           </button>
           <div className="w-px h-6 bg-gray-200" />
-          <button className="flex items-center gap-2 text-gray-500 hover:text-teal-600 transition-colors">
+          <button className="flex items-center gap-2 text-slate-500 hover:text-amber-700 transition-colors">
             <Bookmark className="w-5 h-5" />
             <span className="text-sm font-medium hidden sm:inline">Save</span>
           </button>
           <div className="w-px h-6 bg-gray-200" />
-          <span className="text-sm font-bold text-teal-600">{scrollProgress}%</span>
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 bg-teal-500 hover:bg-teal-600 rounded-full flex items-center justify-center text-white transition-colors"
+            className="w-10 h-10 bg-[#FACF2D] hover:bg-[#ffdb4d] rounded-full flex items-center justify-center text-black transition-colors"
           >
             <ArrowUp className="w-5 h-5" />
           </button>
-        </motion.div>
+        </div>
       </div>
 
       {/* Immersive Hero */}
@@ -78,94 +54,58 @@ export default function FullWidthLayout({ post, relatedLinks }) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-white" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent" />
         </div>
 
         {/* Centered Title Overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-4 max-w-5xl">
             {/* Breadcrumb */}
-            <motion.nav
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center justify-center gap-2 text-sm text-white/80 mb-8"
-            >
+            <nav className="flex items-center justify-center gap-2 text-sm text-white/80 mb-8">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <ChevronRight className="w-4 h-4" />
               <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
               <ChevronRight className="w-4 h-4" />
-              <span className="text-teal-300 font-medium">{post.category}</span>
-            </motion.nav>
+              <span className="text-[#FACF2D] font-medium">{post.category}</span>
+            </nav>
 
             {/* Category Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-            >
-              <span className="inline-block px-6 py-2 bg-teal-500 text-white text-sm font-bold uppercase tracking-wider rounded-full mb-8">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/40 bg-black/40 px-4 py-2 text-sm font-bold text-[#FACF2D] backdrop-blur-sm mb-6">
                 {post.category}
               </span>
-            </motion.div>
+            </div>
 
             {/* Giant Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-8 tracking-tight"
-            >
+            <h1 className="font-display-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight">
               {post.title}
-            </motion.h1>
+            </h1>
+            <span aria-hidden="true" className="mt-5 mb-8 mx-auto block h-[4px] w-28 opacity-80 bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
 
             {/* Meta Line */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex items-center justify-center gap-6 text-white/70"
-            >
-              <span className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
+            <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
+              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-white">
+                <Calendar className="w-4 h-4 text-[#FACF2D]" />
                 {formattedDate}
               </span>
-              <span className="w-1.5 h-1.5 bg-teal-400 rounded-full" />
-              <span className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
+              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-white">
+                <Clock className="w-4 h-4 text-[#FACF2D]" />
                 {post.readTime}
               </span>
-              <span className="w-1.5 h-1.5 bg-teal-400 rounded-full" />
-              <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
+              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-white">
+                <MapPin className="w-4 h-4 text-[#FACF2D]" />
                 {post.city}
               </span>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white/60"
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1.5 h-1.5 bg-white rounded-full"
-              />
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Excerpt/Lead Section */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-2xl md:text-3xl font-light text-gray-700 leading-relaxed">
+          <p className="text-2xl md:text-3xl font-light text-slate-700 leading-relaxed">
             {post.excerpt}
           </p>
         </div>
@@ -175,15 +115,15 @@ export default function FullWidthLayout({ post, relatedLinks }) {
       <section className="pb-20">
         <article className="max-w-3xl mx-auto px-4">
           <div
-            className="prose prose-xl max-w-none
-              prose-p:text-gray-700 prose-p:leading-[1.9] prose-p:text-lg
-              prose-headings:text-gray-900 prose-headings:font-bold prose-headings:tracking-tight
+            className="blog-prose prose prose-xl max-w-[70ch] mx-auto
+              prose-p:text-slate-700 prose-p:leading-[1.9] prose-p:text-lg
+              prose-headings:text-slate-900 prose-headings:font-bold prose-headings:tracking-tight
               prose-h2:text-4xl prose-h2:mt-20 prose-h2:mb-8 prose-h2:text-center
               prose-h3:text-2xl prose-h3:mt-12
-              prose-a:text-teal-600 prose-a:no-underline prose-a:border-b-2 prose-a:border-teal-200 hover:prose-a:border-teal-500
-              prose-strong:text-gray-900 prose-strong:font-semibold
-              prose-blockquote:border-l-4 prose-blockquote:border-teal-400 prose-blockquote:bg-teal-50 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic
-              prose-li:text-gray-700
+              prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-slate-900 prose-strong:font-semibold
+              prose-blockquote:border-l-4 prose-blockquote:border-[#FACF2D] prose-blockquote:bg-amber-50 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic
+              prose-li:text-slate-700
               prose-img:rounded-2xl prose-img:shadow-2xl
             "
             dangerouslySetInnerHTML={{ __html: post.content }}
@@ -192,13 +132,13 @@ export default function FullWidthLayout({ post, relatedLinks }) {
       </section>
 
       {/* Tags Section */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-slate-50">
         <div className="max-w-3xl mx-auto px-4">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {post.tags?.map((tag, i) => (
               <span
                 key={i}
-                className="bg-white text-gray-600 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:text-teal-600 transition-all cursor-pointer"
+                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm font-semibold text-slate-700 transition-colors hover:border-[#FACF2D] hover:bg-[#FACF2D] hover:text-black cursor-pointer"
               >
                 #{tag}
               </span>
@@ -216,24 +156,24 @@ export default function FullWidthLayout({ post, relatedLinks }) {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-teal-900/80" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white text-center">
-              <div>
-                <div className="text-4xl font-black mb-2">{post.attractionData.timings?.open || '9AM'}</div>
-                <div className="text-teal-200 text-sm uppercase tracking-wider">Opens</div>
+          <div className="absolute inset-0 bg-slate-950/85" />
+          <div className="absolute inset-0 flex items-center justify-center px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#FACF2D] mb-2">{post.attractionData.timings?.open || '9AM'}</div>
+                <div className="text-white/60 text-xs uppercase tracking-wider">Opens</div>
               </div>
-              <div>
-                <div className="text-4xl font-black mb-2">{post.attractionData.timings?.close || '5PM'}</div>
-                <div className="text-teal-200 text-sm uppercase tracking-wider">Closes</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#FACF2D] mb-2">{post.attractionData.timings?.close || '5PM'}</div>
+                <div className="text-white/60 text-xs uppercase tracking-wider">Closes</div>
               </div>
-              <div>
-                <div className="text-4xl font-black mb-2">{post.attractionData.entryFee?.indian || '₹50'}</div>
-                <div className="text-teal-200 text-sm uppercase tracking-wider">Entry Fee</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#FACF2D] mb-2">{post.attractionData.entryFee?.indian || '₹50'}</div>
+                <div className="text-white/60 text-xs uppercase tracking-wider">Entry Fee</div>
               </div>
-              <div>
-                <div className="text-4xl font-black mb-2">{post.attractionData.timeNeeded || '2-3h'}</div>
-                <div className="text-teal-200 text-sm uppercase tracking-wider">Duration</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#FACF2D] mb-2">{post.attractionData.timeNeeded || '2-3h'}</div>
+                <div className="text-white/60 text-xs uppercase tracking-wider">Duration</div>
               </div>
             </div>
           </div>
@@ -253,17 +193,13 @@ export default function FullWidthLayout({ post, relatedLinks }) {
 
       {/* Tour CTA Section */}
       {relatedLinks?.relatedTours?.length > 0 && (
-        <section className="py-24 px-4 bg-gradient-to-br from-teal-600 via-cyan-600 to-teal-700">
+        <section className="relative overflow-hidden py-24 px-4 bg-slate-950 ring-1 ring-white/10">
+          <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-white mb-6"
-            >
+            <h2 className="font-display-serif text-4xl md:text-5xl font-bold text-white mb-6">
               Ready to Visit {post.city}?
-            </motion.h2>
-            <p className="text-xl text-teal-100 mb-12 max-w-2xl mx-auto">
+            </h2>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
               Experience this destination with our comfortable transport and expert local guidance.
             </p>
 
@@ -272,12 +208,12 @@ export default function FullWidthLayout({ post, relatedLinks }) {
                 <Link
                   key={i}
                   href={tour.url}
-                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-3xl p-8 text-left transition-all group border border-white/10"
+                  className="bg-white/[0.04] backdrop-blur-sm hover:bg-white/[0.08] rounded-3xl p-8 text-left transition-all group border border-white/10"
                 >
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-300 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FACF2D] transition-colors">
                     {tour.name}
                   </h3>
-                  <p className="text-teal-200">{tour.price} onwards</p>
+                  <p className="text-slate-300">{tour.price} onwards</p>
                 </Link>
               ))}
             </div>
@@ -285,13 +221,13 @@ export default function FullWidthLayout({ post, relatedLinks }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={relatedLinks.cityTours || '/sightseeing'}
-                className="bg-white text-teal-700 px-10 py-4 rounded-full font-bold text-lg hover:bg-teal-50 transition-colors"
+                className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-6 py-3.5 font-extrabold text-black transition hover:bg-[#ffdb4d]"
               >
                 View All Tours
               </Link>
               <a
                 href="tel:+917668570551"
-                className="bg-teal-800 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-teal-900 transition-colors flex items-center gap-2"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3.5 font-bold text-white hover:bg-white/15 transition-colors"
               >
                 <Phone className="w-5 h-5" />
                 Call Now
@@ -302,41 +238,41 @@ export default function FullWidthLayout({ post, relatedLinks }) {
       )}
 
       {/* Related Content */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10">More to Explore</h2>
+          <h2 className="font-display-serif text-3xl font-bold text-slate-900 mb-10">More to Explore</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {relatedLinks?.cityPage && (
               <Link href={relatedLinks.cityPage} className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-                <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
-                  <MapPin className="w-6 h-6 text-teal-600 group-hover:text-white" />
+                <div className="w-14 h-14 bg-[#FACF2D]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FACF2D] transition-colors">
+                  <MapPin className="w-6 h-6 text-amber-600 group-hover:text-black" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">Explore {post.city}</h3>
-                <p className="text-gray-500 text-sm">City Guide & Routes</p>
+                <h3 className="font-bold text-slate-900 mb-1">Explore {post.city}</h3>
+                <p className="text-slate-500 text-sm">City Guide & Routes</p>
               </Link>
             )}
             {relatedLinks?.airportService && (
               <Link href={relatedLinks.airportService} className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-                <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
-                  <span className="text-2xl group-hover:scale-110 transition-transform">✈️</span>
+                <div className="w-14 h-14 bg-[#FACF2D]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FACF2D] transition-colors">
+                  <Plane className="w-6 h-6 text-amber-600 group-hover:text-black" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">Airport Transfer</h3>
-                <p className="text-gray-500 text-sm">Pickup & Drop</p>
+                <h3 className="font-bold text-slate-900 mb-1">Airport Transfer</h3>
+                <p className="text-slate-500 text-sm">Pickup & Drop</p>
               </Link>
             )}
             <Link href="/sightseeing" className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-              <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
-                <Eye className="w-6 h-6 text-teal-600 group-hover:text-white" />
+              <div className="w-14 h-14 bg-[#FACF2D]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FACF2D] transition-colors">
+                <Eye className="w-6 h-6 text-amber-600 group-hover:text-black" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-1">Sightseeing Tours</h3>
-              <p className="text-gray-500 text-sm">Explore destinations</p>
+              <h3 className="font-bold text-slate-900 mb-1">Sightseeing Tours</h3>
+              <p className="text-slate-500 text-sm">Explore destinations</p>
             </Link>
             <Link href="/blog" className="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all">
-              <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-teal-500 transition-colors">
-                <Bookmark className="w-6 h-6 text-teal-600 group-hover:text-white" />
+              <div className="w-14 h-14 bg-[#FACF2D]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#FACF2D] transition-colors">
+                <Bookmark className="w-6 h-6 text-amber-600 group-hover:text-black" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-1">More Articles</h3>
-              <p className="text-gray-500 text-sm">Travel guides & tips</p>
+              <h3 className="font-bold text-slate-900 mb-1">More Articles</h3>
+              <p className="text-slate-500 text-sm">Travel guides & tips</p>
             </Link>
           </div>
 
@@ -347,7 +283,7 @@ export default function FullWidthLayout({ post, relatedLinks }) {
                 <Link
                   key={index}
                   href={link.href}
-                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-gray-700 hover:bg-teal-50 hover:text-teal-700 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full text-slate-700 hover:border-[#FACF2D] hover:bg-[#FACF2D] hover:text-black transition-colors shadow-sm border border-slate-200"
                 >
                   <span>{link.icon}</span>
                   <span className="font-medium text-sm">{link.text}</span>

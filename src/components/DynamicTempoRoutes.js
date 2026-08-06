@@ -42,6 +42,15 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 const TRUST_ROW = '4.9★ · Since 2015 · No hidden charges · Pay after trip';
 
+// "Contact for details", "On request" and friends are absences wearing a value's
+// clothes. Facts that resolve to null are dropped, never rendered as a placeholder.
+// Real figures are resolved server-side in page.js via resolveRouteMetrics.
+const PLACEHOLDER_VALUE = /^(contact|on request|on-request|tbd|n\/?a|-|—)/i;
+const realValue = (v) => {
+  const s = String(v ?? '').trim();
+  return s && !PLACEHOLDER_VALUE.test(s) ? s : null;
+};
+
 export default function DynamicTempoRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet, relatedRoutes, corridorLinks = [] } = data;
 
@@ -54,12 +63,17 @@ export default function DynamicTempoRoutesClient({ data }) {
 
   const routeDescription = routeDescriptions[routeSlug] || null;
   const displayDestination = formatDestinationForDisplay(destination);
+  // Distance / drive time for the compact fact strips. Prefer the clean dataset
+  // figure resolved server-side ("530 km"); routeDescription values can be prose-y.
+  // Null means no source knows it — callers must omit the fact entirely.
+  const routeDistance = realValue(routeData?.distance) || realValue(routeDescription?.distance);
+  const routeDuration = realValue(routeData?.duration) || realValue(routeDescription?.travelTime);
   // Phase 3: unique, entity-rich, slug-seeded intro so each tempo route page reads differently.
   const uniqueIntro = generateUniqueIntro({
     origin,
     destination: displayDestination,
-    distance: routeData?.distance,
-    time: routeData?.duration,
+    distance: routeDistance,
+    time: routeDuration,
     highway: '',
     attractions: Array.isArray(localSightseeing)
       ? localSightseeing.slice(0, 2).map((s) => (typeof s === 'string' ? s : (s.title || s.name || s.place || ''))).filter(Boolean)
@@ -90,9 +104,9 @@ export default function DynamicTempoRoutesClient({ data }) {
   // Fare estimate for the selected seater — mirrors PriceCalculator's
   // oneWayEqualsRoundTrip math exactly (distance × 2 × rate; billed both ways).
   const distanceKmNum = useMemo(() => {
-    const n = parseFloat(String(routeData?.distance || '').replace(/[^0-9.]/g, ''));
+    const n = parseFloat(String(routeDistance || '').replace(/[^0-9.]/g, ''));
     return Number.isFinite(n) && n > 0 ? n : null;
-  }, [routeData?.distance]);
+  }, [routeDistance]);
   const selectedRateNum = selectedVehicle
     ? parseInt(String(selectedVehicle.outstationRate || '').replace(/[^\d]/g, ''), 10) || null
     : null;
@@ -303,10 +317,10 @@ export default function DynamicTempoRoutesClient({ data }) {
               <RouteLine from={origin} to={displayDestination} tone="dark" />
               <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-white/60">
                 <span className="inline-flex items-center gap-1">
-                  <MapPin className="h-3.5 w-3.5 text-amber-400" /> {routeData?.distance || 'Distance on request'}
+                  <MapPin className="h-3.5 w-3.5 text-amber-400" /> {routeDistance || 'Distance on request'}
                 </span>
                 <span className="inline-flex items-center gap-1">
-                  <Clock className="h-3.5 w-3.5 text-amber-400" /> {routeData?.duration || 'Drive time on request'}
+                  <Clock className="h-3.5 w-3.5 text-amber-400" /> {routeDuration || 'Drive time on request'}
                 </span>
                 <span className="inline-flex items-center gap-1">
                   <Users className="h-3.5 w-3.5 text-amber-400" /> {seaterRates[0]?.seats || 12}–{seaterRates[seaterRates.length - 1]?.seats || 26} seats
@@ -542,8 +556,49 @@ export default function DynamicTempoRoutesClient({ data }) {
             <h3 className="mb-4 text-xl font-black text-white md:text-2xl">
               {origin} to {displayDestination} tempo traveller fare chart
             </h3>
-            <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.03]">
-              <table className="w-full min-w-[560px] text-left text-sm text-slate-200">
+            {/* Mobile: stacked cards — no sideways scrolling */}
+            <div className="space-y-3 md:hidden">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                Tempo traveller rates from {origin} to {displayDestination}, 2026 — one way and round trip are priced the same
+              </p>
+              {fleetList.map((vehicle) => (
+                <div key={`fare-card-${vehicle.id}`} className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+                  {vehicle.image && (
+                    <div className="relative h-28 w-full">
+                      <Image
+                        src={vehicle.image}
+                        alt={`${vehicle.name} — ${vehicle.capacity}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 0px"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 via-slate-950/55 to-transparent" aria-hidden />
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <p className="text-sm font-bold text-white">{vehicle.name}</p>
+                    <dl className="mt-2.5 space-y-1.5">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-white/45">Seating</dt>
+                        <dd className="text-right text-sm text-slate-300">{vehicle.capacity}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-white/45">Outstation rate</dt>
+                        <dd className="text-right text-sm font-bold text-amber-400">{vehicle.outstationRate}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-3">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-white/45">Local (8 hrs / 80 km)</dt>
+                        <dd className="text-right text-sm text-slate-300">{vehicle.localRate}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: true semantic table, fits its container */}
+            <div className="hidden overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] md:block">
+              <table className="w-full text-left text-sm text-slate-200">
                 <caption className="px-4 pb-3 pt-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
                   Tempo traveller rates from {origin} to {displayDestination}, 2026 — one way and round trip are priced the same
                 </caption>
@@ -558,7 +613,22 @@ export default function DynamicTempoRoutesClient({ data }) {
                 <tbody className="divide-y divide-white/10">
                   {fleetList.map((vehicle) => (
                     <tr key={`fare-${vehicle.id}`} className="transition-colors hover:bg-white/5">
-                      <th scope="row" className="px-4 py-3 text-left font-semibold text-white">{vehicle.name}</th>
+                      <th scope="row" className="px-4 py-3 text-left font-semibold text-white">
+                        <span className="flex items-center gap-3">
+                          {vehicle.image && (
+                            <span className="relative block h-10 w-16 shrink-0 overflow-hidden rounded-lg ring-1 ring-white/10">
+                              <Image
+                                src={vehicle.image}
+                                alt=""
+                                fill
+                                sizes="64px"
+                                className="object-cover"
+                              />
+                            </span>
+                          )}
+                          {vehicle.name}
+                        </span>
+                      </th>
                       <td className="px-4 py-3 text-slate-300">{vehicle.capacity}</td>
                       <td className="px-4 py-3 font-bold text-amber-400">{vehicle.outstationRate}</td>
                       <td className="px-4 py-3 text-slate-300">{vehicle.localRate}</td>
@@ -579,19 +649,26 @@ export default function DynamicTempoRoutesClient({ data }) {
       {/* ============================================ */}
       {/* AEO QUICK ANSWER — above-the-fold extractable answer */}
       {/* ============================================ */}
-      <section className="bg-slate-950 px-4 pb-10 sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <QuickAnswer
-            tone="dark"
-            question={`How much does a tempo traveller from ${origin} to ${displayDestination} cost?`}
-            answer={`${origin} to ${displayDestination} tempo traveller hire is charged per kilometre by seater: ${seaterRateSentence}${routeData?.distance ? `, over roughly ${routeData.distance}` : ''}${routeData?.duration ? ` and about ${routeData.duration} of driving` : ''}. A tempo traveller costs the same for a one-way drop as for a round trip, because the vehicle has to return to base either way — there is no one-way discount on tempo. Every tempo is AC with pushback seats, a music system and charging points, and the rate covers fuel and driver; tolls, parking, state permits and the night driver allowance are billed extra.`}
-            facts={[
-              { label: 'Distance', value: routeData?.distance || 'On request' },
-              { label: 'Drive time', value: routeData?.duration || 'On request' },
-              { label: `From (${seaterRates[0]?.seats || 12} seater)`, value: lowestRate },
-              { label: 'Seating', value: `${seaterRates[0]?.seats || 12} to ${seaterRates[seaterRates.length - 1]?.seats || 26} seats` },
-            ]}
-          />
+      <section className="relative overflow-hidden bg-slate-950 px-4 pb-12 pt-4 sm:px-6">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-56 w-[34rem] -translate-x-1/2 rounded-full bg-amber-400/10 blur-3xl" aria-hidden />
+        <div className="relative mx-auto max-w-4xl">
+          {/* Serif display heading carries the question; QuickAnswer keeps the answer */}
+          <h2 className="font-display-serif mb-5 text-balance text-center text-[1.6rem] font-black leading-[1.15] tracking-tight text-white sm:text-4xl">
+            How much does a tempo traveller from {origin} to {displayDestination}{' '}
+            <span className="text-gradient-gold">cost?</span>
+          </h2>
+          <div className="border-gradient-gold glass-dark rounded-3xl p-2 sm:p-3">
+            <QuickAnswer
+              tone="dark"
+              answer={`${origin} to ${displayDestination} tempo traveller hire is charged per kilometre by seater: ${seaterRateSentence}${routeDistance ? `, over roughly ${routeDistance}` : ''}${routeDuration ? ` and about ${routeDuration} of driving` : ''}. A tempo traveller costs the same for a one-way drop as for a round trip, because the vehicle has to return to base either way — there is no one-way discount on tempo. Every tempo is AC with pushback seats, a music system and charging points, and the rate covers fuel and driver; tolls, parking, state permits and the night driver allowance are billed extra.`}
+              facts={[
+                { label: 'Distance', value: routeDistance },
+                { label: 'Drive time', value: routeDuration },
+                { label: `From (${seaterRates[0]?.seats || 12} seater)`, value: lowestRate },
+                { label: 'Seating', value: `${seaterRates[0]?.seats || 12} to ${seaterRates[seaterRates.length - 1]?.seats || 26} seats` },
+              ].filter((f) => realValue(f.value))}
+            />
+          </div>
         </div>
       </section>
 
@@ -599,66 +676,71 @@ export default function DynamicTempoRoutesClient({ data }) {
       {/* JOURNEY — route guide + booking glass card    */}
       {/* ============================================ */}
       <Section tone="aurora">
-        <AuroraHeading
-          tone="dark"
-          eyebrow="Journey details"
-          title={`${origin} to ${displayDestination}`}
-          highlight="road trip guide"
-          subtitle={`Everything you need to know about the ${origin} to ${destination} route by tempo traveller — distance, drive time, stops and booking.`}
-        />
-
-        {/* Info stat chips */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3 md:gap-4">
-          <div className="glass-dark flex items-center gap-3 rounded-2xl px-5 py-3">
-            <div className="rounded-xl bg-amber-400/15 p-2">
-              <Navigation className="h-5 w-5 text-amber-400" />
-            </div>
-            <div>
-              <p className="text-xs font-medium text-white/50">Distance</p>
-              <p className="font-bold text-white">{routeDescription?.distance || routeData?.distance || 'On request'}</p>
-            </div>
-          </div>
-          <div className="glass-dark flex items-center gap-3 rounded-2xl px-5 py-3">
-            <div className="rounded-xl bg-amber-400/15 p-2">
-              <Clock className="h-5 w-5 text-amber-400" />
-            </div>
-            <div>
-              <p className="text-xs font-medium text-white/50">Travel Time</p>
-              <p className="font-bold text-white">{routeDescription?.travelTime || routeData?.duration || 'On request'}</p>
-            </div>
-          </div>
-          <div className="glass-dark flex items-center gap-3 rounded-2xl px-5 py-3">
-            <div className="rounded-xl bg-amber-400/15 p-2">
-              <Mountain className="h-5 w-5 text-amber-400" />
-            </div>
-            <div>
-              <p className="text-xs font-medium text-white/50">Destination Type</p>
-              <p className="font-bold text-white">{routeData.type || 'Tourism'}</p>
-            </div>
-          </div>
-          {routeDescription?.bestSeason && (
-            <div className="glass-dark flex items-center gap-3 rounded-2xl px-5 py-3">
-              <div className="rounded-xl bg-amber-400/15 p-2">
-                <Sun className="h-5 w-5 text-amber-400" />
-              </div>
-              <div>
-                <p className="text-xs font-medium text-white/50">Best Season</p>
-                <p className="text-sm font-bold text-white">{routeDescription.bestSeason}</p>
-              </div>
-            </div>
-          )}
-          <div className="glass-dark flex items-center gap-3 rounded-2xl px-5 py-3">
-            <div className="rounded-xl bg-amber-400/15 p-2">
-              <Calendar className="h-5 w-5 text-amber-400" />
-            </div>
-            <div>
-              <p className="text-xs font-medium text-white/50">Availability</p>
-              <p className="font-bold text-white">
-                {routeData.exists ? 'Popular route · instant booking' : '365 days · 24/7 booking'}
-              </p>
-            </div>
-          </div>
+        {/* Serif editorial heading — ties this band to the hero display face */}
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <span className="mb-3 inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-amber-500 sm:text-xs">
+            <span className="h-px w-6 bg-amber-500/60" />
+            Journey details
+          </span>
+          <h2 className="font-display-serif text-balance text-[1.6rem] font-black leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+            {origin} to {displayDestination} <span className="text-gradient-gold">road trip guide</span>
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-slate-300/80 sm:text-base lg:text-lg">
+            Everything you need to know about the {origin} to {destination} route by tempo traveller — distance, drive time, stops and booking.
+          </p>
         </div>
+
+        {/* Journey stat tiles */}
+        {(() => {
+          const journeyStats = [
+            {
+              icon: Navigation,
+              label: 'Distance',
+              value: routeDistance,
+              foil: true,
+            },
+            {
+              icon: Clock,
+              label: 'Travel Time',
+              value: routeDuration,
+            },
+            {
+              icon: Mountain,
+              label: 'Destination Type',
+              value: routeData.type || 'Tourism',
+            },
+            ...(routeDescription?.bestSeason
+              ? [{ icon: Sun, label: 'Best Season', value: routeDescription.bestSeason }]
+              : []),
+            {
+              icon: Calendar,
+              label: 'Availability',
+              value: routeData.exists ? 'Popular route · instant booking' : '365 days · 24/7 booking',
+            },
+          ].filter((stat) => realValue(stat.value));
+          const lgCols = { 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4', 5: 'lg:grid-cols-5' }[journeyStats.length] || 'lg:grid-cols-3';
+          return (
+            <div className={`mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 ${lgCols}`}>
+              {journeyStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-colors duration-300 hover:border-amber-400/35"
+                >
+                  <span className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-amber-400/10 blur-2xl" aria-hidden />
+                  <span className="relative inline-flex rounded-xl bg-amber-400/15 p-2.5 ring-1 ring-amber-400/20">
+                    <stat.icon className="h-5 w-5 text-amber-400" />
+                  </span>
+                  <p className="relative mt-3 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/45">
+                    {stat.label}
+                  </p>
+                  <p className={`relative mt-1 font-black leading-tight ${stat.foil ? 'text-gold-foil text-xl sm:text-2xl' : 'text-sm text-white sm:text-base'}`}>
+                    {stat.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          );
+        })()}
 
         {/* Content grid: overview + stops + booking card */}
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 md:gap-8">
@@ -694,26 +776,42 @@ export default function DynamicTempoRoutesClient({ data }) {
                   </span>
                   Popular Stops En-Route
                 </h3>
-                <div className="space-y-3">
-                  {routeDescription.stops.map((stop, index) => (
-                    <div key={index} className="group flex items-center gap-4">
-                      <div className="relative flex flex-col items-center">
-                        <div className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${
-                          index === 0 || index === routeDescription.stops.length - 1
-                            ? 'bg-amber-400 text-slate-900'
-                            : 'border border-white/20 bg-white/10 text-white/70'
-                        }`}>
-                          {index + 1}
-                        </div>
-                        {index < routeDescription.stops.length - 1 && (
-                          <div className="mt-1 h-4 w-0.5 bg-amber-400/30" />
-                        )}
-                      </div>
-                      <span className="font-medium text-white/80 transition-colors group-hover:text-amber-400">
-                        {stop}
-                      </span>
-                    </div>
-                  ))}
+                <div className="relative">
+                  {/* Gold lane line running the length of the journey */}
+                  <span
+                    className="absolute bottom-5 left-[15px] top-5 w-0.5 opacity-70"
+                    style={{ backgroundImage: 'repeating-linear-gradient(180deg, #FACF2D 0 12px, transparent 12px 24px)' }}
+                    aria-hidden
+                  />
+                  <ol className="relative space-y-3">
+                    {routeDescription.stops.map((stop, index) => {
+                      const isFirst = index === 0;
+                      const isLast = index === routeDescription.stops.length - 1;
+                      return (
+                        <li key={index} className="group relative pl-12">
+                          <span
+                            className={`absolute left-0 top-2.5 z-10 flex h-8 w-8 items-center justify-center rounded-full text-xs font-black ${
+                              isLast
+                                ? 'bg-gradient-to-br from-[#ffe9a0] via-[#facf2d] to-[#b8860b] text-slate-900 ring-2 ring-amber-300/40'
+                                : isFirst
+                                  ? 'bg-amber-400 text-slate-900 ring-2 ring-amber-400/30'
+                                  : 'bg-slate-900 text-white/70 ring-1 ring-white/20'
+                            }`}
+                          >
+                            {index + 1}
+                          </span>
+                          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition-colors duration-300 group-hover:border-amber-400/35">
+                            <p className="font-bold text-white">{stop}</p>
+                            {(isFirst || isLast) && (
+                              <p className="mt-0.5 text-xs text-white/45">
+                                {isLast ? 'Final destination' : 'Departure point'}
+                              </p>
+                            )}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
                 </div>
               </div>
             </>
@@ -793,28 +891,21 @@ export default function DynamicTempoRoutesClient({ data }) {
               How much is a {origin} to {destination} tempo traveller in 2026?
             </h2>
             <div className="key-info mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-              <div className="rounded-xl border border-amber-100 bg-white p-4 text-center">
-                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Distance</p>
-                <p className="text-xl font-black text-slate-900">{routeData?.distance || 'Contact Us'}</p>
-              </div>
-              <div className="rounded-xl border border-amber-100 bg-white p-4 text-center">
-                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Duration</p>
-                <p className="text-xl font-black text-slate-900">{routeData?.duration || 'Contact Us'}</p>
-              </div>
-              <div className="rounded-xl border border-amber-100 bg-white p-4 text-center">
-                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Starting Rate</p>
-                <p className="text-xl font-black text-green-700">{lowestRate}</p>
-              </div>
-              <div className="rounded-xl border border-amber-100 bg-white p-4 text-center">
-                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Capacity</p>
-                <p className="text-xl font-black text-slate-900">
-                  {seaterRates[0]?.seats || 12}-{seaterRates[seaterRates.length - 1]?.seats || 26} Seat
-                </p>
-              </div>
+              {[
+                { label: 'Distance', value: routeDistance },
+                { label: 'Duration', value: routeDuration },
+                { label: 'Starting Rate', value: lowestRate, accent: true },
+                { label: 'Capacity', value: `${seaterRates[0]?.seats || 12}-${seaterRates[seaterRates.length - 1]?.seats || 26} Seat` },
+              ].filter((f) => realValue(f.value)).map((f) => (
+                <div key={f.label} className="rounded-xl border border-amber-100 bg-white p-4 text-center">
+                  <p className="mb-1 text-xs font-semibold uppercase text-slate-500">{f.label}</p>
+                  <p className={`text-xl font-black ${f.accent ? 'text-green-700' : 'text-slate-900'}`}>{f.value}</p>
+                </div>
+              ))}
             </div>
             <p className="faq-answer speakable-lead text-base leading-relaxed text-slate-700 md:text-lg">
               Tempo traveller hire from <strong>{origin} to {destination}</strong> starts at <strong>{lowestRate}</strong> for a {seaterRates[0]?.seats || 12} seater AC tempo.
-              {routeData?.distance && ` The route covers approximately ${routeData.distance}`}{routeData?.duration && ` and takes around ${routeData.duration}`}.
+              {routeDistance && ` The route covers approximately ${routeDistance}`}{routeDuration && ` and takes around ${routeDuration}`}.
               Rates are per kilometre and set by seater — <strong>{seaterList}</strong> — and a one-way drop is billed at the
               same rate as a round trip. Every tempo has pushback seats, AC, a music system, charging points and ample
               luggage space. Perfect for family trips, pilgrimages, wedding groups and corporate outings.
@@ -1250,8 +1341,10 @@ export default function DynamicTempoRoutesClient({ data }) {
  * visual consistency + ranking lift.
  */
 function TempoRouteRichBlock({ origin, destination, displayDestination, routeData, routeSlug }) {
-  const distanceKm = parseFloat(((routeData?.distance) || '').toString().replace(/[^0-9.]/g, '')) || 300;
-  const durationHrs = parseFloat(((routeData?.duration) || '').toString().replace(/[^0-9.]/g, '')) || 6;
+  const routeDistance = realValue(routeData?.distance);
+  const routeDuration = realValue(routeData?.duration);
+  const distanceKm = parseFloat((routeDistance || '').replace(/[^0-9.]/g, '')) || 300;
+  const durationHrs = parseFloat((routeDuration || '').replace(/[^0-9.]/g, '')) || 6;
   // Canonical tempo card rates (12→₹20/km, 17→₹24/km) — must match the fare
   // chart, the seater selector and the PriceCalculator below.
   const seater12 = 20;
@@ -1269,7 +1362,7 @@ function TempoRouteRichBlock({ origin, destination, displayDestination, routeDat
     origin,
     destination: displayDestination,
     distanceKm,
-    durationText: routeData?.duration,
+    durationText: routeDuration,
   });
 
   const founderQuote = getFounderQuoteForContext('tempo');

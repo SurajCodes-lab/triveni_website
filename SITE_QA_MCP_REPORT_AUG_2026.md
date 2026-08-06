@@ -74,6 +74,47 @@ Every deploy = build → **this MCP matrix on the local production build** → f
 ## 5b. Train C addendum (Ultra-Premium v2, 5 Aug)
 Distance + toll v2 redesigns were screenshot-approved at 1440px (cinematic heroes, foil fares, Toll Ledger verified visually) and grep-verified for overflow-safety primitives. A 112-check width matrix (4 pages × 28 widths) was started locally; the MCP browser crashed mid-run (stale profile lock) before results could be read. **Owed: post-deploy production matrix on /distance and /toll-cost templates once the browser tooling restarts.** Risk assessed low: same page shell cleared 1,676 checks; both new clients wrap all tables in overflow-x-auto and use fixed-height image containers (grep-verified).
 
+## 5c. Manual visual audit — round 2 (5 Aug, live production, eyes-on screenshots)
+
+**Method:** true 360×800 mobile emulation against the LIVE site, section-by-section viewport screenshots reviewed manually (not just measured) on tempo hub, bus hub, distance route; DOM cross-checks (header/H1 counts) to separate real defects from screenshot-stitching artifacts.
+
+**What looked right:** tempo fleet cards, bus fleet cards + filter chips, and the v2 distance hero all render premium at 360px — no card-layout breakage found on audited templates.
+
+**Defects found → fixed (Train D):**
+| # | Defect | Where | Fix |
+|---|---|---|---|
+| 10 | Sticky bottom bar rendered "from **From** ₹20/km" (double word) on tempo AND bus hubs | `MobileStickyBar` prepends "from" to labels that already start with "From" | Root-cause fix in MobileStickyBar — normalizes any incoming label (`replace(/^from\s+/i)`), covers every current and future page |
+| 11 | Browser-tab title "Bus Hire India ₹35/km" vs canonical from-₹30 (body was correct) | `bus-routes/page.js` metadata (title/OG/twitter ×6) | All 6 occurrences → "from ₹30/km" |
+| 12 | **Users saw days-old designs after every deploy** ("everything looks same") | `next.config.mjs` sent `s-maxage=604800` with no browser directive → browsers heuristically cached HTML for days; Cloudflare itself was DYNAMIC (not caching) | Header → `public, max-age=0, must-revalidate, s-maxage=3600, swr=86400`: browsers revalidate every visit, CDN still shields origin |
+| 13 | Sideways-scrolling tables on mobile (user: "looks ugly") — tempo/bus fare charts, one-way/round-trip fare tables, calculator rate card, Toll Ledger, distance ×3 | 7 template files + shared DataTable | **Dual-render pattern**: `md:hidden` stacked label/value cards on mobile (Toll Ledger = per-plaza cards + gold total card), true full-width table on md+; ALL `overflow-x-auto` table wrappers eliminated (verified 0 remaining across the 7 files); shared DataTable upgraded so every consumer inherits |
+
+**Standing rule added to the premium bar:** no sideways scrolling anywhere on mobile — tables must card-stack below md.
+
+## 5c-bis. Manual visual audit — round 3 (6 Aug, Train E pre-ship, local production build)
+
+**Method:** MCP screenshots at 1440px and true 360×800 on the three Wave-1 redesigned families (blog post + hub + a layout-converted heritage post, sightseeing city, airport city), plus in-page overflow/broken-image probes.
+
+**Passed:** blog post hero (Fraunces serif over photo, gold dashes), blog hub (foil headline, journal identity, lane divider), layout-converted posts at 360px, sightseeing city (visible Taj hero, emerald serif accent, 0px overflow, 0 broken images), airport mobile hero.
+
+**Defect found → fixed before ship:**
+| # | Defect | Where | Fix |
+|---|---|---|---|
+| 19 | Airport hero badge rendered "CODE 3123 TERM" — the terminals string "3 Terminals (T1, T2, T3)" was digit-stripped to "3123" (visible on every multi-terminal airport city page at sm+) | `CityAirportServiceClient.js` TerminalBadge accentName | Take only the first number (`match(/\d+/)`), column relabeled "Code" → "Terminals" — now reads IATA DEL · Terminals 3 |
+
+## 5d. Sitewide rate-contradiction audit — round 2 (6 Aug, pre-Train-E)
+
+**Trigger:** Train E marker verification surfaced "Tempo ₹24/km" in the airport pages' metadata — traced not to the airport template but to the **global brand metadata in layout.js**, which had been quoting the 17-seater rate as if it were the tempo starting rate on every page of the site (including the meta description Google shows in search results). A full sweep followed.
+
+| # | Defect | Where | Fix |
+|---|---|---|---|
+| 14 | "Tempo ₹24/km" / "starting ₹24/km" as the generic tempo rate (canonical start = ₹20/km, 12-seater) | layout.js brand metadata + Offer schema (price "24") · one-way-cab, round-trip-cab, outstation-cabs, local-taxi, services hub pages · outstationCityData (6 cities) · data.js fleet card | All → "from ₹20/km"; schema Offer price → "20"; "Innova/Tempo ₹24/km" → "Innova ₹18/km, Tempo from ₹20/km" |
+| 15 | howToReachRouteData: 25 route entries quoting "Tempo Traveller (12-seater)" at ₹24/km **with fares computed at that rate** | howToReachRouteData.js | All 25 relabeled ₹20/km and every paired fare recomputed (price × 20⁄24) |
+| 16 | 16-seater tempo quoted "From ₹24/km" (canonical ₹22) | seaterTempoData specs | → From ₹22/km |
+| 17 | 17-seater quoted as a "₹24–26/km" range in comparison/blog content (canonical flat ₹24) | comparisonData, sightseeingBlogs, 12-vs-17 page | Ranges tightened to flat canonical rates |
+| 18 | **SUV billed at ₹14/km on informational templates while the booking pages those templates funnel into bill Ertiga ₹15/Innova ₹18** — a visible ₹300+ discrepancy in one user session (the owed "₹14-vs-₹15" audit) | distanceData + travelByCarData + TollCostClient + busVsCabData `calcFares`-class computations (× 14 → × 15) · rate labels in DistanceGuideClient/TravelByCarClient/TollCostClient · FAQ/homepage/[cityName]/best-time/cab-service/taxiFareData (suv: 14 → 15 per city) · roadTripData (8 SUV trip totals rescaled ₹14→₹15/km with matching prose) · fleet + costBlogs Innova content (₹14-16/km → canonical ₹18/km) | All informational fares now match booking-page rates exactly |
+
+**Deliberately untouched (business decision needed):** `roundTripData.js` computes round-trip SUV fares at ₹14/km × 0.9 — these are published money-page prices with their own discount structure; changing them raises live quoted fares ~7%. Flagged alongside the existing tempo hub-vs-route price conflict for the owner's call.
+
 ## 6. Verdict
 
 The build shipping as Train B is the most-tested state this site has ever been in: **1,676 structural checks clean across 46 screen widths**, nine functional defects fixed this cycle, and the two from-scratch redesigns (tempo, bus) validated both structurally and visually before deploy.

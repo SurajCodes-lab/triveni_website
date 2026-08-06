@@ -466,9 +466,50 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
 
           {/* ── Semantic fare table (AEO): same numbers as the cards above, in a
                 real <table> so AI answer engines can extract them as data. ── */}
-          <div className="mt-10 bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm min-w-[720px]" data-speakable="true">
+          {/* Mobile: stacked fare cards — no sideways scrolling */}
+          <div className="mt-10 space-y-3 md:hidden">
+            <p className="text-white/50 text-xs">
+              {route.from} to {route.to} one-way cab fares by vehicle ({route.distance}, minimum 300 km billing)
+            </p>
+            {fareTableRows.map((v, i) => (
+              <div key={`fare-card-${i}`} className="bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/10 p-4">
+                <p className="text-white font-bold text-sm">
+                  {v.name}
+                  <span className="block text-white/40 text-xs font-medium mt-0.5">{v.model}</span>
+                </p>
+                <dl className="mt-3 space-y-1.5">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Seats</dt>
+                    <dd className="text-right text-sm text-white/70">{v.seats}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Rate</dt>
+                    <dd className="text-right text-sm text-white/70">{v.rate}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">One-way fare</dt>
+                    <dd className="text-right text-sm text-amber-400 font-black">{v.ow}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Round-trip fare</dt>
+                    <dd className="text-right text-sm text-white/40 line-through">{v.rt}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Luggage</dt>
+                    <dd className="text-right text-xs leading-relaxed text-white/60">{v.bags}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Best for</dt>
+                    <dd className="text-right text-xs leading-relaxed text-white/60">{v.best}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: true semantic table, fits its container */}
+          <div className="mt-10 hidden bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden md:block">
+            <table className="w-full text-sm" data-speakable="true">
                 <caption className="text-left text-white/50 text-xs px-5 pt-5 pb-3 caption-top">
                   {route.from} to {route.to} one-way cab fares by vehicle ({route.distance}, minimum 300 km billing)
                 </caption>
@@ -499,8 +540,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
                     </tr>
                   ))}
                 </tbody>
-              </table>
-            </div>
+            </table>
           </div>
 
           <p className="text-white/35 text-xs mt-5 text-center">Toll, parking &amp; inter-state tax extra at actual. Driver allowance already included.</p>
@@ -793,9 +833,43 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
             <p className="text-white/40 mt-4 text-base md:text-lg max-w-2xl mx-auto">An honest comparison so you can pick what actually fits your trip.</p>
           </div>
 
-          <div className="bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm min-w-[760px]">
+          {/* Mobile: one card per mode — no sideways scrolling */}
+          <div className="space-y-3 md:hidden">
+            {comparison.map((c, i) => (
+              <div
+                key={`mode-card-${i}`}
+                className={`backdrop-blur-xl rounded-2xl border p-4 ${i === 0 ? 'border-green-500/30 bg-green-500/5' : 'border-white/10 bg-white/[0.03]'}`}
+              >
+                <p className="text-white font-bold text-sm">
+                  {i === 0 && <span className="inline-block mr-2 text-[10px] font-black bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full border border-green-500/30 align-middle">RECOMMENDED</span>}
+                  {c.mode}
+                </p>
+                <dl className="mt-3 space-y-1.5">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Time</dt>
+                    <dd className="text-right text-sm text-white/70">{c.time}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Cost</dt>
+                    <dd className="text-right text-sm text-amber-400 font-bold">{c.cost}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Pros</dt>
+                    <dd className="text-right text-xs leading-relaxed text-white/60">{c.pros}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-white/40">Best For</dt>
+                    <dd className="text-right text-xs leading-relaxed text-white/60">{c.best}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+            <p className="text-white/40 text-xs pt-2 text-center">Prices are approximate market rates as of 2026. Triveni Cabs one-way fare is guaranteed at the time of booking.</p>
+          </div>
+
+          {/* Desktop: true semantic table, fits its container */}
+          <div className="hidden bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden md:block">
+            <table className="w-full text-sm">
                 <thead className="bg-amber-500/10 border-b border-amber-500/20">
                   <tr>
                     <th className="text-left p-5 text-amber-300 font-bold uppercase text-xs tracking-wider">Mode</th>
@@ -819,8 +893,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
                     </tr>
                   ))}
                 </tbody>
-              </table>
-            </div>
+            </table>
             <p className="text-white/40 text-xs p-5 text-center border-t border-white/5">Prices are approximate market rates as of 2026. Triveni Cabs one-way fare is guaranteed at the time of booking.</p>
           </div>
         </div>

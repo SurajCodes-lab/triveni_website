@@ -15,7 +15,7 @@ const faqCategories = [
       },
       {
         q: "What is your per-km rate for outstation cabs?",
-        a: "Our outstation cab rates start at ₹11/km for sedan (Swift Dzire/Honda Amaze), ₹14/km for SUV (Innova/Ertiga), ₹20/km for Tempo Traveller (12-26 seater), and ₹30/km for bus hire (22-56 seater). These are all-inclusive rates with no hidden charges."
+        a: "Our outstation cab rates start at ₹11/km for sedan (Swift Dzire/Honda Amaze), ₹15/km for SUV (Ertiga), ₹18/km for Innova Crysta, ₹20/km for Tempo Traveller (12-26 seater), and ₹30/km for bus hire (22-56 seater). These are all-inclusive rates with no hidden charges."
       },
       {
         q: "Do you charge for return trips on one-way bookings?",
@@ -45,7 +45,7 @@ const faqCategories = [
       },
       {
         q: "Which car is best for a family trip — sedan or SUV?",
-        a: "For a family of 4 with moderate luggage, a sedan (Swift Dzire) is comfortable and budget-friendly at ₹11/km. For families of 5-7 or those with heavy luggage, an SUV (Innova/Ertiga) at ₹14/km provides more space and comfort. For groups of 8+, a Tempo Traveller at ₹20/km is the best value."
+        a: "For a family of 4 with moderate luggage, a sedan (Swift Dzire) is comfortable and budget-friendly at ₹11/km. For families of 5-7 or those with heavy luggage, an SUV (Innova/Ertiga) at ₹15/km provides more space and comfort. For groups of 8+, a Tempo Traveller at ₹20/km is the best value."
       },
       {
         q: "Are your vehicles AC and well-maintained?",

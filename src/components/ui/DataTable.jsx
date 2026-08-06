@@ -1,22 +1,54 @@
 // src/components/ui/DataTable.jsx
 //
-// Always-scrollable table wrapper — the canonical fix for "tables get cropped"
-// on mobile. Renders a header + rows, never clips: on narrow screens it scrolls
-// horizontally to the screen edge with a soft fade affordance.
+// Responsive data table — NO sideways scrolling anywhere (user verdict:
+// scrolling tables look ugly on phones).
+//   · mobile (<md): each row renders as a stacked card — first column becomes
+//     the card title, remaining columns become label/value lines.
+//   · md+: a true semantic <table>, full width, no minWidth forcing overflow.
 //
 // columns: [{ key, label, align?, className? }]
 // rows:    array of objects keyed by column.key (values may be strings or JSX)
 // tone:    'light' | 'dark'
 
-export default function DataTable({ columns = [], rows = [], tone = 'light', minWidth = 560, caption, className = '' }) {
+export default function DataTable({ columns = [], rows = [], tone = 'light', caption, className = '' }) {
   const dark = tone === 'dark';
+  const [head, ...rest] = columns;
+
   return (
     <div className={`relative ${className}`}>
-      <div className="scroll-x-edge scrollbar-hide rounded-2xl">
-        <table
-          className={`w-full text-sm ${dark ? 'text-slate-200' : 'text-slate-700'}`}
-          style={{ minWidth }}
-        >
+      {/* ── Mobile: stacked cards, zero horizontal scroll ── */}
+      <div className="space-y-3 md:hidden">
+        {rows.map((row, i) => (
+          <div
+            key={i}
+            className={`rounded-2xl border p-4 ${
+              dark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-white shadow-sm'
+            }`}
+          >
+            {head && (
+              <p className={`text-sm font-bold ${dark ? 'text-white' : 'text-slate-900'}`}>
+                {row[head.key]}
+              </p>
+            )}
+            <dl className="mt-2.5 space-y-1.5">
+              {rest.map((c) => (
+                <div key={c.key} className="flex items-baseline justify-between gap-3">
+                  <dt className={`text-xs font-semibold uppercase tracking-wide ${dark ? 'text-white/45' : 'text-slate-400'}`}>
+                    {c.label}
+                  </dt>
+                  <dd className={`text-right text-sm ${dark ? 'text-slate-200' : 'text-slate-700'}`}>
+                    {row[c.key]}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+
+      {/* ── Desktop: true semantic table, fits its container ── */}
+      <div className="hidden overflow-hidden rounded-2xl md:block">
+        <table className={`w-full text-sm ${dark ? 'text-slate-200' : 'text-slate-700'}`}>
           {caption && <caption className="sr-only">{caption}</caption>}
           <thead>
             <tr className={dark ? 'bg-white/5' : 'bg-slate-50'}>
@@ -24,7 +56,7 @@ export default function DataTable({ columns = [], rows = [], tone = 'light', min
                 <th
                   key={c.key}
                   scope="col"
-                  className={`px-3 py-3 sm:px-4 font-bold whitespace-nowrap ${dark ? 'text-white' : 'text-slate-900'} ${
+                  className={`px-3 py-3 sm:px-4 font-bold ${dark ? 'text-white' : 'text-slate-900'} ${
                     c.align === 'right' ? 'text-right' : c.align === 'center' ? 'text-center' : 'text-left'
                   } ${c.className || ''}`}
                 >

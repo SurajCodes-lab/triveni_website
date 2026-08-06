@@ -1,34 +1,70 @@
 'use client';
 
+// ============================================================================
+// SightseeingMainClient — Ultra-Premium v2 (Aug 2026)
+// The /sightseeing hub. Family identity: EMERALD/TEAL on slate-950; foil
+// headline = emerald-tinted gradient (from-emerald-200 via-emerald-400 to
+// teal-600); GOLD is reserved for CTAs and prices only.
+// Zero framer-motion (CSS-only transitions, INP-friendly); icons only from
+// '@/components/ui/icons'; fixed-height image containers (no CLS).
+// ============================================================================
+
 import { useState, memo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
-  MapPinIcon,
-  ClockIcon,
-  CurrencyRupeeIcon,
-  SparklesIcon,
-  StarIcon,
-  UserGroupIcon,
-  CalendarIcon,
-  ChevronRightIcon,
-  HeartIcon,
-  CheckCircleIcon,
-  PhoneIcon,
-  ChevronDownIcon
-} from '@heroicons/react/24/outline';
-import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+  MapPin, Clock, Sparkles, Star, Users, Calendar, ChevronRight, ChevronDown,
+  Heart, CheckCircle, Phone, MessageCircle, Compass, Camera
+} from '@/components/ui/icons';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
-import { trackWhatsAppClick } from '@/utilis/analytics';
+import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { getSightseeingReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
 import { getUrgencySignals } from '@/utilis/sightseeingEnrichment';
 
 // Real review snippets for the hub (rotates from the sightseeing review pool)
 const HUB_REVIEWS = getSightseeingReviews('sightseeing-hub-may-2026');
 const HUB_REVIEW_COUNT = getDeterministicReviewCount('sightseeing-hub-may-2026', 800, 1400);
+
+/* Emerald lane motif — a quiet road-lane divider, this family's signature. */
+function EmeraldLane({ className = '' }) {
+  return (
+    <div className={`flex items-center gap-3 ${className}`} aria-hidden="true">
+      <span className="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400/80" />
+      <span className="h-0 flex-1 border-t-2 border-dashed border-emerald-400/25" />
+      <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-400/60" />
+      <span className="h-0 flex-1 border-t-2 border-dashed border-emerald-400/25" />
+      <span className="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400/80" />
+    </div>
+  );
+}
+
+/* v2 heading: eyebrow + serif/foil headline in this family's emerald foil. */
+function EmeraldHeading({ eyebrow, title, foil, subtitle }) {
+  return (
+    <div className="mx-auto max-w-3xl text-center">
+      {eyebrow && (
+        <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.3em] text-emerald-300/90">
+          {eyebrow}
+        </p>
+      )}
+      <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
+        {title}{' '}
+        {foil && (
+          <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+            {foil}
+          </span>
+        )}
+      </h2>
+      {subtitle && (
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
+          {subtitle}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function SightseeingMainClient({ data, faqData }) {
   const [favorites, setFavorites] = useState([]);
@@ -45,55 +81,22 @@ export default function SightseeingMainClient({ data, faqData }) {
     );
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100
-      }
-    }
-  };
-
-  const cardHoverVariants = {
-    rest: { scale: 1, y: 0 },
-    hover: {
-      scale: 1.03,
-      y: -8,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    }
-  };
-
   const hubWhatsappText = 'Hi, I want to book a sightseeing tour. Please share tour options and best rates.';
+  const hubWhatsappHref = `https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`;
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" itemScope itemType="https://schema.org/CollectionPage">
+    <main className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/CollectionPage">
       <SetStickyCta
         label="Sightseeing Tours"
         whatsappText={hubWhatsappText}
       />
-      {/* Hero Section with Parallax */}
+
+      {/* ============================================ */}
+      {/* HERO — cinematic photography, serif+foil      */}
+      {/* ============================================ */}
       <header>
-        <section
-          className="relative h-[55vh] min-h-[400px] flex items-center justify-center overflow-hidden"
-        >
-          {/* Hero Background Image */}
+        <section className="relative flex min-h-[74vh] flex-col justify-end overflow-hidden bg-slate-950 sm:min-h-[80vh]">
+          {/* Fixed full-bleed photo — no CLS */}
           <div className="absolute inset-0">
             <Image
               src="/images/sightseeing/Sightseeingpage_hero_section_image.jpg"
@@ -101,155 +104,130 @@ export default function SightseeingMainClient({ data, faqData }) {
               fill
               priority
               fetchPriority="high"
-              quality={90}
+              quality={88}
               className="object-cover"
               sizes="100vw"
             />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-emerald-950/70 to-teal-900/80" />
-
-            {/* Pattern Overlay */}
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/55 to-slate-950/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/50 via-transparent to-teal-950/45" />
           </div>
 
-          {/* Hero Content */}
-          <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, type: "spring" }}
-              className="inline-block mb-4 sm:mb-6"
-            >
-              <SparklesIcon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto text-yellow-300" />
-            </motion.div>
+          {/* Emerald aurora glows */}
+          <div className="pointer-events-none absolute -top-20 right-0 h-80 w-80 rounded-full bg-emerald-500/15 blur-[140px]" aria-hidden />
+          <div className="pointer-events-none absolute bottom-28 -left-16 h-64 w-64 rounded-full bg-teal-400/10 blur-[110px]" aria-hidden />
 
-            <motion.h1
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2"
-            >
-              Sightseeing Tours
-              <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300">
-                Across North India
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-24 sm:px-6 sm:pb-16 lg:px-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-emerald-300 backdrop-blur-md">
+              <Camera className="h-3.5 w-3.5" />
+              {data.allTours.length}+ curated tours · 20+ destinations
+            </span>
+
+            <h1 className="speakable-headline mt-5 max-w-4xl text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Sightseeing tours
+              <span className="mt-2 block font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+                across North India.
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="speakable-lead text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto px-2"
-            >
-              Expertly curated sightseeing tours across India&apos;s most breathtaking destinations
-            </motion.p>
+            <p className="speakable-lead mt-4 max-w-2xl text-sm leading-relaxed text-slate-300/90 sm:text-base md:text-lg">
+              Expertly curated sightseeing tours across India’s most breathtaking destinations —
+              a private AC car, a driver who knows every gate, and free hotel pickup on every tour.
+            </p>
 
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4"
-            >
-              <Link href="#tours" className="group w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                  Explore Tours
-                  <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-              <a onClick={() => trackWhatsAppClick('sightseeing_hub_hero', hubWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                  Book via WhatsApp
-                </button>
+            {/* Compact CTAs — gold, black text, sheen */}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={hubWhatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('sightseeing_hub_hero', hubWhatsappText)}
+                className="sheen glow-gold inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Book via WhatsApp
               </a>
-            </motion.div>
+              <a
+                href="tel:+917668570551"
+                onClick={() => trackPhoneCall('sightseeing_hub_hero')}
+                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" />
+                Call 7668570551
+              </a>
+              <Link
+                href="#tours"
+                className="inline-flex min-h-[46px] items-center justify-center gap-1.5 px-3 py-3 text-sm font-semibold text-emerald-300 transition-colors hover:text-emerald-200"
+              >
+                Explore tours <ChevronRight className="h-4 w-4" />
+              </Link>
+            </div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="mt-8 sm:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto px-2"
-            >
+            {/* Stat tiles — glass, data-driven */}
+            <div className="mt-8 grid max-w-xl grid-cols-3 gap-2.5 sm:gap-3">
               {[
-                { number: `${data.allTours.length}+`, label: "Tours" },
-                { number: `${HUB_REVIEW_COUNT.toLocaleString()}+`, label: "Verified Reviews" },
-                { number: "4.9★", label: "Avg Rating" }
+                { number: `${data.allTours.length}+`, label: 'Tours' },
+                { number: `${HUB_REVIEW_COUNT.toLocaleString()}+`, label: 'Verified Reviews' },
+                { number: '4.9★', label: 'Avg Rating' }
               ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">{stat.number}</div>
-                  <div className="text-xs sm:text-sm md:text-base text-blue-100 mt-1">{stat.label}</div>
+                <div key={index} className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center backdrop-blur-xl">
+                  <p className="text-xl font-black leading-tight text-white sm:text-2xl">{stat.number}</p>
+                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-emerald-300/70 sm:text-xs">{stat.label}</p>
                 </div>
               ))}
-            </motion.div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1.5 h-1.5 bg-white rounded-full"
-              />
             </div>
-          </motion.div>
+          </div>
         </section>
       </header>
 
-      <SocialProofStrip />
+      <SocialProofStrip theme="dark" />
 
-      {/* Above-the-fold Quote + Real Reviews — added May 2026 for conversion lift */}
-      <section className="relative -mt-2 bg-gradient-to-br from-slate-950 via-emerald-950 to-teal-950 text-white py-10 md:py-14 border-y border-emerald-500/20" aria-labelledby="quote-cta-heading">
+      {/* ============================================ */}
+      {/* REVIEWS + ENQUIRY — above-the-fold conversion */}
+      {/* ============================================ */}
+      <section className="relative border-y border-emerald-500/20 bg-gradient-to-br from-slate-950 via-emerald-950 to-teal-950 py-10 text-white md:py-14" aria-labelledby="quote-cta-heading">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Left: Real review snippets */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 border border-emerald-400/30 rounded-full mb-4 backdrop-blur-md">
-                <StarIcon className="w-4 h-4 text-emerald-300" />
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1.5 backdrop-blur-md">
+                <Star className="h-4 w-4 text-emerald-300" fill="currentColor" />
                 <span className="text-xs font-semibold text-emerald-200">Verified Traveller Reviews</span>
               </div>
-              <h2 id="quote-cta-heading" className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
-                What our travellers say about<br/>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 to-cyan-300">our sightseeing tours</span>
+              <h2 id="quote-cta-heading" className="mb-6 text-2xl font-black leading-tight md:text-4xl">
+                What our travellers say about
+                <span className="block font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+                  our sightseeing tours
+                </span>
               </h2>
               <div className="space-y-4">
                 {HUB_REVIEWS.slice(0, 3).map((r, i) => (
-                  <div key={i} className="rounded-2xl bg-white/5 backdrop-blur-xl p-5 border border-white/10 hover:border-emerald-400/30 transition-colors">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center font-bold text-slate-950">
+                  <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-colors hover:border-emerald-400/30">
+                    <div className="mb-2 flex items-center gap-2">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 font-bold text-slate-950">
                         {r.name.charAt(0)}
-                      </div>
+                      </span>
                       <div>
-                        <div className="font-semibold text-sm text-white">{r.name}</div>
-                        <div className="flex gap-0.5 text-yellow-400">{'★★★★★'}</div>
+                        <p className="text-sm font-semibold text-white">{r.name}</p>
+                        <p className="flex gap-0.5 text-amber-400">{'★★★★★'}</p>
                       </div>
                     </div>
-                    <p className="text-sm text-slate-300 leading-relaxed line-clamp-3">{r.body}</p>
+                    <p className="line-clamp-3 text-sm leading-relaxed text-slate-300">{r.body}</p>
                   </div>
                 ))}
               </div>
             </div>
             {/* Right: Above-the-fold enquiry form */}
             <div className="lg:sticky lg:top-24">
-              <div className="rounded-3xl bg-white/5 backdrop-blur-xl p-1 shadow-2xl border border-emerald-500/25">
+              <div className="rounded-3xl border border-emerald-500/25 bg-white/5 p-1 shadow-2xl backdrop-blur-xl">
                 <div className="rounded-[1.4rem] p-5 md:p-6">
                   <div className="mb-4 text-center">
-                    <h3 className="text-xl md:text-2xl font-bold text-white">Get Tour Quote in 2 Min</h3>
-                    <p className="text-xs md:text-sm text-slate-400 mt-1">No spam · Reply on WhatsApp in ~2 minutes</p>
+                    <h3 className="text-xl font-bold text-white md:text-2xl">Get Tour Quote in 2 Min</h3>
+                    <p className="mt-1 text-xs text-slate-400 md:text-sm">No spam · Reply on WhatsApp in ~2 minutes</p>
                   </div>
                   <QuickEnquiryForm pageType="sightseeing" />
-                  <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-center gap-4 text-xs text-slate-400">
-                    <span className="flex items-center gap-1"><CheckCircleIcon className="w-4 h-4 text-emerald-400"/> Free cancellation</span>
-                    <span className="flex items-center gap-1"><CheckCircleIcon className="w-4 h-4 text-emerald-400"/> No card needed</span>
+                  <div className="mt-3 flex items-center justify-center gap-4 border-t border-white/10 pt-3 text-xs text-slate-400">
+                    <span className="flex items-center gap-1"><CheckCircle className="h-4 w-4 text-emerald-400" /> Free cancellation</span>
+                    <span className="flex items-center gap-1"><CheckCircle className="h-4 w-4 text-emerald-400" /> No card needed</span>
                   </div>
                 </div>
               </div>
@@ -258,530 +236,434 @@ export default function SightseeingMainClient({ data, faqData }) {
         </div>
       </section>
 
-      {/* Featured Tours Section */}
+      {/* ============================================ */}
+      {/* FEATURED TOURS                                */}
+      {/* ============================================ */}
       {data.featuredTours.length > 0 && (
-        <section id="tours" className="py-12 sm:py-16 md:py-20" aria-labelledby="featured-tours-heading">
+        <section id="tours" className="bg-slate-950 py-14 md:py-20" aria-labelledby="featured-tours-heading">
           <div className="container mx-auto px-4 sm:px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-8 sm:mb-10 md:mb-12"
-            >
-              <h2 id="featured-tours-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
-                Featured Tours
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-                Our most popular and highly-rated sightseeing experiences
-              </p>
-            </motion.div>
+            <p className="text-center text-[11px] font-bold uppercase tracking-[0.3em] text-emerald-300/90">Traveller favourites</p>
+            <h2 id="featured-tours-heading" className="mt-3 text-center text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl">
+              Featured{' '}
+              <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+                tours
+              </span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-slate-400 sm:text-base">
+              Our most popular and highly-rated sightseeing experiences
+            </p>
+            <EmeraldLane className="mx-auto mt-8 max-w-sm" />
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
+            <div className="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
               {data.featuredTours.map((tour) => (
                 <TourCard
                   key={tour.id}
                   tour={tour}
                   isFavorite={favorites.includes(tour.id)}
                   onToggleFavorite={toggleFavorite}
-                  itemVariants={itemVariants}
-                  cardHoverVariants={cardHoverVariants}
                   featured={true}
                 />
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* All Tours Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white" aria-labelledby="all-tours-heading" itemScope itemType="https://schema.org/ItemList">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <h2 id="all-tours-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2" itemProp="name">
-              All Sightseeing Tours
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
-              {filteredTours.length} {filteredTours.length === 1 ? 'tour' : 'tours'} available
-            </p>
-          </motion.div>
+      {/* ============================================ */}
+      {/* ALL TOURS                                     */}
+      {/* ============================================ */}
+      <section
+        className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-14 md:py-20"
+        aria-labelledby="all-tours-heading"
+        itemScope
+        itemType="https://schema.org/ItemList"
+      >
+        <div className="pointer-events-none absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-emerald-500/5 blur-[180px]" aria-hidden />
+        <div className="container relative z-10 mx-auto px-4 sm:px-6">
+          <p className="text-center text-[11px] font-bold uppercase tracking-[0.3em] text-emerald-300/90">The full collection</p>
+          <h2 id="all-tours-heading" className="mt-3 text-center text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl" itemProp="name">
+            All sightseeing{' '}
+            <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+              tours
+            </span>
+          </h2>
+          <p className="mt-4 text-center text-sm text-slate-400 sm:text-base">
+            {filteredTours.length} {filteredTours.length === 1 ? 'tour' : 'tours'} available — every fare covers the car, fuel, driver, tolls and parking
+          </p>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div className="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
             {filteredTours.map((tour) => (
               <TourCard
                 key={tour.id}
                 tour={tour}
                 isFavorite={favorites.includes(tour.id)}
                 onToggleFavorite={toggleFavorite}
-                itemVariants={itemVariants}
-                cardHoverVariants={cardHoverVariants}
               />
             ))}
-          </motion.div>
+          </div>
 
           {filteredTours.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
-            >
-              <p className="text-gray-500 text-lg">No tours found matching your criteria.</p>
-            </motion.div>
+            <div className="py-12 text-center">
+              <p className="text-lg text-slate-400">No tours found matching your criteria.</p>
+            </div>
           )}
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
-              Why Choose Our Tours?
-            </h2>
-          </motion.div>
+      {/* ============================================ */}
+      {/* WHY CHOOSE US — glass stat tiles              */}
+      {/* ============================================ */}
+      <section className="relative overflow-hidden bg-slate-950 py-14 md:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent" aria-hidden />
+        <div className="container relative z-10 mx-auto px-4 sm:px-6">
+          <EmeraldHeading eyebrow="The Triveni difference" title="Why choose our" foil="tours?" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: UserGroupIcon,
-                title: "Expert Guides",
-                description: "Certified local guides with deep cultural knowledge"
+                icon: Users,
+                title: 'Expert Guides',
+                description: 'Certified local guides with deep cultural knowledge'
               },
               {
-                icon: CalendarIcon,
-                title: "Flexible Booking",
-                description: "Easy online booking with instant confirmation"
+                icon: Calendar,
+                title: 'Flexible Booking',
+                description: 'Easy online booking with instant confirmation'
               },
               {
-                icon: SparklesIcon,
-                title: "Premium Experience",
-                description: "Comfortable transport and personalized service"
+                icon: Sparkles,
+                title: 'Premium Experience',
+                description: 'Comfortable transport and personalized service'
               },
               {
-                icon: StarIcon,
-                title: "Highly Rated",
-                description: "4.8★ average rating from 5000+ tourists"
+                icon: Star,
+                title: 'Highly Rated',
+                description: '4.8★ average rating from 5000+ tourists'
               }
             ].map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
+                className="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-colors duration-300 hover:border-emerald-400/40"
               >
-                <feature.icon className="w-12 h-12 text-indigo-600 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
+                <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-400/10 blur-3xl" aria-hidden />
+                <div className="mb-5 inline-flex rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 p-3.5 ring-1 ring-emerald-400/25">
+                  <feature.icon className="h-6 w-6 text-emerald-300" />
+                </div>
+                <h3 className="mb-2 text-lg font-black text-white">{feature.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-400">{feature.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section - Beautiful Card Layout */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white" id="faq">
+      {/* ============================================ */}
+      {/* FAQ CARDS — 2-per-row glass grid              */}
+      {/* ============================================ */}
+      <section className="bg-slate-950 py-14 md:py-20" id="faq">
         <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
-          >
-            <span className="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
-              Got Questions?
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              Everything you need to know about our sightseeing tours
-            </p>
-          </motion.div>
+          <EmeraldHeading
+            eyebrow="Got questions?"
+            title="Frequently asked,"
+            foil="answered"
+            subtitle="Everything you need to know about our sightseeing tours"
+          />
+          <EmeraldLane className="mx-auto mt-8 max-w-xs" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          <div className="mx-auto mt-8 grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2">
             {[
               {
-                question: "What destinations do you cover?",
-                answer: "We offer tours across 20+ destinations including Delhi, Agra (Taj Mahal), Jaipur, Udaipur, Jodhpur, Varanasi, Mumbai, Goa, and more.",
-                icon: MapPinIcon,
-                color: "from-blue-500 to-indigo-600"
+                question: 'What destinations do you cover?',
+                answer: 'We offer tours across 20+ destinations including Delhi, Agra (Taj Mahal), Jaipur, Udaipur, Jodhpur, Varanasi, Mumbai, Goa, and more.',
+                icon: MapPin
               },
               {
-                question: "Are tour guides included?",
-                answer: "Yes! Professional guides fluent in English, Hindi, French, Spanish, German & Chinese are included with every tour.",
-                icon: UserGroupIcon,
-                color: "from-purple-500 to-pink-600"
+                question: 'Are tour guides included?',
+                answer: 'Yes! Professional guides fluent in English, Hindi, French, Spanish, German & Chinese are included with every tour.',
+                icon: Users
               },
               {
-                question: "Can I customize my tour?",
-                answer: "Absolutely! Choose your monuments, duration, meal preferences & special interests. We create your perfect itinerary.",
-                icon: SparklesIcon,
-                color: "from-orange-500 to-red-600"
+                question: 'Can I customize my tour?',
+                answer: 'Absolutely! Choose your monuments, duration, meal preferences & special interests. We create your perfect itinerary.',
+                icon: Sparkles
               },
               {
-                question: "What&apos;s included in packages?",
-                answer: "AC transport, professional driver, tour guide, fuel, parking, tolls & complete itinerary planning. Entrance fees extra.",
-                icon: CheckCircleIcon,
-                color: "from-green-500 to-emerald-600"
+                question: 'What’s included in packages?',
+                answer: 'AC transport, professional driver, tour guide, fuel, parking, tolls & complete itinerary planning. Entrance fees extra.',
+                icon: CheckCircle
               },
               {
-                question: "How long are the tours?",
-                answer: "Flexible durations: Half-day (4-5 hrs), Full-day (8-10 hrs), or multi-day packages customized to your schedule.",
-                icon: ClockIcon,
-                color: "from-cyan-500 to-blue-600"
+                question: 'How long are the tours?',
+                answer: 'Flexible durations: Half-day (4-5 hrs), Full-day (8-10 hrs), or multi-day packages customized to your schedule.',
+                icon: Clock
               },
               {
-                question: "What vehicles are available?",
-                answer: "Sedan (4 pax), SUV (6 pax), Tempo Traveller (12-16 pax). All AC, well-maintained with experienced drivers.",
-                icon: MapPinIcon,
-                color: "from-violet-500 to-purple-600"
+                question: 'What vehicles are available?',
+                answer: 'Sedan (4 pax), SUV (6 pax), Tempo Traveller (12-16 pax). All AC, well-maintained with experienced drivers.',
+                icon: MapPin
               },
               {
-                question: "How do I book a tour?",
-                answer: "Easy! WhatsApp us at +91-7668570551, call directly, or use our website. Instant confirmation guaranteed!",
-                icon: CalendarIcon,
-                color: "from-pink-500 to-rose-600"
+                question: 'How do I book a tour?',
+                answer: 'Easy! WhatsApp us at +91-7668570551, call directly, or use our website. Instant confirmation guaranteed!',
+                icon: Calendar
               },
               {
-                question: "Family-friendly tours?",
-                answer: "Yes! Flexible schedules, comfortable vehicles & child-friendly attractions. We customize pace for families.",
-                icon: HeartIcon,
-                color: "from-red-500 to-pink-600"
+                question: 'Family-friendly tours?',
+                answer: 'Yes! Flexible schedules, comfortable vehicles & child-friendly attractions. We customize pace for families.',
+                icon: Heart
               }
             ].map((faq, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                
-                className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden"
+                className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-emerald-400/40 sm:p-7"
               >
-                {/* Gradient accent */}
-                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${faq.color}`} />
+                {/* Emerald accent line */}
+                <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-emerald-400/70 to-teal-500/70" aria-hidden />
 
-                {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r ${faq.color} mb-4 sm:mb-5`}>
-                  <faq.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500/25 to-teal-500/25 ring-1 ring-emerald-400/30">
+                  <faq.icon className="h-5 w-5 text-emerald-300" />
                 </div>
 
-                {/* Question */}
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                <h3 className="mb-2.5 text-base font-bold text-white transition-colors group-hover:text-emerald-300 sm:text-lg">
                   {faq.question}
                 </h3>
-
-                {/* Answer */}
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {faq.answer}
-                </p>
-              </motion.div>
+                <p className="text-sm leading-relaxed text-slate-400 sm:text-base">{faq.answer}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ CTA Section */}
-      <section className="py-10 sm:py-12 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+      {/* ============================================ */}
+      {/* MID CTA — still have questions                */}
+      {/* ============================================ */}
+      <section className="border-y border-emerald-500/20 bg-gradient-to-r from-emerald-950 via-slate-950 to-teal-950 py-10 sm:py-12">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
-                Still have questions?
+              <h3 className="mb-2 text-xl font-bold text-white sm:text-2xl md:text-3xl">
+                Still have{' '}
+                <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+                  questions?
+                </span>
               </h3>
-              <p className="text-blue-100 text-sm sm:text-base">
+              <p className="text-sm text-emerald-100/70 sm:text-base">
                 Our travel experts are available 24/7 to help you plan the perfect tour
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <a href="tel:+917668570551">
-                <motion.button
-
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
-                >
-                  <PhoneIcon className="w-5 h-5" />
-                  Call Now
-                </motion.button>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                href="tel:+917668570551"
+                onClick={() => trackPhoneCall('sightseeing_hub_footer')}
+                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" />
+                Call Now
               </a>
-              <a onClick={() => trackWhatsAppClick('sightseeing_hub_footer', hubWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer">
-                <motion.button
-
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-green-500 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all flex items-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  WhatsApp Us
-                </motion.button>
+              <a
+                onClick={() => trackWhatsAppClick('sightseeing_hub_footer', hubWhatsappText)}
+                href={hubWhatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sheen glow-gold inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95"
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Us
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Popular Destinations Section - Beautiful Cards */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
-          >
-            <span className="inline-block px-4 py-2 bg-white/10 text-white rounded-full text-sm font-semibold mb-4 backdrop-blur-sm">
-              Explore India
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 px-2">
-              Popular Destinations
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-blue-200 max-w-2xl mx-auto px-4">
-              Discover India&apos;s most iconic cities with our expert-guided tours
-            </p>
-          </motion.div>
+      {/* ============================================ */}
+      {/* POPULAR DESTINATIONS — photo cards            */}
+      {/* ============================================ */}
+      <section className="relative bg-slate-950 py-14 md:py-20">
+        <div className="pointer-events-none absolute bottom-0 left-0 h-[320px] w-[320px] rounded-full bg-teal-500/5 blur-[140px]" aria-hidden />
+        <div className="container relative z-10 mx-auto px-4 sm:px-6">
+          <EmeraldHeading
+            eyebrow="Explore India"
+            title="Popular"
+            foil="destinations"
+            subtitle="Discover India’s most iconic cities with our expert-guided tours"
+          />
+          <EmeraldLane className="mx-auto mt-8 max-w-sm" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-7">
             {[
               {
-                name: "Delhi",
-                slug: "delhi",
-                desc: "Capital Heritage",
-                tagline: "Red Fort • Qutub Minar • India Gate",
-                tours: "8+ Tours",
-                gradient: "from-orange-400 via-red-500 to-pink-500",
-                image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg"
+                name: 'Delhi',
+                slug: 'delhi',
+                desc: 'Capital Heritage',
+                tagline: 'Red Fort • Qutub Minar • India Gate',
+                tours: '8+ Tours',
+                image: '/images/sightseeing/Delhi/Delhi_hero_section.jpg'
               },
               {
-                name: "Agra",
-                slug: "agra",
-                desc: "Wonder of the World",
-                tagline: "Taj Mahal • Agra Fort • Fatehpur Sikri",
-                tours: "6+ Tours",
-                gradient: "from-pink-400 via-purple-500 to-indigo-500",
-                image: "/images/sightseeing/Agra/Agra_hero_section.jpg"
+                name: 'Agra',
+                slug: 'agra',
+                desc: 'Wonder of the World',
+                tagline: 'Taj Mahal • Agra Fort • Fatehpur Sikri',
+                tours: '6+ Tours',
+                image: '/images/sightseeing/Agra/Agra_hero_section.jpg'
               },
               {
-                name: "Jaipur",
-                slug: "jaipur",
-                desc: "The Pink City",
-                tagline: "Amber Fort • Hawa Mahal • City Palace",
-                tours: "7+ Tours",
-                gradient: "from-pink-500 via-rose-500 to-red-500",
-                image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg"
+                name: 'Jaipur',
+                slug: 'jaipur',
+                desc: 'The Pink City',
+                tagline: 'Amber Fort • Hawa Mahal • City Palace',
+                tours: '7+ Tours',
+                image: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg'
               },
               {
-                name: "Udaipur",
-                slug: "udaipur",
-                desc: "City of Lakes",
-                tagline: "Lake Palace • City Palace • Pichola",
-                tours: "5+ Tours",
-                gradient: "from-blue-400 via-cyan-500 to-teal-500",
-                image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg"
+                name: 'Udaipur',
+                slug: 'udaipur',
+                desc: 'City of Lakes',
+                tagline: 'Lake Palace • City Palace • Pichola',
+                tours: '5+ Tours',
+                image: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg'
               },
               {
-                name: "Varanasi",
-                slug: "varanasi",
-                desc: "Spiritual Capital",
-                tagline: "Ghats • Temples • Ganga Aarti",
-                tours: "4+ Tours",
-                gradient: "from-orange-500 via-amber-500 to-yellow-500",
-                image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg"
+                name: 'Varanasi',
+                slug: 'varanasi',
+                desc: 'Spiritual Capital',
+                tagline: 'Ghats • Temples • Ganga Aarti',
+                tours: '4+ Tours',
+                image: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg'
               },
               {
-                name: "Jodhpur",
-                slug: "jodhpur",
-                desc: "The Blue City",
-                tagline: "Mehrangarh • Jaswant Thada • Blue Streets",
-                tours: "4+ Tours",
-                gradient: "from-blue-500 via-indigo-500 to-violet-500",
-                image: "/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg"
+                name: 'Jodhpur',
+                slug: 'jodhpur',
+                desc: 'The Blue City',
+                tagline: 'Mehrangarh • Jaswant Thada • Blue Streets',
+                tours: '4+ Tours',
+                image: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg'
               }
-            ].map((city, index) => (
-              <motion.div
-                key={city.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group"
-              >
-                <Link href={`/sightseeing/${city.slug}`}>
-                  <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer">
-                    {/* Background Image or Gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${city.gradient}`}>
-                      {city.image && (
-                        <Image
-                          src={city.image}
-                          alt={`${city.name} Tours`}
-                          fill
-                          className="object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                      )}
-                    </div>
-
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                    {/* Tours Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold">
-                        {city.tours}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPinIcon className="w-5 h-5 text-white/80" />
-                        <span className="text-white/80 text-sm">{city.desc}</span>
-                      </div>
-                      <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-yellow-300 transition-colors">
-                        {city.name}
-                      </h3>
-                      <p className="text-white/70 text-sm mb-4">
-                        {city.tagline}
-                      </p>
-                      <div className="flex items-center gap-2 text-white font-semibold group-hover:gap-4 transition-all">
-                        <span>Explore Tours</span>
-                        <ChevronRightIcon className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                      </div>
-                    </div>
+            ].map((city) => (
+              <Link key={city.slug} href={`/sightseeing/${city.slug}`} className="group block">
+                <div className="relative h-72 cursor-pointer overflow-hidden rounded-3xl border border-white/10 shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400/40 sm:h-80">
+                  {/* Fixed-height photo — no CLS */}
+                  <div className="absolute inset-0 bg-slate-900">
+                    {city.image && (
+                      <Image
+                        src={city.image}
+                        alt={`${city.name} Tours`}
+                        fill
+                        className="object-cover transition-all duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    )}
                   </div>
-                </Link>
-              </motion.div>
+
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+
+                  {/* Tours Badge */}
+                  <span className="absolute right-4 top-4 rounded-full border border-emerald-400/30 bg-slate-950/60 px-3 py-1 text-xs font-semibold text-emerald-300 backdrop-blur-sm">
+                    {city.tours}
+                  </span>
+
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="mb-2 flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-emerald-300" />
+                      <span className="font-serif italic text-sm text-emerald-200/90">{city.desc}</span>
+                    </div>
+                    <h3 className="mb-2 text-2xl font-black text-white transition-colors group-hover:text-emerald-300 sm:text-3xl">
+                      {city.name}
+                    </h3>
+                    <p className="mb-4 text-sm text-white/70">{city.tagline}</p>
+                    <span className="flex items-center gap-2 text-sm font-semibold text-white transition-all group-hover:gap-3 group-hover:text-emerald-300">
+                      Explore Tours
+                      <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
-
-          {/* View All Cities Button */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-10 sm:mt-12"
-          >
-            <Link href="/sightseeing">
-              <motion.button
-                
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
-              >
-                View All Destinations
-              </motion.button>
-            </Link>
-          </motion.div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* ============================================ */}
+      {/* FAQ (server data) — 2-per-row accordions      */}
+      {/* ============================================ */}
       {faqData && (
-        <section className="py-12 sm:py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-gray-600 text-lg">
-                Everything you need to know about our sightseeing tours
-              </p>
-            </motion.div>
+        <section className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-14 md:py-20">
+          <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+            <EmeraldHeading
+              eyebrow="Before you book"
+              title="More questions,"
+              foil="more answers"
+              subtitle="Everything you need to know about our sightseeing tours"
+            />
 
-            <div className="space-y-4">
-              {faqData.map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className={`bg-slate-50 rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === index ? 'shadow-lg border-l-4 border-indigo-600' : 'hover:bg-slate-100'}`}>
+            <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+              {faqData.map((faq, index) => {
+                const isOpen = openFaq === index;
+                return (
+                  <div
+                    key={index}
+                    className={`h-fit rounded-2xl border bg-white/5 backdrop-blur-xl transition-colors duration-300 ${
+                      isOpen ? 'border-emerald-400/40' : 'border-white/10 hover:border-white/20'
+                    }`}
+                  >
                     <button
-                      onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-left"
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                      aria-expanded={isOpen}
+                      className="flex w-full items-start justify-between gap-4 px-6 py-5 text-left"
                     >
-                      <h3 className="font-semibold text-gray-900 pr-8">{faq.question}</h3>
-                      <ChevronDownIcon
-                        className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-indigo-600' : ''}`}
+                      <span className="pr-2 text-sm font-semibold leading-snug text-white sm:text-base">{faq.question}</span>
+                      <ChevronDown
+                        className={`mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                        aria-hidden="true"
                       />
                     </button>
-                    <AnimatePresence>
-                      {openFaq === index && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="px-6 pb-5 text-gray-600 border-t border-gray-200/50 pt-4">
-                            {faq.answer}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                      <div className="overflow-hidden">
+                        <p className="border-t border-white/10 px-6 pb-5 pt-4 text-sm leading-relaxed text-slate-300">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </motion.div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
       )}
 
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+      {/* ============================================ */}
+      {/* FINAL CTA — night-drive band, gold action     */}
+      {/* ============================================ */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 text-white md:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-emerald-950 via-slate-950 to-teal-950" aria-hidden />
+        <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-emerald-500/15 blur-[130px]" aria-hidden />
+        <div className="pointer-events-none absolute bottom-0 right-1/4 h-56 w-56 rounded-full bg-teal-400/10 blur-[110px]" aria-hidden />
+
+        <div className="container relative z-10 mx-auto px-4 text-center sm:px-6">
+          <Compass className="mx-auto mb-5 h-9 w-9 text-emerald-300" aria-hidden />
+          <h2 className="mx-auto max-w-3xl text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
+            Ready to start your{' '}
+            <span className="font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
+              adventure?
+            </span>
+          </h2>
+          <p className="mx-auto mb-7 mt-4 max-w-2xl text-sm text-emerald-100/70 sm:text-base md:text-lg">
+            Book your perfect sightseeing tour today and create memories that last a lifetime
+          </p>
+          <a
+            onClick={() => trackWhatsAppClick('sightseeing_hub_final', hubWhatsappText)}
+            href={hubWhatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="sheen glow-gold inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-amber-400 px-8 py-3.5 text-sm font-black text-slate-900 transition-transform hover:scale-[1.02] active:scale-95 sm:w-auto"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
-              Ready to Start Your Adventure?
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-blue-100 max-w-2xl mx-auto px-4">
-              Book your perfect sightseeing tour today and create memories that last a lifetime
-            </p>
-            <a onClick={() => trackWhatsAppClick('sightseeing_hub_final', hubWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-block w-full sm:w-auto px-4">
-              <motion.button
-                
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 rounded-full font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all"
-              >
-                Book Now via WhatsApp
-              </motion.button>
-            </a>
-          </motion.div>
+            <MessageCircle className="h-4 w-4" />
+            Book Now via WhatsApp
+          </a>
         </div>
       </section>
 
@@ -791,134 +673,102 @@ export default function SightseeingMainClient({ data, faqData }) {
 }
 
 // Tour Card Component - memoized to prevent re-renders when favorites change for other cards
-const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, itemVariants, cardHoverVariants, featured = false }) {
+const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, featured = false }) {
   const urgency = getUrgencySignals(tour.slug);
   return (
-    <motion.article
-      variants={itemVariants}
-      initial="rest"
-      whileHover="hover"
+    <article
       className="group relative"
       itemScope
       itemType="https://schema.org/TouristTrip"
     >
       <Link href={`/sightseeing/${tour.slug}`} itemProp="url">
-        <motion.div
-          variants={cardHoverVariants}
-          className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-emerald-200/40 ring-1 ring-slate-200 hover:ring-emerald-400/50 transition-all duration-300"
-        >
-          {/* Tour Image */}
-          <div className="relative h-64 overflow-hidden bg-gray-200">
-            {/* Display actual image if heroImage exists, gradient for others */}
+        <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400/40 hover:shadow-emerald-500/10">
+          {/* Fixed-height photo — no CLS */}
+          <div className="relative h-60 w-full overflow-hidden bg-slate-900">
             {tour.heroImage ? (
               <>
                 <Image
                   src={tour.heroImage}
                   alt={tour.name}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-                  initial={{ opacity: 0.6 }}
-                  whileHover={{ opacity: 0.4 }}
-                  transition={{ duration: 0.3 }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
               </>
             ) : (
-              <>
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500" />
-                <motion.div
-                  className="absolute inset-0 bg-black/20"
-                  initial={{ scale: 1 }}
-                  
-                  transition={{ duration: 0.6 }}
-                />
-              </>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 via-teal-700 to-cyan-800" />
             )}
 
             {featured && (
-              <div className="absolute top-4 left-4 z-10">
-                <span className="px-3 py-1 bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                  <StarIcon className="w-3.5 h-3.5" />
-                  FEATURED
-                </span>
-              </div>
+              <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black uppercase tracking-wide text-slate-900 shadow-lg">
+                <Star className="h-3 w-3" fill="currentColor" />
+                Featured
+              </span>
             )}
 
             {/* Urgency badge — booked X times */}
-            <div className="absolute top-4 right-14 z-10">
-              <span className="px-2.5 py-1 bg-emerald-500/95 backdrop-blur-md text-white rounded-full text-[10px] font-semibold flex items-center gap-1 shadow-lg">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                {urgency.bookedThisMonth} booked this month
-              </span>
-            </div>
+            <span className="absolute right-14 top-4 z-10 inline-flex items-center gap-1 rounded-full bg-emerald-500/95 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg backdrop-blur-md">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white"></span>
+              {urgency.bookedThisMonth} booked this month
+            </span>
 
             <div className="absolute bottom-4 left-4 right-4 z-10">
-              <h4 className="text-white font-bold text-lg drop-shadow-lg">
-                {tour.name}
-              </h4>
-              <div className="mt-1 text-xs text-emerald-200 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <h4 className="text-lg font-black text-white drop-shadow-lg">{tour.name}</h4>
+              <p className="mt-1 flex items-center gap-1 text-xs text-emerald-200">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span>
                 {urgency.viewingNow} viewing · last booked {urgency.lastBooked} ago
-              </div>
+              </p>
             </div>
           </div>
 
           {/* Content */}
           <div className="p-6">
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
-                {tour.name}
-              </h3>
-            </div>
+            <h3 className="mb-3 text-xl font-bold text-white transition-colors group-hover:text-emerald-300" itemProp="name">
+              {tour.name}
+            </h3>
 
-            <p className="text-gray-600 mb-4 line-clamp-2">
+            <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-slate-400">
               {tour.shortDescription}
             </p>
 
-            <div className="space-y-2 mb-4">
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <ClockIcon className="w-4 h-4" />
-                <span>{tour.duration}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <MapPinIcon className="w-4 h-4" />
-                <span>{tour.category}</span>
-              </div>
+            <div className="mb-4 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-500/20">
+                <Clock className="h-3.5 w-3.5" /> {tour.duration}
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 ring-1 ring-white/10">
+                <MapPin className="h-3.5 w-3.5 text-teal-400" /> {tour.category}
+              </span>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+            <div className="flex items-center justify-between border-t border-white/10 pt-4">
               <div>
-                <div className="flex items-center gap-1 text-2xl font-bold text-emerald-600">
-                  <CurrencyRupeeIcon className="w-6 h-6" />
-                  {tour.price.sedan?.toLocaleString()}
-                </div>
-                <div className="text-xs text-gray-500">Starting price (Sedan)</div>
+                <p className="text-2xl font-black leading-tight text-amber-300">
+                  ₹{tour.price.sedan?.toLocaleString()}
+                </p>
+                <p className="text-xs text-slate-500">Starting price (Sedan)</p>
               </div>
-              <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full bg-emerald-600 text-white text-sm font-semibold group-hover:bg-emerald-700 group-hover:translate-x-1 transition-all">
-                View Tour <ChevronRightIcon className="w-4 h-4" />
+              <span className="sheen inline-flex items-center gap-1 rounded-full bg-amber-400 px-4 py-2 text-sm font-black text-slate-900 transition-all group-hover:translate-x-0.5">
+                View Tour <ChevronRight className="h-4 w-4" />
               </span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </Link>
 
       {/* Favorite Button */}
       <button
+        type="button"
         onClick={(e) => {
           e.preventDefault();
           onToggleFavorite(tour.id);
         }}
-        className="absolute top-4 right-4 z-10 p-2 bg-white rounded-full shadow-lg hover:scale-110 transition-transform"
+        aria-label={isFavorite ? `Remove ${tour.name} from favourites` : `Save ${tour.name} to favourites`}
+        aria-pressed={isFavorite}
+        className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-slate-950/60 p-2 shadow-lg backdrop-blur-md transition-transform hover:scale-110"
       >
-        {isFavorite ? (
-          <HeartIconSolid className="w-6 h-6 text-red-500" />
-        ) : (
-          <HeartIcon className="w-6 h-6 text-gray-600" />
-        )}
+        <Heart className={`h-5 w-5 ${isFavorite ? 'text-red-500' : 'text-white'}`} fill={isFavorite ? 'currentColor' : 'none'} />
       </button>
-    </motion.article>
+    </article>
   );
 });

@@ -1,5 +1,5 @@
 // src/utilis/roadTripData.js - Complete data for 9 Road Trip Circuit Guide pages
-// Pricing: Sedan ₹11/km, SUV ₹14/km
+// Pricing: Sedan ₹11/km, SUV ₹15/km
 
 const roadTrips = {
   "golden-triangle-by-car": {
@@ -14,7 +14,7 @@ const roadTrips = {
       { city: "Jaipur", nights: 2, highlights: ["Amber Fort elephant ride", "Hawa Mahal", "City Palace", "Johari Bazaar shopping"] },
       { city: "Delhi", nights: 0, highlights: ["Return via Neemrana Fort (optional stop)"] },
     ],
-    totalCost: { sedan: 7920, suv: 10080 },
+    totalCost: { sedan: 7920, suv: 10800 },
     highlights: [
       "3 UNESCO World Heritage Sites in one trip",
       "Best-maintained highways (NH-44, NH-48, NH-21)",
@@ -25,7 +25,7 @@ const roadTrips = {
     bestSeason: "October to March — Pleasant weather, clear skies for monument photography",
     faqs: [
       { question: "How many days do I need for the Golden Triangle road trip?", answer: "Ideally 5 days / 4 nights covers all major sights comfortably. Delhi (1N), Agra (1N), Jaipur (2N). A rushed 3-day version is possible but you'll miss key attractions." },
-      { question: "What is the total cost of Golden Triangle by car?", answer: "With Triveni Cabs, the Golden Triangle circuit costs from ₹7,920 (Sedan) to ₹10,080 (SUV) for the 720 km journey. This includes driver, fuel, and AC. Toll, parking, and state tax are extra." },
+      { question: "What is the total cost of Golden Triangle by car?", answer: "With Triveni Cabs, the Golden Triangle circuit costs from ₹7,920 (Sedan) to ₹10,800 (SUV) for the 720 km journey. This includes driver, fuel, and AC. Toll, parking, and state tax are extra." },
       { question: "Which is the best route for Delhi-Agra-Jaipur by car?", answer: "The standard route is Delhi → Agra (230 km via Yamuna Expressway, 3 hrs) → Jaipur (240 km via NH-21, 4.5 hrs) → Delhi (280 km via NH-48, 5 hrs). All are excellent highways." },
       { question: "Is the Golden Triangle road trip safe for families?", answer: "Absolutely. The Golden Triangle routes are among India's safest and best-maintained highways. Our GPS-tracked vehicles and experienced drivers ensure complete safety. 24/7 support available." },
       { question: "Can I customize the Golden Triangle itinerary?", answer: "Yes! Popular add-ons include Mathura-Vrindavan (near Agra), Ranthambore (between Agra-Jaipur), and Pushkar (near Jaipur). Call 7668570551 to customize." },
@@ -43,7 +43,7 @@ const roadTrips = {
       { city: "Manali", nights: 3, highlights: ["Solang Valley", "Rohtang Pass", "Old Manali cafes", "Hadimba Temple", "Atal Tunnel"] },
       { city: "Chandigarh", nights: 1, highlights: ["Rock Garden", "Sukhna Lake", "Rose Garden", "Sector 17 market"] },
     ],
-    totalCost: { sedan: 11550, suv: 14700 },
+    totalCost: { sedan: 11550, suv: 15750 },
     highlights: [
       "Cross 3 Himalayan hill stations in one circuit",
       "Scenic Shimla-Manali highway (250 km mountain drive)",
@@ -54,7 +54,7 @@ const roadTrips = {
     bestSeason: "March to June for clear roads; December to February for snow experience",
     faqs: [
       { question: "How long is the Delhi-Shimla-Manali-Chandigarh road trip?", answer: "Plan 7-8 days for a comfortable trip. Delhi to Shimla (350 km, 7 hrs), Shimla to Manali (250 km, 8 hrs), Manali to Chandigarh (310 km, 9 hrs), Chandigarh to Delhi (250 km, 4 hrs). Total 1,050 km." },
-      { question: "What is the cost of Delhi to Shimla Manali trip by car?", answer: "The complete circuit costs from ₹11,550 (Sedan) to ₹14,700 (SUV) for the 1,050 km route. Driver night charges, toll, and parking are additional." },
+      { question: "What is the cost of Delhi to Shimla Manali trip by car?", answer: "The complete circuit costs from ₹11,550 (Sedan) to ₹15,750 (SUV) for the 1,050 km route. Driver night charges, toll, and parking are additional." },
       { question: "Is Rohtang Pass open during the road trip?", answer: "Rohtang Pass is typically open from May to November. In winter, Atal Tunnel (completed 2020) provides year-round access to Lahaul-Spiti. Always check BRO updates before planning." },
       { question: "Can we do Shimla-Manali road trip in winter?", answer: "Yes, but expect snow on the Shimla-Manali highway. Our drivers are experienced in winter driving. Carry warm clothes, snow boots, and be prepared for occasional road closures." },
       { question: "Which is better for families — Shimla or Manali?", answer: "Both are family-friendly. Shimla offers colonial charm, easy walks, and Kufri. Manali offers adventure activities and snow. That's why this circuit covers both!" },
@@ -72,7 +72,7 @@ const roadTrips = {
       { city: "Nainital", nights: 2, highlights: ["Naini Lake boating", "Naina Devi Temple", "Snow View Point", "Mall Road shopping"] },
       { city: "Jim Corbett", nights: 1, highlights: ["Jungle safari", "Bijrani zone wildlife", "Corbett Museum", "River rafting"] },
     ],
-    totalCost: { sedan: 8580, suv: 10920 },
+    totalCost: { sedan: 8580, suv: 11700 },
     highlights: [
       "3 iconic Uttarakhand destinations in one trip",
       "Mountain lakes, waterfalls & wildlife in a single circuit",
@@ -83,7 +83,7 @@ const roadTrips = {
     bestSeason: "March to June and September to November. Monsoon (July-Aug) has landslide risk.",
     faqs: [
       { question: "How many days for Mussoorie, Nainital & Jim Corbett trip?", answer: "7 days is ideal: Mussoorie (2N), Nainital (2N), Jim Corbett (1N), plus travel days. You can shorten to 5 days by reducing one night each at hill stations." },
-      { question: "What is the cost of Uttarakhand hill station circuit by car?", answer: "The 780 km circuit costs from ₹8,580 (Sedan) to ₹10,920 (SUV). This covers driver, fuel, and AC. Toll, parking, safari permits, and driver allowance are extra." },
+      { question: "What is the cost of Uttarakhand hill station circuit by car?", answer: "The 780 km circuit costs from ₹8,580 (Sedan) to ₹11,700 (SUV). This covers driver, fuel, and AC. Toll, parking, safari permits, and driver allowance are extra." },
       { question: "Is Jim Corbett National Park open year-round?", answer: "Corbett's Jhirna zone is open year-round. Bijrani and Dhikala zones close during monsoon (June 15 to November 15). Book safari permits in advance during peak season." },
       { question: "Which car is best for Uttarakhand hill stations?", answer: "SUV (Innova/Ertiga) is recommended for Uttarakhand's mountain roads. Sedans are fine for Mussoorie but SUVs offer better ground clearance and comfort on winding hill roads." },
       { question: "Can we include Rishikesh in this circuit?", answer: "Yes! Add Rishikesh as a stop between Delhi and Mussoorie. It adds about 50 km and 1 night. Perfect for adventure lovers — river rafting, bungee jumping, and yoga." },
@@ -101,7 +101,7 @@ const roadTrips = {
       { city: "Ayodhya", nights: 2, highlights: ["Ram Mandir", "Hanuman Garhi", "Saryu Ghat", "Nageshwarnath Temple"] },
       { city: "Prayagraj", nights: 1, highlights: ["Triveni Sangam", "Anand Bhawan", "Allahabad Fort", "Khusro Bagh"] },
     ],
-    totalCost: { sedan: 7150, suv: 9100 },
+    totalCost: { sedan: 7150, suv: 9750 },
     highlights: [
       "Visit 3 holiest cities of Hinduism in one trip",
       "Newly built Ram Mandir in Ayodhya",
@@ -112,7 +112,7 @@ const roadTrips = {
     bestSeason: "October to March — Avoid summer heat (April-June). Dev Deepawali (November) is magical.",
     faqs: [
       { question: "How many days for Varanasi-Ayodhya-Prayagraj trip?", answer: "6 days is perfect: Varanasi (2N), Ayodhya (2N), Prayagraj (1N). You can cover it in 4 days if you reduce stays, but you'll miss evening aartis and sunrise experiences." },
-      { question: "What is the cost of this spiritual circuit by car?", answer: "The 650 km circuit costs from ₹7,150 (Sedan) to ₹9,100 (SUV). Driver charges, toll, and parking are additional. This is one of the most affordable circuits in India." },
+      { question: "What is the cost of this spiritual circuit by car?", answer: "The 650 km circuit costs from ₹7,150 (Sedan) to ₹9,750 (SUV). Driver charges, toll, and parking are additional. This is one of the most affordable circuits in India." },
       { question: "Is there a direct highway between Varanasi and Ayodhya?", answer: "Yes, the Purvanchal Expressway connects the two cities. The 200 km drive takes about 3-4 hours. The new expressway has excellent road conditions and rest areas." },
       { question: "Can I visit Ram Mandir without long queues?", answer: "Weekday mornings (6-8 AM) have shortest queues. Our local drivers know the best timing and parking spots. VIP darshan is also available on some days." },
       { question: "What should I pack for this spiritual trip?", answer: "Modest clothing for temple visits, comfortable walking shoes for ghats, a light shawl/dupatta, and sun protection. Many temples have dress codes — our drivers will brief you." },
@@ -130,7 +130,7 @@ const roadTrips = {
       { city: "Dharamshala", nights: 2, highlights: ["Dalai Lama Temple Complex", "Bhagsu Waterfall", "Triund trek", "Tibetan market"] },
       { city: "Dalhousie", nights: 2, highlights: ["Khajjiar (Mini Switzerland)", "Panchpula waterfall", "Kalatop Wildlife Sanctuary", "Chamera Lake"] },
     ],
-    totalCost: { sedan: 9020, suv: 11480 },
+    totalCost: { sedan: 9020, suv: 12300 },
     highlights: [
       "Golden Temple — the most visited religious site in the world",
       "Wagah Border flag-lowering ceremony (goosebumps guaranteed)",
@@ -141,7 +141,7 @@ const roadTrips = {
     bestSeason: "March to June and September to November. Monsoon roads can be tricky in Himachal.",
     faqs: [
       { question: "How many days for Amritsar-Dharamshala-Dalhousie?", answer: "7 days is ideal: Amritsar (2N), Dharamshala (2N), Dalhousie (2N). The drive between cities is scenic and takes 4-5 hours each, so you don't lose full days to travel." },
-      { question: "What is the cost of this Punjab-Himachal circuit?", answer: "The 820 km circuit costs from ₹9,020 (Sedan) to ₹11,480 (SUV). This covers driver, fuel, and AC. Toll, parking, driver allowance are additional." },
+      { question: "What is the cost of this Punjab-Himachal circuit?", answer: "The 820 km circuit costs from ₹9,020 (Sedan) to ₹12,300 (SUV). This covers driver, fuel, and AC. Toll, parking, driver allowance are additional." },
       { question: "What's the best time to visit Wagah Border?", answer: "The flag-lowering ceremony happens daily at sunset (5:30 PM in winter, 6:00 PM in summer). Arrive 2 hours early for good seats. Our driver will drop you and pick up after the ceremony." },
       { question: "Is the road from Dharamshala to Dalhousie safe?", answer: "Yes, the 120 km route via Nurpur is well-maintained. It's a scenic drive through pine forests taking about 4 hours. Our experienced hill drivers know every curve of this road." },
       { question: "Can we add Khajjiar as a day trip from Dalhousie?", answer: "Khajjiar is only 24 km from Dalhousie (1 hour drive). It's included as a highlight in the Dalhousie stay. You can also combine it with Chamba visit for a full day excursion." },
@@ -160,7 +160,7 @@ const roadTrips = {
       { city: "Jaisalmer", nights: 2, highlights: ["Jaisalmer Fort (living fort)", "Sam Sand Dunes safari", "Desert camping under stars", "Patwon Ki Haveli"] },
       { city: "Udaipur", nights: 2, highlights: ["Lake Pichola boat ride", "City Palace", "Jagdish Temple", "Fateh Sagar Lake", "Ambrai Ghat sunset"] },
     ],
-    totalCost: { sedan: 12980, suv: 16520 },
+    totalCost: { sedan: 12980, suv: 17700 },
     highlights: [
       "4 royal cities of Rajasthan — Pink, Blue, Golden & White City",
       "UNESCO forts, desert safaris & lake palaces in one trip",
@@ -171,7 +171,7 @@ const roadTrips = {
     bestSeason: "October to March — Perfect desert weather. Avoid April-June extreme heat.",
     faqs: [
       { question: "How many days for the complete Rajasthan circuit?", answer: "10 days covers all 4 cities comfortably: Jaipur (2N), Jodhpur (2N), Jaisalmer (2N), Udaipur (2N), plus travel days. You can do a shorter 7-day version by reducing nights." },
-      { question: "What is the cost of Rajasthan heritage circuit by car?", answer: "The 1,180 km circuit costs from ₹12,980 (Sedan) to ₹16,520 (SUV). Toll, parking, desert safari, and driver allowance are additional." },
+      { question: "What is the cost of Rajasthan heritage circuit by car?", answer: "The 1,180 km circuit costs from ₹12,980 (Sedan) to ₹17,700 (SUV). Toll, parking, desert safari, and driver allowance are additional." },
       { question: "Which car is best for Rajasthan road trip?", answer: "SUV (Innova Crysta) is highly recommended. The Jodhpur-Jaisalmer stretch has long desert highways and SUV offers better comfort. For couples, Sedan works fine." },
       { question: "Is the desert safari in Jaisalmer worth it?", answer: "Absolutely! The Sam Sand Dunes sunset camel safari followed by overnight desert camping with folk music and dinner under the stars is a once-in-a-lifetime experience. Book through us for best rates." },
       { question: "Can we add Pushkar or Ranthambore to this circuit?", answer: "Yes! Pushkar adds 1 night (near Jaipur-Jodhpur route). Ranthambore adds 1-2 nights (between Jaipur-Jodhpur). Both are worth the detour. Call 7668570551 to customize." },
@@ -194,7 +194,7 @@ const roadTrips = {
       { city: "Nainital", nights: 1, highlights: ["Naini Lake boating", "Snow View", "Mall Road shopping"] },
       { city: "Alwar-Sariska", nights: 1, highlights: ["Sariska Tiger Reserve", "Bhangarh Fort", "Siliserh Lake"] },
     ],
-    totalCost: { sedan: 3300, suv: 4200 },
+    totalCost: { sedan: 3300, suv: 4500 },
     highlights: [
       "All destinations within 300 km / 5 hours from Delhi",
       "Perfect Friday-to-Sunday getaways",
@@ -228,7 +228,7 @@ const roadTrips = {
       { city: "Chittorgarh", nights: 1, highlights: ["Chittorgarh Fort", "Vijay Stambh", "Padmini Palace"] },
       { city: "Bikaner", nights: 1, highlights: ["Junagarh Fort", "Karni Mata Temple", "Camel research farm"] },
     ],
-    totalCost: { sedan: 4400, suv: 5600 },
+    totalCost: { sedan: 4400, suv: 6000 },
     highlights: [
       "Rajasthan's best-kept secrets within driving distance",
       "Tiger spotting at Ranthambore (3 hrs from Jaipur)",
@@ -262,7 +262,7 @@ const roadTrips = {
       { city: "Parwanoo", nights: 0, highlights: ["Timber Trail cable car", "Cactus Garden", "Fruit orchards"] },
       { city: "Morni Hills", nights: 1, highlights: ["Morni Fort", "Tikkar Taal Lake", "Bird watching", "Camping"] },
     ],
-    totalCost: { sedan: 3300, suv: 4200 },
+    totalCost: { sedan: 3300, suv: 4500 },
     highlights: [
       "6+ hill stations within 3-5 hours from Chandigarh",
       "Escape to the Himalayas every weekend",

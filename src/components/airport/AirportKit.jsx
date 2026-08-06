@@ -14,7 +14,66 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Plane, MapPin, ChevronRight } from '@/components/ui/icons';
+import { Plane, MapPin, ChevronRight, Award } from '@/components/ui/icons';
+
+/* ── Ultra-Premium v2 primitives (Aug 2026) ──────────────────────────────
+   Shared by every airport client: gold-foil headline accents, the serif
+   display heading rhythm, the signature gold CTA (sheen + bloom, BLACK
+   text, compact on desktop) and the TrustSeal emblem that sits beside
+   every price. Zero infinite animations — CSS transitions only (INP).   */
+
+export const FOIL = 'text-gold-foil drop-shadow-[0_2px_18px_rgba(250,207,45,0.35)]';
+
+export const GOLD_BTN =
+  'sheen inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#FACF2D] font-black text-black shadow-gold-bloom transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 active:translate-y-0 active:scale-[0.98]';
+
+export const GHOST_BTN =
+  'inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 font-bold text-white backdrop-blur-sm transition-colors hover:border-[#FACF2D]/40 hover:bg-white/10';
+
+/* One serif heading rhythm for the whole family (font-display-serif via globals). */
+export function SerifHeading({ eyebrow, title, highlight, subtitle, tone = 'dark', center = false, className = '' }) {
+  const dark = tone === 'dark';
+  return (
+    <div className={`${center ? 'mx-auto text-center' : ''} max-w-3xl ${className}`}>
+      {eyebrow && (
+        <span className={`mb-3 inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-amber-500 sm:text-xs ${center ? 'justify-center' : ''}`}>
+          <span className="h-px w-7 bg-amber-500/60" />
+          {eyebrow}
+          {center && <span className="h-px w-7 bg-amber-500/60" />}
+        </span>
+      )}
+      <h2 className={`font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem] ${dark ? 'text-white' : 'text-slate-900'}`}>
+        {title} {highlight && <span className={FOIL}>{highlight}</span>}
+      </h2>
+      {subtitle && (
+        <p className={`mt-4 text-sm leading-relaxed sm:text-base ${dark ? 'text-slate-300/80' : 'text-slate-600'}`}>
+          {subtitle}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* Trust theater — seal-style emblem that lives next to the money. */
+export function TrustSeal({ compact = false, className = '' }) {
+  return (
+    <div className={`flex items-center gap-4 rounded-2xl border border-amber-400/25 bg-white/[0.06] backdrop-blur-md ${compact ? 'px-4 py-3' : 'px-5 py-4'} ${className}`}>
+      <div className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#FACF2D]/70 bg-gradient-to-br from-amber-400/25 via-transparent to-transparent">
+        <div className="absolute inset-1 rounded-full border border-amber-400/30" aria-hidden />
+        <Award className="h-6 w-6 text-[#FACF2D]" />
+      </div>
+      <div className="min-w-0">
+        <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-200/90">Since 2015 · 4.9★</p>
+        <p className="mt-0.5 text-[11px] leading-snug text-white/60">Flight-tracked pickups · Pay after trip · 10,000+ transfers</p>
+      </div>
+    </div>
+  );
+}
+
+/* Gold lane strip — the brand's runway/lane motif, pinned to a hero's top edge. */
+export function LaneStrip() {
+  return <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />;
+}
 
 /* ── Per-city / per-page accent palettes ──────────────────────────────────
    Each entry is raw hex so it can flow into CSS variables (no Tailwind purge
@@ -52,30 +111,15 @@ export function getAccent() {
   return BRAND_GOLD;
 }
 
-/* ── Keyframes (injected once; identical copies are harmless) ───────────── */
+/* ── Static decoration styles (Ultra-Premium v2, Aug 2026) ─────────────────
+   All infinite keyframe animations were removed for INP/CWV — the radar,
+   dashed runway line and status dot are now static art. The old `air-*`
+   class names remain valid no-ops (plus static dasharray) so every airport
+   client keeps rendering without per-file rewrites.                        */
 export function AirportStyles() {
   return (
     <style>{`
-      @keyframes air-radar{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-      @keyframes air-dash{to{stroke-dashoffset:-26}}
-      @keyframes air-rise{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-      @keyframes air-drift{0%{transform:translateX(-6%) translateY(0)}100%{transform:translateX(6%) translateY(-10px)}}
-      @keyframes air-flip{0%,88%,100%{transform:rotateX(0)}90%,96%{transform:rotateX(-90deg)}}
-      @keyframes air-blink{0%,100%{opacity:1}50%{opacity:.25}}
-      @keyframes air-runlight{0%,100%{opacity:.2}50%{opacity:1}}
-      @keyframes air-shine{0%{background-position:-180% 0}100%{background-position:180% 0}}
-      @keyframes air-floatcard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-      .air-radar{animation:air-radar 9s linear infinite;transform-origin:center}
-      .air-dash{stroke-dasharray:13 13;animation:air-dash 1.1s linear infinite}
-      .air-rise{animation:air-rise 7s ease-in-out infinite}
-      .air-drift{animation:air-drift 18s ease-in-out infinite alternate}
-      .air-flip{animation:air-flip 5s ease-in-out infinite;transform-origin:center}
-      .air-blink{animation:air-blink 1.4s ease-in-out infinite}
-      .air-shine{background-size:200% 100%;animation:air-shine 3.4s linear infinite}
-      .air-floatcard{animation:air-floatcard 6s ease-in-out infinite}
-      @media (prefers-reduced-motion: reduce){
-        .air-radar,.air-dash,.air-rise,.air-drift,.air-flip,.air-blink,.air-shine,.air-floatcard{animation:none!important}
-      }
+      .air-dash{stroke-dasharray:13 13}
     `}</style>
   );
 }
@@ -88,10 +132,11 @@ export function HeroPhoto({ src, priority = true }) {
   if (!src) return null;
   return (
     <div className="absolute inset-0" aria-hidden="true">
-      <Image src={src} alt="" fill priority={priority} sizes="100vw" className="object-cover object-center opacity-25" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-[var(--air-deep)]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--air-deep)] via-[var(--air-deep)]/70 to-[var(--air-deep)]/30" />
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Cinematic: the photo stays visible — scrim only where the text sits */}
+      <Image src={src} alt="" fill priority={priority} sizes="100vw" className="object-cover object-center" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--air-deep)] via-[var(--air-deep)]/55 to-[var(--air-deep)]/15" />
+      <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[var(--air-deep)]/90 via-[var(--air-deep)]/45 to-transparent lg:w-3/4" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[var(--air-deep)] to-transparent" />
     </div>
   );
 }
@@ -160,7 +205,7 @@ export function TerminalBadge({ code, sub, accentName }) {
       </div>
       {accentName && (
         <div className="hidden border-l border-white/10 pl-4 sm:block">
-          <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[color:var(--air-accent)]/80">Code</div>
+          <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[color:var(--air-accent)]/80">Terminals</div>
           <div className="font-mono text-sm font-bold leading-none text-white">{accentName}</div>
         </div>
       )}

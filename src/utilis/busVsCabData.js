@@ -1,5 +1,5 @@
 // src/utilis/busVsCabData.js - Complete data for 20 bus vs cab comparison pages
-// Cab Pricing: Sedan ₹11/km, SUV ₹14/km
+// Cab Pricing: Sedan ₹11/km, SUV ₹15/km
 
 function generateFaqs(origin, dest, distKm, busCost, sedanFare, timeSaved) {
   return [
@@ -14,7 +14,7 @@ function generateFaqs(origin, dest, distKm, busCost, sedanFare, timeSaved) {
 
 function createRoute({ slug, origin, destination, distanceKm, busOptions, cabOptions, verdict, scenarios, relatedRoutes }) {
   const sedanFare = Math.max(distanceKm, 300) * 11;
-  const suvFare = Math.max(distanceKm, 300) * 14;
+  const suvFare = Math.max(distanceKm, 300) * 15;
   const avgBusCost = Math.round(busOptions.reduce((s, b) => s + b.cost, 0) / busOptions.length);
   const timeSavedHrs = busOptions[0] ? (parseFloat(busOptions[0].duration) - parseFloat(cabOptions.sedan.duration)).toFixed(1) : '1-2';
 
@@ -58,7 +58,7 @@ export const busVsCabRoutes = {
       { scenario: "Solo Budget Traveler", winner: "Bus", reason: "Volvo bus at ₹1,500 is significantly cheaper than cab for one person. Overnight buses save a hotel night." },
       { scenario: "Couple Trip", winner: "Cab", reason: "Per-person cab cost drops to ~₹2,915 — similar to Volvo but with AC comfort, privacy, and door-to-door service." },
       { scenario: "Family of 4", winner: "Cab", reason: "At ~₹1,458 per person, cab is cheaper than Volvo bus tickets and infinitely more comfortable with kids." },
-      { scenario: "Group of 6+", winner: "Cab (SUV)", reason: "SUV at ₹14/km seats 6-7. Per-person cost drops to ~₹1,237 — cheapest and most comfortable option." },
+      { scenario: "Group of 6+", winner: "Cab (SUV)", reason: "SUV at ₹15/km seats 6-7. Per-person cost drops to ~₹1,325 — cheapest and most comfortable option." },
       { scenario: "Elderly Parents", winner: "Cab", reason: "No bus stand hassle, AC comfort, rest stops on demand, and door-to-door service is essential for senior citizens." },
       { scenario: "Weekend Getaway", winner: "Cab", reason: "Flexibility to stop at Murthal dhabas, Chandigarh, and scenic points. Make the journey part of the trip." },
     ],
